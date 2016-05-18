@@ -6,7 +6,7 @@ taxonomy:
 
 Mender is an **open source** remote updater for embedded Linux devices.
 
-The aim of the project is to help secure connected embedded devices by providing a **safe** and **reliable** software update process.
+The aim of the project is to help secure connected devices by providing a **safe** and **reliable** software update process.
 
 As an open source project we welcome contributions. Find out more about how to contribute at [mender.io/open-source](https://mender.io/open-source?target=_blank).
 
