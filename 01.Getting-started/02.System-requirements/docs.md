@@ -4,8 +4,6 @@ taxonomy:
     category: docs
 ---
 
-<b>TODO:: 1. Verify client size</b>
-
 Mender is a client-server solution. Current version allows image based updates with automatic rollback if an update fails.
 
 ## Client requirements
@@ -16,7 +14,7 @@ The client needs to run on every device that you want to manage with Mender.
 Although possible to compile and install Mender independently, we have optimized the installation experience for those who build their Linux images using [Yocto](https://www.yoctoproject.org?target=_blank).
 
 ###Device capacity
-The client binaries, which are written in Go, are around 20 mb in size. 
+The client binaries, which are written in Go, are around 7mb in size. 
 
 Our reference board, the [Beaglebone Black](http://beagleboard.org/bone?target=_blank) comes with an ARM Cortex-A8 processor, 720 MHz processor. Boards in our continous integration process have 512mb of memory installed.
 
