@@ -29,7 +29,7 @@ $ qemu-system-arm -version
 ```
 
 ##1. Download and unpack pre-made images 
-Download our automatic builds which will contain the neccessary images for this exercise. It will also contain files and images for Beaglebone.
+If you already have [built a Yocto image with Mender](../../Artifacts/Building-Mender-Yocto-image), please move on to the [next section](#2-install-sdimg-image-on-new-virtual-machine). If you don't have any image to test, you can download our automatic builds which will contain the neccessary images for this exercise. It will also contain files and images for Beaglebone.
 
 ```
 $ wget https://goo.gl/mmJoxs

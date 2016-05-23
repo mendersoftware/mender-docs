@@ -14,7 +14,7 @@ This page will show you how to deploy an image update onto a BeagleBone board an
 A machine on the same network as the BeagleBone.
 
 ##1. Download and unpack pre-made images 
-Download our automatic builds which will contain the neccessary images for this exercise.
+If you already have [built a Yocto image with Mender](../../Artifacts/Building-Mender-Yocto-image), please move on to [next section](#2-install-first-sdimg-image-on-beaglebone). If you don't have any image to test, you can download our automatic builds which will contain the neccessary images for this exercise.
 
 On your machine type:
 
@@ -43,13 +43,13 @@ $ sudo dd if=./tmp/deploy/images/beaglebone/core-image-base-beaglebone.sdimg of=
 
 &lt;DEVICE&gt; depends on where your SD card is placed. Normally this would be something like ***dev/mmcblk0*** or ***dev/sdb***. IF YOU POINT TO THE WRONG DEVICE YOU RISK TO OVERWRITE YOUR MACHINE DISK OR OTHER CONNECTED DISKS!!
 
-If you are unsure how to find you correct /dev, the Raspberry PI Foundation provide some nice references that can help you: [Linux](https://www.raspberrypi.org/documentation/installation/installing-images/linux.md?target=_blank), [Mac OSX](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md?target=_blank), [Windows](https://www.raspberrypi.org/documentation/installation/installing-images/windows.md?target=_blank).
+If you are unsure how to find the correct /dev, the Raspberry PI Foundation provide some nice references that can help you: [Linux](https://www.raspberrypi.org/documentation/installation/installing-images/linux.md?target=_blank), [Mac OSX](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md?target=_blank), [Windows](https://www.raspberrypi.org/documentation/installation/installing-images/windows.md?target=_blank).
 
 Once writing of the sdimg image has completed, take out the SD card and insert it into BeagleBone.
 
 You can verify the success by trying to turn on the BeagleBone:
 
-****MPORTANT***: The standard BeagleBone booting process will cause that the bootloader from internal flash storage will be used. In order to use the bootloader from SD card make sure that S2 (boot) button is pressed while powering on your BeagleBone (see image below).
+****IMPORTANT***: The standard BeagleBone booting process will cause that the bootloader from internal flash storage will be used. In order to use the bootloader from SD card make sure that S2 (boot) button is pressed while powering on your BeagleBone (see image below).
 
 ![BeagleBone sdboot button](beaglebone_black_sdboot.jpg)
 
