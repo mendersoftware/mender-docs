@@ -9,14 +9,14 @@ This page will show you how to deploy an image update onto a QEMU virtual machin
 ![Deploy update to QEMU - before and after](deploy_update_qemu_before_after.png)
 
 
-## Prerequisuites
+## Prerequisites
 
 The local machine needs [QEMU](http://wiki.qemu.org/?target=_blank) with ARM processor support installed and minimum 2gb free memory. QEMU runs on various plattforms, but if yours is Linux QEMU can easily be installed on Debian and Ubuntu systems with:
 
 ```
 $ apt-get install qemu-system-arm
 ```
-... or on Fedora and Redhat systems</a> with:
+Or on Fedora and Redhat systems</a> with:
 
 ```
 $ yum install qemu-system-arm
@@ -29,13 +29,13 @@ $ qemu-system-arm -version
 ```
 
 ##1. Download and unpack pre-made images 
-If you already have [built a Yocto image with Mender](../../Artifacts/Building-Mender-Yocto-image), please move on to the [next section](#2-install-sdimg-image-on-new-virtual-machine). If you don't have any image to test, you can download our automatic builds which will contain the neccessary images for this exercise. It will also contain files and images for Beaglebone.
+If you have already [built a Yocto image with Mender](../../Artifacts/Building-Mender-Yocto-image), please move on to the [next section](#2-install-sdimg-image-on-new-virtual-machine). If you don't have any images to test, you can download our automatic builds which will contain the neccessary images for this exercise. It will also contain files and images for BeagleBone.
 
 ```
 $ wget https://goo.gl/mmJoxs
 ```
 
-Unpack the files from the download above
+Unpack the files from the download above:
 
 ```
 $ tar -zxvf mmJoxs
@@ -51,7 +51,7 @@ $ /bin/bash mender-qemu.sh
 
 This will take you to the login prompt. Above the prompt you should see a welcome message like:
 
-*Poky (Yocto Project Reference Distro) 2.0.1 vexpress...*
+> "Poky (Yocto Project Reference Distro) 2.0.1 vexpress..."
 
 You can login with user *root*. No password is required. 
 
@@ -70,7 +70,7 @@ $ python -m SimpleHTTPServer
 ```
 
 ##4. Deploy and update *ext3* image on virtual machine
-To deploy the new image to your virtual machine, go to your virtual machine and run the following Mender command where &lt;ip-adress&gt; is the one you found previously:
+To deploy the new image to your virtual machine, go to your virtual machine and run the following Mender command where &lt;ip-address&gt; is the one you found previously:
 
 ```
 $ mender -rootfs <ip-address>:8000/core-image-full-cmdline-vexpress-qemu.ext3
@@ -84,9 +84,9 @@ $ reboot
 
 Your device should boot into the updated image, and a welcome message like this should greet you:
 
-*This system has been updated by Mender build 294 compiled on ......*
+> "This system has been updated by Mender build 294 compiled on..."
 
-***Congratulations!*** You have just deployed your first image based update with Mender! If you are happy with the new update, you can make it permanent by logging in to the virtual machine, as *root*, and type:
+**Congratulations!** You have just deployed your first image based update with Mender. If you are happy with the new update, you can make it permanent by logging in to the virtual machine as *root*, and typing:
 
 
 ```

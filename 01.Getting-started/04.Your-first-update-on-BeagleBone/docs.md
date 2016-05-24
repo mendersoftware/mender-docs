@@ -9,29 +9,29 @@ This page will show you how to deploy an image update onto a BeagleBone board an
 
 ![Deploy update to BeagleBone - before and after](deploy_update_beaglebone_before_after.png)
 
-## Prerequisuites
+## Prerequisites
 
 A machine on the same network as the BeagleBone.
 
 ##1. Download and unpack pre-made images 
-If you already have [built a Yocto image with Mender](../../Artifacts/Building-Mender-Yocto-image), please move on to [next section](#2-install-first-sdimg-image-on-beaglebone). If you don't have any image to test, you can download our automatic builds which will contain the neccessary images for this exercise.
+If you have already [built a Yocto image with Mender](../../Artifacts/Building-Mender-Yocto-image), please move on to [next section](#2-install-first-sdimg-image-on-beaglebone). If you don't have any images to test, you can download our automatic builds which will contain the neccessary images for this exercise.
 
-On your machine type:
+On your machine, type:
 
 ```
 $ wget https://goo.gl/mmJoxs
 ```
 
-Unpack the files from the download above
+Unpack the files from the download above:
 
 ```
 $ tar -zxvf mmJoxs
 ```
 
 ##2. Install first *sdimg* image on BeagleBone
-The sdimg image is is a partitioned image that can be stored directly into the SD card. For more information about the exact content of the image and detailed information about partitions layout please see [sdimg](https://github.com/mendersoftware/meta-mender/blob/master/classes/sdimg.bbclass?target=_blank) class documentation</a>.
+The sdimg image is a partitioned image that can be stored directly into the SD card. For more information about the exact content of the image and detailed information about the partitions layout, please see [sdimg](https://github.com/mendersoftware/meta-mender/blob/master/classes/sdimg.bbclass?target=_blank) class documentation</a>.
 
-Assuming you are in the same directory as when you downloaded the above images, you can copy the sd image to SD card you can use following commands:
+Assuming you are in the same directory as when you downloaded the above images, you can copy the sd image to the SD card. Use the following commands:
 
 ```
 $ cd beaglebone
@@ -41,7 +41,9 @@ $ cd beaglebone
 $ sudo dd if=./tmp/deploy/images/beaglebone/core-image-base-beaglebone.sdimg of=<DEVICE> bs=1M
 ```
 
-&lt;DEVICE&gt; depends on where your SD card is placed. Normally this would be something like ***dev/mmcblk0*** or ***dev/sdb***. IF YOU POINT TO THE WRONG DEVICE YOU RISK TO OVERWRITE YOUR MACHINE DISK OR OTHER CONNECTED DISKS!!
+&lt;DEVICE&gt; depends on where your SD card is placed. Normally this would be something like ***dev/mmcblk0*** or ***dev/sdb***. 
+
+!! **WARNING**: If you point to the wrong device, you risk overwriting your machine disk or other connected disks!
 
 If you are unsure how to find the correct /dev, the Raspberry PI Foundation provide some nice references that can help you: [Linux](https://www.raspberrypi.org/documentation/installation/installing-images/linux.md?target=_blank), [Mac OSX](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md?target=_blank), [Windows](https://www.raspberrypi.org/documentation/installation/installing-images/windows.md?target=_blank).
 
@@ -49,13 +51,13 @@ Once writing of the sdimg image has completed, take out the SD card and insert i
 
 You can verify the success by trying to turn on the BeagleBone:
 
-****IMPORTANT***: The standard BeagleBone booting process will cause that the bootloader from internal flash storage will be used. In order to use the bootloader from SD card make sure that S2 (boot) button is pressed while powering on your BeagleBone (see image below).
+!!! **IMPORTANT**: The standard BeagleBone booting process will use the bootloader from internal flash storage. In order to use the bootloader from SD card, make sure that S2 (boot) button is pressed while powering on your BeagleBone (see image below).
 
 ![BeagleBone sdboot button](beaglebone_black_sdboot.jpg)
 
 This will take you to the login prompt. Above the prompt you should see a welcome message like:
 
-*Poky (Yocto Project Reference Distro) 2.0.1 beaglebone...*
+> "Poky (Yocto Project Reference Distro) 2.0.1 beaglebone..."
 
 You can login with user *root*. No password is required. 
 
@@ -90,9 +92,9 @@ $ reboot
 
 Your device should boot into the updated image, and a welcome message like this should greet you:
 
-*This system has been updated by Mender build 294 compiled on ......*
+>"This system has been updated by Mender build 294 compiled on..."
 
-***Congratulations!*** You have just deployed your first image based update with Mender! If you are happy with the new update, you can make it permanent by logging in to BeagleBone, as *root*, and type:
+**Congratulations!** You have just deployed your first image based update with Mender. If you are happy with the new update, you can make it permanent by logging in to BeagleBone as *root*, and typing:
 
 
 ```
