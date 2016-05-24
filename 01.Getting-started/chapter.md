@@ -8,4 +8,4 @@ taxonomy:
 
 # Getting started
 
-Documentation for Mender
+Learn how to deploy your first update
