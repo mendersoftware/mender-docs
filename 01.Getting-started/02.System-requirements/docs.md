@@ -26,9 +26,11 @@ Support for modifying U-Boot variables from userspace is also required so that f
 [compiled from U-Boot sources](http://www.denx.de/wiki/view/DULG/HowCanIAccessUBootEnvironmentVariablesInLinux?target=_blank) and are part of U-Boot.
 
 ###Device partitioning
-At least three different partitions are required, one of which is the boot partition, and the remaining two partitions are where both the kernel and rootfs are stored. One of the partitions will be used as active partition, from which the kernel and rootfs will be booted, the second one will be used by the update mechanism to write the updated image. The second partition will be referred to as "inactive" later in this document.
+At least four different partitions are required, one of which is the boot partition, two partitions where both the kernel and rootfs are stored, and one which holds user data.
 
-It is also possible to use yet another partition to store persistent user data, so this does not get overwritten during an update.
+One of the partitions will be used as active partition, from which the kernel and rootfs will be booted, the second one will be used by the update mechanism to write the updated image. The second of these two partitions will be referred to as "inactive" later in this document.
+
+The user data partition stores persistent data, so this does not get overwritten during an update.
 
 A sample partition layout is shown below:
 
