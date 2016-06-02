@@ -108,9 +108,11 @@ bitbake core-image-full-cmdline
 ```
 
 This will build the `core-image-full-cmdline` image type, but it is also possible to
-build other image types. Depending on how powerful your build machine is, the first time you build a Yocto image, the build process can take several hours. The successive builds will only take a few minutes, so please be patient this first time. 
+build other image types.
 
-After a successful build, the images and build artifacts are placed in `tmp/deploy/images/vexpress-qemu/`. To test how to deploy an update on BeagleBone, please read [Getting started - Your first update on QEMU](../../Getting-started/Your-first-update-on-qemu).
+!!! The first time you build a Yocto image, the build process can take several hours. The successive builds will only take a few minutes, so please be patient this first time. 
+
+After a successful build, the images and build artifacts are placed in `tmp/deploy/images/vexpress-qemu/`. To test how to deploy an update on QEMU, please read [Getting started - Your first update on QEMU](../../Getting-started/Your-first-update-on-qemu).
 
 ### For BeagleBone Black
 
@@ -128,6 +130,6 @@ and the root file system. For more information the about differences with
 image types on the BeagleBone please see [the official Yocto BeagleBone support
 page](https://www.yoctoproject.org/downloads/bsps/daisy16/beaglebone).
 
-Like for QEMU, please be aware that your first Yocto build can take a very long time  (around two hours on a powerful machine).
+Like for QEMU, please be aware that your first Yocto build can take several hours.
 
 After a successful build, the images and build artifacts are placed in `tmp/deploy/images/beaglebone/`. To test how to deploy an update on BeagleBone, please read [Getting started - Your first update on BeagleBone](../../Getting-started/Your-first-update-on-BeagleBone).
