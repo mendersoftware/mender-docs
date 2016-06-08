@@ -19,13 +19,24 @@ If you have already [built a Yocto image with Mender](../../Artifacts/Building-M
 On your machine, type:
 
 ```
-$ wget https://goo.gl/mmJoxs
+mkdir mender
+cd mender
+wget https://goo.gl/mmJoxs
 ```
 
 Unpack the files from the download above:
 
 ```
-$ tar -zxvf mmJoxs
+tar -zxvf mmJoxs
+
+  vexpress-qemu/u-boot.elf
+  vexpress-qemu/core-image-full-cmdline-vexpress-qemu.sdimg
+  vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext3
+  vexpress-qemu/mender-qemu.sh
+  beaglebone/core-image-base-beaglebone.ext3
+  beaglebone/core-image-base-beaglebone.sdimg
+  BUILD
+  README
 ```
 
 ##2. Install first *sdimg* image on BeagleBone
@@ -34,14 +45,14 @@ The sdimg image is a partitioned image that can be stored directly into the SD c
 Assuming you are in the same directory as when you downloaded the above images, you can copy the sd image to the SD card. Use the following commands:
 
 ```
-$ cd beaglebone
+cd beaglebone
 ```
 
 ```
-$ sudo dd if=./tmp/deploy/images/beaglebone/core-image-base-beaglebone.sdimg of=<DEVICE> bs=1M
+sudo dd if=core-image-base-beaglebone.sdimg of=<DEVICE> bs=1M
 ```
 
-&lt;DEVICE&gt; depends on where your SD card is placed. Normally this would be something like ***dev/mmcblk0*** or ***dev/sdb***. 
+&lt;DEVICE&gt; depends on where your SD card is placed. Normally this would be something like ***/dev/mmcblk0*** or ***/dev/sdb***. 
 
 !! **WARNING**: If you point to the wrong device, you risk overwriting your machine disk or other connected disks!
 
@@ -67,13 +78,13 @@ You can login with user *root*. No password is required.
 To be able to deploy a new update to BeagleBone, we need to serve it with the new image. Go to your local machine where you downloaded all the images above. Find and copy the ip-address:
 
 ```
-$ ifconfig
+ifconfig
 ```
 
 While you are still in the *beaglebone* directory on the local machine start a simple Python webserver that will serve your new image to the BeagleBone.
 
 ```
-$ python -m SimpleHTTPServer
+python -m SimpleHTTPServer
 ```
 
 ##4. Deploy *ext3* image update to BeagleBone
@@ -81,13 +92,13 @@ To deploy the new image to BeagleBone, go to BeagleBone and run the following Me
 
 
 ```
-$ mender -rootfs <ip-address>:8000/core-image-full-cmdline-vexpress-qemu.ext3
+mender -rootfs <ip-address>:8000/core-image-full-cmdline-vexpress-qemu.ext3
 ```
 
 This will download the new image and tell the bootloader to boot into it on the next reboot. Once the download is complete, reboot the BeagleBone (no need to hold down S2-button):
 
 ```
-$ reboot
+reboot
 ```
 
 Your device should boot into the updated image, and a welcome message like this should greet you:
@@ -98,7 +109,7 @@ Your device should boot into the updated image, and a welcome message like this 
 
 
 ```
-$ mender commit
+mender -commit
 ```
 
 From now on, every time you boot BeagleBone, it will boot into your updated ext3 image.
