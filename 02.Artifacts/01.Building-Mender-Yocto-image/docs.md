@@ -10,7 +10,7 @@ This document outlines the steps needed to build a [Yocto](https://www.yoctoproj
 
 ## What is *meta-mender*?
 
-*meta-mender* is a layer that enables the creation of a Yocto image where the Mender client is part of the image. With Mender installed on the image, you can deploy image updates and benefit from features like automatic roll-back, remote management, logging and reporting. The *meta-mender* layer contains all the recipes required to build the Mender Go binary as a part of the Yocto image. It currently supports cross-compiling Mender for ARM devices using Go 1.6.
+[meta-mender](https://github.com/mendersoftware/meta-mender) is a layer that enables the creation of a Yocto image where the Mender client is part of the image. With Mender installed on the image, you can deploy image updates and benefit from features like automatic roll-back, remote management, logging and reporting. The *meta-mender* layer contains all the recipes required to build the Mender Go binary as a part of the Yocto image. It currently supports cross-compiling Mender for ARM devices using Go 1.6.
 
 In order to support reliable deployments and rollback, Mender requires the
 [bootloader and partition layout](../../Getting-started/System-requirements#device-partitioning) set up in a specific way. Using Yocto makes this integration easier, as the *meta-mender* layer automatically handles all the requirements for building a complete image containing all the required
