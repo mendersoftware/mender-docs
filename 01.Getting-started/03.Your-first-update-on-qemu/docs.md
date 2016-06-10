@@ -110,4 +110,4 @@ mender -commit
 
 By running this command, Mender will configure the bootloader to persistently boot from this updated rootfs partition.
 
-!!! If we reboot the machine again *without* running mender -commit, it will boot into the previous rootfs partition that is known to be working (where we deployed the update from). This ensures strong reliability in cases where the newly deployed rootfs does not boot or otherwise has issues that we want to roll back from.
+!!! If we reboot the machine again *without* running ```mender -commit```, it will boot into the previous rootfs partition that is known to be working (where we deployed the update from). This ensures strong reliability in cases where the newly deployed rootfs does not boot or otherwise has issues that we want to roll back from.

@@ -112,7 +112,13 @@ build other image types.
 
 !!! The first time you build a Yocto image, the build process can take several hours. The successive builds will only take a few minutes, so please be patient this first time. 
 
-After a successful build, the images and build artifacts are placed in `tmp/deploy/images/vexpress-qemu/`. To test how to deploy an update on QEMU, please read [Getting started - Your first update on QEMU](../../Getting-started/Your-first-update-on-qemu).
+After a successful build, the images and build artifacts are placed in `tmp/deploy/images/vexpress-qemu/`. There is a helper script that starts up our newly built image which can be run with:
+
+```
+../meta-mender/scripts/mender-qemu
+```
+
+You can log in as *root* without password. To test how to deploy a rootfs update in QEMU, please read [Getting started - Your first update on QEMU](../../Getting-started/Your-first-update-on-qemu#serve-a-rootfs-image-for-the-qemu-machine).
 
 ### For BeagleBone Black
 
@@ -132,4 +138,4 @@ page](https://www.yoctoproject.org/downloads/bsps/daisy16/beaglebone).
 
 Like for QEMU, please be aware that your first Yocto build can take several hours.
 
-After a successful build, the images and build artifacts are placed in `tmp/deploy/images/beaglebone/`. To test how to deploy an update on BeagleBone, please read [Getting started - Your first update on BeagleBone](../../Getting-started/Your-first-update-on-BeagleBone).
+After a successful build, the images and build artifacts are placed in `tmp/deploy/images/beaglebone/`. To write your new image to the SD card and test how to deploy a rootfs update on BeagleBone, please read [Getting started - Your first update on BeagleBone](../../Getting-started/Your-first-update-on-BeagleBone#write-the-disk-image-to-the-sd-card).
