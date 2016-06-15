@@ -10,13 +10,13 @@ Mender is a client-server solution. Current version allows image based updates w
 
 The client needs to run on every device that you want to manage with Mender. 
 
-###Yocto project
-Although possible to compile and install Mender independently, we have optimized the installation experience for those who build their Linux images using [Yocto](https://www.yoctoproject.org?target=_blank).
+###Yocto Project
+Although it is possible to compile and install Mender independently, we have optimized the installation experience for those who build their Linux images using [Yocto Project](https://www.yoctoproject.org?target=_blank).
 
 ###Device capacity
-The client binaries, which are written in Go, are around 7mb in size. 
+The client binaries, which are written in Go, are around 7 MiB in size. 
 
-Our reference board, the [Beaglebone Black](http://beagleboard.org/bone?target=_blank) comes with an ARM Cortex-A8 processor, 720 MHz processor. Boards in our continous integration process have 512mb of memory installed.
+Our reference board, the [BeagleBone Black](http://beagleboard.org/bone?target=_blank), comes with a 1 GHz ARM Cortex-A8 processor, with 512 MiB of RAM. We use these boards in our continuous integration process.
 
 ###Bootloader support
 Mender integrates with the bootloader of the device. Currently we support the popular [U-Boot](http://www.denx.de/wiki/view/DULG/UBootBootCountLimit?target=_blank). Besides any special configuration to support the device, U-Boot needs to be compiled and used with the following features:

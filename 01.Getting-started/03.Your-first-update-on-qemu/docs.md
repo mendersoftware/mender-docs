@@ -9,7 +9,7 @@ This tutorial will show you how to deploy a rootfs image onto a QEMU machine and
 
 ## Prerequisites
 
-The workstation needs [QEMU](http://wiki.qemu.org/?target=_blank) with ARM processor support installed and minimum 1 GB free memory. QEMU runs on various plattforms and it can easily be installed using package managers.
+The workstation needs [QEMU](http://wiki.qemu.org/?target=_blank) with ARM processor support installed and a minimum of 1 GiB of free memory. QEMU runs on various platforms and can easily be installed using package managers.
 
 Debian and Ubuntu:
 
@@ -30,7 +30,7 @@ qemu-system-arm -version
 ```
 
 ## Download and unpack prebuilt images 
-If you have already [built a Yocto image with Mender](../../Artifacts/Building-Mender-Yocto-image), please move on to the [next section](#run-the-image-in-qemu). If you don't have any images to test, you can download our latest builds which contains the neccessary images for testing. It will also contain images for BeagleBone.
+If you have already [built a Yocto Project image with Mender](../../Artifacts/Building-Mender-Yocto-image), please move on to the [next section](#run-the-image-in-qemu). If you don't have any images to test, you can download our latest build which contains the necessary images for testing. It will also contain images for BeagleBone Black.
 
 ```
 mkdir mender
@@ -64,7 +64,8 @@ cd vexpress-qemu
 /bin/sh mender-qemu.sh
 ```
 
-This will take you to the login prompt. Above the prompt you should see a welcome message like:
+This will take you to the login prompt. Above the prompt you should see a welcome message similar
+to this:
 
 > "Poky (Yocto Project Reference Distro) 2.0.2 vexpress..."
 
@@ -72,9 +73,7 @@ You can login with user *root*. No password is required.
 
 ## Serve a rootfs image for the QEMU machine
 
-To deploy a new rootfs to the QEMU machine, we first start a http server on our workstation to serve the image.
-
-While you are in a directiory with a rootfs image (e.g. ```core-image-full-cmdline-vexpress-qemu.ext3```) on your workstation, start a simple Python webserver that will serve your new image to the QEMU machine.
+To deploy a new rootfs to the QEMU machine, you need to start a http server on your workstation to serve the image. Open a new shell on your workstation and change into the vexpress-qemu directory. There you will find an update image named ```core-image-full-cmdline-vexpress-qemu.ext3```. Start a simple Python webserver in that directory, like so:
 
 ```
 python -m SimpleHTTPServer
@@ -89,7 +88,7 @@ To deploy the new image to your QEMU machine, go to its terminal and run the fol
 mender -rootfs http://10.0.2.2:8000/core-image-full-cmdline-vexpress-qemu.ext3
 ```
 
-Mender will download the new image, write it to the inactive rootfs partition and configure the bootloader to boot into it on the next reboot. This should take about 2 minutes to complete.
+Mender will download the new image, write it to the inactive rootfs partition and configure the bootloader to boot into it on the next boot. This should take about 2 minutes to complete.
 
 To run the updated rootfs image, simply reboot your QEMU machine:
 
