@@ -22,6 +22,8 @@ Detailed instructions and recipes needed for building a self-contained image fol
 
 ##Dependencies
 
+! Note that we assume the Yocto Project's **master branches** used below. *Building meta-mender on older releases of the Yocto Project will likely not work seamlessly.* As an exception, if you are using the Yocto Poroject Daisy (1.6) release you can build using the `daisy` branch in `poky` and `meta-mender` below (as [meta-mender has a daisy branch](https://github.com/mendersoftware/meta-mender/tree/daisy)).
+
 The *meta-mender* layer depends on the following repositories:
 
 ```
