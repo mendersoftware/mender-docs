@@ -38,7 +38,7 @@ tar -zxvf mmJoxs
 ```
 
 ## Write the disk image to the SD card
-The sdimg image is a partitioned image that can be written directly to the SD card. For more information about the exact content of the image and detailed information about the partition layout, please see [sdimg](https://github.com/mendersoftware/meta-mender/blob/master/classes/sdimg.bbclass?target=_blank) class documentation</a>.
+The sdimg image is a partitioned image that can be written directly to the SD card.
 
 !! Be careful! If you point to the wrong device when executing the command below, you risk overwriting your workstation's local or connected storage devices.
 
