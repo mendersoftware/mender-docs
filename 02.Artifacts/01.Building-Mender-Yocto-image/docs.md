@@ -86,14 +86,14 @@ by QEMU or a BeagelBone Black.
 For QEMU, add these lines to the start of ```conf/local.conf```:
 
 ```
-INHERIT += "mender-install"
+INHERIT += "mender-full"
 MACHINE = "vexpress-qemu"
 ```
 
 For the BeagleBone Black, add these lines:
 
 ```
-INHERIT += "mender-install"
+INHERIT += "mender-full"
 MACHINE = "beaglebone"
 ```
 
