@@ -10,11 +10,15 @@ This document outlines the steps needed to build a [Yocto Project](https://www.y
 
 ## What is *meta-mender*?
 
-[meta-mender](https://github.com/mendersoftware/meta-mender) is a layer that enables the creation of a Yocto Project image where the Mender client is part of the image. With Mender installed on the image, you can deploy image updates and benefit from features like automatic roll-back, remote management, logging and reporting. The *meta-mender* layer contains all the recipes required to build the Mender Go binary as a part of the Yocto Project image. It currently supports cross-compiling Mender for ARM devices using Go 1.6.
+[meta-mender](https://github.com/mendersoftware/meta-mender) is a layer that enables the creation of a Yocto Project image where the Mender client is part of the image. With Mender installed and configured on the image, you can deploy image updates and benefit from features like automatic roll-back, remote management, logging and reporting. The *meta-mender* layer contains all the recipes required to build the Mender Go binary and configure the Yocto Project image.
 
-In order to support reliable deployments and rollback, Mender requires the
-[bootloader and partition layout](../../Getting-started/System-requirements#device-partitioning) set up in a specific way. Using Yocto Project makes this integration easier, as the *meta-mender* layer automatically handles all the requirements for building a complete image containing all the required
-dependencies and configuration. If you are already using Yocto Project in your environment, including this meta layer makes it easy to enable update deployments.
+The *meta-mender* layer takes care of:
+
+* Cross-compiling Mender for ARM devices using Go 1.6.
+* [Partitioning the image correctly](../../Getting-started/System-requirements#device-partitioning).
+* [Setting up the U-Boot bootloader to support Mender](../Integrating-with-U-Boot).
+
+Each one of these steps can be configured further, see the linked sections for more details.
 
 Detailed instructions and recipes needed for building a self-contained image follow.
 
@@ -86,14 +90,14 @@ by QEMU or a BeagelBone Black.
 For QEMU, add these lines to the start of ```conf/local.conf```:
 
 ```
-INHERIT += "mender-install"
+INHERIT += "mender-full"
 MACHINE = "vexpress-qemu"
 ```
 
 For the BeagleBone Black, add these lines:
 
 ```
-INHERIT += "mender-install"
+INHERIT += "mender-full"
 MACHINE = "beaglebone"
 ```
 
