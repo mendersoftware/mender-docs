@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-# How to integrate with U-Boot
+## How to integrate with U-Boot
 
 When a device boots, it needs to decide from where to boot, and this depends on
 which partitions have received which updates. Mender comes with special boot
