@@ -4,14 +4,14 @@ taxonomy:
     category: docs
 ---
 
-# How to integrate with U-Boot
+## How to integrate with U-Boot
 
 When a device boots, it needs to decide from where to boot, and this depends on
 which partitions have received which updates. Mender comes with special boot
-code prepared for U-Boot, which will handle selection of boot partition
-automatically, as well as rollback logic.
+code prepared for U-Boot which selects the boot partition
+automatically, as well as handling the rollback logic.
 
-In order to utilize this, when building with Yocto you need to inherit either
+In order to utilize this, when building with Yocto Project you need to inherit either
 the `mender-full` class, or the `mender-uboot` class (the former enables all
 required features for Mender and implicitly inherits the latter). For example in
 your `local.conf`:
@@ -22,9 +22,9 @@ INHERIT += "mender-full"
 
 This enables the Mender U-Boot boot code.
 
-However, the are so many ways to boot different devices, that there is no way is
+However, the are so many ways to boot different devices, that there is no way this
 integration can be fully automatic. Therefore Mender provides special
-integration points for your existing boot code to hook into, so that Mender can
+integration points for your existing boot code to hook into so that Mender can
 be a part of the normal boot process. These integration points, along with
 certain required U-Boot features and configuration options, allow Mender to do
 safe, automatic updates of the device, with rollback support.
@@ -138,9 +138,9 @@ There are also a few other details that need to be in place for Mender to work.
 1. In a Mender based configuration, the kernel is loaded from the rootfs
    partition, not from the boot partition. This is in order to make a complete
    upgrade possible, including the kernel. Usually, in a boot partition, the
-   kernel is stored in the root, but on a rootfs partition, it is usually stored
+   kernel is stored in the root, but on a rootfs partition it is usually stored
    in `/boot`. Therefore, paths that refer to the location of the kernel need to
-   be updated to point to this location. This is usually the case for dtb, fdt
+   be updated to point to this location. This is usually the case for the device tree
    and initrd files as well, if the kernel has those. For instance:
 
    ```
@@ -156,7 +156,7 @@ There are also a few other details that need to be in place for Mender to work.
    ```
 
 2. Because the kernel and associated files are loaded from a rootfs partition,
-   it will in the majority of cases be an ext3 or ext4 partition. If the
+   in the majority of cases it will be an ext3 or ext4 partition. If the
    existing boot code for the board uses the `fatload` command to load the
    kernel and/or any associated files, it will need to be changed, since the
    rootfs is usually not a FAT partition. We recommend that it is replaced
