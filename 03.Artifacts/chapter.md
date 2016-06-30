@@ -1,5 +1,5 @@
 ---
-title: Artifacts
+title: Creating artifacts
 taxonomy:
     category: docs
 ---
