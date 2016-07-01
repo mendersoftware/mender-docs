@@ -12,14 +12,13 @@ This diagram shows the flow of data involved in deploying software updates.
 The process begins with the **software build system** generating a new version of software for a device.
 The software build system is a standard component, such as Yocto Project.
 It creates **build artifacts** in the format required by the target device.
-The build artifacts are digitally signed so that they can be verified later on.
 There will be different build artifacts for each type of device being managed.
 
 The build artifacts are passed to the Mender **Management Server**, which is the central point for deploying updates to a population of devices.
 Among other things, it monitors the current software version that is installed on each device and schedules the rollout of new releases.
 
-Finally, each **Device** runs a copy of the Mender **update agent**, which polls the Management Server from time to time to report its status and to discover if there is a software update waiting.
-If there is, the update agent downloads and installs it.
+Finally, each **Device** runs a copy of the Mender **update client**, which polls the Management Server from time to time to report its status and to discover if there is a software update waiting.
+If there is, the update client downloads and installs it.
 
 In the current implementation, only devices running embedded Linux are supported.
 Other operating systems will be added later on.
@@ -46,14 +45,14 @@ When Linux boots, it will be told by the bootloader which partitions to use.
 ![Partition A active](update-active-a.png)
 
 When an image is updated, the new version it is written to the inactive partition.
-When complete, the checksum and digital signatures are checked, and if all is well, a flag is set in the bootloader that will cause it to to flip the active and inactive partitions around on next reboot.
-Then the system resets.
+When complete, the checksum is verified. If all is well, a flag is set in the bootloader that will cause it to to flip the active and inactive partitions around on next reboot.
+Then the system reboots.
 
 ![Partition B active](update-active-b.png)
 
 ## Commit and rollback
 
-On the first boot into Linux following an update, the update agent will **commit** the update. This sets a flag in the bootloader that indicates that the operating system booted correctly.
+On the first boot into Linux following an update, the update client will **commit** the update. This sets a flag in the bootloader that indicates that the operating system booted correctly.
 
 If something causes the device to reboot before committing the update, the bootloader knows that something went wrong, and will **roll back** to the previous version by flipping the active and inactive partitions back again.
 
