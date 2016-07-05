@@ -8,7 +8,7 @@ Mender is an **open source** remote updater for embedded Linux devices.
 
 The aim of the project is to help secure connected devices by providing a **safe** and **reliable** software update process.
 
-As an open source project we welcome contributions. Find out more about how to contribute at [mender.io/open-source](https://mender.io/open-source?target=_blank).
+As an open source project we welcome contributions. Find out more about how to contribute at [mender.io/community](https://mender.io/community?target=_blank).
 
 
 ## What problem does Mender solve?
