@@ -79,13 +79,20 @@ To deploy a new rootfs to the QEMU machine, you need to start a http server on y
 python -m SimpleHTTPServer
 ```
 
-!!! By default the QEMU machine can reach your workstation on IP address 10.0.2.2 and SimpleHTTPServer starts on port 8000, so your QEMU machine should now be able to access your workstation's directory at ```http://10.0.2.2:8000/```.
+!!! By default the QEMU machine can reach your workstation on IP address 10.0.2.2 and SimpleHTTPServer starts on port 8000, so your QEMU machine should now be able to access your workstation's directory at ```http://10.0.2.2:8000/```, while you can test it from a browser at [http://localhost:8000](http://localhost:8000).
 
 ## Deploy the new rootfs to the QEMU machine with Mender
-To deploy the new image to your QEMU machine, go to its terminal and run the following command:
+
+In your QEMU machine's terminal, test the connection to the workstation with:
 
 ```
-mender -rootfs http://10.0.2.2:8000/core-image-full-cmdline-vexpress-qemu.ext3
+ping 10.0.2.2
+```
+
+To deploy the new image to your QEMU machine, run the following command in its terminal:
+
+```
+mender -log-level info -rootfs http://10.0.2.2:8000/core-image-full-cmdline-vexpress-qemu.ext3
 ```
 
 Mender will download the new image, write it to the inactive rootfs partition and configure the bootloader to boot into it on the next boot. This should take about 2 minutes to complete.

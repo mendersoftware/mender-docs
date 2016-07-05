@@ -75,15 +75,22 @@ To deploy a new rootfs to the BeagleBone Black, you need to start a http server 
 python -m SimpleHTTPServer
 ```
 
-!!! SimpleHTTPServer starts on port 8000, but the IP address depends on the network setup between the BeagleBone Black and your workstation. You can find the IP address by using tools like ```ifconfig``` on your workstation. We will assume the BeagleBone Black can reach your workstation's web server on ```http://<IP-OF-WORKSTATION>:8000/```.
+!!! SimpleHTTPServer starts on port 8000, but the IP address depends on the network setup between the BeagleBone Black and your workstation. You can find the IP address by using tools like ```ifconfig``` on your workstation. We will assume the BeagleBone Black can reach your workstation's web server on ```http://<IP-OF-WORKSTATION>:8000/```, while you can test it from a browser at [http://localhost:8000](http://localhost:8000).
 
 ## Deploy the new rootfs to the BeagleBone Black with Mender
 
-To deploy the new image to your BeagleBone Black, go to its terminal and run the following command:
+
+In your BeagleBone Black's terminal, test the connection to the workstation with:
+
+```
+ping <IP-OF-WORKSTATION>
+```
+
+To deploy the new image to your BeagleBone Black, run the following command in its terminal:
 
 
 ```
-mender -rootfs http://<IP-OF-WORKSTATION>:8000/core-image-base-beaglebone.ext3
+mender -log-level info -rootfs http://<IP-OF-WORKSTATION>:8000/core-image-base-beaglebone.ext3
 ```
 
 Mender will download the new image, write it to the inactive rootfs partition and configure the bootloader to boot into it on the next reboot. This should take about 2 minutes to complete.
