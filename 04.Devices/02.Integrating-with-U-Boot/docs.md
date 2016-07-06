@@ -162,3 +162,64 @@ There are also a few other details that need to be in place for Mender to work.
    rootfs is usually not a FAT partition. We recommend that it is replaced
    simply with `load`, since it will work in both cases, but it can also be
    replaced with either `ext2load` or `ext4load` if desired.
+
+
+## Forks of U-boot
+
+If the project is using a fork of U-Boot, some additional steps may be
+required:
+
+1. Mender has a dependency on `u-boot`, but the project's U-Boot likely has
+   another name, therefore it is important to mark the project's fork as a
+   component that provides `u-boot`. The example below shows how to add the
+   needed directives in the `.bb` file of the U-Boot fork.
+
+   ```
+   PROVIDES += "u-boot"
+   RPROVIDES_${PN} += "u-boot"
+   ```
+
+2. In the machine section of the board in question, the actual u-boot
+   implementation must be selected using `PREFERRED_PROVIDER`, like this:
+
+   ```
+   PREFERRED_PROVIDER_u-boot = "u-boot-my-fork"
+   ```
+
+   Many machine configurations will probably have this in their setup already.
+
+3. The recipe needs to include `u-boot-mender.inc`, in order to incorporate the
+   patches needed for Mender to work:
+
+   ```
+   require recipes-bsp/u-boot/u-boot-mender.inc
+   ```
+
+### u-boot-fw-utils
+
+Mender depends on userspace tools provided by `u-boot-fw-utils`. This is a
+standard component in Yocto, but if using a U-Boot fork, this may need to be
+added manually. If it doesn't already exist, the most straightforward approach
+is to start with the `meta/recipes-bsp/u-boot/u-boot-fw-utils_*.bb` recipe found
+in Yocto, and then make the necessary changes in the same fashion as done for
+the main `u-boot` recipe. The two recipes should use identical source code
+(e.g. the same patches applied).
+
+Like with `u-boot`, `u-boot-fw-utils` should contain sections to define what it
+provides, and that it is the preferred provider.
+
+1. In the recipe, there should be:
+
+   ```
+   PROVIDES += "u-boot-fw-utils"
+   RPROVIDES_${PN} += "u-boot-fw-utils"
+   ```
+
+2. And in the machine section of the board:
+
+   ```
+   PREFERRED_PROVIDER_u-boot-fw-utils = "u-boot-fw-utils-my-fork"
+   ```
+
+3. And finally, `u-boot-mender.inc` needs to included using `require`, as for
+   `u-boot`.
