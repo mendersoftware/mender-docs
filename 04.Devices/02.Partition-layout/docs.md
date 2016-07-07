@@ -23,7 +23,8 @@ When [building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yoc
 
 | Mount point | Purpose                                                 | Default size | Variable to configure size |
 |-------------|---------------------------------------------------------|--------------|----------------------------|
-| `/boot`     | Store the bootloader.                                   | 16 MB        | `SDIMG_BOOT_PART_SIZE_MB`  |
+| `/`         | Store the root filesystem and kernel.                   | N/A          | `IMAGE_ROOTFS_SIZE`        |
+| `/uboot`    | Store the bootloader.                                   | 16 MB        | `SDIMG_BOOT_PART_SIZE_MB`  |
 | `/data`     | Store persistent data, preserved during Mender updates. | 128 MB       | `SDIMG_DATA_PART_SIZE_MB`  |
 
 
