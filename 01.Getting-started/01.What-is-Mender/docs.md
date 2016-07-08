@@ -6,7 +6,7 @@ taxonomy:
 
 Mender is an **open source** remote updater for embedded Linux devices.
 
-The aim of the project is to help secure connected devices by providing a **safe** and **reliable** software update process.
+The aim of the project is to help secure connected devices by providing a **robust** and **secure** software update process.
 
 As an open source project we welcome contributions. Find out more about how to contribute at [mender.io/community](https://mender.io/community?target=_blank).
 
@@ -24,8 +24,8 @@ Remote updates also require a means of secure communication with each device.
 ## Trying Mender
 
 We have two tutorials that show you how Mender works. Each demonstrates how to use Mender to update the root filesystem of a target device.
-The first uses QEMU to create an emulated device, which is handy becasue it means that you do not have to configure any hardware.
-The second tutorial uses real hardware in the form of the popular BeagleBone Black development board.
+The first uses [QEMU to create an emulated device](../../Getting-started/Your-first-update-on-qemu), which is handy becasue it means that you do not have to configure any hardware.
+The second tutorial uses real hardware in the form of the popular [BeagleBone Black development board](../../Getting-started/Your-first-update-on-BeagleBone).
 
 ### Using these docs
 

@@ -4,6 +4,10 @@ taxonomy:
     category: docs
 ---
 
+In order to support rootfs rollback, Mender requires integration with U-Boot.
+This page explains how to integrate U-Boot in your existing Yocto Project
+build environment with Mender.
+
 ## How to integrate with U-Boot
 
 When a device boots, it needs to decide from where to boot, and this depends on

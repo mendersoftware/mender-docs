@@ -14,7 +14,7 @@ The workstation needs [QEMU](http://wiki.qemu.org/?target=_blank) with ARM proce
 Debian and Ubuntu:
 
 ```
-apt-get install qemu-system-arm
+sudo apt-get install qemu-system-arm
 ```
 
 Red Hat, CentOS and Fedora:
@@ -23,11 +23,6 @@ Red Hat, CentOS and Fedora:
 yum install qemu-system-arm
 ```
 
-To verify that QEMU is correctly installed, check its version with:
-
-```
-qemu-system-arm -version
-```
 
 ## Download and unpack prebuilt images 
 If you have already [built a Yocto Project image with Mender](../../Artifacts/Building-Mender-Yocto-image), please move on to the [next section](#run-the-image-in-qemu). If you don't have any images to test, you can download our latest build which contains the necessary images for testing. It will also contain images for BeagleBone Black.
