@@ -6,11 +6,17 @@ taxonomy:
 
 ##Overview
 
-In order to support robust rollback, Mender requires the device to have a certain partition layout. At least four different partitions are required, one of which is the boot partition, two partitions where both the kernel and rootfs are stored, and one which holds user data.
+In order to support robust rollback, Mender requires the device to have a certain partition layout.
+At least four different partitions are needed:
+* one boot partition, containing the U-Boot bootloader and its environment
+* two partitions for storing the root filesystem and kernel. The kernel image file, zImage, and any device tree binary should be stored in directory /boot
+* one for persistent data
 
-One of the partitions will be used as active partition, from which the kernel and rootfs will be booted, the second one will be used by the update mechanism to write the updated image. The second of these two partitions is referred to as the "inactive" partition.
+One of the rootfs and kernel partitions will be marked as the *active* partition, from which the kernel and rootfs will be booted.
+The other, called the *inactive* partition, will be used by the update mechanism to write the updated image.
+After an update their roles are swapped.
 
-The user data partition stores persistent data, so this does not get overwritten during an update.
+The persistent data partition stores data that needs to be preserved through an update.
 
 A sample partition layout is shown below:
 
