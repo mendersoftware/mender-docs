@@ -93,7 +93,8 @@ For QEMU, add these lines to the start of ```conf/local.conf```:
 INHERIT += "mender-full"
 MACHINE = "vexpress-qemu"
 DISTRO_FEATURES_append = " systemd"
-VIRTUAL-RUNTIME_init_manager = "systemd" DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
+VIRTUAL-RUNTIME_init_manager = "systemd"
+DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 VIRTUAL-RUNTIME_initscripts = ""
 ```
 
@@ -103,7 +104,8 @@ For the BeagleBone Black, add these lines:
 INHERIT += "mender-full"
 MACHINE = "beaglebone"
 DISTRO_FEATURES_append = " systemd"
-VIRTUAL-RUNTIME_init_manager = "systemd" DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
+VIRTUAL-RUNTIME_init_manager = "systemd"
+DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 VIRTUAL-RUNTIME_initscripts = ""
 ```
 
