@@ -27,33 +27,38 @@ yum install qemu-system-arm
 ## Download and unpack prebuilt images 
 If you have already [built a Yocto Project image with Mender](../../Artifacts/Building-Mender-Yocto-image), please move on to the [next section](#run-the-image-in-qemu). If you don't have any images to test, you can download our latest build which contains the necessary images for testing. It will also contain images for BeagleBone Black.
 
+Download the latest Mender build:
+
 ```
-mkdir mender
-cd mender
 wget https://goo.gl/mmJoxs
 ```
 
 Unpack the tarball:
 
 ```
-tar -zxvf mmJoxs
-
-  vexpress-qemu/u-boot.elf
-  vexpress-qemu/core-image-full-cmdline-vexpress-qemu.sdimg
-  vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext3
-  vexpress-qemu/mender-qemu.sh
-  beaglebone/core-image-base-beaglebone.ext3
-  beaglebone/core-image-base-beaglebone.sdimg
-  BUILD
-  README
+tar zxvf mmJoxs
 ```
+
+You should see the files being unpacked:
+
+> mender/  
+> mender/beaglebone/  
+> mender/beaglebone/core-image-base-beaglebone.ext3  
+> mender/beaglebone/core-image-base-beaglebone.sdimg  
+> mender/README  
+> mender/vexpress-qemu/  
+> mender/vexpress-qemu/mender-qemu.sh  
+> mender/vexpress-qemu/u-boot.elf  
+> mender/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext3  
+> mender/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.sdimg  
+> mender/BUILD  
 
 
 ## Run the image in QEMU
 Run the image in QEMU by running the following commands:
 
 ```
-cd vexpress-qemu
+cd mender/vexpress-qemu
 ```
 ```
 /bin/sh mender-qemu.sh
