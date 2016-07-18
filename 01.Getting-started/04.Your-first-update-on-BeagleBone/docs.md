@@ -106,7 +106,7 @@ reboot
 
 Your device should boot into the updated rootfs, and a welcome message like this should greet you:
 
->"This system has been updated by Mender build 376 compiled on..."
+> "This system has been updated by Mender build..."
 
 **Congratulations!** You have just deployed your first rootfs image with Mender! To deploy another update, simply follow the same steps again.
 
