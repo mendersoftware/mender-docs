@@ -14,28 +14,31 @@ Your workstation must be on the same subnet as the BeagleBone Black. For example
 ## Download and unpack prebuilt images 
 If you have already [built an image which includes Mender](../../Artifacts/Building-Mender-Yocto-image), please move on to [next section](#write-the-disk-image-to-the-sd-card). If you do not have any images to test, you can download our latest builds which contains the necessary images for testing. It will also contain images for QEMU.
 
-On your machine, type:
+Download the latest Mender build:
 
 ```
-mkdir mender
-cd mender
 wget https://goo.gl/mmJoxs
 ```
 
-Unpack the files from the download above:
+Unpack the tarball:
 
 ```
-tar -zxvf mmJoxs
-
-  vexpress-qemu/u-boot.elf
-  vexpress-qemu/core-image-full-cmdline-vexpress-qemu.sdimg
-  vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext3
-  vexpress-qemu/mender-qemu.sh
-  beaglebone/core-image-base-beaglebone.ext3
-  beaglebone/core-image-base-beaglebone.sdimg
-  BUILD
-  README
+tar zxvf mmJoxs
 ```
+
+You should see the files being unpacked:
+
+> mender/  
+> mender/beaglebone/  
+> mender/beaglebone/core-image-base-beaglebone.ext3  
+> mender/beaglebone/core-image-base-beaglebone.sdimg  
+> mender/README  
+> mender/vexpress-qemu/  
+> mender/vexpress-qemu/mender-qemu.sh  
+> mender/vexpress-qemu/u-boot.elf  
+> mender/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext3  
+> mender/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.sdimg  
+> mender/BUILD  
 
 ## Write the disk image to the SD card
 The sdimg image is a partitioned image that can be written directly to the SD card.
@@ -103,7 +106,7 @@ reboot
 
 Your device should boot into the updated rootfs, and a welcome message like this should greet you:
 
->"This system has been updated by Mender build 376 compiled on..."
+> "This system has been updated by Mender build..."
 
 **Congratulations!** You have just deployed your first rootfs image with Mender! To deploy another update, simply follow the same steps again.
 
