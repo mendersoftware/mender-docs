@@ -55,8 +55,8 @@ these should be enabled in the board support headers in U-Boot, under
    turned off.
 
 4. `FAT_ENV_INTERFACE`, `FAT_ENV_DEVICE`, `FAT_ENV_PART` and
-   `FAT_ENV_DEVICE_AND_PART` should be removed from the configuration. They will
-   be automatically defined by Mender.
+   `FAT_ENV_DEVICE_AND_PART` should be removed from the configuration if they
+   are present. They will be automatically defined by Mender.
 
 
 ## Integration points
