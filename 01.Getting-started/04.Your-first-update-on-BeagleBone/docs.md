@@ -111,3 +111,12 @@ Your device should boot into the updated rootfs, and a welcome message like this
 **Congratulations!** You have just deployed your first rootfs image with Mender! To deploy another update, simply follow the same steps again.
 
 !!! Behind the scenes the Mender daemon comes up after a successful boot into the updated partition and runs `mender -commit`. This configures the bootloader to persistently boot from this updated rootfs partition. However, if the boot fails before the Mender daemon comes up, it will boot into the previous rootfs partition that is known to be working (where we deployed the update from). This ensures strong reliability in form of a rollback in cases where the newly deployed rootfs does not boot correctly for any reason.
+
+## Next steps
+
+Now that you have seen how Mender works with QEMU, you might be wondering what
+it would take to port it to your own platform. The first place to go is
+[Device configuration](../../Devices), where you will find out how to integrate
+the Mender client with your device software, and then look at
+[Creating artifacts](../../Artifacts) to see how to build images ready to be
+deployed over the network to your devices.
