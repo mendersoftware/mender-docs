@@ -4,20 +4,20 @@ taxonomy:
     category: docs
 ---
 
-In order to ensure that the necessary components for Mender have been configured correctly, the checklist in this chapter can be used to verify each of them in turn. Use this once all components have been built successfully, and the device has booted correctly.
+In order to ensure that the necessary components for Mender have been configured correctly, use this checklist to verify each of them in turn. Use this when all components have been built successfully, and the device has booted correctly.
 
 ## What is verified
 
-What the checklist will do is to verify some key functionality aspects of the Mender integration. The criteria is:
+This checklist will verify some key functionality aspects of the Mender integration. It will verify that:
 
 1. u-boot-fw-utils tools are present on the device
-2. U-Boot the bootloader, and u-boot-fw-utils agree on format for the U-Boot environment. The format of the U-Boot environment is checksummed and highly board dependent, which is why this check is necessary.
-3. Correct kernel is loaded from partition A.
-4. Correct kernel is loaded from partition B.
-5. Correct rootfs is mounted when partition A is active.
-6. Correct rootfs is mounted when partition B is active.
-7. Rollback works.
-8. Mender is started as a service.
+2. the U-Boot bootloader and u-boot-fw-utils agree on the format for the U-Boot environment. The format of the U-Boot environment is checksummed and highly board dependent, which is why this check is necessary
+3. the correct kernel is loaded from partition A
+4. the orrect kernel is loaded from partition B
+5. the correct rootfs is mounted when partition A is active
+6. the orrect rootfs is mounted when partition B is active
+7. rollback works
+8. the Mender daemon is started as a service
 
 ## The steps
 
