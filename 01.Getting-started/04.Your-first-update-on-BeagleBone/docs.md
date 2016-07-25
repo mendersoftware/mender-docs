@@ -17,13 +17,13 @@ If you have already [built an image which includes Mender](../../Artifacts/Build
 Download the latest Mender build:
 
 ```
-wget https://goo.gl/mmJoxs
+wget https://s3-eu-west-1.amazonaws.com/yocto-builds/latest/latest.tar.gz
 ```
 
 Unpack the tarball:
 
 ```
-tar zxvf mmJoxs
+tar zxvf latest.tar.gz
 ```
 
 You should see the files being unpacked:
