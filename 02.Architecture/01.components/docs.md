@@ -1,5 +1,5 @@
 ---
-title: Theory of operation
+title: Overview
 taxonomy:
     category: docs
 ---
