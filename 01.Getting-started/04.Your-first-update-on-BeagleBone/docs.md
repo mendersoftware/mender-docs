@@ -116,7 +116,7 @@ Your device should boot into the updated rootfs, and a welcome message like this
 
 ## Next steps
 
-Now that you have seen how Mender works with QEMU, you might be wondering what
+Now that you have seen how Mender works with the BeagleBone Black, you might be wondering what
 it would take to port it to your own platform. The first place to go is
 [Device configuration](../../Devices), where you will find out how to integrate
 the Mender client with your device software, and then look at

@@ -15,7 +15,7 @@ This document outlines the steps needed to build a [Yocto Project](https://www.y
 The *meta-mender* layer takes care of:
 
 * Cross-compiling Mender for ARM devices using Go 1.6.
-* [Partitioning the image correctly](../../Devices/System-requirements#device-partitioning).
+* [Partitioning the image correctly](../../Devices/Partition-layout).
 * [Setting up the U-Boot bootloader to support Mender](../../Devices/Integrating-with-U-Boot).
 
 Each one of these steps can be configured further, see the linked sections for more details.
