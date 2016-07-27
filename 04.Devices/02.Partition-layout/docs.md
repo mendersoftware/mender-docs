@@ -23,6 +23,15 @@ A sample partition layout is shown below:
 ![Mender client partition layout](mender_client_partition_layout.png)
 
 
+##File system types
+
+When [building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image) the build output in `tmp/deploy/images/<MACHINE>` includes a binary rootfs file system image (e.g. with `.ext4` extension), as well as a complete disk image (with `.sdimg` extension). The binary rootfs file system images are used when deploying updates to the device, while the `.sdimg` image is typically used just once during initial device provisioning to flash the entire storage, and includes the partition layout and all partitions.
+
+In general Mender does not have dependencies on a specific file system type, except NAND-flash (non-MMC) storage is not yet supported, but the version of U-Boot you are using must support the file system type used for rootfs because it needs to read the Linux kernel from the file system and start the Linux boot process.
+
+The file system types Mender builds is based on your Yocto Project `IMAGE_FSTYPES` variable. As there is only one `.sdimg` file built, the rootfs file systems inside it will be the **first** file system you have in the `IMAGE_FSTYPES` variable.
+
+
 ##Configuring the partition sizes
 
 When [building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image) Mender defines and uses certain OpenEmbedded variables which are used to define the sizes of the partitions. They are defined in `meta-mender` under `classes/mender-sdimg.bbclass`.
