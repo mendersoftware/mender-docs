@@ -98,6 +98,8 @@ mender -log-level info -rootfs http://<IP-OF-WORKSTATION>:8000/core-image-base-b
 
 Mender will download the new image, write it to the inactive rootfs partition and configure the bootloader to boot into it on the next reboot. This should take about 2 minutes to complete.
 
+!!! The `mender -rootfs` option accepts http(s) URIs, as well as file paths. Thus you can also update from a file system file from local storage like a USB-stick or remotely-mounted storage like NFS by simply changing the path to the image accordingly.
+
 To run the updated rootfs image, simply reboot your BeagleBone Black:
 
 ```
