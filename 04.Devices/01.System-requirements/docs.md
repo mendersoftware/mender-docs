@@ -4,21 +4,15 @@ taxonomy:
     category: docs
 ---
 
-Mender is a client-server solution. Current version allows image based updates with automatic rollback if an update fails.
-
-## Client requirements
-
-The client needs to run on every device that you want to manage with Mender. 
-
-###Yocto Project
+##Yocto Project
 Although it is possible to compile and install Mender independently, we have optimized the installation experience for those who build their Linux images using [Yocto Project](https://www.yoctoproject.org?target=_blank).
 
-###Device capacity
+##Device capacity
 The client binaries, which are written in Go, are around 7 MiB in size. 
 
 Our reference board, the [BeagleBone Black](http://beagleboard.org/bone?target=_blank), comes with a 1 GHz ARM Cortex-A8 processor, with 512 MiB of RAM. We use these boards in our continuous integration process.
 
-###Bootloader support
+##Bootloader support
 Mender integrates with the bootloader of the device. Currently we support the popular [U-Boot](http://www.denx.de/wiki/view/DULG/UBootBootCountLimit?target=_blank). Besides any special configuration to support the device, U-Boot needs to be compiled and used with the following features:
 
 * [Boot Count Limit](http://www.denx.de/wiki/view/DULG/UBootBootCountLimit?target=_blank). It enables specific actions to be triggered when the boot process fails a certain amount of attempts.
@@ -29,13 +23,10 @@ Support for modifying U-Boot variables from userspace is also required so that f
 
 Please see [Integrating with U-Boot](../Integrating-with-U-Boot) for more information.
 
-###Kernel support
+##Kernel support
 While Mender itself does not have any specific kernel requirements beyond what a normal Linux kernel provides, it relies on systemd, which does have one such requirement: The `CONFIG_FHANDLE` feature must be enabled in the kernel. The symptom if this feature is unavailable is that systemd hangs during boot looking for device files.
 
-###Partition layout
+If you solely want to run Mender manually, you can avoid this dependecy by [disabling Mender as a system service](../Customizations#disabling-mender-as-a-system-service) .
+
+##Partition layout
 Please see [Partition layout](../Partition-layout/).
-
-
-## Server requirements
-
-The server consists of various backend services to be installed locally. These services have not yet been released, but they are designed as micro-services with a polling mechinism so the server requirements will depend greatly on the number of devices that is managed.

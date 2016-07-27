@@ -84,6 +84,8 @@ bitbake-layers add-layer ../meta-mender
 bitbake-layers add-layer ../oe-meta-go
 ```
 
+!!! The configuration in `conf/local.conf` below will create a build that runs the Mender client as a `systemd` service. It is also possible to solely relying on running Mender manually from the command-line or a custom script. See the [section on customizations](../../Devices/Customizations#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
+
 We can generate a mender test build for one of two machines: a target emulated
 by QEMU or a BeagelBone Black.
 
