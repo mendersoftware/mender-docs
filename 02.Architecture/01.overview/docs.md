@@ -23,6 +23,16 @@ If there is, the update client downloads and installs it.
 In the current implementation, only devices running embedded Linux are supported.
 Other operating systems will be added later on.
 
+!!! The Mender server is still in active development and not yet published as open source. If you would like early access please contact us at <contact@mender.io>.
+
+## Modes of operation
+
+It is possible to run the Mender update client in manual or automated daemon mode.
+
+When run in manual mode, the deployments are triggered (`mender -rootfs`), rebooted into (`reboot`) and made persistent (`mender -commit`) manually from the command line at the device or through some custom integration like a script. Any http(s) server or file path can be used to serve the artifacts. If you wish to run Mender in manual mode, you can [disable Mender as a system service](../../Devices/Customizations#disabling-mender-as-a-system-service).
+
+When running Mender in daemon mode, the daemon will regularly poll the server, automatically apply updates, reboot, report and commit the update. This is the best way to run Mender for most large-scale deployments, as the deployments are centrally managed across many devices, but it requires the Mender server.
+
 ## Types of artifact
 
 Embedded devices almost universally use flash memory for storage.
