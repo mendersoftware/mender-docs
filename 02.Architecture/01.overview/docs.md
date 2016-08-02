@@ -4,8 +4,7 @@ taxonomy:
     category: docs
 ---
 
-Let's start with a very high level view of the system.
-This diagram shows the flow of data involved in deploying software updates.
+The following diagram shows the high level flow of data involved in deploying software updates.
 
 ![Top level components](updater-components.png)
 
