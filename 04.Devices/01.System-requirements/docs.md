@@ -7,6 +7,8 @@ taxonomy:
 ##Yocto Project
 Although it is possible to compile and install Mender independently, we have optimized the installation experience for those who build their Linux images using [Yocto Project](https://www.yoctoproject.org?target=_blank).
 
+Mender's meta layer, [meta-mender](https://github.com/mendersoftware/meta-mender), has several branches that map to given releases of the Yocto Project (e.g. krogoth). However, note that Mender is tested and maintained against the **latest branch of the Yocto Project** only (krogoth at the time of writing). Older branches for the Yocto Project are still kept in [meta-mender](https://github.com/mendersoftware/meta-mender), but they might not work seamlessly as they are not continiously tested by Mender. We appreciate [community contributions](https://mender.io/community) to help maintain older branches! If you would like commercial support for a certain branch, please contact us at <contact@mender.io>.
+
 ##Device capacity
 The client binaries, which are written in Go, are around 7 MiB in size. 
 

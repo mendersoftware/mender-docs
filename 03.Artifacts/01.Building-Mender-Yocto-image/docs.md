@@ -26,16 +26,16 @@ Detailed instructions and recipes needed for building a self-contained image fol
 
 ##Dependencies
 
-! Note that we assume the Yocto Project's **master branches** used below. *Building meta-mender on older releases of the Yocto Project will likely not work seamlessly.* As an exception, if you are using the Yocto Poroject Daisy (1.6) release you can build using the `daisy` branch in `poky` and `meta-mender` below (as [meta-mender has a daisy branch](https://github.com/mendersoftware/meta-mender/tree/daisy)).
+! We use the Yocto Project's **krogoth** branch below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy), but these branches are no longer maintained by Mender developers.
 
 The *meta-mender* layer depends on the following repositories:
 
 ```
 URI: git://git.yoctoproject.org/poky
-branch: master
+branch: krogoth
 
 URI: git://github.com/mendersoftware/meta-mender
-branch: master
+branch: krogoth
 
 URI: git://github.com/mem/oe-meta-go
 branch: master
@@ -46,7 +46,7 @@ branch: master
 First, we need to clone the latest Yocto Project source:
 
 ```
-git clone git://git.yoctoproject.org/poky
+git clone -b krogoth git://git.yoctoproject.org/poky
 ```
 
 Having done that, we can clone the meta-mender and oe-meta-go layers into the top level
@@ -55,12 +55,16 @@ of the Yocto Project build tree (in directory poky):
 ```
 cd poky
 ```
+
+!! There is a bug in the current Yocto Project's krogoth branch that impairs the use of systemd. The issue is fixed but not backported to the krogoth branch. We have [created a patch to backport the systemd fix](http://lists.openembedded.org/pipermail/openembedded-core/2016-July/124102.html) but it has not yet been merged by the maintainers. In the meanwhile you will need to apply these two patches on top of the krogoth branch yourself. This can be done with `git cherry-pick -x fd36a447d0da53e713d992b17ce86dd31ea63c67` and `git cherry-pick -x 79be110c1fdfd0affe6a310b96e7107c4549d23c`.
+
 ```
-git clone git://github.com/mendersoftware/meta-mender
+git clone -b krogoth git://github.com/mendersoftware/meta-mender
 ```
 ```
 git clone git://github.com/mem/oe-meta-go
 ```
+
 
 Next, we initialize the build environment:
 
@@ -136,7 +140,7 @@ After a successful build, the images and build artifacts are placed in `tmp/depl
 ../meta-mender/scripts/mender-qemu
 ```
 
-You can log in as *root* without password. To test how to deploy a rootfs update in QEMU, please read [Getting started - Your first update on QEMU](../../Getting-started/Your-first-update-on-qemu#serve-a-rootfs-image-for-the-qemu-machine).
+You can log in as *root* without password. To test how to deploy a rootfs update in QEMU, please read [Getting started - Your first update on QEMU](../../Getting-started/Your-first-update-on-qemu#serve-a-rootfs-image-for-the-qemu-machine). Optionally, if you want to modify the rootfs image prior to deploying it, see [modifying a rootfs image](#modifying-a-rootfs-image).
 
 ### For BeagleBone Black
 
@@ -156,4 +160,30 @@ page](https://www.yoctoproject.org/downloads/bsps/krogoth21/beaglebone).
 
 Like for QEMU, please be aware that your first Yocto Project build can take several hours.
 
-After a successful build, the images and build artifacts are placed in `tmp/deploy/images/beaglebone/`. To write your new image to the SD card and test how to deploy a rootfs update on BeagleBone Black, please read [Getting started - Your first update on BeagleBone Black](../../Getting-started/Your-first-update-on-BeagleBone#write-the-disk-image-to-the-sd-card).
+After a successful build, the images and build artifacts are placed in `tmp/deploy/images/beaglebone/`. To write your new image to the SD card and test how to deploy a rootfs update on BeagleBone Black, please read [Getting started - Your first update on BeagleBone Black](../../Getting-started/Your-first-update-on-BeagleBone#write-the-disk-image-to-the-sd-card). Optionally, if you want to modify the rootfs image prior to deploying it, see [modifying a rootfs image](#modifying-a-rootfs-image).
+
+
+## Modifying a rootfs image
+
+When testing deployments, it is useful that the rootfs image you are deploying is different from the one that you have installed so you can see that the update is successful.
+A simple way to acheive this is to loopback-mount the rootfs on your workstation and modify `/etc/issue` so you can see which image you are running just before the login prompt.
+
+For example, if you are using the `ext4` file system type you can do the following.
+
+```
+sudo mkdir /mnt/mender
+```
+
+```
+sudo mount -t ext4 -o loop tmp/deploy/images/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4 /mnt/mender/
+```
+
+Now you can modify the file `/mnt/mender/etc/issue` so you can detect a change.
+After saving your modified issue-file, simply unmount the rootfs again:
+
+```
+sudo umount /mnt/mender
+```
+
+You need to adjust the path to the rootfs image and its type depending on the machine and file system you are building for.
+After deploying this rootfs image with Mender and rebooting, you should see your new message at the login prompt!
