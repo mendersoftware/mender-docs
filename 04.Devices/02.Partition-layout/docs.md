@@ -29,7 +29,7 @@ When [building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yoc
 
 In general Mender does not have dependencies on a specific file system type, except NAND-flash (non-MMC) storage is not yet supported, but the version of U-Boot you are using must support the file system type used for rootfs because it needs to read the Linux kernel from the file system and start the Linux boot process.
 
-The file system types Mender builds is based on your Yocto Project `IMAGE_FSTYPES` variable. As there is only one `.sdimg` file built, the rootfs file systems inside it will be the **first** file system you have in the `IMAGE_FSTYPES` variable.
+The file system types Mender builds is based on your Yocto Project `IMAGE_FSTYPES` variable. As there is only one `.sdimg` file built, the rootfs file systems inside it will be the **first** `ext2`/`ext3`/`ext4` file system you have in the `IMAGE_FSTYPES` variable.
 
 
 ##Configuring the partition sizes
