@@ -171,6 +171,34 @@ FAT partition. We recommend that it is replaced simply with `load`, since it
 will work in both cases, but it can also be replaced with either `ext2load` or
 `ext4load` if desired.
 
+### Size of boot environment file
+
+In the bitbake recipe for `u-boot`, `BOOTENV_SIZE` should be set to the same
+value that `CONFIG_ENV_SIZE` is set to in the board specific C header for U-Boot
+(inside `u-boot/include/configs`). Which value exactly is board specific; the
+important thing is that they are the same.
+
+The same value should be provided for both `u-boot` and `u-boot-fw-utils`, and
+the easiest way to achieve this is by putting them in a common file and then
+referring to it. For example, in `u-boot/include/configs/myboard.h`:
+
+```
+#define CONFIG_ENV_SIZE 0x20000
+```
+
+and in `recipes-bsp/u-boot/u-boot-common-my-board.inc`:
+
+```
+BOOTENV_SIZE = "0x20000"
+```
+
+and in both `recipes-bsp/u-boot/u-boot_%.bbappend` and
+`recipes-bsp/u-boot/u-boot-fw-utils_%.bbappend`:
+
+```
+include u-boot-common-my-board.inc
+```
+
 
 ## Forks of U-boot
 
