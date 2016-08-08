@@ -110,9 +110,17 @@ Your device should boot into the updated rootfs, and a welcome message like this
 
 > "This system has been updated by Mender build..."
 
-**Congratulations!** You have just deployed your first rootfs image with Mender! To deploy another update, simply follow the same steps again.
+**Congratulations!** You have just deployed your first rootfs image with Mender! If you are happy with the update, you can make it permanent by logging in to the BeagleBone Black as root and running:
 
-!!! Behind the scenes the Mender daemon comes up after a successful boot into the updated partition and runs `mender -commit`. This configures the bootloader to persistently boot from this updated rootfs partition. However, if the boot fails before the Mender daemon comes up, it will boot into the previous rootfs partition that is known to be working (where we deployed the update from). This ensures strong reliability in form of a rollback in cases where the newly deployed rootfs does not boot correctly for any reason.
+
+```
+mender -commit
+```
+
+By running this command, Mender will configure the bootloader to persistently boot from this updated rootfs partition. To deploy another update, simply follow these instructions again (from `mender ... -rootfs ...`).
+
+!!! If we reboot the machine again *without* running ```mender -commit```, it will boot into the previous rootfs partition that is known to be working (where we deployed the update from). This ensures strong reliability in cases where the newly deployed rootfs does not boot or otherwise has issues that we want to roll back from.
+
 
 ## Next steps
 
