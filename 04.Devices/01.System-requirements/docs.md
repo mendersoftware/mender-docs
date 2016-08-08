@@ -15,7 +15,11 @@ The client binaries, which are written in Go, are around 7 MiB in size.
 Our reference board, the [BeagleBone Black](http://beagleboard.org/bone?target=_blank), comes with a 1 GHz ARM Cortex-A8 processor, with 512 MiB of RAM. We use these boards in our continuous integration process.
 
 ##Bootloader support
-Mender integrates with the bootloader of the device. Currently we support the popular [U-Boot](http://www.denx.de/wiki/view/DULG/UBootBootCountLimit?target=_blank). Besides any special configuration to support the device, U-Boot needs to be compiled and used with the following features:
+To support atomic rootfs rollback, Mender integrates with the bootloader of the device. Currently Mender supports [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank).
+As Mender relies on the `CONFIG_BOOTCOUNT_ENV` feature of U-Boot, which was [introduced in October 2013](http://lists.denx.de/pipermail/u-boot/2013-October/165484.html), Mender currently requires **U-Boot v2014.01 or newer**. If you have an older version of U-Boot, it should be straightforward to backport or implement this feature. Please [reach out on the Mender mailing list](https://groups.google.com/a/lists.mender.io/forum#!forum/mender).
+
+
+Besides any special configuration to support the device, U-Boot needs to be compiled and used with the following features:
 
 * [Boot Count Limit](http://www.denx.de/wiki/view/DULG/UBootBootCountLimit?target=_blank). It enables specific actions to be triggered when the boot process fails a certain amount of attempts.
 * ext2/3/4 load support (specifically: the file system type of the rootfs). U-Boot needs this capability because the kernel will be stored there.
