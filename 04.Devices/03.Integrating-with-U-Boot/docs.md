@@ -139,33 +139,37 @@ These are the current integration points:
 
 There are also a few other details that need to be in place for Mender to work.
 
-1. In a Mender based configuration, the kernel is loaded from the rootfs
-   partition, not from the boot partition. This is in order to make a complete
-   upgrade possible, including the kernel. Usually, in a boot partition, the
-   kernel is stored in the root, but on a rootfs partition it is usually stored
-   in `/boot`. Therefore, paths that refer to the location of the kernel need to
-   be updated to point to this location. This is usually the case for the device tree
-   and initrd files as well, if the kernel has those. For instance:
+### Location of kernel
 
-   ```
-   uimage=uImage
-   fdt_file=uImage.dtb
-   ```
+In a Mender based configuration, the kernel is loaded from the rootfs partition,
+not from the boot partition. This is in order to make a complete upgrade
+possible, including the kernel. Usually, in a boot partition, the kernel is
+stored in the root, but on a rootfs partition it is usually stored in
+`/boot`. Therefore, paths that refer to the location of the kernel need to be
+updated to point to this location. This is usually the case for the device tree
+and initrd files as well, if the kernel has those. For instance:
 
-   should be changed to:
+```
+uimage=uImage
+fdt_file=uImage.dtb
+```
 
-   ```
-   uimage=boot/uImage
-   fdt_file=boot/uImage.dtb
-   ```
+should be changed to:
 
-2. Because the kernel and associated files are loaded from a rootfs partition,
-   in the majority of cases it will be an ext3 or ext4 partition. If the
-   existing boot code for the board uses the `fatload` command to load the
-   kernel and/or any associated files, it will need to be changed, since the
-   rootfs is usually not a FAT partition. We recommend that it is replaced
-   simply with `load`, since it will work in both cases, but it can also be
-   replaced with either `ext2load` or `ext4load` if desired.
+```
+uimage=boot/uImage
+fdt_file=boot/uImage.dtb
+```
+
+### Kernel loading method
+
+Because the kernel and associated files are loaded from a rootfs partition, in
+the majority of cases it will be an ext3 or ext4 partition. If the existing boot
+code for the board uses the `fatload` command to load the kernel and/or any
+associated files, it will need to be changed, since the rootfs is usually not a
+FAT partition. We recommend that it is replaced simply with `load`, since it
+will work in both cases, but it can also be replaced with either `ext2load` or
+`ext4load` if desired.
 
 
 ## Forks of U-boot
