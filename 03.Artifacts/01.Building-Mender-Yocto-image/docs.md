@@ -6,7 +6,7 @@ taxonomy:
 
 This document outlines the steps needed to build a [Yocto Project](https://www.yoctoproject.org/?target=_blank) image containing a testable version of the Mender client for both QEMU and BeagleBone Black.
 
-!!! For testing purposes, prebuilt images for QEMU and BeagleBone Black are built daily using the master branches. If you do not want to build your own images, have a look at the instructions for using the prebuilt images for [QEMU](../../Getting-started/Your-first-update-on-qemu) or [BeagleBone](../../Getting-started/Your-first-update-on-BeagleBone).
+!!! If you do not want to build your own images for testing purposes, have a look at the instructions for using the daily prebuilt images for [QEMU](../../Getting-started/Your-first-update-on-qemu) or [BeagleBone](../../Getting-started/Your-first-update-on-BeagleBone).
 
 ## What is *meta-mender*?
 
