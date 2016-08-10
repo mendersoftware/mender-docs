@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-This tutorial will demonstrate Mender using a virtual device in the [Quick Emulator (QEMU)](http://qemu.org), which is handy becasue it means that you do not have to configure any hardware.
+This tutorial will demonstrate Mender using a virtual device in the [Quick Emulator (QEMU)](http://qemu.org), which is handy because it means that you do not have to configure any hardware.
 We will go through how to deploy a rootfs image onto a QEMU machine and verify that the update was successful after reboot, using prebuilt images, so you don't have to compile or build Mender.
 
 !!! This tutorial typically takes less than 10 minutes to complete.
