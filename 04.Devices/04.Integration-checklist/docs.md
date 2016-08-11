@@ -1,10 +1,10 @@
 ---
-title: Configuration checklist
+title: Integration checklist
 taxonomy:
     category: docs
 ---
 
-In order to ensure that the necessary components for Mender have been configured correctly, use this checklist to verify each of them in turn. Use this when all components have been built successfully, and the device has booted correctly.
+In order to ensure that the necessary components for Mender have been integrated correctly, use this checklist to verify each of them in turn. Use this when all components have been built successfully, and the device has booted correctly.
 
 ## What is verified
 

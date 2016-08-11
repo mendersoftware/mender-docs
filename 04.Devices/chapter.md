@@ -1,11 +1,11 @@
 ---
-title: Configuring devices
+title: Device integration
 taxonomy:
     category: docs
 ---
 
 ### Chapter 4
 
-# Configuring devices
+# Device integration
 
-A description of how to configure devices to work with Mender
+A description of how to integrate devices with Mender
