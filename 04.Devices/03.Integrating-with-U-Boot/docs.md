@@ -302,8 +302,8 @@ provides, and that it is the preferred provider.
    PREFERRED_PROVIDER_u-boot-fw-utils = "u-boot-fw-utils-my-fork"
    ```
 
-3. And finally, `u-boot-mender.inc` needs to included using `require`, as for
-   `u-boot`.
+3. And finally, `u-boot-fw-utils-mender.inc` needs to included using `require`,
+   in the same fashion as `u-boot-mender.inc` for `u-boot`.
 
 
 ## Practical example
