@@ -32,6 +32,38 @@ In general Mender does not have dependencies on a specific file system type, exc
 The file system types Mender builds is based on your Yocto Project `IMAGE_FSTYPES` variable. As there is only one `.sdimg` file built, the rootfs file systems inside it will be the **first** `ext2`/`ext3`/`ext4` file system you have in the `IMAGE_FSTYPES` variable.
 
 
+##Configuring storage
+
+In order to select the storage device where the partitions are expected to be located on the device, `MENDER_STORAGE_DEVICE` should be set, either in `machine.conf` or in `local.conf`. The value should be the raw device containing the entire storage, not any single partition. For example:
+
+```
+MENDER_STORAGE_DEVICE = "/dev/mmcblk0"
+```
+
+! For memory card storage and some other types of storage, the default way to refer to partitions is to add a "p" and then the number of the partition (for example `/dev/mmcblk0p1`). If you're using a storage type which doesn't follow this scheme (for example `/dev/sda1`), then you also need to set `MENDER_STORAGE_DEVICE_BASE` to the correct value, such as `MENDER_STORAGE_DEVICE_BASE = "${MENDER_STORAGE_DEVICE}"`. The default is the value of `MENDER_STORAGE_DEVICE` plus a "p".
+
+
+###More detailed storage configuration
+
+If you need more fine grained control over which partitions Mender will use, you can set one or more the following variables to specific partition strings:
+
+* `MENDER_BOOT_PART`
+* `MENDER_DATA_PART`
+* `MENDER_ROOTFS_PART_A`
+* `MENDER_ROOTFS_PART_B`
+
+For example:
+
+```
+MENDER_BOOT_PART = "${MENDER_STORAGE_DEVICE_BASE}1"
+MENDER_DATA_PART = "${MENDER_STORAGE_DEVICE_BASE}5"
+MENDER_ROOTFS_PART_A = "${MENDER_STORAGE_DEVICE_BASE}2"
+MENDER_ROOTFS_PART_B = "${MENDER_STORAGE_DEVICE_BASE}3"
+```
+
+!! Note that the Mender image builder will not produce such images, so only set these variables if you're building partitioned images yourself, with a different layout than the default Mender layout (the example above reflects the default).
+
+
 ##Configuring the partition sizes
 
 When [building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image) Mender defines and uses certain OpenEmbedded variables which are used to define the sizes of the partitions. They are defined in `meta-mender` under `classes/mender-sdimg.bbclass`.
