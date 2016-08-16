@@ -26,3 +26,14 @@ MENDER_UBOOT_STORAGE_DEVICE = "0"
 ```
 
 which will set the index that U-Boot will use. All non-U-Boot references to the storage device, including the `root` argument passed by U-Boot to the Linux kernel when booting it, will keep using the `/dev/mmcblk1` variant derived from `MENDER_STORAGE_DEVICE` variables.
+
+
+## Boot loader is missing from boot partition, but is required for my board
+
+By default Mender does not add any boot loader files to the boot partition. If your board requires this you need to specify the files in the `IMAGE_BOOT_FILES` variable in the `machine.conf` file for your board. For example:
+
+```
+IMAGE_BOOT_FILES ?= "u-boot.bin MLO"
+```
+
+See the [Yocto Project documentation](http://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html#var-IMAGE_BOOT_FILES) for more information about the `IMAGE_BOOT_FILES` variable.
