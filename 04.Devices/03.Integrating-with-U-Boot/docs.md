@@ -115,7 +115,14 @@ These are the current integration points:
    bootargs=console=${console},${baudrate} root=${mender_kernel_root}
    ```
 
-4. `mender_altbootcmd`: This integration point is only needed if your setup is
+
+## Optional integration points
+
+This section describes integration steps that are not strictly necessary for
+basic Mender functionality, but will improve functionality under certain
+conditions.
+
+1. `mender_altbootcmd`: This integration point is only needed if your setup is
    already making use of U-Boot's `altbootcmd` functionality. If not currently
    in use, this step can be skipped.
 
@@ -133,6 +140,44 @@ These are the current integration points:
    steps have been performed, one can either call `bootcmd` to perform a normal
    boot using the new partitions, or one can perform a different type of boot
    sequence and refer to the Mender variables directly.
+
+2. `mender_try_to_recover`: It is recommended to add a call to this boot script
+   right after the normal, disk based boot command for the board. Note that it
+   should be added *before* other boot methods that are not considered a
+   "normal" boot sequence for the board, such as network boots. The call will
+   facilitate rollback in the event that a boot fails after an update, without
+   reverting to alternative boot methods such as a network boot. For example,
+   change:
+
+   ```
+   bootcmd=run mmcboot; run networkboot
+   ```
+
+   into:
+
+   ```
+   bootcmd=run mmcboot; run mender_try_to_recover; run networkboot
+   ```
+
+   If there is no update in progress, the script will do nothing and hence
+   alternative boot methods will continue working.
+
+   Note that if this integration point is not used, rollback will still work,
+   but it may not activate until after a network boot has been attempted or the
+   device has been rebooted through other means.
+
+3. `mender_uboot_boot`, `mender_uboot_if`, `mender_uboot_dev`: These variables
+   are not required by Mender, but can be used if, in the board boot code, you
+   need access to:
+
+   * the boot partition string (in U-Boot format, for example `mmc 0:1`):
+     `mender_uboot_boot`
+
+   * the storage device interface (in U-Boot format, for example `mmc`):
+     `mender_uboot_if`
+
+   * the storage device index (in U-Boot format, for example `0`):
+     `mender_uboot_dev`
 
 
 ## Boot configuration
@@ -259,3 +304,12 @@ provides, and that it is the preferred provider.
 
 3. And finally, `u-boot-mender.inc` needs to included using `require`, as for
    `u-boot`.
+
+
+## Practical example
+
+For a real life example of a patch used to integrate with Mender, check out [the
+patch for
+BeagleBone](https://github.com/mendersoftware/meta-mender/blob/master/recipes-bsp/u-boot/files/0001-BBB-Use-Mender-boot-code-for-selecting-boot-device-a.patch)
+on github.com. This patch displays all of the steps required to patch the U-Boot
+boot code for BeagleBone, including most of the steps described on this page.
