@@ -115,7 +115,14 @@ These are the current integration points:
    bootargs=console=${console},${baudrate} root=${mender_kernel_root}
    ```
 
-4. `mender_altbootcmd`: This integration point is only needed if your setup is
+
+## Optional integration points
+
+This section describes integration steps that are not strictly necessary for
+basic Mender functionality, but will improve functionality under certain
+conditions.
+
+1. `mender_altbootcmd`: This integration point is only needed if your setup is
    already making use of U-Boot's `altbootcmd` functionality. If not currently
    in use, this step can be skipped.
 
@@ -133,6 +140,20 @@ These are the current integration points:
    steps have been performed, one can either call `bootcmd` to perform a normal
    boot using the new partitions, or one can perform a different type of boot
    sequence and refer to the Mender variables directly.
+
+2. `mender_try_to_recover`: It is recommended to add a call to this boot script
+   right after the normal, disk based boot command for the board. Note that it
+   should be added *before* other boot methods that are not considered a
+   "normal" boot sequence for the board, such as network boots. The call will
+   facilitate rollback in the event that a boot fails after an update, without
+   reverting to alternative boot methods such as a network boot.
+
+   If there is no update in progress, the script will do nothing and hence
+   alternative boot methods will continue working.
+
+   Note that if this integration point is not used, rollback will still work,
+   but it may not activate until after a network boot has been attempted or the
+   device has been rebooted through other means.
 
 
 ## Boot configuration
