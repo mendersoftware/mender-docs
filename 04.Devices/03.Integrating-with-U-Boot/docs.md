@@ -146,7 +146,18 @@ conditions.
    should be added *before* other boot methods that are not considered a
    "normal" boot sequence for the board, such as network boots. The call will
    facilitate rollback in the event that a boot fails after an update, without
-   reverting to alternative boot methods such as a network boot.
+   reverting to alternative boot methods such as a network boot. For example,
+   change:
+
+   ```
+   bootcmd=run mmcboot; run networkboot
+   ```
+
+   into:
+
+   ```
+   bootcmd=run mmcboot; run mender_try_to_recover; run networkboot
+   ```
 
    If there is no update in progress, the script will do nothing and hence
    alternative boot methods will continue working.
