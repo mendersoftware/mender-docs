@@ -166,6 +166,19 @@ conditions.
    but it may not activate until after a network boot has been attempted or the
    device has been rebooted through other means.
 
+3. `mender_uboot_boot`, `mender_uboot_if`, `mender_uboot_dev`: These variables
+   are not required by Mender, but can be used if, in the board boot code, you
+   need access to:
+
+   * the boot partition string (in U-Boot format, for example `mmc 0:1`):
+     `mender_uboot_boot`
+
+   * the storage device interface (in U-Boot format, for example `mmc`):
+     `mender_uboot_if`
+
+   * the storage device index (in U-Boot format, for example `0`):
+     `mender_uboot_dev`
+
 
 ## Boot configuration
 
