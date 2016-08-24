@@ -57,3 +57,16 @@ You can work around the problem by finding the correct value (e.g. `ls build/tmp
 ```
 UBOOT_SUFFIX = "bin"
 ```
+
+
+## U-Boot lacks support for Boot Count Limit
+
+In order to support robust rootfs rollback, Mender depends on being able to tell the bootloader to roll back to the known-working rootfs if attempts to boot the updated rootfs fails a given number of times.
+Currently, Mender uses the [Boot Count Limit](http://www.denx.de/wiki/view/DULG/UBootBootCountLimit) feature of U-Boot to achieve this.
+If you see errors similar to the following during the Yocto Project build process, the U-Boot you are using most likely does not support this feature.
+
+```
+include/config_mender.h:34:3: error: #error CONFIG_BOOTCOUNT_ENV is required for Mender to work
+```
+
+There are two alternatives to resolve this issue. Either you can upgrade to U-Boot v2014.01 or newer, where Boot Count Limit was introduced, or you can patch your current U-Boot version to support this or a similar feature. Please see [Bootloader support](../../Devices/System-requirements#bootloader-support) for more information.
