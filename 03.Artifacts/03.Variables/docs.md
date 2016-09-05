@@ -23,6 +23,11 @@ The allocated size of each of the two rootfs partitions. We recommend leaving so
 The partition Mender uses as the boot partition. See [More detailed storage configuration](../../Devices/Partition-layout#more-detailed-storage-configuration) for more information.
 
 
+#### MENDER_DATA_PART
+
+The partition Mender uses as the persistent data partition. See [More detailed storage configuration](../../Devices/Partition-layout#more-detailed-storage-configuration) for more information.
+
+
 #### MENDER_ROOTFS_PART_A
 
 The partition Mender uses as the first (A) rootfs partition. See [More detailed storage configuration](../../Devices/Partition-layout#more-detailed-storage-configuration) for more information.
@@ -33,14 +38,19 @@ The partition Mender uses as the first (A) rootfs partition. See [More detailed 
 The partition Mender uses as the second (B) rootfs partition. See [More detailed storage configuration](../../Devices/Partition-layout#more-detailed-storage-configuration) for more information.
 
 
-#### MENDER_DATA_PART
-
-The partition Mender uses as the persistent data partition. See [More detailed storage configuration](../../Devices/Partition-layout#more-detailed-storage-configuration) for more information.
-
-
 #### MENDER_STORAGE_DEVICE
 
 The storage device holding all partitions (rootfs, boot, data) used by Mender. See [Configuring storage](../../Devices/Partition-layout#configuring-storage) for more information.
+
+
+#### MENDER_UBOOT_STORAGE_DEVICE
+
+The storage device, as referred to by U-Boot (e.g. `1`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [U-Boot and the Linux kernel do not agree about the indexes of storage devices](../../Troubleshooting/Yocto-project-build#u-boot-and-the-linux-kernel-do-not-agree-about-the-indexes-of-st) for more information.
+
+
+#### MENDER_UBOOT_STORAGE_INTERFACE
+
+The storage interface, as referred to by U-Boot (e.g. `mmc`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [U-Boot and the Linux kernel do not agree about the indexes of storage devices](../../Troubleshooting/Yocto-project-build#u-boot-and-the-linux-kernel-do-not-agree-about-the-indexes-of-st) for more information.
 
 
 #### SDIMG_BOOT_PART_SIZE_MB
