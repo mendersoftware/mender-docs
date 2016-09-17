@@ -6,6 +6,6 @@ taxonomy:
 
 ### Chapter 2
 
-# Architecure
+# Architecture
 
 Understand the building blocks of Mender
