@@ -23,11 +23,45 @@ A sample partition layout is shown below:
 ![Mender client partition layout](mender_client_partition_layout.png)
 
 
+##Flash memory types
+
+Embedded devices almost universally use flash memory for storage.
+An important property of flash memory cells is that they can only
+handle a certain amount of writes until they fail (wear out).
+Wear leveling (distributing writes across the cells)
+and error correction (avoiding use of failed cells) should be carried out
+in order to prolong their life.
+
+However, these tasks can be handled by the flash device itself
+or by software (OS and file system). From the software's point of view,
+there are two types of flash memory:
+
+* **Block device.** These flash devices will expose a linear array of
+blocks to the OS, just like hard drives do. This is the most common
+type of flash device used with Linux, except in very low-cost or older embedded devices.
+They are generally easy to work with and you can put block-device file systems,
+like ext4 and fat, directly on top of them. Internally these devices contain
+a *memory controller* that runs a Flash Translation Layer firmware that implements
+wear leveling and error correction, so this is taken care of transparently. For this
+reason, they are also sometimes referred to as **Flash Translation Layer (FTL) devices**.
+For example, these types of flash devices expose themselves as block devices: **SD, mini-SD, micro-SD,
+MMC, eMMC, RS-MMC, SSD, USB, CompactFlash, MemoryStick, MemoryStick Micro**.
+
+* **Raw flash.** Raw flash devices do not have a memory controller
+that takes care of wear leveling nor error correction, so this *must be handled in software*.
+In Linux, raw flash devices are exposed as a **Memory Technology Device (MTD)** file.
+Care must be taken when selecting a file system that is MTD-aware, since
+it should handle the wear levelling and error correction.
+Popular file systems for MTD devices include UBIFS, JFFS2, and YAFFS.
+
+! Mender currently supports *block devices*, not raw flash devices. Support for raw flash would entail supporting MTD-aware filesystem types, which is not very difficult, and is planned for the future. Please contact us at <contact@mender.io> if you need support for raw flash devices. We would also be happy to guide any [community contributions](https://mender.io/community) to add support for raw flash devices.
+
+
 ##File system types
 
 When [building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image) the build output in `tmp/deploy/images/<MACHINE>` includes a binary rootfs file system image (e.g. with `.ext4` extension), as well as a complete disk image (with `.sdimg` extension). The binary rootfs file system images are used when deploying updates to the device, while the `.sdimg` image is typically used just once during initial device provisioning to flash the entire storage, and includes the partition layout and all partitions.
 
-In general Mender does not have dependencies on a specific file system type, except NAND-flash (non-MMC) storage is not yet supported, but the version of U-Boot you are using must support the file system type used for rootfs because it needs to read the Linux kernel from the file system and start the Linux boot process.
+In general Mender does not have dependencies on a specific file system type as long as it is for a [block device](#flash-memory-types), but the version of U-Boot you are using must support the file system type used for rootfs because it needs to read the Linux kernel from the file system and start the Linux boot process.
 
 The file system types Mender builds is based on your Yocto Project `IMAGE_FSTYPES` variable. As there is only one `.sdimg` file built, the rootfs file systems inside it will be the **first** `ext2`/`ext3`/`ext4` file system you have in the `IMAGE_FSTYPES` variable.
 
