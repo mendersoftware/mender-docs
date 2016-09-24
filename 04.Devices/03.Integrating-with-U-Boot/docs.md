@@ -85,7 +85,7 @@ These are the current integration points:
    be referenced.
 
    For example, if you have a script, `loadimage`, that loads the kernel from
-   the filesystem, using `mmc` as the device and a `${bootpart}` variable
+   the file system, using `mmc` as the device and a `${bootpart}` variable
    reference as the partition to load from:
 
    ```

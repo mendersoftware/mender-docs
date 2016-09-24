@@ -116,7 +116,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
     Make sure it matches the build date and time of the first kernel you just built, and not an older one. Make a note of this time, as you will need it later. This verifies that the correct kernel is loaded from partition A.
 
-13. Now we will look at which rootfs is mounted. Run `mount` with no arguments. The filesystem mounted as root (signified by the `<device> on /` entry) should be `/dev/mmcblk0p2`.
+13. Now we will look at which rootfs is mounted. Run `mount` with no arguments. The file system mounted as root (signified by the `<device> on /` entry) should be `/dev/mmcblk0p2`.
 
     If the device listed is an ambiguous device, such as `/dev/root`, you can use an alternative method for verifying it. If you call the following series of commands:
 

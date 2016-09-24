@@ -23,7 +23,7 @@ Remote updates also require a means of secure communication with each device.
 
 ## Trying Mender
 
-We have two tutorials that show you how Mender works. Each demonstrates how to use Mender to update the root filesystem of a target device.
+We have two tutorials that show you how Mender works. Each demonstrates how to use Mender to update the root file system of a target device.
 The first uses [QEMU to create an emulated device](../../Getting-started/Your-first-update-on-qemu), which is handy becasue it means that you do not have to configure any hardware.
 The second tutorial uses real hardware in the form of the popular [BeagleBone Black development board](../../Getting-started/Your-first-update-on-BeagleBone).
 
