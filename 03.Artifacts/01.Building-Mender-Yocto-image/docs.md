@@ -55,9 +55,6 @@ of the Yocto Project build tree (in directory poky):
 ```
 cd poky
 ```
-
-!! There is a bug in the current Yocto Project's krogoth branch that impairs the use of systemd. The issue is fixed but not backported to the krogoth branch. We have [created a patch to backport the systemd fix](http://lists.openembedded.org/pipermail/openembedded-core/2016-July/124102.html) but it has not yet been merged by the maintainers. In the meanwhile you will need to apply these two patches on top of the krogoth branch yourself. This can be done with `git cherry-pick -x fd36a447d0da53e713d992b17ce86dd31ea63c67` and `git cherry-pick -x 79be110c1fdfd0affe6a310b96e7107c4549d23c`.
-
 ```
 git clone -b krogoth git://github.com/mendersoftware/meta-mender
 ```
