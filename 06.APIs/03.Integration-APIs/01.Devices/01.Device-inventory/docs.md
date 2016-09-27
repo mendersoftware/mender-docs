@@ -1,5 +1,5 @@
 ---
-title: Device Authentication API
+title: Device inventory
 taxonomy:
     category: docs
 api: true
