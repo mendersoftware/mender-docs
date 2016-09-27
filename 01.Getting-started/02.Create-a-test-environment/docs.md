@@ -26,14 +26,19 @@ having to configure any hardware.
 
 #### OS and web browser
 
-We assume you are using **Ubuntu 16.04** with **Google Chrome** as web browser.
-It is very likely possible to use the test environment on other platforms,
-but using this platform is known to work.
+We assume you are using **Ubuntu 16.04** with **Google Chrome** as web browser
+and at least **8 GB** RAM and disk available.
 
-#### Docker Engine and Compose
+#### Docker Engine 1.10
 
-Your workstation needs a recent version of docker engine and docker compose installed
-and working. ( **TODO** : overview, Install steps & links to docker compose).
+Follow the [documentation to install Docker Engine](https://docs.docker.com/engine/installation/linux/ubuntulinux/),
+version **1.10 or later**.
+
+
+#### Docker Compose 1.7
+
+Follow the [documentation to install Docker Compose](https://docs.docker.com/compose/install/),
+version **1.7 or later**.
 
 #### Fast Internet connection
 
@@ -41,17 +46,24 @@ While bringing up the environment, several hundred megabytes of docker
 images may be downloaded. We recommend using a fast Internet
 connection in order to avoid long wait times.
 
+!!! It is very likely possible to use the test environment on other platforms, versions, or with less resources. We recommend using this exact environment for testing Mender because it is known to work and you will thus avoid any issues specific to your test environment if you use this reference.
+
 
 ## Bring up the environment with docker compose
 
-**TODO** : document where to get integration/stable
+In a working directory, clone the Mender integration
+environment:
 
-In a dedicated terminal, go to the integration directory that
-contains the file `docker-compose.yml`:
+```
+git clone -b stable git://github.com/mendersoftware/integration
+```
 
 ```
 cd integration
 ```
+
+You should see a file `docker-compose.yml` inside it, which defines the
+Mender test environment.
 
 !!! This terminal will be locked while Mender is running as it will output logs from all the services.
 
@@ -136,10 +148,14 @@ Mender can be started again with the same steps as above.
 
 If you want to remove any state in your Mender environment and start clean
 with the latest version of Mender, you can stop Mender and run the following
-commands in the same directory:
+commands in the `integration` directory:
 
 ```
-docker-compose rm --all -v
+docker-compose rm -v
+```
+
+```
+git pull
 ```
 
 ```
