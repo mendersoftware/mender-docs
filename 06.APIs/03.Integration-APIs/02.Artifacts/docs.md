@@ -1,5 +1,5 @@
 ---
-title: Device Admission API
+title: Artifacts
 taxonomy:
     category: docs
 api: true
