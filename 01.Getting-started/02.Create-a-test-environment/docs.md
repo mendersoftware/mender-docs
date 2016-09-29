@@ -131,6 +131,7 @@ The Mender UI can now be found on [http://localhost:8081/](http://localhost:8081
 ![Mender UI - initial load](mender_ui_initial.png)
 
 **Congratulations!** You have the Mender server and a virtual Mender client successfully running!
+Please proceed to [Deploy the first managed update](../Deploy-first-managed-update).
 
 
 ## Stop the Mender services
