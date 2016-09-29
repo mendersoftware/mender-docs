@@ -128,7 +128,7 @@ You should see a page similar to the following:
 
 The Mender UI can now be found on [http://localhost:8081/](http://localhost:8081/) - simply open it in the same web browser!
 
-**TODO** image of UI.
+![Mender UI - initial load](mender_ui_initial.png)
 
 **Congratulations!** You have the Mender server and a virtual Mender client successfully running!
 
