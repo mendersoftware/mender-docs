@@ -32,7 +32,7 @@ You can review the device before authorizing it to join the server.
 When you are ready, simply click the **Authorize** button
 in the **Devices** tab.
 
-! There are security implications to connecting a client and server for the first time, also known as *bootstrapping*. If a client and server have not exchanged any information in advance, they need to accept each other on trust this first time, with the risk that the information the other party presents is spoofed. To mitigate this risk, the Mender client preinstalls the TLS certificate of the server when it is provisioned, as part of the Yocto Project image build. So it is not possible for a rogue server to intercept the connection from a client or pretend to be a different server, assuming server's private TLS key is securely managed. A rogue device can still spoof the information it sends to the server to be authorized, but the risk of letting the server manage a rogue device is much lower than the risk of a rogue server managing devices.
+! There are security implications to connecting a client and server for the first time, also known as *bootstrapping*. If a client and server have not exchanged any information in advance, they need to accept each other on trust this first time, with the risk that the information the other party presents is spoofed. To mitigate this risk, the Mender client preinstalls the TLS certificate of the server when it is provisioned, as part of the Yocto Project image build. So it is not possible for a rogue server to intercept the connection from a client or pretend to be a different server, assuming server's private TLS key is securely managed. A rogue device can still spoof the information it sends to the server in order to be authorized, and this is why Mender asks you to make the authorization decision. However, the risk of letting the server manage a rogue device is much lower than the risk of a rogue server managing devices.
 
 
 ## See information about the device
@@ -54,29 +54,29 @@ to be uploaded to the server. Any rootfs image that
 includes Mender support can be used, as described in
 [Building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image).
 
-To make testing easier, prebuilt images that can be used with
-the virtual device are provided at
-[https://s3-eu-west-1.amazonaws.com/yocto-builds/latest/latest.tar.gz](https://s3-eu-west-1.amazonaws.com/yocto-builds/latest/latest.tar.gz).
-You can download and unpack them with the following commands.
+To make testing easier, a prebuilt image that can be used with
+the virtual device is provided at
+[https://s3-eu-west-1.amazonaws.com/yocto-integration-stable/temp/core-image-full-cmdline-vexpress-qemu.ext4](https://s3-eu-west-1.amazonaws.com/yocto-integration-stable/temp/core-image-full-cmdline-vexpress-qemu.ext4).
+You can download it by clicking on the link above or on the command line with the following command.
 
 ```
-wget https://s3-eu-west-1.amazonaws.com/yocto-builds/latest/latest.tar.gz
+wget https://s3-eu-west-1.amazonaws.com/yocto-integration-stable/temp/core-image-full-cmdline-vexpress-qemu.ext4
 ```
-
-```
-tar zxvf latest.tar.gz
-```
-
-Open the directory `mender/vexpress-qemu`, and you should see a file
-`core-image-full-cmdline-vexpress-qemu.ext4` that we can deploy
-to the virtual device.
-
-**TODO** switch from .ext4 to .mender when artifact meta is done. Also note form details below. Potentially change from "image" to "artifact" and note what it is (see artifacts repo README.md).
 
 Now go back to the Mender server UI, click the **Software** tab and
-upload the image. You can give it a name and description so you
-recognize it later.
+upload the image. Currently there are quite a few fields to fill out,
+but this will very soon be simplified to just *Name* and *Description*,
+the rest being auto-detected. For now though, please fill in the following:
 
+* Name: `release 2` (or choose your own)
+* Yocto ID: `test` (required)
+* Checksum: `test` (unused for now)
+* Device type compatibility: `vexpress-qemu` (required)
+* Description: `My first deployment` (or choose your own)
+
+In the UI for uploading, it should look something like this:
+
+![Mender UI - Upload image](upload_image.png)
 
 !!! Mender keeps track of which *Device type* an image supports as part of the metadata of an image. Secondly, a device reports which Device type it is as part of its inventory information. During a deployment, the Mender server makes sure that a device will only get a image it supports. This increases the robustness of Mender as it avoids situations like deploying images that are not supported by the device hardware.
 

@@ -67,7 +67,7 @@ Mender test environment.
 
 !!! This terminal will be locked while Mender is running as it will output logs from all the services.
 
-! Mender currently requires an entry `127.0.0.1 mender-artifact-storage.localhost` in your `/etc/hosts` file to work with the docker networking. This requirement is temporary and will be removed shortly. If this entry does not exist as you run the `up` script (below), it will create it for you and thus might ask for your administrative password. You can also create this entry in advance if you want to avoid automatic creation.
+! Mender currently requires two entries in your `/etc/hosts` file to work with the docker networking (typically `127.0.0.1 s3.docker.mender.io` and `127.0.0.1 docker.mender.io`). If these entries do not exist as you run the `up` script (below), it will create them for you and thus might ask for your administrative password. If you want to avoid automatic creation, you can create the entries in advance; look inside the script for the details how it is created on your host.
 
 Mender comes with a wrapper script that brings up the environment with
 docker compose. Running this script will pull down the images and start them:
@@ -108,31 +108,25 @@ These messages show that the Mender client running inside the virtual QEMU devic
 is asking to be authorized to join the server. We will come back to this shortly.
 
 
-## Store the Mender gateway certificate in your web browser
+## Open the Mender UI
 
-For security reasons, the Mender gateway only allows secure connections using TLS.
+For security reasons, the Mender gateway only allows secure connections using TLS,
+both for communicating with devices and end users.
 Your web browser will communicate directly with the gateway while using the
 Mender UI and therefore the certificate the gateway is using needs to be trusted
 by your web browser.
 
 !! Currently Mender uses a default certificate for its gateway. This is insecure because anyone can gain access to the private key corresponding to the certificate (it is stored on the gateway and the same for all installations). This will shortly be remediated by auto-generating keys as Mender is installed.
 
-To store the gateway certificate in your web browser, go to [https://localhost:9080/](https://localhost:9080/) and accept the certificate.
-You should see a page similar to the following:
-
-> Welcome to OpenResty!  
-> ...  
-
-
-## Open the Mender UI
-
-The Mender UI can now be found on [http://localhost:8081/](http://localhost:8081/) - simply open it in the same web browser.
+The Mender UI can now be found on [https://localhost:8080/](https://localhost:8080/) - simply open it in your web browser and **accept the certificate**.
 You should see a page similar to the following:
 
 ![Mender UI - initial load](mender_ui_initial.png)
 
 **Congratulations!** You have the Mender server and a virtual Mender client successfully running!
 Please proceed to [Deploy the first managed update](../Deploy-first-managed-update).
+
+You can find some steps for maintaining your test environment below.
 
 
 ## Stop the Mender services
