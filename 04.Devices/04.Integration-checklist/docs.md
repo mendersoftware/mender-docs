@@ -39,7 +39,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
    ```
    sudo losetup /dev/loop0 base-image.sdimg
    sudo kpartx -a /dev/loop0
-   sudo dd if=tmp/deploy/images/<machine>/<image>.ext3 of=/dev/mapper/loop0p3
+   sudo dd if=tmp/deploy/images/<machine>/<image>.ext4 of=/dev/mapper/loop0p3
    sudo kpartx -d /dev/loop0
    sudo losetup -d /dev/loop0
    ```

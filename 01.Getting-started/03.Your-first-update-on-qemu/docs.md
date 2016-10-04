@@ -44,17 +44,16 @@ tar zxvf latest.tar.gz
 You should see the files being unpacked:
 
 > mender/  
+> mender/vexpress-qemu/  
+> mender/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4  
+> mender/vexpress-qemu/mender-qemu.sh  
+> mender/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.sdimg  
+> mender/vexpress-qemu/u-boot.elf  
 > mender/beaglebone/  
-> mender/beaglebone/core-image-base-beaglebone.ext3  
+> mender/beaglebone/core-image-base-beaglebone.ext4  
 > mender/beaglebone/core-image-base-beaglebone.sdimg  
 > mender/README  
-> mender/vexpress-qemu/  
-> mender/vexpress-qemu/mender-qemu.sh  
-> mender/vexpress-qemu/u-boot.elf  
-> mender/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext3  
-> mender/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.sdimg  
-> mender/BUILD  
-
+> mender/BUILD
 
 ## Run the image in QEMU
 Run the image in QEMU by running the following commands:
@@ -75,7 +74,7 @@ You can login with user *root*. No password is required.
 
 ## Serve a rootfs image for the QEMU machine
 
-To deploy a new rootfs to the QEMU machine, you need to start a http server on your workstation to serve the image. Open a new shell on your workstation and change into the vexpress-qemu directory. There you will find an update image named ```core-image-full-cmdline-vexpress-qemu.ext3```. Start a simple Python webserver in that directory, like so:
+To deploy a new rootfs to the QEMU machine, you need to start a http server on your workstation to serve the image. Open a new shell on your workstation and change into the vexpress-qemu directory. There you will find an update image named ```core-image-full-cmdline-vexpress-qemu.ext4```. Start a simple Python webserver in that directory, like so:
 
 ```
 python -m SimpleHTTPServer
@@ -94,7 +93,7 @@ ping 10.0.2.2
 To deploy the new image to your QEMU machine, run the following command in its terminal:
 
 ```
-mender -log-level info -rootfs http://10.0.2.2:8000/core-image-full-cmdline-vexpress-qemu.ext3
+mender -log-level info -rootfs http://10.0.2.2:8000/core-image-full-cmdline-vexpress-qemu.ext4
 ```
 
 Mender will download the new image, write it to the inactive rootfs partition and configure the bootloader to boot into it on the next boot. This should take about 2 minutes to complete.

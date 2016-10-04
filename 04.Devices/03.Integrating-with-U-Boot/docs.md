@@ -209,7 +209,7 @@ fdt_file=boot/uImage.dtb
 ### Kernel loading method
 
 Because the kernel and associated files are loaded from a rootfs partition, in
-the majority of cases it will be an ext3 or ext4 partition. If the existing boot
+the majority of cases it will be an ext4 or ext3 partition. If the existing boot
 code for the board uses the `fatload` command to load the kernel and/or any
 associated files, it will need to be changed, since the rootfs is usually not a
 FAT partition. We recommend that it is replaced simply with `load`, since it

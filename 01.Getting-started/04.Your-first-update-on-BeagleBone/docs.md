@@ -29,16 +29,16 @@ tar zxvf latest.tar.gz
 You should see the files being unpacked:
 
 > mender/  
+> mender/vexpress-qemu/  
+> mender/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4  
+> mender/vexpress-qemu/mender-qemu.sh  
+> mender/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.sdimg  
+> mender/vexpress-qemu/u-boot.elf  
 > mender/beaglebone/  
-> mender/beaglebone/core-image-base-beaglebone.ext3  
+> mender/beaglebone/core-image-base-beaglebone.ext4  
 > mender/beaglebone/core-image-base-beaglebone.sdimg  
 > mender/README  
-> mender/vexpress-qemu/  
-> mender/vexpress-qemu/mender-qemu.sh  
-> mender/vexpress-qemu/u-boot.elf  
-> mender/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext3  
-> mender/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.sdimg  
-> mender/BUILD  
+> mender/BUILD
 
 ## Write the disk image to the SD card
 The sdimg image is a partitioned image that can be written directly to the SD card.
@@ -72,7 +72,7 @@ You can login with user *root*. No password is required.
 
 ## Serve a rootfs image for the BeagleBone Black
 
-To deploy a new rootfs to the BeagleBone Black, you need to start a http server on your workstation to serve the image. Open a new shell on your workstation and change into the beaglebone directory. There you will find an update image named ```core-image-base-beaglebone.ext3```. Start a simple Python webserver in that directory, like so:
+To deploy a new rootfs to the BeagleBone Black, you need to start a http server on your workstation to serve the image. Open a new shell on your workstation and change into the beaglebone directory. There you will find an update image named ```core-image-base-beaglebone.ext4```. Start a simple Python webserver in that directory, like so:
 
 ```
 python -m SimpleHTTPServer
@@ -93,7 +93,7 @@ To deploy the new image to your BeagleBone Black, run the following command in i
 
 
 ```
-mender -log-level info -rootfs http://<IP-OF-WORKSTATION>:8000/core-image-base-beaglebone.ext3
+mender -log-level info -rootfs http://<IP-OF-WORKSTATION>:8000/core-image-base-beaglebone.ext4
 ```
 
 Mender will download the new image, write it to the inactive rootfs partition and configure the bootloader to boot into it on the next reboot. This should take about 2 minutes to complete.
