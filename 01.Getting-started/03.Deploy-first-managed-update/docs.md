@@ -96,17 +96,27 @@ the image we just uploaded and **All devices**, then
 **Create deployment**.
 
 
-## See status of deployment
+## See progress of deployment
 
 As the deployment progresses, you can click on it to view more details about the current status across all devices.
-In the example below, we can see that the device is in process of rebooting into the new image.
+In the example below, we can see that the device is in process of installing the new image.
 
 ![Mender UI - Deployment progress](deployment_report.png)
 
-!!! The deployment to the virtual device should take about 2-3 minutes to complete and report success or failure. If the deployment fails you can view the deployment log, which is obtained from the device, to diagnose the issue.
+!!! The deployment to the virtual device should take about 2-3 minutes to complete and report success or failure.
+
+
+## Verify deployment
+
+Once the deployment completes, you should see it in *Past deployments*.
+If the deployment fails you can view the deployment log,
+which is obtained from the device, to diagnose the issue.
+You can also see the state of deployments on the Dashboard.
 
 **TODO**: Verify update, e.g. in QEMU client console (/etc/issue).
 **TODO**: Link to proceed with reference BBB update below.
+
+
 
 **Congratulations!** You have used the Mender server to deploy your first managed update!
 Now that you have seen how Mender works with a virtual device, you might be wondering what
