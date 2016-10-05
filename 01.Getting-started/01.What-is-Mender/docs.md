@@ -21,11 +21,24 @@ Any failures or interruptions in the update process should not cause your device
 
 Remote updates also require a means of secure communication with each device.
 
+
 ## Trying Mender
 
-We have two tutorials that show you how Mender works. Each demonstrates how to use Mender to update the root file system of a target device.
-The first uses [QEMU to create an emulated device](../../Getting-started/Your-first-update-on-qemu), which is handy becasue it means that you do not have to configure any hardware.
-The second tutorial uses real hardware in the form of the popular [BeagleBone Black development board](../../Getting-started/Your-first-update-on-BeagleBone).
+We have a series of tutorials that show you how Mender works, while giving you hands-on experience.
+
+!!! Going from a fresh system to completing your first managed deployment with Mender should take about **30 minutes**!
+
+We will start off by getting Mender installed and running in [Create a test environment](../Create-a-test-environment).
+Next, we will deploy to a virtual [Quick Emulator (QEMU)](http://qemu.org) device in [Deploy to virtual devices](../Deploy-to-virtual-devices).
+Doing the first deployment using QEMU is handy becasue it means that you do not have to configure any hardware to test Mender.
+If you have real hardware in the form of the popular Mender reference board, the [BeagleBone Black](https://beagleboard.org/black),
+you can follow the final tutorial in this series, [Deploy to physical devices](../Deploy-to-physical-devices).
+
+On the other hand, if you are only interested in triggering deployments with the Mender client manually at the device,
+you can follow the [Standalone deployments](../Standalone-deployments) tutorial. For an explanation of the
+difference between *managed* and *standalone* deploymnets, please see
+[Modes of operation](../../Architecture/overview#modes-of-operation).
+
 
 ### Using these docs
 
