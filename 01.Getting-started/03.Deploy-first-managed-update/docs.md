@@ -17,9 +17,9 @@ as described in [Create a test environment](../Create-a-test-environment).
 
 ## Authorize the device
 
-Open the Mender UI in the same browser as you stored the certificate
+Open the Mender UI in the same browser as you accepted the certificate
 in as part of [Create a test environment](../Create-a-test-environment).
-It is available at [http://localhost:8081/](http://localhost:8081/).
+It is available at [http://localhost:8080/](http://localhost:8080/).
 
 There should be a virtual device that is waiting authorization.
 This means that the Mender client, which runs as a daemon on the device,
@@ -54,31 +54,33 @@ to be uploaded to the server. Any rootfs image that
 includes Mender support can be used, as described in
 [Building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image).
 
-To make testing easier, a prebuilt image that can be used with
+To make testing easier, a demo image that can be used with
 the virtual device is provided at
-[https://s3-eu-west-1.amazonaws.com/yocto-integration-stable/temp/core-image-full-cmdline-vexpress-qemu.ext4](https://s3-eu-west-1.amazonaws.com/yocto-integration-stable/temp/core-image-full-cmdline-vexpress-qemu.ext4).
-You can download it by clicking on the link above or on the command line with the following command.
+[https://mender.s3.amazonaws.com/latest/demo/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4](https://mender.s3.amazonaws.com/latest/demo/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4).
+You can download it by clicking on the link above, or on the command line with the following command.
 
 ```
-wget https://s3-eu-west-1.amazonaws.com/yocto-integration-stable/temp/core-image-full-cmdline-vexpress-qemu.ext4
+wget https://mender.s3.amazonaws.com/latest/demo/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4
 ```
 
 Now go back to the Mender server UI, click the **Software** tab and
-upload the image. Currently there are quite a few fields to fill out,
-but this will very soon be simplified to just *Name* and *Description*,
-the rest being auto-detected. For now though, please fill in the following:
+upload the image.
 
-* Name: `release 2` (or choose your own)
+!!! Currently there are quite a few fields to fill out, but this will very soon be simplified to just *Name* and *Description*, the rest being auto-detected.
+
+Please fill in the following:
+
+* Name: `release2` (or choose your own)
 * Yocto ID: `test` (required)
 * Checksum: `test` (unused for now)
 * Device type compatibility: `vexpress-qemu` (required)
 * Description: `My first deployment` (or choose your own)
 
-In the UI for uploading, it should look something like this:
+In the end, it should look something like this:
 
 ![Mender UI - Upload image](upload_image.png)
 
-!!! Mender keeps track of which *Device type* an image supports as part of the metadata of an image. Secondly, a device reports which Device type it is as part of its inventory information. During a deployment, the Mender server makes sure that a device will only get a image it supports. This increases the robustness of Mender as it avoids situations like deploying images that are not supported by the device hardware.
+!!! Mender keeps track of which *Device type* an image supports as part of the metadata of an image. In addition, a device reports which Device type it is as part of its inventory information. During a deployment, the Mender server makes sure that a device will only get a image it supports. This increases the robustness of Mender as it avoids situations like deploying images that are not supported by the device hardware.
 
 
 ## Deploy the rootfs image to the device
