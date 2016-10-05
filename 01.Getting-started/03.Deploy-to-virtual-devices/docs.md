@@ -1,5 +1,5 @@
 ---
-title: Deploy the first managed update
+title: Deploy to virtual devices
 taxonomy:
     category: docs
 ---
