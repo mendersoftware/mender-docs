@@ -96,7 +96,7 @@ the image we just uploaded and **All devices**, then
 **Create deployment**.
 
 
-## See progress of deployment
+## See the progress of the deployment
 
 As the deployment progresses, you can click on it to view more details about the current status across all devices.
 In the example below, we can see that the device is in process of installing the new image.
@@ -106,7 +106,7 @@ In the example below, we can see that the device is in process of installing the
 !!! The deployment to the virtual device should take about 2-3 minutes to complete and report success or failure.
 
 
-## Verify deployment
+## Verify the deployment
 
 Once the deployment completes, you should see it in *Past deployments*.
 If the deployment fails you can view the deployment log,

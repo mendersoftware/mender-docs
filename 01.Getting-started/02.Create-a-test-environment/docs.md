@@ -19,8 +19,6 @@ virtual device using [Quick Emulator (QEMU)](http://qemu.org),
 which is handy because it means that you can test the client without
 having to configure any hardware.
 
-! The docker compose environment currently uses internal networking, so physical devices can not currently be connected directly to this environment. We will enable this shortly, however please test with the virtual device in the meanwhile.
-
 
 ## Prerequisites
 
@@ -118,8 +116,13 @@ by your web browser.
 
 !! Currently Mender uses a default certificate for its gateway. This is insecure because anyone can gain access to the private key corresponding to the certificate (it is stored on the gateway and the same for all installations). This will shortly be remediated by auto-generating keys as Mender is installed.
 
-The Mender UI can now be found on [https://localhost:8080/](https://localhost:8080/) - simply open it in your web browser and **accept the certificate**.
-You should see a page similar to the following:
+The Mender UI can now be found on [https://localhost:8080/](https://localhost:8080/) -
+simply open it in your web browser and **accept the certificate**. In Chrome it should look
+like the following:
+
+**TODO: Pic**
+
+After accepting the certificate, you should see a page similar to the following:
 
 ![Mender UI - initial load](mender_ui_initial.png)
 
