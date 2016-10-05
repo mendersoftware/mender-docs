@@ -65,4 +65,4 @@ The size of the persistent data partition in the generated `.sdimg` file. See [C
 
 #### SYSTEMD_AUTO_ENABLE
 
-Controls whether to run Mender as a systemd service. See [Modes of operations](../../Architecture/overview#modes-of-operation) and [Customizations](../../Artifacts/Customizations) for more information.
+Controls whether to run Mender as a systemd service. See [Modes of operations](../../Architecture/overview#modes-of-operation) and [Build customizations](../../Artifacts/Build-customizations) for more information.
