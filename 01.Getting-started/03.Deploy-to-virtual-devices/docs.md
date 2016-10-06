@@ -65,11 +65,13 @@ upload the image.
 
 Please fill in the following:
 
-* Name: `release2` (or choose your own)
-* Yocto ID: `test` (required)
-* Checksum: `test` (unused for now)
-* Device type compatibility: `vexpress-qemu` (required)
-* Description: `My first deployment` (or choose your own)
+* Name: `release2`
+* Yocto ID: `test`
+* Checksum: `test`
+* Device type compatibility: `vexpress-qemu`
+* Description: `My test build`
+
+! Thorough validation of image meta-data is not yet implemented, so we recommend using the exact values above to avoid any issues.
 
 In the end, it should look something like this:
 
@@ -109,26 +111,66 @@ which is obtained from the device, to diagnose the issue.
 You can also see the state of deployments on the Dashboard.
 
 **TODO**: Verify update, e.g. in QEMU client console (/etc/issue).
-**TODO**: Link to proceed with reference BBB update below.
 
 
 
-**Congratulations!** You have used the Mender server to deploy your first managed update!
-Now that you have seen how Mender works with a virtual device, you might be wondering what
-it would take to port it to your own platform. The first place to go is
-[Device integration](../../Devices), where you will find out how to integrate
-the Mender client with your device software, and then look at
-[Creating artifacts](../../Artifacts) to see how to build images ready to be
-deployed over the network to your devices.
+## Deploy another update
 
-## Deploying to custom groups
+For robustness and avoiding unneccessary deployments, Mender
+will not deploy an image that is already installed on a device.
+Thus, if you create another deployment with the image you already
+uploaded, Mender will see that it is the same rootfs image
+that is already installed and skip the deployment. It will
+immideately be marked as successful and moved to *Past deployments*.
+
+For this reason, we provide another image that you can use
+to deploy with at [https://mender.s3.amazonaws.com/latest/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4](https://mender.s3.amazonaws.com/latest/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4). This is actually the original rootfs of your
+QEMU virtual device, before you deployed the update above.
+
+When you upload this image, it is very important that
+you set the right **Yocto ID**. The Yocto ID in this particular
+image changes over time with new builds, and you can find it by running the
+following long command string:
+
+```
+mkdir /tmp/rootfs && sudo mount -t ext4 -o loop core-image-full-cmdline-vexpress-qemu.ext4 /tmp/rootfs/ && cat /tmp/rootfs/etc/mender/build_mender | grep IMAGE_ID | cut -f3 -d" "  && sudo umount /tmp/rootfs && rmdir /tmp/rootfs
+```
+
+!!! All this command does is to look at the file `/etc/mender/build_mender` inside the root file system. It contains `IMAGE_ID` which is mapped to `Yocto ID`, however both will soon be renamed to Image ID.
+
+The output should look something like `core-image-full-cmdline-20161006122803`.
+
+After finding the correct value for Yocto ID, go
+to **Software** again and upload with the following fields:
+
+* Name: `release1`
+* Yocto ID: `core-image-full-cmdline-20161006122803` (**NB! use the string you found above**)
+* Checksum: `test`
+* Device type compatibility: `vexpress-qemu`
+* Description: `My original build`
+
+After the rootfs has been uploaded, you can deploy it to your device
+to get it back to the original root file system. Following that
+you can deploy the `release2` rootfs again, and so forth.
+
+
+## Deploy to custom groups
 
 As you might have noticed, it is possible to create
 groups in the **Devices** tab. Once you have created a
 group and added one or more devices to it, you can deploy
-an image to that group.
+an image to that group by selecting the group instead
+of *All devices* when you create a deployment.
 
-This can be very useful in order to deploy to a test environment
+This can be very useful in order to deploy to test devices
 before production, or only deploy to devices owned by a specific customer.
 
 ! To avoid accidents, Mender only allows **a device to be in one group at the time**. If a device could be in several groups, for example test *and* production, unintended deployments and downtime could occur. Therefore, as a safety measure, Mender does not allow this.
+
+
+## Deploy to physical devices
+
+**Congratulations!** You have used the Mender server to deploy your first managed update!
+If you have a BeagleBone Black, you can proceed to
+[Deploy to physical devices](../Deploy-to-physical-devices) to try out deploying to a
+real-world device!
