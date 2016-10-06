@@ -4,7 +4,15 @@ taxonomy:
     category: docs
 ---
 
-This document outlines the steps needed to build a [Yocto Project](https://www.yoctoproject.org/?target=_blank) image containing a testable version of the Mender client for both QEMU and BeagleBone Black.
+This document outlines the steps needed to build a [Yocto Project](https://www.yoctoproject.org/?target=_blank) image for a device.
+The build output will most notably include:
+* a file that can be flashed to the device storage during initial provisioning, it has suffix `.sdimg`
+* a rootfs filesystem image file that Mender can deploy to your provisioned device, it normally has suffix `.ext4`, but this depends on the file system type you build
+
+Mender uses a virtual QEMU device for testing without the need for hardware, and the BeagleBone Black as the reference hardware platform.
+Building for these devices is well tested with Mender. If you are building for your own device
+please see [Device integration](../../Devices) for general requirements and adjustments you might need
+to enable your device to support atomic image-based deployments with rollback.
 
 !!! If you do not want to build your own images for testing purposes, the [Getting started](../../Getting-started) tutorials provide links to several demo images, both for QEMU and BeagleBone Black.
 
@@ -24,11 +32,11 @@ Detailed instructions and recipes needed for building a self-contained image fol
 
 !!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Start guide](http://www.yoctoproject.org/docs/2.1/yocto-project-qs/yocto-project-qs.html).
 
-##Dependencies
+## Prerequisites
 
-! We use the Yocto Project's **krogoth** branch below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy), but these branches are no longer maintained by Mender developers.
+! We use the Yocto Project's **krogoth** branch below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy), but these branches are no longer maintained by Mender developers. Please reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum#!forum/mender) if you would like help with getting Mender to work on other versions of the Yocto Project.
 
-The *meta-mender* layer depends on the following repositories:
+The required meta layers are found in the following repositories:
 
 ```
 URI: git://git.yoctoproject.org/poky
@@ -41,20 +49,28 @@ URI: git://github.com/mem/oe-meta-go
 branch: master
 ```
 
-## Pre-configuration
+A Yocto Project poky environment is required. If you already have 
+this in your build environment, please open a terminal, go to the `poky`
+directory and skip to [Adding the meta layers](#adding-the-meta-layers).
 
-First, we need to clone the latest Yocto Project source:
+
+On the other hand, if you want to start from a clean environment,
+you need to clone the latest poky and go into the directory:
 
 ```
 git clone -b krogoth git://git.yoctoproject.org/poky
 ```
 
-Having done that, we can clone the meta-mender and oe-meta-go layers into the top level
-of the Yocto Project build tree (in directory poky):
-
 ```
 cd poky
 ```
+
+## Adding the meta layers
+
+We will now add the required meta layers to our build environment.
+Please make sure you are standing in the directory where `poky` resides,
+i.e. the top level of the Yocto Project build tree, and run these commands:
+
 ```
 git clone -b krogoth git://github.com/mendersoftware/meta-mender
 ```
@@ -72,10 +88,7 @@ source oe-init-build-env
 This creates a build directory with the default name, ```build```, and makes it the
 current working directory.
 
-
-## Yocto Project configuration
-
-We need to incorporate the two layers, meta-mender and oe-meta-go, into
+We then need to incorporate the two layers, meta-mender and oe-meta-go, into
 our project:
 
 ```
@@ -85,53 +98,53 @@ bitbake-layers add-layer ../meta-mender
 bitbake-layers add-layer ../oe-meta-go
 ```
 
+At this point, all the layers required for Mender should be
+part of your Yocto Project build environment.
+
+
+## Configuring the build
+
 !!! The configuration in `conf/local.conf` below will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../Architecture/overview#modes-of-operation). See the [section on customizations](../Build-customizations#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
 
-We can generate a mender test build for one of two machines: a target emulated
-by QEMU or a BeagelBone Black.
-
-For QEMU, add these lines to the start of ```conf/local.conf```:
+Add these lines to the start of your `conf/local.conf`:
 
 ```
 INHERIT += "mender-full"
-MACHINE = "vexpress-qemu"
+MACHINE = "<YOUR-MACHINE>"
 DISTRO_FEATURES_append = " systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
 DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 VIRTUAL-RUNTIME_initscripts = ""
 ```
 
-For the BeagleBone Black, add these lines:
-
-```
-INHERIT += "mender-full"
-MACHINE = "beaglebone"
-DISTRO_FEATURES_append = " systemd"
-VIRTUAL-RUNTIME_init_manager = "systemd"
-DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
-VIRTUAL-RUNTIME_initscripts = ""
-```
-
-! Note that Mender automatically selects the file system types it builds based on the `IMAGE_FSTYPES` variable. See the [section on file system types](../../Devices/Partition-layout#file-system-types) for more information.
+!!! Please replace `<YOUR-MACHINE>` with the correct machine for your device. If you are building for a Mender reference platform, you can use `vexpress-qemu` or `beaglebone`. Also note that Mender automatically selects the file system types it builds into the provisioning file (`.sdimg`) based on the `IMAGE_FSTYPES` variable. See the [section on file system types](../../Devices/Partition-layout#file-system-types) for more information.
 
 !!! It is suggested to also add ```INHERIT += "rm_work"``` to ```conf/local.conf``` in order to conserve disk space during the build.
 
 ## Building the image
 
-### For QEMU
-
-Once all the configuration steps are done, the image can be built like this:
+Once all the configuration steps are done, an image can be built with bitbake:
 
 ```
-bitbake core-image-full-cmdline
+bitbake <YOUR-TARGET>
 ```
 
-This will build the `core-image-full-cmdline` image type, but it is also possible to
-build other image types.
+!!! Please replace `<YOUR-TARGET>` with the desired target or image name. If you are building for a Mender reference platform, targets `core-image-full-cmdline` for machine `vexpress-qemu` or `core-image-base` for machine `beaglebone` are known to work well, respectively. For more information about the differences with image types on the BeagleBone Black please see [the official Yocto Project BeagleBone support page](https://www.yoctoproject.org/downloads/bsps/krogoth21/beaglebone).
 
 !!! The first time you build a Yocto Project image, the build process can take several hours. The successive builds will only take a few minutes, so please be patient this first time. 
 
-After a successful build, the images and build artifacts are placed in `tmp/deploy/images/vexpress-qemu/`. There is a helper script that starts up our newly built image which can be run with:
+
+After a successful build, the images and build artifacts are placed in `tmp/deploy/images/<YOUR-MACHINE>/`
+(as set in `conf/local.conf`).
+As stated in the beginning, the most interesting files for Mender are the ones with suffix `.sdimg`
+(for initial device storage provisioning) and `.ext4` - or your selected file system for rootfs
+(for deploying updates to a device already running Mender).
+
+### For QEMU
+
+
+There is a helper script that starts up our newly built image which can be run with:
+
 
 ```
 ../meta-mender/scripts/mender-qemu
@@ -141,20 +154,5 @@ You can log in as *root* without password. To test how to deploy a rootfs update
 
 ### For BeagleBone Black
 
-In order to build an image that can be run on BeagleBone Black, the following
-command should be used:
-
-```
-bitbake core-image-base
-```
-
-The reason the ```core-image-base``` image is built is the simplicity of the booting
-and testing process. With the base image, all needed boot and configuration files
-are created by Yocto Project and copied to appropriate locations in the boot partition
-and the root file system. For more information the about differences with
-image types on the BeagleBone Black please see [the official Yocto Project BeagleBone support
-page](https://www.yoctoproject.org/downloads/bsps/krogoth21/beaglebone).
-
-Like for QEMU, please be aware that your first Yocto Project build can take several hours.
 
 After a successful build, the images and build artifacts are placed in `tmp/deploy/images/beaglebone/`. To write your new image to the SD card and test how to deploy a rootfs update on BeagleBone Black, please read [Getting started - Your first update on BeagleBone Black](../../Getting-started/Your-first-update-on-BeagleBone#write-the-disk-image-to-the-sd-card). Optionally, if you want to modify the rootfs image prior to deploying it, see [Modifying a rootfs image](../Modifying-a-rootfs-image).
