@@ -120,7 +120,7 @@ The Mender UI can now be found on [https://localhost:8080/](https://localhost:80
 simply open it in your web browser and **accept the certificate**. In Chrome it should look
 like the following:
 
-**TODO: Pic**
+![Accept certificate - Chrome](cert_accept_chrome.png)
 
 After accepting the certificate, you should see a page similar to the following:
 
