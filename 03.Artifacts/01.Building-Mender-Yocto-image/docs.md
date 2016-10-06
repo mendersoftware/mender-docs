@@ -18,7 +18,7 @@ to enable your device to support atomic image-based deployments with rollback.
 
 ## What is *meta-mender*?
 
-[meta-mender](https://github.com/mendersoftware/meta-mender) is a layer that enables the creation of a Yocto Project image where the Mender client is part of the image. With Mender installed and configured on the image, you can deploy image updates and benefit from features like automatic roll-back, remote management, logging and reporting. The *meta-mender* layer contains all the recipes required to build the Mender Go binary and configure the Yocto Project image.
+[meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank) is a layer that enables the creation of a Yocto Project image where the Mender client is part of the image. With Mender installed and configured on the image, you can deploy image updates and benefit from features like automatic roll-back, remote management, logging and reporting. The *meta-mender* layer contains all the recipes required to build the Mender Go binary and configure the Yocto Project image.
 
 The *meta-mender* layer takes care of:
 
@@ -30,11 +30,11 @@ Each one of these steps can be configured further, see the linked sections for m
 
 Detailed instructions and recipes needed for building a self-contained image follow.
 
-!!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Start guide](http://www.yoctoproject.org/docs/2.1/yocto-project-qs/yocto-project-qs.html).
+!!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Start guide](http://www.yoctoproject.org/docs/2.1/yocto-project-qs/yocto-project-qs.html?target=_blank).
 
 ## Prerequisites
 
-! We use the Yocto Project's **krogoth** branch below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy), but these branches are no longer maintained by Mender developers. Please reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum#!forum/mender) if you would like help with getting Mender to work on other versions of the Yocto Project.
+! We use the Yocto Project's **krogoth** branch below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank), but these branches are no longer maintained by Mender developers. Please reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum#!forum/mender) if you would like help with getting Mender to work on other versions of the Yocto Project.
 
 The required meta layers are found in the following repositories:
 
@@ -130,7 +130,7 @@ Once all the configuration steps are done, an image can be built with bitbake:
 bitbake <YOUR-TARGET>
 ```
 
-!!! Please replace `<YOUR-TARGET>` with the desired target or image name. If you are building for a Mender reference platform, targets `core-image-full-cmdline` for machine `vexpress-qemu` or `core-image-base` for machine `beaglebone` are known to work well, respectively. For more information about the differences with image types on the BeagleBone Black please see [the official Yocto Project BeagleBone support page](https://www.yoctoproject.org/downloads/bsps/krogoth21/beaglebone).
+!!! Please replace `<YOUR-TARGET>` with the desired target or image name. If you are building for a Mender reference platform, targets `core-image-full-cmdline` for machine `vexpress-qemu` or `core-image-base` for machine `beaglebone` are known to work well, respectively. For more information about the differences with image types on the BeagleBone Black please see [the official Yocto Project BeagleBone support page](https://www.yoctoproject.org/downloads/bsps/krogoth21/beaglebone?target=_blank).
 
 !!! The first time you build a Yocto Project image, the build process can take several hours. The successive builds will only take a few minutes, so please be patient this first time.
 

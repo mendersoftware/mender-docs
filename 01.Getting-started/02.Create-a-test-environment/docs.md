@@ -15,7 +15,7 @@ so that deployments can be managed across many devices.
 In order to make it easy to test Mender as a whole, we have created a
 docker compose environment that brings all of these components up
 and connects them together. It even includes a service that runs a
-virtual device using [Quick Emulator (QEMU)](http://qemu.org),
+virtual device using [Quick Emulator (QEMU)](http://qemu.org?target=_blank),
 which is handy because it means that you can test the client without
 having to configure any hardware.
 
@@ -29,13 +29,13 @@ and at least **8 GB** RAM and disk available.
 
 #### Docker Engine 1.10
 
-Follow the [documentation to install Docker Engine](https://docs.docker.com/engine/installation/linux/ubuntulinux/),
+Follow the [documentation to install Docker Engine](https://docs.docker.com/engine/installation/linux/ubuntulinux/?target=_blank),
 version **1.10 or later**.
 
 
 #### Docker Compose 1.7
 
-Follow the [documentation to install Docker Compose](https://docs.docker.com/compose/install/),
+Follow the [documentation to install Docker Compose](https://docs.docker.com/compose/install/?target=_blank),
 version **1.7 or later**.
 
 #### Fast Internet connection
@@ -116,7 +116,7 @@ by your web browser.
 
 !! Currently Mender uses a default certificate for its gateway. This is insecure because anyone can gain access to the private key corresponding to the certificate (it is stored on the gateway and the same for all installations). This will shortly be remediated by auto-generating keys as Mender is installed.
 
-The Mender UI can now be found on [https://localhost:8080/](https://localhost:8080/) -
+The Mender UI can now be found on [https://localhost:8080/](https://localhost:8080/?target=_blank) -
 simply open it in your web browser and **accept the certificate**. In Chrome it should look
 like the following:
 
@@ -127,7 +127,7 @@ After accepting the certificate, you should see a page similar to the following:
 ![Mender UI - initial load](mender_ui_initial.png)
 
 **Congratulations!** You have the Mender server and a virtual Mender client successfully running!
-Please proceed to [Deploy the first managed update](../Deploy-first-managed-update).
+Please proceed to [Deploy to virtual devices](../Deploy-to-virtual-devices).
 
 You can find some steps for maintaining your test environment below.
 

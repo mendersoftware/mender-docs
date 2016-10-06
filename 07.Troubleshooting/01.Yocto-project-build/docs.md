@@ -41,7 +41,7 @@ See the [Yocto Project documentation](http://www.yoctoproject.org/docs/latest/me
 
 ## Missing UBOOT_SUFFIX
 
-The Yocto Project's `UBOOT_SUFFIX` variable is defined in [the U-Boot recipe](http://git.yoctoproject.org/cgit/cgit.cgi/poky/tree/meta/recipes-bsp/u-boot/u-boot.inc).
+The Yocto Project's `UBOOT_SUFFIX` variable is defined in [the U-Boot recipe](http://git.yoctoproject.org/cgit/cgit.cgi/poky/tree/meta/recipes-bsp/u-boot/u-boot.inc?target=_blank).
 At the time of writing the default value is `bin`, but some versions of U-Boot use `img`.
 
 This variable is used by meta-mender and should be available outside the U-Boot recipe.
@@ -62,7 +62,7 @@ UBOOT_SUFFIX = "bin"
 ## U-Boot lacks support for Boot Count Limit
 
 In order to support robust rootfs rollback, Mender depends on being able to tell the bootloader to roll back to the known-working rootfs if attempts to boot the updated rootfs fails a given number of times.
-Currently, Mender uses the [Boot Count Limit](http://www.denx.de/wiki/view/DULG/UBootBootCountLimit) feature of U-Boot to achieve this.
+Currently, Mender uses the [Boot Count Limit](http://www.denx.de/wiki/view/DULG/UBootBootCountLimit?target=_blank) feature of U-Boot to achieve this.
 If you see errors similar to the following during the Yocto Project build process, the U-Boot you are using most likely does not support this feature.
 
 ```

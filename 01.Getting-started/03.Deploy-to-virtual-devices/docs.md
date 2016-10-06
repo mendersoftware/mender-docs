@@ -19,7 +19,7 @@ as described in [Create a test environment](../Create-a-test-environment).
 
 Open the Mender UI in the same browser as you accepted the certificate
 in as part of [Create a test environment](../Create-a-test-environment).
-It is available at [http://localhost:8080/](http://localhost:8080/).
+It is available at [http://localhost:8080/](http://localhost:8080/?target=_blank).
 
 There should be a virtual device that is waiting authorization.
 This means that the Mender client, which runs as a daemon on the device,
@@ -57,11 +57,6 @@ includes Mender support can be used, as described in
 To make testing easier, a demo image that can be used with
 the virtual device is provided at
 [https://mender.s3.amazonaws.com/latest/demo/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4](https://mender.s3.amazonaws.com/latest/demo/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4).
-You can download it by clicking on the link above, or on the command line with the following command.
-
-```
-wget https://mender.s3.amazonaws.com/latest/demo/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4
-```
 
 Now go back to the Mender server UI, click the **Software** tab and
 upload the image.
@@ -121,7 +116,7 @@ You can also see the state of deployments on the Dashboard.
 **Congratulations!** You have used the Mender server to deploy your first managed update!
 Now that you have seen how Mender works with a virtual device, you might be wondering what
 it would take to port it to your own platform. The first place to go is
-[Device configuration](../../Devices), where you will find out how to integrate
+[Device integration](../../Devices), where you will find out how to integrate
 the Mender client with your device software, and then look at
 [Creating artifacts](../../Artifacts) to see how to build images ready to be
 deployed over the network to your devices.

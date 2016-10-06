@@ -104,7 +104,7 @@ mender -log-level info -rootfs http://<IP-OF-WORKSTATION>:8000/<ROOTFS-IMAGE>
 ```
 
 Use the appropriate rootfs image file in place of `<ROOTFS-IMAGE>`, e.g. `core-image-full-cmdline.ext4`.
-You can find the right name by opening a browser at [http://localhost:8000](http://localhost:8000).
+You can find the right name by opening a browser at [http://localhost:8000](http://localhost:8000?target=_blank).
 
 Mender will download the new image, write it to the inactive rootfs partition and configure the bootloader to boot into it on the next reboot. This should take about 2 minutes to complete.
 
