@@ -4,237 +4,124 @@ taxonomy:
     category: docs
 ---
 
-This tutorial will demonstrate Mender using a virtual device in the [Quick Emulator (QEMU)](http://qemu.org), which is handy because it means that you do not have to configure any hardware.
-We will go through how to deploy a rootfs image onto a QEMU machine and verify that the update was successful after reboot, using prebuilt images, so you don't have to compile or build Mender.
+In this tutorial we will demonstrate *standalone* deployments with the Mender client,
+where no Mender server is used and the deployments are triggered at the
+device terminal either manually or by custom scripts. This can be useful in order
+to deploy updates to devices which do not have network connectivity or
+are updated through external storage like a USB stick.
 
-!!! This tutorial typically takes less than 10 minutes to complete.
+For an explanation of the difference between *managed* and *standalone* deployments, please see
+[Modes of operation](../../Architecture/overview#modes-of-operation).
 
-# QEMU
-
-**TODO** Align QEMU / BBB.
 
 ## Prerequisites
 
-The workstation needs [QEMU](http://wiki.qemu.org/?target=_blank) with ARM processor support installed and a minimum of 1 GiB of free memory. QEMU runs on various platforms and can easily be installed using package managers.
+The tutorial will in general assume that you use a physical device connected
+to your workstation. However, it can also be carried out with a virtual
+QEMU device so you do not have to configure any hardware. If you follow
+it using a QEMU device, please make sure QEMU for the ARM architecture
+works, it is typically installed with the `qemu-system-arm` package.
 
-Debian and Ubuntu:
+### Device storage and rootfs images
 
-```
-sudo apt-get install qemu-system-arm
-```
+You will need two images of different types.
 
-Red Hat, CentOS and Fedora:
+The first is an image file to flash to the entire storage of the
+device. `meta-mender` creates these files with a `.sdimg`
+suffix, so they are easy to recognize. This file contains
+all the partitions of the given storage device, as
+described in [Partition layout](../../Devices/Partition-layout).
+In addition, you need a rootfs image to update to. The suffix
+of this file depends on the file system used for rootfs,
+for example `.ext4`.
 
-```
-yum install qemu-system-arm
-```
+You can build the required images by following the steps
+described in Building a [Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image).
 
-
-## Download and unpack prebuilt images 
-If you have already [built a Yocto Project image with Mender](../../Artifacts/Building-Mender-Yocto-image), please move on to the [next section](#run-the-image-in-qemu). If you don't have any images to test, you can download our latest build which contains the necessary images for testing. It will also contain images for BeagleBone Black.
-
-Download the latest Mender build:
-
-```
-wget https://s3-eu-west-1.amazonaws.com/yocto-builds/latest/latest.tar.gz
-```
-
-Unpack the tarball:
-
-```
-tar zxvf latest.tar.gz
-```
-
-You should see the files being unpacked:
-
-> mender/  
-> mender/vexpress-qemu/  
-> mender/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4  
-> mender/vexpress-qemu/mender-qemu.sh  
-> mender/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.sdimg  
-> mender/vexpress-qemu/u-boot.elf  
-> mender/beaglebone/  
-> mender/beaglebone/core-image-base-beaglebone.ext4  
-> mender/beaglebone/core-image-base-beaglebone.sdimg  
-> mender/README  
-> mender/BUILD
-
-## Run the image in QEMU
-Run the image in QEMU by running the following commands:
-
-```
-cd mender/vexpress-qemu
-```
-```
-/bin/sh mender-qemu.sh
-```
-
-This will take you to the login prompt. Above the prompt you should see a welcome message similar
-to this:
-
-> "Poky (Yocto Project Reference Distro) 2.0.2 vexpress..."
-
-You can login with user *root*. No password is required. 
-
-## Serve a rootfs image for the QEMU machine
-
-To deploy a new rootfs to the QEMU machine, you need to start a http server on your workstation to serve the image. Open a new shell on your workstation and change into the vexpress-qemu directory. There you will find an update image named ```core-image-full-cmdline-vexpress-qemu.ext4```. Start a simple Python webserver in that directory, like so:
-
-```
-python -m SimpleHTTPServer
-```
-
-!!! By default the QEMU machine can reach your workstation on IP address 10.0.2.2 and SimpleHTTPServer starts on port 8000, so your QEMU machine should now be able to access your workstation's directory at ```http://10.0.2.2:8000/```, while you can test it from a browser at [http://localhost:8000](http://localhost:8000).
-
-## Deploy the new rootfs to the QEMU machine with Mender
-
-In your QEMU machine's terminal, test the connection to the workstation with:
-
-```
-ping 10.0.2.2
-```
-
-To deploy the new image to your QEMU machine, run the following command in its terminal:
-
-```
-mender -log-level info -rootfs http://10.0.2.2:8000/core-image-full-cmdline-vexpress-qemu.ext4
-```
-
-Mender will download the new image, write it to the inactive rootfs partition and configure the bootloader to boot into it on the next boot. This should take about 2 minutes to complete.
-
-!!! The `mender -rootfs` option accepts http(s) URIs, as well as file paths. Thus you can also update from a file system file from local storage like a USB-stick or remotely-mounted storage like NFS by simply changing the path to the image accordingly.
-
-To run the updated rootfs image, simply reboot your QEMU machine:
-
-```
-reboot
-```
-
-QEMU should boot into the updated rootfs, and a welcome message like this should greet you:
-
-> "This system has been updated by Mender build..."
-
-**Congratulations!** You have just deployed your first rootfs image with Mender! If you are happy with the update, you can make it permanent by logging in to the QEMU machine as *root* and running:
-
-```
-mender -commit
-```
-
-By running this command, Mender will configure the bootloader to persistently boot from this updated rootfs partition. To deploy another update, simply follow these instructions again (from `mender ... -rootfs ...`).
-
-!!! If we reboot the machine again *without* running ```mender -commit```, it will boot into the previous rootfs partition that is known to be working (where we deployed the update from). This ensures strong reliability in cases where the newly deployed rootfs does not boot or otherwise has issues that we want to roll back from. Also note that it is possible to automate deployments by [running the Mender client as a daemon](../../Architecture/overview#modes-of-operation).
+!!! If you are testing Mender on the reference platforms BeagleBone Black or QEMU, you can save the build time by using the [latest prebuilt demo images](https://s3-eu-west-1.amazonaws.com/yocto-builds/latest/latest.tar.gz). The `.sdimg` and `.ext4` images are found in the `vexpress-qemu` and `beaglebone` directories.
 
 
+### Network connectivity
 
-## Next steps
+There must be network connectivity between your workstation and the device.
+For example, you could connect your workstation and the device using a cross-over
+Ethernet cable and use static IP addresses at both ends.
 
-Now that you have seen how Mender works with QEMU, you might be wondering what
-it would take to port it to your own platform. The first place to go is
-[Device configuration](../../Devices), where you will find out how to integrate
-the Mender client with your device software, and then look at
-[Creating artifacts](../../Artifacts) to see how to build images ready to be
-deployed over the network to your devices.
+!!! If you are testing with QEMU, the network is automatically set up by the provided script `mender-qemu.sh`.
 
-
-
-# BBB
-
-This page will show you how to deploy an image update onto a BeagleBone Black board and verify that the update was successful after reboot. We will use prebuilt images, so you do not have to compile or build Mender.
-
-## Prerequisites
-
-Your workstation must be on the same subnet as the BeagleBone Black. For example, you could connect your workstation and the BeagleBone Black using a cross-over Ethernet cable and use static IP addresses at both ends.
-
-## Download and unpack prebuilt images 
-If you have already [built an image which includes Mender](../../Artifacts/Building-Mender-Yocto-image), please move on to [next section](#write-the-disk-image-to-the-sd-card). If you do not have any images to test, you can download our latest builds which contains the necessary images for testing. It will also contain images for QEMU.
-
-Download the latest Mender build:
-
-```
-wget https://s3-eu-west-1.amazonaws.com/yocto-builds/latest/latest.tar.gz
-```
-
-Unpack the tarball:
-
-```
-tar zxvf latest.tar.gz
-```
-
-You should see the files being unpacked:
-
-> mender/  
-> mender/vexpress-qemu/  
-> mender/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4  
-> mender/vexpress-qemu/mender-qemu.sh  
-> mender/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.sdimg  
-> mender/vexpress-qemu/u-boot.elf  
-> mender/beaglebone/  
-> mender/beaglebone/core-image-base-beaglebone.ext4  
-> mender/beaglebone/core-image-base-beaglebone.sdimg  
-> mender/README  
-> mender/BUILD
 
 ## Write the disk image to the SD card
 
 Please see [Provisioning a new device](../../Artifacts/Provisioning-a-new-device)
-for steps how to write to provision the device with the storage image (`core-image-base-beaglebone.sdimg`).
+for steps how to provision the device storage using the `*.sdimg` image.
 
-## Boot the BeagleBone Black from the SD card
-
-Take the SD card out of your card reader and insert it into your BeagleBone Black. Then boot the BeagleBone Black while keeping the S2 button pressed for about 5 seconds or until you see console output.
-
-! The standard BeagleBone Black boot process uses the bootloader from internal flash storage, which will interfere with Mender's rollback mechanism. In order to use the bootloader from the SD card, make sure that S2 (boot) button is pressed while powering on your BeagleBone Black(see image below).
-
-![BeagleBone sdboot button](beaglebone_black_sdboot.jpg)
-
-This will take you to the login prompt. Above the prompt you should see a welcome message like:
-
-> "Poky (Yocto Project Reference Distro) 2.0.2 beaglebone..."
-
-You can login with user *root*. No password is required. 
+!!! If you are testing with QEMU, there is no need to do this step as you will run it from virtual storage.
 
 
-## Serve a rootfs image for the BeagleBone Black
+## Boot the device
 
-To deploy a new rootfs to the BeagleBone Black, you need to start a http server on your workstation to serve the image. Open a new shell on your workstation and change into the beaglebone directory. There you will find an update image named ```core-image-base-beaglebone.ext4```. Start a simple Python webserver in that directory, like so:
+Take the SD card out of your card reader and insert it into your device.
+Then boot the device from the SD card, which might entail keeping a button pressed
+during boot until you see console output, or change of a jumper setting.
+
+! If you boot from internal flash storage (which is standard on BeagleBone Black unless the S2 button is pressed), this will interfere with Mender's rollback mechanism.
+
+!!! If you are testing with QEMU, you can boot the device by changing directory to the location of the `mender-qemu.sh` script and running `/bin/sh mender-qemu.sh`.
+
+This will take you to the login prompt, and you should see a message similar to the following:
+
+> "Poky (Yocto Project Reference Distro)..."
+
+!!! If you are using the Mender demo images, you can log in with user *root*. No password is required. 
+
+
+## Serve a rootfs image to the device over http
+
+To deploy a new rootfs to the device, you need to start a http server on your workstation to serve the image. Open a new terminal **on your workstation** and change into the directory with your rootfs image (e.g. `*.ext4`). Start a simple Python webserver in that directory, like so:
 
 ```
 python -m SimpleHTTPServer
 ```
 
-!!! SimpleHTTPServer starts on port 8000, but the IP address depends on the network setup between the BeagleBone Black and your workstation. You can find the IP address by using tools like ```ifconfig``` on your workstation. We will assume the BeagleBone Black can reach your workstation's web server on ```http://<IP-OF-WORKSTATION>:8000/```, while you can test it from a browser at [http://localhost:8000](http://localhost:8000).
+!!! SimpleHTTPServer starts on port 8000, but the IP address your device should use to reach it depends on the network setup between your device and workstation. You can find the IP address by using network tools like ```ip``` on your workstation. We will assume the device can reach your workstation's web server on ```http://<IP-OF-WORKSTATION>:8000/```.
 
-## Deploy the new rootfs to the BeagleBone Black with Mender
+!!! If you are testing with QEMU, the virtual device should be able to access your workstation's directory at `http://10.0.2.2:8000/`, i.e. `<IP-OF-WORKSTATION>` is `10.0.2.2` in this case.
 
 
-In your BeagleBone Black's terminal, test the connection to the workstation with:
+## Deploy the new rootfs to the device
+
+In your **device terminal**, test the connection to the workstation with:
 
 ```
 ping <IP-OF-WORKSTATION>
 ```
 
-To deploy the new image to your BeagleBone Black, run the following command in its terminal:
+To deploy the new rootfs image to your device, run the following command in its terminal:
 
 
 ```
-mender -log-level info -rootfs http://<IP-OF-WORKSTATION>:8000/core-image-base-beaglebone.ext4
+mender -log-level info -rootfs http://<IP-OF-WORKSTATION>:8000/<ROOTFS-IMAGE>
 ```
+
+Use the appropriate rootfs image file in place of `<ROOTFS-IMAGE>`, e.g. `core-image-full-cmdline.ext4`.
+You can find the right name by opening a browser at [http://localhost:8000](http://localhost:8000).
 
 Mender will download the new image, write it to the inactive rootfs partition and configure the bootloader to boot into it on the next reboot. This should take about 2 minutes to complete.
 
 !!! The `mender -rootfs` option accepts http(s) URIs, as well as file paths. Thus you can also update from a file system file from local storage like a USB-stick or remotely-mounted storage like NFS by simply changing the path to the image accordingly.
 
-To run the updated rootfs image, simply reboot your BeagleBone Black:
+To run the updated rootfs image, simply reboot your device:
 
 ```
 reboot
 ```
 
-Your device should boot into the updated rootfs, and a welcome message like this should greet you:
+Your device should boot into the updated rootfs.
 
-> "This system has been updated by Mender build..."
+!!! If you are using the Mender demo images, you can verify the new rootfs image is running as you see a message similar to *This system has been updated by Mender build...* before the login prompt.
 
-**Congratulations!** You have just deployed your first rootfs image with Mender! If you are happy with the update, you can make it permanent by logging in to the BeagleBone Black as root and running:
+**Congratulations!** You have just deployed your first rootfs image with Mender!
+If you are happy with the update, you can make it permanent by running the following in your device terminal:
 
 
 ```
@@ -243,14 +130,4 @@ mender -commit
 
 By running this command, Mender will configure the bootloader to persistently boot from this updated rootfs partition. To deploy another update, simply follow these instructions again (from `mender ... -rootfs ...`).
 
-!!! If we reboot the machine again *without* running ```mender -commit```, it will boot into the previous rootfs partition that is known to be working (where we deployed the update from). This ensures strong reliability in cases where the newly deployed rootfs does not boot or otherwise has issues that we want to roll back from. Also note that it is possible to automate deployments by [running the Mender client as a daemon](../../Architecture/overview#modes-of-operation).
-
-
-## Next steps
-
-Now that you have seen how Mender works with the BeagleBone Black, you might be wondering what
-it would take to port it to your own platform. The first place to go is
-[Device configuration](../../Devices), where you will find out how to integrate
-the Mender client with your device software, and then look at
-[Creating artifacts](../../Artifacts) to see how to build images ready to be
-deployed over the network to your devices.
+!!! If we reboot the device again *without* running ```mender -commit```, it will boot into the previous rootfs partition that is known to be working (where we deployed the update from). This ensures a robust update process in cases where the newly deployed rootfs does not boot or otherwise has issues that we want to roll back from. Also note that it is possible to automate deployments by [running the Mender client as a daemon](../../Architecture/overview#modes-of-operation).
