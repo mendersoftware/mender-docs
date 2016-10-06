@@ -175,19 +175,9 @@ You should see the files being unpacked:
 > mender/BUILD
 
 ## Write the disk image to the SD card
-The sdimg image is a partitioned image that can be written directly to the SD card.
 
-!! Be careful! If you point to the wrong device when executing the command below, you risk overwriting your workstation's local or connected storage devices.
-
-Assuming you are in the same directory as the beaglebone sdimg, you can write the sdimg to the SD card using the following command:
-
-```
-sudo dd if=core-image-base-beaglebone.sdimg of=<DEVICE> bs=1M
-```
-
-!!! &lt;DEVICE&gt; depends on where your SD card is placed. Normally this would be something like  ***/dev/mmcblk0*** or ***/dev/sdb***.  If you are unsure how to find the correct device, the Raspberry PI Foundation provide some nice references that can help you: [Linux](https://www.raspberrypi.org/documentation/installation/installing-images/linux.md?target=_blank), [Mac OSX](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md?target=_blank), [Windows](https://www.raspberrypi.org/documentation/installation/installing-images/windows.md?target=_blank).
-
-Writing the sdimg file to to the SD card should take less than one minute.
+Please see [Provisioning a new device](../../Artifacts/Provisioning-a-new-device)
+for steps how to write to provision the device with the storage image (`core-image-base-beaglebone.sdimg`).
 
 ## Boot the BeagleBone Black from the SD card
 
