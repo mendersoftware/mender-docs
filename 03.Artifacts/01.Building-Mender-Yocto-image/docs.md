@@ -121,6 +121,7 @@ VIRTUAL-RUNTIME_initscripts = ""
 
 !!! It is suggested to also add ```INHERIT += "rm_work"``` to ```conf/local.conf``` in order to conserve disk space during the build.
 
+
 ## Building the image
 
 Once all the configuration steps are done, an image can be built with bitbake:
@@ -131,28 +132,22 @@ bitbake <YOUR-TARGET>
 
 !!! Please replace `<YOUR-TARGET>` with the desired target or image name. If you are building for a Mender reference platform, targets `core-image-full-cmdline` for machine `vexpress-qemu` or `core-image-base` for machine `beaglebone` are known to work well, respectively. For more information about the differences with image types on the BeagleBone Black please see [the official Yocto Project BeagleBone support page](https://www.yoctoproject.org/downloads/bsps/krogoth21/beaglebone).
 
-!!! The first time you build a Yocto Project image, the build process can take several hours. The successive builds will only take a few minutes, so please be patient this first time. 
+!!! The first time you build a Yocto Project image, the build process can take several hours. The successive builds will only take a few minutes, so please be patient this first time.
 
+
+## Using the build output
 
 After a successful build, the images and build artifacts are placed in `tmp/deploy/images/<YOUR-MACHINE>/`
 (as set in `conf/local.conf`).
-As stated in the beginning, the most interesting files for Mender are the ones with suffix `.sdimg`
-(for initial device storage provisioning) and `.ext4` - or your selected file system for rootfs
-(for deploying updates to a device already running Mender).
 
-### For QEMU
+The files with suffix `.sdimg` are used to provision the device storage for devices without
+Mender running already. Please proceed to [Provisioning a new device](../Provisioning-a-new-device)
+for steps to do this.
 
+On the other hand, if you already have Mender running on your device and want to deploy a rootfs update
+using this build, you should use files with the suffix of your selected filesystem
+(as set in `IMAGE_FSTYPES`), for example `.ext4`. You can either deploy this rootfs
+image in managed mode with the Mender server as described in [Deploy to physical devices](../../Getting-started/Deploy-to-physical-devices)
+or by using the Mender client only in [Standalone deployments](../../Getting-started/Standalone-deployments).
 
-There is a helper script that starts up our newly built image which can be run with:
-
-
-```
-../meta-mender/scripts/mender-qemu
-```
-
-You can log in as *root* without password. To test how to deploy a rootfs update in QEMU, please read [Getting started - Your first update on QEMU](../../Getting-started/Your-first-update-on-qemu#serve-a-rootfs-image-for-the-qemu-machine). Optionally, if you want to modify the rootfs image prior to deploying it, see [Modifying a rootfs image](../Modifying-a-rootfs-image).
-
-### For BeagleBone Black
-
-
-After a successful build, the images and build artifacts are placed in `tmp/deploy/images/beaglebone/`. To write your new image to the SD card and test how to deploy a rootfs update on BeagleBone Black, please read [Getting started - Your first update on BeagleBone Black](../../Getting-started/Your-first-update-on-BeagleBone#write-the-disk-image-to-the-sd-card). Optionally, if you want to modify the rootfs image prior to deploying it, see [Modifying a rootfs image](../Modifying-a-rootfs-image).
+!!! If you built for the Mender reference platform `vexpress-qemu`, you can start up your newly built image with the script in `../meta-mender/scripts/mender-qemu` and log in as *root* without password.
