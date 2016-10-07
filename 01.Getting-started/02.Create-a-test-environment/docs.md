@@ -25,7 +25,7 @@ having to configure any hardware.
 #### OS and web browser
 
 We assume you are using **Ubuntu 16.04** with **Google Chrome** as web browser
-and at least **8 GB** RAM and disk available.
+and at least **5 GB disk** and **2 GB RAM** available.
 
 #### Docker Engine 1.10
 
