@@ -32,7 +32,7 @@ Please see [Integrating with U-Boot](../Integrating-with-U-Boot) for more inform
 ##Kernel support
 While Mender itself does not have any specific kernel requirements beyond what a normal Linux kernel provides, it relies on systemd, which does have one such requirement: The `CONFIG_FHANDLE` feature must be enabled in the kernel. The symptom if this feature is unavailable is that systemd hangs during boot looking for device files.
 
-If you [run the Mender client in standalone mode](../../Architecture/overview#modes-of-operation), you can avoid this dependecy by [disabling Mender as a system service](../../Artifacts/Build-customizations#disabling-mender-as-a-system-service) .
+If you [run the Mender client in standalone mode](../../Architecture/overview#modes-of-operation), you can avoid this dependency by [disabling Mender as a system service](../../Artifacts/Build-customizations#disabling-mender-as-a-system-service) .
 
 ##Partition layout
 Please see [Partition layout](../Partition-layout/).

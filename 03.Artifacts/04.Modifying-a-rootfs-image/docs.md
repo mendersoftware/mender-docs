@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 When testing deployments, it is useful that the rootfs image you are deploying is different from the one that you have installed so you can see that the update is successful.
-A simple way to acheive this is to loopback-mount the rootfs on your workstation and modify `/etc/issue` so you can see which image you are running just before the login prompt.
+A simple way to achieve this is to loopback-mount the rootfs on your workstation and modify `/etc/issue` so you can see which image you are running just before the login prompt.
 
 For example, if you are using the `ext4` file system type you can do the following.
 

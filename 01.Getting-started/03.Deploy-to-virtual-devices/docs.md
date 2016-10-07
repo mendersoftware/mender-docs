@@ -75,7 +75,7 @@ In the UI, it should look something like this:
 
 ![Mender UI - Upload image](upload_image.png)
 
-! Thorough validation of image meta-data is not yet implemented, so we recommend using the exact values above to avoid any issues.
+! Thorough validation of image metadata is not yet implemented, so we recommend using the exact values above to avoid any issues.
 
 !!! Mender keeps track of which *Device type* an image supports as part of the metadata of an image. In addition, a device reports which Device type it is as part of its inventory information. During a deployment, the Mender server makes sure that a device will only get a image it supports. This increases the robustness of Mender as it avoids situations like deploying images that are not supported by the device hardware.
 
@@ -127,12 +127,12 @@ rootfs below to see it change again.
 
 ## Deploy another update
 
-For robustness and avoiding unneccessary deployments, Mender
+For robustness and avoiding unnecessary deployments, Mender
 will not deploy an image that is already installed on a device.
 Thus, if you create another deployment with the image you already
 uploaded, Mender will see that it is the same rootfs image
 that is already installed and skip the deployment. It will
-immideately be marked as successful and moved to *Past deployments*.
+immediately be marked as successful and moved to *Past deployments*.
 
 For this reason, we provide another image that you can use
 to deploy with at [https://mender.s3.amazonaws.com/latest/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4](https://mender.s3.amazonaws.com/latest/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4). 

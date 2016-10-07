@@ -6,6 +6,6 @@ taxonomy:
 
 ### Chapter 7
 
-# Toubleshooting
+# Troubleshooting
 
 Solve problems you encounter

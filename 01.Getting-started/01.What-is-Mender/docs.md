@@ -30,11 +30,11 @@ We have a series of tutorials that show you how Mender works, while giving you h
 
 We will start off by getting Mender installed and running in [Create a test environment](../Create-a-test-environment).
 Next, we will deploy to a virtual [Quick Emulator (QEMU)](http://qemu.org?target=_blank) device in [Deploy to virtual devices](../Deploy-to-virtual-devices).
-Doing the first deployment using QEMU is handy becasue it means that you do not have to configure any hardware to test Mender.
+Doing the first deployment using QEMU is handy because it means that you do not have to configure any hardware to test Mender.
 
 On the other hand, if you are only interested in triggering deployments with the Mender client manually at the device,
 you can follow the [Standalone deployments](../Standalone-deployments) tutorial. For an explanation of the
-difference between *managed* and *standalone* deploymnets, please see
+difference between *managed* and *standalone* deployments, please see
 [Modes of operation](../../Architecture/overview#modes-of-operation).
 
 

@@ -72,7 +72,7 @@ This will take you to the login prompt, and you should see a message similar to 
 
 > "Poky (Yocto Project Reference Distro)..."
 
-!!! If you are using the Mender demo images, you can log in with user *root*. No password is required. 
+!!! If you are using the Mender demo images, you can login with user *root*. No password is required. 
 
 
 ## Serve a rootfs image to the device over http

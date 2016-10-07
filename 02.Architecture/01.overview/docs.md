@@ -41,7 +41,7 @@ A file system has a format, such as UBIFS or ext4, and is contained within a par
 
 The simplest and most robust way to update the device is to write a new file system image directly to the flash partition.
 This is the mechanism supported by the current versions of Mender.
-Other update mechanisms are possible, for example though the use of a package manager such as RPM, and they will be added later on.
+Other update mechanisms are possible, for example through the use of a package manager such as RPM, and they will be added later on.
 
 ## Robust updates
 
@@ -67,7 +67,7 @@ If something causes the device to reboot before committing the update, the bootl
 
 ## Stateless file systems
 
-One consequence of image update is that the update will replace all the files in a fileystem with new versions, thereby deleting any new or changed files that had been placed there. In other words, to be updatable a file system needs to be **stateless**.
+One consequence of image update is that the update will replace all the files in a filesystem with new versions, thereby deleting any new or changed files that had been placed there. In other words, to be updatable a file system needs to be **stateless**.
 
 All files that are modified by the device need to be stored in a separate partition. Things that may need to be stored include network parameters, user configuration changes and so on.
 

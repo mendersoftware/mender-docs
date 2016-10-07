@@ -24,11 +24,11 @@ The Mender client allows the user to arbitrarily define the identity attributes,
 can adapt to the identity scheme of any environment. However, Mender imposes the following
 requirements for device identities:
 
-* the combination of the attribute values must be *unique* to each device, so that identities are not ambigious when deploying software
+* the combination of the attribute values must be *unique* to each device, so that identities are not ambiguous when deploying software
 * identity attributes must *never change* for the lifetime of a device, so that a device can be recognized over its lifetime
 
 Note that device keys should not be used as part of identities, because this would make it very difficult to
-rotate or regnerate keys over the entire lifetime of the device.
+rotate or regenerate keys over the entire lifetime of the device.
 It is important to have the ability to regenerate keys if a device gets compromised, or as a recurring security measure.
 
 
@@ -71,7 +71,7 @@ the MAC address to identify others.
 
 ##The device identifier
 
-For convenience it is very useful to always have a fixed-length string that uniqely identifies a
+For convenience it is very useful to always have a fixed-length string that uniquely identifies a
 device. Mender implements this by computing a SHA-256 checksum over the identity attributes
 and this is referred to as the *device identifier* in Mender.
 
