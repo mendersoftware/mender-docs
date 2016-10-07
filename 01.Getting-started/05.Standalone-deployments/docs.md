@@ -38,7 +38,7 @@ for example `.ext4`.
 You can build the required images by following the steps
 described in Building a [Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image).
 
-!!! If you are testing Mender on the reference platforms BeagleBone Black or QEMU, you can save the build time by using the [latest prebuilt demo images](https://s3-eu-west-1.amazonaws.com/yocto-builds/latest/latest.tar.gz). The `.sdimg` and `.ext4` images are found in the `vexpress-qemu` and `beaglebone` directories.
+!!! If you are testing Mender on the reference platforms BeagleBone Black or QEMU, you can save the build time by using the [latest prebuilt demo images](https://s3.amazonaws.com/mender-standalone/latest/latest.tar.gz). The `.sdimg` and `.ext4` images are found in the `vexpress-qemu` and `beaglebone` directories.
 
 
 ### Network connectivity
