@@ -26,7 +26,7 @@ Remote updates also require a means of secure communication with each device.
 
 We have a series of tutorials that show you how Mender works, while giving you hands-on experience.
 
-!!! Going from a fresh system to completing your first managed deployment with Mender should take about **30 minutes**!
+!!! Going from a fresh system to completing your first managed deployment with Mender, including server setup, should take **less than 1 hour**!
 
 We will start off by getting Mender installed and running in [Create a test environment](../Create-a-test-environment).
 Next, we will deploy to a virtual [Quick Emulator (QEMU)](http://qemu.org?target=_blank) device in [Deploy to virtual devices](../Deploy-to-virtual-devices).
