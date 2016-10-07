@@ -147,7 +147,7 @@ for steps to do this.
 On the other hand, if you already have Mender running on your device and want to deploy a rootfs update
 using this build, you should use files with the suffix of your selected filesystem
 (as set in `IMAGE_FSTYPES`), for example `.ext4`. You can either deploy this rootfs
-image in managed mode with the Mender server as described in [Deploy to physical devices](../../Getting-started/Deploy-to-physical-devices)
+image in managed mode with the Mender server
 or by using the Mender client only in [Standalone deployments](../../Getting-started/Standalone-deployments).
 
 !!! If you built for the Mender reference platform `vexpress-qemu`, you can start up your newly built image with the script in `../meta-mender/scripts/mender-qemu` and log in as *root* without password.
