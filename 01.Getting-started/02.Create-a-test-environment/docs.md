@@ -92,15 +92,14 @@ This includes output from the Mender virtual QEMU device, similar to the followi
 > mender-client_1             | Booting Linux on physical CPU 0x0  
 > mender-client_1             | Initializing cgroup subsys cpuset  
 > ...  
-
+> mender-client_1             | Poky (Yocto Project Reference Distro) 2.1.1 vexpress-qemu ttyAMA0
 
 After a few minutes, the logs will stop coming except for some periodic log messages
 from the Mender authentication service similar to the following:
 
-> mender-api-gateway_1        | 172.18.0.6 - - [21/Sep/2016:21:47:10 +0000] "POST /api/devices/0.1/authentication/auth_requests HTTP/2.0" 401 210 "-" "Go-http-client/2.0" "-"  
-> mender-device-auth_1        | time="2016-09-21T21:47:15Z" level=error msg="unauthorized: dev auth: unauthorized" file="api_devauth.go" func="main.(*DevAuthHandler).SubmitAuthRequestHandler" http_code=401 line=142 request_id=6234a9c2-4036-4130-92c0-c92f371355f1   
-> mender-device-auth_1        | {"Timestamp":"2016-09-21T21:47:15.668219512Z","StatusCode":401,"ResponseTime":6403109,"HttpMethod":"POST","RequestURI":"/api/0.1.0/auth_requests","RemoteUser":"","UserAgent":"Go-http-client/2.0"}  
-> mender-device-auth_1        | time="2016-09-21T21:47:15Z" level=info msg="21/Sep/2016:21:47:15 +0000 \x1b[1;33m401\x1b[0m \x1b[36;1m6403μs\x1b[0m \"POST /api/0.1.0/auth_requests HTTP/1.0\" \x1b[1;30m- \"Go-http-client/2.0\"\x1b[0m" file=middleware.go func="accesslog.(*AccessLogMiddleware).MiddlewareFunc.func1" line=57 request_id=6234a9c2-4036-4130-92c0-c92f371355f1  
+> mender-api-gateway_1        | 172.18.0.4 - - [07/Oct/2016:03:59:50 +0000] "POST /api/devices/0.1/authentication/auth_requests HTTP/2.0" 401 150 "-" "Go-http-client/2.0" "-"  
+> mender-device-auth_1        | time="2016-10-07T03:59:55Z" level=error msg="unauthorized: dev auth: unauthorized" file="api_devauth.go" func="main.(*DevAuthHandler).SubmitAuthRequestHandler" http_code=401 line=142 request_id=df3bc374-060b-4b15-af89-76c85975ab25  
+> mender-device-auth_1        | time="2016-10-07T03:59:55Z" level=info msg="401 4438μs POST /api/0.1.0/auth_requests HTTP/1.0 - Go-http-client/2.0" file=middleware.go func="accesslog.(*AccessLogMiddleware).MiddlewareFunc.func1" line=58 request_id=df3bc374-060b-4b15-af89-76c85975ab25
 
 These messages show that the Mender client running inside the virtual QEMU device
 is asking to be authorized to join the server. We will come back to this shortly.

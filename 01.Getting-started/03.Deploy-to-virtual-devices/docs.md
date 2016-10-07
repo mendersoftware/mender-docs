@@ -55,11 +55,11 @@ includes Mender support can be used, as described in
 [Building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image).
 
 To make testing easier, a demo image that can be used with
-the virtual device is provided at
+the virtual device is provided for download at
 [https://mender.s3.amazonaws.com/latest/demo/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4](https://mender.s3.amazonaws.com/latest/demo/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4).
 
-Now go back to the Mender server UI, click the **Software** tab and
-upload the image.
+After the download finishes, go back to the Mender server UI,
+click the **Software** tab and upload this image.
 
 !!! Currently there are quite a few fields to fill out, but this will very soon be simplified to just *Name* and *Description*, the rest being auto-detected.
 
@@ -71,11 +71,11 @@ Please fill in the following:
 * Device type compatibility: `vexpress-qemu`
 * Description: `My test build`
 
-! Thorough validation of image meta-data is not yet implemented, so we recommend using the exact values above to avoid any issues.
-
-In the end, it should look something like this:
+In the UI, it should look something like this:
 
 ![Mender UI - Upload image](upload_image.png)
+
+! Thorough validation of image meta-data is not yet implemented, so we recommend using the exact values above to avoid any issues.
 
 !!! Mender keeps track of which *Device type* an image supports as part of the metadata of an image. In addition, a device reports which Device type it is as part of its inventory information. During a deployment, the Mender server makes sure that a device will only get a image it supports. This increases the robustness of Mender as it avoids situations like deploying images that are not supported by the device hardware.
 
@@ -100,6 +100,8 @@ In the example below, we can see that the device is in process of installing the
 
 ![Mender UI - Deployment progress](deployment_report.png)
 
+! As the deployment progresses, the UI should auto-refresh periodically. However, if this does not happen or you want to see the current state, you can refresh your browser manually.
+
 !!! The deployment to the virtual device should take about 2-3 minutes to complete and report success or failure.
 
 
@@ -110,8 +112,17 @@ If the deployment fails you can view the deployment log,
 which is obtained from the device, to diagnose the issue.
 You can also see the state of deployments on the Dashboard.
 
-**TODO**: Verify update, e.g. in QEMU client console (/etc/issue).
+If you follow the docker compose terminal, you will also see
+the virtual device log as Mender deploys the update and
+reboots it. After the reboot, you should see the following
+right before the login prompt:
 
+> mender-client_1             | This system has been updated by Mender build...  
+
+If you followed closely during the initial boot of the Mender virtual
+client, you can see that this message (from `/etc/issue`) has been changed!
+However, if you missed it, do not despair. We will deploy the original
+rootfs below to see it change again.
 
 
 ## Deploy another update
@@ -124,7 +135,10 @@ that is already installed and skip the deployment. It will
 immideately be marked as successful and moved to *Past deployments*.
 
 For this reason, we provide another image that you can use
-to deploy with at [https://mender.s3.amazonaws.com/latest/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4](https://mender.s3.amazonaws.com/latest/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4). This is actually the original rootfs of your
+to deploy with at [https://mender.s3.amazonaws.com/latest/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4](https://mender.s3.amazonaws.com/latest/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4). 
+Make sure to not mix it with the demo rootfs you downloaded above,
+as they have the same file name.
+This is actually the original rootfs of your
 QEMU virtual device, before you deployed the update above.
 
 When you upload this image, it is very important that
@@ -136,7 +150,7 @@ following long command string:
 mkdir /tmp/rootfs && sudo mount -t ext4 -o loop core-image-full-cmdline-vexpress-qemu.ext4 /tmp/rootfs/ && cat /tmp/rootfs/etc/mender/build_mender | grep IMAGE_ID | cut -f3 -d" "  && sudo umount /tmp/rootfs && rmdir /tmp/rootfs
 ```
 
-!!! All this command does is to look at the file `/etc/mender/build_mender` inside the root file system. It contains `IMAGE_ID` which is mapped to `Yocto ID`, however both will soon be renamed to Image ID.
+!!! All this command does is to look at the file `/etc/mender/build_mender` inside the root file system. It contains `IMAGE_ID` which is mapped to `Yocto ID` (both will soon be renamed to Image ID).
 
 The output should look something like `core-image-full-cmdline-20161006122803`.
 
@@ -150,8 +164,15 @@ to **Software** again and upload with the following fields:
 * Description: `My original build`
 
 After the rootfs has been uploaded, you can deploy it to your device
-to get it back to the original root file system. Following that
-you can deploy the `release2` rootfs again, and so forth.
+to get it back to the original root file system.
+
+Now, if you observe the virtual client boot process
+in your docker compose terminal, you can see the original message
+from `/etc/issue` just before the login prompt again:
+
+> mender-client_1             | Poky (Yocto Project Reference Distro) 2.1.1 vexpress-qemu ttyAMA0
+
+Following this, you can deploy the `release2` rootfs again, and so forth.
 
 
 ## Deploy to custom groups
