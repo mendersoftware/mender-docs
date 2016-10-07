@@ -34,7 +34,7 @@ Detailed instructions and recipes needed for building a self-contained image fol
 
 ## Prerequisites
 
-! We use the Yocto Project's **krogoth** branch below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank), but these branches are no longer maintained by Mender developers. Please reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum#!forum/mender) if you would like help with getting Mender to work on other versions of the Yocto Project.
+! We use the Yocto Project's **krogoth** branch below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank), but these branches are no longer maintained by Mender developers. Please reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender) if you would like help with getting Mender to work on other versions of the Yocto Project.
 
 The required meta layers are found in the following repositories:
 
