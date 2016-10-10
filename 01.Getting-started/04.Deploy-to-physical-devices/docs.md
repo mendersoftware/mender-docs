@@ -82,6 +82,12 @@ at [https://mender.s3.amazonaws.com/latest/beaglebone/core-image-base-beaglebone
 -- "ServerURL": "docker.mender.io:8080"
 
 
+## Boot device
+
+**TODO** Note & picture about pressing S2 button.!
+
+
+
 ## Create a group with the BeagleBone Black device(s)
 
 **TODO** How to create group, warn that mixing qemu & BBB in same deployment is not reliable yet for reporting.
