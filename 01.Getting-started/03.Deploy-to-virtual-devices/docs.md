@@ -5,8 +5,9 @@ taxonomy:
 ---
 
 In this tutorial we will show how to use the intuitive Mender server UI
-to deploy a full rootfs image update to devices which are
-connected to the server.
+to deploy a full rootfs image update to a virtual device which is
+connected to the server. The virtual device is bundled with the
+Mender server to make it easy to test Mender.
 
 
 ## Prerequisites
