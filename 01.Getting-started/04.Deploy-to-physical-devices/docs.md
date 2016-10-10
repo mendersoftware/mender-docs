@@ -50,13 +50,22 @@ described in [Partition layout](../../Devices/Partition-layout).
 We need to edit some configurations in this image so that
 the Mender client connects to your Mender server when it starts.
 
-**TODO** mount & edit configs:
-- check the IP address of the host machine where server is running (ip a or similar command)
-- modify the /etc/hosts file on the device (you can modify the image before installing as well) to contain following changes:
--- IP_of_mender_server docker.mender.io
--- IP_of_mender_server mender-artifact-storage.s3.docker.mender.io
-- modify /etc/mender/mender.conf file to contain following line:
--- "ServerURL": "docker.mender.io:8080"
+There are multiple ways you can connect your device to the Mender server. As the detailed setup depends on your network topology 
+in this tutorial we will focus on the simplest case. The host where the Mender server is running is connected with your device 
+via ethernet cable. In this setup you need to configure static IP address on both eth0 network interface of your server and eth0 interface 
+of your beaglebone.
+
+In order to set static IP address on a given interface, use the following command:
+`ifconfig eth0 192.168.10.10`
+
+Once the IP address is set, modify the content of `/etc/hosts` file on the device. In order to be able to connect to the Mender server,
+add following line:
+`192.168.10.10 docker.mender.io mender-artifact-storage.s3.docker.mender.io`
+
+It is also needed to modify `/etc/mender/mender.conf` and update `ServerURL` to look like below:
+`"ServerURL": "https://docker.mender.io:8080"`.
+
+This can be done before device is up and running by modifying appropriate files after copying `.sdimg` file to the SD card. 
 
 
 ## Write the storage image to the SD card
