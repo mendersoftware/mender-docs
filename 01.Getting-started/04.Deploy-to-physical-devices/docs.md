@@ -35,9 +35,13 @@ The BeagleBone Black needs to have network set up
 so it can connect directly to your workstation
 (where you have the Mender server running) and vice versa.
 If you have one BeagleBone Black, you could connect your
-workstation and the device using a cross-over
+workstation and the device using a direct
 Ethernet cable and use static IP addresses at both ends.
 For multiple devices, you need a router or switch.
+
+For the rest of the tutorial we will assume
+`<IP-OF-MENDER-SERVER-FROM-DEVICE>` will be the IP address
+that your device(s) can connect to the Mender server.
 
 
 ## Prepare the storage image
@@ -47,21 +51,25 @@ at [https://mender.s3.amazonaws.com/latest/beaglebone/core-image-base-beaglebone
 This image contains *all the partitions* of the storage device, as
 described in [Partition layout](../../Devices/Partition-layout).
 
-We need to edit some configurations in this image so that
+We need to change some configurations in this image so that
 the Mender client connects to your Mender server when it starts.
 
-There are multiple ways you can connect your device to the Mender server. As the detailed setup depends on your network topology 
-in this tutorial we will focus on the simplest case. The host where the Mender server is running is connected with your device 
-via ethernet cable. In this setup you need to configure static IP address on both eth0 network interface of your server and eth0 interface 
-of your beaglebone.
+Please see [Modifying a storage image](..//..Artifacts/Modifying-a-storage-image) for a description
+on how to mount partitions for editing within the device storage image
+`core-image-base-beaglebone.sdimg`.
 
-In order to set static IP address on a given interface, use the following command:
-`ifconfig eth0 192.168.10.10`
+We assume that *both* rootfs partitions are mounted read-write below,
+to `/mnt/rootfs1` and `/mnt/rootfs2`. Then run the following commands
+to make the Mender client able to find the server when the Mender client starts:
 
-Once the IP address is set, modify the content of `/etc/hosts` file on the device. In order to be able to connect to the Mender server,
-add following line:
-`192.168.10.10 docker.mender.io mender-artifact-storage.s3.docker.mender.io`
+```
+IP_OF_MENDER_SERVER_FROM_DEVICE="<IP-OF-MENDER-SERVER-FROM-DEVICE>"  # insert the actual IP to fill this shell variable
+echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io mender-artifact-storage.s3.docker.mender.io" >> /mnt/rootfs1/etc/hosts
+echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io mender-artifact-storage.s3.docker.mender.io" >> /mnt/rootfs2/etc/hosts
+```
 
+
+**TODO**
 It is also needed to modify `/etc/mender/mender.conf` and update `ServerURL` to look like below:
 `"ServerURL": "https://docker.mender.io:8080"`.
 
