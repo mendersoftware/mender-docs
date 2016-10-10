@@ -47,3 +47,9 @@ sudo dd if=<PATH-TO-IMAGE>.sdimg of=<DEVICE> bs=1M
 !!! &lt;DEVICE&gt; depends on where your SD card is placed. Normally this would be something like  ***/dev/mmcblk0*** or ***/dev/sdb***.  If you are unsure how to find the correct device, the Raspberry PI Foundation provide some nice references that can help you for [Linux](https://www.raspberrypi.org/documentation/installation/installing-images/linux.md?target=_blank), [Mac OSX](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md?target=_blank), [Windows](https://www.raspberrypi.org/documentation/installation/installing-images/windows.md?target=_blank).
 
 Writing the sdimg file to to the SD card should take a few minutes, depending on its size.
+After the writing is complete, we should make sure that all the data is written to the
+storage by flushing the OS caches:
+
+```
+sync
+```
