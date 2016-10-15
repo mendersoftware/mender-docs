@@ -33,7 +33,7 @@ a SD card to store the OS, so you will need one SD card
 
 The BeagleBone Black needs to have network set up
 so it can connect directly to your workstation
-(where you have the Mender server running) and vice versa.
+(where you have the Mender server running).
 If you have one BeagleBone Black, you could connect your
 workstation and the device using a direct
 Ethernet cable and use static IP addresses at both ends.
@@ -54,7 +54,7 @@ described in [Partition layout](../../Devices/Partition-layout).
 We need to change some configurations in this image so that
 the Mender client connects to your Mender server when it starts.
 
-Please see [Modifying a storage image](..//..Artifacts/Modifying-a-storage-image) for a description
+Please see [Modifying a storage image](../../Artifacts/Modifying-a-storage-image) for a description
 on how to mount partitions for editing within the device storage image
 `core-image-base-beaglebone.sdimg`.
 
@@ -64,17 +64,29 @@ to make the Mender client able to find the server when the Mender client starts:
 
 ```
 IP_OF_MENDER_SERVER_FROM_DEVICE="<IP-OF-MENDER-SERVER-FROM-DEVICE>"  # insert the actual IP to fill this shell variable
-echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io mender-artifact-storage.s3.docker.mender.io" >> /mnt/rootfs1/etc/hosts
-echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io mender-artifact-storage.s3.docker.mender.io" >> /mnt/rootfs2/etc/hosts
 ```
 
+```
+echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io mender-artifact-storage.s3.docker.mender.io" | sudo tee -a /mnt/rootfs[12]/etc/hosts
+```
 
-**TODO**
-It is also needed to modify `/etc/mender/mender.conf` and update `ServerURL` to look like below:
-`"ServerURL": "https://docker.mender.io:8080"`.
+We also need to modify `ServerURL` in the rootfs partitions at `/etc/mender/mender.conf`
+to `https://docker.mender.io:8080`. This can be achieved by manually editing or running
+the command below:
 
-This can be done before device is up and running by modifying appropriate files after copying `.sdimg` file to the SD card. 
+```
+sudo sed -i -E "s/([ ]*\"ServerURL\"[ ]*:[ ]*)\".*\"/\1\"https:\/\/docker.mender.io:8080\"/" /mnt/rootfs[12]/etc/mender/mender.conf
+```
 
+It is very important to unmount the storage image after modifying it, so all changes are written to the image:
+
+```
+sudo umount /mnt/rootfs1
+```
+
+```
+sudo umount /mnt/rootfs2
+```
 
 ## Write the storage image to the SD card
 
