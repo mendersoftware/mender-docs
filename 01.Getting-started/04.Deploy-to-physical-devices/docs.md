@@ -88,33 +88,20 @@ sudo umount /mnt/rootfs1
 sudo umount /mnt/rootfs2
 ```
 
+
 ## Write the disk image to the SD card
 
 Please see [Write the disk image to the SD card](../../Artifacts/Provisioning-a-new-device#write-the-disk-image-to-the-sd-card)
 for steps how to provision the device disk using the `core-image-base-beaglebone.sdimg`
 image you downloaded and modified above.
 
-
-## Prepare the rootfs image to update to
-
-In order to deploy an update, we need a rootfs image to update to.
-
-Download the demo *rootfs* image with Mender support for the BeagleBone Black
-at [https://mender.s3.amazonaws.com/latest/beaglebone/core-image-base-beaglebone.ext4](https://mender.s3.amazonaws.com/latest/beaglebone/core-image-base-beaglebone.ext4).
-
-**TODO** mount & edit configs:
-- check the IP address of the host machine where server is running (ip a or similar command)
-- modify the /etc/hosts file on the device (you can modify the image before installing as well) to contain following changes:
--- IP_of_mender_server docker.mender.io
--- IP_of_mender_server mender-artifact-storage.s3.docker.mender.io
-- modify /etc/mender/mender.conf file to contain following line:
--- "ServerURL": "docker.mender.io:8080"
+If you have several BeagleBone Black devices, please
+write the disk image to all their SD cards.
 
 
-## Boot device
+## Boot the BeagleBone Black(s)
 
 **TODO** Note & picture about pressing S2 button.!
-
 
 
 ## Create a group with the BeagleBone Black device(s)
@@ -122,11 +109,45 @@ at [https://mender.s3.amazonaws.com/latest/beaglebone/core-image-base-beaglebone
 **TODO** How to create group, warn that mixing qemu & BBB in same deployment is not reliable yet for reporting.
 
 
-## Upload image
+## Prepare the rootfs image to update to
+
+In order to deploy an update, we need a rootfs image to update to.
+Download the demo *rootfs* image with Mender support for the BeagleBone Black
+at [https://mender.s3.amazonaws.com/latest/beaglebone/core-image-base-beaglebone.ext4](https://mender.s3.amazonaws.com/latest/beaglebone/core-image-base-beaglebone.ext4).
+
+Please see [Modifying a rootfs image](../../Artifacts/Modifying-a-rootfs-image)
+for a description on how to modify configuration files in rootfs images.
+For the following steps we assume that you have mounted `core-image-base-beaglebone.ext4`
+to `/mnt/rootfs`.
+
+We carry out exactly the same configuration steps for the rootfs image
+as we did for the rootfs partitions in the disk image above:
+
+
+```
+IP_OF_MENDER_SERVER_FROM_DEVICE="<IP-OF-MENDER-SERVER-FROM-DEVICE>"  # insert the actual IP to fill this shell variable
+```
+
+```
+echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io mender-artifact-storage.s3.docker.mender.io" | sudo tee -a /mnt/rootfs/etc/hosts
+```
+
+```
+sudo sed -i -E "s/([ ]*\"ServerURL\"[ ]*:[ ]*)\".*\"/\1\"https:\/\/docker.mender.io:8080\"/" /mnt/rootfs/etc/mender/mender.conf
+```
+
+It is very important to unmount the rootfs image after modifying it, so all changes are written to the image:
+
+```
+sudo umount /mnt/rootfs
+```
+
+
+## Upload rootfs image
 
 **TODO**
 
-## Deploy image
+## Deploy rootfs image
 
 **TODO**
 
