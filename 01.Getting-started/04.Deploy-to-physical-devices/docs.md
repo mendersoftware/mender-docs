@@ -101,8 +101,23 @@ write the disk image to all their SD cards.
 
 ## Boot the BeagleBone Black(s)
 
-**TODO** Note & picture about pressing S2 button.!
+First, insert the SD card you just provisioned into the BeagleBone black.
 
+Before powering on the device, please press the
+S2 button, as shown below. Connect the power and keep the button
+pressed for about 5 seconds. This will make the BeagleBone
+Black boot from the SD card instead of internal storage.
+
+![Booting BeagleBone Black from SD card](beaglebone_black_sdboot.png)
+
+!! If the BeagleBone Black boots from internal storage, the rollback mechnism of Mender will not work properly. However, the device will still boot so this condition is hard to detect.
+
+!!! There is no need to press the S2 button when rebooting, just when power is lost and it is powered on again.
+
+
+## See devices in UI authorize
+
+**TODO**
 
 ## Create a group with the BeagleBone Black device(s)
 
