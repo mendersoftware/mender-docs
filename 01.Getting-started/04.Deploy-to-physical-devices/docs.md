@@ -44,9 +44,9 @@ For the rest of the tutorial we will assume
 that your device(s) can connect to the Mender server.
 
 
-## Prepare the storage image
+## Prepare the disk image
 
-Download the demo *storage* image with Mender support for the BeagleBone Black
+Download the demo *disk* image with Mender support for the BeagleBone Black
 at [https://mender.s3.amazonaws.com/latest/beaglebone/core-image-base-beaglebone.sdimg](https://mender.s3.amazonaws.com/latest/beaglebone/core-image-base-beaglebone.sdimg).
 This image contains *all the partitions* of the storage device, as
 described in [Partition layout](../../Devices/Partition-layout).
@@ -54,8 +54,8 @@ described in [Partition layout](../../Devices/Partition-layout).
 We need to change some configurations in this image so that
 the Mender client connects to your Mender server when it starts.
 
-Please see [Modifying a storage image](../../Artifacts/Modifying-a-storage-image) for a description
-on how to mount partitions for editing within the device storage image
+Please see [Modifying a disk image](../../Artifacts/Modifying-a-disk-image) for a description
+on how to mount partitions for editing within the disk image
 `core-image-base-beaglebone.sdimg`.
 
 We assume that *both* rootfs partitions are mounted read-write below,
@@ -78,7 +78,7 @@ the command below:
 sudo sed -i -E "s/([ ]*\"ServerURL\"[ ]*:[ ]*)\".*\"/\1\"https:\/\/docker.mender.io:8080\"/" /mnt/rootfs[12]/etc/mender/mender.conf
 ```
 
-It is very important to unmount the storage image after modifying it, so all changes are written to the image:
+It is very important to unmount the disk image after modifying it, so all changes are written to the image:
 
 ```
 sudo umount /mnt/rootfs1
@@ -88,10 +88,10 @@ sudo umount /mnt/rootfs1
 sudo umount /mnt/rootfs2
 ```
 
-## Write the storage image to the SD card
+## Write the disk image to the SD card
 
-Please see [Write the storage image to the SD card](../../Artifacts/Provisioning-a-new-device#write-the-storage-image-to-the-sd-card)
-for steps how to provision the device storage using the `core-image-base-beaglebone.sdimg`
+Please see [Write the disk image to the SD card](../../Artifacts/Provisioning-a-new-device#write-the-disk-image-to-the-sd-card)
+for steps how to provision the device disk using the `core-image-base-beaglebone.sdimg`
 image you downloaded and modified above.
 
 

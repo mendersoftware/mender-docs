@@ -22,11 +22,11 @@ QEMU device so you do not have to configure any hardware. If you follow
 it using a QEMU device, please make sure QEMU for the ARM architecture
 works, it is typically installed with the `qemu-system-arm` package.
 
-### Device storage and rootfs images
+### Disk and rootfs images
 
 You will need two images of different types.
 
-The first is an image file to flash to the entire storage of the
+The first is an image file to flash to the entire disk of the
 device. `meta-mender` creates these files with a `.sdimg`
 suffix, so they are easy to recognize. This file contains
 all the partitions of the given storage device, as

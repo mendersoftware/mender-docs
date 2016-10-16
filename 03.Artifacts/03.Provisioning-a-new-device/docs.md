@@ -12,7 +12,7 @@ the flash of the device.
 
 ## Prerequisites
 
-### An image for the device storage
+### A disk image for the device storage
 
 You need an image file to flash to the entire storage of the
 device. `meta-mender` creates these files with a `.sdimg`
@@ -34,7 +34,7 @@ to flash any block device. See
 for a clarification of what is meant by block device in this context.
 
 
-## Write the storage image to the SD card
+## Write the disk image to the SD card
 
 !! Be careful! If you point to the wrong `<DEVICE>` when executing the command below, you risk overwriting your workstation's local or connected storage devices.
 

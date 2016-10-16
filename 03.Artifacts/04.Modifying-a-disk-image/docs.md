@@ -1,16 +1,16 @@
 ---
-title: Modifying a storage image
+title: Modifying a disk image
 taxonomy:
     category: docs
 ---
 
-When provisioning a device, it is useful to modify the storage image (`.sdimg`)
+When provisioning a device, it is useful to modify the disk image (`.sdimg`)
 before flashing it to SD cards in order to edit necessary configurations.
-In order to do this we can discover the partition offsets within the storage image
+In order to do this we can discover the partition offsets within the disk image
 and mount the individual partition file systems based on these offsets.
 
-In the example below we will use a BeagleBone Black storage image (`core-image-base-beaglebone.sdimg`),
-but the procedure is the same for all storage images.
+In the example below we will use a BeagleBone Black disk image (`core-image-base-beaglebone.sdimg`),
+but the procedure is the same for all disk images.
 
 We start off by looking at information about the image with `fdisk`:
 
@@ -71,7 +71,7 @@ sudo mount -o loop,offset=$((512*327680)) core-image-base-beaglebone.sdimg /mnt/
 
 Now you can modify the rootfs file systems in the paths `/mnt/rootfs1` and `/mnt/rootfs2`.
 When finished, please remember to unmount so that the changes are written back to the
-storage image, like the following:
+disk image, like the following:
 
 ```
 sudo umount /mnt/rootfs1 && sudo umount /mnt/rootfs2
