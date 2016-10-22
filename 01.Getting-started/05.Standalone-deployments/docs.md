@@ -22,11 +22,11 @@ QEMU device so you do not have to configure any hardware. If you follow
 it using a QEMU device, please make sure QEMU for the ARM architecture
 works, it is typically installed with the `qemu-system-arm` package.
 
-### Device storage and rootfs images
+### Disk and rootfs images
 
 You will need two images of different types.
 
-The first is an image file to flash to the entire storage of the
+The first is an image file to flash to the entire disk of the
 device. `meta-mender` creates these files with a `.sdimg`
 suffix, so they are easy to recognize. This file contains
 all the partitions of the given storage device, as
@@ -36,9 +36,9 @@ of this file depends on the file system used for rootfs,
 for example `.ext4`.
 
 You can build the required images by following the steps
-described in Building a [Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image).
+described in [Building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image).
 
-!!! If you are testing Mender on the reference platforms BeagleBone Black or QEMU, you can save the build time by using the [latest prebuilt demo images](https://s3.amazonaws.com/mender-standalone/latest/latest.tar.gz). The `.sdimg` and `.ext4` images are found in the `vexpress-qemu` and `beaglebone` directories.
+!!! If you are testing Mender on the reference platforms BeagleBone Black or QEMU, you can save the build time by using the [latest prebuilt demo images](https://mender-standalone.s3.amazonaws.com/latest/latest.tar.gz). The `.sdimg` and `.ext4` images are found in the `vexpress-qemu` and `beaglebone` directories.
 
 
 ### Network connectivity
@@ -122,7 +122,6 @@ Your device should boot into the updated rootfs.
 
 **Congratulations!** You have just deployed your first rootfs image with Mender!
 If you are happy with the update, you can make it permanent by running the following in your device terminal:
-
 
 ```
 mender -commit

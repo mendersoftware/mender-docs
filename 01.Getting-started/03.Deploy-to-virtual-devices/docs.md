@@ -5,8 +5,9 @@ taxonomy:
 ---
 
 In this tutorial we will show how to use the intuitive Mender server UI
-to deploy a full rootfs image update to devices which are
-connected to the server.
+to deploy a full rootfs image update to a virtual device which is
+connected to the server. The virtual device is bundled with the
+Mender server to make it easy to test Mender.
 
 
 ## Prerequisites
@@ -187,3 +188,11 @@ This can be very useful in order to deploy to test devices
 before production, or only deploy to devices owned by a specific customer.
 
 ! To avoid accidents, Mender only allows **a device to be in one group at the time**. If a device could be in several groups, for example test *and* production, unintended deployments and downtime could occur. Therefore, as a safety measure, Mender does not allow this.
+
+
+## Deploy to physical devices
+
+**Congratulations!** You have used the Mender server to deploy your first managed update!
+If you have a BeagleBone Black, you can proceed to
+[Deploy to physical devices](../Deploy-to-physical-devices) to try out deploying to a
+real-world device!

@@ -28,9 +28,11 @@ We have a series of tutorials that show you how Mender works, while giving you h
 
 !!! Going from a fresh system to completing your first managed deployment with Mender, including server setup, should take **less than 1 hour**!
 
-We will start off by getting Mender installed and running in [Create a test environment](../Create-a-test-environment).
+We will start off by getting the Mender server installed and running in [Create a test environment](../Create-a-test-environment).
 Next, we will deploy to a virtual [Quick Emulator (QEMU)](http://qemu.org?target=_blank) device in [Deploy to virtual devices](../Deploy-to-virtual-devices).
-Doing the first deployment using QEMU is handy because it means that you do not have to configure any hardware to test Mender.
+Doing the first deployment using QEMU is handy becasue it means that you do not have to configure any hardware to test Mender.
+If you have real hardware in the form of the popular Mender reference board, the [BeagleBone Black](https://beagleboard.org/black?target=_blank),
+you can follow the final tutorial in this series, [Deploy to physical devices](../Deploy-to-physical-devices).
 
 On the other hand, if you are only interested in triggering deployments with the Mender client manually at the device,
 you can follow the [Standalone deployments](../Standalone-deployments) tutorial. For an explanation of the
