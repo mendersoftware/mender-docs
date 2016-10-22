@@ -176,7 +176,7 @@ and the IP addresses, as shown in the example below.
 ![Mender UI - Device information for BeagleBone Black](device_information_bbb.png)
 
 
-!!! If your BeagleBone Black does not show up for authorization in the UI, you need to diagnose what went wrong. Most commonly this is due to problems with the network. You can test if your workstation can reach the device by trying to ping it, e.g. with `ping 192.168.10.2` (replace with the IP address of your device). If you have a serial cable, you can log in to the device to diagnose. The `root` user is present and has an empty password in this test image.
+!!! If your BeagleBone Black does not show up for authorization in the UI, you need to diagnose what went wrong. Most commonly this is due to problems with the network. You can test if your workstation can reach the device by trying to ping it, e.g. with `ping 192.168.10.2` (replace with the IP address of your device). If you have a serial cable, you can log in to the device to diagnose. The `root` user is present and has an empty password in this test image. If you get stuck, please feel free to reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender)!
 
 
 ## Prepare the rootfs image to update to
@@ -235,15 +235,15 @@ You should see output similar to the following:
 > Gateway=192.168.10.1  
 
 
-!!! The Mender client will roll back the deployment if there is no network when it boots from the updated partition, detected by that it is not able to report the final update status to the server. This helps ensure that you can always deploy a new update to your device, even when fatal conditions occur.
+!!! The Mender client will roll back the deployment if it is not able to report the final update status to the server when it boots from the updated partition. This helps ensure that you can always deploy a new update to your device, even when fatal conditions like network misconfiguration occur.
 
 
 ### Set the rootfs Image ID
 
 When you upload this image (below), it is very important that you use the right Image ID,
 which is used to decide if a given update is already installed or not.
-Mender will skip a deployment if it sees that the Image ID in a deployment
-is the same as the Image ID for a given device.
+Mender will skip a deployment for a given device if it sees that
+the Image ID in a deployment is the same as the one installed.
 
 Furthermore, the disk image we wrote to the SD card might have the
 same Image ID in its rootfs partitions as the rootfs we downloaded above.
