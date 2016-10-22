@@ -117,9 +117,13 @@ DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 VIRTUAL-RUNTIME_initscripts = ""
 ```
 
-!!! Please replace `<YOUR-MACHINE>` with the correct machine for your device. If you are building for a Mender reference platform, you can use `vexpress-qemu` or `beaglebone`. Also note that Mender automatically selects the file system types it builds into the provisioning file (`.sdimg`) based on the `IMAGE_FSTYPES` variable. See the [section on file system types](../../Devices/Partition-layout#file-system-types) for more information.
+Please replace `<YOUR-MACHINE>` with the correct machine for your device.
 
-!!! It is suggested to also add ```INHERIT += "rm_work"``` to ```conf/local.conf``` in order to conserve disk space during the build.
+! The machine `<YOUR-MACHINE>` needs to be integrated with Mender before it will work correctly; most notably U-Boot needs the required features and integration. Please see [Device integration](../../Devices) for more information. If you are building for a Mender reference platform, you can use `vexpress-qemu` or `beaglebone`. 
+
+!!! Mender automatically selects the file system types it builds into the disk image (`.sdimg`), which is used for initial flash provisioning, based on the `IMAGE_FSTYPES` variable. See the [section on file system types](../../Devices/Partition-layout#file-system-types) for more information.
+
+!!! It is suggested to add ```INHERIT += "rm_work"``` to ```conf/local.conf``` in order to conserve disk space during the build.
 
 
 ## Building the image
