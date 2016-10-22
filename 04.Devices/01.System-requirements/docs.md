@@ -16,7 +16,7 @@ Our reference board, the [BeagleBone Black](http://beagleboard.org/bone?target=_
 
 ##Bootloader support
 To support atomic rootfs rollback, Mender integrates with the bootloader of the device. Currently Mender supports [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank).
-As Mender relies on the `CONFIG_BOOTCOUNT_ENV` feature of U-Boot, which was [introduced in October 2013](http://lists.denx.de/pipermail/u-boot/2013-October/165484.html?target=_blank), Mender currently requires **U-Boot v2014.01 or newer**. If you have an older version of U-Boot, it should be straightforward to backport or implement this feature. Please [reach out on the Mender mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender).
+As Mender relies on the `CONFIG_BOOTCOUNT_ENV` feature of U-Boot, which was [introduced in October 2013](http://lists.denx.de/pipermail/u-boot/2013-October/165484.html?target=_blank), Mender currently requires **U-Boot v2014.07 or newer**. If you have an older version of U-Boot, it should be straightforward to backport or implement this feature. Please [reach out on the Mender mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender).
 
 
 Besides any special configuration to support the device, U-Boot needs to be compiled and used with the following features:
