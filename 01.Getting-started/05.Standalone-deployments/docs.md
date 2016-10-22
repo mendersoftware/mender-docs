@@ -123,7 +123,6 @@ Your device should boot into the updated rootfs.
 **Congratulations!** You have just deployed your first rootfs image with Mender!
 If you are happy with the update, you can make it permanent by running the following in your device terminal:
 
-
 ```
 mender -commit
 ```

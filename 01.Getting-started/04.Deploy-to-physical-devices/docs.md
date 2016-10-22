@@ -103,7 +103,7 @@ Run the command below to fill the `systemd`
 networking configuration files of the rootfs partitions:
 
 ```
-echo -n "
+echo -n "\
 [Match]
 Name=eth0
 
@@ -148,35 +148,40 @@ write the disk image to all their SD cards.
 
 ## Boot the BeagleBone Black(s)
 
+! Make sure that the Mender server is running as described in [Create a test environment](../Create-a-test-environment) and that the device can reach it on the IP address you configured above (`$IP_OF_MENDER_SERVER_FROM_DEVICE`). You might need to set a static IP address where the Mender server runs and disable any firewalls.
+
 First, insert the SD card you just provisioned into the BeagleBone black.
 
 Before powering on the device, please press the
-S2 button, as shown below. Connect the power and keep the button
+*S2 button*, as shown below. Connect the power and keep the button
 pressed for about 5 seconds. This will make the BeagleBone
 Black boot from the SD card instead of internal storage.
 
 ![Booting BeagleBone Black from SD card](beaglebone_black_sdboot.png)
 
-!! If the BeagleBone Black boots from internal storage, the rollback mechnism of Mender will not work properly. However, the device will still boot so this condition is hard to detect.
+!! If the BeagleBone Black boots from internal storage, the rollback mechanism of Mender will not work properly. However, the device will still boot so this condition is hard to detect.
 
 !!! There is no need to press the S2 button when rebooting, just when power is lost and it is powered on again.
 
 
-## See devices in UI authorize
+## See the BeagleBone Black(s) in the Mender UI
 
-**TODO** Verify they show. Network & Mender daemon Diagnostics? Log in to BBB / serial cable. root wihtout PW.
+If you refresh the Mender server UI (by default found at [http://localhost:8080/](http://localhost:8080/?target=_blank)),
+you should see one or more devices waiting authorization.
+
+Once you **authorize** these devices, Mender will auto-discover
+inventory about the devices, including the device type (e.g. beaglebone)
+and the IP addresses, as shown in the example below.
+
+![Mender UI - Device information for BeagleBone Black](device_information_bbb.png)
 
 
-## Create a group with the BeagleBone Black device(s)
-
-**TODO** How to create group, warn that mixing qemu & BBB in same deployment is not reliable yet for reporting.
+!!! If your BeagleBone Black does not show up for authorization in the UI, you need to diagnose what went wrong. Most commonly this is due to problems with the network. You can test if your workstation can reach the device by trying to ping it, e.g. with `ping 192.168.10.2` (replace with the IP address of your device). If you have a serial cable, you can log in to the device to diagnose. The `root` user is present and has an empty password in this test image.
 
 
 ## Prepare the rootfs image to update to
 
-! Please make sure to set a shell variable that expands correctly with `$IP_OF_MENDER_SERVER_FROM_DEVICE` or edit the commands below accordingly.
-
-**TODO**
+! Please make sure to set shell variables that expand correctly with `$IP_OF_MENDER_SERVER_FROM_DEVICE` (always) and `$IP_OF_MENDER_CLIENT` (if you are using static IP addressing) or edit the commands below accordingly.
 
 In order to deploy an update, we need a rootfs image to update to.
 Download the demo *rootfs* image with Mender support for the BeagleBone Black
@@ -198,24 +203,62 @@ You should see output similar to the following:
 
 > 192.168.10.1 docker.mender.io mender-artifact-storage.s3.docker.mender.io
 
+Next, ensure we have the right `ServerURL`:
+
 ```
 sudo sed -i -E "s/([ ]*\"ServerURL\"[ ]*:[ ]*)\".*\"/\1\"https:\/\/docker.mender.io:8080\"/" /mnt/rootfs/etc/mender/mender.conf
 ```
 
-Separate section!
-﻿⁠⁠⁠⁠vi /etc/systemd/network/eth.network
-**TODO** If not using DHCP server (like router), set IP address of device and same subnet on device & workstation.
+Finally, **only if you are using static IP addressing**, you need to set the
+device IP address, as shown below. Please note that the same
+constraints as described in [Set a static device IP address and subnet](#set-a-static-device-ip-address-and-subnet)
+for the disk image apply here.
 
 ```
+echo -n "\
 [Match]
 Name=eth0
 
 [Network]
-Address=192.168.10.105
-Gateway=192.168.10.1
+Address=$IP_OF_MENDER_CLIENT
+Gateway=$IP_OF_MENDER_SERVER_FROM_DEVICE
+" | sudo tee /mnt/rootfs/etc/systemd/network/eth.network
 ```
 
-!!! ROllback no network
+You should see output similar to the following:
+
+> [Match]  
+> Name=eth0  
+  
+> [Network]  
+> Address=192.168.10.2  
+> Gateway=192.168.10.1  
+
+
+!!! The Mender client will roll back the deployment if there is no network when it boots from the updated partition, detected by that it is not able to report the final update status to the server. This helps ensure that you can always deploy a new update to your device, even when fatal conditions occur.
+
+
+### Set the rootfs Image ID
+
+When you upload this image (below), it is very important that you use the right Image ID,
+which is used to decide if a given update is already installed or not.
+Mender will skip a deployment if it sees that the Image ID in a deployment
+is the same as the Image ID for a given device.
+
+Furthermore, the disk image we wrote to the SD card might have the
+same Image ID in its rootfs partitions as the rootfs we downloaded above.
+For these reasons, we will set the rootfs Image ID to **release10**,
+as shown with the command below.
+
+```
+sudo sed -i -E "s/(IMAGE_ID[ ]*=[ ]*).*/\1release10/" /mnt/rootfs/etc/mender/build_mender
+```
+
+You can also make any other modifications you wish in this image
+prior to deploying it.
+
+
+### Unmount the rootfs image
 
 It is very important to unmount the rootfs image after modifying it, so all changes are written to the image:
 
@@ -223,28 +266,76 @@ It is very important to unmount the rootfs image after modifying it, so all chan
 sudo umount /mnt/rootfs
 ```
 
-!! If you do not properly unmount the rootfs image, changes may be lost or corrupted when it is written to flash.
+
+## Upload the rootfs image to the server
+
+Before we can deploy the rootfs image we prepared above it needs
+to be uploaded to the server.
+
+Go to the Mender server UI, click the **Software** tab and upload this image,
+using the fields below:
+
+* Name: `release10`
+* Yocto ID: `release10` (**NB! use the string you [set above](#set-the-rootfs-image-id)**)
+* Checksum: `test`
+* Device type compatibility: `beaglebone`
+* Description: `My test build`
+
+In the UI, it should look something like this:
+
+![Mender UI - Upload image BeagleBone Black](upload_image_bbb.png)
 
 
-## Upload rootfs image
+## Deploy the rootfs image
 
-**TODO**
+Now that we have the device connected and the image
+uploaded to the server, all that remains is to go to the
+**Deployments** tab and click **Create a deployment**.
+
+Select the image you just uploaded and **All devices**, then
+**Create deployment**.
+
+!!! If you deploy to several device types (e.g. vexpress-qemu), the Mender server will skip these if no compatible image is available. This condition is indicated by the *noimage* status. Mender does this to avoid deployments of incompatible rootfs images.
 
 
-## Deploy rootfs image
+## See the progress of the deployment
 
-**TODO**
+As the deployment progresses, you can click on it to view more details about the current status across all devices.
+In the example below, we can see that a BeagleBone has installed the update and is rebooting into it,
+while a QEMU device skipped the deployment because no compatible image was available for it.
+
+![Mender UI - Deployment progress - BeagleBone Black](deployment_report_bbb.png)
+
+Once the deployment completes, you should see its report in *Past deployments*.
 
 **Congratulations!** You have used the Mender server to deploy your first physical device update!
+
+
+## Deploy another update
+
+As we noted in [Set the rootfs Image ID](#set-the-rootfs-image-id) above,
+the Image ID of the deployment needs to be different than the currently running Image ID for
+Mender to deploy a new update. So if you want to reuse the rootfs image we
+already have by making changes to it and deploying it again, make sure to
+change the Image ID as well!
+
+With that in mind, now might be a good time to tweak the image, add some
+more BeagleBone Black devices to the environment and try to get the
+required blinkenlights going!
+
+If you want to build your own image for the BeagleBone Black,
+head over to the tutorial [Building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image).
+
+
+## Integrate Mender with your device
+
+We can have a lot of fun with the BeagleBone Black, however
+it is rarely used in production due to the cost of scaling and specific
+needs of custom applications.
+
 Now that you have seen how Mender works with a reference device, you might be wondering what
 it would take to port it to your own platform. The first place to go is
 [Device integration](../../Devices), where you will find out how to integrate
 the Mender client with your device software, and then look at
 [Creating artifacts](../../Artifacts) to see how to build images ready to be
 deployed over the network to your devices.
-
-
-## Next steps
-
-**TODO** modify rootfs; blinken lights
-build for your device.

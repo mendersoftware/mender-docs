@@ -25,8 +25,10 @@ sudo mkdir /mnt/rootfs
 sudo mount -t ext4 -o loop <PATH-TO-ROOTFS-IMAGE>.ext4 /mnt/rootfs/
 ```
 
-Now you can modify the file `/mnt/rootfs/etc/issue` so you can detect a change.
-After saving your modified issue-file, simply unmount the rootfs again:
+Now you can modify the file system found at `/mnt/rootfs`. For example,
+you can change `/mnt/rootfs/etc/issue` so you can detect that a deployment
+changed the system. After saving your modified files, simply unmount
+the rootfs again:
 
 ```
 sudo umount /mnt/rootfs
