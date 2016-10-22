@@ -76,6 +76,10 @@ to make the Mender client able to find the server when the Mender client starts:
 echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io mender-artifact-storage.s3.docker.mender.io" | sudo tee -a /mnt/rootfs[12]/etc/hosts
 ```
 
+You should see output similar to the following:
+
+> 192.168.10.1 docker.mender.io mender-artifact-storage.s3.docker.mender.io
+
 We also need to modify `ServerURL` in the rootfs partitions at `/etc/mender/mender.conf`
 to `https://docker.mender.io:8080`. This can be achieved by manually editing or running
 the command below:
@@ -83,10 +87,6 @@ the command below:
 ```
 sudo sed -i -E "s/([ ]*\"ServerURL\"[ ]*:[ ]*)\".*\"/\1\"https:\/\/docker.mender.io:8080\"/" /mnt/rootfs[12]/etc/mender/mender.conf
 ```
-
-You should see output similar to the following:
-
-> 192.168.10.1 docker.mender.io mender-artifact-storage.s3.docker.mender.io
 
 
 ### Set a static device IP address and subnet
@@ -175,6 +175,8 @@ Black boot from the SD card instead of internal storage.
 ## Prepare the rootfs image to update to
 
 ! Please make sure to set a shell variable that expands correctly with `$IP_OF_MENDER_SERVER_FROM_DEVICE` or edit the commands below accordingly.
+
+**TODO**
 
 In order to deploy an update, we need a rootfs image to update to.
 Download the demo *rootfs* image with Mender support for the BeagleBone Black
