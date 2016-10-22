@@ -22,7 +22,6 @@ If there is, the update client downloads and installs it.
 In the current implementation, only devices running embedded Linux are supported.
 Other operating systems will be added later on.
 
-!!! The Mender server is still in active development and not yet published as open source. If you would like early access please contact us at <contact@mender.io>.
 
 ## Modes of operation
 
