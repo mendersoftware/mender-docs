@@ -3,7 +3,7 @@ title: APIs
 taxonomy:
     category: docs
 api: true
-visible: false
+visible: true
 ---
 
 ### Chapter 6
