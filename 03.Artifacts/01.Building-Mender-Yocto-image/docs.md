@@ -116,6 +116,7 @@ VIRTUAL-RUNTIME_init_manager = "systemd"
 DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 VIRTUAL-RUNTIME_initscripts = ""
 IMAGE_FSTYPES = "ext4"
+IMAGE_INSTALL_append_beaglebone = " kernel-devicetree" 
 ```
 
 Please replace `<YOUR-MACHINE>` with the correct machine for your device.
