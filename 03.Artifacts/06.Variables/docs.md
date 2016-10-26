@@ -62,7 +62,7 @@ The size of the boot partition in the generated `.sdimg` file. See [Configuring 
 The size of the persistent data partition in the generated `.sdimg` file. See [Configuring the partition sizes](../../Devices/Partition-layout#configuring-the-partition-sizes) for more information.
 
 
-#### MENDER_STORAGE_TOTAL_SIZE
+#### MENDER_STORAGE_TOTAL_SIZE_MB
 
 Total size of the medium that mender `.sdimg` will be written to, expressed in
 MB. The size of rootfs partition will be calculated automatically by subtracting
