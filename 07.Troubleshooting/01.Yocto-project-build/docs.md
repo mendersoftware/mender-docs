@@ -39,26 +39,6 @@ IMAGE_BOOT_FILES ?= "u-boot.bin MLO"
 See the [Yocto Project documentation](http://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html?target=_blank#var-IMAGE_BOOT_FILES) for more information about the `IMAGE_BOOT_FILES` variable.
 
 
-## Missing UBOOT_SUFFIX
-
-The Yocto Project's `UBOOT_SUFFIX` variable is defined in [the U-Boot recipe](http://git.yoctoproject.org/cgit/cgit.cgi/poky/tree/meta/recipes-bsp/u-boot/u-boot.inc?target=_blank).
-At the time of writing the default value is `bin`, but some versions of U-Boot use `img`.
-
-This variable is used by meta-mender and should be available outside the U-Boot recipe.
-However, if you encounter the following error during build, it was not expanded correctly.
-
-```
- dd: failed to open 'build/tmp/deploy/images/gatewayr2/u-boot.': No such file or directory
-```
-
-This is most likely an issue with the Yocto Project's tools or recipes.
-You can work around the problem by finding the correct value (e.g. `ls build/tmp/deploy/images/<MACHINE>/u-boot.*`) and adding a corresponding line similar to the following to your `local.conf`.
-
-```
-UBOOT_SUFFIX = "bin"
-```
-
-
 ## U-Boot lacks support for Boot Count Limit
 
 In order to support robust rootfs rollback, Mender depends on being able to tell the bootloader to roll back to the known-working rootfs if attempts to boot the updated rootfs fails a given number of times.
