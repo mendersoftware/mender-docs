@@ -283,8 +283,15 @@ standard component in Yocto, but if using a U-Boot fork, this may need to be
 added manually. If it doesn't already exist, the most straightforward approach
 is to start with the `meta/recipes-bsp/u-boot/u-boot-fw-utils_*.bb` recipe found
 in Yocto, and then make the necessary changes in the same fashion as done for
-the main `u-boot` recipe. The two recipes should use identical source code
-(e.g. the same patches applied).
+the main `u-boot` recipe.
+
+An alternative approach is to port the forked U-Boot recipe,
+`u-boot-my-fork_*.bb` to a `u-boot-fw-utils-my-fork_*.bb` recipe. We provide an
+example for this
+[here](Providing-custom-u-boot-fw-utils/Example--Providing-custom-u-boot-fw-utils).
+
+The two recipes should use identical source code (e.g. the same patches
+applied).
 
 Like with `u-boot`, `u-boot-fw-utils` should contain sections to define what it
 provides, and that it is the preferred provider.
