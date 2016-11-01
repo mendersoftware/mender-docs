@@ -35,7 +35,7 @@ cp ../meta/recipes-bsp/u-boot/u-boot_2016.03.bb recipes-bsp/u-boot-my-fork_2016.
 In addition we need to change a few things inside the file. Expressed as a diff,
 this is the change:
 
-```diff
+```
 --- ../meta/recipes-bsp/u-boot/u-boot_2016.03.bb	2016-07-07 13:46:25.202889701 +0200
 +++ recipes-bsp/u-boot-my-fork/u-boot-my-fork_2016.03.bb	2016-11-01 11:05:35.805292065 +0100
 @@ -1,4 +1,5 @@
@@ -49,7 +49,7 @@ this is the change:
 
 The first line changes a path inside the recipe, since the include file is not
 in the same directory anymore. The second adds Mender specific tweaks, as
-described in [this documentation](../Integrating-with-U-Boot#forks-of-u-boot).
+described in [this section](../Integrating-with-U-Boot#forks-of-u-boot).
 
 ## Preparations
 
@@ -64,8 +64,8 @@ cp u-boot-my-fork_2016.03.bb u-boot-fw-utils-my-fork_2016.03.bb
 ## Using the fork
 
 Then, in accordance with [this
-documentation](../Integrating-with-U-Boot#u-boot-fw-utils), we add the following
-to our configuration:
+section](../Integrating-with-U-Boot#u-boot-fw-utils), we add the following to
+our configuration:
 
 ```
 PREFERRED_PROVIDER_u-boot-fw-utils = "u-boot-fw-utils-my-fork"
@@ -80,7 +80,7 @@ question.
 Here is the complete set of changes made to the recipe, expressed as a diff. We
 will go through each line and explain why they are needed.
 
-```diff
+```
 --- u-boot-my-fork_2016.03.bb	2016-11-01 11:42:06.143094834 +0100
 +++ u-boot-fw-utils-my-fork_2016.03.bb	2016-11-01 10:19:43.940934880 +0100
 @@ -1,7 +1,10 @@
@@ -135,7 +135,7 @@ will go through each line and explain why they are needed.
 
 2. We replace `u-boot-mender.inc` with `u-boot-fw-utils-mender.inc`. This is
    because the fw-utils tools requires different tweaks, as described in [this
-   documentation](../Integrating-with-U-Boot#u-boot-fw-utils).
+   section](../Integrating-with-U-Boot#u-boot-fw-utils).
 
 3. The next block of variable assignments (starting with `SUMMARY`) is added
    because this normally is provided by `u-boot.inc`, but since this file is not
