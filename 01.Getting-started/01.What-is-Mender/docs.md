@@ -38,8 +38,3 @@ On the other hand, if you are only interested in triggering deployments with the
 you can follow the [Standalone deployments](../Standalone-deployments) tutorial. For an explanation of the
 difference between *managed* and *standalone* deployments, please see
 [Modes of operation](../../Architecture/overview#modes-of-operation).
-
-
-### Using these docs
-
-The simplest way to navigate the documentation is to use the Next and Previous arrows (**<**   **>**) on each page. You can see which pages you've finished reading by the checkmarks (✓) that mark your progress in the sidebar.
