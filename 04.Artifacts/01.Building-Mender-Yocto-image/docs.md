@@ -36,6 +36,9 @@ Detailed instructions and recipes needed for building a self-contained image fol
 
 ! We use the Yocto Project's **krogoth** branch below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* We use the `stable` branch in `meta-mender`, which builds a stable version of Mender for the latest Yocto Project release. `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases , but these branches are no longer maintained by Mender developers. Please reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender) if you would like help with getting Mender to work on other versions of the Yocto Project.
 
+
+!!! The meta-mender layer and the web-server are bundled with a default certificate and key. If you are intending on using Mender in production, it is highly recommend to generate your own certificate using OpenSSL (`openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256`), and replacing the [server certificate](https://github.com/mendersoftware/meta-mender/tree/master/recipes-mender/mender/files) found in the meta-mender layer, and [server certificate and key](https://github.com/mendersoftware/mender-api-gateway-docker/tree/master/cert) in the nginx gateway.
+
 The required meta layers are found in the following repositories:
 
 ```
