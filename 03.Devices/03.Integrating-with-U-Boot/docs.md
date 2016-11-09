@@ -286,9 +286,9 @@ in Yocto, and then make the necessary changes in the same fashion as done for
 the main `u-boot` recipe.
 
 An alternative approach is to port the forked U-Boot recipe,
-`u-boot-my-fork_*.bb` to a `u-boot-fw-utils-my-fork_*.bb` recipe. We provide an
-example for this
-[here](Providing-custom-u-boot-fw-utils/Example--Providing-custom-u-boot-fw-utils).
+`u-boot-my-fork_*.bb` to a `u-boot-fw-utils-my-fork_*.bb` recipe. We have 
+provided a
+[practical example for this](Providing-custom-u-boot-fw-utils).
 
 The two recipes should use identical source code (e.g. the same patches
 applied).
