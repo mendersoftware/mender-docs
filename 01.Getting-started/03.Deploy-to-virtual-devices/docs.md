@@ -47,6 +47,24 @@ clicking on a device. It should look similar to the following:
 
 !!! Which information is collected about devices is fully configurable; see the documentation on [Identity](../../Client-configuration/Identity) and [Inventory](../../Client-configuration/Inventory) for more information.
 
+You can also see that the `image_id` starts with `core-image-full-cmdline`.
+The device console can be shown by running the following command:
+
+```
+docker logs $(docker ps | grep mender-client | cut -f1 -d' ')
+```
+
+It should yield output similar to the following:
+
+> ...  
+> [  OK  ] Started Network Name Resolution.  
+> [  OK  ] Started Mender OTA update service.  
+> [  OK  ] Reached target Multi-User System.  
+>  
+> Poky (Yocto Project Reference Distro) 2.1.1 vexpress-qemu ttyAMA0
+
+After deploying the update below, you can verify that this `image_id` and the console text (from `/etc/issue`) has changed.
+
 
 ## Upload a new rootfs image to the server
 
@@ -93,6 +111,8 @@ one image and no custom groups right now, we simply select
 the image we just uploaded and **All devices**, then
 **Create deployment**.
 
+!!! It may take a few seconds until the deployment shows up. You can also refresh your browser to see it immediately.
+
 
 ## See the progress of the deployment
 
@@ -112,18 +132,26 @@ Once the deployment completes, you should see it in *Past deployments*.
 If the deployment fails you can view the deployment log,
 which is obtained from the device, to diagnose the issue.
 You can also see the state of deployments on the Dashboard.
+In **Devices** you can see that `image_id` has now changed to `test`.
 
-If you follow the docker compose terminal, you will also see
-the virtual device log as Mender deploys the update and
-reboots it. After the reboot, you should see the following
-right before the login prompt:
+Furthermore, you can again check the terminal of the virtual device with:
 
-> mender-client_1             | This system has been updated by Mender build...  
+```
+docker logs $(docker ps | grep mender-client | cut -f1 -d' ')
+```
 
-If you followed closely during the initial boot of the Mender virtual
-client, you can see that this message (from `/etc/issue`) has been changed!
-However, if you missed it, do not despair. We will deploy the original
-rootfs below to see it change again.
+It should yield output similar to the following.
+
+> ...  
+> [  OK  ] Started Network Name Resolution.  
+> [  OK  ] Started Mender OTA update service.  
+> [  OK  ] Reached target Multi-User System.  
+>   
+> This system has been updated by Mender build...
+
+You can see that this has changed from when we ran it in
+[See information about the device](#see-information-about-the-device).
+This shows your virtual device runs the new rootfs!
 
 
 ## Deploy another update
