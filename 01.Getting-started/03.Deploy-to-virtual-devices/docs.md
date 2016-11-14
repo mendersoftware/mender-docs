@@ -75,7 +75,7 @@ includes Mender support can be used, as described in
 
 To make testing easier, a demo image that can be used with
 the virtual device is provided for download at
-[https://mender.s3.amazonaws.com/latest/demo/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4](https://mender.s3.amazonaws.com/latest/demo/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4).
+[https://d1b0l86ne08fsf.cloudfront.net/latest/demo/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4](https://d1b0l86ne08fsf.cloudfront.net/latest/demo/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4).
 
 After the download finishes, go back to the Mender server UI,
 click the **Software** tab and upload this image.
@@ -164,7 +164,7 @@ that is already installed and skip the deployment. It will
 immediately be marked as successful and moved to *Past deployments*.
 
 For this reason, we provide another image that you can use
-to deploy with at [https://mender.s3.amazonaws.com/latest/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4](https://mender.s3.amazonaws.com/latest/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4). 
+to deploy with at [https://d1b0l86ne08fsf.cloudfront.net/latest/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4](https://d1b0l86ne08fsf.cloudfront.net/latest/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4). 
 Make sure to not mix it with the demo rootfs you downloaded above,
 as they have the same file name.
 This is actually the original rootfs of your
