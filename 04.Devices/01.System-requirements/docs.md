@@ -12,7 +12,7 @@ Mender's meta layer, [meta-mender](https://github.com/mendersoftware/meta-mender
 ##Device capacity
 The client binaries, which are written in Go, are around 7 MiB in size. 
 
-Our reference board, the [BeagleBone Black](http://beagleboard.org/bone?target=_blank), comes with a 1 GHz ARM Cortex-A8 processor, with 512 MiB of RAM. We use these boards in our continuous integration process.
+Our physical reference device, the [BeagleBone Black](https://beagleboard.org/black?target=_blank), comes with a 1 GHz ARM Cortex-A8 processor, with 512 MiB of RAM. Mender also has a virual QEMU-based reference device using the `vexpress-qemu` machine type. We use both these devices in our continuous integration process so they are well supported.
 
 ##Bootloader support
 To support atomic rootfs rollback, Mender integrates with the bootloader of the device. Currently Mender supports [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank).

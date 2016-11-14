@@ -9,7 +9,7 @@ The build output will most notably include:
 * a file that can be flashed to the device storage during initial provisioning, it has suffix `.sdimg`
 * a rootfs filesystem image file that Mender can deploy to your provisioned device, it normally has suffix `.ext4`, but this depends on the file system type you build
 
-Mender uses a virtual QEMU device for testing without the need for hardware, and the BeagleBone Black as the reference hardware platform.
+Mender has two [reference devices](../../Getting-started/What-is-Mender#mender-reference-devices): a virtual QEMU device for testing without the need for hardware, and the BeagleBone Black.
 Building for these devices is well tested with Mender. If you are building for your own device
 please see [Device integration](../../Devices) for general requirements and adjustments you might need
 to enable your device to support atomic image-based deployments with rollback.
@@ -123,7 +123,7 @@ IMAGE_FSTYPES = "ext4"
 
 Please replace `<YOUR-MACHINE>` with the correct machine for your device.
 
-! The machine `<YOUR-MACHINE>` needs to be integrated with Mender before it will work correctly; most notably U-Boot needs the required features and integration. Please see [Device integration](../../Devices) for more information. If you are building for a Mender reference platform, you can use `vexpress-qemu` or `beaglebone`. 
+! The machine `<YOUR-MACHINE>` needs to be integrated with Mender before it will work correctly; most notably U-Boot needs the required features and integration. Please see [Device integration](../../Devices) for more information. If you are building for a Mender [reference device](../../Getting-started/What-is-Mender#mender-reference-devices), you can use `vexpress-qemu` or `beaglebone`. 
 
 !!! Mender automatically selects the file system types it builds into the disk image (`.sdimg`), which is used for initial flash provisioning, based on the `IMAGE_FSTYPES` variable. See the [section on file system types](../../Devices/Partition-layout#file-system-types) for more information.
 
@@ -138,7 +138,7 @@ Once all the configuration steps are done, an image can be built with bitbake:
 bitbake <YOUR-TARGET>
 ```
 
-!!! Please replace `<YOUR-TARGET>` with the desired target or image name. If you are building for a vexpress-qemu, set the target to `core-image-full-cmdline`. If you are building for the `beaglebone`, set the target to `core-image-base`. For more information about the differences with image types on the BeagleBone Black please see [the official Yocto Project BeagleBone support page](https://www.yoctoproject.org/downloads/bsps/krogoth21/beaglebone?target=_blank).
+!!! Please replace `<YOUR-TARGET>` with the desired target or image name. If you are building for `vexpress-qemu`, set the target to `core-image-full-cmdline`. If you are building for the `beaglebone`, set the target to `core-image-base`. For more information about the differences with image types on the BeagleBone Black please see [the official Yocto Project BeagleBone support page](https://www.yoctoproject.org/downloads/bsps/krogoth21/beaglebone?target=_blank).
 
 !!! The first time you build a Yocto Project image, the build process can take several hours. The successive builds will only take a few minutes, so please be patient this first time.
 
@@ -158,4 +158,4 @@ using this build, you should use files with the suffix of your selected filesyst
 image in managed mode with the Mender server as described in [Deploy to physical devices](../../Getting-started/Deploy-to-physical-devices)
 or by using the Mender client only in [Standalone deployments](../../Getting-started/Standalone-deployments).
 
-!!! If you built for the Mender reference platform `vexpress-qemu`, you can start up your newly built image with the script in `../meta-mender/scripts/mender-qemu` and log in as *root* without password.
+!!! If you built for the Mender reference device `vexpress-qemu`, you can start up your newly built image with the script in `../meta-mender/scripts/mender-qemu` and log in as *root* without password.
