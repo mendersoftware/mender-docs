@@ -20,7 +20,7 @@ as described in [Create a test environment](../Create-a-test-environment).
 
 Open the Mender UI in the same browser as you accepted the certificate
 in as part of [Create a test environment](../Create-a-test-environment).
-It is available at [http://localhost:8080/](http://localhost:8080/?target=_blank).
+It is available at [https://localhost:8080/](https://localhost:8080/?target=_blank).
 
 There should be a virtual device that is waiting authorization.
 This means that the Mender client, which runs as a daemon on the device,
