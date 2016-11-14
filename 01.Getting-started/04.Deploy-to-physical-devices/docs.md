@@ -53,7 +53,7 @@ that your device(s) can connect to the Mender server.
 ! Please make sure to set a shell variable that expands correctly with `$IP_OF_MENDER_SERVER_FROM_DEVICE` or edit the commands below accordingly.
 
 Download the demo *disk* image with Mender support for the BeagleBone Black
-at [https://mender.s3.amazonaws.com/latest/beaglebone/core-image-base-beaglebone.sdimg](https://mender.s3.amazonaws.com/latest/beaglebone/core-image-base-beaglebone.sdimg).
+at [https://d1b0l86ne08fsf.cloudfront.net/latest/beaglebone/core-image-base-beaglebone.sdimg](https://d1b0l86ne08fsf.cloudfront.net/latest/beaglebone/core-image-base-beaglebone.sdimg).
 This image contains *all the partitions* of the storage device, as
 described in [Partition layout](../../Devices/Partition-layout).
 
@@ -185,7 +185,7 @@ and the IP addresses, as shown in the example below.
 
 In order to deploy an update, we need a rootfs image to update to.
 Download the demo *rootfs* image with Mender support for the BeagleBone Black
-at [https://mender.s3.amazonaws.com/latest/beaglebone/core-image-base-beaglebone.ext4](https://mender.s3.amazonaws.com/latest/beaglebone/core-image-base-beaglebone.ext4).
+at [https://d1b0l86ne08fsf.cloudfront.net/latest/beaglebone/core-image-base-beaglebone.ext4](https://d1b0l86ne08fsf.cloudfront.net/latest/beaglebone/core-image-base-beaglebone.ext4).
 
 Please see [Modifying a rootfs image](../../Artifacts/Modifying-a-rootfs-image)
 for a description on how to modify configuration files in rootfs images.
