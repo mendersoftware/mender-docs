@@ -12,7 +12,7 @@ Mender's meta layer, [meta-mender](https://github.com/mendersoftware/meta-mender
 ##Device capacity
 The client binaries, which are written in Go, are around 7 MiB in size. 
 
-Our physical reference device, the [BeagleBone Black](https://beagleboard.org/black?target=_blank), comes with a 1 GHz ARM Cortex-A8 processor, with 512 MiB of RAM. Mender also has a virual QEMU-based reference device using the `vexpress-qemu` machine type. We use both these devices in our continuous integration process so they are well supported.
+Our physical reference device, the [BeagleBone Black](https://beagleboard.org/black?target=_blank), comes with a 1 GHz ARM Cortex-A8 processor, with 512 MiB of RAM. Mender also has a virtual QEMU-based reference device using the `vexpress-qemu` machine type. We use both these devices in our continuous integration process so they are well supported.
 
 ##Bootloader support
 To support atomic rootfs rollback, Mender integrates with the bootloader of the device. Currently Mender supports [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank).
@@ -24,7 +24,7 @@ Besides any special configuration to support the device, U-Boot needs to be comp
 * [Boot Count Limit](http://www.denx.de/wiki/view/DULG/UBootBootCountLimit?target=_blank). It enables specific actions to be triggered when the boot process fails a certain amount of attempts.
 * ext2/3/4 load support (specifically: the file system type of the rootfs). U-Boot needs this capability because the kernel will be stored there.
 
-Support for modifying U-Boot variables from user space is also required so that fw_printenv/fw_setenv utilities (from u-boot-fw-utils) are available in userspace. These utilities can be 
+Support for modifying U-Boot variables from user space is also required so that fw_printenv/fw_setenv utilities (from u-boot-fw-utils) are available in user space. These utilities can be 
 [compiled from U-Boot sources](http://www.denx.de/wiki/view/DULG/HowCanIAccessUBootEnvironmentVariablesInLinux?target=_blank) and are part of U-Boot.
 
 Please see [Integrating with U-Boot](../Integrating-with-U-Boot) for more information.

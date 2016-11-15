@@ -75,7 +75,7 @@ For convenience it is very useful to always have a fixed-length string that uniq
 device. Mender implements this by computing a SHA-256 checksum over the identity attributes
 and this is referred to as the *device identifier* in Mender.
 
-For example, a device identifer could look like `efd4b192a70ddfee509c0e72904ce093ea57b2782c233840b8086b699bc67d5b`.
+For example, a device identifier could look like `efd4b192a70ddfee509c0e72904ce093ea57b2782c233840b8086b699bc67d5b`.
 
 Clearly, the device identifier is not very human-readable, so the identity attributes are also transferred and
 stored by the Mender server. The device identifier is primarily used for security purposes and software-based

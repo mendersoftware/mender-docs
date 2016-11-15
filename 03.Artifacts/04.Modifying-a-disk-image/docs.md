@@ -36,7 +36,7 @@ core-image-base-beaglebone.sdimg4          606207      868351      131072+   f  
 core-image-base-beaglebone.sdimg5          606208      868351      131072   83  Linux
 ```
 
-In this example there are four partitions (plus an exteded partition). Please see
+In this example there are four partitions (plus an extended partition). Please see
 [Partition layout](../../Devices/Partition-layout) for a description of the
 partitions Mender uses. The two Linux partitions in the middle, at device
 `.sdimg2` and `.sdimg3`, are the two rootfs partitions.
