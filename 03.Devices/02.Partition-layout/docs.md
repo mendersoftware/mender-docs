@@ -100,7 +100,7 @@ MENDER_ROOTFS_PART_B = "${MENDER_STORAGE_DEVICE_BASE}3"
 
 ##Configuring the partition sizes
 
-When [building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image) Mender defines and uses certain OpenEmbedded variables which are used to define the sizes of the partitions. They are defined in `meta-mender` under `classes/mender-sdimg.bbclass`.
+When [building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image) Mender defines and uses certain OpenEmbedded variables which are used to define the sizes of the partitions. They are defined in `meta-mender-core` under `classes/mender-sdimg.bbclass`.
 
 | Mount point | Purpose                                                 | Default size | Variable to configure size     |
 |-------------|---------------------------------------------------------|--------------|--------------------------------|
