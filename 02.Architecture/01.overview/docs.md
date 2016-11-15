@@ -46,7 +46,7 @@ Other update mechanisms are possible, for example through the use of a package m
 
 One of the prime requirements of an updater is that it should be robust.
 It must be possible to recover from an update that fails for any reason, including through loss of power or network connectivity.
-In order to make updates to file system images reliable, Mender employs a dual redundant scheme, where each updateable partition is backed up with a duplicate.
+In order to make updates to file system images reliable, Mender employs a dual redundant scheme, where each updatable partition is backed up with a duplicate.
 The one currently in use is called the **active partition** and the backup is called the **inactive partition**.
 When Linux boots, it will be told by the bootloader which partitions to use.
 
