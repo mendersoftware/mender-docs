@@ -33,7 +33,7 @@ Thus, Mender supports two reference devices, one virtual and one physical:
 * vexpress-qemu. This is a virtual device, which is handy as you do not need to configure any hardware to try Mender. This device type also comes bundled with the Mender server for easy testing.
 * [BeagleBone Black](https://beagleboard.org/black?target=_blank). This is a popular and open physical device, used in many professional environments.
 
-These reference devices are well supported and included in the Mender continious integration environment.
+These reference devices are well supported and included in the Mender continuous integration environment.
 They are thus an easy way to get started with testing Mender.
 You will see references to them throughout the documentation.
 
@@ -46,7 +46,7 @@ We have a series of tutorials that show you how Mender works, while giving you h
 
 We will start off by getting the Mender server installed and running in [Create a test environment](../Create-a-test-environment).
 Next, we will deploy to a virtual [Quick Emulator (QEMU)](http://qemu.org?target=_blank) device in [Deploy to virtual devices](../Deploy-to-virtual-devices).
-Doing the first deployment using QEMU is handy becasue it means that you do not have to configure any hardware to test Mender.
+Doing the first deployment using QEMU is handy because it means that you do not have to configure any hardware to test Mender.
 If you have real hardware in the form of the popular Mender reference device, the [BeagleBone Black](https://beagleboard.org/black?target=_blank),
 you can follow the final tutorial in this series, [Deploy to physical devices](../Deploy-to-physical-devices).
 

@@ -278,7 +278,7 @@ required:
 
 ### u-boot-fw-utils
 
-Mender depends on userspace tools provided by `u-boot-fw-utils`. This is a
+Mender depends on user space tools provided by `u-boot-fw-utils`. This is a
 standard component in Yocto, but if using a U-Boot fork, this may need to be
 added manually. If it doesn't already exist, the most straightforward approach
 is to start with the `meta/recipes-bsp/u-boot/u-boot-fw-utils_*.bb` recipe found

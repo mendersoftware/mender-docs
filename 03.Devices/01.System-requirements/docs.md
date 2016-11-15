@@ -24,7 +24,7 @@ Besides any special configuration to support the device, U-Boot needs to be comp
 * [Boot Count Limit](http://www.denx.de/wiki/view/DULG/UBootBootCountLimit?target=_blank). It enables specific actions to be triggered when the boot process fails a certain amount of attempts.
 * ext2/3/4 load support (specifically: the file system type of the rootfs). U-Boot needs this capability because the kernel will be stored there.
 
-Support for modifying U-Boot variables from userspace is also required so that fw_printenv/fw_setenv utilities (from u-boot-fw-utils) are available in userspace. These utilities can be 
+Support for modifying U-Boot variables from user space is also required so that fw_printenv/fw_setenv utilities (from u-boot-fw-utils) are available in userspace. These utilities can be 
 [compiled from U-Boot sources](http://www.denx.de/wiki/view/DULG/HowCanIAccessUBootEnvironmentVariablesInLinux?target=_blank) and are part of U-Boot.
 
 Please see [Integrating with U-Boot](../Integrating-with-U-Boot) for more information.
