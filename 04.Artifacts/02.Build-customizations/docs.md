@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-In this section we look at some customizations that can be made due to requirements from a certain build or board configuration.
+In this section we look at some customizations that can be made due to requirements from a certain build or device configuration.
 
 ## Disabling Mender as a system service
 

@@ -11,7 +11,7 @@ In order to ensure that the necessary components for Mender have been integrated
 This checklist will verify some key functionality aspects of the Mender integration. It will verify that:
 
 1. u-boot-fw-utils tools are present on the device
-2. the U-Boot bootloader and u-boot-fw-utils agree on the format for the U-Boot environment. The format of the U-Boot environment is checksummed and highly board dependent, which is why this check is necessary
+2. the U-Boot bootloader and u-boot-fw-utils agree on the format for the U-Boot environment. The format of the U-Boot environment is checksummed and highly device dependent, which is why this check is necessary
 3. the correct kernel is loaded from partition A
 4. the correct kernel is loaded from partition B
 5. the correct rootfs is mounted when partition A is active
@@ -28,7 +28,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
    bitbake -c cleansstate linux-yocto
    ```
 
-   ! Note that `linux-yocto` may need to be switched with the particular kernel being used with your board.
+   ! Note that `linux-yocto` may need to be switched with the particular kernel being used with your device.
 
    Then build the image normally.
 
