@@ -78,13 +78,13 @@ Default value is `1024`.
 A rough estimate of space lost due to partition alignment, expressed in MB. The
 `.sdimg` build process will calculate that automatically using a simple
 heuristic: `4 * MENDER_PARTITION_ALIGNMENT_MB` (accounts for boot partition, two
-rootfs paritions and a data partition).
+rootfs partitions and a data partition).
 
 
 #### MENDER_PARTITION_ALIGNMENT_MB
 
 Alignment of partitions used when building `.sdimg` image, expressed in MB.
-Default valus is `8`.
+Default value is `8`.
 
 
 #### SYSTEMD_AUTO_ENABLE
