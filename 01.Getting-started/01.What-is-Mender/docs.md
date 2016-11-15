@@ -27,7 +27,7 @@ Remote updates also require a means of secure communication with each device.
 In order to lower cost of scaling and meeting needs of specific applications, no two production devices have the same hardware specifications.
 This means that software such as Mender must be [integrated with production devices](../../Devices).
 
-However, during the testing and validation stage, it is common to use development boards to shorten time to experiment and prototype.
+However, during the testing and validation stage, it is common to use development device to shorten time to experiment and prototype.
 Thus, Mender supports two reference devices, one virtual and one physical:
 
 * vexpress-qemu. This is a virtual device, which is handy as you do not need to configure any hardware to try Mender. This device type also comes bundled with the Mender server for easy testing.

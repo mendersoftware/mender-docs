@@ -28,7 +28,7 @@ Inside *meta-mender* there are several layers. The most important one is *meta-m
 
 Each one of these steps can be configured further, see the linked sections for more details.
 
-The other layers provide support for specific boards. Detailed instructions and recipes needed for building a self-contained image follow.
+The other layers provide support for specific devices. Detailed instructions and recipes needed for building a self-contained image follow.
 
 !!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Start guide](http://www.yoctoproject.org/docs/2.1/yocto-project-qs/yocto-project-qs.html?target=_blank).
 
@@ -101,7 +101,7 @@ bitbake-layers add-layer ../meta-mender/meta-mender-core
 bitbake-layers add-layer ../oe-meta-go
 ```
 
-Finally, you need to incorporate the layer specific to your board. Mender currently comes with two supported boards: vexpress-qemu and beaglebone, residing in `meta-mender/meta-mender-qemu` and `meta-mender/meta-mender-beaglebone`, respectively. Other boards may also exist that are contributed by the community, or you may need to create a board specific layer yourself for your particular hardware.
+Finally, you need to incorporate the layer specific to your device. Mender currently comes with two supported devices: vexpress-qemu and beaglebone, residing in `meta-mender/meta-mender-qemu` and `meta-mender/meta-mender-beaglebone`, respectively. Other devices may also exist that are contributed by the community, or you may need to create a board specific layer yourself for your particular hardware.
 
 If you wish to test using the QEMU emulator, run the following:
 
