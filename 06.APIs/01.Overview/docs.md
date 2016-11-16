@@ -17,5 +17,5 @@ also uses the OPTIONS request method.
 ### Device and Integration APIs
 
 The APIs are split into two types - device and integration. Device APIs are for
-device-originating requests, the Integration APIs are management APIs inteneded
+device-originating requests, the Integration APIs are management APIs intended
 for use by the web UI. 
