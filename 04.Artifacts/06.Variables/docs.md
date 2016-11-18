@@ -18,6 +18,11 @@ Influences which file system type Mender will build for the rootfs partitions in
 The allocated size of each of the two rootfs partitions. We recommend leaving some space in the initial rootfs partitions so that you allow your rootfs to grow over time as you deploy updates with Mender. See [Configuring the partition sizes](../../Devices/Partition-layout#configuring-the-partition-sizes) and [the Yocto Project documentation](http://www.yoctoproject.org/docs/2.2/ref-manual/ref-manual.html?target=_blank#var-IMAGE_ROOTFS_SIZE) for more information.
 
 
+#### MENDER_ARTIFACT_NAME
+
+The name of the image or update that will be built. This is what the device will report that it is running, and different updates must have different names. This variable must be defined or the build will fail.
+
+
 #### MENDER_BOOT_PART
 
 The partition Mender uses as the boot partition. See [More detailed storage configuration](../../Devices/Partition-layout#more-detailed-storage-configuration) for more information.
@@ -36,6 +41,20 @@ The partition Mender uses as the persistent data partition. See [More detailed s
 #### MENDER_DATA_PART_SIZE_MB
 
 The size of the persistent data partition in the generated `.sdimg` file. See [Configuring the partition sizes](../../Devices/Partition-layout#configuring-the-partition-sizes) for more information.
+
+
+#### MENDER_DEVICE_TYPE
+
+A string that defines the type of device this image will be installed on. This variable is only relevant when building a complete partitioned image (`.sdimg` suffix). Once a device is flashed with this, it will not change, even if the device is updated.
+
+It defaults to the value of `${MACHINE}`.
+
+
+#### MENDER_DEVICE_TYPES_COMPATIBLE
+
+A space separated string of device types that determine which types of devices this update is suitable for. This complements the `MENDER_DEVICE_TYPE` variable, and is only relevant when building a `.mender` update, not when building a `.sdimg` partitioned image.
+
+It defaults to the value of `${MACHINE}`.
 
 
 #### MENDER_PARTITIONING_OVERHEAD_MB
