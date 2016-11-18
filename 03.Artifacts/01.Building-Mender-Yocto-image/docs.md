@@ -7,7 +7,7 @@ taxonomy:
 This document outlines the steps needed to build a [Yocto Project](https://www.yoctoproject.org/?target=_blank) image for a device.
 The build output will most notably include:
 * a file that can be flashed to the device storage during initial provisioning, it has suffix `.sdimg`
-* a rootfs filesystem image file that Mender can deploy to your provisioned device, it normally has suffix `.ext4`, but this depends on the file system type you build
+* an update image containing a rootfs filesystem that Mender can deploy to your provisioned device, it has suffix `.mender`
 
 Mender has two [reference devices](../../Getting-started/What-is-Mender#mender-reference-devices): a virtual QEMU device for testing without the need for hardware, and the BeagleBone Black.
 Building for these devices is well tested with Mender. If you are building for your own device
@@ -160,10 +160,6 @@ The files with suffix `.sdimg` are used to provision the device storage for devi
 Mender running already. Please proceed to [Provisioning a new device](../Provisioning-a-new-device)
 for steps to do this.
 
-On the other hand, if you already have Mender running on your device and want to deploy a rootfs update
-using this build, you should use files with the suffix of your selected filesystem
-(as set in `IMAGE_FSTYPES`), for example `.ext4`. You can either deploy this rootfs
-image in managed mode with the Mender server as described in [Deploy to physical devices](../../Getting-started/Deploy-to-physical-devices)
-or by using the Mender client only in [Standalone deployments](../../Getting-started/Standalone-deployments).
+On the other hand, if you already have Mender running on your device and want to deploy a rootfs update using this build, you should use files with the `.mender` suffix. You can either deploy this update in managed mode with the Mender server as described in [Deploy to physical devices](../../Getting-started/Deploy-to-physical-devices) or by using the Mender client only in [Standalone deployments](../../Getting-started/Standalone-deployments).
 
 !!! If you built for the Mender reference device `vexpress-qemu`, you can start up your newly built image with the script in `../meta-mender/meta-mender-qemu/scripts/mender-qemu` and log in as *root* without password.
