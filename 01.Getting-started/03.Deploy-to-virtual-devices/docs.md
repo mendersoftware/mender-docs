@@ -51,7 +51,7 @@ You can also see that the `image_id` starts with `core-image-full-cmdline`.
 The device console can be shown by running the following command:
 
 ```
-docker logs $(docker ps | grep mender-client | cut -f1 -d' ')
+sudo docker logs $(sudo docker ps | grep mender-client | cut -f1 -d' ')
 ```
 
 It should yield output similar to the following:
@@ -137,7 +137,7 @@ In **Devices** you can see that `image_id` has now changed to `test`.
 Furthermore, you can again check the terminal of the virtual device with:
 
 ```
-docker logs $(docker ps | grep mender-client | cut -f1 -d' ')
+sudo docker logs $(sudo docker ps | grep mender-client | cut -f1 -d' ')
 ```
 
 It should yield output similar to the following.
