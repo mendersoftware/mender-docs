@@ -20,7 +20,7 @@ Address=Jone's way 3, 1234 Boston
 Which exact attributes are chosen to define an identity depends on the identity
 scheme of a given system.	
 
-The Mender client allows the user to arbitrarily define the identity attributes, so that Mender
+The Mender client allows the user to define the identity attributes, which means that Mender
 can adapt to the identity scheme of any environment. However, Mender imposes the following
 requirements for device identities:
 
@@ -28,8 +28,8 @@ requirements for device identities:
 * identity attributes must *never change* for the lifetime of a device, so that a device can be recognized over its lifetime
 
 Note that device keys should not be used as part of identities, because this would make it very difficult to
-rotate or regenerate keys over the entire lifetime of the device.
-It is important to have the ability to regenerate keys if a device gets compromised, or as a recurring security measure.
+rotate or regenerate keys over the lifetime of the device as it would in effect change identity.
+It is important to have the ability to regenerate keys if a device gets compromised, or as a recurring proactive security measure.
 
 
 ##Example device identities
@@ -69,16 +69,16 @@ For example, it does not make much sense to use the serial number to identify so
 the MAC address to identify others.
 
 
-##The device identifier
+##The device id
 
 For convenience it is very useful to always have a fixed-length string that uniquely identifies a
 device. Mender implements this by computing a SHA-256 checksum over the identity attributes
-and this is referred to as the *device identifier* in Mender.
+and this is referred to as the *device id* in Mender.
 
-For example, a device identifier could look like `efd4b192a70ddfee509c0e72904ce093ea57b2782c233840b8086b699bc67d5b`.
+For example, a device id could look like `efd4b192a70ddfee509c0e72904ce093ea57b2782c233840b8086b699bc67d5b`.
 
-Clearly, the device identifier is not very human-readable, so the identity attributes are also transferred and
-stored by the Mender server. The device identifier is primarily used for security purposes and software-based
+Clearly, the device id is not human-friendly, so the identity attributes are also transferred and
+stored by the Mender server. The device id is primarily used for security purposes and software-based
 recognition of devices during device authentication, grouping, reporting, and similar cases.
 
 
