@@ -69,16 +69,16 @@ For example, it does not make much sense to use the serial number to identify so
 the MAC address to identify others.
 
 
-##The device id
+##The Device ID
 
 For convenience it is very useful to always have a fixed-length string that uniquely identifies a
 device. Mender implements this by computing a SHA-256 checksum over the identity attributes
-and this is referred to as the *device id* in Mender.
+and this is referred to as the **Device ID** in Mender.
 
-For example, a device id could look like `efd4b192a70ddfee509c0e72904ce093ea57b2782c233840b8086b699bc67d5b`.
+For example, a Device ID could look like `efd4b192a70ddfee509c0e72904ce093ea57b2782c233840b8086b699bc67d5b`.
 
-Clearly, the device id is not human-friendly, so the identity attributes are also transferred and
-stored by the Mender server. The device id is primarily used for security purposes and software-based
+Clearly, the Device ID is not human-friendly, so the identity attributes are also transferred and
+stored by the Mender server. The Device ID is primarily used for security purposes and software-based
 recognition of devices during device authentication, grouping, reporting, and similar cases.
 
 
