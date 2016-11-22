@@ -17,7 +17,6 @@ Influences which file system type Mender will build for the rootfs partitions in
 
 The allocated size of each of the two rootfs partitions. We recommend leaving some space in the initial rootfs partitions so that you allow your rootfs to grow over time as you deploy updates with Mender. See [Configuring the partition sizes](../../Devices/Partition-layout#configuring-the-partition-sizes) and [the Yocto Project documentation](http://www.yoctoproject.org/docs/2.2/ref-manual/ref-manual.html?target=_blank#var-IMAGE_ROOTFS_SIZE) for more information.
 
-
 #### MENDER_BOOT_PART
 
 The partition Mender uses as the boot partition. See [More detailed storage configuration](../../Devices/Partition-layout#more-detailed-storage-configuration) for more information.
@@ -61,6 +60,31 @@ The size of the boot partition in the generated `.sdimg` file. See [Configuring 
 #### MENDER_DATA_PART_SIZE_MB
 
 The size of the persistent data partition in the generated `.sdimg` file. See [Configuring the partition sizes](../../Devices/Partition-layout#configuring-the-partition-sizes) for more information.
+
+
+#### MENDER_STORAGE_TOTAL_SIZE_MB
+
+Total size of the medium that mender `.sdimg` will be written to, expressed in
+MB. The size of rootfs partition will be calculated automatically by subtracting
+the sizes of boot (see [MENDER_BOOT_PART_SIZE_MB](#MENDER_BOOT_PART_SIZE_MB))
+and data partitions (see [MENDER_DATA_PART_SIZE_MB](#MENDER_DATA_PART_SIZE_MB))
+along with some predefined overhead
+(see [MENDER_PARTITIONING_OVERHEAD_MB](#MENDER_PARTITIONING_OVERHEAD_MB))).
+Default value is `1024`.
+
+
+#### MENDER_PARTITIONING_OVERHEAD_MB
+
+A rough estimate of space lost due to partition alignment, expressed in MB. The
+`.sdimg` build process will calculate that automatically using a simple
+heuristic: `4 * MENDER_PARTITION_ALIGNMENT_MB` (accounts for boot partition, two
+rootfs paritions and a data partition).
+
+
+#### MENDER_PARTITION_ALIGNMENT_MB
+
+Alignment of partitions used when building `.sdimg` image, expressed in MB.
+Default valus is `8`.
 
 
 #### SYSTEMD_AUTO_ENABLE

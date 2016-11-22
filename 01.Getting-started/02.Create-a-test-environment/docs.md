@@ -44,6 +44,8 @@ While bringing up the environment, several hundred megabytes of docker
 images may be downloaded. We recommend using a fast Internet
 connection in order to avoid long wait times.
 
+! Currently, the web browser you use to interact with the Mender UI needs to have internet connectivity because the Mender UI uses some fonts and icons obtained from Google APIs. This internet dependency will be removed very soon.
+
 !!! It is very likely possible to use the test environment on other platforms, versions, or with less resources. We recommend using this exact environment for testing Mender because it is known to work and you will thus avoid any issues specific to your test environment if you use this reference.
 
 

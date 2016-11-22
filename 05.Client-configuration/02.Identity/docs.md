@@ -106,8 +106,21 @@ Newline characters are stripped, and it is not supported to have newline as part
 of values. If such characters may exist they need to be encoded. For example,
 a URL-compatible encoding `foo\nbar` becomes `foo%10bar`.
 
-Keys appearing multiple times will get the value appearing last in the
-output assigned.
+Attributes appearing multiple times will have their values merged into a list.
+For example, output
+
+```
+mac=0a:1b:3d:fe:02:33
+mac=0a:1b:3d:fe:02:34
+cpuid=1234123-ABC
+```
+
+is conceptually merged into the following representation:
+
+```
+mac=[0a:1b:3d:fe:02:33, 0a:1b:3d:fe:02:34]
+cpuid=1234123-ABC
+```
 
 ! The device identity must remain unchanged throughout lifetime of the device. Thus, it is advised to use attributes that will not change or are unlikely to change in the future. Examples of such attributes are device/CPU serial numbers, interface MAC addresses, and in-factory burned EEPROM contents.
 

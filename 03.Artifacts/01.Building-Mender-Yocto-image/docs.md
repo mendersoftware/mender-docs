@@ -9,7 +9,7 @@ The build output will most notably include:
 * a file that can be flashed to the device storage during initial provisioning, it has suffix `.sdimg`
 * a rootfs filesystem image file that Mender can deploy to your provisioned device, it normally has suffix `.ext4`, but this depends on the file system type you build
 
-Mender uses a virtual QEMU device for testing without the need for hardware, and the BeagleBone Black as the reference hardware platform.
+Mender has two [reference devices](../../Getting-started/What-is-Mender#mender-reference-devices): a virtual QEMU device for testing without the need for hardware, and the BeagleBone Black.
 Building for these devices is well tested with Mender. If you are building for your own device
 please see [Device integration](../../Devices) for general requirements and adjustments you might need
 to enable your device to support atomic image-based deployments with rollback.
@@ -34,7 +34,7 @@ Detailed instructions and recipes needed for building a self-contained image fol
 
 ## Prerequisites
 
-! We use the Yocto Project's **krogoth** branch below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank), but these branches are no longer maintained by Mender developers. Please reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender) if you would like help with getting Mender to work on other versions of the Yocto Project.
+! We use the Yocto Project's **krogoth** branch below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* We use the `stable` branch in `meta-mender`, which builds a stable version of Mender for the latest Yocto Project release. `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases , but these branches are no longer maintained by Mender developers. Please reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender) if you would like help with getting Mender to work on other versions of the Yocto Project.
 
 The required meta layers are found in the following repositories:
 
@@ -43,7 +43,7 @@ URI: git://git.yoctoproject.org/poky
 branch: krogoth
 
 URI: git://github.com/mendersoftware/meta-mender
-branch: krogoth
+branch: stable
 
 URI: git://github.com/mem/oe-meta-go
 branch: master
@@ -72,7 +72,7 @@ Please make sure you are standing in the directory where `poky` resides,
 i.e. the top level of the Yocto Project build tree, and run these commands:
 
 ```
-git clone -b krogoth git://github.com/mendersoftware/meta-mender
+git clone -b stable git://github.com/mendersoftware/meta-mender
 ```
 ```
 git clone git://github.com/mem/oe-meta-go
@@ -115,11 +115,16 @@ DISTRO_FEATURES_append = " systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
 DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 VIRTUAL-RUNTIME_initscripts = ""
+IMAGE_FSTYPES = "ext4"
 ```
 
-!!! Please replace `<YOUR-MACHINE>` with the correct machine for your device. If you are building for a Mender reference platform, you can use `vexpress-qemu` or `beaglebone`. Also note that Mender automatically selects the file system types it builds into the provisioning file (`.sdimg`) based on the `IMAGE_FSTYPES` variable. See the [section on file system types](../../Devices/Partition-layout#file-system-types) for more information.
+Please replace `<YOUR-MACHINE>` with the correct machine for your device.
 
-!!! It is suggested to also add ```INHERIT += "rm_work"``` to ```conf/local.conf``` in order to conserve disk space during the build.
+! The machine `<YOUR-MACHINE>` needs to be integrated with Mender before it will work correctly; most notably U-Boot needs the required features and integration. Please see [Device integration](../../Devices) for more information. If you are building for a Mender [reference device](../../Getting-started/What-is-Mender#mender-reference-devices), you can use `vexpress-qemu` or `beaglebone`. 
+
+!!! Mender automatically selects the file system types it builds into the disk image (`.sdimg`), which is used for initial flash provisioning, based on the `IMAGE_FSTYPES` variable. See the [section on file system types](../../Devices/Partition-layout#file-system-types) for more information.
+
+!!! It is suggested to add ```INHERIT += "rm_work"``` to ```conf/local.conf``` in order to conserve disk space during the build.
 
 
 ## Building the image
@@ -130,7 +135,7 @@ Once all the configuration steps are done, an image can be built with bitbake:
 bitbake <YOUR-TARGET>
 ```
 
-!!! Please replace `<YOUR-TARGET>` with the desired target or image name. If you are building for a Mender reference platform, targets `core-image-full-cmdline` for machine `vexpress-qemu` or `core-image-base` for machine `beaglebone` are known to work well, respectively. For more information about the differences with image types on the BeagleBone Black please see [the official Yocto Project BeagleBone support page](https://www.yoctoproject.org/downloads/bsps/krogoth21/beaglebone?target=_blank).
+!!! Please replace `<YOUR-TARGET>` with the desired target or image name. If you are building for `vexpress-qemu`, set the target to `core-image-full-cmdline`. If you are building for the `beaglebone`, set the target to `core-image-base`. For more information about the differences with image types on the BeagleBone Black please see [the official Yocto Project BeagleBone support page](https://www.yoctoproject.org/downloads/bsps/krogoth21/beaglebone?target=_blank).
 
 !!! The first time you build a Yocto Project image, the build process can take several hours. The successive builds will only take a few minutes, so please be patient this first time.
 
@@ -147,7 +152,7 @@ for steps to do this.
 On the other hand, if you already have Mender running on your device and want to deploy a rootfs update
 using this build, you should use files with the suffix of your selected filesystem
 (as set in `IMAGE_FSTYPES`), for example `.ext4`. You can either deploy this rootfs
-image in managed mode with the Mender server
+image in managed mode with the Mender server as described in [Deploy to physical devices](../../Getting-started/Deploy-to-physical-devices)
 or by using the Mender client only in [Standalone deployments](../../Getting-started/Standalone-deployments).
 
-!!! If you built for the Mender reference platform `vexpress-qemu`, you can start up your newly built image with the script in `../meta-mender/scripts/mender-qemu` and log in as *root* without password.
+!!! If you built for the Mender reference device `vexpress-qemu`, you can start up your newly built image with the script in `../meta-mender/scripts/mender-qemu` and log in as *root* without password.

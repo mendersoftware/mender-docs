@@ -12,7 +12,7 @@ the flash of the device.
 
 ## Prerequisites
 
-### An image for the device storage
+### A disk image for the device storage
 
 You need an image file to flash to the entire storage of the
 device. `meta-mender` creates these files with a `.sdimg`
@@ -34,16 +34,16 @@ to flash any block device. See
 for a clarification of what is meant by block device in this context.
 
 
-## Write the storage image to the SD card
+## Write the disk image to the SD card
 
 !! Be careful! If you point to the wrong `<DEVICE>` when executing the command below, you risk overwriting your workstation's local or connected storage devices.
 
 Assuming you are in the same directory as your `.sdimg`, you can write the sdimg to the SD card using the following command:
 
 ```
-sudo dd if=<PATH-TO-IMAGE>.sdimg of=<DEVICE> bs=1M
+sudo dd if=<PATH-TO-IMAGE>.sdimg of=<DEVICE> bs=1M && sudo sync
 ```
 
-!!! &lt;DEVICE&gt; depends on where your SD card is placed. Normally this would be something like  ***/dev/mmcblk0*** or ***/dev/sdb***.  If you are unsure how to find the correct device, the Raspberry PI Foundation provide some nice references that can help you for [Linux](https://www.raspberrypi.org/documentation/installation/installing-images/linux.md?target=_blank), [Mac OSX](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md?target=_blank), [Windows](https://www.raspberrypi.org/documentation/installation/installing-images/windows.md?target=_blank).
+This may take a few minutes, depending on the size of the image.
 
-Writing the sdimg file to to the SD card should take a few minutes, depending on its size.
+!!! &lt;DEVICE&gt; depends on where your SD card is placed. Normally this would be something like  `/dev/mmcblk0` or `/dev/sdb`.  If you are unsure how to find the correct device, the Raspberry PI Foundation provide some nice references that can help you for [Linux](https://www.raspberrypi.org/documentation/installation/installing-images/linux.md?target=_blank), [Mac OSX](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md?target=_blank), [Windows](https://www.raspberrypi.org/documentation/installation/installing-images/windows.md?target=_blank).

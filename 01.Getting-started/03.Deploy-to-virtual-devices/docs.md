@@ -5,8 +5,9 @@ taxonomy:
 ---
 
 In this tutorial we will show how to use the intuitive Mender server UI
-to deploy a full rootfs image update to devices which are
-connected to the server.
+to deploy a full rootfs image update to a virtual device which is
+connected to the server. The virtual device is bundled with the
+Mender server to make it easy to test Mender.
 
 
 ## Prerequisites
@@ -19,7 +20,7 @@ as described in [Create a test environment](../Create-a-test-environment).
 
 Open the Mender UI in the same browser as you accepted the certificate
 in as part of [Create a test environment](../Create-a-test-environment).
-It is available at [http://localhost:8080/](http://localhost:8080/?target=_blank).
+It is available at [https://localhost:8080/](https://localhost:8080/?target=_blank).
 
 There should be a virtual device that is waiting authorization.
 This means that the Mender client, which runs as a daemon on the device,
@@ -46,6 +47,24 @@ clicking on a device. It should look similar to the following:
 
 !!! Which information is collected about devices is fully configurable; see the documentation on [Identity](../../Client-configuration/Identity) and [Inventory](../../Client-configuration/Inventory) for more information.
 
+You can also see that the `image_id` starts with `core-image-full-cmdline`.
+The device console can be shown by running the following command:
+
+```
+sudo docker logs $(sudo docker ps | grep mender-client | cut -f1 -d' ')
+```
+
+It should yield output similar to the following:
+
+> ...  
+> [  OK  ] Started Network Name Resolution.  
+> [  OK  ] Started Mender OTA update service.  
+> [  OK  ] Reached target Multi-User System.  
+>  
+> Poky (Yocto Project Reference Distro) 2.1.1 vexpress-qemu ttyAMA0
+
+After deploying the update below, you can verify that this `image_id` and the console text (from `/etc/issue`) has changed.
+
 
 ## Upload a new rootfs image to the server
 
@@ -56,7 +75,7 @@ includes Mender support can be used, as described in
 
 To make testing easier, a demo image that can be used with
 the virtual device is provided for download at
-[https://mender.s3.amazonaws.com/latest/demo/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4](https://mender.s3.amazonaws.com/latest/demo/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4).
+[https://d1b0l86ne08fsf.cloudfront.net/latest/demo/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4](https://d1b0l86ne08fsf.cloudfront.net/latest/demo/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4).
 
 After the download finishes, go back to the Mender server UI,
 click the **Software** tab and upload this image.
@@ -92,6 +111,8 @@ one image and no custom groups right now, we simply select
 the image we just uploaded and **All devices**, then
 **Create deployment**.
 
+!!! It may take a few seconds until the deployment shows up. You can also refresh your browser to see it immediately.
+
 
 ## See the progress of the deployment
 
@@ -111,18 +132,26 @@ Once the deployment completes, you should see it in *Past deployments*.
 If the deployment fails you can view the deployment log,
 which is obtained from the device, to diagnose the issue.
 You can also see the state of deployments on the Dashboard.
+In **Devices** you can see that `image_id` has now changed to `test`.
 
-If you follow the docker compose terminal, you will also see
-the virtual device log as Mender deploys the update and
-reboots it. After the reboot, you should see the following
-right before the login prompt:
+Furthermore, you can again check the terminal of the virtual device with:
 
-> mender-client_1             | This system has been updated by Mender build...  
+```
+sudo docker logs $(sudo docker ps | grep mender-client | cut -f1 -d' ')
+```
 
-If you followed closely during the initial boot of the Mender virtual
-client, you can see that this message (from `/etc/issue`) has been changed!
-However, if you missed it, do not despair. We will deploy the original
-rootfs below to see it change again.
+It should yield output similar to the following.
+
+> ...  
+> [  OK  ] Started Network Name Resolution.  
+> [  OK  ] Started Mender OTA update service.  
+> [  OK  ] Reached target Multi-User System.  
+>   
+> This system has been updated by Mender build...
+
+You can see that this has changed from when we ran it in
+[See information about the device](#see-information-about-the-device).
+This shows your virtual device runs the new rootfs!
 
 
 ## Deploy another update
@@ -135,7 +164,7 @@ that is already installed and skip the deployment. It will
 immediately be marked as successful and moved to *Past deployments*.
 
 For this reason, we provide another image that you can use
-to deploy with at [https://mender.s3.amazonaws.com/latest/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4](https://mender.s3.amazonaws.com/latest/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4). 
+to deploy with at [https://d1b0l86ne08fsf.cloudfront.net/latest/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4](https://d1b0l86ne08fsf.cloudfront.net/latest/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4). 
 Make sure to not mix it with the demo rootfs you downloaded above,
 as they have the same file name.
 This is actually the original rootfs of your
@@ -187,3 +216,11 @@ This can be very useful in order to deploy to test devices
 before production, or only deploy to devices owned by a specific customer.
 
 ! To avoid accidents, Mender only allows **a device to be in one group at the time**. If a device could be in several groups, for example test *and* production, unintended deployments and downtime could occur. Therefore, as a safety measure, Mender does not allow this.
+
+
+## Deploy to physical devices
+
+**Congratulations!** You have used the Mender server to deploy your first managed update!
+If you have a BeagleBone Black, you can proceed to
+[Deploy to physical devices](../Deploy-to-physical-devices) to try out deploying to a
+real-world device!
