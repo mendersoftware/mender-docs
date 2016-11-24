@@ -17,14 +17,58 @@ Influences which file system type Mender will build for the rootfs partitions in
 
 The allocated size of each of the two rootfs partitions. We recommend leaving some space in the initial rootfs partitions so that you allow your rootfs to grow over time as you deploy updates with Mender. See [Configuring the partition sizes](../../Devices/Partition-layout#configuring-the-partition-sizes) and [the Yocto Project documentation](http://www.yoctoproject.org/docs/2.2/ref-manual/ref-manual.html?target=_blank#var-IMAGE_ROOTFS_SIZE) for more information.
 
+
+#### MENDER_ARTIFACT_NAME
+
+The name of the image or update that will be built. This is what the device will report that it is running, and different updates must have different names. This variable must be defined or the build will fail.
+
+
 #### MENDER_BOOT_PART
 
 The partition Mender uses as the boot partition. See [More detailed storage configuration](../../Devices/Partition-layout#more-detailed-storage-configuration) for more information.
 
 
+#### MENDER_BOOT_PART_SIZE_MB
+
+The size of the boot partition in the generated `.sdimg` file. See [Configuring the partition sizes](../../Devices/Partition-layout#configuring-the-partition-sizes) for more information.
+
+
 #### MENDER_DATA_PART
 
 The partition Mender uses as the persistent data partition. See [More detailed storage configuration](../../Devices/Partition-layout#more-detailed-storage-configuration) for more information.
+
+
+#### MENDER_DATA_PART_SIZE_MB
+
+The size of the persistent data partition in the generated `.sdimg` file. See [Configuring the partition sizes](../../Devices/Partition-layout#configuring-the-partition-sizes) for more information.
+
+
+#### MENDER_DEVICE_TYPE
+
+A string that defines the type of device this image will be installed on. This variable is only relevant when building a complete partitioned image (`.sdimg` suffix). Once a device is flashed with this, it will not change, even if the device is updated.
+
+It defaults to the value of `${MACHINE}`.
+
+
+#### MENDER_DEVICE_TYPES_COMPATIBLE
+
+A space separated string of device types that determine which types of devices this update is suitable for. This complements the `MENDER_DEVICE_TYPE` variable, and is only relevant when building a `.mender` update, not when building a `.sdimg` partitioned image.
+
+It defaults to the value of `${MACHINE}`.
+
+
+#### MENDER_PARTITIONING_OVERHEAD_MB
+
+A rough estimate of space lost due to partition alignment, expressed in MB. The
+`.sdimg` build process will calculate that automatically using a simple
+heuristic: `4 * MENDER_PARTITION_ALIGNMENT_MB` (accounts for boot partition, two
+rootfs partitions and a data partition).
+
+
+#### MENDER_PARTITION_ALIGNMENT_MB
+
+Alignment of partitions used when building `.sdimg` image, expressed in MB.
+Default value is `8`.
 
 
 #### MENDER_ROOTFS_PART_A
@@ -42,26 +86,6 @@ The partition Mender uses as the second (B) rootfs partition. See [More detailed
 The storage device holding all partitions (rootfs, boot, data) used by Mender. See [Configuring storage](../../Devices/Partition-layout#configuring-storage) for more information.
 
 
-#### MENDER_UBOOT_STORAGE_DEVICE
-
-The storage device, as referred to by U-Boot (e.g. `1`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [U-Boot and the Linux kernel do not agree about the indexes of storage devices](../../Troubleshooting/Yocto-project-build#u-boot-and-the-linux-kernel-do-not-agree-about-the-indexes-of-st) for more information.
-
-
-#### MENDER_UBOOT_STORAGE_INTERFACE
-
-The storage interface, as referred to by U-Boot (e.g. `mmc`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [U-Boot and the Linux kernel do not agree about the indexes of storage devices](../../Troubleshooting/Yocto-project-build#u-boot-and-the-linux-kernel-do-not-agree-about-the-indexes-of-st) for more information.
-
-
-#### MENDER_BOOT_PART_SIZE_MB
-
-The size of the boot partition in the generated `.sdimg` file. See [Configuring the partition sizes](../../Devices/Partition-layout#configuring-the-partition-sizes) for more information.
-
-
-#### MENDER_DATA_PART_SIZE_MB
-
-The size of the persistent data partition in the generated `.sdimg` file. See [Configuring the partition sizes](../../Devices/Partition-layout#configuring-the-partition-sizes) for more information.
-
-
 #### MENDER_STORAGE_TOTAL_SIZE_MB
 
 Total size of the medium that mender `.sdimg` will be written to, expressed in
@@ -73,18 +97,14 @@ along with some predefined overhead
 Default value is `1024`.
 
 
-#### MENDER_PARTITIONING_OVERHEAD_MB
+#### MENDER_UBOOT_STORAGE_DEVICE
 
-A rough estimate of space lost due to partition alignment, expressed in MB. The
-`.sdimg` build process will calculate that automatically using a simple
-heuristic: `4 * MENDER_PARTITION_ALIGNMENT_MB` (accounts for boot partition, two
-rootfs partitions and a data partition).
+The storage device, as referred to by U-Boot (e.g. `1`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [U-Boot and the Linux kernel do not agree about the indexes of storage devices](../../Troubleshooting/Yocto-project-build#u-boot-and-the-linux-kernel-do-not-agree-about-the-indexes-of-st) for more information.
 
 
-#### MENDER_PARTITION_ALIGNMENT_MB
+#### MENDER_UBOOT_STORAGE_INTERFACE
 
-Alignment of partitions used when building `.sdimg` image, expressed in MB.
-Default value is `8`.
+The storage interface, as referred to by U-Boot (e.g. `mmc`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [U-Boot and the Linux kernel do not agree about the indexes of storage devices](../../Troubleshooting/Yocto-project-build#u-boot-and-the-linux-kernel-do-not-agree-about-the-indexes-of-st) for more information.
 
 
 #### SYSTEMD_AUTO_ENABLE
