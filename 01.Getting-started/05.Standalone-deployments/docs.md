@@ -11,7 +11,7 @@ to deploy updates to devices which do not have network connectivity or
 are updated through external storage like a USB stick.
 
 For an explanation of the difference between *managed* and *standalone* deployments, please see
-[Modes of operation](../../Architecture/overview#modes-of-operation).
+[Modes of operation](../../Architecture/Overview#modes-of-operation).
 
 
 ## Prerequisites
@@ -129,4 +129,4 @@ mender -commit
 
 By running this command, Mender will configure the bootloader to persistently boot from this updated rootfs partition. To deploy another update, simply follow these instructions again (from `mender ... -rootfs ...`).
 
-!!! If we reboot the device again *without* running ```mender -commit```, it will boot into the previous rootfs partition that is known to be working (where we deployed the update from). This ensures a robust update process in cases where the newly deployed rootfs does not boot or otherwise has issues that we want to roll back from. Also note that it is possible to automate deployments by [running the Mender client as a daemon](../../Architecture/overview#modes-of-operation).
+!!! If we reboot the device again *without* running ```mender -commit```, it will boot into the previous rootfs partition that is known to be working (where we deployed the update from). This ensures a robust update process in cases where the newly deployed rootfs does not boot or otherwise has issues that we want to roll back from. Also note that it is possible to automate deployments by [running the Mender client as a daemon](../../Architecture/Overview#modes-of-operation).
