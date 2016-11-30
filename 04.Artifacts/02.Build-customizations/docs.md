@@ -23,7 +23,7 @@ INHERIT += "mender-uboot mender-image mender-install"
 MACHINE = "vexpress-qemu"  # replace with the desired machine
 ```
 
-! If you disable Mender running as a daemon under `systemd`, you must run all required Mender commands from the CLI or scripts. Most notably, you need to run `mender -commit` after booting into and verifying a successful deployment. When running in managed mode, any pending `mender -commit` will automatically be run by the Mender daemon after it starts. See [Modes of operation](../../Architecture/overview#modes-of-operation) for more information about the difference.
+! If you disable Mender running as a daemon under `systemd`, you must run all required Mender commands from the CLI or scripts. Most notably, you need to run `mender -commit` after booting into and verifying a successful deployment. When running in managed mode, any pending `mender -commit` will automatically be run by the Mender daemon after it starts. See [Modes of operation](../../Architecture/Overview#modes-of-operation) for more information about the difference.
 
 
 ## Configuring polling intervals

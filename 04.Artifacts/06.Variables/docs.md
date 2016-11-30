@@ -98,4 +98,4 @@ The storage interface, as referred to by U-Boot (e.g. `mmc`). This variable can 
 
 #### SYSTEMD_AUTO_ENABLE_pn-mender
 
-Controls whether to run Mender as a systemd service. See [Modes of operations](../../Architecture/overview#modes-of-operation) and [Build customizations](../../Artifacts/Build-customizations) for more information.
+Controls whether to run Mender as a systemd service. See [Modes of operations](../../Architecture/Overview#modes-of-operation) and [Build customizations](../../Artifacts/Build-customizations) for more information.
