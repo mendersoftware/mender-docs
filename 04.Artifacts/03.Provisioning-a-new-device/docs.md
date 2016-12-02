@@ -15,7 +15,7 @@ the flash of the device.
 ### A disk image for the device storage
 
 You need an image file to flash to the entire storage of the
-device. `meta-mender-core` creates these files with a `.sdimg`
+device. `meta-mender` creates these files with a `.sdimg`
 suffix, so they are easy to recognize. This file contains
 all the partitions of the given storage device, as
 described in [Partition layout](../../Devices/Partition-layout).
