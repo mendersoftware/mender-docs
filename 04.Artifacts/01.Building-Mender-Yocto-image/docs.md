@@ -34,7 +34,7 @@ The other layers provide support for specific devices. Detailed instructions and
 
 ## Prerequisites
 
-! We use the Yocto Project's **morty** branch below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* We use the `stable` branch in `meta-mender`, which builds a stable version of Mender for the latest Yocto Project release. `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases , but these branches are no longer maintained by Mender developers. Please reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender) if you would like help with getting Mender to work on other versions of the Yocto Project.
+! We use the Yocto Project's **krogoth** branch below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* We use the `stable` branch in `meta-mender`, which builds a stable version of Mender for the latest Yocto Project release. `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases , but these branches are no longer maintained by Mender developers. Please reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender) if you would like help with getting Mender to work on other versions of the Yocto Project.
 
 
 !!! The meta-mender-core layer and the web-server are bundled with a default certificate and key. If you are intending on using Mender in production, it is highly recommend to generate your own certificate using OpenSSL (`openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256`), and replacing the [server certificate](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-core/recipes-mender/mender/files) found in the meta-mender layer, and [server certificate and key](https://github.com/mendersoftware/mender-api-gateway-docker/tree/master/cert) in the nginx gateway.
@@ -43,7 +43,7 @@ The required meta layers are found in the following repositories:
 
 ```
 URI: git://git.yoctoproject.org/poky
-branch: morty
+branch: krogoth
 
 URI: git://github.com/mendersoftware/meta-mender
 branch: stable
@@ -61,7 +61,7 @@ On the other hand, if you want to start from a clean environment,
 you need to clone the latest poky and go into the directory:
 
 ```
-git clone -b morty git://git.yoctoproject.org/poky
+git clone -b krogoth git://git.yoctoproject.org/poky
 ```
 
 ```
@@ -153,7 +153,7 @@ Once all the configuration steps are done, an image can be built with bitbake:
 bitbake <YOUR-TARGET>
 ```
 
-!!! Please replace `<YOUR-TARGET>` with the desired target or image name. If you are building for `vexpress-qemu`, set the target to `core-image-full-cmdline`. If you are building for the `beaglebone`, set the target to `core-image-base`. For more information about the differences with image types on the BeagleBone Black please see [the official Yocto Project BeagleBone support page](https://www.yoctoproject.org/downloads/bsps/morty22/beaglebone?target=_blank).
+!!! Please replace `<YOUR-TARGET>` with the desired target or image name. If you are building for `vexpress-qemu`, set the target to `core-image-full-cmdline`. If you are building for the `beaglebone`, set the target to `core-image-base`. For more information about the differences with image types on the BeagleBone Black please see [the official Yocto Project BeagleBone support page](https://www.yoctoproject.org/downloads/bsps/krogoth21/beaglebone?target=_blank).
 
 !!! The first time you build a Yocto Project image, the build process can take several hours. The successive builds will only take a few minutes, so please be patient this first time.
 
