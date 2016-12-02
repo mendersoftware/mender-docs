@@ -120,21 +120,14 @@ part of your Yocto Project build environment.
 Add these lines to the start of your `conf/local.conf`:
 
 ```
-MENDER_ARTIFACT_NAME = "my-mender-image-1.0"
-
 INHERIT += "mender-full"
-
 MACHINE = "<YOUR-MACHINE>"
-
 DISTRO_FEATURES_append = " systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
 DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 VIRTUAL-RUNTIME_initscripts = ""
-
 IMAGE_FSTYPES = "ext4"
 ```
-
-`MENDER_ARTIFACT_NAME` is name of the image or update that will be built. This is what the device will report that it is running, and different updates must have different names because Mender will skip installation of an artifact if it is already installed.
 
 Please replace `<YOUR-MACHINE>` with the correct machine for your device.
 
