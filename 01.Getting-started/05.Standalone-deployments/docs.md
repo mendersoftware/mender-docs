@@ -32,12 +32,13 @@ suffix, so they are easy to recognize. This file contains
 all the partitions of the given storage device, as
 described in [Partition layout](../../Devices/Partition-layout).
 In addition, you need a rootfs image to update to. The suffix
-of this file is `.mender`.
+of this file depends on the file system used for rootfs,
+for example `.ext4`.
 
 You can build the required images by following the steps
 described in [Building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image).
 
-!!! If you are testing Mender on the reference devices BeagleBone Black or QEMU, you can save the build time by **[downloading the latest prebuilt demo images](https://doyabzhx7xw8o.cloudfront.net/latest/latest.tar.gz)**. The `.sdimg` and `.mender` images are found in the `vexpress-qemu` and `beaglebone` directories.
+!!! If you are testing Mender on the reference devices BeagleBone Black or QEMU, you can save the build time by **[downloading the latest prebuilt demo images](https://doyabzhx7xw8o.cloudfront.net/latest/latest.tar.gz)**. The `.sdimg` and `.ext4` images are found in the `vexpress-qemu` and `beaglebone` directories.
 
 
 ### Network connectivity
@@ -76,7 +77,7 @@ This will take you to the login prompt, and you should see a message similar to 
 
 ## Serve a rootfs image to the device over http
 
-To deploy a new rootfs to the device, you need to start a http server on your workstation to serve the image. Open a new terminal **on your workstation** and change into the directory with your rootfs image (e.g. `*.mender`). Start a simple Python webserver in that directory, like so:
+To deploy a new rootfs to the device, you need to start a http server on your workstation to serve the image. Open a new terminal **on your workstation** and change into the directory with your rootfs image (e.g. `*.ext4`). Start a simple Python webserver in that directory, like so:
 
 ```
 python -m SimpleHTTPServer
@@ -102,7 +103,7 @@ To deploy the new rootfs image to your device, run the following command in its 
 mender -log-level info -rootfs http://<IP-OF-WORKSTATION>:8000/<ROOTFS-IMAGE>
 ```
 
-Use the appropriate rootfs image file in place of `<ROOTFS-IMAGE>`, e.g. `core-image-full-cmdline.mender`.
+Use the appropriate rootfs image file in place of `<ROOTFS-IMAGE>`, e.g. `core-image-full-cmdline.ext4`.
 You can find the right name by opening a browser at [http://localhost:8000](http://localhost:8000?target=_blank).
 
 Mender will download the new image, write it to the inactive rootfs partition and configure the bootloader to boot into it on the next reboot. This should take about 2 minutes to complete.
