@@ -31,7 +31,7 @@ Each one of these steps can be configured further, see the linked sections for m
 Detailed instructions and recipes needed for building a self-contained image follow.
 
 
-!!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Start guide](http://www.yoctoproject.org/docs/2.1/yocto-project-qs/yocto-project-qs.html?target=_blank).
+!!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Start guide](http://www.yoctoproject.org/docs/2.2/yocto-project-qs/yocto-project-qs.html?target=_blank).
 
 ## Prerequisites
 
@@ -58,7 +58,7 @@ this in your build environment, please open a terminal, go to the `poky`
 directory and skip to [Adding the meta layers](#adding-the-meta-layers).
 
 
-On the other hand, if you want to start from a clean environment,
+On the other hand, if you want to start from a *clean Yocto Project environment*,
 you need to clone the latest poky and go into the directory:
 
 ```
@@ -68,6 +68,8 @@ git clone -b krogoth git://git.yoctoproject.org/poky
 ```
 cd poky
 ```
+
+!!! Note that the Yocto Project also depend on some [development tools to be in place](http://www.yoctoproject.org/docs/2.2/yocto-project-qs/yocto-project-qs.html?target=_blank#packages).
 
 ## Adding the meta layers
 
