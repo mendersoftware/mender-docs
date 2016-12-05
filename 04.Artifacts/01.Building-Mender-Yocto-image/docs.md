@@ -69,7 +69,7 @@ git clone -b krogoth git://git.yoctoproject.org/poky
 cd poky
 ```
 
-!!! Note that the Yocto Project also depend on some [development tools to be in place](http://www.yoctoproject.org/docs/2.2/yocto-project-qs/yocto-project-qs.html?target=_blank#packages).
+!!! Note that the Yocto Project also depends on some [development tools to be in place](http://www.yoctoproject.org/docs/2.2/yocto-project-qs/yocto-project-qs.html?target=_blank#packages).
 
 ## Adding the meta layers
 
