@@ -102,11 +102,11 @@ MENDER_ROOTFS_PART_B = "${MENDER_STORAGE_DEVICE_BASE}3"
 
 When [building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image) Mender defines and uses certain OpenEmbedded variables which are used to define the sizes of the partitions. They are defined in `meta-mender` under `classes/mender-sdimg.bbclass`.
 
-| Mount point | Purpose                                                 | Default size | Variable to configure size    |
-|-------------|---------------------------------------------------------|--------------|-------------------------------|
-| `/`         | Store the root file system and kernel.                  | auto         | `MENDER_STORAGE_TOTAL_SIZE_MB |
-| `/uboot`    | Store the bootloader.                                   | 16 MB        | `MENDER_BOOT_PART_SIZE_MB`    |
-| `/data`     | Store persistent data, preserved during Mender updates. | 128 MB       | `MENDER_DATA_PART_SIZE_MB`    |
+| Mount point | Purpose                                                 | Default size | Variable to configure size     |
+|-------------|---------------------------------------------------------|--------------|--------------------------------|
+| `/`         | Store the root file system and kernel.                  | auto         | `MENDER_STORAGE_TOTAL_SIZE_MB` |
+| `/uboot`    | Store the bootloader.                                   | 16 MB        | `MENDER_BOOT_PART_SIZE_MB`     |
+| `/data`     | Store persistent data, preserved during Mender updates. | 128 MB       | `MENDER_DATA_PART_SIZE_MB`     |
 
 
 You can override these default values in your `local.conf`. For details consult [Mender image variables](../../Artifacts/Variables).
