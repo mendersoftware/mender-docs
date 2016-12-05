@@ -71,10 +71,10 @@ The storage device holding all partitions (rootfs, boot, data) used by Mender. S
 
 Total size of the medium that mender `.sdimg` will be written to, expressed in
 MB. The size of rootfs partition will be calculated automatically by subtracting
-the sizes of boot (see [MENDER_BOOT_PART_SIZE_MB](#MENDER_BOOT_PART_SIZE_MB))
-and data partitions (see [MENDER_DATA_PART_SIZE_MB](#MENDER_DATA_PART_SIZE_MB))
+the sizes of boot (see [MENDER_BOOT_PART_SIZE_MB](#mender_boot_part_size_mb))
+and data partitions (see [MENDER_DATA_PART_SIZE_MB](#mender_data_part_size_mb))
 along with some predefined overhead
-(see [MENDER_PARTITIONING_OVERHEAD_MB](#MENDER_PARTITIONING_OVERHEAD_MB))).
+(see [MENDER_PARTITIONING_OVERHEAD_MB](#mender_partitioning_overhead_mb))).
 Default value is `1024`.
 
 
