@@ -88,6 +88,6 @@ The storage device, as referred to by U-Boot (e.g. `1`). This variable can be us
 The storage interface, as referred to by U-Boot (e.g. `mmc`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [U-Boot and the Linux kernel do not agree about the indexes of storage devices](../../Troubleshooting/Yocto-project-build#u-boot-and-the-linux-kernel-do-not-agree-about-the-indexes-of-st) for more information.
 
 
-#### SYSTEMD_AUTO_ENABLE
+#### SYSTEMD_AUTO_ENABLE_pn-mender
 
 Controls whether to run Mender as a systemd service. See [Modes of operations](../../Architecture/overview#modes-of-operation) and [Build customizations](../../Artifacts/Build-customizations) for more information.
