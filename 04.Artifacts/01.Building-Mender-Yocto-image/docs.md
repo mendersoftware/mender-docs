@@ -117,7 +117,7 @@ Add these lines to the start of your `conf/local.conf`:
 ```
 INHERIT += "mender-full"
 MACHINE = "<YOUR-MACHINE>"
-SYSTEMD_AUTO_ENABLE = "enable"
+SYSTEMD_AUTO_ENABLE_pn-mender = "enable"
 DISTRO_FEATURES_append = " systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
 DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
