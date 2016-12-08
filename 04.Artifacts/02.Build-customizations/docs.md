@@ -24,3 +24,18 @@ MACHINE = "vexpress-qemu"  # replace with the desired machine
 ```
 
 ! If you disable Mender running as a daemon under `systemd`, you must run all required Mender commands from the CLI or scripts. Most notably, you need to run `mender -commit` after booting into and verifying a successful deployment. When running in managed mode, any pending `mender -commit` will automatically be run by the Mender daemon after it starts. See [Modes of operation](../../Architecture/overview#modes-of-operation) for more information about the difference.
+
+
+## Configuring polling intervals
+
+You can configure how frequently the Mender client will make requests to the Mender server
+as described in [Polling intervals](../../Client-configuration/Polling-intervals) before
+starting the build process.
+
+In order to do this, change the following in the file
+`meta-mender/meta-mender-core/recipes-mender/mender/mender_0.1.bb`:
+
+```
+MENDER_UPDATE_POLL_INTERVAL_SECONDS ?= "1800"
+MENDER_INVENTORY_POLL_INTERVAL_SECONDS ?= "1800"
+```
