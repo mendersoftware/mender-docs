@@ -78,6 +78,14 @@ along with some predefined overhead
 Default value is `1024`.
 
 
+#### MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET
+
+Specifies the offset from the start of the raw block storage where the U-Boot
+environment should be stored, expressed in bytes. The default is equal to
+`MENDER_PARTITION_ALIGNMENT_MB` (converted to bytes), and if the value is
+overridden, it must also be aligned to `MENDER_PARTITION_ALIGNMENT_MB`.
+
+
 #### MENDER_UBOOT_STORAGE_DEVICE
 
 The storage device, as referred to by U-Boot (e.g. `1`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [U-Boot and the Linux kernel do not agree about the indexes of storage devices](../../Troubleshooting/Yocto-project-build#u-boot-and-the-linux-kernel-do-not-agree-about-the-indexes-of-st) for more information.
