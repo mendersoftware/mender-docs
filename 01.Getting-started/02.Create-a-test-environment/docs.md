@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-!! This tutorial should only used in an internal environment (e.g. on your workstation) for testing purposes. Several important security features need to be implemented before using the Mender server in production, including random generation of keys, user authentication for managing deployments and more.
+!! This tutorial should only be used in an internal environment (e.g. on your workstation) for testing purposes. Several important security features need to be implemented before using the Mender server in production, including random generation of keys, user authentication for managing deployments, and more.
 
 Mender consists of a [server and updater client](../../Architecture/overview).
 The Mender server is using the microservices design pattern, meaning that
