@@ -72,12 +72,12 @@ go version
 #### Mender Artifact utility
 
 The Mender Artifact utility is available as open source in the
-[Mender artifacts repository on GitHub](https://github.com/mendersoftware/artifacts?target=_blank).
+[Mender artifact repository on GitHub](https://github.com/mendersoftware/mender-artifact?target=_blank).
 
 You can download and install it with the follwoing commands:
 
 ```
-go get github.com/mendersoftware/artifacts
+go get github.com/mendersoftware/mender-artifact
 ```
 
 ```
