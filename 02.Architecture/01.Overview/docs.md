@@ -42,6 +42,8 @@ The simplest and most robust way to update the device is to write a new file sys
 This is the mechanism supported by the current versions of Mender.
 Other update mechanisms are possible, for example through the use of a package manager such as RPM, and they will be added later on.
 
+Please see [Mender Artifacts](../Mender-Artifacts) for more details on the Mender Artifact format.
+
 ## Robust updates
 
 One of the prime requirements of an updater is that it should be robust.
