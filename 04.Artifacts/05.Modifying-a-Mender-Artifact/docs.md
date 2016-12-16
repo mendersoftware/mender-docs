@@ -13,6 +13,7 @@ is different from the one that you have installed so you can see that the update
 You might also want to configure certain aspects of the rootfs update after you build it,
 but before deploying it.
 
+
 ## Prerequisites
 
 #### tar
@@ -94,30 +95,67 @@ $GOPATH/bin/artifacts -v
 
 > artifact version 0.1
 
+For convenience, we can also make sure the `artifact` tool is in PATH:
+
+```
+export PATH=$PATH:$GOPATH/bin
+```
+
 
 ## Unpack the root file system
 
-The Mender Artifact can be unpacked using a standard tar utility, like the
-following:
+The Mender Artifact can be unpacked using a standard tar utility,
+we simply create a directory for it and unpack it.
+For a BeagleBone black artifact, the commands and output
+will look like the following:
 
+```
+mkdir core-image-base-beaglebone && tar -C core-image-base-beaglebone -xvf core-image-base-beaglebone.mender
+```
+
+> version  
+> header.tar.gz  
+> data/0000.tar.gz  
+
+You can inspect the metadata files to learn about how they work,
+but it is not recommended to modify them directly as this can
+be quite error-prone. We will rather use the `artifacts` tool to make
+modifications below.
+
+The updates to be deployed are stored in the `data` subdirectory. We
+can extract the first (and currently only) file there, which is the root file system,
+like the following:
+
+```
+tar zxvf data/0000.tar.gz
+```
+
+> core-image-base-beaglebone.ext4  
 
 
 ## Modify the root file system
 
-A simple way to achieve this is to loopback-mount the rootfs on your workstation
-and modify the configuration files you need.
+Once we have the file system image, a simple way to modify its contents
+is to loopback-mount the rootfs on your workstation
+and modify the configuration files you need in the mounted directory.
 
 In this example we will modify  `/etc/issue` on an `ext4` file system
 so you can see which rootfs image you are running just before the login prompt,
 but these steps can be used for modifying any configuration file and for
 several file system types.
 
+First we make the mount directory and copy the rootfs image:
+
 ```
 sudo mkdir /mnt/rootfs
 ```
 
 ```
-sudo mount -t ext4 -o loop <PATH-TO-ROOTFS-IMAGE>.ext4 /mnt/rootfs/
+cp core-image-base-beaglebone.ext4 core-image-base-beaglebone-modified.ext4
+```
+
+```
+sudo mount -t ext4 -o loop core-image-base-beaglebone-modified.ext4 /mnt/rootfs/
 ```
 
 Now you can modify the file system found at `/mnt/rootfs`. For example,
@@ -134,13 +172,49 @@ You need to adjust the path to the rootfs image and its type depending on the ma
 
 ## Create a new Mender Artifact
 
-TODO: first find the original device types that the artifact is compatible with (you can also change it below, if you want).
+#### Find required metadata from original Arifact
 
-TODO:
+We would probably like to reuse some of the original Artifact metadata
+for the new artifact, as for example the device types it is compatible
+with is the same.
+
+To see which metadata the original Artifact contains, you can run the
+follwing command:
 
 ```
-artifacts write rootfs-image -t vexpress-qemu -n test-update -u core-image-full-cmdline-vexpress-qemu.ext4 -o successful_image_update.mender
+artifacts read core-image-base-beaglebone.mender
 ```
 
 
-After deploying this rootfs image with Mender and rebooting, your configuration changes will be in effect!
+> Mender artifact:  
+>   Name: release-1.0  
+>   Format: mender  
+>   Version: 1  
+>   Compatible devices: '[beaglebone]'  
+> 
+> Updates:  
+>   0000  
+>   Type: 'rootfs-image'  
+>   Files:  
+>     core-image-base-beaglebone.ext4  
+>     size: 101821440  
+>     modified: 2016-12-05 17:35:21 +0100 CET  
+
+The most important fields to note for writing a new artifact are
+the *Compatible devices* and *Name*.
+
+
+#### Write a new Artifact
+
+We now have the information we need to generate a new Artifact,
+including the metadata to use and modified rootfs.
+
+In this example, we will keep the original *Compatible devices*
+and *Name* of the original artifact, so only the rootfs modifications
+will be different:
+
+```
+artifacts write rootfs-image -t beaglebone -n release-1.0 -u core-image-base-beaglebone-modified.ext4 -o core-image-base-beaglebone-modified.mender
+```
+
+After deploying this Artifact with Mender and rebooting, your configuration changes will be in effect!
