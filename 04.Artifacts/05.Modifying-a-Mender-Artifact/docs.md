@@ -10,8 +10,10 @@ description.
 
 When testing deployments, it is useful that the Artifact you are deploying
 is different from the one that you have installed so you can see that the update is successful.
-You might also want to configure certain aspects of the rootfs update after you build it,
-but before deploying it.
+You might also want to configure certain aspects of the update after you build it,
+but before deploying it. In this tutorial we will unpack a Mender Artifact, 
+recognized by its `.mender` suffix, unpack the rootfs (e.g. `.ext4`) inside it,
+modify it, and then create a new Mender Artifact including these modifications.
 
 
 ## Prerequisites
