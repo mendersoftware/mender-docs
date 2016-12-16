@@ -55,6 +55,6 @@ Before building an image as described in [Building Mender Yocto image](../../Art
 you can adjust these configuration settings with the steps described in
 [Configuring polling intervals](../../Artifacts/Build-customizations#configuring-polling-intervals).
 
-If you have already built the rootfs image, have a look at
-[Modifying a rootfs image](../../Artifacts/Modifying-a-rootfs-image) for steps on how
-to change these configurations in an existing rootfs update.
+If you have already built an Artifact containing the rootfs, have a look at
+[Modifying a Mender Artifact](../../Artifacts/Modifying-a-Mender-Artifact) for steps on how
+to change these configurations in an existing Artifact.
