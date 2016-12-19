@@ -179,7 +179,7 @@ and the IP addresses, as shown in the example below.
 !!! If your BeagleBone Black does not show up for authorization in the UI, you need to diagnose what went wrong. Most commonly this is due to problems with the network. You can test if your workstation can reach the device by trying to ping it, e.g. with `ping 192.168.10.2` (replace with the IP address of your device). If you have a serial cable, you can log in to the device to diagnose. The `root` user is present and has an empty password in this test image. If you get stuck, please feel free to reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender)!
 
 
-## Prepare the rootfs image to update to
+## Prepare the artifact to update to
 
 ! Please make sure to set shell variables that expand correctly with `$IP_OF_MENDER_SERVER_FROM_DEVICE` (always) and `$IP_OF_MENDER_CLIENT` (if you are using static IP addressing) or edit the commands below accordingly.
 
@@ -238,20 +238,20 @@ You should see output similar to the following:
 !!! The Mender client will roll back the deployment if it is not able to report the final update status to the server when it boots from the updated partition. This helps ensure that you can always deploy a new update to your device, even when fatal conditions like network misconfiguration occur.
 
 
-### Set the rootfs Image ID
+### Set the artifact name
 
-When you upload this image (below), it is very important that you use the right Image ID,
+When you upload this image (below), it is very important that you use the right artifact name,
 which is used to decide if a given update is already installed or not.
 Mender will skip a deployment for a given device if it sees that
-the Image ID in a deployment is the same as the one installed.
+the artifact name in a deployment is the same as the one installed.
 
 Furthermore, the disk image we wrote to the SD card might have the
-same Image ID in its rootfs partitions as the rootfs we downloaded above.
-For these reasons, we will set the rootfs Image ID to **release10**,
+same artifact name in its rootfs partitions as the rootfs we downloaded above.
+For these reasons, we will set the rootfs artifact name to **release10**,
 as shown with the command below.
 
 ```
-sudo sed -i -E "s/(IMAGE_ID[ ]*=[ ]*).*/\1release10/" /mnt/rootfs/etc/mender/build_mender
+sudo sed -i -E "s/(artifact_name[ ]*=[ ]*).*/\1release10/" /mnt/rootfs/etc/mender/artifact_info
 ```
 
 You can also make any other modifications you wish in this image
@@ -266,19 +266,38 @@ It is very important to unmount the rootfs image after modifying it, so all chan
 sudo umount /mnt/rootfs
 ```
 
+### Create artifact using existing rootfs image
 
-## Upload the rootfs image to the server
+Mender uses special artifact files to be uploaded to the server and then installed by the device. Besides of the actual update, each artifact contains
+additional information used by the server and the client. More details on the specific format and the content of the artifact file can be found here:
+https://github.com/mendersoftware/mender-artifact/blob/master/Documentation/artifact-format.md
 
-Before we can deploy the rootfs image we prepared above it needs
+To create an artifact first download the artifact command line tool: https://d25phv8h0wbwru.cloudfront.net/master/tip/mender-artifact
+After the tool is downloaded simply run it as follows:
+
+```
+mender-artifact write rootfs-image -u core-image-base-beaglebone.ext4 -t beaglebone -n release10 -o artifact.mender
+```
+
+where `-u core-image-base-beaglebone.ext4` is the modified above rootfs image, `-t beaglebone` is the device type compatible with the given artifact,
+`-n release10` is the artifact name (make sure this is exactly the same as the name [set above](#set-the-artifact-name)), `-o artifact.mender` is
+the name of the created artifact.
+
+After artifact is created, you can verify it:
+
+```
+mender-artifact verify artifact.mender
+```
+
+## Upload the artifact to the server
+
+Before we can deploy the artifact we prepared above it needs
 to be uploaded to the server.
 
-Go to the Mender server UI, click the **Software** tab and upload this image,
+Go to the Mender server UI, click the **Artifacts** tab and upload this artifact,
 using the fields below:
 
-* Name: `release10`
-* Yocto ID: `release10` (**NB! use the string you [set above](#set-the-rootfs-image-id)**)
-* Checksum: `test`
-* Device type compatibility: `beaglebone`
+* Name: `release10` (**NB! use the string you [set above](#set-the-artifact-name)**)
 * Description: `My test build`
 
 In the UI, it should look something like this:
@@ -286,7 +305,7 @@ In the UI, it should look something like this:
 ![Mender UI - Upload image BeagleBone Black](upload_image_bbb.png)
 
 
-## Deploy the rootfs image
+## Deploy the artifact
 
 Now that we have the device connected and the image
 uploaded to the server, all that remains is to go to the
@@ -313,11 +332,11 @@ Once the deployment completes, you should see its report in *Past deployments*.
 
 ## Deploy another update
 
-As we noted in [Set the rootfs Image ID](#set-the-rootfs-image-id) above,
-the Image ID of the deployment needs to be different than the currently running Image ID for
+As we noted in [Set the artifact name](#set-the-artifact-name) above,
+the artifact name of the deployment needs to be different than the currently running artifact name for
 Mender to deploy a new update. So if you want to reuse the rootfs image we
 already have by making changes to it and deploying it again, make sure to
-change the Image ID as well!
+change the artifact name as well!
 
 With that in mind, now might be a good time to tweak the image, add some
 more BeagleBone Black devices to the environment and try to get the
