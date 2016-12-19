@@ -79,9 +79,7 @@ can be used, and steps to build one are provided at
 
 To make testing easier, a Mender Artifact that can be used with
 the virtual device is provided for download at
-[https://d1b0l86ne08fsf.cloudfront.net/latest/demo/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4](https://d1b0l86ne08fsf.cloudfront.net/latest/demo/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4).
-
-!! TODO: Change above URL.
+[https://d1b0l86ne08fsf.cloudfront.net/master/vexpress-qemu/vexpress_release_2.mender](https://d1b0l86ne08fsf.cloudfront.net/master/vexpress-qemu/vexpress_release_2.mender).
 
 After the download finishes, go back to the Mender server UI,
 click the **Software** tab and upload this Mender Artifact.
@@ -169,7 +167,7 @@ that is already installed and skip the deployment. It will
 immediately be marked as successful and moved to *Past deployments*.
 
 For this reason, we provide another Artifact that you can use
-to deploy with at [https://d1b0l86ne08fsf.cloudfront.net/latest/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4](https://d1b0l86ne08fsf.cloudfront.net/latest/vexpress-qemu/core-image-full-cmdline-vexpress-qemu.ext4). 
+to deploy with at [https://d1b0l86ne08fsf.cloudfront.net/master/vexpress-qemu/vexpress_release_1.mender](https://d1b0l86ne08fsf.cloudfront.net/master/vexpress-qemu/vexpress_release_1.mender). 
 Make sure to not mix it with the test Artifact you downloaded above,
 as they have the same file name.
 This Artifact actually contains the original  of your
