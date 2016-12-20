@@ -82,7 +82,7 @@ the virtual device is provided for download at
 [https://d1b0l86ne08fsf.cloudfront.net/master/vexpress-qemu/vexpress_release_2.mender](https://d1b0l86ne08fsf.cloudfront.net/master/vexpress-qemu/vexpress_release_2.mender).
 
 After the download finishes, go back to the Mender server UI,
-click the **Software** tab and upload this Mender Artifact.
+click the **Artifacs** tab and upload this Mender Artifact.
 
 Please fill in the following:
 
@@ -91,13 +91,11 @@ Please fill in the following:
 
 !!! Both these fields are just informational, to make it is easier to recognize Artifacts after they have been uploaded. Their contents do not affect deployments.
 
-In the UI, it should look something like this:
+In the UI it should look something like this:
 
 ![Mender UI - Upload Artifact](upload_artifact.png)
 
-!! TODO: Fix above screenshot
-
-!!! All devices report which *Device type* they are as part of their inventory information, for example `vexpress-qemu` or `beaglebone`. In adition, Mender Artifacts have *Device types compatible* as part of their metadata. During a deployment, the Mender server makes sure that a device will only get an Artifact it is compatible with. This increases the robustness of Mender as it avoids situations like deploying software that is not supported by the device hardware.
+!!! All devices report which *Device type* they are as part of their inventory information, for example `vexpress-qemu` or `beaglebone`. In adition, Mender Artifacts have *Device types compatible* as part of their metadata. During a deployment, Mender makes sure that a device will only get and install an Artifact it is compatible with. This increases the robustness of Mender as it avoids situations like deploying software that is not supported by the device hardware.
 
 
 ## Deploy the Mender Artifact to the device
@@ -118,11 +116,10 @@ the Artifact we just uploaded and **All devices**, then
 ## See the progress of the deployment
 
 As the deployment progresses, you can click on it to view more details about the current status across all devices.
-In the example below, we can see that the device is in process of installing the new Artifact.
+In the example below, we can see that the device has finished the installation and is in process of rebooting into
+the new rootfs deployed with the Artifact.
 
 ![Mender UI - Deployment progress](deployment_report.png)
-
-!! TODO Fix above screenshot.
 
 !!! The deployment to the virtual device should take about 2-3 minutes to complete and report success or failure.
 
@@ -133,7 +130,7 @@ Once the deployment completes, you should see it in *Past deployments*.
 If the deployment fails you can view the deployment log,
 which is obtained from the device, to diagnose the issue.
 You can also see the state of deployments on the Dashboard.
-In **Devices** you can see that `artifact_name` has now changed to `test`.
+In **Devices** you can see that `artifact_name` has now changed to `release2`.
 
 !! TODO: actial artifact_name above
 
@@ -152,6 +149,8 @@ It should yield output similar to the following.
 >   
 > This system has been updated by Mender build...
 
+!! TODO: check this is still the case
+
 You can see that this has changed from when we ran it in
 [See information about the device](#see-information-about-the-device).
 This shows your virtual device runs the new rootfs!
@@ -167,13 +166,11 @@ that is already installed and skip the deployment. It will
 immediately be marked as successful and moved to *Past deployments*.
 
 For this reason, we provide another Artifact that you can use
-to deploy with at [https://d1b0l86ne08fsf.cloudfront.net/master/vexpress-qemu/vexpress_release_1.mender](https://d1b0l86ne08fsf.cloudfront.net/master/vexpress-qemu/vexpress_release_1.mender). 
-Make sure to not mix it with the test Artifact you downloaded above,
-as they have the same file name.
+to deploy with at [https://d1b0l86ne08fsf.cloudfront.net/master/vexpress-qemu/vexpress_release_1.mender](https://d1b0l86ne08fsf.cloudfront.net/master/vexpress-qemu/vexpress_release_1.mender).
 This Artifact actually contains the original  of your
 QEMU virtual device, before you deployed the update above.
 
-Go to **Software** again and upload with the following fields:
+Go to **Artifacts** again and upload with the following fields:
 
 * Name: `release1`
 * Description: `My original build`
