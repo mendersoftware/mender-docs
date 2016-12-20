@@ -53,4 +53,4 @@ you can follow the final tutorial in this series, [Deploy to physical devices](.
 On the other hand, if you are only interested in triggering deployments with the Mender client manually at the device,
 you can follow the [Standalone deployments](../Standalone-deployments) tutorial. For an explanation of the
 difference between *managed* and *standalone* deployments, please see
-[Modes of operation](../../Architecture/overview#modes-of-operation).
+[Modes of operation](../../Architecture/Overview#modes-of-operation).

@@ -7,7 +7,7 @@ taxonomy:
 This document outlines the steps needed to build a [Yocto Project](https://www.yoctoproject.org/?target=_blank) image for a device.
 The build output will most notably include:
 * a file that can be flashed to the device storage during initial provisioning, it has suffix `.sdimg`
-* a rootfs filesystem image file that Mender can deploy to your provisioned device, it normally has suffix `.ext4`, but this depends on the file system type you build
+* an artifact containing rootfs filesystem image file that Mender can deploy to your provisioned device, it normally has suffix `.mender`
 
 Mender has two [reference devices](../../Getting-started/What-is-Mender#mender-reference-devices): a virtual QEMU device for testing without the need for hardware, and the BeagleBone Black.
 Building for these devices is well tested with Mender. If you are building for your own device
@@ -35,16 +35,16 @@ Detailed instructions and recipes needed for building a self-contained image fol
 
 ## Prerequisites
 
-! We use the Yocto Project's **krogoth** branch below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* We use the `stable` branch in `meta-mender`, which builds a stable version of Mender for the latest Yocto Project release. `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases , but these branches are no longer maintained by Mender developers. Please reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender) if you would like help with getting Mender to work on other versions of the Yocto Project.
+! We use the Yocto Project's **morty** branch below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* We use the `stable` branch in `meta-mender`, which builds a stable version of Mender for the latest Yocto Project release. `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases , but these branches are no longer maintained by Mender developers. Please reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender) if you would like help with getting Mender to work on other versions of the Yocto Project.
 
 
-!!! The meta-mender layer and the web-server are bundled with a default certificate and key. If you are intending on using Mender in production, it is highly recommend to generate your own certificate using OpenSSL (`openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256`), and replacing the [server certificate](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-core/recipes-mender/mender/files) found in the meta-mender layer, and [server certificate and key](https://github.com/mendersoftware/mender-api-gateway-docker/tree/master/cert) in the nginx gateway.
+!!! The meta-mender layer and the web-server are bundled with a default certificate and key. If you are intending on using Mender in production, it is highly recommend to generate your own certificate using OpenSSL (`openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256`), and replacing the [server certificate](https://github.com/mendersoftware/meta-mender/tree/stable/meta-mender-core/recipes-mender/mender/files) found in the meta-mender layer, and [server certificate and key](https://github.com/mendersoftware/mender-api-gateway-docker/tree/stable/cert) in the nginx gateway.
 
 The required meta layers are found in the following repositories:
 
 ```
 URI: git://git.yoctoproject.org/poky
-branch: krogoth
+branch: morty
 
 URI: git://github.com/mendersoftware/meta-mender
 branch: stable
@@ -62,7 +62,7 @@ On the other hand, if you want to start from a *clean Yocto Project environment*
 you need to clone the latest poky and go into the directory:
 
 ```
-git clone -b krogoth git://git.yoctoproject.org/poky
+git clone -b morty git://git.yoctoproject.org/poky
 ```
 
 ```
@@ -110,7 +110,7 @@ part of your Yocto Project build environment.
 
 ## Configuring the build
 
-!!! The configuration in `conf/local.conf` below will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../Architecture/overview#modes-of-operation). See the [section on customizations](../Build-customizations#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
+!!! The configuration in `conf/local.conf` below will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../Architecture/Overview#modes-of-operation). See the [section on customizations](../Build-customizations#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
 
 Add these lines to the start of your `conf/local.conf`:
 
@@ -157,9 +157,9 @@ Mender running already. Please proceed to [Provisioning a new device](../Provisi
 for steps to do this.
 
 On the other hand, if you already have Mender running on your device and want to deploy a rootfs update
-using this build, you should use files with the suffix of your selected filesystem
-(as set in `IMAGE_FSTYPES`), for example `.ext4`. You can either deploy this rootfs
-image in managed mode with the Mender server as described in [Deploy to physical devices](../../Getting-started/Deploy-to-physical-devices)
+using this build, you should use artifact files containing update of your selected filesystem
+(as set in `IMAGE_FSTYPES`), for example `.ext4`. You can either deploy this artifact in managed mode with
+ the Mender server as described in [Deploy to physical devices](../../Getting-started/Deploy-to-physical-devices)
 or by using the Mender client only in [Standalone deployments](../../Getting-started/Standalone-deployments).
 
 !!! If you built for the Mender reference device `vexpress-qemu`, you can start up your newly built image with the script in `../meta-mender/scripts/mender-qemu` and log in as *root* without password.
