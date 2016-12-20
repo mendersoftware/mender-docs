@@ -52,22 +52,10 @@ clicking on a device. It should look similar to the following:
 !!! Which information is collected about devices is fully configurable; see the documentation on [Identity](../../Client-configuration/Identity) and [Inventory](../../Client-configuration/Inventory) for more information.
 
 You can also see that the `artifact_name` is `mender-image-1.0`.
-The device console can be shown by running the following command:
 
-```
-sudo docker logs $(sudo docker ps | grep mender-client | cut -f1 -d' ')
-```
+After deploying the update below, you can verify that this `artifact_name` has changed.
 
-It should yield output similar to the following:
-
-> ...  
-> [  OK  ] Started Network Name Resolution.  
-> [  OK  ] Started Mender OTA update service.  
-> [  OK  ] Reached target Multi-User System.  
->  
-> Poky (Yocto Project Reference Distro) 2.2 vexpress-qemu ttyAMA0
-
-After deploying the update below, you can verify that this `artifact_name` and the console text (from `/etc/issue`) has changed.
+!!! The device console can be seen by running `sudo docker logs $(sudo docker ps | grep mender-client | cut -f1 -d' ')`.
 
 
 ## Upload a new Mender Artifact to the server
@@ -86,7 +74,7 @@ click the **Artifacs** tab and upload this Mender Artifact.
 
 Please fill in the following:
 
-* Name: `release2`
+* Name: `release-2`
 * Description: `My test build`
 
 !!! Both these fields are just informational, to make it is easier to recognize Artifacts after they have been uploaded. Their contents do not affect deployments.
@@ -116,8 +104,7 @@ the Artifact we just uploaded and **All devices**, then
 ## See the progress of the deployment
 
 As the deployment progresses, you can click on it to view more details about the current status across all devices.
-In the example below, we can see that the device has finished the installation and is in process of rebooting into
-the new rootfs deployed with the Artifact.
+In the example below, we can see that the device is in process of installing the Artifact.
 
 ![Mender UI - Deployment progress](deployment_report.png)
 
@@ -130,29 +117,8 @@ Once the deployment completes, you should see it in *Past deployments*.
 If the deployment fails you can view the deployment log,
 which is obtained from the device, to diagnose the issue.
 You can also see the state of deployments on the Dashboard.
-In **Devices** you can see that `artifact_name` has now changed to `release2`.
+In **Devices** you can see that `artifact_name` has now changed to `release-2`.
 
-!! TODO: actial artifact_name above
-
-Furthermore, you can again check the terminal of the virtual device with:
-
-```
-sudo docker logs $(sudo docker ps | grep mender-client | cut -f1 -d' ')
-```
-
-It should yield output similar to the following.
-
-> ...  
-> [  OK  ] Started Network Name Resolution.  
-> [  OK  ] Started Mender OTA update service.  
-> [  OK  ] Reached target Multi-User System.  
->   
-> This system has been updated by Mender build...
-
-!! TODO: check this is still the case
-
-You can see that this has changed from when we ran it in
-[See information about the device](#see-information-about-the-device).
 This shows your virtual device runs the new rootfs!
 
 
@@ -167,24 +133,16 @@ immediately be marked as successful and moved to *Past deployments*.
 
 For this reason, we provide another Artifact that you can use
 to deploy with at [https://d1b0l86ne08fsf.cloudfront.net/master/vexpress-qemu/vexpress_release_1.mender](https://d1b0l86ne08fsf.cloudfront.net/master/vexpress-qemu/vexpress_release_1.mender).
-This Artifact actually contains the original  of your
-QEMU virtual device, before you deployed the update above.
 
 Go to **Artifacts** again and upload with the following fields:
 
-* Name: `release1`
+* Name: `release-1`
 * Description: `My original build`
 
-After the Artifact has been uploaded, you can deploy it to your device
-to get it back to the original root file system.
+After the Artifact has been uploaded, you can deploy it to your device,
+as you did earlier.
 
-Now, if you observe the virtual client boot process
-in your docker compose terminal, you can see the original message
-from `/etc/issue` just before the login prompt again:
-
-> mender-client_1             | Poky (Yocto Project Reference Distro) 2.1.1 vexpress-qemu ttyAMA0
-
-Following this, you can deploy the `release2` Artifact again, and so forth.
+Following this, you can deploy the `release-2` Artifact again, and so forth.
 
 
 ## Deploy to custom groups
