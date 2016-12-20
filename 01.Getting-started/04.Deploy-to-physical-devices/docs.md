@@ -81,7 +81,7 @@ to `/mnt/rootfs1` and `/mnt/rootfs2`. Then run the following commands
 to make the Mender client able to find the server when the Mender client starts:
 
 ```
-echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io mender-artifact-storage.s3.docker.mender.io" | sudo tee -a /mnt/rootfs[12]/etc/hosts
+echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io s3.docker.mender.io" | sudo tee -a /mnt/rootfs[12]/etc/hosts
 ```
 
 You should see output similar to the following:
@@ -327,8 +327,8 @@ Select the image you just uploaded and **All devices**, then
 ## See the progress of the deployment
 
 As the deployment progresses, you can click on it to view more details about the current status across all devices.
-In the example below, we can see that a BeagleBone has installed the update and is rebooting into it,
-while a QEMU device skipped the deployment because no compatible image was available for it.
+In the example below, we can see that a BeagleBone has installed the update and is rebooting into it.
+QEMU device is skipped because no compatible image was available for it.
 
 ![Mender UI - Deployment progress - BeagleBone Black](deployment_report_bbb.png)
 
