@@ -11,9 +11,12 @@ description.
 When testing deployments, it is useful that the Artifact you are deploying
 is different from the one that you have installed so you can see that the update is successful.
 You might also want to configure certain aspects of the update after you build it,
-but before deploying it. In this tutorial we will unpack a Mender Artifact, 
+but before deploying it.
+
+In this tutorial we will unpack a Mender Artifact, 
 recognized by its `.mender` suffix, unpack the rootfs (e.g. `.ext4`) inside it,
-modify it, and then create a new Mender Artifact including these modifications.
+modify it, and then create a new Mender Artifact that has these modifications
+with the `mender-artifact` utility.
 
 
 ## Prerequisites
@@ -24,6 +27,8 @@ You need a standard `tar` utility, like the ones that are bundled with popular
 Linux distributions.
 
 #### git
+
+!!! If you do not wish to compile the `mender-artifact` utility from source, you can **[download the precompiled Linux binary here](https://d25phv8h0wbwru.cloudfront.net/master/tip/mender-artifact)** and skip to [Unpack the root file system](#unpack-the-root-file-system).
 
 The Golang compiler is integrated with `git`, so we need `git` installed
 on the system. On Ubuntu this can be achieved with:
@@ -81,23 +86,23 @@ go get github.com/mendersoftware/mender-artifact
 ```
 
 ```
-cd $GOPATH/src/github.com/mendersoftware/artifacts/
+cd $GOPATH/src/github.com/mendersoftware/mender-artifact/
 ```
 
 ```
 go get ./...
 ```
 
-You con now run the artifacts utility in `$GOPATH/bin/artifacts`, and make sure it works
+You con now run the `mender-artifact` utility in `$GOPATH/bin/mender-artifact`, and make sure it works
 by running:
 
 ```
-$GOPATH/bin/artifacts -v
+$GOPATH/bin/mender-artifact -v
 ```
 
-> artifact version 0.1
+> mender-artifact version 0.1
 
-For convenience, we can also make sure the `artifact` tool is in PATH:
+For convenience, we can also make sure the `mender-artifact` utility is in PATH:
 
 ```
 export PATH=$PATH:$GOPATH/bin
@@ -108,7 +113,7 @@ export PATH=$PATH:$GOPATH/bin
 
 The Mender Artifact can be unpacked using a standard tar utility,
 we simply create a directory for it and unpack it.
-For a BeagleBone black artifact, the commands and output
+For a BeagleBone black Artifact, the commands and output
 will look like the following:
 
 ```
@@ -121,7 +126,7 @@ mkdir core-image-base-beaglebone && tar -C core-image-base-beaglebone -xvf core-
 
 You can inspect the metadata files to learn about how they work,
 but it is not recommended to modify them directly as this can
-be quite error-prone. We will rather use the `artifacts` tool to make
+be quite error-prone. We will rather use the `mender-artifact` utility to make
 modifications below.
 
 The updates to be deployed are stored in the `data` subdirectory. We
@@ -129,7 +134,7 @@ can extract the first (and currently only) file there, which is the root file sy
 like the following:
 
 ```
-tar zxvf data/0000.tar.gz
+cd core-image-base-beaglebone && tar zxvf data/0000.tar.gz
 ```
 
 > core-image-base-beaglebone.ext4  
@@ -177,32 +182,33 @@ You need to adjust the path to the rootfs image and its type depending on the ma
 #### Find required metadata from original Arifact
 
 We would probably like to reuse some of the original Artifact metadata
-for the new artifact, as for example the device types it is compatible
+for the new Artifact, as for example the device types it is compatible
 with is the same.
 
 To see which metadata the original Artifact contains, you can run the
 follwing command:
 
 ```
-artifacts read core-image-base-beaglebone.mender
+mender-artifact read core-image-base-beaglebone.mender
 ```
 
 
 > Mender artifact:  
->   Name: release-1.0  
+>   Name: release-1  
 >   Format: mender  
 >   Version: 1  
 >   Compatible devices: '[beaglebone]'  
-> 
+>   
 > Updates:  
 >   0000  
 >   Type: 'rootfs-image'  
 >   Files:  
 >     core-image-base-beaglebone.ext4  
->     size: 101821440  
->     modified: 2016-12-05 17:35:21 +0100 CET  
+>     size: 105638912  
+>     modified: 2016-12-20 15:36:11 +0100 CET  
 
-The most important fields to note for writing a new artifact are
+
+The most important fields to note for writing a new Artifact are
 the *Compatible devices* and *Name*.
 
 
@@ -212,11 +218,11 @@ We now have the information we need to generate a new Artifact,
 including the metadata to use and modified rootfs.
 
 In this example, we will keep the original *Compatible devices*
-and *Name* of the original artifact, so only the rootfs modifications
+and *Name* of the original Artifact, so only the rootfs modifications
 will be different:
 
 ```
-artifacts write rootfs-image -t beaglebone -n release-1.0 -u core-image-base-beaglebone-modified.ext4 -o core-image-base-beaglebone-modified.mender
+mender-artifact write rootfs-image -t beaglebone -n release-1 -u core-image-base-beaglebone-modified.ext4 -o core-image-base-beaglebone-modified.mender
 ```
 
 After deploying this Artifact with Mender and rebooting, your configuration changes will be in effect!
