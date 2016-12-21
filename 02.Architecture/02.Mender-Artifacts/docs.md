@@ -5,8 +5,7 @@ taxonomy:
 ---
 
 As described in the [architecture overview](../Overview) Mender uses the output
-from a build system and deploys this to remote devices. Currently the format of this
-raw output is a full root file system, typically ext4.
+from a build system and deploys this to remote devices.
 
 In order to ensure a robust update process, Mender needs *additional metadata*
 alongside the raw bits of the file system, most notably:
