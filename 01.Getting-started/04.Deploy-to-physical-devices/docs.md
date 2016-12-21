@@ -289,19 +289,19 @@ mender-artifact write rootfs-image -u core-image-base-beaglebone.ext4 -t beagleb
 ```
 
 where `-u core-image-base-beaglebone.ext4` is the rootfs image we modified above,
-`-t beaglebone` is the device type compatible with the given artifact,
-`-n release-1` is the artifact name (do not change this as it needs to be in
+`-t beaglebone` is the device type compatible with the given Artifact,
+`-n release-1` is the Artifact name (do not change this as it needs to be in
 sync with `/etc/mender/artifact_info` *inside* the rootfs), and
 `-o beaglebone_release_1_configured.mender` is
-the name of the created artifact.
+the filename of the created Artifact.
 
 
 ## Upload the artifact to the server
 
-Before we can deploy the artifact we prepared above it needs
+Before we can deploy the Artifact we prepared above it needs
 to be uploaded to the server.
 
-Go to the Mender server UI, click the **Artifacts** tab and upload this artifact,
+Go to the Mender server UI, click the **Artifacts** tab and upload this Artifact,
 using the fields below:
 
 * Name: `release-1`
@@ -312,7 +312,7 @@ In the UI it should look something like this:
 ![Mender UI - Upload artifact BeagleBone Black](upload_artifact_bbb.png)
 
 
-## Deploy the artifact
+## Deploy the Artifact
 
 Now that we have the device connected and the image
 uploaded to the server, all that remains is to go to the
@@ -371,5 +371,5 @@ Now that you have seen how Mender works with a reference device, you might be wo
 it would take to port it to your own platform. The first place to go is
 [Device integration](../../Devices), where you will find out how to integrate
 the Mender client with your device software, and then look at
-[Creating artifacts](../../Artifacts) to see how to build images ready to be
+[Creating Artifacts](../../Artifacts) to see how to build images ready to be
 deployed over the network to your devices.
