@@ -14,7 +14,7 @@ You might also want to configure certain aspects of the update after you build i
 but before deploying it.
 
 In this tutorial we will unpack a Mender Artifact, 
-recognized by its `.mender` suffix, unpack the rootfs (e.g. `.ext4`) inside it,
+recognized by its `.mender` suffix, mount the rootfs (e.g. `.ext4`) inside it,
 modify it, and then create a new Mender Artifact that has these modifications
 by using the `mender-artifact` utility.
 
@@ -151,6 +151,8 @@ will be different:
 ```
 mender-artifact write rootfs-image -t beaglebone -n release-1 -u core-image-base-beaglebone-modified.ext4 -o core-image-base-beaglebone-modified.mender
 ```
+
+! The Artifact name (`-n`) must correspond to the name stated *inside* the root file system at `/etc/mender/artifact_info`, so make sure to change both places if you are modifying it.
 
 After deploying this Artifact with Mender and rebooting, your configuration changes will be in effect!
 
