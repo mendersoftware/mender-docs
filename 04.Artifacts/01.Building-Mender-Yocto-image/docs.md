@@ -18,9 +18,9 @@ to enable your device to support atomic image-based deployments with rollback.
 
 ## What is *meta-mender*?
 
-[meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank) is a layer that enables the creation of a Yocto Project image where the Mender client is part of the image. With Mender installed and configured on the image, you can deploy image updates and benefit from features like automatic roll-back, remote management, logging and reporting. The *meta-mender* layer contains all the recipes required to build the Mender Go binary and configure the Yocto Project image.
+[meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank) is a set of layers that enable the creation of a Yocto Project image where the Mender client is part of the image. With Mender installed and configured on the image, you can deploy image updates and benefit from features like automatic roll-back, remote management, logging and reporting. The *meta-mender* layers contain all the recipes required to build the Mender Go binary and configure the Yocto Project image.
 
-The *meta-mender* layer takes care of:
+Inside *meta-mender* there are several layers. The most important one is *meta-mender-core*, which is required by all builds that use Mender. *meta-mender-core* takes care of:
 
 * Cross-compiling Mender for ARM devices
 * [Partitioning the image correctly](../../Devices/Partition-layout)
@@ -28,14 +28,16 @@ The *meta-mender* layer takes care of:
 
 Each one of these steps can be configured further, see the linked sections for more details.
 
-!!! For general information about getting started with the Yocto Project, it is recommended to read the [Yocto Project Quick Start guide](http://www.yoctoproject.org/docs/2.2/yocto-project-qs/yocto-project-qs.html?target=_blank).
+The other layers in *meta-mender* provide support for specific boards.
+
+!!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Start guide](http://www.yoctoproject.org/docs/2.2/yocto-project-qs/yocto-project-qs.html?target=_blank).
+
 
 ## Prerequisites
 
 ! We use the Yocto Project's **morty** branch below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* We use the `stable` branch in `meta-mender`, which builds a stable version of Mender for the latest Yocto Project release. `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases , but these branches are no longer maintained by Mender developers. Please reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender) if you would like help with getting Mender to work on other versions of the Yocto Project.
 
-
-!!! The meta-mender layer and the web-server are bundled with a default certificate and key. If you are intending on using Mender in production, it is highly recommend to generate your own certificate using OpenSSL (`openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256`), and replacing the [server certificate](https://github.com/mendersoftware/meta-mender/tree/stable/meta-mender-core/recipes-mender/mender/files) found in the meta-mender layer, and [server certificate and key](https://github.com/mendersoftware/mender-api-gateway-docker/tree/stable/cert) in the nginx gateway.
+!!! The meta-mender-core layer and the web-server are bundled with a default certificate and key. If you are intending on using Mender in production, it is highly recommend to generate your own certificate using OpenSSL (`openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256`), and replacing the [server certificate](https://github.com/mendersoftware/meta-mender/tree/stable/meta-mender-core/recipes-mender/mender/files) found in the meta-mender layer, and [server certificate and key](https://github.com/mendersoftware/mender-api-gateway-docker/tree/stable/cert) in the nginx gateway.
 
 The required meta layers are found in the following repositories:
 
@@ -91,14 +93,22 @@ source oe-init-build-env
 This creates a build directory with the default name, ```build```, and makes it the
 current working directory.
 
-We then need to incorporate the two layers, meta-mender and oe-meta-go, into
+We then need to incorporate the two layers, meta-mender-core and oe-meta-go, into
 our project:
 
 ```
-bitbake-layers add-layer ../meta-mender
+bitbake-layers add-layer ../meta-mender/meta-mender-core
 ```
 ```
 bitbake-layers add-layer ../oe-meta-go
+```
+
+Finally, you need to incorporate the layer specific to your board. Mender currently comes with two supported boards: vexpress-qemu and beaglebone, residing in `meta-mender/meta-mender-qemu` and `meta-mender/meta-mender-beaglebone`, respectively. Other boards may also exist that are contributed by the community, or you may need to create a board specific layer yourself for your particular hardware.
+
+If you wish to test using the QEMU emulator, run the following:
+
+```
+bitbake-layers add-layer ../meta-mender/meta-mender-qemu
 ```
 
 At this point, all the layers required for Mender should be
@@ -112,15 +122,21 @@ part of your Yocto Project build environment.
 Add these lines to the start of your `conf/local.conf`:
 
 ```
+MENDER_ARTIFACT_NAME = "release-1"
+
 INHERIT += "mender-full"
+
 MACHINE = "<YOUR-MACHINE>"
-SYSTEMD_AUTO_ENABLE_pn-mender = "enable"
+
 DISTRO_FEATURES_append = " systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
 DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 VIRTUAL-RUNTIME_initscripts = ""
+
 IMAGE_FSTYPES = "ext4"
 ```
+
+`MENDER_ARTIFACT_NAME` is name of the image or update that will be built. This is what the device will report that it is running, and different updates must have different names because Mender will skip installation of an artifact if it is already installed.
 
 Please replace `<YOUR-MACHINE>` with the correct machine for your device.
 
@@ -139,7 +155,7 @@ Once all the configuration steps are done, an image can be built with bitbake:
 bitbake <YOUR-TARGET>
 ```
 
-!!! Please replace `<YOUR-TARGET>` with the desired target or image name. If you are building for `vexpress-qemu`, set the target to `core-image-full-cmdline`. If you are building for the `beaglebone`, set the target to `core-image-base`. For more information about the differences with image types on the BeagleBone Black please see [the official Yocto Project BeagleBone support page](https://www.yoctoproject.org/downloads/bsps/krogoth21/beaglebone?target=_blank).
+!!! Please replace `<YOUR-TARGET>` with the desired target or image name. If you are building for `vexpress-qemu`, set the target to `core-image-full-cmdline`. If you are building for the `beaglebone`, set the target to `core-image-base`. For more information about the differences with image types on the BeagleBone Black please see [the official Yocto Project BeagleBone support page](https://www.yoctoproject.org/downloads/bsps/morty22/beaglebone?target=_blank).
 
 !!! The first time you build a Yocto Project image, the build process can take several hours. The successive builds will only take a few minutes, so please be patient this first time.
 
@@ -158,4 +174,4 @@ which have `.mender` suffix. You can either deploy this Artifact in managed mode
 the Mender server as described in [Deploy to physical devices](../../Getting-started/Deploy-to-physical-devices)
 or by using the Mender client only in [Standalone deployments](../../Getting-started/Standalone-deployments).
 
-!!! If you built for the Mender reference device `vexpress-qemu`, you can start up your newly built image with the script in `../meta-mender/scripts/mender-qemu` and log in as *root* without password.
+!!! If you built for the Mender reference device `vexpress-qemu`, you can start up your newly built image with the script in `../meta-mender/meta-mender-qemu/scripts/mender-qemu` and log in as *root* without password.
