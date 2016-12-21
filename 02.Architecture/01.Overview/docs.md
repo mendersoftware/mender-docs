@@ -70,6 +70,4 @@ If something causes the device to reboot before committing the update, the bootl
 
 One consequence of image update is that the update will replace all the files in a filesystem with new versions, thereby deleting any new or changed files that had been placed there. In other words, to be updatable a file system needs to be **stateless**.
 
-All files that are modified by the device need to be stored in a separate partition. Things that may need to be stored include network parameters, user configuration changes and so on.
-
-
+All files that are modified by the device need to be stored in a separate partition. Things that may need to be stored include network parameters, user configuration changes and so on. See [Partition layout](../../Devices/Partition-layout) for more information.
