@@ -86,7 +86,7 @@ echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io s3.docker.mender.io" | s
 
 You should see output similar to the following:
 
-> 192.168.10.1 docker.mender.io mender-artifact-storage.s3.docker.mender.io
+> 192.168.10.1 docker.mender.io s3.docker.mender.io
 
 We also need to modify `ServerURL` in the rootfs partitions at `/etc/mender/mender.conf`
 to `https://docker.mender.io:8080`. This can be achieved by manually editing or running
@@ -222,12 +222,12 @@ We carry out exactly the same configuration steps for the rootfs image
 as we did for the rootfs partitions in the disk image above:
 
 ```
-echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io mender-artifact-storage.s3.docker.mender.io" | sudo tee -a /mnt/rootfs/etc/hosts
+echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io s3.docker.mender.io" | sudo tee -a /mnt/rootfs/etc/hosts
 ```
 
 You should see output similar to the following:
 
-> 192.168.10.1 docker.mender.io mender-artifact-storage.s3.docker.mender.io
+> 192.168.10.1 docker.mender.io s3.docker.mender.io
 
 Next, ensure we have the right `ServerURL`:
 
