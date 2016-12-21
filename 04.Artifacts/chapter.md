@@ -1,5 +1,5 @@
 ---
-title: Creating artifacts
+title: Creating Artifacts
 taxonomy:
     category: docs
 ---
@@ -8,4 +8,4 @@ taxonomy:
 
 # Creating artifacts
 
-Building and managing artifacts
+Building and managing Mender Artifacts (`*.mender`) and disk images (`*.sdimg`).
