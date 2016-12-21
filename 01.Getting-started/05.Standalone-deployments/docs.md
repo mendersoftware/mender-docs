@@ -22,6 +22,7 @@ QEMU device so you do not have to configure any hardware. If you follow
 it using a QEMU device, please make sure QEMU for the ARM architecture
 works, it is typically installed with the `qemu-system-arm` package.
 
+
 ### Disk and rootfs images
 
 You will need two images of different types.
@@ -31,14 +32,16 @@ device. `meta-mender` creates these files with a `.sdimg`
 suffix, so they are easy to recognize. This file contains
 all the partitions of the given storage device, as
 described in [Partition layout](../../Devices/Partition-layout).
-In addition, you need an artifact file to update to. The content
-of this file depends on the file system used for rootfs,
-for example `ext4`.
+
+In addition, you need an Artifact file to update to, recognized
+by its `.mender` suffix.
+See [Mender Artifacts](../../Architecture/Mender-Artifacts)
+for a more detailed overview.
 
 You can build the required images by following the steps
 described in [Building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image).
 
-!!! If you are testing Mender on the reference devices BeagleBone Black or QEMU, you can save the build time by **[downloading the latest prebuilt demo images](https://doyabzhx7xw8o.cloudfront.net/latest/latest.tar.gz)**. The `.sdimg`, `.mender` and `.ext4` images are found in the `vexpress-qemu` and `beaglebone` directories.
+!!! If you are testing Mender on the reference devices BeagleBone Black or QEMU, you can save the build time by **[downloading the latest prebuilt demo images](https://doyabzhx7xw8o.cloudfront.net/latest/latest.tar.gz)**. The `.sdimg` disk images, and `.mender` Artifacts are found in the `vexpress-qemu` and `beaglebone` directories.
 
 
 ### Network connectivity
@@ -75,9 +78,9 @@ This will take you to the login prompt, and you should see a message similar to 
 !!! If you are using the Mender demo images, you can login with user *root*. No password is required. 
 
 
-## Serve an artifact to the device over http
+## Serve an Artifact to the device over http
 
-To deploy a new artifact to the device, you need to start a http server on your workstation to serve the image. Open a new terminal **on your workstation** and change into the directory with your artifact (e.g. `*.mender`). Start a simple Python webserver in that directory, like so:
+To deploy a new Artifact to the device, you need to start a http server on your workstation to serve the image. Open a new terminal **on your workstation** and change into the directory with your Artifact (e.g. `*.mender`). Start a simple Python webserver in that directory, like so:
 
 ```
 python -m SimpleHTTPServer
@@ -88,7 +91,7 @@ python -m SimpleHTTPServer
 !!! If you are testing with QEMU, the virtual device should be able to access your workstation's directory at `http://10.0.2.2:8000/`, i.e. `<IP-OF-WORKSTATION>` is `10.0.2.2` in this case.
 
 
-## Deploy the new artifact to the device
+## Deploy the new Artifact to the device
 
 In your **device terminal**, test the connection to the workstation with:
 
@@ -103,10 +106,10 @@ To deploy the new rootfs image to your device, run the following command in its 
 mender -log-level info -rootfs http://<IP-OF-WORKSTATION>:8000/<ARTIFACT>
 ```
 
-Use the appropriate rootfs image file in place of `<ARTIFACT>`, e.g. `artifact.mender`.
+Use the appropriate Artifact file in place of `<ARTIFACT>`, e.g. `artifact.mender`.
 You can find the right name by opening a browser at [http://localhost:8000](http://localhost:8000?target=_blank).
 
-Mender will download the new artifact, process its metadata information, extract the content and write it to the inactive rootfs partition. It will configure the bootloader to boot into it on the next reboot. This should take about 2 minutes to complete.
+Mender will download the new Artifact, process its metadata information, extract the contents and write it to the inactive rootfs partition. It will configure the bootloader to boot into it on the next reboot. This should take about 2 minutes to complete.
 
 !!! The `mender -rootfs` option accepts http(s) URIs, as well as file paths. Thus you can also update from a file system file from local storage like a USB-stick or remotely-mounted storage like NFS by simply changing the path to the image accordingly.
 
