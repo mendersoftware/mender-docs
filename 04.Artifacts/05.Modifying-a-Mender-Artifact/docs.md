@@ -16,7 +16,7 @@ but before deploying it.
 In this tutorial we will unpack a Mender Artifact, 
 recognized by its `.mender` suffix, unpack the rootfs (e.g. `.ext4`) inside it,
 modify it, and then create a new Mender Artifact that has these modifications
-with the `mender-artifact` utility.
+by using the `mender-artifact` utility.
 
 
 ## Prerequisites
@@ -26,87 +26,14 @@ with the `mender-artifact` utility.
 You need a standard `tar` utility, like the ones that are bundled with popular
 Linux distributions.
 
-#### git
 
-!!! If you do not wish to compile the `mender-artifact` utility from source, you can **[download the precompiled Linux binary here](https://d25phv8h0wbwru.cloudfront.net/master/tip/mender-artifact)** and skip to [Unpack the root file system](#unpack-the-root-file-system).
+#### mender-artifact
 
-The Golang compiler is integrated with `git`, so we need `git` installed
-on the system. On Ubuntu this can be achieved with:
+The `mender-artifact` utility is used to create and inspect Mender Artifacts.
 
-```
-sudo apt-get install git
-```
+You can download a [precompiled mender-artifact Linux binary here](https://d25phv8h0wbwru.cloudfront.net/master/tip/mender-artifact).
 
-#### Golang compiler
-
-Since the Mender Artifact utility is written in golang,
-a Golang compiler needs to be installed and set up in order to build it.
-You can find Golang download and installation instructions at
-[https://golang.org/dl/](https://golang.org/dl/?target=_blank).
-
-You should check the latest version, adjust the paths to your needs
-and add the exports to your `.profile` as described when
-clicking on the download link.
-This is an example of installing and setting up Golang on a Linux system:
-
-```
-wget https://storage.googleapis.com/golang/go1.7.4.linux-amd64.tar.gz
-```
-
-```
-sudo tar -C /usr/local -xzf go1.7.4.linux-amd64.tar.gz
-```
-
-```
-export PATH=$PATH:/usr/local/go/bin
-```
-
-```
-mkdir $HOME/golang && export GOPATH=$HOME/golang && cd $HOME/golang
-```
-
-After these steps, verify that Golang is correctly installed:
-
-```
-go version
-```
-
-> go version go1.7.4 linux/amd64
-
-
-#### Mender Artifact utility
-
-The Mender Artifact utility is available as open source in the
-[Mender artifact repository on GitHub](https://github.com/mendersoftware/mender-artifact?target=_blank).
-
-You can download and install it with the follwoing commands:
-
-```
-go get github.com/mendersoftware/mender-artifact
-```
-
-```
-cd $GOPATH/src/github.com/mendersoftware/mender-artifact/
-```
-
-```
-go get ./...
-```
-
-You con now run the `mender-artifact` utility in `$GOPATH/bin/mender-artifact`, and make sure it works
-by running:
-
-```
-$GOPATH/bin/mender-artifact -v
-```
-
-> mender-artifact version 0.1
-
-For convenience, we can also make sure the `mender-artifact` utility is in PATH:
-
-```
-export PATH=$PATH:$GOPATH/bin
-```
+!!! If you need to build `mender-artifact` from source, please see [Compiling mender-artifact](#compiling-mender-artifact).
 
 
 ## Unpack the root file system
@@ -226,3 +153,92 @@ mender-artifact write rootfs-image -t beaglebone -n release-1 -u core-image-base
 ```
 
 After deploying this Artifact with Mender and rebooting, your configuration changes will be in effect!
+
+
+## Compiling mender-artifact
+
+Compiling `mender-artifact` is only neccessary if you can not use the precompiled
+[mender-artifact binary for Linux](https://d25phv8h0wbwru.cloudfront.net/master/tip/mender-artifact).
+
+
+#### Install git
+
+
+The Golang compiler is integrated with `git`, so we need `git` installed
+on the system. On Ubuntu this can be achieved with:
+
+```
+sudo apt-get install git
+```
+
+
+#### Install the Golang compiler
+
+Since the Mender Artifact utility is written in golang,
+a Golang compiler needs to be installed and set up in order to build it.
+You can find Golang download and installation instructions at
+[https://golang.org/dl/](https://golang.org/dl/?target=_blank).
+
+You should check the latest version, adjust the paths to your needs
+and add the exports to your `.profile` as described when
+clicking on the download link.
+This is an example of installing and setting up Golang on a Linux system:
+
+```
+wget https://storage.googleapis.com/golang/go1.7.4.linux-amd64.tar.gz
+```
+
+```
+sudo tar -C /usr/local -xzf go1.7.4.linux-amd64.tar.gz
+```
+
+```
+export PATH=$PATH:/usr/local/go/bin
+```
+
+```
+mkdir $HOME/golang && export GOPATH=$HOME/golang && cd $HOME/golang
+```
+
+After these steps, verify that Golang is correctly installed:
+
+```
+go version
+```
+
+> go version go1.7.4 linux/amd64
+
+
+#### Compile mender-artifact
+
+The Mender Artifact utility is available as open source in the
+[Mender artifact repository on GitHub](https://github.com/mendersoftware/mender-artifact?target=_blank).
+
+You can download and install it with the follwoing commands:
+
+```
+go get github.com/mendersoftware/mender-artifact
+```
+
+```
+cd $GOPATH/src/github.com/mendersoftware/mender-artifact/
+```
+
+```
+go get ./...
+```
+
+You con now run the `mender-artifact` utility in `$GOPATH/bin/mender-artifact`, and make sure it works
+by running:
+
+```
+$GOPATH/bin/mender-artifact -v
+```
+
+> mender-artifact version 0.1
+
+For convenience, we can also make sure the `mender-artifact` utility is in PATH:
+
+```
+export PATH=$PATH:$GOPATH/bin
+```
