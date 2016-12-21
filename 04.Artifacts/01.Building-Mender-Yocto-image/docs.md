@@ -7,7 +7,7 @@ taxonomy:
 This document outlines the steps needed to build a [Yocto Project](https://www.yoctoproject.org/?target=_blank) image for a device.
 The build output will most notably include:
 * a file that can be flashed to the device storage during initial provisioning, it has suffix `.sdimg`
-* an artifact containing rootfs filesystem image file that Mender can deploy to your provisioned device, it normally has suffix `.mender`
+* an Artifact containing rootfs filesystem image file that Mender can deploy to your provisioned device, it has suffix `.mender`
 
 Mender has two [reference devices](../../Getting-started/What-is-Mender#mender-reference-devices): a virtual QEMU device for testing without the need for hardware, and the BeagleBone Black.
 Building for these devices is well tested with Mender. If you are building for your own device
@@ -22,16 +22,13 @@ to enable your device to support atomic image-based deployments with rollback.
 
 The *meta-mender* layer takes care of:
 
-* Cross-compiling Mender for ARM devices using Go 1.6.
-* [Partitioning the image correctly](../../Devices/Partition-layout).
-* [Setting up the U-Boot bootloader to support Mender](../../Devices/Integrating-with-U-Boot).
+* Cross-compiling Mender for ARM devices
+* [Partitioning the image correctly](../../Devices/Partition-layout)
+* [Setting up the U-Boot bootloader to support Mender](../../Devices/Integrating-with-U-Boot)
 
 Each one of these steps can be configured further, see the linked sections for more details.
 
-Detailed instructions and recipes needed for building a self-contained image follow.
-
-
-!!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Start guide](http://www.yoctoproject.org/docs/2.2/yocto-project-qs/yocto-project-qs.html?target=_blank).
+!!! For general information about getting started with the Yocto Project, it is recommended to read the [Yocto Project Quick Start guide](http://www.yoctoproject.org/docs/2.2/yocto-project-qs/yocto-project-qs.html?target=_blank).
 
 ## Prerequisites
 
@@ -149,17 +146,16 @@ bitbake <YOUR-TARGET>
 
 ## Using the build output
 
-After a successful build, the images and build artifacts are placed in `tmp/deploy/images/<YOUR-MACHINE>/`
-(as set in `conf/local.conf`).
+After a successful build, the images and build artifacts are placed in `tmp/deploy/images/<YOUR-MACHINE>/`.
 
 The files with suffix `.sdimg` are used to provision the device storage for devices without
 Mender running already. Please proceed to [Provisioning a new device](../Provisioning-a-new-device)
 for steps to do this.
 
 On the other hand, if you already have Mender running on your device and want to deploy a rootfs update
-using this build, you should use artifact files containing update of your selected filesystem
-(as set in `IMAGE_FSTYPES`), for example `.ext4`. You can either deploy this artifact in managed mode with
- the Mender server as described in [Deploy to physical devices](../../Getting-started/Deploy-to-physical-devices)
+using this build, you should use the [Mender Artifact](../../Architecture/Mender-Artifacts) files,
+which have `.mender` suffix. You can either deploy this Artifact in managed mode with
+the Mender server as described in [Deploy to physical devices](../../Getting-started/Deploy-to-physical-devices)
 or by using the Mender client only in [Standalone deployments](../../Getting-started/Standalone-deployments).
 
 !!! If you built for the Mender reference device `vexpress-qemu`, you can start up your newly built image with the script in `../meta-mender/scripts/mender-qemu` and log in as *root* without password.
