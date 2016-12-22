@@ -50,9 +50,11 @@ these should be enabled in the board support headers in U-Boot, under
    environment. This means that other `CONFIG_BOOTCOUNT_` features should be
    turned off.
 
-3. `CONFIG_ENV_IS_IN_FAT`: This will store the U-Boot environment file on the
-   FAT-based boot partition. Again, other `CONFIG_ENV_IS_IN_` features should be
-   turned off.
+3. `CONFIG_ENV_IS_IN_MMC`: This will store the U-Boot environment file on the
+   memory card, before the first partition start. See
+   [`MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET`](../Artifacts/Variables#image_rootfs_size)
+   for more information. Other `CONFIG_ENV_IS_IN_` features should be turned
+   off.
 
 4. `FAT_ENV_INTERFACE`, `FAT_ENV_DEVICE`, `FAT_ENV_PART` and
    `FAT_ENV_DEVICE_AND_PART` should be removed from the configuration if they
