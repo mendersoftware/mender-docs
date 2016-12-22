@@ -52,7 +52,7 @@ these should be enabled in the board support headers in U-Boot, under
 
 3. `CONFIG_ENV_IS_IN_MMC`: This will store the U-Boot environment file on the
    memory card, before the first partition start. See
-   [`MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET`](../../Artifacts/Variables#image_rootfs_size)
+   [`MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET`](../../Artifacts/Variables#mender_uboot_env_storage_device_offset)
    for more information. Other `CONFIG_ENV_IS_IN_` features should be turned
    off.
 
