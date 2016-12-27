@@ -142,7 +142,7 @@ Please replace `<YOUR-MACHINE>` with the correct machine for your device.
 
 ! The machine `<YOUR-MACHINE>` needs to be integrated with Mender before it will work correctly; most notably U-Boot needs the required features and integration. Please see [Device integration](../../Devices) for more information. If you are building for a Mender [reference device](../../Getting-started/What-is-Mender#mender-reference-devices), you can use `vexpress-qemu` or `beaglebone`. 
 
-!!! Mender automatically selects the file system types it builds into the disk image (`.sdimg`), which is used for initial flash provisioning, based on the `IMAGE_FSTYPES` variable. See the [section on file system types](../../Devices/Partition-layout#file-system-types) for more information.
+!!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../Variables#mender_storage_total_size_mb) for more information. Mender automatically selects the file system types it builds into the disk image, which is used for initial flash provisioning, based on the `IMAGE_FSTYPES` variable. See the [section on file system types](../../Devices/Partition-layout#file-system-types) for more information.
 
 !!! It is suggested to add ```INHERIT += "rm_work"``` to ```conf/local.conf``` in order to conserve disk space during the build.
 
