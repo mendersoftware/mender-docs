@@ -26,7 +26,7 @@ updates to. To make it easy to provision the device we will use
 a SD card to store the OS, so you will need one SD card
 (1 GB or larger) per BeagleBone Black.
 
-!!! It is possible to use this tutorial with any physical device, as long as you have integrated Mender with it. In this case you cannot use the test images we provide in this tutorial, but you need to build your own images as described in [Building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image).
+!!! It is possible to use this tutorial with any physical device, as long as you have integrated Mender with it. In this case you cannot use the test artifacts we provide in this tutorial, but you need to build your own artifacts as described in [Building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image).
 
 
 ### Network connectivity
@@ -321,14 +321,14 @@ uploaded to the server, all that remains is to go to the
 Select the image you just uploaded and **All devices**, then
 **Create deployment**.
 
-!!! If you deploy to several device types (e.g. vexpress-qemu), the Mender server will skip these if no compatible image is available. This condition is indicated by the *noimage* status. Mender does this to avoid deployments of incompatible rootfs images.
+!!! If you deploy to several device types (e.g. vexpress-qemu), the Mender server will skip these if no compatible artifact is available. This condition is indicated by the *noartifact* status. Mender does this to avoid deployments of incompatible rootfs images.
 
 
 ## See the progress of the deployment
 
 As the deployment progresses, you can click on it to view more details about the current status across all devices.
 In the example below, we can see that a BeagleBone has installed the update and is rebooting into it.
-QEMU device is skipped because no compatible image was available for it.
+The QEMU device is skipped because no compatible artifact was available for it.
 
 ![Mender UI - Deployment progress - BeagleBone Black](deployment_report_bbb.png)
 
@@ -353,11 +353,11 @@ Artifact is already installed. This needs to be changed in two places:
 Please make sure that the Artifact Name is in sync at these two places,
 otherwise deployments using this Artifact will always fail.
 
-With that in mind, now might be a good time to tweak the image, add some
+With that in mind, now might be a good time to tweak the rootfs, add some
 more BeagleBone Black devices to the environment and try to get the
 required blinkenlights going!
 
-If you want to build your own image for the BeagleBone Black,
+If you want to build your own artifact for the BeagleBone Black,
 head over to the tutorial [Building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image).
 
 
