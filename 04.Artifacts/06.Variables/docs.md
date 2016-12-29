@@ -17,7 +17,7 @@ Influences which file system type Mender will build for the rootfs partitions in
 
 The size of the generated rootfs. This will be the size that is shipped in a `.mender` update. This variable is a standard Yocto Project variable and is influenced by several other factors. See [the Yocto Project documentation](http://www.yoctoproject.org/docs/2.2/ref-manual/ref-manual.html?target=_blank#var-IMAGE_ROOTFS_SIZE) for more information.
 
-Note that this variable has no effect when generating an SD card image (`sdimg`), since in that case the size is autodetermined. See  [`MENDER_STORAGE_TOTAL_SIZE_MB`](#mender_storage_total_size_mb) for more information.
+Note that this variable has no effect when generating an SD card image (`sdimg`), since in that case the size is determined automatically. See  [`MENDER_STORAGE_TOTAL_SIZE_MB`](#mender_storage_total_size_mb) for more information.
 
 
 #### MENDER_ARTIFACT_NAME

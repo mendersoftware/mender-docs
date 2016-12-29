@@ -278,7 +278,7 @@ sudo umount /mnt/rootfs
 #### Create a new Mender Artifact with the modified rootfs
 
 To create a Mender Artifact from a root file system, it is easiest
-to download the precompiled mender-artifact tool available for Linux
+to download the prebuilt mender-artifact tool available for Linux
 at [https://d25phv8h0wbwru.cloudfront.net/stable/tip/mender-artifact](https://d25phv8h0wbwru.cloudfront.net/stable/tip/mender-artifact).
 
 After the tool is downloaded and you added execute permission,

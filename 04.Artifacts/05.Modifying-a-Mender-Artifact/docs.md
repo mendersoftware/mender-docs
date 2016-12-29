@@ -31,7 +31,7 @@ Linux distributions.
 
 The `mender-artifact` utility is used to create and inspect Mender Artifacts.
 
-You can download a [precompiled mender-artifact Linux binary here](https://d25phv8h0wbwru.cloudfront.net/stable/tip/mender-artifact).
+You can download a [prebuilt mender-artifact Linux binary here](https://d25phv8h0wbwru.cloudfront.net/stable/tip/mender-artifact).
 
 !!! If you need to build `mender-artifact` from source, please see [Compiling mender-artifact](#compiling-mender-artifact).
 
@@ -113,7 +113,7 @@ for the new Artifact, as for example the device types it is compatible
 with is the same.
 
 To see which metadata the original Artifact contains, you can run the
-follwing command:
+following command:
 
 ```
 mender-artifact read core-image-base-beaglebone.mender
@@ -159,7 +159,7 @@ After deploying this Artifact with Mender and rebooting, your configuration chan
 
 ## Compiling mender-artifact
 
-Compiling `mender-artifact` is only neccessary if you can not use the precompiled
+Compiling `mender-artifact` is only necessary if you can not use the prebuilt
 [mender-artifact binary for Linux](https://d25phv8h0wbwru.cloudfront.net/stable/tip/mender-artifact).
 
 
@@ -216,7 +216,7 @@ go version
 The Mender Artifact utility is available as open source in the
 [Mender artifact repository on GitHub](https://github.com/mendersoftware/mender-artifact?target=_blank).
 
-You can download and install it with the follwoing commands:
+You can download and install it with the following commands:
 
 ```
 go get github.com/mendersoftware/mender-artifact
