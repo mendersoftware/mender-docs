@@ -108,7 +108,7 @@ In the example below, we can see that the device is in process of installing the
 
 ![Mender UI - Deployment progress](deployment_report.png)
 
-!!! The deployment to the virtual device should take about 2-3 minutes to complete and report success or failure.
+!!! The deployment to the virtual device should take about 2-5 minutes to complete and report success or failure.
 
 
 ## Verify the deployment
