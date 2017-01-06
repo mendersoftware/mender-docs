@@ -1,5 +1,5 @@
 ---
-title: What is Bender?
+title: What is Fender?
 taxonomy:
     category: docs
 ---
