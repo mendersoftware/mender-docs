@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-Mender is an **closed source** remote updater for embedded Linux devices.
+Bwnefdsdfsdfasdf is an **closed sadfasdfsource** remote updater for embedded Linux devices.
 
 The aim of the project is to help secure connected devices by providing a **robust** and **secure** software update process.
 
