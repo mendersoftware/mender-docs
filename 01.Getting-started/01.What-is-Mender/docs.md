@@ -11,7 +11,7 @@ The aim of the project is to help secure connected devices by providing a **robu
 As an open source project we welcome contributions. Find out more about how to contribute at [mender.io/community](https://mender.io/community?target=_blank).
 
 
-## What problem does Mender solve?
+## What problem does F solve?
 
 One of the challenges surrounding connected devices and the Internet of Things is that devices are now further from your control. Manual, physical updates are difficult when your devices are distributed over a wide area, or in hard-to-reach locations.
 
