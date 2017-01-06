@@ -70,7 +70,7 @@ the virtual device is provided for download at
 [https://d1b0l86ne08fsf.cloudfront.net/stable/vexpress-qemu/vexpress_release_2.mender](https://d1b0l86ne08fsf.cloudfront.net/stable/vexpress-qemu/vexpress_release_2.mender).
 
 After the download finishes, go back to the Mender server UI,
-click the **Artifacs** tab and upload this Mender Artifact.
+click the **Artifacts** tab and upload this Mender Artifact.
 
 Please fill in the following:
 
