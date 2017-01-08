@@ -1,5 +1,5 @@
 ---
-title: What is Mender?
+title: What is Mender (test)?
 taxonomy:
     category: docs
 ---
