@@ -22,7 +22,7 @@ Any failures or interruptions in the update process should not cause your device
 Remote updates also require a means of secure communication with each device.
 
 
-## Trying Mender
+## Trying Mender test123456
 
 We have a series of tutorials that show you how Mender works, while giving you hands-on experience.
 
