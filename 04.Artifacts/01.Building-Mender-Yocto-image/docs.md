@@ -93,13 +93,12 @@ source oe-init-build-env
 This creates a build directory with the default name, ```build```, and makes it the
 current working directory.
 
-We then need to incorporate the two layers, meta-mender-core and oe-meta-go, into
+We then need to incorporate the three layers, meta-mender-core, meta-mender-demo and oe-meta-go, into
 our project:
 
 ```
 bitbake-layers add-layer ../meta-mender/meta-mender-core
-```
-```
+bitbake-layers add-layer ../meta-mender/meta-mender-demo
 bitbake-layers add-layer ../oe-meta-go
 ```
 
