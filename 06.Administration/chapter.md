@@ -6,6 +6,6 @@ taxonomy:
 
 ### Chapter 6
 
-# Backend administration
+# Administration
 
-Configuration and administration of Mender backend services
+Configuration and administration of Mender services
