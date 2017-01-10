@@ -1,5 +1,5 @@
 ---
-title: Certificates
+title: Certificates and keys
 taxonomy:
     category: docs
 ---
