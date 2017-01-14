@@ -18,7 +18,7 @@ bitbake-layers remove-layer ../meta-mender/meta-mender-demo
 
 ## Certificates
 
-Having a certificate is necessary to make sure that the communication between the client and the server is secure, and that it is not possible for an adversary to pose as a legitimate server. You will need to use the same certificate as the API gateway uses. See the section about [administering certificates](../../Administration/Certificates) for more details.
+Having a certificate is necessary to make sure that the communication between the client and the server is secure, and that it is not possible for an adversary to pose as a legitimate server. You will need to use the same certificate as the API gateway uses. See the section about [administering certificates](../../Administration/Certificates-and-keys) for more details.
 
 The best way to include the certificate in the client build is to use custom bitbake layer. For the following steps it is assumed that you have such a layer already. If not you can check out how to [create your own layer](http://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html#creating-your-own-layer) in the official Yocto Project documentation, but there is also an alternative method below that doesn't need a layer.
 

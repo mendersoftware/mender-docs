@@ -11,23 +11,23 @@ The integration environment, previously used
 in [Create a test environment](../../Getting-started/Create-a-test-environment)
 chapter, brings together the following services:
 
-- [Mender Device Admission Service](https://github.com/mendersoftware/deviceadm)
-- [Mender Device Authentication Service](https://github.com/mendersoftware/deviceauth)
-- [Mender Deployment Service](https://github.com/mendersoftware/deployments)
-- [Mender Device Inventory Service](https://github.com/mendersoftware/inventory)
-- [Mender User Administration Service](https://github.com/mendersoftware/useradm)
-- [Mender API Gateway](https://github.com/mendersoftware/mender-api-gateway-docker)
-- [Minio](https://www.minio.io/) object storage
-- Storage service proxy based on [OpenResty](https://openresty.org/en/)
+- [Mender Device Admission Service](https://github.com/mendersoftware/deviceadm?target=_blank)
+- [Mender Device Authentication Service](https://github.com/mendersoftware/deviceauth?target=_blank)
+- [Mender Deployment Service](https://github.com/mendersoftware/deployments?target=_blank)
+- [Mender Device Inventory Service](https://github.com/mendersoftware/inventory?target=_blank)
+- [Mender User Administration Service](https://github.com/mendersoftware/useradm?target=_blank)
+- [Mender API Gateway](https://github.com/mendersoftware/mender-api-gateway-docker?target=_blank)
+- [Minio](https://www.minio.io/?target=_blank) object storage
+- Storage service proxy based on [OpenResty](https://openresty.org/en/?target=_blank)
 
 Services are delivered in form of Docker images, available from
-official [Mender Docker repository](https://hub.docker.com/r/mendersoftware/).
+official [Mender Docker repository](https://hub.docker.com/r/mendersoftware/?target=_blank).
 When required, each service can be built directly from its source code. Consult
 respective repositories for build instructions.
 
 While it is possible to `docker pull` individual images and start containers
 manually,
-the [integration repository](https://github.com/mendersoftware/integration)
+the [integration repository](https://github.com/mendersoftware/integration?target=_blank)
 provides a convenient setup based on Docker Compose tool. The
 `docker-compose.yml` file describes the following setup:
 
@@ -68,4 +68,4 @@ provides a convenient setup based on Docker Compose tool. The
 For details and best practices of using `docker-compose` in production consult
 the official
 documentation:
-[Using Compose in production](https://docs.docker.com/compose/production/)
+[Using Compose in production](https://docs.docker.com/compose/production/?target=_blank)

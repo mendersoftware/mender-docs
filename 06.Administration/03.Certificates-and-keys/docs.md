@@ -11,7 +11,7 @@ a certificate that is shared with other services, and a *private key*,
 which is kept secret by the service.
 All keys are encoded in the PEM format. The public keys are shared in the
 standard X.509 certificate format, `cert.pem` below,
-while private keys are seen as `key.pem` below.
+while private keys are seen as `private.pem` below.
 
 See the [service overview](../Overview) for schematics of the service
 communication flow. An overview of the services that use keys and
@@ -21,9 +21,8 @@ for which purpose can be seen below.
 |-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 | API Gateway           | Listens to a public port for `https` requests only (plain `http` is disabled). These requests can come from devices that check for- or report status about updates through the [Device APIs](../../APIs/Device-APIs), or from users and tools that manage deployments through the [Management APIs](../../APIs/Management-APIs). | **Devices** and users of the **Management APIs**, including web browsers accessing the **Mender UI**.                                       |
 | Storage Proxy         | Listens to a public port for `https` requests only (plain `http` is disabled). The Deployment Service manages Artifacts through the Storage Proxy and Devices make Artifact download requests.                                                                                                        | **Devices** and **Deployment Service**.                                                                                                    |
-| Device Authentication | Signs and verifies JSON Web Tokens that devices include in their requests to authenticate themselves when accessing the [Device APIs](../../APIs/Device-APIs).                                                                                                                                                                   | Nothing. The service gets signature verification requests from the API Gateway, so all keys are kept private to the service and not shared. |
 | User Administration   | Signs and verifies JSON Web Tokens that users of the [Management APIs](../../APIs/Management-APIs), including end users of the Mender UI, include in their requests to authenticate themselves.                                                                                                                                     | Nothing. The service gets signature verification requests from the API Gateway, so all keys are kept private to the service and not shared. |
-
+| Device Authentication | Signs and verifies JSON Web Tokens that devices include in their requests to authenticate themselves when accessing the [Device APIs](../../APIs/Device-APIs).                                                                                                                                                                   | Nothing. The service gets signature verification requests from the API Gateway, so all keys are kept private to the service and not shared. |
 
 
 ## Replacing keys and certificates
@@ -49,7 +48,7 @@ Storage Proxy also requires certificates in addition to keypairs.
 In order to make all this key and certificate generation easier, we have
 created a `keygen` script that leverages the `openssl` utility to do
 the heavy lifting. It is available in
-[Mender's Integration GitHub repository](https://github.com/mendersoftware/integration).
+[Mender's Integration GitHub repository](https://github.com/mendersoftware/integration?target=_blank).
 
 Open a terminal and go to the directory where you cloned the integration repository
 as part of the [tutorial to create a test environment](../../Getting-started/Create-a-test-environment).
@@ -60,20 +59,22 @@ will the devices and users access them on. In our example, we will use
 `docker.mender.io` for the API Gateway and `s3.docker.mender.io` for
 the Storage Proxy.
 
+! Make sure the CNs you use will be the same as the URLs that the Mender clients and web browsers will use to access the API Gateway and Storage Proxy. If there is a mismatch, the clients will reject the connections.
+
 With this knowledge, all the required keys and certificates can be generated
 by running:
 
-```
+```bash
 CERT_API_CN=docker.mender.io CERT_STORAGE_CN=s3.docker.mender.io ./keygen
 ```
 
-! This generates keys with 128-bit security level (3072 bit RSA keys) and certificates valid for approximately 10 years. You can customize the parameters by adapting the script to your needs.
+!!! This generates keys with 128-bit security level (3072 bit RSA keys) and certificates valid for approximately 10 years. You can customize the parameters by adapting the script to your needs.
 
 The keys and certificates are placed in a directory `keys-generated`
 where you ran the script from, and each service has a sub-directory within it
 as follows:
 
-```
+```bash
 keys-generated/
 ├── api-gateway
 │   ├── certificate.pem
@@ -89,96 +90,103 @@ keys-generated/
 
 
 
-## API gateway
+### Installing new keys and certificates
 
-API Gateway certificate needs to be mounted into the gateway's container. This
-can be achieved using a compose file with the following entry:
+Now that we have the required keys and certificates, we
+need to make the various services use them. This is done by
+injecting them into the service containers with volume mounts in
+a [Docker compose extends](https://docs.docker.com/compose/extends/?target=_blank).
 
-```
+We will go thorugh the induvidual services below, but make
+sure to **stop the Mender server** before proceeding.
+
+!! When you replace the certificates and keys, any devices (and potentially web browsers) currently connecting to the server will reject the new certificates. Rotating server keys in live installations is not yet covered in this document.
+
+We use the `keys-generated` directory the script created in the `integration`
+directory as paths to the keys, which is shown above. If you want, you can move
+the keys to a different location and adjust the steps below accordingly.
+
+
+#### API Gateway
+
+The API Gatway will use the new keys by using a docker compose file with the following entries:
+
+```yaml
     mender-api-gateway:
         volumes:
-            - ./ssl/mender-api-gateway/cert.pem:/var/www/mendersoftware/cert/cert.pem
-            - ./ssl/mender-api-gateway/key.pem:/var/www/mendersoftware/cert/key.pem
+            - ./keys-generated/api-gateway/certificate.pem:/var/www/mendersoftware/cert/cert.pem
+            - ./keys-generated/api-gateway/private.pem:/var/www/mendersoftware/cert/key.pem
 
 ```
 
-Where certificate and key paths need to be replaced with paths to your
-certificate and key files.
-
-! Remember to include the API gateway certificate into the Mender client build, otherwise the client will not trust the gateway and reject connections to it.
-
-!! Make sure that the certificate matches the domain name used by other services accessing API Gateway.
 
 
-## Artifact storage
+#### Storage Proxy
 
-The default setup described in compose file uses [Minio](https://www.minio.io/)
+The default setup described in compose file uses [Minio](https://www.minio.io/?target=_blank)
 object storage along with a Storage Proxy service. The proxy service provides
-HTTPS and traffic limiting services. This section describes configuration of
-Storage Proxy certificates for use with HTTPS.
+HTTPS and traffic limiting services.
 
-Storage Proxy certificate needs to be mounted into the container. This can be
-implemented using a `docker-compose` file with the following entry:
+The Storage Proxy will use the new keys by using a docker compose file with the following entries:
 
-```
+```yaml
     storage-proxy:
         volumes:
-            - ./ssl/storage-proxy/s3.docker.mender.io.crt:/var/www/storage-proxy/cert/cert.crt
-            - ./ssl/storage-proxy/s3.docker.mender.io.key:/var/www/storage-proxy/cert/key.pem
+            - ./keys-generated/storage-proxy/certificate.pem:/var/www/storage-proxy/cert/cert.crt
+            - ./keys-generated/storage-proxy/private.pem:/var/www/storage-proxy/cert/key.pem
 ```
 
-Replace path to demo certificate and key with paths to your certificate and key.
+The Deployment Service communicates with the Minio object storage via the Storage Proxy.
+For this reason, the Deployment Service service must be provisioned with a
+certificate of the Storage Proxy so the authenticity can be validated. This can be
+implemented by adding the following entries to a compose file:
 
-Deployment Service communicates with Minio object storage via Storage Proxy.
-For this reason, `mender-deployments` service must be provisioned with a
-certificate of a Storage Proxy for host verification purpose. This can be
-implemented by adding the following entry to compose file:
-
-```
+```yaml
     mender-deployments:
         volumes:
-            - ./ssl/storage-proxy/s3.docker.mender.io.crt:/etc/ssl/certs/s3.docker.mender.io.crt
+            - ./keys-generated/storage-proxy/certificate.pem:/etc/ssl/certs/storage-proxy.pem
         environment:
-            - STORAGE_BACKEND_CERT=/etc/ssl/certs/s3.docker.mender.io.crt
+            - STORAGE_BACKEND_CERT=/etc/ssl/certs/storage-proxy.pem
 ```
 
-`STORAGE_BACKEND_CERT` defines a path to the certificate of Storage Proxy within
-the container's filesystem. Deployment service will automatically load the
-certificate into its trust store.
-
-! Remember to include the Storage Proxy certificate into the Mender client build, otherwise the client will not trust the StorageProxy and reject connections to it.
-
-!! Make sure that the certificate matches the domain name used by other services accessing Storage Proxy.
+!!! `STORAGE_BACKEND_CERT` defines the path to the certificate of the Storage Proxy within the filesystem of the Deployment Service. The Deployment Service will automatically load this certificate into its trust store.
 
 
-## Token signing keys
+#### User Administration
 
-Mender backend uses JWT tokens for device and user authentication. The tokens
-are cryptographically signed and their authenticity is verified when making
-requests to the backend. Tokens are handed out
-by [Device Authentication](https://github.com/mendersoftware/deviceauth)
-and [User Administration](https://github.com/mendersoftware/useradm) services.
+The User Administration service signs and verifies JSON Web Tokens from
+users of the [Management APIs](../../APIs/Management-APIs). As the verification
+happens locally in the service only, the service does not need a certificate.
 
-Before starting mender in production, one needs to provide RSA private keys in
-PEM format for both services. This can be accomplished by generating key using
-openssl:
+The User Administration key can be mounted with the following snippet:
 
-```
-openssl genpkey -algorithm RSA -out key.pem -pkeyopt rsa_keygen_bits:2048
-```
-
-and mounting the keys into respective containers by adding the following entry
-to compose file (replacing local key paths with paths of your own):
-
-```
+```yaml
     mender-useradm:
         volumes:
-            - ./keys/useradm-private.pem:/etc/useradm/rsa/private.pem
-
-    mender-device-auth:
-        volumes:
-            - ./keys/deviceauth-private.pem:/etc/deviceauth/rsa/private.pem
+            - ./keys-generated/useradm/private.pem:/etc/useradm/rsa/private.pem
 ```
 
-It is recommended to use separate keys for `mender-useradm` and
-`mender-device-auth` services.
+
+#### Device Authentication
+
+The Device Authentication service signs and verifies JSON Web Tokens that
+devices include in their requests to authenticate themselves when accessing
+the [Device APIs](../../APIs/Device-APIs). As the verification
+happens locally in the service only, the service does not need a certificate.
+
+The Device Authentication key can be mounted with the following snippet:
+
+```yaml
+    mender-device-auth:
+        volumes:
+            - ./keys-generated/deviceauth/private.pem:/etc/deviceauth/rsa/private.pem
+```
+
+
+#### Mender clients
+
+All Mender clients that are to connect to the server need to have the certificates
+of the API Gateway (`keys-generated/api-gateway/certificate.pem`) and Storage Proxy
+(`keys-generated/storage-proxy/certificate.pem`) stored locally in order to verify
+the server's authenticity. Please see [the client section on building for production](../../Artifacts/Building-for-production)
+for a description on how to provision new device disk images with the new certificates.

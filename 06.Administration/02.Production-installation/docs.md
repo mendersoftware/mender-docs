@@ -12,7 +12,7 @@ provided in integration repository.
 Before a Docker based setup can be made available, the services need to be
 provided with required certificate, keys or configuration.
 
-!!! It is recommended to use a separate `docker-compose` file for injecting deployment specific overrides and configuration. Consult [Using Compose in production](https://docs.docker.com/compose/production/) guide for details.
+!!! It is recommended to use a separate `docker-compose` file for injecting deployment specific overrides and configuration. Consult [Using Compose in production](https://docs.docker.com/compose/production/?target=_blank) guide for details.
 
 ## Demo configuration
 
