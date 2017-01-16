@@ -102,7 +102,7 @@ bitbake-layers add-layer ../meta-mender/meta-mender-demo
 bitbake-layers add-layer ../oe-meta-go
 ```
 
-!!! The meta-mender-demo is for testing/demoing, and is not appropriate if you are building for production devices. Please go to the section about [building for production](../Building-for-production) to see the difference between demo builds and production builds.
+! The `meta-mender-demo` layer is not appropriate if you are building for production devices. Please go to the section about [building for production](../Building-for-production) to see the difference between demo builds and production builds.
 
 Finally, you need to incorporate the layer specific to your board. Mender currently comes with two supported boards: vexpress-qemu and beaglebone, residing in `meta-mender/meta-mender-qemu` and `meta-mender/meta-mender-beaglebone`, respectively. Other boards may also exist that are contributed by the community, or you may need to create a board specific layer yourself for your particular hardware.
 
