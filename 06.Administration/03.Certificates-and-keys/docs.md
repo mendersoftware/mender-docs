@@ -14,15 +14,16 @@ standard X.509 certificate format, `cert.pem` below,
 while private keys are seen as `private.pem` below.
 
 See the [service overview](../Overview) for schematics of the service
-communication flow. An overview of the services that use keys and
+communication flow. An overview of the components that use keys and
 for which purpose can be seen below.
 
-| Service               | Purpose of keys                                                                                                                                                                                                                                                                                                                  | Shares certificate with                                                                                                                |
+| Component               | Purpose of keys                                                                                                                                                                                                                                                                                                                  | Shares certificate or key with                                                                                                                |
 |-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| API Gateway           | Listens to a public port for `https` requests only (plain `http` is disabled). These requests can come from devices that check for- or report status about updates through the [Device APIs](../../APIs/Device-APIs), or from users and tools that manage deployments through the [Management APIs](../../APIs/Integration-APIs). | **Devices** and users of the **Management APIs**, including web browsers accessing the **Mender UI**.                                       |
-| Storage Proxy         | Listens to a public port for `https` requests only (plain `http` is disabled). The Deployment Service manages Artifacts through the Storage Proxy and Devices make Artifact download requests.                                                                                                        | **Devices** and **Deployment Service**.                                                                                                    |
+| API Gateway           | Listens to a public port for `https` requests only (plain `http` is disabled). These requests can come from Mender Clients that check for- or report status about updates through the [Device APIs](../../APIs/Device-APIs), or from users and tools that manage deployments through the [Management APIs](../../APIs/Integration-APIs). | **Mender Clients** and users of the **Management APIs**, including web browsers accessing the **Mender UI**.                                       |
+| Storage Proxy         | Listens to a public port for `https` requests only (plain `http` is disabled). The Deployment Service manages Artifacts through the Storage Proxy and Mender Clients make Artifact download requests.                                                                                                        | **Mender Clients** and **Deployment Service**.                                                                                                    |
 | User Administration   | Signs and verifies JSON Web Tokens that users of the [Management APIs](../../APIs/Integration-APIs), including end users of the Mender UI, include in their requests to authenticate themselves.                                                                                                                                     | Nothing. The service gets signature verification requests from the API Gateway, so all keys are kept private to the service and not shared. |
-| Device Authentication | Signs and verifies JSON Web Tokens that devices include in their requests to authenticate themselves when accessing the [Device APIs](../../APIs/Device-APIs).                                                                                                                                                                   | Nothing. The service gets signature verification requests from the API Gateway, so all keys are kept private to the service and not shared. |
+| Device Authentication | Signs and verifies JSON Web Tokens that Mender Clients include in their requests to authenticate themselves when accessing the [Device APIs](../../APIs/Device-APIs).                                                                                                                                                                   | Nothing. The service gets signature verification requests from the API Gateway, so all keys are kept private to the service and not shared. |
+| Mender Client | Signs requests for JSON Web Tokens sent to the Device Authentication service. A Mender Client will request a new token when it connects to the Mender Server for the first time, and when a token expires. The Mender Client includes a token in all its communication to authenticate itself when accessing the [Device APIs](../../APIs/Device-APIs).                                                                                                                                                                   | The **Device Admission** service stores the public key of clients that request to join the server. When clients have been admitted, the **Device Authentication** service stores the public key of Mender Clients so that new tokens can easily be issued in the future. |
 
 
 ## Replacing keys and certificates
@@ -55,7 +56,7 @@ as part of the [tutorial to create a test environment](../../Getting-started/Cre
 
 In order to generate the self-signed certificates, the script needs to know
 what the CN (Common Name) of the two certificates should be, i.e. which URL
-will the devices and users access them on. In our example, we will use
+will the Mender Clients and users access them on. In our example, we will use
 `docker.mender.io` for the API Gateway and `s3.docker.mender.io` for
 the Storage Proxy.
 
@@ -100,7 +101,7 @@ a [Docker compose extends](https://docs.docker.com/compose/extends/?target=_blan
 We will go thorugh the induvidual services below, but make
 sure to **stop the Mender server** before proceeding.
 
-!! When you replace the certificates and keys, any devices (and potentially web browsers) currently connecting to the server will reject the new certificates. Rotating server keys in live installations is not yet covered in this document.
+!! When you replace the certificates and keys, any Mender Clients (and potentially web browsers) currently connecting to the server will reject the new certificates. Rotating server keys in live installations is not yet covered in this document.
 
 We use the `keys-generated` directory the script created in the `integration`
 directory as paths to the keys, which is shown above. If you want, you can move
@@ -170,7 +171,7 @@ The User Administration key can be mounted with the following snippet:
 #### Device Authentication
 
 The Device Authentication service signs and verifies JSON Web Tokens that
-devices include in their requests to authenticate themselves when accessing
+Mender Clients include in their requests to authenticate themselves when accessing
 the [Device APIs](../../APIs/Device-APIs). As the verification
 happens locally in the service only, the service does not need a certificate.
 
@@ -183,10 +184,12 @@ The Device Authentication key can be mounted with the following snippet:
 ```
 
 
-#### Mender clients
+#### Mender Client
 
 All Mender clients that are to connect to the server need to have the certificates
 of the API Gateway (`keys-generated/api-gateway/certificate.pem`) and Storage Proxy
 (`keys-generated/storage-proxy/certificate.pem`) stored locally in order to verify
 the server's authenticity. Please see [the client section on building for production](../../Artifacts/Building-for-production)
 for a description on how to provision new device disk images with the new certificates.
+
+!!! The keys of the Mender Client itself are automatically generated the first time the Mender Client runs. We do not yet cover rotation of the the Mender Client keys in live installations in this document.
