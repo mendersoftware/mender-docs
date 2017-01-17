@@ -52,11 +52,11 @@ connection in order to avoid long wait times.
 In a working directory, clone the Mender integration
 environment:
 
-```
+```bash
 git clone -b stable git://github.com/mendersoftware/integration
 ```
 
-```
+```bash
 cd integration
 ```
 
@@ -71,7 +71,7 @@ Mender comes with a wrapper script that brings up the environment with
 docker compose. Running this script will pull down the images and start them:
 
 
-```
+```bash
 ./up
 ```
 
@@ -148,15 +148,15 @@ If you want to remove any state in your Mender environment and start clean
 with the latest version of Mender, you can stop Mender and run the following
 commands in the `integration` directory:
 
-```
+```bash
 docker-compose rm -v
 ```
 
-```
+```bash
 git pull
 ```
 
-```
+```bash
 docker-compose pull
 ```
 

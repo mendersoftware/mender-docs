@@ -8,7 +8,7 @@ taxonomy:
 
 You have the Mender binary on your device and try to trigger a rootfs update but you get output similar to the following:
 
-```
+```bash
 mender -rootfs /media/rootfs-image-mydevice.mender
 
 ERRO[0000] exit status 1                                 module=partitions

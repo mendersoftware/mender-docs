@@ -14,7 +14,7 @@ but the procedure is the same for all disk images.
 
 We start off by looking at information about the image with `fdisk`:
 
-```
+```bash
 fdisk -l -u mender-beaglebone.sdimg
 ```
 
@@ -57,15 +57,15 @@ In order to mount a partition we simply multiply the sector size and the start s
 and pass that to `mount`. You can use `bash` to do this calculation for you.
 So in order to mount both the rootfs partitions in our example, we can run the following commands:
 
-```
+```bash
 sudo mkdir /mnt/rootfs1 && sudo mkdir /mnt/rootfs2
 ```
 
-```
+```bash
 sudo mount -o loop,offset=$((512*81920)) mender-beaglebone.sdimg /mnt/rootfs1
 ```
 
-```
+```bash
 sudo mount -o loop,offset=$((512*933888)) mender-beaglebone.sdimg /mnt/rootfs2
 ```
 
@@ -73,12 +73,12 @@ Now you can modify the rootfs file systems in the paths `/mnt/rootfs1` and `/mnt
 When finished, please remember to unmount so that the changes are written back to the
 disk image, like the following:
 
-```
+```bash
 sudo umount /mnt/rootfs1 && sudo umount /mnt/rootfs2
 ```
 
 Optionally, you can also remove the created directories:
 
-```
+```bash
 sudo rmdir /mnt/rootfs1 && sudo rmdir /mnt/rootfs2
 ```

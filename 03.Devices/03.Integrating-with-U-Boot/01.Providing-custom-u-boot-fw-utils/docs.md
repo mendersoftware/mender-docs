@@ -21,14 +21,14 @@ to proceed to the next section if this one doesn't apply to you.
 
 First we create a new folder inside our private bitbake layer:
 
-```
+```bash
 cd meta-my-layer
 mkdir -p recipes-bsp/u-boot-my-fork
 ```
 
 Then we copy the u-boot recipe from the Yocto Project:
 
-```
+```bash
 cp ../meta/recipes-bsp/u-boot/u-boot_2016.03.bb recipes-bsp/u-boot-my-fork_2016.03.bb
 ```
 
@@ -56,7 +56,7 @@ described in [this section](../#forks-of-u-boot).
 Start by copying the u-boot recipe file to a new file for the fw-utils, like
 this:
 
-```
+```bash
 cd meta-my-layer/recipes-bsp/u-boot-my-fork
 cp u-boot-my-fork_2016.03.bb u-boot-fw-utils-my-fork_2016.03.bb
 ```
@@ -66,7 +66,7 @@ cp u-boot-my-fork_2016.03.bb u-boot-fw-utils-my-fork_2016.03.bb
 Then, in accordance with [this section](../#u-boot-fw-utils), we add the
 following to our configuration:
 
-```
+```bash
 PREFERRED_PROVIDER_u-boot-fw-utils = "u-boot-fw-utils-my-fork"
 ```
 

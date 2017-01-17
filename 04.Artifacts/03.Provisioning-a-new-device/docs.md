@@ -40,7 +40,7 @@ for a clarification of what is meant by block device in this context.
 
 Assuming you are in the same directory as your `.sdimg`, you can write the sdimg to the SD card using the following command:
 
-```
+```bash
 sudo dd if=<PATH-TO-IMAGE>.sdimg of=<DEVICE> bs=1M && sudo sync
 ```
 

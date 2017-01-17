@@ -70,7 +70,7 @@ The file system types Mender builds is based on your Yocto Project `IMAGE_FSTYPE
 
 In order to select the storage device where the partitions are expected to be located on the device, `MENDER_STORAGE_DEVICE` should be set, either in `machine.conf` or in `local.conf`. The value should be the raw device containing the entire storage, not any single partition. For example:
 
-```
+```bash
 MENDER_STORAGE_DEVICE = "/dev/mmcblk0"
 ```
 
@@ -88,7 +88,7 @@ If you need more fine grained control over which partitions Mender will use, you
 
 For example:
 
-```
+```bash
 MENDER_BOOT_PART = "${MENDER_STORAGE_DEVICE_BASE}1"
 MENDER_DATA_PART = "${MENDER_STORAGE_DEVICE_BASE}5"
 MENDER_ROOTFS_PART_A = "${MENDER_STORAGE_DEVICE_BASE}2"

@@ -20,7 +20,7 @@ Mender needs to configure U-Boot in order to support robust rootfs rollback. If 
 
 Sometimes it happens that U-Boot will refer to a storage device as `mmc 0`, whereas the Linux kernel will refer to the same device as `/dev/mmcblk1` (note the different index). In this case the Mender build system must be told explicitly about this disagreement. To do so, you can set the following two variables:
 
-```
+```bash
 MENDER_UBOOT_STORAGE_INTERFACE = "mmc"
 MENDER_UBOOT_STORAGE_DEVICE = "0"
 ```
@@ -32,7 +32,7 @@ which will set the index that U-Boot will use. All non-U-Boot references to the 
 
 By default Mender does not add any boot loader files to the boot partition. If your device requires this you need to specify the files in the `IMAGE_BOOT_FILES` variable in the `machine.conf` file for your device. For example:
 
-```
+```bash
 IMAGE_BOOT_FILES ?= "u-boot.bin MLO"
 ```
 
@@ -45,7 +45,7 @@ In order to support robust rootfs rollback, Mender depends on being able to tell
 Currently, Mender uses the [Boot Count Limit](http://www.denx.de/wiki/view/DULG/UBootBootCountLimit?target=_blank) feature of U-Boot to achieve this.
 If you see errors similar to the following during the Yocto Project build process, the U-Boot you are using most likely does not support this feature.
 
-```
+```bash
 include/config_mender.h:34:3: error: #error CONFIG_BOOTCOUNT_ENV is required for Mender to work
 ```
 

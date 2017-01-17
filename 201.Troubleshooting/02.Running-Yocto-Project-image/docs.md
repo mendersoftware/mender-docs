@@ -10,7 +10,7 @@ This sometimes happens when using one of the minimal images from the Yocto Proje
 
 * If you're compiling a custom kernel, it is recommended to set the kernel configuration option:
 
-  ```
+  ```bash
   CONFIG_NLS_CODEPAGE_437=y
   ```
 
@@ -18,7 +18,7 @@ This sometimes happens when using one of the minimal images from the Yocto Proje
 
 * If you're not building a custom kernel, you can add this line to your `local.conf` in order to include all the kernel modules in the image:
 
-  ```
+  ```bash
   IMAGE_INSTALL_append = " kernel-modules"
   ```
 

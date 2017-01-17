@@ -59,7 +59,7 @@ described in [Partition layout](../../Devices/Partition-layout).
 
 You can decompress it like the following:
 
-```
+```bash
 gunzip mender-beaglebone.sdimg.gz
 ```
 
@@ -80,7 +80,7 @@ We assume that *both* rootfs partitions are mounted read-write below,
 to `/mnt/rootfs1` and `/mnt/rootfs2`. Then run the following commands
 to make the Mender client able to find the server when the Mender client starts:
 
-```
+```bash
 echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io s3.docker.mender.io" | sudo tee -a /mnt/rootfs[12]/etc/hosts
 ```
 
@@ -92,7 +92,7 @@ We also need to modify `ServerURL` in the rootfs partitions at `/etc/mender/mend
 to `https://docker.mender.io:8080`. This can be achieved by manually editing or running
 the command below:
 
-```
+```bash
 sudo sed -i -E "s/([ ]*\"ServerURL\"[ ]*:[ ]*)\".*\"/\1\"https:\/\/docker.mender.io:8080\"/" /mnt/rootfs[12]/etc/mender/mender.conf
 ```
 
@@ -110,7 +110,7 @@ the IP address you assign to your device.
 Run the command below to fill the `systemd`
 networking configuration files of the rootfs partitions:
 
-```
+```bash
 echo -n "\
 [Match]
 Name=eth0
@@ -137,7 +137,7 @@ You should see output similar to the following:
 
 It is very important to unmount the disk image after modifying it, so all changes are written to the image:
 
-```
+```bash
 sudo umount /mnt/rootfs1 && sudo umount /mnt/rootfs2
 ```
 
@@ -202,15 +202,15 @@ at [https://d1b0l86ne08fsf.cloudfront.net/stable/beaglebone/beaglebone_release_1
 
 The steps needed to edit the root file system contained in this Artifact are:
 
-```
+```bash
 mkdir beaglebone_release_1 && tar -C beaglebone_release_1 -xvf beaglebone_release_1.mender
 ```
 
-```
+```bash
 cd beaglebone_release_1 && tar zxvf data/0000.tar.gz
 ```
 
-```
+```bash
 sudo mkdir /mnt/rootfs && sudo mount -t ext4 -o loop core-image-base-beaglebone.ext4 /mnt/rootfs/
 ```
 
@@ -221,7 +221,7 @@ for a more detailed overview. For the following steps we assume that you have mo
 We carry out exactly the same configuration steps for the rootfs image
 as we did for the rootfs partitions in the disk image above:
 
-```
+```bash
 echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io s3.docker.mender.io" | sudo tee -a /mnt/rootfs/etc/hosts
 ```
 
@@ -231,7 +231,7 @@ You should see output similar to the following:
 
 Next, ensure we have the right `ServerURL`:
 
-```
+```bash
 sudo sed -i -E "s/([ ]*\"ServerURL\"[ ]*:[ ]*)\".*\"/\1\"https:\/\/docker.mender.io:8080\"/" /mnt/rootfs/etc/mender/mender.conf
 ```
 
@@ -240,7 +240,7 @@ device IP address, as shown below (otherwise skip this step). Please note that t
 constraints as described in [Set a static device IP address and subnet](#set-a-static-device-ip-address-and-subnet)
 for the disk image apply here.
 
-```
+```bash
 echo -n "\
 [Match]
 Name=eth0
@@ -271,7 +271,7 @@ prior to deploying it.
 
 It is very important to unmount the rootfs image after modifying it, so all changes are written to the image:
 
-```
+```bash
 sudo umount /mnt/rootfs
 ```
 
@@ -284,7 +284,7 @@ at [https://d25phv8h0wbwru.cloudfront.net/stable/tip/mender-artifact](https://d2
 After the tool is downloaded and you added execute permission,
 simply run it as follows:
 
-```
+```bash
 mender-artifact write rootfs-image -u core-image-base-beaglebone.ext4 -t beaglebone -n release-1 -o beaglebone_release_1_configured.mender
 ```
 

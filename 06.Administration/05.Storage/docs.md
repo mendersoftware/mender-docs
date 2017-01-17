@@ -14,7 +14,7 @@ Minio service is configured to use `/export` directory as its storage location.
 It is possible to define a volume that mounts a local directory into the service
 container:
 
-```
+```yaml
     mender-deployments:
         volumes:
             - /my/storage/location:/export
@@ -25,7 +25,7 @@ container:
 It is possible to use S3 as a storage backend in place of Minio object storage.
 This can be achieved using a separate compose file with the following entry:
 
-```
+```yaml
     mender-deployments:
         environment:
             AWS_ACCESS_KEY_ID: <your-aws-access-key-id>

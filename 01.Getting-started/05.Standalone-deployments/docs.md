@@ -82,11 +82,11 @@ This will take you to the login prompt, and you should see a message similar to 
 
 To deploy a new Artifact to the device, you need to start a http server on your workstation to serve the image. Open a new terminal **on your workstation** and change into the directory with your Artifact (e.g. `*.mender`). Start a simple Python webserver in that directory, like so:
 
-```
+```bash
 python -m SimpleHTTPServer
 ```
 
-!!! SimpleHTTPServer starts on port 8000, but the IP address your device should use to reach it depends on the network setup between your device and workstation. You can find the IP address by using network tools like ```ip``` on your workstation. We will assume the device can reach your workstation's web server on ```http://<IP-OF-WORKSTATION>:8000/```.
+!!! SimpleHTTPServer starts on port 8000, but the IP address your device should use to reach it depends on the network setup between your device and workstation. You can find the IP address by using network tools like `ip` on your workstation. We will assume the device can reach your workstation's web server on `http://<IP-OF-WORKSTATION>:8000/`.
 
 !!! If you are testing with QEMU, the virtual device should be able to access your workstation's directory at `http://10.0.2.2:8000/`, i.e. `<IP-OF-WORKSTATION>` is `10.0.2.2` in this case.
 
@@ -95,14 +95,14 @@ python -m SimpleHTTPServer
 
 In your **device terminal**, test the connection to the workstation with:
 
-```
+```bash
 ping <IP-OF-WORKSTATION>
 ```
 
 To deploy the new rootfs image to your device, run the following command in its terminal:
 
 
-```
+```bash
 mender -log-level info -rootfs http://<IP-OF-WORKSTATION>:8000/<ARTIFACT>
 ```
 
@@ -115,7 +115,7 @@ Mender will download the new Artifact, process its metadata information, extract
 
 To run the updated rootfs image, simply reboot your device:
 
-```
+```bash
 reboot
 ```
 
@@ -126,10 +126,10 @@ Your device should boot into the updated rootfs.
 **Congratulations!** You have just deployed your first rootfs image with Mender!
 If you are happy with the update, you can make it permanent by running the following in your device terminal:
 
-```
+```bash
 mender -commit
 ```
 
 By running this command, Mender will configure the bootloader to persistently boot from this updated rootfs partition. To deploy another update, simply follow these instructions again (from `mender ... -rootfs ...`).
 
-!!! If we reboot the device again *without* running ```mender -commit```, it will boot into the previous rootfs partition that is known to be working (where we deployed the update from). This ensures a robust update process in cases where the newly deployed rootfs does not boot or otherwise has issues that we want to roll back from. Also note that it is possible to automate deployments by [running the Mender client as a daemon](../../Architecture/Overview#modes-of-operation).
+!!! If we reboot the device again *without* running `mender -commit`, it will boot into the previous rootfs partition that is known to be working (where we deployed the update from). This ensures a robust update process in cases where the newly deployed rootfs does not boot or otherwise has issues that we want to roll back from. Also note that it is possible to automate deployments by [running the Mender client as a daemon](../../Architecture/Overview#modes-of-operation).

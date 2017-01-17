@@ -24,7 +24,7 @@ aware of 2 environment variables:
 These options can be adjusted using a separate compose file with the following
 entry (example limiting download speed to 512kB/s, max 5 concurrent transfers):
 
-```
+```yaml
     storage-proxy:
         environment:
             MAX_CONNECTIONS: 5

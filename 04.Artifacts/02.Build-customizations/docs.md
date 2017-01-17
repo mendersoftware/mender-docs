@@ -12,13 +12,13 @@ If you do not want Mender to run as a system service, and you prefer to carry ou
 
 This is simple to accomplish by adding a `recipes-mender/mender/mender_%.bbappend` file in your Yocto Project layer, with the following content:
 
-```
+```bash
 SYSTEMD_AUTO_ENABLE = "disable"
 ```
 
 In this case it is also possible to avoid Mender's current dependency on systemd. If you do not wish to enable systemd in your build, instead of inheriting `mender-full` in `local.conf`, you should inherit each of the classes that `mender-full` inherits, except `mender-systemd`. Also, you do not need any daemon-related configuration items in your `conf/local.conf` as outlined in [the section on configuring the Yocto Project build](../../Artifacts/Building-Mender-Yocto-image#configuring-the-build). Currently you can use the following snippet for Mender in your `conf/local.conf` to completely disable Mender as a daemon (but please verify what `mender-full` inherits at the time you make this change):
 
-```
+```bash
 INHERIT += "mender-uboot mender-image mender-install"
 MACHINE = "vexpress-qemu"  # replace with the desired machine
 ```
@@ -35,7 +35,7 @@ starting the build process.
 In order to do this, change the following in the file
 `meta-mender/meta-mender-core/recipes-mender/mender/mender_0.1.bb`:
 
-```
+```bash
 MENDER_UPDATE_POLL_INTERVAL_SECONDS ?= "1800"
 MENDER_INVENTORY_POLL_INTERVAL_SECONDS ?= "1800"
 ```

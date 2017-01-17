@@ -19,7 +19,7 @@ Mender's generic boot code that we already provide. Add this to your
 `u-boot-my-fork.bb` or `u-boot-my-fork.bbappend` file (adjust paths as
 necessary):
 
-```
+```bash
 FILESEXTRAPATHS_prepend := "${THISDIR}/../../../meta-mender-core/recipes-bsp/u-boot/patches/experimental:"
 SRC_URI_append = " file://0001-Generic-bootlimit-patch-without-U-Boot-boot-counter-.patch"
 ```
@@ -43,7 +43,7 @@ type](https://github.com/mendersoftware/meta-mender/blob/master/meta-mender-qemu
 You can try this patch by adding this to your `u-boot-my-fork.bb` or
 `u-boot-my-fork.bbappend` file:
 
-```
+```bash
 FILESEXTRAPATHS_prepend := "${THISDIR}/../../../meta-mender-qemu/recipes-bsp/u-boot/patches/experimental:"
 SRC_URI_append_vexpress-qemu = " file://0002-Enable-custom-bootlimit-code-for-vexpress-qemu.patch"
 ```

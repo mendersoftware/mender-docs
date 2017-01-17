@@ -23,7 +23,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 1. As part of the test, we will need two different Linux kernels, in order to verify that both are booted correctly when they should. Therefore, before building the images you will test with, run the commands:
 
-   ```
+   ```bash
    bitbake -c clean linux-yocto
    bitbake -c cleansstate linux-yocto
    ```
@@ -36,7 +36,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 3. Run the following commands:
 
-   ```
+   ```bash
    sudo losetup /dev/loop0 base-image.sdimg
    sudo kpartx -a /dev/loop0
    sudo dd if=tmp/deploy/images/<machine>/<image>.ext4 of=/dev/mapper/loop0p3
@@ -59,7 +59,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 6. Now we will test that storing and reading values in the U-Boot environment works. Run:
 
-   ```
+   ```bash
    fw_setenv mender_linux_test 1
    ```
 
@@ -67,13 +67,13 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 8. Run:
 
-   ```
+   ```bash
    printenv mender_linux_test
    ```
 
    The output should be:
 
-   ```
+   ```bash
    mender_linux_test=1
    ```
 
@@ -81,7 +81,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 9. While still at the U-Boot prompt, run:
 
-   ```
+   ```bash
    setenv mender_uboot_test 1
    saveenv
    run bootcmd
@@ -89,13 +89,13 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 10. You should be back inside Linux now, so run:
 
-    ```
+    ```bash
     fw_printenv mender_uboot_test
     ```
 
     The output should be:
 
-    ```
+    ```bash
     mender_uboot_test=1
     ```
 
@@ -103,7 +103,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 11. Now we will verify that Mender is running. Run the following:
 
-    ```
+    ```bash
     pgrep mender
     ```
 
@@ -111,7 +111,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 12. Now we verify that the booted kernel is from the rootfs. The easiest way to check this is to check the build date, which can be seen by running:
 
-    ```
+    ```bash
     cat /proc/version
     ```
 
@@ -121,7 +121,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
     If the device listed is an ambiguous device, such as `/dev/root`, you can use an alternative method for verifying it. If you call the following series of commands:
 
-    ```
+    ```bash
     stat -c %D /
     stat -c %t%02T /dev/mmcblk0p2
     ```
@@ -132,7 +132,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 14. Everything we have tested so far has been for partition A; we will now verify both kernel and rootfs for partition B. Run the following:
 
-    ```
+    ```bash
     fw_setenv mender_boot_part 3
     ```
 
@@ -148,7 +148,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 18. Run the following commands:
 
-    ```
+    ```bash
     fw_setenv mender_boot_part 2
     fw_setenv upgrade_available 1
     fw_setenv bootcount 0

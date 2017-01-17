@@ -29,7 +29,7 @@ deployed to it.
 
 <a name="devices-post"></a>
 ### Add a new device for admission
-```
+```http
 POST /devices
 ```
 
@@ -57,8 +57,7 @@ Add a new device to be considered for admission. A new device will be created wi
 #### Example HTTP request
 
 ##### Request body
-```
-json :
+```json
 {
   "id" : "00a0c91e6-7dec-11d0-a765-f81d4faebf1",
   "device_identity" : "{\"cpuid\":\"12331-ABC\", \"mac\":\"00:11:22:33:44:55\"}",
@@ -70,8 +69,7 @@ json :
 #### Example HTTP response
 
 ##### Response 500
-```
-json :
+```json
 {
   "application/json" : {
     "error" : "Detailed error message"
@@ -82,7 +80,7 @@ json :
 
 <a name="devices-get"></a>
 ### List devices
-```
+```http
 GET /devices
 ```
 
@@ -113,8 +111,7 @@ Returns a list of all devices for admission. Devices can be filtered by admissio
 #### Example HTTP response
 
 ##### Response 200
-```
-json :
+```json
 {
   "application/json" : [ {
     "id" : "aac4b9924873905243fefbdfa8dee88ae1da57c80579f0d383e53e5f3676e38b",
@@ -139,8 +136,7 @@ json :
 ```
 
 ##### Response 500
-```
-json :
+```json
 {
   "application/json" : {
     "error" : "Detailed error message"
@@ -151,7 +147,7 @@ json :
 
 <a name="devices-id-get"></a>
 ### Get a single device
-```
+```http
 GET /devices/{id}
 ```
 
@@ -179,8 +175,7 @@ Get a single device by its ID.
 #### Example HTTP response
 
 ##### Response 200
-```
-json :
+```json
 {
   "application/json" : [ {
     "id" : "9c25aca9b686e7e9834e72ad9150eeb952264de15acc8445bc54124afbcd70a2",
@@ -197,8 +192,7 @@ json :
 
 
 ##### Response 404
-```
-json :
+```json
 {
   "application/json" : {
     "error" : "Detailed error message"
@@ -208,8 +202,7 @@ json :
 
 
 ##### Response 500
-```
-json :
+```json
 {
   "application/json" : {
     "error" : "Detailed error message"
@@ -220,7 +213,7 @@ json :
 
 <a name="devices-id-status-get"></a>
 ### Checks admission status for the device
-```
+```http
 GET /devices/{id}/status
 ```
 
@@ -244,8 +237,7 @@ GET /devices/{id}/status
 #### Example HTTP response
 
 ##### Response 200
-```
-json :
+```json
 {
   "application/json" : {
     "status" : "accepted"
@@ -255,8 +247,7 @@ json :
 
 
 ##### Response 404
-```
-json :
+```json
 {
   "application/json" : {
     "error" : "Detailed error message"
@@ -266,8 +257,7 @@ json :
 
 
 ##### Response 500
-```
-json :
+```json
 {
   "application/json" : {
     "error" : "Detailed error message"
@@ -278,7 +268,7 @@ json :
 
 <a name="devices-id-status-put"></a>
 ### Update device admission state
-```
+```http
 PUT /devices/{id}/status
 ```
 
@@ -313,8 +303,7 @@ Allows changing the device's admission status. Valid state transitions
 #### Example HTTP response
 
 ##### Response 400
-```
-json :
+```json
 {
   "application/json" : {
     "error" : "Detailed error message"
@@ -324,8 +313,7 @@ json :
 
 
 ##### Response 404
-```
-json :
+```json
 {
   "application/json" : {
     "error" : "Detailed error message"
@@ -335,8 +323,7 @@ json :
 
 
 ##### Response 500
-```
-json :
+```json
 {
   "application/json" : {
     "error" : "Detailed error message"

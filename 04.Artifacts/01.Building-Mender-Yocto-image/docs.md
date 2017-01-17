@@ -60,11 +60,11 @@ directory and skip to [Adding the meta layers](#adding-the-meta-layers).
 On the other hand, if you want to start from a *clean Yocto Project environment*,
 you need to clone the latest poky and go into the directory:
 
-```
+```bash
 git clone -b morty git://git.yoctoproject.org/poky
 ```
 
-```
+```bash
 cd poky
 ```
 
@@ -76,27 +76,27 @@ We will now add the required meta layers to our build environment.
 Please make sure you are standing in the directory where `poky` resides,
 i.e. the top level of the Yocto Project build tree, and run these commands:
 
-```
+```bash
 git clone -b stable git://github.com/mendersoftware/meta-mender
 ```
-```
+```bash
 git clone git://github.com/mem/oe-meta-go
 ```
 
 
 Next, we initialize the build environment:
 
-```
+```bash
 source oe-init-build-env
 ```
 
-This creates a build directory with the default name, ```build```, and makes it the
+This creates a build directory with the default name, `build`, and makes it the
 current working directory.
 
 We then need to incorporate the three layers, meta-mender-core, meta-mender-demo and oe-meta-go, into
 our project:
 
-```
+```bash
 bitbake-layers add-layer ../meta-mender/meta-mender-core
 bitbake-layers add-layer ../meta-mender/meta-mender-demo
 bitbake-layers add-layer ../oe-meta-go
@@ -108,7 +108,7 @@ Finally, you need to incorporate the layer specific to your board. Mender curren
 
 If you wish to test using the QEMU emulator, run the following:
 
-```
+```bash
 bitbake-layers add-layer ../meta-mender/meta-mender-qemu
 ```
 
@@ -122,7 +122,7 @@ part of your Yocto Project build environment.
 
 Add these lines to the start of your `conf/local.conf`:
 
-```
+```bash
 MENDER_ARTIFACT_NAME = "release-1"
 
 INHERIT += "mender-full"
@@ -145,14 +145,14 @@ Please replace `<YOUR-MACHINE>` with the correct machine for your device.
 
 !!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../Variables#mender_storage_total_size_mb) for more information. Mender automatically selects the file system types it builds into the disk image, which is used for initial flash provisioning, based on the `IMAGE_FSTYPES` variable. See the [section on file system types](../../Devices/Partition-layout#file-system-types) for more information.
 
-!!! It is suggested to add ```INHERIT += "rm_work"``` to ```conf/local.conf``` in order to conserve disk space during the build.
+!!! It is suggested to add `INHERIT += "rm_work"` to `conf/local.conf` in order to conserve disk space during the build.
 
 
 ## Building the image
 
 Once all the configuration steps are done, an image can be built with bitbake:
 
-```
+```bash
 bitbake <YOUR-TARGET>
 ```
 

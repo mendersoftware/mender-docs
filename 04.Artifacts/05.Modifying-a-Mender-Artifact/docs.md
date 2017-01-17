@@ -43,7 +43,7 @@ we simply create a directory for it and unpack it.
 For a BeagleBone black Artifact, the commands and output
 will look like the following:
 
-```
+```bash
 mkdir core-image-base-beaglebone && tar -C core-image-base-beaglebone -xvf core-image-base-beaglebone.mender
 ```
 
@@ -60,7 +60,7 @@ The updates to be deployed are stored in the `data` subdirectory. We
 can extract the first (and currently only) file there, which is the root file system,
 like the following:
 
-```
+```bash
 cd core-image-base-beaglebone && tar zxvf data/0000.tar.gz
 ```
 
@@ -80,15 +80,15 @@ several file system types.
 
 First we make the mount directory and copy the rootfs image:
 
-```
+```bash
 sudo mkdir /mnt/rootfs
 ```
 
-```
+```bash
 cp core-image-base-beaglebone.ext4 core-image-base-beaglebone-modified.ext4
 ```
 
-```
+```bash
 sudo mount -t ext4 -o loop core-image-base-beaglebone-modified.ext4 /mnt/rootfs/
 ```
 
@@ -97,7 +97,7 @@ you can change `/mnt/rootfs/etc/issue` so you can detect that a deployment
 changed the system. After saving your modified files, simply unmount
 the rootfs again:
 
-```
+```bash
 sudo umount /mnt/rootfs
 ```
 
@@ -115,7 +115,7 @@ with is the same.
 To see which metadata the original Artifact contains, you can run the
 following command:
 
-```
+```bash
 mender-artifact read core-image-base-beaglebone.mender
 ```
 
@@ -148,7 +148,7 @@ In this example, we will keep the original *Compatible devices*
 and *Name* of the original Artifact, so only the rootfs modifications
 will be different:
 
-```
+```bash
 mender-artifact write rootfs-image -t beaglebone -n release-1 -u core-image-base-beaglebone-modified.ext4 -o core-image-base-beaglebone-modified.mender
 ```
 
@@ -169,7 +169,7 @@ Compiling `mender-artifact` is only necessary if you can not use the prebuilt
 The Golang compiler is integrated with `git`, so we need `git` installed
 on the system. On Ubuntu this can be achieved with:
 
-```
+```bash
 sudo apt-get install git
 ```
 
@@ -186,25 +186,25 @@ and add the exports to your `.profile` as described when
 clicking on the download link.
 This is an example of installing and setting up Golang on a Linux system:
 
-```
+```bash
 wget https://storage.googleapis.com/golang/go1.7.4.linux-amd64.tar.gz
 ```
 
-```
+```bash
 sudo tar -C /usr/local -xzf go1.7.4.linux-amd64.tar.gz
 ```
 
-```
+```bash
 export PATH=$PATH:/usr/local/go/bin
 ```
 
-```
+```bash
 mkdir $HOME/golang && export GOPATH=$HOME/golang && cd $HOME/golang
 ```
 
 After these steps, verify that Golang is correctly installed:
 
-```
+```bash
 go version
 ```
 
@@ -218,22 +218,22 @@ The Mender Artifact utility is available as open source in the
 
 You can download and install it with the following commands:
 
-```
+```bash
 go get github.com/mendersoftware/mender-artifact
 ```
 
-```
+```bash
 cd $GOPATH/src/github.com/mendersoftware/mender-artifact/
 ```
 
-```
+```bash
 go get ./...
 ```
 
 You con now run the `mender-artifact` utility in `$GOPATH/bin/mender-artifact`, and make sure it works
 by running:
 
-```
+```bash
 $GOPATH/bin/mender-artifact -v
 ```
 
@@ -241,6 +241,6 @@ $GOPATH/bin/mender-artifact -v
 
 For convenience, we can also make sure the `mender-artifact` utility is in PATH:
 
-```
+```bash
 export PATH=$PATH:$GOPATH/bin
 ```

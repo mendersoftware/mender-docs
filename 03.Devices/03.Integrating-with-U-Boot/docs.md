@@ -20,7 +20,7 @@ the `mender-full` class, or the `mender-uboot` class (the former enables all
 required features for Mender and implicitly inherits the latter). For example in
 your `local.conf`:
 
-```
+```bash
 INHERIT += "mender-full"
 ```
 
@@ -42,7 +42,7 @@ these should be enabled in the board support headers in U-Boot, under
 1. `CONFIG_BOOTCOUNT_LIMIT`: This is required for rollback support to work. For
    example:
 
-   ```
+   ```c
    #define CONFIG_BOOTCOUNT_LIMIT
    ```
 
@@ -71,13 +71,13 @@ These are the current integration points:
 
    For example, if your current `bootcmd` looks like this:
 
-   ```
+   ```bash
    bootcmd=run mmcboot
    ```
 
    it should be changed to:
 
-   ```
+   ```bash
    bootcmd=run mender_setup; run mmcboot
    ```
 
@@ -90,13 +90,13 @@ These are the current integration points:
    the file system, using `mmc` as the device and a `${bootpart}` variable
    reference as the partition to load from:
 
-   ```
+   ```bash
    loadimage=load mmc ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
    ```
 
    it should be changed into:
 
-   ```
+   ```bash
    loadimage=load ${mender_uboot_root} ${loadaddr} ${bootdir}/${bootfile}
    ```
 
@@ -107,13 +107,13 @@ These are the current integration points:
    but is a string tailored to the Linux kernel instead of U-Boot. This should
    be used as the `root` argument to the kernel. For example:
 
-   ```
+   ```bash
    bootargs=console=${console},${baudrate} root=${mmcroot}
    ```
 
    should be changed to:
 
-   ```
+   ```bash
    bootargs=console=${console},${baudrate} root=${mender_kernel_root}
    ```
 
@@ -151,13 +151,13 @@ conditions.
    reverting to alternative boot methods such as a network boot. For example,
    change:
 
-   ```
+   ```bash
    bootcmd=run mmcboot; run networkboot
    ```
 
    into:
 
-   ```
+   ```bash
    bootcmd=run mmcboot; run mender_try_to_recover; run networkboot
    ```
 
@@ -196,14 +196,14 @@ stored in the root, but on a rootfs partition it is usually stored in
 updated to point to this location. This is usually the case for the device tree
 and initrd files as well, if the kernel has those. For instance:
 
-```
+```bash
 uimage=uImage
 fdt_file=uImage.dtb
 ```
 
 should be changed to:
 
-```
+```bash
 uimage=boot/uImage
 fdt_file=boot/uImage.dtb
 ```
@@ -229,20 +229,20 @@ The same value should be provided for both `u-boot` and `u-boot-fw-utils`, and
 the easiest way to achieve this is by putting them in a common file and then
 referring to it. For example, in `u-boot/include/configs/myboard.h`:
 
-```
+```c
 #define CONFIG_ENV_SIZE 0x20000
 ```
 
 and in `recipes-bsp/u-boot/u-boot-common-my-board.inc`:
 
-```
+```bash
 BOOTENV_SIZE = "0x20000"
 ```
 
 and in both `recipes-bsp/u-boot/u-boot_%.bbappend` and
 `recipes-bsp/u-boot/u-boot-fw-utils_%.bbappend`:
 
-```
+```bash
 include u-boot-common-my-board.inc
 ```
 
@@ -257,7 +257,7 @@ required:
    component that provides `u-boot`. The example below shows how to add the
    needed directives in the `.bb` file of the U-Boot fork.
 
-   ```
+   ```bash
    PROVIDES += "u-boot"
    RPROVIDES_${PN} += "u-boot"
    ```
@@ -265,7 +265,7 @@ required:
 2. In the machine section of the board in question, the actual u-boot
    implementation must be selected using `PREFERRED_PROVIDER`, like this:
 
-   ```
+   ```bash
    PREFERRED_PROVIDER_u-boot = "u-boot-my-fork"
    ```
 
@@ -274,7 +274,7 @@ required:
 3. The recipe needs to include `u-boot-mender.inc`, in order to incorporate the
    patches needed for Mender to work:
 
-   ```
+   ```bash
    require recipes-bsp/u-boot/u-boot-mender.inc
    ```
 
@@ -300,14 +300,14 @@ provides, and that it is the preferred provider.
 
 1. In the recipe, there should be:
 
-   ```
+   ```bash
    PROVIDES += "u-boot-fw-utils"
    RPROVIDES_${PN} += "u-boot-fw-utils"
    ```
 
 2. And in the machine section of the board:
 
-   ```
+   ```bash
    PREFERRED_PROVIDER_u-boot-fw-utils = "u-boot-fw-utils-my-fork"
    ```
 
