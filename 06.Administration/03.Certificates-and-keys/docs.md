@@ -147,7 +147,7 @@ implemented by adding the following entries to a compose file:
         volumes:
             - ./keys-generated/storage-proxy/certificate.pem:/etc/ssl/certs/storage-proxy.pem
         environment:
-            - STORAGE_BACKEND_CERT=/etc/ssl/certs/storage-proxy.pem
+            STORAGE_BACKEND_CERT: /etc/ssl/certs/storage-proxy.pem
 ```
 
 !!! `STORAGE_BACKEND_CERT` defines the path to the certificate of the Storage Proxy within the filesystem of the Deployment Service. The Deployment Service will automatically load this certificate into its trust store.
