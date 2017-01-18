@@ -45,6 +45,11 @@ The partition Mender uses as the persistent data partition. See [More detailed s
 The size of the persistent data partition in the generated `.sdimg` file. See [Configuring the partition sizes](../../Devices/Partition-layout#configuring-the-partition-sizes) for more information.
 
 
+#### MENDER_DEMO_HOST_IP_ADDRESS
+
+As the name indicates, this variable is only relevant if you are building Mender with the `meta-mender-demo` layer. If set to an IP address, this variable sets the hostname resolution of the API gateway and the storage proxy (`docker.mender.io` and `s3.docker.mender.io`) to that address. The default is empty, which reverts to querying DNS (but note that the Docker setup comes with its own DNS server).
+
+
 #### MENDER_DEVICE_TYPE
 
 A string that defines the type of device this image will be installed on. This variable is only relevant when building a complete partitioned image (`.sdimg` suffix). Once a device is flashed with this, it will not change, even if the device is updated.
