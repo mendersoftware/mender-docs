@@ -69,7 +69,7 @@ by running:
 CERT_API_CN=docker.mender.io CERT_STORAGE_CN=s3.docker.mender.io ./keygen
 ```
 
-!!! This generates keys with 128-bit security level (3072 bit RSA keys) and certificates valid for approximately 10 years. You can customize the parameters by adapting the script to your needs.
+!!! This generates keys with 128-bit security level (256-bit Elliptic Curve and 3072-bit RSA keys) and certificates valid for approximately 10 years. You can customize the parameters by adapting the script to your needs.
 
 The keys and certificates are placed in a directory `keys-generated`
 where you ran the script from, and each service has a sub-directory within it
