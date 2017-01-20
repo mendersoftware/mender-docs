@@ -27,7 +27,7 @@ The Mender client needs two certificates, one for the API gateway, and one for t
 Both certificates are hosted in a single file which the client reads. To prepare this file, run the following in the folder where you have your generated certificates:
 
 ```bash
-cat ./keys-generated/api-gateway/certificate.pem ./keys-generated/storage-proxy/certificate.pem > server.crt
+cat ./keys-generated/api-gateway/cert.crt ./keys-generated/storage-proxy/cert.crt > server.crt
 ```
 
 The `server.crt` file will be the certificate file to use on the client.

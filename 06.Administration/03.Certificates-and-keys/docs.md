@@ -10,8 +10,8 @@ and each keypair comprises of a *public key*, which in some cases has
 a certificate that is shared with other services, and a *private key*,
 which is kept secret by the service.
 All keys are encoded in the PEM format. The public keys are shared in the
-standard X.509 certificate format, `cert.pem` below,
-while private keys are seen as `private.pem` below.
+standard X.509 certificate format, `cert.crt` below,
+while private keys are seen as `private.key` below.
 
 See the [service overview](../Overview) for schematics of the service
 communication flow. An overview of the components that use keys and
@@ -78,15 +78,15 @@ as follows:
 ```bash
 keys-generated/
 ├── api-gateway
-│   ├── certificate.pem
-│   └── private.pem
+│   ├── cert.crt
+│   └── private.key
 ├── deviceauth
-│   └── private.pem
+│   └── private.key
 ├── storage-proxy
-│   ├── certificate.pem
-│   └── private.pem
+│   ├── cert.crt
+│   └── private.key
 └── useradm
-    └── private.pem
+    └── private.key
 ```
 
 
@@ -115,8 +115,8 @@ The API Gatway will use the new keys by using a docker compose file with the fol
 ```yaml
     mender-api-gateway:
         volumes:
-            - ./keys-generated/api-gateway/certificate.pem:/var/www/mendersoftware/cert/cert.pem
-            - ./keys-generated/api-gateway/private.pem:/var/www/mendersoftware/cert/key.pem
+            - ./keys-generated/api-gateway/cert.crt:/var/www/mendersoftware/cert/cert.pem
+            - ./keys-generated/api-gateway/private.key:/var/www/mendersoftware/cert/key.pem
 
 ```
 
@@ -133,8 +133,8 @@ The Storage Proxy will use the new keys by using a docker compose file with the 
 ```yaml
     storage-proxy:
         volumes:
-            - ./keys-generated/storage-proxy/certificate.pem:/var/www/storage-proxy/cert/cert.crt
-            - ./keys-generated/storage-proxy/private.pem:/var/www/storage-proxy/cert/key.pem
+            - ./keys-generated/storage-proxy/cert.crt:/var/www/storage-proxy/cert/cert.crt
+            - ./keys-generated/storage-proxy/private.key:/var/www/storage-proxy/cert/private.key
 ```
 
 The Deployment Service communicates with the Minio object storage via the Storage Proxy.
@@ -145,7 +145,7 @@ implemented by adding the following entries to a compose file:
 ```yaml
     mender-deployments:
         volumes:
-            - ./keys-generated/storage-proxy/certificate.pem:/etc/ssl/certs/storage-proxy.pem
+            - ./keys-generated/storage-proxy/cert.crt:/etc/ssl/certs/storage-proxy.pem
         environment:
             STORAGE_BACKEND_CERT: /etc/ssl/certs/storage-proxy.pem
 ```
@@ -164,7 +164,7 @@ The User Administration key can be mounted with the following snippet:
 ```yaml
     mender-useradm:
         volumes:
-            - ./keys-generated/useradm/private.pem:/etc/useradm/rsa/private.pem
+            - ./keys-generated/useradm/private.key:/etc/useradm/rsa/private.pem
 ```
 
 
@@ -180,15 +180,15 @@ The Device Authentication key can be mounted with the following snippet:
 ```yaml
     mender-device-auth:
         volumes:
-            - ./keys-generated/deviceauth/private.pem:/etc/deviceauth/rsa/private.pem
+            - ./keys-generated/deviceauth/private.key:/etc/deviceauth/rsa/private.pem
 ```
 
 
 #### Mender Client
 
 All Mender clients that are to connect to the server need to have the certificates
-of the API Gateway (`keys-generated/api-gateway/certificate.pem`) and Storage Proxy
-(`keys-generated/storage-proxy/certificate.pem`) stored locally in order to verify
+of the API Gateway (`keys-generated/api-gateway/cert.crt`) and Storage Proxy
+(`keys-generated/storage-proxy/cert.crt`) stored locally in order to verify
 the server's authenticity. Please see [the client section on building for production](../../Artifacts/Building-for-production)
 for a description on how to provision new device disk images with the new certificates.
 
