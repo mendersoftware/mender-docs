@@ -192,4 +192,4 @@ of the API Gateway (`keys-generated/api-gateway/certificate.pem`) and Storage Pr
 the server's authenticity. Please see [the client section on building for production](../../Artifacts/Building-for-production)
 for a description on how to provision new device disk images with the new certificates.
 
-!!! The keys of the Mender Client itself are automatically generated the first time the Mender Client runs. We do not yet cover rotation of the the Mender Client keys in live installations in this document.
+!!! The key of the Mender Client itself is automatically generated and stored at `/var/lib/mender/mender-agent.pem` the first time the Mender Client runs. We do not yet cover rotation of Mender Client keys in live installations in this document.
