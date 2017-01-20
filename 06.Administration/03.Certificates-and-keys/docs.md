@@ -115,8 +115,8 @@ The API Gatway will use the new keys by using a docker compose file with the fol
 ```yaml
     mender-api-gateway:
         volumes:
-            - ./keys-generated/api-gateway/cert.crt:/var/www/mendersoftware/cert/cert.pem
-            - ./keys-generated/api-gateway/private.key:/var/www/mendersoftware/cert/key.pem
+            - ./keys-generated/api-gateway/cert.crt:/var/www/mendersoftware/cert/cert.crt
+            - ./keys-generated/api-gateway/private.key:/var/www/mendersoftware/cert/private.key
 
 ```
 
