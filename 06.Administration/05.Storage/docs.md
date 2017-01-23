@@ -28,7 +28,7 @@ This can be achieved using a separate compose file with the following entry:
 ```yaml
     mender-deployments:
         environment:
-            AWS_ACCESS_KEY_ID: <your-aws-access-key-id>
-            AWS_SECRET_ACCESS_KEY: <your-aws-secret-access-key>
-            AWS_URI: https://s3.amazonaws.com
+            DEPLOYMENTS_AWS_AUTH_KEY: <your-aws-access-key-id>
+            DEPLOYMENTS_AWS_AUTH_SECRET: <your-aws-secret-access-key>
+            DEPLOYMENTS_AWS_URI: https://s3.amazonaws.com
 ```
