@@ -43,6 +43,19 @@ At the end of this guide you will have:
 Consult [certificates and keys](../Certificates-and-keys) section for details on
 how these are used in the system.
 
+#### Docker compose naming scheme
+
+`docker-compose` implements a particular naming scheme for containers, volumes
+and networks that prefixes each object it creates with project name. By default,
+the project is named after the directory the main compose file is located in.
+Production configuration template provided in the repository explicitly sets
+project name to `menderproduction`.
+
+`docker-compose` automatically assigns a
+`com.docker.compose.project=menderproduction` label to created containers. The
+label can be used when filtering output of commands such as `docker ps`.
+
+
 ### Basic preparation setup
 
 Start off by cloning mender integration repository to a local directory
@@ -429,6 +442,8 @@ Creating menderproduction_mender-deployments_1
 Creating menderproduction_mender-device-adm_1
 Creating menderproduction_mender-api-gateway_1
 ```
+
+!!! Services, networks and volumes have `menderproduction` prefix, see a note about [docker-compose naming scheme](#docker-compose-naming-scheme) for details. When using `docker ..` commands, complete container name must be provided (ex. `menderproduction_mender-deployments_1`).
 
 Verify that services are working:
 
