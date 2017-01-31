@@ -492,3 +492,6 @@ eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJle....
 
 At this point you should be able to access [https://mender.acme.org](https://mender.acme.org) using your
 browser.
+
+
+!!! If you encounter any issues while starting or running your Mender Server, you can take a look at the section for [troubleshooting Mender Server](../../Troubleshooting/Mender-Server).
