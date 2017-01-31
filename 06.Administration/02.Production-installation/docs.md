@@ -467,6 +467,8 @@ menderproduction_minio_1                      minio server /export             U
 menderproduction_storage-proxy_1              /usr/local/openresty/bin/o ...   Up      0.0.0.0:9000->9000/tcp
 ```
 
+#### Verification
+
 Since this is a brand new installation it should be possible to request initial
 login token through the API:
 
