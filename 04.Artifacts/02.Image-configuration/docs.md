@@ -1,10 +1,10 @@
 ---
-title: Build customizations
+title: Image configuration
 taxonomy:
     category: docs
 ---
 
-In this section we look at some customizations that can be made due to requirements from a certain build or device configuration.
+In this section we look at the configuration that can be modified due to requirements from a certain build or device.
 
 ## Disabling Mender as a system service
 
