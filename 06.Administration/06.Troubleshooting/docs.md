@@ -82,7 +82,7 @@ menderproduction_mender-useradm_1             /usr/bin/useradm -config / ...   U
 menderproduction_minio_1                      minio server /export             Up           9000/tcp
 menderproduction_storage-proxy_1              /usr/local/openresty/bin/o ...   Up           0.0.0.0:9000->9000/tcp
 ```
-In the case presented above, `mender-deployments` is restarting. 
+In the case presented above, `mender-deployments` is restarting.
 
 !! `docker-compose` may show `Restating` status for containers that are restarting in a quick succession, if containers restart after a longer while, they may appear as `Up`
 
@@ -118,17 +118,17 @@ a `mender-deployments` container was restarting (output edited for clarity):
 
 ```
 user@local$ docker events --filter label=com.docker.compose.project=menderproduction
-2017-01-31T09:14:13.291589609+01:00 container die 8f46579aefa47b717c79c4216131391fba7fc938b276d1469d0944691a740d37 
-   (com.docker.compose.config-hash=80ec90a07e4567c923a6f54126052f4e73a68373113b0dc460d7488b8be9761b, 
-    com.docker.compose.container-number=1, com.docker.compose.oneoff=False, 
-    com.docker.compose.project=menderproduction, com.docker.compose.service=mender-deployments, 
-    com.docker.compose.version=1.10.0, exitCode=1, 
+2017-01-31T09:14:13.291589609+01:00 container die 8f46579aefa47b717c79c4216131391fba7fc938b276d1469d0944691a740d37
+   (com.docker.compose.config-hash=80ec90a07e4567c923a6f54126052f4e73a68373113b0dc460d7488b8be9761b,
+    com.docker.compose.container-number=1, com.docker.compose.oneoff=False,
+    com.docker.compose.project=menderproduction, com.docker.compose.service=mender-deployments,
+    com.docker.compose.version=1.10.0, exitCode=1,
     image=mendersoftware/deployments:latest, name=menderproduction_mender-deployments_1)
-2017-01-31T09:14:14.699717693+01:00 container start 8f46579aefa47b717c79c4216131391fba7fc938b276d1469d0944691a740d37 
-   (com.docker.compose.config-hash=80ec90a07e4567c923a6f54126052f4e73a68373113b0dc460d7488b8be9761b, 
-    com.docker.compose.container-number=1, com.docker.compose.oneoff=False, 
-    com.docker.compose.project=menderproduction, com.docker.compose.service=mender-deployments, 
-    com.docker.compose.version=1.10.0, 
+2017-01-31T09:14:14.699717693+01:00 container start 8f46579aefa47b717c79c4216131391fba7fc938b276d1469d0944691a740d37
+   (com.docker.compose.config-hash=80ec90a07e4567c923a6f54126052f4e73a68373113b0dc460d7488b8be9761b,
+    com.docker.compose.container-number=1, com.docker.compose.oneoff=False,
+    com.docker.compose.project=menderproduction, com.docker.compose.service=mender-deployments,
+    com.docker.compose.version=1.10.0,
     image=mendersoftware/deployments:latest, name=menderproduction_mender-deployments_1)
 ```
 
@@ -140,31 +140,31 @@ Container logs provide access to logging output from the container. Example list
 user@local$ ./run logs --tail 10 mender-deployments
 Attaching to menderproduction_mender-deployments_1
 mender-deployments_1        | WARNING: ca-certificates.crt does not contain exactly one certificate or CRL: skipping
-mender-deployments_1        | time="2017-01-31T08:18:26Z" level=fatal msg="NoCredentialProviders: no valid providers in chain. Deprecated. \n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors" file=proc.go func=runtime.main line=183 
+mender-deployments_1        | time="2017-01-31T08:18:26Z" level=fatal msg="NoCredentialProviders: no valid providers in chain. Deprecated. \n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors" file=proc.go func=runtime.main line=183
 mender-deployments_1        | WARNING: ca-certificates.crt does not contain exactly one certificate or CRL: skipping
-mender-deployments_1        | time="2017-01-31T08:18:57Z" level=fatal msg="NoCredentialProviders: no valid providers in chain. Deprecated. \n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors" file=proc.go func=runtime.main line=183 
+mender-deployments_1        | time="2017-01-31T08:18:57Z" level=fatal msg="NoCredentialProviders: no valid providers in chain. Deprecated. \n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors" file=proc.go func=runtime.main line=183
 mender-deployments_1        | WARNING: ca-certificates.crt does not contain exactly one certificate or CRL: skipping
-mender-deployments_1        | time="2017-01-31T08:19:56Z" level=fatal msg="NoCredentialProviders: no valid providers in chain. Deprecated. \n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors" file=proc.go func=runtime.main line=183 
+mender-deployments_1        | time="2017-01-31T08:19:56Z" level=fatal msg="NoCredentialProviders: no valid providers in chain. Deprecated. \n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors" file=proc.go func=runtime.main line=183
 mender-deployments_1        | WARNING: ca-certificates.crt does not contain exactly one certificate or CRL: skipping
-mender-deployments_1        | time="2017-01-31T08:21:44Z" level=fatal msg="NoCredentialProviders: no valid providers in chain. Deprecated. \n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors" file=proc.go func=runtime.main line=183 
+mender-deployments_1        | time="2017-01-31T08:21:44Z" level=fatal msg="NoCredentialProviders: no valid providers in chain. Deprecated. \n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors" file=proc.go func=runtime.main line=183
 mender-deployments_1        | WARNING: ca-certificates.crt does not contain exactly one certificate or CRL: skipping
-mender-deployments_1        | time="2017-01-31T08:25:15Z" level=fatal msg="NoCredentialProviders: no valid providers in chain. Deprecated. \n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors" file=proc.go func=runtime.main line=183 
+mender-deployments_1        | time="2017-01-31T08:25:15Z" level=fatal msg="NoCredentialProviders: no valid providers in chain. Deprecated. \n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors" file=proc.go func=runtime.main line=183
 ```
 
 The same log can be obtained by running ``docker log`:
 
 ```
-user@local$ docker logs --tail 10  menderproduction_mender-deployments_1 
+user@local$ docker logs --tail 10  menderproduction_mender-deployments_1
 WARNING: ca-certificates.crt does not contain exactly one certificate or CRL: skipping
-time="2017-01-31T08:18:26Z" level=fatal msg="NoCredentialProviders: no valid providers in chain. Deprecated. \n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors" file=proc.go func=runtime.main line=183 
+time="2017-01-31T08:18:26Z" level=fatal msg="NoCredentialProviders: no valid providers in chain. Deprecated. \n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors" file=proc.go func=runtime.main line=183
 WARNING: ca-certificates.crt does not contain exactly one certificate or CRL: skipping
-time="2017-01-31T08:18:57Z" level=fatal msg="NoCredentialProviders: no valid providers in chain. Deprecated. \n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors" file=proc.go func=runtime.main line=183 
+time="2017-01-31T08:18:57Z" level=fatal msg="NoCredentialProviders: no valid providers in chain. Deprecated. \n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors" file=proc.go func=runtime.main line=183
 WARNING: ca-certificates.crt does not contain exactly one certificate or CRL: skipping
-time="2017-01-31T08:19:56Z" level=fatal msg="NoCredentialProviders: no valid providers in chain. Deprecated. \n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors" file=proc.go func=runtime.main line=183 
+time="2017-01-31T08:19:56Z" level=fatal msg="NoCredentialProviders: no valid providers in chain. Deprecated. \n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors" file=proc.go func=runtime.main line=183
 WARNING: ca-certificates.crt does not contain exactly one certificate or CRL: skipping
-time="2017-01-31T08:21:44Z" level=fatal msg="NoCredentialProviders: no valid providers in chain. Deprecated. \n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors" file=proc.go func=runtime.main line=183 
+time="2017-01-31T08:21:44Z" level=fatal msg="NoCredentialProviders: no valid providers in chain. Deprecated. \n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors" file=proc.go func=runtime.main line=183
 WARNING: ca-certificates.crt does not contain exactly one certificate or CRL: skipping
-time="2017-01-31T08:25:15Z" level=fatal msg="NoCredentialProviders: no valid providers in chain. Deprecated. \n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors" file=proc.go func=runtime.main line=183 
+time="2017-01-31T08:25:15Z" level=fatal msg="NoCredentialProviders: no valid providers in chain. Deprecated. \n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors" file=proc.go func=runtime.main line=183
 ```
 
 ## Inspecting containers
@@ -200,3 +200,18 @@ user@local$ docker inspect menderproduction_mender-deployments_1 |& less
 `docker inspect` output contains all information about container instance,
 volumes, network, aliases etc.
 
+
+## Resetting administrative credentials
+
+The web UI does not currently provide a 'remind/reset password' feature. However, if the credentials for
+the administrative account are lost, the account can be reset via a dedicated script
+in the [integration repository](https://github.com/mendersoftware/integration/blob/master/reset-user).
+
+To reset the account, simply run the script from the machine which hosts the `mender-mongo-useradm` Docker service:
+
+```
+./reset-user
+```
+
+This will erase the account information, while leaving all other persistent data intact. Upon next access,
+the web UI will present the account creation screen, where the username and password can be reset.
