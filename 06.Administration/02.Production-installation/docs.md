@@ -449,22 +449,22 @@ Verify that services are working:
 
 ```
 user@local$ ./run ps
-                   Name                                  Command                 State              Ports
-------------------------------------------------------------------------------------------------------------------
-menderproduction_mender-api-gateway_1         /entrypoint.sh                   Up           0.0.0.0:443->443/tcp
-menderproduction_mender-deployments_1         /entrypoint.sh                   Up
-menderproduction_mender-device-adm_1          /usr/bin/deviceadm -config ...   Up
-menderproduction_mender-device-auth_1         /usr/bin/deviceauth -confi ...   Up
+                   Name                                  Command               State           Ports
+-------------------------------------------------------------------------------------------------------------
+menderproduction_mender-api-gateway_1         /entrypoint.sh                   Up      0.0.0.0:443->443/tcp
+menderproduction_mender-deployments_1         /entrypoint.sh                   Up      8080/tcp
+menderproduction_mender-device-adm_1          /usr/bin/deviceadm -config ...   Up      8080/tcp
+menderproduction_mender-device-auth_1         /usr/bin/deviceauth -confi ...   Up      8080/tcp
 menderproduction_mender-gui_1                 /entrypoint.sh                   Up
-menderproduction_mender-inventory_1           /usr/bin/inventory -config ...   Up
-menderproduction_mender-mongo-deployments_1   /entrypoint.sh mongod            Up           27017/tcp
-menderproduction_mender-mongo-device-adm_1    /entrypoint.sh mongod            Up           27017/tcp
-menderproduction_mender-mongo-device-auth_1   /entrypoint.sh mongod            Up           27017/tcp
-menderproduction_mender-mongo-inventory_1     /entrypoint.sh mongod            Up           27017/tcp
-menderproduction_mender-mongo-useradm_1       /entrypoint.sh mongod            Up           27017/tcp
-menderproduction_mender-useradm_1             /usr/bin/useradm -config / ...   Up
-menderproduction_minio_1                      minio server /export             Up           9000/tcp
-menderproduction_storage-proxy_1              /usr/local/openresty/bin/o ...   Up           0.0.0.0:9000->9000/tcp
+menderproduction_mender-inventory_1           /usr/bin/inventory -config ...   Up      8080/tcp
+menderproduction_mender-mongo-deployments_1   /entrypoint.sh mongod            Up      27017/tcp
+menderproduction_mender-mongo-device-adm_1    /entrypoint.sh mongod            Up      27017/tcp
+menderproduction_mender-mongo-device-auth_1   /entrypoint.sh mongod            Up      27017/tcp
+menderproduction_mender-mongo-inventory_1     /entrypoint.sh mongod            Up      27017/tcp
+menderproduction_mender-mongo-useradm_1       /entrypoint.sh mongod            Up      27017/tcp
+menderproduction_mender-useradm_1             /usr/bin/useradm -config / ...   Up      8080/tcp
+menderproduction_minio_1                      minio server /export             Up      9000/tcp
+menderproduction_storage-proxy_1              /usr/local/openresty/bin/o ...   Up      0.0.0.0:9000->9000/tcp
 ```
 
 Since this is a brand new installation it should be possible to request initial
