@@ -81,6 +81,7 @@ keys-generated/
 │   ├── api-gateway
 │   │   ├── cert.crt
 │   │   └── private.key
+│   ├── server.crt
 │   └── storage-proxy
 │       ├── cert.crt
 │       └── private.key
@@ -91,6 +92,7 @@ keys-generated/
         └── private.key
 ```
 
+!!! The file `certs/server.crt` is just a concatenation of all the certificates that the Mender client needs.
 
 
 ### Installing new keys and certificates
@@ -188,9 +190,8 @@ The Device Authentication key can be mounted with the following snippet:
 
 #### Mender Client
 
-All Mender clients that are to connect to the server need to have the certificates
-of the API Gateway (`keys-generated/certs/api-gateway/cert.crt`) and Storage Proxy
-(`keys-generated/certs/storage-proxy/cert.crt`) stored locally in order to verify
+All Mender clients that are to connect to the server need to have the file with
+the concatenated certificates (`keys-generated/certs/server.crt`) stored locally in order to verify
 the server's authenticity. Please see [the client section on building for production](../../Artifacts/Building-for-production)
 for a description on how to provision new device disk images with the new certificates.
 

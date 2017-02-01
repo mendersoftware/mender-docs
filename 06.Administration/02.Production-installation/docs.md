@@ -199,6 +199,7 @@ Your local directory tree should now look like this:
 │   │   ├── api-gateway
 │   │   │   ├── cert.crt
 │   │   │   └── private.key
+│   │   └── server.crt
 │   │   └── storage-proxy
 │   │       ├── cert.crt
 │   │       └── private.key
@@ -232,6 +233,7 @@ git commit -m 'production: adding generated keys and certificates'
 >  6 files changed, 108 insertions(+)  
 >  create mode 100644 production/keys-generated/certs/api-gateway/cert.crt  
 >  create mode 100644 production/keys-generated/certs/api-gateway/private.key  
+>  create mode 100644 production/keys-generated/certs/server.crt  
 >  create mode 100644 production/keys-generated/certs/storage-proxy/cert.crt  
 >  create mode 100644 production/keys-generated/certs/storage-proxy/private.key  
 >  create mode 100644 production/keys-generated/keys/deviceauth/private.key  

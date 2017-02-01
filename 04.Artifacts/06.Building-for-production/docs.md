@@ -4,7 +4,8 @@ taxonomy:
     category: docs
 ---
 
-This section describes the steps that are specific to production builds. This is not necessary if you're just trying out Mender, but are necessary before deploying to production.
+This section describes the steps that are specific to production builds.
+These steps are not necessary if you are just trying out Mender, but must be done before deploying to production.
 
 
 ## Removal of demo layer
@@ -22,13 +23,11 @@ Certificates are used to ensure the communication between the client and the ser
 
 ### Preparing the client certificates
 
-The Mender client needs two certificates, one for the API gateway, and one for the storage server. This section assumes that you have followed the guide for [generating certificates](../../Administration/Certificates-and-keys#generating-new-keys-and-certificates), but is also valid if you have obtained the certificates in a different way; just make sure to adjust the paths accordingly.
+You can either generate new certificates by following the guide for [generating certificates](../../Administration/Certificates-and-keys#generating-new-keys-and-certificates), or obtain the certificates in a different way - for example from your existing Certificate Authority. In either case the certificates on the client and server must be the same.
 
-Both certificates are hosted in a single file which the client reads. To prepare this file, run the following in the folder where you have your generated certificates:
+All certificates are hosted in a single file `server.crt` which the client reads. If you generated new certificates, this file is available at `keys-generated/certs/server.crt`.
 
-```bash
-cat ./keys-generated/certs/api-gateway/cert.crt ./keys-generated/certs/storage-proxy/cert.crt > server.crt
-```
+!!! If you obtained your certificates in a different way, e.g. from your Certificate Authority, you need to concatenate the certificates from the API Gateway and Storage Proxy into one file by running a command similar to `cat api-gateway/cert.crt storage-proxy/cert.crt > server.crt`.
 
 The `server.crt` file will be the certificate file to use on the client.
 
