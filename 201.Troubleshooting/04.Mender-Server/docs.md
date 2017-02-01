@@ -175,7 +175,7 @@ an AWS related service.
 From the [production installation](../../Administration/Production-installation) guide, we can recall
 that
 `mender-deployments`
-[service configuration](../Production-installation#deployments-service) contains
+[service configuration](../../Administration/Production-installation#deployments-service) contains
 credentials for artifact storage service.
 
 Configuration of current instance of `mender-deployments` can be viewed using
