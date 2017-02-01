@@ -6,7 +6,7 @@ taxonomy:
 
 This section details troubleshooting steps for most common problems. It is
 assumed that commands are run through production helper script `run` as detailed
-in [production installation](../../Administration/Production-installation) section.
+in the [production installation](../../Administration/Production-installation) section.
 
 ## Listing active containers
 
@@ -172,7 +172,7 @@ time="2017-01-31T08:25:15Z" level=fatal msg="NoCredentialProviders: no valid pro
 As seen in [container logs](#container-logs) section, `mender-deployments`
 service is restarting. The logs suggest there might be missing credentials for
 an AWS related service.
-From [production installation](../Production-installation) guide, we can recall
+From the [production installation](../../Administration/Production-installation) guide, we can recall
 that
 `mender-deployments`
 [service configuration](../Production-installation#deployments-service) contains
