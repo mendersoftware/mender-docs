@@ -53,7 +53,7 @@ Both parameters are stored in the configuration file `/etc/mender/mender.conf`:
 
 Before building an image as described in [Building Mender Yocto image](../../Artifacts/Building-Mender-Yocto-image),
 you can adjust these configuration settings with the steps described in
-[Configuring polling intervals](../../Artifacts/Build-customizations#configuring-polling-intervals).
+[Configuring polling intervals](../../Artifacts/Image-configuration#configuring-polling-intervals).
 
 If you have already built an Artifact containing the rootfs, have a look at
 [Modifying a Mender Artifact](../../Artifacts/Modifying-a-Mender-Artifact) for steps on how
