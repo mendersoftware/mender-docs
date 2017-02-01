@@ -27,16 +27,16 @@ having to configure any hardware.
 We assume you are using **Ubuntu 16.04** with **Google Chrome** as web browser
 and at least **5 GB disk** and **2 GB RAM** available.
 
-#### Docker Engine 1.10
+#### Docker Engine 1.11
 
 Follow the [documentation to install Docker Engine](https://docs.docker.com/engine/installation/linux/ubuntulinux/?target=_blank),
-version **1.10 or later**.
+version **1.11 or later**.
 
 
-#### Docker Compose 1.7
+#### Docker Compose 1.6
 
 Follow the [documentation to install Docker Compose](https://docs.docker.com/compose/install/?target=_blank),
-version **1.7 or later**.
+version **1.6 or later**.
 
 #### Fast Internet connection
 

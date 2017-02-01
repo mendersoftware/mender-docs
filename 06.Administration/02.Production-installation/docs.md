@@ -17,8 +17,8 @@ repository.
 - A machine with Ubuntu 16.04 (e.g. an instance from AWS EC2 or DigitalOcean) with
   the following tools installed:
   - git
-  - [Docker Engine](https://docs.docker.com/engine/installation/linux/ubuntulinux/?target=_blank), version **1.10 or later**.
-  - [Docker Compose](https://docs.docker.com/compose/install/?target=_blank), version **1.7 or later**.
+  - [Docker Engine](https://docs.docker.com/engine/installation/linux/ubuntulinux/?target=_blank), version **1.11 or later**.
+  - [Docker Compose](https://docs.docker.com/compose/install/?target=_blank), version **1.6 or later**.
 - A public IP address assigned and ports 443 and 9000 publicly accessible.
 - Allocated DNS names for the Mender API Gateway and the Mender Storage Proxy
   (for purpose of the guide, it is assumed that you
