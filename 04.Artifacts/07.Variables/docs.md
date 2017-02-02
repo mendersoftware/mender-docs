@@ -97,10 +97,33 @@ Default value is `8192`.
 The partition Mender uses as the first (A) rootfs partition. See [More detailed storage configuration](../../Devices/Partition-layout#more-detailed-storage-configuration) for more information.
 
 
+#### MENDER_ROOTFS_PART_A_NAME
+
+Alternative name for `MENDER_ROOTFS_PART_A`. Used if you need two different references to `MENDER_ROOTFS_PART_A`.
+
+Example:
+```
+# will only accept a UBI volume name (but we normally work with index numbers e.g. `mender_boot_part`)
+ubifsmount ubi0:rootfsa
+```
+
+Defaults to the value of `${MENDER_ROOTFS_PART_A}` when building `.sdimg`.
+
+Defaults to `${MENDER_STORAGE_DEVICE}:rootfsa` when building `.ubimg`.
+
+
 #### MENDER_ROOTFS_PART_B
 
 The partition Mender uses as the second (B) rootfs partition. See [More detailed storage configuration](../../Devices/Partition-layout#more-detailed-storage-configuration) for more information.
 
+
+#### MENDER_ROOTFS_PART_B_NAME
+
+See [`MENDER_ROOTFS_PART_A_NAME`](#mender_rootfs_part_a_name)
+
+Defaults to the value of `${MENDER_ROOTFS_PART_B}` when building `.sdimg`
+
+Defaults to `${MENDER_STORAGE_DEVICE}:rootfsb` when building `.ubimg`.
 
 #### MENDER_STORAGE_DEVICE
 
