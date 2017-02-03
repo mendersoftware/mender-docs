@@ -1,5 +1,5 @@
 ---
-title: 1.0
+title: "1.0"
 taxonomy:
     category: docs
 ---
