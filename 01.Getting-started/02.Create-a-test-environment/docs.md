@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-!! This tutorial should only be used in an internal environment (e.g. on your workstation) for testing purposes. Several important security features need to be implemented before using the Mender server in production, including random generation of keys, user authentication for managing deployments, and more.
+! Following this tutorial will create a demo installation of the Mender, appropriate for testing and experimenting. When you are ready to install for production, please follow the [Production installation documentation](../../Administration/Production-installation).
 
 Mender consists of a [server and updater client](../../Architecture/Overview).
 The Mender server is using the microservices design pattern, meaning that
@@ -113,17 +113,23 @@ Your web browser will communicate directly with the gateway while using the
 Mender UI and therefore the certificate the gateway is using needs to be trusted
 by your web browser.
 
-!! Currently Mender uses a default certificate for its gateway. This is insecure because anyone can gain access to the private key corresponding to the certificate (it is stored on the gateway and the same for all installations). This will shortly be remediated by auto-generating keys as Mender is installed.
-
 The Mender UI can now be found on [https://localhost/](https://localhost/?target=_blank) -
 simply open it in your web browser and **accept the certificate**. In Chrome it should look
 like the following:
 
 ![Accept certificate - Chrome](cert_accept_chrome.png)
 
-After accepting the certificate, you should see a page similar to the following:
 
-![Mender UI - initial load](mender_ui_initial.png)
+## Create the initial user
+
+The first time you access the UI, you will be asked to create the initial
+user. Simply input your email and desired password as shown below:
+
+![Mender UI - initial load](create_user_initial.png)
+
+
+!!! Your email and password are currently only used to log in to the Mender server. You will not receive any email from Mender. However, this might change in future versions so we recommend to input your real email address. Mender currently supports one user account, support for multiple user accounts will be implemented shortly. If you lose your username or password, please see the [documentation on resetting administrative credentials](../../Troubleshooting/Mender-Server#resetting-administrative-credentials).
+
 
 **Congratulations!** You have the Mender server and a virtual Mender client successfully running!
 Please proceed to [Deploy to virtual devices](../Deploy-to-virtual-devices).
