@@ -88,14 +88,6 @@ You should see output similar to the following:
 
 > 192.168.10.1 docker.mender.io s3.docker.mender.io
 
-We also need to modify `ServerURL` in the rootfs partitions at `/etc/mender/mender.conf`
-to `https://docker.mender.io:8080`. This can be achieved by manually editing or running
-the command below:
-
-```bash
-sudo sed -i -E "s/([ ]*\"ServerURL\"[ ]*:[ ]*)\".*\"/\1\"https:\/\/docker.mender.io:8080\"/" /mnt/rootfs[12]/etc/mender/mender.conf
-```
-
 
 ### Set a static device IP address and subnet
 
@@ -174,7 +166,7 @@ Black boot from the SD card instead of internal storage.
 
 ## See the BeagleBone Black(s) in the Mender UI
 
-If you refresh the Mender server UI (by default found at [https://localhost:8080/](https://localhost:8080/?target=_blank)),
+If you refresh the Mender server UI (by default found at [https://localhost/](https://localhost/?target=_blank)),
 you should see one or more devices waiting authorization.
 
 Once you **authorize** these devices, Mender will auto-discover
@@ -228,12 +220,6 @@ echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io s3.docker.mender.io" | s
 You should see output similar to the following:
 
 > 192.168.10.1 docker.mender.io s3.docker.mender.io
-
-Next, ensure we have the right `ServerURL`:
-
-```bash
-sudo sed -i -E "s/([ ]*\"ServerURL\"[ ]*:[ ]*)\".*\"/\1\"https:\/\/docker.mender.io:8080\"/" /mnt/rootfs/etc/mender/mender.conf
-```
 
 Finally, **only if you are using static IP addressing**, you need to set the
 device IP address, as shown below (otherwise skip this step). Please note that the same

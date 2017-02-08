@@ -115,7 +115,7 @@ by your web browser.
 
 !! Currently Mender uses a default certificate for its gateway. This is insecure because anyone can gain access to the private key corresponding to the certificate (it is stored on the gateway and the same for all installations). This will shortly be remediated by auto-generating keys as Mender is installed.
 
-The Mender UI can now be found on [https://localhost:8080/](https://localhost:8080/?target=_blank) -
+The Mender UI can now be found on [https://localhost/](https://localhost/?target=_blank) -
 simply open it in your web browser and **accept the certificate**. In Chrome it should look
 like the following:
 
