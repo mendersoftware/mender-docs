@@ -92,7 +92,7 @@ This includes output from the Mender virtual QEMU device, similar to the followi
 > mender-client_1             | Booting Linux on physical CPU 0x0  
 > mender-client_1             | Initializing cgroup subsys cpuset  
 > ...  
-> mender-client_1             | Poky (Yocto Project Reference Distro) 2.1.1 vexpress-qemu ttyAMA0
+> mender-client_1             | Poky (Yocto Project Reference Distro) 2.2.1 vexpress-qemu ttyAMA0
 
 After a few minutes, the logs will stop coming except for some periodic log messages
 from the Mender authentication service similar to the following:

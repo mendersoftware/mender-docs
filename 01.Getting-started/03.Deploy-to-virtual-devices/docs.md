@@ -72,13 +72,9 @@ the virtual device is provided for download at
 
 After the download finishes, go back to the Mender server UI,
 click the **Artifacts** tab and upload this Mender Artifact.
-
-Please fill in the following:
-
-* Name: `release-2`
-* Description: `My test build`
-
-!!! Both these fields are just informational, to make it is easier to recognize Artifacts after they have been uploaded. Their contents do not affect deployments.
+You can set the *Description* input field to `My test build`,
+it is just informational to make to make it is easier to
+recognize Artifacts after they have been uploaded.
 
 In the UI it should look something like this:
 
@@ -98,8 +94,6 @@ group of devices to deploy it to. Since we have just
 one Artifact and no custom groups right now, we simply select
 the Artifact we just uploaded and **All devices**, then
 **Create deployment**.
-
-!!! It may take a few seconds until the deployment shows up. You can also refresh your browser to see it immediately.
 
 
 ## See the progress of the deployment
@@ -131,15 +125,11 @@ Thus, if you create another deployment with the Artifact you already
 uploaded, Mender will see that it contains the same rootfs
 that is already installed and skip the deployment. It will
 immediately be marked as successful and moved to *Past deployments*.
-
 For this reason, we provide another Artifact that you can use
 to deploy with at [https://d1b0l86ne08fsf.cloudfront.net/1.0.x/vexpress-qemu/vexpress_release_1.mender](https://d1b0l86ne08fsf.cloudfront.net/1.0.x/vexpress-qemu/vexpress_release_1.mender).
 
-Go to **Artifacts** again and upload with the following fields:
-
-* Name: `release-1`
-* Description: `My original build`
-
+Go to **Artifacts** again and upload this artifact. You can set
+the *Description* input field to `My original build`.
 After the Artifact has been uploaded, you can deploy it to your device,
 as you did earlier.
 
