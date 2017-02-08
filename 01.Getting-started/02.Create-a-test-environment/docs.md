@@ -53,7 +53,7 @@ In a working directory, clone the Mender integration
 environment:
 
 ```bash
-git clone -b stable git://github.com/mendersoftware/integration
+git clone -b 1.0.x git://github.com/mendersoftware/integration
 ```
 
 ```bash
