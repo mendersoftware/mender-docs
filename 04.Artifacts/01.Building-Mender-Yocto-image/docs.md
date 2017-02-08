@@ -45,11 +45,11 @@ The required meta layers are found in the following repositories:
 URI: git://git.yoctoproject.org/poky
 branch: morty
 
-URI: git://github.com/mendersoftware/meta-mender
-branch: stable
-
 URI: git://github.com/mem/oe-meta-go
 branch: master
+
+URI: git://github.com/mendersoftware/meta-mender
+branch: stable
 ```
 
 A Yocto Project poky environment is required. If you already have 
@@ -77,12 +77,12 @@ Please make sure you are standing in the directory where `poky` resides,
 i.e. the top level of the Yocto Project build tree, and run these commands:
 
 ```bash
-git clone -b stable git://github.com/mendersoftware/meta-mender
-```
-```bash
 git clone git://github.com/mem/oe-meta-go
 ```
 
+```bash
+git clone -b stable git://github.com/mendersoftware/meta-mender
+```
 
 Next, we initialize the build environment:
 
@@ -97,9 +97,9 @@ We then need to incorporate the three layers, meta-mender-core, meta-mender-demo
 our project:
 
 ```bash
+bitbake-layers add-layer ../oe-meta-go
 bitbake-layers add-layer ../meta-mender/meta-mender-core
 bitbake-layers add-layer ../meta-mender/meta-mender-demo
-bitbake-layers add-layer ../oe-meta-go
 ```
 
 ! The `meta-mender-demo` layer is not appropriate if you are building for production devices. Please go to the section about [building for production](../Building-for-production) to see the difference between demo builds and production builds.
