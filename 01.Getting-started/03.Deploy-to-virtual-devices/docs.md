@@ -14,6 +14,7 @@ checksum and name, as well as the actual root file system that is
 deployed. See [Mender Artifacts](../../Architecture/Mender-Artifacts) for
 a complete description of this format.
 
+
 ## Prerequisites
 
 The test environment should be set up and working successfully
