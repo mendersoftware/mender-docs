@@ -21,19 +21,20 @@ fdisk -l -u mender-beaglebone.sdimg
 The output should look similar to the following:
 
 ```
-Disk mender-beaglebone.sdimg: 1056 MB, 1056964608 bytes
-4 heads, 32 sectors/track, 16128 cylinders, total 2064384 sectors
-Units = sectors of 1 * 512 = 512 bytes
+Disk mender-beaglebone.sdimg: 384 MiB, 402653184 bytes, 786432 sectors
+Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
-Disk identifier: 0x23737de7
+Disklabel type: dos
+Disk identifier: 0x7dea8cfc
 
-                  Device Boot      Start         End      Blocks   Id  System
-mender-beaglebone.sdimg1   *       49152       81919       16384    c  W95 FAT32 (LBA)
-mender-beaglebone.sdimg2           81920      933887      425984   83  Linux
-mender-beaglebone.sdimg3          933888     1785855      425984   83  Linux
-mender-beaglebone.sdimg4         1802239     2064383      131072+   f  W95 Ext'd (LBA)
-mender-beaglebone.sdimg5         1802240     2064383      131072   83  Linux
+Device                   Boot  Start    End Sectors  Size Id Type
+mender-beaglebone.sdimg1 *     49152  81919   32768   16M  c W95 FAT32 (LBA)
+mender-beaglebone.sdimg2       81920 294911  212992  104M 83 Linux
+mender-beaglebone.sdimg3      294912 507903  212992  104M 83 Linux
+mender-beaglebone.sdimg4      524287 786431  262145  128M  f W95 Ext'd (LBA)
+mender-beaglebone.sdimg5      524288 786431  262144  128M 83 Linux
+
 ```
 
 In this example there are four partitions (plus an extended partition). Please see
@@ -50,8 +51,8 @@ The second piece of information we need is the *start sector* of the partition w
 This is the second column in the output from `fdisk`. The start sector is shown in bold below for
 our two rootfs partitions:
 
-> mender-beaglebone.sdimg2           **81920**      933887      425984   83  Linux  
-> mender-beaglebone.sdimg3          **933888**     1785855      425984   83  Linux  
+> mender-beaglebone.sdimg2       **81920** 294911  212992  104M 83 Linux  
+> mender-beaglebone.sdimg3      **294912** 507903  212992  104M 83 Linux  
 
 In order to mount a partition we simply multiply the sector size and the start sector
 and pass that to `mount`. You can use `bash` to do this calculation for you.
@@ -66,7 +67,7 @@ sudo mount -o loop,offset=$((512*81920)) mender-beaglebone.sdimg /mnt/rootfs1
 ```
 
 ```bash
-sudo mount -o loop,offset=$((512*933888)) mender-beaglebone.sdimg /mnt/rootfs2
+sudo mount -o loop,offset=$((512*294912)) mender-beaglebone.sdimg /mnt/rootfs2
 ```
 
 Now you can modify the rootfs file systems in the paths `/mnt/rootfs1` and `/mnt/rootfs2`.
