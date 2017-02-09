@@ -63,7 +63,7 @@ You can decompress it like the following:
 gunzip mender-beaglebone.sdimg.gz
 ```
 
-!!! The decompressed disk image is 1 GB by default. This is because Mender blocks free space so that your root file system is allowed to grow over time. If you are building your own disk image by following [Building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image), you can configure the desired space usage with the Yocto Project variable [MENDER_STORAGE_TOTAL_SIZE_MB](../../Artifacts/Variables#mender_storage_total_size_mb).
+!!! Mender blocks free space in the disk image so that your root file system is allowed to grow over time. If you are building your own disk image by following [Building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image), you can configure the desired space usage with the Yocto Project variable [MENDER_STORAGE_TOTAL_SIZE_MB](../../Artifacts/Variables#mender_storage_total_size_mb).
 
 We need to change some configuration settings in this image so that
 the Mender client successfully connects to your Mender
@@ -286,12 +286,8 @@ the filename of the created Artifact.
 
 Before we can deploy the Artifact we prepared above it needs
 to be uploaded to the server.
-
 Go to the Mender server UI, click the **Artifacts** tab and upload this Artifact,
-using the fields below:
-
-* Name: `release-1`
-* Description: `My test build`
+you can set *Description* to `My test build`.
 
 In the UI it should look something like this:
 
@@ -304,17 +300,16 @@ Now that we have the device connected and the image
 uploaded to the server, all that remains is to go to the
 **Deployments** tab and click **Create a deployment**.
 
-Select the image you just uploaded and **All devices**, then
+Select the Artifact you just uploaded and **All devices**, then
 **Create deployment**.
 
-!!! If you deploy to several device types (e.g. vexpress-qemu), the Mender server will skip these if no compatible artifact is available. This condition is indicated by the *noartifact* status. Mender does this to avoid deployments of incompatible rootfs images.
+!!! If you deploy across several device types (e.g. `beaglebone` and `vexpress-qemu`), the Mender server will skip these if no compatible artifact is available. This condition is indicated by the *noartifact* status in the deployment report. Mender does this to avoid deployments of incompatible rootfs images. However, if you have Artifacts for these other device types, identified by the same Artifact name, then Mender will deploy to all the devices there are compatible Artifacts for.
 
 
 ## See the progress of the deployment
 
 As the deployment progresses, you can click on it to view more details about the current status across all devices.
-In the example below, we can see that a BeagleBone has installed the update and is rebooting into it.
-The QEMU device is skipped because no compatible artifact was available for it.
+In the example below, we can see that a BeagleBone is downloading the update.
 
 ![Mender UI - Deployment progress - BeagleBone Black](deployment_report_bbb.png)
 
