@@ -34,6 +34,9 @@ a SD card to store the OS, so you will need one SD card
 The BeagleBone Black needs to have network set up
 so it can connect directly to your workstation
 (where you have the Mender server running).
+
+! By default the Mender client will use ports **443** and **9000** to connect to the server. You can test the connection from your client later with networking tools like `telnet`.
+
 If you have one BeagleBone Black, you could connect your
 workstation and the device using a direct
 Ethernet cable and use static IP addresses at both ends.
@@ -309,7 +312,7 @@ Select the Artifact you just uploaded and **All devices**, then
 ## See the progress of the deployment
 
 As the deployment progresses, you can click on it to view more details about the current status across all devices.
-In the example below, we can see that a BeagleBone is downloading the update.
+In the example below, we can see that a BeagleBone is installing the update.
 
 ![Mender UI - Deployment progress - BeagleBone Black](deployment_report_bbb.png)
 
