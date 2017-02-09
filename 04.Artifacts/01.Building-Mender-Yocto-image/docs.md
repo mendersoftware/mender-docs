@@ -35,7 +35,7 @@ The other layers in *meta-mender* provide support for specific boards.
 
 ## Prerequisites
 
-! We use the Yocto Project's **morty** branch below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* We use the `stable` branch in `meta-mender`, which builds a stable version of Mender for the latest Yocto Project release. `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases , but these branches are no longer maintained by Mender developers. Please reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender) if you would like help with getting Mender to work on other versions of the Yocto Project.
+! We use the Yocto Project's **master** branch below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* We use the `master` branch in `meta-mender`, which builds a latest release of Mender for the bleeding edge Yocto Project revision. `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases , but these branches are no longer maintained by Mender developers. Please reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender) if you would like help with getting Mender to work on other versions of the Yocto Project.
 
 !!! The meta-mender-demo layer, which is used below, and the web-server, are bundled with a default demo certificate and key. If you are intending on using Mender in production, you must generate your own certificate using OpenSSL. Please see the certificate section [for the server](../../Administration/Certificates-and-keys) and [for the client](../Building-for-production/#certificates) for more information.
 
@@ -43,13 +43,13 @@ The required meta layers are found in the following repositories:
 
 ```
 URI: git://git.yoctoproject.org/poky
-branch: morty
+branch: master
 
 URI: git://github.com/mem/oe-meta-go
 branch: master
 
 URI: git://github.com/mendersoftware/meta-mender
-branch: stable
+branch: master
 ```
 
 A Yocto Project poky environment is required. If you already have 
@@ -61,7 +61,7 @@ On the other hand, if you want to start from a *clean Yocto Project environment*
 you need to clone the latest poky and go into the directory:
 
 ```bash
-git clone -b morty git://git.yoctoproject.org/poky
+git clone -b master git://git.yoctoproject.org/poky
 ```
 
 ```bash
@@ -81,7 +81,7 @@ git clone git://github.com/mem/oe-meta-go
 ```
 
 ```bash
-git clone -b stable git://github.com/mendersoftware/meta-mender
+git clone -b master git://github.com/mendersoftware/meta-mender
 ```
 
 Next, we initialize the build environment:
