@@ -39,6 +39,7 @@ self-signed certificates. However, if you already have a CA that you use, you
 can use certificates signed by that CA instead of self-signed ones. The rest
 of the steps should be the exact same in both cases.
 
+!! If your CA uses intermediate certificates, make sure they are concatenated into your cert.crt file
 
 ### Generating new keys and certificates
 
@@ -71,6 +72,8 @@ CERT_API_CN=docker.mender.io CERT_STORAGE_CN=s3.docker.mender.io ./keygen
 
 !!! This generates keys with 128-bit security level (256-bit Elliptic Curve and 3072-bit RSA keys) and certificates valid for approximately 10 years. You can customize the parameters by adapting the script to your needs.
 
+!!! Make sure your device has the correct date/time set. If the date/time is incorrect, the certificate will not be validated.
+
 The keys and certificates are placed in a directory `keys-generated`
 where you ran the script from, and each service has a sub-directory within it
 as follows:
@@ -102,7 +105,7 @@ need to make the various services use them. This is done by
 injecting them into the service containers with volume mounts in
 a [Docker compose extends](https://docs.docker.com/compose/extends/?target=_blank).
 
-We will go thorugh the induvidual services below, but make
+We will go through the individual services below, but make
 sure to **stop the Mender server** before proceeding.
 
 !! When you replace the certificates and keys, any Mender Clients (and potentially web browsers) currently connecting to the server will reject the new certificates. Rotating server keys in live installations is not yet covered in this document.
@@ -114,7 +117,7 @@ the keys to a different location and adjust the steps below accordingly.
 
 #### API Gateway
 
-The API Gatway will use the new keys by using a docker compose file with the following entries:
+The API Gateway will use the new keys by using a docker compose file with the following entries:
 
 ```yaml
     mender-api-gateway:
