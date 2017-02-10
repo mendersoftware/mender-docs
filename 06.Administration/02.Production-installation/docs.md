@@ -69,7 +69,7 @@ Start off by cloning the Mender integration repository into a local directory
 named `mender-server`:
 
 ```bash
-git clone https://github.com/mendersoftware/integration mender-server
+git clone -b 1.0.x https://github.com/mendersoftware/integration mender-server
 ```
 > Cloning into 'deployment'...  
 > remote: Counting objects: 1117, done.  
