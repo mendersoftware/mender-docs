@@ -39,6 +39,7 @@ self-signed certificates. However, if you already have a CA that you use, you
 can use certificates signed by that CA instead of self-signed ones. The rest
 of the steps should be the exact same in both cases.
 
+!! If your CA uses intermediate certificates, make sure they are concatenated into your cert.crt file
 
 ### Generating new keys and certificates
 
