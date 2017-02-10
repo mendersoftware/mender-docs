@@ -102,7 +102,7 @@ need to make the various services use them. This is done by
 injecting them into the service containers with volume mounts in
 a [Docker compose extends](https://docs.docker.com/compose/extends/?target=_blank).
 
-We will go thorugh the induvidual services below, but make
+We will go through the individual services below, but make
 sure to **stop the Mender server** before proceeding.
 
 !! When you replace the certificates and keys, any Mender Clients (and potentially web browsers) currently connecting to the server will reject the new certificates. Rotating server keys in live installations is not yet covered in this document.
@@ -114,7 +114,7 @@ the keys to a different location and adjust the steps below accordingly.
 
 #### API Gateway
 
-The API Gatway will use the new keys by using a docker compose file with the following entries:
+The API Gateway will use the new keys by using a docker compose file with the following entries:
 
 ```yaml
     mender-api-gateway:
