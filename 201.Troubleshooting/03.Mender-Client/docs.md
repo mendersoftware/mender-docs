@@ -1,5 +1,5 @@
 ---
-title: Mender command line interface
+title: Mender Client
 taxonomy:
     category: docs
 ---
