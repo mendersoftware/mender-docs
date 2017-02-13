@@ -4,7 +4,48 @@ taxonomy:
     category: docs
 ---
 
-##The partition layout of the device is not as expected
+## Certificate expired or not yet valid
+
+The Mender client can not connect to the server, typically the first time it tries, and emits messages like the following to syslog at the device:
+
+```
+... level=info msg="Mender state: authorize-wait -> bootstrapped" module=mender
+... level=error msg="authorize failed: transient error: authorization request failed: failed to execute authorization request:
+Post https://<SERVER-URI>/api/devices/v1/authentication/auth_requests: x509: certificate has expired or is not yet valid" module=state
+```
+
+This could occur in several places, and the distinguishing message is **x509: certificate has expired or is not yet valid**.
+Each TLS certificate has a validity period, *Not Before* and *Not After*, and this message means that the Mender client concludes that
+the current time is outside this range.
+
+Most commonly this is caused by incorrect time setting at the device which runs the Mender client. You can check this by
+running `date` at the device, and make sure it is correct.
+
+If this is not the problem, you should verify that the certificate you are using is within the validity period.
+Replace or set the variable `MENDER_API_GATEWAY_URL` and run the following command:
+
+```bash
+echo | openssl s_client -connect $MENDER_API_GATEWAY_URL:443 2>/dev/null | openssl x509 -noout -dates
+```
+> notBefore=Dec 14 19:52:46 2016 GMT  
+> notAfter=Dec 12 19:52:46 2026 GMT  
+
+Also note that the storage proxy has its own certificate, and it runs on the same host as the API Gateway
+on port 9000 by default.
+
+```bash
+echo | openssl s_client -connect $MENDER_STORAGE_PROXY_URL:9000 2>/dev/null | openssl x509 -noout -dates
+```
+> notBefore=Dec 14 19:52:46 2016 GMT  
+> notAfter=Dec 12 19:52:46 2026 GMT  
+
+We can see that these certificates are currently valid.
+Also see the [documentation on certificates](../../Administration/Certificates-and-keys) for an
+overview and description on how to generate new certificates.
+
+
+
+## The partition layout of the device is not as expected
 
 You have the Mender binary on your device and try to trigger a rootfs update but you get output similar to the following:
 

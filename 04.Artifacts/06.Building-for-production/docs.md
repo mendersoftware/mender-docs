@@ -21,6 +21,9 @@ bitbake-layers remove-layer ../meta-mender/meta-mender-demo
 
 Certificates are used to ensure the communication between the client and the server is secure, so that it is not possible for an adversary to pose as a legitimate server.
 
+!! Please make sure that the clock is set correctly on your devices. Otherwise certificate verification will become unreliable. See [certificate troubleshooting](../../Troubleshooting/Mender-Client#certificate-expired-or-not-yet-valid) for more information.
+
+
 ### Preparing the client certificates
 
 You can either generate new certificates by following the guide for [generating certificates](../../Administration/Certificates-and-keys#generating-new-keys-and-certificates), or obtain the certificates in a different way - for example from your existing Certificate Authority. In either case the certificates on the client and server must be the same.
