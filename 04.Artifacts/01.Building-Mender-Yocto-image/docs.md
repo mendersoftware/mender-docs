@@ -70,6 +70,8 @@ cd poky
 
 !!! Note that the Yocto Project also depends on some [development tools to be in place](http://www.yoctoproject.org/docs/2.2/yocto-project-qs/yocto-project-qs.html?target=_blank#packages).
 
+! Please make sure that the clock is set correctly on your devices. Otherwise certificate verification will become unreliable. See [certificate troubleshooting](../../Troubleshooting/Mender-Client#certificate-expired-or-not-yet-valid) for more information.
+
 ## Adding the meta layers
 
 We will now add the required meta layers to our build environment.
