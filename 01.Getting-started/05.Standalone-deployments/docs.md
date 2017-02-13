@@ -41,7 +41,7 @@ for a more detailed overview.
 You can build the required images by following the steps
 described in [Building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image).
 
-!!! If you are testing Mender on the reference devices BeagleBone Black or QEMU, you can save the build time by **[downloading the prebuilt demo images](https://doyabzhx7xw8o.cloudfront.net/1.0.x/latest.tar.gz)**. The `.sdimg` disk images, and `.mender` Artifacts are found in the `vexpress-qemu` and `beaglebone` directories.
+!!! If you are testing Mender on the reference devices BeagleBone Black or QEMU, you can save the build time by **[downloading the prebuilt demo images](https://doyabzhx7xw8o.cloudfront.net/1.0.x/mender-standalone.tar.gz)**. The `.sdimg` disk images, and `.mender` Artifacts are found in the `vexpress-qemu` and `beaglebone` directories.
 
 
 ### Network connectivity
