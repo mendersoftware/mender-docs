@@ -516,7 +516,7 @@ Furthermore, since this is a brand new installation it should be possible to req
 user login token through the API:
 
 ```bash
-curl -X POST  -D - --cacert keys-generated/certs/api-gateway/cert.crt https://mender.acme.org:443/api/management/0.1/useradm/auth/login
+curl -X POST  -D - --cacert keys-generated/certs/api-gateway/cert.crt https://mender.acme.org:443/api/management/v1/useradm/auth/login
 ```
 
 > HTTP/2.0 200  
