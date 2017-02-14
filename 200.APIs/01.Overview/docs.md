@@ -14,8 +14,9 @@ you to get, create, update, & delete objects with the HTTP verbs GET, POST,
 PUT, PATCH, & DELETE. The APIs make use of CORS (cross-origin-request) which 
 also uses the OPTIONS request method.
 
-### Device and Integration APIs
+### Device and Management APIs
 
-The APIs are split into two types - device and integration. Device APIs are for
-device-originating requests, the Integration APIs are management APIs intended
-for use by the web UI. 
+The APIs are split into two types - *Device* and *Management*. Device APIs are for
+device-originating requests, the Management APIs are APIs intended
+for use by the UI and other tools that manage devices, Artifacts or deployments
+across devices.
