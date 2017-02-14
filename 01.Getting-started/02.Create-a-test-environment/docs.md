@@ -97,9 +97,9 @@ This includes output from the Mender virtual QEMU device, similar to the followi
 After a few minutes, the logs will stop coming except for some periodic log messages
 from the Mender authentication service similar to the following:
 
-> mender-api-gateway_1        | 172.18.0.4 - - [07/Oct/2016:03:59:50 +0000] "POST /api/devices/0.1/authentication/auth_requests HTTP/2.0" 401 150 "-" "Go-http-client/2.0" "-"  
+> mender-api-gateway_1        | 172.18.0.4 - - [07/Oct/2016:03:59:50 +0000] "POST /api/devices/1.0/authentication/auth_requests HTTP/2.0" 401 150 "-" "Go-http-client/2.0" "-"  
 > mender-device-auth_1        | time="2016-10-07T03:59:55Z" level=error msg="unauthorized: dev auth: unauthorized" file="api_devauth.go" func="main.(*DevAuthHandler).SubmitAuthRequestHandler" http_code=401 line=142 request_id=df3bc374-060b-4b15-af89-76c85975ab25  
-> mender-device-auth_1        | time="2016-10-07T03:59:55Z" level=info msg="401 4438μs POST /api/0.1.0/auth_requests HTTP/1.0 - Go-http-client/2.0" file=middleware.go func="accesslog.(*AccessLogMiddleware).MiddlewareFunc.func1" line=58 request_id=df3bc374-060b-4b15-af89-76c85975ab25
+> mender-device-auth_1        | time="2016-10-07T03:59:55Z" level=info msg="401 4438μs POST /api/1.0/auth_requests HTTP/1.0 - Go-http-client/2.0" file=middleware.go func="accesslog.(*AccessLogMiddleware).MiddlewareFunc.func1" line=58 request_id=df3bc374-060b-4b15-af89-76c85975ab25
 
 These messages show that the Mender client running inside the virtual QEMU device
 is asking to be authorized to join the server. We will come back to this shortly.
