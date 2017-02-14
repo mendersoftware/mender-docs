@@ -190,7 +190,7 @@ user@local$ docker inspect menderproduction_mender-deployments_1 |& less
             "Env": [
                 "DEPLOYMENTS_AWS_AUTH_KEY",
                 "DEPLOYMENTS_AWS_AUTH_SECRET",
-                "DEPLOYMENTS_AWS_URI=https://s3.acme.org:9000",
+                "DEPLOYMENTS_AWS_URI=https://s3.example.com:9000",
                 "STORAGE_BACKEND_CERT=/etc/ssl/certs/storage-proxy.crt",
                 "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
             ],

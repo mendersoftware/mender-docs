@@ -22,7 +22,7 @@ repository.
 - A public IP address assigned and ports 443 and 9000 publicly accessible.
 - Allocated DNS names for the Mender API Gateway and the Mender Storage Proxy
   (for purpose of the guide, it is assumed that you
-  own the domains `mender.acme.org` and `s3.acme.org`) that resolve to the public
+  own the domains `mender.example.com` and `s3.example.com`) that resolve to the public
   IP of current host on the devices.
 
 
@@ -177,11 +177,11 @@ necessary Docker images:
 
 ### Certificates and keys
 
-Prepare certificates using the helper script `keygen` (replacing `mender.acme.org`
-and `s3.acme.org` with your DNS names):
+Prepare certificates using the helper script `keygen` (replacing `mender.example.com`
+and `s3.example.com` with your DNS names):
 
 ```bash
-CERT_API_CN=mender.acme.org CERT_STORAGE_CN=s3.acme.org ../keygen
+CERT_API_CN=mender.example.com CERT_STORAGE_CN=s3.example.com ../keygen
 ```
 
 > Generating a 256 bit EC private key  
@@ -358,7 +358,7 @@ your favorite editor.
 
 #### Storage proxy
 
-Locate the `storage-proxy` service and add `s3.acme.org` (or your DNS name)
+Locate the `storage-proxy` service and add `s3.example.com` (or your DNS name)
 under `networks.mender.aliases` key. The entry should look like this:
 
 ```yaml
@@ -367,7 +367,7 @@ under `networks.mender.aliases` key. The entry should look like this:
         networks:
             mender:
                 aliases:
-                    - s3.acme.org
+                    - s3.example.com
     ...
 
 ```
@@ -414,14 +414,14 @@ Locate the `mender-deployments` service. The deployments service will upload
 artifact objects to `minio` storage via `storage-proxy`,
 see the [administration overview](../Overview) for more details. For this reason,
 access credentials `DEPLOYMENTS_AWS_AUTH_KEY` and `DEPLOYMENTS_AWS_AUTH_SECRET`
-need to be updated and `DEPLOYMENTS_AWS_URI` must point to `s3.acme.org` (or
+need to be updated and `DEPLOYMENTS_AWS_URI` must point to `s3.example.com` (or
 your DNS name).
 
 !! The address used in `DEPLOYMENTS_AWS_URI` must be exactly the same as the one that will be used by devices. The deployments service generats signed URLs for accessing artifact storage. A different host name or port will result in signature verification failure and download attempts will be rejected.
 
 Set `DEPLOYMENTS_AWS_AUTH_KEY` and `DEPLOYMENTS_AWS_AUTH_SECRET` to the values
 of `MINIO_ACCESS_KEY` and `MINIO_SECRET_KEY` respectively. Set
-`DEPLOYMENTS_AWS_URI` to point to `https://s3.acme.org:9000`.
+`DEPLOYMENTS_AWS_URI` to point to `https://s3.example.com:9000`.
 
 The updated entry should look like this:
 
@@ -432,7 +432,7 @@ The updated entry should look like this:
         environment:
             DEPLOYMENTS_AWS_AUTH_KEY: mender-deployments
             DEPLOYMENTS_AWS_AUTH_SECRET: ahshagheeD1ooPaeT8lut0Shaezeipoo
-            DEPLOYMENTS_AWS_URI: https://s3.acme.org:9000
+            DEPLOYMENTS_AWS_URI: https://s3.example.com:9000
     ...
 ```
 
@@ -516,7 +516,7 @@ Furthermore, since this is a brand new installation it should be possible to req
 user login token through the API:
 
 ```bash
-curl -X POST  -D - --cacert keys-generated/certs/api-gateway/cert.crt https://mender.acme.org:443/api/management/v1/useradm/auth/login
+curl -X POST  -D - --cacert keys-generated/certs/api-gateway/cert.crt https://mender.example.com:443/api/management/v1/useradm/auth/login
 ```
 
 > HTTP/2.0 200  
@@ -534,7 +534,7 @@ curl -X POST  -D - --cacert keys-generated/certs/api-gateway/cert.crt https://me
 
 !!! Note: if your DNS name does not resolve the public IP address of current host, you may need to add appropriate entries to `/etc/hosts`.
 
-At this point you should be able to access [https://mender.acme.org](https://mender.acme.org) with your
+At this point you should be able to access [https://mender.example.com](https://mender.example.com) with your
 web browser.
 
 !!! If you encounter any issues while starting or running your Mender Server, you can take a look at the section for [troubleshooting Mender Server](../../Troubleshooting/Mender-Server).
