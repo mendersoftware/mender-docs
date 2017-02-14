@@ -17,6 +17,6 @@ also uses the OPTIONS request method.
 ### Device and Management APIs
 
 The APIs are split into two types - *Device* and *Management*. Device APIs are for
-device-originating requests, the Management APIs are APIs intended
+device-originating requests, the Management APIs are intended
 for use by the UI and other tools that manage devices, Artifacts or deployments
 across devices.
