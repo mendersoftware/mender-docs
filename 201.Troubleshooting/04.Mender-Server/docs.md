@@ -4,9 +4,39 @@ taxonomy:
     category: docs
 ---
 
-This section details troubleshooting steps for most common problems. It is
-assumed that commands are run through production helper script `run` as detailed
-in the [production installation](../../Administration/Production-installation) section.
+This document details troubleshooting steps for the most common problems with the Mender server.
+The first part applies to all installations, while the section below on Production installations
+only applies when the Mender server is [installed for production](../../Administration/Production-installation).
+
+## Resetting administrative credentials
+
+The web UI does not currently provide a 'remind/reset password' feature. However, if the credentials for
+the administrative account are lost, the account can be reset via a dedicated script
+in the [integration repository](https://github.com/mendersoftware/integration/blob/master/reset-user).
+
+To reset the account, simply run the script from the machine which hosts the `mender-mongo-useradm` Docker service:
+
+```
+./reset-user
+```
+
+This will erase the account information, while leaving all other persistent data intact. Upon next access,
+the web UI will present the account creation screen, where the username and password can be reset.
+
+##The virtual QEMU device is not showing up in test mode
+
+When running the Mender server in test mode, as described in the [getting started tutorial](../../Getting-started/Deploy-to-virtual-devices),
+a virtual `vexpress-qemu` device should connect to and ask to join the server.
+
+If this does not happen, please make sure your environment meet the resource requirements
+to run the Mender Server. In particular, it is known that the virtual device will not
+start if you do not have enough memory.
+
+
+# Production installations
+
+For the rest of this document, it is assumed that commands are run through production
+helper script `run` as detailed in the [production installation documentation](../../Administration/Production-installation).
 
 ## Listing active containers
 
@@ -199,28 +229,3 @@ user@local$ docker inspect menderproduction_mender-deployments_1 |& less
 
 `docker inspect` output contains all information about container instance,
 volumes, network, aliases etc.
-
-
-## Resetting administrative credentials
-
-The web UI does not currently provide a 'remind/reset password' feature. However, if the credentials for
-the administrative account are lost, the account can be reset via a dedicated script
-in the [integration repository](https://github.com/mendersoftware/integration/blob/master/reset-user).
-
-To reset the account, simply run the script from the machine which hosts the `mender-mongo-useradm` Docker service:
-
-```
-./reset-user
-```
-
-This will erase the account information, while leaving all other persistent data intact. Upon next access,
-the web UI will present the account creation screen, where the username and password can be reset.
-
-##The virtual QEMU device is not showing up in test mode
-
-When running the Mender server in test mode, as described in the Getting started
-guide, a virtual `vexpress-qemu` device should connect to and ask to join the server.
-
-If this does not happen, please make sure your environment meet the resource requirements
-to run the Mender Server. In particular, it is known that the virtual device will not
-start if you do not have enough memory.
