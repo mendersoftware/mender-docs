@@ -16,11 +16,11 @@ deployed to it.
 
 
 ### Version information
-*Version* : 0.1.0
+*Version* : 1.0
 
 
 ### URI scheme
-*BasePath* : /api/0.1.0
+*BasePath* : /api/1.0
 
 
 
