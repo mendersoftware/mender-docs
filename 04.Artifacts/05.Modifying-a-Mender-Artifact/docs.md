@@ -106,7 +106,7 @@ You need to adjust the path to the rootfs image and its type depending on the ma
 
 ## Create a new Mender Artifact
 
-#### Find required metadata from original Arifact
+#### Find required metadata from original Artifact
 
 We would probably like to reuse some of the original Artifact metadata
 for the new Artifact, as for example the device types it is compatible
@@ -230,7 +230,7 @@ cd $GOPATH/src/github.com/mendersoftware/mender-artifact/
 go get ./...
 ```
 
-You con now run the `mender-artifact` utility in `$GOPATH/bin/mender-artifact`, and make sure it works
+You can now run the `mender-artifact` utility in `$GOPATH/bin/mender-artifact`, and make sure it works
 by running:
 
 ```bash

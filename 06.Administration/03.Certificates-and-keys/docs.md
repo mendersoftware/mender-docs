@@ -75,7 +75,7 @@ CERT_API_CN=docker.mender.io CERT_STORAGE_CN=s3.docker.mender.io ./keygen
 !!! Make sure your device has the correct date/time set. If the date/time is incorrect, the certificate will not be validated.
 
 The keys and certificates are placed in a directory `keys-generated`
-where you ran the script from, and each service has a sub-directory within it
+where you ran the script from, and each service has a subdirectory within it
 as follows:
 
 ```bash

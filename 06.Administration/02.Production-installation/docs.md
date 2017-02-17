@@ -417,7 +417,7 @@ access credentials `DEPLOYMENTS_AWS_AUTH_KEY` and `DEPLOYMENTS_AWS_AUTH_SECRET`
 need to be updated and `DEPLOYMENTS_AWS_URI` must point to `s3.example.com` (or
 your DNS name).
 
-!! The address used in `DEPLOYMENTS_AWS_URI` must be exactly the same as the one that will be used by devices. The deployments service generats signed URLs for accessing artifact storage. A different host name or port will result in signature verification failure and download attempts will be rejected.
+!! The address used in `DEPLOYMENTS_AWS_URI` must be exactly the same as the one that will be used by devices. The deployments service generates signed URLs for accessing artifact storage. A different hostname or port will result in signature verification failure and download attempts will be rejected.
 
 Set `DEPLOYMENTS_AWS_AUTH_KEY` and `DEPLOYMENTS_AWS_AUTH_SECRET` to the values
 of `MINIO_ACCESS_KEY` and `MINIO_SECRET_KEY` respectively. Set
