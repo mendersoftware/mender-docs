@@ -47,7 +47,7 @@ Mender automatically collects identity and inventory information
 about the connected devices. You can view this information by
 clicking on a device. It should look similar to the following:
 
-![Mender UI - Device information](device_information.png)
+![Mender UI - Device information](device_information_1_0_0.png)
 
 
 !!! Which information is collected about devices is fully configurable; see the documentation on [Identity](../../Client-configuration/Identity) and [Inventory](../../Client-configuration/Inventory) for more information.
