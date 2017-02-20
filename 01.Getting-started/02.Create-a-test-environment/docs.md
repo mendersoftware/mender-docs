@@ -53,11 +53,11 @@ In a working directory, clone the Mender integration
 environment:
 
 ```bash
-git clone -b 1.0.x git://github.com/mendersoftware/integration
+curl -L https://github.com/mendersoftware/integration/archive/1.0.0.tar.gz | tar xz
 ```
 
 ```bash
-cd integration
+cd integration-1.0.0
 ```
 
 You should see a file `docker-compose.yml` inside it, which defines the
@@ -146,25 +146,23 @@ services may take about a minute.
 Mender can be started again with the same steps as above.
 
 
-## Clean up the environment and get the latest version
+## Clean up the environment
 
 !! You will lose all state data in your Mender environment by running the commands below, which includes devices you have authorized, software uploaded, logs, deployment reports and any other changes you have made.
 
-If you want to remove any state in your Mender environment and start clean
-with the latest version of Mender, you can stop Mender and run the following
-commands in the `integration` directory:
+If you want to remove all state in your Mender environment and start clean,
+run the following commands in the `integration` directory:
 
 ```bash
-docker-compose rm -v
+./stop
 ```
 
 ```bash
-git pull
+./reset
 ```
 
 ```bash
-docker-compose pull
+./up
 ```
 
-After doing this, you can start the latest version of Mender
-by following the same steps as above.
+If you just lost the login credentials, you can run the `reset-user` script.
