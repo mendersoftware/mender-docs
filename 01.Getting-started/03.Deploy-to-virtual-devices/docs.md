@@ -101,7 +101,7 @@ the Artifact we just uploaded and **All devices**, then
 As the deployment progresses, you can click on it to view more details about the current status across all devices.
 In the example below, we can see that the device is in process of installing the Artifact.
 
-![Mender UI - Deployment progress](deployment_report.png)
+![Mender UI - Deployment progress](deployment_report_1_0_0.png)
 
 !!! The deployment to the virtual device should take about 2-5 minutes to complete and report success or failure.
 
