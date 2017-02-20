@@ -27,7 +27,7 @@ Open the Mender UI in the same browser as you accepted the certificate
 in as part of [Create a test environment](../Create-a-test-environment).
 It is available at [https://localhost/](https://localhost/?target=_blank).
 
-There should be a virtual device that is waiting authorization.
+After a minute or two, there should be a virtual device that is waiting authorization.
 This means that the Mender client, which runs as a daemon on the device,
 is asking to join the Mender server so that the server can manage
 its deployments. You can also see these requests
