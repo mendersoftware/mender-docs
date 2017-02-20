@@ -69,7 +69,7 @@ Start off by cloning the Mender integration repository into a local directory
 named `mender-server`:
 
 ```bash
-git clone -b 1.0.x https://github.com/mendersoftware/integration mender-server
+git clone https://github.com/mendersoftware/integration mender-server
 ```
 > Cloning into 'deployment'...  
 > remote: Counting objects: 1117, done.  
@@ -88,7 +88,7 @@ cd mender-server
 Prepare a branch where all deployment related changes will be kept:
 
 ```bash
-git checkout -b my-production-setup
+git checkout 1.0.0 -b my-production-setup
 ```
 
 Copy deployment configuration template to a new directory named `production`:

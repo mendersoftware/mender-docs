@@ -56,7 +56,7 @@ that your device(s) can connect to the Mender server.
 ! Please make sure to set a shell variable that expands correctly with `$IP_OF_MENDER_SERVER_FROM_DEVICE` or edit the commands below accordingly.
 
 Download the test *disk* image with Mender support for the BeagleBone Black
-at [https://d1b0l86ne08fsf.cloudfront.net/1.0.x/beaglebone/mender-beaglebone.sdimg.gz](https://d1b0l86ne08fsf.cloudfront.net/1.0.x/beaglebone/mender-beaglebone.sdimg.gz).
+at [https://d1b0l86ne08fsf.cloudfront.net/1.0.0/beaglebone/mender-beaglebone.sdimg.gz](https://d1b0l86ne08fsf.cloudfront.net/1.0.0/beaglebone/mender-beaglebone.sdimg.gz).
 This image contains *all the partitions* of the storage device, as
 described in [Partition layout](../../Devices/Partition-layout).
 
@@ -193,7 +193,7 @@ deployed. See [Mender Artifacts](../../Architecture/Mender-Artifacts) for
 a complete description of this format.
 
 Download the test Artifact for the BeagleBone Black
-at [https://d1b0l86ne08fsf.cloudfront.net/1.0.x/beaglebone/beaglebone_release_1.mender](https://d1b0l86ne08fsf.cloudfront.net/1.0.x/beaglebone/beaglebone_release_1.mender).
+at [https://d1b0l86ne08fsf.cloudfront.net/1.0.0/beaglebone/beaglebone_release_1.mender](https://d1b0l86ne08fsf.cloudfront.net/1.0.0/beaglebone/beaglebone_release_1.mender).
 
 The steps needed to edit the root file system contained in this Artifact are:
 
@@ -268,7 +268,7 @@ sudo umount /mnt/rootfs
 
 To create a Mender Artifact from a root file system, it is easiest
 to download the prebuilt mender-artifact tool available for Linux
-at [https://d25phv8h0wbwru.cloudfront.net/1.0.x/tip/mender-artifact](https://d25phv8h0wbwru.cloudfront.net/1.0.x/tip/mender-artifact).
+at [https://d25phv8h0wbwru.cloudfront.net/1.0.0/tip/mender-artifact](https://d25phv8h0wbwru.cloudfront.net/1.0.0/tip/mender-artifact).
 
 After the tool is downloaded and you added execute permission,
 simply run it as follows:
