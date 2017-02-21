@@ -9,6 +9,7 @@ After downloading one of the Mender demo images or
 for the first time, you need to write the storage image to
 the flash of the device.
 
+!!! The Mender `sdimg` generator, which is part of [meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank), generates disk images with exactly four partitions: one boot, two rootfs and one data partition. It is intended as a reference implementation for testing and simple production use. For more advanced use cases, please refer to your board's tools for generating disk images and flashing storage, such as `imx-loader`, `mfg-tool`, and `tegrarcm`.
 
 ## Prerequisites
 
