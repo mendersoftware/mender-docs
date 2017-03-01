@@ -436,6 +436,24 @@ The updated entry should look like this:
     ...
 ```
 
+#### Logging
+
+The setup uses Docker's default `json-file` logging driver, which exposes two important log
+rotation parameters: `max-file` and `max-size`. For selected services - consistently producing
+a large amount of logs - we override these settings to ensure that at any given time, logs capture
+about 1 week of a running system's operation.
+
+The reference setup used for determining these parameters (`max-file: 10`, `max-size: 50m`)
+was 200 devices, polling the server every 30 minutes. The total log volume produced was 2.4GB,
+and this is the recommended amount of disk space to reserve for logging purposes alone.
+
+These parameters can however be adjusted accordingly to a particular deployment and workload. The
+deciding factors determining the log volume are:
+- the number of devices accessing the system.
+- polling frequency
+
+It is suggested to adjust log rotation parameters only after measuring the actual space usage for a given use case.
+
 #### Saving the final configuration
 
 Once all the configuration is complete, commit all changes to the repository:
