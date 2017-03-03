@@ -30,7 +30,7 @@ and at least **5 GB disk** and **2 GB RAM** available.
 #### Docker Engine 1.11
 
 Follow the [documentation to install Docker Engine](https://docs.docker.com/engine/installation/linux/ubuntulinux/?target=_blank),
-version **1.11 or later**.
+version **1.11 or later** (17.03 or later in [Docker's new versioning scheme](https://blog.docker.com/2017/03/docker-enterprise-edition/?target=_blank)).
 
 
 #### Docker Compose 1.6
