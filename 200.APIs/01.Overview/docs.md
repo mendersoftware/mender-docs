@@ -23,7 +23,7 @@ across devices.
 
 ### API Versioning and compatibility
 
-The APIs are being continiously reviewed and improved.
+The APIs are being continuously reviewed and improved.
 
 The following changes are considered backwards-compatible and users of the APIs
 should be flexible enough to handle them:
