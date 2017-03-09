@@ -151,7 +151,7 @@ write the disk image to all their SD cards.
 
 ## Boot the BeagleBone Black(s)
 
-! Make sure that the Mender server is running as described in [Create a test environment](../Create-a-test-environment) and that the device can reach it on the IP address you configured above (`$IP_OF_MENDER_SERVER_FROM_DEVICE`). You might need to set a static IP address where the Mender server runs and disable any firewalls.
+! Make sure that the Mender server is running as described in [Create a test environment](../Create-a-test-environment) and that the device can reach it on the IP address you configured above (`$IP_OF_MENDER_SERVER_FROM_DEVICE`) on ports **443** and **9000**. You might need to set a static IP address where the Mender server runs and disable any firewalls.
 
 First, insert the SD card you just provisioned into the BeagleBone black.
 
@@ -176,7 +176,7 @@ Once you **authorize** these devices, Mender will auto-discover
 inventory about the devices, including the device type (e.g. beaglebone)
 and the IP addresses, as shown in the example below.
 
-![Mender UI - Device information for BeagleBone Black](device_information_bbb.png)
+![Mender UI - Device information for BeagleBone Black](device_information_bbb_1_0_0.png)
 
 
 !!! If your BeagleBone Black does not show up for authorization in the UI, you need to diagnose what went wrong. Most commonly this is due to problems with the network. You can test if your workstation can reach the device by trying to ping it, e.g. with `ping 192.168.10.2` (replace with the IP address of your device). If you have a serial cable, you can log in to the device to diagnose. The `root` user is present and has an empty password in this test image. If you get stuck, please feel free to reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender)!
@@ -270,7 +270,7 @@ To create a Mender Artifact from a root file system, it is easiest
 to download the prebuilt mender-artifact tool available for Linux
 at [https://d25phv8h0wbwru.cloudfront.net/1.0.0/tip/mender-artifact](https://d25phv8h0wbwru.cloudfront.net/1.0.0/tip/mender-artifact).
 
-After the tool is downloaded and you added execute permission,
+After the tool is downloaded and you added execute permission (e.g. with `chmod +x mender-artifact`),
 simply run it as follows:
 
 ```bash
@@ -314,7 +314,7 @@ Select the Artifact you just uploaded and **All devices**, then
 As the deployment progresses, you can click on it to view more details about the current status across all devices.
 In the example below, we can see that a BeagleBone is installing the update.
 
-![Mender UI - Deployment progress - BeagleBone Black](deployment_report_bbb.png)
+![Mender UI - Deployment progress - BeagleBone Black](deployment_report_bbb_1_0_0.png)
 
 Once the deployment completes, you should see its report in *Past deployments*.
 
