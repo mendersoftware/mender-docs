@@ -50,3 +50,13 @@ include/config_mender.h:34:3: error: #error CONFIG_BOOTCOUNT_ENV is required for
 ```
 
 There are two alternatives to resolve this issue. Either you can upgrade to U-Boot v2014.07 or newer, where Boot Count Limit was introduced, or you can patch your current U-Boot version to support this or a similar feature. Please see [Bootloader support](../../Devices/System-requirements#bootloader-support) for more information.
+
+## The build produces an error message "__populate_fs: Could not allocate block in ext2 filesystem while writing file..."
+
+This is most likely because you are producing an image that has a lot of small files, so many that the filesystem runs out of blocks, even if there is enough space when counting bytes. There are several ways this can be remedied:
+
+* Check if you have `dbg-pkgs` set in `IMAGE_FEATURES` or `EXTRA_IMAGE_FEATURES`. This will cause debug packages to be included in the image, which typically contain a lot of small files. If you don't need the debug information, this feature can be disabled.
+
+* Increase the size of the image by increasing the value in `MENDER_STORAGE_TOTAL_SIZE_MB` (see description in [Variables](../../Artifacts/Variables#mender_storage_total_size_mb)), which will also increase the number of blocks. However, note that unless it is increased greatly, this will still give you a filesystem which is fairly close to the block limit, so the problem could happen during production instead, if the device writes enough files.
+
+* Decrease the size of each block. This can be done by setting `EXTRA_IMAGECMD_ext4 = " -b 1024"` in `local.conf`. The default is 4096, and must be a power of 1024.
