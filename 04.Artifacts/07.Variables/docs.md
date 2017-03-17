@@ -30,6 +30,13 @@ The name of the image or update that will be built. This is what the device will
 The partition Mender uses as the boot partition. See [More detailed storage configuration](../../Devices/Partition-layout#more-detailed-storage-configuration) for more information.
 
 
+#### MENDER_BOOT_PART_FSTYPE
+
+Filesystem type of boot partition. This configuration is only used in
+fstab. Most filesystems can be auto detected, but some can not and hence this
+variable exists to override the auto detection.
+
+
 #### MENDER_BOOT_PART_SIZE_MB
 
 The size of the boot partition in the generated `.sdimg` file. See [Configuring the partition sizes](../../Devices/Partition-layout#configuring-the-partition-sizes) for more information.
@@ -38,6 +45,13 @@ The size of the boot partition in the generated `.sdimg` file. See [Configuring 
 #### MENDER_DATA_PART
 
 The partition Mender uses as the persistent data partition. See [More detailed storage configuration](../../Devices/Partition-layout#more-detailed-storage-configuration) for more information.
+
+
+#### MENDER_DATA_PART_FSTYPE
+
+Filesystem type of data partition. This configuration is only used in
+fstab. Most filesystems can be auto detected, but some can not and hence this
+variable exists to override the auto detection.
 
 
 #### MENDER_DATA_PART_SIZE_MB
@@ -72,10 +86,10 @@ heuristic: `4 * MENDER_PARTITION_ALIGNMENT_MB` (accounts for boot partition, two
 rootfs partitions and a data partition).
 
 
-#### MENDER_PARTITION_ALIGNMENT_MB
+#### MENDER_PARTITION_ALIGNMENT_KB
 
-Alignment of partitions used when building `.sdimg` image, expressed in MB.
-Default value is `8`.
+Alignment of partitions used when building `.sdimg` image, expressed in kiB.
+Default value is `8192`.
 
 
 #### MENDER_ROOTFS_PART_A
