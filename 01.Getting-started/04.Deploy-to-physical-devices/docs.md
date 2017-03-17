@@ -342,7 +342,7 @@ more BeagleBone Black devices to the environment and try to get the
 required blinkenlights going!
 
 If you want to build your own artifact for the BeagleBone Black,
-head over to the tutorial [Building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image).
+head over to the tutorial [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
 
 
 ## Integrate Mender with your device

@@ -13,7 +13,7 @@ All keys are encoded in the PEM format. The public keys are shared in the
 standard X.509 certificate format, `cert.crt` below,
 while private keys are seen as `private.key` below.
 
-See the [service overview](../Overview) for schematics of the service
+See the [service overview](../overview) for schematics of the service
 communication flow. An overview of the components that use keys and
 for which purpose can be seen below.
 
@@ -30,7 +30,7 @@ for which purpose can be seen below.
 
 In the following we will go through how to replace all the keys and certificates
 that the services use. This is very important as part of a
-[Production installation](../Production-installation) because each installation
+[Production installation](../production-installation) because each installation
 must have unique keys in order to be secure, so that the private keys used are
 not compromised.
 

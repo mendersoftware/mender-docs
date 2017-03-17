@@ -290,7 +290,7 @@ the main `u-boot` recipe.
 An alternative approach is to port the forked U-Boot recipe,
 `u-boot-my-fork_*.bb` to a `u-boot-fw-utils-my-fork_*.bb` recipe. We have 
 provided a
-[practical example for this](Providing-custom-u-boot-fw-utils).
+[practical example for this](providing-custom-u-boot-fw-utils).
 
 The two recipes should use identical source code (e.g. the same patches
 applied).

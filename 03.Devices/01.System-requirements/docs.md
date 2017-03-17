@@ -20,7 +20,7 @@ Our physical reference device, the [BeagleBone Black](https://beagleboard.org/bl
 
 ##Bootloader support
 To support atomic rootfs rollback, Mender integrates with the bootloader of the device. Currently Mender supports [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank).
-As Mender relies on the `CONFIG_BOOTCOUNT_ENV` feature of U-Boot, which was [introduced in October 2013](http://lists.denx.de/pipermail/u-boot/2013-October/165484.html?target=_blank), Mender currently recommends **U-Boot v2014.07 or newer**. If you have an older version of U-Boot, it is possible to apply some extra patches to make this work. Please see the section about [U-Boot versions without BOOTLIMIT support](../Integrating-with-U-Boot/U-Boot-versions-without-BOOTLIMIT-support) for more information.
+As Mender relies on the `CONFIG_BOOTCOUNT_ENV` feature of U-Boot, which was [introduced in October 2013](http://lists.denx.de/pipermail/u-boot/2013-October/165484.html?target=_blank), Mender currently recommends **U-Boot v2014.07 or newer**. If you have an older version of U-Boot, it is possible to apply some extra patches to make this work. Please see the section about [U-Boot versions without BOOTLIMIT support](../integrating-with-u-Boot/u-boot-versions-without-BOOTLIMIT-support) for more information.
 
 
 Besides any special configuration to support the device, U-Boot needs to be compiled and used with the following features:
@@ -31,17 +31,17 @@ Besides any special configuration to support the device, U-Boot needs to be comp
 Support for modifying U-Boot variables from user space is also required so that fw_printenv/fw_setenv utilities (from u-boot-fw-utils) are available in user space. These utilities can be 
 [compiled from U-Boot sources](http://www.denx.de/wiki/view/DULG/HowCanIAccessUBootEnvironmentVariablesInLinux?target=_blank) and are part of U-Boot.
 
-Please see [Integrating with U-Boot](../Integrating-with-U-Boot) for more information.
+Please see [Integrating with U-Boot](../integrating-with-u-boot) for more information.
 
 ##Kernel support
 While Mender itself does not have any specific kernel requirements beyond what a normal Linux kernel provides, it relies on systemd, which does have one such requirement: The `CONFIG_FHANDLE` feature must be enabled in the kernel. The symptom if this feature is unavailable is that systemd hangs during boot looking for device files.
 
-If you [run the Mender client in standalone mode](../../Architecture/Overview#modes-of-operation), you can avoid this dependency by [disabling Mender as a system service](../../Artifacts/Image-configuration#disabling-mender-as-a-system-service) .
+If you [run the Mender client in standalone mode](../../architecture/overview#modes-of-operation), you can avoid this dependency by [disabling Mender as a system service](../../artifacts/image-configuration#disabling-mender-as-a-system-service) .
 
 ##Partition layout
-Please see [Partition layout](../Partition-layout/).
+Please see [Partition layout](../partition-layout/).
 
 ##Correct clock
 Certificate verification requires the device clock to be running correctly at all times.
 Make sure to either have a reliable clock or use network time synchronization.
-Please see [certificate troubleshooting](../../Troubleshooting/Mender-Client#certificate-expired-or-not-yet-valid) for more information about the symptoms of this issue.
+Please see [certificate troubleshooting](../../troubleshooting/mender-client#certificate-expired-or-not-yet-valid) for more information about the symptoms of this issue.

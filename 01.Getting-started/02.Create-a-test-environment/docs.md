@@ -6,7 +6,7 @@ taxonomy:
 
 ! Following this tutorial will create a demo installation of the Mender, appropriate for testing and experimenting. When you are ready to install for production, please follow the [Production installation documentation](../../Administration/Production-installation).
 
-Mender consists of a [server and updater client](../../Architecture/Overview).
+Mender consists of a [server and updater client](../../architecture/overview).
 The Mender server is using the microservices design pattern, meaning that
 multiple small, isolated services make up the server. The Mender updater client
 is designed to run on embedded Linux devices and connects to the server
@@ -130,11 +130,11 @@ user. Simply input your email and desired password as shown below:
 ![Mender UI - initial load](create_user_initial.png)
 
 
-!!! Your email and password are currently only used to log in to the Mender server. You will not receive any email from Mender. However, this might change in future versions so we recommend to input your real email address. Mender currently supports one user account, support for multiple user accounts will be implemented shortly. If you lose your username or password, please see the [documentation on resetting administrative credentials](../../Troubleshooting/Mender-Server#resetting-administrative-credentials).
+!!! Your email and password are currently only used to log in to the Mender server. You will not receive any email from Mender. However, this might change in future versions so we recommend to input your real email address. Mender currently supports one user account, support for multiple user accounts will be implemented shortly. If you lose your username or password, please see the [documentation on resetting administrative credentials](../../troubleshooting/mender-server#resetting-administrative-credentials).
 
 
 **Congratulations!** You have the Mender server and a virtual Mender client successfully running!
-Please proceed to [Deploy to virtual devices](../Deploy-to-virtual-devices).
+Please proceed to [Deploy to virtual devices](../deploy-to-virtual-devices).
 
 You can find some steps for maintaining your test environment below.
 
