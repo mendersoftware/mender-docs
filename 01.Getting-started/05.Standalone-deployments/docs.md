@@ -55,7 +55,7 @@ Ethernet cable and use static IP addresses at both ends.
 
 ## Write the disk image to the SD card
 
-Please see [Provisioning a new device](../../Artifacts/Provisioning-a-new-device)
+Please see [Provisioning a new device](../../artifacts/provisioning-a-new-device)
 for steps how to provision the device storage using the `*.sdimg` image.
 
 !!! If you are testing with QEMU, there is no need to do this step as you will run it from virtual storage.

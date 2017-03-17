@@ -47,7 +47,7 @@ At the end of this guide you will have:
 - SSL certificate for the Storage Proxy
 - a set of keys for generating and validating access tokens
 
-Consult the section on [certificates and keys](../Certificates-and-keys) for details on
+Consult the section on [certificates and keys](../certificates-and-keys) for details on
 how the certificates and keys are used in the system.
 
 #### Docker compose naming scheme
@@ -215,7 +215,7 @@ Your local directory tree should now look like this:
 The production template file `prod.yml` is already configured to load keys and
 certificates from locations created by the `keygen` script. If you wish to use a
 different set of certificates or keys, please consult the
-[relevant documentation](../Certificates-and-keys).
+[relevant documentation](../certificates-and-keys).
 
 Next, we can add and commit generated keys and certificates:
 
@@ -373,7 +373,7 @@ under `networks.mender.aliases` key. The entry should look like this:
 ```
 
 You can also change the values for `DOWNLOAD_SPEED` and `MAX_CONNECTIONS`.
-See the [section on bandwidth](../Bandwidth) for more details on these
+See the [section on bandwidth](../bandwidth) for more details on these
 settings.
 
 

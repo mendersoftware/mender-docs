@@ -37,7 +37,7 @@ The other layers in *meta-mender* provide support for specific boards.
 
 ! We use the Yocto Project's **morty** branch below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* We use the `morty` branch in `meta-mender`, which builds a stable version of Mender for the latest Yocto Project release. `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases , but these branches are no longer maintained by Mender developers. Please reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender) if you would like help with getting Mender to work on other versions of the Yocto Project.
 
-!!! The meta-mender-demo layer, which is used below, and the web-server, are bundled with a default demo certificate and key. If you are intending on using Mender in production, you must generate your own certificate using OpenSSL. Please see the certificate section [for the server](../../Administration/Certificates-and-keys) and [for the client](../Building-for-production/#certificates) for more information.
+!!! The meta-mender-demo layer, which is used below, and the web-server, are bundled with a default demo certificate and key. If you are intending on using Mender in production, you must generate your own certificate using OpenSSL. Please see the certificate section [for the server](../../administration/certificates-and-keys) and [for the client](../building-for-production/#certificates) for more information.
 
 The required meta layers are found in the following repositories:
 
@@ -121,7 +121,7 @@ part of your Yocto Project build environment.
 
 ## Configuring the build
 
-!!! The configuration in `conf/local.conf` below will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../Architecture/Overview#modes-of-operation). See the [section on customizations](../Image-configuration#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
+!!! The configuration in `conf/local.conf` below will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../Architecture/Overview#modes-of-operation). See the [section on customizations](../image-configuration#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
 
 Add these lines to the start of your `conf/local.conf`:
 
@@ -144,9 +144,9 @@ IMAGE_FSTYPES = "ext4"
 
 Please replace `<YOUR-MACHINE>` with the correct machine for your device.
 
-! The machine `<YOUR-MACHINE>` needs to be integrated with Mender before it will work correctly; most notably U-Boot needs the required features and integration. Please see [Device integration](../../Devices) for more information. If you are building for a Mender [reference device](../../Getting-started/What-is-Mender#mender-reference-devices), you can use `vexpress-qemu` or `beaglebone`. 
+! The machine `<YOUR-MACHINE>` needs to be integrated with Mender before it will work correctly; most notably U-Boot needs the required features and integration. Please see [Device integration](../../devices) for more information. If you are building for a Mender [reference device](../../Getting-started/What-is-Mender#mender-reference-devices), you can use `vexpress-qemu` or `beaglebone`. 
 
-!!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../Variables#mender_storage_total_size_mb) for more information. Mender automatically selects the file system types it builds into the disk image, which is used for initial flash provisioning, based on the `IMAGE_FSTYPES` variable. See the [section on file system types](../../Devices/Partition-layout#file-system-types) for more information.
+!!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../variables#mender_storage_total_size_mb) for more information. Mender automatically selects the file system types it builds into the disk image, which is used for initial flash provisioning, based on the `IMAGE_FSTYPES` variable. See the [section on file system types](../../Devices/Partition-layout#file-system-types) for more information.
 
 !!! It is suggested to add `INHERIT += "rm_work"` to `conf/local.conf` in order to conserve disk space during the build.
 
@@ -169,7 +169,7 @@ bitbake <YOUR-TARGET>
 After a successful build, the images and build artifacts are placed in `tmp/deploy/images/<YOUR-MACHINE>/`.
 
 The files with suffix `.sdimg` are used to provision the device storage for devices without
-Mender running already. Please proceed to [Provisioning a new device](../Provisioning-a-new-device)
+Mender running already. Please proceed to [Provisioning a new device](../provisioning-a-new-device)
 for steps to do this.
 
 On the other hand, if you already have Mender running on your device and want to deploy a rootfs update
