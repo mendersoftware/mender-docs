@@ -72,10 +72,10 @@ heuristic: `4 * MENDER_PARTITION_ALIGNMENT_MB` (accounts for boot partition, two
 rootfs partitions and a data partition).
 
 
-#### MENDER_PARTITION_ALIGNMENT_MB
+#### MENDER_PARTITION_ALIGNMENT_KB
 
-Alignment of partitions used when building `.sdimg` image, expressed in MB.
-Default value is `8`.
+Alignment of partitions used when building `.sdimg` image, expressed in kiB.
+Default value is `8192`.
 
 
 #### MENDER_ROOTFS_PART_A
