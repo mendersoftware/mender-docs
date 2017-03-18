@@ -44,4 +44,4 @@ Please see [Partition layout](../partition-layout/).
 ##Correct clock
 Certificate verification requires the device clock to be running correctly at all times.
 Make sure to either have a reliable clock or use network time synchronization.
-Please see [certificate troubleshooting](../../Troubleshooting/Mender-Client#certificate-expired-or-not-yet-valid) for more information about the symptoms of this issue.
+Please see [certificate troubleshooting](../../troubleshooting/mender-client#certificate-expired-or-not-yet-valid) for more information about the symptoms of this issue.
