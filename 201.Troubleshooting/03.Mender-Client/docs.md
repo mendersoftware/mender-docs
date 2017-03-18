@@ -40,7 +40,7 @@ echo | openssl s_client -connect s3.example.com:9000 2>/dev/null | openssl x509 
 > notAfter=Dec 12 19:52:46 2026 GMT  
 
 We can see that both these certificates are currently valid.
-Also see the [documentation on certificates](../../Administration/Certificates-and-keys) for an
+Also see the [documentation on certificates](../../administration/certificates-and-keys) for an
 overview and description on how to generate new certificates.
 
 
@@ -56,4 +56,4 @@ ERRO[0000] exit status 1                                 module=partitions
 ERRO[0000] No match between boot and root partitions.    module=main
 ```
 
-The problem here is most likely that the device does not have the [partition layout Mender expects](../../Devices/Partition-layout). This could have happened if you just placed the Mender binary into your rootfs, but did not [reflash the entire storage device](../../Artifacts/Provisioning-a-new-device) with the `.sdimg.` file output from the [Yocto Project build](../../Artifacts/Building-Mender-Yocto-image). When this happens, output from `mount` and `fw_printenv` can confirm that this is the problem you are seeing. The solution is to flash your entire storage device with the `.sdimg` output from the Yocto Project build process.
+The problem here is most likely that the device does not have the [partition layout Mender expects](../../devices/partition-layout). This could have happened if you just placed the Mender binary into your rootfs, but did not [reflash the entire storage device](../../artifacts/provisioning-a-new-device) with the `.sdimg.` file output from the [Yocto Project build](../../artifacts/building-mender-yocto-image). When this happens, output from `mount` and `fw_printenv` can confirm that this is the problem you are seeing. The solution is to flash your entire storage device with the `.sdimg` output from the Yocto Project build process.
