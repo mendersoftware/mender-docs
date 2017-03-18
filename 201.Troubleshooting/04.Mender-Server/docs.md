@@ -6,7 +6,7 @@ taxonomy:
 
 This document details troubleshooting steps for the most common problems with the Mender server.
 The first part applies to all installations, while the section below on Production installations
-only applies when the Mender server is [installed for production](../../Administration/Production-installation).
+only applies when the Mender server is [installed for production](../../administration/production-installation).
 
 ## Resetting administrative credentials
 
@@ -25,7 +25,7 @@ the web UI will present the account creation screen, where the username and pass
 
 ##The virtual QEMU device is not showing up in test mode
 
-When running the Mender server in test mode, as described in the [getting started tutorial](../../Getting-started/Deploy-to-virtual-devices),
+When running the Mender server in test mode, as described in the [getting started tutorial](../../getting-started/deploy-to-virtual-devices),
 a virtual `vexpress-qemu` device should connect to and ask to join the server.
 
 If this does not happen, please make sure your environment meet the resource requirements
@@ -36,7 +36,7 @@ start if you do not have enough memory.
 # Production installations
 
 For the rest of this document, it is assumed that commands are run through production
-helper script `run` as detailed in the [production installation documentation](../../Administration/Production-installation).
+helper script `run` as detailed in the [production installation documentation](../../administration/production-installation).
 
 ## Listing active containers
 
