@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 Inventory is a set of simple key-value attributes that are useful know about a device,
-similar to the [device identity attributes](../Identity). However, the device
+similar to the [device identity attributes](../identity). However, the device
 inventory attributes are not used to uniquely identify over time, they are just
 informational. As such, they do not need to be unique for each device like the
 device identity attributes.

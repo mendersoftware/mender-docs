@@ -11,7 +11,7 @@ to deploy updates to devices which do not have network connectivity or
 are updated through external storage like a USB stick.
 
 For an explanation of the difference between *managed* and *standalone* deployments, please see
-[Modes of operation](../../Architecture/Overview#modes-of-operation).
+[Modes of operation](../../architecture/overview#modes-of-operation).
 
 
 ## Prerequisites
@@ -31,15 +31,15 @@ The first is an image file to flash to the entire disk of the
 device. `meta-mender` creates these files with a `.sdimg`
 suffix, so they are easy to recognize. This file contains
 all the partitions of the given storage device, as
-described in [Partition layout](../../Devices/Partition-layout).
+described in [Partition layout](../../devices/partition-layout).
 
 In addition, you need an Artifact file to update to, recognized
 by its `.mender` suffix.
-See [Mender Artifacts](../../Architecture/Mender-Artifacts)
+See [Mender Artifacts](../../architecture/mender-artifacts)
 for a more detailed overview.
 
 You can build the required images by following the steps
-described in [Building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image).
+described in [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
 
 !!! If you are testing Mender on the reference devices BeagleBone Black or QEMU, you can save the build time by **[downloading the prebuilt demo images](https://doyabzhx7xw8o.cloudfront.net/master/mender-standalone.tar.gz)**. The `.sdimg` disk images, and `.mender` Artifacts are found in the `vexpress-qemu` and `beaglebone` directories.
 
@@ -55,7 +55,7 @@ Ethernet cable and use static IP addresses at both ends.
 
 ## Write the disk image to the SD card
 
-Please see [Provisioning a new device](../../Artifacts/Provisioning-a-new-device)
+Please see [Provisioning a new device](../../artifacts/provisioning-a-new-device)
 for steps how to provision the device storage using the `*.sdimg` image.
 
 !!! If you are testing with QEMU, there is no need to do this step as you will run it from virtual storage.
@@ -132,4 +132,4 @@ mender -commit
 
 By running this command, Mender will configure the bootloader to persistently boot from this updated rootfs partition. To deploy another update, simply follow these instructions again (from `mender ... -rootfs ...`).
 
-!!! If we reboot the device again *without* running `mender -commit`, it will boot into the previous rootfs partition that is known to be working (where we deployed the update from). This ensures a robust update process in cases where the newly deployed rootfs does not boot or otherwise has issues that we want to roll back from. Also note that it is possible to automate deployments by [running the Mender client as a daemon](../../Architecture/Overview#modes-of-operation).
+!!! If we reboot the device again *without* running `mender -commit`, it will boot into the previous rootfs partition that is known to be working (where we deployed the update from). This ensures a robust update process in cases where the newly deployed rootfs does not boot or otherwise has issues that we want to roll back from. Also note that it is possible to automate deployments by [running the Mender client as a daemon](../../architecture/overview#modes-of-operation).

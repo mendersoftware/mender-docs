@@ -52,7 +52,7 @@ these should be enabled in the board support headers in U-Boot, under
 
 3. `CONFIG_ENV_IS_IN_MMC`: This will store the U-Boot environment file on the
    memory card, before the first partition start. See
-   [`MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET`](../../Artifacts/Variables#mender_uboot_env_storage_device_offset)
+   [`MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET`](../../artifacts/variables#mender_uboot_env_storage_device_offset)
    for more information. Other `CONFIG_ENV_IS_IN_` features should be turned
    off.
 
@@ -290,7 +290,7 @@ the main `u-boot` recipe.
 An alternative approach is to port the forked U-Boot recipe,
 `u-boot-my-fork_*.bb` to a `u-boot-fw-utils-my-fork_*.bb` recipe. We have 
 provided a
-[practical example for this](Providing-custom-u-boot-fw-utils).
+[practical example for this](providing-custom-u-boot-fw-utils).
 
 The two recipes should use identical source code (e.g. the same patches
 applied).

@@ -16,20 +16,20 @@ This is simple to accomplish by adding a `recipes-mender/mender/mender_%.bbappen
 SYSTEMD_AUTO_ENABLE = "disable"
 ```
 
-In this case it is also possible to avoid Mender's current dependency on systemd. If you do not wish to enable systemd in your build, instead of inheriting `mender-full` in `local.conf`, you should inherit each of the classes that `mender-full` inherits, except `mender-systemd`. Also, you do not need any daemon-related configuration items in your `conf/local.conf` as outlined in [the section on configuring the Yocto Project build](../../Artifacts/Building-Mender-Yocto-image#configuring-the-build). Currently you can use the following snippet for Mender in your `conf/local.conf` to completely disable Mender as a daemon (but please verify what `mender-full` inherits at the time you make this change):
+In this case it is also possible to avoid Mender's current dependency on systemd. If you do not wish to enable systemd in your build, instead of inheriting `mender-full` in `local.conf`, you should inherit each of the classes that `mender-full` inherits, except `mender-systemd`. Also, you do not need any daemon-related configuration items in your `conf/local.conf` as outlined in [the section on configuring the Yocto Project build](../../artifacts/building-mender-yocto-image#configuring-the-build). Currently you can use the following snippet for Mender in your `conf/local.conf` to completely disable Mender as a daemon (but please verify what `mender-full` inherits at the time you make this change):
 
 ```bash
 INHERIT += "mender-artifactimg mender-image mender-image-sd mender-install mender-uboot"
 MACHINE = "vexpress-qemu"  # replace with the desired machine
 ```
 
-! If you disable Mender running as a daemon under `systemd`, you must run all required Mender commands from the CLI or scripts. Most notably, you need to run `mender -commit` after booting into and verifying a successful deployment. When running in managed mode, any pending `mender -commit` will automatically be run by the Mender daemon after it starts. See [Modes of operation](../../Architecture/Overview#modes-of-operation) for more information about the difference.
+! If you disable Mender running as a daemon under `systemd`, you must run all required Mender commands from the CLI or scripts. Most notably, you need to run `mender -commit` after booting into and verifying a successful deployment. When running in managed mode, any pending `mender -commit` will automatically be run by the Mender daemon after it starts. See [Modes of operation](../../architecture/overview#modes-of-operation) for more information about the difference.
 
 
 ## Configuring polling intervals
 
 You can configure how frequently the Mender client will make requests to the Mender server
-as described in [Polling intervals](../../Client-configuration/Polling-intervals) before
+as described in [Polling intervals](../../client-configuration/polling-intervals) before
 starting the build process.
 
 In order to do this, change the following in the file
