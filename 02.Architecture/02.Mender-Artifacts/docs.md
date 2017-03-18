@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-As described in the [architecture overview](../Overview) Mender uses the output
+As described in the [architecture overview](../overview) Mender uses the output
 from a build system and deploys this to remote devices.
 
 In order to ensure a robust update process, Mender needs *additional metadata*
@@ -32,7 +32,7 @@ Mender Artifact file.
 
 ![Mender Artifact format](mender-artifact-format.png)
 
-Internally, a Mender Artifact is simply a file archive in the [tarball format](https://en.wikipedia.org/wiki/Tar_(computing)?target=_blank).
+Internally, a Mender Artifact is simply a file archive in the [tarball format](https://en.wikipedia.org/wiki/tar_(computing)?target=_blank).
 It contains several files for incorporating versioning, extensions and metadata,
 as well as the main file: the root file system.
 
@@ -50,7 +50,7 @@ improves performance and reduces flash wear.
 To enable streaming and control based on metadata, like aborting the download
 if the Artifact is not compatible with the device, the Mender Artifact itself
 is not compressed. Instead, the root file systems within Artifacts are
-compressed, currently with the [gzip compression algorithm](https://en.wikipedia.org/wiki/Gzip?target=_blank).
+compressed, currently with the [gzip compression algorithm](https://en.wikipedia.org/wiki/gzip?target=_blank).
 
 
 ## Working with Mender Artifacts
@@ -58,7 +58,7 @@ compressed, currently with the [gzip compression algorithm](https://en.wikipedia
 The easiest and most common way to generate Mender Artifacts is by
 adding the [meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank)
 layer to your Yocto Project build environment. There is more information
-on how to do this as part of the tutorial [Building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image).
+on how to do this as part of the tutorial [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
 
 Although it is possible to use a tar utility to extract, modify and package
 Mender Artifacts, this is error-prone due to the amount of details
@@ -67,4 +67,4 @@ metadata and checksum computation.
 For this reason, it is recommended to use the Mender Artifact utility or Go library
 when you need to work with Mender Artifacts. The Mender Artifacts library and utility
 is available as open source in the [Mender Artifacts repository](https://github.com/mendersoftware/mender-artifact?target=_blank)
-and there is a tutorial using the utility at [Modifying a Mender Artifact](../../Artifacts/Modifying-a-Mender-Artifact).
+and there is a tutorial using the utility at [Modifying a Mender Artifact](../../artifacts/modifying-a-mender-artifact).

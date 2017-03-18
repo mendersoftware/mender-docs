@@ -8,7 +8,7 @@ Mender backend is composed of a number of microservices, each implementing a
 small, well defined piece of functionality.
 
 The integration environment, previously used
-in [Create a test environment](../../Getting-started/Create-a-test-environment)
+in [Create a test environment](../../getting-started/create-a-test-environment)
 chapter, brings together the following services:
 
 - [Mender Device Admission Service](https://github.com/mendersoftware/deviceadm?target=_blank)

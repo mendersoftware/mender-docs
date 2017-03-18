@@ -10,7 +10,7 @@ The variables are either specific to- and defined by Mender, as shown by the `ME
 
 #### IMAGE_FSTYPES
 
-Influences which file system type Mender will build for the rootfs partitions in the `.sdimg` file. Mender will pick the **first** of the file system types ext2/ext3/ext4 listed in this variable as the file system for rootfs in the generated `.sdimg` file. See [File system types](../../Devices/Partition-layout#file-system-types) for more information.
+Influences which file system type Mender will build for the rootfs partitions in the `.sdimg` file. Mender will pick the **first** of the file system types ext2/ext3/ext4 listed in this variable as the file system for rootfs in the generated `.sdimg` file. See [File system types](../../devices/partition-layout#file-system-types) for more information.
 
 
 #### IMAGE_ROOTFS_SIZE
@@ -27,7 +27,7 @@ The name of the image or update that will be built. This is what the device will
 
 #### MENDER_BOOT_PART
 
-The partition Mender uses as the boot partition. See [More detailed storage configuration](../../Devices/Partition-layout#more-detailed-storage-configuration) for more information.
+The partition Mender uses as the boot partition. See [More detailed storage configuration](../../devices/partition-layout#more-detailed-storage-configuration) for more information.
 
 
 #### MENDER_BOOT_PART_FSTYPE
@@ -39,12 +39,12 @@ variable exists to override the auto detection.
 
 #### MENDER_BOOT_PART_SIZE_MB
 
-The size of the boot partition in the generated `.sdimg` file. See [Configuring the partition sizes](../../Devices/Partition-layout#configuring-the-partition-sizes) for more information.
+The size of the boot partition in the generated `.sdimg` file. See [Configuring the partition sizes](../../devices/partition-layout#configuring-the-partition-sizes) for more information.
 
 
 #### MENDER_DATA_PART
 
-The partition Mender uses as the persistent data partition. See [More detailed storage configuration](../../Devices/Partition-layout#more-detailed-storage-configuration) for more information.
+The partition Mender uses as the persistent data partition. See [More detailed storage configuration](../../devices/partition-layout#more-detailed-storage-configuration) for more information.
 
 
 #### MENDER_DATA_PART_FSTYPE
@@ -56,7 +56,7 @@ variable exists to override the auto detection.
 
 #### MENDER_DATA_PART_SIZE_MB
 
-The size of the persistent data partition in the generated `.sdimg` file. See [Configuring the partition sizes](../../Devices/Partition-layout#configuring-the-partition-sizes) for more information.
+The size of the persistent data partition in the generated `.sdimg` file. See [Configuring the partition sizes](../../devices/partition-layout#configuring-the-partition-sizes) for more information.
 
 
 #### MENDER_DEMO_HOST_IP_ADDRESS
@@ -94,17 +94,17 @@ Default value is `8192`.
 
 #### MENDER_ROOTFS_PART_A
 
-The partition Mender uses as the first (A) rootfs partition. See [More detailed storage configuration](../../Devices/Partition-layout#more-detailed-storage-configuration) for more information.
+The partition Mender uses as the first (A) rootfs partition. See [More detailed storage configuration](../../devices/partition-layout#more-detailed-storage-configuration) for more information.
 
 
 #### MENDER_ROOTFS_PART_B
 
-The partition Mender uses as the second (B) rootfs partition. See [More detailed storage configuration](../../Devices/Partition-layout#more-detailed-storage-configuration) for more information.
+The partition Mender uses as the second (B) rootfs partition. See [More detailed storage configuration](../../devices/partition-layout#more-detailed-storage-configuration) for more information.
 
 
 #### MENDER_STORAGE_DEVICE
 
-The storage device holding all partitions (rootfs, boot, data) used by Mender. See [Configuring storage](../../Devices/Partition-layout#configuring-storage) for more information.
+The storage device holding all partitions (rootfs, boot, data) used by Mender. See [Configuring storage](../../devices/partition-layout#configuring-storage) for more information.
 
 
 #### MENDER_STORAGE_TOTAL_SIZE_MB
@@ -128,14 +128,14 @@ overridden, it must also be aligned to `MENDER_PARTITION_ALIGNMENT_MB`.
 
 #### MENDER_UBOOT_STORAGE_DEVICE
 
-The storage device, as referred to by U-Boot (e.g. `1`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [U-Boot and the Linux kernel do not agree about the indexes of storage devices](../../Troubleshooting/Yocto-project-build#u-boot-and-the-linux-kernel-do-not-agree-about-the-indexes-of-st) for more information.
+The storage device, as referred to by U-Boot (e.g. `1`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [U-Boot and the Linux kernel do not agree about the indexes of storage devices](../../troubleshooting/yocto-project-build#u-boot-and-the-linux-kernel-do-not-agree-about-the-indexes-of-st) for more information.
 
 
 #### MENDER_UBOOT_STORAGE_INTERFACE
 
-The storage interface, as referred to by U-Boot (e.g. `mmc`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [U-Boot and the Linux kernel do not agree about the indexes of storage devices](../../Troubleshooting/Yocto-project-build#u-boot-and-the-linux-kernel-do-not-agree-about-the-indexes-of-st) for more information.
+The storage interface, as referred to by U-Boot (e.g. `mmc`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [U-Boot and the Linux kernel do not agree about the indexes of storage devices](../../troubleshooting/yocto-project-build#u-boot-and-the-linux-kernel-do-not-agree-about-the-indexes-of-st) for more information.
 
 
 #### SYSTEMD_AUTO_ENABLE_pn-mender
 
-Controls whether to run Mender as a systemd service. See [Modes of operations](../../Architecture/Overview#modes-of-operation) and [Image configuration](../../Artifacts/Image-configuration) for more information.
+Controls whether to run Mender as a systemd service. See [Modes of operations](../../architecture/overview#modes-of-operation) and [Image configuration](../../artifacts/image-configuration) for more information.

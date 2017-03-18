@@ -4,9 +4,9 @@ taxonomy:
     category: docs
 ---
 
-! Following this tutorial will create a demo installation of the Mender, appropriate for testing and experimenting. When you are ready to install for production, please follow the [Production installation documentation](../../Administration/Production-installation).
+! Following this tutorial will create a demo installation of the Mender, appropriate for testing and experimenting. When you are ready to install for production, please follow the [Production installation documentation](../../administration/production-installation).
 
-Mender consists of a [server and updater client](../../Architecture/Overview).
+Mender consists of a [server and updater client](../../architecture/overview).
 The Mender server is using the microservices design pattern, meaning that
 multiple small, isolated services make up the server. The Mender updater client
 is designed to run on embedded Linux devices and connects to the server

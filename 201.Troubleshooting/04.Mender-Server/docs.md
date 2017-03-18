@@ -202,10 +202,10 @@ time="2017-01-31T08:25:15Z" level=fatal msg="NoCredentialProviders: no valid pro
 As seen in [container logs](#container-logs) section, `mender-deployments`
 service is restarting. The logs suggest there might be missing credentials for
 an AWS related service.
-From the [production installation](../../Administration/Production-installation) guide, we can recall
+From the [production installation](../../administration/production-installation) guide, we can recall
 that
 `mender-deployments`
-[service configuration](../../Administration/Production-installation#deployments-service) contains
+[service configuration](../../administration/production-installation#deployments-service) contains
 credentials for artifact storage service.
 
 Configuration of current instance of `mender-deployments` can be viewed using

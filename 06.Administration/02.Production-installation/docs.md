@@ -47,7 +47,7 @@ At the end of this guide you will have:
 - SSL certificate for the Storage Proxy
 - a set of keys for generating and validating access tokens
 
-Consult the section on [certificates and keys](../Certificates-and-keys) for details on
+Consult the section on [certificates and keys](../certificates-and-keys) for details on
 how the certificates and keys are used in the system.
 
 #### Docker compose naming scheme
@@ -215,7 +215,7 @@ Your local directory tree should now look like this:
 The production template file `prod.yml` is already configured to load keys and
 certificates from locations created by the `keygen` script. If you wish to use a
 different set of certificates or keys, please consult the
-[relevant documentation](../Certificates-and-keys).
+[relevant documentation](../certificates-and-keys).
 
 Next, we can add and commit generated keys and certificates:
 
@@ -241,7 +241,7 @@ git commit -m 'production: adding generated keys and certificates'
 
 The API Gateway and Storage Proxy certificates generated here need to be made
 available to the Mender client.
-Consult the section on [building for production](../../Artifacts/Building-for-production)
+Consult the section on [building for production](../../artifacts/building-for-production)
 for a description on how to include the certificates in the client builds.
 
 !! Only certificates need to be made available to devices or end users. Private keys should never be shared.
@@ -373,7 +373,7 @@ under `networks.mender.aliases` key. The entry should look like this:
 ```
 
 You can also change the values for `DOWNLOAD_SPEED` and `MAX_CONNECTIONS`.
-See the [section on bandwidth](../Bandwidth) for more details on these
+See the [section on bandwidth](../bandwidth) for more details on these
 settings.
 
 
@@ -412,7 +412,7 @@ The updated entry should look similar to this:
 
 Locate the `mender-deployments` service. The deployments service will upload
 artifact objects to `minio` storage via `storage-proxy`,
-see the [administration overview](../Overview) for more details. For this reason,
+see the [administration overview](../overview) for more details. For this reason,
 access credentials `DEPLOYMENTS_AWS_AUTH_KEY` and `DEPLOYMENTS_AWS_AUTH_SECRET`
 need to be updated and `DEPLOYMENTS_AWS_URI` must point to `s3.example.com` (or
 your DNS name).
@@ -555,4 +555,4 @@ curl -X POST  -D - --cacert keys-generated/certs/api-gateway/cert.crt https://me
 At this point you should be able to access [https://mender.example.com](https://mender.example.com) with your
 web browser.
 
-!!! If you encounter any issues while starting or running your Mender Server, you can take a look at the section for [troubleshooting Mender Server](../../Troubleshooting/Mender-Server).
+!!! If you encounter any issues while starting or running your Mender Server, you can take a look at the section for [troubleshooting Mender Server](../../troubleshooting/mender-server).

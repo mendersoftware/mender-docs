@@ -27,7 +27,7 @@ Other operating systems will be added later on.
 
 It is possible to run the Mender update client in standalone or managed mode.
 
-When run in standalone mode, the deployments are triggered (`mender -rootfs`), rebooted into (`reboot`) and made persistent (`mender -commit`) from the command line at the device or through some custom integration like a script. Any http(s) server or file path (e.g. USB stick or NFS share) can be used to serve the Artifacts; the URI is given to the `mender -rootfs` option. If you wish to run Mender in standalone mode, you can [disable Mender as a system service](../../Artifacts/Image-configuration#disabling-mender-as-a-system-service).
+When run in standalone mode, the deployments are triggered (`mender -rootfs`), rebooted into (`reboot`) and made persistent (`mender -commit`) from the command line at the device or through some custom integration like a script. Any http(s) server or file path (e.g. USB stick or NFS share) can be used to serve the Artifacts; the URI is given to the `mender -rootfs` option. If you wish to run Mender in standalone mode, you can [disable Mender as a system service](../../artifacts/image-configuration#disabling-mender-as-a-system-service).
 
 When running Mender in managed mode, the Mender client runs as a daemon and will regularly poll the server, automatically apply updates, reboot, report and commit the update. This is the best way to run Mender for most large-scale deployments, as the deployments are centrally managed across many devices, but it requires to set up and connect clients to the Mender server.
 
@@ -42,7 +42,7 @@ The simplest and most robust way to update the device is to write a new file sys
 This is the mechanism supported by the current versions of Mender.
 Other update mechanisms are possible, for example through the use of a package manager such as RPM, and they will be added later on.
 
-Please see [Mender Artifacts](../Mender-Artifacts) for more details on the Mender Artifact format.
+Please see [Mender Artifacts](../mender-artifacts) for more details on the Mender Artifact format.
 
 ## Robust updates
 
@@ -70,4 +70,4 @@ If something causes the device to reboot before committing the update, the bootl
 
 One consequence of image update is that the update will replace all the files in a filesystem with new versions, thereby deleting any new or changed files that had been placed there. In other words, to be updatable a file system needs to be **stateless**.
 
-All files that are modified by the device need to be stored in a separate partition. Things that may need to be stored include network parameters, user configuration changes and so on. See [Partition layout](../../Devices/Partition-layout) for more information.
+All files that are modified by the device need to be stored in a separate partition. Things that may need to be stored include network parameters, user configuration changes and so on. See [Partition layout](../../devices/partition-layout) for more information.
