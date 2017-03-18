@@ -9,12 +9,12 @@ The build output will most notably include:
 * a file that can be flashed to the device storage during initial provisioning, it has suffix `.sdimg`
 * an Artifact containing rootfs filesystem image file that Mender can deploy to your provisioned device, it has suffix `.mender`
 
-Mender has two [reference devices](../../Getting-started/What-is-Mender#mender-reference-devices): a virtual QEMU device for testing without the need for hardware, and the BeagleBone Black.
+Mender has two [reference devices](../../getting-started/what-is-mender#mender-reference-devices): a virtual QEMU device for testing without the need for hardware, and the BeagleBone Black.
 Building for these devices is well tested with Mender. If you are building for your own device
-please see [Device integration](../../Devices) for general requirements and adjustments you might need
+please see [Device integration](../../devices) for general requirements and adjustments you might need
 to enable your device to support atomic image-based deployments with rollback.
 
-!!! If you do not want to build your own images for testing purposes, the [Getting started](../../Getting-started) tutorials provide links to several demo images, both for QEMU and BeagleBone Black.
+!!! If you do not want to build your own images for testing purposes, the [Getting started](../../getting-started) tutorials provide links to several demo images, both for QEMU and BeagleBone Black.
 
 ## What is *meta-mender*?
 
@@ -23,8 +23,8 @@ to enable your device to support atomic image-based deployments with rollback.
 Inside *meta-mender* there are several layers. The most important one is *meta-mender-core*, which is required by all builds that use Mender. *meta-mender-core* takes care of:
 
 * Cross-compiling Mender for ARM devices
-* [Partitioning the image correctly](../../Devices/Partition-layout)
-* [Setting up the U-Boot bootloader to support Mender](../../Devices/Integrating-with-U-Boot)
+* [Partitioning the image correctly](../../devices/partition-layout)
+* [Setting up the U-Boot bootloader to support Mender](../../devices/integrating-with-u-boot)
 
 Each one of these steps can be configured further, see the linked sections for more details.
 
@@ -105,7 +105,7 @@ bitbake-layers add-layer ../meta-mender/meta-mender-core
 bitbake-layers add-layer ../meta-mender/meta-mender-demo
 ```
 
-! The `meta-mender-demo` layer is not appropriate if you are building for production devices. Please go to the section about [building for production](../Building-for-production) to see the difference between demo builds and production builds.
+! The `meta-mender-demo` layer is not appropriate if you are building for production devices. Please go to the section about [building for production](../building-for-production) to see the difference between demo builds and production builds.
 
 Finally, you need to incorporate the layer specific to your board. Mender currently comes with two supported boards: vexpress-qemu and beaglebone, residing in `meta-mender/meta-mender-qemu` and `meta-mender/meta-mender-beaglebone`, respectively. Other boards may also exist that are contributed by the community, or you may need to create a board specific layer yourself for your particular hardware.
 
@@ -121,7 +121,7 @@ part of your Yocto Project build environment.
 
 ## Configuring the build
 
-!!! The configuration in `conf/local.conf` below will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../Architecture/Overview#modes-of-operation). See the [section on customizations](../image-configuration#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
+(??)!!! The configuration in `conf/local.conf` below will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../Architecture/Overview#modes-of-operation). See the [section on customizations](../Image-configuration#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
 
 Add these lines to the start of your `conf/local.conf`:
 
@@ -144,9 +144,9 @@ IMAGE_FSTYPES = "ext4"
 
 Please replace `<YOUR-MACHINE>` with the correct machine for your device.
 
-! The machine `<YOUR-MACHINE>` needs to be integrated with Mender before it will work correctly; most notably U-Boot needs the required features and integration. Please see [Device integration](../../devices) for more information. If you are building for a Mender [reference device](../../Getting-started/What-is-Mender#mender-reference-devices), you can use `vexpress-qemu` or `beaglebone`. 
+! The machine `<YOUR-MACHINE>` needs to be integrated with Mender before it will work correctly; most notably U-Boot needs the required features and integration. Please see [Device integration](../../devices) for more information. If you are building for a Mender [reference device](../../getting-started/what-is-mender#mender-reference-devices), you can use `vexpress-qemu` or `beaglebone`. 
 
-!!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../variables#mender_storage_total_size_mb) for more information. Mender automatically selects the file system types it builds into the disk image, which is used for initial flash provisioning, based on the `IMAGE_FSTYPES` variable. See the [section on file system types](../../Devices/Partition-layout#file-system-types) for more information.
+!!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../variables#mender_storage_total_size_mb) for more information. Mender automatically selects the file system types it builds into the disk image, which is used for initial flash provisioning, based on the `IMAGE_FSTYPES` variable. See the [section on file system types](../../devices/partition-layout#file-system-types) for more information.
 
 !!! It is suggested to add `INHERIT += "rm_work"` to `conf/local.conf` in order to conserve disk space during the build.
 
@@ -173,9 +173,9 @@ Mender running already. Please proceed to [Provisioning a new device](../provisi
 for steps to do this.
 
 On the other hand, if you already have Mender running on your device and want to deploy a rootfs update
-using this build, you should use the [Mender Artifact](../../Architecture/Mender-Artifacts) files,
+using this build, you should use the [Mender Artifact](../../architecture/mender-artifacts) files,
 which have `.mender` suffix. You can either deploy this Artifact in managed mode with
-the Mender server as described in [Deploy to physical devices](../../Getting-started/Deploy-to-physical-devices)
-or by using the Mender client only in [Standalone deployments](../../Getting-started/Standalone-deployments).
+the Mender server as described in [Deploy to physical devices](../../getting-started/deploy-to-physical-devices)
+or by using the Mender client only in [Standalone deployments](../../getting-started/standalone-deployments).
 
 !!! If you built for the Mender reference device `vexpress-qemu`, you can start up your newly built image with the script in `../meta-mender/meta-mender-qemu/scripts/mender-qemu` and log in as *root* without password.

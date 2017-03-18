@@ -241,7 +241,7 @@ git commit -m 'production: adding generated keys and certificates'
 
 The API Gateway and Storage Proxy certificates generated here need to be made
 available to the Mender client.
-Consult the section on [building for production](../../Artifacts/Building-for-production)
+Consult the section on [building for production](../../artifacts/building-for-production)
 for a description on how to include the certificates in the client builds.
 
 !! Only certificates need to be made available to devices or end users. Private keys should never be shared.
@@ -412,7 +412,7 @@ The updated entry should look similar to this:
 
 Locate the `mender-deployments` service. The deployments service will upload
 artifact objects to `minio` storage via `storage-proxy`,
-see the [administration overview](../Overview) for more details. For this reason,
+see the [administration overview](../overview) for more details. For this reason,
 access credentials `DEPLOYMENTS_AWS_AUTH_KEY` and `DEPLOYMENTS_AWS_AUTH_SECRET`
 need to be updated and `DEPLOYMENTS_AWS_URI` must point to `s3.example.com` (or
 your DNS name).
@@ -555,4 +555,4 @@ curl -X POST  -D - --cacert keys-generated/certs/api-gateway/cert.crt https://me
 At this point you should be able to access [https://mender.example.com](https://mender.example.com) with your
 web browser.
 
-!!! If you encounter any issues while starting or running your Mender Server, you can take a look at the section for [troubleshooting Mender Server](../../Troubleshooting/Mender-Server).
+!!! If you encounter any issues while starting or running your Mender Server, you can take a look at the section for [troubleshooting Mender Server](../../troubleshooting/mender-server).

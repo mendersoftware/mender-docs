@@ -26,7 +26,7 @@ Certificates are used to ensure the communication between the client and the ser
 
 ### Preparing the client certificates
 
-You can either generate new certificates by following the guide for [generating certificates](../../Administration/Certificates-and-keys#generating-new-keys-and-certificates), or obtain the certificates in a different way - for example from your existing Certificate Authority. In either case the certificates on the client and server must be the same.
+You can either generate new certificates by following the guide for [generating certificates](../../administration/certificates-and-keys#generating-new-keys-and-certificates), or obtain the certificates in a different way - for example from your existing Certificate Authority. In either case the certificates on the client and server must be the same.
 
 All certificates are hosted in a single file `server.crt` which the client reads. If you generated new certificates, this file is available at `keys-generated/certs/server.crt`.
 

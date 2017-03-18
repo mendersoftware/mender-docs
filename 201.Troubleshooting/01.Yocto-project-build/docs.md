@@ -6,14 +6,14 @@ taxonomy:
 
 ##Your project is using a fork of U-Boot which conflicts with the U-Boot Mender uses
 
-When [Building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image) for your own project and device, you encounter a build error similar to the following:
+When [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image) for your own project and device, you encounter a build error similar to the following:
 
 ```
 ERROR: Multiple .bb files are due to be built which each provide u-boot (.../tisdk/sources/meta-variscite/recipes-bsp/u-boot/u-boot-var-som-am33.bb .../tisdk/sources/meta-ti/recipes-bsp/u-boot/u-boot_2014.07.bb).
  This usually means one provides something the other doesn't and should.
 ```
 
-Mender needs to configure U-Boot in order to support robust rootfs rollback. If your project relies on a fork of U-Boot this needs to be integrated. For more information, see [Integrating with U-Boot](../../Devices/Integrating-with-U-Boot), in particular the section on [Forks of U-boot](../../Devices/Integrating-with-U-Boot#forks-of-u-boot).
+Mender needs to configure U-Boot in order to support robust rootfs rollback. If your project relies on a fork of U-Boot this needs to be integrated. For more information, see [Integrating with U-Boot](../../devices/integrating-with-u-boot), in particular the section on [Forks of U-boot](../../devices/integrating-with-u-boot#forks-of-u-boot).
 
 
 ## U-Boot and the Linux kernel do not agree about the indexes of storage devices
@@ -49,7 +49,7 @@ If you see errors similar to the following during the Yocto Project build proces
 include/config_mender.h:34:3: error: #error CONFIG_BOOTCOUNT_ENV is required for Mender to work
 ```
 
-There are two alternatives to resolve this issue. Either you can upgrade to U-Boot v2014.07 or newer, where Boot Count Limit was introduced, or you can patch your current U-Boot version to support this or a similar feature. Please see [Bootloader support](../../Devices/System-requirements#bootloader-support) for more information.
+There are two alternatives to resolve this issue. Either you can upgrade to U-Boot v2014.07 or newer, where Boot Count Limit was introduced, or you can patch your current U-Boot version to support this or a similar feature. Please see [Bootloader support](../../devices/system-requirements#bootloader-support) for more information.
 
 ## The build produces an error message "__populate_fs: Could not allocate block in ext2 filesystem while writing file..."
 

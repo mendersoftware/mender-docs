@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 A Mender Artifact is a file Mender uses to deploy updates. Please see
-[Mender Artifacts](../../Architecture/Mender-Artifacts) for a more detailed
+[Mender Artifacts](../../architecture/mender-artifacts) for a more detailed
 description.
 
 When testing deployments, it is useful that the Artifact you are deploying

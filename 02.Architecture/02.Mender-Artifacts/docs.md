@@ -67,4 +67,4 @@ metadata and checksum computation.
 For this reason, it is recommended to use the Mender Artifact utility or Go library
 when you need to work with Mender Artifacts. The Mender Artifacts library and utility
 is available as open source in the [Mender Artifacts repository](https://github.com/mendersoftware/mender-artifact?target=_blank)
-and there is a tutorial using the utility at [Modifying a Mender Artifact](../../artifacts/modifying-a-Mender-Artifact).
+and there is a tutorial using the utility at [Modifying a Mender Artifact](../../artifacts/modifying-a-mender-artifact).
