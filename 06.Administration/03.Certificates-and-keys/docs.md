@@ -19,11 +19,11 @@ for which purpose can be seen below.
 
 | Component               | Purpose of keys                                                                                                                                                                                                                                                                                                                  | Shares certificate or key with                                                                                                                |
 |-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| API Gateway           | Listens to a public port for `https` requests only (plain `http` is disabled). These requests can come from Mender Clients that check for- or report status about updates through the [Device APIs](../../APIs/Device-APIs), or from users and tools that manage deployments through the [Management APIs](../../APIs/Management-APIs). | **Mender Clients** and users of the **Management APIs**, including web browsers accessing the **Mender UI**.                                       |
+| API Gateway           | Listens to a public port for `https` requests only (plain `http` is disabled). These requests can come from Mender Clients that check for- or report status about updates through the [Device APIs](../../apis/device-apis), or from users and tools that manage deployments through the [Management APIs](../../apis/management-apis). | **Mender Clients** and users of the **Management APIs**, including web browsers accessing the **Mender UI**.                                       |
 | Storage Proxy         | Listens to a public port for `https` requests only (plain `http` is disabled). The Deployment Service manages Artifacts through the Storage Proxy and Mender Clients make Artifact download requests.                                                                                                        | **Mender Clients** and **Deployment Service**.                                                                                                    |
-| User Administration   | Signs and verifies JSON Web Tokens that users of the [Management APIs](../../APIs/Management-APIs), including end users of the Mender UI, include in their requests to authenticate themselves.                                                                                                                                     | Nothing. The service gets signature verification requests from the API Gateway, so all keys are kept private to the service and not shared. |
-| Device Authentication | Signs and verifies JSON Web Tokens that Mender Clients include in their requests to authenticate themselves when accessing the [Device APIs](../../APIs/Device-APIs).                                                                                                                                                                   | Nothing. The service gets signature verification requests from the API Gateway, so all keys are kept private to the service and not shared. |
-| Mender Client | Signs requests for JSON Web Tokens sent to the Device Authentication service. A Mender Client will request a new token when it connects to the Mender Server for the first time, and when a token expires. The Mender Client includes a token in all its communication to authenticate itself when accessing the [Device APIs](../../APIs/Device-APIs).                                                                                                                                                                   | The **Device Admission** service stores the public key of clients that request to join the server. When clients have been admitted, the **Device Authentication** service stores the public key of Mender Clients so that new tokens can easily be issued in the future. |
+| User Administration   | Signs and verifies JSON Web Tokens that users of the [Management APIs](../../apis/management-apis), including end users of the Mender UI, include in their requests to authenticate themselves.                                                                                                                                     | Nothing. The service gets signature verification requests from the API Gateway, so all keys are kept private to the service and not shared. |
+| Device Authentication | Signs and verifies JSON Web Tokens that Mender Clients include in their requests to authenticate themselves when accessing the [Device APIs](../../apis/device-apis).                                                                                                                                                                   | Nothing. The service gets signature verification requests from the API Gateway, so all keys are kept private to the service and not shared. |
+| Mender Client | Signs requests for JSON Web Tokens sent to the Device Authentication service. A Mender Client will request a new token when it connects to the Mender Server for the first time, and when a token expires. The Mender Client includes a token in all its communication to authenticate itself when accessing the [Device APIs](../../apis/device-apis).                                                                                                                                                                   | The **Device Admission** service stores the public key of clients that request to join the server. When clients have been admitted, the **Device Authentication** service stores the public key of Mender Clients so that new tokens can easily be issued in the future. |
 
 
 ## Replacing keys and certificates
@@ -53,7 +53,7 @@ the heavy lifting. It is available in
 [Mender's Integration GitHub repository](https://github.com/mendersoftware/integration?target=_blank).
 
 Open a terminal and go to the directory where you cloned the integration repository
-as part of the [tutorial to create a test environment](../../Getting-started/Create-a-test-environment).
+as part of the [tutorial to create a test environment](../../getting-started/create-a-test-environment).
 
 In order to generate the self-signed certificates, the script needs to know
 what the CN (Common Name) of the two certificates should be, i.e. which URL
@@ -163,7 +163,7 @@ implemented by adding the following entries to a compose file:
 #### User Administration
 
 The User Administration service signs and verifies JSON Web Tokens from
-users of the [Management APIs](../../APIs/Management-APIs). As the verification
+users of the [Management APIs](../../apis/management-apis). As the verification
 happens locally in the service only, the service does not need a certificate.
 
 The User Administration key can be mounted with the following snippet:
@@ -179,7 +179,7 @@ The User Administration key can be mounted with the following snippet:
 
 The Device Authentication service signs and verifies JSON Web Tokens that
 Mender Clients include in their requests to authenticate themselves when accessing
-the [Device APIs](../../APIs/Device-APIs). As the verification
+the [Device APIs](../../apis/device-apis). As the verification
 happens locally in the service only, the service does not need a certificate.
 
 The Device Authentication key can be mounted with the following snippet:
@@ -195,7 +195,7 @@ The Device Authentication key can be mounted with the following snippet:
 
 All Mender clients that are to connect to the server need to have the file with
 the concatenated certificates (`keys-generated/certs/server.crt`) stored locally in order to verify
-the server's authenticity. Please see [the client section on building for production](../../Artifacts/Building-for-production)
+the server's authenticity. Please see [the client section on building for production](../../artifacts/building-for-production)
 for a description on how to provision new device disk images with the new certificates.
 
 !!! The key of the Mender Client itself is automatically generated and stored at `/var/lib/mender/mender-agent.pem` the first time the Mender Client runs. We do not yet cover rotation of Mender Client keys in live installations in this document.

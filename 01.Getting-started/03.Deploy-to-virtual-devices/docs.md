@@ -11,20 +11,20 @@ Mender server to make it easy to test Mender.
 
 A Mender Artifact is a file format that includes metadata like the
 checksum and name, as well as the actual root file system that is
-deployed. See [Mender Artifacts](../../Architecture/Mender-Artifacts) for
+deployed. See [Mender Artifacts](../../architecture/mender-artifacts) for
 a complete description of this format.
 
 
 ## Prerequisites
 
 The test environment should be set up and working successfully
-as described in [Create a test environment](../Create-a-test-environment).
+as described in [Create a test environment](../create-a-test-environment).
 
 
 ## Authorize the device
 
 Open the Mender UI in the same browser as you accepted the certificate
-in as part of [Create a test environment](../Create-a-test-environment).
+in as part of [Create a test environment](../create-a-test-environment).
 It is available at [https://localhost/](https://localhost/?target=_blank).
 
 After a minute or two, there should be a virtual device that is waiting authorization.
@@ -50,7 +50,7 @@ clicking on a device. It should look similar to the following:
 ![Mender UI - Device information](device_information_1_0_0.png)
 
 
-!!! Which information is collected about devices is fully configurable; see the documentation on [Identity](../../Client-configuration/Identity) and [Inventory](../../Client-configuration/Inventory) for more information.
+!!! Which information is collected about devices is fully configurable; see the documentation on [Identity](../../client-configuration/identity) and [Inventory](../../client-configuration/inventory) for more information.
 
 You can also see that the `artifact_name` is `mender-image-1.0`.
 
@@ -64,7 +64,7 @@ After deploying the update below, you can verify that this `artifact_name` has c
 Before we can deploy a new Artifact to devices, it needs
 to be uploaded to the server. Any Artifact that
 can be used, and steps to build one are provided at
-[Building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image).
+[Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
 
 To make testing easier, a Mender Artifact that can be used with
 the virtual device is provided for download at
@@ -154,5 +154,5 @@ before production, or only deploy to devices owned by a specific customer.
 
 **Congratulations!** You have used the Mender server to deploy your first managed update!
 If you have a BeagleBone Black, you can proceed to
-[Deploy to physical devices](../Deploy-to-physical-devices) to try out deploying to a
+[Deploy to physical devices](../deploy-to-physical-devices) to try out deploying to a
 real-world device!

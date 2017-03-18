@@ -11,10 +11,10 @@ Mender server.
 ## Prerequisites
 
 The test environment should be set up and working successfully
-as described in [Create a test environment](../Create-a-test-environment).
+as described in [Create a test environment](../create-a-test-environment).
 
 We also strongly recommend that you complete the tutorial
-[Deploy to virtual devices](../Deploy-to-virtual-devices) so
+[Deploy to virtual devices](../deploy-to-virtual-devices) so
 that you have a basic understanding of how Mender works
 before moving on to connecting a physical device.
 
@@ -26,7 +26,7 @@ updates to. To make it easy to provision the device we will use
 a SD card to store the OS, so you will need one SD card
 (1 GB or larger) per BeagleBone Black.
 
-!!! It is possible to use this tutorial with any physical device, as long as you have integrated Mender with it. In this case you cannot use the test artifacts we provide in this tutorial, but you need to build your own artifacts as described in [Building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image).
+!!! It is possible to use this tutorial with any physical device, as long as you have integrated Mender with it. In this case you cannot use the test artifacts we provide in this tutorial, but you need to build your own artifacts as described in [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
 
 
 ### Network connectivity
@@ -58,7 +58,7 @@ that your device(s) can connect to the Mender server.
 Download the test *disk* image with Mender support for the BeagleBone Black
 at [https://d1b0l86ne08fsf.cloudfront.net/1.0.0/beaglebone/mender-beaglebone.sdimg.gz](https://d1b0l86ne08fsf.cloudfront.net/1.0.0/beaglebone/mender-beaglebone.sdimg.gz).
 This image contains *all the partitions* of the storage device, as
-described in [Partition layout](../../Devices/Partition-layout).
+described in [Partition layout](../../devices/partition-layout).
 
 You can decompress it like the following:
 
@@ -66,7 +66,7 @@ You can decompress it like the following:
 gunzip mender-beaglebone.sdimg.gz
 ```
 
-!!! Mender blocks free space in the disk image so that your root file system is allowed to grow over time. If you are building your own disk image by following [Building a Mender Yocto Project image](../../Artifacts/Building-Mender-Yocto-image), you can configure the desired space usage with the Yocto Project variable [MENDER_STORAGE_TOTAL_SIZE_MB](../../Artifacts/Variables#mender_storage_total_size_mb).
+!!! Mender blocks free space in the disk image so that your root file system is allowed to grow over time. If you are building your own disk image by following [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image), you can configure the desired space usage with the Yocto Project variable [MENDER_STORAGE_TOTAL_SIZE_MB](../../artifacts/variables#mender_storage_total_size_mb).
 
 We need to change some configuration settings in this image so that
 the Mender client successfully connects to your Mender
@@ -75,7 +75,7 @@ server when it starts.
 
 ### Insert the address of Mender server
 
-Please see [Modifying a disk image](../../Artifacts/Modifying-a-disk-image) for a description
+Please see [Modifying a disk image](../../artifacts/modifying-a-disk-image) for a description
 on how to mount partitions for editing within the disk image
 `mender-beaglebone.sdimg`.
 
@@ -141,7 +141,7 @@ sudo umount /mnt/rootfs1 && sudo umount /mnt/rootfs2
 
 ## Write the disk image to the SD card
 
-Please see [Write the disk image to the SD card](../../Artifacts/Provisioning-a-new-device#write-the-disk-image-to-the-sd-card)
+Please see [Write the disk image to the SD card](../../artifacts/provisioning-a-new-device#write-the-disk-image-to-the-sd-card)
 for steps how to provision the device disk using the `mender-beaglebone.sdimg`
 image you downloaded and modified above.
 
@@ -151,7 +151,7 @@ write the disk image to all their SD cards.
 
 ## Boot the BeagleBone Black(s)
 
-! Make sure that the Mender server is running as described in [Create a test environment](../Create-a-test-environment) and that the device can reach it on the IP address you configured above (`$IP_OF_MENDER_SERVER_FROM_DEVICE`) on ports **443** and **9000**. You might need to set a static IP address where the Mender server runs and disable any firewalls.
+! Make sure that the Mender server is running as described in [Create a test environment](../create-a-test-environment) and that the device can reach it on the IP address you configured above (`$IP_OF_MENDER_SERVER_FROM_DEVICE`). You might need to set a static IP address where the Mender server runs and disable any firewalls.
 
 First, insert the SD card you just provisioned into the BeagleBone black.
 
@@ -189,7 +189,7 @@ and the IP addresses, as shown in the example below.
 In order to deploy an update, we need a Mender Artifact to update to.
 A Mender Artifact is a file format that includes metadata like the
 checksum and name, as well as the actual root file system that is
-deployed. See [Mender Artifacts](../../Architecture/Mender-Artifacts) for
+deployed. See [Mender Artifacts](../../architecture/mender-artifacts) for
 a complete description of this format.
 
 Download the test Artifact for the BeagleBone Black
@@ -209,7 +209,7 @@ cd beaglebone_release_1 && tar zxvf data/0000.tar.gz
 sudo mkdir /mnt/rootfs && sudo mount -t ext4 -o loop core-image-base-beaglebone.ext4 /mnt/rootfs/
 ```
 
-Please see [Modifying a Mender Artifact](../../Artifacts/Modifying-a-Mender-Artifact)
+Please see [Modifying a Mender Artifact](../../artifacts/modifying-a-mender-artifact)
 for a more detailed overview. For the following steps we assume that you have mounted
 `core-image-base-beaglebone.ext4` to `/mnt/rootfs`.
 
@@ -353,7 +353,7 @@ needs of custom applications.
 
 Now that you have seen how Mender works with a reference device, you might be wondering what
 it would take to port it to your own platform. The first place to go is
-[Device integration](../../Devices), where you will find out how to integrate
+[Device integration](../../devices), where you will find out how to integrate
 the Mender client with your device software, and then look at
-[Creating Artifacts](../../Artifacts) to see how to build images ready to be
+[Creating Artifacts](../../artifacts) to see how to build images ready to be
 deployed over the network to your devices.
