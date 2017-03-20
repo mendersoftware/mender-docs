@@ -121,7 +121,7 @@ part of your Yocto Project build environment.
 
 ## Configuring the build
 
-(??)!!! The configuration in `conf/local.conf` below will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../Architecture/Overview#modes-of-operation). See the [section on customizations](../Image-configuration#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
+!!! The configuration in `conf/local.conf` below will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../architecture/overview#modes-of-operation). See the [section on customizations](../image-configuration#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
 
 Add these lines to the start of your `conf/local.conf`:
 
