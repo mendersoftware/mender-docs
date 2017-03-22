@@ -45,9 +45,6 @@ The required meta layers are found in the following repositories:
 URI: git://git.yoctoproject.org/poky
 branch: master
 
-URI: git://github.com/mem/oe-meta-go
-branch: master
-
 URI: git://github.com/mendersoftware/meta-mender
 branch: master
 ```
@@ -79,10 +76,6 @@ Please make sure you are standing in the directory where `poky` resides,
 i.e. the top level of the Yocto Project build tree, and run these commands:
 
 ```bash
-git clone git://github.com/mem/oe-meta-go
-```
-
-```bash
 git clone -b master git://github.com/mendersoftware/meta-mender
 ```
 
@@ -95,11 +88,10 @@ source oe-init-build-env
 This creates a build directory with the default name, `build`, and makes it the
 current working directory.
 
-We then need to incorporate the three layers, meta-mender-core, meta-mender-demo and oe-meta-go, into
-our project:
+We then need to incorporate the two layers, meta-mender-core and
+meta-mender-demo, into our project:
 
 ```bash
-bitbake-layers add-layer ../oe-meta-go
 bitbake-layers add-layer ../meta-mender/meta-mender-core
 bitbake-layers add-layer ../meta-mender/meta-mender-demo
 ```
