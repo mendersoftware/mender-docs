@@ -1,0 +1,211 @@
+---
+title: Upgrading
+taxonomy:
+    category: docs
+---
+
+This is a guide for upgrading Mender Server in production environments. It is
+assumed that installation was performed following the steps
+in [Production installation](../production-installation) guide. That means that
+you currently have:
+
+* a local git repository based
+  on [mender-integration](https://github.com/mendersoftware/integration)
+* a branch with your production overrides
+* all configuration overrides committed to your production branch
+
+
+As a good engineering practice, it is advisable to perform the upgrade on a
+staging environment first. This will allow you to discover potential problems
+and allow to exercise the procedure in a safe manner. 
+
+! Upgrade procedure involves some downtime.
+
+Production installation is largely based on using git and Mender integration
+repository. This is the reason why the upgrade procedure follows a regular git
+workflow with branching, pulling remote changes and merging locally.
+
+## Backing up existing data
+
+Before an upgrade will be performed it is advisable to backup existing data and
+volumes.
+
+Consult Mongo DB and docker manuals for the necessary steps.
+
+## Updating your local repository
+
+The first step is to upgrade your local repository by pulling changes from
+Mender integration repository. This can be achieved by running `git remote
+update origin`.
+
+```bash
+git remote update origin
+```
+> Fetching origin
+> remote: Counting objects: 367, done.
+> remote: Compressing objects: 100% (31/31), done.
+> remote: Total 367 (delta 134), reused 122 (delta 122), pack-reused 214
+> Receiving objects: 100% (367/367), 83.55 KiB | 0 bytes/s, done.
+> Resolving deltas: 100% (214/214), completed with 42 local objects.
+> From https://github.com/mendersoftware/integration
+>  * 02cd118..75b7831  1.0.x      -> origin/1.0.x
+>    06f3212..e9e5df4  master     -> origin/master
+
+For each release, there will be a corresponding release branch. For example, a
+branch named `1.0.x`, provides a 1.0 release setup. Recall
+from [Production installation](../production-installation) guide that our local
+setup was introduced in a branch that was created from given release version.
+
+You can use git commands such as `git log`, `git diff` to review the changes
+introduced in upstream branch. For example:
+
+```bash
+git log HEAD..origin/1.0.x
+```
+
+The most important thing to review is a diff in production template between our
+version and the version present in repository. For the patch release version
+there should be none to just some minor changes. However, when there is a
+minor/major release, one can expect the diff to be larger. Example:
+
+```bash
+# while at the root of repository
+user@local$ git diff HEAD..origin/1.0.x -- template
+```
+> diff --git a/template/run b/template/run
+> index d634c5c..7c4a870 100755
+> --- a/template/run
+> +++ b/template/run
+> @@ -1,5 +1,7 @@
+>  #!/bin/bash
+> +set -e
+>  
+> +../verify-docker-versions
+>  
+>  exec docker-compose \
+>       -p 'menderproduction'\
+> 
+
+Updating local production branch is performed by issuing a `git merge` command, like this:
+
+```bash
+git merge origin/1.0.x 
+```
+> Merge made by the 'recursive' strategy.
+>  .travis.yml            | 16 ++++++++++++++++
+>  tests/run.sh           |  4 ++--
+>  update                 |  1 -
+>  verify-docker-versions | 29 ++++++++++++++++++++---------
+>  4 files changed, 38 insertions(+), 12 deletions(-)
+
+! Since your local changes are kept in git, it is possible to tag your production version or branch to create a pre-merge branches that can be tested in staging environment.
+
+## Starting upgraded environment
+
+Once the changes are merged, you can recreate the containers. 
+
+First pull new container images:
+
+```bash
+./run pull
+```
+> Pulling mender-mongo-device-adm (mongo:3.4)...
+> 3.4: Pulling from library/mongo
+> Digest: sha256:e5a4f6caf4fb6773e41292b56308ed427692add67ffd7c655fdf11a78a72df4e
+> Status: Image is up to date for mongo:3.4
+> Pulling mender-mongo-device-auth (mongo:3.4)...
+> 3.4: Pulling from library/mongo
+> Digest: sha256:e5a4f6caf4fb6773e41292b56308ed427692add67ffd7c655fdf11a78a72df4e
+> Status: Image is up to date for mongo:3.4
+> Pulling minio (mendersoftware/minio:RELEASE.2016-12-13T17-19-42Z)...
+> RELEASE.2016-12-13T17-19-42Z: Pulling from mendersoftware/minio
+> Digest: sha256:0ded6733900e6e09760cd9a7c79ba4981dea6f6b142352719f7a4157b4a3352d
+> Status: Image is up to date for mendersoftware/minio:RELEASE.2016-12-13T17-19-42Z
+> ...
+> Pulling mender-device-auth (mendersoftware/deviceauth:1.0.x)...
+> 1.0.x: Pulling from mendersoftware/deviceauth
+> Digest: sha256:07ed10f6fdee40df1de8e10efc3115cb64b0c190bcf5bcd194b9f34086396058
+> Status: Image is up to date for mendersoftware/deviceauth:1.0.x
+> Pulling mender-gui (mendersoftware/gui:1.0.x)...
+> 1.0.x: Pulling from mendersoftware/gui
+> Digest: sha256:af2d2349f27dd96ca21940672aa3a91335b17153f8c7ef2ca865a9a7fdf2fd22
+> Status: Image is up to date for mendersoftware/gui:1.0.x
+> Pulling mender-api-gateway (mendersoftware/api-gateway:1.0.x)...
+> 1.0.x: Pulling from mendersoftware/api-gateway
+> Digest: sha256:0a2033a57f88afc38253a45301c83484e532047d75858df95d46c12b48f1f2f8
+> Status: Image is up to date for mendersoftware/api-gateway:1.0.x
+
+Then stop and remove existing containers:
+
+```bash
+./run stop
+```
+> Stopping menderproduction_mender-api-gateway_1 ... done
+> Stopping menderproduction_mender-inventory_1 ... done
+> Stopping menderproduction_mender-deployments_1 ... done
+> Stopping menderproduction_mender-device-auth_1 ... done
+> Stopping menderproduction_mender-device-adm_1 ... done
+> Stopping menderproduction_mender-useradm_1 ... done
+> Stopping menderproduction_storage-proxy_1 ... done
+> Stopping menderproduction_mender-mongo-inventory_1 ... done
+> Stopping menderproduction_mender-mongo-deployments_1 ... done
+> Stopping menderproduction_mender-mongo-device-auth_1 ... done
+> Stopping menderproduction_mender-mongo-device-adm_1 ... done
+> Stopping menderproduction_mender-mongo-useradm_1 ... done
+> Stopping menderproduction_mender-gui_1 ... done
+> Stopping menderproduction_minio_1 ... done
+
+!!! Stopping the containers will make Mender backend services unavailable
+
+```bash
+./run rm
+```
+> Going to remove menderproduction_mender-api-gateway_1, ...
+> Are you sure? [yN] y
+> Removing menderproduction_mender-api-gateway_1 ... done
+> Removing menderproduction_mender-inventory_1 ... done
+> Removing menderproduction_mender-deployments_1 ... done
+> Removing menderproduction_mender-device-auth_1 ... done
+> Removing menderproduction_mender-device-adm_1 ... done
+> Removing menderproduction_mender-useradm_1 ... done
+> Removing menderproduction_storage-proxy_1 ... done
+> Removing menderproduction_mender-mongo-inventory_1 ... done
+> Removing menderproduction_mender-mongo-deployments_1 ... done
+> Removing menderproduction_mender-mongo-device-auth_1 ... done
+> Removing menderproduction_mender-mongo-device-adm_1 ... done
+> Removing menderproduction_mender-mongo-useradm_1 ... done
+> Removing menderproduction_mender-gui_1 ... done
+> Removing menderproduction_minio_1 ... done
+
+! All system data is kept in named Docker volumes. Removing containers does not affect volumes.
+
+Start the new environment:
+
+```bash
+./run up -d
+```
+> Creating menderproduction_mender-mongo-useradm_1
+> Creating menderproduction_mender-mongo-device-adm_1
+> Creating menderproduction_mender-mongo-deployments_1
+> Creating menderproduction_minio_1
+> Creating menderproduction_mender-gui_1
+> Creating menderproduction_mender-mongo-device-auth_1
+> Creating menderproduction_mender-mongo-inventory_1
+> Creating menderproduction_mender-useradm_1
+> Creating menderproduction_mender-device-adm_1
+> Creating menderproduction_mender-deployments_1
+> Creating menderproduction_storage-proxy_1
+> Creating menderproduction_mender-device-auth_1
+> Creating menderproduction_mender-inventory_1
+> Creating menderproduction_mender-api-gateway_1
+
+## Closing notes
+
+Since production repository is versioned using git, it is possible to use git
+tools and apply typical git workflows, such as pushing, pulling, branching, etc.
+
+Pushing and pulling to/from a company hosted git repository is a great method
+for sharing configuration between staging and production environments. For
+instance, a configuration can be validated in a staging environment, with
+relevant changes getting committed and pushed to the repository. Once ready, a
+production environment can pull the changes and apply them locally.
