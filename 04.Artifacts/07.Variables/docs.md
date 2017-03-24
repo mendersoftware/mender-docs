@@ -122,8 +122,8 @@ Default value is `1024`.
 
 Specifies the offset from the start of the raw block storage where the U-Boot
 environment should be stored, expressed in bytes. The default is equal to
-`MENDER_PARTITION_ALIGNMENT_MB` (converted to bytes), and if the value is
-overridden, it must also be aligned to `MENDER_PARTITION_ALIGNMENT_MB`.
+`MENDER_PARTITION_ALIGNMENT_KB` (converted to bytes), and if the value is
+overridden, it must also be aligned to `MENDER_PARTITION_ALIGNMENT_KB`.
 
 
 #### MENDER_UBOOT_STORAGE_DEVICE
