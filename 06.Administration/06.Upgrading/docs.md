@@ -50,8 +50,6 @@ git fetch origin --tags
 > From https://github.com/mendersoftware/integration  
 >    02cd118..75b7831  1.0.x      -> origin/1.0.x  
 >    06f3212..e9e5df4  master     -> origin/master  
->  * [new tag]         1.0.1      -> 1.0.1   
-
 
 For each release, there will be a corresponding release branch. For example, a
 branch named `1.0.x`, provides a 1.0 release setup. Stable releases are tagged,
