@@ -80,19 +80,6 @@ minor/major release, one can expect the diff to be larger. Example:
 # while at the root of repository
 user@local$ git diff HEAD..1.0.1 -- template
 ```
-> diff --git a/template/run b/template/run
-> index d634c5c..7c4a870 100755
-> --- a/template/run
-> +++ b/template/run
-> @@ -1,5 +1,7 @@
->  #!/bin/bash
-> +set -e
->  
-> +../verify-docker-versions
->  
->  exec docker-compose \
->       -p 'menderproduction'\
-> 
 
 Updating local production branch is performed by issuing a `git merge` command, like this:
 
