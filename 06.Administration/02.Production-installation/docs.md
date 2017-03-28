@@ -386,12 +386,12 @@ Secret Access Key respectively.
 
 Set `MINIO_ACCESS_KEY` to `mender-deployments`. `MINIO_SECRET_KEY` should be set
 to a value that can not easily be guessed. We recommend using the `pwgen` utility
-for generating the secret. Run the following command to generate a 32-character long secret:
+for generating the secret. Run the following command to generate a 16-character long secret:
 
 ```bash
-pwgen 32 1
+pwgen 16 1
 ```
-> ahshagheeD1ooPaeT8lut0Shaezeipoo  
+> ahshagheeD1ooPae
 
 The updated entry should look similar to this:
 
