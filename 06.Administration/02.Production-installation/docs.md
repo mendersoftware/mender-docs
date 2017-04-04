@@ -88,7 +88,7 @@ cd mender-server
 Prepare a branch where all deployment related changes will be kept:
 
 ```bash
-git checkout 1.0.0 -b my-production-setup
+git checkout 1.0.1 -b my-production-setup
 ```
 
 Copy deployment configuration template to a new directory named `production`:
