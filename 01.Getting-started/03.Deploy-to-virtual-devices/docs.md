@@ -68,7 +68,7 @@ can be used, and steps to build one are provided at
 
 To make testing easier, a Mender Artifact that can be used with
 the virtual device is provided for download at
-[https://d1b0l86ne08fsf.cloudfront.net/1.0.0/vexpress-qemu/vexpress_release_2.mender](https://d1b0l86ne08fsf.cloudfront.net/1.0.0/vexpress-qemu/vexpress_release_2.mender).
+[https://d1b0l86ne08fsf.cloudfront.net/1.0.1/vexpress-qemu/vexpress_release_2_1.0.1.mender](https://d1b0l86ne08fsf.cloudfront.net/1.0.1/vexpress-qemu/vexpress_release_2_1.0.1.mender).
 
 After the download finishes, go back to the Mender server UI,
 click the **Artifacts** tab and upload this Mender Artifact.
@@ -126,7 +126,7 @@ uploaded, Mender will see that it contains the same rootfs
 that is already installed and skip the deployment. It will
 immediately be marked as successful and moved to *Past deployments*.
 For this reason, we provide another Artifact that you can use
-to deploy with at [https://d1b0l86ne08fsf.cloudfront.net/1.0.0/vexpress-qemu/vexpress_release_1.mender](https://d1b0l86ne08fsf.cloudfront.net/1.0.0/vexpress-qemu/vexpress_release_1.mender).
+to deploy with at [https://d1b0l86ne08fsf.cloudfront.net/1.0.1/vexpress-qemu/vexpress_release_1_1.0.1.mender](https://d1b0l86ne08fsf.cloudfront.net/1.0.1/vexpress-qemu/vexpress_release_1_1.0.1.mender).
 
 Go to **Artifacts** again and upload this artifact. You can set
 the *Description* input field to `My original build`.
