@@ -9,10 +9,27 @@ _Released dd.mm.yyyy_
 
 ### Notable changes
 
+#### deployments
+
+* Update artifact description when updating artifact data. (MEN-1093)
+* Fix log flag not being set for device deployment after log been uploaded.
+  (MEN-1078)
+
+#### gui
+
 * Bugfix: open correct deployment report dialog from dashboard
-* Move user token from local storage to cookie, add react-cookie module
 * Update node modules, add drag+drop artifact, allow edit
-artifact description
+  artifact description
+* Move user token from local storage to cookie, add react-cookie module (#217)
+* Update node modules, add drag+drop & cookie functionality (#219)
+* Replace artifact upload dialog with drag-and-drop
+* Remove cookie when receiving unauthorized response
+* Edit artifact description in UI
+
+#### mender
+
+* Fix bug that caused the update not to be retried after failing during
+  previous attempt (#193)
 
 ---
 
