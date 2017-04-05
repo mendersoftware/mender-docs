@@ -75,8 +75,6 @@ docker compose. Running this script will pull down the images and start them:
 ./up
 ```
 
-!! If you are using 1.0.0 integration revision the 'up' script is affected by Docker's recent change in versioning schema. If you encounter a problem while running this, comment out './verify-docker-versions' at line 7 in order to bypass this problem. For more information about this, [read our blog post](https://mender.io/blog/docker-versioning-and-mender-1-0-0). Please note that this issue is fixed in 1.0.1 version.
-
 As the Mender services start up, you will see a lot of log messages from them in your terminal.
 This includes output from the Mender virtual QEMU device, similar to the following:
 
