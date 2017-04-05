@@ -11,8 +11,8 @@ _Released 05.04.2017_
 
 #### [deployments](https://github.com/mendersoftware/deployments)
 
-* Update artifact description when updating artifact data. (MEN-1093)
-* Fix log flag not being set for device deployment after log been uploaded.
+* Update artifact description when updating artifact data (MEN-1093)
+* Fix log flag not being set for device deployment after log been uploaded
   (MEN-1078)
 
 #### [gui](https://github.com/mendersoftware/gui)
