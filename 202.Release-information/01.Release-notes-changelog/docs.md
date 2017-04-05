@@ -5,17 +5,17 @@ taxonomy:
 ---
 
 ## v1.0.1 
-_Released dd.mm.yyyy_
+_Released 05.04.2017_
 
 ### Notable changes
 
-#### deployments
+#### [deployments](https://github.com/mendersoftware/deployments)
 
 * Update artifact description when updating artifact data. (MEN-1093)
 * Fix log flag not being set for device deployment after log been uploaded.
   (MEN-1078)
 
-#### gui
+#### [gui](https://github.com/mendersoftware/gui)
 
 * Bugfix: open correct deployment report dialog from dashboard
 * Update node modules, add drag+drop artifact, allow edit
@@ -26,7 +26,7 @@ _Released dd.mm.yyyy_
 * Remove cookie when receiving unauthorized response
 * Edit artifact description in UI
 
-#### mender
+#### [mender](https://github.com/mendersoftware/mender)
 
 * Fix bug that caused the update not to be retried after failing during
   previous attempt (#193)
