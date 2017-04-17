@@ -4,37 +4,37 @@ taxonomy:
     category: docs
 ---
 
-This is a guide for upgrading Mender Server in production environments. It is
-assumed that installation was performed following the steps
-in [Production installation](../production-installation) guide. That means that
+This is a guide for upgrading the Mender Server in production environments.
+
+! The upgrade procedure involves some downtime.
+
+## Prerequisites
+
+It is assumed that the installation was performed following the steps
+in the [Production installation](../Production-installation) guide. That means that
 you currently have:
 
 * a local git repository based
-  on [mender-integration](https://github.com/mendersoftware/integration)
+  on [mender-integration](https://github.com/mendersoftware/integration?target=_blank)
 * a branch with your production overrides
 * all configuration overrides committed to your production branch
-
 
 As a good engineering practice, it is advisable to perform the upgrade on a
 staging environment first. This will allow you to discover potential problems
 and allow to exercise the procedure in a safe manner. 
 
-! Upgrade procedure involves some downtime.
-
-Production installation is largely based on using git and Mender integration
+[Production installation](../Production-installation) is largely based on using git and Mender integration
 repository. This is the reason why the upgrade procedure follows a regular git
 workflow with branching, pulling remote changes and merging locally.
 
 ## Backing up existing data
 
-Before an upgrade will be performed it is advisable to backup existing data and
-volumes.
-
-Consult Mongo DB and docker manuals for the necessary steps.
+Before upgrading it is advisable to backup existing data and volumes.
+Consult the Mongo DB and docker manuals for the necessary steps.
 
 ## Updating your local repository
 
-The first step is to upgrade your local repository by pulling changes from
+The first step is to upgrade your local repository by pulling changes from the
 Mender integration repository. This can be achieved by running `git remote
 update origin`.
 
@@ -51,15 +51,13 @@ git fetch origin --tags
 >    02cd118..75b7831  1.0.x      -> origin/1.0.x  
 >    06f3212..e9e5df4  master     -> origin/master  
 
-For each release, there will be a corresponding release branch. For example, a
-branch named `1.0.x`, provides a 1.0 release setup. Stable releases are tagged,
-eg. `1.0.1`.
+For each release there will be a corresponding release branch. For example, the
+branch named `1.0.x` provides the 1.0 release setup. Stable releases are tagged,
+e.g. `1.0.1`.
 
-Recall from [Production installation](../production-installation) guide that our
+Recall from the [production installation](../Production-installation) guide that our
 local setup was introduced in a branch that was created from given release
-version.
-
-You can use git commands such as `git log`, `git diff` to review the changes
+version. You can use git commands such as `git log` and `git diff` to review the changes
 introduced in upstream branch. For example:
 
 ```bash
@@ -69,9 +67,9 @@ git log HEAD..origin/1.0.x
 git log HEAD..1.0.1
 ```
 
-The most important thing to review is a diff in production template between our
-version and the version present in repository. For the patch release version
-there should be none to just some minor changes. However, when there is a
+The most important thing to review is the diff between our production template
+version and the version present in the repository. For a patch release
+there should be none, or just some minor changes. However, when there is a
 minor/major release, one can expect the diff to be larger. Example:
 
 ```bash
@@ -79,7 +77,7 @@ minor/major release, one can expect the diff to be larger. Example:
 user@local$ git diff HEAD..1.0.1 -- template
 ```
 
-Updating local production branch is performed by issuing a `git merge` command, like this:
+Upgrading our local production branch is performed by issuing a `git merge` command, like this:
 
 ```bash
 git merge 1.0.1
@@ -91,13 +89,13 @@ git merge 1.0.1
 >  verify-docker-versions | 29 ++++++++++++++++++++---------  
 >  4 files changed, 38 insertions(+), 12 deletions(-)  
 
-! Since your local changes are kept in git, it is possible to tag your production version or branch to create a pre-merge branches that can be tested in staging environment.
+!!! Since your local changes are kept in git, it is possible to tag your production version or branch to create pre-merge branches that can be tested in a staging environment.
 
 ## Starting upgraded environment
 
 Once the changes are merged, you can recreate the containers. 
 
-First pull new container images:
+First, pull in new container images:
 
 ```bash
 ./run pull
@@ -130,6 +128,8 @@ First pull new container images:
 
 Then stop and remove existing containers:
 
+! Stopping the containers will make the Mender Server temporarily unavailable to devices and users.
+
 ```bash
 ./run stop
 ```
@@ -148,7 +148,7 @@ Then stop and remove existing containers:
 > Stopping menderproduction_mender-gui_1 ... done  
 > Stopping menderproduction_minio_1 ... done  
 
-!!! Stopping the containers will make Mender backend services unavailable
+!!! All system data is kept in named Docker volumes. Removing containers does not affect volumes.
 
 ```bash
 ./run rm
@@ -169,8 +169,6 @@ Then stop and remove existing containers:
 > Removing menderproduction_mender-mongo-useradm_1 ... done  
 > Removing menderproduction_mender-gui_1 ... done  
 > Removing menderproduction_minio_1 ... done  
-
-! All system data is kept in named Docker volumes. Removing containers does not affect volumes.
 
 Start the new environment:
 
@@ -194,11 +192,11 @@ Start the new environment:
 
 ## Closing notes
 
-Since production repository is versioned using git, it is possible to use git
+Since the production repository is versioned in git, it is possible to use git
 tools and apply typical git workflows, such as pushing, pulling, branching, etc.
 
-Pushing and pulling to/from a company hosted git repository is a great method
-for sharing configuration between staging and production environments. For
-instance, a configuration can be validated in a staging environment, with
-relevant changes getting committed and pushed to the repository. Once ready, a
+Pushing and pulling to/from a company hosted git repository is a great way
+to share configuration between staging and production environments. A
+configuration can be validated in a staging environment as
+relevant changes are committed and pushed to the repository. Once they are validated, a
 production environment can pull the changes and apply them locally.
