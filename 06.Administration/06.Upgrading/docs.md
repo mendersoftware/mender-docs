@@ -30,7 +30,7 @@ workflow with branching, pulling remote changes and merging locally.
 ## Backing up existing data
 
 Before upgrading it is advisable to backup existing data and volumes.
-Consult the Mongo DB and docker manuals for the necessary steps.
+Consult the MongoDB and docker manuals for the necessary steps.
 
 ## Updating your local repository
 
