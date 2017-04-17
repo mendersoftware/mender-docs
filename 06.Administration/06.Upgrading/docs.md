@@ -11,7 +11,7 @@ This is a guide for upgrading the Mender Server in production environments.
 ## Prerequisites
 
 It is assumed that the installation was performed following the steps
-in the [Production installation](../Production-installation) guide. That means that
+in the [Production installation](../production-installation) guide. That means that
 you currently have:
 
 * a local git repository based
@@ -23,7 +23,7 @@ As a good engineering practice, it is advisable to perform the upgrade on a
 staging environment first. This will allow you to discover potential problems
 and allow to exercise the procedure in a safe manner. 
 
-[Production installation](../Production-installation) is largely based on using git and Mender integration
+[Production installation](../production-installation) is largely based on using git and Mender integration
 repository. This is the reason why the upgrade procedure follows a regular git
 workflow with branching, pulling remote changes and merging locally.
 
@@ -55,7 +55,7 @@ For each release there will be a corresponding release branch. For example, the
 branch named `1.0.x` provides the 1.0 release setup. Stable releases are tagged,
 e.g. `1.0.1`.
 
-Recall from the [production installation](../Production-installation) guide that our
+Recall from the [production installation](../production-installation) guide that our
 local setup was introduced in a branch that was created from given release
 version. You can use git commands such as `git log` and `git diff` to review the changes
 introduced in upstream branch. For example:
