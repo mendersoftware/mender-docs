@@ -35,6 +35,11 @@ Note that this variable has no effect when generating an SD card image (`sdimg`)
 The name of the image or update that will be built. This is what the device will report that it is running, and different updates must have different names. This variable must be defined or the build will fail.
 
 
+#### MENDER_ARTIFACT_SIGNING_KEY
+
+Can be set to a private key which will be used to sign the update artifact. The default is empty, which means the artifact won't be signed.
+
+
 #### MENDER_BOOT_PART
 
 The partition Mender uses as the boot partition. See [More detailed storage configuration](../../devices/partition-layout#more-detailed-storage-configuration) for more information.
