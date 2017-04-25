@@ -42,6 +42,17 @@ Can be set to a private key which will be used to sign the update artifact. The 
 The signature can also be added or changed outside the build process, by using the `mender-artifact` tool's `-k` option. For more information, see the section on [modifying Mender artifacts](modifying-a-mender-artifact).
 
 
+#### MENDER_ARTIFACT_VERIFY_KEY
+
+If set, this will add the given public verification key to the client configuration, which means that the client will reject updates which are not signed by the corresponding private key (see [MENDER_ARTIFACT_SIGNING_KEY](#mender-artifact-signing-key)).
+
+More specifically, it will add the key to the root filesystem under `/etc/mender/artifact-verify-key.pem`, and add a `ArtifactVerifyKey` entry to `mender.conf`, pointing to this key. Using `MENDER_ARTIFACT_VERIFY_KEY` is recommended when the key is hosted in a file external to the build system / Yocto Project layer.
+
+An alternative way to specify a verification key is to include a file named `artifact-verify-key.pem` in `SRC_URI`. This is a better approach if the key is hosted inside a Yocto Project layer, as opposed to living externally on the local host somewhere. Otherwise it has the same effect as defining `MENDER_ARTIFACT_VERIFY_KEY`.
+
+Note that you cannot both use `MENDER_ARTIFACT_VERIFY_KEY` and have `artifact-verify-key.pem` in `SRC_URI` at the same time.
+
+
 #### MENDER_BOOT_PART
 
 The partition Mender uses as the boot partition. See [More detailed storage configuration](../../devices/partition-layout#more-detailed-storage-configuration) for more information.
