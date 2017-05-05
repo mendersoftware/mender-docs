@@ -7,7 +7,6 @@ taxonomy:
 This section provides a reference of variables Mender use during the Yocto Project build process.
 The variables are either specific to- and defined by Mender, as shown by the `MENDER_` prefix, or [defined by the Yocto Project](http://www.yoctoproject.org/docs/2.2/ref-manual/ref-manual.html?target=_blank#ref-variables-glos) and used by Mender.
 
-
 #### IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET
 
 Together with `IMAGE_BOOTLOADER_FILE`, this sets the offset where the bootloader should be placed, counting from the start of the storage medium. The offset is specified in units of 512-byte sectors. Obviously this needs to be non-zero, or the partition table itself would be overwritten.
@@ -39,7 +38,7 @@ The name of the image or update that will be built. This is what the device will
 
 Can be set to a private key which will be used to sign the update artifact. The default is empty, which means the artifact won't be signed.
 
-The signature can also be added or changed outside the build process, by using the `mender-artifact` tool's `-k` option. For more information, see the section on [modifying Mender artifacts](modifying-a-mender-artifact).
+The signature can also be added or changed outside the build process, by using the `mender-artifact` tool's `-k` option. For more information, see the section on [modifying Mender artifacts](../modifying-a-mender-artifact).
 
 
 #### MENDER_ARTIFACT_VERIFY_KEY
