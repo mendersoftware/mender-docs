@@ -8,7 +8,8 @@ As described in the [architecture overview](../overview) Mender uses the output
 from a build system and deploys this to remote devices.
 
 In order to ensure a robust update process, Mender needs *additional metadata*
-alongside the raw bits of the file system, most notably:
+alongside the raw bits of the file system. Depending on the version of the artifact usesd 
+the metadata might be different but must contain among the others:
 
 * *Name* of the software build, so that software is not redeployed if it is already installed at the device.
 * Device types the software is *compatible* with, so that software is not deployed to incompatible hardware (e.g. CPU architecture, hardware floating point support, peripheral drivers).
@@ -27,15 +28,26 @@ is referred to as a **Mender Artifact**, or simply *an Artifact*.
 All relevant components of Mender, such as the client and server, understand
 and use (only) this specific file format when working with software deployments.
 
-The diagram below shows an example of the main attributes and structure of a
-Mender Artifact file.
-
-![Mender Artifact format](mender-artifact-format.png)
-
-Internally, a Mender Artifact is simply a file archive in the [tarball format](https://en.wikipedia.org/wiki/tar_(computing)?target=_blank).
+Internally, a Mender Artifact is simply a file archive in the [tarball format](https://en.wikipedia.org/wiki/Tar_(computing)?target=_blank).
 It contains several files for incorporating versioning, extensions and metadata,
 as well as the main file: the root file system.
 
+The diagram below shows an example of the main attributes and structure of a
+Mender Artifact file. Please note that the exact format of the artifact may vary between versions.
+
+![Mender Artifact format](mender-artifact-format.png)
+
+
+## Versions
+
+Since the beginning of development Mender evolved to adapt to the needs of the users. This caused adding new features to the project and thus 
+introducing new versions of the Mender Artifact. At the moment we are supporting two different versions of the Mender Artifact.
+
+In addition to what is included in version 1, version 2 is adding support for image signing and verification. 
+Among the other metadata it contains *manifest* and *manifest.sig* files, which
+are the collection of the file checksums and the signature of the manifest respectively. More details about the exact format
+of the Mender Artifact can be found in the 
+[Mender Artifact file doccumentation](https://github.com/mendersoftware/mender-artifact/blob/master/Documentation/artifact-format.md).
 
 
 ## Streaming and compression
@@ -51,6 +63,13 @@ To enable streaming and control based on metadata, like aborting the download
 if the Artifact is not compatible with the device, the Mender Artifact itself
 is not compressed. Instead, the root file systems within Artifacts are
 compressed, currently with the [gzip compression algorithm](https://en.wikipedia.org/wiki/gzip?target=_blank).
+
+
+## Signing and verification
+
+To verify that the atrifact commes form a known source, Mender Artifact supports 
+image signing and verification. In order to create a signed Artifact which can be verified by the Mender Client
+during the update process please follow the instructions at [Signing and verifying Mender Artifact](../../Artifacts/Signing-And-Verifying).
 
 
 ## Working with Mender Artifacts
