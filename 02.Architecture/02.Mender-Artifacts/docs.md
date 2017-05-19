@@ -69,7 +69,7 @@ compressed, currently with the [gzip compression algorithm](https://en.wikipedia
 
 To verify that the atrifact commes form a known source, Mender Artifact supports 
 image signing and verification. In order to create a signed Artifact which can be verified by the Mender Client
-during the update process please follow the instructions at [Signing and verifying Mender Artifact](../../Artifacts/Signing-And-Verifying).
+during the update process please follow the instructions at [Signing and verifying Mender Artifact](../../artifacts/signing-and-verifying).
 
 
 ## Working with Mender Artifacts
