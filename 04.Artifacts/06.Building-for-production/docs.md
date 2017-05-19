@@ -66,5 +66,13 @@ Note in particular the `:` after the directory; this is mandatory.
 ## Artifact signing and verification keys
 
 The private key used for signing the Mender Artifact should be protected and kept outside of the build system, thus there are no extra steps needed to add it to any part of the build system or either Client or the Server environment. Only the public key, which is used by the Mender Client to verify the signed Artifact must be included in the Client build. 
-The best way to include a public verification key in the client is to set the name of the verification key to `artifact-verify-key.pem` and place in `SRC_URI` before building the Yocto client image. For more information about some alternate approaches please follow [MENDER_ARTIFACT_VERIFY_KEY documentation](../Variables#mender-artifact-verify-key)).
+The best way to include a public verification key in the client is to add it to your own layer. Set the name of the verification key to `artifact-verify-key.pem` and append it to `SRC_URI` of the `mender` application before building the Yocto client image. For example:
 
+```bash
+FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+SRC_URI_append = " file://artifact-verify-key.pem"
+```
+
+Note that it is also possible (but not recommended) to use `local.conf`, by using [the same method as for client certificates](#using-localconf), adding `pn-mender` to the variable names.
+
+For more information about some alternate approaches please follow [MENDER_ARTIFACT_VERIFY_KEY documentation](../Variables#mender-artifact-verify-key)).
