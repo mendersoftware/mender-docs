@@ -1,13 +1,11 @@
 ---
-title: "Development"
+title: "1.1 beta"
 taxonomy:
     category: docs
 ---
 
-### Development
+### Version 1.1 beta
 
 # Documentation
 
-Documentation for Mender's bleeding-edge master branch 
-
-[https://github.com/mendersoftware/mender/tree/master](https://github.com/mendersoftware/mender/tree/master)
+Documentation for Mender 1.1 beta.
