@@ -69,7 +69,7 @@ Start off by cloning the Mender integration repository into a local directory
 named `mender-server`:
 
 ```bash
-git clone -b master https://github.com/mendersoftware/integration mender-server
+git clone -b 1.1.x https://github.com/mendersoftware/integration mender-server
 ```
 > Cloning into 'deployment'...  
 > remote: Counting objects: 1117, done.  
@@ -469,7 +469,7 @@ git commit -m 'production: final configuration'
 At this point your commit history should look as follows:
 
 ```bash
-git log --oneline master..HEAD
+git log --oneline 1.1.x..HEAD
 ```
 > 7a4de3c production: final configuration  
 > 41273f7 production: adding generated keys and certificates  

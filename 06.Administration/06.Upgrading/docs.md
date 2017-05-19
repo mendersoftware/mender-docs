@@ -49,11 +49,12 @@ git fetch origin --tags
 > Resolving deltas: 100% (214/214), completed with 42 local objects.  
 > From https://github.com/mendersoftware/integration  
 >    02cd118..75b7831  1.0.x      -> origin/1.0.x  
+>    02ae239..1ba5245  1.1.x      -> origin/1.1.x
 >    06f3212..e9e5df4  master     -> origin/master  
 
 For each release there will be a corresponding release branch. For example, the
-branch named `1.0.x` provides the 1.0 release setup. Stable releases are tagged,
-e.g. `1.0.1`.
+branch named `1.1.x` provides the 1.1 release setup. Stable releases are tagged,
+e.g. `1.1.1`.
 
 Recall from the [production installation](../production-installation) guide that our
 local setup was introduced in a branch that was created from given release
@@ -62,9 +63,9 @@ introduced in upstream branch. For example:
 
 ```bash
 # to list differences between current HEAD and remote branch
-git log HEAD..origin/1.0.x
+git log HEAD..origin/1.1.x
 # to list differences between current HEAD and stable tag
-git log HEAD..1.0.1
+git log HEAD..1.1.0
 ```
 
 The most important thing to review is the diff between our production template
@@ -74,13 +75,13 @@ minor/major release, one can expect the diff to be larger. Example:
 
 ```bash
 # while at the root of repository
-user@local$ git diff HEAD..1.0.1 -- template
+user@local$ git diff HEAD..1.1.0 -- template
 ```
 
 Upgrading our local production branch is performed by issuing a `git merge` command, like this:
 
 ```bash
-git merge 1.0.1
+git merge 1.1.0
 ```
 > Merge made by the 'recursive' strategy.  
 >  .travis.yml            | 16 ++++++++++++++++  
@@ -113,18 +114,18 @@ First, pull in new container images:
 > Digest: sha256:0ded6733900e6e09760cd9a7c79ba4981dea6f6b142352719f7a4157b4a3352d  
 > Status: Image is up to date for mendersoftware/minio:RELEASE.2016-12-13T17-19-42Z  
 > ...  
-> Pulling mender-device-auth (mendersoftware/deviceauth:1.0.1)...  
-> 1.0.x: Pulling from mendersoftware/deviceauth  
+> Pulling mender-device-auth (mendersoftware/deviceauth:1.1.0)...  
+> 1.1.x: Pulling from mendersoftware/deviceauth  
 > Digest: sha256:07ed10f6fdee40df1de8e10efc3115cb64b0c190bcf5bcd194b9f34086396058  
-> Status: Image is up to date for mendersoftware/deviceauth:1.0.1  
-> Pulling mender-gui (mendersoftware/gui:1.0.1)...  
-> 1.0.x: Pulling from mendersoftware/gui  
+> Status: Image is up to date for mendersoftware/deviceauth:1.1.0 
+> Pulling mender-gui (mendersoftware/gui:1.1.0)...  
+> 1.1.x: Pulling from mendersoftware/gui  
 > Digest: sha256:af2d2349f27dd96ca21940672aa3a91335b17153f8c7ef2ca865a9a7fdf2fd22  
-> Status: Image is up to date for mendersoftware/gui:1.0.1  
-> Pulling mender-api-gateway (mendersoftware/api-gateway:1.0.1)...  
-> 1.0.x: Pulling from mendersoftware/api-gateway  
+> Status: Image is up to date for mendersoftware/gui:1.1.0  
+> Pulling mender-api-gateway (mendersoftware/api-gateway:1.1.0)...  
+> 1.1.x: Pulling from mendersoftware/api-gateway  
 > Digest: sha256:0a2033a57f88afc38253a45301c83484e532047d75858df95d46c12b48f1f2f8  
-> Status: Image is up to date for mendersoftware/api-gateway:1.0.1````  
+> Status: Image is up to date for mendersoftware/api-gateway:1.1.0````  
 
 Then stop and remove existing containers:
 
