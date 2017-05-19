@@ -1,5 +1,5 @@
 ---
-title: Signing and verifying Mender Artifact
+title: Signing and verification
 taxonomy:
     category: docs
 ---
