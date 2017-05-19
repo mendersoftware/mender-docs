@@ -30,7 +30,7 @@ Each one of these steps can be configured further, see the linked sections for m
 
 The other layers in *meta-mender* provide support for specific boards.
 
-!!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Start guide](http://www.yoctoproject.org/docs/2.2/yocto-project-qs/yocto-project-qs.html?target=_blank).
+!!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Start guide](http://www.yoctoproject.org/docs/2.3/yocto-project-qs/yocto-project-qs.html?target=_blank).
 
 
 ## Prerequisites
@@ -65,7 +65,7 @@ git clone -b pyro git://git.yoctoproject.org/poky
 cd poky
 ```
 
-!!! Note that the Yocto Project also depends on some [development tools to be in place](http://www.yoctoproject.org/docs/2.2/yocto-project-qs/yocto-project-qs.html?target=_blank#packages).
+!!! Note that the Yocto Project also depends on some [development tools to be in place](http://www.yoctoproject.org/docs/2.3/yocto-project-qs/yocto-project-qs.html?target=_blank#packages).
 
 ! Please make sure that the clock is set correctly on your devices. Otherwise certificate verification will become unreliable. See [certificate troubleshooting](../../troubleshooting/mender-client#certificate-expired-or-not-yet-valid) for more information.
 
