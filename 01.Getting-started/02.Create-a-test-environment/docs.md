@@ -122,14 +122,17 @@ like the following:
 
 ## Create the initial user
 
-The first time you access the UI, you will be asked to create the initial
-user. Simply input your email and desired password as shown below:
+The UI requires you to log in with a valid username and password. You must first create a Mender user via a CLI provided by the User Administration Service. The service's binary is embedded in a Docker container, so to execute it you will issue the **exec** subcommand of docker-compose, e.g.:
 
-![Mender UI - initial load](create_user_initial.png)
+```bash
+sudo docker-compose exec mender-useradm
+                         /usr/bin/useradm
+                         create-user
+                         --username=myusername@host.com
+                         --password=mysecretpassword
+```
 
-
-!!! Your email and password are currently only used to log in to the Mender server. You will not receive any email from Mender. However, this might change in future versions so we recommend to input your real email address. Mender currently supports one user account, support for multiple user accounts will be implemented shortly. If you lose your username or password, please see the [documentation on resetting administrative credentials](../../troubleshooting/mender-server#resetting-administrative-credentials).
-
+!!! Your email and password are currently only used to log in to the Mender server. You will not receive any email from Mender. However, this might change in future versions so we recommend to input your real email address.
 
 **Congratulations!** You have the Mender server and a virtual Mender client successfully running!
 Please proceed to [Deploy to virtual devices](../deploy-to-virtual-devices).
