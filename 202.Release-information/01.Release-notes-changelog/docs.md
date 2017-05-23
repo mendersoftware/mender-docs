@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-## v1.1.0
+## v1.1.0 Beta 1
 
 _Released 05.24.2017_
 
