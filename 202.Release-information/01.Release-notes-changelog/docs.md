@@ -4,8 +4,75 @@ taxonomy:
     category: docs
 ---
 
-## v1.0.1 
-_Released dd.mm.yyyy_
+## v1.1.0
+
+_Released 05.24.2017_
+
+#### deployments
+* Increase file upload request validity when pushing artifact to remote file storage.
+* Update artifact handling reflecting changes in mender-artifact.
+* Support for signed images introduced, but with no signature
+  verification yet. ([MEN-1022](https://tracker.mender.io/browse/MEN-1022))
+* Add device decomissioning support in the deployments service.
+* Update artifact description when updating artifact data.
+* images/s3: unmarshal S3 errors when uploading image
+* Artfact upload error handling fixed.
+* Update artifact description when updating artifact data. ([MEN-1093](https://tracker.mender.io/browse/MEN-1093))
+* travis: bump required Go version to 1.8
+
+#### deviceadm
+* Support for listing device authentication data sets with device ID
+  filter using GET /devices?device_id=<devid>
+
+#### deviceauth
+* New feature: decommissioning device
+* devauth: improve logging when rejecting or giving out tokens
+* Decomission device endpoint implemented (whithout
+  decommission job submit).
+* api/management: management API is publicly available, update misleading description
+* api: add tenant_token as an optional attribute in authentication request
+
+#### gui
+* Artifact signed field and improvements ([MEN-230](https://tracker.mender.io/browse/MEN-230))
+* Bugfix: hide placeholder when past deployments is not empty ([MEN-229](https://tracker.mender.io/browse/MEN-229))
+* Device blocking & decommissioning ([MEN-226](https://tracker.mender.io/browse/MEN-226))
+* Implement pagination UI on pending & in progress deployment lists ([MEN-222](https://tracker.mender.io/browse/MEN-222))
+
+#### integration
+* Upgrade all server components to 1.1 series
+* Upgrade client to 1.1
+* Upgrade mender-artifact to 2.0
+
+#### inventory
+* No changes
+
+#### mender-api-gateway-docker
+* nginx: log and pass X-MEN-RequestID
+
+#### mender-artifact
+* Switch default artifact format version to 2. ([MEN-1183](https://tracker.mender.io/browse/MEN-1183))
+* Add CLI support for signing and verifying images.
+* Add implementation of RSA and ECDSA signatures.
+* Fix returning and printing errors form artifact library.
+* Fix overwriting artifact if new one is invalid.
+* Add basic signing functionality and rewrite the library.
+
+#### mender
+* Add support for using signed mender-artifact library.
+* Add support for verifying artifact signature. ([MEN-1020](https://tracker.mender.io/browse/MEN-1020))
+
+#### useradm
+* Added `create-user` and `server` commands to useradm. Running
+  `useradm server` will start useradm service (just like running `useradm` did),
+  also if no command is passed `server` is used a default. `create-user` will add
+  given user to DB. Examples: `useradm create-user --username foo@bar.com
+  --password foobarbarbar` (creates a user with username foo@bar.com and password
+  foobar...), `useradm create-user --username foo@bar.com` (same as before, but
+  password is read from terminal). See `--help` for details.
+
+
+## v1.0.1
+_Released 04.05.2017_
 
 ### Notable changes
 
