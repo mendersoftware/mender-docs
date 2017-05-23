@@ -51,7 +51,7 @@ mkdir core-image-base-beaglebone && tar -C core-image-base-beaglebone -xvf core-
 > header.tar.gz  
 > data/0000.tar.gz  
 
-The outout for the version 2 should look similar to the one below:
+The output for the version 2 should look similar to the following:
 
 > version  
 > manifest  
@@ -146,30 +146,7 @@ mender-artifact read core-image-base-beaglebone.mender
 The most important fields to note for writing a new Artifact are
 the *Compatible devices* and *Name*.
 
-When using signed Artifact you can verify the signature providing additional command line parameter
-specifying the verification key:
-
-```bash
-mender-artifact read core-image-base-beaglebone.mender -k public.pem
-```
-
-
-> Mender artifact:  
->   Name: mender-1.0.1  
->   Format: mender  
->   Version: 2  
->   Signature: signed and verified correctly  
->   Compatible devices: '[beaglebone]'  
->  
-> Updates:  
->   0000:  
->     Type:   rootfs-image  
->     Files:  
->       name:     license_test.go  
->       size:     764  
->       modified: 2017-04-07 10:32:04 +0200 CEST  
->       checksum: 8fec5d7699ca28dd47f1e5330ef03e70ce0d77acc6888babe77748d1edfece7f  
-
+!!! When working with a signed Artifact, you can verify the signature by providing the public verification key to the `-k` option, e.g. `mender-artifact read core-image-base-beaglebone.mender -k public.pem`.
 
 
 #### Write a new Artifact
@@ -187,18 +164,9 @@ mender-artifact write rootfs-image -t beaglebone -n release-1 -u core-image-base
 
 ! The Artifact name (`-n`) must correspond to the name stated *inside* the root file system at `/etc/mender/artifact_info`, so make sure to change both places if you are modifying it.
 
+!!! If you would like to generate a signed Artifact, simply add the `-k` option with the path to your *private key*. In our example above, the full command would be `mender-artifact write rootfs-image -t beaglebone -n release-1 -u core-image-base-beaglebone-modified.ext4 -o core-image-base-beaglebone-signed.mender -k priv.pem`.
+
 After deploying this Artifact with Mender and rebooting, your configuration changes will be in effect!
-
-
-## Write a signed Artifact
-
-Similar to the example above, we will write a new signed Artifact containing all the original metadata:
-
-```bash
-mender-artifact write rootfs-image -t beaglebone -n release-1 -u core-image-base-beaglebone-modified.ext4 -o core-image-base-beaglebone-signed.mender -k priv.pem
-```
-
-The only difference is one additional command line `-k` parameter, which specifies the private key used for signing the Artifact.
 
 
 ## Compiling mender-artifact

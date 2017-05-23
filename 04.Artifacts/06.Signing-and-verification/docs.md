@@ -5,60 +5,65 @@ taxonomy:
 ---
 
 
-The aim of the Mender project is to provide a robust and secure process for updating software for connected devices.
-An important part of the process is giving the Client the ability of verifying that the update comes from a known and trusted source.
+The goal for Mender is to provide a robust and secure software update process.
+An important part of this is to give the Mender Client the ability to verify that the update comes from a trusted source.
 
-One way of achieving it is to sign the Artifact using the protected private key, stored by the signing system. Then the Client can verify it
-using appropriate public key. Only if the signature verification check is passing we can make sure that the update is coming from the credible source.
+One way of achieving this is to sign the Artifact using a protected private key, which is stored and used on a Signing system. The Mender Client can then verify it
+using the corresponding public key. If the signature verification check passes, the update is considered to come from a trusted source.
 
 
 ## Signature management flow
 
-The following diagram shows the high level flow of creating and managing Artifact signatures and keys, which are
-the essential part of Artifact signing and verification process.
+The following diagram shows the high level flow of creating and managing keys and Artifact signatures, which are
+the essential part of the Artifact signing and verification process.
 
 ![Mender signature management flow](mender-signature-management-flow.png)
 
-The process begins with provisioning a device and building an Artifact for the given device to be updated. Once
-an image is created it is signed by the signing system. Ideally to increase the security, the signing system should be
-the only place where the access to the private signing key is granted, and it should be the only entity that can sign the Artifact.
+The process begins with provisioning a device with the public verification key, and configuring the Mender Client
+to use the key (with the `ArtifactVerifyKey` configuration option). After an image is built, it gets signed by the Signing system.
 
-After the Artifact is created and signed it can be uploaded to the deployment Server, where the Mender Client will download it from.
-During the update installation process, the Mender Client will verify the Artifact using corresponding public key. Only if the verification
-is successful the device will be updated.
-In case of lack of signature, or verification failure the update process will be aborted and the Client will report an error to the Server.
+!!! Although it is convenient and possible to use the Build system as the Signing system, this lowers the security as unauthorized access to the private signing key is made easier for potential attackers (e.g. if the Build system is compromised). The best practice is to only sign Artifacts on some offline system, ideally as a manual operation after careful inspection of the Artifact.
 
+After the Artifact is created and signed it can be uploaded to the Mender Server, where the Mender Client will download it from.
+During the update installation process, the Mender Client will verify the Artifact using the corresponding public key that it was provisioned with.
+The Artifact will only be installed if the verification is successful.
+If Artifacts are not signed or the verification fails, the update process will be aborted and the Mender Client will report an error to the Mender Server.
+
+! If the Mender Client is configured to enable signature verification (through the `ArtifactVerifyKey` option), it will reject any unsigned Artifacts. This is necessary because otherwise an attacker could simply inject unsigned Artifacts to bypass the signature verification.
 
 ## Supported signing algorithms
 
-Following signing algorithms are supported by the Mender:
+The following signing algorithms are supported by the Mender:
 * RSA with recommended key length of at least 2048 bits
 * ECDSA with curve P-256
 
 
 ## Generating keys
 
-In order to sign and later on verify the signature of the Mender Artifact we need to generate a private and public key pair. Depending on the
-signing algorithm chosen, to generate the keys please follow the instructions in the appropriate section below.
+In order to sign and later on verify the signature of the Mender Artifact we need to generate a private and public key pair.
+Please follow the respective section below, depending on the signature algorithm you want to use.
 
-### RSA
+After generating the keys you will have a file `priv.pem`, which is only used by the Signing system, as well as
+`public.pem` which you [provision all the devices with](../building-for-production#artifact-signing-and-verification-keys).
 
-Generating the private RSA key can be done executing the command below:
+#### RSA
+
+Generating a private RSA key can be done by executing the command below:
 
 ```bash
 openssl genrsa -out priv.pem
 ```
 
-To extract a public key from the private key, we have generated above, use following command:
+To extract a public key from the private key use following command:
 
 ```bash
 openssl rsa -in priv.pem -out public.pem -pubout
 
 ```
 
-### ECDSA256
+#### ECDSA256
 
-In order to generate a public and private ECDSA key pair use the command below:
+In order to generate a public and private ECDSA key pair use the commands below:
 
 ```bash
 openssl ecparam -genkey -name secp256r1 -out priv.pem
@@ -66,21 +71,31 @@ openssl ec -in priv.pem -pubout -out public.pem
 ```
 
 
-## Signing and verifying the image
+## Signing a root file system
 
-
-Once the image for the given device is built we can use `mender-artifact` tool to create a signed Artifact. In order to so run the command below, providing
-a `-k` parameter specifying private key, which will be used for creating the signature.
+Once a root file system for a device is built, we can use the `mender-artifact` tool to create a signed Artifact. In order to do so we use
+the `-k` parameter to specify the private key, which will be used for creating the signature. The full command will look like the following:
 
 ```bash
 mender-artifact write rootfs-image -t beaglebone -n mender-1.0.1 -u image.ext4 -k priv.pem -o artifact-signed.mender
 ```
 
-After the Artifact is created it can be verified or read and the additional signature verification check can be done. For verifying the signature, you can provide
-`-k` command line option providing the location of the public verification key. Please note that even though we are using the same parameter as for the command above,
-this time we are providing a public key, not the private one we've been using for creating a signed Artifact.
+This is the command the Signing system uses to create a signed Artifact.
+
+
+## Verifying the signature
+
+After a signed Artifact is created, it can be verified with `mender-artifact` as well. To verify the signature, again use the
+`-k` option, but this time with the location of the *public verification key*.
 
 ```bash
 mender-artifact read artifact-signed.mender -k public.pem
 ```
+
+
+## Enable Mender Client signature verification
+
+To make it easier to provision your devices with the public verification key and corresponding Mender Client configuration,
+Mender has integration with the Yocto Project. Please refer to the documentation for [Artifact signing and verification keys](../building-for-production#artifact-signing-and-verification-keys) to see how to include them.
+
 
