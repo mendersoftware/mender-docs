@@ -77,7 +77,7 @@ openssl ec -in private.key -pubout -out public.key
 ## Signing
 
 Once a root file system for a device is built, use the `mender-artifact` tool to create a signed Artifact.
-If you use Linux, [download the prebuilt mender-artifact binary](https://d25phv8h0wbwru.cloudfront.net/master/tip/mender-artifact),
+If you use Linux, [download the prebuilt mender-artifact binary](http://d12mp0qik9d80b.cloudfront.net/2.0.0b1-build2/mender-artifact),
 otherwise [compile it for your platform](../modifying-a-mender-artifact#compiling-mender-artifact).
 
 To sign we use the `-k` parameter to specify the private key, which will be used for creating the signature.
