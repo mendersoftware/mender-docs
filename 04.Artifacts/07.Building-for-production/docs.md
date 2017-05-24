@@ -78,4 +78,4 @@ SRC_URI_append = " file://artifact-verify-key.pem"
 
 Note that it is also possible (but not recommended) to use `local.conf`, by using [the same method as for client certificates](#using-localconf), adding `pn-mender` to the variable names.
 
-For more information about some alternate approaches please follow [MENDER_ARTIFACT_VERIFY_KEY documentation](../variables#mender-artifact-verify-key)).
+For more information about some alternate approaches please follow the [MENDER_ARTIFACT_VERIFY_KEY documentation](../variables#mender_artifact_verify_key).
