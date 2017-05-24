@@ -126,11 +126,15 @@ sed -i -e 's#/template/#/production/#g' prod.yml
 ```
 
 At this point all changes should be committed to the repository:
+<!--AUTOMATION: execute=sed -i '0,/set-my-alias-here.com/s/set-my-alias-here.com/localhost/' prod.yml -->
+<!--AUTOMATION: execute=sed -i 's|DEPLOYMENTS_AWS_URI:.*|DEPLOYMENTS_AWS_URI: https://localhost:9000|' prod.yml -->
 
+<!--AUTOMATION: ignore -->
 ```bash
 git add .
 ```
 
+<!--AUTOMATION: ignore -->
 ```bash
 git commit -m 'production: initial template'
 ```
@@ -180,9 +184,11 @@ necessary Docker images:
 Prepare certificates using the helper script `keygen` (replacing `mender.example.com`
 and `s3.example.com` with your DNS names):
 
+<!--AUTOMATION: ignore=use localhost instead-->
 ```bash
 CERT_API_CN=mender.example.com CERT_STORAGE_CN=s3.example.com ../keygen
 ```
+<!--AUTOMATION: execute=CERT_API_CN=localhost CERT_STORAGE_CN=localhost ../keygen -->
 
 > Generating a 256 bit EC private key  
 > writing new private key to 'private.key'  
@@ -192,7 +198,7 @@ CERT_API_CN=mender.example.com CERT_STORAGE_CN=s3.example.com ../keygen
 > For more information please see https://docs.mender.io/Administration/Certificates-and-keys.  
 
 Your local directory tree should now look like this:
-
+<!--AUTOMATION: ignore -->
 ```bash
 ├── keys-generated
 │   ├── certs
@@ -257,15 +263,18 @@ single binary blob.
 
 The entire directory structure can be encrypted with the following command:
 
+<!--AUTOMATION: ignore=optional step -->
 ```bash
 tar c keys-generated |  gpg --output keys-generated.tar.gpg --symmetric
 Enter passphrase:
 ```
 
+<!--AUTOMATION: ignore=optional step -->
 ```
 rm -rf keys-generated
 ```
 
+<!--AUTOMATION: ignore=optional step -->
 ```
 ls -l
 ```
@@ -276,6 +285,7 @@ ls -l
 
 Keys need to be decrypted before bringing the whole environment up:
 
+<!--AUTOMATION: ignore=optional step -->
 ```bash
 gpg --decrypt keys-generated.tar.gpg | tar xvf -
 gpg: AES encrypted data
@@ -285,10 +295,12 @@ Enter passphrase:
 When using encryption, commit `keys-generated.tar.gpg` instead of the
 `keys-generated` directory structure to the repository, like this:
 
+<!--AUTOMATION: ignore=optional step -->
 ```bash
 git add keys-generated.tar.gpg
 ```
 
+<!--AUTOMATION: ignore=optional step -->
 ```bash
 git commit -m 'production: adding generated keys and certificates'
 ```
@@ -416,6 +428,11 @@ The updated entry should look similar to this:
     ...
 
 ```
+<!--AUTOMATION: execute=sed -i.bak 's/MINIO_ACCESS_KEY:.*/MINIO_ACCESS_KEY: Q3AM3UQ867SPQQA43P2F/' prod.yml -->
+<!--AUTOMATION: execute=sed -i.bak 's/MINIO_SECRET_KEY:.*/MINIO_SECRET_KEY: abcssadasdssado798dsfjhkksd/' prod.yml -->
+
+<!--AUTOMATION: execute=sed -i.bak 's/DEPLOYMENTS_AWS_AUTH_KEY:.*/DEPLOYMENTS_AWS_AUTH_KEY: Q3AM3UQ867SPQQA43P2F/' prod.yml -->
+<!--AUTOMATION: execute=sed -i.bak 's/DEPLOYMENTS_AWS_AUTH_SECRET:.*/DEPLOYMENTS_AWS_AUTH_SECRET: abcssadasdssado798dsfjhkksd/' prod.yml -->
 
 
 #### Deployments service
@@ -468,16 +485,19 @@ It is suggested to adjust log rotation parameters only after measuring the actua
 
 Once all the configuration is complete, commit all changes to the repository:
 
+<!--AUTOMATION: ignore -->
 ```bash
 git add prod.yml
 ```
 
+<!--AUTOMATION: ignore -->
 ```bash
 git commit -m 'production: final configuration'
 ```
 
 At this point your commit history should look as follows:
 
+<!--AUTOMATION: ignore -->
 ```bash
 git log --oneline 1.1.x..HEAD
 ```
@@ -522,6 +542,7 @@ To verify that the services are running, you can issue the following command:
 ./run ps
 ```
 
+<!--AUTOMATION: ignore -->
 ```bash
                    Name                                  Command               State           Ports
 -------------------------------------------------------------------------------------------------------------
@@ -544,9 +565,16 @@ mendersoftware/dynomite:stable                /dynomite/entrypo..."            U
 ```
 
 
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 17 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
+<!--AUTOMATION: test=./run restart -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 17 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
+<!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
+<!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:9000" -->
+
 Furthermore, since this is a brand new installation it should be possible to request initial
 user login token through the API:
 
+<!--AUTOMATION: ignore -->
 ```bash
 curl -X POST  -D - --cacert keys-generated/certs/api-gateway/cert.crt https://mender.example.com:443/api/management/v1/useradm/auth/login
 ```
