@@ -1,0 +1,11 @@
+sudo: required
+
+services:
+  - docker
+
+language: python
+python:
+  - "3.6"
+
+script:
+  - ./test_docs.py 06.Administration/02.Production-installation/docs.md
