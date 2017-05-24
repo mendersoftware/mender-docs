@@ -146,7 +146,7 @@ mender-artifact read core-image-base-beaglebone.mender
 The most important fields to note for writing a new Artifact are
 the *Compatible devices* and *Name*.
 
-!!! When working with a signed Artifact, you can verify the signature by providing the public verification key to the `-k` option, e.g. `mender-artifact read core-image-base-beaglebone.mender -k public.pem`.
+!!! When working with a signed Artifact, you can verify the signature by providing the public verification key to the `-k` option, e.g. `mender-artifact read core-image-base-beaglebone.mender -k public.key`.
 
 
 #### Write a new Artifact
@@ -164,7 +164,7 @@ mender-artifact write rootfs-image -t beaglebone -n release-1 -u core-image-base
 
 ! The Artifact name (`-n`) must correspond to the name stated *inside* the root file system at `/etc/mender/artifact_info`, so make sure to change both places if you are modifying it.
 
-!!! If you would like to generate a signed Artifact, simply add the `-k` option with the path to your *private key*. In our example above, the full command would be `mender-artifact write rootfs-image -t beaglebone -n release-1 -u core-image-base-beaglebone-modified.ext4 -o core-image-base-beaglebone-signed.mender -k priv.pem`.
+!!! If you would like to generate a signed Artifact, simply add the `-k` option with the path to your *private key*. In our example above, the full command would be `mender-artifact write rootfs-image -t beaglebone -n release-1 -u core-image-base-beaglebone-modified.ext4 -o core-image-base-beaglebone-signed.mender -k private.key`.
 
 After deploying this Artifact with Mender and rebooting, your configuration changes will be in effect!
 

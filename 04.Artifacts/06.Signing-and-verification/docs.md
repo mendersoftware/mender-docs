@@ -34,7 +34,7 @@ If Artifacts are not signed or the verification fails, the update process will b
 ## Supported signing algorithms
 
 The following signing algorithms are supported by the Mender:
-* RSA with recommended key length of at least 2048 bits
+* RSA with recommended key length of at least 3072 bits
 * ECDSA with curve P-256
 
 
@@ -43,21 +43,24 @@ The following signing algorithms are supported by the Mender:
 In order to sign and later on verify the signature of the Mender Artifact we need to generate a private and public key pair.
 Please follow the respective section below, depending on the signature algorithm you want to use.
 
-After generating the keys you will have a file `priv.pem`, which is only used by the Signing system, as well as
-`public.pem` which you [provision all the devices with](../building-for-production#artifact-signing-and-verification-keys).
+After generating the keys you will have a file `private.key`, which is only used by the Signing system, as well as
+`public.key` which you [provision all the devices with](../building-for-production#artifact-signing-and-verification-keys).
+
+!!! The file `public.key` is referred to as `artifact-verify-key.pem` when placed on the devices to avoid ambiguity with other keys.
 
 #### RSA
 
 Generating a private RSA key can be done by executing the command below:
 
 ```bash
-openssl genrsa -out priv.pem
+openssl genpkey -algorithm RSA -out private.key -pkeyopt rsa_keygen_bits:3072
+openssl rsa -in private.key -out private.key
 ```
 
 To extract a public key from the private key use following command:
 
 ```bash
-openssl rsa -in priv.pem -out public.pem -pubout
+openssl rsa -in private.key -out public.key -pubout
 
 ```
 
@@ -66,18 +69,22 @@ openssl rsa -in priv.pem -out public.pem -pubout
 In order to generate a public and private ECDSA key pair use the commands below:
 
 ```bash
-openssl ecparam -genkey -name secp256r1 -out priv.pem
-openssl ec -in priv.pem -pubout -out public.pem
+openssl ecparam -genkey -name prime256v1 -out private.key
+openssl ec -in private.key -pubout -out public.key
 ```
 
 
-## Signing a root file system
+## Signing
 
-Once a root file system for a device is built, we can use the `mender-artifact` tool to create a signed Artifact. In order to do so we use
-the `-k` parameter to specify the private key, which will be used for creating the signature. The full command will look like the following:
+Once a root file system for a device is built, use the `mender-artifact` tool to create a signed Artifact.
+If you use Linux, [download the prebuilt mender-artifact binary](https://d25phv8h0wbwru.cloudfront.net/master/tip/mender-artifact),
+otherwise [compile it for your platform](../modifying-a-mender-artifact#compiling-mender-artifact).
+
+To sign we use the `-k` parameter to specify the private key, which will be used for creating the signature.
+The full command will look like the following:
 
 ```bash
-mender-artifact write rootfs-image -t beaglebone -n mender-1.0.1 -u image.ext4 -k priv.pem -o artifact-signed.mender
+mender-artifact write rootfs-image -t beaglebone -n mender-1.0.1 -u core-image-base-beaglebone.ext4 -k private.key -o artifact-signed.mender
 ```
 
 This is the command the Signing system uses to create a signed Artifact.
@@ -89,7 +96,7 @@ After a signed Artifact is created, it can be verified with `mender-artifact` as
 `-k` option, but this time with the location of the *public verification key*.
 
 ```bash
-mender-artifact read artifact-signed.mender -k public.pem
+mender-artifact read artifact-signed.mender -k public.key
 ```
 
 
