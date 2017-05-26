@@ -29,6 +29,17 @@ The size of the generated rootfs. This will be the size that is shipped in a `.m
 Note that this variable has no effect when generating an SD card image (`sdimg`), since in that case the size is determined automatically. See  [`MENDER_STORAGE_TOTAL_SIZE_MB`](#mender_storage_total_size_mb) for more information.
 
 
+#### MENDER_ARTIFACT_EXTRA_ARGS
+
+Flags added to this variable will be used as extra arguments to the `mender-artifact` tool when creating the `.mender` artifact. For example:
+
+```
+MENDER_ARTIFACT_EXTRA_ARGS_append = " -v 1"
+```
+
+The above example builds an artifact with the version 1 format.
+
+
 #### MENDER_ARTIFACT_NAME
 
 The name of the image or update that will be built. This is what the device will report that it is running, and different updates must have different names. This variable must be defined or the build will fail.
