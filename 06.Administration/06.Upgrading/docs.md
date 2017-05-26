@@ -191,6 +191,16 @@ Start the new environment:
 > Creating menderproduction_mender-inventory_1  
 > Creating menderproduction_mender-api-gateway_1  
 
+
+## Upgrading Mender Clients
+
+The Mender Client binary is built into the root file system, so it can be upgraded by
+fetching the sources when [building a Yocto Project image](../../artifacts/building-mender-yocto-image).
+
+!! Older Mender clients do not support newer [versions of the Mender Artifact format](../../architecture/mender-artifacts#versions); they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../artifacts/modifying-a-mender-artifact#write-a-new-artifact) for an introduction how to do this.
+
+
+
 ## Closing notes
 
 Since the production repository is versioned in git, it is possible to use git
