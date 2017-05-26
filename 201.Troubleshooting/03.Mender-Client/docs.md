@@ -44,6 +44,22 @@ Also see the [documentation on certificates](../../administration/certificates-a
 overview and description on how to generate new certificates.
 
 
+## Artifact format not supported
+
+When deploying an update with the Mender client, you see a log message similar to the following:
+
+```
+ERRO[0001] update install failed: failed to read and install update: reader: unsupported version: 2  module=state
+```
+
+The problem here is most likely that you have built [a new version of the Artifact format](../../architecture/mender-artifacts#versions)
+that your Mender Client does not support. It could also be that you are building a very old version of the
+Artifact format that your new version of the Mender Client does not support.
+
+In either case the solution is to [build a different version of the Artifact format](../../artifacts/modifying-a-mender-artifact#write-a-new-artifact) that your Mender Client supports
+until you have upgraded all Mender Clients and can use the corresponding latest version of the Mender Artifact format.
+
+
 
 ## The partition layout of the device is not as expected
 
