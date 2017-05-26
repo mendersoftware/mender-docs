@@ -164,7 +164,9 @@ mender-artifact write rootfs-image -t beaglebone -n release-1 -u core-image-base
 
 ! The Artifact name (`-n`) must correspond to the name stated *inside* the root file system at `/etc/mender/artifact_info`, so make sure to change both places if you are modifying it.
 
-!!! If you would like to generate a signed Artifact, simply add the `-k` option with the path to your *private key*. In our example above, the full command would be `mender-artifact write rootfs-image -t beaglebone -n release-1 -u core-image-base-beaglebone-modified.ext4 -o core-image-base-beaglebone-signed.mender -k private.key`.
+! If you are building for *older Mender Clients* that do not support the latest version of the Artifact format, you can build an older Artifact version with the `-v` option. For example, to build a version 1 Artifact, you can run `mender-artifact write rootfs-image -v 1 -t beaglebone -n release-1 -u core-image-base-beaglebone-modified.ext4 -o core-image-base-beaglebone-modified.mender`. The default Artifact version is the latest one. Also see the build variable [MENDER_ARTIFACT_EXTRA_ARGS](../variables#mender_artifact_extra_args).
+
+!!! If you would like to generate a *signed Artifact*, simply add the `-k` option with the path to your *private key*. In our example above, the full command would be `mender-artifact write rootfs-image -t beaglebone -n release-1 -u core-image-base-beaglebone-modified.ext4 -o core-image-base-beaglebone-signed.mender -k private.key`.
 
 After deploying this Artifact with Mender and rebooting, your configuration changes will be in effect!
 
