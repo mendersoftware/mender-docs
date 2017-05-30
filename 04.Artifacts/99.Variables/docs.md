@@ -135,10 +135,33 @@ Default value is `8192`.
 The partition Mender uses as the first (A) rootfs partition. See [More detailed storage configuration](../../devices/partition-layout#more-detailed-storage-configuration) for more information.
 
 
+#### MENDER_ROOTFS_PART_A_NAME
+
+Alternative name for `MENDER_ROOTFS_PART_A`. Used if you need two different references to `MENDER_ROOTFS_PART_A`.
+
+Example:
+```
+# will only accept a UBI volume name (but we normally work with index numbers e.g. `mender_boot_part`)
+ubifsmount ubi0:rootfsa
+```
+
+Defaults to the value of `${MENDER_ROOTFS_PART_A}` when building `.sdimg`.
+
+Defaults to `${MENDER_STORAGE_DEVICE}:rootfsa` when building `.ubimg`.
+
+
 #### MENDER_ROOTFS_PART_B
 
 The partition Mender uses as the second (B) rootfs partition. See [More detailed storage configuration](../../devices/partition-layout#more-detailed-storage-configuration) for more information.
 
+
+#### MENDER_ROOTFS_PART_B_NAME
+
+See [`MENDER_ROOTFS_PART_A_NAME`](#mender_rootfs_part_a_name)
+
+Defaults to the value of `${MENDER_ROOTFS_PART_B}` when building `.sdimg`
+
+Defaults to `${MENDER_STORAGE_DEVICE}:rootfsb` when building `.ubimg`.
 
 #### MENDER_STORAGE_DEVICE
 
@@ -172,6 +195,15 @@ The storage device, as referred to by U-Boot (e.g. `1`). This variable can be us
 #### MENDER_UBOOT_STORAGE_INTERFACE
 
 The storage interface, as referred to by U-Boot (e.g. `mmc`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [U-Boot and the Linux kernel do not agree about the indexes of storage devices](../../troubleshooting/yocto-project-build#u-boot-and-the-linux-kernel-do-not-agree-about-the-indexes-of-st) for more information.
+
+
+#### MENDER_MTD_UBI_DEVICE_NAME
+
+The MTD part name where UBI volumes are stored.
+
+Defaults to empty when building `.sdimg`.
+
+Defaults to `ubi` when building `.ubimg`.
 
 
 #### SYSTEMD_AUTO_ENABLE_pn-mender
