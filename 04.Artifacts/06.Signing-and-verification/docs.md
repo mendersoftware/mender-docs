@@ -69,9 +69,12 @@ openssl rsa -in private.key -out public.key -pubout
 In order to generate a public and private ECDSA key pair use the commands below:
 
 ```bash
-openssl ecparam -genkey -name prime256v1 -out private.key
-openssl ec -in private.key -pubout -out public.key
+openssl ecparam -genkey -name prime256v1 -out private-and-params.key
+openssl ec -in private-and-params.key -out private.key
+openssl ec -in private-and-params.key -pubout -out public.key
 ```
+
+The resulting `private.key` and `public.key` files are the private and public keys, respectively.
 
 
 ## Signing
