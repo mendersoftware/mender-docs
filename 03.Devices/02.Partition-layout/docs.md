@@ -117,3 +117,26 @@ You can override these default values in your `local.conf`. For details consult 
 As Mender does a full rootfs image update, care must be taken in where persistent data is stored. The contents of the partition mounted on `/data` is preserved across updates. In fact, the Mender client itself uses `/data/mender` as a backing to store data that needs to be kept across updates.
 
 If you have data or configuration that you need to preserve across updates, the recommended approach is to create a symlink from where it gets written to somewhere within `/data/`. For example, if you have an application that writes to `/etc/application1`, then you can create a symlink `/etc/application1` -> `/data/application1` to ensure the data it writes is not lost during a Mender rootfs update.
+
+##Deploying files to the persistent data partition
+
+When [building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image), if you need to include files in the persistent data partition, you will need to update your recipe file and your image file.  The update to the recipe file ensures that the persistent files are deployed to a common location and the updates to the image file ensures that these files are included in the target image.
+
+The changes needed in a particular recipe include inheriting the deploy class and ensuring that the persistent files are copied into the `DEPLOYDIR` for access by the image generation package.
+
+```bash
+inherit deploy
+do_deploy() {
+    install -d ${DEPLOYDIR}/persist
+    install -m 0644 persistent.txt ${DEPLOYDIR}/persist
+}
+addtask do_deploy after do_compile before do_build
+```
+
+The changes to the image recipe will add the `persist` directory to the `.sdimg` file by appending to the `MENDER_DATA_PART_DIR` variable.
+
+```bash
+MENDER_DATA_PART_DIR_append = "${DEPLOY_DIR_IMAGE}/persist"
+```
+
+A sample recipe (`hello-mender`) is included in the `meta-mender-demo` layer which deploys a text file to the persistent data partition.
