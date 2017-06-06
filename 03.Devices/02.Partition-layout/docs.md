@@ -54,7 +54,7 @@ Care must be taken when selecting a file system that is MTD-aware, since
 it should handle the wear leveling and error correction.
 Popular file systems for MTD devices include UBIFS, JFFS2, and YAFFS.
 
-! Mender currently supports *block devices*, not raw flash devices. Support for raw flash would entail supporting MTD-aware file system types. Please contact us at <contact@mender.io> if you need support for raw flash devices. We would also be happy to guide any [community contributions](https://mender.io/community?target=_blank) to add support for raw flash devices.
+! Mender officially supports  *block devices* and there is *experimental* support for raw flash and UBI volumes and file systems. To enable UBI support, inherit the `mender-full-ubi` class in your `local.conf` and take a look at the various UBI related variables in `mender-install.bbclass`. Please keep in mind that this is an experimental feature so please provide feedback on the [mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender) if you have any questions or issues. Raw flash support will be officially supported once it has been thoroughly tested and it has proven high quality.
 
 
 ##File system types
