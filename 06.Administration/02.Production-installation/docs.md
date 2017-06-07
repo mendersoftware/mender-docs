@@ -310,6 +310,8 @@ The template is configured to mount the following volumes:
 - `mender-deviceauth-db` - device authentication service database data
 - `mender-deviceadm-db` - device admission service database data
 - `mender-inventory-db` - inventory service database data
+- `mender-elasticsearch-db` - elastic search database
+- `mender-dynomite-db` - mender dynomite database
 
 Each of these volumes need to be created manually with the following commands:
 
@@ -335,6 +337,14 @@ docker volume create --name=mender-deviceadm-db
 
 ```bash
 docker volume create --name=mender-deviceauth-db
+```
+
+```bash
+docker volume create --name=mender-elasticsearch-db
+```
+
+```bash
+docker volume create --name=mender-dynomite-db
 ```
 
 Since we are using local driver for volumes, each volume is based on a host
@@ -498,6 +508,8 @@ Bring up all services up in detached mode with the following command:
 > Creating menderproduction_mender-deployments_1  
 > Creating menderproduction_mender-device-adm_1  
 > Creating menderproduction_mender-api-gateway_1  
+> Creating menderproduction_mender-mender-dynomite-db_1  
+> Creating menderproduction_mender-elasticsearch-db_1  
 
 !!! Services, networks and volumes have a `menderproduction` prefix, see the note about [docker-compose naming scheme](#docker-compose-naming-scheme) for more details. When using `docker ..` commands, a complete container name must be provided (ex. `menderproduction_mender-deployments_1`).
 
@@ -527,6 +539,8 @@ menderproduction_mender-mongo-useradm_1       /entrypoint.sh mongod            U
 menderproduction_mender-useradm_1             /usr/bin/useradm -config / ...   Up      8080/tcp
 menderproduction_minio_1                      minio server /export             Up      9000/tcp
 menderproduction_storage-proxy_1              /usr/local/openresty/bin/o ...   Up      0.0.0.0:9000->9000/tcp
+mendersoftware/elasticsearch:2.4              /docker-entrypoin...             Up      9200/tcp, 9300/tcp
+mendersoftware/dynomite:stable                /dynomite/entrypo..."            Up      8101-8102/tcp, 22122/tcp, 22222/tcp 
 ```
 
 
