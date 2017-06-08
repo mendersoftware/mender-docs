@@ -32,6 +32,9 @@ workflow with branching, pulling remote changes and merging locally.
 Before upgrading it is advisable to backup existing data and volumes.
 Consult the MongoDB and Docker manuals for the necessary steps.
 
+The [Backup and restore](../backup-and-restore) chapter provides examples and
+introduces example tools provided in Mender integration repository.
+
 ## Updating your local repository
 
 The first step is to upgrade your local repository by pulling changes from the
