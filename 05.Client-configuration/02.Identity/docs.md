@@ -72,10 +72,10 @@ the MAC address to identify others.
 ##The Device ID
 
 For convenience it is very useful to always have a fixed-length string that uniquely identifies a
-device. Mender implements this by computing a SHA-256 checksum over the identity attributes
-and this is referred to as the **Device ID** in Mender.
+device. The Mender server implements this by assigning a unique **Device ID** to a device
+as it is connected to the server.
 
-For example, a Device ID could look like `efd4b192a70ddfee509c0e72904ce093ea57b2782c233840b8086b699bc67d5b`.
+For example, a Device ID could look like `594019224d36350001fc5cc3`.
 
 Clearly, the Device ID is not human-friendly, so the identity attributes are also transferred and
 stored by the Mender server. The Device ID is primarily used for security purposes and software-based
