@@ -4,6 +4,20 @@ taxonomy:
     category: docs
 ---
 
+## v1.1.0
+
+_Released xx.xx.xxxx_
+
+#### gui
+
+* Remove shortened device IDs, now useless due to incremental SHAs
+* Fix for [MEN-1233](https://tracker.mender.io/browse/MEN-1233) - create deployment from single device
+
+#### mender
+
+* Fix misleading version being displayed for non-tagged builds. ([MEN-1178](https://tracker.mender.io/browse/MEN-1178))
+
+
 ## v1.1.0 Beta 1
 
 _Released 05.24.2017_
