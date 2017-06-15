@@ -172,6 +172,32 @@ Defaults to the value of `${MENDER_ROOTFS_PART_B}` when building `.sdimg`
 
 Defaults to `${MENDER_STORAGE_DEVICE}:rootfsb` when building `.ubimg`.
 
+
+#### MENDER_STATE_SCRIPTS
+
+Variable to override the location of state scripts. See
+[MENDER_STATE_SCRIPTS_DIR](#mender-state-scripts-dir) for more information.
+
+
+#### MENDER_STATE_SCRIPTS_DIR
+
+Only usable inside recipes that inherit `mender-state-scripts`. Recipes can put
+executable binaries or scripts into this location to have the scripts be
+included as state scripts for the Mender artifact. This should be done inside
+the `do_compile` task of a recipe.
+
+If neither building nor other preprocessing is necessary then it is also
+possible to list a source archive in `SRC_URI` that extracts directly into
+`${PN}-${PV}/mender-state-scripts`, where `$PN` and `${PV}` are the usual
+Bitbake values of recipe name and version, respectively.
+
+And finally, it is possible to set `MENDER_STATE_SCRIPTS` (note the missing
+`_DIR`) manually to a location containing state scripts, however it is
+recommended to use one of the two above methods.
+
+The three methods should not be mixed.
+
+
 #### MENDER_STORAGE_DEVICE
 
 The storage device holding all partitions (rootfs, boot, data) used by Mender. See [Configuring storage](../../devices/partition-layout#configuring-storage) for more information.
