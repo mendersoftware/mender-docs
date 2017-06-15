@@ -1,11 +1,11 @@
 ---
-title: "1.1 beta"
+title: "1.1"
 taxonomy:
     category: docs
 ---
 
-### Version 1.1 beta
+### Version 1.1
 
 # Documentation
 
-Documentation for Mender 1.1 beta.
+Documentation for Mender 1.1.
