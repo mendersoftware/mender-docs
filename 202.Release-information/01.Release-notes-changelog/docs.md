@@ -6,7 +6,7 @@ taxonomy:
 
 ## v1.1.0
 
-_Released xx.xx.xxxx_
+_Released 06.16.2017_
 
 #### gui
 
