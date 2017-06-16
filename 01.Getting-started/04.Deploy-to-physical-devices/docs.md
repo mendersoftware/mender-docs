@@ -56,14 +56,14 @@ that your device(s) can connect to the Mender server.
 ! Please make sure to set a shell variable that expands correctly with `$IP_OF_MENDER_SERVER_FROM_DEVICE` or edit the commands below accordingly.
 
 Download the test *disk* image with Mender support for the BeagleBone Black
-at [https://d1b0l86ne08fsf.cloudfront.net/1.1.0b1-build2/beaglebone/mender-beaglebone_1.1.0b1-build2.sdimg.gz](https://d1b0l86ne08fsf.cloudfront.net/1.1.0b1-build2/beaglebone/mender-beaglebone_1.1.0b1-build2.sdimg.gz).
+at [https://d1b0l86ne08fsf.cloudfront.net/1.1.0/beaglebone/mender-beaglebone_1.1.0.sdimg.gz](https://d1b0l86ne08fsf.cloudfront.net/1.1.0/beaglebone/mender-beaglebone_1.1.0.sdimg.gz).
 This image contains *all the partitions* of the storage device, as
 described in [Partition layout](../../devices/partition-layout).
 
 You can decompress it like the following:
 
 ```bash
-gunzip mender-beaglebone.sdimg.gz
+gunzip mender-beaglebone_1.1.0.sdimg.gz
 ```
 
 !!! Mender blocks free space in the disk image so that your root file system is allowed to grow over time. If you are building your own disk image by following [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image), you can configure the desired space usage with the Yocto Project variable [MENDER_STORAGE_TOTAL_SIZE_MB](../../artifacts/variables#mender_storage_total_size_mb).
@@ -77,7 +77,7 @@ server when it starts.
 
 Please see [Modifying a disk image](../../artifacts/modifying-a-disk-image) for a description
 on how to mount partitions for editing within the disk image
-`mender-beaglebone.sdimg`.
+`mender-beaglebone_1.1.0.sdimg`.
 
 We assume that *both* rootfs partitions are mounted read-write below,
 to `/mnt/rootfs1` and `/mnt/rootfs2`. Then run the following commands
@@ -142,7 +142,7 @@ sudo umount /mnt/rootfs1 && sudo umount /mnt/rootfs2
 ## Write the disk image to the SD card
 
 Please see [Write the disk image to the SD card](../../artifacts/provisioning-a-new-device#write-the-disk-image-to-the-sd-card)
-for steps how to provision the device disk using the `mender-beaglebone.sdimg`
+for steps how to provision the device disk using the `mender-beaglebone_1.1.0.sdimg`
 image you downloaded and modified above.
 
 If you have several BeagleBone Black devices, please
@@ -176,7 +176,7 @@ Once you **authorize** these devices, Mender will auto-discover
 inventory about the devices, including the device type (e.g. beaglebone)
 and the IP addresses, as shown in the example below.
 
-![Mender UI - Device information for BeagleBone Black](device_information_bbb_1_0_0.png)
+![Mender UI - Device information for BeagleBone Black](device_information_bbb_1_1_0.png)
 
 
 !!! If your BeagleBone Black does not show up for authorization in the UI, you need to diagnose what went wrong. Most commonly this is due to problems with the network. You can test if your workstation can reach the device by trying to ping it, e.g. with `ping 192.168.10.2` (replace with the IP address of your device). If you have a serial cable, you can log in to the device to diagnose. The `root` user is present and has an empty password in this test image. If you get stuck, please feel free to reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender)!
@@ -193,12 +193,12 @@ deployed. See [Mender Artifacts](../../architecture/mender-artifacts) for
 a complete description of this format.
 
 Download the test Artifact for the BeagleBone Black
-at [https://d1b0l86ne08fsf.cloudfront.net/1.1.0b1-build2/beaglebone/beaglebone_release_1_1.1.0b1-build2.mender](https://d1b0l86ne08fsf.cloudfront.net/1.1.0b1-build2/beaglebone/beaglebone_release_1_1.1.0b1-build2.mender).
+at [https://d1b0l86ne08fsf.cloudfront.net/1.1.0/beaglebone/beaglebone_release_1_1.1.0.mender](https://d1b0l86ne08fsf.cloudfront.net/1.1.0/beaglebone/beaglebone_release_1_1.1.0.mender).
 
 The steps needed to edit the root file system contained in this Artifact are:
 
 ```bash
-mkdir beaglebone_release_1 && tar -C beaglebone_release_1 -xvf beaglebone_release_1.mender
+mkdir beaglebone_release_1 && tar -C beaglebone_release_1 -xvf beaglebone_release_1_1.1.0.mender
 ```
 
 ```bash
@@ -274,12 +274,12 @@ After the tool is downloaded and you added execute permission (e.g. with `chmod 
 simply run it as follows:
 
 ```bash
-mender-artifact write rootfs-image -u core-image-base-beaglebone.ext4 -t beaglebone -n release-1 -o beaglebone_release_1_configured.mender
+mender-artifact write rootfs-image -u core-image-base-beaglebone.ext4 -t beaglebone -n release-1_1.1.0 -o beaglebone_release_1_configured.mender
 ```
 
 where `-u core-image-base-beaglebone.ext4` is the rootfs image we modified above,
 `-t beaglebone` is the device type compatible with the given Artifact,
-`-n release-1` is the Artifact name (do not change this as it needs to be in
+`-n release-1_1.1.0` is the Artifact name (do not change this as it needs to be in
 sync with `/etc/mender/artifact_info` *inside* the rootfs), and
 `-o beaglebone_release_1_configured.mender` is
 the filename of the created Artifact.
@@ -314,7 +314,7 @@ Select the Artifact you just uploaded and **All devices**, then
 As the deployment progresses, you can click on it to view more details about the current status across all devices.
 In the example below, we can see that a BeagleBone is installing the update.
 
-![Mender UI - Deployment progress - BeagleBone Black](deployment_report_bbb_1_0_0.png)
+![Mender UI - Deployment progress - BeagleBone Black](deployment_report_bbb_1_1_0.png)
 
 Once the deployment completes, you should see its report in *Past deployments*.
 

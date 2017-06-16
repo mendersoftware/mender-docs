@@ -47,12 +47,12 @@ Mender automatically collects identity and inventory information
 about the connected devices. You can view this information by
 clicking on a device. It should look similar to the following:
 
-![Mender UI - Device information](device_information_1_0_0.png)
+![Mender UI - Device information](device_information_1_1_0.png)
 
 
 !!! Which information is collected about devices is fully configurable; see the documentation on [Identity](../../client-configuration/identity) and [Inventory](../../client-configuration/inventory) for more information.
 
-You can also see that the `artifact_name` is `mender-image-1.1.0b1-build2`.
+You can also see that the `artifact_name` is `mender-image-1.1.0`.
 
 After deploying the update below, you can verify that this `artifact_name` has changed.
 
@@ -68,7 +68,7 @@ can be used, and steps to build one are provided at
 
 To make testing easier, a Mender Artifact that can be used with
 the virtual device is provided for download at
-[https://d1b0l86ne08fsf.cloudfront.net/1.1.0b1-build2/vexpress-qemu/vexpress_release_2_1.1.0b1-build2.mender](https://d1b0l86ne08fsf.cloudfront.net/1.1.0b1-build2/vexpress-qemu/vexpress_release_2_1.1.0b1-build2.mender).
+[https://d1b0l86ne08fsf.cloudfront.net/1.1.0/vexpress-qemu/vexpress_release_2_1.1.0.mender](https://d1b0l86ne08fsf.cloudfront.net/1.1.0/vexpress-qemu/vexpress_release_2_1.1.0.mender).
 
 After the download finishes, go back to the Mender server UI,
 click the **Artifacts** tab and upload this Mender Artifact.
@@ -101,7 +101,7 @@ the Artifact we just uploaded and **All devices**, then
 As the deployment progresses, you can click on it to view more details about the current status across all devices.
 In the example below, we can see that the device is in process of installing the Artifact.
 
-![Mender UI - Deployment progress](deployment_report_1_0_0.png)
+![Mender UI - Deployment progress](deployment_report_1_1_0.png)
 
 !!! The deployment to the virtual device should take about 2-5 minutes to complete and report success or failure.
 
@@ -112,7 +112,7 @@ Once the deployment completes, you should see it in *Past deployments*.
 If the deployment fails you can view the deployment log,
 which is obtained from the device, to diagnose the issue.
 You can also see the state of deployments on the Dashboard.
-In **Devices** you can see that `artifact_name` has now changed to `release-2_1.1.0b1-build2`.
+In **Devices** you can see that `artifact_name` has now changed to `release-2_1.1.0`.
 
 This shows your virtual device runs the new rootfs!
 
@@ -126,14 +126,14 @@ uploaded, Mender will see that it contains the same rootfs
 that is already installed and skip the deployment. It will
 immediately be marked as successful and moved to *Past deployments*.
 For this reason, we provide another Artifact that you can use
-to deploy with at [https://d1b0l86ne08fsf.cloudfront.net/1.1.0b1-build2/vexpress-qemu/vexpress_release_1_1.1.0b1-build2.mender](https://d1b0l86ne08fsf.cloudfront.net/1.1.0b1-build2/vexpress-qemu/vexpress_release_1_1.1.0b1-build2.mender).
+to deploy with at [https://d1b0l86ne08fsf.cloudfront.net/1.1.0/vexpress-qemu/vexpress_release_1_1.1.0.mender](https://d1b0l86ne08fsf.cloudfront.net/1.1.0/vexpress-qemu/vexpress_release_1_1.1.0.mender).
 
 Go to **Artifacts** again and upload this artifact. You can set
 the *Description* input field to `My original build`.
 After the Artifact has been uploaded, you can deploy it to your device,
 as you did earlier.
 
-Following this, you can deploy the `release-2_1.1.0b1-build2` Artifact again, and so forth.
+Following this, you can deploy the `release-2_1.1.0` Artifact again, and so forth.
 
 
 ## Deploy to custom groups
