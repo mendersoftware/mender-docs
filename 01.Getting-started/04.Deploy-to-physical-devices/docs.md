@@ -287,15 +287,10 @@ the filename of the created Artifact.
 
 ## Upload the artifact to the server
 
-Before we can deploy the Artifact we prepared above it needs
+Before we can deploy the Artifact we prepared above, it needs
 to be uploaded to the server.
-Go to the Mender server UI, click the **Artifacts** tab and upload this Artifact,
-you can set *Description* to `My test build`.
 
-In the UI it should look something like this:
-
-![Mender UI - Upload artifact BeagleBone Black](upload_artifact_bbb.png)
-
+Go to the Mender server UI, click the **Artifacts** tab and upload this Artifact.
 
 ## Deploy the Artifact
 
