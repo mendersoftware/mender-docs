@@ -72,13 +72,6 @@ the virtual device is provided for download at
 
 After the download finishes, go back to the Mender server UI,
 click the **Artifacts** tab and upload this Mender Artifact.
-You can set the *Description* input field to `My test build`,
-it is just informational to make to make it is easier to
-recognize Artifacts after they have been uploaded.
-
-In the UI it should look something like this:
-
-![Mender UI - Upload Artifact](upload_artifact.png)
 
 !!! All devices report which *Device type* they are as part of their inventory information, for example `vexpress-qemu` or `beaglebone`. In addition, Mender Artifacts have *Device types compatible* as part of their metadata. During a deployment, Mender makes sure that a device will only get and install an Artifact it is compatible with. This increases the robustness of Mender as it avoids situations like deploying software that is not supported by the device hardware.
 
