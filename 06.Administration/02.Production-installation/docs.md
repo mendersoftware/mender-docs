@@ -461,6 +461,38 @@ The updated entry should look like this:
     ...
 ```
 
+
+#### API gateway
+
+Locate the `mender-api-gateway` service. For security purposes, the gateway
+must know precisely the DNS name allocated to it, which you'll configure via
+the `ALLOWED_HOSTS` environment variable.
+
+Change the placeholder value `my-gateway-dns-name` to a valid hostname; assuming it's
+`mender.example.com`, the updated entry should look like this:
+
+```yaml
+    ...
+    mender-api-gateway:
+        ...
+        environment:
+            ALLOWED_HOSTS: mender.example.com
+    ...
+```
+
+Note that if for some reason you need more than 1 DNS name pointing to the gateway,
+you can supply a whitespace-separated list of hostnames as follows:
+
+```yaml
+    ...
+    mender-api-gateway:
+        ...
+        environment:
+            ALLOWED_HOSTS: mender1.example.com mender2.example.com
+    ...
+```
+
+
 #### Logging
 
 The setup uses Docker's default `json-file` logging driver, which exposes two important log
