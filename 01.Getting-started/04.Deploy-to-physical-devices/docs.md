@@ -63,7 +63,7 @@ described in [Partition layout](../../devices/partition-layout).
 You can decompress it like the following:
 
 ```bash
-gunzip mender-beaglebone.sdimg.gz
+gunzip mender-beaglebone_1.0.1.sdimg.gz
 ```
 
 !!! Mender blocks free space in the disk image so that your root file system is allowed to grow over time. If you are building your own disk image by following [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image), you can configure the desired space usage with the Yocto Project variable [MENDER_STORAGE_TOTAL_SIZE_MB](../../artifacts/variables#mender_storage_total_size_mb).
