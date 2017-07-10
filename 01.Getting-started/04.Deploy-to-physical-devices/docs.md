@@ -77,7 +77,7 @@ server when it starts.
 
 Please see [Modifying a disk image](../../artifacts/modifying-a-disk-image) for a description
 on how to mount partitions for editing within the disk image
-`mender-beaglebone.sdimg`.
+`mender-beaglebone_1.0.1.sdimg`.
 
 We assume that *both* rootfs partitions are mounted read-write below,
 to `/mnt/rootfs1` and `/mnt/rootfs2`. Then run the following commands
@@ -142,7 +142,7 @@ sudo umount /mnt/rootfs1 && sudo umount /mnt/rootfs2
 ## Write the disk image to the SD card
 
 Please see [Write the disk image to the SD card](../../artifacts/provisioning-a-new-device#write-the-disk-image-to-the-sd-card)
-for steps how to provision the device disk using the `mender-beaglebone.sdimg`
+for steps how to provision the device disk using the `mender-beaglebone_1.0.1.sdimg`
 image you downloaded and modified above.
 
 If you have several BeagleBone Black devices, please
