@@ -1301,7 +1301,7 @@ github.com/mendersoftware/go-lib-micro:
 
 github.com/mendersoftware/log:
 
-// Copyright 2016 Mender Software AS
+// Copyright 2017 Northern.tech AS
 //
 //    Licensed under the Apache License, Version 2.0 (the "License");
 //    you may not use this file except in compliance with the License.
@@ -1320,7 +1320,7 @@ github.com/mendersoftware/log:
 
 github.com/mendersoftware/log:
 
-Copyright 2016 Mender Software AS
+Copyright 2017 Northern.tech AS
 
 All content in this project is licensed under the Apache License v2, unless
 indicated otherwise.
@@ -1714,7 +1714,7 @@ github.com/mendersoftware/mender-artifact:
 
 github.com/mendersoftware/mendertesting:
 
-Copyright 2016 Mender Software AS
+Copyright 2017 Northern.tech AS
 
 All content in this project is licensed under the Apache License v2, unless
 indicated otherwise.
@@ -1901,7 +1901,7 @@ indicated otherwise.
 
 github.com/mendersoftware/scopestack:
 
-// Copyright 2016 Mender Software AS
+// Copyright 2017 Northern.tech AS
 //
 //    Licensed under the Apache License, Version 2.0 (the "License");
 //    you may not use this file except in compliance with the License.
@@ -1920,7 +1920,7 @@ github.com/mendersoftware/scopestack:
 
 github.com/mendersoftware/scopestack:
 
-Copyright 2016 Mender Software AS
+Copyright 2017 Northern.tech AS
 
 All content in this project is licensed under the Apache License v2, unless
 indicated otherwise.
