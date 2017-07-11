@@ -16,7 +16,7 @@ This is simple to accomplish by adding a `recipes-mender/mender/mender_%.bbappen
 SYSTEMD_AUTO_ENABLE = "disable"
 ```
 
-In this case it is also possible to avoid Mender's current dependency on systemd. If you do not wish to enable systemd in your build, instead of inheriting `mender-full` in `local.conf`, you should inherit each of the classes that `mender-full` inherits, except `mender-systemd`. Also, you do not need any daemon-related configuration items in your `conf/local.conf` as outlined in [the section on configuring the Yocto Project build](../../artifacts/building-mender-yocto-image#configuring-the-build). Currently you can use the following snippet for Mender in your `conf/local.conf` to completely disable Mender as a daemon (but please verify what `mender-full` inherits at the time you make this change):
+In this case it is also possible to avoid Mender's current dependency on systemd. If you do not wish to enable systemd in your build, instead of inheriting `mender-full` in `local.conf`, you should inherit each of the classes that `mender-full` inherits, except `mender-systemd`. Also, you do not need any daemon-related configuration items in your `local.conf` as outlined in [the section on configuring the Yocto Project build](../../artifacts/building-mender-yocto-image#configuring-the-build). Currently you can use the following snippet for Mender in your `local.conf` to completely disable Mender as a daemon (but please verify what `mender-full` inherits at the time you make this change):
 
 ```bash
 INHERIT += "mender-artifactimg mender-image mender-image-sd mender-install mender-uboot"
