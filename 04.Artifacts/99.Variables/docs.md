@@ -65,7 +65,7 @@ Note that you cannot both use `MENDER_ARTIFACT_VERIFY_KEY` and have `artifact-ve
 
 #### MENDER_TENANT_TOKEN
 
-Set this variable in `local.conf` in order to make the device recognize the organization to which it belongs. This option should always be set, except when running a custom Mender server installation with multitenancy module disabled
+Set this variable in `local.conf` in order to make the device recognize the organization to which it belongs. This option should always be set, except when running a custom Mender server installation with multitenancy module disabled.
 
 
 #### MENDER_BOOT_PART
