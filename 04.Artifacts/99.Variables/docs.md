@@ -63,6 +63,11 @@ An alternative way to specify a verification key is to include a file named `art
 Note that you cannot both use `MENDER_ARTIFACT_VERIFY_KEY` and have `artifact-verify-key.pem` in `SRC_URI` at the same time.
 
 
+#### MENDER_TENANT_TOKEN
+
+Set this variable in `local.conf` in order to make the device recognize the organization to which it belongs. This option should always be set, except when running a custom Mender server installation with multitenancy module disabled
+
+
 #### MENDER_BOOT_PART
 
 The partition Mender uses as the boot partition. See [More detailed storage configuration](../../devices/partition-layout#more-detailed-storage-configuration) for more information.
