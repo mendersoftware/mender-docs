@@ -62,6 +62,9 @@ SRC_URI_append_pn-mender = " file://server.crt"
 
 Note in particular the `:` after the directory; this is mandatory.
 
+### Updating MENDER_SERVER_URL
+
+Please note that setting up for production will require that you explicitly set the [MENDER_SERVER_URL variable](../variables#mender_server_url) to the proper value for your server.
 
 ## Artifact signing and verification keys
 

@@ -178,6 +178,12 @@ Defaults to the value of `${MENDER_ROOTFS_PART_B}` when building `.sdimg`
 Defaults to `${MENDER_STORAGE_DEVICE}:rootfsb` when building `.ubimg`.
 
 
+#### MENDER_SERVER_URL
+
+Variable to override the URL of the server for the client to connect to.
+Default value is `https://docker.mender.io`
+
+
 #### MENDER_STATE_SCRIPTS
 
 Variable to override the location of state scripts. See
