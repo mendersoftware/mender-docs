@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-This chapter introduces technical details of raw flash support in Mender.
+This chapter introduces the technical details of raw flash support in Mender.
 
 ## Overview
 
@@ -236,7 +236,7 @@ including the following volumes:
 The `ubimg` image file can be used for populating the UBI partition with
 the `ubiformat` tool.
 
-By default a `*.ubifs` root filesystem image is used as a Mender artifact.
+By default a `*.ubifs` root filesystem image will be used when generating a Mender artifact.
 
 ### meta-mender integration
 
@@ -286,5 +286,5 @@ addition of a call to `mender_setup` script (using `vexpress-a9` as an example):
 ```
 
 Note that U-Boot places some constraints on parameter expansion, for this reason
-the paramter `ubiargs` is no longer set by default environment. Instead it is
+the parameter `ubiargs` is no longer set by default environment. Instead it is
 set by the intermediate `set_ubiargs` script.
