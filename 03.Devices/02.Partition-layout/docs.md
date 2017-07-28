@@ -52,9 +52,9 @@ care of wear leveling nor error correction, so this *must be handled in
 software*. In Linux, raw flash devices are exposed as a **Memory Technology
 Device (MTD)** file. Care must be taken when selecting a file system that is
 MTD-aware, since it should handle the wear leveling and error correction.
-Popular file systems for MTD devices include UBIFS, JFFS2, and YAFFS. Support
-for raw flash devices is **experimental**. Consult [raw flash](../raw-flash)
-section for details on setting up and configuration.
+Popular file systems for MTD devices include UBIFS, JFFS2, and YAFFS.
+Consult [raw flash](../raw-flash) section for details on setting up and
+configuration.
 
 
 ##File system types

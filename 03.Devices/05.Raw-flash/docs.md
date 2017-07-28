@@ -6,10 +6,6 @@ taxonomy:
 
 This chapter introduces technical details of raw flash support in Mender.
 
-As noted in [partition layout](../partition-layout) chapter, Mender officially
-supports *block devices* and there is *experimental* support for raw flash and
-UBI volumes and file systems.
-
 ## Overview
 
 Support for raw flash memory under Linux is in general more complicated than
