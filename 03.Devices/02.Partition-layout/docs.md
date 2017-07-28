@@ -47,14 +47,14 @@ reason, they are also sometimes referred to as **Flash Translation Layer (FTL) d
 For example, these types of flash devices expose themselves as block devices: **SD, mini-SD, micro-SD,
 MMC, eMMC, RS-MMC, SSD, USB, CompactFlash, MemoryStick, MemoryStick Micro**.
 
-* **Raw flash.** Raw flash devices do not have a memory controller
-that takes care of wear leveling nor error correction, so this *must be handled in software*.
-In Linux, raw flash devices are exposed as a **Memory Technology Device (MTD)** file.
-Care must be taken when selecting a file system that is MTD-aware, since
-it should handle the wear leveling and error correction.
-Popular file systems for MTD devices include UBIFS, JFFS2, and YAFFS.
-
-! Mender officially supports  *block devices* and there is *experimental* support for raw flash and UBI volumes and file systems. To enable UBI support, inherit the `mender-full-ubi` class in your `local.conf` and take a look at the various UBI related variables in `mender-install.bbclass`. Please keep in mind that this is an experimental feature so please provide feedback on the [mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender) if you have any questions or issues. Raw flash support will be officially supported once it has been thoroughly tested and it has proven high quality.
+* **Raw flash.** Raw flash devices do not have a memory controller that takes
+care of wear leveling nor error correction, so this *must be handled in
+software*. In Linux, raw flash devices are exposed as a **Memory Technology
+Device (MTD)** file. Care must be taken when selecting a file system that is
+MTD-aware, since it should handle the wear leveling and error correction.
+Popular file systems for MTD devices include UBIFS, JFFS2, and YAFFS. Support
+for raw flash devices is **experimental**. Consult [raw flash](../raw-flash)
+section for details on setting up and configuration.
 
 
 ##File system types
