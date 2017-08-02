@@ -597,12 +597,12 @@ menderproduction_storage-proxy_1              /usr/local/openresty/bin/o ...   U
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:9000" -->
 
-Furthermore, since this is a brand new installation it should be possible to request initial
-user login token through the API:
+Furthermore, since this is a brand new installation it should be possible to create the initial
+user via the CLI provided by  the User Administration Service. The service's binary is embedded in a Docker container, so to execute it you will issue the **exec** subcommand of docker-compose, e.g.:
 
 <!--AUTOMATION: ignore -->
 ```bash
-curl -X POST  -D - --cacert keys-generated/certs/api-gateway/cert.crt https://mender.example.com:443/api/management/v1/useradm/auth/login
+sudo docker-compose exec mender-useradm /usr/bin/useradm create-user --username=myusername@host.com --password=mysecretpassword
 ```
 
 > HTTP/2.0 200  
