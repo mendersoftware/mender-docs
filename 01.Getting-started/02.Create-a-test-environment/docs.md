@@ -113,7 +113,7 @@ Your web browser will communicate directly with the gateway while using the
 Mender UI and therefore the certificate the gateway is using needs to be trusted
 by your web browser.
 
-The Mender UI can now be found on [https://localhost/](https://localhost/?target=_blank) -
+The Mender UI can now be found on [https://docker.mender.io/](https://docker.mender.io/?target=_blank) -
 simply open it in your web browser and **accept the certificate**. In Chrome it should look
 like the following:
 
