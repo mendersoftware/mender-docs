@@ -4,6 +4,78 @@ taxonomy:
     category: docs
 ---
 
+## v1.2.0 Beta
+
+_Released xx.xx.xxxx_
+
+#### deployments
+* Deployment creation process changed. From now on artifacts are
+  assigned to device deployments on update request handling.
+* Return 422 - Unprocessable Entity on attempt of creating deployment without artifacts
+* Deployments no longer require inventory to create deployments.
+* New optional array field: 'artifacts' in deployment object retuned by API containing list of artifact ids used by deployment.
+
+#### deviceauth
+* Introduce 'server' subcommand that is also default command. Supports '--automigrate' parameter to enable automatic database version migration on startup.
+* Increase orchestrator request timeout to 30s
+
+#### gui
+* Added user management edit functionality
+* Change root API url to docker.mender.io
+* Updated node modules
+* Added self user management
+* Removed user creation UI incl password strength check (#231)
+* Remove shortened device IDs, now useless due to incremental SHAs
+* create deployment from single device ([MEN-1233](https://tracker.mender.io/browse/MEN-1233))
+* Bugfix for multiplying GET devices requests
+* Add ‘create user’ functionality
+* Allow user to remove artifacts via the GUI
+
+#### mender
+* Fixed behaviour when no sys-cert is available on the system.
+  ([MEN-1151](https://tracker.mender.io/browse/MEN-1151))
+* Fixed format check to conform to the expected artifact-file-format
+  ([MEN-1289](https://tracker.mender.io/browse/MEN-1289))
+* Changed the errormessage to more closely reflect the issue.
+  ([MEN-1215](https://tracker.mender.io/browse/MEN-1215))
+* Improve error message when manifest field/file cannot be read.
+* remove no longer referenced client certifate code
+* Fix - Now throws an error when committing nothing. ([MEN-505](https://tracker.mender.io/browse/MEN-505))
+* Logs an error when device_type file not found. ([MEN-505](https://tracker.mender.io/browse/MEN-505))
+* Introduce experimental support for writing to UBI volumes
+* Removed the DeviceKey option in menderConfig.
+* Fix misleading version being displayed for non-tagged builds.
+  ([MEN-1178](https://tracker.mender.io/browse/MEN-1178))
+* Client will not run state scripts from cmd-line except when forced.
+  ([MEN-1235](https://tracker.mender.io/browse/MEN-1235))
+* installer: improve incompatible image error message
+* Refactored all store implementations into /store
+* Introduction of state script feature. State scripts can be
+  used to execute scripts at various stages of Mender's execution. See
+  documentation for more information.
+
+#### mender-api-gateway-docker
+* Return additional headers for improved security: X-XSS-Protection, Cache-Control, Pragma. ([MEN-1316](https://tracker.mender.io/browse/MEN-1316))
+* Validate Origin header if present. ([MEN-1287](https://tracker.mender.io/browse/MEN-1287))
+* Add a configurable Host whitelist to gateway configuration, denying requests with unknown Hosts. Configured through ALLOWED_HOSTS env var on gateway startup. ([MEN-1262](https://tracker.mender.io/browse/MEN-1262))
+
+#### mender-artifact
+* Fix misleading version being displayed for non-tagged builds.
+  ([MEN-1178](https://tracker.mender.io/browse/MEN-1178))
+* Improve error message when private signing key can't be loaded.
+* Sign existing artifacts using mender-artifact CLI ([MEN-1220](https://tracker.mender.io/browse/MEN-1220))
+
+#### useradm
+* Improve log messages when opening connection to MongoDB.
+* Additional MongoDB configuration options: mongo_ssl, mongo_ssl_skipverify, mongo_username, mongo_password
+* Remove 'initial user' login logic, including 'POST /users/initial' API. Now initial user need to be created by administrator using cli ([MEN-1034](https://tracker.mender.io/browse/MEN-1034))
+* New cli subcommand for creating users: 'useradm create-user. ([MEN-1034](https://tracker.mender.io/browse/MEN-1034))
+* New API for listing users: 'GET https://localhost/api/management/v1/useradm/users' and 'GET https://localhost/api/management/v1/useradm/users/:userid'
+* New API for creating additional users: 'POST https://localhost/api/management/v1/useradm/users'
+* New API for editing user email and password: 'PUT https://localhost/api/management/v1/useradm/users/:userid'
+* New API for removing user: 'DELETE https://localhost/api/management/v1/useradm/users/:userid'
+
+
 ## v1.1.0
 
 _Released 06.16.2017_
