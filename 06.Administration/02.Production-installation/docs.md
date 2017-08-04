@@ -126,8 +126,8 @@ sed -i -e 's#/template/#/production/#g' prod.yml
 ```
 
 At this point all changes should be committed to the repository:
-<!--AUTOMATION: execute=sed -i '0,/set-my-alias-here.com/s/set-my-alias-here.com/localhost/' prod.yml -->
-<!--AUTOMATION: execute=sed -i 's|DEPLOYMENTS_AWS_URI:.*|DEPLOYMENTS_AWS_URI: https://localhost:9000|' prod.yml -->
+<!--AUTOMATION: execute=sed -i '0,/set-my-alias-here.com/s/set-my-alias-here.com/s3.docker.mender.io/' prod.yml -->
+<!--AUTOMATION: execute=sed -i 's|DEPLOYMENTS_AWS_URI:.*|DEPLOYMENTS_AWS_URI: https://s3.docker.mender.io:9000|' prod.yml -->
 
 <!--AUTOMATION: ignore -->
 ```bash
@@ -184,11 +184,11 @@ necessary Docker images:
 Prepare certificates using the helper script `keygen` (replacing `mender.example.com`
 and `s3.example.com` with your DNS names):
 
-<!--AUTOMATION: ignore=use localhost instead-->
+<!--AUTOMATION: ignore=use s3.docker.mender.io (localhost) instead-->
 ```bash
 CERT_API_CN=mender.example.com CERT_STORAGE_CN=s3.example.com ../keygen
 ```
-<!--AUTOMATION: execute=CERT_API_CN=localhost CERT_STORAGE_CN=localhost ../keygen -->
+<!--AUTOMATION: execute=CERT_API_CN=s3.docker.mender.io CERT_STORAGE_CN=s3.docker.mender.io ../keygen -->
 
 > Generating a 256 bit EC private key  
 > writing new private key to 'private.key'  
