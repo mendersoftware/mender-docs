@@ -57,7 +57,7 @@ In addition to what is included in version 1, version 2 adds support for image s
 Among the other metadata it contains *manifest* and *manifest.sig* files, which
 are the collection of the file checksums and the signature of the manifest respectively. More details about the exact format
 of the Mender Artifact can be found in the 
-[Mender Artifact file doccumentation](https://github.com/mendersoftware/mender-artifact/blob/master/Documentation/artifact-format.md).
+[Mender Artifact file documentation](https://github.com/mendersoftware/mender-artifact/blob/master/Documentation/artifact-format.md).
 
 
 ## Streaming and compression
