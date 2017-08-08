@@ -17,8 +17,7 @@ Address=Jone's way 3, 1234 Boston
 }
 ```
 
-Which exact attributes are chosen to define an identity depends on the identity
-scheme of a given system.	
+Which exact attributes are chosen to define an identity depends on the identity scheme of a given system.
 
 The Mender client allows the user to define the identity attributes, which means that Mender
 can adapt to the identity scheme of any environment. However, Mender imposes the following
@@ -127,4 +126,4 @@ cpuid=1234123-ABC
 
 ## Example device identity executables
 
-Example scripts are provided in the [support directory in the Mender client source code repository](https://github.com/mendersoftware/mender/tree/master/support?target=_blank).
+Example scripts are provided in the [support directory in the Mender client source code repository](https://github.com/mendersoftware/mender/tree/1.2.x/support?target=_blank).
