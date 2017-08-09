@@ -1,10 +1,10 @@
 ---
-title: "Development"
+title: "1.2 beta"
 taxonomy:
     category: docs
 ---
 
-### Development
+### 1.2 beta
 
 # Documentation
 
