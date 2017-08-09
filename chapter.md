@@ -8,6 +8,6 @@ taxonomy:
 
 # Documentation
 
-Documentation for Mender's bleeding-edge master branch 
+Documentation for Mender 1.2 beta.
 
-[https://github.com/mendersoftware/mender/tree/master](https://github.com/mendersoftware/mender/tree/master)
+[https://github.com/mendersoftware/mender/tree/1.2.x](https://github.com/mendersoftware/mender/tree/1.2.x)
