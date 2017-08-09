@@ -52,7 +52,7 @@ clicking on a device. It should look similar to the following:
 
 !!! Which information is collected about devices is fully configurable; see the documentation on [Identity](../../client-configuration/identity) and [Inventory](../../client-configuration/inventory) for more information.
 
-You can also see that the `artifact_name` is `mender-image-1.0`.
+You can also see that the `artifact_name` is `mender-image-1.2.0b1`.
 
 After deploying the update below, you can verify that this `artifact_name` has changed.
 
@@ -105,7 +105,7 @@ Once the deployment completes, you should see it in *Past deployments*.
 If the deployment fails you can view the deployment log,
 which is obtained from the device, to diagnose the issue.
 You can also see the state of deployments on the Dashboard.
-In **Devices** you can see that `artifact_name` has now changed to `release-2`.
+In **Devices** you can see that `artifact_name` has now changed to `release-2_1.2.0b1-build3`.
 
 This shows your virtual device runs the new rootfs!
 
