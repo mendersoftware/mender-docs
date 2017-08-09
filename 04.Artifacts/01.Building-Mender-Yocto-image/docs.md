@@ -130,7 +130,7 @@ MACHINE = "<YOUR-MACHINE>"
 
 # The version of the Mender Client to build, can be a tag or branch in the mender repository.
 # Note that there is a dependency on the meta-mender branch, so be careful with changing this.
-PREFERRED_VERSION_pn-mender = 1.2.0b1
+PREFERRED_VERSION_pn-mender = "1.2.0b1"
 
 DISTRO_FEATURES_append = " systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
