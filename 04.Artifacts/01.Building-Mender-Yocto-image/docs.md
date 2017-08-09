@@ -37,7 +37,7 @@ The other layers in *meta-mender* provide support for specific boards.
 
 ! We use the Yocto Project's **master** branch below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* We use the `master` branch in `meta-mender`, which builds a latest release of Mender for the bleeding edge Yocto Project revision. `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases , but these branches are no longer maintained by Mender developers. Please reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender) if you would like help with getting Mender to work on other versions of the Yocto Project.
 
-!!! The meta-mender-demo layer, which is used below, and the web-server, are bundled with a default demo certificate and key. If you are intending on using Mender in production, you must generate your own certificate using OpenSSL. Please see the certificate section [for the server](../../administration/certificates-and-keys) and [for the client](../building-for-production/#certificates) for more information.
+!!! The meta-mender-demo layer, which is used below, and the webserver, are bundled with a default demo certificate and key. If you are intending on using Mender in production, you must generate your own certificate using OpenSSL. Please see the certificate section [for the server](../../administration/certificates-and-keys) and [for the client](../building-for-production/#certificates) for more information.
 
 The required meta layers are found in the following repositories:
 
