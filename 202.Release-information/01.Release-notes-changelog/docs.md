@@ -13,7 +13,7 @@ _Released 08.09.2017_
   assigned to device deployments on update request handling.
 * Return 422 - Unprocessable Entity on attempt of creating deployment without artifacts
 * Deployments no longer require inventory to create deployments.
-* New optional array field: 'artifacts' in deployment object retuned by API containing list of artifact ids used by deployment.
+* New optional array field: 'artifacts' in deployment object returned by API containing list of artifact ids used by deployment.
 
 #### deviceauth
 * Introduce 'server' subcommand that is also default command. Supports '--automigrate' parameter to enable automatic database version migration on startup.
@@ -39,7 +39,7 @@ _Released 08.09.2017_
 * Changed the errormessage to more closely reflect the issue.
   ([MEN-1215](https://tracker.mender.io/browse/MEN-1215))
 * Improve error message when manifest field/file cannot be read.
-* remove no longer referenced client certifate code
+* remove no longer referenced client certificate code
 * Fix - Now throws an error when committing nothing. ([MEN-505](https://tracker.mender.io/browse/MEN-505))
 * Logs an error when device_type file not found. ([MEN-505](https://tracker.mender.io/browse/MEN-505))
 * Introduce experimental support for writing to UBI volumes
@@ -99,10 +99,10 @@ _Released 05.24.2017_
 * Update artifact handling reflecting changes in mender-artifact.
 * Support for signed images introduced, but with no signature
   verification yet. ([MEN-1022](https://tracker.mender.io/browse/MEN-1022))
-* Add device decomissioning support in the deployments service.
+* Add device decommissioning support in the deployments service.
 * Update artifact description when updating artifact data.
 * images/s3: unmarshal S3 errors when uploading image
-* Artfact upload error handling fixed.
+* Artifact upload error handling fixed.
 * Update artifact description when updating artifact data. ([MEN-1093](https://tracker.mender.io/browse/MEN-1093))
 * travis: bump required Go version to 1.8
 
@@ -113,7 +113,7 @@ _Released 05.24.2017_
 #### deviceauth
 * New feature: decommissioning device
 * devauth: improve logging when rejecting or giving out tokens
-* Decomission device endpoint implemented (whithout
+* Decommission device endpoint implemented (without
   decommission job submit).
 * api/management: management API is publicly available, update misleading description
 * api: add tenant_token as an optional attribute in authentication request

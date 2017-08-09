@@ -16,7 +16,7 @@ A simple example displaying a method of backing up the contents of the
 container using the `alpine:latest` image, mount the `mender-artifacts` volume under
 the `/from` path and `$PWD` under `/to`. Then all files and directories under
 `/from` are passed through the `tar | gzip` pipeline and saved to
-`/to/arifacts-backup.tar.gz`. Once the container exits, the file
+`/to/artifacts-backup.tar.gz`. Once the container exits, the file
 `$PWD/artifacts-backup.tar.gz` can be verified to have correct contents.
 
 

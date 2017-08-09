@@ -35,7 +35,7 @@ When running Mender in managed mode, the Mender client runs as a daemon and will
 
 Embedded devices almost universally use flash memory for storage.
 Flash memory can be divided into partitions in a way similar to hard disks.
-In the case of a device running Linux, components such as the Linux kernel, device tree binary and ramdisk may each be stored in a separate partition, but it is more common for them all to be stored together in the root file system.
+In the case of a device running Linux, components such as the Linux kernel, device tree binary and RAM disk may each be stored in a separate partition, but it is more common for them all to be stored together in the root file system.
 A file system has a format, such as UBIFS or ext4, and is contained within a partition. 
 
 The simplest and most robust way to update the device is to write a new file system image directly to the flash partition.
