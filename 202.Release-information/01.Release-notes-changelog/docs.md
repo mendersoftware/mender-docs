@@ -27,10 +27,10 @@ _Released 05.24.2017_
 * Update artifact handling reflecting changes in mender-artifact.
 * Support for signed images introduced, but with no signature
   verification yet. ([MEN-1022](https://tracker.mender.io/browse/MEN-1022))
-* Add device decomissioning support in the deployments service.
+* Add device decommissioning support in the deployments service.
 * Update artifact description when updating artifact data.
 * images/s3: unmarshal S3 errors when uploading image
-* Artfact upload error handling fixed.
+* Artifact upload error handling fixed.
 * Update artifact description when updating artifact data. ([MEN-1093](https://tracker.mender.io/browse/MEN-1093))
 * travis: bump required Go version to 1.8
 
@@ -41,7 +41,7 @@ _Released 05.24.2017_
 #### deviceauth
 * New feature: decommissioning device
 * devauth: improve logging when rejecting or giving out tokens
-* Decomission device endpoint implemented (whithout
+* Decommission device endpoint implemented (without
   decommission job submit).
 * api/management: management API is publicly available, update misleading description
 * api: add tenant_token as an optional attribute in authentication request
