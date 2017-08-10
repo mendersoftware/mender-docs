@@ -224,7 +224,7 @@ The script:
 
 To enable UBI support, inherit the `mender-full-ubi` class in your `local.conf`
 and take a look at the various UBI related variables in
-`mender-install.bbclass`. 
+`mender-install-ubi.bbclass`. 
 
 Mender support will create a UBI image file (`ubimg` in `${DEPLOYDIR}/images`)
 including the following volumes:
