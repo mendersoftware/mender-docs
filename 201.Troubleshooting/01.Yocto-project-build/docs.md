@@ -28,9 +28,9 @@ MENDER_UBOOT_STORAGE_DEVICE = "0"
 which will set the index that U-Boot will use. All non-U-Boot references to the storage device, including the `root` argument passed by U-Boot to the Linux kernel when booting it, will keep using the `/dev/mmcblk1` variant derived from `MENDER_STORAGE_DEVICE` variables.
 
 
-## Boot loader is missing from boot partition, but is required for my device
+## Bootloader is missing from boot partition, but is required for my device
 
-By default Mender does not add any boot loader files to the boot partition. If your device requires this you need to specify the files in the `IMAGE_BOOT_FILES` variable in the `machine.conf` file for your device. For example:
+By default Mender does not add any bootloader files to the boot partition. If your device requires this you need to specify the files in the `IMAGE_BOOT_FILES` variable in the `machine.conf` file for your device. For example:
 
 ```bash
 IMAGE_BOOT_FILES ?= "u-boot.bin MLO"

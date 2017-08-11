@@ -86,7 +86,7 @@ To deploy a new Artifact to the device, you need to start a http server on your 
 python -m SimpleHTTPServer
 ```
 
-!!! SimpleHTTPServer starts on port 8000, but the IP address your device should use to reach it depends on the network setup between your device and workstation. You can find the IP address by using network tools like `ip` on your workstation. We will assume the device can reach your workstation's web server on `http://<IP-OF-WORKSTATION>:8000/`.
+!!! SimpleHTTPServer starts on port 8000, but the IP address your device should use to reach it depends on the network setup between your device and workstation. You can find the IP address by using network tools like `ip` on your workstation. We will assume the device can reach your workstation's webserver on `http://<IP-OF-WORKSTATION>:8000/`.
 
 !!! If you are testing with QEMU, the virtual device should be able to access your workstation's directory at `http://10.0.2.2:8000/`, i.e. `<IP-OF-WORKSTATION>` is `10.0.2.2` in this case.
 

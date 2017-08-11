@@ -5,8 +5,8 @@ taxonomy:
 ---
 
 In order to secure the client-server and inter-service communication,
-Mender leverages public key cryptography. Several keypairs are used
-and each keypair comprises of a *public key*, which in some cases has
+Mender leverages public key cryptography. Several key pairs are used
+and each key pair comprises of a *public key*, which in some cases has
 a certificate that is shared with other services, and a *private key*,
 which is kept secret by the service.
 All keys are encoded in the PEM format. The public keys are shared in the
@@ -43,10 +43,10 @@ of the steps should be the exact same in both cases.
 
 ### Generating new keys and certificates
 
-You need keypairs for all the services, and the best practice is to use
+You need key pairs for all the services, and the best practice is to use
 different keys for all these four services, as it limits the attack surface
 if the private key of one service gets compromised. The API Gateway and
-Storage Proxy also requires certificates in addition to keypairs.
+Storage Proxy also requires certificates in addition to key pairs.
 In order to make all this key and certificate generation easier, we have
 created a `keygen` script that leverages the `openssl` utility to do
 the heavy lifting. It is available in
