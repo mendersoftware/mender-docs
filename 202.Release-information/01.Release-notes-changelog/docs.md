@@ -6,7 +6,7 @@ taxonomy:
 
 ## v1.2.0 Beta
 
-_Released xx.xx.xxxx_
+_Released 08.09.2017_
 
 #### deployments
 * Deployment creation process changed. From now on artifacts are
