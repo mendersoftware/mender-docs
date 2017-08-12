@@ -25,7 +25,7 @@ as described in [Create a test environment](../create-a-test-environment).
 
 Open the Mender UI in the same browser as you accepted the certificate
 in as part of [Create a test environment](../create-a-test-environment).
-It is available at [https://docker.mender.io/](https://docker.mender.io/?target=_blank).
+It is available at [https://localhost/](https://localhost/?target=_blank).
 
 After a minute or two, there should be a virtual device that is waiting authorization.
 This means that the Mender client, which runs as a daemon on the device,
