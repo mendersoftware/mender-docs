@@ -597,28 +597,13 @@ menderproduction_storage-proxy_1              /usr/local/openresty/bin/o ...   U
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:9000" -->
 
-Furthermore, since this is a brand new installation it should be possible to request initial
-user login token through the API:
+Furthermore, since this is a brand new installation it should be possible to create the initial
+user via the CLI provided by the User Administration Service. The service's binary is embedded in a Docker container, so to execute it you will issue the **exec** subcommand of docker-compose, e.g.:
 
 <!--AUTOMATION: ignore -->
 ```bash
-curl -X POST  -D - --cacert keys-generated/certs/api-gateway/cert.crt https://mender.example.com:443/api/management/v1/useradm/auth/login
+sudo docker-compose exec mender-useradm /usr/bin/useradm create-user --username=myusername@host.com --password=mysecretpassword
 ```
-
-> HTTP/2.0 200  
-> server:openresty/1.11.2.2  
-> date:Fri, 27 Jan 2017 15:44:53 GMT  
-> content-type:application/json; charset=utf-8  
-> content-length:734  
-> vary:Accept-Encoding  
-> x-men-requestid:9a50755b-a246-4128-bfac-e8d20c81a7dc  
-> strict-transport-security:max-age=63072000; includeSubdomains; preload  
-> x-frame-options:DENY  
-> x-content-type-options:nosniff  
->  
-> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJle....  
-
-!!! Note: if your DNS name does not resolve the public IP address of current host, you may need to add appropriate entries to `/etc/hosts`.
 
 At this point you should be able to access [https://mender.example.com](https://mender.example.com) with your
 web browser.
