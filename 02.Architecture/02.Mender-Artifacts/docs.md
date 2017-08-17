@@ -49,7 +49,7 @@ matrix for Mender Client and Artifact versions is shown below:
 |---------------------|-------------|-------------|
 | Mender Client 1.0.X | yes         | no          |
 | Mender Client 1.1.X | yes         | yes         |
-
+| Mender Client 1.2.X | yes         | yes         |
 
 !! Older Mender clients do not support newer versions of the Artifact format; they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../artifacts/modifying-a-mender-artifact#write-a-new-artifact) for an introduction how to do this.
 
@@ -80,6 +80,13 @@ compressed, currently with the [gzip compression algorithm](https://en.wikipedia
 To verify that the Artifact comes from a known source, the Mender Artifact format supports 
 image signing and verification. In order to create a signed Artifact, which can be verified by the Mender Client
 during the update process, please follow the instructions at [Signing and verifying Mender Artifact](../../artifacts/signing-and-verification).
+
+## State scripts
+
+Starting with the Mender client version 1.2, support for state scripts is included. The most common use case is to do application data migration, 
+for example if application data like a user profile is stored in an SQLite database and a new column needs to be added before starting the new version of the application.
+There are a wide variety of other use cases that are covered by state scripts. For more use cases see [example use cases](../../artifacts/state-scripts#example-use-cases).
+For more information how to use state scripts see [Mender state scripts](../../artifacts/state-scripts).
 
 
 ## Working with Mender Artifacts
