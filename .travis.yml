@@ -14,4 +14,6 @@ script:
   - ./test_docs.py 06.Administration/02.Production-installation/docs.md
 
 after_success:
-  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./redeploy.sh production; else ./redeploy.sh testing; fi
+  # on merge, first deploy to staging, wait 5 minutes, and deploy to production:
+  # note that worse possible outcome here is incorrectly formatted markdown appearing
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./redeploy.sh master && sleep 300 && ./redeploy.sh production; fi
