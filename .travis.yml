@@ -12,3 +12,6 @@ before_script:
 
 script:
   - ./test_docs.py 06.Administration/02.Production-installation/docs.md
+
+after_success:
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./redeploy.sh production; else ./redeploy.sh testing; fi
