@@ -168,7 +168,7 @@ Black boot from the SD card instead of internal storage.
 
 ## See the BeagleBone Black(s) in the Mender UI
 
-If you refresh the Mender server UI (by default found at [https://docker.mender.io/](https://docker.mender.io/?target=_blank)),
+If you refresh the Mender server UI (by default found at [https://localhost/](https://localhost/?target=_blank)),
 you should see one or more devices waiting authorization.
 
 Once you **authorize** these devices, Mender will auto-discover
