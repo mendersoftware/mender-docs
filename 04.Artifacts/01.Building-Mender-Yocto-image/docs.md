@@ -132,6 +132,21 @@ INHERIT += "mender-full"
 
 MACHINE = "<YOUR-MACHINE>"
 
+# The version of Mender to build.  This needs to match an existing recipe in the mender repository.
+#
+# Note also that not all versions will exist in all Yocto branches.  Please confirm in your
+# source directory which versions are appropriate.
+#
+# Note the following mapping from Mender client version to Mender artifact version.
+# Client => Artifact
+# 1.0.0     1.0.0
+# 1.0.1     1.0.0
+# 1.1.0     2.0.0
+# 1.2.0     2.1.0
+PREFERRED_VERSION_pn-mender = "1.0.1"
+PREFERRED_VERSION_pn-mender-artifact = "1.0.0"
+PREFERRED_VERSION_pn-mender-artifact-native = "1.0.0"
+
 DISTRO_FEATURES_append = " systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
 DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
