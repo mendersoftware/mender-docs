@@ -35,7 +35,7 @@ The other layers in *meta-mender* provide support for specific boards.
 
 ## Prerequisites
 
-! We use the **pyro** branch of the Yocto Project and `meta-mender` below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases, but these branches are no longer maintained by Mender developers. Please reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank#!forum/mender) if you would like help with getting Mender to work on other versions of the Yocto Project.
+! We use the **pyro** branch of the Yocto Project and `meta-mender` below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases, but these branches are no longer maintained by Mender developers. We offer professional services to to implement and support other branches over time, please take a look at the [Mender professional services offering](https://mender.io/product/professional-services?target=_blank).
 
 !!! The meta-mender-demo layer, which is used below, and the webserver, are bundled with a default demo certificate and key. If you are intending on using Mender in production, you must generate your own certificate using OpenSSL. Please see the certificate section [for the server](../../administration/certificates-and-keys) and [for the client](../building-for-production/#certificates) for more information.
 
