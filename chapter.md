@@ -8,4 +8,4 @@ taxonomy:
 
 # Documentation
 
-Documentation for Mender 1.0
+Documentation for Mender 1.0.
