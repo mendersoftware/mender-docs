@@ -138,9 +138,9 @@ MACHINE = "<YOUR-MACHINE>"
 # 1.0.x     1.0.x
 # 1.1.x     2.0.x
 # 1.2.x     2.1.x
-PREFERRED_VERSION_pn-mender = "1.1.1"
-PREFERRED_VERSION_pn-mender-artifact = "2.0.1"
-PREFERRED_VERSION_pn-mender-artifact-native = "2.0.1"
+PREFERRED_VERSION_pn-mender = "1.1.%"
+PREFERRED_VERSION_pn-mender-artifact = "2.0.%"
+PREFERRED_VERSION_pn-mender-artifact-native = "2.0.%"
 
 DISTRO_FEATURES_append = " systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
