@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-### 1.2 beta
+### 1.2
 
 # Documentation
 
