@@ -1,5 +1,5 @@
 ---
-title: "1.2 beta"
+title: "1.2"
 taxonomy:
     category: docs
 ---
@@ -8,6 +8,4 @@ taxonomy:
 
 # Documentation
 
-Documentation for Mender 1.2 beta.
-
-[https://github.com/mendersoftware/mender/tree/1.2.x](https://github.com/mendersoftware/mender/tree/1.2.x)
+Documentation for Mender 1.2.
