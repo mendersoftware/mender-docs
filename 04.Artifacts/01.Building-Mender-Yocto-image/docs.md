@@ -138,9 +138,14 @@ MACHINE = "<YOUR-MACHINE>"
 # 1.0.x     1.0.x
 # 1.1.x     2.0.x
 # 1.2.x     2.1.x
-PREFERRED_VERSION_pn-mender = "1.2.0"
-PREFERRED_VERSION_pn-mender-artifact = "2.1.0"
-PREFERRED_VERSION_pn-mender-artifact-native = "2.1.0"
+#
+# Note that by default this will select the latest released version of the tools.
+# If you need an earlier version, please uncomment the following and set to the
+# required version.
+#
+# PREFERRED_VERSION_pn-mender = "1.2.%"
+# PREFERRED_VERSION_pn-mender-artifact = "2.1.%"
+# PREFERRED_VERSION_pn-mender-artifact-native = "2.1.%"
 
 DISTRO_FEATURES_append = " systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
