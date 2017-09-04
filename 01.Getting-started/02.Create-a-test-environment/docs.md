@@ -53,11 +53,11 @@ In a working directory, clone the Mender integration
 environment:
 
 ```bash
-curl -L https://github.com/mendersoftware/integration/archive/1.2.0b1.tar.gz | tar xz
+curl -L https://github.com/mendersoftware/integration/archive/1.2.0.tar.gz | tar xz
 ```
 
 ```bash
-cd integration-1.2.0b1
+cd integration-1.2.0
 ```
 
 You should see a file `docker-compose.yml` inside it, which defines the
