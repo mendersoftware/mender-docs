@@ -4,6 +4,31 @@ taxonomy:
     category: docs
 ---
 
+## v1.1.1
+
+_Released xx.xx.xxxx_
+
+#### mender
+* Fix - Now throws an error when committing nothing.
+  ([MEN-505](https://tracker.mender.io/browse/MEN-505))
+* Changed the errormessage to more closely reflect the issue.
+  ([MEN-1215](https://tracker.mender.io/browse/MEN-1215))
+* Improve error message when manifest field/file cannot be read.
+* Logs an error when device_type file not found.
+  ([MEN-505](https://tracker.mender.io/browse/MEN-505))
+* Fixed behaviour when no sys-cert is available on the system.
+  ([MEN-1151](https://tracker.mender.io/browse/MEN-1151))
+* installer: improve incompatible image error message
+
+#### mender-artifact
+* Sign existing artifacts using mender-artifact CLI
+  ([MEN-1220](https://tracker.mender.io/browse/MEN-1220))
+* mender-artifact now fails with whitespace in the artifact-name
+  ([MEN-1355](https://tracker.mender.io/browse/MEN-1355))
+* Mender-Artifact now returns an error code to the os on cli errors
+  ([MEN-1328](https://tracker.mender.io/browse/MEN-1328))
+
+
 ## v1.1.0
 
 _Released 06.16.2017_
