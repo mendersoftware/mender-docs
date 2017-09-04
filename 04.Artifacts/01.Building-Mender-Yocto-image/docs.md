@@ -135,13 +135,17 @@ MACHINE = "<YOUR-MACHINE>"
 #
 # Note the following mapping from Mender client version to Mender artifact version.
 # Client => Artifact
-# 1.0.0     1.0.0
-# 1.0.1     1.0.0
-# 1.1.0     2.0.0
-# 1.2.0     2.1.0
-PREFERRED_VERSION_pn-mender = "1.2.0"
-PREFERRED_VERSION_pn-mender-artifact = "2.1.0"
-PREFERRED_VERSION_pn-mender-artifact-native = "2.1.0"
+# 1.0.0     1.0.x
+# 1.1.0     2.0.x
+# 1.2.0     2.1.x
+#
+# Note that by default this will select the latest released version of the tools.
+# If you need an earlier version, please uncomment the following and set to the
+# required version.
+#
+# PREFERRED_VERSION_pn-mender = "1.1.%"
+# PREFERRED_VERSION_pn-mender-artifact = "2.0.%"
+# PREFERRED_VERSION_pn-mender-artifact-native = "2.0.%"
 
 DISTRO_FEATURES_append = " systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
