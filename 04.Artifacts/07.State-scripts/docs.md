@@ -76,8 +76,11 @@ Scripts in `ArtifactCommit_Enter` can do additional sanity checks to make sure t
 
 In order to save power and bandwidth, network connectivity may not be enabled by default on the device, so you want to selectively enable it when needed.
 
-A state script in `Sync_Enter` can enable network connectivity. Note that this transition can be reached quite frequently, depending on the [polling intervals](../../client-configuration/polling-intervals), and that the Mender Client requires network in several following states of the update process to report progress to the Mender Server (unless you use [standalone mode](../../architecture/overview#modes-of-operation)). You could also enable more powerful network connectivity, such as Wi-Fi, with a state script in `Download_Enter`.
+A state script in `Sync_Enter` can enable network connectivity. You could also enable more powerful network connectivity, such as Wi-Fi, with a state script in `Download_Enter`. If the network is not brought up by default on reboot, you should also enable network in `Reboot_Leave`.
 
+!!! Note that the `Sync_Enter` transition can be reached quite frequently, depending on the [polling intervals](../../client-configuration/polling-intervals). The Mender Client also requires network in several following states of the update process to report progress to the Mender Server (unless you use [standalone mode](../../architecture/overview#modes-of-operation)).
+
+If you want to explicitly disable network again after Mender has finished the deployment, the only safe place to do this is in `Idle_Enter`.
 
 ## Including state scripts in Artifacts and disk images
 
