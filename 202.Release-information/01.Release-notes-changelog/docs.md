@@ -6,7 +6,7 @@ taxonomy:
 
 ## v1.1.1
 
-_Released xx.xx.xxxx_
+_Released 09.05.2017_
 
 #### mender
 * Fix - Now throws an error when committing nothing.
