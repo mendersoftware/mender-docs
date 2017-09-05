@@ -1,0 +1,14 @@
+sudo: required
+
+language: generic
+
+services:
+  - docker
+
+before_script:
+  - sudo apt-get -q update && sudo apt-get install pwgen
+
+after_success:
+  # on merge, first deploy to staging, wait 5 minutes, and deploy to production:
+  # note that worse possible outcome here is incorrectly formatted markdown appearing
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./redeploy.sh master && sleep 300 && ./redeploy.sh production; fi
