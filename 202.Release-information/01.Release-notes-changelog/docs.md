@@ -4,68 +4,83 @@ taxonomy:
     category: docs
 ---
 
-## v1.2.0 Beta
+## v1.2.0
 
-_Released 08.09.2017_
+_Released xx.xx.xxxx_
 
-#### deployments
+#### deployments (1.2.0)
 * Deployment creation process changed. From now on artifacts are
   assigned to device deployments on update request handling.
 * Return 422 - Unprocessable Entity on attempt of creating deployment without artifacts
 * Deployments no longer require inventory to create deployments.
 * New optional array field: 'artifacts' in deployment object returned by API containing list of artifact ids used by deployment.
 
-#### deviceauth
+#### deviceauth (1.2.0)
 * Introduce 'server' subcommand that is also default command. Supports '--automigrate' parameter to enable automatic database version migration on startup.
 * Increase orchestrator request timeout to 30s
 
-#### gui
-* Added user management edit functionality
-* Change root API url to docker.mender.io
-* Updated node modules
-* Added self user management
-* Removed user creation UI incl password strength check (#231)
-* Remove shortened device IDs, now useless due to incremental SHAs
-* create deployment from single device ([MEN-1233](https://tracker.mender.io/browse/MEN-1233))
+#### gui (1.2.0)
 * Bugfix for multiplying GET devices requests
 * Add ‘create user’ functionality
+* Change root API url to docker.mender.io
+* Removed user creation UI incl password strength check (#231)
+* Added user management edit functionality
+* Updated node modules
+* Remove shortened device IDs, now useless due to incremental SHAs
+* create deployment from single device ([MEN-1233](https://tracker.mender.io/browse/MEN-1233))
 * Allow user to remove artifacts via the GUI
+* Added self user management
 
-#### mender
-* Fixed behaviour when no sys-cert is available on the system.
-  ([MEN-1151](https://tracker.mender.io/browse/MEN-1151))
+#### integration (1.2.0)
+* Move interactive flags for client container to main docker file.
+  Makes it available for debugging on all client containers, not just
+  dev containers.
+* allow access to https://localhost in test environment
+
+#### mender (1.2.0)
+* Refactored all store implementations into /store
+* Improve error message when manifest field/file cannot be read.
 * Fixed format check to conform to the expected artifact-file-format
   ([MEN-1289](https://tracker.mender.io/browse/MEN-1289))
-* Changed the errormessage to more closely reflect the issue.
-  ([MEN-1215](https://tracker.mender.io/browse/MEN-1215))
-* Improve error message when manifest field/file cannot be read.
-* remove no longer referenced client certificate code
-* Fix - Now throws an error when committing nothing. ([MEN-505](https://tracker.mender.io/browse/MEN-505))
-* Logs an error when device_type file not found. ([MEN-505](https://tracker.mender.io/browse/MEN-505))
-* Introduce experimental support for writing to UBI volumes
-* Removed the DeviceKey option in menderConfig.
-* Fix misleading version being displayed for non-tagged builds.
-  ([MEN-1178](https://tracker.mender.io/browse/MEN-1178))
+* installer: improve incompatible image error message
 * Client will not run state scripts from cmd-line except when forced.
   ([MEN-1235](https://tracker.mender.io/browse/MEN-1235))
-* installer: improve incompatible image error message
-* Refactored all store implementations into /store
+* Fixed behaviour when no sys-cert is available on the system.
+  ([MEN-1151](https://tracker.mender.io/browse/MEN-1151))
+* Mender now logs whatever a state-script outputs to stderr
+  ([MEN-1349](https://tracker.mender.io/browse/MEN-1349))
+* Fix misleading version being displayed for non-tagged builds.
+  ([MEN-1178](https://tracker.mender.io/browse/MEN-1178))
+* Changed the errormessage to more closely reflect the issue.
+  ([MEN-1215](https://tracker.mender.io/browse/MEN-1215))
+* Removed the DeviceKey option in menderConfig.
+* Fix - Now throws an error when committing nothing.
+  ([MEN-505](https://tracker.mender.io/browse/MEN-505))
 * Introduction of state script feature. State scripts can be
   used to execute scripts at various stages of Mender's execution. See
   documentation for more information.
+* Introduce experimental support for writing to UBI volumes
+* Logs an error when device_type file not found.
+  ([MEN-505](https://tracker.mender.io/browse/MEN-505))
+* remove no longer referenced client certifate code
 
-#### mender-api-gateway-docker
+#### mender-api-gateway-docker (1.2.0)
 * Return additional headers for improved security: X-XSS-Protection, Cache-Control, Pragma. ([MEN-1316](https://tracker.mender.io/browse/MEN-1316))
 * Validate Origin header if present. ([MEN-1287](https://tracker.mender.io/browse/MEN-1287))
 * Add a configurable Host whitelist to gateway configuration, denying requests with unknown Hosts. Configured through ALLOWED_HOSTS env var on gateway startup. ([MEN-1262](https://tracker.mender.io/browse/MEN-1262))
 
-#### mender-artifact
+#### mender-artifact (2.1.0)
+* Sign existing artifacts using mender-artifact CLI
+  ([MEN-1220](https://tracker.mender.io/browse/MEN-1220))
+* Improve error message when private signing key can't be loaded.
 * Fix misleading version being displayed for non-tagged builds.
   ([MEN-1178](https://tracker.mender.io/browse/MEN-1178))
-* Improve error message when private signing key can't be loaded.
-* Sign existing artifacts using mender-artifact CLI ([MEN-1220](https://tracker.mender.io/browse/MEN-1220))
+* Mender-Artifact now returns an error code to the os on cli errors
+  ([MEN-1328](https://tracker.mender.io/browse/MEN-1328))
+* mender-artifact now fails with whitespace in the artifact-name
+  ([MEN-1355](https://tracker.mender.io/browse/MEN-1355))
 
-#### useradm
+#### useradm (1.2.0)
 * Improve log messages when opening connection to MongoDB.
 * Additional MongoDB configuration options: mongo_ssl, mongo_ssl_skipverify, mongo_username, mongo_password
 * Remove 'initial user' login logic, including 'POST /users/initial' API. Now initial user need to be created by administrator using cli ([MEN-1034](https://tracker.mender.io/browse/MEN-1034))
