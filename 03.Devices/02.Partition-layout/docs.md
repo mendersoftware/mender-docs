@@ -120,7 +120,7 @@ If you have data or configuration that you need to preserve across updates, the 
 
 ##Deploying files to the persistent data partition
 
-When [building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image), if you need to include files in the persistent data partition, you will need to update your recipe file and your image file.  The update to the recipe file ensures that the persistent files are deployed to a common location and the updates to the image file ensures that these files are included in the target image.
+When [building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image), if you need to include files in the persistent data partition, you will need to update your recipe file and your image file. The update to the recipe file ensures that the persistent files are deployed to a common location and the updates to the image file ensures that these files are included in the target image.
 
 The changes needed in a particular recipe include inheriting the deploy class and ensuring that the persistent files are copied into the `DEPLOYDIR` for access by the image generation package.
 
