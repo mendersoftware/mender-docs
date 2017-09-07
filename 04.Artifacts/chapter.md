@@ -4,8 +4,8 @@ taxonomy:
     category: docs
 ---
 
-### Chapter 3
+### Chapter 4
 
-# Creating artifacts
+# Creating Artifacts
 
 Building and managing Mender Artifacts (`*.mender`) and disk images (`*.sdimg`).
