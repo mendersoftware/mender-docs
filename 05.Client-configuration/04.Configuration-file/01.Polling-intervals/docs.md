@@ -37,23 +37,15 @@ Both parameters are stored in the configuration file `/etc/mender/mender.conf`:
 
 ```
 {
-  "ClientProtocol": "http",
-  "HttpsClient": {
-    "Certificate": "",
-    "Key": ""
-  },
-  "RootfsPartA": "/dev/mmcblk0p2",
-  "RootfsPartB": "/dev/mmcblk0p3",
   "UpdatePollIntervalSeconds": 1800,
   "InventoryPollIntervalSeconds": 86400,
-  "ServerURL": "https://docker.mender.io",
-  "ServerCertificate": "/etc/mender/server.crt"
 ...
 ```
 
-Before building an image as described in [Building Mender Yocto image](../../artifacts/building-mender-yocto-image),
-you can adjust these configuration settings with the steps described in
-[Configuring polling intervals](../../artifacts/image-configuration#configuring-polling-intervals).
+Before building an image as described in [Building Mender Yocto
+image](../../artifacts/building-mender-yocto-image), you can adjust these configuration settings
+either [using a custom configuration file](..), or [using Yocto
+variables](../../../artifacts/image-configuration#configuring-polling-intervals).
 
 If you have already built an Artifact containing the rootfs, have a look at
 [Modifying a Mender Artifact](../../artifacts/modifying-a-mender-artifact) for steps on how
