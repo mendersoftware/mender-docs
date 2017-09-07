@@ -47,7 +47,7 @@ Mender automatically collects identity and inventory information
 about the connected devices. You can view this information by
 clicking on a device. It should look similar to the following:
 
-![Mender UI - Device information](device_information_1_2_beta.png)
+![Mender UI - Device information](device_information_1_2_0.png)
 
 
 !!! Which information is collected about devices is fully configurable; see the documentation on [Identity](../../client-configuration/identity) and [Inventory](../../client-configuration/inventory) for more information.
@@ -94,7 +94,7 @@ the Artifact we just uploaded and **All devices**, then
 As the deployment progresses, you can click on it to view more details about the current status across all devices.
 In the example below, we can see that the device is in process of installing the Artifact.
 
-![Mender UI - Deployment progress](deployment_report_1_2_beta.png)
+![Mender UI - Deployment progress](deployment_report_1_2_0.png)
 
 !!! The deployment to the virtual device should take about 2-5 minutes to complete and report success or failure.
 
