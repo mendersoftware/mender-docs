@@ -49,6 +49,7 @@ Anderton
 Andres
 andrey
 Andris
+Android
 ansi
 Antonio
 Antonov
@@ -66,7 +67,13 @@ arr
 arraybuffer
 arrify
 Artem
+ArtifactCommit
+ArtifactFailure
 artifactimg
+ArtifactInstall
+ArtifactReboot
+ArtifactRollback
+ArtifactRollbackReboot
 ArtifactVerifyKey
 asap
 asaskevich
@@ -426,6 +433,7 @@ fefbdfa
 Feross
 ffd
 FHANDLE
+Fi
 filepath
 FILESEXTRAPATHS
 findup
@@ -553,6 +561,7 @@ installables
 Insua
 InventoryPollIntervalSeconds
 io
+iOS
 ip
 isarguments
 isarray
@@ -781,6 +790,7 @@ NoCredentialProviders
 NONINFRINGEMENT
 noout
 Nopanen
+northerntech
 notAfter
 notBefore
 npm
@@ -865,6 +875,7 @@ Popp
 posix
 PostCSS
 postcss
+postinstall
 postmile
 Pragma
 pre
@@ -1028,6 +1039,7 @@ sourcemaps
 spf
 SPI
 SPQQA
+SQLite
 src
 SRCPV
 SRCREV
@@ -1041,6 +1053,7 @@ standalone
 stanford
 stat
 stats
+stderr
 StdinOnce
 Stefan
 stevenlevithan
@@ -1195,6 +1208,8 @@ Wertarbyte
 wget
 whatwg
 whitelist
+Wi
+wifi
 wiki
 wikipage
 wikipedia
