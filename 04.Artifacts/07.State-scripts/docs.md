@@ -44,7 +44,7 @@ There can be more than one script for a given state. Each script contains an ord
 <STATE_NAME>_<ACTION>_<ORDERING_NUMBER>_<OPTIONAL_DESCRIPTION>
 ```
 
-For example, `Download_Enter_05_wifi-driver` and `Download_Enter_10_ask-user` are both run before the `Download` state, and the `wifi-driver` script would run before the `ask-user` script. The ordering betwen the states depends on the outcome of the states run, please see [state transition ordering](#state-transition-ordering) for the most common cases.
+For example, `Download_Enter_05_wifi-driver` and `Download_Enter_10_ask-user` are both run before the `Download` state, and the `wifi-driver` script would run before the `ask-user` script. The ordering between the states depends on the outcome of the states run, please see [state transition ordering](#state-transition-ordering) for the most common cases.
 
 **There are no arguments passed to the scripts.**
 **If a script returns 0 Mender proceeds, but if it returns 1 the update is aborted and rolled back. All other return codes are reserved for future use by Mender and should not be used.**
@@ -55,7 +55,7 @@ For example, `Download_Enter_05_wifi-driver` and `Download_Enter_10_ask-user` ar
 Mender users will probably come up with a lot of interesting use cases for state scripts, and we will cover some well-known ones below for inspiration.
 
 #### Application data migration
-In this case, application data like a user profile is stored in an SQLite database and a new column need to be added before starting the new version of the application. This can be achieved by adding a state script to `ArtifactReboot_Enter` (that would run after writing the new rootfs, but before rebooting). This script can then do the neccessary migrations on the data partition before the new version of the application is brought up after the reboot.
+In this case, application data like a user profile is stored in an SQLite database and a new column need to be added before starting the new version of the application. This can be achieved by adding a state script to `ArtifactReboot_Enter` (that would run after writing the new rootfs, but before rebooting). This script can then do the necessary migrations on the data partition before the new version of the application is brought up after the reboot.
 
 
 #### Update confirmation by end user
@@ -149,7 +149,7 @@ In case any of the `Artifact` scripts fail, an additional `ArtifactFailure` stat
 7. (device reboot)
 8. [ArtifactReboot_Leave]
 9. [ArtifactCommit_Enter] ArtifactCommit
-10. (error while commiting)
+10. (error while committing)
 11. [ArtifactCommit_Error]
 12. [ArtifactFailure_Enter] ArtifactFailure [ArtifactFailure_Leave]
 13. [ArtifactRollback_Enter] ArtifactRollback [ArtifactRollback_Leave]

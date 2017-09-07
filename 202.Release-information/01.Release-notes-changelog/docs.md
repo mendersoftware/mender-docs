@@ -62,7 +62,7 @@ _Released 09.05.2017_
 * Introduce experimental support for writing to UBI volumes
 * Logs an error when device_type file not found.
   ([MEN-505](https://tracker.mender.io/browse/MEN-505))
-* remove no longer referenced client certifate code
+* remove no longer referenced client certificate code
 
 #### mender-api-gateway-docker (1.2.0)
 * Return additional headers for improved security: X-XSS-Protection, Cache-Control, Pragma. ([MEN-1316](https://tracker.mender.io/browse/MEN-1316))
