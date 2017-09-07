@@ -63,7 +63,7 @@ For many devices with a display that interacts with an end user, it is desirable
 
 Mender state scripts enable this use case with a script written to create the dialog box on the UI framework used. The script will simply wait for user input, and Mender will wait with the update process while waiting for the script to finish. Depending on what the user selects, the script can return 0 (proceed) or 1 (stop). This script can be run in the `Download_Enter` state, for example.
 
-Make sure to increase the default timeout for state scripts to enable this use case.
+Make sure to [increase the default timeout for state scripts](../../client-configuration/configuration-file/configuration-options#statescripttimeoutseconds) to enable this use case.
 
 
 #### Custom sanity checks after the update is installed
