@@ -128,19 +128,21 @@ INHERIT += "mender-full"
 # vexpress-qemu or beaglebone can be used for testing.
 MACHINE = "<YOUR-MACHINE>"
 
-# The version of Mender to build.  This needs to match an existing recipe in the mender repository.
+# The version of Mender to build. This needs to match an existing recipe in the meta-mender repository.
 #
-# Note also that not all versions will exist in all Yocto branches.  Please confirm in your
-# source directory which versions are appropriate.
+# Given your Yocto Project version, see which versions of Mender you can currently build here:
+# https://docs.mender.io/architecture/compatibility#mender-client-and-yocto-project-version
 #
-# Note the following mapping from Mender client version to Mender artifact version.
-# Client => Artifact
-# 1.0.x     1.0.x
-# 1.1.x     2.0.x
-# 1.2.x     2.1.x
-PREFERRED_VERSION_pn-mender = "1.1.%"
-PREFERRED_VERSION_pn-mender-artifact = "2.0.%"
-PREFERRED_VERSION_pn-mender-artifact-native = "2.0.%"
+# Given a Mender client version, see the corresponding version of the mender-artifact utility:
+# https://docs.mender.io/architecture/compatibility#mender-client-and-artifact-format
+#
+# Note that by default this will select the latest released version of the tools.
+# If you need an earlier version, please uncomment the following and set to the
+# required version.
+#
+# PREFERRED_VERSION_pn-mender = "1.1.%"
+# PREFERRED_VERSION_pn-mender-artifact = "2.0.%"
+# PREFERRED_VERSION_pn-mender-artifact-native = "2.0.%"
 
 DISTRO_FEATURES_append = " systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
