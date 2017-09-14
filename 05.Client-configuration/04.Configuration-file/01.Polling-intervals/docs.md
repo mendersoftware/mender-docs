@@ -43,10 +43,10 @@ Both parameters are stored in the configuration file `/etc/mender/mender.conf`:
 ```
 
 Before building an image as described in [Building Mender Yocto
-image](../../artifacts/building-mender-yocto-image), you can adjust these configuration settings
+image](../../../artifacts/building-mender-yocto-image), you can adjust these configuration settings
 either [using a custom configuration file](..), or [using Yocto
 variables](../../../artifacts/image-configuration#configuring-polling-intervals).
 
 If you have already built an Artifact containing the rootfs, have a look at
-[Modifying a Mender Artifact](../../artifacts/modifying-a-mender-artifact) for steps on how
+[Modifying a Mender Artifact](../../../artifacts/modifying-a-mender-artifact) for steps on how
 to change these configurations in an existing Artifact.

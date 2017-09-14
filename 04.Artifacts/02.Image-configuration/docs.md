@@ -29,7 +29,7 @@ MACHINE = "vexpress-qemu"  # replace with the desired machine
 ## Configuring polling intervals
 
 You can configure how frequently the Mender client will make requests to the Mender server
-as described in [Polling intervals](../../client-configuration/polling-intervals) before
+as described in [Polling intervals](../../client-configuration/configuration-file/polling-intervals) before
 starting the build process.
 
 In order to do this, change the following in the file
