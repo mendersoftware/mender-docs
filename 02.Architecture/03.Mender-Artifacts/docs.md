@@ -36,28 +36,15 @@ Mender Artifact file. Please note that the exact format of the artifact may vary
 
 ![Mender Artifact format](mender-artifact-format.png)
 
+More details about the exact format of the Mender Artifact can be found in the
+[Mender Artifact file documentation](https://github.com/mendersoftware/mender-artifact/blob/master/Documentation/artifact-format.md).
+
 
 ## Versions
 
 Mender is constantly evolving to adapt to the needs of its users. As new features are added, new versions of the 
 Mender Artifact format may be introduced as well, if the features require it.
-
-At the moment there are two different versions of the Mender Artifact format. The compatibility
-matrix for Mender Client and Artifact versions is shown below:
-
-|                     | Artifact v1 | Artifact v2 |
-|---------------------|-------------|-------------|
-| Mender Client 1.0.X | yes         | no          |
-| Mender Client 1.1.X | yes         | yes         |
-
-
-!! Older Mender clients do not support newer versions of the Artifact format; they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../artifacts/modifying-a-mender-artifact#write-a-new-artifact) for an introduction how to do this.
-
-In addition to what is included in version 1, version 2 adds support for image signing and verification. 
-Among the other metadata it contains *manifest* and *manifest.sig* files, which
-are the collection of the file checksums and the signature of the manifest respectively. More details about the exact format
-of the Mender Artifact can be found in the 
-[Mender Artifact file documentation](https://github.com/mendersoftware/mender-artifact/blob/2.0.x/Documentation/artifact-format.md).
+See the [compatibility documentation](../compatibility) for an overview of which versions of the Mender Artifact format is supported by Mender clients.
 
 
 ## Streaming and compression
