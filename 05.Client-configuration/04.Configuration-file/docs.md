@@ -8,7 +8,7 @@ Much of the Mender client's configuration resides in `/etc/mender/mender.conf`
 on the root filesystem. This file is JSON structured and defines various
 parameters for Mender's operation. Some of the most common settings are tunable
 using [Yocto
-variables](../artifacts/image-configuration#configuring-polling-intervals). The
+variables](../../artifacts/image-configuration#configuring-polling-intervals). The
 remaining parameters can only be changed by providing your own `mender.conf`.
 
 
