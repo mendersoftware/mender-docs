@@ -109,7 +109,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
     pgrep mender
     ```
 
-    If Mender has been enabled as a daemon, either through inheriting `mender-full` or `mender-systemd`, it should return a PID. If not, it should return nothing. This verifies that Mender is started as a service if applicable.
+    If Mender has been enabled as a daemon, either through inheriting `mender-full` or enabling the `mender-systemd` feature in `MENDER_FEATURES_ENABLE`, it should return a PID. If not, it should return nothing. This verifies that Mender is started as a service if applicable.
 
 12. Now we verify that the booted kernel is from the rootfs. The easiest way to check this is to check the build date, which can be seen by running:
 
