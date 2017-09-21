@@ -602,7 +602,7 @@ user via the CLI provided by the User Administration Service. The service's bina
 
 <!--AUTOMATION: ignore -->
 ```bash
-sudo docker-compose exec mender-useradm /usr/bin/useradm create-user --username=myusername@host.com --password=mysecretpassword
+sudo docker-compose -p menderproduction exec mender-useradm /usr/bin/useradm create-user --username=myusername@host.com --password=mysecretpassword
 ```
 
 At this point you should be able to access [https://mender.example.com](https://mender.example.com) with your
