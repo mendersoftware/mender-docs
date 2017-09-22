@@ -15,14 +15,16 @@ which partitions have received which updates. Mender comes with special boot
 code prepared for U-Boot which selects the boot partition
 automatically, as well as handling the rollback logic.
 
-In order to utilize this, when building with Yocto Project you need to inherit either
-the `mender-full` class, or the `mender-uboot` class (the former enables all
-required features for Mender and implicitly inherits the latter). For example in
-your `local.conf`:
+In order to utilize this, when building with Yocto Project you need to enable
+the `mender-uboot` feature using `MENDER_FEATURES_ENABLE`. For instance, in your
+`local.conf`:
 
 ```bash
-INHERIT += "mender-full"
+MENDER_FEATURES_ENABLE_append = " mender-uboot"
 ```
+
+!!! Note that if you have inherited the `mender-full` or `mender-full-ubi` class
+in your `local.conf`, then the default is to enable the `mender-uboot` feature.
 
 This enables the Mender U-Boot boot code.
 
