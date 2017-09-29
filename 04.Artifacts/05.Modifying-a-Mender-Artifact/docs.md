@@ -31,7 +31,7 @@ Linux distributions.
 
 The `mender-artifact` utility is used to create and inspect Mender Artifacts.
 
-You can download a [prebuilt mender-artifact Linux binary here](https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.1.0/mender-artifact).
+You can download a [prebuilt mender-artifact Linux binary here][autoupdate_x.x.x_mender-artifact].
 
 !!! If you need to build `mender-artifact` from source, please see [Compiling mender-artifact](#compiling-mender-artifact).
 
@@ -174,7 +174,7 @@ After deploying this Artifact with Mender and rebooting, your configuration chan
 ## Compiling mender-artifact
 
 Compiling `mender-artifact` is only necessary if you can not use the prebuilt
-[mender-artifact binary for Linux](https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.1.0/mender-artifact).
+[mender-artifact binary for Linux][autoupdate_x.x.x_mender-artifact].
 
 
 #### Install git
@@ -258,3 +258,5 @@ For convenience, we can also make sure the `mender-artifact` utility is in PATH:
 ```bash
 export PATH=$PATH:$GOPATH/bin
 ```
+
+[autoupdate_x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.1.1/mender-artifact
