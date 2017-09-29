@@ -4,6 +4,37 @@ taxonomy:
     category: docs
 ---
 
+## v1.1.3
+
+_Released xx.xx.xxxx_
+
+#### integration (1.1.3)
+* Fix incorrectly set service version references.
+
+
+## v1.1.2
+
+_(Never released publicly)_
+
+#### deployments (1.1.1)
+* Prevent artifacts with invalid checksums from
+  being uploaded to the server.
+  ([MEN-1412](https://tracker.mender.io/browse/MEN-1412))
+
+#### integration (1.1.2)
+* Upgrade deployments to 1.1.1.
+* Upgrade mender to 1.1.2.
+* Upgrade mender-artifact to 2.0.2.
+
+#### mender (1.1.2)
+* Fix checksum not being verified for headers, only
+  payload. ([MEN-1412](https://tracker.mender.io/browse/MEN-1412))
+
+#### mender-artifact (2.0.2)
+* Fix broken header checksum verification.
+  ([MEN-1412](https://tracker.mender.io/browse/MEN-1412))
+
+
 ## v1.1.1
 
 _Released 09.05.2017_
