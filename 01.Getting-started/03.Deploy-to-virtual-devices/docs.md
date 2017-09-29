@@ -52,7 +52,11 @@ clicking on a device. It should look similar to the following:
 
 !!! Which information is collected about devices is fully configurable; see the documentation on [Identity](../../client-configuration/identity) and [Inventory](../../client-configuration/inventory) for more information.
 
-You can also see that the `artifact_name` is `mender-image-1.1.1`.
+[start_autoupdate_mender-image-x.x.x]: #
+
+You can also see that the `artifact_name` is `mender-image-1.1.2`.
+
+[end_autoupdate_mender-image-x.x.x]: #
 
 After deploying the update below, you can verify that this `artifact_name` has changed.
 
@@ -101,11 +105,15 @@ In the example below, we can see that the device is in process of installing the
 
 ## Verify the deployment
 
+[start_autoupdate_release-2_x.x.x]: #
+
 Once the deployment completes, you should see it in *Past deployments*.
 If the deployment fails you can view the deployment log,
 which is obtained from the device, to diagnose the issue.
 You can also see the state of deployments on the Dashboard.
-In **Devices** you can see that `artifact_name` has now changed to `release-2_1.1.1`.
+In **Devices** you can see that `artifact_name` has now changed to `release-2_1.1.2`.
+
+[end_autoupdate_release-2_x.x.x]: #
 
 This shows your virtual device runs the new rootfs!
 
@@ -128,8 +136,11 @@ the *Description* input field to `My original build`.
 After the Artifact has been uploaded, you can deploy it to your device,
 as you did earlier.
 
-Following this, you can deploy the `release-2_1.1.1` Artifact again, and so forth.
+[start_autoupdate_release-2_x.x.x]: #
 
+Following this, you can deploy the `release-2_1.1.2` Artifact again, and so forth.
+
+[end_autoupdate_release-2_x.x.x]: #
 
 ## Deploy to custom groups
 
