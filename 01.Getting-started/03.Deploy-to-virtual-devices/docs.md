@@ -66,9 +66,9 @@ to be uploaded to the server. Any Artifact that
 can be used, and steps to build one are provided at
 [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
 
-To make testing easier, a Mender Artifact that can be used with
-the virtual device is provided for download at
-[https://d1b0l86ne08fsf.cloudfront.net/1.2.0/vexpress-qemu/vexpress_release_2_1.2.0.mender](https://d1b0l86ne08fsf.cloudfront.net/1.2.0/vexpress-qemu/vexpress_release_2_1.2.0.mender).
+To make testing easier, [you can download a Mender Artifact][autoupdate_vexpress_release_2_x.x.x.mender] that can be used with the virtual device.
+
+[autoupdate_vexpress_release_2_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/1.2.1/vexpress-qemu/vexpress_release_2_1.2.1.mender
 
 After the download finishes, go back to the Mender server UI,
 click the **Artifacts** tab and upload this Mender Artifact.
@@ -112,14 +112,16 @@ This shows your virtual device runs the new rootfs!
 
 ## Deploy another update
 
-For robustness and avoiding unnecessary deployments, Mender
-will not deploy an Artifact that is already installed on a device.
-Thus, if you create another deployment with the Artifact you already
-uploaded, Mender will see that it contains the same rootfs
-that is already installed and skip the deployment. It will
-immediately be marked as successful and moved to *Past deployments*.
-For this reason, we provide another Artifact that you can use
-to deploy with at [https://d1b0l86ne08fsf.cloudfront.net/1.2.0/vexpress-qemu/vexpress_release_1_1.2.0.mender](https://d1b0l86ne08fsf.cloudfront.net/1.2.0/vexpress-qemu/vexpress_release_1_1.2.0.mender).
+For robustness and avoiding unnecessary deployments, Mender will not deploy an
+Artifact that is already installed on a device.  Thus, if you create another
+deployment with the Artifact you already uploaded, Mender will see that it
+contains the same rootfs that is already installed and skip the deployment. It
+will immediately be marked as successful and moved to *Past deployments*.  For
+this reason, [we provide another
+Artifact][autoupdate_vexpress_release_1_x.x.x.mender] that you can use to
+deploy.
+
+[autoupdate_vexpress_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/1.2.1/vexpress-qemu/vexpress_release_1_1.2.1.mender
 
 Go to **Artifacts** again and upload this artifact. You can set
 the *Description* input field to `My original build`.

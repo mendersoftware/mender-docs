@@ -55,10 +55,12 @@ that your device(s) can connect to the Mender server.
 
 ! Please make sure to set a shell variable that expands correctly with `$IP_OF_MENDER_SERVER_FROM_DEVICE` or edit the commands below accordingly.
 
-Download the test *disk* image with Mender support for the BeagleBone Black
-at [https://d1b0l86ne08fsf.cloudfront.net/1.2.0/beaglebone/mender-beaglebone_1.2.0.sdimg.gz](https://d1b0l86ne08fsf.cloudfront.net/1.2.0/beaglebone/mender-beaglebone_1.2.0.sdimg.gz).
-This image contains *all the partitions* of the storage device, as
-described in [Partition layout](../../devices/partition-layout).
+Download [the test *disk* image][autoupdate_mender-beaglebone_x.x.x.sdimg.gz]
+with Mender support for the BeagleBone Black. This image contains *all the
+partitions* of the storage device, as described in [Partition
+layout](../../devices/partition-layout).
+
+[autoupdate_mender-beaglebone_x.x.x.sdimg.gz]: https://d1b0l86ne08fsf.cloudfront.net/1.2.1/beaglebone/mender-beaglebone_1.2.1.sdimg.gz
 
 You can decompress it like the following:
 
@@ -191,8 +193,10 @@ checksum and name, as well as the actual root file system that is
 deployed. See [Mender Artifacts](../../architecture/mender-artifacts) for
 a complete description of this format.
 
-Download the test Artifact for the BeagleBone Black
-at [https://d1b0l86ne08fsf.cloudfront.net/1.2.0/beaglebone/beaglebone_release_1_1.2.0.mender](https://d1b0l86ne08fsf.cloudfront.net/1.2.0/beaglebone/beaglebone_release_1_1.2.0.mender).
+Download [the test Artifact][autoupdate_beaglebone_release_1_x.x.x.mender] for
+the BeagleBone Black.
+
+[autoupdate_beaglebone_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/1.2.1/beaglebone/beaglebone_release_1_1.2.1.mender
 
 The steps needed to edit the root file system contained in this Artifact are:
 
@@ -264,9 +268,11 @@ sudo umount /mnt/rootfs
 
 #### Create a new Mender Artifact with the modified rootfs
 
-To create a Mender Artifact from a root file system, it is easiest
-to download the prebuilt mender-artifact tool available for Linux
-at [https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.1.0/mender-artifact](https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.1.0/mender-artifact).
+To create a Mender Artifact from a root file system, it is easiest to download
+[the prebuilt mender-artifact tool][autoupdate_x.x.x_mender-artifact] available
+for Linux.
+
+[autoupdate_x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.1.1/mender-artifact
 
 After the tool is downloaded and you added execute permission (e.g. with `chmod +x mender-artifact`),
 simply run it as follows:
