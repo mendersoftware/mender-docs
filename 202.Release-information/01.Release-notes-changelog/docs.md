@@ -4,6 +4,31 @@ taxonomy:
     category: docs
 ---
 
+## v1.2.1
+
+_Released xx.xx.xxxx_
+
+#### deployments (1.2.1)
+* Prevent artifacts with invalid checksums from
+  being uploaded to the server.
+  ([MEN-1412](https://tracker.mender.io/browse/MEN-1412))
+
+#### integration (1.2.1)
+* Upgrade deployments to 1.2.1.
+* Upgrade mender to 1.2.1.
+* Upgrade mender-artifact to 2.1.1.
+
+#### mender (1.2.1)
+* Improve error messages for state scripts errors.
+  Rely on the full error description instead of just the error code.
+* Fix checksum not being verified for headers, only
+  payload. ([MEN-1412](https://tracker.mender.io/browse/MEN-1412))
+
+#### mender-artifact (2.1.1)
+* Fix broken header checksum verification.
+  ([MEN-1412](https://tracker.mender.io/browse/MEN-1412))
+
+
 ## v1.2.0
 
 _Released 09.05.2017_
