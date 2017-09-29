@@ -68,9 +68,14 @@ label can be used when filtering output of commands such as `docker ps`.
 Start off by cloning the Mender integration repository into a local directory
 named `mender-server`:
 
+[start_autoupdate_git_clone_integration_b_x.x.x]: #
+
 ```bash
-git clone -b 1.2.x https://github.com/mendersoftware/integration mender-server
+git clone -b 1.2.1 https://github.com/mendersoftware/integration mender-server
 ```
+
+[end_autoupdate_git_clone_integration_b_x.x.x]: #
+
 > Cloning into 'deployment'...  
 > remote: Counting objects: 1117, done.  
 > remote: Compressing objects: 100% (11/11), done.  
