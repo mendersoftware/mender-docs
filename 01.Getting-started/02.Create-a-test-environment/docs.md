@@ -52,13 +52,21 @@ connection in order to avoid long wait times.
 In a working directory, clone the Mender integration
 environment:
 
+[start_autoupdate_integration_archive_x.x.x.tar.gz]: #
+
 ```bash
 curl -L https://github.com/mendersoftware/integration/archive/master.tar.gz | tar xz
 ```
 
+[end_autoupdate_integration_archive_x.x.x.tar.gz]: #
+
+[start_autoupdate_integration-x.x.x]: #
+
 ```bash
 cd integration-master
 ```
+
+[end_autoupdate_integration-x.x.x]: #
 
 You should see a file `docker-compose.yml` inside it, which defines the
 Mender test environment.
