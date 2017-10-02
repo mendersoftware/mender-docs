@@ -6,7 +6,7 @@ taxonomy:
 
 ## v1.1.3
 
-_Released xx.xx.xxxx_
+_Released 10.02.2017_
 
 #### integration (1.1.3)
 * Fix incorrectly set service version references.
