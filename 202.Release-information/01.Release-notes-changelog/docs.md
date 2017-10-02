@@ -6,7 +6,7 @@ taxonomy:
 
 ## v1.2.1
 
-_Released xx.xx.xxxx_
+_Released 10.02.2017_
 
 #### deployments (1.2.1)
 * Prevent artifacts with invalid checksums from
