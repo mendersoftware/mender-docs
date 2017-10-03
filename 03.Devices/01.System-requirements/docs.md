@@ -4,6 +4,8 @@ taxonomy:
     category: docs
 ---
 
+!!! If you would like assistance supporting your device and OS, please refer to the [commercial board support offering](https://mender.io/product/board-support?target=_blank).
+
 ##Yocto Project
 Although it is possible to compile and install Mender independently, we have optimized the installation experience for those who build their Linux images using [Yocto Project](https://www.yoctoproject.org?target=_blank).
 
