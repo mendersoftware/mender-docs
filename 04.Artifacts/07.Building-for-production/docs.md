@@ -28,13 +28,13 @@ Certificates are used to ensure the communication between the client and the ser
 
 You can either generate new certificates by following the guide for [generating certificates](../../administration/certificates-and-keys#generating-new-keys-and-certificates), or obtain the certificates in a different way - for example from your existing Certificate Authority. In either case the certificates on the client and server must be the same.
 
-All certificates are hosted in a single file `server.crt` which the client reads. If you generated new certificates, this file is available at `keys-generated/certs/server.crt`.
-
-!!! If you obtained your certificates in a different way, e.g. from your Certificate Authority, you need to concatenate the certificates from the API Gateway and Storage Proxy into one file by running a command similar to `cat api-gateway/cert.crt storage-proxy/cert.crt > server.crt`.
-
-The `server.crt` file will be the certificate file to use on the client.
-
 ### Including the client certificates
+
+Including the certificates on the client is only necessary if the certificate is not signed by a well known Certificate Authority. If they are signed, this section can be skipped.
+
+All certificates are hosted in a single file `server.crt` which the client will read. If you generated new certificates, this file is available at `keys-generated/certs/server.crt`.
+
+!!! If you obtained your certificates in a different way, you need to concatenate the certificates from the API Gateway and Storage Proxy into one file by running a command similar to `cat api-gateway/cert.crt storage-proxy/cert.crt > server.crt`.
 
 The best way to include the certificate in the client build is to use a custom bitbake layer. For the following steps it is assumed that you have such a layer already. If not you can check out how to [create your own layer](http://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html?target=_blank#creating-your-own-layer) in the official Yocto Project documentation, and there is also an alternative method below that does not require a separate layer.
 
