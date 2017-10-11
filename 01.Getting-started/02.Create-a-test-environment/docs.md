@@ -40,7 +40,7 @@ version **1.6 or later**.
 
 #### Fast Internet connection
 
-While bringing up the environment, several hundred megabytes of docker
+While bringing up the environment, several gigabytes of docker
 images may be downloaded. We recommend using a fast Internet
 connection in order to avoid long wait times.
 
@@ -82,6 +82,8 @@ docker compose. Running this script will pull down the images and start them:
 ```bash
 ./up
 ```
+
+!!! If this is the first time you start the Mender server, several gigabytes of docker images may need to be downloaded. On a 100Mbit Internet connection this may take 5 minutes.
 
 As the Mender services start up, you will see a lot of log messages from them in your terminal.
 This includes output from the Mender virtual QEMU device, similar to the following:
