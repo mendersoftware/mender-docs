@@ -96,7 +96,7 @@ keys-generated/
         └── private.key
 ```
 
-!!! The file `certs/server.crt` is just a concatenation of all the certificates that the Mender client needs.
+!!! The file `certs/server.crt` is just a concatenation of all the certificates that the Mender client uses.
 
 
 ### Installing new keys and certificates
@@ -194,7 +194,9 @@ The Device Authentication key can be mounted with the following snippet:
 
 #### Mender Client
 
-All Mender clients that are to connect to the server need to have the file with
+The client does not need any special configuration regarding certificates as long as the certificate is signed by a Certificate Authority.
+
+If the certificate is not signed, then clients that are to connect to the server need to have the file with
 the concatenated certificates (`keys-generated/certs/server.crt`) stored locally in order to verify
 the server's authenticity. Please see [the client section on building for production](../../artifacts/building-for-production)
 for a description on how to provision new device disk images with the new certificates.
