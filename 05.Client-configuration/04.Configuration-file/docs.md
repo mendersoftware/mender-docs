@@ -48,6 +48,6 @@ Here is an example of a `mender.conf` file:
 ```
 
 Note that many mandatory entries are missing, such as `RootfsPartA` and
-`RootfsPartB`. These are filled in by the Yocto buildsystem automatically, using
+`RootfsPartB`. These are filled in by the Yocto build system automatically, using
 the merge method described in the paragraph above. So you do not need to provide
 all values, those that are not provided will take on default values.
