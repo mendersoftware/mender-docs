@@ -97,6 +97,7 @@ autoconvert
 automigrate
 autoprefixer
 autorest
+autoupdate
 aws
 ba
 babel
@@ -195,6 +196,7 @@ ccdc
 CCmYA
 cd
 cdaab
+ce
 cert
 certs
 CET
@@ -434,6 +436,7 @@ Feross
 ffd
 FHANDLE
 Fi
+fido
 filepath
 FILESEXTRAPATHS
 findup
@@ -581,6 +584,7 @@ Javier
 jBXikb
 Jed
 Jeremie
+jethro
 JFFS
 Jone's
 jongleberry
@@ -624,6 +628,7 @@ kr
 Krhonos
 kriskowal
 Kristopher
+krogoth
 Kucherenko
 kvsoftware
 LaFreniere
@@ -685,6 +690,7 @@ Matsuo
 Matteo
 matthewh
 MAXSIZE
+Mbit
 MBR
 MByte
 md
@@ -756,6 +762,8 @@ murphydanger
 myboard
 mydevice
 myhostname
+mylayer
+mymenderserver
 mysecretpassword
 myusername
 nan
@@ -945,6 +953,7 @@ relinquishment
 RequestID
 RESTful
 restparam
+RetryPollIntervalSeconds
 rf
 rfer
 richardsonandsons
@@ -970,8 +979,8 @@ runmake
 rvagg
 rw
 rwxrwxr
-rX
 rx
+rX
 Ryer
 rznNY
 Saenz
@@ -1052,6 +1061,8 @@ SSN
 standalone
 stanford
 stat
+statescripttimeoutseconds
+StateScriptTimeoutSeconds
 stats
 stderr
 StdinOnce
@@ -1089,6 +1100,7 @@ Tarr
 tcp
 tegrarcm
 templatesettings
+TenantToken
 Terin
 tFor
 THISDIR
@@ -1133,7 +1145,7 @@ ubimg
 ubinize
 uboot
 UBootBootCountLimit
-Ubuntu
+ubuntu
 ubuntulinux
 uCIRqL
 uglify
@@ -1156,6 +1168,7 @@ unmarshal
 Unprocessable
 unreads
 updatable
+UpdateLogPath
 UpdatePollIntervalSeconds
 uplink
 UQ
