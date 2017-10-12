@@ -14,7 +14,7 @@ It creates **build artifacts** in the format required by the target device.
 There will be different build artifacts for each type of device being managed.
 
 The build artifacts are passed to the Mender **Management Server**, which is the central point for deploying updates to a population of devices.
-Among other things, it monitors the current software version that is installed on each device and schedules the rollout of new releases.
+Among other things, it monitors the current software version that is installed on each device and schedules the roll out of new releases.
 
 Finally, each **Device** runs a copy of the Mender **update client**, which polls the Management Server from time to time to report its status and to discover if there is a software update waiting.
 If there is, the update client downloads and installs it.
@@ -25,9 +25,9 @@ Other operating systems will be added later on.
 
 ## Modes of operation
 
-It is possible to run the Mender update client in standalone or managed mode.
+It is possible to run the Mender update client in stand alone or managed mode.
 
-When run in standalone mode, the deployments are triggered (`mender -rootfs`), rebooted into (`reboot`) and made persistent (`mender -commit`) from the command line at the device or through some custom integration like a script. Any http(s) server or file path (e.g. USB stick or NFS share) can be used to serve the Artifacts; the URI is given to the `mender -rootfs` option. If you wish to run Mender in standalone mode, you can [disable Mender as a system service](../../artifacts/image-configuration#disabling-mender-as-a-system-service).
+When run in stand alone mode, the deployments are triggered (`mender -rootfs`), rebooted into (`reboot`) and made persistent (`mender -commit`) from the command line at the device or through some custom integration like a script. Any http(s) server or file path (e.g. USB stick or NFS share) can be used to serve the Artifacts; the URI is given to the `mender -rootfs` option. If you wish to run Mender in stand alone mode, you can [disable Mender as a system service](../../artifacts/image-configuration#disabling-mender-as-a-system-service).
 
 When running Mender in managed mode, the Mender client runs as a daemon and will regularly poll the server, automatically apply updates, reboot, report and commit the update. This is the best way to run Mender for most large-scale deployments, as the deployments are centrally managed across many devices, but it requires to set up and connect clients to the Mender server.
 
