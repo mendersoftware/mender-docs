@@ -498,6 +498,22 @@ you can supply a whitespace-separated list of hostnames as follows:
 ```
 
 
+#### Device Authentication Service
+
+Locate the `mender-device-auth` service.
+Add `enviroment` section if absent. In `enviroment` section add `DEVICEAUTH_MAX_DEVICES_LIMIT_DEFAULT` variable with integer value. `0` represents `no limit` and is the default.
+The updated entry should look like this:
+
+```yaml
+    ...
+    mender-device-auth:
+        ...
+        environment:
+            DEVICEAUTH_MAX_DEVICES_LIMIT_DEFAULT: 15
+    ...
+```
+
+
 #### Logging
 
 The setup uses Docker's default `json-file` logging driver, which exposes two important log
