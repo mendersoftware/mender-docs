@@ -91,6 +91,7 @@ autoconvert
 automigrate
 autoprefixer
 autorest
+autoupdate
 aws
 ba
 babel
@@ -195,6 +196,7 @@ cCI
 CCmYA
 cd
 cdaab
+ce
 cert
 certs
 CET
@@ -440,6 +442,7 @@ fefbdfa
 Feross
 ffd
 FHANDLE
+fido
 filepath
 FILESEXTRAPATHS
 findup
@@ -589,6 +592,7 @@ Javier
 jBXikb
 Jed
 Jeremie
+jethro
 JFFS
 jodid
 Jone's
@@ -634,6 +638,7 @@ kr
 Krhonos
 kriskowal
 Kristopher
+krogoth
 Kucherenko
 kvsoftware
 LaFreniere
@@ -697,6 +702,7 @@ Matsuo
 Matteo
 matthewh
 MAXSIZE
+Mbit
 MBR
 MByte
 McMahon
@@ -987,8 +993,8 @@ runmake
 rvagg
 rw
 rwxrwxr
-rX
 rx
+rX
 Ryer
 rznNY
 Saenz
@@ -1149,7 +1155,7 @@ ubimg
 ubinize
 uboot
 UBootBootCountLimit
-Ubuntu
+ubuntu
 ubuntulinux
 uCIRqL
 uglify
