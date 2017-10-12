@@ -5,4 +5,4 @@
 # File checksum, crypto hases and Bitbake variables are difficult to account
 # for so this dictionary is rather large and will need to be added to over time.
 
-ispell $(find . -name '*.md')
+ispell -p ./.ispell_english $(find . -name '*.md')
