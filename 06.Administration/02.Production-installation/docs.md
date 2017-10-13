@@ -501,7 +501,7 @@ you can supply a whitespace-separated list of hostnames as follows:
 #### Device Authentication Service
 
 Locate the `mender-device-auth` service.
-Add `enviroment` section if absent. In `enviroment` section add `DEVICEAUTH_MAX_DEVICES_LIMIT_DEFAULT` variable with integer value. `0` represents `no limit` and is the default.
+Add the `environment` section if it is absent. In the `environment` section add the `DEVICEAUTH_MAX_DEVICES_LIMIT_DEFAULT` variable with an integer value. `0` represents `no limit` and is the default.
 The updated entry should look like this:
 
 ```yaml
