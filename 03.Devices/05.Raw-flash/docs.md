@@ -281,6 +281,7 @@ addition of a call to `mender_setup` script (using `vexpress-a9` as an example):
 	"run mender_setup; "                                      \
 	"run set_ubiargs; "                                       \
 	"ubi part ${mender_mtd_ubi_dev_name} && "                 \
+	"ubifsmount ${mender_uboot_root_name} && "                \
 	"ubifsload ${kernel_addr_r} /boot/zImage && "             \
     ...
 ```
