@@ -106,6 +106,12 @@ If you wish to test using the QEMU emulator, run the following:
 bitbake-layers add-layer ../meta-mender/meta-mender-qemu
 ```
 
+If you wish to test using the BeagleBone Black, run the following:
+
+```bash
+bitbake-layers add-layer ../meta-mender/meta-mender-beaglebone
+```
+
 At this point, all the layers required for Mender should be
 part of your Yocto Project build environment.
 
