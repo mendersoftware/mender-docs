@@ -29,26 +29,25 @@ In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3
 Leverage [Mender consulting services to support other versions of the Yocto Project](https://mender.io/product/board-support?target=_blank) for your board and environment.
 
 
-## Mender client and Artifact format
+## Mender client/server and Artifact format
 
 The [Mender Artifact format](../mender-artifacts) is managed by the [Mender Artifacts Library](https://github.com/mendersoftware/mender-artifact?target=_blank), which is included in the Mender client and server (for reading Artifacts) as well as in a stand alone utility `mender-artifacts` (for [writing Artifacts](../../artifacts/modifying-a-mender-artifact)).
 
 |                     | Artifact v1 | Artifact v2 |
 |---------------------|-------------|-------------|
-| Mender client 1.0.x / mender-artifact 1.0.x | yes         | no          |
-| Mender client 1.1.x / mender-artifact 2.0.x | yes         | yes         |
-| Mender client 1.2.x / mender-artifact 2.1.x | yes         | yes         |
+| Mender 1.0.x / mender-artifact 1.0.x | yes         | no          |
+| Mender 1.1.x / mender-artifact 2.0.x | yes         | yes         |
+| Mender 1.2.x / mender-artifact 2.1.x | yes         | yes         |
 
 !! Older Mender clients do not support newer versions of the Artifact format; they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../artifacts/modifying-a-mender-artifact#write-a-new-artifact) for an introduction how to do this.
 
 
-## Mender server and client
+## Mender server and client API
 
-The compatibility between the Mender server and client is managed by the [Device API versions](../../apis/device-apis) exposed by the server and used by the client. If the Mender server supports the API version of the Mender client, they are compatible.
+The compatibility between the Mender server and client is managed by the [Device API versions](../../apis/device-apis) exposed by the server and used by the client. If the Mender server supports the API version of the Mender client, they are compatible.  However, please ensure that the client and server support the [Artifact format](#mender-client-and-artifact-format) version you are using.
 
-|                     | Mender server 1.0.x (API v1) | Mender server 1.1.x (API v1) | Mender server 1.2.x (API v1) |
-|---------------------|-------------|-------------|
-| Mender client 1.0.x (API v1) | yes         | yes         | yes         |
-| Mender client 1.1.x (API v1) | yes         | yes         | yes         |
-| Mender client 1.2.x (API v1) | yes         | yes         | yes         |
-
+|        | Mender server versions | Mender client versions |
+|--------|------------------------|------------------------|
+| API v1 | 1.0.x                  | 1.0.x                  |
+|        | 1.1.x                  | 1.1.x                  |
+|        | 1.2.x                  | 1.2.x                  |
