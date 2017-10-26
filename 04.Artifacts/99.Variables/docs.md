@@ -132,7 +132,7 @@ section on features](../image-configuration/features) for more information.
 
 A rough estimate of space lost due to partition alignment, expressed in MB. The
 `.sdimg` build process will calculate that automatically using a simple
-heuristic: `4 * MENDER_PARTITION_ALIGNMENT_MB` (accounts for boot partition, two
+heuristic: `4 * 1024 * MENDER_PARTITION_ALIGNMENT_KB` (accounts for boot partition, two
 rootfs partitions and a data partition).
 
 
