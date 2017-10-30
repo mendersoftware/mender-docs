@@ -4,134 +4,86 @@ taxonomy:
     category: docs
 ---
 
-In this tutorial we will demonstrate *standalone* deployments with the Mender client,
+This document will show how *standalone* deployments work with the Mender client,
 where no Mender server is used and the deployments are triggered at the
-device terminal either manually or by custom scripts. This can be useful in order
+device, either manually in the terminal or by custom scripts. This can be useful in order
 to deploy updates to devices which do not have network connectivity or
 are updated through external storage like a USB stick.
 
 For an explanation of the difference between *managed* and *standalone* deployments, please see
-[Modes of operation](../../architecture/overview#modes-of-operation).
+[Modes of operation](../overview#modes-of-operation).
 
 
-## Prerequisites
+## Setting Mender up for standalone mode
 
-The tutorial will in general assume that you use a physical device connected
-to your workstation. However, it can also be carried out with a virtual
-QEMU device so you do not have to configure any hardware. If you follow
-it using a QEMU device, please make sure QEMU for the ARM architecture
-works, it is typically installed with the `qemu-system-arm` package.
+The Mender client will by default run in *managed* mode, i.e. connected to a Mender server.
+In managed mode, mender runs as a daemon on the device.
+
+If you would like to run Mender in *standalone* mode, the only difference is that you
+must make sure that the Mender client does *not run as a daemon*. In most cases this
+will entail disabling or removing any `systemd` unit that starts the Mender client.
 
 
-### Disk and rootfs images
+## Building standalone images
 
-You will need two images of different types.
+When [building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image),
+you can ensure Mender runs in standalone mode by following the
+[image configuration steps to make sure Mender does not run as a system service](../../artifacts/image-configuration#disabling-mender-as-a-system-service)
+before building.
 
-The first is an image file to flash to the entire disk of the
-device. `meta-mender` creates these files with a `.sdimg`
+From the Yocto Project build output configured as above you will get two
+image types that work in standalone mode.
+
+The first is a disk image that is used to flash to the entire disk of the
+device, i.e. do the initial device storage provisioning.
+`meta-mender` creates these files with a `.sdimg`
 suffix, so they are easy to recognize. This file contains
 all the partitions of the given storage device, as
 described in [Partition layout](../../devices/partition-layout).
-
-In addition, you need an Artifact file to update to, recognized
-by its `.mender` suffix.
-See [Mender Artifacts](../../architecture/mender-artifacts)
-for a more detailed overview.
-
-You can build the required images by following the steps
-described in [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
-
-!!! If you are testing Mender on the reference devices BeagleBone Black or QEMU, you can save the build time by **[downloading the prebuilt demo images][autoupdate_mender-standalone-x.x.x.tar.gz]**. The `.sdimg` disk images, and `.mender` Artifacts are found in the `vexpress-qemu` and `beaglebone` directories.
-
-[autoupdate_mender-standalone-x.x.x.tar.gz]: https://doyabzhx7xw8o.cloudfront.net/1.1.2/mender-standalone-1.1.2.tar.gz
-
-
-### Network connectivity
-
-There must be network connectivity between your workstation and the device.
-For example, you could connect your workstation and the device using a cross-over
-Ethernet cable and use static IP addresses at both ends.
-
-!!! If you are testing with QEMU, the network is automatically set up by the provided script `mender-qemu.sh`.
-
-
-## Write the disk image to the SD card
-
 Please see [Provisioning a new device](../../artifacts/provisioning-a-new-device)
 for steps how to provision the device storage using the `*.sdimg` image.
 
-!!! If you are testing with QEMU, there is no need to do this step as you will run it from virtual storage.
+Secondly, you will get an Artifact file that is used for deployments with Mender,
+and it is recognized by its `.mender` suffix.
+See [Mender Artifacts](../../architecture/mender-artifacts)
+for a more detailed overview.
 
 
-## Boot the device
+## Deploy an Artifact to a device
 
-Take the SD card out of your card reader and insert it into your device.
-Then boot the device from the SD card, which might entail keeping a button pressed
-during boot until you see console output, or change of a jumper setting.
-
-! If you boot from internal flash storage (which is standard on BeagleBone Black unless the S2 button is pressed), this will interfere with Mender's rollback mechanism.
-
-!!! If you are testing with QEMU, you can boot the device by changing directory to the location of the `mender-qemu.sh` script and running `/bin/sh mender-qemu.sh`.
-
-This will take you to the login prompt, and you should see a message similar to the following:
-
-> "Poky (Yocto Project Reference Distro)..."
-
-!!! If you are using the Mender demo images, you can login with user *root*. No password is required. 
-
-
-## Serve an Artifact to the device over http
-
-To deploy a new Artifact to the device, you need to start a http server on your workstation to serve the image. Open a new terminal **on your workstation** and change into the directory with your Artifact (e.g. `*.mender`). Start a simple Python webserver in that directory, like so:
-
-```bash
-python -m SimpleHTTPServer
-```
-
-!!! SimpleHTTPServer starts on port 8000, but the IP address your device should use to reach it depends on the network setup between your device and workstation. You can find the IP address by using network tools like `ip` on your workstation. We will assume the device can reach your workstation's webserver on `http://<IP-OF-WORKSTATION>:8000/`.
-
-!!! If you are testing with QEMU, the virtual device should be able to access your workstation's directory at `http://10.0.2.2:8000/`, i.e. `<IP-OF-WORKSTATION>` is `10.0.2.2` in this case.
-
-
-## Deploy the new Artifact to the device
-
-In your **device terminal**, test the connection to the workstation with:
-
-```bash
-ping <IP-OF-WORKSTATION>
-```
-
-To deploy the new rootfs image to your device, run the following command in its terminal:
+After provisioning the device with the disk image (`.sdimg` file) and building a new Artifact (`.mender` file),
+you can trigger a deployment of the Artifact.
+To deploy the new Artifact to your device, run the following command in the device terminal:
 
 
 ```bash
-mender -log-level info -rootfs http://<IP-OF-WORKSTATION>:8000/<ARTIFACT>
+mender -rootfs <URI>
 ```
 
-Use the appropriate Artifact file in place of `<ARTIFACT>`, e.g. `artifact.mender`.
-You can find the right name by opening a browser at [http://localhost:8000](http://localhost:8000?target=_blank).
+`<URI>` can be any type of file-based storage or a https URL.
+For example, if you are updating from a USB stick, you could use `/mnt/usb1/release1.mender`.
+To use http, simply replace it with a URL like `https://fileserver.example.com/mender/release1.mender`.
 
-Mender will download the new Artifact, process its metadata information, extract the contents and write it to the inactive rootfs partition. It will configure the bootloader to boot into it on the next reboot. This should take about 2 minutes to complete.
+Mender will download the new Artifact, process its metadata information, extract the contents and write it to the inactive rootfs partition. It will configure the bootloader to boot into it on the next reboot. This will likely take several minutes to complete, depending on the performance of your device and the size of the Artifact.
+Note that Mender does not use any temporary space, it [streams the Artifact](../mender-artifacts#streaming-and-compression).
 
-!!! The `mender -rootfs` option accepts http(s) URIs, as well as file paths. Thus you can also update from a file system file from local storage like a USB-stick or remotely-mounted storage like NFS by simply changing the path to the image accordingly.
-
-To run the updated rootfs image, simply reboot your device:
+To run the newly deplyed rootfs image, simply reboot your device:
 
 ```bash
 reboot
 ```
 
-Your device should boot into the updated rootfs.
+Your device should boot into the newly deployed rootfs.
 
-!!! If you are using the Mender demo images, you can verify the new rootfs image is running as you see a message similar to *This system has been updated by Mender build...* before the login prompt.
 
-**Congratulations!** You have just deployed your first rootfs image with Mender!
-If you are happy with the update, you can make it permanent by running the following in your device terminal:
+## Make the deployment permanent
+
+If you are happy with the deployment, you can make it permanent by running the following command in your device terminal:
 
 ```bash
 mender -commit
 ```
 
-By running this command, Mender will configure the bootloader to persistently boot from this updated rootfs partition. To deploy another update, simply follow these instructions again (from `mender ... -rootfs ...`).
+By running this command, Mender will configure the bootloader to persistently boot from this newly written deployment. To deploy another update, simply run `mender -rootfs <URI>` again, then reboot and commit.
 
 !!! If we reboot the device again *without* running `mender -commit`, it will boot into the previous rootfs partition that is known to be working (where we deployed the update from). This ensures a robust update process in cases where the newly deployed rootfs does not boot or otherwise has issues that we want to roll back from. Also note that it is possible to automate deployments by [running the Mender client as a daemon](../../architecture/overview#modes-of-operation).
