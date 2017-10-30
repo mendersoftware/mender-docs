@@ -9,12 +9,11 @@ The build output will most notably include:
 * a file that can be flashed to the device storage during initial provisioning, it has suffix `.sdimg`
 * an Artifact containing rootfs filesystem image file that Mender can deploy to your provisioned device, it has suffix `.mender`
 
-Mender has two [reference devices](../../getting-started/what-is-mender#mender-reference-devices): a virtual QEMU device for testing without the need for hardware, and the BeagleBone Black.
-Building for these devices is well tested with Mender. If you are building for your own device
+Building for the vexpress-qemu (virtual) device or the BeagleBone Black is supported in `meta-mender`. If you are building for your own device
 please see [Device integration](../../devices) for general requirements and adjustments you might need
 to enable your device to support atomic image-based deployments with rollback.
 
-!!! If you do not want to build your own images for testing purposes, the [Getting started](../../getting-started) tutorials provide links to several demo images, both for QEMU and BeagleBone Black.
+!!! If you do not want to build your own images for testing purposes, the [Getting started](../../getting-started) tutorials provide links to several demo images.
 
 ## What is *meta-mender*?
 
@@ -158,7 +157,7 @@ VIRTUAL-RUNTIME_initscripts = ""
 IMAGE_FSTYPES = "ext4"
 ```
 
-! The machine `<YOUR-MACHINE>` needs to be integrated with Mender before it will work correctly; most notably U-Boot needs the required features and integration. Please see [Device integration](../../devices) for more information. If you are building for a Mender [reference device](../../getting-started/what-is-mender#mender-reference-devices), you can use `vexpress-qemu` or `beaglebone`. 
+! The machine `<YOUR-MACHINE>` needs to be integrated with Mender before it will work correctly; most notably U-Boot needs the required features and integration. Please see [Device integration](../../devices) for more information. You can also use `vexpress-qemu` or `beaglebone`, as these devices are pre-integrated into `meta-mender`.
 
 !!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../variables#mender_storage_total_size_mb) for more information. Mender automatically selects the file system types it builds into the disk image, which is used for initial flash provisioning, based on the `IMAGE_FSTYPES` variable. See the [section on file system types](../../devices/partition-layout#file-system-types) for more information.
 

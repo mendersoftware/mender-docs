@@ -11,7 +11,7 @@ Mender server.
 ## Prerequisites
 
 The test environment should be set up and working successfully
-as described in [Create a test environment](../create-a-test-environment).
+as described in [Install a Mender demo server](../create-a-test-environment).
 
 We also strongly recommend that you complete the tutorial
 [Deploy to virtual devices](../deploy-to-virtual-devices) so
@@ -165,7 +165,7 @@ write the disk image to all their SD cards.
 
 ## Boot the BeagleBone Black(s)
 
-! Make sure that the Mender server is running as described in [Create a test environment](../create-a-test-environment) and that the device can reach it on the IP address you configured above (`$IP_OF_MENDER_SERVER_FROM_DEVICE`). You might need to set a static IP address where the Mender server runs and disable any firewalls.
+! Make sure that the Mender server is running as described in [Install a Mender demo server](../create-a-test-environment) and that the device can reach it on the IP address you configured above (`$IP_OF_MENDER_SERVER_FROM_DEVICE`). You might need to set a static IP address where the Mender server runs and disable any firewalls.
 
 First, insert the SD card you just provisioned into the BeagleBone black.
 
