@@ -16,5 +16,4 @@ while providing default setup and configuration that should work with most envir
 the client in managed mode, i.e. connected to a Mender server, there are a number of settings and extension points that can be utilized.
 
 This section of the documentation assumes that you have the Mender client successfully running on your device. You can achieve this
-by building for the Mender [reference devices](../../getting-started/what-is-mender#mender-reference-devices) or
-[integrate Mender with your device](../../devices).
+by using a pre-integrated device like the BeagleBone Black or [integrate Mender with your device](../../devices).
