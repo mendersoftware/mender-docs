@@ -18,13 +18,13 @@ a complete description of this format.
 ## Prerequisites
 
 The test environment should be set up and working successfully
-as described in [Create a test environment](../create-a-test-environment).
+as described in [Install a Mender demo server](../create-a-test-environment).
 
 
 ## Authorize the device
 
 Open the Mender UI in the same browser as you accepted the certificate
-in as part of [Create a test environment](../create-a-test-environment).
+in as part of [Install a Mender demo server](../create-a-test-environment).
 It is available at [https://localhost/](https://localhost/?target=_blank).
 
 After a minute or two, there should be a virtual device that is waiting authorization.
@@ -52,25 +52,14 @@ clicking on a device. It should look similar to the following:
 
 !!! Which information is collected about devices is fully configurable; see the documentation on [Identity](../../client-configuration/identity) and [Inventory](../../client-configuration/inventory) for more information.
 
-[start_autoupdate_mender-image-x.x.x]: #
+After deploying the update below, you can verify that the `artifact_name` of the virtual device has changed.
 
-You can also see that the `artifact_name` is `mender-image-master`.
-
-[end_autoupdate_mender-image-x.x.x]: #
-
-After deploying the update below, you can verify that this `artifact_name` has changed.
-
-!!! The device console can be seen by running `sudo docker logs $(sudo docker ps | grep mender-client | cut -f1 -d' ')`.
+!!! The console of the virtual device can be seen by running `sudo docker logs $(sudo docker ps | grep mender-client | cut -f1 -d' ')`.
 
 
 ## Upload a new Mender Artifact to the server
 
-Before we can deploy a new Artifact to devices, it needs
-to be uploaded to the server. Any Artifact that
-can be used, and steps to build one are provided at
-[Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
-
-To make testing easier, [you can download a Mender Artifact][autoupdate_vexpress_release_2_x.x.x.mender] that can be used with the virtual device.
+First, [download the Mender Artifact][autoupdate_vexpress_release_2_x.x.x.mender] that can be used with the virtual device.
 
 [autoupdate_vexpress_release_2_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/vexpress-qemu/vexpress_release_2_master.mender
 
@@ -78,6 +67,8 @@ After the download finishes, go back to the Mender server UI,
 click the **Artifacts** tab and upload this Mender Artifact.
 
 !!! All devices report which *Device type* they are as part of their inventory information, for example `vexpress-qemu` or `beaglebone`. In addition, Mender Artifacts have *Device types compatible* as part of their metadata. During a deployment, Mender makes sure that a device will only get and install an Artifact it is compatible with. This increases the robustness of Mender as it avoids situations like deploying software that is not supported by the device hardware.
+
+!!! Steps to build Artifacts for other device types and with custom software are provided at [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
 
 
 ## Deploy the Mender Artifact to the device
@@ -120,27 +111,19 @@ This shows your virtual device runs the new rootfs!
 
 ## Deploy another update
 
-For robustness and avoiding unnecessary deployments, Mender will not deploy an
-Artifact that is already installed on a device.  Thus, if you create another
-deployment with the Artifact you already uploaded, Mender will see that it
-contains the same rootfs that is already installed and skip the deployment. It
-will immediately be marked as successful and moved to *Past deployments*.  For
-this reason, [we provide another
-Artifact][autoupdate_vexpress_release_1_x.x.x.mender] that you can use to
-deploy.
+To deploy another update, first [download the second Mender Artifact][autoupdate_vexpress_release_1_x.x.x.mender]
+for the virtual device.
 
 [autoupdate_vexpress_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/vexpress-qemu/vexpress_release_1_master.mender
 
-Go to **Artifacts** again and upload this artifact. You can set
-the *Description* input field to `My original build`.
-After the Artifact has been uploaded, you can deploy it to your device,
-as you did earlier.
+!!! For robustness and avoiding unnecessary deployments, Mender will not deploy an Artifact that is already installed on a device.  Thus, if you create another deployment with the Artifact you already uploaded, Mender will see that it contains the same rootfs that is already installed and skip the deployment. It will immediately be marked as successful and moved to *Past deployments*. This is why we provide a second Artifact for you to test with.
 
-[start_autoupdate_release-2_x.x.x]: #
+Go to **Artifacts** again and upload this artifact.
+After the Artifact has been uploaded, deploy it to your device,
+using the same steps as before.
 
-Following this, you can deploy the `release-2_1.2.1` Artifact again, and so forth.
+Following this, you can deploy the first Artifact again, and so forth.
 
-[end_autoupdate_release-2_x.x.x]: #
 
 ## Deploy to custom groups
 

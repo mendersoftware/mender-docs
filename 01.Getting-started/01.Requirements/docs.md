@@ -1,0 +1,70 @@
+---
+title: Requirements
+taxonomy:
+    category: docs
+---
+
+Mender is an open source remote software updater for embedded Linux devices.
+It enables management of software updates to connected devices remotely over any TCP/IP network.
+For a high-level introduction to Mender and its architecture, we recommend reading the [What is Mender page on Mender.io](https://mender.io/what-is-mender?target=_blank).
+
+This section of the documentation contains tutorials to help you deploy your first update with Mender.
+
+!!! Going from a fresh system to completing your first deployment with Mender, including server setup, should take **less than 1 hour**!
+
+
+## Demo server requirements
+
+For quickly testing the Mender server, we have created a demo version that
+does not take into account production-grade issues like security and scalability.
+When you are ready to install for production, please follow
+the [Production installation documentation](../../administration/production-installation).
+
+The Mender server is using the microservices design pattern, meaning that
+multiple small, isolated services make up the server. 
+In order to make it easy to test Mender as a whole, we have created a
+Docker Compose environment that brings all of these components up
+and connects them together on a single machine.
+It also includes a virtual device for you to test with,
+which is handy because it means that you can test Mender without
+having to configure any hardware.
+
+
+#### OS and web browser
+
+We assume you are using **Ubuntu 16.04** with **Google Chrome** as web browser
+and at least **5 GB disk** and **2 GB RAM** available.
+
+#### Docker Engine 1.11
+
+Follow the [documentation to install Docker Engine](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/?target=_blank),
+version **1.11 or later** (17.03 or later in [Docker's new versioning scheme](https://blog.docker.com/2017/03/docker-enterprise-edition/?target=_blank)).
+
+
+#### Docker Compose 1.6
+
+Follow the [documentation to install Docker Compose](https://docs.docker.com/compose/install/?target=_blank),
+version **1.6 or later**.
+
+#### Fast Internet connection
+
+While bringing up the environment, several gigabytes of docker
+images may be downloaded. We recommend using a fast Internet
+connection in order to avoid long wait times.
+
+!!! It is very likely possible to use the test environment on other platforms, versions, or with less resources. We recommend using this exact environment for testing Mender because it is known to work and you will thus avoid any issues specific to your test environment if you use this reference.
+
+
+## Device requirements
+The Mender updater client is designed to run on embedded Linux devices and connects to the server
+so that deployments can be managed across many devices.
+In order to support robust updates with rollback, Mender must be [integrated with production devices](../../devices).
+
+However, during the testing and validation stage, it is common to use development device to shorten time to experiment and prototype.
+For demo and testing purposes, we provide pre-built images for the [BeagleBone Black](https://beagleboard.org/black?target=_blank) with the latest version of Mender.
+This is a popular and open physical device, used in many professional environments.
+
+
+## Trying Mender
+
+After installing the above prerequisites, follow the steps in [Install a Mender demo server](../create-a-test-environment).
