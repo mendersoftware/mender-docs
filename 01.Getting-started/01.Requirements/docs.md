@@ -40,6 +40,9 @@ and at least **5 GB disk** and **2 GB RAM** available.
 Follow the [documentation to install Docker Engine](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/?target=_blank),
 version **1.11 or later** (17.03 or later in [Docker's new versioning scheme](https://blog.docker.com/2017/03/docker-enterprise-edition/?target=_blank)).
 
+##### Docker permissions
+
+Invoking the docker commands may fail when the local user has insufficient permissions to connect to the docker daemon. In Ubuntu 16.04, the user must be a member of the `docker` group to be able to access it. Please check the documentation for your host OS if you encounter connection issues with docker.
 
 #### Docker Compose 1.6
 
