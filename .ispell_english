@@ -444,6 +444,7 @@ ffd
 FHANDLE
 fido
 filepath
+fileserver
 FILESEXTRAPATHS
 findup
 Flqh
@@ -1187,7 +1188,7 @@ uri
 URIs
 url
 urls
-USB
+usb
 useradm
 userâ
 userid
