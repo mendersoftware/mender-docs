@@ -54,7 +54,7 @@ clicking on a device. It should look similar to the following:
 
 After deploying the update below, you can verify that the `artifact_name` of the virtual device has changed.
 
-!!! The console of the virtual device can be seen by running `sudo docker logs $(sudo docker ps | grep mender-client | cut -f1 -d' ')`.
+!!! The console of the virtual device can be seen by running `docker logs $(docker ps | grep mender-client | cut -f1 -d' ')`.
 
 
 ## Upload a new Mender Artifact to the server
