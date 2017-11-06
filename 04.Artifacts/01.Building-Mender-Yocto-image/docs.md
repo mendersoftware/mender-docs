@@ -122,9 +122,9 @@ part of your Yocto Project build environment.
 Add these lines to the start of your `conf/local.conf`:
 
 ```bash
-# The name of the disk image or Artifact that will be built.
+# The name of the disk image and Artifact that will be built.
 # This is what the device will report that it is running, and different updates must have different names
-# because Mender will skip installation of an artifact if it is already installed.
+# because Mender will skip installation of an Artifact if it is already installed.
 MENDER_ARTIFACT_NAME = "release-1"
 
 INHERIT += "mender-full"
@@ -148,6 +148,14 @@ MACHINE = "<YOUR-MACHINE>"
 # PREFERRED_VERSION_pn-mender = "1.2.%"
 # PREFERRED_VERSION_pn-mender-artifact = "2.1.%"
 # PREFERRED_VERSION_pn-mender-artifact-native = "2.1.%"
+
+# Build for Hosted Mender
+# To get your tenant token, log in to https://hosted.mender.io,
+# click your email at the top right and then "My organization".
+# Remember to remove the meta-mender-demo layer (if you have added it).
+#
+# MENDER_SERVER_URL = "https://hosted.mender.io"
+# MENDER_TENANT_TOKEN = "<YOUR-HOSTED-MENDER-TENANT-TOKEN>"
 
 DISTRO_FEATURES_append = " systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
