@@ -47,7 +47,7 @@ Mender Artifact format may be introduced as well, if the features require it.
 See the [compatibility documentation](../compatibility) for an overview of which versions of the Mender Artifact format is supported by Mender clients.
 
 
-## Streaming and compression
+## Streaming, resume and compression
 
 The tar format supports streaming, which Mender takes advantage of. As a Mender
 Artifact is downloaded from the Mender server or external storage, the Mender
@@ -55,6 +55,10 @@ client streams the root file system within it directly to the inactive partition
 without needing any temporary storage for unpacking it before it is written.
 This drastically reduces storage requirements for the update process,
 improves performance and reduces flash wear.
+
+In cases where Artifact downloads are interrupted, e.g. due to unreliable wireless
+network connectivity, Mender will resume the download from where it was
+interrupted, using [HTTP range requests](https://tools.ietf.org/html/rfc7233?target=_blank).
 
 To enable streaming and control based on metadata, like aborting the download
 if the Artifact is not compatible with the device, the Mender Artifact itself
