@@ -71,7 +71,7 @@ named `mender-server`:
 [start_autoupdate_git_clone_integration_b_x.x.x]: #
 
 ```bash
-git clone -b 1.2.1 https://github.com/mendersoftware/integration mender-server
+git clone -b 1.2.2 https://github.com/mendersoftware/integration mender-server
 ```
 
 [end_autoupdate_git_clone_integration_b_x.x.x]: #
