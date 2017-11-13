@@ -4,6 +4,25 @@ taxonomy:
     category: docs
 ---
 
+## v1.2.2
+
+_Released 11.13.2017_
+
+#### deployments (1.2.2)
+* deployments: descending sort by created time when listing deployments
+
+#### integration (1.2.2)
+* Upgrade deployments to 1.2.2.
+* Upgrade gui to 1.2.1.
+* Upgrade mender-api-gateway-docker to 1.2.1.
+* Fix Missing restart policy for some containers in
+  docker-compose setup.
+  ([MEN-1556](https://tracker.mender.io/browse/MEN-1556))
+
+#### mender-api-gateway-docker (1.2.1)
+* nginx: separate HTTP and HTTPS server scopes, redirect all HTTP requests to HTTPS
+
+
 ## v1.2.1
 
 _Released 10.02.2017_
