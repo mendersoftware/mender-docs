@@ -6,7 +6,7 @@ taxonomy:
 
 ## v1.2.2
 
-_Released 11.13.2017_
+_Released 11.14.2017_
 
 #### deployments (1.2.2)
 * deployments: descending sort by created time when listing deployments
