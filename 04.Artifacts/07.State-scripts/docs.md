@@ -49,6 +49,10 @@ For example, `Download_Enter_05_wifi-driver` and `Download_Enter_10_ask-user` ar
 **There are no arguments passed to the scripts.**
 **If a script returns 0 Mender proceeds, but if it returns 1 the update is aborted and rolled back. All other return codes are reserved for future use by Mender and should not be used.**
 
+## Retry-later functionality
+
+State scripts are allowed to return a specific error code, in order to rerun at a later time. Thus if a script returns the error code '21', the client will sleep for a default time of one minute, or for a user-specified interval 'StateScriptRetryTimeoutSeconds', which can be set in the mender config. Also note that scripts are not allowed to retry infinitely. Either a standard max window of thirty minutes is allocated to each script, or this can be configured manually by using the mender config variable 'StateScriptRetryIntervalSeconds'.
+
 
 ## Example use cases
 
