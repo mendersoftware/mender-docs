@@ -61,7 +61,7 @@ After deploying the update below, you can verify that the `artifact_name` of the
 
 First, [download the Mender Artifact][autoupdate_vexpress_release_2_x.x.x.mender] that can be used with the virtual device.
 
-[autoupdate_vexpress_release_2_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/vexpress-qemu/vexpress_release_2_master.mender
+[autoupdate_vexpress_release_2_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/1.3.0b1/vexpress-qemu/vexpress_release_2_1.3.0b1.mender
 
 After the download finishes, go back to the Mender server UI,
 click the **Artifacts** tab and upload this Mender Artifact.
@@ -102,7 +102,7 @@ Once the deployment completes, you should see it in *Past deployments*.
 If the deployment fails you can view the deployment log,
 which is obtained from the device, to diagnose the issue.
 You can also see the state of deployments on the Dashboard.
-In **Devices** you can see that `artifact_name` has now changed to `release-2_master`.
+In **Devices** you can see that `artifact_name` has now changed to `release-2_1.3.0b1`.
 
 [end_autoupdate_release-2_x.x.x]: #
 
@@ -114,7 +114,7 @@ This shows your virtual device runs the new rootfs!
 To deploy another update, first [download the second Mender Artifact][autoupdate_vexpress_release_1_x.x.x.mender]
 for the virtual device.
 
-[autoupdate_vexpress_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/vexpress-qemu/vexpress_release_1_master.mender
+[autoupdate_vexpress_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/1.3.0b1/vexpress-qemu/vexpress_release_1_1.3.0b1.mender
 
 !!! For robustness and avoiding unnecessary deployments, Mender will not deploy an Artifact that is already installed on a device.  Thus, if you create another deployment with the Artifact you already uploaded, Mender will see that it contains the same rootfs that is already installed and skip the deployment. It will immediately be marked as successful and moved to *Past deployments*. This is why we provide a second Artifact for you to test with.
 

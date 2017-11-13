@@ -60,14 +60,14 @@ with Mender support for the BeagleBone Black. This image contains *all the
 partitions* of the storage device, as described in [Partition
 layout](../../devices/partition-layout).
 
-[autoupdate_mender-beaglebone_x.x.x.sdimg.gz]: https://d1b0l86ne08fsf.cloudfront.net/master/beaglebone/mender-beaglebone_master.sdimg.gz
+[autoupdate_mender-beaglebone_x.x.x.sdimg.gz]: https://d1b0l86ne08fsf.cloudfront.net/1.3.0b1/beaglebone/mender-beaglebone_1.3.0b1.sdimg.gz
 
 You can decompress it like the following:
 
 [start_autoupdate_mender-beaglebone_x.x.x.sdimg.gz]: #
 
 ```bash
-gunzip mender-beaglebone_master.sdimg.gz
+gunzip mender-beaglebone_1.3.0b1.sdimg.gz
 ```
 
 [end_autoupdate_mender-beaglebone_x.x.x.sdimg.gz]: #
@@ -85,7 +85,7 @@ server when it starts.
 
 Please see [Modifying a disk image](../../artifacts/modifying-a-disk-image) for a description
 on how to mount partitions for editing within the disk image
-`mender-beaglebone_master.sdimg`.
+`mender-beaglebone_1.3.0b1.sdimg`.
 
 [end_autoupdate_mender-beaglebone_x.x.x.sdimg]: #
 
@@ -154,7 +154,7 @@ sudo umount /mnt/rootfs1 && sudo umount /mnt/rootfs2
 [start_autoupdate_mender-beaglebone_x.x.x.sdimg]: #
 
 Please see [Write the disk image to the SD card](../../artifacts/provisioning-a-new-device#write-the-disk-image-to-the-sd-card)
-for steps how to provision the device disk using the `mender-beaglebone_master.sdimg`
+for steps how to provision the device disk using the `mender-beaglebone_1.3.0b1.sdimg`
 image you downloaded and modified above.
 
 [end_autoupdate_mender-beaglebone_x.x.x.sdimg]: #
@@ -209,14 +209,14 @@ a complete description of this format.
 Download [the test Artifact][autoupdate_beaglebone_release_1_x.x.x.mender] for
 the BeagleBone Black.
 
-[autoupdate_beaglebone_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/beaglebone/beaglebone_release_1_master.mender
+[autoupdate_beaglebone_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/1.3.0b1/beaglebone/beaglebone_release_1_1.3.0b1.mender
 
 The steps needed to edit the root file system contained in this Artifact are:
 
 [start_autoupdate_beaglebone_release_1_x.x.x.mender]: #
 
 ```bash
-mkdir beaglebone_release_1 && tar -C beaglebone_release_1 -xvf beaglebone_release_1_master.mender
+mkdir beaglebone_release_1 && tar -C beaglebone_release_1 -xvf beaglebone_release_1_1.3.0b1.mender
 ```
 
 [end_autoupdate_beaglebone_release_1_x.x.x.mender]: #
@@ -290,7 +290,7 @@ To create a Mender Artifact from a root file system, it is easiest to download
 [the prebuilt mender-artifact tool][autoupdate_x.x.x_mender-artifact] available
 for Linux.
 
-[autoupdate_x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/master/mender-artifact
+[autoupdate_x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.1.1/mender-artifact
 
 After the tool is downloaded and you added execute permission (e.g. with `chmod +x mender-artifact`),
 simply run it as follows:
@@ -298,12 +298,12 @@ simply run it as follows:
 [start_autoupdate_release_1_x.x.x]: #
 
 ```bash
-mender-artifact write rootfs-image -u core-image-base-beaglebone.ext4 -t beaglebone -n release-1_master -o beaglebone_release_1_configured.mender
+mender-artifact write rootfs-image -u core-image-base-beaglebone.ext4 -t beaglebone -n release-1_1.3.0b1 -o beaglebone_release_1_configured.mender
 ```
 
 where `-u core-image-base-beaglebone.ext4` is the rootfs image we modified above,
 `-t beaglebone` is the device type compatible with the given Artifact,
-`-n release-1_master` is the Artifact name (do not change this as it needs to be in
+`-n release-1_1.3.0b1 is the Artifact name (do not change this as it needs to be in
 sync with `/etc/mender/artifact_info` *inside* the rootfs), and
 `-o beaglebone_release_1_configured.mender` is
 the filename of the created Artifact.
