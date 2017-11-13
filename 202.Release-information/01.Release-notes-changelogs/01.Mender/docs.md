@@ -1,8 +1,171 @@
 ---
-title: Release notes & changelog
+title: Release notes & changelogs for Mender
 taxonomy:
     category: docs
 ---
+
+## v1.3.0b1
+
+_Released xx.xx.xxxx_
+
+#### deployments (1.3.0b1)
+* docs: dump expire parameter from artifact download endpoint
+* deployments/controller: handle substate field in device status updates
+* images: make artifact download links valid for 15 minutes only
+* deployments: descending sort by created time when listing deployments
+* deployments/controller: status report substate field length limited to 200 characters
+* Additional MongoDB configuration options: mongo_ssl, mongo_ssl_skipverify, mongo_username, mongo_password
+* docs/management: return device state and substate in device deployment info
+* limits: add GET /limits/storage management endpoint
+* deployments: make artifact download links valid for 1 hour only
+* Prevent artifacts with invalid checksums from
+  being uploaded to the server.
+  ([MEN-1412](https://tracker.mender.io/browse/MEN-1412))
+* docs/internal: spec for GET /tenants/:id/limits/storage
+* Additional MongoDB configuration options: mongo_ssl, mongo…
+* docs: document that expire on /artifacts/{id}/download is silently ignored
+* POST /api/v1/internal/tenants ep
+* docs/devices: add optional substate field in status ported
+
+#### deviceadm (1.2.0b1)
+* middleware: accomodate changes in request{id,log} middleware and enable request logger update
+* Additional MongoDB configuration options: mongo_ssl, mongo_ssl_skipverify, mongo_username, mongo_password
+* Additional MongoDB configuration options: mongo_ssl, mongo…
+* store/mongo: move single tenant migration to separate func
+* main: add 'migrate [--tenant=<tenant ID>]' command
+
+#### deviceauth (1.3.0b1)
+* GET /devices/count?status endpoint
+* devauth: only one accepted authset
+  When accepting an auth set, reject all other accepted auth sets of a particular
+  device. This way we make sure that only one auth set is accepted at a time. In
+  case when key rotation is used, old key cannot be used to obtain the token.
+  ([MEN-1417](https://tracker.mender.io/browse/MEN-1417))
+* store/mongo: properly setup context for migrations in multi tenant
+* api/http: support for internal endpoint for setting per-tenant limits
+  Add support for PUT operation on a new internal endpoint
+  `/api/internal/v1/devauth/tenant/:id/limits/:name`. The endpoint is used for
+  setting per tenant limits.
+* store/mongo: make UpdateAuthSet() operate on multiple auth sets
+* store, store/mongo: add collection for keeping 'Limits'
+* devauth: ignore store.ErrAuthSetNotFound when rejecting auth sets during accept
+* devauth: set Authorization field in  device decommissioning reuqests
+* devauth: support for saving per-tenant limits
+* devauth: log a message when the token is does not have a mender.device claim
+* docs: include Authorization header in spec of authset status PUT endpoint
+* Additional MongoDB configuration options: mongo_ssl, mongo_ssl_skipverify, mongo_username, mongo_password
+* migrate --tenant=... cli
+* store/mongo: raise store.ErrAuthSetNotFound when no auth sets were updated
+* model: add Limit wrapper, add predefined limit name - max_device_count
+* jwt: add mender.device claim, type bool, defaults to false
+* docs/internal: remove 404 status on PUT /tenant/:id/limits/max-device-count
+* middleware: repacking of logger and request ID to context is no longer needed
+* docs: add spec for GET /limits/max_devices
+* devauth: set and verify mender.device claim
+  Device tokens given out by deviceauth service will now have 'mender.device'
+  claim set to true. Tokens without the claim will fail verification and will be
+  rejected. Device is expected to request a new token.
+* client/orchestrator: pass 'authorization' parameter in device decommission request
+
+#### gui (1.3.0b1)
+* Fix logout issues, only timeout user when inactive
+* Fix for showing incorrect device IDs
+  ([MEN-1536](https://tracker.mender.io/browse/MEN-1536))
+* Added onboarding helptips that toggle on/off per user
+* Added API connection error messaging and timeouts to Deployments tab
+* Added API timeouts and disconnection error retry messages to devices and artifacts tabs
+* disable decommissioning button while request is in progress
+* API connection error and retry for deployments on dashboard
+
+#### integration (1.3.0b1)
+* compose, template: set mender-inventory command to `server --automigrate`
+  Ensure that inventory service starts in daemon mode and automatically applies DB
+  migrations.
+* Fix Missing restart policy for some containers in
+  docker-compose setup.
+  ([MEN-1556](https://tracker.mender.io/browse/MEN-1556))
+* Update conductor to 1.7.7
+* allow access to https://localhost in test environment
+* Update conductor to 1.7.7
+* Upgrade deployments to 1.3.0b1.
+* Upgrade deviceadm to 1.2.0b1.
+* Upgrade deviceauth to 1.3.0b1.
+* Upgrade gui to 1.3.0b1.
+* Upgrade inventory to 1.2.0b1.
+* Upgrade mender to 1.3.0b1.
+* Upgrade mender-api-gateway-docker to 1.3.0b1.
+* Upgrade useradm to 1.3.0b1.
+* conductor: include Authorization header in decommissioning workflow
+
+#### inventory (1.2.0b1)
+* main: add server [--automigrate] command, drop previous command line flags
+  Command line invocation and parameters are changed. See --help output for
+  details.
+  `server` subcommand will start the services in 'daemon' mode (sans the forking
+  part). Optional `--automigrate` argument enables automatic DB migration,
+  otherwise then a migration is needed the service will exit logging an error.
+* Additional MongoDB configuration options: mongo_ssl, mongo_ssl_skipverify, mongo_username, mongo_password
+* main: add 'migrate [--tenant=<tenant ID>]' command
+* middleware: accomodate changes in request{id,log} middleware and enable request logger update
+* dockerfile: update entrypoint to match currently supported command line arguments
+* Additional MongoDB configuration options: mongo_ssl, mongo…
+
+#### mender (1.3.0b1)
+* Mender now logs whatever a state-script outputs to stderr
+  ([MEN-1349](https://tracker.mender.io/browse/MEN-1349))
+* mender-device-identity: only collect MAC from ARPHRD_ETHER types
+* Fix 'unexpected EOF' error when downloading large updates.
+  ([MEN-1511](https://tracker.mender.io/browse/MEN-1511))
+* Implement ability for client to resume a download from
+  where it left off if the connection is broken.
+  ([MEN-1511](https://tracker.mender.io/browse/MEN-1511))
+* Improve error messages for state scripts errors.
+  Rely on the full error description instead of just the error code.
+* Fix compile for ARM64.
+* set return code = 2, when there is nothing to commit
+* Added retry-later functionality on top of the state-script functionality
+* Correctly fail state script execution if stderr can not be opened.
+  It would not be impossible to continue execution in this case, but it
+  is bad to lose log output, and not being able to open stderr is a
+  pretty uncommon case that might indicate a more serious issue like
+  resource starvation.
+
+#### mender-api-gateway-docker (1.3.0b1)
+* Introuduce static content caching for /ui routing.
+* Make browser side UI caching configurable though CACHE_UI env. Disabled by default.
+* Include request time in gateway access logs.
+* nginx: separate HTTP and HTTPS server scopes, redirect all HTTP requests to HTTPS
+* nginx: align gateway URLs with useradm API
+* Introuduce static content caching for /ui routing.
+* deployments service routing
+* gateway dns cache reloading for improved recovery from service restarts
+  ([MEN-1227](https://tracker.mender.io/browse/MEN-1227))
+* Include request time in gateway access logs.
+
+#### useradm (1.3.0b1)
+* docs: add undocumented X-Original-URI, X-Original-Method on internal /auth/verify
+* store/mongo: TenantDataStore uses a store with automigrations enabled
+* commands: add 'migrate [--tenant=<id>]' command
+* middleware: accomodate changes in request{id,log} middleware and enable request logger update
+* jwt: add mender.user claim, bool
+  Add 'mender.user' claim to tokens given out bu useradm. The claim indicates that
+  the token is assigned to a user and a 'sub' claim corresponds to user ID.
+* store/mongo: With*() helpers return a new instance of store with correct property modified
+* docs: spec for an endpoint for setting up tenants
+* commands: propagate new user to tenantadm
+  ([MEN-1311](https://tracker.mender.io/browse/MEN-1311))
+* store/mongo: move migration of single tenant to separate func
+* api/http: update internal URLs, align them with API URL schema
+  Internal URLs are now available with /api/internal/v1/useradm/ prefix
+* store: introduce tenant keeper
+* docs: align internal URLs with API URL scheme
+* useradm: add mender.user claim to given out tokens
+  Append 'mender.user' claim to all given out tokens. All tokens that do not have
+  this claim will fail verification and be rejected forcing the user to log in again.
+* set correct header when sending token
+* useradm: add CreateTenant operation
+* api/http: add endpoint for creating tenants
+
 
 ## v1.2.0
 
