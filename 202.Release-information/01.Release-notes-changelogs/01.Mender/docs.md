@@ -1,5 +1,5 @@
 ---
-title: Release notes & changelogs for Mender
+title: Mender
 taxonomy:
     category: docs
 ---

@@ -1,5 +1,5 @@
 ---
-title: Release notes & changelogs for Yocto Project meta-mender/pyro
+title: Yocto Project meta-mender/pyro
 taxonomy:
     category: docs
 ---
