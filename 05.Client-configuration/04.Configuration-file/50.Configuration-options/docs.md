@@ -45,6 +45,17 @@ certificate is missing, or the one presented by the server doesn't match the one
 specified in this setting, the server certificate will be validated using
 standard certificate trust chains.
 
+#### StateScriptRetryIntervalSeconds
+
+The interval for which the script is allowed to keep retrying. After this
+interval has expired, another retry attempt will be treated as a failure and if
+possible, the update will be rolled back.
+
+#### StateScriptRetryTimeoutSeconds
+
+The timeout before a state script that previously returned the special retry
+return code (21), will be run again.
+
 #### StateScriptTimeoutSeconds
 
 The number of seconds to wait for any state script to terminate. If a script
