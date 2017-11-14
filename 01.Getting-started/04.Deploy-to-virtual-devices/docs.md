@@ -18,7 +18,9 @@ a complete description of this format.
 ## Prerequisites
 
 The test environment should be set up and working successfully
-as described in [Install a Mender demo server](../create-a-test-environment).
+as described in [Install a Mender demo server](../create-a-test-environment) and
+you should have downloaded the virtual Artifacts listed in
+[Download demo images](../download-test-images).
 
 
 ## Authorize the device
@@ -57,18 +59,16 @@ After deploying the update below, you can verify that the `artifact_name` of the
 !!! The console of the virtual device can be seen by running `docker logs $(docker ps | grep mender-client | cut -f1 -d' ')`.
 
 
-## Upload a new Mender Artifact to the server
+## Upload the Mender Artifacts to the server
 
-First, [download the Mender Artifact][autoupdate_vexpress_release_2_x.x.x.mender] that can be used with the virtual device.
+Click the **Artifacts** tab in the Mender server UI.
 
-[autoupdate_vexpress_release_2_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/vexpress-qemu/vexpress_release_2_master.mender
+Then locate the two Virtual device Artifacts you downloaded in [Download demo images](../download-test-images).
+Upload them both, one at the time, with drag and drop or by clicking browse.
 
-After the download finishes, go back to the Mender server UI,
-click the **Artifacts** tab and upload this Mender Artifact.
+After the upload has finished, you should see both Artifacts, they have Device types compatible `vexpress-qemu` and two different names.
 
 !!! All devices report which *Device type* they are as part of their inventory information, for example `vexpress-qemu` or `beaglebone`. In addition, Mender Artifacts have *Device types compatible* as part of their metadata. During a deployment, Mender makes sure that a device will only get and install an Artifact it is compatible with. This increases the robustness of Mender as it avoids situations like deploying software that is not supported by the device hardware.
-
-!!! Steps to build Artifacts for other device types and with custom software are provided at [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
 
 
 ## Deploy the Mender Artifact to the device
@@ -78,9 +78,8 @@ uploaded to the server, all that remains is to go to the
 **Deployments** tab and click **Create a deployment**.
 
 You will be asked which Artifact to deploy and which
-group of devices to deploy it to. Since we have just
-one Artifact and no custom groups right now, we simply select
-the Artifact we just uploaded and **All devices**, then
+group of devices to deploy it to. Select
+the `release-1` Artifact and **All devices**, then
 **Create deployment**.
 
 
@@ -111,16 +110,12 @@ This shows your virtual device runs the new rootfs!
 
 ## Deploy another update
 
-To deploy another update, first [download the second Mender Artifact][autoupdate_vexpress_release_1_x.x.x.mender]
-for the virtual device.
+!!! For robustness and avoiding unnecessary deployments, Mender will not deploy an Artifact that is already installed on a device.  Thus, if you create another deployment with the Artifact you already deployed, Mender will see that it contains the same rootfs that is already installed and skip the deployment. It will immediately be marked as successful and moved to *Past deployments*. This is why we provide a second Artifact for you to test with.
 
-[autoupdate_vexpress_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/vexpress-qemu/vexpress_release_1_master.mender
-
-!!! For robustness and avoiding unnecessary deployments, Mender will not deploy an Artifact that is already installed on a device.  Thus, if you create another deployment with the Artifact you already uploaded, Mender will see that it contains the same rootfs that is already installed and skip the deployment. It will immediately be marked as successful and moved to *Past deployments*. This is why we provide a second Artifact for you to test with.
-
-Go to **Artifacts** again and upload this artifact.
-After the Artifact has been uploaded, deploy it to your device,
-using the same steps as before.
+In order to create another deployment, go to the
+**Deployments** tab and click **Create a deployment** again.
+This time, select the `release-2` Artifact and
+deploy it to your device, using the same steps as before.
 
 Following this, you can deploy the first Artifact again, and so forth.
 
@@ -142,6 +137,6 @@ before production, or only deploy to devices owned by a specific customer.
 ## Deploy to physical devices
 
 **Congratulations!** You have used the Mender server to deploy your first managed update!
-If you have a BeagleBone Black, you can proceed to
+If you have a Raspberry Pi 3 or BeagleBone Black, you can proceed to
 [Deploy to physical devices](../deploy-to-physical-devices) to try out deploying to a
 real-world device!

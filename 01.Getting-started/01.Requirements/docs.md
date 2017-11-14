@@ -64,8 +64,7 @@ so that deployments can be managed across many devices.
 In order to support robust updates with rollback, Mender must be [integrated with production devices](../../devices).
 
 However, during the testing and validation stage, it is common to use development device to shorten time to experiment and prototype.
-For demo and testing purposes, we provide pre-built images for the [BeagleBone Black](https://beagleboard.org/black?target=_blank) with the latest version of Mender.
-This is a popular and open physical device, used in many professional environments.
+For demo and testing purposes, we provide pre-built demo images for the [Raspberry Pi 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b?target=_blank) and [BeagleBone Black](https://beagleboard.org/black?target=_blank) devices with the latest version of Mender.
 
 
 ## Trying Mender
