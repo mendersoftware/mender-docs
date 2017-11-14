@@ -6,7 +6,7 @@ taxonomy:
 
 ## v1.3.0b1
 
-_Released xx.xx.xxxx_
+_Released 11.14.2017_
 
 #### deployments (1.3.0b1)
 * docs: dump expire parameter from artifact download endpoint
