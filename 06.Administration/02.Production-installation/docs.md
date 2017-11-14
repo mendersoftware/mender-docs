@@ -550,7 +550,7 @@ At this point your commit history should look as follows:
 
 <!--AUTOMATION: ignore -->
 ```bash
-git log --oneline master..HEAD
+git log --oneline origin/master..HEAD
 ```
 > 7a4de3c production: final configuration  
 > 41273f7 production: adding generated keys and certificates  
