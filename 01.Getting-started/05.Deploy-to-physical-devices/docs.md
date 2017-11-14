@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 In this tutorial we will deploy a full rootfs update to
-a physical device, the BeagleBone Black, using the
+a physical device, the Raspberry Pi 3 or BeagleBone Black, using the
 Mender server.
 
 ## Prerequisites
@@ -19,25 +19,26 @@ that you have a basic understanding of how Mender works
 before moving on to connecting a physical device.
 
 
-### BeagleBone Black
-
-You need one or more BeagleBone Black devices to deploy
-updates to. To make it easy to provision the device we will use
+### A device to test with
+You need one or more BeagleBone Black or Raspberry Pi 3.
+To make it easy to provision the device we will use
 a SD card to store the OS, so you will need one SD card
-(1 GB or larger) per BeagleBone Black.
+(1 GB or larger) per device.
 
-!!! It is possible to use this tutorial with any physical device, as long as you have integrated Mender with it. In this case you cannot use the test artifacts we provide in this tutorial, but you need to build your own artifacts as described in [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
+Get the disk image and Artifacts for your device(s) from [Download demo images](../download-test-images).
+
+!!! It is possible to use this tutorial with *any* physical device, as long as you have integrated Mender with it. In this case you cannot use the demo Artifacts we provide in this tutorial, but you need to build your own artifacts as described in [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
 
 
 ### Network connectivity
 
-The BeagleBone Black needs to have network set up
+The device needs to have network set up
 so it can connect directly to your workstation
 (where you have the Mender server running).
 
 ! By default the Mender client will use ports **443** and **9000** to connect to the server. You can test the connection from your client later with networking tools like `telnet`.
 
-If you have one BeagleBone Black, you could connect your
+If you have just one device, you could connect your
 workstation and the device using a direct
 Ethernet cable and use static IP addresses at both ends.
 For multiple devices, you need a router or switch.
@@ -55,22 +56,15 @@ that your device(s) can connect to the Mender server.
 
 ! Please make sure to set a shell variable that expands correctly with `$IP_OF_MENDER_SERVER_FROM_DEVICE` or edit the commands below accordingly.
 
-Download [the test *disk* image][autoupdate_mender-beaglebone_x.x.x.sdimg.gz]
-with Mender support for the BeagleBone Black. This image contains *all the
-partitions* of the storage device, as described in [Partition
+Locate the demo *disk image* (`*.sdimg`) you downloaded for your device.
+This image contains *all the partitions* of the storage device, as described in [Partition
 layout](../../devices/partition-layout).
-
-[autoupdate_mender-beaglebone_x.x.x.sdimg.gz]: https://d1b0l86ne08fsf.cloudfront.net/1.2.1/beaglebone/mender-beaglebone_1.2.1.sdimg.gz
 
 You can decompress it like the following:
 
-[start_autoupdate_mender-beaglebone_x.x.x.sdimg.gz]: #
-
 ```bash
-gunzip mender-beaglebone_1.2.1.sdimg.gz
+gunzip <PATH-TO-YOUR-DISK-IMAGE>.sdimg.gz
 ```
-
-[end_autoupdate_mender-beaglebone_x.x.x.sdimg.gz]: #
 
 !!! Mender blocks free space in the disk image so that your root file system is allowed to grow over time. If you are building your own disk image by following [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image), you can configure the desired space usage with the Yocto Project variable [MENDER_STORAGE_TOTAL_SIZE_MB](../../artifacts/variables#mender_storage_total_size_mb).
 
@@ -81,13 +75,8 @@ server when it starts.
 
 ### Insert the address of Mender server
 
-[start_autoupdate_mender-beaglebone_x.x.x.sdimg]: #
-
 Please see [Modifying a disk image](../../artifacts/modifying-a-disk-image) for a description
-on how to mount partitions for editing within the disk image
-`mender-beaglebone_1.2.1.sdimg`.
-
-[end_autoupdate_mender-beaglebone_x.x.x.sdimg]: #
+on how to mount partitions for editing within the disk image (`*.sdimg`).
 
 We assume that *both* rootfs partitions are mounted read-write below,
 to `/mnt/rootfs1` and `/mnt/rootfs2`. Then run the following commands
@@ -105,7 +94,7 @@ You should see output similar to the following:
 ### Set a static device IP address and subnet
 
 This section assumes you use a static IP setup.
-If your BeagleBone Black device uses a DHCP setup,
+If your device device uses a DHCP setup,
 you can skip to [Unmount the disk image](#unmount-the-disk-image).
 In this section, we assume that `$IP_OF_MENDER_CLIENT` is
 the IP address you assign to your device.
@@ -135,7 +124,7 @@ You should see output similar to the following:
 > Gateway=192.168.10.1  
 
 
-! If you have a static IP address setup for several BeagleBone Black devices, you need several disk images so each get different IP addresses. After unmounting (as described below), you can copy it and mount another one.
+! If you have a static IP address setup for several devices, you need several disk images so each get different IP addresses. After unmounting (as described below), you can copy it and mount another one.
 
 ### Unmount the disk image
 
@@ -150,25 +139,20 @@ sudo umount /mnt/rootfs1 && sudo umount /mnt/rootfs2
 
 ## Write the disk image to the SD card
 
-[start_autoupdate_mender-beaglebone_x.x.x.sdimg]: #
-
 Please see [Write the disk image to the SD card](../../artifacts/provisioning-a-new-device#write-the-disk-image-to-the-sd-card)
-for steps how to provision the device disk using the `mender-beaglebone_1.2.1.sdimg`
+for steps how to provision the device disk using the `*.sdimg`
 image you downloaded and modified above.
 
-[end_autoupdate_mender-beaglebone_x.x.x.sdimg]: #
-
-If you have several BeagleBone Black devices, please
-write the disk image to all their SD cards.
+If you have several devices, please write the disk image to all their SD cards.
 
 
-## Boot the BeagleBone Black(s)
+## Boot the device
 
 ! Make sure that the Mender server is running as described in [Install a Mender demo server](../create-a-test-environment) and that the device can reach it on the IP address you configured above (`$IP_OF_MENDER_SERVER_FROM_DEVICE`). You might need to set a static IP address where the Mender server runs and disable any firewalls.
 
-First, insert the SD card you just provisioned into the BeagleBone black.
+First, insert the SD card you just provisioned into the device.
 
-Before powering on the device, please press the
+For the **BeagleBone Black only** (N/A to Raspberry Pi 3): Before powering on the BeagleBone Black, please press the
 *S2 button*, as shown below. Connect the power and keep the button
 pressed for about 5 seconds. This will make the BeagleBone
 Black boot from the SD card instead of internal storage.
@@ -180,19 +164,19 @@ Black boot from the SD card instead of internal storage.
 !!! There is no need to press the S2 button when rebooting, just when power is lost and it is powered on again.
 
 
-## See the BeagleBone Black(s) in the Mender UI
+## See the device in the Mender UI
 
 If you refresh the Mender server UI (by default found at [https://localhost/](https://localhost/?target=_blank)),
 you should see one or more devices waiting authorization.
 
 Once you **authorize** these devices, Mender will auto-discover
 inventory about the devices, including the device type (e.g. beaglebone)
-and the IP addresses, as shown in the example below.
+and the IP addresses, as shown in the example with a BeagleBone Black below.
 
 ![Mender UI - Device information for BeagleBone Black](device_information_bbb_1_1_0.png)
 
 
-!!! If your BeagleBone Black does not show up for authorization in the UI, you need to diagnose what went wrong. Most commonly this is due to problems with the network. You can test if your workstation can reach the device by trying to ping it, e.g. with `ping 192.168.10.2` (replace with the IP address of your device). If you have a serial cable, you can log in to the device to diagnose. The `root` user is present and has an empty password in this test image. If you get stuck, please feel free to reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank/#!forum/mender)!
+!!! If your device does not show up for authorization in the UI, you need to diagnose what went wrong. Most commonly this is due to problems with the network. You can test if your workstation can reach the device by trying to ping it, e.g. with `ping 192.168.10.2` (replace with the IP address of your device). If you have a serial cable, you can log in to the device to diagnose. The `root` user is present and has an empty password in this test image. Check the log output from Mender with `journalctl -u mender`. If you get stuck, please feel free to reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank/#!forum/mender)!
 
 
 ## Prepare the Mender Artifact to update to
@@ -205,12 +189,10 @@ checksum and name, as well as the actual root file system that is
 deployed. See [Mender Artifacts](../../architecture/mender-artifacts) for
 a complete description of this format.
 
-Download [the test Artifact][autoupdate_beaglebone_release_1_x.x.x.mender] for
-the BeagleBone Black.
+Locate the `release_1` demo Artifact file (`.mender`) for your device that you [downloaded earlier](../download-test-images).
 
-[autoupdate_beaglebone_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/1.2.1/beaglebone/beaglebone_release_1_1.2.1.mender
-
-The steps needed to edit the root file system contained in this Artifact are:
+Using the BeagleBone Black as an example below (adjust the directory and file names if you are using the Raspberry Pi 3),
+the steps needed to edit the root file system contained in this Artifact are:
 
 [start_autoupdate_beaglebone_release_1_x.x.x.mender]: #
 
@@ -290,8 +272,10 @@ for Linux.
 
 [autoupdate_x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.1.1/mender-artifact
 
-After the tool is downloaded and you added execute permission (e.g. with `chmod +x mender-artifact`),
-simply run it as follows:
+Download the tool and add execute permission (e.g. with `chmod +x mender-artifact`).
+
+Using the BeagleBone Black as an example below (adjust the file names and use `-t raspberrypi3` if you are using the Raspberry Pi 3),
+run the following command to create a new Mender Artifact:
 
 [start_autoupdate_release_1_x.x.x]: #
 
@@ -318,7 +302,7 @@ Go to the Mender server UI, click the **Artifacts** tab and upload this Artifact
 
 ## Deploy the Artifact
 
-Now that we have the device connected and the image
+Now that we have the device connected and the Artifact
 uploaded to the server, all that remains is to go to the
 **Deployments** tab and click **Create a deployment**.
 
@@ -357,17 +341,17 @@ Please make sure that the Artifact Name is in sync at these two places,
 otherwise deployments using this Artifact will always fail.
 
 With that in mind, now might be a good time to tweak the rootfs, add some
-more BeagleBone Black devices to the environment and try to get the
+more Raspberry Pi 3 or BeagleBone Black devices to the environment and try to get the
 required blinkenlights going!
 
-If you want to build your own artifact for the BeagleBone Black,
+If you want to build your own artifact for the Raspberry Pi 3 or BeagleBone Black,
 head over to the tutorial [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
 
 
 ## Integrate Mender with your device
 
-We can have a lot of fun with the BeagleBone Black, however
-it is rarely used in production due to the cost of scaling and specific
+Development devices like the Raspberry Pi 3 and BeagleBone Black
+are rarely used in production due to the cost of scaling and specific
 needs of custom applications.
 
 Now that you have seen how Mender works with a reference device, you might be wondering what
