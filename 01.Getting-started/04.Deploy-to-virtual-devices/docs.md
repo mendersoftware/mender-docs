@@ -110,8 +110,6 @@ This shows your virtual device runs the new rootfs!
 
 ## Deploy another update
 
-[autoupdate_vexpress_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/vexpress-qemu/vexpress_release_1_master.mender
-
 !!! For robustness and avoiding unnecessary deployments, Mender will not deploy an Artifact that is already installed on a device.  Thus, if you create another deployment with the Artifact you already deployed, Mender will see that it contains the same rootfs that is already installed and skip the deployment. It will immediately be marked as successful and moved to *Past deployments*. This is why we provide a second Artifact for you to test with.
 
 In order to create another deployment, go to the
