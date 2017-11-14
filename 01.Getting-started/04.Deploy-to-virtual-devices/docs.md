@@ -66,7 +66,7 @@ Click the **Artifacts** tab in the Mender server UI.
 Then locate the two Virtual device Artifacts you downloaded in [Download demo images](../download-test-images).
 Upload them both, one at the time, with drag and drop or by clicking browse.
 
-After the upload has finished, you should see both Artifacts, they have Device types compatible `vexpress-qemu` and two different names.
+After the upload has finished, you should see both Artifacts, they have Device types compatibility `vexpress-qemu` and two different names.
 
 !!! All devices report which *Device type* they are as part of their inventory information, for example `vexpress-qemu` or `beaglebone`. In addition, Mender Artifacts have *Device types compatible* as part of their metadata. During a deployment, Mender makes sure that a device will only get and install an Artifact it is compatible with. This increases the robustness of Mender as it avoids situations like deploying software that is not supported by the device hardware.
 
