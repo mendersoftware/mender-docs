@@ -153,8 +153,7 @@ If you have several devices, please write the disk image to all their SD cards.
 First, insert the SD card you just provisioned into the device.
 
 For the **BeagleBone Black only** (N/A to Raspberry Pi 3): Before powering on the BeagleBone Black, please press the
-*S2 button*, as shown below. Connect the power and keep the button
-pressed for about 5 seconds. This will make the BeagleBone
+*S2 button*, as shown below. Keep the button pressed for about 5 seconds after connecting power. This will make the BeagleBone
 Black boot from the SD card instead of internal storage.
 
 ![Booting BeagleBone Black from SD card](beaglebone_black_sdboot.png)
@@ -163,6 +162,7 @@ Black boot from the SD card instead of internal storage.
 
 !!! There is no need to press the S2 button when rebooting, just when power is lost and it is powered on again.
 
+Now **connect the device to power**.
 
 ## See the device in the Mender UI
 
@@ -176,7 +176,7 @@ and the IP addresses, as shown in the example with a BeagleBone Black below.
 ![Mender UI - Device information for BeagleBone Black](device_information_bbb_1_1_0.png)
 
 
-!!! If your device does not show up for authorization in the UI, you need to diagnose what went wrong. Most commonly this is due to problems with the network. You can test if your workstation can reach the device by trying to ping it, e.g. with `ping 192.168.10.2` (replace with the IP address of your device). If you have a serial cable, you can log in to the device to diagnose. The `root` user is present and has an empty password in this test image. Check the log output from Mender with `journalctl -u mender`. If you get stuck, please feel free to reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank/#!forum/mender)!
+!!! If your device does not show up for authorization in the UI, you need to diagnose what went wrong. Most commonly this is due to problems with the network. You can test if your workstation can reach the device by trying to ping it, e.g. with `ping 192.168.10.2` (replace with the IP address of your device). If you can reach the device, you can ssh into it, e.g. `ssh root@192.168.10.2`. Otherwise, if you have a serial cable, you can log in to the device to diagnose. The `root` user is present and has an empty password in this test image. Check the log output from Mender with `journalctl -u mender`. If you get stuck, please feel free to reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank/#!forum/mender)!
 
 
 ## Prepare the Mender Artifact to update to
