@@ -169,7 +169,7 @@ Black boot from the SD card instead of internal storage.
 ## See the device in the Mender UI
 
 If you refresh the Mender server UI (by default found at [https://localhost/](https://localhost/?target=_blank)),
-you should see one or more devices waiting authorization.
+you should see one or more devices pending authorization.
 
 Once you **authorize** these devices, Mender will auto-discover
 inventory about the devices, including the device type (e.g. beaglebone)
