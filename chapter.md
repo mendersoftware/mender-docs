@@ -1,4 +1,3 @@
-[start_autoupdate_chapter_version_x.x]: #
 ---
 title: "Development"
 taxonomy:
@@ -10,7 +9,6 @@ taxonomy:
 # Documentation
 
 Documentation for Mender's bleeding-edge master branch.
-[end_autoupdate_chapter_version_x.x]: #
 
 [start_autoupdate_tree_x.x.X]: #
 [https://github.com/mendersoftware/mender/tree/master](https://github.com/mendersoftware/mender/tree/master)
