@@ -1,10 +1,20 @@
 ---
-title: Mender
+title: Release notes & changelog
 taxonomy:
     category: docs
 ---
 
-## v1.3.0b1
+## meta-mender pyro-v2017.11
+
+_Released 11.14.2017_
+
+* Add Mender 1.3.0b1 recipe.
+* Upstream image has grown significantly, increase to 608MB sdimg.
+  The noticably non-round number is to make sure the calculated rootfs
+  size is divisible by the partition alignment.
+
+
+## Mender v1.3.0b1
 
 _Released 11.14.2017_
 
@@ -167,7 +177,7 @@ _Released 11.14.2017_
 * api/http: add endpoint for creating tenants
 
 
-## v1.2.0
+## Mender v1.2.0
 
 _Released 09.05.2017_
 
@@ -254,7 +264,7 @@ _Released 09.05.2017_
 * New API for removing user: 'DELETE https://localhost/api/management/v1/useradm/users/:userid'
 
 
-## v1.1.0
+## Mender v1.1.0
 
 _Released 06.16.2017_
 
@@ -268,7 +278,7 @@ _Released 06.16.2017_
 * Fix misleading version being displayed for non-tagged builds. ([MEN-1178](https://tracker.mender.io/browse/MEN-1178))
 
 
-## v1.1.0 Beta 1
+## Mender v1.1.0 Beta 1
 
 _Released 05.24.2017_
 
@@ -335,7 +345,7 @@ _Released 05.24.2017_
   password is read from terminal). See `--help` for details.
 
 
-## v1.0.1
+## Mender v1.0.1
 _Released 04.05.2017_
 
 ### Notable changes
@@ -364,7 +374,7 @@ _Released 04.05.2017_
 
 ---
 
-## v1.0.0 
+## Mender v1.0.0 
 _Released 02.20.2017_
 
 ---
