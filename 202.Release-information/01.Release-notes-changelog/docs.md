@@ -177,6 +177,50 @@ _Released 11.14.2017_
 * api/http: add endpoint for creating tenants
 
 
+## Mender v1.2.2
+
+_Released 11.14.2017_
+
+#### deployments (1.2.2)
+* deployments: descending sort by created time when listing deployments
+
+#### integration (1.2.2)
+* Upgrade deployments to 1.2.2.
+* Upgrade gui to 1.2.1.
+* Upgrade mender-api-gateway-docker to 1.2.1.
+* Fix Missing restart policy for some containers in
+  docker-compose setup.
+  ([MEN-1556](https://tracker.mender.io/browse/MEN-1556))
+
+#### mender-api-gateway-docker (1.2.1)
+* nginx: separate HTTP and HTTPS server scopes, redirect all HTTP requests to HTTPS
+
+
+## Mender v1.2.1
+
+_Released 10.02.2017_
+
+#### deployments (1.2.1)
+* Prevent artifacts with invalid checksums from
+  being uploaded to the server.
+  ([MEN-1412](https://tracker.mender.io/browse/MEN-1412))
+
+#### integration (1.2.1)
+* Upgrade deployments to 1.2.1.
+* Upgrade mender to 1.2.1.
+* Upgrade mender-artifact to 2.1.1.
+
+#### mender (1.2.1)
+* Improve error messages for state scripts errors.
+  Rely on the full error description instead of just the error code.
+* Fix checksum not being verified for headers, only
+  payload. ([MEN-1412](https://tracker.mender.io/browse/MEN-1412))
+
+#### mender-artifact (2.1.1)
+* Fix broken header checksum verification.
+  ([MEN-1412](https://tracker.mender.io/browse/MEN-1412))
+
+
 ## Mender v1.2.0
 
 _Released 09.05.2017_
