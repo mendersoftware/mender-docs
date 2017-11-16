@@ -18,7 +18,7 @@ This could occur in several places, and the distinguishing message is **x509: ce
 Each TLS certificate has a validity period, *Not Before* and *Not After*, and this message means that the Mender client concludes that
 the current time is outside this range.
 
-Most commonly this is caused by incorrect time setting at the device which runs the Mender client. Check this by
+Most commonly this is caused by **incorrect time setting at the device** which runs the Mender client. Check this by
 running `date` at the device, and make sure it is correct.
 
 If this is not the problem, you need to verify that the certificates you are using are valid.
@@ -43,6 +43,40 @@ We can see that both these certificates are currently valid.
 Also see the [documentation on certificates](../../administration/certificates-and-keys) for an
 overview and description on how to generate new certificates.
 
+
+## Certificate signed by unknown authority
+
+The Mender client can not connect to the server, typically the first time it tries, and emits messages like the following to syslog at the device:
+
+```
+... level=info msg="Mender state: authorize-wait -> bootstrapped" module=mender
+... level=error msg="authorize failed :transient error :authorisation request failed: failed do execute authorisation request:
+Post https://<SERVER-URI>/api/devices/v1/authentication/auth_requests: x509: certificate signed by unknown authority" module=state
+```
+
+This could occur in several places, and the distinguishing message is **x509: certificate signed by unknown authority**.
+The message shows that the Mender client rejects the Mender server's certificate because it does not trust the certificate
+authority (CA).
+
+If your server is using a certificate that is signed by an official Certificate Authority, then you likely
+need to update your client's root certificate store. For example, [Hosted Mender](https://hosted.mender.io?target=_blank)
+uses an offical CA so the only reason your client would reject this is if it does not have updated root certificates
+in its system store.
+
+On the other hand, if you set up the Mender server yourself as described in
+[Production installation](../../administration/production-installation) and generated certificates as part of it,
+your need to make sure that the server certificates are in `/etc/mender/server.crt` on your device.
+
+To test that they match, run `cat /etc/mender/server.crt` on your device, and compare that to the output
+of the following command, adjusting the hostnames mender.extample.com / s3.example.com (ideally run on device, but can be run from elsewhere as well):
+
+```
+openssl s_client -showcerts -connect mender.example.com:443 < /dev/null 2>/dev/null | openssl x509 && openssl s_client -showcerts -connect s3.example.com:9000 < /dev/null 2>/dev/null | openssl x509
+```
+
+If these mismatch, then you need to update `/etc/mender/server.crt` on your client.
+You can do this manually for testing purposes, and you should
+[include the certificates in your Yocto Project build](../../artifacts/building-for-production#including-the-client-certificates).
 
 ## Artifact format not supported
 
