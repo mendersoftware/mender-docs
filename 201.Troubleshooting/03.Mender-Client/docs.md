@@ -24,8 +24,9 @@ In addition to system logging, Mender also writes debug logs directly to a file 
 a deployment starts. This file in turn gets uploaded to the server if the
 deployment fails.
 
-By default log files for the past 5 deployments are kept,
-and they are stored in `/var/lib/mender/logs/`, named by the deployment id.
+By default, log files for the past 5 deployments are kept.
+They are stored in `/var/lib/mender/`, named by the deployment id,
+for example `deployments.0001.fcd8bca2-6dae-488e-969e-23559c674ba5.log`.
 
 
 ## Certificate expired or not yet valid
