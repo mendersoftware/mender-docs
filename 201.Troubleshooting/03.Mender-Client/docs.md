@@ -4,6 +4,31 @@ taxonomy:
     category: docs
 ---
 
+## Obtaining client logs
+
+Logs are usually needed in order to diagnose an issue.
+
+The Mender client by default logs to the system log using `systemd`, so the easiest way to retrieve logs
+is to run the following command:
+
+```
+journalctl -u mender
+```
+
+Please note that the default log level is Info. It is possible to increase the
+verbosity by editing the Mender systemd unit file and append the `--debug` option.
+
+### Deployment log files
+
+In addition to system logging, Mender also writes debug logs directly to a file when
+a deployment starts. This file in turn gets uploaded to the server if the
+deployment fails.
+
+By default, log files for the past 5 deployments are kept.
+They are stored in `/var/lib/mender/`, named by the deployment id,
+for example `deployments.0001.fcd8bca2-6dae-488e-969e-23559c674ba5.log`.
+
+
 ## Certificate expired or not yet valid
 
 The Mender client can not connect to the server, typically the first time it tries, and emits messages like the following to syslog at the device:
