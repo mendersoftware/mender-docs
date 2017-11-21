@@ -9,7 +9,7 @@ The build output will most notably include:
 * a file that can be flashed to the device storage during initial provisioning, it has suffix `.sdimg`
 * an Artifact containing rootfs filesystem image file that Mender can deploy to your provisioned device, it has suffix `.mender`
 
-!!! If you do not want to build your own images for testing purposes, the [Getting started](../../getting-started) tutorials provide links to several demo images.
+!!! If you do not want to build your own images for testing purposes, the [Getting started](../../getting-started) tutorials provide links to several [demo images](../../getting-started/download-test-images).
 
 ## What is *meta-mender*?
 
@@ -25,7 +25,7 @@ Each one of these steps can be configured further, see the linked sections for m
 
 The other layers in *meta-mender* provide support for specific boards.
 
-!!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Start guide](http://www.yoctoproject.org/docs/2.4/yocto-project-qs/yocto-project-qs.html?target=_blank).
+!!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Start guide](http://www.yoctoproject.org/docs/2.3/yocto-project-qs/yocto-project-qs.html?target=_blank).
 
 
 ## Prerequisites
@@ -113,12 +113,11 @@ bitbake-layers add-layer ../meta-mender/meta-mender-core
 bitbake-layers add-layer ../meta-mender/meta-mender-demo
 ```
 
-Finally, you need to incorporate the **layer specific to your board**.
+Finally, add the **Mender layer specific to your board**.
 Mender currently comes with three reference devices
 that you can build for (only add one of these):
 
-
-* Raspberry Pi 3 (other revisions might also work): `bitbake-layers add-layer ../meta-mender/meta-mender-raspberrypi`
+* Raspberry Pi 3 (other revisions might also work): `bitbake-layers add-layer ../meta-mender/meta-mender-raspberrypi` (depends on `meta-raspberrypi`)
 * BeagleBone Black: `bitbake-layers add-layer ../meta-mender/meta-mender-beaglebone`
 * Virtual device: `bitbake-layers add-layer ../meta-mender/meta-mender-qemu`
 
@@ -197,13 +196,13 @@ IMAGE_FSTYPES = "ext4"
 
 ## Building the image
 
-Once all the configuration steps are done, an image can be built with bitbake:
+Once all the configuration steps are done, build an image with bitbake:
 
 ```bash
 bitbake <YOUR-TARGET>
 ```
 
-!!! Please replace `<YOUR-TARGET>` with the desired target or image name. If you are building for `vexpress-qemu`, set the target to `core-image-full-cmdline`. If you are building for the `beaglebone`, set the target to `core-image-base`. For more information about the differences with image types on the BeagleBone Black please see [the official Yocto Project BeagleBone support page](https://www.yoctoproject.org/downloads/bsps/rocko24/beaglebone?target=_blank).
+Replace `<YOUR-TARGET>` with the desired target or image name, e.g. `core-image-full-cmdline`.
 
 !!! The first time you build a Yocto Project image, the build process can take several hours. The successive builds will only take a few minutes, so please be patient this first time.
 
