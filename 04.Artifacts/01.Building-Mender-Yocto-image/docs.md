@@ -9,15 +9,11 @@ The build output will most notably include:
 * a file that can be flashed to the device storage during initial provisioning, it has suffix `.sdimg`
 * an Artifact containing rootfs filesystem image file that Mender can deploy to your provisioned device, it has suffix `.mender`
 
-Building for the vexpress-qemu (virtual) device or the BeagleBone Black is supported in `meta-mender`. If you are building for your own device
-please see [Device integration](../../devices) for general requirements and adjustments you might need
-to enable your device to support atomic image-based deployments with rollback.
-
-!!! If you do not want to build your own images for testing purposes, the [Getting started](../../getting-started) tutorials provide links to several demo images.
+!!! If you do not want to build your own images for testing purposes, the [Getting started](../../getting-started) tutorials provide links to several [demo images](../../getting-started/download-test-images).
 
 ## What is *meta-mender*?
 
-[meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank) is a set of layers that enable the creation of a Yocto Project image where the Mender client is part of the image. With Mender installed and configured on the image, you can deploy image updates and benefit from features like automatic roll-back, remote management, logging and reporting. The *meta-mender* layers contain all the recipes required to build the Mender Go binary and configure the Yocto Project image.
+[meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank) is a set of layers that enable the creation of a Yocto Project image where the Mender client is part of the image. With Mender installed and configured on the image, you can deploy image updates and benefit from features like automatic roll-back, remote management, logging and reporting.
 
 Inside *meta-mender* there are several layers. The most important one is *meta-mender-core*, which is required by all builds that use Mender. *meta-mender-core* takes care of:
 
@@ -34,19 +30,37 @@ The other layers in *meta-mender* provide support for specific boards.
 
 ## Prerequisites
 
+### Device integrated with Mender
+
+Before building for your device with Mender, Mender needs to
+be integrated with your device (most notably with U-Boot). This
+integration enables robust and atomic rollbacks with Mender.
+The following reference devices are already integrated with Mender,
+so if you are building for one of these you do not need to do any integration:
+
+* [Raspberry Pi 3](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-raspberrypi?target=_blank) (other revisions are also likely to work)
+* [BeagleBone Black](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-beaglebone?target=_blank)
+* [Virtual device (vexpress-qemu)](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-qemu?target=_blank)
+
+If you are building for a different device, please see [Device integration](../../devices)
+for general requirements and adjustments you might need to enable your device
+to support atomic image-based deployments with rollback.
+There might already be similar devices you can use as a starting point in
+the [meta-mender repository](https://github.com/mendersoftware/meta-mender?target=_blank).
+
+If you want to save time, you can use our [professional services to integrate your device with Mender](https://mender.io/product/board-support?target=_blank).
+
+
+### Correct clock on device
+
+Make sure that the clock is set correctly on your devices. Otherwise certificate verification will become unreliable
+and **the Mender client can likely not connect to the Mender server**.
+See [certificate troubleshooting](../../troubleshooting/mender-client#certificate-expired-or-not-yet-valid) for more information.
+
+
+### Yocto Project
+
 ! We use the **master** branch of the Yocto Project and `meta-mender` below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases, but these branches are no longer maintained by Mender developers. We offer professional services to to implement and support other branches over time, please take a look at the [Mender professional services offering](https://mender.io/product/professional-services?target=_blank).
-
-!!! The meta-mender-demo layer, which is used below, and the webserver, are bundled with a default demo certificate and key. If you are intending on using Mender in production, you must generate your own certificate using OpenSSL. Please see the certificate section [for the server](../../administration/certificates-and-keys) and [for the client](../building-for-production/#certificates) for more information.
-
-The required meta layers are found in the following repositories:
-
-```
-URI: git://git.yoctoproject.org/poky
-branch: master
-
-URI: git://github.com/mendersoftware/meta-mender
-branch: master
-```
 
 A Yocto Project poky environment is required. If you already have 
 this in your build environment, please open a terminal, go to the `poky`
@@ -66,7 +80,7 @@ cd poky
 
 !!! Note that the Yocto Project also depends on some [development tools to be in place](http://www.yoctoproject.org/docs/2.3/yocto-project-qs/yocto-project-qs.html?target=_blank#packages).
 
-! Please make sure that the clock is set correctly on your devices. Otherwise certificate verification will become unreliable. See [certificate troubleshooting](../../troubleshooting/mender-client#certificate-expired-or-not-yet-valid) for more information.
+
 
 ## Adding the meta layers
 
@@ -87,29 +101,31 @@ source oe-init-build-env
 This creates a build directory with the default name, `build`, and makes it the
 current working directory.
 
-We then need to incorporate the two layers, meta-mender-core and
-meta-mender-demo, into our project:
+We then need to add the Mender layers into our project:
 
 ```bash
 bitbake-layers add-layer ../meta-mender/meta-mender-core
+```
+
+! The `meta-mender-demo` layer (below) is not appropriate if you are building for production devices. Please go to the section about [building for production](../building-for-production) to see the difference between demo builds and production builds.
+
+```bash
 bitbake-layers add-layer ../meta-mender/meta-mender-demo
 ```
 
-! The `meta-mender-demo` layer is not appropriate if you are building for production devices. Please go to the section about [building for production](../building-for-production) to see the difference between demo builds and production builds.
+Finally, add the **Mender layer specific to your board**.
+Mender currently comes with three reference devices
+that you can build for (only add one of these):
 
-Finally, you need to incorporate the layer specific to your board. Mender currently comes with two supported boards: vexpress-qemu and beaglebone, residing in `meta-mender/meta-mender-qemu` and `meta-mender/meta-mender-beaglebone`, respectively. Other boards may also exist that are contributed by the community, or you may need to create a board specific layer yourself for your particular hardware.
+* Raspberry Pi 3 (other revisions might also work): `bitbake-layers add-layer ../meta-mender/meta-mender-raspberrypi` (depends on `meta-raspberrypi`)
+* BeagleBone Black: `bitbake-layers add-layer ../meta-mender/meta-mender-beaglebone`
+* Virtual device: `bitbake-layers add-layer ../meta-mender/meta-mender-qemu`
 
-If you wish to test using the QEMU emulator, run the following:
-
-```bash
-bitbake-layers add-layer ../meta-mender/meta-mender-qemu
-```
-
-If you wish to test using the BeagleBone Black, run the following:
-
-```bash
-bitbake-layers add-layer ../meta-mender/meta-mender-beaglebone
-```
+Other devices may have community support,
+either in [meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank) or other repositories.
+If you are building for a different device, please see [Device integration](../../devices)
+for general requirements and adjustments you might need to enable your device
+to support Mender.
 
 At this point, all the layers required for Mender should be
 part of your Yocto Project build environment.
@@ -130,8 +146,15 @@ MENDER_ARTIFACT_NAME = "release-1"
 INHERIT += "mender-full"
 
 # A MACHINE integrated with Mender.
-# vexpress-qemu or beaglebone can be used for testing.
+# raspberrypi3, beaglebone, and vexpress-qemu are reference devices
 MACHINE = "<YOUR-MACHINE>"
+
+# For Rasberry Pi, uncomment the following block:
+# RPI_USE_U_BOOT = "1"
+# MENDER_PARTITION_ALIGNMENT_KB = "4096"
+# MENDER_BOOT_PART_SIZE_MB = "40"
+# IMAGE_INSTALL_append = " kernel-image kernel-devicetree"
+# IMAGE_FSTYPES_remove += " rpi-sdimg"
 
 # The version of Mender to build. This needs to match an existing recipe in the meta-mender repository.
 #
@@ -166,8 +189,6 @@ VIRTUAL-RUNTIME_initscripts = ""
 IMAGE_FSTYPES = "ext4"
 ```
 
-! The machine `<YOUR-MACHINE>` needs to be integrated with Mender before it will work correctly; most notably U-Boot needs the required features and integration. Please see [Device integration](../../devices) for more information. You can also use `vexpress-qemu` or `beaglebone`, as these devices are pre-integrated into `meta-mender`.
-
 !!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../variables#mender_storage_total_size_mb) for more information. Mender automatically selects the file system types it builds into the disk image, which is used for initial flash provisioning, based on the `IMAGE_FSTYPES` variable. See the [section on file system types](../../devices/partition-layout#file-system-types) for more information.
 
 !!! It is suggested to add `INHERIT += "rm_work"` to `conf/local.conf` in order to conserve disk space during the build.
@@ -175,13 +196,13 @@ IMAGE_FSTYPES = "ext4"
 
 ## Building the image
 
-Once all the configuration steps are done, an image can be built with bitbake:
+Once all the configuration steps are done, build an image with bitbake:
 
 ```bash
 bitbake <YOUR-TARGET>
 ```
 
-!!! Please replace `<YOUR-TARGET>` with the desired target or image name. If you are building for `vexpress-qemu`, set the target to `core-image-full-cmdline`. If you are building for the `beaglebone`, set the target to `core-image-base`. For more information about the differences with image types on the BeagleBone Black please see [the official Yocto Project BeagleBone support page](https://www.yoctoproject.org/downloads/bsps/pyro23/beaglebone?target=_blank).
+Replace `<YOUR-TARGET>` with the desired target or image name, e.g. `core-image-full-cmdline`.
 
 !!! The first time you build a Yocto Project image, the build process can take several hours. The successive builds will only take a few minutes, so please be patient this first time.
 
@@ -200,4 +221,4 @@ which have `.mender` suffix. You can either deploy this Artifact in managed mode
 the Mender server as described in [Deploy to physical devices](../../getting-started/deploy-to-physical-devices)
 or by using the Mender client only in [Standalone deployments](../../architecture/standalone-deployments).
 
-!!! If you built for the Mender reference device `vexpress-qemu`, you can start up your newly built image with the script in `../meta-mender/meta-mender-qemu/scripts/mender-qemu` and log in as *root* without password.
+!!! If you built for the virtual Mender reference device (`vexpress-qemu`), you can start up your newly built image with the script in `../meta-mender/meta-mender-qemu/scripts/mender-qemu` and log in as *root* without password.
