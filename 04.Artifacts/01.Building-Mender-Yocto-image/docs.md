@@ -34,7 +34,7 @@ The other layers in *meta-mender* provide support for specific boards.
 
 ## Prerequisites
 
-! We use the **master** branch of the Yocto Project and `meta-mender` below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases, but these branches are no longer maintained by Mender developers. We offer professional services to to implement and support other branches over time, please take a look at the [Mender professional services offering](https://mender.io/product/professional-services?target=_blank).
+! We use the **pyro** branch of the Yocto Project and `meta-mender` below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases, but these branches are no longer maintained by Mender developers. We offer professional services to to implement and support other branches over time, please take a look at the [Mender professional services offering](https://mender.io/product/professional-services?target=_blank).
 
 !!! The meta-mender-demo layer, which is used below, and the webserver, are bundled with a default demo certificate and key. If you are intending on using Mender in production, you must generate your own certificate using OpenSSL. Please see the certificate section [for the server](../../administration/certificates-and-keys) and [for the client](../building-for-production/#certificates) for more information.
 
@@ -42,10 +42,10 @@ The required meta layers are found in the following repositories:
 
 ```
 URI: git://git.yoctoproject.org/poky
-branch: master
+branch: pyro
 
 URI: git://github.com/mendersoftware/meta-mender
-branch: master
+branch: pyro
 ```
 
 A Yocto Project poky environment is required. If you already have 
@@ -57,7 +57,7 @@ On the other hand, if you want to start from a *clean Yocto Project environment*
 you need to clone the latest poky and go into the directory:
 
 ```bash
-git clone -b master git://git.yoctoproject.org/poky
+git clone -b pyro git://git.yoctoproject.org/poky
 ```
 
 ```bash
@@ -75,7 +75,7 @@ Please make sure you are standing in the directory where `poky` resides,
 i.e. the top level of the Yocto Project build tree, and run these commands:
 
 ```bash
-git clone -b master git://github.com/mendersoftware/meta-mender
+git clone -b pyro git://github.com/mendersoftware/meta-mender
 ```
 
 Next, we initialize the build environment:
