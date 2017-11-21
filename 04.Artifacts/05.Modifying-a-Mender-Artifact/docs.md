@@ -44,7 +44,7 @@ Depending on the version of the artifact used, for a BeagleBone Black Artifact, 
 will look like the following:
 
 ```bash
-mkdir core-image-base-beaglebone && tar -C core-image-base-beaglebone -xvf core-image-base-beaglebone.mender
+mkdir core-image-base-beaglebone-yocto && tar -C core-image-base-beaglebone-yocto -xvf core-image-base-beaglebone-yocto.mender
 ```
 
 > version  
@@ -69,10 +69,10 @@ can extract the first (and currently only) file there, which is the root file sy
 like the following:
 
 ```bash
-cd core-image-base-beaglebone && tar zxvf data/0000.tar.gz
+cd core-image-base-beaglebone-yocto && tar zxvf data/0000.tar.gz
 ```
 
-> core-image-base-beaglebone.ext4  
+> core-image-base-beaglebone-yocto.ext4  
 
 
 ## Modify the root file system
@@ -93,11 +93,11 @@ sudo mkdir /mnt/rootfs
 ```
 
 ```bash
-cp core-image-base-beaglebone.ext4 core-image-base-beaglebone-modified.ext4
+cp core-image-base-beaglebone-yocto.ext4 core-image-base-beaglebone-yocto-modified.ext4
 ```
 
 ```bash
-sudo mount -t ext4 -o loop core-image-base-beaglebone-modified.ext4 /mnt/rootfs/
+sudo mount -t ext4 -o loop core-image-base-beaglebone-yocto-modified.ext4 /mnt/rootfs/
 ```
 
 Now you can modify the file system found at `/mnt/rootfs`. For example,
@@ -124,7 +124,7 @@ To see which metadata the original Artifact contains, you can run the
 following command:
 
 ```bash
-mender-artifact read core-image-base-beaglebone.mender
+mender-artifact read core-image-base-beaglebone-yocto.mender
 ```
 
 
@@ -132,13 +132,13 @@ mender-artifact read core-image-base-beaglebone.mender
 >   Name: release-1  
 >   Format: mender  
 >   Version: 2  
->   Compatible devices: '[beaglebone]'  
+>   Compatible devices: '[beaglebone-yocto]'  
 >   
 > Updates:  
 >   0000  
 >   Type: 'rootfs-image'  
 >   Files:  
->     core-image-base-beaglebone.ext4  
+>     core-image-base-beaglebone-yocto.ext4  
 >     size: 105638912  
 >     modified: 2016-12-20 15:36:11 +0100 CET  
 
@@ -146,7 +146,7 @@ mender-artifact read core-image-base-beaglebone.mender
 The most important fields to note for writing a new Artifact are
 the *Compatible devices* and *Name*.
 
-!!! When working with a signed Artifact, you can verify the signature by providing the public verification key to the `-k` option, e.g. `mender-artifact read core-image-base-beaglebone.mender -k public.key`.
+!!! When working with a signed Artifact, you can verify the signature by providing the public verification key to the `-k` option, e.g. `mender-artifact read core-image-base-beaglebone-yocto.mender -k public.key`.
 
 
 #### Write a new Artifact
@@ -159,14 +159,14 @@ and *Name* of the original Artifact, so only the rootfs modifications
 will be different:
 
 ```bash
-mender-artifact write rootfs-image -t beaglebone -n release-1 -u core-image-base-beaglebone-modified.ext4 -o core-image-base-beaglebone-modified.mender
+mender-artifact write rootfs-image -t beaglebone-yocto -n release-1 -u core-image-base-beaglebone-yocto-modified.ext4 -o core-image-base-beaglebone-yocto-modified.mender
 ```
 
 ! The Artifact name (`-n`) must correspond to the name stated *inside* the root file system at `/etc/mender/artifact_info`, so make sure to change both places if you are modifying it.
 
-! If you are building for *older Mender Clients* that do not support the latest version of the Artifact format, you can build an older Artifact version with the `-v` option. For example, to build a version 1 Artifact, you can run `mender-artifact write rootfs-image -v 1 -t beaglebone -n release-1 -u core-image-base-beaglebone-modified.ext4 -o core-image-base-beaglebone-modified.mender`. The default Artifact version is the latest one. Also see the build variable [MENDER_ARTIFACT_EXTRA_ARGS](../variables#mender_artifact_extra_args).
+! If you are building for *older Mender Clients* that do not support the latest version of the Artifact format, you can build an older Artifact version with the `-v` option. For example, to build a version 1 Artifact, you can run `mender-artifact write rootfs-image -v 1 -t beaglebone-yocto -n release-1 -u core-image-base-beaglebone-yocto-modified.ext4 -o core-image-base-beaglebone-yocto-modified.mender`. The default Artifact version is the latest one. Also see the build variable [MENDER_ARTIFACT_EXTRA_ARGS](../variables#mender_artifact_extra_args).
 
-!!! If you would like to generate a *signed Artifact*, simply add the `-k` option with the path to your *private key*. In our example above, the full command would be `mender-artifact write rootfs-image -t beaglebone -n release-1 -u core-image-base-beaglebone-modified.ext4 -o core-image-base-beaglebone-signed.mender -k private.key`.
+!!! If you would like to generate a *signed Artifact*, simply add the `-k` option with the path to your *private key*. In our example above, the full command would be `mender-artifact write rootfs-image -t beaglebone-yocto -n release-1 -u core-image-base-beaglebone-yocto-modified.ext4 -o core-image-base-beaglebone-yocto-signed.mender -k private.key`.
 
 After deploying this Artifact with Mender and rebooting, your configuration changes will be in effect!
 

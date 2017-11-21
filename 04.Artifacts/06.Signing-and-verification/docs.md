@@ -89,7 +89,7 @@ To sign we use the `-k` parameter to specify the private key, which will be used
 The full command will look like the following:
 
 ```bash
-mender-artifact write rootfs-image -t beaglebone -n mender-1.0.1 -u core-image-base-beaglebone.ext4 -k private.key -o artifact-signed.mender
+mender-artifact write rootfs-image -t beaglebone-yocto -n mender-1.0.1 -u core-image-base-beaglebone-yocto.ext4 -k private.key -o artifact-signed.mender
 ```
 
 This is the command the Signing system uses to create a signed Artifact.

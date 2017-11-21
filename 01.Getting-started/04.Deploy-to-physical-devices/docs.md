@@ -174,8 +174,8 @@ If you refresh the Mender server UI (by default found at [https://localhost/](ht
 you should see one or more devices pending authorization.
 
 Once you **authorize** these devices, Mender will auto-discover
-inventory about the devices, including the device type (e.g. beaglebone)
-and the IP addresses, as shown in the example with a BeagleBone Black below.
+inventory about the devices, including the device type (e.g. beaglebone-yocto)
+and the IP addresses, as shown in the example with a BeagleBone Black below. 
 Which information is collected about devices is fully configurable; see the documentation on [Identity](../../client-configuration/identity) and [Inventory](../../client-configuration/inventory) for more information.
 
 ![Mender UI - Device information for BeagleBone Black](device_information_bbb.png)
@@ -199,25 +199,25 @@ Locate the `release_1` demo Artifact file (`.mender`) for your device that you [
 Using the BeagleBone Black as an example below (adjust the directory and file names if you are using the Raspberry Pi 3),
 the steps needed to edit the root file system contained in this Artifact are:
 
-[start_autoupdate_beaglebone_release_1_x.x.x.mender]: #
+[start_autoupdate_beaglebone-yocto_release_1_x.x.x.mender]: #
 
 ```bash
-mkdir beaglebone_release_1 && tar -C beaglebone_release_1 -xvf beaglebone_release_1_master.mender
+mkdir beaglebone-yocto_release_1 && tar -C beaglebone-yocto_release_1 -xvf beaglebone-yocto_release_1_master.mender
 ```
 
-[end_autoupdate_beaglebone_release_1_x.x.x.mender]: #
+[end_autoupdate_beaglebone-yocto_release_1_x.x.x.mender]: #
 
 ```bash
-cd beaglebone_release_1 && tar zxvf data/0000.tar.gz
+cd beaglebone-yocto_release_1 && tar zxvf data/0000.tar.gz
 ```
 
 ```bash
-sudo mkdir /mnt/rootfs && sudo mount -t ext4 -o loop core-image-base-beaglebone.ext4 /mnt/rootfs/
+sudo mkdir /mnt/rootfs && sudo mount -t ext4 -o loop core-image-base-beaglebone-yocto.ext4 /mnt/rootfs/
 ```
 
 Please see [Modifying a Mender Artifact](../../artifacts/modifying-a-mender-artifact)
 for a more detailed overview. For the following steps we assume that you have mounted
-`core-image-base-beaglebone.ext4` to `/mnt/rootfs`.
+`core-image-base-beaglebone-yocto.ext4` to `/mnt/rootfs`.
 
 We carry out exactly the same configuration steps for the rootfs image
 as we did for the rootfs partitions in the disk image above:
@@ -286,14 +286,14 @@ run the following command to create a new Mender Artifact:
 [start_autoupdate_release_1_x.x.x]: #
 
 ```bash
-mender-artifact write rootfs-image -u core-image-base-beaglebone.ext4 -t beaglebone -n release-1_master -o beaglebone_release_1_configured.mender
+mender-artifact write rootfs-image -u core-image-base-beaglebone-yocto.ext4 -t beaglebone-yocto -n release-1_master -o beaglebone-yocto_release_1_configured.mender
 ```
 
-where `-u core-image-base-beaglebone.ext4` is the rootfs image we modified above,
-`-t beaglebone` is the device type compatible with the given Artifact,
+where `-u core-image-base-beaglebone-yocto.ext4` is the rootfs image we modified above,
+`-t beaglebone-yocto` is the device type compatible with the given Artifact,
 `-n release-1_master` is the Artifact name (do not change this as it needs to be in
 sync with `/etc/mender/artifact_info` *inside* the rootfs), and
-`-o beaglebone_release_1_configured.mender` is
+`-o beaglebone-yocto_release_1_configured.mender` is
 the filename of the created Artifact.
 
 [end_autoupdate_release_1_x.x.x]: #
@@ -315,7 +315,7 @@ uploaded to the server, all that remains is to go to the
 Select the Artifact you just uploaded and **All devices**, then
 **Create deployment**.
 
-!!! If you deploy across several device types (e.g. `beaglebone` and `vexpress-qemu`), the Mender server will skip these if no compatible artifact is available. This condition is indicated by the *noartifact* status in the deployment report. Mender does this to avoid deployments of incompatible rootfs images. However, if you have Artifacts for these other device types, identified by the same Artifact name, then Mender will deploy to all the devices there are compatible Artifacts for.
+!!! If you deploy across several device types (e.g. `beaglebone-yocto` and `vexpress-qemu`), the Mender server will skip these if no compatible artifact is available. This condition is indicated by the *noartifact* status in the deployment report. Mender does this to avoid deployments of incompatible rootfs images. However, if you have Artifacts for these other device types, identified by the same Artifact name, then Mender will deploy to all the devices there are compatible Artifacts for.
 
 
 ## See the progress of the deployment
