@@ -49,7 +49,7 @@ this is the change:
 
 The first line changes a path inside the recipe, since the include file is not
 in the same directory anymore. The second adds Mender specific tweaks, as
-described in [this section](../#forks-of-u-boot).
+described in [this section](../..#forks-of-u-boot).
 
 ## Preparations
 
@@ -63,7 +63,7 @@ cp u-boot-my-fork_2016.03.bb u-boot-fw-utils-my-fork_2016.03.bb
 
 ## Using the fork
 
-Then, in accordance with [this section](../#u-boot-fw-utils), we add the
+Then, in accordance with [this section](../../manual-u-boot-integration#u-boot-fw-utils), we add the
 following to our configuration:
 
 ```bash
@@ -134,7 +134,7 @@ will go through each line and explain why they are needed.
 
 2. We replace `u-boot-mender.inc` with `u-boot-fw-utils-mender.inc`. This is
    because the fw-utils tools requires different tweaks, as described in [this
-   section](../#u-boot-fw-utils).
+   section](../../manual-u-boot-integration#u-boot-fw-utils).
 
 3. The next block of variable assignments (starting with `SUMMARY`) is added
    because this normally is provided by `u-boot.inc`, but since this file is not
@@ -179,7 +179,7 @@ will go through each line and explain why they are needed.
 
 12. The last two `PROVIDES_${PN}` and `RPROVIDES_${PN}` variables are added to
     describe to Bitbake that this recipe provides those packages, even though it
-    has a different name. This is described [here](../#u-boot-fw-utils).
+    has a different name. This is described [here](../../manual-u-boot-integration#u-boot-fw-utils).
 
 And that's it! This provides a working recipe for u-boot-fw-utils.
 

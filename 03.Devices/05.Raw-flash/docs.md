@@ -267,10 +267,10 @@ These settings affect the calculated rootfs size.
 
 For U-Boot, on top of options listed in [U-Boot](#u-boot) you will need to
 enable the options required by Mender listed
-in [U-Boot integration](../integrating-with-u-boot#u-boot-features).
+in [U-Boot integration](../integrating-with-u-boot/manual-u-boot-integration#u-boot-features).
 
 The U-Boot boot process remains very much the same as described
-in [integration points](../integrating-with-u-boot#integration-points) with the
+in [integration points](../integrating-with-u-boot/manual-u-boot-integration#integration-points) with the
 addition of a call to `mender_setup` script (using `vexpress-a9` as an example):
 
 ```bash
