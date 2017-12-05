@@ -47,6 +47,22 @@ and inside it add:
 MENDER_UBOOT_AUTO_CONFIGURE = "0"
 ```
 
+Also note that if you have, or need to make, changes in the `u-boot-fw-utils`
+recipe, you have to specifically select this recipe in the build, as Mender
+usually defaults to the `u-boot-fw-utils-mender-auto-provided` recipe, which
+automatically reuses the sources from `u-boot`. It is recommended not to make
+any changes that are specific to `u-boot-fw-utils`, and instead make them in the
+`.inc` file shared by both recipes. But if you must make specific changes to the
+`u-boot-fw-utils` recipe, you need to select it like this:
+
+```
+PREFERRED_PROVIDER_u-boot-fw-utils = "u-boot-fw-utils"
+PREFERRED_RPROVIDER_u-boot-fw-utils = "u-boot-fw-utils"
+```
+
+The value is the name of your recipe, and hence may be different if it is a
+fork.
+
 ## U-Boot features
 
 A number of U-Boot features need to be enabled for Mender to work correctly, and
