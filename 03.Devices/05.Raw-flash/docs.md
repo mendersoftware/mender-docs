@@ -22,8 +22,8 @@ details may slightly differ for NAND flash or SPI NOR flash devices.
 The Mender Yocto layer comes with support for the following raw flash boards in
 the main tree:
 
-* [Toradex Colibri VF50/VF61 `meta-mender-toradex-nxp`](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-toradex-nxp)
-* [vexpress-a9 emulated by QEMU `meta-mender-qemu`](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-qemu)
+* Toradex Colibri VF50/VF61 `meta-mender-toradex-nxp`
+* vexpress-a9 emulated by QEMU `meta-mender-qemu`
 
 Both layers provide a set of patches based on their respective upstream U-Boot
 sources and can be used as a reference when implementing your raw flash based
@@ -240,7 +240,7 @@ By default a `*.ubifs` root filesystem image will be used when generating a Mend
 
 ### meta-mender integration
 
-By inheriting [`mender-install-ubi`](https://github.com/mendersoftware/meta-mender/blob/master/meta-mender-core/classes/mender-install-ubi.bbclass) (included
+By inheriting `mender-install-ubi` (included
 in `mender-full-ubi`) the following configuration settings will be set
 automatically:
 
