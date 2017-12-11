@@ -155,6 +155,8 @@ MACHINE = "<YOUR-MACHINE>"
 # MENDER_BOOT_PART_SIZE_MB = "40"
 # IMAGE_INSTALL_append = " kernel-image kernel-devicetree"
 # IMAGE_FSTYPES_remove += " rpi-sdimg"
+#
+# Lines below not needed for Yocto Rocko (2.4) or newer.
 # IMAGE_BOOT_FILES_append = " boot.scr u-boot.bin;${SDIMG_KERNELIMAGE}"
 # KERNEL_IMAGETYPE = "uImage"
 
