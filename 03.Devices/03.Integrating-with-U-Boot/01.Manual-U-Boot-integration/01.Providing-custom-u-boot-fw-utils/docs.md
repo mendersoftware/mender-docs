@@ -190,5 +190,5 @@ case. Much of the inspiration was taken from there, and this is a good place to
 look if you hit problems and this guide doesn't provide the answer.
 
 After the adaptation is complete, you should go through the [Integration
-checklist](../../integration-checklist) to make sure that all functionality of the
-compiled tools is working.
+checklist](../../../integration-checklist) to make sure that all functionality
+of the compiled tools is working.
