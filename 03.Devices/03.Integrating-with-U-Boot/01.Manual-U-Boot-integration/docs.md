@@ -36,7 +36,7 @@ The command will tell you where the resulting patch can be found. Note that the
 string `u-boot` may be different if you are using a U-Boot fork with a different
 name.
 
-# Disabling automatic patching
+## Disabling automatic patching
 
 After acquiring the basis patch above, first thing you will need to do is to
 disable the automatic patching. This can be done by adding a `u-boot_%.bbappend`
