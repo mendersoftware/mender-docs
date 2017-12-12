@@ -39,7 +39,7 @@ The following reference devices are already integrated with Mender,
 so if you are building for one of these you do not need to do any integration:
 
 * [Raspberry Pi 3](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-raspberrypi?target=_blank) (other revisions are also likely to work)
-* [BeagleBone Black](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-beaglebone?target=_blank)
+* BeagleBone Black (no board specific layer needed)
 * [Virtual device (vexpress-qemu)](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-qemu?target=_blank)
 
 If you are building for a different device, please see [Device integration](../../devices)
@@ -118,7 +118,7 @@ Mender currently comes with three reference devices
 that you can build for (only add one of these):
 
 * Raspberry Pi 3 (other revisions might also work): `bitbake-layers add-layer ../meta-mender/meta-mender-raspberrypi` (depends on `meta-raspberrypi`)
-* BeagleBone Black: `bitbake-layers add-layer ../meta-mender/meta-mender-beaglebone`
+* BeagleBone Black: No board specific layer needed
 * Virtual device: `bitbake-layers add-layer ../meta-mender/meta-mender-qemu`
 
 Other devices may have community support,

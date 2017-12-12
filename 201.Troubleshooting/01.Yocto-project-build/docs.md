@@ -16,6 +16,11 @@ ERROR: Multiple .bb files are due to be built which each provide u-boot (.../tis
 Mender needs to configure U-Boot in order to support robust rootfs rollback. If your project relies on a fork of U-Boot this needs to be integrated. For more information, see [Integrating with U-Boot](../../devices/integrating-with-u-boot), in particular the section on [Forks of U-boot](../../devices/integrating-with-u-boot#forks-of-u-boot).
 
 
+## A U-Boot component is failing to compile, and it compiles without Mender
+
+This may be an indication that Mender's automatic U-Boot patching has failed for the particular board that's being built for, and a manual patch may be required. For information on how to create such a patch, go to the [Manual U-Boot integration section](../../devices/integrating-with-u-boot/manual-u-boot-integration).
+
+
 ## U-Boot and the Linux kernel do not agree about the indexes of storage devices
 
 Sometimes it happens that U-Boot will refer to a storage device as `mmc 0`, whereas the Linux kernel will refer to the same device as `/dev/mmcblk1` (note the different index). In this case the Mender build system must be told explicitly about this disagreement. To do so, you can set the following two variables:
@@ -59,4 +64,4 @@ This is most likely because you are producing an image that has a lot of small f
 
 * Increase the size of the image by increasing the value in `MENDER_STORAGE_TOTAL_SIZE_MB` (see description in [Variables](../../artifacts/variables#mender_storage_total_size_mb)), which will also increase the number of blocks. However, note that unless it is increased greatly, this will still give you a filesystem which is fairly close to the block limit, so the problem could happen during production instead, if the device writes enough files.
 
-* Decrease the size of each block. This can be done by setting `EXTRA_IMAGECMD_ext4 = " -b 1024"` in `local.conf`. The default is 4096, and must be a power of 1024.
+* Decrease the size of each block. This can be done by setting `EXTRA_IMAGECMD_ext4 = " -b 1024"` in `local.conf`. The default is 4096, it must be a power of 2, and it must not be smaller than 1024.
