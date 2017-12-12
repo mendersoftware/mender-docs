@@ -321,6 +321,6 @@ provides, and that it is the preferred provider.
 
 For a real life example of a patch used to integrate with Mender, check out [the
 patch for
-BeagleBone](https://github.com/mendersoftware/meta-mender/blob/master/meta-mender-beaglebone/recipes-bsp/u-boot/patches/0001-BBB-Use-Mender-boot-code-for-selecting-boot-device-a.patch?target=_blank)
+BeagleBone](https://github.com/mendersoftware/meta-mender/blob/pyro/meta-mender-beaglebone/recipes-bsp/u-boot/patches/0001-BBB-Use-Mender-boot-code-for-selecting-boot-device-a.patch?target=_blank)
 on github.com. This patch displays all of the steps required to patch the U-Boot
 boot code for BeagleBone, including most of the steps described on this page.
