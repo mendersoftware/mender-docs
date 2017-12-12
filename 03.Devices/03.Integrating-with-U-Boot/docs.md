@@ -14,16 +14,32 @@ If you have an older version of U-Boot, it is possible to apply some extra patch
 
 ## Forks of U-boot
 
-If the project is using a board supported by mainstream U-Boot, and the build is
-using the `u-boot` recipe as the bootloader provider, then you can skip to the
-next section.
+If the project is using a board supported by upstream U-Boot, and the build is
+using the `u-boot` recipe as the bootloader provider, then you can skip to [the
+next section](#enabling-u-boot). You can check if the board is using a u-boot
+fork with the following command (must be executed in the Yocto build directory):
 
-If the project is however using a fork of U-Boot, some additional steps are
+```
+bitbake -e core-image-minimal | egrep '^PREFERRED_PROVIDER_(virtual/bootloader|u-boot)='
+```
+
+If any variables appear, and any one of them has a value other than `u-boot` or
+empty, then the build is using a U-Boot fork.
+
+If the project is using a fork of U-Boot, some additional steps are
 required. Typically this happens if one of the layers the project depends on has
 its own `u-boot-<suffix>` recipe somewhere. If so you need to carry out these
 steps:
 
-1. Mender has a dependency on `u-boot`, but the project's U-Boot likely has
+1. The recipe needs to include `u-boot-mender.inc`, in order to incorporate the
+   patches needed for Mender to work. This should go into the `.bb` file of the
+   recipe for the U-Boot fork:
+
+   ```bash
+   require recipes-bsp/u-boot/u-boot-mender.inc
+   ```
+
+2. Mender has a dependency on `u-boot`, but the project's U-Boot likely has
    another name, therefore it is important to mark the project's fork as a
    component that provides `u-boot`. The example below shows how to add the
    needed directives in the `.bb` file of the U-Boot fork.
@@ -33,7 +49,7 @@ steps:
    RPROVIDES_${PN} += "u-boot"
    ```
 
-2. In the machine section of the board in question, the actual u-boot
+3. In the machine section of the board in question, the actual u-boot
    implementation must be selected using `PREFERRED_PROVIDER`, like this:
 
    ```bash
@@ -41,14 +57,6 @@ steps:
    ```
 
    Many machine configurations will probably have this in their setup already.
-
-3. The recipe needs to include `u-boot-mender.inc`, in order to incorporate the
-   patches needed for Mender to work. This should also go into the `.bb` file of
-   the recipe for the U-Boot fork:
-
-   ```bash
-   require recipes-bsp/u-boot/u-boot-mender.inc
-   ```
 
 ## Enabling U-Boot
 
@@ -60,7 +68,7 @@ Project you need to enable the `mender-uboot` feature using
 MENDER_FEATURES_ENABLE_append = " mender-uboot"
 ```
 
-!!! Note that if you have inherited the `mender-full` or `mender-full-ubi` class in your `local.conf`, then the `mender-uboot` feature is already on by default.
+!!! Note that if you have inherited the `mender-full` or `mender-full-ubi` class in your `local.conf`, then the `mender-uboot` feature is already on by default. See [the documentation on features](../../artifacts/image-configuration/features) for more information.
 
 This enables U-Boot integration, and also enables full automatic patching of
 U-Boot.
