@@ -25,16 +25,16 @@ Download the Artifacts for your desired device types below:
 | Raspberry Pi 3   | [mender-raspberrypi3.sdimg.gz][autoupdate_mender-raspberrypi3_x.x.x.sdimg.gz] | [raspberrypi3_release_1.mender][autoupdate_raspberrypi3_release_1_x.x.x.mender] | [raspberrypi3_release_2.mender][autoupdate_raspberrypi3_release_2_x.x.x.mender] |
 
 
-[autoupdate_vexpress_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/1.3.0b1/vexpress-qemu/vexpress_release_1_1.3.0b1.mender
-[autoupdate_vexpress_release_2_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/1.3.0b1/vexpress-qemu/vexpress_release_2_1.3.0b1.mender
+[autoupdate_vexpress_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/1.3.0/vexpress-qemu/vexpress_release_1_1.3.0.mender
+[autoupdate_vexpress_release_2_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/1.3.0/vexpress-qemu/vexpress_release_2_1.3.0.mender
 
-[autoupdate_mender-beaglebone_x.x.x.sdimg.gz]: https://d1b0l86ne08fsf.cloudfront.net/1.3.0b1-build3/beaglebone/mender-beaglebone_1.3.0b1-build3.sdimg.gz
-[autoupdate_beaglebone_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/1.3.0b1-build3/beaglebone/beaglebone_release_1_1.3.0b1-build3.mender
-[autoupdate_beaglebone_release_2_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/1.3.0b1-build3/beaglebone/beaglebone_release_2_1.3.0b1-build3.mender
+[autoupdate_mender-beaglebone_x.x.x.sdimg.gz]: https://d1b0l86ne08fsf.cloudfront.net/1.3.0/beaglebone/mender-beaglebone_1.3.0.sdimg.gz
+[autoupdate_beaglebone_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/1.3.0/beaglebone/beaglebone_release_1_1.3.0.mender
+[autoupdate_beaglebone_release_2_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/1.3.0/beaglebone/beaglebone_release_2_1.3.0.mender
 
-[autoupdate_mender-raspberrypi3_x.x.x.sdimg.gz]: https://d1b0l86ne08fsf.cloudfront.net/1.3.0b1-build3/raspberrypi3/mender-raspberrypi3_1.3.0b1-build3.sdimg.gz
-[autoupdate_raspberrypi3_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/1.3.0b1-build3/raspberrypi3/raspberrypi3_release_1_1.3.0b1-build3.mender
-[autoupdate_raspberrypi3_release_2_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/1.3.0b1-build3/raspberrypi3/raspberrypi3_release_2_1.3.0b1-build3.mender
+[autoupdate_mender-raspberrypi3_x.x.x.sdimg.gz]: https://d1b0l86ne08fsf.cloudfront.net/1.3.0/raspberrypi3/mender-raspberrypi3_1.3.0.sdimg.gz
+[autoupdate_raspberrypi3_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/1.3.0/raspberrypi3/raspberrypi3_release_1_1.3.0.mender
+[autoupdate_raspberrypi3_release_2_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/1.3.0/raspberrypi3/raspberrypi3_release_2_1.3.0.mender
 
 
 To continue the tutorial download both Artifacts for the *Virtual* device.

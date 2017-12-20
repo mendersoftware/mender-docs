@@ -180,7 +180,7 @@ MACHINE = "<YOUR-MACHINE>"
 # To get your tenant token, log in to https://hosted.mender.io,
 # click your email at the top right and then "My organization".
 # Remember to remove the meta-mender-demo layer (if you have added it).
-# We recommend Mender 1.2.1 and Yocto Project's pyro or later for Hosted Mender.
+# We recommend Mender 1.3.0 and Yocto Project's pyro or later for Hosted Mender.
 #
 # MENDER_SERVER_URL = "https://hosted.mender.io"
 # MENDER_TENANT_TOKEN = "<YOUR-HOSTED-MENDER-TENANT-TOKEN>"
