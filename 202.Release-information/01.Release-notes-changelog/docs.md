@@ -4,7 +4,69 @@ taxonomy:
     category: docs
 ---
 
-## v1.2.2
+## meta-mender rocko-v2017.12
+
+_Released 12.20.2017_
+
+* mender-artifact: Fix build failure due to poky golang source directory changes.
+* Catch up with latest poky U-Boot v2017.05.
+* Fix build failure after poky switched to checking out Go
+  sources under the full GOPATH.
+* rpi-u-boot-scr: Switch to boot.cmd.in style recipe.
+* sato: Set NETWORK_MANAGER to systemd.
+* Update example-state-scripts to use standard logging.
+* Add Mender 1.3.0b1 recipe.
+* Work around bug in libpseudo regarding file owners on data partition.
+* Add machine configuration for Mender on colibri-imx7
+* u-boot: update mender_boot_part_name when mender_boot_part changes
+* Remove meta-mender-beaglebone layer. This layer is not
+  needed anymore for compiling for Beaglebone and should be removed from
+  all build configurations.
+  ([MEN-1387](https://tracker.mender.io/browse/MEN-1387))
+* Add example recipe to show how to deploy files into Mender persistent data partition
+* mender-artifact: Fix build failure due to poky golang support changes.
+* meta-mender-raspberrypi: increase layer priority to 10
+* Fix bug where MENDER_DEVICE_TYPES_COMPATIBLE would only accept one entry.
+* mender: Adjust patches for U-Boot v2017.09
+* mender: Use GO environment variable to launch the compiler
+* Implement heuristic automatic patching of U-Boot.
+  It can be turned on and off by setting `MENDER_UBOOT_AUTO_CONFIGURE`
+  to `1` and `0`, respectively, in a `u-boot.bbappend` file. It is on by
+  default. If the automatic patching is unsuccessful, there is a special
+  bitbake target that can be used to extract the generated patch and use
+  it as a basis for a manual patch. It can be invoked with `bitbake -c
+  save_mender_auto_configured_patch <u-boot-recipe>`, where
+  `<u-boot-recipe>` is either `u-boot` or the fork of U-Boot that your
+  board uses. ([MEN-1387](https://tracker.mender.io/browse/MEN-1387))
+* Bump mender and mender-artifact to version 1.1.0 and 2.0.0, respectively.
+* Remove recipes for Mender 1.0.x series.
+* Add Mender 1.3.0 build recipe.
+
+
+## meta-mender pyro-v2017.12
+
+_Released 12.20.2017_
+
+* Fix bug where MENDER_DEVICE_TYPES_COMPATIBLE would only accept one entry.
+* Add Mender 1.3.0 build recipe.
+* u-boot: update mender_boot_part_name when mender_boot_part changes
+* Update example-state-scripts to use standard logging.
+* meta-mender-raspberrypi: increase layer priority to 10
+* sato: Set NETWORK_MANAGER to systemd.
+* Add machine configuration for Mender on colibri-imx7
+
+
+## meta-mender pyro-v2017.11
+
+_Released 11.14.2017_
+
+* Add Mender 1.3.0b1 recipe.
+* Upstream image has grown significantly, increase to 608MB sdimg.
+  The noticably non-round number is to make sure the calculated rootfs
+  size is divisible by the partition alignment.
+
+
+## Mender v1.2.2
 
 _Released 11.14.2017_
 
