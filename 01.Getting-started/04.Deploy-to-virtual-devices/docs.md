@@ -101,7 +101,7 @@ Once the deployment completes, you should see it in *Past deployments*.
 If the deployment fails you can view the deployment log,
 which is obtained from the device, to diagnose the issue.
 You can also see the state of deployments on the Dashboard.
-In **Devices** you can see that `artifact_name` has now changed to `release-2_1.3.0b1`.
+In **Devices** you can see that `artifact_name` has now changed to `release-2_1.3.0`.
 
 [end_autoupdate_release-2_x.x.x]: #
 
