@@ -149,7 +149,7 @@ INHERIT += "mender-full"
 # raspberrypi3, beaglebone, and vexpress-qemu are reference devices
 MACHINE = "<YOUR-MACHINE>"
 
-# For Rasberry Pi, uncomment the following block:
+# For Raspberry Pi, uncomment the following block:
 # RPI_USE_U_BOOT = "1"
 # MENDER_PARTITION_ALIGNMENT_KB = "4096"
 # MENDER_BOOT_PART_SIZE_MB = "40"
