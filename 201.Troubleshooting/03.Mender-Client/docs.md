@@ -86,7 +86,7 @@ authority (CA).
 
 If your server is using a certificate that is signed by an official Certificate Authority, then you likely
 need to update your client's root certificate store. For example, [Hosted Mender](https://hosted.mender.io?target=_blank)
-uses an offical CA so the only reason your client would reject this is if it does not have updated root certificates
+uses an official CA so the only reason your client would reject this is if it does not have updated root certificates
 in its system store.
 
 On the other hand, if you set up the Mender server yourself as described in
@@ -94,7 +94,7 @@ On the other hand, if you set up the Mender server yourself as described in
 your need to make sure that the server certificates are in `/etc/mender/server.crt` on your device.
 
 To test that they match, run `cat /etc/mender/server.crt` on your device, and compare that to the output
-of the following command, adjusting the hostnames mender.extample.com / s3.example.com (ideally run on device, but can be run from elsewhere as well):
+of the following command, adjusting the hostnames mender.example.com / s3.example.com (ideally run on device, but can be run from elsewhere as well):
 
 ```
 openssl s_client -showcerts -connect mender.example.com:443 < /dev/null 2>/dev/null | openssl x509 && openssl s_client -showcerts -connect s3.example.com:9000 < /dev/null 2>/dev/null | openssl x509
