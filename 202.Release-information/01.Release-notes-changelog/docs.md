@@ -58,7 +58,7 @@ _Released 12.20.2017_
 
 ## Mender v1.3.0
 
-_Released xx.xx.xxxx_
+_Released 12.21.2017_
 
 #### integration (1.3.0)
 * Upgrade deployments to 1.3.0.
