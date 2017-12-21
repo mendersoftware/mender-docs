@@ -81,7 +81,7 @@ _Released 11.14.2017_
 
 * Add Mender 1.3.0b1 recipe.
 * Upstream image has grown significantly, increase to 608MB sdimg.
-  The noticably non-round number is to make sure the calculated rootfs
+  The noticeably non-round number is to make sure the calculated rootfs
   size is divisible by the partition alignment.
 
 
@@ -109,7 +109,7 @@ _Released 11.14.2017_
 * docs/devices: add optional substate field in status ported
 
 #### deviceadm (1.2.0b1)
-* middleware: accomodate changes in request{id,log} middleware and enable request logger update
+* middleware: accommodate changes in request{id,log} middleware and enable request logger update
 * Additional MongoDB configuration options: mongo_ssl, mongo_ssl_skipverify, mongo_username, mongo_password
 * Additional MongoDB configuration options: mongo_ssl, mongo…
 * store/mongo: move single tenant migration to separate func
@@ -130,7 +130,7 @@ _Released 11.14.2017_
 * store/mongo: make UpdateAuthSet() operate on multiple auth sets
 * store, store/mongo: add collection for keeping 'Limits'
 * devauth: ignore store.ErrAuthSetNotFound when rejecting auth sets during accept
-* devauth: set Authorization field in  device decommissioning reuqests
+* devauth: set Authorization field in  device decommissioning requests
 * devauth: support for saving per-tenant limits
 * devauth: log a message when the token is does not have a mender.device claim
 * docs: include Authorization header in spec of authset status PUT endpoint
@@ -187,7 +187,7 @@ _Released 11.14.2017_
   otherwise then a migration is needed the service will exit logging an error.
 * Additional MongoDB configuration options: mongo_ssl, mongo_ssl_skipverify, mongo_username, mongo_password
 * main: add 'migrate [--tenant=<tenant ID>]' command
-* middleware: accomodate changes in request{id,log} middleware and enable request logger update
+* middleware: accommodate changes in request{id,log} middleware and enable request logger update
 * dockerfile: update entrypoint to match currently supported command line arguments
 * Additional MongoDB configuration options: mongo_ssl, mongo…
 
@@ -212,12 +212,12 @@ _Released 11.14.2017_
   resource starvation.
 
 #### mender-api-gateway-docker (1.3.0b1)
-* Introuduce static content caching for /ui routing.
+* Introduce static content caching for /ui routing.
 * Make browser side UI caching configurable though CACHE_UI env. Disabled by default.
 * Include request time in gateway access logs.
 * nginx: separate HTTP and HTTPS server scopes, redirect all HTTP requests to HTTPS
 * nginx: align gateway URLs with useradm API
-* Introuduce static content caching for /ui routing.
+* Introduce static content caching for /ui routing.
 * deployments service routing
 * gateway dns cache reloading for improved recovery from service restarts
   ([MEN-1227](https://tracker.mender.io/browse/MEN-1227))
@@ -227,7 +227,7 @@ _Released 11.14.2017_
 * docs: add undocumented X-Original-URI, X-Original-Method on internal /auth/verify
 * store/mongo: TenantDataStore uses a store with automigrations enabled
 * commands: add 'migrate [--tenant=<id>]' command
-* middleware: accomodate changes in request{id,log} middleware and enable request logger update
+* middleware: accommodate changes in request{id,log} middleware and enable request logger update
 * jwt: add mender.user claim, bool
   Add 'mender.user' claim to tokens given out bu useradm. The claim indicates that
   the token is assigned to a user and a 'sub' claim corresponds to user ID.
