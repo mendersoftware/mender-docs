@@ -95,15 +95,15 @@ In the example below, we can see that the device is in process of installing the
 
 ## Verify the deployment
 
-[start_autoupdate_release-2_x.x.x]: #
+[start_autoupdate_release-1_x.x.x]: #
 
 Once the deployment completes, you should see it in *Past deployments*.
 If the deployment fails you can view the deployment log,
 which is obtained from the device, to diagnose the issue.
 You can also see the state of deployments on the Dashboard.
-In **Devices** you can see that `artifact_name` has now changed to `release-2_master`.
+In **Devices** you can see that `artifact_name` has now changed to `release-1_master`.
 
-[end_autoupdate_release-2_x.x.x]: #
+[end_autoupdate_release-1_x.x.x]: #
 
 This shows your virtual device runs the new rootfs!
 
