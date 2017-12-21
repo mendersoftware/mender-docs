@@ -318,7 +318,7 @@ git commit -m 'production: adding generated keys and certificates'
 ### Persistent storage
 
 Persistent storage of backend services' data is implemented using
-named [Docker volumes](https://docs.docker.com/engine/tutorials/dockervolumes/?target=_blank).
+named [Docker volumes](https://docs.docker.com/engine/admin/volumes/volumes/?target=_blank).
 The template is configured to mount the following volumes:
 
 - `mender-artifacts` - artifact objects storage
