@@ -68,6 +68,7 @@ following to our configuration:
 
 ```bash
 PREFERRED_PROVIDER_u-boot-fw-utils = "u-boot-fw-utils-my-fork"
+PREFERRED_RPROVIDER_u-boot-fw-utils = "u-boot-fw-utils-my-fork"
 ```
 
 For this example we add it to `local.conf`, but in a real situation it may be
