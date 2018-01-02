@@ -68,6 +68,7 @@ following to our configuration:
 
 ```bash
 PREFERRED_PROVIDER_u-boot-fw-utils = "u-boot-fw-utils-my-fork"
+PREFERRED_RPROVIDER_u-boot-fw-utils = "u-boot-fw-utils-my-fork"
 ```
 
 For this example we add it to `local.conf`, but in a real situation it may be
@@ -153,7 +154,18 @@ will go through each line and explain why they are needed.
    complain if the binaries are already stripped.
 
 7. `EXTRA_OEMAKE_class-target` is added because U-Boot needs these environment
-   variables in order to cross compile correctly for our board.
+   variables in order to cross compile correctly for our board. This string has
+   been known to change, so if you get compile errors it's a good idea to check
+   out the specific string for your version of U-Boot. Executing this search
+   query in the poky repository is a good start:
+
+   ```
+   git log -p meta/recipes-bsp/u-boot/
+   ```
+
+   In the resulting pager, search for `EXTRA_OEMAKE_class-target`, and see how
+   it has changed, and in which version it changed. Your string should match the
+   one in poky for the same U-Boot version.
 
 8. `inherit uboot-config` makes sure that the Bitbake variables for U-Boot are
    set correctly. Normally this is inherited by `u-boot.inc`, but we are not
