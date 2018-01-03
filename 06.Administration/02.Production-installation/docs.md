@@ -4,6 +4,8 @@ taxonomy:
     category: docs
 ---
 
+!!! You can save time by using [Hosted Mender](https://mender.io/signup?target=_blank); a secure Mender server ready to use, maintained by the Mender developers.
+
 This is a step by step guide for deploying the Mender Server for production environments,
 and will cover relevant security and reliability aspects of Mender production installations.
 The Mender backend services can be deployed to production using a skeleton provided
