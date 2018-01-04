@@ -172,7 +172,8 @@ you should see one or more devices pending authorization.
 
 Once you **authorize** these devices, Mender will auto-discover
 inventory about the devices, including the device type (e.g. beaglebone)
-and the IP addresses, as shown in the example with a BeagleBone Black below.
+and the IP addresses, as shown in the example with a BeagleBone Black below. 
+Which information is collected about devices is fully configurable; see the documentation on [Identity](../../client-configuration/identity) and [Inventory](../../client-configuration/inventory) for more information.
 
 ![Mender UI - Device information for BeagleBone Black](device_information_bbb.png)
 
