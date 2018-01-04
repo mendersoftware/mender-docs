@@ -4,6 +4,12 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender rocko-v2018.01
+
+_Released 01.04.2018_
+
+* meta-mender-core: Allow dtbos in KERNEL_DEVICETREE
+
 ## meta-mender rocko-v2017.12
 
 _Released 12.20.2017_
