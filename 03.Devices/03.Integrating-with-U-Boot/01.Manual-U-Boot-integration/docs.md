@@ -22,9 +22,22 @@ allow Mender to do safe, automatic updates of the device, with rollback support.
 
 This normally requires patching of stock U-Boot versions, which is what the
 automatic process does. But in this section we will do it manually, and the
-necessary steps are described below. A good starting point however, is to take
-the patch produced by the automatic patcher and use that as a basis, since it
-will often be close to complete, if not fully.
+necessary steps are described below.
+
+If you are not sure whether your board is using automatic patching, you can
+check it by executing this command:
+
+```bash
+bitbake -e u-boot | grep '^MENDER_UBOOT_AUTO_CONFIGURE='
+```
+
+The variable should be either 0 or 1, depending on whether automatic patching is
+enabled or not. Note that the string `u-boot` may be different if you are using
+a U-Boot fork with a different name.
+
+A good starting point for manual patching, is to take the patch produced by the
+automatic patcher and use that as a basis, since it will often be close to
+complete, if not fully.
 
 To extract the patch, execute the following bitbake command:
 
@@ -32,9 +45,9 @@ To extract the patch, execute the following bitbake command:
 bitbake -c save_mender_auto_configured_patch u-boot
 ```
 
-The command will tell you where the resulting patch can be found. Note that the
-string `u-boot` may be different if you are using a U-Boot fork with a different
-name.
+The command will tell you where the resulting patch can be found. As in the
+previous command, the string `u-boot` may be different if you are using a U-Boot
+fork with a different name.
 
 ## Disabling automatic patching
 
