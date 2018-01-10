@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-!!! If you would like assistance supporting your device and OS, please refer to the [commercial board support offering](https://mender.io/product/board-support?target=_blank).
+!!! Mender has three reference devices already integrated: [Raspberry Pi 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b?target=_blank), [BeagleBone Black](https://beagleboard.org/black?target=_blank) and a virtual device (`vexpress-qemu`). If you would like assistance supporting your device and OS, please refer to the [commercial board support offering](https://mender.io/product/board-support?target=_blank).
 
 ##Yocto Project
 Although it is possible to compile and install Mender independently, we have optimized the installation experience for those who build their Linux images using [Yocto Project](https://www.yoctoproject.org?target=_blank).
@@ -17,8 +17,6 @@ Mender has no official support for other build systems. However, by following th
 
 ##Device capacity
 The client binaries, which are written in Go, are around 7 MiB in size. 
-
-Our physical reference device, the [BeagleBone Black](https://beagleboard.org/black?target=_blank), comes with a 1 GHz ARM Cortex-A8 processor, with 512 MiB of RAM. Mender also has a virtual QEMU-based reference device using the `vexpress-qemu` machine type. We use both these devices in our continuous integration process so they are well supported.
 
 ##Bootloader support
 To support atomic rootfs rollback, Mender integrates with the bootloader of the device. Currently Mender supports [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank). See [U-Boot integration](../integrating-with-u-boot) for more information.
