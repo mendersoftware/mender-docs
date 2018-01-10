@@ -79,4 +79,4 @@ like the following:
 Log in with your email and password you created above.
 
 **Congratulations!** You have the Mender server and a virtual Mender client successfully running!
-Please proceed to [Download demo images](../download-test-images).
+Please proceed to [Deploying to virtual devices](../deploy-to-virtual-devices).
