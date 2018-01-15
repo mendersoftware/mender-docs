@@ -88,6 +88,8 @@ The easiest way to have Mender run the state scripts is to create a new OpenEmbe
 
 Take a look at the [example-state-scripts](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-demo/recipes-mender/example-state-scripts) recipe to get started.
 
+!! If you add or remove a recipe containing state scripts to a build, you need to clear the `tmp` directory of the Yocto build before building a new image. An alternative is to call `bitbake -c clean <recipe>` with the affected recipe, but the first method is recommended since it will cover all cases, regardless of recipe name. Merely changing a recipe does not require this step.
+
 
 ## State transition ordering
 
