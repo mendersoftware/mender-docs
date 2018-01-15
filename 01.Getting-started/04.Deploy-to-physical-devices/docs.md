@@ -25,6 +25,8 @@ To make it easy to provision the device we will use
 a SD card to store the OS, so you will need one SD card
 (1 GB or larger) per device.
 
+### Disk image and Artifacts
+
 Get the disk image and Artifacts for your device(s) from [Download demo images](../download-test-images).
 
 !!! It is possible to use this tutorial with *any* physical device, as long as you have integrated Mender with it. In this case you cannot use the demo Artifacts we provide in this tutorial, but you need to build your own artifacts as described in [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
