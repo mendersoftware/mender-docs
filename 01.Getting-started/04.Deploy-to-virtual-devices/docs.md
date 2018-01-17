@@ -14,7 +14,7 @@ Mender server to make it easy to test Mender.
 ## Prerequisites
 
 The test environment should be set up and working successfully
-as described in [Install a Mender demo server](../create-a-test-environment).
+as described in [Install a Mender demo server](../create-a-test-environment) and you should have downloaded the virtual Artifacts listed in [Download demo images](../download-test-images).
 
 
 ## Open the Mender UI
