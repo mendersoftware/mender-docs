@@ -332,29 +332,38 @@ Once the deployment completes, you should see its report in *Past deployments*.
 
 ## Deploy another update
 
-In order to deploy another update, we can modify the original Artifact as described in
-[Create a new Mender Artifact with the modified rootfs](#create-a-new-mender-artifact-with-the-modified-rootfs) above.
+In order to deploy another update, we need to create another Artifact
+with a different Artifact Name (than the one already installed at the devices).
+This is because Mender *skips a deployment* for a device if it detects that
+the Artifact is already installed, in order to avoid unnecessary deployments.
 
-However, note that the Artifact Name needs to change in the updated Artifact;
-a good candidate would be `release-2`.
-This is because Mender skips a deployment for a device if it detects that the
-Artifact is already installed. This needs to be changed in two places:
+To change the name of our existing Artifact, we can simply use `modify` and the `-n` option
+of the `mender-artifact` tool, first making a copy of the original. To do this,
+run these two commands (adjust the Artifact file name accordingly):
 
-* `/etc/mender/artifact_info` *inside* the root file system
-* the `-n` option to `mender-artifact`
 
-Please make sure that the Artifact Name is in sync at these two places,
-otherwise deployments using this Artifact will always fail.
+[start_autoupdate_beaglebone_release_2_x.x.x.mender]: #
 
-With that in mind, now might be a good time to tweak the rootfs, add some
-more Raspberry Pi 3 or BeagleBone Black devices to the environment and try to get the
-required blinkenlights going!
+```bash
+cp beaglebone_release_1_configured.mender beaglebone_release_2_configured.mender
+mender-artifact modify beaglebone_release_2_configured.mender -n release-2_master
+```
 
-If you want to build your own artifact for the Raspberry Pi 3 or BeagleBone Black,
-head over to the tutorial [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
+[end_autoupdate_beaglebone_release_2_x.x.x.mender]: #
+
+
+!!! Using`mender-artifact modify`, you can easily modify several configuration settings in existing disk image (`.sdimg`) and Mender Artifact (`.mender`) files, such as the server URI and certificate. See `mender-artifact help modify` for more options.
+
+Upload this modified Artifact file to your Mender server and deploy it to your device.
+You should see that the Artifact Name has changed after the deployment.
+Now that you have two Mender Artifact files that are configured for your
+network with different names, you can deploy updates back and forth between them.
 
 
 ## Integrate Mender with your device
+
+If you want to build your own artifact for the Raspberry Pi 3 or BeagleBone Black,
+head over to the tutorial [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
 
 Development devices like the Raspberry Pi 3 and BeagleBone Black
 are rarely used in production due to the cost of scaling and specific
