@@ -37,10 +37,7 @@ Download the Artifacts for your desired device types below:
 [autoupdate_raspberrypi3_release_2_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/raspberrypi3/raspberrypi3_release_2_master.mender
 
 
-To continue the tutorial download both Artifacts for the *Virtual* device.
+For the [Deploy to virtual devices tutorial](../deploy-to-virtual-devices), download both Artifacts for the *Virtual* device.
 
 If you have a BeagleBone Black or Raspberry Pi 3 you want to test Mender with
 as well, download the *disk image and both Artifacts* for it.
-
-After downloading the desired images, proceed to
-[Deploy to virtual devices](../deploy-to-virtual-devices).
