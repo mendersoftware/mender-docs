@@ -9,4 +9,4 @@ taxonomy:
 # Device integration
 
 A description of how to integrate Mender with your device.
-For commercial support, please see the [Board support offering](https://mender.io/product/board-support?target=_blank).
+For commercial support, please see the [Device support offering](https://mender.io/product/board-support?target=_blank).
