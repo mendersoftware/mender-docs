@@ -15,7 +15,7 @@ the client and the server:
 * `UpdatePollIntervalSeconds` sets the frequency the client will send an update check request to the server.
 Default value: 1800 seconds (30 minutes).
 
-* `InventoryPollIntervalSeconds` sets the frequency for periodically sending of inventory data.
+* `InventoryPollIntervalSeconds` sets the frequency for periodically sending [inventory data](../../inventory).
 Inventory data is always sent after each boot of the device, and after a new update has been
 correctly applied and committed by the device in addition to this periodic interval.
 Default value: 86400 seconds (one day). 
@@ -29,6 +29,8 @@ so updates can be deployed more quickly.
 But there is a trade-off, as the higher frequency is, the more load server will receive.
 If many clients are connected to one server, a high frequency
 will require more resources server-side to keep the environment responsive.
+
+!!! When in demo mode, which is used in the [prebuilt images](../../../getting-started/download-test-images) and set up with the [demo layer](../../../artifacts/building-mender-yocto-image#adding-the-meta-layers), the Mender client has more aggressive polling intervals to simplify testing. The defaults noted above does not apply to demo mode and you will see extra network traffic in demo mode.
 
 
 ## Changing the parameters
