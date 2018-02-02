@@ -4,6 +4,21 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender rocko-v2018.02
+
+_Released 02.02.2018_
+
+#### . (rocko-v2018.02)
+* mender: Append to fstab rather than replacing it.
+* Add mender-1.4.0b1 and mender-artifact-2.2.0b1 recipes.
+* Fix 'depends upon non-existent task' error in U-Boot recipes without auto patching.
+* Add mender-1.3.1 and mender-artifact-2.1.2 recipes.
+* QEMU: Raise systemd service timeout so that it boots properly on slow hosts.
+* Added new state script to wait for time sync to complete.
+* Fix "No rule to make target 'envtools'" error in some U-Boot builds.
+* Pregenerate SSH keys for all QEMU images.
+
+
 ## Mender v1.3.1
 
 _Released xx.xx.xxxx_
