@@ -4,6 +4,24 @@ taxonomy:
     category: docs
 ---
 
+## Mender v1.3.1
+
+_Released xx.xx.xxxx_
+
+#### integration (1.3.1)
+* Upgrade gui to 1.3.1.
+* Upgrade mender to 1.3.1.
+* Upgrade mender-artifact to 2.1.2.
+
+#### mender (1.3.1)
+* Print detailed logs about authorization errors.
+  ([MEN-1660](https://tracker.mender.io/browse/MEN-1660), [MEN-1661](https://tracker.mender.io/browse/MEN-1661))
+
+#### mender-artifact (2.1.2)
+* Fix ECDSA failures while signing and verifying artifact.
+  ([MEN-1470](https://tracker.mender.io/browse/MEN-1470))
+
+
 ## meta-mender rocko-v2018.01
 
 _Released 01.04.2018_
