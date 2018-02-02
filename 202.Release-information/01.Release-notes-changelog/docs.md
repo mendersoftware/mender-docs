@@ -4,6 +4,88 @@ taxonomy:
     category: docs
 ---
 
+## Mender v1.4.0b1
+
+_Released xx.xx.xxxx_
+
+#### deployments (1.4.0b1)
+* updated aws-go-sdk to v1.12.27
+* delete artifact from storage if parsing failed
+
+#### deviceadm (1.3.0b1)
+* PUT /devices/{id}/status (internal)
+
+#### gui (1.4.0b1)
+* Add checkbox option to remain logged in
+* add progress bar for individual devices updates
+  ([MEN-1558](https://tracker.mender.io/browse/MEN-1558))
+* make it possible to decomission a device that has never sent inventory
+* add request ID to snackbar
+* Added deployments in progress to header bar
+* Add Device notifications to top bar
+* Fix for showing incorrect device IDs
+  ([MEN-1536](https://tracker.mender.io/browse/MEN-1536))
+
+#### integration (1.4.0b1)
+* Upgrade Conductor to 1.8.1
+* replace dynomite with redis
+* fix http 404 on decommissioning
+* Update integration version references to 1.4.x.
+* Upgrade deployments to 1.4.0b1.
+* Upgrade deviceadm to 1.3.0b1.
+* Upgrade deviceauth to 1.4.0b1.
+* Upgrade gui to 1.4.0b1.
+* Upgrade inventory to 1.3.0b1.
+* Upgrade mender to 1.4.0b1.
+* Upgrade mender-api-gateway-docker to 1.4.0b1.
+* Upgrade mender-artifact to 2.2.0b1.
+* Upgrade useradm to 1.4.0b1.
+* replace dynomite with redis
+
+#### inventory (1.3.0b1)
+* Get all devices in a group with a single api-call.
+  ([MEN-811](https://tracker.mender.io/browse/MEN-811))
+
+#### mender (1.4.0b1)
+* Report update status for scripts and states
+  ([MEN-1015](https://tracker.mender.io/browse/MEN-1015))
+* Print detailed logs about authorization errors.
+  ([MEN-1660](https://tracker.mender.io/browse/MEN-1660), [MEN-1661](https://tracker.mender.io/browse/MEN-1661))
+* mender-device-identity: Check if file exists before reading
+  Mender on oragepi fails to run because identty script exit with error like:
+  /usr/share/mender/identity/mender-device-identity
+  cat: can't open '/sys/class/net/bonding_masters/type': Not a directory
+  Add check before reading type to avoid problems.
+* Remove trailing slash from server URL configuration.
+  ([MEN-1620](https://tracker.mender.io/browse/MEN-1620))
+
+#### mender-artifact (2.2.0b1)
+* Fix ECDSA failures while signing and verifying artifact.
+  ([MEN-1470](https://tracker.mender.io/browse/MEN-1470))
+* Fix broken header checksum verification.
+  ([MEN-1412](https://tracker.mender.io/browse/MEN-1412))
+* Add modify existing images and artifacts functionality.
+  ([MEN-1213](https://tracker.mender.io/browse/MEN-1213))
+* Artifact version 3 format documentation
+  ([MEN-1667](https://tracker.mender.io/browse/MEN-1667))
+* Mender-Artifact now returns an error code to the os on cli errors
+  ([MEN-1328](https://tracker.mender.io/browse/MEN-1328))
+* mender-artifact now fails with whitespace in the artifact-name
+  ([MEN-1355](https://tracker.mender.io/browse/MEN-1355))
+
+#### mender-api-gateway-docker (1.4.0b1)
+* reload-when-hosts-changed: silence cmp output
+* From now on it is possible to set rate limit per IP address
+  for the API using environment variables.
+  There are two variables:
+  RATE_LIMIT_GLOBAL_RATE=limit - number of request per second
+  RATE_LIMIT_GLOBAL_BURST=burst - burst parameter defines
+  how many requests a client can make in excess
+  of the rate specified by the limit.
+  Both parameters, limit and burst, should be numbers.
+* entrypoint: include mender-gui in monitored DNS names
+
+
 ## meta-mender rocko-v2018.01
 
 _Released 01.04.2018_
