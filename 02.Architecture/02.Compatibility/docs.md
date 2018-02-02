@@ -21,7 +21,7 @@ As another example, the Mender client supports one version of the server API, wh
 In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3.0) versions and the [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) is updated accordingly to easily support these new features (e.g. by exposing new [MENDER_* variables](../../artifacts/variables)). The [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) has branches corresponding to [versions of the Yocto Project](https://wiki.yoctoproject.org/wiki/Releases?target=_blank).
 
 |                     | meta-mender krogoth (2.1) and older | meta-mender morty (2.2) | meta-mender pyro (2.3) | meta-mender rocko (2.4) |
-|---------------------+-------------------------------------+-------------------------+------------------------+-------------------------|
+|---------------------|-------------------------------------|-------------------------|------------------------|-------------------------|
 | Mender client 1.0.x | no                                  | yes                     | no                     | no                      |
 | Mender client 1.1.x | no                                  | no                      | yes                    | no                      |
 | Mender client 1.2.x | no                                  | no                      | yes                    | yes                     |
@@ -39,6 +39,7 @@ The [Mender Artifact format](../mender-artifacts) is managed by the [Mender Arti
 | Mender 1.0.x / mender-artifact 1.0.x | yes         | no          |
 | Mender 1.1.x / mender-artifact 2.0.x | yes         | yes         |
 | Mender 1.2.x / mender-artifact 2.1.x | yes         | yes         |
+| Mender 1.3.x / mender-artifact 2.1.x | yes         | yes         |
 
 !! Older Mender clients do not support newer versions of the Artifact format; they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../artifacts/modifying-a-mender-artifact#write-a-new-artifact) for an introduction how to do this.
 
@@ -52,3 +53,4 @@ The compatibility between the Mender server and client is managed by the [Device
 | API v1 | 1.0.x                  | 1.0.x                  |
 |        | 1.1.x                  | 1.1.x                  |
 |        | 1.2.x                  | 1.2.x                  |
+|        | 1.3.x                  | 1.3.x                  |
