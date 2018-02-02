@@ -259,4 +259,4 @@ For convenience, we can also make sure the `mender-artifact` utility is in PATH:
 export PATH=$PATH:$GOPATH/bin
 ```
 
-[autoupdate_x.x.x_mender-artifact]: https://d25phv8h0wbwru.cloudfront.net/master/tip/mender-artifact
+[autoupdate_x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/master/mender-artifact
