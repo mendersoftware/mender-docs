@@ -39,7 +39,7 @@ changes are relatively simple.
 
 For an example, take a look at [the patch provided for the `vexpress-qemu`
 `MACHINE`
-type](https://github.com/mendersoftware/meta-mender/blob/master/meta-mender-qemu/recipes-bsp/u-boot/patches/experimental/0002-Enable-custom-bootlimit-code-for-vexpress-qemu.patch).
+type](https://github.com/mendersoftware/meta-mender/blob/1.4.0b1/meta-mender-qemu/recipes-bsp/u-boot/patches/experimental/0002-Enable-custom-bootlimit-code-for-vexpress-qemu.patch).
 You can try this patch by adding this to your `u-boot-my-fork.bb` or
 `u-boot-my-fork.bbappend` file:
 

@@ -276,7 +276,7 @@ To create a Mender Artifact from a root file system, it is easiest to download
 [the prebuilt mender-artifact tool][autoupdate_x.x.x_mender-artifact] available
 for Linux.
 
-[autoupdate_x.x.x_mender-artifact]: https://d25phv8h0wbwru.cloudfront.net/master/tip/mender-artifact
+[autoupdate_x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.2.0b1/mender-artifact
 
 Download the tool and add execute permission (e.g. with `chmod +x mender-artifact`).
 
