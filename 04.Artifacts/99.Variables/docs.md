@@ -128,6 +128,15 @@ Features appended to this variable will be enabled in the build. See [the
 section on features](../image-configuration/features) for more information.
 
 
+#### MENDER_KERNEL_IMAGETYPE_FORCE
+
+In certain build scenarios, the detection of kernel image type may not work
+for specific boards.  This is usually caused by custom post-processing steps
+required to generate the images bypassing the standard Yocto logic.  Setting
+this variable will ensure that Mender packages the proper files in these
+cases.
+
+
 #### MENDER_MTD_UBI_DEVICE_NAME
 
 The MTD part name where UBI volumes are stored.
