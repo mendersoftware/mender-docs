@@ -61,6 +61,18 @@ If the system loses power during an update, there are two cases that will need t
 - Power is lost during the execution of `ArtifactCommit_Leave`, in which case the `ArtifactCommit_Leave` scripts will be rerun, on the newly installed partition, at startup before resuming normal execution with the successfully installed update.
 Since these scripts can potentially be rerun in the event of a powerloss, the two script types must be written to be idempotent. That is, each script in any of these states must be written so that it behaves correctly even if some, or all, of its steps have already been partially or completely carried out, since a powerloss in any of these two states will cause all of the scripts to be rerun. Please be aware though, that this is strictly limited to `ArtifactFailure_Enter`, `ArtifactFailure_Leave` and `ArtifactCommit_Leave`, no other scripts will ever be rerun by the mender-client in case of a powerloss or a crash.
 
+## State script logging
+
+Mender captures the standard error (but not standard out) stream from
+state scripts. The standard error stream from state scripts is stored
+as part of the Mender deployment log, so it becomes available
+[locally on the client](../../troubleshooting/mender-client#deployment-log-files)
+as well as reported to the server (if the deployment fails) to ease diagnostics.
+
+Thus the state scripts should be written so they output diagnostics
+information to standard error, especially in case of failure
+(returning 1). The maximum size of the log is 10KiB per state script,
+anything above this volume will be truncated.
 
 ## Retry-later
 
