@@ -142,6 +142,7 @@ bdcdd
 beagleboard
 BeagleBone
 beaglebone
+beagleboneblack
 Beaty
 behaviour
 Benoit
@@ -249,6 +250,7 @@ cloudfront
 cmd
 cmdline
 cmdlinepart
+cmp
 CN
 CNs
 co
@@ -276,6 +278,7 @@ controlâ
 cookiejar
 CORS
 CortexA
+cortexa
 cosmosio
 Cousens
 Couto
@@ -381,10 +384,12 @@ doug
 downtime
 doyabzhx
 drbg
+dropdown
 dropzone
 Drucker
 dsfjhkksd
 dtb
+dtbos
 dtc
 DTS
 DULG
@@ -426,6 +431,7 @@ entrypoint
 enum
 env
 envify
+envtools
 ep
 Eran
 Eraseblock
@@ -541,6 +547,7 @@ glos
 gmail
 gmO
 GMT
+gnueabi
 gnupg
 GoDoc
 godoc
@@ -581,6 +588,7 @@ Hashimoto
 hcl
 hellman
 helptips
+hf
 Hiesey
 hmac
 hocevar
@@ -708,6 +716,7 @@ kv
 kvsoftware
 LaFreniere
 LBA
+lcd
 lcid
 lcTO
 LDFLAGS
@@ -751,6 +760,7 @@ localconf
 localhost
 lodash
 loganfsmyth
+Logfile
 logrus
 loopback
 losetup
@@ -902,6 +912,7 @@ npm
 npmjs
 nq
 NqdBmPjKb
+nRPi
 nRSpSW
 nsIB
 num
@@ -910,6 +921,7 @@ nxp
 nZNR
 oauth
 oBaB
+objcopy
 objx
 Oct
 oe
@@ -933,6 +945,7 @@ openresty
 OpenSSL
 openssl
 optimise
+orangepi
 orchestrator
 org
 os
@@ -989,6 +1002,7 @@ Pragma
 pre
 prebuilt
 prefixer
+Pregenerate
 preinstalls
 prev
 printenv
@@ -1038,6 +1052,7 @@ recipientsâ
 recompose
 redbox
 redeployed
+redis
 redux
 reescape
 ref
@@ -1144,6 +1159,7 @@ shtylman
 sidebar
 sig
 sigmund
+signup
 Simonov
 SimpleError
 simpleerror
@@ -1156,6 +1172,7 @@ SKU
 Slinko
 Slobodskoi
 SN
+snackbar
 sntp
 Softwareâ
 sokra
@@ -1191,12 +1208,15 @@ statescripttimeoutseconds
 StateScriptTimeoutSeconds
 stats
 stderr
+stdin
 StdinOnce
+stdout
 Stefan
 stevenlevithan
 Stofer
 Stol
 STORIS
+STR
 streamify
 stretchr
 stringify
@@ -1258,6 +1278,7 @@ Tobias
 toml
 tool's
 tooltip
+tooltips
 tootallnate
 toradex
 TORTIOUS
@@ -1324,6 +1345,7 @@ URIs
 url
 urls
 usb
+usbkbd
 useradm
 userâ
 userid

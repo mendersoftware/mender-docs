@@ -34,7 +34,7 @@ _Released xx.xx.xxxx_
 * Add checkbox option to remain logged in
 * add progress bar for individual devices updates
   ([MEN-1558](https://tracker.mender.io/browse/MEN-1558))
-* make it possible to decomission a device that has never sent inventory
+* make it possible to decommission a device that has never sent inventory
 * add request ID to snackbar
 * Added deployments in progress to header bar
 * Add Device notifications to top bar
@@ -67,7 +67,7 @@ _Released xx.xx.xxxx_
 * Print detailed logs about authorization errors.
   ([MEN-1660](https://tracker.mender.io/browse/MEN-1660), [MEN-1661](https://tracker.mender.io/browse/MEN-1661))
 * mender-device-identity: Check if file exists before reading
-  Mender on oragepi fails to run because identty script exit with error like:
+  Mender on orangepi fails to run because identity script exit with error like:
   /usr/share/mender/identity/mender-device-identity
   cat: can't open '/sys/class/net/bonding_masters/type': Not a directory
   Add check before reading type to avoid problems.
