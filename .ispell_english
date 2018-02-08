@@ -276,6 +276,7 @@ controlâ
 cookiejar
 CORS
 CortexA
+cortexa
 cosmosio
 Cousens
 Couto
@@ -385,6 +386,7 @@ dropzone
 Drucker
 dsfjhkksd
 dtb
+dtbos
 dtc
 DTS
 DULG
@@ -541,6 +543,7 @@ glos
 gmail
 gmO
 GMT
+gnueabi
 gnupg
 GoDoc
 godoc
@@ -581,6 +584,7 @@ Hashimoto
 hcl
 hellman
 helptips
+hf
 Hiesey
 hmac
 hocevar
@@ -708,6 +712,7 @@ kv
 kvsoftware
 LaFreniere
 LBA
+lcd
 lcid
 lcTO
 LDFLAGS
@@ -751,6 +756,7 @@ localconf
 localhost
 lodash
 loganfsmyth
+Logfile
 logrus
 loopback
 losetup
@@ -902,6 +908,7 @@ npm
 npmjs
 nq
 NqdBmPjKb
+nRPi
 nRSpSW
 nsIB
 num
@@ -910,6 +917,7 @@ nxp
 nZNR
 oauth
 oBaB
+objcopy
 objx
 Oct
 oe
@@ -1144,6 +1152,7 @@ shtylman
 sidebar
 sig
 sigmund
+signup
 Simonov
 SimpleError
 simpleerror
@@ -1191,12 +1200,15 @@ statescripttimeoutseconds
 StateScriptTimeoutSeconds
 stats
 stderr
+stdin
 StdinOnce
+stdout
 Stefan
 stevenlevithan
 Stofer
 Stol
 STORIS
+STR
 streamify
 stretchr
 stringify
@@ -1324,6 +1336,7 @@ URIs
 url
 urls
 usb
+usbkbd
 useradm
 userâ
 userid
