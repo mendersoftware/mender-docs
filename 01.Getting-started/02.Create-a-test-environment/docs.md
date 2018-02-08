@@ -17,7 +17,7 @@ environment:
 [start_autoupdate_integration_archive_x.x.x.tar.gz]: #
 
 ```bash
-curl -L https://github.com/mendersoftware/integration/archive/1.4.0b1.tar.gz | tar xz
+curl -L https://d1b0l86ne08fsf.cloudfront.net/integration/integration-1.4.0b1.tar.gz | tar xz
 ```
 
 [end_autoupdate_integration_archive_x.x.x.tar.gz]: #
