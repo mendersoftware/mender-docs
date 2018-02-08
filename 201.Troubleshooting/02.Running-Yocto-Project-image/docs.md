@@ -23,3 +23,38 @@ This sometimes happens when using one of the minimal images from the Yocto Proje
   ```
 
   This is an easier fix, but also requires more space in the image than the previous solution, since all modules will be included, not just the missing one.
+
+## System stops at U-Boot prompt
+
+There are reports of some systems having trouble running the U-Boot boot commands and getting stuck at the U-Boot prompt. This has, notably, been reported to
+happen on the Raspberry Pi family of boards with certain serial port adapters. In the failing scenario, it is believed that the serial port adapter is electrically
+noisy resulting in spurious data on the console that is interpreted by U-Boot as the user intentionally interrupting the boot process. It is unclear which
+brands of serial port adapters cause this issue or if certain boards are more susceptible than others.
+
+If you are experiencing this issue, there are several proposed workarounds that you should try:
+
+* Disable the serial console by editing config.txt.  With Yocto builds you can set the following in your local.conf to disable this:
+
+  ```bash
+  ENABLE_UART = "0"
+  ```
+
+* Change the U-Boot configuration to disable the UART for console input. Adding the following to the U-Boot environment has been reported to address this
+in some situations:
+
+  ```bash
+  setenv stdout lcd
+  setenv stderr lcd
+  setenv stdin usbkbd
+  ```
+
+* Modify the U-Boot code to require a different key sequence to interrupt the boot. Some tweaking of the following settings in the U-Boot code may
+help here:
+
+  ```bash
+  #define CONFIG_AUTOBOOT_KEYED
+  #define CONFIG_AUTOBOOT_PROMPT \
+      "\nRPi - booting... stop with ENTER\n"
+  #define CONFIG_AUTOBOOT_DELAY_STR "\r"
+  #define CONFIG_AUTOBOOT_DELAY_STR2 "\n"
+  ```

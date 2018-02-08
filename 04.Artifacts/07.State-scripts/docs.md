@@ -55,6 +55,18 @@ If a script returns `0` Mender proceeds, but if it returns `1` the update is abo
 In addition, return code `21` is used for the [retry-later](#retry-later) feature.
 All other return codes are reserved for future use by Mender and should not be used.
 
+## State script logging
+
+Mender captures the standard error (but not standard out) stream from
+state scripts. The standard error stream from state scripts is stored
+as part of the Mender deployment log, so it becomes available
+[locally on the client](../../troubleshooting/mender-client#deployment-log-files)
+as well as reported to the server (if the deployment fails) to ease diagnostics.
+
+Thus the state scripts should be written so they output diagnostics
+information to standard error, especially in case of failure
+(returning 1). The maximum size of the log is 10KiB per state script,
+anything above this volume will be truncated.
 
 ## Retry-later
 
