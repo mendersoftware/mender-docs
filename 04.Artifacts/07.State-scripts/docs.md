@@ -47,12 +47,36 @@ There can be more than one script for a given state. Each script contains an ord
 For example, `Download_Enter_05_wifi-driver` and `Download_Enter_10_ask-user` are both run before the `Download` state, and the `wifi-driver` script would run before the `ask-user` script. The ordering between the states depends on the outcome of the states run, please see [state transition ordering](#state-transition-ordering) for the most common cases.
 
 **There are no arguments passed to the scripts.**
-**If a script returns 0 Mender proceeds, but if it returns 1 the update is aborted and rolled back. All other return codes are reserved for future use by Mender and should not be used.**
+
+
+## Script return codes
+
+If a script returns `0` Mender proceeds, but if it returns `1` the update is aborted and rolled back.
+In addition, return code `21` is used for the [retry-later](#retry-later) feature.
+All other return codes are reserved for future use by Mender and should not be used.
+
+## State script logging
+
+Mender captures the standard error (but not standard out) stream from
+state scripts. The standard error stream from state scripts is stored
+as part of the Mender deployment log, so it becomes available
+[locally on the client](../../troubleshooting/mender-client#deployment-log-files)
+as well as reported to the server (if the deployment fails) to ease diagnostics.
+
+Thus the state scripts should be written so they output diagnostics
+information to standard error, especially in case of failure
+(returning 1). The maximum size of the log is 10KiB per state script,
+anything above this volume will be truncated.
+
+## Retry-later
+
+State scripts are allowed to return a specific error code, in order to rerun at a later time. Thus if a script returns the error code `21`, the client will sleep for a default time of one minute, or for a user-specified interval `StateScriptRetryTimeoutSeconds`, which can be [set in the mender config](../../client-configuration/configuration-file). Also note that scripts are not allowed to retry for infinitely long. Either a standard max window of thirty minutes is allocated to each script, or this can be configured manually by using the mender config variable `StateScriptRetryIntervalSeconds`.
 
 
 ## Example use cases
 
 Mender users will probably come up with a lot of interesting use cases for state scripts, and we will cover some well-known ones below for inspiration.
+
 
 #### Application data migration
 In this case, application data like a user profile is stored in an SQLite database and a new column need to be added before starting the new version of the application. This can be achieved by adding a state script to `ArtifactReboot_Enter` (that would run after writing the new rootfs, but before rebooting). This script can then do the necessary migrations on the data partition before the new version of the application is brought up after the reboot.
@@ -61,9 +85,9 @@ In this case, application data like a user profile is stored in an SQLite databa
 #### Update confirmation by end user
 For many devices with a display that interacts with an end user, it is desirable to ask the user before applying the update. You have probably seen this on a smartphone, where it will ask you if you want to update to the latest release of Android or iOS and it only starts after you hit "Apply".
 
-Mender state scripts enable this use case with a script written to create the dialog box on the UI framework used. The script will simply wait for user input, and Mender will wait with the update process while waiting for the script to finish. Depending on what the user selects, the script can return 0 (proceed) or 1 (stop). This script can be run in the `Download_Enter` state, for example.
+Mender state scripts enable this use case with a script written to create the dialog box on the UI framework used. The script will simply wait for user input, and Mender will wait with the update process while waiting for the script to finish. Depending on what the user selects, the script can return `0` (proceed) or `21` ([retry later](#retry-later)). This script can be run in the `Download_Enter` state, for example.
 
-Make sure to [increase the default timeout for state scripts](../../client-configuration/configuration-file/configuration-options#statescripttimeoutseconds) to enable this use case.
+Make sure to adjust `StateScriptRetryIntervalSeconds` as described in [retry later](#retry-later) to enable this use case.
 
 
 #### Custom sanity checks after the update is installed
