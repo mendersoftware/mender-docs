@@ -147,6 +147,7 @@ behaviour
 Benoit
 Bevry
 bf
+bindir
 bitbake
 bitbucket
 Bjarne
@@ -218,6 +219,7 @@ ccdc
 CCmYA
 cd
 cdaab
+cdf
 ce
 cert
 certs
@@ -249,6 +251,7 @@ cloudfront
 cmd
 cmdline
 cmdlinepart
+cmp
 CN
 CNs
 co
@@ -266,6 +269,7 @@ commonjs
 CompactFlash
 concat
 conf
+CONFFILES
 confi
 config
 configs
@@ -276,6 +280,7 @@ controlâ
 cookiejar
 CORS
 CortexA
+cortexa
 cosmosio
 Cousens
 Couto
@@ -303,6 +308,7 @@ da
 dae
 dashdash
 dat
+datadir
 dateformat
 dave
 davec
@@ -312,6 +318,7 @@ db
 dbd
 dbg
 DBs
+dbus
 dc
 dd
 ddbad
@@ -381,10 +388,12 @@ doug
 downtime
 doyabzhx
 drbg
+dropdown
 dropzone
 Drucker
 dsfjhkksd
 dtb
+dtbos
 dtc
 DTS
 DULG
@@ -426,6 +435,7 @@ entrypoint
 enum
 env
 envify
+envtools
 ep
 Eran
 Eraseblock
@@ -482,7 +492,7 @@ fefbdfa
 Feross
 ffd
 FHANDLE
-Fi
+fi
 fido
 filepath
 fileserver
@@ -541,6 +551,7 @@ glos
 gmail
 gmO
 GMT
+gnueabi
 gnupg
 GoDoc
 godoc
@@ -581,6 +592,7 @@ Hashimoto
 hcl
 hellman
 helptips
+hf
 Hiesey
 hmac
 hocevar
@@ -708,6 +720,7 @@ kv
 kvsoftware
 LaFreniere
 LBA
+lcd
 lcid
 lcTO
 LDFLAGS
@@ -724,6 +737,7 @@ LGPLv
 LgsyzPWvLAGIsXYnR
 Li
 lib
+libdir
 libpseudo
 libs
 libyaml
@@ -745,12 +759,14 @@ LLC
 LLjYYXAqK
 llsd
 lmdb
+ln
 loadaddr
 loadimage
 localconf
 localhost
 lodash
 loganfsmyth
+Logfile
 logrus
 loopback
 losetup
@@ -902,6 +918,7 @@ npm
 npmjs
 nq
 NqdBmPjKb
+nRPi
 nRSpSW
 nsIB
 num
@@ -910,6 +927,7 @@ nxp
 nZNR
 oauth
 oBaB
+objcopy
 objx
 Oct
 oe
@@ -926,6 +944,7 @@ onSsnFXHXZUjbNZukNK
 ooPae
 ooPaeT
 OpenEmbedded
+openembedded
 OpenLDAP
 openre
 OpenResty
@@ -933,6 +952,7 @@ openresty
 OpenSSL
 openssl
 optimise
+orangepi
 orchestrator
 org
 os
@@ -940,6 +960,7 @@ oSiyqW
 OSX
 outpipe
 Oxley
+PACKAGECONFIG
 pako
 Pankoff
 Param
@@ -989,6 +1010,7 @@ Pragma
 pre
 prebuilt
 prefixer
+Pregenerate
 preinstalls
 prev
 printenv
@@ -1038,6 +1060,7 @@ recipientsâ
 recompose
 redbox
 redeployed
+redis
 redux
 reescape
 ref
@@ -1055,6 +1078,7 @@ relink
 relinquishment
 repacking
 RequestID
+resolv
 RESTful
 restparam
 RetryPollIntervalSeconds
@@ -1076,6 +1100,7 @@ rootfsb
 RootfsPartA
 RootfsPartB
 rootfstype
+rootlibexecdir
 rpi
 RPROVIDER
 RPROVIDES
@@ -1144,6 +1169,7 @@ shtylman
 sidebar
 sig
 sigmund
+signup
 Simonov
 SimpleError
 simpleerror
@@ -1156,6 +1182,7 @@ SKU
 Slinko
 Slobodskoi
 SN
+snackbar
 sntp
 Softwareâ
 sokra
@@ -1191,12 +1218,15 @@ statescripttimeoutseconds
 StateScriptTimeoutSeconds
 stats
 stderr
+stdin
 StdinOnce
+stdout
 Stefan
 stevenlevithan
 Stofer
 Stol
 STORIS
+STR
 streamify
 stretchr
 stringify
@@ -1223,8 +1253,10 @@ sys
 sysconfdir
 sysfs
 syslog
+systemctl
 systemd
 systemjs
+sysv
 sysvinit
 Talmage
 tapable
@@ -1254,10 +1286,12 @@ tLOdXZ
 TLS
 tmp
 tmpdir
+tmpfiles
 Tobias
 toml
 tool's
 tooltip
+tooltips
 tootallnate
 toradex
 TORTIOUS
@@ -1307,6 +1341,7 @@ Unger
 ungerik
 unicode
 uniq
+unitdir
 unlicense
 unmarshal
 Unprocessable
@@ -1324,6 +1359,7 @@ URIs
 url
 urls
 usb
+usbkbd
 useradm
 userâ
 userid
@@ -1393,6 +1429,7 @@ writerc
 Wu
 www
 XD
+xdg
 XG
 xiaoba
 xor
