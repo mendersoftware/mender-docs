@@ -142,6 +142,7 @@ bdcdd
 beagleboard
 BeagleBone
 beaglebone
+beagleboneblack
 Beaty
 behaviour
 Benoit
@@ -276,6 +277,7 @@ controlâ
 cookiejar
 CORS
 CortexA
+cortexa
 cosmosio
 Cousens
 Couto
@@ -381,10 +383,12 @@ doug
 downtime
 doyabzhx
 drbg
+dropdown
 dropzone
 Drucker
 dsfjhkksd
 dtb
+dtbos
 dtc
 DTS
 DULG
@@ -426,6 +430,7 @@ entrypoint
 enum
 env
 envify
+envtools
 ep
 Eran
 Eraseblock
@@ -541,6 +546,7 @@ glos
 gmail
 gmO
 GMT
+gnueabi
 gnupg
 GoDoc
 godoc
@@ -581,6 +587,7 @@ Hashimoto
 hcl
 hellman
 helptips
+hf
 Hiesey
 hmac
 hocevar
@@ -708,6 +715,7 @@ kv
 kvsoftware
 LaFreniere
 LBA
+lcd
 lcid
 lcTO
 LDFLAGS
@@ -751,6 +759,7 @@ localconf
 localhost
 lodash
 loganfsmyth
+Logfile
 logrus
 loopback
 losetup
@@ -902,6 +911,7 @@ npm
 npmjs
 nq
 NqdBmPjKb
+nRPi
 nRSpSW
 nsIB
 num
@@ -910,6 +920,7 @@ nxp
 nZNR
 oauth
 oBaB
+objcopy
 objx
 Oct
 oe
@@ -989,6 +1000,7 @@ Pragma
 pre
 prebuilt
 prefixer
+Pregenerate
 preinstalls
 prev
 printenv
@@ -1144,6 +1156,7 @@ shtylman
 sidebar
 sig
 sigmund
+signup
 Simonov
 SimpleError
 simpleerror
@@ -1191,12 +1204,15 @@ statescripttimeoutseconds
 StateScriptTimeoutSeconds
 stats
 stderr
+stdin
 StdinOnce
+stdout
 Stefan
 stevenlevithan
 Stofer
 Stol
 STORIS
+STR
 streamify
 stretchr
 stringify
@@ -1258,6 +1274,7 @@ Tobias
 toml
 tool's
 tooltip
+tooltips
 tootallnate
 toradex
 TORTIOUS
@@ -1324,6 +1341,7 @@ URIs
 url
 urls
 usb
+usbkbd
 useradm
 userâ
 userid
