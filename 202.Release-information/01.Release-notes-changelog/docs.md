@@ -21,7 +21,7 @@ _Released 02.02.2018_
 
 ## Mender v1.3.1
 
-_Released xx.xx.xxxx_
+_Released 02.09.2018_
 
 #### integration (1.3.1)
 * Upgrade gui to 1.3.1.
