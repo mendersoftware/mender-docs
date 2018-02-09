@@ -21,7 +21,7 @@ _Released 02.02.2018_
 
 ## Mender v1.4.0b1
 
-_Released xx.xx.xxxx_
+_Released 02.09.2018_
 
 #### deployments (1.4.0b1)
 * updated aws-go-sdk to v1.12.27
