@@ -1,11 +1,11 @@
 ---
-title: "Development"
+title: "1.4"
 taxonomy:
     category: docs
 ---
 
-### Development
+### 1.4
 
 # Documentation
 
-Documentation for Mender's bleeding-edge master branch.
+Documentation for Mender 1.4.
