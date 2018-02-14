@@ -94,7 +94,7 @@ You should see output similar to the following:
 ### Set a static device IP address and subnet
 
 This section assumes you use a static IP setup.
-If your device device uses a DHCP setup,
+If your device uses a DHCP setup,
 you can skip to [Unmount the disk image](#unmount-the-disk-image).
 In this section, we assume that `$IP_OF_MENDER_CLIENT` is
 the IP address you assign to your device.
@@ -117,12 +117,12 @@ Gateway=$IP_OF_MENDER_SERVER_FROM_DEVICE
 
 You should see output similar to the following:
 
-> [Match]  
-> Name=eth0  
-  
-> [Network]  
-> Address=192.168.10.2  
-> Gateway=192.168.10.1  
+> [Match]
+> Name=eth0
+
+> [Network]
+> Address=192.168.10.2
+> Gateway=192.168.10.1
 
 
 ! If you have a static IP address setup for several devices, you need several disk images so each get different IP addresses. After unmounting (as described below), you can copy it and mount another one.
@@ -172,7 +172,7 @@ you should see one or more devices pending authorization.
 
 Once you **authorize** these devices, Mender will auto-discover
 inventory about the devices, including the device type (e.g. beaglebone)
-and the IP addresses, as shown in the example with a BeagleBone Black below. 
+and the IP addresses, as shown in the example with a BeagleBone Black below.
 Which information is collected about devices is fully configurable; see the documentation on [Identity](../../client-configuration/identity) and [Inventory](../../client-configuration/inventory) for more information.
 
 ![Mender UI - Device information for BeagleBone Black](device_information_bbb.png)
@@ -199,7 +199,7 @@ the steps needed to edit the root file system contained in this Artifact are:
 [start_autoupdate_beaglebone_release_1_x.x.x.mender]: #
 
 ```bash
-mkdir beaglebone_release_1 && tar -C beaglebone_release_1 -xvf beaglebone_release_1_1.3.0.mender
+mkdir beaglebone_release_1 && tar -C beaglebone_release_1 xvf beaglebone_release_1_1.3.0.mender
 ```
 
 [end_autoupdate_beaglebone_release_1_x.x.x.mender]: #
@@ -245,12 +245,12 @@ Gateway=$IP_OF_MENDER_SERVER_FROM_DEVICE
 
 You should see output similar to the following:
 
-> [Match]  
-> Name=eth0  
-  
-> [Network]  
-> Address=192.168.10.2  
-> Gateway=192.168.10.1  
+> [Match]
+> Name=eth0
+
+> [Network]
+> Address=192.168.10.2
+> Gateway=192.168.10.1
 
 
 !!! The Mender client will roll back the deployment if it is not able to report the final update status to the server when it boots from the updated partition. This helps ensure that you can always deploy a new update to your device, even when fatal conditions like network misconfiguration occur.
