@@ -42,7 +42,7 @@ In this example there are four partitions (plus an extended partition). Please s
 partitions Mender uses. The two Linux partitions in the middle, at device
 `.sdimg2` and `.sdimg3`, are the two rootfs partitions.
 
-First, we need to know the *sector size*. This is shown by the third line of the output,
+First, we need to know the *sector size*. This is shown by the second line of the output,
 in bold below:
 
 > Units = sectors of 1 * 512 = **512** bytes
@@ -51,8 +51,8 @@ The second piece of information we need is the *start sector* of the partition w
 This is the second column in the output from `fdisk`. The start sector is shown in bold below for
 our two rootfs partitions:
 
-> mender-beaglebone.sdimg2       **81920** 294911  212992  104M 83 Linux  
-> mender-beaglebone.sdimg3      **294912** 507903  212992  104M 83 Linux  
+> mender-beaglebone.sdimg2       **81920** 294911  212992  104M 83 Linux
+> mender-beaglebone.sdimg3      **294912** 507903  212992  104M 83 Linux
 
 In order to mount a partition we simply multiply the sector size and the start sector
 and pass that to `mount`. You can use `bash` to do this calculation for you.
