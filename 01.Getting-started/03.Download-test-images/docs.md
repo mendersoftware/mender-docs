@@ -8,6 +8,8 @@ Pre-built demo images for a set of reference devices are provided below, so you 
 
 !!! Steps to build Artifacts for other device types and with custom software are provided at [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image), however we recommend using the demo images first.
 
+! Do not use these images if you are using [Hosted Mender](https://hosted.mender.io?target=_blank). Instead, use the images customized for your account from [Hosted Mender's Help section](https://hosted.mender.io/ui/?target=_blank#/help).
+
 There are two types of images:
 * Disk images (`*.sdimg`): Used to provision the device storage for devices without Mender running already.
 * Mender Artifacts (`*.mender`): Upload them to the Mender server in order to deploy new root file systems to devices already running Mender and registered with the server.
