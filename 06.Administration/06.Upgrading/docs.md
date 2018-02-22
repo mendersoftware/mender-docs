@@ -35,6 +35,13 @@ Consult the MongoDB and Docker manuals for the necessary steps.
 The [Backup and restore](../backup-and-restore) chapter provides examples and
 introduces example tools provided in Mender integration repository.
 
+## Cleaning up the deviceauth database after device decommissioning.
+
+Before upgrading it is advisable to clean up any leftover devices from the deviceauth database.
+These can sometimes happen due to device decommissioning.
+You can find instructions on how to clean up the deviceauth database
+in the [Troubleshooting](../../troubleshooting/mender-server) chapter.
+
 ## Updating your local repository
 
 The first step is to upgrade your local repository by pulling changes from the
