@@ -175,13 +175,13 @@ IMAGE_FSTYPES = "ext4"
 
 ## Building the image
 
-Once all the configuration steps are done, an image can be built with bitbake:
+Once all the configuration steps are done, build an image with bitbake:
 
 ```bash
 bitbake <YOUR-TARGET>
 ```
 
-!!! Please replace `<YOUR-TARGET>` with the desired target or image name. If you are building for `vexpress-qemu`, set the target to `core-image-full-cmdline`. If you are building for the `beaglebone`, set the target to `core-image-base`. For more information about the differences with image types on the BeagleBone Black please see [the official Yocto Project BeagleBone support page](https://www.yoctoproject.org/downloads/bsps/pyro23/beaglebone?target=_blank).
+Replace `<YOUR-TARGET>` with the desired target or image name, e.g. `core-image-full-cmdline`.
 
 !!! The first time you build a Yocto Project image, the build process can take several hours. The successive builds will only take a few minutes, so please be patient this first time.
 
