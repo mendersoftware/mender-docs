@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant User
+    participant Device
+    participant Device Admission
+    participant Device Authentication
+
+    User->>Device Admission: 1. POST /api/management/v1/admission/devices
+    Note over User,Device Admission: contains auth set (id data + public key)
+    Device Admission->>Device Authentication: 2. POST  /api/management/v1/devauth/devices
+    Note over  Device Admission, Device Authentication: propagate auth set
+    User->>Device: 3. Transfer identity data + public key
+    Device->>+Device Authentication: 4. POST /api/devices/v1/auth_requests
+    Device Authentication->>-Device: 5. return JWT auth token
