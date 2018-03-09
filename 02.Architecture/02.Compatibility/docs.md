@@ -21,7 +21,7 @@ As another example, the Mender client supports one version of the server API, wh
 In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3.0) versions and the [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) is updated accordingly to easily support these new features (e.g. by exposing new [MENDER_* variables](../../artifacts/variables)). The [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) has branches corresponding to [versions of the Yocto Project](https://wiki.yoctoproject.org/wiki/Releases?target=_blank).
 
 |                     | meta-mender krogoth (2.1) and older | meta-mender morty (2.2) | meta-mender pyro (2.3) | meta-mender rocko (2.4) |
-|---------------------+-------------------------------------+-------------------------+------------------------+-------------------------|
+|---------------------|-------------------------------------|-------------------------|------------------------|-------------------------|
 | Mender client 1.0.x | no                                  | yes                     | no                     | no                      |
 | Mender client 1.1.x | no                                  | no                      | yes                    | no                      |
 | Mender client 1.2.x | no                                  | no                      | yes                    | yes                     |
