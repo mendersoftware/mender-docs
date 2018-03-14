@@ -17,7 +17,7 @@ environment:
 [start_autoupdate_integration_archive_x.x.x.tar.gz]: #
 
 ```bash
-curl -L https://github.com/mendersoftware/integration/archive/master.tar.gz | tar xz
+git clone -b master https://github.com/mendersoftware/integration.git integration-master
 ```
 
 [end_autoupdate_integration_archive_x.x.x.tar.gz]: #
