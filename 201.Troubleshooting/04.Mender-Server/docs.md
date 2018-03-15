@@ -8,6 +8,19 @@ This document details troubleshooting steps for the most common problems with th
 The first part applies to all installations, while the section below on Production installations
 only applies when the Mender server is [installed for production](../../administration/production-installation).
 
+## Cleaning up the deviceauth database after device decommissioning.
+It is possible that after the device decommissioning operation there will be some unaccessible and unnecessary data in the deviceauth database.
+In this case, you should clean your deviceauth database.
+
+Is is recommended to backup your data before performing the clean up operation.
+The [Backup and restore](../../administration/backup-and-restore) chapter provides examples and
+introduces example tools provided in Mender integration repository.
+
+To clean up the deviceauth database, run the following from within the integration repository:
+```
+docker-compose exec mender-device-auth /usr/bin/deviceauth maintenance --decommissioning-cleanup
+```
+
 ##The virtual QEMU device is not showing up in test mode
 
 When running the Mender server in test mode, as described in the [getting started tutorial](../../getting-started/deploy-to-virtual-devices),
