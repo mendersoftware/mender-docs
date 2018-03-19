@@ -4,6 +4,25 @@ taxonomy:
     category: docs
 ---
 
+## Mender v1.4.0
+
+_Released xx.xx.xxxx_
+
+#### integration (1.4.0)
+* Upgrade deployments to 1.4.0.
+* Upgrade deviceadm to 1.3.0.
+* Upgrade deviceauth to 1.4.0.
+* Upgrade gui to 1.4.0.
+* Upgrade inventory to 1.3.0.
+* Upgrade mender to 1.4.0.
+* Upgrade mender-api-gateway-docker to 1.4.0.
+* Upgrade mender-artifact to 2.2.0.
+* Upgrade useradm to 1.4.0.
+
+#### mender (1.4.0)
+* Allow multiple digit partition numbers.
+
+
 ## meta-mender rocko-v2018.02
 
 _Released 02.02.2018_
