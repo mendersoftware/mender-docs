@@ -4,6 +4,19 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender rocko-v2018.03
+
+_Released 03.19.2018_
+
+#### meta-mender rocko-v2018.03
+* mender upgraded to 1.4.0.
+* mender-artifact upgraded to 2.2.0.
+* Document SDIMG_ROOTFS_TYPE settings for Raspberry Pi.
+* Fix creating ubifs image.
+* mender-qemu: increase qemu memory size to 256MiB.
+* meta-mender-toradex-nxp: increase layer priority to 91
+
+
 ## Mender v1.4.0
 
 _Released xx.xx.xxxx_
