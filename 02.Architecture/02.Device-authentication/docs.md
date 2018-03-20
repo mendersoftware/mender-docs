@@ -1,5 +1,5 @@
 ---
-title: Device admission and authentication
+title: Device authentication
 taxonomy:
     category: docs
 ---
