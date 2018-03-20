@@ -28,6 +28,8 @@ After a minute or two, there should be a virtual device that is pending authoriz
 
 __Follow the help tooltips__ in the UI to guide you through each step of deploying to your virtual device - authorizing the device, viewing information about it, uploading an Artifact file, and finally deploying your very first update to the device.
 
+!!! When you get to deploying the update, note that it normally takes 3-5 minutes to complete, as it is writing a full root file system.
+
 !!! If you don't see the help tooltips, there is an option to toggle them on/off from the dropdown at your user email up at the top right corner of the screen.
 
 
