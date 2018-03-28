@@ -8,14 +8,47 @@ This document details troubleshooting steps for the most common problems with th
 The first part applies to all installations, while the section below on Production installations
 only applies when the Mender server is [installed for production](../../administration/production-installation).
 
-##The virtual QEMU device is not showing up in test mode
+## Cleaning up the deviceauth database after device decommissioning.
+It is possible that after the device decommissioning operation there will be some unaccessible and unnecessary data in the deviceauth database.
+In this case, you should clean your deviceauth database.
 
-When running the Mender server in test mode, as described in the [getting started tutorial](../../getting-started/deploy-to-virtual-devices),
+Is is recommended to backup your data before performing the clean up operation.
+The [Backup and restore](../../administration/backup-and-restore) chapter provides examples and
+introduces example tools provided in Mender integration repository.
+
+To clean up the deviceauth database, run the following from within the integration repository:
+```
+docker-compose exec mender-device-auth /usr/bin/deviceauth maintenance --decommissioning-cleanup
+```
+
+## The virtual QEMU device is not showing up in demo mode
+When running the Mender server in demo mode, as described in the [getting started tutorial](../../getting-started/deploy-to-virtual-devices),
 a virtual `vexpress-qemu` device should connect to and ask to join the server.
 
 If this does not happen, please make sure your environment meet the resource requirements
 to run the Mender Server. In particular, it is known that the virtual device will not
 start if you do not have enough memory.
+
+
+## mender-api-gateway exits with code 132
+
+When starting the Mender server, `mender-api-gateway` exits immediately with a message
+similar to this:
+
+```bash
+mender-api-gateway_1 exited with code 132
+```
+
+The logs from docker-compose also show that `mender-api-gateway` exits with code 132:
+
+```bash
+2017-07-03T11:14:17.223223822+02:00 container die c2a1cf1c19651950e804c7fe53cb9c0ffeb8b71de744500ab4844b370cf0480d (com.docker.compose.config-hash=5b9dfb050a59b9cbd67082037478562ff44c78cf4346d9a83225d1a74d557271, com.docker.compose.container-number=1, com.docker.compose.oneoff=False, com.docker.compose.project=menderproduction, com.docker.compose.service=mender-api-gateway, com.docker.compose.version=1.14.0, exitCode=132, image=mendersoftware/api-gateway:1.1.x, name=menderproduction_mender-api-gateway_1)
+```
+
+The problem here is most likely that your server CPU does not support the SSE 4.2
+instruction set, while [openresty is compiled assuming SSE4.2 support](https://github.com/openresty/openresty/issues/267?target=_blank).
+Try again with a more modern CPU (from 2009 or later), or consider building
+openresty from source for your architecture.
 
 
 # Production installations
