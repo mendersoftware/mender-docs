@@ -101,3 +101,25 @@ RPROVIDES_${PN} = "u-boot"
 ```
 
 Detailed explanation how to do it you can find in [Integrating with U-Boot](../../devices/integrating-with-u-boot) section.
+
+
+## I'm using Flash/UBI setup and getting the message that `BOOTENV_SIZE` is too big to fit two copies inside `MENDER_RESERVED_SPACE_BOOTLOADER_DATA` with proper alignment, but my Flash size should be big enough
+
+The message may look something like this:
+
+```
+ERROR: u-boot-toradex-2016.11+gitAUTOINC+087e95a2dc-r0 do_provide_mender_defines: BOOTENV_SIZE (0x20000) is too big to fit two copies inside MENDER_RESERVED_SPACE_BOOTLOADER_DATA (253952) with proper alignment. Please either: 1. Increase MENDER_RESERVED_SPACE_BOOTLOADER_DATA manually and make sure it is an *even* multiple of MENDER_PARTITION_ALIGNMENT. -or- 2. Decrease BOOTENV_SIZE in the U-Boot recipe so that it can fit two copies inside MENDER_RESERVED_SPACE_BOOTLOADER_DATA.
+ERROR: u-boot-toradex-2016.11+gitAUTOINC+087e95a2dc-r0 do_provide_mender_defines: Function failed: do_provide_mender_defines (log file is located at /home/user/poky/build/colibri-imx7-mender/tmp/work/colibri_imx7_mender-poky-linux-gnueabi/u-boot-toradex/2016.11+gitAUTOINC+087e95a2dc-r0/temp/log.do_provide_mender_defines.22000)
+ERROR: Logfile of failure stored in: /home/user/poky/build/colibri-imx7-mender/tmp/work/colibri_imx7_mender-poky-linux-gnueabi/u-boot-toradex/2016.11+gitAUTOINC+087e95a2dc-r0/temp/log.do_provide_mender_defines.22000
+ERROR: Task (/home/user/poky/src/meta-freescale-3rdparty/recipes-bsp/u-boot/u-boot-toradex_2016.11.bb:do_provide_mender_defines) failed with exit code '1'
+```
+
+The problem is that the U-Boot environment that Mender uses is written to a UBI volume, not to pure Flash memory, and UBI block sizes (LEB sizes) are smaller than physical Flash block sizes (PEB sizes). UBI uses these extra bytes for its own purposes, so they are not available for storage. Therefore the U-Boot environment must be adjusted to fit inside Mender's UBI volume if it fit exactly into physical sectors before introducing Mender.
+
+There are two simple ways to fix the problem; which one should be used depends on the sitation.
+
+1. Decrease the `BOOTENV_SIZE` variable, so that it's no longer too big to fit two copies. This is generally the recommended solution unless you really need `BOOTENV_SIZE` size to be a certain size.
+
+2. Multiply `MENDER_RESERVED_SPACE_BOOTLOADER_DATA`, whose value you can see in the error message, by some even value, like 2, and set that in the configuration for the board.
+
+!! In the UBI case, `MENDER_RESERVED_SPACE_BOOTLOADER_DATA` is generally *not* a power two, so watch out for this. It should be an even multiple of `MENDER_PARTITION_ALIGNMENT`, which is itself defined from `MENDER_UBI_LEB_SIZE`, both of which you can get by running `bitbake -e core-image-minimal | egrep '^(MENDER_UBI_LEB_SIZE|MENDER_PARTITION_ALIGNMENT)='`.
