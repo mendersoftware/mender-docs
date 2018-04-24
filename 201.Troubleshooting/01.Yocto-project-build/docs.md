@@ -80,3 +80,24 @@ ERROR: Task (/home/user/poky/meta-mender/meta-mender-core/recipes-bsp/u-boot/u-b
 ```
 
 This is a known bug in U-Boot versions prior to v2017.05. If you get this error, the auto-provided recipe won't work, so you will have to carry out the steps in [the u-boot-fw-utils guide](../../devices/integrating-with-u-boot/manual-u-boot-integration#u-boot-fw-utils). Note that only the section under "u-boot-fw-utils" is necessary, the other sections on the same page, such as `MENDER_UBOOT_AUTO_CONFIGURE = "0"`, should not be necessary to carry out unless you have other reasons to do so.
+
+
+## I get a build error if I am using PREFERRED_PROVIDER_virtual/bootloader instead of PREFERRED_PROVIDER_u-boot
+
+The symptom is an error message similar to this:
+
+```
+ERROR: Nothing PROVIDES 'u-boot'
+u-boot was skipped: PREFERRED_PROVIDER_virtual/bootloader set to u-boot-rockchip, not u-boot
+ERROR: Required build target 'core-image-base' has no buildable providers.
+Missing or unbuildable dependency chain was: ['core-image-base', 'u-boot']
+```
+
+This error stems from the fact that custom u-boot fork recipes are missing hard dependency required by mender recipes. If you get this error you need to add following lines to your custom u-boot fork recipe:
+
+```
+PROVIDES += "u-boot"
+RPROVIDES_${PN} = "u-boot"
+```
+
+Detailed explanation how to do it you can find in [Integrating with U-Boot](../../devices/integrating-with-u-boot) section.
