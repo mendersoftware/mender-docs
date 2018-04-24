@@ -199,7 +199,7 @@ the steps needed to edit the root file system contained in this Artifact are:
 [start_autoupdate_beaglebone_release_1_x.x.x.mender]: #
 
 ```bash
-mkdir beaglebone_release_1 && tar -C beaglebone_release_1 xvf beaglebone_release_1_1.3.0.mender
+mkdir beaglebone_release_1 && tar -C beaglebone_release_1 -xvf beaglebone_release_1_1.3.0.mender
 ```
 
 [end_autoupdate_beaglebone_release_1_x.x.x.mender]: #
