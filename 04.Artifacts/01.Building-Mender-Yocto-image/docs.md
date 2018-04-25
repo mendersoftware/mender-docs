@@ -190,10 +190,10 @@ VIRTUAL-RUNTIME_init_manager = "systemd"
 DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 VIRTUAL-RUNTIME_initscripts = ""
 
-IMAGE_FSTYPES = "ext4"
+ARTIFACTIMG_FSTYPE = "ext4"
 ```
 
-!!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../variables#mender_storage_total_size_mb) for more information. Mender automatically selects the file system types it builds into the disk image, which is used for initial flash provisioning, based on the `IMAGE_FSTYPES` variable. See the [section on file system types](../../devices/partition-layout#file-system-types) for more information.
+!!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../variables#mender_storage_total_size_mb) for more information. Mender selects the file system type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on file system types](../../devices/partition-layout#file-system-types) for more information.
 
 !!! If you are building for **Hosted Mender**, make sure to set `MENDER_SERVER_URL` and `MENDER_TENANT_TOKEN` (see the comments above).
 
