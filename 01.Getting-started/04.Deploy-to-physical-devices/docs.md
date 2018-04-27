@@ -315,7 +315,7 @@ uploaded to the server, all that remains is to go to the
 Select the Artifact you just uploaded and **All devices**, then
 **Create deployment**.
 
-!!! If you deploy across several device types (e.g. `beaglebone` and `vexpress-qemu`), the Mender server will skip these if no compatible artifact is available. This condition is indicated by the *noartifact* status in the deployment report. Mender does this to avoid deployments of incompatible rootfs images. However, if you have Artifacts for these other device types, identified by the same Artifact name, then Mender will deploy to all the devices there are compatible Artifacts for.
+!!! If you deploy across several device types (e.g. `beaglebone` and `qemux86-64`), the Mender server will skip these if no compatible artifact is available. This condition is indicated by the *noartifact* status in the deployment report. Mender does this to avoid deployments of incompatible rootfs images. However, if you have Artifacts for these other device types, identified by the same Artifact name, then Mender will deploy to all the devices there are compatible Artifacts for.
 
 
 ## See the progress of the deployment
