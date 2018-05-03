@@ -6,7 +6,7 @@ taxonomy:
 
 The Mender client will implicitly authorize the Mender server to manage it if the server holds the key corresponding to the [server certificate the client was provisioned with](../../artifacts/building-for-production#including-the-client-certificates). This tutorial shows the steps required to securely automate the other direction: authorizing the Mender client to be accepted by the Mender server.
 
-The Mender server supports [preauthorizing devices](../../architecture/device-authentication#preauthorization-flow), where you add the [identity](../../client-configuration/identity) and public key of the device to the Mender server before the device connects for the first time. This way the device is automatically authorized to receive software updates when it connects to the server for the first time. This is in particular useful in a mass production setting because you can preauthorize devices when they are manufactured so they automatically get accepted into the Mender server when your customer turns them on, which might happen several months after manufacturing.
+The Mender server supports [preauthorizing devices](../../architecture/device-authentication#preauthorization-flow), where you add the [identity](../../client-configuration/identity) and public key of the device to the Mender server before the device connects for the first time. This way the device is automatically authorized to join the Mender server when it first connects. This is in particular useful in a mass production setting because you can preauthorize devices when they are manufactured so they automatically get accepted into the Mender server when your customer turns them on, which might happen several months after manufacturing.
 
 See [Device authentication](../../architecture/device-authentication) for a general overview of how device authentication works in Mender.
 
@@ -26,7 +26,7 @@ We assume you have either [built a disk image for your device](../../artifacts/b
 
 ### The identity of your device
 
-When preauthorizing a device you need to know its [identity](../../client-configuration/identity). This is one or more key-value attributes, depending on the identity scheme you are using. If you connect your device so it shows up as pending in the Mender server, you will see its identity in the Mender server UI (note it is *not* the ID of the device, but the key-value attributes under Identity).
+When preauthorizing a device you need to know its [identity](../../client-configuration/identity). This is one or more key-value attributes, depending on the identity scheme you are using. If you connect your device so it shows up as pending in the Mender server, you will see its identity in the Mender server UI (note it is *not* the ID of the device, but the key-value attributes under Identity that are used for preauthorization).
 
 By default the Mender client uses the [MAC address of the first interface](https://github.com/mendersoftware/mender/blob/master/support/mender-device-identity?target=_blank) on the device as the device identity, for example `mac=02:12:61:13:6c:42`.
 
@@ -39,18 +39,13 @@ Once your device boots with a newly provisioned disk image, it should already be
 If your device does not show as pending authorization in the Mender server once it is booted with the disk image, you need to diagnose this issue before continuing. See [Deploy to physical devices](../../getting-started/deploy-to-physical-devices) for a tutorial on connecting your device.
 
 
-### No record of your device in the Mender server
-
-If you have previously connected the device you want to preauthorize (e.g. to test connectivity), it is important that you *decommission it from the server* or simply provision a new server. Stale device identity, key and authentication sets in the Mender server for your device may prevent you from successfully preauthorizing your device.
-
-Also make sure to power off your device before continuing, so it does not appear as pending in your server again.
-
-
 ## Generate a client keypair
 
-Before we preauthorize the device, we need its 1) identity and 2) public key. You should already know the identity of your device from the [prerequsite above](#the-identity-of-your-device).
+Before we preauthorize the device, we need its 1) identity and 2) public key. You should already know the identity of your device from the [prerequisite above](#the-identity-of-your-device).
 
-When preauthorizing a device, device keys will be generated on a separate system and provisioned into the device storage. This way we can keep records of the public key of the device and ensure sufficient entropy during key generation, so the resulting keys are secure random.
+When preauthorizing a device, device keys will be generated on separate system (not on the device), and then provisioned into the device storage. This way we can keep records of the public key of the device and ensure sufficient entropy during key generation, so the resulting keys are secure random.
+
+!!! Make sure the system you generate keys on is adequately secured, as it will also generate the device private keys. You should consider securely deleting (e.g. `shred`) the *private* keys after provisioning the device if you do not truly need a record of them (you can keep the public keys, of course).
 
 We will use a script to generate a keypair the Mender client understands; it uses the `openssl` command to generate the keys. Download the [keygen-client](https://github.com/mendersoftware/mender/blob/master/support/keygen-client?target=_blank) script into a directory and ensure it is executable. Run it without parameters:
 
@@ -74,7 +69,7 @@ Now that we have the device's identity and public key, we will use the Mender se
 
 ### Set up a CLI environment for your server
 
-Open a terminal, which we will use in the following to call the Mender server's REST APIs. First set a shell varialbe with the URI of your server:
+Open a terminal, which we will use in the following to call the Mender server's REST APIs. First set a shell variable with the URI of your server:
 ```bash
 MENDER_SERVER_URI='https://hosted.mender.io'
 ```
@@ -88,15 +83,19 @@ MENDER_SERVER_USER='myusername@example.com'
 JWT=$(curl -X POST -u $MENDER_SERVER_USER $MENDER_SERVER_URI/api/management/v1/useradm/auth/login)
 ```
 
-!!! Replace `myusername@example.com` with your email address used to log in at the Mender server. If you are using self-signed certificates in a demo setup you may want to skip validation with the `-k` option (this is insecure).
+!!! Replace `myusername@example.com` with your email address used to log in at the Mender server. If you are using self-signed certificates in a demo setup you may want to skip validation with the `-k` option of `curl` (this is insecure).
 
 You should now have an API token you can use to call any of the [Mender server management APIs](../../apis/management-apis) in the `JWT` shell variable.
+
+!!! The `MENDER_SERVER_URI` and `JWT` shell varialbes will only exist in the current shell invocation by default, so make sure you use the same shell environment for the following interactions with the API.
 
 
 ### Make sure there are no existing authentication sets for your device
 
-If your device identity has previously connected to the Mender server it may be in `pending` or  `rejected` state, which may preclude us from successfully preauthorizing it.
-To make sure that the device is not in an existing authentication set, we check *both* the `admission` and `devauth` services for the identity of your device.
+First make sure to power off your device, so it does not continuously appear as pending in your server.
+
+We recommend that you ensure there are no records of your device in the server; open the Mender UI, then go to *Devices* to see if it is there, then *Decommission* it.
+Secondly, To make sure that the device is not in an existing authentication set, we check *both* the `admission` and `devauth` services for the identity of your device.
 
 In the same terminal, run the following commands:
 
@@ -160,8 +159,8 @@ Now that we have generated a key for the device and preauthorized it, we need to
 
 !!! There is a symlink from `/var/lib/mender/mender-agent.pem` on the root file systems to `/mender/mender-agent.pem` on the data partition, which we will leave in place. If the Mender client does not find a valid key it will generate one, which is not what we want when we are preauthorizing devices.
 
-Follow the steps in [modifying a disk image](../../artifacts/modifying-a-disk-image) to find the start sector of the `data` partiton (typically `.sdimg4`).
-Usually you will run a squence of commands similar to this:
+Follow the steps in [modifying a disk image](../../artifacts/modifying-a-disk-image) to find the start sector of the `data` partition (typically `.sdimg4`).
+Usually you will run a sequence of commands similar to this:
 
 ```bash
 fdisk -l -u mender-disk-image.sdimg
@@ -174,7 +173,7 @@ sudo mount -o loop,offset=$((512*933888)) mender-disk-image.sdimg /mnt/data
 
 ### Copy the private device key
 
-At this point the data partiton of the disk image should be mounted on `/mnt/data`. Find the location of the [private key we generated](#generate-a-client-keypair) and copy it into place on the data partiton by running the following commands:
+At this point the data partition of the disk image should be mounted on `/mnt/data`. Find the location of the [private key we generated](#generate-a-client-keypair) and copy it into place on the data partition by running the following commands:
 
 ```bash
 sudo install -m 600 keys-client-generated/private.key /mnt/data/mender-agent.pem
