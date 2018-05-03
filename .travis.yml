@@ -11,7 +11,7 @@ before_script:
   - sudo apt-get -q update && sudo apt-get install pwgen
 
 script:
-  - ./test_docs.py 06.Administration/02.Production-installation/docs.md
+  - ./test_docs.py 07.Administration/02.Production-installation/docs.md
 
 after_success:
   # on merge, first deploy to staging, wait 5 minutes, and deploy to production:
