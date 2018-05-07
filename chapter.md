@@ -1,5 +1,5 @@
 ---
-title: "Development"
+title: "1.5"
 taxonomy:
     category: docs
 ---
@@ -8,4 +8,4 @@ taxonomy:
 
 # Documentation
 
-Documentation for Mender's bleeding-edge master branch.
+Documentation for Mender 1.5.

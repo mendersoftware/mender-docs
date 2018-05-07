@@ -202,7 +202,7 @@ the steps needed to edit the root file system contained in this Artifact are:
 [start_autoupdate_beaglebone_release_1_x.x.x.mender]: #
 
 ```bash
-mkdir beaglebone_release_1 && tar -C beaglebone_release_1 -xvf beaglebone_release_1_master.mender
+mkdir beaglebone_release_1 && tar -C beaglebone_release_1 -xvf beaglebone_release_1_1.5.0b1.mender
 ```
 
 [end_autoupdate_beaglebone_release_1_x.x.x.mender]: #
@@ -276,7 +276,7 @@ To create a Mender Artifact from a root file system, it is easiest to download
 [the prebuilt mender-artifact tool][autoupdate_x.x.x_mender-artifact] available
 for Linux.
 
-[autoupdate_x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/master/mender-artifact
+[autoupdate_x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.2.0/mender-artifact
 
 Download the tool and add execute permission (e.g. with `chmod +x mender-artifact`).
 
@@ -286,12 +286,12 @@ run the following command to create a new Mender Artifact:
 [start_autoupdate_release_1_x.x.x]: #
 
 ```bash
-mender-artifact write rootfs-image -u core-image-base-beaglebone.ext4 -t beaglebone -n release-1_master -o beaglebone_release_1_configured.mender
+mender-artifact write rootfs-image -u core-image-base-beaglebone.ext4 -t beaglebone -n release-1_1.5.0b1 -o beaglebone_release_1_configured.mender
 ```
 
 where `-u core-image-base-beaglebone.ext4` is the rootfs image we modified above,
 `-t beaglebone` is the device type compatible with the given Artifact,
-`-n release-1_master` is the Artifact name (do not change this as it needs to be in
+`-n release-1_1.5.0b1` is the Artifact name (do not change this as it needs to be in
 sync with `/etc/mender/artifact_info` *inside* the rootfs), and
 `-o beaglebone_release_1_configured.mender` is
 the filename of the created Artifact.
@@ -346,7 +346,7 @@ run these two commands (adjust the Artifact file name accordingly):
 
 ```bash
 cp beaglebone_release_1_configured.mender beaglebone_release_2_configured.mender
-mender-artifact modify beaglebone_release_2_configured.mender -n release-2_master
+mender-artifact modify beaglebone_release_2_configured.mender -n release-2_1.5.0b1
 ```
 
 [end_autoupdate_beaglebone_release_2_x.x.x.mender]: #
