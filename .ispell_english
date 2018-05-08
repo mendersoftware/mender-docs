@@ -192,6 +192,7 @@ bufferstreams
 buffruneio
 bufio
 Bugfix
+buildable
 builtin
 builtins
 BumtJEOkD
@@ -213,6 +214,7 @@ caseless
 Caswell
 Cavage
 cb
+cbd
 cc
 cca
 ccdc
@@ -224,6 +226,7 @@ ce
 cert
 certs
 CET
+cf
 cfd
 cff
 CFI
@@ -356,6 +359,7 @@ DeviceNumber
 devicetree
 devid
 df
+dfb
 dgrijalva
 DHCP
 Diaz
@@ -490,7 +494,9 @@ fedf
 Fedor
 fefbdfa
 Feross
+ff
 ffd
+ffeb
 FHANDLE
 fi
 fido
@@ -1009,6 +1015,10 @@ postinstall
 postmile
 Pragma
 pre
+preauth
+preauthorization
+preauthorize
+preauthorized
 prebuilt
 prefixer
 Pregenerate
@@ -1034,7 +1044,7 @@ PWD
 pwgen
 pyro
 qemu
-qemux86
+qemux
 QIDAQAB
 qix
 qs
@@ -1079,6 +1089,7 @@ reinterpolate
 relink
 relinquishment
 repacking
+req
 RequestID
 resolv
 RESTful
@@ -1094,6 +1105,7 @@ rjvwiH
 rm
 rmdir
 ro
+rockchip
 rocko
 rollout
 rootfs
@@ -1203,6 +1215,7 @@ SRCPV
 SRCREV
 srv
 SSD
+SSE
 ssh
 sshpk
 ssio
@@ -1326,15 +1339,18 @@ UBootBootCountLimit
 ubuntu
 ubuntulinux
 uCIRqL
+uefi
 uglify
 UglifyJS
 uglifyjs
 Uh
 ui
+UIDs
 uimage
 uImage
 umd
 umount
+unbuildable
 unc
 uncombined
 underscorejs
