@@ -23,7 +23,7 @@ issues and keeps track of authentication tokens ([JSON Web Token](https://jwt.io
 
 Whether authentication will in fact be granted is driven by the user-facing **Device Admission** service. The user
 indicates via its API which devices should be accepted by the system, and the service syncs with Device Authentication
-which will in turn authenticate the device sucessfully.
+which will in turn authenticate the device successfully.
 
 This can happen in either of two modes, or workflows, which will be described in full in the following section:
 * **preauthorization**, where a user adds the device a priori, before it ever submits an authentication request
@@ -75,7 +75,7 @@ The sequence diagram below describes the API interactions between the user, Devi
 1. The user first submits a preauthorized auth set to Device Admission
 2. The auth set is automatically propagated to Device Authentication
 3. The user makes sure the physical device contains the corresponding identity attributes and public key
-4. The device, when activated, submits an authentication request containing the identity attibutes and key
+4. The device, when activated, submits an authentication request containing the identity attributes and key
 5. Device Authentication returns a valid authentication token
 
 | ![Preauthorization flow](preauth.png) |
@@ -86,7 +86,7 @@ The sequence diagram below describes the API interactions between the user, Devi
 
 For details of API calls please consult the API documentation:
 
-* [Device Admission Managemenent API](../../apis/management-apis/device-admission)
+* [Device Admission Management API](../../apis/management-apis/device-admission)
 * [Device Authentication Device API](../../apis/device-apis/device-authentication)
 * [Device Authentication Management API](../../apis/management-apis/device-authentication)
 
@@ -119,7 +119,7 @@ The sequence diagram below describes the API interactions between the user, Devi
 
 For details of API calls please consult the API documentation:
 
-* [Device Admission Managemenent API](../../apis/management-apis/device-admission)
+* [Device Admission Management API](../../apis/management-apis/device-admission)
 * [Device Authentication Device API](../../apis/device-apis/device-authentication)
 * [Device Authentication Management API](../../apis/management-apis/device-authentication)
 
@@ -141,7 +141,7 @@ Two APIs can be used to review the admission status of your devices.
 The more convenient one is Device Authentication's `GET /api/management/v1/devauth/devices`. It is device-oriented, and returns a
 list of all known devices; each device structure contains a nested list of its recorded authentication sets and their statuses.
 
-The other API is Device Admissionss `GET /api/management/v1/admission/devices`. Contrary to what the URL convention suggests, it
+The other API is Device Admissions `GET /api/management/v1/admission/devices`. Contrary to what the URL convention suggests, it
 returns a flat list of all recorded **authentication sets**. This means a single device can actually have several entries in this list;
  each has a **device_id** attribute which ties it to an actual physical device (note that the **id** attribute identifies the authentication set itself).
 
