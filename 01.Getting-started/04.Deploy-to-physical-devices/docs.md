@@ -31,6 +31,15 @@ Get the disk image and Artifacts for your device(s) from [Download demo images](
 
 !!! It is possible to use this tutorial with *any* physical device, as long as you have integrated Mender with it. In this case you cannot use the demo Artifacts we provide in this tutorial, but you need to build your own artifacts as described in [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
 
+### Mender-Artifact tool
+Download [the prebuilt mender-artifact tool][autoupdate_x.x.x_mender-artifact] available
+for Linux, or install from source [mender-artifact]("https://github.com/mendersoftware/mender-artifact"). In both cases remember to add execute permission (e.g. with `chmod +x mender-artifact`).
+
+[autoupdate_x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/master/mender-artifact
+
+Please see [Modifying a Mender Artifact](../../artifacts/modifying-a-mender-artifact)
+for a more detailed overview.
+
 
 ### Network connectivity
 
@@ -78,15 +87,14 @@ server when it starts.
 
 ### Insert the address of Mender server
 
-Please see [Modifying a disk image](../../artifacts/modifying-a-disk-image) for a description
-on how to mount partitions for editing within the disk image (`*.sdimg`).
+```bash
+mender-artifact cat <imgname>.sdimg:/etc/hosts | sed "\$a ${IP_OF_MENDER_SERVER_FROM_DEVICE} docker.mender.io s3.docker.mender.io" | mender-artifact cp <imgname>.sdimg:/etc/hosts
+```
 
-We assume that *both* rootfs partitions are mounted read-write below,
-to `/mnt/rootfs1` and `/mnt/rootfs2`. Then run the following commands
-to make the Mender client able to find the server when the Mender client starts:
+Then you can check the contents of your 'etc/hosts' file by
 
 ```bash
-echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io s3.docker.mender.io" | sudo tee -a /mnt/rootfs[12]/etc/hosts
+mender-artifact cat <imgname>.sdimg:/etc/hosts
 ```
 
 You should see output similar to the following:
@@ -96,9 +104,7 @@ You should see output similar to the following:
 
 ### Set a static device IP address and subnet
 
-This section assumes you use a static IP setup.
-If your device uses a DHCP setup,
-you can skip to [Unmount the disk image](#unmount-the-disk-image).
+This section assumes you use a static IP setup. If your device uses a DHCP setup, this section can be skipped.
 In this section, we assume that `$IP_OF_MENDER_CLIENT` is
 the IP address you assign to your device.
 
@@ -115,31 +121,10 @@ Name=eth0
 [Network]
 Address=$IP_OF_MENDER_CLIENT
 Gateway=$IP_OF_MENDER_SERVER_FROM_DEVICE
-" | sudo tee /mnt/rootfs[12]/etc/systemd/network/eth.network
+" | mender-artifact cp <imgname>.sdimg:/etc/systemd/network/eth/network
 ```
 
-You should see output similar to the following:
-
-> [Match]
-> Name=eth0
-
-> [Network]
-> Address=192.168.10.2
-> Gateway=192.168.10.1
-
-
-! If you have a static IP address setup for several devices, you need several disk images so each get different IP addresses. After unmounting (as described below), you can copy it and mount another one.
-
-### Unmount the disk image
-
-It is very important to unmount the disk image after modifying it, so all changes are written to the image:
-
-```bash
-sudo umount /mnt/rootfs1 && sudo umount /mnt/rootfs2
-```
-
-!! If you do not properly unmount the disk image, changes may be lost or corrupted when it is written to flash.
-
+! If you have a static IP address setup for several devices, you need several disk images so each get different IP addresses.
 
 ## Write the disk image to the SD card
 
@@ -183,6 +168,25 @@ Which information is collected about devices is fully configurable; see the docu
 
 !!! If your device does not show up for authorization in the UI, you need to diagnose what went wrong. Most commonly this is due to problems with the network. You can test if your workstation can reach the device by trying to ping it, e.g. with `ping 192.168.10.2` (replace with the IP address of your device). If you can reach the device, you can ssh into it, e.g. `ssh root@192.168.10.2`. Otherwise, if you have a serial cable, you can log in to the device to diagnose. The `root` user is present and has an empty password in this test image. Check the log output from Mender with `journalctl -u mender`. If you get stuck, please feel free to reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank/#!forum/mender)!
 
+#### Create a new Mender Artifact with the rootfs
+
+Using the BeagleBone Black as an example below (adjust the file names and use `-t raspberrypi3` if you are using the Raspberry Pi 3),
+run the following command to create a new Mender Artifact:
+
+[start_autoupdate_release_1_x.x.x]: #
+
+```bash
+mender-artifact write rootfs-image -u core-image-base-beaglebone.ext4 -t beaglebone -n release-1_master -o beaglebone_release_1_configured.mender
+```
+
+where `-u core-image-base-beaglebone.ext4` is the rootfs,
+`-t beaglebone` is the device type compatible with the given Artifact,
+`-n release-1_master` is the Artifact name (do not change this as it needs to be in
+sync with `/etc/mender/artifact_info` *inside* the rootfs), and
+`-o beaglebone_release_1_configured.mender` is
+the filename of the created Artifact.
+
+[end_autoupdate_release_1_x.x.x]: #
 
 ## Prepare the Mender Artifact to update to
 
@@ -211,19 +215,25 @@ mkdir beaglebone_release_1 && tar -C beaglebone_release_1 -xvf beaglebone_releas
 cd beaglebone_release_1 && tar zxvf data/0000.tar.gz
 ```
 
+Create a mender-artifact image
+
 ```bash
-sudo mkdir /mnt/rootfs && sudo mount -t ext4 -o loop core-image-base-beaglebone.ext4 /mnt/rootfs/
+mender-artifact write rootfs-image -u core-image-base-beaglebone.ext4 -t beaglebone -n release-1_1.3.0 -o beaglebone_release_1_configured.mender
 ```
 
 Please see [Modifying a Mender Artifact](../../artifacts/modifying-a-mender-artifact)
-for a more detailed overview. For the following steps we assume that you have mounted
-`core-image-base-beaglebone.ext4` to `/mnt/rootfs`.
+for a more detailed overview.
 
 We carry out exactly the same configuration steps for the rootfs image
 as we did for the rootfs partitions in the disk image above:
 
 ```bash
-echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io s3.docker.mender.io" | sudo tee -a /mnt/rootfs/etc/hosts
+echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io s3.docker.mender.io" | mender-artifact cp beaglebone_release_1_configured.mender:/etc/hosts
+```
+
+Then check the contents of the file
+```bash
+mender-artifact cat beaglebone_release_1_configured.mender:/etc/hosts
 ```
 
 You should see output similar to the following:
@@ -243,61 +253,13 @@ Name=eth0
 [Network]
 Address=$IP_OF_MENDER_CLIENT
 Gateway=$IP_OF_MENDER_SERVER_FROM_DEVICE
-" | sudo tee /mnt/rootfs/etc/systemd/network/eth.network
+" | mender-artifact cp beaglebone_release_1_configured.mender:/etc/systemd/network/eth.network
 ```
-
-You should see output similar to the following:
-
-> [Match]
-> Name=eth0
-
-> [Network]
-> Address=192.168.10.2
-> Gateway=192.168.10.1
-
 
 !!! The Mender client will roll back the deployment if it is not able to report the final update status to the server when it boots from the updated partition. This helps ensure that you can always deploy a new update to your device, even when fatal conditions like network misconfiguration occur.
 
 You can also make any other modifications you wish in this image
 prior to deploying it.
-
-
-#### Unmount the rootfs image
-
-It is very important to unmount the rootfs image after modifying it, so all changes are written to the image:
-
-```bash
-sudo umount /mnt/rootfs
-```
-
-#### Create a new Mender Artifact with the modified rootfs
-
-To create a Mender Artifact from a root file system, it is easiest to download
-[the prebuilt mender-artifact tool][autoupdate_x.x.x_mender-artifact] available
-for Linux.
-
-[autoupdate_x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/master/mender-artifact
-
-Download the tool and add execute permission (e.g. with `chmod +x mender-artifact`).
-
-Using the BeagleBone Black as an example below (adjust the file names and use `-t raspberrypi3` if you are using the Raspberry Pi 3),
-run the following command to create a new Mender Artifact:
-
-[start_autoupdate_release_1_x.x.x]: #
-
-```bash
-mender-artifact write rootfs-image -u core-image-base-beaglebone.ext4 -t beaglebone -n release-1_master -o beaglebone_release_1_configured.mender
-```
-
-where `-u core-image-base-beaglebone.ext4` is the rootfs image we modified above,
-`-t beaglebone` is the device type compatible with the given Artifact,
-`-n release-1_master` is the Artifact name (do not change this as it needs to be in
-sync with `/etc/mender/artifact_info` *inside* the rootfs), and
-`-o beaglebone_release_1_configured.mender` is
-the filename of the created Artifact.
-
-[end_autoupdate_release_1_x.x.x]: #
-
 
 ## Upload the artifact to the server
 
