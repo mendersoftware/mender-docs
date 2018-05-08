@@ -148,6 +148,7 @@ behaviour
 Benoit
 Bevry
 bf
+bindir
 bitbake
 bitbucket
 Bjarne
@@ -213,16 +214,19 @@ caseless
 Caswell
 Cavage
 cb
+cbd
 cc
 cca
 ccdc
 CCmYA
 cd
 cdaab
+cdf
 ce
 cert
 certs
 CET
+cf
 cfd
 cff
 CFI
@@ -268,6 +272,7 @@ commonjs
 CompactFlash
 concat
 conf
+CONFFILES
 confi
 config
 configs
@@ -306,6 +311,7 @@ da
 dae
 dashdash
 dat
+datadir
 dateformat
 dave
 davec
@@ -315,6 +321,7 @@ db
 dbd
 dbg
 DBs
+dbus
 dc
 dd
 ddbad
@@ -352,6 +359,7 @@ DeviceNumber
 devicetree
 devid
 df
+dfb
 dgrijalva
 DHCP
 Diaz
@@ -486,9 +494,11 @@ fedf
 Fedor
 fefbdfa
 Feross
+ff
 ffd
+ffeb
 FHANDLE
-Fi
+fi
 fido
 filepath
 fileserver
@@ -733,6 +743,7 @@ LGPLv
 LgsyzPWvLAGIsXYnR
 Li
 lib
+libdir
 libpseudo
 libs
 libyaml
@@ -754,6 +765,7 @@ LLC
 LLjYYXAqK
 llsd
 lmdb
+ln
 loadaddr
 loadimage
 localconf
@@ -938,6 +950,7 @@ onSsnFXHXZUjbNZukNK
 ooPae
 ooPaeT
 OpenEmbedded
+openembedded
 OpenLDAP
 openre
 OpenResty
@@ -953,6 +966,7 @@ oSiyqW
 OSX
 outpipe
 Oxley
+PACKAGECONFIG
 pako
 Pankoff
 Param
@@ -1000,6 +1014,10 @@ postinstall
 postmile
 Pragma
 pre
+preauth
+preauthorization
+preauthorize
+preauthorized
 prebuilt
 prefixer
 Pregenerate
@@ -1069,7 +1087,9 @@ reinterpolate
 relink
 relinquishment
 repacking
+req
 RequestID
+resolv
 RESTful
 restparam
 RetryPollIntervalSeconds
@@ -1091,6 +1111,7 @@ rootfsb
 RootfsPartA
 RootfsPartB
 rootfstype
+rootlibexecdir
 rpi
 RPROVIDER
 RPROVIDES
@@ -1191,6 +1212,7 @@ SRCPV
 SRCREV
 srv
 SSD
+SSE
 ssh
 sshpk
 ssio
@@ -1243,8 +1265,10 @@ sys
 sysconfdir
 sysfs
 syslog
+systemctl
 systemd
 systemjs
+sysv
 sysvinit
 Talmage
 tapable
@@ -1274,6 +1298,7 @@ tLOdXZ
 TLS
 tmp
 tmpdir
+tmpfiles
 Tobias
 toml
 tool's
@@ -1316,6 +1341,7 @@ UglifyJS
 uglifyjs
 Uh
 ui
+UIDs
 uimage
 uImage
 umd
@@ -1328,6 +1354,7 @@ Unger
 ungerik
 unicode
 uniq
+unitdir
 unlicense
 unmarshal
 Unprocessable
@@ -1415,6 +1442,7 @@ writerc
 Wu
 www
 XD
+xdg
 XG
 xiaoba
 xor
