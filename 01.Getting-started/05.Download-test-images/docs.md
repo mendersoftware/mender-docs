@@ -23,16 +23,16 @@ Download the Artifacts for your desired device types below:
 | Device type      | Disk image | Artifact 1 | Artifact 2 |
 |------------------|------------|------------|------------|
 | Virtual          | N/A (part of server) | [qemux86-64-uefi-grub_release_1.mender][autoupdate_qemux86-64-uefi-grub_release_1_x.x.x.mender] | [qemux86-64-uefi-grub_release_2.mender][autoupdate_qemux86-64-uefi-grub_release_2_x.x.x.mender]          |
-| BeagleBone Black | [mender-beaglebone.sdimg.gz][autoupdate_mender-beaglebone_x.x.x.sdimg.gz] | [beaglebone_release_1.mender][autoupdate_beaglebone_release_1_x.x.x.mender] | [beaglebone_release_2.mender][autoupdate_beaglebone_release_2_x.x.x.mender] |
+| BeagleBone Black | [mender-beagleboneblack.sdimg.gz][autoupdate_mender-beagleboneblack_x.x.x.sdimg.gz] | [beagleboneblack_release_1.mender][autoupdate_beagleboneblack_release_1_x.x.x.mender] | [beagleboneblack_release_2.mender][autoupdate_beagleboneblack_release_2_x.x.x.mender] |
 | Raspberry Pi 3   | [mender-raspberrypi3.sdimg.gz][autoupdate_mender-raspberrypi3_x.x.x.sdimg.gz] | [raspberrypi3_release_1.mender][autoupdate_raspberrypi3_release_1_x.x.x.mender] | [raspberrypi3_release_2.mender][autoupdate_raspberrypi3_release_2_x.x.x.mender] |
 
 
 [autoupdate_qemux86-64-uefi-grub_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/qemux86-64-uefi-grub/qemux86-64-uefi-grub_release_1_master.mender
 [autoupdate_qemux86-64-uefi-grub_release_2_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/qemux86-64-uefi-grub/qemux86-64-uefi-grub_release_2_master.mender
 
-[autoupdate_mender-beaglebone_x.x.x.sdimg.gz]: https://d1b0l86ne08fsf.cloudfront.net/master/beaglebone/mender-beaglebone_master.sdimg.gz
-[autoupdate_beaglebone_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/beaglebone/beaglebone_release_1_master.mender
-[autoupdate_beaglebone_release_2_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/beaglebone/beaglebone_release_2_master.mender
+[autoupdate_mender-beagleboneblack_x.x.x.sdimg.gz]: https://d1b0l86ne08fsf.cloudfront.net/master/beagleboneblack/mender-beagleboneblack_master.sdimg.gz
+[autoupdate_beagleboneblack_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/beagleboneblack/beagleboneblack_release_1_master.mender
+[autoupdate_beagleboneblack_release_2_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/beagleboneblack/beagleboneblack_release_2_master.mender
 
 [autoupdate_mender-raspberrypi3_x.x.x.sdimg.gz]: https://d1b0l86ne08fsf.cloudfront.net/master/raspberrypi3/mender-raspberrypi3_master.sdimg.gz
 [autoupdate_raspberrypi3_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/raspberrypi3/raspberrypi3_release_1_master.mender

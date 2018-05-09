@@ -4,6 +4,100 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender rocko-v2018.05
+
+_Released 05.09.2018_
+
+## meta-mender rocko-v2018.05
+* mender: Copy data partition images to the deploy dir.
+* Fix mender not building if build and host architecture is the same.
+* Increased the demo mender-retry-polling interval
+  ([MEN-1006](https://tracker.mender.io/browse/MEN-1006))
+* Fix failed uboot.env install when mender-uboot feature is disabled.
+* Implement GRUB and x86-64 support.
+  ([MEN-1430](https://tracker.mender.io/browse/MEN-1430), [MEN-1432](https://tracker.mender.io/browse/MEN-1432), [MEN-1433](https://tracker.mender.io/browse/MEN-1433), [MEN-1434](https://tracker.mender.io/browse/MEN-1434), [MEN-1435](https://tracker.mender.io/browse/MEN-1435), [MEN-1436](https://tracker.mender.io/browse/MEN-1436))
+* Implement qemux86-64 machine target.
+  ([MEN-1430](https://tracker.mender.io/browse/MEN-1430), [MEN-1432](https://tracker.mender.io/browse/MEN-1432), [MEN-1433](https://tracker.mender.io/browse/MEN-1433), [MEN-1434](https://tracker.mender.io/browse/MEN-1434), [MEN-1435](https://tracker.mender.io/browse/MEN-1435), [MEN-1436](https://tracker.mender.io/browse/MEN-1436))
+* Make sure auto provided fw-utils use virtual/bootloader setting if present.
+* Add Mender 1.5.0 Beta recipe.
+* mender: Use only the basename to load DTBs.
+* mender: Conditionally add /uboot mount only for SDCards.
+* Make sure that new-style "enp" network devices get DHCP address in demo.
+* mender: Allow for forcing a specific KERNEL_IMAGETYPE.
+* Remove unused IMAGE_UENV_TXT_FILE variable.
+
+
+## Mender v1.5.0b1
+
+_Released xx.xx.xxxx_
+
+#### deployments (1.5.0b1)
+* display number of devices targetted when listing deployments
+* possible to upload artifacts to specific tenant via inernal API
+  ([MEN-1775](https://tracker.mender.io/browse/MEN-1775))
+* add ability to filter on deployment creation timestamps
+
+#### deviceauth (1.5.0b1)
+* trigger device provisioning workflow only if the device is not currently accepted
+* device count endpoint handles preauthorized devices
+* moved to globalsign/mgo
+
+#### gui (1.5.0b1)
+* Fix bug where recent deployment stats were being called repeatedly on dashboard
+* Display version in UI
+* Redesign Devices sections, added Rejected devices tab
+* Display a dialog after first deployment as part of onboarding
+* Move main navigation to be left aligned
+
+#### integration (1.5.0b1)
+* Switched to using Intel x86_64 hardware accelerated client
+  instead of ARM emulator.
+* Make the integration version available to the UI
+  ([MEN-1767](https://tracker.mender.io/browse/MEN-1767))
+* mender-conductor container is now based on
+  github.com/mendersoftware/mender-conductor repository.
+* Add --kvm option to demo scripts to run client VM hardware accelerated.
+* Introduce optional mender-conductor container based on
+  github.com/mendersoftware/mender-conductor-enterprise, for Enterprise
+  installations.
+* migrate to setup with mender-conductor-enterprise image
+* Switch default client container type to qemux86-64.
+* Upgrade deployments to 1.5.0b1.
+* Upgrade deviceadm to 1.4.0b1.
+* Upgrade deviceauth to 1.5.0b1.
+* Upgrade gui to 1.5.0b1.
+* Upgrade inventory to 1.4.0b1.
+* Upgrade mender to 1.5.0b1.
+* Upgrade mender-api-gateway-docker to 1.5.0b1.
+* Add mender-conductor 1.0.0b1.
+* Add mender-conductor-enterprise 1.0.0b1.
+* Upgrade useradm to 1.5.0b1.
+* migrate to setup with mender-conductor image
+
+#### mender (1.5.0b1)
+* Regenerate keys on all key errors, not just when keys are missing.
+  ([MEN-1823](https://tracker.mender.io/browse/MEN-1823))
+* cli: New client option to show installed artifact name
+  ([MEN-1806](https://tracker.mender.io/browse/MEN-1806))
+* Spontanaeous-reboot hardening of the client
+  ([MEN-1187](https://tracker.mender.io/browse/MEN-1187))
+* FIXED: Log writes not flushed from memory
+  ([MEN-1726](https://tracker.mender.io/browse/MEN-1726))
+* Allow multiple digit partition numbers.
+* log request-id in case of bad API requests
+  ([MEN-1738](https://tracker.mender.io/browse/MEN-1738))
+* Abort upgrade if artifact name is not retrievable from artifact_info
+  ([MEN-1824](https://tracker.mender.io/browse/MEN-1824))
+
+#### mender-api-gateway-docker (1.5.0b1)
+* Allow cross-origin requests from hostnames listed in ALLOWED_HOSTS
+* When a client exceeds its rate limit gateway returns 429 (Too
+  Many Reqests) instead of 503 (Service Temporarily Unavailable)
+
+#### useradm (1.5.0b1)
+* New internal endpoint for deleting authentication tokens.
+
+
 ## Mender v1.4.0
 
 _Released 03.20.2018_
