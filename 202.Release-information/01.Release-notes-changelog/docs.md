@@ -4,7 +4,30 @@ taxonomy:
     category: docs
 ---
 
-## v1.5.0b1
+## meta-mender rocko-v2018.05
+
+_Released 05.09.2018_
+
+## meta-mender rocko-v2018.05
+* mender: Copy data partition images to the deploy dir.
+* Fix mender not building if build and host architecture is the same.
+* Increased the demo mender-retry-polling interval
+  ([MEN-1006](https://tracker.mender.io/browse/MEN-1006))
+* Fix failed uboot.env install when mender-uboot feature is disabled.
+* Implement GRUB and x86-64 support.
+  ([MEN-1430](https://tracker.mender.io/browse/MEN-1430), [MEN-1432](https://tracker.mender.io/browse/MEN-1432), [MEN-1433](https://tracker.mender.io/browse/MEN-1433), [MEN-1434](https://tracker.mender.io/browse/MEN-1434), [MEN-1435](https://tracker.mender.io/browse/MEN-1435), [MEN-1436](https://tracker.mender.io/browse/MEN-1436))
+* Implement qemux86-64 machine target.
+  ([MEN-1430](https://tracker.mender.io/browse/MEN-1430), [MEN-1432](https://tracker.mender.io/browse/MEN-1432), [MEN-1433](https://tracker.mender.io/browse/MEN-1433), [MEN-1434](https://tracker.mender.io/browse/MEN-1434), [MEN-1435](https://tracker.mender.io/browse/MEN-1435), [MEN-1436](https://tracker.mender.io/browse/MEN-1436))
+* Make sure auto provided fw-utils use virtual/bootloader setting if present.
+* Add Mender 1.5.0 Beta recipe.
+* mender: Use only the basename to load DTBs.
+* mender: Conditionally add /uboot mount only for SDCards.
+* Make sure that new-style "enp" network devices get DHCP address in demo.
+* mender: Allow for forcing a specific KERNEL_IMAGETYPE.
+* Remove unused IMAGE_UENV_TXT_FILE variable.
+
+
+## Mender v1.5.0b1
 
 _Released xx.xx.xxxx_
 
