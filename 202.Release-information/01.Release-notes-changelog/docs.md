@@ -29,7 +29,7 @@ _Released 05.09.2018_
 
 ## Mender v1.5.0b1
 
-_Released xx.xx.xxxx_
+_Released 05.15.2018_
 
 #### deployments (1.5.0b1)
 * display number of devices targetted when listing deployments
