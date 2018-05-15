@@ -19,9 +19,11 @@ See [Device authentication](../../architecture/device-authentication) for a gene
 You need a physical device that has already been [integrated with Mender](../). For example, you may use one of the reference devices BeagleBone Black or Raspberry Pi 3.
 
 
-### A disk image for your device
+### A block-based disk image for your device
 
 We assume you have either [built a disk image for your device](../../artifacts/building-mender-yocto-image) or base it off one of the [pre-built demo images](../../getting-started/download-test-images). Note that a disk image is used to provision the entire storage of the device (it contains *all* the partitions) and typically has the `.sdimg` suffix.
+
+!!! Raw flash or raw filesystem images are not covered by this tutorial; however the steps are conceptually the same in these cases.
 
 
 ### The identity of your device
@@ -29,6 +31,7 @@ We assume you have either [built a disk image for your device](../../artifacts/b
 When preauthorizing a device you need to know its [identity](../../client-configuration/identity). This is one or more key-value attributes, depending on the identity scheme you are using. If you connect your device so it shows up as pending in the Mender server, you will see its identity in the Mender server UI (note it is *not* the ID of the device, but the key-value attributes under Identity that are used for preauthorization).
 
 By default the Mender client uses the [MAC address of the first interface](https://github.com/mendersoftware/mender/blob/master/support/mender-device-identity?target=_blank) on the device as the device identity, for example `mac=02:12:61:13:6c:42`.
+
 
 ### Mender client and server connectivity
 
@@ -61,6 +64,8 @@ keys-client-generated/
 └── public.key
 ```
 
+!!! In cases where you are generating multiple keys you can pass an environment variable `PREFIX_KEY` to the `keygen-client` script and run it several times. For example, `PREFIX_KEY=device001- ./keygen-client`, `PREFIX_KEY=device002- ./keygen-client`. This prevents overwriting existing keys by writing them to different files.
+
 
 ## Preauthorize your device
 
@@ -87,7 +92,7 @@ JWT=$(curl -X POST -u $MENDER_SERVER_USER $MENDER_SERVER_URI/api/management/v1/u
 
 You should now have an API token you can use to call any of the [Mender server management APIs](../../apis/management-apis) in the `JWT` shell variable.
 
-!!! The `MENDER_SERVER_URI` and `JWT` shell varialbes will only exist in the current shell invocation by default, so make sure you use the same shell environment for the following interactions with the API.
+!!! The `MENDER_SERVER_URI` and `JWT` shell variables will only exist in the current shell invocation by default, so make sure you use the same shell environment for the following interactions with the API.
 
 
 ### Make sure there are no existing authentication sets for your device
@@ -118,6 +123,7 @@ curl -H "Authorization: Bearer $JWT" -X DELETE $MENDER_SERVER_URI/api/management
 
 Once this is done, re-run the two commands above to generate the two `.json` files again and verify that your device identity does not exist anywhere.
 
+
 ### Call the preauthorize API
 
 Set your device identity as a JSON object in a shell variable while escaping quotation marks:
@@ -126,7 +132,7 @@ Set your device identity as a JSON object in a shell variable while escaping quo
 DEVICE_IDENTITY_JSON_OBJECT_STRING='{\"mac\":\"02:12:61:13:6c:42\"}'
 ```
 
-!!! Adjust the variable value to the actual identity of your device. If you have several identity attributes in your identity scheme, separate them with commas in JSON format inside this single object, for example `DEVICE_IDENTITY_JSON_OBJECT_STRING='{\"mac\":\"02:12:61:13:6c:42\", \"serialnumber\":\"1928819\"}'`.
+!!! Adjust the variable value to the actual identity of your device. If you have several identity attributes in your identity scheme, separate them with commas in JSON format inside this single object, for example `DEVICE_IDENTITY_JSON_OBJECT_STRING='{\"mac\":\"02:12:61:13:6c:42\", \"serialnumber\":\"1928819\"}'`. Note that if your device identity contains several attributes, *whitespace* and *ordering does matter*: you need to write the identity attributes without extra spaces between them and in the order your Mender client submit them (testing is likely the easiest way to find the right order).
 
 Secondly, set the contents of the device public key you generated above in a second variable (with newlines written out literally):
 
@@ -151,7 +157,6 @@ Your device should now be preauthorized and accepted to the Mender server once i
 
 ## Copy generated device key to disk image
 
-TODO: This does not work because in addition to mender-agent.pem, we need to update mender-store with record of key. Suggest adding option to mender-artifact modify: https://tracker.mender.io/browse/MEN-1902
 
 ### Mount the data partition of the disk image
 
@@ -176,7 +181,7 @@ sudo mount -o loop,offset=$((512*933888)) mender-disk-image.sdimg /mnt/data
 At this point the data partition of the disk image should be mounted on `/mnt/data`. Find the location of the [private key we generated](#generate-a-client-keypair) and copy it into place on the data partition by running the following commands:
 
 ```bash
-sudo install -m 600 keys-client-generated/private.key /mnt/data/mender-agent.pem
+sudo install -m 600 keys-client-generated/private.key /mnt/data/mender/mender-agent.pem
 ```
 
 ### Unmount your data partition
@@ -196,4 +201,13 @@ Now provision the storage with this new disk image, just like you have done in t
 sudo dd if=<PATH-TO-IMAGE>.sdimg of=<DEVICE> bs=1M && sudo sync
 ```
 
-Then insert the SD card back into your device.
+Then insert the SD card back into your device and boot it.
+
+
+## Verify the device is accepted
+
+If everything went as intended, your device will get the `accepted` status in the Mender server. You can log in to the Mender UI to ensure your device is listed and reports inventory.
+
+If your device shows as `pending`, see the troubleshooting on [a device shows up as pending after preauthorizing it](../../troubleshooting/mender-server#a-device-shows-up-as-pending-after-preauthorizing-it).
+
+If you do not see your device at all, verify it booted correctly and it is able to connect to the Mender server. You can check [the Mender client logs on the device](../../troubleshooting/mender-client#obtaining-client-logs) for more diagnostics information.
