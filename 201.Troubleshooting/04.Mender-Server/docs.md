@@ -8,7 +8,7 @@ This document details troubleshooting steps for the most common problems with th
 The first part applies to all installations, while the section below on Production installations
 only applies when the Mender server is [installed for production](../../administration/production-installation).
 
-## Cleaning up the deviceauth database after device decommissioning.
+## Cleaning up the deviceauth database after device decommissioning
 It is possible that after the device decommissioning operation there will be some unaccessible and unnecessary data in the deviceauth database.
 In this case, you should clean your deviceauth database.
 
@@ -28,6 +28,48 @@ a virtual `vexpress-qemu` device should connect to and ask to join the server.
 If this does not happen, please make sure your environment meet the resource requirements
 to run the Mender Server. In particular, it is known that the virtual device will not
 start if you do not have enough memory.
+
+
+## A device shows up as pending after preauthorizing it
+If you see your device gets the `pending` status after [preauthorizing it](../../devices/preauthorizing-devices), something went wrong. Most likely there is a mismatch between the identity and public key [you preauthorized](../../devices/preauthorizing-devices#call-the-preauthorize-api) and what your Mender client is actually using. Note that the Mender server does an exact string match against the device identity and public key that is preauthorized and the data your device reports, so any whitespace or string mismatch (in either the identity or public key) will lead to the Mender server not matching your device with the preauthorized data.
+
+To diagnose this, look for the device identity in the `admission` service, for example:
+
+```bash
+curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/admission/devices | python -m json.tool
+```
+
+```json
+
+[
+    {
+        "attributes": {
+            "mac": "52:54:00:50:9b:84"
+        },
+        "device_id": "5afdcccf8b89f00001fc40d7",
+        "device_identity": "{\"mac\":\"52:54:00:50:9b:84\"}",
+        "id": "5afdcccf8b89f00001fc40d6",
+        "key": "-----BEGIN PUBLIC KEY-----MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAvOsee2ivRTkpA2GNWsjd6fH4OgAYwheHkY1U9i2GaPdYbhQb4hBUFoOLhdPFx5wwEqxJ8LnJOJBYywUthv59iJy01w4RTPiTEs3A6eXGdiLO0/RqsWqK5z2KeYiCrI52oE63pY6Y0JEZBpqzs2V9WsLOn6cnQU6HzHltYIuRpzwZWTWFxAFuU+FvDvj9QmD/Y6tos0yaMhfhpgJj3Iw9uARkFAv4DVn+HeA14PPVzHD4xJPUHL6H8FMfeIylejzaOnNHn6vkrvpuMQSvvZjlkH+uV7N93kj3JxSJ2LL9oMY9EargUkT0covZPdAE0G3wwNYCAIYRclzvI1w3DZ03oK2HCveVzFkBPbCwt4/pDReVzlRbQJ6CHkZqCbipoEH0/Ucetzp9fJ3mW3jE2yH1JK8nnpprbNYOCA988s6q3ifxbR6nWkPTbG3JyZL3ythV1o7FgOcwyKh8bneHoZaOa9BnNrHkDz9uG1Xwbe6As62QyZjk2pjQswswQsh/6AvrAgMBAAE=-----END PUBLIC KEY-----",
+        "request_time": "2018-05-17T18:41:19.546Z",
+        "status": "preauthorized"
+    },
+    {
+        "attributes": {
+            "mac": "52:54:00:50:9b:84"
+        },
+        "device_id": "5afdcccf8b89f00001fc40d7",
+        "device_identity": "{\"mac\":\"52:54:00:50:9b:84\"}",
+        "id": "5afdccd1226abc0001ac0c16",
+        "key": "-----BEGIN PUBLIC KEY-----\nMIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAvOsee2ivRTkpA2GNWsjd\n6fH4OgAYwheHkY1U9i2GaPdYbhQb4hBUFoOLhdPFx5wwEqxJ8LnJOJBYywUthv59\niJy01w4RTPiTEs3A6eXGdiLO0/RqsWqK5z2KeYiCrI52oE63pY6Y0JEZBpqzs2V9\nWsLOn6cnQU6HzHltYIuRpzwZWTWFxAFuU+FvDvj9QmD/Y6tos0yaMhfhpgJj3Iw9\nuARkFAv4DVn+HeA14PPVzHD4xJPUHL6H8FMfeIylejzaOnNHn6vkrvpuMQSvvZjl\nkH+uV7N93kj3JxSJ2LL9oMY9EargUkT0covZPdAE0G3wwNYCAIYRclzvI1w3DZ03\noK2HCveVzFkBPbCwt4/pDReVzlRbQJ6CHkZqCbipoEH0/Ucetzp9fJ3mW3jE2yH1\nJK8nnpprbNYOCA988s6q3ifxbR6nWkPTbG3JyZL3ythV1o7FgOcwyKh8bneHoZaO\na9BnNrHkDz9uG1Xwbe6As62QyZjk2pjQswswQsh/6AvrAgMBAAE=\n-----END PUBLIC KEY-----\n",
+        "request_time": "2018-05-17T18:41:21.483Z",
+        "status": "pending"
+    }
+]
+```
+
+In this case you can see that there are two authentication sets with the exact same device identity string: `"{\"mac\":\"52:54:00:50:9b:84\"}"`, one `preauthorized` and one `pending`. So the device reported (see the `pending` set) the exact same identity as we preauthorized. However, there is a mismatch in the format of the public key: the pending set, which the device reported, contains additional `\n` characters.
+
+The solution is to decommission the device and [remove all authentication sets](../../devices/preauthorizing-devices#make-sure-there-are-no-existing-authentication-sets-for-your-dev) (from both `admission` and `devauth`) and adjust the public key string used in the [preauthorize API call](../../devices/preauthorizing-devices#call-the-preauthorize-api) to match exactly the one reported by the device, as seen in the `pending` data above.
 
 
 ## mender-api-gateway exits with code 132
