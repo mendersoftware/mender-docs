@@ -31,7 +31,7 @@ start if you do not have enough memory.
 
 
 ## A device shows up as pending after preauthorizing it
-If you see your device gets the `pending` status after [preauthorizing it](../../devices/preauthorizing-devices), something went wrong. Most likely there is a mismatch between the identity and public key [you preauthorized](../../devices/preauthorizing-devices#call-the-preauthorize-api) and what your Mender client is actually using. Note that the Mender server does an exact string match against the device identity and public key that is preauthorized and the data your device reports, so any whitespace or string mismatch (in either the identity or public key) will lead to the Mender server not matching your device with the preauthorized data.
+If you see your device gets the `pending` status after [preauthorizing it](../../server-integration/preauthorizing-devices), something went wrong. Most likely there is a mismatch between the identity and public key [you preauthorized](../../devices/preauthorizing-devices#call-the-preauthorize-api) and what your Mender client is actually using. Note that the Mender server does an exact string match against the device identity and public key that is preauthorized and the data your device reports, so any whitespace or string mismatch (in either the identity or public key) will lead to the Mender server not matching your device with the preauthorized data.
 
 To diagnose this, look for the device identity in the `admission` service, for example:
 
