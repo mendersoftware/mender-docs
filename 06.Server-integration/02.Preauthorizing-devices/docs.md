@@ -42,6 +42,13 @@ Once your device boots with a newly provisioned disk image, it should already be
 If your device does not show as pending authorization in the Mender server once it is booted with the disk image, you need to diagnose this issue before continuing. See [Deploy to physical devices](../../getting-started/deploy-to-physical-devices) for a tutorial on connecting your device.
 
 
+### A CLI environment for your server
+
+In order to access the the Mender server API with the commands below, you need to set up some shell variables in the terminal you will be using.
+
+Follow the steps in [set up shell variables for cURL](../using-the-apis#set-up-shell-variables-for-curl).
+
+
 ## Generate a client keypair
 
 Before we preauthorize the device, we need its 1) identity and 2) public key. You should already know the identity of your device from the [prerequisite above](#the-identity-of-your-device).
@@ -70,29 +77,6 @@ keys-client-generated/
 ## Preauthorize your device
 
 Now that we have the device's identity and public key, we will use the Mender server [management REST APIs](../../apis/management-apis) to preauthorize it.
-
-
-### Set up a CLI environment for your server
-
-Open a terminal, which we will use in the following to call the Mender server's REST APIs. First set a shell variable with the URI of your server:
-```bash
-MENDER_SERVER_URI='https://hosted.mender.io'
-```
-
-!!! Adjust the variable value to the Mender server you are using.
-
-Now obtain a management API JSON Web Token by using the [login API](../../apis/management-apis/user-administration-and-authentication#log-in-to-mender):
-
-```bash
-MENDER_SERVER_USER='myusername@example.com'
-JWT=$(curl -X POST -u $MENDER_SERVER_USER $MENDER_SERVER_URI/api/management/v1/useradm/auth/login)
-```
-
-!!! Replace `myusername@example.com` with your email address used to log in at the Mender server. If you are using self-signed certificates in a demo setup you may want to skip validation with the `-k` option of `curl` (this is insecure).
-
-You should now have an API token you can use to call any of the [Mender server management APIs](../../apis/management-apis) in the `JWT` shell variable.
-
-!!! The `MENDER_SERVER_URI` and `JWT` shell variables will only exist in the current shell invocation by default, so make sure you use the same shell environment for the following interactions with the API.
 
 
 ### Make sure there are no existing authentication sets for your device
