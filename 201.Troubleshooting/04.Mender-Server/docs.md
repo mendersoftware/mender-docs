@@ -70,7 +70,7 @@ curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/admiss
 
 In this case you can see that there are two authentication sets with the exact same device identity string: `"{\"mac\":\"52:54:00:50:9b:84\"}"`, one `preauthorized` and one `pending`. So the device reported (see the `pending` set) the exact same identity as we preauthorized. However, there is a mismatch in the format of the public key: the pending set, which the device reported, contains additional `\n` characters.
 
-The solution is to decommission the device and [remove all authentication sets](../../devices/preauthorizing-devices#make-sure-there-are-no-existing-authentication-sets-for-your-dev) (from both `admission` and `devauth`) and adjust the public key string used in the [preauthorize API call](../../devices/preauthorizing-devices#call-the-preauthorize-api) to match exactly the one reported by the device, as seen in the `pending` data above.
+The solution is to decommission the device and [remove all authentication sets](../../server-integration/preauthorizing-devices#make-sure-there-are-no-existing-authentication-sets-for-your-dev) (from both `admission` and `devauth`) and adjust the public key string used in the [preauthorize API call](../../server-integration/preauthorizing-devices#call-the-preauthorize-api) to match exactly the one reported by the device, as seen in the `pending` data above.
 
 
 ## mender-api-gateway exits with code 132
