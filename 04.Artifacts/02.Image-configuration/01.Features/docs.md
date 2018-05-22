@@ -29,6 +29,8 @@ MENDER_FEATURES_DISABLE_append = " <FEATURE>"
 
 Below is a list of the features that Mender provides, with descriptions:
 
+* `mender-grub` - Enables integration with the GRUB bootloader.
+
 * `mender-image` - Enables a build that uses the Mender defined partition
   layout.
 
@@ -38,6 +40,10 @@ Below is a list of the features that Mender provides, with descriptions:
 
 * `mender-image-ubi` - Enables a build that provides a Mender partitioned UBI
   image (`.ubimg`). If this is enabled then `mender-image` needs to be enabled
+  too.
+
+* `mender-image-uefi` - Enables a build that provides a Mender partitioned UEFI
+  image (`.uefiimg`). If this is enabled then `mender-image` needs to be enabled
   too.
 
 * `mender-install` - Enables a build that has Mender installed, with
@@ -50,7 +56,7 @@ Below is a list of the features that Mender provides, with descriptions:
   section about [disabling Mender as a system
   service](..#disabling-mender-as-a-system-service).
 
-* `mender-uboot` - Enables U-Boot integration.
+* `mender-uboot` - Enables integration with the U-Boot bootloader.
 
 
 ## Default features
@@ -66,17 +72,21 @@ INHERIT += "mender-full"
 The currently available classes are:
 
 * `mender-full`: Enables the most common features for Mender, which are:
-  * `mender-image`
-  * `mender-image-sd`
-  * `mender-install`
-  * `mender-systemd`
-  * `mender-uboot`
+    * `mender-image`
+    * `mender-install`
+    * `mender-systemd`
+    * If ARM:
+        * `mender-image-sd`
+        * `mender-uboot`
+    * If x86:
+        * `mender-image-uefi`
+        * `mender-grub`
 
 * `mender-full-ubi`: Enables the most common features for UBI based Mender
   installations, which are:
-  * `mender-image`
-  * `mender-image-ubi`
-  * `mender-install`
-  * `mender-systemd`
-  * `mender-ubi`
-  * `mender-uboot`
+    * `mender-image`
+    * `mender-image-ubi`
+    * `mender-install`
+    * `mender-systemd`
+    * `mender-ubi`
+    * `mender-uboot`

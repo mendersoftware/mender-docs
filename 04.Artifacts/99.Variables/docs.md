@@ -11,7 +11,7 @@ The variables are either specific to- and defined by Mender, as shown by the `ME
 #### ARTIFACTIMG_FSTYPE
 
 
-Defines which file system type Mender will build for the rootfs partitions in the `.sdimg` and the `.mender` file.  See [File system types](../../devices/partition-layout#file-system-types) for more information.
+Defines which file system type Mender will build for the rootfs partitions in the `.sdimg`, `.uefiimg` and the `.mender` file.  See [File system types](../../devices/partition-layout#file-system-types) for more information.
 
 
 #### IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET
@@ -28,7 +28,7 @@ Together with `IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET`, this specifies a file that y
 
 The size of the generated rootfs. This will be the size that is shipped in a `.mender` update. This variable is a standard Yocto Project variable and is influenced by several other factors. See [the Yocto Project documentation](http://www.yoctoproject.org/docs/2.2/ref-manual/ref-manual.html?target=_blank#var-IMAGE_ROOTFS_SIZE) for more information.
 
-Note that this variable has no effect when generating an SD card image (`sdimg`), since in that case the size is determined automatically. See  [`MENDER_STORAGE_TOTAL_SIZE_MB`](#mender_storage_total_size_mb) for more information.
+Note that this variable has no effect when generating an SD card or UEFI image (`sdimg` or `uefiimg`), since in that case the size is determined automatically. See  [`MENDER_STORAGE_TOTAL_SIZE_MB`](#mender_storage_total_size_mb) for more information.
 
 
 #### MENDER_ARTIFACT_EXTRA_ARGS
@@ -79,7 +79,7 @@ variable exists to override the auto detection.
 
 #### MENDER_BOOT_PART_SIZE_MB
 
-The size of the boot partition in the generated `.sdimg` file. See [Configuring the partition sizes](../../devices/partition-layout#configuring-the-partition-sizes) for more information.
+The size of the boot partition in the generated `.sdimg` or `.uefiimg` file. See [Configuring the partition sizes](../../devices/partition-layout#configuring-the-partition-sizes) for more information.
 
 
 #### MENDER_DATA_PART
@@ -96,7 +96,7 @@ variable exists to override the auto detection.
 
 #### MENDER_DATA_PART_SIZE_MB
 
-The size of the persistent data partition in the generated `.sdimg` file. See [Configuring the partition sizes](../../devices/partition-layout#configuring-the-partition-sizes) for more information.
+The size of the persistent data partition in the generated `.sdimg` or `.uefiimg` file. See [Configuring the partition sizes](../../devices/partition-layout#configuring-the-partition-sizes) for more information.
 
 
 #### MENDER_DEMO_HOST_IP_ADDRESS
@@ -106,14 +106,14 @@ As the name indicates, this variable is only relevant if you are building Mender
 
 #### MENDER_DEVICE_TYPE
 
-A string that defines the type of device this image will be installed on. This variable is only relevant when building a complete partitioned image (`.sdimg` suffix). Once a device is flashed with this, it will not change, even if the device is updated.
+A string that defines the type of device this image will be installed on. This variable is only relevant when building a complete partitioned image (`.sdimg` or `.uefiimg` suffix). Once a device is flashed with this, it will not change, even if the device is updated.
 
 It defaults to the value of `${MACHINE}`.
 
 
 #### MENDER_DEVICE_TYPES_COMPATIBLE
 
-A space separated string of device types that determine which types of devices this update is suitable for. This complements the `MENDER_DEVICE_TYPE` variable, and is only relevant when building a `.mender` update, not when building a `.sdimg` partitioned image.
+A space separated string of device types that determine which types of devices this update is suitable for. This complements the `MENDER_DEVICE_TYPE` variable, and is only relevant when building a `.mender` update, not when building a `.sdimg` or `.uefiimg` partitioned image.
 
 It defaults to the value of `${MACHINE}`.
 
@@ -143,7 +143,7 @@ cases.
 
 The MTD part name where UBI volumes are stored.
 
-Defaults to empty when building `.sdimg`.
+Defaults to empty when building `.sdimg` or `.uefiimg`.
 
 Defaults to `ubi` when building `.ubimg`.
 
@@ -151,14 +151,15 @@ Defaults to `ubi` when building `.ubimg`.
 #### MENDER_PARTITIONING_OVERHEAD_MB
 
 A rough estimate of space lost due to partition alignment, expressed in MB. The
-`.sdimg` build process will calculate that automatically using a simple
-heuristic: `4 * 1024 * MENDER_PARTITION_ALIGNMENT_KB` (accounts for boot partition, two
-rootfs partitions and a data partition).
+build process will calculate that automatically using a simple heuristic. See
+the definition of `MENDER_PARTITIONING_OVERHEAD_MB` in
+[meta-mender](https://github.com/mendersoftware/meta-mender) for details on the
+calculation.
 
 
 #### MENDER_PARTITION_ALIGNMENT_KB
 
-Alignment of partitions used when building `.sdimg` image, expressed in kiB.
+Alignment of partitions used when building partitioned images, expressed in kiB.
 Default value is `8192`.
 
 
@@ -177,7 +178,7 @@ Example:
 ubifsmount ubi0:rootfsa
 ```
 
-Defaults to the value of `${MENDER_ROOTFS_PART_A}` when building `.sdimg`.
+Defaults to the value of `${MENDER_ROOTFS_PART_A}` when building `.sdimg` or `.uefiimg`.
 
 Defaults to `${MENDER_STORAGE_DEVICE}:rootfsa` when building `.ubimg`.
 
@@ -191,7 +192,7 @@ The partition Mender uses as the second (B) rootfs partition. See [More detailed
 
 See [`MENDER_ROOTFS_PART_A_NAME`](#mender_rootfs_part_a_name)
 
-Defaults to the value of `${MENDER_ROOTFS_PART_B}` when building `.sdimg`
+Defaults to the value of `${MENDER_ROOTFS_PART_B}` when building `.sdimg` or `.uefiimg`.
 
 Defaults to `${MENDER_STORAGE_DEVICE}:rootfsb` when building `.ubimg`.
 
@@ -234,13 +235,14 @@ The storage device holding all partitions (rootfs, boot, data) used by Mender. S
 
 #### MENDER_STORAGE_TOTAL_SIZE_MB
 
-Total size of the medium that mender `.sdimg` will be written to, expressed in
-MB. The size of rootfs partition will be calculated automatically by subtracting
-the sizes of boot (see [MENDER_BOOT_PART_SIZE_MB](#mender_boot_part_size_mb))
-and data partitions (see [MENDER_DATA_PART_SIZE_MB](#mender_data_part_size_mb))
-along with some predefined overhead
-(see [MENDER_PARTITIONING_OVERHEAD_MB](#mender_partitioning_overhead_mb))).
-Default value is `1024`.
+Total size of the medium that mender `.sdimg` or `.uefiimg` will be written to,
+expressed in MB. The size of rootfs partition will be calculated automatically
+by subtracting the sizes of boot (see
+[MENDER_BOOT_PART_SIZE_MB](#mender_boot_part_size_mb)) and data partitions (see
+[MENDER_DATA_PART_SIZE_MB](#mender_data_part_size_mb)) along with some
+predefined overhead (see
+[MENDER_PARTITIONING_OVERHEAD_MB](#mender_partitioning_overhead_mb))).  Default
+value is `1024`.
 
 
 #### MENDER_TENANT_TOKEN
