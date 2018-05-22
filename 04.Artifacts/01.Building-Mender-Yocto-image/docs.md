@@ -6,7 +6,7 @@ taxonomy:
 
 This document outlines the steps needed to build a [Yocto Project](https://www.yoctoproject.org/?target=_blank) image for a device.
 The build output will most notably include:
-* a file that can be flashed to the device storage during initial provisioning, it has suffix `.sdimg`
+* a file that can be flashed to the device storage during initial provisioning. It contains a `.uefiimg` suffix if UEFI partition layout is used (usually together with GRUB), and a `.sdimg` suffix if not (usually together with U-Boot).
 * an Artifact containing rootfs filesystem image file that Mender can deploy to your provisioned device, it has suffix `.mender`
 
 !!! If you do not want to build your own images for testing purposes, the [Getting started](../../getting-started) tutorials provide links to several [demo images](../../getting-started/download-test-images).

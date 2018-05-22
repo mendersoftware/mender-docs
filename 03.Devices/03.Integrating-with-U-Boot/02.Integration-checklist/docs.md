@@ -6,6 +6,8 @@ taxonomy:
 
 In order to ensure that the necessary components for Mender have been integrated correctly, use this checklist to verify each of them in turn. Use this when all components have been built successfully, and the device has booted correctly.
 
+!!! This checklist applies only if you are using U-Boot. If you are using another bootloader, such as GRUB, this section can be skipped.
+
 ## What is verified
 
 This checklist will verify some key functionality aspects of the Mender integration. It will verify that:

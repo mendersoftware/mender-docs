@@ -19,7 +19,7 @@ Mender has no official support for other build systems. However, by following th
 The client binaries, which are written in Go, are around 7 MiB in size. 
 
 ##Bootloader support
-To support atomic rootfs rollback, Mender integrates with the bootloader of the device. Currently Mender supports [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank). See [U-Boot integration](../integrating-with-u-boot) for more information.
+To support atomic rootfs rollback, Mender integrates with the bootloader of the device. Currently Mender supports [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank) and [GRUB](https://www.gnu.org/software/grub/?target=_blank). See [U-Boot integration](../integrating-with-u-boot) and [GRUB integration](../integrating-with-grub) for more information.
 
 ##Kernel support
 While Mender itself does not have any specific kernel requirements beyond what a normal Linux kernel provides, it relies on systemd, which does have one such requirement: The `CONFIG_FHANDLE` feature must be enabled in the kernel. The symptom if this feature is unavailable is that systemd hangs during boot looking for device files.

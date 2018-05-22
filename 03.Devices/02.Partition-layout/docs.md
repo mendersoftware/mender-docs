@@ -63,7 +63,7 @@ When [building a Mender Yocto Project image](../../artifacts/building-mender-yoc
 
 In general Mender does not have dependencies on a specific file system type as long as it is for a [block device](#flash-memory-types), but the version of U-Boot you are using must support the file system type used for rootfs because it needs to read the Linux kernel from the file system and start the Linux boot process.
 
-The file system types Mender builds is based on your Yocto Project `IMAGE_FSTYPES` variable. As there is only one `.sdimg` file built, the rootfs file systems inside it will be the **first** `ext2`/`ext3`/`ext4` file system you have in the `IMAGE_FSTYPES` variable.
+The standard Yocto Project `IMAGE_FSTYPES` variable will be used to determine the image types to create in Yocto deploy directory. The meta-mender layer will add the `mender` type to that variable, and usually either `sdimg` or `uefiimg`, depending on whether [UEFI layout is used or not](../../artifacts/image-configuration/features#list-of-features). The filesystem used for the individual partitions in the `sdimg`, `uefiimg` and `mender` files will be based on the `ARTIFACTIMG_FSTYPE` variable.  It is advised that you clean up the `IMAGE_FSTYPES` variable to avoid creating unnecessary image files.
 
 
 ##Configuring storage
@@ -100,7 +100,7 @@ MENDER_ROOTFS_PART_B = "${MENDER_STORAGE_DEVICE_BASE}3"
 
 ##Configuring the partition sizes
 
-When [building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image) Mender defines and uses certain OpenEmbedded variables which are used to define the sizes of the partitions. They are defined in `meta-mender-core` under `classes/mender-sdimg.bbclass`.
+When [building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image) Mender defines and uses certain OpenEmbedded variables which are used to define the sizes of the partitions.
 
 | Mount point | Purpose                                                 | Default size | Variable to configure size     |
 |-------------|---------------------------------------------------------|--------------|--------------------------------|
@@ -133,7 +133,7 @@ do_deploy() {
 addtask do_deploy after do_compile before do_build
 ```
 
-The changes to the image recipe will add the `persist` directory to the `.sdimg` file by appending to the `MENDER_DATA_PART_DIR` variable.
+The changes to the image recipe will add the `persist` directory to the `.sdimg` or `.uefiimg` file by appending to the `MENDER_DATA_PART_DIR` variable.
 
 ```bash
 MENDER_DATA_PART_DIR_append = "${DEPLOY_DIR_IMAGE}/persist"
