@@ -23,6 +23,9 @@ Starting with the Mender Client version 1.2, support is available for scripts to
 
 State scripts can either be run as we transition into a state; "Enter", or out from a state, "Leave". Most of the states also have an "Error" transition which is run when some error occurs while executing any action inside the given state (including execution of Enter and Leave scripts).
 
+![Mender state machine diagram](mender-state-machine.png)
+
+
 
 ## Root file system and Artifact scripts
 
@@ -81,6 +84,8 @@ Mender users will probably come up with a lot of interesting use cases for state
 #### Application data migration
 In this case, application data like a user profile is stored in an SQLite database and a new column need to be added before starting the new version of the application. This can be achieved by adding a state script to `ArtifactReboot_Enter` (that would run after writing the new rootfs, but before rebooting). This script can then do the necessary migrations on the data partition before the new version of the application is brought up after the reboot.
 
+![Application data migration state scripts](mender-state-machine-data-migration.png)
+
 
 #### Update confirmation by end user
 For many devices with a display that interacts with an end user, it is desirable to ask the user before applying the update. You have probably seen this on a smartphone, where it will ask you if you want to update to the latest release of Android or iOS and it only starts after you hit "Apply".
@@ -89,11 +94,15 @@ Mender state scripts enable this use case with a script written to create the di
 
 Make sure to adjust `StateScriptRetryIntervalSeconds` as described in [retry later](#retry-later) to enable this use case.
 
+![End user update confirmation state scripts](mender-state-machine-user-confirmation.png)
+
 
 #### Custom sanity checks after the update is installed
 Mender already automatically rolls back an update if it can not reach the Mender Server after the update is installed, in order to ensure *another* update can be deployed.
 
 Scripts in `ArtifactCommit_Enter` can do additional sanity checks to make sure that the device and applications are working as expected. For example, is the UI application running and responding within a given amount of time? If not, then the script can simply return 1 and Mender will roll back the update.
+
+![Custom sanity check state scripts](mender-state-machine-custom-sanity-check.png)
 
 
 #### Enable network connectivity
@@ -105,6 +114,9 @@ A state script in `Sync_Enter` can enable network connectivity. You could also e
 !!! Note that the `Sync_Enter` transition can be reached quite frequently, depending on the [polling intervals](../../client-configuration/configuration-file/polling-intervals). The Mender Client also requires network in several following states of the update process to report progress to the Mender Server (unless you use [standalone mode](../../architecture/overview#modes-of-operation)).
 
 If you want to explicitly disable network again after Mender has finished the deployment, the only safe place to do this is in `Idle_Enter`.
+
+![Enable networking state scripts](mender-state-machine-enable-network.png)
+
 
 ## Including state scripts in Artifacts and disk images
 
