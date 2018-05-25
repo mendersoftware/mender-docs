@@ -23,7 +23,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 ## The steps
 
-!!! Steps 1-4 can be skipped when verifying [raw flash](../raw-flash) integration.
+!!! Steps 1-4 can be skipped when verifying [raw flash](../../raw-flash) integration.
 
 1. As part of the test, we will need two different Linux kernels, in order to verify that both are booted correctly when they should. Therefore, before building the images you will test with, run the commands:
 
