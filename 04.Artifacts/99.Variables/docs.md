@@ -14,16 +14,6 @@ The variables are either specific to- and defined by Mender, as shown by the `ME
 Defines which file system type Mender will build for the rootfs partitions in the `.sdimg`, `.uefiimg` and the `.mender` file.  See [File system types](../../devices/partition-layout#file-system-types) for more information.
 
 
-#### IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET
-
-Together with `IMAGE_BOOTLOADER_FILE`, this sets the offset where the bootloader should be placed, counting from the start of the storage medium. The offset is specified in units of 512-byte sectors. Obviously this needs to be non-zero, or the partition table itself would be overwritten.
-
-
-#### IMAGE_BOOTLOADER_FILE
-
-Together with `IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET`, this specifies a file that you would like to write directly into the boot sector, in the intervening space between the partition table and the first partition.
-
-
 #### IMAGE_FSTYPES
 
 Influences which file system type Mender will build for the rootfs partitions in the `.sdimg` file. Mender will pick the **first** of the file system types ext2/ext3/ext4 listed in this variable as the file system for rootfs in the generated `.sdimg` file. See [File system types](../../devices/partition-layout#file-system-types) for more information.
@@ -133,6 +123,16 @@ section on features](../image-configuration/features) for more information.
 
 Features appended to this variable will be enabled in the build. See [the
 section on features](../image-configuration/features) for more information.
+
+
+#### MENDER_IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET
+
+Together with `MENDER_IMAGE_BOOTLOADER_FILE`, this sets the offset where the bootloader should be placed, counting from the start of the storage medium. The offset is specified in units of 512-byte sectors. Obviously this needs to be non-zero, or the partition table itself would be overwritten.
+
+
+#### MENDER_IMAGE_BOOTLOADER_FILE
+
+Together with `MENDER_IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET`, this specifies a file that you would like to write directly into the boot sector, in the intervening space between the partition table and the first partition.
 
 
 #### MENDER_KERNEL_IMAGETYPE_FORCE
