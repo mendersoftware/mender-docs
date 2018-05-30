@@ -156,8 +156,8 @@ If you have several devices, please write the disk image to all their SD cards.
 
 First, insert the SD card you just provisioned into the device.
 
-For the **BeagleBone Black only** (N/A to Raspberry Pi 3): Before powering on the BeagleBone Black, please press the
-*S2 button*, as shown below. Keep the button pressed for about 5 seconds after connecting power. This will make the BeagleBone
+For the **BeagleBone Black only** (N/A to Raspberry Pi 3): Before powering on the BeagleBone Black, press the
+*S2 button* (as shown below) and keep the button pressed for about 5 seconds while booting (power is connected). This will make the BeagleBone
 Black boot from the SD card instead of internal storage.
 
 ![Booting BeagleBone Black from SD card](beaglebone_black_sdboot.png)
