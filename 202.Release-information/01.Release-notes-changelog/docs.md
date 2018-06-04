@@ -4,6 +4,25 @@ taxonomy:
     category: docs
 ---
 
+## Mender v1.4.1
+
+_Released xx.xx.xxxx_
+
+#### integration (1.4.1)
+* Switched to using Intel x86_64 hardware accelerated client
+  instead of ARM emulator.
+* Add --kvm option to demo scripts to run client VM hardware accelerated.
+* Switch default client container type to qemux86-64.
+* Upgrade mender to 1.4.1.
+
+#### mender (1.4.1)
+* FIXED: Log writes not flushed from memory
+  ([MEN-1726](https://tracker.mender.io/browse/MEN-1726))
+* Regenerate keys on all key errors, not just when keys are missing.
+  ([MEN-1823](https://tracker.mender.io/browse/MEN-1823))
+* Mender client key generator script
+
+
 ## Mender v1.4.0
 
 _Released 03.20.2018_
