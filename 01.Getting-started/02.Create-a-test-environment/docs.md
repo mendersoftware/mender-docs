@@ -17,7 +17,7 @@ environment:
 [start_autoupdate_integration_archive_x.x.x.tar.gz]: #
 
 ```bash
-git clone -b 1.5.0b1 https://github.com/mendersoftware/integration.git integration-1.5.0b1
+git clone -b 1.5.0 https://github.com/mendersoftware/integration.git integration-1.5.0
 ```
 
 [end_autoupdate_integration_archive_x.x.x.tar.gz]: #
@@ -25,7 +25,7 @@ git clone -b 1.5.0b1 https://github.com/mendersoftware/integration.git integrati
 [start_autoupdate_integration-x.x.x]: #
 
 ```bash
-cd integration-1.5.0b1
+cd integration-1.5.0
 ```
 
 [end_autoupdate_integration-x.x.x]: #
