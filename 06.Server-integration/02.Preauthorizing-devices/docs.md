@@ -30,7 +30,7 @@ We assume you have either [built a disk image for your device](../../artifacts/b
 
 When preauthorizing a device you need to know its [identity](../../client-configuration/identity). This is one or more key-value attributes, depending on the identity scheme you are using. If you connect your device so it shows up as pending in the Mender server, you will see its identity in the Mender server UI (note it is *not* the ID of the device, but the key-value attributes under Identity that are used for preauthorization).
 
-By default the Mender client uses the [MAC address of the first interface](https://github.com/mendersoftware/mender/blob/master/support/mender-device-identity?target=_blank) on the device as the device identity, for example `mac=02:12:61:13:6c:42`.
+By default the Mender client uses the [MAC address of the first interface](https://github.com/mendersoftware/mender/blob/1.4.1/support/mender-device-identity?target=_blank) on the device as the device identity, for example `mac=02:12:61:13:6c:42`.
 
 
 ### Mender client and server connectivity
@@ -57,7 +57,7 @@ When preauthorizing a device, device keys will be generated on separate system (
 
 !!! Make sure the system you generate keys on is adequately secured, as it will also generate the device private keys. You should consider securely deleting (e.g. `shred`) the *private* keys after provisioning the device if you do not truly need a record of them (you can keep the public keys, of course).
 
-We will use a script to generate a keypair the Mender client understands; it uses the `openssl` command to generate the keys. Download the [keygen-client](https://github.com/mendersoftware/mender/blob/master/support/keygen-client?target=_blank) script into a directory and ensure it is executable. Run it without parameters:
+We will use a script to generate a keypair the Mender client understands; it uses the `openssl` command to generate the keys. Download the [keygen-client](https://github.com/mendersoftware/mender/blob/1.4.1/support/keygen-client?target=_blank) script into a directory and ensure it is executable. Run it without parameters:
 
 ```bash
 ./keygen-client

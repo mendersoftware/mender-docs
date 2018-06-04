@@ -40,6 +40,7 @@ so if you are building for one of these you do not need to do any integration:
 
 * [Raspberry Pi 3](https://github.com/mendersoftware/meta-mender/tree/rocko/meta-mender-raspberrypi?target=_blank) (other revisions are also likely to work)
 * BeagleBone Black (no board specific layer needed)
+* [Virtual device (qemux86-64)](https://github.com/mendersoftware/meta-mender/tree/rocko/meta-mender-qemu?target=_blank)
 * [Virtual device (vexpress-qemu)](https://github.com/mendersoftware/meta-mender/tree/rocko/meta-mender-qemu?target=_blank)
 
 If you are building for a different device, please see [Device integration](../../devices)
@@ -119,7 +120,7 @@ that you can build for (only add one of these):
 
 * Raspberry Pi 3 (other revisions might also work): `bitbake-layers add-layer ../meta-mender/meta-mender-raspberrypi` (depends on `meta-raspberrypi`)
 * BeagleBone Black: No board specific layer needed
-* Virtual device: `bitbake-layers add-layer ../meta-mender/meta-mender-qemu`
+* Virtual devices: `bitbake-layers add-layer ../meta-mender/meta-mender-qemu`
 
 Other devices may have community support,
 either in [meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank) or other repositories.
@@ -146,7 +147,7 @@ MENDER_ARTIFACT_NAME = "release-1"
 INHERIT += "mender-full"
 
 # A MACHINE integrated with Mender.
-# raspberrypi3, beaglebone, and vexpress-qemu are reference devices
+# raspberrypi3, beaglebone, vexpress-qemu and qemux86-64 are reference devices
 MACHINE = "<YOUR-MACHINE>"
 
 # For Raspberry Pi, uncomment the following block:
@@ -180,7 +181,7 @@ MACHINE = "<YOUR-MACHINE>"
 # To get your tenant token, log in to https://hosted.mender.io,
 # click your email at the top right and then "My organization".
 # Remember to remove the meta-mender-demo layer (if you have added it).
-# We recommend Mender 1.4.0 and Yocto Project's rocko or later for Hosted Mender.
+# We recommend Mender 1.4.1 and Yocto Project's rocko or later for Hosted Mender.
 #
 # MENDER_SERVER_URL = "https://hosted.mender.io"
 # MENDER_TENANT_TOKEN = "<YOUR-HOSTED-MENDER-TENANT-TOKEN>"
@@ -228,4 +229,4 @@ which have `.mender` suffix. You can either deploy this Artifact in managed mode
 the Mender server as described in [Deploy to physical devices](../../getting-started/deploy-to-physical-devices)
 or by using the Mender client only in [Standalone deployments](../../architecture/standalone-deployments).
 
-!!! If you built for the virtual Mender reference device (`vexpress-qemu`), you can start up your newly built image with the script in `../meta-mender/meta-mender-qemu/scripts/mender-qemu` and log in as *root* without password.
+!!! If you built for one of the virtual Mender reference devices (`qemux86-64` or `vexpress-qemu`), you can start up your newly built image with the script in `../meta-mender/meta-mender-qemu/scripts/mender-qemu` and log in as *root* without password.
