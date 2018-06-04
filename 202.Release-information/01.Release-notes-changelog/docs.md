@@ -32,8 +32,8 @@ _Released 05.09.2018_
 _Released 05.15.2018_
 
 #### deployments (1.5.0b1)
-* display number of devices targetted when listing deployments
-* possible to upload artifacts to specific tenant via inernal API
+* display number of devices targeted when listing deployments
+* possible to upload artifacts to specific tenant via internal API
   ([MEN-1775](https://tracker.mender.io/browse/MEN-1775))
 * add ability to filter on deployment creation timestamps
 
@@ -79,7 +79,7 @@ _Released 05.15.2018_
   ([MEN-1823](https://tracker.mender.io/browse/MEN-1823))
 * cli: New client option to show installed artifact name
   ([MEN-1806](https://tracker.mender.io/browse/MEN-1806))
-* Spontanaeous-reboot hardening of the client
+* Spontaneous-reboot hardening of the client
   ([MEN-1187](https://tracker.mender.io/browse/MEN-1187))
 * FIXED: Log writes not flushed from memory
   ([MEN-1726](https://tracker.mender.io/browse/MEN-1726))
@@ -92,7 +92,7 @@ _Released 05.15.2018_
 #### mender-api-gateway-docker (1.5.0b1)
 * Allow cross-origin requests from hostnames listed in ALLOWED_HOSTS
 * When a client exceeds its rate limit gateway returns 429 (Too
-  Many Reqests) instead of 503 (Service Temporarily Unavailable)
+  Many Requests) instead of 503 (Service Temporarily Unavailable)
 
 #### useradm (1.5.0b1)
 * New internal endpoint for deleting authentication tokens.
