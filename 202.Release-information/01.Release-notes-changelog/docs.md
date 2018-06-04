@@ -4,6 +4,30 @@ taxonomy:
     category: docs
 ---
 
+## Mender v1.5.0
+
+_Released xx.xx.xxxx_
+
+#### integration (1.5.0)
+* Add mender-cli as a versioned repository under the Mender umbrella.
+* Upgrade deployments to 1.5.0.
+* Upgrade deviceadm to 1.4.0.
+* Upgrade deviceauth to 1.5.0.
+* Upgrade gui to 1.5.0.
+* Upgrade inventory to 1.4.0.
+* Upgrade mender to 1.5.0.
+* Upgrade mender-api-gateway-docker to 1.5.0.
+* Add mender-cli 1.0.0.
+* Add mender-conductor 1.0.0.
+* Add mender-conductor-enterprise 1.0.0.
+* Upgrade useradm to 1.5.0.
+
+#### mender (1.5.0)
+* FIXED: HTTP error 401 is not handled by all states
+  ([MEN-1854](https://tracker.mender.io/browse/MEN-1854))
+* Mender client key generator script
+
+
 ## Mender v1.4.1
 
 _Released xx.xx.xxxx_
