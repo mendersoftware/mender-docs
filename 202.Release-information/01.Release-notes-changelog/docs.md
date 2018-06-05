@@ -4,6 +4,61 @@ taxonomy:
     category: docs
 ---
 
+## Mender v1.5.0
+
+_Released xx.xx.xxxx_
+
+#### integration (1.5.0)
+* Add mender-cli as a versioned repository under the Mender umbrella.
+* Upgrade deployments to 1.5.0.
+* Upgrade deviceadm to 1.4.0.
+* Upgrade deviceauth to 1.5.0.
+* Upgrade gui to 1.5.0.
+* Upgrade inventory to 1.4.0.
+* Upgrade mender to 1.5.0.
+* Upgrade mender-api-gateway-docker to 1.5.0.
+* Add mender-cli 1.0.0.
+* Add mender-conductor 1.0.0.
+* Add mender-conductor-enterprise 1.0.0.
+* Upgrade useradm to 1.5.0.
+
+#### mender (1.5.0)
+* FIXED: HTTP error 401 is not handled by all states
+  ([MEN-1854](https://tracker.mender.io/browse/MEN-1854))
+* Mender client key generator script
+
+
+## Mender v1.4.2
+
+_Released xx.xx.xxxx_
+
+#### gui (1.4.1)
+* Fix elusive bug which sometimes caused GUI to restart over
+  and over due to not finding uglifyjs.
+
+#### integration (1.4.2)
+* Upgrade gui to 1.4.1.
+
+
+## Mender v1.4.1
+
+_Released 06.04.2018_
+
+#### integration (1.4.1)
+* Switched to using Intel x86_64 hardware accelerated client
+  instead of ARM emulator.
+* Add --kvm option to demo scripts to run client VM hardware accelerated.
+* Switch default client container type to qemux86-64.
+* Upgrade mender to 1.4.1.
+
+#### mender (1.4.1)
+* FIXED: Log writes not flushed from memory
+  ([MEN-1726](https://tracker.mender.io/browse/MEN-1726))
+* Regenerate keys on all key errors, not just when keys are missing.
+  ([MEN-1823](https://tracker.mender.io/browse/MEN-1823))
+* Mender client key generator script
+
+
 ## meta-mender rocko-v2018.05
 
 _Released 05.09.2018_
