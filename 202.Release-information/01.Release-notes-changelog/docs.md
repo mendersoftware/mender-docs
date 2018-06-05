@@ -4,6 +4,17 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender rocko-v2018.06
+
+_Released 06.05.2018_
+
+#### meta-mender rocko-v2018.06
+* Add Mender 1.5.0 recipe.
+* Add Mender 1.4.1 recipe.
+* Enable wifi in the raspberry-pi demo image by default.
+  ([MEN-1804](https://tracker.mender.io/browse/MEN-1804))
+
+
 ## Mender v1.5.0
 
 _Released xx.xx.xxxx_
