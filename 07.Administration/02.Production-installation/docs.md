@@ -73,7 +73,7 @@ named `mender-server`:
 [start_autoupdate_git_clone_integration_b_x.x.x]: #
 
 ```bash
-git clone -b 1.4.0 https://github.com/mendersoftware/integration mender-server
+git clone -b 1.4.2 https://github.com/mendersoftware/integration mender-server
 ```
 
 [end_autoupdate_git_clone_integration_b_x.x.x]: #
@@ -552,7 +552,7 @@ At this point your commit history should look as follows:
 
 <!--AUTOMATION: ignore -->
 ```bash
-git log --oneline origin/1.4.0..HEAD
+git log --oneline origin/1.4.2..HEAD
 ```
 > 7a4de3c production: final configuration
 > 41273f7 production: adding generated keys and certificates
