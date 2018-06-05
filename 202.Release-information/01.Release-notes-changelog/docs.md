@@ -28,9 +28,21 @@ _Released xx.xx.xxxx_
 * Mender client key generator script
 
 
-## Mender v1.4.1
+## Mender v1.4.2
 
 _Released xx.xx.xxxx_
+
+#### gui (1.4.1)
+* Fix elusive bug which sometimes caused GUI to restart over
+  and over due to not finding uglifyjs.
+
+#### integration (1.4.2)
+* Upgrade gui to 1.4.1.
+
+
+## Mender v1.4.1
+
+_Released 06.04.2018_
 
 #### integration (1.4.1)
 * Switched to using Intel x86_64 hardware accelerated client
