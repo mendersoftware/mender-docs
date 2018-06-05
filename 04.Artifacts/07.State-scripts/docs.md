@@ -6,6 +6,8 @@ taxonomy:
 
 The Mender Client has the ability to run pre- and postinstall scripts, before and after it writes the root file system. However, Mender state scripts are more general and useful than pre/postinstall scripts because they can be run between *any* state transition, not just (before/after) the install state. For some examples of usage, see [example use cases](#example-use-cases).
 
+!!! Note that state scripts are a feature of managed mode.  State scripts are not executed when running Mender in [standalone mode](../../architecture/overview#modes-of-operation)).
+
 
 ## The nine states
 
@@ -111,7 +113,7 @@ In order to save power and bandwidth, network connectivity may not be enabled by
 
 A state script in `Sync_Enter` can enable network connectivity. You could also enable more powerful network connectivity, such as Wi-Fi, with a state script in `Download_Enter`. If the network is not brought up by default on reboot, you should also enable network in `Reboot_Leave`.
 
-!!! Note that the `Sync_Enter` transition can be reached quite frequently, depending on the [polling intervals](../../client-configuration/configuration-file/polling-intervals). The Mender Client also requires network in several following states of the update process to report progress to the Mender Server (unless you use [standalone mode](../../architecture/overview#modes-of-operation)).
+!!! Note that the `Sync_Enter` transition can be reached quite frequently, depending on the [polling intervals](../../client-configuration/configuration-file/polling-intervals). The Mender Client also requires network in several following states of the update process to report progress to the Mender Server.
 
 If you want to explicitly disable network again after Mender has finished the deployment, the only safe place to do this is in `Idle_Enter`.
 
