@@ -6,6 +6,44 @@ taxonomy:
 
 The Mender server microservices are all accessible using an HTTPS API.  These APIs can be used to configure the server (for example, pre-authorizing devices) or implementing custom workflows (for example, integrating the Mender server into an existing device management system.)
 
+There are many ways to interact with Mender's http REST APIs and the most common ones are shown below.
+
+## Set up mender-cli
+
+`mender-cli` is a standalone CLI tool that works as a client against the [Mender server management APIs](../../apis/management-apis), in order to make it much easier to interact with the APIs.
+
+Currently two use cases are supported:
+
+* Log in
+* Upload Artifact
+
+Over time the functionality of `mender-cli` will be extended to simplify the most common use cases for integrating the Mender server into other backend and cloud systems. If you need to cover other use cases today, follow the [tutorial for cURL instead](#set-up-shell-variables-for-curl).
+
+First download the [prebuilt mender-cli Linux binary here][autoupdate_x.x.x_mender-cli].
+
+!!! If you need to build `mender-cli` from source, the general steps are the same as for [compiling mender-artifact from source](../../artifacts/modifying-a-mender-artifact#compiling-mender-artifact). Just use the [mender-cli repository](https://github.com/mendersoftware/mender-cli?target=_blank) instead of the mender-artifact repository.
+
+Then open a terminal in the directory you downloaded `mender-cli` and run the following commands to log in to your Mender server.
+
+```bash
+chmod +x mender-cli
+./mender-cli login --server https://hosted.mender.io --username myusername@example.com
+```
+
+!!! Adjust the server URI and email to the correct values for the server you are using.
+
+If the log in succeeds, you should see a message similar to the following:
+
+> login successful
+
+
+You can now use the other options of mender-cli to interact with the APIs.
+For example, to upload an Artifact you can run the following command:
+
+```bash
+./mender-cli artifacts --server https://hosted.mender.io upload relase_1.mender
+```
+
 
 ## Set up shell variables for cURL
 
@@ -59,3 +97,6 @@ If it succeeds it will return something like the following:
 ```
 
 If this fails, e.g. returns `401 Authorization Required`, make sure that the contents of your `JWT` and `MENDER_SERVER_URI` shell variables is correct and re-run the steps above if necessary.
+
+
+[autoupdate_x.x.x_mender-cli]: https://d1b0l86ne08fsf.cloudfront.net/mender-cli/master/mender-cli
