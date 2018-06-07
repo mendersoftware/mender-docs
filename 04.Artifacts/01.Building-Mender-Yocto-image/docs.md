@@ -25,7 +25,7 @@ Each one of these steps can be configured further, see the linked sections for m
 
 The other layers in *meta-mender* provide support for specific boards.
 
-!!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Start guide](http://www.yoctoproject.org/docs/2.3/yocto-project-qs/yocto-project-qs.html?target=_blank).
+!!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Start guide](http://www.yoctoproject.org/docs/2.4/yocto-project-qs/yocto-project-qs.html?target=_blank).
 
 
 ## Prerequisites
@@ -63,7 +63,7 @@ See [certificate troubleshooting](../../troubleshooting/mender-client#certificat
 
 ! We use the **master** branch of the Yocto Project and `meta-mender` below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases, but these branches are no longer maintained by Mender developers. We offer professional services to to implement and support other branches over time, please take a look at the [Mender professional services offering](https://mender.io/product/professional-services?target=_blank).
 
-A Yocto Project poky environment is required. If you already have 
+A Yocto Project poky environment is required. If you already have
 this in your build environment, please open a terminal, go to the `poky`
 directory and skip to [Adding the meta layers](#adding-the-meta-layers).
 
@@ -79,7 +79,7 @@ git clone -b master git://git.yoctoproject.org/poky
 cd poky
 ```
 
-!!! Note that the Yocto Project also depends on some [development tools to be in place](http://www.yoctoproject.org/docs/2.3/yocto-project-qs/yocto-project-qs.html?target=_blank#packages).
+!!! Note that the Yocto Project also depends on some [development tools to be in place](http://www.yoctoproject.org/docs/2.4/yocto-project-qs/yocto-project-qs.html?target=_blank#packages).
 
 
 

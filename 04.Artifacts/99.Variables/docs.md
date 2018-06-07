@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 This section provides a reference of variables Mender use during the Yocto Project build process.
-The variables are either specific to- and defined by Mender, as shown by the `MENDER_` prefix, or [defined by the Yocto Project](http://www.yoctoproject.org/docs/2.2/ref-manual/ref-manual.html?target=_blank#ref-variables-glos) and used by Mender.
+The variables are either specific to- and defined by Mender, as shown by the `MENDER_` prefix, or [defined by the Yocto Project](http://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html?target=_blank#ref-variables-glos) and used by Mender.
 
 
 #### ARTIFACTIMG_FSTYPE
@@ -16,7 +16,7 @@ Defines which file system type Mender will build for the rootfs partitions in th
 
 #### IMAGE_ROOTFS_SIZE
 
-The size of the generated rootfs, expressed in kiB. This will be the size that is shipped in a `.mender` update. This variable is a standard Yocto Project variable and is influenced by several other factors. See [the Yocto Project documentation](http://www.yoctoproject.org/docs/2.2/ref-manual/ref-manual.html?target=_blank#var-IMAGE_ROOTFS_SIZE) for more information.
+The size of the generated rootfs, expressed in kiB. This will be the size that is shipped in a `.mender` update. This variable is a standard Yocto Project variable and is influenced by several other factors. See [the Yocto Project documentation](http://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html?target=_blank#var-IMAGE_ROOTFS_SIZE) for more information.
 
 Note that this variable has no effect when generating an SD card or UEFI image (`sdimg` or `uefiimg`), since in that case the size is determined automatically. See  [`MENDER_STORAGE_TOTAL_SIZE_MB`](#mender_storage_total_size_mb) for more information.
 
