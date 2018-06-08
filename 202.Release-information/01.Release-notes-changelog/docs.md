@@ -17,7 +17,7 @@ _Released 06.05.2018_
 
 ## Mender v1.4.2
 
-_Released xx.xx.xxxx_
+_Released 06.07.2018_
 
 #### gui (1.4.1)
 * Fix elusive bug which sometimes caused GUI to restart over
