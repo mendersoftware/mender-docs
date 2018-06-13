@@ -134,3 +134,12 @@ A sample recipe (`hello-mender`) is included in the `meta-mender-demo` layer whi
 ! Keep in mind that any files you add to the `/data` directory will not be included in `.mender` artifacts, since they don't contain a data partition. Only complete partitioned images (`.biosimg`, `.sdimg`, `.uefiimg`, etc) will contain the files.
 
 !!! In Yocto Project 2.4 rocko and earlier, there was a different method for adding files to the data partition. Please see the [`MENDER_DATA_PART_DIR` variable](../../artifacts/variables#mender_data_part_dir) for details on this now obsolete method.
+
+
+## Producing a standalone data partition image
+
+Although it is not needed for most work with Mender, for some flashing setups, it may be useful to have the sole data partition available as an image file. If this is needed, simply add `dataimg` to the Yocto Project `IMAGE_FSTYPES` variable, and the image file will be built and given the `.dataimg` suffix. Its filesystem type will be the value of [`ARTIFACTIMG_FSTYPE`](../../artifacts/variables#artifactimg_fstype). For example:
+
+```bash
+IMAGE_FSTYPES_append = " dataimg"
+```
