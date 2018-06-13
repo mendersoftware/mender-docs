@@ -25,7 +25,7 @@ recipe. It should be placed in a location like this:
 file should be the following:
 
 ```
-FILESEXTRAPATHS_prepend = "${THISDIR}/files:"
+FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 SRC_URI_append = " file://mender.conf"
 ```
 
