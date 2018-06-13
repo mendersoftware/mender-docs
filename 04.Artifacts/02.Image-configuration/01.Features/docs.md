@@ -29,10 +29,19 @@ MENDER_FEATURES_DISABLE_append = " <FEATURE>"
 
 Below is a list of the features that Mender provides, with descriptions:
 
+* `mender-bios` - Enables booting of traditional BIOS based systems. Normally
+  enabled together with `mender-grub`. If `mender-grub` is enabled, but
+  `mender-bios` is disabled, then it is assumed that the booting process uses
+  the UEFI standard.
+
 * `mender-grub` - Enables integration with the GRUB bootloader.
 
 * `mender-image` - Enables a build that uses the Mender defined partition
   layout.
+
+* `mender-image-bios` - Enables a build that provides a Mender partitioned image
+  for use with traditional BIOS based systems (`.biosimg`). If this is enabled
+  then `mender-image` needs to be enabled too.
 
 * `mender-image-sd` - Enables a build that provides a Mender partitioned SD card
   image (`.sdimg`). If this is enabled then `mender-image` needs to be enabled
