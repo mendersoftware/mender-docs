@@ -63,7 +63,7 @@ When [building a Mender Yocto Project image](../../artifacts/building-mender-yoc
 
 In general Mender does not have dependencies on a specific file system type as long as it is for a [block device](#flash-memory-types), but the version of U-Boot you are using must support the file system type used for rootfs because it needs to read the Linux kernel from the file system and start the Linux boot process.
 
-The standard Yocto Project `IMAGE_FSTYPES` variable will be used to determine the image types to create in Yocto deploy directory. The meta-mender layer will add the `mender` type to that variable, and usually either `sdimg` or `uefiimg`, depending on whether [UEFI layout is used or not](../../artifacts/image-configuration/features#list-of-features). The filesystem used for the individual partitions in the `sdimg`, `uefiimg` and `mender` files will be based on the `ARTIFACTIMG_FSTYPE` variable.  It is advised that you clean up the `IMAGE_FSTYPES` variable to avoid creating unnecessary image files.
+The standard Yocto Project `IMAGE_FSTYPES` variable will be used to determine the image types to create in Yocto deploy directory. The meta-mender layer will add the `mender` type to that variable, and usually `sdimg`, `uefiimg` or a different type ending with `img`, depending on which [image features](../../artifacts/image-configuration/features#list-of-features) are enabled. The filesystem used for the individual partition files will be based on the `ARTIFACTIMG_FSTYPE` variable.  It is advised that you clean up the `IMAGE_FSTYPES` variable to avoid creating unnecessary image files.
 
 
 ##Configuring storage
@@ -102,12 +102,16 @@ MENDER_ROOTFS_PART_B = "${MENDER_STORAGE_DEVICE_BASE}3"
 
 When [building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image) Mender defines and uses certain OpenEmbedded variables which are used to define the sizes of the partitions.
 
-| Mount point | Purpose                                                 | Default size | Variable to configure size     |
-|-------------|---------------------------------------------------------|--------------|--------------------------------|
-| `/`         | Store the root file system and kernel.                  | auto         | `MENDER_STORAGE_TOTAL_SIZE_MB` |
-| `/uboot`    | Store the bootloader.                                   | 16 MB        | `MENDER_BOOT_PART_SIZE_MB`     |
-| `/data`     | Store persistent data, preserved during Mender updates. | 128 MB       | `MENDER_DATA_PART_SIZE_MB`     |
+| Mount point  | Purpose                                                 | Default size | Variable to configure size     |
+|--------------|---------------------------------------------------------|--------------|--------------------------------|
+| `/`          | Store the root file system and kernel.                  | auto         | `MENDER_STORAGE_TOTAL_SIZE_MB` |
+| &lt;BOOT&gt; | Store the bootloader.                                   | 16 MB        | `MENDER_BOOT_PART_SIZE_MB`     |
+| `/data`      | Store persistent data, preserved during Mender updates. | 128 MB       | `MENDER_DATA_PART_SIZE_MB`     |
 
+The value of &lt;BOOT&gt; depends on what features are enabled:
+* If `mender-uboot` is enabled: `/uboot`
+* If `mender-grub` and `mender-bios` are enabled: `/boot/grub`
+* If only `mender-grub` is enabled: `/boot/efi`
 
 You can override these default values in your `local.conf`. For details consult [Mender image variables](../../artifacts/variables).
 
@@ -120,23 +124,26 @@ If you have data or configuration that you need to preserve across updates, the 
 
 ##Deploying files to the persistent data partition
 
-When [building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image), if you need to include files in the persistent data partition, you will need to update your recipe file and your image file. The update to the recipe file ensures that the persistent files are deployed to a common location and the updates to the image file ensures that these files are included in the target image.
-
-The changes needed in a particular recipe include inheriting the deploy class and ensuring that the persistent files are copied into the `DEPLOYDIR` for access by the image generation package.
+When [building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image), if you need to include files in the persistent data partition, all you have to do is add those files to the `/data` directory in the root filesystem, and the files will automatically be included on the data partition. For example:
 
 ```bash
-inherit deploy
-do_deploy() {
-    install -d ${DEPLOYDIR}/persist
-    install -m 0644 persistent.txt ${DEPLOYDIR}/persist
+do_install() {
+    install -d ${D}/data
+    install -m 0644 persistent.txt ${D}/data/
 }
-addtask do_deploy after do_compile before do_build
-```
-
-The changes to the image recipe will add the `persist` directory to the `.sdimg` or `.uefiimg` file by appending to the `MENDER_DATA_PART_DIR` variable.
-
-```bash
-MENDER_DATA_PART_DIR_append = "${DEPLOY_DIR_IMAGE}/persist"
 ```
 
 A sample recipe (`hello-mender`) is included in the `meta-mender-demo` layer which deploys a text file to the persistent data partition.
+
+! Keep in mind that any files you add to the `/data` directory will not be included in `.mender` artifacts, since they don't contain a data partition. Only complete partitioned images (`.biosimg`, `.sdimg`, `.uefiimg`, etc) will contain the files.
+
+!!! In Yocto Project 2.4 rocko and earlier, there was a different method for adding files to the data partition. Please see the [`MENDER_DATA_PART_DIR` variable](../../artifacts/variables#mender_data_part_dir) for details on this now obsolete method.
+
+
+## Producing a standalone data partition image
+
+Although it is not needed for most work with Mender, for some flashing setups, it may be useful to have the sole data partition available as an image file. If this is needed, simply add `dataimg` to the Yocto Project `IMAGE_FSTYPES` variable, and the image file will be built and given the `.dataimg` suffix. Its filesystem type will be the value of [`ARTIFACTIMG_FSTYPE`](../../artifacts/variables#artifactimg_fstype). For example:
+
+```bash
+IMAGE_FSTYPES_append = " dataimg"
+```
