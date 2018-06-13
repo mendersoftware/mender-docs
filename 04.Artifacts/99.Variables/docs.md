@@ -77,6 +77,29 @@ The size of the boot partition in the generated `.sdimg` or `.uefiimg` file. See
 The partition Mender uses as the persistent data partition. See [More detailed storage configuration](../../devices/partition-layout#more-detailed-storage-configuration) for more information.
 
 
+#### MENDER_DATA_PART_DIR
+
+!!! This variable and the associated method is obsolete in Yocto Project 2.5 sumo and later. Simply [using recipes](../../devices/partition-layout#deploying-files-to-the-persistent-data-partition) to put files in the `/data` partition is enough.
+
+This variable is used to add files to the data partition of the Mender partitioned image. You will need to update your recipe file and your image file. The update to the recipe file ensures that the persistent files are deployed to a common location and the updates to the image file ensures that these files are included in the target image.
+
+The changes needed in a particular recipe include inheriting the deploy class and ensuring that the persistent files are copied into the `DEPLOYDIR` for access by the image generation package.
+
+```bash
+inherit deploy
+do_deploy() {
+    install -d ${DEPLOYDIR}/persist
+    install -m 0644 persistent.txt ${DEPLOYDIR}/persist
+}
+addtask do_deploy after do_compile before do_build
+```
+
+The changes to the image recipe will add the `persist` directory to the `.sdimg` or `.uefiimg` file by appending to the `MENDER_DATA_PART_DIR` variable.
+
+```bash
+MENDER_DATA_PART_DIR_append = "${DEPLOY_DIR_IMAGE}/persist"
+```
+
 #### MENDER_DATA_PART_FSTYPE
 
 Filesystem type of data partition. This configuration is only used in
