@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-This section describes the steps needed to integrate with U-Boot. Most steps are automated, but there are a few things that need to be in place for this to function.
+This section describes the steps needed to integrate with U-Boot, which is most commonly used on ARM systems. Most steps are automated, but there are a few things that need to be in place for this to function.
 
 ## Boot counter
 

@@ -63,7 +63,7 @@ When [building a Mender Yocto Project image](../../artifacts/building-mender-yoc
 
 In general Mender does not have dependencies on a specific file system type as long as it is for a [block device](#flash-memory-types), but the version of U-Boot you are using must support the file system type used for rootfs because it needs to read the Linux kernel from the file system and start the Linux boot process.
 
-The standard Yocto Project `IMAGE_FSTYPES` variable will be used to determine the image types to create in Yocto deploy directory. The meta-mender layer will add the `mender` type to that variable, and usually either `sdimg` or `uefiimg`, depending on whether [UEFI layout is used or not](../../artifacts/image-configuration/features#list-of-features). The filesystem used for the individual partitions in the `sdimg`, `uefiimg` and `mender` files will be based on the `ARTIFACTIMG_FSTYPE` variable.  It is advised that you clean up the `IMAGE_FSTYPES` variable to avoid creating unnecessary image files.
+The standard Yocto Project `IMAGE_FSTYPES` variable will be used to determine the image types to create in Yocto deploy directory. The meta-mender layer will add the `mender` type to that variable, and usually `sdimg`, `uefiimg` or a different type ending with `img`, depending on which [image features](../../artifacts/image-configuration/features#list-of-features) are enabled. The filesystem used for the individual partition files will be based on the `ARTIFACTIMG_FSTYPE` variable.  It is advised that you clean up the `IMAGE_FSTYPES` variable to avoid creating unnecessary image files.
 
 
 ##Configuring storage
@@ -102,12 +102,16 @@ MENDER_ROOTFS_PART_B = "${MENDER_STORAGE_DEVICE_BASE}3"
 
 When [building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image) Mender defines and uses certain OpenEmbedded variables which are used to define the sizes of the partitions.
 
-| Mount point | Purpose                                                 | Default size | Variable to configure size     |
-|-------------|---------------------------------------------------------|--------------|--------------------------------|
-| `/`         | Store the root file system and kernel.                  | auto         | `MENDER_STORAGE_TOTAL_SIZE_MB` |
-| `/uboot`    | Store the bootloader.                                   | 16 MB        | `MENDER_BOOT_PART_SIZE_MB`     |
-| `/data`     | Store persistent data, preserved during Mender updates. | 128 MB       | `MENDER_DATA_PART_SIZE_MB`     |
+| Mount point  | Purpose                                                 | Default size | Variable to configure size     |
+|--------------|---------------------------------------------------------|--------------|--------------------------------|
+| `/`          | Store the root file system and kernel.                  | auto         | `MENDER_STORAGE_TOTAL_SIZE_MB` |
+| &lt;BOOT&gt; | Store the bootloader.                                   | 16 MB        | `MENDER_BOOT_PART_SIZE_MB`     |
+| `/data`      | Store persistent data, preserved during Mender updates. | 128 MB       | `MENDER_DATA_PART_SIZE_MB`     |
 
+The value of &lt;BOOT&gt; depends on what features are enabled:
+* If `mender-uboot` is enabled: `/uboot`
+* If `mender-grub` and `mender-bios` are enabled: `/boot/grub`
+* If only `mender-grub` is enabled: `/boot/efi`
 
 You can override these default values in your `local.conf`. For details consult [Mender image variables](../../artifacts/variables).
 
