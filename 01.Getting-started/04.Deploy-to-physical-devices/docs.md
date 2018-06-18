@@ -126,6 +126,20 @@ Gateway=$IP_OF_MENDER_SERVER_FROM_DEVICE
 
 ! If you have a static IP address setup for several devices, you need several disk images so each get different IP addresses.
 
+## Wifi connectivity
+
+The raspberrypi demo image comes with Wifi connectivity enabled by default, thus the only thing needed in order for your device to connect to your network is setting the correct `<ssid>` and `<password>` in the `wpa_supplicant-nl80211@wlan0.conf` file on your device. First set your `<password>` and `<ssid>`, and `<sdimg>` path as shell variables:
+```bash
+NW_SSID=<ssid>
+NW_PASSWORD=<password>
+MENDER_IMGPATH=<sdimg>
+```
+And then running:
+```bash
+mender-artifact cat $MENDER_IMGPATH:/etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf | sed 's#[@]MENDER_DEMO_WIFI_PASSKEY[@]#$NW_PASSWORD#' | sed 's#[@]MENDER_DEMO_WIFI_PASSKEY[@]#NW_SSID#' | mender-artifact cp $MENDER_IMGPATH:/etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf"
+```
+should have your wpa configuration set up correctly on start up.
+
 ## Write the disk image to the SD card
 
 Please see [Write the disk image to the SD card](../../artifacts/provisioning-a-new-device#write-the-disk-image-to-the-sd-card)
@@ -260,6 +274,8 @@ Gateway=$IP_OF_MENDER_SERVER_FROM_DEVICE
 
 You can also make any other modifications you wish in this image
 prior to deploying it.
+
+!!! NOTE if you are running the raspberrypi pi demo image, with Wifi enabled and setup as per [Wifi connectivity](#Wifi-connectivity), the network id and password will have to be set in the same way as done for the sdimg.
 
 ## Upload the artifact to the server
 
