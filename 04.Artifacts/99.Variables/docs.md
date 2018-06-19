@@ -153,6 +153,20 @@ Together with `MENDER_IMAGE_BOOTLOADER_FILE`, this sets the offset where the boo
 Together with `MENDER_IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET`, this specifies a file that you would like to write directly into the boot sector, in the intervening space between the partition table and the first partition.
 
 
+#### MENDER_IS_ON_MTDID
+
+This variable is only relevant if the [the `mender-ubi` feature](../image-configuration/features#list-of-features) is enabled. The variable should be set to the MTDID of the device that mender, and the root filesystem in particular, resides on. This is set automatically in cases where it's possible, but in some cases it must be set manually.
+
+For example:
+
+```
+MENDER_MTDIDS = "nand0=20000000.flash"
+MENDER_IS_ON_MTDID = "20000000.flash"
+```
+
+See also [`MENDER_MTDIDS`](#mender-mtdids).
+
+
 #### MENDER_KERNEL_IMAGETYPE_FORCE
 
 In certain build scenarios, the detection of kernel image type may not work
@@ -181,6 +195,37 @@ The MTD part name where UBI volumes are stored.
 Defaults to `ubi` when `mender-ubi` feature is on and building a `.ubimg`, otherwise the default is empty.
 
 
+#### MENDER_MTDIDS
+
+This variable is only relevant if the [the `mender-ubi` feature](../image-configuration/features#list-of-features) is enabled, in which case it is mandatory. It lists the MTDID assignments on the system, separated by comma. For example:
+
+```
+MENDER_MTDIDS = "nand0=20000000.flash,nand1=30000000.flash"
+```
+
+If it has more than one entry, then [`MENDER_IS_ON_MTDID`](#mender-is-on-mtdid) must be set too.
+
+
+#### MENDER_MTDPARTS
+
+This variable is only relevant if the [the `mender-ubi` feature](../image-configuration/features#list-of-features) is enabled. The variable holds the MTDPARTS string for the Flash based device. This is set automatically in cases where it's possible, but in some cases it must be set manually. For example:
+
+```
+MENDER_MTDPARTS = "20000000.flash:1m(u-boot),-(ubi)"
+```
+
+Two volume names have special meaning to the Mender `mtdimg` image builder:
+* `u-boot` - The image builder will place the bootloader specified in `MENDER_IMAGE_BOOTLOADER_FILE` into this volume, if it is specified. Can be omitted if the platform doesn't need it.
+* `ubi` - The `ubimg` image (UBI image) will be put into this volume. The `ubi` volume should virtually always be present.
+
+See also [`MENDER_MTDIDS`](#mender-mtdids).
+
+
+#### MENDER_NAND_FLASH_PAGE_SIZE
+
+This variable sets the page size, in bytes, of the NAND flash on the device, and is used to calculate parameters for the UBI volumes.
+
+
 #### MENDER_PARTITIONING_OVERHEAD_MB
 
 A rough estimate of space lost due to partition alignment, expressed in MB. The
@@ -190,10 +235,9 @@ the definition of `MENDER_PARTITIONING_OVERHEAD_MB` in
 calculation.
 
 
-#### MENDER_PARTITION_ALIGNMENT_KB
+#### MENDER_PARTITION_ALIGNMENT
 
-Alignment of partitions used when building partitioned images, expressed in kiB.
-Default value is `8192`.
+Alignment of partitions used when building partitioned images, expressed in bytes. Note that this is not always a whole number of KiB, particularly when the storage device is a UBI volume.
 
 
 #### MENDER_ROOTFS_PART_A
@@ -266,6 +310,11 @@ The three methods should not be mixed.
 The storage device holding all partitions (rootfs, boot, data) used by Mender. See [Configuring storage](../../devices/partition-layout#configuring-storage) for more information.
 
 
+#### MENDER_STORAGE_PEB_SIZE
+
+Holds the size, in bytes, of the physical erase blocks (PEBs) on the Flash device.
+
+
 #### MENDER_STORAGE_TOTAL_SIZE_MB
 
 Total size of the medium that mender partitioned images will be written to,
@@ -281,6 +330,21 @@ value is `1024`.
 #### MENDER_TENANT_TOKEN
 
 Set this variable in `local.conf` in order to make the device recognize the organization to which it belongs. This option should always be set, except when running a custom Mender server installation with multitenancy module disabled.
+
+
+#### MENDER_UBI_LEB_PEB_BLOCK_OVERHEAD
+
+The overhead that each logical erase block (LEB) of the UBI device adds to the physical erase block (PEB), in bytes. In other words, how many bytes are "wasted" in each LEB. Usually set automatically, but can be overriden.
+
+
+#### MENDER_UBI_LEB_SIZE
+
+The size of each logical erase block (LEB) on the UBI device, in bytes. Usually set automatically from the various `MENDER_UBI_*_OVERHEAD` variables, but can be overriden.
+
+
+#### MENDER_UBI_TOTAL_BAD_PEB_OVERHEAD
+
+Total overhead on the whole UBI device, in bytes, resulting from bad physical erase blocks (PEBs). Usually zero.
 
 
 #### MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET
