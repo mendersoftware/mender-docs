@@ -116,11 +116,7 @@ menderproduction_mender-device-adm_1          /usr/bin/deviceadm -config ...   U
 menderproduction_mender-device-auth_1         /usr/bin/deviceauth -confi ...   Up      8080/tcp
 menderproduction_mender-gui_1                 /entrypoint.sh                   Up
 menderproduction_mender-inventory_1           /usr/bin/inventory -config ...   Up      8080/tcp
-menderproduction_mender-mongo-deployments_1   /entrypoint.sh mongod            Up      27017/tcp
-menderproduction_mender-mongo-device-adm_1    /entrypoint.sh mongod            Up      27017/tcp
-menderproduction_mender-mongo-device-auth_1   /entrypoint.sh mongod            Up      27017/tcp
-menderproduction_mender-mongo-inventory_1     /entrypoint.sh mongod            Up      27017/tcp
-menderproduction_mender-mongo-useradm_1       /entrypoint.sh mongod            Up      27017/tcp
+menderproduction_mender-mongo_1               /entrypoint.sh mongod            Up      27017/tcp
 menderproduction_mender-useradm_1             /usr/bin/useradm -config / ...   Up      8080/tcp
 menderproduction_minio_1                      minio server /export             Up      9000/tcp
 menderproduction_storage-proxy_1              /usr/local/openresty/bin/o ...   Up      0.0.0.0:9000->9000/tcp
@@ -139,12 +135,8 @@ d33f8b4af1bd        mendersoftware/deployments:latest                   "/entryp
 0bb97d64ee4f        mendersoftware/deviceadm:latest                     "/usr/bin/devicead..."   40 minutes ago      Up 39 minutes       8080/tcp                 menderproduction_mender-device-adm_1
 1ddbad5520e9        mendersoftware/deviceauth:latest                    "/usr/bin/deviceau..."   40 minutes ago      Up 39 minutes       8080/tcp                 menderproduction_mender-device-auth_1
 e7ad33929628        mendersoftware/openresty:1.11.2.2-alpine            "/usr/local/openre..."   40 minutes ago      Up 39 minutes       0.0.0.0:9000->9000/tcp   menderproduction_storage-proxy_1
-cdaab7768ec7        mongo:3.4                                           "/entrypoint.sh mo..."   40 minutes ago      Up 40 minutes       27017/tcp                menderproduction_mender-mongo-useradm_1
-6502c3c2ae48        mongo:3.4                                           "/entrypoint.sh mo..."   40 minutes ago      Up 40 minutes       27017/tcp                menderproduction_mender-mongo-inventory_1
-221778cc0c2b        mongo:3.4                                           "/entrypoint.sh mo..."   40 minutes ago      Up 40 minutes       27017/tcp                menderproduction_mender-mongo-deployments_1
+cdaab7768ec7        mongo:3.4                                           "/entrypoint.sh mo..."   40 minutes ago      Up 40 minutes       27017/tcp                menderproduction_mender-mongo_1
 867e76066fad        mendersoftware/gui:latest                           "/entrypoint.sh"         40 minutes ago      Up 40 minutes                                menderproduction_mender-gui_1
-00b85b65c157        mongo:3.4                                           "/entrypoint.sh mo..."   40 minutes ago      Up 40 minutes       27017/tcp                menderproduction_mender-mongo-device-adm_1
-392362ecb035        mongo:3.4                                           "/entrypoint.sh mo..."   40 minutes ago      Up 40 minutes       27017/tcp                menderproduction_mender-mongo-device-auth_1
 54ae287d24ac        mendersoftware/minio:RELEASE.2016-12-13T17-19-42Z   "minio server /export"   40 minutes ago      Up 40 minutes       9000/tcp                 menderproduction_minio_1
 ```
 ## Service keeps restarting
@@ -164,11 +156,7 @@ menderproduction_mender-device-adm_1          /usr/bin/deviceadm -config ...   U
 menderproduction_mender-device-auth_1         /usr/bin/deviceauth -confi ...   Up           8080/tcp
 menderproduction_mender-gui_1                 /entrypoint.sh                   Up
 menderproduction_mender-inventory_1           /usr/bin/inventory -config ...   Up           8080/tcp
-menderproduction_mender-mongo-deployments_1   /entrypoint.sh mongod            Up           27017/tcp
-menderproduction_mender-mongo-device-adm_1    /entrypoint.sh mongod            Up           27017/tcp
-menderproduction_mender-mongo-device-auth_1   /entrypoint.sh mongod            Up           27017/tcp
-menderproduction_mender-mongo-inventory_1     /entrypoint.sh mongod            Up           27017/tcp
-menderproduction_mender-mongo-useradm_1       /entrypoint.sh mongod            Up           27017/tcp
+menderproduction_mender-mongo_1               /entrypoint.sh mongod            Up           27017/tcp
 menderproduction_mender-useradm_1             /usr/bin/useradm -config / ...   Up           8080/tcp
 menderproduction_minio_1                      minio server /export             Up           9000/tcp
 menderproduction_storage-proxy_1              /usr/local/openresty/bin/o ...   Up           0.0.0.0:9000->9000/tcp
@@ -192,12 +180,8 @@ be9cc9ee74b2        mendersoftware/deviceauth:latest                    "/usr/bi
 aa70b181d490        mendersoftware/deviceadm:latest                     "/usr/bin/devicead..."   5 minutes ago       Up 5 minutes        8080/tcp                 menderproduction_mender-device-adm_1
 5d84b70d1187        mendersoftware/inventory:latest                     "/usr/bin/inventor..."   5 minutes ago       Up 5 minutes        8080/tcp                 menderproduction_mender-inventory_1
 1dc4843ec4db        mendersoftware/openresty:1.11.2.2-alpine            "/usr/local/openre..."   5 minutes ago       Up 5 minutes        0.0.0.0:9000->9000/tcp   menderproduction_storage-proxy_1
-fb216139bc60        mongo:3.4                                           "/entrypoint.sh mo..."   5 minutes ago       Up 5 minutes        27017/tcp                menderproduction_mender-mongo-deployments_1
+fb216139bc60        mongo:3.4                                           "/entrypoint.sh mo..."   5 minutes ago       Up 5 minutes        27017/tcp                menderproduction_mender-mongo_1
 9d6eacd2ae83        mendersoftware/gui:latest                           "/entrypoint.sh"         5 minutes ago       Up 5 minutes                                 menderproduction_mender-gui_1
-c318c024bf85        mongo:3.4                                           "/entrypoint.sh mo..."   5 minutes ago       Up 5 minutes        27017/tcp                menderproduction_mender-mongo-useradm_1
-c41c857663a7        mongo:3.4                                           "/entrypoint.sh mo..."   5 minutes ago       Up 5 minutes        27017/tcp                menderproduction_mender-mongo-device-auth_1
-6a9ae9835e40        mongo:3.4                                           "/entrypoint.sh mo..."   5 minutes ago       Up 5 minutes        27017/tcp                menderproduction_mender-mongo-device-adm_1
-2af6f3e56080        mongo:3.4                                           "/entrypoint.sh mo..."   5 minutes ago       Up 5 minutes        27017/tcp                menderproduction_mender-mongo-inventory_1
 cc0b330a3cd5        mendersoftware/minio:RELEASE.2016-12-13T17-19-42Z   "minio server /export"   5 minutes ago       Up 5 minutes        9000/tcp                 menderproduction_minio_1
 ```
 

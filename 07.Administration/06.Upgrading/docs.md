@@ -110,11 +110,7 @@ First, pull in new container images:
 ```bash
 ./run pull
 ```
-> Pulling mender-mongo-device-adm (mongo:3.4)...  
-> 3.4: Pulling from library/mongo  
-> Digest: sha256:e5a4f6caf4fb6773e41292b56308ed427692add67ffd7c655fdf11a78a72df4e  
-> Status: Image is up to date for mongo:3.4  
-> Pulling mender-mongo-device-auth (mongo:3.4)...  
+> Pulling mender-mongo (mongo:3.4)...  
 > 3.4: Pulling from library/mongo  
 > Digest: sha256:e5a4f6caf4fb6773e41292b56308ed427692add67ffd7c655fdf11a78a72df4e  
 > Status: Image is up to date for mongo:3.4  
@@ -150,11 +146,7 @@ Then stop and remove existing containers:
 > Stopping menderproduction_mender-device-adm_1 ... done  
 > Stopping menderproduction_mender-useradm_1 ... done  
 > Stopping menderproduction_storage-proxy_1 ... done  
-> Stopping menderproduction_mender-mongo-inventory_1 ... done  
-> Stopping menderproduction_mender-mongo-deployments_1 ... done  
-> Stopping menderproduction_mender-mongo-device-auth_1 ... done  
-> Stopping menderproduction_mender-mongo-device-adm_1 ... done  
-> Stopping menderproduction_mender-mongo-useradm_1 ... done  
+> Stopping menderproduction_mender-mongo_1 ... done  
 > Stopping menderproduction_mender-gui_1 ... done  
 > Stopping menderproduction_minio_1 ... done  
 
@@ -172,11 +164,7 @@ Then stop and remove existing containers:
 > Removing menderproduction_mender-device-adm_1 ... done  
 > Removing menderproduction_mender-useradm_1 ... done  
 > Removing menderproduction_storage-proxy_1 ... done  
-> Removing menderproduction_mender-mongo-inventory_1 ... done  
-> Removing menderproduction_mender-mongo-deployments_1 ... done  
-> Removing menderproduction_mender-mongo-device-auth_1 ... done  
-> Removing menderproduction_mender-mongo-device-adm_1 ... done  
-> Removing menderproduction_mender-mongo-useradm_1 ... done  
+> Removing menderproduction_mender-mongo_1 ... done  
 > Removing menderproduction_mender-gui_1 ... done  
 > Removing menderproduction_minio_1 ... done  
 
@@ -185,13 +173,9 @@ Start the new environment:
 ```bash
 ./run up -d
 ```
-> Creating menderproduction_mender-mongo-useradm_1  
-> Creating menderproduction_mender-mongo-device-adm_1  
-> Creating menderproduction_mender-mongo-deployments_1  
+> Creating menderproduction_mender-mongo_1  
 > Creating menderproduction_minio_1  
 > Creating menderproduction_mender-gui_1  
-> Creating menderproduction_mender-mongo-device-auth_1  
-> Creating menderproduction_mender-mongo-inventory_1  
 > Creating menderproduction_mender-useradm_1  
 > Creating menderproduction_mender-device-adm_1  
 > Creating menderproduction_mender-deployments_1  
