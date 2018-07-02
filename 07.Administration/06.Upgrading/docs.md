@@ -42,6 +42,20 @@ These can sometimes happen due to device decommissioning.
 You can find instructions on how to clean up the deviceauth database
 in the [Troubleshooting](../../troubleshooting/mender-server) chapter.
 
+## Migrating to single mongoDB instance.
+
+To reduce the number of mongoDB instances in the setup, first backup existing data and volumes.
+Then perform the upgrade.
+Note that with the new versions, there are no mender-mongo-\* services;
+instead there is a single mender-mongo service which contains all the databases.
+After upgrading, but before starting new services, run the `migrate-db` script from migration directory.
+This script will restore data dumped from mender-mongo-\* services to the single mender-mongo instance.
+The `migrate-db` script will also remove old database volumes.
+After running `migrate-db` script, start services by executing
+```bash
+./run up -d
+```
+
 ## Updating your local repository
 
 The first step is to upgrade your local repository by pulling changes from the
