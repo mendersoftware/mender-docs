@@ -42,7 +42,7 @@ At the end of this guide you will have:
 
 - production configuration in a single `docker-compose` file
 - a running Mender backend cluster
-- persistent service data in stored in Docker volumes:
+- persistent service data is stored in Docker volumes:
   - artifact storage
   - MongoDB data
 - SSL certificate for the API Gateway
