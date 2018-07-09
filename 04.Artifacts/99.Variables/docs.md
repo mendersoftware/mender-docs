@@ -355,6 +355,16 @@ environment should be stored, expressed in bytes. The default is equal to
 overridden, it must also be aligned to `MENDER_PARTITION_ALIGNMENT_KB`.
 
 
+#### MENDER_UBOOT_POST_SETUP_COMMANDS
+
+A set of U-Boot commands to be executed at the end of the MENDER_SETUP code in the MENDER_BOOTENV.
+
+
+#### MENDER_UBOOT_PRE_SETUP_COMMANDS
+
+A set of U-Boot commands to be executed at the beginning of the MENDER_SETUP code in the MENDER_BOOTENV.
+
+
 #### MENDER_UBOOT_STORAGE_DEVICE
 
 The storage device, as referred to by U-Boot (e.g. `1`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [U-Boot and the Linux kernel do not agree about the indexes of storage devices](../../troubleshooting/yocto-project-build#u-boot-and-the-linux-kernel-do-not-agree-about-the-indexes-of-st) for more information.
