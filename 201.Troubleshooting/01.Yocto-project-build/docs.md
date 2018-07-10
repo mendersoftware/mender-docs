@@ -101,3 +101,57 @@ RPROVIDES_${PN} = "u-boot"
 ```
 
 Detailed explanation how to do it you can find in [Integrating with U-Boot](../../devices/integrating-with-u-boot) section.
+
+
+## do_mender_uboot_auto_configure fails when executing `tools/env/fw_printenv -l fw_printenv.lock`
+
+Typical symptoms is that there is some output similar to this:
+
+```
++ tools/env/fw_printenv -l fw_printenv.lock
+*** buffer overflow detected ***: tools/env/fw_printenv terminated
+======= Backtrace: =========
+/lib/x86_64-linux-gnu/libc.so.6(+0x777e5)[0x7fee9e46e7e5]
+/lib/x86_64-linux-gnu/libc.so.6(__fortify_fail+0x5c)[0x7fee9e51015c]
+/lib/x86_64-linux-gnu/libc.so.6(+0x117160)[0x7fee9e50e160]
+/lib/x86_64-linux-gnu/libc.so.6(+0x1166c9)[0x7fee9e50d6c9]
+/lib/x86_64-linux-gnu/libc.so.6(_IO_default_xsputn+0x80)[0x7fee9e4726b0]
+/lib/x86_64-linux-gnu/libc.so.6(_IO_vfprintf+0x7bd)[0x7fee9e44492d]
+/lib/x86_64-linux-gnu/libc.so.6(__vsprintf_chk+0x84)[0x7fee9e50d754]
+/lib/x86_64-linux-gnu/libc.so.6(__sprintf_chk+0x7d)[0x7fee9e50d6ad]
+tools/env/fw_printenv[0x4012ca]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf0)[0x7fee9e417830]
+tools/env/fw_printenv[0x4014b9]
+======= Memory map: ========
+00400000-00407000 r-xp 00000000 08:01 8197150                            /home/user/poky/build-vexpress-qemu/tmp/work/vexpress_qemu-poky-linux-gnueabi/u-boot/1_2018.01-r0/tmp-src/tools/env/fw_printenv
+00606000-00607000 r--p 00006000 08:01 8197150                            /home/user/poky/build-vexpress-qemu/tmp/work/vexpress_qemu-poky-linux-gnueabi/u-boot/1_2018.01-r0/tmp-src/tools/env/fw_printenv
+00607000-00609000 rw-p 00007000 08:01 8197150                            /home/user/poky/build-vexpress-qemu/tmp/work/vexpress_qemu-poky-linux-gnueabi/u-boot/1_2018.01-r0/tmp-src/tools/env/fw_printenv
+01456000-01477000 rw-p 00000000 00:00 0                                  [heap]
+7fee9e1e1000-7fee9e1f7000 r-xp 00000000 08:01 1961                       /lib/x86_64-linux-gnu/libgcc_s.so.1
+7fee9e1f7000-7fee9e3f6000 ---p 00016000 08:01 1961                       /lib/x86_64-linux-gnu/libgcc_s.so.1
+7fee9e3f6000-7fee9e3f7000 rw-p 00015000 08:01 1961                       /lib/x86_64-linux-gnu/libgcc_s.so.1
+7fee9e3f7000-7fee9e5b7000 r-xp 00000000 08:01 1967                       /lib/x86_64-linux-gnu/libc-2.23.so
+7fee9e5b7000-7fee9e7b7000 ---p 001c0000 08:01 1967                       /lib/x86_64-linux-gnu/libc-2.23.so
+7fee9e7b7000-7fee9e7bb000 r--p 001c0000 08:01 1967                       /lib/x86_64-linux-gnu/libc-2.23.so
+7fee9e7bb000-7fee9e7bd000 rw-p 001c4000 08:01 1967                       /lib/x86_64-linux-gnu/libc-2.23.so
+7fee9e7bd000-7fee9e7c1000 rw-p 00000000 00:00 0
+7fee9e7c1000-7fee9e7e7000 r-xp 00000000 08:01 1965                       /lib/x86_64-linux-gnu/ld-2.23.so
+7fee9e9d9000-7fee9e9dc000 rw-p 00000000 00:00 0
+7fee9e9e5000-7fee9e9e6000 rw-p 00000000 00:00 0
+7fee9e9e6000-7fee9e9e7000 r--p 00025000 08:01 1965                       /lib/x86_64-linux-gnu/ld-2.23.so
+7fee9e9e7000-7fee9e9e8000 rw-p 00026000 08:01 1965                       /lib/x86_64-linux-gnu/ld-2.23.so
+7fee9e9e8000-7fee9e9e9000 rw-p 00000000 00:00 0
+7ffd719dc000-7ffd719ff000 rw-p 00000000 00:00 0                          [stack]
+7ffd71a73000-7ffd71a76000 r--p 00000000 00:00 0                          [vvar]
+7ffd71a76000-7ffd71a78000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+./uboot_auto_configure.sh: line 120:  3631 Aborted                 (core dumped) tools/env/fw_printenv -l fw_printenv.lock > "$TMP_DIR/compiled-environment.txt"
+WARNING: exit code 134 from a shell command.
+ERROR: Function failed: do_mender_uboot_auto_configure (log file is located at /home/user/poky/build-vexpress-qemu/tmp/work/vexpress_qemu-poky-linux-gnueabi/u-boot/1_2018.01-r0/temp/log.do_mender_uboot_auto_configure.29863)
+```
+
+This is a known bug in U-Boot versions prior to v2018.05. If you hit this you will need to include [this patch](https://raw.githubusercontent.com/mendersoftware/meta-mender/27f9e8dabf461d59dec4d94bd93d6b7207be0040/meta-mender-core/recipes-bsp/u-boot/patches/0005-fw_env_main.c-Fix-incorrect-size-for-malloc-ed-strin.patch) in your U-Boot sources. After adding the patch file to your layer, in your U-Boot `.bb` or `.bbappend` file, add the following:
+
+```
+SRC_URI_append = " file://0005-fw_env_main.c-Fix-incorrect-size-for-malloc-ed-strin.patch"
+```
