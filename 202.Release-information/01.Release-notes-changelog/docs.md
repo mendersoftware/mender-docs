@@ -4,6 +4,36 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender rocko-v2018.07
+
+_Released 07.10.2018_
+
+#### meta-mender (rocko-v2018.07)
+* Clear IMAGE_NAME_SUFFIX for all image types.
+* Use timedatectl, if available, to determine with time is synchronized.
+* Change rootfs size calculation so it takes alignment into account.
+  This should fix a few corner cases, where the filesystems may all fit
+  in terms of bytes, but still would not actually fit because of
+  partition alignment.
+  Backported to Morty. MENDER_PARTITION_ALIGNMENT_KB instead
+  of MENDER_PARTITION_ALIGNMENT.
+* Fix Linux kernel hanging when loaded via U-Boot/UEFI/GRUB
+  on vexpress-qemu*.
+  ([MEN-1657](https://tracker.mender.io/browse/MEN-1657))
+* Fix occasional inode corruption issue when re-launching a
+  previously launched and saved QEMU image.
+* QEMU: Limit client setup steps to run on first boot only.
+* tests: Filter out the data partition as the latest build artifact.
+* Licence checksum updated in mender-artifact
+* Fixed issue with build due to unknown image linux-firmware-raspbian-bcm43430
+* tests: Respect user set SSTATE_DIR and DL_DIR variables.
+* Warn when mender.conf settings conflict with Bitbake variables.
+* example-state-scripts: Explicitly return 0 from scripts.
+* Client container init scripts are modified to accept MAC address for qemu through env var, `RANDOM_MAC`.
+* tests: Also check ARTIFACTIMG_FSTYPE for compatible images.
+* meta-mender-core: Clean spaces out of UBOOT_MACHINE.
+
+
 ## meta-mender rocko-v2018.06
 
 _Released 06.05.2018_
