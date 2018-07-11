@@ -42,7 +42,7 @@ At the end of this guide you will have:
 
 - production configuration in a single `docker-compose` file
 - a running Mender backend cluster
-- persistent service data in stored in Docker volumes:
+- persistent service data is stored in Docker volumes:
   - artifact storage
   - MongoDB data
 - SSL certificate for the API Gateway
@@ -157,11 +157,10 @@ necessary Docker images:
 ./run pull
 ```
 
-> Pulling mender-mongo-device-adm (mongo:3.4)...
+> Pulling mender-mongo (mongo:3.4)...
 > 3.4: Pulling from library/mongo
 > Digest: sha256:aff0c497cff4f116583b99b21775a8844a17bcf5c69f7f3f6028013bf0d6c00c
 > Status: Image is up to date for mongo:3.4
-> Pulling mender-mongo-device-auth (mongo:3.4)...
 > ...
 > Pulling mender-gui (mendersoftware/gui:latest)...
 > latest: Pulling from mendersoftware/gui
@@ -567,13 +566,9 @@ Bring up all services up in detached mode with the following command:
 ./run up -d
 ```
 > Creating network "menderproduction_mender" with the default driver
-> Creating menderproduction_mender-mongo-device-auth_1
-> Creating menderproduction_mender-mongo-inventory_1
+> Creating menderproduction_mender-mongo_1
 > Creating menderproduction_mender-gui_1
 > Creating menderproduction_minio_1
-> Creating menderproduction_mender-mongo-deployments_1
-> Creating menderproduction_mender-mongo-useradm_1
-> Creating menderproduction_mender-mongo-device-adm_1
 > Creating menderproduction_mender-device-auth_1
 > Creating menderproduction_mender-inventory_1
 > Creating menderproduction_storage-proxy_1
@@ -603,11 +598,7 @@ menderproduction_mender-device-adm_1          /usr/bin/deviceadm -config ...   U
 menderproduction_mender-device-auth_1         /usr/bin/deviceauth -confi ...   Up      8080/tcp
 menderproduction_mender-gui_1                 /entrypoint.sh                   Up
 menderproduction_mender-inventory_1           /usr/bin/inventory -config ...   Up      8080/tcp
-menderproduction_mender-mongo-deployments_1   /entrypoint.sh mongod            Up      27017/tcp
-menderproduction_mender-mongo-device-adm_1    /entrypoint.sh mongod            Up      27017/tcp
-menderproduction_mender-mongo-device-auth_1   /entrypoint.sh mongod            Up      27017/tcp
-menderproduction_mender-mongo-inventory_1     /entrypoint.sh mongod            Up      27017/tcp
-menderproduction_mender-mongo-useradm_1       /entrypoint.sh mongod            Up      27017/tcp
+menderproduction_mender-mongo_1               /entrypoint.sh mongod            Up      27017/tcp
 menderproduction_mender-useradm_1             /usr/bin/useradm -config / ...   Up      8080/tcp
 menderproduction_minio_1                      minio server /export             Up      9000/tcp
 menderproduction_storage-proxy_1              /usr/local/openresty/bin/o ...   Up      0.0.0.0:9000->9000/tcp

@@ -49,11 +49,7 @@ the contents of each DB into `$PWD/db-dump/<service-name>` directory.
 > Stopping menderproduction_mender-device-adm_1 ... done
 > Stopping menderproduction_mender-useradm_1 ... done
 > Stopping menderproduction_mender-device-auth_1 ... done
-> Starting mender-mongo-device-adm ... done
-> Starting mender-mongo-device-auth ... done
-> Starting mender-mongo-deployments ... done
-> Starting mender-mongo-inventory ... done
-> Starting mender-mongo-useradm ... done
+> Starting mender-mongo ... done
 > 2017-06-06T11:20:05.004+0000    writing admin.system.version to
 > 2017-06-06T11:20:05.024+0000    done dumping admin.system.version (1 document)
 > 2017-06-06T11:20:05.024+0000    writing useradm.migration_info to
@@ -73,13 +69,9 @@ DB dumps previously created with `dump-db`.
 > Stopping menderproduction_mender-device-adm_1 ... done
 > Stopping menderproduction_mender-useradm_1 ... done
 > Stopping menderproduction_mender-device-auth_1 ... done
-> Starting mender-mongo-device-adm ... done
-> Starting mender-mongo-device-auth ... done
-> Starting mender-mongo-deployments ... done
-> Starting mender-mongo-inventory ... done
-> Starting mender-mongo-useradm ... done
+> Starting mender-mongo ... done
 > 2017-06-06T11:35:09.988+0000    preparing collections to restore from
-> 2017-06-06T11:35:10.088+0000    reading metadata for useradm.migration_info from /srv/db-dump/mender-mongo-useradm/useradm/migration_info.metadata.json
+> 2017-06-06T11:35:10.088+0000    reading metadata for useradm.migration_info from /srv/db-dump/mender-mongo/useradm/migration_info.metadata.json
 > (output continues...)
 > 2017-06-06T11:35:14.563+0000    no indexes to restore
 > 2017-06-06T11:35:14.563+0000    finished restoring deployment_service.migration_info (1 document)
@@ -92,15 +84,11 @@ Once the data has been dumped or restored, the services can be started using
 ```bash
 ./run up -d
 ```
-> menderproduction_mender-mongo-device-auth_1 is up-to-date
-> menderproduction_mender-mongo-device-adm_1 is up-to-date
+> menderproduction_mender-mongo_1 is up-to-date
 > menderproduction_mender-elasticsearch_1 is up-to-date
 > menderproduction_mender-gui_1 is up-to-date
-> menderproduction_mender-mongo-inventory_1 is up-to-date
-> menderproduction_mender-mongo-useradm_1 is up-to-date
 > menderproduction_minio_1 is up-to-date
 > menderproduction_mender-redis_1 is up-to-date
-> menderproduction_mender-mongo-deployments_1 is up-to-date
 > Starting menderproduction_mender-device-auth_1
 > Starting menderproduction_mender-device-adm_1
 > Starting menderproduction_mender-inventory_1
