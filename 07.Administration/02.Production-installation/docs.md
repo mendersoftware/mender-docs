@@ -323,11 +323,9 @@ named [Docker volumes](https://docs.docker.com/engine/admin/volumes/volumes/?tar
 The template is configured to mount the following volumes:
 
 - `mender-artifacts` - artifact objects storage
-- `mender-deployments-db` - deployments service database data
-- `mender-useradm-db` - user administration service database data
-- `mender-deviceauth-db` - device authentication service database data
-- `mender-deviceadm-db` - device admission service database data
-- `mender-inventory-db` - inventory service database data
+- `mender-db` - mender services databases data
+- `mender-elasticsearch-db` - elasticsearch service database data
+- `mender-redis-db` - redis service database data
 
 Each of these volumes need to be created manually with the following commands:
 
@@ -336,23 +334,7 @@ docker volume create --name=mender-artifacts
 ```
 
 ```bash
-docker volume create --name=mender-deployments-db
-```
-
-```bash
-docker volume create --name=mender-useradm-db
-```
-
-```bash
-docker volume create --name=mender-inventory-db
-```
-
-```bash
-docker volume create --name=mender-deviceadm-db
-```
-
-```bash
-docker volume create --name=mender-deviceauth-db
+docker volume create --name=mender-db
 ```
 
 ```bash
@@ -605,9 +587,9 @@ menderproduction_storage-proxy_1              /usr/local/openresty/bin/o ...   U
 ```
 
 
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 17 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 13 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
 <!--AUTOMATION: test=./run restart -->
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 17 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 13 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:9000" -->
 
