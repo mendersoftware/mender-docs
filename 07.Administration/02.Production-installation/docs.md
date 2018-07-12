@@ -42,7 +42,7 @@ At the end of this guide you will have:
 
 - production configuration in a single `docker-compose` file
 - a running Mender backend cluster
-- persistent service data in stored in Docker volumes:
+- persistent service data is stored in Docker volumes:
   - artifact storage
   - MongoDB data
 - SSL certificate for the API Gateway
@@ -157,11 +157,10 @@ necessary Docker images:
 ./run pull
 ```
 
-> Pulling mender-mongo-device-adm (mongo:3.4)...
+> Pulling mender-mongo (mongo:3.4)...
 > 3.4: Pulling from library/mongo
 > Digest: sha256:aff0c497cff4f116583b99b21775a8844a17bcf5c69f7f3f6028013bf0d6c00c
 > Status: Image is up to date for mongo:3.4
-> Pulling mender-mongo-device-auth (mongo:3.4)...
 > ...
 > Pulling mender-gui (mendersoftware/gui:latest)...
 > latest: Pulling from mendersoftware/gui
@@ -324,11 +323,9 @@ named [Docker volumes](https://docs.docker.com/engine/admin/volumes/volumes/?tar
 The template is configured to mount the following volumes:
 
 - `mender-artifacts` - artifact objects storage
-- `mender-deployments-db` - deployments service database data
-- `mender-useradm-db` - user administration service database data
-- `mender-deviceauth-db` - device authentication service database data
-- `mender-deviceadm-db` - device admission service database data
-- `mender-inventory-db` - inventory service database data
+- `mender-db` - mender services databases data
+- `mender-elasticsearch-db` - elasticsearch service database data
+- `mender-redis-db` - redis service database data
 
 Each of these volumes need to be created manually with the following commands:
 
@@ -337,23 +334,7 @@ docker volume create --name=mender-artifacts
 ```
 
 ```bash
-docker volume create --name=mender-deployments-db
-```
-
-```bash
-docker volume create --name=mender-useradm-db
-```
-
-```bash
-docker volume create --name=mender-inventory-db
-```
-
-```bash
-docker volume create --name=mender-deviceadm-db
-```
-
-```bash
-docker volume create --name=mender-deviceauth-db
+docker volume create --name=mender-db
 ```
 
 ```bash
@@ -567,13 +548,9 @@ Bring up all services up in detached mode with the following command:
 ./run up -d
 ```
 > Creating network "menderproduction_mender" with the default driver
-> Creating menderproduction_mender-mongo-device-auth_1
-> Creating menderproduction_mender-mongo-inventory_1
+> Creating menderproduction_mender-mongo_1
 > Creating menderproduction_mender-gui_1
 > Creating menderproduction_minio_1
-> Creating menderproduction_mender-mongo-deployments_1
-> Creating menderproduction_mender-mongo-useradm_1
-> Creating menderproduction_mender-mongo-device-adm_1
 > Creating menderproduction_mender-device-auth_1
 > Creating menderproduction_mender-inventory_1
 > Creating menderproduction_storage-proxy_1
@@ -603,20 +580,16 @@ menderproduction_mender-device-adm_1          /usr/bin/deviceadm -config ...   U
 menderproduction_mender-device-auth_1         /usr/bin/deviceauth -confi ...   Up      8080/tcp
 menderproduction_mender-gui_1                 /entrypoint.sh                   Up
 menderproduction_mender-inventory_1           /usr/bin/inventory -config ...   Up      8080/tcp
-menderproduction_mender-mongo-deployments_1   /entrypoint.sh mongod            Up      27017/tcp
-menderproduction_mender-mongo-device-adm_1    /entrypoint.sh mongod            Up      27017/tcp
-menderproduction_mender-mongo-device-auth_1   /entrypoint.sh mongod            Up      27017/tcp
-menderproduction_mender-mongo-inventory_1     /entrypoint.sh mongod            Up      27017/tcp
-menderproduction_mender-mongo-useradm_1       /entrypoint.sh mongod            Up      27017/tcp
+menderproduction_mender-mongo_1               /entrypoint.sh mongod            Up      27017/tcp
 menderproduction_mender-useradm_1             /usr/bin/useradm -config / ...   Up      8080/tcp
 menderproduction_minio_1                      minio server /export             Up      9000/tcp
 menderproduction_storage-proxy_1              /usr/local/openresty/bin/o ...   Up      0.0.0.0:9000->9000/tcp
 ```
 
 
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 17 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 13 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
 <!--AUTOMATION: test=./run restart -->
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 17 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 13 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:9000" -->
 
