@@ -99,11 +99,13 @@ do_deploy() {
 addtask do_deploy after do_compile before do_build
 ```
 
-The changes to the image recipe will add the `persist` directory to the `.sdimg` or `.uefiimg` file by appending to the `MENDER_DATA_PART_DIR` variable.
+The changes to the image recipe will add the contents of `persist` directory to the `.sdimg` or `.uefiimg` file by setting the `MENDER_DATA_PART_DIR` variable.
 
 ```bash
-MENDER_DATA_PART_DIR_append = "${DEPLOY_DIR_IMAGE}/persist"
+MENDER_DATA_PART_DIR = "${DEPLOY_DIR_IMAGE}/persist"
 ```
+
+!!! The current implementation has a limitation of only one occurrence of `MENDER_DATA_PART_DIR` containing one directory.
 
 #### MENDER_DATA_PART_FSTYPE
 
