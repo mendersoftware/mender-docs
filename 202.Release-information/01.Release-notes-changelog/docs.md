@@ -4,6 +4,152 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender sumo-v2018.07
+
+_Released 07.12.2018_
+
+#### meta-mender (sumo-v2018.07)
+* Warn when mender.conf settings conflict with Bitbake variables.
+* Make sure that new-style "enp" network devices get DHCP address in demo.
+* Delete all components from pre-1.3 Mender releases.
+  All pre-1.3 releases are EOL.
+* Rename IMAGE_BOOTLOADER* variables to MENDER_IMAGE_BOOTLOADER*.
+* Fix lockfile error due to using system lock directory.
+* Licence checksum updated in mender-artifact
+* mender: Allow for forcing a specific KERNEL_IMAGETYPE.
+* mender-uboot: Add MENDER_UBOOT_POST_SETUP_COMMANDS config point.
+* Fix occasional inode corruption issue when re-launching a
+  previously launched and saved QEMU image.
+* QEMU: Limit client setup steps to run on first boot only.
+* mender-qemu: increase qemu memory size to 256MiB.
+* Let colibri-imx7 and vf boards be handled by automatic patching.
+* Fixed issue with build due to unknown image linux-firmware-raspbian-bcm43430
+* Fix mender not building if build and host architecture is the same.
+* meta-mender-orangepi: Fix up u-boot
+* Fix Linux kernel hanging when loaded via U-Boot/UEFI/GRUB
+  on vexpress-qemu*.
+  ([MEN-1657](https://tracker.mender.io/browse/MEN-1657))
+* Add mender-1.3.1 and mender-artifact-2.1.2 recipes.
+* Implement `IMAGE_ROOTFS_EXCLUDE_PATH` support. It works the
+  following way: It contains a space separated list of directories,
+  relative to the rootfs root (no beginning slash), and any directory
+  specified will be omitted from the rootfs. If the directory ends in a
+  slash, only the contents will be omitted, not the directory itself
+  (useful for mount points). One can then set
+  `do_image_<imagetype>[respect_exclude_path] = "1"` for certain image
+  builders to prevent the exclusion and then add them back as separate
+  partitions there.
+* Support for `MENDER_DATA_PART_DIR` has been removed. Use
+  recipe files to add files directly to the `/data` directory instead.
+* mender: Create bmap files.
+* tests: Filter out the data partition as the latest build artifact.
+* example-state-scripts: Explicitly return 0 from scripts.
+* uboot_auto_patch: Simplify definition placement at the expense of beauty.
+  The resulting patch is uglier because the definitions go into a cross
+  platform section which is not appropriate for upstream submission. But
+  it does fix the case where unwanted ifdefs were "hiding" the added
+  definitions.
+* rpi_0_w: Setup Mender required defconfigs
+* Implement GRUB and x86-64 support.
+  ([MEN-1430](https://tracker.mender.io/browse/MEN-1430), [MEN-1432](https://tracker.mender.io/browse/MEN-1432), [MEN-1433](https://tracker.mender.io/browse/MEN-1433), [MEN-1434](https://tracker.mender.io/browse/MEN-1434), [MEN-1435](https://tracker.mender.io/browse/MEN-1435), [MEN-1436](https://tracker.mender.io/browse/MEN-1436))
+* Implement qemux86-64 machine target.
+  ([MEN-1430](https://tracker.mender.io/browse/MEN-1430), [MEN-1432](https://tracker.mender.io/browse/MEN-1432), [MEN-1433](https://tracker.mender.io/browse/MEN-1433), [MEN-1434](https://tracker.mender.io/browse/MEN-1434), [MEN-1435](https://tracker.mender.io/browse/MEN-1435), [MEN-1436](https://tracker.mender.io/browse/MEN-1436))
+* mender: Conditionally add /uboot mount only for SDCards.
+* Increased the demo mender-retry-polling interval
+  ([MEN-1006](https://tracker.mender.io/browse/MEN-1006))
+* meta-mender-toradex-nxp: Adapt colibri-imx7-mender to U-Boot autopatching
+* Fix 'depends upon non-existent task' error in U-Boot recipes without auto patching.
+* Use timedatectl, if available, to determine with time is synchronized.
+* mender upgraded to 1.4.0.
+* mender-artifact upgraded to 2.2.0.
+* mender-qemu: More robust detection of MACHINE setting.
+* beaglebone: Rename to beaglebone-yocto.
+* Add mtdimg image type.
+  The mtdimg type is an image type meant to be flashed to the entire
+  Flash device, unlike the ubimg, which should only be flashed to the
+  ubi area of the mtd device. Either one can be used depending on need.
+  vexpress-nor image, used in QEMU, was also changed to take advantage
+  of the new mtdimg image.
+  ([MEN-1597](https://tracker.mender.io/browse/MEN-1597))
+* Add LAYERSERIES_COMPAT settings to all Mender layers.
+* Replace `MENDER_PARTITION_ALIGNMENT_KB` with
+  `MENDER_PARTITION_ALIGNMENT`, which is in bytes.
+* Rename `MENDER_STORAGE_RESERVED_RAW_SPACE` to
+  `MENDER_RESERVED_SPACE_BOOTLOADER_DATA`, to better reflect what it is
+  used for.
+* Enable wifi in the raspberry-pi demo image by default.
+  ([MEN-1804](https://tracker.mender.io/browse/MEN-1804))
+* mender: Only create vfat boot partition if size is non-zero
+* meta-mender-toradex-nxp: increase layer priority to 91
+* Fix creating ubifs image.
+* tests: Respect user set SSTATE_DIR and DL_DIR variables.
+* Make sure auto provided fw-utils use virtual/bootloader setting if present.
+* QEMU: Raise systemd service timeout so that it boots properly on slow hosts.
+* Fix fstab sometimes not containing boot partition entry.
+* Fix build error if `IMAGE_FSTYPES` contains the same entry more than once.
+* Implement x86 BIOS support together with GRUB.
+  It can be enabled by inheriting the `mender-full-bios` class, or by
+  enabling the `mender-grub` and `mender-bios` features using
+  `MENDER_FEATURES_ENABLE`.
+  ([MEN-1845](https://tracker.mender.io/browse/MEN-1845))
+* Client container init scripts are modified to accept MAC address for qemu through env var, `RANDOM_MAC`.
+* added layer dependency on mender layer
+* uboot_auto_configure: Fail immediately if a define cannot be added.
+  Better than failing later at runtime, where the problem is much harder
+  to debug.
+* Warn on unused MENDER_.* variables
+  ([MEN-1603](https://tracker.mender.io/browse/MEN-1603))
+* uboot_auto_patch: Switch kernel address from `kernel_addr_r` to `loadaddr`.
+* Remove unused IMAGE_UENV_TXT_FILE variable.
+* Add U-Boot auto patching support for Flash based devices.
+  The autopatcher will use UBI as storage medium for both the
+  filesystems and the U-Boot environment. Mender requires a minimum of
+  configuration: the `MENDER_MTDIDS` needs to be set for the board, and
+  will normally go in the `conf/machine/<MACHINE>.conf` file for the
+  board in question. See documentation for variables `MENDER_MTDIDS`,
+  `MENDER_IS_IN_MTDID` and `MENDER_MTDPARTS` for more information.
+  ([MEN-1597](https://tracker.mender.io/browse/MEN-1597))
+* Partition alignment (`MENDER_PARTITION_ALIGNMENT`) on Flash
+  devices using UBI is now aligned to the UBI LEB size, which in general
+  is not a multiple of KiB.
+  ([MEN-1597](https://tracker.mender.io/browse/MEN-1597))
+* Add Mender 1.4.1 recipe.
+* Clear IMAGE_NAME_SUFFIX for all image types.
+* Fix "No rule to make target 'envtools'" error in some U-Boot builds.
+* Pregenerate SSH keys for all QEMU images.
+* Since the "beaglebone" machine name has changed in upstream
+  to "beaglebone-yocto", add "beaglebone" to the
+  `MENDER_DEVICE_TYPES_COMPATIBLE` default, so that older devices can
+  upgrade even if they have the old device type.
+* mender: Copy data partition images to the deploy dir.
+* mender: Append to fstab rather than replacing it.
+* Fix failed uboot.env install when mender-uboot feature is disabled.
+* tests: Also check ARTIFACTIMG_FSTYPE for compatible images.
+* uboot_auto_patch: Update to support U-Boot v2018.05.
+* uboot_auto_patch: Add support for new Kconfig based
+  defines.
+* mender-uboot: Add MENDER_UBOOT_PRE_SETUP_COMMANDS config point.
+* Add Mender 1.5.0 Beta recipe.
+* Add mender-1.4.0b1 and mender-artifact-2.2.0b1 recipes.
+* Add 'dataimg' as an image type.
+  It contains the data partition filesystem which is normally part of
+  the complete partitioned image. To enable it, add `dataimg` to
+  `IMAGE_FSTYPES`.
+  ([MEN-1879](https://tracker.mender.io/browse/MEN-1879))
+* mender: Use only the basename to load DTBs.
+* Add Mender 1.5.0 recipe.
+* Document SDIMG_ROOTFS_TYPE settings for Raspberry Pi.
+* Change rootfs size calculation so it takes alignment into account.
+  This should fix a few corner cases, where the filesystems may all fit
+  in terms of bytes, but still would not actually fit because of
+  partition alignment.
+* Added new state script to wait for time sync to complete.
+* Drop creation of `authtentoken` file, which is unneeded now.
+* Added basic support for orangepi boards
+* mender: Cleanup IMAGE_FSTYPES.
+* uboot_auto_configure: Handle tabs in defines correctly.
+
+
 ## meta-mender rocko-v2018.07
 
 _Released 07.10.2018_
