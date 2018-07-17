@@ -123,6 +123,7 @@ ba
 babel
 babelify
 babylon
+Backported
 bak
 BAQEFAAOCAQ
 BAQEFAAOCAY
@@ -141,6 +142,7 @@ bc
 bca
 bcd
 bcf
+bcm
 bcrypt
 bd
 bdcdd
@@ -154,7 +156,8 @@ Benoit
 Bevry
 bf
 bindir
-BIOS
+bios
+biosimg
 bitbake
 bitbucket
 Bjarne
@@ -325,6 +328,7 @@ dae
 dashdash
 dat
 datadir
+dataimg
 dateformat
 dave
 davec
@@ -441,6 +445,7 @@ eeb
 EEPROM
 ef
 efc
+efi
 egrep
 elasticsearch
 Em
@@ -548,7 +553,7 @@ fsevents
 fsf
 fsnotify
 fstab
-FSTYPE
+fstype
 FSTYPES
 FTL
 fullwidth
@@ -658,7 +663,7 @@ ILg
 IMAGECMD
 IMAGETYPE
 Imbert
-IMG
+img
 imx
 inc
 incl
@@ -673,6 +678,7 @@ ini
 init
 initrd
 initscripts
+inode
 insertafter
 installables
 Insua
@@ -841,7 +847,7 @@ matthewh
 maximatch
 MAXSIZE
 Mbit
-MBR
+mbr
 MByte
 Mclaughlin
 md
@@ -1122,6 +1128,7 @@ randomatic
 randombytes
 Rarick
 raspberrypi
+raspbian
 Raynos
 rbVA
 rc
@@ -1287,6 +1294,7 @@ sshpk
 ssio
 ssl
 SSN
+SSTATE
 stackframe
 stacktrace
 standalone
@@ -1361,6 +1369,7 @@ ti
 Tiancheng
 tildify
 timdorr
+timedatectl
 tisdk
 tj
 tjw
