@@ -336,12 +336,12 @@ Set this variable in `local.conf` in order to make the device recognize the orga
 
 #### MENDER_UBI_LEB_PEB_BLOCK_OVERHEAD
 
-The overhead that each logical erase block (LEB) of the UBI device adds to the physical erase block (PEB), in bytes. In other words, how many bytes are "wasted" in each LEB. Usually set automatically, but can be overriden.
+The overhead that each logical erase block (LEB) of the UBI device adds to the physical erase block (PEB), in bytes. In other words, how many bytes are "wasted" in each LEB. Usually set automatically, but can be overridden.
 
 
 #### MENDER_UBI_LEB_SIZE
 
-The size of each logical erase block (LEB) on the UBI device, in bytes. Usually set automatically from the various `MENDER_UBI_*_OVERHEAD` variables, but can be overriden.
+The size of each logical erase block (LEB) on the UBI device, in bytes. Usually set automatically from the various `MENDER_UBI_*_OVERHEAD` variables, but can be overridden.
 
 
 #### MENDER_UBI_TOTAL_BAD_PEB_OVERHEAD
