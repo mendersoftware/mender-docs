@@ -41,7 +41,7 @@ You can now use the other options of mender-cli to interact with the APIs.
 For example, to upload an Artifact you can run the following command:
 
 ```bash
-./mender-cli artifacts --server https://hosted.mender.io upload relase_1.mender
+./mender-cli artifacts --server https://hosted.mender.io upload release_1.mender
 ```
 
 

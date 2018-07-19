@@ -121,7 +121,7 @@ Name=eth0
 [Network]
 Address=$IP_OF_MENDER_CLIENT
 Gateway=$IP_OF_MENDER_SERVER_FROM_DEVICE
-" | mender-artifact cp <imgname>.sdimg:/etc/systemd/network/eth/network
+" | mender-artifact cp <imgname>.sdimg:/etc/systemd/network/eth.network
 ```
 
 ! If you have a static IP address setup for several devices, you need several disk images so each get different IP addresses.
@@ -136,7 +136,7 @@ MENDER_IMGPATH=<sdimg>
 ```
 And then running:
 ```bash
-mender-artifact cat $MENDER_IMGPATH:/etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf | sed 's#[@]MENDER_DEMO_WIFI_PASSKEY[@]#$NW_PASSWORD#' | sed 's#[@]MENDER_DEMO_WIFI_PASSKEY[@]#NW_SSID#' | mender-artifact cp $MENDER_IMGPATH:/etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf"
+mender-artifact cat "$MENDER_IMGPATH":/etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf | sed "s#[@]MENDER_DEMO_WIFI_PASSKEY[@]#$NW_PASSWORD#" | sed "s#[@]MENDER_DEMO_WIFI_SSID[@]#$NW_SSID#" | mender-artifact cp "$MENDER_IMGPATH":/etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf
 ```
 should have your wpa configuration set up correctly on start up.
 

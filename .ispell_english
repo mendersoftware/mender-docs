@@ -108,11 +108,14 @@ aUS
 auth
 authorisation
 authset
+authtentoken
 autobind
 autoboot
 autoconvert
 automigrate
 automigrations
+autopatcher
+autopatching
 autoprefixer
 autorest
 autoupdate
@@ -123,6 +126,8 @@ ba
 babel
 babelify
 babylon
+Backported
+Backtrace
 bak
 BAQEFAAOCAQ
 BAQEFAAOCAY
@@ -143,6 +148,7 @@ bc
 bca
 bcd
 bcf
+bcm
 bcrypt
 bd
 bdcdd
@@ -156,7 +162,8 @@ Benoit
 Bevry
 bf
 bindir
-BIOS
+bios
+biosimg
 bitbake
 bitbucket
 Bjarne
@@ -165,6 +172,7 @@ blaine
 blakeembrey
 Blanco
 blinkenlights
+bmap
 bmatsuo
 bn
 bneHoZaO
@@ -252,6 +260,7 @@ checkmarks
 cheggaaa
 cheney
 Cherepanov
+chk
 CHKSUM
 CHkZqCbipoEH
 chmod
@@ -287,6 +296,7 @@ com
 commondir
 commonjs
 CompactFlash
+COMPAT
 concat
 conf
 CONFFILES
@@ -327,10 +337,12 @@ cURL
 cvKEqYtuXIfBBWp
 cwd
 da
+dabf
 dae
 dashdash
 dat
 datadir
+dataimg
 dateformat
 dave
 davec
@@ -355,6 +367,7 @@ deepmerge
 def
 defargs
 defconfig
+defconfigs
 del
 Delamarche
 demoneaux
@@ -451,6 +464,7 @@ eeb
 EEPROM
 ef
 efc
+efi
 egrep
 elasticsearch
 Em
@@ -466,6 +480,7 @@ enum
 env
 envify
 envtools
+EOL
 ep
 Eran
 Eraseblock
@@ -525,6 +540,7 @@ Feross
 ff
 ffd
 ffeb
+ffffffffff
 FgOcwyKh
 fH
 FHANDLE
@@ -553,6 +569,7 @@ Formâ
 fr
 Francia
 FreeBSD
+freescale
 Frischmann
 Froidure
 fs
@@ -560,7 +577,7 @@ fsevents
 fsf
 fsnotify
 fstab
-FSTYPE
+fstype
 FSTYPES
 FTL
 fullwidth
@@ -581,9 +598,11 @@ Geoffroy
 getnative
 getpass
 Gil
+gitAUTOINC
 github
 GitHub
 GitHub's
+githubusercontent
 giuseppegurgone
 globalsign
 globby
@@ -669,14 +688,16 @@ IDs
 ieee
 ies
 ietf
+ifdefs
 ifxbR
 iJy
 ILg
 IMAGECMD
-IMAGETYPE
+imagetype
 Imbert
-IMG
+img
 imgname
+IMGPATH
 imx
 inc
 incl
@@ -692,6 +713,7 @@ ini
 init
 initrd
 initscripts
+inode
 insertafter
 installables
 Insua
@@ -751,6 +773,7 @@ JxSJ
 JyZL
 kaFd
 KCIutp
+Kconfig
 Ke
 Kellen
 KERNELIMAGE
@@ -784,10 +807,12 @@ kv
 kvm
 kvsoftware
 LaFreniere
+LAYERSERIES
 LBA
 lcd
 lcid
 lcTO
+ld
 LDFLAGS
 le
 LEB
@@ -802,7 +827,9 @@ LGPLv
 LgsyzPWvLAGIsXYnR
 Li
 lib
+libc
 libdir
+libgcc
 libpseudo
 libs
 libyaml
@@ -833,6 +860,7 @@ loadaddr
 loadimage
 localconf
 localhost
+lockfile
 lodash
 loganfsmyth
 Logfile
@@ -851,6 +879,7 @@ LZO
 mac
 mach
 magiconair
+malloc
 mapper
 mapstructure
 mapvalues
@@ -866,7 +895,7 @@ mattn
 maximatch
 MAXSIZE
 Mbit
-MBR
+mbr
 MByte
 Mclaughlin
 md
@@ -926,6 +955,7 @@ mongo
 mongoâ
 mongod
 MongoDB
+mongoDB
 morty
 Mountpoint
 mozilla
@@ -933,7 +963,9 @@ MPL
 ms
 msg
 mtd
+mtdid
 mtdids
+mtdimg
 mtdinfo
 mtdparts
 multipipe
@@ -952,7 +984,7 @@ myusername
 mz
 na
 nan
-NAND
+nand
 Nassri
 nathan
 nbar
@@ -980,6 +1012,7 @@ Nik
 NiVYf
 nJK
 nkH
+nl
 nlJKsg
 NLS
 nMIIBIjANBgkqhkiG
@@ -1007,6 +1040,7 @@ nsIB
 nuARkFAv
 num
 nvyHvl
+NW
 nWkPTbG
 nWsLOn
 nxp
@@ -1068,6 +1102,8 @@ Pavel
 pb
 pbkdf
 pDReVzlRbQJ
+PEB
+PEBs
 pelletier
 pem
 Penner
@@ -1152,9 +1188,11 @@ randomatic
 randombytes
 Rarick
 raspberrypi
+raspbian
 Raynos
 rbVA
 rc
+rdparty
 reactify
 readdirp
 readerc
@@ -1310,6 +1348,7 @@ spdx
 spf
 SPI
 SPQQA
+sprintf
 SQLite
 src
 SRCPV
@@ -1319,9 +1358,11 @@ SSD
 SSE
 ssh
 sshpk
+ssid
 ssio
 ssl
 SSN
+SSTATE
 stackframe
 stacktrace
 standalone
@@ -1345,6 +1386,7 @@ STORIS
 STR
 streamify
 stretchr
+strin
 stringify
 stringstream
 Strukchinsky
@@ -1397,6 +1439,7 @@ ti
 Tiancheng
 tildify
 timdorr
+timedatectl
 tisdk
 tj
 tjw
@@ -1505,13 +1548,16 @@ Vagg
 validator
 var
 variscite
+vdso
 verli
 verror
 Versionâ
 versioned
 versioning
 vexpress
-VF
+vf
+vfat
+vfprintf
 vg
 VID
 Vitaly
@@ -1522,7 +1568,10 @@ vorba
 Vorbach
 vphEzN
 Vsevolod
+vsprintf
+vsyscall
 vTQsTk
+vvar
 Vy
 Vyacheslav
 waivable
@@ -1554,6 +1603,7 @@ Workâ
 WORKDIR
 workflow
 workflows
+wpa
 WQJyeqWPdQ
 wrappy
 writeIEEE
@@ -1569,7 +1619,9 @@ XG
 xiaoba
 xJPUHL
 xor
+xp
 Xqe
+xsputn
 xss
 xtend
 xvf

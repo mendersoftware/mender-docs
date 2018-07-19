@@ -116,7 +116,7 @@ ERROR: Task (/home/user/poky/src/meta-freescale-3rdparty/recipes-bsp/u-boot/u-bo
 
 The problem is that the U-Boot environment that Mender uses is written to a UBI volume, not to pure Flash memory, and UBI block sizes (LEB sizes) are smaller than physical Flash block sizes (PEB sizes). UBI uses these extra bytes for its own purposes, so they are not available for storage. Therefore the U-Boot environment must be adjusted to fit inside Mender's UBI volume if it fit exactly into physical sectors before introducing Mender.
 
-There are two simple ways to fix the problem; which one should be used depends on the sitation.
+There are two simple ways to fix the problem; which one should be used depends on the situation.
 
 1. Decrease the `BOOTENV_SIZE` variable, so that it's no longer too big to fit two copies. This is generally the recommended solution unless you really need `BOOTENV_SIZE` size to be a certain size.
 
