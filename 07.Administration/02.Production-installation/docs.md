@@ -556,7 +556,6 @@ Bring up all services up in detached mode with the following command:
 > Creating menderproduction_storage-proxy_1
 > Creating menderproduction_mender-useradm_1
 > Creating menderproduction_mender-deployments_1
-> Creating menderproduction_mender-device-adm_1
 > Creating menderproduction_mender-api-gateway_1
 
 !!! Services, networks and volumes have a `menderproduction` prefix, see the note about [docker-compose naming scheme](#docker-compose-naming-scheme) for more details. When using `docker ..` commands, a complete container name must be provided (ex. `menderproduction_mender-deployments_1`).
@@ -576,7 +575,6 @@ To verify that the services are running, you can issue the following command:
 -------------------------------------------------------------------------------------------------------------
 menderproduction_mender-api-gateway_1         /entrypoint.sh                   Up      0.0.0.0:443->443/tcp
 menderproduction_mender-deployments_1         /entrypoint.sh                   Up      8080/tcp
-menderproduction_mender-device-adm_1          /usr/bin/deviceadm -config ...   Up      8080/tcp
 menderproduction_mender-device-auth_1         /usr/bin/deviceauth -confi ...   Up      8080/tcp
 menderproduction_mender-gui_1                 /entrypoint.sh                   Up
 menderproduction_mender-inventory_1           /usr/bin/inventory -config ...   Up      8080/tcp
