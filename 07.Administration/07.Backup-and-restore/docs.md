@@ -46,7 +46,6 @@ the contents of each DB into `$PWD/db-dump/<service-name>` directory.
 ```
 > Stopping menderproduction_mender-deployments_1 ... done
 > Stopping menderproduction_mender-inventory_1 ... done
-> Stopping menderproduction_mender-device-adm_1 ... done
 > Stopping menderproduction_mender-useradm_1 ... done
 > Stopping menderproduction_mender-device-auth_1 ... done
 > Starting mender-mongo ... done
@@ -66,7 +65,6 @@ DB dumps previously created with `dump-db`.
 ```
 > Stopping menderproduction_mender-deployments_1 ... done
 > Stopping menderproduction_mender-inventory_1 ... done
-> Stopping menderproduction_mender-device-adm_1 ... done
 > Stopping menderproduction_mender-useradm_1 ... done
 > Stopping menderproduction_mender-device-auth_1 ... done
 > Starting mender-mongo ... done
@@ -90,7 +88,6 @@ Once the data has been dumped or restored, the services can be started using
 > menderproduction_minio_1 is up-to-date
 > menderproduction_mender-redis_1 is up-to-date
 > Starting menderproduction_mender-device-auth_1
-> Starting menderproduction_mender-device-adm_1
 > Starting menderproduction_mender-inventory_1
 > Starting menderproduction_mender-useradm_1
 > menderproduction_storage-proxy_1 is up-to-date
