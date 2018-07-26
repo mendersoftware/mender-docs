@@ -9,8 +9,7 @@ The first part applies to all installations, while the section below on Producti
 only applies when the Mender server is [installed for production](../../administration/production-installation).
 
 ## Cleaning up the deviceauth database after device decommissioning
-It is possible that after the device decommissioning operation there will be some unaccessible and unnecessary data in the deviceauth database.
-In this case, you should clean your deviceauth database.
+It is possible that after a failed device decommissioning operation there will be some unaccessible and unnecessary data in the deviceauth database. In this case, you should clean the database manually.
 
 Is is recommended to backup your data before performing the clean up operation.
 The [Backup and restore](../../administration/backup-and-restore) chapter provides examples and
@@ -34,7 +33,7 @@ start if you do not have enough memory.
 ## A device shows up as pending after preauthorizing it
 If you see your device gets the `pending` status after [preauthorizing it](../../server-integration/preauthorizing-devices), something went wrong. Most likely there is a mismatch between the identity and public key [you preauthorized](../../server-integration/preauthorizing-devices#call-the-preauthorize-api) and what your Mender client is actually using. Note that the Mender server does an exact string match against the device identity and public key that is preauthorized and the data your device reports, so any whitespace or string mismatch (in either the identity or public key) will lead to the Mender server not matching your device with the preauthorized data.
 
-To diagnose this, look for the device identity in the `admission` service, for example:
+To diagnose this, look for the device identity in the Device Authentication service, for example:
 
 ```bash
 curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/admission/devices | python -m json.tool
@@ -70,7 +69,7 @@ curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/admiss
 
 In this case you can see that there are two authentication sets with the exact same device identity string: `"{\"mac\":\"52:54:00:50:9b:84\"}"`, one `preauthorized` and one `pending`. So the device reported (see the `pending` set) the exact same identity as we preauthorized. However, there is a mismatch in the format of the public key: the pending set, which the device reported, contains additional `\n` characters.
 
-The solution is to decommission the device and [remove all authentication sets](../../server-integration/preauthorizing-devices#make-sure-there-are-no-existing-authentication-sets-for-your-dev) (from both `admission` and `devauth`) and adjust the public key string used in the [preauthorize API call](../../server-integration/preauthorizing-devices#call-the-preauthorize-api) to match exactly the one reported by the device, as seen in the `pending` data above.
+The solution is to decommission the device and [remove all authentication sets](../../server-integration/preauthorizing-devices#make-sure-there-are-no-existing-authentication-sets-for-your-dev) and adjust the public key string used in the [preauthorize API call](../../server-integration/preauthorizing-devices#call-the-preauthorize-api) to match exactly the one reported by the device, as seen in the `pending` data above.
 
 
 ## mender-api-gateway exits with code 132
@@ -112,7 +111,6 @@ user@local$ ./run ps
 -------------------------------------------------------------------------------------------------------------
 menderproduction_mender-api-gateway_1         /entrypoint.sh                   Up      0.0.0.0:443->443/tcp
 menderproduction_mender-deployments_1         /entrypoint.sh                   Up      8080/tcp
-menderproduction_mender-device-adm_1          /usr/bin/deviceadm -config ...   Up      8080/tcp
 menderproduction_mender-device-auth_1         /usr/bin/deviceauth -confi ...   Up      8080/tcp
 menderproduction_mender-gui_1                 /entrypoint.sh                   Up
 menderproduction_mender-inventory_1           /usr/bin/inventory -config ...   Up      8080/tcp
@@ -132,7 +130,6 @@ c668a91617ea        mendersoftware/api-gateway:latest                   "/entryp
 9ebb2fc86d0c        mendersoftware/useradm:latest                       "/usr/bin/useradm ..."   40 minutes ago      Up 39 minutes       8080/tcp                 menderproduction_mender-useradm_1
 566a2a3c3773        mendersoftware/inventory:latest                     "/usr/bin/inventor..."   40 minutes ago      Up 39 minutes       8080/tcp                 menderproduction_mender-inventory_1
 d33f8b4af1bd        mendersoftware/deployments:latest                   "/entrypoint.sh"         40 minutes ago      Up 39 minutes       8080/tcp                 menderproduction_mender-deployments_1
-0bb97d64ee4f        mendersoftware/deviceadm:latest                     "/usr/bin/devicead..."   40 minutes ago      Up 39 minutes       8080/tcp                 menderproduction_mender-device-adm_1
 1ddbad5520e9        mendersoftware/deviceauth:latest                    "/usr/bin/deviceau..."   40 minutes ago      Up 39 minutes       8080/tcp                 menderproduction_mender-device-auth_1
 e7ad33929628        mendersoftware/openresty:1.11.2.2-alpine            "/usr/local/openre..."   40 minutes ago      Up 39 minutes       0.0.0.0:9000->9000/tcp   menderproduction_storage-proxy_1
 cdaab7768ec7        mongo:3.4                                           "/entrypoint.sh mo..."   40 minutes ago      Up 40 minutes       27017/tcp                menderproduction_mender-mongo_1
@@ -152,7 +149,6 @@ user@local$ ./run ps
 ------------------------------------------------------------------------------------------------------------------
 menderproduction_mender-api-gateway_1         /entrypoint.sh                   Up           0.0.0.0:443->443/tcp
 menderproduction_mender-deployments_1         /entrypoint.sh                   Restarting
-menderproduction_mender-device-adm_1          /usr/bin/deviceadm -config ...   Up           8080/tcp
 menderproduction_mender-device-auth_1         /usr/bin/deviceauth -confi ...   Up           8080/tcp
 menderproduction_mender-gui_1                 /entrypoint.sh                   Up
 menderproduction_mender-inventory_1           /usr/bin/inventory -config ...   Up           8080/tcp
@@ -177,7 +173,6 @@ CONTAINER ID        IMAGE                                               COMMAND 
 8f46579aefa4        mendersoftware/deployments:latest                   "/entrypoint.sh"         5 minutes ago       Up 54 seconds       8080/tcp                 menderproduction_mender-deployments_1
 7236def09c97        mendersoftware/useradm:latest                       "/usr/bin/useradm ..."   5 minutes ago       Up 5 minutes        8080/tcp                 menderproduction_mender-useradm_1
 be9cc9ee74b2        mendersoftware/deviceauth:latest                    "/usr/bin/deviceau..."   5 minutes ago       Up 5 minutes        8080/tcp                 menderproduction_mender-device-auth_1
-aa70b181d490        mendersoftware/deviceadm:latest                     "/usr/bin/devicead..."   5 minutes ago       Up 5 minutes        8080/tcp                 menderproduction_mender-device-adm_1
 5d84b70d1187        mendersoftware/inventory:latest                     "/usr/bin/inventor..."   5 minutes ago       Up 5 minutes        8080/tcp                 menderproduction_mender-inventory_1
 1dc4843ec4db        mendersoftware/openresty:1.11.2.2-alpine            "/usr/local/openre..."   5 minutes ago       Up 5 minutes        0.0.0.0:9000->9000/tcp   menderproduction_storage-proxy_1
 fb216139bc60        mongo:3.4                                           "/entrypoint.sh mo..."   5 minutes ago       Up 5 minutes        27017/tcp                menderproduction_mender-mongo_1
