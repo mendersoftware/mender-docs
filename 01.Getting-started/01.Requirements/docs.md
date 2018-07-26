@@ -35,7 +35,7 @@ having to configure any hardware.
 #### OS and web browser
 
 We assume you are using **Ubuntu 16.04** with **Google Chrome** as web browser
-and at least **5 GB disk** and **2 GB RAM** available.
+and at least **10 GB free disk space** and **2 GB RAM available** for Mender.
 
 #### Docker Engine 1.11
 
