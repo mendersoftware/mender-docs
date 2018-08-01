@@ -34,7 +34,7 @@ having to configure any hardware.
 
 #### OS and web browser
 
-We assume you are using **Ubuntu 16.04** with **Google Chrome** as web browser
+We assume you are using **Ubuntu 18.04** with **Google Chrome** as web browser
 and at least **10 GB free disk space** and **2 GB RAM available** for Mender.
 
 #### Docker Engine 1.11
@@ -44,7 +44,7 @@ version **1.11 or later** (17.03 or later in [Docker's new versioning scheme](ht
 
 ##### Docker permissions
 
-Invoking the docker commands may fail when the local user has insufficient permissions to connect to the docker daemon. In Ubuntu 16.04, the user must be a member of the `docker` group to be able to access it. Please check the documentation for your host OS if you encounter connection issues with docker.
+Invoking the docker commands may fail when the local user has insufficient permissions to connect to the docker daemon. In Ubuntu 18.04, the user must be a member of the `docker` group to be able to access it. Please check the documentation for your host OS if you encounter connection issues with docker.
 
 #### Docker Compose 1.6
 
