@@ -8,7 +8,6 @@ All open source licenses used in Mender with the default build are shown below.
 
 
 ```
-
 Third party licenses used in Mender.
 
 
@@ -2514,6 +2513,29 @@ github.com/pelletier/go-buffruneio:
 Buffruneio is a wrapper around bufio to provide buffered runes access with
 unlimited unreads.
 
+``go
+import "github.com/pelletier/go-buffruneio"
+``
+
+## Examples
+
+``go
+import (
+    "fmt"
+    "github.com/pelletier/go-buffruneio"
+    "strings"
+)
+
+reader := buffruneio.NewReader(strings.NewReader("abcd"))
+fmt.Println(reader.ReadRune()) // 'a'
+fmt.Println(reader.ReadRune()) // 'b'
+fmt.Println(reader.ReadRune()) // 'c'
+reader.UnreadRune()
+reader.UnreadRune()
+fmt.Println(reader.ReadRune()) // 'b'
+fmt.Println(reader.ReadRune()) // 'c'
+``
+
 ## Documentation
 
 The documentation and additional examples are available at
@@ -2749,6 +2771,33 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 --------------------------------------------------------------------------------
 
 github.com/Sirupsen/logrus:
+
+The MIT License (MIT)
+
+Copyright (c) 2014 Simon Eskildsen
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+--------------------------------------------------------------------------------
+
+github.com/sirupsen/logrus:
 
 The MIT License (MIT)
 
