@@ -41,7 +41,7 @@ The name of the image or update that will be built. This is what the device will
 
 Can be set to a private key which will be used to sign the update artifact. The default is empty, which means the artifact won't be signed.
 
-The signature can also be added or changed outside the build process, by using the `mender-artifact` tool's `-k` option. For more information, see the section on [modifying Mender artifacts](../modifying-a-mender-artifact).
+The signature can also be added or changed outside the build process, by using the `mender-artifact` tool's `-k` option. For more information, see [signing Mender Artifacts](../signing-and-verification#signing).
 
 
 #### MENDER_ARTIFACT_VERIFY_KEY
