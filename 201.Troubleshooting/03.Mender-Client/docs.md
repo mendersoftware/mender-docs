@@ -116,7 +116,7 @@ The problem here is most likely that you have built [a new version of the Artifa
 that your Mender Client does not support. It could also be that you are building a very old version of the
 Artifact format that your new version of the Mender Client does not support.
 
-In either case the solution is to [build a different version of the Artifact format](../../artifacts/modifying-a-mender-artifact#write-a-new-artifact) that your Mender Client supports
+In either case the solution is to [build a different version of the Artifact format](../../artifacts/modifying-a-mender-artifact#create-an-artifact-from-a-raw-root-file-system) that your Mender Client supports
 until you have upgraded all Mender Clients and can use the corresponding latest version of the Mender Artifact format.
 
 
