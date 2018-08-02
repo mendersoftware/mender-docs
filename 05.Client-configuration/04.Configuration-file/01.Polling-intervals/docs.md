@@ -50,5 +50,4 @@ either [using a custom configuration file](..), or [using Yocto
 variables](../../../artifacts/image-configuration#configuring-polling-intervals).
 
 If you have already built an Artifact containing the rootfs, have a look at
-[Modifying a Mender Artifact](../../../artifacts/modifying-a-mender-artifact) for steps on how
-to change these configurations in an existing Artifact.
+[modifying a configuration in a Mender Artifact](../../../artifacts/modifying-a-mender-artifact#modifying-a-configuration-file).

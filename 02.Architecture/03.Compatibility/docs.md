@@ -45,7 +45,7 @@ The [Mender Artifact format](../mender-artifacts) is managed by the [Mender Arti
 | Mender 1.4.x / mender-artifact 2.2.x | yes         | yes         |
 | Mender 1.5.x / mender-artifact 2.2.x | yes         | yes         |
 
-!! Older Mender clients do not support newer versions of the Artifact format; they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../artifacts/modifying-a-mender-artifact#write-a-new-artifact) for an introduction how to do this.
+!! Older Mender clients do not support newer versions of the Artifact format; they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../artifacts/modifying-a-mender-artifact#create-an-artifact-from-a-raw-root-file-system) for an introduction how to do this.
 
 
 ## Mender server and client API
