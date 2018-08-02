@@ -33,7 +33,7 @@ Get the disk image and Artifacts for your device(s) from [Download demo images](
 
 ### Mender-Artifact tool
 Download [the prebuilt mender-artifact tool][autoupdate_x.x.x_mender-artifact] available
-for Linux, or install from source [mender-artifact]("https://github.com/mendersoftware/mender-artifact"). In both cases remember to add execute permission (e.g. with `chmod +x mender-artifact`).
+for Linux, or [compile it from source](../../artifacts/modifying-a-mender-artifact#compiling-mender-artifact). In both cases remember to add execute permission (e.g. with `chmod +x mender-artifact`).
 
 [autoupdate_x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/master/mender-artifact
 
@@ -182,25 +182,6 @@ Which information is collected about devices is fully configurable; see the docu
 
 !!! If your device does not show up for authorization in the UI, you need to diagnose what went wrong. Most commonly this is due to problems with the network. You can test if your workstation can reach the device by trying to ping it, e.g. with `ping 192.168.10.2` (replace with the IP address of your device). If you can reach the device, you can ssh into it, e.g. `ssh root@192.168.10.2`. Otherwise, if you have a serial cable, you can log in to the device to diagnose. The `root` user is present and has an empty password in this test image. Check the log output from Mender with `journalctl -u mender`. If you get stuck, please feel free to reach out on the [Mender community mailing list](https://groups.google.com/a/lists.mender.io/forum?target=_blank/#!forum/mender)!
 
-#### Create a new Mender Artifact with the rootfs
-
-Using the BeagleBone Black as an example below (adjust the file names and use `-t raspberrypi3` if you are using the Raspberry Pi 3),
-run the following command to create a new Mender Artifact:
-
-[start_autoupdate_release_1_x.x.x]: #
-
-```bash
-mender-artifact write rootfs-image -u core-image-base-beaglebone.ext4 -t beaglebone -n release-1_master -o beaglebone_release_1_configured.mender
-```
-
-where `-u core-image-base-beaglebone.ext4` is the rootfs,
-`-t beaglebone` is the device type compatible with the given Artifact,
-`-n release-1_master` is the Artifact name (do not change this as it needs to be in
-sync with `/etc/mender/artifact_info` *inside* the rootfs), and
-`-o beaglebone_release_1_configured.mender` is
-the filename of the created Artifact.
-
-[end_autoupdate_release_1_x.x.x]: #
 
 ## Prepare the Mender Artifact to update to
 
@@ -215,39 +196,15 @@ a complete description of this format.
 Locate the `release_1` demo Artifact file (`.mender`) for your device that you [downloaded earlier](../download-test-images).
 
 Using the BeagleBone Black as an example below (adjust the directory and file names if you are using the Raspberry Pi 3),
-the steps needed to edit the root file system contained in this Artifact are:
-
-[start_autoupdate_beaglebone_release_1_x.x.x.mender]: #
+we carry out exactly the same configuration steps for the Mender Artifact as we did for the disk image above:
 
 ```bash
-mkdir beaglebone_release_1 && tar -C beaglebone_release_1 -xvf beaglebone_release_1_master.mender
-```
-
-[end_autoupdate_beaglebone_release_1_x.x.x.mender]: #
-
-```bash
-cd beaglebone_release_1 && tar zxvf data/0000.tar.gz
-```
-
-Create a mender-artifact image
-
-```bash
-mender-artifact write rootfs-image -u core-image-base-beaglebone.ext4 -t beaglebone -n release-1_1.3.0 -o beaglebone_release_1_configured.mender
-```
-
-Please see [Modifying a Mender Artifact](../../artifacts/modifying-a-mender-artifact)
-for a more detailed overview.
-
-We carry out exactly the same configuration steps for the rootfs image
-as we did for the rootfs partitions in the disk image above:
-
-```bash
-echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io s3.docker.mender.io" | mender-artifact cp beaglebone_release_1_configured.mender:/etc/hosts
+echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io s3.docker.mender.io" | mender-artifact cp beaglebone_release_1.mender:/etc/hosts
 ```
 
 Then check the contents of the file
 ```bash
-mender-artifact cat beaglebone_release_1_configured.mender:/etc/hosts
+mender-artifact cat beaglebone_release_1.mender:/etc/hosts
 ```
 
 You should see output similar to the following:
@@ -267,7 +224,7 @@ Name=eth0
 [Network]
 Address=$IP_OF_MENDER_CLIENT
 Gateway=$IP_OF_MENDER_SERVER_FROM_DEVICE
-" | mender-artifact cp beaglebone_release_1_configured.mender:/etc/systemd/network/eth.network
+" | mender-artifact cp beaglebone_release_1.mender:/etc/systemd/network/eth.network
 ```
 
 !!! The Mender client will roll back the deployment if it is not able to report the final update status to the server when it boots from the updated partition. This helps ensure that you can always deploy a new update to your device, even when fatal conditions like network misconfiguration occur.
@@ -323,8 +280,8 @@ run these two commands (adjust the Artifact file name accordingly):
 [start_autoupdate_beaglebone_release_2_x.x.x.mender]: #
 
 ```bash
-cp beaglebone_release_1_configured.mender beaglebone_release_2_configured.mender
-mender-artifact modify beaglebone_release_2_configured.mender -n release-2_master
+cp beaglebone_release_1.mender beaglebone_release_2.mender
+mender-artifact modify beaglebone_release_2.mender -n release-2_master
 ```
 
 [end_autoupdate_beaglebone_release_2_x.x.x.mender]: #
