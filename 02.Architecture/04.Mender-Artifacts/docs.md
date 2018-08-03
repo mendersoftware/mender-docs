@@ -37,7 +37,7 @@ Mender Artifact file. Please note that the exact format of the artifact may vary
 ![Mender Artifact format](mender-artifact-format.png)
 
 More details about the exact format of the Mender Artifact can be found in the
-[Mender Artifact file documentation](https://github.com/mendersoftware/mender-artifact/blob/master/Documentation/artifact-format.md).
+[Mender Artifact file documentation](https://github.com/mendersoftware/mender-artifact/blob/2.3.0b1/Documentation/artifact-format.md).
 
 
 ## Versions
