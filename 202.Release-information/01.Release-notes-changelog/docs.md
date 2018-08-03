@@ -4,6 +4,95 @@ taxonomy:
     category: docs
 ---
 
+## Mender 1.6.0b1
+
+_Released xx.xx.xxxx_
+
+#### deviceauth (1.6.0b1)
+
+New changes in deviceauth since 1.5.0:
+
+* Device object returned by API exposes new boolean attribute: "decomissioning" signifying devices that are curently going through removal process.
+
+#### gui (1.6.0b1)
+
+New changes in gui since 1.5.0:
+
+* Add preauthorize devices section
+* Cleaned up URL for filtering device list by ID or group:
+  ([MEN-1875](https://tracker.mender.io/browse/MEN-1875))
+* Add a global setting to store and use user-selected device identity attribute throughout UI
+* Fixup: Add a link to mender docs for enabling wifi in hosted image
+
+#### integration (1.6.0b1)
+
+New changes in integration since 1.5.0:
+
+* Add mender-cli as a versioned repository under the Mender umbrella.
+* Upgrade deviceauth to 1.6.0b1.
+* Upgrade gui to 1.6.0b1.
+* Upgrade inventory to 1.4.1b1.
+* Upgrade mender to 1.6.0b1.
+* Upgrade mender-artifact to 2.3.0b1.
+* Upgrade mender-cli to 1.0.1b1.
+* Upgrade mender-conductor to 1.1.0b1.
+* Upgrade mender-conductor-enterprise to 1.1.0b1.
+* Upgrade useradm to 1.6.0b1.
+* demo: suppress warning on newer docker-compose versions
+* consolidate to single mongodb server instance
+* Change mongo definitions to map the correct path. /data is being mapped, but /data/db needs to.
+* test_security.py: Ignore return code of grep.
+* use common mongodb server instance with tenantadm
+
+#### mender (1.6.0b1)
+
+New changes in mender since 1.5.0:
+
+* FIXED: HTTP error 401 is not handled by all states
+  ([MEN-1854](https://tracker.mender.io/browse/MEN-1854))
+* ArtifactReboot_Enter scripts are no longer rerun
+  if interrupted by an unexpected reboot. It will be treated
+  as if Mender itself rebooted.
+* Enable user to force an update-check locally
+  The user can now force an update check by either running mender with the
+  -check-update option, or send a signal [SIGUSR1] to the running mender process.
+  ([MEN-1905](https://tracker.mender.io/browse/MEN-1905))
+* Add automatic check for canary value in U-Boot environment
+  to try to detect if there is a problem in the environment setup of
+  U-Boot and/or the u-boot-fw-utils tools.
+* Mender client key generator script
+* log active partition before and after reboot.
+  ([MEN-1880](https://tracker.mender.io/browse/MEN-1880))
+
+#### mender-artifact (2.3.0b1)
+
+New changes in mender-artifact since 2.2.0:
+
+* Add boot partition as a modify candidate for artifact cp
+* Add mtools as a dependency before installing from source, and in travis
+* Testify/require files added to the vendor directory
+* Small cleanup of license text. No legal difference, just
+  makes it easier for the tooling.
+* Install function added
+* Added uefiimg as an option to the cp and cat commands
+* modify any file using the mender-artifact tool
+  ([MEN-1741](https://tracker.mender.io/browse/MEN-1741))
+* add testify/require to vendor
+* modify any file using the mender-artifact tool
+  ([MEN-1741](https://tracker.mender.io/browse/MEN-1741))
+* Mender-artifact can now copy to and read from the data partition
+  ([MEN-1953](https://tracker.mender.io/browse/MEN-1953))
+* run fsck before modifying image.
+  ([MEN-1798](https://tracker.mender.io/browse/MEN-1798))
+
+#### mender-conductor (1.1.0b1)
+
+New changes in mender-conductor since 1.0.0:
+
+* Extend logging with messages from conductor client library to stdout.
+* Update conductor client library to 1.8.9
+
+
 ## meta-mender sumo-v2018.07
 
 _Released 07.12.2018_
