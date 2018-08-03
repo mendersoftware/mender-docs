@@ -4,6 +4,24 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender sumo-v2018.08
+
+_Released 08.03.2018_
+
+#### meta-mender (sumo-v2018.08)
+
+New changes in meta-mender since sumo-v2018.07:
+
+* Add mender 1.6.0b1 and mender-artifact 2.3.0b1 recipes.
+* Fixed support for raspberrypi3-64 and aarch64
+* Fix incorrect license tag for mender-artifact recipe.
+  Little practical difference, since they are all permissive licenses.
+* mender-uboot: Allow multi-digit partition/device nums.
+* Fix license checksum sometimes failing in
+  `u-boot-fw-utils-mender-auto-provided` recipe when U-Boot fork has a
+  slightly different README file.
+
+
 ## meta-mender sumo-v2018.07
 
 _Released 07.12.2018_
