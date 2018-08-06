@@ -24,7 +24,7 @@ New changes in meta-mender since sumo-v2018.07:
 
 ## Mender 1.6.0b1
 
-_Released xx.xx.xxxx_
+_Released 08.06.2018_
 
 #### deviceauth (1.6.0b1)
 
