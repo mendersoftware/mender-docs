@@ -170,7 +170,7 @@ MACHINE = "<YOUR-MACHINE>"
 # https://docs.mender.io/architecture/compatibility#mender-client-and-yocto-project-version
 #
 # Given a Mender client version, see the corresponding version of the mender-artifact utility:
-# https://docs.mender.io/architecture/compatibility#mender-client-and-artifact-format
+# https://docs.mender.io/architecture/compatibility#mender-clientserver-and-artifact-format
 #
 # Note that by default this will select the latest released version of the tools.
 # If you need an earlier version, please uncomment the following and set to the

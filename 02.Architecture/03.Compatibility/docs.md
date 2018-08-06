@@ -52,7 +52,7 @@ The [Mender Artifact format](../mender-artifacts) is managed by the [Mender Arti
 
 ## Mender server and client API
 
-The compatibility between the Mender server and client is managed by the [Device API versions](../../apis/device-apis) exposed by the server and used by the client. If the Mender server supports the API version of the Mender client, they are compatible.  However, please ensure that the client and server support the [Artifact format](#mender-client-and-artifact-format) version you are using.
+The compatibility between the Mender server and client is managed by the [Device API versions](../../apis/device-apis) exposed by the server and used by the client. If the Mender server supports the API version of the Mender client, they are compatible.  However, please ensure that the client and server support the [Artifact format](#mender-clientserver-and-artifact-format) version you are using.
 
 |        | Mender server versions | Mender client versions |
 |--------|------------------------|------------------------|
