@@ -135,7 +135,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
     The output of the two commands should be identical. This verifies that the correct rootfs is mounted when partition A is active.
 
-    ! If you have selected a different device using either `MENDER_ROOTFS_PART_A` or `MENDER_STORAGE_DEVICE_BASE` in the Yocto configuration, the `/dev/mmcblk0p2` (or `ubi0_0`) entry may be different, but it should always correspond to the value in `MENDER_ROOTFS_PART_A`.
+    ! If you have selected a different device using either `MENDER_ROOTFS_PART_A` or `MENDER_STORAGE_DEVICE` in the Yocto configuration, the `/dev/mmcblk0p2` (or `ubi0_0`) entry may be different, but it should always correspond to the value in `MENDER_ROOTFS_PART_A`.
 
 14. Everything we have tested so far has been for partition A; we will now verify both kernel and rootfs for partition B. Run the following:
 
@@ -159,7 +159,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 17. Repeat step 13, but this time using `/dev/mmcblk0p3` (or `ubi0_1`). This verifies that the correct rootfs is mounted when partition B is active.
 
-    ! As in the previous step, `/dev/mmcblk0p3` (or `ubi0_1`) may be different if `MENDER_ROOTFS_PART_B` or `MENDER_STORAGE_DEVICE_BASE` has been changed.
+    ! As in the previous step, `/dev/mmcblk0p3` (or `ubi0_1`) may be different if `MENDER_ROOTFS_PART_B` or `MENDER_STORAGE_DEVICE` has been changed.
 
 18. Run the following commands:
 
