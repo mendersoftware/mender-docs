@@ -74,12 +74,10 @@ In order to select the storage device where the partitions are expected to be lo
 MENDER_STORAGE_DEVICE = "/dev/mmcblk0"
 ```
 
-! For memory card storage and some other types of storage, the default way to refer to partitions is to add a "p" and then the number of the partition (for example `/dev/mmcblk0p1`). If you're using a storage type which doesn't follow this scheme (for example `/dev/sda1`), then you also need to set `MENDER_STORAGE_DEVICE_BASE` to the correct value, such as `MENDER_STORAGE_DEVICE_BASE = "${MENDER_STORAGE_DEVICE}"`. The default is the value of `MENDER_STORAGE_DEVICE` plus a "p".
-
 
 ###More detailed storage configuration
 
-If you need more fine grained control over which partitions Mender will use, you can set one or more the following variables to specific partition strings:
+If you need more fine grained control over which partitions Mender will use, you can set one or more the following variables to specific partition strings, using `MENDER_STORAGE_DEVICE_BASE`:
 
 * `MENDER_BOOT_PART`
 * `MENDER_DATA_PART`
