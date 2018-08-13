@@ -37,8 +37,6 @@ having to configure any hardware.
 We assume you are using **Ubuntu 18.04** with **Google Chrome** as web browser
 and at least **10 GB free disk space** and **2 GB RAM available** for Mender.
 
-!!! If you want to set up Mender on **Windows**, please [see this note](http://bit.ly/2M3B5IJ).
-
 #### Docker Engine 1.11
 
 Follow the [documentation to install Docker Engine](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/?target=_blank),
