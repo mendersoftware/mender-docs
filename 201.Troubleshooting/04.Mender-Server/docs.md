@@ -73,16 +73,6 @@ In this case you can see that there are two authentication sets with the exact s
 The solution is to decommission the device and [remove all authentication sets](../../server-integration/preauthorizing-devices#make-sure-there-are-no-existing-authentication-sets-for-your-dev) (from both `admission` and `devauth`) and adjust the public key string used in the [preauthorize API call](../../server-integration/preauthorizing-devices#call-the-preauthorize-api) to match exactly the one reported by the device, as seen in the `pending` data above.
 
 
-## Install a Mender demo server on Windows
-
-The Mender [getting started guide](../../getting-started) assumes you are using Ubuntu Linux to install the Mender server.
-Docker images used should be compatible with a Windows host as well, however there are some server maintenance scripts,
-like `up`, that are Unix-specific.
-
-So currently the easiest way to use a Windows workstation to run the Mender demo server is to get a virtual
-machine with Ubuntu Linux and start the Mender server in there.
-
-
 ## mender-api-gateway exits with code 132
 
 When starting the Mender server, `mender-api-gateway` exits immediately with a message
