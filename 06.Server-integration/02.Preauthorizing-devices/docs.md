@@ -84,29 +84,8 @@ Now that we have the device's identity and public key, we will use the Mender se
 First make sure to power off your device, so it does not continuously appear as pending in your server.
 
 We recommend that you ensure there are no records of your device in the server; open the Mender UI, then go to *Devices* to see if it is there, then *Decommission* it.
-Secondly, To make sure that the device is not in an existing authentication set, we check *both* the `admission` and `devauth` services for the identity of your device.
 
-In the same terminal, run the following commands:
-
-```bash
-curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/admission/devices | python -m json.tool > /tmp/admission.json
-curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/devauth/devices | python -m json.tool > /tmp/devauth.json
-```
-
-!!! To make the response more readable, we use the `json.tool` module of python to indent it. If it is not available on your system you can omit this pipe or replace it with a different indentation tool (remove or replace `| python -m json.tool`).
-
-Now open the files `/tmp/admission.json` and `/tmp/devauth.json` and search for a value of your device identity (e.g. `02:12:61:13:6c:42` if you are using MAC addresses).
-
-If you do not get any matches in either files, great! Continue to the [next section](#call-the-preauthorize-api).
-
-If you do have one or more matches you must first delete these existing authentication sets. Find the `id` of the authentication set and use the `DELETE` method towards the service. For example, if you find the identity in `admission.json` and you see the authentication set has `id` `5ae3a39d3cd4d40001482a95` the run the following command:
-
-```bash
-curl -H "Authorization: Bearer $JWT" -X DELETE $MENDER_SERVER_URI/api/management/v1/admission/devices/5ae3a39d3cd4d40001482a95
-```
-
-Once this is done, re-run the two commands above to generate the two `.json` files again and verify that your device identity does not exist anywhere.
-
+In the event that the decommissioning operation fails, perform a [manual database cleanup via the provided CLI command](../../troubleshooting/cleaning-up-the-deviceauth-database-after-device-decommissioning).
 
 ### Call the preauthorize API
 

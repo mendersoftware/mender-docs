@@ -11,7 +11,6 @@ The integration environment, previously used
 in [Create a test environment](../../getting-started/create-a-test-environment)
 chapter, brings together the following services:
 
-- [Mender Device Admission Service](https://github.com/mendersoftware/deviceadm?target=_blank)
 - [Mender Device Authentication Service](https://github.com/mendersoftware/deviceauth?target=_blank)
 - [Mender Deployment Service](https://github.com/mendersoftware/deployments?target=_blank)
 - [Mender Device Inventory Service](https://github.com/mendersoftware/inventory?target=_blank)
@@ -39,14 +38,10 @@ provides a convenient setup based on Docker Compose tool. The
         |                                       |    |  (mender-device-auth)   |
         |                                       |    +-------------------------+
         |        +-----------------------+      |    |                         |
-   port |        |                       |      +--->|  Device Admission       |
-    443 | <----> |  API Gateway          |      |    |  (mender-device-adm)    |
+   port |        |                       |      +--->|  Inventory              |
+    443 | <----> |  API Gateway          |      |    |  (mender-inventory)     |
         |        |  (mender-api-gateway) |<-----+    +-------------------------+
         |        +-----------------------+      |    |                         |
-        |                                       +--->|  Inventory              |
-        |                                       |    |  (mender-inventory)     |
-        |                                       |    +-------------------------+
-        |                                       |    |                         |
         |                                       +--->|  User Administration    |
         |                                       |    |  (mender-useradm)       |
         |                                       |    +-------------------------+
@@ -54,6 +49,8 @@ provides a convenient setup based on Docker Compose tool. The
         |                                            |  Deployments            |
         |              +---------------------------->|  (mender-deployments)   |
         |              |                             +-------------------------+
+        |              |
+        |              |
         |              |
         |              |
         |              v
