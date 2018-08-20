@@ -145,6 +145,11 @@ Features appended to this variable will be enabled in the build. See [the
 section on features](../image-configuration/features) for more information.
 
 
+#### MENDER_GRUB_STORAGE_DEVICE
+
+The storage device, as referred to by GRUB (e.g. `hd1`). This variable can be used in cases where the Linux kernel and GRUB refer to the same device with different names. See [The bootloader and the Linux kernel do not agree about the indexes of storage devices](../../troubleshooting/yocto-project-build#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-index) for more information.
+
+
 #### MENDER_IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET
 
 Together with `MENDER_IMAGE_BOOTLOADER_FILE`, this sets the offset where the bootloader should be placed, counting from the start of the storage medium. The offset is specified in units of 512-byte sectors. Obviously this needs to be non-zero, or the partition table itself would be overwritten.
@@ -295,12 +300,12 @@ overridden, it must also be aligned to `MENDER_PARTITION_ALIGNMENT_KB`.
 
 #### MENDER_UBOOT_STORAGE_DEVICE
 
-The storage device, as referred to by U-Boot (e.g. `1`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [U-Boot and the Linux kernel do not agree about the indexes of storage devices](../../troubleshooting/yocto-project-build#u-boot-and-the-linux-kernel-do-not-agree-about-the-indexes-of-st) for more information.
+The storage device, as referred to by U-Boot (e.g. `1`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [The bootloader and the Linux kernel do not agree about the indexes of storage devices](../../troubleshooting/yocto-project-build#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-index) for more information.
 
 
 #### MENDER_UBOOT_STORAGE_INTERFACE
 
-The storage interface, as referred to by U-Boot (e.g. `mmc`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [U-Boot and the Linux kernel do not agree about the indexes of storage devices](../../troubleshooting/yocto-project-build#u-boot-and-the-linux-kernel-do-not-agree-about-the-indexes-of-st) for more information.
+The storage interface, as referred to by U-Boot (e.g. `mmc`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [The bootloader and the Linux kernel do not agree about the indexes of storage devices](../../troubleshooting/yocto-project-build#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-index) for more information.
 
 
 #### SYSTEMD_AUTO_ENABLE_pn-mender

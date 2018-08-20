@@ -21,16 +21,20 @@ Mender needs to configure U-Boot in order to support robust rootfs rollback. If 
 This may be an indication that Mender's automatic U-Boot patching has failed for the particular board that's being built for, and a manual patch may be required. For information on how to create such a patch, go to the [Manual U-Boot integration section](../../devices/integrating-with-u-boot/manual-u-boot-integration).
 
 
-## U-Boot and the Linux kernel do not agree about the indexes of storage devices
+## <a name="u-boot-and-the-linux-kernel-do-not-agree-about-the-indexes-of-st"></a>The bootloader and the Linux kernel do not agree about the indexes of storage devices
 
-Sometimes it happens that U-Boot will refer to a storage device as `mmc 0`, whereas the Linux kernel will refer to the same device as `/dev/mmcblk1` (note the different index). In this case the Mender build system must be told explicitly about this disagreement. To do so, you can set the following two variables:
+Sometimes it happens that GRUB or U-Boot will refer to a storage device as `hd0` or `mmc 0`, respectively, whereas the Linux kernel will refer to the same device as `/dev/mmcblk1` (note the different index). In this case the Mender build system must be told explicitly about this disagreement. To do so, you can add the following to the build configuration:
 
 ```bash
+# For GRUB
+MENDER_GRUB_STORAGE_DEVICE = "hd0"
+
+# For U-Boot
 MENDER_UBOOT_STORAGE_INTERFACE = "mmc"
 MENDER_UBOOT_STORAGE_DEVICE = "0"
 ```
 
-which will set the index that U-Boot will use. All non-U-Boot references to the storage device, including the `root` argument passed by U-Boot to the Linux kernel when booting it, will keep using the `/dev/mmcblk1` variant derived from `MENDER_STORAGE_DEVICE` variables.
+which will set the index that the bootloaders will use. All Linux references to the storage device, including the `root` argument passed by the bootloader to the Linux kernel when booting it, will keep using the `/dev/mmcblk1` variant derived from `MENDER_STORAGE_DEVICE` variables.
 
 
 ## Bootloader is missing from boot partition, but is required for my device
