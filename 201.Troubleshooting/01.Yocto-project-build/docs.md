@@ -21,7 +21,7 @@ Mender needs to configure U-Boot in order to support robust rootfs rollback. If 
 This may be an indication that Mender's automatic U-Boot patching has failed for the particular board that's being built for, and a manual patch may be required. For information on how to create such a patch, go to the [Manual U-Boot integration section](../../devices/integrating-with-u-boot/manual-u-boot-integration).
 
 
-## <a name="u-boot-and-the-linux-kernel-do-not-agree-about-the-indexes-of-st"></a>The bootloader and the Linux kernel do not agree about the indexes of storage devices
+## The bootloader and the Linux kernel do not agree about the indexes of storage devices
 
 Sometimes it happens that GRUB or U-Boot will refer to a storage device as `hd0` or `mmc 0`, respectively, whereas the Linux kernel will refer to the same device as `/dev/mmcblk1` (note the different index). In this case the Mender build system must be told explicitly about this disagreement. To do so, you can add the following to the build configuration:
 
@@ -158,4 +158,39 @@ This is a known bug in U-Boot versions prior to v2018.05. If you hit this you wi
 
 ```
 SRC_URI_append = " file://0005-fw_env_main.c-Fix-incorrect-size-for-malloc-ed-strin.patch"
+```
+
+
+## I'm trying to integrate with GRUB on an ARM board, but I only see U-Boot loading and never GRUB
+
+Unlike x86, ARM based boards usually do not implement [the UEFI boot standard](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface?target=_blank). Therefore, on ARM, U-Boot is used as a first stage bootloader which provides a UEFI loader, and this is then used to boot GRUB using the UEFI boot standard. For a large number of boards out there, this works out of the box.
+
+!!! Do not confuse the usage of "U-Boot as a first stage bootloader" with "U-Boot integration". "GRUB integration" still means that GRUB is used for all integration with the Mender client.
+
+However, some boards do not call `distro_bootcmd` as part of their U-Boot startup script, and in this case the approach will not work. A typical symptom is that the U-Boot bootloader skips loading of GRUB entirely and goes directly to loading the kernel. If this happens to you, you have two choices:
+
+1. Change the bootscript to call `distro_bootcmd` by patching U-Boot
+2. Abandon GRUB integration and attempt [U-Boot integration](../../devices/integrating-with-u-boot) instead
+
+
+## My device ends up at the GRUB prompt and all error and debug messages are lost because it clears the screen
+
+This is a common problem when trying to debug boot problems with GRUB. meta-mender provides an option to pause the boot process to see the messages before they disappear. To enable it, add this to `local.conf`:
+
+```
+PACKAGECONFIG_append_pn-grub-mender-grubenv = " debug-pause"
+```
+
+This option should be removed before moving to production.
+
+There is also an option, `debug-log`, to put GRUB in debug mode, where it will print a lot of debugging output.
+
+
+## The firmware in my device looks for certain files on the first partition of the device, and this does not work while attempting GRUB integration
+
+By default, meta-mender will produce a UEFI image (`uefiimg`) when integrating with GRUB. However, some older firmware may not recognize the [GPT partition table](https://en.wikipedia.org/wiki/GUID_Partition_Table?target=_blank) which is used on UEFI images. If so, the image can be switched to an [MBR partition table](https://en.wikipedia.org/wiki/Master_boot_record?target=_blank) image (`sdimg`) by adding the snippet below to the build configuration:
+
+```
+MENDER_FEATURES_ENABLE_append = " mender-image-sd"
+MENDER_FEATURES_DISABLE_append = " mender-image-uefi"
 ```
