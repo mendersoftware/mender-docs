@@ -30,7 +30,7 @@ _Released 08.06.2018_
 
 New changes in deviceauth since 1.5.0:
 
-* Device object returned by API exposes new boolean attribute: "decomissioning" signifying devices that are curently going through removal process.
+* Device object returned by API exposes new boolean attribute: "decommissioning" signifying devices that are currently going through removal process.
 
 #### gui (1.6.0b1)
 
