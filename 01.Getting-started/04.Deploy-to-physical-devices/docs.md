@@ -171,7 +171,7 @@ Now **connect the device to power**.
 ## See the device in the Mender UI
 
 If you refresh the Mender server UI (by default found at [https://localhost/](https://localhost/?target=_blank)),
-you should see one or more devices pending authorization.
+you should see one or more devices pending authorization. If you do not see your device listed in the UI, please review [troubleshooting steps.](../../troubleshooting/device-runtime#mender-server-connection-issues)
 
 Once you **authorize** these devices, Mender will auto-discover
 inventory about the devices, including the device type (e.g. beaglebone)
