@@ -150,7 +150,7 @@ MENDER_ARTIFACT_NAME = "release-1"
 INHERIT += "mender-full"
 
 # A MACHINE integrated with Mender.
-# raspberrypi3, beaglebone, vexpress-qemu and qemux86-64 are reference devices
+# raspberrypi3, beaglebone-yocto, vexpress-qemu and qemux86-64 are reference devices
 MACHINE = "<YOUR-MACHINE>"
 
 # For Raspberry Pi, uncomment the following block:
