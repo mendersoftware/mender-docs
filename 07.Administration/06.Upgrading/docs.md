@@ -195,6 +195,15 @@ Start the new environment:
 > Creating menderproduction_mender-inventory_1
 > Creating menderproduction_mender-api-gateway_1
 
+## Removing deviceadm service database
+
+Deviceadm service functionality has been merged into deviceauth service
+and deviceadm service has been removed from the mender server.
+To remove deviceadm database, which is obsolete, run:
+
+```bash
+docker exec menderproduction_mender-mongo_1 mongo deviceadm --eval "db.dropDatabase()"
+```
 
 ## Upgrading Mender Clients
 
