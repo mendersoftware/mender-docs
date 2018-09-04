@@ -23,7 +23,7 @@ See [the documentation on features](../../artifacts/image-configuration/features
 
 ## Boot counter
 
-As Mender relies on the `CONFIG_BOOTCOUNT_ENV` feature of U-Boot, which was [introduced in October 2013](http://lists.denx.de/pipermail/u-boot/2013-October/165484.html?target=_blank), Mender currently recommends **U-Boot v2014.07 or newer**.
+As Mender relies on the `CONFIG_BOOTCOUNT_ENV` feature of U-Boot, which was [introduced in October 2013](http://lists.denx.de/pipermail/u-boot/2013-October/165484.html?target=_blank), Mender currently recommends **U-Boot v2014.07 or newer**. Note that this should be considered a minimum requirement. Other features, such as [automatic U-Boot patching](#enabling-u-boot-1) require newer versions. Mender is tested regularly against the version of U-Boot that is available the upstream poky branch; diverging significantly from that may result in unexpected issues.
 
 If you have an older version of U-Boot, it is possible to apply some extra patches to make this work. Please see the section about [U-Boot versions without BOOTLIMIT support](../integrating-with-u-boot/manual-u-boot-integration/u-boot-versions-without-bootlimit-support) for more information.
 
