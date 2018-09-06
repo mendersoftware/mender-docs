@@ -6766,7 +6766,7 @@ THE SOFTWARE.
 
 www.npmjs.com/package/big.js:
 
-The MIT Expat Licence.
+The MIT Expat License.
 
 Copyright (c) 2012 Michael Mclaughlin
 

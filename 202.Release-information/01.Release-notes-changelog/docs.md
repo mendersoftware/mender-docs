@@ -42,7 +42,7 @@ _Released 07.10.2018_
   previously launched and saved QEMU image.
 * QEMU: Limit client setup steps to run on first boot only.
 * tests: Filter out the data partition as the latest build artifact.
-* Licence checksum updated in mender-artifact
+* License checksum updated in mender-artifact
 * Fixed issue with build due to unknown image linux-firmware-raspbian-bcm43430
 * tests: Respect user set SSTATE_DIR and DL_DIR variables.
 * Warn when mender.conf settings conflict with Bitbake variables.
