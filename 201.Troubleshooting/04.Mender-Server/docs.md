@@ -37,7 +37,7 @@ If you see your device gets the `pending` status after [preauthorizing it](../..
 To diagnose this, look for the device identity in the `admission` service, for example:
 
 ```bash
-curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/admission/devices | python -m json.tool
+curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/admission/devices | jq
 ```
 
 ```json

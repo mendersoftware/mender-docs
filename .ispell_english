@@ -1,9 +1,11 @@
 aa
 aac
+aarch
 ab
 abB
 abbrev
 abc
+abcd
 abcssadasdssado
 abf
 aBMwK
@@ -190,7 +192,9 @@ BOOTENV
 bootfile
 bootlimit
 bootloader
+bootloaders
 bootpart
+bootscript
 BOOTSECTOR
 bootz
 br
@@ -273,6 +277,7 @@ classnames
 cleansstate
 cli
 ClientProtocol
+clientserver
 cliui
 cloneable
 cloudfront
@@ -405,7 +410,7 @@ dir
 DISCOVERABLE
 Disklabel
 disposables
-Distro
+distro
 dl
 dm
 dnd
@@ -551,11 +556,13 @@ fileserver
 FILESEXTRAPATHS
 filesize
 findup
+Fixup
 fJ
 Flqh
 fm
 fMANM
 FMfeIylejzaOnNHn
+fmt
 FMuEfZqojEDodhnNvvG
 fns
 Fomichev
@@ -573,6 +580,7 @@ freescale
 Frischmann
 Froidure
 fs
+fsck
 fsevents
 fsf
 fsnotify
@@ -633,10 +641,12 @@ GPLv
 GPT
 grep
 Grijalva
+grubenv
 Gruber
 gt
 Gu
 gui
+GUID
 Guillermo
 gulplog
 gunzip
@@ -655,6 +665,7 @@ Hashimoto
 hBUFoOLhdPFx
 hcl
 HCveVzFkBPbCwt
+hd
 HeA
 hellman
 helptips
@@ -956,6 +967,7 @@ mongoâ
 mongod
 MongoDB
 mongoDB
+mongodb
 morty
 Mountpoint
 mozilla
@@ -968,6 +980,7 @@ mtdids
 mtdimg
 mtdinfo
 mtdparts
+mtools
 multipipe
 multitenancy
 murmurhash
@@ -1000,6 +1013,7 @@ netroy
 networkboot
 NewDevice
 newdevice
+NewReader
 nextick
 nginx
 ngx
@@ -1039,6 +1053,7 @@ nRSpSW
 nsIB
 nuARkFAv
 num
+nums
 nvyHvl
 NW
 nWkPTbG
@@ -1152,6 +1167,7 @@ Pregenerate
 preinstalls
 prev
 printenv
+Println
 proactive
 proc
 proxy's
@@ -1170,6 +1186,7 @@ PV
 PWD
 pwgen
 pY
+py
 pyro
 qemu
 qemux
@@ -1197,6 +1214,7 @@ reactify
 readdirp
 readerc
 readlink
+ReadRune
 realpath
 realpathSync
 rechoir
@@ -1323,12 +1341,13 @@ sidebar
 sig
 sigmund
 signup
+SIGUSR
 Simonov
 SimpleError
 simpleerror
 SimpleHTTPServer
 Sindre
-Sirupsen
+sirupsen
 sitnik
 skipverify
 SKU
@@ -1517,6 +1536,7 @@ unitdir
 unlicense
 unmarshal
 Unprocessable
+UnreadRune
 unreads
 updatable
 UpdateAuthSet
