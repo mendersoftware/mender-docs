@@ -1,5 +1,6 @@
 aa
 aac
+aarch
 ab
 abB
 abbrev
@@ -190,7 +191,9 @@ BOOTENV
 bootfile
 bootlimit
 bootloader
+bootloaders
 bootpart
+bootscript
 BOOTSECTOR
 bootz
 br
@@ -273,6 +276,7 @@ classnames
 cleansstate
 cli
 ClientProtocol
+clientserver
 cliui
 cloneable
 cloudfront
@@ -405,7 +409,7 @@ dir
 DISCOVERABLE
 Disklabel
 disposables
-Distro
+distro
 dl
 dm
 dnd
@@ -631,10 +635,12 @@ GPLv
 GPT
 grep
 Grijalva
+grubenv
 Gruber
 gt
 Gu
 gui
+GUID
 Guillermo
 gulplog
 gunzip
@@ -653,6 +659,7 @@ Hashimoto
 hBUFoOLhdPFx
 hcl
 HCveVzFkBPbCwt
+hd
 HeA
 hellman
 helptips
@@ -1033,6 +1040,7 @@ nRSpSW
 nsIB
 nuARkFAv
 num
+nums
 nvyHvl
 nWkPTbG
 nWsLOn
