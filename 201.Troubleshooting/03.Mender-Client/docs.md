@@ -47,6 +47,17 @@ Most commonly this is caused by **incorrect time setting at the device** which r
 running `date` at the device, and make sure it is correct. Consult the section on [Correct clock](../../devices/system-requirements#correct-clock) 
 for a more detailed discussion.
 
+To determine the status of your time synchronization, execute the following:
+
+   ```bash
+   # timedatectl status
+   ```
+
+Note that it can take some time after boot before the time
+synchronization is completed. If after 5-10 minutes, the time still
+has not synchronized, consult with your local network administrator
+for further troubleshooting.
+
 If this is not the problem, you need to verify that the certificates you are using are valid.
 Replace the hostname with the one for your Mender API Gateway below and run the following command:
 
