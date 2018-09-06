@@ -22,7 +22,7 @@ In this tutorial we will highlight some key use cases covered by the `mender-art
 
 The `mender-artifact` utility is used to create and inspect Mender Artifacts.
 
-You can download a [prebuilt mender-artifact Linux binary here][autoupdate_x.x.x_mender-artifact].
+You can download a [prebuilt mender-artifact Linux binary here][x.x.x_mender-artifact].
 
 !!! If you need to build `mender-artifact` from source, please see [Compiling mender-artifact](#compiling-mender-artifact).
 
@@ -107,7 +107,7 @@ for more information.
 ## Compiling mender-artifact
 
 Compiling `mender-artifact` is only necessary if you can not use the prebuilt
-[mender-artifact binary for Linux][autoupdate_x.x.x_mender-artifact].
+[mender-artifact binary for Linux][x.x.x_mender-artifact].
 
 
 #### Install git
@@ -133,10 +133,12 @@ and add the exports to your `.profile` as described when
 clicking on the download link.
 This is an example of installing and setting up Golang on a Linux system:
 
+<!--AUTOVERSION: "go%"/ignore-->
 ```bash
 wget https://storage.googleapis.com/golang/go1.7.4.linux-amd64.tar.gz
 ```
 
+<!--AUTOVERSION: "go%"/ignore-->
 ```bash
 sudo tar -C /usr/local -xzf go1.7.4.linux-amd64.tar.gz
 ```
@@ -155,6 +157,7 @@ After these steps, verify that Golang is correctly installed:
 go version
 ```
 
+<!--AUTOVERSION: "go%"/ignore-->
 > go version go1.7.4 linux/amd64
 
 
@@ -192,4 +195,5 @@ For convenience, we can also make sure the `mender-artifact` utility is in PATH:
 export PATH=$PATH:$GOPATH/bin
 ```
 
-[autoupdate_x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.3.0b1/mender-artifact
+<!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
+[x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.3.0/mender-artifact

@@ -32,10 +32,11 @@ Get the disk image and Artifacts for your device(s) from [Download demo images](
 !!! It is possible to use this tutorial with *any* physical device, as long as you have integrated Mender with it. In this case you cannot use the demo Artifacts we provide in this tutorial, but you need to build your own artifacts as described in [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
 
 ### Mender-Artifact tool
-Download [the prebuilt mender-artifact tool][autoupdate_x.x.x_mender-artifact] available
+Download [the prebuilt mender-artifact tool][x.x.x_mender-artifact] available
 for Linux, or [compile it from source](../../artifacts/modifying-a-mender-artifact#compiling-mender-artifact). In both cases remember to add execute permission (e.g. with `chmod +x mender-artifact`).
 
-[autoupdate_x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.3.0b1/mender-artifact
+<!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
+[x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.3.0/mender-artifact
 
 Please see [Modifying a Mender Artifact](../../artifacts/modifying-a-mender-artifact)
 for a more detailed overview.
@@ -277,14 +278,11 @@ of the `mender-artifact` tool, first making a copy of the original. To do this,
 run these two commands (adjust the Artifact file name accordingly):
 
 
-[start_autoupdate_beaglebone_release_2_x.x.x.mender]: #
-
+<!--AUTOVERSION: "release-2_%"/mender -->
 ```bash
 cp beaglebone_release_1.mender beaglebone_release_2.mender
-mender-artifact modify beaglebone_release_2.mender -n release-2_1.6.0b1
+mender-artifact modify beaglebone_release_2.mender -n release-2_1.6.0
 ```
-
-[end_autoupdate_beaglebone_release_2_x.x.x.mender]: #
 
 
 !!! Using`mender-artifact modify`, you can easily modify several configuration settings in existing disk image (`.sdimg`) and Mender Artifact (`.mender`) files, such as the server URI and certificate. See `mender-artifact help modify` for more options.

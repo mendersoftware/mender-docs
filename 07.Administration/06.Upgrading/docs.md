@@ -65,6 +65,7 @@ update origin`.
 ```bash
 git fetch origin --tags
 ```
+<!--AUTOVERSION: "%      -> origin/%"/ignore "%     -> origin/%"/ignore-->
 > Fetching origin  
 > remote: Counting objects: 367, done.  
 > remote: Compressing objects: 100% (31/31), done.  
@@ -75,6 +76,7 @@ git fetch origin --tags
 >    02cd118..75b7831  1.0.x      -> origin/1.0.x  
 >    06f3212..e9e5df4  master     -> origin/master  
 
+<!--AUTOVERSION: "branch named `%` provides"/ignore "e.g. `%`"/ignore-->
 For each release there will be a corresponding release branch. For example, the
 branch named `1.0.x` provides the 1.0 release setup. Stable releases are tagged,
 e.g. `1.0.1`.
@@ -84,6 +86,7 @@ local setup was introduced in a branch that was created from given release
 version. You can use git commands such as `git log` and `git diff` to review the changes
 introduced in upstream branch. For example:
 
+<!--AUTOVERSION: "HEAD..origin/%"/ignore "HEAD..%"/ignore-->
 ```bash
 # to list differences between current HEAD and remote branch
 git log HEAD..origin/1.0.x
@@ -96,6 +99,7 @@ version and the version present in the repository. For a patch release
 there should be none, or just some minor changes. However, when there is a
 minor/major release, one can expect the diff to be larger. Example:
 
+<!--AUTOVERSION: "HEAD..%"/ignore-->
 ```bash
 # while at the root of repository
 user@local$ git diff HEAD..1.0.1 -- template
@@ -103,6 +107,7 @@ user@local$ git diff HEAD..1.0.1 -- template
 
 Upgrading our local production branch is performed by issuing a `git merge` command, like this:
 
+<!--AUTOVERSION: "git merge %"/ignore-->
 ```bash
 git merge 1.0.1
 ```
@@ -124,6 +129,7 @@ First, pull in new container images:
 ```bash
 ./run pull
 ```
+<!--AUTOVERSION: "%)..."/ignore "%: Pulling"/ignore "Image is up to date for mendersoftware/deviceauth:%"/ignore "Image is up to date for mendersoftware/gui:%"/ignore "Image is up to date for mendersoftware/api-gateway:%"/ignore-->
 > Pulling mender-mongo (mongo:3.4)...  
 > 3.4: Pulling from library/mongo  
 > Digest: sha256:e5a4f6caf4fb6773e41292b56308ed427692add67ffd7c655fdf11a78a72df4e  
