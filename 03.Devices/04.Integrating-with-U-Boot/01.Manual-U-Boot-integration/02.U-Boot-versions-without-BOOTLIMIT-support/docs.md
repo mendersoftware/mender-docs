@@ -37,6 +37,7 @@ changes are relatively simple.
 2. Second, any existing `CONFIG_BOOTCOUNT_LIMIT` and/or `CONFIG_BOOTCOUNT_ENV`
    defines in the configuration must be removed.
 
+<!--AUTOVERSION: "meta-mender/blob/%"/ignore -->
 For an example, take a look at [the patch provided for the `vexpress-qemu`
 `MACHINE`
 type](https://github.com/mendersoftware/meta-mender/blob/rocko/meta-mender-qemu/recipes-bsp/u-boot/patches/experimental/0002-Enable-custom-bootlimit-code-for-vexpress-qemu.patch).

@@ -14,21 +14,15 @@ taxonomy:
 In a working directory, download the Mender integration
 environment:
 
-[start_autoupdate_integration_archive_x.x.x.tar.gz]: #
-
+<!--AUTOVERSION: "-b %"/integration "integration-%"/integration -->
 ```bash
-git clone -b 1.5.0 https://github.com/mendersoftware/integration.git integration-1.5.0
+git clone -b 1.5.1 https://github.com/mendersoftware/integration.git integration-1.5.1
 ```
 
-[end_autoupdate_integration_archive_x.x.x.tar.gz]: #
-
-[start_autoupdate_integration-x.x.x]: #
-
+<!--AUTOVERSION: "integration-%"/integration -->
 ```bash
-cd integration-1.5.0
+cd integration-1.5.1
 ```
-
-[end_autoupdate_integration-x.x.x]: #
 
 ! Mender currently requires two entries in your `/etc/hosts` file to work with the Docker networking (typically `127.0.0.1 s3.docker.mender.io` and `127.0.0.1 docker.mender.io`). If these entries do not exist as you run the `up` script (below), it will create them for you and thus might ask for your administrative password. If you want to avoid automatic creation, you can create the entries in advance; look inside the script for the details how it is created on your host.
 

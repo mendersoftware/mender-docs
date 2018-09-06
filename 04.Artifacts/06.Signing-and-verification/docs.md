@@ -80,16 +80,18 @@ The resulting `private.key` and `public.key` files are the private and public ke
 ## Signing
 
 Once a root file system for a device is built, use the `mender-artifact` tool to create a signed Artifact.
-If you use Linux, [download the prebuilt mender-artifact binary][autoupdate_x.x.x_mender-artifact],
+If you use Linux, [download the prebuilt mender-artifact binary][x.x.x_mender-artifact],
 otherwise [compile it for your platform](../modifying-a-mender-artifact#compiling-mender-artifact).
 
-[autoupdate_x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.2.0/mender-artifact
+<!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
+[x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.2.0/mender-artifact
 
 To sign we use the `-k` parameter to specify the private key, which will be used for creating the signature.
 The full command will look like the following:
 
+<!--AUTOVERSION: "mender-%"/mender-->
 ```bash
-mender-artifact write rootfs-image -t beaglebone -n mender-1.0.1 -u core-image-base-beaglebone.ext4 -k private.key -o artifact-signed.mender
+mender-artifact write rootfs-image -t beaglebone -n mender-1.5.1 -u core-image-base-beaglebone.ext4 -k private.key -o artifact-signed.mender
 ```
 
 This is the command the Signing system uses to create a signed Artifact.

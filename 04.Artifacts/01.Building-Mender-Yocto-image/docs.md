@@ -41,10 +41,11 @@ integration enables robust and atomic rollbacks with Mender.
 The following reference devices are already integrated with Mender,
 so if you are building for one of these you do not need to do any integration:
 
-* [Raspberry Pi 3](https://github.com/mendersoftware/meta-mender/tree/rocko/meta-mender-raspberrypi?target=_blank) (other revisions are also likely to work)
+<!--AUTOVERSION: "meta-mender/tree/%"/ignore-->
+* [Raspberry Pi 3](https://github.com/mendersoftware/meta-mender/tree/sumo/meta-mender-raspberrypi?target=_blank) (other revisions are also likely to work)
 * BeagleBone Black (no board specific layer needed)
-* [Virtual device (qemux86-64)](https://github.com/mendersoftware/meta-mender/tree/rocko/meta-mender-qemu?target=_blank)
-* [Virtual device (vexpress-qemu)](https://github.com/mendersoftware/meta-mender/tree/rocko/meta-mender-qemu?target=_blank)
+* [Virtual device (qemux86-64)](https://github.com/mendersoftware/meta-mender/tree/sumo/meta-mender-qemu?target=_blank)
+* [Virtual device (vexpress-qemu)](https://github.com/mendersoftware/meta-mender/tree/sumo/meta-mender-qemu?target=_blank)
 
 If you are building for a different device, please see [Device integration](../../devices)
 for general requirements and adjustments you might need to enable your device
@@ -64,7 +65,8 @@ See [certificate troubleshooting](../../troubleshooting/mender-client#certificat
 
 ### Yocto Project
 
-! We use the **rocko** branch of the Yocto Project and `meta-mender` below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases, but these branches are no longer maintained by Mender developers. We offer professional services to to implement and support other branches over time, please take a look at the [Mender professional services offering](https://mender.io/product/professional-services?target=_blank).
+<!--AUTOVERSION: "**%** branch of the Yocto Project"/ignore-->
+! We use the **sumo** branch of the Yocto Project and `meta-mender` below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases, but these branches are no longer maintained by Mender developers. We offer professional services to to implement and support other branches over time, please take a look at the [Mender professional services offering](https://mender.io/product/professional-services?target=_blank).
 
 A Yocto Project poky environment is required. If you already have
 this in your build environment, please open a terminal, go to the `poky`
@@ -74,8 +76,9 @@ directory and skip to [Adding the meta layers](#adding-the-meta-layers).
 On the other hand, if you want to start from a *clean Yocto Project environment*,
 you need to clone the latest poky and go into the directory:
 
+<!--AUTOVERSION: "-b % git://git.yoctoproject.org/poky"/ignore-->
 ```bash
-git clone -b rocko git://git.yoctoproject.org/poky
+git clone -b sumo git://git.yoctoproject.org/poky
 ```
 
 ```bash
@@ -92,8 +95,9 @@ We will now add the required meta layers to our build environment.
 Please make sure you are standing in the directory where `poky` resides,
 i.e. the top level of the Yocto Project build tree, and run these commands:
 
+<!--AUTOVERSION: "-b % git://github.com/mendersoftware/meta-mender"/ignore-->
 ```bash
-git clone -b rocko git://github.com/mendersoftware/meta-mender
+git clone -b sumo git://github.com/mendersoftware/meta-mender
 ```
 
 Next, we initialize the build environment:
@@ -141,6 +145,7 @@ part of your Yocto Project build environment.
 
 Add these lines to the start of your `conf/local.conf`:
 
+<!--AUTOVERSION: "Mender %"/mender-->
 ```bash
 # The name of the disk image and Artifact that will be built.
 # This is what the device will report that it is running, and different updates must have different names
@@ -160,7 +165,7 @@ MACHINE = "<YOUR-MACHINE>"
 # IMAGE_INSTALL_append = " kernel-image kernel-devicetree"
 # IMAGE_FSTYPES_remove += " rpi-sdimg"
 #
-# Lines below not needed for Yocto Rocko (2.4) or newer.
+# Lines below not needed for Yocto Sumo (2.5) or newer.
 # IMAGE_BOOT_FILES_append = " boot.scr u-boot.bin;${SDIMG_KERNELIMAGE}"
 # KERNEL_IMAGETYPE = "uImage"
 
@@ -184,7 +189,7 @@ MACHINE = "<YOUR-MACHINE>"
 # To get your tenant token, log in to https://hosted.mender.io,
 # click your email at the top right and then "My organization".
 # Remember to remove the meta-mender-demo layer (if you have added it).
-# We recommend Mender 1.2.1 and Yocto Project's pyro or later for Hosted Mender.
+# We recommend Mender 1.5.1 and Yocto Project's pyro or later for Hosted Mender.
 #
 # MENDER_SERVER_URL = "https://hosted.mender.io"
 # MENDER_TENANT_TOKEN = "<YOUR-HOSTED-MENDER-TENANT-TOKEN>"
