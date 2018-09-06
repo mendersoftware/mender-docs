@@ -80,6 +80,7 @@ question.
 Here is the complete set of changes made to the recipe, expressed as a diff. We
 will go through each line and explain why they are needed.
 
+<!--AUTOVERSION: "u-boot.git;branch=%"/ignore -->
 ```
 --- u-boot-my-fork_2016.03.bb	2016-11-01 11:42:06.143094834 +0100
 +++ u-boot-fw-utils-my-fork_2016.03.bb	2016-11-01 10:19:43.940934880 +0100
