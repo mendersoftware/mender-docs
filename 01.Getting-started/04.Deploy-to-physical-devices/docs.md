@@ -88,7 +88,7 @@ server when it starts.
 ### Insert the address of Mender server
 
 ```bash
-mender-artifact cat <imgname>.sdimg:/etc/hosts | sed "\$a ${IP_OF_MENDER_SERVER_FROM_DEVICE} docker.mender.io s3.docker.mender.io" | mender-artifact cp <imgname>.sdimg:/etc/hosts
+mender-artifact cat IMGNAME.sdimg:/etc/hosts | sed "\$a ${IP_OF_MENDER_SERVER_FROM_DEVICE} docker.mender.io s3.docker.mender.io" > tmpf; mender-artifact cp tmpf IMGNAME.sdimg:/etc/hosts && rm tmpf
 ```
 
 Then you can check the contents of your 'etc/hosts' file by
@@ -136,7 +136,7 @@ MENDER_IMGPATH=<sdimg>
 ```
 And then running:
 ```bash
-mender-artifact cat "$MENDER_IMGPATH":/etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf | sed "s#[@]MENDER_DEMO_WIFI_PASSKEY[@]#$NW_PASSWORD#" | sed "s#[@]MENDER_DEMO_WIFI_SSID[@]#$NW_SSID#" | mender-artifact cp "$MENDER_IMGPATH":/etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf
+mender-artifact cat "$MENDER_IMGPATH":/etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf | sed "s#[@]MENDER_DEMO_WIFI_PASSKEY[@]#$NW_PASSWORD#" | sed "s#[@]MENDER_DEMO_WIFI_SSID[@]#$NW_SSID#" > tmpf; mender-artifact cp tmpf "$MENDER_IMGPATH":/etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf && rm tmpf
 ```
 should have your wpa configuration set up correctly on start up.
 
