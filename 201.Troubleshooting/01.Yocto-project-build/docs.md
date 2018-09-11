@@ -216,3 +216,53 @@ By default, meta-mender will produce a UEFI image (`uefiimg`) when integrating w
 MENDER_FEATURES_ENABLE_append = " mender-image-sd"
 MENDER_FEATURES_DISABLE_append = " mender-image-uefi"
 ```
+
+# When I update Yocto version from rocko to sumo U-boot patches do not apply
+
+This is what the error message might look like.
+
+```
+ERROR: u-boot-custom-2017.03-r0 do_patch: Command Error: 'quilt --quiltrc /home/user/git/poky/build/tmp/work/imx6ullevk-poky-linux-gnueabi/u-boot-custom/2017.03-r0/recipe-sysroot-native/etc/quiltrc push' exited with 0  Output:
+Applying patch 0006-env-Kconfig-Add-descriptions-so-environment-options-.patch
+can't find file to patch at input line 19
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|From f083052dd16a09c51a9426aa008b0c20878a7c30 Mon Sep 17 00:00:00 2001
+|From: Kristian Amlie <kristian.amlie@northern.tech>
+|Date: Mon, 23 Apr 2018 23:10:33 +0200
+|Subject: [PATCH 6/6] env/Kconfig: Add descriptions so environment options can
+| be modified.
+|
+|Without a description they always revert to their defaults regardless
+|of what is in the defconfig file.
+|
+|Signed-off-by: Kristian Amlie <kristian.amlie@northern.tech>
+|---
+| env/Kconfig | 4 ++--
+| 1 file changed, 2 insertions(+), 2 deletions(-)
+|
+|diff --git a/env/Kconfig b/env/Kconfig
+|index bef6e89..f8d5ddb 100644
+|--- a/env/Kconfig
+|+++ b/env/Kconfig
+--------------------------
+No file to patch.  Skipping patch.
+2 out of 2 hunks ignored
+Patch 0006-env-Kconfig-Add-descriptions-so-environment-options-.patch does not apply (enforce with -f)
+ERROR: u-boot-custom-2017.03-r0 do_patch: Function failed: patch_do_patch
+ERROR: Logfile of failure stored in: /home/user/git/poky/build/tmp/work/imx6ullevk-poky-linux-gnueabi/u-boot-custom/2017.03-r0/temp/log.do_patch.30239
+ERROR: Task (/home/user/git/poky/meta-freescale/recipes-bsp/u-boot/u-boot-custom_2017.03.bb:do_patch) failed with exit code '1'
+NOTE: Tasks Summary: Attempted 1428 tasks of which 458 didn't need to be rerun and 1 failed.
+```
+
+This is because the U-Boot version used in sumo by upstream Yocto is v2018.01,
+and the u-boot-custom version is v2017.03. It is safe to simply remove  this
+patch, since I it fixes a problem that was introduced after v2017.03.
+
+Just add this to your u-boot bbappend file:
+
+```
+SRC_URI_remove =
+"0006-env-Kconfig-Add-descriptions-so-environment-options-.patch"
+```
