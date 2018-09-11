@@ -10,7 +10,6 @@ Where copyright holder is missing, please refer to the repository of the softwar
 
 
 ```
-
 Third party licenses used in Mender.
 
 
@@ -2515,6 +2514,29 @@ github.com/pelletier/go-buffruneio:
 
 Buffruneio is a wrapper around bufio to provide buffered runes access with
 unlimited unreads.
+
+``go
+import "github.com/pelletier/go-buffruneio"
+``
+
+## Examples
+
+``go
+import (
+    "fmt"
+    "github.com/pelletier/go-buffruneio"
+    "strings"
+)
+
+reader := buffruneio.NewReader(strings.NewReader("abcd"))
+fmt.Println(reader.ReadRune()) // 'a'
+fmt.Println(reader.ReadRune()) // 'b'
+fmt.Println(reader.ReadRune()) // 'c'
+reader.UnreadRune()
+reader.UnreadRune()
+fmt.Println(reader.ReadRune()) // 'b'
+fmt.Println(reader.ReadRune()) // 'c'
+``
 
 ## Documentation
 
