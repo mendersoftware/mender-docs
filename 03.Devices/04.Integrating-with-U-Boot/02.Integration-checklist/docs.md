@@ -142,11 +142,13 @@ This checklist will verify some key functionality aspects of the Mender integrat
     - When using SD card or eMMC storage:
     ```bash
     fw_setenv mender_boot_part 3
+    fw_setenv mender_boot_part_hex 3
     ```
 
     - When using raw flash storage:
     ```bash
     fw_setenv mender_boot_part 1
+    fw_setenv mender_boot_part_hex 1
     ```
 
     ! The number is the number of the second rootfs partition, and corresponds to the last component of the `MENDER_ROOTFS_PART_B` variable. If you've changed this variable in the Yocto configuration, you may need to use a different number.
@@ -166,11 +168,13 @@ This checklist will verify some key functionality aspects of the Mender integrat
     - When using SD card or eMMC storage:
     ```bash
     fw_setenv mender_boot_part 2
+    fw_setenv mender_boot_part_hex 2
     ```
 
     - When using raw flash storage:
     ```bash
     fw_setenv mender_boot_part 0
+    fw_setenv mender_boot_part_hex 0
     ```
 
     Once the commands above have been run, we need to tell Mender that there is an upgrade available:
