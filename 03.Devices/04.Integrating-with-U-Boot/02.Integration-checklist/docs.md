@@ -108,7 +108,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
 11. Now we will verify that Mender is running. Run the following:
 
     ```bash
-    pgrep mender
+    pidof mender
     ```
 
     If Mender has been enabled as a daemon, either through inheriting `mender-full` or enabling the `mender-systemd` feature in `MENDER_FEATURES_ENABLE`, it should return a PID. If not, it should return nothing. This verifies that Mender is started as a service if applicable.
