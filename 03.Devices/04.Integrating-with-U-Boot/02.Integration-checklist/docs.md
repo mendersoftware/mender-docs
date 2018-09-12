@@ -108,7 +108,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
 11. Now we will verify that Mender is running. Run the following:
 
     ```bash
-    pgrep mender
+    pidof mender
     ```
 
     If Mender has been enabled as a daemon, either through inheriting `mender-full` or enabling the `mender-systemd` feature in `MENDER_FEATURES_ENABLE`, it should return a PID. If not, it should return nothing. This verifies that Mender is started as a service if applicable.
@@ -135,18 +135,20 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
     The output of the two commands should be identical. This verifies that the correct rootfs is mounted when partition A is active.
 
-    ! If you have selected a different device using either `MENDER_ROOTFS_PART_A` or `MENDER_STORAGE_DEVICE_BASE` in the Yocto configuration, the `/dev/mmcblk0p2` (or `ubi0_0`) entry may be different, but it should always correspond to the value in `MENDER_ROOTFS_PART_A`.
+    ! If you have selected a different device using either `MENDER_ROOTFS_PART_A` or `MENDER_STORAGE_DEVICE` in the Yocto configuration, the `/dev/mmcblk0p2` (or `ubi0_0`) entry may be different, but it should always correspond to the value in `MENDER_ROOTFS_PART_A`.
 
 14. Everything we have tested so far has been for partition A; we will now verify both kernel and rootfs for partition B. Run the following:
 
     - When using SD card or eMMC storage:
     ```bash
     fw_setenv mender_boot_part 3
+    fw_setenv mender_boot_part_hex 3
     ```
 
     - When using raw flash storage:
     ```bash
     fw_setenv mender_boot_part 1
+    fw_setenv mender_boot_part_hex 1
     ```
 
     ! The number is the number of the second rootfs partition, and corresponds to the last component of the `MENDER_ROOTFS_PART_B` variable. If you've changed this variable in the Yocto configuration, you may need to use a different number.
@@ -159,18 +161,20 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 17. Repeat step 13, but this time using `/dev/mmcblk0p3` (or `ubi0_1`). This verifies that the correct rootfs is mounted when partition B is active.
 
-    ! As in the previous step, `/dev/mmcblk0p3` (or `ubi0_1`) may be different if `MENDER_ROOTFS_PART_B` or `MENDER_STORAGE_DEVICE_BASE` has been changed.
+    ! As in the previous step, `/dev/mmcblk0p3` (or `ubi0_1`) may be different if `MENDER_ROOTFS_PART_B` or `MENDER_STORAGE_DEVICE` has been changed.
 
 18. Run the following commands:
 
     - When using SD card or eMMC storage:
     ```bash
     fw_setenv mender_boot_part 2
+    fw_setenv mender_boot_part_hex 2
     ```
 
     - When using raw flash storage:
     ```bash
     fw_setenv mender_boot_part 0
+    fw_setenv mender_boot_part_hex 0
     ```
 
     Once the commands above have been run, we need to tell Mender that there is an upgrade available:

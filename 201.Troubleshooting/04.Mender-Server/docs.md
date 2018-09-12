@@ -36,7 +36,7 @@ If you see your device gets the `pending` status after [preauthorizing it](../..
 To diagnose this, look for the device identity in the Device Authentication service, for example:
 
 ```bash
-curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/admission/devices | python -m json.tool
+curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/admission/devices | jq
 ```
 
 ```json
@@ -70,16 +70,6 @@ curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/admiss
 In this case you can see that there are two authentication sets with the exact same device identity string: `"{\"mac\":\"52:54:00:50:9b:84\"}"`, one `preauthorized` and one `pending`. So the device reported (see the `pending` set) the exact same identity as we preauthorized. However, there is a mismatch in the format of the public key: the pending set, which the device reported, contains additional `\n` characters.
 
 The solution is to decommission the device and [remove all authentication sets](../../server-integration/preauthorizing-devices#make-sure-there-are-no-existing-authentication-sets-for-your-dev) and adjust the public key string used in the [preauthorize API call](../../server-integration/preauthorizing-devices#call-the-preauthorize-api) to match exactly the one reported by the device, as seen in the `pending` data above.
-
-
-## Install a Mender demo server on Windows
-
-The Mender [getting started guide](../../getting-started) assumes you are using Ubuntu Linux to install the Mender server.
-Docker images used should be compatible with a Windows host as well, however there are some server maintenance scripts,
-like `up`, that are Unix-specific.
-
-So currently the easiest way to use a Windows workstation to run the Mender demo server is to get a virtual
-machine with Ubuntu Linux and start the Mender server in there.
 
 
 ## mender-api-gateway exits with code 132

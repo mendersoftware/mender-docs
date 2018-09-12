@@ -194,11 +194,18 @@ The Device Authentication key can be mounted with the following snippet:
 
 #### Mender Client
 
-The client does not need any special configuration regarding certificates as long as the certificate is signed by a Certificate Authority.
+The client does not need any special configuration regarding certificates as long as the server certificate
+is signed by a Certificate Authority. The client will verify trust using its system root certificates, which
+are typically provided by the `ca-certificates` package.
 
-If the certificate is not signed, then clients that are to connect to the server need to have the file with
+If the certificate is self-signed, then clients that are to connect to the server need to have the file with
 the concatenated certificates (`keys-generated/certs/server.crt`) stored locally in order to verify
 the server's authenticity. Please see [the client section on building for production](../../artifacts/building-for-production)
-for a description on how to provision new device disk images with the new certificates.
+for a description on how to provision new device disk images with the new certificates. In this case, it
+is advisable to ensure there is a overlap between the issuance of new certificates and expiration of old
+ones so all clients are able to receive an update containing the new cert before the old one expires. You
+can have two valid certificates for the Mender server concatenated in the server.crt file. When all clients
+have received the updated server.crt, the server configuration can be updated to use the new certificate.
+In a subsequent update, the old certificate can be removed from the client's server.crt file.
 
 !!! The key of the Mender Client itself is automatically generated and stored at `/var/lib/mender/mender-agent.pem` the first time the Mender Client runs. We do not yet cover rotation of Mender Client keys in live installations in this document.

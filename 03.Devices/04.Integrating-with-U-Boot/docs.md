@@ -6,9 +6,24 @@ taxonomy:
 
 This section describes the steps needed to integrate with U-Boot, which is most commonly used on ARM systems. Most steps are automated, but there are a few things that need to be in place for this to function.
 
+!!! Please consult [the bootloader support section](../system-requirements/bootloader-support) to find out if U-Boot is supported on your platform and build configuration, and whether it is enabled by default.
+
+
+## Enabling U-Boot
+
+If U-Boot integration is not already enabled, you can enable it by adding the snippet below to your build configuration. For instance, in your `local.conf`:
+
+```
+MENDER_FEATURES_ENABLE_append = " mender-uboot mender-image-sd"
+MENDER_FEATURES_DISABLE_append = " mender-grub mender-image-uefi"
+```
+
+See [the documentation on features](../../artifacts/image-configuration/features) for more information.
+
+
 ## Boot counter
 
-As Mender relies on the `CONFIG_BOOTCOUNT_ENV` feature of U-Boot, which was [introduced in October 2013](http://lists.denx.de/pipermail/u-boot/2013-October/165484.html?target=_blank), Mender currently recommends **U-Boot v2014.07 or newer**.
+As Mender relies on the `CONFIG_BOOTCOUNT_ENV` feature of U-Boot, which was [introduced in October 2013](http://lists.denx.de/pipermail/u-boot/2013-October/165484.html?target=_blank), Mender currently recommends **U-Boot v2014.07 or newer**. Note that this should be considered a minimum requirement. Other features, such as [automatic U-Boot patching](#enabling-u-boot-1) require newer versions. Mender is tested regularly against the version of U-Boot that is available the upstream poky branch; diverging significantly from that may result in unexpected issues.
 
 If you have an older version of U-Boot, it is possible to apply some extra patches to make this work. Please see the section about [U-Boot versions without BOOTLIMIT support](../integrating-with-u-boot/manual-u-boot-integration/u-boot-versions-without-bootlimit-support) for more information.
 

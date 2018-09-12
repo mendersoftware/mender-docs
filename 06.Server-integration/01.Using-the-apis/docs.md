@@ -47,7 +47,13 @@ For example, to upload an Artifact you can run the following command:
 
 ## Set up shell variables for cURL
 
-There are many ways to call http-based REST APIs, but the most generally available method is most likely the command line utility `curl`.
+There are many ways to call http-based REST APIs, but the most generally available method is the command line utility `curl`. The `jq` utility is commonly used to decode JSON messages and display them in human-readable format. REST API responses can contain raw data and must run through a JSON parser (`jq`).
+
+You can easily get both using:
+
+```bash
+sudo apt-get install curl jq
+```
 
 Open a terminal, which we will use in the following to call the Mender server's REST APIs. First set a shell variable with the URI of your server:
 ```bash
@@ -80,7 +86,7 @@ You should now have an API token you can use to call any of the [Mender server m
 To verify you can call the server APIs, list the users of your Mender server instance:
 
 ```bash
-curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/useradm/users
+curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/useradm/users | jq
 ```
 
 If it succeeds it will return something like the following:

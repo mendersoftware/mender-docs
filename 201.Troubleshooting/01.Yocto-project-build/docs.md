@@ -21,16 +21,20 @@ Mender needs to configure U-Boot in order to support robust rootfs rollback. If 
 This may be an indication that Mender's automatic U-Boot patching has failed for the particular board that's being built for, and a manual patch may be required. For information on how to create such a patch, go to the [Manual U-Boot integration section](../../devices/integrating-with-u-boot/manual-u-boot-integration).
 
 
-## U-Boot and the Linux kernel do not agree about the indexes of storage devices
+## The bootloader and the Linux kernel do not agree about the indexes of storage devices
 
-Sometimes it happens that U-Boot will refer to a storage device as `mmc 0`, whereas the Linux kernel will refer to the same device as `/dev/mmcblk1` (note the different index). In this case the Mender build system must be told explicitly about this disagreement. To do so, you can set the following two variables:
+Sometimes it happens that GRUB or U-Boot will refer to a storage device as `hd0` or `mmc 0`, respectively, whereas the Linux kernel will refer to the same device as `/dev/mmcblk1` (note the different index). In this case the Mender build system must be told explicitly about this disagreement. To do so, you can add the following to the build configuration:
 
 ```bash
+# For GRUB
+MENDER_GRUB_STORAGE_DEVICE = "hd0"
+
+# For U-Boot
 MENDER_UBOOT_STORAGE_INTERFACE = "mmc"
 MENDER_UBOOT_STORAGE_DEVICE = "0"
 ```
 
-which will set the index that U-Boot will use. All non-U-Boot references to the storage device, including the `root` argument passed by U-Boot to the Linux kernel when booting it, will keep using the `/dev/mmcblk1` variant derived from `MENDER_STORAGE_DEVICE` variables.
+which will set the index that the bootloaders will use. All Linux references to the storage device, including the `root` argument passed by the bootloader to the Linux kernel when booting it, will keep using the `/dev/mmcblk1` variant derived from `MENDER_STORAGE_DEVICE` variables.
 
 
 ## Bootloader is missing from boot partition, but is required for my device
@@ -176,4 +180,89 @@ This is a known bug in U-Boot versions prior to v2018.05. If you hit this you wi
 
 ```
 SRC_URI_append = " file://0005-fw_env_main.c-Fix-incorrect-size-for-malloc-ed-strin.patch"
+```
+
+
+## I'm trying to integrate with GRUB on an ARM board, but I only see U-Boot loading and never GRUB
+
+Unlike x86, ARM based boards usually do not implement [the UEFI boot standard](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface?target=_blank). Therefore, on ARM, U-Boot is used as a first stage bootloader which provides a UEFI loader, and this is then used to boot GRUB using the UEFI boot standard. For a large number of boards out there, this works out of the box.
+
+!!! Do not confuse the usage of "U-Boot as a first stage bootloader" with "U-Boot integration". "GRUB integration" still means that GRUB is used for all integration with the Mender client.
+
+However, some boards do not call `distro_bootcmd` as part of their U-Boot startup script, and in this case the approach will not work. A typical symptom is that the U-Boot bootloader skips loading of GRUB entirely and goes directly to loading the kernel. If this happens to you, you have two choices:
+
+1. Change the bootscript to call `distro_bootcmd` by patching U-Boot
+2. Abandon GRUB integration and attempt [U-Boot integration](../../devices/integrating-with-u-boot) instead
+
+
+## My device ends up at the GRUB prompt and all error and debug messages are lost because it clears the screen
+
+This is a common problem when trying to debug boot problems with GRUB. meta-mender provides an option to pause the boot process to see the messages before they disappear. To enable it, add this to `local.conf`:
+
+```
+PACKAGECONFIG_append_pn-grub-mender-grubenv = " debug-pause"
+```
+
+This option should be removed before moving to production.
+
+There is also an option, `debug-log`, to put GRUB in debug mode, where it will print a lot of debugging output.
+
+
+## The firmware in my device looks for certain files on the first partition of the device, and this does not work while attempting GRUB integration
+
+By default, meta-mender will produce a UEFI image (`uefiimg`) when integrating with GRUB. However, some older firmware may not recognize the [GPT partition table](https://en.wikipedia.org/wiki/GUID_Partition_Table?target=_blank) which is used on UEFI images. If so, the image can be switched to an [MBR partition table](https://en.wikipedia.org/wiki/Master_boot_record?target=_blank) image (`sdimg`) by adding the snippet below to the build configuration:
+
+```
+MENDER_FEATURES_ENABLE_append = " mender-image-sd"
+MENDER_FEATURES_DISABLE_append = " mender-image-uefi"
+```
+
+# When I update Yocto version from rocko to sumo U-boot patches do not apply
+
+This is what the error message might look like.
+
+```
+ERROR: u-boot-custom-2017.03-r0 do_patch: Command Error: 'quilt --quiltrc /home/user/git/poky/build/tmp/work/imx6ullevk-poky-linux-gnueabi/u-boot-custom/2017.03-r0/recipe-sysroot-native/etc/quiltrc push' exited with 0  Output:
+Applying patch 0006-env-Kconfig-Add-descriptions-so-environment-options-.patch
+can't find file to patch at input line 19
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|From f083052dd16a09c51a9426aa008b0c20878a7c30 Mon Sep 17 00:00:00 2001
+|From: Kristian Amlie <kristian.amlie@northern.tech>
+|Date: Mon, 23 Apr 2018 23:10:33 +0200
+|Subject: [PATCH 6/6] env/Kconfig: Add descriptions so environment options can
+| be modified.
+|
+|Without a description they always revert to their defaults regardless
+|of what is in the defconfig file.
+|
+|Signed-off-by: Kristian Amlie <kristian.amlie@northern.tech>
+|---
+| env/Kconfig | 4 ++--
+| 1 file changed, 2 insertions(+), 2 deletions(-)
+|
+|diff --git a/env/Kconfig b/env/Kconfig
+|index bef6e89..f8d5ddb 100644
+|--- a/env/Kconfig
+|+++ b/env/Kconfig
+--------------------------
+No file to patch.  Skipping patch.
+2 out of 2 hunks ignored
+Patch 0006-env-Kconfig-Add-descriptions-so-environment-options-.patch does not apply (enforce with -f)
+ERROR: u-boot-custom-2017.03-r0 do_patch: Function failed: patch_do_patch
+ERROR: Logfile of failure stored in: /home/user/git/poky/build/tmp/work/imx6ullevk-poky-linux-gnueabi/u-boot-custom/2017.03-r0/temp/log.do_patch.30239
+ERROR: Task (/home/user/git/poky/meta-freescale/recipes-bsp/u-boot/u-boot-custom_2017.03.bb:do_patch) failed with exit code '1'
+NOTE: Tasks Summary: Attempted 1428 tasks of which 458 didn't need to be rerun and 1 failed.
+```
+
+This is because the U-Boot version used in sumo by upstream Yocto is v2018.01,
+and the u-boot-custom version is v2017.03. It is safe to simply remove  this
+patch, since I it fixes a problem that was introduced after v2017.03.
+
+Just add this to your u-boot bbappend file:
+
+```
+SRC_URI_remove =
+"0006-env-Kconfig-Add-descriptions-so-environment-options-.patch"
 ```
