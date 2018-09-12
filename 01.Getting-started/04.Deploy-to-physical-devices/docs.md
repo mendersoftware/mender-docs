@@ -94,7 +94,7 @@ mender-artifact cat IMGNAME.sdimg:/etc/hosts | sed "\$a ${IP_OF_MENDER_SERVER_FR
 Then you can check the contents of your 'etc/hosts' file by
 
 ```bash
-mender-artifact cat <imgname>.sdimg:/etc/hosts
+mender-artifact cat IMGNAME.sdimg:/etc/hosts
 ```
 
 You should see output similar to the following:
@@ -121,7 +121,7 @@ Name=eth0
 [Network]
 Address=$IP_OF_MENDER_CLIENT
 Gateway=$IP_OF_MENDER_SERVER_FROM_DEVICE
-" | mender-artifact cp <imgname>.sdimg:/etc/systemd/network/eth.network
+" | mender-artifact cp IMGNAME.sdimg:/etc/systemd/network/eth.network
 ```
 
 ! If you have a static IP address setup for several devices, you need several disk images so each get different IP addresses.
