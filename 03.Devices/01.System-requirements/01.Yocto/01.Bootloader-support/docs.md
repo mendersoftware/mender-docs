@@ -1,5 +1,5 @@
 ---
-title: Bootloader support
+title: Yocto bootloader support
 taxonomy:
     category: docs
 ---
