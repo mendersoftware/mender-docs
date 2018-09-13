@@ -4,6 +4,56 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender sumo-v2018.09
+
+_Released 09.13.2018_
+
+#### meta-mender (sumo-v2018.09)
+
+New changes in meta-mender since sumo-v2018.08:
+
+* Fix regression in QEMU launching after changing image name in 897195ddc3f.
+* GRUB: Pass kernel arguments from bootargs variable instead of hardcoded.
+  This allows it to be overridden or modified by adding a script snippet
+  which sets the variable.
+  Also log kernel messages to both screen and serial port by default,
+  and have systemd log to serial port (last "console" argument,
+  apparently it cannot log to both).
+* Introduce support for a standardized boot method on ARM
+  using UEFI and GRUB. The UEFI boot standard is fully supported on ARM
+  in theory, but few board manufacturers implement it in practice.
+  Therefore U-Boot is still utilized, but acts only as a UEFI loader,
+  and hence no U-Boot integration is needed. All boot scripts are then
+  handled by GRUB, which needs no patching.
+  ([MEN-1595](https://tracker.mender.io/browse/MEN-1595), [MEN-1659](https://tracker.mender.io/browse/MEN-1659))
+* Auto-select correct `MENDER_STORAGE_DEVICE_BASE` scheme.
+  This should rarely need to be set by anyone anymore.
+* Add some debug functionality to GRUB booting process.
+  To use it, enable either or both of `debug-log` and `debug-pause` in
+  `PACKAGECONFIG` for `grub-mender-grubenv`. The former enables debug
+  logging in GRUB, which can be tweaked further by setting the
+  `DEBUG_LOG_CATEGORY` variable. The latter pauses the boot process at
+  strategic points during the boot, so that screen output can be
+  captured before it is cleared or scrolls by.
+* GRUB: Fix error about devicetree command not being found.
+* Images partitioned with GPT or MSDOS partition tables are
+  now padded up to the nearest alignment specified in
+  `MENDER_PARTITION_ALIGNMENT`. Previously the last block might be
+  shorter.
+* Fix build error when using GRUB and /dev/mmcblk storage device.
+* Fix build error when using any harddrive besides sda/hda, such as sdb.
+* Fix `IMAGE_ROOTFS_EXCLUDE_PATH` failing when listing a non-existent path.
+* Fix `MENDER_GRUB_STORAGE_DEVICE` variable not being respected.
+  ([MEN-2048](https://tracker.mender.io/browse/MEN-2048))
+* Allow disabling auto-generated /etc/fstab
+* Boot script recipe for demoing OTA updates
+* mender: Allow overrides for MENDER_STORAGE_TOTAL_SIZE_MB_DEFAULT.
+* mender-uboot: Use hex for dev/part numbers in U-Boot.
+* Add mender 1.5.1 recipe.
+* Add mender 1.6.0 recipe.
+* Add mender-artifact 2.3.0 recipe.
+
+
 ## Mender 1.6.0
 
 _Released xx.xx.xxxx_
