@@ -199,13 +199,10 @@ Locate the `release_1` demo Artifact file (`.mender`) for your device that you [
 Using the BeagleBone Black as an example below (adjust the directory and file names if you are using the Raspberry Pi 3),
 the steps needed to edit the root file system contained in this Artifact are:
 
-[start_autoupdate_beaglebone_release_1_x.x.x.mender]: #
-
+<!--AUTOVERSION: "release_1_%.mender"/mender-->
 ```bash
-mkdir beaglebone_release_1 && tar -C beaglebone_release_1 -xvf beaglebone_release_1_1.5.0.mender
+mkdir beaglebone_release_1 && tar -C beaglebone_release_1 -xvf beaglebone_release_1_1.5.1.mender
 ```
-
-[end_autoupdate_beaglebone_release_1_x.x.x.mender]: #
 
 ```bash
 cd beaglebone_release_1 && tar zxvf data/0000.tar.gz
@@ -273,30 +270,29 @@ sudo umount /mnt/rootfs
 #### Create a new Mender Artifact with the modified rootfs
 
 To create a Mender Artifact from a root file system, it is easiest to download
-[the prebuilt mender-artifact tool][autoupdate_x.x.x_mender-artifact] available
+[the prebuilt mender-artifact tool][x.x.x_mender-artifact] available
 for Linux.
 
-[autoupdate_x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.2.0/mender-artifact
+<!--AUTOVERSION: "mender-artifact/%/mender-artifact"/mender-artifact-->
+[x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.2.0/mender-artifact
 
 Download the tool and add execute permission (e.g. with `chmod +x mender-artifact`).
 
 Using the BeagleBone Black as an example below (adjust the file names and use `-t raspberrypi3` if you are using the Raspberry Pi 3),
 run the following command to create a new Mender Artifact:
 
-[start_autoupdate_release_1_x.x.x]: #
-
+<!--AUTOVERSION: "release-1_%"/mender-->
 ```bash
-mender-artifact write rootfs-image -u core-image-base-beaglebone.ext4 -t beaglebone -n release-1_1.5.0 -o beaglebone_release_1_configured.mender
+mender-artifact write rootfs-image -u core-image-base-beaglebone.ext4 -t beaglebone -n release-1_1.5.1 -o beaglebone_release_1_configured.mender
 ```
 
+<!--AUTOVERSION: "-n release-1_%"/mender-->
 where `-u core-image-base-beaglebone.ext4` is the rootfs image we modified above,
 `-t beaglebone` is the device type compatible with the given Artifact,
-`-n release-1_1.5.0` is the Artifact name (do not change this as it needs to be in
+`-n release-1_1.5.1` is the Artifact name (do not change this as it needs to be in
 sync with `/etc/mender/artifact_info` *inside* the rootfs), and
 `-o beaglebone_release_1_configured.mender` is
 the filename of the created Artifact.
-
-[end_autoupdate_release_1_x.x.x]: #
 
 
 ## Upload the artifact to the server
@@ -342,14 +338,11 @@ of the `mender-artifact` tool, first making a copy of the original. To do this,
 run these two commands (adjust the Artifact file name accordingly):
 
 
-[start_autoupdate_beaglebone_release_2_x.x.x.mender]: #
-
+<!--AUTOVERSION: "release-2_%"/mender -->
 ```bash
 cp beaglebone_release_1_configured.mender beaglebone_release_2_configured.mender
-mender-artifact modify beaglebone_release_2_configured.mender -n release-2_1.5.0
+mender-artifact modify beaglebone_release_2_configured.mender -n release-2_1.5.1
 ```
-
-[end_autoupdate_beaglebone_release_2_x.x.x.mender]: #
 
 
 !!! Using`mender-artifact modify`, you can easily modify several configuration settings in existing disk image (`.sdimg`) and Mender Artifact (`.mender`) files, such as the server URI and certificate. See `mender-artifact help modify` for more options.
