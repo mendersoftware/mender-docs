@@ -1,3 +1,4 @@
+<!--AUTOVERSION: "mendersoftware/mender-docs.svg?branch=%"/ignore-->
 [![Build Status](https://travis-ci.org/mendersoftware/mender-docs.svg?branch=master)](https://travis-ci.org/mendersoftware/mender-docs)
 
 # Mender Documentation
@@ -13,12 +14,14 @@ at https://docs.mender.io
 
 ## Contributing
 
+<!--AUTOVERSION: "mendersoftware/mender/blob/%/CONTRIBUTING.md"/ignore-->
 We welcome and ask for your contribution. If you would like to contribute to
 Mender, please read our guide on how to best get started [contributing code or
 documentation](https://github.com/mendersoftware/mender/blob/master/CONTRIBUTING.md).
 
 ## License
 
+<!--AUTOVERSION: "mendersoftware/mender/blob/%/LICENSE"/ignore-->
 Mender is licensed under the Apache License, Version 2.0. See
 [LICENSE](https://github.com/mendersoftware/mender/blob/master/LICENSE) for the
 full license text.
