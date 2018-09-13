@@ -4,6 +4,36 @@ taxonomy:
     category: docs
 ---
 
+## Mender 1.5.1
+
+_Released xx.xx.xxxx_
+
+#### gui (1.5.1)
+
+New changes in gui since 1.5.0:
+
+* Bugfix - show decommissioned devices in deployment reports
+* Bugfix - show decommissioned devices in deployment reports
+
+#### integration (1.5.1)
+
+New changes in integration since 1.5.0:
+
+* test_security.py: Ignore return code of grep.
+* Upgrade gui to 1.5.1.
+* Upgrade inventory to 1.4.1.
+* Upgrade mender to 1.5.1.
+* Upgrade mender-cli to 1.0.1.
+
+#### mender (1.5.1)
+
+New changes in mender since 1.5.0:
+
+* FIX: Enabling compiling ppc64le
+* Fix active partition detection when using non-native
+  filesystems.
+
+
 ## meta-mender sumo-v2018.08
 
 _Released 08.03.2018_
