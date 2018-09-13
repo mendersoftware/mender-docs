@@ -43,7 +43,7 @@ def get_version_of(repo):
 def walk_tree():
     for dirpath, dirnames, filenames in os.walk("."):
         for file in filenames:
-            if not file.endswith(".md"):
+            if not file.endswith(".md") and not file.endswith(".markdown"):
                 continue
 
             if (dirpath.endswith("Release-notes-changelog")
