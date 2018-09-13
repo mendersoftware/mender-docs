@@ -1,4 +1,5 @@
 ---
+<!--AUTOVERSION: "title: \"Development\""/complain-->
 title: "1.6"
 taxonomy:
     category: docs
@@ -8,4 +9,5 @@ taxonomy:
 
 # Documentation
 
+<!--AUTOVERSION: "bleeding-edge % branch"/complain-->
 Documentation for Mender 1.6.

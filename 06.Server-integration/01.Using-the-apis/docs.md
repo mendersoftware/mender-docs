@@ -19,7 +19,7 @@ Currently two use cases are supported:
 
 Over time the functionality of `mender-cli` will be extended to simplify the most common use cases for integrating the Mender server into other backend and cloud systems. If you need to cover other use cases today, follow the [tutorial for cURL instead](#set-up-shell-variables-for-curl).
 
-First download the [prebuilt mender-cli Linux binary here][autoupdate_x.x.x_mender-cli].
+First download the [prebuilt mender-cli Linux binary here][x.x.x_mender-cli].
 
 !!! If you need to build `mender-cli` from source, the general steps are the same as for [compiling mender-artifact from source](../../artifacts/modifying-a-mender-artifact#compiling-mender-artifact). Just use the [mender-cli repository](https://github.com/mendersoftware/mender-cli?target=_blank) instead of the mender-artifact repository.
 
@@ -105,4 +105,5 @@ If it succeeds it will return something like the following:
 If this fails, e.g. returns `401 Authorization Required`, make sure that the contents of your `JWT` and `MENDER_SERVER_URI` shell variables is correct and re-run the steps above if necessary.
 
 
-[autoupdate_x.x.x_mender-cli]: https://d1b0l86ne08fsf.cloudfront.net/mender-cli/1.0.1b1/mender-cli
+<!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
+[x.x.x_mender-cli]: https://d1b0l86ne08fsf.cloudfront.net/mender-cli/1.0.1/mender-cli

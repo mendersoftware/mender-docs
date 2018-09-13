@@ -13,168 +13,101 @@ is different from the one that you have installed so you can see that the update
 You might also want to configure certain aspects of the update after you build it,
 but before deploying it.
 
-In this tutorial we will unpack a Mender Artifact, 
-recognized by its `.mender` suffix, mount the rootfs (e.g. `.ext4`) inside it,
-modify it, and then create a new Mender Artifact that has these modifications
-by using the `mender-artifact` utility.
+In this tutorial we will highlight some key use cases covered by the `mender-artifact` utility.
 
 
 ## Prerequisites
-
-#### tar
-
-You need a standard `tar` utility, like the ones that are bundled with popular
-Linux distributions.
-
 
 #### mender-artifact
 
 The `mender-artifact` utility is used to create and inspect Mender Artifacts.
 
-You can download a [prebuilt mender-artifact Linux binary here][autoupdate_x.x.x_mender-artifact].
+You can download a [prebuilt mender-artifact Linux binary here][x.x.x_mender-artifact].
 
 !!! If you need to build `mender-artifact` from source, please see [Compiling mender-artifact](#compiling-mender-artifact).
 
 
-## Unpack the root file system
+## Changing the Mender server
 
-The Mender Artifact can be unpacked using a standard tar utility,
-we simply create a directory for it and unpack it.
-Depending on the version of the artifact used, for a BeagleBone Black Artifact, the commands and output
-will look like the following:
+If you would like to change the Mender server the devices will be using,
+you can use the `mender-artifact modify` parameter:
 
 ```bash
-mkdir core-image-base-beaglebone && tar -C core-image-base-beaglebone -xvf core-image-base-beaglebone.mender
+MENDER_SERVER_URL='https://hosted.mender.io'
+MENDER_TENANT_TOKEN='<YOUR-MENDER-TENANT-TOKEN>'
+mender-artifact modify artifact.mender --server-uri "$MENDER_SERVER_URL" --tenant-token "$MENDER_TENANT_TOKEN"
 ```
 
-> version  
-> header.tar.gz  
-> data/0000.tar.gz  
+!!! The `--tenant-token` parameter is only needed for multi-tenant Mender servers like Hosted Mender. In Hosted Mender you can find it under [My organization](https://hosted.mender.io/ui/?target=_blank#/settings/my-organization).
 
-The output for the version 2 should look similar to the following:
-
-> version  
-> manifest  
-> manifest.sig  
-> header.tar.gz  
-> data/0000.tar.gz  
-
-You can inspect the metadata files to learn about how they work,
-but it is not recommended to modify them directly as this can
-be quite error-prone. We will rather use the `mender-artifact` utility to make
-modifications below.
-
-The updates to be deployed are stored in the `data` subdirectory. We
-can extract the first (and currently only) file there, which is the root file system,
-like the following:
+If you are using a self-signed certificate for the Mender server (not needed for Hosted Mender), you can
+include it in the Artifact using the `--server-cert` parameter:
 
 ```bash
-cd core-image-base-beaglebone && tar zxvf data/0000.tar.gz
+mender-artifact modify artifact.mender --server-cert server.crt
 ```
 
-> core-image-base-beaglebone.ext4  
+## Reading a configuration file
 
-
-## Modify the root file system
-
-Once we have the file system image, a simple way to modify its contents
-is to loopback-mount the rootfs on your workstation
-and modify the configuration files you need in the mounted directory.
-
-In this example we will modify  `/etc/issue` on an `ext4` file system
-so you can see which rootfs image you are running just before the login prompt,
-but these steps can be used for modifying any configuration file and for
-several file system types.
-
-First we make the mount directory and copy the rootfs image:
+The `cat` parameter will output a file in the Artifact to standard output.
+For example, to see `/etc/hosts`, run the following command:
 
 ```bash
-sudo mkdir /mnt/rootfs
-```
-
-```bash
-cp core-image-base-beaglebone.ext4 core-image-base-beaglebone-modified.ext4
-```
-
-```bash
-sudo mount -t ext4 -o loop core-image-base-beaglebone-modified.ext4 /mnt/rootfs/
-```
-
-Now you can modify the file system found at `/mnt/rootfs`. For example,
-you can change `/mnt/rootfs/etc/issue` so you can detect that a deployment
-changed the system. After saving your modified files, simply unmount
-the rootfs again:
-
-```bash
-sudo umount /mnt/rootfs
-```
-
-You need to adjust the path to the rootfs image and its type depending on the machine and file system you are building for.
-
-
-## Create a new Mender Artifact
-
-#### Find required metadata from original Artifact
-
-We would probably like to reuse some of the original Artifact metadata
-for the new Artifact, as for example the device types it is compatible
-with is the same.
-
-To see which metadata the original Artifact contains, you can run the
-following command:
-
-```bash
-mender-artifact read core-image-base-beaglebone.mender
+mender-artifact cat artifact.mender:/etc/hosts
 ```
 
 
-> Mender artifact:  
->   Name: release-1  
->   Format: mender  
->   Version: 2  
->   Compatible devices: '[beaglebone]'  
->   
-> Updates:  
->   0000  
->   Type: 'rootfs-image'  
->   Files:  
->     core-image-base-beaglebone.ext4  
->     size: 105638912  
->     modified: 2016-12-20 15:36:11 +0100 CET  
+## Modifying a configuration file
 
-
-The most important fields to note for writing a new Artifact are
-the *Compatible devices* and *Name*.
-
-!!! When working with a signed Artifact, you can verify the signature by providing the public verification key to the `-k` option, e.g. `mender-artifact read core-image-base-beaglebone.mender -k public.key`.
-
-
-#### Write a new Artifact
-
-We now have the information we need to generate a new Artifact,
-including the metadata to use and modified rootfs.
-
-In this example, we will keep the original *Compatible devices*
-and *Name* of the original Artifact, so only the rootfs modifications
-will be different:
+Files can be copied into and out from the Artifact using the `cp` parameter.
+For example, to modify any Mender client configuration, such as the polling interval,
+first copy it out:
 
 ```bash
-mender-artifact write rootfs-image -t beaglebone -n release-1 -u core-image-base-beaglebone-modified.ext4 -o core-image-base-beaglebone-modified.mender
+mender-artifact cp artifact.mender:/etc/mender/mender.conf /tmp/mender.conf
 ```
 
-! The Artifact name (`-n`) must correspond to the name stated *inside* the root file system at `/etc/mender/artifact_info`, so make sure to change both places if you are modifying it.
+Open `/tmp/mender.conf` and make the desired modifications.
+Afterwards, write it back into the Artifact:
 
-! If you are building for *older Mender Clients* that do not support the latest version of the Artifact format, you can build an older Artifact version with the `-v` option. For example, to build a version 1 Artifact, you can run `mender-artifact write rootfs-image -v 1 -t beaglebone -n release-1 -u core-image-base-beaglebone-modified.ext4 -o core-image-base-beaglebone-modified.mender`. The default Artifact version is the latest one. Also see the build variable [MENDER_ARTIFACT_EXTRA_ARGS](../variables#mender_artifact_extra_args).
+```bash
+mender-artifact cp /tmp/mender.conf artifact.mender:/etc/mender/mender.conf
+```
 
-!!! If you would like to generate a *signed Artifact*, simply add the `-k` option with the path to your *private key*. In our example above, the full command would be `mender-artifact write rootfs-image -t beaglebone -n release-1 -u core-image-base-beaglebone-modified.ext4 -o core-image-base-beaglebone-signed.mender -k private.key`.
+!!! To control the permissions on the file written to the Mender Artifact, use the `install -m<permissions>` parameter instead of `cp`.
 
-After deploying this Artifact with Mender and rebooting, your configuration changes will be in effect!
+
+## Create an Artifact from a raw root file system
+
+If you have a raw root file system (e.g. `ext4`), you can create a Mender Artifact
+file from it.
+
+! The Mender client and relevant configuration must already be contained in the root file system in order for the created Mender Artifact to be usable.
+
+To create an Artifact, use the `write` parameter:
+
+```bash
+mender-artifact write rootfs-image -t beaglebone -n release-1 -u rootfs.ext4 -o artifact.mender
+```
+
+! The Artifact name (`-n`) must correspond to the name stated *inside* the root file system at `/etc/mender/artifact_info`.
+
+! If you are building for *older Mender Clients* that do not support the latest version of the Artifact format, you can build an older Artifact version with the `-v` option. For example, to build a version 1 Artifact, you can run `mender-artifact write rootfs-image -v 1 -t beaglebone -n release-1 -u rootfs.ext4 -o artifact.mender`. The default Artifact version is the latest one. Also see the build variable [MENDER_ARTIFACT_EXTRA_ARGS](../variables#mender_artifact_extra_args).
+
+!!! If you would like to generate a *signed Artifact*, simply add the `-k` option with the path to your *private key*. In our example above, the full command would be `mender-artifact write rootfs-image -t beaglebone -n release-1 -u rootfs.ext4 -o artifact-signed.mender -k private.key`.
+
+
+## Signing after modification
+
+If you are signing Artifacts, the signature will become invalid whenever
+you make modifications to them. See the section on [signing and verification](../signing-and-verification)
+for more information.
 
 
 ## Compiling mender-artifact
 
 Compiling `mender-artifact` is only necessary if you can not use the prebuilt
-[mender-artifact binary for Linux][autoupdate_x.x.x_mender-artifact].
+[mender-artifact binary for Linux][x.x.x_mender-artifact].
 
 
 #### Install git
@@ -200,10 +133,12 @@ and add the exports to your `.profile` as described when
 clicking on the download link.
 This is an example of installing and setting up Golang on a Linux system:
 
+<!--AUTOVERSION: "go%"/ignore-->
 ```bash
 wget https://storage.googleapis.com/golang/go1.7.4.linux-amd64.tar.gz
 ```
 
+<!--AUTOVERSION: "go%"/ignore-->
 ```bash
 sudo tar -C /usr/local -xzf go1.7.4.linux-amd64.tar.gz
 ```
@@ -222,6 +157,7 @@ After these steps, verify that Golang is correctly installed:
 go version
 ```
 
+<!--AUTOVERSION: "go%"/ignore-->
 > go version go1.7.4 linux/amd64
 
 
@@ -259,4 +195,5 @@ For convenience, we can also make sure the `mender-artifact` utility is in PATH:
 export PATH=$PATH:$GOPATH/bin
 ```
 
-[autoupdate_x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.3.0b1/mender-artifact
+<!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
+[x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.3.0/mender-artifact
