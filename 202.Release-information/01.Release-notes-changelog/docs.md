@@ -4,35 +4,24 @@ taxonomy:
     category: docs
 ---
 
-## meta-mender sumo-v2018.08
+## Mender 1.6.0
 
-_Released 08.03.2018_
+_Released xx.xx.xxxx_
 
-#### meta-mender (sumo-v2018.08)
-
-New changes in meta-mender since sumo-v2018.07:
-
-* Add mender 1.6.0b1 and mender-artifact 2.3.0b1 recipes.
-* Fixed support for raspberrypi3-64 and aarch64
-* Fix incorrect license tag for mender-artifact recipe.
-  Little practical difference, since they are all permissive licenses.
-* mender-uboot: Allow multi-digit partition/device nums.
-* Fix license checksum sometimes failing in
-  `u-boot-fw-utils-mender-auto-provided` recipe when U-Boot fork has a
-  slightly different README file.
-
-
-## Mender 1.6.0b1
-
-_Released 08.06.2018_
-
-#### deviceauth (1.6.0b1)
+#### deviceauth (1.6.0)
 
 New changes in deviceauth since 1.5.0:
 
 * Device object returned by API exposes new boolean attribute: "decommissioning" signifying devices that are currently going through removal process.
 
-#### gui (1.6.0b1)
+#### gui (1.6.0)
+
+New changes in gui since 1.6.0b1:
+
+* Added 'Copy to clipboard' function to error messages throughout UI
+* Introduce new tabbed deployment layout
+* Update node modules
+* Bugfix: Ensure "already installed" displays correctly in deployment report
 
 New changes in gui since 1.5.0:
 
@@ -42,7 +31,19 @@ New changes in gui since 1.5.0:
 * Add a global setting to store and use user-selected device identity attribute throughout UI
 * Fixup: Add a link to mender docs for enabling wifi in hosted image
 
-#### integration (1.6.0b1)
+#### integration (1.6.0)
+
+New changes in integration since 1.6.0b1:
+
+* Upgrade deviceauth to 1.6.0.
+* Upgrade gui to 1.6.0.
+* Upgrade inventory to 1.4.1.
+* Upgrade mender to 1.6.0.
+* Upgrade mender-artifact to 2.3.0.
+* Upgrade mender-cli to 1.0.1.
+* Upgrade mender-conductor to 1.1.0.
+* Upgrade mender-conductor-enterprise to 1.1.0.
+* Upgrade useradm to 1.6.0.
 
 New changes in integration since 1.5.0:
 
@@ -62,7 +63,17 @@ New changes in integration since 1.5.0:
 * test_security.py: Ignore return code of grep.
 * use common mongodb server instance with tenantadm
 
-#### mender (1.6.0b1)
+#### mender (1.6.0)
+
+New changes in mender since 1.6.0b1:
+
+* Fix active partition detection when using non-native
+  filesystems.
+* New inventory script for "os" attribute, installed by default.
+  ([MEN-2060](https://tracker.mender.io/browse/MEN-2060))
+* FIX: Enabling compiling ppc64le
+* Add inventory scripts for rootfs type and bootloader integration.
+  ([MEN-2059](https://tracker.mender.io/browse/MEN-2059))
 
 New changes in mender since 1.5.0:
 
@@ -82,7 +93,13 @@ New changes in mender since 1.5.0:
 * log active partition before and after reboot.
   ([MEN-1880](https://tracker.mender.io/browse/MEN-1880))
 
-#### mender-artifact (2.3.0b1)
+#### mender-artifact (2.3.0)
+
+New changes in mender-artifact since 2.3.0b1:
+
+* FIX: mender-artifact cp no longer renames the artifact.
+* FIX: remove leftover tmp files from mender-artifact cp.
+* FIX: mender-artifact no longer changes the names of the updates in an artifact
 
 New changes in mender-artifact since 2.2.0:
 
@@ -103,12 +120,30 @@ New changes in mender-artifact since 2.2.0:
 * run fsck before modifying image.
   ([MEN-1798](https://tracker.mender.io/browse/MEN-1798))
 
-#### mender-conductor (1.1.0b1)
+#### mender-conductor (1.1.0)
 
 New changes in mender-conductor since 1.0.0:
 
 * Extend logging with messages from conductor client library to stdout.
 * Update conductor client library to 1.8.9
+
+
+## meta-mender sumo-v2018.08
+
+_Released 08.03.2018_
+
+#### meta-mender (sumo-v2018.08)
+
+New changes in meta-mender since sumo-v2018.07:
+
+* Add mender 1.6.0b1 and mender-artifact 2.3.0b1 recipes.
+* Fixed support for raspberrypi3-64 and aarch64
+* Fix incorrect license tag for mender-artifact recipe.
+  Little practical difference, since they are all permissive licenses.
+* mender-uboot: Allow multi-digit partition/device nums.
+* Fix license checksum sometimes failing in
+  `u-boot-fw-utils-mender-auto-provided` recipe when U-Boot fork has a
+  slightly different README file.
 
 
 ## meta-mender sumo-v2018.07
