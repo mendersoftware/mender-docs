@@ -160,8 +160,12 @@ def process_line(line, replacements, fd):
         sep = "-------------------------------------------------------------------------------"
         raise Exception(('Found version-looking string "%s" in documentation line, not covered by any AUTOVERSION expression. '
                          + 'Original line:\n\n%s\n%s%s\n\n'
-                         + 'Line after removing all AUTOVERSION matched sections:\n\n%s\n%s%s')
-                        % (match.group(0), sep, line, sep, sep, all_removed, sep))
+                         + 'AUTOVERSION expressions in effect:\n%s\n\n'
+                         + 'Line after removing all AUTOVERSION matched sections:\n\n%s\n%s%s\n\n'
+                         + 'See README-autoversion.markdown for more information.')
+                        % (match.group(0), sep, line, sep,
+                           "None" if len(replacements) == 0 else "\n".join(['"%s"/%s' % (repl['search'], repl['repo']) for repl in replacements]),
+                           sep, all_removed, sep))
 
     # If we were not given a file, then we are just doing checking and are done.
     if fd is None:
