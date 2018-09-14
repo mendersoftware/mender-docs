@@ -6,10 +6,7 @@ taxonomy:
 
 This document outlines the steps needed to build a [Yocto Project](https://www.yoctoproject.org/?target=_blank) image for a device.
 The build output will most notably include:
-* a file that can be flashed to the device storage during initial provisioning. It contains one of the following suffixes:
-  * `.biosimg` if the system is an x86 system and boots using the traditional BIOS and GRUB bootloader
-  * `.sdimg` if the system is an ARM system and boots using U-Boot
-  * `.uefiimg` if the system is an x86 system and boots using the UEFI standard and GRUB bootloader
+* a disk image that can be flashed to the device storage during initial provisioning
 * an Artifact containing rootfs filesystem image file that Mender can deploy to your provisioned device, it has suffix `.mender`
 
 !!! If you do not want to build your own images for testing purposes, the [Getting started](../../../getting-started) tutorials provide links to several [demo images](../../../getting-started/download-test-images).
@@ -222,8 +219,14 @@ Replace `<YOUR-TARGET>` with the desired target or image name, e.g. `core-image-
 
 After a successful build, the images and build artifacts are placed in `tmp/deploy/images/<YOUR-MACHINE>/`.
 
-The files with suffix `.sdimg` are used to provision the device storage for devices without
-Mender running already. Please proceed to [Provisioning a new device](../../provisioning-a-new-device)
+There is one Mender disk image, which will have one of the following suffixes:
+
+  * `.sdimg` if the system is an ARM system and boots using U-Boot
+  * `.uefiimg` if the system is an x86 system and boots using the UEFI standard and GRUB bootloader
+  * `.biosimg` if the system is an x86 system and boots using the traditional BIOS and GRUB bootloader
+
+This disk image is used to provision the device storage for devices without
+Mender running already. Please proceed to [Provisioning a new device](../provisioning-a-new-device)
 for steps to do this.
 
 On the other hand, if you already have Mender running on your device and want to deploy a rootfs update
