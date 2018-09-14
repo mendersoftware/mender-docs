@@ -21,7 +21,7 @@ you currently have:
 
 As a good engineering practice, it is advisable to perform the upgrade on a
 staging environment first. This will allow you to discover potential problems
-and allow to exercise the procedure in a safe manner. 
+and allow to exercise the procedure in a safe manner.
 
 [Production installation](../production-installation) is largely based on using git and Mender integration
 repository. This is the reason why the upgrade procedure follows a regular git
@@ -111,18 +111,18 @@ Upgrading our local production branch is performed by issuing a `git merge` comm
 ```bash
 git merge 1.0.1
 ```
-> Merge made by the 'recursive' strategy.  
->  .travis.yml            | 16 ++++++++++++++++  
->  tests/run.sh           |  4 ++--  
->  update                 |  1 -  
->  verify-docker-versions | 29 ++++++++++++++++++++---------  
->  4 files changed, 38 insertions(+), 12 deletions(-)  
+> Merge made by the 'recursive' strategy.
+>  .travis.yml            | 16 ++++++++++++++++
+>  tests/run.sh           |  4 ++--
+>  update                 |  1 -
+>  verify-docker-versions | 29 ++++++++++++++++++++---------
+>  4 files changed, 38 insertions(+), 12 deletions(-)
 
 !!! Since your local changes are kept in git, it is possible to tag your production version or branch to create pre-merge branches that can be tested in a staging environment.
 
 ## Starting upgraded environment
 
-Once the changes are merged, you can recreate the containers. 
+Once the changes are merged, you can recreate the containers.
 
 First, pull in new container images:
 
@@ -159,51 +159,57 @@ Then stop and remove existing containers:
 ```bash
 ./run stop
 ```
-> Stopping menderproduction_mender-api-gateway_1 ... done  
-> Stopping menderproduction_mender-inventory_1 ... done  
-> Stopping menderproduction_mender-deployments_1 ... done  
-> Stopping menderproduction_mender-device-auth_1 ... done  
-> Stopping menderproduction_mender-device-adm_1 ... done  
-> Stopping menderproduction_mender-useradm_1 ... done  
-> Stopping menderproduction_storage-proxy_1 ... done  
-> Stopping menderproduction_mender-mongo_1 ... done  
-> Stopping menderproduction_mender-gui_1 ... done  
-> Stopping menderproduction_minio_1 ... done  
+> Stopping menderproduction_mender-api-gateway_1 ... done
+> Stopping menderproduction_mender-inventory_1 ... done
+> Stopping menderproduction_mender-deployments_1 ... done
+> Stopping menderproduction_mender-device-auth_1 ... done
+> Stopping menderproduction_mender-useradm_1 ... done
+> Stopping menderproduction_storage-proxy_1 ... done
+> Stopping menderproduction_mender-mongo_1 ... done
+> Stopping menderproduction_mender-gui_1 ... done
+> Stopping menderproduction_minio_1 ... done
 
 !!! All system data is kept in named Docker volumes. Removing containers does not affect volumes.
 
 ```bash
 ./run rm
 ```
-> Going to remove menderproduction_mender-api-gateway_1, ...  
-> Are you sure? [yN] y  
-> Removing menderproduction_mender-api-gateway_1 ... done  
-> Removing menderproduction_mender-inventory_1 ... done  
-> Removing menderproduction_mender-deployments_1 ... done  
-> Removing menderproduction_mender-device-auth_1 ... done  
-> Removing menderproduction_mender-device-adm_1 ... done  
-> Removing menderproduction_mender-useradm_1 ... done  
-> Removing menderproduction_storage-proxy_1 ... done  
-> Removing menderproduction_mender-mongo_1 ... done  
-> Removing menderproduction_mender-gui_1 ... done  
-> Removing menderproduction_minio_1 ... done  
+> Going to remove menderproduction_mender-api-gateway_1, ...
+> Are you sure? [yN] y
+> Removing menderproduction_mender-api-gateway_1 ... done
+> Removing menderproduction_mender-inventory_1 ... done
+> Removing menderproduction_mender-deployments_1 ... done
+> Removing menderproduction_mender-device-auth_1 ... done
+> Removing menderproduction_mender-useradm_1 ... done
+> Removing menderproduction_storage-proxy_1 ... done
+> Removing menderproduction_mender-mongo_1 ... done
+> Removing menderproduction_mender-gui_1 ... done
+> Removing menderproduction_minio_1 ... done
 
 Start the new environment:
 
 ```bash
 ./run up -d
 ```
-> Creating menderproduction_mender-mongo_1  
-> Creating menderproduction_minio_1  
-> Creating menderproduction_mender-gui_1  
-> Creating menderproduction_mender-useradm_1  
-> Creating menderproduction_mender-device-adm_1  
-> Creating menderproduction_mender-deployments_1  
-> Creating menderproduction_storage-proxy_1  
-> Creating menderproduction_mender-device-auth_1  
-> Creating menderproduction_mender-inventory_1  
-> Creating menderproduction_mender-api-gateway_1  
+> Creating menderproduction_mender-mongo_1
+> Creating menderproduction_minio_1
+> Creating menderproduction_mender-gui_1
+> Creating menderproduction_mender-useradm_1
+> Creating menderproduction_mender-deployments_1
+> Creating menderproduction_storage-proxy_1
+> Creating menderproduction_mender-device-auth_1
+> Creating menderproduction_mender-inventory_1
+> Creating menderproduction_mender-api-gateway_1
 
+## Removing deviceadm service database
+
+Deviceadm service functionality has been merged into deviceauth service
+and deviceadm service has been removed from the mender server.
+To remove deviceadm database, which is obsolete, run:
+
+```bash
+docker exec menderproduction_mender-mongo_1 mongo deviceadm --eval "db.dropDatabase()"
+```
 
 ## Upgrading Mender Clients
 
