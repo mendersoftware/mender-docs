@@ -1,4 +1,5 @@
 ---
+<!--AUTOVERSION: "title: \"Development\""/complain-->
 title: "Development"
 taxonomy:
     category: docs
@@ -8,4 +9,5 @@ taxonomy:
 
 # Documentation
 
+<!--AUTOVERSION: "bleeding-edge % branch"/complain-->
 Documentation for Mender's bleeding-edge master branch.

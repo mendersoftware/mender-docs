@@ -70,13 +70,10 @@ label can be used when filtering output of commands such as `docker ps`.
 Start off by cloning the Mender integration repository into a local directory
 named `mender-server`:
 
-[start_autoupdate_git_clone_integration_b_x.x.x]: #
-
+<!--AUTOVERSION: "-b %"/integration -->
 ```bash
 git clone -b master https://github.com/mendersoftware/integration mender-server
 ```
-
-[end_autoupdate_git_clone_integration_b_x.x.x]: #
 
 > Cloning into 'deployment'...
 > remote: Counting objects: 1117, done.
@@ -531,6 +528,7 @@ git commit -m 'production: final configuration'
 
 At this point your commit history should look as follows:
 
+<!--AUTOVERSION: "git log --oneline origin/%..HEAD"/integration -->
 <!--AUTOMATION: ignore -->
 ```bash
 git log --oneline origin/master..HEAD

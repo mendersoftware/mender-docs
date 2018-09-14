@@ -4,35 +4,74 @@ taxonomy:
     category: docs
 ---
 
-## meta-mender sumo-v2018.08
+## meta-mender sumo-v2018.09
 
-_Released 08.03.2018_
+_Released 09.13.2018_
 
-#### meta-mender (sumo-v2018.08)
+#### meta-mender (sumo-v2018.09)
 
-New changes in meta-mender since sumo-v2018.07:
+New changes in meta-mender since sumo-v2018.08:
 
-* Add mender 1.6.0b1 and mender-artifact 2.3.0b1 recipes.
-* Fixed support for raspberrypi3-64 and aarch64
-* Fix incorrect license tag for mender-artifact recipe.
-  Little practical difference, since they are all permissive licenses.
-* mender-uboot: Allow multi-digit partition/device nums.
-* Fix license checksum sometimes failing in
-  `u-boot-fw-utils-mender-auto-provided` recipe when U-Boot fork has a
-  slightly different README file.
+* Fix regression in QEMU launching after changing image name in 897195ddc3f.
+* GRUB: Pass kernel arguments from bootargs variable instead of hardcoded.
+  This allows it to be overridden or modified by adding a script snippet
+  which sets the variable.
+  Also log kernel messages to both screen and serial port by default,
+  and have systemd log to serial port (last "console" argument,
+  apparently it cannot log to both).
+* Introduce support for a standardized boot method on ARM
+  using UEFI and GRUB. The UEFI boot standard is fully supported on ARM
+  in theory, but few board manufacturers implement it in practice.
+  Therefore U-Boot is still utilized, but acts only as a UEFI loader,
+  and hence no U-Boot integration is needed. All boot scripts are then
+  handled by GRUB, which needs no patching.
+  ([MEN-1595](https://tracker.mender.io/browse/MEN-1595), [MEN-1659](https://tracker.mender.io/browse/MEN-1659))
+* Auto-select correct `MENDER_STORAGE_DEVICE_BASE` scheme.
+  This should rarely need to be set by anyone anymore.
+* Add some debug functionality to GRUB booting process.
+  To use it, enable either or both of `debug-log` and `debug-pause` in
+  `PACKAGECONFIG` for `grub-mender-grubenv`. The former enables debug
+  logging in GRUB, which can be tweaked further by setting the
+  `DEBUG_LOG_CATEGORY` variable. The latter pauses the boot process at
+  strategic points during the boot, so that screen output can be
+  captured before it is cleared or scrolls by.
+* GRUB: Fix error about devicetree command not being found.
+* Images partitioned with GPT or MSDOS partition tables are
+  now padded up to the nearest alignment specified in
+  `MENDER_PARTITION_ALIGNMENT`. Previously the last block might be
+  shorter.
+* Fix build error when using GRUB and /dev/mmcblk storage device.
+* Fix build error when using any harddrive besides sda/hda, such as sdb.
+* Fix `IMAGE_ROOTFS_EXCLUDE_PATH` failing when listing a non-existent path.
+* Fix `MENDER_GRUB_STORAGE_DEVICE` variable not being respected.
+  ([MEN-2048](https://tracker.mender.io/browse/MEN-2048))
+* Allow disabling auto-generated /etc/fstab
+* Boot script recipe for demoing OTA updates
+* mender: Allow overrides for MENDER_STORAGE_TOTAL_SIZE_MB_DEFAULT.
+* mender-uboot: Use hex for dev/part numbers in U-Boot.
+* Add mender 1.5.1 recipe.
+* Add mender 1.6.0 recipe.
+* Add mender-artifact 2.3.0 recipe.
 
 
-## Mender 1.6.0b1
+## Mender 1.6.0
 
-_Released 08.06.2018_
+_Released xx.xx.xxxx_
 
-#### deviceauth (1.6.0b1)
+#### deviceauth (1.6.0)
 
 New changes in deviceauth since 1.5.0:
 
 * Device object returned by API exposes new boolean attribute: "decommissioning" signifying devices that are currently going through removal process.
 
-#### gui (1.6.0b1)
+#### gui (1.6.0)
+
+New changes in gui since 1.6.0b1:
+
+* Added 'Copy to clipboard' function to error messages throughout UI
+* Introduce new tabbed deployment layout
+* Update node modules
+* Bugfix: Ensure "already installed" displays correctly in deployment report
 
 New changes in gui since 1.5.0:
 
@@ -42,7 +81,19 @@ New changes in gui since 1.5.0:
 * Add a global setting to store and use user-selected device identity attribute throughout UI
 * Fixup: Add a link to mender docs for enabling wifi in hosted image
 
-#### integration (1.6.0b1)
+#### integration (1.6.0)
+
+New changes in integration since 1.6.0b1:
+
+* Upgrade deviceauth to 1.6.0.
+* Upgrade gui to 1.6.0.
+* Upgrade inventory to 1.4.1.
+* Upgrade mender to 1.6.0.
+* Upgrade mender-artifact to 2.3.0.
+* Upgrade mender-cli to 1.0.1.
+* Upgrade mender-conductor to 1.1.0.
+* Upgrade mender-conductor-enterprise to 1.1.0.
+* Upgrade useradm to 1.6.0.
 
 New changes in integration since 1.5.0:
 
@@ -62,7 +113,17 @@ New changes in integration since 1.5.0:
 * test_security.py: Ignore return code of grep.
 * use common mongodb server instance with tenantadm
 
-#### mender (1.6.0b1)
+#### mender (1.6.0)
+
+New changes in mender since 1.6.0b1:
+
+* Fix active partition detection when using non-native
+  filesystems.
+* New inventory script for "os" attribute, installed by default.
+  ([MEN-2060](https://tracker.mender.io/browse/MEN-2060))
+* FIX: Enabling compiling ppc64le
+* Add inventory scripts for rootfs type and bootloader integration.
+  ([MEN-2059](https://tracker.mender.io/browse/MEN-2059))
 
 New changes in mender since 1.5.0:
 
@@ -82,7 +143,13 @@ New changes in mender since 1.5.0:
 * log active partition before and after reboot.
   ([MEN-1880](https://tracker.mender.io/browse/MEN-1880))
 
-#### mender-artifact (2.3.0b1)
+#### mender-artifact (2.3.0)
+
+New changes in mender-artifact since 2.3.0b1:
+
+* FIX: mender-artifact cp no longer renames the artifact.
+* FIX: remove leftover tmp files from mender-artifact cp.
+* FIX: mender-artifact no longer changes the names of the updates in an artifact
 
 New changes in mender-artifact since 2.2.0:
 
@@ -103,12 +170,30 @@ New changes in mender-artifact since 2.2.0:
 * run fsck before modifying image.
   ([MEN-1798](https://tracker.mender.io/browse/MEN-1798))
 
-#### mender-conductor (1.1.0b1)
+#### mender-conductor (1.1.0)
 
 New changes in mender-conductor since 1.0.0:
 
 * Extend logging with messages from conductor client library to stdout.
 * Update conductor client library to 1.8.9
+
+
+## meta-mender sumo-v2018.08
+
+_Released 08.03.2018_
+
+#### meta-mender (sumo-v2018.08)
+
+New changes in meta-mender since sumo-v2018.07:
+
+* Add mender 1.6.0b1 and mender-artifact 2.3.0b1 recipes.
+* Fixed support for raspberrypi3-64 and aarch64
+* Fix incorrect license tag for mender-artifact recipe.
+  Little practical difference, since they are all permissive licenses.
+* mender-uboot: Allow multi-digit partition/device nums.
+* Fix license checksum sometimes failing in
+  `u-boot-fw-utils-mender-auto-provided` recipe when U-Boot fork has a
+  slightly different README file.
 
 
 ## meta-mender sumo-v2018.07
