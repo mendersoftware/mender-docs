@@ -35,11 +35,13 @@ The other layers in *meta-mender* provide support for specific boards.
 
 ### Device integrated with Mender
 
-Before building for your device with Mender, Mender needs to
-be integrated with your device (most notably with U-Boot). This
-integration enables robust and atomic rollbacks with Mender.
-The following reference devices are already integrated with Mender,
-so if you are building for one of these you do not need to do any integration:
+Mender needs to integrate with your device, most notably with the boot process.
+This integration enables robust and atomic rollbacks with Mender.
+Please see [Device integration](../../devices) for general requirements and
+adjustment you might need to make before building.
+
+The following reference devices are already integrated with Mender
+and covered by automated tests to ensure they work well:
 
 <!--AUTOVERSION: "meta-mender/tree/%"/ignore-->
 * [Raspberry Pi 3](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-raspberrypi?target=_blank) (other revisions are also likely to work)
@@ -47,13 +49,8 @@ so if you are building for one of these you do not need to do any integration:
 * [Virtual device (qemux86-64)](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-qemu?target=_blank)
 * [Virtual device (vexpress-qemu)](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-qemu?target=_blank)
 
-If you are building for a different device, please see [Device integration](../../../devices)
-for general requirements and adjustments you might need to enable your device
-to support atomic image-based deployments with rollback.
-There might already be similar devices you can use as a starting point in
-the [meta-mender repository](https://github.com/mendersoftware/meta-mender?target=_blank).
-
-If you want to save time, you can use our [professional services to integrate your device with Mender](https://mender.io/product/board-support?target=_blank).
+If you encouter any issues and want to save time, you can use
+the [Mender professional services to integrate your device](https://mender.io/product/board-support?target=_blank).
 
 
 ### Correct clock on device
@@ -121,19 +118,17 @@ bitbake-layers add-layer ../meta-mender/meta-mender-core
 bitbake-layers add-layer ../meta-mender/meta-mender-demo
 ```
 
-Finally, add the **Mender layer specific to your board**.
-Mender currently comes with three reference devices
-that you can build for (only add one of these):
+!!! Mender board integration is mostly automated. Consequently, a board-specific Mender integration layer as described below is typically only neccessary for improving performance or resolving any board-specific issues. If you are unsure if you need one, try to build without adding any board integration layer.
+
+If needed, add any Mender integration layer specific to your board.
+For the three Mender reference devices use these layers (only add one of these):
 
 * Raspberry Pi 3 (other revisions might also work): `bitbake-layers add-layer ../meta-mender/meta-mender-raspberrypi` (depends on `meta-raspberrypi`)
 * BeagleBone Black: No board specific layer needed
 * Virtual devices: `bitbake-layers add-layer ../meta-mender/meta-mender-qemu`
 
-Other devices may have community support,
-either in [meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank) or other repositories.
-If you are building for a different device, please see [Device integration](../../devices)
-for general requirements and adjustments you might need to enable your device
-to support Mender.
+If you are building for a different device and encouter any issues, please see [Device integration](../../devices)
+for general requirements and adjustments you might need to enable your device to support Mender.
 
 At this point, all the layers required for Mender should be
 part of your Yocto Project build environment.
