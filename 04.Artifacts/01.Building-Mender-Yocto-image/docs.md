@@ -32,11 +32,13 @@ The other layers in *meta-mender* provide support for specific boards.
 
 ### Device integrated with Mender
 
-Before building for your device with Mender, Mender needs to
-be integrated with your device (most notably with U-Boot). This
-integration enables robust and atomic rollbacks with Mender.
-The following reference devices are already integrated with Mender,
-so if you are building for one of these you do not need to do any integration:
+Mender needs to integrate with your device, most notably with the boot process.
+This integration enables robust and atomic rollbacks with Mender.
+Please see [Device integration](../../devices) for general requirements and
+adjustment you might need to make before building.
+
+The following reference devices are already integrated with Mender
+and covered by automated tests to ensure they work well:
 
 <!--AUTOVERSION: "meta-mender/tree/%"/ignore-->
 * [Raspberry Pi 3](https://github.com/mendersoftware/meta-mender/tree/sumo/meta-mender-raspberrypi?target=_blank) (other revisions are also likely to work)
