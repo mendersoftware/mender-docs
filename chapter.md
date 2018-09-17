@@ -1,5 +1,4 @@
 ---
-<!--AUTOVERSION: "title: \"Development\""/complain-->
 title: "1.6"
 taxonomy:
     category: docs
