@@ -46,7 +46,7 @@ and covered by automated tests to ensure they work well:
 * [Virtual device (qemux86-64)](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-qemu?target=_blank)
 * [Virtual device (vexpress-qemu)](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-qemu?target=_blank)
 
-If you encouter any issues and want to save time, you can use
+If you encounter any issues and want to save time, you can use
 the [Mender professional services to integrate your device](https://mender.io/product/board-support?target=_blank).
 
 
@@ -115,7 +115,7 @@ bitbake-layers add-layer ../meta-mender/meta-mender-core
 bitbake-layers add-layer ../meta-mender/meta-mender-demo
 ```
 
-!!! Mender board integration is mostly automated. Consequently, a board-specific Mender integration layer as described below is typically only neccessary for improving performance or resolving any board-specific issues. If you are unsure if you need one, try to build without adding any board integration layer.
+!!! Mender board integration is mostly automated. Consequently, a board-specific Mender integration layer as described below is typically only necessary for improving performance or resolving any board-specific issues. If you are unsure if you need one, try to build without adding any board integration layer.
 
 If needed, add any Mender integration layer specific to your board.
 For the three Mender reference devices use these layers (only add one of these):
@@ -124,7 +124,7 @@ For the three Mender reference devices use these layers (only add one of these):
 * BeagleBone Black: No board specific layer needed
 * Virtual devices: `bitbake-layers add-layer ../meta-mender/meta-mender-qemu`
 
-If you are building for a different device and encouter any issues, please see [Device integration](../../devices)
+If you are building for a different device and encounter any issues, please see [Device integration](../../devices)
 for general requirements and adjustments you might need to enable your device to support Mender.
 
 At this point, all the layers required for Mender should be
