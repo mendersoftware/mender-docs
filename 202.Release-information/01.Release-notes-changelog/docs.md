@@ -56,7 +56,7 @@ New changes in meta-mender since sumo-v2018.08:
 
 ## Mender 1.5.1
 
-_Released xx.xx.xxxx_
+_Released 09.18.2018_
 
 #### gui (1.5.1)
 
