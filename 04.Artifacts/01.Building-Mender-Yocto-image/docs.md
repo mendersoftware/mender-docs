@@ -53,7 +53,8 @@ to support atomic image-based deployments with rollback.
 There might already be similar devices you can use as a starting point in
 the [meta-mender repository](https://github.com/mendersoftware/meta-mender?target=_blank).
 
-If you want to save time, you can use our [professional services to integrate your device with Mender](https://mender.io/product/board-support?target=_blank).
+If you encounter any issues and want to save time, you can use
+the [Mender professional services to integrate your device](https://mender.io/product/board-support?target=_blank).
 
 
 ### Correct clock on device
@@ -121,19 +122,17 @@ bitbake-layers add-layer ../meta-mender/meta-mender-core
 bitbake-layers add-layer ../meta-mender/meta-mender-demo
 ```
 
-Finally, add the **Mender layer specific to your board**.
-Mender currently comes with three reference devices
-that you can build for (only add one of these):
+To simplifly the board-specific integration, it is strongly recommended that you use the GRUB bootloader as an intermediate.
+See [enabling GRUB](../../devices/integrating-with-grub) for how to do this.
+Otherwise you need to add any Mender integration layer specific to your board, see [Device integration](../../devices) for what is needed.
+For the three Mender reference devices use these layers (only add one of these):
 
 * Raspberry Pi 3 (other revisions might also work): `bitbake-layers add-layer ../meta-mender/meta-mender-raspberrypi` (depends on `meta-raspberrypi`)
 * BeagleBone Black: No board specific layer needed
 * Virtual devices: `bitbake-layers add-layer ../meta-mender/meta-mender-qemu`
 
-Other devices may have community support,
-either in [meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank) or other repositories.
-If you are building for a different device, please see [Device integration](../../devices)
-for general requirements and adjustments you might need to enable your device
-to support Mender.
+If you are building for a different device and encounter any issues, please see [Device integration](../../devices)
+for general requirements and adjustments you might need to enable your device to support Mender.
 
 At this point, all the layers required for Mender should be
 part of your Yocto Project build environment.
