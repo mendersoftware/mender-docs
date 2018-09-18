@@ -221,9 +221,11 @@ After a successful build, the images and build artifacts are placed in `tmp/depl
 
 There is one Mender disk image, which will have one of the following suffixes:
 
-  * `.sdimg` if the system is an ARM system and boots using U-Boot
-  * `.uefiimg` if the system is an x86 system and boots using the UEFI standard and GRUB bootloader
+  * `.uefiimg` if the system boots using the UEFI standard (x86 with UEFI or ARM with U-Boot and UEFI emulation) and GRUB bootloader
+  * `.sdimg` if the system is an ARM system and boots using U-Boot (without UEFI emulation)
   * `.biosimg` if the system is an x86 system and boots using the traditional BIOS and GRUB bootloader
+
+!!! Please consult the [bootloader support section](../../devices/system-requirements/bootloader-support) for information on which boot method is typically used in each build configuration.
 
 This disk image is used to provision the device storage for devices without
 Mender running already. Please proceed to [Provisioning a new device](../provisioning-a-new-device)
