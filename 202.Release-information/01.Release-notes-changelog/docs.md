@@ -1,4 +1,4 @@
----
+e--
 title: Release notes & changelog
 taxonomy:
     category: docs
@@ -56,7 +56,7 @@ New changes in meta-mender since sumo-v2018.08:
 
 ## Mender 1.6.0
 
-_Released xx.xx.xxxx_
+_Released 09.18.2018_
 
 #### deviceauth (1.6.0)
 
