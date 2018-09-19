@@ -119,9 +119,9 @@ Set your device identity as a JSON object in a shell variable while escaping quo
 DEVICE_IDENTITY_JSON_OBJECT_STRING='{\"mac\":\"02:12:61:13:6c:42\"}'
 ```
 
-!!! Adjust the variable value to the actual identity of your device. If you have several identity attributes in your identity scheme, separate them with commas in JSON format inside this single object, for example `DEVICE_IDENTITY_JSON_OBJECT_STRING='{\"mac\":\"02:12:61:13:6c:42\", \"serialnumber\":\"1928819\"}'`. Note that if your device identity contains several attributes, *whitespace* and *ordering does matter*: you need to write the identity attributes without extra spaces between them and in the order your Mender client submit them (testing is likely the easiest way to find the right order).
+!!! Adjust the variable value to the actual identity of your device. If you have several identity attributes in your identity scheme, separate them with commas in JSON format inside this single object. For example `DEVICE_IDENTITY_JSON_OBJECT_STRING='{\"mac\":\"02:12:61:13:6c:42\", \"serialnumber\":\"1928819\"}'`, in any order.
 
-Secondly, set the contents of the device public key you generated above in a second variable (with newlines written out literally):
+Secondly, set the contents of the device public key you generated above in a second variable (newlines needs to be written literally due to the way Unix shells work):
 
 ```bash
 DEVICE_PUBLIC_KEY="$(cat keys-client-generated/public.key | sed -e :a  -e 'N;s/\n/\\n/;ta')\n"
