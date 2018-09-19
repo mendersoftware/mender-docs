@@ -6,10 +6,7 @@ taxonomy:
 
 This document outlines the steps needed to build a [Yocto Project](https://www.yoctoproject.org/?target=_blank) image for a device.
 The build output will most notably include:
-* a file that can be flashed to the device storage during initial provisioning. It contains one of the following suffixes:
-  * `.biosimg` if the system is an x86 system and boots using the traditional BIOS and GRUB bootloader
-  * `.sdimg` if the system is an ARM system and boots using U-Boot
-  * `.uefiimg` if the system is an x86 system and boots using the UEFI standard and GRUB bootloader
+* a disk image that can be flashed to the device storage during initial provisioning
 * an Artifact containing rootfs filesystem image file that Mender can deploy to your provisioned device, it has suffix `.mender`
 
 !!! If you do not want to build your own images for testing purposes, the [Getting started](../../../getting-started) tutorials provide links to several [demo images](../../../getting-started/download-test-images).
@@ -35,11 +32,13 @@ The other layers in *meta-mender* provide support for specific boards.
 
 ### Device integrated with Mender
 
-Before building for your device with Mender, Mender needs to
-be integrated with your device (most notably with U-Boot). This
-integration enables robust and atomic rollbacks with Mender.
-The following reference devices are already integrated with Mender,
-so if you are building for one of these you do not need to do any integration:
+Mender needs to integrate with your device, most notably with the boot process.
+This integration enables robust and atomic rollbacks with Mender.
+Please see [Device integration](../../devices) for general requirements and
+adjustment you might need to make before building.
+
+The following reference devices are already integrated with Mender
+and covered by automated tests to ensure they work well:
 
 <!--AUTOVERSION: "meta-mender/tree/%"/ignore-->
 * [Raspberry Pi 3](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-raspberrypi?target=_blank) (other revisions are also likely to work)
@@ -47,13 +46,8 @@ so if you are building for one of these you do not need to do any integration:
 * [Virtual device (qemux86-64)](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-qemu?target=_blank)
 * [Virtual device (vexpress-qemu)](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-qemu?target=_blank)
 
-If you are building for a different device, please see [Device integration](../../../devices)
-for general requirements and adjustments you might need to enable your device
-to support atomic image-based deployments with rollback.
-There might already be similar devices you can use as a starting point in
-the [meta-mender repository](https://github.com/mendersoftware/meta-mender?target=_blank).
-
-If you want to save time, you can use our [professional services to integrate your device with Mender](https://mender.io/product/board-support?target=_blank).
+If you encounter any issues and want to save time, you can use
+the [Mender professional services to integrate your device](https://mender.io/product/board-support?target=_blank).
 
 
 ### Correct clock on device
@@ -121,19 +115,17 @@ bitbake-layers add-layer ../meta-mender/meta-mender-core
 bitbake-layers add-layer ../meta-mender/meta-mender-demo
 ```
 
-Finally, add the **Mender layer specific to your board**.
-Mender currently comes with three reference devices
-that you can build for (only add one of these):
+!!! Mender board integration is mostly automated. Consequently, a board-specific Mender integration layer as described below is typically only necessary for improving performance or resolving any board-specific issues. If you are unsure if you need one, try to build without adding any board integration layer.
+
+If needed, add any Mender integration layer specific to your board.
+For the three Mender reference devices use these layers (only add one of these):
 
 * Raspberry Pi 3 (other revisions might also work): `bitbake-layers add-layer ../meta-mender/meta-mender-raspberrypi` (depends on `meta-raspberrypi`)
 * BeagleBone Black: No board specific layer needed
 * Virtual devices: `bitbake-layers add-layer ../meta-mender/meta-mender-qemu`
 
-Other devices may have community support,
-either in [meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank) or other repositories.
-If you are building for a different device, please see [Device integration](../../devices)
-for general requirements and adjustments you might need to enable your device
-to support Mender.
+If you are building for a different device and encounter any issues, please see [Device integration](../../devices)
+for general requirements and adjustments you might need to enable your device to support Mender.
 
 At this point, all the layers required for Mender should be
 part of your Yocto Project build environment.
@@ -227,8 +219,16 @@ Replace `<YOUR-TARGET>` with the desired target or image name, e.g. `core-image-
 
 After a successful build, the images and build artifacts are placed in `tmp/deploy/images/<YOUR-MACHINE>/`.
 
-The files with suffix `.sdimg` are used to provision the device storage for devices without
-Mender running already. Please proceed to [Provisioning a new device](../../provisioning-a-new-device)
+There is one Mender disk image, which will have one of the following suffixes:
+
+  * `.uefiimg` if the system boots using the UEFI standard (x86 with UEFI or ARM with U-Boot and UEFI emulation) and GRUB bootloader
+  * `.sdimg` if the system is an ARM system and boots using U-Boot (without UEFI emulation)
+  * `.biosimg` if the system is an x86 system and boots using the traditional BIOS and GRUB bootloader
+
+!!! Please consult the [bootloader support section](../../devices/system-requirements/bootloader-support) for information on which boot method is typically used in each build configuration.
+
+This disk image is used to provision the device storage for devices without
+Mender running already. Please proceed to [Provisioning a new device](../provisioning-a-new-device)
 for steps to do this.
 
 On the other hand, if you already have Mender running on your device and want to deploy a rootfs update
