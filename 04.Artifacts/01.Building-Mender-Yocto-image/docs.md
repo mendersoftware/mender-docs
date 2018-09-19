@@ -46,12 +46,6 @@ and covered by automated tests to ensure they work well:
 * [Virtual device (qemux86-64)](https://github.com/mendersoftware/meta-mender/tree/sumo/meta-mender-qemu?target=_blank)
 * [Virtual device (vexpress-qemu)](https://github.com/mendersoftware/meta-mender/tree/sumo/meta-mender-qemu?target=_blank)
 
-If you are building for a different device, please see [Device integration](../../devices)
-for general requirements and adjustments you might need to enable your device
-to support atomic image-based deployments with rollback.
-There might already be similar devices you can use as a starting point in
-the [meta-mender repository](https://github.com/mendersoftware/meta-mender?target=_blank).
-
 If you encounter any issues and want to save time, you can use
 the [Mender professional services to integrate your device](https://mender.io/product/board-support?target=_blank).
 
@@ -123,7 +117,7 @@ bitbake-layers add-layer ../meta-mender/meta-mender-demo
 
 To simplifly the board-specific integration, it is strongly recommended that you use the GRUB bootloader as an intermediate.
 See [enabling GRUB](../../devices/integrating-with-grub) for how to do this.
-Otherwise you need to add any Mender integration layer specific to your board, see [Device integration](../../devices) for what is needed.
+Otherwise you need to add any Mender integration layer specific to your board; see [Device integration](../../devices) for what is needed.
 For the three Mender reference devices use these layers (only add one of these):
 
 * Raspberry Pi 3 (other revisions might also work): `bitbake-layers add-layer ../meta-mender/meta-mender-raspberrypi` (depends on `meta-raspberrypi`)
