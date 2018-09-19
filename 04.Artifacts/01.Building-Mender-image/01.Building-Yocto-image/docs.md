@@ -12,7 +12,7 @@ The build output will most notably include:
   * `.uefiimg` if the system is an x86 system and boots using the UEFI standard and GRUB bootloader
 * an Artifact containing rootfs filesystem image file that Mender can deploy to your provisioned device, it has suffix `.mender`
 
-!!! If you do not want to build your own images for testing purposes, the [Getting started](../../getting-started) tutorials provide links to several [demo images](../../getting-started/download-test-images).
+!!! If you do not want to build your own images for testing purposes, the [Getting started](../../../getting-started) tutorials provide links to several [demo images](../../../getting-started/download-test-images).
 
 ## What is *meta-mender*?
 
@@ -21,8 +21,8 @@ The build output will most notably include:
 Inside *meta-mender* there are several layers. The most important one is *meta-mender-core*, which is required by all builds that use Mender. *meta-mender-core* takes care of:
 
 * Cross-compiling Mender for ARM devices
-* [Partitioning the image correctly](../../devices/partition-layout)
-* [Setting up the U-Boot bootloader to support Mender](../../devices/integrating-with-u-boot)
+* [Partitioning the image correctly](../../../devices/partition-layout/yocto)
+* [Setting up the U-Boot bootloader to support Mender](../../../devices/integrating-with-u-boot/yocto)
 
 Each one of these steps can be configured further, see the linked sections for more details.
 
@@ -47,7 +47,7 @@ so if you are building for one of these you do not need to do any integration:
 * [Virtual device (qemux86-64)](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-qemu?target=_blank)
 * [Virtual device (vexpress-qemu)](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-qemu?target=_blank)
 
-If you are building for a different device, please see [Device integration](../../devices)
+If you are building for a different device, please see [Device integration](../../../devices)
 for general requirements and adjustments you might need to enable your device
 to support atomic image-based deployments with rollback.
 There might already be similar devices you can use as a starting point in
@@ -60,7 +60,7 @@ If you want to save time, you can use our [professional services to integrate yo
 
 Make sure that the clock is set correctly on your devices. Otherwise certificate verification will become unreliable
 and **the Mender client can likely not connect to the Mender server**.
-See [certificate troubleshooting](../../troubleshooting/mender-client#certificate-expired-or-not-yet-valid) for more information.
+See [certificate troubleshooting](../../../troubleshooting/mender-client#certificate-expired-or-not-yet-valid) for more information.
 
 
 ### Yocto Project
@@ -115,7 +115,7 @@ We then need to add the Mender layers into our project:
 bitbake-layers add-layer ../meta-mender/meta-mender-core
 ```
 
-! The `meta-mender-demo` layer (below) is not appropriate if you are building for production devices. Please go to the section about [building for production](../building-for-production) to see the difference between demo builds and production builds.
+! The `meta-mender-demo` layer (below) is not appropriate if you are building for production devices. Please go to the section about [building for production](../../building-for-production) to see the difference between demo builds and production builds.
 
 ```bash
 bitbake-layers add-layer ../meta-mender/meta-mender-demo
@@ -141,7 +141,7 @@ part of your Yocto Project build environment.
 
 ## Configuring the build
 
-!!! The configuration in `conf/local.conf` below will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../architecture/overview#modes-of-operation). See the [section on customizations](../image-configuration#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
+!!! The configuration in `conf/local.conf` below will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../../architecture/overview#modes-of-operation). See the [section on customizations](../../image-configuration#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
 
 Add these lines to the start of your `conf/local.conf`:
 
@@ -202,11 +202,11 @@ VIRTUAL-RUNTIME_initscripts = ""
 ARTIFACTIMG_FSTYPE = "ext4"
 ```
 
-!!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../variables#mender_storage_total_size_mb) for more information. Mender selects the file system type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on file system types](../../devices/partition-layout#file-system-types) for more information.
+!!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../../variables#mender_storage_total_size_mb) for more information. Mender selects the file system type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on file system types](../../../devices/partition-layout#file-system-types) for more information.
 
 !!! If you are building for **Hosted Mender**, make sure to set `MENDER_SERVER_URL` and `MENDER_TENANT_TOKEN` (see the comments above).
 
-!!! If you would like to use a read-only root file system, please see the section on [configuring the image for read-only rootfs](../image-configuration#configuring-the-image-for-read-only-rootfs).
+!!! If you would like to use a read-only root file system, please see the section on [configuring the image for read-only rootfs](../../image-configuration#configuring-the-image-for-read-only-rootfs).
 
 
 
@@ -228,13 +228,13 @@ Replace `<YOUR-TARGET>` with the desired target or image name, e.g. `core-image-
 After a successful build, the images and build artifacts are placed in `tmp/deploy/images/<YOUR-MACHINE>/`.
 
 The files with suffix `.sdimg` are used to provision the device storage for devices without
-Mender running already. Please proceed to [Provisioning a new device](../provisioning-a-new-device)
+Mender running already. Please proceed to [Provisioning a new device](../../provisioning-a-new-device)
 for steps to do this.
 
 On the other hand, if you already have Mender running on your device and want to deploy a rootfs update
-using this build, you should use the [Mender Artifact](../../architecture/mender-artifacts) files,
+using this build, you should use the [Mender Artifact](../../../architecture/mender-artifacts) files,
 which have `.mender` suffix. You can either deploy this Artifact in managed mode with
-the Mender server as described in [Deploy to physical devices](../../getting-started/deploy-to-physical-devices)
-or by using the Mender client only in [Standalone deployments](../../architecture/standalone-deployments).
+the Mender server as described in [Deploy to physical devices](../../../getting-started/deploy-to-physical-devices)
+or by using the Mender client only in [Standalone deployments](../../../architecture/standalone-deployments).
 
 !!! If you built for one of the virtual Mender reference devices (`qemux86-64` or `vexpress-qemu`), you can start up your newly built image with the script in `../meta-mender/meta-mender-qemu/scripts/mender-qemu` and log in as *root* without password.
