@@ -49,12 +49,28 @@ The standard Yocto Project `IMAGE_FSTYPES` variable will be used to determine th
 
 ##Configuring storage
 
-In order to select the storage device where the partitions are expected to be located on the device, `MENDER_STORAGE_DEVICE` should be set, either in `machine.conf` or in `local.conf`. The value should be the raw device containing the entire storage, not any single partition. For example:
+Two variables are required to configure storage correctly for Mender. The first is the storage device where the partitions are expected to be located on the device, `MENDER_STORAGE_DEVICE`. The second is the total size of this physical storage medium. The values should be for the raw device containing the entire storage, not any single partition. For example:
 
 ```bash
+# Example: Memory card storage
 MENDER_STORAGE_DEVICE = "/dev/mmcblk0"
+# Example: Memory card with 2GiB of storage.
+MENDER_STORAGE_TOTAL_SIZE_MB = "2048"
 ```
 
+These should be set either in `local.conf`, or preferably, in `machine.conf`.
+
+A quick way to get exact storage capacity on a device is to run one of the following commands on it. This assumes that you have an existing image running on the device and that the mentioned tools are available there:
+
+```bash
+# For block based storage:
+sudo blockdev --getsize64 /dev/mmcblk0 | xargs -i% expr % / 1048576
+
+# For Flash storage:
+mtdinfo -a | sed -rne '/^Amount of eraseblocks:/{s/.*[^0-9]([0-9]+) *bytes.*/\1/; p}' | awk '{s+=$0} END {print s}' | xargs -i% expr % / 1048576
+```
+
+The output will be in MiB, a number appropriate for `MENDER_STORAGE_TOTAL_SIZE_MB`.
 
 ###More detailed storage configuration
 
