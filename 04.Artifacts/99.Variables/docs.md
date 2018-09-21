@@ -324,9 +324,9 @@ Holds the size, in bytes, of the physical erase blocks (PEBs) on the Flash devic
 
 #### MENDER_STORAGE_TOTAL_SIZE_MB
 
-Total size of the medium that mender partitioned images will be written to,
-expressed in MB. The size of rootfs partition will be calculated automatically
-by subtracting the sizes of boot (see
+Total size of the physical storage medium that mender partitioned images will be
+written to, expressed in MiB. The size of rootfs partition will be calculated
+automatically by subtracting the sizes of boot (see
 [MENDER_BOOT_PART_SIZE_MB](#mender_boot_part_size_mb)) and data partitions (see
 [MENDER_DATA_PART_SIZE_MB](#mender_data_part_size_mb)) along with some
 predefined overhead (see
@@ -351,7 +351,10 @@ The size of each logical erase block (LEB) on the UBI device, in bytes. Usually 
 
 #### MENDER_UBI_TOTAL_BAD_PEB_OVERHEAD
 
-Total overhead on the whole UBI device, in bytes, resulting from bad physical erase blocks (PEBs). Usually zero.
+Total overhead on the whole UBI device, in bytes, that is reserved for bad
+physical erase blocks (PEBs). Usually zero for NOR Flash or [a variable
+amount](http://linux-mtd.infradead.org/doc/ubi.html#target=_blank) for NAND
+Flash.
 
 
 #### MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET

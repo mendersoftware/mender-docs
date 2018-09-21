@@ -36,8 +36,7 @@ $ ls -shLl tmp/deploy/images/vexpress-qemu-flash/core-image-minimal-vexpress-qem
 129M -rw-r--r-- 2 user user 129M 07-18 15:34 tmp/deploy/images/vexpress-qemu-flash/core-image-minimal-vexpress-qemu-flash.vexpress-nor
 ```
 
-A `vexpress-nor` image is a tar file that contains an image for each of the `nor`
-'drives' emulated by QEMU.
+!!! A `vexpress-nor` image is a tar file that contains an image for each of the `nor` 'drives' emulated by QEMU. It is specific to QEMU and will not generally be used for other devices, which will usually use either `ubimg` or `mtdimg`.
 
 The image can be run by calling a `mender-qemu` helper script provided in
 `meta-mender-qemu` layer:
