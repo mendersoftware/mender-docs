@@ -186,6 +186,9 @@ MACHINE = "<YOUR-MACHINE>"
 # MENDER_SERVER_URL = "https://hosted.mender.io"
 # MENDER_TENANT_TOKEN = "<YOUR-HOSTED-MENDER-TENANT-TOKEN>"
 
+# The following settings to enable systemd are needed for all Yocto
+# releases sumo and older.  Newer releases have these settings conditionally
+# based on the MENDER_FEATURES settings and the inherit of mender-full above.
 DISTRO_FEATURES_append = " systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
 DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
