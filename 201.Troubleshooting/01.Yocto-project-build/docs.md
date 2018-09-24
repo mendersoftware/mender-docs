@@ -217,7 +217,7 @@ MENDER_FEATURES_ENABLE_append = " mender-image-sd"
 MENDER_FEATURES_DISABLE_append = " mender-image-uefi"
 ```
 
-# When I update Yocto version from rocko to sumo U-boot patches do not apply
+## When I update Yocto version from rocko to sumo U-boot patches do not apply
 
 This is what the error message might look like.
 
@@ -266,3 +266,28 @@ Just add this to your u-boot bbappend file:
 SRC_URI_remove =
 "0006-env-Kconfig-Add-descriptions-so-environment-options-.patch"
 ```
+
+
+## Bitbake produces a warning that it doesn't know how to flash an mtdparts section
+
+An example of the type of warning is this:
+
+```
+WARNING: core-image-full-cmdline-1.0-r0 do_image_mtdimg: Don't know how to flash mtdparts 'u-boot1'. Filling with zeros.
+```
+
+This can happen if `MENDER_MTDPARTS` has been set manually, and contains volumes
+that Mender doesn't know how to handle. In most cases this means that the
+`mtdimg` is not usable, since it will not contain what is expected by the
+platform. Under these circumstances it should be turned off, and either the
+`ubimg` should be used directly, or you need to produce an `mtdimg` by different
+means.
+
+```bash
+IMAGE_FSTYPES_remove = "mtdimg"
+```
+
+Alternatively, if appropriate, you can remove the manually set `MENDER_MTDPARTS`
+variable, and let Mender set it automatically, but you will then get a generic
+`mtdimg` which may not work on the platform in question. Please refer to [the
+Raw Flash section](../../devices/raw-flash) for more information.
