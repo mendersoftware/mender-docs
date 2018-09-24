@@ -195,7 +195,7 @@ MENDER_FEATURES_ENABLE_append = " mender-image-sd"
 MENDER_FEATURES_DISABLE_append = " mender-image-uefi"
 ```
 
-# When I update Yocto version from rocko to sumo U-boot patches do not apply
+## When I update Yocto version from rocko to sumo U-boot patches do not apply
 
 This is what the error message might look like.
 
