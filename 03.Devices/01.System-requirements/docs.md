@@ -16,7 +16,7 @@ Mender's meta layer, [meta-mender](https://github.com/mendersoftware/meta-mender
 Mender has no official support for other build systems. However, by following the right steps, it is possible to adapt other build systems to Mender's needs. Please see [this blog post](https://mender.io/blog/porting-mender-to-a-non-yocto-build-system) for an example (note that some of Mender's needs may have changed since the blog post was made).
 
 ##Device capacity
-The client binaries, which are written in Go, are around 7 MiB in size. 
+The client binaries are about 7 MB in size, or about 4 MB when debug symbols are stripped (using the `strip` tool). This includes all dependencies for the client, such as the http, TLS, and JSON libraries.
 
 ##Bootloader support
 To support atomic rootfs rollback, Mender integrates with the bootloader of the device. Currently Mender supports [GRUB](https://www.gnu.org/software/grub/?target=_blank) and [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank). See [Bootloader support](bootloader-support) for more information.
