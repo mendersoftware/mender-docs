@@ -114,7 +114,7 @@ After a signed Artifact is created, it can be verified with `mender-artifact` as
 `-k` option, but this time with the location of the *public verification key*.
 
 ```bash
-mender-artifact read artifact-signed.mender -k public.key
+mender-artifact validate artifact-signed.mender -k public.key
 ```
 
 
