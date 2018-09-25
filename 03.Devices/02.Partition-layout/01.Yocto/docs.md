@@ -34,17 +34,17 @@ software*. In Linux, raw flash devices are exposed as a **Memory Technology
 Device (MTD)** file. Care must be taken when selecting a file system to ensure
 that it is MTD-aware and properly handles wear leveling and error correction.
 Popular file systems for MTD devices include UBIFS, JFFS2, and YAFFS.
-Consult the [raw flash](../raw-flash) section for details on setting up and
+Consult the [raw flash](../../raw-flash) section for details on setting up and
 configuration.
 
 
 ##File system types
 
-When [building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image) the build output in `tmp/deploy/images/<MACHINE>` includes a binary rootfs file system image (e.g. with `.mender` extension), as well as a complete disk image (with `.sdimg` extension). The binary rootfs file system images are used when deploying updates to the device, while the `.sdimg` image is typically used just once during initial device provisioning to flash the entire storage, and includes the partition layout and all partitions.
+When [building a Mender Yocto Project image](../../../artifacts/building-mender-image/building-yocto-image) the build output in `tmp/deploy/images/<MACHINE>` includes a binary rootfs file system image (e.g. with `.mender` extension), as well as a complete disk image (with `.sdimg` extension). The binary rootfs file system images are used when deploying updates to the device, while the `.sdimg` image is typically used just once during initial device provisioning to flash the entire storage, and includes the partition layout and all partitions.
 
 In general Mender does not have dependencies on a specific file system type as long as it is for a [block device](#flash-memory-types), but the version of U-Boot you are using must support the file system type used for rootfs because it needs to read the Linux kernel from the file system and start the Linux boot process.
 
-The standard Yocto Project `IMAGE_FSTYPES` variable will be used to determine the image types to create in Yocto deploy directory. The meta-mender layer will add the `mender` type to that variable, and usually `sdimg`, `uefiimg` or a different type ending with `img`, depending on which [image features](../../artifacts/image-configuration/features#list-of-features) are enabled. The filesystem used for the individual partition files will be based on the `ARTIFACTIMG_FSTYPE` variable.  It is advised that you clean up the `IMAGE_FSTYPES` variable to avoid creating unnecessary image files.
+The standard Yocto Project `IMAGE_FSTYPES` variable will be used to determine the image types to create in Yocto deploy directory. The meta-mender layer will add the `mender` type to that variable, and usually `sdimg`, `uefiimg` or a different type ending with `img`, depending on which [image features](../../artifacts/image-configuration/yocto-image-configuration/features#list-of-features) are enabled. The filesystem used for the individual partition files will be based on the `ARTIFACTIMG_FSTYPE` variable.  It is advised that you clean up the `IMAGE_FSTYPES` variable to avoid creating unnecessary image files.
 
 
 ##Configuring storage
@@ -95,7 +95,7 @@ MENDER_ROOTFS_PART_B = "${MENDER_STORAGE_DEVICE_BASE}3"
 
 ##Configuring the partition sizes
 
-When [building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image) Mender defines and uses certain OpenEmbedded variables which are used to define the sizes of the partitions.
+When [building a Mender Yocto Project image](../../../artifacts/building-mender-image/building-yocto-image) Mender defines and uses certain OpenEmbedded variables which are used to define the sizes of the partitions.
 
 | Mount point  | Purpose                                                 | Default size | Variable to configure size     |
 |--------------|---------------------------------------------------------|--------------|--------------------------------|
@@ -108,7 +108,7 @@ The value of &lt;BOOT&gt; depends on what features are enabled:
 * If `mender-grub` and `mender-bios` are enabled: `/boot/grub`
 * If only `mender-grub` is enabled: `/boot/efi`
 
-You can override these default values in your `local.conf`. For details consult [Mender image variables](../../artifacts/variables).
+You can override these default values in your `local.conf`. For details consult [Mender image variables](../../../artifacts/variables).
 
 
 ##Preserving data and configuration across updates
@@ -119,7 +119,7 @@ If you have data or configuration that you need to preserve across updates, the 
 
 ##Deploying files to the persistent data partition
 
-When [building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image), if you need to include files in the persistent data partition, all you have to do is add those files to the `/data` directory in the root filesystem, and the files will automatically be included on the data partition. For example:
+When [building a Mender Yocto Project image](../../../artifacts/building-mender-image/building-yocto-image), if you need to include files in the persistent data partition, all you have to do is add those files to the `/data` directory in the root filesystem, and the files will automatically be included on the data partition. For example:
 
 ```bash
 do_install() {
@@ -132,12 +132,12 @@ A sample recipe (`hello-mender`) is included in the `meta-mender-demo` layer whi
 
 ! Keep in mind that any files you add to the `/data` directory will not be included in `.mender` artifacts, since they don't contain a data partition. Only complete partitioned images (`.biosimg`, `.sdimg`, `.uefiimg`, etc) will contain the files.
 
-!!! In Yocto Project 2.4 rocko and earlier, there was a different method for adding files to the data partition. Please see the [`MENDER_DATA_PART_DIR` variable](../../artifacts/variables#mender_data_part_dir) for details on this now obsolete method.
+!!! In Yocto Project 2.4 rocko and earlier, there was a different method for adding files to the data partition. Please see the [`MENDER_DATA_PART_DIR` variable](../../../artifacts/variables#mender_data_part_dir) for details on this now obsolete method.
 
 
 ## Producing a standalone data partition image
 
-Although it is not needed for most work with Mender, for some flashing setups, it may be useful to have the sole data partition available as an image file. If this is needed, simply add `dataimg` to the Yocto Project `IMAGE_FSTYPES` variable, and the image file will be built and given the `.dataimg` suffix. Its filesystem type will be the value of [`ARTIFACTIMG_FSTYPE`](../../artifacts/variables#artifactimg_fstype). For example:
+Although it is not needed for most work with Mender, for some flashing setups, it may be useful to have the sole data partition available as an image file. If this is needed, simply add `dataimg` to the Yocto Project `IMAGE_FSTYPES` variable, and the image file will be built and given the `.dataimg` suffix. Its filesystem type will be the value of [`ARTIFACTIMG_FSTYPE`](../../../artifacts/variables#artifactimg_fstype). For example:
 
 ```bash
 IMAGE_FSTYPES_append = " dataimg"

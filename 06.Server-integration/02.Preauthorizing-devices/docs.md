@@ -109,7 +109,7 @@ curl -H "Authorization: Bearer $JWT" -X DELETE $MENDER_SERVER_URI/api/management
 
 Once this is done, re-run the command above to generate the `devauth.json` file again and verify that your device identity does not exist anywhere.
 
-In the event that the decommissioning operation fails, perform a [manual database cleanup via the provided CLI command](../../troubleshooting/cleaning-up-the-deviceauth-database-after-device-decommissioning).
+In the event that the decommissioning operation fails, perform a [manual database cleanup via the provided CLI command](../../troubleshooting/mender-server#cleaning-up-the-deviceauth-database-after-device-decommissioning).
 
 ### Call the preauthorize API
 

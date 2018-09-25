@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 After downloading one of the Mender demo images,
-[Building a Mender Yocto Project image](../building-mender-image/building-yocto-image) or [Converting existing debian images](../building-mender-image/debian-image-conversion)
+[Building a Mender Yocto Project image](../building-mender-image/building-yocto-image) or [Converting existing debian images](../image-configuration/debian-family-converted-image-configuration)
 for the first time, you need to write the storage image to
 the flash of the device.
 

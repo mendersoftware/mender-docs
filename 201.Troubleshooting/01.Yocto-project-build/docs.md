@@ -18,7 +18,7 @@ Mender needs to configure U-Boot in order to support robust rootfs rollback. If 
 
 ## A U-Boot component is failing to compile, and it compiles without Mender
 
-This may be an indication that Mender's automatic U-Boot patching has failed for the particular board that's being built for, and a manual patch may be required. For information on how to create such a patch, go to the [Manual U-Boot integration section](../../devices/integrating-with-u-boot/manual-u-boot-integration).
+This may be an indication that Mender's automatic U-Boot patching has failed for the particular board that's being built for, and a manual patch may be required. For information on how to create such a patch, go to the [Manual U-Boot integration section](../../devices/integrating-with-u-boot/yocto/manual-u-boot-integration).
 
 
 ## The bootloader and the Linux kernel do not agree about the indexes of storage devices
