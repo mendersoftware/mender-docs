@@ -83,7 +83,7 @@ ERROR: Logfile of failure stored in: /home/user/poky/build/tmp/work/cortexa7hf-n
 ERROR: Task (/home/user/poky/meta-mender/meta-mender-core/recipes-bsp/u-boot/u-boot-fw-utils-mender-auto-provided_1.0.bb:do_package) failed with exit code '1'
 ```
 
-This is a known bug in U-Boot versions prior to v2017.05. If you get this error, the auto-provided recipe won't work, so you will have to carry out the steps in [the u-boot-fw-utils guide](../../devices/integrating-with-u-boot/manual-u-boot-integration#u-boot-fw-utils). Note that only the section under "u-boot-fw-utils" is necessary, the other sections on the same page, such as `MENDER_UBOOT_AUTO_CONFIGURE = "0"`, should not be necessary to carry out unless you have other reasons to do so.
+This is a known bug in U-Boot versions prior to v2017.05. If you get this error, the auto-provided recipe won't work, so you will have to carry out the steps in [the u-boot-fw-utils guide](../../devices/integrating-with-u-boot/yocto/manual-u-boot-integration#u-boot-fw-utils). Note that only the section under "u-boot-fw-utils" is necessary, the other sections on the same page, such as `MENDER_UBOOT_AUTO_CONFIGURE = "0"`, should not be necessary to carry out unless you have other reasons to do so.
 
 
 ## I get a build error if I am using PREFERRED_PROVIDER_virtual/bootloader instead of PREFERRED_PROVIDER_u-boot

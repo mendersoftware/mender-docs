@@ -34,7 +34,7 @@ The other layers in *meta-mender* provide support for specific boards.
 
 Mender needs to integrate with your device, most notably with the boot process.
 This integration enables robust and atomic rollbacks with Mender.
-Please see [Device integration](../../devices) for general requirements and
+Please see [Device integration](../../../devices) for general requirements and
 adjustment you might need to make before building.
 
 The following reference devices are already integrated with Mender
@@ -228,7 +228,7 @@ There is one Mender disk image, which will have one of the following suffixes:
   * `.sdimg` if the system is an ARM system and boots using U-Boot (without UEFI emulation)
   * `.biosimg` if the system is an x86 system and boots using the traditional BIOS and GRUB bootloader
 
-!!! Please consult the [bootloader support section](../../../devices/system-requirements/bootloader-support) for information on which boot method is typically used in each build configuration.
+!!! Please consult the [bootloader support section](../../../devices/system-requirements#bootloader-support) for information on which boot method is typically used in each build configuration.
 
 This disk image is used to provision the device storage for devices without
 Mender running already. Please proceed to [Provisioning a new device](../../provisioning-a-new-device)

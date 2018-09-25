@@ -162,7 +162,7 @@ Together with `MENDER_IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET`, this specifies a file
 
 #### MENDER_IS_ON_MTDID
 
-This variable is only relevant if the [the `mender-ubi` feature](../image-configuration/features#list-of-features) is enabled. The variable should be set to the MTDID of the device that mender, and the root filesystem in particular, resides on. This is set automatically in cases where it's possible, but in some cases it must be set manually.
+This variable is only relevant if the [the `mender-ubi` feature](../image-configuration/yocto-image-configuration/features#list-of-features) is enabled. The variable should be set to the MTDID of the device that mender, and the root filesystem in particular, resides on. This is set automatically in cases where it's possible, but in some cases it must be set manually.
 
 For example:
 
