@@ -136,13 +136,13 @@ It defaults to the value of `${MACHINE}`.
 #### MENDER_FEATURES_DISABLE
 
 Features appended to this variable will be disabled in the build. See [the
-section on features](../image-configuration/features) for more information.
+section on features](../image-configuration/yocto-image-configuration/features) for more information.
 
 
 #### MENDER_FEATURES_ENABLE
 
 Features appended to this variable will be enabled in the build. See [the
-section on features](../image-configuration/features) for more information.
+section on features](../image-configuration/yocto-image-configuration/features) for more information.
 
 
 #### MENDER_GRUB_STORAGE_DEVICE
