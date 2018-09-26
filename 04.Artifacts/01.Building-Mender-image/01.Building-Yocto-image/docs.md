@@ -124,7 +124,7 @@ For the three Mender reference devices use these layers (only add one of these):
 * BeagleBone Black: No board specific layer needed
 * Virtual devices: `bitbake-layers add-layer ../meta-mender/meta-mender-qemu`
 
-If you are building for a different device and encounter any issues, please see [Device integration](../../devices)
+If you are building for a different device and encounter any issues, please see [Device integration](../../../devices)
 for general requirements and adjustments you might need to enable your device to support Mender.
 
 At this point, all the layers required for Mender should be
