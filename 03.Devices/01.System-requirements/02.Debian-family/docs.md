@@ -1,13 +1,13 @@
 ---
-title: Debian based family
+title: Debian family
 taxonomy:
     category: docs
 ---
 
-Currently Mender supports updates Raspbian on Raspberry Pi 3 and Debian on BeagleBone Black. [Mender conversion scripts](https://github.com/mendersoftware/mender-conversion-tools) can transform original system image into image, which fully satisfies all Mender requirements. Mender conversion scripts are tested on Fedora 28. Before scripts are launched it is recommended to install several packages:
+Currently Mender supports updating Debian-based systems, including Raspbian and Ubuntu. The [Mender conversion scripts](https://github.com/mendersoftware/mender-conversion-tools) can transform a system image into an image which fully satisfies all Mender requirements. These scripts have been tested on Ubuntu 18.04.  Other desktop distributions will likely work as the requirements on the host OS are minimal. Install the following packages on your Ubuntu system before invoking the Mender conversion scripts:
 
 ```bash
-sudo dnf install mtools parted mtd-utils e2fsprogs uboot-tools pigz
+sudo apt install mtools parted mtd-utils e2fsprogs u-boot-tools pigz
 ```
 
-[Bootloader support section](bootloader-support) provides more information how to install bootloader which supports Mender updates.
+The [Bootloader support section](bootloader-support) provides more information for installing a bootloader which supports Mender updates.

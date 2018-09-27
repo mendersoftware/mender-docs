@@ -4,9 +4,9 @@ taxonomy:
     category: docs
 ---
 
-Currently [Mender conversion scripts](https://github.com/mendersoftware/mender-conversion-tools) use patched U-Boot for Raspbian and GRUB for Debian on Beaglebone. Mender scripts do not provide an opportunity to choose bootloader.
+Currently the [Mender conversion scripts](https://github.com/mendersoftware/mender-conversion-tools) use a modified U-Boot for Raspbian and GRUB for Debian on Beaglebone. Choosing a different bootloader is not supported.
 
-Mender scripts require that bootloader installation is done after repartitioning of original system image. To install correct bootloader, execute the following script:
+These scripts require bootloader installation after repartitioning of original system image. To install the correct bootloader, execute the following:
 
 ```bash
 git clone https://github.com/mendersoftware/mender-conversion-tools.git
@@ -14,4 +14,4 @@ git clone https://github.com/mendersoftware/mender-conversion-tools.git
 ./mender-conversion-tool.sh install_bootloader --image <sdimg_file_path>  --device-type <beaglebone/raspberrypi3> --toolchain <toolchaain name e.g. arm-linux-gnueabihf>
 ```
 
-The `./mender-conversion-tool.sh make_sdimg` command is responsible for adjusting the partition layout of an original image according to Mender needs. The [partition layout section](../../../partition-layout) explains Mender's requirements for partition layout in details.
+The `./mender-conversion-tool.sh make_sdimg` command is responsible for adjusting the partition layout of an original image according to Mender needs. The [partition layout section](../../../partition-layout) explains Mender's requirements for partition layout in detail.
