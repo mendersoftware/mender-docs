@@ -6,7 +6,7 @@ taxonomy:
 
 Mender provides a tool for converting existing binary OS images for use with Mender. These tools are available in a [Mender repository](https://github.com/mendersoftware/mender-conversion-tools/).
 
-Execute the following on an Ubuntu host OS to install the prequesites for these scripts:
+Execute the following on an Ubuntu host OS to install the p[B[B[B[Prerequisites for these scripts:
 
 ```bash
 sudo apt install mtools parted mtd-utils e2fsprogs u-boot-tools pigz

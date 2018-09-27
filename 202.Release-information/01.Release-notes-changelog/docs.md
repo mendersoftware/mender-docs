@@ -13,7 +13,7 @@ _Released 09.13.2018_
 New changes in meta-mender since sumo-v2018.08:
 
 * Fix regression in QEMU launching after changing image name in 897195ddc3f.
-* GRUB: Pass kernel arguments from bootargs variable instead of hardcoded.
+* GRUB: Pass kernel arguments from bootargs variable instead of hard coded.
   This allows it to be overridden or modified by adding a script snippet
   which sets the variable.
   Also log kernel messages to both screen and serial port by default,
@@ -41,7 +41,7 @@ New changes in meta-mender since sumo-v2018.08:
   `MENDER_PARTITION_ALIGNMENT`. Previously the last block might be
   shorter.
 * Fix build error when using GRUB and /dev/mmcblk storage device.
-* Fix build error when using any harddrive besides sda/hda, such as sdb.
+* Fix build error when using any hard drive besides sda/hda, such as sdb.
 * Fix `IMAGE_ROOTFS_EXCLUDE_PATH` failing when listing a non-existent path.
 * Fix `MENDER_GRUB_STORAGE_DEVICE` variable not being respected.
   ([MEN-2048](https://tracker.mender.io/browse/MEN-2048))

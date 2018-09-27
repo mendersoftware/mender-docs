@@ -70,4 +70,4 @@ as GRUB will fall back to the correct location of its configuration file.
 
 Most likely this is an issue in the upstream GRUB recipe from the Yocto Project
 and it should be fixed in an upstream release or by
-[Mender providing its own GRUB receipe](https://tracker.mender.io/browse/MEN-1961?target=_blank).
+[Mender providing its own GRUB recipe](https://tracker.mender.io/browse/MEN-1961?target=_blank).

@@ -1,5 +1,5 @@
 ---
-title: Buillding Mender image
+title: Building Mender image
 taxonomy:
     category: docs
 ---
