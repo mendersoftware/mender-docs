@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-Currently the [Mender conversion scripts](https://github.com/mendersoftware/mender-conversion-tools) use a modified U-Boot for Raspbian and GRUB for Debian on Beaglebone. Choosing a different bootloader is not supported.
+Currently [mender-convert](https://github.com/mendersoftware/mender-conversion-tools) uses a modified U-Boot for Raspbian and an unmodified GRUB for Debian on Beaglebone. Choosing a different bootloader is not supported.
 
 These scripts require bootloader installation after repartitioning of original system image. To install the correct bootloader, execute the following:
 
