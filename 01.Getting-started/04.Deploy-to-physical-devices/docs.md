@@ -27,7 +27,7 @@ a SD card to store the OS, so you will need one SD card
 
 ### Disk image and Artifacts
 
-Get the disk image and Artifacts for your device(s) from [Download demo images](../download-test-images).
+Get the disk image and Artifacts for your board(s) from [Download demo images](../download-test-images).
 
 !!! It is possible to use this tutorial with *any* physical device, as long as you have integrated Mender with it. In this case you cannot use the demo Artifacts we provide in this tutorial, but you need to build your own artifacts as described in [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
 
@@ -293,18 +293,18 @@ Now that you have two Mender Artifact files that are configured for your
 network with different names, you can deploy updates back and forth between them.
 
 
-## Integrate Mender with your device
+## Integrate Mender with your board
 
 If you want to build your own artifact for the Raspberry Pi 3 or BeagleBone Black,
 head over to the tutorial [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
 
-Development devices like the Raspberry Pi 3 and BeagleBone Black
+Development boards like the Raspberry Pi 3 and BeagleBone Black
 are rarely used in production due to the cost of scaling and specific
 needs of custom applications.
 
-Now that you have seen how Mender works with a reference device, you might be wondering what
+Now that you have seen how Mender works with a reference board, you might be wondering what
 it would take to port it to your own platform. The first place to go is
-[Device integration](../../devices), where you will find out how to integrate
+[Board integration](../../devices), where you will find out how to integrate
 the Mender client with your device software, and then look at
 [Creating Artifacts](../../artifacts) to see how to build images ready to be
 deployed over the network to your devices.
