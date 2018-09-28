@@ -1,5 +1,5 @@
 ---
-title: GRUB with Debian
+title: GRUB
 taxonomy:
     category: docs
 ---

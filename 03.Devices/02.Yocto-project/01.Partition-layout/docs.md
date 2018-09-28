@@ -1,5 +1,5 @@
 ---
-title: Yocto partition layout
+title: Partition layout
 taxonomy:
     category: docs
 ---
@@ -34,7 +34,7 @@ software*. In Linux, raw flash devices are exposed as a **Memory Technology
 Device (MTD)** file. Care must be taken when selecting a file system to ensure
 that it is MTD-aware and properly handles wear leveling and error correction.
 Popular file systems for MTD devices include UBIFS, JFFS2, and YAFFS.
-Consult the [raw flash](../../raw-flash) section for details on setting up and
+Consult the [raw flash](../raw-flash) section for details on setting up and
 configuration.
 
 

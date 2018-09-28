@@ -1,5 +1,5 @@
 ---
-title: Debian bootloader support
+title: Bootloader support
 taxonomy:
     category: docs
 ---
@@ -14,4 +14,4 @@ git clone https://github.com/mendersoftware/mender-conversion-tools.git
 ./mender-conversion-tool.sh install_bootloader --image <sdimg_file_path>  --device-type <beaglebone/raspberrypi3> --toolchain <toolchain name e.g. arm-linux-gnueabihf>
 ```
 
-The `./mender-conversion-tool.sh make_sdimg` command is responsible for adjusting the partition layout of an original image according to Mender needs. The [partition layout section](../../../partition-layout) explains Mender's requirements for partition layout in detail.
+The `./mender-conversion-tool.sh make_sdimg` command is responsible for adjusting the partition layout of an original image according to Mender needs. The [partition layout section](../../general-system-requirements#partition-layout) explains Mender's requirements for partition layout in detail.

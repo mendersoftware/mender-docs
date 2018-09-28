@@ -1,10 +1,10 @@
 ---
-title: Yocto integration with U-Boot
+title: U-Boot
 taxonomy:
     category: docs
 ---
 
-This section describes the steps needed to integrate with U-Boot for Yocto project. Most steps are automated, but there are a few things that need to be in place for this to function.
+This section describes the steps needed to integrate with U-Boot for Yocto Project. Most steps are automated, but there are a few things that need to be in place for this to function.
 
 !!! Please consult [the bootloader support section](../../system-requirements/yocto/bootloader-support) to find out if U-Boot is supported on your platform and build configuration, and whether it is enabled by default.
 

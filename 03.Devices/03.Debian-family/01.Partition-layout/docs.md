@@ -1,5 +1,5 @@
 ---
-title: Debian partition layout
+title: Partition layout
 taxonomy:
     category: docs
 ---

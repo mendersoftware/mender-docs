@@ -1,5 +1,5 @@
 ---
-title: GRUB with Yocto Project
+title: GRUB
 taxonomy:
     category: docs
 ---

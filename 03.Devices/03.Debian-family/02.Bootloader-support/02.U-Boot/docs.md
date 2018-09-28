@@ -1,5 +1,5 @@
 ---
-title: Debian integration with U-Boot
+title: U-Boot
 taxonomy:
     category: docs
 ---
