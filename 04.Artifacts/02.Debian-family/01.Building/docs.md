@@ -4,9 +4,9 @@ taxonomy:
     category: docs
 ---
 
-Mender provides a tool for converting existing binary OS images for use with Mender. These tools are available in a [Mender repository](https://github.com/mendersoftware/mender-conversion-tools/).
+Mender provides a tool for converting existing binary OS images for use with Mender. These tools are available in a [github repository](https://github.com/mendersoftware/mender-conversion-tools/).
 
-Execute the following on an Ubuntu host OS to install the p[B[B[B[Prerequisites for these scripts:
+Execute the following on an Ubuntu host OS to install the prerequisites for these scripts:
 
 ```bash
 sudo apt install mtools parted mtd-utils e2fsprogs u-boot-tools pigz
@@ -24,4 +24,4 @@ This command will generate an image compliant with Mender requirements.
 
 The above invocation will configure your image for use with the [Mender demo environment](../../../getting-started/create-a-test-environment). 
 
-See [the next chapter](../../image-configuration/debian-family-converted-image-configuration) for details on configuring your images for [Hosted Mender](https://hosted.mender.io) or a [production installation](../../../administration/production-installation).
+See [the next chapter](../image-configuration) for details on configuring your images for [Hosted Mender](https://hosted.mender.io) or a [production installation](../../../administration/production-installation).

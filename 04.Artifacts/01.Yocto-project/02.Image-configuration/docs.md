@@ -1,5 +1,5 @@
 ---
-title: Image configuration for Yocto project
+title: Image configuration
 taxonomy:
     category: docs
 ---

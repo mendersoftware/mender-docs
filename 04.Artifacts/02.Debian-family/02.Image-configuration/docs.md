@@ -1,5 +1,5 @@
 ---
-title: Image configuration for Debian systems
+title: Image configuration
 taxonomy:
     category: docs
 ---
