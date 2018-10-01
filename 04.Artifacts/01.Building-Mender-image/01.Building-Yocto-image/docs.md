@@ -30,24 +30,24 @@ The other layers in *meta-mender* provide support for specific boards.
 
 ## Prerequisites
 
-### Device integrated with Mender
+### Board integrated with Mender
 
-Mender needs to integrate with your device, most notably with the boot process.
+Mender needs to integrate with your board, most notably with the boot process.
 This integration enables robust and atomic rollbacks with Mender.
-Please see [Device integration](../../../devices) for general requirements and
+Please see [Board integration](../../../devices) for general requirements and
 adjustment you might need to make before building.
 
-The following reference devices are already integrated with Mender
+The following reference boards are already integrated with Mender
 and covered by automated tests to ensure they work well:
 
 <!--AUTOVERSION: "meta-mender/tree/%"/ignore-->
 * [Raspberry Pi 3](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-raspberrypi?target=_blank) (other revisions are also likely to work)
 * BeagleBone Black (no board specific layer needed)
-* [Virtual device (qemux86-64)](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-qemu?target=_blank)
-* [Virtual device (vexpress-qemu)](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-qemu?target=_blank)
+* [Virtual board (qemux86-64)](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-qemu?target=_blank)
+* [Virtual board (vexpress-qemu)](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-qemu?target=_blank)
 
 If you encounter any issues and want to save time, you can use
-the [Mender professional services to integrate your device](https://mender.io/product/board-support?target=_blank).
+the [Mender professional services to integrate your board](https://mender.io/product/board-support?target=_blank).
 
 
 ### Correct clock on device
@@ -118,14 +118,14 @@ bitbake-layers add-layer ../meta-mender/meta-mender-demo
 !!! Mender board integration is mostly automated. Consequently, a board-specific Mender integration layer as described below is typically only necessary for improving performance or resolving any board-specific issues. If you are unsure if you need one, try to build without adding any board integration layer.
 
 If needed, add any Mender integration layer specific to your board.
-For the three Mender reference devices use these layers (only add one of these):
+For the three Mender reference boards use these layers (only add one of these):
 
 * Raspberry Pi 3 (other revisions might also work): `bitbake-layers add-layer ../meta-mender/meta-mender-raspberrypi` (depends on `meta-raspberrypi`)
 * BeagleBone Black: No board specific layer needed
-* Virtual devices: `bitbake-layers add-layer ../meta-mender/meta-mender-qemu`
+* Virtual boards: `bitbake-layers add-layer ../meta-mender/meta-mender-qemu`
 
-If you are building for a different device and encounter any issues, please see [Device integration](../../../devices)
-for general requirements and adjustments you might need to enable your device to support Mender.
+If you are building for a different board and encounter any issues, please see [Board integration](../../../devices)
+for general requirements and adjustments you might need to enable your board to support Mender.
 
 At this point, all the layers required for Mender should be
 part of your Yocto Project build environment.
@@ -147,7 +147,7 @@ MENDER_ARTIFACT_NAME = "release-1"
 INHERIT += "mender-full"
 
 # A MACHINE integrated with Mender.
-# raspberrypi3, beaglebone-yocto, vexpress-qemu and qemux86-64 are reference devices
+# raspberrypi3, beaglebone-yocto, vexpress-qemu and qemux86-64 are reference boards
 MACHINE = "<YOUR-MACHINE>"
 
 # For Raspberry Pi, uncomment the following block:
@@ -240,4 +240,4 @@ which have `.mender` suffix. You can either deploy this Artifact in managed mode
 the Mender server as described in [Deploy to physical devices](../../../getting-started/deploy-to-physical-devices)
 or by using the Mender client only in [Standalone deployments](../../../architecture/standalone-deployments).
 
-!!! If you built for one of the virtual Mender reference devices (`qemux86-64` or `vexpress-qemu`), you can start up your newly built image with the script in `../meta-mender/meta-mender-qemu/scripts/mender-qemu` and log in as *root* without password.
+!!! If you built for one of the virtual Mender reference boards (`qemux86-64` or `vexpress-qemu`), you can start up your newly built image with the script in `../meta-mender/meta-mender-qemu/scripts/mender-qemu` and log in as *root* without password.

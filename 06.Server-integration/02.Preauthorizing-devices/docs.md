@@ -14,14 +14,14 @@ See [Device authentication](../../architecture/device-authentication) for a gene
 ## Prerequisites
 
 
-### A device integrated with Mender
+### A board integrated with Mender
 
-You need a physical device that has already been [integrated with Mender](../). For example, you may use one of the reference devices BeagleBone Black or Raspberry Pi 3.
+You need a physical board that has already been [integrated with Mender](../). For example, you may use one of the reference boards BeagleBone Black or Raspberry Pi 3.
 
 
-### A block-based disk image for your device
+### A block-based disk image for your board
 
-We assume you have either [built a disk image for your device](../../artifacts/building-mender-yocto-image) or base it off one of the [pre-built demo images](../../getting-started/download-test-images). Note that a disk image is used to provision the entire storage of the device (it contains *all* the partitions) and typically has the `.sdimg` suffix.
+We assume you have either [built a disk image for your board](../../artifacts/building-mender-yocto-image) or base it off one of the [pre-built demo images](../../getting-started/download-test-images). Note that a disk image is used to provision the entire storage of the board (it contains *all* the partitions) and typically has the `.sdimg` suffix.
 
 !!! Raw flash or raw filesystem images are not covered by this tutorial; however the steps are conceptually the same in these cases.
 
@@ -36,7 +36,7 @@ By default the Mender client uses the [MAC address of the first interface](https
 
 ### Mender client and server connectivity
 
-Once your device boots with a newly provisioned disk image, it should already be correctly connecting to the Mender server. After booting the device you see your device pending authorization in the Mender server UI, similar to the following.
+Once your device boots with a newly provisioned disk image, it should already be correctly connecting to the Mender server. After booting the device you see it pending authorization in the Mender server UI, similar to the following.
 
 ![Mender UI - device pending authorization](device-pending-authorization.png)
 
