@@ -92,7 +92,7 @@ Secondly, To make sure that the device is not in an existing authentication set,
 In the same terminal, run the following command:
 
 ```bash
-curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/devauth/devices | jq > /tmp/devauth.json
+curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/devauth/devices | jq '.' > /tmp/devauth.json
 ```
 
 !!! To make the response more readable, we use the `jq` utility to decode it. If it is not available on your system you can omit this pipe or replace it with a different indentation tool (e.g `python -m json.tool`).
@@ -136,7 +136,7 @@ curl -H "Authorization: Bearer $JWT" -H "Content-Type: application/json" -X POST
 If there is no output from the command, this indicates it succeeded. To verify, list the currently registered authentication sets and make sure there is one for your device with the `preauthorized` status:
 
 ```bash
-curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/admission/devices | jq
+curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/admission/devices | jq '.'
 ```
 
 Your device should now be preauthorized and accepted to the Mender server once it connects with the exact same identity and key.
