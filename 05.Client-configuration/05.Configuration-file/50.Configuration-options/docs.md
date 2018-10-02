@@ -32,11 +32,24 @@ system based on Yocto configuration and rarely needs to be modified.
 The Linux device that contains root filesystem B. This is set by the build
 system based on Yocto configuration and rarely needs to be modified.
 
+#### Servers
+
+An array of json objects of the format
+`[{ServerURL: "https://mender-server.com"},
+{ServerURL: "https://mender-server2.com"}, ...]`, where `ServerURL` has the
+same format as the plain [`ServerURL` attribute](#ServerURL) paragraph. If
+`Servers` entry is specified, the configuration cannot contain an additional
+`ServerURL` entry in the top level of the json configuration. Upon an unserved
+request (4XX/5XX-response codes) the client will attempt the next server on the
+list in the given order.
+
 #### ServerURL
 
 The server URL which is used as the basis for API requests. This should be set
 to the server that runs the Mender server services. It should include the whole
 URL, including `https://` and a trailing slash.
+*NOTE: This entry conflicts with [`Servers` attribute](#Servers), i.e. only one
+of these entries are accepted.*
 
 #### ServerCertificate
 
