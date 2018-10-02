@@ -86,7 +86,7 @@ You should now have an API token you can use to call any of the [Mender server m
 To verify you can call the server APIs, list the users of your Mender server instance:
 
 ```bash
-curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/useradm/users | jq
+curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/useradm/users | jq '.'
 ```
 
 If it succeeds it will return something like the following:
