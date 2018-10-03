@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-The [mender-convert](https://github.com/mendersoftware/mender-conversion-tools?target=_blank) tools uses GRUB as second stage bootloader for Debian on Beaglebone. This tool build GRUB from the [official repository](https://www.gnu.org/software/grub/grub-download.html?target=_blank). Mender does not require any patches for GRUB and should be built with EFI platform support. Execute the following to install the GRUB bootloader into a disk image with partition layout compliant with Mender requirements:
+The [mender-convert](https://github.com/mendersoftware/mender-conversion-tools?target=_blank) tools use GRUB as second stage bootloader for Debian on Beaglebone. This tool build GRUB from the [official repository](https://www.gnu.org/software/grub/grub-download.html?target=_blank). Mender does not require any patches for GRUB and should be built with EFI platform support. Execute the following to install the GRUB bootloader into a disk image with partition layout compliant with Mender requirements:
 
 ```bash
  ./mender-conversion-tool.sh install_bootloader --image <sdimg_file_path> --device-type beaglebone --toolchain <cross_compiler_name e.g. arm-linux-gnueabihf>
