@@ -14,6 +14,3 @@ please see the [Architecture overview](../../architecture/overview).
 In order to enable the client to work in as many environments as possible, it is built to be generic and extensible,
 while providing default setup and configuration that should work with most environments. Especially when running
 the client in managed mode, i.e. connected to a Mender server, there are a number of settings and extension points that can be utilized.
-
-This section of the documentation assumes that you have the Mender client successfully running on your device. You can achieve this
-by using a pre-integrated device like the BeagleBone Black or [integrate Mender with your device](../../devices).
