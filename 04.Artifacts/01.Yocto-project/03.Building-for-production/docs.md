@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-This section describes the steps that are specific to production builds for Yocto project. If you are using Debian converted images please refer to [setting parameters for mender-convert](../image-configuration/debian-family-converted-image-configuration)
+This section describes the steps that are specific to production builds for Yocto Project. If you are using Debian converted images please refer to [setting parameters for mender-convert](../image-configuration/debian-family-converted-image-configuration)
 These steps are not necessary if you are just trying out Mender, but must be done before deploying to production.
 
 
