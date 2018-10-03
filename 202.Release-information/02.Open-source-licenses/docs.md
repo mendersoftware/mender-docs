@@ -7077,7 +7077,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 
 
-Performance improvements (Javascript-specific):
+Performance improvements (JavaScript-specific):
 
 Copyright 2016, Joyent Inc
 Author: Alex Wilson <alex.wilson@joyent.com>

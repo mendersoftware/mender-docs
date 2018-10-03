@@ -17,6 +17,7 @@ aca
 acc
 accesslog
 AccessLogMiddleware
+accessor
 acGHAg
 ada
 adafruit
@@ -48,9 +49,11 @@ ahmad
 ahmadnassri
 ahshagheeD
 Airbnb
+AJ
 AjG
 ajv
 Alessandro
+alex
 Alman
 altbootcmd
 amazonaws
@@ -58,6 +61,7 @@ amd
 amdefine
 AMIIBCgKCAQEA
 AMIIBigKCAYEAvOsee
+amlie
 Anderton
 Andreas
 Andres
@@ -74,6 +78,8 @@ apic
 APIs
 apis
 app
+apps
+Apr
 archy
 arekinath
 args
@@ -98,6 +104,7 @@ arunoda
 asap
 asaskevich
 Aseem
+aseemk
 ashaffer
 Ashkenas
 Ashworth
@@ -106,6 +113,7 @@ ast
 astw
 async
 asynckit
+atob
 attr
 attribs
 au
@@ -126,6 +134,7 @@ autorest
 AUTOVERSION
 AvianFlu
 AvrAgMBAAE
+awk
 aws
 ba
 babel
@@ -151,6 +160,7 @@ bbclass
 bbe
 bc
 bca
+bcb
 bcd
 bcf
 bcm
@@ -162,9 +172,10 @@ BeagleBone
 beaglebone
 beagleboneblack
 Beaty
+bef
 behaviour
 Benoit
-Bevry
+bevry
 bf
 bindir
 bios
@@ -177,6 +188,7 @@ blaine
 blakeembrey
 Blanco
 blinkenlights
+blockdev
 bmap
 bmatsuo
 bn
@@ -256,11 +268,13 @@ CET
 cf
 cfd
 cff
+cfg
 CFI
 CFLAGS
 cgroup
 ch
 Chadkin
+chalkerx
 changelog
 charenc
 checkmarks
@@ -274,6 +288,7 @@ chmod
 chokidar
 ci
 cJfQJ
+ck
 CktbCb
 Claimsâ
 classnames
@@ -304,7 +319,7 @@ com
 commondir
 commonjs
 CompactFlash
-COMPAT
+compat
 concat
 conf
 CONFFILES
@@ -334,6 +349,7 @@ CreateTenant
 creativecommons
 CredentialsChainVerboseErrors
 CRL
+crossbuild
 crt
 cryptiles
 crypto
@@ -344,6 +360,7 @@ cujojs
 cURL
 cvKEqYtuXIfBBWp
 cwd
+cyan
 da
 dabf
 dae
@@ -363,10 +380,13 @@ DBs
 dbus
 dc
 dd
+ddb
 ddbad
+ddc
 de
 dea
 debeaa
+debian
 dec
 decamelize
 ded
@@ -378,10 +398,12 @@ defconfig
 defconfigs
 del
 Delamarche
+demoing
 demoneaux
 Denicola
 Denis
 denx
+Deoxxa
 depd
 DEPLOYDIR
 deps
@@ -418,6 +440,7 @@ dl
 dm
 dnd
 dns
+doc
 Docker's
 dockerfile
 dockervolumes
@@ -435,6 +458,7 @@ downtime
 doyabzhx
 drbg
 Dropbox
+dropDatabase
 dropdown
 dropzone
 Drucker
@@ -493,7 +517,7 @@ envtools
 EOL
 ep
 Eran
-Eraseblock
+eraseblock
 eraseblocks
 erasesize
 ErrAuthSetNotFound
@@ -510,11 +534,16 @@ esrecurse
 estraverse
 etag
 eth
+ETHER
+eval
+Evan
 Evgeny
 evp
 eXGdiLO
 exitCode
 Expat
+expiry
+expr
 ext
 Ext'd
 extendable
@@ -522,6 +551,7 @@ extglob
 extsprintf
 EXXOIENNCjucitVs
 EYv
+fa
 faa
 facebook
 faebf
@@ -546,6 +576,7 @@ feaa
 fedf
 Fedor
 fefbdfa
+Fentanes
 Feross
 ff
 ffd
@@ -563,6 +594,8 @@ filesize
 findup
 Fixup
 fJ
+Florian
+florianreiterer
 Flqh
 fm
 fMANM
@@ -589,6 +622,7 @@ fsck
 fsevents
 fsf
 fsnotify
+fsprogs
 fstab
 fstype
 FSTYPES
@@ -610,6 +644,8 @@ Gensler
 Geoffroy
 getnative
 getpass
+getsize
+GiB
 Gil
 gitAUTOINC
 github
@@ -625,6 +661,7 @@ gmail
 gmO
 GMT
 gnueabi
+gnueabihf
 gnupg
 GNWsjd
 Gocheck
@@ -643,7 +680,8 @@ Govett
 gpg
 GPL
 GPLv
-GPT
+gpmi
+gpt
 grep
 Grijalva
 grubenv
@@ -661,6 +699,7 @@ gz
 gzip
 GZZGqiq
 Halliday
+hamburg
 hapi
 hapijs
 har
@@ -671,6 +710,7 @@ hBUFoOLhdPFx
 hcl
 HCveVzFkBPbCwt
 hd
+hda
 HDMI
 HeA
 hellman
@@ -687,6 +727,7 @@ HowCanIAccessUBootEnvironmentVariablesInLinux
 Howey
 howeyc
 hPCxvwVBO
+href
 hrtime
 html
 htmlescape
@@ -727,6 +768,7 @@ indx
 ine
 inexorabletash
 inflight
+infradead
 ini
 init
 initrd
@@ -735,6 +777,7 @@ inode
 insertafter
 installables
 Insua
+internet
 InventoryPollIntervalSeconds
 io
 iOS
@@ -775,6 +818,7 @@ jq
 jquense
 jQuery
 jquery
+jryans
 js
 jsbn
 json
@@ -785,6 +829,7 @@ jsprim
 jss
 jstransform
 jsx
+julian
 juliangruber
 JVgtNkrzxMWp
 jwalterweatherman
@@ -812,13 +857,17 @@ KIt
 kj
 kkoopa
 Koen
+Kogai
+kooi
 Koppers
 Koss
+kossnocorp
 Kowal
 kpartx
 kr
 Krhonos
 kriskowal
+kristian
 Kristopher
 krogoth
 Kucherenko
@@ -831,6 +880,7 @@ LAYERSERIES
 LBA
 lcd
 lcid
+lcs
 lcTO
 ld
 LDFLAGS
@@ -845,7 +895,7 @@ LfKga
 LGPL
 LGPLv
 LgsyzPWvLAGIsXYnR
-Li
+li
 lib
 libc
 libdir
@@ -857,10 +907,12 @@ LIC
 licence
 Licensableâ
 Licenseâ
+LICENSEFILE
 LicenseInfo
 Licensesâ
 licensor's
 licensors
+lifecycles
 liftoff
 lindenlab
 Lindesay
@@ -917,6 +969,7 @@ matthewh
 mattn
 maximatch
 MAXSIZE
+Mazieres
 Mbit
 mbr
 MByte
@@ -982,10 +1035,13 @@ MongoDB
 mongoDB
 mongodb
 morty
+Mott
 Mountpoint
+mousetrap
 mozilla
 MPL
 ms
+MSDOS
 msg
 mt
 mtd
@@ -1001,6 +1057,7 @@ murmurhash
 murphydanger
 mv
 mW
+mx
 myboard
 mydevice
 myhostname
@@ -1012,6 +1069,7 @@ mz
 na
 nan
 nand
+nanomatch
 Nassri
 nathan
 nbar
@@ -1035,9 +1093,11 @@ ngx
 NgYyaV
 nHwIDAQAB
 Nicolas
+Niels
 niemeyer
 niJy
 Nik
+Nikita
 NiVYf
 nJK
 nkH
@@ -1050,6 +1110,7 @@ nnHICIsD
 nnpprbNYOCA
 noartifact
 NoCredentialProviders
+nodejs
 noK
 NONINFRINGEMENT
 noout
@@ -1093,12 +1154,15 @@ Okonetchnikov
 Olivier
 oMY
 onboarding
+ONeal
 oneline
 oneoff
 Ong
 onSsnFXHXZUjbNZukNK
 ooPae
 ooPaeT
+OpenBSD
+openbsd
 OpenEmbedded
 openembedded
 OpenLDAP
@@ -1118,6 +1182,7 @@ osdn
 OSI
 oSiyqW
 OSX
+OTA
 outpipe
 Oxley
 PACKAGECONFIG
@@ -1129,6 +1194,8 @@ Parra
 parserc
 partialright
 partyâ
+pascalcase
+PASSKEY
 passphrase
 passwd
 paul
@@ -1150,10 +1217,12 @@ pflag
 pgrep
 Philipp
 php
+physnet
 picocom
 PID
 pidof
 pify
+pigz
 pipermail
 pjQswswQsh
 pkeyopt
@@ -1175,6 +1244,7 @@ PostCSS
 postcss
 postinstall
 postmile
+ppc
 PPVzHD
 Pragma
 pre
@@ -1192,6 +1262,7 @@ printenv
 Println
 proactive
 proc
+provos
 proxy's
 prr
 ps
@@ -1217,6 +1288,7 @@ qix
 QmD
 qs
 Quense
+quiltrc
 qXMqps
 QyZjk
 rabin
@@ -1233,6 +1305,7 @@ rbVA
 rc
 rdparty
 reactify
+readdir
 readdirp
 readerc
 readlink
@@ -1258,8 +1331,11 @@ regjsgen
 regjsparser
 Reinman
 reinterpolate
+Reiterer
 relink
 relinquishment
+Ren
+renee
 repacking
 req
 Requestâ
@@ -1267,6 +1343,7 @@ RequestID
 resolv
 RESTful
 restparam
+ret
 RetryPollIntervalSeconds
 rf
 rfc
@@ -1277,10 +1354,12 @@ ripemd
 rjvwiH
 rm
 rmdir
+rne
 ro
 rockchip
 rocko
 rollout
+Roly
 rootâ
 rootfs
 rootfsa
@@ -1313,6 +1392,7 @@ Saenz
 Salesforce
 Salman
 sam
+sans
 SARL
 Saskevich
 sato
@@ -1339,6 +1419,7 @@ sdk
 sed
 segmentio
 semver
+Sep
 sequencify
 ser
 Sergey
@@ -1376,6 +1457,7 @@ Sindre
 sirupsen
 sitnik
 skipverify
+Skovoroda
 SKU
 Slinko
 Slobodskoi
@@ -1425,6 +1507,7 @@ StdinOnce
 stdout
 Stefan
 stevenlevithan
+Stinnett
 Stofer
 Stol
 STORIS
@@ -1448,6 +1531,7 @@ sudo
 sudodoki
 Sugden
 Sui
+sumo
 superagent
 supers
 svg
@@ -1456,12 +1540,14 @@ sys
 sysconfdir
 sysfs
 syslog
+sysroot
 systemctl
 systemd
 systemjs
 sysv
 sysvinit
 ta
+tabbed
 Talmage
 tapable
 tarball
@@ -1469,12 +1555,14 @@ Tarimo
 Tarr
 Tasti
 tcp
+tedu
 tegrarcm
 templatesettings
 tenantadm
 TenantDataStore
 TenantToken
 Terin
+terinjokes
 tFor
 theming
 thenify
@@ -1488,15 +1576,19 @@ timedatectl
 tisdk
 tj
 tjw
+TLDRLegal
+tldrlegal
 tlds
 tLOdXZ
 TLS
 tmp
 tmpdir
+tmpf
 tmpfiles
 Tobias
 toml
 tool's
+toolchain
 tooltip
 tooltips
 tootallnate
@@ -1509,6 +1601,7 @@ Tremblay
 Trent
 troygoode
 trysound
+ts
 ttssh
 ttyAMA
 tUp
@@ -1549,8 +1642,11 @@ ui
 UIDs
 uimage
 uImage
+ul
+ullevk
 umd
 umount
+Unangst
 unbuildable
 unc
 uncombined
@@ -1558,11 +1654,13 @@ underscorejs
 unfetch
 Unger
 ungerik
+uni
 unicode
 uniq
 unitdir
 unlicense
 unmarshal
+Unneb
 Unprocessable
 UnreadRune
 unreads
@@ -1576,6 +1674,7 @@ UQLbnOUCKYw
 urfave
 uri
 URIs
+urix
 url
 urls
 usb
@@ -1592,13 +1691,15 @@ utils's
 uuid
 uV
 UxFqosFfLkS
-Vagg
+UXtemple
+vagg
 validator
 var
 variscite
 vdso
 verli
 verror
+Verschueren
 Versionâ
 versioned
 versioning
@@ -1643,6 +1744,7 @@ wifi
 wiki
 wikipage
 wikipedia
+wilson
 WIPO
 wJ
 wlan
@@ -1661,6 +1763,7 @@ Wu
 wwEqxJ
 wwNYCAIYRclzvI
 www
+xargs
 XD
 xdg
 XG
@@ -1693,6 +1796,7 @@ Yasuhiro
 yBLyYbNhxvBFiIJAXOI
 Yehuda
 yH
+yiminghe
 ykrU
 yml
 yN
@@ -1703,11 +1807,13 @@ Youâ
 Yourâ
 ythV
 Yu
+YUI's
 yukinying
 YuzuJS
 YXE
 yyyy
 Zakarie
+Zeit
 zertosh
 Zhiye
 Zilverline

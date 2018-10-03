@@ -13,10 +13,10 @@ and troubleshoot related issues.
 
 ## Admission & Authentication Components
 Admission and authentication are implemented by a single service:
-* [Device Authentication](https://github.com/mendersoftware/deviceauth)
+* [Device Authentication](https://github.com/mendersoftware/deviceauth?target=_blank)
 
 The service exposes APIs for:
-* accepting device-originating authentication requests, issuing and keeping track of authentication tokens ([JSON Web Token](https://jwt.io))
+* accepting device-originating authentication requests, issuing and keeping track of authentication tokens ([JSON Web Token](https://jwt.io?target=_blank))
 * inspecting and managing devices and their authentication credentials
 * device admission, i.e. granting authentication to selected devices
 
