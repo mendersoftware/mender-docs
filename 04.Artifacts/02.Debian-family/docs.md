@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-Mender provides a tool for converting existing binary OS images for use with Mender. These tools are available in a [github repository](https://github.com/mendersoftware/mender-conversion-tools/).
+Mender provides a tool for converting existing binary OS images for use with Mender. These tools are available in a [github repository](https://github.com/mendersoftware/mender-conversion-tools/?target=_blank).
 
 Execute the following on an Ubuntu host OS to install the prerequisites for these scripts:
 

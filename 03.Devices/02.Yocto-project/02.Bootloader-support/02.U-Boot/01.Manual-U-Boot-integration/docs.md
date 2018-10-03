@@ -6,7 +6,7 @@ taxonomy:
 
 In order to support rootfs rollback, Mender requires integration with
 U-Boot. Normally this is handled automatically by the build process in Mender's
-[meta-mender](https://github.com/mendersoftware/meta-mender) layer.
+[meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank) layer.
 
 !!! Mender provides out-of-the-box integration with U-Boot for "rocko" and later branches (Yocto Project version 2.4 and later). You only need to go through this section if you are using an older branch, or if the automatic patching process is not working as intended.
 

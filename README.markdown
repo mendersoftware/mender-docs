@@ -17,13 +17,13 @@ at https://docs.mender.io
 <!--AUTOVERSION: "mendersoftware/mender/blob/%/CONTRIBUTING.md"/ignore-->
 We welcome and ask for your contribution. If you would like to contribute to
 Mender, please read our guide on how to best get started [contributing code or
-documentation](https://github.com/mendersoftware/mender/blob/master/CONTRIBUTING.md).
+documentation](https://github.com/mendersoftware/mender/blob/master/CONTRIBUTING.md?target=_blank).
 
 ## License
 
 <!--AUTOVERSION: "mendersoftware/mender/blob/%/LICENSE"/ignore-->
 Mender is licensed under the Apache License, Version 2.0. See
-[LICENSE](https://github.com/mendersoftware/mender/blob/master/LICENSE) for the
+[LICENSE](https://github.com/mendersoftware/mender/blob/master/LICENSE?target=_blank) for the
 full license text.
 
 ## Security disclosure
@@ -39,5 +39,5 @@ issue. We thank you in advance for your cooperation.
   group](https://groups.google.com/a/lists.mender.io/forum/#!forum/mender)
 * Follow us on [Twitter](https://twitter.com/mender_io?target=_blank). Please
   feel free to tweet us questions.
-* Fork us on [Github](https://github.com/mendersoftware)
+* Fork us on [Github](https://github.com/mendersoftware?target=_blank)
 * Email us at [contact@mender.io](mailto:contact@mender.io)
