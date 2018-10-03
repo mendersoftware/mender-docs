@@ -4,6 +4,29 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender sumo-v2018.10
+
+_Released 10.03.2018_
+
+#### meta-mender (sumo-v2018.10)
+
+New changes in meta-mender since sumo-v2018.09:
+
+* Make sure mtdimg is not truncated, but has its full length.
+* Add specific patches for u-boot-toradex_2016.11.
+  ([MEN-1849](https://tracker.mender.io/browse/MEN-1849))
+* Fix incorrect Flash bad PEB calculation which led to wrong total image size.
+  ([MEN-1849](https://tracker.mender.io/browse/MEN-1849))
+* Make mkfs.ubifs and ubinize arguments a bit more customizable.
+  The new variables `MENDER_FLASH_MINIMUM_IO_UNIT` and
+  `MENDER_MAXIMUM_LEB_COUNT` have been introduced, which maps directly
+  to the corresponding arguments of the two tools.
+* Fix inability to patch old u-boot variants of MTDPARTS and
+  MTDIDS correctly.
+  ([MEN-1849](https://tracker.mender.io/browse/MEN-1849))
+* Fix confusing warning flood when MENDER_MTDIDS is unset in a UBI build.
+
+
 ## meta-mender sumo-v2018.09
 
 _Released 09.13.2018_
