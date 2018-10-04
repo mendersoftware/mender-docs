@@ -115,7 +115,7 @@ bitbake-layers add-layer ../meta-mender/meta-mender-core
 bitbake-layers add-layer ../meta-mender/meta-mender-demo
 ```
 
-To simplifly the board-specific integration, it is strongly recommended that you use the GRUB bootloader as an intermediate.
+To simplify the board-specific integration, it is strongly recommended that you use the GRUB bootloader as an intermediate.
 See [enabling GRUB](../../devices/integrating-with-grub) for how to do this.
 Otherwise you need to add any Mender integration layer specific to your board; see [Device integration](../../devices) for what is needed.
 For the three Mender reference devices use these layers (only add one of these):
