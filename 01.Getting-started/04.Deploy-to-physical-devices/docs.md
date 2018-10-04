@@ -29,7 +29,7 @@ a SD card to store the OS, so you will need one SD card
 
 Get the disk image and Artifacts for your board(s) from [Download demo images](../download-test-images).
 
-!!! It is possible to use this tutorial with *any* physical board, as long as you have integrated Mender with it. In this case you cannot use the demo Artifacts we provide in this tutorial, but you need to build your own artifacts as described in [Building a Mender Yocto Project image](../../artifacts/building-mender-image/building-yocto-image).
+!!! It is possible to use this tutorial with *any* physical board, as long as you have integrated Mender with it. In this case you cannot use the demo Artifacts we provide in this tutorial, but you need to build your own artifacts as described in [Building a Mender Yocto Project image](../../artifacts/yocto-project/building).
 
 ### Mender-Artifact tool
 Download [the prebuilt mender-artifact tool][x.x.x_mender-artifact] available
@@ -70,7 +70,7 @@ that your device(s) can connect to the Mender server.
 
 Locate the demo *disk image* (`*.sdimg`) you downloaded for your device.
 This image contains *all the partitions* of the storage device, as described in [Partition
-layout](../../devices/partition-layout).
+layout](../../devices/general-system-requirements#partition-layout).
 
 
 You can decompress it like the following:
@@ -79,7 +79,7 @@ You can decompress it like the following:
 gunzip <PATH-TO-YOUR-DISK-IMAGE>.sdimg.gz
 ```
 
-!!! Mender blocks free space in the disk image so that your root file system is allowed to grow over time. If you are building your own disk image by following [Building a Mender Yocto Project image](../../artifacts/building-mender-image/building-yocto-image), you can configure the desired space usage with the Yocto Project variable [MENDER_STORAGE_TOTAL_SIZE_MB](../../artifacts/variables#mender_storage_total_size_mb).
+!!! Mender blocks free space in the disk image so that your root file system is allowed to grow over time. If you are building your own disk image by following [Building a Mender Yocto Project image](../../artifacts/building-mender-image/building-yocto-image), you can configure the desired space usage with the Yocto Project variable [MENDER_STORAGE_TOTAL_SIZE_MB](../../artifacts/yocto-project/variables#mender_storage_total_size_mb).
 
 We need to change some configuration settings in this image so that
 the Mender client successfully connects to your Mender

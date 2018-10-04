@@ -44,7 +44,8 @@ When [building a Mender Yocto Project image](../../../artifacts/building-mender-
 
 In general Mender does not have dependencies on a specific file system type as long as it is for a [block device](#flash-memory-types), but the version of U-Boot you are using must support the file system type used for rootfs because it needs to read the Linux kernel from the file system and start the Linux boot process.
 
-The standard Yocto Project `IMAGE_FSTYPES` variable will be used to determine the image types to create in Yocto deploy directory. The meta-mender layer will add the `mender` type to that variable, and usually `sdimg`, `uefiimg` or a different type ending with `img`, depending on which [image features](../../../artifacts/image-configuration/yocto-image-configuration/features#list-of-features) are enabled. The filesystem used for the individual partition files will be based on the `ARTIFACTIMG_FSTYPE` variable.  It is advised that you clean up the `IMAGE_FSTYPES` variable to avoid creating unnecessary image files.
+The standard Yocto Project `IMAGE_FSTYPES` variable will be used to determine the image types to create in Yocto deploy directory. The meta-mender layer will add the `mender` type to that variable, and usually `sdimg`, `uefiimg` or a different type ending with `img`, depending on which [image features](../../../artifacts/yocto-project/image-configuration/features#list-of-features)
+ are enabled. The filesystem used for the individual partition files will be based on the `ARTIFACTIMG_FSTYPE` variable.  It is advised that you clean up the `IMAGE_FSTYPES` variable to avoid creating unnecessary image files.
 
 
 ##Configuring storage

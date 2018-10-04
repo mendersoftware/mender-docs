@@ -8,7 +8,7 @@ taxonomy:
 The client binaries are about 7 MB in size, or about 4 MB when debug symbols are stripped (using the `strip` tool). This includes all dependencies for the client, such as the http, TLS, and JSON libraries.
 
 ##Bootloader support
-To support atomic rootfs rollback, Mender integrates with the bootloader of the device. Currently Mender supports [GRUB](https://www.gnu.org/software/grub/?target=_blank) and [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank). The bootloader installation, features and requirements vary depending on the target OS in use.  Please see the [Yocto bootloader support](yocto/bootloader-support) or [Debian bootloader support](debian-family/bootloader-support) for more information.
+To support atomic rootfs rollback, Mender integrates with the bootloader of the device. Currently Mender supports [GRUB](https://www.gnu.org/software/grub/?target=_blank) and [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank). The bootloader installation, features and requirements vary depending on the target OS in use.  Please see the [Yocto bootloader support](../yocto-project/bootloader-support) or [Debian bootloader support](../debian-family/bootloader-support) for more information.
 
 ##Kernel support
 While Mender itself does not have any specific kernel requirements beyond what a normal Linux kernel provides, it relies on systemd, which does have one such requirement: The `CONFIG_FHANDLE` feature must be enabled in the kernel. The symptom if this feature is unavailable is that systemd hangs during boot looking for device files.

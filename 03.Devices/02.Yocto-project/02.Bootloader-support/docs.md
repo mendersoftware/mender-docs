@@ -21,6 +21,6 @@ Below is a table listing the bootloader support using various device types and Y
 
 ## Which one to pick
 
-If you are just starting out, we recommend trying [GRUB integration](yocto-with-grub) first, if possible. We recommend moving to [U-Boot integration](yocto-with-u-boot) only if integration with GRUB is not possible or unsuccessful.
+If you are just starting out, we recommend trying [GRUB integration](grub) first, if possible. We recommend moving to [U-Boot integration](u-boot) only if integration with GRUB is not possible or unsuccessful.
 
 The main technical reason for using GRUB rather than U-Boot is that GRUB requires no patching to work with Mender, whereas U-Boot does. For most users this will be the path of least resistance.

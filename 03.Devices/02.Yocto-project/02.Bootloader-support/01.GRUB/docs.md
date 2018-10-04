@@ -6,9 +6,6 @@ taxonomy:
 
 This section describes the Yocto configuration needed to integrate with the [GRUB bootloader](https://www.gnu.org/software/grub/?target=_blank).
 
-!!! Please consult [the bootloader support section](../../system-requirements/yocto/bootloader-support) to find out if GRUB is supported on your platform and build configuration, and whether it is enabled by default.
-
-
 ## Enabling GRUB
 
 If GRUB integration is not already enabled, you can enable it by adding the snippet below to your build configuration. For instance, in your `local.conf`:
@@ -18,7 +15,7 @@ MENDER_FEATURES_ENABLE_append = " mender-grub mender-image-uefi"
 MENDER_FEATURES_DISABLE_append = " mender-uboot mender-image-sd"
 ```
 
-See [the documentation on features](../../../artifacts/image-configuration/yocto-image-configuration/features) for more information.
+See [the documentation on features](../../../../artifacts/yocto-project/image-configuration/features) for more information.
 
 
 ## BIOS based systems

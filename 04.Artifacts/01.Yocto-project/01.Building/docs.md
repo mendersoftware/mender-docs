@@ -18,8 +18,8 @@ The build output will most notably include:
 Inside *meta-mender* there are several layers. The most important one is *meta-mender-core*, which is required by all builds that use Mender. *meta-mender-core* takes care of:
 
 * Cross-compiling Mender for ARM devices
-* [Partitioning the image correctly](../../../devices/partition-layout/yocto)
-* [Setting up the U-Boot bootloader to support Mender](../../../devices/integrating-with-u-boot/yocto)
+* [Partitioning the image correctly](../../../devices/yocto-project/partition-layout)
+* [Setting up the U-Boot bootloader to support Mender](../../../devices/yocto-project/bootloader-support/u-boot)
 
 Each one of these steps can be configured further, see the linked sections for more details.
 
@@ -109,7 +109,7 @@ We then need to add the Mender layers into our project:
 bitbake-layers add-layer ../meta-mender/meta-mender-core
 ```
 
-! The `meta-mender-demo` layer (below) is not appropriate if you are building for production devices. Please go to the section about [building for production](../../building-for-production) to see the difference between demo builds and production builds.
+! The `meta-mender-demo` layer (below) is not appropriate if you are building for production devices. Please go to the section about [building for production](../building-for-production) to see the difference between demo builds and production builds.
 
 ```bash
 bitbake-layers add-layer ../meta-mender/meta-mender-demo
@@ -228,7 +228,7 @@ There is one Mender disk image, which will have one of the following suffixes:
   * `.sdimg` if the system is an ARM system and boots using U-Boot (without UEFI emulation)
   * `.biosimg` if the system is an x86 system and boots using the traditional BIOS and GRUB bootloader
 
-!!! Please consult the [bootloader support section](../../../devices/system-requirements#bootloader-support) for information on which boot method is typically used in each build configuration.
+!!! Please consult the [bootloader support section](../../../devices/yocto-project/bootloader-support) for information on which boot method is typically used in each build configuration.
 
 This disk image is used to provision the device storage for devices without
 Mender running already. Please proceed to [Provisioning a new device](../../provisioning-a-new-device)
