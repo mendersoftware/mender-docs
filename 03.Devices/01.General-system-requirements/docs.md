@@ -51,10 +51,10 @@ will only be relevant on the system boots before the RTC is properly
 initialized.
 
 Before the time is set properly, either by systemd or the RTC, the time will
-default to the [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time).  Note
+default to the [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time?target=_blank).  Note
 that the Mender client connections will be rejected by the server until this
 situation is resolved.
 
 ### Unsupported build systems
 
-Mender has official support for the Yocto build system and binary OS images based on the Debian family. It is possible to adapt to other build systems. Please see [this blog post](https://mender.io/blog/porting-mender-to-a-non-yocto-build-system) for an example (note that some of Mender's needs may have changed since the blog post was made).
+Mender has official support for the Yocto build system and binary OS images based on the Debian family. It is possible to adapt to other build systems. Please see [this blog post](https://mender.io/blog/porting-mender-to-a-non-yocto-build-system?target=_blank) for an example (note that some of Mender's needs may have changed since the blog post was made).

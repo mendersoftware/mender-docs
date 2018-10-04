@@ -16,7 +16,7 @@ be used for production devices.
 
 The simplest method to connect to your device is with an HDMI display
 and a USB keyboard. The Beaglebone requires a
-[micro-HDMI to HDMI cable](https://elinux.org/Beagleboard:BeagleBone_Black_Accessories#HDMI_Cables?target=_blank)
+[micro-HDMI to HDMI cable](https://elinux.org/Beagleboard:BeagleBone_Black_Accessories?target=_blank#HDMI_Cables)
 or adapter. The Raspberry Pi uses a standard HDMI to HDMI cable.
 
 ### Serial Adapter

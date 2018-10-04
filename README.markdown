@@ -8,7 +8,7 @@ devices. Mender comprises a client running at the embedded device, as well as
 a server that manages deployments across many devices.
 
 This repository contains the Mender documentation sources which are rendered
-at https://docs.mender.io
+at [https://docs.mender.io](https://docs.mender.io?target=_blank)
 
 ![Mender logo](mender_logo.png)
 
@@ -36,7 +36,7 @@ issue. We thank you in advance for your cooperation.
 ## Connect with us
 
 * Join our [Google
-  group](https://groups.google.com/a/lists.mender.io/forum/#!forum/mender)
+  group](https://groups.google.com/a/lists.mender.io/forum/?target=_blank#!forum/mender)
 * Follow us on [Twitter](https://twitter.com/mender_io?target=_blank). Please
   feel free to tweet us questions.
 * Fork us on [Github](https://github.com/mendersoftware?target=_blank)

@@ -353,7 +353,7 @@ The size of each logical erase block (LEB) on the UBI device, in bytes. Usually 
 
 Total overhead on the whole UBI device, in bytes, that is reserved for bad
 physical erase blocks (PEBs). Usually zero for NOR Flash or [a variable
-amount](http://linux-mtd.infradead.org/doc/ubi.html#target=_blank) for NAND
+amount](http://linux-mtd.infradead.org/doc/ubi.html?target=_blank) for NAND
 Flash.
 
 

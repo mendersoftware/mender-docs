@@ -27,7 +27,7 @@ in the main file.
 
 It is easy to provide your own `mender.conf` file. First you will need to have
 your own layer. If you don't already have one see [the Yocto
-Manual](http://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html#creating-your-own-layer)
+Manual](http://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html?target=_blank#creating-your-own-layer)
 for how to create one.
 
 Inside the layer, you will need to create a `.bbappend` file for the mender
