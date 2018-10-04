@@ -16,7 +16,7 @@ be used for production devices.
 
 The simplest method to connect to your device is with an HDMI display
 and a USB keyboard. The Beaglebone requires a
-[micro-HDMI to HDMI cable](https://elinux.org/Beagleboard:BeagleBone_Black_Accessories#HDMI_Cables)
+[micro-HDMI to HDMI cable](https://elinux.org/Beagleboard:BeagleBone_Black_Accessories?target=_blank#HDMI_Cables)
 or adapter. The Raspberry Pi uses a standard HDMI to HDMI cable.
 
 ### Serial Adapter
@@ -26,26 +26,26 @@ copy/paste/search of the console output. This does require additional
 hardware.
 
 For the Beaglebone,
-[use this link as a reference](https://elinux.org/Beagleboard:BeagleBone_Black_Serial).
+[use this link as a reference](https://elinux.org/Beagleboard:BeagleBone_Black_Serial?target=_blank).
 
 For the Raspberry Pi, please see
-[this link](https://elinux.org/RPi_Serial_Connection) and
-[this link](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/overview)
+[this link](https://elinux.org/RPi_Serial_Connection?target=_blank) and
+[this link](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/overview?target=_blank)
 for more details.
 
 On Windows, the following applications can be used to access the serial console:
-* [https://osdn.net/projects/ttssh2/](https://osdn.net/projects/ttssh2/)
-* [https://putty.org/](https://putty.org/)
+* [https://osdn.net/projects/ttssh2/](https://osdn.net/projects/ttssh2/?target=_blank)
+* [https://putty.org/](https://putty.org/?target=_blank)
 
-On MacOS, [this web page](https://pbxbook.com/other/mac-ser.html)
+On MacOS, [this web page](https://pbxbook.com/other/mac-ser.html?target=_blank)
 lists several applications that may work.  Specifically, we have
 tested
-[Serial from the Mac App store](https://itunes.apple.com/us/app/serial/id877615577?mt=12).
+[Serial from the Mac App store](https://itunes.apple.com/us/app/serial/id877615577?mt=12?target=_blank).
 
 On Linux, you can use
-[picocom](https://github.com/npat-efault/picocom),
-[screen](https://www.gnu.org/software/screen/) or
-[minicom](https://en.wikipedia.org/wiki/Minicom). These are all
+[picocom](https://github.com/npat-efault/picocom?target=_blank),
+[screen](https://www.gnu.org/software/screen/?target=_blank) or
+[minicom](https://en.wikipedia.org/wiki/Minicom?target=_blank). These are all
 available in the Ubuntu package repository. For other distributions,
 the standard package install mechanism likely will have these as
 well. Note that these are all console apps and may also work on MacOS
