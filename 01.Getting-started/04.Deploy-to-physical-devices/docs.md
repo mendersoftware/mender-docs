@@ -79,7 +79,7 @@ You can decompress it like the following:
 gunzip <PATH-TO-YOUR-DISK-IMAGE>.sdimg.gz
 ```
 
-!!! Mender blocks free space in the disk image so that your root file system is allowed to grow over time. If you are building your own disk image by following [Building a Mender Yocto Project image](../../artifacts/building-mender-image/building-yocto-image), you can configure the desired space usage with the Yocto Project variable [MENDER_STORAGE_TOTAL_SIZE_MB](../../artifacts/yocto-project/variables#mender_storage_total_size_mb).
+!!! Mender blocks free space in the disk image so that your root file system is allowed to grow over time. If you are building your own disk image by following [Building a Mender Yocto Project image](../../artifacts/yocto-project/building), you can configure the desired space usage with the Yocto Project variable [MENDER_STORAGE_TOTAL_SIZE_MB](../../artifacts/yocto-project/variables#mender_storage_total_size_mb).
 
 We need to change some configuration settings in this image so that
 the Mender client successfully connects to your Mender
@@ -296,7 +296,7 @@ network with different names, you can deploy updates back and forth between them
 ## Integrate Mender with your board
 
 If you want to build your own artifact for the Raspberry Pi 3 or BeagleBone Black,
-head over to the tutorial [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
+head over to the tutorial [Building a Mender Yocto Project image]((../../artifacts/yocto-project/building).
 
 Development boards like the Raspberry Pi 3 and BeagleBone Black
 are rarely used in production due to the cost of scaling and specific
