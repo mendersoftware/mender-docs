@@ -86,7 +86,7 @@ For more information how to use state scripts see [Mender state scripts](../../a
 The easiest and most common way to generate Mender Artifacts is by
 adding the [meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank)
 layer to your Yocto Project build environment. There is more information
-on how to do this as part of the tutorial [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image).
+on how to do this as part of the tutorial [Building a Mender Yocto Project image](../../artifacts/yocto-project/building).
 
 Although it is possible to use a tar utility to extract, modify and package
 Mender Artifacts, this is error-prone due to the amount of details
