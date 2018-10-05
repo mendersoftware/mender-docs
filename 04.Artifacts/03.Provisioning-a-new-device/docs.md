@@ -19,7 +19,7 @@ You need an image file to flash to the entire storage of the
 device. `meta-mender-core` creates these files with a `.sdimg`
 suffix, so they are easy to recognize. This file contains
 all the partitions of the given storage device, as
-described in [Partition layout](../../devices/partition-layout).
+described in [Partition layout](../../devices/general-system-requirements#partition-layout).
 
 
 ### A physical device to provision that uses SD cards

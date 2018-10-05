@@ -201,7 +201,7 @@ ARTIFACTIMG_FSTYPE = "ext4"
 
 !!! If you are building for **Hosted Mender**, make sure to set `MENDER_SERVER_URL` and `MENDER_TENANT_TOKEN` (see the comments above).
 
-!!! If you would like to use a read-only root file system, please see the section on [configuring the image for read-only rootfs](../../image-configuration#configuring-the-image-for-read-only-rootfs).
+!!! If you would like to use a read-only root file system, please see the section on [configuring the image for read-only rootfs](../../yocto-project/image-configuration#configuring-the-image-for-read-only-rootfs).
 
 
 
