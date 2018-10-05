@@ -44,7 +44,7 @@ Each TLS certificate has a validity period, *Not Before* and *Not After*, and th
 the current time is outside this range.
 
 Most commonly this is caused by **incorrect time setting at the device** which runs the Mender client. Check this by
-running `date` at the device, and make sure it is correct. Consult the section on [Correct clock](../../devices/system-requirements#correct-clock) 
+running `date` at the device, and make sure it is correct. Consult the section on [Correct clock](../../devices/general-system-requirements#correct-clock) 
 for a more detailed discussion.
 
 To determine the status of your time synchronization, execute the following:

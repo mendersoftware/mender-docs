@@ -57,7 +57,7 @@ Note that you cannot both use `MENDER_ARTIFACT_VERIFY_KEY` and have `artifact-ve
 
 #### MENDER_BOOT_PART
 
-The partition Mender uses as the boot partition. See [More detailed storage configuration](../../devices/partition-layout#more-detailed-storage-configuration) for more information.
+The partition Mender uses as the boot partition. See [More detailed storage configuration](../../../devices/yocto-project/partition-layout#more-detailed-storage-configuration) for more information.
 
 
 #### MENDER_BOOT_PART_FSTYPE
@@ -74,7 +74,7 @@ The size of the boot partition in the generated `.biosimg`, `.sdimg` or `.uefiim
 
 #### MENDER_DATA_PART
 
-The partition Mender uses as the persistent data partition. See [More detailed storage configuration](../../devices/partition-layout#more-detailed-storage-configuration) for more information.
+The partition Mender uses as the persistent data partition. See [More detailed storage configuration](../../../devices/yocto-project/partition-layout#more-detailed-storage-configuration) for more information.
 
 
 #### MENDER_DATA_PART_DIR
@@ -162,7 +162,7 @@ Together with `MENDER_IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET`, this specifies a file
 
 #### MENDER_IS_ON_MTDID
 
-This variable is only relevant if the [the `mender-ubi` feature](../image-configuration/yocto-image-configuration/features#list-of-features) is enabled. The variable should be set to the MTDID of the device that mender, and the root filesystem in particular, resides on. This is set automatically in cases where it's possible, but in some cases it must be set manually.
+This variable is only relevant if the [the `mender-ubi` feature](../image-configuration/features#list-of-features) is enabled. The variable should be set to the MTDID of the device that mender, and the root filesystem in particular, resides on. This is set automatically in cases where it's possible, but in some cases it must be set manually.
 
 For example:
 
@@ -249,7 +249,7 @@ Alignment of partitions used when building partitioned images, expressed in byte
 
 #### MENDER_ROOTFS_PART_A
 
-The partition Mender uses as the first (A) rootfs partition. See [More detailed storage configuration](../../devices/partition-layout#more-detailed-storage-configuration) for more information.
+The partition Mender uses as the first (A) rootfs partition. See [More detailed storage configuration](../../../devices/yocto-project/partition-layout#more-detailed-storage-configuration) for more information.
 
 
 #### MENDER_ROOTFS_PART_A_NAME
@@ -269,7 +269,7 @@ Defaults to `${MENDER_STORAGE_DEVICE}:rootfsa` when building `.ubimg`.
 
 #### MENDER_ROOTFS_PART_B
 
-The partition Mender uses as the second (B) rootfs partition. See [More detailed storage configuration](../../devices/partition-layout#more-detailed-storage-configuration) for more information.
+The partition Mender uses as the second (B) rootfs partition. See [More detailed storage configuration](../../../devices/yocto-project/partition-layout#more-detailed-storage-configuration) for more information.
 
 
 #### MENDER_ROOTFS_PART_B_NAME
@@ -377,12 +377,12 @@ A set of U-Boot commands to be executed at the beginning of the MENDER_SETUP cod
 
 #### MENDER_UBOOT_STORAGE_DEVICE
 
-The storage device, as referred to by U-Boot (e.g. `1`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [The bootloader and the Linux kernel do not agree about the indexes of storage devices](../../troubleshooting/yocto-project-build#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-index) for more information.
+The storage device, as referred to by U-Boot (e.g. `1`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [The bootloader and the Linux kernel do not agree about the indexes of storage devices](../../../troubleshooting/yocto-project-build#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-index) for more information.
 
 
 #### MENDER_UBOOT_STORAGE_INTERFACE
 
-The storage interface, as referred to by U-Boot (e.g. `mmc`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [The bootloader and the Linux kernel do not agree about the indexes of storage devices](../../troubleshooting/yocto-project-build#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-index) for more information.
+The storage interface, as referred to by U-Boot (e.g. `mmc`). This variable can be used in cases where the Linux kernel and U-Boot refer to the same device with different names. See [The bootloader and the Linux kernel do not agree about the indexes of storage devices](../../../troubleshooting/yocto-project-build#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-index) for more information.
 
 
 #### SYSTEMD_AUTO_ENABLE_pn-mender

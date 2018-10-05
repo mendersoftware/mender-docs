@@ -44,7 +44,7 @@ In order to sign and later on verify the signature of the Mender Artifact we nee
 Please follow the respective section below, depending on the signature algorithm you want to use.
 
 After generating the keys you will have a file `private.key`, which is only used by the Signing system, as well as
-`public.key` which you [provision all the devices with](../building-for-production#artifact-signing-and-verification-keys).
+`public.key` which you [provision all the devices with](../yocto-project/building-for-production#artifact-signing-and-verification-keys).
 
 !!! The file `public.key` is referred to as `artifact-verify-key.pem` when placed on the devices to avoid ambiguity with other keys.
 
