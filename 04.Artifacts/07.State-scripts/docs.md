@@ -130,7 +130,7 @@ If you want to explicitly disable network again after Mender has finished the de
 
 ## Including state scripts in Artifacts and disk images
 
-The easiest way to have Mender run the state scripts is to create a new OpenEmbedded recipe that inherits `mender-state-scripts` and copies them into place in `do_compile`, using the [${MENDER_STATE_SCRIPTS_DIR}](../../artifacts/variables#mender_state_scripts_dir) variable.
+The easiest way to have Mender run the state scripts is to create a new OpenEmbedded recipe that inherits `mender-state-scripts` and copies them into place in `do_compile`, using the [${MENDER_STATE_SCRIPTS_DIR}](../../artifacts/yocto-project/variables#mender_state_scripts_dir) variable.
 
 <!--AUTOVERSION: "meta-mender/tree/%"/ignore-->
 Take a look at the [example-state-scripts](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-demo/recipes-mender/example-state-scripts?target=_blank) recipe to get started.
