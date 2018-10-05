@@ -28,9 +28,9 @@ will entail disabling or removing any `systemd` unit that starts the Mender clie
 
 ## Building standalone images
 
-When [building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image),
+When [building a Mender Yocto Project image](../../artifacts/yocto-project/building),
 you can ensure Mender runs in standalone mode by following the
-[image configuration steps to make sure Mender does not run as a system service](../../artifacts/image-configuration#disabling-mender-as-a-system-service)
+[image configuration steps to make sure Mender does not run as a system service](../../artifacts/yocto-project/image-configuration#disabling-mender-as-a-system-service)
 before building.
 
 From the Yocto Project build output configured as above you will get two
@@ -41,7 +41,7 @@ device, i.e. do the initial device storage provisioning.
 `meta-mender` creates these files with a `.sdimg`
 suffix, so they are easy to recognize. This file contains
 all the partitions of the given storage device, as
-described in [Partition layout](../../devices/partition-layout).
+described in [Partition layout](../../devices/general-system-requirements#partition-layout).
 Please see [Provisioning a new device](../../artifacts/provisioning-a-new-device)
 for steps how to provision the device storage using the `*.sdimg` image.
 

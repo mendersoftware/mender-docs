@@ -69,7 +69,7 @@ variable exists to override the auto detection.
 
 #### MENDER_BOOT_PART_SIZE_MB
 
-The size of the boot partition in the generated `.biosimg`, `.sdimg` or `.uefiimg` file. See [Configuring the partition sizes](../../devices/partition-layout#configuring-the-partition-sizes) for more information.
+The size of the boot partition in the generated `.biosimg`, `.sdimg` or `.uefiimg` file. See [Configuring the partition sizes](../../../devices/yocto-project/partition-layout#configuring-the-partition-sizes) for more information.
 
 
 #### MENDER_DATA_PART
@@ -79,7 +79,7 @@ The partition Mender uses as the persistent data partition. See [More detailed s
 
 #### MENDER_DATA_PART_DIR
 
-!!! This variable and the associated method is obsolete in Yocto Project 2.5 sumo and later. Simply [using recipes](../../devices/partition-layout#deploying-files-to-the-persistent-data-partition) to put files in the `/data` partition is enough.
+!!! This variable and the associated method is obsolete in Yocto Project 2.5 sumo and later. Simply [using recipes](../../../devices/yocto-project/partition-layout#deploying-files-to-the-persistent-data-partition) to put files in the `/data` partition is enough.
 
 This variable is used to add files to the data partition of the Mender partitioned image. You will need to update your recipe file and your image file. The update to the recipe file ensures that the persistent files are deployed to a common location and the updates to the image file ensures that these files are included in the target image.
 
@@ -111,7 +111,7 @@ variable exists to override the auto detection.
 
 #### MENDER_DATA_PART_SIZE_MB
 
-The size of the persistent data partition in the generated `.biosimg`, `.sdimg` or `.uefiimg` file. See [Configuring the partition sizes](../../devices/partition-layout#configuring-the-partition-sizes) for more information.
+The size of the persistent data partition in the generated `.biosimg`, `.sdimg` or `.uefiimg` file. See [Configuring the partition sizes](../../../devices/yocto-project/partition-layout#configuring-the-partition-sizes) for more information.
 
 
 #### MENDER_DEMO_HOST_IP_ADDRESS
@@ -314,7 +314,7 @@ The three methods should not be mixed.
 
 #### MENDER_STORAGE_DEVICE
 
-The storage device holding all partitions (rootfs, boot, data) used by Mender. See [Configuring storage](../../devices/partition-layout#configuring-storage) for more information.
+The storage device holding all partitions (rootfs, boot, data) used by Mender. See [Configuring storage](../../../devices/yocto-project/partition-layout#configuring-storage) for more information.
 
 
 #### MENDER_STORAGE_PEB_SIZE

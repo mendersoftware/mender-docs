@@ -6,7 +6,7 @@ taxonomy:
 
 Pre-built demo images for a set of reference boards are provided below, so you do not have to integrate devices nor build images in order to test Mender.
 
-!!! Steps to build Artifacts for other device types and with custom software are provided at [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image), however we recommend using the demo images first.
+!!! Steps to build Artifacts for other device types and with custom software are provided at [Building a Mender Yocto Project image](../../artifacts/yocto-project/building), however we recommend using the demo images first.
 
 ! Do not use these images if you are using [Hosted Mender](https://hosted.mender.io?target=_blank). Instead, use the images customized for your account from [Hosted Mender's Help section](https://hosted.mender.io/ui/?target=_blank#/help).
 
