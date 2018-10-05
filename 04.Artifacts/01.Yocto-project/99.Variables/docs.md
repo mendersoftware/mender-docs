@@ -11,7 +11,7 @@ The variables are either specific to- and defined by Mender, as shown by the `ME
 #### ARTIFACTIMG_FSTYPE
 
 
-Defines which file system type Mender will build for the rootfs partitions in the `.biosimg`, `.sdimg`, `.uefiimg` and the `.mender` file.  See [File system types](../../devices/partition-layout#file-system-types) for more information.
+Defines which file system type Mender will build for the rootfs partitions in the `.biosimg`, `.sdimg`, `.uefiimg` and the `.mender` file.  See [File system types](../../../devices/yocto-project/partition-layout#file-system-types) for more information.
 
 
 #### IMAGE_ROOTFS_SIZE
@@ -41,7 +41,7 @@ The name of the image or update that will be built. This is what the device will
 
 Can be set to a private key which will be used to sign the update artifact. The default is empty, which means the artifact won't be signed.
 
-The signature can also be added or changed outside the build process, by using the `mender-artifact` tool's `-k` option. For more information, see [signing Mender Artifacts](../signing-and-verification#signing).
+The signature can also be added or changed outside the build process, by using the `mender-artifact` tool's `-k` option. For more information, see [signing Mender Artifacts](../../signing-and-verification#signing).
 
 
 #### MENDER_ARTIFACT_VERIFY_KEY
@@ -136,18 +136,18 @@ It defaults to the value of `${MACHINE}`.
 #### MENDER_FEATURES_DISABLE
 
 Features appended to this variable will be disabled in the build. See [the
-section on features](../image-configuration/yocto-image-configuration/features) for more information.
+section on features](../image-configuration/features) for more information.
 
 
 #### MENDER_FEATURES_ENABLE
 
 Features appended to this variable will be enabled in the build. See [the
-section on features](../image-configuration/yocto-image-configuration/features) for more information.
+section on features](../image-configuration/features) for more information.
 
 
 #### MENDER_GRUB_STORAGE_DEVICE
 
-The storage device, as referred to by GRUB (e.g. `hd1`). This variable can be used in cases where the Linux kernel and GRUB refer to the same device with different names. See [The bootloader and the Linux kernel do not agree about the indexes of storage devices](../../troubleshooting/yocto-project-build#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-index) for more information.
+The storage device, as referred to by GRUB (e.g. `hd1`). This variable can be used in cases where the Linux kernel and GRUB refer to the same device with different names. See [The bootloader and the Linux kernel do not agree about the indexes of storage devices](../../../troubleshooting/yocto-project-build#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-index) for more information.
 
 
 #### MENDER_IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET
@@ -353,7 +353,7 @@ The size of each logical erase block (LEB) on the UBI device, in bytes. Usually 
 
 Total overhead on the whole UBI device, in bytes, that is reserved for bad
 physical erase blocks (PEBs). Usually zero for NOR Flash or [a variable
-amount](http://linux-mtd.infradead.org/doc/ubi.html#target=_blank) for NAND
+amount](http://linux-mtd.infradead.org/doc/ubi.html?target=_blank) for NAND
 Flash.
 
 
@@ -387,4 +387,4 @@ The storage interface, as referred to by U-Boot (e.g. `mmc`). This variable can 
 
 #### SYSTEMD_AUTO_ENABLE_pn-mender
 
-Controls whether to run Mender as a systemd service. See [Modes of operations](../../architecture/overview#modes-of-operation) and [Image configuration](../../artifacts/image-configuration) for more information.
+Controls whether to run Mender as a systemd service. See [Modes of operations](../../../architecture/overview#modes-of-operation) and [Image configuration](../image-configuration) for more information.

@@ -187,7 +187,7 @@ will go through each line and explain why they are needed.
     binaries that are specific to this board, and not to the architecture in
     general. This stems from the highly board specific nature of U-Boot. See
     [the official Yocto Project
-    documentation](http://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html#var-PACKAGE_ARCH)
+    documentation](http://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html?target=_blank#var-PACKAGE_ARCH)
     for more information.
 
 12. The last two `PROVIDES_${PN}` and `RPROVIDES_${PN}` variables are added to
@@ -203,5 +203,5 @@ case. Much of the inspiration was taken from there, and this is a good place to
 look if you hit problems and this guide doesn't provide the answer.
 
 After the adaptation is complete, you should go through the [Integration
-checklist](../../../yocto/integration-checklist) to make sure that all functionality
+checklist](../../integration-checklist) to make sure that all functionality
 of the compiled tools is working.

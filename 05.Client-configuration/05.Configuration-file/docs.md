@@ -8,7 +8,7 @@ Much of the Mender client's configuration resides in `/etc/mender/mender.conf`
 on the root filesystem. This file is JSON structured and defines various
 parameters for Mender's operation. Some of the most common settings are tunable
 using [Yocto
-variables](../../artifacts/image-configuration/yocto-image-configuration#configuring-polling-intervals). The
+variables](../../artifacts/yocto-project/image-configuration#configuring-polling-intervals). The
 remaining parameters can only be changed by providing your own `mender.conf`.
 
 On systems where it is desired for one or more of the configuration options
@@ -27,7 +27,7 @@ in the main file.
 
 It is easy to provide your own `mender.conf` file. First you will need to have
 your own layer. If you don't already have one see [the Yocto
-Manual](http://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html#creating-your-own-layer)
+Manual](http://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html?target=_blank#creating-your-own-layer)
 for how to create one.
 
 Inside the layer, you will need to create a `.bbappend` file for the mender

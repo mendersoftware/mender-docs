@@ -13,12 +13,12 @@ ERROR: Multiple .bb files are due to be built which each provide u-boot (.../tis
  This usually means one provides something the other doesn't and should.
 ```
 
-Mender needs to configure U-Boot in order to support robust rootfs rollback. If your project relies on a fork of U-Boot this needs to be integrated. For more information, see [Integrating with U-Boot](../../devices/integrating-with-u-boot), in particular the section on [Forks of U-boot](../../devices/integrating-with-u-boot#forks-of-u-boot).
+Mender needs to configure U-Boot in order to support robust rootfs rollback. If your project relies on a fork of U-Boot this needs to be integrated. For more information, see [Integrating with U-Boot](../../devices/yocto-project/bootloader-support/u-boot), in particular the section on [Forks of U-boot](../../devices/yocto-project/bootloader-support/u-boot#forks-of-u-boot).
 
 
 ## A U-Boot component is failing to compile, and it compiles without Mender
 
-This may be an indication that Mender's automatic U-Boot patching has failed for the particular board that's being built for, and a manual patch may be required. For information on how to create such a patch, go to the [Manual U-Boot integration section](../../devices/integrating-with-u-boot/yocto/manual-u-boot-integration).
+This may be an indication that Mender's automatic U-Boot patching has failed for the particular board that's being built for, and a manual patch may be required. For information on how to create such a patch, go to the [Manual U-Boot integration section](../../devices/yocto-project/bootloader-support/u-boot/manual-u-boot-integration).
 
 
 ## The bootloader and the Linux kernel do not agree about the indexes of storage devices
@@ -290,4 +290,4 @@ IMAGE_FSTYPES_remove = "mtdimg"
 Alternatively, if appropriate, you can remove the manually set `MENDER_MTDPARTS`
 variable, and let Mender set it automatically, but you will then get a generic
 `mtdimg` which may not work on the platform in question. Please refer to [the
-Raw Flash section](../../devices/raw-flash) for more information.
+Raw Flash section](../../devices/yocto-project/raw-flash) for more information.

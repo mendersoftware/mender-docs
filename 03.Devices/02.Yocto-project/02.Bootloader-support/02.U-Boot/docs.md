@@ -18,7 +18,7 @@ MENDER_FEATURES_ENABLE_append = " mender-uboot mender-image-sd"
 MENDER_FEATURES_DISABLE_append = " mender-grub mender-image-uefi"
 ```
 
-See [the documentation on features](../../../artifacts/image-configuration/yocto-image-configuration) for more information.
+See [the documentation on features](../../../../artifacts/yocto-project/image-configuration/features) for more information.
 
 
 ## Boot counter
@@ -83,7 +83,7 @@ Project you need to enable the `mender-uboot` feature using
 MENDER_FEATURES_ENABLE_append = " mender-uboot"
 ```
 
-!!! If the architecture is ARM, and the `mender-full` or `mender-full-ubi` class is inherited in a Bitbake `.conf` file, then the `mender-uboot` feature is already on by default. See [the documentation on features](../../../artifacts/image-configuration/features) for more information.
+!!! If the architecture is ARM, and the `mender-full` or `mender-full-ubi` class is inherited in a Bitbake `.conf` file, then the `mender-uboot` feature is already on by default. See [the documentation on features](../../../../artifacts/yocto-project/image-configuration/features) for more information.
 
 This enables U-Boot integration, and also enables full automatic patching of
 U-Boot.

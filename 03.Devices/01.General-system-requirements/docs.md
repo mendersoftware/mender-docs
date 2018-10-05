@@ -8,7 +8,7 @@ taxonomy:
 The client binaries are about 7 MB in size, or about 4 MB when debug symbols are stripped (using the `strip` tool). This includes all dependencies for the client, such as the http, TLS, and JSON libraries.
 
 ##Bootloader support
-To support atomic rootfs rollback, Mender integrates with the bootloader of the device. Currently Mender supports [GRUB](https://www.gnu.org/software/grub/?target=_blank) and [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank). The bootloader installation, features and requirements vary depending on the target OS in use.  Please see the [Yocto bootloader support](yocto/bootloader-support) or [Debian bootloader support](debian-family/bootloader-support) for more information.
+To support atomic rootfs rollback, Mender integrates with the bootloader of the device. Currently Mender supports [GRUB](https://www.gnu.org/software/grub/?target=_blank) and [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank). The bootloader installation, features and requirements vary depending on the target OS in use.  Please see the [Yocto bootloader support](../yocto-project/bootloader-support) or [Debian bootloader support](../debian-family/bootloader-support) for more information.
 
 ##Kernel support
 While Mender itself does not have any specific kernel requirements beyond what a normal Linux kernel provides, it relies on systemd, which does have one such requirement: The `CONFIG_FHANDLE` feature must be enabled in the kernel. The symptom if this feature is unavailable is that systemd hangs during boot looking for device files.
@@ -51,10 +51,10 @@ will only be relevant on the system boots before the RTC is properly
 initialized.
 
 Before the time is set properly, either by systemd or the RTC, the time will
-default to the [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time).  Note
+default to the [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time?target=_blank).  Note
 that the Mender client connections will be rejected by the server until this
 situation is resolved.
 
 ### Unsupported build systems
 
-Mender has official support for the Yocto build system and binary OS images based on the Debian family. It is possible to adapt to other build systems. Please see [this blog post](https://mender.io/blog/porting-mender-to-a-non-yocto-build-system) for an example (note that some of Mender's needs may have changed since the blog post was made).
+Mender has official support for the Yocto build system and binary OS images based on the Debian family. It is possible to adapt to other build systems. Please see [this blog post](https://mender.io/blog/porting-mender-to-a-non-yocto-build-system?target=_blank) for an example (note that some of Mender's needs may have changed since the blog post was made).
