@@ -193,7 +193,7 @@ Defaults to `ubi` when `mender-ubi` feature is on and building a `.ubimg`, other
 A rough estimate of space lost due to partition alignment, expressed in MB. The
 build process will calculate that automatically using a simple heuristic. See
 the definition of `MENDER_PARTITIONING_OVERHEAD_MB` in
-[meta-mender](https://github.com/mendersoftware/meta-mender) for details on the
+[meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank) for details on the
 calculation.
 
 

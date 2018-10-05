@@ -82,8 +82,8 @@ about existing partitions, their start locations and sizes. This can achieved
 using a number of different methods:
 
 * machine configuration via `arch/<ARCH>/mach-<MACH>` (deprecated)
-* kernel command line ([drivers/mtd/cmdlinepart.c](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/mtd/cmdlinepart.c)) typically set up by bootloader
-* device tree ([DTS MTD bindings](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/Documentation/devicetree/bindings/mtd/partition.txt))
+* kernel command line ([drivers/mtd/cmdlinepart.c](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/mtd/cmdlinepart.c?target=_blank)) typically set up by bootloader
+* device tree ([DTS MTD bindings](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/Documentation/devicetree/bindings/mtd/partition.txt?target=_blank))
 
 Raw flash boards currently supported by Mender use the kernel command line to pass
 information about MTD partitions.

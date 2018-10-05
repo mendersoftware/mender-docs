@@ -5,6 +5,7 @@ ab
 abB
 abbrev
 abc
+abcd
 abcssadasdssado
 abf
 aBMwK
@@ -18,6 +19,8 @@ accesslog
 AccessLogMiddleware
 acGHAg
 ada
+adafruit
+adafruits
 Adaltas
 Adapter's
 addons
@@ -55,6 +58,7 @@ amd
 amdefine
 AMIIBCgKCAQEA
 AMIIBigKCAYEAvOsee
+amlie
 Anderton
 Andreas
 Andres
@@ -70,6 +74,7 @@ api
 apic
 APIs
 apis
+app
 archy
 arekinath
 args
@@ -158,6 +163,7 @@ BeagleBone
 beaglebone
 beagleboneblack
 Beaty
+bef
 behaviour
 Benoit
 Bevry
@@ -252,6 +258,7 @@ CET
 cf
 cfd
 cff
+cfg
 CFI
 CFLAGS
 cgroup
@@ -359,7 +366,9 @@ DBs
 dbus
 dc
 dd
+ddb
 ddbad
+ddc
 de
 dea
 debeaa
@@ -467,10 +476,12 @@ ee
 eeb
 EEPROM
 ef
+efault
 efc
 efi
 egrep
 elasticsearch
+elinux
 Em
 Embrey
 emitterc
@@ -560,6 +571,7 @@ Flqh
 fm
 fMANM
 FMfeIylejzaOnNHn
+fmt
 FMuEfZqojEDodhnNvvG
 fns
 Fomichev
@@ -573,6 +585,7 @@ Formâ
 fr
 Francia
 FreeBSD
+freescale
 Frischmann
 Froidure
 fs
@@ -632,7 +645,7 @@ Govett
 gpg
 GPL
 GPLv
-GPT
+gpt
 grep
 Grijalva
 grubenv
@@ -660,6 +673,8 @@ hBUFoOLhdPFx
 hcl
 HCveVzFkBPbCwt
 hd
+hda
+HDMI
 HeA
 hellman
 helptips
@@ -736,6 +751,7 @@ isobject
 isplainobject
 isstream
 isstring
+itunes
 ivRTkpA
 Iw
 JakubPawlowicz
@@ -755,6 +771,7 @@ jongleberry
 journalctl
 joyent
 jprichardson
+jq
 jquense
 jQuery
 jquery
@@ -802,6 +819,7 @@ kpartx
 kr
 Krhonos
 kriskowal
+kristian
 Kristopher
 krogoth
 Kucherenko
@@ -881,6 +899,7 @@ Lydell
 LZO
 mac
 mach
+MacOS
 magiconair
 malloc
 mapper
@@ -932,6 +951,7 @@ mihai
 MIIBojANBgkqhkiG
 mikamaunula
 min
+minicom
 minimalistic
 minimatch
 minimist
@@ -964,6 +984,7 @@ mozilla
 MPL
 ms
 msg
+mt
 mtd
 MTDID
 mtdids
@@ -992,6 +1013,7 @@ nathan
 nbar
 nbReOXjbV
 nC
+nc
 ncp
 ne
 Neil
@@ -1002,6 +1024,7 @@ netroy
 networkboot
 NewDevice
 newdevice
+NewReader
 nextick
 nginx
 ngx
@@ -1031,6 +1054,7 @@ northerntech
 notAfter
 notBefore
 Nowak
+npat
 npm
 npmjs
 nq
@@ -1075,6 +1099,7 @@ openre
 OpenResty
 openresty
 opensource
+OpenSSH
 OpenSSL
 openssl
 optimise
@@ -1082,9 +1107,11 @@ orangepi
 orchestrator
 org
 os
+osdn
 OSI
 oSiyqW
 OSX
+OTA
 outpipe
 Oxley
 PACKAGECONFIG
@@ -1102,7 +1129,9 @@ paul
 Pavel
 pb
 pbkdf
+pbxbook
 pDReVzlRbQJ
+PEB
 pelletier
 pem
 Penner
@@ -1114,6 +1143,7 @@ pflag
 pgrep
 Philipp
 php
+picocom
 PID
 pidof
 pify
@@ -1138,6 +1168,7 @@ PostCSS
 postcss
 postinstall
 postmile
+ppc
 PPVzHD
 Pragma
 pre
@@ -1152,6 +1183,7 @@ Pregenerate
 preinstalls
 prev
 printenv
+Println
 proactive
 proc
 proxy's
@@ -1170,6 +1202,7 @@ PV
 PWD
 pwgen
 pY
+py
 pyro
 qemu
 qemux
@@ -1178,6 +1211,7 @@ qix
 QmD
 qs
 Quense
+quiltrc
 qXMqps
 QyZjk
 rabin
@@ -1196,6 +1230,7 @@ reactify
 readdirp
 readerc
 readlink
+ReadRune
 realpath
 realpathSync
 rechoir
@@ -1239,6 +1274,7 @@ ro
 rockchip
 rocko
 rollout
+rootâ
 rootfs
 rootfsa
 rootfsb
@@ -1247,6 +1283,7 @@ RootfsPartB
 rootfstype
 rootlibexecdir
 rpi
+RPi
 RPROVIDER
 RPROVIDES
 RqsWqK
@@ -1295,7 +1332,9 @@ sdk
 sed
 segmentio
 semver
+Sep
 sequencify
+ser
 Sergey
 SerialNumber
 serialnumber
@@ -1409,6 +1448,7 @@ sys
 sysconfdir
 sysfs
 syslog
+sysroot
 systemctl
 systemd
 systemjs
@@ -1462,6 +1502,7 @@ Tremblay
 Trent
 troygoode
 trysound
+ttssh
 ttyAMA
 tUp
 TVuKgqy
@@ -1482,6 +1523,7 @@ ubifsmount
 ubimg
 ubinize
 uboot
+UBoot
 UBootBootCountLimit
 ubuntu
 ubuntulinux
@@ -1500,6 +1542,7 @@ ui
 UIDs
 uimage
 uImage
+ullevk
 umd
 umount
 unbuildable
@@ -1515,6 +1558,7 @@ unitdir
 unlicense
 unmarshal
 Unprocessable
+UnreadRune
 unreads
 updatable
 UpdateAuthSet
