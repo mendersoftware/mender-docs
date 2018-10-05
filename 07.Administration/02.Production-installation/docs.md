@@ -599,7 +599,7 @@ user via the CLI provided by the User Administration Service. The service's bina
 sudo ./run exec mender-useradm /usr/bin/useradm create-user --username=myusername@host.com --password=mysecretpassword
 ```
 
-At this point you should be able to access [https://mender.example.com](https://mender.example.com) with your
+At this point you should be able to access [https://mender.example.com](https://mender.example.com?target=_blank) with your
 web browser.
 
 !!! If you encounter any issues while starting or running your Mender Server, you can take a look at the section for [troubleshooting Mender Server](../../troubleshooting/mender-server).

@@ -17,8 +17,11 @@ aca
 acc
 accesslog
 AccessLogMiddleware
+accessor
 acGHAg
 ada
+adafruit
+adafruits
 Adaltas
 Adapter's
 addons
@@ -46,9 +49,11 @@ ahmad
 ahmadnassri
 ahshagheeD
 Airbnb
+AJ
 AjG
 ajv
 Alessandro
+alex
 Alman
 altbootcmd
 amazonaws
@@ -56,6 +61,7 @@ amd
 amdefine
 AMIIBCgKCAQEA
 AMIIBigKCAYEAvOsee
+amlie
 Anderton
 Andreas
 Andres
@@ -71,6 +77,7 @@ api
 apic
 APIs
 apis
+app
 archy
 arekinath
 args
@@ -95,6 +102,7 @@ arunoda
 asap
 asaskevich
 Aseem
+aseemk
 ashaffer
 Ashkenas
 Ashworth
@@ -103,6 +111,7 @@ ast
 astw
 async
 asynckit
+atob
 attr
 attribs
 au
@@ -123,6 +132,7 @@ autorest
 AUTOVERSION
 AvianFlu
 AvrAgMBAAE
+awk
 aws
 ba
 babel
@@ -148,6 +158,7 @@ bbclass
 bbe
 bc
 bca
+bcb
 bcd
 bcf
 bcm
@@ -159,9 +170,10 @@ BeagleBone
 beaglebone
 beagleboneblack
 Beaty
+bef
 behaviour
 Benoit
-Bevry
+bevry
 bf
 bindir
 bios
@@ -174,6 +186,7 @@ blaine
 blakeembrey
 Blanco
 blinkenlights
+blockdev
 bmap
 bmatsuo
 bn
@@ -253,11 +266,13 @@ CET
 cf
 cfd
 cff
+cfg
 CFI
 CFLAGS
 cgroup
 ch
 Chadkin
+chalkerx
 changelog
 charenc
 checkmarks
@@ -271,6 +286,7 @@ chmod
 chokidar
 ci
 cJfQJ
+ck
 CktbCb
 Claimsâ
 classnames
@@ -301,7 +317,7 @@ com
 commondir
 commonjs
 CompactFlash
-COMPAT
+compat
 concat
 conf
 CONFFILES
@@ -341,6 +357,7 @@ cujojs
 cURL
 cvKEqYtuXIfBBWp
 cwd
+cyan
 da
 dabf
 dae
@@ -360,7 +377,9 @@ DBs
 dbus
 dc
 dd
+ddb
 ddbad
+ddc
 de
 dea
 debeaa
@@ -379,6 +398,7 @@ demoneaux
 Denicola
 Denis
 denx
+Deoxxa
 depd
 DEPLOYDIR
 deps
@@ -468,10 +488,12 @@ ee
 eeb
 EEPROM
 ef
+efault
 efc
 efi
 egrep
 elasticsearch
+elinux
 Em
 Embrey
 emitterc
@@ -488,7 +510,7 @@ envtools
 EOL
 ep
 Eran
-Eraseblock
+eraseblock
 eraseblocks
 erasesize
 ErrAuthSetNotFound
@@ -510,6 +532,7 @@ evp
 eXGdiLO
 exitCode
 Expat
+expr
 ext
 Ext'd
 extendable
@@ -541,6 +564,7 @@ feaa
 fedf
 Fedor
 fefbdfa
+Fentanes
 Feross
 ff
 ffd
@@ -558,6 +582,8 @@ filesize
 findup
 Fixup
 fJ
+Florian
+florianreiterer
 Flqh
 fm
 fMANM
@@ -605,6 +631,8 @@ Gensler
 Geoffroy
 getnative
 getpass
+getsize
+GiB
 Gil
 gitAUTOINC
 github
@@ -638,7 +666,8 @@ Govett
 gpg
 GPL
 GPLv
-GPT
+gpmi
+gpt
 grep
 Grijalva
 grubenv
@@ -656,6 +685,7 @@ gz
 gzip
 GZZGqiq
 Halliday
+hamburg
 hapi
 hapijs
 har
@@ -666,6 +696,8 @@ hBUFoOLhdPFx
 hcl
 HCveVzFkBPbCwt
 hd
+hda
+HDMI
 HeA
 hellman
 helptips
@@ -681,6 +713,7 @@ HowCanIAccessUBootEnvironmentVariablesInLinux
 Howey
 howeyc
 hPCxvwVBO
+href
 hrtime
 html
 htmlescape
@@ -720,6 +753,7 @@ indx
 ine
 inexorabletash
 inflight
+infradead
 ini
 init
 initrd
@@ -744,10 +778,12 @@ isobject
 isplainobject
 isstream
 isstring
+itunes
 ivRTkpA
 Iw
 JakubPawlowicz
 Jared
+Javascript
 Javier
 jBXikb
 JD
@@ -763,9 +799,11 @@ jongleberry
 journalctl
 joyent
 jprichardson
+jq
 jquense
 jQuery
 jquery
+jryans
 js
 jsbn
 json
@@ -776,6 +814,7 @@ jsprim
 jss
 jstransform
 jsx
+julian
 juliangruber
 JVgtNkrzxMWp
 jwalterweatherman
@@ -803,13 +842,17 @@ KIt
 kj
 kkoopa
 Koen
+Kogai
+kooi
 Koppers
 Koss
+kossnocorp
 Kowal
 kpartx
 kr
 Krhonos
 kriskowal
+kristian
 Kristopher
 krogoth
 Kucherenko
@@ -822,6 +865,7 @@ LAYERSERIES
 LBA
 lcd
 lcid
+lcs
 lcTO
 ld
 LDFLAGS
@@ -836,7 +880,7 @@ LfKga
 LGPL
 LGPLv
 LgsyzPWvLAGIsXYnR
-Li
+li
 lib
 libc
 libdir
@@ -848,10 +892,12 @@ LIC
 licence
 Licensableâ
 Licenseâ
+LICENSEFILE
 LicenseInfo
 Licensesâ
 licensor's
 licensors
+lifecycles
 liftoff
 lindenlab
 Lindesay
@@ -889,6 +935,7 @@ Lydell
 LZO
 mac
 mach
+MacOS
 magiconair
 malloc
 mapper
@@ -905,6 +952,7 @@ matthewh
 mattn
 maximatch
 MAXSIZE
+Mazieres
 Mbit
 mbr
 MByte
@@ -940,6 +988,7 @@ mihai
 MIIBojANBgkqhkiG
 mikamaunula
 min
+minicom
 minimalistic
 minimatch
 minimist
@@ -974,6 +1023,7 @@ mozilla
 MPL
 ms
 msg
+mt
 mtd
 mtdid
 mtdids
@@ -987,6 +1037,7 @@ murmurhash
 murphydanger
 mv
 mW
+mx
 myboard
 mydevice
 myhostname
@@ -998,11 +1049,13 @@ mz
 na
 nan
 nand
+nanomatch
 Nassri
 nathan
 nbar
 nbReOXjbV
 nC
+nc
 ncp
 ne
 Neil
@@ -1020,6 +1073,7 @@ ngx
 NgYyaV
 nHwIDAQAB
 Nicolas
+Niels
 niemeyer
 niJy
 Nik
@@ -1035,6 +1089,7 @@ nnHICIsD
 nnpprbNYOCA
 noartifact
 NoCredentialProviders
+nodejs
 noK
 NONINFRINGEMENT
 noout
@@ -1044,6 +1099,7 @@ northerntech
 notAfter
 notBefore
 Nowak
+npat
 npm
 npmjs
 nq
@@ -1076,12 +1132,15 @@ Okonetchnikov
 Olivier
 oMY
 onboarding
+ONeal
 oneline
 oneoff
 Ong
 onSsnFXHXZUjbNZukNK
 ooPae
 ooPaeT
+OpenBSD
+openbsd
 OpenEmbedded
 openembedded
 OpenLDAP
@@ -1089,6 +1148,7 @@ openre
 OpenResty
 openresty
 opensource
+OpenSSH
 OpenSSL
 openssl
 optimise
@@ -1096,9 +1156,11 @@ orangepi
 orchestrator
 org
 os
+osdn
 OSI
 oSiyqW
 OSX
+OTA
 outpipe
 Oxley
 PACKAGECONFIG
@@ -1110,12 +1172,14 @@ Parra
 parserc
 partialright
 partyâ
+pascalcase
 passphrase
 passwd
 paul
 Pavel
 pb
 pbkdf
+pbxbook
 pDReVzlRbQJ
 PEB
 PEBs
@@ -1130,6 +1194,8 @@ pflag
 pgrep
 Philipp
 php
+physnet
+picocom
 PID
 pidof
 pify
@@ -1154,6 +1220,7 @@ PostCSS
 postcss
 postinstall
 postmile
+ppc
 PPVzHD
 Pragma
 pre
@@ -1171,6 +1238,7 @@ printenv
 Println
 proactive
 proc
+provos
 proxy's
 prr
 ps
@@ -1196,6 +1264,7 @@ qix
 QmD
 qs
 Quense
+quiltrc
 qXMqps
 QyZjk
 rabin
@@ -1212,6 +1281,7 @@ rbVA
 rc
 rdparty
 reactify
+readdir
 readdirp
 readerc
 readlink
@@ -1237,14 +1307,18 @@ regjsgen
 regjsparser
 Reinman
 reinterpolate
+Reiterer
 relink
 relinquishment
+Ren
+renee
 repacking
 req
 RequestID
 resolv
 RESTful
 restparam
+ret
 RetryPollIntervalSeconds
 rf
 rfc
@@ -1255,10 +1329,13 @@ ripemd
 rjvwiH
 rm
 rmdir
+rne
 ro
 rockchip
 rocko
 rollout
+Roly
+rootâ
 rootfs
 rootfsa
 rootfsb
@@ -1267,6 +1344,7 @@ RootfsPartB
 rootfstype
 rootlibexecdir
 rpi
+RPi
 RPROVIDER
 RPROVIDES
 RqsWqK
@@ -1315,7 +1393,9 @@ sdk
 sed
 segmentio
 semver
+Sep
 sequencify
+ser
 Sergey
 SerialNumber
 serialnumber
@@ -1351,6 +1431,7 @@ Sindre
 sirupsen
 sitnik
 skipverify
+Skovoroda
 SKU
 Slinko
 Slobodskoi
@@ -1400,6 +1481,7 @@ StdinOnce
 stdout
 Stefan
 stevenlevithan
+Stinnett
 Stofer
 Stol
 STORIS
@@ -1431,6 +1513,7 @@ sys
 sysconfdir
 sysfs
 syslog
+sysroot
 systemctl
 systemd
 systemjs
@@ -1444,12 +1527,14 @@ Tarimo
 Tarr
 Tasti
 tcp
+tedu
 tegrarcm
 templatesettings
 tenantadm
 TenantDataStore
 TenantToken
 Terin
+terinjokes
 tFor
 theming
 thenify
@@ -1463,11 +1548,14 @@ timedatectl
 tisdk
 tj
 tjw
+TLDRLegal
+tldrlegal
 tlds
 tLOdXZ
 TLS
 tmp
 tmpdir
+tmpf
 tmpfiles
 Tobias
 toml
@@ -1484,6 +1572,7 @@ Tremblay
 Trent
 troygoode
 trysound
+ttssh
 ttyAMA
 tUp
 TVuKgqy
@@ -1504,6 +1593,7 @@ ubifsmount
 ubimg
 ubinize
 uboot
+UBoot
 UBootBootCountLimit
 ubuntu
 ubuntulinux
@@ -1522,8 +1612,11 @@ ui
 UIDs
 uimage
 uImage
+ul
+ullevk
 umd
 umount
+Unangst
 unbuildable
 unc
 uncombined
@@ -1531,11 +1624,13 @@ underscorejs
 unfetch
 Unger
 ungerik
+uni
 unicode
 uniq
 unitdir
 unlicense
 unmarshal
+Unneb
 Unprocessable
 UnreadRune
 unreads
@@ -1549,6 +1644,7 @@ UQLbnOUCKYw
 urfave
 uri
 URIs
+urix
 url
 urls
 usb
@@ -1565,13 +1661,15 @@ utils's
 uuid
 uV
 UxFqosFfLkS
-Vagg
+UXtemple
+vagg
 validator
 var
 variscite
 vdso
 verli
 verror
+Verschueren
 Versionâ
 versioned
 versioning
@@ -1616,6 +1714,7 @@ wifi
 wiki
 wikipage
 wikipedia
+wilson
 WIPO
 wJ
 wlan
@@ -1634,6 +1733,7 @@ Wu
 wwEqxJ
 wwNYCAIYRclzvI
 www
+xargs
 XD
 xdg
 XG
@@ -1666,6 +1766,7 @@ Yasuhiro
 yBLyYbNhxvBFiIJAXOI
 Yehuda
 yH
+yiminghe
 ykrU
 yml
 yN
@@ -1676,11 +1777,13 @@ Youâ
 Yourâ
 ythV
 Yu
+YUI's
 yukinying
 YuzuJS
 YXE
 yyyy
 Zakarie
+Zeit
 zertosh
 Zhiye
 Zilverline

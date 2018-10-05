@@ -14,7 +14,7 @@ This sometimes happens when using one of the minimal images from the Yocto Proje
   CONFIG_NLS_CODEPAGE_437=y
   ```
 
-  Please refer to [the Yocto Project Manual](http://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html#configuring-the-kernel) for how to use `menuconfig` to generate and save `defconfig` files for the kernel.
+  Please refer to [the Yocto Project Manual](http://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html?target=_blank#configuring-the-kernel) for how to use `menuconfig` to generate and save `defconfig` files for the kernel.
 
 * If you're not building a custom kernel, you can add this line to your `local.conf` in order to include all the kernel modules in the image:
 
@@ -70,4 +70,4 @@ as GRUB will fall back to the correct location of its configuration file.
 
 Most likely this is an issue in the upstream GRUB recipe from the Yocto Project
 and it should be fixed in an upstream release or by
-[Mender providing its own GRUB receipe](https://tracker.mender.io/browse/MEN-1961?target=_blank).
+[Mender providing its own GRUB recipe](https://tracker.mender.io/browse/MEN-1961?target=_blank).

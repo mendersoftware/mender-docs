@@ -13,7 +13,7 @@ Mender's meta layer, [meta-mender](https://github.com/mendersoftware/meta-mender
 
 ### Other build systems
 
-Mender has no official support for other build systems. However, by following the right steps, it is possible to adapt other build systems to Mender's needs. Please see [this blog post](https://mender.io/blog/porting-mender-to-a-non-yocto-build-system) for an example (note that some of Mender's needs may have changed since the blog post was made).
+Mender has no official support for other build systems. However, by following the right steps, it is possible to adapt other build systems to Mender's needs. Please see [this blog post](https://mender.io/blog/porting-mender-to-a-non-yocto-build-system?target=_blank) for an example (note that some of Mender's needs may have changed since the blog post was made).
 
 ##Device capacity
 The client binaries are about 7 MB in size, or about 4 MB when debug symbols are stripped (using the `strip` tool). This includes all dependencies for the client, such as the http, TLS, and JSON libraries.
@@ -48,6 +48,6 @@ will only be relevant on the system boots before the RTC is properly
 initialized.
 
 Before the time is set properly, either by systemd or the RTC, the time will
-default to the [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time).  Note
+default to the [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time?target=_blank).  Note
 that the Mender client connections will be rejected by the server until this
 situation is resolved.

@@ -238,7 +238,7 @@ This variable sets the page size, in bytes, of the NAND flash on the device, and
 A rough estimate of space lost due to partition alignment, expressed in MB. The
 build process will calculate that automatically using a simple heuristic. See
 the definition of `MENDER_PARTITIONING_OVERHEAD_MB` in
-[meta-mender](https://github.com/mendersoftware/meta-mender) for details on the
+[meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank) for details on the
 calculation.
 
 
@@ -353,7 +353,7 @@ The size of each logical erase block (LEB) on the UBI device, in bytes. Usually 
 
 Total overhead on the whole UBI device, in bytes, that is reserved for bad
 physical erase blocks (PEBs). Usually zero for NOR Flash or [a variable
-amount](http://linux-mtd.infradead.org/doc/ubi.html#target=_blank) for NAND
+amount](http://linux-mtd.infradead.org/doc/ubi.html?target=_blank) for NAND
 Flash.
 
 
