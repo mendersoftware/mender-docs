@@ -121,6 +121,6 @@ mender-artifact validate artifact-signed.mender -k public.key
 ## Enable Mender Client signature verification
 
 To make it easier to provision your devices with the public verification key and corresponding Mender Client configuration,
-Mender has integration with the Yocto Project. Please refer to the documentation for [Artifact signing and verification keys](../building-for-production#artifact-signing-and-verification-keys) to see how to include them.
+Mender has integration with the Yocto Project. Please refer to the documentation for [Artifact signing and verification keys](../yocto-project/building-for-production#artifact-signing-and-verification-keys) to see how to include them.
 
 !!! The public verification key should be stored on *persistent storage* on the device where the Mender client runs, as the key should not change across deployments (except when doing key rotation). By default it is stored on the data partition.

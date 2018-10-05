@@ -58,7 +58,7 @@ If you see errors similar to the following during the Yocto Project build proces
 include/config_mender.h:34:3: error: #error CONFIG_BOOTCOUNT_ENV is required for Mender to work
 ```
 
-There are two alternatives to resolve this issue. Either you can upgrade to U-Boot v2014.07 or newer, where Boot Count Limit was introduced, or you can patch your current U-Boot version to support this or a similar feature. Please see [Bootloader support](../../devices/system-requirements#bootloader-support) for more information.
+There are two alternatives to resolve this issue. Either you can upgrade to U-Boot v2014.07 or newer, where Boot Count Limit was introduced, or you can patch your current U-Boot version to support this or a similar feature. Please see [Bootloader support](../../devices/general-system-requirements#bootloader-support) for more information.
 
 ## The build produces an error message "__populate_fs: Could not allocate block in ext2 filesystem while writing file..."
 
@@ -192,7 +192,7 @@ Unlike x86, ARM based boards usually do not implement [the UEFI boot standard](h
 However, some boards do not call `distro_bootcmd` as part of their U-Boot startup script, and in this case the approach will not work. A typical symptom is that the U-Boot bootloader skips loading of GRUB entirely and goes directly to loading the kernel. If this happens to you, you have two choices:
 
 1. Change the bootscript to call `distro_bootcmd` by patching U-Boot
-2. Abandon GRUB integration and attempt [U-Boot integration](../../devices/integrating-with-u-boot) instead
+2. Abandon GRUB integration and attempt [U-Boot integration](../../devices/yocto-project/bootloader-support/u-boot) instead
 
 
 ## My device ends up at the GRUB prompt and all error and debug messages are lost because it clears the screen

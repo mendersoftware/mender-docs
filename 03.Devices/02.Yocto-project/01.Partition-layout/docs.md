@@ -109,7 +109,7 @@ The value of &lt;BOOT&gt; depends on what features are enabled:
 * If `mender-grub` and `mender-bios` are enabled: `/boot/grub`
 * If only `mender-grub` is enabled: `/boot/efi`
 
-You can override these default values in your `local.conf`. For details consult [Mender image variables](../../../artifacts/variables).
+You can override these default values in your `local.conf`. For details consult [Mender image variables](../../../artifacts/yocto-project/variables).
 
 
 ##Preserving data and configuration across updates
