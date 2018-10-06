@@ -200,7 +200,7 @@ are typically provided by the `ca-certificates` package.
 
 If the certificate is self-signed, then clients that are to connect to the server need to have the file with
 the concatenated certificates (`keys-generated/certs/server.crt`) stored locally in order to verify
-the server's authenticity. Please see [the client section on building for production](../../artifacts/building-for-production)
+the server's authenticity. Please see [the client section on building for production](../../artifacts/yocto-project/building-for-production)
 for a description on how to provision new device disk images with the new certificates. In this case, it
 is advisable to ensure there is a overlap between the issuance of new certificates and expiration of old
 ones so all clients are able to receive an update containing the new cert before the old one expires. You

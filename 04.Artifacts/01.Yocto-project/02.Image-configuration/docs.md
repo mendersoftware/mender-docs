@@ -115,7 +115,7 @@ In this case it is also possible to avoid Mender's current dependency on systemd
 MENDER_FEATURES_DISABLE_append = " mender-systemd"
 ```
 
-Also, you do not need any daemon-related configuration items in your `local.conf` as outlined in [the section on configuring the Yocto Project build](../../../artifacts/building-mender-image/building-yocto-image#configuring-the-build).
+Also, you do not need any daemon-related configuration items in your `local.conf` as outlined in [the section on configuring the Yocto Project build](../../../artifacts/yocto-project/building/building-yocto-image#configuring-the-build).
 
 ! If you disable Mender running as a daemon under `systemd`, you must run all required Mender commands from the CLI or scripts. Most notably, you need to run `mender -commit` after booting into and verifying a successful deployment. When running in managed mode, any pending `mender -commit` will automatically be run by the Mender daemon after it starts. See [Modes of operation](../../../architecture/overview#modes-of-operation) for more information about the difference.
 

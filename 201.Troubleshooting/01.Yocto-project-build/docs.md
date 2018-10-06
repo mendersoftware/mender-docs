@@ -6,7 +6,7 @@ taxonomy:
 
 ##Your project is using a fork of U-Boot which conflicts with the U-Boot Mender uses
 
-When [Building a Mender Yocto Project image](../../artifacts/building-mender-yocto-image) for your own project and device, you encounter a build error similar to the following:
+When [Building a Mender Yocto Project image](../../artifacts/yocto-project/building) for your own project and device, you encounter a build error similar to the following:
 
 ```
 ERROR: Multiple .bb files are due to be built which each provide u-boot (.../tisdk/sources/meta-variscite/recipes-bsp/u-boot/u-boot-var-som-am33.bb .../tisdk/sources/meta-ti/recipes-bsp/u-boot/u-boot_2014.07.bb).

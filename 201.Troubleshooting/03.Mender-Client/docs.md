@@ -113,7 +113,7 @@ openssl s_client -showcerts -connect mender.example.com:443 < /dev/null 2>/dev/n
 
 If these mismatch, then you need to update `/etc/mender/server.crt` on your client.
 You can do this manually for testing purposes, and you should
-[include the certificates in your Yocto Project build](../../artifacts/building-for-production#including-the-client-certificates).
+[include the certificates in your Yocto Project build](../../artifacts/yocto-project/building-for-production#including-the-client-certificates).
 
 ## Artifact format not supported
 
@@ -143,12 +143,12 @@ ERRO[0000] exit status 1                                 module=partitions
 ERRO[0000] No match between boot and root partitions.    module=main
 ```
 
-The problem here is most likely that the device does not have the [partition layout Mender expects](../../devices/partition-layout). This could have happened if you just placed the Mender binary into your rootfs, but did not [reflash the entire storage device](../../artifacts/provisioning-a-new-device) with the `.sdimg.` file output from the [Yocto Project build](../../artifacts/building-mender-yocto-image). When this happens, output from `mount` and `fw_printenv` can confirm that this is the problem you are seeing. The solution is to flash your entire storage device with the `.sdimg` output from the Yocto Project build process.
+The problem here is most likely that the device does not have the [partition layout Mender expects](../../devices/partition-layout). This could have happened if you just placed the Mender binary into your rootfs, but did not [reflash the entire storage device](../../artifacts/provisioning-a-new-device) with the `.sdimg.` file output from the [Yocto Project build](../../artifacts/yocto-project/building). When this happens, output from `mount` and `fw_printenv` can confirm that this is the problem you are seeing. The solution is to flash your entire storage device with the `.sdimg` output from the Yocto Project build process.
 
 
 
 ## The Mender client uses excessive network traffic even when not deploying updates
 
-If you are using the Mender client in demo mode, which is used in the [prebuilt images](../../getting-started/download-test-images) and set up with the [demo layer](../../artifacts/building-mender-yocto-image#adding-the-meta-layers), the Mender client has more aggressive [polling intervals](../../client-configuration/configuration-file/polling-intervals) to simplify testing.
+If you are using the Mender client in demo mode, which is used in the [prebuilt images](../../getting-started/download-test-images) and set up with the [demo layer](../../artifacts/yocto-project/building#adding-the-meta-layers), the Mender client has more aggressive [polling intervals](../../client-configuration/configuration-file/polling-intervals) to simplify testing.
 
-See the documentation on [building for production](../../artifacts/building-for-production) and [polling intervals](../../client-configuration/configuration-file/polling-intervals) to reduce the network bandwidth usage.
+See the documentation on [building for production](../../artifacts/yocto-project/building-for-production) and [polling intervals](../../client-configuration/configuration-file/polling-intervals) to reduce the network bandwidth usage.

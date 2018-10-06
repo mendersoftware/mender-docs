@@ -40,7 +40,7 @@ configuration.
 
 ##File system types
 
-When [building a Mender Yocto Project image](../../../artifacts/building-mender-image/building-yocto-image) the build output in `tmp/deploy/images/<MACHINE>` includes a binary rootfs file system image (e.g. with `.mender` extension), as well as a complete disk image (with `.sdimg` extension). The binary rootfs file system images are used when deploying updates to the device, while the `.sdimg` image is typically used just once during initial device provisioning to flash the entire storage, and includes the partition layout and all partitions.
+When [building a Mender Yocto Project image](../../../artifacts/yocto-project/building/building-yocto-image) the build output in `tmp/deploy/images/<MACHINE>` includes a binary rootfs file system image (e.g. with `.mender` extension), as well as a complete disk image (with `.sdimg` extension). The binary rootfs file system images are used when deploying updates to the device, while the `.sdimg` image is typically used just once during initial device provisioning to flash the entire storage, and includes the partition layout and all partitions.
 
 In general Mender does not have dependencies on a specific file system type as long as it is for a [block device](#flash-memory-types), but the version of U-Boot you are using must support the file system type used for rootfs because it needs to read the Linux kernel from the file system and start the Linux boot process.
 
@@ -96,7 +96,7 @@ MENDER_ROOTFS_PART_B = "${MENDER_STORAGE_DEVICE_BASE}3"
 
 ##Configuring the partition sizes
 
-When [building a Mender Yocto Project image](../../../artifacts/building-mender-image/building-yocto-image) Mender defines and uses certain OpenEmbedded variables which are used to define the sizes of the partitions.
+When [building a Mender Yocto Project image](../../../artifacts/yocto-project/building/building-yocto-image) Mender defines and uses certain OpenEmbedded variables which are used to define the sizes of the partitions.
 
 | Mount point  | Purpose                                                 | Default size | Variable to configure size     |
 |--------------|---------------------------------------------------------|--------------|--------------------------------|
@@ -120,7 +120,7 @@ If you have data or configuration that you need to preserve across updates, the 
 
 ##Deploying files to the persistent data partition
 
-When [building a Mender Yocto Project image](../../../artifacts/building-mender-image/building-yocto-image), if you need to include files in the persistent data partition, all you have to do is add those files to the `/data` directory in the root filesystem, and the files will automatically be included on the data partition. For example:
+When [building a Mender Yocto Project image](../../../artifacts/yocto-project/building/building-yocto-image), if you need to include files in the persistent data partition, all you have to do is add those files to the `/data` directory in the root filesystem, and the files will automatically be included on the data partition. For example:
 
 ```bash
 do_install() {
