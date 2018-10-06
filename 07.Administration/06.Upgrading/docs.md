@@ -214,7 +214,7 @@ docker exec menderproduction_mender-mongo_1 mongo deviceadm --eval "db.dropDatab
 ## Upgrading Mender Clients
 
 The Mender Client binary is built into the root file system, so it can be upgraded by
-fetching the sources when [building a Yocto Project image](../../artifacts/building-mender-yocto-image).
+fetching the sources when [building a Yocto Project image](../../artifacts/yocto-project/building).
 
 !! Older Mender clients do not support newer [versions of the Mender Artifact format](../../architecture/mender-artifacts#versions); they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../artifacts/modifying-a-mender-artifact#create-an-artifact-from-a-raw-root-file-system) for an introduction how to do this.
 

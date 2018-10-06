@@ -250,7 +250,7 @@ git commit -m 'production: adding generated keys and certificates'
 
 The API Gateway and Storage Proxy certificates generated here need to be made
 available to the Mender client.
-Consult the section on [building for production](../../artifacts/building-for-production)
+Consult the section on [building for production](../../artifacts/yocto-project/building-for-production)
 for a description on how to include the certificates in the client builds.
 
 !! Only certificates need to be made available to devices or end users. Private keys should never be shared.

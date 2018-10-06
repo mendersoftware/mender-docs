@@ -31,7 +31,7 @@ There are several methods to flash storage, and the simplest
 case is if your device uses a SD card. Currently, this is the approach
 we assume you take here, but the same `.sdimg` file can be used
 to flash any block device. See
-[Flash memory types](../../devices/partition-layout#flash-memory-types)
+[Flash memory types](../../devices/yocto-project/partition-layout#flash-memory-types)
 for a clarification of what is meant by block device in this context.
 
 
