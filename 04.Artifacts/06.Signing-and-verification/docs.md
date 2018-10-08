@@ -97,6 +97,8 @@ and if you are signing an existing Mender Artifact (`.mender`).
 mender-artifact write rootfs-image -t beaglebone -n mender-1.0.1 -u core-image-base-beaglebone.ext4 -k private.key -o artifact-signed.mender
 ```
 
+! Make sure the Artifact name specified by the `-n` parameter in the above command matches the value specified when your file system image was created.
+
 #### An existing Mender Artifact
 
 ```bash
