@@ -160,12 +160,17 @@ MACHINE = "<YOUR-MACHINE>"
 
 # For Raspberry Pi, uncomment the following block:
 # RPI_USE_U_BOOT = "1"
-# MENDER_PARTITION_ALIGNMENT_KB = "4096"
 # MENDER_BOOT_PART_SIZE_MB = "40"
 # IMAGE_INSTALL_append = " kernel-image kernel-devicetree"
 # IMAGE_FSTYPES_remove += " rpi-sdimg"
 #
-# Lines below not needed for Yocto Sumo (2.5) or newer.
+# Yocto Sumo (2.5) or newer
+# MENDER_PARTITION_ALIGNMENT = "4194304"
+#
+# Yocto Rocko (2.4) or older
+# MENDER_PARTITION_ALIGNMENT_KB = "4096"
+#
+# Lines below not needed for Yocto Rocko (2.4) or newer.
 # IMAGE_BOOT_FILES_append = " boot.scr u-boot.bin;${SDIMG_KERNELIMAGE}"
 # KERNEL_IMAGETYPE = "uImage"
 
