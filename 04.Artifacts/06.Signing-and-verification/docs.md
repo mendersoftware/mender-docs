@@ -94,6 +94,8 @@ The full command will look like the following:
 mender-artifact write rootfs-image -t beaglebone -n mender-1.5.1 -u core-image-base-beaglebone.ext4 -k private.key -o artifact-signed.mender
 ```
 
+! Make sure the Artifact name specified by the `-n` parameter in the above command matches the value specified when your file system image was created.
+
 This is the command the Signing system uses to create a signed Artifact.
 
 
