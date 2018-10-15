@@ -74,10 +74,14 @@ cd mender-convert
 Then adjust to the correct paths below and run the conversion:
 
 ```bash
-./mender-convert make_all --embedded <PATH-TO-RAW-DISK-IMAGE>  \
-            --image golden-image-1.sdimg --device-type <DEVICE-TYPE>  \
-            --mender <PATH-TO-MENDER-CLIENT-BINARY> --artifact golden-image-1  \
-            ---demo-ip <IP-OF-DEMO-SERVER> --toolchain arm-linux-gnueabihf --keep
+./mender-convert from-raw-disk-image                        \
+            --raw-disk-image <PATH-TO-RAW-DISK-IMAGE>       \
+            --mender-disk-image golden-image-1.sdimg        \
+            --device-type <beaglebone | raspberrypi3>       \
+            --mender-client <PATH-TO-MENDER-CLIENT-BINARY>  \
+            --artifact-name golden-image-1                  \
+            --bootloader-toolchain arm-linux-gnueabihf      \
+            --demo-host-ip <IP-OF-DEMO-SERVER> --keep
 ```
 
 !!! The conversion may take 10 minutes, depending on the resources available on your machine.
@@ -89,10 +93,10 @@ The above invocation will use configuration defaults for use with the [Mender de
 
 ## Building for production
 
-In a production environment, we should not use the ``--demo-ip` option, but rather one or more of the following:
+In a production environment, we should not use the ``--demo-host-ip` option, but rather one or more of the following:
 
 ```bash
---hosted-token <name of token for hosted.mender.io service>
---production-url <url to production server>
---certificate <file path to the certificate>
+--tenant-token <name of token for hosted.mender.io service>
+--server-url <url to production server>
+--server-cert <file path to the certificate>
 ```
