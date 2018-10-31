@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-!!! Mender has four reference devices already integrated with the Yocto Project: [Raspberry Pi 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b?target=_blank), [BeagleBone Black](https://beagleboard.org/black?target=_blank) and two virtual devices (`qemux86-64` and `vexpress-qemu`). If you would like assistance supporting your device and OS, please refer to the [commercial device support offering](https://mender.io/product/board-support?target=_blank).
+!!! Check out the board integrations at [Mender Hub](https://hub.mender.io?target=_blank) to see if your board is already integrated. If you would like professional assistance supporting your board and OS, please refer to the [commercial device support offering](https://mender.io/product/board-support?target=_blank).
 
 ##Yocto Project
 Although it is possible to compile and install Mender independently, we have optimized the installation experience for those who build their Linux images using [Yocto Project](https://www.yoctoproject.org?target=_blank).
