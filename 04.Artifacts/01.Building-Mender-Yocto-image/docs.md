@@ -37,15 +37,8 @@ This integration enables robust and atomic rollbacks with Mender.
 Please see [Device integration](../../devices) for general requirements and
 adjustment you might need to make before building.
 
-The following reference boards are already integrated with Mender
-and covered by automated tests to ensure they work well:
-
-<!--AUTOVERSION: "meta-mender/tree/%"/ignore-->
-* [Raspberry Pi 3](https://github.com/mendersoftware/meta-mender/tree/sumo/meta-mender-raspberrypi?target=_blank) (other revisions are also likely to work)
-* BeagleBone Black (no board specific layer needed)
-* [Virtual device (qemux86-64)](https://github.com/mendersoftware/meta-mender/tree/sumo/meta-mender-qemu?target=_blank)
-* [Virtual device (vexpress-qemu)](https://github.com/mendersoftware/meta-mender/tree/sumo/meta-mender-qemu?target=_blank)
-
+Check out the board integrations at [Mender Hub](https://hub.mender.io?target=_blank) to see if your board is
+already integrated.
 If you encounter any issues and want to save time, you can use
 the [Mender professional services to integrate your board](https://mender.io/product/board-support?target=_blank).
 
@@ -124,8 +117,8 @@ For the three Mender reference devices use these layers (only add one of these):
 * BeagleBone Black: No board specific layer needed
 * Virtual boards: `bitbake-layers add-layer ../meta-mender/meta-mender-qemu`
 
-If you are building for a different board and encounter any issues, please see [Board integration](../../../devices)
-for general requirements and adjustments you might need to enable your board to support Mender.
+If you encounter any issues, please see [Board integration](../../../devices)
+and [Mender Hub](https://hub.mender.io?target=_blank) for general requirements and adjustments you might need to enable your board to support Mender.
 
 At this point, all the layers required for Mender should be
 part of your Yocto Project build environment.
