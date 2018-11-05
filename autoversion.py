@@ -67,11 +67,39 @@ def process_file(file):
             # When empty, signals that autoversioning is not active. When
             # filled, contains replacements to be made on the line.
             replacements = []
+
             in_code_block = False
+
+            first_line = True
+
+            in_page_header = False
+            page_header_lines = []
+
             for line in orig.readlines():
                 lineno += 1
+
+                # Deal with page header which may have a following tag instead
+                # of a preceding tag.
+                if first_line:
+                    first_line = False
+                    if line.strip() == "---":
+                        in_page_header = True
+                        page_header_lines.append(line)
+                        continue
+                if in_page_header:
+                    page_header_lines.append(line)
+                    if line.strip() == "---":
+                        in_page_header = False
+                    continue
+
+                # Deal with code blocks.
                 if not in_code_block and tag_search.match(line):
                     replacements = parse_autoversion_tag(line)
+                    # Apply replacing/checking to page header blocks.
+                    if len(page_header_lines) > 0:
+                        for ph_line in page_header_lines:
+                            process_line(ph_line, replacements, new)
+                        page_header_lines = []
                     if MODE == UPDATE:
                         new.write(line)
                     continue
@@ -82,12 +110,26 @@ def process_file(file):
                     else:
                         in_code_block = True
 
+                # Apply replacing/checking to page header blocks.
+                if len(page_header_lines) > 0:
+                    for ph_line in page_header_lines:
+                        process_line(ph_line, replacements, new)
+                    page_header_lines = []
+
+                # Actual replacing/checking of line.
                 process_line(line, replacements, new)
 
                 if not in_code_block and len(line.strip()) == 0:
                     # Outside code blocks we only keep replacement list for one
                     # paragraph, separated by empty line.
                     replacements = []
+
+            # Output leftover page header lines. This could happen if the header
+            # is the only thing in the file.
+            if len(page_header_lines) > 0:
+                for ph_line in page_header_lines:
+                    process_line(ph_line, replacements, new)
+
         if MODE == UPDATE:
             new.close()
             os.rename(newname, file)
