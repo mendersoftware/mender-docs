@@ -23,7 +23,12 @@ false matches.
 come in three flavors, described in the next sections.
 
 Each `AUTOVERSION` tag is only active for the code block or paragraph
-immediately following it.
+immediately following it (*).
+
+(*) There is one exception: The tag may come after a page header, and affect
+that header. The reason this exception was made is because the page doesn't
+render correctly if the tag is above the page header. This only works if the tag
+comes *immediately* after the header.
 
 
 ### Version numbers for Mender components
