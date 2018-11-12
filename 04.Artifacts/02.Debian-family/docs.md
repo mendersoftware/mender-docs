@@ -75,6 +75,12 @@ Finally, add toolchain to `PATH`:
 PATH=$PATH:$(pwd)/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf/bin
 ```
 
+#### Install mender-artifact
+
+`mender-convert` also depends on `mender-artifact`.
+Please follow [the documentation on mender-artifact](../modifying-a-mender-artifact#mender-artifact) and install it.
+
+
 ### Download mender-convert
 
 Clone `mender-convert` from the official repository:
