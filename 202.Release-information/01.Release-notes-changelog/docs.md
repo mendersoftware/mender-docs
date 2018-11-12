@@ -4,6 +4,17 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender sumo-v2018.11
+
+_Released 11.12.2018_
+
+#### meta-mender (sumo-v2018.11)
+
+New changes in meta-mender since sumo-v2018.10:
+
+* QEMU: Always try to run with KVM enabled, only fall back to emulation.
+
+
 ## meta-mender sumo-v2018.10
 
 _Released 10.03.2018_
