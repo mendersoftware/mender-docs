@@ -67,7 +67,7 @@ wget -nc -q http://releases.linaro.org/components/toolchain/binaries/6.3-2017.05
 Next, unpack it:
 <!--AUTOVERSION: "linaro-%"/ignore-->
 ```bash
-tar -xJf gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf
+tar -xJf gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf.tar.xz
 ```
 Finally, add toolchain to `PATH`:
 <!--AUTOVERSION: "linaro-%"/ignore-->
