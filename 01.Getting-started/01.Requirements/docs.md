@@ -37,10 +37,9 @@ having to configure any hardware.
 We assume you are using **Ubuntu 18.04** with **Google Chrome** as web browser
 and at least **10 GB free disk space** and **2 GB RAM available** for Mender.
 
-#### Docker Engine 1.11
+#### Docker Engine 17.03
 
-Follow the [documentation to install Docker Engine](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/?target=_blank),
-version **1.11 or later** (17.03 or later in [Docker's new versioning scheme](https://blog.docker.com/2017/03/docker-enterprise-edition/?target=_blank)).
+Follow the [documentation to install Docker Engine](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/?target=_blank), version **17.03 or later**.
 
 ##### Docker permissions
 
