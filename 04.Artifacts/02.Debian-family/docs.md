@@ -51,7 +51,7 @@ See [cross-compiling Mender client](../../client-configuration/cross-compiling) 
 If you are using Ubuntu 18.04, install the dependencies by running the following command:
 
 ```bash
-sudo apt install kpartx bison flex mtools parted mtd-utils e2fsprogs u-boot-tools pigz device-tree-compiler autoconf
+sudo apt install kpartx bison flex mtools parted mtd-utils e2fsprogs u-boot-tools pigz device-tree-compiler autoconf autotools-dev libtool pkg-config python
 ```
 
 Disable sanity checks made by Mtools commands. These checks reject copy/paste operations on converted disk images.
