@@ -67,13 +67,19 @@ wget -nc -q http://releases.linaro.org/components/toolchain/binaries/6.3-2017.05
 Next, unpack it:
 <!--AUTOVERSION: "linaro-%"/ignore-->
 ```bash
-tar -xJf gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf
+tar -xJf gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf.tar.xz
 ```
 Finally, add toolchain to `PATH`:
 <!--AUTOVERSION: "linaro-%"/ignore-->
 ```bash
 PATH=$PATH:$(pwd)/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf/bin
 ```
+
+#### Install mender-artifact
+
+`mender-convert` also depends on `mender-artifact`.
+Please follow [the documentation on mender-artifact](../modifying-a-mender-artifact#mender-artifact) and install it.
+
 
 ### Download mender-convert
 
