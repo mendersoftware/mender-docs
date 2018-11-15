@@ -36,7 +36,7 @@ Download [the prebuilt mender-artifact tool][x.x.x_mender-artifact] available
 for Linux, or [compile it from source](../../artifacts/modifying-a-mender-artifact#compiling-mender-artifact). In both cases remember to add execute permission (e.g. with `chmod +x mender-artifact`).
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/master/mender-artifact
+[x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.4.0b1/mender-artifact
 
 Please see [Modifying a Mender Artifact](../../artifacts/modifying-a-mender-artifact)
 for a more detailed overview.
@@ -281,7 +281,7 @@ run these two commands (adjust the Artifact file name accordingly):
 <!--AUTOVERSION: "release-2_%"/mender -->
 ```bash
 cp beaglebone_release_1.mender beaglebone_release_2.mender
-mender-artifact modify beaglebone_release_2.mender -n release-2_master
+mender-artifact modify beaglebone_release_2.mender -n release-2_1.7.0b1
 ```
 
 
