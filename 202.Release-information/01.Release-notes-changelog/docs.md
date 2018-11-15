@@ -4,6 +4,153 @@ taxonomy:
     category: docs
 ---
 
+## Mender 1.7.0b1
+
+_Released 11.15.2018_
+
+#### deployments (1.6.0b1)
+
+New changes in deployments since 1.5.0:
+
+* Change image download link validity to 24h from 1h.
+* Change image download link validity to 24h from 1h.
+  ([MEN-2054](https://tracker.mender.io/browse/MEN-2054))
+
+#### deviceauth (1.7.0b1)
+
+New changes in deviceauth since 1.6.0:
+
+* do not sychronize data with device admission service
+* docs: introduce version 2 of the management API
+* fix database migration
+* fix database migration
+* management API v2 endpoint for getting devices
+* v2 of GET /devices/<id>
+* actually run migration 1.5.0
+* actually run migration 1.5.0
+* API v2 POST /devices endpoint (for preauthorizing devices)
+* v2 of GET /devices/<id>
+
+#### gui (1.7.0b1)
+
+New changes in gui since 1.6.0:
+
+* Update node modules
+* Introduce new tabbed deployment layout
+* Added 'Copy to clipboard' function to error messages throughout UI
+* Add a date range filter to past deployments tab
+* Add "copy link to device" button on expanded device view
+* Add group filter to past devices tab
+* Make Artifact selector more scalable with autocomplete
+* Bugfix: Ensure "already installed" displays correctly in deployment report
+* Allow click-to-retry for deployments with failures
+* Update to deviceauth API v2 and use device authsets for admit-on-request flow
+
+#### integration (1.7.0b1)
+
+New changes in integration since 1.6.0:
+
+* Increase bandwidth limit to 3 MB/s per device for demo setup.
+* remove admission service from the setup
+* remove admission service from the setup
+* client: Use KVM automatically if available. Remove "./demo --kvm" option.
+* Fix docker version detection
+* Upgrade deployments to 1.6.0b1.
+* Upgrade deviceauth to 1.7.0b1.
+* Upgrade gui to 1.7.0b1.
+* Upgrade inventory to 1.5.0b1.
+* Upgrade mender to 1.7.0b1.
+* Upgrade mender-api-gateway-docker to 1.6.0b1.
+* Upgrade mender-artifact to 2.4.0b1.
+* Upgrade mender-cli to 1.1.0b1.
+* Upgrade mender-conductor to 1.2.0b1.
+* Upgrade mender-conductor-enterprise to 1.2.0b1.
+* Upgrade useradm to 1.7.0b1.
+
+#### mender (1.7.0b1)
+
+New changes in mender since 1.6.0:
+
+* FIX: Enabling compiling ppc64le
+* Fix active partition detection when using non-native
+  filesystems.
+* Add inventory scripts for rootfs type and bootloader integration.
+  ([MEN-2059](https://tracker.mender.io/browse/MEN-2059))
+* New feature: Failover Mender server(s)
+  ([MEN-1972](https://tracker.mender.io/browse/MEN-1972))
+* New inventory script for "os" attribute, installed by default.
+  ([MEN-2060](https://tracker.mender.io/browse/MEN-2060))
+* Mender client now loads configuration settings from
+  both /etc/mender/mender.conf and (if it exists)
+  /var/lib/mender/mender.conf. The second file is located
+  on the data partition, so it allows any subset of configuration
+  changes to survive upgrades.
+  ([MEN-2073](https://tracker.mender.io/browse/MEN-2073))
+* Print a message to the mender log when the
+  mender client has confirmed the authenticity of an
+  artifact's digital signature.
+  ([MEN-2152](https://tracker.mender.io/browse/MEN-2152))
+* Fix update check not working under BusyBox.
+  ([MEN-2159](https://tracker.mender.io/browse/MEN-2159))
+* Add Community Code of Conduct
+* Detect if inactive part is mounted and unmount
+  ([MEN-2084](https://tracker.mender.io/browse/MEN-2084))
+* Improove error message when running mender as non-root user
+  ([MEN-2083](https://tracker.mender.io/browse/MEN-2083))
+
+#### mender-api-gateway-docker (1.6.0b1)
+
+New changes in mender-api-gateway-docker since 1.5.0:
+
+* nginx conf: redirect /api/management/v1/admission calls to devicauth service
+* redirection to /ui/ fixed
+* use exact openresty version (1.13.6.2-0-alpine) instead of floating tag (alpine)
+* json access logs format option is added
+
+#### mender-artifact (2.4.0b1)
+
+New changes in mender-artifact since 2.3.0:
+
+* FIX: mender-artifact cp no longer renames the artifact.
+* FIX: remove leftover tmp files from mender-artifact cp.
+* FIX: mender-artifact no longer changes the names of the updates in an artifact
+* Updated the JSON format of header-info version 3.
+* A command of the form
+  "mender-artifact validate unsigned.mender -k public.key"
+  was incorrectly succeeding for an unsigned artifact when a public key
+  was supplied. Supplying a public key indicates that the caller requires
+  the artifact to contain a signature that matches that key.
+  Now this command fails (exits with a nonzero value) as expected.
+  ([MEN-2155](https://tracker.mender.io/browse/MEN-2155))
+* FIX: Renaming a file across devices now works.
+  ([MEN-2166](https://tracker.mender.io/browse/MEN-2166))
+* FIX: mender-artifact cat,cp,modify etc no longer removes the update.
+  Previously an update present in a directory, with the same name as the
+  update present in an update would be removed as a result of what the
+  functions thought was tmp-files.
+  ([MEN-2171](https://tracker.mender.io/browse/MEN-2171))
+* Fixed a bug that caused a command like
+  "mender-artifact cat signed.mender:/etc/mender/artifact_info"
+  to fail with the error:
+  "failed to open the partition reader: err: error validating signature"
+  There was a similar problem with the "cp" command, and also
+  the "modify" command when no "-k" was present to replace the
+  existing signature.
+
+#### mender-conductor-enterprise (1.2.0b1)
+
+New changes in mender-conductor-enterprise since 1.1.0:
+
+* Latest template from Ralph.
+
+#### useradm (1.7.0b1)
+
+New changes in useradm since 1.6.0:
+
+* Recover from unsuccessful attempt to create user.
+* Enable common logging stack adding request access log and reponse timings.
+
+
 ## meta-mender sumo-v2018.11
 
 _Released 11.12.2018_
