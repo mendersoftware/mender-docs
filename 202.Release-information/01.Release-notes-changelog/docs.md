@@ -4,6 +4,18 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender sumo-v2018.11.2
+
+_Released 11.16.2018_
+
+#### meta-mender (sumo-v2018.11.2)
+
+New changes in meta-mender since sumo-v2018.11:
+
+* Add mender 1.7.0b1 recipe.
+* Add mender-artifact 2.4.0b1 recipe.
+
+
 ## meta-mender sumo-v2018.11
 
 _Released 11.12.2018_
