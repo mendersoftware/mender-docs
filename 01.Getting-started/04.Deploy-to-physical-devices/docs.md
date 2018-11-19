@@ -137,7 +137,7 @@ MENDER_IMGPATH=<sdimg>
 ```
 And then running:
 ```bash
-mender-artifact cat "$MENDER_IMGPATH":/etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf | sed "s#[@]MENDER_DEMO_WIFI_PASSKEY[@]#$NW_PASSWORD#" | sed "s#[@]MENDER_DEMO_WIFI_SSID[@]#$NW_SSID#" > tmpf; mender-artifact cp tmpf "$MENDER_IMGPATH":/etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf && rm tmpf
+mender-artifact cat "$MENDER_IMGPATH":/etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf | sed "s#psk=\"password\"#psk=\"$NW_PASSWORD\"#" | sed "s#ssid=\"ssid\"#ssid=\"$NW_SSID\"#" > tmpf; mender-artifact cp tmpf "$MENDER_IMGPATH":/etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf && rm tmpf
 ```
 should have your wpa configuration set up correctly on start up.
 
