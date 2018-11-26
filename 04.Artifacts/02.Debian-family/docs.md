@@ -31,7 +31,9 @@ For example, if your raw disk image is 4 GB, you should have at least 16 GB free
 
 As described in the workflow above, you need a raw disk image as input to `mender-convert`. This is the image that contains the root file system you want to deploy to many devices. Note that this must be a *complete disk image* (usually they have a `.img` suffix).
 
-If you want to copy it from a SD card, insert it into your workstation and run the following command:
+Board manufacturers typically provide a disk image for you to start with so you can download and use `mender-convert` directly on this image.
+
+If you have made run-time modifications on your device and want to copy the image from an existing SD card, insert it into your workstation and run the following command:
 
 ```bash
 dd if=<DEVICE> of=golden-image-1.img bs=1M conv=fdatasync
