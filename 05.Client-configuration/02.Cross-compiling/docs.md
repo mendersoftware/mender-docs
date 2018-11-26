@@ -24,8 +24,8 @@ to create a working Golang environment.
 
 ### A cross-compiler toolchain
 
-You will need a cross-compiler toolchain targetting your device.
-If you are using Ubuntu and targetting `armhf`, install it with:
+You will need a cross-compiler toolchain target ting your device.
+If you are using Ubuntu and target ting `armhf`, install it with:
 
 ```bash
 sudo apt install gcc-arm-linux-gnueabihf

@@ -84,6 +84,7 @@ archy
 arekinath
 args
 arity
+armhf
 Arnodo
 Aron
 ARPHRD
@@ -121,9 +122,11 @@ aUS
 auth
 authorisation
 authset
+authsets
 authtentoken
 autobind
 autoboot
+autoconf
 autoconvert
 automigrate
 automigrations
@@ -131,6 +134,7 @@ autopatcher
 autopatching
 autoprefixer
 autorest
+autotools
 AUTOVERSION
 AvianFlu
 AvrAgMBAAE
@@ -237,6 +241,7 @@ builtins
 BumtJEOkD
 Bunnell
 BurntSushi
+BusyBox
 Butenko
 Buus
 BUVBpCcRf
@@ -271,6 +276,7 @@ cff
 cfg
 CFI
 CFLAGS
+CGO
 cgroup
 ch
 Chadkin
@@ -330,6 +336,7 @@ contra
 Contributionâ
 Contributorâ
 controlâ
+conv
 cookiejar
 CORS
 CortexA
@@ -413,6 +420,7 @@ dev
 devauth
 DevAuthHandler
 developit
+devicauth
 devicead
 deviceadm
 deviceau
@@ -566,6 +574,7 @@ fc
 fcd
 fd
 fD
+fdatasync
 fdee
 fdf
 fdisk
@@ -636,6 +645,7 @@ Gabbadon
 gaearon
 gajus
 GaPdYbhQb
+gcc
 Geisend
 Generis
 genkey
@@ -664,12 +674,14 @@ gnueabi
 gnueabihf
 gnupg
 GNWsjd
+GOARCH
 Gocheck
 GoDoc
 godoc
 golang
 Goode
 googleapis
+GOOS
 gopass
 GOPATH
 gopkg
@@ -902,6 +914,7 @@ libdir
 libgcc
 libpseudo
 libs
+libtool
 libyaml
 LIC
 licence
@@ -914,6 +927,7 @@ licensor's
 licensors
 lifecycles
 liftoff
+linaro
 lindenlab
 Lindesay
 linkify
@@ -1011,6 +1025,7 @@ minimatch
 minimist
 minio
 misconfiguration
+misrendering
 mit
 mitchellh
 mixin
@@ -1051,6 +1066,7 @@ mtdimg
 mtdinfo
 mtdparts
 mtools
+mtoolsrc
 multipipe
 multitenancy
 murmurhash
@@ -1179,6 +1195,7 @@ orchestrator
 org
 os
 osdn
+OSes
 OSI
 oSiyqW
 OSX
@@ -1267,6 +1284,7 @@ proxy's
 prr
 ps
 pseudomap
+psk
 pt
 Pty
 publicdomain
@@ -1276,7 +1294,7 @@ punycode
 Pushkarev
 Puzrin
 PV
-PWD
+pwd
 pwgen
 pY
 py
@@ -1299,6 +1317,7 @@ randomatic
 randombytes
 Rarick
 raspberrypi
+RaspberryPi
 raspbian
 Raynos
 rbVA
@@ -1768,6 +1787,7 @@ XD
 xdg
 XG
 xiaoba
+xJf
 xJPUHL
 xor
 xp

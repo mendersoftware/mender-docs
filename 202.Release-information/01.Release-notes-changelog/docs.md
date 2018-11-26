@@ -32,7 +32,7 @@ New changes in deployments since 1.5.0:
 
 New changes in deviceauth since 1.6.0:
 
-* do not sychronize data with device admission service
+* do not synchronize data with device admission service
 * docs: introduce version 2 of the management API
 * fix database migration
 * fix database migration
@@ -53,7 +53,7 @@ New changes in gui since 1.6.0:
 * Add a date range filter to past deployments tab
 * Add "copy link to device" button on expanded device view
 * Add group filter to past devices tab
-* Make Artifact selector more scalable with autocomplete
+* Make Artifact selector more scalable with auto-complete
 * Bugfix: Ensure "already installed" displays correctly in deployment report
 * Allow click-to-retry for deployments with failures
 * Update to deviceauth API v2 and use device authsets for admit-on-request flow
@@ -88,7 +88,7 @@ New changes in mender since 1.6.0:
   filesystems.
 * Add inventory scripts for rootfs type and bootloader integration.
   ([MEN-2059](https://tracker.mender.io/browse/MEN-2059))
-* New feature: Failover Mender server(s)
+* New feature: Fail-over Mender server(s)
   ([MEN-1972](https://tracker.mender.io/browse/MEN-1972))
 * New inventory script for "os" attribute, installed by default.
   ([MEN-2060](https://tracker.mender.io/browse/MEN-2060))
@@ -107,7 +107,7 @@ New changes in mender since 1.6.0:
 * Add Community Code of Conduct
 * Detect if inactive part is mounted and unmount
   ([MEN-2084](https://tracker.mender.io/browse/MEN-2084))
-* Improove error message when running mender as non-root user
+* Improve error message when running mender as non-root user
   ([MEN-2083](https://tracker.mender.io/browse/MEN-2083))
 
 #### mender-api-gateway-docker (1.6.0b1)
@@ -160,7 +160,7 @@ New changes in mender-conductor-enterprise since 1.1.0:
 New changes in useradm since 1.6.0:
 
 * Recover from unsuccessful attempt to create user.
-* Enable common logging stack adding request access log and reponse timings.
+* Enable common logging stack adding request access log and response timings.
 
 
 ## meta-mender sumo-v2018.11
