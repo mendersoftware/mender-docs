@@ -49,6 +49,9 @@ In order to access the the Mender server API with the commands below, you need t
 
 Follow the steps in [set up shell variables for cURL](../using-the-apis#set-up-shell-variables-for-curl).
 
+### Mender-Artifact tool
+Please follow [the documentation on mender-artifact](../modifying-a-mender-artifact#mender-artifact) and install it.
+
 
 ## Generate a client keypair
 
@@ -144,39 +147,16 @@ Your device should now be preauthorized and accepted to the Mender server once i
 
 ## Copy generated device key to disk image
 
-
-### Mount the data partition of the disk image
-
 Now that we have generated a key for the device and preauthorized it, we need to copy the generated *private* device key to our working disk image (it typically has the `.sdimg` suffix). We copy it to its default location `/mender/mender-agent.pem` on the data partition.
 
 !!! There is a symlink from `/var/lib/mender/mender-agent.pem` on the root file systems to `/mender/mender-agent.pem` on the data partition, which we will leave in place. If the Mender client does not find a valid key it will generate one, which is not what we want when we are preauthorizing devices.
 
-Follow the steps in [modifying a disk image](../../artifacts/modifying-a-disk-image) to find the start sector of the `data` partition (typically `.sdimg4`).
-Usually you will run a sequence of commands similar to this:
-
-```bash
-fdisk -l -u mender-disk-image.sdimg
-sudo mkdir /mnt/data
-sudo mount -o loop,offset=$((512*933888)) mender-disk-image.sdimg /mnt/data
-```
-
-!!! Adjust the name of your disk image (`.sdimg`) file, and make sure to use the right offset. The offset `933888` is likely not correct for your setup and you need to look at the output from `fdisk` to determine yours. See [modifying a disk image](../../artifacts/modifying-a-disk-image) for more details.
-
-
 ### Copy the private device key
 
-At this point the data partition of the disk image should be mounted on `/mnt/data`. Find the location of the [private key we generated](#generate-a-client-keypair) and copy it into place on the data partition by running the following commands:
+Find the location of the [private key we generated](#generate-a-client-keypair) and copy it into place on the data partition by running the following commands:
 
 ```bash
-sudo install -m 600 keys-client-generated/private.key /mnt/data/mender/mender-agent.pem
-```
-
-### Unmount your data partition
-
-To ensure the device private key is written to disk, unmount the data partition with the following command:
-
-```bash
-sudo umount /mnt/data
+mender-artifact install -m 600 keys-client-generated/private.key mender-disk-image.sdimg:/data/mender/mender-agent.pem
 ```
 
 
