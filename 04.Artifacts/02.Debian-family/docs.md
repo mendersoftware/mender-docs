@@ -113,7 +113,7 @@ Then adjust to the correct paths below and run the conversion:
 
 !!! The conversion may take 10 minutes, depending on the resources available on your machine.
 
-Afther a successful conversion, your images can be found in `outputs/`.
+After a successful conversion, your images can be found in `outputs/`.
 
 The above invocation will use configuration defaults for use with the [Mender demo environment](../../../getting-started/create-a-test-environment).
 
