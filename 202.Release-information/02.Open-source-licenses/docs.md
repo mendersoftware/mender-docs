@@ -2772,7 +2772,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-github.com/sirupsen/logrus:
+github.com/Sirupsen/logrus:
 
 The MIT License (MIT)
 
@@ -2799,7 +2799,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-github.com/Sirupsen/logrus:
+github.com/sirupsen/logrus:
 
 The MIT License (MIT)
 
