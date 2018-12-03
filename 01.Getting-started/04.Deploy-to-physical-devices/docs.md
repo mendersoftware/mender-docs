@@ -88,14 +88,22 @@ server when it starts.
 
 ### Insert the address of Mender server
 
+First set a shell variable describing the image name, by replacing `<sdimg>` in this snippet:
+
 ```bash
-mender-artifact cat IMGNAME.sdimg:/etc/hosts | sed "\$a ${IP_OF_MENDER_SERVER_FROM_DEVICE} docker.mender.io s3.docker.mender.io" > tmpf; mender-artifact cp tmpf IMGNAME.sdimg:/etc/hosts && rm tmpf
+MENDER_IMGPATH=<sdimg>
+```
+
+Then run this command:
+
+```bash
+mender-artifact cat $MENDER_IMGPATH:/etc/hosts | sed "\$a ${IP_OF_MENDER_SERVER_FROM_DEVICE} docker.mender.io s3.docker.mender.io" > tmpf; mender-artifact cp tmpf $MENDER_IMGPATH:/etc/hosts && rm tmpf
 ```
 
 Then you can check the contents of your 'etc/hosts' file by
 
 ```bash
-mender-artifact cat IMGNAME.sdimg:/etc/hosts
+mender-artifact cat $MENDER_IMGPATH:/etc/hosts
 ```
 
 You should see output similar to the following:
@@ -122,18 +130,17 @@ Name=eth0
 [Network]
 Address=$IP_OF_MENDER_CLIENT
 Gateway=$IP_OF_MENDER_SERVER_FROM_DEVICE
-" | mender-artifact cp IMGNAME.sdimg:/etc/systemd/network/eth.network
+" | mender-artifact cp $MENDER_IMGPATH:/etc/systemd/network/eth.network
 ```
 
 ! If you have a static IP address setup for several devices, you need several disk images so each get different IP addresses.
 
 ## Wifi connectivity
 
-The raspberrypi demo image comes with Wifi connectivity enabled by default, thus the only thing needed in order for your device to connect to your network is setting the correct `<ssid>` and `<password>` in the `wpa_supplicant-nl80211@wlan0.conf` file on your device. First set your `<password>` and `<ssid>`, and `<sdimg>` path as shell variables:
+The raspberrypi demo image comes with Wifi connectivity enabled by default, thus the only thing needed in order for your device to connect to your network is setting the correct `<ssid>` and `<password>` in the `wpa_supplicant-nl80211@wlan0.conf` file on your device. First set your `<password>` and `<ssid>` path as shell variables:
 ```bash
 NW_SSID=<ssid>
 NW_PASSWORD=<password>
-MENDER_IMGPATH=<sdimg>
 ```
 And then running:
 ```bash
