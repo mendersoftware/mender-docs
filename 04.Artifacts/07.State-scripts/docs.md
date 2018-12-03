@@ -106,6 +106,7 @@ Make sure to adjust `StateScriptRetryIntervalSeconds` as described in [retry lat
 
 ![End user update confirmation state scripts](mender-state-machine-user-confirmation.png)
 
+!! Maximum wait time between `Sync` and `Download` state is 1 hour, after this period the update will be marked as failed by the Mender client. This happens because the Mender Artifact download link is generated in `Sync` state and it has a expiration time (1 hour).
 
 #### Custom sanity checks after the update is installed
 Mender already automatically rolls back an update if it can not reach the Mender Server after the update is installed, in order to ensure *another* update can be deployed.
