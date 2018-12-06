@@ -68,6 +68,5 @@ the above error is printed, possibly with a different device than `(hd0,gpt1)`.
 This error message is usually harmless and only a cosmetic issue,
 as GRUB will fall back to the correct location of its configuration file.
 
-Most likely this is an issue in the upstream GRUB recipe from the Yocto Project
-and it should be fixed in an upstream release or by
-[Mender providing its own GRUB recipe](https://tracker.mender.io/browse/MEN-1961?target=_blank).
+The issue is resolved in `thud` (and newer) branches of  meta-mender.
+See [issue MEN-1961](https://tracker.mender.io/browse/MEN-1961?target=_blank) for more information.
