@@ -58,16 +58,3 @@ help here:
   #define CONFIG_AUTOBOOT_DELAY_STR "\r"
   #define CONFIG_AUTOBOOT_DELAY_STR2 "\n"
   ```
-
-
-## GRUB prints error: no such device: ((hd0,gpt1)/EFI/BOOT)/EFI/BOOT/grub.cfg.
-
-When using GRUB as an intermediate bootloader in a Yocto Project build,
-the above error is printed, possibly with a different device than `(hd0,gpt1)`.
-
-This error message is usually harmless and only a cosmetic issue,
-as GRUB will fall back to the correct location of its configuration file.
-
-Most likely this is an issue in the upstream GRUB recipe from the Yocto Project
-and it should be fixed in an upstream release or by
-[Mender providing its own GRUB recipe](https://tracker.mender.io/browse/MEN-1961?target=_blank).
