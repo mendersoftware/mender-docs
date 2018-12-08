@@ -159,15 +159,6 @@ MACHINE = "<YOUR-MACHINE>"
 # PREFERRED_VERSION_pn-mender-artifact = "2.0.%"
 # PREFERRED_VERSION_pn-mender-artifact-native = "2.0.%"
 
-# Build for Hosted Mender
-# To get your tenant token, log in to https://hosted.mender.io,
-# click your email at the top right and then "My organization".
-# Remember to remove the meta-mender-demo layer (if you have added it).
-# We recommend Mender 1.6.0 and Yocto Project's pyro or later for Hosted Mender.
-#
-# MENDER_SERVER_URL = "https://hosted.mender.io"
-# MENDER_TENANT_TOKEN = "<YOUR-HOSTED-MENDER-TENANT-TOKEN>"
-
 # The following settings to enable systemd are needed for all Yocto
 # releases sumo and older.  Newer releases have these settings conditionally
 # based on the MENDER_FEATURES settings and the inherit of mender-full above.
@@ -177,6 +168,42 @@ DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 VIRTUAL-RUNTIME_initscripts = ""
 
 ARTIFACTIMG_FSTYPE = "ext4"
+
+# Build for Hosted Mender
+#
+# To get your tenant token:
+#    - log in to https://hosted.mender.io
+#    - click your email at the top right and then "My organization"
+#    - press the "COPY TO CLIPBOARD"
+#    - assign content of clipboard to MENDER_TENANT_TOKEN
+#
+#MENDER_SERVER_URL = "https://hosted.mender.io"
+#MENDER_TENANT_TOKEN = ""
+
+# Build for Mender demo server
+#
+# https://docs.mender.io/getting-started/create-a-test-environment
+#
+# Uncomment below and update IP address to match the machine running the
+# Mender demo server
+#MENDER_DEMO_HOST_IP_ADDRESS = "192.168.0.100"
+
+# Build for Mender production setup (on-prem)
+#
+# https://docs.mender.io/artifacts/building-for-production
+#
+# Uncomment below and update the URL to match your configured domain
+# name and provide the path to the generated server.crt file.
+#
+# Note that a custom server.crt file is only necessary if you are using
+# self-signed certificates.
+#
+# NOTE! It is recommend that you provide below information in your custom
+# Yocto layer and this is only for demo purposes. See linked documentation
+# for additional information.
+#MENDER_SERVER_URL = "https://docker.mender.io"
+#FILESEXTRAPATHS_prepend_pn-mender := "<DIRECTORY-CONTAINING-server.crt>:"
+#SRC_URI_append_pn-mender = " file://server.crt"
 ```
 
 !!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../variables#mender_storage_total_size_mb) for more information. Mender selects the file system type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on file system types](../../devices/partition-layout#file-system-types) for more information.
