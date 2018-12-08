@@ -143,22 +143,6 @@ INHERIT += "mender-full"
 # raspberrypi3, beaglebone-yocto, vexpress-qemu and qemux86-64 are reference boards
 MACHINE = "<YOUR-MACHINE>"
 
-# For Raspberry Pi, uncomment the following block:
-# RPI_USE_U_BOOT = "1"
-# MENDER_BOOT_PART_SIZE_MB = "40"
-# IMAGE_INSTALL_append = " kernel-image kernel-devicetree"
-# IMAGE_FSTYPES_remove += " rpi-sdimg"
-#
-# Yocto Sumo (2.5) or newer
-# MENDER_PARTITION_ALIGNMENT = "4194304"
-#
-# Yocto Rocko (2.4) or older
-# MENDER_PARTITION_ALIGNMENT_KB = "4096"
-#
-# Lines below not needed for Yocto Rocko (2.4) or newer.
-# IMAGE_BOOT_FILES_append = " boot.scr u-boot.bin;${SDIMG_KERNELIMAGE}"
-# KERNEL_IMAGETYPE = "uImage"
-
 # The version of Mender to build. This needs to match an existing recipe in the meta-mender repository.
 #
 # Given your Yocto Project version, see which versions of Mender you can currently build here:
