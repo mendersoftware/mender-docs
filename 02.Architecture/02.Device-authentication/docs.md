@@ -78,7 +78,6 @@ The sequence diagram below describes the API interactions between the user and D
 
 For details of API calls please consult the API documentation:
 
-* [Device Admission Management API](../../apis/management-apis/device-admission)
 * [Device Authentication Device API](../../apis/device-apis/device-authentication)
 * [Device Authentication Management API](../../apis/management-apis/device-authentication)
 
