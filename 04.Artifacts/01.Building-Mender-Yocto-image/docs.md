@@ -117,8 +117,11 @@ For the three Mender reference devices use these layers (only add one of these):
 * BeagleBone Black: No board specific layer needed
 * Virtual boards: `bitbake-layers add-layer ../meta-mender/meta-mender-qemu`
 
+!!! For board specific setup instructions please check out [Mender Hub](https://hub.mender.io?target=_blank) which contains our reference boards plus a large pool of community supported integrations
+
 If you encounter any issues, please see [Board integration](../../../devices)
-and [Mender Hub](https://hub.mender.io?target=_blank) for general requirements and adjustments you might need to enable your board to support Mender.
+for general requirements and adjustments you might need to enable your board to
+support Mender.
 
 At this point, all the layers required for Mender should be
 part of your Yocto Project build environment.
