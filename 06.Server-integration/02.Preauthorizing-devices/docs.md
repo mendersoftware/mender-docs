@@ -50,7 +50,7 @@ In order to access the the Mender server API with the commands below, you need t
 Follow the steps in [set up shell variables for cURL](../using-the-apis#set-up-shell-variables-for-curl).
 
 ### Mender-Artifact tool
-Please follow [the documentation on mender-artifact](../modifying-a-mender-artifact#mender-artifact) and install it.
+Please follow [the documentation on mender-artifact](../../artifacts/modifying-a-mender-artifact#mender-artifact) and install it.
 
 
 ## Generate a client keypair
