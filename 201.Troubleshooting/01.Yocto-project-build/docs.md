@@ -217,6 +217,7 @@ MENDER_FEATURES_ENABLE_append = " mender-image-sd"
 MENDER_FEATURES_DISABLE_append = " mender-image-uefi"
 ```
 
+<!--AUTOVERSION: "When I update Yocto version from % to %"/ignore-->
 ## When I update Yocto version from rocko to sumo U-boot patches do not apply
 
 This is what the error message might look like.
@@ -256,6 +257,7 @@ ERROR: Task (/home/user/git/poky/meta-freescale/recipes-bsp/u-boot/u-boot-custom
 NOTE: Tasks Summary: Attempted 1428 tasks of which 458 didn't need to be rerun and 1 failed.
 ```
 
+<!--AUTOVERSION: "U-Boot version used in % by upstream Yocto"/ignore-->
 This is because the U-Boot version used in sumo by upstream Yocto is v2018.01,
 and the u-boot-custom version is v2017.03. It is safe to simply remove  this
 patch, since I it fixes a problem that was introduced after v2017.03.
