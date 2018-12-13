@@ -23,22 +23,34 @@ CHECK = 2
 MODE = UPDATE
 
 INTEGRATION_REPO = None
-VERSION = None
+MENDER_VERSION = None
 
 # Match version strings.
-VERSION_MATCHER = r"(?:(?<![0-9]\.)(?<![0-9])[1-9][0-9]*\.[0-9]+\.[x0-9]+(?:b[0-9]+)?(?![0-9])(?!\.[0-9])|(?<![a-z])master(?![a-z]))"
+YOCTO_BRANCHES = r"(?:dora|daisy|dizzy|jethro|krogoth|morty|pyro|rocko|sumo|thud)"
+VERSION_MATCHER = (r"(?:(?<![0-9]\.)(?<![0-9])[1-9][0-9]*\.[0-9]+\.[x0-9]+(?:b[0-9]+)?(?![0-9])(?!\.[0-9])|(?<![a-z])(?:%s|master)(?![a-z]))"
+                   % YOCTO_BRANCHES)
 
 VERSION_CACHE = {}
 
 def get_version_of(repo):
+    global VERSION_CACHE
+
     version = VERSION_CACHE.get(repo)
-    if version is None:
+    if version is False:
+        return None
+    elif version is not None:
+        return version
+    elif INTEGRATION_REPO is not None and MENDER_VERSION is not None:
         version = subprocess.check_output([os.path.join(INTEGRATION_REPO, "extra", "release_tool.py"),
                                            "--version-of", repo,
-                                           "--in-integration-version", VERSION]
+                                           "--in-integration-version", MENDER_VERSION]
         ).strip().decode()
         VERSION_CACHE[repo] = version
-    return version
+        return version
+    else:
+        print('Not replacing "%s" instances, since it was not specified' % repo)
+        VERSION_CACHE[repo] = False
+        return None
 
 def walk_tree():
     for dirpath, dirnames, filenames in os.walk("."):
@@ -235,6 +247,8 @@ def do_replacements(line, replacements, just_remove):
             if repo == "ignore":
                 continue
             version = get_version_of(repo)
+            if version is None:
+                continue
             repl = search.replace("%", version)
         all_replaced = re.sub(regex, repl, all_replaced)
     return all_replaced
@@ -242,7 +256,8 @@ def do_replacements(line, replacements, just_remove):
 def main():
     global MODE
     global INTEGRATION_REPO
-    global VERSION
+    global MENDER_VERSION
+    global VERSION_CACHE
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true",
@@ -251,18 +266,44 @@ def main():
                         help="Update all version references")
     parser.add_argument("--integration-dir", metavar="DIR",
                         help="Location of integration repository")
-    parser.add_argument("--version",
-                        help="Mender version to update to")
+    parser.add_argument("--mender-version",
+                        help="Mender version to update to. Depends on --integration-dir option")
+    parser.add_argument("--mender-convert-version",
+                        help="Mender-convert version to update to")
+    parser.add_argument("--meta-mender-version",
+                        help="meta-mender version to update to (usually a branch)")
+    parser.add_argument("--poky-version",
+                        help="poky version to update to (usually a branch)")
     args = parser.parse_args()
 
     if args.update and args.check:
         raise Exception("--check and --update are mutually exclusive")
     elif args.update:
-        if args.integration_dir is None or args.version is None:
-            raise Exception("--update argument requires both --integration-dir and --version arguments")
         MODE = UPDATE
-        INTEGRATION_REPO = args.integration_dir
-        VERSION = args.version
+
+        if args.mender_version is not None:
+            if args.integration_dir is None:
+                raise Exception("--mender-version argument requires --integration-dir")
+            INTEGRATION_REPO = args.integration_dir
+            MENDER_VERSION = args.mender_version
+
+        if args.mender_convert_version is not None:
+            VERSION_CACHE["mender-convert"] = args.mender_convert_version
+        else:
+            print('Not replacing "mender-convert" instances, since it was not specified')
+            VERSION_CACHE["mender-convert"] = False
+
+        if args.meta_mender_version is not None:
+            if args.poky_version is None:
+                raise Exception("--meta-mender-version argument requires --poky-version")
+            VERSION_CACHE["meta-mender"] = args.meta_mender_version
+            VERSION_CACHE["poky"] = args.poky_version
+        else:
+            print('Not replacing "meta-mender" instances, since it was not specified')
+            print('Not replacing "poky" instances, since it was not specified')
+            VERSION_CACHE["meta-mender"] = False
+            VERSION_CACHE["poky"] = False
+
     elif args.check:
         MODE = CHECK
     else:

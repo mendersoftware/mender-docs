@@ -93,6 +93,7 @@ U-Boot.
 In order for automatic U-Boot patching to be used, the build must fulfill these
 criteria:
 
+<!--AUTOVERSION: "\"%\" branch or a later branch"/ignore-->
 * The build must be using the "rocko" branch or a later branch from the Yocto
   Project (Yocto Project version 2.4 or later)
 

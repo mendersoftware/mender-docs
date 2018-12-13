@@ -118,8 +118,14 @@ The `autoversion.py` supports two modes, `--check` and `--update`. `--check`
 checks that there are no versions numbers in the documentation that are not
 covered by an `AUTOVERSION` tag, and is part of our tests.
 
-`--update` updates all references, and requires the `--integration-dir` and
-`--version` arguments to specify the location of the integration repository, as
-well as the integration version to update to.
+`--update` updates references of all given components, which can be:
+
+* `--mender-version` - Updates all components for a Mender release, including
+  micro services. This one requires `--integration-dir` to be given as well
+
+* `--mender-convert-version` - Updates all mender-convert references
+
+* `--meta-mender-version` - Updates all meta-mender references. This requires
+  `--poky-version` to be specified as well
 
 See the command line help for more information.

@@ -8,6 +8,7 @@ In order to support rootfs rollback, Mender requires integration with
 U-Boot. Normally this is handled automatically by the build process in Mender's
 [meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank) layer.
 
+<!--AUTOVERSION: "\"%\" and later branches"/ignore-->
 !!! Mender provides out-of-the-box integration with U-Boot for "rocko" and later branches (Yocto Project version 2.4 and later). You only need to go through this section if you are using an older branch, or if the automatic patching process is not working as intended.
 
 If you need to integrate with U-Boot manually, this page explains how to do so
@@ -333,6 +334,7 @@ provides, and that it is the preferred provider.
 
 ## Practical example
 
+<!--AUTOVERSION: "%-v2017.11"/ignore-->
 For a real life example of a patch used to integrate with Mender, check out [the
 patch for
 BeagleBone](https://github.com/mendersoftware/meta-mender/blob/pyro-v2017.11/meta-mender-beaglebone/recipes-bsp/u-boot/patches/0001-BBB-Use-Mender-boot-code-for-selecting-boot-device-a.patch?target=_blank)
