@@ -133,6 +133,7 @@ A sample recipe (`hello-mender`) is included in the `meta-mender-demo` layer whi
 
 ! Keep in mind that any files you add to the `/data` directory will not be included in `.mender` artifacts, since they don't contain a data partition. Only complete partitioned images (`.biosimg`, `.sdimg`, `.uefiimg`, etc) will contain the files.
 
+<!--AUTOVERSION: "In Yocto Project 2.4 % and earlier"/ignore-->
 !!! In Yocto Project 2.4 rocko and earlier, there was a different method for adding files to the data partition. Please see the [`MENDER_DATA_PART_DIR` variable](../../../artifacts/yocto-project/variables#mender_data_part_dir) for details on this now obsolete method.
 
 
