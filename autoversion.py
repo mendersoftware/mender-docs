@@ -166,6 +166,7 @@ def parse_autoversion_tag(tag):
     #     {
     #         "search": For example: "-b %" to match -b parameter with version.
     #         "repo": Git repository whose version should be substituted.
+    #         "complain": true/false
     #     },
     #     ...
     # ]
@@ -179,7 +180,7 @@ def parse_autoversion_tag(tag):
         raise Exception("Malformed AUTOVERSION tag:\n%s" % tag)
     end_of_whole_tag = tag_match.end(1)
 
-    matcher = re.compile(r'"((?:[^"]|\\")*)"/([^/ ]+) *')
+    matcher = re.compile(r'"((?:[^"]|\\")*)"/([-a-z]+)(?:/([-a-z]+))? *')
     last_end = -1
     parsed = []
     pos = tag_match.start(1)
@@ -191,9 +192,17 @@ def parse_autoversion_tag(tag):
         last_end = pos
         expr = match.group(1).replace('\\"', '"')
         repo = match.group(2)
-        if "%" not in expr and repo != "complain":
+        complain = match.group(3)
+        if complain is None or complain == "":
+            complain = False
+        elif complain == "complain":
+            complain = True
+        else:
+            raise Exception("Replacement flag must be \"complain\" or nothing")
+
+        if "%" not in expr and not complain:
             raise Exception("Search string \"%s\" doesn't contain at least one '%%' (only allowed in \"complain\" mode)" % expr)
-        parsed.append({"search": expr, "repo": repo})
+        parsed.append({"search": expr, "repo": repo, "complain": complain})
     if last_end != end_of_whole_tag:
         raise Exception(("AUTOVERSION tag not parsed correctly:\n%s"
                          + "Example of valid tag:\n"
@@ -231,16 +240,11 @@ def process_line(line, replacements, fd):
 
 def do_replacements(line, replacements, just_remove):
     all_replaced = line
-    for search, repo in [(repl["search"], repl["repo"]) for repl in replacements]:
+    for search, repo, complain in [(repl["search"], repl["repo"], repl["complain"]) for repl in replacements]:
         if len(search.strip()) <= 2:
             raise Exception("Search string needs to be longer/more specific than just '%s'" % search)
         escaped = re.escape(search)
         regex = escaped.replace("\%", VERSION_MATCHER)
-        if not just_remove and repo == "complain":
-            if re.search(regex, all_replaced):
-                raise Exception("Requires manual fixing so it doesn't match \"complain\" expression:\n%s" % line)
-            else:
-                continue
         if just_remove:
             repl = search.replace("%", "")
         else:
@@ -249,6 +253,11 @@ def do_replacements(line, replacements, just_remove):
             version = get_version_of(repo)
             if version is None:
                 continue
+            if complain:
+                if re.search(regex, all_replaced):
+                    raise Exception("Requires manual fixing so it doesn't match \"complain\" expression:\n%s" % line)
+                else:
+                    continue
             repl = search.replace("%", version)
         all_replaced = re.sub(regex, repl, all_replaced)
     return all_replaced
