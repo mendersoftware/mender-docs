@@ -5,18 +5,17 @@ sequenceDiagram
 
     User->>Device: 1. Transfer identity data + public key
 
-    Device->>+Device Authentication: 2. POST /api/devices/v1/auth_requests
+    Device->>+Device Authentication: 2. POST /api/devices/v1/authentication/auth_requests
 
     Device Authentication->>-Device: 3. 401 unauthorized
     Note over Device Authentication, Device: auth fails for now, auth set </br> not accepted yet
 
-    User->>Device Authentication: 4. GET /api/management/v1/admission/devices
-    Note over User,Device Authentication: inspect pending auth sets
+    User->>Device Authentication: 4. GET /api/management/v2/devauth/devices
+    Note over User,Device Authentication: inspect pending devices/auth sets
 
-    User->>Device Authentication: 5. PUT /api/management/v1/admission/devices/{id}/status
+    User->>Device Authentication: 5. PUT /api/management/v2/devauth/devices/{id}/auth/{aid}/status
     Note over User,Device Authentication: accept a selected pending auth set
 
-    Device->>+Device Authentication: 6. POST /api/devices/v1/auth_requests
+    Device->>+Device Authentication: 6. POST /api/devices/v1/authentication/auth_requests
 
     Device Authentication->>-Device: 7. return JWT auth token
-
