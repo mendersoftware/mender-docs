@@ -192,7 +192,7 @@ def parse_autoversion_tag(tag):
         expr = match.group(1).replace('\\"', '"')
         repo = match.group(2)
         if "%" not in expr and repo != "complain":
-            raise Exception("Search string \"%s\" doesn't contain at least one '%%' (only allowed in \"complain\" mode)" % search)
+            raise Exception("Search string \"%s\" doesn't contain at least one '%%' (only allowed in \"complain\" mode)" % expr)
         parsed.append({"search": expr, "repo": repo})
     if last_end != end_of_whole_tag:
         raise Exception(("AUTOVERSION tag not parsed correctly:\n%s"
