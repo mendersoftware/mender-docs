@@ -130,7 +130,7 @@ Secondly, set the contents of the device public key you generated above in a sec
 DEVICE_PUBLIC_KEY="$(cat keys-client-generated/public.key | sed -e :a  -e 'N;s/\n/\\n/;ta')\n"
 ```
 
-Then simply call the [API to preauthorize a device](../../apis/management-apis/device-admission#devices-post):
+Then simply call the [API to preauthorize a device](../../apis/management-apis/device-authentication#devices-post):
 
 ```bash
 curl -H "Authorization: Bearer $JWT" -H "Content-Type: application/json" -X POST --data-binary "{ \"device_identity\" : \"$DEVICE_IDENTITY_JSON_OBJECT_STRING\", \"key\" : \"$DEVICE_PUBLIC_KEY\" }" $MENDER_SERVER_URI/api/management/v1/admission/devices
