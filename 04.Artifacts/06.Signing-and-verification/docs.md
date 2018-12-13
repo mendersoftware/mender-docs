@@ -84,7 +84,7 @@ If you use Linux, [download the prebuilt mender-artifact binary][x.x.x_mender-ar
 otherwise [compile it for your platform](../modifying-a-mender-artifact#compiling-mender-artifact).
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.4.0b1/mender-artifact
+[x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/2.4.0/mender-artifact
 
 To sign we use the `-k` parameter to specify the private key, which will be used for creating the signature.
 This parameter works both if you have a root file system (e.g. `.ext4` file) and are writing a new Mender Artifact
@@ -94,7 +94,7 @@ and if you are signing an existing Mender Artifact (`.mender`).
 
 <!--AUTOVERSION: "mender-%"/mender-->
 ```bash
-mender-artifact write rootfs-image -t beaglebone -n mender-1.7.0b1 -u core-image-base-beaglebone.ext4 -k private.key -o artifact-signed.mender
+mender-artifact write rootfs-image -t beaglebone -n mender-1.7.0 -u core-image-base-beaglebone.ext4 -k private.key -o artifact-signed.mender
 ```
 
 ! Make sure the Artifact name specified by the `-n` parameter in the above command matches the value specified when your file system image was created.

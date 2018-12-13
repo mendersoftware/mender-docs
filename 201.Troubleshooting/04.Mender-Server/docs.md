@@ -85,7 +85,7 @@ The logs from docker-compose also show that `mender-api-gateway` exits with code
 
 <!--AUTOVERSION: "com.docker.compose.version=%"/ignore "image=mendersoftware/api-gateway:%"/mender-api-gateway-docker-->
 ```bash
-2017-07-03T11:14:17.223223822+02:00 container die c2a1cf1c19651950e804c7fe53cb9c0ffeb8b71de744500ab4844b370cf0480d (com.docker.compose.config-hash=5b9dfb050a59b9cbd67082037478562ff44c78cf4346d9a83225d1a74d557271, com.docker.compose.container-number=1, com.docker.compose.oneoff=False, com.docker.compose.project=menderproduction, com.docker.compose.service=mender-api-gateway, com.docker.compose.version=1.14.0, exitCode=132, image=mendersoftware/api-gateway:1.6.0b1, name=menderproduction_mender-api-gateway_1)
+2017-07-03T11:14:17.223223822+02:00 container die c2a1cf1c19651950e804c7fe53cb9c0ffeb8b71de744500ab4844b370cf0480d (com.docker.compose.config-hash=5b9dfb050a59b9cbd67082037478562ff44c78cf4346d9a83225d1a74d557271, com.docker.compose.container-number=1, com.docker.compose.oneoff=False, com.docker.compose.project=menderproduction, com.docker.compose.service=mender-api-gateway, com.docker.compose.version=1.14.0, exitCode=132, image=mendersoftware/api-gateway:1.6.0, name=menderproduction_mender-api-gateway_1)
 ```
 
 The problem here is most likely that your server CPU does not support the SSE 4.2
