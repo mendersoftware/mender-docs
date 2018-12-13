@@ -53,7 +53,7 @@ See [certificate troubleshooting](../../../troubleshooting/mender-client#certifi
 ### Yocto Project
 
 <!--AUTOVERSION: "**%** branch of the Yocto Project"/poky "**%** branch of `meta-mender`"/meta-mender "other branches like [%](https://github.com/mendersoftware/meta-mender/tree/%"/ignore-->
-! We use the **master** branch of the Yocto Project and **master** branch of `meta-mender` below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases, but these branches are no longer maintained by Mender developers. We offer professional services to to implement and support other branches over time, please take a look at the [Mender professional services offering](https://mender.io/product/professional-services?target=_blank).
+! We use the **thud** branch of the Yocto Project and **master** branch of `meta-mender` below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases, but these branches are no longer maintained by Mender developers. We offer professional services to to implement and support other branches over time, please take a look at the [Mender professional services offering](https://mender.io/product/professional-services?target=_blank).
 
 A Yocto Project poky environment is required. If you already have
 this in your build environment, please open a terminal, go to the `poky`
@@ -65,7 +65,7 @@ you need to clone the latest poky and go into the directory:
 
 <!--AUTOVERSION: "-b % git://git.yoctoproject.org/poky"/poky-->
 ```bash
-git clone -b master git://git.yoctoproject.org/poky
+git clone -b thud git://git.yoctoproject.org/poky
 ```
 
 ```bash
