@@ -298,7 +298,7 @@ New changes in meta-mender since sumo-v2018.11.2:
 
 ## Mender 1.6.1
 
-_Released xx.xx.xxxx_
+_Released 12.13.2018_
 
 ### Statistics
 
