@@ -298,7 +298,7 @@ New changes in meta-mender since sumo-v2018.11.2:
 
 ## Mender 1.7.0
 
-_Released 11.15.2018_
+_Released 12.13.2018_
 
 ### Release statistics
 A total of 25446 lines added, 6653 removed (delta 18793)
@@ -564,7 +564,7 @@ New changes in useradm since 1.6.0:
 
 ## Mender 1.6.1
 
-_Released xx.xx.xxxx_
+_Released 12.13.2018_
 
 ### Statistics
 
