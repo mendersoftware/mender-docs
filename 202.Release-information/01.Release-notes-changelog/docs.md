@@ -4,9 +4,394 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender sumo-v2018.12
+
+_Released 12.14.2018_
+
+### Statistics
+
+A total of 31 lines added, 39 removed (delta -8)
+
+| Developers with the most changesets |            |
+|-------------------------------------|------------|
+| Kristian Amlie                      | 3 (100.0%) |
+
+| Developers with the most changed lines |             |
+|----------------------------------------|-------------|
+| Kristian Amlie                         | 56 (100.0%) |
+
+| Developers with the most lines removed |           |
+|----------------------------------------|-----------|
+| Kristian Amlie                         | 8 (20.5%) |
+
+| Developers with the most signoffs (total 3) |            |
+|---------------------------------------------|------------|
+| Kristian Amlie                              | 3 (100.0%) |
+
+| Top changeset contributors by employer |            |
+|----------------------------------------|------------|
+| Northern.tech                          | 3 (100.0%) |
+
+| Top lines changed by employer |             |
+|-------------------------------|-------------|
+| Northern.tech                 | 56 (100.0%) |
+
+| Employers with the most signoffs (total 3) |            |
+|--------------------------------------------|------------|
+| Northern.tech                              | 3 (100.0%) |
+
+| Employers with the most hackers (total 1) |            |
+|-------------------------------------------|------------|
+| Northern.tech                             | 1 (100.0%) |
+
+### Changelogs
+
+#### meta-mender (sumo-v2018.12)
+
+New changes in meta-mender since sumo-v2018.11.2:
+
+* Fix missing wpa_supplicant in Raspberry Pi demo images.
+* Add mender 1.6.1 and 1.7.0 recipes.
+* Add mender-artifact 2.3.1 and 2.4.0 recipes.
+
+
+## meta-mender thud-v2018.12
+
+_Released 12.13.2018_
+
+### Statistics
+
+A total of 3145 lines added, 2930 removed (delta 215)
+
+| Developers with the most changesets |            |
+|-------------------------------------|------------|
+| Kristian Amlie                      | 76 (73.1%) |
+| Drew Moseley                        | 9 (8.7%)   |
+| Michael Davis                       | 5 (4.8%)   |
+| Adam Podogrocki                     | 3 (2.9%)   |
+| Mirza Krak                          | 2 (1.9%)   |
+| Marcin Pasinski                     | 2 (1.9%)   |
+| David Bensoussan                    | 2 (1.9%)   |
+| Dominik Adamski                     | 1 (1.0%)   |
+| Leon Anavi                          | 1 (1.0%)   |
+| Ole Petter Orhagen                  | 1 (1.0%)   |
+
+| Developers with the most changed lines |              |
+|----------------------------------------|--------------|
+| Kristian Amlie                         | 3919 (70.7%) |
+| Mirza Krak                             | 635 (11.5%)  |
+| Adam Podogrocki                        | 512 (9.2%)   |
+| Michael Davis                          | 228 (4.1%)   |
+| Drew Moseley                           | 113 (2.0%)   |
+| Marcin Pasinski                        | 82 (1.5%)    |
+| Eystein Måløy Stenberg                 | 41 (0.7%)    |
+| Dominik Adamski                        | 4 (0.1%)     |
+| David Bensoussan                       | 2 (0.0%)     |
+| Leon Anavi                             | 2 (0.0%)     |
+
+| Developers with the most lines removed |             |
+|----------------------------------------|-------------|
+| Mirza Krak                             | 616 (21.0%) |
+| Adam Podogrocki                        | 293 (10.0%) |
+| Marcin Pasinski                        | 72 (2.5%)   |
+| Drew Moseley                           | 24 (0.8%)   |
+
+| Developers with the most signoffs (total 107) |            |
+|-----------------------------------------------|------------|
+| Kristian Amlie                                | 77 (72.0%) |
+| Drew Moseley                                  | 10 (9.3%)  |
+| Michael Davis                                 | 5 (4.7%)   |
+| Adam Podogrocki                               | 3 (2.8%)   |
+| Mirza Krak                                    | 2 (1.9%)   |
+| Marcin Pasinski                               | 2 (1.9%)   |
+| David Bensoussan                              | 2 (1.9%)   |
+| Leon Anavi                                    | 1 (0.9%)   |
+| Thomas Preston                                | 1 (0.9%)   |
+| Ole Petter Orhagen                            | 1 (0.9%)   |
+
+| Developers with the most report credits (total 2) |           |
+|---------------------------------------------------|-----------|
+| Michael Davis                                     | 1 (50.0%) |
+| Stoyan Bogdanov                                   | 1 (50.0%) |
+
+| Developers who gave the most report credits (total 2) |           |
+|-------------------------------------------------------|-----------|
+| Drew Moseley                                          | 1 (50.0%) |
+| Leon Anavi                                            | 1 (50.0%) |
+
+| Top changeset contributors by employer |            |
+|----------------------------------------|------------|
+| Northern.tech                          | 91 (87.5%) |
+| Election Systems & Software            | 5 (4.8%)   |
+| RnDity                                 | 4 (3.8%)   |
+| Synapticon                             | 2 (1.9%)   |
+| Konsulko Group                         | 1 (1.0%)   |
+| Codethink Ltd.                         | 1 (1.0%)   |
+
+| Top lines changed by employer |              |
+|-------------------------------|--------------|
+| Northern.tech                 | 4791 (86.5%) |
+| RnDity                        | 516 (9.3%)   |
+| Election Systems & Software   | 228 (4.1%)   |
+| Synapticon                    | 2 (0.0%)     |
+| Konsulko Group                | 2 (0.0%)     |
+| Codethink Ltd.                | 2 (0.0%)     |
+
+| Employers with the most signoffs (total 107) |            |
+|----------------------------------------------|------------|
+| Northern.tech                                | 93 (86.9%) |
+| RnDity                                       | 5 (4.7%)   |
+| Election Systems & Software                  | 5 (4.7%)   |
+| Synapticon                                   | 2 (1.9%)   |
+| Konsulko Group                               | 1 (0.9%)   |
+| Codethink Ltd.                               | 1 (0.9%)   |
+
+| Employers with the most hackers (total 12) |           |
+|--------------------------------------------|-----------|
+| Northern.tech                              | 6 (50.0%) |
+| RnDity                                     | 2 (16.7%) |
+| Election Systems & Software                | 1 (8.3%)  |
+| Synapticon                                 | 1 (8.3%)  |
+| Konsulko Group                             | 1 (8.3%)  |
+| Codethink Ltd.                             | 1 (8.3%)  |
+
+### Changelogs
+
+#### meta-mender (thud-v2018.12)
+
+New changes in meta-mender since sumo-v2018.11.2:
+
+* Add mender-artifact 2.4.0b1 recipe.
+* Make mkfs.ubifs and ubinize arguments a bit more customizable.
+  The new variables `MENDER_FLASH_MINIMUM_IO_UNIT` and
+  `MENDER_MAXIMUM_LEB_COUNT` have been introduced, which maps directly
+  to the corresponding arguments of the two tools.
+* Beaglebone builds no longer compatible with builds from sumo and older.
+  The reason is that bootloader switched to GRUB. The old build type can
+  be restored by removing `mender-grub` and adding `mender-uboot` to
+  `DISTRO_FEATURES` using the `MENDER_FEATURES` variables.
+* Fix `IMAGE_ROOTFS_EXCLUDE_PATH` failing when listing a non-existent path.
+* Increase default u-boot MTD partition size to 1MiB.
+* Fix inability to patch old u-boot variants of MTDPARTS and
+  MTDIDS correctly.
+  ([MEN-1849](https://tracker.mender.io/browse/MEN-1849))
+* Add mender 1.7.0b1 recipe.
+* Fix images not being modifiable by mender-artifact in thud and later.
+* Add mender 1.5.1 recipe.
+* Add mender 1.6.0 recipe.
+* Add mender-artifact 2.3.0 recipe.
+* Remove support for `loadaddr` variable and
+  `CONFIG_LOADADDR` config setting in U-Boot. This only affects boards
+  that use U-Boot as a first stage boot loader in order to use UEFI to
+  load GRUB as the second stage boot loader. For most boards it should
+  not be problematic, since most support `kernel_addr_r`. If there is
+  a problem however, it might be necessary to forward port [this
+  patch](https://github.com/mendersoftware/meta-mender/blob/b39aa8aeecdf2b8cce3dbcce25ec044073568348/meta-mender-core/recipes-bsp/u-boot/patches/0007-distro_bootcmd-Switch-bootefi-to-use-loadaddr-by-def.patch)
+  to the U-Boot version in question.
+* Fix boot directory being excluded from thud images
+* Add some debug functionality to GRUB booting process.
+  To use it, enable either or both of `debug-log` and `debug-pause` in
+  `PACKAGECONFIG` for `grub-mender-grubenv`. The former enables debug
+  logging in GRUB, which can be tweaked further by setting the
+  `DEBUG_LOG_CATEGORY` variable. The latter pauses the boot process at
+  strategic points during the boot, so that screen output can be
+  captured before it is cleared or scrolls by.
+* Fix build error when using any harddrive besides sda/hda, such as sdb.
+* Images partitioned with GPT or MSDOS partition tables are
+  now padded up to the nearest alignment specified in
+  `MENDER_PARTITION_ALIGNMENT`. Previously the last block might be
+  shorter.
+* Remove meta-mender-orangepi and meta-mender-toradex-nxp
+  as these will be moved to meta-mender-community for the next stable
+  branch (thud)
+* Make sure mtdimg is not truncated, but has its full length.
+* Enable EXTERNALSRC to be used with u-boot-fw-utils-mender-auto-provided.
+* Allow disabling auto-generated /etc/fstab
+* mender: Enable systemd in mender-systemd FEATURE handling.
+  As long as `mender-systemd` feature is enabled, it is no longer
+  necessary to include the block:
+  ```
+  DISTRO_FEATURES_append = " systemd"
+  VIRTUAL-RUNTIME_init_manager = "systemd"
+  DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
+  VIRTUAL-RUNTIME_initscripts = ""
+  ```
+* Add canary value to U-Boot env to catch bootloader/user-space mismatch.
+* GRUB: Fix error about devicetree command not being found.
+* Change default storage on x86 to memory card (mmcblk0).
+* Reduce partitioning overhead by default.
+  The current value of 4 * alignment is excessive, since we now take
+  alignment into account when calculating rootfs size. Instead, only
+  count overhead lost to partition table, which is 2 * alignment.
+* mender: Allow overrides for MENDER_STORAGE_TOTAL_SIZE_MB_DEFAULT.
+* Allow boot partition to be populated with normal package recipes.
+* Fix `MENDER_GRUB_STORAGE_DEVICE` variable not being respected.
+  ([MEN-2048](https://tracker.mender.io/browse/MEN-2048))
+* GRUB: Make kernel console argument configurable using "console_bootargs".
+  One can set this variable in some "xx_*_grub.cfg" script with an index
+  lower than 10, in the grub-mender-grubenv recipe.
+* uboot_auto_patch: Switch kernel address from `loadaddr`
+  back to `kernel_addr_r`. This was discussed with U-Boot developers and
+  is the proper address variable going forward.
+* Fix incorrect Flash bad PEB calculation which led to wrong total image size.
+  ([MEN-1849](https://tracker.mender.io/browse/MEN-1849))
+* Add mender 1.6.1 and 1.7.0 recipes.
+* Add mender-artifact 2.3.1 and 2.4.0 recipes.
+* Auto-select correct `MENDER_STORAGE_DEVICE_BASE` scheme.
+  This should rarely need to be set by anyone anymore.
+* Fix confusing warning flood when MENDER_MTDIDS is unset in a UBI build.
+* Switch image names from containing `MACHINE` to containing
+  `MENDER_DEVICE_TYPE`. So for example, if you have a build for the
+  raspberrypi3 machine type, with device type of "prod_rpi3", the image
+  will now be called `core-image-minimal-prod_rpi3.sdimg` instead of
+  `core-image-minimal-raspberrypi3.sdimg`.
+* Fix console logging for systemd on QEMU.
+* Fix build error when using GRUB and /dev/mmcblk storage device.
+* Add specific patches for u-boot-toradex_2016.11.
+  ([MEN-1849](https://tracker.mender.io/browse/MEN-1849))
+* grub: Remove restriction that the core.img be at sector 1
+* mender-uboot: Use hex for dev/part numbers in U-Boot.
+* Delete all components from pre-1.5 Mender releases.
+  Remove Mender 1.4.0 and 1.4.1 and Mender artifact 2.2.0.
+* Introduce support for a standardized boot method on ARM
+  using UEFI and GRUB. The UEFI boot standard is fully supported on ARM
+  in theory, but few board manufacturers implement it in practice.
+  Therefore U-Boot is still utilized, but acts only as a UEFI loader,
+  and hence no U-Boot integration is needed. All boot scripts are then
+  handled by GRUB, which needs no patching.
+  ([MEN-1595](https://tracker.mender.io/browse/MEN-1595), [MEN-1659](https://tracker.mender.io/browse/MEN-1659))
+* Add support for PARTUUID in grub-mender-grubenv script.
+* Remove colibri-imx7-mender MACHINE type, replaced by colibri-imx7.
+* Fix regression that removed boot flag from boot partition.
+* Fix regression that caused Beaglebone to not boot.
+* QEMU: Always try to run with KVM enabled, only fall back to emulation.
+* Fix license checksum sometimes failing in
+  `u-boot-fw-utils-mender-auto-provided` recipe when U-Boot fork has a
+  slightly different README file.
+* Add PARTUUID generation and integration
+* Change default boot loader to GRUB on all non-UBI platforms.
+  U-Boot will still be used on ARM platforms to provide UEFI that GRUB
+  can use, but it will not be used for Mender integration. To opt out,
+  and keep using traditional U-Boot integration, remove `mender-grub`,
+  and add `mender-uboot` using the `MENDER_FEATURES` variables.
+* Fixed support for raspberrypi3-64 and aarch64
+* mender-uboot: Allow multi-digit partition/device nums.
+* Add mender 1.6.0b1 and mender-artifact 2.3.0b1 recipes.
+* Remove obsolete mender pre-1.4 and mender-artifact pre-2.2 recipes.
+* Fix regression in QEMU launching after changing image name in 897195ddc3f.
+* Replaced default yocto cfg file for grub pre configuration by the proper cfg file without redundant and erroneous search command.
+* rpi: update U-boot patch to get rid of warning
+* Fix incorrect license tag for mender-artifact recipe.
+  Little practical difference, since they are all permissive licenses.
+* Fix missing wpa_supplicant in Raspberry Pi demo images.
+* GRUB: Pass kernel arguments from bootargs variable instead of hardcoded.
+  This allows it to be overridden or modified by adding a script snippet
+  which sets the variable.
+  Also log kernel messages to both screen and serial port by default,
+  and have systemd log to serial port (last "console" argument,
+  apparently it cannot log to both).
+* Add support for GPT BIOS images
+* Boot script recipe for demoing OTA updates
+
+
+## mender-convert 1.0.0
+
+_Released 12.13.2018_
+
+### Statistics
+
+A total of 4848 lines added, 1459 removed (delta 3389)
+
+| Developers with the most changesets |            |
+|-------------------------------------|------------|
+| Adam Podogrocki                     | 32 (45.1%) |
+| Dominik Adamski                     | 18 (25.4%) |
+| Eystein Måløy Stenberg              | 13 (18.3%) |
+| Mirza Krak                          | 6 (8.5%)   |
+| Mika Tuupola                        | 1 (1.4%)   |
+| Pierre-Jean Texier                  | 1 (1.4%)   |
+
+| Developers with the most changed lines |              |
+|----------------------------------------|--------------|
+| Adam Podogrocki                        | 4297 (87.0%) |
+| Eystein Måløy Stenberg                 | 324 (6.6%)   |
+| Dominik Adamski                        | 241 (4.9%)   |
+| Mirza Krak                             | 74 (1.5%)    |
+| Mika Tuupola                           | 1 (0.0%)     |
+| Pierre-Jean Texier                     | 1 (0.0%)     |
+
+| Developers with the most lines removed |           |
+|----------------------------------------|-----------|
+| Mirza Krak                             | 33 (2.3%) |
+
+| Developers with the most signoffs (total 70) |            |
+|----------------------------------------------|------------|
+| Adam Podogrocki                              | 31 (44.3%) |
+| Dominik Adamski                              | 18 (25.7%) |
+| Eystein Måløy Stenberg                       | 13 (18.6%) |
+| Mirza Krak                                   | 6 (8.6%)   |
+| Mika Tuupola                                 | 1 (1.4%)   |
+| Pierre-Jean Texier                           | 1 (1.4%)   |
+
+| Top changeset contributors by employer |            |
+|----------------------------------------|------------|
+| RnDity                                 | 50 (70.4%) |
+| Northern.tech                          | 19 (26.8%) |
+| tuupola@appelsiini.net                 | 1 (1.4%)   |
+| Lafon Technologies                     | 1 (1.4%)   |
+
+| Top lines changed by employer |              |
+|-------------------------------|--------------|
+| RnDity                        | 4538 (91.9%) |
+| Northern.tech                 | 398 (8.1%)   |
+| tuupola@appelsiini.net        | 1 (0.0%)     |
+| Lafon Technologies            | 1 (0.0%)     |
+
+| Employers with the most signoffs (total 70) |            |
+|---------------------------------------------|------------|
+| RnDity                                      | 49 (70.0%) |
+| Northern.tech                               | 19 (27.1%) |
+| tuupola@appelsiini.net                      | 1 (1.4%)   |
+| Lafon Technologies                          | 1 (1.4%)   |
+
+| Employers with the most hackers (total 6) |           |
+|-------------------------------------------|-----------|
+| RnDity                                    | 2 (33.3%) |
+| Northern.tech                             | 2 (33.3%) |
+| tuupola@appelsiini.net                    | 1 (16.7%) |
+| Lafon Technologies                        | 1 (16.7%) |
+
+### Changelogs
+
+#### mender-convert (1.0.0)
+
+Initial release of mender-convert! Some developer versions were tested along the
+way, so here is the changelog since then:
+
+* Make tool ready for handling input images containing 3 partitions
+  ([MEN-2207](https://tracker.mender.io/browse/MEN-2207))
+* Support passing mender-convert arguments to docker-mender-convert directly
+* Switch to 1.6.0 Mender client as default for docker environment
+* Use local (checked out) version of mender-convert inside container
+* Support compiling Mender client in mender-convert container.
+* compile mender during docker image creation
+* Install GRUB bootloader to Mender image based on Yocto image for qemu x86-64
+  ([MEN-2207](https://tracker.mender.io/browse/MEN-2207))
+* fix image paths printed at end of conversion
+* Docker environment for running mender-convert
+* Create repartitioned Mender compliant image from Yocto image for qemu x86-64
+  ([MEN-2207](https://tracker.mender.io/browse/MEN-2207))
+* Avoid duplicate content in cmdline.txt
+* Install Mender related files to Mender image based on Yocto image for qemu x86-64
+  ([MEN-2207](https://tracker.mender.io/browse/MEN-2207))
+* Increase default server retry interval from 1 to 30 seconds.
+* Add version option for mender convert
+  ([MEN-2257](https://tracker.mender.io/browse/MEN-2257))
+
+
 ## Mender 1.7.0
 
-_Released 11.15.2018_
+_Released 12.13.2018_
 
 ### Release statistics
 A total of 25446 lines added, 6653 removed (delta 18793)
