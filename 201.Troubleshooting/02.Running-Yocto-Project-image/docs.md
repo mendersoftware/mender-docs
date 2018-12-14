@@ -68,5 +68,6 @@ the above error is printed, possibly with a different device than `(hd0,gpt1)`.
 This error message is usually harmless and only a cosmetic issue,
 as GRUB will fall back to the correct location of its configuration file.
 
+<!--AUTOVERSION: "`%` (and newer)"/ignore-->
 The issue is resolved in `thud` (and newer) branches of  meta-mender.
 See [issue MEN-1961](https://tracker.mender.io/browse/MEN-1961?target=_blank) for more information.

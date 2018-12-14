@@ -22,16 +22,16 @@ As another example, the Mender client supports one version of the server API, wh
 <!--AUTOVERSION: "% to %"/ignore-->
 In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3.0) versions and the [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) is updated accordingly to easily support these new features (e.g. by exposing new [MENDER_* variables](../../artifacts/variables)). The [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) has branches corresponding to [versions of the Yocto Project](https://wiki.yoctoproject.org/wiki/Releases?target=_blank).
 
-<!--AUTOVERSION: "Mender client %"/ignore-->
-|                     | meta-mender krogoth (2.1) and older | meta-mender morty (2.2) | meta-mender pyro (2.3) | meta-mender rocko (2.4) | meta-mender sumo (2.5) |
-|---------------------|-------------------------------------|-------------------------|------------------------|-------------------------|------------------------|
-| Mender client 1.0.x | no                                  | community               | no                     | no                      | no                     |
-| Mender client 1.1.x | no                                  | community               | community              | no                      | no                     |
-| Mender client 1.2.x | no                                  | community               | community              | community               | no                     |
-| Mender client 1.3.x | no                                  | community               | community              | community               | community              |
-| Mender client 1.4.x | no                                  | community               | community              | community               | stable                 |
-| Mender client 1.5.x | no                                  | community               | community              | community               | stable                 |
-| Mender client 1.6.x | no                                  | community               | community              | community               | stable                 |
+<!--AUTOVERSION: "Mender client %"/ignore "meta-mender %"/ignore-->
+|                     | meta-mender krogoth (2.1) and older | meta-mender morty (2.2) | meta-mender pyro (2.3) | meta-mender rocko (2.4) | meta-mender sumo (2.5) | meta-mender thud (2.6) |
+|---------------------|-------------------------------------|-------------------------|------------------------|-------------------------|------------------------|------------------------|
+| Mender client 1.0.x | no                                  | community               | no                     | no                      | no                     | no                     |
+| Mender client 1.1.x | no                                  | community               | community              | no                      | no                     | no                     |
+| Mender client 1.2.x | no                                  | community               | community              | community               | no                     | no                     |
+| Mender client 1.3.x | no                                  | community               | community              | community               | community              | no                     |
+| Mender client 1.4.x | no                                  | community               | community              | community               | community              | no                     |
+| Mender client 1.5.x | no                                  | community               | community              | community               | community              | stable                 |
+| Mender client 1.6.x | no                                  | community               | community              | community               | community              | stable                 |
 
 Leverage [Mender consulting services to support other versions of the Yocto Project](https://mender.io/product/board-support?target=_blank) for your board and environment.
 

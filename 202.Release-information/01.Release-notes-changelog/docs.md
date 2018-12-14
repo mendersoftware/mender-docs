@@ -4,6 +4,105 @@ taxonomy:
     category: docs
 ---
 
+## Mender 1.6.1
+
+_Released xx.xx.xxxx_
+
+### Statistics
+
+A total of 4690 lines added, 96 removed (delta 4594)
+
+| Developers with the most changesets |            |
+|-------------------------------------|------------|
+| Kristian Amlie                      | 21 (75.0%) |
+| Ole Petter Orhagen                  | 3 (10.7%)  |
+| Marcin Pasinski                     | 2 (7.1%)   |
+| Josh Gitlin                         | 1 (3.6%)   |
+| Don Cross                           | 1 (3.6%)   |
+
+| Developers with the most changed lines |              |
+|----------------------------------------|--------------|
+| Kristian Amlie                         | 4649 (99.1%) |
+| Ole Petter Orhagen                     | 30 (0.6%)    |
+| Don Cross                              | 8 (0.2%)     |
+| Marcin Pasinski                        | 5 (0.1%)     |
+| Josh Gitlin                            | 1 (0.0%)     |
+
+| Developers with the most lines removed |          |
+|----------------------------------------|----------|
+| Marcin Pasinski                        | 3 (3.1%) |
+
+| Developers with the most signoffs (total 28) |            |
+|----------------------------------------------|------------|
+| Kristian Amlie                               | 21 (75.0%) |
+| Ole Petter Orhagen                           | 3 (10.7%)  |
+| Marcin Pasinski                              | 2 (7.1%)   |
+| Josh Gitlin                                  | 1 (3.6%)   |
+| Don Cross                                    | 1 (3.6%)   |
+
+| Top changeset contributors by employer |            |
+|----------------------------------------|------------|
+| Northern.tech                          | 26 (92.9%) |
+| cosinekitty@gmail.com                  | 1 (3.6%)   |
+| jgitlin@goboomtown.com                 | 1 (3.6%)   |
+
+| Top lines changed by employer |              |
+|-------------------------------|--------------|
+| Northern.tech                 | 4684 (99.8%) |
+| cosinekitty@gmail.com         | 8 (0.2%)     |
+| jgitlin@goboomtown.com        | 1 (0.0%)     |
+
+| Employers with the most signoffs (total 28) |            |
+|---------------------------------------------|------------|
+| Northern.tech                               | 26 (92.9%) |
+| cosinekitty@gmail.com                       | 1 (3.6%)   |
+| jgitlin@goboomtown.com                      | 1 (3.6%)   |
+
+| Employers with the most hackers (total 5) |           |
+|-------------------------------------------|-----------|
+| Northern.tech                             | 3 (60.0%) |
+| cosinekitty@gmail.com                     | 1 (20.0%) |
+| jgitlin@goboomtown.com                    | 1 (20.0%) |
+
+### Changelogs
+
+#### integration (1.6.1)
+
+New changes in integration since 1.6.0:
+
+* Upgrade deviceadm to 1.4.1.
+* Upgrade mender to 1.6.1.
+* Upgrade mender-artifact to 2.3.1.
+* Add statistics generator script, and start doing statistics
+  on code development for each release.
+  ([MEN-2206](https://tracker.mender.io/browse/MEN-2206))
+* Fix docker version detection
+
+#### mender (1.6.1)
+
+New changes in mender since 1.6.0:
+
+* Fix update check not working under BusyBox.
+  ([MEN-2159](https://tracker.mender.io/browse/MEN-2159))
+* Print a message to the mender log when the
+  mender client has confirmed the authenticity of an
+  artifact's digital signature.
+  ([MEN-2152](https://tracker.mender.io/browse/MEN-2152))
+
+#### mender-artifact (2.3.1)
+
+New changes in mender-artifact since 2.3.0:
+
+* FIX: Renaming a file across devices now works.
+  ([MEN-2166](https://tracker.mender.io/browse/MEN-2166))
+* FIX: mender-artifact cat,cp,modify etc no longer removes the update.
+  Previously an update present in a directory, with the same name as the
+  update present in an update would be removed as a result of what the
+  functions thought was tmp-files.
+  ([MEN-2171](https://tracker.mender.io/browse/MEN-2171))
+
+
+
 ## meta-mender sumo-v2018.11.2
 
 _Released 11.16.2018_
