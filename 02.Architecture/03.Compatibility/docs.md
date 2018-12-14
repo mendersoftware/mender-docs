@@ -24,7 +24,7 @@ In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3
 
 <!--AUTOVERSION: "Mender client %"/ignore "meta-mender %"/ignore-->
 |                     | meta-mender krogoth (2.1) and older | meta-mender morty (2.2) | meta-mender pyro (2.3) | meta-mender rocko (2.4) | meta-mender sumo (2.5) | meta-mender thud (2.6) |
-|---------------------+-------------------------------------+-------------------------+------------------------+-------------------------+------------------------+------------------------|
+|---------------------|-------------------------------------|-------------------------|------------------------|-------------------------|------------------------|------------------------|
 | Mender client 1.0.x | no                                  | community               | no                     | no                      | no                     | no                     |
 | Mender client 1.1.x | no                                  | community               | community              | no                      | no                     | no                     |
 | Mender client 1.2.x | no                                  | community               | community              | community               | no                     | no                     |
