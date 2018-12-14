@@ -296,6 +296,101 @@ New changes in meta-mender since sumo-v2018.11.2:
 * Boot script recipe for demoing OTA updates
 
 
+## mender-convert 1.0.0
+
+_Released 12.13.2018_
+
+### Statistics
+
+A total of 4848 lines added, 1459 removed (delta 3389)
+
+| Developers with the most changesets |            |
+|-------------------------------------|------------|
+| Adam Podogrocki                     | 32 (45.1%) |
+| Dominik Adamski                     | 18 (25.4%) |
+| Eystein Måløy Stenberg              | 13 (18.3%) |
+| Mirza Krak                          | 6 (8.5%)   |
+| Mika Tuupola                        | 1 (1.4%)   |
+| Pierre-Jean Texier                  | 1 (1.4%)   |
+
+| Developers with the most changed lines |              |
+|----------------------------------------|--------------|
+| Adam Podogrocki                        | 4297 (87.0%) |
+| Eystein Måløy Stenberg                 | 324 (6.6%)   |
+| Dominik Adamski                        | 241 (4.9%)   |
+| Mirza Krak                             | 74 (1.5%)    |
+| Mika Tuupola                           | 1 (0.0%)     |
+| Pierre-Jean Texier                     | 1 (0.0%)     |
+
+| Developers with the most lines removed |           |
+|----------------------------------------|-----------|
+| Mirza Krak                             | 33 (2.3%) |
+
+| Developers with the most signoffs (total 70) |            |
+|----------------------------------------------|------------|
+| Adam Podogrocki                              | 31 (44.3%) |
+| Dominik Adamski                              | 18 (25.7%) |
+| Eystein Måløy Stenberg                       | 13 (18.6%) |
+| Mirza Krak                                   | 6 (8.6%)   |
+| Mika Tuupola                                 | 1 (1.4%)   |
+| Pierre-Jean Texier                           | 1 (1.4%)   |
+
+| Top changeset contributors by employer |            |
+|----------------------------------------|------------|
+| RnDity                                 | 50 (70.4%) |
+| Northern.tech                          | 19 (26.8%) |
+| tuupola@appelsiini.net                 | 1 (1.4%)   |
+| Lafon Technologies                     | 1 (1.4%)   |
+
+| Top lines changed by employer |              |
+|-------------------------------|--------------|
+| RnDity                        | 4538 (91.9%) |
+| Northern.tech                 | 398 (8.1%)   |
+| tuupola@appelsiini.net        | 1 (0.0%)     |
+| Lafon Technologies            | 1 (0.0%)     |
+
+| Employers with the most signoffs (total 70) |            |
+|---------------------------------------------|------------|
+| RnDity                                      | 49 (70.0%) |
+| Northern.tech                               | 19 (27.1%) |
+| tuupola@appelsiini.net                      | 1 (1.4%)   |
+| Lafon Technologies                          | 1 (1.4%)   |
+
+| Employers with the most hackers (total 6) |           |
+|-------------------------------------------|-----------|
+| RnDity                                    | 2 (33.3%) |
+| Northern.tech                             | 2 (33.3%) |
+| tuupola@appelsiini.net                    | 1 (16.7%) |
+| Lafon Technologies                        | 1 (16.7%) |
+
+### Changelogs
+
+#### mender-convert (1.0.0)
+
+Initial release of mender-convert! Some developer versions were tested along the
+way, so here is the changelog since then:
+
+* Make tool ready for handling input images containing 3 partitions
+  ([MEN-2207](https://tracker.mender.io/browse/MEN-2207))
+* Support passing mender-convert arguments to docker-mender-convert directly
+* Switch to 1.6.0 Mender client as default for docker environment
+* Use local (checked out) version of mender-convert inside container
+* Support compiling Mender client in mender-convert container.
+* compile mender during docker image creation
+* Install GRUB bootloader to Mender image based on Yocto image for qemu x86-64
+  ([MEN-2207](https://tracker.mender.io/browse/MEN-2207))
+* fix image paths printed at end of conversion
+* Docker environment for running mender-convert
+* Create repartitioned Mender compliant image from Yocto image for qemu x86-64
+  ([MEN-2207](https://tracker.mender.io/browse/MEN-2207))
+* Avoid duplicate content in cmdline.txt
+* Install Mender related files to Mender image based on Yocto image for qemu x86-64
+  ([MEN-2207](https://tracker.mender.io/browse/MEN-2207))
+* Increase default server retry interval from 1 to 30 seconds.
+* Add version option for mender convert
+  ([MEN-2257](https://tracker.mender.io/browse/MEN-2257))
+
+
 ## Mender 1.7.0
 
 _Released 12.13.2018_
