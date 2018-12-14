@@ -52,8 +52,8 @@ See [certificate troubleshooting](../../../troubleshooting/mender-client#certifi
 
 ### Yocto Project
 
-<!--AUTOVERSION: "**%** branch of the Yocto Project"/ignore-->
-! We use the **master** branch of the Yocto Project and `meta-mender` below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases, but these branches are no longer maintained by Mender developers. We offer professional services to to implement and support other branches over time, please take a look at the [Mender professional services offering](https://mender.io/product/professional-services?target=_blank).
+<!--AUTOVERSION: "**%** branch of the Yocto Project"/poky "**%** branch of `meta-mender`"/meta-mender "other branches like [%](https://github.com/mendersoftware/meta-mender/tree/%"/ignore-->
+! We use the **thud** branch of the Yocto Project and **thud** branch of `meta-mender` below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases, but these branches are no longer maintained by Mender developers. We offer professional services to to implement and support other branches over time, please take a look at the [Mender professional services offering](https://mender.io/product/professional-services?target=_blank).
 
 A Yocto Project poky environment is required. If you already have
 this in your build environment, please open a terminal, go to the `poky`
@@ -63,9 +63,9 @@ directory and skip to [Adding the meta layers](#adding-the-meta-layers).
 On the other hand, if you want to start from a *clean Yocto Project environment*,
 you need to clone the latest poky and go into the directory:
 
-<!--AUTOVERSION: "-b % git://git.yoctoproject.org/poky"/ignore-->
+<!--AUTOVERSION: "-b % git://git.yoctoproject.org/poky"/poky-->
 ```bash
-git clone -b master git://git.yoctoproject.org/poky
+git clone -b thud git://git.yoctoproject.org/poky
 ```
 
 ```bash
@@ -82,9 +82,9 @@ We will now add the required meta layers to our build environment.
 Please make sure you are standing in the directory where `poky` resides,
 i.e. the top level of the Yocto Project build tree, and run these commands:
 
-<!--AUTOVERSION: "-b % git://github.com/mendersoftware/meta-mender"/ignore-->
+<!--AUTOVERSION: "-b % git://github.com/mendersoftware/meta-mender"/meta-mender-->
 ```bash
-git clone -b master git://github.com/mendersoftware/meta-mender
+git clone -b thud git://github.com/mendersoftware/meta-mender
 ```
 
 Next, we initialize the build environment:
@@ -133,7 +133,7 @@ part of your Yocto Project build environment.
 
 Add these lines to the start of your `conf/local.conf`:
 
-<!--AUTOVERSION: "Mender %"/mender-->
+<!--AUTOVERSION: "Mender %"/mender "releases % and older"/ignore-->
 ```bash
 # The name of the disk image and Artifact that will be built.
 # This is what the device will report that it is running, and different updates must have different names

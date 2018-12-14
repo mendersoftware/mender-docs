@@ -87,8 +87,9 @@ Please follow [the documentation on mender-artifact](../modifying-a-mender-artif
 
 Clone `mender-convert` from the official repository:
 
+<!--AUTOVERSION: "-b % https://github.com/mendersoftware/mender-convert"/mender-convert-->
 ```bash
-git clone https://github.com/mendersoftware/mender-convert.git
+git clone -b 1.0.0 https://github.com/mendersoftware/mender-convert.git
 ```
 
 

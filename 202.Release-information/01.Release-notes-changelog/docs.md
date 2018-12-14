@@ -4,23 +4,101 @@ taxonomy:
     category: docs
 ---
 
-## meta-mender sumo-v2018.11.2
-
-_Released 11.16.2018_
-
-#### meta-mender (sumo-v2018.11.2)
-
-New changes in meta-mender since sumo-v2018.11:
-
-* Add mender 1.7.0b1 recipe.
-* Add mender-artifact 2.4.0b1 recipe.
-
-
-## Mender 1.7.0b1
+## Mender 1.7.0
 
 _Released 11.15.2018_
 
-#### deployments (1.6.0b1)
+### Release statistics
+A total of 25446 lines added, 6653 removed (delta 18793)
+
+| Developers with the most changesets |             |
+|-------------------------------------|-------------|
+| Marcin Chalczynski                  | 104 (34.0%) |
+| Krzysztof Jaskiewicz                | 71 (23.2%)  |
+| Kristian Amlie                      | 47 (15.4%)  |
+| Michael Clelland                    | 36 (11.8%)  |
+| Maciej Mrowiec                      | 14 (4.6%)   |
+| Ole Petter Orhagen                  | 7 (2.3%)    |
+| Alf-Rune Siqveland                  | 6 (2.0%)    |
+| Don Cross                           | 5 (1.6%)    |
+| Eystein Måløy Stenberg              | 4 (1.3%)    |
+| Marcin Pasinski                     | 3 (1.0%)    |
+
+| Developers with the most changed lines |              |
+|----------------------------------------|--------------|
+| Michael Clelland                       | 9832 (35.8%) |
+| Kristian Amlie                         | 6660 (24.3%) |
+| Marcin Chalczynski                     | 5180 (18.9%) |
+| Krzysztof Jaskiewicz                   | 3594 (13.1%) |
+| Alf-Rune Siqveland                     | 1184 (4.3%)  |
+| Maciej Mrowiec                         | 367 (1.3%)   |
+| Ole Petter Orhagen                     | 207 (0.8%)   |
+| Don Cross                              | 186 (0.7%)   |
+| Tobias Klauser                         | 56 (0.2%)    |
+| Mirza Krak                             | 55 (0.2%)    |
+
+| Developers with the most lines removed |           |
+|----------------------------------------|-----------|
+| Tobias Klauser                         | 51 (0.8%) |
+| Eystein Måløy Stenberg                 | 28 (0.4%) |
+
+| Developers with the most signoffs (total 310) |             |
+|-----------------------------------------------|-------------|
+| Marcin Chalczynski                            | 104 (33.5%) |
+| Krzysztof Jaskiewicz                          | 71 (22.9%)  |
+| Kristian Amlie                                | 48 (15.5%)  |
+| Michael Clelland                              | 36 (11.6%)  |
+| Maciej Mrowiec                                | 14 (4.5%)   |
+| Ole Petter Orhagen                            | 8 (2.6%)    |
+| Alf-Rune Siqveland                            | 6 (1.9%)    |
+| Don Cross                                     | 5 (1.6%)    |
+| Eystein Måløy Stenberg                        | 4 (1.3%)    |
+| Marcin Pasinski                               | 3 (1.0%)    |
+
+| Top changeset contributors by employer |             |
+|----------------------------------------|-------------|
+| RnDity                                 | 175 (57.2%) |
+| Northern.tech                          | 122 (39.9%) |
+| cosinekitty@gmail.com                  | 5 (1.6%)    |
+| Amarula Solutions                      | 1 (0.3%)    |
+| jgitlin@goboomtown.com                 | 1 (0.3%)    |
+| tklauser@distanz.ch                    | 1 (0.3%)    |
+| Election Systems & Software            | 1 (0.3%)    |
+
+| Top lines changed by employer |               |
+|-------------------------------|---------------|
+| Northern.tech                 | 18415 (67.1%) |
+| RnDity                        | 8774 (32.0%)  |
+| cosinekitty@gmail.com         | 186 (0.7%)    |
+| tklauser@distanz.ch           | 56 (0.2%)     |
+| Election Systems & Software   | 16 (0.1%)     |
+| Amarula Solutions             | 2 (0.0%)      |
+| jgitlin@goboomtown.com        | 1 (0.0%)      |
+
+| Employers with the most signoffs (total 310) |             |
+|----------------------------------------------|-------------|
+| RnDity                                       | 175 (56.5%) |
+| Northern.tech                                | 126 (40.6%) |
+| cosinekitty@gmail.com                        | 5 (1.6%)    |
+| tklauser@distanz.ch                          | 1 (0.3%)    |
+| Election Systems & Software                  | 1 (0.3%)    |
+| Amarula Solutions                            | 1 (0.3%)    |
+| jgitlin@goboomtown.com                       | 1 (0.3%)    |
+
+| Employers with the most hackers (total 17) |            |
+|--------------------------------------------|------------|
+| Northern.tech                              | 10 (58.8%) |
+| RnDity                                     | 2 (11.8%)  |
+| cosinekitty@gmail.com                      | 1 (5.9%)   |
+| tklauser@distanz.ch                        | 1 (5.9%)   |
+| Election Systems & Software                | 1 (5.9%)   |
+| Amarula Solutions                          | 1 (5.9%)   |
+| jgitlin@goboomtown.com                     | 1 (5.9%)   |
+
+
+### Changelogs
+
+#### deployments (1.6.0)
 
 New changes in deployments since 1.5.0:
 
@@ -28,7 +106,11 @@ New changes in deployments since 1.5.0:
 * Change image download link validity to 24h from 1h.
   ([MEN-2054](https://tracker.mender.io/browse/MEN-2054))
 
-#### deviceauth (1.7.0b1)
+#### deviceauth (1.7.0)
+
+New changes in deviceauth since 1.7.0b1:
+
+* document management API v2
 
 New changes in deviceauth since 1.6.0:
 
@@ -43,7 +125,11 @@ New changes in deviceauth since 1.6.0:
 * API v2 POST /devices endpoint (for preauthorizing devices)
 * v2 of GET /devices/<id>
 
-#### gui (1.7.0b1)
+#### gui (1.7.0)
+
+New changes in gui since 1.7.0b1:
+
+* Fixed bug where finished deployments continue to display "in progress" when report is kept open
 
 New changes in gui since 1.6.0:
 
@@ -58,7 +144,24 @@ New changes in gui since 1.6.0:
 * Allow click-to-retry for deployments with failures
 * Update to deviceauth API v2 and use device authsets for admit-on-request flow
 
-#### integration (1.7.0b1)
+#### integration (1.7.0)
+
+New changes in integration since 1.7.0b1:
+
+* Upgrade deployments to 1.6.0.
+* Upgrade deviceauth to 1.7.0.
+* Upgrade gui to 1.7.0.
+* Upgrade inventory to 1.5.0.
+* Upgrade mender to 1.7.0.
+* Upgrade mender-api-gateway-docker to 1.6.0.
+* Upgrade mender-artifact to 2.4.0.
+* Upgrade mender-cli to 1.1.0.
+* Upgrade mender-conductor to 1.2.0.
+* Upgrade mender-conductor-enterprise to 1.2.0.
+* Upgrade useradm to 1.7.0.
+* Add statistics generator script, and start doing statistics
+  on code development for each release.
+  ([MEN-2206](https://tracker.mender.io/browse/MEN-2206))
 
 New changes in integration since 1.6.0:
 
@@ -79,7 +182,11 @@ New changes in integration since 1.6.0:
 * Upgrade mender-conductor-enterprise to 1.2.0b1.
 * Upgrade useradm to 1.7.0b1.
 
-#### mender (1.7.0b1)
+#### mender (1.7.0)
+
+New changes in mender since 1.7.0b1:
+
+* Allow rootfsPartA and rootfsPartB to be symlinks
 
 New changes in mender since 1.6.0:
 
@@ -110,7 +217,7 @@ New changes in mender since 1.6.0:
 * Improve error message when running mender as non-root user
   ([MEN-2083](https://tracker.mender.io/browse/MEN-2083))
 
-#### mender-api-gateway-docker (1.6.0b1)
+#### mender-api-gateway-docker (1.6.0)
 
 New changes in mender-api-gateway-docker since 1.5.0:
 
@@ -119,7 +226,7 @@ New changes in mender-api-gateway-docker since 1.5.0:
 * use exact openresty version (1.13.6.2-0-alpine) instead of floating tag (alpine)
 * json access logs format option is added
 
-#### mender-artifact (2.4.0b1)
+#### mender-artifact (2.4.0)
 
 New changes in mender-artifact since 2.3.0:
 
@@ -149,18 +256,30 @@ New changes in mender-artifact since 2.3.0:
   the "modify" command when no "-k" was present to replace the
   existing signature.
 
-#### mender-conductor-enterprise (1.2.0b1)
+#### mender-conductor-enterprise (1.2.0)
 
 New changes in mender-conductor-enterprise since 1.1.0:
 
 * Latest template from Ralph.
 
-#### useradm (1.7.0b1)
+#### useradm (1.7.0)
 
 New changes in useradm since 1.6.0:
 
 * Recover from unsuccessful attempt to create user.
 * Enable common logging stack adding request access log and response timings.
+
+
+## meta-mender sumo-v2018.11.2
+
+_Released 11.16.2018_
+
+#### meta-mender (sumo-v2018.11.2)
+
+New changes in meta-mender since sumo-v2018.11:
+
+* Add mender 1.7.0b1 recipe.
+* Add mender-artifact 2.4.0b1 recipe.
 
 
 ## meta-mender sumo-v2018.11
