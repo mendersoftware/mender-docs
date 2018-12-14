@@ -33,6 +33,7 @@ In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3
 | Mender client 1.5.x | no                                  | community               | community              | community               | community              | stable                 |
 | Mender client 1.6.x | no                                  | community               | community              | community               | community              | stable                 |
 | Mender client 1.7.x | no                                  | community               | community              | community               | community              | stable                 |
+
 Leverage [Mender consulting services to support other versions of the Yocto Project](https://mender.io/product/board-support?target=_blank) for your board and environment.
 
 
