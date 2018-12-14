@@ -251,8 +251,6 @@ New changes in meta-mender since sumo-v2018.11.2:
   ([MEN-1849](https://tracker.mender.io/browse/MEN-1849))
 * grub: Remove restriction that the core.img be at sector 1
 * mender-uboot: Use hex for dev/part numbers in U-Boot.
-* None
-  Reported-by: Michael Davis <michael.davis@essvote.com>
 * Delete all components from pre-1.5 Mender releases.
   Remove Mender 1.4.0 and 1.4.1 and Mender artifact 2.2.0.
 * Introduce support for a standardized boot method on ARM
