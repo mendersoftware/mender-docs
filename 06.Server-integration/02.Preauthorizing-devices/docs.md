@@ -90,12 +90,12 @@ First make sure to power off your device, so it does not continuously appear as 
 
 We recommend that you ensure there are no records of your device in the server; open the Mender UI, then go to *Devices* to see if it is there, then *Decommission* it.
 
-Secondly, To make sure that the device is not in an existing authentication set, we check `devauth` service for the identity of your device.
+Secondly, To make sure that the device has no existing authentication sets, we check `devauth` service for the identity of your device.
 
 In the same terminal, run the following command:
 
 ```bash
-curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/devauth/devices | jq '.' > /tmp/devauth.json
+curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v2/devauth/devices | jq '.' > /tmp/devauth.json
 ```
 
 !!! To make the response more readable, we use the `jq` utility to decode it. If it is not available on your system you can omit this pipe or replace it with a different indentation tool (e.g `python -m json.tool`).
@@ -107,7 +107,7 @@ If you do not get any matches in either files, great! Continue to the [next sect
 If you do have one or more matches you must first delete these existing authentication sets. Find the `id` of the authentication set and use the `DELETE` method towards the service. For example, if you find the identity in `devauth.json` and you see the authentication set has `id` `5ae3a39d3cd4d40001482a95` the run the following command:
 
 ```bash
-curl -H "Authorization: Bearer $JWT" -X DELETE $MENDER_SERVER_URI/api/management/v1/devauth/devices/5ae3a39d3cd4d40001482a95
+curl -H "Authorization: Bearer $JWT" -X DELETE $MENDER_SERVER_URI/api/management/v2/devauth/devices/5ae3a39d3cd4d40001482a95
 ```
 
 Once this is done, re-run the command above to generate the `devauth.json` file again and verify that your device identity does not exist anywhere.
@@ -116,30 +116,30 @@ In the event that the decommissioning operation fails, perform a [manual databas
 
 ### Call the preauthorize API
 
-Set your device identity as a JSON object in a shell variable while escaping quotation marks:
+Set your device identity as a JSON object in a shell variable:
 
 ```bash
-DEVICE_IDENTITY_JSON_OBJECT_STRING='{\"mac\":\"02:12:61:13:6c:42\"}'
+DEVICE_IDENTITY_JSON_OBJECT_STRING='{"mac":"02:12:61:13:6c:42"}'
 ```
 
-!!! Adjust the variable value to the actual identity of your device. If you have several identity attributes in your identity scheme, separate them with commas in JSON format inside this single object, for example `DEVICE_IDENTITY_JSON_OBJECT_STRING='{\"mac\":\"02:12:61:13:6c:42\", \"serialnumber\":\"1928819\"}'`. Note that if your device identity contains several attributes, *whitespace* and *ordering does matter*: you need to write the identity attributes without extra spaces between them and in the order your Mender client submit them (testing is likely the easiest way to find the right order).
+!!! Adjust the variable value to the actual identity of your device. If you have several identity attributes in your identity scheme, separate them with commas in JSON format inside this single object, for example `DEVICE_IDENTITY_JSON_OBJECT_STRING='{"mac":"02:12:61:13:6c:42", "serialnumber":"1928819"}'`.
 
-Secondly, set the contents of the device public key you generated above in a second variable (with newlines written out literally):
+Secondly, set the contents of the device public key you generated above in a second variable:
 
 ```bash
-DEVICE_PUBLIC_KEY="$(cat keys-client-generated/public.key | sed -e :a  -e 'N;s/\n/\\n/;ta')\n"
+DEVICE_PUBLIC_KEY="$(cat keys-client-generated/public.key | sed -e :a  -e 'N;s/\n/\\n/;ta')"
 ```
 
-Then simply call the [API to preauthorize a device](../../apis/management-apis/device-admission#devices-post):
+Then simply call the [API to preauthorize a device](../../apis/management-apis/device-authentication#devices-post):
 
 ```bash
-curl -H "Authorization: Bearer $JWT" -H "Content-Type: application/json" -X POST --data-binary "{ \"device_identity\" : \"$DEVICE_IDENTITY_JSON_OBJECT_STRING\", \"key\" : \"$DEVICE_PUBLIC_KEY\" }" $MENDER_SERVER_URI/api/management/v1/admission/devices
+curl -H "Authorization: Bearer $JWT" -H "Content-Type: application/json" -X POST -d "{ \"identity_data\" : $DEVICE_IDENTITY_JSON_OBJECT_STRING, \"pubkey\" : \"$DEVICE_PUBLIC_KEY\" }" $MENDER_SERVER_URI/api/management/v2/devauth/devices
 ```
 
 If there is no output from the command, this indicates it succeeded. To verify, list the currently registered authentication sets and make sure there is one for your device with the `preauthorized` status:
 
 ```bash
-curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/admission/devices | jq '.'
+curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v2/devauth/devices | jq '.'
 ```
 
 Your device should now be preauthorized and accepted to the Mender server once it connects with the exact same identity and key.

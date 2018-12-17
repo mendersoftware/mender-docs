@@ -4,28 +4,26 @@ taxonomy:
     category: docs
 ---
 
-Device admission requires explicit consent by the user to grant authentication to a given device (identified by a set
-of [identity attributes](../../client-configuration/identity)) when it requests access to the Mender server.
+Devices, identified by a set of [identity attributes](../../client-configuration/identity), must be explicitly authorized
+by the user before they can authenticate with the Mender server.
 
-This section describes in detail the components and workflows relevant to admission and authentication,
-and provides practical tips on navigating our APIs to successfully admit devices, monitor admission status,
+This section describes in detail the components and workflows relevant to device authentication,
+and provides practical tips on navigating our APIs to successfully authorize devices, monitor authorization status,
 and troubleshoot related issues.
 
-## Admission & Authentication Components
-Admission and authentication are implemented by a single service:
+## Authentication Components
+Device authentication is implemented by a single service:
 * [Device Authentication](https://github.com/mendersoftware/deviceauth?target=_blank)
 
 The service exposes APIs for:
-* accepting device-originating authentication requests, issuing and keeping track of authentication tokens ([JSON Web Token](https://jwt.io?target=_blank))
+* device authorization, i.e. granting access to selected devices
+* issuing and keeping track of authentication tokens ([JSON Web Token](https://jwt.io?target=_blank))
 * inspecting and managing devices and their authentication credentials
-* device admission, i.e. granting authentication to selected devices
 
-Device admission can be performed in either of two modes, or workflows, which will be described in full in the following section:
+Device authorization can be performed in either of two modes, or workflows, which will be described in full in the following section:
 * **preauthorization**, where a user adds the device a priori, before it ever submits an authentication request
-* **admit-on-request**, where a device unknown to the system presents its authentication data set, and the user
-can inspect it and manually grant it authentication
-
-!!! Both admission scenarios can be automated via integration with Mender server APIs, e.g. through a 3rd party script.
+* **accept-on-request**, where a device unknown to the system presents its authentication data set, and the user
+can inspect it and manually authorize it
 
 ### Terminology: Device, Identity Attributes, Authentication Set
 It is important to clear up some terminology used throughout this documentation and various APIs.
@@ -39,20 +37,17 @@ the public key to verify the signature.
 
 The combination of **identity attributes** and **public key** is termed an **authentication set**, or 'auth set' in short. The concept
 was introduced when considering device key rotation - a single device may over time present different keys, and it's
-important to track those, and allow the user to admit or reject a particular identity/key combination.
+important to track those, and allow the user to accept(i.e. authorize) or reject a particular identity/key combination.
 
-Mender keeps tracks both of a **device**, as a single real-world entity, and its multiple  **authentication sets**. In context of backend
-APIs, both of these concepts are resources, identified by a unique IDs assigned by the server.
+Mender keeps tracks both of a **device**, as a single real-world entity, and its multiple  **authentication sets** (one-to-many relation).
 
-! It is important to note that the APIs, during their evolution, became slightly inconsistent and are not exactly true to these concepts. The issue lies with URL conventions used in the **/admission** vs **/devauth** portions of the API, which might be confusing; sometimes the term **device** is used to actually mean an **authentication set**. These inconsistencies will be resolved in upcoming releases of Mender, but for now need to be kept in mind.
-
-## Admission Flows
-There are two possible admission flows - both involve a user's explicit consent to accept a device into the system via
-the */admission* portion of the Device Authentication API, but they differ in the order of events and intended use cases. Below is a detailed breakdown
+## Authorization Flows
+There are two possible authorization flows - both involve a user's explicit consent to authorize a device via
+the Device Authentication API, but they differ in the order of events and intended use cases. Below is a detailed breakdown
 of each of them.
 
 ### Preauthorization Flow
-Preauthorization is the idea of admitting a device before it ever connects to the server for the first time. This is the intuitive
+Preauthorization is the idea of authorizing a device before it ever connects to the server for the first time. This is the intuitive
 model analogous to creating an account before logging in to an online service.
 
 Preauthorization can be performed before a particular device is even released - or in fact, assembled - just yet. It is enough for
@@ -62,7 +57,7 @@ immediately, without further user intervention.
 
 This flow is therefore best suited to a typical production use case, where a release of a potentially large batch of devices is planned:
 * device identity attributes/keys are pre-assigned and tracked outside of Mender
-* the preauthorization API of Device Authentication is used to admit the devices a priori (possibly via a script)
+* the preauthorization API of Device Authentication is used to authorize the devices a priori (possibly via a script)
 * during the release process, identities and keys are transferred to physical devices
 * upon the first authentication request, each device is authenticated and gains access to all Mender APIs
 
@@ -81,14 +76,14 @@ For details of API calls please consult the API documentation:
 * [Device Authentication Device API](../../apis/device-apis/device-authentication)
 * [Device Authentication Management API](../../apis/management-apis/device-authentication)
 
-### Admit-on-request Flow
-An alternate flow, suitable mostly for quick prototyping and testing, is the admit-on-request flow.
+### Accept-on-request Flow
+An alternate flow, suitable mostly for quick prototyping and testing, is the accept-on-request flow.
 
 It is not required for the user to preauthorize a device - instead, when the device first submits an auth request, it will
 be recorded for future inspection by the user. The auth set can then be accepted via the Device Authentication API whenever the
 user sees fit; a subsequent auth request from the device will be successful and a valid auth token will be returned.
 
-The admit-on-request flow therefore requires the user to accept authentication sets one-by-one, as devices connect to the server.
+The authorize-on-request flow therefore requires the user to accept authentication sets one-by-one, as devices connect to the server.
 As such it is not ideal for scenarios where a large number of devices is being managed; it is recommended for smaller or non-production
 installations instead.
 
@@ -101,9 +96,9 @@ The sequence diagram below describes the API interactions between the user, Devi
 6. The device applies for an auth token again
 7. Device Authentication returns a valid authentication token
 
-| ![Admit-on-request flow](admit-on-req.png) |
+| ![Accept-on-request flow](accept-on-req.png) |
 |:--:|
-|*Admit-on-request flow*|
+|*Accept-on-request flow*|
 
 For details of API calls please consult the API documentation:
 
@@ -112,7 +107,7 @@ For details of API calls please consult the API documentation:
 
 
 ## Authentication Token
-After a device is successfully admitted, its next authentication request to Device Authentication results
+After a device is authorized, its next authentication request to Device Authentication results
 in obtaining an **authentication token**. The Mender client will record it and attach it to every API call under
 the HTTP `Authorization` header.
 
@@ -123,14 +118,5 @@ explicitly rejected in the meantime via the Device Authentication API.
 For details on the token format please see the relevant [documentation on submitting an authentication request](../../apis/device-apis/device-authentication)
 
 ## Viewing devices and auth sets
-Two sets of APIs exposed by Device Authentication can be used to review the admission status of your devices.
-
-The more convenient one is `GET /api/management/v1/authentication/devices`. It is device-oriented, and returns a
-list of all known devices; each device structure contains a nested list of its recorded authentication sets and their statuses.
-
-The other API is `GET /api/management/v1/admission/devices`. Contrary to what the URL convention suggests, it
-returns a flat list of all recorded **authentication sets**. This means a single device can actually have several entries in this list;
- each has a **device_id** attribute which ties it to an actual physical device (note that the **id** attribute identifies the authentication set itself).
-
- This endpoint is important when working with authentication sets - accepting or rejecting is done via
-`PUT /api/management/v1/admission/devices/{id}/status`, where the **id** identifies the auth set obtained via the `GET` request.
+To view available devices and their authentication sets, use the `GET /api/management/v2/authentication/devices` endpoint of the
+[Device Authentication Management API](../../apis/management-apis/device-authentication).
