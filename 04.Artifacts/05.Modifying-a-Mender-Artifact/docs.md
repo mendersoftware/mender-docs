@@ -96,6 +96,16 @@ mender-artifact write rootfs-image -t beaglebone -n release-1 -u rootfs.ext4 -o 
 
 !!! If you would like to generate a *signed Artifact*, simply add the `-k` option with the path to your *private key*. In our example above, the full command would be `mender-artifact write rootfs-image -t beaglebone -n release-1 -u rootfs.ext4 -o artifact-signed.mender -k private.key`.
 
+## Artifact Compression
+
+Currently the standard behaviour is to compress the artifact using `gzip`, however you can also opt out of the standard
+compression format by giving the `mender-artifact` command the global flag `compression`, and the argument `none`,
+meaning that no  compression will be done. Example:
+
+```bash
+mender-artifact --compression none write rootfs-image -t beaglebone -n release-1 -u rootfs.ext4 -o artifact.mender
+```
+
 
 ## Signing after modification
 
