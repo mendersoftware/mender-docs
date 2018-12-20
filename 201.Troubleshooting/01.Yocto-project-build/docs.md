@@ -293,3 +293,21 @@ Alternatively, if appropriate, you can remove the manually set `MENDER_MTDPARTS`
 variable, and let Mender set it automatically, but you will then get a generic
 `mtdimg` which may not work on the platform in question. Please refer to [the
 Raw Flash section](../../devices/yocto-project/raw-flash) for more information.
+
+## After updating the RootfsPartA and RootfsPartB are missing from `/etc/mender/mender.conf`
+
+This is a new feature added in `release 1.8`. From this release onwards, the `mender.conf` file will be split
+into a persistent and a transient configuration while, where the persistent configuration file `/data/mender/mender.conf`
+and the transient configuration (`/etc/mender/mender.conf`) will each hold different configuration variables. By default a build
+will now move `RootfsPartA` and `RootfsPartB` into the persistent configuration file, however this can be controlled by 
+setting the `MENDER_PERSISTENT_CONFIGURATION_VARS` to whichever configuration variables you would like to be persistent
+for your device in your `local.conf` file like so:
+```bash
+mender_persistent_configuration_vars = "persistent-configuration-variable another-persistent-configuration-variable"
+```
+For customers still on the old setup, there is a `state-script` available that will
+help migrating a device from the old setup to the new one. This is enabled by adding
+```bash
+IMAGE_INSTALL_append = " mender-migrate-configuration"
+```
+to your `local.conf` file.
