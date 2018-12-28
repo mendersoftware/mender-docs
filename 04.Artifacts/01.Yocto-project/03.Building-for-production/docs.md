@@ -16,6 +16,14 @@ When building for production, we need to remove the demo layer, `meta-mender-dem
 bitbake-layers remove-layer ../meta-mender/meta-mender-demo
 ```
 
+!!! Note that in case the above does not work you might want to check the included layers with
+```bash
+bitbake-layers show-layers
+```
+and then remove the demo layer e.g.
+```bash
+bitbake-layers remove-layer meta-mender-demo
+```
 
 ## Certificates
 
