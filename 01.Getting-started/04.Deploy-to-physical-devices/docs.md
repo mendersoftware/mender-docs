@@ -203,16 +203,17 @@ a complete description of this format.
 
 Locate the `release_1` demo Artifact file (`.mender`) for your device that you [downloaded earlier](../download-test-images).
 
-Using the BeagleBone Black as an example below (adjust the directory and file names if you are using the Raspberry Pi 3),
-we carry out exactly the same configuration steps for the Mender Artifact as we did for the disk image above:
+We carry out exactly the same configuration steps for the Mender Artifact as we did for the disk image above:
+
+! Please make sure to set a shell variable that expands the `.mender` file correctly with `$MENDER_FILE_IMGPATH` or edit the commands below accordingly.
 
 ```bash
-echo "$IP_OF_MENDER_SERVER_FROM_DEVICE docker.mender.io s3.docker.mender.io" | mender-artifact cp beaglebone_release_1.mender:/etc/hosts
+mender-artifact cat $MENDER_FILE_IMGPATH:/etc/hosts | sed "\$a ${IP_OF_MENDER_SERVER_FROM_DEVICE} docker.mender.io s3.docker.mender.io" > tmpf; mender-artifact cp tmpf $MENDER_FILE_IMGPATH:/etc/hosts && rm tmpf
 ```
 
 Then check the contents of the file
 ```bash
-mender-artifact cat beaglebone_release_1.mender:/etc/hosts
+mender-artifact cat $MENDER_FILE_IMGPATH:/etc/hosts
 ```
 
 You should see output similar to the following:
