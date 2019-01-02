@@ -25,6 +25,12 @@ and then remove the demo layer e.g.
 bitbake-layers remove-layer meta-mender-demo
 ```
 
+## Configure polling intervals
+
+For security reasons, the Mender client does not require any open ports at the embedded device. Therefore, all communication between the Mender client and the server is always initiated by the client and it is important to configure the client so that the frequency of sending various requests to the server is reasonable for a given setup.
+
+Please refer to [polling intervals](../../../client-configuration/configuration-file/polling-intervals), for information on how to choose and how to set polling intervals.
+
 ## Certificates
 
 Certificates are used to ensure the communication between the client and the server is secure, so that it is not possible for an adversary to pose as a legitimate server.
