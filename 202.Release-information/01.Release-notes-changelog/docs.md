@@ -4,6 +4,57 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender thud-v2019.01
+
+_Released 01.04.2019_
+
+### Statistics
+
+A total of 80 lines added, 103 removed (delta -23)
+
+| Developers with the most changesets |           |
+|-------------------------------------|-----------|
+| Kristian Amlie                      | 4 (66.7%) |
+| Ole Petter Orhagen                  | 1 (16.7%) |
+| Mirza Krak                          | 1 (16.7%) |
+
+| Developers with the most changed lines |             |
+|----------------------------------------|-------------|
+| Kristian Amlie                         | 158 (92.9%) |
+| Mirza Krak                             | 11 (6.5%)   |
+| Ole Petter Orhagen                     | 1 (0.6%)    |
+
+| Developers with the most lines removed |            |
+|----------------------------------------|------------|
+| Kristian Amlie                         | 34 (33.0%) |
+
+| Top changeset contributors by employer |            |
+|----------------------------------------|------------|
+| Northern.tech                          | 6 (100.0%) |
+
+| Top lines changed by employer |              |
+|-------------------------------|--------------|
+| Northern.tech                 | 170 (100.0%) |
+
+| Employers with the most hackers (total 3) |            |
+|-------------------------------------------|------------|
+| Northern.tech                             | 3 (100.0%) |
+
+
+### Changelogs
+
+#### meta-mender (thud-v2019.01)
+
+New changes in meta-mender since thud-v2018.12:
+
+* part-images: add missing u-boot:deploy dependency for ARM
+* Add grub-mender-grubenv 1.2.1 recipe.
+* Fix grub-editenv invocation on platforms where it is called
+  grub2-editenv.
+* Fix data directory not being empty on rootfs.
+  ([MEN-2290](https://tracker.mender.io/browse/MEN-2290))
+
+
 ## meta-mender sumo-v2018.12
 
 _Released 12.14.2018_
