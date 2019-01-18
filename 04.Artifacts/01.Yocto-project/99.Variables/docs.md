@@ -11,7 +11,7 @@ The variables are either specific to- and defined by Mender, as shown by the `ME
 #### ARTIFACTIMG_FSTYPE
 
 
-Defines which file system type Mender will build for the rootfs partitions in the `.biosimg`, `.sdimg`, `.uefiimg` and the `.mender` file.  See [File system types](../../../devices/yocto-project/partition-layout#file-system-types) for more information.
+Defines which file system type Mender will build for the rootfs partitions in the `.biosimg`, `.sdimg`, `.uefiimg` and the `.mender` file.  See [File system types](../../../devices/yocto-project/partition-configuration#file-system-types) for more information.
 
 
 #### IMAGE_ROOTFS_SIZE
@@ -57,7 +57,7 @@ Note that you cannot both use `MENDER_ARTIFACT_VERIFY_KEY` and have `artifact-ve
 
 #### MENDER_BOOT_PART
 
-The partition Mender uses as the boot partition. See [More detailed storage configuration](../../../devices/yocto-project/partition-layout#more-detailed-storage-configuration) for more information.
+The partition Mender uses as the boot partition. See [More detailed storage configuration](../../../devices/yocto-project/partition-configuration#more-detailed-storage-configuration) for more information.
 
 
 #### MENDER_BOOT_PART_FSTYPE
@@ -69,18 +69,18 @@ variable exists to override the auto detection.
 
 #### MENDER_BOOT_PART_SIZE_MB
 
-The size of the boot partition in the generated `.biosimg`, `.sdimg` or `.uefiimg` file. See [Configuring the partition sizes](../../../devices/yocto-project/partition-layout#configuring-the-partition-sizes) for more information.
+The size of the boot partition in the generated `.biosimg`, `.sdimg` or `.uefiimg` file. See [Configuring the partition sizes](../../../devices/yocto-project/partition-configuration#configuring-the-partition-sizes) for more information.
 
 
 #### MENDER_DATA_PART
 
-The partition Mender uses as the persistent data partition. See [More detailed storage configuration](../../../devices/yocto-project/partition-layout#more-detailed-storage-configuration) for more information.
+The partition Mender uses as the persistent data partition. See [More detailed storage configuration](../../../devices/yocto-project/partition-configuration#more-detailed-storage-configuration) for more information.
 
 
 #### MENDER_DATA_PART_DIR
 
 <!--AUTOVERSION: "Yocto Project 2.5 % and later"/ignore-->
-!!! This variable and the associated method is obsolete in Yocto Project 2.5 sumo and later. Simply [using recipes](../../../devices/yocto-project/partition-layout#deploying-files-to-the-persistent-data-partition) to put files in the `/data` partition is enough.
+!!! This variable and the associated method is obsolete in Yocto Project 2.5 sumo and later. Simply [using recipes](../../../devices/yocto-project/partition-configuration#deploying-files-to-the-persistent-data-partition) to put files in the `/data` partition is enough.
 
 This variable is used to add files to the data partition of the Mender partitioned image. You will need to update your recipe file and your image file. The update to the recipe file ensures that the persistent files are deployed to a common location and the updates to the image file ensures that these files are included in the target image.
 
@@ -112,7 +112,7 @@ variable exists to override the auto detection.
 
 #### MENDER_DATA_PART_SIZE_MB
 
-The size of the persistent data partition in the generated `.biosimg`, `.sdimg` or `.uefiimg` file. See [Configuring the partition sizes](../../../devices/yocto-project/partition-layout#configuring-the-partition-sizes) for more information.
+The size of the persistent data partition in the generated `.biosimg`, `.sdimg` or `.uefiimg` file. See [Configuring the partition sizes](../../../devices/yocto-project/partition-configuration#configuring-the-partition-sizes) for more information.
 
 
 #### MENDER_DEMO_HOST_IP_ADDRESS
@@ -250,7 +250,7 @@ Alignment of partitions used when building partitioned images, expressed in byte
 
 #### MENDER_ROOTFS_PART_A
 
-The partition Mender uses as the first (A) rootfs partition. See [More detailed storage configuration](../../../devices/yocto-project/partition-layout#more-detailed-storage-configuration) for more information.
+The partition Mender uses as the first (A) rootfs partition. See [More detailed storage configuration](../../../devices/yocto-project/partition-configuration#more-detailed-storage-configuration) for more information.
 
 
 #### MENDER_ROOTFS_PART_A_NAME
@@ -270,7 +270,7 @@ Defaults to `${MENDER_STORAGE_DEVICE}:rootfsa` when building `.ubimg`.
 
 #### MENDER_ROOTFS_PART_B
 
-The partition Mender uses as the second (B) rootfs partition. See [More detailed storage configuration](../../../devices/yocto-project/partition-layout#more-detailed-storage-configuration) for more information.
+The partition Mender uses as the second (B) rootfs partition. See [More detailed storage configuration](../../../devices/yocto-project/partition-configuration#more-detailed-storage-configuration) for more information.
 
 
 #### MENDER_ROOTFS_PART_B_NAME
@@ -315,7 +315,7 @@ The three methods should not be mixed.
 
 #### MENDER_STORAGE_DEVICE
 
-The storage device holding all partitions (rootfs, boot, data) used by Mender. See [Configuring storage](../../../devices/yocto-project/partition-layout#configuring-storage) for more information.
+The storage device holding all partitions (rootfs, boot, data) used by Mender. See [Configuring storage](../../../devices/yocto-project/partition-configuration#configuring-storage) for more information.
 
 
 #### MENDER_STORAGE_PEB_SIZE
