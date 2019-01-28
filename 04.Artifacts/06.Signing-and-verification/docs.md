@@ -109,6 +109,7 @@ mender-artifact modify artifact-signed.mender -k private.key
 The latter is typically the command the Signing system uses to create a signed Artifact,
 as a Mender Artifact is built by the build system already.
 
+! Currently the `mender-artifact modify` command only supports modifying ext4 payloads.
 
 ## Verifying the signature
 

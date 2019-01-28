@@ -295,6 +295,8 @@ mender-artifact modify beaglebone_release_2.mender -n release-2_master
 
 !!! Using`mender-artifact modify`, you can easily modify several configuration settings in existing disk image (`.sdimg`) and Mender Artifact (`.mender`) files, such as the server URI and certificate. See `mender-artifact help modify` for more options.
 
+! Currently the `mender-artifact modify` command only supports modifying ext4 payloads.
+
 Upload this modified Artifact file to your Mender server and deploy it to your device.
 You should see that the Artifact Name has changed after the deployment.
 Now that you have two Mender Artifact files that are configured for your
