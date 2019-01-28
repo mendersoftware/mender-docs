@@ -18,7 +18,7 @@ The build output will most notably include:
 Inside *meta-mender* there are several layers. The most important one is *meta-mender-core*, which is required by all builds that use Mender. *meta-mender-core* takes care of:
 
 * Cross-compiling Mender for ARM devices
-* [Partitioning the image correctly](../../../devices/yocto-project/partition-layout)
+* [Partitioning the image correctly](../../../devices/yocto-project/partition-configuration)
 * [Setting up the U-Boot bootloader to support Mender](../../../devices/yocto-project/bootloader-support/u-boot)
 
 Each one of these steps can be configured further, see the linked sections for more details.
@@ -209,7 +209,7 @@ ARTIFACTIMG_FSTYPE = "ext4"
 #SRC_URI_append_pn-mender = " file://server.crt"
 ```
 
-!!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../variables#mender_storage_total_size_mb) for more information. Mender selects the file system type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on file system types](../../../devices/yocto-project/partition-layout#file-system-types) for more information.
+!!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../variables#mender_storage_total_size_mb) for more information. Mender selects the file system type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on file system types](../../../devices/yocto-project/partition-configuration#file-system-types) for more information.
 
 !!! If you are building for **Hosted Mender**, make sure to set `MENDER_SERVER_URL` and `MENDER_TENANT_TOKEN` (see the comments above).
 

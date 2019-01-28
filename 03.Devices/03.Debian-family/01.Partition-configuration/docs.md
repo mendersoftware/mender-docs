@@ -1,5 +1,5 @@
 ---
-title: Partition layout
+title: Partition configuration
 taxonomy:
     category: docs
 ---
