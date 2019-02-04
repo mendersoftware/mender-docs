@@ -131,7 +131,7 @@ In order to do this, change the following in the file
 
 ```bash
 MENDER_UPDATE_POLL_INTERVAL_SECONDS ?= "1800"
-MENDER_INVENTORY_POLL_INTERVAL_SECONDS ?= "1800"
+MENDER_INVENTORY_POLL_INTERVAL_SECONDS ?= "28800"
 ```
 
 
