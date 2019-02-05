@@ -47,6 +47,9 @@ include it in the Artifact using the `--server-cert` parameter:
 mender-artifact modify artifact.mender --server-cert server.crt
 ```
 
+
+! Currently the `mender-artifact modify` command only supports modifying ext4 payloads.
+
 ## Reading a configuration file
 
 The `cat` parameter will output a file in the Artifact to standard output.
