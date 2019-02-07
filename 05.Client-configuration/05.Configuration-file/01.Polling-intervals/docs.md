@@ -18,7 +18,7 @@ Default value: 1800 seconds (30 minutes).
 * `InventoryPollIntervalSeconds` sets the frequency for periodically sending [inventory data](../../inventory).
 Inventory data is always sent after each boot of the device, and after a new update has been
 correctly applied and committed by the device in addition to this periodic interval.
-Default value: 86400 seconds (one day). 
+Default value: 28800 seconds (8 hours).
 
 ## How to choose right intervals
 
@@ -40,7 +40,7 @@ Both parameters are stored in the configuration file `/etc/mender/mender.conf`:
 ```
 {
   "UpdatePollIntervalSeconds": 1800,
-  "InventoryPollIntervalSeconds": 86400,
+  "InventoryPollIntervalSeconds": 28800,
 ...
 ```
 
