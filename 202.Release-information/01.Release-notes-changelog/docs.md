@@ -4,6 +4,61 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender thud-v2019.02
+
+### Statistics
+
+A total of 11 lines added, 2 removed (delta 9)
+
+| Developers with the most changesets |           |
+|-------------------------------------|-----------|
+| Kristian Amlie                      | 2 (50.0%) |
+| Moritz Fischer                      | 1 (25.0%) |
+| Stoyan Bogdanov                     | 1 (25.0%) |
+
+| Developers with the most changed lines |           |
+|----------------------------------------|-----------|
+| Stoyan Bogdanov                        | 8 (72.7%) |
+| Kristian Amlie                         | 2 (18.2%) |
+| Moritz Fischer                         | 1 (9.1%)  |
+
+| Developers with the most report credits (total 1) |            |
+|---------------------------------------------------|------------|
+| Denis Mosolov                                     | 1 (100.0%) |
+
+| Developers who gave the most report credits (total 1) |            |
+|-------------------------------------------------------|------------|
+| Kristian Amlie                                        | 1 (100.0%) |
+
+| Top changeset contributors by employer |           |
+|----------------------------------------|-----------|
+| Northern.tech                          | 2 (50.0%) |
+| Konsulko Group                         | 1 (25.0%) |
+| Ettus Research                         | 1 (25.0%) |
+
+| Top lines changed by employer |           |
+|-------------------------------|-----------|
+| Konsulko Group                | 8 (72.7%) |
+| Northern.tech                 | 2 (18.2%) |
+| Ettus Research                | 1 (9.1%)  |
+
+| Employers with the most hackers (total 3) |           |
+|-------------------------------------------|-----------|
+| Konsulko Group                            | 1 (33.3%) |
+| Northern.tech                             | 1 (33.3%) |
+| Ettus Research                            | 1 (33.3%) |
+
+### Changelogs
+
+_Released 02.08.2019_
+
+#### meta-mender (thud-v2019.02)
+
+New changes in meta-mender since thud-v2019.01:
+
+* mender-helpers.bbclass: Add NVMe support
+
+
 ## meta-mender thud-v2019.01
 
 _Released 01.04.2019_
