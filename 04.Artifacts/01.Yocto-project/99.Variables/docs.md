@@ -335,6 +335,14 @@ predefined overhead (see
 value is `1024`.
 
 
+#### MENDER_SWAP_PART_SIZE_MB
+
+The size of the optional swap partiton in the generated `.biosimg`, `.sdimg` or
+ `.uefiimg` file. By default no swap partition is created, setting this variable 
+to a value greater than zero will add one after the other partitions.
+
+
+
 #### MENDER_TENANT_TOKEN
 
 Set this variable in `local.conf` in order to make the device recognize the organization to which it belongs. This option should always be set, except when running a custom Mender server installation with multitenancy module disabled.
