@@ -41,7 +41,7 @@ The reason for having both root file system and Artifact scripts is related to t
 ## Transitions and ordering
 
 State scripts are run by the Mender Client after reaching a given state. Before entering the new state the Enter scripts are run. After all the actions belonging to the given state are executed, the Leave scripts are run. For most of the states, if some error occurs while executing either an Enter or a Leave script, or some action inside the state (like installing a new artifact which is broken and therefore installation is failing) the corresponding Error scripts are executed.
-The exceptions are Idle, Sync, ArtifactRollback, ArtifactRollbackReboot, ArtifactFailure and Leave script for ArtifactCommit. The reason for ignoring errors and not calling Error scripts is either that the state is already an error state, such as for example ArtifactRollback, or there is no meaningful action that can be taken in the event of an error, such as for Idle or ArtifactCommit.Leave (it is too late to roll back after a commit).
+The exceptions are Idle, Sync, ArtifactRollback, ArtifactRollbackReboot and ArtifactFailure. The reason for ignoring errors and not calling Error scripts is that the state is already an error state, such as for example ArtifactRollback.
 
 There can be more than one script for a given state. Each script contains an ordering number as a part of the naming convention, which determines when it is run:
 
