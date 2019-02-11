@@ -23,6 +23,7 @@ ada
 adafruit
 adafruits
 Adaltas
+Adamski
 Adapter's
 addons
 addr
@@ -33,6 +34,7 @@ admin
 adon
 ae
 aeb
+aeecdf
 aefa
 aes
 af
@@ -43,6 +45,7 @@ afdccd
 afero
 aff
 Affero
+Afw
 afZUtD
 Aggarwal
 ahmad
@@ -54,14 +57,18 @@ AjG
 ajv
 Alessandro
 alex
+Alf
 Alman
 altbootcmd
+Amarula
 amazonaws
 amd
 amdefine
 AMIIBCgKCAQEA
+AMIIBCgKCAQEAzogVU
 AMIIBigKCAYEAvOsee
 amlie
+Anavi
 Anderton
 Andreas
 Andres
@@ -78,6 +85,7 @@ apic
 APIs
 apis
 app
+appelsiini
 apps
 Apr
 archy
@@ -179,6 +187,7 @@ Beaty
 bef
 behaviour
 Benoit
+Bensoussan
 bevry
 bf
 bindir
@@ -200,6 +209,7 @@ bneHoZaO
 bneHoZaOa
 BnNrHkDz
 Bogdan
+Bogdanov
 bom
 bool
 Boot's
@@ -207,6 +217,7 @@ bootargs
 bootcmd
 bootcount
 bootdir
+bootefi
 BOOTENV
 bootfile
 bootlimit
@@ -262,6 +273,7 @@ cbd
 cc
 cca
 ccdc
+cce
 CCmYA
 cd
 cdaab
@@ -280,8 +292,12 @@ CGO
 cgroup
 ch
 Chadkin
+Chalczynski
 chalkerx
 changelog
+Changelogs
+changeset
+changesets
 charenc
 checkmarks
 cheggaaa
@@ -299,6 +315,7 @@ CktbCb
 Claimsâ
 classnames
 cleansstate
+Clelland
 cli
 ClientProtocol
 clientserver
@@ -316,6 +333,7 @@ co
 codemonkey
 codepage
 codeplex
+Codethink
 cohara
 colibri
 Colingo
@@ -341,6 +359,7 @@ cookiejar
 CORS
 CortexA
 cortexa
+cosinekitty
 cosmosio
 Cousens
 Couto
@@ -351,6 +370,7 @@ cp
 CPrKTEnfBUts
 cpuid
 cpuset
+cq
 Cr
 CreateTenant
 creativecommons
@@ -381,6 +401,7 @@ davec
 davecgh
 Davydov
 db
+dbcce
 dbd
 dbg
 DBs
@@ -390,6 +411,8 @@ dd
 ddb
 ddbad
 ddc
+DdH
+ddp
 de
 dea
 debeaa
@@ -443,6 +466,7 @@ dir
 DISCOVERABLE
 Disklabel
 disposables
+distanz
 distro
 dl
 dm
@@ -458,6 +482,7 @@ Dojo
 dojofoundation
 dom
 Domenic
+Dominik
 Donavon
 dos
 dotfile
@@ -483,6 +508,7 @@ Dutour
 DVn
 Dvornov
 dynomite
+Dyyy
 Dz
 ea
 eacd
@@ -498,6 +524,7 @@ ECDSA
 ecparam
 edcf
 edd
+editenv
 edu
 ee
 eeb
@@ -543,6 +570,7 @@ estraverse
 etag
 eth
 ETHER
+Ettus
 eval
 Evan
 Evgeny
@@ -555,9 +583,11 @@ expr
 ext
 Ext'd
 extendable
+EXTERNALSRC
 extglob
 extsprintf
 EXXOIENNCjucitVs
+Eystein
 EYv
 fa
 faa
@@ -645,6 +675,7 @@ Gabbadon
 gaearon
 gajus
 GaPdYbhQb
+GBF
 gcc
 Geisend
 Generis
@@ -655,6 +686,7 @@ Geoffroy
 getnative
 getpass
 getsize
+ggvYMc
 GiB
 Gil
 gitAUTOINC
@@ -662,6 +694,7 @@ github
 GitHub
 GitHub's
 githubusercontent
+Gitlin
 giuseppegurgone
 globalsign
 globby
@@ -674,7 +707,9 @@ gnueabi
 gnueabihf
 gnupg
 GNWsjd
+gO
 GOARCH
+goboomtown
 Gocheck
 GoDoc
 godoc
@@ -703,6 +738,7 @@ Gu
 gui
 GUID
 Guillermo
+GuixJOYfqta
 gulplog
 gunzip
 Gusakov
@@ -811,6 +847,8 @@ ivRTkpA
 Iw
 JakubPawlowicz
 Jared
+Jaskiewicz
+Javascript
 Javier
 jBXikb
 JD
@@ -820,6 +858,7 @@ Jeremie
 jethro
 JEZBpqzs
 JFFS
+jgitlin
 JK
 Jone's
 jongleberry
@@ -848,10 +887,12 @@ jwalterweatherman
 jwt
 JxSJ
 JyZL
+jzRXCnnu
 kaFd
 KCIutp
 Kconfig
 Ke
+KEKjF
 Kellen
 KERNELIMAGE
 keycode
@@ -868,8 +909,11 @@ Kishore
 KIt
 kj
 kkoopa
+Klauser
+kmV
 Koen
 Kogai
+Konsulko
 kooi
 Koppers
 Koss
@@ -877,16 +921,19 @@ kossnocorp
 Kowal
 kpartx
 kr
+Krak
 Krhonos
 kriskowal
 kristian
 Kristopher
 krogoth
+Krzysztof
 Kucherenko
 Kuizinas
 kv
 kvm
 kvsoftware
+Lafon
 LaFreniere
 LAYERSERIES
 LBA
@@ -965,13 +1012,16 @@ Lydell
 LZO
 mac
 mach
+Maciej
 MacOS
+mAFSZGotZVr
 magiconair
 mailto
 malloc
 mapper
 mapstructure
 mapvalues
+Marcin
 Mariusz
 Martensson
 mathiasbynens
@@ -989,6 +1039,7 @@ mbr
 MByte
 Mclaughlin
 md
+mDxuVSD
 Meck
 Medeusheyev
 medikoo
@@ -1007,6 +1058,7 @@ metadata
 Metcalf
 Mezard
 mf
+mF
 mfg
 Mg
 mgo
@@ -1017,6 +1069,7 @@ microservices
 MiddlewareFunc
 mihai
 MIIBojANBgkqhkiG
+Mika
 mikamaunula
 min
 minicom
@@ -1024,6 +1077,7 @@ minimalistic
 minimatch
 minimist
 minio
+Mirza
 misconfiguration
 misrendering
 mit
@@ -1049,12 +1103,16 @@ mongod
 MongoDB
 mongoDB
 mongodb
+Moritz
 morty
+Mosolov
 Mott
 Mountpoint
 mousetrap
 mozilla
 MPL
+mQanY
+Mrowiec
 ms
 MSDOS
 msg
@@ -1071,8 +1129,10 @@ multipipe
 multitenancy
 murmurhash
 murphydanger
+muSHbSBoAW
 mv
 mW
+mWnbD
 mx
 myboard
 mydevice
@@ -1115,6 +1175,7 @@ niJy
 Nik
 Nikita
 NiVYf
+niyYyh
 nJK
 nkH
 nl
@@ -1128,6 +1189,7 @@ noartifact
 NoCredentialProviders
 nodejs
 noK
+nokP
 NONINFRINGEMENT
 noout
 Nopanen
@@ -1148,11 +1210,15 @@ NTP
 nuARkFAv
 num
 nums
+nUwIDAQAB
+nVJvcepl
+NVMe
 nvyHvl
 NW
 nWkPTbG
 nWsLOn
 nxp
+nyC
 nZNR
 oauth
 oBaB
@@ -1167,6 +1233,7 @@ OgAYwheHkY
 Ogier
 oK
 Okonetchnikov
+Ole
 Olivier
 oMY
 onboarding
@@ -1193,6 +1260,7 @@ optimise
 orangepi
 orchestrator
 org
+Orhagen
 os
 osdn
 OSes
@@ -1210,8 +1278,10 @@ params
 Parra
 parserc
 partialright
+PARTUUID
 partyâ
 pascalcase
+Pasinski
 PASSKEY
 passphrase
 passwd
@@ -1253,6 +1323,7 @@ pn
 png
 Poberezkin
 pode
+Podogrocki
 poky
 polyfill
 Popp
@@ -1274,6 +1345,7 @@ prebuilt
 prefixer
 Pregenerate
 preinstalls
+prem
 prev
 printenv
 Println
@@ -1287,6 +1359,7 @@ pseudomap
 psk
 pt
 Pty
+pubkey
 publicdomain
 publicsuffix
 pubout
@@ -1301,6 +1374,7 @@ py
 pyro
 qemu
 qemux
+QHIpQNkD
 QIDAQAB
 qix
 QmD
@@ -1367,12 +1441,15 @@ RetryPollIntervalSeconds
 rf
 rfc
 rfer
+rFl
+RGDilbsoUt
 richardsonandsons
 rimraf
 ripemd
 rjvwiH
 rm
 rmdir
+RnDity
 rne
 ro
 rockchip
@@ -1384,9 +1461,12 @@ rootfs
 rootfsa
 rootfsb
 RootfsPartA
+rootfsPartA
 RootfsPartB
+rootfsPartB
 rootfstype
 rootlibexecdir
+RoqoAd
 rpi
 RPi
 RPROVIDER
@@ -1396,6 +1476,7 @@ RS
 rsa
 RTC
 rtensson
+rti
 RTPiTEs
 ru
 runewidth
@@ -1450,6 +1531,7 @@ setenv
 setexpr
 setimmediate
 setprototypeof
+sgzxnXWBYXYmObYvdP
 sh
 sha
 Shaezeipoo
@@ -1466,6 +1548,7 @@ shtylman
 sidebar
 sig
 sigmund
+signoffs
 signup
 SIGUSR
 Simonov
@@ -1473,6 +1556,7 @@ SimpleError
 simpleerror
 SimpleHTTPServer
 Sindre
+Siqveland
 sirupsen
 sitnik
 skipverify
@@ -1525,11 +1609,13 @@ stdin
 StdinOnce
 stdout
 Stefan
+Stenberg
 stevenlevithan
 Stinnett
 Stofer
 Stol
 STORIS
+Stoyan
 STR
 streamify
 stretchr
@@ -1554,6 +1640,8 @@ sumo
 superagent
 supers
 svg
+sWEpO
+Synapticon
 synched
 sys
 sysconfdir
@@ -1582,6 +1670,7 @@ TenantDataStore
 TenantToken
 Terin
 terinjokes
+Texier
 tFor
 theming
 thenify
@@ -1595,6 +1684,7 @@ timedatectl
 tisdk
 tj
 tjw
+tklauser
 TLDRLegal
 tldrlegal
 tlds
@@ -1624,6 +1714,7 @@ ts
 ttssh
 ttyAMA
 tUp
+tuupola
 TVuKgqy
 tweetnacl
 txt
@@ -1715,7 +1806,10 @@ vagg
 validator
 var
 variscite
+VARS
+VbUYG
 vdso
+VE
 verli
 verror
 Verschueren
@@ -1732,6 +1826,7 @@ Vitaly
 vkrvpuMQSvvZjl
 vkrvpuMQSvvZjlkH
 vm
+VmXdBZmXmQdZqbdD
 vorba
 Vorbach
 vphEzN
@@ -1766,6 +1861,7 @@ wikipedia
 wilson
 WIPO
 wJ
+WKxp
 wlan
 wordwrap
 Workâ
@@ -1783,6 +1879,7 @@ wwEqxJ
 wwNYCAIYRclzvI
 www
 xargs
+XcgLOsmvNNjY
 XD
 xdg
 XG
@@ -1802,6 +1899,7 @@ xxxx
 xyu
 xz
 xzf
+xzGQ
 Yadav
 YAFFS
 yahoo
@@ -1825,23 +1923,28 @@ yocto
 yoctoproject
 Youâ
 Yourâ
+ytbIUPRXFN
 ythV
 Yu
 YUI's
 yukinying
 YuzuJS
+YWOhNiE
 YXE
 yyyy
 Zakarie
 Zeit
 zertosh
+zH
 Zhiye
 Zilverline
 zImage
 Zixiao
 ZkbqQXK
 zlib
+Zp
 zpao
+ZpkqCwmwCXaf
 Zt
 zxcvbn
 zxvf

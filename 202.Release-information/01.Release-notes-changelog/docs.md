@@ -302,7 +302,7 @@ New changes in meta-mender since sumo-v2018.11.2:
   `DEBUG_LOG_CATEGORY` variable. The latter pauses the boot process at
   strategic points during the boot, so that screen output can be
   captured before it is cleared or scrolls by.
-* Fix build error when using any harddrive besides sda/hda, such as sdb.
+* Fix build error when using any hard drive besides sda/hda, such as sdb.
 * Images partitioned with GPT or MSDOS partition tables are
   now padded up to the nearest alignment specified in
   `MENDER_PARTITION_ALIGNMENT`. Previously the last block might be
@@ -390,7 +390,7 @@ New changes in meta-mender since sumo-v2018.11.2:
 * Fix incorrect license tag for mender-artifact recipe.
   Little practical difference, since they are all permissive licenses.
 * Fix missing wpa_supplicant in Raspberry Pi demo images.
-* GRUB: Pass kernel arguments from bootargs variable instead of hardcoded.
+* GRUB: Pass kernel arguments from bootargs variable instead of hard coded.
   This allows it to be overridden or modified by adding a script snippet
   which sets the variable.
   Also log kernel messages to both screen and serial port by default,
