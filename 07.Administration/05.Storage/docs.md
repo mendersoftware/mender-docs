@@ -15,7 +15,7 @@ It is possible to define a volume that mounts a local directory into the service
 container:
 
 ```yaml
-    mender-deployments:
+    minio:
         volumes:
             - /my/storage/location:/export
 ```
