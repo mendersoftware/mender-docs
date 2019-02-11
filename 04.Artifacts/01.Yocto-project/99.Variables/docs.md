@@ -14,6 +14,11 @@ The variables are either specific to- and defined by Mender, as shown by the `ME
 Defines which file system type Mender will build for the rootfs partitions in the `.biosimg`, `.sdimg`, `.uefiimg` and the `.mender` file.  See [File system types](../../../devices/yocto-project/partition-configuration#file-system-types) for more information.
 
 
+#### ARTIFACTIMG_NAME
+
+Overrides the default internal image name that mender will use to build the `.mender` file with.
+
+
 #### IMAGE_ROOTFS_SIZE
 
 The size of the generated rootfs, expressed in kiB. This will be the size that is shipped in a `.mender` update. This variable is a standard Yocto Project variable and is influenced by several other factors. See [the Yocto Project documentation](http://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html?target=_blank#var-IMAGE_ROOTFS_SIZE) for more information.
