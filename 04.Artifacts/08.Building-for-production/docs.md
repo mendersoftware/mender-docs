@@ -78,8 +78,6 @@ The private key used for signing the Mender Artifact should be protected and kep
 thus there are no extra steps needed to add it to any part of the build system, Mender Client nor Server.
 
 Only the public key, which is used by the Mender Client to verify the signed Artifact must be included in the Mender Client build.
-The public verification key should be stored on *persistent storage* on the device where the Mender client runs,
-as the key should not change across deployments (except when doing key rotation). By default it is stored on the data partition.
 
 The best way to include a public verification key in the client is to add it to your own layer. Set the name of the verification key to `artifact-verify-key.pem` and append it to `SRC_URI` of the `mender` application before building the Yocto client image. For example:
 
