@@ -108,7 +108,9 @@ ArtifactInstall
 ArtifactReboot
 ArtifactRollback
 ArtifactRollbackReboot
+ArtifactRollbackVerifyReboot
 ArtifactVerifyKey
+ArtifactVerifyReboot
 arunoda
 asap
 asaskevich
@@ -560,6 +562,7 @@ errno
 ERRO
 errormessage
 es
+esac
 Escalante
 escope
 Eskildsen
@@ -1031,6 +1034,7 @@ Matsuo
 Matteo
 matthewh
 mattn
+maxdepth
 maximatch
 MAXSIZE
 Mazieres
@@ -1064,6 +1068,7 @@ Mg
 mgo
 MiB
 michael
+microcontrollers
 micromatch
 microservices
 MiddlewareFunc
@@ -1136,6 +1141,7 @@ mWnbD
 mx
 myboard
 mydevice
+mydevicetype
 myhostname
 mylayer
 mymenderserver
@@ -1469,6 +1475,7 @@ rootlibexecdir
 RoqoAd
 rpi
 RPi
+rpm
 RPROVIDER
 RPROVIDES
 RqsWqK
@@ -1508,6 +1515,7 @@ Schlueter
 Schoffstall
 scm
 scopestack
+scp
 scr
 sd
 sda
@@ -1639,6 +1647,7 @@ Sui
 sumo
 superagent
 supers
+SupportsRollback
 svg
 sWEpO
 Synapticon
@@ -1882,6 +1891,7 @@ xargs
 XcgLOsmvNNjY
 XD
 xdg
+xf
 XG
 xiaoba
 xJf
