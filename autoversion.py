@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# Copyright 2018 Northern.tech AS
+# Copyright 2019 Northern.tech AS
 #
 #    Licensed under the Apache License, Version 2.0 (the "License");
 #    you may not use this file except in compliance with the License.
@@ -53,7 +53,7 @@ def get_version_of(repo):
         return None
 
 def walk_tree():
-    for dirpath, dirnames, filenames in os.walk("."):
+    for dirpath, _, filenames in os.walk("."):
         for file in filenames:
             if not file.endswith(".md") and not file.endswith(".markdown"):
                 continue
