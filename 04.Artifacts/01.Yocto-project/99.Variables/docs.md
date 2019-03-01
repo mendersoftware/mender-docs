@@ -337,6 +337,8 @@ value is `1024`.
 
 #### MENDER_SWAP_PART_SIZE_MB
 
+!!! This variable was introduced in the Yocto Project 2.7 (warrior) release.
+
 The size of the optional swap partiton in the generated `.biosimg`, `.sdimg` or
  `.uefiimg` file. By default no swap partition is created, setting this variable 
 to a value greater than zero will add one after the other partitions.
