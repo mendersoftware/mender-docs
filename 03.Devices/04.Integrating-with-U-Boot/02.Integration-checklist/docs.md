@@ -28,9 +28,10 @@ This checklist will verify some key functionality aspects of the Mender integrat
 1. As part of the test, we will need two different Linux kernels, in order to verify that both are booted correctly when they should. Therefore, before building the images you will test with, run the commands:
 
    ```bash
-   bitbake -c clean linux-yocto
-   bitbake -c cleansstate linux-yocto
+   bitbake -c cleansstate linux-yocto core-image-full-cmdline
    ```
+
+   ! Note that `core-image-full-cmdline` should be switched to whatever image recipe you are testing with.
 
    ! Note that `linux-yocto` may need to be switched with the particular kernel being used with your device.
 
