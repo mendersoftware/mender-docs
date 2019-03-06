@@ -28,9 +28,10 @@ This checklist will verify some key functionality aspects of the Mender integrat
 1. As part of the test, we will need two different Linux kernels, in order to verify that both are booted correctly when they should. Therefore, before building the images you will test with, run the commands:
 
    ```bash
-   bitbake -c clean linux-yocto
-   bitbake -c cleansstate linux-yocto
+   bitbake -c cleansstate linux-yocto core-image-full-cmdline
    ```
+
+   ! Note that `core-image-full-cmdline` should be switched to whatever image recipe you are testing with.
 
    ! Note that `linux-yocto` may need to be switched with the particular kernel being used with your device.
 
@@ -41,14 +42,14 @@ This checklist will verify some key functionality aspects of the Mender integrat
 3. Run the following commands:
 
    ```bash
-   sudo losetup /dev/loop0 base-image.sdimg
-   sudo kpartx -a /dev/loop0
+   sudo kpartx -av base-image.sdimg
    sudo dd if=tmp/deploy/images/<machine>/<image>.ext4 of=/dev/mapper/loop0p3
    sync
-   sudo kpartx -d /dev/loop0
-   sudo losetup -d /dev/loop0
+   sudo kpartx -d base-image.sdimg
    ```
 
+   ! The first number in `loop0p3` may change depending on devices in your system. Please adjust based on the output of the `kpartx` command.
+   
    ! The last number in `loop0p3` should correspond to the partition number of the second rootfs partition, and may need to be adjusted if `MENDER_ROOTFS_PART_B` has been changed.
 
    ! The `kpartx` tool may require installation before it can be used.
