@@ -14,6 +14,13 @@ enables signed-updates-only mode when it is set. If set the client will reject
 incorrectly signed updates, or updates without a signature. See also the section
 about [signing and verification](../../../artifacts/signing-and-verification).
 
+#### InventoryPollIntervalSeconds
+
+An integer that sets the number of seconds to wait between each inventory
+update. Note that the client may occasionally post its inventory more often if
+there has been recent activity on the device. See also the section about
+[polling intervals](../polling-intervals).
+
 #### RetryPollIntervalSeconds
 
 An integer that sets the number of seconds to wait between each attempt to
