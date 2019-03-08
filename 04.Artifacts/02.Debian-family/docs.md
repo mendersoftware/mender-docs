@@ -95,7 +95,7 @@ Then adjust to the correct paths below and run the conversion:
             --mender-client <PATH-TO-MENDER-CLIENT-BINARY>  \
             --artifact-name golden-image-1                  \
             --bootloader-toolchain arm-linux-gnueabihf      \
-            --demo-host-ip <IP-OF-DEMO-SERVER> --keep
+            --demo-host-ip <IP-OF-DEMO-SERVER> --demo
 ```
 
 !!! The conversion may take 10 minutes, depending on the resources available on your machine.
