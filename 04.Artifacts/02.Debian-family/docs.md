@@ -53,28 +53,12 @@ See [cross-compiling Mender client](../../client-configuration/cross-compiling) 
 If you are using Ubuntu 18.04, install the dependencies by running the following command:
 
 ```bash
-sudo apt install kpartx bison flex mtools parted mtd-utils e2fsprogs u-boot-tools pigz device-tree-compiler autoconf autotools-dev libtool pkg-config python
+sudo apt install kpartx bison flex mtools parted mtd-utils e2fsprogs u-boot-tools pigz device-tree-compiler autoconf autotools-dev libtool pkg-config python gcc-arm-linux-gnueabihf
 ```
 
 Disable sanity checks made by Mtools commands. These checks reject copy/paste operations on converted disk images.
 ```bash
 echo "mtools_skip_check=1" >> ${HOME}/.mtoolsrc
-```
-<!--AUTOVERSION: "version %"/ignore-->
-If you want to convert RaspberryPi3 raw disk image, you need to install GCC ARM toolchain in version 6.3.1 to meet U-Boot build requirements. You can download it from here:
-<!--AUTOVERSION: "linaro-%"/ignore-->
-```bash
-wget -nc -q http://releases.linaro.org/components/toolchain/binaries/6.3-2017.05/arm-linux-gnueabihf/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf.tar.xz
-```
-Next, unpack it:
-<!--AUTOVERSION: "linaro-%"/ignore-->
-```bash
-tar -xJf gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf.tar.xz
-```
-Finally, add toolchain to `PATH`:
-<!--AUTOVERSION: "linaro-%"/ignore-->
-```bash
-PATH=$PATH:$(pwd)/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf/bin
 ```
 
 #### Install mender-artifact
@@ -111,7 +95,7 @@ Then adjust to the correct paths below and run the conversion:
             --mender-client <PATH-TO-MENDER-CLIENT-BINARY>  \
             --artifact-name golden-image-1                  \
             --bootloader-toolchain arm-linux-gnueabihf      \
-            --demo-host-ip <IP-OF-DEMO-SERVER> --keep
+            --demo-host-ip <IP-OF-DEMO-SERVER> --demo
 ```
 
 !!! The conversion may take 10 minutes, depending on the resources available on your machine.
