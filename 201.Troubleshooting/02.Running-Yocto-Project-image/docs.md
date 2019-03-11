@@ -58,3 +58,25 @@ help here:
   #define CONFIG_AUTOBOOT_DELAY_STR "\r"
   #define CONFIG_AUTOBOOT_DELAY_STR2 "\n"
   ```
+
+<!--AUTOVERSION: "older meta-mender branch to the % branch"/ignore-->
+## I moved from an older meta-mender branch to the thud branch and suddenly my image is just a few MiB too small
+
+This is a typical symptom:
+
+```
+error: update (952107008 bytes) is larger than the size of device /dev/mmcblk0p3 (947912704 bytes)
+```
+
+<!--AUTOVERSION: "optimization to the % branch"/ignore-->
+This is because of an optimization to the thud branch which uses more of the
+available space in the `sdimg` and `uefiimg` images. However, it also means that
+if the device was provisioned with an older image, the new update will be just
+slightly too big for the old partition to hold it.
+
+To revert to the old size calculation, add this to your build configuration
+(`machine.conf` or `local.conf` are good places):
+
+```
+MENDER_PARTITIONING_OVERHEAD_KB = "${@eval('(int((${MENDER_PARTITION_ALIGNMENT} - 1) / 1024) + 1) * 4')}"
+```
