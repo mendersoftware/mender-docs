@@ -342,6 +342,7 @@ value is `1024`.
 
 #### MENDER_SWAP_PART_SIZE_MB
 
+<!--AUTOVERSION: "introduced in the Yocto Project 2.7 (%)"/ignore-->
 !!! This variable was introduced in the Yocto Project 2.7 (warrior) release.
 
 The size of the optional swap partiton in the generated `.biosimg`, `.sdimg` or
