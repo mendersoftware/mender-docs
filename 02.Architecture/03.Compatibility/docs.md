@@ -16,6 +16,40 @@ For example, when a new [Artifact format](../mender-artifacts#the-mender-artifac
 
 As another example, the Mender client supports one version of the server API, while the server can support several API versions. Therefore, the server should always be upgraded before the client.
 
+### Specific versioning criteria
+
+Since Semantic Versioning was primarily written for libraries, it is not
+necessarily clear what constitutes an API in the context of Mender. Below are
+the lists of specific criteria we use for our versioning policy.
+
+#### Changes counting towards new major version
+
+* Removing or changing existing command line options
+
+* Removing or changing existing REST API
+
+* Edge case: Changing default behavior, with the old behavior still
+  available. An example is changing the default artifact format version in
+  `mender-artifact`. We have opted for upgrading the major version in this case,
+  but this could also go into a minor release
+
+#### Changes counting towards new minor version
+
+* Adding command line options
+
+* Adding new REST API, or adding fields to responses of existing REST API
+
+* Doing a database migration that is incompatible with the old schema (downgrade
+  usually not possible without restoring a backup)
+
+#### Changes counting towards new patch version
+
+* Any change to our Golang API. For example, the `mender-artifact` library has
+  an API, which is used by some other components, but this API is not considered
+  public
+
+* It should always be possible to freely upgrade and downgrade between patch
+  versions in the same minor series
 
 ## Mender client and Yocto Project version
 
