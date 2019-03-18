@@ -47,7 +47,7 @@ For easy setup, use [Hosted Mender](https://hosted.mender.io?target=_blank) or t
 
 You will need a device with a Mender client installed. For development purposes you also need shell access to the device (e.g. via SSH).
 
-Follow the device documentation on [Yocto Project](../../devices/yocto-project) or [Debian family](../../devices/debian-family).
+To install the Mender client on your device, follow the instructions in the [Installing](../../client-configuration/installing) documentation.
 
 ### Workstation with mender-artifact
 
