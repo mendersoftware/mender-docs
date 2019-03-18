@@ -67,14 +67,20 @@ standard certificate trust chains.
 
 #### StateScriptRetryIntervalSeconds
 
+The timeout before a state script that previously returned the special retry
+return code (21), will be run again.
+
+<!--AUTOVERSION: "mender v%"/ignore-->
+*Note*: Before mender v2.0.0 release, this option used to be called `StateScriptRetryTimeoutSeconds`.
+
+#### StateScriptRetryTimeoutSeconds
+
 The interval for which the script is allowed to keep retrying. After this
 interval has expired, another retry attempt will be treated as a failure and if
 possible, the update will be rolled back.
 
-#### StateScriptRetryTimeoutSeconds
-
-The timeout before a state script that previously returned the special retry
-return code (21), will be run again.
+<!--AUTOVERSION: "mender v%"/ignore-->
+*Note*: Before mender v2.0.0 release, this option used to be called `StateScriptRetryIntervalSeconds`.
 
 #### StateScriptTimeoutSeconds
 
