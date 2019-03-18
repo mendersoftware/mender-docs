@@ -5,7 +5,13 @@ taxonomy:
 ---
 
 ##Device capacity
-The client binaries are about 7 MB in size, or about 4 MB when debug symbols are stripped (using the `strip` tool). This includes all dependencies for the client, such as the http, TLS, and JSON libraries.
+The client binaries are about 7 MB in size, or about 4 MB when debug symbols are
+stripped (using the `strip` tool). This includes most of the dependencies for
+the client, such as the http, TLS, and JSON libraries.
+
+The client depends on the LZMA library for Artifact compression, which is
+present in most Linux distributions, including those based on the Yocto Project
+and the Debian family.
 
 ##Bootloader support
 To support atomic rootfs rollback, Mender integrates with the bootloader of the device. Currently Mender supports [GRUB](https://www.gnu.org/software/grub/?target=_blank) and [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank). The bootloader installation, features and requirements vary depending on the target OS in use.  Please see the [Yocto bootloader support](../yocto-project/bootloader-support) or [Debian bootloader support](../debian-family/bootloader-support) for more information.
