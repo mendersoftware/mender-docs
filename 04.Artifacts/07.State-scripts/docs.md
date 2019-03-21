@@ -60,6 +60,11 @@ If a script returns `0` Mender proceeds, but if it returns `1` the update is abo
 In addition, return code `21` is used for the [retry-later](#retry-later) feature.
 All other return codes are reserved for future use by Mender and should not be used.
 
+## Script timeout
+
+Each script has a maximum execution default time of 1 hour, or of user-specified time `StateScriptTimeoutSeconds`. If
+a script exceeds this running time, its process group will be killed and Mender will treat the script as failed.
+
 ## Power loss hardening
 If the system loses power during an update, there are two cases that will need to be handled. The mender client will execute state scripts as follows:
 - The new partition is not yet committed, in which case the client guarantees that the `ArtifactFailure` scripts will be rerun on the original partition, before resuming normal execution.
@@ -83,7 +88,7 @@ anything above this volume will be truncated.
 
 ## Retry-later
 
-State scripts are allowed to return a specific error code, in order to rerun at a later time. Thus if a script returns the error code `21`, the client will sleep for a default time of one minute, or for a user-specified interval `StateScriptRetryTimeoutSeconds`, which can be [set in the mender config](../../client-configuration/configuration-file). Also note that scripts are not allowed to retry for infinitely long. Either a standard max window of thirty minutes is allocated to each script, or this can be configured manually by using the mender config variable `StateScriptRetryIntervalSeconds`.
+State scripts are allowed to return a specific error code, in order to rerun at a later time. Thus if a script returns the error code `21`, the client will sleep for a default time of one minute, or for a user-specified interval `StateScriptRetryIntervalSeconds`, which can be [set in the mender config](../../client-configuration/configuration-file). Also note that scripts are not allowed to retry for infinitely long. Either a standard max window of thirty minutes is allocated to each script, or this can be configured manually by using the mender config variable `StateScriptRetryTimeoutSeconds`.
 
 
 ## Example use cases
