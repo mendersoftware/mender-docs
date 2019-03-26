@@ -146,6 +146,7 @@ autoprefixer
 autorest
 autotools
 AUTOVERSION
+av
 AvianFlu
 AvrAgMBAAE
 awk
@@ -829,6 +830,7 @@ inode
 insertafter
 installables
 Insua
+int
 internet
 InventoryPollIntervalSeconds
 io
@@ -963,6 +965,7 @@ lib
 libc
 libdir
 libgcc
+liblzma
 libpseudo
 libs
 libtool
@@ -1013,6 +1016,7 @@ luiscouto
 lut
 ly
 Lydell
+lzma
 LZO
 mac
 mach

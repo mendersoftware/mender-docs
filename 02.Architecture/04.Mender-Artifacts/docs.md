@@ -64,7 +64,8 @@ interrupted, using [HTTP range requests](https://tools.ietf.org/html/rfc7233?tar
 To enable streaming and control based on metadata, like aborting the download
 if the Artifact is not compatible with the device, the Mender Artifact itself
 is not compressed. Instead, the root file systems within Artifacts are
-compressed, currently with the [gzip compression algorithm](https://en.wikipedia.org/wiki/gzip?target=_blank).
+compressed, currently with the [gzip compression algorithm](https://en.wikipedia.org/wiki/gzip?target=_blank)
+by default.
 
 
 ## Signing and verification
