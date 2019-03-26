@@ -204,4 +204,5 @@ It saves a tarball with all current files in `/var/www` (only the single files, 
 
 ## Further reading
 
-* [Update modules v3 protocol](https://github.com/kacf/mender/blob/update_modules/Documentation/update-modules-v3-file-api.md)
+<!--AUTOVERSION: "blob/%/Documentation"/mender -->
+* [Update modules v3 protocol](https://github.com/mendersoftware/mender/blob/2.0.0b1/Documentation/update-modules-v3-file-api.md)
