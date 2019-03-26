@@ -23,7 +23,11 @@ Inside *meta-mender* there are several layers. The most important one is *meta-m
 
 Each one of these steps can be configured further, see the linked sections for more details.
 
-The other layers in *meta-mender* provide support for specific boards.
+The other layers in *meta-mender* provide support for specific boards used in Mender testing.
+
+## What is *meta-mender-community*?
+
+[meta-mender-community](https://github.com/mendersoftware/meta-mender-community?target=_blank) is a set of layers containing board-specific settings for Mender integration.
 
 !!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Start guide](http://www.yoctoproject.org/docs/2.4/yocto-project-qs/yocto-project-qs.html?target=_blank).
 
@@ -50,88 +54,27 @@ and **the Mender client can likely not connect to the Mender server**.
 See [certificate troubleshooting](../../../troubleshooting/mender-client#certificate-expired-or-not-yet-valid) for more information.
 
 
-### Yocto Project
+## Yocto Project
 
-<!--AUTOVERSION: "**%** branch of the Yocto Project"/poky "**%** branch of `meta-mender`"/meta-mender "other branches like [%](https://github.com/mendersoftware/meta-mender/tree/%"/ignore-->
-! We use the **thud** branch of the Yocto Project and **master** branch of `meta-mender` below. *Building meta-mender on other releases of the Yocto Project will likely not work seamlessly.* `meta-mender` also has other branches like [daisy](https://github.com/mendersoftware/meta-mender/tree/daisy?target=_blank) that correspond to Yocto Project releases, but these branches are no longer maintained by Mender developers. We offer professional services to to implement and support other branches over time, please take a look at the [Mender professional services offering](https://mender.io/product/professional-services?target=_blank).
-
-A Yocto Project poky environment is required. If you already have
-this in your build environment, please open a terminal, go to the `poky`
-directory and skip to [Adding the meta layers](#adding-the-meta-layers).
-
-
-On the other hand, if you want to start from a *clean Yocto Project environment*,
-you need to clone the latest poky and go into the directory:
-
-<!--AUTOVERSION: "-b % git://git.yoctoproject.org/poky"/poky-->
-```bash
-git clone -b thud git://git.yoctoproject.org/poky
-```
-
-```bash
-cd poky
-```
+Full details for building the Yocto project for your board are available at the Mender Hub. The tested reference platforms for Mender are available at the following:
+* [Raspberry Pi 3 Model B/B+](https://hub.mender.io/t/raspberry-pi-3-model-b-b/57)
+* [BeagleBone Black](https://hub.mender.io/t/beaglebone-black/83)
+* [QEMU](https://hub.mender.io/t/qemu-the-fast-processor-emulator/420)
 
 !!! Note that the Yocto Project also depends on some [development tools to be in place](http://www.yoctoproject.org/docs/2.4/yocto-project-qs/yocto-project-qs.html?target=_blank#packages).
 
-
-
-## Adding the meta layers
-
-We will now add the required meta layers to our build environment.
-Please make sure you are standing in the directory where `poky` resides,
-i.e. the top level of the Yocto Project build tree, and run these commands:
-
-<!--AUTOVERSION: "-b % git://github.com/mendersoftware/meta-mender"/meta-mender-->
-```bash
-git clone -b master git://github.com/mendersoftware/meta-mender
-```
-
-Next, we initialize the build environment:
-
-```bash
-source oe-init-build-env
-```
-
-This creates a build directory with the default name, `build`, and makes it the
-current working directory.
-
-We then need to add the Mender layers into our project:
-
-```bash
-bitbake-layers add-layer ../meta-mender/meta-mender-core
-```
-
-! The `meta-mender-demo` layer (below) is not appropriate if you are building for production devices. Please go to the section about [building for production](../building-for-production) to see the difference between demo builds and production builds.
-
-```bash
-bitbake-layers add-layer ../meta-mender/meta-mender-demo
-```
-
-!!! Mender board integration is mostly automated. Consequently, a board-specific Mender integration layer as described below is typically only necessary for improving performance or resolving any board-specific issues. If you are unsure if you need one, try to build without adding any board integration layer.
-
-If needed, add any Mender integration layer specific to your board.
-For the three Mender reference boards use these layers (only add one of these):
-
-* Raspberry Pi 3 (other revisions might also work): `bitbake-layers add-layer ../meta-mender/meta-mender-raspberrypi` (depends on `meta-raspberrypi`)
-* BeagleBone Black: No board specific layer needed
-* Virtual boards: `bitbake-layers add-layer ../meta-mender/meta-mender-qemu`
-
-!!! For board specific setup instructions please check out [Mender Hub](https://hub.mender.io?target=_blank) which contains our reference boards plus a large pool of community supported integrations
+! The `meta-mender-demo` layer, which is included in the integrations available at [Mender Hub](https://hub.mender.io?target=_blank), is not appropriate if you are building for production devices. Please go to the section about [building for production](../building-for-production) to see the difference between demo builds and production builds.
 
 If you encounter any issues, please see [Board integration](../../../devices)
 for general requirements and adjustments you might need to enable your board to
 support Mender.
 
-At this point, all the layers required for Mender should be
-part of your Yocto Project build environment.
+### Configuring the build
+
+!!! The configuration from [Mender Hub](https://hub.mender.io?target=_blank) will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../../architecture/overview#modes-of-operation). See the [section on customizations](../image-configuration#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
 
 
-## Configuring the build
-
-!!! The configuration in `conf/local.conf` below will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../../architecture/overview#modes-of-operation). See the [section on customizations](../../yocto-project/image-configuration#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
-
-Add these lines to the start of your `conf/local.conf`:
+The following settings will be present in the default `conf/local.conf` after running the steps from [Mender Hub[(https://hub.mender.io?target=_blank). These are likely to need customization for your setup.
 
 <!--AUTOVERSION: "Mender %"/mender "releases % and older"/ignore-->
 ```bash
@@ -139,12 +82,6 @@ Add these lines to the start of your `conf/local.conf`:
 # This is what the device will report that it is running, and different updates must have different names
 # because Mender will skip installation of an Artifact if it is already installed.
 MENDER_ARTIFACT_NAME = "release-1"
-
-INHERIT += "mender-full"
-
-# A MACHINE integrated with Mender.
-# raspberrypi3, beaglebone-yocto, vexpress-qemu and qemux86-64 are reference boards
-MACHINE = "<YOUR-MACHINE>"
 
 # The version of Mender to build. This needs to match an existing recipe in the meta-mender repository.
 #
@@ -161,14 +98,6 @@ MACHINE = "<YOUR-MACHINE>"
 # PREFERRED_VERSION_pn-mender = "1.1.%"
 # PREFERRED_VERSION_pn-mender-artifact = "2.0.%"
 # PREFERRED_VERSION_pn-mender-artifact-native = "2.0.%"
-
-# The following settings to enable systemd are needed for all Yocto
-# releases sumo and older.  Newer releases have these settings conditionally
-# based on the MENDER_FEATURES settings and the inherit of mender-full above.
-DISTRO_FEATURES_append = " systemd"
-VIRTUAL-RUNTIME_init_manager = "systemd"
-DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
-VIRTUAL-RUNTIME_initscripts = ""
 
 ARTIFACTIMG_FSTYPE = "ext4"
 
@@ -214,42 +143,3 @@ ARTIFACTIMG_FSTYPE = "ext4"
 !!! If you are building for **Hosted Mender**, make sure to set `MENDER_SERVER_URL` and `MENDER_TENANT_TOKEN` (see the comments above).
 
 !!! If you would like to use a read-only root file system, please see the section on [configuring the image for read-only rootfs](../../yocto-project/image-configuration#configuring-the-image-for-read-only-rootfs).
-
-
-
-## Building the image
-
-Once all the configuration steps are done, build an image with bitbake:
-
-```bash
-bitbake <YOUR-TARGET>
-```
-
-Replace `<YOUR-TARGET>` with the desired target or image name, e.g. `core-image-full-cmdline`.
-
-!!! The first time you build a Yocto Project image, the build process can take several hours. The successive builds will only take a few minutes, so please be patient this first time.
-
-
-## Using the build output
-
-After a successful build, the images and build artifacts are placed in `tmp/deploy/images/<YOUR-MACHINE>/`.
-
-There is one Mender disk image, which will have one of the following suffixes:
-
-  * `.uefiimg` if the system boots using the UEFI standard (x86 with UEFI or ARM with U-Boot and UEFI emulation) and GRUB bootloader
-  * `.sdimg` if the system is an ARM system and boots using U-Boot (without UEFI emulation)
-  * `.biosimg` if the system is an x86 system and boots using the traditional BIOS and GRUB bootloader
-
-!!! Please consult the [bootloader support section](../../../devices/yocto-project/bootloader-support) for information on which boot method is typically used in each build configuration.
-
-This disk image is used to provision the device storage for devices without
-Mender running already. Please proceed to [Provisioning a new device](../../provisioning-a-new-device)
-for steps to do this.
-
-On the other hand, if you already have Mender running on your device and want to deploy a rootfs update
-using this build, you should use the [Mender Artifact](../../../architecture/mender-artifacts) files,
-which have `.mender` suffix. You can either deploy this Artifact in managed mode with
-the Mender server as described in [Deploy to physical devices](../../../getting-started/deploy-to-physical-devices)
-or by using the Mender client only in [Standalone deployments](../../../architecture/standalone-deployments).
-
-!!! If you built for one of the virtual Mender reference boards (`qemux86-64` or `vexpress-qemu`), you can start up your newly built image with the script in `../meta-mender/meta-mender-qemu/scripts/mender-qemu` and log in as *root* without password.
