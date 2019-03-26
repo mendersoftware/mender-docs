@@ -17,7 +17,7 @@ Run the following commands on your device to install the package:
 <!--AUTOVERSION: "cloudfront.net/mender/%/"/mender "mender_%-1_armhf.deb"/mender -->
 ```bash
 wget https://d1b0l86ne08fsf.cloudfront.net/mender/master/mender_master-1_armhf.deb
-dpkg -i mender_master-1_armhf.deb
+sudo dpkg -i mender_master-1_armhf.deb
 ```
 
 ## Setup
@@ -33,7 +33,7 @@ where it says "Paste your Hosted Mender token here". Run the following commands:
 
 ```bash
 TENANT_TOKEN="<INSERT YOURS FROM https://hosted.mender.io/ui/#/settings/my-organization>"
-sed -i "s/Paste your Hosted Mender token here/$TENANT_TOKEN/" /etc/mender/mender.conf
+sudo sed -i "s/Paste your Hosted Mender token here/$TENANT_TOKEN/" /etc/mender/mender.conf
 ```
 
 #### Use demo settings (optional)
@@ -44,8 +44,8 @@ by the [Mender demo server](../../getting-started/create-a-test-environment). Ru
 
 ```bash
 TENANT_TOKEN="<INSERT YOURS FROM https://hosted.mender.io/ui/#/settings/my-organization>"
-cp /etc/mender/mender.conf.demo /etc/mender/mender.conf
-sed -i "s/Paste your Hosted Mender token here/$TENANT_TOKEN/" /etc/mender/mender.conf
+sudo cp /etc/mender/mender.conf.demo /etc/mender/mender.conf
+sudo sed -i "s/Paste your Hosted Mender token here/$TENANT_TOKEN/" /etc/mender/mender.conf
 ```
 
 ### Device type
@@ -56,7 +56,8 @@ command to set `raspberrypi3` as device type:
 !!! Adjust the command below to set the device type of your device (used to ensure software compatibility)
 
 ```bash
-echo "device_type=raspberrypi3" > /var/lib/mender/device_type
+sudo mkdir -p /var/lib/mender
+echo "device_type=raspberrypi3" | sudo tee /var/lib/mender/device_type
 ```
 
 ## Start up
@@ -64,7 +65,7 @@ echo "device_type=raspberrypi3" > /var/lib/mender/device_type
 Now you have the Mender client installed and properly setup in your device. To start it in managed mode, run:
 
 ```bash
-systemctl enable mender && systemctl start mender
+sudo systemctl enable mender && sudo systemctl start mender
 ```
 
 After a few minutes, take a look at the Devices tab in your Mender server. You should see your new device under "Pending".
