@@ -4,6 +4,297 @@ taxonomy:
     category: docs
 ---
 
+## Mender 2.0.0b1
+
+_Released 03.26.2019_
+
+### Statistics
+
+A total of 49343 lines added, 34549 removed (delta 14794)
+
+| Developers with the most changesets | |
+|---|---|
+| Manuel Zedel | 203 (35.2%) |
+| Kristian Amlie | 156 (27.0%) |
+| Marcin Chalczynski | 50 (8.7%) |
+| Michael Clelland | 50 (8.7%) |
+| Lluis Campos | 37 (6.4%) |
+| Krzysztof Jaskiewicz | 28 (4.9%) |
+| Ole Petter Orhagen | 17 (2.9%) |
+| Eystein Måløy Stenberg | 8 (1.4%) |
+| Oleksandr Miliukov | 8 (1.4%) |
+| Adam Podogrocki | 4 (0.7%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Manuel Zedel | 23976 (42.6%) |
+| Kristian Amlie | 18181 (32.3%) |
+| Krzysztof Jaskiewicz | 4171 (7.4%) |
+| Marcin Chalczynski | 2860 (5.1%) |
+| Ole Petter Orhagen | 2733 (4.9%) |
+| Michael Clelland | 2245 (4.0%) |
+| Lluis Campos | 844 (1.5%) |
+| Michael Zimmermann | 415 (0.7%) |
+| Jeremy Trimble | 220 (0.4%) |
+| Adam Podogrocki | 188 (0.3%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Krzysztof Jaskiewicz | 3144 (9.1%) |
+
+| Developers with the most signoffs (total 4) | |
+|---|---|
+| Kristian Amlie | 4 (100.0%) |
+
+| Developers with the most report credits (total 2) | |
+|---|---|
+| Mario Kozjak | 1 (50.0%) |
+| Jeremy Trimble | 1 (50.0%) |
+
+| Developers who gave the most report credits (total 2) | |
+|---|---|
+| Kristian Amlie | 2 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 485 (84.1%) |
+| RnDity | 82 (14.2%) |
+| Two Six Labs, LLC | 3 (0.5%) |
+| andreas@fatal.se | 2 (0.3%) |
+| Systems Engineering & Assessment Ltd | 1 (0.2%) |
+| jgitlin@goboomtown.com | 1 (0.2%) |
+| yongjhih@gmail.com | 1 (0.2%) |
+| grandcentrix GmbH | 1 (0.2%) |
+| Election Systems & Software | 1 (0.2%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 48185 (85.6%) |
+| RnDity | 7219 (12.8%) |
+| grandcentrix GmbH | 415 (0.7%) |
+| Two Six Labs, LLC | 220 (0.4%) |
+| Systems Engineering & Assessment Ltd | 117 (0.2%) |
+| andreas@fatal.se | 75 (0.1%) |
+| yongjhih@gmail.com | 42 (0.1%) |
+| Election Systems & Software | 16 (0.0%) |
+| jgitlin@goboomtown.com | 1 (0.0%) |
+
+| Employers with the most signoffs (total 4) | |
+|---|---|
+| Northern.tech | 4 (100.0%) |
+
+| Employers with the most hackers (total 20) | |
+|---|---|
+| Northern.tech | 10 (50.0%) |
+| RnDity | 3 (15.0%) |
+| grandcentrix GmbH | 1 (5.0%) |
+| Two Six Labs, LLC | 1 (5.0%) |
+| Systems Engineering & Assessment Ltd | 1 (5.0%) |
+| andreas@fatal.se | 1 (5.0%) |
+| yongjhih@gmail.com | 1 (5.0%) |
+| Election Systems & Software | 1 (5.0%) |
+| jgitlin@goboomtown.com | 1 (5.0%) |
+
+
+### Changelogs
+
+#### deployments (1.7.0b1)
+
+New changes in deployments since 1.6.0:
+
+* Adjust go test files to reflect changes in API
+  ([MEN-2309](https://tracker.mender.io/browse/MEN-2309))
+* Updated the vendor dependency on mender-artifact
+* Update deployments service with mender artifact v3 format changes
+  ([MEN-2309](https://tracker.mender.io/browse/MEN-2309))
+* The Dockerfile has been changed to build using the multi-stage container build
+  pattern, and now builds the deployments binary in one build step, and then
+  copies the binary over to the production environment based on alpine:3.6. This
+  change should help keep builds consistent across all services.
+
+#### deviceauth (2.0.0b1)
+
+New changes in deviceauth since 1.7.0:
+
+* Devauth management API v1 and admission API removed.
+
+#### gui (2.0.0b1)
+
+New changes in gui since 1.7.0:
+
+* Allow to accept multiple pending devices at one time
+* schedule a new deployment to all devices within a group, except just the first 100
+* Bugfix: Ensure "already installed" displays correctly in deployment report
+* Update to deviceauth API v2 and use device authsets for admit-on-request flow
+* Fixed single device selection in the device list UI, which could remove device selection otherwise
+* show ungrouped devices in a visibly separated list entry
+* more device identity attributes are now able to select, depending on their popularity
+* fix an issue that prevented deployments to filtered devices
+* more device identity attributes are now able to select, depending on their popularity
+* multiple payloads in an artifact are now shown in the artifact list
+* schedule a new deployment to all devices within a group, except just the first 100
+* Fixed bug where finished deployments continue to display "in progress" when report is kept open
+* multiple payloads in an artifact are now shown in the artifact list
+* Allow click-to-retry for deployments with failures
+* Allow to accept multiple pending devices at one time
+* introduced devices information on the dashboard
+* Fixed bug where finished deployments continue to display "in progress" when report is kept open
+* Make Artifact selector more scalable with autocomplete
+* introduced devices information on the dashboard
+
+#### integration (2.0.0b1)
+
+New changes in integration since 1.7.0:
+
+* Add statistics generator script, and start doing statistics
+  on code development for each release.
+  ([MEN-2206](https://tracker.mender.io/browse/MEN-2206))
+* logo pushed as in the case of mendersoftware/mender repo
+* Upgrade deployments to 1.7.0b1.
+* Upgrade deviceauth to 2.0.0b1.
+* Upgrade gui to 2.0.0b1.
+* Upgrade inventory to 1.6.0b1.
+* Upgrade mender to 2.0.0b1.
+* Upgrade mender-artifact to 3.0.0b1.
+* Upgrade mender-conductor to 1.3.0b1.
+* Upgrade mender-conductor-enterprise to 1.3.0b1.
+* Ignore author's own signoff when generating release statistics.
+* Integration tests for client DB migration.
+  ([MEN-2311](https://tracker.mender.io/browse/MEN-2311))
+* update conductor dependencies - elasticsearch and redis
+* Fix docker version detection
+* Added integration test for an Artifact without any compression.
+  ([MEN-2224](https://tracker.mender.io/browse/MEN-2224))
+* docker-compose: add mender-conductor to mender-device-auth dependencies
+
+#### inventory (1.6.0b1)
+
+New changes in inventory since 1.5.0:
+
+* Allow filter with ":"
+
+#### mender (2.0.0b1)
+
+New changes in mender since 1.7.0:
+
+* Bugfix: State-script error code in Sync-Enter causes infinite loop
+  ([MEN-2195](https://tracker.mender.io/browse/MEN-2195))
+* Allow rootfsPartA and rootfsPartB to be symlinks
+* Rewrite AuthorizeWaitState to fix an infinite loop bug
+  ([MEN-2195](https://tracker.mender.io/browse/MEN-2195))
+* Modify design for exec.Cmd stdout/stderr logging
+* Place UM generator scripts in a dedicated folder
+  ([MEN-2371](https://tracker.mender.io/browse/MEN-2371))
+* Write Update Module to do file(s) install
+  ([MEN-2371](https://tracker.mender.io/browse/MEN-2371))
+* Set StateScriptTimeout default to 1h
+  ([MEN-2409](https://tracker.mender.io/browse/MEN-2409))
+* Add source-installation instructions to README.md.
+* Add `rootfs-image-v2` as a demonstration of how to
+  reimplement Mender's `rootfs-image` update type as an update module.
+  It's also useful as inspiration if users want to make their own
+  slightly tweaked rootfs-image type.
+  ([MEN-2392](https://tracker.mender.io/browse/MEN-2392))
+* Swapped definition of StateScriptRetryTimeout and
+  StateScriptRetryInterval for the names to represent what they are
+  actually doing. This change breaks compatibility with current usage of
+  these configurable parameters. See documentation for correct usage.
+  ([MEN-2409](https://tracker.mender.io/browse/MEN-2409))
+* Updated the copyright year to 2019 in LICENSE.
+* Write update module for doing container setup
+  ([MEN-2232](https://tracker.mender.io/browse/MEN-2232))
+* Add example update modules for shell commands and pkg installs.
+* Remove misleading warning message when ServerCert is missing.
+* Remove jq dependency for file-install Update Module
+* Implement initial version of update modules.
+  ([MEN-2000](https://tracker.mender.io/browse/MEN-2000))
+* Add support for Mender Artifact format version 3.
+  ([MEN-2000](https://tracker.mender.io/browse/MEN-2000))
+* Artifact name is now stored in the local database, and
+  `/etc/mender/artifact_info` acts only as a fallback if no name has
+  been stored yet. This is typically the case for devices provisioned
+  directly from a disk image. Scripts should use the client
+  `-show-artifact` argument instead of parsing the file.
+  ([MEN-2000](https://tracker.mender.io/browse/MEN-2000))
+* `-rootfs` argument has been removed and replaced with the
+  `-install` argument, which works the same way.
+  ([MEN-2000](https://tracker.mender.io/browse/MEN-2000))
+* Mender now runs a stripped down set of state scripts when
+  installing artifacts in standalone mode, and the `-f` flag is no
+  longer required to install such artifacts, nor is it valid. The
+  scripts that run are:
+  * `Download` scripts
+  * `ArtifactInstall` scripts
+  * `ArtifactCommit` scripts
+  * `ArtifactRollback` scripts
+  * `ArtifactFailure` scripts
+  Reboot scripts do not run, so these must be handled manually in
+  standalone mode.
+  ([MEN-2000](https://tracker.mender.io/browse/MEN-2000))
+* Behavior change: `ArtifactCommit_Error` scripts now run
+  after an `ArtifactCommit_Leave` script has returned an error.
+  ([MEN-2000](https://tracker.mender.io/browse/MEN-2000))
+* Bugfix in killing mechanism for State Scripts
+  timing out ([MEN-2409](https://tracker.mender.io/browse/MEN-2409))
+* Update vendored dependency net/http2 to latest version
+* Support installing most files using Makefile `install` target.
+  The device_type file is not supported, since it is highly hardware
+  specific. Also the configuration will be very bare bones, and will
+  require changes unless Hosted Mender is being used.
+  ([MEN-2383](https://tracker.mender.io/browse/MEN-2383))
+* Make output from `-show-artifact` easier to consume by limiting logging.
+* Fix state logic for the case of actual wait
+  ([MEN-2195](https://tracker.mender.io/browse/MEN-2195))
+* Properly fail the update when writes to the underlying storage fail.
+  ([MEN-2285](https://tracker.mender.io/browse/MEN-2285))
+* Work around occasional OOM bug in mmc driver.
+  ([MEN-2285](https://tracker.mender.io/browse/MEN-2285))
+* Make sure state directory is created if it doesn't exist.
+
+#### mender-artifact (3.0.0b1)
+
+New changes in mender-artifact since 2.4.0:
+
+* add support for uncompressed updates
+  ([MEN-2224](https://tracker.mender.io/browse/MEN-2224))
+* mender-artifact tool now supports removing a file in either an sdimg,
+  or in a Mender Artifact, with the rm command.
+  ([MEN-2331](https://tracker.mender.io/browse/MEN-2331))
+* FIX: mender-artifact cat now cleans up resources on write-errors.
+* Implement reading and writing support for update modules.
+  ([MEN-2004](https://tracker.mender.io/browse/MEN-2004))
+* Change rootfs-image `-u` argument to `-f`.
+  Similarly, change `--update` to `--file`.
+  ([MEN-2286](https://tracker.mender.io/browse/MEN-2286))
+* Due to some faulty logic in modify.go:modifyArtifact, the sdimg's
+  provided were modified, but not repacked. This fix updates the logic, and added
+  a test specifically for sdimg, as they we're non-existent.
+  ([MEN-2294](https://tracker.mender.io/browse/MEN-2294))
+* fixes issue when binary dependencies are not in PATH
+  ([MEN-2180](https://tracker.mender.io/browse/MEN-2180))
+* Validate the data update files names in payload filename
+  ([MEN-2319](https://tracker.mender.io/browse/MEN-2319))
+* Mender-artifactV3: Bump the artifact-version protocol to version 3.
+* Report a human readable error in case the artifact payload is not ext4.
+* Add support for compressing artifacts using LZMA.
+
+#### mender-conductor (1.3.0b1)
+
+New changes in mender-conductor since 1.2.0:
+
+* upgrade conductor to the latest version (2.2.0)
+* Timestamp changed to ISO8601
+
+#### mender-conductor-enterprise (1.3.0b1)
+
+New changes in mender-conductor-enterprise since 1.2.0:
+
+* Debug logging added to email preparer
+* Version update from 1.8.1 to 1.8.9 for python conductor client
+* Complete time format added in entrypoint script
+* Bugfix for email preparer
+
+
 ## meta-mender thud-v2019.02
 
 ### Statistics
