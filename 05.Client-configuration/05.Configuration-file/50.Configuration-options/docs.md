@@ -21,6 +21,13 @@ update. Note that the client may occasionally post its inventory more often if
 there has been recent activity on the device. See also the section about
 [polling intervals](../polling-intervals).
 
+#### ModuleTimeoutSeconds
+
+An integer that specifies the number of seconds that an update module will be
+allowed to run, before it is considered hanging and killed. The process will
+first be sent a SIGTERM signal, and one minute later, if it has not exited,
+SIGKILL. The default is 4 hours.
+
 #### RetryPollIntervalSeconds
 
 An integer that sets the number of seconds to wait between each attempt to

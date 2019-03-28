@@ -202,6 +202,14 @@ It saves a tarball with all current files in `/var/www` (only the single files, 
 
 !!! You can experiment with the rollback mechanism by forcing the update to fail. For example, creating a directory under `/var/www` with the same name as one of the files contained in the incoming Artifact will trigger an error in the `cp` command. Once this happens, the Update Module should restore the previous files.
 
+## Power loss
+
+If the device loses power during an update, in general Mender will transition into an error state, such as ArtifactRollback or ArtifactFailure. If already in an error state, that state will typically be repeated until it executes without being interrupted. However, the exact state execution flow depends on whether the Update Module supports rollback and whether it reboots. See the diagram below for all the possible execution flows during a powerloss:
+
+![Update Modules powerloss state machine](update-modules-powerloss-state-machine.png)
+
+Because of the possible re-execution described above, Update Modules, and in particular error states, should be written to be idempotent. This means that re-running the module with the same state several times, even partially, should have the same effect as running it once, as long as the last execution is a complete one.
+
 ## Further reading
 
 <!--AUTOVERSION: "blob/%/Documentation"/mender -->
