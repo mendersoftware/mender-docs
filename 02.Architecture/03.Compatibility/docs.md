@@ -67,6 +67,7 @@ In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3
 | Mender client 1.5.x | no                                  | community               | community              | community               | community              | stable                 |
 | Mender client 1.6.x | no                                  | community               | community              | community               | community              | stable                 |
 | Mender client 1.7.x | no                                  | community               | community              | community               | community              | stable                 |
+| Mender client 2.0.x | no                                  | community               | community              | community               | community              | stable                 |
 
 Leverage [Mender consulting services to support other versions of the Yocto Project](https://mender.io/product/board-support?target=_blank) for your board and environment.
 
@@ -76,16 +77,17 @@ Leverage [Mender consulting services to support other versions of the Yocto Proj
 The [Mender Artifact format](../mender-artifacts) is managed by the [Mender Artifacts Library](https://github.com/mendersoftware/mender-artifact?target=_blank), which is included in the Mender client and server (for reading Artifacts) as well as in a standalone utility `mender-artifacts` (for [writing Artifacts](../../artifacts/modifying-a-mender-artifact)).
 
 <!--AUTOVERSION: "Mender % / mender-artifact %"/ignore-->
-|                                      | Artifact v1 | Artifact v2 |
-|--------------------------------------|-------------|-------------|
-| Mender 1.0.x / mender-artifact 1.0.x | yes         | no          |
-| Mender 1.1.x / mender-artifact 2.0.x | yes         | yes         |
-| Mender 1.2.x / mender-artifact 2.1.x | yes         | yes         |
-| Mender 1.3.x / mender-artifact 2.1.x | yes         | yes         |
-| Mender 1.4.x / mender-artifact 2.2.x | yes         | yes         |
-| Mender 1.5.x / mender-artifact 2.2.x | yes         | yes         |
-| Mender 1.6.x / mender-artifact 2.3.x | yes         | yes         |
-| Mender 1.7.x / mender-artifact 2.4.x | yes         | yes         |
+|                                      | Artifact v1 | Artifact v2 | Artifact v3 |
+|--------------------------------------|-------------|-------------|-------------|
+| Mender 1.0.x / mender-artifact 1.0.x | yes         | no          | no          |
+| Mender 1.1.x / mender-artifact 2.0.x | yes         | yes         | no          |
+| Mender 1.2.x / mender-artifact 2.1.x | yes         | yes         | no          |
+| Mender 1.3.x / mender-artifact 2.1.x | yes         | yes         | no          |
+| Mender 1.4.x / mender-artifact 2.2.x | yes         | yes         | no          |
+| Mender 1.5.x / mender-artifact 2.2.x | yes         | yes         | no          |
+| Mender 1.6.x / mender-artifact 2.3.x | yes         | yes         | no          |
+| Mender 1.7.x / mender-artifact 2.4.x | yes         | yes         | no          |
+| Mender 2.0.x / mender-artifact 3.0.x | no          | yes         | yes         |
 
 !! Older Mender clients do not support newer versions of the Artifact format; they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../artifacts/modifying-a-mender-artifact#create-an-artifact-from-a-raw-root-file-system) for an introduction how to do this.
 
@@ -105,3 +107,4 @@ The compatibility between the Mender server and client is managed by the [Device
 |        | 1.5.x                  | 1.5.x                  |
 |        | 1.6.x                  | 1.6.x                  |
 |        | 1.7.x                  | 1.7.x                  |
+|        | 2.0.x                  | 2.0.x                  |
