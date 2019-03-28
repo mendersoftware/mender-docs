@@ -61,7 +61,7 @@ New changes in meta-mender since thud-v2019.02:
 
 ## mender-convert 1.1.0b1
 
-_Released xx.xx.xxxx_
+_Released 03.27.2019_
 
 ### Statistics
 
