@@ -6,8 +6,6 @@ taxonomy:
 
 The Mender Client has the ability to run pre- and postinstall scripts, before and after it writes the root file system. However, Mender state scripts are more general and useful than pre/postinstall scripts because they can be run between *any* state transition, not just (before/after) the install state. For some examples of usage, see [example use cases](#example-use-cases).
 
-!!! Note that state scripts are a feature of managed mode.  State scripts are not executed when running Mender in [standalone mode](../../architecture/overview#modes-of-operation)).
-
 
 ## The nine states
 
@@ -27,6 +25,15 @@ State scripts can either be run as we transition into a state; "Enter", or out f
 
 ![Mender state machine diagram](mender-state-machine.png)
 
+### Standalone mode
+
+If Mender is used in standalone mode (installing via command line), some states are omitted from execution because Mender is not running as a daemon. These are the states that are executed in standalone mode:
+
+* **Download**
+* **ArtifactInstall**
+* **ArtifactCommit**
+* **ArtifactRollback**
+* **ArtifactFailure**
 
 
 ## Root file system and Artifact scripts
@@ -65,13 +72,13 @@ All other return codes are reserved for future use by Mender and should not be u
 Each script has a maximum execution default time of 1 hour, or of user-specified time `StateScriptTimeoutSeconds`. If
 a script exceeds this running time, its process group will be killed and Mender will treat the script as failed.
 
-## Power loss hardening
-If the system loses power during an update, there are two cases that will need to be handled. The mender client will execute state scripts as follows:
-- The new partition is not yet committed, in which case the client guarantees that the `ArtifactFailure` scripts will be rerun on the original partition, before resuming normal execution.
-- Power is lost during the execution of `ArtifactCommit_Leave`, in which case the `ArtifactCommit_Leave` scripts will be rerun, on the newly installed partition, at startup before resuming normal execution with the successfully installed update.
-Since these scripts can potentially be rerun in the event of a power loss, the two script types must be written to be idempotent. That is, each script in any of these states must be written so that it behaves correctly even if some, or all, of its steps have already been partially or completely carried out, since a power loss in any of these two states will cause all of the scripts to be rerun. Please be aware though, that this is strictly limited to `ArtifactFailure_Enter`, `ArtifactFailure_Leave` and `ArtifactCommit_Leave`, no other scripts will ever be rerun by the mender-client in case of a power loss or a crash.
+## Power loss
 
-!!! Note that there is one exception. A power loss in `ArtifactReboot_Enter` will not be marked as a failure. This enables the user to stall the daemon in reboot_enter state forever, and thus an install will only be installed on a power-cycle of the device.
+In general power loss means that Mender will transition into an error state, either ArtifactRollback or ArtifactFailure, depending on the level of rollback support of the Payload types in the Artifact. If a power loss happens inside one of the error states, that state will be repeated until it succeeds without a power interruption. However, there are some exceptions: Power loss is allowed to happen within any Reboot state, since it may be indistinguishable from a normal reboot. Also `ArtifactCommit_Leave` will be repeated just like the error states, since after committing it is too late to do a rollback.
+
+!!! Tip: Since a power loss in `ArtifactReboot_Enter` will not be marked as a failure, this enables the user to stall the daemon in `ArtifactReboot_Enter` state forever, and thus an install will only be installed on a power-cycle of the device.
+
+Because of the possible re-execution described above, state scripts should be written to be idempotent. This means that re-running the script several times, even partially, should have the same effect as running it once, as long as the last execution is a complete one.
 
 ## State script logging
 
