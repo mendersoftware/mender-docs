@@ -4,9 +4,64 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender thud-v2019.03
+
+_Released 03.28.2019_
+
+### Statistics
+
+A total of 358 lines added, 95 removed (delta 263)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 12 (75.0%) |
+| Lluis Campos | 2 (12.5%) |
+| Manuel Dipolt | 1 (6.2%) |
+| Mirza Krak | 1 (6.2%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 350 (97.8%) |
+| Lluis Campos | 6 (1.7%) |
+| Manuel Dipolt | 1 (0.3%) |
+| Mirza Krak | 1 (0.3%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 15 (93.8%) |
+| manuel@linux-home.at | 1 (6.2%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 357 (99.7%) |
+| manuel@linux-home.at | 1 (0.3%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 3 (75.0%) |
+| manuel@linux-home.at | 1 (25.0%) |
+
+
+### Changelogs
+
+#### meta-mender (thud-v2019.03)
+
+New changes in meta-mender since thud-v2019.02:
+
+* Some core update modules can now be installed by adding
+  `modules` to the `PACKAGECONFIG` variable of `mender`. They are
+  included by default when using the meta-mender-demo layer.
+  ([MEN-2383](https://tracker.mender.io/browse/MEN-2383))
+* Install `mender-data-dir.service` to create `/data/mender` directory.
+* Change variable to access ubi dataimg, points now to the symlink to prevent yocto rebuild error when timestamp/name of ubimg have changed
+* grub: ensure "test" module is builtin
+* Add mender-2.0.0b1 and mender-artifact-3.0.0b1.
+* Adapt to new flags in mender-artifact-3.0.0.
+
+
 ## mender-convert 1.1.0b1
 
-_Released xx.xx.xxxx_
+_Released 03.27.2019_
 
 ### Statistics
 
