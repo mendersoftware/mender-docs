@@ -14,9 +14,9 @@ An official `.deb` package with the Mender client that supports the ARM-v6 archi
 
 Run the following commands on your device to install the package:
 
-<!--AUTOVERSION: "cloudfront.net/mender/%/"/mender "mender_%-1_armhf.deb"/mender -->
+<!--AUTOVERSION: "cloudfront.net/%/"/mender "mender_%-1_armhf.deb"/mender -->
 ```bash
-wget https://d1b0l86ne08fsf.cloudfront.net/mender/master/mender_master-1_armhf.deb
+wget https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/armhf/mender_master-1_armhf.deb
 sudo dpkg -i mender_master-1_armhf.deb
 ```
 
