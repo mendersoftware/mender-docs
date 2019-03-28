@@ -10,7 +10,7 @@ If rootfs updates are also desired, full board integration is required. In this 
 
 ## Install prebuilt package
 
-An official `.deb` package with the Mender client that supports the ARM-v7 architecture is provided below. This package should work on most operating systems in the Debian family (e.g. Debian, Ubuntu, Raspbian) and devices (e.g. Raspberry Pi 2/3, BeagleBone)."
+An official `.deb` package with the Mender client that supports the ARM-v6 architecture is provided below. This package should work on most operating systems in the Debian family (e.g. Debian, Ubuntu, Raspbian) and devices (e.g. Raspberry Pi 2/3, Raspberry Pi Zero W, BeagleBone)."
 
 Run the following commands on your device to install the package:
 
