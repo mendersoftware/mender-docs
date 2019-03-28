@@ -16,8 +16,8 @@ Run the following commands on your device to install the package:
 
 <!--AUTOVERSION: "cloudfront.net/mender/%/"/mender "mender_%-1_armhf.deb"/mender -->
 ```bash
-wget https://d1b0l86ne08fsf.cloudfront.net/mender/master/mender_master-1_armhf.deb
-sudo dpkg -i mender_master-1_armhf.deb
+wget https://d1b0l86ne08fsf.cloudfront.net/mender/2.0.0b1/mender_2.0.0b1-1_armhf.deb
+sudo dpkg -i mender_2.0.0b1-1_armhf.deb
 ```
 
 ## Setup

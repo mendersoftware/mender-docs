@@ -106,4 +106,4 @@ If this fails, e.g. returns `401 Authorization Required`, make sure that the con
 
 
 <!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
-[x.x.x_mender-cli]: https://d1b0l86ne08fsf.cloudfront.net/mender-cli/master/mender-cli
+[x.x.x_mender-cli]: https://d1b0l86ne08fsf.cloudfront.net/mender-cli/1.1.0/mender-cli
