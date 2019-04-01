@@ -49,7 +49,7 @@ from the Mender `mender-device-auth` and `mender-api-gateway` services.
 The UI requires you to log in with a valid username and password. You must first create a Mender user via a CLI provided by the User Administration Service. The service's binary is embedded in a Docker container, so to execute it you will issue the **exec** subcommand of docker-compose, e.g.:
 
 ```bash
-sudo ./demo exec mender-useradm /usr/bin/useradm create-user --username=myusername@example.com --password=mysecretpassword
+./demo exec mender-useradm /usr/bin/useradm create-user --username=myusername@example.com --password=mysecretpassword
 ```
 
 !!! For Mender on-premise installations, your email and password are currently only used to log in to the Mender server. You will not receive any email from Mender. However, this might change in future versions so we recommend to input your real email address.
