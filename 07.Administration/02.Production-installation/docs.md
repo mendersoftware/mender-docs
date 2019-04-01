@@ -594,7 +594,7 @@ user via the CLI provided by the User Administration Service. The service's bina
 
 <!--AUTOMATION: ignore -->
 ```bash
-sudo ./run exec mender-useradm /usr/bin/useradm create-user --username=myusername@host.com --password=mysecretpassword
+./run exec mender-useradm /usr/bin/useradm create-user --username=myusername@host.com --password=mysecretpassword
 ```
 
 At this point you should be able to access [https://mender.example.com](https://mender.example.com?target=_blank) with your
