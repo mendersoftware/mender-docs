@@ -152,12 +152,12 @@ This is an example of installing and setting up Golang on a Linux system:
 
 <!--AUTOVERSION: "go%"/ignore-->
 ```bash
-wget https://storage.googleapis.com/golang/go1.7.4.linux-amd64.tar.gz
+wget https://dl.google.com/go/go1.11.6.linux-amd64.tar.gz
 ```
 
 <!--AUTOVERSION: "go%"/ignore-->
 ```bash
-sudo tar -C /usr/local -xzf go1.7.4.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.11.6.linux-amd64.tar.gz
 ```
 
 ```bash
