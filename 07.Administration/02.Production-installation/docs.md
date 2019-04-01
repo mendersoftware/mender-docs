@@ -595,7 +595,7 @@ user via the CLI provided by the User Administration Service. The service's bina
 
 <!--AUTOMATION: ignore -->
 ```bash
-sudo ./run exec mender-useradm /usr/bin/useradm create-user --username=myusername@host.com --password=mysecretpassword
+./run exec mender-useradm /usr/bin/useradm create-user --username=myusername@host.com --password=mysecretpassword
 ```
 
 ! Keep in mind that above is executed in a command-line interpreter meaning that certain characters might need to be escaped, e.g if you are using the `$` character in your password, this could interpret as a variable name unless it is escaped.
