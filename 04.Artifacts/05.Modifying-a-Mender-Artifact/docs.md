@@ -178,12 +178,26 @@ go version
 > go version go1.7.4 linux/amd64
 
 
+#### Build dependencies
+
+Mender Artifact tool depends on LZMA library to support compression with this algorithm on the Artifacts.
+
+To install this build dependency for Mac OS, run the following command:
+```
+brew install xz
+```
+
+To install it for Ubuntu or Debian Linux:
+```
+apt install liblzma-dev
+```
+
 #### Compile mender-artifact
 
 The Mender Artifact utility is available as open source in the
 [Mender artifact repository on GitHub](https://github.com/mendersoftware/mender-artifact?target=_blank).
 
-You can download and install it with the following commands:
+Run the following commands to download, compile and install Mender Artifact:
 
 ```bash
 go get github.com/mendersoftware/mender-artifact
@@ -191,6 +205,11 @@ go get github.com/mendersoftware/mender-artifact
 
 ```bash
 cd $GOPATH/src/github.com/mendersoftware/mender-artifact/
+```
+
+<!--AUTOVERSION: "git checkout %"/mender-artifact -->
+```bash
+git checkout master
 ```
 
 ```bash
@@ -204,7 +223,8 @@ by running:
 $GOPATH/bin/mender-artifact -v
 ```
 
-> mender-artifact version 0.1
+<!--AUTOVERSION: "mender-artifact version %"/mender-artifact -->
+> mender-artifact version master
 
 For convenience, we can also make sure the `mender-artifact` utility is in PATH:
 
