@@ -209,7 +209,7 @@ cd $GOPATH/src/github.com/mendersoftware/mender-artifact/
 
 <!--AUTOVERSION: "git checkout %"/mender-artifact -->
 ```bash
-git checkout master
+git checkout 3.0.0b1
 ```
 
 ```bash
@@ -224,7 +224,7 @@ $GOPATH/bin/mender-artifact -v
 ```
 
 <!--AUTOVERSION: "mender-artifact version %"/mender-artifact -->
-> mender-artifact version master
+> mender-artifact version 3.0.0b1
 
 For convenience, we can also make sure the `mender-artifact` utility is in PATH:
 
