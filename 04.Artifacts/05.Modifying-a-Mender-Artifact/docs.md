@@ -152,12 +152,12 @@ This is an example of installing and setting up Golang on a Linux system:
 
 <!--AUTOVERSION: "go%"/ignore-->
 ```bash
-wget https://storage.googleapis.com/golang/go1.7.4.linux-amd64.tar.gz
+wget https://dl.google.com/go/go1.11.6.linux-amd64.tar.gz
 ```
 
 <!--AUTOVERSION: "go%"/ignore-->
 ```bash
-sudo tar -C /usr/local -xzf go1.7.4.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.11.6.linux-amd64.tar.gz
 ```
 
 ```bash
@@ -178,12 +178,26 @@ go version
 > go version go1.7.4 linux/amd64
 
 
+#### Build dependencies
+
+Mender Artifact tool depends on LZMA library to support compression with this algorithm on the Artifacts.
+
+To install this build dependency for Mac OS, run the following command:
+```
+brew install xz
+```
+
+To install it for Ubuntu or Debian Linux:
+```
+apt install liblzma-dev
+```
+
 #### Compile mender-artifact
 
 The Mender Artifact utility is available as open source in the
 [Mender artifact repository on GitHub](https://github.com/mendersoftware/mender-artifact?target=_blank).
 
-You can download and install it with the following commands:
+Run the following commands to download, compile and install Mender Artifact:
 
 ```bash
 go get github.com/mendersoftware/mender-artifact
@@ -193,8 +207,13 @@ go get github.com/mendersoftware/mender-artifact
 cd $GOPATH/src/github.com/mendersoftware/mender-artifact/
 ```
 
+<!--AUTOVERSION: "git checkout %"/mender-artifact -->
 ```bash
-go get ./...
+git checkout 3.0.0b1
+```
+
+```bash
+go get -ldflags "-X main.Version=`git describe --tags --exact-match 2>/dev/null || git rev-parse --short HEAD`" ./...
 ```
 
 You can now run the `mender-artifact` utility in `$GOPATH/bin/mender-artifact`, and make sure it works
@@ -204,7 +223,8 @@ by running:
 $GOPATH/bin/mender-artifact -v
 ```
 
-> mender-artifact version 0.1
+<!--AUTOVERSION: "mender-artifact version %"/mender-artifact -->
+> mender-artifact version 3.0.0b1
 
 For convenience, we can also make sure the `mender-artifact` utility is in PATH:
 

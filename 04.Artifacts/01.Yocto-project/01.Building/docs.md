@@ -146,7 +146,7 @@ ARTIFACTIMG_FSTYPE = "ext4"
 
 !!! If you would like to use a read-only root file system, please see the section on [configuring the image for read-only rootfs](../../yocto-project/image-configuration#configuring-the-image-for-read-only-rootfs).
 
-### Adding meta-mender to existing Yocto Project enviroment
+### Adding meta-mender to existing Yocto Project environment
 
 If you have an existing Yocto Project environment and want to add Mender to that, you will need to add the required meta layers to your build environment. The instructions
 here are the basic steps needed to do this however your actual setup may require different mechanisms such as the [Google repo tool](https://gerrit.googlesource.com/git-repo/).
