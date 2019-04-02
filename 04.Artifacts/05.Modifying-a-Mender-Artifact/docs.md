@@ -213,7 +213,7 @@ git checkout master
 ```
 
 ```bash
-go get ./...
+go get -ldflags "-X main.Version=`git describe --tags --exact-match 2>/dev/null || git rev-parse --short HEAD`" ./...
 ```
 
 You can now run the `mender-artifact` utility in `$GOPATH/bin/mender-artifact`, and make sure it works
