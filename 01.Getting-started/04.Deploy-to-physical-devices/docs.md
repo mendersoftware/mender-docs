@@ -305,16 +305,8 @@ network with different names, you can deploy updates back and forth between them
 
 ## Integrate Mender with your board
 
-If you want to build your own artifact for the Raspberry Pi 3 or BeagleBone Black,
-head over to the tutorial [Building a Mender Yocto Project image]((../../artifacts/yocto-project/building).
+Now that you have seen how Mender works with a reference board, you might be wondering what it would take to port it to your own board.
 
-Development boards like the Raspberry Pi 3 and BeagleBone Black
-are rarely used in production due to the cost of scaling and specific
-needs of custom applications.
+To get support for robust system updates with rollback, Mender must be [integrated with production boards](../../devices).
 
-Now that you have seen how Mender works with a reference board, you might be wondering what
-it would take to port it to your own platform. The first place to go is
-[Board integration](../../devices), where you will find out how to integrate
-the Mender client with your device software, and then look at
-[Creating Artifacts](../../artifacts) to see how to build images ready to be
-deployed over the network to your devices.
+On the other hand, if you only need support for application updates (not full system updates), no board integration is required. In this case you can install Mender on an existing device and OS by following the documentation on [installing the Mender client](../../client-configuration/installing).
