@@ -96,7 +96,7 @@ Then add execute permission to the script:
 chmod +x web-file
 ```
 
-Your Mender client is now will be able to handle any Artifact containing a `web-file` Update Module Artifact.
+Your Mender client is now able to handle any Artifact containing a `web-file` Update Module Artifact.
 
 ### Create an Artifact with a payload for the new Update Module
 
