@@ -1,5 +1,9 @@
 sudo: required
 
+# Disable git shallow clone. We need full history for validating copyright year of each file.
+git:
+    depth: false
+
 services:
   - docker
 
