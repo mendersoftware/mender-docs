@@ -59,7 +59,7 @@ To deploy the new Artifact to your device, run the following command in the devi
 
 
 ```bash
-mender -rootfs <URI>
+mender -install <URI>
 ```
 
 `<URI>` can be any type of file-based storage or a https URL.
@@ -86,6 +86,6 @@ If you are happy with the deployment, you can make it permanent by running the f
 mender -commit
 ```
 
-By running this command, Mender will configure the bootloader to persistently boot from this newly written deployment. To deploy another update, simply run `mender -rootfs <URI>` again, then reboot and commit.
+By running this command, Mender will configure the bootloader to persistently boot from this newly written deployment. To deploy another update, simply run `mender -install <URI>` again, then reboot and commit.
 
 !!! If we reboot the device again *without* running `mender -commit`, it will boot into the previous rootfs partition that is known to be working (where we deployed the update from). This ensures a robust update process in cases where the newly deployed rootfs does not boot or otherwise has issues that we want to roll back from. Also note that it is possible to automate deployments by [running the Mender client as a daemon](../../architecture/overview#modes-of-operation).
