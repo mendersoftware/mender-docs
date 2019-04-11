@@ -6,98 +6,15 @@ taxonomy:
 
 ## Configuring the image for read-only rootfs
 
-!!! This is an experimental feature for now, and thus we do not recommend using it in a production setup. Nevertheless we recommend testing this feature as Mender will gradually move to support read-only rootfs by default in the future.
-
 To build an image containing read-only rootfs add the following changes to the `conf/local.conf` file:
 
 ```bash
  IMAGE_FEATURES = "read-only-rootfs"
 ```
 
-What is more, at the moment, there is a patch required to fix the resolver issue:
+You can read more about this feature in the [Yocto Project Mega-Manual - 7.27. Creating a Read-Only Root Filesystem](https://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html#creating-a-read-only-root-filesystem)
 
-```bash
-diff --git a/meta/recipes-core/systemd/systemd_234.bb b/meta/recipes-core/systemd/systemd_234.bb
-index 4132cdf..7d61a53 100644
---- a/meta/recipes-core/systemd/systemd_234.bb
-+++ b/meta/recipes-core/systemd/systemd_234.bb
-@@ -273,6 +273,9 @@ do_install() {
- 	else
- 		sed -i -e "s%^L! /etc/resolv.conf.*$%L! /etc/resolv.conf - - - - ../run/systemd/resolve/resolv.conf%g" ${D}${exec_prefix}/lib/tmpfiles.d/etc.conf
- 		ln -s ../run/systemd/resolve/resolv.conf ${D}${sysconfdir}/resolv-conf.systemd
-+		if ${@bb.utils.contains('IMAGE_FEATURES', 'read-only-rootfs', 'true', 'false', d)}; then
-+			ln -s ../run/systemd/resolve/resolv.conf ${D}${sysconfdir}/resolv.conf
-+		fi
- 	fi
- 	install -Dm 0755 ${S}/src/systemctl/systemd-sysv-install.SKELETON ${D}${systemd_unitdir}/systemd-sysv-install
-
-@@ -471,6 +474,12 @@ CONFFILES_${PN} = "${sysconfdir}/machine-id \
-                 ${sysconfdir}/systemd/system.conf \
-                 ${sysconfdir}/systemd/user.conf"
-
-+FILES_MAYBE_RESOLV_CONF = "${@bb.utils.contains('PACKAGECONFIG', 'resolved', \
-+                               bb.utils.contains('IMAGE_FEATURES', 'read-only-rootfs', \
-+                                   '${sysconfdir}/resolv.conf', \
-+                                   '', d), \
-+                               '', d)}"
-+
- FILES_${PN} = " ${base_bindir}/* \
-                 ${datadir}/dbus-1/services \
-                 ${datadir}/dbus-1/system-services \
-@@ -487,6 +496,7 @@ FILES_${PN} = " ${base_bindir}/* \
-                 ${sysconfdir}/xdg/ \
-                 ${sysconfdir}/init.d/README \
-                 ${sysconfdir}/resolv-conf.systemd \
-+                ${FILES_MAYBE_RESOLV_CONF} \
-                 ${rootlibexecdir}/systemd/* \
-                 ${systemd_unitdir}/* \
-                 ${base_libdir}/security/*.so \
-```
-
-To apply the path please run the following command (this assumes you are in `yocto/poky` directory):
-
-```bash
-echo 'diff --git a/meta/recipes-core/systemd/systemd_234.bb b/meta/recipes-core/systemd/systemd_234.bb
-index 4132cdf..7d61a53 100644
---- a/meta/recipes-core/systemd/systemd_234.bb
-+++ b/meta/recipes-core/systemd/systemd_234.bb
-@@ -273,6 +273,9 @@ do_install() {
- 	else
- 		sed -i -e "s%^L! /etc/resolv.conf.*$%L! /etc/resolv.conf - - - - ../run/systemd/resolve/resolv.conf%g" ${D}${exec_prefix}/lib/tmpfiles.d/etc.conf
- 		ln -s ../run/systemd/resolve/resolv.conf ${D}${sysconfdir}/resolv-conf.systemd
-+		if ${@bb.utils.contains('IMAGE_FEATURES', 'read-only-rootfs', 'true', 'false', d)}; then
-+			ln -s ../run/systemd/resolve/resolv.conf ${D}${sysconfdir}/resolv.conf
-+		fi
- 	fi
- 	install -Dm 0755 ${S}/src/systemctl/systemd-sysv-install.SKELETON ${D}${systemd_unitdir}/systemd-sysv-install
-
-@@ -471,6 +474,12 @@ CONFFILES_${PN} = "${sysconfdir}/machine-id \
-                 ${sysconfdir}/systemd/system.conf \
-                 ${sysconfdir}/systemd/user.conf"
-
-+FILES_MAYBE_RESOLV_CONF = "${@bb.utils.contains('PACKAGECONFIG', 'resolved', \
-+                               bb.utils.contains('IMAGE_FEATURES', 'read-only-rootfs', \
-+                                   '${sysconfdir}/resolv.conf', \
-+                                   '', d), \
-+                               '', d)}"
-+
- FILES_${PN} = " ${base_bindir}/* \
-                 ${datadir}/dbus-1/services \
-                 ${datadir}/dbus-1/system-services \
-@@ -487,6 +496,7 @@ FILES_${PN} = " ${base_bindir}/* \
-                 ${sysconfdir}/xdg/ \
-                 ${sysconfdir}/init.d/README \
-                 ${sysconfdir}/resolv-conf.systemd \
-+                ${FILES_MAYBE_RESOLV_CONF} \
-                 ${rootlibexecdir}/systemd/* \
-                 ${systemd_unitdir}/* \
-                 ${base_libdir}/security/*.so \' | git apply
-```
-
-Please note that the above patch won't be needed when the appropriate fixes
-will be merged to the Yocto upstream project. The status of the patch submitted
-can be followed up here: [http://lists.openembedded.org/pipermail/openembedded-core/2018-January/146834.html](http://lists.openembedded.org/pipermail/openembedded-core/2018-January/146834.html?target=_blank).
-
+!!! This feature is highly package dependent and even if Mender works correctly when this feature is enabled there might be other packages in your image that expect the root filesystem to be writable and might not function properly. We recommend testing this feature as Mender will gradually move to support read-only root filesystem by default in the future.
 
 ## Disabling Mender as a system service
 
