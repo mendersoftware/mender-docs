@@ -4,20 +4,44 @@ taxonomy:
     category: docs
 ---
 
-The `mender-convert` utility can be used to convert existing disk images for use with Mender. It will generate a new disk image with two rootfs partitions, install a bootloader that supports booting either of the root partitions and install the Mender client and its configuration.
+`mender-convert` can be used to convert existing disk images for use with
+Mender. It will generate a new disk image with two rootfs partitions, install a
+bootloader that supports booting either of the root partitions and install the
+Mender client and its configuration.
 
-A typical workflow for using `mender-convert` is to rely on a *golden disk image* that should be replicated in a robust way to many devices. The steps in this workflow are:
+The output of `mender-convert` is:
+* The converted disk image described above ready to be flashed into an SD card.
+* A Mender Artifact formatted update to be deployed remotely to devices running
+  Mender through the Mender Server.
+* An ext4 image of the modified filesystem for advanced users.
 
-1. Install a fresh OS to a device storage
-2. Boot the device
-3. Make modifications in run-time, e.g. install packages, change configurations
-4. Power off the device with the (now updated) golden image
-5. Generate a Mender Artifact and disk image from this golden image using `mender-convert`
+### Recommended workflow
+
+The recommended workflow for using `mender-convert` is to rely on a *golden disk
+image* that should be replicated in a robust way to many devices. The steps in
+this workflow are:
+
+1. Install a fresh OS to a device storage (typically an SD card)
+2. Boot the device, log in, and make modifications in run-time, e.g. install
+   packages, change configurations
+3. Power off the device with the (now updated) golden image
+4. Copy the contents of the golden image back to your workstation (e.g. using
+   dd)
+5. Generate a Mender Artifact and disk image from this golden image using
+   `mender-convert` (continue reading for details)
 6. Deploy the Artifact to all devices
 
-In order to create another OTA update, the device with the golden image is booted again, i.e. the steps from 2. and onwards are carried out again.
+Note that your golden device or SD card is not running Mender and is not
+modified during deployments. It is simply the "source" for generating the
+Artifacts that you deploy to the devices in the field.
 
-!!! `mender-convert` is currently tested on BeagleBone and Raspberry Pi3, using official Debian or Raspbian images. The intention is to extend and test the utility to cover more boards and OSes and finally make it board-agnostic.
+In order to create another OTA update, the device with the golden image is
+booted again, i.e. the steps from 2. and onwards are carried out again.
+
+!!! `mender-convert` is currently tested on BeagleBone and Raspberry Pi3, using
+official Debian or Raspbian images. The intention is to extend and test
+`mender-convert` to cover more boards and OSes and finally make it
+board-agnostic.
 
 ## Prerequisites
 
@@ -42,30 +66,20 @@ dd if=<DEVICE> of=golden-image-1.img bs=1M conv=fdatasync
 !!! Replace `<DEVICE>` with the location of your SD card. Normally this would be something like `/dev/mmcblk0` or `/dev/sdb`.
 
 
-### A Mender client for your device
+### Docker
 
-You need a Mender client binary compiled for your target device.
-See [cross-compiling Mender client](../../client-configuration/cross-compiling) for steps how to compile one.
+#### Docker Engine 17.03
 
+Follow the [documentation to install Docker
+Engine](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/?target=_blank),
+version **17.03 or later**.
 
-### Dependencies for mender-convert
+##### Docker permissions
 
-If you are using Ubuntu 18.04, install the dependencies by running the following command:
-
-```bash
-sudo apt install kpartx bison flex mtools parted mtd-utils e2fsprogs u-boot-tools pigz device-tree-compiler autoconf autotools-dev libtool pkg-config python gcc-arm-linux-gnueabihf
-```
-
-Disable sanity checks made by Mtools commands. These checks reject copy/paste operations on converted disk images.
-```bash
-echo "mtools_skip_check=1" >> ${HOME}/.mtoolsrc
-```
-
-#### Install mender-artifact
-
-`mender-convert` also depends on `mender-artifact`.
-Please follow [the documentation on mender-artifact](../modifying-a-mender-artifact#mender-artifact) and install it.
-
+Invoking the docker commands may fail when the local user has insufficient
+permissions to connect to the docker daemon. In Ubuntu 18.04, the user must be a
+member of the `docker` group to be able to access it. Please check the
+documentation for your host OS if you encounter connection issues with docker.
 
 ### Download mender-convert
 
@@ -73,11 +87,10 @@ Clone `mender-convert` from the official repository:
 
 <!--AUTOVERSION: "-b % https://github.com/mendersoftware/mender-convert"/mender-convert-->
 ```bash
-git clone -b 1.1.0b1 https://github.com/mendersoftware/mender-convert.git
+git clone -b master https://github.com/mendersoftware/mender-convert.git
 ```
 
-
-## Convert a raw disk image
+## Build the mender-convert container image
 
 Change directory to where you downloaded `mender-convert`:
 
@@ -85,32 +98,72 @@ Change directory to where you downloaded `mender-convert`:
 cd mender-convert
 ```
 
+Then, run the following command to build the container based on Ubuntu 18.04 with all required dependencies for `mender-convert`:
+
+```bash
+./docker-build
+```
+
+## Convert a raw disk image
+
+Move your *golden disk image* into an input subdirectory:
+
+```bash
+mkdir -p input
+mv <PATH_TO_MY_GOLDEN_IMAGE> input/golden-image-1.img
+```
+
 Then adjust to the correct paths below and run the conversion:
 
 ```bash
-./mender-convert from-raw-disk-image                        \
-            --raw-disk-image <PATH-TO-RAW-DISK-IMAGE>       \
-            --mender-disk-image golden-image-1.sdimg        \
-            --device-type <beaglebone | raspberrypi3>       \
-            --mender-client <PATH-TO-MENDER-CLIENT-BINARY>  \
-            --artifact-name golden-image-1                  \
-            --bootloader-toolchain arm-linux-gnueabihf      \
-            --demo-host-ip <IP-OF-DEMO-SERVER> --demo
+DEVICE_TYPE="raspberrypi3"
+RAW_DISK_IMAGE="input/golden-image-1.img"
+
+ARTIFACT_NAME="golden-image-1-mender-integ"
+MENDER_DISK_IMAGE="golden-image-1-mender-integ.sdimg"
+TENANT_TOKEN="<INSERT-TOKEN-FROM Hosted Mender>"
+
+./docker-mender-convert from-raw-disk-image                      \
+            --raw-disk-image $RAW_DISK_IMAGE                     \
+            --mender-disk-image $MENDER_DISK_IMAGE               \
+            --device-type $DEVICE_TYPE                           \
+            --artifact-name $ARTIFACT_NAME                       \
+            --bootloader-toolchain arm-buildroot-linux-gnueabihf \
+            --server-url "https://hosted.mender.io"              \
+            --tenant-token $TENANT_TOKEN
 ```
 
 !!! The conversion may take 10 minutes, depending on the resources available on your machine.
 
-After a successful conversion, your images can be found in `outputs/`.
+After a successful conversion, your images can be found in `output/`.
 
-The above invocation will use configuration defaults for use with the [Mender demo environment](../../../getting-started/create-a-test-environment).
+The above invocation will use configuration defaults for use with the Hosted
+Mender in production environment. If on premise server is used, then adjust
+`--server-url` accordingly, and replace `--tenant-token` option with
+`--server-cert` option, specifying a valid path for the server certificate.
 
+## Building for demo environment
 
-## Building for production
+If instead, you with to use the [Mender demo
+environment](../../../getting-started/create-a-test-environment), execute the
+command with these parameters:
 
-In a production environment, we should not use the ``--demo-host-ip` option, but rather one or more of the following:
+```
+bash
+DEVICE_TYPE="raspberrypi3"
+RAW_DISK_IMAGE="input/golden-image-1.img"
 
-```bash
---tenant-token <name of token for hosted.mender.io service>
---server-url <url to production server>
---server-cert <file path to the certificate>
+ARTIFACT_NAME="golden-image-1-mender-integ"
+MENDER_DISK_IMAGE="input/golden-image-1-mender-integ.sdimg"
+
+DEMO_HOST_IP="192.168.10.2"
+
+./docker-mender-convert from-raw-disk-image                      \
+            --raw-disk-image $RAW_DISK_IMAGE                     \
+            --mender-disk-image $MENDER_DISK_IMAGE               \
+            --device-type $DEVICE_TYPE                           \
+            --artifact-name $ARTIFACT_NAME                       \
+            --bootloader-toolchain arm-buildroot-linux-gnueabihf \
+            --demo                                               \
+            --demo-host-ip $DEMO_HOST_IP
 ```
