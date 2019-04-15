@@ -39,8 +39,7 @@ sudo sed -i "s/Paste your Hosted Mender token here/$TENANT_TOKEN/" /etc/mender/m
 #### Use demo settings (optional)
 
 By default Mender uses production-grade configuration settings. However, if this is a test or development device,
-it is recommended to use the demo settings to get shorter polling intervals and allow an insecure certificate used
-by the [Mender demo server](../../getting-started/create-a-test-environment). Run the following commands:
+it is recommended to use the demo settings to get shorter polling intervals. Run the following commands:
 
 ```bash
 TENANT_TOKEN="<INSERT YOURS FROM https://hosted.mender.io/ui/#/settings/my-organization>"
