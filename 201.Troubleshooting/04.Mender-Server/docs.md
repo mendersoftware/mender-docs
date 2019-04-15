@@ -8,6 +8,21 @@ This document details troubleshooting steps for the most common problems with th
 The first part applies to all installations, while the section below on Production installations
 only applies when the Mender server is [installed for production](../../administration/production-installation).
 
+## Persistent certificate errors in demo mode
+Since the demo certificates are self-signed, browsers will produce relevant warnings.
+For instance in Chrome, a `Your connection is not private` page will appear, with a 
+`NET::CERT_AUTHORITY_INVALID` error.
+
+Typically this page comes with 'Advanced' options, allowing you to accept the certificate
+and proceed anyway; demo certificates should not be an issue from then on.
+
+It has however been observed that newer browser versions come with tighter security checks, and may unexpectedly block access to the Mender UI unconditionally. If that's the case,
+the workaround is to clean browser internals related to HTTP Strict Transport Security. In Chrome:
+- navigate to `chrome://net-internals/#hsts`
+- type the domain `docker.mender.io` into the `Delete domain` section and confirm
+
+Consult your browser's documentation for similar instructions.
+
 ## Cleaning up the deviceauth database after device decommissioning
 It is possible that after a failed device decommissioning operation there will be some unaccessible and unnecessary data in the deviceauth database. In this case, you should clean the database manually.
 
