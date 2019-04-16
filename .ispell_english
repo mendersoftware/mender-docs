@@ -301,6 +301,7 @@ buffruneio
 bufio
 Bugfix
 buildable
+buildroot
 builtin
 builtins
 BumtJEOkD
@@ -999,6 +1000,7 @@ insertafter
 installables
 Insua
 int
+integ
 internet
 InventoryPollIntervalSeconds
 io
@@ -1158,7 +1160,7 @@ lcs
 lcTO
 ld
 Lda
-LDFLAGS
+ldflags
 le
 leb
 Lebeau
