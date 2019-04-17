@@ -1,3 +1,3 @@
 ---
-redirect: "/devices/integrating-with-u-boot/integration-checklist"
+redirect: "/devices/yocto-project/bootloader-support/u-boot/integration-checklist"
 ---
