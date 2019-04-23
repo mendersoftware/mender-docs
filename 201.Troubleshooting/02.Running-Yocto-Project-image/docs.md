@@ -94,3 +94,33 @@ To revert to the old size calculation, add this to your build configuration
 ```
 MENDER_PARTITIONING_OVERHEAD_KB = "${@eval('(int((${MENDER_PARTITION_ALIGNMENT} - 1) / 1024) + 1) * 4')}"
 ```
+
+## Poor performance when loading images from U-boot
+
+On certain devices you might get poor performance when trying to load the Linux kernel image from the root filesystem, and it can look like this:
+
+```
+u-boot=> ext4load ${mender_uboot_root} /boot/${image}
+23065088 bytes read in 79537 ms (282.2 KiB/s)
+```
+
+This seems to be more common on `aarch64` devices, that is 64-bit ARM.
+
+The root cause of this issue is that U-Boot's `ext4` support does not handle extents very well. When a file gets large enough, extent index blocks will get created for it, and that leads to exercising a very slow code path. This has been fixed in upstream U-boot with this [patch](http://git.denx.de/?p=u-boot.git;a=commit;h=d5aee659f217746395ff58adf3a863627ff02ec1), but at the time of writing, this is not included in any released U-boot versions and the first version to contain this fix will be 2019.07.
+
+There are a couple of workarounds,
+
+1. Backport the upstream [patch](http://git.denx.de/?p=u-boot.git;a=commit;h=d5aee659f217746395ff58adf3a863627ff02ec1) to the U-boot version you are using or update U-boot to to a version that includes the mentioned patch.
+
+2. Use a different filesystem, e.g `ext3` which does not support `extents` and does not suffer from this limitation.
+    - In Yocto you can change filesystem type by setting `ARTIFACTIMG_FSTYPE = "ext3"` in your `local.conf` or other appropriate location
+
+3. Disable `extents` feature on `ext4` filesystem
+    - In Yocto you can add `EXTRA_IMAGECMD_ext4 = "-O ^extent"` in your `local.conf` or other appropriate location.
+    - Above is equivalent to running `mkfs.ext4 -O ^extent` if you are using something other then Yocto to generate your filesystem images
+
+Additional background information can be found in these threads:
+
+- https://community.nxp.com/thread/472241
+- https://github.com/madisongh/meta-tegra/issues/42
+- https://hub.mender.io/t/mender-1-7-standalone-mode-kernel-read-time-get-difference-before-and-after-mender-update
