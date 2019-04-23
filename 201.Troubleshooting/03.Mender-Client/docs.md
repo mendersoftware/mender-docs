@@ -43,8 +43,8 @@ This could occur in several places, and the distinguishing message is **x509: ce
 Each TLS certificate has a validity period, *Not Before* and *Not After*, and this message means that the Mender client concludes that
 the current time is outside this range.
 
-Most commonly this is caused by **incorrect time setting at the device** which runs the Mender client. Check this by
-running `date` at the device, and make sure it is correct. Consult the section on [Correct clock](../../devices/general-system-requirements#correct-clock) 
+Most commonly this is caused by **incorrect time setting on the device** which runs the Mender client. Check this by
+running `date` on the device, and make sure it is correct. Consult the section on [Correct clock](../../devices/general-system-requirements#correct-clock)
 for a more detailed discussion.
 
 To determine the status of your time synchronization, execute the following:
@@ -64,8 +64,8 @@ Replace the hostname with the one for your Mender API Gateway below and run the 
 ```bash
 echo | openssl s_client -connect mender.example.com:443 2>/dev/null | openssl x509 -noout -dates
 ```
-> notBefore=Dec 14 19:52:46 2016 GMT  
-> notAfter=Dec 12 19:52:46 2026 GMT  
+> notBefore=Dec 14 19:52:46 2016 GMT
+> notAfter=Dec 12 19:52:46 2026 GMT
 
 Also note that the storage proxy has its own certificate, and it runs on the same host as the API Gateway
 on port 9000 by default. Adjust the hostname and verify the validity of its certificate with the following command:
@@ -73,8 +73,8 @@ on port 9000 by default. Adjust the hostname and verify the validity of its cert
 ```bash
 echo | openssl s_client -connect s3.example.com:9000 2>/dev/null | openssl x509 -noout -dates
 ```
-> notBefore=Dec 14 19:52:46 2016 GMT  
-> notAfter=Dec 12 19:52:46 2026 GMT  
+> notBefore=Dec 14 19:52:46 2016 GMT
+> notAfter=Dec 12 19:52:46 2026 GMT
 
 We can see that both these certificates are currently valid.
 Also see the [documentation on certificates](../../administration/certificates-and-keys) for an
