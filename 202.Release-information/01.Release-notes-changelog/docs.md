@@ -4,6 +4,96 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender sumo-v2019.04
+
+_Released 04.25.2019_
+
+### Statistics
+
+A total of 545 lines added, 720 removed (delta -175)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 17 (63.0%) |
+| Lluis Campos | 4 (14.8%) |
+| Mirza Krak | 2 (7.4%) |
+| Drew Moseley | 1 (3.7%) |
+| Manuel Dipolt | 1 (3.7%) |
+| Ole Petter Orhagen | 1 (3.7%) |
+| Stoyan Bogdanov | 1 (3.7%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Mirza Krak | 551 (47.4%) |
+| Kristian Amlie | 533 (45.8%) |
+| Lluis Campos | 55 (4.7%) |
+| Drew Moseley | 14 (1.2%) |
+| Stoyan Bogdanov | 8 (0.7%) |
+| Manuel Dipolt | 1 (0.1%) |
+| Ole Petter Orhagen | 1 (0.1%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Mirza Krak | 550 (76.4%) |
+| Lluis Campos | 36 (5.0%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Drew Moseley | 1 (100.0%) |
+
+| Developers with the most report credits (total 1) | |
+|---|---|
+| Denis Mosolov | 1 (100.0%) |
+
+| Developers who gave the most report credits (total 1) | |
+|---|---|
+| Kristian Amlie | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 25 (92.6%) |
+| Konsulko Group | 1 (3.7%) |
+| manuel@linux-home.at | 1 (3.7%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 1154 (99.2%) |
+| Konsulko Group | 8 (0.7%) |
+| manuel@linux-home.at | 1 (0.1%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+| Employers with the most hackers (total 7) | |
+|---|---|
+| Northern.tech | 5 (71.4%) |
+| Konsulko Group | 1 (14.3%) |
+| manuel@linux-home.at | 1 (14.3%) |
+
+
+### Changelogs
+
+#### meta-mender (sumo-v2019.04)
+
+New changes in meta-mender since sumo-v2018.12:
+
+* mender-helpers.bbclass: Add NVMe support
+* add 'rootwait' to bootargs
+* Fix data directory not being empty on rootfs.
+  ([MEN-2290](https://tracker.mender.io/browse/MEN-2290))
+* Adapt to new flags in mender-artifact-3.0.0.
+* Some core update modules can now be installed by adding
+  `modules` to the `PACKAGECONFIG` variable of `mender`. They are
+  included by default when using the meta-mender-demo layer.
+  ([MEN-2383](https://tracker.mender.io/browse/MEN-2383))
+* Install `mender-data-dir.service` to create `/data/mender` directory.
+* Change variable to access ubi dataimg, points now to the symlink to prevent yocto rebuild error when timestamp/name of ubimg have changed
+* Add mender-2.0.0b1 and mender-artifact-3.0.0b1.
+* Add canary value to U-Boot env to catch bootloader/user-space mismatch.
+* Fix error message `Incorrect Usage: flag provided but not defined: -f`
+
+
 ## meta-mender thud-v2019.03
 
 _Released 03.28.2019_
