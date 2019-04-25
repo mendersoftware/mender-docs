@@ -4,6 +4,93 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender rocko-v2019.04
+
+_Released 04.25.2019_
+
+### Statistics
+
+A total of 582 lines added, 209 removed (delta 373)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 19 (67.9%) |
+| Lluis Campos | 5 (17.9%) |
+| Drew Moseley | 1 (3.6%) |
+| Ole Petter Orhagen | 1 (3.6%) |
+| Stoyan Bogdanov | 1 (3.6%) |
+| Mirza Krak | 1 (3.6%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 575 (85.2%) |
+| Lluis Campos | 56 (8.3%) |
+| Mirza Krak | 21 (3.1%) |
+| Drew Moseley | 14 (2.1%) |
+| Stoyan Bogdanov | 8 (1.2%) |
+| Ole Petter Orhagen | 1 (0.1%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Lluis Campos | 35 (16.7%) |
+
+| Developers with the most signoffs (total 2) | |
+|---|---|
+| Maciej Borzecki | 1 (50.0%) |
+| Drew Moseley | 1 (50.0%) |
+
+| Developers with the most report credits (total 1) | |
+|---|---|
+| Denis Mosolov | 1 (100.0%) |
+
+| Developers who gave the most report credits (total 1) | |
+|---|---|
+| Kristian Amlie | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 27 (96.4%) |
+| Konsulko Group | 1 (3.6%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 667 (98.8%) |
+| Konsulko Group | 8 (1.2%) |
+
+| Employers with the most signoffs (total 2) | |
+|---|---|
+| Northern.tech | 1 (50.0%) |
+| RnDity | 1 (50.0%) |
+
+| Employers with the most hackers (total 6) | |
+|---|---|
+| Northern.tech | 5 (83.3%) |
+| Konsulko Group | 1 (16.7%) |
+
+
+### Changelogs
+
+#### meta-mender (rocko-v2019.04)
+
+New changes in meta-mender since rocko-v2018.11.2:
+
+* allow IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET to be aligend to 512 bytes
+  ([MEN-1845](https://tracker.mender.io/browse/MEN-1845))
+* Fix missing wpa_supplicant in Raspberry Pi demo images.
+* Add mender 1.6.1 and 1.7.0 recipes.
+* Add mender-artifact 2.3.1 and 2.4.0 recipes.
+* mender-helpers.bbclass: Add NVMe support
+* Adapt to new flags in mender-artifact-3.0.0.
+* Some core update modules can now be installed by adding
+  `modules` to the `PACKAGECONFIG` variable of `mender`. They are
+  included by default when using the meta-mender-demo layer.
+  ([MEN-2383](https://tracker.mender.io/browse/MEN-2383))
+* Install `mender-data-dir.service` to create `/data/mender` directory.
+* Add mender-2.0.0b1 and mender-artifact-3.0.0b1.
+* Add canary value to U-Boot env to catch bootloader/user-space mismatch.
+* Fix error message `Incorrect Usage: flag provided but not defined: -f`
+
+
 ## meta-mender sumo-v2019.04
 
 _Released 04.25.2019_
