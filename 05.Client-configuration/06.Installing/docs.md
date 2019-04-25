@@ -11,7 +11,7 @@ If full board integration is desired, follow the device documentation on [Yocto 
 ## Install from source
 
 <!--AUTOVERSION: "mender/tree/%#installing-from-source"/mender -->
-It is possible to install the Mender client from source by following the guidelines outlined in the [README.md](https://github.com/mendersoftware/mender/tree/master#installing-from-source) of the Mender client source repository.
+It is possible to install the Mender client from source by following the guidelines outlined in the [README.md](https://github.com/mendersoftware/mender/tree/2.0.0b1#installing-from-source) of the Mender client source repository.
 
 ## Install Mender provided Debian package
 
