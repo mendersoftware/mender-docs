@@ -86,9 +86,10 @@ otherwise [compile it for your platform](../modifying-a-mender-artifact#compilin
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 [x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/3.0.0b1/mender-artifact
 
-To sign we use the `-k` parameter to specify the private key, which will be used for creating the signature.
-This parameter works both if you have a root file system (e.g. `.ext4` file) and are writing a new Mender Artifact
-and if you are signing an existing Mender Artifact (`.mender`).
+There are two ways to sign an Artifact: while creating it with the `write`
+command or once already created using the `sign` command. We add the `-k`
+paramater in both cases to specify the private key, which will be used for
+creating the signature.
 
 #### A raw root file system
 
@@ -102,14 +103,12 @@ mender-artifact write rootfs-image -t beaglebone -n mender-2.0.0b1 -f core-image
 #### An existing Mender Artifact
 
 ```bash
-cp artifact.mender artifact-signed.mender
-mender-artifact modify artifact-signed.mender -k private.key
+mender-artifact sign artifact.mender -k private.key -o artifact-signed.mender
 ```
 
-The latter is typically the command the Signing system uses to create a signed Artifact,
-as a Mender Artifact is built by the build system already.
-
-! Currently the `mender-artifact modify` command only supports modifying ext4 payloads.
+The latter is typically the command that the Signing system uses to create a
+signed Artifact from an unsigned one produced by the build system, or after
+modifying an Artifact with `mender-artifact modify` command.
 
 ## Verifying the signature
 

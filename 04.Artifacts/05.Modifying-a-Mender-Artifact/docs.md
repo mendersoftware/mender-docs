@@ -123,7 +123,7 @@ Use `mender-artifact --help` to list all available compression options.
 ## Signing after modification
 
 If you are signing Artifacts, the signature will become invalid whenever
-you make modifications to them. See the section on [signing and verification](../signing-and-verification)
+you make modifications to them. See the section on [signing and verification](../signing-and-verification#an-existing-mender-artifact)
 for more information.
 
 
