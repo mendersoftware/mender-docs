@@ -100,7 +100,7 @@ mender-artifact write rootfs-image -t beaglebone -n release-1 -u rootfs.ext4 -o 
 ## Signing after modification
 
 If you are signing Artifacts, the signature will become invalid whenever
-you make modifications to them. See the section on [signing and verification](../signing-and-verification)
+you make modifications to them. See the section on [signing and verification](../signing-and-verification#an-existing-mender-artifact)
 for more information.
 
 
