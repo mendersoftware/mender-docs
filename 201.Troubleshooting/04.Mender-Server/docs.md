@@ -293,3 +293,45 @@ user@local$ docker inspect menderproduction_mender-deployments_1 |& less
 
 `docker inspect` output contains all information about container instance,
 volumes, network, aliases etc.
+
+
+## mender-conductor service fails to start in production
+
+Typically `mender-conductor` will produce a Java exception similar to this one:
+
+```
+NoNodeAvailableException[None of the configured nodes are available: [{#transport#-1}{ikJ894GVSUmnpne883r-Ng}{mender-elasticsearch}{192.168.128.4:9300}]]
+	at org.elasticsearch.client.transport.TransportClientNodesService.ensureNodesAreAvailable(TransportClientNodesService.java:347)
+	at org.elasticsearch.client.transport.TransportClientNodesService.execute(TransportClientNodesService.java:245)
+	at org.elasticsearch.client.transport.TransportProxyClient.execute(TransportProxyClient.java:59)
+	at org.elasticsearch.client.transport.TransportClient.doExecute(TransportClient.java:366)
+	at org.elasticsearch.client.support.AbstractClient.execute(AbstractClient.java:408)
+	at org.elasticsearch.client.support.AbstractClient$ClusterAdmin.execute(AbstractClient.java:730)
+	at org.elasticsearch.action.ActionRequestBuilder.execute(ActionRequestBuilder.java:80)
+	at org.elasticsearch.action.ActionRequestBuilder.execute(ActionRequestBuilder.java:54)
+	at com.netflix.conductor.dao.es5.index.ElasticSearchDAOV5.setup(ElasticSearchDAOV5.java:149)
+	at com.netflix.conductor.bootstrap.Main.main(Main.java:71)
+```
+
+And it will restart over and over, with messages like this:
+
+```
+-- Fri Apr 26 08:15:07 UTC 2019 waiting for conductor, attempt 1
+<possible other log messages>
+-- Fri Apr 26 08:15:10 UTC 2019 waiting for conductor, attempt 2
+<possible other log messages>
+-- Fri Apr 26 08:15:15 UTC 2019 waiting for conductor, attempt 3
+```
+
+This can happen `mender-elasticsearch` does not have enough memory.
+Elasticsearch requires 2GiB of memory by default, and this is in addition to
+other services, so the host should have at least 4GiB of memory available.
+
+It is possible to run with less memory, but this may reduce performance, and is
+not recommended. To do so, add this snippet to `prod.yml`, under
+`mender-elasticsearch`:
+
+```
+        environment:
+            - ES_JAVA_OPTS=-Xms0m -Xmx100m
+```
