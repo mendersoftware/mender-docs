@@ -107,6 +107,6 @@ There are a couple of workarounds,
 
 Additional background information can be found in these threads:
 
-- https://community.nxp.com/thread/472241
-- https://github.com/madisongh/meta-tegra/issues/42
-- https://hub.mender.io/t/mender-1-7-standalone-mode-kernel-read-time-get-difference-before-and-after-mender-update
+- [uboot ext4load is very slow to read the kernel image into memory](https://community.nxp.com/thread/472241)
+- [u-boot: eMMC transfer speed significantly slower than stock u-boot on Tegra186](https://github.com/madisongh/meta-tegra/issues/42)
+- [Mender 1.7 - Standalone mode - Kernel read time get difference before and after mender update](https://hub.mender.io/t/mender-1-7-standalone-mode-kernel-read-time-get-difference-before-and-after-mender-update)
