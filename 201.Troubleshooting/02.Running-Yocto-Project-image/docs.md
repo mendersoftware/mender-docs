@@ -92,11 +92,11 @@ u-boot=> ext4load ${mender_uboot_root} /boot/${image}
 
 This seems to be more common on `aarch64` devices, that is 64-bit ARM.
 
-The root cause of this issue is that U-Boot's `ext4` support does not handle extents very well. When a file gets large enough, extent index blocks will get created for it, and that leads to exercising a very slow code path. This has been fixed in upstream U-boot with this [patch](http://git.denx.de/?p=u-boot.git;a=commit;h=d5aee659f217746395ff58adf3a863627ff02ec1), but at the time of writing, this is not included in any released U-boot versions and the first version to contain this fix will be 2019.07.
+The root cause of this issue is that U-Boot's `ext4` support does not handle extents very well. When a file gets large enough, extent index blocks will get created for it, and that leads to exercising a very slow code path. This has been fixed in upstream U-boot with this [patch](https://github.com/u-boot/u-boot/commit/d5aee659f217746395ff58adf3a863627ff02ec1), but at the time of writing, this is not included in any released U-boot versions and the first version to contain this fix will be 2019.07.
 
 There are a couple of workarounds,
 
-1. Backport the upstream [patch](http://git.denx.de/?p=u-boot.git;a=commit;h=d5aee659f217746395ff58adf3a863627ff02ec1) to the U-boot version you are using or update U-boot to to a version that includes the mentioned patch.
+1. Backport the upstream [patch](https://github.com/u-boot/u-boot/commit/d5aee659f217746395ff58adf3a863627ff02ec1) to the U-boot version you are using or update U-boot to to a version that includes the mentioned patch.
 
 2. Use a different filesystem, e.g `ext3` which does not support `extents` and does not suffer from this limitation.
     - In Yocto you can change filesystem type by setting `ARTIFACTIMG_FSTYPE = "ext3"` in your `local.conf` or other appropriate location
