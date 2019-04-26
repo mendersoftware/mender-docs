@@ -111,10 +111,8 @@ The root cause of this issue is that U-Boot's `ext4` support does not handle ext
 There are a couple of workarounds,
 
 1. Backport the upstream [patch](https://github.com/u-boot/u-boot/commit/d5aee659f217746395ff58adf3a863627ff02ec1) to the U-boot version you are using or update U-boot to to a version that includes the mentioned patch.
-
 2. Use a different filesystem, e.g `ext3` which does not support `extents` and does not suffer from this limitation.
     - In Yocto you can change filesystem type by setting `ARTIFACTIMG_FSTYPE = "ext3"` in your `local.conf` or other appropriate location
-
 3. Disable `extents` feature on `ext4` filesystem
     - In Yocto you can add `EXTRA_IMAGECMD_ext4 = "-O ^extent"` in your `local.conf` or other appropriate location.
     - Above is equivalent to running `mkfs.ext4 -O ^extent` if you are using something other then Yocto to generate your filesystem images
