@@ -10,7 +10,7 @@ The built-in update mechanism in Mender is [dual rootfs updates](../../architect
 
 An _Update Module_ is an extension to the Mender client for supporting a new type of software update, such as a package manager, container, bootloader or even updates of nearby microcontrollers. An Update Module can be tailored to a specific device or environment (e.g. update a proprietary bootloader), or be more general-purpose (e.g. install a set of `.deb` packages.).
 
-General-purpose Update Modules, including support for file-based, package based and container-based updates are provided out-of-the-box in all Mender installations, and documented together with community-supported Update Modules at [Mender Hub](https://hub.mender.io?target=_blank).
+General-purpose Update Modules, including support for file-based, package based and container-based updates are available and documented together with community-supported Update Modules at [Mender Hub](https://hub.mender.io?target=_blank).
 
 This document introduces how Update Modules work, so you can develop your own Update Module that meets your specific needs.
 
