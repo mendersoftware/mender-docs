@@ -597,6 +597,8 @@ user via the CLI provided by the User Administration Service. The service's bina
 sudo ./run exec mender-useradm /usr/bin/useradm create-user --username=myusername@host.com --password=mysecretpassword
 ```
 
+! Keep in mind that above is executed in a command-line interpreter meaning that certain characters might need to be escaped, e.g if you are using the `$` character in your password, this could interpret as a variable name unless it is escaped.
+
 At this point you should be able to access [https://mender.example.com](https://mender.example.com?target=_blank) with your
 web browser.
 
