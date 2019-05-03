@@ -40,3 +40,11 @@ issue. We thank you in advance for your cooperation.
   feel free to tweet us questions.
 * Fork us on [Github](https://github.com/mendersoftware?target=_blank)
 * Email us at [contact@mender.io](mailto:contact@mender.io)
+
+
+## Authors
+
+Mender was created by the team at [Northern.tech AS](https://northern.tech), with many contributions from
+the community. Thanks [everyone](https://github.com/mendersoftware/mender/graphs/contributors)!
+
+[Mender](https://mender.io) is sponsored by [Northern.tech AS](https://northern.tech).
