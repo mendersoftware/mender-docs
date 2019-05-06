@@ -18,7 +18,7 @@ An Update Module implements one or more of the actions that the Mender client ca
 
 ### The state machine workflow
 
-Update Modules are modelled after the same execution flow as [state scripts](../state-scripts). For the development of Update Modules it is important to have a basic understanding of the workflow.
+Update Modules are modelled after the same execution flow as [state scripts](../../artifacts/state-scripts). For the development of Update Modules it is important to have a basic understanding of the workflow.
 
 ![Update Modules state machine](update-modules-state-machine.png)
 
@@ -55,7 +55,7 @@ To install the Mender client on your device, follow the instructions in the [Ins
 
 We will use the `mender-artifact` tool to create the payloads required for Update Modules to work.
 
-If you use Linux, [download the prebuilt mender-artifact binary][x.x.x_mender-artifact], otherwise [compile it for your platform](../modifying-a-mender-artifact#compiling-mender-artifact).
+If you use Linux, [download the prebuilt mender-artifact binary][x.x.x_mender-artifact], otherwise [compile it for your platform](../../artifacts/modifying-a-mender-artifact#compiling-mender-artifact).
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 [x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/3.0.0b1/mender-artifact
