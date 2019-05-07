@@ -22,16 +22,16 @@ A Debian package (`.deb`) is provided for convince to install on e.g Debian, Ubu
 
 Download the package:
 
-<!--AUTOVERSION: "cloudfront.net/%/"/mender "mender_%-1_armhf.deb"/mender -->
+<!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
 ```bash
-wget https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/armhf/mender_master-1_armhf.deb
+wget https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
 ```
 
 Install the package:
 
-<!--AUTOVERSION: "mender_%-1_armhf.deb"/mender -->
+<!--AUTOVERSION: "mender-client_%-1_armhf.deb"/mender -->
 ```bash
-sudo dpkg -i mender_master-1_armhf.deb
+sudo dpkg -i mender-client_master-1_armhf.deb
 ```
 
 ### Setup
