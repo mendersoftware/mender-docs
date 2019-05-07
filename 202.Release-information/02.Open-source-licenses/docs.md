@@ -615,6 +615,27 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 github.com/davecgh/go-spew:
 
+ISC License
+
+Copyright (c) 2012-2016 Dave Collins <dave@davec.name>
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+
+--------------------------------------------------------------------------------
+
+github.com/davecgh/go-spew:
+
 Copyright (c) 2012-2013 Dave Collins <dave@davec.name>
 
 Permission to use, copy, modify, and distribute this software for any
@@ -1768,6 +1789,39 @@ indicated otherwise.
 
 --------------------------------------------------------------------------------
 
+github.com/mendersoftware/go-liblzma:
+
+Copyright (c) 2011-2012 Rémy Oudompheng. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+   * Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above
+copyright notice, this list of conditions and the following disclaimer
+in the documentation and/or other materials provided with the
+distribution.
+   * The name of Rémy Oudompheng may not be used to endorse or promote products derived from
+this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+
+--------------------------------------------------------------------------------
+
 github.com/mendersoftware/log:
 
 // Copyright 2016 Mender Software AS
@@ -2181,6 +2235,193 @@ github.com/mendersoftware/mender-artifact:
 
 --------------------------------------------------------------------------------
 
+github.com/mendersoftware/mender-artifact:
+
+Copyright 2019 Northern.tech AS
+
+All content in this project is licensed under the Apache License v2, unless
+indicated otherwise.
+
+-------------------------------------------------------------------------------
+
+                               Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+
+--------------------------------------------------------------------------------
+
 github.com/mendersoftware/mendertesting:
 
 Copyright 2017 Northern.tech AS
@@ -2371,6 +2612,193 @@ indicated otherwise.
 github.com/mendersoftware/mendertesting:
 
 Copyright 2018 Northern.tech AS
+
+All content in this project is licensed under the Apache License v2, unless
+indicated otherwise.
+
+-------------------------------------------------------------------------------
+
+                               Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+
+--------------------------------------------------------------------------------
+
+github.com/mendersoftware/mendertesting:
+
+Copyright 2019 Northern.tech AS
 
 All content in this project is licensed under the Apache License v2, unless
 indicated otherwise.
@@ -3081,7 +3509,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-github.com/sirupsen/logrus:
+github.com/Sirupsen/logrus:
 
 The MIT License (MIT)
 
@@ -3108,7 +3536,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-github.com/Sirupsen/logrus:
+github.com/sirupsen/logrus:
 
 The MIT License (MIT)
 
@@ -3660,6 +4088,33 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT 
 OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
 OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+--------------------------------------------------------------------------------
+
+github.com/stretchr/testify:
+
+MIT License
+
+Copyright (c) 2012-2018 Mat Ryer and Tyler Bunnell
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 
 --------------------------------------------------------------------------------
@@ -4392,7 +4847,7 @@ www.npmjs.com/package/@babel:
 
 MIT License
 
-Copyright (c) 2018 Sebastian McKenzie
+Copyright (c) 2019 Sebastian McKenzie
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -4418,7 +4873,7 @@ www.npmjs.com/package/accord:
 
 MIT License
 
-Copyright (c) 2018 Jeff Escalante
+Copyright (c) 2019 Jeff Escalante
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -4496,7 +4951,7 @@ www.npmjs.com/package/acorn-node:
 
 Apache-2.0 license
 
-Copyright (c) 2018 Renée Kooi
+Copyright (c) 2019 Renée Kooi
 
                                Apache License
                            Version 2.0, January 2004
@@ -4848,7 +5303,7 @@ www.npmjs.com/package/ansi-regex:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -4874,7 +5329,7 @@ www.npmjs.com/package/ansi-styles:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -5053,7 +5508,7 @@ www.npmjs.com/package/array-differ:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -5106,7 +5561,7 @@ www.npmjs.com/package/array-filter:
 
 MIT License
 
-Copyright (c) 2018 Julian Gruber
+Copyright (c) 2019 Julian Gruber
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -5207,7 +5662,7 @@ www.npmjs.com/package/array-uniq:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -5260,7 +5715,7 @@ www.npmjs.com/package/asap:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -5311,7 +5766,7 @@ www.npmjs.com/package/asn1.js:
 
 MIT License
 
-Copyright (c) 2018 Fedor Indutny
+Copyright (c) 2019 Fedor Indutny
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -5361,7 +5816,7 @@ www.npmjs.com/package/assert-plus:
 
 MIT License
 
-Copyright (c) 2018 Mark Cavage
+Copyright (c) 2019 Mark Cavage
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -5464,7 +5919,7 @@ www.npmjs.com/package/async-each:
 
 MIT License
 
-Copyright (c) 2018 Paul Miller
+Copyright (c) 2019 Paul Miller
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -5892,7 +6347,7 @@ www.npmjs.com/package/babel-cli:
 
 MIT License
 
-Copyright (c) 2018 Sebastian McKenzie
+Copyright (c) 2019 Sebastian McKenzie
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -5918,7 +6373,7 @@ www.npmjs.com/package/babel-code-frame:
 
 MIT License
 
-Copyright (c) 2018 Sebastian McKenzie
+Copyright (c) 2019 Sebastian McKenzie
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -5944,7 +6399,7 @@ www.npmjs.com/package/babel-core:
 
 MIT License
 
-Copyright (c) 2018 Sebastian McKenzie
+Copyright (c) 2019 Sebastian McKenzie
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -5970,7 +6425,7 @@ www.npmjs.com/package/babel-generator:
 
 MIT License
 
-Copyright (c) 2018 Sebastian McKenzie
+Copyright (c) 2019 Sebastian McKenzie
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -5996,7 +6451,7 @@ www.npmjs.com/package/babel-helper-builder-react-jsx:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6022,7 +6477,7 @@ www.npmjs.com/package/babel-helper-call-delegate:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6048,7 +6503,7 @@ www.npmjs.com/package/babel-helper-define-map:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6074,7 +6529,7 @@ www.npmjs.com/package/babel-helper-function-name:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6100,7 +6555,7 @@ www.npmjs.com/package/babel-helper-get-function-arity:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6126,7 +6581,7 @@ www.npmjs.com/package/babel-helper-hoist-variables:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6152,7 +6607,7 @@ www.npmjs.com/package/babel-helper-optimise-call-expression:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6178,7 +6633,7 @@ www.npmjs.com/package/babel-helper-regex:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6204,7 +6659,7 @@ www.npmjs.com/package/babel-helper-replace-supers:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6230,7 +6685,7 @@ www.npmjs.com/package/babel-helpers:
 
 MIT License
 
-Copyright (c) 2018 Sebastian McKenzie
+Copyright (c) 2019 Sebastian McKenzie
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6256,7 +6711,7 @@ www.npmjs.com/package/babel-messages:
 
 MIT License
 
-Copyright (c) 2018 Sebastian McKenzie
+Copyright (c) 2019 Sebastian McKenzie
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6282,7 +6737,7 @@ www.npmjs.com/package/babel-plugin-check-es2015-constants:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6308,7 +6763,7 @@ www.npmjs.com/package/babel-plugin-syntax-flow:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6334,7 +6789,7 @@ www.npmjs.com/package/babel-plugin-syntax-jsx:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6360,7 +6815,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-arrow-functions:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6386,7 +6841,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-block-scoped-functions:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6412,7 +6867,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-block-scoping:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6438,7 +6893,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-classes:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6464,7 +6919,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-computed-properties:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6490,7 +6945,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-destructuring:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6516,7 +6971,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-duplicate-keys:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6542,7 +6997,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-for-of:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6568,7 +7023,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-function-name:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6594,7 +7049,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-literals:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6620,7 +7075,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-modules-amd:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6646,7 +7101,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-modules-commonjs:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6672,7 +7127,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-modules-systemjs:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6698,7 +7153,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-modules-umd:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6724,7 +7179,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-object-super:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6750,7 +7205,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-parameters:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6776,7 +7231,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-shorthand-properties:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6802,7 +7257,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-spread:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6828,7 +7283,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-sticky-regex:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6854,7 +7309,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-template-literals:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6880,7 +7335,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-typeof-symbol:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6906,7 +7361,7 @@ www.npmjs.com/package/babel-plugin-transform-es2015-unicode-regex:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6932,7 +7387,7 @@ www.npmjs.com/package/babel-plugin-transform-flow-strip-types:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6958,7 +7413,7 @@ www.npmjs.com/package/babel-plugin-transform-react-display-name:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6984,7 +7439,7 @@ www.npmjs.com/package/babel-plugin-transform-react-jsx:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7010,7 +7465,7 @@ www.npmjs.com/package/babel-plugin-transform-react-jsx-self:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7036,7 +7491,7 @@ www.npmjs.com/package/babel-plugin-transform-react-jsx-source:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7062,7 +7517,7 @@ www.npmjs.com/package/babel-plugin-transform-regenerator:
 
 MIT License
 
-Copyright (c) 2018 Ben Newman
+Copyright (c) 2019 Ben Newman
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7088,7 +7543,7 @@ www.npmjs.com/package/babel-plugin-transform-strict-mode:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7114,7 +7569,7 @@ www.npmjs.com/package/babel-polyfill:
 
 MIT License
 
-Copyright (c) 2018 Sebastian McKenzie
+Copyright (c) 2019 Sebastian McKenzie
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7140,7 +7595,7 @@ www.npmjs.com/package/babel-preset-es2015:
 
 MIT License
 
-Copyright (c) 2018 Sebastian McKenzie
+Copyright (c) 2019 Sebastian McKenzie
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7166,7 +7621,7 @@ www.npmjs.com/package/babel-preset-flow:
 
 MIT License
 
-Copyright (c) 2018 James Kyle
+Copyright (c) 2019 James Kyle
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7192,7 +7647,7 @@ www.npmjs.com/package/babel-preset-react:
 
 MIT License
 
-Copyright (c) 2018 Sebastian McKenzie
+Copyright (c) 2019 Sebastian McKenzie
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7244,7 +7699,7 @@ www.npmjs.com/package/babel-register:
 
 MIT License
 
-Copyright (c) 2018 Sebastian McKenzie
+Copyright (c) 2019 Sebastian McKenzie
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7270,7 +7725,7 @@ www.npmjs.com/package/babel-runtime:
 
 MIT License
 
-Copyright (c) 2018 Sebastian McKenzie
+Copyright (c) 2019 Sebastian McKenzie
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7296,7 +7751,7 @@ www.npmjs.com/package/babel-template:
 
 MIT License
 
-Copyright (c) 2018 Sebastian McKenzie
+Copyright (c) 2019 Sebastian McKenzie
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7322,7 +7777,7 @@ www.npmjs.com/package/babel-traverse:
 
 MIT License
 
-Copyright (c) 2018 Sebastian McKenzie
+Copyright (c) 2019 Sebastian McKenzie
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7348,7 +7803,7 @@ www.npmjs.com/package/babel-types:
 
 MIT License
 
-Copyright (c) 2018 Sebastian McKenzie
+Copyright (c) 2019 Sebastian McKenzie
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7427,7 +7882,7 @@ www.npmjs.com/package/balanced-match:
 
 MIT License
 
-Copyright (c) 2018 Julian Gruber
+Copyright (c) 2019 Julian Gruber
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7604,7 +8059,7 @@ www.npmjs.com/package/beeper:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7630,7 +8085,7 @@ www.npmjs.com/package/binary-extensions:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7656,7 +8111,7 @@ www.npmjs.com/package/bl:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7709,7 +8164,7 @@ www.npmjs.com/package/bn.js:
 
 MIT License
 
-Copyright (c) 2018 Fedor Indutny
+Copyright (c) 2019 Fedor Indutny
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7780,7 +8235,7 @@ www.npmjs.com/package/brace-expansion:
 
 MIT License
 
-Copyright (c) 2018 Julian Gruber
+Copyright (c) 2019 Julian Gruber
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7860,7 +8315,7 @@ www.npmjs.com/package/brorand:
 
 MIT License
 
-Copyright (c) 2018 Fedor Indutny
+Copyright (c) 2019 Fedor Indutny
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -8033,7 +8488,7 @@ www.npmjs.com/package/browserify-cipher:
 
 MIT License
 
-Copyright (c) 2018 Calvin Metcalf
+Copyright (c) 2019 Calvin Metcalf
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -8059,7 +8514,7 @@ www.npmjs.com/package/browserify-des:
 
 MIT License
 
-Copyright (c) 2018 Calvin Metcalf
+Copyright (c) 2019 Calvin Metcalf
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -8131,7 +8586,7 @@ www.npmjs.com/package/browserify-zlib:
 
 MIT License
 
-Copyright (c) 2018 Devon Govett
+Copyright (c) 2019 Devon Govett
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -8291,7 +8746,7 @@ www.npmjs.com/package/builtin-status-codes:
 
 MIT License
 
-Copyright (c) 2018 Ben Drucker
+Copyright (c) 2019 Ben Drucker
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -8343,7 +8798,7 @@ www.npmjs.com/package/cached-path-relative:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -8369,7 +8824,7 @@ www.npmjs.com/package/camelcase:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -8857,7 +9312,7 @@ www.npmjs.com/package/chain-function:
 
 MIT License
 
-Copyright (c) 2018 jquense
+Copyright (c) 2019 jquense
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -8883,7 +9338,7 @@ www.npmjs.com/package/chalk:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -8909,7 +9364,7 @@ www.npmjs.com/package/change-emitter:
 
 MIT License
 
-Copyright (c) 2018 Andrew Clark
+Copyright (c) 2019 Andrew Clark
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -8933,7 +9388,7 @@ THE SOFTWARE.
 
 www.npmjs.com/package/charenc:
 
-Copyright (c) 2018, Paul Vorbach
+Copyright (c) 2019, Paul Vorbach
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -8949,7 +9404,7 @@ www.npmjs.com/package/chokidar:
 
 MIT License
 
-Copyright (c) 2018 Paul Miller
+Copyright (c) 2019 Paul Miller
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -9152,7 +9607,7 @@ www.npmjs.com/package/clone-stats:
 
 MIT License
 
-Copyright (c) 2018 Hugh Kennedy
+Copyright (c) 2019 Hugh Kennedy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -9289,7 +9744,7 @@ www.npmjs.com/package/combined-stream:
 
 MIT License
 
-Copyright (c) 2018 Felix Geisendörfer
+Copyright (c) 2019 Felix Geisendörfer
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -9489,7 +9944,7 @@ www.npmjs.com/package/constants-browserify:
 
 MIT License
 
-Copyright (c) 2018 Julian Gruber
+Copyright (c) 2019 Julian Gruber
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -9616,7 +10071,7 @@ www.npmjs.com/package/copy-to-clipboard:
 
 MIT License
 
-Copyright (c) 2018 sudodoki
+Copyright (c) 2019 sudodoki
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -9692,7 +10147,7 @@ www.npmjs.com/package/create-ecdh:
 
 MIT License
 
-Copyright (c) 2018 Calvin Metcalf
+Copyright (c) 2019 Calvin Metcalf
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -9718,7 +10173,7 @@ www.npmjs.com/package/create-hash:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -9744,7 +10199,7 @@ www.npmjs.com/package/create-hmac:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -9795,7 +10250,7 @@ SOFTWARE.
 
 www.npmjs.com/package/crypt:
 
-Copyright (c) 2018, Paul Vorbach
+Copyright (c) 2019, Paul Vorbach
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -9911,7 +10366,7 @@ www.npmjs.com/package/date-fns:
 
 MIT License
 
-Copyright (c) 2018 Sasha Koss
+Copyright (c) 2019 Sasha Koss
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10013,7 +10468,7 @@ www.npmjs.com/package/decamelize:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10039,7 +10494,7 @@ www.npmjs.com/package/decode-uri-component:
 
 MIT License
 
-Copyright (c) 2018 Sam Verschueren
+Copyright (c) 2019 Sam Verschueren
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10065,7 +10520,7 @@ www.npmjs.com/package/deepmerge:
 
 MIT License
 
-Copyright (c) 2018 Nick Fisher
+Copyright (c) 2019 Nick Fisher
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10169,7 +10624,7 @@ www.npmjs.com/package/delayed-stream:
 
 MIT License
 
-Copyright (c) 2018 Felix Geisendörfer
+Copyright (c) 2019 Felix Geisendörfer
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10245,7 +10700,7 @@ www.npmjs.com/package/des.js:
 
 MIT License
 
-Copyright (c) 2018 Fedor Indutny
+Copyright (c) 2019 Fedor Indutny
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10297,7 +10752,7 @@ www.npmjs.com/package/detect-indent:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10347,7 +10802,7 @@ www.npmjs.com/package/diffie-hellman:
 
 MIT License
 
-Copyright (c) 2018 Calvin Metcalf
+Copyright (c) 2019 Calvin Metcalf
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10421,7 +10876,7 @@ www.npmjs.com/package/dom-helpers:
 
 MIT License
 
-Copyright (c) 2018 Jason Quense
+Copyright (c) 2019 Jason Quense
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10447,7 +10902,7 @@ www.npmjs.com/package/domain-browser:
 
 MIT License
 
-Copyright (c) 2018 2013+ Bevry Pty Ltd
+Copyright (c) 2019 2013+ Bevry Pty Ltd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10471,7 +10926,7 @@ THE SOFTWARE.
 
 www.npmjs.com/package/duplexer2:
 
-Copyright (c) 2018, Conrad Pankoff
+Copyright (c) 2019, Conrad Pankoff
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -10526,7 +10981,7 @@ www.npmjs.com/package/elliptic:
 
 MIT License
 
-Copyright (c) 2018 Fedor Indutny
+Copyright (c) 2019 Fedor Indutny
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10574,7 +11029,7 @@ www.npmjs.com/package/end-of-stream:
 
 MIT License
 
-Copyright (c) 2018 Mathias Buus
+Copyright (c) 2019 Mathias Buus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10600,7 +11055,7 @@ www.npmjs.com/package/errno:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10651,7 +11106,7 @@ www.npmjs.com/package/escape-string-regexp:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -11137,7 +11592,7 @@ www.npmjs.com/package/find-index:
 
 MIT License
 
-Copyright (c) 2018 James Friend
+Copyright (c) 2019 James Friend
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -11163,7 +11618,7 @@ www.npmjs.com/package/findup-sync:
 
 MIT License
 
-Copyright (c) 2018 "Cowboy" Ben Alman
+Copyright (c) 2019 "Cowboy" Ben Alman
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -11216,7 +11671,7 @@ www.npmjs.com/package/first-chunk-stream:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -11420,7 +11875,7 @@ www.npmjs.com/package/form-data:
 
 MIT License
 
-Copyright (c) 2018 Felix Geisendörfer
+Copyright (c) 2019 Felix Geisendörfer
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12100,7 +12555,7 @@ www.npmjs.com/package/globals:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12231,7 +12686,7 @@ www.npmjs.com/package/gulp-autoprefixer:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12309,7 +12764,7 @@ www.npmjs.com/package/gulp-less:
 
 MIT License
 
-Copyright (c) 2018 Chris Cowan
+Copyright (c) 2019 Chris Cowan
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12335,7 +12790,7 @@ www.npmjs.com/package/gulp-minify-css:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12414,7 +12869,7 @@ www.npmjs.com/package/gulp-uglify:
 
 MIT License
 
-Copyright (c) 2018 Terin Stock
+Copyright (c) 2019 Terin Stock
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12532,7 +12987,7 @@ www.npmjs.com/package/has-ansi:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12558,7 +13013,7 @@ www.npmjs.com/package/has-flag:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12666,7 +13121,7 @@ www.npmjs.com/package/hash-base:
 
 MIT License
 
-Copyright (c) 2018 Kirill Fomichev
+Copyright (c) 2019 Kirill Fomichev
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12692,7 +13147,7 @@ www.npmjs.com/package/hash.js:
 
 MIT License
 
-Copyright (c) 2018 Fedor Indutny
+Copyright (c) 2019 Fedor Indutny
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12718,7 +13173,7 @@ www.npmjs.com/package/history:
 
 MIT License
 
-Copyright (c) 2018 Michael Jackson
+Copyright (c) 2019 Michael Jackson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12744,7 +13199,7 @@ www.npmjs.com/package/hmac-drbg:
 
 MIT License
 
-Copyright (c) 2018 Fedor Indutny
+Copyright (c) 2019 Fedor Indutny
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12770,7 +13225,7 @@ www.npmjs.com/package/home-or-tmp:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12996,7 +13451,7 @@ www.npmjs.com/package/indexof:
 
 MIT License
 
-Copyright (c) 2018 indexof
+Copyright (c) 2019 indexof
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -13022,7 +13477,7 @@ www.npmjs.com/package/indx:
 
 MIT License
 
-Copyright (c) 2018 Jeff Escalante
+Copyright (c) 2019 Jeff Escalante
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -13309,7 +13764,7 @@ www.npmjs.com/package/is-binary-path:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -13523,7 +13978,7 @@ www.npmjs.com/package/is-finite:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -13601,7 +14056,7 @@ www.npmjs.com/package/is-in-browser:
 
 MIT License
 
-Copyright (c) 2018 Jared Anderson
+Copyright (c) 2019 Jared Anderson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -13627,7 +14082,7 @@ www.npmjs.com/package/is-node:
 
 MIT License
 
-Copyright (c) 2018 matthewh
+Copyright (c) 2019 matthewh
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -13788,7 +14243,7 @@ www.npmjs.com/package/is-stream:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -13814,7 +14269,7 @@ www.npmjs.com/package/is-typedarray:
 
 MIT License
 
-Copyright (c) 2018 Hugh Kennedy
+Copyright (c) 2019 Hugh Kennedy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -13908,7 +14363,7 @@ www.npmjs.com/package/isarray:
 
 MIT License
 
-Copyright (c) 2018 Julian Gruber
+Copyright (c) 2019 Julian Gruber
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -14009,7 +14464,7 @@ www.npmjs.com/package/isstream:
 
 MIT License
 
-Copyright (c) 2018 Rod Vagg
+Copyright (c) 2019 Rod Vagg
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -14210,7 +14665,7 @@ www.npmjs.com/package/json5:
 
 MIT License
 
-Copyright (c) 2018 Aseem Kishore
+Copyright (c) 2019 Aseem Kishore
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -14272,7 +14727,7 @@ www.npmjs.com/package/JSONStream:
 
 MIT License
 
-Copyright (c) 2018 Dominic Tarr
+Copyright (c) 2019 Dominic Tarr
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -16566,7 +17021,7 @@ www.npmjs.com/package/math-random:
 
 MIT License
 
-Copyright (c) 2018 Michael Rhodes
+Copyright (c) 2019 Michael Rhodes
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -16709,7 +17164,7 @@ www.npmjs.com/package/miller-rabin:
 
 MIT License
 
-Copyright (c) 2018 Fedor Indutny
+Copyright (c) 2019 Fedor Indutny
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -16832,7 +17287,7 @@ www.npmjs.com/package/minimalistic-crypto-utils:
 
 MIT License
 
-Copyright (c) 2018 Fedor Indutny
+Copyright (c) 2019 Fedor Indutny
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -17009,7 +17464,7 @@ www.npmjs.com/package/ms:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -17035,7 +17490,7 @@ www.npmjs.com/package/multipipe:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -17061,7 +17516,7 @@ www.npmjs.com/package/nan:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -17127,7 +17582,7 @@ www.npmjs.com/package/node-fetch:
 
 MIT License
 
-Copyright (c) 2018 David Frank
+Copyright (c) 2019 David Frank
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -17180,7 +17635,7 @@ www.npmjs.com/package/normalize-range:
 
 MIT License
 
-Copyright (c) 2018 James Talmage
+Copyright (c) 2019 James Talmage
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -17247,7 +17702,7 @@ www.npmjs.com/package/number-is-nan:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -17333,7 +17788,7 @@ www.npmjs.com/package/object-assign:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -17623,7 +18078,7 @@ www.npmjs.com/package/os-homedir:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -17649,7 +18104,7 @@ www.npmjs.com/package/os-tmpdir:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -17950,7 +18405,7 @@ www.npmjs.com/package/path-is-absolute:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -17976,7 +18431,7 @@ www.npmjs.com/package/path-parse:
 
 MIT License
 
-Copyright (c) 2018 Javier Blanco
+Copyright (c) 2019 Javier Blanco
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -18092,7 +18547,7 @@ www.npmjs.com/package/performance-now:
 
 MIT License
 
-Copyright (c) 2018 Meryn Stol
+Copyright (c) 2019 Meryn Stol
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -18390,7 +18845,7 @@ www.npmjs.com/package/process-nextick-args:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -18468,7 +18923,7 @@ www.npmjs.com/package/prr:
 
 MIT License
 
-Copyright (c) 2018 Rod Vagg
+Copyright (c) 2019 Rod Vagg
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -18494,7 +18949,7 @@ www.npmjs.com/package/public-encrypt:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -18520,7 +18975,7 @@ www.npmjs.com/package/punycode:
 
 MIT License
 
-Copyright (c) 2018 Mathias Bynens
+Copyright (c) 2019 Mathias Bynens
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -18604,7 +19059,7 @@ www.npmjs.com/package/query-string:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -18630,7 +19085,7 @@ www.npmjs.com/package/raf:
 
 MIT License
 
-Copyright (c) 2018 Chris Dickinson
+Copyright (c) 2019 Chris Dickinson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -18710,7 +19165,7 @@ www.npmjs.com/package/rc-pagination:
 
 MIT License
 
-Copyright (c) 2018 i@xiaoba.me
+Copyright (c) 2019 i@xiaoba.me
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19130,7 +19585,7 @@ www.npmjs.com/package/react-lifecycles-compat:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19267,7 +19722,7 @@ www.npmjs.com/package/react-router:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19293,7 +19748,7 @@ www.npmjs.com/package/react-search-input:
 
 MIT License
 
-Copyright (c) 2018 Mathieu Dutour
+Copyright (c) 2019 Mathieu Dutour
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19370,7 +19825,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 www.npmjs.com/package/react-tools:
 
-Copyright (c) 2018, 
+Copyright (c) 2019, 
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -19633,7 +20088,7 @@ www.npmjs.com/package/recompose:
 
 MIT License
 
-Copyright (c) 2018 Andrew Clark
+Copyright (c) 2019 Andrew Clark
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19659,7 +20114,7 @@ www.npmjs.com/package/redux:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19685,7 +20140,7 @@ www.npmjs.com/package/regenerate:
 
 MIT License
 
-Copyright (c) 2018 Mathias Bynens
+Copyright (c) 2019 Mathias Bynens
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19711,7 +20166,7 @@ www.npmjs.com/package/regenerator-runtime:
 
 MIT License
 
-Copyright (c) 2018 Ben Newman
+Copyright (c) 2019 Ben Newman
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19822,7 +20277,7 @@ www.npmjs.com/package/regexpu-core:
 
 MIT License
 
-Copyright (c) 2018 Mathias Bynens
+Copyright (c) 2019 Mathias Bynens
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19972,7 +20427,7 @@ www.npmjs.com/package/repeating:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20135,7 +20590,7 @@ www.npmjs.com/package/resolve-pathname:
 
 MIT License
 
-Copyright (c) 2018 Michael Jackson
+Copyright (c) 2019 Michael Jackson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20240,7 +20695,7 @@ www.npmjs.com/package/ripemd160:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20391,7 +20846,7 @@ www.npmjs.com/package/set-immediate-shim:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20576,7 +21031,7 @@ www.npmjs.com/package/simple-assign:
 
 MIT License
 
-Copyright (c) 2018 Neil Gabbadon
+Copyright (c) 2019 Neil Gabbadon
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20602,7 +21057,7 @@ www.npmjs.com/package/slash:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20770,7 +21225,7 @@ www.npmjs.com/package/source-map-support:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20981,7 +21436,7 @@ www.npmjs.com/package/stream-consume:
 
 MIT License
 
-Copyright (c) 2018 Aron Nopanen
+Copyright (c) 2019 Aron Nopanen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21060,7 +21515,7 @@ www.npmjs.com/package/strict-uri-encode:
 
 MIT License
 
-Copyright (c) 2018 Kevin Mårtensson
+Copyright (c) 2019 Kevin Mårtensson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21112,7 +21567,7 @@ www.npmjs.com/package/strip-ansi:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21138,7 +21593,7 @@ www.npmjs.com/package/strip-bom:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21229,7 +21684,7 @@ www.npmjs.com/package/superagent-use:
 
 MIT License
 
-Copyright (c) 2018 Koen Punt
+Copyright (c) 2019 Koen Punt
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21255,7 +21710,7 @@ www.npmjs.com/package/supports-color:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21281,7 +21736,7 @@ www.npmjs.com/package/symbol-observable:
 
 MIT License
 
-Copyright (c) 2018 Ben Lesh
+Copyright (c) 2019 Ben Lesh
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21357,7 +21812,7 @@ www.npmjs.com/package/theming:
 
 MIT License
 
-Copyright (c) 2018 Vladimir Starkov
+Copyright (c) 2019 Vladimir Starkov
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21383,7 +21838,7 @@ www.npmjs.com/package/through:
 
 MIT License
 
-Copyright (c) 2018 Dominic Tarr
+Copyright (c) 2019 Dominic Tarr
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21409,7 +21864,7 @@ www.npmjs.com/package/through2:
 
 MIT License
 
-Copyright (c) 2018 Rod Vagg
+Copyright (c) 2019 Rod Vagg
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21435,7 +21890,7 @@ www.npmjs.com/package/tildify:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21488,7 +21943,7 @@ www.npmjs.com/package/tlds:
 
 MIT License
 
-Copyright (c) 2018 Stephen Mathieson
+Copyright (c) 2019 Stephen Mathieson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21543,7 +21998,7 @@ www.npmjs.com/package/to-fast-properties:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21650,7 +22105,7 @@ www.npmjs.com/package/toggle-selection:
 
 MIT License
 
-Copyright (c) 2018 sudodoki
+Copyright (c) 2019 sudodoki
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21709,7 +22164,7 @@ www.npmjs.com/package/trim-right:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21890,7 +22345,7 @@ www.npmjs.com/package/ua-parser-js:
 
 MIT License
 
-Copyright (c) 2018 Faisal Salman
+Copyright (c) 2019 Faisal Salman
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22027,7 +22482,7 @@ www.npmjs.com/package/umd:
 
 MIT License
 
-Copyright (c) 2018 ForbesLindesay
+Copyright (c) 2019 ForbesLindesay
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22241,7 +22696,7 @@ www.npmjs.com/package/user-home:
 
 MIT License
 
-Copyright (c) 2018 Sindre Sorhus
+Copyright (c) 2019 Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22321,7 +22776,7 @@ www.npmjs.com/package/uuid:
 
 MIT License
 
-Copyright (c) 2018 
+Copyright (c) 2019 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22401,7 +22856,7 @@ www.npmjs.com/package/value-equal:
 
 MIT License
 
-Copyright (c) 2018 Michael Jackson
+Copyright (c) 2019 Michael Jackson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22478,7 +22933,7 @@ www.npmjs.com/package/vinyl-buffer:
 
 MIT License
 
-Copyright (c) 2018 Hugh Kennedy
+Copyright (c) 2019 Hugh Kennedy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22556,7 +23011,7 @@ www.npmjs.com/package/vinyl-source-stream:
 
 MIT License
 
-Copyright (c) 2018 Hugh Kennedy
+Copyright (c) 2019 Hugh Kennedy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22617,7 +23072,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 www.npmjs.com/package/warning:
 
-Copyright (c) 2018, Berkeley Martinez
+Copyright (c) 2019, Berkeley Martinez
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -22733,7 +23188,7 @@ www.npmjs.com/package/wordwrap:
 
 The MIT/X11 License
 
-Copyright (c) 2018 James Halliday
+Copyright (c) 2019 James Halliday
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
