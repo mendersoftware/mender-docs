@@ -4,6 +4,72 @@ taxonomy:
     category: docs
 ---
 
+## Mender 1.7.1
+
+_Released 05.07.2019_
+
+### Statistics
+
+A total of 278 lines added, 184 removed (delta 94)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie             | 14 (51.9%) |
+| Lluis Campos                | 8 (29.6%) |
+| Ole Petter Orhagen          | 5 (18.5%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos              | 149 (46.7%) |
+| Kristian Amlie             | 98 (30.7%) |
+| Ole Petter Orhagen         | 72 (22.6%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech              | 27 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech             | 319 (100.0%) |
+
+| Employers with the most hackers (total 3) | |
+|---|---|
+| Northern.tech               | 3 (100.0%) |
+
+### Changelogs
+
+#### integration (1.7.1)
+
+New changes in integration since 1.7.0:
+
+* Ignore author's own signoff when generating release statistics.
+* Upgrade mender to 1.7.1.
+* Upgrade mender-artifact to 2.4.1.
+
+#### mender (1.7.1)
+
+New changes in mender since 1.7.0:
+
+* Remove misleading warning message when ServerCert is missing.
+* Bugfix: State-script error code in Sync-Enter causes infinite loop
+  ([MEN-2195](https://tracker.mender.io/browse/MEN-2195))
+* Update vendored dependency net/http2 to latest version
+* Rewrite AuthorizeWaitState to fix an infinite loop bug
+  ([MEN-2195](https://tracker.mender.io/browse/MEN-2195))
+* Fix state logic for the case of actual wait
+  ([MEN-2195](https://tracker.mender.io/browse/MEN-2195))
+* Make sure ARM64 is included in bootloader integration inventory.
+* Mender no longer misidentifies LVM volumes.
+  ([MEN-2302](https://tracker.mender.io/browse/MEN-2302))
+* Updated the copyright year to 2019 in LICENSE.
+
+#### mender-artifact (2.4.1)
+
+New changes in mender-artifact since 2.4.0:
+
+* Report a human readable error in case the artifact payload is not ext4.
+
+
 ## meta-mender thud-v2019.02
 
 ### Statistics
