@@ -58,7 +58,7 @@ We will use the `mender-artifact` tool to create the payloads required for Updat
 If you use Linux, [download the prebuilt mender-artifact binary][x.x.x_mender-artifact], otherwise [compile it for your platform](../../artifacts/modifying-a-mender-artifact#compiling-mender-artifact).
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/3.0.0b1/mender-artifact
+[x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/3.0.0/mender-artifact
 
 ## Basic example: File copy Update Module
 
@@ -215,4 +215,4 @@ Because of the possible re-execution described above, Update Modules, and in par
 ## Further reading
 
 <!--AUTOVERSION: "blob/%/Documentation"/mender -->
-* [Update modules v3 protocol](https://github.com/mendersoftware/mender/blob/2.0.0b1/Documentation/update-modules-v3-file-api.md)
+* [Update modules v3 protocol](https://github.com/mendersoftware/mender/blob/2.0.0/Documentation/update-modules-v3-file-api.md)
