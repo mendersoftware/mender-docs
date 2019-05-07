@@ -4,6 +4,33 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender thud-v2019.05
+
+_Released 05.07.2019_
+
+#### meta-mender (thud-v2019.05)
+
+New changes in meta-mender since thud-v2019.03:
+
+* Add missing build dep on "xz" in Mender Artifact recipes for
+  3.0.x versions
+* Add recipes for mender-1.7.1 and mender-artifact-2.4.1.
+* mender: Do not exclude missing directories.
+* Add recipes for mender-2.0.0 and mender-artifact-3.0.0.
+  Note that these recipes are not enabled by default in thud. If you
+  want to use them, you have to add this to your build configuration:
+  ```
+  PREFERRED_VERSION_pn-mender = "2.%"
+  PREFERRED_VERSION_pn-mender-artifact = "3.%"
+  PREFERRED_VERSION_pn-mender-artifact-native = "3.%"
+  ```
+* Fix error message `Incorrect Usage: flag provided but not defined: -f`
+* Add new liblzma dependency for the client.
+* linux-raspberrypi-rt: Add mender settings for the PREEMPT_RT kernel.
+* Fix mender 2.0.x and mender-artifact 3.0.x recipes to use the
+  correct branches when fetching the source.
+
+
 ## Mender 2.0.0
 
 _Released 05.07.2019_
