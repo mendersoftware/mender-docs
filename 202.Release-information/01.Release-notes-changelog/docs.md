@@ -4,6 +4,146 @@ taxonomy:
     category: docs
 ---
 
+## mender-convert 1.1.0
+
+_Released 05.08.2019_
+
+### Statistics
+
+A total of 1512 lines added, 996 removed (delta 516)
+
+| Developers with the most changesets | |
+|---|---|
+| Mirza Krak | 19 (27.5%) |
+| Adam Podogrocki | 16 (23.2%) |
+| Eystein Måløy Stenberg | 13 (18.8%) |
+| Lluis Campos | 9 (13.0%) |
+| Marek Belisko | 4 (5.8%) |
+| Simon Gamma | 3 (4.3%) |
+| Max Bruckner | 1 (1.4%) |
+| Adrian Cuzman | 1 (1.4%) |
+| Dominik Adamski | 1 (1.4%) |
+| Mika Tuupola | 1 (1.4%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Adam Podogrocki | 853 (48.8%) |
+| Eystein Måløy Stenberg | 359 (20.5%) |
+| Mirza Krak | 301 (17.2%) |
+| Lluis Campos | 186 (10.6%) |
+| Marek Belisko | 37 (2.1%) |
+| Simon Gamma | 7 (0.4%) |
+| Max Bruckner | 1 (0.1%) |
+| Adrian Cuzman | 1 (0.1%) |
+| Dominik Adamski | 1 (0.1%) |
+| Mika Tuupola | 1 (0.1%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Mirza Krak | 164 (16.5%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 41 (59.4%) |
+| RnDity | 17 (24.6%) |
+| open-nandra | 4 (5.8%) |
+| github@survive.ch | 3 (4.3%) |
+| max@maxbruckner.de | 1 (1.4%) |
+| adriancuzman@gmail.com | 1 (1.4%) |
+| tuupola@appelsiini.net | 1 (1.4%) |
+| denismosolov@gmail.com | 1 (1.4%) |
+
+| Top lines changed by employer | |
+|---|---|
+| RnDity | 854 (48.9%) |
+| Northern.tech | 846 (48.4%) |
+| open-nandra | 37 (2.1%) |
+| github@survive.ch | 7 (0.4%) |
+| max@maxbruckner.de | 1 (0.1%) |
+| adriancuzman@gmail.com | 1 (0.1%) |
+| tuupola@appelsiini.net | 1 (0.1%) |
+| denismosolov@gmail.com | 1 (0.1%) |
+
+| Employers with the most hackers (total 11) | |
+|---|---|
+| Northern.tech | 3 (27.3%) |
+| RnDity | 2 (18.2%) |
+| open-nandra | 1 (9.1%) |
+| github@survive.ch | 1 (9.1%) |
+| max@maxbruckner.de | 1 (9.1%) |
+| adriancuzman@gmail.com | 1 (9.1%) |
+| tuupola@appelsiini.net | 1 (9.1%) |
+| denismosolov@gmail.com | 1 (9.1%) |
+
+
+### Changelogs
+
+#### mender-convert (1.1.0)
+
+New changes in mender-convert since 1.1.0b1:
+
+* Expand existing environment '$PATH' variable instead of replacing it
+* Use same environment '$PATH' variable when using sudo
+* Fail the docker build when mandatory build-arg 'mender_client_version' is not set.
+* Update Dockerfile to use latest stable mender-artifact, v2.4.0
+* Use mender-artfact v3. Requires rebuild of device-image-shell container.
+* Use LZMA for smaller Artifact size (but slower generation).
+* Update mender-convert to use final Mender v2.0 release
+
+New changes in mender-convert since 1.0.0:
+
+* Fix syntax error when calling "mender-convert raw-disk-image-shrink-rootfs"
+* Experimental device emulation environment
+* Create repartitioned Mender compliant image from Yocto image for qemu x86-64
+  ([MEN-2207](https://tracker.mender.io/browse/MEN-2207))
+* Add commits check to mender-convert repo
+  ([MEN-2282](https://tracker.mender.io/browse/MEN-2282))
+* Provide systemd service for Raspberry Pi boards to resize data partition
+  ([MEN-2254](https://tracker.mender.io/browse/MEN-2254))
+* Install Mender related files to Mender image based on Yocto image for qemu x86-64
+  ([MEN-2207](https://tracker.mender.io/browse/MEN-2207))
+* Check a Linux ext4 file system before resizing 'primary' partition
+  ([MEN-2242](https://tracker.mender.io/browse/MEN-2242))
+* compile mender during docker image creation
+* Switch to 1.6.0 Mender client as default for docker environment
+* Add license check to mender-convert repo
+  ([MEN-2282](https://tracker.mender.io/browse/MEN-2282))
+* Use a toolchain tuned for ARMv6 architecture to maintain support for Raspberry Pi Zero
+  ([MEN-2399](https://tracker.mender.io/browse/MEN-2399))
+* Fix docker-mender-convert for paths with spaces
+* Add version option for mender convert
+  ([MEN-2257](https://tracker.mender.io/browse/MEN-2257))
+* Fix permission denied error in when calling "mender-convert raw-disk-image-shrink-rootfs"
+* Give container access to host's kernel modules
+  ([MEN-2255](https://tracker.mender.io/browse/MEN-2255))
+* Support compiling Mender client in mender-convert container.
+* Document missing options in the scripts
+  ([MEN-2248](https://tracker.mender.io/browse/MEN-2248))
+* Store sector size in raw/mender disk image related arrays
+  ([MEN-2242](https://tracker.mender.io/browse/MEN-2242))
+* Avoid duplicate content in cmdline.txt
+* rpi: update to 2018.07 U-boot
+  ([MEN-2198](https://tracker.mender.io/browse/MEN-2198))
+* Add --storage-total-size-mb option to mender-convert tool
+  ([MEN-2242](https://tracker.mender.io/browse/MEN-2242))
+* Make tool ready for handling input images containing 3 partitions
+  ([MEN-2207](https://tracker.mender.io/browse/MEN-2207))
+* Allow to use "--demo" flag with any given server type
+* Use local (checked out) version of mender-convert inside container
+* Support passing mender-convert arguments to docker-mender-convert directly
+* remove expert commands
+* Refactor mender-convert to use make install target
+  ([MEN-2411](https://tracker.mender.io/browse/MEN-2411))
+* Improve documentation
+* Set production/demo intervals conditionally
+  ([MEN-2248](https://tracker.mender.io/browse/MEN-2248))
+* Optimizations to speed up conversion, utilizing sparse
+  images.
+* remove dependency on gcc6
+* Install GRUB bootloader to Mender image based on Yocto image for qemu x86-64
+  ([MEN-2207](https://tracker.mender.io/browse/MEN-2207))
+
+
 ## meta-mender thud-v2019.05
 
 _Released 05.07.2019_
@@ -619,133 +759,6 @@ New changes in meta-mender since thud-v2019.02:
 * grub: ensure "test" module is builtin
 * Add mender-2.0.0b1 and mender-artifact-3.0.0b1.
 * Adapt to new flags in mender-artifact-3.0.0.
-
-
-## mender-convert 1.1.0b1
-
-_Released 03.27.2019_
-
-### Statistics
-
-A total of 1492 lines added, 983 removed (delta 509)
-
-| Developers with the most changesets | |
-|---|---|
-| Mirza Krak | 19 (30.6%) |
-| Adam Podogrocki | 16 (25.8%) |
-| Eystein Måløy Stenberg | 11 (17.7%) |
-| Lluis Campos | 7 (11.3%) |
-| Marek Belisko | 4 (6.5%) |
-| Max Bruckner | 1 (1.6%) |
-| Adrian Cuzman | 1 (1.6%) |
-| Dominik Adamski | 1 (1.6%) |
-| Mika Tuupola | 1 (1.6%) |
-| Denis Mosolov | 1 (1.6%) |
-
-| Developers with the most changed lines | |
-|---|---|
-| Adam Podogrocki | 849 (49.2%) |
-| Eystein Måløy Stenberg | 349 (20.2%) |
-| Mirza Krak | 301 (17.4%) |
-| Lluis Campos | 186 (10.8%) |
-| Marek Belisko | 37 (2.1%) |
-| Max Bruckner | 1 (0.1%) |
-| Adrian Cuzman | 1 (0.1%) |
-| Dominik Adamski | 1 (0.1%) |
-| Mika Tuupola | 1 (0.1%) |
-| Denis Mosolov | 1 (0.1%) |
-
-| Developers with the most lines removed | |
-|---|---|
-| Mirza Krak | 164 (16.7%) |
-
-| Top changeset contributors by employer | |
-|---|---|
-| Northern.tech | 37 (59.7%) |
-| RnDity | 17 (27.4%) |
-| open-nandra | 4 (6.5%) |
-| denismosolov@gmail.com | 1 (1.6%) |
-| tuupola@appelsiini.net | 1 (1.6%) |
-| max@maxbruckner.de | 1 (1.6%) |
-| adriancuzman@gmail.com | 1 (1.6%) |
-
-| Top lines changed by employer | |
-|---|---|
-| RnDity | 850 (49.2%) |
-| Northern.tech | 836 (48.4%) |
-| open-nandra | 37 (2.1%) |
-| denismosolov@gmail.com | 1 (0.1%) |
-| tuupola@appelsiini.net | 1 (0.1%) |
-| max@maxbruckner.de | 1 (0.1%) |
-| adriancuzman@gmail.com | 1 (0.1%) |
-
-| Employers with the most hackers (total 10) | |
-|---|---|
-| Northern.tech | 3 (30.0%) |
-| RnDity | 2 (20.0%) |
-| open-nandra | 1 (10.0%) |
-| denismosolov@gmail.com | 1 (10.0%) |
-| tuupola@appelsiini.net | 1 (10.0%) |
-| max@maxbruckner.de | 1 (10.0%) |
-| adriancuzman@gmail.com | 1 (10.0%) |
-
-
-### Changelogs
-
-#### mender-convert (1.1.0b1)
-
-New changes in mender-convert since 1.0.0:
-
-* Fix syntax error when calling "mender-convert raw-disk-image-shrink-rootfs"
-* Experimental device emulation environment
-* Create repartitioned Mender compliant image from Yocto image for qemu x86-64
-  ([MEN-2207](https://tracker.mender.io/browse/MEN-2207))
-* Add commits check to mender-convert repo
-  ([MEN-2282](https://tracker.mender.io/browse/MEN-2282))
-* Provide systemd service for Raspberry Pi boards to resize data partition
-  ([MEN-2254](https://tracker.mender.io/browse/MEN-2254))
-* Install Mender related files to Mender image based on Yocto image for qemu x86-64
-  ([MEN-2207](https://tracker.mender.io/browse/MEN-2207))
-* Check a Linux ext4 file system before resizing 'primary' partition
-  ([MEN-2242](https://tracker.mender.io/browse/MEN-2242))
-* compile mender during docker image creation
-* Switch to 1.6.0 Mender client as default for docker environment
-* Add license check to mender-convert repo
-  ([MEN-2282](https://tracker.mender.io/browse/MEN-2282))
-* Use a toolchain tuned for ARMv6 architecture to maintain support for Raspberry Pi Zero
-  ([MEN-2399](https://tracker.mender.io/browse/MEN-2399))
-* Fix docker-mender-convert for paths with spaces
-* Add version option for mender convert
-  ([MEN-2257](https://tracker.mender.io/browse/MEN-2257))
-* Fix permission denied error in when calling "mender-convert raw-disk-image-shrink-rootfs"
-* Give container access to host's kernel modules
-  ([MEN-2255](https://tracker.mender.io/browse/MEN-2255))
-* Support compiling Mender client in mender-convert container.
-* Document missing options in the scripts
-  ([MEN-2248](https://tracker.mender.io/browse/MEN-2248))
-* Store sector size in raw/mender disk image related arrays
-  ([MEN-2242](https://tracker.mender.io/browse/MEN-2242))
-* Avoid duplicate content in cmdline.txt
-* rpi: update to 2018.07 U-boot
-  ([MEN-2198](https://tracker.mender.io/browse/MEN-2198))
-* Add --storage-total-size-mb option to mender-convert tool
-  ([MEN-2242](https://tracker.mender.io/browse/MEN-2242))
-* Make tool ready for handling input images containing 3 partitions
-  ([MEN-2207](https://tracker.mender.io/browse/MEN-2207))
-* Allow to use "--demo" flag with any given server type
-* Use local (checked out) version of mender-convert inside container
-* Support passing mender-convert arguments to docker-mender-convert directly
-* remove expert commands
-* Refactor mender-convert to use make install target
-  ([MEN-2411](https://tracker.mender.io/browse/MEN-2411))
-* Improve documentation
-* Set production/demo intervals conditionally
-  ([MEN-2248](https://tracker.mender.io/browse/MEN-2248))
-* Optimizations to speed up conversion, utilizing sparse
-  images.
-* remove dependency on gcc6
-* Install GRUB bootloader to Mender image based on Yocto image for qemu x86-64
-  ([MEN-2207](https://tracker.mender.io/browse/MEN-2207))
 
 
 ## meta-mender thud-v2019.02
