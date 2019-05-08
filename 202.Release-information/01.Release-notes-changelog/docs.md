@@ -8,6 +8,74 @@ taxonomy:
 
 _Released 05.08.2019_
 
+### Statistics
+
+A total of 1512 lines added, 996 removed (delta 516)
+
+| Developers with the most changesets | |
+|---|---|
+| Mirza Krak | 19 (27.5%) |
+| Adam Podogrocki | 16 (23.2%) |
+| Eystein Måløy Stenberg | 13 (18.8%) |
+| Lluis Campos | 9 (13.0%) |
+| Marek Belisko | 4 (5.8%) |
+| Simon Gamma | 3 (4.3%) |
+| Max Bruckner | 1 (1.4%) |
+| Adrian Cuzman | 1 (1.4%) |
+| Dominik Adamski | 1 (1.4%) |
+| Mika Tuupola | 1 (1.4%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Adam Podogrocki | 853 (48.8%) |
+| Eystein Måløy Stenberg | 359 (20.5%) |
+| Mirza Krak | 301 (17.2%) |
+| Lluis Campos | 186 (10.6%) |
+| Marek Belisko | 37 (2.1%) |
+| Simon Gamma | 7 (0.4%) |
+| Max Bruckner | 1 (0.1%) |
+| Adrian Cuzman | 1 (0.1%) |
+| Dominik Adamski | 1 (0.1%) |
+| Mika Tuupola | 1 (0.1%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Mirza Krak | 164 (16.5%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 41 (59.4%) |
+| RnDity | 17 (24.6%) |
+| open-nandra | 4 (5.8%) |
+| github@survive.ch | 3 (4.3%) |
+| max@maxbruckner.de | 1 (1.4%) |
+| adriancuzman@gmail.com | 1 (1.4%) |
+| tuupola@appelsiini.net | 1 (1.4%) |
+| denismosolov@gmail.com | 1 (1.4%) |
+
+| Top lines changed by employer | |
+|---|---|
+| RnDity | 854 (48.9%) |
+| Northern.tech | 846 (48.4%) |
+| open-nandra | 37 (2.1%) |
+| github@survive.ch | 7 (0.4%) |
+| max@maxbruckner.de | 1 (0.1%) |
+| adriancuzman@gmail.com | 1 (0.1%) |
+| tuupola@appelsiini.net | 1 (0.1%) |
+| denismosolov@gmail.com | 1 (0.1%) |
+
+| Employers with the most hackers (total 11) | |
+|---|---|
+| Northern.tech | 3 (27.3%) |
+| RnDity | 2 (18.2%) |
+| open-nandra | 1 (9.1%) |
+| github@survive.ch | 1 (9.1%) |
+| max@maxbruckner.de | 1 (9.1%) |
+| adriancuzman@gmail.com | 1 (9.1%) |
+| tuupola@appelsiini.net | 1 (9.1%) |
+| denismosolov@gmail.com | 1 (9.1%) |
+
+
 ### Changelogs
 
 #### mender-convert (1.1.0)
