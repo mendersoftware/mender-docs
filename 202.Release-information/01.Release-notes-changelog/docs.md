@@ -8,6 +8,43 @@ taxonomy:
 
 _Released 05.07.2019_
 
+### Statistics
+
+A total of 323 lines added, 204 removed (delta 119)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 15 (68.2%) |
+| Drew Moseley | 3 (13.6%) |
+| Lluis Campos | 2 (9.1%) |
+| Mirza Krak | 2 (9.1%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 396 (91.7%) |
+| Mirza Krak | 17 (3.9%) |
+| Drew Moseley | 16 (3.7%) |
+| Lluis Campos | 3 (0.7%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Mirza Krak | 13 (6.4%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 22 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 432 (100.0%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 4 (100.0%) |
+
+
+### Changelogs
+
 #### meta-mender (thud-v2019.05)
 
 New changes in meta-mender since thud-v2019.03:
