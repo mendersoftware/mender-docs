@@ -104,7 +104,13 @@ if using Hosted Mender.
 #### UpdateLogPath
 
 The location where deployment logs will be written. This must be on a persistent
-partition to work correctly.
+partition to avoid it losing the logs due to an root filesystem update.
+
+#### DeviceTypeFile
+
+The location where to store the device_type. This must be on a persistent
+partition to avoid it accidentally being changed due to an root filesystem
+update. The default location is `/var/lib/mender/device_type`
 
 #### UpdatePollIntervalSeconds
 
