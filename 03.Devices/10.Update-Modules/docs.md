@@ -123,6 +123,14 @@ Then create a new Mender Artifact with this as the only payload, for our new `we
 ```bash
 ./mender-artifact write module-image -t $DEVICE_TYPE  -o ~/Downloads/web-file-1.mender -T web-file -n web-file-1.0 -f hello-world
 ```
+The command line options are detailed below:
+* `-t` - The compatible device type of this Mender Artifact.
+* `-o` - The path where to place the output Mender Artifact. This should always have a .mender suffix.
+* `-T` - The update module name. The name should be same of the update module script which is present inside `/usr/share/mender/modules/v3` path.
+* `-n` - The name of the Mender Artifact.
+* `-f` - The path to the file(s) to be sent to the device in the update.
+
+For more details, see `mender-artifact write module-image --help`
 
 ### Upload and deploy your Artifact
 
@@ -147,6 +155,14 @@ The `mender-artifact` tool allows multiple specification of files using the `-f`
 ```bash
 ./mender-artifact write module-image -t $DEVICE_TYPE  -o ~/Downloads/web-file-1.mender -T web-file -n web-file-1.1 -f my-file-1 -f my-file-2 -f my-file-3 ...
 ```
+The command line options are detailed below:
+* `-t` - The compatible device type of this Mender Artifact.
+* `-o` - The path where to place the output Mender Artifact. This should always have a .mender suffix.
+* `-T` - The update module name. The name should be same of the update module script which is present inside `/usr/share/mender/modules/v3` path.
+* `-n` - The name of the Mender Artifact.
+* `-f` - The path to the file(s) to be sent to the device in the update.
+
+For more details, see `mender-artifact write module-image --help`
 
 Deploying such an Artifact will result in the three new files installed on the target. Try it out!
 
