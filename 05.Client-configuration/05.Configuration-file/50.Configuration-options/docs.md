@@ -21,6 +21,13 @@ update. Note that the client may occasionally post its inventory more often if
 there has been recent activity on the device. See also the section about
 [polling intervals](../polling-intervals).
 
+#### UpdatePollIntervalSeconds
+
+An integer that sets the number of seconds to wait between each check for a new
+update. Note that the client may occasionally check more often if there has been
+recent activity on the device. See also the section about [polling
+intervals](../polling-intervals).
+
 #### ModuleTimeoutSeconds
 
 An integer that specifies the number of seconds that an update module will be
@@ -31,9 +38,9 @@ SIGKILL. The default is 4 hours.
 #### RetryPollIntervalSeconds
 
 An integer that sets the number of seconds to wait between each attempt to
-download an update file. Note that the client may attempt more often initially
-to enable rapid upgrades, but will gradually fall back to this value if the
-server is busy. See also the section about [polling
+comunicate with the server. Note that the client may attempt more often
+initially to enable rapid upgrades, but will gradually fall back to this value
+if the server is busy. See also the section about [polling
 intervals](../polling-intervals).
 
 #### RootfsPartA
@@ -104,11 +111,10 @@ if using Hosted Mender.
 #### UpdateLogPath
 
 The location where deployment logs will be written. This must be on a persistent
-partition to work correctly.
+partition to avoid it losing the logs due to an root filesystem update.
 
-#### UpdatePollIntervalSeconds
+#### DeviceTypeFile
 
-An integer that sets the number of seconds to wait between each check for a new
-update. Note that the client may occasionally check more often if there has been
-recent activity on the device. See also the section about [polling
-intervals](../polling-intervals).
+The location where to store the device_type. This must be on a persistent
+partition to avoid it accidentally being changed due to an root filesystem
+update. The default location is `/var/lib/mender/device_type`
