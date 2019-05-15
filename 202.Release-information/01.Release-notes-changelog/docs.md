@@ -4,6 +4,121 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender rocko-v2019.05
+
+_Released 05.15.2019_
+
+### Statistics
+
+A total of 14 lines added, 12 removed (delta 2)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 2 (40.0%) |
+| Mirza Krak | 1 (20.0%) |
+| Ajith P Venugopal | 1 (20.0%) |
+| Lluis Campos | 1 (20.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 9 (64.3%) |
+| Ajith P Venugopal | 2 (14.3%) |
+| Lluis Campos | 2 (14.3%) |
+| Mirza Krak | 1 (7.1%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 4 (80.0%) |
+| ajithpv@outlook.com | 1 (20.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 12 (85.7%) |
+| ajithpv@outlook.com | 2 (14.3%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 3 (75.0%) |
+| ajithpv@outlook.com | 1 (25.0%) |
+
+
+### Changelogs
+
+#### meta-mender (rocko-v2019.05)
+
+New changes in meta-mender since rocko-v2019.04:
+
+* Fix mender 2.0.x and mender-artifact 3.0.x recipes to use the
+  correct branches when fetching the source.
+* Add missing build dependency on "xz" in Mender Artifact recipe for 3.0.0b1 version
+* Add recipes for mender-1.7.1 and mender-artifact-2.4.1.
+* Add recipes for mender-2.0.0 and mender-artifact-3.0.0.
+  Note that these recipes are not enabled by default in thud. If you
+  want to use them, you have to add this to your build configuration:
+  ```
+  PREFERRED_VERSION_pn-mender = "2.%"
+  PREFERRED_VERSION_pn-mender-artifact = "3.%"
+  PREFERRED_VERSION_pn-mender-artifact-native = "3.%"
+  ```
+* Fix GRUB start-up on x86 by renaming "boot.efi" to "bootia32.efi"
+
+
+## meta-mender sumo-v2019.05
+
+_Released 05.15.2019_
+
+### Statistics
+
+A total of 13 lines added, 11 removed (delta 2)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 2 (50.0%) |
+| Lluis Campos | 1 (25.0%) |
+| Ajith P Venugopal | 1 (25.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 9 (69.2%) |
+| Lluis Campos | 2 (15.4%) |
+| Ajith P Venugopal | 2 (15.4%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 3 (75.0%) |
+| ajithpv@outlook.com | 1 (25.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 11 (84.6%) |
+| ajithpv@outlook.com | 2 (15.4%) |
+
+| Employers with the most hackers (total 3) | |
+|---|---|
+| Northern.tech | 2 (66.7%) |
+| ajithpv@outlook.com | 1 (33.3%) |
+
+
+### Changelogs
+
+#### meta-mender (sumo-v2019.05)
+
+New changes in meta-mender since sumo-v2019.04:
+
+* Add missing build dependency on "xz" in Mender Artifact recipe for 3.0.0b1 version
+* Fix mender 2.0.x and mender-artifact 3.0.x recipes to use the
+  correct branches when fetching the source.
+* Add recipes for mender-1.7.1 and mender-artifact-2.4.1.
+* Add recipes for mender-2.0.0 and mender-artifact-3.0.0.
+  Note that these recipes are not enabled by default in thud. If you
+  want to use them, you have to add this to your build configuration:
+  ```
+  PREFERRED_VERSION_pn-mender = "2.%"
+  PREFERRED_VERSION_pn-mender-artifact = "3.%"
+  PREFERRED_VERSION_pn-mender-artifact-native = "3.%"
+  ```
+
+
 ## meta-mender thud-v2019.05
 
 _Released 05.07.2019_
