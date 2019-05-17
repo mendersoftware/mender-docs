@@ -15,7 +15,7 @@ It is possible to install the Mender client from source by following the guideli
 
 ## Install Mender provided Debian package
 
-A Debian package (`.deb`) is provided for convince to install on e.g Debian, Ubuntu or Raspbian. We provide packages for the following architectures:
+A Debian package (`.deb`) is provided for convenience to install on e.g Debian, Ubuntu or Raspbian. We provide packages for the following architectures:
 
 - armhf (ARM-v6)
     - Raspberry Pi, BeagleBone and other ARM based devices.
