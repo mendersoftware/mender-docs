@@ -4,8 +4,6 @@ taxonomy:
     category: docs
 ---
 
-The Mender client will implicitly authorize the Mender server to manage it if the server holds the key corresponding to the [server certificate the client was provisioned with](../../artifacts/yocto-project/building-for-production#including-the-client-certificates). This tutorial shows the steps required to securely automate the other direction: authorizing the Mender client to be accepted by the Mender server.
-
 The Mender server supports [preauthorizing devices](../../architecture/device-authentication#preauthorization-flow), where you add the [identity](../../client-configuration/identity) and public key of the device to the Mender server before the device connects for the first time. This way the device is automatically authorized to join the Mender server when it first connects. This is in particular useful in a mass production setting because you can preauthorize devices when they are manufactured so they automatically get accepted into the Mender server when your customer turns them on, which might happen several months after manufacturing.
 
 See [Device authentication](../../architecture/device-authentication) for a general overview of how device authentication works in Mender.
