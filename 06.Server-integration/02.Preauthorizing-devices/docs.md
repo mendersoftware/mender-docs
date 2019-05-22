@@ -59,8 +59,23 @@ When preauthorizing a device, device keys will be generated on separate system (
 
 !!! Make sure the system you generate keys on is adequately secured, as it will also generate the device private keys. You should consider securely deleting (e.g. `shred`) the *private* keys after provisioning the device if you do not truly need a record of them (you can keep the public keys, of course).
 
+We will use a script to generate a keypair the Mender client understands; it uses the `openssl` command to generate the keys.
+
 <!--AUTOVERSION: "mender/blob/%"/mender-->
-We will use a script to generate a keypair the Mender client understands; it uses the `openssl` command to generate the keys. Download the [keygen-client](https://github.com/mendersoftware/mender/blob/2.0.0/support/keygen-client?target=_blank) script into a directory and ensure it is executable. Run it without parameters:
+Download the [keygen-client](https://github.com/mendersoftware/mender/blob/2.0.0/support/keygen-client?target=_blank) script into a directory:
+
+<!--AUTOVERSION: "mender/%"/mender-->
+```bash
+wget https://raw.githubusercontent.com/mendersoftware/mender/2.0.0/support/keygen-client
+```
+
+Ensure it is executable:
+
+```bash
+chmod +x keygen-client
+```
+
+Run it without parameters:
 
 ```bash
 ./keygen-client
