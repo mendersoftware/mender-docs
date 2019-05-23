@@ -4,8 +4,6 @@ taxonomy:
     category: docs
 ---
 
-The Mender client will implicitly authorize the Mender server to manage it if the server holds the key corresponding to the [server certificate the client was provisioned with](../../artifacts/yocto-project/building-for-production#including-the-client-certificates). This tutorial shows the steps required to securely automate the other direction: authorizing the Mender client to be accepted by the Mender server.
-
 The Mender server supports [preauthorizing devices](../../architecture/device-authentication#preauthorization-flow), where you add the [identity](../../client-configuration/identity) and public key of the device to the Mender server before the device connects for the first time. This way the device is automatically authorized to join the Mender server when it first connects. This is in particular useful in a mass production setting because you can preauthorize devices when they are manufactured so they automatically get accepted into the Mender server when your customer turns them on, which might happen several months after manufacturing.
 
 See [Device authentication](../../architecture/device-authentication) for a general overview of how device authentication works in Mender.
@@ -61,8 +59,23 @@ When preauthorizing a device, device keys will be generated on separate system (
 
 !!! Make sure the system you generate keys on is adequately secured, as it will also generate the device private keys. You should consider securely deleting (e.g. `shred`) the *private* keys after provisioning the device if you do not truly need a record of them (you can keep the public keys, of course).
 
+We will use a script to generate a keypair the Mender client understands; it uses the `openssl` command to generate the keys.
+
 <!--AUTOVERSION: "mender/blob/%"/mender-->
-We will use a script to generate a keypair the Mender client understands; it uses the `openssl` command to generate the keys. Download the [keygen-client](https://github.com/mendersoftware/mender/blob/2.0.0/support/keygen-client?target=_blank) script into a directory and ensure it is executable. Run it without parameters:
+Download the [keygen-client](https://github.com/mendersoftware/mender/blob/2.0.0/support/keygen-client?target=_blank) script into a directory:
+
+<!--AUTOVERSION: "mender/%"/mender-->
+```bash
+wget https://raw.githubusercontent.com/mendersoftware/mender/2.0.0/support/keygen-client
+```
+
+Ensure it is executable:
+
+```bash
+chmod +x keygen-client
+```
+
+Run it without parameters:
 
 ```bash
 ./keygen-client
