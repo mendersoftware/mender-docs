@@ -22,9 +22,8 @@ In this tutorial we will highlight some key use cases covered by the `mender-art
 
 The `mender-artifact` utility is used to create and inspect Mender Artifacts.
 
-You can download a [prebuilt mender-artifact Linux binary here][x.x.x_mender-artifact].
-
-!!! If you need to build `mender-artifact` from source, please see [Compiling mender-artifact](#compiling-mender-artifact).
+Download the prebuilt `mender-artifact` binary for your platform following the links
+in [Downloads section](../../downloads#mender-artifact-tool).
 
 
 ## Changing the Mender server
@@ -237,6 +236,3 @@ For convenience, we can also make sure the `mender-artifact` utility is in PATH:
 ```bash
 export PATH=$PATH:$GOPATH/bin
 ```
-
-<!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/master/mender-artifact

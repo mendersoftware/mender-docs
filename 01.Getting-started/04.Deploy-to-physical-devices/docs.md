@@ -32,11 +32,8 @@ Get the disk image and Artifacts for your board(s) from [Download demo images](.
 !!! It is possible to use this tutorial with *any* physical board, as long as you have integrated Mender with it. In this case you cannot use the demo Artifacts we provide in this tutorial, but you need to build your own artifacts as described in [Building a Mender Yocto Project image](../../artifacts/yocto-project/building).
 
 ### Mender-Artifact tool
-Download [the prebuilt mender-artifact tool][x.x.x_mender-artifact] available
-for Linux, or [compile it from source](../../artifacts/modifying-a-mender-artifact#compiling-mender-artifact). In both cases remember to add execute permission (e.g. with `chmod +x mender-artifact`).
-
-<!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/master/mender-artifact
+Download the prebuilt `mender-artifact` binary for your platform following the links
+in [Downloads section](../../downloads#mender-artifact-tool).
 
 Please see [Modifying a Mender Artifact](../../artifacts/modifying-a-mender-artifact)
 for a more detailed overview.
