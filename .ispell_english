@@ -485,6 +485,7 @@ dae
 dalgleish
 dao
 darsain
+darwin
 dashdash
 dat
 datadir
@@ -554,6 +555,7 @@ deviceauth
 DeviceKey
 DeviceNumber
 devicetree
+DeviceTypeFile
 devid
 devongovett
 df
@@ -1186,6 +1188,7 @@ levelup
 levenshtein
 Levithan
 levn
+lf
 LfKga
 LGPL
 LGPLv
@@ -1697,6 +1700,8 @@ pwgen
 pY
 py
 pyro
+pytest
+pytest's
 qemu
 qemux
 QHIpQNkD
