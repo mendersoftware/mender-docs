@@ -55,10 +55,8 @@ To install the Mender client on your device, follow the instructions in the [Ins
 
 We will use the `mender-artifact` tool to create the payloads required for Update Modules to work.
 
-If you use Linux, [download the prebuilt mender-artifact binary][x.x.x_mender-artifact], otherwise [compile it for your platform](../../artifacts/modifying-a-mender-artifact#compiling-mender-artifact).
-
-<!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/master/mender-artifact
+Download the prebuilt `mender-artifact` binary for your platform following the links
+in [Downloads section](../../downloads#mender-artifact-tool).
 
 ## Basic example: File copy Update Module
 

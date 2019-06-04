@@ -38,7 +38,7 @@ SIGKILL. The default is 4 hours.
 #### RetryPollIntervalSeconds
 
 An integer that sets the number of seconds to wait between each attempt to
-comunicate with the server. Note that the client may attempt more often
+communicate with the server. Note that the client may attempt more often
 initially to enable rapid upgrades, but will gradually fall back to this value
 if the server is busy. See also the section about [polling
 intervals](../polling-intervals).
