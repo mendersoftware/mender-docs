@@ -36,26 +36,13 @@ Docker Compose. Running this script will pull down the images and start them:
 
 !!! If this is the first time you start the Mender server, several gigabytes of Docker images may need to be downloaded. On a 100Mbit Internet connection this may take 5 minutes.
 
-After the Docker images have been downloaded, the Mender services start up and you will see a lot of log messages from them in your terminal.
-This includes output from the Mender virtual device.
-A few minutes later, the logs will stop coming except for some periodic log messages
-from the Mender `mender-device-auth` and `mender-api-gateway` services.
+After the Docker images have been downloaded, the `up` script starts the Mender services, adds a demo user with the username `mender-demo@example.com`, and assigns a random 12 character password.
 
+Note that this password is not stored anywhere in the Mender demo environment. Make sure to remember this password for logins to this instance of the demo environment.
 
-## Create the initial user
-
-! Wait until the Mender server has started before proceeding.
-
-The UI requires you to log in with a valid username and password. You must first create a Mender user via a CLI provided by the User Administration Service. The service's binary is embedded in a Docker container, so to execute it you will issue the **exec** subcommand of docker-compose, e.g.:
-
-```bash
-./demo exec mender-useradm /usr/bin/useradm create-user --username=myusername@example.com --password=mysecretpassword
-```
-
-! Keep in mind that above is executed in a command-line interpreter meaning that certain characters might need to be escaped, e.g if you are using the `$` character in your password, this could interpret as a variable name unless it is escaped.
+When you press `return` log messages from the docker containers will be displayed in your terminal, including output from the Mender virtual device. Eventually, most of the logs will stop except for some periodic messages from the `mender-device-auth` and `mender-api-gateway` services. Pressing ctrl-c at any point will bring down the demo environment.
 
 !!! For Mender on-premise installations, your email and password are currently only used to log in to the Mender server. You will not receive any email from Mender. However, this might change in future versions so we recommend to input your real email address.
-
 
 
 ## Open the Mender UI
