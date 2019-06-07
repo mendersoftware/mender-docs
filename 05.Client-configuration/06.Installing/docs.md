@@ -95,7 +95,7 @@ Now you have the Mender client installed and properly setup in your device.
 Start the Mender client in [managed mode](../../architecture/overview#modes-of-operation) and enable autostart of the Mender service on subsequent boots:
 
 ```bash
-sudo systemctl enable mender && sudo systemctl start mender
+sudo systemctl enable mender && sudo systemctl restart mender
 ```
 
 After a few minutes, take a look at the Devices tab in your Mender server. You should see your new device under "Pending".
