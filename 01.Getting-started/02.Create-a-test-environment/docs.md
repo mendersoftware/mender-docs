@@ -31,7 +31,7 @@ Docker Compose. Running this script will pull down the images and start them:
 
 
 ```bash
-./up
+./demo --client up
 ```
 
 !!! If this is the first time you start the Mender server, several gigabytes of Docker images may need to be downloaded. On a 100Mbit Internet connection this may take 5 minutes.

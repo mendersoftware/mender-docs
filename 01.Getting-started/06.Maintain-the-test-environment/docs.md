@@ -31,13 +31,13 @@ If you want to remove all state in your Mender demo environment and start clean,
 run the following commands in the `integration` directory:
 
 ```bash
-./stop
+./demo stop
 ```
 
 ```bash
-./reset
+./demo rm -v
 ```
 
 ```bash
-./up
+./demo --client up
 ```
