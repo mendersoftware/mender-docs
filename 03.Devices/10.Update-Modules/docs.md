@@ -41,7 +41,7 @@ Refer to [further reading](#further-reading) for more details.
 
 ### Mender server
 
-You will need a Mender server.
+You will need a Mender server if you are using [managed mode](https://docs.mender.io/2.0/architecture/overview#modes-of-operation).
 
 For easy setup, use [Hosted Mender](https://hosted.mender.io?target=_blank) or the [on-premise demo server](../../getting-started/create-a-test-environment).
 
@@ -138,11 +138,25 @@ The command line options are detailed below:
 
 For more details, see `mender-artifact write module-image --help`
 
-### Upload and deploy your Artifact
+### Upload and deploy your Artifact in Managed Mode
 
 Go to Artifacts in the Mender server UI and upload your newly generated Mender Artifact.
 
 Now go to Deployments and deploy the Artifact to All devices. It should finish within a minute or so.
+
+### Upload and deploy your Artifact in Standalone Mode
+
+Copy your newly generated Mender Artifact to the target device.  SSH can be used for this, i.e. scp.
+
+```bash
+scp ~/Downloads/web-file-1.mender <username>@<deviceip>:
+```
+
+Then deploy the artifact from the target device:
+
+```bash
+mender -install web-file-1.mender
+```
 
 ### Verify the deployment on the device
 
