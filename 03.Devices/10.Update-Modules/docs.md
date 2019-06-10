@@ -98,6 +98,12 @@ Then add execute permission to the script:
 chmod +x web-file
 ```
 
+Then create the directory where the update files will be installed:
+```bash
+cd /var
+mkdir www
+```
+
 Your Mender client is now able to handle any Artifact containing a `web-file` Update Module Artifact.
 
 ### Create an Artifact with a payload for the new Update Module
