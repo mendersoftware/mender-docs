@@ -4,6 +4,60 @@ taxonomy:
     category: docs
 ---
 
+## Mender 2.0.1
+
+_Released 06.24.2019_
+
+### Changelogs
+
+#### gui (2.0.1)
+
+New changes in gui since 2.0.0:
+
+* long device inventory texts are no longer cut off + visible on hover
+* updated dependencies
+* Bugfix for innaccurate offline devices on dashboard
+* Bugfix to ensure pending device checkboxes work as expected
+* Prevented blank page on no result release search
+  ([MEN-2572](https://tracker.mender.io/browse/MEN-2572))
+
+#### integration (2.0.1)
+
+New changes in integration since 2.0.0:
+
+* Upgrade gui to 2.0.1.
+* Upgrade mender to 2.0.1.
+* Upgrade mender-artifact to 3.0.1.
+* Upgrade mender-conductor to 1.3.1.
+* Upgrade mender-conductor-enterprise to 1.3.1.
+
+#### mender (2.0.1)
+
+New changes in mender since 2.0.0:
+
+* module-artifact-gen: Fix inability to specify more than one device_type.
+* single-file module: Make sure permissions are preserved.
+  Also make sure that backup preserves permissions.
+* Artifact gen: Support argument passthrough to `mender-artifact`.
+  Use `--` to signal that remaining arguments should be passed directly
+  to `mender-artifact`.
+* Restore error code 2 behavior when there is nothing to commit.
+
+#### mender-artifact (3.0.1)
+
+New changes in mender-artifact since 3.0.0:
+
+* Fix non-rootfs Artifacts being destroyed when signing them.
+  ([MEN-2573](https://tracker.mender.io/browse/MEN-2573))
+
+#### mender-conductor (1.3.1)
+
+New changes in mender-conductor since 1.3.0:
+
+* Timestamp added to send_email worker
+* email-sender: fixed bug with wrong state reporting
+
+
 ## meta-mender rocko-v2019.05
 
 _Released 05.15.2019_
