@@ -4,6 +4,107 @@ taxonomy:
     category: docs
 ---
 
+## Mender 2.0.1
+
+_Released 06.24.2019_
+
+### Statistics
+
+A total of 622 lines added, 284 removed (delta 338)
+
+| Developers with the most changesets | |
+|---|---|
+| Manuel Zedel | 13 (48.1%) |
+| Kristian Amlie | 8 (29.6%) |
+| Michael Clelland | 2 (7.4%) |
+| Oleksandr Miliukov | 2 (7.4%) |
+| Eystein Måløy Stenberg | 1 (3.7%) |
+| Lluis Campos | 1 (3.7%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 403 (60.0%) |
+| Manuel Zedel | 185 (27.5%) |
+| Oleksandr Miliukov | 61 (9.1%) |
+| Lluis Campos | 13 (1.9%) |
+| Michael Clelland | 6 (0.9%) |
+| Eystein Måløy Stenberg | 4 (0.6%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Michael Clelland | 2 (0.7%) |
+
+| Developers with the most report credits (total 1) | |
+|---|---|
+| Cedric Veilleux | 1 (100.0%) |
+
+| Developers who gave the most report credits (total 1) | |
+|---|---|
+| Kristian Amlie | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 27 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 672 (100.0%) |
+
+| Employers with the most hackers (total 6) | |
+|---|---|
+| Northern.tech | 6 (100.0%) |
+
+
+### Changelogs
+
+#### gui (2.0.1)
+
+New changes in gui since 2.0.0:
+
+* long device inventory texts are no longer cut off + visible on hover
+* updated dependencies
+* Bugfix for innaccurate offline devices on dashboard
+* Bugfix to ensure pending device checkboxes work as expected
+* Prevented blank page on no result release search
+  ([MEN-2572](https://tracker.mender.io/browse/MEN-2572))
+
+#### integration (2.0.1)
+
+New changes in integration since 2.0.0:
+
+* Upgrade gui to 2.0.1.
+* Upgrade mender to 2.0.1.
+* Upgrade mender-artifact to 3.0.1.
+* Upgrade mender-conductor to 1.3.1.
+* Upgrade mender-conductor-enterprise to 1.3.1.
+
+#### mender (2.0.1)
+
+New changes in mender since 2.0.0:
+
+* module-artifact-gen: Fix inability to specify more than one device_type.
+* single-file module: Make sure permissions are preserved.
+  Also make sure that backup preserves permissions.
+* Artifact gen: Support argument passthrough to `mender-artifact`.
+  Use `--` to signal that remaining arguments should be passed directly
+  to `mender-artifact`.
+* Restore error code 2 behavior when there is nothing to commit.
+
+#### mender-artifact (3.0.1)
+
+New changes in mender-artifact since 3.0.0:
+
+* Fix non-rootfs Artifacts being destroyed when signing them.
+  ([MEN-2573](https://tracker.mender.io/browse/MEN-2573))
+
+#### mender-conductor (1.3.1)
+
+New changes in mender-conductor since 1.3.0:
+
+* Timestamp added to send_email worker
+* email-sender: fixed bug with wrong state reporting
+
+
 ## meta-mender rocko-v2019.05
 
 _Released 05.15.2019_

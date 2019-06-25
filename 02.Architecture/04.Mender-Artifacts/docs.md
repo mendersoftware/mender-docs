@@ -38,7 +38,7 @@ Mender Artifact file. Please note that the exact format of the artifact may vary
 
 <!--AUTOVERSION: "mender-artifact/blob/%"/mender-artifact-->
 More details about the exact format of the Mender Artifact can be found in the
-[Mender Artifact file documentation](https://github.com/mendersoftware/mender-artifact/blob/3.0.0/Documentation?target=_blank).
+[Mender Artifact file documentation](https://github.com/mendersoftware/mender-artifact/blob/3.0.1/Documentation?target=_blank).
 
 
 ## Versions

@@ -73,7 +73,7 @@ named `mender-server`:
 
 <!--AUTOVERSION: "-b %"/integration -->
 ```bash
-git clone -b 2.0.0 https://github.com/mendersoftware/integration mender-server
+git clone -b 2.0.1 https://github.com/mendersoftware/integration mender-server
 ```
 
 > Cloning into 'deployment'...
@@ -532,7 +532,7 @@ At this point your commit history should look as follows:
 <!--AUTOVERSION: "git log --oneline origin/%..HEAD"/integration -->
 <!--AUTOMATION: ignore -->
 ```bash
-git log --oneline origin/2.0.0..HEAD
+git log --oneline origin/2.0.1..HEAD
 ```
 > 7a4de3c production: final configuration
 > 41273f7 production: adding generated keys and certificates
