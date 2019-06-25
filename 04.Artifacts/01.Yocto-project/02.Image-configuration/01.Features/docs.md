@@ -84,12 +84,8 @@ The currently available classes are:
     * `mender-image`
     * `mender-install`
     * `mender-systemd`
-    * If ARM:
-        * `mender-image-sd`
-        * `mender-uboot`
-    * If x86:
-        * `mender-image-uefi`
-        * `mender-grub`
+    * `mender-image-uefi`
+    * `mender-grub`
 
 * `mender-full-ubi`: Enables the most common features for UBI based Mender
   installations, which are:
@@ -99,3 +95,6 @@ The currently available classes are:
     * `mender-systemd`
     * `mender-ubi`
     * `mender-uboot`
+
+<!--AUTOVERSION: "Yocto releases prior to 2.6 (%)"/ignore-->
+! Yocto releases prior to 2.6 (thud) used a different feature set by default. Use the following command to check exactly which features are enabled: `bitbake -e core-image-minimal | grep '^DISTRO_FEATURES='`
