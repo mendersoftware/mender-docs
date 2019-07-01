@@ -4,6 +4,68 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender thud-v2019.07
+
+_Released 07.01.2019_
+
+### Statistics
+
+A total of 64 lines added, 20 removed (delta 44)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 6 (46.2%) |
+| Lluis Campos | 3 (23.1%) |
+| Drew Moseley | 3 (23.1%) |
+| Jonas Norling | 1 (7.7%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 52 (81.2%) |
+| Lluis Campos | 6 (9.4%) |
+| Drew Moseley | 5 (7.8%) |
+| Jonas Norling | 1 (1.6%) |
+
+| Developers with the most report credits (total 1) | |
+|---|---|
+| Drew Moseley | 1 (100.0%) |
+
+| Developers who gave the most report credits (total 1) | |
+|---|---|
+| Kristian Amlie | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 12 (92.3%) |
+| GreenEggs AB | 1 (7.7%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 63 (98.4%) |
+| GreenEggs AB | 1 (1.6%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 3 (75.0%) |
+| GreenEggs AB | 1 (25.0%) |
+
+
+### Changelogs
+
+#### meta-mender (thud-v2019.07)
+
+New changes in meta-mender since thud-v2019.05:
+
+* Fix build failing in do_image_ubimg task
+* Demo images now include Yocto LSB package.
+  ([MEN-2421](https://tracker.mender.io/browse/MEN-2421))
+* QEMU: Add inventory script for Docker IP and open port 80.
+  ([MEN-2574](https://tracker.mender.io/browse/MEN-2574))
+* grub-mender-grubenv: Fix broken 'debug-pause' `PACKAGECONFIG`.
+* u-boot-mender: Add define for MENDER_STORAGE_DEVICE
+* Add recipes for mender 2.0.1 and mender-artifact 3.0.1
+
+
 ## Mender 2.0.1
 
 _Released 06.24.2019_
