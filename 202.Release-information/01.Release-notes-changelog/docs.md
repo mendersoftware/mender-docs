@@ -4,6 +4,27 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender thud-v2019.07
+
+_Released 07.01.2019_
+
+
+### Changelogs
+
+#### meta-mender (thud-v2019.07)
+
+New changes in meta-mender since thud-v2019.05:
+
+* Fix build failing in do_image_ubimg task
+* Demo images now include Yocto LSB package.
+  ([MEN-2421](https://tracker.mender.io/browse/MEN-2421))
+* QEMU: Add inventory script for Docker IP and open port 80.
+  ([MEN-2574](https://tracker.mender.io/browse/MEN-2574))
+* grub-mender-grubenv: Fix broken 'debug-pause' `PACKAGECONFIG`.
+* u-boot-mender: Add define for MENDER_STORAGE_DEVICE
+* Add recipes for mender 2.0.1 and mender-artifact 3.0.1
+
+
 ## Mender 2.0.1
 
 _Released 06.24.2019_
