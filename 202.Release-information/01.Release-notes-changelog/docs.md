@@ -8,6 +8,47 @@ taxonomy:
 
 _Released 07.01.2019_
 
+### Statistics
+
+A total of 64 lines added, 20 removed (delta 44)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 6 (46.2%) |
+| Lluis Campos | 3 (23.1%) |
+| Drew Moseley | 3 (23.1%) |
+| Jonas Norling | 1 (7.7%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 52 (81.2%) |
+| Lluis Campos | 6 (9.4%) |
+| Drew Moseley | 5 (7.8%) |
+| Jonas Norling | 1 (1.6%) |
+
+| Developers with the most report credits (total 1) | |
+|---|---|
+| Drew Moseley | 1 (100.0%) |
+
+| Developers who gave the most report credits (total 1) | |
+|---|---|
+| Kristian Amlie | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 12 (92.3%) |
+| GreenEggs AB | 1 (7.7%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 63 (98.4%) |
+| GreenEggs AB | 1 (1.6%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 3 (75.0%) |
+| GreenEggs AB | 1 (25.0%) |
+
 
 ### Changelogs
 
