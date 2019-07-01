@@ -4,6 +4,63 @@ taxonomy:
     category: docs
 ---
 
+## mender-convert 1.1.1
+
+_Released 07.01.2019_
+
+### Statistics
+
+A total of 26 lines added, 23 removed (delta 3)
+
+| Developers with the most changesets | |
+|---|---|
+| Mirza Krak | 2 (40.0%) |
+| Lluis Campos | 1 (20.0%) |
+| Adam Podogrocki | 1 (20.0%) |
+| Marek Belisko | 1 (20.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Mirza Krak | 19 (47.5%) |
+| Adam Podogrocki | 17 (42.5%) |
+| Lluis Campos | 3 (7.5%) |
+| Marek Belisko | 1 (2.5%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Mirza Krak | 14 (60.9%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 3 (60.0%) |
+| RnDity | 1 (20.0%) |
+| open-nandra | 1 (20.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 22 (55.0%) |
+| RnDity | 17 (42.5%) |
+| open-nandra | 1 (2.5%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 2 (50.0%) |
+| RnDity | 1 (25.0%) |
+| open-nandra | 1 (25.0%) |
+
+
+### Changelogs
+
+#### mender-convert (1.1.1)
+
+New changes in mender-convert since 1.1.0:
+
+* rpi: Bump u-boot version to fix booting on rpi0w after raspi-config resize partition
+  ([MEN-2436](https://tracker.mender.io/browse/MEN-2436))
+* shrink expanded rootfs when running "from_raw_disk_image"
+* Update mender-convert to for Mender v2.0.1 release
+
+
 ## meta-mender thud-v2019.07
 
 _Released 07.01.2019_
