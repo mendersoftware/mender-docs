@@ -4,6 +4,23 @@ taxonomy:
     category: docs
 ---
 
+## mender-convert 1.1.1
+
+_Released 07.01.2019_
+
+
+### Changelogs
+
+#### mender-convert (1.1.1)
+
+New changes in mender-convert since 1.1.0:
+
+* rpi: Bump u-boot version to fix booting on rpi0w after raspi-config resize partition
+  ([MEN-2436](https://tracker.mender.io/browse/MEN-2436))
+* shrink expanded rootfs when running "from_raw_disk_image"
+* Update mender-convert to for Mender v2.0.1 release
+
+
 ## meta-mender thud-v2019.07
 
 _Released 07.01.2019_
