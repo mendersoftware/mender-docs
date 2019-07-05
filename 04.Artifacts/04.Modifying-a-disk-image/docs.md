@@ -63,11 +63,11 @@ sudo mkdir /mnt/rootfs1 && sudo mkdir /mnt/rootfs2
 ```
 
 ```bash
-sudo mount -o loop,offset=$((512*81920)) mender-beaglebone.sdimg /mnt/rootfs1
+sudo mount -o loop,offset=$((512*81920)),sizelimit=$((512*212992)) mender-beaglebone.sdimg /mnt/rootfs1
 ```
 
 ```bash
-sudo mount -o loop,offset=$((512*294912)) mender-beaglebone.sdimg /mnt/rootfs2
+sudo mount -o loop,offset=$((512*294912)),sizelimit=$((512*212992)) mender-beaglebone.sdimg /mnt/rootfs2
 ```
 
 Now you can modify the rootfs file systems in the paths `/mnt/rootfs1` and `/mnt/rootfs2`.
