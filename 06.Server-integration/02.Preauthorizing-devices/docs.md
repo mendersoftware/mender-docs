@@ -172,6 +172,7 @@ Find the location of the [private key we generated](#generate-a-client-keypair) 
 mender-artifact install -m 600 keys-client-generated/private.key mender-disk-image.sdimg:/data/mender/mender-agent.pem
 ```
 
+If you're editing a golden image you should mount the `data` partition on your work machine (sdimg4 from `fdisk -l`) and add the private key to `/mender/mender-agent.pem`.
 
 ## Boot the device
 
