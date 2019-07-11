@@ -13,7 +13,7 @@ are updated through external storage like a USB stick.
 For an explanation of the difference between *managed* and *standalone* deployments, please see
 [Modes of operation](../overview#modes-of-operation).
 
-!!! Note that [state scripts](../../artifacts/state-scripts) are a feature of managed mode.  State scripts are not executed when running Mender in standalone mode.
+!!! Note that [state scripts](../../artifacts/state-scripts) work slightly differently in standalone mode, see [state scripts and standalone mode](../../artifacts/state-scripts#standalone-mode) for more information.
 
 
 ## Setting Mender up for standalone mode
