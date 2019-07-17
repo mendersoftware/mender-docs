@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-This page describes how to install the Mender client in an existing Linux system. Installing this way does not offer a a full Mender integration. However, it is possible to use Update Modules and update parts of the system.
+This page describes how to install the Mender client in an existing Linux system. Installing this way does not offer a full Mender integration. However, it is possible to use Update Modules and update parts of the system.
 
 If full board integration is desired, follow the device documentation on [Yocto Project](../../devices/yocto-project) or [Debian family](../../devices/debian-family).
 
@@ -102,3 +102,9 @@ After a few minutes, take a look at the Devices tab in your Mender server. You s
 Click "Accept" to authorize it to join your Mender server. You are now ready to deploy updates to your device!
 
 !!! If your device does not show up, follow the [troubleshooting section on Mender Server Connection Issues](../../troubleshooting/device-runtime#mender-server-connection-issues).
+
+
+## Additional information
+
+! There are security implications to connecting a client and server for the first time, also known as *bootstrapping*. If a client and server have not exchanged any information in advance, they need to accept each other on trust this first time, with the risk that the information the other party presents is spoofed. To mitigate this risk, the Mender client preinstalls the TLS certificate of the server when it is provisioned, as part of the Yocto Project image build. So it is not possible for a rogue server to intercept the connection from a client or pretend to be a different server, assuming server's private TLS key is securely managed. A rogue device can still spoof the information it sends to the server in order to be authorized, and this is why Mender asks you to make the authorization decision. However, the risk of letting the server manage a rogue device is much lower than the risk of a rogue server managing devices.
+
