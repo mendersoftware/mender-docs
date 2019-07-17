@@ -310,3 +310,9 @@ help migrate a device from the old setup to the new one. This is enabled by addi
 IMAGE_INSTALL_append = " mender-migrate-configuration"
 ```
 to your `local.conf` file.
+
+## I get a build error "Disk Requirements: At least xxx more space needed on the / filesystem." or "The rootfs size xxx(K) overrides IMAGE_ROOTFS_MAXSIZE: xxx(K)"
+
+This indicates that the size declared for the full Mender image is too small to contain all files in the root filesystem.
+
+Increase the size of the image by increasing the value in `MENDER_STORAGE_TOTAL_SIZE_MB` (see description in [Variables](../../artifacts/yocto-project/variables#mender_storage_total_size_mb)).
