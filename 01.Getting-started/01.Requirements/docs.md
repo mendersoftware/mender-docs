@@ -27,7 +27,7 @@ multiple small, isolated services make up the server.
 In order to make it easy to test Mender as a whole, we have created a
 Docker Compose environment that brings all of these components up
 and connects them together on a single machine.
-It also includes a virtual device for you to test with,
+During the onboarding process a virtual device can be started for you to test with,
 which is handy because it means that you can test Mender without
 having to configure any hardware.
 

@@ -15,7 +15,7 @@ When you are done testing Mender, simply press **Ctrl-C** in the terminal
 you started Mender in, where the log output is shown. Stopping all the
 services may take about a minute.
 
-The Mender demo environment can be started by running the `up` script again.
+The Mender demo environment can be started by running the `./demo up` script again.
 
 
 ## Reset login credentials
