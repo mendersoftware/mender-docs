@@ -144,7 +144,7 @@ Mender in production environment. If on premise server is used, then adjust
 
 ## Building for demo environment
 
-If instead, you with to use the [Mender demo
+If instead you wish to use the [Mender demo
 environment](../../../getting-started/create-a-test-environment), execute the
 command with these parameters:
 
