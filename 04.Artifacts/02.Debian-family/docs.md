@@ -154,7 +154,7 @@ DEVICE_TYPE="raspberrypi3"
 RAW_DISK_IMAGE="input/golden-image-1.img"
 
 ARTIFACT_NAME="golden-image-1-mender-integ"
-MENDER_DISK_IMAGE="input/golden-image-1-mender-integ.sdimg"
+MENDER_DISK_IMAGE="golden-image-1-mender-integ.sdimg"
 
 DEMO_HOST_IP="192.168.10.2"
 
