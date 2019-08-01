@@ -32,7 +32,7 @@ introduces example tools provided in Mender integration repository.
 
 To clean up the deviceauth database, run the following from within the integration repository:
 ```
-docker-compose exec mender-device-auth /usr/bin/deviceauth maintenance --decommissioning-cleanup
+docker-compose exec menderproduction_mender-device-auth_1 /usr/bin/deviceauth maintenance --decommissioning-cleanup
 ```
 
 ## The virtual QEMU device is not showing up in demo mode
