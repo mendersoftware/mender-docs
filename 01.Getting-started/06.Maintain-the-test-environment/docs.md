@@ -11,11 +11,13 @@ You can find some steps for maintaining your demo environment below.
 
 ! This will also stop the virtual device, which is assigned a random MAC address each time it starts. Therefore it will appear as a new device once you start the Mender services again.
 
+! Stopping the Mender services will dismiss the currently generated password, make sure to store the password if you want to revisit the current setup.
+
 When you are done testing Mender, simply press **Ctrl-C** in the terminal
 you started Mender in, where the log output is shown. Stopping all the
 services may take about a minute.
 
-The Mender demo environment can be started by running the `up` script again.
+The Mender demo environment can be started by running the `./demo up` script again.
 
 
 ## Reset login credentials
