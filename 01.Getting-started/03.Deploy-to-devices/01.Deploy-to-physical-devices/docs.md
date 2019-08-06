@@ -277,7 +277,6 @@ of the `mender-artifact` tool, first making a copy of the original. To do this,
 run these two commands (adjust the Artifact file name accordingly):
 
 <!--AUTOVERSION: "release_1_%"/mender "release_2_%"/mender "release-2_%"/mender -->
-
 ```bash
 cp beagleboneblack_release_1_master.mender beagleboneblack_release_2_master.mender
 mender-artifact modify beagleboneblack_release_2_master.mender -n release-2_master
