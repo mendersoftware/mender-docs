@@ -44,7 +44,7 @@ If this does not happen, please make sure your environment meet the resource req
 to run the Mender Server. In particular, it is known that the virtual device will not
 start if you do not have enough memory.
 
-!!! The console of the virtual device can be seen by running `docker logs $(docker ps | grep mender-client | cut -f1 -d' ')`.
+!!! The console of the virtual device can be seen by running `./demo --client logs mender-client`.
 
 ## A device shows up as pending after preauthorizing it
 If you see your device gets the `pending` status after [preauthorizing it](../../server-integration/preauthorizing-devices), something went wrong. Most likely there is a mismatch between the identity and public key [you preauthorized](../../server-integration/preauthorizing-devices#call-the-preauthorize-api) and what your Mender client is actually using.
