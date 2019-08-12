@@ -4662,34 +4662,7 @@ THE FOLLOWING SETS FORTH ATTRIBUTION NOTICES FOR THIRD PARTY SOFTWARE THAT MAY B
 
 -----
 
-The following software may be included in this product: @babel/code-frame, @babel/helper-annotate-as-pure, @babel/helper-get-function-arity, @babel/helper-member-expression-to-functions, @babel/helper-module-imports, @babel/helper-optimise-call-expression, @babel/helper-plugin-utils, @babel/highlight, @babel/preset-react. A copy of the source code may be downloaded from https://github.com/babel/babel/tree/master/packages/babel-code-frame (@babel/code-frame), https://github.com/babel/babel/tree/master/packages/babel-helper-annotate-as-pure (@babel/helper-annotate-as-pure), https://github.com/babel/babel/tree/master/packages/babel-helper-get-function-arity (@babel/helper-get-function-arity), https://github.com/babel/babel/tree/master/packages/babel-helper-member-expression-to-functions (@babel/helper-member-expression-to-functions), https://github.com/babel/babel/tree/master/packages/babel-helper-module-imports (@babel/helper-module-imports), https://github.com/babel/babel/tree/master/packages/babel-helper-optimise-call-expression (@babel/helper-optimise-call-expression), https://github.com/babel/babel/tree/master/packages/babel-helper-plugin-utils (@babel/helper-plugin-utils), https://github.com/babel/babel/tree/master/packages/babel-highlight (@babel/highlight), https://github.com/babel/babel/tree/master/packages/babel-preset-react (@babel/preset-react). This software contains the following license and notice below:
-
-MIT License
-
-Copyright (c) 2014-2018 Sebastian McKenzie <sebmck@gmail.com>
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
------
-
-The following software may be included in this product: @babel/core, @babel/generator, @babel/helper-builder-react-jsx, @babel/helper-call-delegate, @babel/helper-create-class-features-plugin, @babel/helper-define-map, @babel/helper-hoist-variables, @babel/helper-module-transforms, @babel/helper-regex, @babel/helper-replace-supers, @babel/helper-split-export-declaration, @babel/helpers, @babel/plugin-proposal-class-properties, @babel/plugin-proposal-object-rest-spread, @babel/plugin-proposal-unicode-property-regex, @babel/plugin-transform-async-to-generator, @babel/plugin-transform-block-scoping, @babel/plugin-transform-classes, @babel/plugin-transform-destructuring, @babel/plugin-transform-dotall-regex, @babel/plugin-transform-for-of, @babel/plugin-transform-function-name, @babel/plugin-transform-modules-commonjs, @babel/plugin-transform-modules-systemjs, @babel/plugin-transform-named-capturing-groups-regex, @babel/plugin-transform-new-target, @babel/plugin-transform-parameters, @babel/plugin-transform-react-jsx, @babel/plugin-transform-regenerator, @babel/plugin-transform-template-literals, @babel/plugin-transform-unicode-regex, @babel/preset-env, @babel/runtime, @babel/template, @babel/traverse, @babel/types. A copy of the source code may be downloaded from https://github.com/babel/babel/tree/master/packages/babel-core (@babel/core), https://github.com/babel/babel/tree/master/packages/babel-generator (@babel/generator), https://github.com/babel/babel/tree/master/packages/babel-helper-builder-react-jsx (@babel/helper-builder-react-jsx), https://github.com/babel/babel/tree/master/packages/babel-helper-call-delegate (@babel/helper-call-delegate), https://github.com/babel/babel/tree/master/packages/babel-helper-create-class-features-plugin (@babel/helper-create-class-features-plugin), https://github.com/babel/babel/tree/master/packages/babel-helper-define-map (@babel/helper-define-map), https://github.com/babel/babel/tree/master/packages/babel-helper-hoist-variables (@babel/helper-hoist-variables), https://github.com/babel/babel/tree/master/packages/babel-helper-module-transforms (@babel/helper-module-transforms), https://github.com/babel/babel/tree/master/packages/babel-helper-regex (@babel/helper-regex), https://github.com/babel/babel/tree/master/packages/babel-helper-replace-supers (@babel/helper-replace-supers), https://github.com/babel/babel/tree/master/packages/babel-helper-split-export-declaration (@babel/helper-split-export-declaration), https://github.com/babel/babel/tree/master/packages/babel-helpers (@babel/helpers), https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-class-properties (@babel/plugin-proposal-class-properties), https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-object-rest-spread (@babel/plugin-proposal-object-rest-spread), https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-unicode-property-regex (@babel/plugin-proposal-unicode-property-regex), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-async-to-generator (@babel/plugin-transform-async-to-generator), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-block-scoping (@babel/plugin-transform-block-scoping), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-classes (@babel/plugin-transform-classes), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-destructuring (@babel/plugin-transform-destructuring), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-dotall-regex (@babel/plugin-transform-dotall-regex), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-for-of (@babel/plugin-transform-for-of), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-function-name (@babel/plugin-transform-function-name), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-modules-commonjs (@babel/plugin-transform-modules-commonjs), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-modules-systemjs (@babel/plugin-transform-modules-systemjs), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-named-capturing-groups-regex (@babel/plugin-transform-named-capturing-groups-regex), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-new-target (@babel/plugin-transform-new-target), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-parameters (@babel/plugin-transform-parameters), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-jsx (@babel/plugin-transform-react-jsx), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-regenerator (@babel/plugin-transform-regenerator), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-template-literals (@babel/plugin-transform-template-literals), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-unicode-regex (@babel/plugin-transform-unicode-regex), https://github.com/babel/babel/tree/master/packages/babel-preset-env (@babel/preset-env), https://github.com/babel/babel/tree/master/packages/babel-runtime (@babel/runtime), https://github.com/babel/babel/tree/master/packages/babel-template (@babel/template), https://github.com/babel/babel/tree/master/packages/babel-traverse (@babel/traverse), https://github.com/babel/babel/tree/master/packages/babel-types (@babel/types). This software contains the following license and notice below:
+The following software may be included in this product: @babel/code-frame, @babel/core, @babel/generator, @babel/helper-builder-react-jsx, @babel/helper-call-delegate, @babel/helper-create-class-features-plugin, @babel/helper-define-map, @babel/helper-hoist-variables, @babel/helper-member-expression-to-functions, @babel/helper-module-transforms, @babel/helper-regex, @babel/helper-replace-supers, @babel/helper-split-export-declaration, @babel/helpers, @babel/highlight, @babel/plugin-proposal-class-properties, @babel/plugin-proposal-dynamic-import, @babel/plugin-proposal-object-rest-spread, @babel/plugin-proposal-unicode-property-regex, @babel/plugin-transform-async-to-generator, @babel/plugin-transform-block-scoping, @babel/plugin-transform-classes, @babel/plugin-transform-destructuring, @babel/plugin-transform-dotall-regex, @babel/plugin-transform-duplicate-keys, @babel/plugin-transform-for-of, @babel/plugin-transform-function-name, @babel/plugin-transform-modules-amd, @babel/plugin-transform-modules-commonjs, @babel/plugin-transform-modules-systemjs, @babel/plugin-transform-named-capturing-groups-regex, @babel/plugin-transform-new-target, @babel/plugin-transform-object-super, @babel/plugin-transform-parameters, @babel/plugin-transform-react-jsx, @babel/plugin-transform-react-jsx-source, @babel/plugin-transform-regenerator, @babel/plugin-transform-template-literals, @babel/plugin-transform-unicode-regex, @babel/preset-env, @babel/runtime, @babel/template, @babel/traverse, @babel/types. A copy of the source code may be downloaded from https://github.com/babel/babel/tree/master/packages/babel-code-frame (@babel/code-frame), https://github.com/babel/babel/tree/master/packages/babel-core (@babel/core), https://github.com/babel/babel/tree/master/packages/babel-generator (@babel/generator), https://github.com/babel/babel/tree/master/packages/babel-helper-builder-react-jsx (@babel/helper-builder-react-jsx), https://github.com/babel/babel/tree/master/packages/babel-helper-call-delegate (@babel/helper-call-delegate), https://github.com/babel/babel/tree/master/packages/babel-helper-create-class-features-plugin (@babel/helper-create-class-features-plugin), https://github.com/babel/babel/tree/master/packages/babel-helper-define-map (@babel/helper-define-map), https://github.com/babel/babel/tree/master/packages/babel-helper-hoist-variables (@babel/helper-hoist-variables), https://github.com/babel/babel/tree/master/packages/babel-helper-member-expression-to-functions (@babel/helper-member-expression-to-functions), https://github.com/babel/babel/tree/master/packages/babel-helper-module-transforms (@babel/helper-module-transforms), https://github.com/babel/babel/tree/master/packages/babel-helper-regex (@babel/helper-regex), https://github.com/babel/babel/tree/master/packages/babel-helper-replace-supers (@babel/helper-replace-supers), https://github.com/babel/babel/tree/master/packages/babel-helper-split-export-declaration (@babel/helper-split-export-declaration), https://github.com/babel/babel/tree/master/packages/babel-helpers (@babel/helpers), https://github.com/babel/babel/tree/master/packages/babel-highlight (@babel/highlight), https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-class-properties (@babel/plugin-proposal-class-properties), https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-dynamic-import (@babel/plugin-proposal-dynamic-import), https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-object-rest-spread (@babel/plugin-proposal-object-rest-spread), https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-unicode-property-regex (@babel/plugin-proposal-unicode-property-regex), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-async-to-generator (@babel/plugin-transform-async-to-generator), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-block-scoping (@babel/plugin-transform-block-scoping), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-classes (@babel/plugin-transform-classes), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-destructuring (@babel/plugin-transform-destructuring), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-dotall-regex (@babel/plugin-transform-dotall-regex), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-duplicate-keys (@babel/plugin-transform-duplicate-keys), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-for-of (@babel/plugin-transform-for-of), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-function-name (@babel/plugin-transform-function-name), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-modules-amd (@babel/plugin-transform-modules-amd), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-modules-commonjs (@babel/plugin-transform-modules-commonjs), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-modules-systemjs (@babel/plugin-transform-modules-systemjs), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-named-capturing-groups-regex (@babel/plugin-transform-named-capturing-groups-regex), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-new-target (@babel/plugin-transform-new-target), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-object-super (@babel/plugin-transform-object-super), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-parameters (@babel/plugin-transform-parameters), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-jsx (@babel/plugin-transform-react-jsx), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-jsx-source (@babel/plugin-transform-react-jsx-source), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-regenerator (@babel/plugin-transform-regenerator), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-template-literals (@babel/plugin-transform-template-literals), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-unicode-regex (@babel/plugin-transform-unicode-regex), https://github.com/babel/babel/tree/master/packages/babel-preset-env (@babel/preset-env), https://github.com/babel/babel/tree/master/packages/babel-runtime (@babel/runtime), https://github.com/babel/babel/tree/master/packages/babel-template (@babel/template), https://github.com/babel/babel/tree/master/packages/babel-traverse (@babel/traverse), https://github.com/babel/babel/tree/master/packages/babel-types (@babel/types). This software contains the following license and notice below:
 
 MIT License
 
@@ -4716,7 +4689,34 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: @babel/helper-builder-binary-assignment-operator-visitor, @babel/helper-explode-assignable-expression, @babel/helper-function-name, @babel/helper-remap-async-to-generator, @babel/helper-simple-access, @babel/helper-wrap-function, @babel/plugin-proposal-async-generator-functions, @babel/plugin-proposal-json-strings, @babel/plugin-proposal-optional-catch-binding, @babel/plugin-syntax-async-generators, @babel/plugin-syntax-json-strings, @babel/plugin-syntax-jsx, @babel/plugin-syntax-object-rest-spread, @babel/plugin-syntax-optional-catch-binding, @babel/plugin-transform-arrow-functions, @babel/plugin-transform-block-scoped-functions, @babel/plugin-transform-computed-properties, @babel/plugin-transform-duplicate-keys, @babel/plugin-transform-exponentiation-operator, @babel/plugin-transform-literals, @babel/plugin-transform-member-expression-literals, @babel/plugin-transform-modules-amd, @babel/plugin-transform-modules-umd, @babel/plugin-transform-object-super, @babel/plugin-transform-property-literals, @babel/plugin-transform-react-display-name, @babel/plugin-transform-react-jsx-self, @babel/plugin-transform-react-jsx-source, @babel/plugin-transform-reserved-words, @babel/plugin-transform-shorthand-properties, @babel/plugin-transform-spread, @babel/plugin-transform-sticky-regex, @babel/plugin-transform-typeof-symbol. A copy of the source code may be downloaded from https://github.com/babel/babel/tree/master/packages/babel-helper-builder-binary-assignment-operator-visitor (@babel/helper-builder-binary-assignment-operator-visitor), https://github.com/babel/babel/tree/master/packages/babel-helper-explode-assignable-expression (@babel/helper-explode-assignable-expression), https://github.com/babel/babel/tree/master/packages/babel-helper-function-name (@babel/helper-function-name), https://github.com/babel/babel/tree/master/packages/babel-helper-remap-async-to-generator (@babel/helper-remap-async-to-generator), https://github.com/babel/babel/tree/master/packages/babel-helper-simple-access (@babel/helper-simple-access), https://github.com/babel/babel/tree/master/packages/babel-helper-wrap-function (@babel/helper-wrap-function), https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-async-generator-functions (@babel/plugin-proposal-async-generator-functions), https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-json-strings (@babel/plugin-proposal-json-strings), https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-optional-catch-binding (@babel/plugin-proposal-optional-catch-binding), https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-async-generators (@babel/plugin-syntax-async-generators), https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-json-strings (@babel/plugin-syntax-json-strings), https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-jsx (@babel/plugin-syntax-jsx), https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-object-rest-spread (@babel/plugin-syntax-object-rest-spread), https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-optional-catch-binding (@babel/plugin-syntax-optional-catch-binding), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-arrow-functions (@babel/plugin-transform-arrow-functions), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-block-scoped-functions (@babel/plugin-transform-block-scoped-functions), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-computed-properties (@babel/plugin-transform-computed-properties), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-duplicate-keys (@babel/plugin-transform-duplicate-keys), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-exponentiation-operator (@babel/plugin-transform-exponentiation-operator), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-literals (@babel/plugin-transform-literals), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-member-expression-literals (@babel/plugin-transform-member-expression-literals), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-modules-amd (@babel/plugin-transform-modules-amd), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-modules-umd (@babel/plugin-transform-modules-umd), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-object-super (@babel/plugin-transform-object-super), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-property-literals (@babel/plugin-transform-property-literals), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-display-name (@babel/plugin-transform-react-display-name), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-jsx-self (@babel/plugin-transform-react-jsx-self), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-jsx-source (@babel/plugin-transform-react-jsx-source), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-reserved-words (@babel/plugin-transform-reserved-words), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-shorthand-properties (@babel/plugin-transform-shorthand-properties), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-spread (@babel/plugin-transform-spread), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-sticky-regex (@babel/plugin-transform-sticky-regex), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-typeof-symbol (@babel/plugin-transform-typeof-symbol). This software contains the following license and notice below:
+The following software may be included in this product: @babel/helper-annotate-as-pure, @babel/helper-get-function-arity, @babel/helper-module-imports, @babel/helper-optimise-call-expression, @babel/helper-plugin-utils, @babel/preset-react. A copy of the source code may be downloaded from https://github.com/babel/babel/tree/master/packages/babel-helper-annotate-as-pure (@babel/helper-annotate-as-pure), https://github.com/babel/babel/tree/master/packages/babel-helper-get-function-arity (@babel/helper-get-function-arity), https://github.com/babel/babel/tree/master/packages/babel-helper-module-imports (@babel/helper-module-imports), https://github.com/babel/babel/tree/master/packages/babel-helper-optimise-call-expression (@babel/helper-optimise-call-expression), https://github.com/babel/babel/tree/master/packages/babel-helper-plugin-utils (@babel/helper-plugin-utils), https://github.com/babel/babel/tree/master/packages/babel-preset-react (@babel/preset-react). This software contains the following license and notice below:
+
+MIT License
+
+Copyright (c) 2014-2018 Sebastian McKenzie <sebmck@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+-----
+
+The following software may be included in this product: @babel/helper-builder-binary-assignment-operator-visitor, @babel/helper-explode-assignable-expression, @babel/helper-function-name, @babel/helper-remap-async-to-generator, @babel/helper-simple-access, @babel/helper-wrap-function, @babel/plugin-proposal-async-generator-functions, @babel/plugin-proposal-json-strings, @babel/plugin-proposal-optional-catch-binding, @babel/plugin-syntax-async-generators, @babel/plugin-syntax-dynamic-import, @babel/plugin-syntax-json-strings, @babel/plugin-syntax-jsx, @babel/plugin-syntax-object-rest-spread, @babel/plugin-syntax-optional-catch-binding, @babel/plugin-transform-arrow-functions, @babel/plugin-transform-block-scoped-functions, @babel/plugin-transform-computed-properties, @babel/plugin-transform-exponentiation-operator, @babel/plugin-transform-literals, @babel/plugin-transform-member-expression-literals, @babel/plugin-transform-modules-umd, @babel/plugin-transform-property-literals, @babel/plugin-transform-react-display-name, @babel/plugin-transform-react-jsx-self, @babel/plugin-transform-reserved-words, @babel/plugin-transform-shorthand-properties, @babel/plugin-transform-spread, @babel/plugin-transform-sticky-regex, @babel/plugin-transform-typeof-symbol. A copy of the source code may be downloaded from https://github.com/babel/babel/tree/master/packages/babel-helper-builder-binary-assignment-operator-visitor (@babel/helper-builder-binary-assignment-operator-visitor), https://github.com/babel/babel/tree/master/packages/babel-helper-explode-assignable-expression (@babel/helper-explode-assignable-expression), https://github.com/babel/babel/tree/master/packages/babel-helper-function-name (@babel/helper-function-name), https://github.com/babel/babel/tree/master/packages/babel-helper-remap-async-to-generator (@babel/helper-remap-async-to-generator), https://github.com/babel/babel/tree/master/packages/babel-helper-simple-access (@babel/helper-simple-access), https://github.com/babel/babel/tree/master/packages/babel-helper-wrap-function (@babel/helper-wrap-function), https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-async-generator-functions (@babel/plugin-proposal-async-generator-functions), https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-json-strings (@babel/plugin-proposal-json-strings), https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-optional-catch-binding (@babel/plugin-proposal-optional-catch-binding), https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-async-generators (@babel/plugin-syntax-async-generators), https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-dynamic-import (@babel/plugin-syntax-dynamic-import), https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-json-strings (@babel/plugin-syntax-json-strings), https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-jsx (@babel/plugin-syntax-jsx), https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-object-rest-spread (@babel/plugin-syntax-object-rest-spread), https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-optional-catch-binding (@babel/plugin-syntax-optional-catch-binding), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-arrow-functions (@babel/plugin-transform-arrow-functions), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-block-scoped-functions (@babel/plugin-transform-block-scoped-functions), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-computed-properties (@babel/plugin-transform-computed-properties), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-exponentiation-operator (@babel/plugin-transform-exponentiation-operator), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-literals (@babel/plugin-transform-literals), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-member-expression-literals (@babel/plugin-transform-member-expression-literals), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-modules-umd (@babel/plugin-transform-modules-umd), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-property-literals (@babel/plugin-transform-property-literals), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-display-name (@babel/plugin-transform-react-display-name), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-jsx-self (@babel/plugin-transform-react-jsx-self), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-reserved-words (@babel/plugin-transform-reserved-words), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-shorthand-properties (@babel/plugin-transform-shorthand-properties), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-spread (@babel/plugin-transform-spread), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-sticky-regex (@babel/plugin-transform-sticky-regex), https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-typeof-symbol (@babel/plugin-transform-typeof-symbol). This software contains the following license and notice below:
 
 MIT License
 
@@ -5410,32 +5410,6 @@ THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: acorn-dynamic-import. A copy of the source code may be downloaded from https://github.com/kesne/acorn-dynamic-import. This software contains the following license and notice below:
-
-MIT License
-
-Copyright (c) 2016 Jordan Gensler
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
------
-
 The following software may be included in this product: acorn-jsx. A copy of the source code may be downloaded from https://github.com/RReverser/acorn-jsx. This software contains the following license and notice below:
 
 Copyright (C) 2012-2017 by Ingvar Stepanyan
@@ -5590,7 +5564,7 @@ THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: ansi-escapes, ansi-regex, ansi-styles, binary-extensions, callsites, camelcase, chalk, del, execa, find-up, get-stream, globals, globby, has-flag, import-fresh, import-local, invert-kv, is-path-cwd, is-path-in-cwd, is-path-inside, lcid, locate-path, make-dir, mem, mimic-fn, normalize-url, os-locale, p-is-promise, p-limit, p-locate, p-map, p-try, parent-module, parse-json, path-type, pify, pkg-dir, prepend-http, query-string, resolve-from, sort-keys, string-width, strip-ansi, supports-color, wrap-ansi. A copy of the source code may be downloaded from https://github.com/sindresorhus/ansi-escapes.git (ansi-escapes), https://github.com/chalk/ansi-regex.git (ansi-regex), https://github.com/chalk/ansi-styles.git (ansi-styles), https://github.com/sindresorhus/binary-extensions.git (binary-extensions), https://github.com/sindresorhus/callsites.git (callsites), https://github.com/sindresorhus/camelcase.git (camelcase), https://github.com/chalk/chalk.git (chalk), https://github.com/sindresorhus/del.git (del), https://github.com/sindresorhus/execa.git (execa), https://github.com/sindresorhus/find-up.git (find-up), https://github.com/sindresorhus/get-stream.git (get-stream), https://github.com/sindresorhus/globals.git (globals), https://github.com/sindresorhus/globby.git (globby), https://github.com/sindresorhus/has-flag.git (has-flag), https://github.com/sindresorhus/import-fresh.git (import-fresh), https://github.com/sindresorhus/import-local.git (import-local), https://github.com/sindresorhus/invert-kv.git (invert-kv), https://github.com/sindresorhus/is-path-cwd.git (is-path-cwd), https://github.com/sindresorhus/is-path-in-cwd.git (is-path-in-cwd), https://github.com/sindresorhus/is-path-inside.git (is-path-inside), https://github.com/sindresorhus/lcid.git (lcid), https://github.com/sindresorhus/locate-path.git (locate-path), https://github.com/sindresorhus/make-dir.git (make-dir), https://github.com/sindresorhus/mem.git (mem), https://github.com/sindresorhus/mimic-fn.git (mimic-fn), https://github.com/sindresorhus/normalize-url.git (normalize-url), https://github.com/sindresorhus/os-locale.git (os-locale), https://github.com/sindresorhus/p-is-promise.git (p-is-promise), https://github.com/sindresorhus/p-limit.git (p-limit), https://github.com/sindresorhus/p-locate.git (p-locate), https://github.com/sindresorhus/p-map.git (p-map), https://github.com/sindresorhus/p-try.git (p-try), https://github.com/sindresorhus/parent-module.git (parent-module), https://github.com/sindresorhus/parse-json.git (parse-json), https://github.com/sindresorhus/path-type.git (path-type), https://github.com/sindresorhus/pify.git (pify), https://github.com/sindresorhus/pkg-dir.git (pkg-dir), https://github.com/sindresorhus/prepend-http.git (prepend-http), https://github.com/sindresorhus/query-string.git (query-string), https://github.com/sindresorhus/resolve-from.git (resolve-from), https://github.com/sindresorhus/sort-keys.git (sort-keys), https://github.com/sindresorhus/string-width.git (string-width), https://github.com/chalk/strip-ansi.git (strip-ansi), https://github.com/chalk/supports-color.git (supports-color), https://github.com/chalk/wrap-ansi.git (wrap-ansi). This software contains the following license and notice below:
+The following software may be included in this product: ansi-escapes, ansi-regex, ansi-styles, binary-extensions, callsites, camelcase, chalk, del, execa, find-up, get-stream, globals, globby, has-flag, import-fresh, import-local, invert-kv, is-path-cwd, is-path-in-cwd, is-path-inside, lcid, locate-path, make-dir, mem, mimic-fn, os-locale, p-is-promise, p-limit, p-locate, p-map, p-try, parent-module, parse-json, path-type, pify, pkg-dir, resolve-from, string-width, strip-ansi, supports-color, wrap-ansi. A copy of the source code may be downloaded from https://github.com/sindresorhus/ansi-escapes.git (ansi-escapes), https://github.com/chalk/ansi-regex.git (ansi-regex), https://github.com/chalk/ansi-styles.git (ansi-styles), https://github.com/sindresorhus/binary-extensions.git (binary-extensions), https://github.com/sindresorhus/callsites.git (callsites), https://github.com/sindresorhus/camelcase.git (camelcase), https://github.com/chalk/chalk.git (chalk), https://github.com/sindresorhus/del.git (del), https://github.com/sindresorhus/execa.git (execa), https://github.com/sindresorhus/find-up.git (find-up), https://github.com/sindresorhus/get-stream.git (get-stream), https://github.com/sindresorhus/globals.git (globals), https://github.com/sindresorhus/globby.git (globby), https://github.com/sindresorhus/has-flag.git (has-flag), https://github.com/sindresorhus/import-fresh.git (import-fresh), https://github.com/sindresorhus/import-local.git (import-local), https://github.com/sindresorhus/invert-kv.git (invert-kv), https://github.com/sindresorhus/is-path-cwd.git (is-path-cwd), https://github.com/sindresorhus/is-path-in-cwd.git (is-path-in-cwd), https://github.com/sindresorhus/is-path-inside.git (is-path-inside), https://github.com/sindresorhus/lcid.git (lcid), https://github.com/sindresorhus/locate-path.git (locate-path), https://github.com/sindresorhus/make-dir.git (make-dir), https://github.com/sindresorhus/mem.git (mem), https://github.com/sindresorhus/mimic-fn.git (mimic-fn), https://github.com/sindresorhus/os-locale.git (os-locale), https://github.com/sindresorhus/p-is-promise.git (p-is-promise), https://github.com/sindresorhus/p-limit.git (p-limit), https://github.com/sindresorhus/p-locate.git (p-locate), https://github.com/sindresorhus/p-map.git (p-map), https://github.com/sindresorhus/p-try.git (p-try), https://github.com/sindresorhus/parent-module.git (parent-module), https://github.com/sindresorhus/parse-json.git (parse-json), https://github.com/sindresorhus/path-type.git (path-type), https://github.com/sindresorhus/pify.git (pify), https://github.com/sindresorhus/pkg-dir.git (pkg-dir), https://github.com/sindresorhus/resolve-from.git (resolve-from), https://github.com/sindresorhus/string-width.git (string-width), https://github.com/chalk/strip-ansi.git (strip-ansi), https://github.com/chalk/supports-color.git (supports-color), https://github.com/chalk/wrap-ansi.git (wrap-ansi). This software contains the following license and notice below:
 
 MIT License
 
@@ -5630,7 +5604,7 @@ THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: ansi-regex, ansi-styles, array-union, array-uniq, caller-callsite, caller-path, callsites, camelcase, chalk, cli-cursor, code-point-at, decamelize, detect-indent, escape-string-regexp, figures, find-up, globals, globby, has-ansi, home-or-tmp, import-cwd, import-fresh, import-from, is-binary-path, is-finite, is-fullwidth-code-point, is-plain-obj, is-stream, is-wsl, lcid, load-json-file, locate-path, npm-run-path, number-is-nan, object-assign, onetime, os-homedir, os-locale, os-tmpdir, p-defer, p-finally, p-locate, p-try, parse-json, path-exists, path-is-absolute, path-key, path-type, pify, pkg-dir, read-pkg, read-pkg-up, repeating, resolve-cwd, resolve-from, restore-cursor, shebang-regex, string-width, strip-ansi, strip-bom, strip-eof, strip-json-comments, supports-color, trim-right, user-home, wrap-ansi. A copy of the source code may be downloaded from https://github.com/chalk/ansi-regex.git (ansi-regex), https://github.com/chalk/ansi-styles.git (ansi-styles), https://github.com/sindresorhus/array-union.git (array-union), https://github.com/sindresorhus/array-uniq.git (array-uniq), https://github.com/sindresorhus/caller-callsite.git (caller-callsite), https://github.com/sindresorhus/caller-path.git (caller-path), https://github.com/sindresorhus/callsites.git (callsites), https://github.com/sindresorhus/camelcase.git (camelcase), https://github.com/chalk/chalk.git (chalk), https://github.com/sindresorhus/cli-cursor.git (cli-cursor), https://github.com/sindresorhus/code-point-at.git (code-point-at), https://github.com/sindresorhus/decamelize.git (decamelize), https://github.com/sindresorhus/detect-indent.git (detect-indent), https://github.com/sindresorhus/escape-string-regexp.git (escape-string-regexp), https://github.com/sindresorhus/figures.git (figures), https://github.com/sindresorhus/find-up.git (find-up), https://github.com/sindresorhus/globals.git (globals), https://github.com/sindresorhus/globby.git (globby), https://github.com/sindresorhus/has-ansi.git (has-ansi), https://github.com/sindresorhus/home-or-tmp.git (home-or-tmp), https://github.com/sindresorhus/import-cwd.git (import-cwd), https://github.com/sindresorhus/import-fresh.git (import-fresh), https://github.com/sindresorhus/import-from.git (import-from), https://github.com/sindresorhus/is-binary-path.git (is-binary-path), https://github.com/sindresorhus/is-finite.git (is-finite), https://github.com/sindresorhus/is-fullwidth-code-point.git (is-fullwidth-code-point), https://github.com/sindresorhus/is-plain-obj.git (is-plain-obj), https://github.com/sindresorhus/is-stream.git (is-stream), https://github.com/sindresorhus/is-wsl.git (is-wsl), https://github.com/sindresorhus/lcid.git (lcid), https://github.com/sindresorhus/load-json-file.git (load-json-file), https://github.com/sindresorhus/locate-path.git (locate-path), https://github.com/sindresorhus/npm-run-path.git (npm-run-path), https://github.com/sindresorhus/number-is-nan.git (number-is-nan), https://github.com/sindresorhus/object-assign.git (object-assign), https://github.com/sindresorhus/onetime.git (onetime), https://github.com/sindresorhus/os-homedir.git (os-homedir), https://github.com/sindresorhus/os-locale.git (os-locale), https://github.com/sindresorhus/os-tmpdir.git (os-tmpdir), https://github.com/sindresorhus/p-defer.git (p-defer), https://github.com/sindresorhus/p-finally.git (p-finally), https://github.com/sindresorhus/p-locate.git (p-locate), https://github.com/sindresorhus/p-try.git (p-try), https://github.com/sindresorhus/parse-json.git (parse-json), https://github.com/sindresorhus/path-exists.git (path-exists), https://github.com/sindresorhus/path-is-absolute.git (path-is-absolute), https://github.com/sindresorhus/path-key.git (path-key), https://github.com/sindresorhus/path-type.git (path-type), https://github.com/sindresorhus/pify.git (pify), https://github.com/sindresorhus/pkg-dir.git (pkg-dir), https://github.com/sindresorhus/read-pkg.git (read-pkg), https://github.com/sindresorhus/read-pkg-up.git (read-pkg-up), https://github.com/sindresorhus/repeating.git (repeating), https://github.com/sindresorhus/resolve-cwd.git (resolve-cwd), https://github.com/sindresorhus/resolve-from.git (resolve-from), https://github.com/sindresorhus/restore-cursor.git (restore-cursor), https://github.com/sindresorhus/shebang-regex.git (shebang-regex), https://github.com/sindresorhus/string-width.git (string-width), https://github.com/chalk/strip-ansi.git (strip-ansi), https://github.com/sindresorhus/strip-bom.git (strip-bom), https://github.com/sindresorhus/strip-eof.git (strip-eof), https://github.com/sindresorhus/strip-json-comments.git (strip-json-comments), https://github.com/chalk/supports-color.git (supports-color), https://github.com/sindresorhus/trim-right.git (trim-right), https://github.com/sindresorhus/user-home.git (user-home), https://github.com/chalk/wrap-ansi.git (wrap-ansi). This software contains the following license and notice below:
+The following software may be included in this product: ansi-regex, ansi-styles, array-union, array-uniq, caller-callsite, caller-path, callsites, camelcase, chalk, cli-cursor, code-point-at, decamelize, detect-indent, escape-string-regexp, figures, find-up, globals, globby, has-ansi, home-or-tmp, import-cwd, import-fresh, import-from, is-binary-path, is-finite, is-fullwidth-code-point, is-plain-obj, is-stream, is-wsl, lcid, load-json-file, locate-path, normalize-url, npm-run-path, number-is-nan, object-assign, onetime, os-homedir, os-locale, os-tmpdir, p-defer, p-finally, p-locate, p-try, parse-json, path-exists, path-is-absolute, path-key, path-type, pify, pkg-dir, prepend-http, query-string, read-pkg, read-pkg-up, repeating, resolve-cwd, resolve-from, restore-cursor, shebang-regex, sort-keys, string-width, strip-ansi, strip-bom, strip-eof, strip-json-comments, supports-color, trim-right, user-home, wrap-ansi. A copy of the source code may be downloaded from https://github.com/chalk/ansi-regex.git (ansi-regex), https://github.com/chalk/ansi-styles.git (ansi-styles), https://github.com/sindresorhus/array-union.git (array-union), https://github.com/sindresorhus/array-uniq.git (array-uniq), https://github.com/sindresorhus/caller-callsite.git (caller-callsite), https://github.com/sindresorhus/caller-path.git (caller-path), https://github.com/sindresorhus/callsites.git (callsites), https://github.com/sindresorhus/camelcase.git (camelcase), https://github.com/chalk/chalk.git (chalk), https://github.com/sindresorhus/cli-cursor.git (cli-cursor), https://github.com/sindresorhus/code-point-at.git (code-point-at), https://github.com/sindresorhus/decamelize.git (decamelize), https://github.com/sindresorhus/detect-indent.git (detect-indent), https://github.com/sindresorhus/escape-string-regexp.git (escape-string-regexp), https://github.com/sindresorhus/figures.git (figures), https://github.com/sindresorhus/find-up.git (find-up), https://github.com/sindresorhus/globals.git (globals), https://github.com/sindresorhus/globby.git (globby), https://github.com/sindresorhus/has-ansi.git (has-ansi), https://github.com/sindresorhus/home-or-tmp.git (home-or-tmp), https://github.com/sindresorhus/import-cwd.git (import-cwd), https://github.com/sindresorhus/import-fresh.git (import-fresh), https://github.com/sindresorhus/import-from.git (import-from), https://github.com/sindresorhus/is-binary-path.git (is-binary-path), https://github.com/sindresorhus/is-finite.git (is-finite), https://github.com/sindresorhus/is-fullwidth-code-point.git (is-fullwidth-code-point), https://github.com/sindresorhus/is-plain-obj.git (is-plain-obj), https://github.com/sindresorhus/is-stream.git (is-stream), https://github.com/sindresorhus/is-wsl.git (is-wsl), https://github.com/sindresorhus/lcid.git (lcid), https://github.com/sindresorhus/load-json-file.git (load-json-file), https://github.com/sindresorhus/locate-path.git (locate-path), https://github.com/sindresorhus/normalize-url.git (normalize-url), https://github.com/sindresorhus/npm-run-path.git (npm-run-path), https://github.com/sindresorhus/number-is-nan.git (number-is-nan), https://github.com/sindresorhus/object-assign.git (object-assign), https://github.com/sindresorhus/onetime.git (onetime), https://github.com/sindresorhus/os-homedir.git (os-homedir), https://github.com/sindresorhus/os-locale.git (os-locale), https://github.com/sindresorhus/os-tmpdir.git (os-tmpdir), https://github.com/sindresorhus/p-defer.git (p-defer), https://github.com/sindresorhus/p-finally.git (p-finally), https://github.com/sindresorhus/p-locate.git (p-locate), https://github.com/sindresorhus/p-try.git (p-try), https://github.com/sindresorhus/parse-json.git (parse-json), https://github.com/sindresorhus/path-exists.git (path-exists), https://github.com/sindresorhus/path-is-absolute.git (path-is-absolute), https://github.com/sindresorhus/path-key.git (path-key), https://github.com/sindresorhus/path-type.git (path-type), https://github.com/sindresorhus/pify.git (pify), https://github.com/sindresorhus/pkg-dir.git (pkg-dir), https://github.com/sindresorhus/prepend-http.git (prepend-http), https://github.com/sindresorhus/query-string.git (query-string), https://github.com/sindresorhus/read-pkg.git (read-pkg), https://github.com/sindresorhus/read-pkg-up.git (read-pkg-up), https://github.com/sindresorhus/repeating.git (repeating), https://github.com/sindresorhus/resolve-cwd.git (resolve-cwd), https://github.com/sindresorhus/resolve-from.git (resolve-from), https://github.com/sindresorhus/restore-cursor.git (restore-cursor), https://github.com/sindresorhus/shebang-regex.git (shebang-regex), https://github.com/sindresorhus/sort-keys.git (sort-keys), https://github.com/sindresorhus/string-width.git (string-width), https://github.com/chalk/strip-ansi.git (strip-ansi), https://github.com/sindresorhus/strip-bom.git (strip-bom), https://github.com/sindresorhus/strip-eof.git (strip-eof), https://github.com/sindresorhus/strip-json-comments.git (strip-json-comments), https://github.com/chalk/supports-color.git (supports-color), https://github.com/sindresorhus/trim-right.git (trim-right), https://github.com/sindresorhus/user-home.git (user-home), https://github.com/chalk/wrap-ansi.git (wrap-ansi). This software contains the following license and notice below:
 
 The MIT License (MIT)
 
@@ -5746,7 +5720,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 -----
 
-The following software may be included in this product: archy, buffer-equal, concat-map, fast-json-stable-stringify, is-typedarray, json-stable-stringify-without-jsonify, minimist, path-browserify, resolve, safe-regex, text-table, tty-browserify, vm-browserify, wordwrap. A copy of the source code may be downloaded from http://github.com/substack/node-archy.git (archy), git://github.com/substack/node-buffer-equal.git (buffer-equal), git://github.com/substack/node-concat-map.git (concat-map), git://github.com/epoberezkin/fast-json-stable-stringify.git (fast-json-stable-stringify), git://github.com/hughsk/is-typedarray.git (is-typedarray), git://github.com/samn/json-stable-stringify.git (json-stable-stringify-without-jsonify), git://github.com/substack/minimist.git (minimist), git://github.com/substack/path-browserify.git (path-browserify), git://github.com/browserify/resolve.git (resolve), git://github.com/substack/safe-regex.git (safe-regex), git://github.com/substack/text-table.git (text-table), git://github.com/substack/tty-browserify.git (tty-browserify), http://github.com/substack/vm-browserify.git (vm-browserify), git://github.com/substack/node-wordwrap.git (wordwrap). This software contains the following license and notice below:
+The following software may be included in this product: archy, buffer-equal, concat-map, fast-json-stable-stringify, is-typedarray, json-stable-stringify-without-jsonify, minimist, path-browserify, safe-regex, text-table, tty-browserify, vm-browserify, wordwrap. A copy of the source code may be downloaded from http://github.com/substack/node-archy.git (archy), git://github.com/substack/node-buffer-equal.git (buffer-equal), git://github.com/substack/node-concat-map.git (concat-map), git://github.com/epoberezkin/fast-json-stable-stringify.git (fast-json-stable-stringify), git://github.com/hughsk/is-typedarray.git (is-typedarray), git://github.com/samn/json-stable-stringify.git (json-stable-stringify-without-jsonify), git://github.com/substack/minimist.git (minimist), git://github.com/substack/path-browserify.git (path-browserify), git://github.com/substack/safe-regex.git (safe-regex), git://github.com/substack/text-table.git (text-table), git://github.com/substack/tty-browserify.git (tty-browserify), http://github.com/substack/vm-browserify.git (vm-browserify), git://github.com/substack/node-wordwrap.git (wordwrap). This software contains the following license and notice below:
 
 This software is released under the MIT license:
 
@@ -6677,6 +6651,32 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 -----
 
+The following software may be included in this product: babel-plugin-dynamic-import-node. A copy of the source code may be downloaded from git+https://github.com/airbnb/babel-plugin-dynamic-import-node.git. This software contains the following license and notice below:
+
+MIT License
+
+Copyright (c) 2016 Airbnb
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+-----
+
 The following software may be included in this product: balanced-match. A copy of the source code may be downloaded from git://github.com/juliangruber/balanced-match.git. This software contains the following license and notice below:
 
 (MIT)
@@ -6733,7 +6733,7 @@ The following software may be included in this product: base64-js. A copy of the
 
 The MIT License (MIT)
 
-Copyright (c) 2014
+Copyright (c) 2014 Jameson Little
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -7300,7 +7300,7 @@ THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: cacache, figgy-pudding, ssri. A copy of the source code may be downloaded from https://github.com/zkat/cacache (cacache), https://github.com/zkat/figgy-pudding (figgy-pudding), https://github.com/zkat/ssri (ssri). This software contains the following license and notice below:
+The following software may be included in this product: cacache, figgy-pudding, ssri. A copy of the source code may be downloaded from https://github.com/npm/cacache (cacache), https://github.com/zkat/figgy-pudding (figgy-pudding), https://github.com/zkat/ssri (ssri). This software contains the following license and notice below:
 
 ISC License
 
@@ -8560,7 +8560,7 @@ SOFTWARE.
 
 -----
 
-The following software may be included in this product: copy-webpack-plugin, css-loader, enhanced-resolve, file-loader, html-loader, html-webpack-plugin, less-loader, loader-utils, mini-css-extract-plugin, schema-utils, terser-webpack-plugin, url-loader, watchpack, webpack. A copy of the source code may be downloaded from https://github.com/webpack-contrib/copy-webpack-plugin.git (copy-webpack-plugin), https://github.com/webpack-contrib/css-loader.git (css-loader), git://github.com/webpack/enhanced-resolve.git (enhanced-resolve), https://github.com/webpack-contrib/file-loader.git (file-loader), https://github.com/webpack-contrib/html-loader.git (html-loader), https://github.com/jantimon/html-webpack-plugin.git (html-webpack-plugin), https://github.com/webpack-contrib/less-loader.git (less-loader), https://github.com/webpack/loader-utils.git (loader-utils), https://github.com/webpack-contrib/mini-css-extract-plugin.git (mini-css-extract-plugin), https://github.com/webpack-contrib/schema-utils (schema-utils), https://github.com/webpack-contrib/terser-webpack-plugin.git (terser-webpack-plugin), https://github.com/webpack-contrib/url-loader.git (url-loader), https://github.com/webpack/watchpack.git (watchpack), https://github.com/webpack/webpack.git (webpack). This software contains the following license and notice below:
+The following software may be included in this product: copy-webpack-plugin, css-loader, enhanced-resolve, eslint-loader, file-loader, html-loader, html-webpack-plugin, less-loader, loader-utils, mini-css-extract-plugin, schema-utils, terser-webpack-plugin, url-loader, watchpack, webpack. A copy of the source code may be downloaded from https://github.com/webpack-contrib/copy-webpack-plugin.git (copy-webpack-plugin), https://github.com/webpack-contrib/css-loader.git (css-loader), git://github.com/webpack/enhanced-resolve.git (enhanced-resolve), https://github.com/webpack-contrib/eslint-loader.git (eslint-loader), https://github.com/webpack-contrib/file-loader.git (file-loader), https://github.com/webpack-contrib/html-loader.git (html-loader), https://github.com/jantimon/html-webpack-plugin.git (html-webpack-plugin), https://github.com/webpack-contrib/less-loader.git (less-loader), https://github.com/webpack/loader-utils.git (loader-utils), https://github.com/webpack-contrib/mini-css-extract-plugin.git (mini-css-extract-plugin), https://github.com/webpack-contrib/schema-utils (schema-utils), https://github.com/webpack-contrib/terser-webpack-plugin.git (terser-webpack-plugin), https://github.com/webpack-contrib/url-loader.git (url-loader), https://github.com/webpack/watchpack.git (watchpack), https://github.com/webpack/webpack.git (webpack). This software contains the following license and notice below:
 
 Copyright JS Foundation and other contributors
 
@@ -8609,7 +8609,7 @@ THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: core-js, core-js-compat, core-js-pure. A copy of the source code may be downloaded from https://github.com/zloirock/core-js.git (core-js), https://github.com/zloirock/core-js.git (core-js-compat), https://github.com/zloirock/core-js.git (core-js-pure). This software contains the following license and notice below:
+The following software may be included in this product: core-js, core-js-compat. A copy of the source code may be downloaded from https://github.com/zloirock/core-js.git (core-js), https://github.com/zloirock/core-js.git (core-js-compat). This software contains the following license and notice below:
 
 Copyright (c) 2014-2019 Denis Pushkarev
 
@@ -9944,32 +9944,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
------
-
-The following software may be included in this product: eslint-loader. A copy of the source code may be downloaded from https://github.com/webpack-contrib/eslint-loader.git. This software contains the following license and notice below:
-
-The MIT License (MIT)
-
-Copyright (c) 2015 Maxime Thirouin
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 
 -----
 
@@ -12062,6 +12036,26 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 -----
 
+The following software may be included in this product: infer-owner, minipass, npm-bundled. A copy of the source code may be downloaded from https://github.com/npm/infer-owner (infer-owner), git+https://github.com/isaacs/minipass.git (minipass), git+https://github.com/npm/npm-bundled.git (npm-bundled). This software contains the following license and notice below:
+
+The ISC License
+
+Copyright (c) npm, Inc. and Contributors
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
+IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+-----
+
 The following software may be included in this product: inflight. A copy of the source code may be downloaded from https://github.com/npm/inflight.git. This software contains the following license and notice below:
 
 The ISC License
@@ -13053,9 +13047,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: lodash, lodash.isequal. A copy of the source code may be downloaded from https://github.com/lodash/lodash.git (lodash), https://github.com/lodash/lodash.git (lodash.isequal). This software contains the following license and notice below:
+The following software may be included in this product: lodash. A copy of the source code may be downloaded from https://github.com/lodash/lodash.git. This software contains the following license and notice below:
 
-Copyright JS Foundation and other contributors <https://js.foundation/>
+Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
 
 Based on Underscore.js, copyright Jeremy Ashkenas,
 DocumentCloud and Investigative Reporters & Editors <http://underscorejs.org/>
@@ -13108,6 +13102,58 @@ terms above.
 The following software may be included in this product: lodash.differencewith. A copy of the source code may be downloaded from https://github.com/lodash/lodash.git. This software contains the following license and notice below:
 
 Copyright jQuery Foundation and other contributors <https://jquery.org/>
+
+Based on Underscore.js, copyright Jeremy Ashkenas,
+DocumentCloud and Investigative Reporters & Editors <http://underscorejs.org/>
+
+This software consists of voluntary contributions made by many
+individuals. For exact contribution history, see the revision history
+available at https://github.com/lodash/lodash
+
+The following license applies to all parts of this software except as
+documented below:
+
+====
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+====
+
+Copyright and related rights for sample code are waived via CC0. Sample
+code is defined as all source code displayed within the prose of the
+documentation.
+
+CC0: http://creativecommons.org/publicdomain/zero/1.0/
+
+====
+
+Files located in the node_modules and vendor directories are externally
+maintained libraries used by this software which have their own
+licenses; we recommend you read them, as their terms may differ from the
+terms above.
+
+-----
+
+The following software may be included in this product: lodash.isequal. A copy of the source code may be downloaded from https://github.com/lodash/lodash.git. This software contains the following license and notice below:
+
+Copyright JS Foundation and other contributors <https://js.foundation/>
 
 Based on Underscore.js, copyright Jeremy Ashkenas,
 DocumentCloud and Investigative Reporters & Editors <http://underscorejs.org/>
@@ -13326,26 +13372,6 @@ INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
 LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
 OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
-
------
-
-The following software may be included in this product: minipass, npm-bundled. A copy of the source code may be downloaded from git+https://github.com/isaacs/minipass.git (minipass), git+https://github.com/npm/npm-bundled.git (npm-bundled). This software contains the following license and notice below:
-
-The ISC License
-
-Copyright (c) npm, Inc. and Contributors
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted, provided that the above
-copyright notice and this permission notice appear in all copies.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
-IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 -----
 
@@ -14783,7 +14809,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 -----
 
-The following software may be included in this product: psl. A copy of the source code may be downloaded from git@github.com:wrangr/psl.git. This software contains the following license and notice below:
+The following software may be included in this product: psl. A copy of the source code may be downloaded from git@github.com:lupomontero/psl.git. This software contains the following license and notice below:
 
 The MIT License (MIT)
 
@@ -15504,6 +15530,32 @@ SOFTWARE.
 
 -----
 
+The following software may be included in this product: regenerator-runtime, regenerator-transform. A copy of the source code may be downloaded from https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime (regenerator-runtime), https://github.com/facebook/regenerator/tree/master/packages/regenerator-transform (regenerator-transform). This software contains the following license and notice below:
+
+MIT License
+
+Copyright (c) 2014-present, Facebook, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+-----
+
 The following software may be included in this product: regex-not. A copy of the source code may be downloaded from https://github.com/jonschlinkert/regex-not.git. This software contains the following license and notice below:
 
 The MIT License (MIT)
@@ -15763,6 +15815,32 @@ LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES
 OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
 WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,
 ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+-----
+
+The following software may be included in this product: resolve. A copy of the source code may be downloaded from git://github.com/browserify/resolve.git. This software contains the following license and notice below:
+
+MIT License
+
+Copyright (c) 2012 James Halliday
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 -----
 
@@ -16915,7 +16993,7 @@ The `lib/node` directory borrows files from joyent/node which uses the following
 
 -----
 
-The following software may be included in this product: tiny-invariant. A copy of the source code may be downloaded from git+https://github.com/alexreardon/tiny-invariant.git. This software contains the following license and notice below:
+The following software may be included in this product: tiny-invariant, tiny-warning. A copy of the source code may be downloaded from https://github.com/alexreardon/tiny-invariant.git (tiny-invariant), https://github.com/alexreardon/tiny-warning.git (tiny-warning). This software contains the following license and notice below:
 
 MIT License
 
@@ -17137,6 +17215,26 @@ If the Work includes a "NOTICE" text file as part of its distribution, then any 
 9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.
 
 END OF TERMS AND CONDITIONS
+
+-----
+
+The following software may be included in this product: type. A copy of the source code may be downloaded from https://github.com/medikoo/type.git. This software contains the following license and notice below:
+
+ISC License
+
+Copyright (c) 2019, Mariusz Nowak, @medikoo, medikoo.com
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
+OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
 
 -----
 
@@ -17769,6 +17867,31 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+-----
+
+The following software may be included in this product: xtend. A copy of the source code may be downloaded from git://github.com/Raynos/xtend.git. This software contains the following license and notice below:
+
+The MIT License (MIT)
+Copyright (c) 2012-2014 Raynos.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
 
 -----
 
