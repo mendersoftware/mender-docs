@@ -16,12 +16,12 @@ environment:
 
 <!--AUTOVERSION: "-b %"/integration "integration-%"/integration -->
 ```bash
-git clone -b master https://github.com/mendersoftware/integration.git integration-master
+git clone -b 2.1.0b1 https://github.com/mendersoftware/integration.git integration-2.1.0b1
 ```
 
 <!--AUTOVERSION: "integration-%"/integration -->
 ```bash
-cd integration-master
+cd integration-2.1.0b1
 ```
 
 ! Mender currently requires two entries in your `/etc/hosts` file to work with the Docker networking (typically `127.0.0.1 s3.docker.mender.io` and `127.0.0.1 docker.mender.io`). If these entries do not exist as you run the `demo up` script (below), it will create them for you and thus might ask for your administrative password. If you want to avoid automatic creation, you can create the entries in advance; look inside the script for the details on how it is created on your host.

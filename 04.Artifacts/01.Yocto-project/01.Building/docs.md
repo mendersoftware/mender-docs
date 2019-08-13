@@ -156,7 +156,7 @@ i.e. the top level of the Yocto Project build tree, and run these commands:
 
 <!--AUTOVERSION: "-b % git://github.com/mendersoftware/meta-mender"/meta-mender-->
 ```bash
-git clone -b master git://github.com/mendersoftware/meta-mender
+git clone -b thud git://github.com/mendersoftware/meta-mender
 ```
 
 Next, initialize the build environment:
