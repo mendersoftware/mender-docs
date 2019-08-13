@@ -4,6 +4,62 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender thud-v2019.08
+
+_Released 08.13.2019_
+
+### Statistics
+
+A total of 125 lines added, 109 removed (delta 16)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 6 (42.9%) |
+| Lluis Campos | 3 (21.4%) |
+| Drew Moseley | 2 (14.3%) |
+| Paul Barker | 2 (14.3%) |
+| Ole Petter Orhagen | 1 (7.1%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Drew Moseley | 87 (42.6%) |
+| Lluis Campos | 85 (41.7%) |
+| Kristian Amlie | 27 (13.2%) |
+| Paul Barker | 4 (2.0%) |
+| Ole Petter Orhagen | 1 (0.5%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Lluis Campos | 79 (72.5%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 12 (85.7%) |
+| Beta Five Ltd | 2 (14.3%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 200 (98.0%) |
+| Beta Five Ltd | 4 (2.0%) |
+
+| Employers with the most hackers (total 5) | |
+|---|---|
+| Northern.tech | 4 (80.0%) |
+| Beta Five Ltd | 1 (20.0%) |
+
+### Changelogs
+
+#### meta-mender (thud-v2019.08)
+
+New changes in meta-mender since thud-v2019.07:
+
+* Add mender 2.1.0b1 and mender-artifact 3.1.0b1 recipes.
+  Part of Mender 2.1.0 Beta release.
+* mender: Setup Live installer with HDDIMG
+* rpi: Fix several assignment bugs regarding `MENDER_BOOTLOADER_DEFAULT`.
+* Remap port 85 on host to 85 in qemu
+
+
 ## Mender 2.1.0b1
 
 _Released 08.12.2019_
