@@ -11,7 +11,7 @@ If full board integration is desired, follow the device documentation on [Yocto 
 ## Install from source
 
 <!--AUTOVERSION: "mender/tree/%#installing-from-source"/mender -->
-It is possible to install the Mender client from source by following the guidelines outlined in the [README.md](https://github.com/mendersoftware/mender/tree/master#installing-from-source) of the Mender client source repository.
+It is possible to install the Mender client from source by following the guidelines outlined in the [README.md](https://github.com/mendersoftware/mender/tree/2.1.0b1#installing-from-source) of the Mender client source repository.
 
 ## Install Mender provided Debian package
 
@@ -24,14 +24,14 @@ Download the package:
 
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
 ```bash
-wget https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
+wget https://d1b0l86ne08fsf.cloudfront.net/2.1.0b1/dist-packages/debian/armhf/mender-client_2.1.0b1-1_armhf.deb
 ```
 
 Install the package:
 
 <!--AUTOVERSION: "mender-client_%-1_armhf.deb"/mender -->
 ```bash
-sudo dpkg -i mender-client_master-1_armhf.deb
+sudo dpkg -i mender-client_2.1.0b1-1_armhf.deb
 ```
 
 ### Setup

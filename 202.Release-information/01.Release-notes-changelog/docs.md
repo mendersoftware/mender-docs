@@ -4,6 +4,316 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender thud-v2019.08
+
+_Released 08.13.2019_
+
+### Statistics
+
+A total of 125 lines added, 109 removed (delta 16)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 6 (42.9%) |
+| Lluis Campos | 3 (21.4%) |
+| Drew Moseley | 2 (14.3%) |
+| Paul Barker | 2 (14.3%) |
+| Ole Petter Orhagen | 1 (7.1%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Drew Moseley | 87 (42.6%) |
+| Lluis Campos | 85 (41.7%) |
+| Kristian Amlie | 27 (13.2%) |
+| Paul Barker | 4 (2.0%) |
+| Ole Petter Orhagen | 1 (0.5%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Lluis Campos | 79 (72.5%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 12 (85.7%) |
+| Beta Five Ltd | 2 (14.3%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 200 (98.0%) |
+| Beta Five Ltd | 4 (2.0%) |
+
+| Employers with the most hackers (total 5) | |
+|---|---|
+| Northern.tech | 4 (80.0%) |
+| Beta Five Ltd | 1 (20.0%) |
+
+### Changelogs
+
+#### meta-mender (thud-v2019.08)
+
+New changes in meta-mender since thud-v2019.07:
+
+* Add mender 2.1.0b1 and mender-artifact 3.1.0b1 recipes.
+  Part of Mender 2.1.0 Beta release.
+* mender: Setup Live installer with HDDIMG
+* rpi: Fix several assignment bugs regarding `MENDER_BOOTLOADER_DEFAULT`.
+* Remap port 85 on host to 85 in qemu
+
+
+## Mender 2.1.0b1
+
+_Released 08.12.2019_
+
+### Statistics
+
+A total of 11023 lines added, 7549 removed (delta 3474)
+
+| Developers with the most changesets | |
+|---|---|
+| Manuel Zedel | 207 (52.3%) |
+| Kristian Amlie | 62 (15.7%) |
+| Lluis Campos | 37 (9.3%) |
+| Ole Petter Orhagen | 27 (6.8%) |
+| Michael Clelland | 20 (5.1%) |
+| Marcin Chalczynski | 12 (3.0%) |
+| Peter Grzybowski | 7 (1.8%) |
+| Aleksei Vegner | 5 (1.3%) |
+| Eystein Måløy Stenberg | 4 (1.0%) |
+| Mirza Krak | 4 (1.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Manuel Zedel | 7279 (54.0%) |
+| Kristian Amlie | 2009 (14.9%) |
+| Ole Petter Orhagen | 1478 (11.0%) |
+| Michael Clelland | 1310 (9.7%) |
+| Lluis Campos | 718 (5.3%) |
+| Marcin Chalczynski | 244 (1.8%) |
+| Mirza Krak | 179 (1.3%) |
+| Aleksei Vegner | 66 (0.5%) |
+| Oleksandr Miliukov | 63 (0.5%) |
+| Andreas Henriksson | 49 (0.4%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Michael Clelland | 259 (3.4%) |
+| Krzysztof Jaskiewicz | 24 (0.3%) |
+| Aleksei Vegner | 7 (0.1%) |
+| Dirk Siegmund | 2 (0.0%) |
+
+| Developers with the most signoffs (total 3) | |
+|---|---|
+| Ole Petter Orhagen | 2 (66.7%) |
+| Kristian Amlie | 1 (33.3%) |
+
+| Developers with the most report credits (total 1) | |
+|---|---|
+| Cedric Veilleux | 1 (100.0%) |
+
+| Developers who gave the most report credits (total 1) | |
+|---|---|
+| Kristian Amlie | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 370 (93.4%) |
+| RnDity | 15 (3.8%) |
+| alexey.vegner@yandex.ru | 5 (1.3%) |
+| andreas@fatal.se | 3 (0.8%) |
+| Systems Engineering & Assessment Ltd | 1 (0.3%) |
+| M-Way Solutions | 1 (0.3%) |
+| siegmund@beckmann-gmbh.de | 1 (0.3%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 13075 (97.0%) |
+| RnDity | 271 (2.0%) |
+| alexey.vegner@yandex.ru | 66 (0.5%) |
+| andreas@fatal.se | 49 (0.4%) |
+| Systems Engineering & Assessment Ltd | 12 (0.1%) |
+| siegmund@beckmann-gmbh.de | 9 (0.1%) |
+| M-Way Solutions | 4 (0.0%) |
+
+| Employers with the most signoffs (total 3) | |
+|---|---|
+| Northern.tech | 3 (100.0%) |
+
+| Employers with the most hackers (total 16) | |
+|---|---|
+| Northern.tech | 9 (56.2%) |
+| RnDity | 2 (12.5%) |
+| alexey.vegner@yandex.ru | 1 (6.2%) |
+| andreas@fatal.se | 1 (6.2%) |
+| Systems Engineering & Assessment Ltd | 1 (6.2%) |
+| siegmund@beckmann-gmbh.de | 1 (6.2%) |
+| M-Way Solutions | 1 (6.2%) |
+
+### Changelogs
+
+#### deployments (1.7.1b1)
+
+New changes in deployments since 1.7.0:
+
+* Fix "unexpected EOF" errors when the source of the artifact
+  is a slow network stream.
+* Fix spurious upload errors due to wrong EOF handling.
+* Fix inability to resume partial migration.
+
+#### gui (2.1.0b1)
+
+New changes in gui since 2.0.1:
+
+* Device list times no longer change on expansion
+  ([MEN-2366](https://tracker.mender.io/browse/MEN-2366))
+* Fix onboarding install instructions for HM and demo server
+  ([MEN-2571](https://tracker.mender.io/browse/MEN-2571))
+* newly uploaded releases are now autoselected to ease deployment
+* total artifact size in a release is now shown instead of signing state
+* Updated Help pages with new structure and content for Update Modules
+* show total artifact size in ui + clarify uncompressed size
+* long device inventory texts are no longer cut off + visible on hover
+
+#### integration (2.1.0b1)
+
+New changes in integration since 2.0.1:
+
+* Disable virtual QEMU client by default.
+  A client can be launched by giving the `--client` argument to the
+  `demo` script, either at the same time as launching the servers, or
+  later after the servers have already been launched.
+  ([MEN-2363](https://tracker.mender.io/browse/MEN-2363))
+* Automate upload of demo application artifact in demo server
+  ([MEN-2433](https://tracker.mender.io/browse/MEN-2433))
+* Fix Mender version not showing up in production.
+  ([MEN-2690](https://tracker.mender.io/browse/MEN-2690))
+* Allow demo script to run with existing demo user
+  ([MEN-2682](https://tracker.mender.io/browse/MEN-2682))
+* demo: Fix broken detection with no arguments and `--help` argument.
+* Fixes for demo wget to work on Alpine Linux using latest download
+  ([MEN-2654](https://tracker.mender.io/browse/MEN-2654))
+* Adding deployments enterprise _REV
+  ([MEN-2652](https://tracker.mender.io/browse/MEN-2652))
+* Upgrade deployments to 1.7.1b1.
+* Upgrade gui to 2.1.0b1.
+* Upgrade mender to 2.1.0b1.
+* Upgrade mender-artifact to 3.1.0b1.
+* Upgrade mender-cli to 1.2.0b1.
+* Upgrade mender-conductor to 1.4.0b1.
+* Upgrade mender-conductor-enterprise to 1.4.0b1.
+* Upgrade useradm to 1.8.0b1.
+* Unify demo scripts by removing all except the one called 'demo'.
+  ([MEN-2571](https://tracker.mender.io/browse/MEN-2571))
+
+#### mender (2.1.0b1)
+
+New changes in mender since 2.0.1:
+
+* rootfs-image-v2: Make sure to follow the spec regarding `stream-next`.
+  We should to read the final empty entry to make sure the client does
+  not block.
+* Restore error code 2 behavior when there is nothing to commit.
+* Fix read error masking in installer.chunkedCopy(...) func
+* Update vendored dependencies for client.
+* When set, HTTP proxy settings in http_proxy/https_proxy environment variables are respected now.
+* module-artifact-gen: Fix inability to specify more than one device_type.
+* Make all errors checked or explicitly ignored
+  All possible errors must be checked across all code base.
+  If an error is intentionally ignored it should be done explicitly.
+* add state-scripts example scripts to wait for network connectivity
+  before trying to connect to the Mender server.
+  ([MEN-2457](https://tracker.mender.io/browse/MEN-2457))
+* Artifact gen: Support argument passthrough to `mender-artifact`.
+  Use `--` to signal that remaining arguments should be passed directly
+  to `mender-artifact`.
+* Make the device type file location configurable
+* Make channel receiving user signals buffered
+  The commit fixes improper usage of signal.Notify(...) func from Go stdlib.
+  A channel must be buffered to properly receive signals:
+  https://golang.org/pkg/os/signal/#Notify
+  Also there is no need to reallocate channel and defer signal.Stop(...)
+  each time user signal is received. Thus less resources are used.
+* standalone: Fix artifact committing not working after upgrading from 1.x.
+  ([MEN-2465](https://tracker.mender.io/browse/MEN-2465))
+* Print warning on an invalid server certificate.
+  ([MEN-2378](https://tracker.mender.io/browse/MEN-2378))
+* add state-script example to preserve ssh keys accross updates
+  ([MEN-2457](https://tracker.mender.io/browse/MEN-2457))
+* Fix `/bin/lsb_release` not being picked up by inventory script.
+* Fix misspells in comments and error messages
+* Make sure ARM64 is included in bootloader integration inventory.
+* Added example to retain systemd network configuration.
+* single-file module: Make sure permissions are preserved.
+  Also make sure that backup preserves permissions.
+* add state-script example to utilize dbus to broadcast
+  Mender states ([MEN-2457](https://tracker.mender.io/browse/MEN-2457))
+* Provide command line interface to force inventory update.
+  ([MEN-2131](https://tracker.mender.io/browse/MEN-2131))
+
+#### mender-artifact (3.1.0b1)
+
+New changes in mender-artifact since 3.0.1:
+
+* Fix non-rootfs Artifacts being destroyed when signing them.
+  ([MEN-2573](https://tracker.mender.io/browse/MEN-2573))
+* The mender-artifact tool now checks whether the required
+  external binaries can be found on the system, and if not, returns an appropriate
+  error message.
+  ([MEN-2180](https://tracker.mender.io/browse/MEN-2180))
+* Fix name modify command for rootfs-image Artifacts
+  ([MEN-2488](https://tracker.mender.io/browse/MEN-2488))
+* Remove documentation for artifact format v1, which is now unsupported.
+* `mender-convert` modify for Update Module Artifacts will only
+  work for options that change the headers or meta-data of the Artifact;
+  curently only the Artifact name.
+  ([MEN-2487](https://tracker.mender.io/browse/MEN-2487))
+* Enable signing of artifacts larger than 1MiB
+  ([MEN-2631](https://tracker.mender.io/browse/MEN-2631))
+* Fix "unexpected EOF" errors when the source of the artifact
+  is a slow network stream.
+* Fix spurious upload errors due to wrong EOF handling.
+* checking if fsck is on path and returing error if not.
+* Add `dump` command to mender-artifact.
+  It takes an artifact as input, some optional dumping directories, and
+  writes the various raw files from the artifact into those directories.
+  The parameter `--print-cmdline` can be used to generate a command line
+  which can be used to recreate the same artifact from the dumped files.
+  ([MEN-2580](https://tracker.mender.io/browse/MEN-2580))
+* Added a build step for macOS to the Travis build.
+* `mender-artifact modify` does not support anymore signing the
+  Artifact after the modification. Use `mender-convert sign` after the
+  modification to sign the Artifact.
+  ([MEN-2486](https://tracker.mender.io/browse/MEN-2486))
+
+#### mender-cli (1.2.0b1)
+
+New changes in mender-cli since 1.1.0:
+
+* Store login token in XDG Basedir Spec Cache-directory
+  ([MEN-2387](https://tracker.mender.io/browse/MEN-2387))
+
+#### mender-conductor (1.4.0b1)
+
+New changes in mender-conductor since 1.3.1:
+
+* upgrading python client to the latest version (2.12.4)
+* Timestamp added to send_email worker
+* email-sender: fixed bug with wrong state reporting
+
+#### mender-conductor-enterprise (1.4.0b1)
+
+New changes in mender-conductor-enterprise since 1.3.1:
+
+* MC-637 updating settings for prepare_org_welcome_email conductor task
+* upgrading python client to the latest version (2.12.4)
+
+#### useradm (1.8.0b1)
+
+New changes in useradm since 1.7.0:
+
+* unauthorized for empty username logins
+  ([MEN-2375](https://tracker.mender.io/browse/MEN-2375))
+
+
 ## mender-convert 1.1.1
 
 _Released 07.01.2019_

@@ -29,18 +29,18 @@ Download the Artifacts for your desired device types below:
 
 
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "%.sdimg.gz"/mender -->
-[mender-beagleboneblack_x.x.x.sdimg.gz]: https://d1b0l86ne08fsf.cloudfront.net/master/beagleboneblack/mender-beagleboneblack_master.sdimg.gz
+[mender-beagleboneblack_x.x.x.sdimg.gz]: https://d1b0l86ne08fsf.cloudfront.net/2.1.0b1/beagleboneblack/mender-beagleboneblack_2.1.0b1.sdimg.gz
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "release_1_%"/mender -->
-[beagleboneblack_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/beagleboneblack/beagleboneblack_release_1_master.mender
+[beagleboneblack_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/2.1.0b1/beagleboneblack/beagleboneblack_release_1_2.1.0b1.mender
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "release_2_%"/mender -->
-[beagleboneblack_release_2_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/beagleboneblack/beagleboneblack_release_2_master.mender
+[beagleboneblack_release_2_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/2.1.0b1/beagleboneblack/beagleboneblack_release_2_2.1.0b1.mender
 
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "%.sdimg.gz"/mender -->
-[mender-raspberrypi3_x.x.x.sdimg.gz]: https://d1b0l86ne08fsf.cloudfront.net/master/raspberrypi3/mender-raspberrypi3_master.sdimg.gz
+[mender-raspberrypi3_x.x.x.sdimg.gz]: https://d1b0l86ne08fsf.cloudfront.net/2.1.0b1/raspberrypi3/mender-raspberrypi3_2.1.0b1.sdimg.gz
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "release_1_%"/mender -->
-[raspberrypi3_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/raspberrypi3/raspberrypi3_release_1_master.mender
+[raspberrypi3_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/2.1.0b1/raspberrypi3/raspberrypi3_release_1_2.1.0b1.mender
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "release_2_%"/mender -->
-[raspberrypi3_release_2_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/raspberrypi3/raspberrypi3_release_2_master.mender
+[raspberrypi3_release_2_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/2.1.0b1/raspberrypi3/raspberrypi3_release_2_2.1.0b1.mender
 
 If you have a BeagleBone Black or Raspberry Pi 3 you want to test Mender with
 as well, download the *disk image and both Artifacts* for it.
