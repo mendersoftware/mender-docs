@@ -4,6 +4,42 @@ taxonomy:
     category: docs
 ---
 
+## mender-convert 1.2.0b1
+
+_Released 08.13.2019_
+
+### Changelogs
+
+#### mender-convert (1.2.0b1)
+
+New changes in mender-convert since 1.1.1:
+
+* Expand existing environment '$PATH' variable instead of replacing it
+* Use same environment '$PATH' variable when using sudo
+* Fail the docker build when mandatory build-arg 'mender_client_version' is not set.
+* Update Dockerfile to use latest stable mender-artifact, v2.4.0
+* Use mender-artfact v3. Requires rebuild of device-image-shell container.
+* Use LZMA for smaller Artifact size (but slower generation).
+* Update mender-convert to use final Mender v2.0 release
+* shrink expanded rootfs when running "from_raw_disk_image"
+* rpi: Bump u-boot version to fix booting on rpi0w after raspi-config resize partition
+  ([MEN-2436](https://tracker.mender.io/browse/MEN-2436))
+* Instruct U-Boot to be able to boot either a compressed or an uncompressed kernel. This is very useful e.g. when switching from Debian (Raspbian) created using mender-convert to a Yocto based environment that does not compress the Kernel by default.
+* Implement feature (mender-convert needs option to build without server)
+  ([MEN-2590](https://tracker.mender.io/browse/MEN-2590))
+* Since mender-convert now automatically resizes the input image, there is an additional step that is executed.
+* parameterize target architecture when creating Docker container
+* Update mender-convert to for Mender v2.0.1 release
+* Support for RockPro64 board
+* Fix console not being available on HDMI on Raspberry Pi in Raspbian Buster.
+  ([MEN-2673](https://tracker.mender.io/browse/MEN-2673))
+* only install servert.crt.demo if --demo-host-ip/-i is set
+* add ServerCertificate entry in mender.conf if servert.crt was installed
+  ([MEN-2640](https://tracker.mender.io/browse/MEN-2640))
+* install /etc/mender/script/version file
+* Update mender-convert to use Mender beta release v2.1.0b1
+
+
 ## meta-mender thud-v2019.08
 
 _Released 08.13.2019_
