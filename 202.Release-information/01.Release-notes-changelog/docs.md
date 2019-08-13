@@ -8,6 +8,64 @@ taxonomy:
 
 _Released 08.13.2019_
 
+### Statistics
+
+A total of 265 lines added, 97 removed (delta 168)
+
+| Developers with the most changesets | |
+|---|---|
+| Mirza Krak | 10 (33.3%) |
+| Lluis Campos | 8 (26.7%) |
+| Simon Ensslen | 3 (10.0%) |
+| Simon Gamma | 3 (10.0%) |
+| Manuel Zedel | 2 (6.7%) |
+| Eystein Måløy Stenberg | 2 (6.7%) |
+| Mario Kozjak | 1 (3.3%) |
+| Marek Belisko | 1 (3.3%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Mirza Krak | 199 (66.1%) |
+| Manuel Zedel | 36 (12.0%) |
+| Lluis Campos | 32 (10.6%) |
+| Simon Ensslen | 15 (5.0%) |
+| Eystein Måløy Stenberg | 10 (3.3%) |
+| Simon Gamma | 7 (2.3%) |
+| Mario Kozjak | 1 (0.3%) |
+| Marek Belisko | 1 (0.3%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Yevgeniy Nurseitov | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 22 (73.3%) |
+| github@survive.ch | 3 (10.0%) |
+| simon.ensslen@griesser.ch | 3 (10.0%) |
+| kozjakm1@gmail.com | 1 (3.3%) |
+| open-nandra | 1 (3.3%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 277 (92.0%) |
+| simon.ensslen@griesser.ch | 15 (5.0%) |
+| github@survive.ch | 7 (2.3%) |
+| kozjakm1@gmail.com | 1 (0.3%) |
+| open-nandra | 1 (0.3%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| enurseitov@gmail.com | 1 (100.0%) |
+
+| Employers with the most hackers (total 8) | |
+|---|---|
+| Northern.tech | 4 (50.0%) |
+| simon.ensslen@griesser.ch | 1 (12.5%) |
+| github@survive.ch | 1 (12.5%) |
+| kozjakm1@gmail.com | 1 (12.5%) |
+| open-nandra | 1 (12.5%) |
+
 ### Changelogs
 
 #### mender-convert (1.2.0b1)
