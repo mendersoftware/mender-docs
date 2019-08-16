@@ -66,4 +66,4 @@ __Follow the help tooltips__ in the UI to guide you through each step of deployi
 !!! If you don't see the help tooltips, there is an option to toggle them on/off from the dropdown at your user email up at the top right corner of the screen.
 
 We strongly recommend that you complete the onboarding tutorial that comes with the UI so
-that you have a basic understanding of how Mender works before moving on to [Deploying to physical devices](../deploy-to-devices/deploy-to-physical-devices).
+that you have a basic understanding of how Mender works before moving on to [Install the Mender client](../install-the-mender-client).
