@@ -63,11 +63,9 @@ connection in order to avoid long wait times.
 The Mender updater client is designed to run on embedded Linux devices and connects to the server
 so that deployments can be managed across many devices.
 
-To get support for robust system updates with rollback, Mender must be [integrated with production devices](../../devices).
-For testing system updates, we provide pre-built demo images for the [Raspberry Pi 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b?target=_blank) and [BeagleBone Black](https://beagleboard.org/black?target=_blank) devices with the latest version of Mender.
+If you need support for application updates (but not full system updates), no device integration is required. In this case you can install Mender on an existing device and OS by following the documentation on [installing the Mender client](../../client-configuration/installing). For first-time Mender users, the Mender server onboarding will guide you through this process. All you need is an ARM-based device with a Debian-familiy OS (e.g. Debian, Raspbian, Ubuntu) pre-installed and network connectivity set up.
 
-On the other hand, if you only need support for application updates (not full system updates), no device integration is required. In this case you can install Mender on an existing device and OS by following the documentation on [installing the Mender client](../../client-configuration/installing).
-
+On the other hand, to get support for robust system updates with rollback, Mender must be [integrated with production devices](../../devices).
 
 ## Trying Mender
 
