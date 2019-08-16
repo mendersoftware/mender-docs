@@ -34,21 +34,14 @@ Docker Compose. Running this script will pull down the images and start them:
 ./demo up
 ```
 
-If you previously worked with Mender or have gone through the tutorial you can optionally supply the `--client` parameter to the demo script to directly start the environment with a pending virtual device (the device might take several minutes to show up in the Mender UI).
-
-```bash
-./demo --client up
-```
-
 !!! If this is the first time you start the Mender server, several gigabytes of Docker images may need to be downloaded. On a 100Mbit Internet connection this may take 5 minutes.
 
-After the Docker images have been downloaded, the `demo up` script starts the Mender services, adds a demo user with the username `mender-demo@example.com`, and assigns a random 12 character password.
+After the Docker images have been downloaded, the `demo up` script starts the Mender services, adds a demo user with the username `mender-demo@example.com`, and assigns a random password.
 
-Note that this password is not stored anywhere in the Mender demo environment. Make sure to remember this password for logins to this instance of the demo environment.
-
-When you press `return` log messages from the docker containers will be displayed in your terminal. Eventually, most of the logs will stop except for some periodic messages from the `mender-device-auth` and `mender-api-gateway` services. Pressing ctrl-c at any point will bring down the demo environment.
+Note that this password is not stored anywhere in the Mender demo environment. Make sure to **copy this password** for logins to this instance of the demo environment. You can change it after you log in to the Mender UI (below).
 
 !!! For Mender on-premise installations, your email and password are currently only used to log in to the Mender server. You will not receive any email from Mender. However, this might change in future versions so we recommend to input your real email address.
+
 
 ## Open the Mender UI
 
@@ -68,9 +61,9 @@ Log in with `mender-demo@example.com` as your email and the password that was ge
 
 **Congratulations!** You have the Mender server running!
 
-__Follow the help tooltips__ in the UI to guide you through each step of deploying to a device - authorizing the device, viewing information about it, uploading an Artifact file, and finally deploying your very first update to the device.
+__Follow the help tooltips__ in the UI to guide you through each step of deploying to a device - accepting the device, viewing information about it, uploading an Artifact file, and finally deploying your very first update to the device.
 
 !!! If you don't see the help tooltips, there is an option to toggle them on/off from the dropdown at your user email up at the top right corner of the screen.
 
-We strongly recommend that you complete the tutorial that comes with the UI so
+We strongly recommend that you complete the onboarding tutorial that comes with the UI so
 that you have a basic understanding of how Mender works before moving on to [Deploying to physical devices](../deploy-to-devices/deploy-to-physical-devices).
