@@ -37,10 +37,10 @@ docker-compose exec mender-device-auth /usr/bin/deviceauth maintenance --decommi
 
 ## The virtual QEMU device is not showing up in demo mode
 
-When running the Mender server in demo mode, as described in the [getting started tutorial](../../getting-started/deploy-to-virtual-devices),
-a virtual `qemux86-64` device should connect to and ask to join the server.
+When running the Mender server in demo mode, as described in the [getting started tutorial](../../getting-started/create-a-test-environment),
+the help tips in the UI give you an option to connect a virtual `qemux86-64` to the server for demo purposes.
 
-If this does not happen, please make sure your environment meet the resource requirements
+If you have trouble connecting this virtual device, please make sure your environment meets the resource requirements
 to run the Mender Server. In particular, it is known that the virtual device will not
 start if you do not have enough memory.
 
