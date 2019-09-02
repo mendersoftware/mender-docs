@@ -4,6 +4,128 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender rocko-v2019.08
+
+_Released 09.02.2019_
+
+### Statistics
+
+A total of 89 lines added, 121 removed (delta -32)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 8 (44.4%) |
+| Kristian Amlie | 5 (27.8%) |
+| Drew Moseley | 3 (16.7%) |
+| Ole Petter Orhagen | 1 (5.6%) |
+| Jonas Norling | 1 (5.6%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 116 (63.7%) |
+| Kristian Amlie | 51 (28.0%) |
+| Drew Moseley | 13 (7.1%) |
+| Ole Petter Orhagen | 1 (0.5%) |
+| Jonas Norling | 1 (0.5%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Lluis Campos | 71 (58.7%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 17 (94.4%) |
+| GreenEggs AB | 1 (5.6%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 181 (99.5%) |
+| GreenEggs AB | 1 (0.5%) |
+
+| Employers with the most hackers (total 5) | |
+|---|---|
+| Northern.tech | 4 (80.0%) |
+| GreenEggs AB | 1 (20.0%) |
+
+### Changelogs
+
+#### meta-mender (rocko-v2019.08)
+
+New changes in meta-mender since rocko-v2019.05:
+
+* Fix build failing in do_image_ubimg task
+* Demo images now include Yocto LSB package.
+  ([MEN-2421](https://tracker.mender.io/browse/MEN-2421))
+* QEMU: Add inventory script for Docker IP and open port 80.
+  ([MEN-2574](https://tracker.mender.io/browse/MEN-2574))
+* u-boot-mender: Add define for MENDER_STORAGE_DEVICE
+* Add recipes for mender 2.0.1 and mender-artifact 3.0.1
+* Remap port 85 on host to 85 in qemu
+* Add mender 2.1.0b1 and mender-artifact 3.1.0b1 recipes.
+  Part of Mender 2.1.0 Beta release.
+
+
+## meta-mender sumo-v2019.08
+
+_Released 09.02.2019_
+
+### Statistics
+
+A total of 93 lines added, 124 removed (delta -31)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 7 (36.8%) |
+| Kristian Amlie | 6 (31.6%) |
+| Drew Moseley | 4 (21.1%) |
+| Ole Petter Orhagen | 1 (5.3%) |
+| Jonas Norling | 1 (5.3%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 111 (59.7%) |
+| Kristian Amlie | 57 (30.6%) |
+| Drew Moseley | 16 (8.6%) |
+| Ole Petter Orhagen | 1 (0.5%) |
+| Jonas Norling | 1 (0.5%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Lluis Campos | 71 (57.3%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 18 (94.7%) |
+| GreenEggs AB | 1 (5.3%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 185 (99.5%) |
+| GreenEggs AB | 1 (0.5%) |
+
+| Employers with the most hackers (total 5) | |
+|---|---|
+| Northern.tech | 4 (80.0%) |
+| GreenEggs AB | 1 (20.0%) |
+
+### Changelogs
+
+#### meta-mender (sumo-v2019.08)
+
+New changes in meta-mender since sumo-v2019.05:
+
+* Fix build failing in do_image_ubimg task
+* Demo images now include Yocto LSB package.
+  ([MEN-2421](https://tracker.mender.io/browse/MEN-2421))
+* QEMU: Add inventory script for Docker IP and open port 80.
+  ([MEN-2574](https://tracker.mender.io/browse/MEN-2574))
+* u-boot-mender: Add define for MENDER_STORAGE_DEVICE
+* Add recipes for mender 2.0.1 and mender-artifact 3.0.1
+* Remap port 85 on host to 85 in qemu
+* Add mender 2.1.0b1 and mender-artifact 3.1.0b1 recipes.
+  Part of Mender 2.1.0 Beta release.
+
+
 ## meta-mender thud-v2019.08
 
 _Released 08.13.2019_
