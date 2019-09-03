@@ -129,7 +129,7 @@ First, pull in new container images:
 ```bash
 ./run pull
 ```
-<!--AUTOVERSION: "%)..."/ignore "%: Pulling"/ignore "Image is up to date for mendersoftware/deviceauth:%"/ignore "Image is up to date for mendersoftware/gui:%"/ignore "Image is up to date for mendersoftware/api-gateway:%"/ignore-->
+<!--AUTOVERSION: "%: Pulling from mendersoftware/deviceauth"/deviceauth "%: Pulling from mendersoftware/gui"/gui "%: Pulling from mendersoftware/api-gateway"/api-gateway "mendersoftware/deviceauth:%"/deviceauth "mendersoftware/gui:%"/gui "mendersoftware/api-gateway:%"/api-gateway-->
 > Pulling mender-mongo (mongo:3.4)...  
 > 3.4: Pulling from library/mongo  
 > Digest: sha256:e5a4f6caf4fb6773e41292b56308ed427692add67ffd7c655fdf11a78a72df4e  
@@ -139,18 +139,18 @@ First, pull in new container images:
 > Digest: sha256:0ded6733900e6e09760cd9a7c79ba4981dea6f6b142352719f7a4157b4a3352d  
 > Status: Image is up to date for mendersoftware/minio:RELEASE.2016-12-13T17-19-42Z  
 > ...  
-> Pulling mender-device-auth (mendersoftware/deviceauth:1.0.1)...  
-> 1.0.x: Pulling from mendersoftware/deviceauth  
+> Pulling mender-device-auth (mendersoftware/deviceauth:master)...  
+> master: Pulling from mendersoftware/deviceauth  
 > Digest: sha256:07ed10f6fdee40df1de8e10efc3115cb64b0c190bcf5bcd194b9f34086396058  
-> Status: Image is up to date for mendersoftware/deviceauth:1.0.1  
-> Pulling mender-gui (mendersoftware/gui:1.0.1)...  
-> 1.0.x: Pulling from mendersoftware/gui  
+> Status: Image is up to date for mendersoftware/deviceauth:master  
+> Pulling mender-gui (mendersoftware/gui:master)...  
+> master: Pulling from mendersoftware/gui  
 > Digest: sha256:af2d2349f27dd96ca21940672aa3a91335b17153f8c7ef2ca865a9a7fdf2fd22  
-> Status: Image is up to date for mendersoftware/gui:1.0.1  
-> Pulling mender-api-gateway (mendersoftware/api-gateway:1.0.1)...  
-> 1.0.x: Pulling from mendersoftware/api-gateway  
+> Status: Image is up to date for mendersoftware/gui:master  
+> Pulling mender-api-gateway (mendersoftware/api-gateway:master)...  
+> master: Pulling from mendersoftware/api-gateway  
 > Digest: sha256:0a2033a57f88afc38253a45301c83484e532047d75858df95d46c12b48f1f2f8  
-> Status: Image is up to date for mendersoftware/api-gateway:1.0.1````  
+> Status: Image is up to date for mendersoftware/api-gateway:master````  
 
 Then stop and remove existing containers:
 

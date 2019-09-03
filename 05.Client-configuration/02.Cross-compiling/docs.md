@@ -48,11 +48,11 @@ cd $GOPATH/src/github.com/mendersoftware/mender
 
 <!--AUTOVERSION: "to use Mender %"/mender-->
 Check out the version of the Mender client you want to compile; see `git tag` for available versions.
-For example, to use Mender 1.6.0 run the following command:
+For example, to use Mender master run the following command:
 
 <!--AUTOVERSION: "git checkout %"/mender-->
 ```bash
-git checkout 1.6.0
+git checkout master
 ```
 
 Then cross-compile the `mender` binary with:
