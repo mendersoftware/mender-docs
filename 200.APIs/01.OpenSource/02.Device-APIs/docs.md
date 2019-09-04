@@ -1,5 +1,5 @@
 ---
-title: Device APIs
+title: Open Source Device APIs
 taxonomy:
     category: docs
 api: true

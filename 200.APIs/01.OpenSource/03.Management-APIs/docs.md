@@ -1,5 +1,5 @@
 ---
-title: Management APIs
+title: Open Source Management APIs
 taxonomy:
     category: docs
 api: true
