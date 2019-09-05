@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-### Chapter 6
+### Chapter 7
 
 # Administration
 
