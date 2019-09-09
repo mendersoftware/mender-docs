@@ -1,5 +1,5 @@
 ---
-title: Enterprise API overview
+title: API overview
 taxonomy:
     category: docs
 ---
