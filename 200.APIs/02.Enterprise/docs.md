@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-## Mender Enterprise Source APIs
+## Mender Enterprise APIs
 
 ### REST
 
