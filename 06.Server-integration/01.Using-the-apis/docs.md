@@ -4,13 +4,13 @@ taxonomy:
     category: docs
 ---
 
-The Mender server microservices are all accessible using an HTTPS API.  These APIs can be used to configure the server (for example, pre-authorizing devices) or implementing custom workflows (for example, integrating the Mender server into an existing device management system.)
+The Mender server microservices are all accessible using an HTTPS API. These APIs can be used to configure the server (for example, pre-authorizing devices) or implementing custom workflows (for example, integrating the Mender server into an existing device management system.) There are separate APIs for [Open Source](../../apis/open-source) and [Enterprise](../../apis/enterprise).
 
-There are many ways to interact with Mender's http REST APIs and the most common ones are shown below.
+There are many ways to interact with Mender's REST APIs and the most common ones are shown below.
 
 ## Set up mender-cli
 
-`mender-cli` is a standalone CLI tool that works as a client against the [Mender server management APIs](../../apis/management-apis), in order to make it much easier to interact with the APIs.
+`mender-cli` is a standalone CLI tool that works as a client against the Mender server management APIs in order to make it much easier to interact with the APIs.
 
 Currently two use cases are supported:
 
@@ -68,7 +68,7 @@ Next, set a variable with your user email on the Mender server (replace its cont
 MENDER_SERVER_USER='myusername@example.com'
 ```
 
-Now obtain a management API JSON Web Token by using the [login API](../../apis/management-apis/user-administration-and-authentication#log-in-to-mender):
+Now obtain a management API JSON Web Token by using the [Open Source](../../apis/open-source/management-apis/user-administration-and-authentication#log-in-to-mender) or [Enterprise](../../apis/enterprise/management-apis/user-administration-and-authentication#log-in-to-mender) login API:
 
 ```bash
 JWT=$(curl -X POST -u $MENDER_SERVER_USER $MENDER_SERVER_URI/api/management/v1/useradm/auth/login)
@@ -76,7 +76,7 @@ JWT=$(curl -X POST -u $MENDER_SERVER_USER $MENDER_SERVER_URI/api/management/v1/u
 
 !!! If you are using self-signed certificates in a demo setup you may want to skip validation with the `-k` option of `curl` (this is insecure).
 
-You should now have an API token you can use to call any of the [Mender server management APIs](../../apis/management-apis) in the `JWT` shell variable.
+You should now have an API token you can use to call any of the [Mender server management APIs](../../apis/open-source/management-apis) in the `JWT` shell variable.
 
 !!! The `MENDER_SERVER_URI` and `JWT` shell variables will only exist in the current shell invocation by default, so make sure you use this same shell environment for any interactions with the API.
 
