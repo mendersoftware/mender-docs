@@ -19,11 +19,11 @@ for which purpose can be seen below.
 
 | Component               | Purpose of keys                                                                                                                                                                                                                                                                                                                  | Shares certificate or key with                                                                                                                |
 |-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| API Gateway           | Listens to a public port for `https` requests only (plain `http` is disabled). These requests can come from Mender Clients that check for- or report status about updates through the [Device APIs](../../apis/device-apis), or from users and tools that manage deployments through the [Management APIs](../../apis/management-apis). | **Mender Clients** and users of the **Management APIs**, including web browsers accessing the **Mender UI**.                                       |
+| API Gateway           | Listens to a public port for `https` requests only (plain `http` is disabled). These requests can come from Mender Clients that check for- or report status about updates through the [Device APIs](../../apis/open-source/device-apis), or from users and tools that manage deployments through the [Management APIs](../../apis/open-source/management-apis). | **Mender Clients** and users of the **Management APIs**, including web browsers accessing the **Mender UI**.                                       |
 | Storage Proxy         | Listens to a public port for `https` requests only (plain `http` is disabled). The Deployment Service manages Artifacts through the Storage Proxy and Mender Clients make Artifact download requests.                                                                                                        | **Mender Clients** and **Deployment Service**.                                                                                                    |
-| User Administration   | Signs and verifies JSON Web Tokens that users of the [Management APIs](../../apis/management-apis), including end users of the Mender UI, include in their requests to authenticate themselves.                                                                                                                                     | Nothing. The service gets signature verification requests from the API Gateway, so all keys are kept private to the service and not shared. |
-| Device Authentication | Signs and verifies JSON Web Tokens that Mender Clients include in their requests to authenticate themselves when accessing the [Device APIs](../../apis/device-apis).                                                                                                                                                                   | Nothing. The service gets signature verification requests from the API Gateway, so all keys are kept private to the service and not shared. |
-| Mender Client | Signs requests for JSON Web Tokens sent to the Device Authentication service. A Mender Client will request a new token when it connects to the Mender Server for the first time, and when a token expires. The Mender Client includes a token in all its communication to authenticate itself when accessing the [Device APIs](../../apis/device-apis).                                                                                                                                                                   | The **Device Authentication** service stores the public keys of Mender Clients. |
+| User Administration   | Signs and verifies JSON Web Tokens that users of the [Management APIs](../../apis/open-source/management-apis), including end users of the Mender UI, include in their requests to authenticate themselves.                                                                                                                                     | Nothing. The service gets signature verification requests from the API Gateway, so all keys are kept private to the service and not shared. |
+| Device Authentication | Signs and verifies JSON Web Tokens that Mender Clients include in their requests to authenticate themselves when accessing the [Device APIs](../../apis/open-source/device-apis).                                                                                                                                                                   | Nothing. The service gets signature verification requests from the API Gateway, so all keys are kept private to the service and not shared. |
+| Mender Client | Signs requests for JSON Web Tokens sent to the Device Authentication service. A Mender Client will request a new token when it connects to the Mender Server for the first time, and when a token expires. The Mender Client includes a token in all its communication to authenticate itself when accessing the [Device APIs](../../apis/open-source/device-apis).                                                                                                                                                                   | The **Device Authentication** service stores the public keys of Mender Clients. |
 | Mender Artifact | Signs and verifies [Mender Artifacts](../../architecture/mender-artifacts). | The **Signing system** stores the private key used for signing Mender artifacts. After an artifact is signed using the private key it is verified by the **Mender Clients**. |
 
 
@@ -164,7 +164,7 @@ implemented by adding the following entries to a compose file:
 #### User Administration
 
 The User Administration service signs and verifies JSON Web Tokens from
-users of the [Management APIs](../../apis/management-apis). As the verification
+users of the Management APIs. As the verification
 happens locally in the service only, the service does not need a certificate.
 
 The User Administration key can be mounted with the following snippet:
@@ -175,12 +175,13 @@ The User Administration key can be mounted with the following snippet:
             - ./keys-generated/keys/useradm/private.key:/etc/useradm/rsa/private.pem
 ```
 
+The Management APIs are documented for [Open Source](../../apis/open-source/management-apis) and [Enterprise](../../apis/enterprise/management-apis).
 
 #### Device Authentication
 
 The Device Authentication service signs and verifies JSON Web Tokens that
 Mender Clients include in their requests to authenticate themselves when accessing
-the [Device APIs](../../apis/device-apis). As the verification
+the Device APIs. As the verification
 happens locally in the service only, the service does not need a certificate.
 
 The Device Authentication key can be mounted with the following snippet:
@@ -190,6 +191,8 @@ The Device Authentication key can be mounted with the following snippet:
         volumes:
             - ./keys-generated/keys/deviceauth/private.key:/etc/deviceauth/rsa/private.pem
 ```
+
+The Device APIs are documented for [Open Source](../../apis/open-source/device-apis) and [Enterprise](../../apis/enterprise/device-apis).
 
 
 #### Mender Client

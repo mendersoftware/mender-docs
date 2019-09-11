@@ -71,10 +71,15 @@ The sequence diagram below describes the API interactions between the user and D
 |:--:|
 |*Preauthorization flow*|
 
-For details of API calls please consult the API documentation:
+For details of API calls please consult the API documentation.
 
-* [Device Authentication Device API](../../apis/device-apis/device-authentication)
-* [Device Authentication Management API](../../apis/management-apis/device-authentication)
+For open source:
+* [Device Authentication Device API](../../apis/open-source/device-apis/device-authentication)
+* [Device Authentication Management API](../../apis/open-source/management-apis/device-authentication)
+
+And for Enterprise:
+* [Device Authentication Device API](../../apis/enterprise/device-apis/device-authentication)
+* [Device Authentication Management API](../../apis/enterprise/management-apis/device-authentication)
 
 ### Accept-on-request Flow
 An alternate flow, suitable mostly for quick prototyping and testing, is the accept-on-request flow.
@@ -102,8 +107,13 @@ The sequence diagram below describes the API interactions between the user, Devi
 
 For details of API calls please consult the API documentation:
 
-* [Device Authentication Device API](../../apis/device-apis/device-authentication)
-* [Device Authentication Management API](../../apis/management-apis/device-authentication)
+For open source:
+* [Device Authentication Device API](../../apis/open-source/device-apis/device-authentication)
+* [Device Authentication Management API](../../apis/open-source/management-apis/device-authentication)
+
+And for Enterprise:
+* [Device Authentication Device API](../../apis/enterprise/device-apis/device-authentication)
+* [Device Authentication Management API](../../apis/enterprise/management-apis/device-authentication)
 
 
 ## Authentication Token
@@ -115,8 +125,7 @@ The token does have an **expiry date** (one week period), but the Mender client 
 the process is transparent to the user. The only prerequisite is that the device's authentication set has not been
 explicitly rejected in the meantime via the Device Authentication API.
 
-For details on the token format please see the relevant [documentation on submitting an authentication request](../../apis/device-apis/device-authentication)
+For details on the token format please see the relevant [documentation on submitting an authentication request for Open Source](../../apis/open-source/device-apis/device-authentication) or [Enterprise](../../apis/enterprise/device-apis/device-authentication).
 
 ## Viewing devices and auth sets
-To view available devices and their authentication sets, use the `GET /api/management/v2/authentication/devices` endpoint of the
-[Device Authentication Management API](../../apis/management-apis/device-authentication).
+To view available devices and their authentication sets, use the `GET /api/management/v2/authentication/devices` endpoint of the [Device Authentication Management API for Open Source](../../apis/open-source/management-apis/device-authentication) or [Enterprise](../../apis/enterprise/management-apis/device-authentication).
