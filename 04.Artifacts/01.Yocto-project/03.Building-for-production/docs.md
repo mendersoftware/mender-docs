@@ -80,6 +80,8 @@ Note in particular the `:` after the directory; this is mandatory.
 
 Please note that setting up for production will require that you explicitly set the [MENDER_SERVER_URL variable](../variables#mender_server_url) to the proper value for your server.
 
+!!! Note that, this step is not required for the [standalone mode](../../../architecture/standalone-deployments).
+
 ## Artifact signing and verification keys
 
 The private key used for signing the Mender Artifact should be protected and kept outside of the build system,
