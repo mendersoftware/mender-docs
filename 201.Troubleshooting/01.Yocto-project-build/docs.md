@@ -316,3 +316,39 @@ to your `local.conf` file.
 This indicates that the size declared for the full Mender image is too small to contain all files in the root filesystem.
 
 Increase the size of the image by increasing the value in `MENDER_STORAGE_TOTAL_SIZE_MB` (see description in [Variables](../../artifacts/yocto-project/variables#mender_storage_total_size_mb)).
+
+## Bitbake produces an error that rootfs size is bigger then IMAGE_ROOTFS_MAXSIZE for certian image types
+
+This is what the error message might look like:
+
+```
+ERROR: core-image-base-1.0-r0 do_rootfs_wicenv: The rootfs size 954368(K) overrides IMAGE_ROOTFS_MAXSIZE: 524288(K)
+ERROR: core-image-base-1.0-r0 do_rootfs_wicenv: Function failed: set_image_size
+ERROR: Logfile of failure stored in: /home/user/build/tmp/work/raspberrypi3-poky-linux-gnueabi/core-image-base/1.0-r0/temp/log.do_rootfs_wicenv.22793
+ERROR: Task (/home/user/build/../sources/poky/meta/recipes-core/images/core-image-base.bb:do_rootfs_wicenv) failed with exit code '1'
+ERROR: core-image-base-1.0-r0 do_image_dataimg: The rootfs size 954368(K) overrides IMAGE_ROOTFS_MAXSIZE: 524288(K)
+ERROR: core-image-base-1.0-r0 do_image_dataimg: Function failed: set_image_size
+ERROR: Logfile of failure stored in: /home/user/build/tmp/work/raspberrypi3-poky-linux-gnueabi/core-image-base/1.0-r0/temp/log.do_image_dataimg.22800
+ERROR: Task (/home/user/build/../sources/poky/meta/recipes-core/images/core-image-base.bb:do_image_dataimg) failed with exit code '1'
+```
+
+This typically only manifests for `wicenv` and `dataimg` image types when you
+install larger files to the `/data` directory.
+
+The error has to do with how we create `dataimg` from a sub-directory (`/data`) of the rootfs
+and for these images this not cleaned up before the size check is applied and
+results in a false negative.
+
+We disable this check in `meta-mender` with the following:
+
+```
+IMAGE_ROOTFS_MAXSIZE ?= ""
+```
+
+We do provide our own sanity check of image sizes, and it that is why it this
+is safe to disable this feature.
+
+But if `IMAGE_ROOTFS_MAXSIZE` is defined elsewhere with a higher priority,
+this might override what is set in `meta-mender` and trigger the mentioned error,
+and to get around this you must ensure that `IMAGE_ROOTFS_MAXSIZE` is cleared to
+disable this size check.
