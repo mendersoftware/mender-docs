@@ -67,10 +67,15 @@ If a script returns `0` Mender proceeds, but if it returns `1` the update is abo
 In addition, return code `21` is used for the [retry-later](#retry-later) feature.
 All other return codes are reserved for future use by Mender and should not be used.
 
+### Retry-later
+
+State scripts are allowed to return a specific error code (`21`), in which case the client will sleep for a time configured by [StateScriptRetryIntervalSeconds](../../client-configuration/configuration-file/configuration-options/#statescriptretryintervalseconds) before the state script is called again. Note that scripts are not allowed to retry for infinitely long. Please see description of [StateScriptRetryTimeoutSeconds](../../client-configuration/configuration-file/configuration-options/#statescriptretrytimeoutseconds) for more information.
+
+This feature is useful e.g when you want user confirmation before proceeding with the update as is described in the [Update confirmation by end user](./#update-confirmation-by-end-user) section on this page.
+
 ## Script timeout
 
-Each script has a maximum execution default time of 1 hour, or of user-specified time `StateScriptTimeoutSeconds`. If
-a script exceeds this running time, its process group will be killed and Mender will treat the script as failed.
+Each script has a maximum execution time defined by [StateScriptTimeoutSeconds](../../client-configuration/configuration-file/configuration-options/#statescripttimeoutseconds). If a script exceeds this running time, its process group will be killed and the Mender client will treat the script and the update as failed.
 
 ## Power loss
 
@@ -93,11 +98,6 @@ information to standard error, especially in case of failure
 (returning 1). The maximum size of the log is 10KiB per state script,
 anything above this volume will be truncated.
 
-## Retry-later
-
-State scripts are allowed to return a specific error code, in order to rerun at a later time. Thus if a script returns the error code `21`, the client will sleep for a default time of one minute, or for a user-specified interval `StateScriptRetryIntervalSeconds`, which can be [set in the mender config](../../client-configuration/configuration-file). Also note that scripts are not allowed to retry for infinitely long. Either a standard max window of thirty minutes is allocated to each script, or this can be configured manually by using the mender config variable `StateScriptRetryTimeoutSeconds`.
-
-
 ## Example use cases
 
 Mender users will probably come up with a lot of interesting use cases for state scripts, and we will cover some well-known ones below for inspiration.
@@ -116,7 +116,7 @@ For many devices with a display that interacts with an end user, it is desirable
 
 Mender state scripts enable this use case with a script written to create the dialog box on the UI framework used. The script will simply wait for user input, and Mender will wait with the update process while waiting for the script to finish. Depending on what the user selects, the script can return `0` (proceed) or `21` ([retry later](#retry-later)). For example, this script can be run in the `Download_Enter` state, and the user will be asked before the download begins. Alternatively, the script can also be run in the `Download_Leave` state, if you want the download to finish first, and the user only to accept installing the update and rebooting.
 
-Make sure to adjust `StateScriptRetryIntervalSeconds` as described in [retry later](#retry-later) to enable this use case.
+Make sure to adjust [StateScriptRetryTimeoutSeconds]([StateScriptRetryTimeoutSeconds](../../client-configuration/configuration-file/configuration-options/#statescriptretrytimeoutseconds)), to enable this use case.
 
 ![End user update confirmation state scripts](mender-state-machine-user-confirmation.png)
 
