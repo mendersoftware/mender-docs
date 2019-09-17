@@ -4,6 +4,58 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender thud-v2019.09
+
+_Released 09.17.2019_
+
+### Statistics
+
+A total of 224 lines added, 78 removed (delta 146)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 5 (55.6%) |
+| Lluis Campos | 3 (33.3%) |
+| Pierre-Jean Texier | 1 (11.1%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 159 (71.0%) |
+| Lluis Campos | 63 (28.1%) |
+| Pierre-Jean Texier | 2 (0.9%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 8 (88.9%) |
+| KONCEPTO | 1 (11.1%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 222 (99.1%) |
+| KONCEPTO | 2 (0.9%) |
+
+| Employers with the most hackers (total 3) | |
+|---|---|
+| Northern.tech | 2 (66.7%) |
+| KONCEPTO | 1 (33.3%) |
+
+### Changelogs
+
+#### meta-mender (thud-v2019.09)
+
+New changes in meta-mender since thud-v2019.08:
+
+* Add mender-2.1.0 and mender-artifact-3.1.0.
+* `FILESEXTRAPATHS_prepend_pn-mender-binary-delta` now needs
+  to point to the folder containing `armhf` and `x86_64`, not the folder
+  containing the binary.
+  ([MEN-2702](https://tracker.mender.io/browse/MEN-2702))
+* u-boot-fw-utils: set PACKAGE_ARCH as MACHINE_ARCH
+* Update recipe for mender-binary-delta pre-release v0.1.1
+* Add meta-mender-commercial layer.
+  This will host our mender-binary-delta Update Module.
+
+
 ## Mender 2.1.0
 
 _Released 09.16.2019_
