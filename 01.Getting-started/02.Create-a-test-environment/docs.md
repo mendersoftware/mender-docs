@@ -16,7 +16,7 @@ environment:
 
 <!--AUTOVERSION: "-b %"/integration "integration-%"/integration -->
 ```bash
-git clone -b 2.1.0b1 https://github.com/mendersoftware/integration.git integration
+git clone -b 2.1.0 https://github.com/mendersoftware/integration.git integration
 ```
 
 <!--AUTOVERSION: "integration-%"/integration -->
