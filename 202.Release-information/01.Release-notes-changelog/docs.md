@@ -4,6 +4,104 @@ taxonomy:
     category: docs
 ---
 
+## mender-convert 1.2.0
+
+_Released 09.17.2019_
+
+### Statistics
+
+A total of 268 lines added, 100 removed (delta 168)
+
+| Developers with the most changesets | |
+|---|---|
+| Mirza Krak | 10 (32.3%) |
+| Lluis Campos | 9 (29.0%) |
+| Simon Ensslen | 3 (9.7%) |
+| Simon Gamma | 3 (9.7%) |
+| Manuel Zedel | 2 (6.5%) |
+| Eystein Måløy Stenberg | 2 (6.5%) |
+| Mario Kozjak | 1 (3.2%) |
+| Marek Belisko | 1 (3.2%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Mirza Krak | 199 (65.5%) |
+| Manuel Zedel | 36 (11.8%) |
+| Lluis Campos | 35 (11.5%) |
+| Simon Ensslen | 15 (4.9%) |
+| Eystein Måløy Stenberg | 10 (3.3%) |
+| Simon Gamma | 7 (2.3%) |
+| Mario Kozjak | 1 (0.3%) |
+| Marek Belisko | 1 (0.3%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Yevgeniy Nurseitov | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 23 (74.2%) |
+| Griesser AG | 3 (9.7%) |
+| github@survive.ch | 3 (9.7%) |
+| kozjakm1@gmail.com | 1 (3.2%) |
+| open-nandra | 1 (3.2%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 280 (92.1%) |
+| Griesser AG | 15 (4.9%) |
+| github@survive.ch | 7 (2.3%) |
+| kozjakm1@gmail.com | 1 (0.3%) |
+| open-nandra | 1 (0.3%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| enurseitov@gmail.com | 1 (100.0%) |
+
+| Employers with the most hackers (total 8) | |
+|---|---|
+| Northern.tech | 4 (50.0%) |
+| Griesser AG | 1 (12.5%) |
+| github@survive.ch | 1 (12.5%) |
+| kozjakm1@gmail.com | 1 (12.5%) |
+| open-nandra | 1 (12.5%) |
+
+### Changelogs
+
+#### mender-convert (1.2.0)
+
+New changes in mender-convert since 1.2.0b1:
+
+* Update mender-convert to use Mender final release v2.1.0
+
+New changes in mender-convert since 1.1.1:
+
+* Expand existing environment '$PATH' variable instead of replacing it
+* Use same environment '$PATH' variable when using sudo
+* Fail the docker build when mandatory build-arg 'mender_client_version' is not set.
+* Update Dockerfile to use latest stable mender-artifact, v2.4.0
+* Use mender-artfact v3. Requires rebuild of device-image-shell container.
+* Use LZMA for smaller Artifact size (but slower generation).
+* Update mender-convert to use final Mender v2.0 release
+* shrink expanded rootfs when running "from_raw_disk_image"
+* rpi: Bump u-boot version to fix booting on rpi0w after raspi-config resize partition
+  ([MEN-2436](https://tracker.mender.io/browse/MEN-2436))
+* Instruct U-Boot to be able to boot either a compressed or an uncompressed kernel. This is very useful e.g. when switching from Debian (Raspbian) created using mender-convert to a Yocto based environment that does not compress the Kernel by default.
+* Implement feature (mender-convert needs option to build without server)
+  ([MEN-2590](https://tracker.mender.io/browse/MEN-2590))
+* Since mender-convert now automatically resizes the input image, there is an additional step that is executed.
+* parameterize target architecture when creating Docker container
+* Update mender-convert to for Mender v2.0.1 release
+* Support for RockPro64 board
+* Fix console not being available on HDMI on Raspberry Pi in Raspbian Buster.
+  ([MEN-2673](https://tracker.mender.io/browse/MEN-2673))
+* only install servert.crt.demo if --demo-host-ip/-i is set
+* add ServerCertificate entry in mender.conf if servert.crt was installed
+  ([MEN-2640](https://tracker.mender.io/browse/MEN-2640))
+* install /etc/mender/script/version file
+* Update mender-convert to use Mender beta release v2.1.0b1
+
+
 ## meta-mender thud-v2019.09
 
 _Released 09.17.2019_
@@ -455,100 +553,6 @@ New changes in meta-mender since sumo-v2019.05:
 * Remap port 85 on host to 85 in qemu
 * Add mender 2.1.0b1 and mender-artifact 3.1.0b1 recipes.
   Part of Mender 2.1.0 Beta release.
-
-
-## mender-convert 1.2.0b1
-
-_Released 08.13.2019_
-
-### Statistics
-
-A total of 265 lines added, 97 removed (delta 168)
-
-| Developers with the most changesets | |
-|---|---|
-| Mirza Krak | 10 (33.3%) |
-| Lluis Campos | 8 (26.7%) |
-| Simon Ensslen | 3 (10.0%) |
-| Simon Gamma | 3 (10.0%) |
-| Manuel Zedel | 2 (6.7%) |
-| Eystein Måløy Stenberg | 2 (6.7%) |
-| Mario Kozjak | 1 (3.3%) |
-| Marek Belisko | 1 (3.3%) |
-
-| Developers with the most changed lines | |
-|---|---|
-| Mirza Krak | 199 (66.1%) |
-| Manuel Zedel | 36 (12.0%) |
-| Lluis Campos | 32 (10.6%) |
-| Simon Ensslen | 15 (5.0%) |
-| Eystein Måløy Stenberg | 10 (3.3%) |
-| Simon Gamma | 7 (2.3%) |
-| Mario Kozjak | 1 (0.3%) |
-| Marek Belisko | 1 (0.3%) |
-
-| Developers with the most signoffs (total 1) | |
-|---|---|
-| Yevgeniy Nurseitov | 1 (100.0%) |
-
-| Top changeset contributors by employer | |
-|---|---|
-| Northern.tech | 22 (73.3%) |
-| github@survive.ch | 3 (10.0%) |
-| simon.ensslen@griesser.ch | 3 (10.0%) |
-| kozjakm1@gmail.com | 1 (3.3%) |
-| open-nandra | 1 (3.3%) |
-
-| Top lines changed by employer | |
-|---|---|
-| Northern.tech | 277 (92.0%) |
-| simon.ensslen@griesser.ch | 15 (5.0%) |
-| github@survive.ch | 7 (2.3%) |
-| kozjakm1@gmail.com | 1 (0.3%) |
-| open-nandra | 1 (0.3%) |
-
-| Employers with the most signoffs (total 1) | |
-|---|---|
-| enurseitov@gmail.com | 1 (100.0%) |
-
-| Employers with the most hackers (total 8) | |
-|---|---|
-| Northern.tech | 4 (50.0%) |
-| simon.ensslen@griesser.ch | 1 (12.5%) |
-| github@survive.ch | 1 (12.5%) |
-| kozjakm1@gmail.com | 1 (12.5%) |
-| open-nandra | 1 (12.5%) |
-
-### Changelogs
-
-#### mender-convert (1.2.0b1)
-
-New changes in mender-convert since 1.1.1:
-
-* Expand existing environment '$PATH' variable instead of replacing it
-* Use same environment '$PATH' variable when using sudo
-* Fail the docker build when mandatory build-arg 'mender_client_version' is not set.
-* Update Dockerfile to use latest stable mender-artifact, v2.4.0
-* Use mender-artfact v3. Requires rebuild of device-image-shell container.
-* Use LZMA for smaller Artifact size (but slower generation).
-* Update mender-convert to use final Mender v2.0 release
-* shrink expanded rootfs when running "from_raw_disk_image"
-* rpi: Bump u-boot version to fix booting on rpi0w after raspi-config resize partition
-  ([MEN-2436](https://tracker.mender.io/browse/MEN-2436))
-* Instruct U-Boot to be able to boot either a compressed or an uncompressed kernel. This is very useful e.g. when switching from Debian (Raspbian) created using mender-convert to a Yocto based environment that does not compress the Kernel by default.
-* Implement feature (mender-convert needs option to build without server)
-  ([MEN-2590](https://tracker.mender.io/browse/MEN-2590))
-* Since mender-convert now automatically resizes the input image, there is an additional step that is executed.
-* parameterize target architecture when creating Docker container
-* Update mender-convert to for Mender v2.0.1 release
-* Support for RockPro64 board
-* Fix console not being available on HDMI on Raspberry Pi in Raspbian Buster.
-  ([MEN-2673](https://tracker.mender.io/browse/MEN-2673))
-* only install servert.crt.demo if --demo-host-ip/-i is set
-* add ServerCertificate entry in mender.conf if servert.crt was installed
-  ([MEN-2640](https://tracker.mender.io/browse/MEN-2640))
-* install /etc/mender/script/version file
-* Update mender-convert to use Mender beta release v2.1.0b1
 
 
 ## meta-mender thud-v2019.08
