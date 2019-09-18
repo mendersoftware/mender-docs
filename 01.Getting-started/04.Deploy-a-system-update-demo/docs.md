@@ -100,7 +100,9 @@ mender-artifact cat $MENDER_IMGPATH:/etc/hosts
 
 You should see output similar to the following:
 
+> ```
 > 192.168.10.1 docker.mender.io s3.docker.mender.io
+> ```
 
 ### Set a static device IP address and subnet
 
@@ -211,7 +213,9 @@ mender-artifact cat $MENDER_FILE_IMGPATH:/etc/hosts
 
 You should see output similar to the following:
 
+> ```
 > 192.168.10.1 docker.mender.io s3.docker.mender.io
+> ```
 
 Finally, **only if you are using static IP addressing**, you need to set the
 device IP address, as shown below (otherwise skip this step). Please note that the same

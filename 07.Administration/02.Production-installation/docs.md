@@ -76,6 +76,7 @@ named `mender-server`:
 git clone -b master https://github.com/mendersoftware/integration mender-server
 ```
 
+> ```
 > Cloning into 'deployment'...
 > remote: Counting objects: 1117, done.
 > remote: Compressing objects: 100% (11/11), done.
@@ -83,6 +84,7 @@ git clone -b master https://github.com/mendersoftware/integration mender-server
 > Receiving objects: 100% (1117/1117), 233.85 KiB | 411.00 KiB/s, done.
 > Resolving deltas: 100% (678/678), done.
 > Checking connectivity... done.
+> ```
 
 Enter the directory:
 
@@ -111,9 +113,11 @@ cd production
 ```
 ls -l
 ```
+> ```
 > total 12
 > -rw-rw-r--. 1 user user 4101 01-26 14:06 prod.yml
 > -rwxrwxr-x. 1 user user  161 01-26 14:06 run
+> ```
 
 The template includes 2 files:
 
@@ -143,10 +147,12 @@ git add .
 ```bash
 git commit -m 'production: initial template'
 ```
+> ```
 > [my-production-setup 556cc2e] production: initial template
 >  2 files changed, 110 insertions(+)
 >  create mode 100644 production/prod.yml
 >  create mode 100755 production/run
+> ```
 
 Assuming that current working directory is still `production`, download
 necessary Docker images:
@@ -155,6 +161,7 @@ necessary Docker images:
 ./run pull
 ```
 
+> ```
 > Pulling mender-mongo (mongo:3.4)...
 > 3.4: Pulling from library/mongo
 > Digest: sha256:aff0c497cff4f116583b99b21775a8844a17bcf5c69f7f3f6028013bf0d6c00c
@@ -180,6 +187,7 @@ necessary Docker images:
 > latest: Pulling from mendersoftware/api-gateway
 > Digest: sha256:97243de3da950e754ada73abf8c123001c0a0c8b20344256dc7db4c89c0ecd82
 > Status: Image is up to date for mendersoftware/api-gateway:latest
+> ```
 
 ! Using the `run` helper script may fail when local user has insufficient permissions to reach a local docker daemon. Make sure that the Docker installation was completed successfully and the user has sufficient permissions (typically the user must be a member of the `docker` group).
 
@@ -194,12 +202,14 @@ CERT_API_CN=mender.example.com CERT_STORAGE_CN=s3.example.com ../keygen
 ```
 <!--AUTOMATION: execute=CERT_API_CN=s3.docker.mender.io CERT_STORAGE_CN=s3.docker.mender.io ../keygen -->
 
+> ```
 > Generating a 256 bit EC private key
 > writing new private key to 'private.key'
 > ...
 > All keys and certificates have been generated in directory keys-generated.
 > Please include them in your docker compose and device builds.
 > For more information please see https://docs.mender.io/Administration/Certificates-and-keys.
+> ```
 
 Your local directory tree should now look like this:
 <!--AUTOMATION: ignore -->
@@ -239,6 +249,7 @@ git add keys-generated
 git commit -m 'production: adding generated keys and certificates'
 ```
 
+> ```
 > [my-production-setup fd8a397] production: adding generated keys and certificates
 >  6 files changed, 108 insertions(+)
 >  create mode 100644 production/keys-generated/certs/api-gateway/cert.crt
@@ -248,6 +259,7 @@ git commit -m 'production: adding generated keys and certificates'
 >  create mode 100644 production/keys-generated/certs/storage-proxy/private.key
 >  create mode 100644 production/keys-generated/keys/deviceauth/private.key
 >  create mode 100644 production/keys-generated/keys/useradm/private.key
+> ```
 
 The API Gateway and Storage Proxy certificates generated here need to be made
 available to the Mender client.
@@ -282,10 +294,12 @@ rm -rf keys-generated
 ```
 ls -l
 ```
+> ```
 > total 20
 > -rw-rw-r--. 1 user group 5094 01-30 11:24 keys-generated.tar.gpg
 > -rw-rw-r--. 1 user group 5519 01-30 11:08 prod.yml
 > -rwxrwxr-x. 1 user group  173 01-27 14:16 run
+> ```
 
 Keys need to be decrypted before bringing the whole environment up:
 
@@ -309,9 +323,11 @@ git add keys-generated.tar.gpg
 git commit -m 'production: adding generated keys and certificates'
 ```
 
+> ```
 > [my-production-setup 237af44] production: adding generated keys and certificates
 >  1 file changed, 111 insertions(+)
 >  create mode 100644 production/keys-generated.tar.gpg
+> ```
 
 
 ### Persistent storage
@@ -351,7 +367,9 @@ command:
 ```bash
 docker volume inspect --format '{{.Mountpoint}}' mender-artifacts
 ```
+> ```
 > /var/lib/docker/volumes/mender-artifacts/_data
+> ```
 
 The path depends on local docker configuration and may vary between installations.
 
@@ -397,7 +415,9 @@ for generating the secret. Run the following command to generate a 16-character 
 ```bash
 pwgen 16 1
 ```
+> ```
 > ahshagheeD1ooPae
+> ```
 
 The updated entry should look similar to this:
 
@@ -534,9 +554,11 @@ At this point your commit history should look as follows:
 ```bash
 git log --oneline origin/master..HEAD
 ```
+> ```
 > 7a4de3c production: final configuration
 > 41273f7 production: adding generated keys and certificates
 > 5ad6528 production: initial template
+> ```
 
 
 ### Bring it all up
@@ -546,6 +568,7 @@ Bring up all services up in detached mode with the following command:
 ```bash
 ./run up -d
 ```
+> ```
 > Creating network "menderproduction_mender" with the default driver
 > Creating menderproduction_mender-mongo_1
 > Creating menderproduction_mender-gui_1
@@ -556,6 +579,7 @@ Bring up all services up in detached mode with the following command:
 > Creating menderproduction_mender-useradm_1
 > Creating menderproduction_mender-deployments_1
 > Creating menderproduction_mender-api-gateway_1
+> ```
 
 !!! Services, networks and volumes have a `menderproduction` prefix, see the note about [docker-compose naming scheme](#docker-compose-naming-scheme) for more details. When using `docker ..` commands, a complete container name must be provided (ex. `menderproduction_mender-deployments_1`).
 

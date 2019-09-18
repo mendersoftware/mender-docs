@@ -64,8 +64,10 @@ Replace the hostname with the one for your Mender API Gateway below and run the 
 ```bash
 echo | openssl s_client -connect mender.example.com:443 2>/dev/null | openssl x509 -noout -dates
 ```
+> ```
 > notBefore=Dec 14 19:52:46 2016 GMT
 > notAfter=Dec 12 19:52:46 2026 GMT
+> ```
 
 Also note that the storage proxy has its own certificate, and it runs on the same host as the API Gateway
 on port 9000 by default. Adjust the hostname and verify the validity of its certificate with the following command:
@@ -73,8 +75,10 @@ on port 9000 by default. Adjust the hostname and verify the validity of its cert
 ```bash
 echo | openssl s_client -connect s3.example.com:9000 2>/dev/null | openssl x509 -noout -dates
 ```
+> ```
 > notBefore=Dec 14 19:52:46 2016 GMT
 > notAfter=Dec 12 19:52:46 2026 GMT
+> ```
 
 We can see that both these certificates are currently valid.
 Also see the [documentation on certificates](../../administration/certificates-and-keys) for an

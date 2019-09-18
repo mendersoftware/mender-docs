@@ -44,6 +44,7 @@ the contents of each DB into `$PWD/db-dump/<service-name>` directory.
 ```bash
 ../migration/dump-db
 ```
+> ```
 > Stopping menderproduction_mender-deployments_1 ... done
 > Stopping menderproduction_mender-inventory_1 ... done
 > Stopping menderproduction_mender-useradm_1 ... done
@@ -56,6 +57,7 @@ the contents of each DB into `$PWD/db-dump/<service-name>` directory.
 > 2017-06-06T11:20:05.025+0000    done dumping useradm.migration_info (1 document)
 > (output continues...)
 > 2017-06-06T11:20:05.315+0000    done dumping deployment_service.migration_info (1 document)
+> ```
 
 The tool `restore-db` will run a mongo container inside the mender network to restore
 DB dumps previously created with `dump-db`.
@@ -63,6 +65,7 @@ DB dumps previously created with `dump-db`.
 ```bash
 ../migration/restore-db
 ```
+> ```
 > Stopping menderproduction_mender-deployments_1 ... done
 > Stopping menderproduction_mender-inventory_1 ... done
 > Stopping menderproduction_mender-useradm_1 ... done
@@ -74,6 +77,7 @@ DB dumps previously created with `dump-db`.
 > 2017-06-06T11:35:14.563+0000    no indexes to restore
 > 2017-06-06T11:35:14.563+0000    finished restoring deployment_service.migration_info (1 document)
 > 2017-06-06T11:35:14.563+0000    done
+> ```
 
 ! Note `restore-db` and `dump-db` will automatically stop all Mender services that may access respective DBs.
 
@@ -82,6 +86,7 @@ Once the data has been dumped or restored, the services can be started using
 ```bash
 ./run up -d
 ```
+> ```
 > menderproduction_mender-mongo_1 is up-to-date
 > menderproduction_mender-elasticsearch_1 is up-to-date
 > menderproduction_mender-gui_1 is up-to-date
@@ -94,6 +99,7 @@ Once the data has been dumped or restored, the services can be started using
 > menderproduction_mender-conductor_1 is up-to-date
 > Starting menderproduction_mender-deployments_1
 > menderproduction_mender-api-gateway_1 is up-to-date
+> ```
 
 Occasionally services may get new IP addresses and the API gateway DNS cache may no
 longer be correct. To refresh the API gateway's cache, run the following command:

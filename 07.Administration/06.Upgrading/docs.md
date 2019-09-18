@@ -66,6 +66,7 @@ update origin`.
 git fetch origin --tags
 ```
 <!--AUTOVERSION: "%      -> origin/%"/ignore "%     -> origin/%"/ignore-->
+> ```
 > Fetching origin  
 > remote: Counting objects: 367, done.  
 > remote: Compressing objects: 100% (31/31), done.  
@@ -75,6 +76,7 @@ git fetch origin --tags
 > From https://github.com/mendersoftware/integration  
 >    02cd118..75b7831  1.0.x      -> origin/1.0.x  
 >    06f3212..e9e5df4  master     -> origin/master  
+> ```
 
 <!--AUTOVERSION: "branch named `%` provides"/ignore "e.g. `%`"/ignore-->
 For each release there will be a corresponding release branch. For example, the
@@ -111,12 +113,14 @@ Upgrading our local production branch is performed by issuing a `git merge` comm
 ```bash
 git merge 1.0.1
 ```
+> ```
 > Merge made by the 'recursive' strategy.
 >  .travis.yml            | 16 ++++++++++++++++
 >  tests/run.sh           |  4 ++--
 >  update                 |  1 -
 >  verify-docker-versions | 29 ++++++++++++++++++++---------
 >  4 files changed, 38 insertions(+), 12 deletions(-)
+> ```
 
 !!! Since your local changes are kept in git, it is possible to tag your production version or branch to create pre-merge branches that can be tested in a staging environment.
 
@@ -130,6 +134,7 @@ First, pull in new container images:
 ./run pull
 ```
 <!--AUTOVERSION: "%: Pulling from mendersoftware/deviceauth"/deviceauth "%: Pulling from mendersoftware/gui"/gui "%: Pulling from mendersoftware/api-gateway"/api-gateway "mendersoftware/deviceauth:%"/deviceauth "mendersoftware/gui:%"/gui "mendersoftware/api-gateway:%"/api-gateway-->
+> ```
 > Pulling mender-mongo (mongo:3.4)...  
 > 3.4: Pulling from library/mongo  
 > Digest: sha256:e5a4f6caf4fb6773e41292b56308ed427692add67ffd7c655fdf11a78a72df4e  
@@ -151,6 +156,7 @@ First, pull in new container images:
 > master: Pulling from mendersoftware/api-gateway  
 > Digest: sha256:0a2033a57f88afc38253a45301c83484e532047d75858df95d46c12b48f1f2f8  
 > Status: Image is up to date for mendersoftware/api-gateway:master````  
+> ```
 
 Then stop and remove existing containers:
 
@@ -159,6 +165,7 @@ Then stop and remove existing containers:
 ```bash
 ./run stop
 ```
+> ```
 > Stopping menderproduction_mender-api-gateway_1 ... done
 > Stopping menderproduction_mender-inventory_1 ... done
 > Stopping menderproduction_mender-deployments_1 ... done
@@ -168,12 +175,14 @@ Then stop and remove existing containers:
 > Stopping menderproduction_mender-mongo_1 ... done
 > Stopping menderproduction_mender-gui_1 ... done
 > Stopping menderproduction_minio_1 ... done
+> ```
 
 !!! All system data is kept in named Docker volumes. Removing containers does not affect volumes.
 
 ```bash
 ./run rm
 ```
+> ```
 > Going to remove menderproduction_mender-api-gateway_1, ...
 > Are you sure? [yN] y
 > Removing menderproduction_mender-api-gateway_1 ... done
@@ -185,12 +194,14 @@ Then stop and remove existing containers:
 > Removing menderproduction_mender-mongo_1 ... done
 > Removing menderproduction_mender-gui_1 ... done
 > Removing menderproduction_minio_1 ... done
+> ```
 
 Start the new environment:
 
 ```bash
 ./run up -d
 ```
+> ```
 > Creating menderproduction_mender-mongo_1
 > Creating menderproduction_minio_1
 > Creating menderproduction_mender-gui_1
@@ -200,6 +211,7 @@ Start the new environment:
 > Creating menderproduction_mender-device-auth_1
 > Creating menderproduction_mender-inventory_1
 > Creating menderproduction_mender-api-gateway_1
+> ```
 
 ## Removing deviceadm service database
 

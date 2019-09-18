@@ -51,7 +51,7 @@ The second piece of information we need is the *start sector* of the partition w
 This is the second column in the output from `fdisk`. The start sector is shown in bold below for
 our two rootfs partitions:
 
-> mender-beaglebone.sdimg2       **81920** 294911  212992  104M 83 Linux
+> mender-beaglebone.sdimg2       **81920** 294911  212992  104M 83 Linux<br>
 > mender-beaglebone.sdimg3      **294912** 507903  212992  104M 83 Linux
 
 In order to mount a partition we simply multiply the sector size and the start sector
