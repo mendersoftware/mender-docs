@@ -9,9 +9,9 @@ taxonomy:
 This is a step by step guide for deploying the Mender Server for production environments,
 and will cover relevant security and reliability aspects of Mender production installations.
 The Mender backend services can be deployed to production using a skeleton provided
-in the `template` directory
+in the `production` directory
 of the [integration](https://github.com/mendersoftware/integration?target=_blank)
-repository.
+repository. Most of the steps are the same whether you are installing the Open Source or Enterprise edition of the Mender Server, but there are some extra steps that are covered in the [Enterprise subsection](enterprise).
 
 
 ## Prerequisites
@@ -98,45 +98,51 @@ Prepare a branch where all deployment related changes will be kept:
 git checkout -b my-production-setup
 ```
 
-Copy deployment configuration template to a new directory named `production`:
-
-```bash
-cp -a template production
-```
-
-Enter the directory:
+Enter the `production` directory:
 
 ```bash
 cd production
 ```
 
+Copy the production template to its own file:
+
+```bash
+cp config/prod.yml.template config/prod.yml
 ```
-ls -l
+
 ```
+ls -l *
+```
+
 > ```
-> total 12
-> -rw-rw-r--. 1 user user 4101 01-26 14:06 prod.yml
-> -rwxrwxr-x. 1 user user  161 01-26 14:06 run
+> -rwxr-xr-x 1 user user  725 Sep 17 14:14 run
+>
+> config:
+> total 24
+> -rw-r--r-- 1 user user  566 Sep 17 14:14 enterprise.yml.template
+> -rw-r--r-- 1 user user 5814 Sep 10 15:44 prod.yml
+> -rw-r--r-- 1 user user 5752 Sep 17 14:14 prod.yml.template
 > ```
 
-The template includes 2 files:
-
-- `prod.yml` - contains deployment-specific configuration, builds on top of
-  `docker-compose.yml` (located at the root of integration repository)
+The template includes a few files:
 
 - `run` - a convenience helper that invokes `docker-compose` by passing the required
   compose files; arguments passed to `run` in command line are forwarded
   directly to `docker-compose`
 
-First we need to update paths that are mounted from the root of integration repository:
+- `prod.yml` and `prod.yml.template` - contains deployment-specific
+  configuration, builds on top of `docker-compose.yml` (located at the root of
+  integration repository)
 
-```bash
-sed -i -e 's#/template/#/production/#g' prod.yml
-```
+- `enterprise.yml.template` - configuration for running an Enterprise instance
+  of the Mender server. This topic is covered separately in [the Enterprise
+  part](enterprise) of the Production installation guide
+
+!!! If an `enterprise.yml` file exists in the `config` directory, this will automatically turn on Enterprise features in the backend service. Make sure that `enterprise.yml` does not exist unless you are planning on using the Mender Enterprise server.
 
 At this point all changes should be committed to the repository:
-<!--AUTOMATION: execute=sed -i '0,/set-my-alias-here.com/s/set-my-alias-here.com/s3.docker.mender.io/' prod.yml -->
-<!--AUTOMATION: execute=sed -i 's|DEPLOYMENTS_AWS_URI:.*|DEPLOYMENTS_AWS_URI: https://s3.docker.mender.io:9000|' prod.yml -->
+<!--AUTOMATION: execute=sed -i '0,/set-my-alias-here.com/s/set-my-alias-here.com/s3.docker.mender.io/' config/prod.yml -->
+<!--AUTOMATION: execute=sed -i 's|DEPLOYMENTS_AWS_URI:.*|DEPLOYMENTS_AWS_URI: https://s3.docker.mender.io:9000|' config/prod.yml -->
 
 <!--AUTOMATION: ignore -->
 ```bash
@@ -149,9 +155,8 @@ git commit -m 'production: initial template'
 ```
 > ```
 > [my-production-setup 556cc2e] production: initial template
->  2 files changed, 110 insertions(+)
->  create mode 100644 production/prod.yml
->  create mode 100755 production/run
+>  1 file changed, 54 insertions(+)
+>  create mode 100644 production/config/prod.yml
 > ```
 
 Assuming that current working directory is still `production`, download
@@ -228,7 +233,9 @@ Your local directory tree should now look like this:
 │       │   └── private.key
 │       └── useradm
 │           └── private.key
-├── prod.yml
+├── config/enterprise.yml.template
+├── config/prod.yml
+├── config/prod.yml.template
 └── run
 ```
 
@@ -296,8 +303,8 @@ ls -l
 ```
 > ```
 > total 20
+> drwxrwxr-x. 1 user group 4096 01-30 11:08 config
 > -rw-rw-r--. 1 user group 5094 01-30 11:24 keys-generated.tar.gpg
-> -rw-rw-r--. 1 user group 5519 01-30 11:08 prod.yml
 > -rwxrwxr-x. 1 user group  173 01-27 14:16 run
 > ```
 
@@ -376,8 +383,8 @@ The path depends on local docker configuration and may vary between installation
 
 ### Final configuration
 
-The deployment configuration still needs some final touches. Open `prod.yml` in
-your favorite editor.
+The deployment configuration still needs some final touches. Open
+`config/prod.yml` in your favorite editor.
 
 
 #### Storage proxy
@@ -432,11 +439,11 @@ The updated entry should look similar to this:
     ...
 
 ```
-<!--AUTOMATION: execute=sed -i.bak 's/MINIO_ACCESS_KEY:.*/MINIO_ACCESS_KEY: Q3AM3UQ867SPQQA43P2F/' prod.yml -->
-<!--AUTOMATION: execute=sed -i.bak 's/MINIO_SECRET_KEY:.*/MINIO_SECRET_KEY: abcssadasdssado798dsfjhkksd/' prod.yml -->
+<!--AUTOMATION: execute=sed -i.bak 's/MINIO_ACCESS_KEY:.*/MINIO_ACCESS_KEY: Q3AM3UQ867SPQQA43P2F/' config/prod.yml -->
+<!--AUTOMATION: execute=sed -i.bak 's/MINIO_SECRET_KEY:.*/MINIO_SECRET_KEY: abcssadasdssado798dsfjhkksd/' config/prod.yml -->
 
-<!--AUTOMATION: execute=sed -i.bak 's/DEPLOYMENTS_AWS_AUTH_KEY:.*/DEPLOYMENTS_AWS_AUTH_KEY: Q3AM3UQ867SPQQA43P2F/' prod.yml -->
-<!--AUTOMATION: execute=sed -i.bak 's/DEPLOYMENTS_AWS_AUTH_SECRET:.*/DEPLOYMENTS_AWS_AUTH_SECRET: abcssadasdssado798dsfjhkksd/' prod.yml -->
+<!--AUTOMATION: execute=sed -i.bak 's/DEPLOYMENTS_AWS_AUTH_KEY:.*/DEPLOYMENTS_AWS_AUTH_KEY: Q3AM3UQ867SPQQA43P2F/' config/prod.yml -->
+<!--AUTOMATION: execute=sed -i.bak 's/DEPLOYMENTS_AWS_AUTH_SECRET:.*/DEPLOYMENTS_AWS_AUTH_SECRET: abcssadasdssado798dsfjhkksd/' config/prod.yml -->
 
 
 #### Deployments service
@@ -539,7 +546,7 @@ Once all the configuration is complete, commit all changes to the repository:
 
 <!--AUTOMATION: ignore -->
 ```bash
-git add prod.yml
+git add config/prod.yml
 ```
 
 <!--AUTOMATION: ignore -->
@@ -562,6 +569,8 @@ git log --oneline origin/master..HEAD
 
 
 ### Bring it all up
+
+!!! If your goal is to set up an Mender Enterprise server, now is the time to [return to the Enterprise guide](enterprise#configuring-enterprise) and continue from there. The rest of this guide should not be followed.
 
 Bring up all services up in detached mode with the following command:
 
@@ -593,19 +602,19 @@ To verify that the services are running, you can issue the following command:
 ```
 
 <!--AUTOMATION: ignore -->
-```bash
-                   Name                                  Command               State           Ports
--------------------------------------------------------------------------------------------------------------
-menderproduction_mender-api-gateway_1         /entrypoint.sh                   Up      0.0.0.0:443->443/tcp
-menderproduction_mender-deployments_1         /entrypoint.sh                   Up      8080/tcp
-menderproduction_mender-device-auth_1         /usr/bin/deviceauth -confi ...   Up      8080/tcp
-menderproduction_mender-gui_1                 /entrypoint.sh                   Up
-menderproduction_mender-inventory_1           /usr/bin/inventory -config ...   Up      8080/tcp
-menderproduction_mender-mongo_1               /entrypoint.sh mongod            Up      27017/tcp
-menderproduction_mender-useradm_1             /usr/bin/useradm -config / ...   Up      8080/tcp
-menderproduction_minio_1                      minio server /export             Up      9000/tcp
-menderproduction_storage-proxy_1              /usr/local/openresty/bin/o ...   Up      0.0.0.0:9000->9000/tcp
-```
+> ```bash
+>                    Name                                  Command               State           Ports
+> -------------------------------------------------------------------------------------------------------------
+> menderproduction_mender-api-gateway_1         /entrypoint.sh                   Up      0.0.0.0:443->443/tcp
+> menderproduction_mender-deployments_1         /entrypoint.sh                   Up      8080/tcp
+> menderproduction_mender-device-auth_1         /usr/bin/deviceauth -confi ...   Up      8080/tcp
+> menderproduction_mender-gui_1                 /entrypoint.sh                   Up
+> menderproduction_mender-inventory_1           /usr/bin/inventory -config ...   Up      8080/tcp
+> menderproduction_mender-mongo_1               /entrypoint.sh mongod            Up      27017/tcp
+> menderproduction_mender-useradm_1             /usr/bin/useradm -config / ...   Up      8080/tcp
+> menderproduction_minio_1                      minio server /export             Up      9000/tcp
+> menderproduction_storage-proxy_1              /usr/local/openresty/bin/o ...   Up      0.0.0.0:9000->9000/tcp
+> ```
 
 
 <!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 12 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
