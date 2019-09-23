@@ -28,6 +28,20 @@ repository. Most of the steps are the same whether you are installing the Open S
   own the domains `mender.example.com` and `s3.example.com`) that resolve to the public
   IP of current host on the devices.
 
+If you are setting up a Mender Enterprise server, you will also need:
+
+- An account with Mender in order to evaluate and use the commercial features in
+  Mender Enterprise. Please email [contact@mender.io](mailto:contact@mender.io)
+  to receive your credentials to log in with docker below before proceeding.
+- Docker configuration logged into the Mender Enterprise Docker registry:
+  ```bash
+  docker login -u=<USERNAME> docker.download.mender.io
+  ```
+  Replace `<USERNAME>` with the username from your Mender Enterprise
+  account. This gives a prompt:
+  > ```
+  > Password: <TYPE PASSWORD HERE>
+  > ```
 
 !!! It is very likely possible to use other Linux distributions and versions. However, we recommend using this exact environment for running Mender because it is known to work and you will thus avoid any issues specific to your environment if you use this reference.
 
@@ -381,10 +395,10 @@ docker volume inspect --format '{{.Mountpoint}}' mender-artifacts
 The path depends on local docker configuration and may vary between installations.
 
 
-### Final configuration
+### Configuration
 
-The deployment configuration still needs some final touches. Open
-`config/prod.yml` in your favorite editor.
+The deployment configuration now needs to be edited. Open `config/prod.yml` in
+your favorite editor.
 
 
 #### Storage proxy
@@ -540,7 +554,7 @@ deciding factors determining the log volume are:
 
 It is suggested to adjust log rotation parameters only after measuring the actual space usage for a given use case.
 
-#### Saving the final configuration
+#### Saving the configuration
 
 Once all the configuration is complete, commit all changes to the repository:
 
@@ -551,7 +565,7 @@ git add config/prod.yml
 
 <!--AUTOMATION: ignore -->
 ```bash
-git commit -m 'production: final configuration'
+git commit -m 'production: configuration'
 ```
 
 At this point your commit history should look as follows:
@@ -562,15 +576,13 @@ At this point your commit history should look as follows:
 git log --oneline origin/master..HEAD
 ```
 > ```
-> 7a4de3c production: final configuration
+> 7a4de3c production: configuration
 > 41273f7 production: adding generated keys and certificates
 > 5ad6528 production: initial template
 > ```
 
 
 ### Bring it all up
-
-!!! If your goal is to set up an Mender Enterprise server, now is the time to [return to the Enterprise guide](enterprise#configuring-enterprise) and continue from there. The rest of this guide should not be followed.
 
 Bring up all services up in detached mode with the following command:
 
@@ -593,38 +605,16 @@ Bring up all services up in detached mode with the following command:
 !!! Services, networks and volumes have a `menderproduction` prefix, see the note about [docker-compose naming scheme](#docker-compose-naming-scheme) for more details. When using `docker ..` commands, a complete container name must be provided (ex. `menderproduction_mender-deployments_1`).
 
 
-#### Verification
+### Creating the first user (Open Source only)
 
-To verify that the services are running, you can issue the following command:
+!!! If you are setting up an Enterprise server, please skip this step and
+!!! proceed to [the Enterprise section](#enterprise), as the Enterprise server
+!!! uses a different method for creating users.
 
-```bash
-./run ps
-```
-
-<!--AUTOMATION: ignore -->
-> ```bash
->                    Name                                  Command               State           Ports
-> -------------------------------------------------------------------------------------------------------------
-> menderproduction_mender-api-gateway_1         /entrypoint.sh                   Up      0.0.0.0:443->443/tcp
-> menderproduction_mender-deployments_1         /entrypoint.sh                   Up      8080/tcp
-> menderproduction_mender-device-auth_1         /usr/bin/deviceauth -confi ...   Up      8080/tcp
-> menderproduction_mender-gui_1                 /entrypoint.sh                   Up
-> menderproduction_mender-inventory_1           /usr/bin/inventory -config ...   Up      8080/tcp
-> menderproduction_mender-mongo_1               /entrypoint.sh mongod            Up      27017/tcp
-> menderproduction_mender-useradm_1             /usr/bin/useradm -config / ...   Up      8080/tcp
-> menderproduction_minio_1                      minio server /export             Up      9000/tcp
-> menderproduction_storage-proxy_1              /usr/local/openresty/bin/o ...   Up      0.0.0.0:9000->9000/tcp
-> ```
-
-
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 12 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
-<!--AUTOMATION: test=./run restart -->
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 12 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
-<!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
-<!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:9000" -->
-
-Furthermore, since this is a brand new installation it should be possible to create the initial
-user via the CLI provided by the User Administration Service. The service's binary is embedded in a Docker container, so to execute it you will issue the **exec** subcommand of docker-compose, e.g.:
+Since this is a brand new installation we need to create the initial user via
+the CLI provided by the User Administration Service. The service's binary is
+embedded in a Docker container, so to execute it you will issue the **exec**
+subcommand of docker-compose, e.g.:
 
 <!--AUTOMATION: ignore -->
 ```bash
@@ -633,7 +623,281 @@ user via the CLI provided by the User Administration Service. The service's bina
 
 ! Keep in mind that above is executed in a command-line interpreter meaning that certain characters might need to be escaped, e.g if you are using the `$` character in your password, this could interpret as a variable name unless it is escaped.
 
-At this point you should be able to access [https://mender.example.com](https://mender.example.com?target=_blank) with your
-web browser.
 
-!!! If you encounter any issues while starting or running your Mender Server, you can take a look at the section for [troubleshooting Mender Server](../../troubleshooting/mender-server).
+## Enterprise
+
+This section will go through setting up the Enterprise features of the Mender
+server. If you are using the Open Source edition of the Mender server, you can
+skip ahead to [the verification](#verification).
+
+
+### Configuring Enterprise
+
+Once the Open Source parts of the configuration have been completed, you should
+have a fully functional server setup, except that it has not been launched
+yet. It is now time to configure the Enterprise specific features before
+bringing the server up.
+
+1. Shut down the services.
+   ```
+   ./run stop
+   ```
+
+2. Copy the `enterprise.yml.template` file to its production location,
+   `enterprise.yml`:
+   ```
+   cp config/enterprise.yml.template config/enterprise.yml
+   ```
+   Creating the `enterprise.yml` file enables the Enterprise Mender server.
+
+3. Start the services again.
+   ```bash
+   ./run up
+   ```
+> ```
+> Starting menderproduction_mender-api-gateway_1 ... done
+> Starting menderproduction_mender-conductor_1 ... done
+> Starting menderproduction_mender-deployments_1 ... done
+> Starting menderproduction_mender-device-auth_1 ... done
+> Starting menderproduction_mender-elasticsearch_1 ... done
+> Creating menderproduction_mender-email-sender_1 ... done
+> Starting menderproduction_mender-gui_1 ... done
+> Starting menderproduction_mender-inventory_1 ... done
+> Starting menderproduction_mender-mongo_1 ... done
+> Creating menderproduction_mender-org-welcome-email-preparer_1 ... done
+> Starting menderproduction_mender-redis_1 ... done
+> Creating menderproduction_mender-tenantadm_1 ... done
+> Starting menderproduction_mender-useradm_1 ... done
+> Starting menderproduction_minio_1 ... done
+> Starting menderproduction_storage-proxy_1 ... done
+> ```
+
+Note that even though this launches the Enterprise backend services, the Mender
+Enterprise server is not fully functional yet.
+
+### Multi tenancy
+
+Multi tenancy is a feature of Mender where users can be divided into
+"organizations" (also sometimes called "tenants"). Each organization is confined
+and can not see or influence the data of other organizations. This can be used
+for example to give two different product teams access to the Mender service,
+without them seeing each others data, as well as isolating devices and users in
+test and production environments.
+
+When using Mender Enterprise, multi tenancy is automatically enabled, and it
+cannot be turned off. However, since multi tenancy is not desirable in all
+situations, a default organization can be specified, which makes using this one
+organization transparent. Use this approach if you do not plan to create
+multiple organizations and see the section on [using a default
+organization](#option-1-using-a-default-organization) for more information.
+
+Below follows a guide for setting up a single organization. For additional
+information on administering organizations, see the [API for the tenantadm
+service (TODO!)](TODO), as well as the help screen from:
+
+```bash
+./run exec mender-tenantadm /usr/bin/tenantadm --help
+```
+
+#### Creating the first organization and user
+
+In either case, at least one organization must be created when first installing
+the service. Execute this command in the `integration/production` directory:
+
+```bash
+./run exec mender-tenantadm /usr/bin/tenantadm create-org --name=MyOrganization --username=myusername@host.com --password=mysecretpassword
+```
+
+Replace the organization name, username and password with desired values. Make
+sure to save the **tenant ID** that appears after calling the command; this will
+be the identifier for the first organization. Creating additional organizations
+works exactly the same way, so the above step may be repeated multiple times.
+
+Now fetch the **tenant token** for the new organization by calling:
+
+```
+./run exec mender-tenantadm /usr/bin/tenantadm get-tenant --id TENANT_ID
+```
+
+where `TENANT_ID` is the ID that was printed by the previous command. This will
+produce JSON output, and the **tenant token** is in the `tenant_token`
+field. See the example in bold:
+
+> {"id":"5d833532d13058002848ffdf","name":"MyTenant","tenant_token":"**eyJhbGciOiJSUzI1NiIsInR5cCI6I<br>
+kpXVCJ9.eyJtZW5kZXIudGVuYW50IjoiNWQ4MzM1MzJkMTMwNTgwMDI4NDhmZmRmIiwiaXNzIjoiTWVuZGVyIiwic3ViIjoiNWQ4<br>
+MzM1MzJkMTMwNTgwMDI4NDhmZmRmIn0.HJDGHzqZqbosAYyJpSIEeL0W4HMiOmb15ETnuChxE0i7ahW49dZZlQNJBKLkLzuESDxX<br>
+nmQbQwsSGP6t32pGkeHVXTPjrSjhtMPC80NiibNG3f-QATw9I8YgG2SBd5xaKl17qdta1nGi80T2UKrwlzqLHR7wNed10ss3NgJD<br>
+IDvrm89XO0Rg6jpFZsHCPyyK1c8-Vn8zZjW5azZLNSgtgSLSmFQguQLRRXL2x12VEcmeztFY0kJnhGtN07CD3XXxcz0BpWbevDYO<br>
+POEUusGd2KpLK2Y4QU8RdngqNtRe7SppG0fn6m6tKiifrPDAv_THCEG6dvpMHyIM77vGIPwvV4ABGhZKRAlDe1R4csJQIbhVcTWM<br>
+GcoZ4bKH-zDK0900_wWM53i9rkgNFDM470i6-d1oqfaCPcbiniKsq1HcJRZsIVNJ1edDovhQ6IbffPRCw-Au_GlnPTn_czovJqSa<br>
+3bgwrJguYRIKJGWhHgx0e3j795oJ08ks2Mp3Rshbv4da**","status":"active"}
+
+Make sure the qoutes are not included! If you have the `jq` tool installed, you
+can get the token directly by calling:
+
+```
+./run exec mender-tenantadm /usr/bin/tenantadm get-tenant --id TENANT_ID | jq -r .tenant_token
+```
+
+> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW5kZXIudGVuYW50IjoiNWQ4MzM1MzJkMTMwNTgwMDI4NDhmZmRmIiwia<br>
+XNzIjoiTWVuZGVyIiwic3ViIjoiNWQ4MzM1MzJkMTMwNTgwMDI4NDhmZmRmIn0.HJDGHzqZqbosAYyJpSIEeL0W4HMiOmb15ETnu<br>
+ChxE0i7ahW49dZZlQNJBKLkLzuESDxXnmQbQwsSGP6t32pGkeHVXTPjrSjhtMPC80NiibNG3f-QATw9I8YgG2SBd5xaKl17qdta1<br>
+nGi80T2UKrwlzqLHR7wNed10ss3NgJDIDvrm89XO0Rg6jpFZsHCPyyK1c8-Vn8zZjW5azZLNSgtgSLSmFQguQLRRXL2x12VEcmez<br>
+tFY0kJnhGtN07CD3XXxcz0BpWbevDYOPOEUusGd2KpLK2Y4QU8RdngqNtRe7SppG0fn6m6tKiifrPDAv_THCEG6dvpMHyIM77vGI<br>
+PwvV4ABGhZKRAlDe1R4csJQIbhVcTWMGcoZ4bKH-zDK0900_wWM53i9rkgNFDM470i6-d1oqfaCPcbiniKsq1HcJRZsIVNJ1edDo<br>
+vhQ6IbffPRCw-Au_GlnPTn_czovJqSa3bgwrJguYRIKJGWhHgx0e3j795oJ08ks2Mp3Rshbv4da
+
+!!! On Debian based distributions you can install `jq` with the command `apt-get
+!!! install jq`.
+
+The tenant token will be used the following sections.
+
+#### Choosing organization configuration
+
+An organization configuration must be chosen before the server is fully
+functional, and there are two configurations to choose from:
+
+1. Default organization configuration
+2. Tenant token configuration
+
+By specifying a default organization, devices will be able to register with the
+specified default organization, without a tenant token. With a tenant token
+configuration, each device needs a **tenant token** which enables it to register
+in that organization's account.
+
+The general recommendation is to use option number 2, tenant token
+configuration. However, option 1, default organization configuration, is
+sometimes more appropriate, and there are usually two reasons to use this:
+
+* You are upgrading from the Open Source version of Mender
+* You don't need multiple organizations and wish to use only one, and you don't
+  wish to provide a tenant token in the device configuration.
+
+**Note:** Even when only one organization is going to be used, the
+recommendation is to use the tenant token configuration. This ensures a smooth
+upgrade path if you later decide to use multiple organizations. It also gives a
+small security benefit, by completely blocking devices that don't have a tenant
+token.
+
+#### Option 1: Using a default organization
+
+If you are not going to use a default organization, you can skip this section
+and proceed to the section on [using a tenant
+token](#option-2-using-a-tenant-token).
+
+To specify a default organization:
+
+1. Stop the services by calling `./run down`
+
+2. In `config/enterprise.yml`, locate the `DEVICEAUTH_DEFAULT_TENANT_TOKEN`
+   variable, and make sure its value is set to the **tenant token** that was
+   fetched in the previous section
+
+3. Start the services again with `./run up -d`
+
+#### Option 2: Using a tenant token
+
+If you configured a default organization above, then this section can be skipped
+unless you want more organizations in addition to the default one.
+
+First, make sure you have fetched the tenant token as described
+[earlier](#creating-the-first-organization-and-user). You can repeat the steps
+for multiple organizations if you need to. The **tenant token** needs to be
+included in the client configuration of each device that is going to be managed
+by Mender. Exactly how to include the token depends on which integration method
+is used with the client. Please refer to one of these sections:
+
+* [Mender installed on device using a deb
+  package](../../client-configuration/installing#configuration-for-hosted-mender-server)
+* [Device integration using Yocto
+  Project](../../artifacts/yocto-project/variables#mender_tenant_token)
+* [Device integration with Debian
+  Family](../../artifacts/debian-family#convert-a-raw-disk-image)
+* [Modifying an existing prebuilt
+  image](../../artifacts/modifying-a-mender-artifact#changing-the-mender-server)
+
+No further configuration is needed on the server to use a tenant token on the
+clients.
+
+
+### Saving the Enterprise configuration
+
+Once the Enterprise configuration is complete, commit all changes to the
+repository:
+
+<!--AUTOMATION: ignore -->
+```bash
+git add config/enterprise.yml
+```
+
+<!--AUTOMATION: ignore -->
+```bash
+git commit -m 'production: Enterprise configuration'
+```
+
+At this point your commit history should look as follows:
+
+<!--AUTOVERSION: "git log --oneline origin/%..HEAD"/integration -->
+<!--AUTOMATION: ignore -->
+```bash
+git log --oneline origin/master..HEAD
+```
+> ```
+> 76b3d00 production: Enterprise configuration
+> 7a4de3c production: configuration
+> 41273f7 production: adding generated keys and certificates
+> 5ad6528 production: initial template
+> ```
+
+
+## Verification
+
+<!-- TODO! Need to fix the testing here -->
+
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 12 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
+<!--AUTOMATION: test=./run restart -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 12 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
+<!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
+<!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:9000" -->
+
+To verify that the services are running, execute the following command and
+verify that the state of all services is "Up":
+
+```bash
+./run ps
+```
+
+Below you can see typical output for the Enterprise server. The Open Source
+server will be similar, but will have fewer services running.
+
+> ```
+>                         Name                                      Command               State           Ports          
+> ----------------------------------------------------------------------------------------------------------------------
+> menderproduction_mender-api-gateway_1                  /entrypoint.sh                   Up      0.0.0.0:443->443/tcp
+> menderproduction_mender-conductor_1                    /srv/start_conductor.sh          Up      8080/tcp, 8090/tcp
+> menderproduction_mender-deployments_1                  /entrypoint.sh --config /e ...   Up      8080/tcp
+> menderproduction_mender-device-auth_1                  /usr/bin/deviceauth --conf ...   Up      8080/tcp
+> menderproduction_mender-elasticsearch_1                /docker-entrypoint.sh elas ...   Up      9200/tcp, 9300/tcp
+> menderproduction_mender-email-sender_1                 /usr/bin/entrypoint.sh           Up
+> menderproduction_mender-gui_1                          /entrypoint.sh nginx             Up      80/tcp
+> menderproduction_mender-inventory_1                    /usr/bin/inventory --confi ...   Up      8080/tcp
+> menderproduction_mender-mongo_1                        docker-entrypoint.sh mongod      Up      27017/tcp
+> menderproduction_mender-org-welcome-email-preparer_1   /usr/bin/entrypoint.sh           Up
+> menderproduction_mender-redis_1                        /redis/entrypoint.sh             Up      6379/tcp
+> menderproduction_mender-tenantadm_1                    /usr/bin/tenantadm --confi ...   Up      8080/tcp
+> menderproduction_mender-useradm_1                      /usr/bin/useradm-enterpris ...   Up      8080/tcp
+> menderproduction_minio_1                               /usr/bin/docker-entrypoint ...   Up      9000/tcp
+> menderproduction_storage-proxy_1                       /usr/local/openresty/bin/o ...   Up      0.0.0.0:9000->9000/tcp
+> ```
+
+At this point you can try to log into the Web UI using the URL of your server,
+and the username and password that was [created
+earlier](#creating-the-first-organization-and-user).
+
+!! It is advised to use the UI to change the password of all users that were
+!! added in this guide, since the shell may keep a record of the password in
+!! plaintext.
+
+If you encounter any issues while starting or running your Mender Server, you
+can take a look at the section for [troubleshooting Mender
+Server](../../../troubleshooting/mender-server).
