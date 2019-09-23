@@ -8,10 +8,20 @@ This is a step by step guide for deploying the Mender Enterprise Server for
 production environments, and will focus on the Enterprise specific parts of the
 installation.
 
+!!! This Mender Enterprise installation guide relies on `docker-compose` which
+!!! is easy to set up on a single host and capable of scaling to thousands of
+!!! Mender client devices. If you have higher scale and uptime requirements,
+!!! please email [contact@mender.io](mailto:contact@mender.io) for assistance
+!!! with a Kubernetes-based setup which does not have any scale limitations.
+
 ## Prerequisites
 
 - All [prerequisites for the Open Source edition](..#prerequisites) apply to the
   Enterprise edition as well
+- You need an account with Mender in order to evaluate and use the commercial
+  features in Mender Enterprise. Please email
+  [contact@mender.io](mailto:contact@mender.io) to receive your credentials to
+  log in with docker below before proceeding.
 - Docker configuration logged into the Mender Enterprise Docker registry:
   ```bash
   docker login -u=<USERNAME> docker.download.mender.io
@@ -124,25 +134,26 @@ the upcoming steps.
 
 ### Multi tenancy
 
-Multi tenancy is a feature of Mender where users can be divided into groups
-called "organizations" (also sometimes called "tenants"). Each organization is
-confined and can not see or influence the data of other organizations. This can
-be used for example to give two different product teams access to the Mender
-service, without them seeing each others data.
+Multi tenancy is a feature of Mender where users can be divided into
+"organizations" (also sometimes called "tenants"). Each organization is confined
+and can not see or influence the data of other organizations. This can be used
+for example to give two different product teams access to the Mender service,
+without them seeing each others data, as well as isolating devices and users in
+test and production environments.
 
 When using Mender Enterprise, multi tenancy is automatically enabled, and it
 cannot be turned off. However, since multi tenancy is not desirable in all
 situations, a default organization can be specified, which makes using this one
-organization transparent. See the section on [using a default
+organization transparent. Use this approach if you do not plan to create
+multiple organizations and see the section on [using a default
 organization](#option-1-using-a-default-organization) for more information.
 
-Below follows a guide for setting up a basic, working multi tenancy
-configuration. For additional information on administering organizations, see
-the [API for the tenantadm service (TODO!)](TODO), as well as the help screen
-from:
+Below follows a guide for setting up a single organization. For additional
+information on administering organizations, see the [API for the tenantadm
+service (TODO!)](TODO), as well as the help screen from:
 
 ```bash
-./run exec mender-tenantadm /usr/bin/tenantadm --help`
+./run exec mender-tenantadm /usr/bin/tenantadm --help
 ```
 
 #### Creating the first organization and user
