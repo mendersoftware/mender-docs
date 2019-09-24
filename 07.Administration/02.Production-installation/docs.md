@@ -4,6 +4,13 @@ taxonomy:
     category: docs
 ---
 
+<!-- AUTOMATION: execute=if [ "$TEST_OPEN_SOURCE" != 1 ] && [ "$TEST_ENTERPRISE" != 1 ]; then echo "Either TEST_OPEN_SOURCE xor TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->
+<!-- AUTOMATION: execute=if [ "$TEST_OPEN_SOURCE" = 1 ] && [ "$TEST_ENTERPRISE" = 1 ]; then echo "TEST_OPEN_SOURCE and TEST_ENTERPRISE cannot both be 1!"; exit 1; fi -->
+
+<!-- Cleanup code -->
+<!-- AUTOMATION: execute=ORIG_DIR=$PWD; function cleanup() { set +e; cd $ORIG_DIR/mender-server/production; ./run down -v; docker volume rm mender-artifacts mender-db mender-elasticsearch-db mender-redis-db; cd $ORIG_DIR; rm -rf mender-server; } -->
+<!-- AUTOMATION: execute=trap cleanup EXIT -->
+
 !!! You can save time by using [Hosted Mender](https://mender.io/signup?target=_blank); a secure Mender server ready to use, maintained by the Mender developers.
 
 This is a step by step guide for deploying the Mender Server for production environments,
@@ -34,6 +41,7 @@ If you are setting up a Mender Enterprise server, you will also need:
   Mender Enterprise. Please email [contact@mender.io](mailto:contact@mender.io)
   to receive your credentials to log in with docker below before proceeding.
 - Docker configuration logged into the Mender Enterprise Docker registry:
+  <!-- AUTOMATION: ignore="Cannot use credentials here" -->
   ```bash
   docker login -u=<USERNAME> docker.download.mender.io
   ```
@@ -87,7 +95,7 @@ named `mender-server`:
 
 <!--AUTOVERSION: "-b %"/integration -->
 ```bash
-git clone -b master https://github.com/mendersoftware/integration mender-server
+git clone -b MEN-2648 https://github.com/mendersoftware/integration mender-server
 ```
 
 > ```
@@ -124,7 +132,7 @@ Copy the production template to its own file:
 cp config/prod.yml.template config/prod.yml
 ```
 
-```
+```bash
 ls -l *
 ```
 
@@ -310,12 +318,12 @@ Enter passphrase:
 ```
 
 <!--AUTOMATION: ignore=optional step -->
-```
+```bash
 rm -rf keys-generated
 ```
 
 <!--AUTOMATION: ignore=optional step -->
-```
+```bash
 ls -l
 ```
 > ```
@@ -585,7 +593,16 @@ git log --oneline origin/master..HEAD
 > ```
 
 
-### Bring it all up
+## Open Source
+
+<!-- Test block for TEST_OPEN_SOURCE=1 -->
+<!-- AUTOMATION: execute=if [ "$TEST_OPEN_SOURCE" = 1 ]; then -->
+
+This section deals specifically with setting up an Open Source server. If you
+are setting up an Enterprise server, please proceed to the [Enterprise
+section](#enterprise).
+
+### Bring up the Open Source server
 
 Bring up all services up in detached mode with the following command:
 
@@ -608,11 +625,7 @@ Bring up all services up in detached mode with the following command:
 !!! Services, networks and volumes have a `menderproduction` prefix, see the note about [docker-compose naming scheme](#docker-compose-naming-scheme) for more details. When using `docker ..` commands, a complete container name must be provided (ex. `menderproduction_mender-deployments_1`).
 
 
-### Creating the first user (Open Source only)
-
-!!! If you are setting up an Enterprise server, please skip this step and
-!!! proceed to [the Enterprise section](#enterprise), as the Enterprise server
-!!! uses a different method for creating users.
+### Creating the first user
 
 Since this is a brand new installation we need to create the initial user via
 the CLI provided by the User Administration Service. The service's binary is
@@ -630,13 +643,26 @@ The next sections deal with installation of an Enterprise server. If you are
 installing an Open Source server, please proceed to
 [verification](#verification) now.
 
+<!-- Verification of Open Source instance -->
+
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 12 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
+<!--AUTOMATION: test=./run restart -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 12 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
+<!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
+<!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:9000" -->
+
+<!-- End of test block for TEST_OPEN_SOURCE=1 -->
+<!-- AUTOMATION: execute=fi -->
+
 
 ## Enterprise
+
+<!-- Test block for TEST_ENTERPRISE=1 -->
+<!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" = 1 ]; then -->
 
 This section will go through setting up the Enterprise features of the Mender
 server. If you are using the Open Source edition of the Mender server, you can
 skip ahead to [the verification](#verification).
-
 
 ### Configuring Enterprise
 
@@ -645,39 +671,41 @@ have a fully functional server setup, except that it has not been launched
 yet. It is now time to configure the Enterprise specific features before
 bringing the server up.
 
-1. Shut down the services.
-   ```
-   ./run stop
-   ```
+Copy the `enterprise.yml.template` file to its production location,
+`enterprise.yml`:
 
-2. Copy the `enterprise.yml.template` file to its production location,
-   `enterprise.yml`:
-   ```
-   cp config/enterprise.yml.template config/enterprise.yml
-   ```
-   Creating the `enterprise.yml` file enables the Enterprise Mender server.
+```bash
+cp config/enterprise.yml.template config/enterprise.yml
+```
 
-3. Start the services again.
-   ```bash
-   ./run up
-   ```
+Creating the `enterprise.yml` file enables the Enterprise Mender server.
+
+### Bring up the Enterprise server
+
+Bring up all services up in detached mode with the following command:
+
+```bash
+./run up -d
+```
 > ```
-> Starting menderproduction_mender-api-gateway_1 ... done
-> Starting menderproduction_mender-conductor_1 ... done
-> Starting menderproduction_mender-deployments_1 ... done
-> Starting menderproduction_mender-device-auth_1 ... done
-> Starting menderproduction_mender-elasticsearch_1 ... done
+> Creating menderproduction_mender-api-gateway_1 ... done
+> Creating menderproduction_mender-conductor_1 ... done
+> Creating menderproduction_mender-deployments_1 ... done
+> Creating menderproduction_mender-device-auth_1 ... done
+> Creating menderproduction_mender-elasticsearch_1 ... done
 > Creating menderproduction_mender-email-sender_1 ... done
-> Starting menderproduction_mender-gui_1 ... done
-> Starting menderproduction_mender-inventory_1 ... done
-> Starting menderproduction_mender-mongo_1 ... done
+> Creating menderproduction_mender-gui_1 ... done
+> Creating menderproduction_mender-inventory_1 ... done
+> Creating menderproduction_mender-mongo_1 ... done
 > Creating menderproduction_mender-org-welcome-email-preparer_1 ... done
-> Starting menderproduction_mender-redis_1 ... done
+> Creating menderproduction_mender-redis_1 ... done
 > Creating menderproduction_mender-tenantadm_1 ... done
-> Starting menderproduction_mender-useradm_1 ... done
-> Starting menderproduction_minio_1 ... done
-> Starting menderproduction_storage-proxy_1 ... done
+> Creating menderproduction_mender-useradm_1 ... done
+> Creating menderproduction_minio_1 ... done
+> Creating menderproduction_storage-proxy_1 ... done
 > ```
+
+!!! Services, networks and volumes have a `menderproduction` prefix, see the note about [docker-compose naming scheme](#docker-compose-naming-scheme) for more details. When using `docker ..` commands, a complete container name must be provided (ex. `menderproduction_mender-deployments_1`).
 
 Note that even though this launches the Enterprise backend services, the Mender
 Enterprise server is not fully functional yet.
@@ -705,9 +733,19 @@ organization. For additional information on administering organizations, see the
 In either case, at least one organization must be created when first installing
 the service. Execute this command in the `integration/production` directory:
 
+<!-- Wait for service to start -->
+<!--AUTOMATION: execute=sleep 30 -->
+
+<!-- Trick to capture the output. The `tr` is because Go prints with Windows
+line endings for whatever reason. -->
+<!--AUTOMATION: execute=TENANT_ID=$( ( -->
 ```bash
 ./run exec mender-tenantadm /usr/bin/tenantadm create-org --name=MyOrganization --username=myusername@host.com --password=mysecretpassword
 ```
+<!--AUTOMATION: execute=) | tr -d '\r' ) -->
+
+<!-- create-org is an async workflow, give it some time -->
+<!--AUTOMATION: execute=sleep 10 -->
 
 Replace the organization name, username and password with desired values. Make
 sure to save the **tenant ID** that appears after calling the command; this will
@@ -788,16 +826,19 @@ git log --oneline origin/master..HEAD
 > 5ad6528 production: initial template
 > ```
 
+<!-- Verification of Enterprise instance -->
 
-## Verification
-
-<!-- TODO! Need to fix the testing here -->
-
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 12 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 15 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
 <!--AUTOMATION: test=./run restart -->
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 12 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 15 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:9000" -->
+
+<!-- End of test block for TEST_ENTERPRISE=1 -->
+<!-- AUTOMATION: execute=fi -->
+
+
+## Verification
 
 To verify that the services are running, execute the following command and
 verify that the state of all services is "Up":
