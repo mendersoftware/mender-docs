@@ -67,6 +67,8 @@ Below is a list of the features that Mender provides, with descriptions:
 
 * `mender-uboot` - Enables integration with the U-Boot bootloader.
 
+* `mender-growfs-data` - Enable dynamic resizing of the data filesystem through systemd-growfs
+
 
 ## Default features
 
@@ -86,6 +88,7 @@ The currently available classes are:
     * `mender-systemd`
     * `mender-image-uefi`
     * `mender-grub`
+    * `mender-growfs-data`
 
 * `mender-full-ubi`: Enables the most common features for UBI based Mender
   installations, which are:
@@ -95,6 +98,7 @@ The currently available classes are:
     * `mender-systemd`
     * `mender-ubi`
     * `mender-uboot`
+    * `mender-growfs-data`
 
 <!--AUTOVERSION: "Yocto releases prior to 2.6 (%)"/ignore-->
 ! Yocto releases prior to 2.6 (thud) used a different feature set by default. Use the following command to check exactly which features are enabled: `bitbake -e core-image-minimal | grep '^DISTRO_FEATURES='`
