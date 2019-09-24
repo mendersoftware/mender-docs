@@ -152,7 +152,10 @@ The template includes a few files:
   of the Mender server. This topic is covered separately in [the Enterprise
   part](enterprise) of the Production installation guide
 
-!!! If an `enterprise.yml` file exists in the `config` directory, this will automatically turn on Enterprise features in the backend service. Make sure that `enterprise.yml` does not exist unless you are planning on using the Mender Enterprise server.
+!!! If an `enterprise.yml` file exists in the `config` directory, this will
+!!! automatically turn on Enterprise features in the backend service. If you
+!!! want to use the Open Source edition (not Enterprise), please remove
+!!! `enterprise.yml` from the `config` directory.
 
 At this point all changes should be committed to the repository:
 <!--AUTOMATION: execute=sed -i '0,/set-my-alias-here.com/s/set-my-alias-here.com/s3.docker.mender.io/' config/prod.yml -->
@@ -623,6 +626,10 @@ subcommand of docker-compose, e.g.:
 
 ! Keep in mind that above is executed in a command-line interpreter meaning that certain characters might need to be escaped, e.g if you are using the `$` character in your password, this could interpret as a variable name unless it is escaped.
 
+The next sections deal with installation of an Enterprise server. If you are
+installing an Open Source server, please proceed to
+[verification](#verification) now.
+
 
 ## Enterprise
 
@@ -685,15 +692,9 @@ without them seeing each others data, as well as isolating devices and users in
 test and production environments.
 
 When using Mender Enterprise, multi tenancy is automatically enabled, and it
-cannot be turned off. However, since multi tenancy is not desirable in all
-situations, a default organization can be specified, which makes using this one
-organization transparent. Use this approach if you do not plan to create
-multiple organizations and see the section on [using a default
-organization](#option-1-using-a-default-organization) for more information.
-
-Below follows a guide for setting up a single organization. For additional
-information on administering organizations, see the [API for the tenantadm
-service (TODO!)](TODO), as well as the help screen from:
+cannot be turned off. Below follows a guide for setting up a single
+organization. For additional information on administering organizations, see the
+[API for the tenantadm service (TODO!)](TODO), as well as the help screen from:
 
 ```bash
 ./run exec mender-tenantadm /usr/bin/tenantadm --help
@@ -713,31 +714,17 @@ sure to save the **tenant ID** that appears after calling the command; this will
 be the identifier for the first organization. Creating additional organizations
 works exactly the same way, so the above step may be repeated multiple times.
 
-Now fetch the **tenant token** for the new organization by calling:
+Now we need to fetch the **tenant token** for the new organization. This is
+available in the JSON output from the `get-tenant` command, in the
+`tenant_token` field. To avoid manually parsing raw JSON, we can use the `jq`
+tool:
 
+```bash
+./run exec mender-tenantadm /usr/bin/tenantadm get-tenant --id $TENANT_ID | jq -r .tenant_token
 ```
-./run exec mender-tenantadm /usr/bin/tenantadm get-tenant --id TENANT_ID
-```
 
-where `TENANT_ID` is the ID that was printed by the previous command. This will
-produce JSON output, and the **tenant token** is in the `tenant_token`
-field. See the example in bold:
-
-> {"id":"5d833532d13058002848ffdf","name":"MyTenant","tenant_token":"**eyJhbGciOiJSUzI1NiIsInR5cCI6I<br>
-kpXVCJ9.eyJtZW5kZXIudGVuYW50IjoiNWQ4MzM1MzJkMTMwNTgwMDI4NDhmZmRmIiwiaXNzIjoiTWVuZGVyIiwic3ViIjoiNWQ4<br>
-MzM1MzJkMTMwNTgwMDI4NDhmZmRmIn0.HJDGHzqZqbosAYyJpSIEeL0W4HMiOmb15ETnuChxE0i7ahW49dZZlQNJBKLkLzuESDxX<br>
-nmQbQwsSGP6t32pGkeHVXTPjrSjhtMPC80NiibNG3f-QATw9I8YgG2SBd5xaKl17qdta1nGi80T2UKrwlzqLHR7wNed10ss3NgJD<br>
-IDvrm89XO0Rg6jpFZsHCPyyK1c8-Vn8zZjW5azZLNSgtgSLSmFQguQLRRXL2x12VEcmeztFY0kJnhGtN07CD3XXxcz0BpWbevDYO<br>
-POEUusGd2KpLK2Y4QU8RdngqNtRe7SppG0fn6m6tKiifrPDAv_THCEG6dvpMHyIM77vGIPwvV4ABGhZKRAlDe1R4csJQIbhVcTWM<br>
-GcoZ4bKH-zDK0900_wWM53i9rkgNFDM470i6-d1oqfaCPcbiniKsq1HcJRZsIVNJ1edDovhQ6IbffPRCw-Au_GlnPTn_czovJqSa<br>
-3bgwrJguYRIKJGWhHgx0e3j795oJ08ks2Mp3Rshbv4da**","status":"active"}
-
-Make sure the qoutes are not included! If you have the `jq` tool installed, you
-can get the token directly by calling:
-
-```
-./run exec mender-tenantadm /usr/bin/tenantadm get-tenant --id TENANT_ID | jq -r .tenant_token
-```
+where `$TENANT_ID` is the ID that was printed by the previous command. The
+resulting tenant token will be a long string like this:
 
 > eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW5kZXIudGVuYW50IjoiNWQ4MzM1MzJkMTMwNTgwMDI4NDhmZmRmIiwia<br>
 XNzIjoiTWVuZGVyIiwic3ViIjoiNWQ4MzM1MzJkMTMwNTgwMDI4NDhmZmRmIn0.HJDGHzqZqbosAYyJpSIEeL0W4HMiOmb15ETnu<br>
@@ -750,55 +737,10 @@ vhQ6IbffPRCw-Au_GlnPTn_czovJqSa3bgwrJguYRIKJGWhHgx0e3j795oJ08ks2Mp3Rshbv4da
 !!! On Debian based distributions you can install `jq` with the command `apt-get
 !!! install jq`.
 
-The tenant token will be used the following sections.
+Make sure that the string does not include any spaces or newlines when you copy
+it from the terminal. The tenant token will be used in the following sections.
 
-#### Choosing organization configuration
-
-An organization configuration must be chosen before the server is fully
-functional, and there are two configurations to choose from:
-
-1. Default organization configuration
-2. Tenant token configuration
-
-By specifying a default organization, devices will be able to register with the
-specified default organization, without a tenant token. With a tenant token
-configuration, each device needs a **tenant token** which enables it to register
-in that organization's account.
-
-The general recommendation is to use option number 2, tenant token
-configuration. However, option 1, default organization configuration, is
-sometimes more appropriate, and there are usually two reasons to use this:
-
-* You are upgrading from the Open Source version of Mender
-* You don't need multiple organizations and wish to use only one, and you don't
-  wish to provide a tenant token in the device configuration.
-
-**Note:** Even when only one organization is going to be used, the
-recommendation is to use the tenant token configuration. This ensures a smooth
-upgrade path if you later decide to use multiple organizations. It also gives a
-small security benefit, by completely blocking devices that don't have a tenant
-token.
-
-#### Option 1: Using a default organization
-
-If you are not going to use a default organization, you can skip this section
-and proceed to the section on [using a tenant
-token](#option-2-using-a-tenant-token).
-
-To specify a default organization:
-
-1. Stop the services by calling `./run down`
-
-2. In `config/enterprise.yml`, locate the `DEVICEAUTH_DEFAULT_TENANT_TOKEN`
-   variable, and make sure its value is set to the **tenant token** that was
-   fetched in the previous section
-
-3. Start the services again with `./run up -d`
-
-#### Option 2: Using a tenant token
-
-If you configured a default organization above, then this section can be skipped
-unless you want more organizations in addition to the default one.
+#### Installing the tenant token
 
 First, make sure you have fetched the tenant token as described
 [earlier](#creating-the-first-organization-and-user). You can repeat the steps
@@ -815,9 +757,6 @@ is used with the client. Please refer to one of these sections:
   Family](../../artifacts/debian-family#convert-a-raw-disk-image)
 * [Modifying an existing prebuilt
   image](../../artifacts/modifying-a-mender-artifact#changing-the-mender-server)
-
-No further configuration is needed on the server to use a tenant token on the
-clients.
 
 
 ### Saving the Enterprise configuration
