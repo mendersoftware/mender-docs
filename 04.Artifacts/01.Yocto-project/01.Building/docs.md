@@ -44,7 +44,7 @@ adjustment you might need to make before building.
 Check out the board integrations at [Mender Hub](https://hub.mender.io?target=_blank) to see if your board is
 already integrated.
 If you encounter any issues and want to save time, you can use
-the [Mender professional services to integrate your board](https://mender.io/product/board-support?target=_blank).
+the [Mender professional services to integrate your board](https://mender.io/support-and-services/board-integration?target=_blank).
 
 
 ### Correct clock on device
