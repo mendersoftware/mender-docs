@@ -4,7 +4,9 @@ taxonomy:
     category: docs
 ---
 
-This is a guide for upgrading the Mender Server in production environments.
+This is a guide for upgrading the Mender Server in production environments. In
+general updating is only supported between connected minor versions, and latest
+minor to next major version, and this guide reflects this.
 
 ! The upgrade procedure involves some downtime.
 
@@ -42,20 +44,6 @@ These can sometimes happen due to device decommissioning.
 You can find instructions on how to clean up the deviceauth database
 in the [Troubleshooting](../../troubleshooting/mender-server) chapter.
 
-## Migrating to single mongoDB instance.
-
-To reduce the number of mongoDB instances in the setup, first backup existing data and volumes.
-Then perform the upgrade.
-Note that with the new versions, there are no mender-mongo-\* services;
-instead there is a single mender-mongo service which contains all the databases.
-After upgrading, but before starting new services, run the `migrate-db` script from migration directory.
-This script will restore data dumped from mender-mongo-\* services to the single mender-mongo instance.
-The `migrate-db` script will also remove old database volumes.
-After running `migrate-db` script, start services by executing
-```bash
-./run up -d
-```
-
 ## Updating your local repository
 
 The first step is to upgrade your local repository by pulling changes from the
@@ -65,7 +53,7 @@ update origin`.
 ```bash
 git fetch origin --tags
 ```
-<!--AUTOVERSION: "%      -> origin/%"/ignore "%     -> origin/%"/ignore-->
+<!--AUTOVERSION: "%      -> origin/%"/integration "%     -> origin/%"/integration-->
 > ```
 > Fetching origin  
 > remote: Counting objects: 367, done.  
@@ -74,26 +62,26 @@ git fetch origin --tags
 > Receiving objects: 100% (367/367), 83.55 KiB | 0 bytes/s, done.  
 > Resolving deltas: 100% (214/214), completed with 42 local objects.  
 > From https://github.com/mendersoftware/integration  
->    02cd118..75b7831  1.0.x      -> origin/1.0.x  
+>    02cd118..75b7831  2.0.x      -> origin/2.0.x
 >    06f3212..e9e5df4  master     -> origin/master  
 > ```
 
 <!--AUTOVERSION: "branch named `%` provides"/ignore "e.g. `%`"/ignore-->
 For each release there will be a corresponding release branch. For example, the
-branch named `1.0.x` provides the 1.0 release setup. Stable releases are tagged,
-e.g. `1.0.1`.
+branch named `2.0.x` provides the 2.0 release setup. Stable releases are tagged,
+e.g. `2.0.1`.
 
 Recall from the [production installation](../production-installation) guide that our
 local setup was introduced in a branch that was created from given release
 version. You can use git commands such as `git log` and `git diff` to review the changes
 introduced in upstream branch. For example:
 
-<!--AUTOVERSION: "HEAD..origin/%"/ignore "HEAD..%"/ignore-->
+<!--AUTOVERSION: "HEAD..origin/%"/ignore "HEAD..%"/integration-->
 ```bash
 # to list differences between current HEAD and remote branch
-git log HEAD..origin/1.0.x
+git log HEAD..origin/2.0.x
 # to list differences between current HEAD and stable tag
-git log HEAD..1.0.1
+git log HEAD..master
 ```
 
 The most important thing to review is the diff between our production template
@@ -101,17 +89,17 @@ version and the version present in the repository. For a patch release
 there should be none, or just some minor changes. However, when there is a
 minor/major release, one can expect the diff to be larger. Example:
 
-<!--AUTOVERSION: "HEAD..%"/ignore-->
+<!--AUTOVERSION: "HEAD..%"/integration-->
 ```bash
 # while at the root of repository
-user@local$ git diff HEAD..1.0.1 -- template
+user@local$ git diff HEAD..master -- template
 ```
 
 Upgrading our local production branch is performed by issuing a `git merge` command, like this:
 
-<!--AUTOVERSION: "git merge %"/ignore-->
+<!--AUTOVERSION: "git merge %"/integration-->
 ```bash
-git merge 1.0.1
+git merge master
 ```
 > ```
 > Merge made by the 'recursive' strategy.
@@ -212,16 +200,6 @@ Start the new environment:
 > Creating menderproduction_mender-inventory_1
 > Creating menderproduction_mender-api-gateway_1
 > ```
-
-## Removing deviceadm service database
-
-Deviceadm service functionality has been merged into deviceauth service
-and deviceadm service has been removed from the mender server.
-To remove deviceadm database, which is obsolete, run:
-
-```bash
-docker exec menderproduction_mender-mongo_1 mongo deviceadm --eval "db.dropDatabase()"
-```
 
 ## Upgrading Mender Clients
 

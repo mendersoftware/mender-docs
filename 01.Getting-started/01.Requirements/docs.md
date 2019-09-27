@@ -10,7 +10,7 @@ For a high-level introduction to Mender and its architecture, we recommend readi
 
 This section of the documentation contains tutorials to help you deploy your first update with Mender.
 
-!!! Going from a fresh system to completing your first deployment with Mender, including server setup, should take **less than 1 hour**!
+!!! Going from a fresh system to completing your first deployment with Mender, including server setup, should take **less than 30 minutes**!
 
 ! Do not follow this getting started documentation if you are using [Hosted Mender](https://hosted.mender.io?target=_blank). Instead, follow the instructions you received in the welcome email when you signed up to Hosted Mender.
 
