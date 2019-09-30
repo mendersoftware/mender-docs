@@ -13,12 +13,18 @@ taxonomy:
 
 !!! You can save time by using [Hosted Mender](https://mender.io/signup?target=_blank); a secure Mender server ready to use, maintained by the Mender developers.
 
-This is a step by step guide for deploying the Mender Server for production environments,
-and will cover relevant security and reliability aspects of Mender production installations.
-The Mender backend services can be deployed to production using a skeleton provided
-in the `production` directory
-of the [integration](https://github.com/mendersoftware/integration?target=_blank)
-repository. Most of the steps are the same whether you are installing the Open Source or Enterprise edition of the Mender Server, but there are some extra steps that are covered in the [Enterprise subsection](enterprise).
+This is a step by step guide for deploying the Mender Server for production
+environments, and will cover relevant security and reliability aspects of Mender
+production installations.  The Mender backend services can be deployed to
+production using a skeleton provided in the `production` directory of the
+[integration](https://github.com/mendersoftware/integration?target=_blank)
+repository. Most of the steps are the same whether you are installing the Open
+Source or Enterprise edition of the Mender Server, but there are some extra
+steps that are covered in the [Enterprise subsection](#enterprise).
+
+! If you have already installed an Open Source server and wish to upgrade to
+! Enterprise, you should follow [the Enterprise upgrade
+! guide](upgrading-from-os-to-enterprise) instead of this guide.
 
 
 ## Prerequisites
@@ -747,10 +753,12 @@ line endings for whatever reason. -->
 <!-- create-org is an async workflow, give it some time -->
 <!--AUTOMATION: execute=sleep 10 -->
 
-Replace the organization name, username and password with desired values. Make
-sure to save the **tenant ID** that appears after calling the command; this will
+Replace the organization name, username and password with desired values. **Make
+sure to save the tenant ID** that appears after calling the command; this will
 be the identifier for the first organization. Creating additional organizations
 works exactly the same way, so the above step may be repeated multiple times.
+
+#### Fetching the tenant token
 
 Now we need to fetch the **tenant token** for the new organization. This is
 available in the JSON output from the `get-tenant` command, in the
@@ -787,6 +795,8 @@ included in the client configuration of each device that is going to be managed
 by Mender. Exactly how to include the token depends on which integration method
 is used with the client. Please refer to one of these sections:
 
+* [Migrating existing clients from an Open Source to an Enterprise
+  server](upgrading-from-os-to-enterprise#migrating-clients)
 * [Mender installed on device using a deb
   package](../../client-configuration/installing#configuration-for-hosted-mender-server)
 * [Device integration using Yocto
