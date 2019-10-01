@@ -6,7 +6,14 @@ taxonomy:
 
 This is a guide for upgrading the Mender Server in production environments. In
 general updating is only supported between connected minor versions, and latest
-minor to next major version, and this guide reflects this.
+minor to next major version, and this guide reflects this. Both the Open Source
+and Enterprise editions can be upgraded using this guide, but both the old and
+the new version must be the same type of server, either both Open Source, or
+both Enterprise.
+
+!!! If you are looking to upgrade from Open Source to Enterprise, please visit
+!!! [the section on upgrading from Open Source to
+!!! Enterprise](../production-installation/upgrading-from-os-to-enterprise).
 
 ! The upgrade procedure involves some downtime.
 

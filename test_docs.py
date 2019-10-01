@@ -85,7 +85,7 @@ with open(sys.argv[1]) as f:
                 cmd = re.sub(test_line, '', line)
                 test_count += 1
             cmd = re.sub("\s*-->", '', cmd)
-            shell_steps.append(cmd.strip())
+            shell_steps.append(cmd.strip() + os.linesep)
         elif line.startswith("```bash"):
             inside_bash_code_block = True
         elif line.startswith("```") and inside_bash_code_block:
@@ -98,13 +98,13 @@ with open(sys.argv[1]) as f:
                 contents = ""
                 inside_bash_code_block = False
         elif inside_bash_code_block:
-            contents += line
+            contents += line + os.linesep
 
 with NamedTemporaryFile(dir=os.getcwd(), delete=False) as f:
     f.write(bytes("#!/bin/bash" + os.linesep, "UTF-8"))
     f.write(bytes("set -x -e" + os.linesep, "UTF-8"))
     for line in shell_steps:
-        f.write(bytes(line + os.linesep, "UTF-8"))
+        f.write(bytes(line, "UTF-8"))
     os.chmod(f.name, stat.S_IWRITE | stat.S_IREAD | stat.S_IXUSR)
 
 print("Parsing and running: ", sys.argv[1])

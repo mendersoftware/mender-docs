@@ -1,0 +1,216 @@
+---
+menu: Upgrading from OS to Enterprise
+title: Upgrading from Open Source to Enterprise
+taxonomy:
+    category: docs
+---
+<!-- "Upgrading from Open Source to Enterprise" is slightly too big to fit in
+    the navigation menu, hence the two titles above. -->
+
+<!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" != 1 ]; then echo "TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->
+
+<!-- Cleanup code -->
+<!-- AUTOMATION: execute=ORIG_DIR=$PWD; function cleanup() { set +e; cd $ORIG_DIR/mender-server/production; ./run down -v; docker volume rm mender-artifacts mender-db mender-elasticsearch-db mender-redis-db mender-artifacts-backup mender-db-backup mender-elasticsearch-db-backup mender-redis-db-backup; cd $ORIG_DIR; rm -rf mender-server; } -->
+<!-- AUTOMATION: execute=trap cleanup EXIT -->
+
+<!-- Basically a repeat of Open Source setup from Production Installation guide -->
+<!-- AUTOMATION: execute=git clone -b MEN-2648 https://github.com/mendersoftware/integration mender-server -->
+<!-- AUTOMATION: execute=cd mender-server -->
+<!-- AUTOMATION: execute=git checkout -b my-production-setup -->
+<!-- AUTOMATION: execute=cd production -->
+<!-- AUTOMATION: execute=cp config/prod.yml.template config/prod.yml -->
+<!-- AUTOMATION: execute=sed -i '0,/set-my-alias-here.com/s/set-my-alias-here.com/s3.docker.mender.io/' config/prod.yml -->
+<!-- AUTOMATION: execute=sed -i 's|DEPLOYMENTS_AWS_URI:.*|DEPLOYMENTS_AWS_URI: https://s3.docker.mender.io:9000|' config/prod.yml -->
+<!-- AUTOMATION: execute=CERT_API_CN=s3.docker.mender.io CERT_STORAGE_CN=s3.docker.mender.io ../keygen -->
+<!-- AUTOMATION: execute=docker volume create --name=mender-artifacts -->
+<!-- AUTOMATION: execute=docker volume create --name=mender-db -->
+<!-- AUTOMATION: execute=docker volume create --name=mender-elasticsearch-db -->
+<!-- AUTOMATION: execute=docker volume create --name=mender-redis-db -->
+<!-- AUTOMATION: execute=docker volume inspect --format '{{.Mountpoint}}' mender-artifacts -->
+<!-- AUTOMATION: execute=sed -i.bak 's/MINIO_ACCESS_KEY:.*/MINIO_ACCESS_KEY: Q3AM3UQ867SPQQA43P2F/' config/prod.yml -->
+<!-- AUTOMATION: execute=sed -i.bak 's/MINIO_SECRET_KEY:.*/MINIO_SECRET_KEY: abcssadasdssado798dsfjhkksd/' config/prod.yml -->
+<!-- AUTOMATION: execute=sed -i.bak 's/DEPLOYMENTS_AWS_AUTH_KEY:.*/DEPLOYMENTS_AWS_AUTH_KEY: Q3AM3UQ867SPQQA43P2F/' config/prod.yml -->
+<!-- AUTOMATION: execute=sed -i.bak 's/DEPLOYMENTS_AWS_AUTH_SECRET:.*/DEPLOYMENTS_AWS_AUTH_SECRET: abcssadasdssado798dsfjhkksd/' config/prod.yml -->
+<!-- AUTOMATION: execute=./run up -d -->
+
+This section describes how to upgrade from the Mender Open Source server, to the
+Mender Enterprise server. If you have any questions or would like assistance
+with upgrading to Mender Enterprise, please email
+[contact@mender.io](mailto:contact@mender.io).
+
+!! In this version of Mender, there is no support for migrating data between the
+!! Open Source and Enterprise servers. Hence you will **lose all data** on the
+!! server by following this guide, and all users must be recreated, artifacts
+!! must be reuploaded, and devices reaccepted. The focus in this guide will be
+!! on how to migrate the device fleet. Support for migrating server data will be
+!! added to a later Mender release.
+
+## Creating a backup
+
+The first thing we will do is to create a backup of the Open Source server so
+that it can be restored if needed.
+
+Start by shutting down the Mender server:
+
+<!-- AUTOMATION: execute=cd $ORIG_DIR -->
+
+```bash
+cd mender-server/production
+./run down -v
+```
+
+Create new backup volumes:
+
+```bash
+docker volume create --name=mender-artifacts-backup
+docker volume create --name=mender-db-backup
+docker volume create --name=mender-elasticsearch-db-backup
+docker volume create --name=mender-redis-db-backup
+```
+
+Clone the contents of the original volumes to the backup volumes:
+
+```bash
+docker run --rm -ti -v mender-artifacts:/from        -v mender-artifacts-backup:/to        alpine cp -a /from /to
+docker run --rm -ti -v mender-db:/from               -v mender-db-backup:/to               alpine cp -a /from /to
+docker run --rm -ti -v mender-elasticsearch-db:/from -v mender-elasticsearch-db-backup:/to alpine cp -a /from /to
+docker run --rm -ti -v mender-redis-db:/from         -v mender-redis-db-backup:/to         alpine cp -a /from /to
+```
+
+This backup can later be restored with this command:
+
+```bash
+docker run --rm -ti -v mender-artifacts:/to        -v mender-artifacts-backup:/from        alpine cp -a /from /to
+docker run --rm -ti -v mender-db:/to               -v mender-db-backup:/from               alpine cp -a /from /to
+docker run --rm -ti -v mender-elasticsearch-db:/to -v mender-elasticsearch-db-backup:/from alpine cp -a /from /to
+docker run --rm -ti -v mender-redis-db:/to         -v mender-redis-db-backup:/from         alpine cp -a /from /to
+```
+
+You can try the above command immediately, it will just restore the already
+existing volumes.
+
+## Setting up the Enterprise server
+
+Delete the original volumes:
+
+```bash
+docker volume create --name=mender-artifacts
+docker volume create --name=mender-db
+docker volume create --name=mender-elasticsearch-db
+docker volume create --name=mender-redis-db
+```
+
+After deleting the volumes, you need to follow [the main guide for installing
+the Enterprise server](..#enterprise). You will be directed back to this guide
+when it is time to migrate the clients.
+
+<!-- AUTOMATION: execute=cp config/enterprise.yml.template config/enterprise.yml -->
+<!-- AUTOMATION: execute=./run up -d -->
+<!-- AUTOMATION: execute=sleep 30 -->
+
+
+## Migrating clients
+
+With Mender Enteprise, each device needs to have a tenant token associated with
+it. When upgrading from Open Source however, the devices that are already
+deployed will be lacking this token. Therefore we need to use a special default
+tenant token which will automatically be assigned to all clients that try to
+connect without a tenant token.
+
+1. Fetch the tenant token using the **tenant ID** that you obtained while
+   [creating the first organization and
+   user](..#creating-the-first-organization-and-user) (replace `$TENANT_ID`
+   accordingly):
+
+   <!-- AUTOMATION: execute=TENANT_ID=$( ( ./run exec mender-tenantadm /usr/bin/tenantadm create-org --name=MyOrganization --username=myusername@host.com --password=mysecretpassword ) | tr -d '\r' ) -->
+   <!-- AUTOMATION: execute=sleep 10 -->
+
+   <!-- Trick to capture the output. The `tr` is because Go prints with Windows
+   line endings for whatever reason. -->
+   <!-- AUTOMATION: execute=TENANT_TOKEN=$( ( -->
+   ```bash
+   ./run exec mender-tenantadm /usr/bin/tenantadm get-tenant --id $TENANT_ID | jq -r .tenant_token
+   ```
+   <!-- AUTOMATION: execute=) | tr -d '\r' ) -->
+
+   > eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW5kZXIudGVuYW50IjoiNWQ4MzM1MzJkMTMwNTgwMDI4NDhmZmRmIiwia<br>
+   XNzIjoiTWVuZGVyIiwic3ViIjoiNWQ4MzM1MzJkMTMwNTgwMDI4NDhmZmRmIn0.HJDGHzqZqbosAYyJpSIEeL0W4HMiOmb15ETnu<br>
+   ChxE0i7ahW49dZZlQNJBKLkLzuESDxXnmQbQwsSGP6t32pGkeHVXTPjrSjhtMPC80NiibNG3f-QATw9I8YgG2SBd5xaKl17qdta1<br>
+   nGi80T2UKrwlzqLHR7wNed10ss3NgJDIDvrm89XO0Rg6jpFZsHCPyyK1c8-Vn8zZjW5azZLNSgtgSLSmFQguQLRRXL2x12VEcmez<br>
+   tFY0kJnhGtN07CD3XXxcz0BpWbevDYOPOEUusGd2KpLK2Y4QU8RdngqNtRe7SppG0fn6m6tKiifrPDAv_THCEG6dvpMHyIM77vGI<br>
+   PwvV4ABGhZKRAlDe1R4csJQIbhVcTWMGcoZ4bKH-zDK0900_wWM53i9rkgNFDM470i6-d1oqfaCPcbiniKsq1HcJRZsIVNJ1edDo<br>
+   vhQ6IbffPRCw-Au_GlnPTn_czovJqSa3bgwrJguYRIKJGWhHgx0e3j795oJ08ks2Mp3Rshbv4da
+
+2. Shut down the server:
+   ```bash
+   ./run down
+   ```
+
+3. In `config/enterprise.yml`, locate the `DEVICEAUTH_DEFAULT_TENANT_TOKEN`
+   variable, and make sure its value is set to the **tenant token** that was
+   fetched in the previous step
+
+   <!-- AUTOMATION: execute=sed -i -e "s;DEVICEAUTH_DEFAULT_TENANT_TOKEN:;DEVICEAUTH_DEFAULT_TENANT_TOKEN: $TENANT_TOKEN;" config/enterprise.yml -->
+
+4. Start the server again:
+   ```bash
+   ./run up -d
+   ```
+
+5. To finalize the upgrade follow the steps in [the Enterprise installation
+   tutorial from saving the enterprise
+   configuration](..#saving-the-enterprise-configuration).
+
+<!-- Verification -->
+
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 15 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
+<!--AUTOMATION: test=./run restart -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 15 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
+<!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
+<!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:9000" -->
+
+
+## Optional: Migrating away from default tenant token
+
+After the Enterprise server has been set up and verified to work correctly, it
+is recommended to switch to tenant tokens on each device, as opposed to the
+default tenant token that was configured earlier in this guide. This gives a
+small security benefit, by completely blocking devices that don't have a tenant
+token, and prevents devices showing up in the default organization by mistake,
+for example if the tenant token has been misspelled.
+
+In order to migrate to tenant tokens on the device, an update must be made to
+**all** devices. The update must contain the the tenant token of the default
+organization. See one of these sections for details on how to include tenant
+tokens using various client integration methods:
+
+* [Mender installed on device using a deb
+  package](../../../client-configuration/installing#configuration-for-hosted-mender-server)
+* [Device integration using Yocto
+  Project](../../../artifacts/yocto-project/variables#mender_tenant_token)
+* [Device integration with Debian
+  Family](../../../artifacts/debian-family#convert-a-raw-disk-image)
+* [Modifying an existing prebuilt
+  image](../../../artifacts/modifying-a-mender-artifact#changing-the-mender-server)
+
+Once all devices have been migrated, the `DEVICEAUTH_DEFAULT_TENANT_TOKEN`
+should be configured empty.
+
+<!-- AUTOMATION: ignore="We're not testing this part currently" -->
+1. Shut down the server:
+   ```bash
+   ./run down
+   ```
+
+2. In `config/enterprise.yml`, locate the `DEVICEAUTH_DEFAULT_TENANT_TOKEN`
+   variable, and make sure it is empty
+
+<!-- AUTOMATION: ignore="We're not testing this part currently" -->
+3. Bring up the server again:
+   ```bash
+   ./run up -d
+   ```
+
+! It's important that **all** devices are migrated before removing the default
+! tenant token, or you will lose access to these devices unless it is
+! reinstated.
