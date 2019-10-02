@@ -13,7 +13,10 @@ before_script:
 script:
   - ./test_autoversion.py
   - ./autoversion.py --check
-  - ./test_docs.py 07.Administration/02.Production-installation/docs.md
+  - env TEST_OPEN_SOURCE=1 ./test_docs.py 07.Administration/02.Production-installation/docs.md
+  - if [ -n "$DOCKER_PASSWORD" ]; then docker login -u menderbuildsystem -p "$DOCKER_PASSWORD"; fi
+  - if [ -n "$DOCKER_PASSWORD" ]; then env TEST_ENTERPRISE=1 ./test_docs.py 07.Administration/02.Production-installation/docs.md; fi
+  - if [ -n "$DOCKER_PASSWORD" ]; then env TEST_ENTERPRISE=1 ./test_docs.py 07.Administration/02.Production-installation/01.Upgrading-from-OS-to-Enterprise/docs.md; fi
 
 after_success:
   # on merge, first deploy to staging, wait 5 minutes, and deploy to production:
