@@ -101,7 +101,7 @@ named `mender-server`:
 
 <!--AUTOVERSION: "-b %"/integration -->
 ```bash
-git clone -b MEN-2648 https://github.com/mendersoftware/integration mender-server
+git clone -b master https://github.com/mendersoftware/integration mender-server
 ```
 
 > ```
