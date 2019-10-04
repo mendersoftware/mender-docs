@@ -164,7 +164,7 @@ The template includes a few files:
 
 - `enterprise.yml.template` - configuration for running an Enterprise instance
   of the Mender server. This topic is covered separately in [the Enterprise
-  part](enterprise) of the Production installation guide
+  part](#enterprise) of the Production installation guide
 
 !!! If an `enterprise.yml` file exists in the `config` directory, this will
 !!! automatically turn on Enterprise features in the backend service. If you
@@ -728,7 +728,7 @@ test and production environments.
 When using Mender Enterprise, multi tenancy is automatically enabled, and it
 cannot be turned off. Below follows a guide for setting up a single
 organization. For additional information on administering organizations, see the
-[API for the tenantadm service (TODO!)](TODO), as well as the help screen from:
+[API for the tenantadm service \(TODO!\)](), as well as the help screen from:
 
 ```bash
 ./run exec mender-tenantadm /usr/bin/tenantadm --help
