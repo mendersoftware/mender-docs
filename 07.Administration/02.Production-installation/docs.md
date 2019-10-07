@@ -728,7 +728,7 @@ test and production environments.
 When using Mender Enterprise, multi tenancy is automatically enabled, and it
 cannot be turned off. Below follows a guide for setting up a single
 organization. For additional information on administering organizations, see the
-[API for the tenantadm service \(TODO!\)](), as well as the help screen from:
+help screen from:
 
 ```bash
 ./run exec mender-tenantadm /usr/bin/tenantadm --help
