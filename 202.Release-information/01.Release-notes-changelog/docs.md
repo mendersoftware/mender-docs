@@ -4,6 +4,219 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender warrior-v2019.10
+
+_Released 10.10.2019_
+
+### Statistics
+
+A total of 2540 lines added, 1428 removed (delta 1112)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 74 (46.8%) |
+| Lluis Campos | 27 (17.1%) |
+| Drew Moseley | 18 (11.4%) |
+| Mirza Krak | 15 (9.5%) |
+| Ole Petter Orhagen | 7 (4.4%) |
+| Pierre-Jean Texier | 5 (3.2%) |
+| Paul Barker | 3 (1.9%) |
+| Dell Green | 2 (1.3%) |
+| Dan Walkes | 1 (0.6%) |
+| Bryan Matthews | 1 (0.6%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 1898 (58.0%) |
+| Drew Moseley | 333 (10.2%) |
+| Mirza Krak | 317 (9.7%) |
+| Ole Petter Orhagen | 282 (8.6%) |
+| Lluis Campos | 273 (8.3%) |
+| Tim Froehlich | 46 (1.4%) |
+| Dell Green | 43 (1.3%) |
+| Dan Walkes | 40 (1.2%) |
+| Pierre-Jean Texier | 14 (0.4%) |
+| Bryan Matthews | 9 (0.3%) |
+
+| Developers with the most signoffs (total 6) | |
+|---|---|
+| Kristian Amlie | 3 (50.0%) |
+| Drew Moseley | 2 (33.3%) |
+| Mirza Krak | 1 (16.7%) |
+
+| Developers with the most report credits (total 2) | |
+|---|---|
+| Drew Moseley | 1 (50.0%) |
+| Denis Mosolov | 1 (50.0%) |
+
+| Developers who gave the most report credits (total 2) | |
+|---|---|
+| Kristian Amlie | 2 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 141 (89.2%) |
+| KONCEPTO | 5 (3.2%) |
+| Beta Five Ltd | 3 (1.9%) |
+| Ideaworks Ltd | 2 (1.3%) |
+| Konsulko Group | 1 (0.6%) |
+| GreenEggs AB | 1 (0.6%) |
+| manuel@linux-home.at | 1 (0.6%) |
+| Arch Systems Inc. | 1 (0.6%) |
+| Trellis-Logic | 1 (0.6%) |
+| Reach Technologies Inc | 1 (0.6%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 3103 (94.8%) |
+| Arch Systems Inc. | 46 (1.4%) |
+| Ideaworks Ltd | 43 (1.3%) |
+| Trellis-Logic | 40 (1.2%) |
+| KONCEPTO | 14 (0.4%) |
+| Reach Technologies Inc | 9 (0.3%) |
+| Beta Five Ltd | 8 (0.2%) |
+| Konsulko Group | 8 (0.2%) |
+| GreenEggs AB | 1 (0.0%) |
+| manuel@linux-home.at | 1 (0.0%) |
+
+| Employers with the most signoffs (total 6) | |
+|---|---|
+| Northern.tech | 6 (100.0%) |
+
+| Employers with the most hackers (total 15) | |
+|---|---|
+| Northern.tech | 5 (33.3%) |
+| Arch Systems Inc. | 1 (6.7%) |
+| Ideaworks Ltd | 1 (6.7%) |
+| Trellis-Logic | 1 (6.7%) |
+| KONCEPTO | 1 (6.7%) |
+| Reach Technologies Inc | 1 (6.7%) |
+| Beta Five Ltd | 1 (6.7%) |
+| Konsulko Group | 1 (6.7%) |
+| GreenEggs AB | 1 (6.7%) |
+| manuel@linux-home.at | 1 (6.7%) |
+
+### Changelogs
+
+#### meta-mender (warrior-v2019.10)
+
+New changes in meta-mender since thud-v2019.09:
+
+* part-images: add missing u-boot:deploy dependency for ARM
+* Add mender 1.6.1 and 1.7.0 recipes.
+* Add mender-artifact 2.3.1 and 2.4.0 recipes.
+* Remove unsupported mender 1.5.x series.
+* Fix data directory not being empty on rootfs.
+  ([MEN-2290](https://tracker.mender.io/browse/MEN-2290))
+* Add grub-mender-grubenv 1.2.1 recipe.
+* Fix grub-editenv invocation on platforms where it is called
+  grub2-editenv.
+* Add grub-mender-grubenv 1.3.0 recipe.
+* Add support for initramfs when booting using GRUB.
+* mender-helpers.bbclass: Add NVMe support
+* Set inventory poll interval default to 8h
+  ([MEN-2214](https://tracker.mender.io/browse/MEN-2214))
+* mender artifact bbclass image name override variable added.
+  ([MEN-2333](https://tracker.mender.io/browse/MEN-2333))
+* grub: ensure "test" module is builtin
+* Added bitbake variable to add optional swap partition
+  ([MEN-2361](https://tracker.mender.io/browse/MEN-2361))
+* Start using Git SHA based grub-mender-grubenv versions.
+* Adapt to new flags in mender-artifact-3.0.0.
+* Some core update modules can now be installed by adding
+  `modules` to the `PACKAGECONFIG` variable of `mender`. They are
+  included by default when using the meta-mender-demo layer.
+  ([MEN-2383](https://tracker.mender.io/browse/MEN-2383))
+* Install `mender-data-dir.service` to create `/data/mender` directory.
+* Extended MENDER_DATA_PART_FSTYPE to allow it to be used to
+  specify the filesystem to be generated. Added support to build the data
+  partition as btrfs, and for setting mkfs and fstab options
+* Change variable to access ubi dataimg, points now to the symlink to prevent yocto rebuild error when timestamp/name of ubimg have changed
+* linux-raspberrypi-rt: Add mender settings for the PREEMPT_RT kernel.
+* Add mender-2.0.0b1 and mender-artifact-3.0.0b1.
+* Add new liblzma dependency for the client.
+* Add missing build dep on "xz" in Mender Artifact recipes for
+  3.0.x versions
+* Fix error message `Incorrect Usage: flag provided but not defined: -f`
+* Fix mender 2.0.x and mender-artifact 3.0.x recipes to use the
+  correct branches when fetching the source.
+* mender: Do not exclude missing directories.
+* Upgrade default state script version to version 3.
+* Add recipe for mender-2.0.0 and mender-artifact-3.0.0.
+* Enable mender v2 and mender-artifact v3 by default.
+* Add recipes for mender-1.7.1 and mender-artifact-2.4.1.
+* Fix build failing in do_image_ubimg task
+* Demo images now include Yocto LSB package.
+  ([MEN-2421](https://tracker.mender.io/browse/MEN-2421))
+* grub-mender-grubenv: Fix broken 'debug-pause' `PACKAGECONFIG`.
+* QEMU: Add inventory script for Docker IP and open port 80.
+  ([MEN-2574](https://tracker.mender.io/browse/MEN-2574))
+* u-boot-mender: Add define for MENDER_STORAGE_DEVICE
+* mender: Add support for a bootimg FSTYPE.
+* This new define is to allow builds when no dtb is produced or the dtb is
+* Remap port 85 on host to 85 in qemu
+* Ensure that artifact and partition images' checksums are equal.
+  ([MEN-2597](https://tracker.mender.io/browse/MEN-2597))
+* Add recipes for mender 2.0.1 and mender-artifact 3.0.1
+* mender: Setup Live installer with HDDIMG
+* rpi: Fix several assignment bugs regarding `MENDER_BOOTLOADER_DEFAULT`.
+* mender-systemd: Maintain persistent machine-id across updates.
+* Add MENDER_UBOOT_CONFIG_SYS_MMC_ENV_PART variable which can
+  be used to specify MMC partitions other than the user partition like
+  mmcblk0boot0 and mmcblk0boot1 for u-boot environment storage.
+* grub-mender-grubenv: Setup debug option to drop to grub prompt.
+* mender: Scan for devices with the live installer
+* Add mender 2.1.0b1 and mender-artifact 3.1.0b1 recipes.
+  Part of Mender 2.1.0 Beta release.
+* Remove outdated mender-1.6.x and mender-artifact-2.3.x recipes.
+* layer.conf: set high layer priority
+  Set a high layer prio to ensure that meta-mender-demo addons (e.g psplash)
+  are always prioritized above the depended layers (e.g meta-boundary).
+* Add meta-mender-commercial layer.
+  This will host our mender-binary-delta Update Module.
+* Update recipe for mender-binary-delta pre-release v0.1.1
+* u-boot-fw-utils: set PACKAGE_ARCH as MACHINE_ARCH
+* example-state-scripts: use show-artifact instead of parsing file
+* Fix incorrect boot partition type for EFI boot partitions.
+* Fix initramfs builds when using meta-mender layer
+* Fix "set_image_size" errors when large files are installed
+  in /data directory (staging area for data partition filesystem image)
+* Add mender-2.1.0 and mender-artifact-3.1.0.
+* Enable dynamic resizing of the data partition
+  Enable dynamic resize of the data partition on first boot. Meaning that it will
+  grow the mounted filesystem to full size of the underlying block device. This is
+  done through enabling systemd's growfs feature. Hereforth the feature is enabled
+  by default when inheriting from 'mender-full'. The feature can be disabled using
+  MENDER_FEATURES_DISABLE_append = " mender-growfs-data".
+  Updated commit message:
+  ([MEN-2337](https://tracker.mender.io/browse/MEN-2337))
+* `FILESEXTRAPATHS_prepend_pn-mender-binary-delta` now needs
+  to point to the folder containing `arm`, `aarch64` and `x86_64`, not the folder
+  containing the binary.
+* meta-mender layers updated to Yocto warrior
+* Splits the mender.conf configuration file into a transient
+  configuration /etc/mender/mender.conf and a persistent congiguration in
+  /data/mender/mender.conf. This split is enabled by default, and it can
+  be opt-out by adding `PACKAGECONFIG_remove = "split-mender-config"` to
+  local.conf. ([MEN-2757](https://tracker.mender.io/browse/MEN-2757))
+* Add a new recipe mender-migrate-configuration to ease the
+  migration of devices with single mender.conf to the new setup of split
+  configuration files. To build an updgrade for such device, add the
+  recipe with `IMAGE_INSTALL_append = " mender-migrate-configuration"`,
+  disable the split feature (for this update only) with
+  `PACKAGECONFIG_remove = " split-mender-config"`, and specify which
+  parameters to migrate (at least the partition parameters) with
+  `MENDER_PERSISTENT_CONFIGURATION_VARS = "RootfsPartA RootfsPartB"`.
+  ([MEN-2757](https://tracker.mender.io/browse/MEN-2757))
+* Fix issue where U-boot is not able to find a valid DTB on Raspberry Pi boards
+  ([MC 0](https://tracker.mender.io/browse/MC 0))
+* add support for Raspberry Pi 4
+* Removes the tests covering Mender-Artifact version 1.
+  ([MEN-2156](https://tracker.mender.io/browse/MEN-2156))
+* Add mender 2.1.1 and mender-artifact 3.2.0b1 recipes.
+* Update recipe for mender-binary-delta beta release v1.0.0b1
+
+
 ## Mender 2.2.0b1
 
 _Released 10.08.2019_
