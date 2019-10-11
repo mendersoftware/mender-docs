@@ -506,9 +506,12 @@ you can supply a whitespace-separated list of hostnames as follows:
 ```
 
 
-#### Device Authentication Service
+#### Device Authentication Service (optional)
 
-Locate the `mender-device-auth` service.
+It is possible to set a default limit on the number of devices each organization (created below) can accept.
+If you do not need this, you can skip this configuration.
+
+Otherwise, locate the `mender-device-auth` service.
 Add the `environment` section if it is absent. In the `environment` section add the `DEVICEAUTH_MAX_DEVICES_LIMIT_DEFAULT` variable with an integer value. `0` represents `no limit` and is the default.
 The updated entry should look like this:
 
@@ -517,7 +520,7 @@ The updated entry should look like this:
     mender-device-auth:
         ...
         environment:
-            DEVICEAUTH_MAX_DEVICES_LIMIT_DEFAULT: 15
+            DEVICEAUTH_MAX_DEVICES_LIMIT_DEFAULT: 500
     ...
 ```
 
