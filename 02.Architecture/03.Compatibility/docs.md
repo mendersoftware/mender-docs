@@ -72,8 +72,8 @@ In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3
 
 !!! <sup>1</sup> For very old versions of Yocto, check the documentation for that specific Mender version using the left hand menu.
 
-!!! See also [Upgrading](../../artifacts/yocto-project/upgrading) for known issues
-!!! when upgrading between Yocto project versions.
+<!--AUTOVERSION: "from % to %"/ignore "from-%-to-%"/ignore-->
+! If upgrading from thud to warrior, see also [known issues when upgrading from thud to warrior](../../troubleshooting/running-yocto-project-image#upgrading-from-thud-to-warrior-fails-with-dual-rootfs-configurat).
 
 Leverage [Mender consulting services to support other versions of the Yocto Project](https://mender.io/product/board-support?target=_blank) for your board and environment.
 
