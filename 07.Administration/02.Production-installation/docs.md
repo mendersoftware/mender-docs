@@ -559,10 +559,10 @@ git commit -m 'production: configuration'
 
 At this point your commit history should look as follows:
 
-<!--AUTOVERSION: "git log --oneline origin/%..HEAD"/integration -->
+<!--AUTOVERSION: "git log --oneline %..HEAD"/integration -->
 <!--AUTOMATION: ignore -->
 ```bash
-git log --oneline origin/2.2.0b1..HEAD
+git log --oneline 2.2.0b1..HEAD
 ```
 > ```
 > 7a4de3c production: configuration
@@ -804,10 +804,10 @@ git commit -m 'production: Enterprise configuration'
 
 At this point your commit history should look as follows:
 
-<!--AUTOVERSION: "git log --oneline origin/%..HEAD"/integration -->
+<!--AUTOVERSION: "git log --oneline %..HEAD"/integration -->
 <!--AUTOMATION: ignore -->
 ```bash
-git log --oneline origin/2.2.0b1..HEAD
+git log --oneline 2.2.0b1..HEAD
 ```
 > ```
 > 76b3d00 production: Enterprise configuration
