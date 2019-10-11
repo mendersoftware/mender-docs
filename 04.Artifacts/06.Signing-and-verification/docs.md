@@ -88,7 +88,7 @@ otherwise [compile it for your platform](../modifying-a-mender-artifact#compilin
 
 There are two ways to sign an Artifact: while creating it with the `write`
 command or once already created using the `sign` command. We add the `-k`
-paramater in both cases to specify the private key, which will be used for
+parameter in both cases to specify the private key, which will be used for
 creating the signature.
 
 #### A raw root file system

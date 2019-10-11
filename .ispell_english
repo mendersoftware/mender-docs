@@ -459,6 +459,7 @@ devicead
 deviceadm
 deviceau
 deviceauth
+deviceip
 DeviceKey
 DeviceNumber
 devicetree
@@ -1641,7 +1642,9 @@ stanford
 Starkov
 stat
 StateScriptRetryIntervalSeconds
+statescriptretryintervalseconds
 StateScriptRetryTimeoutSeconds
+statescriptretrytimeoutseconds
 statescripttimeoutseconds
 StateScriptTimeoutSeconds
 stats
