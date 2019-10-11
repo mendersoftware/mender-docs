@@ -552,6 +552,7 @@ devicead
 deviceadm
 deviceau
 deviceauth
+deviceip
 DeviceKey
 DeviceNumber
 devicetree
@@ -1985,8 +1986,10 @@ Starkov
 stat
 StateScriptRetryInterval
 StateScriptRetryIntervalSeconds
+statescriptretryintervalseconds
 StateScriptRetryTimeout
 StateScriptRetryTimeoutSeconds
+statescriptretrytimeoutseconds
 StateScriptTimeout
 statescripttimeoutseconds
 StateScriptTimeoutSeconds
@@ -2343,6 +2346,7 @@ Xue
 xvf
 xw
 Xwbe
+xxx
 xxxx
 xyu
 xz
