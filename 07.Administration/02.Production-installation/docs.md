@@ -369,37 +369,16 @@ The template is configured to mount the following volumes:
 - `mender-elasticsearch-db` - elasticsearch service database data
 - `mender-redis-db` - redis service database data
 
-Each of these volumes need to be created manually with the following commands:
+Create these volumes with the following commands:
 
 ```bash
 docker volume create --name=mender-artifacts
-```
-
-```bash
 docker volume create --name=mender-db
-```
-
-```bash
 docker volume create --name=mender-elasticsearch-db
-```
-
-```bash
 docker volume create --name=mender-redis-db
 ```
 
-Since we are using local driver for volumes, each volume is based on a host
-local directory. It is possible to access files in this directory once a local path
-is known. To find the local path for a specific volume run the following
-command:
-
-```bash
-docker volume inspect --format '{{.Mountpoint}}' mender-artifacts
-```
-> ```
-> /var/lib/docker/volumes/mender-artifacts/_data
-> ```
-
-The path depends on local docker configuration and may vary between installations.
+!!! The storage location of these volumes depends on your docker configuration. You can check the path for a specific volume by running `docker volume inspect --format '{{.Mountpoint}}' mender-artifacts`.
 
 
 ### Configuration
