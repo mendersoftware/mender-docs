@@ -369,37 +369,16 @@ The template is configured to mount the following volumes:
 - `mender-elasticsearch-db` - elasticsearch service database data
 - `mender-redis-db` - redis service database data
 
-Each of these volumes need to be created manually with the following commands:
+Create these volumes with the following commands:
 
 ```bash
 docker volume create --name=mender-artifacts
-```
-
-```bash
 docker volume create --name=mender-db
-```
-
-```bash
 docker volume create --name=mender-elasticsearch-db
-```
-
-```bash
 docker volume create --name=mender-redis-db
 ```
 
-Since we are using local driver for volumes, each volume is based on a host
-local directory. It is possible to access files in this directory once a local path
-is known. To find the local path for a specific volume run the following
-command:
-
-```bash
-docker volume inspect --format '{{.Mountpoint}}' mender-artifacts
-```
-> ```
-> /var/lib/docker/volumes/mender-artifacts/_data
-> ```
-
-The path depends on local docker configuration and may vary between installations.
+!!! The storage location of these volumes depends on your docker configuration. You can check the path for a specific volume by running `docker volume inspect --format '{{.Mountpoint}}' mender-artifacts`.
 
 
 ### Configuration
@@ -527,9 +506,12 @@ you can supply a whitespace-separated list of hostnames as follows:
 ```
 
 
-#### Device Authentication Service
+#### Device Authentication Service (optional)
 
-Locate the `mender-device-auth` service.
+It is possible to set a default limit on the number of devices each organization (created below) can accept.
+If you do not need this, you can skip this configuration.
+
+Otherwise, locate the `mender-device-auth` service.
 Add the `environment` section if it is absent. In the `environment` section add the `DEVICEAUTH_MAX_DEVICES_LIMIT_DEFAULT` variable with an integer value. `0` represents `no limit` and is the default.
 The updated entry should look like this:
 
@@ -538,7 +520,7 @@ The updated entry should look like this:
     mender-device-auth:
         ...
         environment:
-            DEVICEAUTH_MAX_DEVICES_LIMIT_DEFAULT: 15
+            DEVICEAUTH_MAX_DEVICES_LIMIT_DEFAULT: 500
     ...
 ```
 
@@ -577,10 +559,10 @@ git commit -m 'production: configuration'
 
 At this point your commit history should look as follows:
 
-<!--AUTOVERSION: "git log --oneline origin/%..HEAD"/integration -->
+<!--AUTOVERSION: "git log --oneline %..HEAD"/integration -->
 <!--AUTOMATION: ignore -->
 ```bash
-git log --oneline origin/master..HEAD
+git log --oneline master..HEAD
 ```
 > ```
 > 7a4de3c production: configuration
@@ -763,12 +745,19 @@ available in the JSON output from the `get-tenant` command, in the
 `tenant_token` field. To avoid manually parsing raw JSON, we can use the `jq`
 tool:
 
+!!! On Debian based distributions you can install `jq` with the command `apt-get
+!!! install jq`.
+
 ```bash
-./run exec mender-tenantadm /usr/bin/tenantadm get-tenant --id $TENANT_ID | jq -r .tenant_token
+TENANT_TOKEN=$(./run exec mender-tenantadm /usr/bin/tenantadm get-tenant --id $TENANT_ID | jq -r .tenant_token)
 ```
 
-where `$TENANT_ID` is the ID that was printed by the previous command. The
-resulting tenant token will be a long string like this:
+where `$TENANT_ID` is the ID that was printed by the previous command. Make sure this
+was successful, the resulting tenant token should be a long string like this:
+
+```bash
+echo $TENANT_TOKEN
+```
 
 > eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW5kZXIudGVuYW50IjoiNWQ4MzM1MzJkMTMwNTgwMDI4NDhmZmRmIiwia<br>
 XNzIjoiTWVuZGVyIiwic3ViIjoiNWQ4MzM1MzJkMTMwNTgwMDI4NDhmZmRmIn0.HJDGHzqZqbosAYyJpSIEeL0W4HMiOmb15ETnu<br>
@@ -778,20 +767,17 @@ tFY0kJnhGtN07CD3XXxcz0BpWbevDYOPOEUusGd2KpLK2Y4QU8RdngqNtRe7SppG0fn6m6tKiifrPDAv
 PwvV4ABGhZKRAlDe1R4csJQIbhVcTWMGcoZ4bKH-zDK0900_wWM53i9rkgNFDM470i6-d1oqfaCPcbiniKsq1HcJRZsIVNJ1edDo<br>
 vhQ6IbffPRCw-Au_GlnPTn_czovJqSa3bgwrJguYRIKJGWhHgx0e3j795oJ08ks2Mp3Rshbv4da
 
-!!! On Debian based distributions you can install `jq` with the command `apt-get
-!!! install jq`.
-
 Make sure that the string does not include any spaces or newlines when you copy
 it from the terminal. The tenant token will be used in the following sections.
 
+You can repeat the steps if you would like to isolate devices into multiple organizations.
+
+
 #### Installing the tenant token
 
-First, make sure you have fetched the tenant token as described
-[earlier](#creating-the-first-organization-and-user). You can repeat the steps
-for multiple organizations if you need to. The **tenant token** needs to be
-included in the client configuration of each device that is going to be managed
-by Mender. Exactly how to include the token depends on which integration method
-is used with the client. Please refer to one of these sections:
+The **tenant token** needs to be included in the client configuration of each device that
+is going to be managed by Mender. Exactly how to include the token depends on
+which integration method is used with the client. Please refer to one of these sections:
 
 * [Migrating existing clients from an Open Source to an Enterprise
   server](upgrading-from-os-to-enterprise#migrating-clients)
@@ -822,10 +808,10 @@ git commit -m 'production: Enterprise configuration'
 
 At this point your commit history should look as follows:
 
-<!--AUTOVERSION: "git log --oneline origin/%..HEAD"/integration -->
+<!--AUTOVERSION: "git log --oneline %..HEAD"/integration -->
 <!--AUTOMATION: ignore -->
 ```bash
-git log --oneline origin/master..HEAD
+git log --oneline master..HEAD
 ```
 > ```
 > 76b3d00 production: Enterprise configuration
