@@ -4,6 +4,54 @@ taxonomy:
     category: docs
 ---
 
+<!--AUTOVERSION: "from % to %"/ignore-->
+## Upgrading from thud to warrior fails with "Dual rootfs configuration not found"
+
+<!--AUTOVERSION: "from % to %"/ignore-->
+When upgrading from thud to warrior, the update may result in failure with a log
+similar to this:
+
+```
+2019-10-09 10:43:52 +0000 UTC error: Dual rootfs configuration not found when resuming update. Recovery may fail.
+2019-10-09 10:43:52 +0000 UTC info: State transition: init [none] -> after-reboot [ArtifactReboot_Leave]
+2019-10-09 10:43:52 +0000 UTC error: transient error: Stub module: Cannot execute ArtifactVerifyReboot
+2019-10-09 10:43:53 +0000 UTC info: State transition: after-reboot [ArtifactReboot_Leave] -> rollback [ArtifactRollback]
+2019-10-09 10:43:53 +0000 UTC debug: transitioning to error state
+2019-10-09 10:43:53 +0000 UTC debug: statescript: timeout for executing scripts is not defined; using default of 1h0m0s seconds
+2019-10-09 10:43:53 +0000 UTC debug: statescript: timeout for executing scripts is not defined; using default of 1h0m0s seconds
+2019-10-09 10:43:53 +0000 UTC info: performing rollback
+2019-10-09 10:43:53 +0000 UTC error: Unable to roll back with a stub module, but will try to reboot to restore state
+```
+
+<!--AUTOVERSION: "meta-mender % branch"/ignore-->
+The meta-mender warrior branch introduced a change for the configuration of
+Mender. Now the configuration is split between a transient configuration file in
+`/etc/mender/mender.conf` and a persistent configuration file in
+`/data/mender/mender.conf`, see
+[MEN-2757](https://tracker.mender.io/browse/MEN-2757).
+
+A device running on a single configuration file cannot upgrade to an image built
+with two configuration files feature.
+
+To enable migration please add the following to your local.conf or similar:
+
+```bash
+IMAGE_INSTALL_append = " mender-migrate-configuration"
+PACKAGECONFIG_remove = "split-mender-config"
+MENDER_PERSISTENT_CONFIGURATION_VARS = "RootfsPartA RootfsPartB"
+MENDER_ARTIFACT_EXTRA_ARGS_append = " -v 2"
+```
+
+Build an image with above configuration and deploy it your device fleet. Once
+all devices in the fleet have been updated with the migration script enabled you
+can remove these changes and return to the normal workflow of generating update
+Artifacts.
+
+Note that `mender-migrate-configuration` recipe uses a state script, and it
+might be needed to clean the yocto build after removing it. See note at [State
+Scripts](../../artifacts/state-scripts#including-state-scripts-in-artifacts-and-disk-images)
+
+
 ## Boot sequence fails with "Failed to mount /uboot" and "codepage cp437 not found"
 
 This sometimes happens when using one of the minimal images from the Yocto Project, such as `core-image-minimal` or `core-image-full-cmdline`. These images do not include the `kernel-modules` package, which contains the kernel module with codepage 437. There are two ways this can be resolved:
