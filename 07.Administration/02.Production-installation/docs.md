@@ -717,26 +717,28 @@ help screen from:
 #### Creating the first organization and user
 
 In either case, at least one organization must be created when first installing
-the service. Execute this command in the `integration/production` directory:
+the service. Execute this command in the `production` directory.
+
+Replace the organization name, username and password with desired values and run this command:
 
 <!-- Wait for service to start -->
 <!--AUTOMATION: execute=sleep 30 -->
 
 <!-- Trick to capture the output. The `tr` is because Go prints with Windows
 line endings for whatever reason. -->
-<!--AUTOMATION: execute=TENANT_ID=$( ( -->
+<!--AUTOMATION: execute=TENANT_ID=$( -->
 ```bash
-./run exec mender-tenantadm /usr/bin/tenantadm create-org --name=MyOrganization --username=myusername@host.com --password=mysecretpassword
+TENANT_ID=$(./run exec mender-tenantadm /usr/bin/tenantadm create-org --name=MyOrganization --username=myusername@host.com --password=mysecretpassword | tr -d '\r') && (echo $TENANT_ID)
 ```
-<!--AUTOMATION: execute=) | tr -d '\r' ) -->
+<!--AUTOMATION: execute=) -->
 
 <!-- create-org is an async workflow, give it some time -->
 <!--AUTOMATION: execute=sleep 10 -->
 
-Replace the organization name, username and password with desired values. **Make
-sure to save the tenant ID** that appears after calling the command; this will
-be the identifier for the first organization. Creating additional organizations
+**Make sure to save the tenant ID** that appears after calling the command (which will also be in the `TENANT_ID` shell variable).
+This will be the identifier for the first organization. Creating additional organizations
 works exactly the same way, so the above step may be repeated multiple times.
+
 
 #### Fetching the tenant token
 
@@ -749,15 +751,11 @@ tool:
 !!! install jq`.
 
 ```bash
-TENANT_TOKEN=$(./run exec mender-tenantadm /usr/bin/tenantadm get-tenant --id $TENANT_ID | jq -r .tenant_token)
+TENANT_TOKEN=$(./run exec mender-tenantadm /usr/bin/tenantadm get-tenant --id $TENANT_ID | jq -r .tenant_token) && (echo $TENANT_TOKEN)
 ```
 
-where `$TENANT_ID` is the ID that was printed by the previous command. Make sure this
-was successful, the resulting tenant token should be a long string like this:
-
-```bash
-echo $TENANT_TOKEN
-```
+where `$TENANT_ID` is the ID that was printed by the previous command.
+The output tenant token should be a long string like this:
 
 > eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW5kZXIudGVuYW50IjoiNWQ4MzM1MzJkMTMwNTgwMDI4NDhmZmRmIiwia<br>
 XNzIjoiTWVuZGVyIiwic3ViIjoiNWQ4MzM1MzJkMTMwNTgwMDI4NDhmZmRmIn0.HJDGHzqZqbosAYyJpSIEeL0W4HMiOmb15ETnu<br>
