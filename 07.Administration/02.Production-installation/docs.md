@@ -37,9 +37,10 @@ steps that are covered in the [Enterprise subsection](#enterprise).
     - This heavily depends on your scale and environment, the supported [Mender Enterprise](https://mender.io/product/mender-enterprise) edition is recommended for larger-scale environments.
 - A public IP address assigned and ports 443 and 9000 publicly accessible.
 - Allocated DNS names for the Mender API Gateway and the Mender Storage Proxy
-  (for purpose of the guide, it is assumed that you
-  own the domains `mender.example.com` and `s3.example.com`) that resolve to the public
-  IP of current host on the devices.
+  that resolve to the public IP of the Mender server by the devices. By following this guide
+  all services will be hosted on the same server, so you can use just one domain name for both.
+  If you are just testing you can use a temporary domain name obtained from services like
+  [https://ipq.co](https://ipq.co?target=_blank).
 
 If you are setting up a Mender Enterprise server, you will also need:
 
@@ -48,6 +49,7 @@ If you are setting up a Mender Enterprise server, you will also need:
   to receive your license.
 
 !!! It is very likely possible to use other Linux distributions and versions. However, we recommend using this exact environment for running Mender because it is known to work and you will thus avoid any issues specific to your environment if you use this reference.
+
 
 ## Deployment steps
 
@@ -219,12 +221,18 @@ necessary Docker images:
 
 ### Certificates and keys
 
-Prepare certificates using the helper script `keygen` (replacing `mender.example.com`
-and `s3.example.com` with your DNS names):
+First, set the public domain name of your server (the URL your devices will reach your Mender server on):
+
+```bash
+API_GATEWAY_DOMAIN_NAME="mender.example.com"  # NB! replace with your server's public domain name
+STORAGE_PROXY_DOMAIN_NAME="$API_GATEWAY_DOMAIN_NAME"  # change if you are hosting the Storage Proxy on a different domain name (not the default)
+```
+
+Prepare certificates using the helper script `keygen`:
 
 <!--AUTOMATION: ignore=use s3.docker.mender.io (localhost) instead-->
 ```bash
-CERT_API_CN=mender.example.com CERT_STORAGE_CN=s3.example.com ../keygen
+CERT_API_CN=$API_GATEWAY_DOMAIN_NAME CERT_STORAGE_CN=$STORAGE_PROXY_DOMAIN_NAME ../keygen
 ```
 <!--AUTOMATION: execute=CERT_API_CN=s3.docker.mender.io CERT_STORAGE_CN=s3.docker.mender.io ../keygen -->
 
@@ -383,50 +391,34 @@ docker volume create --name=mender-redis-db
 
 ### Configuration
 
-The deployment configuration now needs to be edited. Open `config/prod.yml` in
-your favorite editor.
-
-
-#### Storage proxy
-
-Locate the `storage-proxy` service and add `s3.example.com` (or your DNS name)
-under `networks.mender.aliases` key. The entry should look like this:
-
-```yaml
-    ...
-    storage-proxy:
-        networks:
-            mender:
-                aliases:
-                    - s3.example.com
-    ...
-
-```
-
-You can also change the values for `DOWNLOAD_SPEED` and `MAX_CONNECTIONS`.
-See the [section on bandwidth](../bandwidth) for more details on these
-settings.
+The deployment configuration in `config/prod.yml` now needs to be updated.
 
 
 #### Minio
 
-Locate the `minio` service. The keys `MINIO_ACCESS_KEY` and `MINIO_SECRET_KEY` control
+The keys `MINIO_ACCESS_KEY` and `MINIO_SECRET_KEY` control
 credentials for uploading artifacts into the object store. Since Minio is a S3 API
 compatible service, these settings correspond to Amazon's AWS Access Key ID and
 Secret Access Key respectively.
 
-Set `MINIO_ACCESS_KEY` to `mender-deployments`. `MINIO_SECRET_KEY` should be set
-to a value that can not easily be guessed. We recommend using the `pwgen` utility
-for generating the secret. Run the following command to generate a 16-character long secret:
+First, generate a secret key for Minio with the `pwgen` utility:
 
 ```bash
-pwgen 16 1
+MINIO_SECRET_KEY_GENERATED=$(pwgen 16 1) && echo $MINIO_SECRET_KEY_GENERATED
 ```
 > ```
 > ahshagheeD1ooPae
 > ```
 
-The updated entry should look similar to this:
+Insert the access and secret keys into `config/prod.yml` with the following commands:
+
+<!--AUTOMATION: ignore -->
+```bash
+sed -i "s/MINIO_ACCESS_KEY:.*/MINIO_ACCESS_KEY: mender-deployments/g" config/prod.yml
+sed -i "s/MINIO_SECRET_KEY:.*/MINIO_SECRET_KEY: $MINIO_SECRET_KEY_GENERATED/g" config/prod.yml
+```
+
+The updated entry should look similar to this, you can verify with `git diff`:
 
 ```yaml
     ...
@@ -435,10 +427,11 @@ The updated entry should look similar to this:
             # access key
             MINIO_ACCESS_KEY: mender-deployments
             # secret
-            MINIO_SECRET_KEY: ahshagheeD1ooPaeT8lut0Shaezeipoo
+            MINIO_SECRET_KEY: ahshagheeD1ooPae
     ...
 
 ```
+
 <!--AUTOMATION: execute=sed -i.bak 's/MINIO_ACCESS_KEY:.*/MINIO_ACCESS_KEY: Q3AM3UQ867SPQQA43P2F/' config/prod.yml -->
 <!--AUTOMATION: execute=sed -i.bak 's/MINIO_SECRET_KEY:.*/MINIO_SECRET_KEY: abcssadasdssado798dsfjhkksd/' config/prod.yml -->
 
@@ -448,20 +441,28 @@ The updated entry should look similar to this:
 
 #### Deployments service
 
-Locate the `mender-deployments` service. The deployments service will upload
-artifact objects to `minio` storage via `storage-proxy`,
+The deployments service will upload artifact objects to `minio` storage via `storage-proxy`,
 see the [administration overview](../overview) for more details. For this reason,
 access credentials `DEPLOYMENTS_AWS_AUTH_KEY` and `DEPLOYMENTS_AWS_AUTH_SECRET`
-need to be updated and `DEPLOYMENTS_AWS_URI` must point to `s3.example.com` (or
-your DNS name).
+need to be updated and `DEPLOYMENTS_AWS_URI` must point to the domain name of your Storage proxy. 
 
-!! The address used in `DEPLOYMENTS_AWS_URI` must be exactly the same as the one that will be used by devices. The deployments service generates signed URLs for accessing artifact storage. A different hostname or port will result in signature verification failure and download attempts will be rejected.
+Run the following commands to set `DEPLOYMENTS_AWS_AUTH_KEY` and
+`DEPLOYMENTS_AWS_AUTH_SECRET` to the values of `MINIO_ACCESS_KEY`
+and `MINIO_SECRET_KEY`, respectively.
 
-Set `DEPLOYMENTS_AWS_AUTH_KEY` and `DEPLOYMENTS_AWS_AUTH_SECRET` to the values
-of `MINIO_ACCESS_KEY` and `MINIO_SECRET_KEY` respectively. Set
-`DEPLOYMENTS_AWS_URI` to point to `https://s3.example.com:9000`.
+<!--AUTOMATION: ignore -->
+```bash
+sed -i "s/DEPLOYMENTS_AWS_AUTH_KEY:.*/DEPLOYMENTS_AWS_AUTH_KEY: mender-deployments/g" config/prod.yml
+sed -i "s/DEPLOYMENTS_AWS_AUTH_SECRET:.*/DEPLOYMENTS_AWS_AUTH_SECRET: $MINIO_SECRET_KEY_GENERATED/g" config/prod.yml
+```
+Also, run the following commmand so `DEPLOYMENTS_AWS_URI` points to your Storage proxy (including the right port, 9000 by default):
 
-The updated entry should look like this:
+<!--AUTOMATION: ignore -->
+```bash
+sed -i "s/https:\/\/set-my-alias-here.com/https:\/\/$STORAGE_PROXY_DOMAIN_NAME:9000/g" config/prod.yml
+```
+
+After these three commands, the updated entry should look like this (you can again verify with `git diff`):
 
 ```yaml
     ...
@@ -469,20 +470,56 @@ The updated entry should look like this:
         ...
         environment:
             DEPLOYMENTS_AWS_AUTH_KEY: mender-deployments
-            DEPLOYMENTS_AWS_AUTH_SECRET: ahshagheeD1ooPaeT8lut0Shaezeipoo
-            DEPLOYMENTS_AWS_URI: https://s3.example.com:9000
+            DEPLOYMENTS_AWS_AUTH_SECRET: ahshagheeD1ooPae
+            DEPLOYMENTS_AWS_URI: https://mender.example.com:9000
     ...
 ```
+
+!! The address used in `DEPLOYMENTS_AWS_URI` must be exactly the same as the one that will be used by devices. The deployments service generates signed URLs for accessing artifact storage. A different hostname or port will result in signature verification failure and download attempts will be rejected.
+
+
+#### Storage proxy
+
+Add your storage server's DNS name under the key `networks.mender.aliases` key
+by running the following command:
+
+<!--AUTOMATION: ignore -->
+```bash
+sed -i "s/set-my-alias-here.com/$STORAGE_PROXY_DOMAIN_NAME/g" config/prod.yml
+```
+
+The entry should now look like this:
+
+```yaml
+    ...
+    storage-proxy:
+        networks:
+            mender:
+                aliases:
+                    - mender.example.com
+    ...
+
+```
+
+You can also change the values for `DOWNLOAD_SPEED` and `MAX_CONNECTIONS`.
+See the [section on bandwidth](../bandwidth) for more details on these
+settings.
+
 
 
 #### API gateway
 
-Locate the `mender-api-gateway` service. For security purposes, the gateway
-must know precisely the DNS name allocated to it, which you'll configure via
-the `ALLOWED_HOSTS` environment variable.
+For security purposes, the API Gateway must know precisely the DNS name allocated to it,
+which you'll configure via the `ALLOWED_HOSTS` environment variable.
 
-Change the placeholder value `my-gateway-dns-name` to a valid hostname; assuming it's
-`mender.example.com`, the updated entry should look like this:
+Change the placeholder value `my-gateway-dns-name` to a valid hostname, by running
+the following command:
+
+```bash
+sed -i "s/my-gateway-dns-name/$API_GATEWAY_DOMAIN_NAME/g" config/prod.yml
+```
+
+The updated entry should look like this:
 
 ```yaml
     ...
@@ -501,7 +538,7 @@ you can supply a whitespace-separated list of hostnames as follows:
     mender-api-gateway:
         ...
         environment:
-            ALLOWED_HOSTS: mender1.example.com mender2.example.com
+            ALLOWED_HOSTS: mender.example.com mender2.example.com
     ...
 ```
 
@@ -511,7 +548,7 @@ you can supply a whitespace-separated list of hostnames as follows:
 It is possible to set a default limit on the number of devices each organization (created below) can accept.
 If you do not need this, you can skip this configuration.
 
-Otherwise, locate the `mender-device-auth` service.
+If you would like to set a limit, locate the `mender-device-auth` service in the configuration file.
 Add the `environment` section if it is absent. In the `environment` section add the `DEVICEAUTH_MAX_DEVICES_LIMIT_DEFAULT` variable with an integer value. `0` represents `no limit` and is the default.
 The updated entry should look like this:
 
@@ -747,8 +784,7 @@ available in the JSON output from the `get-tenant` command, in the
 `tenant_token` field. To avoid manually parsing raw JSON, we can use the `jq`
 tool:
 
-!!! On Debian based distributions you can install `jq` with the command `apt-get
-!!! install jq`.
+!!! On the Debian family of distributions you can install `jq` with `apt-get install jq`.
 
 ```bash
 TENANT_TOKEN=$(./run exec mender-tenantadm /usr/bin/tenantadm get-tenant --id $TENANT_ID | jq -r .tenant_token) && (echo $TENANT_TOKEN)
