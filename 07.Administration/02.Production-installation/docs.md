@@ -745,12 +745,19 @@ available in the JSON output from the `get-tenant` command, in the
 `tenant_token` field. To avoid manually parsing raw JSON, we can use the `jq`
 tool:
 
+!!! On Debian based distributions you can install `jq` with the command `apt-get
+!!! install jq`.
+
 ```bash
-./run exec mender-tenantadm /usr/bin/tenantadm get-tenant --id $TENANT_ID | jq -r .tenant_token
+TENANT_TOKEN=$(./run exec mender-tenantadm /usr/bin/tenantadm get-tenant --id $TENANT_ID | jq -r .tenant_token)
 ```
 
-where `$TENANT_ID` is the ID that was printed by the previous command. The
-resulting tenant token will be a long string like this:
+where `$TENANT_ID` is the ID that was printed by the previous command. Make sure this
+was successful, the resulting tenant token should be a long string like this:
+
+```bash
+echo $TENANT_TOKEN
+```
 
 > eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW5kZXIudGVuYW50IjoiNWQ4MzM1MzJkMTMwNTgwMDI4NDhmZmRmIiwia<br>
 XNzIjoiTWVuZGVyIiwic3ViIjoiNWQ4MzM1MzJkMTMwNTgwMDI4NDhmZmRmIn0.HJDGHzqZqbosAYyJpSIEeL0W4HMiOmb15ETnu<br>
@@ -760,20 +767,17 @@ tFY0kJnhGtN07CD3XXxcz0BpWbevDYOPOEUusGd2KpLK2Y4QU8RdngqNtRe7SppG0fn6m6tKiifrPDAv
 PwvV4ABGhZKRAlDe1R4csJQIbhVcTWMGcoZ4bKH-zDK0900_wWM53i9rkgNFDM470i6-d1oqfaCPcbiniKsq1HcJRZsIVNJ1edDo<br>
 vhQ6IbffPRCw-Au_GlnPTn_czovJqSa3bgwrJguYRIKJGWhHgx0e3j795oJ08ks2Mp3Rshbv4da
 
-!!! On Debian based distributions you can install `jq` with the command `apt-get
-!!! install jq`.
-
 Make sure that the string does not include any spaces or newlines when you copy
 it from the terminal. The tenant token will be used in the following sections.
 
+You can repeat the steps if you would like to isolate devices into multiple organizations.
+
+
 #### Installing the tenant token
 
-First, make sure you have fetched the tenant token as described
-[earlier](#creating-the-first-organization-and-user). You can repeat the steps
-for multiple organizations if you need to. The **tenant token** needs to be
-included in the client configuration of each device that is going to be managed
-by Mender. Exactly how to include the token depends on which integration method
-is used with the client. Please refer to one of these sections:
+The **tenant token** needs to be included in the client configuration of each device that
+is going to be managed by Mender. Exactly how to include the token depends on
+which integration method is used with the client. Please refer to one of these sections:
 
 * [Migrating existing clients from an Open Source to an Enterprise
   server](upgrading-from-os-to-enterprise#migrating-clients)
