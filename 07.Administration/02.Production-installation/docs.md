@@ -676,6 +676,14 @@ cp config/enterprise.yml.template config/enterprise.yml
 
 Creating the `enterprise.yml` file enables the Enterprise Mender server.
 
+The following configuration is required to be run during the beta period:
+
+```bash
+echo "$(awk -v line='            HAVE_ENTERPRISE: 1' '/HAVE_MULTITENANT/ { printf "%s\n%s\n", $0, line; next }; 1' ../docker-compose.enterprise.yml)" > ../docker-compose.enterprise.yml
+```
+
+This is necessary to allow you to access the Enterprise features from the GUI.
+
 ### Bring up the Enterprise server
 
 Bring up all services up in detached mode with the following command:
