@@ -45,17 +45,7 @@ If you are setting up a Mender Enterprise server, you will also need:
 
 - An account with Mender in order to evaluate and use the commercial features in
   Mender Enterprise. Please email [contact@mender.io](mailto:contact@mender.io)
-  to receive your credentials to log in with docker below before proceeding.
-- Docker configuration logged into the Mender Enterprise Docker registry:
-  <!-- AUTOMATION: ignore="Cannot use credentials here" -->
-  ```bash
-  docker login -u=<USERNAME> docker.download.mender.io
-  ```
-  Replace `<USERNAME>` with the username from your Mender Enterprise
-  account. This gives a prompt:
-  > ```
-  > Password: <TYPE PASSWORD HERE>
-  > ```
+  to receive your license.
 
 !!! It is very likely possible to use other Linux distributions and versions. However, we recommend using this exact environment for running Mender because it is known to work and you will thus avoid any issues specific to your environment if you use this reference.
 
