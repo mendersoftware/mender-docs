@@ -42,7 +42,7 @@ with upgrading to Mender Enterprise, please email
 !! In this version of Mender, there is no support for migrating data between the
 !! Open Source and Enterprise servers. Hence you will **lose all data** on the
 !! server by following this guide, and all users must be recreated, artifacts
-!! must be reuploaded, and devices reaccepted. The focus in this guide will be
+!! must be re-uploaded, and devices re-accepted. The focus in this guide will be
 !! on how to migrate the device fleet. Support for migrating server data will be
 !! added to a later Mender release.
 
@@ -112,7 +112,7 @@ when it is time to migrate the clients.
 
 ## Migrating clients
 
-With Mender Enteprise, each device needs to have a tenant token associated with
+With Mender Enterprise, each device needs to have a tenant token associated with
 it. When upgrading from Open Source however, the devices that are already
 deployed will be lacking this token. Therefore we need to use a special default
 tenant token which will automatically be assigned to all clients that try to
