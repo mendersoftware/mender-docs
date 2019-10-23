@@ -4,6 +4,19 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender warrior-v2019.10.2
+
+_Released 10.23.2019_
+
+### Changelogs
+
+#### meta-mender (warrior-v2019.10.2)
+
+New changes in mender-artifact since warrior-v2019.10:
+
+* Add mender-artifact 3.2.0 and remove beta.
+
+
 ## Mender 2.2.0
 
 _Released 10.23.2019_
