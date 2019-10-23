@@ -4,6 +4,258 @@ taxonomy:
     category: docs
 ---
 
+## Mender 2.2.0
+
+_Released 10.23.2019_
+
+### Statistics
+
+A total of 20171 lines added, 15470 removed (delta 4701)
+
+| Developers with the most changesets | |
+|---|---|
+| Manuel Zedel | 142 (37.5%) |
+| Marcin Chalczynski | 57 (15.0%) |
+| Krzysztof Jaskiewicz | 43 (11.3%) |
+| Kristian Amlie | 38 (10.0%) |
+| Lluis Campos | 33 (8.7%) |
+| Michael Clelland | 33 (8.7%) |
+| Ole Petter Orhagen | 24 (6.3%) |
+| Alf-Rune Siqveland | 3 (0.8%) |
+| Peter Grzybowski | 2 (0.5%) |
+| Marcin Pasinski | 1 (0.3%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Krzysztof Jaskiewicz | 10092 (40.4%) |
+| Manuel Zedel | 5779 (23.1%) |
+| Marcin Chalczynski | 2974 (11.9%) |
+| Ole Petter Orhagen | 1942 (7.8%) |
+| Kristian Amlie | 1539 (6.2%) |
+| Michael Clelland | 1289 (5.2%) |
+| Lluis Campos | 805 (3.2%) |
+| Alf-Rune Siqveland | 546 (2.2%) |
+| Eystein Måløy Stenberg | 9 (0.0%) |
+| Peter Grzybowski | 5 (0.0%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Krzysztof Jaskiewicz | 692 (4.5%) |
+| Lluis Campos | 39 (0.3%) |
+| Eystein Måløy Stenberg | 2 (0.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 277 (73.1%) |
+| RnDity | 100 (26.4%) |
+| KONCEPTO | 1 (0.3%) |
+| ajithpv@outlook.com | 1 (0.3%) |
+
+| Top lines changed by employer | |
+|---|---|
+| RnDity | 13066 (52.3%) |
+| Northern.tech | 11915 (47.7%) |
+| KONCEPTO | 1 (0.0%) |
+| ajithpv@outlook.com | 1 (0.0%) |
+
+| Employers with the most hackers (total 13) | |
+|---|---|
+| Northern.tech | 9 (69.2%) |
+| RnDity | 2 (15.4%) |
+| KONCEPTO | 1 (7.7%) |
+| ajithpv@outlook.com | 1 (7.7%) |
+
+### Changelogs
+
+#### deployments (1.8.0)
+
+New changes in deployments since 1.7.1:
+
+* Fix "unexpected EOF" errors when the source of the artifact
+  is a slow network stream.
+* Fix spurious upload errors due to wrong EOF handling.
+* Fix inability to resume partial migration.
+
+#### deployments-enterprise (1.8.0)
+
+New changes in deployments-enterprise since 1.8.0b1:
+
+* Disallow empty batches in phased rollouts
+  Previously there was a possibility to end up with an empty batch, due
+  to the formula used in the calculation for the number of devices which
+  is based on extracting a percentage number of devices from the total. Thus
+  if the total is so small, that a percentage below some number rounds to zero,
+  the batch would be empty. Now that same input will return an error.
+  ([MEN-2810](https://tracker.mender.io/browse/MEN-2810))
+
+#### deviceauth (2.1.0)
+
+New changes in deviceauth since 2.1.0b1:
+
+* additional mongodb index added
+
+New changes in deviceauth since 2.0.0:
+
+* Add support for default tenant token.
+  It can be used to allow devices that don't have a tenant token to be
+  allowed into a specific tenant's list of devices. Enable it either
+  using the `DEVICEAUTH_DEFAULT_TENANT_TOKEN` environment variable, or
+  the `default_tenant_token` setting in `config.yaml`.
+  ([MEN-2705](https://tracker.mender.io/browse/MEN-2705), [MEN-2706](https://tracker.mender.io/browse/MEN-2706))
+
+#### gui (2.2.0)
+
+New changes in gui since 2.2.0b1:
+
+* disabled onboarding steps in enterprise environments
+* added frontend validation to disable empty batches in phased deployments
+  ([MEN-2820](https://tracker.mender.io/browse/MEN-2820))
+* prevented an error in finished deployments view
+* fixed phased deployment progress calculation
+* added support for raspberrypi4 during onboarding
+* moved retry deployment to use createdeployment dialog for review
+* Fixed a bug that broke the pagination in the finished deployments list
+* added 2fa setup validation step
+* added possibility to select previous deployment patterns
+* disabled browser suggestions on autoselects
+* added starttime column to deployments list in enterprise
+
+New changes in gui since 2.1.0:
+
+* limited height of large select lists to prevent them from hiding input
+* ensured artifact & group sort order during deployment scheduling
+* added closed feature notifications to show in open source UI
+* Updated deployment creation UI to wizard for phased deployments
+
+#### integration (2.2.0)
+
+New changes in integration since 2.2.0b1:
+
+* Fix - Create explicit exitcond for the demo setup fixture
+  ([MEN-2836](https://tracker.mender.io/browse/MEN-2836))
+* Change Enterprise Docker links to registry.mender.io.
+  This will be our gateway to serve the Enterprise images, not Docker
+  Hub. Those who are using Enterprise will need to log into this
+  gateway:
+  ```
+  docker login -u $USERNAME registry.mender.io
+  ```
+  where `$USERNAME` is the username given to you from Northern.tech. You
+  will be prompted for the password.
+* Add enterprise enabling flag to enterprise composition GUI
+  container, so that the enterprise features are shown in the Frontend.
+* Upgrade deployments to 1.8.0.
+* Upgrade deployments-enterprise to 1.8.0.
+* Upgrade deviceauth to 2.1.0.
+* Upgrade gui to 2.2.0.
+* Upgrade mender-artifact to 3.2.0.
+* Upgrade mender-conductor to 1.5.0.
+* Upgrade mender-conductor-enterprise to 1.5.0.
+* Upgrade tenantadm to 1.0.0.
+* Upgrade useradm to 1.9.0.
+* Upgrade useradm-enterprise to 1.9.0.
+* Fix - Make sure the demo-script subprocess has a stdin fd
+  ([MEN-2836](https://tracker.mender.io/browse/MEN-2836))
+
+New changes in integration since 2.1.0:
+
+* remove default conductor config file
+* Fix error: `No such container: integration-2.1.0b1_mender-useradm_1`
+* Introduced `enterprise.yml` template in production
+  directory to install an Enterprise backend server.
+* The old `template` directory has been replaced with a
+  dedicated `production` directory, and templates are now provided as
+  single files with the `.template` suffix instead. These should be
+  copied to their non-`.template` location before being used. The `run`
+  script should no longer be copied, and if it already exists in the
+  `production` directory before merging this change, it should be
+  removed before attempting to merge or rebase.
+* The `prod.yml` file has been moved into a `config`
+  subfolder. Users with downstream repositories need to move their
+  `prod.yml` as well.
+* Enable tenantadm as an Enterprise release component.
+* Enable tenantadm as an Enterprise release component.
+* Fix issue when demo script exists abruptly on user request
+  for logs. The issue only showed up when the folder name contained "-"
+  or "." characters.
+* Upgrade deployments to 1.8.0b1.
+* Upgrade deployments-enterprise to 1.8.0b1.
+* Upgrade deviceauth to 2.1.0b1.
+* Upgrade gui to 2.2.0b1.
+* Upgrade mender to 2.1.1.
+* Upgrade mender-artifact to 3.2.0b1.
+* Upgrade mender-conductor to 1.5.0b1.
+* Upgrade mender-conductor-enterprise to 1.5.0b1.
+* Upgrade tenantadm to 1.0.0b1.
+* Upgrade useradm to 1.9.0b1.
+* Upgrade useradm-enterprise to 1.9.0b1.
+
+#### mender (2.1.1)
+
+New changes in mender since 2.1.0:
+
+* module/single-file: fix rollback state by correctly defining filename
+* Check for -f option in stat command
+* Set hard limit(10) for client update status report retries
+  This fixes an issue where the maxSendingAttemps in
+  updateReportRetry state could be set real high, since it is calculated
+  as UpdatePollIntervalSeconds / RetryPollIntervalSeconds. This adds a
+  hard upper limit of 10 retries for the client in any case.
+  ([MEN-2676](https://tracker.mender.io/browse/MEN-2676))
+
+#### mender-artifact (3.2.0)
+
+New changes in mender-artifact since 3.1.0:
+
+* 'mender-artifact cp' now requires '-' in order to read stdin
+  ([MEN-2745](https://tracker.mender.io/browse/MEN-2745))
+* Fix error where files larger than the buffer used by
+  io.Copy() was not buffered when mender-artifact cp read from stdin.
+  This means that now, ``` mender-artfact cp - mender.artifact:/in/img/path```
+  will successfully copy larger files.
+* fix erroneously report of "-dirty" in the version
+  string. ([MEN-2800](https://tracker.mender.io/browse/MEN-2800))
+* Fix build-contained Makefile: image was missing make install
+* Update the type-info documentation in the version 3 artifact format
+  This commit updates the description of the values allowed in the type-info
+  headers in the version 3 of the artifact format. Formerly only the key
+  `rootfs-image-checksum` was allowed, while now, any key is allowed, with
+  the only allowed value types being string, or array of strings.
+* Allow `--compression` to be specified after command.
+  This allows it to be appended to the command, which makes it usable
+  with `--` style arguments to Update Module Artifact generators.
+* Enable typeinfo artifact-depends/provides string and []string values
+  Previously the artifact-depends key in the type-info header was restricted
+  to contain a single key `rootfs-image-checksum`. This restriction has now
+  been lifted, and the key can now contain arbitrary string, and []string values.
+* Fix: mender-artifact modify did not clean up the
+  temp-files created
+  ([MEN-2758](https://tracker.mender.io/browse/MEN-2758))
+* Mender-Artifact format version 1 is hereby no longer supported,
+  and neither reading or writing the version 1 of the format is no longer
+  supported. Please move to using a newer version.
+  ([MEN-2156](https://tracker.mender.io/browse/MEN-2156))
+* mender-artifact will now fail to validate a signed Artifact
+  if no validation key is specified. No behaviour change for unsigned
+  Artifacts. ([MEN-2802](https://tracker.mender.io/browse/MEN-2802))
+
+#### mender-conductor (1.5.0)
+
+New changes in mender-conductor since 1.4.0:
+
+* update conductor from 2.2.0 to 2.11.0; fix configuration
+* startup script modified
+* copy default configuration into the image
+
+#### mender-conductor-enterprise (1.5.0)
+
+New changes in mender-conductor-enterprise since 1.4.0:
+
+* update task configs to work with conductor 2.11.0
+* fixing U+2014 'EM DASH' character
+  ([MC-1016](https://tracker.mender.io/browse/MC-1016))
+
+
 ## meta-mender warrior-v2019.10
 
 _Released 10.10.2019_
@@ -215,200 +467,6 @@ New changes in meta-mender since thud-v2019.09:
   ([MEN-2156](https://tracker.mender.io/browse/MEN-2156))
 * Add mender 2.1.1 and mender-artifact 3.2.0b1 recipes.
 * Update recipe for mender-binary-delta beta release v1.0.0b1
-
-
-## Mender 2.2.0b1
-
-_Released 10.08.2019_
-
-### Statistics
-
-A total of 17444 lines added, 14567 removed (delta 2877)
-
-| Developers with the most changesets | |
-|---|---|
-| Manuel Zedel | 104 (36.0%) |
-| Krzysztof Jaskiewicz | 39 (13.5%) |
-| Marcin Chalczynski | 36 (12.5%) |
-| Lluis Campos | 33 (11.4%) |
-| Kristian Amlie | 31 (10.7%) |
-| Michael Clelland | 22 (7.6%) |
-| Ole Petter Orhagen | 15 (5.2%) |
-| Alf-Rune Siqveland | 3 (1.0%) |
-| Peter Grzybowski | 2 (0.7%) |
-| Marcin Pasinski | 1 (0.3%) |
-
-| Developers with the most changed lines | |
-|---|---|
-| Krzysztof Jaskiewicz | 9438 (42.6%) |
-| Manuel Zedel | 4934 (22.3%) |
-| Marcin Chalczynski | 2045 (9.2%) |
-| Ole Petter Orhagen | 1723 (7.8%) |
-| Kristian Amlie | 1442 (6.5%) |
-| Michael Clelland | 1175 (5.3%) |
-| Lluis Campos | 822 (3.7%) |
-| Alf-Rune Siqveland | 546 (2.5%) |
-| Eystein Måløy Stenberg | 9 (0.0%) |
-| Peter Grzybowski | 5 (0.0%) |
-
-| Developers with the most lines removed | |
-|---|---|
-| Krzysztof Jaskiewicz | 1337 (9.2%) |
-| Lluis Campos | 38 (0.3%) |
-| Eystein Måløy Stenberg | 2 (0.0%) |
-
-| Top changeset contributors by employer | |
-|---|---|
-| Northern.tech | 212 (73.4%) |
-| RnDity | 75 (26.0%) |
-| KONCEPTO | 1 (0.3%) |
-| ajithpv@outlook.com | 1 (0.3%) |
-
-| Top lines changed by employer | |
-|---|---|
-| RnDity | 11483 (51.9%) |
-| Northern.tech | 10657 (48.1%) |
-| KONCEPTO | 1 (0.0%) |
-| ajithpv@outlook.com | 1 (0.0%) |
-
-| Employers with the most hackers (total 13) | |
-|---|---|
-| Northern.tech | 9 (69.2%) |
-| RnDity | 2 (15.4%) |
-| KONCEPTO | 1 (7.7%) |
-| ajithpv@outlook.com | 1 (7.7%) |
-
-
-### Changelogs
-
-#### deployments (1.8.0b1)
-
-New changes in deployments since 1.7.1:
-
-* Fix "unexpected EOF" errors when the source of the artifact
-  is a slow network stream.
-* Fix spurious upload errors due to wrong EOF handling.
-* Fix inability to resume partial migration.
-
-#### deviceauth (2.1.0b1)
-
-New changes in deviceauth since 2.0.0:
-
-* Add support for default tenant token.
-  It can be used to allow devices that don't have a tenant token to be
-  allowed into a specific tenant's list of devices. Enable it either
-  using the `DEVICEAUTH_DEFAULT_TENANT_TOKEN` environment variable, or
-  the `default_tenant_token` setting in `config.yaml`.
-  ([MEN-2705](https://tracker.mender.io/browse/MEN-2705), [MEN-2706](https://tracker.mender.io/browse/MEN-2706))
-
-#### gui (2.2.0b1)
-
-New changes in gui since 2.1.0:
-
-* limited height of large select lists to prevent them from hiding input
-* ensured artifact & group sort order during deployment scheduling
-* added closed feature notifications to show in open source UI
-* Updated deployment creation UI to wizard for phased deployments
-
-#### integration (2.2.0b1)
-
-New changes in integration since 2.1.0:
-
-* remove default conductor config file
-* Fix error: `No such container: integration-2.1.0b1_mender-useradm_1`
-* Introduced `enterprise.yml` template in production
-  directory to install an Enterprise backend server.
-* The old `template` directory has been replaced with a
-  dedicated `production` directory, and templates are now provided as
-  single files with the `.template` suffix instead. These should be
-  copied to their non-`.template` location before being used. The `run`
-  script should no longer be copied, and if it already exists in the
-  `production` directory before merging this change, it should be
-  removed before attempting to merge or rebase.
-* The `prod.yml` file has been moved into a `config`
-  subfolder. Users with downstream repositories need to move their
-  `prod.yml` as well.
-* Enable tenantadm as an Enterprise release component.
-* Enable tenantadm as an Enterprise release component.
-* Fix issue when demo script exists abruptly on user request
-  for logs. The issue only showed up when the folder name contained "-"
-  or "." characters.
-* Upgrade deployments to 1.8.0b1.
-* Upgrade deployments-enterprise to 1.8.0b1.
-* Upgrade deviceauth to 2.1.0b1.
-* Upgrade gui to 2.2.0b1.
-* Upgrade mender to 2.1.1.
-* Upgrade mender-artifact to 3.2.0b1.
-* Upgrade mender-conductor to 1.5.0b1.
-* Upgrade mender-conductor-enterprise to 1.5.0b1.
-* Upgrade tenantadm to 1.0.0b1.
-* Upgrade useradm to 1.9.0b1.
-* Upgrade useradm-enterprise to 1.9.0b1.
-
-#### mender (2.1.1)
-
-New changes in mender since 2.1.0:
-
-* module/single-file: fix rollback state by correctly defining filename
-* Check for -f option in stat command
-* Set hard limit(10) for client update status report retries
-  This fixes an issue where the maxSendingAttemps in
-  updateReportRetry state could be set real high, since it is calculated
-  as UpdatePollIntervalSeconds / RetryPollIntervalSeconds. This adds a
-  hard upper limit of 10 retries for the client in any case.
-  ([MEN-2676](https://tracker.mender.io/browse/MEN-2676))
-
-#### mender-artifact (3.2.0b1)
-
-New changes in mender-artifact since 3.1.0:
-
-* 'mender-artifact cp' now requires '-' in order to read stdin
-  ([MEN-2745](https://tracker.mender.io/browse/MEN-2745))
-* Fix error where files larger than the buffer used by
-  io.Copy() was not buffered when mender-artifact cp read from stdin.
-  This means that now, ``` mender-artfact cp - mender.artifact:/in/img/path```
-  will successfully copy larger files.
-* fix erroneously report of "-dirty" in the version
-  string. ([MEN-2800](https://tracker.mender.io/browse/MEN-2800))
-* Fix build-contained Makefile: image was missing make install
-* Update the type-info documentation in the version 3 artifact format
-  This commit updates the description of the values allowed in the type-info
-  headers in the version 3 of the artifact format. Formerly only the key
-  `rootfs-image-checksum` was allowed, while now, any key is allowed, with
-  the only allowed value types being string, or array of strings.
-* Allow `--compression` to be specified after command.
-  This allows it to be appended to the command, which makes it usable
-  with `--` style arguments to Update Module Artifact generators.
-* Enable typeinfo artifact-depends/provides string and []string values
-  Previously the artifact-depends key in the type-info header was restricted
-  to contain a single key `rootfs-image-checksum`. This restriction has now
-  been lifted, and the key can now contain arbitrary string, and []string values.
-* Fix: mender-artifact modify did not clean up the
-  temp-files created
-  ([MEN-2758](https://tracker.mender.io/browse/MEN-2758))
-* Mender-Artifact format version 1 is hereby no longer supported,
-  and neither reading or writing the version 1 of the format is no longer
-  supported. Please move to using a newer version.
-  ([MEN-2156](https://tracker.mender.io/browse/MEN-2156))
-* mender-artifact will now fail to validate a signed Artifact
-  if no validation key is specified. No behaviour change for unsigned
-  Artifacts. ([MEN-2802](https://tracker.mender.io/browse/MEN-2802))
-
-#### mender-conductor (1.5.0b1)
-
-New changes in mender-conductor since 1.4.0:
-
-* update conductor from 2.2.0 to 2.11.0; fix configuration
-* startup script modified
-* copy default configuration into the image
-
-#### mender-conductor-enterprise (1.5.0b1)
-
-New changes in mender-conductor-enterprise since 1.4.0:
-
-* update task configs to work with conductor 2.11.0
-* fixing U+2014 'EM DASH' character
-  ([MC-1016](https://tracker.mender.io/browse/MC-1016))
 
 
 ## mender-convert 1.2.0
