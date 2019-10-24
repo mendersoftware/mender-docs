@@ -12,17 +12,17 @@ according to your host platform:
 <!--AUTOVERSION: "mender-artifact %"/mender-artifact -->
 | Platform | Download link                                                |
 |----------|--------------------------------------------------------------|
-| Linux    | [mender-artifact 3.2.0b1][x.x.x_mender-artifact-linux]     |
-| Mac OS X | [mender-artifact 3.2.0b1][x.x.x_mender-artifact-darwin] |
+| Linux    | [mender-artifact 3.2.0][x.x.x_mender-artifact-linux]     |
+| Mac OS X | [mender-artifact 3.2.0][x.x.x_mender-artifact-darwin] |
 
 Remember to add execute permission (e.g. with `chmod +x mender-artifact`).
 
 !!! If you need to build `mender-artifact` from source, please see [Compiling mender-artifact](../artifacts/modifying-a-mender-artifact#compiling-mender-artifact).
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-linux]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/3.2.0b1/linux/mender-artifact
+[x.x.x_mender-artifact-linux]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/3.2.0/linux/mender-artifact
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-darwin]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/3.2.0b1/darwin/mender-artifact
+[x.x.x_mender-artifact-darwin]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/3.2.0/darwin/mender-artifact
 
 
 ## Mender client

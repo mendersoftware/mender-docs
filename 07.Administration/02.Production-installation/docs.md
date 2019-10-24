@@ -93,7 +93,7 @@ named `mender-server`:
 
 <!--AUTOVERSION: "-b %"/integration -->
 ```bash
-git clone -b 2.2.0b1 https://github.com/mendersoftware/integration mender-server
+git clone -b 2.2.0 https://github.com/mendersoftware/integration mender-server
 ```
 
 > ```
@@ -599,7 +599,7 @@ At this point your commit history should look as follows:
 <!--AUTOVERSION: "git log --oneline %..HEAD"/integration -->
 <!--AUTOMATION: ignore -->
 ```bash
-git log --oneline 2.2.0b1..HEAD
+git log --oneline 2.2.0..HEAD
 ```
 > ```
 > 7a4de3c production: configuration
@@ -694,14 +694,6 @@ cp config/enterprise.yml.template config/enterprise.yml
 ```
 
 Creating the `enterprise.yml` file enables the Enterprise Mender server.
-
-The following configuration is required to be run during the beta period:
-
-```bash
-echo "$(awk -v line='            HAVE_ENTERPRISE: 1' '/HAVE_MULTITENANT/ { printf "%s\n%s\n", $0, line; next }; 1' ../docker-compose.enterprise.yml)" > ../docker-compose.enterprise.yml
-```
-
-This is necessary to allow you to access the Enterprise features from the GUI.
 
 ### Bring up the Enterprise server
 
@@ -845,7 +837,7 @@ At this point your commit history should look as follows:
 <!--AUTOVERSION: "git log --oneline %..HEAD"/integration -->
 <!--AUTOMATION: ignore -->
 ```bash
-git log --oneline 2.2.0b1..HEAD
+git log --oneline 2.2.0..HEAD
 ```
 > ```
 > 76b3d00 production: Enterprise configuration

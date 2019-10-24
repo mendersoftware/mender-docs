@@ -14,9 +14,9 @@ script:
   - ./test_autoversion.py
   - ./autoversion.py --check
   - env TEST_OPEN_SOURCE=1 ./test_docs.py 07.Administration/02.Production-installation/docs.md
-  - if [ -n "$DOCKER_PASSWORD" ]; then docker login -u menderbuildsystem -p "$DOCKER_PASSWORD"; fi
-  - if [ -n "$DOCKER_PASSWORD" ]; then env TEST_ENTERPRISE=1 ./test_docs.py 07.Administration/02.Production-installation/docs.md; fi
-  - if [ -n "$DOCKER_PASSWORD" ]; then env TEST_ENTERPRISE=1 ./test_docs.py 07.Administration/02.Production-installation/01.Upgrading-from-OS-to-Enterprise/docs.md; fi
+  - if [ -n "$REGISTRY_MENDER_IO_PASSWORD" ]; then docker login -u ntadm_menderci -p "$REGISTRY_MENDER_IO_PASSWORD" registry.mender.io; fi
+  - if [ -n "$REGISTRY_MENDER_IO_PASSWORD" ]; then env TEST_ENTERPRISE=1 ./test_docs.py 07.Administration/02.Production-installation/docs.md; fi
+  - if [ -n "$REGISTRY_MENDER_IO_PASSWORD" ]; then env TEST_ENTERPRISE=1 ./test_docs.py 07.Administration/02.Production-installation/01.Upgrading-from-OS-to-Enterprise/docs.md; fi
 
 after_success:
   # on merge, first deploy to staging, wait 5 minutes, and deploy to production:
