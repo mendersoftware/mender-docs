@@ -4,6 +4,57 @@ taxonomy:
     category: docs
 ---
 
+## mender-convert 1.2.1
+
+_Released 10.24.2019_
+
+### Statistics
+
+A total of 27 lines added, 18 removed (delta 9)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 2 (40.0%) |
+| Mirza Krak | 2 (40.0%) |
+| Simon Guigui | 1 (20.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 13 (46.4%) |
+| Simon Guigui | 13 (46.4%) |
+| Mirza Krak | 2 (7.1%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Simon Guigui | 1 (5.6%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 4 (80.0%) |
+| fyhertz@gmail.com | 1 (20.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 15 (53.6%) |
+| fyhertz@gmail.com | 13 (46.4%) |
+
+| Employers with the most hackers (total 3) | |
+|---|---|
+| Northern.tech | 2 (66.7%) |
+| fyhertz@gmail.com | 1 (33.3%) |
+
+### Changelogs
+
+#### mender-convert (1.2.1)
+
+New changes in mender-convert since 1.2.0:
+
+* Fix "yellow" HDMI output on Raspbian Buster
+  ([MEN-2685](https://tracker.mender.io/browse/MEN-2685))
+* Upgrade client and mender-artifact to 2.1.1 and 3.2.0, respectively.
+* Fix some race conditions when running multiple instances of mender-convert in parallel
+
+
 ## meta-mender warrior-v2019.10.2
 
 _Released 10.23.2019_
