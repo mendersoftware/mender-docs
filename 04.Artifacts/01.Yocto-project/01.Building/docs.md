@@ -9,7 +9,7 @@ The build output will most notably include:
 * a disk image that can be flashed to the device storage during initial provisioning
 * an Artifact containing rootfs filesystem image file that Mender can deploy to your provisioned device, it has suffix `.mender`
 
-!!! If you do not want to build your own images for testing purposes, the [Getting started](../../../getting-started) tutorials provide links to several [demo images](../../../getting-started/download-test-images).
+!!! If you do not want to build your own images for testing purposes, the [Getting started](../../../getting-started) tutorials provide links to several [demo images](../../../getting-started/on-premise-installation/download-test-images).
 
 ## What is *meta-mender*?
 
@@ -116,7 +116,7 @@ ARTIFACTIMG_FSTYPE = "ext4"
 
 # Build for Mender demo server
 #
-# https://docs.mender.io/getting-started/create-a-test-environment
+# https://docs.mender.io/getting-started/on-premise-installation/create-a-test-environment
 #
 # Uncomment below and update IP address to match the machine running the
 # Mender demo server
@@ -238,7 +238,7 @@ ARTIFACTIMG_FSTYPE = "ext4"
 
 # Build for Mender demo server
 #
-# https://docs.mender.io/getting-started/create-a-test-environment
+# https://docs.mender.io/getting-started/on-premise-installation/create-a-test-environment
 #
 # Uncomment below and update IP address to match the machine running the
 # Mender demo server
