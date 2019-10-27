@@ -4,19 +4,6 @@ taxonomy:
     category: docs
 ---
 
-Mender is an open source remote software updater for embedded Linux devices.
-It enables management of software updates to connected devices remotely over any TCP/IP network.
-For a high-level introduction to Mender and its architecture, we recommend reading the [What is Mender page on Mender.io](https://mender.io/what-is-mender?target=_blank).
-
-This section of the documentation contains tutorials to help you deploy your first update with Mender.
-
-!!! Going from a fresh system to completing your first deployment with Mender, including server setup, should take **less than 30 minutes**!
-
-! Do not follow this getting started documentation if you are using [Hosted Mender](https://hosted.mender.io?target=_blank). Instead, follow the instructions you received in the welcome email when you signed up to Hosted Mender.
-
-
-## Demo server requirements
-
 For quickly testing the Mender server, we have created a demo version that
 does not take into account production-grade issues like security and scalability.
 When you are ready to install for production, please follow

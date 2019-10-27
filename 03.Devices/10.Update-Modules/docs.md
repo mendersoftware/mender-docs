@@ -43,7 +43,7 @@ Refer to [further reading](#further-reading) for more details.
 
 You will need a Mender server if you are using [managed mode](../../architecture/overview#modes-of-operation).
 
-For easy setup, use [Hosted Mender](https://hosted.mender.io?target=_blank) or the [on-premise demo server](../../getting-started/create-a-test-environment).
+For easy setup, use [Hosted Mender](https://hosted.mender.io?target=_blank) or the [on-premise demo server](../../getting-started/on-premise-installation).
 
 ### Device with Mender client
 
