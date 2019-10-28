@@ -9,7 +9,7 @@ taxonomy:
 
 ## Bring up the environment with Docker Compose
 
-! Make sure you satisfy the [server requirements](../requirements#demo-server-requirements) before proceeding.
+! Make sure you satisfy the [server requirements](../../requirements#demo-server-requirements) before proceeding.
 
 In a working directory, download the Mender integration
 environment:
