@@ -11,7 +11,7 @@ taxonomy:
 <!-- AUTOMATION: execute=ORIG_DIR=$PWD; function cleanup() { set +e; cd $ORIG_DIR/mender-server/production; ./run down -v; docker volume rm mender-artifacts mender-db mender-elasticsearch-db mender-redis-db; cd $ORIG_DIR; rm -rf mender-server; } -->
 <!-- AUTOMATION: execute=trap cleanup EXIT -->
 
-!!! You can save time by using [Hosted Mender](https://mender.io/signup?target=_blank); a secure Mender server ready to use, maintained by the Mender developers.
+!!! You can save time by using [Mender Professional](https://mender.io/products/mender-professional?target=_blank); a secure Mender server ready to use, maintained by the Mender developers.
 
 This is a step by step guide for deploying the Mender Server for production
 environments, and will cover relevant security and reliability aspects of Mender

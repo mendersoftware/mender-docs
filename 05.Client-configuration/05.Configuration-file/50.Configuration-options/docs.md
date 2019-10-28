@@ -149,7 +149,7 @@ See also the section about [state scripts](../../../artifacts/state-scripts).
 #### TenantToken
 
 A token which identifies which tenant a device belongs to. This is only relevant
-if using Hosted Mender.
+if using Mender Professional.
 
 #### UpdateLogPath
 
