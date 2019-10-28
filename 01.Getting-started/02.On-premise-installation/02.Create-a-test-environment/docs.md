@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-! Following this tutorial will create a demo installation of the Mender, appropriate for testing and experimenting. When you are ready to install for production, please follow the [Production installation documentation](../../administration/production-installation).
+! Following this tutorial will create a demo installation of the Mender, appropriate for testing and experimenting. When you are ready to install for production, please follow the [Production installation documentation](../../../administration/production-installation).
 
 
 ## Bring up the environment with Docker Compose

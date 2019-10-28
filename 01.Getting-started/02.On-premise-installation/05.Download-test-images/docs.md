@@ -4,11 +4,11 @@ taxonomy:
     category: docs
 ---
 
-For partial updates such as application updates, you can [install Mender on your device as a .deb package](../../client-configuration/installing#install-mender-provided-debian-package). This is the quickest and easiest way to get started with Mender.
+For partial updates such as application updates, you can [install Mender on your device as a .deb package](../../../client-configuration/installing#install-mender-provided-debian-package). This is the quickest and easiest way to get started with Mender.
 
 Pre-built demo images for a set of reference boards are provided below, so you do not have to integrate devices nor build images in order to test Mender.
 
-!!! Steps to build Artifacts for other device types and with custom software are provided at [Building a Mender Yocto Project image](../../artifacts/yocto-project/building), however we recommend using the demo images first.
+!!! Steps to build Artifacts for other device types and with custom software are provided at [Building a Mender Yocto Project image](../../../artifacts/yocto-project/building), however we recommend using the demo images first.
 
 ! Do not use these images if you are using [Mender Professional](https://mender.io/products/mender-professional?target=_blank). Instead, use the images customized for your account from [the Help section](https://hosted.mender.io/ui/#/help/connecting-devices/demo-artifacts?target=_blank).
 
