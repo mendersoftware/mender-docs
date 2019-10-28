@@ -27,14 +27,14 @@ a SD card to store the OS, so you will need one SD card
 
 Get the disk image and Artifacts for your board(s) from [Download demo images](../download-test-images).
 
-!!! It is possible to use this tutorial with _any_ physical board, as long as you have integrated Mender with it. In this case you cannot use the demo Artifacts we provide in this tutorial, but you need to build your own artifacts as described in [Building a Mender Yocto Project image](../../artifacts/yocto-project/building).
+!!! It is possible to use this tutorial with _any_ physical board, as long as you have integrated Mender with it. In this case you cannot use the demo Artifacts we provide in this tutorial, but you need to build your own artifacts as described in [Building a Mender Yocto Project image](../../../artifacts/yocto-project/building).
 
 ### Mender-Artifact tool
 
 Download the prebuilt `mender-artifact` binary for your platform following the links
 in [Downloads section](../../downloads#mender-artifact-tool).
 
-Please see [Modifying a Mender Artifact](../../artifacts/modifying-a-mender-artifact)
+Please see [Modifying a Mender Artifact](../../../artifacts/modifying-a-mender-artifact)
 for a more detailed overview.
 
 ### Network connectivity
@@ -72,7 +72,7 @@ You can decompress it like the following:
 gunzip <PATH-TO-YOUR-DISK-IMAGE>.sdimg.gz
 ```
 
-!!! Mender allocates space in the disk image so that your root file system is allowed to grow over time. If you are building your own disk image by following [Building a Mender Yocto Project image](../../artifacts/yocto-project/building), you can configure the desired space usage with the Yocto Project variable [MENDER_STORAGE_TOTAL_SIZE_MB](../../artifacts/yocto-project/variables#mender_storage_total_size_mb).
+!!! Mender allocates space in the disk image so that your root file system is allowed to grow over time. If you are building your own disk image by following [Building a Mender Yocto Project image](../../../artifacts/yocto-project/building), you can configure the desired space usage with the Yocto Project variable [MENDER_STORAGE_TOTAL_SIZE_MB](../../artifacts/yocto-project/variables#mender_storage_total_size_mb).
 
 We need to change some configuration settings in this image so that
 the Mender client successfully connects to your Mender
@@ -147,7 +147,7 @@ should have your wpa configuration set up correctly on start up.
 
 ## Write the disk image to the SD card
 
-Please see [Write the disk image to the SD card](../../artifacts/provisioning-a-new-device#write-the-disk-image-to-the-sd-card)
+Please see [Write the disk image to the SD card](../../../artifacts/provisioning-a-new-device#write-the-disk-image-to-the-sd-card)
 for steps how to provision the device disk using the `*.sdimg`
 image you downloaded and modified above.
 
@@ -174,12 +174,12 @@ Now **connect the device to power**.
 ## See the device in the Mender UI
 
 If you refresh the Mender server UI (by default found at [https://localhost/](https://localhost/?target=_blank)),
-you should see one or more devices pending authorization. If you do not see your device listed in the UI, please review [troubleshooting steps.](../../troubleshooting/device-runtime#mender-server-connection-issues)
+you should see one or more devices pending authorization. If you do not see your device listed in the UI, please review [troubleshooting steps.](../../../troubleshooting/device-runtime#mender-server-connection-issues)
 
 Once you **authorize** these devices, Mender will auto-discover
 inventory about the devices, including the device type (e.g. beaglebone)
 and the IP addresses, as shown in the example with a BeagleBone Black below.
-Which information is collected about devices is fully configurable; see the documentation on [Identity](../../client-configuration/identity) and [Inventory](../../client-configuration/inventory) for more information.
+Which information is collected about devices is fully configurable; see the documentation on [Identity](../../../client-configuration/identity) and [Inventory](../../../client-configuration/inventory) for more information.
 
 ![Mender UI - Device information for BeagleBone Black](device_information_bbb.png)
 
@@ -192,7 +192,7 @@ Which information is collected about devices is fully configurable; see the docu
 In order to deploy an update, we need a Mender Artifact to update to.
 A Mender Artifact is a file format that includes metadata like the
 checksum and name, as well as the actual root file system that is
-deployed. See [Mender Artifacts](../../architecture/mender-artifacts) for
+deployed. See [Mender Artifacts](../../../architecture/mender-artifacts) for
 a complete description of this format.
 
 Locate the `release_1` demo Artifact file (`.mender`) for your device that you [downloaded earlier](../download-test-images).

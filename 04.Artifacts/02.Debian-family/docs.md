@@ -121,7 +121,7 @@ RAW_DISK_IMAGE="input/golden-image-1.img"
 
 ARTIFACT_NAME="golden-image-1-mender-integ"
 MENDER_DISK_IMAGE="golden-image-1-mender-integ.sdimg"
-TENANT_TOKEN="<INSERT-TOKEN-FROM Hosted Mender>"
+TENANT_TOKEN="<INSERT-TOKEN-FROM hosted Mender>"
 
 ./docker-mender-convert from-raw-disk-image                      \
             --raw-disk-image $RAW_DISK_IMAGE                     \
