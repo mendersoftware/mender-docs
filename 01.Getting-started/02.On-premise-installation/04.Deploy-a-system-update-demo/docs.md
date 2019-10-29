@@ -32,7 +32,7 @@ Get the disk image and Artifacts for your board(s) from [Download demo images](.
 ### Mender-Artifact tool
 
 Download the prebuilt `mender-artifact` binary for your platform following the links
-in [Downloads section](../../downloads#mender-artifact-tool).
+in [Downloads section](../../../downloads#mender-artifact-tool).
 
 Please see [Modifying a Mender Artifact](../../../artifacts/modifying-a-mender-artifact)
 for a more detailed overview.
@@ -72,7 +72,7 @@ You can decompress it like the following:
 gunzip <PATH-TO-YOUR-DISK-IMAGE>.sdimg.gz
 ```
 
-!!! Mender allocates space in the disk image so that your root file system is allowed to grow over time. If you are building your own disk image by following [Building a Mender Yocto Project image](../../../artifacts/yocto-project/building), you can configure the desired space usage with the Yocto Project variable [MENDER_STORAGE_TOTAL_SIZE_MB](../../artifacts/yocto-project/variables#mender_storage_total_size_mb).
+!!! Mender allocates space in the disk image so that your root file system is allowed to grow over time. If you are building your own disk image by following [Building a Mender Yocto Project image](../../../artifacts/yocto-project/building), you can configure the desired space usage with the Yocto Project variable [MENDER_STORAGE_TOTAL_SIZE_MB](../../../artifacts/yocto-project/variables#mender_storage_total_size_mb).
 
 We need to change some configuration settings in this image so that
 the Mender client successfully connects to your Mender
@@ -299,6 +299,6 @@ network with different names, you can deploy updates back and forth between them
 
 Now that you have seen how Mender works with a reference board, you might be wondering what it would take to port it to your own board.
 
-To get support for robust system updates with rollback, Mender must be [integrated with production boards](../../devices).
+To get support for robust system updates with rollback, Mender must be [integrated with production boards](../../../devices).
 
-On the other hand, if you only need support for application updates (not full system updates), no board integration is required. In this case you can install Mender on an existing device and OS by following the documentation on [installing the Mender client](../../client-configuration/installing).
+On the other hand, if you only need support for application updates (not full system updates), no board integration is required. In this case you can install Mender on an existing device and OS by following the documentation on [installing the Mender client](../../../client-configuration/installing).
