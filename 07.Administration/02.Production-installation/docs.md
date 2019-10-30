@@ -455,7 +455,7 @@ and `MINIO_SECRET_KEY`, respectively.
 sed -i "s/DEPLOYMENTS_AWS_AUTH_KEY:.*/DEPLOYMENTS_AWS_AUTH_KEY: mender-deployments/g" config/prod.yml
 sed -i "s/DEPLOYMENTS_AWS_AUTH_SECRET:.*/DEPLOYMENTS_AWS_AUTH_SECRET: $MINIO_SECRET_KEY_GENERATED/g" config/prod.yml
 ```
-Also, run the following commmand so `DEPLOYMENTS_AWS_URI` points to your Storage proxy (including the right port, 9000 by default):
+Also, run the following command so `DEPLOYMENTS_AWS_URI` points to your Storage proxy (including the right port, 9000 by default):
 
 <!--AUTOMATION: ignore -->
 ```bash

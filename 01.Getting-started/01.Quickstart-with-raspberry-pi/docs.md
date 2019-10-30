@@ -13,7 +13,7 @@ To follow this guide, you will need the following:
 * A [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b?target=_blank) or [B+](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus?target=_blank), or a [Raspberry Pi 4 Model B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b?target=_blank).
 * An 8 GB or larger microSD card.
 * A Raspberry Pi [universal power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply?target=_blank) or a micro USB cable.
-* An ethernet cable for wired connectivity to the internet (optional).
+* An Ethernet cable for wired connectivity to the internet (optional).
 * A Mender Professional account to access the hosted server.
 
 ### Get a Mender Professional account
@@ -31,11 +31,11 @@ Make sure your Raspberry Pi has Raspbian OS installed.
 * Download Raspbian OS image from [here](https://www.raspberrypi.org/downloads/raspbian?target=_blank).
 * [Follow their steps](https://www.raspberrypi.org/documentation/installation/installing-images?target=_blank) to install the OS image to your device and [enable SSH](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) on your board. This should take less than 15 minutes.
 
-Let’s get you on your way to your first deployment in as easy as 5 short steps:
+Let's get you on your way to your first deployment in as easy as 5 short steps:
 
 ### Step 1 - SSH into your Raspberry Pi device 
 
-SSH to access the device and check the latest release of Raspbian OS you’ve installed in the pre-work section as a checkpoint:
+SSH to access the device and check the latest release of Raspbian OS you've installed in the pre-work section as a checkpoint:
 
 ```
 pi@raspberrypi:~ $ cat /etc/os-release
@@ -47,23 +47,23 @@ Login to your [Mender Professional account](https://hosted.mender.io/ui/#/login?
 
 Go to the DASHBOARD tab and click on CONNECT A DEVICE. Then Click on CONNECT MY OWN DEVICE, select your Raspberry Pi model and click NEXT. 
 
-![image alt text](image_0.png)
+![connecting a device](image_0.png)
 
 ### Step 3 - Install Mender client on your device 
 
 Now the next step is to install the Mender client on your device so that it can talk to the Mender server (hosted version). 
 
-You will need to copy and paste the code from the clipboard into your command line prompt of your environment after you’ve accessed the device (step 1). This downloads the Mender client on the device, sets the configuration and starts the client.
+You will need to copy and paste the code from the clipboard into your command line prompt of your environment after you've accessed the device (step 1). This downloads the Mender client on the device, sets the configuration and starts the client.
 
 Once the client has started, your device will attempt to connect to the server. It will then appear in your Pending devices tab. Go ahead and Accept the pending device. After accepting the device, it will appear on the Devices group tab on the left of Pending. 
 
-![image alt text](image_1.png)
+![accepting the device](image_1.png)
 
 ### Step 4 - Upload Mender Artifact file
 
 New users will get a mender-demo artifact containing a mini web app when they sign up for the first time. 
 
-If you don’t see the demo artifact you can download it manually here:
+If you don't see the demo artifact you can download it manually here:
 
 ```
 wget https://dgsbl4vditpls.cloudfront.net/mender-demo-artifact.mender
@@ -72,19 +72,19 @@ wget https://dgsbl4vditpls.cloudfront.net/mender-demo-artifact.mender
 
 After downloading the `mender-demo-artifact.mender` file, you will need to upload it to the RELEASES tab by dragging and dropping or by browsing to the location of the file in the top right corner. 
 
-![image alt text](image_2.png)
+![upload artifact file](image_2.png)
 
 ### Step 5 - Create a Deployment 
 
 You can either create a deployment in the RELEASES tab or go to the DEPLOYMENTS tab to do your OTA update. We will go to the DEPLOYMENTS tab and select the target release Artifact file we uploaded in step 4 and click CREATE DEPLOYMENT. After a few seconds you see your finished update in the Finished tab. 
 
-![image alt text](image_3.png)
+![create a deployment](image_3.png)
 
 **Congratulations!** You have successfully deployed your simple web application using Mender. You should see the below images. 
 
-![image alt text](image_4.png)
+![congratulations server](image_4.png)
 
-![image alt text](image_5.png)
+![congratulations device](image_5.png)
 
 ## Running Mender on-premise
 
@@ -107,7 +107,7 @@ And finally fire up the demo server environment with:
 
 Note that the demo up script starts the Mender services, adds a demo user with the username mender-demo@example.com, and assigns a random password in which you can change after you log in to the Mender web UI. The Mender UI can be found on [https://localhost](https://localhost?target=_blank).
 
-After you log into the UI on the ‘localhost’ you can follow steps 1 through 5 listed above. 
+After you log into the UI on the localhost you can follow steps 1 through 5 listed above. 
 
 ## Have any questions? 
 
