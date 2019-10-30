@@ -4,6 +4,50 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender warrior-v2019.11
+
+_Released 10.30.2019_
+
+### Statistics
+
+A total of 11 lines added, 4 removed (delta 7)
+
+| Developers with the most changesets | |
+|---|---|
+| Benjamin Byholm | 1 (33.3%) |
+| Lluis Campos | 1 (33.3%) |
+| Alf-Rune Siqveland | 1 (33.3%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 6 (54.5%) |
+| Alf-Rune Siqveland | 4 (36.4%) |
+| Benjamin Byholm | 1 (9.1%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 2 (66.7%) |
+| walkbase | 1 (33.3%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 10 (90.9%) |
+| walkbase | 1 (9.1%) |
+
+| Employers with the most hackers (total 3) | |
+|---|---|
+| Northern.tech | 2 (66.7%) |
+| walkbase | 1 (33.3%) |
+
+### Changelogs
+
+#### meta-mender (warrior-v2019.11)
+
+New changes in meta-mender since warrior-v2019.10.2:
+
+* mender-setup: do not add systemd options to fstab without mender-systemd
+
+
 ## mender-convert 1.2.1
 
 _Released 10.24.2019_
