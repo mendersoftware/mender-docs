@@ -153,6 +153,7 @@ Ashworth
 asn
 ast
 astw
+Asus
 async
 asynckit
 atob
@@ -838,6 +839,7 @@ Froidure
 fromCodePoint
 fromentries
 fromEntries
+FRONTEND
 fs
 fsck
 fsevents
@@ -1545,6 +1547,7 @@ nodejs
 noK
 nokP
 NONINFRINGEMENT
+noninteractive
 NoNodeAvailableException
 Noordhuis
 noout
