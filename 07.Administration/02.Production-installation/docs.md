@@ -403,6 +403,8 @@ Secret Access Key respectively.
 
 First, generate a secret key for Minio with the `pwgen` utility:
 
+!!! On the Debian family of distributions you can install `pwgen` with `apt-get install pwgen`.
+
 ```bash
 MINIO_SECRET_KEY_GENERATED=$(pwgen 16 1) && echo $MINIO_SECRET_KEY_GENERATED
 ```
@@ -444,7 +446,7 @@ The updated entry should look similar to this, you can verify with `git diff`:
 The deployments service will upload artifact objects to `minio` storage via `storage-proxy`,
 see the [administration overview](../overview) for more details. For this reason,
 access credentials `DEPLOYMENTS_AWS_AUTH_KEY` and `DEPLOYMENTS_AWS_AUTH_SECRET`
-need to be updated and `DEPLOYMENTS_AWS_URI` must point to the domain name of your Storage proxy. 
+need to be updated and `DEPLOYMENTS_AWS_URI` must point to the domain name of your Storage proxy.
 
 Run the following commands to set `DEPLOYMENTS_AWS_AUTH_KEY` and
 `DEPLOYMENTS_AWS_AUTH_SECRET` to the values of `MINIO_ACCESS_KEY`
