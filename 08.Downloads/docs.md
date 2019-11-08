@@ -42,3 +42,21 @@ Ubuntu or Raspbian. We provide packages for the following architectures:
 [mender-client_x.x.x-1_arm64.deb]: https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/arm64/mender-client_master-1_arm64.deb
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_amd64.deb"/mender -->
 [mender-client_x.x.x-1_amd64.deb]: https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/amd64/mender-client_master-1_amd64.deb
+
+## Mender CLI
+
+To download `mender-cli`, follow the correct link according to your host
+platform:
+
+<!--AUTOVERSION: "mender-cli %"/mender-cli -->
+| Platform | Download link                                                |
+|----------|--------------------------------------------------------------|
+| Linux    | [mender-cli master][x.x.x_mender-cli-linux]                  |
+| Mac OS X | [mender-cli master][x.x.x_mender-cli-darwin]                 |
+
+Remember to add execute permission (e.g. with `chmod +x mender-cli`).
+
+<!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
+[x.x.x_mender-cli-linux]: https://d1b0l86ne08fsf.cloudfront.net/mender-cli/master/linux/mender-cli
+<!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
+[x.x.x_mender-cli-darwin]: https://d1b0l86ne08fsf.cloudfront.net/mender-cli/master/darwin/mender-cli
