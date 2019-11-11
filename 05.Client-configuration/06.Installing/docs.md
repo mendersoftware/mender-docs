@@ -17,8 +17,9 @@ It is possible to install the Mender client from source by following the guideli
 
 A Debian package (`.deb`) is provided for convenience to install on e.g Debian, Ubuntu or Raspbian. We provide packages for the following architectures:
 
-- armhf (ARM-v6)
-    - Raspberry Pi, BeagleBone and other ARM based devices.
+- armhf (ARM-v6): ARM 32bit distributions, for example Raspbian for Raspberry Pi or Debian for BeagleBone.
+- arm64: (ARM-v8): ARM 64bit processors, for example Debian for Asus Tinker Board
+- amd64: Generic 64-bit x86 processors, the most popular among workstations
 
 Download the package:
 
@@ -27,82 +28,84 @@ Download the package:
 wget https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
 ```
 
-Install the package:
+!!!Note that the above link is for armhf devices. Adjust the url for your architecture accordingly
+
+The Mender package comes with a wizard that will let you easily configure and
+customize your installation. To install and configure Mender run the following
+command:
 
 <!--AUTOVERSION: "mender-client_%-1_armhf.deb"/mender -->
 ```bash
 sudo dpkg -i mender-client_master-1_armhf.deb
 ```
 
-### Setup
+After the installation wizard is completed, Mender is correctly setup on your
+device and will automatically start in [managed
+mode](../../architecture/overview#modes-of-operation). Your device is now ready
+to authenticate with the server and start receiving updates.
 
-After successfully installing the Mender client Debian package, some initial setup is required.
+## Unattended installation
 
-#### Mender configuration file
+Alternatively to the above method, the package can be installed in a
+non-interactive way, suitable for scripts or other situations where no user
+input is desired.
 
-First, we have to configure the Mender client using the configuration file at `/etc/mender/mender.conf`.
+Here are presented three common use cases as examples, use `mender setup --help`
+to learn about all configuration options. Use the below scripts to download and
+setup the Mender client on different scenarios.
 
-##### Use demo settings (optional)
+- Connecting to Mender Professional with demo settings
 
-By default Mender uses production-grade configuration settings. However, if this is a test or development device,
-it is recommended to use the demo settings to get shorter polling intervals.
-
-Copy the demo configuration file:
-
+<!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
 ```bash
-sudo cp /etc/mender/mender.conf.demo /etc/mender/mender.conf
+DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
+TENANT_TOKEN="<INSERT YOUR TOKEN FROM https://hosted.mender.io/ui/#/settings/my-organization>"
+wget https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
+sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_master-1_armhf.deb
+sudo mender setup \
+            --device-type $DEVICE_TYPE \
+            --mender-professional \
+            --tenant-token $TENANT_TOKEN \
+            --retry-poll 30 \
+            --update-poll 5 \
+            --inventory-poll 5
+sudo systemctl restart mender-client
 ```
 
-##### Configuration for Mender Professional server
+- Connecting to a demo server with demo settings
 
-To configure the Mender client for Mender Professional, you need to edit `/etc/mender/mender.conf` and insert your Tenant Token
-where it says "Paste your hosted Mender token here".
-
-Set the `TENANT_TOKEN` variable:
-
+<!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
 ```bash
-TENANT_TOKEN="<INSERT YOURS FROM https://hosted.mender.io/ui/#/settings/my-organization>"
+DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
+SERVER_IP_ADDR="<INSERT THE IP ADDRESS OF YOUR DEMO SERVER>"
+wget https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
+sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_master-1_armhf.deb
+sudo mender setup \
+            --device-type $DEVICE_TYPE \
+            --demo \
+            --server-ip $SERVER_IP_ADDR
+sudo systemctl restart mender-client
 ```
 
-Update configuration file with your token:
+- Connecting to an Enterprise server
 
+<!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
 ```bash
-sudo sed -i "s/Paste your hosted Mender token here/$TENANT_TOKEN/" /etc/mender/mender.conf
+DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
+SERVER_URL="<INSERT YOUR ENTERPRISE SERVER URL>"
+TENANT_TOKEN="<INSERT YOUR TOKEN FROM YOUR ENTERPRISE SERVER>"
+wget https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
+sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_master-1_armhf.deb
+sudo mender setup \
+            --device-type $DEVICE_TYPE \
+            --server-url $SERVER_URL \
+            --server-cert="" \
+            --tenant-token $TENANT_TOKEN \
+            --retry-poll 30 \
+            --update-poll 5 \
+            --inventory-poll 5
+sudo systemctl restart mender-client
 ```
-
-#### Device type
-
-The device type is a string that defines your device and is used to ensure software compatibility by comparing the device type set in a [Mender Artifact](../../architecture/mender-artifacts) with the string on the device.
-
-In below example we will set the device type to `raspberrypi3`, adjust according to your desired device type identifier.
-
-Create Mender client state directory:
-
-```bash
-sudo mkdir -p /var/lib/mender
-```
-
-Create the device type file:
-
-```bash
-echo "device_type=raspberrypi3" | sudo tee /var/lib/mender/device_type
-```
-
-#### Start up
-
-Now you have the Mender client installed and properly setup in your device.
-
-Start the Mender client in [managed mode](../../architecture/overview#modes-of-operation) and enable autostart of the Mender service on subsequent boots:
-
-```bash
-sudo systemctl enable mender && sudo systemctl restart mender
-```
-
-After a few minutes, take a look at the Devices tab in your Mender server. You should see your new device under "Pending".
-Click "Accept" to authorize it to join your Mender server. You are now ready to deploy updates to your device!
-
-!!! If your device does not show up, follow the [troubleshooting section on Mender Server Connection Issues](../../troubleshooting/device-runtime#mender-server-connection-issues).
-
 
 ## Additional information
 
