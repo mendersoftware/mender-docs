@@ -4,17 +4,19 @@ taxonomy:
     category: docs
 ---
 
-Quickly and easily deploy your first over-the-air (OTA) software update with Mender using a secure server we host for you. We will take you through installing Mender and deploying a simple* application* *update* on your Raspberry Pi and Raspbian OS.
+Quickly and easily deploy your first over-the-air (OTA) software update with Mender using a secure server we host for you. We will take you through installing Mender on your device and deploying a simple *application update* on your Raspberry Pi and Raspbian OS.
 
-## What you will need
+
+## Prerequisites
 
 To follow this guide, you will need the following:
 
 * A [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b?target=_blank) or [B+](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus?target=_blank), or a [Raspberry Pi 4 Model B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b?target=_blank).
 * An 8 GB or larger microSD card.
 * A Raspberry Pi [universal power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply?target=_blank) or a micro USB cable.
-* An Ethernet cable for wired connectivity to the internet (optional).
+* Internet connectivity for your Raspberry Pi (either Ethernet or wifi configured)
 * A Mender Professional account to access the hosted server.
+
 
 ### Get a Mender Professional account
 
@@ -24,14 +26,16 @@ Get a Mender account by [signing up here](https://mender.io/signup?target=_blank
 
 You can also try it on-premise, but it requires more effort getting setup. See the [on-premise instructions below](#running-mender-on-premise).
 
-### Prep your device
+
+### Prepare your device
 
 Make sure your Raspberry Pi has Raspbian OS installed. 
 
 * Download Raspbian OS image from [here](https://www.raspberrypi.org/downloads/raspbian?target=_blank).
-* [Follow their steps](https://www.raspberrypi.org/documentation/installation/installing-images?target=_blank) to install the OS image to your device and [enable SSH](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md?target=_blank) on your board. This should take less than 15 minutes.
+* [Follow their steps](https://www.raspberrypi.org/documentation/installation/installing-images?target=_blank) to install the OS image to your device and [enable SSH](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md?target=_blank) on your device. This should take less than 15 minutes.
 
-Let's get you on your way to your first deployment in as easy as 5 short steps:
+Your first deployment is easy with 5 short steps:
+
 
 ### Step 1 - SSH into your Raspberry Pi device 
 
@@ -40,6 +44,8 @@ SSH into your device:
 ```bash
 ssh pi@<DEVICE-IP-ADDRESS>
 ```
+
+The default password for the pi account is `raspberry`.
 
 You should now see a command prompt similar to the following:
 
@@ -54,20 +60,20 @@ Keep this terminal open as we will shortly use it to install the Mender client.
 
 Login to your [Mender Professional account](https://hosted.mender.io/ui/#/login?target=_blank), and when on the main page for the first time new users will get a tutorial in the Mender web GUI.
 
-Go to the **Dashboard** tab and click on **Connect a device**. Then Click on **Connect my own device**. Select your Raspberry Pi model and click **Next**. You should see a screen similar to the below.
+Go to the **Dashboard** tab and click on **Connect a device**. Then Click on **Connect my own device**. Select your Raspberry Pi model and click **Next**. You should see a screen similar to the below. Keep this open as we will use it in the next step.
 
 ![connecting a device](image_0.png)
 
 
-### Step 3 - Install Mender client on your device 
+### Step 3 - Install the Mender client on your device
 
-Next we will install the Mender client on your device so that it can talk to the Mender server.
+Next we will install the Mender client on your device and connect it to the Mender server.
 
-In the dialog box from Step 2, click **Copy to clipboard** to copy the code to install the Mender client. Now go to the command line on your device from step 1, and **paste** the code e.g. by right-clicking in the terminal and selecting *Paste*, followed by *Enter*.
+In the dialog box from step 2, click **Copy to clipboard** to copy the code to install the Mender client. Now go to the command line on your device from step 1, and **paste** the code e.g. by right-clicking in the terminal and selecting *Paste*, followed by *Enter*.
 
 This downloads the Mender client on the device, configures and starts it.
 
-Once the client has started, your the Mender client will attempt to connect to the server and it will appear in your Pending devices tab in the server. Go ahead and **Accept** the pending device in the server. After accepting the device, it will appear on the Devices group tab on the left of Pending. 
+Once the client has started, the Mender client will attempt to connect to the server and it will appear in your Pending devices tab in the server. Go ahead and **Accept** the pending device in the server. After accepting the device, it will appear on the Device groups tab on the left of Pending.
 
 ![accepting the device](image_1.png)
 
