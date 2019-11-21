@@ -56,7 +56,7 @@ sudo cp /etc/mender/mender.conf.demo /etc/mender/mender.conf
 ##### Configuration for Mender Professional server
 
 To configure the Mender client for Mender Professional, you need to edit `/etc/mender/mender.conf` and insert your Tenant Token
-where it says "Paste your hosted Mender token here".
+where it says "Paste your Hosted Mender token here".
 
 Set the `TENANT_TOKEN` variable:
 
@@ -67,7 +67,7 @@ TENANT_TOKEN="<INSERT YOURS FROM https://hosted.mender.io/ui/#/settings/my-organ
 Update configuration file with your token:
 
 ```bash
-sudo sed -i "s/Paste your hosted Mender token here/$TENANT_TOKEN/" /etc/mender/mender.conf
+sudo sed -i "s/Paste your Hosted Mender token here/$TENANT_TOKEN/" /etc/mender/mender.conf
 ```
 
 #### Device type
