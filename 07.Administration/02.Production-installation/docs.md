@@ -164,8 +164,6 @@ The template includes a few files:
 !!! `enterprise.yml` from the `config` directory.
 
 At this point all changes should be committed to the repository:
-<!--AUTOMATION: execute=sed -i '0,/set-my-alias-here.com/s/set-my-alias-here.com/s3.docker.mender.io/' config/prod.yml -->
-<!--AUTOMATION: execute=sed -i 's|DEPLOYMENTS_AWS_URI:.*|DEPLOYMENTS_AWS_URI: https://s3.docker.mender.io:9000|' config/prod.yml -->
 
 <!--AUTOMATION: ignore -->
 ```bash
@@ -223,18 +221,19 @@ necessary Docker images:
 
 First, set the public domain name of your server (the URL your devices will reach your Mender server on):
 
+<!--AUTOMATION: ignore=use s3.docker.mender.io (localhost) instead-->
 ```bash
 API_GATEWAY_DOMAIN_NAME="mender.example.com"  # NB! replace with your server's public domain name
 STORAGE_PROXY_DOMAIN_NAME="$API_GATEWAY_DOMAIN_NAME"  # change if you are hosting the Storage Proxy on a different domain name (not the default)
 ```
+<!--AUTOMATION: execute=API_GATEWAY_DOMAIN_NAME="s3.docker.mender.io" -->
+<!--AUTOMATION: execute=STORAGE_PROXY_DOMAIN_NAME="$API_GATEWAY_DOMAIN_NAME" -->
 
 Prepare certificates using the helper script `keygen`:
 
-<!--AUTOMATION: ignore=use s3.docker.mender.io (localhost) instead-->
 ```bash
 CERT_API_CN=$API_GATEWAY_DOMAIN_NAME CERT_STORAGE_CN=$STORAGE_PROXY_DOMAIN_NAME ../keygen
 ```
-<!--AUTOMATION: execute=CERT_API_CN=s3.docker.mender.io CERT_STORAGE_CN=s3.docker.mender.io ../keygen -->
 
 > ```
 > Generating a 256 bit EC private key
@@ -414,7 +413,6 @@ MINIO_SECRET_KEY_GENERATED=$(pwgen 16 1) && echo $MINIO_SECRET_KEY_GENERATED
 
 Insert the access and secret keys into `config/prod.yml` with the following commands:
 
-<!--AUTOMATION: ignore -->
 ```bash
 sed -i "s/MINIO_ACCESS_KEY:.*/MINIO_ACCESS_KEY: mender-deployments/g" config/prod.yml
 sed -i "s/MINIO_SECRET_KEY:.*/MINIO_SECRET_KEY: $MINIO_SECRET_KEY_GENERATED/g" config/prod.yml
@@ -434,12 +432,6 @@ The updated entry should look similar to this, you can verify with `git diff`:
 
 ```
 
-<!--AUTOMATION: execute=sed -i.bak 's/MINIO_ACCESS_KEY:.*/MINIO_ACCESS_KEY: Q3AM3UQ867SPQQA43P2F/' config/prod.yml -->
-<!--AUTOMATION: execute=sed -i.bak 's/MINIO_SECRET_KEY:.*/MINIO_SECRET_KEY: abcssadasdssado798dsfjhkksd/' config/prod.yml -->
-
-<!--AUTOMATION: execute=sed -i.bak 's/DEPLOYMENTS_AWS_AUTH_KEY:.*/DEPLOYMENTS_AWS_AUTH_KEY: Q3AM3UQ867SPQQA43P2F/' config/prod.yml -->
-<!--AUTOMATION: execute=sed -i.bak 's/DEPLOYMENTS_AWS_AUTH_SECRET:.*/DEPLOYMENTS_AWS_AUTH_SECRET: abcssadasdssado798dsfjhkksd/' config/prod.yml -->
-
 
 #### Deployments service
 
@@ -452,14 +444,12 @@ Run the following commands to set `DEPLOYMENTS_AWS_AUTH_KEY` and
 `DEPLOYMENTS_AWS_AUTH_SECRET` to the values of `MINIO_ACCESS_KEY`
 and `MINIO_SECRET_KEY`, respectively.
 
-<!--AUTOMATION: ignore -->
 ```bash
 sed -i "s/DEPLOYMENTS_AWS_AUTH_KEY:.*/DEPLOYMENTS_AWS_AUTH_KEY: mender-deployments/g" config/prod.yml
 sed -i "s/DEPLOYMENTS_AWS_AUTH_SECRET:.*/DEPLOYMENTS_AWS_AUTH_SECRET: $MINIO_SECRET_KEY_GENERATED/g" config/prod.yml
 ```
 Also, run the following command so `DEPLOYMENTS_AWS_URI` points to your Storage proxy (including the right port, 9000 by default):
 
-<!--AUTOMATION: ignore -->
 ```bash
 sed -i "s/https:\/\/set-my-alias-here.com/https:\/\/$STORAGE_PROXY_DOMAIN_NAME:9000/g" config/prod.yml
 ```
@@ -485,7 +475,6 @@ After these three commands, the updated entry should look like this (you can aga
 Add your storage server's DNS name under the key `networks.mender.aliases` key
 by running the following command:
 
-<!--AUTOMATION: ignore -->
 ```bash
 sed -i "s/set-my-alias-here.com/$STORAGE_PROXY_DOMAIN_NAME/g" config/prod.yml
 ```
@@ -757,11 +746,9 @@ Replace the organization name, username and password with desired values and run
 
 <!-- Trick to capture the output. The `tr` is because Go prints with Windows
 line endings for whatever reason. -->
-<!--AUTOMATION: execute=TENANT_ID=$( -->
 ```bash
 TENANT_ID=$(./run exec mender-tenantadm /usr/bin/tenantadm create-org --name=MyOrganization --username=myusername@host.com --password=mysecretpassword | tr -d '\r') && (echo $TENANT_ID)
 ```
-<!--AUTOMATION: execute=) -->
 
 <!-- create-org is an async workflow, give it some time -->
 <!--AUTOMATION: execute=sleep 10 -->
