@@ -8,31 +8,34 @@ This page describes how to install the Mender client in an existing Linux system
 
 If full board integration is desired, follow the device documentation on [Yocto Project](../../devices/yocto-project) or [Debian family](../../devices/debian-family).
 
-## Install from source
 
-<!--AUTOVERSION: "mender/tree/%#installing-from-source"/mender -->
-It is possible to install the Mender client from source by following the guidelines outlined in the [README.md](https://github.com/mendersoftware/mender/tree/master#installing-from-source) of the Mender client source repository.
+## Install Mender using the Debian package
 
-## Install Mender provided Debian package
-
-A Debian package (`.deb`) is provided for convenience to install on e.g Debian, Ubuntu or Raspbian. We provide packages for the following architectures:
+A Debian package (`.deb`) is provided for convenience to install on e.g Debian, Ubuntu or Raspbian. A Mender package is provided for the following architectures:
 
 - armhf (ARM-v6): ARM 32bit distributions, for example Raspbian for Raspberry Pi or Debian for BeagleBone.
 - arm64: (ARM-v8): ARM 64bit processors, for example Debian for Asus Tinker Board
 - amd64: Generic 64-bit x86 processors, the most popular among workstations
 
-Download the package:
+See [the downloads page](../../downloads) for links to download all package architectures. We will assume *armhf* in the following, which is the most common.
+
+
+### Download the package
 
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
 ```bash
 wget https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
 ```
 
-!!!Note that the above link is for armhf devices. Adjust the url for your architecture accordingly
+!!! The above link is for *armhf* devices, which is the most common device architecture. See [the downloads page](../../downloads) for other architectures, and also make sure to modify the references to the package in commands below.
+
+
+### Option 1: Attended installation with a wizard
 
 The Mender package comes with a wizard that will let you easily configure and
-customize your installation. To install and configure Mender run the following
-command:
+customize your installation. This option is recommended for new users.
+
+To install and configure Mender run the following command:
 
 <!--AUTOVERSION: "mender-client_%-1_armhf.deb"/mender -->
 ```bash
@@ -44,15 +47,15 @@ device and will automatically start in [managed
 mode](../../architecture/overview#modes-of-operation). Your device is now ready
 to authenticate with the server and start receiving updates.
 
-## Unattended installation
 
-Alternatively to the above method, the package can be installed in a
-non-interactive way, suitable for scripts or other situations where no user
+### Option 2: Unattended installation
+
+Alternatively, the package can be installed non-interactively,
+suitable for scripts or other situations where no user
 input is desired.
 
-Here are presented three common use cases as examples, use `mender setup --help`
-to learn about all configuration options. Use the below scripts to download and
-setup the Mender client on different scenarios.
+The setup is different depending on your server configuration and the most common cases
+are shown below. Use `mender setup --help` to learn about all configuration options.
 
 - Connecting to Mender Professional with demo settings
 
@@ -60,7 +63,6 @@ setup the Mender client on different scenarios.
 ```bash
 DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
 TENANT_TOKEN="<INSERT YOUR TOKEN FROM https://hosted.mender.io/ui/#/settings/my-organization>"
-wget https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
 sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_master-1_armhf.deb
 sudo mender setup \
             --device-type $DEVICE_TYPE \
@@ -78,7 +80,6 @@ sudo systemctl restart mender-client
 ```bash
 DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
 SERVER_IP_ADDR="<INSERT THE IP ADDRESS OF YOUR DEMO SERVER>"
-wget https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
 sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_master-1_armhf.deb
 sudo mender setup \
             --device-type $DEVICE_TYPE \
@@ -94,7 +95,6 @@ sudo systemctl restart mender-client
 DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
 SERVER_URL="<INSERT YOUR ENTERPRISE SERVER URL>"
 TENANT_TOKEN="<INSERT YOUR TOKEN FROM YOUR ENTERPRISE SERVER>"
-wget https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
 sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_master-1_armhf.deb
 sudo mender setup \
             --device-type $DEVICE_TYPE \
@@ -106,6 +106,12 @@ sudo mender setup \
             --inventory-poll 5
 sudo systemctl restart mender-client
 ```
+
+## Install from source
+
+<!--AUTOVERSION: "mender/tree/%#installing-from-source"/mender -->
+As an alternative to using a Debian package, it is possible to install the Mender client from source by following the guidelines outlined in the [README.md](https://github.com/mendersoftware/mender/tree/master#installing-from-source) of the Mender client source repository.
+
 
 ## Additional information
 
