@@ -85,7 +85,9 @@ The partition Mender uses as the persistent data partition. See [More detailed s
 #### MENDER_DATA_PART_DIR
 
 <!--AUTOVERSION: "Yocto Project 2.5 % and later"/ignore-->
-!!! This variable and the associated method is obsolete in Yocto Project 2.5 sumo and later. Simply [using recipes](../../../devices/yocto-project/partition-configuration#deploying-files-to-the-persistent-data-partition) to put files in the `/data` partition is enough.
+!!! This variable and the associated method is obsolete in Yocto Project 2.5 sumo and later.
+Simply [using recipes](../../../devices/yocto-project/partition-configuration#deploying-files-to-the-persistent-data-partition)
+to put files in the `/data` partition is enough.
 
 This variable is used to add files to the data partition of the Mender partitioned image. You will need to update your recipe file and your image file. The update to the recipe file ensures that the persistent files are deployed to a common location and the updates to the image file ensures that these files are included in the target image.
 
