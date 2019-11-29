@@ -37,6 +37,6 @@ Raspbian. Currently only a patched U-Boot is supported by Mender on Raspberry Pi
 
 ## Mender integration
 
-The procedure to be followed to integrate Mender is the same as for to create a
+The process of integrating Mender into your setup is the same as creating a
 Mender Artifact for Debian family OSes. Refer to [Debian family Artifact
 creation](../../artifacts/debian-family) for step by step instructions.
