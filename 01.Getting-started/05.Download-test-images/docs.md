@@ -27,14 +27,14 @@ Download the Artifacts for your desired device types below:
 | Raspberry Pi 3   | [mender-raspberrypi3.sdimg.gz][mender-raspberrypi3_x.x.x.sdimg.gz] | [raspberrypi3_release_1.mender][raspberrypi3_release_1_x.x.x.mender] |
 
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "%.sdimg.gz"/mender -->
-[mender-beagleboneblack_x.x.x.sdimg.gz]: https://d1b0l86ne08fsf.cloudfront.net/2.1.0/beagleboneblack/mender-beagleboneblack_2.1.0.sdimg.gz
+[mender-beagleboneblack_x.x.x.sdimg.gz]: https://d1b0l86ne08fsf.cloudfront.net/2.1.2/beagleboneblack/mender-beagleboneblack_2.1.2.sdimg.gz
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "release_1_%"/mender -->
-[beagleboneblack_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/2.1.0/beagleboneblack/beagleboneblack_release_1_2.1.0.mender
+[beagleboneblack_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/2.1.2/beagleboneblack/beagleboneblack_release_1_2.1.2.mender
 =======
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "%.sdimg.gz"/mender -->
-[mender-raspberrypi3_x.x.x.sdimg.gz]: https://d1b0l86ne08fsf.cloudfront.net/2.1.0/raspberrypi3/mender-raspberrypi3_2.1.0.sdimg.gz
+[mender-raspberrypi3_x.x.x.sdimg.gz]: https://d1b0l86ne08fsf.cloudfront.net/2.1.2/raspberrypi3/mender-raspberrypi3_2.1.2.sdimg.gz
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "release_1_%"/mender -->
-[raspberrypi3_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/2.1.0/raspberrypi3/raspberrypi3_release_1_2.1.0.mender
+[raspberrypi3_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/2.1.2/raspberrypi3/raspberrypi3_release_1_2.1.2.mender
 
 If you have a BeagleBone Black or Raspberry Pi 3 you want to test Mender with
 as well, download the *disk image and both Artifacts* for it.
