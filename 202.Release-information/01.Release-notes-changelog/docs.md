@@ -4,6 +4,119 @@ taxonomy:
     category: docs
 ---
 
+## Mender 2.1.1
+
+_Released 12.05.2019_
+
+### Statistics
+
+A total of 1219 lines added, 421 removed (delta 798)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 12 (30.0%) |
+| Kristian Amlie | 11 (27.5%) |
+| Ole Petter Orhagen | 11 (27.5%) |
+| Krzysztof Jaskiewicz | 1 (2.5%) |
+| Manuel Zedel | 1 (2.5%) |
+| Sam Lewis | 1 (2.5%) |
+| Peter Grzybowski | 1 (2.5%) |
+| Pierre-Jean Texier | 1 (2.5%) |
+| Ajith P Venugopal | 1 (2.5%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Ole Petter Orhagen | 551 (43.4%) |
+| Kristian Amlie | 478 (37.7%) |
+| Lluis Campos | 145 (11.4%) |
+| Krzysztof Jaskiewicz | 78 (6.1%) |
+| Sam Lewis | 10 (0.8%) |
+| Peter Grzybowski | 4 (0.3%) |
+| Manuel Zedel | 1 (0.1%) |
+| Pierre-Jean Texier | 1 (0.1%) |
+| Ajith P Venugopal | 1 (0.1%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 36 (90.0%) |
+| KONCEPTO | 1 (2.5%) |
+| sam.vr.lewis@gmail.com | 1 (2.5%) |
+| ajithpv@outlook.com | 1 (2.5%) |
+| RnDity | 1 (2.5%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 1179 (92.9%) |
+| RnDity | 78 (6.1%) |
+| sam.vr.lewis@gmail.com | 10 (0.8%) |
+| KONCEPTO | 1 (0.1%) |
+| ajithpv@outlook.com | 1 (0.1%) |
+
+| Employers with the most hackers (total 9) | |
+|---|---|
+| Northern.tech | 5 (55.6%) |
+| RnDity | 1 (11.1%) |
+| sam.vr.lewis@gmail.com | 1 (11.1%) |
+| KONCEPTO | 1 (11.1%) |
+| ajithpv@outlook.com | 1 (11.1%) |
+
+### Changelogs
+
+#### deviceauth (2.0.1)
+
+New changes in deviceauth since 2.0.0:
+
+* additional mongodb index added
+
+#### gui (2.1.1)
+
+New changes in gui since 2.1.0:
+
+* Fixed faulty fallback file definition in nginx config
+
+#### integration (2.1.1)
+
+New changes in integration since 2.1.0:
+
+* Fix issue when demo script exists abruptly on user request
+  for logs. The issue only showed up when the folder name contained "-"
+  or "." characters.
+* Fix - Make sure the demo-script subprocess has a stdin fd
+  ([MEN-2836](https://tracker.mender.io/browse/MEN-2836))
+* Fix - Create explicit exitcond for the demo setup fixture
+  ([MEN-2836](https://tracker.mender.io/browse/MEN-2836))
+* Upgrade deviceauth to 2.0.1.
+* Upgrade gui to 2.1.1.
+* Upgrade mender to 2.1.2.
+* Upgrade mender-artifact to 3.1.1.
+
+#### mender (2.1.2)
+
+New changes in mender since 2.1.0:
+
+* module/single-file: fix rollback state by correctly defining filename
+* Check for -f option in stat command
+* Set hard limit(10) for client update status report retries
+  This fixes an issue where the maxSendingAttemps in
+  updateReportRetry state could be set real high, since it is calculated
+  as UpdatePollIntervalSeconds / RetryPollIntervalSeconds. This adds a
+  hard upper limit of 10 retries for the client in any case.
+  ([MEN-2676](https://tracker.mender.io/browse/MEN-2676))
+* Fix UBI device size calculation
+
+#### mender-artifact (3.1.1)
+
+New changes in mender-artifact since 3.1.0:
+
+* fix erroneously report of "-dirty" in the version
+  string. ([MEN-2800](https://tracker.mender.io/browse/MEN-2800))
+* Fix: mender-artifact modify did not clean up the temp-files created
+  ([MEN-2758](https://tracker.mender.io/browse/MEN-2758))
+* Fix build-contained Makefile: image was missing make install
+* Make artifact install respect the given file permissions
+  ([MEN-2880](https://tracker.mender.io/browse/MEN-2880))
+
+
 ## mender-convert 1.2.0
 
 _Released 09.17.2019_
