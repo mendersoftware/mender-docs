@@ -4,6 +4,121 @@ taxonomy:
     category: docs
 ---
 
+## Mender 2.2.1
+
+### Statistics
+
+A total of 1571 lines added, 1337 removed (delta 234)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 18 (33.3%) |
+| Manuel Zedel | 14 (25.9%) |
+| Peter Grzybowski | 8 (14.8%) |
+| Lluis Campos | 6 (11.1%) |
+| Ole Petter Orhagen | 4 (7.4%) |
+| Michael Clelland | 2 (3.7%) |
+| Eystein Måløy Stenberg | 1 (1.9%) |
+| Sam Lewis | 1 (1.9%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 853 (34.2%) |
+| Peter Grzybowski | 820 (32.9%) |
+| Ole Petter Orhagen | 477 (19.1%) |
+| Manuel Zedel | 235 (9.4%) |
+| Lluis Campos | 91 (3.7%) |
+| Sam Lewis | 10 (0.4%) |
+| Michael Clelland | 4 (0.2%) |
+| Eystein Måløy Stenberg | 2 (0.1%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Kristian Amlie | 674 (50.4%) |
+| Manuel Zedel | 71 (5.3%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 53 (98.1%) |
+| sam.vr.lewis@gmail.com | 1 (1.9%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 2482 (99.6%) |
+| sam.vr.lewis@gmail.com | 10 (0.4%) |
+
+| Employers with the most hackers (total 8) | |
+|---|---|
+| Northern.tech | 7 (87.5%) |
+| sam.vr.lewis@gmail.com | 1 (12.5%) |
+
+### Changelogs
+
+#### deployments (1.8.1)
+
+New changes in deployments since 1.8.0:
+
+* run migrations on startup like other services do
+  ([MC-1144](https://tracker.mender.io/browse/MC-1144))
+* index deployments database
+  ([MEN-2019](https://tracker.mender.io/browse/MEN-2019))
+* added unit tests: indices created.
+  ([MEN-2019](https://tracker.mender.io/browse/MEN-2019))
+
+#### deployments-enterprise (1.8.1)
+
+New changes in deployments-enterprise since 1.8.0:
+
+* run migrations on startup like other services do
+  ([MC-1144](https://tracker.mender.io/browse/MC-1144))
+* index deployments database
+  ([MEN-2019](https://tracker.mender.io/browse/MEN-2019))
+* added unit tests: indices created.
+  ([MEN-2019](https://tracker.mender.io/browse/MEN-2019))
+
+#### gui (2.2.1)
+
+New changes in gui since 2.2.0:
+
+* fixed empty userData on edit, causing blank ui fields in settings & header
+* fixed persistence of helptip dismissal during onboarding
+* fixed regression: filtered on device-type before deployment
+* ensured device groups are sorted when retrieved from backend
+
+#### integration (2.2.1)
+
+New changes in integration since 2.2.0:
+
+* Upgrade deployments to 1.8.1.
+* Upgrade deployments-enterprise to 1.8.1.
+* Upgrade gui to 2.2.1.
+* Upgrade mender to 2.1.2.
+* Upgrade mender-artifact to 3.2.1.
+* Upgrade useradm to 1.9.1.
+* Upgrade useradm-enterprise to 1.9.1.
+
+#### mender (2.1.2)
+
+New changes in mender since 2.1.1:
+
+* Fix UBI device size calculation
+
+#### mender-artifact (3.2.1)
+
+New changes in mender-artifact since 3.2.0:
+
+* Make artifact install respect the given file permissions
+  ([MEN-2880](https://tracker.mender.io/browse/MEN-2880))
+
+#### useradm-enterprise (1.9.1)
+
+New changes in useradm-enterprise since 1.9.0:
+
+* Support for older Google authenticators on iOS, trimming secret length
+* Two factor authentication API docs
+  ([MEN-2884](https://tracker.mender.io/browse/MEN-2884))
+
+
 ## Mender 2.1.1
 
 _Released 12.05.2019_
