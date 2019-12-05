@@ -37,9 +37,9 @@ MENDER_TENANT_TOKEN='<YOUR-MENDER-TENANT-TOKEN>'
 mender-artifact modify artifact.mender --server-uri "$MENDER_SERVER_URL" --tenant-token "$MENDER_TENANT_TOKEN"
 ```
 
-!!! The `--tenant-token` parameter is only needed for multi-tenant Mender servers like Mender Professional. In Mender Professional you can find it under [My organization](https://hosted.mender.io/ui/?target=_blank#/settings/my-organization).
+!!! The `--tenant-token` parameter is only needed for multi-tenant Mender servers like [Mender Professional](https://mender.io/products/mender-professional) or [Mender Enterprise](https://mender.io/products/mender-enterprise). For Mender Professional you can find it under the [My organization](https://hosted.mender.io/ui/?target=_blank#/settings/my-organization) tab at [hosted.mender.io](https://hosted.mender.io).
 
-If you are using a self-signed certificate for the Mender server (not needed for Mender Professional), you can
+If you are using a self-signed certificate for the Mender server (not needed for hosted.mender.io), you can
 include it in the Artifact using the `--server-cert` parameter:
 
 ```bash
