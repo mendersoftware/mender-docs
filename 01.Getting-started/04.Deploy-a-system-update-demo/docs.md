@@ -278,8 +278,8 @@ run these two commands (adjust the Artifact file name accordingly):
 
 <!--AUTOVERSION: "release_1_%"/mender "release_2_%"/mender "release-2_%"/mender -->
 ```bash
-cp beagleboneblack_release_1_2.1.0.mender beagleboneblack_release_2_2.1.0.mender
-mender-artifact modify beagleboneblack_release_2_2.1.0.mender -n release-2_2.1.0
+cp beagleboneblack_release_1_2.1.2.mender beagleboneblack_release_2_2.1.2.mender
+mender-artifact modify beagleboneblack_release_2_2.1.2.mender -n release-2_2.1.2
 ```
 
 !!! Using`mender-artifact modify`, you can easily modify several configuration settings in existing disk image (`.sdimg`) and Mender Artifact (`.mender`) files, such as the server URI and certificate. See `mender-artifact help modify` for more options.

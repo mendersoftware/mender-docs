@@ -17,6 +17,7 @@ import argparse
 import os
 import re
 import subprocess
+import sys
 
 UPDATE = 1
 CHECK = 2
@@ -244,7 +245,18 @@ def do_replacements(line, replacements, just_remove):
         if len(search.strip()) <= 2:
             raise Exception("Search string needs to be longer/more specific than just '%s'" % search)
         escaped = re.escape(search)
-        regex = escaped.replace("\%", VERSION_MATCHER)
+
+        # From re.escape docs:
+        # Changed in version 3.7: Only characters that can have special 
+        # meaning in a regular expression are escaped. As a result, '!',
+        # '"', '%', "'", ',', '/', ':', ';', '<', '=', '>', '@', and "`"
+        # are no longer escaped.
+        if sys.version_info[:3] < (3,7,0):
+            _percent = "\%"
+        else:
+            _percent = "%"
+
+        regex = escaped.replace(_percent, VERSION_MATCHER)
         if just_remove:
             repl = search.replace("%", "")
         else:
