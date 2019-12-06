@@ -20,6 +20,8 @@ New changes in mender-binary-delta since 1.0.0:
 
 ## Mender 2.2.1
 
+_Released 12.05.2019_
+
 ### Statistics
 
 A total of 1571 lines added, 1337 removed (delta 234)
