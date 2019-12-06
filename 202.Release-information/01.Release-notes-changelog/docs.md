@@ -608,6 +608,11 @@ New changes in mender-conductor-enterprise since 1.4.0:
   ([MC-1016](https://tracker.mender.io/browse/MC-1016))
 
 
+## mender-binary-delta 1.0.0
+
+_Released 10.16.2019_
+
+
 ## meta-mender warrior-v2019.10
 
 _Released 10.10.2019_
