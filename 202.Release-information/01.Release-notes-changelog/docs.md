@@ -4,6 +4,20 @@ taxonomy:
     category: docs
 ---
 
+## mender-binary-delta 1.0.1
+
+_Released 12.06.2019_
+
+### Changelogs
+
+#### mender-binary-delta (1.0.1)
+
+New changes in mender-binary-delta since 1.0.0:
+
+* MEN-2928: Fix: Enable file-systems larger than approx 2-GiGs
+  ([MEN-2928](https://tracker.mender.io/browse/MEN-2928))
+
+
 ## Mender 2.2.1
 
 _Released 12.05.2019_
@@ -479,6 +493,11 @@ New changes in mender-conductor-enterprise since 1.4.0:
 * update task configs to work with conductor 2.11.0
 * fixing U+2014 'EM DASH' character
   ([MC-1016](https://tracker.mender.io/browse/MC-1016))
+
+
+## mender-binary-delta 1.0.0
+
+_Released 10.16.2019_
 
 
 ## meta-mender warrior-v2019.10
