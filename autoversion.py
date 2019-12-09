@@ -27,7 +27,7 @@ INTEGRATION_REPO = None
 MENDER_VERSION = None
 
 # Match version strings.
-YOCTO_BRANCHES = r"(?:dora|daisy|dizzy|jethro|krogoth|morty|pyro|rocko|sumo|thud|warrior|zeus)"
+YOCTO_BRANCHES = r"(?:dora|daisy|dizzy|jethro|krogoth|morty|pyro|rocko|sumo|thud|warrior|zeus|dunfell|gatesgarth)"
 VERSION_MATCHER = (r"(?:(?<![0-9]\.)(?<![0-9])[1-9][0-9]*\.[0-9]+\.[x0-9]+(?:b[0-9]+)?(?![0-9])(?!\.[0-9])|(?<![a-z])(?:%s|master)(?![a-z]))"
                    % YOCTO_BRANCHES)
 
