@@ -24,7 +24,7 @@ CHECK = 2
 MODE = UPDATE
 
 INTEGRATION_REPO = None
-MENDER_VERSION = None
+INTEGRATION_VERSION = None
 
 # Match version strings.
 YOCTO_BRANCHES = r"(?:dora|daisy|dizzy|jethro|krogoth|morty|pyro|rocko|sumo|thud|warrior|zeus|dunfell|gatesgarth)"
@@ -41,10 +41,10 @@ def get_version_of(repo):
         return None
     elif version is not None:
         return version
-    elif INTEGRATION_REPO is not None and MENDER_VERSION is not None:
+    elif INTEGRATION_REPO is not None and INTEGRATION_VERSION is not None:
         version = subprocess.check_output([os.path.join(INTEGRATION_REPO, "extra", "release_tool.py"),
                                            "--version-of", repo,
-                                           "--in-integration-version", MENDER_VERSION]
+                                           "--in-integration-version", INTEGRATION_VERSION]
         ).strip().decode()
         VERSION_CACHE[repo] = version
         return version
@@ -277,7 +277,7 @@ def do_replacements(line, replacements, just_remove):
 def main():
     global MODE
     global INTEGRATION_REPO
-    global MENDER_VERSION
+    global INTEGRATION_VERSION
     global VERSION_CACHE
 
     parser = argparse.ArgumentParser()
@@ -287,8 +287,8 @@ def main():
                         help="Update all version references")
     parser.add_argument("--integration-dir", metavar="DIR",
                         help="Location of integration repository")
-    parser.add_argument("--mender-version",
-                        help="Mender version to update to. Depends on --integration-dir option")
+    parser.add_argument("--integration-version",
+                        help="Integration version to update to. Depends on --integration-dir option")
     parser.add_argument("--mender-convert-version",
                         help="Mender-convert version to update to")
     parser.add_argument("--meta-mender-version",
@@ -302,11 +302,11 @@ def main():
     elif args.update:
         MODE = UPDATE
 
-        if args.mender_version is not None:
+        if args.integration_version is not None:
             if args.integration_dir is None:
-                raise Exception("--mender-version argument requires --integration-dir")
+                raise Exception("--integration-version argument requires --integration-dir")
             INTEGRATION_REPO = args.integration_dir
-            MENDER_VERSION = args.mender_version
+            INTEGRATION_VERSION = args.integration_version
 
         if args.mender_convert_version is not None:
             VERSION_CACHE["mender-convert"] = args.mender_convert_version
