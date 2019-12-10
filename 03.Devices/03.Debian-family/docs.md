@@ -87,14 +87,14 @@ On some ARM devices it will not be possible to run GRUB. In that case the
 integration needs to provide a standalone U-Boot integration, which is a more
 involved process. The following is an overview of this process:
 
+<!--AUTOVERSION: "mender-convert-integration-scripts/blob/%"/ignore-->
 1. Patch the U-Boot source code with the Mender integration patches
     - This process is described
       [here](https://hub.mender.io/t/mender-from-scratch/391), under the U-Boot
       section.
 2. Compile the U-Boot binary and U-Boot `env` tools
     - Reference of the build and packaging process can be found
-      <!--AUTOVERSION: "mender-convert-integration-scripts/blob/%"/ignore-->
-      [here](https://github.com/drewmoseley/mender-convert-integration-scripts/blob/master/build-uboot-rpi3.sh)
+      [here](https://github.com/drewmoseley/mender-convert-integration-scripts/blob/master/build-uboot-rpi.sh)
 3. Upload the pre-built U-Boot integration binaries to a convenient location
 4. Provide a custom `mender-convert` configuration file with content similar to
    the following:
