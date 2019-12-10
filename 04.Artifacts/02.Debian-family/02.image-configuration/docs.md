@@ -39,7 +39,7 @@ MENDER_ARTIFACT_NAME=release-1 ./mender-convert \
 
 Configuration files are also a means to add customization that might be
 necessary for specific devices or distributions. For more information please
-visit the [Board-integration](../../03.Devices/03.Debian-family/docs.md)
+visit the [Board-integration](../../../03.Devices/03.Debian-family/docs.md)
 section.
 
 
@@ -108,8 +108,7 @@ customize the files that are included in the output images.
 
 One example of a overlay-rootfs addition can be found in the
 `rootfs-overlay-demo` directory, which, after running the server setup script
-(see [Using Mender
-Professional](../../04.Artifacts/02.Debian-family/01.building-a-mender-debian-image)),
+(see [Using Mender Professional](../01.building-a-mender-debian-image/docs.md#using-mender-professional))
 contains:
 
 ```bash
