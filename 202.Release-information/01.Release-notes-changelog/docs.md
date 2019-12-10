@@ -4,6 +4,55 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender warrior-v2019.12
+
+_Released 12.10.2019_
+
+### Statistics
+
+A total of 13 lines added, 8 removed (delta 5)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 3 (50.0%) |
+| Drew Moseley | 2 (33.3%) |
+| Joerg Hofrichter | 1 (16.7%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 6 (46.2%) |
+| Drew Moseley | 6 (46.2%) |
+| Joerg Hofrichter | 1 (7.7%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 5 (83.3%) |
+| National Instruments | 1 (16.7%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 12 (92.3%) |
+| National Instruments | 1 (7.7%) |
+
+| Employers with the most hackers (total 3) | |
+|---|---|
+| Northern.tech | 2 (66.7%) |
+| National Instruments | 1 (33.3%) |
+
+### Changelogs
+
+#### meta-mender (warrior-v2019.12)
+
+New changes in meta-mender since warrior-v2019.11:
+
+* Update recipe for mender-binary-delta final release v1.0.0
+* mender-image: Add DEPENDS to include WKS_FILE_DEPENDS.
+* Add mender 2.1.2 recipe
+* Add mender-artifact 3.1.1 recipe
+* Add mender-artifact 3.2.1 recipe
+* Add mender-binary-delta 1.0.1 recipe
+
+
 ## mender-binary-delta 1.0.1
 
 _Released 12.06.2019_
