@@ -57,7 +57,7 @@ input is desired.
 The setup is different depending on your server configuration and the most common cases
 are shown below. Use `mender setup --help` to learn about all configuration options.
 
-- Connecting to Mender Professional with demo settings
+- Connecting to [hosted.mender.io](https://hosted.mender.io) using demo settings
 
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
 ```bash
@@ -66,7 +66,7 @@ TENANT_TOKEN="<INSERT YOUR TOKEN FROM https://hosted.mender.io/ui/#/settings/my-
 sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_master-1_armhf.deb
 sudo mender setup \
             --device-type $DEVICE_TYPE \
-            --mender-professional \
+            --hosted-mender \
             --tenant-token $TENANT_TOKEN \
             --retry-poll 30 \
             --update-poll 5 \
@@ -74,7 +74,7 @@ sudo mender setup \
 sudo systemctl restart mender-client
 ```
 
-- Connecting to a demo server with demo settings
+- Connecting to a demo server using demo settings
 
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
 ```bash
@@ -88,7 +88,7 @@ sudo mender setup \
 sudo systemctl restart mender-client
 ```
 
-- Connecting to an Enterprise server
+- Connecting to an [Enterprise](https://mender.io/products/mender-enterprise) server
 
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
 ```bash
