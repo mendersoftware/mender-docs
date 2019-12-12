@@ -4,6 +4,47 @@ taxonomy:
     category: docs
 ---
 
+## mender-convert 1.2.2
+
+_Released 12.11.2019_
+
+### Statistics
+
+A total of 9 lines added, 10 removed (delta -1)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 2 (100.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 10 (100.0%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Lluis Campos | 1 (10.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 2 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 10 (100.0%) |
+
+| Employers with the most hackers (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+### Changelogs
+
+#### mender-convert (1.2.2)
+
+New changes in mender-convert since 1.2.1:
+
+* Upgrade client and mender-artifact to 2.1.2 and 3.2.1, respectively
+
+
 ## meta-mender warrior-v2019.12
 
 _Released 12.10.2019_
