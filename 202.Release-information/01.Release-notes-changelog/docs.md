@@ -4,6 +4,340 @@ taxonomy:
     category: docs
 ---
 
+## mender-convert 1.2.2
+
+_Released 12.11.2019_
+
+### Statistics
+
+A total of 9 lines added, 10 removed (delta -1)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 2 (100.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 10 (100.0%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Lluis Campos | 1 (10.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 2 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 10 (100.0%) |
+
+| Employers with the most hackers (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+### Changelogs
+
+#### mender-convert (1.2.2)
+
+New changes in mender-convert since 1.2.1:
+
+* Upgrade client and mender-artifact to 2.1.2 and 3.2.1, respectively
+
+
+## meta-mender warrior-v2019.12
+
+_Released 12.10.2019_
+
+### Statistics
+
+A total of 13 lines added, 8 removed (delta 5)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 3 (50.0%) |
+| Drew Moseley | 2 (33.3%) |
+| Joerg Hofrichter | 1 (16.7%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 6 (46.2%) |
+| Drew Moseley | 6 (46.2%) |
+| Joerg Hofrichter | 1 (7.7%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 5 (83.3%) |
+| National Instruments | 1 (16.7%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 12 (92.3%) |
+| National Instruments | 1 (7.7%) |
+
+| Employers with the most hackers (total 3) | |
+|---|---|
+| Northern.tech | 2 (66.7%) |
+| National Instruments | 1 (33.3%) |
+
+### Changelogs
+
+#### meta-mender (warrior-v2019.12)
+
+New changes in meta-mender since warrior-v2019.11:
+
+* Update recipe for mender-binary-delta final release v1.0.0
+* mender-image: Add DEPENDS to include WKS_FILE_DEPENDS.
+* Add mender 2.1.2 recipe
+* Add mender-artifact 3.1.1 recipe
+* Add mender-artifact 3.2.1 recipe
+* Add mender-binary-delta 1.0.1 recipe
+
+
+## mender-binary-delta 1.0.1
+
+_Released 12.06.2019_
+
+### Changelogs
+
+#### mender-binary-delta (1.0.1)
+
+New changes in mender-binary-delta since 1.0.0:
+
+* MEN-2928: Fix: Enable file-systems larger than approx 2-GiGs
+  ([MEN-2928](https://tracker.mender.io/browse/MEN-2928))
+
+
+## Mender 2.2.1
+
+_Released 12.05.2019_
+
+### Statistics
+
+A total of 1571 lines added, 1337 removed (delta 234)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 18 (33.3%) |
+| Manuel Zedel | 14 (25.9%) |
+| Peter Grzybowski | 8 (14.8%) |
+| Lluis Campos | 6 (11.1%) |
+| Ole Petter Orhagen | 4 (7.4%) |
+| Michael Clelland | 2 (3.7%) |
+| Eystein Måløy Stenberg | 1 (1.9%) |
+| Sam Lewis | 1 (1.9%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 853 (34.2%) |
+| Peter Grzybowski | 820 (32.9%) |
+| Ole Petter Orhagen | 477 (19.1%) |
+| Manuel Zedel | 235 (9.4%) |
+| Lluis Campos | 91 (3.7%) |
+| Sam Lewis | 10 (0.4%) |
+| Michael Clelland | 4 (0.2%) |
+| Eystein Måløy Stenberg | 2 (0.1%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Kristian Amlie | 674 (50.4%) |
+| Manuel Zedel | 71 (5.3%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 53 (98.1%) |
+| sam.vr.lewis@gmail.com | 1 (1.9%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 2482 (99.6%) |
+| sam.vr.lewis@gmail.com | 10 (0.4%) |
+
+| Employers with the most hackers (total 8) | |
+|---|---|
+| Northern.tech | 7 (87.5%) |
+| sam.vr.lewis@gmail.com | 1 (12.5%) |
+
+### Changelogs
+
+#### deployments (1.8.1)
+
+New changes in deployments since 1.8.0:
+
+* run migrations on startup like other services do
+  ([MC-1144](https://tracker.mender.io/browse/MC-1144))
+* index deployments database
+  ([MEN-2019](https://tracker.mender.io/browse/MEN-2019))
+* added unit tests: indices created.
+  ([MEN-2019](https://tracker.mender.io/browse/MEN-2019))
+
+#### deployments-enterprise (1.8.1)
+
+New changes in deployments-enterprise since 1.8.0:
+
+* run migrations on startup like other services do
+  ([MC-1144](https://tracker.mender.io/browse/MC-1144))
+* index deployments database
+  ([MEN-2019](https://tracker.mender.io/browse/MEN-2019))
+* added unit tests: indices created.
+  ([MEN-2019](https://tracker.mender.io/browse/MEN-2019))
+
+#### gui (2.2.1)
+
+New changes in gui since 2.2.0:
+
+* fixed empty userData on edit, causing blank ui fields in settings & header
+* fixed persistence of helptip dismissal during onboarding
+* fixed regression: filtered on device-type before deployment
+* ensured device groups are sorted when retrieved from backend
+
+#### integration (2.2.1)
+
+New changes in integration since 2.2.0:
+
+* Upgrade deployments to 1.8.1.
+* Upgrade deployments-enterprise to 1.8.1.
+* Upgrade gui to 2.2.1.
+* Upgrade mender to 2.1.2.
+* Upgrade mender-artifact to 3.2.1.
+* Upgrade useradm to 1.9.1.
+* Upgrade useradm-enterprise to 1.9.1.
+
+#### mender (2.1.2)
+
+New changes in mender since 2.1.1:
+
+* Fix UBI device size calculation
+
+#### mender-artifact (3.2.1)
+
+New changes in mender-artifact since 3.2.0:
+
+* Make artifact install respect the given file permissions
+  ([MEN-2880](https://tracker.mender.io/browse/MEN-2880))
+
+#### useradm-enterprise (1.9.1)
+
+New changes in useradm-enterprise since 1.9.0:
+
+* Support for older Google authenticators on iOS, trimming secret length
+* Two factor authentication API docs
+  ([MEN-2884](https://tracker.mender.io/browse/MEN-2884))
+
+
+## Mender 2.1.1
+
+_Released 12.05.2019_
+
+### Statistics
+
+A total of 1219 lines added, 421 removed (delta 798)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 12 (30.0%) |
+| Kristian Amlie | 11 (27.5%) |
+| Ole Petter Orhagen | 11 (27.5%) |
+| Krzysztof Jaskiewicz | 1 (2.5%) |
+| Manuel Zedel | 1 (2.5%) |
+| Sam Lewis | 1 (2.5%) |
+| Peter Grzybowski | 1 (2.5%) |
+| Pierre-Jean Texier | 1 (2.5%) |
+| Ajith P Venugopal | 1 (2.5%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Ole Petter Orhagen | 551 (43.4%) |
+| Kristian Amlie | 478 (37.7%) |
+| Lluis Campos | 145 (11.4%) |
+| Krzysztof Jaskiewicz | 78 (6.1%) |
+| Sam Lewis | 10 (0.8%) |
+| Peter Grzybowski | 4 (0.3%) |
+| Manuel Zedel | 1 (0.1%) |
+| Pierre-Jean Texier | 1 (0.1%) |
+| Ajith P Venugopal | 1 (0.1%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 36 (90.0%) |
+| KONCEPTO | 1 (2.5%) |
+| sam.vr.lewis@gmail.com | 1 (2.5%) |
+| ajithpv@outlook.com | 1 (2.5%) |
+| RnDity | 1 (2.5%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 1179 (92.9%) |
+| RnDity | 78 (6.1%) |
+| sam.vr.lewis@gmail.com | 10 (0.8%) |
+| KONCEPTO | 1 (0.1%) |
+| ajithpv@outlook.com | 1 (0.1%) |
+
+| Employers with the most hackers (total 9) | |
+|---|---|
+| Northern.tech | 5 (55.6%) |
+| RnDity | 1 (11.1%) |
+| sam.vr.lewis@gmail.com | 1 (11.1%) |
+| KONCEPTO | 1 (11.1%) |
+| ajithpv@outlook.com | 1 (11.1%) |
+
+### Changelogs
+
+#### deviceauth (2.0.1)
+
+New changes in deviceauth since 2.0.0:
+
+* additional mongodb index added
+
+#### gui (2.1.1)
+
+New changes in gui since 2.1.0:
+
+* Fixed faulty fallback file definition in nginx config
+
+#### integration (2.1.1)
+
+New changes in integration since 2.1.0:
+
+* Fix issue when demo script exists abruptly on user request
+  for logs. The issue only showed up when the folder name contained "-"
+  or "." characters.
+* Fix - Make sure the demo-script subprocess has a stdin fd
+  ([MEN-2836](https://tracker.mender.io/browse/MEN-2836))
+* Fix - Create explicit exitcond for the demo setup fixture
+  ([MEN-2836](https://tracker.mender.io/browse/MEN-2836))
+* Upgrade deviceauth to 2.0.1.
+* Upgrade gui to 2.1.1.
+* Upgrade mender to 2.1.2.
+* Upgrade mender-artifact to 3.1.1.
+
+#### mender (2.1.2)
+
+New changes in mender since 2.1.0:
+
+* module/single-file: fix rollback state by correctly defining filename
+* Check for -f option in stat command
+* Set hard limit(10) for client update status report retries
+  This fixes an issue where the maxSendingAttemps in
+  updateReportRetry state could be set real high, since it is calculated
+  as UpdatePollIntervalSeconds / RetryPollIntervalSeconds. This adds a
+  hard upper limit of 10 retries for the client in any case.
+  ([MEN-2676](https://tracker.mender.io/browse/MEN-2676))
+* Fix UBI device size calculation
+
+#### mender-artifact (3.1.1)
+
+New changes in mender-artifact since 3.1.0:
+
+* fix erroneously report of "-dirty" in the version
+  string. ([MEN-2800](https://tracker.mender.io/browse/MEN-2800))
+* Fix: mender-artifact modify did not clean up the temp-files created
+  ([MEN-2758](https://tracker.mender.io/browse/MEN-2758))
+* Fix build-contained Makefile: image was missing make install
+* Make artifact install respect the given file permissions
+  ([MEN-2880](https://tracker.mender.io/browse/MEN-2880))
+
+
 ## meta-mender warrior-v2019.11
 
 _Released 10.30.2019_
@@ -362,6 +696,11 @@ New changes in mender-conductor-enterprise since 1.4.0:
 * update task configs to work with conductor 2.11.0
 * fixing U+2014 'EM DASH' character
   ([MC-1016](https://tracker.mender.io/browse/MC-1016))
+
+
+## mender-binary-delta 1.0.0
+
+_Released 10.16.2019_
 
 
 ## meta-mender warrior-v2019.10
