@@ -46,7 +46,7 @@ If you are setting up a Mender Enterprise server, you will also need:
 
 - An account with Mender in order to evaluate and use the commercial features in
   Mender Enterprise. Please email [contact@mender.io](mailto:contact@mender.io)
-  to receive your license.
+  to receive an evaluation account.
 
 !!! It is very likely possible to use other Linux distributions and versions. However, we recommend using this exact environment for running Mender because it is known to work and you will thus avoid any issues specific to your environment if you use this reference.
 
@@ -685,6 +685,15 @@ cp config/enterprise.yml.template config/enterprise.yml
 Creating the `enterprise.yml` file enables the Enterprise Mender server.
 
 ### Bring up the Enterprise server
+
+First log in to the Mender docker registry with your Mender Enterprise credentials:
+
+<!--AUTOMATION: ignore -->
+```bash
+docker login registry.mender.io
+```
+
+!!! If you have lost your credentials or need an evaluation account please email [contact@mender.io](mailto:contact@mender.io).
 
 Bring up all services up in detached mode with the following command:
 
