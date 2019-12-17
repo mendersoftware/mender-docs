@@ -4,6 +4,102 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender thud-v2019.12
+
+_Released 12.17.2019_
+
+### Statistics
+
+A total of 597 lines added, 366 removed (delta 231)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 17 (39.5%) |
+| Lluis Campos | 10 (23.3%) |
+| Drew Moseley | 9 (20.9%) |
+| Mirza Krak | 4 (9.3%) |
+| Ole Petter Orhagen | 1 (2.3%) |
+| Joerg Hofrichter | 1 (2.3%) |
+| Pierre-Jean Texier | 1 (2.3%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 370 (48.2%) |
+| Drew Moseley | 140 (18.3%) |
+| Ole Petter Orhagen | 113 (14.7%) |
+| Lluis Campos | 83 (10.8%) |
+| Mirza Krak | 58 (7.6%) |
+| Pierre-Jean Texier | 2 (0.3%) |
+| Joerg Hofrichter | 1 (0.1%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Ole Petter Orhagen | 82 (22.4%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Kristian Amlie | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 41 (95.3%) |
+| KONCEPTO | 1 (2.3%) |
+| National Instruments | 1 (2.3%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 764 (99.6%) |
+| KONCEPTO | 2 (0.3%) |
+| National Instruments | 1 (0.1%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+| Employers with the most hackers (total 7) | |
+|---|---|
+| Northern.tech | 5 (71.4%) |
+| KONCEPTO | 1 (14.3%) |
+| National Instruments | 1 (14.3%) |
+
+### Changelogs
+
+#### meta-mender (thud-v2019.12)
+
+New changes in meta-mender since thud-v2019.08:
+
+* Add meta-mender-commercial layer.
+  This will host our mender-binary-delta Update Module.
+* Update recipe for mender-binary-delta pre-release v0.1.1
+* u-boot-fw-utils: set PACKAGE_ARCH as MACHINE_ARCH
+* Add mender-2.1.0 and mender-artifact-3.1.0.
+* Fix "set_image_size" errors when large files are installed
+  in /data directory (staging area for data partition filesystem image)
+* mender-systemd: Maintain persistent machine-id across updates.
+* Start using Git SHA based grub-mender-grubenv versions.
+* Add grub-mender-grubenv 1.3.0 recipe.
+* Add support for initramfs when booting using GRUB.
+* grub-mender-grubenv: Setup debug option to drop to grub prompt.
+* Fix initramfs builds when using meta-mender layer
+* mender: Scan for devices with the live installer
+* `FILESEXTRAPATHS_prepend_pn-mender-binary-delta` now needs
+  to point to the folder containing `arm`, `aarch64` and `x86_64`, not the folder
+  containing the binary.
+* Update recipe for mender-binary-delta beta release v1.0.0b1
+* Update recipe for mender-binary-delta final release v1.0.0
+* Fix incorrect boot partition type for EFI boot partitions.
+* Fix issue where U-boot is not able to find a valid DTB on Raspberry Pi boards
+* Add mender 2.1.1 and mender-artifact 3.2.0b1 recipes.
+* Add mender-artifact 3.2.0 and remove beta.
+* mender-image: Add DEPENDS to include WKS_FILE_DEPENDS.
+* Add mender 2.1.2 recipe
+* Add mender-artifact 3.1.1 recipe
+* Add mender-artifact 3.2.1 recipe
+* Add mender-binar-delta 1.0.1 recipe
+* Removes the tests covering Mender-Artifact version 1.
+  ([MEN-2156](https://tracker.mender.io/browse/MEN-2156))
+
+
 ## meta-mender sumo-v2019.12
 
 _Released 12.17.2019_
