@@ -11,9 +11,56 @@ You can override any option specified here by providing your own configuration
 file using the '--config' argument.
 
 
+#### IMAGE_ROOTFS_SIZE
+
+> Value: 0 (default)
+
+The size of each of the two rootfs filesystems, in KiB. If this is 0,
+mender-convert will use the size of the filesystem content as a basis. If the
+value is -1, mender-convert will use the maximum size that will fit inside the
+created partition. The size is further modified by `IMAGE_ROOTFS_EXTRA_SPACE`
+and `IMAGE_OVERHEAD_FACTOR`.
+
+This variable directly mirrors the variable from the Yocto Project, which is why
+it is missing a "MENDER_" prefix.
+
+
+#### IMAGE_ROOTFS_EXTRA_SPACE
+
+> Value: 0 (default)
+
+The amount of extra free space requested on the rootfs, in KiB. This is added to
+the value of `IMAGE_ROOTFS_SIZE`. The size is further modified by
+`IMAGE_OVERHEAD_FACTOR`.
+
+Note that due to reserved space for the root user on the filesystem, "df" may
+report a significantly lower number than requested. A more accurate number can
+be fetched using for example `dumpe2fs` and looking for the `Free blocks` field,
+but even this value is usually going to be lower than requested due to meta data
+on the filesystem.
+
+This variable directly mirrors the variable from the Yocto Project, which is why
+it is missing a "MENDER_" prefix.
+
+
+#### IMAGE_OVERHEAD_FACTOR
+
+> Value: 1.5 (default)
+
+This factor is multiplied by the used space value for the generated rootfs, and
+if the result is larger than `IMAGE_ROOTFS_SIZE + IMAGE_ROOTFS_EXTRA_SPACE`, it
+will be used as the size of the rootfs instead of the other two variables.
+
+The actual free space will usually be lower than requested. See comment for
+[`IMAGE_ROOTFS_EXTRA_SPACE`](#image-rootfs-extra-space).
+
+This variable directly mirrors the variable from the Yocto Project, which is
+why it is missing a "MENDER_" prefix.
+
+
 #### MENDER_COMPRESS_DISK_IMAGE
 
-> Values: y(default)/n
+> Values: gzip(default)/lzma/none
 
 This is useful when you have large disk images, compressing them makes it easier
 to transfer them between a build server and a local machine, and saves space.
