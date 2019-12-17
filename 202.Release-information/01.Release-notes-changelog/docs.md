@@ -4,6 +4,86 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender sumo-v2019.12
+
+_Released 12.17.2019_
+
+### Statistics
+
+A total of 353 lines added, 241 removed (delta 112)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 10 (34.5%) |
+| Lluis Campos | 9 (31.0%) |
+| Drew Moseley | 6 (20.7%) |
+| Ole Petter Orhagen | 1 (3.4%) |
+| Joerg Hofrichter | 1 (3.4%) |
+| Mirza Krak | 1 (3.4%) |
+| Ajith P V | 1 (3.4%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 168 (34.4%) |
+| Drew Moseley | 130 (26.6%) |
+| Ole Petter Orhagen | 113 (23.1%) |
+| Lluis Campos | 41 (8.4%) |
+| Mirza Krak | 35 (7.2%) |
+| Joerg Hofrichter | 1 (0.2%) |
+| Ajith P V | 1 (0.2%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Ole Petter Orhagen | 82 (34.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 27 (93.1%) |
+| National Instruments | 1 (3.4%) |
+| ajithpv@outlook.com | 1 (3.4%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 487 (99.6%) |
+| National Instruments | 1 (0.2%) |
+| ajithpv@outlook.com | 1 (0.2%) |
+
+| Employers with the most hackers (total 7) | |
+|---|---|
+| Northern.tech | 5 (71.4%) |
+| National Instruments | 1 (14.3%) |
+| ajithpv@outlook.com | 1 (14.3%) |
+
+### Changelogs
+
+#### meta-mender (sumo-v2019.12)
+
+New changes in meta-mender since sumo-v2019.08:
+
+* Add meta-mender-commercial layer.
+  This will host our mender-binary-delta Update Module.
+* Update recipe for mender-binary-delta pre-release v0.1.1
+* `FILESEXTRAPATHS_prepend_pn-mender-binary-delta` now needs
+  to point to the folder containing `arm`, `aarch64` and `x86_64`, not the folder
+  containing the binary.
+* Update recipe for mender-binary-delta beta release v1.0.0b1
+* Update recipe for mender-binary-delta final release v1.0.0
+* mender-image: Add DEPENDS to include WKS_FILE_DEPENDS.
+* mender: Use += rather than _append for IMAGE_FSTYPES.
+* mender-systemd: Maintain persistent machine-id across updates.
+* Add 'datatar' as an image type.
+* Fix issue where U-boot is not able to find a valid DTB on Raspberry Pi boards
+* Add mender-2.1.0 and mender-artifact-3.1.0.
+* Add mender 2.1.1 and mender-artifact 3.2.0b1 recipes.
+* Add mender-artifact 3.2.0 and remove beta.
+* Add mender 2.1.2 recipe
+* Add mender-artifact 3.1.1 recipe
+* Add mender-artifact 3.2.1 recipe
+* Add mender-binar-delta 1.0.1 recipe
+* Removes the tests covering Mender-Artifact version 1.
+  ([MEN-2156](https://tracker.mender.io/browse/MEN-2156))
+
+
 ## mender-convert 1.2.2
 
 _Released 12.11.2019_
