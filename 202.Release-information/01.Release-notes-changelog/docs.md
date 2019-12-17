@@ -971,7 +971,6 @@ New changes in meta-mender since thud-v2019.09:
   `MENDER_PERSISTENT_CONFIGURATION_VARS = "RootfsPartA RootfsPartB"`.
   ([MEN-2757](https://tracker.mender.io/browse/MEN-2757))
 * Fix issue where U-boot is not able to find a valid DTB on Raspberry Pi boards
-  ([MC 0](https://tracker.mender.io/browse/MC 0))
 * add support for Raspberry Pi 4
 * Removes the tests covering Mender-Artifact version 1.
   ([MEN-2156](https://tracker.mender.io/browse/MEN-2156))
