@@ -69,7 +69,7 @@ Example:
 The above would translate to `MENDER_STORAGE_DEVICE = "/dev/mmcblk1p"`.
 
 !!! Note that the trailing partition index number is not included, only the
-device is
+!!! device is
 
 !!! The default value of `MENDER_STORAGE_DEVICE` is `/dev/mmcblk0p`
 
