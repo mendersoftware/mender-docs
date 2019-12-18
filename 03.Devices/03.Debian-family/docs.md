@@ -142,9 +142,8 @@ MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
     --config <path to custom configuration file>
 ```
 
+<!--AUTOVERSION: "mender-convert/blob/%/configs"/ignore -->
 Refer to the following device integrations for more details regarding standalone U-Boot integration:
-
-    <!--AUTOVERSION: "mender-convert/blob/%/configs"/ignore -->
     - Raspberry Pi 3
     - [configs/raspberrypi_config](https://github.com/mendersoftware/mender-convert/blob/master/configs/raspberrypi_config)
     - [configs/raspberrypi_config](https://github.com/mendersoftware/mender-convert/blob/master/configs/raspberrypi3_config)
