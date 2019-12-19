@@ -8,13 +8,14 @@ taxonomy:
 
 ## Configuration Files
 
+<!--AUTOVERSION: "blob/%/config"/mender-convert-->
 The configuration files are a means to customize the conversion process for
 `mender-convert`. In the `configs/` directory, there are customization scripts
 which add support for board-specific configurations. A run of `mender-convert`
 can include multiple configuration files, each one added with the `--config`
 command-line option. The standard configuration which will always be included
 can be found in the
-[configs/mender_convert_config](https://github.com/mendersoftware/mender-convert/blob/next/configs/mender_convert_config)
+[configs/mender_convert_config](https://github.com/mendersoftware/mender-convert/blob/master/configs/mender_convert_config)
 file, and includes the defaults for the configuration options which the tool
 supports.
 
