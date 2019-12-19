@@ -8,6 +8,7 @@ taxonomy:
 
 ## Configuration Files
 
+<!--AUTOVERSION: "blob/%/config"/mender-convert-->
 The configuration files are a means to customize the conversion process for
 `mender-convert`. In the `configs/` directory, there are customization scripts
 which add support for board-specific configurations. A run of `mender-convert`
