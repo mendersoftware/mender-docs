@@ -28,10 +28,13 @@ INTEGRATION_VERSION = None
 
 # Match version strings.
 YOCTO_BRANCHES = r"(?:dora|daisy|dizzy|jethro|krogoth|morty|pyro|rocko|sumo|thud|warrior|zeus|dunfell|gatesgarth)"
-VERSION_MATCHER = (r"(?:(?<![0-9]\.)(?<![0-9])[1-9][0-9]*\.[0-9]+\.[x0-9]+(?:b[0-9]+)?(?![0-9])(?!\.[0-9])|(?<![a-z])(?:%s|master)(?![a-z]))"
-                   % YOCTO_BRANCHES)
+VERSION_MATCHER = (
+    r"(?:(?<![0-9]\.)(?<![0-9])[1-9][0-9]*\.[0-9]+\.[x0-9]+(?:b[0-9]+)?(?![0-9])(?!\.[0-9])|(?<![a-z])(?:%s|master)(?![a-z]))"
+    % YOCTO_BRANCHES
+)
 
 VERSION_CACHE = {}
+
 
 def get_version_of(repo):
     global VERSION_CACHE
@@ -42,10 +45,19 @@ def get_version_of(repo):
     elif version is not None:
         return version
     elif INTEGRATION_REPO is not None and INTEGRATION_VERSION is not None:
-        version = subprocess.check_output([os.path.join(INTEGRATION_REPO, "extra", "release_tool.py"),
-                                           "--version-of", repo,
-                                           "--in-integration-version", INTEGRATION_VERSION]
-        ).strip().decode()
+        version = (
+            subprocess.check_output(
+                [
+                    os.path.join(INTEGRATION_REPO, "extra", "release_tool.py"),
+                    "--version-of",
+                    repo,
+                    "--in-integration-version",
+                    INTEGRATION_VERSION,
+                ]
+            )
+            .strip()
+            .decode()
+        )
         VERSION_CACHE[repo] = version
         return version
     else:
@@ -53,19 +65,22 @@ def get_version_of(repo):
         VERSION_CACHE[repo] = False
         return None
 
+
 def walk_tree():
     for dirpath, _, filenames in os.walk("."):
         for file in filenames:
             if not file.endswith(".md") and not file.endswith(".markdown"):
                 continue
 
-            if (dirpath.endswith("Release-notes-changelog")
-                or dirpath.endswith("Open-source-licenses")):
+            if dirpath.endswith("Release-notes-changelog") or dirpath.endswith(
+                "Open-source-licenses"
+            ):
                 # These files are exempt, since they are supposed to refer to
                 # old versions.
                 continue
 
             process_file(os.path.join(dirpath, file))
+
 
 def process_file(file):
     if MODE == UPDATE:
@@ -154,12 +169,13 @@ def process_file(file):
         # A little hacky: Extend the error message with the filename.
         args = exc.args
         if not args:
-            arg0 = ''
+            arg0 = ""
         else:
             arg0 = args[0]
-        arg0 = '%s:%d: %s' % (file, lineno, arg0)
-        exc.args = (arg0, ) + args[1:]
+        arg0 = "%s:%d: %s" % (file, lineno, arg0)
+        exc.args = (arg0,) + args[1:]
         raise
+
 
 def parse_autoversion_tag(tag):
     # Returns a structure like this:
@@ -176,7 +192,7 @@ def parse_autoversion_tag(tag):
     # <!--AUTOVERSION: "-b %"/integration "integration-%"/integration-->
     # and allow escaped double quotes in the match string (inside double quotes
     # in example).
-    tag_match = re.match('^ *<!-- *AUTOVERSION *: *(.*)--> *$', tag)
+    tag_match = re.match("^ *<!-- *AUTOVERSION *: *(.*)--> *$", tag)
     if not tag_match:
         raise Exception("Malformed AUTOVERSION tag:\n%s" % tag)
     end_of_whole_tag = tag_match.end(1)
@@ -199,17 +215,24 @@ def parse_autoversion_tag(tag):
         elif complain == "complain":
             complain = True
         else:
-            raise Exception("Replacement flag must be \"complain\" or nothing")
+            raise Exception('Replacement flag must be "complain" or nothing')
 
         if "%" not in expr and not complain:
-            raise Exception("Search string \"%s\" doesn't contain at least one '%%' (only allowed in \"complain\" mode)" % expr)
+            raise Exception(
+                'Search string "%s" doesn\'t contain at least one \'%%\' (only allowed in "complain" mode)'
+                % expr
+            )
         parsed.append({"search": expr, "repo": repo, "complain": complain})
     if last_end != end_of_whole_tag:
-        raise Exception(("AUTOVERSION tag not parsed correctly:\n%s"
-                         + "Example of valid tag:\n"
-                         '<!--AUTOVERSION: "git clone -b %%"/integration "Mender client %%"/mender "docker version %%"/ignore-->')
-                        % tag)
+        raise Exception(
+            (
+                "AUTOVERSION tag not parsed correctly:\n%s" + "Example of valid tag:\n"
+                '<!--AUTOVERSION: "git clone -b %%"/integration "Mender client %%"/mender "docker version %%"/ignore-->'
+            )
+            % tag
+        )
     return parsed
+
 
 def process_line(line, replacements, fd):
     # Process a line using the given replacements, optionally writing to a file
@@ -222,14 +245,32 @@ def process_line(line, replacements, fd):
     match = re.search(VERSION_MATCHER, all_removed)
     if match:
         sep = "-------------------------------------------------------------------------------"
-        raise Exception(('Found version-looking string "%s" in documentation line, not covered by any AUTOVERSION expression. '
-                         + 'Original line:\n\n%s\n%s%s\n\n'
-                         + 'AUTOVERSION expressions in effect:\n%s\n\n'
-                         + 'Line after removing all AUTOVERSION matched sections:\n\n%s\n%s%s\n\n'
-                         + 'See README-autoversion.markdown for more information.')
-                        % (match.group(0), sep, line, sep,
-                           "None" if len(replacements) == 0 else "\n".join(['"%s"/%s' % (repl['search'], repl['repo']) for repl in replacements]),
-                           sep, all_removed, sep))
+        raise Exception(
+            (
+                'Found version-looking string "%s" in documentation line, not covered by any AUTOVERSION expression. '
+                + "Original line:\n\n%s\n%s%s\n\n"
+                + "AUTOVERSION expressions in effect:\n%s\n\n"
+                + "Line after removing all AUTOVERSION matched sections:\n\n%s\n%s%s\n\n"
+                + "See README-autoversion.markdown for more information."
+            )
+            % (
+                match.group(0),
+                sep,
+                line,
+                sep,
+                "None"
+                if len(replacements) == 0
+                else "\n".join(
+                    [
+                        '"%s"/%s' % (repl["search"], repl["repo"])
+                        for repl in replacements
+                    ]
+                ),
+                sep,
+                all_removed,
+                sep,
+            )
+        )
 
     # If we were not given a file, then we are just doing checking and are done.
     if fd is None:
@@ -239,19 +280,24 @@ def process_line(line, replacements, fd):
     all_replaced = do_replacements(line, replacements, just_remove=False)
     fd.write(all_replaced)
 
+
 def do_replacements(line, replacements, just_remove):
     all_replaced = line
-    for search, repo, complain in [(repl["search"], repl["repo"], repl["complain"]) for repl in replacements]:
+    for search, repo, complain in [
+        (repl["search"], repl["repo"], repl["complain"]) for repl in replacements
+    ]:
         if len(search.strip()) <= 2:
-            raise Exception("Search string needs to be longer/more specific than just '%s'" % search)
+            raise Exception(
+                "Search string needs to be longer/more specific than just '%s'" % search
+            )
         escaped = re.escape(search)
 
         # From re.escape docs:
-        # Changed in version 3.7: Only characters that can have special 
+        # Changed in version 3.7: Only characters that can have special
         # meaning in a regular expression are escaped. As a result, '!',
         # '"', '%', "'", ',', '/', ':', ';', '<', '=', '>', '@', and "`"
         # are no longer escaped.
-        if sys.version_info[:3] < (3,7,0):
+        if sys.version_info[:3] < (3, 7, 0):
             _percent = "\%"
         else:
             _percent = "%"
@@ -267,12 +313,16 @@ def do_replacements(line, replacements, just_remove):
                 continue
             if complain:
                 if re.search(regex, all_replaced):
-                    raise Exception("Requires manual fixing so it doesn't match \"complain\" expression:\n%s" % line)
+                    raise Exception(
+                        'Requires manual fixing so it doesn\'t match "complain" expression:\n%s'
+                        % line
+                    )
                 else:
                     continue
             repl = search.replace("%", version)
         all_replaced = re.sub(regex, repl, all_replaced)
     return all_replaced
+
 
 def main():
     global MODE
@@ -281,20 +331,31 @@ def main():
     global VERSION_CACHE
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--check", action="store_true",
-                        help="Check that there are no dangling version references")
-    parser.add_argument("--update", action="store_true",
-                        help="Update all version references")
-    parser.add_argument("--integration-dir", metavar="DIR",
-                        help="Location of integration repository")
-    parser.add_argument("--integration-version",
-                        help="Integration version to update to. Depends on --integration-dir option")
-    parser.add_argument("--mender-convert-version",
-                        help="Mender-convert version to update to")
-    parser.add_argument("--meta-mender-version",
-                        help="meta-mender version to update to (usually a branch)")
-    parser.add_argument("--poky-version",
-                        help="poky version to update to (usually a branch)")
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="Check that there are no dangling version references",
+    )
+    parser.add_argument(
+        "--update", action="store_true", help="Update all version references"
+    )
+    parser.add_argument(
+        "--integration-dir", metavar="DIR", help="Location of integration repository"
+    )
+    parser.add_argument(
+        "--integration-version",
+        help="Integration version to update to. Depends on --integration-dir option",
+    )
+    parser.add_argument(
+        "--mender-convert-version", help="Mender-convert version to update to"
+    )
+    parser.add_argument(
+        "--meta-mender-version",
+        help="meta-mender version to update to (usually a branch)",
+    )
+    parser.add_argument(
+        "--poky-version", help="poky version to update to (usually a branch)"
+    )
     args = parser.parse_args()
 
     if args.update and args.check:
@@ -304,19 +365,25 @@ def main():
 
         if args.integration_version is not None:
             if args.integration_dir is None:
-                raise Exception("--integration-version argument requires --integration-dir")
+                raise Exception(
+                    "--integration-version argument requires --integration-dir"
+                )
             INTEGRATION_REPO = args.integration_dir
             INTEGRATION_VERSION = args.integration_version
 
         if args.mender_convert_version is not None:
             VERSION_CACHE["mender-convert"] = args.mender_convert_version
         else:
-            print('Not replacing "mender-convert" instances, since it was not specified')
+            print(
+                'Not replacing "mender-convert" instances, since it was not specified'
+            )
             VERSION_CACHE["mender-convert"] = False
 
         if args.meta_mender_version is not None:
             if args.poky_version is None:
-                raise Exception("--meta-mender-version argument requires --poky-version")
+                raise Exception(
+                    "--meta-mender-version argument requires --poky-version"
+                )
             VERSION_CACHE["meta-mender"] = args.meta_mender_version
             VERSION_CACHE["poky"] = args.poky_version
         else:
@@ -331,6 +398,7 @@ def main():
         raise Exception("Either --check or --update must be given")
 
     walk_tree()
+
 
 if __name__ == "__main__":
     main()
