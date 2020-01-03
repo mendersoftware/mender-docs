@@ -3,6 +3,7 @@
 import re
 import autoversion
 
+
 def test_version_regex():
     regex = autoversion.VERSION_MATCHER
 
@@ -26,5 +27,6 @@ def test_version_regex():
     assert re.search(regex, "22.11.2.3.4") is None
     assert re.search(regex, "127.0.0.1") is None
     assert re.search(regex, "mortyxxx") is None
+
 
 test_version_regex()
