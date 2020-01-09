@@ -651,9 +651,9 @@ installing an Open Source server, please proceed to
 
 <!-- Verification of Open Source instance -->
 
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 13 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do echo; date; docker ps; sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 13 || ( for c in `docker ps -q`; do echo $c; docker logs $c; done; echo; date; docker ps; echo "some containers are not 'Up'" && exit 1 ); done -->
 <!--AUTOMATION: test=./run restart -->
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 13 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do echo; date; docker ps; sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 13 || ( for c in `docker ps -q`; do echo $c; docker logs $c; done; echo; date; docker ps; echo "some containers are not 'Up'" && exit 1 ); done -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:9000" -->
 
@@ -846,9 +846,9 @@ git log --oneline master..HEAD
 
 <!-- Verification of Enterprise instance -->
 
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 15 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do echo; date; docker ps; sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 15 || ( for c in `docker ps -q`; do echo $c; docker logs $c; done; echo; date; echo "some containers are not 'Up'" && exit 1 ); done -->
 <!--AUTOMATION: test=./run restart -->
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 15 || ( echo "some containers are not 'Up'" && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do echo; date; docker ps; sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 15 || ( for c in `docker ps -q`; do echo $c; docker logs $c; done; echo; date; docker ps; echo "some containers are not 'Up'" && exit 1 ); done -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:9000" -->
 
