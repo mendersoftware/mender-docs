@@ -55,11 +55,11 @@ system based on Yocto configuration and rarely needs to be modified.
 
 #### Servers
 
-An array of json objects of the format
-`[{ServerURL: "https://mender-server.com"},
-{ServerURL: "https://mender-server2.com"}, ...]`, where `ServerURL` has the
-same format as the plain [`ServerURL` attribute](#ServerURL) paragraph. If
-`Servers` entry is specified, the configuration cannot contain an additional
+An array of json objects on the form
+`[{"ServerURL": "https://mender-server.com"},
+{"ServerURL": "https://mender-server2.com"}, ...]`, where `ServerURL` has the
+same interpretation as the root [`ServerURL` attribute](#ServerURL). 
+If `Servers` entry is specified, the configuration cannot contain an additional
 `ServerURL` entry in the top level of the json configuration. Upon an unserved
 request (4XX/5XX-response codes) the client will attempt the next server on the
 list in the given order.
