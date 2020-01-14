@@ -1,0 +1,17 @@
+
+[tool.black]
+target-version = ['py38']
+include = '\.py$' # Match all python files
+exclude = '''
+
+(
+  /(
+      \.eggs         # exclude a few common directories
+    | \.git
+    | \.mypy_cache
+    | \.venv
+    | build
+    | dist
+  )/
+)
+'''
