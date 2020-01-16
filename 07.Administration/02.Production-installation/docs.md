@@ -414,8 +414,8 @@ MINIO_SECRET_KEY_GENERATED=$(pwgen 16 1) && echo $MINIO_SECRET_KEY_GENERATED
 Insert the access and secret keys into `config/prod.yml` with the following commands:
 
 ```bash
-sed -i "s/MINIO_ACCESS_KEY:.*/MINIO_ACCESS_KEY: mender-deployments/g" config/prod.yml
-sed -i "s/MINIO_SECRET_KEY:.*/MINIO_SECRET_KEY: $MINIO_SECRET_KEY_GENERATED/g" config/prod.yml
+sed -i.bak "s/MINIO_ACCESS_KEY:.*/MINIO_ACCESS_KEY: mender-deployments/g" config/prod.yml
+sed -i.bak "s/MINIO_SECRET_KEY:.*/MINIO_SECRET_KEY: $MINIO_SECRET_KEY_GENERATED/g" config/prod.yml
 ```
 
 The updated entry should look similar to this, you can verify with `git diff`:
@@ -445,13 +445,13 @@ Run the following commands to set `DEPLOYMENTS_AWS_AUTH_KEY` and
 and `MINIO_SECRET_KEY`, respectively.
 
 ```bash
-sed -i "s/DEPLOYMENTS_AWS_AUTH_KEY:.*/DEPLOYMENTS_AWS_AUTH_KEY: mender-deployments/g" config/prod.yml
-sed -i "s/DEPLOYMENTS_AWS_AUTH_SECRET:.*/DEPLOYMENTS_AWS_AUTH_SECRET: $MINIO_SECRET_KEY_GENERATED/g" config/prod.yml
+sed -i.bak "s/DEPLOYMENTS_AWS_AUTH_KEY:.*/DEPLOYMENTS_AWS_AUTH_KEY: mender-deployments/g" config/prod.yml
+sed -i.bak "s/DEPLOYMENTS_AWS_AUTH_SECRET:.*/DEPLOYMENTS_AWS_AUTH_SECRET: $MINIO_SECRET_KEY_GENERATED/g" config/prod.yml
 ```
 Also, run the following command so `DEPLOYMENTS_AWS_URI` points to your Storage proxy (including the right port, 9000 by default):
 
 ```bash
-sed -i "s/https:\/\/set-my-alias-here.com/https:\/\/$STORAGE_PROXY_DOMAIN_NAME:9000/g" config/prod.yml
+sed -i.bak "s/https:\/\/set-my-alias-here.com/https:\/\/$STORAGE_PROXY_DOMAIN_NAME:9000/g" config/prod.yml
 ```
 
 After these three commands, the updated entry should look like this (you can again verify with `git diff`):
@@ -476,7 +476,7 @@ Add your storage server's DNS name under the key `networks.mender.aliases` key
 by running the following command:
 
 ```bash
-sed -i "s/set-my-alias-here.com/$STORAGE_PROXY_DOMAIN_NAME/g" config/prod.yml
+sed -i.bak "s/set-my-alias-here.com/$STORAGE_PROXY_DOMAIN_NAME/g" config/prod.yml
 ```
 
 The entry should now look like this:
@@ -507,7 +507,7 @@ Change the placeholder value `my-gateway-dns-name` to a valid hostname, by runni
 the following command:
 
 ```bash
-sed -i "s/my-gateway-dns-name/$API_GATEWAY_DOMAIN_NAME/g" config/prod.yml
+sed -i.bak "s/my-gateway-dns-name/$API_GATEWAY_DOMAIN_NAME/g" config/prod.yml
 ```
 
 The updated entry should look like this:

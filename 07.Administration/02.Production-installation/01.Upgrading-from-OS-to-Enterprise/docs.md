@@ -20,8 +20,8 @@ taxonomy:
 <!-- AUTOMATION: execute=git checkout -b my-production-setup -->
 <!-- AUTOMATION: execute=cd production -->
 <!-- AUTOMATION: execute=cp config/prod.yml.template config/prod.yml -->
-<!-- AUTOMATION: execute=sed -i '0,/set-my-alias-here.com/s/set-my-alias-here.com/s3.docker.mender.io/' config/prod.yml -->
-<!-- AUTOMATION: execute=sed -i 's|DEPLOYMENTS_AWS_URI:.*|DEPLOYMENTS_AWS_URI: https://s3.docker.mender.io:9000|' config/prod.yml -->
+<!-- AUTOMATION: execute=sed -i.bak '0,/set-my-alias-here.com/s/set-my-alias-here.com/s3.docker.mender.io/' config/prod.yml -->
+<!-- AUTOMATION: execute=sed -i.bak 's|DEPLOYMENTS_AWS_URI:.*|DEPLOYMENTS_AWS_URI: https://s3.docker.mender.io:9000|' config/prod.yml -->
 <!-- AUTOMATION: execute=CERT_API_CN=s3.docker.mender.io CERT_STORAGE_CN=s3.docker.mender.io ../keygen -->
 <!-- AUTOMATION: execute=docker volume create --name=mender-artifacts -->
 <!-- AUTOMATION: execute=docker volume create --name=mender-db -->
@@ -151,7 +151,7 @@ connect without a tenant token.
    variable, and make sure its value is set to the **tenant token** that was
    fetched in the previous step
 
-   <!-- AUTOMATION: execute=sed -i -e "s;DEVICEAUTH_DEFAULT_TENANT_TOKEN:;DEVICEAUTH_DEFAULT_TENANT_TOKEN: $TENANT_TOKEN;" config/enterprise.yml -->
+   <!-- AUTOMATION: execute=sed -i.bak -e "s;DEVICEAUTH_DEFAULT_TENANT_TOKEN:;DEVICEAUTH_DEFAULT_TENANT_TOKEN: $TENANT_TOKEN;" config/enterprise.yml -->
 
 4. Start the server again:
    ```bash
