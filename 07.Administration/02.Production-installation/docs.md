@@ -106,6 +106,10 @@ git clone -b master https://github.com/mendersoftware/integration mender-server
 > Checking connectivity... done.
 > ```
 
+<!-- AUTOMATION: execute=cp workflows-entrypoint.sh mender-server/production -->
+<!-- AUTOMATION: execute=cp create-artifact-worker-entrypoint.sh mender-server/production -->
+<!-- AUTOMATION: execute=cp prod.yml.template mender-server/production/config/ -->
+
 Enter the directory:
 
 ```bash
@@ -651,9 +655,9 @@ installing an Open Source server, please proceed to
 
 <!-- Verification of Open Source instance -->
 
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 13 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do echo; date; docker ps; sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 14 || ( for c in `docker ps -q`; do echo; echo $c `docker inspect --format '{{.Config.Image}}' $c`; docker exec $c /bin/sh -c set; docker logs $c; done; echo; date; docker ps; echo "some containers are not 'Up'" && exit 1 ); done -->
 <!--AUTOMATION: test=./run restart -->
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 13 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do echo; date; docker ps; sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 14 || ( for c in `docker ps -q`; do echo; echo $c `docker inspect --format '{{.Config.Image}}' $c`; docker exec $c /bin/sh -c set; docker logs $c; done; echo; date; docker ps; echo "some containers are not 'Up'" && exit 1 ); done -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:9000" -->
 
@@ -846,11 +850,14 @@ git log --oneline master..HEAD
 
 <!-- Verification of Enterprise instance -->
 
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 16 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do echo; date; { sleep 32; docker ps; } && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 17 || ( for c in `docker ps -q`; do echo; echo $c `docker inspect --format '{{.Config.Image}}' $c`; docker exec $c /bin/sh -c set; docker logs $c; done; echo; date; echo "some containers are not 'Up'" && exit 1 ); done -->
 <!--AUTOMATION: test=./run restart -->
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 16 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do echo; date; { sleep 32; docker ps; } && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 17 || ( for c in `docker ps -q`; do echo; echo $c `docker inspect --format '{{.Config.Image}}' $c`; docker exec $c /bin/sh -c set; docker logs $c; done; echo; date; docker ps; echo "some containers are not 'Up'" && exit 1 ); done -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:9000" -->
+<!--AUTOMATION: execute=echo; echo logs:; -->
+<!--AUTOMATION: execute=for c in `docker ps -q`; do echo; echo $c `docker inspect --format '{{.Config.Image}}' $c`; docker logs $c; done -->
+<!--AUTOMATION: execute=echo "end of logs"; echo; -->
 
 <!-- End of test block for TEST_ENTERPRISE=1 -->
 <!-- AUTOMATION: execute=fi -->

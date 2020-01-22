@@ -16,6 +16,9 @@ taxonomy:
 <!-- Basically a repeat of Open Source setup from Production Installation guide -->
 <!-- AUTOVERSION: "git clone -b %"/integration -->
 <!-- AUTOMATION: execute=git clone -b master https://github.com/mendersoftware/integration mender-server -->
+<!-- AUTOMATION: execute=cp workflows-entrypoint.sh mender-server/production -->
+<!-- AUTOMATION: execute=cp create-artifact-worker-entrypoint.sh mender-server/production -->
+<!-- AUTOMATION: execute=cp prod.yml.template mender-server/production/config/ -->
 <!-- AUTOMATION: execute=cd mender-server -->
 <!-- AUTOMATION: execute=git checkout -b my-production-setup -->
 <!-- AUTOMATION: execute=cd production -->
@@ -164,9 +167,9 @@ connect without a tenant token.
 
 <!-- Verification -->
 
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 16 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 17 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
 <!--AUTOMATION: test=./run restart -->
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 16 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 17 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:9000" -->
 
