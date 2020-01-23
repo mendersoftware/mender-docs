@@ -16,6 +16,7 @@ taxonomy:
 <!-- Basically a repeat of Open Source setup from Production Installation guide -->
 <!-- AUTOVERSION: "git clone -b %"/integration -->
 <!-- AUTOMATION: execute=git clone -b master https://github.com/mendersoftware/integration mender-server -->
+<!-- AUTOMATION: execute=cp prod.yml.template mender-server/production/config/ -->
 <!-- AUTOMATION: execute=cd mender-server -->
 <!-- AUTOMATION: execute=git checkout -b my-production-setup -->
 <!-- AUTOMATION: execute=cd production -->

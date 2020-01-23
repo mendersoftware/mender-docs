@@ -7,7 +7,7 @@ taxonomy:
 <!-- AUTOMATION: execute=if [ "$TEST_OPEN_SOURCE" != 1 ] && [ "$TEST_ENTERPRISE" != 1 ]; then echo "Either TEST_OPEN_SOURCE xor TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->
 <!-- AUTOMATION: execute=if [ "$TEST_OPEN_SOURCE" = 1 ] && [ "$TEST_ENTERPRISE" = 1 ]; then echo "TEST_OPEN_SOURCE and TEST_ENTERPRISE cannot both be 1!"; exit 1; fi -->
 
-<!-- Cleanup code -->
+<!-- Cleanup code. -->
 <!-- AUTOMATION: execute=ORIG_DIR=$PWD; function cleanup() { set +e; cd $ORIG_DIR/mender-server/production; ./run down -v; docker volume rm mender-artifacts mender-db mender-elasticsearch-db mender-redis-db; cd $ORIG_DIR; rm -rf mender-server; } -->
 <!-- AUTOMATION: execute=trap cleanup EXIT -->
 
@@ -105,6 +105,8 @@ git clone -b master https://github.com/mendersoftware/integration mender-server
 > Resolving deltas: 100% (678/678), done.
 > Checking connectivity... done.
 > ```
+
+<!-- AUTOMATION: execute=cp prod.yml.template mender-server/production/config/ -->
 
 Enter the directory:
 
