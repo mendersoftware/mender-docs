@@ -237,6 +237,23 @@ and is only relevant when building a `.mender` update, not when building a
 partitioned image (any suffix ending in `img`).
 
 
+#### MENDER_EXTRA_PARTS
+
+> Value: <Extra partitions list> (default: empty)
+
+This variable is used to define extra partitions which will be added after data
+partition. For example:
+
+```
+MENDER_EXTRA_PARTS = "part1 part2"
+MENDER_EXTRA_PARTS[part1] = "--fixed-size 1024M --label=static --fstype=ext4"
+MENDER_EXTRA_PARTS[part2] = "--fixed-size 9G --label=update --fstype=vfat"
+```
+
+Arguments are passed as is to wks file and used by the [wic
+tool](https://www.yoctoproject.org/docs/latest/dev-manual/dev-manual.html#creating-partitioned-images-using-wic)
+
+
 #### MENDER_FEATURES_DISABLE
 
 > Value: <mender features> (default: empty)
@@ -657,15 +674,3 @@ If the variable is empty, it is automatically deduced from
 Controls whether to run Mender as a systemd service. See [Modes of
 operations](../../../architecture/overview#modes-of-operation) and [Image
 configuration](../image-configuration) for more information.
-
-#### MENDER_EXTRA_PARTS
-
-> Value: <Extra partitions list> (default: empty)
-
-This variable is used to define extra partitions which will be added after data partition.
-Format is like:
-`MENDER_EXTRA_PARTS = "part1 part2"`
-`MENDER_EXTRA_PARTS[part1] = "--fixed-size 1024M --label=static --fstype=ext4"`
-`MENDER_EXTRA_PARTS[part2] = "--fixed-size 9G --label=update --fstype=vfat"`
-
-where arguments are bypassed as is to wks file and used by  [wic tool](https://www.yoctoproject.org/docs/2.4.2/dev-manual/dev-manual.html#creating-partitioned-images-using-wic)
