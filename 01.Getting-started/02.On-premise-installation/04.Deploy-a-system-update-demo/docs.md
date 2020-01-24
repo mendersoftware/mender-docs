@@ -187,6 +187,10 @@ Which information is collected about devices is fully configurable; see the docu
 
 ## Prepare the Mender Artifact to update to
 
+!!! If you prefer to create a new update on the device itself, it is
+!!! also possible to create new 
+!!! [aritfacts from filesystem snapshots](../../../04.Artifacts/22.Snapshots/docs.md).
+
 ! Please make sure to set shell variables that expand correctly with `$IP_OF_MENDER_SERVER_FROM_DEVICE` (always) and `$IP_OF_MENDER_CLIENT` (if you are using static IP addressing) or edit the commands below accordingly.
 
 In order to deploy an update, we need a Mender Artifact to update to.
