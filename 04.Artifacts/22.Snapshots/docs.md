@@ -11,7 +11,7 @@ system. When this device has been tested and the environment should be
 replicated, a snapshot can be taken with Mender. This results in a file system
 image and Mender Artifact that can be deployed to the rest of the device fleet.
 
-!!!!!! This feature is available from version 2.3 and fully supported by the
+!!!!!! This feature is available from version 2.2 and fully supported by the
 !!!!!! following filesystems: ext[234], XFS, JFS, btrfs, f2fs, and ReiserFS.
 
 ## Creating a snapshot on the golden device
@@ -20,47 +20,47 @@ frozen copy of the root filesystem to standard error. In this section, we go
 through two common approaches for using the snapshot feature from the device:
 dumping a snapshot to a remote host or to a storage device.
 
-!!! While a snapshot is in progress, all processes that writes to the filesystem
-!!! being backed up will be blocked until the snapshot is complete. Redirecting
-!!! the output to the same filesystem will cause the process to freeze and
-!!! terminate after a short while.
+!!! While a snapshot is in progress, all processes that writes to the root
+!!! filesystem will be blocked for the duration of the snapshot process. 
+!!! Redirecting the output of the snapshot command to the same filesystem will
+!!! freeze the system for a short duration before aborting.
 
-If you've installed `ssh` on the device and have set up a computer with the ssh
-daemon running; then, redirecting the dumped output as follows will store the
-snapshot on the workstation as a filesystem image:
+If `ssh` is available on your device, then it is possible to redirect the output
+from the snapshot command to a remote host. Assuming a computer is reachable and
+running the ssh daemon, running the following command will generate a snapshot
+file `root-part.ext4` in the user's home directory on the remote machine:
 ```bash
 USER="user"
 HOST="host-ip"
 
-mender snapshot dump | ssh $USER@$HOST /bin/sh -c 'cat > $HOME/root-part.fs`
+mender snapshot dump | ssh $USER@$HOST /bin/sh -c 'cat > $HOME/root-part.ext4`
 ```
 
 If `ssh` is not available, you can attach a removable storage device (e.g.
-USB stick) and redirect the output to a file on the mounted device.
+USB stick) and redirect the output to a file on the device.
 ```bash
 mount /dev/(...) /mnt
-mender snapshot dump > /mnt/root-part.fs
+mender snapshot dump > /mnt/root-part.ext4
 ```
 
-! Make sure you have enough storage space on the removable device creating the
-! snapshot.
+! Make sure there is enough available space on the storage device for the
+! entire root filesystem (e.g. comparing the output of `df -h / /mnt`).
 
-To help save storage space and bandwidth for the target storage, a built-in
-`--compression` option is available. For the example above, a gzip-compressed
-version of the filesystem is produced by passing gzip to the `--compression` 
-flag.
+To help save storage space and bandwidth, a built-in `--compression` option is 
+available. For the example above, a gzip-compressed version of the filesystem is
+produced by passing gzip to the `--compression` flag.
 ```bash
 mount /dev/(...) /mnt
-mender snapshot dump --compression gzip > /mnt/root-part.fs.gz
+mender snapshot dump --compression gzip > /mnt/root-part.ext4.gz
 ```
 
 !!! Don't forget the `.gz` extension in the target filename.
 
-In this case, passing `root-part.fs` (or `root-part.fs.gz`) as the 
+In this case, passing `root-part.ext4` (or `root-part.ext4.gz`) as the 
 file-parameter to [mender-artifact](../../08.Downloads/docs.md#mender-artifact)
 produces a deployment ready Mender Artifact:
 ```bash
-mender-artifact write rootfs-image -f /mnt/root-part.fs \
+mender-artifact write rootfs-image -f /mnt/root-part.ext4 \
                                    -n artifact-name \
                                    -o snapshot-release.1.0.mender \
                                    -t device-type
