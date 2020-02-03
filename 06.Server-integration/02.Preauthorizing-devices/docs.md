@@ -19,7 +19,7 @@ You need a physical board that has already been [integrated with Mender](../). F
 
 ### A block-based disk image for your board
 
-We assume you have either [built a disk image for your board](../../artifacts/yocto-project/building) or base it off one of the [pre-built demo images](../../getting-started/on-premise-installation/download-test-images). Note that a disk image is used to provision the entire storage of the board (it contains *all* the partitions) and typically has the `.sdimg` suffix.
+We assume you have either [built a disk image for your board](../../artifacts/yocto-project/building) or base it off one of the [pre-built images](../../downloads#disk-images). Note that a disk image is used to provision the entire storage of the board (it contains *all* the partitions) and typically has the `.sdimg` suffix.
 
 !!! Raw flash or raw filesystem images are not covered by this tutorial; however the steps are conceptually the same in these cases.
 
