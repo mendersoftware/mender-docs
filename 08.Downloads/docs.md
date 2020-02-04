@@ -14,13 +14,10 @@ There are two types of images:
   deploy new root file systems to devices already running Mender and registered
   with the server.
 
-Mender provides images based on two different operating systems:
+Mender provides images based on the following distributions:
 
-* One image for **Raspberry Pi 3**, which is based on the [Raspbian Linux
+* Image for **Raspberry Pi 3**, which is based on the [Raspbian Linux
   distribution](https://www.raspberrypi.org/downloads/raspbian/?target=_blank)
-* One demo image for **Beaglebone Black**, which is based on a minimal [Yocto
-  Project](https://www.yoctoproject.org/?target=_blank) build. This image has no
-  software repository, and can not be used for production
 
 !! Note that we do not offer commercial support for these images. They are based
 !! on images supported by board manufacturers, like the Raspberry Pi Foundation,
@@ -29,11 +26,9 @@ Mender provides images based on two different operating systems:
 !! manufacturer, or [contact us](mailto:contact@mender.io) if you have any
 !! questions on the Mender integration.
 
-<!--AUTOVERSION: "Yocto Project (%)"/poky -->
 | Board            | OS                              | Disk image                                                               | Mender Artifact                                                                              |
 |------------------|---------------------------------|--------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
 | Raspberry Pi 3   | Raspbian Buster Lite 2019-09-26 | [raspbian-buster-lite-mender.img.xz][raspbian-buster-lite-mender.img.xz] | [raspbian-buster-lite-mender_release-1.mender][raspbian-buster-lite-mender_release-1.mender] |
-| Beaglebone Black | Yocto Project (warrior)         | [mender-beagleboneblack.sdimg.gz][mender-beagleboneblack_x.x.x.sdimg.gz] | [beagleboneblack_release_1.mender][beagleboneblack_release_1_x.x.x.mender]                   |
 
 <!-- The reason the Mender version below is set to "ignore" is that the Raspbian
 download is built separately from the Mender product, in the mender-convert
@@ -44,10 +39,10 @@ may be skipped for some patch releases, for instance. -->
 <!--AUTOVERSION: "raspbian-buster-lite-mender-%_release"/ignore -->
 [raspbian-buster-lite-mender_release-1.mender]: https://d4o6e0uccgv40.cloudfront.net/2019-09-26-raspbian-buster-lite/arm/2019-09-26-raspbian-buster-lite-mender-master_release-1.mender
 
-<!--AUTOVERSION: "cloudfront.net/%/"/mender "%.sdimg.gz"/mender -->
-[mender-beagleboneblack_x.x.x.sdimg.gz]: https://d1b0l86ne08fsf.cloudfront.net/master/beagleboneblack/mender-beagleboneblack_master.sdimg.gz
-<!--AUTOVERSION: "cloudfront.net/%/"/mender "release_1_%"/mender -->
-[beagleboneblack_release_1_x.x.x.mender]: https://d1b0l86ne08fsf.cloudfront.net/master/beagleboneblack/beagleboneblack_release_1_master.mender
+You can find images for other devices in our Mender Hub community forum, see
+[Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11) or
+[Yocto Project](https://hub.mender.io/c/board-integrations/yocto-project/10)
+integration posts.
 
 ## Mender Artifact
 
