@@ -94,7 +94,7 @@ involved process. The following is an overview of this process:
       section.
 2. Compile the U-Boot binary and U-Boot `env` tools
     - Reference of the build and packaging process can be found
-      [here](https://github.com/drewmoseley/mender-convert-integration-scripts/blob/master/build-uboot-rpi.sh)
+      [here](https://github.com/mendersoftware/mender-convert-integration-scripts/blob/master/build-uboot-rpi.sh)
 3. Upload the pre-built U-Boot integration binaries to a convenient location
 4. Provide a custom `mender-convert` configuration file with content similar to
    the following:
