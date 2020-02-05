@@ -6,13 +6,9 @@ taxonomy:
 
 ## Disk images
 
-There are two types of images:
-
-* Disk images (`*.img` or `*.sdimg`): Used to provision the device storage for
-  devices without Mender running already.
-* Mender Artifacts (`*.mender`): Upload them to the Mender server in order to
-  deploy new root file systems to devices already running Mender and registered
-  with the server.
+These disk images (`*.img` or `*.sdimg`) are based on images provided by board
+manufacturers and already have Mender fully integrated. They are used to
+provision the device storage for devices without Mender running already.
 
 Mender provides images based on the following distributions:
 
@@ -26,9 +22,9 @@ Mender provides images based on the following distributions:
 !! manufacturer, or [contact us](mailto:contact@mender.io) if you have any
 !! questions on the Mender integration.
 
-| Board            | OS                              | Disk image                                                               | Mender Artifact                                                                              |
-|------------------|---------------------------------|--------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
-| Raspberry Pi 3   | Raspbian Buster Lite 2019-09-26 | [raspbian-buster-lite-mender.img.xz][raspbian-buster-lite-mender.img.xz] | [raspbian-buster-lite-mender_release-1.mender][raspbian-buster-lite-mender_release-1.mender] |
+| Board            | OS                              | Disk image                                                               |
+|------------------|---------------------------------|--------------------------------------------------------------------------|
+| Raspberry Pi 3   | Raspbian Buster Lite 2019-09-26 | [raspbian-buster-lite-mender.img.xz][raspbian-buster-lite-mender.img.xz] |
 
 <!-- The reason the Mender version below is set to "ignore" is that the Raspbian
 download is built separately from the Mender product, in the mender-convert
@@ -36,8 +32,6 @@ pipeline, and this is not guaranteed to follow the latest Mender releases. It
 may be skipped for some patch releases, for instance. -->
 <!--AUTOVERSION: "mender-%.img.xz"/ignore "mender-%.mender"/ignore -->
 [raspbian-buster-lite-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2019-09-26-raspbian-buster-lite/arm/2019-09-26-raspbian-buster-lite-mender-master.img.xz
-<!--AUTOVERSION: "raspbian-buster-lite-mender-%_release"/ignore -->
-[raspbian-buster-lite-mender_release-1.mender]: https://d4o6e0uccgv40.cloudfront.net/2019-09-26-raspbian-buster-lite/arm/2019-09-26-raspbian-buster-lite-mender-master_release-1.mender
 
 You can find images for other devices in our Mender Hub community forum, see
 [Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11) or
