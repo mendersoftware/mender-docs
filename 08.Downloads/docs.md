@@ -4,6 +4,40 @@ taxonomy:
     category: docs
 ---
 
+## Disk images
+
+These disk images (`*.img` or `*.sdimg`) are based on images provided by board
+manufacturers and already have Mender fully integrated. They are used to
+provision the device storage for devices without Mender running already.
+
+Mender provides images based on the following distributions:
+
+* Image for **Raspberry Pi 3**, which is based on the [Raspbian Linux
+  distribution](https://www.raspberrypi.org/downloads/raspbian/?target=_blank)
+
+!! Note that we do not offer commercial support for these images. They are based
+!! on images supported by board manufacturers, like the Raspberry Pi Foundation,
+!! and provide the same software and configuration options as the original
+!! images. Please use the support resources available from the board
+!! manufacturer, or [contact us](mailto:contact@mender.io) if you have any
+!! questions on the Mender integration.
+
+| Board            | OS                              | Disk image                                                               |
+|------------------|---------------------------------|--------------------------------------------------------------------------|
+| Raspberry Pi 3   | Raspbian Buster Lite 2019-09-26 | [raspbian-buster-lite-mender.img.xz][raspbian-buster-lite-mender.img.xz] |
+
+<!-- The reason the Mender version below is set to "ignore" is that the Raspbian
+download is built separately from the Mender product, in the mender-convert
+pipeline, and this is not guaranteed to follow the latest Mender releases. It
+may be skipped for some patch releases, for instance. -->
+<!--AUTOVERSION: "mender-%.img.xz"/ignore "mender-%.mender"/ignore -->
+[raspbian-buster-lite-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2019-09-26-raspbian-buster-lite/arm/2019-09-26-raspbian-buster-lite-mender-master.img.xz
+
+You can find images for other devices in our Mender Hub community forum, see
+[Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11) or
+[Yocto Project](https://hub.mender.io/c/board-integrations/yocto-project/10)
+integration posts.
+
 ## Mender Artifact
 
 To download `mender-artifact` as an standalone tool, follow the correct link

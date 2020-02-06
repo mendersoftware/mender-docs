@@ -641,6 +641,7 @@ dtc
 DTS
 DULG
 Dulin
+dumpe
 Dunkel
 duplexify
 Dutour
@@ -870,6 +871,7 @@ genpkey
 Gensler
 Geoffroy
 gerrit
+getenv
 getnative
 getownpropertydescriptors
 getpass
@@ -1556,6 +1558,7 @@ nopt
 northerntech
 notAfter
 notBefore
+notrunc
 Nowak
 npat
 npm
@@ -1834,6 +1837,7 @@ Reinman
 reinterpolate
 Reiterer
 relateurl
+relatime
 relink
 relinquishment
 Ren
@@ -1949,6 +1953,7 @@ sd
 sda
 sdb
 sdboot
+sdcard
 SDCards
 sdimg
 sdimg's
@@ -2236,6 +2241,7 @@ UBootBootCountLimit
 ubuntu
 ubuntulinux
 uc
+uccgv
 Ucetzp
 uCIRqL
 uefi
@@ -2276,6 +2282,7 @@ Unneb
 Unprocessable
 UnreadRune
 unreads
+unxz
 upath
 updatable
 UpdateAuthSet
@@ -2378,6 +2385,7 @@ wget
 whatwg
 whitelist
 Wi
+wic
 wifi
 wiki
 wikipage
@@ -2386,6 +2394,7 @@ wilson
 winberry
 WIPO
 wJ
+wks
 WKxp
 wlan
 wNed

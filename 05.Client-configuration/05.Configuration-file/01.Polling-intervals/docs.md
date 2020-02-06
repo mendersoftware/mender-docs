@@ -30,7 +30,7 @@ But there is a trade-off, as the higher frequency is, the more load server will 
 If many clients are connected to one server, a high frequency
 will require more resources server-side to keep the environment responsive.
 
-!!! When in demo mode, which is used in the [prebuilt images](../../../getting-started/on-premise-installation/download-test-images) and set up with the [demo layer](../../../artifacts/yocto-project/building#adding-the-meta-layers), the Mender client has more aggressive polling intervals to simplify testing. The defaults noted above does not apply to demo mode and you will see extra network traffic in demo mode.
+!!! If you are using the Mender client in demo mode, either by selecting it when running `mender setup`, or by using one of the [prebuilt Yocto images](../../../downloads#disk-images) and set up with the [demo layer](../../../artifacts/yocto-project/building#adding-the-meta-layers), the Mender client has more aggressive polling intervals to simplify testing. The defaults noted above does not apply to demo mode and you will see extra network traffic in demo mode.
 
 
 ## Changing the parameters

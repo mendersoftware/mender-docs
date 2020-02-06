@@ -4,9 +4,13 @@ taxonomy:
   category: docs
 ---
 
-In this tutorial we will deploy a full rootfs update to
-a physical device, the Raspberry Pi 3 or BeagleBone Black, using the
-Mender server.
+In this tutorial we will deploy a full rootfs update to a physical device, a
+Raspberry Pi 3, using the Mender server.
+
+We will use two devices: one as our local "golden" device, which we use to
+prepare the update, and other as a remote device that receives the OTA update.
+It is also possible to use the same device for both roles if you have only one
+device available.
 
 ## Prerequisites
 
@@ -16,23 +20,23 @@ as described in [Install a Mender demo server](../create-a-test-environment).
 We also strongly recommend that you complete the tutorial that comes with the Mender GUI so
 that you have a basic understanding of how Mender works before moving on to connecting a physical device.
 
-### A device to test with
+### A device or two to test with
 
-You need one or more BeagleBone Black or Raspberry Pi 3.
-To make it easy to provision the device we will use
-a SD card to store the OS, so you will need one SD card
-(1 GB or larger) per device.
+You need one or more Raspberry Pi 3 devices. To make it easy to provision the
+device we will use a SD card to store the OS, so you will need one SD card (8 GB
+or larger) per device.
 
-### Disk image and Artifacts
+### Disk image
 
-Get the disk image and Artifacts for your board(s) from [Download demo images](../download-test-images).
+Get the disk image for your board(s) from [the Downloads
+section](../../../downloads#disk-images).
 
 !!! It is possible to use this tutorial with _any_ physical board, as long as you have integrated Mender with it. In this case you cannot use the demo Artifacts we provide in this tutorial, but you need to build your own artifacts as described in [Building a Mender Yocto Project image](../../../artifacts/yocto-project/building).
 
 ### Mender-Artifact tool
 
 Download the prebuilt `mender-artifact` binary for your platform following the links
-in [Downloads section](../../../downloads#mender-artifact-tool).
+in [Downloads section](../../../downloads#mender-artifact).
 
 Please see [Modifying a Mender Artifact](../../../artifacts/modifying-a-mender-artifact)
 for a more detailed overview.
@@ -60,25 +64,36 @@ that your device(s) can connect to the Mender server.
 
 ## Prepare the disk image
 
-! Please make sure to set a shell variable that expands correctly with `$IP_OF_MENDER_SERVER_FROM_DEVICE` or edit the commands below accordingly.
-
 Locate the demo _disk image_ (`*.sdimg`) you downloaded for your device.
 This image contains _all the partitions_ of the storage device, as described in [Partition
 layout](../../../devices/general-system-requirements#partition-layout).
 
-You can decompress it like the following:
+You can decompress a `.xz` image like the following:
+
+```bash
+unxz <PATH-TO-YOUR-DISK-IMAGE>.sdimg.xz
+```
+
+Or, if it is a `.gz` image, like this:
 
 ```bash
 gunzip <PATH-TO-YOUR-DISK-IMAGE>.sdimg.gz
 ```
 
-!!! Mender allocates space in the disk image so that your root file system is allowed to grow over time. If you are building your own disk image by following [Building a Mender Yocto Project image](../../../artifacts/yocto-project/building), you can configure the desired space usage with the Yocto Project variable [MENDER_STORAGE_TOTAL_SIZE_MB](../../../artifacts/yocto-project/variables#mender_storage_total_size_mb).
+!!! The Mender images come with a predetermined size for the root filesystems,
+!!! which may be too small for some use cases where a lot of space is required
+!!! for applications. If you are building your own disk image by following
+!!! [Building a Mender Yocto Project image](../../../artifacts/yocto-project/building),
+!!! you can configure the desired space usage with the Yocto Project variable
+!!! [MENDER_STORAGE_TOTAL_SIZE_MB](../../../artifacts/yocto-project/variables#mender_storage_total_size_mb).
 
-We need to change some configuration settings in this image so that
-the Mender client successfully connects to your Mender
-server when it starts.
+If you are connecting your device with an Ethernet cable to the same LAN network
+that your workstation, skip the following subsections and jump to
+[the next section](#write-the-disk-image-to-the-SD-card)
 
-### Insert the address of Mender server
+Else, if you are using Wifi or an static IP address setup, we need to change
+some configuration settings in this image so that the Mender client can
+successfully reach your Mender server.
 
 First set a shell variable describing the image name, by replacing `<sdimg>` in this snippet:
 
@@ -86,31 +101,17 @@ First set a shell variable describing the image name, by replacing `<sdimg>` in 
 MENDER_IMGPATH=<sdimg>
 ```
 
-Then run this command:
-
-```bash
-mender-artifact cat $MENDER_IMGPATH:/etc/hosts | sed "\$a ${IP_OF_MENDER_SERVER_FROM_DEVICE} docker.mender.io s3.docker.mender.io" > tmpf; mender-artifact cp tmpf $MENDER_IMGPATH:/etc/hosts && rm tmpf
-```
-
-Then you can check the contents of your 'etc/hosts' file by
-
-```bash
-mender-artifact cat $MENDER_IMGPATH:/etc/hosts
-```
-
-You should see output similar to the following:
-
-> ```
-> 192.168.10.1 docker.mender.io s3.docker.mender.io
-> ```
-
 ### Set a static device IP address and subnet
 
-This section assumes you use a static IP setup. If your device uses a DHCP setup, this section can be skipped.
-In this section, we assume that `$IP_OF_MENDER_CLIENT` is
-the IP address you assign to your device.
+This section assumes you use a static IP setup, for example if you are plugging
+your device directly into your workstation with an Ethernet cable. If your
+device uses a DHCP setup, this section can be skipped.
 
-!!! If you are using `bash`, you can set a variable before running the command below, for example `IP_OF_MENDER_CLIENT="192.168.10.2"`.
+In this section, we assume that `$IP_OF_MENDER_CLIENT` and
+`$IP_OF_MENDER_SERVER_FROM_DEVICE` are the IP address you assign to your device.
+
+!!! If you are using `bash`, you can set variables before running the command
+!!! below, for example `IP_OF_MENDER_CLIENT="192.168.10.2"`.
 
 Run the command below to fill the `systemd`
 networking configuration files of the rootfs partitions:
@@ -128,7 +129,7 @@ Gateway=$IP_OF_MENDER_SERVER_FROM_DEVICE
 
 ! If you have a static IP address setup for several devices, you need several disk images so each get different IP addresses.
 
-## Wifi connectivity
+### Wifi connectivity
 
 The raspberrypi demo image comes with Wifi connectivity enabled by default, thus the only thing needed in order for your device to connect to your network is setting the correct `<ssid>` and `<password>` in the `wpa_supplicant-nl80211@wlan0.conf` file on your device. First set your `<password>` and `<ssid>` path as shell variables:
 
@@ -157,19 +158,65 @@ If you have several devices, please write the disk image to all their SD cards.
 
 ! Make sure that the Mender server is running as described in [Install a Mender demo server](../create-a-test-environment) and that the device can reach it on the IP address you configured above (`$IP_OF_MENDER_SERVER_FROM_DEVICE`). You might need to set a static IP address where the Mender server runs and disable any firewalls.
 
-First, insert the SD card you just provisioned into the device.
+First, insert the SD card you just provisioned into the device. Then **connect
+the device to power**.
 
-For the **BeagleBone Black only** (N/A to Raspberry Pi 3): Before powering on the BeagleBone Black, press the
-_S2 button_ (as shown below) and keep the button pressed for about 5 seconds while booting (power is connected). This will make the BeagleBone
-Black boot from the SD card instead of internal storage.
+## Run Mender setup
 
-![Booting BeagleBone Black from SD card](beaglebone_black_sdboot.png)
+You need to connect a USB keyboard and an HDMI monitor at least for the first boot.
 
-!! If the BeagleBone Black boots from internal storage, the rollback mechanism of Mender will not work properly. However, the device will still boot so this condition is hard to detect.
+Once the device has booted, log in. On Raspbian, the default user is "pi", and
+the password is "raspberry".
 
-!!! There is no need to press the S2 button when rebooting, just when power is lost and it is powered on again.
+!!! If you want to enable SSH on startup for further boots, execute'
+!!! `sudo systemctl start ssh`
 
-Now **connect the device to power**.
+Once you have logged in, run the Mender setup command, like this:
+
+```bash
+sudo mender setup
+```
+
+This will start the text based interactive setup of the Mender client. Below you
+can see a typical session, with example answers given throughout.
+
+<!-- Why "html" in the below block? "text" would be the most correct, but it has
+bugs and inserts unwanted spaces in the beginning -->
+
+```html
+Mender Client Setup
+===================
+
+Setting up the Mender client: The client will regularly poll the server to check
+for updates and report its inventory data.
+Get started by first configuring the device type and settings for communicating
+with the server.
+
+
+The device type property is used to determine which Mender Artifact are
+compatible with this device.
+Enter a name for the device type (e.g. raspberrypi3-raspbian): [raspberrypi]
+
+Are you connecting this device to hosted.mender.io? [Y/n] n
+
+Demo mode uses short poll intervals and assumes the default demo server setup.
+(Recommended for testing.)
+Do you want to run the client in demo mode? [Y/n] y
+
+Set the IP of the Mender Server: [127.0.0.1] 1.2.3.4
+Mender setup successfully.
+```
+
+In the question about "IP of the Mender Server", use the value of
+`$IP_OF_MENDER_SERVER_FROM_DEVICE` that you defined earlier. It is not possible
+to use the variable itself in the setup, you have to type the IP value. In the
+example above, the value is `1.2.3.4`, but it will be different in your setup.
+
+After the setup has been done, restart the client with the following command:
+
+```bash
+sudo systemctl restart mender-client
+```
 
 ## See the device in the Mender UI
 
@@ -183,71 +230,80 @@ Which information is collected about devices is fully configurable; see the docu
 
 ![Mender UI - Device information for BeagleBone Black](device_information_bbb.png)
 
-!!! If your device does not show up for authorization in the UI, you need to diagnose what went wrong. Most commonly this is due to problems with the network. You can test if your workstation can reach the device by trying to ping it, e.g. with `ping 192.168.10.2` (replace with the IP address of your device). If you can reach the device, you can ssh into it, e.g. `ssh root@192.168.10.2`. Otherwise, if you have a serial cable, you can log in to the device to diagnose. The `root` user is present and has an empty password in this test image. Check the log output from Mender with `journalctl -u mender`. If you get stuck, please feel free to reach out on the [Mender Hub discussion forum](https://hub.mender.io/)!
+!!! If your device does not show up for authorization in the UI, you need to
+!!! diagnose what went wrong. Most commonly this is due to problems with the
+!!! network. You can test if your workstation can reach the device by trying to ping
+!!! it, e.g. with `ping 192.168.10.2` (replace with the IP address of your
+!!! device). If you can reach the device, you can ssh into it, e.g. `ssh
+!!! pi@192.168.10.2`, or connect a USB keyboard and a HDMI monitor to it to have
+!!! direct access. Check the log output from Mender with
+!!! `journalctl -u mender-client`. If you get stuck, please feel free to reach
+!!! out on the [Mender Hub discussion forum](https://hub.mender.io/)!
 
-## Prepare the Mender Artifact to update to
+## Install new software in your golden device
 
-! Please make sure to set shell variables that expand correctly with `$IP_OF_MENDER_SERVER_FROM_DEVICE` (always) and `$IP_OF_MENDER_CLIENT` (if you are using static IP addressing) or edit the commands below accordingly.
+Now upgrade or install custom software on your golden device. This represents
+the update that will be sent to the rest of your device fleet.
 
-In order to deploy an update, we need a Mender Artifact to update to.
-A Mender Artifact is a file format that includes metadata like the
-checksum and name, as well as the actual root file system that is
-deployed. See [Mender Artifacts](../../../architecture/mender-artifacts) for
-a complete description of this format.
-
-Locate the `release_1` demo Artifact file (`.mender`) for your device that you [downloaded earlier](../download-test-images).
-
-We carry out exactly the same configuration steps for the Mender Artifact as we did for the disk image above:
-
-! Please make sure to set a shell variable that expands the `.mender` file correctly with `$MENDER_FILE_IMGPATH` or edit the commands below accordingly.
-
-```bash
-mender-artifact cat $MENDER_FILE_IMGPATH:/etc/hosts | sed "\$a ${IP_OF_MENDER_SERVER_FROM_DEVICE} docker.mender.io s3.docker.mender.io" > tmpf; mender-artifact cp tmpf $MENDER_FILE_IMGPATH:/etc/hosts && rm tmpf
-```
-
-Then check the contents of the file
+For example, upgrade all packages of your Raspbian OS with:
 
 ```bash
-mender-artifact cat $MENDER_FILE_IMGPATH:/etc/hosts
+sudo apt-get update && sudo apt-get dist-upgrade
 ```
 
-You should see output similar to the following:
+In addition, you can install other packages or copy your own application files
+over SSH.
 
-> ```
-> 192.168.10.1 docker.mender.io s3.docker.mender.io
-> ```
+## Generate an Artifact from the golden device
 
-Finally, **only if you are using static IP addressing**, you need to set the
-device IP address, as shown below (otherwise skip this step). Please note that the same
-constraints as described in [Set a static device IP address and subnet](#set-a-static-device-ip-address-and-subnet)
-for the disk image apply here.
+In this section, we assume that `$IP_OF_MENDER_CLIENT` is the IP address of your
+your device.
+
+!!! If you are using `bash`, you can set a variable before running the command
+!!! below, for example `IP_OF_MENDER_CLIENT="192.168.10.2"`. If you don't know
+!!! it, run `hostname -I` on your device.
+
+This section will create a Mender Artifact from a running device using the
+snapshots feature of Mender. See [Snapshots](../../../artifacts/snapshots) to
+learn more details about this feature.
+
+First you need to start SSH service in your device. For Raspbian image, start it
+with:
 
 ```bash
-echo -n "\
-[Match]
-Name=eth0
-
-[Network]
-Address=$IP_OF_MENDER_CLIENT
-Gateway=$IP_OF_MENDER_SERVER_FROM_DEVICE
-" | mender-artifact cp beaglebone_release_1.mender:/etc/systemd/network/eth.network
+sudo systemctl start ssh
 ```
 
-!!! The Mender client will roll back the deployment if it is not able to report the final update status to the server when it boots from the updated partition. This helps ensure that you can always deploy a new update to your device, even when fatal conditions like network misconfiguration occur.
+For Yocto based images, it is enabled and started by default.
 
-You can also make any other modifications you wish in this image
-prior to deploying it.
+Now we will create the Mender Artifact. Run from your workstation:
 
-!!! NOTE if you are running the raspberrypi pi demo image, with Wifi enabled and setup as per [Wifi connectivity](#Wifi-connectivity), the network id and password will have to be set in the same way as done for the sdimg.
+```bash
+mender-artifact write rootfs-image -f ssh://pi@$IP_OF_MENDER_CLIENT -n my_update_release_1 -o my_update_release_1.mender -t raspberrypi
+```
 
-## Upload the artifact to the server
+!!! Adjust `my_update_release_1` to the desired Artifact name and `raspberrypi`
+!!! to the device type you selected during [Run Mender setup](#run-mender-setup)
+!!! step.
 
-Before we can deploy the Artifact we prepared above, it needs
-to be uploaded to the server.
+This command will create a file `my_update_release_1.mender` which is a Mender
+Artifact containing the golden image currently running software.
 
-Go to the Mender server UI, click the **Artifacts** tab and upload this Artifact.
+Before we can deploy the Artifact we prepared above, it needs to be uploaded to
+the server.
 
-## Deploy the Artifact
+Go to the Mender server UI, click the **Releases** tab and upload this Artifact.
+
+## Deploy the Artifact to a new device
+
+Take now a new device that will play the role of the remote device. Follow again
+the previous steps to [Prepare the disk image](#prepare-the-disk-image), [Write
+the disk image to the SD card](#write-the-disk-image-to-the-sd-card), [Boot the
+device](#boot-the-device), [Run Mender setup](#run-mender-setup) and [See the
+device in the Mender UI](#see-the-device-in-the-mender-ui)
+
+!!! If you have only one device, just reflash it again and use it as if it was
+!!! your second remote device.
 
 Now that we have the device connected and the Artifact
 uploaded to the server, all that remains is to go to the
@@ -256,7 +312,13 @@ uploaded to the server, all that remains is to go to the
 Select the Artifact you just uploaded and **All devices**, then
 **Create deployment**.
 
-!!! If you deploy across several device types (e.g. `beaglebone` and `qemux86-64`), the Mender server will skip these if no compatible artifact is available. This condition is indicated by the _noartifact_ status in the deployment report. Mender does this to avoid deployments of incompatible rootfs images. However, if you have Artifacts for these other device types, identified by the same Artifact name, then Mender will deploy to all the devices there are compatible Artifacts for.
+!!! If you deploy across several device types (e.g. `beaglebone` and
+!!! `raspberrypi`), the Mender server will skip these if no compatible artifact
+!!! is available. This condition is indicated by the _noartifact_ status in the
+!!! deployment report. Mender does this to avoid deployments of incompatible
+!!! rootfs images. However, if you have Artifacts for these other device types,
+!!! identified by the same Artifact name, then Mender will deploy to all the
+!!! devices there are compatible Artifacts for.
 
 ## See the progress of the deployment
 
@@ -276,14 +338,18 @@ with a different Artifact Name (than the one already installed at the devices).
 This is because Mender _skips a deployment_ for a device if it detects that
 the Artifact is already installed, in order to avoid unnecessary deployments.
 
-To change the name of our existing Artifact, we can simply use `modify` and the `-n` option
-of the `mender-artifact` tool, first making a copy of the original. To do this,
-run these two commands (adjust the Artifact file name accordingly):
+You can do this by making more changes on your golden device and then repeating
+the steps at [Generate an Artifact from the golden
+device](#generate-an-artifact-from-the-golden-device).
 
-<!--AUTOVERSION: "release_1_%"/mender "release_2_%"/mender "release-2_%"/mender -->
+Alternatively, to change the name of our existing Artifact, we can simply use
+`modify` and the `-n` option of the `mender-artifact` tool, first making a copy
+of the original. To do this, run these two commands (adjust the Artifact file
+name accordingly):
+
 ```bash
-cp beagleboneblack_release_1_master.mender beagleboneblack_release_2_master.mender
-mender-artifact modify beagleboneblack_release_2_master.mender -n release-2_master
+cp my_update_release_1.mender my_update_release_2.mender
+mender-artifact modify my_update_release_2.mender -n release-2
 ```
 
 !!! Using`mender-artifact modify`, you can easily modify several configuration settings in existing disk image (`.sdimg`) and Mender Artifact (`.mender`) files, such as the server URI and certificate. See `mender-artifact help modify` for more options.
@@ -302,3 +368,8 @@ Now that you have seen how Mender works with a reference board, you might be won
 To get support for robust system updates with rollback, Mender must be [integrated with production boards](../../../devices).
 
 On the other hand, if you only need support for application updates (not full system updates), no board integration is required. In this case you can install Mender on an existing device and OS by following the documentation on [installing the Mender client](../../../client-configuration/installing).
+
+You can find images for other devices in our Mender Hub community forum, see
+[Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11) or
+[Yocto Project](https://hub.mender.io/c/board-integrations/yocto-project/10)
+integration posts.
