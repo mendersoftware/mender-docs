@@ -31,10 +31,24 @@ You can also try it on-premise, but it requires more effort getting setup. See t
 
 Make sure your Raspberry Pi has Raspbian OS installed. 
 
-* Download Raspbian OS image from [here](https://www.raspberrypi.org/downloads/raspbian?target=_blank).
-* [Follow their steps](https://www.raspberrypi.org/documentation/installation/installing-images?target=_blank) to install the OS image to your device and [enable SSH](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md?target=_blank) on your device. This should take less than 15 minutes.
+* Download our pre-converted Raspbian OS image from [here][raspbian-buster-lite-mender.img.xz].
+* [Follow the steps from raspberry.org](https://www.raspberrypi.org/documentation/installation/installing-images?target=_blank) to install the OS image to your device and [enable SSH](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md?target=_blank) on your device. This should take less than 15 minutes.
+
+!! Note that we do not offer commercial support for these images. They are based
+!! on images supported by board manufacturers, like the Raspberry Pi Foundation,
+!! and provide the same software and configuration options as the original
+!! images. Please use the support resources available from the board
+!! manufacturer, or [contact us](mailto:contact@mender.io) if you have any
+!! questions on the Mender integration.
 
 Your first deployment is easy with 5 short steps:
+
+<!-- The reason the Mender version below is set to "ignore" is that the Raspbian
+download is built separately from the Mender product, in the mender-convert
+pipeline, and this is not guaranteed to follow the latest Mender releases. It
+may be skipped for some patch releases, for instance. -->
+<!--AUTOVERSION: "mender-%.img.xz"/ignore "mender-%.mender"/ignore -->
+[raspbian-buster-lite-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2019-09-26-raspbian-buster-lite/arm/2019-09-26-raspbian-buster-lite-mender-master.img.xz
 
 
 ### Step 1 - SSH into your Raspberry Pi device 
