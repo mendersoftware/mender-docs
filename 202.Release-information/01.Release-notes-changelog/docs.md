@@ -8,6 +8,72 @@ taxonomy:
 
 _Released 02.10.2020
 
+### Statistics
+
+A total of 58912 lines added, 36759 removed (delta 22153)
+
+| Developers with the most changesets | |
+|---|---|
+| Manuel Zedel | 238 (28.4%) |
+| Lluis Campos | 162 (19.3%) |
+| Alf-Rune Siqveland | 78 (9.3%) |
+| Ole Petter Orhagen | 74 (8.8%) |
+| Marcin Chalczynski | 65 (7.8%) |
+| Fabio Tranchitella | 65 (7.8%) |
+| Kristian Amlie | 59 (7.0%) |
+| Krzysztof Jaskiewicz | 46 (5.5%) |
+| Peter Grzybowski | 27 (3.2%) |
+| Ole Herman Schumacher Elgesem | 7 (0.8%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Manuel Zedel | 16265 (24.3%) |
+| Alf-Rune Siqveland | 14970 (22.4%) |
+| Fabio Tranchitella | 10354 (15.5%) |
+| Lluis Campos | 5616 (8.4%) |
+| Ole Petter Orhagen | 5027 (7.5%) |
+| Marcin Chalczynski | 4013 (6.0%) |
+| Kristian Amlie | 3923 (5.9%) |
+| Krzysztof Jaskiewicz | 3878 (5.8%) |
+| Peter Grzybowski | 1777 (2.7%) |
+| Eystein Måløy Stenberg | 425 (0.6%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Lluis Campos | 1459 (4.0%) |
+| Kristian Amlie | 944 (2.6%) |
+| Eystein Måløy Stenberg | 419 (1.1%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 718 (85.7%) |
+| RnDity | 112 (13.4%) |
+| f.breuer94@gmail.com | 2 (0.2%) |
+| prashanthjbabu@gmail.com | 2 (0.2%) |
+| risca@dalakolonin.se | 2 (0.2%) |
+| sam.vr.lewis@gmail.com | 1 (0.1%) |
+| open-nandra | 1 (0.1%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 58605 (87.6%) |
+| RnDity | 7956 (11.9%) |
+| f.breuer94@gmail.com | 323 (0.5%) |
+| prashanthjbabu@gmail.com | 12 (0.0%) |
+| sam.vr.lewis@gmail.com | 10 (0.0%) |
+| risca@dalakolonin.se | 4 (0.0%) |
+| open-nandra | 1 (0.0%) |
+
+| Employers with the most hackers (total 19) | |
+|---|---|
+| Northern.tech | 11 (57.9%) |
+| RnDity | 3 (15.8%) |
+| f.breuer94@gmail.com | 1 (5.3%) |
+| prashanthjbabu@gmail.com | 1 (5.3%) |
+| sam.vr.lewis@gmail.com | 1 (5.3%) |
+| risca@dalakolonin.se | 1 (5.3%) |
+| open-nandra | 1 (5.3%) |
+
 ### Changelogs
 
 #### deployments (1.9.0b1)
