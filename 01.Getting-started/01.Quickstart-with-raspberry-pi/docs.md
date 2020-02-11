@@ -11,10 +11,10 @@ Quickly and easily deploy your first over-the-air (OTA) software update with Men
 
 To follow this guide, you will need the following:
 
-* A [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b?target=_blank) or [B+](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus?target=_blank), or a [Raspberry Pi 4 Model B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b?target=_blank).
+* A [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b?target=_blank) or [B+](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus?target=_blank).
 * An 8 GB or larger microSD card.
 * A Raspberry Pi [universal power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply?target=_blank) or a micro USB cable.
-* Internet connectivity for your Raspberry Pi (either Ethernet or wifi configured)
+* Internet connectivity for your Raspberry Pi (either Ethernet or wifi available)
 * A Mender Professional account to access the [hosted server](https://hosted.mender.io).
 
 
@@ -27,14 +27,19 @@ Get a Mender account by [signing up here](https://mender.io/signup?target=_blank
 You can also try it on-premise, but it requires more effort getting setup. See the [on-premise instructions below](#running-mender-on-premise).
 
 
-### Prepare your device
+### Prepare your Raspberry Pi 3
 
-Make sure your Raspberry Pi has Raspbian OS installed. 
+First we flash a Raspbian image that has Mender integrated to the SD card and configure it. This should take less than 15 minutes.
 
-* Download Raspbian OS image from [here](https://www.raspberrypi.org/downloads/raspbian?target=_blank).
-* [Follow their steps](https://www.raspberrypi.org/documentation/installation/installing-images?target=_blank) to install the OS image to your device and [enable SSH](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md?target=_blank) on your device. This should take less than 15 minutes.
+The only difference from the official Raspbian image is that it has been converted to support robust A/B system updates and the Mender client has been installed. Note that the image will only work on *Raspberry Pi 3*, for now.
 
-Your first deployment is easy with 5 short steps:
+!!! If you have a different board than the Raspberry Pi 3 you can still follow the Mender product onboarding tooltips and deploy a demo application to your device. But you will not be able to do system updates without Mender integration later on.
+
+* Download the Raspbian OS image with Mender integrated from the [Mender downloads section](../../downloads).
+* [Follow the steps](https://www.raspberrypi.org/documentation/installation/installing-images?target=_blank) to flash the OS image to your device.
+* [Enable SSH](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md?target=_blank) on your device.
+
+Your first application deployment is easy with 5 short steps:
 
 
 ### Step 1 - SSH into your Raspberry Pi device 
@@ -60,7 +65,7 @@ Keep this terminal open as we will shortly use it to install the Mender client.
 
 Login to your [Mender Professional account](https://hosted.mender.io/ui/#/login?target=_blank), and when on the main page for the first time new users will get a tutorial in the Mender web GUI.
 
-Go to the **Dashboard** tab and click on **Connect a device**. Then Click on **Connect my own device**. Select your Raspberry Pi model and click **Next**. You should see a screen similar to the below. Keep this open as we will use it in the next step.
+Go to the **Dashboard** tab and click on **Connect a device**. Then Click on **Connect my own device**. Select your Raspberry Pi model and click **Next**. You should see a screen similar to the one below. Keep this open as we will use it in the next step.
 
 ![connecting a device](image_0.png)
 
@@ -103,6 +108,13 @@ The onboarding tooltips should now take you through modifying the web page you s
 Simply follow the tooltips to update your newly deployed application!
 
 
+### Deploy system level updates
+
+So far, we deployed an application update. However, Mender also supports robust system level updates with rollback that you might want to test out. If you used the Raspberry Pi 3 image with Mender integrated, it already supports system level updates as well!
+
+The easiest way to create system level updates is to use the *snapshot* functionality in Mender; follow the documentation on [Artifact from system snapshot](../../artifacts/snapshots).
+
+
 ## Running Mender on-premise
 
 For the easiest and fastest experience, we recommend using the hosted version of Mender for your first evaluation. You can also try the same deployment above using the on-premise version by installing a Mender demo server on a host machine, however this will take you a bit longer. You will need to install [Docker Engine](https://docs.docker.com/install/linux/docker-ce/ubuntu?target=_blank) (on device) and [Docker Compose](https://docs.docker.com/compose/install?target=_blank) in your deployment environment. 
@@ -134,5 +146,4 @@ If you need help and have any questions:
 
 * Learn more about Mender by reading the rest of the documentation. 
 
-[Compare plans](https://mender.io/products/pricing?target=_blank) and choose a plan that fits your requirements. 
-
+[Compare plans](https://mender.io/products/pricing?target=_blank) and choose a plan that fits your requirements.
