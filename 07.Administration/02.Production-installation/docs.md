@@ -112,6 +112,9 @@ Enter the directory:
 cd mender-server
 ```
 
+<!-- MEN-3166: Please revert this as soon as 2.3.0 is released -->
+<!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" = 1 -a "$(git describe)" = "2.3.0b1" ]; then exit 0; fi -->
+
 Prepare a branch where all deployment related changes will be kept:
 
 ```bash
