@@ -26,11 +26,7 @@ Mender provides images based on the following distributions:
 |------------------|---------------------------------|--------------------------------------------------------------------------|
 | Raspberry Pi 3   | Raspbian Buster Lite 2019-09-26 | [raspbian-buster-lite-mender.img.xz][raspbian-buster-lite-mender.img.xz] |
 
-<!-- The reason the Mender version below is set to "ignore" is that the Raspbian
-download is built separately from the Mender product, in the mender-convert
-pipeline, and this is not guaranteed to follow the latest Mender releases. It
-may be skipped for some patch releases, for instance. -->
-<!--AUTOVERSION: "mender-%.img.xz"/ignore "mender-%.mender"/ignore -->
+<!--AUTOVERSION: "mender-%.img.xz"/mender -->
 [raspbian-buster-lite-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2019-09-26-raspbian-buster-lite/arm/2019-09-26-raspbian-buster-lite-mender-master.img.xz
 
 You can find images for other devices in our Mender Hub community forum, see
