@@ -14,9 +14,12 @@ taxonomy:
 <!-- AUTOMATION: execute=trap cleanup EXIT -->
 
 <!-- Basically a repeat of Open Source setup from Production Installation guide -->
-<!-- AUTOVERSION: "git clone -b %"/integration -->
+<!-- AUTOVERSION: "git clone -b %"/integration "as soon as % is released"/ignore "\"$(git describe)\" = \"%\" ]"/ignore-->
+<!-- MEN-3166: Please revert the "ignore" parts above as soon as 2.3.0 is released -->
 <!-- AUTOMATION: execute=git clone -b 2.3.0b1 https://github.com/mendersoftware/integration mender-server -->
 <!-- AUTOMATION: execute=cd mender-server -->
+<!-- MEN-3166: Please revert this as soon as 2.3.0 is released -->
+<!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" = 1 -a "$(git describe)" = "2.3.0b1" ]; then exit 0; fi -->
 <!-- AUTOMATION: execute=git checkout -b my-production-setup -->
 <!-- AUTOMATION: execute=cd production -->
 <!-- AUTOMATION: execute=cp config/prod.yml.template config/prod.yml -->
