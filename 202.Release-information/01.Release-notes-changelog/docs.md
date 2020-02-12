@@ -4,6 +4,66 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender warrior-v2020.02
+
+_Released 02.12.2020_
+
+### Statistics
+
+A total of 69 lines added, 42 removed (delta 27)
+
+| Developers with the most changesets | |
+|---|---|
+| Drew Moseley | 7 (43.8%) |
+| Kristian Amlie | 6 (37.5%) |
+| Lluis Campos | 1 (6.2%) |
+| Gaurav Kalra | 1 (6.2%) |
+| Benjamin Byholm | 1 (6.2%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Drew Moseley | 36 (45.6%) |
+| Kristian Amlie | 25 (31.6%) |
+| Lluis Campos | 10 (12.7%) |
+| Benjamin Byholm | 7 (8.9%) |
+| Gaurav Kalra | 1 (1.3%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 14 (87.5%) |
+| walkbase | 1 (6.2%) |
+| gvkalra@gmail.com | 1 (6.2%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 71 (89.9%) |
+| walkbase | 7 (8.9%) |
+| gvkalra@gmail.com | 1 (1.3%) |
+
+| Employers with the most hackers (total 5) | |
+|---|---|
+| Northern.tech | 3 (60.0%) |
+| walkbase | 1 (20.0%) |
+| gvkalra@gmail.com | 1 (20.0%) |
+
+### Changelogs
+
+#### meta-mender (warrior-v2020.02)
+
+New changes in meta-mender since warrior-v2019.12:
+
+* mender-setup: allow setting fstab options for the boot partition
+* grub-mender-grubenv: Fix broken debug-log PACKAGECONFIG.
+* grub-efi: Respect MENDER_BOOT_PART_MOUNT_LOCATION
+* mender-grub: Set EFI_PROVIDER to grub-efi.
+* remove stray '-' in IMAGE_NAME
+* systemd-boot: Respect MENDER_BOOT_PART_MOUNT_LOCATION
+* Add mender 2.2.0b1 recipe
+* Add mender-artifact 3.3.0b1 recipe
+* In demo mode, put demo certificate in same directory as Debian package.
+  ([MEN-3048](https://tracker.mender.io/browse/MEN-3048))
+
+
 ## Mender 2.3.0b1
 
 _Released 02.10.2020
