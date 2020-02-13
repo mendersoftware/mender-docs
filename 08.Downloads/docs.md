@@ -27,7 +27,7 @@ Mender provides images based on the following distributions:
 | Raspberry Pi 3   | Raspbian Buster Lite | [raspbian-buster-lite-mender.img.xz][raspbian-buster-lite-mender.img.xz] |
 
 <!--AUTOVERSION: "mender-%.img.xz"/mender -->
-[raspbian-buster-lite-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2019-09-26-raspbian-buster-lite/arm/2019-09-26-raspbian-buster-lite-mender-master.img.xz
+[raspbian-buster-lite-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-02-05-raspbian-buster-lite/arm/2020-02-05-raspbian-buster-lite-mender-master.img.xz
 
 You can find images for other devices in our Mender Hub community forum, see
 [Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11) or
