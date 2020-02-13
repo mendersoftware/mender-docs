@@ -161,6 +161,15 @@ The URL prefix for looking up the mendersoftware dependencies.
 
 Set the device file corresponding to the root filesystem partitions.
 
+## MENDER_SKIP_FIRST_PARTITION
+
+> Value: 0 (default)
+
+Controls whether mender-convert should use the first partition as a
+base for the generated boot partition. Set to 1 to force mender-convert
+to ignore this partition, and use an auto-generated boot partition
+instead.
+
 ## MENDER_BOOT_PART_INDEX 
 
 > Value: 1 (default)  
