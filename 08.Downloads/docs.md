@@ -22,16 +22,12 @@ Mender provides images based on the following distributions:
 !! manufacturer, or [contact us](mailto:contact@mender.io) if you have any
 !! questions on the Mender integration.
 
-| Board            | OS                              | Disk image                                                               |
-|------------------|---------------------------------|--------------------------------------------------------------------------|
-| Raspberry Pi 3   | Raspbian Buster Lite 2019-09-26 | [raspbian-buster-lite-mender.img.xz][raspbian-buster-lite-mender.img.xz] |
+| Board            | OS                   | Disk image                                                               |
+|------------------|----------------------|--------------------------------------------------------------------------|
+| Raspberry Pi 3   | Raspbian Buster Lite | [raspbian-buster-lite-mender.img.xz][raspbian-buster-lite-mender.img.xz] |
 
-<!-- The reason the Mender version below is set to "ignore" is that the Raspbian
-download is built separately from the Mender product, in the mender-convert
-pipeline, and this is not guaranteed to follow the latest Mender releases. It
-may be skipped for some patch releases, for instance. -->
-<!--AUTOVERSION: "mender-%.img.xz"/ignore "mender-%.mender"/ignore -->
-[raspbian-buster-lite-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2019-09-26-raspbian-buster-lite/arm/2019-09-26-raspbian-buster-lite-mender-master.img.xz
+<!--AUTOVERSION: "mender-%.img.xz"/mender -->
+[raspbian-buster-lite-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-02-05-raspbian-buster-lite/arm/2020-02-05-raspbian-buster-lite-mender-2.2.0b1.img.xz
 
 You can find images for other devices in our Mender Hub community forum, see
 [Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11) or
