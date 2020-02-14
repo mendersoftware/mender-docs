@@ -4,6 +4,112 @@ taxonomy:
     category: docs
 ---
 
+## mender-convert 2.0.0b1
+
+_Released 02.13.2020_
+
+### Statistics
+
+A total of 3594 lines added, 4558 removed (delta -964)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 31 (30.1%) |
+| Lluis Campos | 23 (22.3%) |
+| Ole Petter Orhagen | 19 (18.4%) |
+| Mirza Krak | 19 (18.4%) |
+| Drew Moseley | 9 (8.7%) |
+| Fabio Tranchitella | 1 (1.0%) |
+| Alf-Rune Siqveland | 1 (1.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Mirza Krak | 6195 (83.4%) |
+| Kristian Amlie | 373 (5.0%) |
+| Ole Petter Orhagen | 340 (4.6%) |
+| Lluis Campos | 231 (3.1%) |
+| Drew Moseley | 162 (2.2%) |
+| Alf-Rune Siqveland | 103 (1.4%) |
+| Fabio Tranchitella | 21 (0.3%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Mirza Krak | 1369 (30.0%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Kristian Amlie | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 103 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 7425 (100.0%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+| Employers with the most hackers (total 7) | |
+|---|---|
+| Northern.tech | 7 (100.0%) |
+
+### Changelogs
+
+#### mender-convert (2.0.0b1)
+
+New changes in mender-convert since 1.2.2:
+
+* remove mender-convert (version 1)
+* add mender-convert (version 2)
+  ([MEN-2608](https://tracker.mender.io/browse/MEN-2608))
+* Allow mender_local_config in current directory to be ignored by git.
+* bbb: Add support for eMMC as boot media.
+* configs: Support multiple config files on command line.
+* Fix "yellow" HDMI output on Raspbian Buster
+  ([MEN-2685](https://tracker.mender.io/browse/MEN-2685))
+* scripts: Refactor to support different Mender server options.
+* Add support for Ubuntu Server images on Raspberry Pi 3
+* README: Clarify server types as alternatives.
+* modify: Add an extra function user_local_modify for end users to populate.
+* mender: Rename mender.service to mender-client.service
+* Add Raspberry Pi 0 WiFi support
+  ([MEN-2788](https://tracker.mender.io/browse/MEN-2788))
+* Implement MENDER_COPY_BOOT_GAP feature
+  ([MEN-2784](https://tracker.mender.io/browse/MEN-2784))
+* Raspberry Pi 3: Update U-Boot to 2019.01
+* Raspberry Pi 0 WiFi: Update U-Boot to 2019.01
+* Raspberry Pi: Add U-Boot version to image boot partition
+* Add support for Raspberry Pi 4 Model B
+* Make sure artifacts are owned by same user as the launch directory.
+* Changed the calculation of occupied space on the rootfs
+  partition to a more accurate formula.
+* Add support for controlling rootfs size with `IMAGE_*` variables.
+  * `IMAGE_ROOTFS_SIZE` - The base size of the rootfs. The other two
+    variables modify this value
+  * `IMAGE_ROOTFS_EXTRA_SIZE` - The amount of free space to add to the
+    base size of the rootfs
+  * `IMAGE_OVERHEAD_FACTOR` - Factor determining the amount of free
+    space to add to the base size of the rootfs
+  The final size will be the largest of the two calculations. Please see
+  the `mender_convert_config` file comments for more information.
+* Add lzma compression option for `MENDER_COMPRESS_DISK_IMAGE`.
+* Bump mender-artifact version to 3.2.1.
+* Turn off default ext4 filesystem feature `metadata_csum`.
+  This feature is not supported by tools on Ubuntu 16.04.
+* Change the output filename naming scheme to mender.img
+  ([MEN-3051](https://tracker.mender.io/browse/MEN-3051))
+* mender-convert: Rename variables for consistency with meta-mender.
+* Fix certain kernels hanging on boot. In particular, recent
+  versions of Debian for Beaglebone was affected, but several other
+  boards using UEFI may also have been affected.
+* Make device_type specific to each Raspberry Pi model.
+  ([MEN-3165](https://tracker.mender.io/browse/MEN-3165))
+* Switch to Mender 2.3.0b1 components.
+
+
 ## meta-mender warrior-v2020.02
 
 _Released 02.12.2020_
