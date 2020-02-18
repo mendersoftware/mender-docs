@@ -4,6 +4,69 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender warrior-v2020.02.2
+
+_Released 02.18.2020_
+
+### Statistics
+
+A total of 26 lines added, 7 removed (delta 19)
+
+| Developers with the most changesets | |
+|---|---|
+| Matthew Beckler | 2 (40.0%) |
+| Gaurav Kalra | 1 (20.0%) |
+| Joerg Hofrichter | 1 (20.0%) |
+| Drew Moseley | 1 (20.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Drew Moseley | 21 (80.8%) |
+| Matthew Beckler | 2 (7.7%) |
+| Joerg Hofrichter | 2 (7.7%) |
+| Gaurav Kalra | 1 (3.8%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Kristian Amlie | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Packet Power LLC | 2 (40.0%) |
+| National Instruments | 1 (20.0%) |
+| SM Instruments Inc. | 1 (20.0%) |
+| Northern.tech | 1 (20.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 21 (80.8%) |
+| Packet Power LLC | 2 (7.7%) |
+| National Instruments | 2 (7.7%) |
+| SM Instruments Inc. | 1 (3.8%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 1 (25.0%) |
+| Packet Power LLC | 1 (25.0%) |
+| National Instruments | 1 (25.0%) |
+| SM Instruments Inc. | 1 (25.0%) |
+
+### Changelogs
+
+#### meta-mender (warrior-v2020.02.2)
+
+New changes in meta-mender since warrior-v2020.02:
+
+* mender-helpers: Error out if copying different files to boot part.
+* Improve warning when multiple DTB files are in KERNEL_DEVICETREE
+* Add MENDER_DTB_NAME_FORCE to mender-vars.json to avoid unrecognized variable warning
+* rpi: fix rootfs cmdline trailing space
+
+
 ## mender-convert 2.0.0b1
 
 _Released 02.13.2020_
