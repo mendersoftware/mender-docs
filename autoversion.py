@@ -35,6 +35,8 @@ VERSION_MATCHER = (
 
 VERSION_CACHE = {}
 
+ERRORS_FOUND = False
+
 
 def get_version_of(repo):
     global VERSION_CACHE
@@ -245,13 +247,14 @@ def process_line(line, replacements, fd):
     match = re.search(VERSION_MATCHER, all_removed)
     if match:
         sep = "-------------------------------------------------------------------------------"
-        raise Exception(
+        end = "==============================================================================="
+        print(
             (
-                'Found version-looking string "%s" in documentation line, not covered by any AUTOVERSION expression. '
+                'ERROR: Found version-looking string "%s" in documentation line, not covered by any AUTOVERSION expression. '
                 + "Original line:\n\n%s\n%s%s\n\n"
                 + "AUTOVERSION expressions in effect:\n%s\n\n"
                 + "Line after removing all AUTOVERSION matched sections:\n\n%s\n%s%s\n\n"
-                + "See README-autoversion.markdown for more information."
+                + "See README-autoversion.markdown for more information.\n\n%s"
             )
             % (
                 match.group(0),
@@ -269,8 +272,11 @@ def process_line(line, replacements, fd):
                 sep,
                 all_removed,
                 sep,
+                end,
             )
         )
+        global ERRORS_FOUND
+        ERRORS_FOUND = True
 
     # If we were not given a file, then we are just doing checking and are done.
     if fd is None:
@@ -329,6 +335,7 @@ def main():
     global INTEGRATION_REPO
     global INTEGRATION_VERSION
     global VERSION_CACHE
+    global ERRORS_FOUND
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -398,6 +405,10 @@ def main():
         raise Exception("Either --check or --update must be given")
 
     walk_tree()
+
+    if ERRORS_FOUND:
+        print("Errors found. See printed messages.")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
