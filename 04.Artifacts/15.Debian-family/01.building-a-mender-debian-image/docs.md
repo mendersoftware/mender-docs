@@ -159,8 +159,8 @@ host machine.
 
 Learning to configure the converted image:
 
-[Image configuration](../02.image-configuration/docs.md)
+[Image configuration](../image-configuration)
 
 Learning about the configuration variables available:
 
-[Configuration variables](../03.variables/docs.md)
+[Configuration variables](../variables)

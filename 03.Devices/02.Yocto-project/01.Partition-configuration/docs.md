@@ -104,7 +104,7 @@ When [building a Mender Yocto Project image](../../../artifacts/yocto-project/bu
 | &lt;BOOT&gt; | Store the bootloader.                                   | 16 MB        | `MENDER_BOOT_PART_SIZE_MB`     |
 | `/data`      | Store persistent data, preserved during Mender updates. | 128 MB       | `MENDER_DATA_PART_SIZE_MB`     |
 
-!!! Even though the default size of `MENDER_DATA_PART_SIZE_MB` is `128 MB`, it will try to resize the partition and filesystem image on first boot to the full size of the underlying block device which is also resized to occupy remainder of available blocks on the storage medium. This functionality relies on [systemd-growfs](https://www.freedesktop.org/software/systemd/man/systemd-makefs@.service.html) and take note that only certain filesystem types are supported. See [mender-growfs-data feature](../../../04.Artifacts/10.Yocto-project/02.Image-configuration/01.Features/docs.md) for more information.
+!!! Even though the default size of `MENDER_DATA_PART_SIZE_MB` is `128 MB`, it will try to resize the partition and filesystem image on first boot to the full size of the underlying block device which is also resized to occupy remainder of available blocks on the storage medium. This functionality relies on [systemd-growfs](https://www.freedesktop.org/software/systemd/man/systemd-makefs@.service.html) and take note that only certain filesystem types are supported. See [mender-growfs-data feature](../../../artifacts/yocto-project/image-configuration/features) for more information.
 
 The value of &lt;BOOT&gt; depends on what features are enabled:
 * If `mender-uboot` is enabled: `/uboot`
