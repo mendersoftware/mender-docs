@@ -563,7 +563,7 @@ value is `1024`.
 
 > Value: 0 (default)
 
-<!--AUTOVERSION: "introduced in the Yocto Project 2.7 (%)"/ignore--> 
+<!--AUTOVERSION: "introduced in the Yocto Project 2.7 (%)"/ignore-->
 !!! This variable was introduced in the Yocto Project 2.7 (warrior) release.
 
 The size of the optional swap partition in the generated `.biosimg`, `.sdimg` or
