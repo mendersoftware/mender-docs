@@ -1,4 +1,4 @@
----
+--
 title: Debian family
 taxonomy:
     category: docs
@@ -48,7 +48,7 @@ all that you need to integrate a new device with an unsupported OS.
 ### Common customizations
 
 In many cases it will be required to provide a [custom configuration
-file](../../04.Artifacts/15.Debian-family/02.image-configuration/docs.md#configuration-files)
+file](../../artifacts/debian-family/image-configuration#configuration-files)
 to provide details that cannot be determined at probe time. Common configuration
 variables are:
 
