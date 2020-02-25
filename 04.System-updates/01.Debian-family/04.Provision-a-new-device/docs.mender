@@ -1,0 +1,10 @@
+---
+title: Provision a new device
+taxonomy:
+    category: docs
+    label: guide
+---
+
+Migration note:
+- NOTE: Moved from creating artifacts
+- NOTE: This is somewhat relevant for Yocto also
