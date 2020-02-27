@@ -47,8 +47,8 @@ all that you need to integrate a new device with an unsupported OS.
 
 ### Common customizations
 
-In many cases it will be required to provide a [custom configuration
-file](../../artifacts/debian-family/image-configuration#configuration-files)
+In many cases it will be required to provide a 
+[custom configuration file](../../artifacts/debian-family/image-configuration#configuration-files) 
 to provide details that cannot be determined at probe time. Common configuration
 variables are:
 
