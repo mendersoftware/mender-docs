@@ -270,21 +270,6 @@ Features appended to this variable will be enabled in the build. See [the
 section on features](../image-configuration/features) for more information.
 
 
-#### MENDER_GRUB_STORAGE_DEVICE
-
-> Value: <GRUB storage device> (default: empty)
-
-The storage device, as referred to by GRUB (e.g. `hd1`). This variable can be
-used in cases where the Linux kernel and GRUB refer to the same device with
-different names. See [The bootloader and the Linux kernel do not agree about the
-indexes of storage
-devices](../../../troubleshooting/yocto-project-build#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-index)
-for more information.
-
-If the variable is empty, it is automatically deduced from
-`MENDER_STORAGE_DEVICE`.
-
-
 #### MENDER_IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET
 
 > Value: <sector number> (default: platform dependent)
