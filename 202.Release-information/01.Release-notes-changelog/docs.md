@@ -4,6 +4,395 @@ taxonomy:
     category: docs
 ---
 
+## Mender 2.3.0
+
+_Released 03.05.2020_
+
+### Statistics
+
+A total of 59423 lines added, 38146 removed (delta 21277)
+
+| Developers with the most changesets | |
+|---|---|
+| Manuel Zedel | 244 (27.4%) |
+| Lluis Campos | 198 (22.2%) |
+| Alf-Rune Siqveland | 78 (8.8%) |
+| Ole Petter Orhagen | 74 (8.3%) |
+| Fabio Tranchitella | 68 (7.6%) |
+| Marcin Chalczynski | 65 (7.3%) |
+| Kristian Amlie | 63 (7.1%) |
+| Krzysztof Jaskiewicz | 48 (5.4%) |
+| Peter Grzybowski | 29 (3.3%) |
+| Ole Herman Schumacher Elgesem | 7 (0.8%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Manuel Zedel | 16299 (23.8%) |
+| Alf-Rune Siqveland | 14970 (21.8%) |
+| Fabio Tranchitella | 10359 (15.1%) |
+| Lluis Campos | 6985 (10.2%) |
+| Ole Petter Orhagen | 5027 (7.3%) |
+| Kristian Amlie | 4122 (6.0%) |
+| Marcin Chalczynski | 4013 (5.9%) |
+| Krzysztof Jaskiewicz | 3884 (5.7%) |
+| Peter Grzybowski | 1785 (2.6%) |
+| Eystein Måløy Stenberg | 425 (0.6%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Lluis Campos | 2513 (6.6%) |
+| Kristian Amlie | 771 (2.0%) |
+| Eystein Måløy Stenberg | 419 (1.1%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 769 (86.3%) |
+| RnDity | 114 (12.8%) |
+| f.breuer94@gmail.com | 2 (0.2%) |
+| prashanthjbabu@gmail.com | 2 (0.2%) |
+| risca@dalakolonin.se | 2 (0.2%) |
+| sam.vr.lewis@gmail.com | 1 (0.1%) |
+| open-nandra | 1 (0.1%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 60220 (87.9%) |
+| RnDity | 7962 (11.6%) |
+| f.breuer94@gmail.com | 323 (0.5%) |
+| prashanthjbabu@gmail.com | 12 (0.0%) |
+| sam.vr.lewis@gmail.com | 10 (0.0%) |
+| risca@dalakolonin.se | 4 (0.0%) |
+| open-nandra | 1 (0.0%) |
+
+| Employers with the most hackers (total 19) | |
+|---|---|
+| Northern.tech | 11 (57.9%) |
+| RnDity | 3 (15.8%) |
+| f.breuer94@gmail.com | 1 (5.3%) |
+| prashanthjbabu@gmail.com | 1 (5.3%) |
+| sam.vr.lewis@gmail.com | 1 (5.3%) |
+| risca@dalakolonin.se | 1 (5.3%) |
+| open-nandra | 1 (5.3%) |
+
+### Changelogs
+
+#### deployments (1.9.0)
+
+New changes in deployments since 1.8.1:
+
+* run migrations on startup like other services do
+  ([MC-1144](https://tracker.mender.io/browse/MC-1144))
+* fix device count for get deployment id
+* Set a timeout (5 seconds) for CreateBucket at start up
+* index deployments database
+  ([MEN-2019](https://tracker.mender.io/browse/MEN-2019))
+* store: Migrate to official MongoDB driver
+
+#### deployments-enterprise (1.9.0)
+
+New changes in deployments-enterprise since 1.8.1:
+
+* Disallow empty batches in phased rollouts
+  Previously there was a possibility to end up with an empty batch, due
+  to the formula used in the calculation for the number of devices which
+  is based on extracting a percentage number of devices from the total. Thus
+  if the total is so small, that a percentage below some number rounds to zero,
+  the batch would be empty. Now that same input will return an error.
+  ([MEN-2810](https://tracker.mender.io/browse/MEN-2810))
+* FIX: Concurrent updates to phase device counter are made atomic
+* run migrations on startup like other services do
+  ([MC-1144](https://tracker.mender.io/browse/MC-1144))
+* fix device count for get deployment id
+* Migration to official mongodb driver
+* Set a timeout (5 seconds) for CreateBucket at start up
+* index deployments database
+  ([MEN-2019](https://tracker.mender.io/browse/MEN-2019))
+
+#### deviceauth (2.2.0)
+
+New changes in deviceauth since 2.1.0:
+
+* Return device id to a POST /devauth/devices call
+  ([MEN-2605](https://tracker.mender.io/browse/MEN-2605))
+* additional mongodb index added
+* store/mongo: migrate to official mongodb driver
+
+#### gui (2.3.0)
+
+New changes in gui since 2.3.0b1:
+
+* ensured deployment report is closed on abort to prevent UI crash
+
+New changes in gui since 2.2.1:
+
+* fixed empty userData on edit, causing blank ui fields in settings & header
+* fixed persistence of helptip dismissal during onboarding
+* fixed regression: filtered on device-type before deployment
+* ensured device groups are sorted when retrieved from backend
+* added device status inidicator in devicelist
+* added billing information page to display current & past billing status
+* included inprogress deployments in progress visualisation
+* fixed device filtering by url parameter
+* fixed deployment device list pagination & device id display
+* made deployments refresh more frequently if appropriate
+* made selected device id show up when settings dialog is opened
+* fixed an issue that caused the proper error to be hidden when an artifact could not be changed
+* adjusted deployment report to improve release name readability
+* fixed an issue that broke the deployments list alignment
+* made releaseslist sortable
+* enabled release filtering by name, description & device types
+* added additional onboarding steps to ease update artifact generation
+* fixed an issue that prevented the staying logged in functionality from working
+* prevented a redirect after deployment creation
+
+#### integration (2.3.0)
+
+New changes in integration since 2.3.0b1:
+
+* Fix broken artifact creation in the UI.
+  ([MEN-3166](https://tracker.mender.io/browse/MEN-3166))
+* Upgrade create-artifact-worker to 1.0.0.
+* Upgrade deployments to 1.9.0.
+* Upgrade deployments-enterprise to 1.9.0.
+* Upgrade deviceauth to 2.2.0.
+* Upgrade gui to 2.3.0.
+* Upgrade inventory to 1.7.0.
+* Upgrade mender to 2.2.0.
+* Upgrade mender-api-gateway-docker to 2.1.0.
+* Upgrade mender-artifact to 3.3.0.
+* Upgrade mender-cli to 1.3.0.
+* Upgrade mender-conductor to 1.6.0.
+* Upgrade mender-conductor-enterprise to 1.6.0.
+* Upgrade tenantadm to 1.1.0.
+* Upgrade useradm to 1.10.0.
+* Upgrade useradm-enterprise to 1.10.0.
+* Upgrade workflows to 1.0.0.
+
+New changes in integration since 2.2.1:
+
+* Fix issue when demo script exists abruptly on user request
+  for logs. The issue only showed up when the folder name contained "-"
+  or "." characters.
+* Add enterprise enabling flag to enterprise composition GUI
+  container, so that the enterprise features are shown in the Frontend.
+* Fix - Make sure the demo-script subprocess has a stdin fd
+  ([MEN-2836](https://tracker.mender.io/browse/MEN-2836))
+* Fix - Create explicit exitcond for the demo setup fixture
+  ([MEN-2836](https://tracker.mender.io/browse/MEN-2836))
+* Change Enterprise Docker links to registry.mender.io.
+  This will be our gateway to serve the Enterprise images, not Docker
+  Hub. Those who are using Enterprise will need to log into this
+  gateway:
+  ```
+  docker login -u $USERNAME registry.mender.io
+  ```
+  where `$USERNAME` is the username given to you from Northern.tech. You
+  will be prompted for the password.
+* Verify that empty batches returns a 400 error
+  Added a test for verifying that deployments-enterprise returns a 400 error
+  in case of the number of devices in a batch being empty due to rounding
+  errors in relation to the formula used for determining the number of devices
+  in a batch. ([MEN-2838](https://tracker.mender.io/browse/MEN-2838))
+* Backend Integration tests always print "tests failed"; fix.
+* Remove the Python dependency in the demo script
+  Remove the Python dependency in the demo script, to decrease the dependency
+  surface of the demo script.
+  Now the Mender-Artifact and Mender versions are parsed from the
+  docker-compose.client.yml and other-components.yml files through a simple AWK
+  script instead.
+  ([MEN-2817](https://tracker.mender.io/browse/MEN-2817))
+* Unskip the Pre-Auth tests
+  ([MEN-1797](https://tracker.mender.io/browse/MEN-1797))
+* Enable logging for minio
+  ([MEN-2922](https://tracker.mender.io/browse/MEN-2922))
+* [tests/run.sh] Enable passing on quoted arguments to pytest
+* Run workflows with automigrate in production
+  ([QA-139](https://tracker.mender.io/browse/QA-139))
+* workflows server fixing demo command
+  ([QA-139](https://tracker.mender.io/browse/QA-139))
+* Upgrade elasticsearch to version 6
+  ([MEN-2985](https://tracker.mender.io/browse/MEN-2985))
+* Fix setup for running without SSL termination
+* Add create-artifact-worker 1.0.0b1.
+* Upgrade deployments to 1.9.0b1.
+* Upgrade deployments-enterprise to 1.9.0b1.
+* Upgrade deviceauth to 2.2.0b1.
+* Upgrade gui to 2.3.0b1.
+* Upgrade inventory to 1.7.0b1.
+* Upgrade mender to 2.2.0b1.
+* Upgrade mender-api-gateway-docker to 2.1.0b1.
+* Upgrade mender-artifact to 3.3.0b1.
+* Upgrade mender-cli to 1.3.0b1.
+* Upgrade mender-conductor to 1.6.0b1.
+* Upgrade mender-conductor-enterprise to 1.6.0b1.
+* Upgrade tenantadm to 1.1.0b1.
+* Upgrade useradm to 1.10.0b1.
+* Upgrade useradm-enterprise to 1.10.0b1.
+* Add workflows 1.0.0b1.
+
+#### inventory (1.7.0)
+
+New changes in inventory since 1.6.0:
+
+* support for new mongo-driver
+  ([MEN-2454](https://tracker.mender.io/browse/MEN-2454), [MEN-2801](https://tracker.mender.io/browse/MEN-2801))
+
+#### mender (2.2.0)
+
+New changes in mender since 2.2.0b1:
+
+* Remove text/template dependency from the cli library reducing
+  mender client binary size by approximately 20%
+* Fix "State transition loop detected" when retrying status update.
+
+New changes in mender since 2.1.2:
+
+* mender setup cli command and new CLI package
+  ([MEN-2418](https://tracker.mender.io/browse/MEN-2418), [MEN-2806](https://tracker.mender.io/browse/MEN-2806))
+* Fix UBI device size calculation
+* store: Save artifact provides for dependency verifications
+* app: Verify artifact (version >= 3) dependencies with current artifact
+* store/app{standalone}: Artifact dependency checking for artifact v3
+* app/store{standalone}: Unit tests Artifact v3 depends and provides
+* Enable the usage of the full Mender-Artifact version 3 format
+  ([MEN-2642](https://tracker.mender.io/browse/MEN-2642))
+* support: modules-artifact-gen: Fix typo in default name of output file
+* Rename --mender-professional flag to --hosted-mender
+* Add --quiet flag and remove --run-daemon option and confirm device
+* Now the client stores Artifact provides parameters across reboots in
+  standalone mode. Previously this data was ignored, and hence upgrading with an
+  Artifact with provides parameters these were lost.
+  ([MEN-2969](https://tracker.mender.io/browse/MEN-2969))
+* Set default device type to hostname for interactive setup
+* New command: `snapshot dump` to dump current rootfs
+* Skip special device "rootfs" when determining rootfs type
+* Report 'Unknown' rootfs type if we can't detect it
+* Optimize rootfs-update image writes
+  ([MEN-2939](https://tracker.mender.io/browse/MEN-2939))
+* Make `single-file-artifact-gen` script POSIX compliant.
+  ([MEN-3049](https://tracker.mender.io/browse/MEN-3049))
+* Fix segfault when running `mender setup` on a read-only
+  filesystem.
+* Fix crash when specified certificate can't be opened.
+  Both the `ServerCertificate` setting and the system certificates are
+  now optional, in the sense that the client will run without them.
+  However, the client will not be able to connect without the right
+  certificates, so the main usecase of this change is to have a workable
+  client that will roll back if connections can't be made, instead of
+  exiting. ([MEN-3047](https://tracker.mender.io/browse/MEN-3047))
+* Add warning message when server certificate can't be parsed.
+* snapshot: Added watchdog timer to keep system from freezing
+* snapshot: Add compression options to speed up transfer
+* Improved error message when an update-module is missing
+  ([MEN-3007](https://tracker.mender.io/browse/MEN-3007))
+* snapshot: New flag `--source` specifying the source
+  filesystem to snapshot
+
+#### mender-api-gateway-docker (2.1.0)
+
+New changes in mender-api-gateway-docker since 2.0.0:
+
+* ssl_trusted_certificate added
+* SSL termination can be turned off via environment variable
+
+#### mender-artifact (3.3.0)
+
+New changes in mender-artifact since 3.2.1:
+
+* Adds API for returning all Artifact provides and depends
+  ([MEN-2549](https://tracker.mender.io/browse/MEN-2549))
+* Enables Artifact Provides and Depends for write rootfs-img
+  Previously, the `write rootfs-image` command did not have the ability
+  to set Provides and Depends in the artifact. This was only enabled for
+  the `write module-image` command. Now the `rootfs-image` update can
+  also set Provides and Depends. However, please note that meta-data
+  and augmented Provides and Depends still are unsupported.
+  ([MEN-2812](https://tracker.mender.io/browse/MEN-2812))
+* Fix bug that destroys Artifact if any copy/modify command
+  is used on a non-rootfs-image Artifact.
+  ([MEN-2592](https://tracker.mender.io/browse/MEN-2592))
+* The `modify` subcommand has gained the `-k`/`--key`
+  argument to automatically sign the Artifact after modification.
+  ([MEN-2592](https://tracker.mender.io/browse/MEN-2592))
+* Remove superfluous "Files" header from `read` output.
+* Fix incorrect help string for signed artifacts.
+  If no key was provided, it said that the signature verification
+  failed, but it should instruct the user to provide a key.
+* Fix state scripts being lost when modifying artifact.
+* One can now use `mender-artifact modify` to change artifact
+  Depends, Provides and Meta-data attributes. See the help screen for
+  more information.
+  ([MEN-1669](https://tracker.mender.io/browse/MEN-1669))
+* `mender-artifact modify --name` argument renamed to
+  `--artifact-name` to match the rest of the tool's flags. The old flag
+  is still kept for compatibility.
+  ([MEN-1669](https://tracker.mender.io/browse/MEN-1669))
+* Make artifact install respect the given file permissions
+  ([MEN-2880](https://tracker.mender.io/browse/MEN-2880))
+* Added the writing of the `rootfs_image_checksum` provide parameter as
+  a default to `rootfs-image` Artifacts. This means that now, the
+  `rootfs_image_checksum` will be written as a provide parameter to the Mender
+  client's database upon an update with the given Artifact. Please note that for
+  older clients (i.e. <= 2.1.x) this will not work, and the functionality should
+  be disabled by the user through the `--no-checksum-provide` flag when writing a
+  rootfs-image Artifact.
+  ([MEN-2956](https://tracker.mender.io/browse/MEN-2956))
+* Create artifact from device snapshot
+
+#### mender-cli (1.3.0)
+
+New changes in mender-cli since 1.2.0:
+
+* Build and publish Mac OS X binary for `mender-cli`
+
+#### mender-conductor (1.6.0)
+
+New changes in mender-conductor since 1.5.0:
+
+* Bugfixes for send_email conductor worker
+* Prepare ES6 enabled conductor image
+  ([MC-1296](https://tracker.mender.io/browse/MC-1296), [MEN-2987](https://tracker.mender.io/browse/MEN-2987))
+
+#### mender-conductor-enterprise (1.6.0)
+
+New changes in mender-conductor-enterprise since 1.5.0:
+
+* Bugfixes for prepare_org_welcome_email conductor worker
+
+#### tenantadm (1.1.0)
+
+New changes in tenantadm since 1.0.0:
+
+* stripe-go library updated
+* api/http: New endpoint for creating inactive organization.
+* Endpoint for removing inactive organization
+* api/http: management endpoint for activating organization and updating org CC info
+* store: Update to official mongodb driver
+
+#### useradm (1.10.0)
+
+New changes in useradm since 1.9.1:
+
+* store/mongo: handle mongodb client creation error
+
+#### useradm-enterprise (1.10.0)
+
+New changes in useradm-enterprise since 1.9.1:
+
+* Support for older Google authenticators on iOS, trimming secret length
+* FIX: Create user panics when tenant-id is not specified
+* store/mongo: handle mongodb client creation error
+
+#### workflows (1.0.0)
+
+* Refactor repo and added metadata endpoints
+* docker: Initialized docker files workflows
+* fixing entrypoint to match other services
+  ([QA-139](https://tracker.mender.io/browse/QA-139))
+* default mongo url fix
+  ([MEN-3060](https://tracker.mender.io/browse/MEN-3060))
+
+
 ## Mender 2.2.2
 
 _Released 03.05.2020_
@@ -298,364 +687,6 @@ New changes in meta-mender since warrior-v2019.12:
 * Add mender-artifact 3.3.0b1 recipe
 * In demo mode, put demo certificate in same directory as Debian package.
   ([MEN-3048](https://tracker.mender.io/browse/MEN-3048))
-
-
-## Mender 2.3.0b1
-
-_Released 02.10.2020
-
-### Statistics
-
-A total of 58912 lines added, 36759 removed (delta 22153)
-
-| Developers with the most changesets | |
-|---|---|
-| Manuel Zedel | 238 (28.4%) |
-| Lluis Campos | 162 (19.3%) |
-| Alf-Rune Siqveland | 78 (9.3%) |
-| Ole Petter Orhagen | 74 (8.8%) |
-| Marcin Chalczynski | 65 (7.8%) |
-| Fabio Tranchitella | 65 (7.8%) |
-| Kristian Amlie | 59 (7.0%) |
-| Krzysztof Jaskiewicz | 46 (5.5%) |
-| Peter Grzybowski | 27 (3.2%) |
-| Ole Herman Schumacher Elgesem | 7 (0.8%) |
-
-| Developers with the most changed lines | |
-|---|---|
-| Manuel Zedel | 16265 (24.3%) |
-| Alf-Rune Siqveland | 14970 (22.4%) |
-| Fabio Tranchitella | 10354 (15.5%) |
-| Lluis Campos | 5616 (8.4%) |
-| Ole Petter Orhagen | 5027 (7.5%) |
-| Marcin Chalczynski | 4013 (6.0%) |
-| Kristian Amlie | 3923 (5.9%) |
-| Krzysztof Jaskiewicz | 3878 (5.8%) |
-| Peter Grzybowski | 1777 (2.7%) |
-| Eystein Måløy Stenberg | 425 (0.6%) |
-
-| Developers with the most lines removed | |
-|---|---|
-| Lluis Campos | 1459 (4.0%) |
-| Kristian Amlie | 944 (2.6%) |
-| Eystein Måløy Stenberg | 419 (1.1%) |
-
-| Top changeset contributors by employer | |
-|---|---|
-| Northern.tech | 718 (85.7%) |
-| RnDity | 112 (13.4%) |
-| f.breuer94@gmail.com | 2 (0.2%) |
-| prashanthjbabu@gmail.com | 2 (0.2%) |
-| risca@dalakolonin.se | 2 (0.2%) |
-| sam.vr.lewis@gmail.com | 1 (0.1%) |
-| open-nandra | 1 (0.1%) |
-
-| Top lines changed by employer | |
-|---|---|
-| Northern.tech | 58605 (87.6%) |
-| RnDity | 7956 (11.9%) |
-| f.breuer94@gmail.com | 323 (0.5%) |
-| prashanthjbabu@gmail.com | 12 (0.0%) |
-| sam.vr.lewis@gmail.com | 10 (0.0%) |
-| risca@dalakolonin.se | 4 (0.0%) |
-| open-nandra | 1 (0.0%) |
-
-| Employers with the most hackers (total 19) | |
-|---|---|
-| Northern.tech | 11 (57.9%) |
-| RnDity | 3 (15.8%) |
-| f.breuer94@gmail.com | 1 (5.3%) |
-| prashanthjbabu@gmail.com | 1 (5.3%) |
-| sam.vr.lewis@gmail.com | 1 (5.3%) |
-| risca@dalakolonin.se | 1 (5.3%) |
-| open-nandra | 1 (5.3%) |
-
-### Changelogs
-
-#### deployments (1.9.0b1)
-
-New changes in deployments since 1.8.1:
-
-* run migrations on startup like other services do
-  ([MC-1144](https://tracker.mender.io/browse/MC-1144))
-* fix device count for get deployment id
-* Set a timeout (5 seconds) for CreateBucket at start up
-* index deployments database
-  ([MEN-2019](https://tracker.mender.io/browse/MEN-2019))
-* store: Migrate to official MongoDB driver
-
-#### deployments-enterprise (1.9.0b1)
-
-New changes in deployments-enterprise since 1.8.1:
-
-* Disallow empty batches in phased rollouts
-  Previously there was a possibility to end up with an empty batch, due
-  to the formula used in the calculation for the number of devices which
-  is based on extracting a percentage number of devices from the total. Thus
-  if the total is so small, that a percentage below some number rounds to zero,
-  the batch would be empty. Now that same input will return an error.
-  ([MEN-2810](https://tracker.mender.io/browse/MEN-2810))
-* FIX: Concurrent updates to phase device counter are made atomic
-* run migrations on startup like other services do
-  ([MC-1144](https://tracker.mender.io/browse/MC-1144))
-* fix device count for get deployment id
-* Migration to official mongodb driver
-* Set a timeout (5 seconds) for CreateBucket at start up
-* index deployments database
-  ([MEN-2019](https://tracker.mender.io/browse/MEN-2019))
-
-#### deviceauth (2.2.0b1)
-
-New changes in deviceauth since 2.1.0:
-
-* Return device id to a POST /devauth/devices call
-  ([MEN-2605](https://tracker.mender.io/browse/MEN-2605))
-* additional mongodb index added
-* store/mongo: migrate to official mongodb driver
-
-#### gui (2.3.0b1)
-
-New changes in gui since 2.2.1:
-
-* fixed empty userData on edit, causing blank ui fields in settings & header
-* fixed persistence of helptip dismissal during onboarding
-* fixed regression: filtered on device-type before deployment
-* ensured device groups are sorted when retrieved from backend
-* added device status inidicator in devicelist
-* added billing information page to display current & past billing status
-* included inprogress deployments in progress visualisation
-* fixed device filtering by url parameter
-* fixed deployment device list pagination & device id display
-* made deployments refresh more frequently if appropriate
-* made selected device id show up when settings dialog is opened
-* fixed an issue that caused the proper error to be hidden when an artifact could not be changed
-* adjusted deployment report to improve release name readability
-* fixed an issue that broke the deployments list alignment
-* made releaseslist sortable
-* enabled release filtering by name, description & device types
-* added additional onboarding steps to ease update artifact generation
-* fixed an issue that prevented the staying logged in functionality from working
-* prevented a redirect after deployment creation
-
-#### integration (2.3.0b1)
-
-New changes in integration since 2.2.1:
-
-* Fix issue when demo script exists abruptly on user request
-  for logs. The issue only showed up when the folder name contained "-"
-  or "." characters.
-* Add enterprise enabling flag to enterprise composition GUI
-  container, so that the enterprise features are shown in the Frontend.
-* Fix - Make sure the demo-script subprocess has a stdin fd
-  ([MEN-2836](https://tracker.mender.io/browse/MEN-2836))
-* Fix - Create explicit exitcond for the demo setup fixture
-  ([MEN-2836](https://tracker.mender.io/browse/MEN-2836))
-* Change Enterprise Docker links to registry.mender.io.
-  This will be our gateway to serve the Enterprise images, not Docker
-  Hub. Those who are using Enterprise will need to log into this
-  gateway:
-  ```
-  docker login -u $USERNAME registry.mender.io
-  ```
-  where `$USERNAME` is the username given to you from Northern.tech. You
-  will be prompted for the password.
-* Verify that empty batches returns a 400 error
-  Added a test for verifying that deployments-enterprise returns a 400 error
-  in case of the number of devices in a batch being empty due to rounding
-  errors in relation to the formula used for determining the number of devices
-  in a batch. ([MEN-2838](https://tracker.mender.io/browse/MEN-2838))
-* Backend Integration tests always print "tests failed"; fix.
-* Remove the Python dependency in the demo script
-  Remove the Python dependency in the demo script, to decrease the dependency
-  surface of the demo script.
-  Now the Mender-Artifact and Mender versions are parsed from the
-  docker-compose.client.yml and other-components.yml files through a simple AWK
-  script instead.
-  ([MEN-2817](https://tracker.mender.io/browse/MEN-2817))
-* Unskip the Pre-Auth tests
-  ([MEN-1797](https://tracker.mender.io/browse/MEN-1797))
-* Enable logging for minio
-  ([MEN-2922](https://tracker.mender.io/browse/MEN-2922))
-* [tests/run.sh] Enable passing on quoted arguments to pytest
-* Run workflows with automigrate in production
-  ([QA-139](https://tracker.mender.io/browse/QA-139))
-* workflows server fixing demo command
-  ([QA-139](https://tracker.mender.io/browse/QA-139))
-* Upgrade elasticsearch to version 6
-  ([MEN-2985](https://tracker.mender.io/browse/MEN-2985))
-* Fix setup for running without SSL termination
-* Add create-artifact-worker 1.0.0b1.
-* Upgrade deployments to 1.9.0b1.
-* Upgrade deployments-enterprise to 1.9.0b1.
-* Upgrade deviceauth to 2.2.0b1.
-* Upgrade gui to 2.3.0b1.
-* Upgrade inventory to 1.7.0b1.
-* Upgrade mender to 2.2.0b1.
-* Upgrade mender-api-gateway-docker to 2.1.0b1.
-* Upgrade mender-artifact to 3.3.0b1.
-* Upgrade mender-cli to 1.3.0b1.
-* Upgrade mender-conductor to 1.6.0b1.
-* Upgrade mender-conductor-enterprise to 1.6.0b1.
-* Upgrade tenantadm to 1.1.0b1.
-* Upgrade useradm to 1.10.0b1.
-* Upgrade useradm-enterprise to 1.10.0b1.
-* Add workflows 1.0.0b1.
-
-#### inventory (1.7.0b1)
-
-New changes in inventory since 1.6.0:
-
-* support for new mongo-driver
-  ([MEN-2454](https://tracker.mender.io/browse/MEN-2454), [MEN-2801](https://tracker.mender.io/browse/MEN-2801))
-
-#### mender (2.2.0b1)
-
-New changes in mender since 2.1.2:
-
-* mender setup cli command and new CLI package
-  ([MEN-2418](https://tracker.mender.io/browse/MEN-2418), [MEN-2806](https://tracker.mender.io/browse/MEN-2806))
-* Fix UBI device size calculation
-* store: Save artifact provides for dependency verifications
-* app: Verify artifact (version >= 3) dependencies with current artifact
-* store/app{standalone}: Artifact dependency checking for artifact v3
-* app/store{standalone}: Unit tests Artifact v3 depends and provides
-* Enable the usage of the full Mender-Artifact version 3 format
-  ([MEN-2642](https://tracker.mender.io/browse/MEN-2642))
-* support: modules-artifact-gen: Fix typo in default name of output file
-* Rename --mender-professional flag to --hosted-mender
-* Add --quiet flag and remove --run-daemon option and confirm device
-* Now the client stores Artifact provides parameters across reboots in
-  standalone mode. Previously this data was ignored, and hence upgrading with an
-  Artifact with provides parameters these were lost.
-  ([MEN-2969](https://tracker.mender.io/browse/MEN-2969))
-* Set default device type to hostname for interactive setup
-* New command: `snapshot dump` to dump current rootfs
-* Skip special device "rootfs" when determining rootfs type
-* Report 'Unknown' rootfs type if we can't detect it
-* Optimize rootfs-update image writes
-  ([MEN-2939](https://tracker.mender.io/browse/MEN-2939))
-* Make `single-file-artifact-gen` script POSIX compliant.
-  ([MEN-3049](https://tracker.mender.io/browse/MEN-3049))
-* Fix segfault when running `mender setup` on a read-only
-  filesystem.
-* Fix crash when specified certificate can't be opened.
-  Both the `ServerCertificate` setting and the system certificates are
-  now optional, in the sense that the client will run without them.
-  However, the client will not be able to connect without the right
-  certificates, so the main usecase of this change is to have a workable
-  client that will roll back if connections can't be made, instead of
-  exiting. ([MEN-3047](https://tracker.mender.io/browse/MEN-3047))
-* Add warning message when server certificate can't be parsed.
-* snapshot: Added watchdog timer to keep system from freezing
-* snapshot: Add compression options to speed up transfer
-* Improved error message when an update-module is missing
-  ([MEN-3007](https://tracker.mender.io/browse/MEN-3007))
-* snapshot: New flag `--source` specifying the source
-  filesystem to snapshot
-
-#### mender-api-gateway-docker (2.1.0b1)
-
-New changes in mender-api-gateway-docker since 2.0.0:
-
-* ssl_trusted_certificate added
-* SSL termination can be turned off via environment variable
-
-#### mender-artifact (3.3.0b1)
-
-New changes in mender-artifact since 3.2.1:
-
-* Adds API for returning all Artifact provides and depends
-  ([MEN-2549](https://tracker.mender.io/browse/MEN-2549))
-* Enables Artifact Provides and Depends for write rootfs-img
-  Previously, the `write rootfs-image` command did not have the ability
-  to set Provides and Depends in the artifact. This was only enabled for
-  the `write module-image` command. Now the `rootfs-image` update can
-  also set Provides and Depends. However, please note that meta-data
-  and augmented Provides and Depends still are unsupported.
-  ([MEN-2812](https://tracker.mender.io/browse/MEN-2812))
-* Fix bug that destroys Artifact if any copy/modify command
-  is used on a non-rootfs-image Artifact.
-  ([MEN-2592](https://tracker.mender.io/browse/MEN-2592))
-* The `modify` subcommand has gained the `-k`/`--key`
-  argument to automatically sign the Artifact after modification.
-  ([MEN-2592](https://tracker.mender.io/browse/MEN-2592))
-* Remove superfluous "Files" header from `read` output.
-* Fix incorrect help string for signed artifacts.
-  If no key was provided, it said that the signature verification
-  failed, but it should instruct the user to provide a key.
-* Fix state scripts being lost when modifying artifact.
-* One can now use `mender-artifact modify` to change artifact
-  Depends, Provides and Meta-data attributes. See the help screen for
-  more information.
-  ([MEN-1669](https://tracker.mender.io/browse/MEN-1669))
-* `mender-artifact modify --name` argument renamed to
-  `--artifact-name` to match the rest of the tool's flags. The old flag
-  is still kept for compatibility.
-  ([MEN-1669](https://tracker.mender.io/browse/MEN-1669))
-* Make artifact install respect the given file permissions
-  ([MEN-2880](https://tracker.mender.io/browse/MEN-2880))
-* Added the writing of the `rootfs_image_checksum` provide parameter as
-  a default to `rootfs-image` Artifacts. This means that now, the
-  `rootfs_image_checksum` will be written as a provide parameter to the Mender
-  client's database upon an update with the given Artifact. Please note that for
-  older clients (i.e. <= 2.1.x) this will not work, and the functionality should
-  be disabled by the user through the `--no-checksum-provide` flag when writing a
-  rootfs-image Artifact.
-  ([MEN-2956](https://tracker.mender.io/browse/MEN-2956))
-* Create artifact from device snapshot
-
-#### mender-cli (1.3.0b1)
-
-New changes in mender-cli since 1.2.0:
-
-* Build and publish Mac OS X binary for `mender-cli`
-
-#### mender-conductor (1.6.0b1)
-
-New changes in mender-conductor since 1.5.0:
-
-* Bugfixes for send_email conductor worker
-* Prepare ES6 enabled conductor image
-  ([MC-1296](https://tracker.mender.io/browse/MC-1296), [MEN-2987](https://tracker.mender.io/browse/MEN-2987))
-
-#### mender-conductor-enterprise (1.6.0b1)
-
-New changes in mender-conductor-enterprise since 1.5.0:
-
-* Bugfixes for prepare_org_welcome_email conductor worker
-
-#### tenantadm (1.1.0b1)
-
-New changes in tenantadm since 1.0.0:
-
-* stripe-go library updated
-* api/http: New endpoint for creating inactive organization.
-* Endpoint for removing inactive organization
-* api/http: management endpoint for activating organization and updating org CC info
-* store: Update to official mongodb driver
-
-#### useradm (1.10.0b1)
-
-New changes in useradm since 1.9.1:
-
-* store/mongo: handle mongodb client creation error
-
-#### useradm-enterprise (1.10.0b1)
-
-New changes in useradm-enterprise since 1.9.1:
-
-* Support for older Google authenticators on iOS, trimming secret length
-* FIX: Create user panics when tenant-id is not specified
-* store/mongo: handle mongodb client creation error
-
-#### workflows (1.0.0b1)
-
-* Refactor repo and added metadata endpoints
-* docker: Initialized docker files workflows
-* fixing entrypoint to match other services
-  ([QA-139](https://tracker.mender.io/browse/QA-139))
-* default mongo url fix
-  ([MEN-3060](https://tracker.mender.io/browse/MEN-3060))
 
 
 ## meta-mender thud-v2019.12
