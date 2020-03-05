@@ -69,8 +69,8 @@ git fetch origin --tags
 > Receiving objects: 100% (367/367), 83.55 KiB | 0 bytes/s, done.  
 > Resolving deltas: 100% (214/214), completed with 42 local objects.  
 > From https://github.com/mendersoftware/integration  
->    02cd118..75b7831  2.2.1      -> origin/2.2.1
->    06f3212..e9e5df4  2.2.1     -> origin/2.2.1  
+>    02cd118..75b7831  2.2.2      -> origin/2.2.2
+>    06f3212..e9e5df4  2.2.2     -> origin/2.2.2  
 > ```
 
 <!--AUTOVERSION: "branch named `%` provides"/ignore "e.g. `%`"/ignore-->
@@ -88,7 +88,7 @@ introduced in upstream branch. For example:
 # to list differences between current HEAD and remote branch
 git log HEAD..origin/2.0.x
 # to list differences between current HEAD and stable tag
-git log HEAD..2.2.1
+git log HEAD..2.2.2
 ```
 
 The most important thing to review is the diff between our production template
@@ -99,14 +99,14 @@ minor/major release, one can expect the diff to be larger. Example:
 <!--AUTOVERSION: "HEAD..%"/integration-->
 ```bash
 # while at the root of repository
-user@local$ git diff HEAD..2.2.1 -- template
+user@local$ git diff HEAD..2.2.2 -- template
 ```
 
 Upgrading our local production branch is performed by issuing a `git merge` command, like this:
 
 <!--AUTOVERSION: "git merge %"/integration-->
 ```bash
-git merge 2.2.1
+git merge 2.2.2
 ```
 > ```
 > Merge made by the 'recursive' strategy.
@@ -143,10 +143,10 @@ First, pull in new container images:
 > 2.1.0: Pulling from mendersoftware/deviceauth  
 > Digest: sha256:07ed10f6fdee40df1de8e10efc3115cb64b0c190bcf5bcd194b9f34086396058  
 > Status: Image is up to date for mendersoftware/deviceauth:2.1.0  
-> Pulling mender-gui (mendersoftware/gui:2.2.1)...  
-> 2.2.1: Pulling from mendersoftware/gui  
+> Pulling mender-gui (mendersoftware/gui:2.2.2)...  
+> 2.2.2: Pulling from mendersoftware/gui  
 > Digest: sha256:af2d2349f27dd96ca21940672aa3a91335b17153f8c7ef2ca865a9a7fdf2fd22  
-> Status: Image is up to date for mendersoftware/gui:2.2.1  
+> Status: Image is up to date for mendersoftware/gui:2.2.2  
 > Pulling mender-api-gateway (mendersoftware/api-gateway:2.0.0)...  
 > 2.0.0: Pulling from mendersoftware/api-gateway  
 > Digest: sha256:0a2033a57f88afc38253a45301c83484e532047d75858df95d46c12b48f1f2f8  
