@@ -62,6 +62,11 @@ that your device(s) can connect to the Mender server.
 
 ! Using static IP addresses with one device and workstation is quite easy. If you are using several devices, we strongly recommend using a setup with dynamic IP assignment like a router with DHCP support. Otherwise you need to take care to preserve the unique IP address configuration of each device when provisioning the storage and deploying rootfs updates.
 
+!!! If the device does not have internet connectivity, the device will not be able
+!!! to sync the system time. This will in turn cause the server certificate check to
+!!! fail. Thus if your device is not connected to the internet, you have to manually
+!!! set the system time correctly. This can be done with the `date -s` command.
+
 ## Prepare the disk image
 
 Locate the demo _disk image_ (`*.sdimg`) you downloaded for your device.
@@ -124,7 +129,7 @@ Name=eth0
 [Network]
 Address=$IP_OF_MENDER_CLIENT
 Gateway=$IP_OF_MENDER_SERVER_FROM_DEVICE
-" | mender-artifact cp $MENDER_IMGPATH:/etc/systemd/network/eth.network
+" | mender-artifact cp - $MENDER_IMGPATH:/etc/systemd/network/eth.network
 ```
 
 ! If you have a static IP address setup for several devices, you need several disk images so each get different IP addresses.
