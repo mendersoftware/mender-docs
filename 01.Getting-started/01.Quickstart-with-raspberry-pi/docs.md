@@ -123,7 +123,7 @@ Next, you will need to download the Mender integration environment in the workin
 
 <!--AUTOVERSION: "-b % https://github.com/mendersoftware/integration.git"/integration-->
 ```
-git clone -b 2.3.0b1 https://github.com/mendersoftware/integration.git integration
+git clone -b 2.3.0 https://github.com/mendersoftware/integration.git integration
 
 cd integration
 ```
