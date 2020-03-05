@@ -4,6 +4,73 @@ taxonomy:
     category: docs
 ---
 
+## Mender 2.2.2
+
+_Released 03.05.2020_
+
+### Statistics
+
+A total of 2128 lines added, 207 removed (delta 1921)
+
+| Developers with the most changesets | |
+|---|---|
+| Manuel Zedel | 13 (65.0%) |
+| Kristian Amlie | 5 (25.0%) |
+| Michael Clelland | 1 (5.0%) |
+| Lluis Campos | 1 (5.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Manuel Zedel | 2008 (93.6%) |
+| Kristian Amlie | 118 (5.5%) |
+| Lluis Campos | 18 (0.8%) |
+| Michael Clelland | 2 (0.1%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 20 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 2146 (100.0%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 4 (100.0%) |
+
+### Changelogs
+
+#### gui (2.2.2)
+
+New changes in gui since 2.2.1:
+
+* fix: removed superfluous " around tenant token in device config code
+* Fix for changing page length for pagination of rejected and preauth devices
+* fixed deploymentdevicelist lacking device identity information
+* fixed device list refresh after page length change in deployment devicelist
+* fixed an issue that prevented the staying logged in functionality from working
+
+#### integration (2.2.2)
+
+New changes in integration since 2.2.1:
+
+* Upgrade gui to 2.2.2.
+* Upgrade mender to 2.1.3.
+
+#### mender (2.1.3)
+
+New changes in mender since 2.1.2:
+
+* Fix crash when specified certificate can't be opened.
+  Both the `ServerCertificate` setting and the system certificates are
+  now optional, in the sense that the client will run without them.
+  However, the client will not be able to connect without the right
+  certificates, so the main usecase of this change is to have a workable
+  client that will roll back if connections can't be made, instead of
+  exiting. ([MEN-3047](https://tracker.mender.io/browse/MEN-3047))
+* Add warning message when server certificate can't be parsed.
+
+
 ## meta-mender thud-v2019.12
 
 _Released 12.17.2019_
