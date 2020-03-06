@@ -26,7 +26,7 @@ Mender provides images based on the following distributions:
 |------------------|---------------------------------|--------------------------------------------------------------------------|--------------|
 | Raspberry Pi 3   | Raspbian Buster Lite 2020-02-05 | [raspbian-buster-lite-mender.img.xz][raspbian-buster-lite-mender.img.xz] | 8 GB         |
 
-<!--AUTOVERSION: "mender-%.img.xz"/mender -->
+<!--AUTOVERSION: "mender-%.img.xz"/mender-convert-client -->
 [raspbian-buster-lite-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-02-05-raspbian-buster-lite/arm/2020-02-05-raspbian-buster-lite-mender-2.2.0.img.xz
 
 You can find images for other devices in our Mender Hub community forum, see

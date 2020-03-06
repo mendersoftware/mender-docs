@@ -350,6 +350,10 @@ def main():
         "--mender-convert-version", help="Mender-convert version to update to"
     )
     parser.add_argument(
+        "--mender-convert-client-version",
+        help="Mender client version used in mender-convert to update to",
+    )
+    parser.add_argument(
         "--meta-mender-version",
         help="meta-mender version to update to (usually a branch)",
     )
@@ -378,6 +382,14 @@ def main():
                 'Not replacing "mender-convert" instances, since it was not specified'
             )
             VERSION_CACHE["mender-convert"] = False
+
+        if args.mender_convert_client_version is not None:
+            VERSION_CACHE["mender-convert-client"] = args.mender_convert_client_version
+        else:
+            print(
+                'Not replacing "mender-convert-client" instances, since it was not specified'
+            )
+            VERSION_CACHE["mender-convert-client"] = False
 
         if args.meta_mender_version is not None:
             if args.poky_version is None:
