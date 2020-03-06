@@ -32,7 +32,7 @@ A Debian package (`.deb`) is provided for convenience to install on e.g Debian, 
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
 | Architecture   | Devices                                   | Download link                                                       |
 |----------------|-------------------------------------------|---------------------------------------------------------------------|
-| armhf (ARM-v6) | Raspberry Pi, BeagleBone, other ARM based | [mender-client_2.1.2-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] |
+| armhf (ARM-v6) | Raspberry Pi, BeagleBone, other ARM based | [mender-client_2.1.3-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] |
 
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
-[mender-client_x.x.x-1_armhf.deb]: https://d1b0l86ne08fsf.cloudfront.net/2.1.2/dist-packages/debian/armhf/mender-client_2.1.2-1_armhf.deb
+[mender-client_x.x.x-1_armhf.deb]: https://d1b0l86ne08fsf.cloudfront.net/2.1.3/dist-packages/debian/armhf/mender-client_2.1.3-1_armhf.deb
