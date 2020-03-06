@@ -4,100 +4,37 @@ taxonomy:
     category: docs
 ---
 
-## meta-mender warrior-v2020.02.2
+## mender-convert 2.0.0
 
-_Released 02.18.2020_
-
-### Statistics
-
-A total of 26 lines added, 7 removed (delta 19)
-
-| Developers with the most changesets | |
-|---|---|
-| Matthew Beckler | 2 (40.0%) |
-| Gaurav Kalra | 1 (20.0%) |
-| Joerg Hofrichter | 1 (20.0%) |
-| Drew Moseley | 1 (20.0%) |
-
-| Developers with the most changed lines | |
-|---|---|
-| Drew Moseley | 21 (80.8%) |
-| Matthew Beckler | 2 (7.7%) |
-| Joerg Hofrichter | 2 (7.7%) |
-| Gaurav Kalra | 1 (3.8%) |
-
-| Developers with the most signoffs (total 1) | |
-|---|---|
-| Kristian Amlie | 1 (100.0%) |
-
-| Top changeset contributors by employer | |
-|---|---|
-| Packet Power LLC | 2 (40.0%) |
-| National Instruments | 1 (20.0%) |
-| SM Instruments Inc. | 1 (20.0%) |
-| Northern.tech | 1 (20.0%) |
-
-| Top lines changed by employer | |
-|---|---|
-| Northern.tech | 21 (80.8%) |
-| Packet Power LLC | 2 (7.7%) |
-| National Instruments | 2 (7.7%) |
-| SM Instruments Inc. | 1 (3.8%) |
-
-| Employers with the most signoffs (total 1) | |
-|---|---|
-| Northern.tech | 1 (100.0%) |
-
-| Employers with the most hackers (total 4) | |
-|---|---|
-| Northern.tech | 1 (25.0%) |
-| Packet Power LLC | 1 (25.0%) |
-| National Instruments | 1 (25.0%) |
-| SM Instruments Inc. | 1 (25.0%) |
-
-### Changelogs
-
-#### meta-mender (warrior-v2020.02.2)
-
-New changes in meta-mender since warrior-v2020.02:
-
-* mender-helpers: Error out if copying different files to boot part.
-* Improve warning when multiple DTB files are in KERNEL_DEVICETREE
-* Add MENDER_DTB_NAME_FORCE to mender-vars.json to avoid unrecognized variable warning
-* rpi: fix rootfs cmdline trailing space
-
-
-## mender-convert 2.0.0b1
-
-_Released 02.13.2020_
+_Released 03.06.2020_
 
 ### Statistics
 
-A total of 3594 lines added, 4558 removed (delta -964)
+A total of 3745 lines added, 4597 removed (delta -852)
 
 | Developers with the most changesets | |
 |---|---|
-| Kristian Amlie | 31 (30.1%) |
-| Lluis Campos | 23 (22.3%) |
-| Ole Petter Orhagen | 19 (18.4%) |
-| Mirza Krak | 19 (18.4%) |
-| Drew Moseley | 9 (8.7%) |
-| Fabio Tranchitella | 1 (1.0%) |
-| Alf-Rune Siqveland | 1 (1.0%) |
+| Kristian Amlie | 34 (30.4%) |
+| Lluis Campos | 25 (22.3%) |
+| Ole Petter Orhagen | 22 (19.6%) |
+| Mirza Krak | 19 (17.0%) |
+| Drew Moseley | 10 (8.9%) |
+| Fabio Tranchitella | 1 (0.9%) |
+| Alf-Rune Siqveland | 1 (0.9%) |
 
 | Developers with the most changed lines | |
 |---|---|
-| Mirza Krak | 6195 (83.4%) |
-| Kristian Amlie | 373 (5.0%) |
-| Ole Petter Orhagen | 340 (4.6%) |
-| Lluis Campos | 231 (3.1%) |
-| Drew Moseley | 162 (2.2%) |
+| Mirza Krak | 6195 (81.8%) |
+| Kristian Amlie | 442 (5.8%) |
+| Ole Petter Orhagen | 410 (5.4%) |
+| Lluis Campos | 237 (3.1%) |
+| Drew Moseley | 168 (2.2%) |
 | Alf-Rune Siqveland | 103 (1.4%) |
 | Fabio Tranchitella | 21 (0.3%) |
 
 | Developers with the most lines removed | |
 |---|---|
-| Mirza Krak | 1369 (30.0%) |
+| Mirza Krak | 1369 (29.8%) |
 
 | Developers with the most signoffs (total 1) | |
 |---|---|
@@ -105,11 +42,11 @@ A total of 3594 lines added, 4558 removed (delta -964)
 
 | Top changeset contributors by employer | |
 |---|---|
-| Northern.tech | 103 (100.0%) |
+| Northern.tech | 112 (100.0%) |
 
 | Top lines changed by employer | |
 |---|---|
-| Northern.tech | 7425 (100.0%) |
+| Northern.tech | 7576 (100.0%) |
 
 | Employers with the most signoffs (total 1) | |
 |---|---|
@@ -121,7 +58,25 @@ A total of 3594 lines added, 4558 removed (delta -964)
 
 ### Changelogs
 
-#### mender-convert (2.0.0b1)
+#### mender-convert (2.0.0)
+
+New changes in mender-convert since 2.0.0b1:
+
+* Upgrade to GRUB 2.04.
+* Add detection of problematic versions of U-Boot and kernel.
+  ([MEN-2404](https://tracker.mender.io/browse/MEN-2404))
+* Added hooks to Mender convert
+  This extends the current functionality of the platform_ function
+  functionality into using hooks, so that each modification step can be called
+  from multiple configuration files.
+  The valid hooks are:
+   * PLATFORM_MODIFY_HOOKS
+   * PLATFORM_PACKAGE_HOOKS
+   * USER_LOCAL_MODIFY_HOOKS
+  and can be appended to as a regular bash array.
+* Use consistent compression and archive naming.
+* Update to Mender 2.3.0 components
+* Added color to the terminal log messages
 
 New changes in mender-convert since 1.2.2:
 
@@ -173,110 +128,50 @@ New changes in mender-convert since 1.2.2:
 * Switch to Mender 2.3.0b1 components.
 
 
-## meta-mender warrior-v2020.02
+## Mender 2.3.0
 
-_Released 02.12.2020_
-
-### Statistics
-
-A total of 69 lines added, 42 removed (delta 27)
-
-| Developers with the most changesets | |
-|---|---|
-| Drew Moseley | 7 (43.8%) |
-| Kristian Amlie | 6 (37.5%) |
-| Lluis Campos | 1 (6.2%) |
-| Gaurav Kalra | 1 (6.2%) |
-| Benjamin Byholm | 1 (6.2%) |
-
-| Developers with the most changed lines | |
-|---|---|
-| Drew Moseley | 36 (45.6%) |
-| Kristian Amlie | 25 (31.6%) |
-| Lluis Campos | 10 (12.7%) |
-| Benjamin Byholm | 7 (8.9%) |
-| Gaurav Kalra | 1 (1.3%) |
-
-| Top changeset contributors by employer | |
-|---|---|
-| Northern.tech | 14 (87.5%) |
-| walkbase | 1 (6.2%) |
-| gvkalra@gmail.com | 1 (6.2%) |
-
-| Top lines changed by employer | |
-|---|---|
-| Northern.tech | 71 (89.9%) |
-| walkbase | 7 (8.9%) |
-| gvkalra@gmail.com | 1 (1.3%) |
-
-| Employers with the most hackers (total 5) | |
-|---|---|
-| Northern.tech | 3 (60.0%) |
-| walkbase | 1 (20.0%) |
-| gvkalra@gmail.com | 1 (20.0%) |
-
-### Changelogs
-
-#### meta-mender (warrior-v2020.02)
-
-New changes in meta-mender since warrior-v2019.12:
-
-* mender-setup: allow setting fstab options for the boot partition
-* grub-mender-grubenv: Fix broken debug-log PACKAGECONFIG.
-* grub-efi: Respect MENDER_BOOT_PART_MOUNT_LOCATION
-* mender-grub: Set EFI_PROVIDER to grub-efi.
-* remove stray '-' in IMAGE_NAME
-* systemd-boot: Respect MENDER_BOOT_PART_MOUNT_LOCATION
-* Add mender 2.2.0b1 recipe
-* Add mender-artifact 3.3.0b1 recipe
-* In demo mode, put demo certificate in same directory as Debian package.
-  ([MEN-3048](https://tracker.mender.io/browse/MEN-3048))
-
-
-## Mender 2.3.0b1
-
-_Released 02.10.2020
+_Released 03.05.2020_
 
 ### Statistics
 
-A total of 58912 lines added, 36759 removed (delta 22153)
+A total of 59423 lines added, 38146 removed (delta 21277)
 
 | Developers with the most changesets | |
 |---|---|
-| Manuel Zedel | 238 (28.4%) |
-| Lluis Campos | 162 (19.3%) |
-| Alf-Rune Siqveland | 78 (9.3%) |
-| Ole Petter Orhagen | 74 (8.8%) |
-| Marcin Chalczynski | 65 (7.8%) |
-| Fabio Tranchitella | 65 (7.8%) |
-| Kristian Amlie | 59 (7.0%) |
-| Krzysztof Jaskiewicz | 46 (5.5%) |
-| Peter Grzybowski | 27 (3.2%) |
+| Manuel Zedel | 244 (27.4%) |
+| Lluis Campos | 198 (22.2%) |
+| Alf-Rune Siqveland | 78 (8.8%) |
+| Ole Petter Orhagen | 74 (8.3%) |
+| Fabio Tranchitella | 68 (7.6%) |
+| Marcin Chalczynski | 65 (7.3%) |
+| Kristian Amlie | 63 (7.1%) |
+| Krzysztof Jaskiewicz | 48 (5.4%) |
+| Peter Grzybowski | 29 (3.3%) |
 | Ole Herman Schumacher Elgesem | 7 (0.8%) |
 
 | Developers with the most changed lines | |
 |---|---|
-| Manuel Zedel | 16265 (24.3%) |
-| Alf-Rune Siqveland | 14970 (22.4%) |
-| Fabio Tranchitella | 10354 (15.5%) |
-| Lluis Campos | 5616 (8.4%) |
-| Ole Petter Orhagen | 5027 (7.5%) |
-| Marcin Chalczynski | 4013 (6.0%) |
-| Kristian Amlie | 3923 (5.9%) |
-| Krzysztof Jaskiewicz | 3878 (5.8%) |
-| Peter Grzybowski | 1777 (2.7%) |
+| Manuel Zedel | 16299 (23.8%) |
+| Alf-Rune Siqveland | 14970 (21.8%) |
+| Fabio Tranchitella | 10359 (15.1%) |
+| Lluis Campos | 6985 (10.2%) |
+| Ole Petter Orhagen | 5027 (7.3%) |
+| Kristian Amlie | 4122 (6.0%) |
+| Marcin Chalczynski | 4013 (5.9%) |
+| Krzysztof Jaskiewicz | 3884 (5.7%) |
+| Peter Grzybowski | 1785 (2.6%) |
 | Eystein Måløy Stenberg | 425 (0.6%) |
 
 | Developers with the most lines removed | |
 |---|---|
-| Lluis Campos | 1459 (4.0%) |
-| Kristian Amlie | 944 (2.6%) |
+| Lluis Campos | 2513 (6.6%) |
+| Kristian Amlie | 771 (2.0%) |
 | Eystein Måløy Stenberg | 419 (1.1%) |
 
 | Top changeset contributors by employer | |
 |---|---|
-| Northern.tech | 718 (85.7%) |
-| RnDity | 112 (13.4%) |
+| Northern.tech | 769 (86.3%) |
+| RnDity | 114 (12.8%) |
 | f.breuer94@gmail.com | 2 (0.2%) |
 | prashanthjbabu@gmail.com | 2 (0.2%) |
 | risca@dalakolonin.se | 2 (0.2%) |
@@ -285,8 +180,8 @@ A total of 58912 lines added, 36759 removed (delta 22153)
 
 | Top lines changed by employer | |
 |---|---|
-| Northern.tech | 58605 (87.6%) |
-| RnDity | 7956 (11.9%) |
+| Northern.tech | 60220 (87.9%) |
+| RnDity | 7962 (11.6%) |
 | f.breuer94@gmail.com | 323 (0.5%) |
 | prashanthjbabu@gmail.com | 12 (0.0%) |
 | sam.vr.lewis@gmail.com | 10 (0.0%) |
@@ -305,7 +200,7 @@ A total of 58912 lines added, 36759 removed (delta 22153)
 
 ### Changelogs
 
-#### deployments (1.9.0b1)
+#### deployments (1.9.0)
 
 New changes in deployments since 1.8.1:
 
@@ -317,7 +212,7 @@ New changes in deployments since 1.8.1:
   ([MEN-2019](https://tracker.mender.io/browse/MEN-2019))
 * store: Migrate to official MongoDB driver
 
-#### deployments-enterprise (1.9.0b1)
+#### deployments-enterprise (1.9.0)
 
 New changes in deployments-enterprise since 1.8.1:
 
@@ -337,7 +232,7 @@ New changes in deployments-enterprise since 1.8.1:
 * index deployments database
   ([MEN-2019](https://tracker.mender.io/browse/MEN-2019))
 
-#### deviceauth (2.2.0b1)
+#### deviceauth (2.2.0)
 
 New changes in deviceauth since 2.1.0:
 
@@ -346,7 +241,11 @@ New changes in deviceauth since 2.1.0:
 * additional mongodb index added
 * store/mongo: migrate to official mongodb driver
 
-#### gui (2.3.0b1)
+#### gui (2.3.0)
+
+New changes in gui since 2.3.0b1:
+
+* ensured deployment report is closed on abort to prevent UI crash
 
 New changes in gui since 2.2.1:
 
@@ -370,7 +269,28 @@ New changes in gui since 2.2.1:
 * fixed an issue that prevented the staying logged in functionality from working
 * prevented a redirect after deployment creation
 
-#### integration (2.3.0b1)
+#### integration (2.3.0)
+
+New changes in integration since 2.3.0b1:
+
+* Fix broken artifact creation in the UI.
+  ([MEN-3166](https://tracker.mender.io/browse/MEN-3166))
+* Upgrade create-artifact-worker to 1.0.0.
+* Upgrade deployments to 1.9.0.
+* Upgrade deployments-enterprise to 1.9.0.
+* Upgrade deviceauth to 2.2.0.
+* Upgrade gui to 2.3.0.
+* Upgrade inventory to 1.7.0.
+* Upgrade mender to 2.2.0.
+* Upgrade mender-api-gateway-docker to 2.1.0.
+* Upgrade mender-artifact to 3.3.0.
+* Upgrade mender-cli to 1.3.0.
+* Upgrade mender-conductor to 1.6.0.
+* Upgrade mender-conductor-enterprise to 1.6.0.
+* Upgrade tenantadm to 1.1.0.
+* Upgrade useradm to 1.10.0.
+* Upgrade useradm-enterprise to 1.10.0.
+* Upgrade workflows to 1.0.0.
 
 New changes in integration since 2.2.1:
 
@@ -434,14 +354,20 @@ New changes in integration since 2.2.1:
 * Upgrade useradm-enterprise to 1.10.0b1.
 * Add workflows 1.0.0b1.
 
-#### inventory (1.7.0b1)
+#### inventory (1.7.0)
 
 New changes in inventory since 1.6.0:
 
 * support for new mongo-driver
   ([MEN-2454](https://tracker.mender.io/browse/MEN-2454), [MEN-2801](https://tracker.mender.io/browse/MEN-2801))
 
-#### mender (2.2.0b1)
+#### mender (2.2.0)
+
+New changes in mender since 2.2.0b1:
+
+* Remove text/template dependency from the cli library reducing
+  mender client binary size by approximately 20%
+* Fix "State transition loop detected" when retrying status update.
 
 New changes in mender since 2.1.2:
 
@@ -486,14 +412,14 @@ New changes in mender since 2.1.2:
 * snapshot: New flag `--source` specifying the source
   filesystem to snapshot
 
-#### mender-api-gateway-docker (2.1.0b1)
+#### mender-api-gateway-docker (2.1.0)
 
 New changes in mender-api-gateway-docker since 2.0.0:
 
 * ssl_trusted_certificate added
 * SSL termination can be turned off via environment variable
 
-#### mender-artifact (3.3.0b1)
+#### mender-artifact (3.3.0)
 
 New changes in mender-artifact since 3.2.1:
 
@@ -537,13 +463,13 @@ New changes in mender-artifact since 3.2.1:
   ([MEN-2956](https://tracker.mender.io/browse/MEN-2956))
 * Create artifact from device snapshot
 
-#### mender-cli (1.3.0b1)
+#### mender-cli (1.3.0)
 
 New changes in mender-cli since 1.2.0:
 
 * Build and publish Mac OS X binary for `mender-cli`
 
-#### mender-conductor (1.6.0b1)
+#### mender-conductor (1.6.0)
 
 New changes in mender-conductor since 1.5.0:
 
@@ -551,13 +477,13 @@ New changes in mender-conductor since 1.5.0:
 * Prepare ES6 enabled conductor image
   ([MC-1296](https://tracker.mender.io/browse/MC-1296), [MEN-2987](https://tracker.mender.io/browse/MEN-2987))
 
-#### mender-conductor-enterprise (1.6.0b1)
+#### mender-conductor-enterprise (1.6.0)
 
 New changes in mender-conductor-enterprise since 1.5.0:
 
 * Bugfixes for prepare_org_welcome_email conductor worker
 
-#### tenantadm (1.1.0b1)
+#### tenantadm (1.1.0)
 
 New changes in tenantadm since 1.0.0:
 
@@ -567,13 +493,13 @@ New changes in tenantadm since 1.0.0:
 * api/http: management endpoint for activating organization and updating org CC info
 * store: Update to official mongodb driver
 
-#### useradm (1.10.0b1)
+#### useradm (1.10.0)
 
 New changes in useradm since 1.9.1:
 
 * store/mongo: handle mongodb client creation error
 
-#### useradm-enterprise (1.10.0b1)
+#### useradm-enterprise (1.10.0)
 
 New changes in useradm-enterprise since 1.9.1:
 
@@ -581,7 +507,7 @@ New changes in useradm-enterprise since 1.9.1:
 * FIX: Create user panics when tenant-id is not specified
 * store/mongo: handle mongodb client creation error
 
-#### workflows (1.0.0b1)
+#### workflows (1.0.0)
 
 * Refactor repo and added metadata endpoints
 * docker: Initialized docker files workflows
@@ -589,6 +515,196 @@ New changes in useradm-enterprise since 1.9.1:
   ([QA-139](https://tracker.mender.io/browse/QA-139))
 * default mongo url fix
   ([MEN-3060](https://tracker.mender.io/browse/MEN-3060))
+
+
+## Mender 2.2.2
+
+_Released 03.05.2020_
+
+### Statistics
+
+A total of 2128 lines added, 207 removed (delta 1921)
+
+| Developers with the most changesets | |
+|---|---|
+| Manuel Zedel | 13 (65.0%) |
+| Kristian Amlie | 5 (25.0%) |
+| Michael Clelland | 1 (5.0%) |
+| Lluis Campos | 1 (5.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Manuel Zedel | 2008 (93.6%) |
+| Kristian Amlie | 118 (5.5%) |
+| Lluis Campos | 18 (0.8%) |
+| Michael Clelland | 2 (0.1%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 20 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 2146 (100.0%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 4 (100.0%) |
+
+### Changelogs
+
+#### gui (2.2.2)
+
+New changes in gui since 2.2.1:
+
+* fix: removed superfluous " around tenant token in device config code
+* Fix for changing page length for pagination of rejected and preauth devices
+* fixed deploymentdevicelist lacking device identity information
+* fixed device list refresh after page length change in deployment devicelist
+* fixed an issue that prevented the staying logged in functionality from working
+
+#### integration (2.2.2)
+
+New changes in integration since 2.2.1:
+
+* Upgrade gui to 2.2.2.
+* Upgrade mender to 2.1.3.
+
+#### mender (2.1.3)
+
+New changes in mender since 2.1.2:
+
+* Fix crash when specified certificate can't be opened.
+  Both the `ServerCertificate` setting and the system certificates are
+  now optional, in the sense that the client will run without them.
+  However, the client will not be able to connect without the right
+  certificates, so the main usecase of this change is to have a workable
+  client that will roll back if connections can't be made, instead of
+  exiting. ([MEN-3047](https://tracker.mender.io/browse/MEN-3047))
+* Add warning message when server certificate can't be parsed.
+
+
+## meta-mender warrior-v2020.02.2
+
+_Released 02.18.2020_
+
+### Statistics
+
+A total of 26 lines added, 7 removed (delta 19)
+
+| Developers with the most changesets | |
+|---|---|
+| Matthew Beckler | 2 (40.0%) |
+| Gaurav Kalra | 1 (20.0%) |
+| Joerg Hofrichter | 1 (20.0%) |
+| Drew Moseley | 1 (20.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Drew Moseley | 21 (80.8%) |
+| Matthew Beckler | 2 (7.7%) |
+| Joerg Hofrichter | 2 (7.7%) |
+| Gaurav Kalra | 1 (3.8%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Kristian Amlie | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Packet Power LLC | 2 (40.0%) |
+| National Instruments | 1 (20.0%) |
+| SM Instruments Inc. | 1 (20.0%) |
+| Northern.tech | 1 (20.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 21 (80.8%) |
+| Packet Power LLC | 2 (7.7%) |
+| National Instruments | 2 (7.7%) |
+| SM Instruments Inc. | 1 (3.8%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 1 (25.0%) |
+| Packet Power LLC | 1 (25.0%) |
+| National Instruments | 1 (25.0%) |
+| SM Instruments Inc. | 1 (25.0%) |
+
+### Changelogs
+
+#### meta-mender (warrior-v2020.02.2)
+
+New changes in meta-mender since warrior-v2020.02:
+
+* mender-helpers: Error out if copying different files to boot part.
+* Improve warning when multiple DTB files are in KERNEL_DEVICETREE
+* Add MENDER_DTB_NAME_FORCE to mender-vars.json to avoid unrecognized variable warning
+* rpi: fix rootfs cmdline trailing space
+
+
+## meta-mender warrior-v2020.02
+
+_Released 02.12.2020_
+
+### Statistics
+
+A total of 69 lines added, 42 removed (delta 27)
+
+| Developers with the most changesets | |
+|---|---|
+| Drew Moseley | 7 (43.8%) |
+| Kristian Amlie | 6 (37.5%) |
+| Lluis Campos | 1 (6.2%) |
+| Gaurav Kalra | 1 (6.2%) |
+| Benjamin Byholm | 1 (6.2%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Drew Moseley | 36 (45.6%) |
+| Kristian Amlie | 25 (31.6%) |
+| Lluis Campos | 10 (12.7%) |
+| Benjamin Byholm | 7 (8.9%) |
+| Gaurav Kalra | 1 (1.3%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 14 (87.5%) |
+| walkbase | 1 (6.2%) |
+| gvkalra@gmail.com | 1 (6.2%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 71 (89.9%) |
+| walkbase | 7 (8.9%) |
+| gvkalra@gmail.com | 1 (1.3%) |
+
+| Employers with the most hackers (total 5) | |
+|---|---|
+| Northern.tech | 3 (60.0%) |
+| walkbase | 1 (20.0%) |
+| gvkalra@gmail.com | 1 (20.0%) |
+
+### Changelogs
+
+#### meta-mender (warrior-v2020.02)
+
+New changes in meta-mender since warrior-v2019.12:
+
+* mender-setup: allow setting fstab options for the boot partition
+* grub-mender-grubenv: Fix broken debug-log PACKAGECONFIG.
+* grub-efi: Respect MENDER_BOOT_PART_MOUNT_LOCATION
+* mender-grub: Set EFI_PROVIDER to grub-efi.
+* remove stray '-' in IMAGE_NAME
+* systemd-boot: Respect MENDER_BOOT_PART_MOUNT_LOCATION
+* Add mender 2.2.0b1 recipe
+* Add mender-artifact 3.3.0b1 recipe
+* In demo mode, put demo certificate in same directory as Debian package.
+  ([MEN-3048](https://tracker.mender.io/browse/MEN-3048))
 
 
 ## meta-mender thud-v2019.12
