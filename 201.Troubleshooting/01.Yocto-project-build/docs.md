@@ -316,3 +316,28 @@ to your `local.conf` file.
 This indicates that the size declared for the full Mender image is too small to contain all files in the root filesystem.
 
 Increase the size of the image by increasing the value in `MENDER_STORAGE_TOTAL_SIZE_MB` (see description in [Variables](../../artifacts/yocto-project/variables#mender_storage_total_size_mb)).
+
+## Conflict between u-boot and grub-efi versions
+
+A typical error message for this condition is:
+
+<!--AUTOVERSION: "mender-%-r0.cortexa8hf_neon"/mender-->
+```
+Error:
+ Problem: package grub-efi-mender-precompiled-2.04-r0.cortexa8hf_neon requires u-boot, but none of the providers can be installed
+  - package grub-efi-mender-precompiled-2.04-r0.cortexa8hf_neon conflicts with u-boot <= 1:2019.07 provided by u-boot-fork-1:2019.07-r0.beaglebone_yocto
+  - package mender-master-r0.cortexa8hf_neon requires grub-editenv, but none of the providers can be installed
+  - conflicting requests
+```
+
+There are several possible resolutions to this problem:
+
+1. If your u-boot version is older than (and not equal) to 2018.11, you can suppress the message by adding this to `local.conf`:
+   ```
+   RCONFLICTS_remove = "u-boot (<= 1:2019.07)"
+   ```
+   Note that `u-boot` needs to be replaced with a different name if you are using a U-Boot fork. The name should be visible the error message from earlier (look for `u-boot-fork` in the example message above). You can *try* this fix even if you U-Boot version is equal to or higher than 2018.11, but most likely the board will not boot, because the 2018.11 &lt;-&gt; 2019.07 version range has known problems in the UEFI loader.
+
+2. See if you can use an updated version recipe for your fork of U-Boot, for example by fetching the latest Yocto branch for the layer that contains the U-Boot fork.
+
+3. Avoid UEFI altogether by switching off the `mender-grub` feature. This will require you to use [U-Boot integration](../../devices/yocto-project/bootloader-support/u-boot) instead.
