@@ -22,9 +22,9 @@ Mender provides images based on the following distributions:
 !! manufacturer, or [contact us](mailto:contact@mender.io) if you have any
 !! questions on the Mender integration.
 
-| Board            | OS                   | Disk image                                                               |
-|------------------|----------------------|--------------------------------------------------------------------------|
-| Raspberry Pi 3   | Raspbian Buster Lite | [raspbian-buster-lite-mender.img.xz][raspbian-buster-lite-mender.img.xz] |
+| Board            | OS                   | Disk image                                                               | Storage size |
+|------------------|----------------------|--------------------------------------------------------------------------|--------------|
+| Raspberry Pi 3   | Raspbian Buster Lite | [raspbian-buster-lite-mender.img.xz][raspbian-buster-lite-mender.img.xz] | 8 GB         |
 
 <!--AUTOVERSION: "mender-%.img.xz"/mender-convert-client -->
 [raspbian-buster-lite-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-02-05-raspbian-buster-lite/arm/2020-02-05-raspbian-buster-lite-mender-master.img.xz

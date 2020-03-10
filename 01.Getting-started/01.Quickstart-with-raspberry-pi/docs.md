@@ -35,9 +35,13 @@ The only difference from the official Raspbian image is that it has been convert
 
 !!! If you have a different board than the Raspberry Pi 3 you can still follow the Mender product onboarding tooltips and deploy a demo application to your device. But you will not be able to do system updates without Mender integration later on.
 
-* Download the Raspbian OS image with Mender integrated from the [Mender downloads section](../../downloads).
-* [Follow the steps](https://www.raspberrypi.org/documentation/installation/installing-images?target=_blank) to flash the OS image to your device.
+* Download the [Raspbian OS image with Mender integrated][raspbian-buster-lite-mender.img.xz].
+* [Follow the steps](https://www.raspberrypi.org/documentation/installation/installing-images?target=_blank) to flash the OS image to your device (e.g. choose "Use custom" and browse to the downloaded Mender Raspbian image if using the Raspberry Pi Imager).
 * [Enable SSH](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md?target=_blank) on your device.
+
+<!--AUTOVERSION: "mender-%.img.xz"/mender-convert-client -->
+[raspbian-buster-lite-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-02-05-raspbian-buster-lite/arm/2020-02-05-raspbian-buster-lite-mender-master.img.xz
+
 
 Your first application deployment is easy with 5 short steps:
 
