@@ -12,7 +12,7 @@ The Mender client by default logs to the system log using `systemd`, so the easi
 is to run the following command:
 
 ```
-journalctl -u mender
+journalctl -u mender-client
 ```
 
 Please note that the default log level is Info. It is possible to increase the
