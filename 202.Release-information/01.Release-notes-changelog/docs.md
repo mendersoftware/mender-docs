@@ -4,6 +4,76 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender warrior-v2020.03
+
+_Released 03.09.2020_
+
+### Statistics
+
+A total of 182 lines added, 157 removed (delta 25)
+
+| Developers with the most changesets | |
+|---|---|
+| Drew Moseley | 5 (38.5%) |
+| Kristian Amlie | 4 (30.8%) |
+| Lluis Campos | 3 (23.1%) |
+| Joris Offouga | 1 (7.7%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Drew Moseley | 244 (75.5%) |
+| Lluis Campos | 43 (13.3%) |
+| Kristian Amlie | 20 (6.2%) |
+| Joris Offouga | 16 (5.0%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Lluis Campos | 23 (14.6%) |
+| Joris Offouga | 16 (10.2%) |
+| Kristian Amlie | 4 (2.5%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Kristian Amlie | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 12 (92.3%) |
+| offougajoris@gmail.com | 1 (7.7%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 307 (95.0%) |
+| offougajoris@gmail.com | 16 (5.0%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 3 (75.0%) |
+| offougajoris@gmail.com | 1 (25.0%) |
+
+### Changelogs
+
+#### meta-mender (warrior-v2020.03)
+
+New changes in meta-mender since warrior-v2020.02.2:
+
+* systemd: move network configurations to systemd-conf
+* Add 'datatar' as an image type.
+* Remove outdated grub-mender-grubenv_1.3.0 recipe.
+* Upgrade to new grub-mender-grubenv.
+* mender: Add signature/secure-boot support.
+* Add mender 2.2.0 recipe and remove beta
+* Add mender-artifact 3.3.0 recipe and remove beta
+* Add mender 2.1.3 recipe
+* Improve dependency logic to not require U-Boot unconditionally on ARM.
+  This will help when not using `mender-grub`, and instead using
+  Barebox, for example.
+
+
 ## mender-convert 2.0.0
 
 _Released 03.06.2020_
