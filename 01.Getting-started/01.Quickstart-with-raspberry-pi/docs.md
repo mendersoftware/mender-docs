@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-Quickly and easily deploy your first over-the-air (OTA) software update with Mender using a secure server we host for you. We will take you through installing Mender on your device and deploying a simple *application* update on your Raspberry Pi and Raspbian OS and outline the easiest way to do a full *system* update.
+Quickly and easily deploy your first over-the-air (OTA) software update with Mender using a secure server we host for you. We will take you through installing Mender on your device and deploying a simple *application* update on your Raspberry Pi and Raspbian OS. We also outline the easiest way to do a full *system* update.
 
 
 ## Prerequisites
@@ -85,7 +85,7 @@ In the dialog box from step 2, click **Copy to clipboard** to copy the code to i
 
 This downloads the Mender client on the device, configures and starts it.
 
-! If you get a file conflict warning for `/etc/mender/artifact_info` during this step, type *N* and *Enter*.
+!!! If you get a file conflict warning for `/etc/mender/artifact_info` during this step, type *N* and *Enter*.
 
 Once the client has started, the Mender client will attempt to connect to the server and it will appear in your Pending devices tab in the server. Go ahead and **Accept** the pending device in the server. After accepting the device, it will appear on the Device groups tab on the left of Pending.
 
@@ -120,7 +120,7 @@ You should be asked to upload your modified web page as shown below.
 
 Simply follow the tooltips to update your newly deployed application!
 
-!! If the device type for the update is not filled in automatically, type `raspberrypi3`.
+!!! If the device type for the update is not filled in automatically, type `raspberrypi3`.
 
 
 ### Step 6 - Take system snapshots and deploy system level updates
