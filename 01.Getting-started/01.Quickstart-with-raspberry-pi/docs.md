@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-Quickly and easily deploy your first over-the-air (OTA) software update with Mender using a secure server we host for you. We will take you through installing Mender on your device and deploying a simple *application update* on your Raspberry Pi and Raspbian OS.
+Quickly and easily deploy your first over-the-air (OTA) software update with Mender using a secure server we host for you. We will take you through installing Mender on your device and deploying a simple *application* update on your Raspberry Pi and Raspbian OS and outline the easiest way to do a full *system* update.
 
 
 ## Prerequisites
@@ -37,10 +37,13 @@ The only difference from the official Raspbian image is that it has been convert
 
 * Download the [Raspbian OS image with Mender integrated][raspbian-buster-lite-mender.img.xz].
 * [Follow the steps](https://www.raspberrypi.org/documentation/installation/installing-images?target=_blank) to flash the OS image to your device (e.g. choose "Use custom" and browse to the downloaded Mender Raspbian image if using the Raspberry Pi Imager).
-* [Enable SSH](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md?target=_blank) on your device.
 
 <!--AUTOVERSION: "mender-%.img.xz"/mender-convert-client -->
 [raspbian-buster-lite-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-02-05-raspbian-buster-lite/arm/2020-02-05-raspbian-buster-lite-mender-master.img.xz
+
+Boot the device with the newly flashed SD card, then:
+* Connect your device to the Internet, e.g. [using WiFi](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md?target=_blank).
+* [Enable local SSH access](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md?target=_blank) on your device. You may instead attach a keyboard and monitor to the device directly, but then you can not easily copy and paste the following instructions.
 
 
 Your first application deployment is easy with 5 short steps:
@@ -82,6 +85,8 @@ In the dialog box from step 2, click **Copy to clipboard** to copy the code to i
 
 This downloads the Mender client on the device, configures and starts it.
 
+! If you get a file conflict warning for `/etc/mender/artifact_info` during this step, type *N* and *Enter*.
+
 Once the client has started, the Mender client will attempt to connect to the server and it will appear in your Pending devices tab in the server. Go ahead and **Accept** the pending device in the server. After accepting the device, it will appear on the Device groups tab on the left of Pending.
 
 ![accepting the device](image_1.png)
@@ -108,15 +113,40 @@ Once you access your device using the URL shown in the tooltip under the *Finish
 
 ### Step 5 - Modify the application
 
-The onboarding tooltips should now take you through modifying the web page you saw in step 4, using tools to generate Mender Artifact (.mender) files.
+The onboarding tooltips should now take you through modifying the web page you saw in step 4.
 Simply follow the tooltips to update your newly deployed application!
 
 
-### Deploy system level updates
+### Step 6 - Take system snapshots and deploy system level updates
 
-So far, we deployed an application update. However, Mender also supports robust system level updates with rollback that you might want to test out. If you used the Raspberry Pi 3 image with Mender integrated, it already supports system level updates as well!
+So far we have deployed application updates. However, Mender also supports robust system level updates with rollback that you can test out. If you used the Raspberry Pi 3 image with Mender integrated, it already supports system level updates as well!
 
-The easiest way to create system level updates is to use the *snapshot* functionality in Mender; follow the documentation on [Artifact from system snapshot](../../artifacts/snapshots).
+The easiest way to create system level updates is to use the *snapshot* functionality in Mender, which will create a snapshot of the full system on a currently running device and package it as a Mender Artifact (.mender file) that you can deploy to other devices.
+
+To try it out, first follow the steps to [download and install the mender-artifact tool](../../downloads#mender-artifact) on your workstation (e.g. laptop).
+Then run the following command on your workstation:
+
+```bash
+USER="pi"
+ADDR="<DEVICE-IP-ADDRESS>"  # replace with the local IP address of your Raspberry Pi (same as in step 1 above)
+
+mender-artifact write rootfs-image -f ssh://$USER@$ADDR \
+                                   -n system-v1 \
+                                   -o system-v1.mender \
+                                   -t raspberrypi3  # adjust if you are using a different device
+```
+
+! Your device is not usable while the snapshot operation is in progress. Mender will freeze the storage device during this operation in order to create a consistent snapshot.
+
+Depending on your local network and storage speed, this may take 10-15 minutes to finish. You should see a progress indicator, and when it reaches 100% it will package the Mender Artifact which could take a few minutes.
+
+Once complete, you should see a file `system-v1.mender` on your workstation. Upload this on your Mender server, under Releases.
+Now make local modifications to the device, e.g. install packages. To revert your device back to the original state,
+simply deploy this snapshot to your device again from the Mender server! A full system deployment could take 15-20 minutes, depending on network and storage speed.
+
+You can make arbitrary modifications to the system, take another snapshot and deploy this to groups of devices, and this way deploy robust system updates with rollback support.
+
+To read more about system snapshots see the documentation on [Artifact from system snapshot](../../artifacts/snapshots).
 
 
 ## Running Mender on-premise
@@ -140,7 +170,7 @@ And finally fire up the demo server environment with:
 
 Note that the demo up script starts the Mender services, adds a demo user with the username mender-demo@example.com, and assigns a random password in which you can change after you log in to the Mender web UI. The Mender UI can be found on [https://localhost](https://localhost?target=_blank).
 
-After you log into the UI on the localhost you can follow steps 1 through 5 listed above. 
+After you log into the UI on the localhost you can follow steps 1 through 6 listed above.
 
 ## Have any questions? 
 
