@@ -114,7 +114,13 @@ Once you access your device using the URL shown in the tooltip under the *Finish
 ### Step 5 - Modify the application
 
 The onboarding tooltips should now take you through modifying the web page you saw in step 4.
+You should be asked to upload your modified web page as shown below.
+
+![Upload web page](image_6.png)
+
 Simply follow the tooltips to update your newly deployed application!
+
+!! If the device type for the update is not filled in automatically, type `raspberrypi3`.
 
 
 ### Step 6 - Take system snapshots and deploy system level updates
