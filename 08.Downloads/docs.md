@@ -47,6 +47,12 @@ according to your host platform:
 
 Remember to add execute permission (e.g. with `chmod +x mender-artifact`).
 
+Note that you need to ensure that the mender-artifact utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary. Please refer to your host Operating System documentation for more details.
+
+```bash
+$ sudo mv mender-artifact /usr/local/bin/
+```
+
 !!! If you need to build `mender-artifact` from source, please see [Compiling mender-artifact](../artifacts/modifying-a-mender-artifact#compiling-mender-artifact).
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
@@ -85,6 +91,12 @@ platform:
 | Mac OS X | [mender-cli 1.3.0][x.x.x_mender-cli-darwin]                 |
 
 Remember to add execute permission (e.g. with `chmod +x mender-cli`).
+
+Note that you need to ensure that the mender-cli utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary. Please refer to your host Operating System documentation for more details.
+
+```bash
+$ sudo mv mender-cli /usr/local/bin/
+```
 
 <!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
 [x.x.x_mender-cli-linux]: https://d1b0l86ne08fsf.cloudfront.net/mender-cli/1.3.0/linux/mender-cli
