@@ -81,7 +81,7 @@ Leverage [Mender consulting services to support other versions of the Yocto Proj
 
 ## Mender client/server and Artifact format
 
-The [Mender Artifact format](../mender-artifacts) is managed by the [Mender Artifacts Library](https://github.com/mendersoftware/mender-artifact?target=_blank), which is included in the Mender client and server (for reading Artifacts) as well as in a standalone utility `mender-artifacts` (for [writing Artifacts](../../artifacts/modifying-a-mender-artifact)).
+The [Mender Artifact format](../mender-artifacts) is managed by the [Mender Artifacts Library](https://github.com/mendersoftware/mender-artifact?target=_blank), which is included in the Mender client and server (for reading Artifacts) as well as in a standalone utility `mender-artifact` (for [writing Artifacts](../../artifacts/modifying-a-mender-artifact)).
 
 <!--AUTOVERSION: "Mender % / mender-artifact %"/ignore-->
 |                                      | Artifact v1 | Artifact v2 | Artifact v3 |
