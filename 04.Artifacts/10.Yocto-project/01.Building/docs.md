@@ -159,6 +159,9 @@ i.e. the top level of the Yocto Project build tree, and run these commands:
 git clone -b master git://github.com/mendersoftware/meta-mender
 ```
 
+<!--AUTOVERSION: "the HEAD of the % branch"/meta-mender-->
+Note that this command checks out the HEAD of the master branch and is not a specific tagged release. The [Yocto project release schedule](https://wiki.yoctoproject.org/wiki/Releases) differs from the Mender release schedule so even though you may be using a specific release of Mender, you will still need to take further steps if you want to use a tagged release of the Yocto project.
+
 Next, initialize the build environment:
 
 ```bash
