@@ -23,12 +23,9 @@ This may be an indication that Mender's automatic U-Boot patching has failed for
 
 ## The bootloader and the Linux kernel do not agree about the indexes of storage devices
 
-Sometimes it happens that GRUB or U-Boot will refer to a storage device as `hd0` or `mmc 0`, respectively, whereas the Linux kernel will refer to the same device as `/dev/mmcblk1` (note the different index). In this case the Mender build system must be told explicitly about this disagreement. To do so, you can add the following to the build configuration:
+Sometimes it happens that U-Boot will refer to a storage device as `hd0` or `mmc 0`, respectively, whereas the Linux kernel will refer to the same device as `/dev/mmcblk1` (note the different index). In this case the Mender build system must be told explicitly about this disagreement. To do so, you can add the following to the build configuration:
 
 ```bash
-# For GRUB
-MENDER_GRUB_STORAGE_DEVICE = "hd0"
-
 # For U-Boot
 MENDER_UBOOT_STORAGE_INTERFACE = "mmc"
 MENDER_UBOOT_STORAGE_DEVICE = "0"
