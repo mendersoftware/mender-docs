@@ -1,0 +1,50 @@
+stages:
+  - test
+  - build
+  - trigger
+
+include:
+  - project: 'Northern.tech/Mender/mendertesting'
+    file: '.gitlab-ci-check-commits-signoffs.yml'
+  - project: 'Northern.tech/Mender/mendertesting'
+    file: '.gitlab-ci-check-python3-format.yml'
+
+build:
+  stage: build
+  image: tiangolo/docker-with-compose
+  services:
+    - docker:19.03.5-dind
+  before_script:
+    - apk add --no-cache bash git openssl pwgen python3
+    - git config --global user.name "user"
+    - git config --global user.email "user@example.com"
+  script:
+    - ./test_autoversion.py
+    - ./autoversion.py --check
+    - env TEST_OPEN_SOURCE=1 ./test_docs.py 07.Administration/02.Production-installation/docs.md
+    - if [ -n "$REGISTRY_MENDER_IO_PASSWORD" ]; then 
+        docker login -u ntadm_menderci -p "$REGISTRY_MENDER_IO_PASSWORD" registry.mender.io;
+      fi
+    - if [ -n "$REGISTRY_MENDER_IO_PASSWORD" ]; then
+        env TEST_ENTERPRISE=1 ./test_docs.py 07.Administration/02.Production-installation/docs.md;
+      fi
+    - if [ -n "$REGISTRY_MENDER_IO_PASSWORD" ]; then
+        env TEST_ENTERPRISE=1 ./test_docs.py 07.Administration/02.Production-installation/01.Upgrading-from-OS-to-Enterprise/docs.md;
+      fi
+
+trigger:mender-docs-site:
+  image: alpine
+  stage: trigger
+  before_script:
+    - apk add --no-cache curl
+  script:
+    - curl -v -f -X POST
+      -F token=$MENDER_DOCS_SITE_TRIGGER_TOKEN
+      -F ref=master
+      https://gitlab.com/api/v4/projects/16842368/trigger/pipeline
+    - curl -v -f -X POST
+      -F token=$MENDER_DOCS_SITE_TRIGGER_TOKEN
+      -F ref=production
+      https://gitlab.com/api/v4/projects/16842368/trigger/pipeline
+  only:
+    - /^(master|[0-9]+\.[0-9]+\.x)$/
