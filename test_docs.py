@@ -34,14 +34,14 @@ execute_count = 0
 test_count = 0
 
 
-
 if len(sys.argv) == 1:
     print("missing markdown file argument")
     sys.exit(1)
 
 
 if len(sys.argv) == 2 and sys.argv[1] == "-h" or sys.argv[1] == "--help":
-    print("""
+    print(
+        """
         %s <file>
 
 This tool will parse <file> to extract enclosed ```bash ``` code blocks from markdown, 
@@ -64,7 +64,9 @@ add it to a shell script, and execute it (with -e -x set).
 
       <!-- AUTOMATION: test=`cmd` -->
 
-    """ % __file__)
+    """
+        % __file__
+    )
     sys.exit(0)
 
 
@@ -79,12 +81,12 @@ with open(sys.argv[1]) as f:
             ignore_count += 1
         elif re.search(execute_line, line) or re.search(test_line, line):
             if re.search(execute_line, line):
-                cmd = re.sub(execute_line, '', line)
+                cmd = re.sub(execute_line, "", line)
                 execute_count += 1
             else:
-                cmd = re.sub(test_line, '', line)
+                cmd = re.sub(test_line, "", line)
                 test_count += 1
-            cmd = re.sub("\s*-->", '', cmd)
+            cmd = re.sub("\s*-->", "", cmd)
             shell_steps.append(cmd.strip() + os.linesep)
         elif line.startswith("```bash"):
             inside_bash_code_block = True
@@ -108,7 +110,10 @@ with NamedTemporaryFile(dir=os.getcwd(), delete=False) as f:
     os.chmod(f.name, stat.S_IWRITE | stat.S_IREAD | stat.S_IXUSR)
 
 print("Parsing and running: ", sys.argv[1])
-print("Total lines ignored: %d\nTotal custom shell commands: %d\nTotal tests to run: %d\n" % (ignore_count, execute_count, test_count))
+print(
+    "Total lines ignored: %d\nTotal custom shell commands: %d\nTotal tests to run: %d\n"
+    % (ignore_count, execute_count, test_count)
+)
 time.sleep(3)
 
 ret = subprocess.call(f.name, shell=True)
