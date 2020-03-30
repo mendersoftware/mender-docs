@@ -15,14 +15,14 @@ To follow this guide, you will need the following:
 * An 8 GB or larger microSD card.
 * A Raspberry Pi [universal power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply?target=_blank) or a micro USB cable.
 * Internet connectivity for your Raspberry Pi (either Ethernet or wifi available)
-* A Mender Professional account to access the [hosted server](https://hosted.mender.io).
+* A Mender Starter account to access the [hosted server](https://hosted.mender.io).
 
 
-### Get a Mender Professional account
+### Get a Mender Starter account
 
 Get a Mender account by [signing up here](https://mender.io/signup?target=_blank).
 
-!!! We provide $120 free credit for you to use for evaluation. You can cancel at any time without incurring a cost while your usage remains under $120.
+!!! We provide three months free usage on the Mender Starter plan for you to use for evaluation. You can cancel at any time without incurring a cost.
 
 You can also try it on-premise, but it requires more effort getting setup. See the [on-premise instructions below](#running-mender-on-premise).
 
@@ -68,9 +68,9 @@ pi@raspberrypi:~ $
 Keep this terminal open as we will shortly use it to install the Mender client.
 
 
-### Step 2 - Login to Mender Professional
+### Step 2 - Login to Mender Starter
 
-Login to your [Mender Professional account](https://hosted.mender.io/ui/#/login?target=_blank), and when on the main page for the first time new users will get a tutorial in the Mender web GUI.
+Login to your [Mender Starter account](https://hosted.mender.io/ui/#/login?target=_blank), and when on the main page for the first time new users will get a tutorial in the Mender web GUI.
 
 Go to the **Dashboard** tab and click on **Connect a device**. Then Click on **Connect my own device**. Select your Raspberry Pi model and click **Next**. You should see a screen similar to the one below. Keep this open as we will use it in the next step.
 
