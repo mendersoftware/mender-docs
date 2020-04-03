@@ -15,12 +15,12 @@ To follow this guide, you will need the following:
 * An 8 GB or larger microSD card.
 * A Raspberry Pi [universal power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply?target=_blank) or a micro USB cable.
 * Internet connectivity for your Raspberry Pi (either Ethernet or wifi available)
-* A Mender Starter account to access the [hosted server](https://hosted.mender.io).
+* A [hosted Mender](https://hosted.mender.io?target=_blank) account.
 
 
-### Get a Mender Starter account
+### Get a hosted Mender account
 
-Get a Mender account by [signing up here](https://mender.io/signup?target=_blank).
+Get a hosted Mender account by [signing up here](https://mender.io/signup?target=_blank).
 
 !!! We provide three months free usage on the Mender Starter plan for you to use for evaluation. You can cancel at any time without incurring a cost.
 
@@ -49,7 +49,7 @@ Boot the device with the newly flashed SD card, then:
 Your first application deployment is easy with 5 short steps:
 
 
-### Step 1 - SSH into your Raspberry Pi device 
+### Step 1 - SSH into your Raspberry Pi device
 
 SSH into your device:
 
@@ -68,9 +68,9 @@ pi@raspberrypi:~ $
 Keep this terminal open as we will shortly use it to install the Mender client.
 
 
-### Step 2 - Login to Mender Starter
+### Step 2 - Login to hosted Mender
 
-Login to your [Mender Starter account](https://hosted.mender.io/ui/#/login?target=_blank), and when on the main page for the first time new users will get a tutorial in the Mender web GUI.
+Login to your [hosted Mender](https://hosted.mender.io?target=_blank) account, and when on the main page for the first time new users will get a tutorial in the Mender web GUI.
 
 Go to the **Dashboard** tab and click on **Connect a device**. Then Click on **Connect my own device**. Select your Raspberry Pi model and click **Next**. You should see a screen similar to the one below. Keep this open as we will use it in the next step.
 
@@ -92,7 +92,7 @@ Once the client has started, the Mender client will attempt to connect to the se
 ![accepting the device](image_1.png)
 
 
-### Step 4 - Create a Deployment 
+### Step 4 - Create a Deployment
 
 There is already a mender-demo Artifact available under *Releases* the first time you use Mender. It contains a small web server your device can run.
 
@@ -157,7 +157,7 @@ To read more about system snapshots see the documentation on [Artifact from syst
 
 ## Running Mender on-premise
 
-For the easiest and fastest experience, we recommend using the hosted version of Mender for your first evaluation. You can also try the same deployment above using the on-premise version by installing a Mender demo server on a host machine, however this will take you a bit longer. You will need to install [Docker Engine](https://docs.docker.com/install/linux/docker-ce/ubuntu?target=_blank) (on device) and [Docker Compose](https://docs.docker.com/compose/install?target=_blank) in your deployment environment. 
+For the easiest and fastest experience, we recommend using the hosted version of Mender for your first evaluation. You can also try the same deployment above using the on-premise version by installing a Mender demo server on a host machine, however this will take you a bit longer. You will need to install [Docker Engine](https://docs.docker.com/install/linux/docker-ce/ubuntu?target=_blank) (on device) and [Docker Compose](https://docs.docker.com/compose/install?target=_blank) in your deployment environment.
 
 Next, you will need to download the Mender integration environment in the working directory:
 
@@ -178,12 +178,12 @@ Note that the demo up script starts the Mender services, adds a demo user with t
 
 After you log into the UI on the localhost you can follow steps 1 through 6 listed above.
 
-## Have any questions? 
+## Have any questions?
 
 If you need help and have any questions:
 
 * Visit our community forum at [Mender Hub](https://hub.mender.io/) dedicated to OTA updates where you can discuss any issues you may be having. Share and learn from other Mender users.
 
-* Learn more about Mender by reading the rest of the documentation. 
+* Learn more about Mender by reading the rest of the documentation.
 
 [Compare plans](https://mender.io/products/pricing?target=_blank) and choose a plan that fits your requirements.

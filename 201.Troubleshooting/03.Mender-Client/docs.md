@@ -100,7 +100,7 @@ The message shows that the Mender client rejects the Mender server's certificate
 authority (CA).
 
 If your server is using a certificate that is signed by an official Certificate Authority, then you likely
-need to update your client's root certificate store. For example, [Mender Professional](https://mender.io/products/mender-professional?target=_blank)
+need to update your client's root certificate store. For example, [hosted Mender](https://hosted.mender.io?target=_blank)
 uses an official CA so the only reason your client would reject this is if it does not have updated root certificates
 in its system store.
 

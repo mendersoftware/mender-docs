@@ -109,7 +109,7 @@ customize the files that are included in the output images.
 
 One example of a overlay-rootfs addition can be found in the
 `rootfs-overlay-demo` directory, which, after running the server setup script
-(see [Using Mender Professional](../building-a-mender-debian-image#using-mender-professional))
+(see [Using hosted Mender](../building-a-mender-debian-image#using-mender-professional))
 contains:
 
 ```bash

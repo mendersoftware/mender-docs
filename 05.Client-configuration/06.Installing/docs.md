@@ -57,7 +57,7 @@ input is desired.
 The setup is different depending on your server configuration and the most common cases
 are shown below. Use `mender setup --help` to learn about all configuration options.
 
-- Connecting to [hosted.mender.io](https://hosted.mender.io) using demo settings
+- Connecting to [hosted Mender](https://hosted.mender.io) using demo settings
 
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
 ```bash
