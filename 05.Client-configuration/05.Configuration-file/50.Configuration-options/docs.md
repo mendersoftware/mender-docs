@@ -58,7 +58,7 @@ system based on Yocto configuration and rarely needs to be modified.
 An array of json objects on the form
 `[{"ServerURL": "https://mender-server.com"},
 {"ServerURL": "https://mender-server2.com"}, ...]`, where `ServerURL` has the
-same interpretation as the root [`ServerURL` attribute](#ServerURL). 
+same interpretation as the root [`ServerURL` attribute](#ServerURL).
 If `Servers` entry is specified, the configuration cannot contain an additional
 `ServerURL` entry in the top level of the json configuration. Upon an unserved
 request (4XX/5XX-response codes) the client will attempt the next server on the
@@ -149,7 +149,7 @@ See also the section about [state scripts](../../../artifacts/state-scripts).
 #### TenantToken
 
 A token which identifies which tenant a device belongs to. This is only relevant
-if using Mender Professional.
+if using a multi-tenant environment such as [hosted Mender](https://hosted.mender.io?target=_blank).
 
 #### UpdateLogPath
 
