@@ -14,13 +14,13 @@ To follow this guide, you will need the following:
 * A [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b?target=_blank) or [B+](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus?target=_blank), or a [Raspberry Pi 4 Model B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b?target=_blank).
 * An 8 GB or larger microSD card.
 * A Raspberry Pi [universal power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply?target=_blank) or a micro USB cable.
-* Internet connectivity for your Raspberry Pi (either Ethernet or wifi configured)
-* A Mender Professional account to access the hosted server.
+* Internet connectivity for your Raspberry Pi (either Ethernet or wifi available)
+* A [hosted Mender](https://hosted.mender.io?target=_blank) account.
 
 
-### Get a Mender Professional account
+### Get a hosted Mender account
 
-Get a Mender account by [signing up here](https://mender.io/signup?target=_blank).
+Get a hosted Mender account by [signing up here](https://mender.io/signup?target=_blank).
 
 !!! We provide $120 free credit for you to use for evaluation. You can cancel at any time without incurring a cost while your usage remains under $120.
 
@@ -29,7 +29,7 @@ You can also try it on-premise, but it requires more effort getting setup. See t
 
 ### Prepare your device
 
-Make sure your Raspberry Pi has Raspbian OS installed. 
+Make sure your Raspberry Pi has Raspbian OS installed.
 
 * Download Raspbian OS image from [here](https://www.raspberrypi.org/downloads/raspbian?target=_blank).
 * [Follow their steps](https://www.raspberrypi.org/documentation/installation/installing-images?target=_blank) to install the OS image to your device and [enable SSH](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md?target=_blank) on your device. This should take less than 15 minutes.
@@ -37,7 +37,7 @@ Make sure your Raspberry Pi has Raspbian OS installed.
 Your first deployment is easy with 5 short steps:
 
 
-### Step 1 - SSH into your Raspberry Pi device 
+### Step 1 - SSH into your Raspberry Pi device
 
 SSH into your device:
 
@@ -55,10 +55,9 @@ pi@raspberrypi:~ $
 
 Keep this terminal open as we will shortly use it to install the Mender client.
 
+### Step 2 - Login to hosted Mender
 
-### Step 2 - Login to Mender Professional
-
-Login to your [Mender Professional account](https://hosted.mender.io/ui/#/login?target=_blank), and when on the main page for the first time new users will get a tutorial in the Mender web GUI.
+Login to your [hosted Mender](https://hosted.mender.io?target=_blank) account, and when on the main page for the first time new users will get a tutorial in the Mender web GUI.
 
 Go to the **Dashboard** tab and click on **Connect a device**. Then Click on **Connect my own device**. Select your Raspberry Pi model and click **Next**. You should see a screen similar to the below. Keep this open as we will use it in the next step.
 
@@ -78,7 +77,7 @@ Once the client has started, the Mender client will attempt to connect to the se
 ![image alt text](image_1.png)
 
 
-### Step 4 - Create a Deployment 
+### Step 4 - Create a Deployment
 
 There is already a mender-demo Artifact available under *Releases* the first time you use Mender. It contains a small web server your device can run.
 
@@ -105,7 +104,7 @@ Simply follow the tooltips to update your newly deployed application!
 
 ## Running Mender on-premise
 
-For the easiest and fastest experience, we recommend using the hosted version of Mender for your first evaluation. You can also try the same deployment above using the on-premise version by installing a Mender demo server on a host machine, however this will take you a bit longer. You will need to install [Docker Engine](https://docs.docker.com/install/linux/docker-ce/ubuntu?target=_blank) (on device) and [Docker Compose](https://docs.docker.com/compose/install?target=_blank) in your deployment environment. 
+For the easiest and fastest experience, we recommend using the hosted version of Mender for your first evaluation. You can also try the same deployment above using the on-premise version by installing a Mender demo server on a host machine, however this will take you a bit longer. You will need to install [Docker Engine](https://docs.docker.com/install/linux/docker-ce/ubuntu?target=_blank) (on device) and [Docker Compose](https://docs.docker.com/compose/install?target=_blank) in your deployment environment.
 
 Next, you will need to download the Mender integration environment in the working directory:
 
@@ -124,15 +123,15 @@ And finally fire up the demo server environment with:
 
 Note that the demo up script starts the Mender services, adds a demo user with the username mender-demo@example.com, and assigns a random password in which you can change after you log in to the Mender web UI. The Mender UI can be found on [https://localhost](https://localhost?target=_blank).
 
-After you log into the UI on the ‘localhost’ you can follow steps 1 through 5 listed above. 
+After you log into the UI on the ‘localhost’ you can follow steps 1 through 5 listed above.
 
-## Have any questions? 
+## Have any questions?
 
 If you need help and have any questions:
 
 * Visit our community forum at [Mender Hub](https://hub.mender.io/) dedicated to OTA updates where you can discuss any issues you may be having. Share and learn from other Mender users.
 
-* Learn more about Mender by reading the rest of the documentation. 
+* Learn more about Mender by reading the rest of the documentation.
 
-[Compare plans](https://mender.io/products/pricing?target=_blank) and choose a plan that fits your requirements. 
+[Compare plans](https://mender.io/products/pricing?target=_blank) and choose a plan that fits your requirements.
 

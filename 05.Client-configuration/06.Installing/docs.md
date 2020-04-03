@@ -53,9 +53,9 @@ Copy the demo configuration file:
 sudo cp /etc/mender/mender.conf.demo /etc/mender/mender.conf
 ```
 
-##### Configuration for Mender Professional server
+##### Configuration for hosted Mender server
 
-To configure the Mender client for Mender Professional, you need to edit `/etc/mender/mender.conf` and insert your Tenant Token
+To configure the Mender client for [hosted Mender](https://hosted.mender.io?target=_blank), you need to edit `/etc/mender/mender.conf` and insert your Tenant Token
 where it says "Paste your Hosted Mender token here".
 
 Set the `TENANT_TOKEN` variable:
