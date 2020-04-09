@@ -44,7 +44,7 @@ adjustment you might need to make before building.
 Check out the board integrations at [Mender Hub](https://hub.mender.io?target=_blank) to see if your board is
 already integrated.
 If you encounter any issues and want to save time, you can use
-the [Mender professional services to integrate your board](https://mender.io/support-and-services/board-integration?target=_blank).
+the [Mender Consulting services to integrate your board](https://mender.io/support-and-services/board-integration?target=_blank).
 
 
 ### Correct clock on device
@@ -103,7 +103,7 @@ MENDER_ARTIFACT_NAME = "release-1"
 
 ARTIFACTIMG_FSTYPE = "ext4"
 
-# Build for Mender Professional
+# Build for hosted Mender
 #
 # To get your tenant token:
 #    - log in to https://hosted.mender.io
@@ -142,7 +142,7 @@ ARTIFACTIMG_FSTYPE = "ext4"
 
 !!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../variables#mender_storage_total_size_mb) for more information. Mender selects the file system type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on file system types](../../../devices/yocto-project/partition-configuration#file-system-types) for more information.
 
-!!! If you are building for **Mender Professional**, make sure to set `MENDER_SERVER_URL` and `MENDER_TENANT_TOKEN` (see the comments above).
+!!! If you are building for **[hosted Mender](https://hosted.mender.io?target=_blank)**, make sure to set `MENDER_SERVER_URL` and `MENDER_TENANT_TOKEN` (see the comments above).
 
 !!! If you would like to use a read-only root file system, please see the section on [configuring the image for read-only rootfs](../../yocto-project/image-configuration#configuring-the-image-for-read-only-rootfs).
 
@@ -225,7 +225,7 @@ VIRTUAL-RUNTIME_initscripts = ""
 
 ARTIFACTIMG_FSTYPE = "ext4"
 
-# Build for Mender Professional
+# Build for hosted Mender
 #
 # To get your tenant token:
 #    - log in to https://hosted.mender.io
@@ -264,7 +264,7 @@ ARTIFACTIMG_FSTYPE = "ext4"
 
 !!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../variables#mender_storage_total_size_mb) for more information. Mender selects the file system type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on file system types](../../../devices/yocto-project/partition-configuration#file-system-types) for more information.
 
-!!! If you are building for **Mender Professional**, make sure to set `MENDER_SERVER_URL` and `MENDER_TENANT_TOKEN` (see the comments above).
+!!! If you are building for **[hosted Mender](https://hosted.mender.io?target=_blank)**, make sure to set `MENDER_SERVER_URL` and `MENDER_TENANT_TOKEN` (see the comments above).
 
 !!! If you would like to use a read-only root file system, please see the section on [configuring the image for read-only rootfs](../../yocto-project/image-configuration#configuring-the-image-for-read-only-rootfs).
 
