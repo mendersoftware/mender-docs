@@ -116,13 +116,13 @@ dependencies for `mender-convert`:
 ## Configure the Mender client server configuration
 
 The easiest, and most straight-forward way, is to integrate the client with
-Mender Professional:
+[hosted Mender](https://hosted.mender.io?target=_blank):
 
-#### Using [Mender Professional](https://mender.io/products/mender-professional)
+#### Using [hosted Mender](https://hosted.mender.io?target=_blank)
 ```bash
 ./scripts/bootstrap-rootfs-overlay-hosted-server.sh \
     --output-dir ${PWD}/rootfs_overlay_demo \
-    --tenant-token "Paste token from Mender Professional"
+    --tenant-token "Paste token from https://hosted.mender.io/ui/#/settings/my-organization"
 ```
 
 However, there are additional scripts in the `scripts/` directory to enable
