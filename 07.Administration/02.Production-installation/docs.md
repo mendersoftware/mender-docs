@@ -739,6 +739,7 @@ cannot be turned off. Below follows a guide for setting up a single
 organization. For additional information on administering organizations, see the
 help screen from:
 
+<!--AUTOMATION: ignore -->
 ```bash
 ./run exec mender-tenantadm /usr/bin/tenantadm --help
 ```
