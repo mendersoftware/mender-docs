@@ -72,19 +72,19 @@ docker volume create --name=mender-redis-db-backup
 Clone the contents of the original volumes to the backup volumes:
 
 ```bash
-docker run --rm -ti -v mender-artifacts:/from        -v mender-artifacts-backup:/to        alpine cp -a /from /to
-docker run --rm -ti -v mender-db:/from               -v mender-db-backup:/to               alpine cp -a /from /to
-docker run --rm -ti -v mender-elasticsearch-db:/from -v mender-elasticsearch-db-backup:/to alpine cp -a /from /to
-docker run --rm -ti -v mender-redis-db:/from         -v mender-redis-db-backup:/to         alpine cp -a /from /to
+docker run --rm -v mender-artifacts:/from        -v mender-artifacts-backup:/to        alpine cp -a /from /to
+docker run --rm -v mender-db:/from               -v mender-db-backup:/to               alpine cp -a /from /to
+docker run --rm -v mender-elasticsearch-db:/from -v mender-elasticsearch-db-backup:/to alpine cp -a /from /to
+docker run --rm -v mender-redis-db:/from         -v mender-redis-db-backup:/to         alpine cp -a /from /to
 ```
 
 This backup can later be restored with this command:
 
 ```bash
-docker run --rm -ti -v mender-artifacts:/to        -v mender-artifacts-backup:/from        alpine cp -a /from /to
-docker run --rm -ti -v mender-db:/to               -v mender-db-backup:/from               alpine cp -a /from /to
-docker run --rm -ti -v mender-elasticsearch-db:/to -v mender-elasticsearch-db-backup:/from alpine cp -a /from /to
-docker run --rm -ti -v mender-redis-db:/to         -v mender-redis-db-backup:/from         alpine cp -a /from /to
+docker run --rm -v mender-artifacts:/to        -v mender-artifacts-backup:/from        alpine cp -a /from /to
+docker run --rm -v mender-db:/to               -v mender-db-backup:/from               alpine cp -a /from /to
+docker run --rm -v mender-elasticsearch-db:/to -v mender-elasticsearch-db-backup:/from alpine cp -a /from /to
+docker run --rm -v mender-redis-db:/to         -v mender-redis-db-backup:/from         alpine cp -a /from /to
 ```
 
 You can try the above command immediately, it will just restore the already
