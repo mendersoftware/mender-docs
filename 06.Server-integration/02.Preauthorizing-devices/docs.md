@@ -43,7 +43,7 @@ If your device does not show as pending authorization in the Mender server once 
 
 ### A CLI environment for your server
 
-In order to access the the Mender server API with the commands below, you need to set up some shell variables in the terminal you will be using.
+In order to access the Mender server API with the commands below, you need to set up some shell variables in the terminal you will be using.
 
 Follow the steps in [set up shell variables for cURL](../using-the-apis#set-up-shell-variables-for-curl).
 
