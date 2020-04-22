@@ -15,6 +15,10 @@ The output of `mender-convert` is:
   Mender through the Mender Server.
 * An ext4 image of the modified filesystem for advanced users.
 
+**Note:** Provisioning a device with an image created using `mender-convert` and
+transitioning to a `yocto` image thereafter can be tedious, error prone and is,
+thus, discouraged as discussed [here](https://hub.mender.io/t/migrating-from-mender-converted-debian-to-yocto/506/2).
+
 ### Recommended workflow
 
 The recommended workflow for using `mender-convert` is to rely on a *golden disk
