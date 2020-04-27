@@ -22,7 +22,7 @@ To follow this guide, you will need the following:
 
 Get a hosted Mender account by [signing up here](https://mender.io/signup?target=_blank).
 
-!!! We provide $120 free credit for you to use for evaluation. You can cancel at any time without incurring a cost while your usage remains under $120.
+!!! We provide three months free usage on the Mender Starter plan for you to use for evaluation. You can cancel at any time without incurring a cost.
 
 You can also try it on-premise, but it requires more effort getting setup. See the [on-premise instructions below](#running-mender-on-premise).
 
