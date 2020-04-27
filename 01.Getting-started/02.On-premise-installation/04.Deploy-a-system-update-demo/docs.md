@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 In this tutorial we will deploy a full rootfs update to a physical device, a
-Raspberry Pi 3, using the Mender server.
+Raspberry Pi, using the Mender server.
 
 We will use two devices: one as our local "golden" device, which we use to
 prepare the update, and other as a remote device that receives the OTA update.
@@ -22,9 +22,13 @@ that you have a basic understanding of how Mender works before moving on to conn
 
 ### A device or two to test with
 
-You need one or more Raspberry Pi 3 devices. To make it easy to provision the
-device we will use a SD card to store the OS, so you will need one SD card (8 GB
-or larger) per device.
+You need one or more Raspberry Pi devices. The original tutorial was written
+using a Raspberry Pi 3, but a Raspberry Pi 4 will also work. Just replace
+"Raspberry Pi 3" and similar looking strings with "Raspberry Pi 4" where you see
+them.
+
+To make it easy to provision the device we will use a SD card to store the OS,
+so you will need one SD card (8 GB or larger) per device.
 
 ### Disk image
 
