@@ -45,11 +45,14 @@ the contents of each DB into `$PWD/db-dump/<service-name>` directory.
 ../migration/dump-db
 ```
 > ```
-> Stopping menderproduction_mender-deployments_1 ... done
-> Stopping menderproduction_mender-inventory_1 ... done
-> Stopping menderproduction_mender-useradm_1 ... done
-> Stopping menderproduction_mender-device-auth_1 ... done
-> Starting mender-mongo ... done
+Stopping menderproduction_mender-deployments_1            ... done
+Stopping menderproduction_mender-device-auth_1            ... done
+Stopping menderproduction_mender-useradm_1                ... done
+Stopping menderproduction_mender-create-artifact-worker_1 ... done
+Stopping menderproduction_mender-workflows-worker_1       ... done
+Stopping menderproduction_mender-workflows-server_1       ... done
+Stopping menderproduction_mender-inventory_1              ... done
+Starting mender-mongo ... done
 > 2017-06-06T11:20:05.004+0000    writing admin.system.version to
 > 2017-06-06T11:20:05.024+0000    done dumping admin.system.version (1 document)
 > 2017-06-06T11:20:05.024+0000    writing useradm.migration_info to
@@ -87,17 +90,17 @@ Once the data has been dumped or restored, the services can be started using
 ./run up -d
 ```
 > ```
-> menderproduction_mender-mongo_1 is up-to-date
-> menderproduction_mender-elasticsearch_1 is up-to-date
 > menderproduction_mender-gui_1 is up-to-date
 > menderproduction_minio_1 is up-to-date
-> menderproduction_mender-redis_1 is up-to-date
-> Starting menderproduction_mender-device-auth_1
-> Starting menderproduction_mender-inventory_1
-> Starting menderproduction_mender-useradm_1
+> menderproduction_mender-mongo_1 is up-to-date
 > menderproduction_storage-proxy_1 is up-to-date
-> menderproduction_mender-conductor_1 is up-to-date
-> Starting menderproduction_mender-deployments_1
+> menderproduction_mender-useradm_1 is up-to-date
+> menderproduction_mender-create-artifact-worker_1 is up-to-date
+> menderproduction_mender-workflows-worker_1 is up-to-date
+> menderproduction_mender-workflows-server_1 is up-to-date
+> menderproduction_mender-inventory_1 is up-to-date
+> menderproduction_mender-deployments_1 is up-to-date
+> menderproduction_mender-device-auth_1 is up-to-date
 > menderproduction_mender-api-gateway_1 is up-to-date
 > ```
 
