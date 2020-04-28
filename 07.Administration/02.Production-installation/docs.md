@@ -8,7 +8,7 @@ taxonomy:
 <!-- AUTOMATION: execute=if [ "$TEST_OPEN_SOURCE" = 1 ] && [ "$TEST_ENTERPRISE" = 1 ]; then echo "TEST_OPEN_SOURCE and TEST_ENTERPRISE cannot both be 1!"; exit 1; fi -->
 
 <!-- Cleanup code -->
-<!-- AUTOMATION: execute=ORIG_DIR=$PWD; function cleanup() { set +e; cd $ORIG_DIR/mender-server/production; ./run down -v; docker volume rm mender-artifacts mender-db mender-elasticsearch-db mender-redis-db; cd $ORIG_DIR; rm -rf mender-server; } -->
+<!-- AUTOMATION: execute=ORIG_DIR=$PWD; function cleanup() { set +e; cd $ORIG_DIR/mender-server/production; ./run down -v; docker volume rm mender-artifacts mender-db; cd $ORIG_DIR; rm -rf mender-server; } -->
 <!-- AUTOMATION: execute=trap cleanup EXIT -->
 
 !!! You can save time by using [hosted Mender](https://hosted.mender.io?target=_blank), a secure Mender server ready to use, maintained by the Mender developers.
@@ -373,16 +373,12 @@ The template is configured to mount the following volumes:
 
 - `mender-artifacts` - artifact objects storage
 - `mender-db` - mender services databases data
-- `mender-elasticsearch-db` - elasticsearch service database data
-- `mender-redis-db` - redis service database data
 
 Create these volumes with the following commands:
 
 ```bash
 docker volume create --name=mender-artifacts
 docker volume create --name=mender-db
-docker volume create --name=mender-elasticsearch-db
-docker volume create --name=mender-redis-db
 ```
 
 !!! The storage location of these volumes depends on your docker configuration. You can check the path for a specific volume by running `docker volume inspect --format '{{.Mountpoint}}' mender-artifacts`.
@@ -704,18 +700,16 @@ Bring up all services up in detached mode with the following command:
 ```
 > ```
 > Creating menderproduction_mender-api-gateway_1 ... done
-> Creating menderproduction_mender-conductor_1 ... done
+> Creating menderproduction_mender-create-artifact-worker_1 ... done
 > Creating menderproduction_mender-deployments_1 ... done
 > Creating menderproduction_mender-device-auth_1 ... done
-> Creating menderproduction_mender-elasticsearch_1 ... done
-> Creating menderproduction_mender-email-sender_1 ... done
 > Creating menderproduction_mender-gui_1 ... done
 > Creating menderproduction_mender-inventory_1 ... done
 > Creating menderproduction_mender-mongo_1 ... done
-> Creating menderproduction_mender-org-welcome-email-preparer_1 ... done
-> Creating menderproduction_mender-redis_1 ... done
 > Creating menderproduction_mender-tenantadm_1 ... done
 > Creating menderproduction_mender-useradm_1 ... done
+> Creating menderproduction_mender-workflows-server_1 ... done
+> Creating menderproduction_mender-workflows-worker_1 ... done
 > Creating menderproduction_minio_1 ... done
 > Creating menderproduction_storage-proxy_1 ... done
 > ```
@@ -870,23 +864,20 @@ Below you can see typical output for the Enterprise server. The Open Source
 server will be similar, but will have fewer services running.
 
 > ```
->                         Name                                      Command               State           Ports
-> ----------------------------------------------------------------------------------------------------------------------
-> menderproduction_mender-api-gateway_1                  /entrypoint.sh                   Up      0.0.0.0:443->443/tcp
-> menderproduction_mender-conductor_1                    /srv/start_conductor.sh          Up      8080/tcp, 8090/tcp
-> menderproduction_mender-deployments_1                  /entrypoint.sh --config /e ...   Up      8080/tcp
-> menderproduction_mender-device-auth_1                  /usr/bin/deviceauth --conf ...   Up      8080/tcp
-> menderproduction_mender-elasticsearch_1                /docker-entrypoint.sh elas ...   Up      9200/tcp, 9300/tcp
-> menderproduction_mender-email-sender_1                 /usr/bin/entrypoint.sh           Up
-> menderproduction_mender-gui_1                          /entrypoint.sh nginx             Up      80/tcp
-> menderproduction_mender-inventory_1                    /usr/bin/inventory --confi ...   Up      8080/tcp
-> menderproduction_mender-mongo_1                        docker-entrypoint.sh mongod      Up      27017/tcp
-> menderproduction_mender-org-welcome-email-preparer_1   /usr/bin/entrypoint.sh           Up
-> menderproduction_mender-redis_1                        /redis/entrypoint.sh             Up      6379/tcp
-> menderproduction_mender-tenantadm_1                    /usr/bin/tenantadm --confi ...   Up      8080/tcp
-> menderproduction_mender-useradm_1                      /usr/bin/useradm-enterpris ...   Up      8080/tcp
-> menderproduction_minio_1                               /usr/bin/docker-entrypoint ...   Up      9000/tcp
-> menderproduction_storage-proxy_1                       /usr/local/openresty/bin/o ...   Up      0.0.0.0:9000->9000/tcp
+>                       Name                                    Command                  State                  Ports
+> -------------------------------------------------------------------------------------------------------------------------------
+> menderproduction_mender-api-gateway_1              /entrypoint.sh                   Up             0.0.0.0:443->443/tcp, 80/tcp
+> menderproduction_mender-create-artifact-worker_1   /usr/bin/workflows --confi ...   Up             8080/tcp
+> menderproduction_mender-deployments_1              /entrypoint.sh --config /e ...   Up             8080/tcp
+> menderproduction_mender-device-auth_1              /usr/bin/deviceauth --conf ...   Up             8080/tcp
+> menderproduction_mender-gui_1                      /entrypoint.sh nginx             Up (healthy)   80/tcp
+> menderproduction_mender-inventory_1                /usr/bin/inventory --confi ...   Up             8080/tcp
+> menderproduction_mender-mongo_1                    docker-entrypoint.sh mongod      Up             27017/tcp
+> menderproduction_mender-useradm_1                  /usr/bin/useradm --config  ...   Up             8080/tcp
+> menderproduction_mender-workflows-server_1         /usr/bin/workflows --confi ...   Up             8080/tcp
+> menderproduction_mender-workflows-worker_1         /usr/bin/workflows --confi ...   Up
+> menderproduction_minio_1                           /usr/bin/docker-entrypoint ...   Up (healthy)   9000/tcp
+> menderproduction_storage-proxy_1                   /usr/local/openresty/bin/o ...   Up             0.0.0.0:9000->9000/tcp
 > ```
 
 At this point you can try to log into the Web UI using the URL of your server,

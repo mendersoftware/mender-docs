@@ -10,7 +10,7 @@ taxonomy:
 <!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" != 1 ]; then echo "TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->
 
 <!-- Cleanup code -->
-<!-- AUTOMATION: execute=ORIG_DIR=$PWD; function cleanup() { set +e; cd $ORIG_DIR/mender-server/production; ./run down -v; docker volume rm mender-artifacts mender-db mender-elasticsearch-db mender-redis-db mender-artifacts-backup mender-db-backup mender-elasticsearch-db-backup mender-redis-db-backup; cd $ORIG_DIR; rm -rf mender-server; } -->
+<!-- AUTOMATION: execute=ORIG_DIR=$PWD; function cleanup() { set +e; cd $ORIG_DIR/mender-server/production; ./run down -v; docker volume rm mender-artifacts mender-db mender-artifacts-backup mender-db-backup; cd $ORIG_DIR; rm -rf mender-server; } -->
 <!-- AUTOMATION: execute=trap cleanup EXIT -->
 
 <!-- Basically a repeat of Open Source setup from Production Installation guide -->
@@ -25,8 +25,6 @@ taxonomy:
 <!-- AUTOMATION: execute=CERT_API_CN=s3.docker.mender.io CERT_STORAGE_CN=s3.docker.mender.io ../keygen -->
 <!-- AUTOMATION: execute=docker volume create --name=mender-artifacts -->
 <!-- AUTOMATION: execute=docker volume create --name=mender-db -->
-<!-- AUTOMATION: execute=docker volume create --name=mender-elasticsearch-db -->
-<!-- AUTOMATION: execute=docker volume create --name=mender-redis-db -->
 <!-- AUTOMATION: execute=docker volume inspect --format '{{.Mountpoint}}' mender-artifacts -->
 <!-- AUTOMATION: execute=sed -i.bak 's/MINIO_ACCESS_KEY:.*/MINIO_ACCESS_KEY: Q3AM3UQ867SPQQA43P2F/' config/prod.yml -->
 <!-- AUTOMATION: execute=sed -i.bak 's/MINIO_SECRET_KEY:.*/MINIO_SECRET_KEY: abcssadasdssado798dsfjhkksd/' config/prod.yml -->
@@ -65,8 +63,6 @@ Create new backup volumes:
 ```bash
 docker volume create --name=mender-artifacts-backup
 docker volume create --name=mender-db-backup
-docker volume create --name=mender-elasticsearch-db-backup
-docker volume create --name=mender-redis-db-backup
 ```
 
 Clone the contents of the original volumes to the backup volumes:
@@ -74,8 +70,6 @@ Clone the contents of the original volumes to the backup volumes:
 ```bash
 docker run --rm -v mender-artifacts:/from        -v mender-artifacts-backup:/to        alpine cp -a /from /to
 docker run --rm -v mender-db:/from               -v mender-db-backup:/to               alpine cp -a /from /to
-docker run --rm -v mender-elasticsearch-db:/from -v mender-elasticsearch-db-backup:/to alpine cp -a /from /to
-docker run --rm -v mender-redis-db:/from         -v mender-redis-db-backup:/to         alpine cp -a /from /to
 ```
 
 This backup can later be restored with this command:
@@ -83,8 +77,6 @@ This backup can later be restored with this command:
 ```bash
 docker run --rm -v mender-artifacts:/to        -v mender-artifacts-backup:/from        alpine cp -a /from /to
 docker run --rm -v mender-db:/to               -v mender-db-backup:/from               alpine cp -a /from /to
-docker run --rm -v mender-elasticsearch-db:/to -v mender-elasticsearch-db-backup:/from alpine cp -a /from /to
-docker run --rm -v mender-redis-db:/to         -v mender-redis-db-backup:/from         alpine cp -a /from /to
 ```
 
 You can try the above command immediately, it will just restore the already
@@ -97,8 +89,6 @@ Delete the original volumes:
 ```bash
 docker volume create --name=mender-artifacts
 docker volume create --name=mender-db
-docker volume create --name=mender-elasticsearch-db
-docker volume create --name=mender-redis-db
 ```
 
 After deleting the volumes, you need to follow [the main guide for installing
