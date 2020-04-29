@@ -60,6 +60,7 @@ See [certificate troubleshooting](../../../troubleshooting/mender-client#certifi
 
 Full details for building the Yocto project for your board are available at Mender Hub. The tested reference platforms for Mender are available at the following:
 * [Raspberry Pi 3 Model B/B+](https://hub.mender.io/t/raspberry-pi-3-model-b-b/57)
+* [Raspberry Pi 4 Model B](https://hub.mender.io/t/raspberry-pi-4-model-b/889)
 * [BeagleBone Black](https://hub.mender.io/t/beaglebone-black/83)
 * [QEMU](https://hub.mender.io/t/qemu-the-fast-processor-emulator/420)
 
@@ -198,7 +199,7 @@ MENDER_ARTIFACT_NAME = "release-1"
 INHERIT += "mender-full"
 
 # A MACHINE integrated with Mender.
-# raspberrypi3, beaglebone-yocto, vexpress-qemu and qemux86-64 are reference boards
+# raspberrypi3, raspberrypi4, beaglebone-yocto, vexpress-qemu and qemux86-64 are reference boards
 MACHINE = "<YOUR-MACHINE>"
 
 # The version of Mender to build. This needs to match an existing recipe in the meta-mender repository.

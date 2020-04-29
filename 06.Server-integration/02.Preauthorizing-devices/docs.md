@@ -14,7 +14,7 @@ See [Device authentication](../../architecture/device-authentication) for a gene
 
 ### A board integrated with Mender
 
-You need a physical board that has already been [integrated with Mender](../). For example, you may use one of the reference boards BeagleBone Black or Raspberry Pi 3.
+You need a physical board that has already been [integrated with Mender](../). For example, you may use one of the reference boards BeagleBone Black, Raspberry Pi 3 or Raspberry Pi 4.
 
 
 ### A block-based disk image for your board

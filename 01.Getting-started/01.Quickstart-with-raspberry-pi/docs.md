@@ -11,7 +11,10 @@ Quickly and easily deploy your first over-the-air (OTA) software update with Men
 
 To follow this guide, you will need the following:
 
-* A [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b?target=_blank) or [B+](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus?target=_blank).
+* One of these Raspberry Pi models:
+  * [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/?target=_blank)
+  * [Raspberry Pi 3 Model B+](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/?target=_blank).
+  * [Raspberry Pi 4 Model B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/?target=_blank).
 * An 8 GB or larger microSD card.
 * A Raspberry Pi [universal power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply?target=_blank) or a micro USB cable.
 * Internet connectivity for your Raspberry Pi (either Ethernet or wifi available)
@@ -27,19 +30,22 @@ Get a hosted Mender account by [signing up here](https://mender.io/signup?target
 You can also try it on-premise, but it requires more effort getting setup. See the [on-premise instructions below](#running-mender-on-premise).
 
 
-### Prepare your Raspberry Pi 3
+### Prepare your Raspberry Pi
 
 First we flash a Raspbian image that has Mender integrated to the SD card and configure it. This should take less than 15 minutes.
 
-The only difference from the official Raspbian image is that it has been converted to support robust A/B system updates and the Mender client has been installed. Note that the image will only work on *Raspberry Pi 3*, for now.
+The only difference from the official Raspbian image is that it has been converted to support robust A/B system updates and the Mender client has been installed. Note that currently the image will only work on one of the models listed under [prerequisites](#prerequisites).
 
-!!! If you have a different board than the Raspberry Pi 3 you can still follow the Mender product onboarding tooltips and deploy a demo application to your device. But you will not be able to do system updates without Mender integration later on.
+!!! If you do not have one of the supported boards you can still follow the Mender product onboarding tooltips and deploy a demo application to your device. But you will not be able to do system updates without Mender integration later on.
 
-* Download the [Raspbian OS image with Mender integrated][raspbian-buster-lite-mender.img.xz].
+* Download the Raspbian OS image with Mender integrated:
+  * For [Raspberry Pi 3 Model B and B+][raspbian-buster-lite-raspberrypi3-mender.img.xz]
+  * For [Raspberry Pi 4 Model B][raspbian-buster-lite-raspberrypi4-mender.img.xz]
 * [Follow the steps](https://www.raspberrypi.org/documentation/installation/installing-images?target=_blank) to flash the OS image to your device (e.g. choose "Use custom" and browse to the downloaded Mender Raspbian image if using the Raspberry Pi Imager).
 
 <!--AUTOVERSION: "mender-%.img.xz"/mender-convert-client -->
-[raspbian-buster-lite-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-02-05-raspbian-buster-lite/arm/2020-02-05-raspbian-buster-lite-mender-master.img.xz
+[raspbian-buster-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-02-05-raspbian-buster-lite/arm/2020-02-05-raspbian-buster-lite-raspberrypi3-mender-master.img.xz
+[raspbian-buster-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-02-05-raspbian-buster-lite/arm/2020-02-05-raspbian-buster-lite-raspberrypi4-mender-master.img.xz
 
 Boot the device with the newly flashed SD card, then:
 * Connect your device to the Internet, e.g. [using WiFi](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md?target=_blank).

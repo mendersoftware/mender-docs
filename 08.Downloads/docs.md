@@ -12,7 +12,8 @@ provision the device storage for devices without Mender running already.
 
 Mender provides images based on the following distributions:
 
-* Image for **Raspberry Pi 3**, which is based on the [Raspbian Linux
+* Images for **Raspberry Pi 3** and **Raspberry Pi 4**, which are based on the
+  [Raspbian Linux
   distribution](https://www.raspberrypi.org/downloads/raspbian/?target=_blank)
 
 !! Note that we do not offer commercial support for these images. They are based
@@ -22,12 +23,14 @@ Mender provides images based on the following distributions:
 !! manufacturer, or [contact us](mailto:contact@mender.io) if you have any
 !! questions on the Mender integration.
 
-| Board            | OS                              | Disk image                                                               | Storage size |
-|------------------|---------------------------------|--------------------------------------------------------------------------|--------------|
-| Raspberry Pi 3   | Raspbian Buster Lite 2020-02-05 | [raspbian-buster-lite-mender.img.xz][raspbian-buster-lite-mender.img.xz] | 8 GB         |
+| Board                         | OS                              | Disk image                                                                                         | Storage size |
+|-------------------------------|---------------------------------|----------------------------------------------------------------------------------------------------|--------------|
+| Raspberry Pi 3 Model B and B+ | Raspbian Buster Lite 2020-02-05 | [raspbian-buster-lite-raspberrypi3-mender.img.xz][raspbian-buster-lite-raspberrypi3-mender.img.xz] | 8 GB         |
+| Raspberry Pi 4 Model B        | Raspbian Buster Lite 2020-02-05 | [raspbian-buster-lite-raspberrypi4-mender.img.xz][raspbian-buster-lite-raspberrypi4-mender.img.xz] | 8 GB         |
 
 <!--AUTOVERSION: "mender-%.img.xz"/mender-convert-client -->
-[raspbian-buster-lite-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-02-05-raspbian-buster-lite/arm/2020-02-05-raspbian-buster-lite-mender-master.img.xz
+[raspbian-buster-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-02-05-raspbian-buster-lite/arm/2020-02-05-raspbian-buster-lite-raspberrypi3-mender-master.img.xz
+[raspbian-buster-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-02-05-raspbian-buster-lite/arm/2020-02-05-raspbian-buster-lite-raspberrypi4-mender-master.img.xz
 
 You can find images for other devices in our Mender Hub community forum, see
 [Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11) or

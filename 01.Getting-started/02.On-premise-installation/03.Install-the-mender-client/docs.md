@@ -32,5 +32,6 @@ combinations, and more being added by the community. If you would like
 professional assistance supporting your board and OS, please refer to the
 [commercial device support offering](https://mender.io/support-and-services/board-integration?target=_blank).
 
-If you have a Raspberry Pi 3, you can test out system updates by following the
-tutorial [deploy a system update demo](../deploy-a-system-update-demo).
+If you have a Raspberry Pi 3 or a Raspberry Pi 4, you can test out system
+updates by following the tutorial [deploy a system update
+demo](../deploy-a-system-update-demo).
