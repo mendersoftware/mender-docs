@@ -81,6 +81,21 @@ The above would translate to `MENDER_STORAGE_DEVICE = "/dev/mmcblk1p"`.
    in different locations so there is not enough information to determine which
    one is for your specific board.
 
+## Other Mender customizations
+
+Note that configuring features such as
+[identity](../../client-configuration/identity) and
+[inventory]((../../client-configuration/identity) rely on placing
+additional files into the target filesystem.  With `mender-convert`,
+these modifications should _not_ be done in the input images since
+they will be overwritten by `mender-convert`.  The proper mechanism to
+support updates like these, is to add them as files in your rootfs
+overlay.
+
+Similarly adding
+[root file system state scripts](../../artifacts/state-scripts#root-file-system-and-artifact-scripts)
+should be done using the `mender-convert` rootfs overlay.
+
 ## Fall back to U-Boot integration on ARM
 
 On some ARM devices it will not be possible to run GRUB. In that case the
