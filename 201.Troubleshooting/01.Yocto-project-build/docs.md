@@ -338,3 +338,60 @@ There are several possible resolutions to this problem:
 2. See if you can use an updated version recipe for your fork of U-Boot, for example by fetching the latest Yocto branch for the layer that contains the U-Boot fork.
 
 3. Avoid UEFI altogether by switching off the `mender-grub` feature. This will require you to use [U-Boot integration](../../devices/yocto-project/bootloader-support/u-boot) instead.
+
+<!--AUTOVERSION: "an older Yocto branch to the % branch"/ignore-->
+## When upgrading from an older Yocto branch to the zeus branch I get an error message `CONFIG_SYS_REDUNDAND_ENVIRONMENT is required for Mender to work`. My U-Boot patch used to work in earlier branches
+
+<!--AUTOVERSION: "versions included in the % branch of Yocto"/ignore-->
+This message appears because U-Boot versions included in the zeus branch of Yocto have new requirements not present in earlier versions. To fix this message, you need one of these remedies:
+
+* For U-Boot versions **prior to v2020.01**: Make sure that `CONFIG_SYS_REDUNDAND_ENVIRONMENT` is defined in the headers for the board:
+  ```c
+  #define CONFIG_SYS_REDUNDAND_ENVIRONMENT
+  ```
+
+* For U-Boot versions **v2020.01 and onwards**: Make sure that `CONFIG_SYS_REDUNDAND_ENVIRONMENT` is listed in the `defconfig` file for the board:
+  ```
+  CONFIG_SYS_REDUNDAND_ENVIRONMENT=y
+  ```
+
+<!--AUTOVERSION: "an older Yocto branch to the % branch"/ignore-->
+## When upgrading from an older Yocto branch to the zeus branch I get an error message that `CONFIG_ENV_OFFSET` or `CONFIG_ENV_OFFSET_REDUND` is not the value Mender expects. My U-Boot patch used to work in earlier branches
+
+An error message of this kind might look like this:
+
+```
+ERROR: u-boot-1_2020.01-r0 do_configure: U-Boot configuration rpi_3_32b_config has setting:
+CONFIG_ENV_OFFSET=
+CONFIG_ENV_OFFSET_REDUND=
+but Mender expects:
+CONFIG_ENV_OFFSET=0x400000
+Please fix U-Boot's configuration file.
+```
+
+<!--AUTOVERSION: "versions included in the % branch of Yocto"/ignore-->
+This message appears because U-Boot versions included in the zeus branch of Yocto have new requirements not present in earlier versions, and it is no longer possible for Mender to auto-provide the necessary configuration. To fix this message, you need to perform these steps:
+
+1. Figure out what the values should be. Start by executing this command:
+   ```bash
+   bitbake -e u-boot |grep ^MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET_ | sort
+   ```
+   You may need to replace `u-boot` if you board is using a U-Boot fork with a different name. This should produce output similar to this:
+   ```bash
+   MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET_1="0x400000"
+   MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET_2="0x800000"
+   ```
+
+2. `CONFIG_ENV_OFFSET` and `CONFIG_SYS_OFFSET_REDUND` must be set to the first and second of the values above, respectively.
+
+    * For U-Boot versions **prior to v2020.01**: Make sure that thw two values are defined in the headers for the board:
+      ```c
+      #define CONFIG_ENV_OFFSET 0x400000
+      #define CONFIG_ENV_OFFSET_REDUND 0x800000
+      ```
+
+    * For U-Boot versions **v2020.01 and onwards**: Make sure that the two values are listed in the `defconfig` file for the board:
+      ```
+      CONFIG_ENV_OFFSET=0x400000
+      CONFIG_ENV_OFFSET_REDUND=0x800000
+      ```
