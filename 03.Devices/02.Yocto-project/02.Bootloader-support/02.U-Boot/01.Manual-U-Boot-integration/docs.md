@@ -80,8 +80,8 @@ fork.
 ## U-Boot features
 
 A number of U-Boot features need to be enabled for Mender to work correctly, and
-these should be enabled in the board support headers in U-Boot, under
-`include/configs`.
+these should be enabled in the board support configuration file in U-Boot, under
+`configs`.
 
 1. `CONFIG_BOOTCOUNT_LIMIT`: This is required for rollback support to work. For
    example:
@@ -94,15 +94,15 @@ these should be enabled in the board support headers in U-Boot, under
    environment. This means that other `CONFIG_BOOTCOUNT_` features should be
    turned off.
 
-3. `CONFIG_ENV_IS_IN_MMC`: This will store the U-Boot environment file on the
+3. `CONFIG_SYS_REDUNDAND_ENVIRONMENT`: This enables the use of redundant U-Boot
+   environment storage, which prevents corruption of the environment if a
+   powerloss happens while it is being written.
+
+4. `CONFIG_ENV_IS_IN_MMC`: This will store the U-Boot environment file on the
    memory card, before the first partition start. See
    [`MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET`](../../../../../artifacts/yocto-project/variables#mender_uboot_env_storage_device_offset)
    for more information. Other `CONFIG_ENV_IS_IN_` features should be turned
    off.
-
-4. `FAT_ENV_INTERFACE`, `FAT_ENV_DEVICE`, `FAT_ENV_PART` and
-   `FAT_ENV_DEVICE_AND_PART` should be removed from the configuration if they
-   are present. They will be automatically defined by Mender.
 
 
 ## Integration points
