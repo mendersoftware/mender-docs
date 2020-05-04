@@ -38,7 +38,7 @@ VERSION_CACHE = {}
 ERRORS_FOUND = False
 
 
-def get_version_of(repo):
+def get_version_of(repo, docker):
     global VERSION_CACHE
 
     version = VERSION_CACHE.get(repo)
@@ -47,6 +47,10 @@ def get_version_of(repo):
     elif version is not None:
         return version
     elif INTEGRATION_REPO is not None and INTEGRATION_VERSION is not None:
+        if docker:
+            version_type_args = ["--version-type", "docker"]
+        else:
+            version_type_args = ["--version-type", "git"]
         version = (
             subprocess.check_output(
                 [
@@ -56,6 +60,7 @@ def get_version_of(repo):
                     "--in-integration-version",
                     INTEGRATION_VERSION,
                 ]
+                + version_type_args
             )
             .strip()
             .decode()
@@ -186,6 +191,7 @@ def parse_autoversion_tag(tag):
     #         "search": For example: "-b %" to match -b parameter with version.
     #         "repo": Git repository whose version should be substituted.
     #         "complain": true/false
+    #         "docker": true/false
     #     },
     #     ...
     # ]
@@ -211,20 +217,24 @@ def parse_autoversion_tag(tag):
         last_end = pos
         expr = match.group(1).replace('\\"', '"')
         repo = match.group(2)
-        complain = match.group(3)
-        if complain is None or complain == "":
-            complain = False
-        elif complain == "complain":
+        flag = match.group(3)
+        complain = False
+        docker = False
+        if flag == "complain":
             complain = True
-        else:
-            raise Exception('Replacement flag must be "complain" or nothing')
+        elif flag == "docker":
+            docker = True
+        elif flag is not None and flag != "":
+            raise Exception('Replacement flag must be "complain" or "docker"')
 
         if "%" not in expr and not complain:
             raise Exception(
                 'Search string "%s" doesn\'t contain at least one \'%%\' (only allowed in "complain" mode)'
                 % expr
             )
-        parsed.append({"search": expr, "repo": repo, "complain": complain})
+        parsed.append(
+            {"search": expr, "repo": repo, "complain": complain, "docker": docker}
+        )
     if last_end != end_of_whole_tag:
         raise Exception(
             (
@@ -289,8 +299,9 @@ def process_line(line, replacements, fd):
 
 def do_replacements(line, replacements, just_remove):
     all_replaced = line
-    for search, repo, complain in [
-        (repl["search"], repl["repo"], repl["complain"]) for repl in replacements
+    for search, repo, complain, docker in [
+        (repl["search"], repl["repo"], repl["complain"], repl["docker"])
+        for repl in replacements
     ]:
         if len(search.strip()) <= 2:
             raise Exception(
@@ -314,7 +325,7 @@ def do_replacements(line, replacements, just_remove):
         else:
             if repo == "ignore":
                 continue
-            version = get_version_of(repo)
+            version = get_version_of(repo, docker)
             if version is None:
                 continue
             if complain:

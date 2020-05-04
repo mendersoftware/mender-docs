@@ -128,7 +128,7 @@ First, pull in new container images:
 ```bash
 ./run pull
 ```
-<!--AUTOVERSION: "%: Pulling from mendersoftware/deviceauth"/deviceauth "%: Pulling from mendersoftware/gui"/gui "%: Pulling from mendersoftware/api-gateway"/api-gateway "mendersoftware/deviceauth:%"/deviceauth "mendersoftware/gui:%"/gui "mendersoftware/api-gateway:%"/api-gateway-->
+<!--AUTOVERSION: "%: Pulling from mendersoftware/deviceauth"/deviceauth/docker "%: Pulling from mendersoftware/gui"/gui/docker "%: Pulling from mendersoftware/api-gateway"/api-gateway/docker "mendersoftware/deviceauth:%"/deviceauth/docker "mendersoftware/gui:%"/gui/docker "mendersoftware/api-gateway:%"/api-gateway/docker-->
 > ```
 > Pulling mender-mongo (mongo:3.4)...  
 > 3.4: Pulling from library/mongo  

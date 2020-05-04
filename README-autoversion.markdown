@@ -33,7 +33,7 @@ comes *immediately* after the header.
 
 ### Version numbers for Mender components
 
-In this case, `{action}` is the name of the repository whose version you would
+In this case, `{action}` is the name of the repository whose Git version you would
 like to insert in the given location. For example:
 
 <!-- CONGRATULATIONS! If you found this comment, you are one of those that get
@@ -55,6 +55,21 @@ updated, `autoversion.py --update` will turn it into this:
 ```
 <!--AUTOVERSION: "mender-artifact version %"/mender-artifact-->
 Joe User uses mender-artifact version 2.3.0, and likes it!
+```
+
+
+#### Docker image version
+
+By default, the version that will be inserted in an `AUTOVERSION` tag is the Git version,
+which is the most common use.
+
+For the cases where the Docker image is desired (i.e. Docker images for backend repos) you
+can append a `/docker` into the `{action}`. For example:
+
+<!--AUTOVERSION: "pull mendersoftware/inventory:mender-%"/ignore-->
+```
+<!--AUTOVERSION: "pull mendersoftware/inventory:mender-%"/inventory/docker-->
+docker pull mendersoftware/inventory:mender-2.4.x
 ```
 
 
