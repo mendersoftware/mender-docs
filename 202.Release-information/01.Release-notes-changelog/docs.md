@@ -4,6 +4,69 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender warrior-v2020.05
+
+_Released 05.05.2020_
+
+### Statistics
+
+A total of 7 lines added, 7 removed (delta 0)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 3 (42.9%) |
+| Ole Petter Orhagen | 2 (28.6%) |
+| Mirza Krak | 1 (14.3%) |
+| Guillaume Khayat | 1 (14.3%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 4 (50.0%) |
+| Ole Petter Orhagen | 2 (25.0%) |
+| Mirza Krak | 1 (12.5%) |
+| Guillaume Khayat | 1 (12.5%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Kristian Amlie | 1 (14.3%) |
+
+| Developers with the most signoffs (total 2) | |
+|---|---|
+| Kristian Amlie | 2 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 6 (85.7%) |
+| guillaume.kh.alt@gmail.com | 1 (14.3%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 7 (87.5%) |
+| guillaume.kh.alt@gmail.com | 1 (12.5%) |
+
+| Employers with the most signoffs (total 2) | |
+|---|---|
+| Northern.tech | 2 (100.0%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 3 (75.0%) |
+| guillaume.kh.alt@gmail.com | 1 (25.0%) |
+
+### Changelogs
+
+#### meta-mender (warrior-v2020.05)
+
+New changes in meta-mender since warrior-v2020.04:
+
+* grubenv: Handle debug command prompt when running as EFI
+  app.
+* raspberrypi: busybox compatibility for boot firmware state script
+* grub: Move dynamic storage handling into grub-mender-grubenv repository.
+* write GPT partition table before resize of data part
+  ([MEN-3366](https://tracker.mender.io/browse/MEN-3366))
+
+
 ## meta-mender warrior-v2020.04
 
 _Released 04.08.2020_
