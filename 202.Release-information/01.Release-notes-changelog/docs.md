@@ -4,6 +4,154 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender warrior-v2020.05
+
+_Released 05.05.2020_
+
+### Statistics
+
+A total of 7 lines added, 7 removed (delta 0)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 3 (42.9%) |
+| Ole Petter Orhagen | 2 (28.6%) |
+| Mirza Krak | 1 (14.3%) |
+| Guillaume Khayat | 1 (14.3%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 4 (50.0%) |
+| Ole Petter Orhagen | 2 (25.0%) |
+| Mirza Krak | 1 (12.5%) |
+| Guillaume Khayat | 1 (12.5%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Kristian Amlie | 1 (14.3%) |
+
+| Developers with the most signoffs (total 2) | |
+|---|---|
+| Kristian Amlie | 2 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 6 (85.7%) |
+| guillaume.kh.alt@gmail.com | 1 (14.3%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 7 (87.5%) |
+| guillaume.kh.alt@gmail.com | 1 (12.5%) |
+
+| Employers with the most signoffs (total 2) | |
+|---|---|
+| Northern.tech | 2 (100.0%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 3 (75.0%) |
+| guillaume.kh.alt@gmail.com | 1 (25.0%) |
+
+### Changelogs
+
+#### meta-mender (warrior-v2020.05)
+
+New changes in meta-mender since warrior-v2020.04:
+
+* grubenv: Handle debug command prompt when running as EFI
+  app.
+* raspberrypi: busybox compatibility for boot firmware state script
+* grub: Move dynamic storage handling into grub-mender-grubenv repository.
+* write GPT partition table before resize of data part
+  ([MEN-3366](https://tracker.mender.io/browse/MEN-3366))
+
+
+## meta-mender warrior-v2020.04
+
+_Released 04.08.2020_
+
+### Statistics
+
+A total of 206 lines added, 47 removed (delta 159)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 2 (28.6%) |
+| Mirza Krak | 1 (14.3%) |
+| Lluis Campos | 1 (14.3%) |
+| Ole Petter Orhagen | 1 (14.3%) |
+| Alf-Rune Siqveland | 1 (14.3%) |
+| Drew Moseley | 1 (14.3%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 115 (47.7%) |
+| Mirza Krak | 70 (29.0%) |
+| Drew Moseley | 42 (17.4%) |
+| Lluis Campos | 7 (2.9%) |
+| Alf-Rune Siqveland | 6 (2.5%) |
+| Ole Petter Orhagen | 1 (0.4%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Drew Moseley | 35 (74.5%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Kristian Amlie | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 7 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 241 (100.0%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+| Employers with the most hackers (total 6) | |
+|---|---|
+| Northern.tech | 6 (100.0%) |
+
+### Changelogs
+
+#### meta-mender (warrior-v2020.04)
+
+New changes in meta-mender since warrior-v2020.03:
+
+* mender-grub: Dynamically determine mender_grub_storage_device.
+* mender-grub: Add regexp module.
+* Deprecate MENDER_GRUB_STORAGE_DEVICE variable.
+* Updated the LIC_FILES_CHECKSUM after removing dependencies
+  ([MEN-3251](https://tracker.mender.io/browse/MEN-3251))
+* raspberrypi: add state script to update boot firmware
+  Raspberry Pi boards have a set of boot firmware files that are
+  located on the vfat boot part, and these files are not updated
+  when you perform an update of the root filesystem.
+  Occasionally there will be changes to the Raspberry Pi software stack
+  that requires that these files are update. Typically there is something
+  in the Linux kernel that requires something that is in the boot
+  firmware. This means that to update the Linux kernel you must also
+  update the boot firmware files.
+  Above is really sub-optimal design of the Raspberry Pi boards but a
+  limitation that we must live with.
+  Note that the DTB files are also part of "boot firmware" and included in
+  the state script update.
+  The provided state-script can be enabled by adding the following to e.g
+  local.conf:
+      INHERIT += "rpi-update-firmware"
+  The ArtifactInstall_Leave_50 script can be overriden to customize what
+  files to update, e.g only DTB files. By default all files on the boot
+  part will be updated including config.txt and cmdline.txt.
+  NOTE! Updating the boot firmware files can not be done atomically and the
+  files are not roll-backed even though an rootfs rollback is performed. Conclusion,
+  this is an risky operating which could brick your device.
+
+
 ## meta-mender warrior-v2020.03
 
 _Released 03.09.2020_
