@@ -10,7 +10,7 @@ taxonomy:
 ~~~~~~~~~~~~~~~~~~~~
 
 In this tutorial we will deploy a full rootfs update to a physical device, a
-Raspberry Pi 3, using the Mender server.
+Raspberry Pi, using the Mender server.
 
 We will use two devices: one as our local "golden" device, which we use to
 prepare the update, and other as a remote device that receives the OTA update.
@@ -27,9 +27,13 @@ that you have a basic understanding of how Mender works before moving on to conn
 
 ### A device or two to test with
 
-You need one or more Raspberry Pi 3 devices. To make it easy to provision the
-device we will use a SD card to store the OS, so you will need one SD card (8 GB
-or larger) per device.
+You need one or more Raspberry Pi devices. The original tutorial was written
+using a Raspberry Pi 3, but a Raspberry Pi 4 will also work. Just replace
+"Raspberry Pi 3" and similar looking strings with "Raspberry Pi 4" where you see
+them.
+
+To make it easy to provision the device we will use a SD card to store the OS,
+so you will need one SD card (8 GB or larger) per device.
 
 ### Disk image
 
@@ -66,6 +70,11 @@ that your device(s) can connect to the Mender server.
 !!! If you are using `bash`, you can set a variable to make the rest of the tutorial easier, for example `IP_OF_MENDER_SERVER_FROM_DEVICE="192.168.10.1"`.
 
 ! Using static IP addresses with one device and workstation is quite easy. If you are using several devices, we strongly recommend using a setup with dynamic IP assignment like a router with DHCP support. Otherwise you need to take care to preserve the unique IP address configuration of each device when provisioning the storage and deploying rootfs updates.
+
+!!! If the device does not have internet connectivity, the device will not be able
+!!! to sync the system time. This will in turn cause the server certificate check to
+!!! fail. Thus if your device is not connected to the internet, you have to manually
+!!! set the system time correctly. This can be done with the `date -s` command.
 
 ## Prepare the disk image
 
@@ -129,7 +138,7 @@ Name=eth0
 [Network]
 Address=$IP_OF_MENDER_CLIENT
 Gateway=$IP_OF_MENDER_SERVER_FROM_DEVICE
-" | mender-artifact cp $MENDER_IMGPATH:/etc/systemd/network/eth.network
+" | mender-artifact cp - $MENDER_IMGPATH:/etc/systemd/network/eth.network
 ```
 
 ! If you have a static IP address setup for several devices, you need several disk images so each get different IP addresses.

@@ -59,7 +59,7 @@ need to make before building.
 Check out the board integrations at [Mender
 Hub](https://hub.mender.io?target=_blank) to see if your board is already
 integrated. If you encounter any issues and want to save time, you can use the
-[Mender professional services to integrate your
+[Mender Consulting services to integrate your
 board](https://mender.io/support-and-services/board-integration?target=_blank).
 
 
@@ -80,6 +80,7 @@ Full details for building the Yocto project for your board are available at
 Mender Hub. The tested reference platforms for Mender are available at the
 following:
 * [Raspberry Pi 3 Model B/B+](https://hub.mender.io/t/raspberry-pi-3-model-b-b/57)
+* [Raspberry Pi 4 Model B](https://hub.mender.io/t/raspberry-pi-4-model-b/889)
 * [BeagleBone Black](https://hub.mender.io/t/beaglebone-black/83)
 * [QEMU](https://hub.mender.io/t/qemu-the-fast-processor-emulator/420)
 
@@ -110,7 +111,7 @@ The following settings will be present in the default `conf/local.conf` after
 running the steps from [Mender Hub](https://hub.mender.io?target=_blank). These
 are likely to need customization for your setup.
 
-<!--AUTOVERSION: "Mender %"/mender "releases % and older"/ignore-->
+<!--AUTOVERSION: "Mender %"/mender "releases % and older"/ignore "PREFERRED_VERSION_pn-mender = \"%\""/mender "PREFERRED_VERSION_pn-mender-artifact = \"%\""/mender-artifact "PREFERRED_VERSION_pn-mender-artifact-native = \"%\""/mender-artifact-->
 ```bash
 # The name of the disk image and Artifact that will be built.
 # This is what the device will report that it is running, and different updates must have different names
@@ -129,13 +130,13 @@ MENDER_ARTIFACT_NAME = "release-1"
 # If you need an earlier version, please uncomment the following and set to the
 # required version.
 #
-# PREFERRED_VERSION_pn-mender = "1.1.%"
-# PREFERRED_VERSION_pn-mender-artifact = "2.0.%"
-# PREFERRED_VERSION_pn-mender-artifact-native = "2.0.%"
+# PREFERRED_VERSION_pn-mender = "2.1.2"
+# PREFERRED_VERSION_pn-mender-artifact = "3.2.1"
+# PREFERRED_VERSION_pn-mender-artifact-native = "3.2.1"
 
 ARTIFACTIMG_FSTYPE = "ext4"
 
-# Build for Mender Professional
+# Build for hosted Mender
 #
 # To get your tenant token:
 #    - log in to https://hosted.mender.io
@@ -174,7 +175,7 @@ ARTIFACTIMG_FSTYPE = "ext4"
 
 !!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../variables#mender_storage_total_size_mb) for more information. Mender selects the file system type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on file system types](../../../devices/yocto-project/partition-configuration#file-system-types) for more information.
 
-!!! If you are building for **Mender Professional**, make sure to set `MENDER_SERVER_URL` and `MENDER_TENANT_TOKEN` (see the comments above).
+!!! If you are building for **[hosted Mender](https://hosted.mender.io?target=_blank)**, make sure to set `MENDER_SERVER_URL` and `MENDER_TENANT_TOKEN` (see the comments above).
 
 !!! If you would like to use a read-only root file system, please see the section on [configuring the image for read-only rootfs](../../yocto-project/image-configuration#configuring-the-image-for-read-only-rootfs).
 
@@ -190,6 +191,9 @@ i.e. the top level of the Yocto Project build tree, and run these commands:
 ```bash
 git clone -b master git://github.com/mendersoftware/meta-mender
 ```
+
+<!--AUTOVERSION: "the HEAD of the % branch"/meta-mender-->
+Note that this command checks out the HEAD of the master branch and is not a specific tagged release. The [Yocto project release schedule](https://wiki.yoctoproject.org/wiki/Releases) differs from the Mender release schedule so even though you may be using a specific release of Mender, you will still need to take further steps if you want to use a tagged release of the Yocto project.
 
 Next, initialize the build environment:
 
@@ -218,7 +222,7 @@ bitbake-layers add-layer ../meta-mender/meta-mender-demo
 
 Add these lines to the start of your `conf/local.conf`:
 
-<!--AUTOVERSION: "Mender %"/mender "releases % and older"/ignore-->
+<!--AUTOVERSION: "Mender %"/mender "releases % and older"/ignore "PREFERRED_VERSION_pn-mender = \"%\""/mender "PREFERRED_VERSION_pn-mender-artifact = \"%\""/mender-artifact "PREFERRED_VERSION_pn-mender-artifact-native = \"%\""/mender-artifact-->
 ```bash
 # The name of the disk image and Artifact that will be built.
 # This is what the device will report that it is running, and different updates must have different names
@@ -228,7 +232,7 @@ MENDER_ARTIFACT_NAME = "release-1"
 INHERIT += "mender-full"
 
 # A MACHINE integrated with Mender.
-# raspberrypi3, beaglebone-yocto, vexpress-qemu and qemux86-64 are reference boards
+# raspberrypi3, raspberrypi4, beaglebone-yocto, vexpress-qemu and qemux86-64 are reference boards
 MACHINE = "<YOUR-MACHINE>"
 
 # The version of Mender to build. This needs to match an existing recipe in the meta-mender repository.
@@ -243,9 +247,9 @@ MACHINE = "<YOUR-MACHINE>"
 # If you need an earlier version, please uncomment the following and set to the
 # required version.
 #
-# PREFERRED_VERSION_pn-mender = "1.1.%"
-# PREFERRED_VERSION_pn-mender-artifact = "2.0.%"
-# PREFERRED_VERSION_pn-mender-artifact-native = "2.0.%"
+# PREFERRED_VERSION_pn-mender = "2.1.2"
+# PREFERRED_VERSION_pn-mender-artifact = "3.2.1"
+# PREFERRED_VERSION_pn-mender-artifact-native = "3.2.1"
 
 # The following settings to enable systemd are needed for all Yocto
 # releases sumo and older.  Newer releases have these settings conditionally
@@ -257,7 +261,7 @@ VIRTUAL-RUNTIME_initscripts = ""
 
 ARTIFACTIMG_FSTYPE = "ext4"
 
-# Build for Mender Professional
+# Build for hosted Mender
 #
 # To get your tenant token:
 #    - log in to https://hosted.mender.io
@@ -296,7 +300,7 @@ ARTIFACTIMG_FSTYPE = "ext4"
 
 !!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../variables#mender_storage_total_size_mb) for more information. Mender selects the file system type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on file system types](../../../devices/yocto-project/partition-configuration#file-system-types) for more information.
 
-!!! If you are building for **Mender Professional**, make sure to set `MENDER_SERVER_URL` and `MENDER_TENANT_TOKEN` (see the comments above).
+!!! If you are building for **[hosted Mender](https://hosted.mender.io?target=_blank)**, make sure to set `MENDER_SERVER_URL` and `MENDER_TENANT_TOKEN` (see the comments above).
 
 !!! If you would like to use a read-only root file system, please see the section on [configuring the image for read-only rootfs](../../yocto-project/image-configuration#configuring-the-image-for-read-only-rootfs).
 
