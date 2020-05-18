@@ -7,8 +7,8 @@ taxonomy:
 
 ##Definition
 
-Formally, the definition of an identity is a set of key-value attributes.
-For example, the identity of a person could be defined as:
+An identity is a set of key-value attributes.
+For example, you could describe a person as:
 
 ```
 ID={
@@ -18,7 +18,7 @@ Address=Jone's way 3, 1234 Boston
 }
 ```
 
-Which exact attributes are chosen to define an identity depends on the identity
+Which exact attributes make up an identity depends on the identity
 scheme of a given system.
 
 The Mender client allows the user to define the identity attributes, which means that Mender
@@ -26,10 +26,10 @@ can adapt to the identity scheme of any environment. However, Mender imposes the
 requirements for device identities:
 
 * the combination of the attribute values must be *unique* to each device, so that identities are not ambiguous when deploying software
-* identity attributes must *never change* for the lifetime of a device, so that a device can be recognized over its lifetime
+* identity attributes must *never change* for the lifetime of a device, so that the Mender server can recognize them reliably
 
-Note that device keys should not be used as part of identities, because this would make it very difficult to
-rotate or regenerate keys over the lifetime of the device as it would in effect change identity.
+Do not use device keys as part of an identity, because this will make it very difficult to
+rotate or regenerate keys over the lifetime of the device (as it would in effect change identity).
 It is important to have the ability to regenerate keys if a device gets compromised, or as a recurring proactive security measure.
 
 
@@ -38,8 +38,7 @@ It is important to have the ability to regenerate keys if a device gets compromi
 Even though Mender allows several attributes to make up the device identity,
 most environments just use one attribute for simplicity.
 
-The MAC address of the primary interface is a common way to satisfy the requirements for device identity,
-for example:
+For example, a MAC address of the primary interface satisfies the requirements for device identity:
 
 ```
 ID={
@@ -47,7 +46,7 @@ MAC=56:84:7a:fe:97:99
 }
 ```
 
-A serial number from the device can also be used:
+You could also use the serial number of a device:
 
 ```
 ID={
@@ -55,7 +54,7 @@ SerialNumber=PF021XD5
 }
 ```
 
-In some cases, several attributes are combined to make up the device identity:
+In some cases, several attributes form a device identity:
 
 ```
 ID={
@@ -74,7 +73,7 @@ the MAC address to identify others.
 
 For convenience it is very useful to always have a fixed-length string that uniquely identifies a
 device. The Mender server implements this by assigning a unique **Device ID** to a device
-as it is connected to the server.
+as it connects to the server.
 
 For example, a Device ID could look like `594019224d36350001fc5cc3`.
 
@@ -83,13 +82,13 @@ stored by the Mender server. The Device ID is primarily used for security purpos
 recognition of devices during device authentication, grouping, reporting, and similar cases.
 
 
-##Implementing a device identity executable
+##Implement a device identity executable
 
 The Mender client obtains the identity attributes by running an executable
 (e.g. binary or script) named `mender-device-identity` and parsing its standard output as the identity.
-The executable must be placed under the path `/usr/share/mender/identity/mender-device-identity`.
+The executable lives under `/usr/share/mender/identity/mender-device-identity`.
 
-When run, it is expected to produce a set of attributes on
+The executable must produce a set of attributes on
 standard output in the following key/value format:
 
 ```
@@ -103,12 +102,11 @@ mac=0a:1b:3d:fe:02:33
 cpuid=1234123-ABC
 ```
 
-Newline characters are stripped, and it is not supported to have newline as part
-of values. If such characters may exist they need to be encoded. For example,
-a URL-compatible encoding `foo\nbar` becomes `foo%10bar`.
+Newline characters are not supported and will be stripped.
+If you want to include them, encode them in a URL format (`foo\nbar` becomes `foo%10bar`).
 
-Attributes appearing multiple times will have their values merged into a list.
-For example, output
+If an attribute appears multiple times, it will translate to a list.
+For example, this output:
 
 ```
 mac=0a:1b:3d:fe:02:33
@@ -116,14 +114,14 @@ mac=0a:1b:3d:fe:02:34
 cpuid=1234123-ABC
 ```
 
-is conceptually merged into the following representation:
+will translate to:
 
 ```
 mac=[0a:1b:3d:fe:02:33, 0a:1b:3d:fe:02:34]
 cpuid=1234123-ABC
 ```
 
-! The device identity must remain unchanged throughout lifetime of the device. Thus, it is advised to use attributes that will not change or are unlikely to change in the future. Examples of such attributes are device/CPU serial numbers, interface MAC addresses, and in-factory burned EEPROM contents.
+! The device identity must remain unchanged throughout lifetime of the device. Use attributes that will not change or are unlikely to change in the future. Examples of such attributes are device/CPU serial numbers, interface MAC addresses, and in-factory burned EEPROM contents.
 
 
 ## Example device identity executables
