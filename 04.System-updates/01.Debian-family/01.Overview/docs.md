@@ -5,48 +5,56 @@ taxonomy:
     label: reference
 ---
 
-##Device capacity
+Mender has official support for binary-OS images based on Debian. The general
+approach for using such an image with Mender is through
+[Mender-convert](https://github.com/mendersoftware/mender-convert), which is a
+tool to automatically add Mender to a binary-OS image. For more information,
+have a look at
+[Mender-Hub](https://hub.mender.io/c/board-integrations/debian-family/11) for
+the specific boards that have already been integrated.
+
+
+# General requirements
+
+## Device capacity
 
 The client binaries are about 7 MB in size, or about 4 MB when debug symbols are
 stripped (using the `strip` tool). This includes most of the dependencies for
 the client, such as the http, TLS, and JSON libraries.
 
 The client depends on the LZMA library for Artifact compression, which is
-present in most Linux distributions, including those based on the Yocto Project
-and the Debian family.
+present in most Linux distributions, including those based on the Debian family.
 
-##Bootloader support
+## Bootloader support
 
 To support atomic rootfs rollback, Mender integrates with the bootloader of the
 device. Currently Mender supports
 [GRUB](https://www.gnu.org/software/grub/?target=_blank) and
 [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank). The bootloader
 installation, features and requirements vary depending on the target OS in use.
-Please see the [Yocto bootloader support](../yocto-project/bootloader-support)
-or [Debian bootloader support](../debian-family#bootloader-support) for more
-information.
+Please see the [Debian bootloader support](../debian-family#bootloader-support)
+for more information.
 
-##Kernel support
+## Kernel support
 
 While Mender itself does not have any specific kernel requirements beyond what a
 normal Linux kernel provides, it relies on systemd, which does have one such
-requirement: The `CONFIG_FHANDLE` feature must be enabled in the kernel. The
-symptom if this feature is unavailable is that systemd hangs during boot looking
-for device files.
+requirement: The `CONFIG_FHANDLE` feature enabled in the kernel. If this feature
+is unavailable systemd hangs during boot looking for device files.
 
 If you [run the Mender client in standalone
-mode](../../architecture/overview#modes-of-operation), you can avoid this
+mode](../../overview/overview#modes-of-operation), you can avoid this
 dependency by [disabling Mender as a system
-service](../../artifacts/yocto-project/image-configuration#disabling-mender-as-a-system-service).
+service](../../system-updates/yocto-project/image-customization#disabling-mender-as-a-system-service).
 
-##Partition layout
+## Partition layout
 
 In order to support robust rollback, Mender requires the device to have a
 certain partition layout. At least four different partitions are needed:
-* one boot partition, containing the U-Boot bootloader and its environment
-* two partitions for storing the root file system and kernel. The kernel image
+* One boot partition, containing the U-Boot bootloader and its environment
+* Two partitions for storing the root file system and kernel. The kernel image
   file, zImage, and any device tree binary should be stored in directory /boot
-* one for persistent data
+* One for persistent data
 
 One of the rootfs and kernel partitions will be marked as the *active*
 partition, from which the kernel and rootfs will be booted. The other, called
@@ -60,7 +68,7 @@ A sample partition layout is shown below:
 
 ![Mender client partition layout](mender_client_partition_layout.png)
 
-##Correct clock
+## Correct clock
 
 Certificate verification requires the device clock to be running correctly at
 all times. Make sure to either have a reliable clock or use network time
@@ -88,9 +96,8 @@ resolved.
 
 ### Unsupported build systems
 
-Mender has official support for the Yocto build system and binary OS images
-based on the Debian family. It is possible to adapt to other build systems.
-Please see [this blog
+Mender has official support binary OS images based on the Debian family. It is
+possible to adapt to other build systems. Please see [this blog
 post](https://mender.io/blog/porting-mender-to-a-non-yocto-build-system?target=_blank)
 for an example (note that some of Mender's needs may have changed since the blog
 post was made).
