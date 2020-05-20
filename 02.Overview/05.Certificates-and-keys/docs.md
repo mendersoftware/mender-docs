@@ -81,7 +81,7 @@ CERT_API_CN=docker.mender.io CERT_STORAGE_CN=s3.docker.mender.io ./keygen
 
 !!! Make sure your device has the correct date/time set. If the date/time is
 !!! incorrect, the certificate will not be validated. Consult the section on
-!!! [Correct clock](../../system-updates/yocto-project/customize-mender#correct-clock) for
+!!! [Correct clock](../../system-updates/debian-family/overview#correct-clock) for
 !!! details
 
 The keys and certificates are placed in a directory `keys-generated` where you
