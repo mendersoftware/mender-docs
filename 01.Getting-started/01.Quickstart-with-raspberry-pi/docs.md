@@ -18,7 +18,9 @@ To follow this guide, you will need the following:
 * An 8 GB or larger microSD card.
 * A Raspberry Pi [universal power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply?target=_blank) or a micro USB cable.
 * Internet connectivity for your Raspberry Pi (either Ethernet or wifi available)
-* A [hosted Mender](https://hosted.mender.io?target=_blank) account.
+* One of:
+  * A [hosted Mender](https://hosted.mender.io?target=_blank) account.
+  * An on-premise demo server. See the [on-premise instructions below](#running-mender-on-premise).
 
 
 ### Get a hosted Mender account
