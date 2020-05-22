@@ -163,7 +163,7 @@ To read more about system snapshots see the documentation on [Artifact from syst
 
 ## Running Mender on-premise
 
-For the easiest and fastest experience, we recommend using the hosted version of Mender for your first evaluation. You can also try the same deployment above using the on-premise version by installing a Mender demo server on a host machine, however this will take you a bit longer. You will need to install [Docker Engine](https://docs.docker.com/install/linux/docker-ce/ubuntu?target=_blank) (on device) and [Docker Compose](https://docs.docker.com/compose/install?target=_blank) in your deployment environment.
+For the easiest and fastest experience, we recommend using the hosted version of Mender for your first evaluation. You can also try the same deployment above using the on-premise version by installing a Mender demo server on a host machine, however this will take you a bit longer. You will need to install [Docker Engine](https://docs.docker.com/install/linux/docker-ce/ubuntu?target=_blank) and [Docker Compose](https://docs.docker.com/compose/install?target=_blank) in your deployment environment.
 
 Next, you will need to download the Mender integration environment in the working directory:
 
