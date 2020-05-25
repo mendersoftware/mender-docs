@@ -48,6 +48,7 @@ of a device.
 
 By default, the Mender client sends the following attributes:
 
+<!--AUTOVERSION: "client version | \"%\""/mender-->
 | name | meaning | example value |
 |:----:|:-------:|:-------------:|
 | `device_type`  | type of the device | "raspberrypi4" |
@@ -65,6 +66,7 @@ create advanced filters and dynamic groups. We can also recognize two scopes
 "identity" and "inventory" which we already have mentioned above. You could use this
 feature to create, for instance, "LinuxV4HighMemDevices" group.
 
+<!--AUTOVERSION: "mender/blob/%/support"/mender-->
 Let's assume that you really want to create such a group. Obviously we need the
 information from the device about Linux kernel and total memory. In order to
 deliver it, in a portable manner, to the server your best choice is to use 
@@ -107,6 +109,7 @@ chmod 700 /usr/share/mender/inventory/mender-inventory-net.sh
 Please note that the existence of the name prefix "*mender_inventory-*" is not
 accidental; it is in fact required, as described in the following subsections.
 
+<!--AUTOVERSION: "mender/tree/%/support"/mender-->
 You can find some more useful scripts in [https://github.com/mendersoftware/mender/support](https://github.com/mendersoftware/mender/tree/master/support) directory.
 
 ## Inventory attribute use cases
