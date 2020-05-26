@@ -1,5 +1,5 @@
 ---
-title: "Development"
+title: "2.4"
 taxonomy:
     category: docs
 ---
@@ -10,9 +10,9 @@ For page headers the tag may come after due to misrendering if it is above.
 -->
 
 <!--AUTOVERSION: "### Development"/integration/complain-->
-### Development
+### 2.4
 
 # Documentation
 
 <!--AUTOVERSION: "bleeding-edge % branch"/integration/complain-->
-Documentation for Mender's bleeding-edge master branch.
+Documentation for Mender's 2.4 release.
