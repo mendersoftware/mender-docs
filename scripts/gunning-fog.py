@@ -15,7 +15,6 @@ for file in sys.argv[1:]:
         try:
             gf = r.gunning_fog()
         except ReadabilityException as e:
-            print("{}: {}".format(file, e))
             sys.exit(0)
 
         if not 9 <= int(gf.score) <= 12:
