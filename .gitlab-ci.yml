@@ -1,5 +1,6 @@
 stages:
   - test
+  - styleenforce
   - trigger
 
 include:
@@ -33,6 +34,15 @@ test:
     # - if [ -n "$REGISTRY_MENDER_IO_PASSWORD" ]; then
     #     env TEST_ENTERPRISE=1 ./test_docs.py 07.Administration/02.Production-installation/01.Upgrading-from-OS-to-Enterprise/docs.md;
     #   fi
+
+style:
+  stage: styleenforce
+  image: python
+  before_script:
+    - pip install py-readability-metrics
+    - python -m nltk.downloader punkt
+  script:
+    - find . -type f -name docs.md | xargs -i python scripts/gunning-fog.py {}
 
 trigger:mender-docs-site:
   image: alpine
