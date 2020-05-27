@@ -35,7 +35,7 @@ test:
     #     env TEST_ENTERPRISE=1 ./test_docs.py 07.Administration/02.Production-installation/01.Upgrading-from-OS-to-Enterprise/docs.md;
     #   fi
 
-style:
+style:readability:
   stage: styleenforce
   image: python
   before_script:
@@ -43,6 +43,18 @@ style:
     - python -m nltk.downloader punkt
   script:
     - find . -type f -name docs.md | xargs -i python scripts/gunning-fog.py {}
+
+style:weasel-words:
+  stage: styleenforce
+  image: ubuntu
+  script:
+    - find . -type f -name docs.md | xargs -i bash scripts/weasel.sh {}
+
+style:passive-voice:
+  stage: styleenforce
+  image: ubuntu
+  script:
+    - find . -type f -name docs.md | xargs -i bash scripts/passive.sh {}
 
 trigger:mender-docs-site:
   image: alpine
