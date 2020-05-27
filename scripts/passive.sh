@@ -2,6 +2,10 @@
 #
 # Simple passive voice checker from "My Ph.D advisor rewrote himself in Bash"
 #
+# Usage:
+#
+# passive.sh <file> ...
+#
 
 irregulars="awoken|\
 been|born|beat|\
@@ -61,9 +65,29 @@ if [ "$1" = "" ]; then
  exit
 fi
 
-! egrep --line-number --ignore-case --with-filename --color=always \
- "\\b(am|are|were|being|is|been|was|be)\
-\\b[ ]*(\w+ed|($irregulars))\\b" $*
+RATE_CUTOFF=${RATE_CUTOFF:-3}
 
+for file in $*; do
 
-exit $?
+  if egrep --ignore-case --with-filename  --line-number --only-matching --color=always \
+       "\\b(am|are|were|being|is|been|was|be)\
+\\b[ ]*(\w+ed|($irregulars))\\b" $*; then
+
+    N_WORDS=$(wc --words $file | cut -f1 -d ' ')
+
+    N_PASSIVE=$(egrep --ignore-case --only-matching --count  \
+                      "\\b(am|are|were|being|is|been|was|be)\
+\\b[ ]*(\w+ed|($irregulars))\\b" $file)
+
+    PERCENTAGE=$(( 100 * ${N_PASSIVE}/${N_WORDS}))
+
+    if (( ${PERCENTAGE} > ${RATE_CUTOFF} )); then
+      echo "The passive rate for ${file} is ${PERCENTAGE} and thus above the cut-off rate: ${RATE_CUTOFF}"
+      exit 1
+    fi
+
+  fi
+
+done
+
+exit 0
