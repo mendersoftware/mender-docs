@@ -2,6 +2,8 @@
 #
 # Simple passive voice checker from "My Ph.D advisor rewrote himself in Bash"
 #
+# http://matt.might.net/articles/shell-scripts-for-passive-voice-weasel-words-duplicates/
+#
 # Usage:
 #
 # passive.sh <file> ...
