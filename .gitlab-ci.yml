@@ -1,6 +1,5 @@
 stages:
   - test
-  - styleenforce
   - trigger
 
 include:
@@ -35,25 +34,15 @@ test:
     #     env TEST_ENTERPRISE=1 ./test_docs.py 07.Administration/02.Production-installation/01.Upgrading-from-OS-to-Enterprise/docs.md;
     #   fi
 
-style:readability:
-  stage: styleenforce
-  image: python
+test:weasel-words:
+  stage: test
+  image: ubuntu
   before_script:
     - pip install py-readability-metrics
     - python -m nltk.downloader punkt
   script:
     - find . -type f -name docs.md | xargs -i python scripts/gunning-fog.py {}
-
-style:weasel-words:
-  stage: styleenforce
-  image: ubuntu
-  script:
     - find . -type f -name docs.md | xargs -i bash scripts/weasel.sh {}
-
-style:passive-voice:
-  stage: styleenforce
-  image: ubuntu
-  script:
     - find . -type f -name docs.md | xargs -i bash scripts/passive.sh {}
 
 trigger:mender-docs-site:
