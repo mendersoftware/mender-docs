@@ -16,7 +16,9 @@ for file in sys.argv[1:]:
             gf = r.gunning_fog()
         except ReadabilityException as e:
             sys.exit(0)
-
+        # We require a GF index in the range: [9,12], which means
+        # our docs should be comprehenisble by a high-schooler.
+        # https://en.wikipedia.org/wiki/Gunning_fog_index
         if not 9 <= int(gf.score) <= 12:
             print(
                 "Gunning-Fog index for {} is {}, and not in the range [9, 12]".format(
