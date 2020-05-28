@@ -182,7 +182,7 @@ And finally fire up the demo server environment with:
 
 Note that the demo up script starts the Mender services, adds a demo user with the username mender-demo@example.com, and assigns a random password in which you can change after you log in to the Mender web UI. The Mender UI can be found on [https://localhost](https://localhost?target=_blank).
 
-After you log into the UI on the localhost you can follow steps 1 through 6 listed above.
+After you log into the UI on the localhost you can follow the steps above, starting with ["Prepare your Raspberry Pi"](#prepare-your-raspberry-pi).
 
 ## Have any questions?
 
