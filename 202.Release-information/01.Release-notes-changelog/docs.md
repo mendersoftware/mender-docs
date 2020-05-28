@@ -4,6 +4,65 @@ taxonomy:
     category: docs
 ---
 
+## mender-convert 2.0.1
+
+_Released 05.28.2020_
+
+### Statistics
+
+A total of 49 lines added, 36 removed (delta 13)
+
+| Developers with the most changesets | |
+|---|---|
+| Nate Baker | 3 (42.9%) |
+| Kristian Amlie | 2 (28.6%) |
+| Lluis Campos | 1 (14.3%) |
+| Mirza Krak | 1 (14.3%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Nate Baker | 30 (42.3%) |
+| Mirza Krak | 25 (35.2%) |
+| Kristian Amlie | 14 (19.7%) |
+| Lluis Campos | 2 (2.8%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Mirza Krak | 22 (61.1%) |
+
+| Developers with the most signoffs (total 3) | |
+|---|---|
+| Mirza Krak | 3 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 4 (57.1%) |
+| bakern@gmail.com | 3 (42.9%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 41 (57.7%) |
+| bakern@gmail.com | 30 (42.3%) |
+
+| Employers with the most signoffs (total 3) | |
+|---|---|
+| Northern.tech | 3 (100.0%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 3 (75.0%) |
+| bakern@gmail.com | 1 (25.0%) |
+
+### Changelogs
+
+#### mender-convert (2.0.1)
+
+New changes in mender-convert since 2.0.0:
+
+* Don't truncate output diskimage while writing partitions.
+* Fix 404 download errors when trying to run `docker-build`.
+
+
 ## meta-mender warrior-v2020.05
 
 _Released 05.05.2020_
