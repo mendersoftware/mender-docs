@@ -6,9 +6,8 @@ taxonomy:
 ---
 
 Much of the Mender client's configuration resides in `/etc/mender/mender.conf`
-on the root filesystem. This file is JSON structured and defines various
-parameters for Mender's operation. Some of the most common settings are tunable
-using [Yocto
+on the root filesystem. This file is JSON structured and defines parameters for
+Mender's operation. Some of the most common settings are tunable using [Yocto
 variables](../../artifacts/yocto-project/image-configuration#configuring-polling-intervals).
 The remaining parameters can only be changed by providing your own
 `mender.conf`.
@@ -48,8 +47,8 @@ already using.
 
 Then, inside `meta-<mylayer>/recipes-mender/mender/files/mender.conf`, you can
 put whatever configuration options you need, as a JSON structure. The file you
-provide will be merged with other settings taken from various variables in the
-build, with variables taking precedence.
+provide will be merged with other settings taken from variables in the build,
+with variables taking precedence.
 
 Here is an example of a `mender.conf` file:
 
