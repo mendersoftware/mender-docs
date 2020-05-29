@@ -10,15 +10,15 @@ This page describes how to install the Mender client in an existing Linux
 system. Installing this way does not offer a full Mender integration. However,
 it is possible to use Update Modules and update parts of the system.
 
-If full board integration is desired, follow the device documentation on [Yocto
+For a full board integration, follow the device documentation on the [Yocto
 Project](../../devices/yocto-project) or [Debian
-family](../../devices/debian-family).
+family](../../devices/debian-family) sections.
 
 
 ## Install Mender using the Debian package
 
-A Debian package (`.deb`) is provided for convenience to install on e.g Debian,
-Ubuntu or Raspbian. A Mender package is provided for the following
+Mender provides a Debian package (`.deb`) for convenience to install on e.g
+Debian, Ubuntu or Raspbian. Packages are available for the following
 architectures:
 
 - armhf (ARM-v6): ARM 32bit distributions, for example Raspbian for Raspberry Pi
@@ -46,7 +46,7 @@ wget https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/armhf/men
 ### Option 1: Attended installation with a wizard
 
 The Mender package comes with a wizard that will let you easily configure and
-customize your installation. This option is recommended for new users.
+customize your installation. New users should use this option.
 
 To install and configure Mender run the following command:
 
@@ -55,20 +55,20 @@ To install and configure Mender run the following command:
 sudo dpkg -i mender-client_master-1_armhf.deb
 ```
 
-After the installation wizard is completed, Mender is correctly setup on your
-device and will automatically start in [managed
+When the installation wizard completes, Mender is correctly setup on your device
+and will automatically start in [managed
 mode](../../architecture/overview#modes-of-operation). Your device is now ready
 to authenticate with the server and start receiving updates.
 
 
 ### Option 2: Unattended installation
 
-Alternatively, the package can be installed non-interactively,
-suitable for scripts or other situations where no user
-input is desired.
+Alternatively, install the package can non-interactively, when no user input is
+required.
 
-The setup is different depending on your server configuration and the most common cases
-are shown below. Use `mender setup --help` to learn about all configuration options.
+The setup is different depending on your server configuration. Shown below are
+the most common cases. Use `mender setup --help` to learn about all
+configuration options.
 
 - Connecting to [hosted Mender](https://hosted.mender.io) using demo settings
 

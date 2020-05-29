@@ -34,6 +34,20 @@ test:
     #     env TEST_ENTERPRISE=1 ./test_docs.py 07.Administration/02.Production-installation/01.Upgrading-from-OS-to-Enterprise/docs.md;
     #   fi
 
+test:style-checks:
+  stage: test
+  image: ubuntu
+  before_script:
+    - apt-get update
+    - apt-get install -y python3 python3-pip
+    - python3 -m pip install py-readability-metrics
+    - python3 -m nltk.downloader punkt
+  script:
+    # Disabled until we figure out a good way to apply this
+    # - find . -type f -name docs.md | xargs -i python3 scripts/gunning-fog.py {}
+    - find . -type f -name docs.md | xargs -i bash scripts/weasel.sh {}
+    - find . -type f -name docs.md | xargs -i bash scripts/passive.sh {}
+
 trigger:mender-docs-site:
   image: alpine
   stage: trigger

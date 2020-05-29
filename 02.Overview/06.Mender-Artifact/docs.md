@@ -48,20 +48,19 @@ to find more details about the exact format of the Mender Artifact.
 
 ## Versions
 
-Mender is constantly evolving to adapt to the needs of its users. New versions
-of the Mender Artifact format may be introduced as new features are added, if
-the features require it. See the [compatibility documentation](../compatibility)
-for an overview of the compatibility between Mender client and Mender Artifact
-format versions.
+Mender is constantly evolving to adapt to the needs of its users. When a new
+feature requires it, the Mender Artifact format gets upgraded. See the
+[compatibility documentation](../compatibility) for an overview of the
+compatibility between Mender client and Mender Artifact format versions.
 
 ## Streaming
 
-Mender takes advantage of the tar format's support for streaming. As a Mender
-Artifact is downloaded from the Mender server or external storage, the Mender
-client streams the root file system within it directly to the inactive
-partition, without needing any temporary storage for unpacking it before it is
-written. This drastically reduces storage requirements for the update process,
-improves performance and reduces flash wear.
+Mender takes advantage of the tar format's support for streaming. When
+downloading a Mender Artifact from the Mender server or external storage, the
+Mender client streams the payload directly to the inactive partition, without
+needing any temporary storage for unpacking it before writing it. This
+drastically reduces storage requirements for the update process, improves
+performance and reduces flash wear.
 
 ## Download interrupted
 
@@ -74,9 +73,10 @@ requests](https://tools.ietf.org/html/rfc7233?target=_blank).
 
 To enable streaming and control based on metadata, like aborting the download if
 the Artifact is not compatible with the device, the Mender Artifact itself is
-not compressed. Instead, the root file systems within Artifacts are compressed,
-currently with the [gzip compression
-algorithm](https://en.wikipedia.org/wiki/gzip?target=_blank) by default.
+not compressed. Instead, it compresses the root filesystems within Artifacts,
+with the [gzip compression
+algorithm](https://en.wikipedia.org/wiki/gzip?target=_blank) by default. Other
+compression formats like `lzma` is available through configuration.
 
 ## Signature verification
 

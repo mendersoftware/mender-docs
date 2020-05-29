@@ -8,8 +8,7 @@ taxonomy:
 This document outlines the steps needed to build a [Yocto
 Project](https://www.yoctoproject.org/?target=_blank) image for a device. The
 build output will most notably include:
-* a disk image that can be flashed to the device storage during initial
-  provisioning
+* Flashing a disk image to the device storage during initial provisioning
 * an Artifact containing rootfs filesystem image file that Mender can deploy to your provisioned device, it has suffix `.mender`
 
 !!! If you do not want to build your own images for testing purposes, the
@@ -32,8 +31,7 @@ Inside *meta-mender* there are several layers. The most important one is
 * [Partitioning the image correctly](../../../devices/yocto-project/partition-configuration)
 * [Setting up the U-Boot bootloader to support Mender](../../../devices/yocto-project/bootloader-support/u-boot)
 
-Each one of these steps can be configured further, see the linked sections for
-more details.
+To configure each of these steps further, see the linked sections for more details.
 
 The other layers in *meta-mender* provide support for specific boards used in
 Mender testing.
@@ -52,9 +50,9 @@ is a set of layers containing board-specific settings for Mender integration.
 ### Board integrated with Mender
 
 Mender needs to integrate with your board, most notably with the boot process.
-Although the integration is automated for most boards, please see [Board
-integration](../../../devices) for general requirements and adjustment you might
-need to make before building.
+Automatic integration is supported for most boards. Please see the [Board
+integration](../../../devices) section for general requirements and adjustments
+you need to make before building.
 
 Check out the board integrations at [Mender
 Hub](https://hub.mender.io?target=_blank) to see if your board is already
@@ -65,7 +63,7 @@ board](https://mender.io/support-and-services/board-integration?target=_blank).
 
 ### Correct clock on device
 
-Make sure that the clock is set correctly on your devices. Otherwise certificate
+Make sure that to set the clock correctly on your devices. Otherwise certificate
 verification will become unreliable and **the Mender client can likely not
 connect to the Mender server**. See [certificate
 troubleshooting](../../../troubleshooting/mender-client#certificate-expired-or-not-yet-valid)
@@ -306,7 +304,7 @@ ARTIFACTIMG_FSTYPE = "ext4"
 
 #### Building the image
 
-Once all the configuration steps are done, build an image with bitbake:
+After the configurations steps, build an image with bitbake:
 
 ```bash
 bitbake <YOUR-TARGET>
@@ -319,7 +317,7 @@ Replace `<YOUR-TARGET>` with the desired target or image name, e.g. `core-image-
 
 #### Using the build output
 
-After a successful build, the images and build artifacts are placed in `tmp/deploy/images/<YOUR-MACHINE>/`.
+After a successful build, the images and build artifacts are in `tmp/deploy/images/<YOUR-MACHINE>/`.
 
 There is one Mender disk image, which will have one of the following suffixes:
 

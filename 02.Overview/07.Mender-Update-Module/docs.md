@@ -25,16 +25,16 @@ Update Module that meets your specific needs.
 
 An Update Module implements one or more of the actions that the Mender client
 carries out when it installs an Artifact payload. The *core* action all Update
-Modules must implement is the ArtifactInstall action, which implements how an Artifact
-payload is installed on the device. However, there are other actions that may be
-implemented depending on the desired functionality and use case for an Update
-Module such as Rollback.
+Modules must implement is the ArtifactInstall action. This state controls the
+installation of an Artifact payload to the device. Implement other states as
+desired to support functionality such as rollback.
+
 
 ### The state machine workflow
 
-Update Modules are modeled after the same execution flow as [state
-scripts](../../artifacts/state-scripts). For the development of Update Modules
-it is important to have a basic understanding of the workflow.
+The Update Module execution flow is modelled after [state
+scripts](../../artifacts/state-scripts). Therefore, for the development of
+Update Modules it is important to have a basic understanding of the workflow.
 
 ![Update Modules state machine](update-modules-state-machine.png)
 
@@ -47,7 +47,7 @@ The most relevant states for developing an Update Module are:
 Every state is optional for an Update Module to implement, however in practice
 all Update Modules will implement the `ArtifactInstall` state.
 
-Other states are meant for more advanced use cases:
+Other states are only for more advanced use cases:
 
 * `ArtifactReboot` and `ArtifactVerifyReboot` states relate to the reboot procedure and verification for a given Artifact installation, if needed. For instance, for a peripheral update, where some special action is required before the reboot call.
 * `ArtifactRollbackReboot` and `ArtifactRollbackVerifyReboot` states are needed when the Update Module requires a system reboot after a successful roll back in order to restore the previous software version.
@@ -117,7 +117,8 @@ Then add execute permission to the script:
 chmod +x web-file
 ```
 
-Then create the directory where the update files will be installed:
+Create the directory where the update files are installed:
+
 ```bash
 mkdir -p /var/www
 ```
@@ -150,7 +151,7 @@ Then create a new Mender Artifact with this as the only payload, for our new
 ```bash
 ./mender-artifact write module-image -t $DEVICE_TYPE  -o ~/Downloads/web-file-1.mender -T web-file -n web-file-1.0 -f hello-world
 ```
-The command line options are detailed below:
+Details for the command line options:
 * `-t` - The compatible device type of this Mender Artifact.
 * `-o` - The path where to place the output Mender Artifact. This should always have a .mender suffix.
 * `-T` - The update module name. The name should be same as the Update Module script which is present inside `/usr/share/mender/modules/v3` path.
@@ -169,8 +170,8 @@ within a minute or so.
 
 ### Upload and deploy your Artifact in Standalone Mode
 
-Copy your newly generated Mender Artifact to the target device. SSH can be used
-for this, i.e. scp.
+Copy your newly generated Mender Artifact to the target device. Use SSH for
+this, i.e. scp.
 
 ```bash
 scp ~/Downloads/web-file-1.mender <username>@<deviceip>:
@@ -201,7 +202,7 @@ flags. This means we can create an Artifact with multiple files like this:
 ```bash
 ./mender-artifact write module-image -t $DEVICE_TYPE  -o ~/Downloads/web-file-1.mender -T web-file -n web-file-1.1 -f my-file-1 -f my-file-2 -f my-file-3 ...
 ```
-The command line options are detailed below:
+Details for the command line options:
 * `-t` - The compatible device type of this Mender Artifact.
 * `-o` - The path where to place the output Mender Artifact. This should always have a .mender suffix.
 * `-T` - The Update Module name. The name should be same of the Update Module script which is present inside `/usr/share/mender/modules/v3` path.
@@ -219,7 +220,7 @@ In this section we are going to be using a more advanced Update Module which
 supports Rollback when something during the installation does not go as
 expected.
 
-For an Update Module to support Rollback, two additions are required in the script:
+The Update Module requires two additions to support rollback:
 * Return "Yes" on `SupportsRollback` action call
 * Implement a mechanism that will save a "known good state" before the installation in `ArtifactInstall`, and restore that state in `ArtifactRollback`.
 
@@ -279,10 +280,10 @@ with `ArtifactRollback`option, in which the module will restore the old files.
 
 If the device loses power during an update, in general Mender transitions into
 an error state, such as ArtifactRollback or ArtifactFailure. If already in an
-error state, that state is repeated until it executes without interrupts.
-However, the exact state execution flow depends on whether the Update Module
-supports rollback and whether it reboots. See the diagram below for all the
-possible execution flows during a powerloss:
+error state, this state repeats until it executes without interrupts. However,
+the exact state execution flow depends on whether the Update Module supports
+rollback and whether it reboots. See the diagram below for all the possible
+execution flows during a powerloss:
 
 ![Update Modules powerloss state machine](update-modules-powerloss-state-machine.png)
 

@@ -50,21 +50,20 @@ service](../../system-updates/yocto-project/image-customization#disabling-mender
 ## Partition layout
 
 In order to support robust rollback, Mender requires the device to have a
-certain partition layout. At least four different partitions are needed:
-* One boot partition, containing the U-Boot bootloader and its environment
+certain partition layout. Mender needs at least four different partitions:
+* One boot partition, containing the U-Boot bootloader and its environment.
 * Two partitions for storing the root file system and kernel. The kernel image
-  file, zImage, and any device tree binary should be stored in directory /boot
-* One for persistent data
+  file, zImage, and any device tree binary are in the /boot directory.
+* One for persistent data.
 
-One of the rootfs and kernel partitions will be marked as the *active*
-partition, from which the kernel and rootfs will be booted. The other, called
-the *inactive* partition, will be used by the update mechanism to write the
-updated image. After an update their roles are swapped.
+One of the rootfs and kernel partitions is the *active* partition, from which
+the kernel and rootfs boots. The other is the *inactive* partition. The update
+mechanism uses this to write the updated image to. An update swaps their roles.
 
-The persistent data partition stores data that needs to be preserved through an
-update.
+Data that requires preservation across updates are located on the persistent
+data partition. 
 
-A sample partition layout is shown below:
+Below is a sample partition layout:
 
 ![Mender client partition layout](mender_client_partition_layout.png)
 
@@ -83,15 +82,15 @@ for more information about the symptoms of this issue.
 If your device does not have an active internet connection, then systemd will be
 unable to configure the system time as it will be unable to connect to the
 network time servers. In this case you will need to arrange other methods to set
-a proper system time. Many standard Linux features can be used for this. If your
-system includes a real-time clock chip, that will maintain the time across power
-down situations and the network connectivity needs of systemd will only be
-relevant on the system boots before the RTC is properly initialized.
+a proper system time. Many standard Linux features can are available for this.
+If your system includes a real-time clock chip, that will maintain the time
+across power down situations and the network connectivity needs of systemd will
+only be relevant on the system boots before the RTC is properly initialized.
 
 Before the time is set properly, either by systemd or the RTC, the time will
 default to the [Unix
 Epoch](https://en.wikipedia.org/wiki/Unix_time?target=_blank). Note that the
-Mender client connections will be rejected by the server until this situation is
+Mender client connections gets rejected by the server until this situation is
 resolved.
 
 ### Unsupported build systems
