@@ -8,6 +8,13 @@
 #   weasel.sh <file> ...
 #
 
+GREEN='\033[0;32m'   # Error
+YELLOW='\033[1;33m' # Warning
+RED='\033[0;31m'    # Error
+IRED='\033[0;91m'   # Fatal Error
+NC='\033[0m'        # No Color
+
+
 if [[ "$1" == "" ]]; then
   echo "usage: `basename $0` <file> ..."
   exit
@@ -25,15 +32,18 @@ for file in $*; do
 
   if egrep --ignore-case --with-filename --line-number --only-matching --colour=always "\\b($weasels)\\b" $file; then
 
-    N_WORDS=$(wc --words $file | cut -f1 -d ' ')
+    N_LINES=$(wc --lines $file | cut -f1 -d ' ')
 
-    N_PASSIVE=$(egrep --ignore-case --only-matching --count "\\b($weasels)\\b" $file)
+    N_WEASEL=$(egrep --ignore-case --only-matching --count "\\b($weasels)\\b" $file)
 
-    PERCENTAGE=$(( 100 * ${N_PASSIVE}/${N_WORDS}))
+    PERCENTAGE=$(( 100 * ${N_WEASEL}/${N_LINES}))
 
+    filename=${file#*mender-docs}
     if (( ${PERCENTAGE} > ${RATE_CUTOFF} )); then
-      echo "The weasel-word rate for $file is ${PERCENTAGE} and thus above the cut-off rate: ${RATE_CUTOFF}"
+      echo -e "${RED}[FAIL] The weasel-word rate for ${filename}:\n\tweasel-words/total-lines = ${N_WEASEL}/${N_LINES} ~= ${PERCENTAGE}% - and thus above the cut-off rate: ${RATE_CUTOFF}%${NC}"
       exit 1
+    else
+      echo -e "${GREEN}[OK] The weasel rate for ${filename}:\n\tweasel-words/total-lines = ${N_WEASEL}/${N_LINES} ~= ${PERCENTAGE} - and thus below the cut-off rate: ${RATE_CUTOFF}${NC}"
     fi
 
   fi
