@@ -85,3 +85,11 @@ The following values for the status field for a finished update are:
 * "already-installed"
 * "aborted"
 * "decommissioned"
+
+### Algorithm for selecting the Deployment for the Device
+
+It is possible that the device has been targeted for one deployment or more.
+When the device is asking for the deployment, the deployments service looks for the oldest, not finished deployment the device was targeted for.
+If there is one, the deployments service creates the instance of the deployment for the device (device deployment) with a "pending" state and executes the following operations:
+* checks if the deployment is phased and in case it is, checks if there is an active phase; if yes, the deployments service proceed, if not, the deployment service returns no instructions to the device;
+* tries to assign artifact to the device; if there is an artifact returns the deployment instructions to the device; if not - returns no instructions and sets the device deployment status to "no artifact"; in case the artifact installed on the device is the same as the one in the deployment, deployments service returns no instructions and sets the device deployment status to "already installed".
