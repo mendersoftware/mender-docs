@@ -13,9 +13,9 @@ image to the flash of the device.
 !!! The Mender `sdimg` generator, which is part of
 [meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank),
 generates disk images with exactly four partitions: one boot, two rootfs and one
-data partition. It is intended as a reference implementation for testing and
-simple production use. For more advanced use cases, please refer to your board's
-tools for generating disk images and flashing storage, such as `imx-loader`,
+data partition. This is a reference implementation for testing and simple
+production use. For more advanced use cases, please refer to your board's tools
+for generating disk images and flashing storage, such as `imx-loader`,
 `mfg-tool`, and `tegrarcm`.
 
 ## Prerequisites
@@ -35,11 +35,11 @@ In this initial provisioning you will flash and overwrite everything on the
 given device storage.
 
 There are several methods to flash storage, and the simplest case is if your
-device uses a SD card. Currently, this is the approach we assume you take here,
-but the same `.sdimg` file can be used to flash any block device. See [Flash
-memory
+device uses an SD card. Currently, this is the approach we assume you take here,
+but the same `.sdimg` file is available for any flash or block device. See
+[Flash memory
 types](../../devices/yocto-project/partition-configuration#flash-memory-types)
-for a clarification of what is meant by block device in this context.
+for a clarification of what a block device means in this context.
 
 
 ## Write the disk image to the SD card
