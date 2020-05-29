@@ -13,7 +13,7 @@ cases](#example-use-cases).
 
 ## The Mender client states supporting state-script customization
 
-For each state listed below, state scripts are run as pre- and post-scripts:
+State scripts run as pre- and post-scripts for each state listed below:
 
 ### Managed mode
 
@@ -21,7 +21,7 @@ For each state listed below, state scripts are run as pre- and post-scripts:
 * **Sync**: At this stage the Mender client will either send or update its inventory to the server, or check if an update is available. This requires communication with the server.
 * **Download**: When an update is ready at the server side Mender downloads it (streams it) to the inactive rootfs partition.
 * **ArtifactInstall**: Swap the active and inactive partitions through interaction with the bootloader.
-* **ArtifactReboot**: Reboots the device. Note: the Enter scripts are run prior to reboot; the Leave actions are run after.
+* **ArtifactReboot**: Reboots the device. Note: the Enter scripts run prior to reboot; the Leave actions run after.
 * **ArtifactCommit**: If the new image in the passive partition passes all the integrity checks, the Mender client will mark the update as successful and continue running from this partition. The commit makes the update persistent. A pre-script here can add custom integrity checks beyond what the Mender client provides out of the box.
 * **ArtifactRollback**: If the new update fails any of the above mentioned integrity checks, the Mender client will revert the update payload. At this point, scripts in this state can help revert migrations done as a part of the update.
 * **ArtifactRollbackReboot**: Some update types - most notably rootfs images - require a reboot, if any of the integrity checks fail. This state runs right before the client reboots back (i.e., rollback) into the old image partition.
@@ -32,7 +32,7 @@ For each state listed below, state scripts are run as pre- and post-scripts:
 ### Standalone mode
 
 Mender in standalone mode omits some states from execution because Mender is not
-running as a daemon. These states are executed in standalone mode:
+running as a daemon. Standalone mode executes these states:
 
 * **Download**
 * **ArtifactInstall**
@@ -54,25 +54,23 @@ There are two types of the state scripts:
 which are already present on a device, stored as a part of the current root file
 system. The default location is `/etc/mender/scripts`.
 
-* **Artifact scripts**: These scripts are added as a part of an update to the
-  Artifact. Scripts can thereby customize actions of the Mender state machine,
-  as described [above](#The Mender client states supporting state-script
-  customization) during an update installation. Artifact scripts are easy to
-  distinguish from root file system scripts, as they are prefixed with
-  `Artifact`.
+* **Artifact scripts**: Are part of an update. Scripts can thereby customize
+  actions of the Mender state machine, as described [above](#The Mender client
+  states supporting state-script customization) during an update installation.
+  Artifact scripts are easy to distinguish from root file system scripts, as
+  they are prefixed with `Artifact`.
   
-Both `root file system` and `Artifact` scripts are needed, as they serve
-different use-cases. Since Mender allows some scripts to run prior to the
-download of the Artifact and as such, these are not run from the Artifact which
-contains them. This means that scripts with the names `Idle`, `Sync` or
-`Download`, are installed on the root file system permanently after an update.
-Scripts starting with the name `Artifact`, are only run during an update, and
-are since deleted. An example of a `root file system script` use-case is
-disabling network connectivity upon entering `Idle`, and re-enabling it upon
-leaving `Idle`. This distinction is important to remember, as when deploying a
-new update all scripts that run up to - and not including - the
-`ArtifactInstall` state are from the previous Artifact installation - not the
-new one.
+`Root file system` and `Artifact` scripts serve different use-cases. Since
+Mender allows some scripts to run prior to the download of the Artifact and as
+such, these are not run from the Artifact which contains them. This means that
+scripts with the names `Idle`, `Sync` or `Download`, get installed on the root
+file system permanently after an update. Scripts starting with the name
+`Artifact`, are only run during an update, and are since deleted. An example of
+a `root file system script` use-case is disabling network connectivity upon
+entering `Idle`, and re-enabling it upon leaving `Idle`. This distinction is
+important to remember, as when deploying a new update all scripts that run up
+to - and not including - the `ArtifactInstall` state are from the previous
+Artifact installation - not the new one.
 
 
 ## Transitions and ordering
@@ -99,8 +97,8 @@ Idle_Leave_01_enable-network
 
 will run upon entering, and leaving the `Idle` state.
 
-The naming scheme given above thus dictates the order the scripts are run as a
-part of the update logic, where:
+The naming scheme given above thus dictates the order the scripts run as a part
+of the update logic, where:
 
 
 ```
@@ -112,8 +110,8 @@ part of the update logic, where:
 3. If multiple scripts exist for this state-transition, this decides the script ordering.
 4. Optional description of script functionality. This has no effect on the execution of the scripts.
 
-If the script's `ACTION(2)` is `Error`, then the script is run when an error
-occurs, and is referred to as an error script.
+If the script's `ACTION(2)` is `Error`, then the script runs when an error
+occurs. We refer to this as an error script.
 
 !!! Note: `Idle`, `Sync`, `ArtifactRollback`, `ArtifactRollbackReboot` ignore
 errors. This means that no error scripts are executed for errors in these
@@ -158,15 +156,15 @@ Mender client marks the update as failed.
 
 ## Power loss
 
-A power loss during an update can be a catastrophic event for an IoT device if not
-dealt with properly. The Mender client has built in protections for handling
+A power loss during an update can be a catastrophic event for an IoT device if
+not dealt with properly. The Mender client has built in protections for handling
 such an event. If you are using state scripts this adds some complexity to the
 logic of your scripts. Take this into account when writing a custom state
-script. Follow the below rules when writing your state-scripts, to make sure no
-unintended side-effects are encountered:
+script. In order to not encounter any unintended side-effects: follow the below
+rules when writing your state-scripts.
 
 * A power loss will return the Mender state-machine to the **`ArtifactFailure** state upon reboot.
-* A power loss when executing an error state (i.e., ArtifactFailure, ArtifactRollback, ArtifactRollbackReboot) will cause it to be repeated.
+* A power loss when executing an error state (i.e., ArtifactFailure, ArtifactRollback, ArtifactRollbackReboot) will cause it to repeate.
 * Exceptions:
 **`ArtifactReboot_Enter`** state: A power-loss is not an error.
 **`ArtifactCommit_Leave`** state: A power-loss will cause this state to rerun, since after a commit, it is too late to do a rollback.
@@ -192,14 +190,13 @@ reported to the server (if the deployment fails) to ease diagnostics.
 Thus, write state scripts to output diagnostics information to standard error,
 especially in case of a failure (exit code 1). Note that the maximum size of the
 log is 10KiB per state script. The client truncates anything above this size,
-before it is sent to the server to save bandwidth.
+before it sending it to the server to save bandwidth.
 
 ## Example use cases
 
-It is up to you to build the state-scripts to suit your needs. Mender
-state-scripts are designed to put as few limitations on the end-user as
-possible. For inspiration, some well-known user-cases are listed below for
-inspiration.
+It is up to you to build the state-scripts to suit your needs. Mender designed
+state-scripts to put as few limitations on the end-user as possible. For
+inspiration, some well-known user-cases are listed below for inspiration.
 
 <!--AUTOVERSION: "mender/tree/%"/ignore-->
 You can find the code examples in the [Mender client source
@@ -209,12 +206,11 @@ pull request so the whole community can benefit.
 
 #### Application data migration
 
-Application data, like a user profile stored in an SQLite database, and a new
-column needs to be added before starting a new version of the application. This
-can be achieved by adding a state script to `ArtifactInstall_Leave` (which will
-run after writing the new rootfs, but before rebooting). This script then does
-the necessary migrations on the data partition before the client brings the new
-version of the application up.
+When migrating application data during an update, like a user profile stored in
+an SQLite database, or a user configured configuration file, state scripts is
+the preferred tool. An `ArtifactInstall_Leave` (which will run after writing
+the new rootfs, but before rebooting) can do the necessary migrations on the data
+partition before the client brings the new version of the application up.
 
 ![Application data migration state scripts](mender-state-machine-data-migration.png)
 
@@ -230,8 +226,8 @@ Mender state scripts enable this use case with a script written to create the
 dialog box on the UI framework used. The script will simply wait for user input,
 and Mender will wait with the update process while waiting for the script to
 finish. Depending on what the user selects, the script can return `0` (proceed)
-or `21` ([retry later](#retry-later)). For example, this script is run in the
-`Download_Enter` state, and the user is asked for confirmation before the
+or `21` ([retry later](#retry-later)). For example, if this script runs in the
+`Download_Enter` state, and can then ask the user for confirmation before the
 download begins. Alternatively, run the script can in the `Download_Leave`
 state, if you want the download to finish first, and the user needs only to
 accept installing the update and rebooting.
@@ -246,9 +242,9 @@ to enable this use case.
 
 #### Custom sanity checks after update installation
 
-Mender already automatically rolls back an update if it can not reach the Mender
-Server after the update is installed, in order to ensure *another* update can be
-deployed.
+Mender automatically rolls back an update if it can not reach the Mender Server
+after an update. This is done to ensure *another* update can be deployed
+afterwards from the same image.
 
 Scripts in `ArtifactCommit_Enter` can do additional sanity checks to make sure
 that the device and applications are working as expected. For example, is the UI
@@ -260,8 +256,8 @@ the script can simply return 1 and Mender will roll back the update.
 
 #### Enable network connectivity
 
-In order to save power and bandwidth, network connectivity may not be enabled by
-default on the device, so you want to selectively enable it when needed.
+State scripts can enable and disable network connectivity in order to save power
+and/or bandwidth on the device.
 
 A state script in `Sync_Enter` can enable network connectivity. You could also
 enable more powerful network connectivity, such as Wi-Fi, with a state script in
@@ -297,7 +293,7 @@ You will find state transitions for common scenarios below.
 9. [ArtifactCommit_Enter] ArtifactCommit [ArtifactCommit_Leave]
 10. [Idle_Enter] Idle [Idle_Leave]
 
-Please note that scripts in `ArtifactReboot_Leave` are run *after* the device
+Please note that scripts in `ArtifactReboot_Leave` run *after* the device
 has rebooted.
 
 
@@ -311,8 +307,8 @@ has rebooted.
 6. [Download_Error]
 7. [Idle_Enter] Idle [Idle_Leave]
 
-Please note that no scripts in the `Download_Leave` transition are run if the
-download fails. Instead, the scripts in the `Download_Error` transition are run.
+Please note that no scripts in the `Download_Leave` transition run if the
+download fails. Instead, the scripts in the `Download_Error` transition run.
 
 
 #### Error while installing the update
@@ -327,12 +323,11 @@ download fails. Instead, the scripts in the `Download_Error` transition are run.
 8. [ArtifactFailure_Enter] ArtifactFailure [ArtifactFailure_Leave]
 9. [Idle_Enter] Idle [Idle_Leave]
 
-In case any of the `Artifact` scripts fail, an additional `ArtifactFailure`
-state is entered and the corresponding Enter and Leave scripts are run. Please
-also note that *there is no* `ArtifactFailure_Error` state transition and if any
-error occurs while executing actions inside the `ArtifactFailure` state, the
-scripts in the `ArtifactFailure_Leave` transition will run and an appropriate
-error path will be executed.
+If any of the `Artifact` scripts fail, the `ArtifactFailure` state runs and the
+corresponding Enter and Leave scripts executes. Please also note that *there is
+no* `ArtifactFailure_Error` state transition and if any error occurs while
+executing actions inside the `ArtifactFailure` state, the scripts in the
+`ArtifactFailure_Leave` transition runs and an appropriate error path executes.
 
 
 #### Error while committing an update
@@ -356,5 +351,4 @@ error path will be executed.
 17. [Idle_Enter] Idle [Idle_Leave]
 
 Please note that similar to the `ArtifactReboot` state, scripts in the
-`ArtifactRollbackReboot_Leave` transition are called after the device has
-rebooted.
+`ArtifactRollbackReboot_Leave` transition runs after the device has rebooted.
