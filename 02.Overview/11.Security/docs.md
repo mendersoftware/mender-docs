@@ -26,7 +26,7 @@ authenticity (see below).
 The client initiates all communication in the Mender system by connecting to
 the server. The client devices does not require any open ports that are listening
 for incoming connections. As long as the Mender client can connect to the server
-and storage proxy using TLS, then updates can be installed.
+and storage proxy using TLS, you can schedule updates.
 
 
 ### User -- Device
@@ -50,7 +50,7 @@ process again. The client passes the public key in the authorization request (se
 The client uses the keys to cryptographically sign the requests, as we describe below.
 
 ### Signed requests and device authentication
-Mender requires devices to be authenticated before they are considered part of the fleet
+Mender requires you to authenticate the devices before they are considered part of the fleet
 (i.e., they can be updated or provide inventory data). To request authentication a device calls
 the `/auth_requests` endpoint, with a POST body containing at least the following:
 * identity data
@@ -100,7 +100,7 @@ This enables you to ensure that you have installed critical updates on all requi
 
 #### Bricking a device
 
-Secure updates can be understood also as a process that does not render a device unusable. Mender
+You can understand secure updates also as a process that does not render a device unusable. Mender
 assures that this will never happen by providing a roll back mechanism upon unsuccessful deployment.
 
 #### Full rootfs, binary delta, update module
