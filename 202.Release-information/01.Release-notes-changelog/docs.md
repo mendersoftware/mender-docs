@@ -119,6 +119,22 @@ New changes in mender-artifact since 3.3.0:
   ([MEN-3276](https://tracker.mender.io/browse/MEN-3276))
 
 
+## mender-binary-delta 1.1.0b1
+
+_Released 06.04.2020_
+
+#### mender-binary-delta (1.1.0b1)
+
+New changes in mender-binary-delta since 1.0.1:
+
+* Make the CLI artifact-name argument optional
+  ([MEN-2642](https://tracker.mender.io/browse/MEN-2642))
+* Now the binary delta tools supports depends and provides
+  ([MEN-2642](https://tracker.mender.io/browse/MEN-2642))
+* Add the ability to write transitional artifacts
+  ([MEN-2948](https://tracker.mender.io/browse/MEN-2948))
+
+
 ## meta-mender zeus-v2020.06
 
 _Released 06.12.2020_
