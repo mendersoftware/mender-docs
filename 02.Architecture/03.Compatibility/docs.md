@@ -70,6 +70,7 @@ In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3
 | Mender client 2.0.x             | no                 | no         | community             | community             | community             | stable                    |
 | Mender client 2.1.x             | no                 | no         | community             | community             | community             | stable                    |
 | Mender client 2.2.x             | no                 | no         | no                    | community             | community             | stable                    |
+| Mender client 2.3.x             | no                 | no         | no                    | no                    | no                    | stable                    |
 
 !!! <sup>1</sup> For very old versions of Yocto, check the documentation for that specific Mender version using the left hand menu.
 
@@ -103,6 +104,7 @@ The [Mender Artifact format](../mender-artifacts) is managed by the [Mender Arti
 | Mender 2.1.x / mender-artifact 3.1.x | no          | yes         | yes         |
 | Mender 2.2.x / mender-artifact 3.2.x | no          | yes         | yes         |
 | Mender 2.3.x / mender-artifact 3.3.x | no          | yes         | yes         |
+| Mender 2.4.x / mender-artifact 3.4.x | no          | yes         | yes         |
 
 !! Older Mender clients do not support newer versions of the Artifact format; they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../artifacts/modifying-a-mender-artifact#create-an-artifact-from-a-raw-root-file-system) for an introduction how to do this.
 
@@ -125,4 +127,5 @@ The compatibility between the Mender server and client is managed by the Device 
 |        | 2.0.x                  | 2.0.x                  |
 |        | 2.1.x                  | 2.1.x                  |
 |        | 2.2.x                  | 2.2.x                  |
-|        | 2.3.x                  |                        |
+|        | 2.3.x                  | 2.3.x                  |
+|        | 2.4.x                  |                        |
