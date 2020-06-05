@@ -1,11 +1,11 @@
 ---
-title: Architecture
+title: Overview
 taxonomy:
     category: docs
 ---
 
 ### Chapter 2
 
-# Architecture
+# Overview
 
 Understand the building blocks of Mender
