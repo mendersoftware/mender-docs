@@ -8,4 +8,4 @@ taxonomy:
 
 # Overview
 
-Understand the building blocks of Mender
+Understand how Mender works.
