@@ -11,9 +11,9 @@ If full board integration is desired, follow the device documentation on [Yocto 
 
 ## Install Mender using the Debian package
 
-A Debian package (`.deb`) is provided for convenience to install on e.g Debian, Ubuntu or Raspbian. A Mender package is provided for the following architectures:
+A Debian package (`.deb`) is provided for convenience to install on e.g Debian, Ubuntu or Raspberry Pi OS. A Mender package is provided for the following architectures:
 
-- armhf (ARM-v6): ARM 32bit distributions, for example Raspbian for Raspberry Pi or Debian for BeagleBone.
+- armhf (ARM-v6): ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone.
 - arm64: (ARM-v8): ARM 64bit processors, for example Debian for Asus Tinker Board
 - amd64: Generic 64-bit x86 processors, the most popular among workstations
 
