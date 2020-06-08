@@ -39,7 +39,7 @@ In order to create another OTA update, the device with the golden image is
 booted again, i.e. the steps from 2. and onwards are carried out again.
 
 !!! `mender-convert` is currently tested on BeagleBone, Raspberry Pi 3 and
-!!! Raspberry Pi 4, using official Debian or Raspbian images. The intention is
+!!! Raspberry Pi 4, using official Debian or Raspberry Pi OS images. The intention is
 !!! to extend and test `mender-convert` to cover more boards and OSes and
 !!! finally make it board-agnostic.
 
