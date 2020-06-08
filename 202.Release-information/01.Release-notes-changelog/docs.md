@@ -4,6 +4,76 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender warrior-v2020.06
+
+_Released 06.08.2020_
+
+### Statistics
+
+A total of 166 lines added, 163 removed (delta 3)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 6 (35.3%) |
+| Ole Petter Orhagen | 5 (29.4%) |
+| Mirza Krak | 4 (23.5%) |
+| Drew Moseley | 2 (11.8%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Mirza Krak | 123 (48.2%) |
+| Kristian Amlie | 121 (47.5%) |
+| Drew Moseley | 6 (2.4%) |
+| Ole Petter Orhagen | 5 (2.0%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Kristian Amlie | 83 (50.9%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Lluis Campos | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 17 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 255 (100.0%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 4 (100.0%) |
+
+### Changelogs
+
+#### meta-mender (warrior-v2020.06)
+
+New changes in meta-mender since warrior-v2020.05:
+
+* Make sure that mender-grow-data.service only runs once.
+* Boot no longer blocks while the data part is resized, and
+  instead this is a background process.
+* Add OpenSSL as dependency for Git versions of the Mender client.
+* Add mender_2.3.0b1 and mender-artifact_3.4.0b1 recipes.
+  To use the Beta recipes, add this to `local.conf`:
+  ```
+  PREFERRED_VERSION_pn-mender = "2.3.0b1"
+  PREFERRED_VERSION_pn-mender-artifact = "3.4.0b1"
+  PREFERRED_VERSION_pn-mender-artifact-native = "3.4.0b1"
+  ```
+* Add mender-binary-delta_1.1.0b1 recipe.
+  To use the beta, add this to `local.conf`:
+  ```
+  PREFERRED_VERSION_pn-mender-binary-delta = "1.1.0b1"
+  ```
+
+
 ## mender-convert 2.1.0b1
 
 _Released 06.08.2020_
