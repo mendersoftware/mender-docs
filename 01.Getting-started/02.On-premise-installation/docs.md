@@ -12,4 +12,4 @@ This section of the documentation contains tutorials to help you set up a demo s
 
 ! Do not follow this getting started documentation if you are using [hosted Mender](https://hosted.mender.io?target=_blank). Instead, follow the [Quickstart guide for Raspberry Pi](../quickstart-with-raspberry-pi) or the instructions you received in the welcome email when you signed up.
 
-To begin on-premise installation, first take a look at the [requirements](requirements).
+To begin on-premise installation, first take a look at the [requirements](01.Requirements).
