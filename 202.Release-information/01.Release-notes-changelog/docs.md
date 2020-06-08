@@ -4,6 +4,106 @@ taxonomy:
     category: docs
 ---
 
+## mender-convert 2.1.0b1
+
+_Released 06.08.2020_
+
+### Statistics
+
+A total of 829 lines added, 237 removed (delta 592)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 19 (37.3%) |
+| Ole Petter Orhagen | 14 (27.5%) |
+| Drew Moseley | 9 (17.6%) |
+| Nate Baker | 3 (5.9%) |
+| Marek Belisko | 2 (3.9%) |
+| Lluis Campos | 2 (3.9%) |
+| Dell Green | 1 (2.0%) |
+| Sylvain | 1 (2.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Ole Petter Orhagen | 450 (54.1%) |
+| Kristian Amlie | 196 (23.6%) |
+| Drew Moseley | 68 (8.2%) |
+| Marek Belisko | 66 (7.9%) |
+| Nate Baker | 30 (3.6%) |
+| Dell Green | 18 (2.2%) |
+| Lluis Campos | 3 (0.4%) |
+| Sylvain | 1 (0.1%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 44 (86.3%) |
+| bakern@gmail.com | 3 (5.9%) |
+| open-nandra | 2 (3.9%) |
+| TideWise Ltda. | 1 (2.0%) |
+| Ideaworks Ltd | 1 (2.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 717 (86.2%) |
+| open-nandra | 66 (7.9%) |
+| bakern@gmail.com | 30 (3.6%) |
+| Ideaworks Ltd | 18 (2.2%) |
+| TideWise Ltda. | 1 (0.1%) |
+
+| Employers with the most hackers (total 8) | |
+|---|---|
+| Northern.tech | 4 (50.0%) |
+| open-nandra | 1 (12.5%) |
+| bakern@gmail.com | 1 (12.5%) |
+| Ideaworks Ltd | 1 (12.5%) |
+| TideWise Ltda. | 1 (12.5%) |
+
+### Changelogs
+
+#### mender-convert (2.1.0b1)
+
+New changes in mender-convert since 2.0.1:
+
+* Use consistent compression and archive naming.
+* Upgrade to GRUB 2.04.
+* Add detection of problematic versions of U-Boot and kernel.
+  ([MEN-2404](https://tracker.mender.io/browse/MEN-2404))
+* Added color to the terminal log messages
+* Added hooks to Mender convert
+  This extends the current functionality of the platform_ function
+  functionality into using hooks, so that each modification step can be called
+  from multiple configuration files.
+  The valid hooks are:
+   * PLATFORM_MODIFY_HOOKS
+   * PLATFORM_PACKAGE_HOOKS
+   * USER_LOCAL_MODIFY_HOOKS
+  and can be appended to as a regular bash array.
+* Add COMFILE Pi config
+* Add support for GPT partition tables
+  ([MEN-2151](https://tracker.mender.io/browse/MEN-2151))
+* Don't truncate output diskimage while writing partitions.
+* configs: Added ubuntu x86-64 hdd defconfig
+* Print improved error diagnostics before exiting on an error
+* Add the state scripts version file.
+* Ensure overlay files are owned by root.
+* Setting of version variable now works if project added as a git submodule
+  ([MEN-3475](https://tracker.mender.io/browse/MEN-3475))
+* configs: Added generic x86-64 hdd defconfig
+* Added automatic decompression of input images, so that the convert
+  tool now accepts compressed input images in the formats: lzma, gzip, and zip.
+  The images will also be recompressed to the input format automatically.
+  ([MEN-3052](https://tracker.mender.io/browse/MEN-3052))
+* add 'rootwait' to bootargs
+* grubenv: Handle debug command prompt when running as EFI app.
+* utilize regexp to dynamically set mender_grub_storage_device
+* Remove kernel_devicetree from EFI path.
+  This information is not used when loading via UEFI, instead it is
+  queried directly from the UEFI provider.
+* Fix 404 download errors when trying to run `docker-build`.
+* Upgrade mender-client to 2.3.0b1 and mender-artifact to
+  3.4.0b1.
+
+
 ## mender-binary-delta 1.1.0b1
 
 _Released 06.04.2020_
