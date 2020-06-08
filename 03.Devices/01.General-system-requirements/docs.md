@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-##Device capacity
+## Device capacity
 The client binaries are about 7 MB in size, or about 4 MB when debug symbols are
 stripped (using the `strip` tool). This includes most of the dependencies for
 the client, such as the http, TLS, and JSON libraries.
@@ -13,15 +13,15 @@ The client depends on the LZMA library for Artifact compression, which is
 present in most Linux distributions, including those based on the Yocto Project
 and the Debian family.
 
-##Bootloader support
+## Bootloader support
 To support atomic rootfs rollback, Mender integrates with the bootloader of the device. Currently Mender supports [GRUB](https://www.gnu.org/software/grub/?target=_blank) and [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank). The bootloader installation, features and requirements vary depending on the target OS in use.  Please see the [Yocto bootloader support](../yocto-project/bootloader-support) or [Debian bootloader support](../debian-family#bootloader-support) for more information.
 
-##Kernel support
+## Kernel support
 While Mender itself does not have any specific kernel requirements beyond what a normal Linux kernel provides, it relies on systemd, which does have one such requirement: The `CONFIG_FHANDLE` feature must be enabled in the kernel. The symptom if this feature is unavailable is that systemd hangs during boot looking for device files.
 
 If you [run the Mender client in standalone mode](../../architecture/overview#modes-of-operation), you can avoid this dependency by [disabling Mender as a system service](../../artifacts/yocto-project/image-configuration#disabling-mender-as-a-system-service).
 
-##Partition layout
+## Partition layout
 In order to support robust rollback, Mender requires the device to have a certain partition layout.
 At least four different partitions are needed:
 * one boot partition, containing the U-Boot bootloader and its environment
@@ -38,7 +38,7 @@ A sample partition layout is shown below:
 
 ![Mender client partition layout](mender_client_partition_layout.png)
 
-##Correct clock
+## Correct clock
 Certificate verification requires the device clock to be running correctly at all times.
 Make sure to either have a reliable clock or use network time synchronization.
 Note that the default setup of systemd will use network time
