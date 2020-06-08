@@ -15,7 +15,7 @@ There are two approaches to this, depending on what kind of updates you want to 
 
 Installing this way does not offer a full Mender integration. However, it is possible to use Update Modules and update parts of the system.
 
-For partial updates such as application updates, you can [install Mender on your device using a .deb package](../../../client-configuration/installing#install-mender-provided-debian-package). This is the quickest and easiest way to get started with Mender. A detailed introduction to partial updates using update modules can be found [here](../../../devices/update-modules).
+For partial updates such as application updates, you can [install Mender on your device using a .deb package](../../../client-configuration/installing#install-mender-using-the-debian-package). This is the quickest and easiest way to get started with Mender. A detailed introduction to partial updates using update modules can be found [here](../../../devices/update-modules).
 
 ### System updates
 
