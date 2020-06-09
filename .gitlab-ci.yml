@@ -38,12 +38,14 @@ test:markdown:
   image: node:14-alpine
   script:
     - apk add --no-cache git
+    - npm install
     - node checkMarkdown.js
 
 test:language:
   stage: test
   image: node:14-alpine
   script:
+    - npm install
     - node checkLanguage.js
 
 
@@ -54,8 +56,8 @@ test:links:
         - apt-get update
         - apt-get upgrade -yqy
         - DEBIAN_FRONTEND=noninteractive apt-get install -yqy nodejs npm git
-        - npm install --global remark-cli https://github.com/oleorhagen/remark-validate-links#master
     script:
+        - npm install --global remark-cli https://github.com/oleorhagen/remark-validate-links#master
         - remark -u remark-validate-links .
 
 
