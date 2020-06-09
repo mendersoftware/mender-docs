@@ -35,7 +35,7 @@ taxonomy:
 This section describes how to upgrade from the Mender Open Source server, to the
 Mender Enterprise server. If you have any questions or would like assistance
 with upgrading to Mender Enterprise, please email
-[contact@mender.io](mailto:contact@mender.io).
+[contact@mender.io]().
 
 !! In this version of Mender, there is no support for migrating data between the
 !! Open Source and Enterprise servers. Hence you will **lose all data** on the
@@ -92,7 +92,7 @@ docker volume create --name=mender-db
 ```
 
 After deleting the volumes, you need to follow [the main guide for installing
-the Enterprise server](..#enterprise). You will be directed back to this guide
+the Enterprise server](../docs.md#enterprise). You will be directed back to this guide
 when it is time to migrate the clients.
 
 <!-- AUTOMATION: execute=cp config/enterprise.yml.template config/enterprise.yml -->
@@ -110,7 +110,7 @@ connect without a tenant token.
 
 1. Fetch the tenant token using the **tenant ID** that you obtained while
    [creating the first organization and
-   user](..#creating-the-first-organization-and-user) (replace `$TENANT_ID`
+   user](../docs.md#creating-the-first-organization-and-user) (replace `$TENANT_ID`
    accordingly):
 
    <!-- AUTOMATION: execute=TENANT_ID=$( ( ./run exec mender-tenantadm /usr/bin/tenantadm create-org --name=MyOrganization --username=myusername@host.com --password=mysecretpassword ) | tr -d '\r' ) -->
@@ -150,7 +150,7 @@ connect without a tenant token.
 
 5. To finalize the upgrade follow the steps in [the Enterprise installation
    tutorial from saving the enterprise
-   configuration](..#saving-the-enterprise-configuration).
+   configuration](../docs.md#saving-the-enterprise-configuration).
 
 <!-- Verification -->
 
@@ -176,13 +176,13 @@ organization. See one of these sections for details on how to include tenant
 tokens using various client integration methods:
 
 * [Mender installed on device using a deb
-  package](../../../client-configuration/installing#configuration-for-hosted-mender-server)
+  package](../../../05.Client-configuration/06.Installing/docs.md)
 * [Device integration using Yocto
-  Project](../../../artifacts/yocto-project/variables#mender_tenant_token)
+  Project](../../../04.Artifacts/10.Yocto-project/99.Variables/docs.md#mender_tenant_token)
 * [Device integration with Debian
-  Family](../../../artifacts/debian-family#convert-a-raw-disk-image)
+  Family](../../../04.Artifacts/15.Debian-family/01.building-a-mender-debian-image/docs.md#convert-a-raw-disk-image)
 * [Modifying an existing prebuilt
-  image](../../../artifacts/modifying-a-mender-artifact#changing-the-mender-server)
+  image](../../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#changing-the-mender-server)
 
 Once all devices have been migrated, the `DEVICEAUTH_DEFAULT_TENANT_TOKEN`
 should be configured empty.

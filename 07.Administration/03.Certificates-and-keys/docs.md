@@ -13,25 +13,25 @@ All keys are encoded in the PEM format. The public keys are shared in the
 standard X.509 certificate format, `cert.crt` below,
 while private keys are seen as `private.key` below.
 
-See the [service overview](../overview) for schematics of the service
+See the [service overview](../01.Overview/docs.md) for schematics of the service
 communication flow. An overview of the components that use keys and
 for which purpose can be seen below.
 
 | Component               | Purpose of keys                                                                                                                                                                                                                                                                                                                  | Shares certificate or key with                                                                                                                |
 |-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| API Gateway           | Listens to a public port for `https` requests only (plain `http` is disabled). These requests can come from Mender Clients that check for- or report status about updates through the [Device APIs](../../apis/open-source/device-apis), or from users and tools that manage deployments through the [Management APIs](../../apis/open-source/management-apis). | **Mender Clients** and users of the **Management APIs**, including web browsers accessing the **Mender UI**.                                       |
+| API Gateway           | Listens to a public port for `https` requests only (plain `http` is disabled). These requests can come from Mender Clients that check for- or report status about updates through the [Device APIs](../../200.APIs/01.Open-source/01.Device-APIs/docs.md), or from users and tools that manage deployments through the [Management APIs](../../200.APIs/01.Open-source/02.Management-APIs/docs.md). | **Mender Clients** and users of the **Management APIs**, including web browsers accessing the **Mender UI**.                                       |
 | Storage Proxy         | Listens to a public port for `https` requests only (plain `http` is disabled). The Deployment Service manages Artifacts through the Storage Proxy and Mender Clients make Artifact download requests.                                                                                                        | **Mender Clients** and **Deployment Service**.                                                                                                    |
-| User Administration   | Signs and verifies JSON Web Tokens that users of the [Management APIs](../../apis/open-source/management-apis), including end users of the Mender UI, include in their requests to authenticate themselves.                                                                                                                                     | Nothing. The service gets signature verification requests from the API Gateway, so all keys are kept private to the service and not shared. |
-| Device Authentication | Signs and verifies JSON Web Tokens that Mender Clients include in their requests to authenticate themselves when accessing the [Device APIs](../../apis/open-source/device-apis).                                                                                                                                                                   | Nothing. The service gets signature verification requests from the API Gateway, so all keys are kept private to the service and not shared. |
-| Mender Client | Signs requests for JSON Web Tokens sent to the Device Authentication service. A Mender Client will request a new token when it connects to the Mender Server for the first time, and when a token expires. The Mender Client includes a token in all its communication to authenticate itself when accessing the [Device APIs](../../apis/open-source/device-apis).                                                                                                                                                                   | The **Device Authentication** service stores the public keys of Mender Clients. |
-| Mender Artifact | Signs and verifies [Mender Artifacts](../../architecture/mender-artifacts). | The **Signing system** stores the private key used for signing Mender artifacts. After an artifact is signed using the private key it is verified by the **Mender Clients**. |
+| User Administration   | Signs and verifies JSON Web Tokens that users of the [Management APIs](../../200.APIs/01.Open-source/02.Management-APIs/docs.md), including end users of the Mender UI, include in their requests to authenticate themselves.                                                                                                                                     | Nothing. The service gets signature verification requests from the API Gateway, so all keys are kept private to the service and not shared. |
+| Device Authentication | Signs and verifies JSON Web Tokens that Mender Clients include in their requests to authenticate themselves when accessing the [Device APIs](../../200.APIs/01.Open-source/01.Device-APIs/docs.md).                                                                                                                                                                   | Nothing. The service gets signature verification requests from the API Gateway, so all keys are kept private to the service and not shared. |
+| Mender Client | Signs requests for JSON Web Tokens sent to the Device Authentication service. A Mender Client will request a new token when it connects to the Mender Server for the first time, and when a token expires. The Mender Client includes a token in all its communication to authenticate itself when accessing the [Device APIs](../../200.APIs/01.Open-source/01.Device-APIs/docs.md).                                                                                                                                                                   | The **Device Authentication** service stores the public keys of Mender Clients. |
+| Mender Artifact | Signs and verifies [Mender Artifacts](../../02.Architecture/04.Mender-Artifacts/docs.md). | The **Signing system** stores the private key used for signing Mender artifacts. After an artifact is signed using the private key it is verified by the **Mender Clients**. |
 
 
 ## Replacing keys and certificates
 
 In the following we will go through how to replace all the keys and certificates
 that the services use. This is very important as part of a
-[Production installation](../production-installation) because each installation
+[Production installation](../02.Production-installation/docs.md) because each installation
 must have unique keys in order to be secure, so that the private keys used are
 not compromised.
 
@@ -54,7 +54,7 @@ the heavy lifting. It is available in
 [Mender's Integration GitHub repository](https://github.com/mendersoftware/integration?target=_blank).
 
 Open a terminal and go to the directory where you cloned the integration repository
-as part of the [tutorial to create a test environment](../../getting-started/on-premise-installation/create-a-test-environment).
+as part of the [tutorial to create a test environment](../../01.Getting-started/02.On-premise-installation/02.Create-a-test-environment/docs.md).
 
 In order to generate the self-signed certificates, the script needs to know
 what the CN (Common Name) of the two certificates should be, i.e. which URL
@@ -73,7 +73,7 @@ CERT_API_CN=docker.mender.io CERT_STORAGE_CN=s3.docker.mender.io ./keygen
 
 !!! This generates keys with 128-bit security level (256-bit Elliptic Curve and 3072-bit RSA keys) and certificates valid for approximately 10 years. You can customize the parameters by adapting the script to your needs.
 
-!!! Make sure your device has the correct date/time set. If the date/time is incorrect, the certificate will not be validated. Consult the section on [Correct clock](../../devices/general-system-requirements#correct-clock) for details
+!!! Make sure your device has the correct date/time set. If the date/time is incorrect, the certificate will not be validated. Consult the section on [Correct clock](../../03.Devices/01.General-system-requirements/docs.md#correct-clock) for details
 
 The keys and certificates are placed in a directory `keys-generated`
 where you ran the script from, and each service has a subdirectory within it
@@ -175,7 +175,7 @@ The User Administration key can be mounted with the following snippet:
             - ./keys-generated/keys/useradm/private.key:/etc/useradm/rsa/private.pem
 ```
 
-The Management APIs are documented for [Open Source](../../apis/open-source/management-apis) and [Enterprise](../../apis/enterprise/management-apis).
+The Management APIs are documented for [Open Source](../../200.APIs/01.Open-source/02.Management-APIs/docs.md) and [Enterprise](../../200.APIs/02.Enterprise/02.Management-APIs/docs.md).
 
 #### Device Authentication
 
@@ -192,7 +192,7 @@ The Device Authentication key can be mounted with the following snippet:
             - ./keys-generated/keys/deviceauth/private.key:/etc/deviceauth/rsa/private.pem
 ```
 
-The Device APIs are documented for [Open Source](../../apis/open-source/device-apis) and [Enterprise](../../apis/enterprise/device-apis).
+The Device APIs are documented for [Open Source](../../200.APIs/01.Open-source/01.Device-APIs/docs.md) and [Enterprise](../../200.APIs/02.Enterprise/01.Device-APIs/docs.md).
 
 
 #### Mender Client
@@ -203,7 +203,7 @@ are typically provided by the `ca-certificates` package.
 
 If the certificate is self-signed, then clients that are to connect to the server need to have the file with
 the concatenated certificates (`keys-generated/certs/server.crt`) stored locally in order to verify
-the server's authenticity. Please see [the client section on building for production](../../artifacts/yocto-project/building-for-production)
+the server's authenticity. Please see [the client section on building for production](../../04.Artifacts/10.Yocto-project/03.Building-for-production/docs.md)
 for a description on how to provision new device disk images with the new certificates. In this case, it
 is advisable to ensure there is a overlap between the issuance of new certificates and expiration of old
 ones so all clients are able to receive an update containing the new cert before the old one expires. You

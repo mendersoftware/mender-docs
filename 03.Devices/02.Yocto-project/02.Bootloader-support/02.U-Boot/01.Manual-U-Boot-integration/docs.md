@@ -96,7 +96,7 @@ these should be enabled in the board support headers in U-Boot, under
 
 3. `CONFIG_ENV_IS_IN_MMC`: This will store the U-Boot environment file on the
    memory card, before the first partition start. See
-   [`MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET`](../../../../../artifacts/yocto-project/variables#mender_uboot_env_storage_device_offset)
+   [`MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET`](../../../../../04.Artifacts/10.Yocto-project/99.Variables/docs.md#mender_uboot_env_storage_device_offset)
    for more information. Other `CONFIG_ENV_IS_IN_` features should be turned
    off.
 
@@ -306,7 +306,7 @@ then make the necessary changes in the same fashion as done for the main
 
 An alternative approach is to port the forked U-Boot recipe,
 `u-boot-my-fork_*.bb` to a `u-boot-fw-utils-my-fork_*.bb` recipe. We have
-provided a [practical example for this](providing-custom-u-boot-fw-utils).
+provided a [practical example for this]().
 
 The two recipes should use identical source code (e.g. the same patches
 applied).

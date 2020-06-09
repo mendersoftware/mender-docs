@@ -12,21 +12,21 @@ these options can also be modified using Yocto variables.
 Specifies the location of the public key used to verify signed updates, and also
 enables signed-updates-only mode when it is set. If set the client will reject
 incorrectly signed updates, or updates without a signature. See also the section
-about [signing and verification](../../../artifacts/signing-and-verification).
+about [signing and verification](../../../04.Artifacts/40.Signing-and-verification/docs.md).
 
 #### InventoryPollIntervalSeconds
 
 An integer that sets the number of seconds to wait between each inventory
 update. Note that the client may occasionally post its inventory more often if
 there has been recent activity on the device. See also the section about
-[polling intervals](../polling-intervals).
+[polling intervals](../01.Polling-intervals/docs.md).
 
 #### UpdatePollIntervalSeconds
 
 An integer that sets the number of seconds to wait between each check for a new
 update. Note that the client may occasionally check more often if there has been
 recent activity on the device. See also the section about [polling
-intervals](../polling-intervals).
+intervals](../01.Polling-intervals/docs.md).
 
 #### ModuleTimeoutSeconds
 
@@ -41,7 +41,7 @@ An integer that sets the number of seconds to wait between each attempt to
 communicate with the server. Note that the client may attempt more often
 initially to enable rapid upgrades, but will gradually fall back to this value
 if the server is busy. See also the section about [polling
-intervals](../polling-intervals).
+intervals](../01.Polling-intervals/docs.md).
 
 #### RootfsPartA
 
@@ -96,7 +96,7 @@ it is returning `retry-later`.
 
 Default value is: `60`
 
-See also the section about [state scripts](../../../artifacts/state-scripts).
+See also the section about [state scripts](../../../04.Artifacts/50.State-scripts/docs.md).
 
 <!--AUTOVERSION: "mender v%"/ignore-->
 *Note*: Before mender v2.0.0 release, this option used to be called
@@ -125,7 +125,7 @@ aborting and marking the update as failed.
 
 Default value is: `1800` (30 min)
 
-See also the section about [state scripts](../../../artifacts/state-scripts).
+See also the section about [state scripts](../../../04.Artifacts/50.State-scripts/docs.md).
 
 <!--AUTOVERSION: "mender v%"/ignore-->
 *Note*: Before mender v2.0.0 release, this option used to be called
@@ -144,7 +144,7 @@ set it based on the expected execution time of your scripts.
 
 Default value is: `3600` (60 min)
 
-See also the section about [state scripts](../../../artifacts/state-scripts).
+See also the section about [state scripts](../../../04.Artifacts/50.State-scripts/docs.md).
 
 #### TenantToken
 

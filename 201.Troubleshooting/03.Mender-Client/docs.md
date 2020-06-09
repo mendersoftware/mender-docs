@@ -44,7 +44,7 @@ Each TLS certificate has a validity period, *Not Before* and *Not After*, and th
 the current time is outside this range.
 
 Most commonly this is caused by **incorrect time setting on the device** which runs the Mender client. Check this by
-running `date` on the device, and make sure it is correct. Consult the section on [Correct clock](../../devices/general-system-requirements#correct-clock)
+running `date` on the device, and make sure it is correct. Consult the section on [Correct clock](../../03.Devices/01.General-system-requirements/docs.md#correct-clock)
 for a more detailed discussion.
 
 To determine the status of your time synchronization, execute the following:
@@ -81,7 +81,7 @@ echo | openssl s_client -connect s3.example.com:9000 2>/dev/null | openssl x509 
 > ```
 
 We can see that both these certificates are currently valid.
-Also see the [documentation on certificates](../../administration/certificates-and-keys) for an
+Also see the [documentation on certificates](../../07.Administration/03.Certificates-and-keys/docs.md) for an
 overview and description on how to generate new certificates.
 
 
@@ -105,7 +105,7 @@ uses an official CA so the only reason your client would reject this is if it do
 in its system store.
 
 On the other hand, if you set up the Mender server yourself as described in
-[Production installation](../../administration/production-installation) and generated certificates as part of it,
+[Production installation](../../07.Administration/02.Production-installation/docs.md) and generated certificates as part of it,
 your need to make sure that the server certificates are in `/etc/mender/server.crt` on your device.
 
 To test that they match, run `cat /etc/mender/server.crt` on your device, and compare that to the output
@@ -117,7 +117,7 @@ openssl s_client -showcerts -connect mender.example.com:443 < /dev/null 2>/dev/n
 
 If these mismatch, then you need to update `/etc/mender/server.crt` on your client.
 You can do this manually for testing purposes, and you should
-[include the certificates in your Yocto Project build](../../artifacts/yocto-project/building-for-production#including-the-client-certificates).
+[include the certificates in your Yocto Project build](../../04.Artifacts/10.Yocto-project/03.Building-for-production/docs.md#including-the-client-certificates).
 
 ## Artifact format not supported
 
@@ -127,11 +127,11 @@ When deploying an update with the Mender client, you see a log message similar t
 ERRO[0001] update install failed: failed to read and install update: reader: unsupported version: 2  module=state
 ```
 
-The problem here is most likely that you have built [a new version of the Artifact format](../../architecture/mender-artifacts#versions)
+The problem here is most likely that you have built [a new version of the Artifact format](../../02.Architecture/04.Mender-Artifacts/docs.md#versions)
 that your Mender Client does not support. It could also be that you are building a very old version of the
 Artifact format that your new version of the Mender Client does not support.
 
-In either case the solution is to [build a different version of the Artifact format](../../artifacts/modifying-a-mender-artifact#create-an-artifact-from-a-raw-root-file-system) that your Mender Client supports
+In either case the solution is to [build a different version of the Artifact format](../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#create-an-artifact-from-a-raw-root-file-system) that your Mender Client supports
 until you have upgraded all Mender Clients and can use the corresponding latest version of the Mender Artifact format.
 
 
@@ -147,12 +147,12 @@ ERRO[0000] exit status 1                                 module=partitions
 ERRO[0000] No match between boot and root partitions.    module=main
 ```
 
-The problem here is most likely that the device does not have the [partition layout Mender expects](../../devices/general-system-requirements#partition-layout). This could have happened if you just placed the Mender binary into your rootfs, but did not [reflash the entire storage device](../../artifacts/provisioning-a-new-device) with the `.sdimg.` file output from the [Yocto Project build](../../artifacts/yocto-project/building). When this happens, output from `mount` and `fw_printenv` can confirm that this is the problem you are seeing. The solution is to flash your entire storage device with the `.sdimg` output from the Yocto Project build process.
+The problem here is most likely that the device does not have the [partition layout Mender expects](../../03.Devices/01.General-system-requirements/docs.md#partition-layout). This could have happened if you just placed the Mender binary into your rootfs, but did not [reflash the entire storage device](../../04.Artifacts/20.Provisioning-a-new-device/docs.md) with the `.sdimg.` file output from the [Yocto Project build](../../04.Artifacts/10.Yocto-project/01.Building/docs.md). When this happens, output from `mount` and `fw_printenv` can confirm that this is the problem you are seeing. The solution is to flash your entire storage device with the `.sdimg` output from the Yocto Project build process.
 
 
 
 ## The Mender client uses excessive network traffic even when not deploying updates
 
-If you are using the Mender client in demo mode, either by selecting it when running `mender setup`, or by using one of the [prebuilt Yocto images](../../downloads#disk-images) and set up with the [demo layer](../../artifacts/yocto-project/building#adding-the-meta-layers), the Mender client has more aggressive [polling intervals](../../client-configuration/configuration-file/polling-intervals) to simplify testing.
+If you are using the Mender client in demo mode, either by selecting it when running `mender setup`, or by using one of the [prebuilt Yocto images](../../08.Downloads/docs.md#disk-images) and set up with the [demo layer](../../04.Artifacts/10.Yocto-project/01.Building/docs.md#adding-meta-mender-to-existing-yocto-project-environment), the Mender client has more aggressive [polling intervals](../../05.Client-configuration/05.Configuration-file/01.Polling-intervals/docs.md) to simplify testing.
 
-See the documentation on [building for production](../../artifacts/yocto-project/building-for-production) and [polling intervals](../../client-configuration/configuration-file/polling-intervals) to reduce the network bandwidth usage.
+See the documentation on [building for production](../../04.Artifacts/10.Yocto-project/03.Building-for-production/docs.md) and [polling intervals](../../05.Client-configuration/05.Configuration-file/01.Polling-intervals/docs.md) to reduce the network bandwidth usage.

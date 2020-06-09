@@ -7,7 +7,7 @@ taxonomy:
 For quickly testing the Mender server, we have created a demo version that
 does not take into account production-grade issues like security and scalability.
 When you are ready to install for production, please follow
-the [Production installation documentation](../../../administration/production-installation).
+the [Production installation documentation](../../../07.Administration/02.Production-installation/docs.md).
 
 The Mender server is using the microservices design pattern, meaning that
 multiple small, isolated services make up the server. 
@@ -50,10 +50,10 @@ connection in order to avoid long wait times.
 The Mender updater client is designed to run on embedded Linux devices and connects to the server
 so that deployments can be managed across many devices.
 
-If you need support for application updates (but not full system updates), no device integration is required. In this case you can install Mender on an existing device and OS by following the documentation on [installing the Mender client](../../../client-configuration/installing). For first-time Mender users, the Mender server onboarding will guide you through this process. All you need is an ARM-based device with a Debian-family OS (e.g. Debian, Raspbian, Ubuntu) pre-installed and network connectivity set up.
+If you need support for application updates (but not full system updates), no device integration is required. In this case you can install Mender on an existing device and OS by following the documentation on [installing the Mender client](../../../05.Client-configuration/06.Installing/docs.md). For first-time Mender users, the Mender server onboarding will guide you through this process. All you need is an ARM-based device with a Debian-family OS (e.g. Debian, Raspbian, Ubuntu) pre-installed and network connectivity set up.
 
-On the other hand, to get support for robust system updates with rollback, Mender must be [integrated with production devices](../../../devices).
+On the other hand, to get support for robust system updates with rollback, Mender must be [integrated with production devices](../../../03.Devices/chapter.md).
 
 ## Trying Mender
 
-After installing the above prerequisites, follow the steps in [Install a Mender demo server](../create-a-test-environment).
+After installing the above prerequisites, follow the steps in [Install a Mender demo server](../02.Create-a-test-environment/docs.md).

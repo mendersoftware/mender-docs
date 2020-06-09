@@ -10,7 +10,7 @@ around this missing feature by using custom boot code to simulate the
 feature. It is equivalent in terms of functionality and robustness.
 
 This section assumes that you are using a [custom fork of
-U-Boot](../..#forks-of-u-boot).
+U-Boot](../../docs.md#forks-of-u-boot).
 
 ## The cross platform part
 

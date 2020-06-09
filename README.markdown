@@ -30,8 +30,8 @@ full license text.
 
 We take security very seriously. If you come across any issue regarding
 security, please disclose the information by sending an email to
-[security@mender.io](security@mender.io). Please do not create a new public
-issue. We thank you in advance for your cooperation.
+<security@mender.io>. Please do not create a new public issue. We thank you in
+advance for your cooperation.
 
 ## Connect with us
 

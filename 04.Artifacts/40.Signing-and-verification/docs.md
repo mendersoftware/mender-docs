@@ -44,7 +44,7 @@ In order to sign and later on verify the signature of the Mender Artifact we nee
 Please follow the respective section below, depending on the signature algorithm you want to use.
 
 After generating the keys you will have a file `private.key`, which is only used by the Signing system, as well as
-`public.key` which you [provision all the devices with](../yocto-project/building-for-production#artifact-signing-and-verification-keys).
+`public.key` which you [provision all the devices with](../10.Yocto-project/03.Building-for-production/docs.md#artifact-signing-and-verification-keys).
 
 !!! The file `public.key` is referred to as `artifact-verify-key.pem` when placed on the devices to avoid ambiguity with other keys.
 
@@ -81,7 +81,7 @@ The resulting `private.key` and `public.key` files are the private and public ke
 
 We use the `mender-artifact` tool to create a signed Artifact. Download the
 prebuilt `mender-artifact` binary for your platform following the links in
-[Downloads section](../../downloads#mender-artifact-tool).
+[Downloads section](../../08.Downloads/docs.md#mender-artifact).
 
 There are two ways to sign an Artifact: while creating it with the `write`
 command or once already created using the `sign` command. We add the `-k`
@@ -120,6 +120,6 @@ mender-artifact validate artifact-signed.mender -k public.key
 ## Enable Mender Client signature verification
 
 To make it easier to provision your devices with the public verification key and corresponding Mender Client configuration,
-Mender has integration with the Yocto Project. Please refer to the documentation for [Artifact signing and verification keys](../yocto-project/building-for-production#artifact-signing-and-verification-keys) to see how to include them.
+Mender has integration with the Yocto Project. Please refer to the documentation for [Artifact signing and verification keys](../10.Yocto-project/03.Building-for-production/docs.md#artifact-signing-and-verification-keys) to see how to include them.
 
 !!! The public verification key should be stored on *persistent storage* on the device where the Mender client runs, as the key should not change across deployments (except when doing key rotation). By default it is stored on the data partition.

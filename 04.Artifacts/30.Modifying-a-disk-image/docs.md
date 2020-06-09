@@ -38,7 +38,7 @@ mender-beaglebone.sdimg5      524288 786431  262144  128M 83 Linux
 ```
 
 In this example there are four partitions (plus an extended partition). Please see
-[Partition layout](../../devices/general-system-requirements#partition-layout) for a description of the
+[Partition layout](../../03.Devices/01.General-system-requirements/docs.md#partition-layout) for a description of the
 partitions Mender uses. The two Linux partitions in the middle, at device
 `.sdimg2` and `.sdimg3`, are the two rootfs partitions.
 

@@ -6,7 +6,7 @@ taxonomy:
 
 This section describes the steps needed to integrate with U-Boot for Yocto Project. Most steps are automated, but there are a few things that need to be in place for this to function.
 
-!!! Please consult [the bootloader support section](../../../general-system-requirements#bootloader-support) to find out if U-Boot is supported on your platform and build configuration, and whether it is enabled by default.
+!!! Please consult [the bootloader support section](../../../01.General-system-requirements/docs.md#bootloader-support) to find out if U-Boot is supported on your platform and build configuration, and whether it is enabled by default.
 
 
 ## Enabling U-Boot
@@ -18,14 +18,14 @@ MENDER_FEATURES_ENABLE_append = " mender-uboot mender-image-sd"
 MENDER_FEATURES_DISABLE_append = " mender-grub mender-image-uefi"
 ```
 
-See [the documentation on features](../../../../artifacts/yocto-project/image-configuration/features) for more information.
+See [the documentation on features](../../../../04.Artifacts/10.Yocto-project/02.Image-configuration/01.Features/docs.md) for more information.
 
 
 ## Boot counter
 
 As Mender relies on the `CONFIG_BOOTCOUNT_ENV` feature of U-Boot, which was [introduced in October 2013](http://lists.denx.de/pipermail/u-boot/2013-October/165484.html?target=_blank), Mender currently recommends **U-Boot v2014.07 or newer**.
 
-If you have an older version of U-Boot, it is possible to apply some extra patches to make this work. Please see the section about [U-Boot versions without BOOTLIMIT support](manual-u-boot-integration/u-boot-versions-without-bootlimit-support) for more information.
+If you have an older version of U-Boot, it is possible to apply some extra patches to make this work. Please see the section about [U-Boot versions without BOOTLIMIT support]() for more information.
 
 ## Forks of U-boot
 
@@ -83,7 +83,7 @@ Project you need to enable the `mender-uboot` feature using
 MENDER_FEATURES_ENABLE_append = " mender-uboot"
 ```
 
-!!! If the architecture is ARM, and the `mender-full` or `mender-full-ubi` class is inherited in a Bitbake `.conf` file, then the `mender-uboot` feature is already on by default. See [the documentation on features](../../../../artifacts/yocto-project/image-configuration/features) for more information.
+!!! If the architecture is ARM, and the `mender-full` or `mender-full-ubi` class is inherited in a Bitbake `.conf` file, then the `mender-uboot` feature is already on by default. See [the documentation on features](../../../../04.Artifacts/10.Yocto-project/02.Image-configuration/01.Features/docs.md) for more information.
 
 This enables U-Boot integration, and also enables full automatic patching of
 U-Boot.
@@ -108,5 +108,5 @@ using the modified boot loader. If this happens, or if you are using an older
 Yocto Project branch, there will be some manual work required in order to
 produce a working integration patch.
 
-Please see [Manual U-Boot integration](manual-u-boot-integration) for more
+Please see [Manual U-Boot integration]() for more
 information.
