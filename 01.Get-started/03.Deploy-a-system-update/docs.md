@@ -76,10 +76,10 @@ If you are unsure, you can check what the device is reporting on the server:
 Use the result from above to assign that value to `DEVICE_TYPE` shell variable:
 
 ```bash
-DEVICE_TYPE="raspberry3"
+DEVICE_TYPE="raspberry4"
 ```
 
-!!! Make sure to replace `raspberrypi3` with the specific value that you are
+!!! Make sure to replace `raspberrypi4` with the specific value that you are
 !!! seeing in your setup
 
 Set `SSH_ARGS` shell variable to specify the SSH access port:

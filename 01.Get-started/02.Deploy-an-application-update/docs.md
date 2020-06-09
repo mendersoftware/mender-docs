@@ -86,7 +86,6 @@ two mandatory fields:
 
   Depending on which device you are using you need to enter:
     - `raspberrypi3` or `raspberrypi4` if you are using a Raspberry Pi
-            device
     - `qemux64-64` if you are using a virtual device
 
 - **Artifact name** - Name of the software build, so that software is not

@@ -120,10 +120,10 @@ chmod +x docker-artifact-gen
 Set the target device type:
 
 ```bash
-DEVICE_TYPE="raspberrypi3"
+DEVICE_TYPE="raspberrypi4"
 ```
 
-!!! Change `raspberrypi3` to `raspberrypi4` if you are using a Raspberry Pi 4 device
+!!! Change `raspberrypi4` to `raspberrypi3` if you are using a Raspberry Pi 3
 
 
 Generate a Mender Artifact that will deploy the `hello-world` Docker container image:
