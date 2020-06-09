@@ -33,6 +33,20 @@ test:
         env TEST_ENTERPRISE=1 ./test_docs.py 07.Administration/02.Production-installation/01.Upgrading-from-OS-to-Enterprise/docs.md;
       fi
 
+test:markdown:
+  stage: test
+  image: node:14-alpine
+  script:
+    - apk add --no-cache git
+    - node checkMarkdown.js
+
+test:language:
+  stage: test
+  image: node:14-alpine
+  script:
+    - node checkLanguage.js
+
+
 test:links:
     stage: test
     image: ubuntu:20.04
@@ -43,6 +57,7 @@ test:links:
         - npm install --global remark-cli https://github.com/oleorhagen/remark-validate-links#master
     script:
         - remark -u remark-validate-links .
+
 
 trigger:mender-docs-site:
   image: alpine

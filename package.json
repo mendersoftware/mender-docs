@@ -1,0 +1,49 @@
+{
+  "name": "mender-docs-verifier",
+  "version": "1.0.0",
+  "description": "",
+  "main": "example.js",
+  "dependencies": {
+    "remark": "^12.0.0",
+    "remark-validate-links": "^10.0.0",
+    "retext": "^7.0.1",
+    "retext-contractions": "^3.0.0",
+    "retext-diacritics": "^2.0.0",
+    "retext-english": "^3.0.4",
+    "retext-indefinite-article": "^1.1.0",
+    "retext-quotes": "^3.0.0",
+    "retext-redundant-acronyms": "^2.0.0",
+    "retext-repeated-words": "^2.0.0",
+    "retext-sentence-spacing": "^3.0.0",
+    "unified-engine": "^8.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mendersoftware/mender-docs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mendersoftware/mender-docs/issues"
+  },
+  "homepage": "https://github.com/mendersoftware/mender-docs#readme",
+  "remarkConfig": {
+    "plugins": [
+      "validate-links"
+    ]
+  },
+  "retextConfig": {
+    "plugins": [
+      "diacritics",
+      "english",
+      "indefinite-article",
+      "redundant-acronyms",
+      "repeated-words",
+      "sentence-spacing"
+    ]
+  }
+}
