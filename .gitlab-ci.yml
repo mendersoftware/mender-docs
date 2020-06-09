@@ -33,6 +33,19 @@ test:
         env TEST_ENTERPRISE=1 ./test_docs.py 07.Administration/02.Production-installation/01.Upgrading-from-OS-to-Enterprise/docs.md;
       fi
 
+test:markdown:
+  stage: test
+  image: node:14-alpine
+  script:
+    - apk add --no-cache git
+    - node checkMarkdown.js
+
+test:language:
+  stage: test
+  image: node:14-alpine
+  script:
+    - node checkLanguage.js
+
 trigger:mender-docs-site:
   image: alpine
   stage: trigger
