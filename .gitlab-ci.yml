@@ -45,6 +45,7 @@ test:language:
   stage: test
   image: node:14-alpine
   script:
+    - apk add --no-cache git
     - npm install
     - node checkLanguage.js
 
