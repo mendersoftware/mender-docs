@@ -46,6 +46,16 @@ test:language:
   script:
     - node checkLanguage.js
 
+test:links:
+    stage: test
+    image: ubuntu
+    before_script:
+        - apt-get update && apt-get -yqy upgrade
+        - DEBIAN_FRONTEND=noninteractive apt-get install -yqy nodejs npm git
+        - npm install --global remark-cli https://github.com/oleorhagen/remark-validate-links#master
+    script:
+        - remark -u validate-links .
+
 trigger:mender-docs-site:
   image: alpine
   stage: trigger
