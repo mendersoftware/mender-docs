@@ -10,47 +10,58 @@ This guide we help you prepare your workstation to be able to run a virtual
 device (QEMU) with Mender integrated which will connect to hosted Mender and
 simulate a physical device.
 
-You will get specific instructions tailored to your hosted Mender account on how
-to start the virtual device in the hosted Mender UI during the
-[Deploy an application update](../../02.Deploy-an-application-update/docs.md)
-guide, as you also need to provide information about your account for it to be
-able to connect. This guide is only a reference on how to interact with the
-virtual device, e.g establishing a SSH session.
-
-Example instructions from the UI:
-
-![Upload web page](image_0.png)
-
 ## Prerequisites
 
-To follow this guide, ensure
-[Docker Engine](https://docs.docker.com/engine/install?target=_blank) is
-installed.
+To follow this guide, install
+[Docker Engine](https://docs.docker.com/engine/install?target=_blank) on your
+workstation.
 
-## Step 1 - Download the Docker image for the virtual device
+## Step 1 - Login to hosted Mender
 
-The virtual device with Mender integrated is shipped as a Docker container.
+Login to [hosted Mender](https://hosted.mender.io?target=_blank). On the main
+page for the first time new users will get a tutorial in the Mender web GUI.
 
-Download the prebuilt image from
-[Docker Hub](https://hub.docker.com/r/mendersoftware/mender-client-qemu?target=blank):
+Go to the **Dashboard** tab and click on **Connect a device**.
 
-```bash
-docker pull mendersoftware/mender-client-qemu:latest
-```
+![connecting a device](Image_0.png)
 
-## Step 2 - Run the virtual device
+## Step 2 - Connect a device
 
-Start the virtual device in detached mode:
+Select **I don't have my own device - use a virtual device for now**.
 
-```bash
-docker run -d mendersoftware/mender-client-qemu:latest
-```
+![connecting a device](Image_1.png)
 
-Note that we did not give any information about the hosted Mender server when
-starting the virtual device here, hence it will not connect to a server instance
-at this stage. This will be covered later.
+## Step 3 - Start the virtual device
 
-Verify that it started with:
+Next we start the virtual device on your workstation.
+
+![accepting the device](Image_2.png)
+
+In the dialog box from above, click **Copy to clipboard** to copy the code. Now
+go to the command line on your workstation, and **paste** the code e.g. by
+right-clicking in the terminal and selecting *Paste*, followed by *Enter*.
+
+This downloads the virtual device images and starts it.
+
+## Step 4 - Accept the device
+
+Once the client has started, the Mender client will attempt to connect to the
+server and it will appear in your Pending devices tab in the server. Go ahead
+and **Accept** the pending device in the server. After accepting the device, it
+will appear on the Device groups tab on the left of Pending.
+
+![connecting a device](Image_3.png)
+
+
+## Step 5 - Get the IP address of the virtual device
+
+The IP address of the virtual device will be needed in later stages of
+the documentation.
+
+Commands listed below need to be executed in a new terminal window while the
+virtual device is running.
+
+List running containers:
 
 ```bash
 docker ps
@@ -64,18 +75,16 @@ Example output:
 >d335f50101cb        mendersoftware/mender-client-qemu:latest   "./entrypoint.sh"   6 minutes ago       Up 6 minutes        8822/tcp            relaxed_leakey
 >```
 
-Save the `CONTAINER_ID` in a shell variable that will be used later to find
+Save the `CONTAINER ID` in a shell variable. It will be used to find
 information about the running container:
 
 ```bash
 CONTAINER_ID="d335f50101cb"
 ```
 
-!!! Replace above value with actual result that you get.
+!!! Replace above value with actual value that you get.
 
-## Step 3 - Get the IP address of the virtual device
-
-Lookup the IP address of the virtual device (we will save it a shell variable):
+Find the IP address of the virtual device (we will save it a shell variable):
 
 ```bash
 IP_ADDRESS=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "${CONTAINER_ID}")
@@ -87,38 +96,6 @@ Example output:
 >$ echo "${IP_ADDRESS}"
 >172.17.0.3
 >```
-
-Finding the IP address is a crucial step, and it will be referenced to in later
-in the documentation if you are testing deployments on a virtual device.
-
-## Step 4 - Connect to the virtual device using SSH
-
-Connect to the virtual device using SSH (no password for login on virtual device):
-
-```bash
-ssh -p 8822 "root@${IP_ADDRESS}"
-```
-
-You should end up with a prompt similar to this:
-
->```bash
-> root@qemux86-64:~#
->```
-
-Terminate the SSH session:
-
-```
-exit
-```
-
-## Step 5 - Stop the virtual device
-
-Stop the virtual device:
-
-```bash
-docker stop "${CONTAINER_ID}"
-```
-
 
 ## Next step
 

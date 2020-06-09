@@ -15,61 +15,7 @@ It is assumed that you have completed one of the following:
 * [Prepare a Raspberry Pi device](../01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md)
 * [Prepare a virtual device](../01.Preparation/02.Prepare-a-virtual-device/docs.md)
 
-## Step 1 - Login to hosted Mender
-
-Login to [hosted Mender](https://hosted.mender.io?target=_blank). On the main
-page for the first time new users will get a tutorial in the Mender web GUI.
-
-Go to the **Dashboard** tab and click on **Connect a device**.
-
-![connecting a device](Image_0.png)
-
-## Step 2 - Choose between virtual or physical device
-
-Select device type that you would like to use use during the evaluation of
-deploying application updates.
-
-The option you pick should align with the steps you completed during preparation:
-
-1. [Prepare a Raspberry Pi device](../01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md)
-1. [Prepare a virtual device](../01.Preparation/02.Prepare-a-virtual-device/docs.md)
-
-![connecting a device](Image_1.png)
-
-## Step 3 - Choose physical device type (only if you did not choose a virtual device)
-
-This step is only applicable if you choose to use a Raspberry Pi device, and
-you need to specify one of the following:
-
-- Raspberry Pi 3
-- Raspberry Pi 4
-
-![connecting a device](Image_2.png)
-
-## Step 4 - Install the Mender client on the device
-
-Next we will install the Mender client on the device and connect it to the Mender
-server.
-
-![accepting the device](Image_3.png)
-
-In the dialog box from above, click **Copy to clipboard** to copy the code to
-install the Mender client. Now go to the command line on your device, and
-**paste** the code e.g. by right-clicking in the terminal and selecting *Paste*,
-followed by *Enter*.
-
-This downloads the Mender client on the device, configures and starts it.
-
-## Step 5 - Accept the device
-
-Once the client has started, the Mender client will attempt to connect to the
-server and it will appear in your Pending devices tab in the server. Go ahead
-and **Accept** the pending device in the server. After accepting the device, it
-will appear on the Device groups tab on the left of Pending.
-
-![connecting a device](Image_4.png)
-
-## Step 6 - Create a Deployment
+## Step 1 - Create a Deployment
 
 There is already a demo Artifact available under *Releases* the first time you
 use hosted Mender. It contains a small web server you can run on your device.
@@ -108,10 +54,10 @@ URL.
 using Mender!
 
 
-## Step 7 - Modify the application
+## Step 2 - Modify the application
 
 The UI tooltips should now take you through modifying the web page you saw in
-[Step 6 - Create a Deployment](#step-6---create-a-deployment). Follow the
+[Step 1 - Create a Deployment](#step-1-create-a-deployment). Follow the
 instructions showed on the pop-up and click the **NEXT** button when done.
 
 ![Upload web page](Image_13.png)
@@ -155,7 +101,7 @@ Once all required fields are filled, click the **UPLOAD** button.
 You now have a new Artifact under the **Releases** tab. Use the new Artifact
 to create a deployment by clicking **CREATE DEPLOYMENT WITH THIS RELEASE** and
 click trough the deployment wizard, similarly to what was done in
-[Step 5 - Create a Deployment](#step-6---create-a-deployment).
+[Step 1 - Create a Deployment](#step-1-create-a-deployment).
 
 ![Upload web page](Image_19.png)
 
@@ -164,8 +110,6 @@ running web application running on your device. By following the presented
 link you will see an updated landing page which you created earlier.
 
 ![Upload web page](Image_20.png)
-
-Simply follow the tooltips to update your newly deployed application!
 
 **Congratulations!** You have successfully deployed an custom application update
 using Mender!
