@@ -33,6 +33,17 @@ test:
         env TEST_ENTERPRISE=1 ./test_docs.py 07.Administration/02.Production-installation/01.Upgrading-from-OS-to-Enterprise/docs.md;
       fi
 
+test:links:
+    stage: test
+    image: ubuntu:20.04
+    before_script:
+        - apt-get update
+        - apt-get upgrade -yqy
+        - DEBIAN_FRONTEND=noninteractive apt-get install -yqy nodejs npm git
+        - npm install --global remark-cli https://github.com/oleorhagen/remark-validate-links#master
+    script:
+        - remark -u remark-validate-links .
+
 trigger:mender-docs-site:
   image: alpine
   stage: trigger
