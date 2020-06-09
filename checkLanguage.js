@@ -29,7 +29,7 @@ var options = {
 };
 var walker = walk.walk(pathToFiles, options);
 walker.on('file', (root, fileStats, next) => {
-    if (!fileStats.name.endsWith('docs.md')) {
+    if (!(fileStats.name.endsWith('docs.md') || fileStats.name.endsWith('chapter.md'))) {
         return next();
     }
     return unified()
