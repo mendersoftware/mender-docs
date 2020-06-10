@@ -1,0 +1,49 @@
+#! /bin/bash
+
+# Enable advanced pattern matching
+shopt -s extglob
+
+if [[ $1 == -@(h|-help) ]]; then
+  cat <<EOUSAGE
+checklinks |& bash ./scripts/didyoumean
+
+This will automatically replace all the links which 'checklinks' guesses is the
+new name of the link using a multiline perl replacement on the file and the
+output parsed from checklinks.
+
+EOUSAGE
+  exit 0
+fi
+
+# echo when DEBUG=true
+function decho() {
+  [ -n "${DEBUG}" ] && echo >&2 "$@"
+}
+
+file="empty"
+DEBUG=${DEBUG:-}
+
+while read line
+do
+  decho "line:"
+  decho "${line}"
+  case "$line" in
+    */docs.md)
+      file="${line}"
+      decho "Parsed filename: ${file}"
+      ;;
+    *Did\ you\ mean*)
+      [ "${file}" == "empty" ] && { echo >&2 "filename: '${file}' seems to be empty"; exit 21; }
+      oldname=$(echo "${line}" | awk -F'`' '{print $2}')
+      newname=$(echo "${line}" | awk -F'`' '{print $4}')
+      decho "oldname: ${oldname}"
+      decho "newname: ${newname}"
+      decho "file: ${file}"
+      decho "oldname: ${oldname}"
+      perl -p -e "s,${oldname},${newname},g" "${file}"
+      ;;
+    *)
+      ;;
+  esac
+done < "${1:-/dev/stdin}"
+
