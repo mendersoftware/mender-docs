@@ -1,3 +1,5 @@
+#! env /usr/bin/node
+
 var vfile = require('to-vfile')
 var report = require('vfile-reporter')
 var unified = require('unified')
@@ -21,32 +23,26 @@ var passive = require('retext-passive')
 // a vs an
 var indefiniteArticle = require('retext-indefinite-article')
 
-var path = require('path');
-var walk = require('walk');
-var pathToFiles = '..';
-var options = {
-    followLinks: false
-};
-var walker = walk.walk(pathToFiles, options);
-walker.on('file', (root, fileStats, next) => {
-    if (!(fileStats.name.endsWith('docs.md') || fileStats.name.endsWith('chapter.md'))) {
-        return next();
-    }
-    return unified()
-        .use(parse)
-        .use(
-            remark2retext,
-            unified()
-                .use(english)
-                .use(equality)
-                .use(passive)
-                .use(indefiniteArticle)
-                .use(spell, dictionary)
-                .use(readability, {age: 18})
-        )
-        .use(stringify)
-        .process(vfile.readSync(path.join(root, fileStats.name)), function(err, file) {
-            console.error(report(err || file))
-            next();
-        });
-});
+if (process.argv.length != 3) {
+    console.error("Usage checkLanguage <file>")
+    return
+}
+
+var file = vfile.readSync({path: process.argv[2]})
+
+unified()
+    .use(parse)
+    .use(
+        remark2retext,
+        unified()
+            .use(english)
+            .use(equality)
+            .use(passive)
+            .use(indefiniteArticle)
+            .use(spell, dictionary)
+            .use(readability, {age: 18})
+    )
+    .use(stringify)
+    .process(file, function(err, file) {
+        console.error(report(err || file))
+    });
