@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-Devices, identified by a set of [identity attributes](../../client-configuration/identity), must be explicitly authorized
+Devices, identified by a set of [identity attributes](../../05.Client-configuration/03.Identity/docs.md), must be explicitly authorized
 by the user before they can authenticate with the Mender server.
 
 This section describes in detail the components and workflows relevant to device authentication,
@@ -29,7 +29,7 @@ can inspect it and manually authorize it
 It is important to clear up some terminology used throughout this documentation and various APIs.
 
 A **device** represents, intuitively, a particular piece of hardware. It is uniquely identified by a
-set of **identity attributes** (MAC addresses, user-defined UIDs, etc.); think of it as an extension of a unique identifier into a multi-attribute structure (see [Identity](../../client-configuration/identity)).
+set of **identity attributes** (MAC addresses, user-defined UIDs, etc.); think of it as an extension of a unique identifier into a multi-attribute structure (see [Identity](../../05.Client-configuration/03.Identity/docs.md)).
 
 To obtain an auth token, the device sends an **authentication request** containing the identity attributes and its current
 **public key**. The request is signed with the respective private key (kept secret on the device), and the server uses
@@ -74,12 +74,12 @@ The sequence diagram below describes the API interactions between the user and D
 For details of API calls please consult the API documentation.
 
 For open source:
-* [Device Authentication Device API](../../apis/open-source/device-apis/device-authentication)
-* [Device Authentication Management API](../../apis/open-source/management-apis/device-authentication)
+* [Device Authentication Device API](../../200.APIs/01.Open-source/01.Device-APIs/01.Device-authentication/docs.md)
+* [Device Authentication Management API](../../200.APIs/01.Open-source/02.Management-APIs/02.Device-authentication/docs.md)
 
 And for Enterprise:
-* [Device Authentication Device API](../../apis/enterprise/device-apis/device-authentication)
-* [Device Authentication Management API](../../apis/enterprise/management-apis/device-authentication)
+* [Device Authentication Device API](../../200.APIs/02.Enterprise/01.Device-APIs/01.Device-authentication/docs.md)
+* [Device Authentication Management API](../../200.APIs/02.Enterprise/02.Management-APIs/02.Device-authentication/docs.md)
 
 ### Accept-on-request Flow
 An alternate flow, suitable mostly for quick prototyping and testing, is the accept-on-request flow.
@@ -108,12 +108,12 @@ The sequence diagram below describes the API interactions between the user, Devi
 For details of API calls please consult the API documentation:
 
 For open source:
-* [Device Authentication Device API](../../apis/open-source/device-apis/device-authentication)
-* [Device Authentication Management API](../../apis/open-source/management-apis/device-authentication)
+* [Device Authentication Device API](../../200.APIs/01.Open-source/01.Device-APIs/01.Device-authentication/docs.md)
+* [Device Authentication Management API](../../200.APIs/01.Open-source/02.Management-APIs/02.Device-authentication/docs.md)
 
 And for Enterprise:
-* [Device Authentication Device API](../../apis/enterprise/device-apis/device-authentication)
-* [Device Authentication Management API](../../apis/enterprise/management-apis/device-authentication)
+* [Device Authentication Device API](../../200.APIs/02.Enterprise/01.Device-APIs/01.Device-authentication/docs.md)
+* [Device Authentication Management API](../../200.APIs/02.Enterprise/02.Management-APIs/02.Device-authentication/docs.md)
 
 
 ## Authentication Token
@@ -125,7 +125,7 @@ The token does have an **expiry date** (one week period), but the Mender client 
 the process is transparent to the user. The only prerequisite is that the device's authentication set has not been
 explicitly rejected in the meantime via the Device Authentication API.
 
-For details on the token format please see the relevant [documentation on submitting an authentication request for Open Source](../../apis/open-source/device-apis/device-authentication) or [Enterprise](../../apis/enterprise/device-apis/device-authentication).
+For details on the token format please see the relevant [documentation on submitting an authentication request for Open Source](../../200.APIs/01.Open-source/01.Device-APIs/01.Device-authentication/docs.md) or [Enterprise](../../200.APIs/02.Enterprise/01.Device-APIs/01.Device-authentication/docs.md).
 
 ## Viewing devices and auth sets
-To view available devices and their authentication sets, use the `GET /api/management/v2/authentication/devices` endpoint of the [Device Authentication Management API for Open Source](../../apis/open-source/management-apis/device-authentication) or [Enterprise](../../apis/enterprise/management-apis/device-authentication).
+To view available devices and their authentication sets, use the `GET /api/management/v2/authentication/devices` endpoint of the [Device Authentication Management API for Open Source](../../200.APIs/01.Open-source/02.Management-APIs/02.Device-authentication/docs.md) or [Enterprise](../../200.APIs/02.Enterprise/02.Management-APIs/02.Device-authentication/docs.md).

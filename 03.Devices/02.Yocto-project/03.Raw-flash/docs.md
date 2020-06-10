@@ -24,7 +24,7 @@ machine.
 
 As an example, to illustrate potential pain points we will use a Versatile
 Express CortexA9x4 board, emulated under QEMU (`vexpress-a9` target). See [the
-next example section](example-qemu).
+next example section]().
 
 
 ### Raw flash storage
@@ -35,7 +35,7 @@ bootloader. Some configuration values need to be set, however, and they are
 described below.
 
 For more information about these or other variables that affect a Flash build,
-see [the Variables section](../../../artifacts/yocto-project/variables).
+see [the Variables section](../../../04.Artifacts/10.Yocto-project/99.Variables/docs.md).
 
 
 #### MENDER_MTDIDS
@@ -149,11 +149,11 @@ filesystem volumes and one data volume. It will also normally contain two
 volumes to store two redundant copies of U-Boot's environment data.
 
 This image can be flashed to an MTD device into its "ubi" partition, as
-identified from its ["mtdparts" string (`MENDER_MTDPARTS`)](#mender-mtdparts).
+identified from its ["mtdparts" string (`MENDER_MTDPARTS`)](#mender_mtdparts).
 
 #### mtdimg
 
 A raw flash image for MTD devices that contains the `ubimg` as well as other
-components specified in the [`MENDER_MTDPARTS` variable](#mender-mtdparts).
+components specified in the [`MENDER_MTDPARTS` variable](#mender_mtdparts).
 
 This image can be flashed directly to a raw Flash device.

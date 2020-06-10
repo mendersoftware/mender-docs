@@ -6,7 +6,7 @@ taxonomy:
 
 This page describes how to install the Mender client in an existing Linux system. Installing this way does not offer a full Mender integration. However, it is possible to use Update Modules and update parts of the system.
 
-If full board integration is desired, follow the device documentation on [Yocto Project](../../devices/yocto-project) or [Debian family](../../devices/debian-family).
+If full board integration is desired, follow the device documentation on [Yocto Project](../../03.Devices/02.Yocto-project/docs.md) or [Debian family](../../03.Devices/03.Debian-family/docs.md).
 
 
 ## Install Mender using the Debian package
@@ -17,7 +17,7 @@ A Debian package (`.deb`) is provided for convenience to install on e.g Debian, 
 - arm64: (ARM-v8): ARM 64bit processors, for example Debian for Asus Tinker Board
 - amd64: Generic 64-bit x86 processors, the most popular among workstations
 
-See [the downloads page](../../downloads) for links to download all package architectures. We will assume *armhf* in the following, which is the most common.
+See [the downloads page](../../08.Downloads/docs.md) for links to download all package architectures. We will assume *armhf* in the following, which is the most common.
 
 
 ### Download the package
@@ -27,7 +27,7 @@ See [the downloads page](../../downloads) for links to download all package arch
 wget https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
 ```
 
-!!! The above link is for *armhf* devices, which is the most common device architecture. See [the downloads page](../../downloads) for other architectures, and also make sure to modify the references to the package in commands below.
+!!! The above link is for *armhf* devices, which is the most common device architecture. See [the downloads page](../../08.Downloads/docs.md) for other architectures, and also make sure to modify the references to the package in commands below.
 
 
 ### Option 1: Attended installation with a wizard
@@ -44,7 +44,7 @@ sudo dpkg -i mender-client_master-1_armhf.deb
 
 After the installation wizard is completed, Mender is correctly setup on your
 device and will automatically start in [managed
-mode](../../architecture/overview#modes-of-operation). Your device is now ready
+mode](../../02.Architecture/01.Overview/docs.md#modes-of-operation). Your device is now ready
 to authenticate with the server and start receiving updates.
 
 

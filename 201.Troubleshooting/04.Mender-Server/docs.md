@@ -6,7 +6,7 @@ taxonomy:
 
 This document details troubleshooting steps for the most common problems with the Mender server.
 The first part applies to all installations, while the section below on Production installations
-only applies when the Mender server is [installed for production](../../administration/production-installation).
+only applies when the Mender server is [installed for production](../../07.Administration/02.Production-installation/docs.md).
 
 ## Persistent certificate errors in demo mode
 Since the demo certificates are self-signed, browsers will produce relevant warnings.
@@ -27,7 +27,7 @@ Consult your browser's documentation for similar instructions.
 It is possible that after a failed device decommissioning operation there will be some unaccessible and unnecessary data in the deviceauth database. In this case, you should clean the database manually.
 
 Is is recommended to backup your data before performing the clean up operation.
-The [Backup and restore](../../administration/backup-and-restore) chapter provides examples and
+The [Backup and restore](../../07.Administration/07.Backup-and-restore/docs.md) chapter provides examples and
 introduces example tools provided in Mender integration repository.
 
 To clean up the deviceauth database, run the following from within the integration repository:
@@ -37,7 +37,7 @@ docker exec $(docker ps -q -n 1 -f 'name=device-auth') /usr/bin/deviceauth maint
 
 ## The virtual QEMU device is not showing up in demo mode
 
-When running the Mender server in demo mode, as described in the [getting started tutorial](../../getting-started/on-premise-installation),
+When running the Mender server in demo mode, as described in the [getting started tutorial](../../01.Getting-started/02.On-premise-installation/docs.md),
 the help tips in the UI give you an option to connect a virtual `qemux86-64` to the server for demo purposes.
 
 If you have trouble connecting this virtual device, please make sure your environment meets the resource requirements
@@ -47,7 +47,7 @@ start if you do not have enough memory.
 !!! The console of the virtual device can be seen by running `./demo --client logs mender-client`.
 
 ## A device shows up as pending after preauthorizing it
-If you see your device gets the `pending` status after [preauthorizing it](../../server-integration/preauthorizing-devices), something went wrong. Most likely there is a mismatch between the identity and public key [you preauthorized](../../server-integration/preauthorizing-devices#call-the-preauthorize-api) and what your Mender client is actually using.
+If you see your device gets the `pending` status after [preauthorizing it](../../06.Server-integration/02.Preauthorizing-devices/docs.md), something went wrong. Most likely there is a mismatch between the identity and public key [you preauthorized](../../06.Server-integration/02.Preauthorizing-devices/docs.md#call-the-preauthorize-api) and what your Mender client is actually using.
 
 To diagnose this, look for the device identity in the Device Authentication service, for example:
 
@@ -92,7 +92,7 @@ curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v2/devaut
 
 In this case you can see that there are two authentication sets with the exact same device identity: `{"mac":"52:54:00:50:9b:84"}`, one `preauthorized` and one `pending`. So the device reported (see the `pending` set) the exact same identity as we preauthorized; however, there is a mismatch between the public keys.
 
-The solution is to decommission the device and [remove all authentication sets](../../server-integration/preauthorizing-devices#make-sure-there-are-no-existing-authentication-sets-for-your-dev) and make sure the key used in the [preauthorize API call](../../server-integration/preauthorizing-devices#call-the-preauthorize-api) matches exactly the one reported by the device, as seen in the `pending` data above.
+The solution is to decommission the device and [remove all authentication sets](../../06.Server-integration/02.Preauthorizing-devices/docs.md#make-sure-there-are-no-existing-authentication-sets-for-your-device) and make sure the key used in the [preauthorize API call](../../06.Server-integration/02.Preauthorizing-devices/docs.md#call-the-preauthorize-api) matches exactly the one reported by the device, as seen in the `pending` data above.
 
 
 ## mender-api-gateway exits with code 132
@@ -120,7 +120,7 @@ openresty from source for your architecture.
 # Production installations
 
 For the rest of this document, it is assumed that commands are run through production
-helper script `run` as detailed in the [production installation documentation](../../administration/production-installation).
+helper script `run` as detailed in the [production installation documentation](../../07.Administration/02.Production-installation/docs.md).
 
 ## Listing active containers
 
@@ -267,10 +267,10 @@ time="2017-01-31T08:25:15Z" level=fatal msg="NoCredentialProviders: no valid pro
 As seen in [container logs](#container-logs) section, `mender-deployments`
 service is restarting. The logs suggest there might be missing credentials for
 an AWS related service.
-From the [production installation](../../administration/production-installation) guide, we can recall
+From the [production installation](../../07.Administration/02.Production-installation/docs.md) guide, we can recall
 that
 `mender-deployments`
-[service configuration](../../administration/production-installation#deployments-service) contains
+[service configuration](../../07.Administration/02.Production-installation/docs.md#deployments-service) contains
 credentials for artifact storage service.
 
 Configuration of current instance of `mender-deployments` can be viewed using

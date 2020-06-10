@@ -6,7 +6,7 @@ taxonomy:
 
 A Deployment ensures delivery of a Release to one or more devices. A Release can contain one or more Mender Artifacts, one of the Artifacts is assigned when the device receives the update based on software and hardware compatibility.
 
-Deployments in Mender represent the explicit association of a release (Mender Artifact) and one or more devices running a client that implements the [Device APIs](../../apis/open-source/device-apis/device-authentication), e.g., the Mender client.
+Deployments in Mender represent the explicit association of a release (Mender Artifact) and one or more devices running a client that implements the [Device APIs](../../200.APIs/01.Open-source/01.Device-APIs/01.Device-authentication/docs.md), e.g., the Mender client.
 
 At its basics, the definition of a Deployment includes:
 

@@ -4,12 +4,12 @@ taxonomy:
     category: docs
 ---
 
-! Following this tutorial will create a demo installation of the Mender, appropriate for testing and experimenting. When you are ready to install for production, please follow the [Production installation documentation](../../../administration/production-installation).
+! Following this tutorial will create a demo installation of the Mender, appropriate for testing and experimenting. When you are ready to install for production, please follow the [Production installation documentation](../../../07.Administration/02.Production-installation/docs.md).
 
 
 ## Bring up the environment with Docker Compose
 
-! Make sure you satisfy the [server requirements](../requirements#demo-server-requirements) before proceeding.
+! Make sure you satisfy the [server requirements](../01.Requirements/docs.md) before proceeding.
 
 In a working directory, download the Mender integration
 environment:
@@ -66,4 +66,4 @@ __Follow the help tooltips__ in the UI to guide you through each step of deployi
 !!! If you don't see the help tooltips, there is an option to toggle them on/off from the dropdown at your user email up at the top right corner of the screen.
 
 We strongly recommend that you complete the onboarding tutorial that comes with the UI so
-that you have a basic understanding of how Mender works before moving on to [Install the Mender client](../install-the-mender-client).
+that you have a basic understanding of how Mender works before moving on to [Install the Mender client](../03.Install-the-mender-client/docs.md).

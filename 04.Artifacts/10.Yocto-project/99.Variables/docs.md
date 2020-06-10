@@ -17,7 +17,7 @@ and used by Mender.
 
 Defines which file system type Mender will build for the rootfs partitions in
 the `.biosimg`, `.sdimg`, `.uefiimg` and the `.mender` file. See [File system
-types](../../../devices/yocto-project/partition-configuration#file-system-types)
+types](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md#file-system-types)
 for more information.
 
 
@@ -82,7 +82,7 @@ default is empty, which means the artifact won't be signed.
 
 The signature can also be added or changed outside the build process, by using
 the `mender-artifact` tool's `-k` option. For more information, see [signing
-Mender Artifacts](../../signing-and-verification#signing).
+Mender Artifacts](../../40.Signing-and-verification/docs.md#signing).
 
 
 #### MENDER_ARTIFACT_VERIFY_KEY
@@ -92,7 +92,7 @@ Mender Artifacts](../../signing-and-verification#signing).
 If set, this will add the given public verification key to the client
 configuration, which means that the client will reject updates which are not
 signed by the corresponding private key (see
-[MENDER_ARTIFACT_SIGNING_KEY](#mender-artifact-signing-key)).
+[MENDER_ARTIFACT_SIGNING_KEY](#mender_artifact_signing_key)).
 
 More specifically, it will add the key to the root filesystem under
 `/etc/mender/artifact-verify-key.pem`, and add a `ArtifactVerifyKey` entry to
@@ -115,7 +115,7 @@ Note that you cannot both use `MENDER_ARTIFACT_VERIFY_KEY` and have
 > Value: <block device> (default: 1st partition on `MENDER_STORAGE_DEVICE`)
 
 The partition Mender uses as the boot partition. See [More detailed storage
-configuration](../../../devices/yocto-project/partition-configuration#more-detailed-storage-configuration)
+configuration](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md)
 for more information.
 
 
@@ -134,7 +134,7 @@ exists to override the auto detection.
 
 The size of the boot partition in the generated `.biosimg`, `.sdimg` or
 `.uefiimg` file. See [Configuring the partition
-sizes](../../../devices/yocto-project/partition-configuration#configuring-the-partition-sizes)
+sizes](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md)
 for more information.
 
 
@@ -144,7 +144,7 @@ for more information.
 
 The partition Mender uses as the persistent data partition. See [More detailed
 storage
-configuration](../../../devices/yocto-project/partition-configuration#more-detailed-storage-configuration)
+configuration](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md#more-detailed-storage-configuration)
 for more information.
 
 
@@ -154,7 +154,7 @@ for more information.
 
 <!--AUTOVERSION: "Yocto Project 2.5 % and later"/ignore-->
 !!! This variable and the associated method is obsolete in Yocto Project 2.5 sumo and later.
-Simply [using recipes](../../../devices/yocto-project/partition-configuration#deploying-files-to-the-persistent-data-partition)
+Simply [using recipes](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md#deploying-files-to-the-persistent-data-partition)
 to put files in the `/data` partition is enough.
 
 This variable is used to add files to the data partition of the Mender
@@ -201,7 +201,7 @@ exists to override the auto detection.
 
 The size of the persistent data partition in the generated `.biosimg`, `.sdimg`
 or `.uefiimg` file. See [Configuring the partition
-sizes](../../../devices/yocto-project/partition-configuration#configuring-the-partition-sizes)
+sizes](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md#configuring-the-partition-sizes)
 for more information.
 
 
@@ -259,7 +259,7 @@ tool](https://www.yoctoproject.org/docs/latest/dev-manual/dev-manual.html#creati
 > Value: <mender features> (default: empty)
 
 Features appended to this variable will be disabled in the build. See [the
-section on features](../image-configuration/features) for more information.
+section on features](../02.Image-configuration/01.Features/docs.md) for more information.
 
 
 #### MENDER_FEATURES_ENABLE
@@ -267,7 +267,7 @@ section on features](../image-configuration/features) for more information.
 > Value: <mender features> (default: platform dependent)
 
 Features appended to this variable will be enabled in the build. See [the
-section on features](../image-configuration/features) for more information.
+section on features](../02.Image-configuration/01.Features/docs.md) for more information.
 
 
 #### MENDER_IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET
@@ -294,7 +294,7 @@ space between the partition table and the first partition.
 > Value: <MTD ID> (default: first MTD ID in `MENDER_MTDIDS`)
 
 This variable is only relevant if the [the `mender-ubi`
-feature](../image-configuration/features#list-of-features) is enabled. The
+feature](../02.Image-configuration/01.Features/docs.md#list-of-features) is enabled. The
 variable should be set to the MTDID of the device that mender, and the root
 filesystem in particular, resides on. This is set automatically in cases where
 it's possible, but in some cases it must be set manually.
@@ -306,7 +306,7 @@ MENDER_MTDIDS = "nand0=20000000.flash"
 MENDER_IS_ON_MTDID = "20000000.flash"
 ```
 
-See also [`MENDER_MTDIDS`](#mender-mtdids).
+See also [`MENDER_MTDIDS`](#mender_mtdids).
 
 
 #### MENDER_KERNEL_IMAGETYPE_FORCE
@@ -361,7 +361,7 @@ otherwise the default is empty.
 > Value: <mtdids string> (no default, must be set if using UBI)
 
 This variable is only relevant if the [the `mender-ubi`
-feature](../image-configuration/features#list-of-features) is enabled, in which
+feature](../02.Image-configuration/01.Features/docs.md#list-of-features) is enabled, in which
 case it is mandatory. It lists the MTDID assignments on the system, separated by
 comma. For example:
 
@@ -369,7 +369,7 @@ comma. For example:
 MENDER_MTDIDS = "nand0=20000000.flash,nand1=30000000.flash"
 ```
 
-If it has more than one entry, then [`MENDER_IS_ON_MTDID`](#mender-is-on-mtdid)
+If it has more than one entry, then [`MENDER_IS_ON_MTDID`](#mender_is_on_mtdid)
 must be set too.
 
 
@@ -378,7 +378,7 @@ must be set too.
 > Value: <mtdparts string> (default calculated from several factors)
 
 This variable is only relevant if the [the `mender-ubi`
-feature](../image-configuration/features#list-of-features) is enabled. The
+feature](../02.Image-configuration/01.Features/docs.md#list-of-features) is enabled. The
 variable holds the MTDPARTS string for the Flash based device. This is set
 automatically in cases where it's possible, but in some cases it must be set
 manually. For example:
@@ -394,7 +394,7 @@ Two volume names have special meaning to the Mender `mtdimg` image builder:
 * `ubi` - The `ubimg` image (UBI image) will be put into this volume. The `ubi`
   volume should virtually always be present.
 
-See also [`MENDER_MTDIDS`](#mender-mtdids).
+See also [`MENDER_MTDIDS`](#mender_mtdids).
 
 
 #### MENDER_NAND_FLASH_PAGE_SIZE
@@ -431,7 +431,7 @@ storage device is a UBI volume.
 
 The partition Mender uses as the first (A) rootfs partition. See [More detailed
 storage
-configuration](../../../devices/yocto-project/partition-configuration#more-detailed-storage-configuration)
+configuration](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md#more-detailed-storage-configuration)
 for more information.
 
 
@@ -460,7 +460,7 @@ Defaults to `${MENDER_STORAGE_DEVICE}:rootfsa` when building `.ubimg`.
 
 The partition Mender uses as the second (B) rootfs partition. See [More detailed
 storage
-configuration](../../../devices/yocto-project/partition-configuration#more-detailed-storage-configuration)
+configuration](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md#more-detailed-storage-configuration)
 for more information.
 
 
@@ -488,7 +488,7 @@ Variable to override the URL of the server for the client to connect to.
 > Value: `${S}/mender-state-scripts ${MENDER_STATE_SCRIPTS_DIR}` (default)
 
 Variable to override the location of state scripts. See
-[MENDER_STATE_SCRIPTS_DIR](#mender-state-scripts-dir) for more information.
+[MENDER_STATE_SCRIPTS_DIR](#mender_state_scripts_dir) for more information.
 
 
 #### MENDER_STATE_SCRIPTS_DIR
@@ -518,7 +518,7 @@ The three methods should not be mixed.
 
 The storage device holding all partitions (rootfs, boot, data) used by Mender.
 See [Configuring
-storage](../../../devices/yocto-project/partition-configuration#configuring-storage)
+storage](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md#configuring-storage)
 for more information.
 
 
@@ -540,7 +540,7 @@ automatically by subtracting the sizes of boot (see
 [MENDER_BOOT_PART_SIZE_MB](#mender_boot_part_size_mb)) and data partitions (see
 [MENDER_DATA_PART_SIZE_MB](#mender_data_part_size_mb)) along with some
 predefined overhead (see
-[MENDER_PARTITIONING_OVERHEAD_MB](#mender_partitioning_overhead_mb))). Default
+[MENDER_PARTITIONING_OVERHEAD_KB](#mender_partitioning_overhead_kb))). Default
 value is `1024`.
 
 
@@ -630,7 +630,7 @@ The storage device, as referred to by U-Boot (e.g. `1`). This variable can be
 used in cases where the Linux kernel and U-Boot refer to the same device with
 different names. See [The bootloader and the Linux kernel do not agree about the
 indexes of storage
-devices](../../../troubleshooting/yocto-project-build#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-index)
+devices](../../../201.Troubleshooting/01.Yocto-project-build/docs.md#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-indexes-of-storage-devices)
 for more information.
 
 If the variable is empty, it is automatically deduced from
@@ -645,7 +645,7 @@ The storage interface, as referred to by U-Boot (e.g. `mmc`). This variable can
 be used in cases where the Linux kernel and U-Boot refer to the same device with
 different names. See [The bootloader and the Linux kernel do not agree about the
 indexes of storage
-devices](../../../troubleshooting/yocto-project-build#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-index)
+devices](../../../201.Troubleshooting/01.Yocto-project-build/docs.md#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-indexes-of-storage-devices)
 for more information.
 
 If the variable is empty, it is automatically deduced from
@@ -657,5 +657,5 @@ If the variable is empty, it is automatically deduced from
 > Value: `enable` (default)
 
 Controls whether to run Mender as a systemd service. See [Modes of
-operations](../../../architecture/overview#modes-of-operation) and [Image
-configuration](../image-configuration) for more information.
+operations](../../../02.Architecture/01.Overview/docs.md#modes-of-operation) and [Image
+configuration](../02.Image-configuration/docs.md) for more information.

@@ -7,7 +7,7 @@ taxonomy:
 By using Golang tools the Mender client can easily be cross-compiled to target
 a number of different architectures.
 
-! The Mender client must also be [integrated with your board](../../devices), cross-compiling it is often one step in the board integration process.
+! The Mender client must also be [integrated with your board](../../03.Devices/chapter.md), cross-compiling it is often one step in the board integration process.
 
 This example is targeting the `armhf` architecture but is applicable to other
 architectures with minor adjustments.

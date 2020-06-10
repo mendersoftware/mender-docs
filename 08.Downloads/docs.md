@@ -56,7 +56,7 @@ Note that you need to ensure that the mender-artifact utility is in a directory 
 $ sudo mv mender-artifact /usr/local/bin/
 ```
 
-!!! If you need to build `mender-artifact` from source, please see [Compiling mender-artifact](../artifacts/modifying-a-mender-artifact#compiling-mender-artifact).
+!!! If you need to build `mender-artifact` from source, please see [Compiling mender-artifact](../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#compiling-mender-artifact).
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 [x.x.x_mender-artifact-linux]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/master/linux/mender-artifact

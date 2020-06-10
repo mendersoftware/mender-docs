@@ -63,7 +63,7 @@ Below is a list of the features that Mender provides, with descriptions:
 
 * `mender-systemd` - Enables a Mender build that uses systemd. See also the
   section about [disabling Mender as a system
-  service](..#disabling-mender-as-a-system-service).
+  service](../docs.md#disabling-mender-as-a-system-service).
 
 * `mender-uboot` - Enables integration with the U-Boot bootloader.
 

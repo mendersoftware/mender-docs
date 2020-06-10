@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-This section describes the support level of the two bootloaders that Mender supports, [GRUB](https://www.gnu.org/software/grub/?target=_blank) and [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank). It is assumed that Yocto is the build system used to build the device images.
+This section describes the support level of the two bootloaders that Mender supports, [GRUB](https://www.gnu.org/software//?target=_blank) and [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank). It is assumed that Yocto is the build system used to build the device images.
 
 Below is a table listing the bootloader support using various device types and Yocto Project releases. All versions of the Mender client software will work with either of the two bootloaders.
 
@@ -23,6 +23,6 @@ Below is a table listing the bootloader support using various device types and Y
 
 ## Which one to pick
 
-If you are just starting out, we recommend trying [GRUB integration](grub) first, if possible. We recommend moving to [U-Boot integration](u-boot) only if integration with GRUB is not possible or unsuccessful.
+If you are just starting out, we recommend trying [GRUB integration]() first, if possible. We recommend moving to [U-Boot integration]() only if integration with GRUB is not possible or unsuccessful.
 
 The main technical reason for using GRUB rather than U-Boot is that GRUB requires no patching to work with Mender, whereas U-Boot does. For most users this will be the path of least resistance.

@@ -135,7 +135,7 @@ So far we have deployed application updates. However, Mender also supports robus
 
 The easiest way to create system level updates is to use the *snapshot* functionality in Mender, which will create a snapshot of the full system on a currently running device and package it as a Mender Artifact (.mender file) that you can deploy to other devices.
 
-To try it out, first follow the steps to [download and install the mender-artifact tool](../../downloads#mender-artifact) on your workstation (e.g. laptop).
+To try it out, first follow the steps to [download and install the mender-artifact tool](../../08.Downloads/docs.md#mender-artifact) on your workstation (e.g. laptop).
 Then run the following command on your workstation:
 
 ```bash
@@ -158,7 +158,7 @@ simply deploy this snapshot to your device again from the Mender server! A full 
 
 You can make arbitrary modifications to the system, take another snapshot and deploy this to groups of devices, and this way deploy robust system updates with rollback support.
 
-To read more about system snapshots see the documentation on [Artifact from system snapshot](../../artifacts/snapshots).
+To read more about system snapshots see the documentation on [Artifact from system snapshot](../../04.Artifacts/22.Snapshots/docs.md).
 
 
 ## Running Mender on-premise
