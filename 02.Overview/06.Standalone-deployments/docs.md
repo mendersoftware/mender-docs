@@ -47,7 +47,7 @@ for steps how to provision the device storage using the `*.sdimg` image.
 
 Secondly, you will get an Artifact file that is used for deployments with Mender,
 and it is recognized by its `.mender` suffix.
-See [Mender Artifacts](../../02.Overview/04.Mender-Artifacts/docs.md)
+See [Mender Artifacts](../04.Artifact/docs.md)
 for a more detailed overview.
 
 
@@ -67,7 +67,7 @@ For example, if you are updating from a USB stick, you could use `/mnt/usb1/rele
 To use http, simply replace it with a URL like `https://fileserver.example.com/mender/release1.mender`.
 
 Mender will download the new Artifact, process its metadata information, extract the contents and write it to the inactive rootfs partition. It will configure the bootloader to boot into it on the next reboot. This will likely take several minutes to complete, depending on the performance of your device and the size of the Artifact.
-Note that Mender does not use any temporary space, it [streams the Artifact](../04.Mender-Artifacts/docs.md#streaming-resume-and-compression).
+Note that Mender does not use any temporary space, it [streams the Artifact](../04.Artifact/docs.md#streaming-resume-and-compression).
 
 To run the newly deployed rootfs image, simply reboot your device:
 
