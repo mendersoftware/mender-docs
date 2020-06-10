@@ -39,7 +39,7 @@ test:internal-links:
   script:
     - apk add --no-cache git
     - npm install
-    - ./checklinks
+    - ./checklinks --color --verbose
 
 trigger:mender-docs-site:
   image: alpine
