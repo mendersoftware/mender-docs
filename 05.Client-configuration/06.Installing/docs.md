@@ -44,7 +44,7 @@ sudo dpkg -i mender-client_master-1_armhf.deb
 
 After the installation wizard is completed, Mender is correctly setup on your
 device and will automatically start in [managed
-mode](../../02.Architecture/01.Overview/docs.md#modes-of-operation). Your device is now ready
+mode](../../02.Overview/01.Overview/docs.md#modes-of-operation). Your device is now ready
 to authenticate with the server and start receiving updates.
 
 

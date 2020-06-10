@@ -47,7 +47,7 @@ for steps how to provision the device storage using the `*.sdimg` image.
 
 Secondly, you will get an Artifact file that is used for deployments with Mender,
 and it is recognized by its `.mender` suffix.
-See [Mender Artifacts](../../02.Architecture/04.Mender-Artifacts/docs.md)
+See [Mender Artifacts](../../02.Overview/04.Mender-Artifacts/docs.md)
 for a more detailed overview.
 
 

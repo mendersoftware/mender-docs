@@ -4,9 +4,9 @@ taxonomy:
     category: docs
 ---
 
-The Mender server supports [preauthorizing devices](../../02.Architecture/02.Device-authentication/docs.md#preauthorization-flow), where you add the [identity](../../05.Client-configuration/03.Identity/docs.md) and public key of the device to the Mender server before the device connects for the first time. This way the device is automatically authorized to join the Mender server when it first connects. This is in particular useful in a mass production setting because you can preauthorize devices when they are manufactured so they automatically get accepted into the Mender server when your customer turns them on, which might happen several months after manufacturing.
+The Mender server supports [preauthorizing devices](../../02.Overview/02.Device-authentication/docs.md#preauthorization-flow), where you add the [identity](../../05.Client-configuration/03.Identity/docs.md) and public key of the device to the Mender server before the device connects for the first time. This way the device is automatically authorized to join the Mender server when it first connects. This is in particular useful in a mass production setting because you can preauthorize devices when they are manufactured so they automatically get accepted into the Mender server when your customer turns them on, which might happen several months after manufacturing.
 
-See [Device authentication](../../02.Architecture/02.Device-authentication/docs.md) for a general overview of how device authentication works in Mender.
+See [Device authentication](../../02.Overview/02.Device-authentication/docs.md) for a general overview of how device authentication works in Mender.
 
 
 ## Prerequisites

@@ -657,5 +657,5 @@ If the variable is empty, it is automatically deduced from
 > Value: `enable` (default)
 
 Controls whether to run Mender as a systemd service. See [Modes of
-operations](../../../02.Architecture/01.Overview/docs.md#modes-of-operation) and [Image
+operations](../../../02.Overview/01.Overview/docs.md#modes-of-operation) and [Image
 configuration](../02.Image-configuration/docs.md) for more information.
