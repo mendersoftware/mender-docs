@@ -7,8 +7,7 @@ var engine = require('unified-engine');
 
 var argv = require('yargs')
     .scriptName("checklinks")
-    .usage('$0 <cmd> [args]')
-    .default('path', '.')
+    .usage('$0 [paths]...')
     .help()
     .argv
 
