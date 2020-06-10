@@ -7,7 +7,7 @@ taxonomy:
 This page describes the requirements for Mender when integrated with the Debian
 family target OS images such as [Debian](https://www.debian.org/?target=_blank),
 [Ubuntu](https://www.ubuntu.com/?target=_blank) and
-[Raspbian](https://www.raspberrypi.org/downloads/raspbian/?target=_blank).
+[Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspberry-pi-os/?target=_blank).
 
 For these devices, `mender-convert` is used to perform the Mender integration,
 and this case a Mender integration covers the following:

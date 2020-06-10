@@ -174,7 +174,7 @@ the device to power**.
 
 You need to connect a USB keyboard and an HDMI monitor at least for the first boot.
 
-Once the device has booted, log in. On Raspbian, the default user is "pi", and
+Once the device has booted, log in. On Raspberry Pi OS, the default user is "pi", and
 the password is "raspberry".
 
 !!! If you want to enable SSH on startup for further boots, execute'
@@ -204,7 +204,7 @@ with the server.
 
 The device type property is used to determine which Mender Artifact are
 compatible with this device.
-Enter a name for the device type (e.g. raspberrypi3-raspbian): [raspberrypi]
+Enter a name for the device type (e.g. raspberrypi3-raspios): [raspberrypi]
 
 Are you connecting this device to hosted.mender.io? [Y/n] n
 
@@ -254,7 +254,7 @@ Which information is collected about devices is fully configurable; see the docu
 Now upgrade or install custom software on your golden device. This represents
 the update that will be sent to the rest of your device fleet.
 
-For example, upgrade all packages of your Raspbian OS with:
+For example, upgrade all packages of your Raspberry Pi OS with:
 
 ```bash
 sudo apt-get update && sudo apt-get dist-upgrade
@@ -276,7 +276,7 @@ This section will create a Mender Artifact from a running device using the
 snapshots feature of Mender. See [Snapshots](../../../04.Artifacts/22.Snapshots/docs.md) to
 learn more details about this feature.
 
-First you need to start SSH service in your device. For Raspbian image, start it
+First you need to start SSH service in your device. For Raspberry Pi OS image, start it
 with:
 
 ```bash
