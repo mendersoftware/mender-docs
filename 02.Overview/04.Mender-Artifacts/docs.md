@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-As described in the [architecture overview](../01.Overview/docs.md) Mender uses the output
+As described in the [architecture overview](../01.Introduction/docs.md) Mender uses the output
 from a build system and deploys this to remote devices.
 
 In order to ensure a robust update process, Mender needs *additional metadata*
