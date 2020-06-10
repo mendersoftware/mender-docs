@@ -31,7 +31,7 @@ for which purpose can be seen below.
 
 In the following we will go through how to replace all the keys and certificates
 that the services use. This is very important as part of a
-[Production installation](../02.Production-installation/docs.md) because each installation
+[Production installation](../03.Production-installation/docs.md) because each installation
 must have unique keys in order to be secure, so that the private keys used are
 not compromised.
 
@@ -53,8 +53,7 @@ created a `keygen` script that leverages the `openssl` utility to do
 the heavy lifting. It is available in
 [Mender's Integration GitHub repository](https://github.com/mendersoftware/integration?target=_blank).
 
-Open a terminal and go to the directory where you cloned the integration repository
-as part of the [tutorial to create a test environment](../../01.Getting-started/02.On-premise-installation/02.Create-a-test-environment/docs.md).
+Open a terminal and go to the directory where you cloned the integration repository.
 
 In order to generate the self-signed certificates, the script needs to know
 what the CN (Common Name) of the two certificates should be, i.e. which URL

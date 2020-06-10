@@ -51,6 +51,6 @@ dedicated to OTA updates where you can discuss any issues you may be having.
 Share and learn from other Mender users.
 
 * Learn more about Mender by reading the rest of the documentation, for example
-the [Overview](../../02.Architecture/01.Overview/docs.md),
+the [Overview](../../02.Overview/01.Introduction/docs.md),
 [Troubleshooting](../../201.Troubleshooting/) or
 [Mender FAQ](https://mender.io/plans/faq?target=_blank) sections.

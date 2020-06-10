@@ -6,7 +6,7 @@ taxonomy:
 ---
 
 !!! If you are interested in setting up a Mender server for production, visit
-!!! [Production installation](../02.Production-installation/docs.md)
+!!! [Production installation](../03.Production-installation/docs.md)
 
 !!! If you are interested in evaluating Mender features, visit
 !!! [Get Started](../../01.Get-started/chapter.md)
@@ -17,7 +17,7 @@ is insecure and is not optimized to run effectively.
 
 This can be useful if you want to familiarize your self with the Mender server
 before you move on to
-[Production installation](../02.Production-installation/docs.md).
+[Production installation](../03.Production-installation/docs.md).
 
 ## Requirements
 
