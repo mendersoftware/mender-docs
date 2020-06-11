@@ -80,7 +80,7 @@ Note in particular the `:` after the directory; this is mandatory.
 
 Please note that setting up for production will require that you explicitly set the [MENDER_SERVER_URL variable](../99.Variables/docs.md#mender_server_url) to the proper value for your server.
 
-!!! Note that, this step is not required for the [standalone mode](../../../02.Architecture/06.Standalone-deployments/docs.md).
+!!! Note that, this step is not required for the [standalone mode](../../../02.Overview/06.Standalone-deployments/docs.md).
 
 ## Artifact signing and verification keys
 

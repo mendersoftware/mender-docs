@@ -6,7 +6,7 @@ taxonomy:
 
 ## Introduction
 
-The built-in update mechanism in Mender is [dual rootfs updates](../../02.Architecture/01.Overview/docs.md#robust-updates). To do other types of updates, you will need an _Update module_ for your device.
+The built-in update mechanism in Mender is [dual rootfs updates](../../02.Overview/01.Introduction/docs.md#robust-updates). To do other types of updates, you will need an _Update module_ for your device.
 
 An _Update Module_ is an extension to the Mender client for supporting a new type of software update, such as a package manager, container, bootloader or even updates of nearby microcontrollers. An Update Module can be tailored to a specific device or environment (e.g. update a proprietary bootloader), or be more general-purpose (e.g. install a set of `.deb` packages.).
 
@@ -41,7 +41,7 @@ Refer to [further reading](#further-reading) for more details.
 
 ### Mender server
 
-You will need a Mender server if you are using [managed mode](../../02.Architecture/01.Overview/docs.md#modes-of-operation).
+You will need a Mender server if you are using [managed mode](../../02.Overview/01.Introduction/docs.md#modes-of-operation).
 
 For easy setup, use [hosted Mender](https://hosted.mender.io?target=_blank) or the [on-premise demo server](../../01.Getting-started/02.On-premise-installation/docs.md).
 

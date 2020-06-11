@@ -74,7 +74,7 @@ support Mender.
 
 #### Configuring the build
 
-!!! The configuration from [Mender Hub](https://hub.mender.io?target=_blank) will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../../02.Architecture/01.Overview/docs.md#modes-of-operation). See the [section on customizations](../02.Image-configuration/docs.md#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
+!!! The configuration from [Mender Hub](https://hub.mender.io?target=_blank) will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../../02.Overview/01.Introduction/docs.md#modes-of-operation). See the [section on customizations](../02.Image-configuration/docs.md#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
 
 The following settings will be present in the default `conf/local.conf` after running the steps from [Mender Hub](https://hub.mender.io?target=_blank). These are likely to need customization for your setup.
 
@@ -185,7 +185,7 @@ bitbake-layers add-layer ../meta-mender/meta-mender-demo
 
 #### Configuring the build
 
-!!! The configuration in `conf/local.conf` below will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../../02.Architecture/01.Overview/docs.md#modes-of-operation). See the [section on customizations](../02.Image-configuration/docs.md#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
+!!! The configuration in `conf/local.conf` below will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../../02.Overview/01.Introduction/docs.md#modes-of-operation). See the [section on customizations](../02.Image-configuration/docs.md#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
 
 Add these lines to the start of your `conf/local.conf`:
 
@@ -301,7 +301,7 @@ Mender running already. Please proceed to [Provisioning a new device](../../20.P
 for steps to do this.
 
 On the other hand, if you already have Mender running on your device and want to deploy a rootfs update
-using this build, you should use the [Mender Artifact](../../../02.Architecture/04.Mender-Artifacts/docs.md) files,
+using this build, you should use the [Mender Artifact](../../../02.Overview/05.Artifact/docs.md) files,
 which have `.mender` suffix.
 
 !!! If you built for one of the virtual Mender reference boards (`qemux86-64` or `vexpress-qemu`), you can start up your newly built image with the script in `../meta-mender/meta-mender-qemu/scripts/mender-qemu` and log in as *root* without password.
