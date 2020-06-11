@@ -1,5 +1,5 @@
 ---
-title: Mender Artifacts
+title: Artifact
 taxonomy:
     category: docs
 ---
