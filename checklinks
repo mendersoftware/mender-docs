@@ -1,18 +1,27 @@
+#! /usr/bin/env node
+
 var remark = require('remark');
 var parse = require('remark-parse');
 var stringify = require('remark-stringify');
 var engine = require('unified-engine');
 
+var argv = require('yargs')
+    .scriptName("checklinks")
+    .usage('$0 [paths]...')
+    .help()
+    .argv
+
 engine(
   {
     // Standard engine configuration
     processor: remark,
-    files: ['.'],
+    files: argv._.length >0 ? argv._ : ['.'],
     extensions: ['md'],
     pluginPrefix: 'remark',
     packageField: 'remarkConfig',
     injectedPlugins: [parse, stringify],
-    color: true,
+    quiet: !argv.verbose,
+    color: argv.color,
     frail: true
   },
   (error, failed) => {
