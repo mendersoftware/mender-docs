@@ -196,8 +196,12 @@ Please note that no scripts in the `Download_Leave` transition are run if the do
 5. [ArtifactInstall_Enter] ArtifactInstall
 6. (error while installing)
 7. [ArtifactInstall_Error]
-8. [ArtifactFailure_Enter] ArtifactFailure [ArtifactFailure_Leave]
-9. [Idle_Enter] Idle [Idle_Leave]
+8. [ArtifactRollback_Enter] ArtifactRollback [ArtifactRollback_Leave]
+9. [ArtifactRollbackReboot_Enter] ArtifactRollbackReboot
+10. (device reboot)
+11. [ArtifactRollbackReboot_Leave]
+12. [ArtifactFailure_Enter] ArtifactFailure [ArtifactFailure_Leave]
+13. [Idle_Enter] Idle [Idle_Leave]
 
 In case any of the `Artifact` scripts fail, an additional `ArtifactFailure` state is entered and the corresponding Enter and Leave scripts are run. Please also note that *there is no* `ArtifactFailure_Error` state transition and if any error occurs while executing actions inside the `ArtifactFailure` state, the scripts in the `ArtifactFailure_Leave` transition will run and an appropriate error path will be executed.
 
@@ -215,11 +219,11 @@ In case any of the `Artifact` scripts fail, an additional `ArtifactFailure` stat
 9. [ArtifactCommit_Enter] ArtifactCommit
 10. (error while committing)
 11. [ArtifactCommit_Error]
-12. [ArtifactFailure_Enter] ArtifactFailure [ArtifactFailure_Leave]
-13. [ArtifactRollback_Enter] ArtifactRollback [ArtifactRollback_Leave]
-14. [ArtifactRollbackReboot_Enter] ArtifactRollbackReboot
-15. (device reboot)
-16. [ArtifactRollbackReboot_Leave]
+12. [ArtifactRollback_Enter] ArtifactRollback [ArtifactRollback_Leave]
+13. [ArtifactRollbackReboot_Enter] ArtifactRollbackReboot
+14. (device reboot)
+15. [ArtifactRollbackReboot_Leave]
+16. [ArtifactFailure_Enter] ArtifactFailure [ArtifactFailure_Leave]
 17. [Idle_Enter] Idle [Idle_Leave]
 
 Please note that similar to the `ArtifactReboot` state, scripts in the `ArtifactRollbackReboot_Leave` transition are called after the device has rebooted.
