@@ -4,6 +4,289 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender zeus-v2020.06
+
+_Released 06.12.2020_
+
+### Statistics
+
+A total of 7169 lines added, 4936 removed (delta 2233)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 79 (41.4%) |
+| Ole Petter Orhagen | 33 (17.3%) |
+| Lluis Campos | 22 (11.5%) |
+| Drew Moseley | 19 (9.9%) |
+| Marcin Pasinski | 10 (5.2%) |
+| Mirza Krak | 9 (4.7%) |
+| Alf-Rune Siqveland | 4 (2.1%) |
+| Joerg Hofrichter | 3 (1.6%) |
+| Marek Belisko | 2 (1.0%) |
+| Gaurav Kalra | 2 (1.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 3006 (33.1%) |
+| Ole Petter Orhagen | 2699 (29.7%) |
+| Joerg Hofrichter | 1522 (16.8%) |
+| Marcin Pasinski | 1016 (11.2%) |
+| Drew Moseley | 275 (3.0%) |
+| Mirza Krak | 244 (2.7%) |
+| Marek Belisko | 163 (1.8%) |
+| Lluis Campos | 101 (1.1%) |
+| Alf-Rune Siqveland | 19 (0.2%) |
+| Joris Offouga | 16 (0.2%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Kristian Amlie | 839 (17.0%) |
+| Joris Offouga | 16 (0.3%) |
+
+| Developers with the most signoffs (total 4) | |
+|---|---|
+| Maciej Borzecki | 2 (50.0%) |
+| Kristian Amlie | 1 (25.0%) |
+| Drew Moseley | 1 (25.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 176 (92.1%) |
+| National Instruments | 3 (1.6%) |
+| walkbase | 2 (1.0%) |
+| Packet Power LLC | 2 (1.0%) |
+| open-nandra | 2 (1.0%) |
+| BayLibre | 1 (0.5%) |
+| alex.misch901@gmail.com | 1 (0.5%) |
+| guillaume.kh.alt@gmail.com | 1 (0.5%) |
+| SM Instruments Inc. | 1 (0.5%) |
+| offougajoris@gmail.com | 1 (0.5%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 7360 (81.1%) |
+| National Instruments | 1522 (16.8%) |
+| open-nandra | 163 (1.8%) |
+| offougajoris@gmail.com | 16 (0.2%) |
+| walkbase | 8 (0.1%) |
+| Packet Power LLC | 2 (0.0%) |
+| BayLibre | 1 (0.0%) |
+| alex.misch901@gmail.com | 1 (0.0%) |
+| guillaume.kh.alt@gmail.com | 1 (0.0%) |
+| SM Instruments Inc. | 1 (0.0%) |
+
+| Employers with the most signoffs (total 4) | |
+|---|---|
+| Northern.tech | 2 (50.0%) |
+| RnDity | 2 (50.0%) |
+
+| Employers with the most hackers (total 17) | |
+|---|---|
+| Northern.tech | 7 (41.2%) |
+| National Instruments | 1 (5.9%) |
+| open-nandra | 1 (5.9%) |
+| offougajoris@gmail.com | 1 (5.9%) |
+| walkbase | 1 (5.9%) |
+| Packet Power LLC | 1 (5.9%) |
+| BayLibre | 1 (5.9%) |
+| alex.misch901@gmail.com | 1 (5.9%) |
+| guillaume.kh.alt@gmail.com | 1 (5.9%) |
+| SM Instruments Inc. | 1 (5.9%) |
+
+
+### Changelogs
+
+#### meta-mender (zeus-v2020.06)
+
+New changes in meta-mender since warrior-v2020.06:
+
+* Removes the tests covering Mender-Artifact version 1.
+  ([MEN-2156](https://tracker.mender.io/browse/MEN-2156))
+* Add mender 2.1.1 and mender-artifact 3.2.0b1 recipes.
+* Update recipe for mender-binary-delta beta release v1.0.0b1
+* Remove mender-2.0.x and older, and mender-artifact 3.0.x
+  and older.
+* mender-setup: do not add systemd options to fstab without mender-systemd
+* Enable Artifact Depends and Provides for Yocto builds
+  Enables the ability to set:
+  * Artifact Depends
+  * Artifact Provides
+  * Artifact Name Depends
+  * Artifact Provides Group
+  * Artifact Depends Groups
+  In the Mender Artifact from the Yocto build,
+  through the build variables:
+  MENDER_ARTIFACT_NAME_DEPENDS -- List of names
+  MENDER_ARTIFACT_PROVIDES -- Key:Value
+  MENDER_ARTIFACT_DEPENDS -- Key:Value
+  MENDER_ARTIFACT_PROVIDES_GROUP -- Name
+  MENDER_ARTIFACT_DEPENDS_GROUPS -- List of names
+  ([MEN-1670](https://tracker.mender.io/browse/MEN-1670))
+* Add mender-artifact 3.2.0 and remove beta.
+* Upgrade client acceptance tests to Python3
+* Update recipe for mender-binary-delta final release v1.0.0
+* mender-setup: allow setting fstab options for the boot partition
+* mender-image: Add DEPENDS to include WKS_FILE_DEPENDS.
+* Update uboot_auto_patch script to be compatible with U-Boot 2019.10
+* Add mender 2.1.2 recipe
+* Add mender-artifact 3.1.1 recipe
+* Add mender-artifact 3.2.1 recipe
+* Add mender-binar-delta 1.0.1 recipe
+* Add 'datatar' as an image type.
+* Upgrade to new grub-mender-grubenv.
+* Remove outdated grub-mender-grubenv_1.3.0 recipe.
+* systemd-boot: Respect MENDER_BOOT_PART_MOUNT_LOCATION
+* grub-efi: Respect MENDER_BOOT_PART_MOUNT_LOCATION
+* mender-grub: Set EFI_PROVIDER to grub-efi.
+* mender-helpers: Error out if copying different files to boot part.
+* demo: Support systemd Predictable Network Names.
+* grub-mender-grubenv: Fix broken debug-log PACKAGECONFIG.
+* mender-part-images: Added handling for extra partitions
+* mender-artifact: make it available in SDK
+* remove stray '-' in IMAGE_NAME
+* Fix failure in boot log when `MENDER_EXTRA_PARTS` is used.
+  `mender-growfs-data` and `MENDER_EXTRA_PARTS` are mutually exclusive,
+  so set the default of `mender-growfs-data` to off if
+  `MENDER_EXTRA_PARTS` is being used.
+* Improve warning when multiple DTB files are in KERNEL_DEVICETREE
+* In demo mode, put demo certificate in same directory as Debian package.
+  ([MEN-3048](https://tracker.mender.io/browse/MEN-3048))
+* Add mender 2.2.0b1 recipe
+* Add mender-artifact 3.3.0b1 recipe
+* mender: Add signature/secure-boot support.
+* Remove mender-artifact 3.1 recipes (EOL).
+* Add MENDER_DTB_NAME_FORCE to mender-vars.json to avoid unrecognized variable warning
+* rpi: fix rootfs cmdline trailing space
+* mender-helper: Added handling for MENDER_EXTRA_PARTS_FSTAB
+* Improve dependency logic to not require U-Boot unconditionally on ARM.
+  This will help when not using `mender-grub`, and instead using
+  Barebox, for example.
+* Make sure partitions are marked for fsck'ing by default.
+* Follow e2fsprogs version bump from 1.44 to 1.45.
+* Follow systemd feature rename from time-epoch to set-time-epoch.
+* systemd-conf: Fix missing FILES section which is mandatory on zeus.
+* Work around missing LSB support in zeus.
+  This is a very intrusive change, which creates the `/lib64` symlink on
+  the root filesystem for 64-bit systems. This symlink is normally
+  missing when building with Yocto, but was provided by the LSB package
+  previously. The directory is necessary to remain compatible with
+  software built outside of Yocto. The Mender demo artifact, as well as
+  the binary delta update module are examples of such components.
+  If the link turns out to conflict with another package, it should be
+  possible to work around the problem by adding this to the other
+  package, either in the original `.bb` file or a `.bbappend` file:
+  ```
+  RPROVIDES_${PN} += "lsb-ld"
+  ```
+* Enable CONFIG_EFI_STUB on kernels when booting with UEFI on ARM.
+* Add mender 2.2.0 recipe and remove beta
+* Add mender-artifact 3.3.0 recipe and remove beta
+* Add mender 2.1.3 recipe
+* raspberrypi4: update U-Boot patches to apply to 2019.07 version
+  ([MEN-3262](https://tracker.mender.io/browse/MEN-3262))
+* Renamed mender -> mender-client
+  This renaming was done to conform with the new naming introduced. This helps
+  seperate Mender (the product), from Mender-client, which is a part of the
+  aforementioned product.
+  The renaming is due in parts:
+  * The 'mender.service' systemd recipe is now named 'mender-client.service'
+  * The bitbake recipes are now renamed from 'mender%.bb' to 'mender-client%.bb'
+  * The Mender feature 'mender-install' is now 'mender-client-install'
+  * The mender directory holding the mender-client recipe is also renamed 'mender-client'
+* Upgrade to U-Boot 2020.01 and GRUB 2.04 to fix Beaglebone support.
+* Updated the LIC_FILES_CHECKSUM after removing dependencies
+  ([MEN-3251](https://tracker.mender.io/browse/MEN-3251))
+* mender-grub: Dynamically determine mender_grub_storage_device.
+* mender-grub: Add regexp module.
+* Deprecate MENDER_GRUB_STORAGE_DEVICE variable.
+* raspberrypi: add state script to update boot firmware
+  Raspberry Pi boards have a set of boot firmware files that are
+  located on the vfat boot part, and these files are not updated
+  when you perform an update of the root filesystem.
+  Occasionally there will be changes to the Raspberry Pi software stack
+  that requires that these files are update. Typically there is something
+  in the Linux kernel that requires something that is in the boot
+  firmware. This means that to update the Linux kernel you must also
+  update the boot firmware files.
+  Above is really sub-optimal design of the Raspberry Pi boards but a
+  limitation that we must live with.
+  Note that the DTB files are also part of "boot firmware" and included in
+  the state script update.
+  The provided state-script can be enabled by adding the following to e.g
+  local.conf:
+      INHERIT += "rpi-update-firmware"
+  The ArtifactInstall_Leave_50 script can be overriden to customize what
+  files to update, e.g only DTB files. By default all files on the boot
+  part will be updated including config.txt and cmdline.txt.
+  NOTE! Updating the boot firmware files can not be done atomically and the
+  files are not roll-backed even though an rootfs rollback is performed. Conclusion,
+  this is an risky operating which could brick your device.
+* Fix infinite loop which would eat all available memory
+  on the build host, when using U-Boot v2020.01 or later together with
+  the auto-patcher.
+  ([MEN-3265](https://tracker.mender.io/browse/MEN-3265))
+* Updated the LIC_FILES_CHECKSUM after removing dependencies
+  ([MEN-3251](https://tracker.mender.io/browse/MEN-3251))
+* mender: Add sanity check for partuuid and uboot.
+* grubenv: Handle debug command prompt when running as EFI
+  app.
+* write GPT partition table before resize of data part
+  ([MEN-3366](https://tracker.mender.io/browse/MEN-3366))
+* raspberrypi: busybox compatibility for boot firmware state script
+* grub: Move dynamic storage handling into grub-mender-grubenv repository.
+* U-Boot versions from v2020.01 onwards have moved several C
+  code defines into Kconfig, which may require changes in board specific
+  patches. Specifically, `CONFIG_ENV_SIZE`, `CONFIG_ENV_OFFSET` and
+  `CONFIG_ENV_OFFSET_REDUND` now need to be defined in the board's
+  `defconfig` file. In addition, the redundant environment now need to
+  be specifically enabled, using the new switch,
+  `CONFIG_SYS_REDUNAND_ENVIRONMENT`. If you are using
+  `MENDER_UBOOT_AUTO_CONFIGURE=1`, then this is handled automatically,
+  but if not you will need to add this to your board's `defconfig` file:
+  ```
+  CONFIG_SYS_REDUNAND_ENVIRONMENT=y
+  CONFIG_ENV_SIZE=0x20000
+  CONFIG_ENV_OFFSET=0x800000
+  CONFIG_ENV_OFFSET_REDUND=0x1000000
+  ```
+  Note that the values may differ from the values you actually need,
+  these are just the defaults from the meta-mender Yocto
+  layer. `CONFIG_ENV_SIZE` need to match the `MENDER_ENV_SIZE` Bitbake
+  variable, and `CONFIG_ENV_OFFSET` and `CONFIG_ENV_OFFSET_REDUND`
+  should (usually) be 1x and 2x the `MENDER_PARTITION_ALIGNMENT`
+  variable. If the values are not as expected, then you will get an
+  error during the compile stage.
+* Fix OOM issue on the build host if certain configuration
+  options are missing from the defconfig file.
+  ([MEN-3476](https://tracker.mender.io/browse/MEN-3476))
+* grub-mender-grubenv: Remove kernel_devicetree.
+  The only way to use GRUB 2.04 on ARM is via UEFI, and the
+  kernel_devicetree information is not used when loading via UEFI,
+  instead it is queried directly from the UEFI provider.
+* Make sure that mender-grow-data.service only runs once.
+* Boot no longer blocks while the data part is resized, and
+  instead this is a background process.
+* Add OpenSSL as dependency for Git versions of the Mender client.
+* Fix U-Boot auto-patcher sometimes adding two conflicting
+  options to the defconfig file.
+  ([MEN-3514](https://tracker.mender.io/browse/MEN-3514))
+* Add mender-client_2.3.0b1 and mender-artifact_3.4.0b1 recipes.
+  To use the Beta recipes, add this to `local.conf`:
+  ```
+  PREFERRED_VERSION_pn-mender-client = "2.3.0b1"
+  PREFERRED_VERSION_pn-mender-artifact = "3.4.0b1"
+  PREFERRED_VERSION_pn-mender-artifact-native = "3.4.0b1"
+  ```
+* Add mender-binary-delta_1.1.0b1 recipe.
+  To use the beta, add this to `local.conf`:
+  ```
+  PREFERRED_VERSION_pn-mender-binary-delta = "1.1.0b1"
+  ```
+* Disable `64bit` ext4 filesystem feature.
+  ([MEN-3513](https://tracker.mender.io/browse/MEN-3513))
+* Remove mender-client < 2.2, and mender-artifact < 3.3 recipes.
+
+
 ## meta-mender warrior-v2020.06
 
 _Released 06.08.2020_
