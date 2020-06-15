@@ -8,7 +8,7 @@ Mender backend is composed of a number of microservices, each implementing a
 small, well defined piece of functionality.
 
 The integration environment, previously used
-in [Create a test environment](../../getting-started/on-premise-installation/create-a-test-environment)
+in [Create a test environment](../../01.Getting-started/02.On-premise-installation/02.Create-a-test-environment/docs.md)
 chapter, brings together the following services:
 
 - [Mender Device Authentication Service](https://github.com/mendersoftware/deviceauth?target=_blank)

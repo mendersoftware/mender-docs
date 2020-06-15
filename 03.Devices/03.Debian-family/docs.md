@@ -7,7 +7,7 @@ taxonomy:
 This page describes the requirements for Mender when integrated with the Debian
 family target OS images such as [Debian](https://www.debian.org/?target=_blank),
 [Ubuntu](https://www.ubuntu.com/?target=_blank) and
-[Raspbian](https://www.raspberrypi.org/downloads/raspbian/?target=_blank).
+[Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspberry-pi-os/?target=_blank).
 
 For these devices, `mender-convert` is used to perform the Mender integration,
 and this case a Mender integration covers the following:
@@ -48,7 +48,7 @@ all that you need to integrate a new device with an unsupported OS.
 ### Common customizations
 
 In many cases it will be required to provide a [custom configuration
-file](../../artifacts/debian-family/image-configuration#configuration-files)
+file](../../04.Artifacts/15.Debian-family/02.image-configuration/docs.md#configuration-files)
 to provide details that cannot be determined at probe time. Common configuration
 variables are:
 
@@ -84,8 +84,8 @@ The above would translate to `MENDER_STORAGE_DEVICE = "/dev/mmcblk1p"`.
 ## Other Mender customizations
 
 Note that configuring features such as
-[identity](../../client-configuration/identity) and
-[inventory]((../../client-configuration/identity) rely on placing
+[identity](../../05.Client-configuration/03.Identity/docs.md) and
+[inventory]((../../05.Client-configuration/03.Identity/docs.md) rely on placing
 additional files into the target filesystem.  With `mender-convert`,
 these modifications should _not_ be done in the input images since
 they will be overwritten by `mender-convert`.  The proper mechanism to
@@ -93,7 +93,7 @@ support updates like these, is to add them as files in your rootfs
 overlay.
 
 Similarly adding
-[root file system state scripts](../../artifacts/state-scripts#root-file-system-and-artifact-scripts)
+[root file system state scripts](../../04.Artifacts/50.State-scripts/docs.md#root-file-system-and-artifact-scripts)
 should be done using the `mender-convert` rootfs overlay.
 
 ## Fall back to U-Boot integration on ARM

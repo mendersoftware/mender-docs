@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 A Mender Artifact is a file Mender uses to deploy updates. Please see
-[Mender Artifacts](../../architecture/mender-artifacts) for a more detailed
+[Mender Artifacts](../../02.Overview/05.Artifact/docs.md) for a more detailed
 description.
 
 When testing deployments, it is useful that the Artifact you are deploying
@@ -23,7 +23,7 @@ In this tutorial we will highlight some key use cases covered by the `mender-art
 The `mender-artifact` utility is used to create and inspect Mender Artifacts.
 
 Download the prebuilt `mender-artifact` binary for your platform following the links
-in [Downloads section](../../downloads#mender-artifact-tool).
+in [Downloads section](../../08.Downloads/docs.md#mender-artifact).
 
 
 ## Changing the Mender server
@@ -100,7 +100,7 @@ version of the Artifact format, you can build an older Artifact version with the
 `mender-artifact write rootfs-image -v 2 -t beaglebone -n release-1 -f
 rootfs.ext4 -o artifact.mender`. The default Artifact version is the latest one.
 Also see the build variable
-[MENDER_ARTIFACT_EXTRA_ARGS](../yocto-project/variables#mender_artifact_extra_args).
+[MENDER_ARTIFACT_EXTRA_ARGS](../10.Yocto-project/99.Variables/docs.md#mender_artifact_extra_args).
 
 !!! If you would like to generate a *signed Artifact*, simply add the `-k` option with the path to your *private key*. In our example above, the full command would be `mender-artifact write rootfs-image -t beaglebone -n release-1 -f rootfs.ext4 -o artifact-signed.mender -k private.key`.
 
@@ -122,7 +122,7 @@ Use `mender-artifact --help` to list all available compression options.
 ## Signing after modification
 
 If you are signing Artifacts, the signature will become invalid whenever
-you make modifications to them. See the section on [signing and verification](../signing-and-verification#an-existing-mender-artifact)
+you make modifications to them. See the section on [signing and verification](../40.Signing-and-verification/docs.md#an-existing-mender-artifact)
 for more information.
 
 

@@ -52,7 +52,7 @@ if the result is larger than `IMAGE_ROOTFS_SIZE + IMAGE_ROOTFS_EXTRA_SPACE`, it
 will be used as the size of the rootfs instead of the other two variables.
 
 The actual free space will usually be lower than requested. See comment for
-[`IMAGE_ROOTFS_EXTRA_SPACE`](#image-rootfs-extra-space).
+[`IMAGE_ROOTFS_EXTRA_SPACE`](#image_rootfs_extra_space).
 
 This variable directly mirrors the variable from the Yocto Project, which is
 why it is missing a "MENDER_" prefix.

@@ -6,7 +6,7 @@ taxonomy:
 
 ## Introduction
 
-The built-in update mechanism in Mender is [dual rootfs updates](../../architecture/overview#robust-updates). To do other types of updates, you will need an _Update module_ for your device.
+The built-in update mechanism in Mender is [dual rootfs updates](../../02.Overview/01.Introduction/docs.md#robust-updates). To do other types of updates, you will need an _Update module_ for your device.
 
 An _Update Module_ is an extension to the Mender client for supporting a new type of software update, such as a package manager, container, bootloader or even updates of nearby microcontrollers. An Update Module can be tailored to a specific device or environment (e.g. update a proprietary bootloader), or be more general-purpose (e.g. install a set of `.deb` packages.).
 
@@ -18,7 +18,7 @@ An Update Module implements one or more of the actions that the Mender client ca
 
 ### The state machine workflow
 
-Update Modules are modeled after the same execution flow as [state scripts](../../artifacts/state-scripts). For the development of Update Modules it is important to have a basic understanding of the workflow.
+Update Modules are modeled after the same execution flow as [state scripts](../../04.Artifacts/50.State-scripts/docs.md). For the development of Update Modules it is important to have a basic understanding of the workflow.
 
 ![Update Modules state machine](update-modules-state-machine.png)
 
@@ -41,22 +41,22 @@ Refer to [further reading](#further-reading) for more details.
 
 ### Mender server
 
-You will need a Mender server if you are using [managed mode](../../architecture/overview#modes-of-operation).
+You will need a Mender server if you are using [managed mode](../../02.Overview/01.Introduction/docs.md#modes-of-operation).
 
-For easy setup, use [hosted Mender](https://hosted.mender.io?target=_blank) or the [on-premise demo server](../../getting-started/on-premise-installation).
+For easy setup, use [hosted Mender](https://hosted.mender.io?target=_blank) or the [on-premise demo server](../../01.Getting-started/02.On-premise-installation/docs.md).
 
 ### Device with Mender client
 
 You will need a device with a Mender client installed. For development purposes you also need shell access to the device (e.g. via SSH).
 
-To install the Mender client on your device, follow the instructions in the [Installing](../../client-configuration/installing) documentation.
+To install the Mender client on your device, follow the instructions in the [Installing](../../05.Client-configuration/06.Installing/docs.md) documentation.
 
 ### Workstation with mender-artifact
 
 We will use the `mender-artifact` tool to create the payloads required for Update Modules to work.
 
 Download the prebuilt `mender-artifact` binary for your platform following the links
-in [Downloads section](../../downloads#mender-artifact-tool).
+in [Downloads section](../../08.Downloads/docs.md#mender-artifact).
 
 ## Basic example: File copy Update Module
 

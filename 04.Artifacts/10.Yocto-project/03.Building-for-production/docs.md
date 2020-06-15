@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-This section describes the steps that are specific to production builds for Yocto Project. If you are using Debian converted images please refer to [setting parameters for mender-convert](../../debian-family)
+This section describes the steps that are specific to production builds for Yocto Project. If you are using Debian converted images please refer to [setting parameters for mender-convert](../../15.Debian-family/docs.md)
 These steps are not necessary if you are just trying out Mender, but must be done before deploying to production.
 
 
@@ -29,18 +29,18 @@ bitbake-layers remove-layer meta-mender-demo
 
 For security reasons, the Mender client does not require any open ports at the embedded device. Therefore, all communication between the Mender client and the server is always initiated by the client and it is important to configure the client so that the frequency of sending various requests to the server is reasonable for a given setup.
 
-Please refer to [polling intervals](../../../client-configuration/configuration-file/polling-intervals), for information on how to choose and how to set polling intervals.
+Please refer to [polling intervals](../../../05.Client-configuration/05.Configuration-file/01.Polling-intervals/docs.md), for information on how to choose and how to set polling intervals.
 
 ## Certificates
 
 Certificates are used to ensure the communication between the client and the server is secure, so that it is not possible for an adversary to pose as a legitimate server.
 
-!! Please make sure that the clock is set correctly on your devices. Otherwise certificate verification will become unreliable. See [certificate troubleshooting](../../../troubleshooting/mender-client#certificate-expired-or-not-yet-valid) for more information.
+!! Please make sure that the clock is set correctly on your devices. Otherwise certificate verification will become unreliable. See [certificate troubleshooting](../../../201.Troubleshooting/03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid) for more information.
 
 
 ### Preparing the client certificates
 
-You can either generate new certificates by following the guide for [generating certificates](../../../administration/certificates-and-keys#generating-new-keys-and-certificates), or obtain the certificates in a different way - for example from your existing Certificate Authority. In either case the certificates on the client and server must be the same.
+You can either generate new certificates by following the guide for [generating certificates](../../../07.Administration/03.Certificates-and-keys/docs.md#generating-new-keys-and-certificates), or obtain the certificates in a different way - for example from your existing Certificate Authority. In either case the certificates on the client and server must be the same.
 
 ### Including the client certificates
 
@@ -78,9 +78,9 @@ Note in particular the `:` after the directory; this is mandatory.
 
 ### Updating MENDER_SERVER_URL
 
-Please note that setting up for production will require that you explicitly set the [MENDER_SERVER_URL variable](../variables#mender_server_url) to the proper value for your server.
+Please note that setting up for production will require that you explicitly set the [MENDER_SERVER_URL variable](../99.Variables/docs.md#mender_server_url) to the proper value for your server.
 
-!!! Note that, this step is not required for the [standalone mode](../../../architecture/standalone-deployments).
+!!! Note that, this step is not required for the [standalone mode](../../../02.Overview/06.Standalone-deployments/docs.md).
 
 ## Artifact signing and verification keys
 
@@ -98,4 +98,4 @@ SRC_URI_append = " file://artifact-verify-key.pem"
 
 Note that it is also possible (but not recommended) to use `local.conf`, by using [the same method as for client certificates](#using-localconf), adding `pn-mender` to the variable names.
 
-For more information about some alternate approaches please follow the [MENDER_ARTIFACT_VERIFY_KEY documentation](../variables#mender_artifact_verify_key).
+For more information about some alternate approaches please follow the [MENDER_ARTIFACT_VERIFY_KEY documentation](../99.Variables/docs.md#mender_artifact_verify_key).

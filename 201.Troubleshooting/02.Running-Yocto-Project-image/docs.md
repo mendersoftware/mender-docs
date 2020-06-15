@@ -49,7 +49,7 @@ Artifacts.
 
 Note that `mender-migrate-configuration` recipe uses a state script, and it
 might be needed to clean the yocto build after removing it. See note at [State
-Scripts](../../artifacts/state-scripts#including-state-scripts-in-artifacts-and-disk-images)
+Scripts](../../04.Artifacts/50.State-scripts/docs.md#including-state-scripts-in-artifacts-and-disk-images)
 
 
 ## Boot sequence fails with "Failed to mount /uboot" and "codepage cp437 not found"

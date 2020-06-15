@@ -15,7 +15,7 @@ device available.
 ## Prerequisites
 
 The test environment should be set up and working successfully
-as described in [Install a Mender demo server](../create-a-test-environment).
+as described in [Install a Mender demo server](../02.Create-a-test-environment/docs.md).
 
 We also strongly recommend that you complete the tutorial that comes with the Mender GUI so
 that you have a basic understanding of how Mender works before moving on to connecting a physical device.
@@ -33,16 +33,16 @@ so you will need one SD card (8 GB or larger) per device.
 ### Disk image
 
 Get the disk image for your board(s) from [the Downloads
-section](../../../downloads#disk-images).
+section](../../../08.Downloads/docs.md#disk-images).
 
-!!! It is possible to use this tutorial with _any_ physical board, as long as you have integrated Mender with it. In this case you cannot use the demo Artifacts we provide in this tutorial, but you need to build your own artifacts as described in [Building a Mender Yocto Project image](../../../artifacts/yocto-project/building).
+!!! It is possible to use this tutorial with _any_ physical board, as long as you have integrated Mender with it. In this case you cannot use the demo Artifacts we provide in this tutorial, but you need to build your own artifacts as described in [Building a Mender Yocto Project image](../../../04.Artifacts/10.Yocto-project/01.Building/docs.md).
 
 ### Mender-Artifact tool
 
 Download the prebuilt `mender-artifact` binary for your platform following the links
-in [Downloads section](../../../downloads#mender-artifact).
+in [Downloads section](../../../08.Downloads/docs.md#mender-artifact).
 
-Please see [Modifying a Mender Artifact](../../../artifacts/modifying-a-mender-artifact)
+Please see [Modifying a Mender Artifact](../../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md)
 for a more detailed overview.
 
 ### Network connectivity
@@ -75,7 +75,7 @@ that your device(s) can connect to the Mender server.
 
 Locate the demo _disk image_ (`*.sdimg`) you downloaded for your device.
 This image contains _all the partitions_ of the storage device, as described in [Partition
-layout](../../../devices/general-system-requirements#partition-layout).
+layout](../../../03.Devices/01.General-system-requirements/docs.md#partition-layout).
 
 You can decompress a `.xz` image like the following:
 
@@ -92,9 +92,9 @@ gunzip <PATH-TO-YOUR-DISK-IMAGE>.sdimg.gz
 !!! The Mender images come with a predetermined size for the root filesystems,
 !!! which may be too small for some use cases where a lot of space is required
 !!! for applications. If you are building your own disk image by following
-!!! [Building a Mender Yocto Project image](../../../artifacts/yocto-project/building),
+!!! [Building a Mender Yocto Project image](../../../04.Artifacts/10.Yocto-project/01.Building/docs.md),
 !!! you can configure the desired space usage with the Yocto Project variable
-!!! [MENDER_STORAGE_TOTAL_SIZE_MB](../../../artifacts/yocto-project/variables#mender_storage_total_size_mb).
+!!! [MENDER_STORAGE_TOTAL_SIZE_MB](../../../04.Artifacts/10.Yocto-project/99.Variables/docs.md#mender_storage_total_size_mb).
 
 If you are connecting your device with an Ethernet cable to the same LAN network
 that your workstation, skip the following subsections and jump to
@@ -157,7 +157,7 @@ should have your wpa configuration set up correctly on start up.
 
 ## Write the disk image to the SD card
 
-Please see [Write the disk image to the SD card](../../../artifacts/provisioning-a-new-device#write-the-disk-image-to-the-sd-card)
+Please see [Write the disk image to the SD card](../../../04.Artifacts/20.Provisioning-a-new-device/docs.md#write-the-disk-image-to-the-sd-card)
 for steps how to provision the device disk using the `*.sdimg`
 image you downloaded and modified above.
 
@@ -165,7 +165,7 @@ If you have several devices, please write the disk image to all their SD cards.
 
 ## Boot the device
 
-! Make sure that the Mender server is running as described in [Install a Mender demo server](../create-a-test-environment) and that the device can reach it on the IP address you configured above (`$IP_OF_MENDER_SERVER_FROM_DEVICE`). You might need to set a static IP address where the Mender server runs and disable any firewalls.
+! Make sure that the Mender server is running as described in [Install a Mender demo server](../02.Create-a-test-environment/docs.md) and that the device can reach it on the IP address you configured above (`$IP_OF_MENDER_SERVER_FROM_DEVICE`). You might need to set a static IP address where the Mender server runs and disable any firewalls.
 
 First, insert the SD card you just provisioned into the device. Then **connect
 the device to power**.
@@ -174,7 +174,7 @@ the device to power**.
 
 You need to connect a USB keyboard and an HDMI monitor at least for the first boot.
 
-Once the device has booted, log in. On Raspbian, the default user is "pi", and
+Once the device has booted, log in. On Raspberry Pi OS, the default user is "pi", and
 the password is "raspberry".
 
 !!! If you want to enable SSH on startup for further boots, execute'
@@ -204,7 +204,7 @@ with the server.
 
 The device type property is used to determine which Mender Artifact are
 compatible with this device.
-Enter a name for the device type (e.g. raspberrypi3-raspbian): [raspberrypi]
+Enter a name for the device type (e.g. raspberrypi3-raspios): [raspberrypi]
 
 Are you connecting this device to hosted.mender.io? [Y/n] n
 
@@ -230,12 +230,12 @@ sudo systemctl restart mender-client
 ## See the device in the Mender UI
 
 If you refresh the Mender server UI (by default found at [https://localhost/](https://localhost/?target=_blank)),
-you should see one or more devices pending authorization. If you do not see your device listed in the UI, please review [troubleshooting steps.](../../../troubleshooting/device-runtime#mender-server-connection-issues)
+you should see one or more devices pending authorization. If you do not see your device listed in the UI, please review [troubleshooting steps.](../../../201.Troubleshooting/05.Device-Runtime/docs.md#mender-server-connection-issues)
 
 Once you **authorize** these devices, Mender will auto-discover
 inventory about the devices, including the device type (e.g. beaglebone)
 and the IP addresses, as shown in the example with a BeagleBone Black below.
-Which information is collected about devices is fully configurable; see the documentation on [Identity](../../../client-configuration/identity) and [Inventory](../../../client-configuration/inventory) for more information.
+Which information is collected about devices is fully configurable; see the documentation on [Identity](../../../05.Client-configuration/03.Identity/docs.md) and [Inventory](../../../05.Client-configuration/04.Inventory/docs.md) for more information.
 
 ![Mender UI - Device information for BeagleBone Black](device_information_bbb.png)
 
@@ -254,7 +254,7 @@ Which information is collected about devices is fully configurable; see the docu
 Now upgrade or install custom software on your golden device. This represents
 the update that will be sent to the rest of your device fleet.
 
-For example, upgrade all packages of your Raspbian OS with:
+For example, upgrade all packages of your Raspberry Pi OS with:
 
 ```bash
 sudo apt-get update && sudo apt-get dist-upgrade
@@ -273,10 +273,10 @@ your device.
 !!! it, run `hostname -I` on your device.
 
 This section will create a Mender Artifact from a running device using the
-snapshots feature of Mender. See [Snapshots](../../../artifacts/snapshots) to
+snapshots feature of Mender. See [Snapshots](../../../04.Artifacts/22.Snapshots/docs.md) to
 learn more details about this feature.
 
-First you need to start SSH service in your device. For Raspbian image, start it
+First you need to start SSH service in your device. For Raspberry Pi OS image, start it
 with:
 
 ```bash
@@ -374,9 +374,9 @@ network with different names, you can deploy updates back and forth between them
 
 Now that you have seen how Mender works with a reference board, you might be wondering what it would take to port it to your own board.
 
-To get support for robust system updates with rollback, Mender must be [integrated with production boards](../../../devices).
+To get support for robust system updates with rollback, Mender must be [integrated with production boards](../../../03.Devices/chapter.md).
 
-On the other hand, if you only need support for application updates (not full system updates), no board integration is required. In this case you can install Mender on an existing device and OS by following the documentation on [installing the Mender client](../../../client-configuration/installing).
+On the other hand, if you only need support for application updates (not full system updates), no board integration is required. In this case you can install Mender on an existing device and OS by following the documentation on [installing the Mender client](../../../05.Client-configuration/06.Installing/docs.md).
 
 You can find images for other devices in our Mender Hub community forum, see
 [Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11) or

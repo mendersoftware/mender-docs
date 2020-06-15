@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 After downloading one of the Mender demo images,
-[building a Mender Yocto Project image](../yocto-project/building) or [converting existing debian images](../debian-family)
+[building a Mender Yocto Project image](../10.Yocto-project/01.Building/docs.md) or [converting existing debian images](../15.Debian-family/docs.md)
 for the first time, you need to write the storage image to
 the flash of the device.
 
@@ -19,7 +19,7 @@ You need an image file to flash to the entire storage of the
 device. `meta-mender-core` creates these files with a `.sdimg`
 suffix, so they are easy to recognize. This file contains
 all the partitions of the given storage device, as
-described in [Partition layout](../../devices/general-system-requirements#partition-layout).
+described in [Partition layout](../../03.Devices/01.General-system-requirements/docs.md#partition-layout).
 
 
 ### A physical device to provision that uses SD cards
@@ -31,7 +31,7 @@ There are several methods to flash storage, and the simplest
 case is if your device uses a SD card. Currently, this is the approach
 we assume you take here, but the same `.sdimg` file can be used
 to flash any block device. See
-[Flash memory types](../../devices/yocto-project/partition-configuration#flash-memory-types)
+[Flash memory types](../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md#flash-memory-types)
 for a clarification of what is meant by block device in this context.
 
 

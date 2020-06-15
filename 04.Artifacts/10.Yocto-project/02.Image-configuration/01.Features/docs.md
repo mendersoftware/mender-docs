@@ -63,11 +63,23 @@ Below is a list of the features that Mender provides, with descriptions:
 
 * `mender-systemd` - Enables a Mender build that uses systemd. See also the
   section about [disabling Mender as a system
-  service](..#disabling-mender-as-a-system-service).
+  service](../docs.md#disabling-mender-as-a-system-service).
 
 * `mender-uboot` - Enables integration with the U-Boot bootloader.
 
 * `mender-growfs-data` - Enable dynamic resizing of the data filesystem through systemd-growfs
+
+* `mender-partuuid` - Enable usage of UUID as partition identifiers (GRUB only).
+
+    You must set the UUID's for all parts in your environment, e.g
+
+    ```bash
+    # UUID's generated using the 'uuidgen -r' command
+    MENDER_BOOT_PART = "/dev/disk/by-partuuid/9553c78a-bed1-40fe-9333-f7409e0585e5"
+    MENDER_ROOTFS_PART_A = "/dev/disk/by-partuuid/cb8cc332-f5e3-4b53-a489-13d3a8dd5768"
+    MENDER_ROOTFS_PART_B = "/dev/disk/by-partuuid/708798f3-4e9d-4338-bb69-bc92e0b51efb"
+    MENDER_DATA_PART = "/dev/disk/by-partuuid/0965b52a-89bd-46c1-ac69-3b27fb6c2aae"
+    ```
 
 
 ## Default features

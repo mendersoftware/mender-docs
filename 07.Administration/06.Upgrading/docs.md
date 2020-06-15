@@ -13,14 +13,14 @@ both Enterprise.
 
 !!! If you are looking to upgrade from Open Source to Enterprise, please visit
 !!! [the section on upgrading from Open Source to
-!!! Enterprise](../production-installation/upgrading-from-os-to-enterprise).
+!!! Enterprise](../02.Production-installation/01.Upgrading-from-OS-to-Enterprise/docs.md).
 
 ! The upgrade procedure involves some downtime.
 
 ## Prerequisites
 
 It is assumed that the installation was performed following the steps
-in the [Production installation](../production-installation) guide. That means that
+in the [Production installation](../02.Production-installation/docs.md) guide. That means that
 you currently have:
 
 * a local git repository based
@@ -32,7 +32,7 @@ As a good engineering practice, it is advisable to perform the upgrade on a
 staging environment first. This will allow you to discover potential problems
 and allow to exercise the procedure in a safe manner.
 
-[Production installation](../production-installation) is largely based on using git and Mender integration
+[Production installation](../02.Production-installation/docs.md) is largely based on using git and Mender integration
 repository. This is the reason why the upgrade procedure follows a regular git
 workflow with branching, pulling remote changes and merging locally.
 
@@ -41,7 +41,7 @@ workflow with branching, pulling remote changes and merging locally.
 Before upgrading it is advisable to backup existing data and volumes.
 Consult the MongoDB and Docker manuals for the necessary steps.
 
-The [Backup and restore](../backup-and-restore) chapter provides examples and
+The [Backup and restore](../07.Backup-and-restore/docs.md) chapter provides examples and
 introduces example tools provided in Mender integration repository.
 
 ## Cleaning up the deviceauth database after device decommissioning.
@@ -49,7 +49,7 @@ introduces example tools provided in Mender integration repository.
 Before upgrading it is advisable to clean up any leftover devices from the deviceauth database.
 These can sometimes happen due to device decommissioning.
 You can find instructions on how to clean up the deviceauth database
-in the [Troubleshooting](../../troubleshooting/mender-server) chapter.
+in the [Troubleshooting](../../201.Troubleshooting/04.Mender-Server/docs.md) chapter.
 
 ## Updating your local repository
 
@@ -78,7 +78,7 @@ For each release there will be a corresponding release branch. For example, the
 branch named `2.0.x` provides the 2.0 release setup. Stable releases are tagged,
 e.g. `2.0.1`.
 
-Recall from the [production installation](../production-installation) guide that our
+Recall from the [production installation](../02.Production-installation/docs.md) guide that our
 local setup was introduced in a branch that was created from given release
 version. You can use git commands such as `git log` and `git diff` to review the changes
 introduced in upstream branch. For example:
@@ -211,9 +211,9 @@ Start the new environment:
 ## Upgrading Mender Clients
 
 The Mender Client binary is built into the root file system, so it can be upgraded by
-fetching the sources when [building a Yocto Project image](../../artifacts/yocto-project/building).
+fetching the sources when [building a Yocto Project image](../../04.Artifacts/10.Yocto-project/01.Building/docs.md).
 
-!! Older Mender clients do not support newer [versions of the Mender Artifact format](../../architecture/mender-artifacts#versions); they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../artifacts/modifying-a-mender-artifact#create-an-artifact-from-a-raw-root-file-system) for an introduction how to do this.
+!! Older Mender clients do not support newer [versions of the Mender Artifact format](../../02.Overview/05.Artifact/docs.md#versions); they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#create-an-artifact-from-a-raw-root-file-system) for an introduction how to do this.
 
 
 

@@ -13,8 +13,8 @@ provision the device storage for devices without Mender running already.
 Mender provides images based on the following distributions:
 
 * Images for **Raspberry Pi 3** and **Raspberry Pi 4**, which are based on the
-  [Raspbian Linux
-  distribution](https://www.raspberrypi.org/downloads/raspbian/?target=_blank)
+  [Raspberry Pi OS Linux
+  distribution](https://www.raspberrypi.org/downloads/raspberry-pi-os/?target=_blank)
 
 !! Note that we do not offer commercial support for these images. They are based
 !! on images supported by board manufacturers, like the Raspberry Pi Foundation,
@@ -25,12 +25,12 @@ Mender provides images based on the following distributions:
 
 | Board                         | OS                              | Disk image                                                                                         | Storage size |
 |-------------------------------|---------------------------------|----------------------------------------------------------------------------------------------------|--------------|
-| Raspberry Pi 3 Model B and B+ | Raspbian Buster Lite 2020-02-05 | [raspbian-buster-lite-raspberrypi3-mender.img.xz][raspbian-buster-lite-raspberrypi3-mender.img.xz] | 8 GB         |
-| Raspberry Pi 4 Model B        | Raspbian Buster Lite 2020-02-05 | [raspbian-buster-lite-raspberrypi4-mender.img.xz][raspbian-buster-lite-raspberrypi4-mender.img.xz] | 8 GB         |
+| Raspberry Pi 3 Model B and B+ | Raspberry Pi OS Buster Lite 2020-05-27 | [raspios-buster-lite-raspberrypi3-mender.img.xz][raspios-buster-lite-raspberrypi3-mender.img.xz] | 8 GB         |
+| Raspberry Pi 4 Model B        | Raspberry Pi OS Buster Lite 2020-05-27 | [raspios-buster-lite-raspberrypi4-mender.img.xz][raspios-buster-lite-raspberrypi4-mender.img.xz] | 8 GB         |
 
 <!--AUTOVERSION: "mender-%.img.xz"/mender-convert-client -->
-[raspbian-buster-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-02-05-raspbian-buster-lite/arm/2020-02-05-raspbian-buster-lite-raspberrypi3-mender-master.img.xz
-[raspbian-buster-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-02-05-raspbian-buster-lite/arm/2020-02-05-raspbian-buster-lite-raspberrypi4-mender-master.img.xz
+[raspios-buster-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-05-27-raspios-buster-lite-armhf/arm/2020-05-27-raspios-buster-lite-armhf-raspberrypi3-mender-master.img.xz
+[raspios-buster-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-05-27-raspios-buster-lite-armhf/arm/2020-05-27-raspios-buster-lite-armhf-raspberrypi4-mender-master.img.xz
 
 You can find images for other devices in our Mender Hub community forum, see
 [Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11) or
@@ -56,7 +56,7 @@ Note that you need to ensure that the mender-artifact utility is in a directory 
 $ sudo mv mender-artifact /usr/local/bin/
 ```
 
-!!! If you need to build `mender-artifact` from source, please see [Compiling mender-artifact](../artifacts/modifying-a-mender-artifact#compiling-mender-artifact).
+!!! If you need to build `mender-artifact` from source, please see [Compiling mender-artifact](../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#compiling-mender-artifact).
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 [x.x.x_mender-artifact-linux]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/master/linux/mender-artifact
@@ -66,12 +66,12 @@ $ sudo mv mender-artifact /usr/local/bin/
 ## Mender client
 
 A Debian package (`.deb`) is provided for convenience to install on e.g Debian,
-Ubuntu or Raspbian. We provide packages for the following architectures:
+Ubuntu or Raspberry Pi OS. We provide packages for the following architectures:
 
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
 | Architecture   | Devices                                   | Download link                                                       |
 |----------------|-------------------------------------------|---------------------------------------------------------------------|
-| armhf (ARM-v6) | ARM 32bit distributions, for example Raspbian for Raspberry Pi or Debian for BeagleBone | [mender-client_master-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] |
+| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client_master-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] |
 | arm64 | ARM 64bit processors, for example Debian for Asus Tinker Board | [mender-client_master-1_arm64.deb][mender-client_x.x.x-1_arm64.deb] |
 | amd64 | Generic 64-bit x86 processors, the most popular among workstations | [mender-client_master-1_amd64.deb][mender-client_x.x.x-1_amd64.deb] |
 

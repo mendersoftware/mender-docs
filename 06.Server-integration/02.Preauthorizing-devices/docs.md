@@ -4,9 +4,9 @@ taxonomy:
     category: docs
 ---
 
-The Mender server supports [preauthorizing devices](../../architecture/device-authentication#preauthorization-flow), where you add the [identity](../../client-configuration/identity) and public key of the device to the Mender server before the device connects for the first time. This way the device is automatically authorized to join the Mender server when it first connects. This is in particular useful in a mass production setting because you can preauthorize devices when they are manufactured so they automatically get accepted into the Mender server when your customer turns them on, which might happen several months after manufacturing.
+The Mender server supports [preauthorizing devices](../../02.Overview/04.Device-authentication/docs.md#preauthorization-flow), where you add the [identity](../../05.Client-configuration/03.Identity/docs.md) and public key of the device to the Mender server before the device connects for the first time. This way the device is automatically authorized to join the Mender server when it first connects. This is in particular useful in a mass production setting because you can preauthorize devices when they are manufactured so they automatically get accepted into the Mender server when your customer turns them on, which might happen several months after manufacturing.
 
-See [Device authentication](../../architecture/device-authentication) for a general overview of how device authentication works in Mender.
+See [Device authentication](../../02.Overview/04.Device-authentication/docs.md) for a general overview of how device authentication works in Mender.
 
 
 ## Prerequisites
@@ -14,19 +14,19 @@ See [Device authentication](../../architecture/device-authentication) for a gene
 
 ### A board integrated with Mender
 
-You need a physical board that has already been [integrated with Mender](../). For example, you may use one of the reference boards BeagleBone Black, Raspberry Pi 3 or Raspberry Pi 4.
+You need a physical board that has already been [integrated with Mender](). For example, you may use one of the reference boards BeagleBone Black, Raspberry Pi 3 or Raspberry Pi 4.
 
 
 ### A block-based disk image for your board
 
-We assume you have either [built a disk image for your board](../../artifacts/yocto-project/building) or base it off one of the [pre-built images](../../downloads#disk-images). Note that a disk image is used to provision the entire storage of the board (it contains *all* the partitions) and typically has the `.sdimg` suffix.
+We assume you have either [built a disk image for your board](../../04.Artifacts/10.Yocto-project/01.Building/docs.md) or base it off one of the [pre-built images](../../08.Downloads/docs.md#disk-images). Note that a disk image is used to provision the entire storage of the board (it contains *all* the partitions) and typically has the `.sdimg` suffix.
 
 !!! Raw flash or raw filesystem images are not covered by this tutorial; however the steps are conceptually the same in these cases.
 
 
 ### The identity of your device
 
-When preauthorizing a device you need to know its [identity](../../client-configuration/identity). This is one or more key-value attributes, depending on the identity scheme you are using. If you connect your device so it shows up as pending in the Mender server, you will see its identity in the Mender server UI (note it is *not* the ID of the device, but the key-value attributes under Identity that are used for preauthorization).
+When preauthorizing a device you need to know its [identity](../../05.Client-configuration/03.Identity/docs.md). This is one or more key-value attributes, depending on the identity scheme you are using. If you connect your device so it shows up as pending in the Mender server, you will see its identity in the Mender server UI (note it is *not* the ID of the device, but the key-value attributes under Identity that are used for preauthorization).
 
 <!--AUTOVERSION: "mender/blob/%"/mender-->
 By default the Mender client uses the [MAC address of the first interface](https://github.com/mendersoftware/mender/blob/master/support/mender-device-identity?target=_blank) on the device as the device identity, for example `mac=02:12:61:13:6c:42`.
@@ -38,17 +38,17 @@ Once your device boots with a newly provisioned disk image, it should already be
 
 ![Mender UI - device pending authorization](device-pending-authorization.png)
 
-If your device does not show as pending authorization in the Mender server once it is booted with the disk image, you need to diagnose this issue before continuing. See the [troubleshooting section on connecting devices](../../troubleshooting/device-runtime#mender-server-connection-issues) in this case.
+If your device does not show as pending authorization in the Mender server once it is booted with the disk image, you need to diagnose this issue before continuing. See the [troubleshooting section on connecting devices](../../201.Troubleshooting/05.Device-Runtime/docs.md#mender-server-connection-issues) in this case.
 
 
 ### A CLI environment for your server
 
 In order to access the the Mender server API with the commands below, you need to set up some shell variables in the terminal you will be using.
 
-Follow the steps in [set up shell variables for cURL](../using-the-apis#set-up-shell-variables-for-curl).
+Follow the steps in [set up shell variables for cURL](../01.Using-the-apis/docs.md#set-up-shell-variables-for-curl).
 
 ### Mender-Artifact tool
-Please follow [the documentation on mender-artifact](../../artifacts/modifying-a-mender-artifact#mender-artifact) and install it.
+Please follow [the documentation on mender-artifact](../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#mender-artifact) and install it.
 
 
 ## Generate a client keypair
@@ -94,7 +94,7 @@ keys-client-generated/
 
 ## Preauthorize your device
 
-Now that we have the device's identity and public key, we will use the Mender server management REST APIs to preauthorize it. The APIs are documented for both [Open Source](../../apis/open-source/management-apis) and [Enterprise](../../apis/enterprise/management-apis).
+Now that we have the device's identity and public key, we will use the Mender server management REST APIs to preauthorize it. The APIs are documented for both [Open Source](../../200.APIs/01.Open-source/02.Management-APIs/docs.md) and [Enterprise](../../200.APIs/02.Enterprise/02.Management-APIs/docs.md).
 
 
 ### Make sure there are no existing authentication sets for your device
@@ -125,7 +125,7 @@ curl -H "Authorization: Bearer $JWT" -X DELETE $MENDER_SERVER_URI/api/management
 
 Once this is done, re-run the command above to generate the `devauth.json` file again and verify that your device identity does not exist anywhere.
 
-In the event that the decommissioning operation fails, perform a [manual database cleanup via the provided CLI command](../../troubleshooting/mender-server#cleaning-up-the-deviceauth-database-after-device-decommissioning).
+In the event that the decommissioning operation fails, perform a [manual database cleanup via the provided CLI command](../../201.Troubleshooting/04.Mender-Server/docs.md#cleaning-up-the-deviceauth-database-after-device-decommissioning).
 
 ### Call the preauthorize API
 
@@ -143,7 +143,7 @@ Secondly, set the contents of the device public key you generated above in a sec
 DEVICE_PUBLIC_KEY="$(cat keys-client-generated/public.key | sed -e :a  -e 'N;s/\n/\\n/;ta')"
 ```
 
-Then simply call the [API to preauthorize a device](../../apis/open-source/management-apis/device-authentication#devices-post):
+Then simply call the [API to preauthorize a device](../../200.APIs/01.Open-source/02.Management-APIs/02.Device-authentication/docs.md#devices-post):
 
 ```bash
 curl -H "Authorization: Bearer $JWT" -H "Content-Type: application/json" -X POST -d "{ \"identity_data\" : $DEVICE_IDENTITY_JSON_OBJECT_STRING, \"pubkey\" : \"$DEVICE_PUBLIC_KEY\" }" $MENDER_SERVER_URI/api/management/v2/devauth/devices
@@ -188,6 +188,6 @@ Then insert the SD card back into your device and boot it.
 
 If everything went as intended, your device will get the `accepted` status in the Mender server. You can log in to the Mender UI to ensure your device is listed and reports inventory.
 
-If your device shows as `pending`, see the troubleshooting on [a device shows up as pending after preauthorizing it](../../troubleshooting/mender-server#a-device-shows-up-as-pending-after-preauthorizing-it).
+If your device shows as `pending`, see the troubleshooting on [a device shows up as pending after preauthorizing it](../../201.Troubleshooting/04.Mender-Server/docs.md#a-device-shows-up-as-pending-after-preauthorizing-it).
 
-If you do not see your device at all, verify it booted correctly and it is able to connect to the Mender server. You can check [the Mender client logs on the device](../../troubleshooting/mender-client#obtaining-client-logs) for more diagnostics information.
+If you do not see your device at all, verify it booted correctly and it is able to connect to the Mender server. You can check [the Mender client logs on the device](../../201.Troubleshooting/03.Mender-Client/docs.md#obtaining-client-logs) for more diagnostics information.

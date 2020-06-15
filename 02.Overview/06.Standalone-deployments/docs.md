@@ -11,9 +11,9 @@ to deploy updates to devices which do not have network connectivity or
 are updated through external storage like a USB stick.
 
 For an explanation of the difference between *managed* and *standalone* deployments, please see
-[Modes of operation](../overview#modes-of-operation).
+[Modes of operation](../01.Introduction/docs.md#modes-of-operation).
 
-!!! Note that [state scripts](../../artifacts/state-scripts) work slightly differently in standalone mode, see [state scripts and standalone mode](../../artifacts/state-scripts#standalone-mode) for more information.
+!!! Note that [state scripts](../../04.Artifacts/50.State-scripts/docs.md) work slightly differently in standalone mode, see [state scripts and standalone mode](../../04.Artifacts/50.State-scripts/docs.md#standalone-mode) for more information.
 
 
 ## Setting Mender up for standalone mode
@@ -28,9 +28,9 @@ will entail disabling or removing any `systemd` unit that starts the Mender clie
 
 ## Building standalone images
 
-When [building a Mender Yocto Project image](../../artifacts/yocto-project/building),
+When [building a Mender Yocto Project image](../../04.Artifacts/10.Yocto-project/01.Building/docs.md),
 you can ensure Mender runs in standalone mode by following the
-[image configuration steps to make sure Mender does not run as a system service](../../artifacts/yocto-project/image-configuration#disabling-mender-as-a-system-service)
+[image configuration steps to make sure Mender does not run as a system service](../../04.Artifacts/10.Yocto-project/02.Image-configuration/docs.md#disabling-mender-as-a-system-service)
 before building.
 
 From the Yocto Project build output configured as above you will get two
@@ -41,13 +41,13 @@ device, i.e. do the initial device storage provisioning.
 `meta-mender` creates these files with a `.sdimg`
 suffix, so they are easy to recognize. This file contains
 all the partitions of the given storage device, as
-described in [Partition layout](../../devices/general-system-requirements#partition-layout).
-Please see [Provisioning a new device](../../artifacts/provisioning-a-new-device)
+described in [Partition layout](../../03.Devices/01.General-system-requirements/docs.md#partition-layout).
+Please see [Provisioning a new device](../../04.Artifacts/20.Provisioning-a-new-device/docs.md)
 for steps how to provision the device storage using the `*.sdimg` image.
 
 Secondly, you will get an Artifact file that is used for deployments with Mender,
 and it is recognized by its `.mender` suffix.
-See [Mender Artifacts](../../architecture/mender-artifacts)
+See [Mender Artifacts](../05.Artifact/docs.md)
 for a more detailed overview.
 
 
@@ -67,7 +67,7 @@ For example, if you are updating from a USB stick, you could use `/mnt/usb1/rele
 To use http, simply replace it with a URL like `https://fileserver.example.com/mender/release1.mender`.
 
 Mender will download the new Artifact, process its metadata information, extract the contents and write it to the inactive rootfs partition. It will configure the bootloader to boot into it on the next reboot. This will likely take several minutes to complete, depending on the performance of your device and the size of the Artifact.
-Note that Mender does not use any temporary space, it [streams the Artifact](../mender-artifacts#streaming-and-compression).
+Note that Mender does not use any temporary space, it [streams the Artifact](../05.Artifact/docs.md#streaming-resume-and-compression).
 
 To run the newly deployed rootfs image, simply reboot your device:
 
@@ -88,4 +88,4 @@ mender -commit
 
 By running this command, Mender will configure the bootloader to persistently boot from this newly written deployment. To deploy another update, simply run `mender -install <URI>` again, then reboot and commit.
 
-!!! If we reboot the device again *without* running `mender -commit`, it will boot into the previous rootfs partition that is known to be working (where we deployed the update from). This ensures a robust update process in cases where the newly deployed rootfs does not boot or otherwise has issues that we want to roll back from. Also note that it is possible to automate deployments by [running the Mender client as a daemon](../../architecture/overview#modes-of-operation).
+!!! If we reboot the device again *without* running `mender -commit`, it will boot into the previous rootfs partition that is known to be working (where we deployed the update from). This ensures a robust update process in cases where the newly deployed rootfs does not boot or otherwise has issues that we want to roll back from. Also note that it is possible to automate deployments by [running the Mender client as a daemon](../01.Introduction/docs.md#modes-of-operation).

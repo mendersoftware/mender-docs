@@ -24,7 +24,7 @@ steps that are covered in the [Enterprise subsection](#enterprise).
 
 ! If you have already installed an Open Source server and wish to upgrade to
 ! Enterprise, you should follow [the Enterprise upgrade
-! guide](upgrading-from-os-to-enterprise) instead of this guide.
+! guide]() instead of this guide.
 
 
 ## Prerequisites
@@ -45,7 +45,7 @@ steps that are covered in the [Enterprise subsection](#enterprise).
 If you are setting up a Mender Enterprise server, you will also need:
 
 - An account with Mender in order to evaluate and use the commercial features in
-  Mender Enterprise. Please email [contact@mender.io](mailto:contact@mender.io)
+  Mender Enterprise. Please email [contact@mender.io]()
   to receive an evaluation account.
 
 !!! It is very likely possible to use other Linux distributions and versions. However, we recommend using this exact environment for running Mender because it is known to work and you will thus avoid any issues specific to your environment if you use this reference.
@@ -70,7 +70,7 @@ At the end of this guide you will have:
 - SSL certificate for the Storage Proxy
 - a set of keys for generating and validating access tokens
 
-Consult the section on [certificates and keys](../certificates-and-keys) for details on
+Consult the section on [certificates and keys](../03.Certificates-and-keys/docs.md) for details on
 how the certificates and keys are used in the system.
 
 #### Docker compose naming scheme
@@ -270,7 +270,7 @@ Your local directory tree should now look like this:
 The production template file `prod.yml` is already configured to load keys and
 certificates from locations created by the `keygen` script. If you wish to use a
 different set of certificates or keys, please consult the
-[relevant documentation](../certificates-and-keys).
+[relevant documentation](../03.Certificates-and-keys/docs.md).
 
 Next, we can add and commit generated keys and certificates:
 
@@ -298,7 +298,7 @@ git commit -m 'production: adding generated keys and certificates'
 
 The API Gateway and Storage Proxy certificates generated here need to be made
 available to the Mender client.
-Consult the section on [building for production](../../artifacts/yocto-project/building-for-production)
+Consult the section on [building for production](../../04.Artifacts/10.Yocto-project/03.Building-for-production/docs.md)
 for a description on how to include the certificates in the client builds.
 
 !! Only certificates need to be made available to devices or end users. Private keys should never be shared.
@@ -432,7 +432,7 @@ The updated entry should look similar to this, you can verify with `git diff`:
 #### Deployments service
 
 The deployments service will upload artifact objects to `minio` storage via `storage-proxy`,
-see the [administration overview](../overview) for more details. For this reason,
+see the [administration overview](../01.Overview/docs.md) for more details. For this reason,
 access credentials `DEPLOYMENTS_AWS_AUTH_KEY` and `DEPLOYMENTS_AWS_AUTH_SECRET`
 need to be updated and `DEPLOYMENTS_AWS_URI` must point to the domain name of your Storage proxy.
 
@@ -489,7 +489,7 @@ The entry should now look like this:
 ```
 
 You can also change the values for `DOWNLOAD_SPEED` and `MAX_CONNECTIONS`.
-See the [section on bandwidth](../bandwidth) for more details on these
+See the [section on bandwidth](../04.Bandwidth/docs.md) for more details on these
 settings.
 
 
@@ -672,7 +672,7 @@ First log in to the Mender docker registry with your Mender Enterprise credentia
 docker login registry.mender.io
 ```
 
-!!! If you have lost your credentials or need an evaluation account please email [contact@mender.io](mailto:contact@mender.io).
+!!! If you have lost your credentials or need an evaluation account please email [contact@mender.io]().
 
 Bring up all services up in detached mode with the following command:
 
@@ -780,15 +780,15 @@ is going to be managed by Mender. Exactly how to include the token depends on
 which integration method is used with the client. Please refer to one of these sections:
 
 * [Migrating existing clients from an Open Source to an Enterprise
-  server](upgrading-from-os-to-enterprise#migrating-clients)
+  server](01.Upgrading-from-OS-to-Enterprise/docs.md#migrating-clients)
 * [Mender installed on device using a deb
-  package](../../client-configuration/installing#configuration-for-hosted-mender-server)
+  package](../../05.Client-configuration/06.Installing/docs.md#install-mender-using-the-debian-package)
 * [Device integration using Yocto
-  Project](../../artifacts/yocto-project/variables#mender_tenant_token)
+  Project](../../04.Artifacts/10.Yocto-project/99.Variables/docs.md#mender_tenant_token)
 * [Device integration with Debian
-  Family](../../artifacts/debian-family#convert-a-raw-disk-image)
+  Family](../../04.Artifacts/15.Debian-family/01.building-a-mender-debian-image/docs.md)
 * [Modifying an existing prebuilt
-  image](../../artifacts/modifying-a-mender-artifact#changing-the-mender-server)
+  image](../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#changing-the-mender-server)
 
 
 ### Saving the Enterprise configuration
@@ -871,4 +871,4 @@ earlier](#creating-the-first-organization-and-user).
 
 If you encounter any issues while starting or running your Mender Server, you
 can take a look at the section for [troubleshooting Mender
-Server](../../../troubleshooting/mender-server).
+Server]().
