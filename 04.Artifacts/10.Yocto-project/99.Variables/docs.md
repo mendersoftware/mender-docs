@@ -246,12 +246,28 @@ partition. For example:
 
 ```
 MENDER_EXTRA_PARTS = "part1 part2"
-MENDER_EXTRA_PARTS[part1] = "--fixed-size 1024M --label=static --fstype=ext4"
-MENDER_EXTRA_PARTS[part2] = "--fixed-size 9G --label=update --fstype=vfat"
+MENDER_EXTRA_PARTS[part1] = "--label=static --fstype=ext4"
+MENDER_EXTRA_PARTS[part2] = "--label=update --fstype=vfat"
 ```
 
 Arguments are passed as is to wks file and used by the [wic
 tool](https://www.yoctoproject.org/docs/latest/dev-manual/dev-manual.html#creating-partitioned-images-using-wic)
+
+
+#### MENDER_EXTRA_PARTS_SIZES_MB
+
+> Value: <Extra partitions size list> (default: empty)
+    
+The size of the extra partitions defined by ```MENDER_EXTRA_PARTS``` in the generated .biosimg, .sdimg or .uefiimg file.
+
+If defined, ```--fixed-size``` will automatically be added to the wks file and used by the [wic
+tool](https://www.yoctoproject.org/docs/latest/dev-manual/dev-manual.html#creating-partitioned-images-using-wic)
+
+```
+MENDER_EXTRA_PARTS_SIZES_MB = "${MENDER_EXTRA_PARTS}"
+MENDER_EXTRA_PARTS_SIZES_MB[part1] = "1024"
+MENDER_EXTRA_PARTS_SIZES_MB[part2] = "9216"
+```
 
 
 #### MENDER_FEATURES_DISABLE
@@ -537,8 +553,8 @@ device.
 Total size of the physical storage medium that mender partitioned images will be
 written to, expressed in MiB. The size of rootfs partition will be calculated
 automatically by subtracting the sizes of boot (see
-[MENDER_BOOT_PART_SIZE_MB](#mender_boot_part_size_mb)) and data partitions (see
-[MENDER_DATA_PART_SIZE_MB](#mender_data_part_size_mb)) along with some
+[MENDER_BOOT_PART_SIZE_MB](#mender_boot_part_size_mb)), data (see
+[MENDER_DATA_PART_SIZE_MB](#mender_data_part_size_mb)), and extra (see [MENDER_EXTRA_PARTS_SIZES_MB](#MENDER_EXTRA_PARTS_SIZES_MB)) partitions along with some
 predefined overhead (see
 [MENDER_PARTITIONING_OVERHEAD_KB](#mender_partitioning_overhead_kb))). Default
 value is `1024`.
