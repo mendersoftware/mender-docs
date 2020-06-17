@@ -10,18 +10,17 @@ the environment variable: `RATE_CUTOFF`.
 ## Usage
 
 ```bash
-bash passive.sh <file>
+bash ./scripts/passive.sh <file>
 ```
 
 ## Example
 
-```bash
-$ mender-docs: bash ./scripts/passive.sh 01.Getting-started/01.Quickstart-with-raspberry-pi/docs.md
-01.Getting-started/01.Quickstart-with-raspberry-pi/docs.md:37:been converted
-01.Getting-started/01.Quickstart-with-raspberry-pi/docs.md:37:been installed
-01.Getting-started/01.Quickstart-with-raspberry-pi/docs.md:123:be asked
-01.Getting-started/01.Quickstart-with-raspberry-pi/docs.md:183:be found
-[OK] The passive rate for 01.Getting-started/01.Quickstart-with-raspberry-pi/docs.md:
-	passive-words/total-lines = 3/195 ~= 1 - and thus below the cut-off rate: 3
-
-```
+> ```bash
+> mender-docs: bash ./scripts/passive.sh 04.Artifacts/*/*.md 
+> 04.Artifacts/20.Provisioning-a-new-device/docs.md:12:is intended
+> 04.Artifacts/20.Provisioning-a-new-device/docs.md:32:be used
+> 04.Artifacts/20.Provisioning-a-new-device/docs.md:35:is meant
+> 04.Artifacts/20.Provisioning-a-new-device/docs.md:50:is placed
+> [OK] The passive rate for 04.Artifacts/10.Yocto-project/docs.md:
+> 	passive-words/total-lines = 4/60 ~= 1 - and thus below the cut-off rate: 3
+> ```
