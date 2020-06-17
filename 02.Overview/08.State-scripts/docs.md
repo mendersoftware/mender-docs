@@ -13,7 +13,7 @@ any state transition, not just (before/after) the install state.
 Common use cases are:
 
 * Enable/disable network connectivity before and after checking for an update to reduce bandwidth.
-* Migrate persistent data during a software upgrade.
+* Migrate persistent data during a software update.
 * User or application confirmation before a reboot. This is common in applications which have a UI or that provide critical functionality e.g network routers.
 * Run additional sanity checks before committing to the update.
 
@@ -38,12 +38,9 @@ occurs while executing any script for the given state.
 
 State scripts run as pre- and post-scripts to every state in the Mender
 state machine shown above. The state in which a given script runs is
-determined by the script name and index, as detailed in the [State
-script](../../04.Artifacts/50.State-scripts/docs.md) section.
+determined by the script name and index.
 
-## Errors
-
-Errors returned from a state script controls the execution of the Mender state
+Exit codes from a state script can control the execution of the Mender state
 machine. Depending on the return code from the script the Mender client will:
 
 * Move on to the next state, if successful.
@@ -53,5 +50,10 @@ machine. Depending on the return code from the script the Mender client will:
 ## Logging
 
 The Mender client collects logs during an update. In case of a failure, these
-logs are sendt to the Mender server. The output from state scripts are included
+logs are sent to the Mender server. The output from state scripts are included
 in these logs. This is useful when troubleshooting intermittent update failures.
+
+## Further reading
+
+To learn more, have a look at the [tutorial on how to implement State
+scripts](../../04.Artifacts/50.State-scripts/docs.md).
