@@ -6,11 +6,11 @@ taxonomy:
 
 This document details troubleshooting steps for the most common problems with the Mender server.
 The first part applies to all installations, while the section below on Production installations
-only applies when the Mender server is [installed for production](../../07.Administration/02.Production-installation/docs.md).
+only applies when the Mender server is [installed for production](../../07.Administration/03.Production-installation/docs.md).
 
 ## Persistent certificate errors in demo mode
 Since the demo certificates are self-signed, browsers will produce relevant warnings.
-For instance in Chrome, a `Your connection is not private` page will appear, with a 
+For instance in Chrome, a `Your connection is not private` page will appear, with a
 `NET::CERT_AUTHORITY_INVALID` error.
 
 Typically this page comes with 'Advanced' options, allowing you to accept the certificate
@@ -27,7 +27,7 @@ Consult your browser's documentation for similar instructions.
 It is possible that after a failed device decommissioning operation there will be some unaccessible and unnecessary data in the deviceauth database. In this case, you should clean the database manually.
 
 Is is recommended to backup your data before performing the clean up operation.
-The [Backup and restore](../../07.Administration/07.Backup-and-restore/docs.md) chapter provides examples and
+The [Backup and restore](../../07.Administration/08.Backup-and-restore/docs.md) chapter provides examples and
 introduces example tools provided in Mender integration repository.
 
 To clean up the deviceauth database, run the following from within the integration repository:
@@ -37,7 +37,7 @@ docker exec $(docker ps -q -n 1 -f 'name=device-auth') /usr/bin/deviceauth maint
 
 ## The virtual QEMU device is not showing up in demo mode
 
-When running the Mender server in demo mode, as described in the [getting started tutorial](../../01.Getting-started/02.On-premise-installation/docs.md),
+When running the Mender server in demo mode, as described in the [Demo installation](../../07.Administration/02.Demo-installation//docs.md) tutorial,
 the help tips in the UI give you an option to connect a virtual `qemux86-64` to the server for demo purposes.
 
 If you have trouble connecting this virtual device, please make sure your environment meets the resource requirements
@@ -120,7 +120,7 @@ openresty from source for your architecture.
 # Production installations
 
 For the rest of this document, it is assumed that commands are run through production
-helper script `run` as detailed in the [production installation documentation](../../07.Administration/02.Production-installation/docs.md).
+helper script `run` as detailed in the [production installation documentation](../../07.Administration/03.Production-installation/docs.md).
 
 ## Listing active containers
 
@@ -267,10 +267,10 @@ time="2017-01-31T08:25:15Z" level=fatal msg="NoCredentialProviders: no valid pro
 As seen in [container logs](#container-logs) section, `mender-deployments`
 service is restarting. The logs suggest there might be missing credentials for
 an AWS related service.
-From the [production installation](../../07.Administration/02.Production-installation/docs.md) guide, we can recall
+From the [production installation](../../07.Administration/03.Production-installation/docs.md) guide, we can recall
 that
 `mender-deployments`
-[service configuration](../../07.Administration/02.Production-installation/docs.md#deployments-service) contains
+[service configuration](../../07.Administration/03.Production-installation/docs.md#deployments-service) contains
 credentials for artifact storage service.
 
 Configuration of current instance of `mender-deployments` can be viewed using
