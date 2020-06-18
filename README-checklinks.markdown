@@ -9,7 +9,7 @@ tool. It validates all internal links (i.e., [foobar](#install)).
 The tool has a few `node.js` requirements. If you already have `node` installed on your system, run:
 
 ```bash 
-$ npm install
+npm install
 ```
 
 in the documentation directory.
