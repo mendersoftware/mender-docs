@@ -10,13 +10,13 @@ the environment variable: `RATE_CUTOFF`.
 
 ## Usage
 
-```bash
+```console
 bash weasel.sh <file>
 ```
 
 ## Example
 
-```bash
+```console
 $ mender-docs: bash ./scripts/weasel.sh 05.Client-configuration/03.Identity/docs.md 
 05.Client-configuration/03.Identity/docs.md:30:very
 05.Client-configuration/03.Identity/docs.md:37:several

@@ -8,7 +8,7 @@ tool. It validates all internal links (i.e., [foobar](#install)).
 
 The tool has a few `node.js` requirements. If you already have `node` installed on your system, run:
 
-```bash 
+```console
 npm install
 ```
 
@@ -16,7 +16,7 @@ in the documentation directory.
 
 ## Usage
 
-```bash
+```console
 ./checklinks [directory]
 ```
 
@@ -26,7 +26,7 @@ details about the invalid link, and an error code is returned.
 
 ## Output
 
-> ```bash
+> ```console
 > mender-docs: ./checklink 
 > Do not fail on missing sections in API links
 > Do not fail on missing sections in API links
@@ -54,7 +54,7 @@ documentation with the help of the `checklinks` script.
 
 The script takes the output from `checklinks`, which can be on the form:
 
-> ```bash
+> ```console
 > 02.Overview/01.Introduction/docs.md
 >   30:433-30:573  warning  Link to unknown heading in `../../04.Artifacts/10.Yocto-project/02.Image-configuration/docs.md`: `disabling-mender-s-a-system-service`. Did you mean `disabling-mender-as-a-system-service`  missing-heading-in-file  remark-validate-links
 > 
@@ -67,7 +67,7 @@ string distance between the erronous link, and a valid link is close enough.
 Thus, this can be taken advantage of by the `didyoumean` script. The script will
 automatically rewrite all the suggested links:
 
-```bash
+```console
 checklinks |& bash ./scripts/didyoumean
 ```
 Resulting in a successfully migrated section.
@@ -83,6 +83,6 @@ with the cursor at a given line and column.
 
 For `Emacs` this would be something like:
 
-```bash
+```console
 emacsclient +<line>:<column> <filepath>
 ```

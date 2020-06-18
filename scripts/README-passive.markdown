@@ -9,13 +9,13 @@ the environment variable: `RATE_CUTOFF`.
 
 ## Usage
 
-```bash
+```console
 bash ./scripts/passive.sh <file>
 ```
 
 ## Example
 
-> ```bash
+> ```console
 > mender-docs: bash ./scripts/passive.sh 04.Artifacts/*/*.md 
 > 04.Artifacts/20.Provisioning-a-new-device/docs.md:12:is intended
 > 04.Artifacts/20.Provisioning-a-new-device/docs.md:32:be used
