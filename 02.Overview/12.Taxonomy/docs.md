@@ -32,7 +32,7 @@ container, or other.
 * _Authorization status_ - An attribute assigned to a device by the Mender server.
 It reflects the current state of authentication of a device authorization set.
 
-* _Authorization set_ - A key assigned to a device. It can be in one of
+* _Authentication set_ - A key assigned to a device. It can be in one of
 the following states:
   * "rejected"
   * "accepted"
