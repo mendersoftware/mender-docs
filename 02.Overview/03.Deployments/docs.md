@@ -11,18 +11,13 @@ Deployments in Mender represent the explicit association of a release (Mender Ar
 At its basics, the definition of a Deployment includes:
 
 * *ID*, randomly generated, unique identifier of the Deployment, assigned by Mender at creation time
-* *Artifact* to be used to update the targeted devices
+* *Artifact*, an archive containing everything Mender needs to update the targeted devices
 * *Devices* targeted by the update
 * *Phases* (_professional/enterprise only_) describing a phased and/or scheduled roll-out
 * *Number of retries* (_professional/enterprise only_) for each device in case of a failure during the update process
 
-Only accepted devices can be part of a deployment, and any given device finishes the Deployment once. Ordering of deployments is also maintained, so the oldest Deployment is the one the device gets first.
-
-## Static groups
-
-A *static group* contains a list of Device IDs. Devices can explicitly be added or removed from a group manually in the UI, or through automation by using the APIs.
-
-Before a device can be added or removed to a static group, it needs to exist in the Mender server.
+Only accepted devices can be part of a deployment, and any given device finishes the Deployment once.
+Mender also maintains the order of the deployments, so the oldest Deployment is the one the device gets first.
 
 ## Deployment to static groups
 
@@ -32,21 +27,24 @@ The Mender UI also supports the creation of a Deployment targeting a static devi
 
 A Deployment to a static group contains a list of devices and finishes once all the devices in the Deployment have finished.
 
-Please note that Mender uses the group to retrieve the list of the Device IDs at creation time, and devices assigned to the group after the creation of the Deployment will not be included in it.
-
-## Dynamic groups
-
-A *dynamic group* does not contain a list of predefined Device IDs. It instead contains the definition of a dynamic filter that can match one or more devices, and the matched devices could change in the future as new devices are accepted into Mender, or device attributes change and fulfill the filter criteria.
+Please note that Mender uses the group to retrieve the list of the Device IDs at
+the Deployment creation time, and it will not include any devices assigned to the group afterwards.
 
 ## Deployment to dynamic groups
 
-Mender Enterprise also supports the creation of Deployments using a dynamic filter to assign a deployment to an open, variable group of devices fulfilling the filter criteria as long as the Deployment is not closed.
+Mender Enterprise also supports the creation of Deployments using a dynamic filter to assign a deployment to an open, variable group of devices fulfilling the filter criteria as long as the user does not close the Deployment.
 
-Deployments to dynamic groups behave very differently than deployments to a static group in that it will never implicitly finish, but stay active until the user stops it because we do not necessarily know up-front how many devices are part of this Deployment. It is, however, possible to set a maximum number of devices so that the Deployment finishes after this number of devices have been updated. A device can only be in one static group at the same time, while it can be in multiple dynamic groups.
+Deployments to a dynamic group behave very differently than deployments to a static
+group. In the former case, the Deployment will never implicitly finish, but will stay
+active until the user stops it. However, you can use the maximum number
+of devices setting to ensure the Deployment finishes when the given number of devices
+receive an update. Please also note, that a device can only be in one static
+group at the same time, while it can be in multiple dynamic groups.
 
 ## Deployment lifecycle
 
-Once a Deployment has been created, it stays in "*pending*" state until one or more Devices matching the definition of the Deployment, either by the inclusion of their ID (static) or matching of the filter's criteria (dynamic) ask for an update.
+Once you create a Deployment, it stays in the "*pending*" state until one or more
+devices targeted by the Deployment have requested the update.
 
 When at least one device running the Mender client is performing the defined update, the Deployment transitions to the status "*inprogress*".
 
@@ -77,7 +75,7 @@ The list of the possible values for the status field of an update in progress ar
 * "rebooting"
 * "pending"
 
-The following values for the status field for a finished update are:
+The values for the status field for a finished update are:
 
 * "success"
 * "failure"
@@ -88,8 +86,9 @@ The following values for the status field for a finished update are:
 
 ### Algorithm for selecting the Deployment for the Device
 
-It is possible that the device has been targeted for one deployment or more.
-When the device is asking for the deployment, the deployments service looks for the oldest, not finished deployment the device was targeted for.
+It is possible that you have chosen the device to be the target for one deployment or more.
+When the device is asking for the deployment, the deployments service looks for
+the oldest, not finished deployment for the device.
 If there is one, the deployments service creates the instance of the deployment for the device (device deployment) with a "pending" state and executes the following operations:
-* checks if the deployment is phased and in case it is, checks if there is an active phase; if yes, the deployments service proceed, if not, the deployment service returns no instructions to the device;
+* checks if the deployment has more than one phase and in case it does, checks if there is an active phase; if so, the deployments service proceeds, if not, the deployment service returns no instructions to the device;
 * tries to assign artifact to the device; if there is an artifact returns the deployment instructions to the device; if not - returns no instructions and sets the device deployment status to "no artifact"; in case the artifact installed on the device is the same as the one in the deployment, deployments service returns no instructions and sets the device deployment status to "already installed".
