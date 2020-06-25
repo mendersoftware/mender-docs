@@ -29,7 +29,7 @@ The other layers in *meta-mender* provide support for specific boards used in Me
 
 [meta-mender-community](https://github.com/mendersoftware/meta-mender-community?target=_blank) is a set of layers containing board-specific settings for Mender integration.
 
-!!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Start guide](http://www.yoctoproject.org/docs/2.4/yocto-project-qs/yocto-project-qs.html?target=_blank).
+!!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Start tutorial](http://www.yoctoproject.org/docs/2.4/yocto-project-qs/yocto-project-qs.html?target=_blank).
 
 
 ## Prerequisites

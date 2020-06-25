@@ -4,10 +4,10 @@ taxonomy:
     category: docs
 ---
 
-This is a guide for upgrading the Mender Server in production environments. In
+This is a tutorial for upgrading the Mender Server in production environments. In
 general updating is only supported between connected minor versions, and latest
-minor to next major version, and this guide reflects this. Both the Open Source
-and Enterprise editions can be upgraded using this guide, but both the old and
+minor to next major version, and this tutorial reflects this. Both the Open Source
+and Enterprise editions can be upgraded using this tutorial, but both the old and
 the new version must be the same type of server, either both Open Source, or
 both Enterprise.
 
@@ -20,7 +20,7 @@ both Enterprise.
 ## Prerequisites
 
 It is assumed that the installation was performed following the steps
-in the [Production installation](../03.Production-installation/docs.md) guide. That means that
+in the [Production installation](../03.Production-installation/docs.md) tutorial. That means that
 you currently have:
 
 * a local git repository based
@@ -78,7 +78,7 @@ For each release there will be a corresponding release branch. For example, the
 branch named `2.0.x` provides the 2.0 release setup. Stable releases are tagged,
 e.g. `2.0.1`.
 
-Recall from the [production installation](../03.Production-installation/docs.md) guide that our
+Recall from the [production installation](../03.Production-installation/docs.md) tutorial that our
 local setup was introduced in a branch that was created from given release
 version. You can use git commands such as `git log` and `git diff` to review the changes
 introduced in upstream branch. For example:

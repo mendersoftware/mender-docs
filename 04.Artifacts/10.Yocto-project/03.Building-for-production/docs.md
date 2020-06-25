@@ -40,7 +40,7 @@ Certificates are used to ensure the communication between the client and the ser
 
 ### Preparing the client certificates
 
-You can either generate new certificates by following the guide for [generating certificates](../../../07.Administration/04.Certificates-and-keys/docs.md#generating-new-keys-and-certificates), or obtain the certificates in a different way - for example from your existing Certificate Authority. In either case the certificates on the client and server must be the same.
+You can either generate new certificates by following the tutorial for [generating certificates](../../../07.Administration/04.Certificates-and-keys/docs.md#generating-new-keys-and-certificates), or obtain the certificates in a different way - for example from your existing Certificate Authority. In either case the certificates on the client and server must be the same.
 
 ### Including the client certificates
 

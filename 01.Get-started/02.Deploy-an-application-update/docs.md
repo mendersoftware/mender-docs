@@ -119,7 +119,7 @@ using Mender!
 
 ## Next steps
 
-Proceed to one of the following guides (listed in recommended order):
+Proceed to one of the following tutorials (listed in recommended order):
 
 1. [Deploy a system update](../03.Deploy-a-system-update/docs.md)
 1. [Deploy a container update](../04.Deploy-a-container-update/docs.md)

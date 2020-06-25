@@ -7,16 +7,16 @@ taxonomy:
 !!! If you do not have have a Raspberry Pi, please go to
 !!! [Prepare a virtual device](../02.Prepare-a-virtual-device/docs.md).
 
-In this guide we will prepare a Raspberry Pi with a custom Raspberry Pi OS
+In this tutorial we will prepare a Raspberry Pi with a custom Raspberry Pi OS
 (previously called Raspbian) image. The only difference from the official
 Raspberry Pi OS image is that it has been converted to support robust system
 updates with Mender.
 
-Completing this guide normally **takes less than one hour**.
+Completing this tutorial normally **takes less than one hour**.
 
 ## Prerequisites
 
-To follow this guide, you will need the following:
+To follow this tutorial, you will need the following:
 
 * One of these Raspberry Pi models:
   * [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/?target=_blank)
