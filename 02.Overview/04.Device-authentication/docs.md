@@ -1,131 +1,146 @@
 ---
-title: Device authentication
+title: Device Authentication
 taxonomy:
     category: docs
+    label: reference
 ---
 
-Devices, identified by a set of [identity attributes](../../05.Client-configuration/03.Identity/docs.md), must be explicitly authorized
-by the user before they can authenticate with the Mender server.
+You must explicitly authorize any device identified by a set of
+[identity attributes](../../02.Overview/03.Identity/docs.md) before it can authenticate
+with the Mender server.
 
-This section describes in detail the components and workflows relevant to device authentication,
-and provides practical tips on navigating our APIs to successfully authorize devices, monitor authorization status,
-and troubleshoot related issues.
+This section describes the components and workflows relevant to device
+authentication, and provides practical tips on navigating our APIs to
+successfully authorize devices, monitor authorization status, and troubleshoot
+related issues.
 
-## Authentication Components
-Device authentication is implemented by a single service:
-* [Device Authentication](https://github.com/mendersoftware/deviceauth?target=_blank)
+## Authentication service
+
+A single service implements device authentication:
+
+* [Device
+  Authentication](https://github.com/mendersoftware/deviceauth?target=_blank)
 
 The service exposes APIs for:
-* device authorization, i.e. granting access to selected devices
-* issuing and keeping track of authentication tokens ([JSON Web Token](https://jwt.io?target=_blank))
+
+* device authorization, namely granting access to selected devices
+* issuing and keeping track of authentication tokens ([JSON Web
+  Token](https://jwt.io?target=_blank))
 * inspecting and managing devices and their authentication credentials
 
-Device authorization can be performed in either of two modes, or workflows, which will be described in full in the following section:
-* **preauthorization**, where a user adds the device a priori, before it ever submits an authentication request
-* **accept-on-request**, where a device unknown to the system presents its authentication data set, and the user
-can inspect it and manually authorize it
+## Identification and authentication
 
-### Terminology: Device, Identity Attributes, Authentication Set
-It is important to clear up some terminology used throughout this documentation and various APIs.
+Mender identifies a **device** by a set of **identity attributes** (MAC addresses,
+user-defined UIDs, etc.); think of it as an extension of a unique identifier
+into a multi-attribute structure (see [Identity](../../02.Overview/03.Identity/docs.md)).
 
-A **device** represents, intuitively, a particular piece of hardware. It is uniquely identified by a
-set of **identity attributes** (MAC addresses, user-defined UIDs, etc.); think of it as an extension of a unique identifier into a multi-attribute structure (see [Identity](../../05.Client-configuration/03.Identity/docs.md)).
-
-To obtain an auth token, the device sends an **authentication request** containing the identity attributes and its current
-**public key**. The request is signed with the respective private key (kept secret on the device), and the server uses
+To obtain an auth token, the device sends an **authentication request**
+containing the identity attributes and its current **public key**. The client signs
+the request with the private key (kept secret on the device), and the server uses
 the public key to verify the signature.
 
-The combination of **identity attributes** and **public key** is termed an **authentication set**, or 'auth set' in short. The concept
-was introduced when considering device key rotation - a single device may over time present different keys, and it's
-important to track those, and allow the user to accept(i.e. authorize) or reject a particular identity/key combination.
+The combination of **identity attributes** and **public key** forms an
+**authentication set**, or 'auth set' in short.
 
-Mender keeps tracks both of a **device**, as a single real-world entity, and its multiple  **authentication sets** (one-to-many relation).
+The concept takes into consideration device key rotation - a single device may
+over time present different keys, and it's important to track those, and allow
+the user to accept (i.e. authorize) or reject a particular identity/key
+combination.
+
+Mender keeps tracks both of a **device** as a single real-world entity, where each
+device might create multiple **authentication sets**. Note
+that maximum one authentication set can be accepted for a specific device at any
+given time.
 
 ## Authorization Flows
-There are two possible authorization flows - both involve a user's explicit consent to authorize a device via
-the Device Authentication API, but they differ in the order of events and intended use cases. Below is a detailed breakdown
-of each of them.
+
+Mender provides two possible authorization flows. Both involve a user's explicit
+consent to authorize a device via the UI or Device Authentication API, but they differ
+in the order of events and intended use cases. Below is a detailed breakdown of
+each.
+
+For details of API calls please consult the [API documentation](../../200.APIs/01.Open-source/02.Management-APIs/02.Device-authentication/docs.md).
+
+### Authorize-on-request Flow
+
+The simplest flow, which usually suits quick prototyping and testing best, is manual
+authorization. The Mender server records every auth request for future inspection.
+You can accept it via the Device Authentication API (or the UI) whenever you
+see fit. When the device sends another auth request it will result in a successful
+authorization.
+
+The authorize-on-request flow therefore requires the user to accept
+authentication sets one-by-one, as devices connect to the server. As such it is
+not ideal for scenarios with many devices; we recommended it for
+smaller or non-production installations instead.
+
+The sequence diagram below describes the API interactions between the user,
+Device, and Device Authentication within this flow:
+
+1. The user provides the device with some identity attributes and a
+   public key.
+2. The device tries to authenticate, retries in a loop according to the Mender
+   client's configured interval.
+3. For the time being, authentication attempt fails, but the Mender server
+   records the auth set for future inspection.
+4. The user inspects pending authentication sets.
+5. The user accepts the submitted auth set.
+6. The device applies for an auth token again.
+7. Device Authentication returns a valid authentication token.
+
+| ![Authorize-on-request flow](authorize-on-req.png) |
+|:--:|
+|*Authorize-on-request flow*|
 
 ### Preauthorization Flow
-Preauthorization is the idea of authorizing a device before it ever connects to the server for the first time. This is the intuitive
-model analogous to creating an account before logging in to an online service.
 
-Preauthorization can be performed before a particular device is even released - or in fact, assembled - just yet. It is enough for
-the user to submit a pre-assigned authentication set to Device Authentication. At
-some point in the future, a device with corresponding identity attributes and public key will request authentication and be granted it
-immediately, without further user intervention.
+Preauthorization is the idea of authorizing a device before it connects to
+the server for the first time. This is an intuitive model analogous to creating
+an account before logging in to an online service.
 
-This flow is therefore best suited to a typical production use case, where a release of a potentially large batch of devices is planned:
-* device identity attributes/keys are pre-assigned and tracked outside of Mender
-* the preauthorization API of Device Authentication is used to authorize the devices a priori (possibly via a script)
-* during the release process, identities and keys are transferred to physical devices
-* upon the first authentication request, each device is authenticated and gains access to all Mender APIs
+It allows you to authorize a particular device before it leaves the production line
+by providing a pre-assigned authentication set to
+the Device Authentication. When a device with the corresponding identity
+attributes and public key requests authentication, the Mender server will
+grant access immediately, without further user intervention.
 
-The sequence diagram below describes the API interactions between the user and Device Authentication within this flow:
-1. The user first submits a preauthorized auth set to Device Authentication
-2. The user makes sure the physical device contains the corresponding identity attributes and public key
-3. The device, when activated, submits an authentication request containing the identity attributes and key
-4. Device Authentication returns a valid authentication token
+Typically, this flow suits best a usual production use case, where you plan a release of a
+potentially large batch of devices:
+
+* You assign and track device identity attributes/keys outside of Mender.
+* Manually or via script, the user preauthorizes the devices using the Device
+  Authentication API.
+* During the release process, you transfer identities and keys to physical
+  devices.
+* Upon the first authentication request for each device, the Mender server
+  authenticates it, and the device gains access to all Mender APIs.
+
+The sequence diagram below describes the API interactions between the user and
+the Device Authentication within this flow:
+
+1. The user first submits a preauthorized auth set to the Device Authentication.
+2. The user makes sure the physical device contains the corresponding identity
+   attributes and public key.
+3. When the device activates, the client submits an authentication request containing the
+   identity attributes and key.
+4. The Device Authentication service returns a valid authentication token.
 
 | ![Preauthorization flow](preauth.png) |
 |:--:|
 |*Preauthorization flow*|
 
-For details of API calls please consult the API documentation.
-
-For open source:
-* [Device Authentication Device API](../../200.APIs/01.Open-source/01.Device-APIs/01.Device-authentication/docs.md)
-* [Device Authentication Management API](../../200.APIs/01.Open-source/02.Management-APIs/02.Device-authentication/docs.md)
-
-And for Enterprise:
-* [Device Authentication Device API](../../200.APIs/02.Enterprise/01.Device-APIs/01.Device-authentication/docs.md)
-* [Device Authentication Management API](../../200.APIs/02.Enterprise/02.Management-APIs/02.Device-authentication/docs.md)
-
-### Accept-on-request Flow
-An alternate flow, suitable mostly for quick prototyping and testing, is the accept-on-request flow.
-
-It is not required for the user to preauthorize a device - instead, when the device first submits an auth request, it will
-be recorded for future inspection by the user. The auth set can then be accepted via the Device Authentication API whenever the
-user sees fit; a subsequent auth request from the device will be successful and a valid auth token will be returned.
-
-The authorize-on-request flow therefore requires the user to accept authentication sets one-by-one, as devices connect to the server.
-As such it is not ideal for scenarios where a large number of devices is being managed; it is recommended for smaller or non-production
-installations instead.
-
-The sequence diagram below describes the API interactions between the user, Device, and Device Authentication within this flow:
-1. The user provides the device the device with some identity attributes and a public key
-2. The device tries to authenticate, retries in a loop according to the Mender client's configured interval
-3. For the time being, authentication attempt fails, but the auth set is recorded for future inspection
-4. The user inspects pending authentication sets
-5. The user accepts the submitted auth set
-6. The device applies for an auth token again
-7. Device Authentication returns a valid authentication token
-
-| ![Accept-on-request flow](accept-on-req.png) |
-|:--:|
-|*Accept-on-request flow*|
-
-For details of API calls please consult the API documentation:
-
-For open source:
-* [Device Authentication Device API](../../200.APIs/01.Open-source/01.Device-APIs/01.Device-authentication/docs.md)
-* [Device Authentication Management API](../../200.APIs/01.Open-source/02.Management-APIs/02.Device-authentication/docs.md)
-
-And for Enterprise:
-* [Device Authentication Device API](../../200.APIs/02.Enterprise/01.Device-APIs/01.Device-authentication/docs.md)
-* [Device Authentication Management API](../../200.APIs/02.Enterprise/02.Management-APIs/02.Device-authentication/docs.md)
-
-
 ## Authentication Token
-After a device is authorized, its next authentication request to Device Authentication results
-in obtaining an **authentication token**. The Mender client will record it and attach it to every API call under
-the HTTP `Authorization` header.
 
-The token does have an **expiry date** (one week period), but the Mender client will obtain a fresh token automatically;
-the process is transparent to the user. The only prerequisite is that the device's authentication set has not been
-explicitly rejected in the meantime via the Device Authentication API.
+After the Mender server authorizes a device, a subsequent authentication request
+to the Device Authentication service returns an **authentication token**. The
+Mender client will record the token and attach it to every API call under the HTTP
+`Authorization` header.
 
-For details on the token format please see the relevant [documentation on submitting an authentication request for Open Source](../../200.APIs/01.Open-source/01.Device-APIs/01.Device-authentication/docs.md) or [Enterprise](../../200.APIs/02.Enterprise/01.Device-APIs/01.Device-authentication/docs.md).
+The token does have an **expiry date** (one week period by default), but the Mender client
+will obtain a fresh token automatically.
+The only prerequisite is that the device authentication set is not in the
+rejected state.
 
-## Viewing devices and auth sets
-To view available devices and their authentication sets, use the `GET /api/management/v2/authentication/devices` endpoint of the [Device Authentication Management API for Open Source](../../200.APIs/01.Open-source/02.Management-APIs/02.Device-authentication/docs.md) or [Enterprise](../../200.APIs/02.Enterprise/02.Management-APIs/02.Device-authentication/docs.md).
+For details on the token format please see the relevant [documentation on
+submitting an authentication request](../../200.APIs/01.Open-source/01.Device-APIs/01.Device-authentication/docs.md).
+
