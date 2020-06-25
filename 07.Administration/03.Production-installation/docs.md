@@ -24,7 +24,7 @@ steps that are covered in the [Enterprise subsection](#enterprise).
 
 ! If you have already installed an Open Source server and wish to upgrade to
 ! Enterprise, you should follow [the Enterprise upgrade
-! tutorial]() instead of this tutorial.
+! tutorial](./01.Upgrading-from-OS-to-Enterprise/docs.md) instead of this tutorial.
 
 
 ## Prerequisites
