@@ -75,13 +75,13 @@ Drag-and-drop or click **browse** to select the file for upload.
 ![Upload web page](Image_15.png)
 
 When you upload a single file to the Mender server, you will get a wizard to
-create a [Mender Artifact](../../02.Overview/05.Artifact/docs.md)
+create a [Mender Artifact](../../02.Overview/03.Artifact/docs.md)
 of the type `file`, which allows you deploy single files to your device. You can
 use the default values prefilled by the Mender UI and click **NEXT**.
 
 ![Upload web page](Image_16.png)
 
-A [Mender Artifact](../../02.Overview/05.Artifact/docs.md) contains
+A [Mender Artifact](../../02.Overview/03.Artifact/docs.md) contains
 two mandatory fields:
 
 - **Device type** - Device types the software is compatible with, so that

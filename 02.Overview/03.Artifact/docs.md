@@ -45,7 +45,7 @@ More details about the exact format of the Mender Artifact can be found in the
 
 Mender is constantly evolving to adapt to the needs of its users. As new features are added, new versions of the 
 Mender Artifact format may be introduced as well, if the features require it.
-See the [compatibility documentation](../02.Compatibility/docs.md) for an overview of which versions of the Mender Artifact format is supported by Mender clients.
+See the [compatibility documentation](../14.Compatibility/docs.md) for an overview of which versions of the Mender Artifact format is supported by Mender clients.
 
 
 ## Streaming, resume and compression

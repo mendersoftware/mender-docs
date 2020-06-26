@@ -7,7 +7,7 @@ taxonomy:
 
 ## Introduction
 
-Unlike [device identity attributes](../03.Identity), device inventory attributes
+Unlike [device identity attributes](../07.Identity/docs.md), device inventory attributes
 do not need to be unique. They simply provide information about the target device.
 
 The Mender client will periodically collect inventory-related data for reporting
@@ -24,7 +24,7 @@ please refer to the [client configuration section](../../05.Client-configuration
 
 The Mender server stores information about each device in the form of key-value pairs
 called *attributes* grouped in *scopes*. The inventory attributes belong
-to *inventory* scope which also denotes the ownership of data; the device 
+to *inventory* scope which also denotes the ownership of data; the device
 "owns" the inventory data in a sense that it can overwrite the attributes
 in the scope at will.
 
