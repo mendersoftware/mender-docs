@@ -71,7 +71,7 @@ All other return codes are reserved for future use by Mender and should not be u
 
 State scripts are allowed to return a specific error code (`21`), in which case the client will sleep for a time configured by [StateScriptRetryIntervalSeconds](../../05.Client-configuration/05.Configuration-file/50.Configuration-options/docs.md#statescriptretryintervalseconds) before the state script is called again. Note that scripts are not allowed to retry for infinitely long. Please see description of [StateScriptRetryTimeoutSeconds](../../05.Client-configuration/05.Configuration-file/50.Configuration-options/docs.md#statescriptretrytimeoutseconds) for more information.
 
-This feature is useful e.g when you want user confirmation before proceeding with the update as is described in the [Update confirmation by end user](.///docs.md#update-confirmation-by-end-user) section on this page.
+This feature is useful e.g when you want user confirmation before proceeding with the update as is described in the [Update confirmation by end user](#update-confirmation-by-end-user) section on this page.
 
 ## Script timeout
 
