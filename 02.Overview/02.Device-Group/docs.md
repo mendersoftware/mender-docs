@@ -1,5 +1,5 @@
 ---
-title: Device Groups
+title: Device Group
 taxonomy:
     category: docs
 ---

@@ -1,5 +1,5 @@
 ---
-title: Delta updates
+title: Delta update
 taxonomy:
     category: docs
 ---
