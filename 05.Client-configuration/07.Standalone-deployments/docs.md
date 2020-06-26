@@ -18,53 +18,24 @@ For an explanation of the difference between *managed* and *standalone* deployme
 
 ## Setting Mender up for standalone mode
 
-The Mender client will by default run in *managed* mode, i.e. connected to a Mender server.
-In managed mode, mender runs as a daemon on the device.
-
 If you would like to run Mender in *standalone* mode, the only difference is that you
 must make sure that the Mender client does *not run as a daemon*. In most cases this
 will entail disabling or removing any `systemd` unit that starts the Mender client.
 
 
-## Building standalone images
-
-When [building a Mender Yocto Project image](../../04.Artifacts/10.Yocto-project/01.Building/docs.md),
-you can ensure Mender runs in standalone mode by following the
-[image configuration steps to make sure Mender does not run as a system service](../../04.Artifacts/10.Yocto-project/02.Image-configuration/docs.md#disabling-mender-as-a-system-service)
-before building.
-
-From the Yocto Project build output configured as above you will get two
-image types that work in standalone mode.
-
-The first is a disk image that is used to flash to the entire disk of the
-device, i.e. do the initial device storage provisioning.
-`meta-mender` creates these files with a `.sdimg`
-suffix, so they are easy to recognize. This file contains
-all the partitions of the given storage device, as
-described in [Partition layout](../../03.Devices/01.General-system-requirements/docs.md#partition-layout).
-Please see [Provisioning a new device](../../04.Artifacts/20.Provisioning-a-new-device/docs.md)
-for steps how to provision the device storage using the `*.sdimg` image.
-
-Secondly, you will get an Artifact file that is used for deployments with Mender,
-and it is recognized by its `.mender` suffix.
-See [Mender Artifacts](../../02.Overview/05.Artifact/docs.md)
-for a more detailed overview.
-
-
 ## Deploy an Artifact to a device
 
-After provisioning the device with the disk image (`.sdimg` file) and building a new Artifact (`.mender` file),
-you can trigger a deployment of the Artifact.
-To deploy the new Artifact to your device, run the following command in the device terminal:
+To deploy the new Artifact to your device, run the following command in the
+device terminal:
 
 
 ```bash
 mender -install <URI>
 ```
 
-`<URI>` can be any type of file-based storage or a https URL.
+`<URI>` can be any type of file-based storage or an HTTP/HTTPS URL.
 For example, if you are updating from a USB stick, you could use `/mnt/usb1/release1.mender`.
-To use http, simply replace it with a URL like `https://fileserver.example.com/mender/release1.mender`.
+To use HTTPS, simply replace it with a URL like `https://fileserver.example.com/mender/release1.mender`.
 
 Mender will download the new Artifact, process its metadata information, extract the contents and write it to the inactive rootfs partition. It will configure the bootloader to boot into it on the next reboot. This will likely take several minutes to complete, depending on the performance of your device and the size of the Artifact.
 Note that Mender does not use any temporary space, it [streams the Artifact](../../02.Overview/05.Artifact/docs.md#streaming-resume-and-compression).
