@@ -13,7 +13,7 @@ taxonomy:
 
 !!! You can save time by using [hosted Mender](https://hosted.mender.io?target=_blank), a secure Mender server ready to use, maintained by the Mender developers.
 
-This is a step by step guide for deploying the Mender Server for production
+This is a step by step tutorial for deploying the Mender Server for production
 environments, and will cover relevant security and reliability aspects of Mender
 production installations.  The Mender backend services can be deployed to
 production using a skeleton provided in the `production` directory of the
@@ -24,7 +24,7 @@ steps that are covered in the [Enterprise subsection](#enterprise).
 
 ! If you have already installed an Open Source server and wish to upgrade to
 ! Enterprise, you should follow [the Enterprise upgrade
-! guide]() instead of this guide.
+! tutorial](./01.Upgrading-from-OS-to-Enterprise/docs.md) instead of this tutorial.
 
 
 ## Prerequisites
@@ -37,7 +37,7 @@ steps that are covered in the [Enterprise subsection](#enterprise).
     - This heavily depends on your scale and environment, the supported [Mender Enterprise](https://mender.io/product/mender-enterprise) edition is recommended for larger-scale environments.
 - A public IP address assigned and ports 443 and 9000 publicly accessible.
 - Allocated DNS names for the Mender API Gateway and the Mender Storage Proxy
-  that resolve to the public IP of the Mender server by the devices. By following this guide
+  that resolve to the public IP of the Mender server by the devices. By following this tutorial
   all services will be hosted on the same server, so you can use just one domain name for both.
   If you are just testing you can use a temporary domain name obtained from services like
   [https://ipq.co](https://ipq.co?target=_blank).
@@ -53,13 +53,13 @@ If you are setting up a Mender Enterprise server, you will also need:
 
 ## Deployment steps
 
-The guide will use a publicly available Mender integration repository. Then
+The tutorial will use a publicly available Mender integration repository. Then
 proceed with setting up a local branch, preparing deployment configuration from
 a template, committing the changes locally. Keeping deployment configuration in
 a git repository ensures that the history of changes is tracked and subsequent
 updates can be easily applied.
 
-At the end of this guide you will have:
+At the end of this tutorial you will have:
 
 - production configuration in a single `docker-compose` file
 - a running Mender backend cluster
@@ -156,7 +156,7 @@ The template includes a few files:
 
 - `enterprise.yml.template` - configuration for running an Enterprise instance
   of the Mender server. This topic is covered separately in [the Enterprise
-  part](#enterprise) of the Production installation guide
+  part](#enterprise) of the Production installation tutorial
 
 !!! If an `enterprise.yml` file exists in the `config` directory, this will
 !!! automatically turn on Enterprise features in the backend service. If you
@@ -710,7 +710,7 @@ without them seeing each others data, as well as isolating devices and users in
 test and production environments.
 
 When using Mender Enterprise, multi tenancy is automatically enabled, and it
-cannot be turned off. Below follows a guide for setting up a single
+cannot be turned off. Below follows a tutorial for setting up a single
 organization. For additional information on administering organizations, see the
 help screen from:
 
@@ -866,7 +866,7 @@ and the username and password that was [created
 earlier](#creating-the-first-organization-and-user).
 
 !! It is advised to use the UI to change the password of all users that were
-!! added in this guide, since the shell may keep a record of the password in
+!! added in this tutorial, since the shell may keep a record of the password in
 !! plaintext.
 
 If you encounter any issues while starting or running your Mender Server, you

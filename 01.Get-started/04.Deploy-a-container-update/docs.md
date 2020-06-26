@@ -4,10 +4,10 @@ taxonomy:
     category: docs
 ---
 
-!!! This guide is not supported by the virtual device because it does not come
+!!! This tutorial is not supported by the virtual device because it does not come
 !!! with a package manager to install the needed dependencies.
 
-This guide will walk you trough how to deploy Docker container updates with
+This tutorial will walk you trough how to deploy Docker container updates with
 Mender. We will be using the
 [Docker Update Module](https://hub.mender.io/t/docker/324?target=blank) which
 allows you to specify a list of container images and their versions in a
@@ -16,12 +16,12 @@ can later be deployed to your device using the hosted Mender server.
 
 ## Prerequisites
 
-To follow this guide, you will need to install:
+To follow this tutorial, you will need to install:
 
 * [Docker Engine](https://docs.docker.com/engine/install?target=_blank) on your
 workstation.
 
-It is also assumed that you have completed the following guides:
+It is also assumed that you have completed the following tutorials:
 
 * [Prepare a Raspberry Pi device](../01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md)
 * [Deploy an application update](../02.Deploy-an-application-update/docs.md)

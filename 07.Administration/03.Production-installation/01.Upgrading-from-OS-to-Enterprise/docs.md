@@ -13,7 +13,7 @@ taxonomy:
 <!-- AUTOMATION: execute=ORIG_DIR=$PWD; function cleanup() { set +e; cd $ORIG_DIR/mender-server/production; ./run down -v; docker volume rm mender-artifacts mender-db mender-artifacts-backup mender-db-backup; cd $ORIG_DIR; rm -rf mender-server; } -->
 <!-- AUTOMATION: execute=trap cleanup EXIT -->
 
-<!-- Basically a repeat of Open Source setup from Production Installation guide -->
+<!-- Basically a repeat of Open Source setup from Production Installation tutorial -->
 <!-- AUTOVERSION: "git clone -b %"/integration -->
 <!-- AUTOMATION: execute=git clone -b master https://github.com/mendersoftware/integration mender-server -->
 <!-- AUTOMATION: execute=cd mender-server -->
@@ -39,8 +39,8 @@ with upgrading to Mender Enterprise, please email
 
 !! In this version of Mender, there is no support for migrating data between the
 !! Open Source and Enterprise servers. Hence you will **lose all data** on the
-!! server by following this guide, and all users must be recreated, artifacts
-!! must be re-uploaded, and devices re-accepted. The focus in this guide will be
+!! server by following this tutorial, and all users must be recreated, artifacts
+!! must be re-uploaded, and devices re-accepted. The focus in this tutorial will be
 !! on how to migrate the device fleet. Support for migrating server data will be
 !! added to a later Mender release.
 
@@ -91,8 +91,8 @@ docker volume create --name=mender-artifacts
 docker volume create --name=mender-db
 ```
 
-After deleting the volumes, you need to follow [the main guide for installing
-the Enterprise server](../docs.md#enterprise). You will be directed back to this guide
+After deleting the volumes, you need to follow [the main tutorial for installing
+the Enterprise server](../docs.md#enterprise). You will be directed back to this tutorial
 when it is time to migrate the clients.
 
 <!-- AUTOMATION: execute=cp config/enterprise.yml.template config/enterprise.yml -->
@@ -165,7 +165,7 @@ connect without a tenant token.
 
 After the Enterprise server has been set up and verified to work correctly, it
 is recommended to switch to tenant tokens on each device, as opposed to the
-default tenant token that was configured earlier in this guide. This gives a
+default tenant token that was configured earlier in this tutorial. This gives a
 small security benefit, by completely blocking devices that don't have a tenant
 token, and prevents devices showing up in the default organization by mistake,
 for example if the tenant token has been misspelled.

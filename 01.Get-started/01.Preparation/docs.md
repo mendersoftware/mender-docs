@@ -38,7 +38,7 @@ available or not:
   If you do not have a Raspberry Pi available, you can use a virtual device to
   evaluate key Mender use cases.
 
-  This guide provides the steps for preparing your workstation to be able to run
+  This tutorial provides the steps for preparing your workstation to be able to run
   a virtual ([QEMU process emulator](https://www.qemu.org/)) device with Mender
   integrated.
 
