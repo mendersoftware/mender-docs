@@ -49,7 +49,7 @@ this is the change:
 
 The first line changes a path inside the recipe, since the include file is not
 in the same directory anymore. The second adds Mender specific tweaks, as
-described in [this section](../..//docs.md#forks-of-u-boot).
+described in [this section](../../docs.md#forks-of-u-boot).
 
 ## Preparations
 
