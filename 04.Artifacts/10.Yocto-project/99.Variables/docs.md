@@ -242,16 +242,63 @@ partitioned image (any suffix ending in `img`).
 > Value: <Extra partitions list> (default: empty)
 
 This variable is used to define extra partitions which will be added after data
-partition. For example:
+partition. `MENDER_EXTRA_PARTS_SIZES_MB` and `MENDER_EXTRA_PARTS_FSTAB` can be
+used to further tweak the partition setup. For example:
 
 ```
 MENDER_EXTRA_PARTS = "part1 part2"
-MENDER_EXTRA_PARTS[part1] = "--fixed-size 1024M --label=static --fstype=ext4"
-MENDER_EXTRA_PARTS[part2] = "--fixed-size 9G --label=update --fstype=vfat"
+MENDER_EXTRA_PARTS[part1] = "--label=static --fstype=ext4"
+MENDER_EXTRA_PARTS[part2] = "--label=update --fstype=vfat"
+# Size (in MB) of specified extra partition
+MENDER_EXTRA_PARTS_SIZES_MB[part1] = "64"
+MENDER_EXTRA_PARTS_SIZES_MB[part2] = "128"
+# FSTAB options of specified extra partition (optional)
+MENDER_EXTRA_PARTS_FSTAB[part1] = "noexec"
+MENDER_EXTRA_PARTS_FSTAB[part2] = "ro,user"
 ```
 
 Arguments are passed as is to wks file and used by the [wic
 tool](https://www.yoctoproject.org/docs/latest/dev-manual/dev-manual.html#creating-partitioned-images-using-wic)
+
+See also [`MENDER_EXTRA_PARTS_FSTAB`](#mender_extra_parts_fstab) and
+[`MENDER_EXTRA_PARTS_SIZES_MB`](#mender_extra_parts_sizes_mb).
+
+
+#### MENDER_EXTRA_PARTS_FSTAB
+
+> Value: <List of fstab mount options for extra partitions> (default: empty)
+
+The mount options for `/etc/fstab` of the extra partitions defined by
+`MENDER_EXTRA_PARTS` in the generated .biosimg, .sdimg or .uefiimg file.
+
+If defined, the mount options will be added to `/etc/fstab` in the generated
+image.
+
+```
+MENDER_EXTRA_PARTS_FSTAB[part1] = "noexec"
+MENDER_EXTRA_PARTS_FSTAB[part2] = "ro,user"
+```
+
+See [`MENDER_EXTRA_PARTS`](#mender_extra_parts).
+
+
+#### MENDER_EXTRA_PARTS_SIZES_MB
+
+> Value: <Extra partitions size list> (default: empty)
+
+The size of the extra partitions defined by `MENDER_EXTRA_PARTS` in the
+generated .biosimg, .sdimg or .uefiimg file.
+
+If defined, `--fixed-size` will automatically be added to the wks file and used
+by the [wic
+tool](https://www.yoctoproject.org/docs/latest/dev-manual/dev-manual.html#creating-partitioned-images-using-wic)
+
+```
+MENDER_EXTRA_PARTS_SIZES_MB[part1] = "1024"
+MENDER_EXTRA_PARTS_SIZES_MB[part2] = "9216"
+```
+
+See [`MENDER_EXTRA_PARTS`](#mender_extra_parts).
 
 
 #### MENDER_FEATURES_DISABLE
