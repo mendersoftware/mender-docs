@@ -37,6 +37,14 @@ details about the invalid link, and an error code is returned.
 > ⚠ 1 warning
 > ```
 
+## Ignoring paths
+
+The link-checker has the ability to ignore failing links to certain files, by
+adding the absolute path to the file `.checklinks-whitelist`. The `paths` field
+list is then matched as a substring search to every link in the documentation.
+As such, all links pointing to the `200.APIs` section is ignored by default, as
+this section is only present _after_ auto-generation from Swagger.
+
 ## Note
 
 A few things to keep in mind:
