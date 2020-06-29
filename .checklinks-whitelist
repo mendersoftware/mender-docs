@@ -1,3 +1,9 @@
 {
-    "paths": ["200.APIs"]
+  "paths": [
+    "200.APIs",
+    "201.Troubleshooting/04.Mender-Server/docs.md#cleaning-up-the-deviceauth-database-after-device-decommissioning",
+    "201.Troubleshooting/04.Mender-Server/docs.md",
+    "07.Administration/04.Certificates-and-keys/docs.md#generating-new-keys-and-certificates",
+    "07.Administration/04.Certificates-and-keys/docs.md"
+  ]
 }
