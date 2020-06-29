@@ -42,7 +42,7 @@ keys on the device, it will require going through the authorization process
 again. The client passes the public key in authorization requests to the server.
 
 You can find more information in the
-[Device authentication](..//04.Device-authentication/docs.md)
+[Device authentication](../13.Device-authentication/docs.md)
 and
 [Preauthorizing devices](../../06.Server-integration/02.Preauthorizing-devices/docs.md)
 sections.

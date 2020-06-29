@@ -29,7 +29,7 @@ The other layers in *meta-mender* provide support for specific boards used in Me
 
 [meta-mender-community](https://github.com/mendersoftware/meta-mender-community?target=_blank) is a set of layers containing board-specific settings for Mender integration.
 
-!!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Start guide](http://www.yoctoproject.org/docs/2.4/yocto-project-qs/yocto-project-qs.html?target=_blank).
+!!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Start tutorial](http://www.yoctoproject.org/docs/2.4/yocto-project-qs/yocto-project-qs.html?target=_blank).
 
 
 ## Prerequisites
@@ -301,7 +301,7 @@ Mender running already. Please proceed to [Provisioning a new device](../../20.P
 for steps to do this.
 
 On the other hand, if you already have Mender running on your device and want to deploy a rootfs update
-using this build, you should use the [Mender Artifact](../../../02.Overview/05.Artifact/docs.md) files,
+using this build, you should use the [Mender Artifact](../../../02.Overview/03.Artifact/docs.md) files,
 which have `.mender` suffix.
 
 !!! If you built for one of the virtual Mender reference boards (`qemux86-64` or `vexpress-qemu`), you can start up your newly built image with the script in `../meta-mender/meta-mender-qemu/scripts/mender-qemu` and log in as *root* without password.

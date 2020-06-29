@@ -42,14 +42,14 @@ this is the change:
 -require u-boot.inc
 +require recipes-bsp/u-boot/u-boot.inc
 +require recipes-bsp/u-boot/u-boot-mender.inc
- 
+
  DEPENDS += "dtc-native"
- 
+
 ```
 
 The first line changes a path inside the recipe, since the include file is not
 in the same directory anymore. The second adds Mender specific tweaks, as
-described in [this section](../..//docs.md#forks-of-u-boot).
+described in [this section](../../docs.md#forks-of-u-boot).
 
 ## Preparations
 
@@ -88,19 +88,19 @@ will go through each line and explain why they are needed.
 -require recipes-bsp/u-boot/u-boot.inc
 -require recipes-bsp/u-boot/u-boot-mender.inc
 +require recipes-bsp/u-boot/u-boot-fw-utils-mender.inc
- 
+
 -DEPENDS += "dtc-native"
 +SUMMARY = "U-Boot bootloader fw_printenv/setenv utilities"
 +LICENSE = "GPLv2+"
 +LIC_FILES_CHKSUM = "file://Licenses/README;md5=a2c678cfd4a4d97135585cad908541c6"
 +SECTION = "bootloader"
 +DEPENDS = "mtd-utils"
- 
+
  # This revision corresponds to the tag "v2016.03"
  # We use the revision in order to avoid having to fetch it from the
 @@ -9,3 +12,30 @@
  SRCREV = "df61a74e6845ec9bdcdd48d2aff5e9c2c6debeaa"
- 
+
  PV = "v2016.03+git${SRCPV}"
 +
 +SRC_URI = "git://git.denx.de/u-boot.git;branch=master"
@@ -200,7 +200,7 @@ You may notice that the file looks very similar to the one that already exists
 in the Yocto Project, under
 `meta/recipes-bsp/u-boot/u-boot-fw-utils_2016.03.bb`, and this is indeed the
 case. Much of the inspiration was taken from there, and this is a good place to
-look if you hit problems and this guide doesn't provide the answer.
+look if you hit problems and this tutorial doesn't provide the answer.
 
 After the adaptation is complete, you should go through the [Integration
 checklist](../../02.Integration-checklist/docs.md) to make sure that all functionality

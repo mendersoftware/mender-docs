@@ -1,5 +1,5 @@
 ---
-title: Device Groups
+title: Device Group
 taxonomy:
     category: docs
 ---
@@ -38,5 +38,5 @@ The following picture shows the definition of a filter that you can save as a dy
 
 You can use device groups for more than just viewing purposes. Their primary function
 is to serve as the target of deployments. Note that deployments to dynamic groups
-behave differently than deployments to static groups, as we 
-describe in [deployments section](../03.Deployments).
+behave differently than deployments to static groups, as we
+describe in [deployments section](../04.Deployment/docs.md).

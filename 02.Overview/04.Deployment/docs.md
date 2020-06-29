@@ -1,5 +1,5 @@
 ---
-title: Deployments
+title: Deployment
 taxonomy:
     category: docs
 ---

@@ -15,8 +15,8 @@ installing Mender on a device and deploying:
 To get started testing Mender, create a hosted Mender account by
 [signing up here](https://mender.io/signup?target=_blank).
 
-!!! We provide three months free usage on the Mender Starter plan for you to use
-!!! for evaluation. You can cancel at any time without incurring a cost.
+!!! We provide a 12 month free evaluation period of the Mender Enterprise plan
+!!! for up to 10 devices. No credit card is required to signup.
 
 ## Next step
 
@@ -38,7 +38,7 @@ available or not:
   If you do not have a Raspberry Pi available, you can use a virtual device to
   evaluate key Mender use cases.
 
-  This guide provides the steps for preparing your workstation to be able to run
+  This tutorial provides the steps for preparing your workstation to be able to run
   a virtual ([QEMU process emulator](https://www.qemu.org/)) device with Mender
   integrated.
 

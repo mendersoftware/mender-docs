@@ -1,5 +1,5 @@
 ---
-title: State Scripts
+title: State Script
 taxonomy:
     category: docs
     label: reference
