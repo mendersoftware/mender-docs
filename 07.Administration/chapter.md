@@ -8,5 +8,7 @@ taxonomy:
 
 # Administration
 
-Configuration and administration of Mender services.
-Use [hosted Mender](https://hosted.mender.io?target=_blank) to save time setting up and maintaining the Mender server.
+[Hosted Mender](https://hosted.mender.io?target=_blank) is configured, managed
+and upgraded by the Mender team. To read documentation for self-managed
+installations of the Mender server, visit
+[the documentation page of the latest stable release](https://docs.mender.io/2.3/administration).

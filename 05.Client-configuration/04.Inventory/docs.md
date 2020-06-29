@@ -62,7 +62,7 @@ its localization and deliver it to the server. Your best choice to do it in a po
 manner, is to use inventory attribute scripts. The following listing shows an
 example of such script.
 It gathers information on the localization from the network. You can get it
-[here](https://github.com/mendersoftware/mender/blob/master/support/mender-inventory-geo).
+[here](https://github.com/mendersoftware/mender/blob/2.2.0/support/mender-inventory-geo).
 
 <!--AUTOVERSION: "curl/%"/ignore-->
 ```bash
@@ -121,7 +121,7 @@ a-country=Poland
 a-city=Krakow
 ```
 <!--AUTOVERSION: "mender/tree/%/support"/mender-->
-You can find some more useful scripts in [https://github.com/mendersoftware/mender/support](https://github.com/mendersoftware/mender/tree/master/support) directory.
+You can find some more useful scripts in [https://github.com/mendersoftware/mender/support](https://github.com/mendersoftware/mender/tree/2.2.0/support) directory.
 
 ## Default inventory
 
