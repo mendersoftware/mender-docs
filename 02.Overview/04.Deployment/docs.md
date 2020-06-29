@@ -57,6 +57,11 @@ Deployments to dynamic groups behave in a different way as they do not include t
 
 At this point, the Deployment's status transitions to *finished*, and any other device will not use it.
 
+![Deployment lifecycle](deploymentLifecycle.png)
+
+The above picture shows the deployment lifecycle with possible device deployment statuses (see next section)
+in "inprogress" and "finished" states.
+
 ### Device Deployment
 
 Each device, while processing a deployment and after finishing it, stores the details of the update process defined by a Deployment in a database entity called Device Deployment.
@@ -88,7 +93,8 @@ The values for the status field for a finished update are:
 
 It is possible that you have chosen the device to be the target for one deployment or more.
 When the device is asking for the deployment, the deployments service looks for
-the oldest, not finished deployment for the device.
+the oldest, not finished deployment for the device (see the picture below).
 If there is one, the deployments service creates the instance of the deployment for the device (device deployment) with a "pending" state and executes the following operations:
 * checks if the deployment has more than one phase and in case it does, checks if there is an active phase; if so, the deployments service proceeds, if not, the deployment service returns no instructions to the device;
 * tries to assign artifact to the device; if there is an artifact returns the deployment instructions to the device; if not - returns no instructions and sets the device deployment status to "no artifact"; in case the artifact installed on the device is the same as the one in the deployment, deployments service returns no instructions and sets the device deployment status to "already installed".
+![Select Deployment Algorithm](selectDeploymentForDeviceAlgorithm.png)
