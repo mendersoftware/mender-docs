@@ -4,39 +4,44 @@ taxonomy:
     category: docs
 ---
 
-## Groups of devices in Mender
+With Mender, you can manage large number of devices. It would be impractical
+to do it on a single device basis, hence we introduce the concept of device
+grouping. There are two types of groups: _static_ and _dynamic_.
 
-With Mender, you can manage a massive fleet of devices. It would be impractical
-to do it on a single device basis; hence we introduce the concept of device grouping.
-The device groups come in two flavors: static and dynamic.
+## Static group
 
-## Static groups
+A *static group* contains a list of [Device IDs](../15.Taxonomy/docs.md).
+You can add devices to a static group in the UI or using the
+[APIs](https://docs.mender.io/apis/open-source/management-apis/device-inventory#devices-id-group-put?target=_blank).
 
-A *static group* contains a list of Device IDs. Devices can explicitly be added or removed from a group manually in the UI, or through automation by using the APIs.
-
-Some considerations when working with the static groups:
-* Before a device can be added to or removed from a static group, it needs to exist in the Mender server.
-* A device can exist only in zero or one group.
-* An empty static group ceases to exist (a static group exists as long as there is at least one device in it).
+Some considerations when working with static groups:
+* Before you can add a device to a static group, it needs to be
+  [Accepted](../15.Taxonomy/docs.md) on the Mender server.
+* A device can only exist in one static group.
+* A static group only exists as long as there is at least one device in it.
 
 The following picture shows the devices view with three static groups defined:
 
 ![groups](groups.png)
 
-## Dynamic groups
+## Dynamic group
 
-A *dynamic group* does not contain a list of predefined Device IDs. It instead
-contains the definition of a dynamic filter that can match one or more devices,
-and the matched devices may change in the future as you accept new devices into
-Mender, or device attributes change and fulfill the filter criteria.
+A *dynamic group* does not contain a list of predefined
+[Device IDs](../15.Taxonomy/docs.md). It instead contains the definition of a
+filter that can match one or more devices, and the matched devices may change
+in the future as you accept new devices into Mender, or device attributes change
+and fulfill the filter criteria.
 
-The following picture shows the definition of a filter that you can save as a dynamic group:
+The following picture shows the definition of a filter that you can save as a
+dynamic group:
 
 ![dynamic groups](filters.png)
 
 ## Groups and updates to devices
 
 You can use device groups for more than just viewing purposes. Their primary function
-is to serve as the target of deployments. Note that deployments to dynamic groups
-behave differently than deployments to static groups, as we
-describe in [deployments section](../04.Deployment/docs.md).
+is to serve as the target of deployments.
+
+!!! Deployments to dynamic groups behave differently than deployments to static
+!!! groups, see [Deployment section](../04.Deployment/docs.md) for more
+!!! information.
