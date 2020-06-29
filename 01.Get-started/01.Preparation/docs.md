@@ -15,8 +15,8 @@ installing Mender on a device and deploying:
 To get started testing Mender, create a hosted Mender account by
 [signing up here](https://mender.io/signup?target=_blank).
 
-!!! We provide three months free usage on the Mender Starter plan for you to use
-!!! for evaluation. You can cancel at any time without incurring a cost.
+!!! We provide a 12 month free evaluation period of the Mender Enterprise plan
+!!! for up to 10 devices. No credit card is required to signup.
 
 ## Next step
 
