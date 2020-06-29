@@ -6,7 +6,7 @@ taxonomy:
 ---
 
 You must explicitly authorize any device identified by a set of
-[identity attributes](../../02.Overview/03.Identity/docs.md) before it can authenticate
+[identity attributes](../../02.Overview/07.Identity/docs.md) before it can authenticate
 with the Mender server.
 
 This section describes the components and workflows relevant to device
@@ -32,7 +32,7 @@ The service exposes APIs for:
 
 Mender identifies a **device** by a set of **identity attributes** (MAC addresses,
 user-defined UIDs, etc.); think of it as an extension of a unique identifier
-into a multi-attribute structure (see [Identity](../../02.Overview/03.Identity/docs.md)).
+into a multi-attribute structure (see [Identity](../../02.Overview/07.Identity/docs.md)).
 
 To obtain an auth token, the device sends an **authentication request**
 containing the identity attributes and its current **public key**. The client signs

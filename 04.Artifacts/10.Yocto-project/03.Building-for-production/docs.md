@@ -40,7 +40,7 @@ Certificates are used to ensure the communication between the client and the ser
 
 ### Preparing the client certificates
 
-You can either generate new certificates by following the guide for [generating certificates](../../../07.Administration/04.Certificates-and-keys/docs.md#generating-new-keys-and-certificates), or obtain the certificates in a different way - for example from your existing Certificate Authority. In either case the certificates on the client and server must be the same.
+You can either generate new certificates by following the tutorial for [generating certificates](../../../07.Administration/04.Certificates-and-keys/docs.md#generating-new-keys-and-certificates), or obtain the certificates in a different way - for example from your existing Certificate Authority. In either case the certificates on the client and server must be the same.
 
 ### Including the client certificates
 
@@ -80,7 +80,7 @@ Note in particular the `:` after the directory; this is mandatory.
 
 Please note that setting up for production will require that you explicitly set the [MENDER_SERVER_URL variable](../99.Variables/docs.md#mender_server_url) to the proper value for your server.
 
-!!! Note that, this step is not required for the [standalone mode](../../../02.Overview/06.Standalone-deployments/docs.md).
+!!! Note that, this step is not required for the [standalone mode](../../../05.Client-configuration/07.Standalone-deployments/docs.md).
 
 ## Artifact signing and verification keys
 
