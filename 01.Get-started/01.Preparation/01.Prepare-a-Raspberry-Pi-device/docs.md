@@ -84,7 +84,7 @@ Go to the **Dashboard** tab and click on **Connect a device**.
 
 ## Step 4 - Connect a device
 
-Select **CONNECT MY OWN DEVICE!**.
+Select **PREPARE AND CONNECT MY RASPBERRY PI**.
 
 ![connecting a device](Image_1.png)
 
