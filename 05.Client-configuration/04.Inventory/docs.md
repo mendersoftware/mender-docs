@@ -1,5 +1,5 @@
 ---
-title: Inventory 
+title: Inventory
 taxonomy:
     category: docs
 ---
@@ -55,14 +55,11 @@ multilinekey=value1%0Avalue0
 
 ## Example inventory script
 
-<!--AUTOVERSION: "mender/blob/%/support"/mender-->
 Let's assume you want to create a group of devices called "LinuxDevicesInKrakow".
 To achieve this, obviously we need to collect the information from the device about
 its localization and deliver it to the server. Your best choice to do it in a portable
 manner, is to use inventory attribute scripts. The following listing shows an
-example of such script.
-It gathers information on the localization from the network. You can get it
-[here](https://github.com/mendersoftware/mender/blob/master/support/mender-inventory-geo).
+example of such script. It gathers information on the localization from the network.
 
 <!--AUTOVERSION: "curl/%"/ignore-->
 ```bash
