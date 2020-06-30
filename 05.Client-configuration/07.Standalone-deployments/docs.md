@@ -38,7 +38,7 @@ For example, if you are updating from a USB stick, you could use `/mnt/usb1/rele
 To use HTTPS, simply replace it with a URL like `https://fileserver.example.com/mender/release1.mender`.
 
 Mender will download the new Artifact, process its metadata information, extract the contents and write it to the inactive rootfs partition. It will configure the bootloader to boot into it on the next reboot. This will likely take several minutes to complete, depending on the performance of your device and the size of the Artifact.
-Note that Mender does not use any temporary space, it [streams the Artifact](../../02.Overview/03.Artifact/docs.md#streaming-resume-and-compression).
+Note that Mender does not use any temporary space, it streams the Artifact.
 
 To run the newly deployed rootfs image, simply reboot your device:
 
