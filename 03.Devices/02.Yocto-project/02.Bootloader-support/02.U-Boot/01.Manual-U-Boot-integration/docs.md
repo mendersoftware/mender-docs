@@ -61,22 +61,6 @@ and inside it add:
 MENDER_UBOOT_AUTO_CONFIGURE = "0"
 ```
 
-Also note that if you have, or need to make, changes in the `u-boot-fw-utils`
-recipe, you have to specifically select this recipe in the build, as Mender
-usually defaults to the `u-boot-fw-utils-mender-auto-provided` recipe, which
-automatically reuses the sources from `u-boot`. It is recommended not to make
-any changes that are specific to `u-boot-fw-utils`, and instead make them in the
-`.inc` file shared by both recipes. But if you must make specific changes to the
-`u-boot-fw-utils` recipe, you need to select it like this:
-
-```
-PREFERRED_PROVIDER_u-boot-fw-utils = "u-boot-fw-utils"
-PREFERRED_RPROVIDER_u-boot-fw-utils = "u-boot-fw-utils"
-```
-
-The value is the name of your recipe, and hence may be different if it is a
-fork.
-
 ## U-Boot features
 
 A number of U-Boot features need to be enabled for Mender to work correctly, and
@@ -269,67 +253,17 @@ value that `CONFIG_ENV_SIZE` is set to in the board specific C header for U-Boot
 (inside `u-boot/include/configs`). Which value exactly is board specific; the
 important thing is that they are the same.
 
-The same value should be provided for both `u-boot` and `u-boot-fw-utils`, and
-the easiest way to achieve this is by putting them in a common file and then
-referring to it. For example, in `u-boot/include/configs/myboard.h`:
+For example, in `u-boot/include/configs/myboard.h`:
 
 ```c
 #define CONFIG_ENV_SIZE 0x20000
 ```
 
-and in `recipes-bsp/u-boot/u-boot-common-my-board.inc`:
+and in `recipes-bsp/u-boot/u-boot_%.bbappend`:
 
 ```bash
 BOOTENV_SIZE = "0x20000"
 ```
-
-and in both `recipes-bsp/u-boot/u-boot_%.bbappend` and
-`recipes-bsp/u-boot/u-boot-fw-utils_%.bbappend`:
-
-```bash
-include u-boot-common-my-board.inc
-```
-
-
-## u-boot-fw-utils
-
-Mender depends on user space tools provided by `u-boot-fw-utils`. It is almost
-never necessary to change anything with regards to this recipe, since Mender
-auto provides a recipe which is based on the source code for the U-Boot
-provider, but the steps are listed here in case the automatic method is not
-working for your project.
-
-If it doesn't already exist, the most straightforward approach is to start with
-the `meta/recipes-bsp/u-boot/u-boot-fw-utils_*.bb` recipe found in Yocto, and
-then make the necessary changes in the same fashion as done for the main
-`u-boot` recipe.
-
-An alternative approach is to port the forked U-Boot recipe,
-`u-boot-my-fork_*.bb` to a `u-boot-fw-utils-my-fork_*.bb` recipe. We have
-provided a [practical example for this]().
-
-The two recipes should use identical source code (e.g. the same patches
-applied).
-
-Like with `u-boot`, `u-boot-fw-utils` should contain sections to define what it
-provides, and that it is the preferred provider.
-
-1. In the recipe, there should be:
-
-   ```bash
-   PROVIDES += "u-boot-fw-utils"
-   RPROVIDES_${PN} += "u-boot-fw-utils"
-   ```
-
-2. And in the machine section of the board:
-
-   ```bash
-   PREFERRED_PROVIDER_u-boot-fw-utils = "u-boot-fw-utils-my-fork"
-   PREFERRED_RPROVIDER_u-boot-fw-utils = "u-boot-fw-utils-my-fork"
-   ```
-
-3. And finally, `u-boot-fw-utils-mender.inc` needs to included using `require`,
-   in the same fashion as `u-boot-mender.inc` for `u-boot`.
 
 
 ## Practical example
