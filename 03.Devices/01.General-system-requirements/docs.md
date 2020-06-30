@@ -20,7 +20,7 @@ To support atomic rootfs rollback, Mender integrates with the bootloader of the 
 ## Kernel support
 While Mender itself does not have any specific kernel requirements beyond what a normal Linux kernel provides, it relies on systemd, which does have one such requirement: The `CONFIG_FHANDLE` feature must be enabled in the kernel. The symptom if this feature is unavailable is that systemd hangs during boot looking for device files.
 
-If you [run the Mender client in standalone mode](../../02.Overview/01.Introduction/docs.md#modes-of-operation), you can avoid this dependency by [disabling Mender as a system service](../../04.Artifacts/10.Yocto-project/02.Image-configuration/docs.md#disabling-mender-as-a-system-service).
+If you [run the Mender client in standalone mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation), you can avoid this dependency by [disabling Mender as a system service](../../04.Artifacts/10.Yocto-project/02.Image-configuration/docs.md#disabling-mender-as-a-system-service).
 
 ## Partition layout
 In order to support robust rollback, Mender requires the device to have a certain partition layout.

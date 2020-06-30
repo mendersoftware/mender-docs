@@ -11,7 +11,7 @@ to deploy updates to devices which do not have network connectivity or
 are updated through external storage like a USB stick.
 
 For an explanation of the difference between *managed* and *standalone* deployments, please see
-[Modes of operation](../../02.Overview/01.Introduction/docs.md#modes-of-operation).
+[Modes of operation](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 
 !!! Note that [state scripts](../../04.Artifacts/50.State-scripts/docs.md) work slightly differently in standalone mode, see [state scripts and standalone mode](../../04.Artifacts/50.State-scripts/docs.md#standalone-mode) for more information.
 
@@ -59,4 +59,4 @@ mender -commit
 
 By running this command, Mender will configure the bootloader to persistently boot from this newly written deployment. To deploy another update, simply run `mender -install <URI>` again, then reboot and commit.
 
-!!! If we reboot the device again *without* running `mender -commit`, it will boot into the previous rootfs partition that is known to be working (where we deployed the update from). This ensures a robust update process in cases where the newly deployed rootfs does not boot or otherwise has issues that we want to roll back from. Also note that it is possible to automate deployments by [running the Mender client as a daemon](../../02.Overview/01.Introduction/docs.md#modes-of-operation).
+!!! If we reboot the device again *without* running `mender -commit`, it will boot into the previous rootfs partition that is known to be working (where we deployed the update from). This ensures a robust update process in cases where the newly deployed rootfs does not boot or otherwise has issues that we want to roll back from. Also note that it is possible to automate deployments by [running the Mender client as a daemon](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
