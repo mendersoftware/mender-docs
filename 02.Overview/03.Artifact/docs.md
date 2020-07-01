@@ -40,6 +40,7 @@ Mender Artifact file.
 
 ![Mender Artifact format](mender-artifact-format.png)
 
+<!--AUTOVERSION: "mender-artifact/blob/%"/mender-artifact-->
 More details about the exact format of the Mender Artifact can be found in the
 [Mender Artifact file documentation](https://github.com/mendersoftware/mender-artifact/blob/3.3.0/Documentation?target=_blank).
 
