@@ -27,7 +27,7 @@ Go to the **Dashboard** tab and click on **Connect a device**.
 
 ## Step 2 - Connect a device
 
-Select **I don't have my own device - use a virtual device for now**.
+Select **Prepare a virtual device for now**.
 
 ![connecting a device](Image_1.png)
 
