@@ -1,5 +1,5 @@
 ---
-title: Enterprise Management APIs
+title: Management APIs
 taxonomy:
     category: docs
 api: true
