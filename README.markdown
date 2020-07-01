@@ -14,10 +14,9 @@ at [https://docs.mender.io](https://docs.mender.io?target=_blank)
 
 ## Contributing
 
-<!--AUTOVERSION: "mendersoftware/mender/blob/%/CONTRIBUTING.md"/ignore-->
-We welcome and ask for your contribution. If you would like to contribute to
-Mender, please read our guide on how to best get started [contributing code or
-documentation](https://github.com/mendersoftware/mender/blob/master/CONTRIBUTING.md?target=_blank).
+We welcome and ask for your contribution. If you would like to contribute to the
+Mender documentation, please read our guide on how to best get started
+[contributing documentation](CONTRIBUTING.md).
 
 ## License
 

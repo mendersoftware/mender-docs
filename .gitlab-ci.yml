@@ -56,4 +56,4 @@ trigger:mender-docs-site:
       -F ref=production
       https://gitlab.com/api/v4/projects/16842368/trigger/pipeline
   only:
-    - /^(master|[0-9]+\.[0-9]+\.x)$/
+    - /^(master|hosted|[0-9]+\.[0-9]+\.x)$/

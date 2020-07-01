@@ -4,70 +4,110 @@ taxonomy:
     category: docs
 ---
 
-The following diagram shows the high level flow of data involved in deploying software updates.
+Mender is a secure and robust software update system designed to handle
+large number of devices. Mender is designed according to a simple client/server
+architecture, allowing central management of deployments to all devices.
 
-![Top level components](updater-components.png)
+## The architecture of a software update
 
-The process begins with the **software build system** generating a new version of software for a device.
-The software build system is a standard component, such as Yocto Project.
-It creates **build artifacts** in the format required by the target device.
-There will be different build artifacts for each type of device being managed.
+The following diagram shows the high level flow of data involved in deploying
+software updates.
 
-The build artifacts are passed to the Mender **Management Server**, which is the central point for deploying updates to a population of devices.
-Among other things, it monitors the current software version that is installed on each device and schedules the roll out of new releases.
+![updater-components](updater-components.png)
 
-Finally, each **Device** runs a copy of the Mender **update client**, which polls the Management Server from time to time to report its status and to discover if there is a software update waiting.
-If there is, the update client downloads and installs it.
+The process begins with the **build system** generating a new version of
+software for a device. The build system can be a workstation creating a simple
+application update or a more standard component, such as Jenkins and Yocto
+Project. It creates **Mender Artifacts** in the format required by the target
+device. There will be different Mender Artifacts for each type of device that
+Mender manages.
 
-In the current implementation, only devices running embedded Linux are supported.
-Other operating systems will be added later on.
+You upload the Mender Artifacts to the Mender server, which is the central point
+for deploying updates to a fleet of devices. Among other things, it monitors the
+current software version present on each device and schedules the roll out of
+new releases.
+
+Finally, each **Device** runs the Mender client, which polls the Mender server
+periodically to report its status and to discover if there is a software update
+waiting. If there is, the update client downloads the artifact and performs the
+installation.
+
+The current Mender client supports devices running embedded Linux and other
+clients exist for other OSes and hardware such as microcontrollers.
 
 
-## Modes of operation
+## Client modes of operation
 
-It is possible to run the Mender update client in standalone or managed mode.
+You can run the Mender client in a _standalone_ or _managed_ mode.
 
-When run in standalone mode, the deployments are triggered (`mender -install`), rebooted into (`reboot`) and made persistent (`mender -commit`) from the command line at the device or through some custom integration like a script. Any http(s) server or file path (e.g. USB stick or NFS share) can be used to serve the Artifacts; the URI is given to the `mender -install` option. If you wish to run Mender in standalone mode, you can [disable Mender as a system service](../../04.Artifacts/10.Yocto-project/02.Image-configuration/docs.md#disabling-mender-as-a-system-service).
+In _managed_ mode the Mender client runs as a daemon and will regularly poll the
+server, automatically apply updates, reboot, report and commit the update. This
+is the best way to run Mender for most large-scale deployments, as the
+deployments are centrally managed across many devices, but it requires to set up
+and connect clients to the Mender server.
 
-When running Mender in managed mode, the Mender client runs as a daemon and will regularly poll the server, automatically apply updates, reboot, report and commit the update. This is the best way to run Mender for most large-scale deployments, as the deployments are centrally managed across many devices, but it requires to set up and connect clients to the Mender server.
+In _standalone_ mode, you initiate the updates locally on the device instead of
+connecting the Mender client to a Mender server. A common use-case is to perform
+updates from e.g an USB flash drive. To learn more visit
+[Standalone deployments](../../05.Client-configuration/07.Standalone-deployments/docs.md)
 
-## Types of artifacts
 
-Embedded devices almost universally use flash memory for storage.
-Flash memory can be divided into partitions in a way similar to hard disks.
-In the case of a device running Linux, components such as the Linux kernel, device tree binary and RAM disk may each be stored in a separate partition, but it is more common for them all to be stored together in the root file system.
-A file system has a format, such as UBIFS or ext4, and is contained within a partition. 
+## Update types
 
-The simplest and most robust way to update the device is to write a new file system image directly to the flash partition.
-This is the mechanism supported by the current versions of Mender.
-Other update mechanisms are possible, for example through the use of a package manager such as RPM, and they will be added later on.
+###  Robust system updates
 
-Please see [Mender Artifacts](../03.Artifact/docs.md) for more details on the Mender Artifact format.
+One of the primary requirements of any update system is that it should be robust.
+It must be able to recover from an update that fails, including loss of power
+or network connectivity during the update process.
 
-## Robust updates
+The simplest and most robust way to update a device is to write a new file
+system image directly to the flash partition. Mender comes with built-in support
+for  a dual redundant scheme (also known as A/B scheme), which ensures that the
+device always comes back to a working state on failure.
 
-One of the prime requirements of an updater is that it should be robust.
-It must be possible to recover from an update that fails for any reason, including through loss of power or network connectivity.
-In order to make updates to file system images reliable, Mender employs a dual redundant scheme, where each updatable partition is backed up with a duplicate.
-The one currently in use is called the **active partition** and the backup is called the **inactive partition**.
-When Linux boots, it will be told by the bootloader which partitions to use.
+During system update, the client writes the new version to the inactive
+partition. When complete, the client verifies the checksum. If all is well, it
+sets a flag in the bootloader that will cause it to flip the active and inactive
+partitions around on the next reboot. Then the system reboots.
 
-![Partition A active](update-active-a.png)
+On the first boot following an update, the Mender client will **commit** the
+update. This sets a flag in the bootloader that indicates that the update was
+applied successfully.
 
-When an image is updated, the new version it is written to the inactive partition.
-When complete, the checksum is verified. If all is well, a flag is set in the bootloader that will cause it to to flip the active and inactive partitions around on next reboot.
-Then the system reboots.
+If something causes the device to reboot before committing the update, the
+bootloader knows that something went wrong, and will **roll back** to the
+previous version by flipping the active and inactive partitions back again.
 
-![Partition B active](update-active-b.png)
+One consequence of the system update is that the update will replace all the
+files in a filesystem, thereby deleting any new or changed files that had been
+placed there. In other words, to be updatable a file system needs to be
+**stateless**.
 
-## Commit and rollback
+You have to store all files that you modify on the devices in a separate
+partition. It may include network parameters, user configuration changes, etc..
 
-On the first boot into Linux following an update, the update client will **commit** the update. This sets a flag in the bootloader that indicates that the operating system booted correctly.
 
-If something causes the device to reboot before committing the update, the bootloader knows that something went wrong, and will **roll back** to the previous version by flipping the active and inactive partitions back again.
+### Application updates
 
-## Stateless file systems
+The definition of an application update can vary depending on specific user
+requirements, e.g an application can be a single file, directory or even a
+container image. For this reason it is difficult to enforce **one** way of
+deploying application updates.
 
-One consequence of image update is that the update will replace all the files in a filesystem with new versions, thereby deleting any new or changed files that had been placed there. In other words, to be updatable a file system needs to be **stateless**.
+To support application updates in a generic way, Mender provides the [Update Module](../../03.Devices/10.Update-Modules/docs.md) framework.
 
-All files that are modified by the device need to be stored in a separate partition. Things that may need to be stored include network parameters, user configuration changes and so on. See [Partition layout](../../03.Devices/01.General-system-requirements/docs.md#partition-layout) for more information.
+![application-updates](application-updates.png)
+
+
+### Proxy deployments
+
+Using the [Update Module](../../03.Devices/10.Update-Modules/docs.md) framework
+it is also possible to deploy updates to peripheral devices, e.g
+microcontrollers or sensors connected to a device running Linux.
+
+Example using the DFU protocol to update an external microcontroller:
+
+![proxy-deployment](proxy-deployment.png)
+
+You can find more information on above example in the
+[How to do a proxy deployment to an FRDM-K64F](https://hub.mender.io/t/how-to-do-a-proxy-deployment-to-an-frdm-k64f-device-connected-to-a-raspberry-pi-3/1619?target=_blank) tutorial.
