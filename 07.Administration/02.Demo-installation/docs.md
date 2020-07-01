@@ -127,5 +127,5 @@ run the following commands in the `integration-master` directory:
 ```
 
 ```bash
-./demo --client up
+./demo up
 ```
