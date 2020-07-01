@@ -1,10 +1,10 @@
 ---
-title: Enterprise API overview
+title: API overview
 taxonomy:
     category: docs
 ---
 
-## Mender Enterprise APIs
+## Mender APIs
 
 ### REST
 

@@ -1,5 +1,5 @@
 ---
-title: Enterprise Device APIs
+title: Device APIs
 taxonomy:
     category: docs
 api: true
