@@ -59,7 +59,7 @@ consent to authorize a device via the UI or Device Authentication API, but they 
 in the order of events and intended use cases. Below is a detailed breakdown of
 each.
 
-For details of API calls please consult the [API documentation](../../200.APIs/01.Open-source/02.Management-APIs/02.Device-authentication/docs.md).
+For details of API calls please consult the [API documentation](../../200.APIs/02.Enterprise/02.Management-APIs/02.Device-authentication/docs.md).
 
 ### Authorize-on-request Flow
 
@@ -142,5 +142,5 @@ The only prerequisite is that the device authentication set is not in the
 rejected state.
 
 For details on the token format please see the relevant [documentation on
-submitting an authentication request](../../200.APIs/01.Open-source/01.Device-APIs/01.Device-authentication/docs.md).
+submitting an authentication request](../../200.APIs/02.Enterprise/01.Device-APIs/01.Device-authentication/docs.md).
 

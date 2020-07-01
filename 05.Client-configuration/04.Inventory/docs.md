@@ -17,7 +17,7 @@ name0=value0\n
 .
 nameN=valueN\n
 ```
-Then the client publishes the attributes via [device inventory service API calls](../../200.APIs/01.Open-source/01.Device-APIs/02.Device-inventory#device-attributes-patch),
+Then the client publishes the attributes via [device inventory service API calls](../../200.APIs/02.Enterprise/01.Device-APIs/02.Device-inventory#device-attributes-patch),
 namely by issuing **PATCH** _/device/attributes_.
 
 ### Lists of values

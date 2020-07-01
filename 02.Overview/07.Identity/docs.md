@@ -38,7 +38,7 @@ Therefore, we do not recommend using device keys as part of an identity, as it
 makes the rotation or regeneration of keys over the lifetime of the device
 (as it in effect changes the identity) difficult.
 
-When a device requests [authentication](../../200.APIs/01.Open-source/01.Device-APIs/01.Device-authentication/),
+When a device requests [authentication](../../200.APIs/02.Enterprise/01.Device-APIs/01.Device-authentication/),
 it includes the identity attributes. The Mender server computes the persistent
 identity of the device based on these attributes.
 
