@@ -79,5 +79,9 @@ the Mender server, which has been explicitly rejected by the user. A device in
 this state is not allowed to communicate with the Mender server and will not
 receive any updates.
 
+* _Release_ - A set of one or more Artifacts with the same Artifact name. Used
+by the Mender server to assign the right Artifact to a given Device based on
+software and hardware compatibility.
+
 * _Update Module_ - An extension to the Mender client for supporting a new type
 software update, such as a package manager, container or bootloader.
