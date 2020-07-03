@@ -12,7 +12,7 @@ This document outlines the compatibility between different versions of Mender co
 <!--AUTOVERSION: "% to %"/ignore-->
 Mender always provides an [upgrade path](../../07.Administration/07.Upgrading/docs.md) from the past patch (e.g. 1.2.0 to 1.2.1) and minor version (e.g. 1.1.1 to 1.2.0), and releases follow [Semantic Versioning](http://semver.org/?target=_blank). Note that according to Semantic Versioning, new functionality can be added in minor releases (e.g from 1.2.0 to 1.3.0) so be sure to upgrade components to support the newer functionality before starting to use it.
 
-For example, when a new [Artifact format](../03.Artifact/docs.md#the-mender-artifact-file-format) version is released, the *new* Mender client would support older versions of the Artifact format. However, the inverse is not true; the Mender client does not support *newer* versions of the Artifact format. So in this case you need to upgrade all Mender clients before starting to use new versions of the Artifact format (and the features it enables).
+For example, when a new [Artifact format](../02.Artifact/docs.md#the-mender-artifact-file-format) version is released, the *new* Mender client would support older versions of the Artifact format. However, the inverse is not true; the Mender client does not support *newer* versions of the Artifact format. So in this case you need to upgrade all Mender clients before starting to use new versions of the Artifact format (and the features it enables).
 
 As another example, the Mender client supports one version of the server API, while the server can support several API versions. Therefore, the server should always be upgraded before the client.
 
@@ -22,7 +22,7 @@ Since Semantic Versioning was primarily written for libraries, it is not
 necessarily clear what constitutes an API in the context of Mender. Below are
 the lists of specific criteria we use for our versioning policy.
 
-#### Changes counting towards new major version
+#### Changes resulting in new major version (M.m.p)
 
 * Removing or changing existing command line options
 
@@ -33,7 +33,7 @@ the lists of specific criteria we use for our versioning policy.
   `mender-artifact`. We have opted for upgrading the major version in this case,
   but this could also go into a minor release
 
-#### Changes counting towards new minor version
+#### Changes resulting in new minor version (m.M.p)
 
 * Adding command line options
 
@@ -42,7 +42,7 @@ the lists of specific criteria we use for our versioning policy.
 * Doing a database migration that is incompatible with the old schema (downgrade
   usually not possible without restoring a backup)
 
-#### Changes counting towards new patch version
+#### Changes resulting in new patch version (m.m.P)
 
 * Any change to our Golang API. For example, the `mender-artifact` library has
   an API, which is used by some other components, but this API is not considered
@@ -87,7 +87,7 @@ Leverage [Mender consulting services to support other versions of the Yocto Proj
 
 ## Mender client/server and Artifact format
 
-The [Mender Artifact format](../03.Artifact/docs.md) is managed by the [Mender Artifacts Library](https://github.com/mendersoftware/mender-artifact?target=_blank), which is included in the Mender client and server (for reading Artifacts) as well as in a standalone utility `mender-artifact` (for [writing Artifacts](../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md)).
+The [Mender Artifact format](../02.Artifact/docs.md) is managed by the [Mender Artifacts Library](https://github.com/mendersoftware/mender-artifact?target=_blank), which is included in the Mender client and server (for reading Artifacts) as well as in a standalone utility `mender-artifact` (for [writing Artifacts](../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md)).
 
 <!--AUTOVERSION: "Mender % / mender-artifact %"/ignore-->
 |                                      | Artifact v1 | Artifact v2 | Artifact v3 |

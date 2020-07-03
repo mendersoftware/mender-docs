@@ -64,7 +64,7 @@ USER="pi"
 
 !!! Use `USER="root"` if you are using a virtual device
 
-[Mender Artifact's](../../02.Overview/03.Artifact/docs.md) require
+[Mender Artifact's](../../02.Overview/02.Artifact/docs.md) require
 a device compatibility value as input, which **must** match what the device is
 reporting to the Mender server or it will refuse to install it. This is a safety
 mechanism to avoid installing software to incompatible hardware.
@@ -95,11 +95,11 @@ SSH_ARGS="-p 22"
 The easiest way to create system level updates is to use the **snapshot**
 functionality in Mender, which will create a snapshot of the full system on a
 currently running device and package it as a
-[Mender Artifact](../../02.Overview/03.Artifact/docs.md) that you
+[Mender Artifact](../../02.Overview/02.Artifact/docs.md) that you
 can deploy to other devices.
 
 Run the following command on your workstation to generate a **snapshot**
-[Mender Artifact](../../02.Overview/03.Artifact/docs.md) from your
+[Mender Artifact](../../02.Overview/02.Artifact/docs.md) from your
 device:
 
 ```bash

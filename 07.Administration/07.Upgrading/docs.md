@@ -213,7 +213,7 @@ Start the new environment:
 The Mender Client binary is built into the root file system, so it can be upgraded by
 fetching the sources when [building a Yocto Project image](../../04.Artifacts/10.Yocto-project/01.Building/docs.md).
 
-!! Older Mender clients do not support newer [versions of the Mender Artifact format](../../02.Overview/03.Artifact/docs.md#versions); they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#create-an-artifact-from-a-raw-root-file-system) for an introduction how to do this.
+!! Older Mender clients do not support newer [versions of the Mender Artifact format](../../02.Overview/02.Artifact/docs.md#versions); they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#create-an-artifact-from-a-raw-root-file-system) for an introduction how to do this.
 
 
 
