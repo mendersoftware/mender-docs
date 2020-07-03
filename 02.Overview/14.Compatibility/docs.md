@@ -22,7 +22,7 @@ Since Semantic Versioning was primarily written for libraries, it is not
 necessarily clear what constitutes an API in the context of Mender. Below are
 the lists of specific criteria we use for our versioning policy.
 
-#### Changes counting towards new major version
+#### Changes resulting in new major version (M.m.p)
 
 * Removing or changing existing command line options
 
@@ -33,7 +33,7 @@ the lists of specific criteria we use for our versioning policy.
   `mender-artifact`. We have opted for upgrading the major version in this case,
   but this could also go into a minor release
 
-#### Changes counting towards new minor version
+#### Changes resulting in new minor version (m.M.p)
 
 * Adding command line options
 
@@ -42,7 +42,7 @@ the lists of specific criteria we use for our versioning policy.
 * Doing a database migration that is incompatible with the old schema (downgrade
   usually not possible without restoring a backup)
 
-#### Changes counting towards new patch version
+#### Changes resulting in new patch version (m.m.P)
 
 * Any change to our Golang API. For example, the `mender-artifact` library has
   an API, which is used by some other components, but this API is not considered
