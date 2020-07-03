@@ -30,7 +30,7 @@ Internally, a Mender Artifact is simply a file archive in the
 It contains several files for incorporating versioning, extensions, metadata and
 the payload file(s).
 
-Artifact payloads support multiple compression algorithms, and is compressed by
+Artifact payloads support multiple compression algorithms, and are compressed by
 default.
 
 The diagram below shows an example of the main attributes and structure of a
@@ -69,6 +69,6 @@ your existing OS build process. Learn more in the
 ### Sign and verify
 
 To verify that the Artifact comes from a trusted source, the Mender Artifact
-format supports end-to-end image signing and verification. In order to create a
+format supports end-to-end signing and verification. In order to create a
 signed Artifact, please follow the instructions at
 [Signing and verifying Mender Artifact](../../04.Artifacts/40.Signing-and-verification/docs.md).
