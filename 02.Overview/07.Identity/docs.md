@@ -7,11 +7,13 @@ taxonomy:
 
 ## The identity of a device
 
-We designed Mender to manage an arbitrary number of devices. Internally, the server assigns
-a unique, unchangeable identifier to each one of them. The Device ID does not
-have a directly visible relation to any device attributes.
-To address this problem we created a constant set of key-value pairs that uniquely identify a device. 
+Internally the Mender server assigns
+a unique, unchangeable identifier to each Device called the *Device ID*.
+The Device ID does not have a directly visible relation to any Device attributes.
 
+
+To ensure devices can also be uniquely recognized by humans,
+there is also a set of key-value pairs called *Device identity*. 
 The MAC address of a network interface controller, a serial number, the eMMC CID,
 are all pieces of data that:
 * do not change over the lifetime of a device
@@ -19,8 +21,7 @@ are all pieces of data that:
 * form a 1:1 relationship with the device
 * you can store as key-value pairs
 
-Unless the system designer has modified the default Mender configuration,
-the Mender client will use the MAC address as the identity attribute.
+The Mender client uses the MAC address as the default Identity attribute.
 Once you have accepted the device, you can see it in the UI:
 
 ![identity](identity.png)
@@ -43,4 +44,4 @@ it includes the identity attributes. The Mender server computes the persistent
 identity of the device based on these attributes.
 
 Please refer to the [client configuration section](../../05.Client-configuration/03.Identity)
-to find detailed tutorial on managing the identities.
+to find detailed tutorial on managing Device identities.

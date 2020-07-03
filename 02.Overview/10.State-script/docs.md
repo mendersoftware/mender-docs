@@ -14,12 +14,14 @@ Common use cases are:
 
 * Enable/disable network connectivity before and after checking for an update to reduce bandwidth.
 * Migrate persistent data during a software update.
-* User or application confirmation before a reboot. This is common in applications which have a UI or that provide critical functionality e.g network routers.
+* User or application confirmation before a reboot. This is common in applications which have a UI, or that provide critical functionality (e.g network routers).
 * Run additional sanity checks before committing to the update.
 
 ![Mender state machine diagram](mender-state-machine.png)
 
-## State script hooks
+## States
+
+A State script can be run before (*Enter*) or after (*Leave*) each of the following states.
 
 * **Idle**: The Mender client idles and waits for the next action to handle. At this stage, no communication with the server, or downloads are in progress.
 * **Sync**: At this stage the Mender client will either send or update its inventory to the server, or check if an update is available. This requires communication with the server.

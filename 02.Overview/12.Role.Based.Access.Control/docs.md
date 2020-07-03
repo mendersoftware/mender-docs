@@ -13,7 +13,7 @@ and unauthorized deployments. Admin users of the Mender server can assign Roles
 with limited access, based on the responsibility of the user and required tasks.
 Role assignments reduce the risk of accidents, such as deploying beta software
 to production devices. It also reduces the security impact of any compromised
-Mender server user accounts, in the case of stolen password as an example.
+Mender server user accounts (e.g. in the case of a stolen password).
 
 Mender supports four different types of Roles:
 

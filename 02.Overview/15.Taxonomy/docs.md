@@ -12,24 +12,24 @@ and receive software updates.
 
 * _Artifact_ -  An archive containing everything needed for an update of a
 device, including the Artifact Payload itself and metadata such as signatures.
-See the documentation on [Artifact](../03.Artifact/docs.md) for more information.
+See the documentation on [Artifact](../02.Artifact/docs.md) for more information.
 
 * _Artifact Name_ - A human-readable string uniquely describing an Artifact,
 used by UI and API for identification purposes.
 
 * _Artifact Payload_ - Actual data installed on a device, stored inside a
 Mender Artifact. It could be a rootfs image, package, container, or other. See
-the documentation on [Artifact](../03.Artifact/docs.md) for more information.
+the documentation on [Artifact](../02.Artifact/docs.md) for more information.
 
 * _Authentication Set_ - A combination of an identity and public key for a
 device, determining if a given device is allowed to check for- and apply
 software updates from the Mender server. A given device identity can have
 multiple Authentication sets and each can be in one of the following states,
-where only one can be “accepted”:
-  * "rejected"
-  * "accepted"
-  * "pending"
-  * "preauthorized"
+where only one can be accepted at a given time:
+  * rejected
+  * accepted
+  * pending
+  * preauthorized
 
 * _Binary delta_ - The binary difference between two filesystem images. See the
 documentation on [Delta updates](../06.Delta-update/docs.md) for more information.
@@ -50,7 +50,7 @@ server, used in APIs to specify an individual device. See the documentation on
 [Identity](../07.Identity/docs.md) for more information.
 
 * _Device type_ - The type of device, used to ensure compatibility between the
-hardware and software. See the documentation on [Artifact](../03.Artifact/docs.md)
+hardware and software. See the documentation on [Artifact](../02.Artifact/docs.md)
 for more information.
 
 * _Mender Hub Integration(s)_ - A contribution on
@@ -78,6 +78,10 @@ reference when porting to new boards.
 the Mender server, which has been explicitly rejected by the user. A device in
 this state is not allowed to communicate with the Mender server and will not
 receive any updates.
+
+* _Release_ - A set of one or more Artifacts with the same Artifact name. Used
+by the Mender server to assign the right Artifact to a given Device based on
+software and hardware compatibility.
 
 * _Update Module_ - An extension to the Mender client for supporting a new type
 software update, such as a package manager, container or bootloader.
