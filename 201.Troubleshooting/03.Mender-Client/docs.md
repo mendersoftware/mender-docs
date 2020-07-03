@@ -119,6 +119,11 @@ If these mismatch, then you need to update `/etc/mender/server.crt` on your clie
 You can do this manually for testing purposes, and you should
 [include the certificates in your Yocto Project build](../../04.Artifacts/10.Yocto-project/03.Building-for-production/docs.md#including-the-client-certificates).
 
+
+## The Current Software installed on my device has `_INCONSISTENT` appended to it
+
+The `_INCONSISTENT` suffix is appended to the software name on a device when the last Artifact deployment failed, and either the rollback also failed, or the particular Update Module being used has no rollback capability. As the name implies, in this case the device is in an inconsistent state, somewhere between two known states. In this case the deployment log of the last deployment may provide more information about what went wrong, and whether there is cause for concern.
+
 ## Artifact format not supported
 
 When deploying an update with the Mender client, you see a log message similar to the following:
