@@ -25,11 +25,11 @@ the documentation on [Artifact](../03.Artifact/docs.md) for more information.
 device, determining if a given device is allowed to check for- and apply
 software updates from the Mender server. A given device identity can have
 multiple Authentication sets and each can be in one of the following states,
-where only one can be “accepted”:
-  * "rejected"
-  * "accepted"
-  * "pending"
-  * "preauthorized"
+where only one can be accepted at a given time:
+  * rejected
+  * accepted
+  * pending
+  * preauthorized
 
 * _Binary delta_ - The binary difference between two filesystem images. See the
 documentation on [Delta updates](../06.Delta-update/docs.md) for more information.
