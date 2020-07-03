@@ -7,7 +7,7 @@ taxonomy:
 
 ## Introduction
 
-Unlike [device identity attributes](../07.Identity/docs.md), device inventory attributes
+Unlike [Device identity attributes](../07.Identity/docs.md), Device inventory attributes
 do not need to be unique. They simply provide information about the target device.
 
 The Mender client will periodically collect inventory-related data for reporting
@@ -62,9 +62,9 @@ Examples use cases:
 
 Adding more inventory fields, such as the kernel version or total available
 memory, is easy to do and Mender supports it well. Then you can use the inventory
-fields to create custom filters and dynamic groups (see the figure below).
+fields to create Dynamic groups (see the screenshot below).
 
 ![filters](filters.png)
 
-For more information on customizing the inventory attributes,
+For more information on customizing the Inventory attributes,
 please refer to the [client configuration section](../../05.Client-configuration/04.Inventory).
