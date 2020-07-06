@@ -114,6 +114,7 @@ connect without a tenant token.
    accordingly):
 
    <!-- AUTOMATION: execute=TENANT_ID=$( ( ./run exec mender-tenantadm /usr/bin/tenantadm create-org --name=MyOrganization --username=myusername@host.com --password=mysecretpassword ) | tr -d '\r' ) -->
+   <!--AUTOMATION: test=test -n "$TENANT_ID" -->
    <!-- AUTOMATION: execute=sleep 10 -->
 
    <!-- Trick to capture the output. The `tr` is because Go prints with Windows
@@ -123,6 +124,7 @@ connect without a tenant token.
    ./run exec mender-tenantadm /usr/bin/tenantadm get-tenant --id $TENANT_ID | jq -r .tenant_token
    ```
    <!-- AUTOMATION: execute=) | tr -d '\r' ) -->
+   <!--AUTOMATION: test=test -n "$TENANT_TOKEN" -->
 
    > eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW5kZXIudGVuYW50IjoiNWQ4MzM1MzJkMTMwNTgwMDI4NDhmZmRmIiwia<br>
    XNzIjoiTWVuZGVyIiwic3ViIjoiNWQ4MzM1MzJkMTMwNTgwMDI4NDhmZmRmIn0.HJDGHzqZqbosAYyJpSIEeL0W4HMiOmb15ETnu<br>

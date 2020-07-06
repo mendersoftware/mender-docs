@@ -734,6 +734,7 @@ line endings for whatever reason. -->
 ```bash
 TENANT_ID=$(./run exec mender-tenantadm /usr/bin/tenantadm create-org --name=MyOrganization --username=myusername@host.com --password=mysecretpassword | tr -d '\r') && (echo $TENANT_ID)
 ```
+<!--AUTOMATION: test=test -n "$TENANT_ID" -->
 
 <!-- create-org is an async workflow, give it some time -->
 <!--AUTOMATION: execute=sleep 10 -->
@@ -755,7 +756,6 @@ tool:
 ```bash
 TENANT_TOKEN=$(./run exec mender-tenantadm /usr/bin/tenantadm get-tenant --id $TENANT_ID | jq -r .tenant_token) && (echo $TENANT_TOKEN)
 ```
-
 <!--AUTOMATION: test=test -n "$TENANT_TOKEN" -->
 
 where `$TENANT_ID` is the ID that was printed by the previous command.
