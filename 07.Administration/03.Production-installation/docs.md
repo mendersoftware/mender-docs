@@ -732,7 +732,7 @@ Replace the organization name, username and password with desired values and run
 <!-- Trick to capture the output. The `tr` is because Go prints with Windows
 line endings for whatever reason. -->
 ```bash
-TENANT_ID=$(./run exec mender-tenantadm /usr/bin/tenantadm create-org --name=MyOrganization --username=myusername@host.com --password=mysecretpassword | tr -d '\r') && (echo $TENANT_ID)
+TENANT_ID=$(./run exec -T mender-tenantadm /usr/bin/tenantadm create-org --name=MyOrganization --username=myusername@host.com --password=mysecretpassword | tr -d '\r') && (echo $TENANT_ID)
 ```
 <!--AUTOMATION: test=test -n "$TENANT_ID" -->
 
@@ -754,7 +754,7 @@ tool:
 !!! On the Debian family of distributions you can install `jq` with `apt-get install jq`.
 
 ```bash
-TENANT_TOKEN=$(./run exec mender-tenantadm /usr/bin/tenantadm get-tenant --id $TENANT_ID | jq -r .tenant_token) && (echo $TENANT_TOKEN)
+TENANT_TOKEN=$(./run exec -T mender-tenantadm /usr/bin/tenantadm get-tenant --id $TENANT_ID | jq -r .tenant_token) && (echo $TENANT_TOKEN)
 ```
 <!--AUTOMATION: test=test -n "$TENANT_TOKEN" -->
 

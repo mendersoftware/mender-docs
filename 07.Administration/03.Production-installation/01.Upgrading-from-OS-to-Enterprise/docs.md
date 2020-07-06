@@ -113,7 +113,7 @@ connect without a tenant token.
    user](../docs.md#creating-the-first-organization-and-user) (replace `$TENANT_ID`
    accordingly):
 
-   <!-- AUTOMATION: execute=TENANT_ID=$( ( ./run exec mender-tenantadm /usr/bin/tenantadm create-org --name=MyOrganization --username=myusername@host.com --password=mysecretpassword ) | tr -d '\r' ) -->
+   <!-- AUTOMATION: execute=TENANT_ID=$( ( ./run exec -T mender-tenantadm /usr/bin/tenantadm create-org --name=MyOrganization --username=myusername@host.com --password=mysecretpassword ) | tr -d '\r' ) -->
    <!--AUTOMATION: test=test -n "$TENANT_ID" -->
    <!-- AUTOMATION: execute=sleep 10 -->
 
@@ -121,7 +121,7 @@ connect without a tenant token.
    line endings for whatever reason. -->
    <!-- AUTOMATION: execute=TENANT_TOKEN=$( ( -->
    ```bash
-   ./run exec mender-tenantadm /usr/bin/tenantadm get-tenant --id $TENANT_ID | jq -r .tenant_token
+   ./run exec -T mender-tenantadm /usr/bin/tenantadm get-tenant --id $TENANT_ID | jq -r .tenant_token
    ```
    <!-- AUTOMATION: execute=) | tr -d '\r' ) -->
    <!--AUTOMATION: test=test -n "$TENANT_TOKEN" -->
