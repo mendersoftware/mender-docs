@@ -12,7 +12,7 @@ file using the '--config' argument.
 
 
 
-#### IMAGE_OVERHEAD_FACTOR
+#### `IMAGE_OVERHEAD_FACTOR`
 
 > Value: 1.5 (default)
 
@@ -28,7 +28,7 @@ why it is missing a "MENDER_" prefix.
 
 
 
-#### IMAGE_ROOTFS_EXTRA_SPACE
+#### `IMAGE_ROOTFS_EXTRA_SPACE`
 
 > Value: 0 (default)
 
@@ -47,7 +47,7 @@ it is missing a "MENDER_" prefix.
 
 
 
-#### IMAGE_ROOTFS_SIZE
+#### `IMAGE_ROOTFS_SIZE`
 
 > Value: 0 (default)
 
@@ -62,7 +62,7 @@ it is missing a "MENDER_" prefix.
 
 
 
-#### MENDER_ARTIFACT_COMPRESSION
+#### `MENDER_ARTIFACT_COMPRESSION`
 
 > Values: gzip(default)/lzma/none
 
@@ -72,7 +72,7 @@ time spent generating the Mender Artifact (10x).
 
 
 
-## MENDER_ARTIFACT_NAME
+#### `MENDER_ARTIFACT_NAME`
 
 > Value: <release-name>
 
@@ -81,7 +81,7 @@ conversion to succeed. However, should be specified on the command line, and not
 in the configuration.
 
 
-## MENDER_BOOT_PART
+#### `MENDER_BOOT_PART`
 
 > Value:
 
@@ -95,21 +95,21 @@ Examples:
 ```
 
 
-## MENDER_BOOT_PART_INDEX
+#### `MENDER_BOOT_PART_INDEX`
 
 > Value: 1 (default) 
 
 Set the default index for the boot partition.
 
 
-## MENDER_BOOT_PART_SIZE_MB
+#### `MENDER_BOOT_PART_SIZE_MB`
 
 > Value: 40 (default)
 
 The size of the boot partition.
 
 
-## MENDER_CLIENT_VERSION
+#### `MENDER_CLIENT_VERSION`
 
 <!--AUTOVERSION: "Value: %"/ignore-->
 > Value: master (default)
@@ -117,7 +117,7 @@ The size of the boot partition.
 The version of the Mender client to include in the update.
 
 
-#### MENDER_COMPRESS_DISK_IMAGE
+#### `MENDER_COMPRESS_DISK_IMAGE`
 
 > Values: gzip(default)/lzma/none
 
@@ -126,7 +126,7 @@ to transfer them between a build server and a local machine, and saves space.
 
 
 
-## MENDER_DATA_PART
+#### `MENDER_DATA_PART`
 
 > Value:
 
@@ -140,7 +140,7 @@ Examples:
 ```
 
 
-#### MENDER_DATA_PART_FSTAB_OPTS
+#### `MENDER_DATA_PART_FSTAB_OPTS`
 
 > Values: defaults/<fstab specific options>
 
@@ -148,28 +148,28 @@ Options passed on to fstab.
 
 
 
-#### MENDER_DATA_PART_GROWFS
+#### `MENDER_DATA_PART_GROWFS`
 
 > Values: y(default)/n
 
 Enable/Disable automatically growing the filesystem to fill the physical storage device.
 
 
-## MENDER_DATA_PART_INDEX
+#### `MENDER_DATA_PART_INDEX`
 
 > Value: 4 (default)
 
 Set the index of the data partition.
 
 
-## MENDER_DATA_PART_SIZE_MB
+#### `MENDER_DATA_PART_SIZE_MB`
 
 > Value: 128 (default)
 
 The size of the Mender data partition.
 
 
-## MENDER_DEVICE_TYPE
+#### `MENDER_DEVICE_TYPE`
 
 > Value: <device-type>
 
@@ -177,14 +177,14 @@ Set the device type specified by the Artifact. If left empty it will default to
 the value of '/etc/hostname'.
 
 
-## MENDER_ENABLE_PARTUUID
+#### `MENDER_ENABLE_PARTUUID`
 
 > Values: y/n(default)
 
 This option enables the use of partuuid's as partition block device references. The variables `MENDER_BOOT_PART`, `MENDER_ROOTFS_PART_A`, `MENDER_ROOTFS_PART_B` and `MENDER_DATA_PART` should also be set in conjunction with this variable to ensure reproducible builds with the same part-uuids.
 
 
-#### MENDER_ENABLE_SYSTEMD
+#### `MENDER_ENABLE_SYSTEMD`
 
 > Values: y(default)/n
 
@@ -194,28 +194,28 @@ server and will only be running standalone mode updates, then you can safely
 disable this.
 
 
-## MENDER_GITHUB_ORG
+#### `MENDER_GITHUB_ORG`
 
 > Value: https://github.com/mendersoftware (default)
 
 The URL prefix for looking up the mendersoftware dependencies.
 
 
-## MENDER_KERNEL_DEVICETREE
+#### `MENDER_KERNEL_DEVICETREE`
 
 > Value: kernel.dtb (default)
 
 Set the name of the kernel devicetree file.
 
 
-## MENDER_PARTITION_ALIGNMENT
+#### `MENDER_PARTITION_ALIGNMENT`
 
 > Value: 8388608 ( 8MB, default)
 
 The partition alignment expressed in bytes.
 
 
-## MENDER_ROOTFS_PART_A
+#### `MENDER_ROOTFS_PART_A`
 
 > Value:
 
@@ -229,14 +229,14 @@ Examples:
 ```
 
 
-## MENDER_ROOTFS_PART_A_INDEX
+#### `MENDER_ROOTFS_PART_A_INDEX`
 
 > Value: 2 (default)
 
 Set the default index of the rootfs part-A partition.
 
 
-## MENDER_ROOTFS_PART_B
+#### `MENDER_ROOTFS_PART_B`
 
 > Value:
 
@@ -250,35 +250,35 @@ Examples:
 ```
 
 
-## MENDER_ROOTFS_PART_B_INDEX
+#### `MENDER_ROOTFS_PART_B_INDEX`
 
 > Value: 3 (default)
 
 Set the default index of the rootfs part-B partition.
 
 
-## MENDER_STORAGE_DEVICE
+#### `MENDER_STORAGE_DEVICE`
 
 > Value: /dev/mmcblk0p (default)
 
 Set the device file corresponding to the root filesystem partitions.
 
 
-## MENDER_STORAGE_TOTAL_SIZE_MB
+#### `MENDER_STORAGE_TOTAL_SIZE_MB`
 
 > Value: 8192 (default)
 
 The size of the storage medium of the device.
 
 
-## MENDER_STORAGE_URL
+#### `MENDER_STORAGE_URL`
 
 > Value: https://d1b0l86ne08fsf.cloudfront.net (default)
 
 The source of the binaries employed by the `Mender-convert` tool.
 
 
-## MENDER_USE_BMAP
+#### `MENDER_USE_BMAP`
 
 > Values: y/n (default)
 
