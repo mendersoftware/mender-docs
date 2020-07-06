@@ -756,6 +756,8 @@ tool:
 TENANT_TOKEN=$(./run exec mender-tenantadm /usr/bin/tenantadm get-tenant --id $TENANT_ID | jq -r .tenant_token) && (echo $TENANT_TOKEN)
 ```
 
+<!--AUTOMATION: test=test -n "$TENANT_TOKEN" -->
+
 where `$TENANT_ID` is the ID that was printed by the previous command.
 The output tenant token should be a long string like this:
 
