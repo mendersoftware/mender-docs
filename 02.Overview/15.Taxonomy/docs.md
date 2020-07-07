@@ -41,7 +41,7 @@ integration and requires customization based on the hardware and OS.
 * _Deployment_ - The process of delivering software to devices. It consists of
 at least a group of devices and an Artifact name.
 
-* _Device_ - A single unit that is able to connect to the Mender server, usually
+* _Device_, _Mender Client Device_ - A single unit that is able to connect to the Mender server, usually
 an independent product. Represented on the server by its identity and
 authentication data.
 
