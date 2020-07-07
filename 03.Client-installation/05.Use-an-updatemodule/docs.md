@@ -12,8 +12,8 @@ have already mentioned [in the overview section](../../02.Overview/01.Introducti
 
 The Update Modules are just executable files in _/usr/share/mender/modules/v3_
 directory on the device (v3 is the current version of the protocol). The Mender
-client executes them with defined set of parameters to [perform the update](link-to-page-with-state-machine-of-update-modules).
-All update modules originate from the artifacts of [special payload and type](link-to-how-to-create-an-update-module-artifact).
+client executes them with a defined set of parameters to [perform the update](../../03.Devices/10.Update-Modules/docs.md#The-state-machine-workflow).
+All update modules originate from the artifacts of [a special payload and type](../../03.Devices/10.Update-Modules/#Create-an-Artifact-with-a-payload-for-the-new-Update-Module).
 
 The role of the client ends with the execution of the update module
 in a correct moment, and with the correct arguments; the rest depends
