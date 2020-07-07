@@ -53,6 +53,11 @@ server, used in APIs to specify an individual device. See the documentation on
 hardware and software. See the documentation on [Artifact](../02.Artifact/docs.md)
 for more information.
 
+* _Mender Client_ - A user space application installing updates to a device
+it is running on. It uses the Mender API to connect to the Mender Server
+to authenticate, get the artifacts, report inventory, log the progress
+and status of the installations.
+
 * _Mender Hub Integration(s)_ - A contribution on
 [Mender Hub](https://hub.mender.io/c/board-integrations?target=_blank)
 of a Mender Board integration for a specific board.
