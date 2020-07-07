@@ -136,20 +136,31 @@ Gateway=$IP_OF_MENDER_SERVER_FROM_DEVICE
 
 ### Wifi connectivity
 
-The raspberrypi demo image comes with Wifi connectivity enabled by default, thus the only thing needed in order for your device to connect to your network is setting the correct `<ssid>` and `<password>` in the `wpa_supplicant-nl80211@wlan0.conf` file on your device. First set your `<password>` and `<ssid>` path as shell variables:
+The raspberrypi image comes with Wifi connectivity disabled by default,
+thus we need to enable it and provide the credentials
+in the `wpa_supplicant.conf` file on your device.
+To this end, first let's create a file called `wpa.in`:
+
+```
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=YourCountry
+
+network={
+	ssid="YourSSID"
+	psk="YourPassword"
+}
+```
+where YourCountry stands for two-letter country code (e.g.: PL for Poland),
+YourSSID, and YourSSID are the SSID of your network and the password, respecively.
+And then run:
 
 ```bash
-NW_SSID=<ssid>
-NW_PASSWORD=<password>
+mender-artifact cp wpa.in "$MENDER_IMGPATH":/boot/wpa_supplicant.conf
 ```
 
-And then running:
-
-```bash
-mender-artifact cat "$MENDER_IMGPATH":/etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf | sed "s#psk=\"password\"#psk=\"$NW_PASSWORD\"#" | sed "s#ssid=\"ssid\"#ssid=\"$NW_SSID\"#" > tmpf; mender-artifact cp tmpf "$MENDER_IMGPATH":/etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf && rm tmpf
-```
-
-should have your wpa configuration set up correctly on start up.
+Now you should have wpa configuration set up correctly on start up. (Do not forget
+to remove `wpa.in` file, it contains your password).
 
 ## Write the disk image to the SD card
 
