@@ -291,7 +291,7 @@ Now we will create the Mender Artifact. Run from your workstation:
 mender-artifact write rootfs-image -f ssh://pi@$IP_OF_MENDER_CLIENT -n my_update_release_1 -o my_update_release_1.mender -t raspberrypi3
 ```
 
-!!! Adjust `my_update_release_1` to the desired Artifact name and `raspberrypi`
+!!! Adjust `my_update_release_1` to the desired Artifact name and `raspberrypi3`
 !!! to the device type you selected during [Run Mender setup](#run-mender-setup)
 !!! step.
 
