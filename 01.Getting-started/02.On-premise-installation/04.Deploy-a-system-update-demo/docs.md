@@ -178,7 +178,7 @@ Once the device has booted, log in. On Raspberry Pi OS, the default user is "pi"
 the password is "raspberry".
 
 !!! If you want to enable SSH on startup for further boots, execute'
-!!! `sudo systemctl start ssh`
+!!! `sudo systemctl enable ssh && sudo systemctl start ssh`
 
 Once you have logged in, run the Mender setup command, like this:
 
