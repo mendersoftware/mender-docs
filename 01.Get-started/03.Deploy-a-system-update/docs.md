@@ -129,7 +129,7 @@ demonstrated below.
 
 ![connecting a device](Image_1.png)
 
-Once uploaded, go to the **DEPLOYMENTS** tab and click **CREATE DEPLYOMENT** in
+Once uploaded, go to the **DEPLOYMENTS** tab and click **CREATE DEPLOYMENT** in
 order to deploy it to your device.
 
 Please take a moment to experiment at this stage to familiarize yourself with
