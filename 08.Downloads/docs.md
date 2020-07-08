@@ -63,6 +63,12 @@ $ sudo mv mender-artifact /usr/local/bin/
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 [x.x.x_mender-artifact-darwin]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/master/darwin/mender-artifact
 
+_Mac OS X note_: Please remember, that `mender-artifact` when working with
+disk image files (e.g.: `*.sdimg`, `*.img`, or others holding the storage
+partitions) under Mac OS X has limited functionalities, and commands like 
+`mender-artifact cat` or `mender-artifact cp` will not work, due to lack
+of support for certain utilities on the Mac platform.
+
 ## Mender client
 
 A Debian package (`.deb`) is provided for convenience to install on e.g Debian,
