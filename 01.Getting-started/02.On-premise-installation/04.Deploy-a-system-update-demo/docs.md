@@ -189,7 +189,7 @@ Once the device has booted, log in. On Raspberry Pi OS, the default user is "pi"
 the password is "raspberry".
 
 !!! If you want to enable SSH on startup for further boots, execute'
-!!! `sudo systemctl start ssh`
+!!! `sudo systemctl enable ssh && sudo systemctl start ssh`
 
 Once you have logged in, run the Mender setup command, like this:
 
@@ -302,7 +302,7 @@ Now we will create the Mender Artifact. Run from your workstation:
 mender-artifact write rootfs-image -f ssh://pi@$IP_OF_MENDER_CLIENT -n my_update_release_1 -o my_update_release_1.mender -t raspberrypi3
 ```
 
-!!! Adjust `my_update_release_1` to the desired Artifact name and `raspberrypi`
+!!! Adjust `my_update_release_1` to the desired Artifact name and `raspberrypi3`
 !!! to the device type you selected during [Run Mender setup](#run-mender-setup)
 !!! step.
 
