@@ -185,6 +185,68 @@ Set the default index of the rootfs part-B partition.
 
 Set the index of the data partition.
 
+
+## MENDER_ENABLE_PARTUUID
+
+> Values: y/n(default)
+
+This option enables the use of partuuid's as partition block device references. The variables `MENDER_BOOT_PART`, `MENDER_ROOTFS_PART_A`, `MENDER_ROOTFS_PART_B` and `MENDER_DATA_PART` should also be set in conjunction with this variable to ensure reproducible builds with the same part-uuids.
+
+
+
+
+## MENDER_BOOT_PART
+
+> Value:
+
+This option allows fine grained control of the boot partition device path and overrides `MENDER_STORAGE_DEVICE` and `MENDER_BOOT_PART_INDEX` settings. If part-uuid is used then you will need to also enable `MENDER_ENABLE_PARTUUID`
+
+Examples: 
+```
+/dev/sda1
+/dev/disk/by-partuuid/26445670-f37c-408b-be2c-3ef419866620
+/dev/disk/by-partuuid/26445670-01
+```
+
+## MENDER_ROOTFS_PART_A
+
+> Value:
+
+This option allows fine grained control of the first (A) rootfs partition device path and overrides `MENDER_STORAGE_DEVICE` and `MENDER_ROOTFS_PART_A_INDEX` settings. If part-uuid is used then you will need to also enable `MENDER_ENABLE_PARTUUID`
+
+Examples: 
+```
+/dev/sda2
+/dev/disk/by-partuuid/26445670-f37c-408b-be2c-3ef419866621
+/dev/disk/by-partuuid/26445670-02
+```
+
+## MENDER_ROOTFS_PART_B
+
+> Value:
+
+This option allows fine grained control of the first (B) rootfs partition device path and overrides `MENDER_STORAGE_DEVICE` and `MENDER_ROOTFS_PART_B_INDEX` settings. If part-uuid is used then you will need to also enable `MENDER_ENABLE_PARTUUID`
+
+Examples: 
+```
+/dev/sda3
+/dev/disk/by-partuuid/26445670-f37c-408b-be2c-3ef419866622
+/dev/disk/by-partuuid/26445670-03
+```
+
+## MENDER_DATA_PART
+
+> Value:
+
+This option allows fine grained control of the data partition device path and overrides `MENDER_STORAGE_DEVICE` and `MENDER_DATA_PART_INDEX` settings. If part-uuid is used then you will need to also enable `MENDER_ENABLE_PARTUUID`
+
+Examples: 
+```
+/dev/sda4
+/dev/disk/by-partuuid/26445670-f37c-408b-be2c-3ef419866623
+/dev/disk/by-partuuid/26445670-04
+```
+
 ## MENDER_KERNEL_DEVICETREE 
 
 > Value: kernel.dtb (default) 
