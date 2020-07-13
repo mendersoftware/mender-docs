@@ -1,5 +1,5 @@
 ---
-title: Image configuration
+title: Customization
 taxonomy:
     category: docs
 ---
@@ -48,18 +48,59 @@ section.
 
 ## Hooks/Overrides
 
-The `mender-convert` tool supports the addition of user *hooks* to override, or
-add to some specific part of the modification process. Currently the supported hooks are:
+The `mender-convert` tool supports the addition of user *hooks* to override, or add to some specific
+part of the modification process. There are two hook interfaces: List based hooks and function
+hooks.
 
-| script                | Hook/Override    | Intended function |
-|:---                   | :---             | :----             |
-| mender-convert-modify |  platform_modify | Perform platform specific modifications |
-| mender-convert-package|  platform_package | Perform platform specific package operations |
-| some_included_config_file | mender_create_artifact | Override the creation of the Mender-Artifact through modifying the command which calls the `mender-artifact` tool. A good starting point is the standard function found in the standard configuration file *configs/mender_convert_config* |
+### List based hooks
 
-These are added to the specific configuration file of choice.
+The list based hooks are used to modify the image contents, or to post-process the binary image
+after it has been created (but before it is compressed). For example, create a file
+`configs/custom_config`, and add this content to it:
 
-#### Example
+```bash
+remove_apt_cache_from_filesystem() {
+    log_info "Remove apt cache on device to save space."
+    run_and_log_cmd "sudo rm -rf work/var/cache/apt"
+}
+PLATFORM_MODIFY_HOOKS+=(remove_apt_cache_from_filesystem)
+
+embed_bootloader_in_image() {
+    log_info "Embedding bootloader in disk image"
+    run_and_log_cmd "dd if=work/bootloader.img of=${img_path} \
+        seek=64 conv=notrunc status=none"
+}
+PLATFORM_PACKAGE_HOOKS+=(embed_bootloader_in_image)
+```
+
+When calling mender-convert, enable the hooks by using the `--config` argument to supply the
+`custom_config` file:
+
+```bash
+MENDER_ARTIFACT_NAME=release-1 ./mender-convert \
+  --disk-image input/<image-to-convert.img> \
+  --config configs/raspberrypi3_config \
+  --config configs/custom_config
+```
+
+These three variables hold lists of hooks:
+
+* `PLATFORM_MODIFY_HOOKS` - Run after the filesystem is prepared, but before the image is created.
+* `PLATFORM_PACKAGE_HOOKS` - Run after the image has been created, but before compressions and bmap
+  creation.
+* `USER_LOCAL_MODIFY_HOOK` - Run after `PLATFORM_PACKAGE_HOOKS`.
+
+!!! Note that the variables come prefilled with `PLATFORM_MODIFY_HOOKS=(platform_modify)`,
+!!! `PLATFORM_PACKAGE_HOOKS=(platform_package)` and `USER_LOCAL_MODIFY_HOOKS=(user_local_modify)`.
+!!! This is because the `platform_modify`, `platform_package`, and `user_local_modify` function
+!!! overrides were the only way to specify hooks in mender-convert 2.0.
+
+### Function override hook
+
+There is only one function override hook in mender-convert: `mender_create_artifact`. This is used
+to override the command which creates Mender Artifacts from the rootfs image. Just define the
+function in a custom config file to use the hook. A good starting point is the standard function
+found in the standard configuration file `configs/mender_convert_config`.
 
 An example of overriding the `mender_create_artifact` hook is provided below.
 
@@ -94,7 +135,7 @@ MENDER_ARTIFACT_NAME=release-1 ./mender-convert \
   --config configs/raspberrypi3_config \
   --config configs/custom_config
 ```
-This should trigger the provided `mender_create_artifact` implementation in `configs/custom_config`
+This should trigger the provided `mender_create_artifact` implementation in `configs/custom_config`.
 
 -------------------------------------------------------------------------------
 
@@ -127,9 +168,21 @@ available to the device on boot
 If the final image needs application configurations and additions, this is the
 recommended way of doing it.
 
+When invoking mender-convert, pass the `--overlay` argument with the name of the
+overlay directory:
+
+```bash
+MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
+    --disk-image input/golden-image-1.img \
+    --config configs/raspberrypi3_config \
+    --overlay rootfs_overlay_demo/
+```
+
 -------------------------------------------------------------------------------
 
 ## Next step
+
+TODO
 
 Learning about the configuration variables available:
 

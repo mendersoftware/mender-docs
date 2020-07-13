@@ -1,8 +1,9 @@
 ---
-title: Building a Mender Debian image
+title: Convert a Mender Debian image
 taxonomy:
     category: docs
 ---
+
 
 `mender-convert` can be used to convert existing disk images for use with
 Mender. It will generate a new disk image with two rootfs partitions, install a
@@ -156,6 +157,8 @@ After it finishes, you can find your images in the `deploy` directory on your
 host machine.
 
 ## Next steps
+
+TODO
 
 Learning to configure the converted image:
 
