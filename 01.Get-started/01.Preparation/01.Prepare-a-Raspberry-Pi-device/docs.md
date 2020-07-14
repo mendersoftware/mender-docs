@@ -42,8 +42,8 @@ to flash the OS image to the device.
 We recommended to use the Raspberry Pi Imager tool, choose "Use custom" and
 browse to the downloaded Mender Raspberry Pi OS image.
 
-!!! Writing the SD card normally takes 20-30 minutes with the Raspberry Pi
-!!! Imager tool.
+!!! Writing the SD card takes 5-25 minutes,
+!!! mainly depending on your SD card and writer speed.
 
 ![connecting a device](image1.png)
 
