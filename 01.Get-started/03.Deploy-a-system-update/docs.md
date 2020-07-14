@@ -111,9 +111,6 @@ mender-artifact write rootfs-image \
     -S "${SSH_ARGS}"
 ```
 
-! You might need to enter the password of the user account on your device.
-
-
 ! Your device is not usable while the snapshot operation is in progress. Mender
 ! will freeze the storage device during this operation in order to create a
 ! consistent snapshot.
