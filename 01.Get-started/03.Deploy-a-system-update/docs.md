@@ -10,12 +10,14 @@ applications and the Linux kernel and ensure the device comes back in a
 consistent state even if the update process is interrupted for any reason such
 as power loss.
 
+
 ## Prerequisites
 
 You should:
 
 * have completed [Deploy an application update](../02.Deploy-an-application-update/docs.md)
 * know the IP address of your device
+
 
 ### Step 1 - Download the mender-artifact utility on your workstation
 
@@ -46,6 +48,7 @@ export PATH="${PATH}:${HOME}/bin"
 
 !!! Add above to `~/.bashrc` or equivalent to make it persistent across multiple
 !!! terminal sessions.
+
 
 ## Step 2 - Setup shell variables on your workstation
 
@@ -90,6 +93,7 @@ SSH_ARGS="-p 22"
 
 !!! If you are using a virtual device use `SSH_ARGS="-p 8822"`
 
+
 ## Step 3 - Create a Mender Artifact using the snapshot feature
 
 The easiest way to create system level updates is to use the **snapshot**
@@ -126,8 +130,33 @@ demonstrated below.
 
 ![connecting a device](Image_1.png)
 
-Once uploaded, go to the **DEPLOYMENTS** tab and click **CREATE DEPLOYMENT** in
+
+## Step 4 - Modify the device software
+
+While your Artifact is uploading we make some modifications to the device
+so we can see the effect of the deployment later.
+On your device, run the following command to install a text editor:
+
+```bash
+sudo apt update && sudo apt install vim --assume-yes
+```
+
+You can now run `vim` to verify it is installed, as you would expect. Note that
+this modification *is not part of your system snapshot* created above.
+
+
+## Step 5 - Deploy the snapshot and experiment
+
+Once the Artifact upload in Step 3 has finished,
+go to the **DEPLOYMENTS** tab and click **CREATE DEPLOYMENT** in
 order to deploy it to your device.
+
+Once this deployment finishes it will have the effect of restoring your full
+device root file system to the same state as when you created the snapshot in Step 3.
+You can verify this by trying to run `vim` again after the deployment has finished.
+It is gone! This is because your device file system did not have this application
+at the time you created the snapshot. This works for any change in the file system,
+including removing or installing software and changing any configuration.
 
 Please take a moment to experiment at this stage to familiarize yourself with
 robust system updates with Mender.
