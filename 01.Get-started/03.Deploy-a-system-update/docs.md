@@ -76,7 +76,7 @@ If you are unsure, you can check what the device is reporting on the server:
 Use the result from above to assign that value to `DEVICE_TYPE` shell variable:
 
 ```bash
-DEVICE_TYPE="raspberry4"
+DEVICE_TYPE="raspberrypi4"
 ```
 
 !!! Make sure to replace `raspberrypi4` with the specific value that you are
