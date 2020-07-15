@@ -36,7 +36,7 @@ Here is an example of a `mender.conf` file:
 
 The mechanism for providing the configuration file and specifying the configuration values will depend on your choice of OS distribution or build system.(TODO: Links)
 
-If you have already built an Artifact containing the rootfs, have a look at [modifying a configuration in a Mender Artifact](../../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#modifying-a-configuration-file).
+If you have already built an Artifact containing the rootfs, have a look at [modifying a configuration in a Mender Artifact](../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#modifying-a-configuration-file).
 
 
 

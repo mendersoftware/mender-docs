@@ -10,7 +10,7 @@ the idea of [Update Modules](../../02.Overview/15.Taxonomy/docs.md),  as describ
 Update Modules are executable files in the _/usr/share/mender/modules/v3_
 directory on the device (note: v3 is the current version of the protocol). The Mender
 client executes these files with a defined set of parameters to [perform the update](../../03.Devices/10.Update-Modules/docs.md#The-state-machine-workflow).
-All Update Modules originate from the artifacts of [a special payload and type](../../03.Devices/10.Update-Modules/#Create-an-Artifact-with-a-payload-for-the-new-Update-Module).
+All Update Modules originate from the artifacts of [a special payload and type](../../03.Devices/10.Update-Modules/docs.md#Create-an-Artifact-with-a-payload-for-the-new-Update-Module).
 
 When deploying updates using update modules, the Mender client will unpack the payload and then pass that to the Update Module with the correct arguments; the actual processing of the payload depends on the implementation of the update module. Mender imposes no limits on what the Update Module can or cannot do. In order to create an update module, you need to first create and install the actual code of the module, and then create an Artifact with the custom payload type. 
 
