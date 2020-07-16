@@ -118,7 +118,7 @@ a-country=Poland
 a-city=Krakow
 ```
 <!--AUTOVERSION: "mender/tree/%/support"/mender-->
-You can find some more useful scripts in [https://github.com/mendersoftware/mender/support](https://github.com/mendersoftware/mender/tree/2.2.0/support) directory.
+You can find some more useful scripts in [https://github.com/mendersoftware/mender/support](https://github.com/mendersoftware/mender/tree/2.3.0/support) directory.
 
 ## Default inventory
 
@@ -129,7 +129,7 @@ By default, and without any inventory scripts in, the Mender client sends the fo
 |:----:|:-------:|:-------------:|
 | `device_type`  | type of the device | "raspberrypi4" |
 | `artifact_name` | name of the currently installed artifact | "release-v1" |
-| `mender_client_version` | client version | "2.2.0" |
+| `mender_client_version` | client version | "2.3.0" |
 
 ## Final remarks
 You should not use inventory attributes to uniquely identify a device. They are
