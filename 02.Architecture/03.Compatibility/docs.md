@@ -57,20 +57,16 @@ the lists of specific criteria we use for our versioning policy.
 In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3.0) versions and the [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) is updated accordingly to easily support these new features (e.g. by exposing new [MENDER_* variables](../../artifacts/yocto-project/variables)). The [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) has branches corresponding to [versions of the Yocto Project](https://wiki.yoctoproject.org/wiki/Releases?target=_blank).
 
 <!--AUTOVERSION: "Mender client %"/ignore "| % ("/ignore-->
-| Client vs meta-mender version   | Older              | pyro (2.3) | rocko (2.4)           | sumo (2.5)            | thud (2.6)            | warrior (2.7)<sup>4</sup> |
-|---------------------------------|--------------------|------------|-----------------------|-----------------------|-----------------------|---------------------------|
-| Mender client 1.0.x             | Varies<sup>1</sup> | no         | no                    | no                    | no                    | no                        |
-| Mender client 1.1.x             | Varies<sup>1</sup> | community  | no                    | no                    | no                    | no                        |
-| Mender client 1.2.x             | Varies<sup>1</sup> | community  | community             | no                    | no                    | no                        |
-| Mender client 1.3.x             | Varies<sup>1</sup> | community  | community             | community             | no                    | no                        |
-| Mender client 1.4.x             | Varies<sup>1</sup> | community  | community             | community             | no                    | no                        |
-| Mender client 1.5.x             | Varies<sup>1</sup> | community  | community             | community             | community             | no                        |
-| Mender client 1.6.x             | Varies<sup>1</sup> | community  | community             | community             | community             | no                        |
-| Mender client 1.7.x<sup>2</sup> | Varies<sup>1</sup> | community  | community<sup>3</sup> | community<sup>3</sup> | community<sup>3</sup> | stable                    |
-| Mender client 2.0.x             | no                 | no         | community             | community             | community             | stable                    |
-| Mender client 2.1.x             | no                 | no         | community             | community             | community             | stable                    |
-| Mender client 2.2.x             | no                 | no         | no                    | community             | community             | stable                    |
-| Mender client 2.3.x             | no                 | no         | no                    | no                    | no                    | stable                    |
+| Client vs meta-mender version   | Older     | thud (2.6)            | warrior (2.7)<sup>4</sup> | zeus (3.0) |
+|---------------------------------|-----------|-----------------------|---------------------------|------------|
+| Older                           | community | no                    | no                        | no         |
+| Mender client 1.5.x             | community | community             | no                        | no         |
+| Mender client 1.6.x             | community | community             | no                        | no         |
+| Mender client 1.7.x<sup>2</sup> | community | community<sup>3</sup> | community                 | no         |
+| Mender client 2.0.x             | community | community             | community                 | no         |
+| Mender client 2.1.x             | community | community             | community                 | no         |
+| Mender client 2.2.x             | community | community             | community                 | stable     |
+| Mender client 2.3.x             | community | no                    | community                 | stable     |
 
 !!! <sup>1</sup> For very old versions of Yocto, check the documentation for that specific Mender version using the left hand menu.
 

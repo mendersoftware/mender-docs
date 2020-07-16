@@ -160,11 +160,11 @@ MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
 <!--AUTOVERSION: "mender-convert/blob/%/configs"/mender-convert -->
 Refer to the following device integrations for more details regarding standalone U-Boot integration:
     - Raspberry Pi 3
-      - [configs/raspberrypi_config](https://github.com/mendersoftware/mender-convert/blob/2.1.0b1/configs/raspberrypi_config)
-      - [configs/raspberrypi3_config](https://github.com/mendersoftware/mender-convert/blob/2.1.0b1/configs/raspberrypi3_config)
+      - [configs/raspberrypi_config](https://github.com/mendersoftware/mender-convert/blob/2.1.0/configs/raspberrypi_config)
+      - [configs/raspberrypi3_config](https://github.com/mendersoftware/mender-convert/blob/2.1.0/configs/raspberrypi3_config)
     - Raspberry Pi 4
-      - [configs/raspberrypi_config](https://github.com/mendersoftware/mender-convert/blob/2.1.0b1/configs/raspberrypi_config)
-      - [configs/raspberrypi4_config](https://github.com/mendersoftware/mender-convert/blob/2.1.0b1/configs/raspberrypi4_config)
+      - [configs/raspberrypi_config](https://github.com/mendersoftware/mender-convert/blob/2.1.0/configs/raspberrypi_config)
+      - [configs/raspberrypi4_config](https://github.com/mendersoftware/mender-convert/blob/2.1.0/configs/raspberrypi4_config)
     - Beaglebone Black
-      - [configs/beaglebone_black_base_config](https://github.com/mendersoftware/mender-convert/blob/2.1.0b1/configs/beaglebone_black_base_config)
-      - [configs/beaglebone_black_debian_sdcard_config](https://github.com/mendersoftware/mender-convert/blob/2.1.0b1/configs/beaglebone_black_debian_sdcard_config)
+      - [configs/beaglebone_black_base_config](https://github.com/mendersoftware/mender-convert/blob/2.1.0/configs/beaglebone_black_base_config)
+      - [configs/beaglebone_black_debian_sdcard_config](https://github.com/mendersoftware/mender-convert/blob/2.1.0/configs/beaglebone_black_debian_sdcard_config)
