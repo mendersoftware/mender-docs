@@ -92,7 +92,7 @@ creating the signature.
 
 <!--AUTOVERSION: "mender-%"/mender-->
 ```bash
-mender-artifact write rootfs-image -t beaglebone -n mender-2.3.0b1 -f core-image-base-beaglebone.ext4 -k private.key -o artifact-signed.mender
+mender-artifact write rootfs-image -t beaglebone -n mender-2.3.0 -f core-image-base-beaglebone.ext4 -k private.key -o artifact-signed.mender
 ```
 
 ! Make sure the Artifact name specified by the `-n` parameter in the above command matches the value specified when your file system image was created.
