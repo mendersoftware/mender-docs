@@ -4,6 +4,121 @@ taxonomy:
     category: docs
 ---
 
+## Mender 2.3.1
+
+_Released 07.15.2020_
+
+### Statistics
+
+A total of 1694 lines added, 726 removed (delta 968)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 30 (44.1%) |
+| Lluis Campos | 19 (27.9%) |
+| Fabio Tranchitella | 6 (8.8%) |
+| Manuel Zedel | 5 (7.4%) |
+| Alf-Rune Siqveland | 4 (5.9%) |
+| Ole Petter Orhagen | 1 (1.5%) |
+| Eystein Måløy Stenberg | 1 (1.5%) |
+| Christian Müller | 1 (1.5%) |
+| Andreas Henriksson | 1 (1.5%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 1292 (76.0%) |
+| Lluis Campos | 268 (15.8%) |
+| Alf-Rune Siqveland | 79 (4.6%) |
+| Fabio Tranchitella | 28 (1.6%) |
+| Manuel Zedel | 25 (1.5%) |
+| Ole Petter Orhagen | 2 (0.1%) |
+| Christian Müller | 2 (0.1%) |
+| Andreas Henriksson | 2 (0.1%) |
+| Eystein Måløy Stenberg | 1 (0.1%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Ole Petter Orhagen | 1 (0.1%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Ole Petter Orhagen | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 66 (97.1%) |
+| Wifx | 1 (1.5%) |
+| andreas@fatal.se | 1 (1.5%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 1695 (99.8%) |
+| Wifx | 2 (0.1%) |
+| andreas@fatal.se | 2 (0.1%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+| Employers with the most hackers (total 9) | |
+|---|---|
+| Northern.tech | 7 (77.8%) |
+| Wifx | 1 (11.1%) |
+| andreas@fatal.se | 1 (11.1%) |
+
+### Changelogs
+
+#### create-artifact-worker (1.0.1)
+
+New changes in create-artifact-worker since 1.0.0:
+
+* Limit the workflows create-artifact-worker can process
+* increase download and upload time-outs to 15 minutes
+  ([MEN-3539](https://tracker.mender.io/browse/MEN-3539))
+* handle multiple device types as comma-separated values
+  ([MEN-3771](https://tracker.mender.io/browse/MEN-3771))
+
+#### gui (2.3.1)
+
+New changes in gui since 2.3.0:
+
+* fixed deb package installation instructions not containing package version
+
+#### integration (2.3.1)
+
+New changes in integration since 2.3.0:
+
+* Update the data migration scripts
+* Restore docker-compose.storage.s3.yml
+* Upgrade create-artifact-worker to 1.0.1.
+* Upgrade gui to 2.3.1.
+* Upgrade mender to 2.2.1.
+* Upgrade mender-artifact to 3.3.1.
+
+#### mender (2.2.1)
+
+New changes in mender since 2.2.0:
+
+* Fix check-update and send-inventory options on deb install
+  ([MEN-3277](https://tracker.mender.io/browse/MEN-3277))
+* Fix Stat_t.Dev/Rdev type assumption
+* Log state-script stderr as info, not error
+  ([MEN-3316](https://tracker.mender.io/browse/MEN-3316))
+* Fix broken logging to syslogger.
+  ([MEN-3676](https://tracker.mender.io/browse/MEN-3676))
+* Add support for libubootenv as boot loader user space tools
+  provider. ([MEN-3684](https://tracker.mender.io/browse/MEN-3684))
+* Make interactive setup device type default to configured device type
+  ([MEN-3777](https://tracker.mender.io/browse/MEN-3777))
+
+#### mender-artifact (3.3.1)
+
+New changes in mender-artifact since 3.3.0:
+
+* Bugfix: ignored signals no longer cause a signal-loop
+  ([MEN-3276](https://tracker.mender.io/browse/MEN-3276))
+
+
 ## meta-mender zeus-v2020.06
 
 _Released 06.12.2020_
