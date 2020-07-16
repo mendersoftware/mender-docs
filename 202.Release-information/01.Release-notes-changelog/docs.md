@@ -4,6 +4,551 @@ taxonomy:
     category: docs
 ---
 
+## mender-convert 2.1.0
+
+_Released 07.16.2020_
+
+### Statistics
+
+A total of 845 lines added, 251 removed (delta 594)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 21 (36.2%) |
+| Drew Moseley | 14 (24.1%) |
+| Ole Petter Orhagen | 14 (24.1%) |
+| Nate Baker | 3 (5.2%) |
+| Marek Belisko | 2 (3.4%) |
+| Lluis Campos | 2 (3.4%) |
+| Dell Green | 1 (1.7%) |
+| Sylvain | 1 (1.7%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Ole Petter Orhagen | 450 (52.9%) |
+| Kristian Amlie | 203 (23.9%) |
+| Drew Moseley | 80 (9.4%) |
+| Marek Belisko | 66 (7.8%) |
+| Nate Baker | 30 (3.5%) |
+| Dell Green | 18 (2.1%) |
+| Lluis Campos | 3 (0.4%) |
+| Sylvain | 1 (0.1%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 51 (87.9%) |
+| bakern@gmail.com | 3 (5.2%) |
+| open-nandra | 2 (3.4%) |
+| TideWise Ltda. | 1 (1.7%) |
+| Ideaworks Ltd | 1 (1.7%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 736 (86.5%) |
+| open-nandra | 66 (7.8%) |
+| bakern@gmail.com | 30 (3.5%) |
+| Ideaworks Ltd | 18 (2.1%) |
+| TideWise Ltda. | 1 (0.1%) |
+
+| Employers with the most hackers (total 8) | |
+|---|---|
+| Northern.tech | 4 (50.0%) |
+| open-nandra | 1 (12.5%) |
+| bakern@gmail.com | 1 (12.5%) |
+| Ideaworks Ltd | 1 (12.5%) |
+| TideWise Ltda. | 1 (12.5%) |
+
+### Changelogs
+
+#### mender-convert (2.1.0)
+
+New changes in mender-convert since 2.1.0b1:
+
+* Fix incorrect file ownership on artifact_info file
+* Extract debian package contents with sudo.
+* Fix missed log messages.
+* Unmount filesystem images before creating full image.
+* Upgrade to Mender 2.3.0 and mender-artifact 3.4.0.
+
+New changes in mender-convert since 2.0.1:
+
+* Use consistent compression and archive naming.
+* Upgrade to GRUB 2.04.
+* Add detection of problematic versions of U-Boot and kernel.
+  ([MEN-2404](https://tracker.mender.io/browse/MEN-2404))
+* Added color to the terminal log messages
+* Added hooks to Mender convert
+  This extends the current functionality of the platform_ function
+  functionality into using hooks, so that each modification step can be called
+  from multiple configuration files.
+  The valid hooks are:
+   * PLATFORM_MODIFY_HOOKS
+   * PLATFORM_PACKAGE_HOOKS
+   * USER_LOCAL_MODIFY_HOOKS
+  and can be appended to as a regular bash array.
+* Add COMFILE Pi config
+* Add support for GPT partition tables
+  ([MEN-2151](https://tracker.mender.io/browse/MEN-2151))
+* Don't truncate output diskimage while writing partitions.
+* configs: Added ubuntu x86-64 hdd defconfig
+* Print improved error diagnostics before exiting on an error
+* Add the state scripts version file.
+* Ensure overlay files are owned by root.
+* Setting of version variable now works if project added as a git submodule
+  ([MEN-3475](https://tracker.mender.io/browse/MEN-3475))
+* configs: Added generic x86-64 hdd defconfig
+* Added automatic decompression of input images, so that the convert
+  tool now accepts compressed input images in the formats: lzma, gzip, and zip.
+  The images will also be recompressed to the input format automatically.
+  ([MEN-3052](https://tracker.mender.io/browse/MEN-3052))
+* add 'rootwait' to bootargs
+* grubenv: Handle debug command prompt when running as EFI app.
+* utilize regexp to dynamically set mender_grub_storage_device
+* Remove kernel_devicetree from EFI path.
+  This information is not used when loading via UEFI, instead it is
+  queried directly from the UEFI provider.
+* Fix 404 download errors when trying to run `docker-build`.
+* Upgrade mender-client to 2.3.0b1 and mender-artifact to
+  3.4.0b1.
+
+
+## Mender 2.4.0
+
+_Released 07.15.2020_
+
+### Statistics
+
+A total of 61736 lines added, 31536 removed (delta 30200)
+
+| Developers with the most changesets | |
+|---|---|
+| Manuel Zedel | 279 (25.2%) |
+| Fabio Tranchitella | 195 (17.6%) |
+| Lluis Campos | 117 (10.6%) |
+| Alf-Rune Siqveland | 96 (8.7%) |
+| Ole Petter Orhagen | 95 (8.6%) |
+| Marcin Chalczynski | 95 (8.6%) |
+| Krzysztof Jaskiewicz | 75 (6.8%) |
+| Peter Grzybowski | 74 (6.7%) |
+| Kristian Amlie | 57 (5.1%) |
+| Michael Clelland | 9 (0.8%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Alf-Rune Siqveland | 14542 (20.0%) |
+| Manuel Zedel | 12578 (17.3%) |
+| Fabio Tranchitella | 12100 (16.7%) |
+| Peter Grzybowski | 9860 (13.6%) |
+| Marcin Chalczynski | 7617 (10.5%) |
+| Lluis Campos | 6680 (9.2%) |
+| Krzysztof Jaskiewicz | 5938 (8.2%) |
+| Ole Petter Orhagen | 1876 (2.6%) |
+| Kristian Amlie | 907 (1.2%) |
+| Sam Baxter | 333 (0.5%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Manuel Zedel | 2200 (7.0%) |
+| Mirza Krak | 3 (0.0%) |
+
+| Developers with the most signoffs (total 9) | |
+|---|---|
+| Manuel Zedel | 7 (77.8%) |
+| Ole Petter Orhagen | 2 (22.2%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 928 (83.8%) |
+| RnDity | 170 (15.4%) |
+| iZotope | 5 (0.5%) |
+| developer@lights0123.com | 1 (0.1%) |
+| Wifx | 1 (0.1%) |
+| andreas@fatal.se | 1 (0.1%) |
+| aduskett@gmail.com | 1 (0.1%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 58695 (80.8%) |
+| RnDity | 13555 (18.7%) |
+| iZotope | 333 (0.5%) |
+| developer@lights0123.com | 10 (0.0%) |
+| aduskett@gmail.com | 6 (0.0%) |
+| Wifx | 2 (0.0%) |
+| andreas@fatal.se | 2 (0.0%) |
+
+| Employers with the most signoffs (total 9) | |
+|---|---|
+| Northern.tech | 9 (100.0%) |
+
+| Employers with the most hackers (total 17) | |
+|---|---|
+| Northern.tech | 10 (58.8%) |
+| RnDity | 2 (11.8%) |
+| iZotope | 1 (5.9%) |
+| developer@lights0123.com | 1 (5.9%) |
+| aduskett@gmail.com | 1 (5.9%) |
+| Wifx | 1 (5.9%) |
+| andreas@fatal.se | 1 (5.9%) |
+
+### Changelogs
+
+#### create-artifact-worker (1.0.1)
+
+New changes in create-artifact-worker since 1.0.1b1:
+
+* increase download and upload time-outs to 15 minutes
+  ([MEN-3539](https://tracker.mender.io/browse/MEN-3539))
+* handle multiple device types as comma-separated values
+  ([MEN-3771](https://tracker.mender.io/browse/MEN-3771))
+
+New changes in create-artifact-worker since 1.0.0:
+
+* Limit the workflows create-artifact-worker can process
+
+#### deployments (2.0.0)
+
+New changes in deployments since 2.0.0b1:
+
+* Remove mongodb write/read concerns, let the connection string set them
+
+New changes in deployments since 1.9.0:
+
+* New devices API endpoint POST /deployments/next
+* Introduce new flow for creating deployments and selecting
+  deployments for the devices. Device deployments are no longer created
+  on deployment creation. Device deployments are being created when the
+  devices are asking for the deployment.
+* New method for listing IDs of devices being part of particular deployment.
+* GET /deployments returns total count in the header
+* add configuration option to enable/disable path-style AWS S3 URIs
+  ([MEN-2499](https://tracker.mender.io/browse/MEN-2499))
+
+#### deployments-enterprise (2.0.0)
+
+New changes in deployments-enterprise since 2.0.0b1:
+
+* Remove mongodb write/read concerns, let the connection string set them
+
+New changes in deployments-enterprise since 1.9.0:
+
+* api: New method for endpoint POST /device/deployments/next
+* Support for artifacts provides/depends attributes
+* New devices API endpoint POST /deployments/next
+* api/http: introduce endpoint for creating dynamic deplyment
+* Introduce new flow for creating deployments and selecting
+  deployments for the devices. Device deployments are no longer created
+  on deployment creation. Device deployments are being created when the
+  devices are asking for the deployment.
+* New method for listing IDs of devices being part of particular deployment.
+* introduce new deployment status - scheduled
+  Deployment status is "scheduled" when the deployment
+  contains at least one phase, the first phase contains
+  start_ts field and the deployment didn't start yet.
+  Changes:
+  - introduce new deployment status scheduled;
+  - adjust status calculation;
+* GET /deployments returns total count in the header
+* add configuration option to enable/disable path-style AWS S3 URIs
+  ([MEN-2499](https://tracker.mender.io/browse/MEN-2499))
+
+#### deviceauth (2.3.0)
+
+New changes in deviceauth since 2.2.0:
+
+* Remove DEVICEAUTH_MAX_DEVICES_LIMIT_DEFAULT configuration option
+* propagate-inventory-statuses command added
+
+#### gui (2.4.0)
+
+New changes in gui since 2.4.0b1:
+
+* fixed an issue that caused unexpected deployment device states to crash the deployment report
+* fixed settings availability in OS & onprem-enterprise deployments
+* fixed check for group creation on mixed filter scopes & added short explanation
+
+New changes in gui since 2.3.0:
+
+* added artifact metadata to payload view if present
+* made recent update times easier to read for devices & deployments
+* prevented a redirect after deployment creation
+* fixed an issue that would let the user list crash after user removal
+* let mender plan be reflected in settings & billing page
+* made scheduling deployments an enterprise plan only feature
+* made phased deployments an enterprise plan only feature
+* ensured deployment report is closed on abort to prevent UI crash
+* made artifact dependencies available in expanded artifact details component
+* fixed an issue that kept the header information from updating after login
+* fixed an issue that prevented deployments from being possible
+* reverted limit to 10 most popular device inventory attributes
+* Docker HEALTHCHECK added
+  ([MEN-2855](https://tracker.mender.io/browse/MEN-2855))
+* refactored group creation dialog to support device additions
+* added support for non-expandable device lists
+  + improved rendering speed for device lists
+* fixed an issue the broke the device auth state refresh on auth update
+* added possibility to enable retries for deployments on deployment creation
+* added filtering as you type based on client side store data
+* added filtering possibility to pending & rejected device lists
+* fixed a bug that prevented pagination in non-accepted device lists
+* fixed page setting through custom entry in device lists
+* allowed filters to be stored & using v2 inventory API
+* allowed filtered to also use pagination
+* improved device retrieval performance on group & filter changes
+* prevented an error that could crash the ui when a device hasn't received status information
+* added recently used device filters functionality
+* fixed an issue that prevented device identity attributes from being populated
+* fixed an error that prevented device lists from updating after authset dismissal
+* fixed deb package installation instructions not containing package version
+* improved deployments view to show scheduled deployments as well
+* fixed an issue that could have prevented the deployment report from opening
+* fixed a bug that prevented a group from being added after deletion
+* fixed an issue that prevented group creation in short succession
+* reduced device calls made in deployment report
+  by reusing existing device information if possible
+* Make GUI aware that we have a pre-converted image for Raspberry Pi 4.
+* refactored deployment counting to use count header, reducing request load
+* fixed an issue that might prevent OS users from changing their settings
+* fixed identity attribute filtering on authorized devices
+  ([MEN-3517](https://tracker.mender.io/browse/MEN-3517))
+* enabled automatic selection on filter autocomplete
+  ([MEN-3518](https://tracker.mender.io/browse/MEN-3518))
+* ensured onboarding tooltip shows up after custom artifact is uploaded
+
+#### integration (2.4.0)
+
+New changes in integration since 2.4.0b1:
+
+* Restore docker-compose.storage.s3.yml
+* Upgrade create-artifact-worker to 1.0.1.
+* Upgrade deployments to 2.0.0.
+* Upgrade deployments-enterprise to 2.0.0.
+* Upgrade deviceauth to 2.3.0.
+* Upgrade gui to 2.4.0.
+* Upgrade inventory to 2.0.0.
+* Upgrade inventory-enterprise to 2.0.0.
+* Upgrade mender to 2.3.0.
+* Upgrade mender-api-gateway-docker to 2.2.0.
+* Upgrade mender-artifact to 3.4.0.
+* Upgrade mender-cli to 1.4.0.
+* Upgrade tenantadm to 2.0.0.
+* Upgrade useradm to 1.11.0.
+* Upgrade useradm-enterprise to 1.11.0.
+* Upgrade workflows to 1.1.0.
+* Upgrade workflows-enterprise to 1.1.0.
+
+New changes in integration since 2.3.0:
+
+* Fix broken artifact creation in the UI.
+  ([MEN-3166](https://tracker.mender.io/browse/MEN-3166))
+* device-auth: call mender-workflows-server
+  ([MEN-2963](https://tracker.mender.io/browse/MEN-2963))
+* use workflows-server in tenantadm
+  ([MEN-2965](https://tracker.mender.io/browse/MEN-2965))
+* Update backend images to use version mender-master
+  Introducing a new versioning schema, from this release on the Docker
+  images for the backend repositories will be published in their
+  corresponding registries following the Mender product version.
+  This means tags `<service>:mender-<mender-version>` instead of the old
+  tags `<service>:<service-version>`, which will eventually be deprecated.
+  ([MEN-3466](https://tracker.mender.io/browse/MEN-3466))
+* Upgrade create-artifact-worker to 1.0.1b1.
+* Upgrade deployments to 2.0.0b1.
+* Upgrade deployments-enterprise to 2.0.0b1.
+* Upgrade deviceauth to 2.3.0b1.
+* Upgrade gui to 2.4.0b1.
+* Upgrade inventory to 2.0.0b1.
+* Add inventory-enterprise 2.0.0b1.
+* Upgrade mender to 2.3.0b1.
+* Upgrade mender-api-gateway-docker to 2.2.0b1.
+* Upgrade mender-artifact to 3.4.0b1.
+* Upgrade mender-cli to 1.4.0b1.
+* Upgrade tenantadm to 2.0.0b1.
+* Upgrade useradm to 1.11.0b1.
+* Upgrade useradm-enterprise to 1.11.0b1.
+* Upgrade workflows to 1.1.0b1.
+* Add workflows-enterprise 1.1.0b1.
+
+#### inventory (2.0.0)
+
+New changes in inventory since 1.7.0:
+
+* New v2/filters/search endpoint.
+
+#### inventory-enterprise (2.0.0)
+
+* Introduced inventory-enterprise.
+
+#### mender (2.3.0)
+
+New changes in mender since 2.2.0:
+
+* Fix "State transition loop detected" when retrying status update.
+* Remove text/template dependency from the cli library reducing
+  mender client binary size by approximately 20%
+* Renamed systemd mender.service -> mender-client.service
+  ([MEN-2948](https://tracker.mender.io/browse/MEN-2948))
+* Fixes various logging nitpicks
+* Deprecated the log-modules cli commandline flag
+  ([MEN-3251](https://tracker.mender.io/browse/MEN-3251))
+* Make the system logger respect the global log level
+  ([MEN-3135](https://tracker.mender.io/browse/MEN-3135))
+* Make the system logger write to the LOG_USER facility by default
+* Fix Stat_t.Dev/Rdev type assumption
+* Send Provides in the deployments API call
+  ([MEN-2587](https://tracker.mender.io/browse/MEN-2587))
+* Report function caller on all logs when loglevel=Debug
+
+#### mender-api-gateway-docker (2.2.0)
+
+New changes in mender-api-gateway-docker since 2.2.0b1:
+
+* Return valid JSON documents as error pages' payloads
+* Fix Artifact upload timeout bug
+
+New changes in mender-api-gateway-docker since 2.1.0:
+
+* RBAC: per device group restrictions support
+  ([MEN-3240](https://tracker.mender.io/browse/MEN-3240))
+* Increased timeouts to handle longer requests processing.
+
+#### mender-artifact (3.4.0)
+
+New changes in mender-artifact since 3.3.0:
+
+* Accept suffix '.img' for mender-artifact modifiable images
+* Fix: Update `rootfs_image_checksum` provide when repacking Artifact.
+* Improved error message when an update-module is missing
+  ([MEN-3007](https://tracker.mender.io/browse/MEN-3007))
+* Bugfix: ignored signals no longer cause a signal-loop
+  ([MEN-3276](https://tracker.mender.io/browse/MEN-3276))
+* Add ability for artifact install to create directories
+* Enabled autocompletion of mender-artifact sub-commands in bash & zsh
+  Now, following the instructions in the Readme file, auto-completion of
+  mender-artifact commands can be enabled by the user, such that writing:
+  mender-artifact <TAB>
+  results in:
+  ```
+  ➜ mender-artifact git:(bashexpansion) ✗ mender-artifact
+  cat          -- cat [artifact|sdimg|uefiimg]:<filepath>
+  cp           -- cp <src> <dst>
+  dump         -- Dump contents from Artifacts
+  help      h  -- Shows a list of commands or help for one command
+  install      -- install -m <permissions> <hostfile> [artifact|sdimg|uefiimg]
+  modify       -- Modifies image or artifact file.
+  read         -- Reads artifact file.
+  rm           -- rm [artifact|sdimg|uefiimg]:<filepath>
+  sign         -- Signs existing artifact file.
+  validate     -- Validates artifact file.
+  write        -- Writes artifact file.
+  ```
+  and
+  ```
+  ➜ mender-artifact git:(bashexpansion) ✗ mender-artifact write
+  help          h  -- Shows a list of commands or help for one command
+  module-image     -- Writes Mender artifact for an update module
+  rootfs-image     -- Writes Mender artifact containing rootfs image
+  ```
+  for sub-commands.
+* The Artifact parser now fails when no 'device-type' is found in a payload.
+* Disallow writes of UpdateModule Artifacts with no 'device-type' flag
+* Return an error code if CLI read <artifact> fails
+* Disallow parsing ArtifactV2 with empty device type field
+* Display all CLI commands and flags sorted alplhabetically
+* Missing a required CLI flag will now return an error
+* Indexed the CLI commands by category
+  This should make it easier to distinguish the large number of CLI commands
+  depending on their intended usage.
+  The two categories added are:
+  * Artifact creation and validation
+  * Artifact modification
+  And should help to roughly set the commands apart depending on if they are
+  intended to work with a standard Artifact, either creating it or validating it.
+  The second category is intended for modification of already existing artifacts,
+  such as adding or removing files, signing or modifying the Artifact name.
+* Add(cli): Print the urfave/cli error on error
+
+#### mender-cli (1.4.0)
+
+New changes in mender-cli since 1.3.0:
+
+* Support for two factor authentication token for login
+  ([MEN-3176](https://tracker.mender.io/browse/MEN-3176))
+* Change the name of the two-factor auth option.
+
+#### tenantadm (2.0.0)
+
+New changes in tenantadm since 2.0.0b1:
+
+* Remove mongodb write/read concerns, let the connection string set them
+
+New changes in tenantadm since 1.1.0:
+
+* docs/internal: extend tenant object with "plan" field
+* Use workflows instead of conductor for API orchestration
+* New database schema (1.4.0), avoid the creation of multiple (inactive) organization with the same username
+* Make create-org plan default to enterprise
+* Make device limits configurable and set enterprise default: no limit
+* Fix: Delete all tenants' users on tenant deletion
+
+#### useradm (1.11.0)
+
+New changes in useradm since 1.11.0b1:
+
+* Remove mongodb write concern, let the connection string set them
+
+New changes in useradm since 1.10.0:
+
+* Routine version update to stay in sync with Enterprise.
+
+#### useradm-enterprise (1.11.0)
+
+New changes in useradm-enterprise since 1.11.0b1:
+
+* Remove mongodb write concern, let the connection string set them
+
+New changes in useradm-enterprise since 1.10.0:
+
+* extend UserUpdate endpoint with array of roles
+  ([MEN-3451](https://tracker.mender.io/browse/MEN-3451))
+* Allow updating of roles via UpdateUser
+  ([MEN-3452](https://tracker.mender.io/browse/MEN-3452))
+* RBAC: per device group restrictions support
+  ([MEN-3240](https://tracker.mender.io/browse/MEN-3240))
+* set-roles command creates default roles
+* Roles management API calls
+  ([MEN-3447](https://tracker.mender.io/browse/MEN-3447))
+
+#### workflows (1.1.0)
+
+New changes in workflows since 1.0.0:
+
+* decommision and provision device workflows
+  ([MEN-2963](https://tracker.mender.io/browse/MEN-2963))
+* replace all values in processJobString
+  ([MEN-2965](https://tracker.mender.io/browse/MEN-2965))
+* list-jobs comand, extra logging and go fmt
+
+#### workflows-enterprise (1.1.0)
+
+* Introduced workflows-enterprise.
+
+
+## mender-binary-delta 1.1.0
+
+_Released 07.15.2020_
+
+#### mender-binary-delta (1.1.0)
+
+New changes in mender-binary-delta since 1.0.1:
+
+* Make the CLI artifact-name argument optional
+  ([MEN-2642](https://tracker.mender.io/browse/MEN-2642))
+* Now the binary delta tools supports depends and provides
+  ([MEN-2642](https://tracker.mender.io/browse/MEN-2642))
+* Add the ability to write transitional artifacts
+  ([MEN-2948](https://tracker.mender.io/browse/MEN-2948))
+
+
 ## meta-mender zeus-v2020.06
 
 _Released 06.12.2020_
@@ -355,481 +900,6 @@ New changes in meta-mender since warrior-v2020.05:
   ```
   PREFERRED_VERSION_pn-mender-binary-delta = "1.1.0b1"
   ```
-
-
-## mender-convert 2.1.0b1
-
-_Released 06.08.2020_
-
-### Statistics
-
-A total of 829 lines added, 237 removed (delta 592)
-
-| Developers with the most changesets | |
-|---|---|
-| Kristian Amlie | 19 (37.3%) |
-| Ole Petter Orhagen | 14 (27.5%) |
-| Drew Moseley | 9 (17.6%) |
-| Nate Baker | 3 (5.9%) |
-| Marek Belisko | 2 (3.9%) |
-| Lluis Campos | 2 (3.9%) |
-| Dell Green | 1 (2.0%) |
-| Sylvain | 1 (2.0%) |
-
-| Developers with the most changed lines | |
-|---|---|
-| Ole Petter Orhagen | 450 (54.1%) |
-| Kristian Amlie | 196 (23.6%) |
-| Drew Moseley | 68 (8.2%) |
-| Marek Belisko | 66 (7.9%) |
-| Nate Baker | 30 (3.6%) |
-| Dell Green | 18 (2.2%) |
-| Lluis Campos | 3 (0.4%) |
-| Sylvain | 1 (0.1%) |
-
-| Top changeset contributors by employer | |
-|---|---|
-| Northern.tech | 44 (86.3%) |
-| bakern@gmail.com | 3 (5.9%) |
-| open-nandra | 2 (3.9%) |
-| TideWise Ltda. | 1 (2.0%) |
-| Ideaworks Ltd | 1 (2.0%) |
-
-| Top lines changed by employer | |
-|---|---|
-| Northern.tech | 717 (86.2%) |
-| open-nandra | 66 (7.9%) |
-| bakern@gmail.com | 30 (3.6%) |
-| Ideaworks Ltd | 18 (2.2%) |
-| TideWise Ltda. | 1 (0.1%) |
-
-| Employers with the most hackers (total 8) | |
-|---|---|
-| Northern.tech | 4 (50.0%) |
-| open-nandra | 1 (12.5%) |
-| bakern@gmail.com | 1 (12.5%) |
-| Ideaworks Ltd | 1 (12.5%) |
-| TideWise Ltda. | 1 (12.5%) |
-
-### Changelogs
-
-#### mender-convert (2.1.0b1)
-
-New changes in mender-convert since 2.0.1:
-
-* Use consistent compression and archive naming.
-* Upgrade to GRUB 2.04.
-* Add detection of problematic versions of U-Boot and kernel.
-  ([MEN-2404](https://tracker.mender.io/browse/MEN-2404))
-* Added color to the terminal log messages
-* Added hooks to Mender convert
-  This extends the current functionality of the platform_ function
-  functionality into using hooks, so that each modification step can be called
-  from multiple configuration files.
-  The valid hooks are:
-   * PLATFORM_MODIFY_HOOKS
-   * PLATFORM_PACKAGE_HOOKS
-   * USER_LOCAL_MODIFY_HOOKS
-  and can be appended to as a regular bash array.
-* Add COMFILE Pi config
-* Add support for GPT partition tables
-  ([MEN-2151](https://tracker.mender.io/browse/MEN-2151))
-* Don't truncate output diskimage while writing partitions.
-* configs: Added ubuntu x86-64 hdd defconfig
-* Print improved error diagnostics before exiting on an error
-* Add the state scripts version file.
-* Ensure overlay files are owned by root.
-* Setting of version variable now works if project added as a git submodule
-  ([MEN-3475](https://tracker.mender.io/browse/MEN-3475))
-* configs: Added generic x86-64 hdd defconfig
-* Added automatic decompression of input images, so that the convert
-  tool now accepts compressed input images in the formats: lzma, gzip, and zip.
-  The images will also be recompressed to the input format automatically.
-  ([MEN-3052](https://tracker.mender.io/browse/MEN-3052))
-* add 'rootwait' to bootargs
-* grubenv: Handle debug command prompt when running as EFI app.
-* utilize regexp to dynamically set mender_grub_storage_device
-* Remove kernel_devicetree from EFI path.
-  This information is not used when loading via UEFI, instead it is
-  queried directly from the UEFI provider.
-* Fix 404 download errors when trying to run `docker-build`.
-* Upgrade mender-client to 2.3.0b1 and mender-artifact to
-  3.4.0b1.
-
-
-## mender-binary-delta 1.1.0b1
-
-_Released 06.04.2020_
-
-#### mender-binary-delta (1.1.0b1)
-
-New changes in mender-binary-delta since 1.0.1:
-
-* Make the CLI artifact-name argument optional
-  ([MEN-2642](https://tracker.mender.io/browse/MEN-2642))
-* Now the binary delta tools supports depends and provides
-  ([MEN-2642](https://tracker.mender.io/browse/MEN-2642))
-* Add the ability to write transitional artifacts
-  ([MEN-2948](https://tracker.mender.io/browse/MEN-2948))
-
-
-## Mender 2.4.0b1
-
-_Released 06.04.2020_
-
-### Statistics
-
-A total of 59035 lines added, 29566 removed (delta 29469)
-
-| Developers with the most changesets | |
-|---|---|
-| Manuel Zedel | 243 (24.2%) |
-| Fabio Tranchitella | 168 (16.7%) |
-| Lluis Campos | 102 (10.1%) |
-| Ole Petter Orhagen | 96 (9.5%) |
-| Marcin Chalczynski | 95 (9.4%) |
-| Alf-Rune Siqveland | 90 (8.9%) |
-| Krzysztof Jaskiewicz | 75 (7.5%) |
-| Peter Grzybowski | 68 (6.8%) |
-| Kristian Amlie | 48 (4.8%) |
-| Michael Clelland | 7 (0.7%) |
-
-| Developers with the most changed lines | |
-|---|---|
-| Alf-Rune Siqveland | 13082 (18.8%) |
-| Manuel Zedel | 11976 (17.2%) |
-| Fabio Tranchitella | 11700 (16.8%) |
-| Peter Grzybowski | 9465 (13.6%) |
-| Marcin Chalczynski | 7617 (11.0%) |
-| Lluis Campos | 6516 (9.4%) |
-| Krzysztof Jaskiewicz | 5938 (8.5%) |
-| Ole Petter Orhagen | 1878 (2.7%) |
-| Kristian Amlie | 889 (1.3%) |
-| Sam Baxter | 333 (0.5%) |
-
-| Developers with the most lines removed | |
-|---|---|
-| Manuel Zedel | 2401 (8.1%) |
-| Mirza Krak | 3 (0.0%) |
-
-| Developers with the most signoffs (total 1) | |
-|---|---|
-| Ole Petter Orhagen | 1 (100.0%) |
-
-| Top changeset contributors by employer | |
-|---|---|
-| Northern.tech | 828 (82.3%) |
-| RnDity | 170 (16.9%) |
-| iZotope | 5 (0.5%) |
-| developer@lights0123.com | 1 (0.1%) |
-| andreas@fatal.se | 1 (0.1%) |
-| aduskett@gmail.com | 1 (0.1%) |
-
-| Top lines changed by employer | |
-|---|---|
-| Northern.tech | 55652 (80.0%) |
-| RnDity | 13555 (19.5%) |
-| iZotope | 333 (0.5%) |
-| developer@lights0123.com | 10 (0.0%) |
-| aduskett@gmail.com | 6 (0.0%) |
-| andreas@fatal.se | 2 (0.0%) |
-
-| Employers with the most signoffs (total 1) | |
-|---|---|
-| Northern.tech | 1 (100.0%) |
-
-| Employers with the most hackers (total 16) | |
-|---|---|
-| Northern.tech | 10 (62.5%) |
-| RnDity | 2 (12.5%) |
-| iZotope | 1 (6.2%) |
-| developer@lights0123.com | 1 (6.2%) |
-| aduskett@gmail.com | 1 (6.2%) |
-| andreas@fatal.se | 1 (6.2%) |
-
-### Changelogs
-
-#### create-artifact-worker (1.0.1b1)
-
-New changes in create-artifact-worker since 1.0.0:
-
-* Limit the workflows create-artifact-worker can process
-
-#### deployments (2.0.0b1)
-
-New changes in deployments since 1.9.0:
-
-* New devices API endpoint POST /deployments/next
-* Introduce new flow for creating deployments and selecting
-  deployments for the devices. Device deployments are no longer created
-  on deployment creation. Device deployments are being created when the
-  devices are asking for the deployment.
-* New method for listing IDs of devices being part of particular deployment.
-* GET /deployments returns total count in the header
-* add configuration option to enable/disable path-style AWS S3 URIs
-  ([MEN-2499](https://tracker.mender.io/browse/MEN-2499))
-
-#### deployments-enterprise (2.0.0b1)
-
-New changes in deployments-enterprise since 1.9.0:
-
-* api: New method for endpoint POST /device/deployments/next
-* Support for artifacts provides/depends attributes
-* New devices API endpoint POST /deployments/next
-* api/http: introduce endpoint for creating dynamic deplyment
-* Introduce new flow for creating deployments and selecting
-  deployments for the devices. Device deployments are no longer created
-  on deployment creation. Device deployments are being created when the
-  devices are asking for the deployment.
-* New method for listing IDs of devices being part of particular deployment.
-* introduce new deployment status - scheduled
-  Deployment status is "scheduled" when the deployment
-  contains at least one phase, the first phase contains
-  start_ts field and the deployment didn't start yet.
-  Changes:
-  - introduce new deployment status scheduled;
-  - adjust status calculation;
-* GET /deployments returns total count in the header
-* add configuration option to enable/disable path-style AWS S3 URIs
-  ([MEN-2499](https://tracker.mender.io/browse/MEN-2499))
-
-#### deviceauth (2.3.0b1)
-
-New changes in deviceauth since 2.2.0:
-
-* Remove DEVICEAUTH_MAX_DEVICES_LIMIT_DEFAULT configuration option
-* propagate-inventory-statuses command added
-
-#### gui (2.4.0b1)
-
-New changes in gui since 2.3.0:
-
-* added artifact metadata to payload view if present
-* made recent update times easier to read for devices & deployments
-* prevented a redirect after deployment creation
-* fixed an issue that would let the user list crash after user removal
-* let mender plan be reflected in settings & billing page
-* made scheduling deployments an enterprise plan only feature
-* made phased deployments an enterprise plan only feature
-* ensured deployment report is closed on abort to prevent UI crash
-* made artifact dependencies available in expanded artifact details component
-* fixed an issue that kept the header information from updating after login
-* fixed an issue that prevented deployments from being possible
-* reverted limit to 10 most popular device inventory attributes
-* Docker HEALTHCHECK added
-  ([MEN-2855](https://tracker.mender.io/browse/MEN-2855))
-* refactored group creation dialog to support device additions
-* added support for non-expandable device lists
-  + improved rendering speed for device lists
-* fixed an issue the broke the device auth state refresh on auth update
-* added possibility to enable retries for deployments on deployment creation
-* added filtering as you type based on client side store data
-* added filtering possibility to pending & rejected device lists
-* fixed a bug that prevented pagination in non-accepted device lists
-* fixed page setting through custom entry in device lists
-* allowed filters to be stored & using v2 inventory API
-* allowed filtered to also use pagination
-* improved device retrieval performance on group & filter changes
-* prevented an error that could crash the ui when a device hasn't received status information
-* added recently used device filters functionality
-* fixed an issue that prevented device identity attributes from being populated
-* fixed an error that prevented device lists from updating after authset dismissal
-* fixed deb package installation instructions not containing package version
-* improved deployments view to show scheduled deployments as well
-* fixed an issue that could have prevented the deployment report from opening
-* fixed a bug that prevented a group from being added after deletion
-* fixed an issue that prevented group creation in short succession
-* reduced device calls made in deployment report
-  by reusing existing device information if possible
-* Make GUI aware that we have a pre-converted image for Raspberry Pi 4.
-* refactored deployment counting to use count header, reducing request load
-* fixed an issue that might prevent OS users from changing their settings
-* fixed identity attribute filtering on authorized devices
-  ([MEN-3517](https://tracker.mender.io/browse/MEN-3517))
-* enabled automatic selection on filter autocomplete
-  ([MEN-3518](https://tracker.mender.io/browse/MEN-3518))
-* ensured onboarding tooltip shows up after custom artifact is uploaded
-
-#### integration (2.4.0b1)
-
-New changes in integration since 2.3.0:
-
-* Fix broken artifact creation in the UI.
-  ([MEN-3166](https://tracker.mender.io/browse/MEN-3166))
-* device-auth: call mender-workflows-server
-  ([MEN-2963](https://tracker.mender.io/browse/MEN-2963))
-* use workflows-server in tenantadm
-  ([MEN-2965](https://tracker.mender.io/browse/MEN-2965))
-* Update backend images to use version mender-master
-  Introducing a new versioning schema, from this release on the Docker
-  images for the backend repositories will be published in their
-  corresponding registries following the Mender product version.
-  This means tags `<service>:mender-<mender-version>` instead of the old
-  tags `<service>:<service-version>`, which will eventually be deprecated.
-  ([MEN-3466](https://tracker.mender.io/browse/MEN-3466))
-* Upgrade create-artifact-worker to 1.0.1b1.
-* Upgrade deployments to 2.0.0b1.
-* Upgrade deployments-enterprise to 2.0.0b1.
-* Upgrade deviceauth to 2.3.0b1.
-* Upgrade gui to 2.4.0b1.
-* Upgrade inventory to 2.0.0b1.
-* Add inventory-enterprise 2.0.0b1.
-* Upgrade mender to 2.3.0b1.
-* Upgrade mender-api-gateway-docker to 2.2.0b1.
-* Upgrade mender-artifact to 3.4.0b1.
-* Upgrade mender-cli to 1.4.0b1.
-* Upgrade tenantadm to 2.0.0b1.
-* Upgrade useradm to 1.11.0b1.
-* Upgrade useradm-enterprise to 1.11.0b1.
-* Upgrade workflows to 1.1.0b1.
-* Add workflows-enterprise 1.1.0b1.
-
-#### inventory (2.0.0b1)
-
-New changes in inventory since 1.7.0:
-
-* New v2/filters/search endpoint.
-
-#### inventory-enterprise (2.0.0b1)
-
-* Introduced inventory-enterprise.
-
-#### mender (2.3.0b1)
-
-New changes in mender since 2.2.0:
-
-* Fix "State transition loop detected" when retrying status update.
-* Remove text/template dependency from the cli library reducing
-  mender client binary size by approximately 20%
-* Renamed systemd mender.service -> mender-client.service
-  ([MEN-2948](https://tracker.mender.io/browse/MEN-2948))
-* Fixes various logging nitpicks
-* Deprecated the log-modules cli commandline flag
-  ([MEN-3251](https://tracker.mender.io/browse/MEN-3251))
-* Make the system logger respect the global log level
-  ([MEN-3135](https://tracker.mender.io/browse/MEN-3135))
-* Make the system logger write to the LOG_USER facility by default
-* Fix Stat_t.Dev/Rdev type assumption
-* Send Provides in the deployments API call
-  ([MEN-2587](https://tracker.mender.io/browse/MEN-2587))
-* Report function caller on all logs when loglevel=Debug
-
-#### mender-api-gateway-docker (2.2.0b1)
-
-New changes in mender-api-gateway-docker since 2.1.0:
-
-* RBAC: per device group restrictions support
-  ([MEN-3240](https://tracker.mender.io/browse/MEN-3240))
-* Increased timeouts to handle longer requests processing.
-
-#### mender-artifact (3.4.0b1)
-
-New changes in mender-artifact since 3.3.0:
-
-* Accept suffix '.img' for mender-artifact modifiable images
-* Fix: Update `rootfs_image_checksum` provide when repacking Artifact.
-* Improved error message when an update-module is missing
-  ([MEN-3007](https://tracker.mender.io/browse/MEN-3007))
-* Bugfix: ignored signals no longer cause a signal-loop
-  ([MEN-3276](https://tracker.mender.io/browse/MEN-3276))
-* Add ability for artifact install to create directories
-* Enabled autocompletion of mender-artifact sub-commands in bash & zsh
-  Now, following the instructions in the Readme file, auto-completion of
-  mender-artifact commands can be enabled by the user, such that writing:
-  mender-artifact <TAB>
-  results in:
-  ```
-  ➜ mender-artifact git:(bashexpansion) ✗ mender-artifact
-  cat          -- cat [artifact|sdimg|uefiimg]:<filepath>
-  cp           -- cp <src> <dst>
-  dump         -- Dump contents from Artifacts
-  help      h  -- Shows a list of commands or help for one command
-  install      -- install -m <permissions> <hostfile> [artifact|sdimg|uefiimg]
-  modify       -- Modifies image or artifact file.
-  read         -- Reads artifact file.
-  rm           -- rm [artifact|sdimg|uefiimg]:<filepath>
-  sign         -- Signs existing artifact file.
-  validate     -- Validates artifact file.
-  write        -- Writes artifact file.
-  ```
-  and
-  ```
-  ➜ mender-artifact git:(bashexpansion) ✗ mender-artifact write
-  help          h  -- Shows a list of commands or help for one command
-  module-image     -- Writes Mender artifact for an update module
-  rootfs-image     -- Writes Mender artifact containing rootfs image
-  ```
-  for sub-commands.
-* The Artifact parser now fails when no 'device-type' is found in a payload.
-* Disallow writes of UpdateModule Artifacts with no 'device-type' flag
-* Return an error code if CLI read <artifact> fails
-* Disallow parsing ArtifactV2 with empty device type field
-* Display all CLI commands and flags sorted alplhabetically
-* Missing a required CLI flag will now return an error
-* Indexed the CLI commands by category
-  This should make it easier to distinguish the large number of CLI commands
-  depending on their intended usage.
-  The two categories added are:
-  * Artifact creation and validation
-  * Artifact modification
-  And should help to roughly set the commands apart depending on if they are
-  intended to work with a standard Artifact, either creating it or validating it.
-  The second category is intended for modification of already existing artifacts,
-  such as adding or removing files, signing or modifying the Artifact name.
-* Add(cli): Print the urfave/cli error on error
-
-#### mender-cli (1.4.0b1)
-
-New changes in mender-cli since 1.3.0:
-
-* Support for two factor authentication token for login
-  ([MEN-3176](https://tracker.mender.io/browse/MEN-3176))
-* Change the name of the two-factor auth option.
-
-#### tenantadm (2.0.0b1)
-
-New changes in tenantadm since 1.1.0:
-
-* docs/internal: extend tenant object with "plan" field
-* Use workflows instead of conductor for API orchestration
-* New database schema (1.4.0), avoid the creation of multiple (inactive) organization with the same username
-* Make create-org plan default to enterprise
-* Make device limits configurable and set enterprise default: no limit
-* Fix: Delete all tenants' users on tenant deletion
-
-#### useradm (1.11.0b1)
-
-New changes in useradm since 1.10.0:
-
-* Routine version update to stay in sync with Enterprise.
-
-#### useradm-enterprise (1.11.0b1)
-
-New changes in useradm-enterprise since 1.10.0:
-
-* extend UserUpdate endpoint with array of roles
-  ([MEN-3451](https://tracker.mender.io/browse/MEN-3451))
-* Allow updating of roles via UpdateUser
-  ([MEN-3452](https://tracker.mender.io/browse/MEN-3452))
-* RBAC: per device group restrictions support
-  ([MEN-3240](https://tracker.mender.io/browse/MEN-3240))
-* set-roles command creates default roles
-* Roles management API calls
-  ([MEN-3447](https://tracker.mender.io/browse/MEN-3447))
-
-#### workflows (1.1.0b1)
-
-New changes in workflows since 1.0.0:
-
-* decommision and provision device workflows
-  ([MEN-2963](https://tracker.mender.io/browse/MEN-2963))
-* replace all values in processJobString
-  ([MEN-2965](https://tracker.mender.io/browse/MEN-2965))
-* list-jobs comand, extra logging and go fmt
-
-#### workflows-enterprise (1.1.0b1)
-
-* Introduced workflows-enterprise.
 
 
 ## mender-convert 2.0.1
