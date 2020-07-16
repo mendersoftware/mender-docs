@@ -4,6 +4,22 @@ taxonomy:
     category: docs
 ---
 
+## mender-binary-delta 1.1.0
+
+_Released 07.15.2020_
+
+#### mender-binary-delta (1.1.0)
+
+New changes in mender-binary-delta since 1.0.1:
+
+* Make the CLI artifact-name argument optional
+  ([MEN-2642](https://tracker.mender.io/browse/MEN-2642))
+* Now the binary delta tools supports depends and provides
+  ([MEN-2642](https://tracker.mender.io/browse/MEN-2642))
+* Add the ability to write transitional artifacts
+  ([MEN-2948](https://tracker.mender.io/browse/MEN-2948))
+
+
 ## meta-mender zeus-v2020.06
 
 _Released 06.12.2020_
@@ -455,22 +471,6 @@ New changes in mender-convert since 2.0.1:
 * Fix 404 download errors when trying to run `docker-build`.
 * Upgrade mender-client to 2.3.0b1 and mender-artifact to
   3.4.0b1.
-
-
-## mender-binary-delta 1.1.0b1
-
-_Released 06.04.2020_
-
-#### mender-binary-delta (1.1.0b1)
-
-New changes in mender-binary-delta since 1.0.1:
-
-* Make the CLI artifact-name argument optional
-  ([MEN-2642](https://tracker.mender.io/browse/MEN-2642))
-* Now the binary delta tools supports depends and provides
-  ([MEN-2642](https://tracker.mender.io/browse/MEN-2642))
-* Add the ability to write transitional artifacts
-  ([MEN-2948](https://tracker.mender.io/browse/MEN-2948))
 
 
 ## Mender 2.4.0b1
