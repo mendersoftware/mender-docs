@@ -97,9 +97,9 @@ MENDER_ARTIFACT_NAME = "release-1"
 # If you need an earlier version, please uncomment the following and set to the
 # required version.
 #
-# PREFERRED_VERSION_pn-mender = "2.2.0"
-# PREFERRED_VERSION_pn-mender-artifact = "3.3.0"
-# PREFERRED_VERSION_pn-mender-artifact-native = "3.3.0"
+# PREFERRED_VERSION_pn-mender = "2.3.0"
+# PREFERRED_VERSION_pn-mender-artifact = "3.4.0"
+# PREFERRED_VERSION_pn-mender-artifact-native = "3.4.0"
 
 ARTIFACTIMG_FSTYPE = "ext4"
 
@@ -214,9 +214,9 @@ MACHINE = "<YOUR-MACHINE>"
 # If you need an earlier version, please uncomment the following and set to the
 # required version.
 #
-# PREFERRED_VERSION_pn-mender = "2.2.0"
-# PREFERRED_VERSION_pn-mender-artifact = "3.3.0"
-# PREFERRED_VERSION_pn-mender-artifact-native = "3.3.0"
+# PREFERRED_VERSION_pn-mender = "2.3.0"
+# PREFERRED_VERSION_pn-mender-artifact = "3.4.0"
+# PREFERRED_VERSION_pn-mender-artifact-native = "3.4.0"
 
 # The following settings to enable systemd are needed for all Yocto
 # releases sumo and older.  Newer releases have these settings conditionally
