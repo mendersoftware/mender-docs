@@ -4,6 +4,72 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender zeus-v2020.07
+
+_Released 07.16.2020_
+
+### Statistics
+
+A total of 203 lines added, 1050 removed (delta -847)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 15 (83.3%) |
+| Trevor Woerner | 1 (5.6%) |
+| Ole Petter Orhagen | 1 (5.6%) |
+| Lluis Campos | 1 (5.6%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 1145 (98.5%) |
+| Ole Petter Orhagen | 14 (1.2%) |
+| Trevor Woerner | 2 (0.2%) |
+| Lluis Campos | 2 (0.2%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Kristian Amlie | 862 (82.1%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 17 (94.4%) |
+| twoerner@gmail.com | 1 (5.6%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 1161 (99.8%) |
+| twoerner@gmail.com | 2 (0.2%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 3 (75.0%) |
+| twoerner@gmail.com | 1 (25.0%) |
+
+### Changelogs
+
+#### meta-mender (zeus-v2020.07)
+
+New changes in meta-mender since zeus-v2020.06:
+
+* Fix error message about `CONFIG_ENV_OFFSET` being wrong,
+  such as:
+  ```
+  ERROR: u-boot-fw-utils-mender-auto-provided-1.0-r0 do_configure: U-Boot configuration rpi_4_config has setting:
+  CONFIG_ENV_OFFSET=0x400000
+  CONFIG_ENV_OFFSET_REDUND=0x800000
+  but Mender expects:
+  CONFIG_ENV_OFFSET=0x800000
+  Please fix U-Boot’s configuration file.
+  ```
+* add support for separate A/B kernel partitions
+* U-Boot auto-configuration: Better algorithm for removing
+  options from defconfig files. This increases board compatibility.
+* uboot_auto_configure: build U-Boot the same way Yocto does
+* Add mender-2.2.1 and mender-artifact-3.3.1 recipes.
+* Add mender-2.3.0 and mender-artifact-3.4.0 recipes.
+* Add mender-binary-delta-1.1.0 release.
+
+
 ## mender-binary-delta 1.1.0
 
 _Released 07.15.2020_
