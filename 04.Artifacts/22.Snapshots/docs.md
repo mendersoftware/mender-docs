@@ -78,9 +78,28 @@ on the golden device. For example, the command:
 USER="user"
 ADDR="device-ip:port"
 
-mender-artifact write rootfs-image -f ssh://$USER@$ADDR \
+mender-artifact write rootfs-image -f ssh://${USER}@${ADDR} \
                                    -n artifact-name \
                                    -o snapshot-release.1.0.mender \
                                    -t device-type
 ```
 Yields the exact same artifact as above.
+
+Please note you can pass extra arguments to ssh. To do this, specify
+each one of them in a separate `-S "${SSH_ARG}"` option, e.g.:
+
+```bash
+USER="user"
+ADDR="device-ip"
+
+mender-artifact write rootfs-image \
+    -f ssh://"${USER}@${ADDR}" \
+    -n artifact-name \
+    -o snapshot-release.1.0.mender \
+    -t device-type
+    --ssh-args="-p 8122" \
+    --ssh-args="-o UserKnownHostsFile=/dev/null" \
+    --ssh-args="-o StrictHostKeyChecking=no" \
+    --ssh-args="-o PubKeyAuthentication=no"
+```
+
