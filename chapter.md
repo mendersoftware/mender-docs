@@ -10,7 +10,7 @@ For page headers the tag may come after due to misrendering if it is above.
 -->
 
 <!--AUTOVERSION: "### Development"/integration/complain-->
-### 2.3
+### 2.4
 
 # Documentation
 
