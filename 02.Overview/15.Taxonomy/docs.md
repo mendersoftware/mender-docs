@@ -88,5 +88,9 @@ receive any updates.
 by the Mender server to assign the right Artifact to a given Device based on
 software and hardware compatibility.
 
+* _Signing system_ - A separated and not publicly accessible part of an IT
+infrastructure used to cryptographically sign Artifacts or other items,
+in the asymmetric encryption model.
+
 * _Update Module_ - An extension to the Mender client for supporting a new type
 software update, such as a package manager, container or bootloader.
