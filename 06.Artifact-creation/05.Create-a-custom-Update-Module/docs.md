@@ -8,7 +8,7 @@ taxonomy:
 ## Introduction
 
 The historically first update mechanism in Mender was [dual rootfs updates](../../02.Overview/01.Introduction/docs.md#robust-system-updates). 
-There is an alternative called _Update modules_ which allow for different types of updates, including updates at the application level. This provides an opportunity to change the software on your devices in the active root filesystem.
+There is an alternative called _Update Modules_ which allow for different types of updates, including updates at the application level. This provides an opportunity to change the software on your devices in the active root filesystem.
 
 An _Update Module_ is an extension to the Mender client for supporting a new type of software update, such as a package manager, container, bootloader or even updates of nearby microcontrollers. You can tailor an Update Module to a specific device or environment (e.g. update a proprietary bootloader), or be more general-purpose (e.g. install a set of `.deb` packages.).
 
@@ -135,7 +135,7 @@ Then create a new Mender Artifact with the `hello-world` file as the only payloa
 The command line options are detailed below:
 * `-t` - The compatible device type of this Mender Artifact.
 * `-o` - The path where to place the output Mender Artifact. This should always have a .mender suffix.
-* `-T` - The payload type. It should be the same as the update module name and corresponds to the filename of the script which is present inside the `/usr/share/mender/modules/v3` directory.
+* `-T` - The payload type. It should be the same as the Update Module name and corresponds to the filename of the script which is present inside the `/usr/share/mender/modules/v3` directory.
 * `-n` - The name of the Mender Artifact.
 * `-f` - The path to the file(s) to send to the device(s) in the update.
 
@@ -187,7 +187,7 @@ The `mender-artifact` tool allows you to supply multiple files using the `-f` fl
 The command line options are detailed below:
 * `-t` - The compatible device type of this Mender Artifact.
 * `-o` - The path where to place the output Mender Artifact. This should always have a .mender suffix.
-* `-T` - The payload type. It should be the same as the update module name and corresponds to the filename of the script which is present inside the `/usr/share/mender/modules/v3` directory.
+* `-T` - The payload type. It should be the same as the Update Module name and corresponds to the filename of the script which is present inside the `/usr/share/mender/modules/v3` directory.
 * `-n` - The name of the Mender Artifact.
 * `-f` - The path to the file(s) to send to the device(s) in the update.
 
@@ -255,4 +255,4 @@ Because of the possible re-execution described above, you should develop Update 
 ## Further reading
 
 <!--AUTOVERSION: "blob/%/Documentation"/mender -->
-* [Update modules v3 protocol](https://github.com/mendersoftware/mender/blob/master/Documentation/update-modules-v3-file-api.md)
+* [Update Modules v3 protocol](https://github.com/mendersoftware/mender/blob/master/Documentation/update-modules-v3-file-api.md)
