@@ -16,7 +16,7 @@ You can find general-purpose Update Modules and documentation, including support
 
 This document introduces how Update Modules work, so you can develop your own Update Modules that meet your specific needs.
 
-An Update Module implements one or more of the actions that the Mender client carries out when installing an Artifact payload. The *core* action that all Update Modules must implement is the Install action, where the actual installation of an Artifact payload takes place. However, there are other actions that you may use depending on the desired functionality and use case for an Update Module, such as Rollback.
+An Update Module implements one or more of the actions that the Mender client carries out when installing an Artifact payload. The *core* action that all Update Modules must implement is the ArtifactInstall action, where the actual installation of an Artifact payload takes place. However, there are other actions that you may use depending on the desired functionality and use case for an Update Module, such as Rollback.
 
 ### The state machine workflow
 
