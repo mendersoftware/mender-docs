@@ -59,22 +59,22 @@ mender-artifact write module-image \
   -f authorized_keys 
 ```
 
-Note specifically that in this case we are creating a *module-image*, using the [single file](https://hub.mender.io/t/single-file/486/26) (update module)[(../../03.Devices/10.Update-Modules/docs.me]. The Artifact created will be compatible with the *raspberrypi4* device type, although you can specify multiple device types if needed. The name of the Artifact is declared as *updated-authorized_keys-1.0* and the payload files we created earlier are included. The resulting file `artifact.mender` holds the Artifact. Please note that, _single-file_ is both the name of the update module and the Artifact type. Please note also, that the payload files must use the name specified here.
+Note specifically that in this case we are creating a *module-image*, using the [single file](https://hub.mender.io/t/single-file/486/26) (Update Module)[(../../03.Devices/10.Update-Modules/docs.me]. The Artifact created will be compatible with the *raspberrypi4* device type, although you can specify multiple device types if needed. The name of the Artifact is declared as *updated-authorized_keys-1.0* and the payload files we created earlier are included. The resulting file `artifact.mender` holds the Artifact. Please note that, _single-file_ is both the name of the Update Module and the Artifact type. Please note also, that the payload files must use the name specified here.
 
-#### Update modules generation script
+#### Update Modules generation script
 
-<!--AUTOVERSION: "mendersoftware/mender/blob/%/support"/ignore-->
-You can see the above example in the [single file update module](https://hub.mender.io/t/single-file/486). You can also see how simple it is to [write a custom update module.](https://github.com/mendersoftware/mender/blob/master/support/modules/single-file)
+<!--AUTOVERSION: "mendersoftware/mender/blob/%/support"/mender-->
+You can see the above example in the [single file Update Module](https://hub.mender.io/t/single-file/486). You can also see how simple it is to [write a custom Update Module.](https://github.com/mendersoftware/mender/blob/master/support/modules/single-file)
 
-<!--AUTOVERSION: "mendersoftware/mender/blob/%/support"/ignore-->
-Also note that most of the update modules come with a [script to simplify the Artifact creation](https://github.com/mendersoftware/mender/blob/master/support/modules-artifact-gen/single-file-artifact-gen), but generally these are wrappers around `mender-artifact` utility to hide the complexity and make it easy to generate artifacts.
+<!--AUTOVERSION: "mendersoftware/mender/blob/%/support"/mender-->
+Also note that most of the Update Modules come with a [script to simplify the Artifact creation](https://github.com/mendersoftware/mender/blob/master/support/modules-artifact-gen/single-file-artifact-gen), but generally these are wrappers around `mender-artifact` utility to hide the complexity and make it easy to generate artifacts.
 
 #### Server side Artifact generation
 
 The [hosted Mender server](https://hosted.mender.io) and any on-premise server installation, can generate application update Artifacts automatically using the [single file](https://hub.mender.io/t/single-file/486)
-update module. You can test it by uploading any file to the [releases page](https://hosted.mender.io/ui/#/releases). The resulting Artifact
+Update Module. You can test it by uploading any file to the [releases page](https://hosted.mender.io/ui/#/releases). The resulting Artifact
 will carry the file you have uploaded, the destination
 directory, the filename, and permissions, exactly as we saw above.
 
 <!--AUTOVERSION: "mendersoftware/mender/blob/%/Documentation"/mender-->
-For more details on how to write update modules, and what exactly they are refer to [this section](../05.Create-a-custom-Update-Module/docs.md) and the [API specification](https://github.com/mendersoftware/mender/blob/2.2.0/Documentation/update-modules-v3-file-api.md).
+For more details on how to write Update Modules, and what exactly they are refer to [this section](../05.Create-a-custom-Update-Module/docs.md) and the [API specification](https://github.com/mendersoftware/mender/blob/2.2.0/Documentation/update-modules-v3-file-api.md).

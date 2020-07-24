@@ -22,10 +22,22 @@ If you would like to run Mender in *standalone* mode, you
 must make sure that the Mender client does *not run as a daemon*. In most cases this
 will entail disabling or removing any `systemd` unit that starts the Mender client. If you want to check if Mender is running as a daemon, you can try the following command:
 ```bash
-pi@raspberrypi:~ $ ps axuw | grep 'mende[r]'
-root       374  0.1  0.6 895248 12604 ?        Ssl  06:45   0:00 /usr/bin/mender -daemon
+pi@raspberrypi:~$ sudo systemctl status mender-client
+● mender-client.service - Mender OTA update service
+   Loaded: loaded (/lib/systemd/system/mender-client.service; enabled; vendor preset: enabled)
+   Active: active (running) since Thu 2020-07-23 03:24:54 BST; 16h ago
+ Main PID: 320 (mender)
+    Tasks: 9 (limit: 1012)
+   Memory: 7.5M
+   CGroup: /system.slice/mender-client.service
+           └─320 /usr/bin/mender -daemon
 ```
-The existence of the `mender -daemon` process means that in order to use standalone mode you have to stop Mender running as a daemon.
+
+The status reported as active indicates that in order to use standalone mode you have to stop Mender running as a daemon.
+```bash
+pi@raspberrypi:~$ sudo systemctl stop mender-client
+```
+
 
 ## Deploy an Artifact to a device
 
