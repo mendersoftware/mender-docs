@@ -177,13 +177,3 @@ MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
     --config configs/raspberrypi3_config \
     --overlay rootfs_overlay_demo/
 ```
-
--------------------------------------------------------------------------------
-
-## Next step
-
-TODO
-
-Learning about the configuration variables available:
-
-[Configuration variables](../03.variables/docs.md)

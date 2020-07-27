@@ -155,15 +155,3 @@ diagnostics information.
 
 After it finishes, you can find your images in the `deploy` directory on your
 host machine.
-
-## Next steps
-
-TODO
-
-Learning to configure the converted image:
-
-[Image configuration](../02.image-configuration/docs.md)
-
-Learning about the configuration variables available:
-
-[Configuration variables](../03.variables/docs.md)
