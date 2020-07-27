@@ -12,7 +12,7 @@ device.
 ### A disk image for the device storage
 
 You need an image file to flash to the entire storage of the device. This section assumes that you
-already have one. If not, please go back to [the overview](../overview) to find the best approach
+already have one. If not, please review [the overview](../overview) to find the best approach
 for you.
 
 Image files end with the three letters `img`, but not necessarily only those three letters. Common
@@ -36,7 +36,7 @@ unzip <IMAGE-NAME>.img.zip
 
 In this initial provisioning you will flash and overwrite everything on the given device storage.
 
-There are several methods to flash storage, and the simplest case is if your device uses a SD
+There are several methods to flash storage, and the simplest case is if your device uses an SD
 card. Currently, this is the approach we assume you take here, but the image file can be used to
 flash any block device. See [Flash memory
 types](../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md#flash-memory-types) for

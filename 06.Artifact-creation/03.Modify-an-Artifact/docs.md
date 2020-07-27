@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-It is possible to modify an Artifact after it has been created. There two types of modifications
+It is possible to modify an Artifact after it has been created. There are two types of modifications
 available: Header modification and content modification. Header modification is supported for all
 Artifact types, while content modification is only supported for `rootfs-image` Artifacts.
 

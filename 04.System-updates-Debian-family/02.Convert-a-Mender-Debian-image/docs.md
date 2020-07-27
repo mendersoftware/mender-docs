@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 
-`mender-convert` can be used to convert existing disk images for use with
+The `mender-convert` utility can be used to convert existing disk images for use with
 Mender. It will generate a new disk image with two rootfs partitions, install a
 bootloader that supports booting either of the root partitions and install the
 Mender client and its configuration.
@@ -37,12 +37,11 @@ modified during deployments. It is simply the "source" for generating the
 Artifacts that you deploy to the devices in the field.
 
 In order to create another OTA update, the device with the golden image is
-booted again, i.e. the steps from 2. and onwards are carried out again.
+booted again, i.e. the steps from 2. onwards are carried out again.
 
 !!! `mender-convert` is currently tested on BeagleBone, Raspberry Pi 3 and
 !!! Raspberry Pi 4, using official Debian or Raspberry Pi OS images. The intention is
-!!! to extend and test `mender-convert` to cover more boards and OSes and
-!!! finally make it board-agnostic.
+!!! to extend and test `mender-convert` to cover more boards and OSes.
 
 ## Prerequisites
 
