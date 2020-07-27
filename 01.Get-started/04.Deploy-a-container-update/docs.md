@@ -145,7 +145,7 @@ Generate a Mender Artifact that will deploy the `hello-world` Docker container i
 Upload the file `hello-world-container-update.mender` from the previous step
 to the hosted Mender. Go to the **RELEASES** tab in the UI and upload it.
 
-Once uploaded, click **CREATE DEPLYOMENT WITH THIS RELEASE** in order to deploy
+Once uploaded, click **CREATE DEPLOYMENT WITH THIS RELEASE** in order to deploy
 it to your device.
 
 If the deployment of `hello-world-container-update.mender` is successful, you
