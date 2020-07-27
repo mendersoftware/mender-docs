@@ -81,4 +81,3 @@ Mender has official support for [the Yocto build system](../../System-updates-Yo
 
 For help from the community, as well as links to board integrations, visit [Mender
 Hub](https://hub.mender.io/?target=_blank).
-=======
