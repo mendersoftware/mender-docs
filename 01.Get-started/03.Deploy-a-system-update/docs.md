@@ -85,13 +85,13 @@ DEVICE_TYPE="raspberrypi4"
 !!! Make sure to replace `raspberrypi4` with the specific value that you are
 !!! seeing in your setup
 
-Set `SSH_ARGS` shell variable to specify the SSH access port:
+Set `SSH_ARG` shell variable to specify the SSH access port:
 
 ```bash
-SSH_ARGS="-p 22"
+SSH_ARG="-p 22"
 ```
 
-!!! If you are using a virtual device use `SSH_ARGS="-p 8822"`
+!!! If you are using a virtual device use `SSH_ARG="-p 8822"`
 
 
 ## Step 3 - Create a Mender Artifact using the snapshot feature
@@ -112,7 +112,7 @@ mender-artifact write rootfs-image \
     -t "${DEVICE_TYPE}" \
     -n system-v1 \
     -o system-v1.mender \
-    -S "${SSH_ARGS}"
+    -S "${SSH_ARG}"
 ```
 
 ! Your device is not usable while the snapshot operation is in progress. Mender
