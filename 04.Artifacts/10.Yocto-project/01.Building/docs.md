@@ -88,10 +88,10 @@ MENDER_ARTIFACT_NAME = "release-1"
 # The version of Mender to build. This needs to match an existing recipe in the meta-mender repository.
 #
 # Given your Yocto Project version, see which versions of Mender you can currently build here:
-# https://docs.mender.io/architecture/compatibility#mender-client-and-yocto-project-version
+# https://docs.mender.io/overview/compatibility#mender-client-and-yocto-project-version
 #
 # Given a Mender client version, see the corresponding version of the mender-artifact utility:
-# https://docs.mender.io/architecture/compatibility#mender-clientserver-and-artifact-format
+# https://docs.mender.io/overview/compatibility#mender-clientserver-and-artifact-format
 #
 # Note that by default this will select the latest released version of the tools.
 # If you need an earlier version, please uncomment the following and set to the
@@ -116,7 +116,7 @@ ARTIFACTIMG_FSTYPE = "ext4"
 
 # Build for Mender demo server
 #
-# https://docs.mender.io/getting-started/on-premise-installation/create-a-test-environment
+# https://docs.mender.io/administration/demo-installation
 #
 # Uncomment below and update IP address to match the machine running the
 # Mender demo server
@@ -124,7 +124,7 @@ ARTIFACTIMG_FSTYPE = "ext4"
 
 # Build for Mender production setup (on-prem)
 #
-# https://docs.mender.io/artifac../03.Building-for-production/docs.md
+# https://docs.mender.io/administration/production-installation
 #
 # Uncomment below and update the URL to match your configured domain
 # name and provide the path to the generated server.crt file.
@@ -205,10 +205,10 @@ MACHINE = "<YOUR-MACHINE>"
 # The version of Mender to build. This needs to match an existing recipe in the meta-mender repository.
 #
 # Given your Yocto Project version, see which versions of Mender you can currently build here:
-# https://docs.mender.io/architecture/compatibility#mender-client-and-yocto-project-version
+# https://docs.mender.io/overview/compatibility#mender-client-and-yocto-project-version
 #
 # Given a Mender client version, see the corresponding version of the mender-artifact utility:
-# https://docs.mender.io/architecture/compatibility#mender-clientserver-and-artifact-format
+# https://docs.mender.io/overview/compatibility#mender-clientserver-and-artifact-format
 #
 # Note that by default this will select the latest released version of the tools.
 # If you need an earlier version, please uncomment the following and set to the
@@ -241,7 +241,7 @@ ARTIFACTIMG_FSTYPE = "ext4"
 
 # Build for Mender demo server
 #
-# https://docs.mender.io/getting-started/on-premise-installation/create-a-test-environment
+# https://docs.mender.io/administration/demo-installation
 #
 # Uncomment below and update IP address to match the machine running the
 # Mender demo server
@@ -249,7 +249,7 @@ ARTIFACTIMG_FSTYPE = "ext4"
 
 # Build for Mender production setup (on-prem)
 #
-# https://docs.mender.io/artifac../03.Building-for-production/docs.md
+# https://docs.mender.io/administration/production-installation
 #
 # Uncomment below and update the URL to match your configured domain
 # name and provide the path to the generated server.crt file.
