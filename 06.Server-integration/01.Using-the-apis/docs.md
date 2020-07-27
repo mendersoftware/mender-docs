@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-The Mender server microservices are all accessible using an HTTPS API. These APIs can be used to configure the server (for example, pre-authorizing devices) or implementing custom workflows (for example, integrating the Mender server into an existing device management system.) There are separate APIs for [Open Source](../../200.APIs/01.Open-source/docs.md) and [Enterprise](../../200.APIs/02.Enterprise/docs.md).
+The Mender server microservices are all accessible using an HTTPS API. These APIs can be used to configure the server (for example, preauthorizing devices) or implementing custom workflows (for example, integrating the Mender server into an existing device management system.) There are separate APIs for [Open Source](../../200.APIs/01.Open-source/docs.md) and [Enterprise](../../200.APIs/02.Enterprise/docs.md).
 
 There are many ways to interact with Mender's REST APIs and the most common ones are shown below.
 

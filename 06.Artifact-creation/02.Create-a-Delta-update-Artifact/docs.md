@@ -12,7 +12,7 @@ is relatively small. To address this issue you can use
 pass only the difference between the two images.
 
 To generate binary delta Artifacts, you must start with two full file system Artifacts. You can use [Yocto](https://hub.mender.io/t/robust-delta-update-rootfs/1144),
-[mender-convert](../../03.Devices/03.Debian-family/docs.md), or any mechanism of your choice to create the images. You can generate an binary default Artiifact with the following command.
+[mender-convert](../../03.Devices/03.Debian-family/docs.md), or any mechanism of your choice to create the images. You can generate an binary default Artifact with the following command.
 
 ```bash
 ./mender-binary-delta-generator \
