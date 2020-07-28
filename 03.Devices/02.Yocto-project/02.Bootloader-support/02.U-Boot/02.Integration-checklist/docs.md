@@ -12,8 +12,8 @@ In order to ensure that the necessary components for Mender have been integrated
 
 This checklist will verify some key functionality aspects of the Mender integration. It will verify that:
 
-1. u-boot-fw-utils tools are present on the device
-2. the U-Boot bootloader and u-boot-fw-utils agree on the format for the U-Boot environment. The format of the U-Boot environment is checksummed and highly device dependent, which is why this check is necessary
+1. libubootenv tools are present on the device
+2. the U-Boot bootloader and libubootenv agree on the format for the U-Boot environment. The format of the U-Boot environment is checksummed and highly device dependent, which is why this check is necessary
 3. the correct kernel is loaded from partition A
 4. the correct kernel is loaded from partition B
 5. the correct rootfs is mounted when partition A is active
@@ -60,7 +60,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 4. Flash the `base-image.sdimg` image to the device and boot it.
 
-5. Verify that the two commands `fw_printenv` and `fw_setenv` are in the path and are executable. Calling them with no arguments will should give a variable listing and an error about missing variable name, respectively. This verifies that u-boot-fw-utils tools are present on the device.
+5. Verify that the two commands `fw_printenv` and `fw_setenv` are in the path and are executable. Calling them with no arguments will should give a variable listing and an error about missing variable name, respectively. This verifies that libubootenv tools are present on the device.
 
 6. Now we will test that storing and reading values in the U-Boot environment works. Run:
 
@@ -104,7 +104,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
     mender_uboot_test=1
     ```
 
-    in other words the same value that was set earlier. This verifies that U-Boot the bootloader, and u-boot-fw-utils agree on format for the U-Boot environment.
+    in other words the same value that was set earlier. This verifies that U-Boot the bootloader, and libubootenv agree on format for the U-Boot environment.
 
 11. Now we will verify that Mender is running. Run the following:
 

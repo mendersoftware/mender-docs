@@ -68,21 +68,6 @@ This is most likely because you are producing an image that has a lot of small f
 * Decrease the size of each block. This can be done by setting `EXTRA_IMAGECMD_ext4 = " -b 1024"` in `local.conf`. The default is 4096, it must be a power of 2, and it must not be smaller than 1024.
 
 
-## I get a build error "fw_printenv: File format not recognized"
-
-The symptom is an error message similar to this:
-
-```
-ERROR: u-boot-fw-utils-mender-auto-provided-1.0-r0 do_package: objcopy failed with exit code 1 (cmd was 'arm-poky-linux-gnueabi-objcopy' --only-keep-debug '/home/user/poky/build/tmp/work/cortexa7hf-neon-poky-linux-gnueabi/u-boot-fw-utils-mender-auto-provided/1.0-r0/package/sbin/fw_printenv' '/home/user/poky/build/tmp/work/cortexa7hf-neon-poky-linux-gnueabi/u-boot-fw-utils-mender-auto-provided/1.0-r0/package/sbin/.debug/fw_printenv'):
-arm-poky-linux-gnueabi-objcopy:/home/user/poky/build/tmp/work/cortexa7hf-neon-poky-linux-gnueabi/u-boot-fw-utils-mender-auto-provided/1.0-r0/package/sbin/fw_printenv: File format not recognized
-ERROR: u-boot-fw-utils-mender-auto-provided-1.0-r0 do_package: Function failed: split_and_strip_files
-ERROR: Logfile of failure stored in: /home/user/poky/build/tmp/work/cortexa7hf-neon-poky-linux-gnueabi/u-boot-fw-utils-mender-auto-provided/1.0-r0/temp/log.do_package.15130
-ERROR: Task (/home/user/poky/meta-mender/meta-mender-core/recipes-bsp/u-boot/u-boot-fw-utils-mender-auto-provided_1.0.bb:do_package) failed with exit code '1'
-```
-
-This is a known bug in U-Boot versions prior to v2017.05. If you get this error, the auto-provided recipe won't work, so you will have to carry out the steps in [the u-boot-fw-utils tutorial](../../03.Devices/02.Yocto-project/02.Bootloader-support/02.U-Boot/01.Manual-U-Boot-integration/docs.md#u-boot-fw-utils). Note that only the section under "u-boot-fw-utils" is necessary, the other sections on the same page, such as `MENDER_UBOOT_AUTO_CONFIGURE = "0"`, should not be necessary to carry out unless you have other reasons to do so.
-
-
 ## I get a build error if I am using PREFERRED_PROVIDER_virtual/bootloader instead of PREFERRED_PROVIDER_u-boot
 
 The symptom is an error message similar to this:
