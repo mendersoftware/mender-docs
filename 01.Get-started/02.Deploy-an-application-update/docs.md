@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 To deploy an application update you should follow the UI tooltips presented on
-hosted Mneder.
+hosted Mender.
 
 This tutorial is only here as a reference if you need additional guidance or
 would like to get an overview of the steps necessary to deploy an application
@@ -26,7 +26,7 @@ Go to the **Releases** tab and select the target release already available.
 
 ![connecting a device](Image_5.png)
 
-Click **CREATE DEPLYOMENT WITH THIS RELEASE** as shown below.
+Click **CREATE DEPLOYMENT WITH THIS RELEASE** as shown below.
 
 ![create a deployment](Image_6.png)
 
@@ -77,7 +77,7 @@ Drag-and-drop or click **browse** to select the file for upload.
 When you upload a single file to the Mender server, you will get a wizard to
 create a [Mender Artifact](../../02.Overview/02.Artifact/docs.md)
 of the type `file`, which allows you deploy single files to your device. You can
-use the default values prefilled by the Mender UI and click **NEXT**.
+use the default values pre-filled by the Mender UI and click **NEXT**.
 
 ![Upload web page](Image_16.png)
 

@@ -35,7 +35,7 @@ where only one can be accepted at a given time:
 documentation on [Delta updates](../06.Delta-update/docs.md) for more information.
 
 * _Board integration_ - The low-level integration required to enable system
-updates with Mender on a board. Often includes OS boot loader and storage
+updates with Mender on a board. Often includes OS bootloader and storage
 integration and requires customization based on the hardware and OS.
 
 * _Deployment_ - The process of delivering software to devices. It consists of

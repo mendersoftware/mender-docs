@@ -86,11 +86,11 @@ MENDER_ARTIFACT_NAME=release-1 ./mender-convert \
 These three variables hold lists of hooks:
 
 * `PLATFORM_MODIFY_HOOKS` - Run after the filesystem is prepared, but before the image is created.
-* `PLATFORM_PACKAGE_HOOKS` - Run after the image has been created, but before compressions and bmap
+* `PLATFORM_PACKAGE_HOOKS` - Run after the image has been created, but before compression and bmap
   creation.
 * `USER_LOCAL_MODIFY_HOOK` - Run after `PLATFORM_PACKAGE_HOOKS`.
 
-!!! Note that the variables come prefilled with `PLATFORM_MODIFY_HOOKS=(platform_modify)`,
+!!! Note that the variables come with default values of `PLATFORM_MODIFY_HOOKS=(platform_modify)`,
 !!! `PLATFORM_PACKAGE_HOOKS=(platform_package)` and `USER_LOCAL_MODIFY_HOOKS=(user_local_modify)`.
 !!! This is because the `platform_modify`, `platform_package`, and `user_local_modify` function
 !!! overrides were the only way to specify hooks in mender-convert 2.0.
