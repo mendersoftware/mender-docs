@@ -4,6 +4,100 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender dunfell-v2020.07
+
+_Released 07.28.2020_
+
+### Statistics
+
+A total of 895 lines added, 2274 removed (delta -1379)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 26 (83.9%) |
+| Peter Grzybowski | 1 (3.2%) |
+| Lluis Campos | 1 (3.2%) |
+| Corey Cothrum | 1 (3.2%) |
+| Ole Petter Orhagen | 1 (3.2%) |
+| Trevor Woerner | 1 (3.2%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 2435 (96.4%) |
+| Corey Cothrum | 72 (2.8%) |
+| Ole Petter Orhagen | 14 (0.6%) |
+| Peter Grzybowski | 2 (0.1%) |
+| Lluis Campos | 2 (0.1%) |
+| Trevor Woerner | 2 (0.1%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Kristian Amlie | 1459 (64.2%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 29 (93.5%) |
+| twoerner@gmail.com | 1 (3.2%) |
+| contact@coreycothrum.com | 1 (3.2%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 2453 (97.1%) |
+| contact@coreycothrum.com | 72 (2.8%) |
+| twoerner@gmail.com | 2 (0.1%) |
+
+| Employers with the most hackers (total 6) | |
+|---|---|
+| Northern.tech | 4 (66.7%) |
+| contact@coreycothrum.com | 1 (16.7%) |
+| twoerner@gmail.com | 1 (16.7%) |
+
+### Changelogs
+
+#### meta-mender (dunfell-v2020.07)
+
+New changes in meta-mender since zeus-v2020.06:
+
+* uboot_auto_configure: build U-Boot the same way Yocto does
+* Fix error message about `CONFIG_ENV_OFFSET` being wrong,
+  such as:
+  ```
+  ERROR: u-boot-fw-utils-mender-auto-provided-1.0-r0 do_configure: U-Boot configuration rpi_4_config has setting:
+  CONFIG_ENV_OFFSET=0x400000
+  CONFIG_ENV_OFFSET_REDUND=0x800000
+  but Mender expects:
+  CONFIG_ENV_OFFSET=0x800000
+  Please fix U-Boot’s configuration file.
+  ```
+* add support for separate A/B kernel partitions
+* Add MENDER_EXTRA_PARTS_SIZES_MB variable
+* U-Boot auto-configuration: Better algorithm for removing
+  options from defconfig files. This increases board compatibility.
+* Start using libubootenv for U-Boot environment manipulation.
+  This deprecates the u-boot-fw-utils tools, which have been removed
+  from upstream. The functionality and command line API is the same.
+* `libubootenv` is now used instead of `u-boot-fw-utils`. If
+  you have a "fw-utils" type recipe in your layer, you probably need to
+  remove it, particularly if it references `u-boot-mender-common.inc`.
+* Patch broken UBI support in libubootenv_0.2.
+* chmod 600 on mender.conf
+  ([MEN-3762](https://tracker.mender.io/browse/MEN-3762))
+* Add mender-2.2.1 and mender-artifact-3.3.1 recipes.
+* Add mender-2.3.0 and mender-artifact-3.4.0 recipes.
+* Add mender-binary-delta-1.1.0 release.
+* Remove mender-client recipes that are incompatible with dunfell.
+  ([MEN-3764](https://tracker.mender.io/browse/MEN-3764))
+* Fix incorrect BOOTENV_SIZE value being used in libubootenv
+  recipe. The symptom of this was a non-working set of `fw_printenv` and
+  `fw_setenv` tools:
+  ```
+  root@raspberrypi4:~# fw_printenv
+  Cannot read environment, using default
+  Cannot read default environment from file
+  ```
+  ([MEN-3834](https://tracker.mender.io/browse/MEN-3834))
+* Fix fsck running on every boot in dunfell.
+
 ## meta-mender zeus-v2020.07
 
 _Released 07.16.2020_
