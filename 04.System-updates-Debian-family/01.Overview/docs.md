@@ -34,7 +34,7 @@ If you [run the Mender client in standalone mode](../../02.Overview/01.Introduct
 In order to support robust rollback, Mender requires the device to have a certain partition layout.
 At least four different partitions are needed:
 * one boot partition, containing the U-Boot bootloader and its environment
-* two partitions for storing the root file system and kernel. The kernel image file, zImage, and any device tree binary should be stored in directory /boot
+* two partitions for storing the root file system and kernel. The kernel image file, zImage, and any device tree binary should be stored in directory `/boot`
 * one for persistent data
 
 One of the rootfs and kernel partitions will be marked as the *active* partition, from which the kernel and rootfs will be booted.
