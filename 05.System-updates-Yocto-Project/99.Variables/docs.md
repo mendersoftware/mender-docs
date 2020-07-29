@@ -11,7 +11,7 @@ Project](http://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html?targ
 and used by Mender.
 
 
-#### ARTIFACTIMG_FSTYPE
+#### `ARTIFACTIMG_FSTYPE`
 
 > Value: `ext4` (default) / <filesystem type>
 
@@ -21,7 +21,7 @@ types](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md#f
 for more information.
 
 
-#### ARTIFACTIMG_NAME
+#### `ARTIFACTIMG_NAME`
 
 > Value: <any string> (defaults to the image name being built)
 
@@ -29,7 +29,7 @@ Overrides the default internal image name that mender will use to build the
 `.mender` file with.
 
 
-#### IMAGE_ROOTFS_SIZE
+#### `IMAGE_ROOTFS_SIZE`
 
 > Value: <size in KiB> (default calculated from several factors, see below)
 
@@ -50,7 +50,7 @@ It is recommended not to set this variable, but instead set
 that.
 
 
-#### MENDER_ARTIFACT_EXTRA_ARGS
+#### `MENDER_ARTIFACT_EXTRA_ARGS`
 
 > Value: <mender artifact arguments> (default: empty)
 
@@ -64,7 +64,7 @@ MENDER_ARTIFACT_EXTRA_ARGS_append = " -v 1"
 The above example builds an artifact with the version 1 format.
 
 
-#### MENDER_ARTIFACT_NAME
+#### `MENDER_ARTIFACT_NAME`
 
 > Value: <name of artifact> (no default, must be set)
 
@@ -73,7 +73,7 @@ report that it is running, and different updates must have different names. This
 variable must be defined or the build will fail.
 
 
-#### MENDER_ARTIFACT_SIGNING_KEY
+#### `MENDER_ARTIFACT_SIGNING_KEY`
 
 > Value: <key used to sign artifact> (default: empty)
 
@@ -85,7 +85,7 @@ the `mender-artifact` tool's `-k` option. For more information, see [signing
 Mender Artifacts](../../40.Signing-and-verification/docs.md#signing).
 
 
-#### MENDER_ARTIFACT_VERIFY_KEY
+#### `MENDER_ARTIFACT_VERIFY_KEY`
 
 > Value: <key used to verify artifact> (default: empty)
 
@@ -110,7 +110,7 @@ Note that you cannot both use `MENDER_ARTIFACT_VERIFY_KEY` and have
 `artifact-verify-key.pem` in `SRC_URI` at the same time.
 
 
-#### MENDER_BOOT_PART
+#### `MENDER_BOOT_PART`
 
 > Value: <block device> (default: 1st partition on `MENDER_STORAGE_DEVICE`)
 
@@ -119,7 +119,7 @@ configuration](../../../03.Devices/02.Yocto-project/01.Partition-configuration/d
 for more information.
 
 
-#### MENDER_BOOT_PART_FSTYPE
+#### `MENDER_BOOT_PART_FSTYPE`
 
 > Value: auto (default) / <filesystem type>
 
@@ -128,7 +128,7 @@ Most filesystems can be auto detected, but some can not and hence this variable
 exists to override the auto detection.
 
 
-#### MENDER_BOOT_PART_SIZE_MB
+#### `MENDER_BOOT_PART_SIZE_MB`
 
 > Value: 16 (default)
 
@@ -138,7 +138,7 @@ sizes](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md)
 for more information.
 
 
-#### MENDER_DATA_PART
+#### `MENDER_DATA_PART`
 
 > Value: <block device> (default: 4th partition on `MENDER_STORAGE_DEVICE`)
 
@@ -148,7 +148,7 @@ configuration](../../../03.Devices/02.Yocto-project/01.Partition-configuration/d
 for more information.
 
 
-#### MENDER_DATA_PART_DIR
+#### `MENDER_DATA_PART_DIR`
 
 > Value: <directory> (default: empty)
 
@@ -186,7 +186,7 @@ MENDER_DATA_PART_DIR = "${DEPLOY_DIR_IMAGE}/persist"
 !!! The current implementation has a limitation of only one occurrence of
 `MENDER_DATA_PART_DIR` containing one directory.
 
-#### MENDER_DATA_PART_FSTYPE
+#### `MENDER_DATA_PART_FSTYPE`
 
 > Value: auto (default) / <filesystem type>
 
@@ -195,7 +195,7 @@ Most filesystems can be auto detected, but some can not and hence this variable
 exists to override the auto detection.
 
 
-#### MENDER_DATA_PART_SIZE_MB
+#### `MENDER_DATA_PART_SIZE_MB`
 
 > Value: 128 (default)
 
@@ -205,7 +205,7 @@ sizes](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md#c
 for more information.
 
 
-#### MENDER_DEMO_HOST_IP_ADDRESS
+#### `MENDER_DEMO_HOST_IP_ADDRESS`
 
 > Value: <IP address> (default: empty)
 
@@ -217,7 +217,7 @@ empty, which reverts to querying DNS (but note that the Docker setup comes with
 its own DNS server).
 
 
-#### MENDER_DEVICE_TYPE
+#### `MENDER_DEVICE_TYPE`
 
 > Value: <any string> (default: value of `${MACHINE}`)
 
@@ -227,7 +227,7 @@ ending in `img`). Once a device is flashed with this, it will not change, even
 if the device is updated.
 
 
-#### MENDER_DEVICE_TYPES_COMPATIBLE
+#### `MENDER_DEVICE_TYPES_COMPATIBLE`
 
 > Value: <strings> (default: value of `${MACHINE}`)
 
@@ -237,7 +237,7 @@ and is only relevant when building a `.mender` update, not when building a
 partitioned image (any suffix ending in `img`).
 
 
-#### MENDER_EXTRA_PARTS
+#### `MENDER_EXTRA_PARTS`
 
 > Value: <Extra partitions list> (default: empty)
 
@@ -264,7 +264,7 @@ See also [`MENDER_EXTRA_PARTS_FSTAB`](#mender_extra_parts_fstab) and
 [`MENDER_EXTRA_PARTS_SIZES_MB`](#mender_extra_parts_sizes_mb).
 
 
-#### MENDER_EXTRA_PARTS_FSTAB
+#### `MENDER_EXTRA_PARTS_FSTAB`
 
 > Value: <List of fstab mount options for extra partitions> (default: empty)
 
@@ -282,7 +282,7 @@ MENDER_EXTRA_PARTS_FSTAB[part2] = "ro,user"
 See [`MENDER_EXTRA_PARTS`](#mender_extra_parts).
 
 
-#### MENDER_EXTRA_PARTS_SIZES_MB
+#### `MENDER_EXTRA_PARTS_SIZES_MB`
 
 > Value: <Extra partitions size list> (default: empty)
 
@@ -301,7 +301,7 @@ MENDER_EXTRA_PARTS_SIZES_MB[part2] = "9216"
 See [`MENDER_EXTRA_PARTS`](#mender_extra_parts).
 
 
-#### MENDER_FEATURES_DISABLE
+#### `MENDER_FEATURES_DISABLE`
 
 > Value: <mender features> (default: empty)
 
@@ -309,7 +309,7 @@ Features appended to this variable will be disabled in the build. See [the
 section on features](../02.Image-configuration/01.Features/docs.md) for more information.
 
 
-#### MENDER_FEATURES_ENABLE
+#### `MENDER_FEATURES_ENABLE`
 
 > Value: <mender features> (default: platform dependent)
 
@@ -317,7 +317,7 @@ Features appended to this variable will be enabled in the build. See [the
 section on features](../02.Image-configuration/01.Features/docs.md) for more information.
 
 
-#### MENDER_IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET
+#### `MENDER_IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET`
 
 > Value: <sector number> (default: platform dependent)
 
@@ -327,7 +327,7 @@ offset is specified in units of 512-byte sectors. Obviously this needs to be
 non-zero, or the partition table itself would be overwritten.
 
 
-#### MENDER_IMAGE_BOOTLOADER_FILE
+#### `MENDER_IMAGE_BOOTLOADER_FILE`
 
 > Value: <bootloader filename> (default: platform dependent)
 
@@ -336,7 +336,7 @@ that you would like to write directly into the boot sector, in the intervening
 space between the partition table and the first partition.
 
 
-#### MENDER_IS_ON_MTDID
+#### `MENDER_IS_ON_MTDID`
 
 > Value: <MTD ID> (default: first MTD ID in `MENDER_MTDIDS`)
 
@@ -356,7 +356,7 @@ MENDER_IS_ON_MTDID = "20000000.flash"
 See also [`MENDER_MTDIDS`](#mender_mtdids).
 
 
-#### MENDER_KERNEL_IMAGETYPE_FORCE
+#### `MENDER_KERNEL_IMAGETYPE_FORCE`
 
 > Value: <kernel image type> (default: value of `KERNEL_IMAGETYPE`)
 
@@ -366,7 +366,7 @@ to generate the images bypassing the standard Yocto logic. Setting this variable
 will ensure that Mender packages the proper files in these cases.
 
 
-#### MENDER_MBR_BOOTLOADER_FILE
+#### `MENDER_MBR_BOOTLOADER_FILE`
 
 > Value: <MBR bootloader filename> (default: platform dependent)
 
@@ -385,7 +385,7 @@ The default depends on which features are enabled. If `mender-bios` and
 otherwise the default is empty.
 
 
-#### MENDER_MBR_BOOTLOADER_LENGTH
+#### `MENDER_MBR_BOOTLOADER_LENGTH`
 
 > Value: 446 (default)
 
@@ -393,7 +393,7 @@ The number of bytes to flash into the Master Boot Record (MBR) using
 [`MENDER_MBR_BOOTLOADER_FILE`](#mender_mbr_bootloader_file).
 
 
-#### MENDER_MTD_UBI_DEVICE_NAME
+#### `MENDER_MTD_UBI_DEVICE_NAME`
 
 > Value: `ubi` (default)
 
@@ -403,7 +403,7 @@ Defaults to `ubi` when `mender-ubi` feature is on and building a `.ubimg`,
 otherwise the default is empty.
 
 
-#### MENDER_MTDIDS
+#### `MENDER_MTDIDS`
 
 > Value: <mtdids string> (no default, must be set if using UBI)
 
@@ -420,7 +420,7 @@ If it has more than one entry, then [`MENDER_IS_ON_MTDID`](#mender_is_on_mtdid)
 must be set too.
 
 
-#### MENDER_MTDPARTS
+#### `MENDER_MTDPARTS`
 
 > Value: <mtdparts string> (default calculated from several factors)
 
@@ -444,7 +444,7 @@ Two volume names have special meaning to the Mender `mtdimg` image builder:
 See also [`MENDER_MTDIDS`](#mender_mtdids).
 
 
-#### MENDER_NAND_FLASH_PAGE_SIZE
+#### `MENDER_NAND_FLASH_PAGE_SIZE`
 
 > Value: 2048 (default)
 
@@ -452,7 +452,7 @@ This variable sets the page size, in bytes, of the NAND flash on the device, and
 is used to calculate parameters for the UBI volumes.
 
 
-#### MENDER_PARTITIONING_OVERHEAD_KB
+#### `MENDER_PARTITIONING_OVERHEAD_KB`
 
 > Value: <number> (default calculated from several factors)
 
@@ -463,7 +463,7 @@ the definition of `MENDER_PARTITIONING_OVERHEAD_KB` in
 details on the calculation.
 
 
-#### MENDER_PARTITION_ALIGNMENT
+#### `MENDER_PARTITION_ALIGNMENT`
 
 > Value: <number> (default: value of `MENDER_STORAGE_PEB_SIZE`)
 
@@ -472,7 +472,7 @@ bytes. Note that this is not always a whole number of KiB, particularly when the
 storage device is a UBI volume.
 
 
-#### MENDER_ROOTFS_PART_A
+#### `MENDER_ROOTFS_PART_A`
 
 > Value: <block device> (default: 2nd partition on `MENDER_STORAGE_DEVICE`)
 
@@ -482,7 +482,7 @@ configuration](../../../03.Devices/02.Yocto-project/01.Partition-configuration/d
 for more information.
 
 
-#### MENDER_ROOTFS_PART_A_NAME
+#### `MENDER_ROOTFS_PART_A_NAME`
 
 > Value: <name> (default: platform dependent)
 
@@ -501,7 +501,7 @@ Defaults to the value of `${MENDER_ROOTFS_PART_A}` when building `.biosimg`,
 Defaults to `${MENDER_STORAGE_DEVICE}:rootfsa` when building `.ubimg`.
 
 
-#### MENDER_ROOTFS_PART_B
+#### `MENDER_ROOTFS_PART_B`
 
 > Value: <block device> (default: 3rd partition on `MENDER_STORAGE_DEVICE`)
 
@@ -511,7 +511,7 @@ configuration](../../../03.Devices/02.Yocto-project/01.Partition-configuration/d
 for more information.
 
 
-#### MENDER_ROOTFS_PART_B_NAME
+#### `MENDER_ROOTFS_PART_B_NAME`
 
 > Value: <name> (default: platform dependent)
 
@@ -523,14 +523,14 @@ Defaults to the value of `${MENDER_ROOTFS_PART_B}` when building `.biosimg`,
 Defaults to `${MENDER_STORAGE_DEVICE}:rootfsb` when building `.ubimg`.
 
 
-#### MENDER_SERVER_URL
+#### `MENDER_SERVER_URL`
 
 > Value: `https://docker.mender.io` (default)
 
 Variable to override the URL of the server for the client to connect to.
 
 
-#### MENDER_STATE_SCRIPTS
+#### `MENDER_STATE_SCRIPTS`
 
 > Value: `${S}/mender-state-scripts ${MENDER_STATE_SCRIPTS_DIR}` (default)
 
@@ -538,7 +538,7 @@ Variable to override the location of state scripts. See
 [MENDER_STATE_SCRIPTS_DIR](#mender_state_scripts_dir) for more information.
 
 
-#### MENDER_STATE_SCRIPTS_DIR
+#### `MENDER_STATE_SCRIPTS_DIR`
 
 > Value: `${B}/mender-state-scripts` (default)
 
@@ -559,7 +559,7 @@ recommended to use one of the two above methods.
 The three methods should not be mixed.
 
 
-#### MENDER_STORAGE_DEVICE
+#### `MENDER_STORAGE_DEVICE`
 
 > Value: `/dev/mmcblk0` (default)
 
@@ -569,7 +569,7 @@ storage](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md
 for more information.
 
 
-#### MENDER_STORAGE_PEB_SIZE
+#### `MENDER_STORAGE_PEB_SIZE`
 
 > Value: 8388608 (default)
 
@@ -577,7 +577,7 @@ Holds the size, in bytes, of the physical erase blocks (PEBs) on the Flash
 device.
 
 
-#### MENDER_STORAGE_TOTAL_SIZE_MB
+#### `MENDER_STORAGE_TOTAL_SIZE_MB`
 
 > Value: 1024 (default)
 
@@ -591,7 +591,7 @@ predefined overhead (see
 value is `1024`.
 
 
-#### MENDER_SWAP_PART_SIZE_MB
+#### `MENDER_SWAP_PART_SIZE_MB`
 
 > Value: 0 (default)
 
@@ -604,7 +604,7 @@ The size of the optional swap partition in the generated `.biosimg`, `.sdimg` or
 
 
 
-#### MENDER_TENANT_TOKEN
+#### `MENDER_TENANT_TOKEN`
 
 > Value: <tenant token string> (default: empty)
 
@@ -613,7 +613,7 @@ organization to which it belongs. This option should always be set, except when
 running a custom Mender server installation with multitenancy module disabled.
 
 
-#### MENDER_UBI_LEB_PEB_BLOCK_OVERHEAD
+#### `MENDER_UBI_LEB_PEB_BLOCK_OVERHEAD`
 
 > Value: <number> (default: 128 for NOR Flash, `${MENDER_NAND_FLASH_PAGE_SIZE} *
 > 2` for NAND Flash)
@@ -623,7 +623,7 @@ physical erase block (PEB), in bytes. In other words, how many bytes are
 "wasted" in each LEB. Usually set automatically, but can be overridden.
 
 
-#### MENDER_UBI_LEB_SIZE
+#### `MENDER_UBI_LEB_SIZE`
 
 > Value: <number> (default: `${MENDER_STORAGE_PEB_SIZE} -
 > ${MENDER_UBI_LEB_PEB_BLOCK_OVERHEAD}`)
@@ -633,7 +633,7 @@ set automatically from the various `MENDER_UBI_*_OVERHEAD` variables, but can be
 overridden.
 
 
-#### MENDER_UBI_TOTAL_BAD_PEB_OVERHEAD
+#### `MENDER_UBI_TOTAL_BAD_PEB_OVERHEAD`
 
 > Value: <number> (default: 0 for NOR Flash, 20 per PEB block for NAND Flash)
 
@@ -643,7 +643,7 @@ amount](http://linux-mtd.infradead.org/doc/ubi.html?target=_blank) for NAND
 Flash.
 
 
-#### MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET
+#### `MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET`
 
 > Value: <number> (default: Value of `MENDER_PARTITION_ALIGNMENT`)
 
@@ -653,7 +653,7 @@ environment should be stored, expressed in bytes. The default is equal to
 overridden, it must also be aligned to `MENDER_PARTITION_ALIGNMENT_KB`.
 
 
-#### MENDER_UBOOT_POST_SETUP_COMMANDS
+#### `MENDER_UBOOT_POST_SETUP_COMMANDS`
 
 > Value: <U-Boot command string> (default: empty)
 
@@ -661,7 +661,7 @@ A set of U-Boot commands to be executed at the end of the MENDER_SETUP code in
 the MENDER_BOOTENV.
 
 
-#### MENDER_UBOOT_PRE_SETUP_COMMANDS
+#### `MENDER_UBOOT_PRE_SETUP_COMMANDS`
 
 > Value: <U-Boot command string> (default: empty)
 
@@ -669,7 +669,7 @@ A set of U-Boot commands to be executed at the beginning of the MENDER_SETUP
 code in the MENDER_BOOTENV.
 
 
-#### MENDER_UBOOT_STORAGE_DEVICE
+#### `MENDER_UBOOT_STORAGE_DEVICE`
 
 > Value: <U-Boot storage device> (default: empty)
 
@@ -684,7 +684,7 @@ If the variable is empty, it is automatically deduced from
 `MENDER_STORAGE_DEVICE`.
 
 
-#### MENDER_UBOOT_STORAGE_INTERFACE
+#### `MENDER_UBOOT_STORAGE_INTERFACE`
 
 > Value: <U-Boot storage interface> (default: empty)
 
@@ -699,7 +699,7 @@ If the variable is empty, it is automatically deduced from
 `MENDER_STORAGE_DEVICE`.
 
 
-#### SYSTEMD_AUTO_ENABLE_pn-mender
+#### `SYSTEMD_AUTO_ENABLE_pn-mender`
 
 > Value: `enable` (default)
 
