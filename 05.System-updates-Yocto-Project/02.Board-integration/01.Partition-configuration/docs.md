@@ -73,6 +73,7 @@ mtdinfo -a | sed -rne '/^Amount of eraseblocks:/{s/.*[^0-9]([0-9]+) *bytes.*/\1/
 
 The output will be in MiB, a number appropriate for `MENDER_STORAGE_TOTAL_SIZE_MB`.
 
+
 ### More detailed storage configuration
 
 If you need more fine grained control over which partitions Mender will use, you can set one or more the following variables to specific partition strings, using `MENDER_STORAGE_DEVICE_BASE`:
@@ -119,6 +120,7 @@ You can override these default values in your `local.conf`. For details consult 
 As Mender does a full rootfs image update, care must be taken in where persistent data is stored. The contents of the partition mounted on `/data` is preserved across updates. In fact, the Mender client itself uses `/data/mender` as a backing to store data that needs to be kept across updates.
 
 If you have data or configuration that you need to preserve across updates, the recommended approach is to create a symlink from where it gets written to somewhere within `/data/`. For example, if you have an application that writes to `/etc/application1`, then you can create a symlink `/etc/application1` -> `/data/application1` to ensure the data it writes is not lost during a Mender rootfs update.
+
 
 ## Deploying files to the persistent data partition
 

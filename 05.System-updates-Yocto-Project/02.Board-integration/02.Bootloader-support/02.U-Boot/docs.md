@@ -21,12 +21,6 @@ MENDER_FEATURES_DISABLE_append = " mender-grub mender-image-uefi"
 See [the documentation on features](../../../../04.Artifacts/10.Yocto-project/02.Image-configuration/01.Features/docs.md) for more information.
 
 
-## Boot counter
-
-As Mender relies on the `CONFIG_BOOTCOUNT_ENV` feature of U-Boot, which was [introduced in October 2013](http://lists.denx.de/pipermail/u-boot/2013-October/165484.html?target=_blank), Mender currently recommends **U-Boot v2014.07 or newer**.
-
-If you have an older version of U-Boot, it is possible to apply some extra patches to make this work. Please see the section about [U-Boot versions without BOOTLIMIT support]() for more information.
-
 ## Forks of U-boot
 
 If the project is using a board supported by upstream U-Boot, and the build is
@@ -87,18 +81,6 @@ MENDER_FEATURES_ENABLE_append = " mender-uboot"
 
 This enables U-Boot integration, and also enables full automatic patching of
 U-Boot.
-
-! Automatic U-Boot patching is only available if certain criteria are met. See below.
-
-In order for automatic U-Boot patching to be used, the build must fulfill these
-criteria:
-
-<!--AUTOVERSION: "\"%\" branch or a later branch"/ignore-->
-* The build must be using the "rocko" branch or a later branch from the Yocto
-  Project (Yocto Project version 2.4 or later)
-
-* The board must be using MMC/SD card storage, or more formally: It must be
-  using `sdimg` as the image type to be flashed
 
 Unfortunately, because of the great variation in U-Boot board code, the
 automatic patching process does not always succeed or produce a working boot
