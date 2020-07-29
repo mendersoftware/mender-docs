@@ -1,5 +1,5 @@
 ---
-title: Image configuration
+title: Image customization
 taxonomy:
     category: docs
 ---
