@@ -4,6 +4,75 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender warrior-v2020.07
+
+_Released 07.29.2020_
+
+### Statistics
+
+A total of 171 lines added, 54 removed (delta 117)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 4 (50.0%) |
+| Lluis Campos | 1 (12.5%) |
+| Ossian Riday | 1 (12.5%) |
+| Trevor Woerner | 1 (12.5%) |
+| Garrett Brown | 1 (12.5%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Garrett Brown | 147 (71.7%) |
+| Kristian Amlie | 51 (24.9%) |
+| Ossian Riday | 3 (1.5%) |
+| Lluis Campos | 2 (1.0%) |
+| Trevor Woerner | 2 (1.0%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Kristian Amlie | 33 (61.1%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 5 (62.5%) |
+| twoerner@gmail.com | 1 (12.5%) |
+| Aclima Inc. | 1 (12.5%) |
+| ossian.riday@gmail.com | 1 (12.5%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Aclima Inc. | 147 (71.7%) |
+| Northern.tech | 53 (25.9%) |
+| ossian.riday@gmail.com | 3 (1.5%) |
+| twoerner@gmail.com | 2 (1.0%) |
+
+| Employers with the most hackers (total 5) | |
+|---|---|
+| Northern.tech | 2 (40.0%) |
+| Aclima Inc. | 1 (20.0%) |
+| ossian.riday@gmail.com | 1 (20.0%) |
+| twoerner@gmail.com | 1 (20.0%) |
+
+### Changelogs
+
+#### meta-mender (warrior-v2020.07)
+
+New changes in meta-mender since warrior-v2020.06:
+
+* Fix boot failure on ARM UEFI devices because of missing
+  `regexp` module. A typical error log looks like this:
+  ```
+  Welcome to GRUB!
+  ```
+* Fix EFI boot partition corruption with mtools 4.0.19
+* uboot_auto_configure: build U-Boot the same way Yocto does
+* Add mender_2.3.0 and mender-artifact_3.4.0 recipes.
+* Add mender-2.2.1 and mender-artifact-3.3.1 recipes.
+* Add mender-binary-delta-1.1.0 release.
+* MBR systems don't have a backup header, so always return true
+  ([MEN-3761](https://tracker.mender.io/browse/MEN-3761))
+
+
 ## meta-mender dunfell-v2020.07
 
 _Released 07.28.2020_
