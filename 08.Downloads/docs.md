@@ -33,14 +33,20 @@ Mender provides images based on the following distributions:
 [raspios-buster-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-05-27-raspios-buster-lite-armhf/arm/2020-05-27-raspios-buster-lite-armhf-raspberrypi4-mender-master.img.xz
 
 You can find images for other devices in our Mender Hub community forum, see
-[Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11) or
-[Yocto Project](https://hub.mender.io/c/board-integrations/yocto-project/10)
+[Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11?target=_blank) or
+[Yocto Project](https://hub.mender.io/c/board-integrations/yocto-project/10?target=_blank)
 integration posts.
 
-## Mender Artifact
 
-To download `mender-artifact` as an standalone tool, follow the correct link
-according to your host platform:
+## mender-artifact
+
+The `mender-artifact` utility is used to work with Mender Artifacts,
+which are files with the `.mender` suffix and contain software to be deployed.
+See [Artifact creation](../06.Artifact-creation/chapter.md) for more information on how to
+use this utility.
+
+Follow the correct link according to your host platform to download
+`mender-artifact` as a standalone utility:
 
 <!--AUTOVERSION: "mender-artifact %"/mender-artifact -->
 | Platform | Download link                                                |
@@ -48,28 +54,34 @@ according to your host platform:
 | Linux    | [mender-artifact master][x.x.x_mender-artifact-linux]     |
 | Mac OS X | [mender-artifact master][x.x.x_mender-artifact-darwin] |
 
-Remember to add execute permission (e.g. with `chmod +x mender-artifact`).
-
-Note that you need to ensure that the mender-artifact utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary. Please refer to your host Operating System documentation for more details.
+Remember to add execute permission and ensure that the mender-artifact utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
 
 ```bash
-$ sudo mv mender-artifact /usr/local/bin/
+sudo chmod +x mender-artifact
+sudo cp mender-artifact /usr/local/bin/
 ```
 
-!!! If you need to build `mender-artifact` from source, please see [Compiling mender-artifact](../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#compiling-mender-artifact).
+Please refer to your host Operating System documentation for more details.
+
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 [x.x.x_mender-artifact-linux]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/master/linux/mender-artifact
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 [x.x.x_mender-artifact-darwin]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/master/darwin/mender-artifact
 
-_Mac OS X note_: Please remember, that `mender-artifact` when working with
-disk image files (e.g.: `*.sdimg`, `*.img`, or others holding the storage
-partitions) under Mac OS X has limited functionalities, and commands like 
-`mender-artifact cat` or `mender-artifact cp` will not work, due to lack
-of support for certain utilities on the Mac platform.
+! If you are using Mac OS X, note that using `mender-artifact` with
+! disk image files (e.g.: `*.sdimg`, `*.img`, or others holding the storage
+! partitions) has limited functionality. Commands like
+! `mender-artifact cat` or `mender-artifact cp` will not work due to lack
+! of support for certain utilities on the Mac platform.
+
 
 ## Mender client
+
+The Mender client runs on the device, checks for and installs
+software updates packaged as Mender Artifacts.
+See [Client installation](../03.Client-installation/chapter.md) for more information
+about how to configure and use the Mender client.
 
 A Debian package (`.deb`) is provided for convenience to install on e.g Debian,
 Ubuntu or Raspberry Pi OS. We provide packages for the following architectures:
@@ -88,10 +100,15 @@ Ubuntu or Raspberry Pi OS. We provide packages for the following architectures:
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_amd64.deb"/mender -->
 [mender-client_x.x.x-1_amd64.deb]: https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/amd64/mender-client_master-1_amd64.deb
 
-## Mender CLI
 
-To download `mender-cli`, follow the correct link according to your host
-platform:
+## mender-cli
+
+The `mender-cli` utility enables an easy interface to key use cases
+of the Mender server API, such as uploading a Mender Artifact, from
+the command line. See [Server integration](../06.Server-integration/chapter.md) for
+more information.
+
+Follow the correct link according to your host platform to download `mender-cli`:
 
 <!--AUTOVERSION: "mender-cli %"/mender-cli -->
 | Platform | Download link                                                |
@@ -99,13 +116,15 @@ platform:
 | Linux    | [mender-cli master][x.x.x_mender-cli-linux]                  |
 | Mac OS X | [mender-cli master][x.x.x_mender-cli-darwin]                 |
 
-Remember to add execute permission (e.g. with `chmod +x mender-cli`).
 
-Note that you need to ensure that the mender-cli utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary. Please refer to your host Operating System documentation for more details.
+Remember to add execute permission and ensure that the mender-cli utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
 
 ```bash
-$ sudo mv mender-cli /usr/local/bin/
+sudo chmod +x mender-cli
+sudo cp mender-cli /usr/local/bin/
 ```
+
+Please refer to your host Operating System documentation for more details.
 
 <!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
 [x.x.x_mender-cli-linux]: https://d1b0l86ne08fsf.cloudfront.net/mender-cli/master/linux/mender-cli
