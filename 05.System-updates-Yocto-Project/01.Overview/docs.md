@@ -8,6 +8,7 @@ taxonomy:
 
 Below is a number of requirements that must be met in order to use Mender.
 
+
 ### Device capacity
 The client binaries are about 7 MB in size, or about 4 MB when debug symbols are
 stripped (using the `strip` tool). This includes most of the dependencies for
@@ -16,6 +17,7 @@ the client, such as the http, TLS, and JSON libraries.
 The client depends on the LZMA library for Artifact compression, which is
 present in most Linux distributions, including those based on the Yocto Project.
 
+
 ### Bootloader support
 
 To support atomic rootfs rollback, Mender integrates with the bootloader of the device. Currently
@@ -23,10 +25,12 @@ Mender supports [GRUB](https://www.gnu.org/software/grub/?target=_blank) and
 [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank). Please see the [Yocto bootloader
 support](../board-integration/bootloader-support/docs.md) for more information.
 
+
 ### Kernel support
 While Mender itself does not have any specific kernel requirements beyond what a normal Linux kernel provides, it relies on systemd, which does have one such requirement: The `CONFIG_FHANDLE` feature must be enabled in the kernel. The symptom if this feature is unavailable is that systemd hangs during boot looking for device files.
 
 If you [run the Mender client in standalone mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation), you can avoid this dependency by [disabling Mender as a system service](../../04.Artifacts/10.Yocto-project/02.Image-configuration/docs.md#disabling-mender-as-a-system-service).
+
 
 ### Partition layout
 In order to support robust rollback, Mender requires the device to have a certain partition layout.
@@ -44,6 +48,7 @@ The persistent data partition stores data that needs to be preserved through an 
 A sample partition layout is shown below:
 
 ![Mender client partition layout](mender_client_partition_layout.png)
+
 
 ### Correct clock
 Certificate verification requires the device clock to be running correctly at all times.
@@ -68,11 +73,13 @@ default to the [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time?target=_blan
 that the Mender client connections will be rejected by the server until this
 situation is resolved.
 
+
 ### Unsupported build systems
 
-Mender has official support for the Yocto build system and [binary OS images based on the Debian family](../../System-updates-Debian-family). It is possible to adapt to other build systems. Please see [this blog post](https://mender.io/blog/porting-mender-to-a-non-yocto-build-system?target=_blank) for an example (note that some of Mender's needs may have changed since the blog post was made).
+Mender has official support for the Yocto build system and [binary OS images based on the Debian family](../../System-updates-Debian-family). It is possible to adapt to other build systems. Please see [this community post](https://hub.mender.io/t/mender-from-scratch?target=_blank) for a concrete description.
 
-## Mender Hub
+
+## Mender Hub community
 
 For help from the community, as well as links to board integrations, visit [Mender
 Hub](https://hub.mender.io/?target=_blank).
