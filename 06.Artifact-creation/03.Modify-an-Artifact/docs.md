@@ -35,7 +35,8 @@ information.
 
 The `mender-artifact` tool supports copying files in and out of Artifacts.
 
-! Content modification is only possible on Artifacts with the `rootfs-image` payload type.
+! Content modification is only possible on Artifacts with the `rootfs-image` payload type, and a
+! ext2, ext3 or ext4 filesystem.
 
 !!! It is also possible to copy files in and out of disk images (files ending with `img`), except
 !!! for `.ubimg` images. If copying into a disk image, the standard Mender paths, `/boot/efi`,
