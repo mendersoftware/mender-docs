@@ -1,10 +1,13 @@
 ---
-title: Yocto Project
+title: System updates: Yocto Project
 taxonomy:
     category: docs
 ---
 
-## Yocto Project
+### Chapter 5
+
+# System updates: Yocto Project
+
 Mender provides full integration with the [Yocto
 Project](https://www.yoctoproject.org?target=_blank) build system.
 
