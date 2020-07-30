@@ -1,5 +1,5 @@
 ---
-title: Building a Mender Yocto Project image
+title: Building for demo
 taxonomy:
     category: docs
 ---
@@ -17,9 +17,9 @@ The build output will most notably include:
 
 Inside *meta-mender* there are several layers. The most important one is *meta-mender-core*, which is required by all builds that use Mender. *meta-mender-core* takes care of:
 
-* Cross-compiling Mender for ARM devices
+* Compiling Mender for devices
 * [Partitioning the image correctly](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md)
-* [Setting up the U-Boot bootloader to support Mender](../../../03.Devices/02.Yocto-project/02.Bootloader-support/02.U-Boot/docs.md)
+* [Setting up the bootloader to support Mender](../../../03.Devices/02.Yocto-project/02.Bootloader-support/docs.md)
 
 Each one of these steps can be configured further, see the linked sections for more details.
 
@@ -29,7 +29,7 @@ The other layers in *meta-mender* provide support for specific boards used in Me
 
 [meta-mender-community](https://github.com/mendersoftware/meta-mender-community?target=_blank) is a set of layers containing board-specific settings for Mender integration.
 
-!!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Start tutorial](http://www.yoctoproject.org/docs/2.4/yocto-project-qs/yocto-project-qs.html?target=_blank).
+!!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Build tutorial](https://www.yoctoproject.org/docs/3.1.1/brief-yoctoprojectqs/brief-yoctoprojectqs.html?target=_blank).
 
 
 ## Prerequisites
@@ -78,7 +78,7 @@ support Mender.
 
 The following settings will be present in the default `conf/local.conf` after running the steps from [Mender Hub](https://hub.mender.io?target=_blank). These are likely to need customization for your setup.
 
-<!--AUTOVERSION: "Mender %"/mender "releases % and older"/ignore "PREFERRED_VERSION_pn-mender = \"%\""/mender "PREFERRED_VERSION_pn-mender-artifact = \"%\""/mender-artifact "PREFERRED_VERSION_pn-mender-artifact-native = \"%\""/mender-artifact-->
+<!--AUTOVERSION: "PREFERRED_VERSION_pn-mender-client = \"%\""/mender "PREFERRED_VERSION_pn-mender-artifact = \"%\""/mender-artifact "PREFERRED_VERSION_pn-mender-artifact-native = \"%\""/mender-artifact-->
 ```bash
 # The name of the disk image and Artifact that will be built.
 # This is what the device will report that it is running, and different updates must have different names
@@ -97,7 +97,7 @@ MENDER_ARTIFACT_NAME = "release-1"
 # If you need an earlier version, please uncomment the following and set to the
 # required version.
 #
-# PREFERRED_VERSION_pn-mender = "2.1.2"
+# PREFERRED_VERSION_pn-mender-client = "2.1.2"
 # PREFERRED_VERSION_pn-mender-artifact = "3.2.1"
 # PREFERRED_VERSION_pn-mender-artifact-native = "3.2.1"
 
@@ -189,7 +189,7 @@ bitbake-layers add-layer ../meta-mender/meta-mender-demo
 
 Add these lines to the start of your `conf/local.conf`:
 
-<!--AUTOVERSION: "Mender %"/mender "releases % and older"/ignore "PREFERRED_VERSION_pn-mender = \"%\""/mender "PREFERRED_VERSION_pn-mender-artifact = \"%\""/mender-artifact "PREFERRED_VERSION_pn-mender-artifact-native = \"%\""/mender-artifact-->
+<!--AUTOVERSION: "PREFERRED_VERSION_pn-mender = \"%\""/mender "PREFERRED_VERSION_pn-mender-artifact = \"%\""/mender-artifact "PREFERRED_VERSION_pn-mender-artifact-native = \"%\""/mender-artifact-->
 ```bash
 # The name of the disk image and Artifact that will be built.
 # This is what the device will report that it is running, and different updates must have different names

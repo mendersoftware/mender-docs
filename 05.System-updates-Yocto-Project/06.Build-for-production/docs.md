@@ -70,8 +70,8 @@ If you do not have a custom layer, you can also specify the certificate directly
 To add the certificate using `local.conf`, first make sure that the certificate has the name `server.crt`, and is stored somewhere accessible to the build. Then add the following to `local.conf`:
 
 ```bash
-FILESEXTRAPATHS_prepend_pn-mender := "<DIRECTORY-CONTAINING-server.crt>:"
-SRC_URI_append_pn-mender = " file://server.crt"
+FILESEXTRAPATHS_prepend_pn-mender-client := "<DIRECTORY-CONTAINING-server.crt>:"
+SRC_URI_append_pn-mender-client = " file://server.crt"
 ```
 
 Note in particular the `:` after the directory; this is mandatory.
