@@ -34,6 +34,8 @@ Below is a list of the features that Mender provides, with descriptions:
   `mender-bios` is disabled, then it is assumed that the booting process uses
   the UEFI standard.
 
+* `mender-growfs-data` - Enable dynamic resizing of the data filesystem through systemd-growfs
+
 * `mender-grub` - Enables integration with the GRUB bootloader.
 
 * `mender-image` - Enables a build that uses the Mender defined partition
@@ -59,16 +61,6 @@ Below is a list of the features that Mender provides, with descriptions:
   configuration. Note that this does not include the default Mender partition
   layout, use `mender-image` for that.
 
-* `mender-ubi` - Enables Mender configuration files specifically for UBI images.
-
-* `mender-systemd` - Enables a Mender build that uses systemd. See also the
-  section about [disabling Mender as a system
-  service](../docs.md#disabling-mender-as-a-system-service).
-
-* `mender-uboot` - Enables integration with the U-Boot bootloader.
-
-* `mender-growfs-data` - Enable dynamic resizing of the data filesystem through systemd-growfs
-
 * `mender-partuuid` - Enable usage of UUID as partition identifiers (GRUB only).
 
     You must set the UUID's for all parts in your environment, e.g
@@ -80,6 +72,14 @@ Below is a list of the features that Mender provides, with descriptions:
     MENDER_ROOTFS_PART_B = "/dev/disk/by-partuuid/708798f3-4e9d-4338-bb69-bc92e0b51efb"
     MENDER_DATA_PART = "/dev/disk/by-partuuid/0965b52a-89bd-46c1-ac69-3b27fb6c2aae"
     ```
+
+* `mender-systemd` - Enables a Mender build that uses systemd. See also the
+  section about [disabling Mender as a system
+  service](../docs.md#disabling-mender-as-a-system-service).
+
+* `mender-ubi` - Enables Mender configuration files specifically for UBI images.
+
+* `mender-uboot` - Enables integration with the U-Boot bootloader.
 
 
 ## Default features
