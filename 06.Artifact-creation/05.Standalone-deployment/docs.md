@@ -14,7 +14,7 @@ are updated through external storage like a USB stick.
 For an explanation of the difference between *managed* and *standalone* deployments, please see
 [Modes of operation](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 
-!!! Note that [state scripts](../../04.Artifacts/50.State-scripts/docs.md) work slightly differently in standalone mode, see [state scripts a0nd standalone mode](../../04.Artifacts/50.State-scripts/docs.md#standalone-mode) for more information.
+!!! Note that [state scripts](../../04.Artifacts/50.State-scripts/docs.md) work slightly differently in standalone mode, see [state scripts and standalone mode](../../04.Artifacts/50.State-scripts/docs.md#standalone-mode) for more information.
 
 ## Setting Mender up for standalone mode
 

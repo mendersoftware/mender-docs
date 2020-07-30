@@ -5149,8 +5149,8 @@ New changes in meta-mender since sumo-v2018.11.2:
 * Add mender-artifact 2.3.0 recipe.
 * Remove support for `loadaddr` variable and
   `CONFIG_LOADADDR` config setting in U-Boot. This only affects boards
-  that use U-Boot as a first stage boot loader in order to use UEFI to
-  load GRUB as the second stage boot loader. For most boards it should
+  that use U-Boot as a first stage bootloader in order to use UEFI to
+  load GRUB as the second stage bootloader. For most boards it should
   not be problematic, since most support `kernel_addr_r`. If there is
   a problem however, it might be necessary to forward port [this
   patch](https://github.com/mendersoftware/meta-mender/blob/b39aa8aeecdf2b8cce3dbcce25ec044073568348/meta-mender-core/recipes-bsp/u-boot/patches/0007-distro_bootcmd-Switch-bootefi-to-use-loadaddr-by-def.patch)
@@ -5236,7 +5236,7 @@ New changes in meta-mender since sumo-v2018.11.2:
   `u-boot-fw-utils-mender-auto-provided` recipe when U-Boot fork has a
   slightly different README file.
 * Add PARTUUID generation and integration
-* Change default boot loader to GRUB on all non-UBI platforms.
+* Change default bootloader to GRUB on all non-UBI platforms.
   U-Boot will still be used on ARM platforms to provide UEFI that GRUB
   can use, but it will not be used for Mender integration. To opt out,
   and keep using traditional U-Boot integration, remove `mender-grub`,

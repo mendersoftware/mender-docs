@@ -1,3 +1,4 @@
+
 ---
 title: Raw flash
 taxonomy:
@@ -121,7 +122,7 @@ mtdinfo -a | grep -i 'eraseblock size:' |sort -u
 ```
 
 
-#### Boot loader
+#### Bootloader
 
 This is only relevant if you are using [the `mtdimg` image
 type](#image-types). If you need to flash a bootloader into the `u-boot` MTD
