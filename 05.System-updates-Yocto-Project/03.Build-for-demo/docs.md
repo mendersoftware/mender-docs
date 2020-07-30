@@ -29,6 +29,7 @@ The other layers in *meta-mender* provide support for specific boards used in Me
 
 [meta-mender-community](https://github.com/mendersoftware/meta-mender-community?target=_blank) is a set of layers containing board-specific settings for Mender integration.
 
+<!--AUTOVERSION: "www.yoctoproject.org/docs/%"/ignore-->
 !!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Build tutorial](https://www.yoctoproject.org/docs/3.1.1/brief-yoctoprojectqs/brief-yoctoprojectqs.html?target=_blank).
 
 
@@ -189,7 +190,7 @@ bitbake-layers add-layer ../meta-mender/meta-mender-demo
 
 Add these lines to the start of your `conf/local.conf`:
 
-<!--AUTOVERSION: "PREFERRED_VERSION_pn-mender = \"%\""/mender "PREFERRED_VERSION_pn-mender-artifact = \"%\""/mender-artifact "PREFERRED_VERSION_pn-mender-artifact-native = \"%\""/mender-artifact-->
+<!--AUTOVERSION: "releases % and older"/ignore "PREFERRED_VERSION_pn-mender = \"%\""/mender "PREFERRED_VERSION_pn-mender-artifact = \"%\""/mender-artifact "PREFERRED_VERSION_pn-mender-artifact-native = \"%\""/mender-artifact-->
 ```bash
 # The name of the disk image and Artifact that will be built.
 # This is what the device will report that it is running, and different updates must have different names
