@@ -367,6 +367,9 @@ def main():
     parser.add_argument(
         "--poky-version", help="poky version to update to (usually a branch)"
     )
+    parser.add_argument(
+        "--mender-binary-delta-version", help="Mender-binary-delta version to update to"
+    )
     args = parser.parse_args()
 
     if args.update and args.check:
@@ -410,6 +413,15 @@ def main():
             print('Not replacing "poky" instances, since it was not specified')
             VERSION_CACHE["meta-mender"] = False
             VERSION_CACHE["poky"] = False
+
+        if args.mender_binary_delta_version is not None:
+            VERSION_CACHE["mender-binary-delta"] = args.mender_binary_delta_version
+        else:
+            print(
+                'Not replacing "mender-binary-delta" instances, since it was not specified'
+            )
+            VERSION_CACHE["mender-binary-delta"] = False
+
 
     elif args.check:
         MODE = CHECK
