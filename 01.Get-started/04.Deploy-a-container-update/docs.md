@@ -136,7 +136,7 @@ Generate a Mender Artifact that will deploy the `hello-world` Docker container i
     "hello-world"
 ```
 
-!!! [hello-world](https://hub.docker.com/_/hello-world) is the name of the Docker
+!!! [hello-world](https://hub.docker.com/_/hello-world?target=_blank) is the name of the Docker
 !!! image that we want to download on the device when we deploy the generated
 !!! [Mender Artifact](../../02.Overview/02.Artifact/docs.md)
 
@@ -162,9 +162,9 @@ download the specified images from e.g https://hub.docker.io. It will not
 stop or start the images. This is a reference module, intended  as a starting
 point to develop your own Docker container update strategy.
 
-The [Kubernetes Update Module](https://hub.mender.io/t/kubernetes/1939) is very
+The [Kubernetes Update Module](https://hub.mender.io/t/kubernetes/1939?target=_blank) is very
 similar and instead allows deployment of Kubernetes manifesto files.
 
 You can explore other types of updates available by extending the Mender client
 in the
-[Update Modules category in the Mender Hub community platform](https://hub.mender.io/c/update-modules/13).
+[Update Modules category in the Mender Hub community platform](https://hub.mender.io/c/update-modules/13?target=_blank).

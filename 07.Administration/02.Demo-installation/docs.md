@@ -46,7 +46,7 @@ In addition, add the following lines to `/etc/hosts`:
 
 ### Starting the demo
 
-Clone the [integration](https://github.com/mendersoftware/integration)
+Clone the [integration](https://github.com/mendersoftware/integration?target=_blank)
 repository which contains everything that is need to start the demo server:
 <!--AUTOVERSION: "-b %"/integration "integration-%"/integration -->
 ```bash
@@ -91,7 +91,7 @@ similar output to the following:
 >```
 
 The script created a demo user, and you can login to the Mender UI by visiting
-[https://localhost](https://localhost).
+[https://localhost](https://localhost?target=_blank).
 
 ! You might get a warning from your browser that that the site is not secure.
 ! This is because we use self-signed certificates in the demo environment and

@@ -158,7 +158,7 @@ WARNING: exit code 134 from a shell command.
 ERROR: Function failed: do_mender_uboot_auto_configure (log file is located at /home/user/poky/build-vexpress-qemu/tmp/work/vexpress_qemu-poky-linux-gnueabi/u-boot/1_2018.01-r0/temp/log.do_mender_uboot_auto_configure.29863)
 ```
 
-This is a known bug in U-Boot versions prior to v2018.05. If you hit this you will need to include [this patch](https://raw.githubusercontent.com/mendersoftware/meta-mender/27f9e8dabf461d59dec4d94bd93d6b7207be0040/meta-mender-core/recipes-bsp/u-boot/patches/0005-fw_env_main.c-Fix-incorrect-size-for-malloc-ed-strin.patch) in your U-Boot sources. After adding the patch file to your layer, in your U-Boot `.bb` or `.bbappend` file, add the following:
+This is a known bug in U-Boot versions prior to v2018.05. If you hit this you will need to include [this patch](https://raw.githubusercontent.com/mendersoftware/meta-mender/27f9e8dabf461d59dec4d94bd93d6b7207be0040/meta-mender-core/recipes-bsp/u-boot/patches/0005-fw_env_main.c-Fix-incorrect-size-for-malloc-ed-strin.patch?target=_blank) in your U-Boot sources. After adding the patch file to your layer, in your U-Boot `.bb` or `.bbappend` file, add the following:
 
 ```
 SRC_URI_append = " file://0005-fw_env_main.c-Fix-incorrect-size-for-malloc-ed-strin.patch"

@@ -257,7 +257,7 @@ MENDER_EXTRA_PARTS_FSTAB[part2] = "ro,user"
 ```
 
 Arguments are passed as is to wks file and used by the [wic
-tool](https://www.yoctoproject.org/docs/latest/dev-manual/dev-manual.html#creating-partitioned-images-using-wic)
+tool](https://www.yoctoproject.org/docs/latest/dev-manual/dev-manual.html?target=_blank#creating-partitioned-images-using-wic)
 
 See also [`MENDER_EXTRA_PARTS_FSTAB`](#mender_extra_parts_fstab) and
 [`MENDER_EXTRA_PARTS_SIZES_MB`](#mender_extra_parts_sizes_mb).
@@ -290,7 +290,7 @@ generated .biosimg, .sdimg or .uefiimg file.
 
 If defined, `--fixed-size` will automatically be added to the wks file and used
 by the [wic
-tool](https://www.yoctoproject.org/docs/latest/dev-manual/dev-manual.html#creating-partitioned-images-using-wic)
+tool](https://www.yoctoproject.org/docs/latest/dev-manual/dev-manual.html?target=_blank#creating-partitioned-images-using-wic)
 
 ```
 MENDER_EXTRA_PARTS_SIZES_MB[part1] = "1024"

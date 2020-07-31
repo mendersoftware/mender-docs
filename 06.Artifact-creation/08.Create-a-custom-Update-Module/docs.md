@@ -12,7 +12,7 @@ There is an alternative called _Update Modules_ which allow for different types 
 
 An _Update Module_ is an extension to the Mender client for supporting a new type of software update, such as a package manager, container, bootloader or even updates of nearby microcontrollers. You can tailor an Update Module to a specific device or environment (e.g. update a proprietary bootloader), or be more general-purpose (e.g. install a set of `.deb` packages.).
 
-You can find general-purpose Update Modules and documentation, including support for file-based, package based and container-based updates together with community-supported Update Modules at [Mender Hub](https://hub.mender.io/c/update-modules/13).
+You can find general-purpose Update Modules and documentation, including support for file-based, package based and container-based updates together with community-supported Update Modules at [Mender Hub](https://hub.mender.io/c/update-modules/13?target=_blank).
 
 This document introduces how Update Modules work, so you can develop your own Update Modules that meet your specific needs.
 
@@ -255,4 +255,4 @@ Because of the possible re-execution described above, you should develop Update 
 ## Further reading
 
 <!--AUTOVERSION: "blob/%/Documentation"/mender -->
-* [Update Modules v3 protocol](https://github.com/mendersoftware/mender/blob/master/Documentation/update-modules-v3-file-api.md)
+* [Update Modules v3 protocol](https://github.com/mendersoftware/mender/blob/master/Documentation/update-modules-v3-file-api.md?target=_blank)

@@ -105,11 +105,11 @@ involved process. The following is an overview of this process:
 <!--AUTOVERSION: "mender-convert-integration-scripts/blob/%"/ignore-->
 1. Patch the U-Boot source code with the Mender integration patches
     - This process is described
-      [here](https://hub.mender.io/t/mender-from-scratch/391), under the U-Boot
+      [here](https://hub.mender.io/t/mender-from-scratch/391?target=_blank), under the U-Boot
       section.
 2. Compile the U-Boot binary and U-Boot `env` tools
     - Reference of the build and packaging process can be found
-      [here](https://github.com/mendersoftware/mender-convert-integration-scripts/blob/master/build-uboot-rpi.sh)
+      [here](https://github.com/mendersoftware/mender-convert-integration-scripts/blob/master/build-uboot-rpi.sh?target=_blank)
 3. Upload the pre-built U-Boot integration binaries to a convenient location
 4. Provide a custom `mender-convert` configuration file with content similar to
    the following:
@@ -160,11 +160,11 @@ MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
 <!--AUTOVERSION: "mender-convert/blob/%/configs"/mender-convert -->
 Refer to the following device integrations for more details regarding standalone U-Boot integration:
     - Raspberry Pi 3
-      - [configs/raspberrypi_config](https://github.com/mendersoftware/mender-convert/blob/master/configs/raspberrypi_config)
-      - [configs/raspberrypi3_config](https://github.com/mendersoftware/mender-convert/blob/master/configs/raspberrypi3_config)
+      - [configs/raspberrypi_config](https://github.com/mendersoftware/mender-convert/blob/master/configs/raspberrypi_config?target=_blank)
+      - [configs/raspberrypi3_config](https://github.com/mendersoftware/mender-convert/blob/master/configs/raspberrypi3_config?target=_blank)
     - Raspberry Pi 4
-      - [configs/raspberrypi_config](https://github.com/mendersoftware/mender-convert/blob/master/configs/raspberrypi_config)
-      - [configs/raspberrypi4_config](https://github.com/mendersoftware/mender-convert/blob/master/configs/raspberrypi4_config)
+      - [configs/raspberrypi_config](https://github.com/mendersoftware/mender-convert/blob/master/configs/raspberrypi_config?target=_blank)
+      - [configs/raspberrypi4_config](https://github.com/mendersoftware/mender-convert/blob/master/configs/raspberrypi4_config?target=_blank)
     - Beaglebone Black
-      - [configs/beaglebone_black_base_config](https://github.com/mendersoftware/mender-convert/blob/master/configs/beaglebone_black_base_config)
-      - [configs/beaglebone_black_debian_sdcard_config](https://github.com/mendersoftware/mender-convert/blob/master/configs/beaglebone_black_debian_sdcard_config)
+      - [configs/beaglebone_black_base_config](https://github.com/mendersoftware/mender-convert/blob/master/configs/beaglebone_black_base_config?target=_blank)
+      - [configs/beaglebone_black_debian_sdcard_config](https://github.com/mendersoftware/mender-convert/blob/master/configs/beaglebone_black_debian_sdcard_config?target=_blank)

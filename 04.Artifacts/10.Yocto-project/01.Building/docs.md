@@ -59,10 +59,10 @@ See [certificate troubleshooting](../../../201.Troubleshooting/03.Mender-Client/
 ### Starting from scratch
 
 Full details for building the Yocto project for your board are available at Mender Hub. The tested reference platforms for Mender are available at the following:
-* [Raspberry Pi 3 Model B/B+](https://hub.mender.io/t/raspberry-pi-3-model-b-b/57)
-* [Raspberry Pi 4 Model B](https://hub.mender.io/t/raspberry-pi-4-model-b/889)
-* [BeagleBone Black](https://hub.mender.io/t/beaglebone-black/83)
-* [QEMU](https://hub.mender.io/t/qemu-the-fast-processor-emulator/420)
+* [Raspberry Pi 3 Model B/B+](https://hub.mender.io/t/raspberry-pi-3-model-b-b/57?target=_blank)
+* [Raspberry Pi 4 Model B](https://hub.mender.io/t/raspberry-pi-4-model-b/889?target=_blank)
+* [BeagleBone Black](https://hub.mender.io/t/beaglebone-black/83?target=_blank)
+* [QEMU](https://hub.mender.io/t/qemu-the-fast-processor-emulator/420?target=_blank)
 
 !!! Note that the Yocto Project also depends on some [development tools to be in place](http://www.yoctoproject.org/docs/2.4/yocto-project-qs/yocto-project-qs.html?target=_blank#packages).
 
@@ -149,7 +149,7 @@ ARTIFACTIMG_FSTYPE = "ext4"
 ### Adding meta-mender to existing Yocto Project environment
 
 If you have an existing Yocto Project environment and want to add Mender to that, you will need to add the required meta layers to your build environment. The instructions
-here are the basic steps needed to do this however your actual setup may require different mechanisms such as the [Google repo tool](https://gerrit.googlesource.com/git-repo/).
+here are the basic steps needed to do this however your actual setup may require different mechanisms such as the [Google repo tool](https://gerrit.googlesource.com/git-repo/?target=_blank).
 
 Please make sure you are standing in the directory where `poky` resides,
 i.e. the top level of the Yocto Project build tree, and run these commands:
@@ -160,7 +160,7 @@ git clone -b master git://github.com/mendersoftware/meta-mender
 ```
 
 <!--AUTOVERSION: "the HEAD of the % branch"/meta-mender-->
-Note that this command checks out the HEAD of the master branch and is not a specific tagged release. The [Yocto project release schedule](https://wiki.yoctoproject.org/wiki/Releases) differs from the Mender release schedule so even though you may be using a specific release of Mender, you will still need to take further steps if you want to use a tagged release of the Yocto project.
+Note that this command checks out the HEAD of the master branch and is not a specific tagged release. The [Yocto project release schedule](https://wiki.yoctoproject.org/wiki/Releases?target=_blank) differs from the Mender release schedule so even though you may be using a specific release of Mender, you will still need to take further steps if you want to use a tagged release of the Yocto project.
 
 Next, initialize the build environment:
 

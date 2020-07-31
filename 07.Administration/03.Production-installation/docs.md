@@ -34,7 +34,7 @@ steps that are covered in the [Enterprise subsection](#enterprise).
   - [Docker Engine](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/?target=_blank), version **17.03 or later**.
   - [Docker Compose](https://docs.docker.com/compose/install/?target=_blank), version **1.6 or later**.
 - Minimum of 10 GB free disk space and 4 GB RAM available for Mender and its services.
-    - This heavily depends on your scale and environment, the supported [Mender Enterprise](https://mender.io/product/mender-enterprise) edition is recommended for larger-scale environments.
+    - This heavily depends on your scale and environment, the supported [Mender Enterprise](https://mender.io/product/mender-enterprise?target=_blank) edition is recommended for larger-scale environments.
 - A public IP address assigned and ports 443 and 9000 publicly accessible.
 - Allocated DNS names for the Mender API Gateway and the Mender Storage Proxy
   that resolve to the public IP of the Mender server by the devices. By following this tutorial
