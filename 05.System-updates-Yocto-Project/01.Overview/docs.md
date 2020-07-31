@@ -6,8 +6,7 @@ taxonomy:
 
 ## General requirements
 
-Below is a number of requirements that must be met in order to use Mender.
-
+Below are a number of requirements that must be met in order to use Mender.
 
 ### Device capacity
 The client binaries are about 7 MB in size, or about 4 MB when debug symbols are
@@ -33,10 +32,11 @@ If you [run the Mender client in standalone mode](../../02.Overview/01.Introduct
 
 
 ### Partition layout
+
 In order to support robust rollback, Mender requires the device to have a certain partition layout.
 At least four different partitions are needed:
 * one boot partition, containing the U-Boot bootloader and its environment
-* two partitions for storing the root file system and kernel. The kernel image file, zImage, and any device tree binary should be stored in directory /boot
+* two partitions for storing the root file system and kernel. The kernel image file, zImage, and any device tree binary should be stored in directory `/boot`.
 * one for persistent data
 
 One of the rootfs and kernel partitions will be marked as the *active* partition, from which the kernel and rootfs will be booted.
@@ -51,6 +51,7 @@ A sample partition layout is shown below:
 
 
 ### Correct clock
+
 Certificate verification requires the device clock to be running correctly at all times.
 Make sure to either have a reliable clock or use network time synchronization.
 Note that the default setup of systemd will use network time

@@ -7,7 +7,7 @@ taxonomy:
 When inheriting the `mender-full` or `mender-full-ubi` class in `local.conf`,
 Mender provides a default set of features that covers a wide range of boards and
 needs. However, sometimes it may be necessary to enable or disable certain
-features depending on the needs for the particular build. This can be done
+features depending on the needs of the particular build. This can be done
 using the `MENDER_FEATURES_ENABLE` and `MENDER_FEATURES_DISABLE` variables.
 
 To enable a feature, add this to your `local.conf`:
