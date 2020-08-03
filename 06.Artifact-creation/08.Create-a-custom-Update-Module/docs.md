@@ -20,7 +20,7 @@ An Update Module implements one or more of the actions that the Mender client ca
 
 ### The state machine workflow
 
-Update Modules follow the same execution flow as [state scripts](../../04.Artifacts/50.State-scripts/docs.md). For the development of Update Modules it is important to have a basic understanding of it.
+Update Modules follow the same execution flow as [state scripts](../../06.Artifact-creation/04.State-scripts/docs.md). For the development of Update Modules it is important to have a basic understanding of it.
 
 ![Update Modules state machine](update-modules-state-machine.png)
 

@@ -93,7 +93,7 @@ support updates like these, is to add them as files in your rootfs
 overlay.
 
 Similarly adding
-[root file system state scripts](../../04.Artifacts/50.State-scripts/docs.md#root-file-system-and-artifact-scripts)
+[root file system state scripts](../../06.Artifact-creation/04.State-scripts/docs.md#root-file-system-and-artifact-scripts)
 should be done using the `mender-convert` rootfs overlay.
 
 ## Fall back to U-Boot integration on ARM

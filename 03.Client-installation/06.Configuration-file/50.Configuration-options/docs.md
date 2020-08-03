@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-This sections lists all the configuration options in `mender.conf`. 
+This sections lists all the configuration options in `mender.conf`.
 
 #### ArtifactVerifyKey
 
@@ -95,7 +95,7 @@ it is returning `retry-later`.
 
 Default value is: `60`
 
-See also the section about [state scripts](../../../04.Artifacts/50.State-scripts/docs.md).
+See also the section about [state scripts](../../../06.Artifact-creation/04.State-scripts/docs.md).
 
 <!--AUTOVERSION: "mender v%"/ignore-->
 *Note*: Before mender v2.0.0 release, this option used to be called
@@ -124,7 +124,7 @@ aborting and marking the update as failed.
 
 Default value is: `1800` (30 min)
 
-See also the section about [state scripts](../../../04.Artifacts/50.State-scripts/docs.md).
+See also the section about [state scripts](../../../06.Artifact-creation/04.State-scripts/docs.md).
 
 <!--AUTOVERSION: "mender v%"/ignore-->
 *Note*: Before mender v2.0.0 release, this option used to be called
@@ -143,7 +143,7 @@ set it based on the expected execution time of your scripts.
 
 Default value is: `3600` (60 min)
 
-See also the section about [state scripts](../../../04.Artifacts/50.State-scripts/docs.md).
+See also the section about [state scripts](../../../06.Artifact-creation/04.State-scripts/docs.md).
 
 #### TenantToken
 
