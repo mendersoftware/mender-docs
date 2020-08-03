@@ -77,4 +77,4 @@ will carry the file you have uploaded, the destination
 directory, the filename, and permissions, exactly as we saw above.
 
 <!--AUTOVERSION: "mendersoftware/mender/blob/%/Documentation"/mender-->
-For more details on how to write Update Modules, visit the [Create a custom Update Module](../07.Create-a-custom-Update-Module/docs.md) section and the [Update Module API specification](https://github.com/mendersoftware/mender/blob/2.2.0/Documentation/update-modules-v3-file-api.md).
+For more details on how to write Update Modules, visit the [Create a custom Update Module](../07.Create-a-custom-Update-Module/docs.md) section and the [Update Module API specification](https://github.com/mendersoftware/mender/blob/master/Documentation/update-modules-v3-file-api.md).
