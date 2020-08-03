@@ -11,7 +11,7 @@ This sections lists all the configuration options in `mender.conf`.
 Specifies the location of the public key used to verify signed updates, and also
 enables signed-updates-only mode when it is set. If set the client will reject
 incorrectly signed updates, or updates without a signature. See also the section
-about [signing and verification](../../../04.Artifacts/40.Signing-and-verification/docs.md).
+about [signing and verification](../../../06.Artifact-creation/07.Sign-and-verify/docs.md).
 
 #### InventoryPollIntervalSeconds
 

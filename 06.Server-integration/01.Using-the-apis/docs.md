@@ -21,8 +21,6 @@ Over time the functionality of `mender-cli` will be extended to simplify the mos
 
 First download the [prebuilt mender-cli Linux binary here][x.x.x_mender-cli].
 
-!!! If you need to build `mender-cli` from source, the general steps are the same as for [compiling mender-artifact from source](../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#compiling-mender-artifact). Just use the [mender-cli repository](https://github.com/mendersoftware/mender-cli?target=_blank) instead of the mender-artifact repository.
-
 Then open a terminal in the directory you downloaded `mender-cli` and run the following commands to log in to your Mender server.
 
 ```bash

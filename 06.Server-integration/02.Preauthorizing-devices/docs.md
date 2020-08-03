@@ -48,8 +48,8 @@ In order to access the the Mender server API with the commands below, you need t
 Follow the steps in [set up shell variables for cURL](../01.Using-the-apis/docs.md#set-up-shell-variables-for-curl).
 
 ### Mender-Artifact tool
-Please follow [the documentation on mender-artifact](../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#mender-artifact) and install it.
 
+Download the `mender-artifact` tool from the [Downloads section](../../08.Downloads/docs.md).
 
 ## Generate a client keypair
 

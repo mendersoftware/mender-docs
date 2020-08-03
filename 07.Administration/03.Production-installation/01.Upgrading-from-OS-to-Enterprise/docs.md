@@ -184,7 +184,7 @@ tokens using various client integration methods:
 * [Device integration with Debian
   Family](../../../04.Artifacts/15.Debian-family/01.building-a-mender-debian-image/docs.md#convert-a-raw-disk-image)
 * [Modifying an existing prebuilt
-  image](../../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#changing-the-mender-server)
+  image](../../../06.Artifact-creation/03.Modify-an-Artifact/docs.md)
 
 Once all devices have been migrated, the `DEVICEAUTH_DEFAULT_TENANT_TOKEN`
 should be configured empty.

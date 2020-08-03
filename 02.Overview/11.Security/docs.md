@@ -61,8 +61,7 @@ of the public key file using the
 configuration option of the Mender client.
 
 You can find more information in the
-[Signing and verification](../../04.Artifacts/40.Signing-and-verification/docs.md)
-section.
+[Sign & Verify](../../06.Artifact-creation/07.Sign-and-verify/docs.md) section.
 
 
 ## User authentication and authorization
