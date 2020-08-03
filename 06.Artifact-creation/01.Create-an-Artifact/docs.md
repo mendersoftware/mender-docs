@@ -11,7 +11,7 @@ with the help of the `mender-artifact` command. You can get it either as a pre-b
 executable from the [downloads section](../../08.Downloads)
 or [build from sources](https://github.com/mendersoftware/mender-artifact?target=_blank).
 The two basic usage scenarios of this utility reflect the two main update types
-Mender supports: full filesystem update and application update. 
+Mender supports: full filesystem update and application update.
 
 ### Create a full filesystem update Artifact
 
@@ -56,7 +56,7 @@ mender-artifact write module-image \
   -n updated-authorized_keys-1.0 \
   -f dest_dir \
   -f filename \
-  -f authorized_keys 
+  -f authorized_keys
 ```
 
 Note specifically that in this case we are creating a *module-image*, using the [single file](https://hub.mender.io/t/single-file/486/26) (Update Module)[(../../03.Devices/10.Update-Modules/docs.me]. The Artifact created will be compatible with the *raspberrypi4* device type, although you can specify multiple device types if needed. The name of the Artifact is declared as *updated-authorized_keys-1.0* and the payload files we created earlier are included. The resulting file `artifact.mender` holds the Artifact. Please note that, _single-file_ is both the name of the Update Module and the Artifact type. Please note also, that the payload files must use the name specified here.
@@ -77,4 +77,4 @@ will carry the file you have uploaded, the destination
 directory, the filename, and permissions, exactly as we saw above.
 
 <!--AUTOVERSION: "mendersoftware/mender/blob/%/Documentation"/mender-->
-For more details on how to write Update Modules, and what exactly they are refer to [this section](../05.Create-a-custom-Update-Module/docs.md) and the [API specification](https://github.com/mendersoftware/mender/blob/2.2.0/Documentation/update-modules-v3-file-api.md).
+For more details on how to write Update Modules, visit the [Create a custom Update Module](../07.Create-a-custom-Update-Module/docs.md) section and the [Update Module API specification](https://github.com/mendersoftware/mender/blob/2.2.0/Documentation/update-modules-v3-file-api.md).
