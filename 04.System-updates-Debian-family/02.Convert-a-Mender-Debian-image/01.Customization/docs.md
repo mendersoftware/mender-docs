@@ -98,9 +98,11 @@ These three variables hold lists of hooks:
 ### Function override hook
 
 There is only one function override hook in mender-convert: `mender_create_artifact`. This is used
-to override the command which creates Mender Artifacts from the rootfs image. Just define the
-function in a custom config file to use the hook. A good starting point is the standard function
-found in the standard configuration file `configs/mender_convert_config`.
+to override the command which creates Mender Artifacts from the rootfs image. With this method, one
+can add or change arguments to the mender-artifact command, which is useful for example to sign
+Artifacts, or to add state scripts to Artifacts. Just define the `mender_create_artifact` function
+in a custom config file to use the hook. A good starting point is the standard function found in the
+standard configuration file `configs/mender_convert_config`.
 
 An example of overriding the `mender_create_artifact` hook is provided below.
 

@@ -89,7 +89,7 @@ permissions to connect to the docker daemon. In Ubuntu 18.04, the user must be a
 member of the `docker` group to be able to access it. Please check the
 documentation for your host OS if you encounter connection issues with docker.
 
-### Download mender-convert
+## Download mender-convert
 
 Clone `mender-convert` from the official repository:
 
@@ -154,3 +154,10 @@ diagnostics information.
 
 After it finishes, you can find your images in the `deploy` directory on your
 host machine.
+
+
+## Mender Hub community
+
+On Mender Hub you can find board specific tutorials for many boards that have been submitted by
+community members. Visit [the Debian family section on Mender
+Hub](https://hub.mender.io/c/board-integrations/debian-family/11?target=_blank) to find out more.
