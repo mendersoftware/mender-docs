@@ -178,7 +178,7 @@ organization. See one of these sections for details on how to include tenant
 tokens using various client integration methods:
 
 * [Mender installed on device using a deb
-  package](../../../05.Client-configuration/06.Installing/docs.md)
+  package](../../../03.Client-installation/02.Install-with-Debian-package/docs.md)
 * [Device integration using Yocto
   Project](../../../04.Artifacts/10.Yocto-project/99.Variables/docs.md#mender_tenant_token)
 * [Device integration with Debian

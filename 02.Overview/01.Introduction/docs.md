@@ -49,7 +49,7 @@ and connect clients to the Mender server.
 In _standalone_ mode, you initiate the updates locally on the device instead of
 connecting the Mender client to a Mender server. A common use-case is to perform
 updates from e.g an USB flash drive. To learn more visit
-[Standalone deployments](../../05.Client-configuration/07.Standalone-deployments/docs.md)
+[Standalone deployments](../../06.Artifact-creation/06.Standalone-deployment/docs.md)
 
 
 ## Update types

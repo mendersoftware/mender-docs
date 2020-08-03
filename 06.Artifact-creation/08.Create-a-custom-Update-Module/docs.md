@@ -49,7 +49,7 @@ The best and recommended way of running Mender is the [managed mode](../../02.Ov
 
 You will need a device with a Mender client installed. For development purposes you also need shell access to the device (e.g. via [SSH](../../01.Get-started/01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md#step-2-ssh-into-the-raspberry-pi)).
 
-To install the Mender client on your device, follow the instructions in the [Installing](../../05.Client-configuration/06.Installing/docs.md) documentation.
+To install the Mender client on your device, follow the instructions in the [Installing](../../03.Client-installation/02.Install-with-Debian-package/docs.md) documentation.
 
 ### Workstation with mender-artifact
 

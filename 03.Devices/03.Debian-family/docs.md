@@ -84,8 +84,8 @@ The above would translate to `MENDER_STORAGE_DEVICE = "/dev/mmcblk1p"`.
 ## Other Mender customizations
 
 Note that configuring features such as
-[identity](../../05.Client-configuration/03.Identity/docs.md) and
-[inventory]((../../05.Client-configuration/03.Identity/docs.md) rely on placing
+[identity](../../03.Client-installation/03.Identity/docs.md) and
+[inventory]((../../03.Client-installation/04.Inventory/docs.md) rely on placing
 additional files into the target filesystem.  With `mender-convert`,
 these modifications should _not_ be done in the input images since
 they will be overwritten by `mender-convert`.  The proper mechanism to

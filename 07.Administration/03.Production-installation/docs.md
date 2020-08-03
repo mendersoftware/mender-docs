@@ -784,7 +784,7 @@ which integration method is used with the client. Please refer to one of these s
 * [Migrating existing clients from an Open Source to an Enterprise
   server](01.Upgrading-from-OS-to-Enterprise/docs.md#migrating-clients)
 * [Mender installed on device using a deb
-  package](../../05.Client-configuration/06.Installing/docs.md#install-mender-using-the-debian-package)
+  package](../../03.Client-installation/02.Install-with-Debian-package/docs.md)
 * [Device integration using Yocto
   Project](../../04.Artifacts/10.Yocto-project/99.Variables/docs.md#mender_tenant_token)
 * [Device integration with Debian

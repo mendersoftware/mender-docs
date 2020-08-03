@@ -13,7 +13,7 @@ The Device ID does not have a directly visible relation to any Device attributes
 
 
 To ensure devices can also be uniquely recognized by humans,
-there is also a set of key-value pairs called *Device identity*. 
+there is also a set of key-value pairs called *Device identity*.
 The MAC address of a network interface controller, a serial number, the eMMC CID,
 are all pieces of data that:
 * do not change over the lifetime of a device
@@ -43,5 +43,5 @@ When a device requests [authentication](../../200.APIs/01.Open-source/01.Device-
 it includes the identity attributes. The Mender server computes the persistent
 identity of the device based on these attributes.
 
-Please refer to the [client configuration section](../../05.Client-configuration/03.Identity)
+Please refer to the [client installation section](../../03.Client-installation/03.Identity/docs.md)
 to find detailed tutorial on managing Device identities.

@@ -40,7 +40,7 @@ Also, you do not need any daemon-related configuration items in your `local.conf
 ## Configuring polling intervals
 
 You can configure how frequently the Mender client will make requests to the Mender server
-as described in [Polling intervals](../../../05.Client-configuration/05.Configuration-file/01.Polling-intervals/docs.md) before
+as described in [Polling intervals](../../../03.Client-installation/06.Configuration-file/01.Polling-intervals/docs.md) before
 starting the build process.
 
 In order to do this, change the following in the file

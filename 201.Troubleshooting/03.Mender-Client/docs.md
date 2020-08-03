@@ -158,6 +158,6 @@ The problem here is most likely that the device does not have the [partition lay
 
 ## The Mender client uses excessive network traffic even when not deploying updates
 
-If you are using the Mender client in demo mode, either by selecting it when running `mender setup`, or by using one of the [prebuilt Yocto images](../../08.Downloads/docs.md#disk-images) and set up with the [demo layer](../../04.Artifacts/10.Yocto-project/01.Building/docs.md#adding-meta-mender-to-existing-yocto-project-environment), the Mender client has more aggressive [polling intervals](../../05.Client-configuration/05.Configuration-file/01.Polling-intervals/docs.md) to simplify testing.
+If you are using the Mender client in demo mode, either by selecting it when running `mender setup`, or by using one of the [prebuilt Yocto images](../../08.Downloads/docs.md#disk-images) and set up with the [demo layer](../../04.Artifacts/10.Yocto-project/01.Building/docs.md#adding-meta-mender-to-existing-yocto-project-environment), the Mender client has more aggressive [polling intervals](../../03.Client-installation/06.Configuration-file/01.Polling-intervals/docs.md) to simplify testing.
 
-See the documentation on [building for production](../../04.Artifacts/10.Yocto-project/03.Building-for-production/docs.md) and [polling intervals](../../05.Client-configuration/05.Configuration-file/01.Polling-intervals/docs.md) to reduce the network bandwidth usage.
+See the documentation on [building for production](../../04.Artifacts/10.Yocto-project/03.Building-for-production/docs.md) and [polling intervals](../../03.Client-installation/06.Configuration-file/01.Polling-intervals/docs.md) to reduce the network bandwidth usage.
