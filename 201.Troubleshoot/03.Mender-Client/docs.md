@@ -4,6 +4,7 @@ taxonomy:
     category: docs
 ---
 
+
 ## Obtaining client logs
 
 Logs are usually needed in order to diagnose an issue.
@@ -17,6 +18,7 @@ journalctl -u mender-client
 
 Please note that the default log level is Info. It is possible to increase the
 verbosity by editing the Mender systemd unit file and append the `--debug` option.
+
 
 ### Deployment log files
 
@@ -124,6 +126,7 @@ You can do this manually for testing purposes, and you should
 
 The `_INCONSISTENT` suffix is appended to the software name on a device when the last Artifact deployment failed, and either the rollback also failed, or the particular Update Module being used has no rollback capability. As the name implies, in this case the device is in an inconsistent state, somewhere between two known states. In this case the deployment log of the last deployment may provide more information about what went wrong, and whether there is cause for concern.
 
+
 ## Artifact format not supported
 
 When deploying an update with the Mender client, you see a log message similar to the following:
@@ -140,7 +143,6 @@ In either case the solution is to [build a different version of the Artifact for
 until you have upgraded all Mender Clients and can use the corresponding latest version of the Mender Artifact format.
 
 
-
 ## The partition layout of the device is not as expected
 
 You have the Mender binary on your device and try to trigger a rootfs update but you get output similar to the following:
@@ -153,7 +155,6 @@ ERRO[0000] No match between boot and root partitions.    module=main
 ```
 
 The problem here is most likely that the device does not have the [partition layout Mender expects](../../05.System-updates-Yocto-Project/01.Overview/docs.md#partition-layout). This could have happened if you just placed the Mender binary into your rootfs, but did not [reflash the entire storage device](../../05.System-updates-Yocto-Project/20.Provisioning-a-new-device/docs.md) with the `.sdimg.` file output from the [Yocto Project build](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md). When this happens, output from `mount` and `fw_printenv` can confirm that this is the problem you are seeing. The solution is to flash your entire storage device with the `.sdimg` output from the Yocto Project build process.
-
 
 
 ## The Mender client uses excessive network traffic even when not deploying updates

@@ -71,6 +71,7 @@ This sometimes happens when using one of the minimal images from the Yocto Proje
 
   This is an easier fix, but also requires more space in the image than the previous solution, since all modules will be included, not just the missing one.
 
+
 ## System stops at U-Boot prompt
 
 There are reports of some systems having trouble running the U-Boot boot commands and getting stuck at the U-Boot prompt. This has, notably, been reported to
@@ -127,6 +128,7 @@ To revert to the old size calculation, add this to your build configuration
 ```
 MENDER_PARTITIONING_OVERHEAD_KB = "${@eval('(int((${MENDER_PARTITION_ALIGNMENT} - 1) / 1024) + 1) * 4')}"
 ```
+
 
 ## Poor performance when loading images from U-boot
 

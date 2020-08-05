@@ -8,7 +8,9 @@ This document details troubleshooting steps for the most common problems with th
 The first part applies to all installations, while the section below on Production installations
 only applies when the Mender server is [installed for production](../../07.Administration/03.Production-installation/docs.md).
 
+
 ## Persistent certificate errors in demo mode
+
 Since the demo certificates are self-signed, browsers will produce relevant warnings.
 For instance in Chrome, a `Your connection is not private` page will appear, with a
 `NET::CERT_AUTHORITY_INVALID` error.
@@ -23,7 +25,9 @@ the workaround is to clean browser internals related to HTTP Strict Transport Se
 
 Consult your browser's documentation for similar instructions.
 
+
 ## Cleaning up the deviceauth database after device decommissioning
+
 It is possible that after a failed device decommissioning operation there will be some unaccessible and unnecessary data in the deviceauth database. In this case, you should clean the database manually.
 
 Is is recommended to backup your data before performing the clean up operation.
@@ -46,7 +50,9 @@ start if you do not have enough memory.
 
 !!! The console of the virtual device can be seen by running `./demo --client logs mender-client`.
 
+
 ## A device shows up as pending after preauthorizing it
+
 If you see your device gets the `pending` status after [preauthorizing it](../../06.Server-integration/02.Preauthorizing-devices/docs.md), something went wrong. Most likely there is a mismatch between the identity and public key [you preauthorized](../../06.Server-integration/02.Preauthorizing-devices/docs.md#call-the-preauthorize-api) and what your Mender client is actually using.
 
 To diagnose this, look for the device identity in the Device Authentication service, for example:
@@ -122,6 +128,7 @@ openresty from source for your architecture.
 For the rest of this document, it is assumed that commands are run through production
 helper script `run` as detailed in the [production installation documentation](../../07.Administration/03.Production-installation/docs.md).
 
+
 ## Listing active containers
 
 Listing containers and their statuses is a first step in any troubleshooting
@@ -160,6 +167,8 @@ cdaab7768ec7        mongo:3.4                                           "/entryp
 867e76066fad        mendersoftware/gui:latest                           "/entrypoint.sh"         40 minutes ago      Up 40 minutes                                menderproduction_mender-gui_1
 54ae287d24ac        mendersoftware/minio:RELEASE.2016-12-13T17-19-42Z   "minio server /export"   40 minutes ago      Up 40 minutes       9000/tcp                 menderproduction_minio_1
 ```
+
+
 ## Service keeps restarting
 
 !!! Mender service containers are configured with restart policy `on-failure`.
@@ -226,6 +235,7 @@ user@local$ docker events --filter label=com.docker.compose.project=menderproduc
     com.docker.compose.version=1.10.0,
     image=mendersoftware/deployments:latest, name=menderproduction_mender-deployments_1)
 ```
+
 
 ## Container logs
 
