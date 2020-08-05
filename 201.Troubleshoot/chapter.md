@@ -1,11 +1,11 @@
 ---
-title: Troubleshooting
+title: Troubleshoot
 taxonomy:
     category: docs
 ---
 
 ### Chapter 10
 
-# Troubleshooting
+# Troubleshoot
 
 Solve problems you encounter

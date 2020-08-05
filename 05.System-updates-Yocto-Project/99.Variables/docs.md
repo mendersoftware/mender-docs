@@ -639,7 +639,7 @@ The storage device, as referred to by U-Boot (e.g. `1`). This variable can be
 used in cases where the Linux kernel and U-Boot refer to the same device with
 different names. See [The bootloader and the Linux kernel do not agree about the
 indexes of storage
-devices](../../201.Troubleshooting/01.Yocto-project-build/docs.md#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-indexes-of-storage-devices)
+devices](../../../201.Troubleshoot/01.Yocto-project-build/docs.md#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-indexes-of-storage-devices)
 for more information.
 
 If the variable is empty, it is automatically deduced from
@@ -654,7 +654,7 @@ The storage interface, as referred to by U-Boot (e.g. `mmc`). This variable can
 be used in cases where the Linux kernel and U-Boot refer to the same device with
 different names. See [The bootloader and the Linux kernel do not agree about the
 indexes of storage
-devices](../../201.Troubleshooting/01.Yocto-project-build/docs.md#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-indexes-of-storage-devices)
+devices](../../../201.Troubleshoot/01.Yocto-project-build/docs.md#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-indexes-of-storage-devices)
 for more information.
 
 If the variable is empty, it is automatically deduced from

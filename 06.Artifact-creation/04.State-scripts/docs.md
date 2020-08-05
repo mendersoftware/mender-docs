@@ -90,7 +90,7 @@ Because of the possible re-execution described above, state scripts should be wr
 Mender captures the standard error (but not standard out) stream from
 state scripts. The standard error stream from state scripts is stored
 as part of the Mender deployment log, so it becomes available
-[locally on the client](../../201.Troubleshooting/03.Mender-Client/docs.md#deployment-log-files)
+[locally on the client](../../201.Troubleshoot/03.Mender-Client/docs.md#deployment-log-files)
 as well as reported to the server (if the deployment fails) to ease diagnostics.
 
 Thus the state scripts should be written so they output diagnostics
