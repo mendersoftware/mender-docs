@@ -36,7 +36,7 @@ bootloader. Some configuration values need to be set, however, and they are
 described below.
 
 For more information about these or other variables that affect a Flash build,
-see [the Variables section](../../../04.Artifacts/10.Yocto-project/99.Variables/docs.md).
+see [the Variables section](../../99.Variables/docs.md).
 
 
 #### MENDER_MTDIDS

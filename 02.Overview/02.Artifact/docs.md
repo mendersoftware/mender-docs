@@ -62,8 +62,10 @@ Mender Artifacts. Get it in the
 [Downloads section](../../08.Downloads/docs.md#mender-artifact).
 
 Mender also has OS-level integrations for creating system updates as part of
-your existing OS build process. Learn more in the
-[Creating Artifacts section](../../04.Artifacts/chapter.md).
+your existing OS build process. Learn more by reading the following sections:
+
+- [System updates: Debian family](../../04.System-updates-Debian-family/chapter.md)
+- [System updates: Yocto Project](../../05.System-updates-Yocto-Project/chapter.md)
 
 
 ### Sign and verify

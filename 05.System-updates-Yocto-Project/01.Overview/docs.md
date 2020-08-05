@@ -23,13 +23,13 @@ present in most Linux distributions, including those based on the Yocto Project.
 To support atomic rootfs rollback, Mender integrates with the bootloader of the device. Currently
 Mender supports [GRUB](https://www.gnu.org/software/grub/?target=_blank) and
 [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank). Please see the [Yocto bootloader
-support](../board-integration/bootloader-support/docs.md) for more information.
+support](../02.Board-integration/02.Bootloader-support/docs.md) for more information.
 
 
 ### Kernel support
 While Mender itself does not have any specific kernel requirements beyond what a normal Linux kernel provides, it relies on systemd, which does have one such requirement: The `CONFIG_FHANDLE` feature must be enabled in the kernel. The symptom if this feature is unavailable is that systemd hangs during boot looking for device files.
 
-If you [run the Mender client in standalone mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation), you can avoid this dependency by [disabling Mender as a system service](../../04.Artifacts/10.Yocto-project/02.Image-configuration/docs.md#disabling-mender-as-a-system-service).
+If you [run the Mender client in standalone mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation), you can avoid this dependency by [disabling Mender as a system service](../05.Customize-Mender/docs.md#disabling-mender-as-a-system-service).
 
 
 ### Partition layout
@@ -76,7 +76,7 @@ situation is resolved.
 
 ### Unsupported build systems
 
-Mender has official support for the Yocto build system and [binary OS images based on the Debian family](../../System-updates-Debian-family). It is possible to adapt to other build systems. Please see [this community post](https://hub.mender.io/t/mender-from-scratch?target=_blank) for a concrete description.
+Mender has official support for the Yocto build system and [binary OS images based on the Debian family](../../04.System-updates-Debian-family/chapter.md). It is possible to adapt to other build systems. Please see [this community post](https://hub.mender.io/t/mender-from-scratch?target=_blank) for a concrete description.
 
 
 ## Mender Hub community

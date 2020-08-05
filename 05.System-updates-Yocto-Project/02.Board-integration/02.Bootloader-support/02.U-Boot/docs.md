@@ -6,7 +6,7 @@ taxonomy:
 
 This section describes the steps needed to integrate with U-Boot for Yocto Project. Most steps are automated, but there are a few things that need to be in place for this to function.
 
-!!! Please consult [the bootloader support section](../../../01.General-system-requirements/docs.md#bootloader-support) to find out if U-Boot is supported on your platform and build configuration, and whether it is enabled by default.
+!!! Please consult [the bootloader support section](../docs.md) to find out if U-Boot is supported on your platform and build configuration, and whether it is enabled by default.
 
 
 ## Enabling U-Boot
@@ -18,7 +18,7 @@ MENDER_FEATURES_ENABLE_append = " mender-uboot mender-image-sd"
 MENDER_FEATURES_DISABLE_append = " mender-grub mender-image-uefi"
 ```
 
-See [the documentation on features](../../../../04.Artifacts/10.Yocto-project/02.Image-configuration/01.Features/docs.md) for more information.
+See [the documentation on features](../../../04.Image-customization/01.Features/docs.md) for more information.
 
 
 ## Forks of U-boot
@@ -77,7 +77,7 @@ Project you need to enable the `mender-uboot` feature using
 MENDER_FEATURES_ENABLE_append = " mender-uboot"
 ```
 
-!!! If the architecture is ARM, and the `mender-full` or `mender-full-ubi` class is inherited in a Bitbake `.conf` file, then the `mender-uboot` feature is already on by default. See [the documentation on features](../../../../04.Artifacts/10.Yocto-project/02.Image-configuration/01.Features/docs.md) for more information.
+!!! If the architecture is ARM, and the `mender-full` or `mender-full-ubi` class is inherited in a Bitbake `.conf` file, then the `mender-uboot` feature is already on by default. See [the documentation on features](../../../04.Image-customization/01.Features/docs.md) for more information.
 
 This enables U-Boot integration, and also enables full automatic patching of
 U-Boot.

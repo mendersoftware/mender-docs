@@ -75,7 +75,7 @@ Below is a list of the features that Mender provides, with descriptions:
 
 * `mender-systemd` - Enables a Mender build that uses systemd. See also the
   section about [disabling Mender as a system
-  service](../docs.md#disabling-mender-as-a-system-service).
+  service](../../05.Customize-Mender/docs.md#disabling-mender-as-a-system-service).
 
 * `mender-ubi` - Enables Mender configuration files specifically for UBI images.
 

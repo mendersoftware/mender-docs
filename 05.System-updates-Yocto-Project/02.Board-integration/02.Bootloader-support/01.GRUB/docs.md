@@ -15,7 +15,7 @@ MENDER_FEATURES_ENABLE_append = " mender-grub mender-image-uefi"
 MENDER_FEATURES_DISABLE_append = " mender-uboot mender-image-sd"
 ```
 
-See [the documentation on features](../../../../04.Artifacts/10.Yocto-project/02.Image-configuration/01.Features/docs.md) for more information.
+See [the documentation on features](../../../04.Image-customization/01.Features/docs.md) for more information.
 
 
 ## BIOS based systems

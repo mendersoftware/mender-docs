@@ -54,7 +54,7 @@ the lists of specific criteria we use for our versioning policy.
 ## Mender client and Yocto Project version
 
 <!--AUTOVERSION: "% to %"/ignore-->
-In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3.0) versions and the [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) is updated accordingly to easily support these new features (e.g. by exposing new [MENDER_* variables](../../04.Artifacts/10.Yocto-project/99.Variables/docs.md)). The [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) has branches corresponding to [versions of the Yocto Project](https://wiki.yoctoproject.org/wiki/Releases?target=_blank).
+In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3.0) versions and the [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) is updated accordingly to easily support these new features (e.g. by exposing new [MENDER_* variables](../../05.System-updates-Yocto-Project/99.Variables/docs.md)). The [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) has branches corresponding to [versions of the Yocto Project](https://wiki.yoctoproject.org/wiki/Releases?target=_blank).
 
 <!--AUTOVERSION: "Mender client %"/ignore "| % ("/ignore-->
 | Client vs meta-mender version   | Older     | warrior (2.7)<sup>3</sup> | zeus (3.0) | dunfell (3.1) |

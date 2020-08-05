@@ -37,8 +37,7 @@ Mender supports the following signing algorithms:
 In order to sign and later on verify the signature of the Mender Artifact we need to generate a private and public key pair.
 Please follow the respective section below, depending on the signature algorithm you want to use.
 
-After generating the keys you will have a file `private.key`, which you use only on the Signing system, as well as a
-`public.key` which you [provision all the devices with](../../04.Artifacts/10.Yocto-project/03.Building-for-production/docs.md#artifact-signing-and-verification-keys).
+After generating the keys you will have a file `private.key`, which you use only on the Signing system, as well as a `public.key` which you provision all the devices with.
 
 !!! We refer to the file `public.key` as `artifact-verify-key.pem` on the devices to avoid ambiguity with other keys.
 
@@ -114,5 +113,10 @@ mender-artifact validate artifact-signed.mender -k public.key
 
 ## Enable Mender Client signature verification
 
-To make it easier to provision your devices with the public verification key and corresponding Mender Client configuration,
-Mender has integration with the Yocto Project. Please refer to the documentation for [Artifact signing and verification keys](../../04.Artifacts/10.Yocto-project/03.Building-for-production/docs.md#artifact-signing-and-verification-keys) to see how to include them.
+Signature verification is enabled on the Mender client using the [ArtifactVerifyKey](../../03.Client-installation/06.Configuration-file/50.Configuration-options/docs.md#artifactVerifykey) configuration option.
+
+For OS specific instructions on how to install and enable verification keys, visit:
+
+- [Yocto Project - Building for production - Artifact signing and verification keys](../../05.System-updates-Yocto-Project/06.Build-for-production/docs.md#artifact-signing-and-verification-keys).
+
+- [Debian family - Customize Mender](../../04.System-updates-Debian-family/03.Customize-Mender/docs.md)

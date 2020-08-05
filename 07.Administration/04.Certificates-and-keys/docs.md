@@ -72,7 +72,7 @@ CERT_API_CN=docker.mender.io CERT_STORAGE_CN=s3.docker.mender.io ./keygen
 
 !!! This generates keys with 128-bit security level (256-bit Elliptic Curve and 3072-bit RSA keys) and certificates valid for approximately 10 years. You can customize the parameters by adapting the script to your needs.
 
-!!! Make sure your device has the correct date/time set. If the date/time is incorrect, the certificate will not be validated. Consult the section on [Correct clock](../../03.Devices/01.General-system-requirements/docs.md#correct-clock) for details
+!!! Make sure your device has the correct date/time set. If the date/time is incorrect, the certificate will not be validated. Consult the section on [Correct clock](../../05.System-updates-Yocto-Project/01.Overview/docs.md#correct-clock) for details
 
 The keys and certificates are placed in a directory `keys-generated`
 where you ran the script from, and each service has a subdirectory within it
@@ -202,7 +202,7 @@ are typically provided by the `ca-certificates` package.
 
 If the certificate is self-signed, then clients that are to connect to the server need to have the file with
 the concatenated certificates (`keys-generated/certs/server.crt`) stored locally in order to verify
-the server's authenticity. Please see [the client section on building for production](../../04.Artifacts/10.Yocto-project/03.Building-for-production/docs.md)
+the server's authenticity. Please see [the client section on building for production](../../05.System-updates-Yocto-Project/06.Build-for-production/docs.md)
 for a description on how to provision new device disk images with the new certificates. In this case, it
 is advisable to ensure there is a overlap between the issuance of new certificates and expiration of old
 ones so all clients are able to receive an update containing the new cert before the old one expires. You

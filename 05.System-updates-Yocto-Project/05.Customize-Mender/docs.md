@@ -21,7 +21,7 @@ Port numbers can be specified in the same way as you would in a browser, as a co
 ## Configuring polling intervals
 
 You can configure how frequently the Mender client will make requests to the Mender server
-as described in [Polling intervals](../../../05.Client-configuration/05.Configuration-file/01.Polling-intervals/docs.md) before
+as described in [Polling intervals](../../03.Client-installation/06.Configuration-file/01.Polling-intervals/docs.md) before
 starting the build process.
 
 In order to do this, add the following in your `local.conf`:
@@ -72,9 +72,9 @@ In this case it is also possible to avoid Mender's current dependency on systemd
 MENDER_FEATURES_DISABLE_append = " mender-systemd"
 ```
 
-Also, you do not need any daemon-related configuration items in your `local.conf` as outlined in [the section on configuring the Yocto Project build](../../../04.Artifacts/10.Yocto-project/01.Building/docs.md#configuring-the-build).
+Also, you do not need any daemon-related configuration items in your `local.conf` as outlined in [the section on configuring the Yocto Project build](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build).
 
-! If you disable Mender running as a daemon under `systemd`, you must run all required Mender commands from the CLI or scripts. Most notably, you need to run `mender -commit` after booting into and verifying a successful deployment. When running in managed mode, any pending `mender -commit` will automatically be run by the Mender daemon after it starts. See [Modes of operation](../../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) for more information about the difference.
+! If you disable Mender running as a daemon under `systemd`, you must run all required Mender commands from the CLI or scripts. Most notably, you need to run `mender -commit` after booting into and verifying a successful deployment. When running in managed mode, any pending `mender -commit` will automatically be run by the Mender daemon after it starts. See [Modes of operation](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) for more information about the difference.
 
 
 ## Identity
@@ -170,10 +170,10 @@ do_install_append() {
 Replace `<DIRECTORY-WITH-UPDATE-MODULE>` with the path to the `custom-update-module` file, relative
 to the recipe file. The name, custom-update-module, can be any string, and must be set to the name
 of the payload type that will be used for Artifacts that will be installed with this Update
-Module. See [Create a custom update module](../../artifact-creation/create-a-custom-update-module)
+Module. See [Create a custom update module](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md)
 for more information.
 
 
 ## Delta update support
 
-Delta update support is covered in [its own sub section](delta-update-support).
+Delta update support is covered in [its own sub section](./01.Delta-update-support/docs.md).

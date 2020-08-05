@@ -7,8 +7,8 @@ taxonomy:
 This page describes how to install the Mender client on an existing Linux system. Installing Mender this way does not offer a full Mender board integration, so you can not carry out full system updates, however, it is possible to use Update Modules to update applications and other parts of the system.
 
 If you need the full board integration, follow the device documentation
-on [Yocto Project](../../03.Devices/02.Yocto-project/docs.md)
-or [Debian family](../../03.Devices/03.Debian-family/docs.md).
+in [System Updates: Yocto Project](../../05.System-updates-Yocto-Project/chapter.md)
+or [System Updates: Debian family](../../04.System-updates-Debian-family/chapter.md).
 
 
 ## Install Mender using the Debian package

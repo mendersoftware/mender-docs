@@ -6,12 +6,12 @@ taxonomy:
 
 The Mender client is a user space Linux executable with one main purpose: to install
 software updates to the device it is running on.It can operate in [managed
-or standalone mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation). 
+or standalone mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 
 At a high level, two types of updates are supported: [full filesystem](../../02.Overview/01.Introduction/docs.md#Robust-system-updates) when
 you update the complete filesystem, and [application updates](../../02.Overview/01.Introduction/docs.md#Application-updates) where, for example, you change one file, install some packages, or execute arbitrary commands. In most instances, the full filesystem update will use a redundant root filesystem partition and the application updates will update components in the active root filesystem.
 
-Note that in order to support *system updates*, a *board integration* is required which includes more than simply installing Mender on top of a running operating system. If you want support for system updates, either use OS images provided in [Get started](../../01.Get-started) or follow the chapters on System updates for [Debian family](../../03.Devices/03.Debian-family/docs.md) or [Yocto Project](../../03.Devices/02.Yocto-project/docs.md).
+Note that in order to support *system updates*, a *board integration* is required which includes more than simply installing Mender on top of a running operating system. If you want support for system updates, either use OS images provided in [Get started](../../01.Get-started) or follow the chapters on System updates for [Debian family](../../04.System-updates-Debian-family/chapter.md) or [Yocto Project](../../05.System-updates-Yocto-Project/chapter.md).
 
 If you are interested in *application updates* only, you can easily install Mender on top of an existing Linux OS as described in the [Debian package](../02.Install-with-Debian-package/docs.md) chapter.
 

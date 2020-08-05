@@ -8,11 +8,11 @@ This section describes the support level of the two bootloaders that Mender supp
 
 By default, Mender uses GRUB to boot, and this is the recommended bootloader to use, even on platforms that ordinarily use U-Boot. However, U-Boot can be used in cases where using GRUB is not possible or unsuccessful.
 
-!!! On platforms using [Raw flash](../Raw-flash) (UBI), it is only possible to use U-Boot.
+!!! On platforms using [Raw flash](../03.Raw-flash/docs.md) (UBI), it is only possible to use U-Boot.
 
 The main technical reason for using GRUB rather than U-Boot is that GRUB requires no patching to work with Mender, whereas U-Boot does. For most users this will be the path of least resistance.
 
-Please see the sub sections for [GRUB](GRUB) and [U-Boot](U-Boot) for more details.
+Please see the sub sections for [GRUB](./01.GRUB/docs.md) and [U-Boot](./02.U-Boot/docs.md) for more details.
 
 ## Compatibility
 

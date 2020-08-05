@@ -180,9 +180,9 @@ tokens using various client integration methods:
 * [Mender installed on device using a deb
   package](../../../03.Client-installation/02.Install-with-Debian-package/docs.md)
 * [Device integration using Yocto
-  Project](../../../04.Artifacts/10.Yocto-project/99.Variables/docs.md#mender_tenant_token)
+  Project](../../../05.System-updates-Yocto-Project/99.Variables/docs.md#mender_tenant_token)
 * [Device integration with Debian
-  Family](../../../04.Artifacts/15.Debian-family/01.building-a-mender-debian-image/docs.md#convert-a-raw-disk-image)
+  Family](../../../04.System-updates-Debian-family/03.Customize-Mender/docs.md)
 * [Modifying an existing prebuilt
   image](../../../06.Artifact-creation/03.Modify-an-Artifact/docs.md)
 

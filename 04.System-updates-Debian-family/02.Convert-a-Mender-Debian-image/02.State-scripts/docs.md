@@ -7,7 +7,7 @@ taxonomy:
 ## Add state scripts to an Artifact
 
 To add state scripts to an Artifact with mender-convert, use the same method as for [other Artifact
-customizations](../customization): The `mender_create_artifact` hook. In this hook, add `--script`
+customizations](../01.Customization/docs.md): The `mender_create_artifact` hook. In this hook, add `--script`
 arguments to `mender-artifact` for each script you wish to add.
 
 ### Example

@@ -9,7 +9,7 @@ The build output will most notably include:
 * a disk image that can be flashed to the device storage during initial provisioning
 * an Artifact containing rootfs filesystem image file that Mender can deploy to your provisioned device, it has suffix `.mender`
 
-!!! If you do not want to build your own images for testing purposes, the [Get started](../../../01.Get-started/chapter.md) tutorials provide links to several [prebuilt images](../../../08.Downloads/docs.md#disk-images).
+!!! If you do not want to build your own images for testing purposes, the [Get started](../../01.Get-started/chapter.md) tutorials provide links to several [prebuilt images](../../08.Downloads/docs.md#disk-images).
 
 ## What is *meta-mender*?
 
@@ -18,8 +18,8 @@ The build output will most notably include:
 Inside *meta-mender* there are several layers. The most important one is *meta-mender-core*, which is required by all builds that use Mender. *meta-mender-core* takes care of:
 
 * Compiling Mender for devices
-* [Partitioning the image correctly](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md)
-* [Setting up the bootloader to support Mender](../../../03.Devices/02.Yocto-project/02.Bootloader-support/docs.md)
+* [Partitioning the image correctly](../02.Board-integration/01.Partition-configuration/docs.md)
+* [Setting up the bootloader to support Mender](../02.Board-integration/02.Bootloader-support/docs.md)
 
 Each one of these steps can be configured further, see the linked sections for more details.
 
@@ -39,7 +39,7 @@ The other layers in *meta-mender* provide support for specific boards used in Me
 
 Mender needs to integrate with your board, most notably with the boot process.
 Although the integration is automated for most boards, please see
-[Board integration](../../../03.Devices/chapter.md) for general requirements and
+[Board integration](../02.Board-integration/docs.md) for general requirements and
 adjustment you might need to make before building.
 
 Check out the board integrations at [Mender Hub](https://hub.mender.io?target=_blank) to see if your board is
@@ -52,7 +52,7 @@ the [Mender Consulting services to integrate your board](https://mender.io/suppo
 
 Make sure that the clock is set correctly on your devices. Otherwise certificate verification will become unreliable
 and **the Mender client can likely not connect to the Mender server**.
-See [certificate troubleshooting](../../../201.Troubleshooting/03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid) for more information.
+See [certificate troubleshooting](../../201.Troubleshooting/03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid) for more information.
 
 
 ## Yocto Project
@@ -67,15 +67,15 @@ Full details for building the Yocto project for your board are available at Mend
 
 !!! Note that the Yocto Project also depends on some [development tools to be in place](http://www.yoctoproject.org/docs/2.4/yocto-project-qs/yocto-project-qs.html?target=_blank#packages).
 
-! The `meta-mender-demo` layer, which is included in the integrations available at [Mender Hub](https://hub.mender.io?target=_blank), is not appropriate if you are building for production devices. Please go to the section about [building for production](../03.Building-for-production/docs.md) to see the difference between demo builds and production builds.
+! The `meta-mender-demo` layer, which is included in the integrations available at [Mender Hub](https://hub.mender.io?target=_blank), is not appropriate if you are building for production devices. Please go to the section about [building for production](../06.Build-for-production/docs.md) to see the difference between demo builds and production builds.
 
-If you encounter any issues, please see [Board integration](../../../03.Devices/chapter.md)
+If you encounter any issues, please see [Board integration](../02.Board-integration/docs.md)
 for general requirements and adjustments you might need to enable your board to
 support Mender.
 
 #### Configuring the build
 
-!!! The configuration from [Mender Hub](https://hub.mender.io?target=_blank) will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../../02.Overview/01.Introduction/docs.md#client-modes-of-operation). See the [section on customizations](../02.Image-configuration/docs.md#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
+!!! The configuration from [Mender Hub](https://hub.mender.io?target=_blank) will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation). See the [section on customizations](../05.Customize-Mender/docs.md#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
 
 The following settings will be present in the default `conf/local.conf` after running the steps from [Mender Hub](https://hub.mender.io?target=_blank). These are likely to need customization for your setup.
 
@@ -141,11 +141,11 @@ ARTIFACTIMG_FSTYPE = "ext4"
 #SRC_URI_append_pn-mender = " file://server.crt"
 ```
 
-!!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../99.Variables/docs.md#mender_storage_total_size_mb) for more information. Mender selects the file system type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on file system types](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md#file-system-types) for more information.
+!!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../99.Variables/docs.md#mender_storage_total_size_mb) for more information. Mender selects the file system type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on file system types](../02.Board-integration/01.Partition-configuration/docs.md#file-system-types) for more information.
 
 !!! If you are building for **[hosted Mender](https://hosted.mender.io?target=_blank)**, make sure to set `MENDER_SERVER_URL` and `MENDER_TENANT_TOKEN` (see the comments above).
 
-!!! If you would like to use a read-only root file system, please see the section on [configuring the image for read-only rootfs](../../10.Yocto-project/02.Image-configuration/docs.md#configuring-the-image-for-read-only-rootfs).
+!!! If you would like to use a read-only root file system, please see the section on [configuring the image for read-only rootfs](../04.Image-customization/02.Read-only-root-filesystem/docs.md).
 
 ### Adding meta-mender to existing Yocto Project environment
 
@@ -178,7 +178,7 @@ Then, add the Mender layers into your project:
 bitbake-layers add-layer ../meta-mender/meta-mender-core
 ```
 
-! The `meta-mender-demo` layer (below) is not appropriate if you are building for production devices. Please go to the section about [building for production](../03.Building-for-production/docs.md) to see the difference between demo builds and production builds.
+! The `meta-mender-demo` layer (below) is not appropriate if you are building for production devices. Please go to the section about [building for production](../06.Build-for-production/docs.md) to see the difference between demo builds and production builds.
 
 ```bash
 bitbake-layers add-layer ../meta-mender/meta-mender-demo
@@ -186,7 +186,7 @@ bitbake-layers add-layer ../meta-mender/meta-mender-demo
 
 #### Configuring the build
 
-!!! The configuration in `conf/local.conf` below will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../../02.Overview/01.Introduction/docs.md#client-modes-of-operation). See the [section on customizations](../02.Image-configuration/docs.md#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
+!!! The configuration in `conf/local.conf` below will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation). See the [section on customizations](../05.Customize-Mender/docs.md#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
 
 Add these lines to the start of your `conf/local.conf`:
 
@@ -266,11 +266,11 @@ ARTIFACTIMG_FSTYPE = "ext4"
 #SRC_URI_append_pn-mender = " file://server.crt"
 ```
 
-!!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../99.Variables/docs.md#mender_storage_total_size_mb) for more information. Mender selects the file system type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on file system types](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md#file-system-types) for more information.
+!!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../99.Variables/docs.md#mender_storage_total_size_mb) for more information. Mender selects the file system type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on file system types](../02.Board-integration/01.Partition-configuration/docs.md#file-system-types) for more information.
 
 !!! If you are building for **[hosted Mender](https://hosted.mender.io?target=_blank)**, make sure to set `MENDER_SERVER_URL` and `MENDER_TENANT_TOKEN` (see the comments above).
 
-!!! If you would like to use a read-only root file system, please see the section on [configuring the image for read-only rootfs](../../10.Yocto-project/02.Image-configuration/docs.md#configuring-the-image-for-read-only-rootfs).
+!!! If you would like to use a read-only root file system, please see the section on [configuring the image for read-only rootfs](../04.Image-customization/02.Read-only-root-filesystem/docs.md).
 
 #### Building the image
 
@@ -295,14 +295,14 @@ There is one Mender disk image, which will have one of the following suffixes:
   * `.sdimg` if the system is an ARM system and boots using U-Boot (without UEFI emulation)
   * `.biosimg` if the system is an x86 system and boots using the traditional BIOS and GRUB bootloader
 
-!!! Please consult the [bootloader support section](../../../03.Devices/02.Yocto-project/02.Bootloader-support/docs.md) for information on which boot method is typically used in each build configuration.
+!!! Please consult the [bootloader support section](../02.Board-integration/02.Bootloader-support/docs.md) for information on which boot method is typically used in each build configuration.
 
 This disk image is used to provision the device storage for devices without
-Mender running already. Please proceed to [Provisioning a new device](../../20.Provisioning-a-new-device/docs.md)
+Mender running already. Please proceed to [Provisioning a new device](../20.Provisioning-a-new-device/docs.md)
 for steps to do this.
 
 On the other hand, if you already have Mender running on your device and want to deploy a rootfs update
-using this build, you should use the [Mender Artifact](../../../02.Overview/02.Artifact/docs.md) files,
+using this build, you should use the [Mender Artifact](../../02.Overview/02.Artifact/docs.md) files,
 which have `.mender` suffix.
 
 !!! If you built for one of the virtual Mender reference boards (`qemux86-64` or `vexpress-qemu`), you can start up your newly built image with the script in `../meta-mender/meta-mender-qemu/scripts/mender-qemu` and log in as *root* without password.

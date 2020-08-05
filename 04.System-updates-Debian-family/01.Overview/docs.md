@@ -74,7 +74,7 @@ situation is resolved.
 
 ### Unsupported build systems
 
-Mender has official support for [the Yocto build system](../../System-updates-Yocto-Project) and [binary OS images based on the Debian family](../../System-updates-Debian-family). It is possible to adapt to other build systems. Please see [this community post](https://hub.mender.io/t/mender-from-scratch?target=_blank) for a concrete description.
+Mender has official support for [the Yocto Project build system](../../05.System-updates-Yocto-Project/chapter.md) and [binary OS images based on the Debian family](../chapter.md). It is possible to adapt to other build systems. Please see [this community post](https://hub.mender.io/t/mender-from-scratch?target=_blank) for a concrete description.
 
 
 ## Mender Hub community

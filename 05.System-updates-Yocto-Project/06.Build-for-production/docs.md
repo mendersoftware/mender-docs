@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-This section describes the steps that are specific to production builds for Yocto Project. If you are using Debian converted images please refer to [setting parameters for mender-convert](../../15.Debian-family/docs.md)
+This section describes the steps that are specific to production builds for Yocto Project.
 These steps are not necessary if you are just trying out Mender, but must be done before deploying to production.
 
 
@@ -29,18 +29,18 @@ bitbake-layers remove-layer meta-mender-demo
 
 For security reasons, the Mender client does not require any open ports at the embedded device. Therefore, all communication between the Mender client and the server is always initiated by the client and it is important to configure the client so that the frequency of sending various requests to the server is reasonable for a given setup.
 
-Please refer to [polling intervals](../../../05.Client-configuration/05.Configuration-file/01.Polling-intervals/docs.md), for information on how to choose and how to set polling intervals.
+Please refer to [polling intervals](../../03.Client-installation/06.Configuration-file/01.Polling-intervals/docs.md), for information on how to choose and how to set polling intervals.
 
 ## Certificates
 
 Certificates are used to ensure the communication between the client and the server is secure, so that it is not possible for an adversary to pose as a legitimate server.
 
-!! Please make sure that the clock is set correctly on your devices. Otherwise certificate verification will become unreliable. See [certificate troubleshooting](../../../201.Troubleshooting/03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid) for more information.
+!! Please make sure that the clock is set correctly on your devices. Otherwise certificate verification will become unreliable. See [certificate troubleshooting](../../201.Troubleshooting/03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid) for more information.
 
 
 ### Preparing the client certificates
 
-You can either generate new certificates by following the tutorial for [generating certificates](../../../07.Administration/04.Certificates-and-keys/docs.md#generating-new-keys-and-certificates), or obtain the certificates in a different way - for example from your existing Certificate Authority. In either case the certificates on the client and server must be the same.
+You can either generate new certificates by following the tutorial for [generating certificates](../../07.Administration/04.Certificates-and-keys/docs.md#generating-new-keys-and-certificates), or obtain the certificates in a different way - for example from your existing Certificate Authority. In either case the certificates on the client and server must be the same.
 
 ### Including the client certificates
 
@@ -80,7 +80,7 @@ Note in particular the `:` after the directory; this is mandatory.
 
 Please note that setting up for production will require that you explicitly set the [MENDER_SERVER_URL variable](../99.Variables/docs.md#mender_server_url) to the proper value for your server.
 
-!!! Note that, this step is not required for the [standalone mode](../../../05.Client-configuration/07.Standalone-deployments/docs.md).
+!!! Note that, this step is not required for the [standalone mode](../../03.Client-installation/06.Configuration-file/01.Polling-intervals/docs.md).
 
 ## Artifact signing and verification keys
 

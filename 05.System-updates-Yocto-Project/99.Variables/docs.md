@@ -17,7 +17,7 @@ and used by Mender.
 
 Defines which file system type Mender will build for the rootfs partitions in
 the `.biosimg`, `.sdimg`, `.uefiimg` and the `.mender` file. See [File system
-types](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md#file-system-types)
+types](../02.Board-integration/01.Partition-configuration/docs.md#file-system-types)
 for more information.
 
 
@@ -82,7 +82,7 @@ default is empty, which means the artifact won't be signed.
 
 The signature can also be added or changed outside the build process, by using
 the `mender-artifact` tool's `-k` option. For more information, see [signing
-Mender Artifacts](../../40.Signing-and-verification/docs.md#signing).
+Mender Artifacts](../../06.Artifact-creation/07.Sign-and-verify/docs.md#signing).
 
 
 #### `MENDER_ARTIFACT_VERIFY_KEY`
@@ -115,7 +115,7 @@ Note that you cannot both use `MENDER_ARTIFACT_VERIFY_KEY` and have
 > Value: <block device> (default: 1st partition on `MENDER_STORAGE_DEVICE`)
 
 The partition Mender uses as the boot partition. See [More detailed storage
-configuration](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md)
+configuration](../02.Board-integration/01.Partition-configuration/docs.md)
 for more information.
 
 
@@ -134,7 +134,7 @@ exists to override the auto detection.
 
 The size of the boot partition in the generated `.biosimg`, `.sdimg` or
 `.uefiimg` file. See [Configuring the partition
-sizes](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md)
+sizes](../02.Board-integration/01.Partition-configuration/docs.md)
 for more information.
 
 
@@ -144,47 +144,9 @@ for more information.
 
 The partition Mender uses as the persistent data partition. See [More detailed
 storage
-configuration](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md#more-detailed-storage-configuration)
+configuration](../02.Board-integration/01.Partition-configuration/docs.md#more-detailed-storage-configuration)
 for more information.
 
-
-#### `MENDER_DATA_PART_DIR`
-
-> Value: <directory> (default: empty)
-
-<!--AUTOVERSION: "Yocto Project 2.5 % and later"/ignore-->
-!!! This variable and the associated method is obsolete in Yocto Project 2.5 sumo and later.
-Simply [using recipes](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md#deploying-files-to-the-persistent-data-partition)
-to put files in the `/data` partition is enough.
-
-This variable is used to add files to the data partition of the Mender
-partitioned image. You will need to update your recipe file and your image file.
-The update to the recipe file ensures that the persistent files are deployed to
-a common location and the updates to the image file ensures that these files are
-included in the target image.
-
-The changes needed in a particular recipe include inheriting the deploy class
-and ensuring that the persistent files are copied into the `DEPLOYDIR` for
-access by the image generation package.
-
-```bash
-inherit deploy
-do_deploy() {
-    install -d ${DEPLOYDIR}/persist
-    install -m 0644 persistent.txt ${DEPLOYDIR}/persist
-}
-addtask do_deploy after do_compile before do_build
-```
-
-The changes to the image recipe will add the contents of `persist` directory to
-the `.sdimg` or `.uefiimg` file by setting the `MENDER_DATA_PART_DIR` variable.
-
-```bash
-MENDER_DATA_PART_DIR = "${DEPLOY_DIR_IMAGE}/persist"
-```
-
-!!! The current implementation has a limitation of only one occurrence of
-`MENDER_DATA_PART_DIR` containing one directory.
 
 #### `MENDER_DATA_PART_FSTYPE`
 
@@ -201,7 +163,7 @@ exists to override the auto detection.
 
 The size of the persistent data partition in the generated `.biosimg`, `.sdimg`
 or `.uefiimg` file. See [Configuring the partition
-sizes](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md#configuring-the-partition-sizes)
+sizes](../02.Board-integration/01.Partition-configuration/docs.md#configuring-the-partition-sizes)
 for more information.
 
 
@@ -306,7 +268,7 @@ See [`MENDER_EXTRA_PARTS`](#mender_extra_parts).
 > Value: <mender features> (default: empty)
 
 Features appended to this variable will be disabled in the build. See [the
-section on features](../02.Image-configuration/01.Features/docs.md) for more information.
+section on features](../04.Image-customization/01.Features/docs.md) for more information.
 
 
 #### `MENDER_FEATURES_ENABLE`
@@ -314,7 +276,7 @@ section on features](../02.Image-configuration/01.Features/docs.md) for more inf
 > Value: <mender features> (default: platform dependent)
 
 Features appended to this variable will be enabled in the build. See [the
-section on features](../02.Image-configuration/01.Features/docs.md) for more information.
+section on features](../04.Image-customization/01.Features/docs.md) for more information.
 
 
 #### `MENDER_IMAGE_BOOTLOADER_BOOTSECTOR_OFFSET`
@@ -341,7 +303,7 @@ space between the partition table and the first partition.
 > Value: <MTD ID> (default: first MTD ID in `MENDER_MTDIDS`)
 
 This variable is only relevant if the [the `mender-ubi`
-feature](../02.Image-configuration/01.Features/docs.md#list-of-features) is enabled. The
+feature](../04.Image-customization/01.Features/docs.md#list-of-features) is enabled. The
 variable should be set to the MTDID of the device that mender, and the root
 filesystem in particular, resides on. This is set automatically in cases where
 it's possible, but in some cases it must be set manually.
@@ -408,7 +370,7 @@ otherwise the default is empty.
 > Value: <mtdids string> (no default, must be set if using UBI)
 
 This variable is only relevant if the [the `mender-ubi`
-feature](../02.Image-configuration/01.Features/docs.md#list-of-features) is enabled, in which
+feature](../04.Image-customization/01.Features/docs.md#list-of-features) is enabled, in which
 case it is mandatory. It lists the MTDID assignments on the system, separated by
 comma. For example:
 
@@ -425,7 +387,7 @@ must be set too.
 > Value: <mtdparts string> (default calculated from several factors)
 
 This variable is only relevant if the [the `mender-ubi`
-feature](../02.Image-configuration/01.Features/docs.md#list-of-features) is enabled. The
+feature](../04.Image-customization/01.Features/docs.md#list-of-features) is enabled. The
 variable holds the MTDPARTS string for the Flash based device. This is set
 automatically in cases where it's possible, but in some cases it must be set
 manually. For example:
@@ -478,7 +440,7 @@ storage device is a UBI volume.
 
 The partition Mender uses as the first (A) rootfs partition. See [More detailed
 storage
-configuration](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md#more-detailed-storage-configuration)
+configuration](../02.Board-integration/01.Partition-configuration/docs.md#more-detailed-storage-configuration)
 for more information.
 
 
@@ -507,7 +469,7 @@ Defaults to `${MENDER_STORAGE_DEVICE}:rootfsa` when building `.ubimg`.
 
 The partition Mender uses as the second (B) rootfs partition. See [More detailed
 storage
-configuration](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md#more-detailed-storage-configuration)
+configuration](../02.Board-integration/01.Partition-configuration/docs.md#more-detailed-storage-configuration)
 for more information.
 
 
@@ -565,7 +527,7 @@ The three methods should not be mixed.
 
 The storage device holding all partitions (rootfs, boot, data) used by Mender.
 See [Configuring
-storage](../../../03.Devices/02.Yocto-project/01.Partition-configuration/docs.md#configuring-storage)
+storage](../02.Board-integration/01.Partition-configuration/docs.md#configuring-storage)
 for more information.
 
 
@@ -677,7 +639,7 @@ The storage device, as referred to by U-Boot (e.g. `1`). This variable can be
 used in cases where the Linux kernel and U-Boot refer to the same device with
 different names. See [The bootloader and the Linux kernel do not agree about the
 indexes of storage
-devices](../../../201.Troubleshooting/01.Yocto-project-build/docs.md#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-indexes-of-storage-devices)
+devices](../../201.Troubleshooting/01.Yocto-project-build/docs.md#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-indexes-of-storage-devices)
 for more information.
 
 If the variable is empty, it is automatically deduced from
@@ -692,7 +654,7 @@ The storage interface, as referred to by U-Boot (e.g. `mmc`). This variable can
 be used in cases where the Linux kernel and U-Boot refer to the same device with
 different names. See [The bootloader and the Linux kernel do not agree about the
 indexes of storage
-devices](../../../201.Troubleshooting/01.Yocto-project-build/docs.md#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-indexes-of-storage-devices)
+devices](../../201.Troubleshooting/01.Yocto-project-build/docs.md#the-bootloader-and-the-linux-kernel-do-not-agree-about-the-indexes-of-storage-devices)
 for more information.
 
 If the variable is empty, it is automatically deduced from
@@ -704,5 +666,5 @@ If the variable is empty, it is automatically deduced from
 > Value: `enable` (default)
 
 Controls whether to run Mender as a systemd service. See [Modes of
-operations](../../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) and [Image
-configuration](../02.Image-configuration/docs.md) for more information.
+operations](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) and [Image
+configuration](../04.Image-customization/01.Features/docs.md) for more information.

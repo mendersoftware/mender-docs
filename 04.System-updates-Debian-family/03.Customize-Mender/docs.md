@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 This chapter assumes that you are familiar with [rootfs
-overlays](../convert-a-mender-debian-image/customization#rootfs-overlays).
+overlays](../02.Convert-a-Mender-Debian-image/01.Customization/docs.md#rootfs-overlays).
 
 ## Mender server address
 
@@ -28,7 +28,7 @@ Authority (CA).
 
 To provide a custom `mender.conf` configuration file inside the image, put the configuration file in
 the `/etc/mender` directory inside [your own
-layer](../convert-a-mender-debian-image/customization#rootfs-overlays). Use these commands to create
+overlay directory](../02.Convert-a-Mender-Debian-image/01.Customization/docs.md#rootfs-overlays). Use these commands to create
 an overlay and put a custom configuration file inside the overlay:
 
 ```bash
@@ -43,7 +43,7 @@ sudo chown root:root rootfs_overlay_production
 ```
 
 The options inside the JSON structure can be any option from [the client configuration
-options](../../client-installation/configuration-file/configuration-options).
+options](../../03.Client-installation/06.Configuration-file/50.Configuration-options/docs.md).
 
 ## Identity
 
@@ -59,7 +59,7 @@ sudo chown root:root rootfs_overlay_production
 
 Replace `<PATH-TO-IDENTITY-SCRIPT>` with the path to your identity script. Remember that the name of
 the script must be `mender-device-identity`, while the path can be arbitrary. To learn more about
-how to write identity scripts, see [the Identity section](../../client-installation/identity).
+how to write identity scripts, see [the Identity section](../../03.Client-installation/03.Identity/docs.md).
 
 ## Inventory
 
@@ -76,7 +76,7 @@ sudo chown root:root rootfs_overlay_production
 Replace `<PATH-TO-INVENTORY-SCRIPT>` with the path to your inventory script. Remember that the name
 of the script must start with `mender-inventory-`, while the path can be arbitrary. To learn more
 about how to write inventory scripts, see [the Inventory
-section](../../client-installation/inventory).
+section](../../03.Client-installation/04.Inventory/docs.md).
 
 ## Update Modules
 
@@ -91,4 +91,4 @@ sudo chown root:root rootfs_overlay_production
 ```
 
 Replace `<PATH-TO-UPDATE-MODULE>` with the path to your Update Module. To learn more about Update
-Modules, visit the section ["Use an Update Module"](../../client-installation/use-an-update-module).
+Modules, visit the section ["Use an Update Module"](../../03.Client-installation/05.Use-an-updatemodule/docs.md).
