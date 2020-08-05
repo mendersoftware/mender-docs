@@ -1,5 +1,5 @@
 ---
-title: Running Yocto Project image
+title: Yocto Project runtime
 taxonomy:
     category: docs
 ---

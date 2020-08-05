@@ -73,7 +73,7 @@ In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3
 !! <sup>2</sup> Rolling back to 1.x.x from a failed upgrade to 2.x.x is supported. However, it is not possible to downgrade to a Mender 1.x.x client from a 2.x.x client, once the update containing 2.x.x has been committed.
 
 <!--AUTOVERSION: "from % to %"/ignore "from-%-to-%"/ignore-->
-! <sup>3</sup> If upgrading from thud to warrior, see also [known issues when upgrading from thud to warrior](../../201.Troubleshoot/02.Running-Yocto-Project-image/docs.md#upgrading-from-thud-to-warrior-fails-with-dual-rootfs-configuration-not-found).
+! <sup>3</sup> If upgrading from thud to warrior, see also [known issues when upgrading from thud to warrior](../../201.Troubleshoot/02.Yocto-Project-runtime/docs.md#upgrading-from-thud-to-warrior-fails-with-dual-rootfs-configuration-not-found).
 
 Leverage [Mender consulting services to support other versions of the Yocto Project](https://mender.io/product/board-support?target=_blank) for your board and environment.
 
