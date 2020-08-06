@@ -6,7 +6,7 @@ taxonomy:
 
 ## General requirements
 
-Below are a number of requirements that must be met in order to use Mender.
+The general requirements for using Mender on a device are described below.
 
 ### Device capacity
 The client binaries are about 7 MB in size, or about 4 MB when debug symbols are

@@ -8,7 +8,7 @@ This section describes the steps that are specific to production builds for Yoct
 These steps are not necessary if you are just trying out Mender, but must be done before deploying to production.
 
 
-## Removal of demo layer
+## Remove demo layer
 
 When building for production, we need to remove the demo layer, `meta-mender-demo`, because its settings are inappropriate for production devices. Assuming you are still in the `build` directory, this command will remove the demo layer:
 

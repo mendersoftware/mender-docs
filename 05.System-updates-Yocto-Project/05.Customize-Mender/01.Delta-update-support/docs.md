@@ -6,12 +6,9 @@ taxonomy:
 
 
 If you are using [Mender Professional](https://mender.io/plans?target=_blank) or [Mender
-Enterprise](https://mender.io/plans?target=_blank), you have access to robust delta updates. In this
-section we describe the install procedure for the `mender-binary-delta` Update Module, using Yocto,
-but we do not cover everything which is needed to use delta updates. For a more complete reference,
-including how to create delta Artifacts, please go to the [Mender Hub page about
-`mender-binary-delta`](https://hub.mender.io/t/robust-delta-update-rootfs/1144?target=_blank).
+Enterprise](https://mender.io/plans?target=_blank), you have access to robust delta updates. In this section we describe how to enable support for delta updates on your devices,  by installing the `mender-binary-delta` Update Module with your Yocto Project build.
 
+Once your devices support installing delta updates, see [Create a Delta update Artifact](../../../06.Artifact-creation/05.Create-a-Delta-update-Artifact/docs.md) for a tutorial on how to create a delta update from two system updates.
 
 ## Prerequisites
 
@@ -91,6 +88,7 @@ EOF
 
 ## Next steps
 
-For more information about delta updates, including how to create delta Artifacts, how to deploy
-them, as well as Troubleshooting, see the [Mender Hub page about
-`mender-binary-delta`](https://hub.mender.io/t/robust-delta-update-rootfs/1144?target=_blank).
+For information on how to create delta update Artifacts, see [Create a Delta update Artifact](../../../06.Artifact-creation/05.Create-a-Delta-update-Artifact/docs.md).
+
+For more information about delta updates, including how to deploy them, as well as troubleshooting, see the
+[Mender Hub page about `mender-binary-delta`](https://hub.mender.io/t/robust-delta-update-rootfs/1144?target=_blank).

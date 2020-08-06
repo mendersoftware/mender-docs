@@ -10,10 +10,10 @@ taxonomy:
 If the client should connect to a different address than the default of `https://docker.mender.io/`, then you should specify this variable in your `local.conf`:
 
 ```bash
-MENDER_SERVER_URL = "https://my-mender-server.net/"
+MENDER_SERVER_URL = "https://mender.example.com"
 ```
 
-Port numbers can be specified in the same way as you would in a browser, as a colon after the address followed by the number, for example `https://my-mender-server.net:8999/`.
+Port numbers can be specified in the same way as you would in a browser, as a colon after the address followed by the number, for example `https://mender.example.com:8999`.
 
 !! Note that the `https` protocol specifier is required in the address. For security reasons, Mender does not support the plaintext `http` protocol.
 
