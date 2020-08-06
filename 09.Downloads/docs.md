@@ -105,7 +105,7 @@ Ubuntu or Raspberry Pi OS. We provide packages for the following architectures:
 
 The `mender-cli` utility enables an easy interface to key use cases
 of the Mender server API, such as uploading a Mender Artifact, from
-the command line. See [Server integration](../06.Server-integration/chapter.md) for
+the command line. See [Server integration](../08.Server-integration/chapter.md) for
 more information.
 
 Follow the correct link according to your host platform to download `mender-cli`:
