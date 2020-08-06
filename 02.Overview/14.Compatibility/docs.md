@@ -10,7 +10,7 @@ This document outlines the compatibility between different versions of Mender co
 ## Backward compatibility policy
 
 <!--AUTOVERSION: "% to %"/ignore-->
-Mender always provides an [upgrade path](../../07.Administration/07.Upgrading/docs.md) from the past patch (e.g. 1.2.0 to 1.2.1) and minor version (e.g. 1.1.1 to 1.2.0), and releases follow [Semantic Versioning](http://semver.org/?target=_blank). Note that according to Semantic Versioning, new functionality can be added in minor releases (e.g from 1.2.0 to 1.3.0) so be sure to upgrade components to support the newer functionality before starting to use it.
+Mender always provides an [upgrade path](../../07.Server-installation/07.Upgrading/docs.md) from the past patch (e.g. 1.2.0 to 1.2.1) and minor version (e.g. 1.1.1 to 1.2.0), and releases follow [Semantic Versioning](http://semver.org/?target=_blank). Note that according to Semantic Versioning, new functionality can be added in minor releases (e.g from 1.2.0 to 1.3.0) so be sure to upgrade components to support the newer functionality before starting to use it.
 
 For example, when a new [Artifact format](../02.Artifact/docs.md#the-mender-artifact-file-format) version is released, the *new* Mender client would support older versions of the Artifact format. However, the inverse is not true; the Mender client does not support *newer* versions of the Artifact format. So in this case you need to upgrade all Mender clients before starting to use new versions of the Artifact format (and the features it enables).
 

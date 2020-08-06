@@ -43,7 +43,7 @@ Please refer to [further reading](#further-reading) for more details.
 
 ### The Mender server
 
-The best and recommended way of running Mender is the [managed mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) with [hosted Mender](https://hosted.mender.io?target=_blank). You can also try the [on-premise demo server](../../07.Administration/02.Demo-installation/docs.md) for quick testing.
+The best and recommended way of running Mender is the [managed mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) with [hosted Mender](https://hosted.mender.io?target=_blank). You can also try the [on-premise demo server](../../07.Server-installation/02.Demo-installation/docs.md) for quick testing.
 
 ### A Device with a Mender client
 
