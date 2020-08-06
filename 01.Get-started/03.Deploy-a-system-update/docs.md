@@ -185,8 +185,8 @@ To read more about system snapshots see the documentation on
 Using the **snapshot** feature is one way to create system updates and additional
 resources on more advanced ways you will find here:
 
-1. [Building a Mender Yocto Project image](../../04.Artifacts/10.Yocto-project/01.Building/docs.md)
-2. [Building a Mender Debian image](../../04.Artifacts/15.Debian-family/01.building-a-mender-debian-image/docs.md)
+1. [Building a Mender Yocto Project image](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md)
+2. [Building a Mender Debian image](../../04.System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md)
 
 ## Next step
 

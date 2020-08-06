@@ -6,19 +6,19 @@ taxonomy:
 
 ##Your project is using a fork of U-Boot which conflicts with the U-Boot Mender uses
 
-When [Building a Mender Yocto Project image](../../04.Artifacts/10.Yocto-project/01.Building/docs.md) for your own project and device, you encounter a build error similar to the following:
+When [Building a Mender Yocto Project image](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md) for your own project and device, you encounter a build error similar to the following:
 
 ```
 ERROR: Multiple .bb files are due to be built which each provide u-boot (.../tisdk/sources/meta-variscite/recipes-bsp/u-boot/u-boot-var-som-am33.bb .../tisdk/sources/meta-ti/recipes-bsp/u-boot/u-boot_2014.07.bb).
  This usually means one provides something the other doesn't and should.
 ```
 
-Mender needs to configure U-Boot in order to support robust rootfs rollback. If your project relies on a fork of U-Boot this needs to be integrated. For more information, see [Integrating with U-Boot](../../03.Devices/02.Yocto-project/02.Bootloader-support/02.U-Boot/docs.md), in particular the section on [Forks of U-boot](../../03.Devices/02.Yocto-project/02.Bootloader-support/02.U-Boot/docs.md#forks-of-u-boot).
+Mender needs to configure U-Boot in order to support robust rootfs rollback. If your project relies on a fork of U-Boot this needs to be integrated. For more information, see [Integrating with U-Boot](../../05.System-updates-Yocto-Project/02.Board-integration/02.Bootloader-support/02.U-Boot/docs.md), in particular the section on [Forks of U-boot](../../05.System-updates-Yocto-Project/02.Board-integration/02.Bootloader-support/02.U-Boot/docs.md#forks-of-u-boot).
 
 
 ## A U-Boot component is failing to compile, and it compiles without Mender
 
-This may be an indication that Mender's automatic U-Boot patching has failed for the particular board that's being built for, and a manual patch may be required. For information on how to create such a patch, go to the [Manual U-Boot integration section](../../03.Devices/02.Yocto-project/02.Bootloader-support/02.U-Boot/01.Manual-U-Boot-integration/docs.md).
+This may be an indication that Mender's automatic U-Boot patching has failed for the particular board that's being built for, and a manual patch may be required. For information on how to create such a patch, go to the [Manual U-Boot integration section](../../05.System-updates-Yocto-Project/02.Board-integration/02.Bootloader-support/02.U-Boot/01.Manual-U-Boot-integration/docs.md).
 
 
 ## The bootloader and the Linux kernel do not agree about the indexes of storage devices
@@ -55,7 +55,7 @@ If you see errors similar to the following during the Yocto Project build proces
 include/config_mender.h:34:3: error: #error CONFIG_BOOTCOUNT_ENV is required for Mender to work
 ```
 
-There are two alternatives to resolve this issue. Either you can upgrade to U-Boot v2014.07 or newer, where Boot Count Limit was introduced, or you can patch your current U-Boot version to support this or a similar feature. Please see [Bootloader support](../../03.Devices/01.General-system-requirements/docs.md#bootloader-support) for more information.
+There are two alternatives to resolve this issue. Either you can upgrade to U-Boot v2014.07 or newer, where Boot Count Limit was introduced, or you can patch your current U-Boot version to support this or a similar feature.
 
 ## The build produces an error message "__populate_fs: Could not allocate block in ext2 filesystem while writing file..."
 
@@ -63,7 +63,7 @@ This is most likely because you are producing an image that has a lot of small f
 
 * Check if you have `dbg-pkgs` set in `IMAGE_FEATURES` or `EXTRA_IMAGE_FEATURES`. This will cause debug packages to be included in the image, which typically contain a lot of small files. If you don't need the debug information, this feature can be disabled.
 
-* Increase the size of the image by increasing the value in `MENDER_STORAGE_TOTAL_SIZE_MB` (see description in [Variables](../../04.Artifacts/10.Yocto-project/99.Variables/docs.md#mender_storage_total_size_mb)), which will also increase the number of blocks. However, note that unless it is increased greatly, this will still give you a filesystem which is fairly close to the block limit, so the problem could happen during production instead, if the device writes enough files.
+* Increase the size of the image by increasing the value in `MENDER_STORAGE_TOTAL_SIZE_MB` (see description in [Variables](../../05.System-updates-Yocto-Project/99.Variables/docs.md#mender_storage_total_size_mb)), which will also increase the number of blocks. However, note that unless it is increased greatly, this will still give you a filesystem which is fairly close to the block limit, so the problem could happen during production instead, if the device writes enough files.
 
 * Decrease the size of each block. This can be done by setting `EXTRA_IMAGECMD_ext4 = " -b 1024"` in `local.conf`. The default is 4096, it must be a power of 2, and it must not be smaller than 1024.
 
@@ -86,7 +86,7 @@ PROVIDES += "u-boot"
 RPROVIDES_${PN} = "u-boot"
 ```
 
-Detailed explanation how to do it you can find in [Integrating with U-Boot](../../03.Devices/02.Yocto-project/02.Bootloader-support/02.U-Boot/docs.md) section.
+Detailed explanation how to do it you can find in [Integrating with U-Boot](../../05.System-updates-Yocto-Project/02.Board-integration/02.Bootloader-support/02.U-Boot//docs.md) section.
 
 
 ## I'm using Flash/UBI setup and getting the message that `BOOTENV_SIZE` is too big to fit two copies inside `MENDER_RESERVED_SPACE_BOOTLOADER_DATA` with proper alignment, but my Flash size should be big enough
@@ -174,7 +174,7 @@ Unlike x86, ARM based boards usually do not implement [the UEFI boot standard](h
 However, some boards do not call `distro_bootcmd` as part of their U-Boot startup script, and in this case the approach will not work. A typical symptom is that the U-Boot bootloader skips loading of GRUB entirely and goes directly to loading the kernel. If this happens to you, you have two choices:
 
 1. Change the bootscript to call `distro_bootcmd` by patching U-Boot
-2. Abandon GRUB integration and attempt [U-Boot integration](../../03.Devices/02.Yocto-project/02.Bootloader-support/02.U-Boot/docs.md) instead
+2. Abandon GRUB integration and attempt [U-Boot integration](../../05.System-updates-Yocto-Project/02.Board-integration/02.Bootloader-support/02.U-Boot/docs.md) instead
 
 
 ## My device ends up at the GRUB prompt and all error and debug messages are lost because it clears the screen
@@ -274,7 +274,7 @@ IMAGE_FSTYPES_remove = "mtdimg"
 Alternatively, if appropriate, you can remove the manually set `MENDER_MTDPARTS`
 variable, and let Mender set it automatically, but you will then get a generic
 `mtdimg` which may not work on the platform in question. Please refer to [the
-Raw Flash section](../../03.Devices/02.Yocto-project/03.Raw-flash/docs.md) for more information.
+Raw Flash section](../../05.System-updates-Yocto-Project/02.Board-integration/03.Raw-flash/docs.md) for more information.
 
 ## After updating, the RootfsPartA and RootfsPartB are missing from `/etc/mender/mender.conf`
 
@@ -297,7 +297,7 @@ to your `local.conf` file.
 
 This indicates that the size declared for the full Mender image is too small to contain all files in the root filesystem.
 
-Increase the size of the image by increasing the value in `MENDER_STORAGE_TOTAL_SIZE_MB` (see description in [Variables](../../04.Artifacts/10.Yocto-project/99.Variables/docs.md#mender_storage_total_size_mb)).
+Increase the size of the image by increasing the value in `MENDER_STORAGE_TOTAL_SIZE_MB` (see description in [Variables](../../05.System-updates-Yocto-Project/99.Variables/docs.md#mender_storage_total_size_mb)).
 
 ## Conflict between u-boot and grub-efi versions
 
@@ -322,4 +322,4 @@ There are several possible resolutions to this problem:
 
 2. See if you can use an updated version recipe for your fork of U-Boot, for example by fetching the latest Yocto branch for the layer that contains the U-Boot fork.
 
-3. Avoid UEFI altogether by switching off the `mender-grub` feature. This will require you to use [U-Boot integration](../../03.Devices/02.Yocto-project/02.Bootloader-support/02.U-Boot/docs.md) instead.
+3. Avoid UEFI altogether by switching off the `mender-grub` feature. This will require you to use [U-Boot integration](../../05.System-updates-Yocto-Project/02.Board-integration/02.Bootloader-support/02.U-Boot/docs.md) instead.

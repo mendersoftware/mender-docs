@@ -14,15 +14,13 @@ See [Device authentication](../../02.Overview/13.Device-authentication/docs.md) 
 
 ### A board integrated with Mender
 
-You need a physical board that has already been [integrated with Mender](). For example, you may use one of the reference boards BeagleBone Black, Raspberry Pi 3 or Raspberry Pi 4.
+You need a physical board that has already been integrated with Mender. For example, you may use one of the reference boards BeagleBone Black, Raspberry Pi 3 or Raspberry Pi 4.
 
+If you have not yet prepared a device visit one of the following:
 
-### A block-based disk image for your board
-
-We assume you have either [built a disk image for your board](../../04.Artifacts/10.Yocto-project/01.Building/docs.md) or base it off one of the [pre-built images](../../08.Downloads/docs.md#disk-images). Note that a disk image is used to provision the entire storage of the board (it contains *all* the partitions) and typically has the `.sdimg` suffix.
-
-!!! Raw flash or raw filesystem images are not covered by this tutorial; however the steps are conceptually the same in these cases.
-
+- [Client installation](../../03.Client-installation/chapter.md)
+- [System updates: Debian family](../../04.System-updates-Debian-family/chapter.md)
+- [System updates: Yocto Project](../../05.System-updates-Yocto-Project/chapter.md)
 
 ### The identity of your device
 

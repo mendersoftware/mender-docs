@@ -26,8 +26,8 @@ mender-artifact write rootfs-image \
    -o artifact.mender
 ```
 
-Note that the `rootfs.ext4` filesystem image must be properly integrated with Mender for successful deployments. This generally means that you either generated it using [Yocto](../../03.Devices/02.Yocto-project/docs.md), or converted it from an existing
-[Debian image](../../03.Devices/03.Debian-family/docs.md) with [mender-convert](https://github.com/mendersoftware/mender-convert?target=_blank).
+Note that the `rootfs.ext4` filesystem image must be properly integrated with Mender for successful deployments. This generally means that you either generated it using [the Yocto Project](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md), or converted it from an existing
+[Debian image](../../04.System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md).
 
 The remaining flags specify the parameters used to [match devices to deployments](../../02.Overview/04.Deployment/docs.md#Algorithm-for-selecting-the-Deployment-for-the-Device) as follows:
 * `-t`: specifies the compatible device types.
@@ -59,7 +59,7 @@ mender-artifact write module-image \
   -f authorized_keys
 ```
 
-Note specifically that in this case we are creating a *module-image*, using the [single file](https://hub.mender.io/t/single-file/486/26?target=_blank) (Update Module)[(../../03.Devices/10.Update-Modules/docs.me]. The Artifact created will be compatible with the *raspberrypi4* device type, although you can specify multiple device types if needed. The name of the Artifact is declared as *updated-authorized_keys-1.0* and the payload files we created earlier are included. The resulting file `artifact.mender` holds the Artifact. Please note that, _single-file_ is both the name of the Update Module and the Artifact type. Please note also, that the payload files must use the name specified here.
+Note specifically that in this case we are creating a *module-image*, using the [single file](https://hub.mender.io/t/single-file/486/26?target=_blank) (Update Module)[(../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md]. The Artifact created will be compatible with the *raspberrypi4* device type, although you can specify multiple device types if needed. The name of the Artifact is declared as *updated-authorized_keys-1.0* and the payload files we created earlier are included. The resulting file `artifact.mender` holds the Artifact. Please note that, _single-file_ is both the name of the Update Module and the Artifact type. Please note also, that the payload files must use the name specified here.
 
 #### Update Modules generation script
 
