@@ -1,12 +1,12 @@
 ---
-title: Administration
+title: Server installation
 taxonomy:
     category: docs
 ---
 
 ### Chapter 7
 
-# Administration
+# Server installation
 
-Configuration and administration of Mender services.
+Install and customize the Mender server.
 Use [hosted Mender](https://hosted.mender.io?target=_blank) to save time setting up and maintaining the Mender server.
