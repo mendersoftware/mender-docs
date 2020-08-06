@@ -34,7 +34,7 @@ steps that are covered in the [Enterprise subsection](#enterprise).
   - [Docker Engine](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/?target=_blank), version **17.03 or later**.
   - [Docker Compose](https://docs.docker.com/compose/install/?target=_blank), version **1.6 or later**.
 - Minimum of 10 GB free disk space and 4 GB RAM available for Mender and its services.
-    - This heavily depends on your scale and environment, the supported [Mender Enterprise](https://mender.io/product/mender-enterprise) edition is recommended for larger-scale environments.
+    - This heavily depends on your scale and environment, the supported [Mender Enterprise](https://mender.io/product/mender-enterprise?target=_blank) edition is recommended for larger-scale environments.
 - A public IP address assigned and ports 443 and 9000 publicly accessible.
 - Allocated DNS names for the Mender API Gateway and the Mender Storage Proxy
   that resolve to the public IP of the Mender server by the devices. By following this tutorial
@@ -784,13 +784,13 @@ which integration method is used with the client. Please refer to one of these s
 * [Migrating existing clients from an Open Source to an Enterprise
   server](01.Upgrading-from-OS-to-Enterprise/docs.md#migrating-clients)
 * [Mender installed on device using a deb
-  package](../../05.Client-configuration/06.Installing/docs.md#install-mender-using-the-debian-package)
+  package](../../03.Client-installation/02.Install-with-Debian-package/docs.md)
 * [Device integration using Yocto
   Project](../../04.Artifacts/10.Yocto-project/99.Variables/docs.md#mender_tenant_token)
 * [Device integration with Debian
   Family](../../04.Artifacts/15.Debian-family/01.building-a-mender-debian-image/docs.md)
 * [Modifying an existing prebuilt
-  image](../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#changing-the-mender-server)
+  image](../../06.Artifact-creation/03.Modify-an-Artifact/docs.md)
 
 
 ### Saving the Enterprise configuration

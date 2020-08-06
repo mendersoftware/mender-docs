@@ -178,13 +178,13 @@ organization. See one of these sections for details on how to include tenant
 tokens using various client integration methods:
 
 * [Mender installed on device using a deb
-  package](../../../05.Client-configuration/06.Installing/docs.md)
+  package](../../../03.Client-installation/02.Install-with-Debian-package/docs.md)
 * [Device integration using Yocto
   Project](../../../04.Artifacts/10.Yocto-project/99.Variables/docs.md#mender_tenant_token)
 * [Device integration with Debian
   Family](../../../04.Artifacts/15.Debian-family/01.building-a-mender-debian-image/docs.md#convert-a-raw-disk-image)
 * [Modifying an existing prebuilt
-  image](../../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#changing-the-mender-server)
+  image](../../../06.Artifact-creation/03.Modify-an-Artifact/docs.md)
 
 Once all devices have been migrated, the `DEVICEAUTH_DEFAULT_TENANT_TOKEN`
 should be configured empty.

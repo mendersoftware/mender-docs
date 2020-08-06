@@ -7,12 +7,12 @@ taxonomy:
 
 ## Introduction
 
-The historically first update mechanism in Mender was [dual rootfs updates](../../02.Overview/01.Introduction/docs.md#robust-system-updates). 
+Historically, the first update mechanism in Mender was [dual rootfs updates](../../02.Overview/01.Introduction/docs.md#robust-system-updates).
 There is an alternative called _Update Modules_ which allow for different types of updates, including updates at the application level. This provides an opportunity to change the software on your devices in the active root filesystem.
 
 An _Update Module_ is an extension to the Mender client for supporting a new type of software update, such as a package manager, container, bootloader or even updates of nearby microcontrollers. You can tailor an Update Module to a specific device or environment (e.g. update a proprietary bootloader), or be more general-purpose (e.g. install a set of `.deb` packages.).
 
-You can find general-purpose Update Modules and documentation, including support for file-based, package based and container-based updates together with community-supported Update Modules at [Mender Hub](https://hub.mender.io/c/update-modules/13).
+You can find general-purpose Update Modules and documentation, including support for file-based, package based and container-based updates together with community-supported Update Modules at [Mender Hub](https://hub.mender.io/c/update-modules/13?target=_blank).
 
 This document introduces how Update Modules work, so you can develop your own Update Modules that meet your specific needs.
 
@@ -20,7 +20,7 @@ An Update Module implements one or more of the actions that the Mender client ca
 
 ### The state machine workflow
 
-Update Modules follow the same execution flow as [state scripts](../../04.Artifacts/50.State-scripts/docs.md). For the development of Update Modules it is important to have a basic understanding of it.
+Update Modules follow the same execution flow as [state scripts](../../06.Artifact-creation/04.State-scripts/docs.md). For the development of Update Modules it is important to have a basic understanding of it.
 
 ![Update Modules state machine](update-modules-state-machine.png)
 
@@ -49,7 +49,7 @@ The best and recommended way of running Mender is the [managed mode](../../02.Ov
 
 You will need a device with a Mender client installed. For development purposes you also need shell access to the device (e.g. via [SSH](../../01.Get-started/01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md#step-2-ssh-into-the-raspberry-pi)).
 
-To install the Mender client on your device, follow the instructions in the [Installing](../../05.Client-configuration/06.Installing/docs.md) documentation.
+To install the Mender client on your device, follow the instructions in the [Installing](../../03.Client-installation/02.Install-with-Debian-package/docs.md) documentation.
 
 ### Workstation with mender-artifact
 
@@ -255,4 +255,4 @@ Because of the possible re-execution described above, you should develop Update 
 ## Further reading
 
 <!--AUTOVERSION: "blob/%/Documentation"/mender -->
-* [Update Modules v3 protocol](https://github.com/mendersoftware/mender/blob/master/Documentation/update-modules-v3-file-api.md)
+* [Update Modules v3 protocol](https://github.com/mendersoftware/mender/blob/master/Documentation/update-modules-v3-file-api.md?target=_blank)

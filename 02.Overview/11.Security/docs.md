@@ -57,12 +57,11 @@ communication channel. If Artifact signature verification is enabled, the
 client needs to have access to the public part of the keypair used for signing
 the Artifacts.  To enable Artifact signature verification, configure the path
 of the public key file using the
-[ArtifactVerifyKey](../../05.Client-configuration/05.Configuration-file/50.Configuration-options/docs.md#artifactverifykey)
+[ArtifactVerifyKey](../../03.Client-installation/06.Configuration-file/50.Configuration-options/docs.md#artifactverifykey)
 configuration option of the Mender client.
 
 You can find more information in the
-[Signing and verification](../../04.Artifacts/40.Signing-and-verification/docs.md)
-section.
+[Sign & Verify](../../06.Artifact-creation/07.Sign-and-verify/docs.md) section.
 
 
 ## User authentication and authorization

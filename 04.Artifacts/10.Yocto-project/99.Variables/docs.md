@@ -81,8 +81,7 @@ Can be set to a private key which will be used to sign the update artifact. The
 default is empty, which means the artifact won't be signed.
 
 The signature can also be added or changed outside the build process, by using
-the `mender-artifact` tool's `-k` option. For more information, see [signing
-Mender Artifacts](../../40.Signing-and-verification/docs.md#signing).
+the `mender-artifact` tool's `-k` option. For more information, see [Sign & Verify](../../../06.Artifact-creation/07.Sign-and-verify/docs.md#signing).
 
 
 #### MENDER_ARTIFACT_VERIFY_KEY
@@ -258,7 +257,7 @@ MENDER_EXTRA_PARTS_FSTAB[part2] = "ro,user"
 ```
 
 Arguments are passed as is to wks file and used by the [wic
-tool](https://www.yoctoproject.org/docs/latest/dev-manual/dev-manual.html#creating-partitioned-images-using-wic)
+tool](https://www.yoctoproject.org/docs/latest/dev-manual/dev-manual.html?target=_blank#creating-partitioned-images-using-wic)
 
 See also [`MENDER_EXTRA_PARTS_FSTAB`](#mender_extra_parts_fstab) and
 [`MENDER_EXTRA_PARTS_SIZES_MB`](#mender_extra_parts_sizes_mb).
@@ -291,7 +290,7 @@ generated .biosimg, .sdimg or .uefiimg file.
 
 If defined, `--fixed-size` will automatically be added to the wks file and used
 by the [wic
-tool](https://www.yoctoproject.org/docs/latest/dev-manual/dev-manual.html#creating-partitioned-images-using-wic)
+tool](https://www.yoctoproject.org/docs/latest/dev-manual/dev-manual.html?target=_blank#creating-partitioned-images-using-wic)
 
 ```
 MENDER_EXTRA_PARTS_SIZES_MB[part1] = "1024"

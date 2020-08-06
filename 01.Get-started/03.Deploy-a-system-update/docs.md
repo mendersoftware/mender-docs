@@ -180,7 +180,7 @@ Deploy to many devices in order to effectively replicate the device software
 and configuration.
 
 To read more about system snapshots see the documentation on
-[Artifact from system snapshot](../../04.Artifacts/22.Snapshots/docs.md).
+[Artifact from system snapshot](../../06.Artifact-creation/02.Create-an-Artifact-with-system-snapshot/docs.md).
 
 Using the **snapshot** feature is one way to create system updates and additional
 resources on more advanced ways you will find here:

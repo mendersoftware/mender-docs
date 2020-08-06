@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-The Mender server microservices are all accessible using an HTTPS API. These APIs can be used to configure the server (for example, pre-authorizing devices) or implementing custom workflows (for example, integrating the Mender server into an existing device management system.) There are separate APIs for [Open Source](../../200.APIs/01.Open-source/docs.md) and [Enterprise](../../200.APIs/02.Enterprise/docs.md).
+The Mender server microservices are all accessible using an HTTPS API. These APIs can be used to configure the server (for example, preauthorizing devices) or implementing custom workflows (for example, integrating the Mender server into an existing device management system.) There are separate APIs for [Open Source](../../200.APIs/01.Open-source/docs.md) and [Enterprise](../../200.APIs/02.Enterprise/docs.md).
 
 There are many ways to interact with Mender's REST APIs and the most common ones are shown below.
 
@@ -20,8 +20,6 @@ Currently two use cases are supported:
 Over time the functionality of `mender-cli` will be extended to simplify the most common use cases for integrating the Mender server into other backend and cloud systems. If you need to cover other use cases today, follow the [tutorial for cURL instead](#set-up-shell-variables-for-curl).
 
 First download the [prebuilt mender-cli Linux binary here][x.x.x_mender-cli].
-
-!!! If you need to build `mender-cli` from source, the general steps are the same as for [compiling mender-artifact from source](../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#compiling-mender-artifact). Just use the [mender-cli repository](https://github.com/mendersoftware/mender-cli?target=_blank) instead of the mender-artifact repository.
 
 Then open a terminal in the directory you downloaded `mender-cli` and run the following commands to log in to your Mender server.
 

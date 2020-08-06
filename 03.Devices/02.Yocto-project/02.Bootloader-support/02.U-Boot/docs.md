@@ -104,7 +104,7 @@ Unfortunately, because of the great variation in U-Boot board code, the
 automatic patching process does not always succeed or produce a working boot
 loader, even if the above criteria are met. The symptoms are either that one of
 the `u-boot` recipes produce compile errors, or that the board does not boot
-using the modified boot loader. If this happens, or if you are using an older
+using the modified bootloader. If this happens, or if you are using an older
 Yocto Project branch, there will be some manual work required in order to
 produce a working integration patch.
 

@@ -28,7 +28,7 @@ The meta-mender warrior branch introduced a change for the configuration of
 Mender. Now the configuration is split between a transient configuration file in
 `/etc/mender/mender.conf` and a persistent configuration file in
 `/data/mender/mender.conf`, see
-[MEN-2757](https://tracker.mender.io/browse/MEN-2757).
+[MEN-2757](https://tracker.mender.io/browse/MEN-2757?target=blank).
 
 A device running on a single configuration file cannot upgrade to an image built
 with two configuration files feature.
@@ -48,8 +48,7 @@ can remove these changes and return to the normal workflow of generating update
 Artifacts.
 
 Note that `mender-migrate-configuration` recipe uses a state script, and it
-might be needed to clean the yocto build after removing it. See note at [State
-Scripts](../../04.Artifacts/50.State-scripts/docs.md#including-state-scripts-in-artifacts-and-disk-images)
+might be needed to clean the yocto build after removing it.
 
 
 ## Boot sequence fails with "Failed to mount /uboot" and "codepage cp437 not found"
@@ -140,11 +139,11 @@ u-boot=> ext4load ${mender_uboot_root} /boot/${image}
 
 This seems to be more common on `aarch64` devices, that is 64-bit ARM.
 
-The root cause of this issue is that U-Boot's `ext4` support does not handle extents very well. When a file gets large enough, extent index blocks will get created for it, and that leads to exercising a very slow code path. This has been fixed in upstream U-boot with this [patch](https://github.com/u-boot/u-boot/commit/d5aee659f217746395ff58adf3a863627ff02ec1), but at the time of writing, this is not included in any released U-boot versions and the first version to contain this fix will be 2019.07.
+The root cause of this issue is that U-Boot's `ext4` support does not handle extents very well. When a file gets large enough, extent index blocks will get created for it, and that leads to exercising a very slow code path. This has been fixed in upstream U-boot with this [patch](https://github.com/u-boot/u-boot/commit/d5aee659f217746395ff58adf3a863627ff02ec1?target=_blank), but at the time of writing, this is not included in any released U-boot versions and the first version to contain this fix will be 2019.07.
 
 There are a couple of workarounds,
 
-1. Backport the upstream [patch](https://github.com/u-boot/u-boot/commit/d5aee659f217746395ff58adf3a863627ff02ec1) to the U-boot version you are using or update U-boot to to a version that includes the mentioned patch.
+1. Backport the upstream [patch](https://github.com/u-boot/u-boot/commit/d5aee659f217746395ff58adf3a863627ff02ec1?target=_blank) to the U-boot version you are using or update U-boot to to a version that includes the mentioned patch.
 2. Use a different filesystem, e.g `ext3` which does not support `extents` and does not suffer from this limitation.
     - In Yocto you can change filesystem type by setting `ARTIFACTIMG_FSTYPE = "ext3"` in your `local.conf` or other appropriate location
 3. Disable `extents` feature on `ext4` filesystem
@@ -153,6 +152,6 @@ There are a couple of workarounds,
 
 Additional background information can be found in these threads:
 
-- [uboot ext4load is very slow to read the kernel image into memory](https://community.nxp.com/thread/472241)
-- [u-boot: eMMC transfer speed significantly slower than stock u-boot on Tegra186](https://github.com/madisongh/meta-tegra/issues/42)
-- [Mender 1.7 - Standalone mode - Kernel read time get difference before and after mender update](https://hub.mender.io/t/mender-1-7-standalone-mode-kernel-read-time-get-difference-before-and-after-mender-update)
+- [uboot ext4load is very slow to read the kernel image into memory](https://community.nxp.com/thread/472241?target=_blank)
+- [u-boot: eMMC transfer speed significantly slower than stock u-boot on Tegra186](https://github.com/madisongh/meta-tegra/issues/42?target=_blank)
+- [Mender 1.7 - Standalone mode - Kernel read time get difference before and after mender update](https://hub.mender.io/t/mender-1-7-standalone-mode-kernel-read-time-get-difference-before-and-after-mender-update?target=_blank)

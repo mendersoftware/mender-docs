@@ -13,10 +13,10 @@ Starting with the Mender Client version 1.2, support is available for scripts to
 
 * **Idle**: this is a state where no communication with the server is needed nor is there any update in progress
 * **Sync**: communication with the server is needed (currently while checking if there is an update for the given device and when inventory data is sent to server)
-* **Download**: there is an update for the given device and a new image is downloaded and written (i.e. streamed) to the inactive rootfs partition
-* **ArtifactInstall**: swapping of active and inactive partitions after the download and writing is completed
-* **ArtifactReboot**: after the update is installed we need to reboot the device to apply the new image. The Enter actions run before the reboot; the Leave actions run after.
-* **ArtifactCommit**: device is up and running after rebooting with the new image, and the commit makes the update persistent
+* **Download**: there is an update for the given device and a new Artifact is downloaded
+* **ArtifactInstall**: the Artifact is being installed
+* **ArtifactReboot**: runs if the Artifact being installed requires a reboot. Not all Artifact types do, but rootfs-image Artifacts will always reboot. The Enter actions run before the reboot; the Leave actions run after.
+* **ArtifactCommit**: device is up and running after rebooting, and the commit makes the update persistent
 * **ArtifactRollback**: if the new update is broken and we need to go back to the previous one
 * **ArtifactRollbackReboot**: if we need to reboot the device after performing rollback
 * **ArtifactFailure**: if any of the "Artifact" states are failing, the device enters and executes this state. This state always runs after the ArtifactRollback and ArtifactRollbackReboot states.
@@ -42,7 +42,7 @@ There are two types of the state scripts: root file system and Artifact. The roo
 for those scripts is `/etc/mender/scripts`.
 The Artifact scripts are part of the Artifact and are delivered to the Client inside the Artifact. All the Artifact scripts are prefixed with `Artifact`.
 
-The reason for having both root file system and Artifact scripts is related to the fact that some scripts must run before the Client downloads the Artifact and as such can not be delivered with the Artifact. Those scripts are Idle, Sync and Download. Therefore it is important to remember that when deploying a new update, all scripts will be run from the currently installed Artifact (root file system) until ArtifactInstall, at which point the scripts from the new Artifact will take over.
+The reason for having both root file system and Artifact scripts is related to the fact that some scripts must run before the Client downloads the Artifact and as such can not be delivered with the Artifact. Those scripts are Idle, Sync and Download. Therefore it is important to remember that when deploying a new update, all scripts will be run from the currently running root file system until ArtifactInstall, at which point the scripts from the new Artifact will take over.
 
 
 ## Transitions and ordering
@@ -69,13 +69,13 @@ All other return codes are reserved for future use by Mender and should not be u
 
 ### Retry-later
 
-State scripts are allowed to return a specific error code (`21`), in which case the client will sleep for a time configured by [StateScriptRetryIntervalSeconds](../../05.Client-configuration/05.Configuration-file/50.Configuration-options/docs.md#statescriptretryintervalseconds) before the state script is called again. Note that scripts are not allowed to retry for infinitely long. Please see description of [StateScriptRetryTimeoutSeconds](../../05.Client-configuration/05.Configuration-file/50.Configuration-options/docs.md#statescriptretrytimeoutseconds) for more information.
+State scripts are allowed to return a specific error code (`21`), in which case the client will sleep for a time configured by [StateScriptRetryIntervalSeconds](../../03.Client-installation/06.Configuration-file/50.Configuration-options/docs.md#statescriptretryintervalseconds) before the state script is called again. Note that scripts are not allowed to retry for infinitely long. Please see description of [StateScriptRetryTimeoutSeconds](../../03.Client-installation/06.Configuration-file/50.Configuration-options/docs.md#statescriptretrytimeoutseconds) for more information.
 
 This feature is useful e.g when you want user confirmation before proceeding with the update as is described in the [Update confirmation by end user](#update-confirmation-by-end-user) section on this page.
 
 ## Script timeout
 
-Each script has a maximum execution time defined by [StateScriptTimeoutSeconds](../../05.Client-configuration/05.Configuration-file/50.Configuration-options/docs.md#statescripttimeoutseconds). If a script exceeds this running time, its process group will be killed and the Mender client will treat the script and the update as failed.
+Each script has a maximum execution time defined by [StateScriptTimeoutSeconds](../../03.Client-installation/06.Configuration-file/50.Configuration-options/docs.md#statescripttimeoutseconds). If a script exceeds this running time, its process group will be killed and the Mender client will treat the script and the update as failed.
 
 ## Power loss
 
@@ -103,7 +103,7 @@ anything above this volume will be truncated.
 Mender users will probably come up with a lot of interesting use cases for state scripts, and we will cover some well-known ones below for inspiration.
 
 <!--AUTOVERSION: "mender/tree/%"/ignore-->
-You can find code examples in the [Mender client source repository](https://github.com/mendersoftware/mender/tree/master/examples/state-scripts) and if you have implemented an interesting use-case we encourage you to create a pull-request so all of the community can benefit.
+You can find code examples in the [Mender client source repository](https://github.com/mendersoftware/mender/tree/master/examples/state-scripts?target=_blank) and if you have implemented an interesting use-case we encourage you to create a pull-request so all of the community can benefit.
 
 #### Application data migration
 In this case, application data like a user profile is stored in an SQLite database and a new column need to be added before starting the new version of the application. This can be achieved by adding a state script to `ArtifactInstall_Leave` (that would run after writing the new rootfs, but before rebooting). This script can then do the necessary migrations on the data partition before the new version of the application is brought up after the reboot.
@@ -116,7 +116,7 @@ For many devices with a display that interacts with an end user, it is desirable
 
 Mender state scripts enable this use case with a script written to create the dialog box on the UI framework used. The script will simply wait for user input, and Mender will wait with the update process while waiting for the script to finish. Depending on what the user selects, the script can return `0` (proceed) or `21` ([retry later](#retry-later)). For example, this script can be run in the `Download_Enter` state, and the user will be asked before the download begins. Alternatively, the script can also be run in the `Download_Leave` state, if you want the download to finish first, and the user only to accept installing the update and rebooting.
 
-Make sure to adjust [StateScriptRetryTimeoutSeconds](../../05.Client-configuration/05.Configuration-file/50.Configuration-options/docs.md#statescriptretrytimeoutseconds), to enable this use case.
+Make sure to adjust [StateScriptRetryTimeoutSeconds](../../03.Client-installation/06.Configuration-file/50.Configuration-options/docs.md#statescriptretrytimeoutseconds), to enable this use case.
 
 ![End user update confirmation state scripts](mender-state-machine-user-confirmation.png)
 
@@ -136,21 +136,11 @@ In order to save power and bandwidth, network connectivity may not be enabled by
 
 A state script in `Sync_Enter` can enable network connectivity. You could also enable more powerful network connectivity, such as Wi-Fi, with a state script in `Download_Enter`. If the network is not brought up by default on reboot, you should also enable network in `Reboot_Leave`.
 
-!!! Note that the `Sync_Enter` transition can be reached quite frequently, depending on the [polling intervals](../../05.Client-configuration/05.Configuration-file/01.Polling-intervals/docs.md). The Mender Client also requires network in several following states of the update process to report progress to the Mender Server.
+!!! Note that the `Sync_Enter` transition can be reached quite frequently, depending on the [polling intervals](../../03.Client-installation/06.Configuration-file/01.Polling-intervals/docs.md). The Mender Client also requires network in several following states of the update process to report progress to the Mender Server.
 
 If you want to explicitly disable network again after Mender has finished the deployment, the only safe place to do this is in `Idle_Enter`.
 
 ![Enable networking state scripts](mender-state-machine-enable-network.png)
-
-
-## Including state scripts in Artifacts and disk images
-
-The easiest way to have Mender run the state scripts is to create a new OpenEmbedded recipe that inherits `mender-state-scripts` and copies them into place in `do_compile`, using the [${MENDER_STATE_SCRIPTS_DIR}](../../04.Artifacts/10.Yocto-project/99.Variables/docs.md#mender_state_scripts_dir) variable.
-
-<!--AUTOVERSION: "meta-mender/tree/%"/ignore-->
-Take a look at the [example-state-scripts](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-demo/recipes-mender/example-state-scripts?target=_blank) recipe to get started.
-
-!! If you add or remove a recipe containing state scripts to a build, you need to clear the `tmp` directory of the Yocto build before building a new image. An alternative is to call `bitbake -c clean <recipe>` with the affected recipe, but the first method is recommended since it will cover all cases, regardless of recipe name. Merely changing a recipe does not require this step.
 
 
 ## State transition ordering

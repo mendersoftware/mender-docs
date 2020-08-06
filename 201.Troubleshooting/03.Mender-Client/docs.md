@@ -136,7 +136,7 @@ The problem here is most likely that you have built [a new version of the Artifa
 that your Mender Client does not support. It could also be that you are building a very old version of the
 Artifact format that your new version of the Mender Client does not support.
 
-In either case the solution is to [build a different version of the Artifact format](../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#create-an-artifact-from-a-raw-root-file-system) that your Mender Client supports
+In either case the solution is to [build a different version of the Artifact format](../../06.Artifact-creation/01.Create-an-Artifact/docs.md) that your Mender Client supports
 until you have upgraded all Mender Clients and can use the corresponding latest version of the Mender Artifact format.
 
 
@@ -158,6 +158,6 @@ The problem here is most likely that the device does not have the [partition lay
 
 ## The Mender client uses excessive network traffic even when not deploying updates
 
-If you are using the Mender client in demo mode, either by selecting it when running `mender setup`, or by using one of the [prebuilt Yocto images](../../08.Downloads/docs.md#disk-images) and set up with the [demo layer](../../04.Artifacts/10.Yocto-project/01.Building/docs.md#adding-meta-mender-to-existing-yocto-project-environment), the Mender client has more aggressive [polling intervals](../../05.Client-configuration/05.Configuration-file/01.Polling-intervals/docs.md) to simplify testing.
+If you are using the Mender client in demo mode, either by selecting it when running `mender setup`, or by using one of the [prebuilt Yocto images](../../08.Downloads/docs.md#disk-images) and set up with the [demo layer](../../04.Artifacts/10.Yocto-project/01.Building/docs.md#adding-meta-mender-to-existing-yocto-project-environment), the Mender client has more aggressive [polling intervals](../../03.Client-installation/06.Configuration-file/01.Polling-intervals/docs.md) to simplify testing.
 
-See the documentation on [building for production](../../04.Artifacts/10.Yocto-project/03.Building-for-production/docs.md) and [polling intervals](../../05.Client-configuration/05.Configuration-file/01.Polling-intervals/docs.md) to reduce the network bandwidth usage.
+See the documentation on [building for production](../../04.Artifacts/10.Yocto-project/03.Building-for-production/docs.md) and [polling intervals](../../03.Client-installation/06.Configuration-file/01.Polling-intervals/docs.md) to reduce the network bandwidth usage.

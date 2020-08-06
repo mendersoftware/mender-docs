@@ -54,7 +54,7 @@ Boot the Raspberry Pi with the newly flashed SD card and
 
 If you do not know the IP address of your Raspberry Pi device, there are some
 great resources in the
-[Raspberry Pi OS documentation](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)
+[Raspberry Pi OS documentation](https://www.raspberrypi.org/documentation/remote-access/ip-address.md?target=_blank)
 on different ways of looking this up.
 
 SSH into your device:

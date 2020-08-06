@@ -80,7 +80,7 @@ Leverage [Mender consulting services to support other versions of the Yocto Proj
 
 ## Mender client/server and Artifact format
 
-The [Mender Artifact format](../02.Artifact/docs.md) is managed by the [Mender Artifacts Library](https://github.com/mendersoftware/mender-artifact?target=_blank), which is included in the Mender client and server (for reading Artifacts) as well as in a standalone utility `mender-artifact` (for [writing Artifacts](../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md)).
+The [Mender Artifact format](../02.Artifact/docs.md) is managed by the [Mender Artifacts Library](https://github.com/mendersoftware/mender-artifact?target=_blank), which is included in the Mender client and server (for reading Artifacts) as well as in a standalone utility `mender-artifact` (for [writing Artifacts](../../06.Artifact-creation/03.Modify-an-Artifact/docs.md)).
 
 <!--AUTOVERSION: "Mender % / mender-artifact %"/ignore-->
 |                                      | Artifact v1 | Artifact v2 | Artifact v3 |
@@ -99,7 +99,7 @@ The [Mender Artifact format](../02.Artifact/docs.md) is managed by the [Mender A
 | Mender 2.3.x / mender-artifact 3.3.x | no          | yes         | yes         |
 | Mender 2.4.x / mender-artifact 3.4.x | no          | yes         | yes         |
 
-!! Older Mender clients do not support newer versions of the Artifact format; they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#create-an-artifact-from-a-raw-root-file-system) for an introduction how to do this.
+!! Older Mender clients do not support newer versions of the Artifact format; they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../06.Artifact-creation/01.Create-an-Artifact/docs.md#create-a-full-filesystem-update-artifact) for an introduction how to do this.
 
 
 ## Mender server and client API

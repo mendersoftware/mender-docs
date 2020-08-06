@@ -59,7 +59,7 @@ input is desired.
 The setup is different depending on your server configuration and the most common cases
 are shown below. Use `mender setup --help` to learn about all configuration options.
 
-- Connecting to [hosted Mender](https://hosted.mender.io) using demo settings
+- Connecting to [hosted Mender](https://hosted.mender.io?target=_blank) using demo settings
 
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
 ```bash
@@ -90,7 +90,7 @@ sudo mender setup \
 sudo systemctl restart mender-client
 ```
 
-- Connecting to an [Enterprise](https://mender.io/products/mender-enterprise) server
+- Connecting to an [Enterprise](https://mender.io/products/mender-enterprise?target=_blank) server
 
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
 ```bash
@@ -112,7 +112,7 @@ sudo systemctl restart mender-client
 ## Install from source
 
 <!--AUTOVERSION: "mender/tree/%#installing-from-source"/mender -->
-As an alternative to using a Debian package, it is possible to install the Mender client from source by following the guidelines outlined in the [README.md](https://github.com/mendersoftware/mender/tree/master#installing-from-source) of the Mender client source repository.
+As an alternative to using a Debian package, it is possible to install the Mender client from source by following the guidelines outlined in the [README.md](https://github.com/mendersoftware/mender/tree/master#installing-from-source?target=_blank) of the Mender client source repository.
 
 
 

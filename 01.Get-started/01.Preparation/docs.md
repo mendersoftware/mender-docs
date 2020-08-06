@@ -39,7 +39,7 @@ available or not:
   evaluate key Mender use cases.
 
   This tutorial provides the steps for preparing your workstation to be able to run
-  a virtual ([QEMU process emulator](https://www.qemu.org/)) device with Mender
+  a virtual ([QEMU process emulator](https://www.qemu.org/?target=_blank)) device with Mender
   integrated.
 
 ## Have any questions?
