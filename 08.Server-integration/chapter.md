@@ -4,8 +4,8 @@ taxonomy:
     category: docs
 ---
 
-### Chapter 6
+### Chapter 8
 
 # Server integration
 
-Integrating the Mender server through the REST APIs.
+Integrate the Mender server with other services and workflows.
