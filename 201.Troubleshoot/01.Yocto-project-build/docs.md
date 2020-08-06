@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-##Your project is using a fork of U-Boot which conflicts with the U-Boot Mender uses
+## Your project is using a fork of U-Boot which conflicts with the U-Boot Mender uses
 
 When [Building a Mender Yocto Project image](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md) for your own project and device, you encounter a build error similar to the following:
 
@@ -56,6 +56,7 @@ include/config_mender.h:34:3: error: #error CONFIG_BOOTCOUNT_ENV is required for
 ```
 
 There are two alternatives to resolve this issue. Either you can upgrade to U-Boot v2014.07 or newer, where Boot Count Limit was introduced, or you can patch your current U-Boot version to support this or a similar feature.
+
 
 ## The build produces an error message "__populate_fs: Could not allocate block in ext2 filesystem while writing file..."
 
@@ -276,6 +277,7 @@ variable, and let Mender set it automatically, but you will then get a generic
 `mtdimg` which may not work on the platform in question. Please refer to [the
 Raw Flash section](../../05.System-updates-Yocto-Project/02.Board-integration/03.Raw-flash/docs.md) for more information.
 
+
 ## After updating, the RootfsPartA and RootfsPartB are missing from `/etc/mender/mender.conf`
 
 This may be due to a new feature added in `release 1.8`. From this release onwards, the `mender.conf` file will be split
@@ -292,6 +294,7 @@ help migrate a device from the old setup to the new one. This is enabled by addi
 IMAGE_INSTALL_append = " mender-migrate-configuration"
 ```
 to your `local.conf` file.
+
 
 ## I get a build error "Disk Requirements: At least xxx more space needed on the / filesystem." or "The rootfs size xxx(K) overrides IMAGE_ROOTFS_MAXSIZE: xxx(K)"
 

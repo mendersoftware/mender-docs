@@ -4,6 +4,7 @@ taxonomy:
     category: docs
 ---
 
+
 ## Console access to your device
 
 Most troubleshooting requires access to a console and a login prompt.
@@ -12,6 +13,7 @@ troubleshooting. All three methods will lead to a text login with the
 username of "root" and no password. Obviously these images should not
 be used for production devices.
 
+
 ### HDMI/USB
 
 The simplest method to connect to your device is with an HDMI display
@@ -19,7 +21,9 @@ and a USB keyboard. The Beaglebone requires a
 [micro-HDMI to HDMI cable](https://elinux.org/Beagleboard:BeagleBone_Black_Accessories?target=_blank#HDMI_Cables)
 or adapter. The Raspberry Pi uses a standard HDMI to HDMI cable.
 
+
 ### Serial Adapter
+
 An alternative to HDMI and keyboard is to use a serial adapter; this
 can provide more effective troubleshooting since it allows for easy
 copy/paste/search of the console output. This does require additional
@@ -50,6 +54,7 @@ available in the Ubuntu package repository. For other distributions,
 the standard package install mechanism likely will have these as
 well. Note that these are all console apps and may also work on MacOS
 or Windows.
+
 
 ### SSH
 
@@ -85,6 +90,7 @@ default.
 
    This likely means that your image is incorrect. Please retry your SD
    Card provisioning.
+
 
 ## Mender Server Connection Issues
 
@@ -134,6 +140,7 @@ default.
    Proper certificate processing requires an accurate system time. See
    [Mender Client troubleshooting](../03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid)
    for more details.
+
 
 ## Next Steps
 

@@ -52,7 +52,7 @@ the [Mender Consulting services to integrate your board](https://mender.io/suppo
 
 Make sure that the clock is set correctly on your devices. Otherwise certificate verification will become unreliable
 and **the Mender client can likely not connect to the Mender server**.
-See [certificate troubleshooting](../../201.Troubleshooting/03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid) for more information.
+See [certificate troubleshooting](../../201.Troubleshoot/03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid) for more information.
 
 
 ## Yocto Project
