@@ -422,7 +422,6 @@ def main():
             )
             VERSION_CACHE["mender-binary-delta"] = False
 
-
     elif args.check:
         MODE = CHECK
     else:
