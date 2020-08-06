@@ -81,7 +81,7 @@ echo | openssl s_client -connect s3.example.com:9000 2>/dev/null | openssl x509 
 > ```
 
 We can see that both these certificates are currently valid.
-Also see the [documentation on certificates](../../07.Administration/04.Certificates-and-keys/docs.md) for an
+Also see the [documentation on certificates](../../07.Server-installation/04.Certificates-and-keys/docs.md) for an
 overview and description on how to generate new certificates.
 
 
@@ -105,7 +105,7 @@ uses an official CA so the only reason your client would reject this is if it do
 in its system store.
 
 On the other hand, if you set up the Mender server yourself as described in
-[Production installation](../../07.Administration/03.Production-installation/docs.md) and generated certificates as part of it,
+[Production installation](../../07.Server-installation/03.Production-installation/docs.md) and generated certificates as part of it,
 your need to make sure that the server certificates are in `/etc/mender/server.crt` on your device.
 
 To test that they match, run `cat /etc/mender/server.crt` on your device, and compare that to the output
