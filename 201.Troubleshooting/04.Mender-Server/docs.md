@@ -47,7 +47,7 @@ start if you do not have enough memory.
 !!! The console of the virtual device can be seen by running `./demo --client logs mender-client`.
 
 ## A device shows up as pending after preauthorizing it
-If you see your device gets the `pending` status after [preauthorizing it](../../06.Server-integration/02.Preauthorizing-devices/docs.md), something went wrong. Most likely there is a mismatch between the identity and public key [you preauthorized](../../06.Server-integration/02.Preauthorizing-devices/docs.md#call-the-preauthorize-api) and what your Mender client is actually using.
+If you see your device gets the `pending` status after [preauthorizing it](../../08.Server-integration/02.Preauthorizing-devices/docs.md), something went wrong. Most likely there is a mismatch between the identity and public key [you preauthorized](../../08.Server-integration/02.Preauthorizing-devices/docs.md#call-the-preauthorize-api) and what your Mender client is actually using.
 
 To diagnose this, look for the device identity in the Device Authentication service, for example:
 
@@ -92,7 +92,7 @@ curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v2/devaut
 
 In this case you can see that there are two authentication sets with the exact same device identity: `{"mac":"52:54:00:50:9b:84"}`, one `preauthorized` and one `pending`. So the device reported (see the `pending` set) the exact same identity as we preauthorized; however, there is a mismatch between the public keys.
 
-The solution is to decommission the device and [remove all authentication sets](../../06.Server-integration/02.Preauthorizing-devices/docs.md#make-sure-there-are-no-existing-authentication-sets-for-your-device) and make sure the key used in the [preauthorize API call](../../06.Server-integration/02.Preauthorizing-devices/docs.md#call-the-preauthorize-api) matches exactly the one reported by the device, as seen in the `pending` data above.
+The solution is to decommission the device and [remove all authentication sets](../../08.Server-integration/02.Preauthorizing-devices/docs.md#make-sure-there-are-no-existing-authentication-sets-for-your-device) and make sure the key used in the [preauthorize API call](../../08.Server-integration/02.Preauthorizing-devices/docs.md#call-the-preauthorize-api) matches exactly the one reported by the device, as seen in the `pending` data above.
 
 
 ## mender-api-gateway exits with code 132
