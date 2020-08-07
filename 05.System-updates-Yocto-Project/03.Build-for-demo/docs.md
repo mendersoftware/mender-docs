@@ -9,7 +9,7 @@ The build output will most notably include:
 * a disk image that can be flashed to the device storage during initial provisioning
 * an Artifact containing rootfs filesystem image file that Mender can deploy to your provisioned device, it has suffix `.mender`
 
-!!! If you do not want to build your own images for testing purposes, the [Get started](../../01.Get-started/chapter.md) tutorials provide links to several [prebuilt images](../../08.Downloads/docs.md#disk-images).
+!!! If you do not want to build your own images for testing purposes, the [Get started](../../01.Get-started/chapter.md) tutorials provide links to several [prebuilt images](../../09.Downloads/docs.md#disk-images).
 
 ## What is *meta-mender*?
 

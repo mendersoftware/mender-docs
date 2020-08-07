@@ -45,7 +45,7 @@ you can see the public key of a Device in the Mender UI.
 You can find more information in the
 [Device authentication](../13.Device-authentication/docs.md)
 and
-[Preauthorizing devices](../../06.Server-integration/02.Preauthorizing-devices/docs.md)
+[Preauthorizing devices](../../08.Server-integration/02.Preauthorizing-devices/docs.md)
 sections.
 
 

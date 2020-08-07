@@ -57,7 +57,7 @@ mender snapshot dump --compression gzip > /mnt/root-part.ext4.gz
 !!! Don't forget the `.gz` extension in the target filename.
 
 In this case, passing `root-part.ext4` (or `root-part.ext4.gz`) as the 
-file-parameter to [mender-artifact](../../08.Downloads/docs.md#mender-artifact)
+file-parameter to [mender-artifact](../../09.Downloads/docs.md#mender-artifact)
 produces a deployment ready Mender Artifact:
 ```bash
 mender-artifact write rootfs-image -f /mnt/root-part.ext4 \

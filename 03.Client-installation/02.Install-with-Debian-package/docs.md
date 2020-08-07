@@ -19,7 +19,7 @@ A Debian package (`.deb`) is provided for convenience to install on e.g Debian, 
 - arm64: (ARM-v8): ARM 64bit processors, for example Debian for Asus Tinker Board
 - amd64: Generic 64-bit x86 processors, the most popular among workstations
 
-See [the downloads page](../../08.Downloads/docs.md) for links to download all package architectures. We will assume *armhf* in the following instructions as this is the most common for users getting starting with Mender.
+See [the downloads page](../../09.Downloads/docs.md) for links to download all package architectures. We will assume *armhf* in the following instructions as this is the most common for users getting starting with Mender.
 
 
 ### Download the package
@@ -29,7 +29,7 @@ See [the downloads page](../../08.Downloads/docs.md) for links to download all p
 wget https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
 ```
 
-!!! The above link is for *armhf* devices, which is the most common device architecture. See [the downloads page](../../08.Downloads/docs.md) for other architectures, and also make sure to modify the references to the package in commands below.
+!!! The above link is for *armhf* devices, which is the most common device architecture. See [the downloads page](../../09.Downloads/docs.md) for other architectures, and also make sure to modify the references to the package in commands below.
 
 
 ### Option 1: Attended installation with a wizard
