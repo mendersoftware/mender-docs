@@ -18,7 +18,7 @@ pairs.
 When you log in to mender server UI and navigate to the device list, among other items,
 you can see certain pieces of data associated with each device. Those can be
 a hostname, IP address, or any key-value pair you can think of. For further details,
-please refer to the [client configuration section](../../05.Client-configuration/04.Inventory).
+please refer to the [client installation section](../../03.Client-installation/04.Inventory/docs.md).
 
 ## Usage
 
@@ -34,7 +34,7 @@ Some considerations while working with inventory attributes:
   sends to the server for use in API calls or for sorting, filtering and searching
   in the UI.
 * The client sends the attributes at regular intervals
-  (configurable with [InventoryPollIntervalSeconds](../../05.Client-configuration/05.Configuration-file/50.Configuration-options/docs.md#InventoryPollIntervalSeconds)).
+  (configurable with [InventoryPollIntervalSeconds](../../03.Client-installation/06.Configuration-file/50.Configuration-options/docs.md#InventoryPollIntervalSeconds)).
 * The server updates all attributes sent by the client.
 
 The following screenshot shows an example set of inventory data in the expanded view
@@ -67,4 +67,4 @@ fields to create Dynamic groups (see the screenshot below).
 ![filters](filters.png)
 
 For more information on customizing the Inventory attributes,
-please refer to the [client configuration section](../../05.Client-configuration/04.Inventory).
+please refer to the [client configuration section](../../03.Client-installation/04.Inventory/docs.md).
