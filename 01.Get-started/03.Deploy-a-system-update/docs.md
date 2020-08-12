@@ -10,12 +10,14 @@ applications and the Linux kernel and ensure the device comes back in a
 consistent state even if the update process is interrupted for any reason such
 as power loss.
 
+
 ## Prerequisites
 
 You should:
 
 * have completed [Deploy an application update](../02.Deploy-an-application-update/docs.md)
 * know the IP address of your device
+
 
 ### Step 1 - Download the mender-artifact utility on your workstation
 
@@ -47,6 +49,7 @@ export PATH="${PATH}:${HOME}/bin"
 !!! Add above to `~/.bashrc` or equivalent to make it persistent across multiple
 !!! terminal sessions.
 
+
 ## Step 2 - Setup shell variables on your workstation
 
 Setup the `IP_ADDRESS` shell variable with correct IP address of your device:
@@ -76,19 +79,20 @@ If you are unsure, you can check what the device is reporting on the server:
 Use the result from above to assign that value to `DEVICE_TYPE` shell variable:
 
 ```bash
-DEVICE_TYPE="raspberry4"
+DEVICE_TYPE="raspberrypi4"
 ```
 
 !!! Make sure to replace `raspberrypi4` with the specific value that you are
 !!! seeing in your setup
 
-Set `SSH_ARGS` shell variable to specify the SSH access port:
+Set `SSH_ARG` shell variable to specify the SSH access port:
 
 ```bash
-SSH_ARGS="-p 22"
+SSH_ARG="-p 22"
 ```
 
-!!! If you are using a virtual device use `SSH_ARGS="-p 8822"`
+!!! If you are using a virtual device use `SSH_ARG="-p 8822"`
+
 
 ## Step 3 - Create a Mender Artifact using the snapshot feature
 
@@ -108,11 +112,8 @@ mender-artifact write rootfs-image \
     -t "${DEVICE_TYPE}" \
     -n system-v1 \
     -o system-v1.mender \
-    -S "${SSH_ARGS}"
+    -S "${SSH_ARG}"
 ```
-
-! You might need to enter the password of the user account on your device.
-
 
 ! Your device is not usable while the snapshot operation is in progress. Mender
 ! will freeze the storage device during this operation in order to create a
@@ -129,8 +130,33 @@ demonstrated below.
 
 ![connecting a device](Image_1.png)
 
-Once uploaded, go to the **DEPLOYMENTS** tab and click **CREATE DEPLOYMENT** in
+
+## Step 4 - Modify the device software
+
+While your Artifact is uploading we make some modifications to the device
+so we can see the effect of the deployment later.
+On your device, run the following command to install a text editor:
+
+```bash
+sudo apt update && sudo apt install vim --assume-yes
+```
+
+You can now run `vim` to verify it is installed, as you would expect. Note that
+this modification *is not part of your system snapshot* created above.
+
+
+## Step 5 - Deploy the snapshot and experiment
+
+Once the Artifact upload in Step 3 has finished,
+go to the **DEPLOYMENTS** tab and click **CREATE DEPLOYMENT** in
 order to deploy it to your device.
+
+Once this deployment finishes it will have the effect of restoring your full
+device root file system to the same state as when you created the snapshot in Step 3.
+You can verify this by trying to run `vim` again after the deployment has finished.
+It is gone! This is because your device file system did not have this application
+at the time you created the snapshot. This works for any change in the file system,
+including removing or installing software and changing any configuration.
 
 Please take a moment to experiment at this stage to familiarize yourself with
 robust system updates with Mender.
@@ -154,13 +180,13 @@ Deploy to many devices in order to effectively replicate the device software
 and configuration.
 
 To read more about system snapshots see the documentation on
-[Artifact from system snapshot](../../04.Artifacts/22.Snapshots/docs.md).
+[Artifact from system snapshot](../../06.Artifact-creation/02.Create-an-Artifact-with-system-snapshot/docs.md).
 
 Using the **snapshot** feature is one way to create system updates and additional
 resources on more advanced ways you will find here:
 
-1. [Building a Mender Yocto Project image](../../04.Artifacts/10.Yocto-project/01.Building/docs.md)
-2. [Building a Mender Debian image](../../04.Artifacts/15.Debian-family/01.building-a-mender-debian-image/docs.md)
+1. [Building a Mender Yocto Project image](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md)
+2. [Building a Mender Debian image](../../04.System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md)
 
 ## Next step
 

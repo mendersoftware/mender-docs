@@ -58,4 +58,4 @@ in these logs. This is useful when troubleshooting intermittent update failures.
 ## Further reading
 
 To learn more, have a look at the [tutorial on how to implement State
-scripts](../../04.Artifacts/50.State-scripts/docs.md).
+scripts](../../06.Artifact-creation/04.State-scripts/docs.md).

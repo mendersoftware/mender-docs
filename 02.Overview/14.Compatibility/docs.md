@@ -10,7 +10,7 @@ This document outlines the compatibility between different versions of Mender co
 ## Backward compatibility policy
 
 <!--AUTOVERSION: "% to %"/ignore-->
-Mender always provides an [upgrade path](../../07.Administration/07.Upgrading/docs.md) from the past patch (e.g. 1.2.0 to 1.2.1) and minor version (e.g. 1.1.1 to 1.2.0), and releases follow [Semantic Versioning](http://semver.org/?target=_blank). Note that according to Semantic Versioning, new functionality can be added in minor releases (e.g from 1.2.0 to 1.3.0) so be sure to upgrade components to support the newer functionality before starting to use it.
+Mender always provides an [upgrade path](../../07.Server-installation/07.Upgrading/docs.md) from the past patch (e.g. 1.2.0 to 1.2.1) and minor version (e.g. 1.1.1 to 1.2.0), and releases follow [Semantic Versioning](http://semver.org/?target=_blank). Note that according to Semantic Versioning, new functionality can be added in minor releases (e.g from 1.2.0 to 1.3.0) so be sure to upgrade components to support the newer functionality before starting to use it.
 
 For example, when a new [Artifact format](../02.Artifact/docs.md#the-mender-artifact-file-format) version is released, the *new* Mender client would support older versions of the Artifact format. However, the inverse is not true; the Mender client does not support *newer* versions of the Artifact format. So in this case you need to upgrade all Mender clients before starting to use new versions of the Artifact format (and the features it enables).
 
@@ -54,7 +54,7 @@ the lists of specific criteria we use for our versioning policy.
 ## Mender client and Yocto Project version
 
 <!--AUTOVERSION: "% to %"/ignore-->
-In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3.0) versions and the [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) is updated accordingly to easily support these new features (e.g. by exposing new [MENDER_* variables](../../04.Artifacts/10.Yocto-project/99.Variables/docs.md)). The [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) has branches corresponding to [versions of the Yocto Project](https://wiki.yoctoproject.org/wiki/Releases?target=_blank).
+In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3.0) versions and the [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) is updated accordingly to easily support these new features (e.g. by exposing new [MENDER_* variables](../../05.System-updates-Yocto-Project/99.Variables/docs.md)). The [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) has branches corresponding to [versions of the Yocto Project](https://wiki.yoctoproject.org/wiki/Releases?target=_blank).
 
 <!--AUTOVERSION: "Mender client %"/ignore "| % ("/ignore-->
 | Client vs meta-mender version   | Older     | warrior (2.7)<sup>3</sup> | zeus (3.0) | dunfell (3.1) |
@@ -73,14 +73,14 @@ In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3
 !! <sup>2</sup> Rolling back to 1.x.x from a failed upgrade to 2.x.x is supported. However, it is not possible to downgrade to a Mender 1.x.x client from a 2.x.x client, once the update containing 2.x.x has been committed.
 
 <!--AUTOVERSION: "from % to %"/ignore "from-%-to-%"/ignore-->
-! <sup>3</sup> If upgrading from thud to warrior, see also [known issues when upgrading from thud to warrior](../../201.Troubleshooting/02.Running-Yocto-Project-image/docs.md#upgrading-from-thud-to-warrior-fails-with-dual-rootfs-configuration-not-found).
+! <sup>3</sup> If upgrading from thud to warrior, see also [known issues when upgrading from thud to warrior](../../201.Troubleshoot/02.Yocto-Project-runtime/docs.md#upgrading-from-thud-to-warrior-fails-with-dual-rootfs-configuration-not-found).
 
 Leverage [Mender consulting services to support other versions of the Yocto Project](https://mender.io/product/board-support?target=_blank) for your board and environment.
 
 
 ## Mender client/server and Artifact format
 
-The [Mender Artifact format](../02.Artifact/docs.md) is managed by the [Mender Artifacts Library](https://github.com/mendersoftware/mender-artifact?target=_blank), which is included in the Mender client and server (for reading Artifacts) as well as in a standalone utility `mender-artifact` (for [writing Artifacts](../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md)).
+The [Mender Artifact format](../02.Artifact/docs.md) is managed by the [Mender Artifacts Library](https://github.com/mendersoftware/mender-artifact?target=_blank), which is included in the Mender client and server (for reading Artifacts) as well as in a standalone utility `mender-artifact` (for [writing Artifacts](../../06.Artifact-creation/03.Modify-an-Artifact/docs.md)).
 
 <!--AUTOVERSION: "Mender % / mender-artifact %"/ignore-->
 |                                      | Artifact v1 | Artifact v2 | Artifact v3 |
@@ -99,7 +99,7 @@ The [Mender Artifact format](../02.Artifact/docs.md) is managed by the [Mender A
 | Mender 2.3.x / mender-artifact 3.3.x | no          | yes         | yes         |
 | Mender 2.4.x / mender-artifact 3.4.x | no          | yes         | yes         |
 
-!! Older Mender clients do not support newer versions of the Artifact format; they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../04.Artifacts/25.Modifying-a-Mender-Artifact/docs.md#create-an-artifact-from-a-raw-root-file-system) for an introduction how to do this.
+!! Older Mender clients do not support newer versions of the Artifact format; they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../06.Artifact-creation/01.Create-an-Artifact/docs.md#create-a-full-filesystem-update-artifact) for an introduction how to do this.
 
 
 ## Mender server and client API

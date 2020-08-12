@@ -35,13 +35,13 @@ where only one can be accepted at a given time:
 documentation on [Delta updates](../06.Delta-update/docs.md) for more information.
 
 * _Board integration_ - The low-level integration required to enable system
-updates with Mender on a board. Often includes OS boot loader and storage
+updates with Mender on a board. Often includes OS bootloader and storage
 integration and requires customization based on the hardware and OS.
 
 * _Deployment_ - The process of delivering software to devices. It consists of
 at least a group of devices and an Artifact name.
 
-* _Device_ - A single unit that is able to connect to the Mender server, usually
+* _Device_, _Mender Client Device_ - A single unit that is able to connect to the Mender server, usually
 an independent product. Represented on the server by its identity and
 authentication data.
 
@@ -52,6 +52,11 @@ server, used in APIs to specify an individual device. See the documentation on
 * _Device type_ - The type of device, used to ensure compatibility between the
 hardware and software. See the documentation on [Artifact](../02.Artifact/docs.md)
 for more information.
+
+* _Mender Client_ - A user space application installing updates to a device
+it is running on. It uses the Mender API to connect to the Mender Server
+to authenticate, get the artifacts, report inventory, log the progress
+and status of the installations.
 
 * _Mender Hub Integration(s)_ - A contribution on
 [Mender Hub](https://hub.mender.io/c/board-integrations?target=_blank)
@@ -82,6 +87,10 @@ receive any updates.
 * _Release_ - A set of one or more Artifacts with the same Artifact name. Used
 by the Mender server to assign the right Artifact to a given Device based on
 software and hardware compatibility.
+
+* _Signing system_ - A separated and not publicly accessible part of an IT
+infrastructure used to cryptographically sign Artifacts or other items,
+in the asymmetric encryption model.
 
 * _Update Module_ - An extension to the Mender client for supporting a new type
 software update, such as a package manager, container or bootloader.
