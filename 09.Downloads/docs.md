@@ -119,8 +119,8 @@ Follow the correct link according to your host platform to download `mender-cli`
 <!--AUTOVERSION: "mender-cli %"/mender-cli -->
 | Platform | Download link                                                |
 |----------|--------------------------------------------------------------|
-| Linux    | [mender-cli 1.3.0][x.x.x_mender-cli-linux]                  |
-| Mac OS X | [mender-cli 1.3.0][x.x.x_mender-cli-darwin]                 |
+| Linux    | [mender-cli 1.4.0][x.x.x_mender-cli-linux]                  |
+| Mac OS X | [mender-cli 1.4.0][x.x.x_mender-cli-darwin]                 |
 
 
 Remember to add execute permission and ensure that the mender-cli utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
@@ -133,6 +133,6 @@ sudo cp mender-cli /usr/local/bin/
 Please refer to your host Operating System documentation for more details.
 
 <!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
-[x.x.x_mender-cli-linux]: https://d1b0l86ne08fsf.cloudfront.net/mender-cli/1.3.0/linux/mender-cli
+[x.x.x_mender-cli-linux]: https://d1b0l86ne08fsf.cloudfront.net/mender-cli/1.4.0/linux/mender-cli
 <!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
-[x.x.x_mender-cli-darwin]: https://d1b0l86ne08fsf.cloudfront.net/mender-cli/1.3.0/darwin/mender-cli
+[x.x.x_mender-cli-darwin]: https://d1b0l86ne08fsf.cloudfront.net/mender-cli/1.4.0/darwin/mender-cli

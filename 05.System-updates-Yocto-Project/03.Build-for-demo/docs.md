@@ -98,9 +98,9 @@ MENDER_ARTIFACT_NAME = "release-1"
 # If you need an earlier version, please uncomment the following and set to the
 # required version.
 #
-# PREFERRED_VERSION_pn-mender-client = "2.1.2"
-# PREFERRED_VERSION_pn-mender-artifact = "3.2.1"
-# PREFERRED_VERSION_pn-mender-artifact-native = "3.2.1"
+# PREFERRED_VERSION_pn-mender-client = "2.3.0"
+# PREFERRED_VERSION_pn-mender-artifact = "3.4.0"
+# PREFERRED_VERSION_pn-mender-artifact-native = "3.4.0"
 
 ARTIFACTIMG_FSTYPE = "ext4"
 
@@ -157,11 +157,11 @@ i.e. the top level of the Yocto Project build tree, and run these commands:
 
 <!--AUTOVERSION: "-b % git://github.com/mendersoftware/meta-mender"/meta-mender-->
 ```bash
-git clone -b zeus git://github.com/mendersoftware/meta-mender
+git clone -b dunfell git://github.com/mendersoftware/meta-mender
 ```
 
 <!--AUTOVERSION: "the HEAD of the % branch"/meta-mender-->
-Note that this command checks out the HEAD of the zeus branch and is not a specific tagged release. The [Yocto project release schedule](https://wiki.yoctoproject.org/wiki/Releases) differs from the Mender release schedule so even though you may be using a specific release of Mender, you will still need to take further steps if you want to use a tagged release of the Yocto project.
+Note that this command checks out the HEAD of the dunfell branch and is not a specific tagged release. The [Yocto project release schedule](https://wiki.yoctoproject.org/wiki/Releases) differs from the Mender release schedule so even though you may be using a specific release of Mender, you will still need to take further steps if you want to use a tagged release of the Yocto project.
 
 Next, initialize the build environment:
 
