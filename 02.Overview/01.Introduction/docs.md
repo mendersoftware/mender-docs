@@ -49,7 +49,7 @@ and connect clients to the Mender server.
 In _standalone_ mode, you initiate the updates locally on the device instead of
 connecting the Mender client to a Mender server. A common use-case is to perform
 updates from e.g an USB flash drive. To learn more visit
-[Standalone deployments](../../05.Client-configuration/07.Standalone-deployments/docs.md)
+[Standalone deployments](../../06.Artifact-creation/06.Standalone-deployment/docs.md)
 
 
 ## Update types
@@ -94,14 +94,14 @@ requirements, e.g an application can be a single file, directory or even a
 container image. For this reason it is difficult to enforce **one** way of
 deploying application updates.
 
-To support application updates in a generic way, Mender provides the [Update Module](../../03.Devices/10.Update-Modules/docs.md) framework.
+To support application updates in a generic way, Mender provides the [Update Module](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md) framework.
 
 ![application-updates](application-updates.png)
 
 
 ### Proxy deployments
 
-Using the [Update Module](../../03.Devices/10.Update-Modules/docs.md) framework
+Using the [Update Module](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md) framework
 it is also possible to deploy updates to peripheral devices, e.g
 microcontrollers or sensors connected to a device running Linux.
 

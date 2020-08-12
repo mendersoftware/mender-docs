@@ -1,7 +1,9 @@
 aa
 aac
+aae
 aarch
 ab
+Abar
 abB
 abbrev
 abc
@@ -140,6 +142,7 @@ ArtifactRollbackReboot
 ArtifactRollbackVerifyReboot
 artifactV
 ArtifactVerifyKey
+artifactverifykey
 ArtifactVerifyReboot
 arunoda
 asap
@@ -157,6 +160,7 @@ Asus
 async
 asynckit
 atob
+atomicity
 attr
 attribs
 au
@@ -182,6 +186,7 @@ autotools
 AUTOVERSION
 av
 avajs
+Avalue
 AvianFlu
 AvrAgMBAAE
 awk
@@ -205,6 +210,7 @@ basename
 BasePath
 basetostring
 basevalues
+bashrc
 baudrate
 bazon
 bb
@@ -304,6 +310,7 @@ bs
 bson
 bsp
 bsps
+BST
 btrfs
 bu
 Bublis
@@ -340,6 +347,7 @@ camelcase
 caniuse
 Caolan
 captivationsoftware
+CAs
 Casciaro
 caseless
 Caswell
@@ -367,6 +375,7 @@ CFI
 CFLAGS
 CGO
 cgroup
+CGroup
 ch
 Chadkin
 Chalczynski
@@ -390,6 +399,7 @@ CHKSUM
 CHkZqCbipoEH
 chmod
 chokidar
+chown
 chownr
 chris
 chrisdickinson
@@ -397,6 +407,7 @@ chriso
 Christoph
 ChxE
 ci
+cid
 ciniawsky
 cJfQJ
 ck
@@ -484,6 +495,7 @@ csJQIbhVcTWMGcoZ
 css
 cssinjs
 csstype
+csv
 Ctrl
 cujojs
 cURL
@@ -544,6 +556,7 @@ DefinitelyTyped
 defunctzombie
 del
 Delamarche
+deltafrom
 demoing
 demoneaux
 Denicola
@@ -553,8 +566,10 @@ denx
 Deoxxa
 depd
 DEPLOYDIR
+deploymentLifecycle
 deps
 des
+dest
 destructuring
 dev
 devauth
@@ -575,6 +590,7 @@ devongovett
 df
 dfb
 dfcreative
+DFU
 dgrijalva
 dgsbl
 DHCP
@@ -676,6 +692,7 @@ eeb
 EEPROM
 ef
 efault
+efb
 efc
 efi
 egrep
@@ -765,6 +782,7 @@ faebf
 Faisal
 faisalman
 Fanzhe
+faq
 fastparse
 fatload
 fayearthur
@@ -831,6 +849,7 @@ foreachasync
 Formâ
 fr
 Francia
+frdm
 Fredrik
 FreeBSD
 freedesktop
@@ -849,6 +868,7 @@ fsf
 fsm
 fsnotify
 fsprogs
+fsSL
 fstab
 fstype
 FSTYPES
@@ -870,7 +890,9 @@ Generis
 genkey
 genpkey
 Gensler
+geo
 Geoffroy
+geolocalization
 gerrit
 getenv
 getnative
@@ -972,6 +994,7 @@ HeA
 hellman
 helptips
 Hermann
+hexdump
 hf
 hiddentao
 Hiesey
@@ -1010,9 +1033,11 @@ iconv
 icss
 ids
 IDs
+ie
 ieee
 ies
 ietf
+ifconfig
 ifdefs
 iferr
 ifxbR
@@ -1048,6 +1073,7 @@ init
 initrd
 initscripts
 inode
+inprogress
 insertafter
 installables
 Insua
@@ -1061,7 +1087,9 @@ ionicabizau
 IonicÄ
 iOS
 ip
+IPAddress
 ipq
+ipvigilante
 Irakli
 isaacs
 isarguments
@@ -1203,6 +1231,7 @@ kristian
 Kristopher
 krogoth
 Krzysztof
+kubernetes
 Kucherenko
 Kuizinas
 kv
@@ -1221,6 +1250,7 @@ ld
 Lda
 ldflags
 le
+leakey
 leb
 Lebeau
 leo
@@ -1264,6 +1294,7 @@ linkify
 linusu
 LinusU
 linux
+LinuxDevicesInKrakow
 lite
 Liu
 ljharb
@@ -1376,6 +1407,7 @@ mgo
 mhart
 MiB
 michael
+microcontroller
 microcontrollers
 micromatch
 microSD
@@ -1436,6 +1468,7 @@ Moritz
 morty
 Mosher
 Mosolov
+motd
 Motegi
 Mott
 Mountpoint
@@ -1462,6 +1495,7 @@ mtdparts
 mtools
 mtoolsrc
 mui
+multilinekey
 multipipe
 multitenancy
 MULTITENANT
@@ -1488,6 +1522,7 @@ MzM
 na
 Nadav
 Nagashima
+nameN
 nan
 nand
 nandra
@@ -1511,12 +1546,14 @@ Nesbitt
 netflix
 netroy
 networkboot
+NetworkSettings
 neversaw
 NewDevice
 newdevice
 NewReader
 nexdrew
 nextick
+NF
 Ng
 nGi
 nginx
@@ -1549,6 +1586,7 @@ noartifact
 NoCredentialProviders
 nodeca
 nodejs
+noexec
 noK
 nokP
 NONINFRINGEMENT
@@ -1577,6 +1615,7 @@ nuARkFAv
 num
 nums
 nUwIDAQAB
+nvalue
 nVJvcepl
 NVMe
 nvyHvl
@@ -1594,6 +1633,7 @@ Oct
 oe
 oE
 OEMAKE
+oflag
 og
 OgAYwheHkY
 Ogier
@@ -1656,7 +1696,8 @@ params
 Parra
 parserc
 partialright
-PARTUUID
+partuuid
+partuuid's
 partyâ
 pascalcase
 Pasinski
@@ -1738,6 +1779,7 @@ printf
 Println
 proactive
 proc
+programmatically
 promisify
 provos
 proxy's
@@ -1777,6 +1819,7 @@ Qiang
 QIDAQAB
 qix
 QmD
+qO
 qs
 QU
 quartzjer
@@ -1803,6 +1846,7 @@ raspios
 raszi
 ravenwall
 Raynos
+RBAC
 rbVA
 rc
 RCONFLICTS
@@ -1969,6 +2013,7 @@ se
 sebmck
 sed
 segmentio
+selectDeploymentForDeviceAlgorithm
 semver
 Sep
 sequencify
@@ -2132,6 +2177,7 @@ sysconfdir
 sysfs
 syslog
 sysroot
+systemâ
 systemctl
 systemd
 systemjs
@@ -2192,6 +2238,7 @@ tmpdir
 tmpf
 tmpfiles
 Tobias
+TODO
 tomas
 toml
 tool's
@@ -2318,6 +2365,9 @@ utila
 utils
 utils's
 uuid
+UUID's
+uuidgen
+uuids
 uV
 UxFqosFfLkS
 UXtemple
@@ -2325,6 +2375,7 @@ Vachon
 vagg
 validator
 Valkhof
+valueN
 var
 variscite
 VARS
@@ -2363,6 +2414,7 @@ Vn
 vorba
 Vorbach
 vphEzN
+VPN
 Vsevolod
 vsprintf
 vsyscall
@@ -2454,6 +2506,7 @@ Xwbe
 xxx
 XXxcz
 xxxx
+xxxxxxxxxxxx
 xyu
 xz
 xzf
@@ -2504,6 +2557,7 @@ zDK
 Zedel
 zeit
 zertosh
+zeus
 zH
 Zhiye
 Zilverline

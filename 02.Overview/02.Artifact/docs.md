@@ -59,11 +59,13 @@ versions.
 The command-line utility `mender-artifact` is the best way to work directly with
 Mender Artifacts. It allows you to view, create, modify and sign all types of
 Mender Artifacts. Get it in the
-[Downloads section](../../08.Downloads/docs.md#mender-artifact).
+[Downloads section](../../09.Downloads/docs.md#mender-artifact).
 
 Mender also has OS-level integrations for creating system updates as part of
-your existing OS build process. Learn more in the
-[Creating Artifacts section](../../04.Artifacts/chapter.md).
+your existing OS build process. Learn more by reading the following sections:
+
+- [System updates: Debian family](../../04.System-updates-Debian-family/chapter.md)
+- [System updates: Yocto Project](../../05.System-updates-Yocto-Project/chapter.md)
 
 
 ### Sign and verify
@@ -71,4 +73,4 @@ your existing OS build process. Learn more in the
 To verify that the Artifact comes from a trusted source, the Mender Artifact
 format supports end-to-end signing and verification. In order to create a
 signed Artifact, please follow the instructions at
-[Signing and verifying Mender Artifact](../../04.Artifacts/40.Signing-and-verification/docs.md).
+[Sign & Verify](../../06.Artifact-creation/07.Sign-and-verify/docs.md).

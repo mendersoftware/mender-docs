@@ -40,7 +40,7 @@ receive an update. Please also note that a device can only be in *one* static
 group at the same time, while it can be in *multiple* dynamic groups.
 
 
-## Deployment lifecycle
+## Deployment life-cycle
 
 Once you create a Deployment, it stays in the *pending* state until one or more
 devices targeted by the Deployment have requested the update.
@@ -56,9 +56,9 @@ Deployments to dynamic groups behave in a different way as they do not include t
 
 At this point, the Deployment's status transitions to *finished*, and any other device will not use it.
 
-![Deployment lifecycle](deploymentLifecycle.png)
+![Deployment life-cycle](deploymentLifecycle.png)
 
-The above picture shows the Deployment lifecycle with possible device Deployment statuses (see next section)
+The above picture shows the Deployment life-cycle with possible device Deployment statuses (see next section)
 in *inprogress* and *finished* states.
 
 
