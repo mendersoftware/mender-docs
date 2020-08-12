@@ -1,7 +1,7 @@
 {
   "paths": [
     "200.APIs",
-    "201.Troubleshooting/04.Mender-Server/docs.md",
-    "07.Administration/04.Certificates-and-keys/docs.md"
+    "201.Troubleshoot/04.Mender-Server/docs.md",
+    "07.Server-installation/04.Certificates-and-keys/docs.md"
   ]
 }
