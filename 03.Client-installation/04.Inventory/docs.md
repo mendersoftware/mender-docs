@@ -20,7 +20,7 @@ name0=value0\n
 .
 nameN=valueN\n
 ```
-The client reports the attributes via the [device inventory service API calls](../../200.APIs/02.Enterprise/01.Device-APIs/02.Device-inventory#assign-attributes), by issuing **PATCH** _/device/attributes_.
+The client reports the attributes via the [device inventory service API calls](../../200.API/#patch__device_attributes), by issuing **PATCH** _/device/attributes_.
 
 
 ### Lists of values

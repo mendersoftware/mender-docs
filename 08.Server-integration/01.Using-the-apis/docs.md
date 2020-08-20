@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-The Mender server microservices are all accessible using an HTTPS API. These APIs can be used to configure the server (for example, preauthorizing devices) or implementing custom workflows (for example, integrating the Mender server into an existing device management system.) Find the APIs cocumentation [here](../../200.APIs/02.Enterprise/docs.md).
+The Mender server microservices are all accessible using an HTTPS API. These APIs can be used to configure the server (for example, preauthorizing devices) or implementing custom workflows (for example, integrating the Mender server into an existing device management system.) The APIs are documented in [API chatper](../../200.API).
 
 There are many ways to interact with Mender's REST APIs and the most common ones are shown below.
 
@@ -66,7 +66,7 @@ Next, set a variable with your user email on the Mender server (replace its cont
 MENDER_SERVER_USER='myusername@example.com'
 ```
 
-Now obtain a management API JSON Web Token by using the [Open Source](../../200.APIs/02.Enterprise/02.Management-APIs/06.User-administration-and-authentication/docs.md#log-in-to-mender) or [Enterprise](../../200.APIs/02.Enterprise/02.Management-APIs/06.User-administration-and-authentication/docs.md#log-in-to-mender) login API:
+Now obtain a management API JSON Web Token by using the [login API](../../200.API/#login):
 
 ```bash
 JWT=$(curl -X POST -u $MENDER_SERVER_USER $MENDER_SERVER_URI/api/management/v1/useradm/auth/login)
@@ -74,7 +74,7 @@ JWT=$(curl -X POST -u $MENDER_SERVER_USER $MENDER_SERVER_URI/api/management/v1/u
 
 !!! If you are using self-signed certificates in a demo setup you may want to skip validation with the `-k` option of `curl` (this is insecure).
 
-You should now have an API token you can use to call any of the [Mender server management APIs](../../200.APIs/02.Enterprise/02.Management-APIs/docs.md) in the `JWT` shell variable.
+You should now have an API token you can use to call any of the [Mender server management APIs](../../200.API/#management-apis) in the `JWT` shell variable.
 
 !!! The `MENDER_SERVER_URI` and `JWT` shell variables will only exist in the current shell invocation by default, so make sure you use this same shell environment for any interactions with the API.
 
