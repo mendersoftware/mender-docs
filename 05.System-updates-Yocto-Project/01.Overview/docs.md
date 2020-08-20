@@ -4,11 +4,22 @@ taxonomy:
     category: docs
 ---
 
-## General requirements
 
-The general requirements for using Mender on a device are described below.
+## Yocto Project release
 
-### Device capacity
+Mender's meta layer, [meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank), has
+several branches that map to given releases of the Yocto Project. However, note that Mender is
+tested and maintained against the **latest release branch of the Yocto Project** only.
+
+Older branches for the Yocto Project are still kept in
+[meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank), but they might not work
+seamlessly as they are not continuously tested by Mender. If you need support for older branches we
+recommend subscribing to [Mender commercial software
+support](https://mender.io/support-and-services/software-support?target=_blank).
+
+
+## Device capacity
+
 The client binaries are about 7 MB in size, or about 4 MB when debug symbols are
 stripped (using the `strip` tool). This includes most of the dependencies for
 the client, such as the http, TLS, and JSON libraries.
@@ -17,7 +28,7 @@ The client depends on the LZMA library for Artifact compression, which is
 present in most Linux distributions, including those based on the Yocto Project.
 
 
-### Bootloader support
+## Bootloader support
 
 To support atomic rootfs rollback, Mender integrates with the bootloader of the device. Currently
 Mender supports [GRUB](https://www.gnu.org/software/grub/?target=_blank) and
@@ -25,13 +36,13 @@ Mender supports [GRUB](https://www.gnu.org/software/grub/?target=_blank) and
 support](../02.Board-integration/02.Bootloader-support/docs.md) for more information.
 
 
-### Kernel support
+## Kernel support
 While Mender itself does not have any specific kernel requirements beyond what a normal Linux kernel provides, it relies on systemd, which does have one such requirement: The `CONFIG_FHANDLE` feature must be enabled in the kernel. The symptom if this feature is unavailable is that systemd hangs during boot looking for device files.
 
 If you [run the Mender client in standalone mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation), you can avoid this dependency by [disabling Mender as a system service](../05.Customize-Mender/docs.md#disabling-mender-as-a-system-service).
 
 
-### Partition layout
+## Partition layout
 
 In order to support robust rollback, Mender requires the device to have a certain partition layout.
 At least four different partitions are needed:
@@ -50,7 +61,7 @@ A sample partition layout is shown below:
 ![Mender client partition layout](mender_client_partition_layout.png)
 
 
-### Correct clock
+## Correct clock
 
 Certificate verification requires the device clock to be running correctly at all times.
 Make sure to either have a reliable clock or use network time synchronization.
@@ -75,7 +86,7 @@ that the Mender client connections will be rejected by the server until this
 situation is resolved.
 
 
-### Unsupported build systems
+## Unsupported build systems
 
 Mender has official support for the Yocto build system and [binary OS images based on the Debian family](../../04.System-updates-Debian-family/chapter.md). It is possible to adapt to other build systems. Please see [this community post](https://hub.mender.io/t/mender-from-scratch?target=_blank) for a concrete description.
 

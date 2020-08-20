@@ -8,4 +8,4 @@ taxonomy:
 
 # Troubleshoot
 
-Solve problems you encounter
+Solve problems you encounter.
