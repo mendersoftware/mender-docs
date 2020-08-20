@@ -9,7 +9,7 @@ taxonomy:
 
 This tutorial will walk you trough how to deploy Docker container updates with
 Mender. We will be using the
-[Docker Update Module](https://hub.mender.io/t/docker/324?target=blank) which
+[Docker Update Module](https://hub.mender.io/t/docker/324?target=_blank) which
 allows you to specify a list of container images and their versions in a
 [Mender Artifact](../../02.Overview/02.Artifact/docs.md) which
 can later be deployed to your device using the hosted Mender server.
@@ -30,7 +30,7 @@ It is also assumed that you have completed the following tutorials:
 
 Log in to your Raspberry Pi and run the commands outlined below.
 
-The [Docker Update Module](https://hub.mender.io/t/docker/324?target=blank) has
+The [Docker Update Module](https://hub.mender.io/t/docker/324?target=_blank) has
 a dependency on the `jq` utility, run the following command to install it:
 
 ```bash
@@ -157,7 +157,7 @@ will see that there is a image downloaded on the device:
 >hello-world         <none>              851163c78e4a        4 months ago        4.85kB
 >```
 
-The [Docker Update Module](https://hub.mender.io/t/docker/324?target=blank) will
+The [Docker Update Module](https://hub.mender.io/t/docker/324?target=_blank) will
 download the specified images from e.g https://hub.docker.io. It will not
 stop or start the images. This is a reference module, intended  as a starting
 point to develop your own Docker container update strategy.
