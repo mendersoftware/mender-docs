@@ -104,7 +104,7 @@ The [Mender Artifact format](../02.Artifact/docs.md) is managed by the [Mender A
 
 ## Mender server and client API
 
-The compatibility between the Mender server and client is managed by the Device API versions exposed by the server and used by the client. If the Mender server supports the API version of the Mender client, they are compatible.  However, please ensure that the client and server support the [Artifact format](#mender-clientserver-and-artifact-format) version you are using. Device API docs are available in the [API chapter](../../200.API/#device-apis).
+The compatibility between the Mender server and client is managed by the Device API versions exposed by the server and used by the client. If the Mender server supports the API version of the Mender client, they are compatible.  However, please ensure that the client and server support the [Artifact format](#mender-clientserver-and-artifact-format) version you are using. Device API docs are available in the [API chapter](../../200.API/?target=_blank#device-apis).
 
 <!--AUTOVERSION: "| %"/ignore-->
 |        | Mender server versions | Mender client versions |
