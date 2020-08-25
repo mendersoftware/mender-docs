@@ -176,4 +176,4 @@ for more information.
 
 ## Delta update support
 
-Delta update support is covered in [its own sub section](./01.Delta-update-support/docs.md).
+Delta update support is covered in [its own sub section](01.Delta-update-support/docs.md).

@@ -90,5 +90,5 @@ using the modified bootloader. If this happens, or if you are using an older
 Yocto Project branch, there will be some manual work required in order to
 produce a working integration patch.
 
-Please see [Manual U-Boot integration](./01.Manual-U-Boot-integration/docs.md)
+Please see [Manual U-Boot integration](01.Manual-U-Boot-integration/docs.md)
 for more information.
