@@ -77,7 +77,7 @@ Project you need to enable the `mender-uboot` feature using
 MENDER_FEATURES_ENABLE_append = " mender-uboot"
 ```
 
-!!! If the architecture is ARM, and the `mender-full` or `mender-full-ubi` class is inherited in a Bitbake `.conf` file, then the `mender-uboot` feature is already on by default. See [the documentation on features](../../../04.Image-customization/01.Features/docs.md) for more information.
+!!! If the `mender-full-ubi` class is inherited in a Bitbake `.conf` file, then the `mender-uboot` feature is already on by default. See [the documentation on features](../../../04.Image-customization/01.Features/docs.md) for more information.
 
 This enables U-Boot integration, and also enables full automatic patching of
 U-Boot.
