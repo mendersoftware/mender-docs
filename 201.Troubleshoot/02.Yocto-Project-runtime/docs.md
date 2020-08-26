@@ -28,7 +28,7 @@ The meta-mender warrior branch introduced a change for the configuration of
 Mender. Now the configuration is split between a transient configuration file in
 `/etc/mender/mender.conf` and a persistent configuration file in
 `/data/mender/mender.conf`, see
-[MEN-2757](https://tracker.mender.io/browse/MEN-2757?target=blank).
+[MEN-2757](https://tracker.mender.io/browse/MEN-2757?target=_blank).
 
 A device running on a single configuration file cannot upgrade to an image built
 with two configuration files feature.

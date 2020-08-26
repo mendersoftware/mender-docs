@@ -2,6 +2,7 @@
 title: Modify an Artifact
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 It is possible to modify an Artifact after it has been created. There two types of modifications

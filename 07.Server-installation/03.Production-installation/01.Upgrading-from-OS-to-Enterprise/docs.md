@@ -3,6 +3,7 @@ menu: Upgrading from OS to Enterprise
 title: Upgrading from Open Source to Enterprise
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 [Hosted Mender](https://hosted.mender.io?target=_blank) is configured, managed

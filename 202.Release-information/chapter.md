@@ -8,4 +8,4 @@ taxonomy:
 
 # Release information
 
-Learn more about this release of Mender
+Learn about this release of Mender.

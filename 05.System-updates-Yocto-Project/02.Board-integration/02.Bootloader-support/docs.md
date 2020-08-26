@@ -12,7 +12,7 @@ By default, Mender uses GRUB to boot, and this is the recommended bootloader to 
 
 The main technical reason for using GRUB rather than U-Boot is that GRUB requires no patching to work with Mender, whereas U-Boot does. For most users this will be the path of least resistance.
 
-Please see the sub sections for [GRUB](./01.GRUB/docs.md) and [U-Boot](./02.U-Boot/docs.md) for more details.
+Please see the sub sections for [GRUB](01.GRUB/docs.md) and [U-Boot](02.U-Boot/docs.md) for more details.
 
 ## Compatibility
 

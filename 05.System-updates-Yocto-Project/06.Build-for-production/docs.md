@@ -2,6 +2,7 @@
 title: Building for production
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 This section describes the steps that are specific to production builds for Yocto Project.

@@ -2,6 +2,7 @@
 title: U-Boot
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 This section describes the steps needed to integrate with U-Boot for Yocto Project. Most steps are automated, but there are a few things that need to be in place for this to function.
@@ -77,7 +78,7 @@ Project you need to enable the `mender-uboot` feature using
 MENDER_FEATURES_ENABLE_append = " mender-uboot"
 ```
 
-!!! If the architecture is ARM, and the `mender-full` or `mender-full-ubi` class is inherited in a Bitbake `.conf` file, then the `mender-uboot` feature is already on by default. See [the documentation on features](../../../04.Image-customization/01.Features/docs.md) for more information.
+!!! If the `mender-full-ubi` class is inherited in a Bitbake `.conf` file, then the `mender-uboot` feature is already on by default. See [the documentation on features](../../../04.Image-customization/01.Features/docs.md) for more information.
 
 This enables U-Boot integration, and also enables full automatic patching of
 U-Boot.
@@ -90,5 +91,5 @@ using the modified bootloader. If this happens, or if you are using an older
 Yocto Project branch, there will be some manual work required in order to
 produce a working integration patch.
 
-Please see [Manual U-Boot integration](./01.Manual-U-Boot-integration/docs.md)
+Please see [Manual U-Boot integration](01.Manual-U-Boot-integration/docs.md)
 for more information.
