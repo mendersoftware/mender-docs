@@ -2,6 +2,7 @@
 title: Preparation
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 Quickly and easily deploy your first over-the-air (OTA) software update with

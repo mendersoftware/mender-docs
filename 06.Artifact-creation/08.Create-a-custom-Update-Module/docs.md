@@ -2,7 +2,7 @@
 title: Create a custom Update Module
 taxonomy:
     category: docs
-    label: reference
+    label: tutorial
 ---
 
 ## Introduction

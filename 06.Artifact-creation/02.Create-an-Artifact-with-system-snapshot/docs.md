@@ -2,6 +2,7 @@
 title: Create an Artifact with system snapshot
 taxonomy:
     category: docs
+    label: tutorial
 ---
 To support an easy golden image workflow, Mender supports creating a snapshot of 
 the currently running system. In this workflow a "golden image" is maintained on

@@ -2,6 +2,7 @@
 title: Production installation
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 <!-- AUTOMATION: execute=if [ "$TEST_OPEN_SOURCE" != 1 ] && [ "$TEST_ENTERPRISE" != 1 ]; then echo "Either TEST_OPEN_SOURCE xor TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->

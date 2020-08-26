@@ -2,6 +2,7 @@
 title: Customize Mender
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 

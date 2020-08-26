@@ -2,6 +2,7 @@
 title: Provisioning a new device
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 After [building a Mender Yocto Project image](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md#building-the-image), you need to write the disk
