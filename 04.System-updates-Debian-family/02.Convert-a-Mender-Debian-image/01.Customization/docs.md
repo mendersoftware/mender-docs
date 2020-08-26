@@ -2,6 +2,7 @@
 title: Customization
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 -------------------------------------------------------------------------------

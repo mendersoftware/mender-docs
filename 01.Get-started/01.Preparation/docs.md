@@ -2,6 +2,7 @@
 title: Preparation
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 Quickly and easily deploy your first over-the-air (OTA) software update with
@@ -26,14 +27,14 @@ connect to hosted Mender.
 Chose one of the next options below, based on if you have a Raspberry Pi
 available or not:
 
-1. [Prepare a Raspberry Pi device](./01.Prepare-a-Raspberry-Pi-device/docs.md) (**recommended**)
+1. [Prepare a Raspberry Pi device](01.Prepare-a-Raspberry-Pi-device/docs.md) (**recommended**)
 
   Due to the popularity of Raspberry Pi devices our reference environment is
   optimized for evaluation on this specific device using Raspberry Pi OS
   (previously called Raspbian) as operating system. This environment should
   already be familiar to most people.
 
-1. [Prepare a virtual device](./02.Prepare-a-virtual-device/docs.md)
+1. [Prepare a virtual device](02.Prepare-a-virtual-device/docs.md)
 
   If you do not have a Raspberry Pi available, you can use a virtual device to
   evaluate key Mender use cases.

@@ -74,7 +74,7 @@ time spent generating the Mender Artifact (10x).
 
 #### `MENDER_ARTIFACT_NAME`
 
-> Value: <release-name>
+> Value: &lt;release-name&gt;
 
 Explicitly set the name of the generated update Artifact. Required for the
 conversion to succeed. However, should be specified on the command line, and not
@@ -142,7 +142,7 @@ Examples:
 
 #### `MENDER_DATA_PART_FSTAB_OPTS`
 
-> Values: defaults/<fstab specific options>
+> Values: defaults/&lt;fstab specific options&gt;
 
 Options passed on to fstab.
 
@@ -171,7 +171,7 @@ The size of the Mender data partition.
 
 #### `MENDER_DEVICE_TYPE`
 
-> Value: <device-type>
+> Value: &lt;device-type&gt;
 
 Set the device type specified by the Artifact. If left empty it will default to
 the value of '/etc/hostname'.

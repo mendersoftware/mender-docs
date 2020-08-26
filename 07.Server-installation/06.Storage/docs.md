@@ -2,6 +2,7 @@
 title: Storage
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 Deployments service stores mender artifact in a S3 compatible object store. This

@@ -2,6 +2,7 @@
 title: Upgrading
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 This is a tutorial for upgrading the Mender Server in production environments. In
