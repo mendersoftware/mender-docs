@@ -2,6 +2,7 @@
 title: Provision a new device
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 After you have obtained a Mender disk image, the image needs to be written to the storage of the

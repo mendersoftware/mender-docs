@@ -2,6 +2,7 @@
 title: Building for demo
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 This document outlines the steps needed to build a [Yocto Project](https://www.yoctoproject.org/?target=_blank) image for a device.

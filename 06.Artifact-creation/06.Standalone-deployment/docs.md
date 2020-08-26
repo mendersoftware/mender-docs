@@ -2,7 +2,7 @@
 title: Standalone deployment
 taxonomy:
     category: docs
-    label: reference
+    label: tutorial
 ---
 
 This document will show how *standalone* deployments work with Mender,

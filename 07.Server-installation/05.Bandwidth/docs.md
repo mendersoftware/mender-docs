@@ -2,6 +2,7 @@
 title: Bandwidth
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 [Hosted Mender](https://hosted.mender.io?target=_blank) is configured, managed

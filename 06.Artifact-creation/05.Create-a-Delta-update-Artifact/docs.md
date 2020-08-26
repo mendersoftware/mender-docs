@@ -2,7 +2,7 @@
 title: Create a Delta update Artifact
 taxonomy:
     category: docs
-    label: reference
+    label: tutorial
 ---
 
 Imagine that you have a large fleet of devices, all needing a full filesystem

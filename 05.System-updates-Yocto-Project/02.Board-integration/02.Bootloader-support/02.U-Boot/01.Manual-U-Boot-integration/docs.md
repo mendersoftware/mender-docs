@@ -2,6 +2,7 @@
 title: Manual U-Boot integration
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 In order to support rootfs rollback, Mender requires integration with

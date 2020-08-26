@@ -2,6 +2,7 @@
 title: Board integration
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 A description of how to integrate Mender with your board.

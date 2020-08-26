@@ -2,6 +2,7 @@
 title: Example: QEMU
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 ## QEMU

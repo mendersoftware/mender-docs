@@ -2,6 +2,7 @@
 title: State scripts
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 ## Add state scripts to an Artifact
