@@ -2,6 +2,7 @@
 title: GRUB
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 This section describes the Yocto configuration needed to integrate with the [GRUB bootloader](https://www.gnu.org/software/grub/?target=_blank).

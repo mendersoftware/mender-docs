@@ -2,6 +2,7 @@
 title: Deploy a container update
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 !!! This tutorial is not supported by the virtual device because it does not come

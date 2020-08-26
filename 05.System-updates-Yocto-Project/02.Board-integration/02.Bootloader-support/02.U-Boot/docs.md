@@ -2,6 +2,7 @@
 title: U-Boot
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 This section describes the steps needed to integrate with U-Boot for Yocto Project. Most steps are automated, but there are a few things that need to be in place for this to function.

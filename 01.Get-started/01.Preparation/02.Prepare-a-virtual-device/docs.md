@@ -2,6 +2,7 @@
 title: Prepare a virtual device
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 !!! Skip this section if you have already completed [Prepare a Raspberry Pi device](../01.Prepare-a-Raspberry-Pi-device/docs.md)

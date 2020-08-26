@@ -2,6 +2,7 @@
 title: Deploy a system update
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 This tutorial will walk you trough how to do robust system level updates with
