@@ -2,6 +2,7 @@
 title: Convert a Mender Debian image
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 

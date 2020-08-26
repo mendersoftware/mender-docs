@@ -2,6 +2,7 @@
 title: Prepare a Raspberry Pi device
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 !!! If you do not have have a Raspberry Pi, please go to

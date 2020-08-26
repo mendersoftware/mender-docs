@@ -2,6 +2,7 @@
 title: Delta update support
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 

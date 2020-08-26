@@ -2,6 +2,7 @@
 title: Deploy an application update
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 To deploy an application update you should follow the UI tooltips presented on

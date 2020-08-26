@@ -2,6 +2,7 @@
 title: Certificates and keys
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 In order to secure the client-server and inter-service communication,

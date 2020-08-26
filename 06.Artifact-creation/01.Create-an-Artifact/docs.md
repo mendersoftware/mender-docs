@@ -2,7 +2,7 @@
 title: Create an Artifact
 taxonomy:
     category: docs
-    label: reference
+    label: tutorial
 ---
 
 Mender uses [Artifacts](../../02.Overview/02.Artifact/docs.md) to package the

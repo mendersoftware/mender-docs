@@ -2,6 +2,7 @@
 title: Bandwidth
 taxonomy:
     category: docs
+    label: tutorial
 ---
 
 ## Artifact download and connection limiting

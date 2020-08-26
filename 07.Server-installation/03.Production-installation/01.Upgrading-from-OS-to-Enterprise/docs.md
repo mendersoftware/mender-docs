@@ -3,6 +3,7 @@ menu: Upgrading from OS to Enterprise
 title: Upgrading from Open Source to Enterprise
 taxonomy:
     category: docs
+    label: tutorial
 ---
 <!-- "Upgrading from Open Source to Enterprise" is slightly too big to fit in
     the navigation menu, hence the two titles above. -->

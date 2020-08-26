@@ -2,7 +2,7 @@
 title: Sign and verify
 taxonomy:
     category: docs
-    label: reference
+    label: tutorial
 ---
 
 The goal for Mender is to provide a robust and secure software update process.
