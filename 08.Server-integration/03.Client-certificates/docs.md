@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-Mender supports setting up an ambassador server which can authenticate devices using TLS client certificates. Each client is equipped with a certificate signed by a CA certificate (Certificate Authority), and the ambassador authenticates devices by verifying this signature. Devices that are authenticated are automatically authorized in the Mender backend, and do not need to be manually approved.
+Mender supports setting up a reverse proxy at the edge of the network, which can authenticate devices using TLS client certificates. Each client is equipped with a certificate signed by a CA certificate (Certificate Authority), and the edge proxy authenticates devices by verifying this signature. Authenticated devices are automatically authorized in the Mender backend, and do not need manual approval.
 
 This is in particular useful in a mass production setting because you can sign client certificates when they are manufactured so they automatically get accepted into the Mender server when your customer turns them on, which might happen several months after manufacturing.
 
@@ -28,7 +28,7 @@ If you have not yet prepared a device visit one of the following:
 
 <!-- TODO, this section may need to be rewritten slightly. It's not really incorrect, but it doesn't fit perfectly either, since we will set up the ambassador. -->
 
-Once your device boots with a newly provisioned disk image, it should already be correctly connecting to the Mender server. After booting the device you see it pending authorization in the Mender server UI, similar to the following.
+Once your device boots with a newly provisioned disk image, it should already be correctly connecting to the Mender server. After booting the device you should see it pending authorization in the Mender server UI, similar to the following.
 
 ![Mender UI - device pending authorization](device-pending-authorization.png)
 
@@ -37,9 +37,7 @@ If your device does not show as pending authorization in the Mender server once 
 
 ### A CLI environment for your server
 
-In order to access the the Mender server API with the commands below, you need to set up some shell variables in the terminal you will be using.
-
-Follow the steps in [set up shell variables for cURL](../01.Using-the-apis/docs.md#set-up-shell-variables-for-curl).
+Follow the steps in [set up shell variables for cURL](../01.Using-the-apis/docs.md#set-up-shell-variables-for-curl) to set up some shell variables in the terminal you will be using.
 
 ### Mender-Artifact tool
 
@@ -48,21 +46,21 @@ Download the `mender-artifact` tool from the [Downloads section](../../09.Downlo
 
 ## Generate certificates
 
-In this section we will generate and sign certificates for the server and the devices.
+Generate and sign certificates for the server and the devices.
 
 
 ### Generate a CA certificate
 
 <!--AUTOVERSION: "generate a % certificate"/ignore-->
-First we need to generate a master certificate which will be used to sign each client certificate. We start by generating a private key:
+First generate a master certificate to sign each client certificate. Start by generating a private key::
 
 ```bash
 openssl ecparam -genkey -name P-256 -noout -out ca-private.key
 ```
 
-!!! The "P-256" curve can be switched with a different curve if necessary.
+!!! You can switch the "P-256" with a different curve if necessary.
 
-Next we create a configuration file which contains information about the Certificate Authority. Execute the following command to create the file:
+Next, create a configuration file which contains information about the Certificate Authority. Execute the following command to create the file:
 
 ```bash
 cat > ca-cert.conf <<EOF
@@ -81,7 +79,7 @@ stateOrProvinceName=Oslo
 EOF
 ```
 
-The fields should be filled with information about your organization, locality and contact information. In particular, make sure `commonName` matches the domain name of the server which will serve as the mTLS ambassador. <!-- TODO, link to ambassador setup -->
+Fill the fields with information about your organization, locality and contact information. In particular, make sure `commonName` matches the domain name of the edge proxy which will serve as the mTLS ambassador. <!-- TODO, link to ambassador setup -->
 
 Then generate a certificate from the newly generated private key:
 
@@ -94,17 +92,17 @@ openssl req -new -x509 -key ca-private.key -out ca-cert.pem -config ca-cert.conf
 
 ### Generate a client certificate
 
-When preparing client certificate for a device, the certificate key will be generated on a separate system (not on the device), and then provisioned into the device storage. This way we can keep records of the public key of the device and ensure sufficient entropy during key generation, so the resulting keys are secure random.
+When preparing a client certificate for a device, the certificate key is generated on a separate system (not on the device), and then provisioned into the device storage. This way you can keep records of the public key of the device and ensure sufficient entropy during key generation, so the resulting keys are secure random.
 
-!!! Make sure the system you generate keys on is adequately secured, as it will also generate the device private keys. You should consider securely deleting (e.g. `shred`) the *private* keys after provisioning the device if you do not truly need a record of them (you can keep the public keys, of course).
+!!! Make sure the system you generate keys on is adequately secured, as it will also generate the device private keys. You should consider securely deleting (e.g. `shred`) the *private* keys after provisioning the device if you do not truly need a record of them (you can keep the public keys).
 
-We will use OpenSSL to generate a private key using Elliptic Curve cryptography:
+Once again, use OpenSSL to generate a private key using Elliptic Curve cryptography:
 
 ```bash
 openssl ecparam -genkey -name P-256 -noout -out device-private.key
 ```
 
-!!! The "P-256" curve can be switched with a different curve if necessary.
+!!! You can switch the "P-256" curve with a different curve if necessary.
 
 Next we create a configuration file which contains information about the device certificate. Execute the following command to create the file:
 
@@ -125,7 +123,7 @@ stateOrProvinceName=Oslo
 EOF
 ```
 
-The field `commonName` is device specific, and needs to be changed for every device. The rest of the fields should be filled with information about your organization, locality and contact information.
+The field `commonName` is device specific, and needs to be changed for every device. Fill the rest of the fields with information about your organization, locality and contact information.
 
 Then generate a certificate request from the newly generated private key:
 
@@ -144,10 +142,10 @@ openssl x509 -req -CA ca-cert.pem -CAkey ca-private.key -CAcreateserial -in devi
 
 ! The `-days` argument specifies how long the certificate is valid, and can be adjusted if needed. The example expression gives a certificate which is valid for approximately 10 years. Since the certificate will only be used by the server to authenticate devices, it is usually not desirable that it expires after a short time, since this requires certificate rotation on the devices. To manage compromised devices, it is often better to maintain a certificate blacklist on the server.
 
-The generation and signing of the client certificate needs to be repeated for each device, so these are natural steps to automate in your device provisioning workflow.
+You need to repeat the generation and signing of the client certificate for each device, so these are natural steps to automate in your device provisioning workflow.
 
 
-<!-- TODO: EVERYTHING FROM HERE AND DOWN TO "END_OF_SERVER_PART" NEEDS TO BE REWRITTEN. Originally copied from the Pre-Authorizing document. -->
+<!-- TODO: EVERYTHING FROM HERE AND DOWN TO "END_OF_SERVER_PART" NEEDS TO BE REWRITTEN. It should instead include instructions for setting up the ambassador and installing the CA certificate on it. Possibly it should also be moved. Originally copied from the Pre-Authorizing document, which I'm leaving here just in case there is something useful here during the rewriting. -->
 
 ## Preauthorize your device
 
@@ -240,7 +238,7 @@ First, copy the existing `mender.conf` out of the disk image, so that we can edi
 mender-artifact cp mender-disk-image.sdimg:/etc/mender/mender.conf mender.conf
 ```
 
-Next, open `mender.conf` in any text editor, and add the following content:
+Next, open `mender.conf` in a text editor, and add the following content:
 
 ```json
   "HttpsClient": {
@@ -268,7 +266,7 @@ Then copy the modified file back into the disk image:
 mender-artifact cp mender.conf mender-disk-image.sdimg:/etc/mender/mender.conf
 ```
 
-!!! Since this change is the same on every device, it is natural to automate this as part of the build process for the disk image. See file installation instructions for [the Debian family](../../.04.System-updates-Debian-family/Customize-Mender#configuration-file) or [the Yocto Project](../../System-updates-Yocto-Project/Customize-Mender#configuration-file) for more information.
+!!! Since this change is the same on every device, it is natural to automate this as part of the build process for the disk image. See file installation instructions for [the Debian family](../../04.System-updates-Debian-family/03.Customize-Mender/docs.md#configuration-file) or [the Yocto Project](../../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md#configuration-file) for more information.
 
 
 ## Boot the device
@@ -282,8 +280,8 @@ sudo dd if=<PATH-TO-IMAGE>.sdimg of=<DEVICE> bs=1M && sudo sync
 Then insert the SD card back into your device and boot it.
 
 
-## Verify the device is accepted
+## Verify that the device is accepted
 
-If everything went as intended, your device will get the `accepted` status in the Mender server. You can log in to the Mender UI to ensure your device is listed and reports inventory.
+If everything went as intended, your device shows up as `accepted` status in the Mender server. You can log in to the Mender UI to ensure your device is listed and reports inventory.
 
 If your device is not showing up, make sure the certificates are installed correctly both on the server and on the device. Check client logs and/or server logs for error messages that can identify what is wrong.
