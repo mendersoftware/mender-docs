@@ -16,7 +16,7 @@ at [https://docs.mender.io](https://docs.mender.io?target=_blank)
 
 We welcome and ask for your contribution. If you would like to contribute to the
 Mender documentation, please read our guide on how to best get started
-[contributing documentation](CONTRIBUTING.md).
+[contributing documentation](CONTRIBUTING.markdown).
 
 ## License
 
