@@ -93,7 +93,7 @@ keys-client-generated/
 
 ## Preauthorize your device
 
-Now that we have the device's identity and public key, we will use the Mender server management REST APIs to preauthorize it. The APIs are documented for both [Open Source](../../200.APIs/01.Open-source/02.Management-APIs/docs.md) and [Enterprise](../../200.APIs/02.Enterprise/02.Management-APIs/docs.md).
+Now that we have the device's identity and public key, we will use the Mender server management REST APIs to preauthorize it. The APIs are documented in [API chatper](../../200.API/?target=_blank#management-apis).
 
 
 ### Make sure there are no existing authentication sets for your device
@@ -142,7 +142,7 @@ Secondly, set the contents of the device public key you generated above in a sec
 DEVICE_PUBLIC_KEY="$(cat keys-client-generated/public.key | sed -e :a  -e 'N;s/\n/\\n/;ta')"
 ```
 
-Then simply call the [API to preauthorize a device](../../200.APIs/01.Open-source/02.Management-APIs/02.Device-authentication/docs.md#devices-post):
+Then simply call the [API to preauthorize a device](../../200.API/?target=_blank#post__devices):
 
 ```bash
 curl -H "Authorization: Bearer $JWT" -H "Content-Type: application/json" -X POST -d "{ \"identity_data\" : $DEVICE_IDENTITY_JSON_OBJECT_STRING, \"pubkey\" : \"$DEVICE_PUBLIC_KEY\" }" $MENDER_SERVER_URI/api/management/v2/devauth/devices

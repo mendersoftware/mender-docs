@@ -42,15 +42,15 @@ details about the invalid link, and an error code is returned.
 The link-checker has the ability to ignore failing links to certain files, by
 adding the absolute path to the file `.checklinks-whitelist`. The `paths` field
 list is then matched as a substring search to every link in the documentation.
-As such, all links pointing to the `200.APIs` section is ignored by default, as
-this section is only present _after_ auto-generation from Swagger.
+As such, all links pointing to the `200.API` section is ignored by default, as
+this section is generated independently from `mender-api-docs` repo.
 
 ## Note
 
 A few things to keep in mind:
 
-* The checker does not verify sections in the `200.APIs/*` folder, as these
-  files are automatically generated from [`swagger`](https://swagger.io/), and
+* The checker does not verify sections in the `200.API` folder, as this
+  section is generated independently from `mender-api-docs` repo, and
   not present when the tool is run.
 * The header slug is a modified Github header slugger, which collapses multiple dashes into one. That is slug(---) -> slug(-). This is because Grav, which our documentation uses does not fully support the Github slug format.
 
