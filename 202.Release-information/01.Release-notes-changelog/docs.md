@@ -4,6 +4,89 @@ taxonomy:
     category: docs
 ---
 
+## Mender 2.4.1
+
+_Released 09.01.2020_
+
+### Statistics
+
+A total of 41 lines added, 40 removed (delta 1)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 3 (100.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 44 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 3 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 44 (100.0%) |
+
+| Employers with the most hackers (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+### Changelogs
+
+#### integration (2.4.1)
+
+New changes in integration since 2.4.0:
+
+* Upgrade inventory to 2.0.1.
+* Upgrade inventory-enterprise to 2.0.1.
+* Aggregated Dependabot Changelogs:
+  * Bumps [pytest](https://github.com/pytest-dev/pytest) from 5.3.4 to 5.4.3.
+    - [Release notes](https://github.com/pytest-dev/pytest/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+    - [Commits](https://github.com/pytest-dev/pytest/compare/5.3.4...5.4.3)
+  * Bumps [paramiko](https://github.com/paramiko/paramiko) from 2.6.0 to 2.7.1.
+    - [Release notes](https://github.com/paramiko/paramiko/releases)
+    - [Changelog](https://github.com/paramiko/paramiko/blob/master/NEWS)
+    - [Commits](https://github.com/paramiko/paramiko/compare/2.6.0...2.7.1)
+  * Bumps [pymongo](https://github.com/mongodb/mongo-python-driver) from 3.10.1 to 3.11.0.
+    - [Release notes](https://github.com/mongodb/mongo-python-driver/releases)
+    - [Changelog](https://github.com/mongodb/mongo-python-driver/blob/master/doc/changelog.rst)
+    - [Commits](https://github.com/mongodb/mongo-python-driver/compare/3.10.1...3.11.0)
+  * Bumps [pytest](https://github.com/pytest-dev/pytest) from 5.4.3 to 6.0.1.
+    - [Release notes](https://github.com/pytest-dev/pytest/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+    - [Commits](https://github.com/pytest-dev/pytest/compare/5.4.3...6.0.1)
+  * Bumps [docker-compose](https://github.com/docker/compose) from 1.25.4 to 1.26.0.
+    - [Release notes](https://github.com/docker/compose/releases)
+    - [Changelog](https://github.com/docker/compose/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/docker/compose/compare/1.25.4...1.26.0)
+  * Bumps [requests](https://github.com/psf/requests) from 2.22.0 to 2.23.0.
+    - [Release notes](https://github.com/psf/requests/releases)
+    - [Changelog](https://github.com/psf/requests/blob/master/HISTORY.md)
+    - [Commits](https://github.com/psf/requests/compare/v2.22.0...v2.23.0)
+  * Bumps [pytest-html](https://github.com/pytest-dev/pytest-html) from 2.0.1 to 2.1.1.
+    - [Release notes](https://github.com/pytest-dev/pytest-html/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest-html/blob/master/CHANGES.rst)
+    - [Commits](https://github.com/pytest-dev/pytest-html/compare/v2.0.1...v2.1.1)
+  * Bumps [docker-compose](https://github.com/docker/compose) from 1.26.0 to 1.26.2.
+    - [Release notes](https://github.com/docker/compose/releases)
+    - [Changelog](https://github.com/docker/compose/blob/1.26.2/CHANGELOG.md)
+    - [Commits](https://github.com/docker/compose/compare/1.26.0...1.26.2)
+  * Bumps [requests](https://github.com/psf/requests) from 2.23.0 to 2.24.0.
+    - [Release notes](https://github.com/psf/requests/releases)
+    - [Changelog](https://github.com/psf/requests/blob/master/HISTORY.md)
+    - [Commits](https://github.com/psf/requests/compare/v2.23.0...v2.24.0)
+
+#### inventory-enterprise (2.0.1)
+
+New changes in inventory-enterprise since 2.0.0:
+
+* Bugfix: Rejected devices remain listed in static
+  groups, even after rejection.
+  ([MEN-3793](https://tracker.mender.io/browse/MEN-3793))
+
+
 ## meta-mender warrior-v2020.07
 
 _Released 07.29.2020_
