@@ -10,6 +10,8 @@ This is in particular useful in a mass production setting because you can sign c
 
 See [Device authentication](../../02.Overview/13.Device-authentication/docs.md) for a general overview of how device authentication works in Mender.
 
+If you are using Hosted Mender, you can host the mTLS ambassador in your infrastructure and point it to the upstream server `https://hosted.mender.io`.
+In case you need assistance or use a hosted mTLS ambassador, contact us describing your use case.
 
 ## Prerequisites
 
@@ -24,17 +26,6 @@ If you have not yet prepared a device visit one of the following:
 - [System updates: Debian family](../../04.System-updates-Debian-family/chapter.md)
 - [System updates: Yocto Project](../../05.System-updates-Yocto-Project/chapter.md)
 
-### Mender client and server connectivity
-
-<!-- TODO, this section may need to be rewritten slightly. It's not really incorrect, but it doesn't fit perfectly either, since we will set up the ambassador. -->
-
-Once your device boots with a newly provisioned disk image, it should already be correctly connecting to the Mender server. After booting the device you should see it pending authorization in the Mender server UI, similar to the following.
-
-![Mender UI - device pending authorization](device-pending-authorization.png)
-
-If your device does not show as pending authorization in the Mender server once it is booted with the disk image, you need to diagnose this issue before continuing. See the [troubleshooting section on connecting devices](../../201.Troubleshoot/05.Device-Runtime/docs.md#mender-server-connection-issues) in this case.
-
-
 ### A CLI environment for your server
 
 Follow the steps in [set up shell variables for cURL](../01.Using-the-apis/docs.md#set-up-shell-variables-for-curl) to set up some shell variables in the terminal you will be using.
@@ -46,8 +37,9 @@ Download the `mender-artifact` tool from the [Downloads section](../../09.Downlo
 
 ## Generate certificates
 
-Generate and sign certificates for the server and the devices.
+The following sections guide you to generate and sign certificates for the server and the devices.
 
+!!! This document aims to provide you the basics to evaluate the mTLS authentication in Mender, and you should not consider it as a basis for production-grade PKI (Public-Key infrastructure) infrastructure. If you need to create a production-grade PKI, please start reading the [OpenSSL PKI tutorial](https://pki-tutorial.readthedocs.io/en/latest/).
 
 ### Generate a CA certificate
 
@@ -69,6 +61,48 @@ distinguished_name = req_distinguished_name
 prompt = no
 
 [req_distinguished_name]
+commonName=My CA
+organizationName=My Organization
+organizationalUnitName=My Unit
+emailAddress=myusername@example.com
+countryName=NO
+localityName=Oslo
+stateOrProvinceName=Oslo
+EOF
+```
+
+Fill the fields with information about your organization, locality and contact information.
+
+Then generate a certificate from the newly generated private key:
+
+```bash
+openssl req -new -x509 -key ca-private.key -out ca-cert.pem -config ca-cert.conf -days $((365*10))
+```
+
+! The `-days` argument specifies how long the certificate is valid, and can be adjusted if needed. The example expression gives a certificate which is valid for approximately 10 years. Since the CA certificate will only be used on the Mender server, it is usually not important that it expires, and it's better to have a long expiry time to avoid having to rotate certificates on the devices.
+
+
+### Generate a server certificate
+
+!!! Make sure the system you generate keys on is adequately secured, as it will also generate the server private key.
+
+Use OpenSSL to generate a private key using Elliptic Curve cryptography:
+
+```bash
+openssl ecparam -genkey -name P-256 -noout -out device-private.key
+```
+
+!!! You can switch the "P-256" curve with a different curve if necessary.
+
+Next, we create a configuration file which contains information about the server certificate. Execute the following command to create the file:
+
+```bash
+cat > device-cert.conf <<EOF
+[req]
+distinguished_name = req_distinguished_name
+prompt = no
+
+[req_distinguished_name]
 commonName=my-server.com
 organizationName=My Organization
 organizationalUnitName=My Unit
@@ -79,15 +113,23 @@ stateOrProvinceName=Oslo
 EOF
 ```
 
-Fill the fields with information about your organization, locality and contact information. In particular, make sure `commonName` matches the domain name of the edge proxy which will serve as the mTLS ambassador. <!-- TODO, link to ambassador setup -->
+Fill the fields with information about your organization, locality and contact information. In particular, make sure `commonName` matches the edge proxy's domain name, which will serve as the mTLS ambassador.
 
-Then generate a certificate from the newly generated private key:
+Then generate a certificate request from the newly generated private key:
 
 ```bash
-openssl req -new -x509 -key ca-private.key -out ca-cert.pem -config ca-cert.conf -days $((365*10))
+openssl req -new -key server-private.key -out server-cert.req -config server-cert.conf
 ```
 
-! The `-days` argument specifies how long the certificate is valid, and can be adjusted if needed. The example expression gives a certificate which is valid for approximately 10 years. Since the CA certificate will only be used on the Mender server, it is usually not important that it expires, and it's better to have a long expiry time to avoid having to rotate certificates on the devices.
+### Sign the server certificate
+
+Now that we have both a CA certificate, and a certificate request for the server, we need to sign the latter with the former. This produces a signed certificate the edge proxy will use to terminate the TLS traffic.
+
+```bash
+openssl x509 -req -CA ca-cert.pem -CAkey ca-private.key -CAcreateserial -in server-cert.req -out server-cert.pem -days $((365*2))
+```
+
+! The `-days` argument specifies how long the certificate is valid, and can be adjusted if needed. The example expression gives a certificate which is valid for approximately 2 years.
 
 
 ### Generate a client certificate
@@ -104,7 +146,7 @@ openssl ecparam -genkey -name P-256 -noout -out device-private.key
 
 !!! You can switch the "P-256" curve with a different curve if necessary.
 
-Next we create a configuration file which contains information about the device certificate. Execute the following command to create the file:
+Next, we create a configuration file which contains information about the device certificate. Execute the following command to create the file:
 
 ```bash
 cat > device-cert.conf <<EOF
@@ -145,75 +187,45 @@ openssl x509 -req -CA ca-cert.pem -CAkey ca-private.key -CAcreateserial -in devi
 You need to repeat the generation and signing of the client certificate for each device, so these are natural steps to automate in your device provisioning workflow.
 
 
-<!-- TODO: EVERYTHING FROM HERE AND DOWN TO "END_OF_SERVER_PART" NEEDS TO BE REWRITTEN. It should instead include instructions for setting up the ambassador and installing the CA certificate on it. Possibly it should also be moved. Originally copied from the Pre-Authorizing document, which I'm leaving here just in case there is something useful here during the rewriting. -->
+## Set up the mTLS edge proxy to authenticate devices using mTLS
 
-## Preauthorize your device
+The mTLS ambassador acts as an edge proxy running in front of your Mender server. The Mender client running on the devices connects to it, providing its client TLS certificate and establishing a mutual TLS authentication. If the client certificate's signature matches the certification authority recognized by the mTLS ambassador, the Mender server will automatically accept the device. The edge proxy transparently forwards all the requests from the Mender client to the Mender server. From the client's perspective, it provides the same API end-points as the upstream Mender server.
 
-Now that we have the device's identity and public key, we will use the Mender server management REST APIs to preauthorize it. The APIs are documented for both [Open Source](../../200.APIs/01.Open-source/02.Management-APIs/docs.md) and [Enterprise](../../200.APIs/02.Enterprise/02.Management-APIs/docs.md).
+The mTLS ambassador is distributed as a Docker image and can be run on a Docker host, using docker-compose or on Kubernetes.
 
+The following certificates are needed to start the service:
 
-### Make sure there are no existing authentication sets for your device
+* `server.crt`, a regular HTTPS server certificate the ambassador can use to terminate the TLS connections
+* `server.key`, the corresponding private key for the certificate above
+* `ca.crt`, the Certification Authority's certificate used to sign the server and client certificates.
 
-First make sure to power off your device, so it does not continuously appear as pending in your server.
+You also need to specify a username and password pair. The ambassador will use it to connect to the Mender server to authorize clients who connect using a valid certificate signed by the known CA.
 
-We recommend that you ensure there are no records of your device in the server; open the Mender UI, then go to *Devices* to see if it is there, then *Decommission* it.
+To start the edge proxy, run the following command:
 
-Secondly, To make sure that the device has no existing authentication sets, we check `devauth` service for the identity of your device.
-
-In the same terminal, run the following command:
-
+<!--AUTOVERSION: "registry.mender.io/mendersoftware/mtls-ambassador:%"/mtls-ambassador-->
 ```bash
-curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v2/devauth/devices | jq '.' > /tmp/devauth.json
+docker run \
+  -p 443:8080
+  -e MTLS_MENDER_USER=mtls@mender.io \
+  -e MTLS_MENDER_PASS=password \
+  -e MTLS_MENDER_BACKEND=https://hosted.mender.io \
+  -e MTLS_DEBUG_LOG=true \
+  -v $(pwd)/server-cert.pem:/etc/mtls/certs/server/server.crt \
+  -v $(pwd)/server-private.key:/etc/mtls/certs/server/server.key \
+  -v $(pwd)/ca-cert.pem:/etc/ssl/certs/ca.crt \
+  registry.mender.io/mendersoftware/mtls-ambassador:master
 ```
 
-!!! To make the response more readable, we use the `jq` utility to decode it. If it is not available on your system you can omit this pipe or replace it with a different indentation tool (e.g `python -m json.tool`).
+Replace the following values with the ones that match your configuration:
 
-Now open the file `/tmp/devauth.json` and search for a value of your device identity (e.g. `02:12:61:13:6c:42` if you are using MAC addresses).
+* **MTLS_MENDER_USER** and **MTLS_MENDER_PASS** are the user security credentials that allow the mTLS ambassador to connect to the Mender server and authorize new devices connecting using the mTLS authentication.
+* **MTLS_MENDER_BACKEND** is the URL of the upstream Mender server; the edge proxy will forward the HTTPS requests to.
+* **MTLS_DEBUG_LOG** (optional) enables verbose debugging log.
+* **server.crt** and **server.key** are the paths to your server TLS certificate and key.
+* **ca.crt** is the file which contains the certificate of the Certification Authority.
 
-If you do not get any matches in either files, great! Continue to the [next section](#call-the-preauthorize-api).
-
-If you do have one or more matches you must first delete these existing authentication sets. Find the `id` of the authentication set and use the `DELETE` method towards the service. For example, if you find the identity in `devauth.json` and you see the authentication set has `id` `5ae3a39d3cd4d40001482a95` the run the following command:
-
-```bash
-curl -H "Authorization: Bearer $JWT" -X DELETE $MENDER_SERVER_URI/api/management/v2/devauth/devices/5ae3a39d3cd4d40001482a95
-```
-
-Once this is done, re-run the command above to generate the `devauth.json` file again and verify that your device identity does not exist anywhere.
-
-In the event that the decommissioning operation fails, perform a [manual database cleanup via the provided CLI command](../../201.Troubleshoot/04.Mender-Server/docs.md#cleaning-up-the-deviceauth-database-after-device-decommissioning).
-
-### Call the preauthorize API
-
-Set your device identity as a JSON object in a shell variable:
-
-```bash
-DEVICE_IDENTITY_JSON_OBJECT_STRING='{"mac":"02:12:61:13:6c:42"}'
-```
-
-!!! Adjust the variable value to the actual identity of your device. If you have several identity attributes in your identity scheme, separate them with commas in JSON format inside this single object, for example `DEVICE_IDENTITY_JSON_OBJECT_STRING='{"mac":"02:12:61:13:6c:42", "serialnumber":"1928819"}'`.
-
-Secondly, set the contents of the device public key you generated above in a second variable:
-
-```bash
-DEVICE_PUBLIC_KEY="$(cat keys-client-generated/public.key | sed -e :a  -e 'N;s/\n/\\n/;ta')"
-```
-
-Then simply call the [API to preauthorize a device](../../200.APIs/01.Open-source/02.Management-APIs/02.Device-authentication/docs.md#devices-post):
-
-```bash
-curl -H "Authorization: Bearer $JWT" -H "Content-Type: application/json" -X POST -d "{ \"identity_data\" : $DEVICE_IDENTITY_JSON_OBJECT_STRING, \"pubkey\" : \"$DEVICE_PUBLIC_KEY\" }" $MENDER_SERVER_URI/api/management/v2/devauth/devices
-```
-
-If there is no output from the command, this indicates it succeeded. To verify, list the currently registered authentication sets and make sure there is one for your device with the `preauthorized` status:
-
-```bash
-curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v2/devauth/devices | jq '.'
-```
-
-Your device should now be preauthorized and accepted to the Mender server once it connects with the exact same identity and key.
-
-<!-- END_OF_SERVER_PART -->
-
+You can now publish the HTTPS port of the host to the Internet to let the clients connect to it.
 
 ## Enable generated key and certificate in disk image
 
@@ -284,4 +296,4 @@ Then insert the SD card back into your device and boot it.
 
 If everything went as intended, your device shows up as `accepted` status in the Mender server. You can log in to the Mender UI to ensure your device is listed and reports inventory.
 
-If your device is not showing up, make sure the certificates are installed correctly both on the server and on the device. Check client logs and/or server logs for error messages that can identify what is wrong.
+If your device is not showing up, make sure the certificates are installed correctly both on the server and on the device. Check client logs and/or server logs for error messages that can identify what is wrong. See the [troubleshooting section on connecting devices](../../201.Troubleshoot/05.Device-Runtime/docs.md#mender-server-connection-issues) in this case.
