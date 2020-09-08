@@ -33,7 +33,7 @@ By default the Mender client uses the [MAC address of the first interface](https
 
 ### Mender client and server connectivity
 
-Once your device boots with a newly provisioned disk image, it should already be correctly connecting to the Mender server. After booting the device you see it pending authorization in the Mender server UI, similar to the following.
+Once your device boots with a newly provisioned disk image, it should already be correctly connecting to the Mender server. After booting the device you should see it pending authorization in the Mender server UI, similar to the following.
 
 ![Mender UI - device pending authorization](device-pending-authorization.png)
 
@@ -42,7 +42,7 @@ If your device does not show as pending authorization in the Mender server once 
 
 ### A CLI environment for your server
 
-In order to access the the Mender server API with the commands below, you need to set up some shell variables in the terminal you will be using.
+In order to access the Mender server API with the commands below, you need to set up some shell variables in the terminal you will be using.
 
 Follow the steps in [set up shell variables for cURL](../01.Using-the-apis/docs.md#set-up-shell-variables-for-curl).
 
@@ -54,9 +54,9 @@ Download the `mender-artifact` tool from the [Downloads section](../../09.Downlo
 
 Before we preauthorize the device, we need its 1) identity and 2) public key. You should already know the identity of your device from the [prerequisite above](#the-identity-of-your-device).
 
-When preauthorizing a device, device keys will be generated on separate system (not on the device), and then provisioned into the device storage. This way we can keep records of the public key of the device and ensure sufficient entropy during key generation, so the resulting keys are secure random.
+When preauthorizing a device, device keys will be generated on a separate system (not on the device), and then provisioned into the device storage. This way we can keep records of the public key of the device and ensure sufficient entropy during key generation, so the resulting keys are secure random.
 
-!!! Make sure the system you generate keys on is adequately secured, as it will also generate the device private keys. You should consider securely deleting (e.g. `shred`) the *private* keys after provisioning the device if you do not truly need a record of them (you can keep the public keys, of course).
+!!! Make sure the system you generate keys on is adequately secured, as it will also generate the device private keys. You should consider securely deleting (e.g. `shred`) the *private* keys after provisioning the device if you do not truly need a record of them (you can keep the public keys).
 
 We will use a script to generate a keypair the Mender client understands; it uses the `openssl` command to generate the keys.
 
