@@ -89,7 +89,7 @@ openssl req -new -x509 -key ca-private.key -out ca-cert.pem -config ca-cert.conf
 Use OpenSSL to generate a private key using Elliptic Curve cryptography:
 
 ```bash
-openssl ecparam -genkey -name P-256 -noout -out device-private.key
+openssl ecparam -genkey -name P-256 -noout -out server-private.key
 ```
 
 !!! You can switch the "P-256" curve with a different curve if necessary.
@@ -97,7 +97,7 @@ openssl ecparam -genkey -name P-256 -noout -out device-private.key
 Next, we create a configuration file which contains information about the server certificate. Execute the following command to create the file:
 
 ```bash
-cat > device-cert.conf <<EOF
+cat > server-cert.conf <<EOF
 [req]
 distinguished_name = req_distinguished_name
 prompt = no
