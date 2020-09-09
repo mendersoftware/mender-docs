@@ -134,7 +134,7 @@ openssl x509 -req -CA ca-cert.pem -CAkey ca-private.key -CAcreateserial -in serv
 
 ### Generate a client certificate
 
-When preparing a client certificate for a device, the certificate key is generated on a separate system (not on the device), and then provisioned into the device storage. This way you can keep records of the public key of the device and ensure sufficient entropy during key generation, so the resulting keys are secure random.
+When preparing a client certificate for a device, the certificate key is generated on a separate system (not on the device), and then provisioned into the device storage. This way you can keep records of the public key of the device and ensure sufficient entropy during key generation, so the resulting keys are securely random.
 
 !!! Make sure the system you generate keys on is adequately secured, as it will also generate the device private keys. You should consider securely deleting (e.g. `shred`) the *private* keys after provisioning the device if you do not truly need a record of them (you can keep the public keys).
 
@@ -206,7 +206,7 @@ To start the edge proxy, run the following command:
 <!--AUTOVERSION: "registry.mender.io/mendersoftware/mtls-ambassador:%"/mtls-ambassador-->
 ```bash
 docker run \
-  -p 443:8080
+  -p 443:8080 \
   -e MTLS_MENDER_USER=mtls@mender.io \
   -e MTLS_MENDER_PASS=password \
   -e MTLS_MENDER_BACKEND=https://hosted.mender.io \
