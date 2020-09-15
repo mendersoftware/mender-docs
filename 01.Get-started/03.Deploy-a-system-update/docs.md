@@ -5,7 +5,7 @@ taxonomy:
     label: tutorial
 ---
 
-This tutorial will walk you trough how to do robust system level updates with
+This tutorial will walk you through how to do robust system level updates with
 rollback. These type of updates cover the whole system including system level
 applications and the Linux kernel and ensure the device comes back in a
 consistent state even if the update process is interrupted for any reason such
