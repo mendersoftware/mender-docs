@@ -214,7 +214,7 @@ docker run \
   -v $(pwd)/server-cert.pem:/etc/mtls/certs/server/server.crt \
   -v $(pwd)/server-private.key:/etc/mtls/certs/server/server.key \
   -v $(pwd)/ca-cert.pem:/etc/ssl/certs/ca.crt \
-  registry.mender.io/mendersoftware/mtls-ambassador:master
+  registry.mender.io/mendersoftware/mtls-ambassador:1.0.0
 ```
 
 Replace the following values with the ones that match your configuration:
