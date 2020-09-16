@@ -4,6 +4,89 @@ taxonomy:
     category: docs
 ---
 
+## mender-convert 2.2.0
+
+_Released 09.16.2020_
+
+### Statistics
+
+A total of 436 lines added, 56 removed (delta 380)
+
+| Developers with the most changesets | |
+|---|---|
+| Drew Moseley | 12 (44.4%) |
+| Lluis Campos | 7 (25.9%) |
+| Dell Green | 2 (7.4%) |
+| Kristian Amlie | 2 (7.4%) |
+| Marek Belisko | 1 (3.7%) |
+| Peter Grzybowski | 1 (3.7%) |
+| Ole Petter Orhagen | 1 (3.7%) |
+| Purushotham Nayak | 1 (3.7%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Dell Green | 309 (70.9%) |
+| Drew Moseley | 53 (12.2%) |
+| Lluis Campos | 25 (5.7%) |
+| Ole Petter Orhagen | 14 (3.2%) |
+| Marek Belisko | 13 (3.0%) |
+| Purushotham Nayak | 11 (2.5%) |
+| Peter Grzybowski | 8 (1.8%) |
+| Kristian Amlie | 3 (0.7%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 23 (85.2%) |
+| Ideaworks Ltd | 2 (7.4%) |
+| Cisco Systems, Inc. | 1 (3.7%) |
+| open-nandra | 1 (3.7%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Ideaworks Ltd | 309 (70.9%) |
+| Northern.tech | 103 (23.6%) |
+| open-nandra | 13 (3.0%) |
+| Cisco Systems, Inc. | 11 (2.5%) |
+
+| Employers with the most hackers (total 8) | |
+|---|---|
+| Northern.tech | 5 (62.5%) |
+| Ideaworks Ltd | 1 (12.5%) |
+| open-nandra | 1 (12.5%) |
+| Cisco Systems, Inc. | 1 (12.5%) |
+
+### Changelogs
+
+#### mender-convert (2.2.0)
+
+New changes in mender-convert since 2.1.0:
+
+* Fix missed log messages.
+* Unmount filesystem images before creating full image.
+* Fix incorrect file ownership on artifact_info file
+* Extract debian package contents with sudo.
+* Probing of kernel and initrd now handles multiple instances and symlinks
+  ([MEN-3640](https://tracker.mender.io/browse/MEN-3640))
+* Fix error when partitions numbers are not sequential
+* chmod 600 on mender.conf
+  ([MEN-3762](https://tracker.mender.io/browse/MEN-3762))
+* Partition UUID support added for gpt/dos partition tables for deterministic booting
+  ([MEN-3725](https://tracker.mender.io/browse/MEN-3725))
+* mender-convert-modify: Use sudo to copy DTBs.
+* raspberrypi: Do not overwrite existing kernel.
+* mender-convert-modify: Check is selinux is configured in enforce mode and force rootfs-relabel
+* Account for root ownership of overlay files.
+* Cleanup more bootloader files.
+* Allow for custom options when creating filesystems.
+* Allow for custom option when mounting filesystems.
+* Update mender-artifact to 3.4.0
+* Warn user when converting read-only file systems that would
+  result in unstable checksums, making the image incompatible with Mender
+  Delta updates.
+  ([MEN-3912](https://tracker.mender.io/browse/MEN-3912))
+* Update mender client to 2.4.0
+
+
 ## Mender 2.5.0
 
 _Released 09.11.2020_
