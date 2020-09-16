@@ -28,7 +28,7 @@ If you have not yet prepared a device visit one of the following:
 When preauthorizing a device you need to know its [identity](../../02.Overview/07.Identity/docs.md). This is one or more key-value attributes, depending on the identity scheme you are using. If you connect your device so it shows up as pending in the Mender server, you will see its identity in the Mender server UI (note it is *not* the ID of the device, but the key-value attributes under Identity that are used for preauthorization).
 
 <!--AUTOVERSION: "mender/blob/%"/mender-->
-By default the Mender client uses the [MAC address of the first interface](https://github.com/mendersoftware/mender/blob/2.3.0/support/mender-device-identity?target=_blank) on the device as the device identity, for example `mac=02:12:61:13:6c:42`.
+By default the Mender client uses the [MAC address of the first interface](https://github.com/mendersoftware/mender/blob/2.4.0/support/mender-device-identity?target=_blank) on the device as the device identity, for example `mac=02:12:61:13:6c:42`.
 
 
 ### Mender client and server connectivity
@@ -61,11 +61,11 @@ When preauthorizing a device, device keys will be generated on separate system (
 We will use a script to generate a keypair the Mender client understands; it uses the `openssl` command to generate the keys.
 
 <!--AUTOVERSION: "mender/blob/%"/mender-->
-Download the [keygen-client](https://github.com/mendersoftware/mender/blob/2.3.0/support/keygen-client?target=_blank) script into a directory:
+Download the [keygen-client](https://github.com/mendersoftware/mender/blob/2.4.0/support/keygen-client?target=_blank) script into a directory:
 
 <!--AUTOVERSION: "mender/%"/mender-->
 ```bash
-wget https://raw.githubusercontent.com/mendersoftware/mender/2.3.0/support/keygen-client
+wget https://raw.githubusercontent.com/mendersoftware/mender/2.4.0/support/keygen-client
 ```
 
 Ensure it is executable:
