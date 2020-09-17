@@ -78,7 +78,7 @@ Download the `mender-artifact` binary
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 ```bash
-wget https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/master/linux/mender-artifact -O ${HOME}/bin/mender-artifact
+wget https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/3.4.0/linux/mender-artifact -O ${HOME}/bin/mender-artifact
 ```
 
 Make the `mender-artifact` binary executable:
@@ -109,7 +109,7 @@ Download the `docker-artifact-gen` utility script:
 
 <!--AUTOVERSION: "mender/%"/mender-->
 ```bash
-wget https://raw.githubusercontent.com/mendersoftware/mender/master/support/modules-artifact-gen/docker-artifact-gen
+wget https://raw.githubusercontent.com/mendersoftware/mender/2.4.0/support/modules-artifact-gen/docker-artifact-gen
 ```
 
 Make `docker-artifact-gen` executable:
