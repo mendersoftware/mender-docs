@@ -15,4 +15,4 @@ For page headers the tag may come after due to misrendering if it is above.
 # Documentation
 
 <!--AUTOVERSION: "bleeding-edge % branch"/integration/complain-->
-Documentation for Mender's 2.5.
+Documentation for Mender 2.5.
