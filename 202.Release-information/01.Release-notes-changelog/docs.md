@@ -4,6 +4,107 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender dunfell-v2020.09
+
+_Released 09.17.2020_
+
+### Statistics
+
+A total of 70 lines added, 136 removed (delta -66)
+
+| Developers with the most changesets | |
+|---|---|
+| Drew Moseley | 5 (26.3%) |
+| Peter Grzybowski | 3 (15.8%) |
+| Lluis Campos | 2 (10.5%) |
+| Kurt Kiefer | 2 (10.5%) |
+| Daniel Selvan D | 1 (5.3%) |
+| Kristian Amlie | 1 (5.3%) |
+| Ole Petter Orhagen | 1 (5.3%) |
+| Marek Belisko | 1 (5.3%) |
+| Mirza Krak | 1 (5.3%) |
+| Kasper Føns | 1 (5.3%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Marek Belisko | 64 (36.2%) |
+| Drew Moseley | 45 (25.4%) |
+| Peter Grzybowski | 35 (19.8%) |
+| Lluis Campos | 12 (6.8%) |
+| Kurt Kiefer | 9 (5.1%) |
+| Kristian Amlie | 4 (2.3%) |
+| Ossian Riday | 3 (1.7%) |
+| Kasper Føns | 2 (1.1%) |
+| Daniel Selvan D | 1 (0.6%) |
+| Ole Petter Orhagen | 1 (0.6%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Marek Belisko | 64 (47.1%) |
+| Drew Moseley | 34 (25.0%) |
+| Lluis Campos | 6 (4.4%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Kristian Amlie | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 13 (68.4%) |
+| kekiefer@gmail.com | 2 (10.5%) |
+| danilselvan@gmail.com | 1 (5.3%) |
+| ossian.riday@gmail.com | 1 (5.3%) |
+| Chora | 1 (5.3%) |
+| open-nandra | 1 (5.3%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 98 (55.4%) |
+| open-nandra | 64 (36.2%) |
+| kekiefer@gmail.com | 9 (5.1%) |
+| ossian.riday@gmail.com | 3 (1.7%) |
+| Chora | 2 (1.1%) |
+| danilselvan@gmail.com | 1 (0.6%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+| Employers with the most hackers (total 11) | |
+|---|---|
+| Northern.tech | 6 (54.5%) |
+| open-nandra | 1 (9.1%) |
+| kekiefer@gmail.com | 1 (9.1%) |
+| ossian.riday@gmail.com | 1 (9.1%) |
+| Chora | 1 (9.1%) |
+| danilselvan@gmail.com | 1 (9.1%) |
+
+### Changelogs
+
+#### meta-mender (dunfell-v2020.09)
+
+New changes in meta-mender since dunfell-v2020.07:
+
+* []MBR systems don't have a backup header, so always return true
+  ([MEN-3761](https://tracker.mender.io/browse/MEN-3761))
+* Fix error that no recipe provides bcm2835-bootfiles.
+* mender-client: fix install of systemd-machine-id.service
+* initramfs-module-install-efi: Ensure variable changes are reflected on rebuild
+* vexpress: Remove nonexistent kernel config options that issue warnings.
+* mender-commercial: Cleanup BBFILES.
+* libubootenv: Drop bbappend file
+* libubootenv: add RPROVIDES for u-boot-default-env
+* Add mender-client 2.4.0 recipe.
+* OpenSSL: qemu: set SECLEVEL=2 in /etc/ssl/openssl.cnf
+  ([MEN-3730](https://tracker.mender.io/browse/MEN-3730))
+* Fixed key extraction by skipping new lines in defconfig.
+  The `add_kconfig_option_with_depends.py` file throws `Not sure how to
+  handle Kconfig option that doesn't start with 'CONFIG_'` when the
+  provided defconfig file contains blank lines. It has been fixed by
+  checking for empty lines before processing for keys.
+* Add mender-client 2.4.0 recipe.
+
+
 ## Mender 2.4.1
 
 _Released 09.01.2020_
