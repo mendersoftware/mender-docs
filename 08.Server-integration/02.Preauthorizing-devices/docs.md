@@ -116,11 +116,14 @@ Now open the file `/tmp/devauth.json` and search for a value of your device iden
 
 If you do not get any matches in either files, great! Continue to the [next section](#call-the-preauthorize-api).
 
-If you do have one or more matches you must first delete these existing authentication sets. Find the `id` of the authentication set and use the `DELETE` method towards the service. For example, if you find the identity in `devauth.json` and you see the authentication set has `id` `5ae3a39d3cd4d40001482a95` the run the following command:
+If you do have one or more matches you must first delete these existing authentication sets. Find the `id` of the device, as well as the `id` of the authentication set, and use the `DELETE` method towards the service. For example, if you find the identity in `devauth.json` and you see the device has `id` `5ae3a39d3cd4d40001482a95` and the authentication set has `id` `17a1838b-1b48-470a-925e-0d2bf25bb09f`, then run the following command:
 
 ```bash
-curl -H "Authorization: Bearer $JWT" -X DELETE $MENDER_SERVER_URI/api/management/v2/devauth/devices/5ae3a39d3cd4d40001482a95
+curl -H "Authorization: Bearer $JWT" -X DELETE $MENDER_SERVER_URI/api/management/v2/devauth/devices/5ae3a39d3cd4d40001482a95/auth/17a1838b-1b48-470a-925e-0d2bf25bb09f
 ```
+
+If there is only one authentication set for the preauthorized device, the above
+will also delete the device.
 
 Once this is done, re-run the command above to generate the `devauth.json` file again and verify that your device identity does not exist anywhere.
 
