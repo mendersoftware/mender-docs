@@ -51,10 +51,12 @@ given time.
 
 ## Authorization Flows
 
-Mender provides two possible authorization flows. Both involve a user's explicit
+Mender provides three possible authorization flows. Two of them involve a user's explicit
 consent to authorize a Device via the UI or Device Authentication API, but they differ
-in the order of events and intended use cases. Below is a detailed breakdown of
-each.
+in the order of events and intended use cases. The third one, available as an Enterprise
+feature, leverages a PKI (Public Key Infrastructure) to authorize devices based on
+client certificates without the need of explicit user's actions. Below is a detailed
+breakdown of each.
 
 For details of API calls please consult the [API documentation](../../200.API/?target=_blank#default-device-authentication).
 
@@ -125,6 +127,37 @@ the Device Authentication within this flow:
 | ![Preauthorization flow](preauth.png) |
 |:--:|
 |*Preauthorization flow*|
+
+### Client certificates and mutual TLS
+
+Mender Enterprise supports setting up a reverse proxy at the edge of the network,
+which can authenticate devices using TLS client certificates. Each client is equipped
+with a certificate signed by a CA certificate (Certificate Authority), and the edge proxy
+authenticates devices by verifying this signature. Authenticated devices are automatically
+authorized in the Mender backend, and do not need manual approval.
+
+This is in particular useful in a mass production setting because you can sign client
+certificates when they are manufactured so they automatically get accepted into the
+Mender server when your customer turns them on, which might happen several months
+after manufacturing.
+
+The sequence diagram below describes the authentication of a Device through the
+mutual TLS ambassador:
+
+1. The user first provisions the device with the crypto material: CA certificate, client certificate and client private key.
+2. The device sends the authorization request to the mTLS ambassador authenticating the request with the client TLS certificate.
+3. The ambassador verifies the device's certificate is signed by the CA certificate, and pre-authorizes the device to the Device Authentication service.
+4. At this point, the authentication request is forwarded to the Device Authentication service.
+5. The Device Authentication service returns a valid authentication token, which the mTLS ambassador forwards to the Device.
+
+| ![mTLS flow](mtls.png) |
+|:--:|
+|*mutual TLS flow*|
+
+Futher communication between the Device and the Mender Server is intermediated by the mTLS ambassador which verifies the requests are authenticated with a valid client TLS certificate.
+
+Please refer to the [client certificates section](../../08.Server-integration/03.Client-certificates/docs.md)
+to find further details on the configuration of this feature.
 
 ## Authentication Token
 
