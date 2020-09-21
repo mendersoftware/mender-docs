@@ -13,6 +13,61 @@ enables signed-updates-only mode when it is set. If set the client will reject
 incorrectly signed updates, or updates without a signature. See also the section
 about [signing and verification](../../../06.Artifact-creation/07.Sign-and-verify/docs.md).
 
+#### HttpsClient
+
+Allows you to configure the certificate, private key and, SSL Engine id to use
+during the SSL handshake. If you provide the certificate and private key
+as locally accessible files you don't have to specify SSLEngine.
+If you want to use a Hardware Security Module (HSM) you can provide the private
+key as a [PKCS#11 URI](https://tools.ietf.org/html/rfc7512) and in that case
+you must specify the `SSLEngine`.
+
+##### Certificate
+
+A path to the file in pem format holding the certificate.
+
+##### Key
+
+Either a valid PKCS#11 URI or a path to a file holding the private key.
+
+##### SSLEngine
+
+Example (with HSM, using Nitrokey HSM):
+
+```
+    "HttpsClient": {
+        "Certificate": "/certs/cert.pem",
+        "Key": "pkcs11:model=PKCS%2315%20emulated;manufacturer=www.CardContact.de;serial=SOMESERIAL;token=UserPIN%20%28SmartCard-HSM%29;id=%10;object=Private%20Key;pin-value=1234;type=private",
+        "SSLEngine": "pkcs11"
+    },
+```
+where "pkcs11:" means that Mender should load the key not from the file but using PKCS#11 URI.
+The above can have the following example OpenSSL configuration present:
+You can accompany the above with the following OpenSSL configuration:
+
+```
+[openssl_init]
+engines=engine_section
+
+[engine_section]
+pkcs11 = pkcs11_section
+
+[pkcs11_section]
+engine_id = pkcs11
+MODULE_PATH = /usr/lib/arm-linux-gnueabihf/opensc-pkcs11.so
+init = 0
+```
+
+Example (plain files):
+
+```
+    "HttpsClient": {
+        "Certificate": "/certs/cert.pem",
+        "Key": "/keys/private/key.pem"
+    },
+```
+where "/certs/cert.pem" holds the certificate and "/keys/private/key.pem" the private key.
+
 #### InventoryPollIntervalSeconds
 
 An integer that sets the number of seconds to wait between each inventory

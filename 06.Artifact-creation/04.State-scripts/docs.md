@@ -65,10 +65,10 @@ For example, `Download_Enter_05_wifi-driver` and `Download_Enter_10_ask-user` ar
 ## Script return codes
 
 If a script returns `0` Mender proceeds, but if it returns `1` the update is aborted and rolled back.
-In addition, return code `21` is used for the [retry-later](#retry-later) feature.
+In addition, return code `21` is used for the [Retry later](#retry-later) feature.
 All other return codes are reserved for future use by Mender and should not be used.
 
-### Retry-later
+### Retry later
 
 State scripts are allowed to return a specific error code (`21`), in which case the client will sleep for a time configured by [StateScriptRetryIntervalSeconds](../../03.Client-installation/06.Configuration-file/50.Configuration-options/docs.md#statescriptretryintervalseconds) before the state script is called again. Note that scripts are not allowed to retry for infinitely long. Please see description of [StateScriptRetryTimeoutSeconds](../../03.Client-installation/06.Configuration-file/50.Configuration-options/docs.md#statescriptretrytimeoutseconds) for more information.
 

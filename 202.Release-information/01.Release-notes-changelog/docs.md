@@ -4,6 +4,934 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender dunfell-v2020.09
+
+_Released 09.17.2020_
+
+### Statistics
+
+A total of 70 lines added, 136 removed (delta -66)
+
+| Developers with the most changesets | |
+|---|---|
+| Drew Moseley | 5 (26.3%) |
+| Peter Grzybowski | 3 (15.8%) |
+| Lluis Campos | 2 (10.5%) |
+| Kurt Kiefer | 2 (10.5%) |
+| Daniel Selvan D | 1 (5.3%) |
+| Kristian Amlie | 1 (5.3%) |
+| Ole Petter Orhagen | 1 (5.3%) |
+| Marek Belisko | 1 (5.3%) |
+| Mirza Krak | 1 (5.3%) |
+| Kasper Føns | 1 (5.3%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Marek Belisko | 64 (36.2%) |
+| Drew Moseley | 45 (25.4%) |
+| Peter Grzybowski | 35 (19.8%) |
+| Lluis Campos | 12 (6.8%) |
+| Kurt Kiefer | 9 (5.1%) |
+| Kristian Amlie | 4 (2.3%) |
+| Ossian Riday | 3 (1.7%) |
+| Kasper Føns | 2 (1.1%) |
+| Daniel Selvan D | 1 (0.6%) |
+| Ole Petter Orhagen | 1 (0.6%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Marek Belisko | 64 (47.1%) |
+| Drew Moseley | 34 (25.0%) |
+| Lluis Campos | 6 (4.4%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Kristian Amlie | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 13 (68.4%) |
+| kekiefer@gmail.com | 2 (10.5%) |
+| danilselvan@gmail.com | 1 (5.3%) |
+| ossian.riday@gmail.com | 1 (5.3%) |
+| Chora | 1 (5.3%) |
+| open-nandra | 1 (5.3%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 98 (55.4%) |
+| open-nandra | 64 (36.2%) |
+| kekiefer@gmail.com | 9 (5.1%) |
+| ossian.riday@gmail.com | 3 (1.7%) |
+| Chora | 2 (1.1%) |
+| danilselvan@gmail.com | 1 (0.6%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+| Employers with the most hackers (total 11) | |
+|---|---|
+| Northern.tech | 6 (54.5%) |
+| open-nandra | 1 (9.1%) |
+| kekiefer@gmail.com | 1 (9.1%) |
+| ossian.riday@gmail.com | 1 (9.1%) |
+| Chora | 1 (9.1%) |
+| danilselvan@gmail.com | 1 (9.1%) |
+
+### Changelogs
+
+#### meta-mender (dunfell-v2020.09)
+
+New changes in meta-mender since dunfell-v2020.07:
+
+* []MBR systems don't have a backup header, so always return true
+  ([MEN-3761](https://tracker.mender.io/browse/MEN-3761))
+* Fix error that no recipe provides bcm2835-bootfiles.
+* mender-client: fix install of systemd-machine-id.service
+* initramfs-module-install-efi: Ensure variable changes are reflected on rebuild
+* vexpress: Remove nonexistent kernel config options that issue warnings.
+* mender-commercial: Cleanup BBFILES.
+* libubootenv: Drop bbappend file
+* libubootenv: add RPROVIDES for u-boot-default-env
+* Add mender-client 2.4.0 recipe.
+* OpenSSL: qemu: set SECLEVEL=2 in /etc/ssl/openssl.cnf
+  ([MEN-3730](https://tracker.mender.io/browse/MEN-3730))
+* Fixed key extraction by skipping new lines in defconfig.
+  The `add_kconfig_option_with_depends.py` file throws `Not sure how to
+  handle Kconfig option that doesn't start with 'CONFIG_'` when the
+  provided defconfig file contains blank lines. It has been fixed by
+  checking for empty lines before processing for keys.
+* Add mender-client 2.4.0 recipe.
+
+
+## mender-convert 2.2.0
+
+_Released 09.16.2020_
+
+### Statistics
+
+A total of 436 lines added, 56 removed (delta 380)
+
+| Developers with the most changesets | |
+|---|---|
+| Drew Moseley | 12 (44.4%) |
+| Lluis Campos | 7 (25.9%) |
+| Dell Green | 2 (7.4%) |
+| Kristian Amlie | 2 (7.4%) |
+| Marek Belisko | 1 (3.7%) |
+| Peter Grzybowski | 1 (3.7%) |
+| Ole Petter Orhagen | 1 (3.7%) |
+| Purushotham Nayak | 1 (3.7%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Dell Green | 309 (70.9%) |
+| Drew Moseley | 53 (12.2%) |
+| Lluis Campos | 25 (5.7%) |
+| Ole Petter Orhagen | 14 (3.2%) |
+| Marek Belisko | 13 (3.0%) |
+| Purushotham Nayak | 11 (2.5%) |
+| Peter Grzybowski | 8 (1.8%) |
+| Kristian Amlie | 3 (0.7%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 23 (85.2%) |
+| Ideaworks Ltd | 2 (7.4%) |
+| Cisco Systems, Inc. | 1 (3.7%) |
+| open-nandra | 1 (3.7%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Ideaworks Ltd | 309 (70.9%) |
+| Northern.tech | 103 (23.6%) |
+| open-nandra | 13 (3.0%) |
+| Cisco Systems, Inc. | 11 (2.5%) |
+
+| Employers with the most hackers (total 8) | |
+|---|---|
+| Northern.tech | 5 (62.5%) |
+| Ideaworks Ltd | 1 (12.5%) |
+| open-nandra | 1 (12.5%) |
+| Cisco Systems, Inc. | 1 (12.5%) |
+
+### Changelogs
+
+#### mender-convert (2.2.0)
+
+New changes in mender-convert since 2.1.0:
+
+* Fix missed log messages.
+* Unmount filesystem images before creating full image.
+* Fix incorrect file ownership on artifact_info file
+* Extract debian package contents with sudo.
+* Probing of kernel and initrd now handles multiple instances and symlinks
+  ([MEN-3640](https://tracker.mender.io/browse/MEN-3640))
+* Fix error when partitions numbers are not sequential
+* chmod 600 on mender.conf
+  ([MEN-3762](https://tracker.mender.io/browse/MEN-3762))
+* Partition UUID support added for gpt/dos partition tables for deterministic booting
+  ([MEN-3725](https://tracker.mender.io/browse/MEN-3725))
+* mender-convert-modify: Use sudo to copy DTBs.
+* raspberrypi: Do not overwrite existing kernel.
+* mender-convert-modify: Check is selinux is configured in enforce mode and force rootfs-relabel
+* Account for root ownership of overlay files.
+* Cleanup more bootloader files.
+* Allow for custom options when creating filesystems.
+* Allow for custom option when mounting filesystems.
+* Update mender-artifact to 3.4.0
+* Warn user when converting read-only file systems that would
+  result in unstable checksums, making the image incompatible with Mender
+  Delta updates.
+  ([MEN-3912](https://tracker.mender.io/browse/MEN-3912))
+* Update mender client to 2.4.0
+
+
+## Mender 2.5.0
+
+_Released 09.11.2020_
+
+### Statistics
+
+A total of 64300 lines added, 23895 removed (delta 40405)
+
+| Developers with the most changesets | |
+|---|---|
+| Manuel Zedel | 297 (30.5%) |
+| Fabio Tranchitella | 199 (20.4%) |
+| Alf-Rune Siqveland | 146 (15.0%) |
+| Marcin Chalczynski | 138 (14.2%) |
+| Lluis Campos | 49 (5.0%) |
+| Peter Grzybowski | 41 (4.2%) |
+| Krzysztof Jaskiewicz | 29 (3.0%) |
+| Kristian Amlie | 26 (2.7%) |
+| Ole Petter Orhagen | 23 (2.4%) |
+| Michael Clelland | 11 (1.1%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Alf-Rune Siqveland | 19875 (28.8%) |
+| Marcin Chalczynski | 13236 (19.2%) |
+| Fabio Tranchitella | 12574 (18.2%) |
+| Manuel Zedel | 11331 (16.4%) |
+| Krzysztof Jaskiewicz | 4638 (6.7%) |
+| Peter Grzybowski | 3620 (5.3%) |
+| Ole Petter Orhagen | 1558 (2.3%) |
+| Lluis Campos | 757 (1.1%) |
+| Kristian Amlie | 694 (1.0%) |
+| Michael Clelland | 525 (0.8%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Felix Breuer | 7 (0.0%) |
+| Torben Hohn | 5 (0.0%) |
+| Mirza Krak | 3 (0.0%) |
+
+| Developers with the most signoffs (total 5) | |
+|---|---|
+| Kurt Kiefer | 2 (40.0%) |
+| Fabio Tranchitella | 2 (40.0%) |
+| Ole Petter Orhagen | 1 (20.0%) |
+
+| Developers with the most reviews (total 6) | |
+|---|---|
+| Bastian Germann | 6 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 796 (81.7%) |
+| RnDity | 167 (17.1%) |
+| Linutronix GmbH | 6 (0.6%) |
+| matt@madison.systems | 2 (0.2%) |
+| f.breuer94@gmail.com | 1 (0.1%) |
+| peron.clem@gmail.com | 1 (0.1%) |
+| Wifx | 1 (0.1%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 50941 (73.9%) |
+| RnDity | 17874 (25.9%) |
+| Linutronix GmbH | 71 (0.1%) |
+| matt@madison.systems | 7 (0.0%) |
+| f.breuer94@gmail.com | 7 (0.0%) |
+| peron.clem@gmail.com | 2 (0.0%) |
+| Wifx | 2 (0.0%) |
+
+| Employers with the most signoffs (total 5) | |
+|---|---|
+| Northern.tech | 3 (60.0%) |
+| kekiefer@gmail.com | 2 (40.0%) |
+
+| Employers with the most hackers (total 18) | |
+|---|---|
+| Northern.tech | 11 (61.1%) |
+| RnDity | 2 (11.1%) |
+| Linutronix GmbH | 1 (5.6%) |
+| matt@madison.systems | 1 (5.6%) |
+| f.breuer94@gmail.com | 1 (5.6%) |
+| peron.clem@gmail.com | 1 (5.6%) |
+| Wifx | 1 (5.6%) |
+
+### Changelogs
+
+#### deployments (2.1.0)
+
+New changes in deployments since 2.0.0:
+
+* Remove mongodb write/read concerns, let the connection string set them
+* override file name in artifact download links
+  ([MEN-3417](https://tracker.mender.io/browse/MEN-3417))
+* New endpoint to deploy to group of devices
+  `POST /deployments/group/:name`
+  ([MEN-3411](https://tracker.mender.io/browse/MEN-3411))
+* New internal health check and liveliness endpoints
+  `GET /api/internal/v1/deployments/health`
+  `GET /api/internal/v1/deployments/alive`
+  ([MEN-3024](https://tracker.mender.io/browse/MEN-3024))
+
+#### deployments-enterprise (2.1.0)
+
+New changes in deployments-enterprise since 2.0.0:
+
+* Remove mongodb write/read concerns, let the connection string set them
+* override file name in artifact download links
+  ([MEN-3417](https://tracker.mender.io/browse/MEN-3417))
+* New endpoint to deploy to group of devices
+  `POST /deployments/group/:name`
+  ([MEN-3411](https://tracker.mender.io/browse/MEN-3411))
+* New internal health check and liveliness endpoints
+  `GET /api/internal/v1/deployments/health`
+  `GET /api/internal/v1/deployments/alive`
+  ([MEN-3024](https://tracker.mender.io/browse/MEN-3024))
+
+#### deviceauth (2.4.0)
+
+New changes in deviceauth since 2.3.0:
+
+* internal API end-point to delete tenant limits
+  ([MC-4040](https://tracker.mender.io/browse/MC-4040))
+* Add support for ED25519 and ECDSA public keys in auth requests
+  ([MEN-3728](https://tracker.mender.io/browse/MEN-3728))
+* New internal health check and liveliness endpoints
+  `GET /api/internal/v1/deviceauth/health`
+  `GET /api/internal/v1/deviceauth/alive`
+  ([MEN-3024](https://tracker.mender.io/browse/MEN-3024))
+* device preauthorization: in case of conflict return conflicting device
+  ([MEN-3813](https://tracker.mender.io/browse/MEN-3813))
+
+#### gui (2.5.0)
+
+New changes in gui since 2.4.0:
+
+* added roles management to settings to allow adding group based roles
+* fixed identity attribute filtering on authorized devices
+  ([MEN-3517](https://tracker.mender.io/browse/MEN-3517))
+* enabled automatic selection on filter autocomplete
+  ([MEN-3518](https://tracker.mender.io/browse/MEN-3518))
+* ensured onboarding tooltip shows up after custom artifact is uploaded
+* add cancel subscription form in organization page
+  ([MEN-3306](https://tracker.mender.io/browse/MEN-3306))
+* fixed an issue that caused unexpected deployment device states to crash the deployment report
+* fixed an issue that prevented exists filter from working
+* combined bulk device actions in speed dial on device selection
+  this allows easier device accepting, rejecting or group membership changes
+* fixed settings availability in OS & onprem-enterprise deployments
+* reintroduced ungrouped group
+* switched group based deployment to use corresponding api endpoint
+  this reduced the need to retrieve all group devices in the UI
+* adjusted group creation dialog to focus on device selection outside of dialog
+* Add upgrade page for trial users
+* added sorting capabilities to device lists
+* enabled dual rbac roles for groups to align with new rbac role in backend
+* added cancellation option for artifact upload & generation
+* fixed authorization header in userapi calls
+* Add livechat widget component
+* Aggregated Dependabot Changelogs:
+  * Bumps node from 12.14.0-alpine to 14.4.0-alpine.
+  * Bumps nginx from 1.17-alpine to 1.19.0-alpine.
+  * Bumps [eslint](https://github.com/eslint/eslint) from 7.1.0 to 7.2.0.
+    - [Release notes](https://github.com/eslint/eslint/releases)
+    - [Changelog](https://github.com/eslint/eslint/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/eslint/eslint/compare/v7.1.0...v7.2.0)
+  * Bumps [victory](https://github.com/formidablelabs/victory) from 34.3.10 to 34.3.11.
+    - [Release notes](https://github.com/formidablelabs/victory/releases)
+    - [Changelog](https://github.com/FormidableLabs/victory/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/formidablelabs/victory/compare/v34.3.10...v34.3.11)
+  * Bumps [css-loader](https://github.com/webpack-contrib/css-loader) from 3.5.3 to 3.6.0.
+    - [Release notes](https://github.com/webpack-contrib/css-loader/releases)
+    - [Changelog](https://github.com/webpack-contrib/css-loader/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/webpack-contrib/css-loader/compare/v3.5.3...v3.6.0)
+  * Bump node from 12.14.0-alpine to 14.4.0-alpine
+  * Bump victory from 34.3.10 to 34.3.11
+  * Bump nginx from 1.17-alpine to 1.19.0-alpine
+  * Bump eslint from 7.1.0 to 7.2.0
+  * Bump css-loader from 3.5.3 to 3.6.0
+  * Bumps [moment](https://github.com/moment/moment) from 2.26.0 to 2.27.0.
+    - [Release notes](https://github.com/moment/moment/releases)
+    - [Changelog](https://github.com/moment/moment/blob/develop/CHANGELOG.md)
+    - [Commits](https://github.com/moment/moment/compare/2.26.0...2.27.0)
+  * Bumps [validator](https://github.com/chriso/validator.js) from 13.0.0 to 13.1.1.
+    - [Release notes](https://github.com/chriso/validator.js/releases)
+    - [Changelog](https://github.com/validatorjs/validator.js/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/chriso/validator.js/compare/13.0.0...13.1.1)
+  * Bumps [eslint](https://github.com/eslint/eslint) from 7.2.0 to 7.3.0.
+    - [Release notes](https://github.com/eslint/eslint/releases)
+    - [Changelog](https://github.com/eslint/eslint/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/eslint/eslint/compare/v7.2.0...v7.3.0)
+  * Bump eslint from 7.2.0 to 7.3.0
+  * Bump validator from 13.0.0 to 13.1.1
+  * Bump moment from 2.26.0 to 2.27.0
+  * Bumps [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) from 2.21.2 to 2.22.0.
+    - [Release notes](https://github.com/benmosher/eslint-plugin-import/releases)
+    - [Changelog](https://github.com/benmosher/eslint-plugin-import/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/benmosher/eslint-plugin-import/compare/v2.21.2...v2.22.0)
+  * Bumps [webpack-cli](https://github.com/webpack/webpack-cli) from 3.3.11 to 3.3.12.
+    - [Release notes](https://github.com/webpack/webpack-cli/releases)
+    - [Changelog](https://github.com/webpack/webpack-cli/blob/v3.3.12/CHANGELOG.md)
+    - [Commits](https://github.com/webpack/webpack-cli/compare/v3.3.11...v3.3.12)
+  * Bumps [eslint](https://github.com/eslint/eslint) from 7.3.0 to 7.3.1.
+    - [Release notes](https://github.com/eslint/eslint/releases)
+    - [Changelog](https://github.com/eslint/eslint/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/eslint/eslint/compare/v7.3.0...v7.3.1)
+  * Bumps [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) from 7.20.0 to 7.20.1.
+    - [Release notes](https://github.com/yannickcr/eslint-plugin-react/releases)
+    - [Changelog](https://github.com/yannickcr/eslint-plugin-react/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/yannickcr/eslint-plugin-react/compare/v7.20.0...v7.20.1)
+  * Bump eslint-plugin-import from 2.21.2 to 2.22.0
+  * Bump eslint from 7.3.0 to 7.3.1
+  * Bump eslint-plugin-react from 7.20.0 to 7.20.1
+  * Bump webpack-cli from 3.3.11 to 3.3.12
+  * Bumps [copy-webpack-plugin](https://github.com/webpack-contrib/copy-webpack-plugin) from 6.0.2 to 6.0.3.
+    - [Release notes](https://github.com/webpack-contrib/copy-webpack-plugin/releases)
+    - [Changelog](https://github.com/webpack-contrib/copy-webpack-plugin/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/webpack-contrib/copy-webpack-plugin/compare/v6.0.2...v6.0.3)
+  * Bumps [lint-staged](https://github.com/okonet/lint-staged) from 10.2.10 to 10.2.11.
+    - [Release notes](https://github.com/okonet/lint-staged/releases)
+    - [Commits](https://github.com/okonet/lint-staged/compare/v10.2.10...v10.2.11)
+  * Bumps [autoprefixer](https://github.com/postcss/autoprefixer) from 9.8.0 to 9.8.4.
+    - [Release notes](https://github.com/postcss/autoprefixer/releases)
+    - [Changelog](https://github.com/postcss/autoprefixer/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/postcss/autoprefixer/compare/9.8.0...9.8.4)
+  * Bumps [@babel/preset-env](https://github.com/babel/babel/tree/HEAD/packages/babel-preset-env) from 7.10.2 to 7.10.4.
+    - [Release notes](https://github.com/babel/babel/releases)
+    - [Changelog](https://github.com/babel/babel/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/babel/babel/commits/v7.10.4/packages/babel-preset-env)
+  * Bump autoprefixer from 9.8.0 to 9.8.4
+  * Bump @babel/preset-env from 7.10.2 to 7.10.4
+  * Bump copy-webpack-plugin from 6.0.2 to 6.0.3
+  * Bump lint-staged from 10.2.10 to 10.2.11
+  * Bumps [react-big-calendar](https://github.com/intljusticemission/react-big-calendar) from 0.25.0 to 0.26.0.
+    - [Release notes](https://github.com/intljusticemission/react-big-calendar/releases)
+    - [Changelog](https://github.com/jquense/react-big-calendar/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/intljusticemission/react-big-calendar/compare/v0.25.0...v0.26.0)
+  * Bumps [superagent](https://github.com/visionmedia/superagent) from 5.2.2 to 5.3.1.
+    - [Release notes](https://github.com/visionmedia/superagent/releases)
+    - [Changelog](https://github.com/visionmedia/superagent/blob/master/HISTORY.md)
+    - [Commits](https://github.com/visionmedia/superagent/compare/v5.2.2...v5.3.1)
+  * Bumps node from 14.4.0-alpine to 14.5.0-alpine.
+  * Bumps [@babel/plugin-proposal-class-properties](https://github.com/babel/babel/tree/HEAD/packages/babel-plugin-proposal-class-properties) from 7.10.1 to 7.10.4.
+    - [Release notes](https://github.com/babel/babel/releases)
+    - [Changelog](https://github.com/babel/babel/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/babel/babel/commits/v7.10.4/packages/babel-plugin-proposal-class-properties)
+  * Bumps [lodash](https://github.com/lodash/lodash) from 4.17.15 to 4.17.19.
+    - [Release notes](https://github.com/lodash/lodash/releases)
+    - [Commits](https://github.com/lodash/lodash/compare/4.17.15...4.17.19)
+  * Bumps nginx from 1.19.0-alpine to 1.19.1-alpine.
+  * Bumps [victory](https://github.com/formidablelabs/victory) from 34.3.11 to 35.0.5.
+    - [Release notes](https://github.com/formidablelabs/victory/releases)
+    - [Changelog](https://github.com/FormidableLabs/victory/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/formidablelabs/victory/compare/v34.3.11...v35.0.5)
+  * Bumps [elliptic](https://github.com/indutny/elliptic) from 6.5.2 to 6.5.3.
+    - [Release notes](https://github.com/indutny/elliptic/releases)
+    - [Commits](https://github.com/indutny/elliptic/compare/v6.5.2...v6.5.3)
+  * Bump react-big-calendar from 0.25.0 to 0.26.0
+  * Bump superagent from 5.2.2 to 5.3.1
+  * Bump node from 14.4.0-alpine to 14.5.0-alpine
+  * Bump @babel/plugin-proposal-class-properties from 7.10.1 to 7.10.4
+  * Bump lodash from 4.17.15 to 4.17.19
+  * Bump nginx from 1.19.0-alpine to 1.19.1-alpine
+  * Bump victory from 34.3.11 to 35.0.5
+  * Bump elliptic from 6.5.2 to 6.5.3
+  * Bumps node from 14.5.0-alpine to 14.7.0-alpine.
+  * Bumps [react-dropzone](https://github.com/react-dropzone/react-dropzone) from 11.0.1 to 11.0.2.
+    - [Release notes](https://github.com/react-dropzone/react-dropzone/releases)
+    - [Commits](https://github.com/react-dropzone/react-dropzone/compare/v11.0.1...v11.0.2)
+  * Bump react-dropzone from 11.0.1 to 11.0.2
+  * Bump node from 14.5.0-alpine to 14.7.0-alpine
+  * Bumps [react-ga](https://github.com/react-ga/react-ga) from 3.0.0 to 3.1.2.
+    - [Release notes](https://github.com/react-ga/react-ga/releases)
+    - [Commits](https://github.com/react-ga/react-ga/compare/v3.0.0...v3.1.2)
+  * Bumps [victory](https://github.com/formidablelabs/victory) from 34.3.11 to 35.0.8.
+    - [Release notes](https://github.com/formidablelabs/victory/releases)
+    - [Changelog](https://github.com/FormidableLabs/victory/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/formidablelabs/victory/compare/v34.3.11...v35.0.8)
+  * Bumps [@mdi/js](https://github.com/Templarian/MaterialDesign-JS) from 5.3.45 to 5.4.55.
+    - [Release notes](https://github.com/Templarian/MaterialDesign-JS/releases)
+    - [Commits](https://github.com/Templarian/MaterialDesign-JS/compare/v5.3.45...v5.4.55)
+  * Bumps [@stripe/stripe-js](https://github.com/stripe/stripe-js) from 1.7.0 to 1.8.0.
+    - [Release notes](https://github.com/stripe/stripe-js/releases)
+    - [Commits](https://github.com/stripe/stripe-js/compare/v1.7.0...v1.8.0)
+  * Bumps node from 14.7.0-alpine to 14.8.0-alpine.
+  * Bumps nginx from 1.19.1-alpine to 1.19.2-alpine.
+  * Bump nginx from 1.19.1-alpine to 1.19.2-alpine
+  * Bump node from 14.7.0-alpine to 14.8.0-alpine
+  * Bump victory from 34.3.11 to 35.0.8
+  * Bump react-ga from 3.0.0 to 3.1.2
+  * Bump @stripe/stripe-js from 1.7.0 to 1.8.0
+  * Bump @mdi/js from 5.3.45 to 5.4.55
+  * Bumps [@mdi/js](https://github.com/Templarian/MaterialDesign-JS) from 5.4.55 to 5.5.55.
+    - [Release notes](https://github.com/Templarian/MaterialDesign-JS/releases)
+    - [Commits](https://github.com/Templarian/MaterialDesign-JS/compare/v5.4.55...v5.5.55)
+  * Bump @mdi/js from 5.4.55 to 5.5.55
+  * Bumps [axios](https://github.com/axios/axios) from 0.19.2 to 0.20.0.
+    - [Release notes](https://github.com/axios/axios/releases)
+    - [Changelog](https://github.com/axios/axios/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/axios/axios/compare/v0.19.2...v0.20.0)
+  * Bumps [react-dropzone](https://github.com/react-dropzone/react-dropzone) from 11.0.2 to 11.0.3.
+    - [Release notes](https://github.com/react-dropzone/react-dropzone/releases)
+    - [Commits](https://github.com/react-dropzone/react-dropzone/compare/v11.0.2...v11.0.3)
+  * Bumps [@babel/preset-env](https://github.com/babel/babel/tree/HEAD/packages/babel-preset-env) from 7.10.4 to 7.11.0.
+    - [Release notes](https://github.com/babel/babel/releases)
+    - [Changelog](https://github.com/babel/babel/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/babel/babel/commits/v7.11.0/packages/babel-preset-env)
+  * Bumps [jest-resolve](https://github.com/facebook/jest/tree/HEAD/packages/jest-resolve) from 26.0.1 to 26.4.0.
+    - [Release notes](https://github.com/facebook/jest/releases)
+    - [Changelog](https://github.com/facebook/jest/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/facebook/jest/commits/v26.4.0/packages/jest-resolve)
+  * Bump jest-resolve from 26.0.1 to 26.4.0
+  * Bump @babel/preset-env from 7.10.4 to 7.11.0
+  * Bump react-dropzone from 11.0.2 to 11.0.3
+  * Bump axios from 0.19.2 to 0.20.0
+  * Bumps node from 14.8.0-alpine to 14.9.0-alpine.
+  * Bumps [eslint](https://github.com/eslint/eslint) from 7.3.1 to 7.7.0.
+    - [Release notes](https://github.com/eslint/eslint/releases)
+    - [Changelog](https://github.com/eslint/eslint/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/eslint/eslint/compare/v7.3.1...v7.7.0)
+  * Bumps [@babel/preset-react](https://github.com/babel/babel/tree/HEAD/packages/babel-preset-react) from 7.10.1 to 7.10.4.
+    - [Release notes](https://github.com/babel/babel/releases)
+    - [Changelog](https://github.com/babel/babel/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/babel/babel/commits/v7.10.4/packages/babel-preset-react)
+  * Bumps [yarn](https://github.com/yarnpkg/yarn) from 1.22.4 to 1.22.5.
+    - [Release notes](https://github.com/yarnpkg/yarn/releases)
+    - [Changelog](https://github.com/yarnpkg/yarn/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/yarnpkg/yarn/compare/v1.22.4...v1.22.5)
+  * Bump @babel/preset-react from 7.10.1 to 7.10.4
+  * Bump yarn from 1.22.4 to 1.22.5
+  * Bump eslint from 7.3.1 to 7.7.0
+  * Bump node from 14.8.0-alpine to 14.9.0-alpine
+  * Bumps [enzyme-adapter-react-16](https://github.com/enzymejs/enzyme/tree/HEAD/packages/enzyme-adapter-react-16) from 1.15.2 to 1.15.4.
+    - [Release notes](https://github.com/enzymejs/enzyme/releases)
+    - [Changelog](https://github.com/enzymejs/enzyme/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/enzymejs/enzyme/commits/enzyme-adapter-react-16@1.15.4/packages/enzyme-adapter-react-16)
+  * Bump enzyme-adapter-react-16 from 1.15.2 to 1.15.4
+
+#### integration (2.5.0)
+
+New changes in integration since 2.4.0:
+
+* docker compose: minio now restart on-failure
+* Restore docker-compose.storage.s3.yml
+* upgrade MongoDB from version 3.6 to version 4.4 (latest stable)
+* Upgrade deployments to 2.1.0.
+* Upgrade deployments-enterprise to 2.1.0.
+* Upgrade deviceauth to 2.4.0.
+* Upgrade gui to 2.5.0.
+* Upgrade inventory to 2.1.0.
+* Upgrade inventory-enterprise to 2.1.0.
+* Upgrade mender to 2.4.0.
+* Upgrade mender-api-gateway-docker to 2.3.0.
+* Upgrade mender-cli to 1.5.0.
+* Add mtls-ambassador 1.0.0.
+* Upgrade tenantadm to 2.1.0.
+* Upgrade useradm to 1.12.0.
+* Upgrade useradm-enterprise to 1.12.0.
+* Upgrade workflows to 1.2.0.
+* Upgrade workflows-enterprise to 1.2.0.
+* Aggregated Dependabot Changelogs:
+  * Bumps [requests](https://github.com/psf/requests) from 2.22.0 to 2.23.0.
+    - [Release notes](https://github.com/psf/requests/releases)
+    - [Changelog](https://github.com/psf/requests/blob/master/HISTORY.md)
+    - [Commits](https://github.com/psf/requests/compare/v2.22.0...v2.23.0)
+  * Bumps [stripe](https://github.com/stripe/stripe-python) from 2.42.0 to 2.48.0.
+    - [Release notes](https://github.com/stripe/stripe-python/releases)
+    - [Changelog](https://github.com/stripe/stripe-python/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/stripe/stripe-python/compare/v2.42.0...v2.48.0)
+  * Bumps [pillow](https://github.com/python-pillow/Pillow) from 7.0.0 to 7.1.2.
+    - [Release notes](https://github.com/python-pillow/Pillow/releases)
+    - [Changelog](https://github.com/python-pillow/Pillow/blob/master/CHANGES.rst)
+    - [Commits](https://github.com/python-pillow/Pillow/compare/7.0.0...7.1.2)
+  * Bumps [pytest-html](https://github.com/pytest-dev/pytest-html) from 2.0.1 to 2.1.1.
+    - [Release notes](https://github.com/pytest-dev/pytest-html/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest-html/blob/master/CHANGES.rst)
+    - [Commits](https://github.com/pytest-dev/pytest-html/compare/v2.0.1...v2.1.1)
+  * Bumps [docker-compose](https://github.com/docker/compose) from 1.25.4 to 1.26.0.
+    - [Release notes](https://github.com/docker/compose/releases)
+    - [Changelog](https://github.com/docker/compose/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/docker/compose/compare/1.25.4...1.26.0)
+  * Bumps [requests](https://github.com/psf/requests) from 2.22.0 to 2.23.0.
+    - [Release notes](https://github.com/psf/requests/releases)
+    - [Changelog](https://github.com/psf/requests/blob/master/HISTORY.md)
+    - [Commits](https://github.com/psf/requests/compare/v2.22.0...v2.23.0)
+  * Bumps [pytest-html](https://github.com/pytest-dev/pytest-html) from 2.0.1 to 2.1.1.
+    - [Release notes](https://github.com/pytest-dev/pytest-html/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest-html/blob/master/CHANGES.rst)
+    - [Commits](https://github.com/pytest-dev/pytest-html/compare/v2.0.1...v2.1.1)
+  * Bumps [pytest](https://github.com/pytest-dev/pytest) from 5.3.4 to 5.4.3.
+    - [Release notes](https://github.com/pytest-dev/pytest/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+    - [Commits](https://github.com/pytest-dev/pytest/compare/5.3.4...5.4.3)
+  * Bumps [pytest](https://github.com/pytest-dev/pytest) from 5.3.4 to 5.4.3.
+    - [Release notes](https://github.com/pytest-dev/pytest/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+    - [Commits](https://github.com/pytest-dev/pytest/compare/5.3.4...5.4.3)
+  * : Bump pytest from 5.3.4 to 5.4.3 in /backend-tests
+  * Bump pytest from 5.3.4 to 5.4.3 in /tests/requirements
+  * Bumps [cryptography](https://github.com/pyca/cryptography) from 2.8 to 2.9.2.
+    - [Release notes](https://github.com/pyca/cryptography/releases)
+    - [Changelog](https://github.com/pyca/cryptography/blob/master/CHANGELOG.rst)
+    - [Commits](https://github.com/pyca/cryptography/compare/2.8...2.9.2)
+  * Bumps [paramiko](https://github.com/paramiko/paramiko) from 2.6.0 to 2.7.1.
+    - [Release notes](https://github.com/paramiko/paramiko/releases)
+    - [Changelog](https://github.com/paramiko/paramiko/blob/master/NEWS)
+    - [Commits](https://github.com/paramiko/paramiko/compare/2.6.0...2.7.1)
+  * Bump cryptography from 2.8 to 2.9.2 in /backend-tests
+  * Bump paramiko from 2.6.0 to 2.7.1 in /tests/requirements
+  * Bumps [pillow](https://github.com/python-pillow/Pillow) from 7.1.2 to 7.2.0.
+    - [Release notes](https://github.com/python-pillow/Pillow/releases)
+    - [Changelog](https://github.com/python-pillow/Pillow/blob/master/CHANGES.rst)
+    - [Commits](https://github.com/python-pillow/Pillow/compare/7.1.2...7.2.0)
+  * Bumps [docker-compose](https://github.com/docker/compose) from 1.26.0 to 1.26.2.
+    - [Release notes](https://github.com/docker/compose/releases)
+    - [Changelog](https://github.com/docker/compose/blob/1.26.2/CHANGELOG.md)
+    - [Commits](https://github.com/docker/compose/compare/1.26.0...1.26.2)
+  * Bump docker-compose from 1.26.0 to 1.26.2 in /tests/requirements
+  * Bump pillow from 7.1.2 to 7.2.0 in /backend-tests
+  * Bumps [requests](https://github.com/psf/requests) from 2.23.0 to 2.24.0.
+    - [Release notes](https://github.com/psf/requests/releases)
+    - [Changelog](https://github.com/psf/requests/blob/master/HISTORY.md)
+    - [Commits](https://github.com/psf/requests/compare/v2.23.0...v2.24.0)
+  * Bumps [requests](https://github.com/psf/requests) from 2.23.0 to 2.24.0.
+    - [Release notes](https://github.com/psf/requests/releases)
+    - [Changelog](https://github.com/psf/requests/blob/master/HISTORY.md)
+    - [Commits](https://github.com/psf/requests/compare/v2.23.0...v2.24.0)
+  * Bump requests from 2.23.0 to 2.24.0 in /tests/requirements
+  * Bump requests from 2.23.0 to 2.24.0 in /backend-tests
+  * Bumps [cryptography](https://github.com/pyca/cryptography) from 2.9.2 to 3.0.
+    - [Release notes](https://github.com/pyca/cryptography/releases)
+    - [Changelog](https://github.com/pyca/cryptography/blob/master/CHANGELOG.rst)
+    - [Commits](https://github.com/pyca/cryptography/compare/2.9.2...3.0)
+  * Bumps [stripe](https://github.com/stripe/stripe-python) from 2.48.0 to 2.49.0.
+    - [Release notes](https://github.com/stripe/stripe-python/releases)
+    - [Changelog](https://github.com/stripe/stripe-python/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/stripe/stripe-python/compare/v2.48.0...v2.49.0)
+  * Bumps [pymongo](https://github.com/mongodb/mongo-python-driver) from 3.10.1 to 3.11.0.
+    - [Release notes](https://github.com/mongodb/mongo-python-driver/releases)
+    - [Changelog](https://github.com/mongodb/mongo-python-driver/blob/master/doc/changelog.rst)
+    - [Commits](https://github.com/mongodb/mongo-python-driver/compare/3.10.1...3.11.0)
+  * Bumps [pytest](https://github.com/pytest-dev/pytest) from 5.4.3 to 6.0.1.
+    - [Release notes](https://github.com/pytest-dev/pytest/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+    - [Commits](https://github.com/pytest-dev/pytest/compare/5.4.3...6.0.1)
+  * Bumps [pyotp](https://github.com/pyotp/pyotp) from 2.3.0 to 2.4.0.
+    - [Release notes](https://github.com/pyotp/pyotp/releases)
+    - [Changelog](https://github.com/pyauth/pyotp/blob/master/Changes.rst)
+    - [Commits](https://github.com/pyotp/pyotp/compare/v2.3.0...v2.4.0)
+  * Bumps [pymongo](https://github.com/mongodb/mongo-python-driver) from 3.10.1 to 3.11.0.
+    - [Release notes](https://github.com/mongodb/mongo-python-driver/releases)
+    - [Changelog](https://github.com/mongodb/mongo-python-driver/blob/master/doc/changelog.rst)
+    - [Commits](https://github.com/mongodb/mongo-python-driver/compare/3.10.1...3.11.0)
+  * Bumps [pytest](https://github.com/pytest-dev/pytest) from 5.4.3 to 6.0.1.
+    - [Release notes](https://github.com/pytest-dev/pytest/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+    - [Commits](https://github.com/pytest-dev/pytest/compare/5.4.3...6.0.1)
+  * Bumps [stripe](https://github.com/stripe/stripe-python) from 2.49.0 to 2.50.0.
+    - [Release notes](https://github.com/stripe/stripe-python/releases)
+    - [Changelog](https://github.com/stripe/stripe-python/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/stripe/stripe-python/compare/v2.49.0...v2.50.0)
+  * Bump stripe from 2.49.0 to 2.50.0 in /backend-tests
+  * Bumps [cryptography](https://github.com/pyca/cryptography) from 3.0 to 3.1.
+    - [Release notes](https://github.com/pyca/cryptography/releases)
+    - [Changelog](https://github.com/pyca/cryptography/blob/master/CHANGELOG.rst)
+    - [Commits](https://github.com/pyca/cryptography/compare/3.0...3.1)
+  * Bumps [paramiko](https://github.com/paramiko/paramiko) from 2.7.1 to 2.7.2.
+    - [Release notes](https://github.com/paramiko/paramiko/releases)
+    - [Changelog](https://github.com/paramiko/paramiko/blob/master/NEWS)
+    - [Commits](https://github.com/paramiko/paramiko/compare/2.7.1...2.7.2)
+  * Bump paramiko from 2.7.1 to 2.7.2 in /tests/requirements
+  * Bump cryptography from 3.0 to 3.1 in /backend-tests
+
+#### inventory (2.1.0)
+
+New changes in inventory since 2.0.0:
+
+* New endpoints for managing devices' group in bulk.
+* Add $nin ("not in") operator for searching devices
+* Add status query parameter to GET /groups
+* New internal health check and liveliness endpoints
+  `GET /api/internal/v1/inventory/health`
+  `GET /api/internal/v1/inventory/alive`
+  ([MEN-3024](https://tracker.mender.io/browse/MEN-3024))
+
+#### inventory-enterprise (2.1.0)
+
+New changes in inventory-enterprise since 2.0.0:
+
+* New endpoints for managing devices' group in bulk.
+* RBAC dynamic groups
+  ([MEN-3626](https://tracker.mender.io/browse/MEN-3626))
+* Introduce the $regex filter operator
+* Add $nin ("not in") operator for searching devices
+* Add status query parameter to GET /groups
+* New internal health check and liveliness endpoints
+  `GET /api/internal/v1/inventory/health`
+  `GET /api/internal/v1/inventory/alive`
+  ([MEN-3024](https://tracker.mender.io/browse/MEN-3024))
+
+#### mender (2.4.0)
+
+New changes in mender since 2.3.0:
+
+* keystore: use openssl bindings
+  Switch the code that signs the server's authentication request
+  to use openssl. This allows to use ssl_engines, which permit to
+  use PKCS#11 or TPMs as keystore.
+* vendor: switch openssl bindings to github.com/Linutronix/golang-openssl
+  spacemonkeygo/openssl depends on spacelog, which increases binary
+  size by about 2MB due to using reflect.
+  Switch to a fork which has the logger removed.
+  This patch can hopefully be reverted someday, when the logger
+  removal has been mainlined.
+* Log state-script stderr as info, not error
+  ([MEN-3316](https://tracker.mender.io/browse/MEN-3316))
+* mender-inventory-geo script to return geo localization data
+* Add support for libubootenv as boot loader user space tools
+  provider. ([MEN-3684](https://tracker.mender.io/browse/MEN-3684))
+* Remove Server config warn on mender setup command
+  ([MEN-3652](https://tracker.mender.io/browse/MEN-3652))
+* Fix broken logging to syslogger.
+  ([MEN-3676](https://tracker.mender.io/browse/MEN-3676))
+* chmod 600 on config file
+  ([MEN-3762](https://tracker.mender.io/browse/MEN-3762))
+* mender-device-identity: skip dummyX interfaces
+* mender.service: update to run after network-online.target
+* Switch to OpenSSL for all server communication.
+  ([MEN-3730](https://tracker.mender.io/browse/MEN-3730))
+* keystore: support ed25519 keys
+* Add the ability to configure the client with a client certificate and
+  private key in order to enable mTLS in the client communication setup.
+  ([MEN-3115](https://tracker.mender.io/browse/MEN-3115))
+
+#### mender-api-gateway-docker (2.3.0)
+
+New changes in mender-api-gateway-docker since 2.2.0:
+
+* Return valid JSON documents as error pages' payloads
+* , expose password-reset end-points without auth
+  ([MEN-3544](https://tracker.mender.io/browse/MEN-3544), [MEN-3546](https://tracker.mender.io/browse/MEN-3546))
+
+#### mender-cli (1.5.0)
+
+New changes in mender-cli since 1.4.0:
+
+* Add: Make the server flag default to hosted Mender
+* Add: Bash auto-completion functionality
+* Add: Zsh auto-completion support
+* Add: Configuration file functionality
+  This adds the possibility to add the username and password to a configuration
+  file, in which the 'mender-cli' tool will look if no password or username is set
+  on the CLI. The configuration file is expected to be JSON.
+  The configuration file can be located in one of:
+  * /etc/mender-cli
+  * $HOME
+  * . (directory where binary is run from)
+  and must be named like:
+  ```console
+  .mender-clirc.json
+  ```
+  This helps usage, in that now, in order to login, a user with a configuration
+  file can do:
+  ```console
+  $ mender-cli login
+  ```
+  as opposed to:
+  ```console
+  $ mender-cli --username foo --password bar --server bar.com
+  ```
+  The parameters which are configurable from the config file are:
+  * username
+  * password
+  * server
+
+#### mtls-ambassador (1.0.0)
+
+* support ecdsa and ed25519
+* management token refresh
+
+#### tenantadm (2.1.0)
+
+New changes in tenantadm since 2.0.0:
+
+* new management end-point to request tenant's cancellation
+  ([MEN-3305](https://tracker.mender.io/browse/MEN-3305))
+* Remove mongodb write/read concerns, let the connection string set them
+* introduce a new end-point to create trial tenants
+  ([MEN-3613](https://tracker.mender.io/browse/MEN-3613))
+* new end-points to upgrade a trial tenant to a paid plan
+  ([MEN-3615](https://tracker.mender.io/browse/MEN-3615))
+* internal API end-point to update tenants
+  ([MC-4040](https://tracker.mender.io/browse/MC-4040))
+* Store marketing consent from the sign up form in stripe
+* OAuth2 signup support for GitHub and Google
+* add support for the + character in the email address
+  ([MEN-1969](https://tracker.mender.io/browse/MEN-1969))
+* New internal health check and liveliness endpoints
+  `GET /api/internal/v1/tenantadm/health`
+  `GET /api/internal/v1/tenantadm/alive`
+  ([MEN-3024](https://tracker.mender.io/browse/MEN-3024))
+
+#### useradm (1.12.0)
+
+New changes in useradm since 1.11.0:
+
+* Remove mongodb write concern, let the connection string set them
+* add support for the + character in the email address
+  ([MEN-1969](https://tracker.mender.io/browse/MEN-1969))
+* New internal health check and liveliness endpoints
+  `GET /api/internal/v1/useradm/health`
+  `GET /api/internal/v1/useradm/alive`
+  ([MEN-3024](https://tracker.mender.io/browse/MEN-3024))
+
+#### useradm-enterprise (1.12.0)
+
+New changes in useradm-enterprise since 1.11.0:
+
+* Remove mongodb write concern, let the connection string set them
+* Remove mongodb write concern, let the connection string set them
+* Separate RBAC of visibility and deployments.
+  ([MEN-3629](https://tracker.mender.io/browse/MEN-3629))
+* OAuth2: Login using GitHub and Google account
+* add support for the + character in the email address
+  ([MEN-1969](https://tracker.mender.io/browse/MEN-1969))
+* add support for the + character in the email address
+  ([MEN-1969](https://tracker.mender.io/browse/MEN-1969))
+* New internal health check and liveliness endpoints
+  `GET /api/internal/v1/useradm/health`
+  `GET /api/internal/v1/useradm/alive`
+  ([MEN-3024](https://tracker.mender.io/browse/MEN-3024))
+
+#### workflows (1.2.0)
+
+New changes in workflows since 1.1.0:
+
+* add support for sending html (mime/alternative) messages
+  ([MEN-3509](https://tracker.mender.io/browse/MEN-3509))
+* Add Go Template processing of http task's request body
+* Add support for yaml workflow definitions
+* New internal health check endpoint
+  `GET /api/internal/v1/workflows/health`
+  ([MEN-3024](https://tracker.mender.io/browse/MEN-3024))
+
+#### workflows-enterprise (1.2.0)
+
+New changes in workflows-enterprise since 1.1.0:
+
+* Add new workflow cancel_tenant to send cancellation request email
+  ([MEN-3305](https://tracker.mender.io/browse/MEN-3305))
+* add support for sending html (mime/alternative) messages
+  ([MEN-3509](https://tracker.mender.io/browse/MEN-3509))
+* Add Go Template processing of http task's request body
+* Add support for yaml workflow definitions
+* new workflow send_password_reset_email for password resets
+  ([MEN-3545](https://tracker.mender.io/browse/MEN-3545))
+* New internal health check endpoint
+  `GET /api/internal/v1/workflows/health`
+  ([MEN-3024](https://tracker.mender.io/browse/MEN-3024))
+
+
+## Mender 2.4.1
+
+_Released 09.01.2020_
+
+### Statistics
+
+A total of 41 lines added, 40 removed (delta 1)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 3 (100.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 44 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 3 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 44 (100.0%) |
+
+| Employers with the most hackers (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+### Changelogs
+
+#### integration (2.4.1)
+
+New changes in integration since 2.4.0:
+
+* Upgrade inventory to 2.0.1.
+* Upgrade inventory-enterprise to 2.0.1.
+* Aggregated Dependabot Changelogs:
+  * Bumps [pytest](https://github.com/pytest-dev/pytest) from 5.3.4 to 5.4.3.
+    - [Release notes](https://github.com/pytest-dev/pytest/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+    - [Commits](https://github.com/pytest-dev/pytest/compare/5.3.4...5.4.3)
+  * Bumps [paramiko](https://github.com/paramiko/paramiko) from 2.6.0 to 2.7.1.
+    - [Release notes](https://github.com/paramiko/paramiko/releases)
+    - [Changelog](https://github.com/paramiko/paramiko/blob/master/NEWS)
+    - [Commits](https://github.com/paramiko/paramiko/compare/2.6.0...2.7.1)
+  * Bumps [pymongo](https://github.com/mongodb/mongo-python-driver) from 3.10.1 to 3.11.0.
+    - [Release notes](https://github.com/mongodb/mongo-python-driver/releases)
+    - [Changelog](https://github.com/mongodb/mongo-python-driver/blob/master/doc/changelog.rst)
+    - [Commits](https://github.com/mongodb/mongo-python-driver/compare/3.10.1...3.11.0)
+  * Bumps [pytest](https://github.com/pytest-dev/pytest) from 5.4.3 to 6.0.1.
+    - [Release notes](https://github.com/pytest-dev/pytest/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+    - [Commits](https://github.com/pytest-dev/pytest/compare/5.4.3...6.0.1)
+  * Bumps [docker-compose](https://github.com/docker/compose) from 1.25.4 to 1.26.0.
+    - [Release notes](https://github.com/docker/compose/releases)
+    - [Changelog](https://github.com/docker/compose/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/docker/compose/compare/1.25.4...1.26.0)
+  * Bumps [requests](https://github.com/psf/requests) from 2.22.0 to 2.23.0.
+    - [Release notes](https://github.com/psf/requests/releases)
+    - [Changelog](https://github.com/psf/requests/blob/master/HISTORY.md)
+    - [Commits](https://github.com/psf/requests/compare/v2.22.0...v2.23.0)
+  * Bumps [pytest-html](https://github.com/pytest-dev/pytest-html) from 2.0.1 to 2.1.1.
+    - [Release notes](https://github.com/pytest-dev/pytest-html/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest-html/blob/master/CHANGES.rst)
+    - [Commits](https://github.com/pytest-dev/pytest-html/compare/v2.0.1...v2.1.1)
+  * Bumps [docker-compose](https://github.com/docker/compose) from 1.26.0 to 1.26.2.
+    - [Release notes](https://github.com/docker/compose/releases)
+    - [Changelog](https://github.com/docker/compose/blob/1.26.2/CHANGELOG.md)
+    - [Commits](https://github.com/docker/compose/compare/1.26.0...1.26.2)
+  * Bumps [requests](https://github.com/psf/requests) from 2.23.0 to 2.24.0.
+    - [Release notes](https://github.com/psf/requests/releases)
+    - [Changelog](https://github.com/psf/requests/blob/master/HISTORY.md)
+    - [Commits](https://github.com/psf/requests/compare/v2.23.0...v2.24.0)
+
+#### inventory-enterprise (2.0.1)
+
+New changes in inventory-enterprise since 2.0.0:
+
+* Bugfix: Rejected devices remain listed in static
+  groups, even after rejection.
+  ([MEN-3793](https://tracker.mender.io/browse/MEN-3793))
+
+
 ## meta-mender warrior-v2020.07
 
 _Released 07.29.2020_
