@@ -1,0 +1,10 @@
+sequenceDiagram
+    User ->> Device: 1. Provisioning
+    Note over User,Device: Transfer CA and client<br>certificates + client private key
+    Device ->> Ambassador: 2. POST /api/devices/v1/authentication/auth_requests
+    Ambassador ->> Device Authentication: 3. PUT /api/management/v2/devauth/devices/{id}/auth/{aid}/status
+    Note over Ambassador,Device Authentication: Verify the client certificate and pre-authorize the device
+    Ambassador ->> Device Authentication: 4. POST /api/devices/v1/authentication/auth_requests
+    Note over Ambassador,Device Authentication: Forward the auth request from the device to the server
+    Device Authentication ->> Ambassador: 5. Return the JWT token
+    Ambassador ->> Device: 4. Return the JWT token

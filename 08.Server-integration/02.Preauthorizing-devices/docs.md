@@ -33,7 +33,7 @@ By default the Mender client uses the [MAC address of the first interface](https
 
 ### Mender client and server connectivity
 
-Once your device boots with a newly provisioned disk image, it should already be correctly connecting to the Mender server. After booting the device you see it pending authorization in the Mender server UI, similar to the following.
+Once your device boots with a newly provisioned disk image, it should already be correctly connecting to the Mender server. After booting the device you should see it pending authorization in the Mender server UI, similar to the following.
 
 ![Mender UI - device pending authorization](device-pending-authorization.png)
 
@@ -42,7 +42,7 @@ If your device does not show as pending authorization in the Mender server once 
 
 ### A CLI environment for your server
 
-In order to access the the Mender server API with the commands below, you need to set up some shell variables in the terminal you will be using.
+In order to access the Mender server API with the commands below, you need to set up some shell variables in the terminal you will be using.
 
 Follow the steps in [set up shell variables for cURL](../01.Using-the-apis/docs.md#set-up-shell-variables-for-curl).
 
@@ -54,9 +54,9 @@ Download the `mender-artifact` tool from the [Downloads section](../../09.Downlo
 
 Before we preauthorize the device, we need its 1) identity and 2) public key. You should already know the identity of your device from the [prerequisite above](#the-identity-of-your-device).
 
-When preauthorizing a device, device keys will be generated on separate system (not on the device), and then provisioned into the device storage. This way we can keep records of the public key of the device and ensure sufficient entropy during key generation, so the resulting keys are secure random.
+When preauthorizing a device, device keys will be generated on a separate system (not on the device), and then provisioned into the device storage. This way we can keep records of the public key of the device and ensure sufficient entropy during key generation, so the resulting keys are secure random.
 
-!!! Make sure the system you generate keys on is adequately secured, as it will also generate the device private keys. You should consider securely deleting (e.g. `shred`) the *private* keys after provisioning the device if you do not truly need a record of them (you can keep the public keys, of course).
+!!! Make sure the system you generate keys on is adequately secured, as it will also generate the device private keys. You should consider securely deleting (e.g. `shred`) the *private* keys after provisioning the device if you do not truly need a record of them (you can keep the public keys).
 
 We will use a script to generate a keypair the Mender client understands; it uses the `openssl` command to generate the keys.
 
@@ -116,11 +116,14 @@ Now open the file `/tmp/devauth.json` and search for a value of your device iden
 
 If you do not get any matches in either files, great! Continue to the [next section](#call-the-preauthorize-api).
 
-If you do have one or more matches you must first delete these existing authentication sets. Find the `id` of the authentication set and use the `DELETE` method towards the service. For example, if you find the identity in `devauth.json` and you see the authentication set has `id` `5ae3a39d3cd4d40001482a95` the run the following command:
+If you do have one or more matches you must first delete these existing authentication sets. Find the `id` of the device, as well as the `id` of the authentication set, and use the `DELETE` method towards the service. For example, if you find the identity in `devauth.json` and you see the device has `id` `5ae3a39d3cd4d40001482a95` and the authentication set has `id` `17a1838b-1b48-470a-925e-0d2bf25bb09f`, then run the following command:
 
 ```bash
-curl -H "Authorization: Bearer $JWT" -X DELETE $MENDER_SERVER_URI/api/management/v2/devauth/devices/5ae3a39d3cd4d40001482a95
+curl -H "Authorization: Bearer $JWT" -X DELETE $MENDER_SERVER_URI/api/management/v2/devauth/devices/5ae3a39d3cd4d40001482a95/auth/17a1838b-1b48-470a-925e-0d2bf25bb09f
 ```
+
+If there is only one authentication set for the preauthorized device, the above
+will also delete the device.
 
 Once this is done, re-run the command above to generate the `devauth.json` file again and verify that your device identity does not exist anywhere.
 
