@@ -121,6 +121,38 @@ If these mismatch, then you need to update `/etc/mender/server.crt` on your clie
 You can do this manually for testing purposes, and you should
 [include the certificates in your Yocto Project build](../../05.System-updates-Yocto-Project/06.Build-for-production/docs.md#including-the-client-certificates).
 
+## Depth zero self-signed certificate, openssl verify rc: 18
+
+The Mender Client detected a self-signed certificate that is the only one in the chain
+and the same certificate can't be located in the trusted store. That means
+the OpenSSL is unable to verify the server identity. You have to either use
+another (not self-signed) certificate or include the certificate in the local trust store.
+
+## End entity key too short, openssl verify rc: 66
+
+The key length for the end entity in the certificate chain is too short.
+This can happen in conjunction with the security level setting in the OpenSSL
+configuration file, and the actual key length. First check if the security level
+setting is what you want it to be. Start by locating the `openssl.cnf` file,
+by running:
+
+```bash
+# openssl version -d
+OPENSSLDIR: "/opt/local/etc/openssl"
+```
+
+In the above example you can find the configuration file
+at `/opt/local/etc/openssl/openssl.cnf` and check the security level:
+
+```bash
+# cat `openssl version -d | sed -e 's/.*"\([^"]*\)".*/\1/'`/openssl.cnf | grep SECLEVEL
+CipherString = DEFAULT@SECLEVEL=2
+```
+A security level of `2` is the default one on many installations nowadays.
+<!--AUTOVERSION: "Starting with the Mender Client %,"/ignore-->
+Starting with the Mender Client 2.4.0, the client uses OpenSSL and it is possible
+that you see this error with shorter keys and certain values of security level.
+You have two choices: make the keys longer, or decrease the security level.
 
 ## The Current Software installed on my device has `_INCONSISTENT` appended to it
 
