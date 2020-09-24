@@ -30,7 +30,7 @@ mender_create_artifact() {
       --output-path ${mender_artifact} \
       --artifact-name ${artifact_name} \
       --device-type ${device_type} \
-      --script my-state-scripts/ArtifactInstall_Enter_00" \
+      --script my-state-scripts/ArtifactInstall_Enter_00"
 
 }
 EOF
