@@ -29,7 +29,7 @@ on your system:
 * Install the following utilities, example for Ubuntu:
 
     ```bash
-    sudo apt install awk curl hexdump jq git
+    sudo apt install gawk curl bsdmainutils jq git
     ```
 
 In addition, add the following lines to `/etc/hosts`:
