@@ -6,12 +6,12 @@ taxonomy:
 ---
 
 Deployments service stores mender artifact in a S3 compatible object store. This
-gives the end use a flexibility in using either an own storage (default setup)
-or 3rd party services like Amazon's S3.
+gives the end user flexibility in using either their own storage proxy (which is the default setup)
+or 3rd party services such as Amazon S3.
 
 ## Minio artifact storage
 
-Minio service is configured to use `/export` directory as its storage location.
+The minio service is configured to use the `/export` directory as its storage location.
 It is possible to define a volume that mounts a local directory into the service
 container:
 
