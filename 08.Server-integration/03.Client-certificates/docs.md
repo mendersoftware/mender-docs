@@ -255,7 +255,7 @@ Next, open `mender.conf` in a text editor, and add the following content:
 ```json
   "HttpsClient": {
     "Certificate": "/data/mender/mender-cert.pem",
-    "Key": "/data/mender/mender-cert.pem"
+    "Key": "/data/mender/mender-cert-private.pem"
   }
 ```
 
@@ -267,7 +267,7 @@ Make sure that the result is valid JSON, in particular that commas appear on eve
   "TenantToken": "TENANT_TOKEN",
   "HttpsClient": {
     "Certificate": "/data/mender/mender-cert.pem",
-    "Key": "/data/mender/mender-cert.pem"
+    "Key": "/data/mender/mender-cert-private.pem"
   }
 }
 ```
