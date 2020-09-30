@@ -23,8 +23,6 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 ## The steps
 
-!!! Steps 1-4 can be skipped when verifying [raw flash](../../../03.Raw-flash/docs.md) integration.
-
 1. As part of the test, we will rename the Linux kernel in one of the partitions to ensure that the correct kernel image is loaded. In your initially booted system, do the following to hide the Linux kernel from the bootloader
 
    ```bash
