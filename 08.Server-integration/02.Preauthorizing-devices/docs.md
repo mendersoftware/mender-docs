@@ -93,7 +93,7 @@ keys-client-generated/
 
 ## Preauthorize your device
 
-Now that we have the device's identity and public key, we will use the Mender server management REST APIs to preauthorize it. The APIs are documented in [API chatper](../../200.API/?target=_blank#management-apis).
+Now that we have the device's identity and public key, we will use the Mender server management REST APIs to preauthorize it. The APIs are documented in [API chapter](../../200.API/?target=_blank#management-apis).
 
 
 ### Make sure there are no existing authentication sets for your device
