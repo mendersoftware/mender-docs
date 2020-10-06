@@ -9,7 +9,7 @@ taxonomy:
 
 Reporting the current software version running on a device can be challenging when mixing full system updates and application updates. On top of this, installing software on different partitions than the root filesystem requires additional flexibility in storing and reporting the current version of software installed into the device.
 
-For these reasons, the Mender Artifact tool supports several options to customize the current software version's reporting, both for full system updates and application updates via Update modules.
+For these reasons, the Mender Artifact tool supports several options to customize the current software version's reporting, both for full system updates and application updates via Update Modules.
 
 The software versioning is stored in the Mender Artifacts as *Provides*, and is automatically reported by the Mender Client as inventory data. See below for further details on how to override the default software versioning keys when generating the Artifacts.
 
@@ -51,7 +51,7 @@ $ mender-artifact write module-image \
     --software-version 1.0.0 \
    ...
 ```
-The command above will generate the following versioning ekey/value pair:
+The command above will generate the following versioning key/value pair:
 
 <!--AUTOVERSION: "rootfs-image.script.version=%"/ignore-->
 ```
