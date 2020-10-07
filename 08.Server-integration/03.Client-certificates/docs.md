@@ -213,7 +213,7 @@ docker run \
   -e MTLS_DEBUG_LOG=true \
   -v $(pwd)/server-cert.pem:/etc/mtls/certs/server/server.crt \
   -v $(pwd)/server-private.key:/etc/mtls/certs/server/server.key \
-  -v $(pwd)/ca-cert.pem:/etc/ssl/certs/ca.crt \
+  -v $(pwd)/ca-cert.pem:/etc/mtls/certs/tenant-ca/tenant.ca.pem \
   registry.mender.io/mendersoftware/mtls-ambassador:master
 ```
 
@@ -255,7 +255,7 @@ Next, open `mender.conf` in a text editor, and add the following content:
 ```json
   "HttpsClient": {
     "Certificate": "/data/mender/mender-cert.pem",
-    "Key": "/data/mender/mender-cert.pem"
+    "Key": "/data/mender/mender-cert-private.pem"
   }
 ```
 
@@ -267,7 +267,7 @@ Make sure that the result is valid JSON, in particular that commas appear on eve
   "TenantToken": "TENANT_TOKEN",
   "HttpsClient": {
     "Certificate": "/data/mender/mender-cert.pem",
-    "Key": "/data/mender/mender-cert.pem"
+    "Key": "/data/mender/mender-cert-private.pem"
   }
 }
 ```

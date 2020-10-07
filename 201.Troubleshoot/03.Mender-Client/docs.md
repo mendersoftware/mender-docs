@@ -17,7 +17,11 @@ journalctl -u mender-client
 ```
 
 Please note that the default log level is Info. It is possible to increase the
-verbosity by editing the Mender systemd unit file and append the `--debug` option.
+verbosity by editing the Mender systemd unit file and add the `--log-level debug` option:
+
+```
+ExecStart=/usr/bin/mender --log-level debug daemon
+```
 
 
 ### Deployment log files
