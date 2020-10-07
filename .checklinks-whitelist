@@ -1,3 +1,7 @@
 {
-    "paths": ["200.API"]
+  "paths": [
+    "200.API",
+    "201.Troubleshoot/04.Mender-Server/docs.md",
+    "07.Server-installation/04.Certificates-and-keys/docs.md"
+  ]
 }
