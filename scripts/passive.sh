@@ -96,7 +96,7 @@ RATE_CUTOFF=${RATE_CUTOFF:-3}
 
 for file in $ARGS; do
 
-  outputf=$(mktemp)
+  outputf=$(mktemp); trap "rm -f $outputf" EXIT
 
   if egrep --ignore-case --with-filename  --line-number --only-matching --color=always \
        "\\b(am|are|were|being|is|been|was|be)\
