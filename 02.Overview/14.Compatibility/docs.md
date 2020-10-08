@@ -10,11 +10,25 @@ This document outlines the compatibility between different versions of Mender co
 ## Backward compatibility policy
 
 <!--AUTOVERSION: "% to %"/ignore-->
-Mender always provides an [upgrade path](../../07.Server-installation/07.Upgrading/docs.md) from the past patch (e.g. 1.2.0 to 1.2.1) and minor version (e.g. 1.1.1 to 1.2.0), and releases follow [Semantic Versioning](http://semver.org/?target=_blank). Note that according to Semantic Versioning, new functionality can be added in minor releases (e.g from 1.2.0 to 1.3.0) so be sure to upgrade components to support the newer functionality before starting to use it.
+Mender always provides an [upgrade
+path](../../07.Server-installation/07.Upgrading/docs.md) from the past patch
+(e.g. 1.2.0 to 1.2.1) and minor version (e.g. 1.1.1 to 1.2.0), and releases
+follow [Semantic Versioning](http://semver.org/?target=_blank). Note that
+according to Semantic Versioning, minor releases add new functionality (e.g from
+1.2.0 to 1.3.0) so be sure to upgrade components to support the newer
+functionality before using it.
 
-For example, when a new [Artifact format](../02.Artifact/docs.md#the-mender-artifact-file-format) version is released, the *new* Mender client would support older versions of the Artifact format. However, the inverse is not true; the Mender client does not support *newer* versions of the Artifact format. So in this case you need to upgrade all Mender clients before starting to use new versions of the Artifact format (and the features it enables).
+For example, when Mender releases a new [Artifact
+format](../02.Artifact/docs.md#the-mender-artifact-file-format) version, the
+*new* Mender client still supports older versions of the Artifact format.
+However, the inverse is not true; the Mender client does not support *newer*
+versions of the Artifact format. So in this case you need to upgrade all Mender
+clients before starting to use new versions of the Artifact format (and the
+features it enables).
 
-As another example, the Mender client supports one version of the server API, while the server can support several API versions. Therefore, the server should always be upgraded before the client.
+As another example, the Mender client supports one version of the server API,
+while the server can support several API versions. Therefore, always update the
+server before the client.
 
 ### Specific versioning criteria
 
@@ -45,8 +59,7 @@ the lists of specific criteria we use for our versioning policy.
 #### Changes resulting in new patch version (m.m.P)
 
 * Any change to our Golang API. For example, the `mender-artifact` library has
-  an API, which is used by some other components, but this API is not considered
-  public
+  an API, used by other components, but this API is not considered public
 
 * It should always be possible to freely upgrade and downgrade between patch
   versions in the same minor series
