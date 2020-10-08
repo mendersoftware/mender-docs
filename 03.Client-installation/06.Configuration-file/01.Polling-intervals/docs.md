@@ -23,12 +23,13 @@ Default value: 28800 seconds (8 hours).
 
 ## How to choose right intervals
 
-The higher the frequency is (i.e. the lower the configuration value), the sooner
-the server will be updated with the client inventory data and the client will
-poll the update install request faster so updates can be deployed more quickly.
+Higher frequency (i.e. the lower the configuration value), the more response the
+Mender client is. Meaning that client inventory data updates more frequently.
+The client also polls for updates at a smaller interval, so that updates are
+deployed faster.
 
-But there is a trade-off; higher polling frequencies will result in more server
-load. If many clients are connected to one server, a high frequency will require
+But there is a trade-off; higher polling frequencies results in more server
+load. If one server has many clients connected, a high frequency will require
 more resources server-side to keep the environment responsive.
 
 !!! If you are using the Mender client in demo mode, either by selecting it when running `mender setup`, or by using the [meta-mender-demo layer](../../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md), the Mender client has more aggressive polling intervals to simplify testing. The defaults noted above do not apply to demo mode and you will see extra network traffic in demo mode.
