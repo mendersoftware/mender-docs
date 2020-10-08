@@ -8,10 +8,14 @@ This sections lists all the configuration options in `mender.conf`.
 
 #### ArtifactVerifyKey
 
-Specifies the location of the public key used to verify signed updates, and also
-enables signed-updates-only mode when it is set. If set the client will reject
-incorrectly signed updates, or updates without a signature. See also the section
-about [signing and verification](../../../06.Artifact-creation/07.Sign-and-verify/docs.md).
+When set enables:
+
+* Verifying updates with the public key provided.
+* All Artifact installs requires a signature. If one is not provided, then the
+  update is rejected (signed-updates-only mode).
+
+See also the section about [signing and
+verification](../../../06.Artifact-creation/07.Sign-and-verify/docs.md).
 
 #### HttpsClient
 
@@ -84,10 +88,10 @@ intervals](../01.Polling-intervals/docs.md).
 
 #### ModuleTimeoutSeconds
 
-An integer that specifies the number of seconds that an update module will be
-allowed to run, before it is considered hanging and killed. The process will
-first be sent a SIGTERM signal, and one minute later, if it has not exited,
-SIGKILL. The default is 4 hours.
+An integer that specifies the number of seconds that an update module is allowed
+to run, before it is considered hanging and killed. The process will first be
+sent a SIGTERM signal, and one minute later, if it has not exited, SIGKILL. The
+default is 4 hours.
 
 #### RetryPollIntervalSeconds
 
@@ -99,45 +103,43 @@ intervals](../01.Polling-intervals/docs.md).
 
 #### RootfsPartA
 
-The Linux device that contains root filesystem A. This is set by the build
-system (ie Yocto or mender-convert) and rarely needs to be manually modified.
+The Linux device that contains root filesystem A. The build system (ie Yocto or
+mender-convert) sets this variable so it is rarely modified manually.
 
 #### RootfsPartB
 
-The Linux device that contains root filesystem B. This is set by the build
-system (ie Yocto or mender-convert) and rarely needs to be manually modified.
+The Linux device that contains root filesystem B. The build system (ie Yocto or
+mender-convert) sets this variable, so it is rarely modified manually.
 
 #### Servers
 
-An array of json objects on the form
-`[{"ServerURL": "https://mender-server.com"},
-{"ServerURL": "https://mender-server2.com"}, ...]`, where `ServerURL` has the
-same interpretation as the root [`ServerURL` attribute](#ServerURL).
-If `Servers` entry is specified, the configuration cannot contain an additional
-`ServerURL` entry in the top level of the json configuration. Upon an unserved
-request (4XX/5XX-response codes) the client will attempt the next server on the
-list in the given order.
+An array of json objects on the form `[{"ServerURL":
+"https://mender-server.com"}, {"ServerURL": "https://mender-server2.com"},
+...]`, where `ServerURL` has the same interpretation as the root [`ServerURL`
+attribute](#ServerURL). If `Servers` entry is set, the configuration cannot
+contain an additional `ServerURL` entry in the top level of the json
+configuration. Upon an unserved request (4XX/5XX-response codes) the client
+attempts the next server on the list in the given order.
 
 #### ServerURL
 
-The server URL which is used as the basis for API requests. This should be set
-to the server that runs the Mender server services. It should include the whole
-URL, including `https://` and a trailing slash.
-*NOTE: This entry conflicts with [`Servers` attribute](#Servers), i.e. only one
-of these entries are accepted.*
+The server URL is the basis for API requests. This needs to point to to the
+server which runs the Mender server services. It should include the whole URL,
+including `https://` and a trailing slash. *NOTE: This entry conflicts with
+[`Servers` attribute](#Servers), i.e. the server only accepts one of these entries.*
 
 #### ServerCertificate
 
 The location of the public certificate of the server, if any. If this
-certificate is missing, or the one presented by the server doesn't match the one
-specified in this setting, the server certificate will be validated using
+certificate is missing, or the one presented by the server does not match the
+one specified in this setting, the server certificate is validated using
 standard certificate trust chains.
 
 #### StateScriptRetryIntervalSeconds
 
-This variable relates to state scripts returning `21` meaning `retry-later`.
-This variable specifies how long time should elapse from the `retry-later`
-until the script is called again.
+This variable relates to state scripts returning `21` - meaning `retry-later`.
+This variable specifies how long time should elapse from the `retry-later` until
+the script is rerun.
 
 Example:
 
@@ -145,8 +147,7 @@ Example:
 "StateScriptRetryIntervalSeconds": 30
 ```
 
-Above will ensure that the state-script is called every 30 seconds as long as
-it is returning `retry-later`.
+If set, the client retries the state-script every 30 seconds as long as it keeps returning `retry-later`.
 
 Default value is: `60`
 
@@ -158,14 +159,14 @@ See also the section about [state scripts](../../../06.Artifact-creation/04.Stat
 
 #### StateScriptRetryTimeoutSeconds
 
-This variable specifies how much time a state script is allowed to consume by
-returning `retry-later`, meaning retry with `StateScriptRetryIntervalSeconds`
-until `StateScriptRetryTimeoutSeconds` is spent.
+This variable specifies how much time a state script can consume by returning
+`retry-later`, meaning retry with `StateScriptRetryIntervalSeconds` for the
+period of `StateScriptRetryTimeoutSeconds`.
 
 You can not wait indefinitely but the `StateScriptRetryTimeoutSeconds` variable
 is only limited by the size of an `int`.
 
-!! It is recommended to set a sane maximum value to handle unexpected behavior, as this could potentially disable OTA capabilities on your device for long periods.
+!! It is recommended to set a sane maximum value to handle unexpected behavior, as this could potentially disable OTA capabilities on your device for long periods of time.
 
 Example:
 
@@ -188,13 +189,13 @@ See also the section about [state scripts](../../../06.Artifact-creation/04.Stat
 #### StateScriptTimeoutSeconds
 
 This variables specifies the timeout value for a state-script while executing,
-measuring time from start of script until a return code is delivered. This is
-to prevent a script "hanging/freezing" or taking too long executing a specific command.
-If the timer elapses the state-script will be "killed" by the Mender client and
-the update marked as failure.
+measuring time from start of script until is returns an exit code. This is to
+prevent a script "hanging/freezing" or taking too long executing a specific
+command. If the timer elapses the state-script will be "killed" by the Mender
+client and the update marked as failure.
 
-The default value is selected to be tolerant of most scripts, but you should
-set it based on the expected execution time of your scripts.
+The default value needs to be tolerant of most scripts, hence you should base it
+on the expected execution time of your scripts.
 
 Default value is: `3600` (60 min)
 
@@ -207,13 +208,13 @@ if using a multi-tenant environment such as [hosted Mender](https://hosted.mende
 
 #### UpdateLogPath
 
-The location where deployment logs will be written. This must be on a persistent
-partition to avoid it losing the logs due to an root filesystem update.
+The location where to store the deployment (update) log. This must be on a
+persistent partition to avoid losing the logs due to a root filesystem update.
 
 #### DeviceTypeFile
 
 The location where to store the device_type. This must be on a persistent
-partition to avoid it accidentally being changed due to an root filesystem
-update. The default location is `/var/lib/mender/device_type`
+partition to avoid it accidentally changing due to a root filesystem update. The
+default location is `/var/lib/mender/device_type`
 
 
