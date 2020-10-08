@@ -18,7 +18,7 @@
 
 
 # List all files not in caught by the blacklist
-files=$(find . -type f -regex './[0-9]+.*\.md' | grep -vFf .passive-blacklist)
+files=$(find . -type f -regex './[0-9]+.*\.md' | grep -vFf .passive-blacklist | sort)
 
 EXIT_CODE=0
 
