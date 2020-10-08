@@ -17,8 +17,8 @@ or [System Updates: Debian family](../../04.System-updates-Debian-family/chapter
 
 ## Install Mender using the Debian package
 
-A Debian package (`.deb`) is provided for convenience to install on e.g Debian,
-Ubuntu or Raspberry Pi OS. A Mender package is provided for the following
+Mender provides a Debian package (`.deb`) for convenience to install on e.g
+Debian, Ubuntu or Raspberry Pi OS. The package supports the following
 architectures:
 
 - armhf (ARM-v6): ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone.
@@ -42,8 +42,8 @@ wget https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/armhf/men
 
 ### Option 1: Attended installation with a wizard
 
-The Mender package comes with a wizard that will let you easily configure and
-customize your installation. This option is recommended for new users.
+The Mender package comes with an install wizard that will let you configure and
+customize your installation. This is the recommended option for new users.
 
 To install and configure Mender run the following command:
 
@@ -52,17 +52,16 @@ To install and configure Mender run the following command:
 sudo dpkg -i mender-client_master-1_armhf.deb
 ```
 
-After the installation wizard is completed, Mender is correctly set up on your
-device and will automatically start in [managed
+After completing the installation wizard, Mender is correctly set up on your
+device and automatically starts in [managed
 mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation). Your
 device is now ready to authenticate with the server and start receiving updates.
 
 
 ### Option 2: Unattended installation
 
-Alternatively, the package can be installed non-interactively,
-suitable for scripts or other situations where no user
-input is desired.
+Alternatively, install the package non-interactively. This is suitable for
+scripts or other situations where no user input is desired.
 
 The setup is different depending on your server configuration and the most
 common cases are shown below. Use `mender setup --help` to learn about all
