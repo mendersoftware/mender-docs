@@ -8,11 +8,10 @@ This sections lists all the configuration options in `mender.conf`.
 
 #### ArtifactVerifyKey
 
-When set enables:
+When set, the Mender client verifies the following:
 
-* Verifying updates with the public key provided.
-* All Artifact installs requires a signature. If one is not provided, then the
-  update is rejected (signed-updates-only mode).
+* All Artifact installs contain  a signature. If a signature is not provided, then the client rejects the update.
+* The provided public key verifies the signature of the update.
 
 See also the section about [signing and
 verification](../../../06.Artifact-creation/07.Sign-and-verify/docs.md).
@@ -89,9 +88,9 @@ intervals](../01.Polling-intervals/docs.md).
 #### ModuleTimeoutSeconds
 
 An integer that specifies the number of seconds that an update module is allowed
-to run, before it is considered hanging and killed. The process will first be
-sent a SIGTERM signal, and one minute later, if it has not exited, SIGKILL. The
-default is 4 hours.
+to run, before it is considered hung and killed. The process will first be sent
+a SIGTERM signal, and one minute later, if it has not exited, a SIGKILL signal
+is sent. The default is 4 hours.
 
 #### RetryPollIntervalSeconds
 

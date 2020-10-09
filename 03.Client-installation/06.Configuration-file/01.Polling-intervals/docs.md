@@ -23,10 +23,9 @@ Default value: 28800 seconds (8 hours).
 
 ## How to choose right intervals
 
-Higher frequency (i.e. the lower the configuration value), the more response the
-Mender client is. Meaning that client inventory data updates more frequently.
-The client also polls for updates at a smaller interval, so that updates are
-deployed faster.
+The Mender client is more responsive with higher frequency intervals. Meaning
+that the client inventory data updates more frequently. The client also polls
+for updates at a smaller interval, leading to faster deployments.
 
 But there is a trade-off; higher polling frequencies results in more server
 load. If one server has many clients connected, a high frequency will require
