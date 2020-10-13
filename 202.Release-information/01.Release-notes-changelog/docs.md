@@ -4,6 +4,79 @@ taxonomy:
     category: docs
 ---
 
+## meta-mender dunfell-v2020.10
+
+_Released 10.13.2020_
+
+### Statistics
+
+A total of 334 lines added, 431 removed (delta -97)
+
+| Developers with the most changesets | |
+|---|---|
+| Drew Moseley | 17 (53.1%) |
+| Kristian Amlie | 8 (25.0%) |
+| Lluis Campos | 2 (6.2%) |
+| Ole Petter Orhagen | 2 (6.2%) |
+| Fabio Tranchitella | 2 (6.2%) |
+| Peter Grzybowski | 1 (3.1%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Drew Moseley | 315 (65.9%) |
+| Kristian Amlie | 129 (27.0%) |
+| Ole Petter Orhagen | 15 (3.1%) |
+| Fabio Tranchitella | 12 (2.5%) |
+| Lluis Campos | 6 (1.3%) |
+| Peter Grzybowski | 1 (0.2%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Drew Moseley | 114 (26.5%) |
+
+| Developers with the most signoffs (total 5) | |
+|---|---|
+| Lluis Campos | 5 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 32 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 478 (100.0%) |
+
+| Employers with the most signoffs (total 5) | |
+|---|---|
+| Northern.tech | 5 (100.0%) |
+
+| Employers with the most hackers (total 6) | |
+|---|---|
+| Northern.tech | 6 (100.0%) |
+
+### Changelogs
+
+#### meta-mender (dunfell-v2020.10)
+
+New changes in meta-mender since dunfell-v2020.09:
+
+* Disable filesystem journal on read-only-rootfs, which
+  sometimes causes unstable rootfs checksum together with fsck.
+  ([MEN-3912](https://tracker.mender.io/browse/MEN-3912))
+* mender: Make Mender settings conditional.
+* meta-mender-demo: Make Mender settings conditional.
+* meta-mender-raspberrypi-demo: Make Mender settings conditional.
+* meta-mender-qemu: Make Mender settings conditional.
+* tests/mender: Make Mender settings conditional.
+* mender-grub: Rework to use conditional includes.
+* mender-uboot: Conditionally include settings.
+* mender: Only include full mender-setup if features are enabled.
+* mender-binary-delta: Only add SRC_URI entries for existing binaries.
+* grub-mender-grubenv: Cleanup PROVIDES and RPROVIDES.
+* mender: Switch from include to require.
+* Fix PACKAGECONFIG not propagating RDEPENDS properly.
+
+
 ## meta-mender zeus-v2020.10
 
 _Released 10.05.2020_
