@@ -20,10 +20,14 @@ verification](../../../06.Artifact-creation/07.Sign-and-verify/docs.md).
 
 Allows you to configure the certificate, private key and, SSL Engine id to use
 during the SSL handshake. If you provide the certificate and private key
-as locally accessible files you don't have to specify SSLEngine.
+as locally accessible files you don't have to specify
+<!--AUTOVERSION: "docs/man%"/ignore-->
+[SSLEngine](https://www.openssl.org/docs/man1.1.1/man1/engine.html).
 If you want to use a Hardware Security Module (HSM) you can provide the private
 key as a [PKCS#11 URI](https://tools.ietf.org/html/rfc7512) and in that case
-you must specify the `SSLEngine`.
+you must also specify the `SSLEngine`. The client will use this key for signing
+the authorization requests unless you provide `Security.AuthPrivateKey`
+(see below).
 
 ##### Certificate
 
@@ -109,6 +113,23 @@ mender-convert) sets this variable so it is rarely modified manually.
 
 The Linux device that contains root filesystem B. The build system (ie Yocto or
 mender-convert) sets this variable, so it is rarely modified manually.
+
+#### Security
+
+Allows you to specify the basic security options, `AuthPrivateKey`
+and `SSLEngine`, which you can use for signing of authentication requests.
+If you specify both `Security.AuthPrivateKey` and `HttpsClient.Key`
+the former takes precedence.
+
+##### AuthPrivateKey
+
+A path to the file in pem format holding the private key, or a
+[PKCS#11 URI](https://tools.ietf.org/html/rfc7512).
+
+##### SSLEngine
+
+<!--AUTOVERSION: "docs/man%"/ignore-->
+The [SSLEngine](https://www.openssl.org/docs/man1.1.1/man1/engine.html) to use.
 
 #### Servers
 
