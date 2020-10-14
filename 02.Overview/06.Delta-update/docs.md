@@ -20,14 +20,16 @@ signature support included.
 ![Delta update generation](image0.png)
 
 
-Installation of Delta updates is in general faster because only the changed
-blocks are written instead of the whole update.
+Delta updates are faster to install, as they only write the changed blocks to
+storage, as opposed to a regular update, which writes all bytes, even if they
+have not changed on the storage medium.
+
 
 When a device checks for an update, the Mender server will automatically assign
-the right Artifact to the device based on the version the device is running
-already. It will select a Delta update if available (i.e. has been generated)
-for the Release the device is running, but also supports falling back to the
-full image if no Delta update is available for a given device.
+the right Artifact to the device based on the version the device is already
+running. It selects a Delta update if available for the Release the device is
+running, but also supports falling back to the full image if no Delta update is
+available for a given device.
 
 ![Delta update assignment](image1.png)
 

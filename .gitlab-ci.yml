@@ -41,6 +41,12 @@ test:internal-links:
     - npm install
     - ./checklinks --color --verbose
 
+test:passive-voice:
+    stage: test
+    image: ubuntu
+    script:
+        - bash ./scripts/run-passive.sh
+
 test:latest_versions:
   stage: test
   image: alpine

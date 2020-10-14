@@ -68,18 +68,43 @@ wed|wept|wound|won|\
 withheld|withstood|wrung|\
 written"
 
-if [ "$1" = "" ]; then
- echo "usage: `basename $0` <file> ..."
- exit
-fi
+usage() {
+  echo "usage: `basename $0` <file> ..."
+  exit
+}
+
+ARGS=""
+while (( "$#")); do
+  case "$1" in
+    "")
+      usage
+      ;;
+    -h | --help)
+      usage
+      ;;
+    --verbose)
+      VERBOSE=true
+      ;;
+    *)
+      ARGS="$ARGS $1"
+      ;;
+  esac
+  shift
+done
 
 RATE_CUTOFF=${RATE_CUTOFF:-3}
 
-for file in $*; do
+for file in $ARGS; do
+
+  outputf=$(mktemp); trap "rm -f $outputf" EXIT
 
   if egrep --ignore-case --with-filename  --line-number --only-matching --color=always \
        "\\b(am|are|were|being|is|been|was|be)\
-\\b[ ]*(\w+ed|($irregulars))\\b" $*; then
+\\b[ ]*(\w+ed|($irregulars))\\b" $file >$outputf; then
+
+    if [[ -n "$VERBOSE" ]]; then
+      cat $outputf
+    fi
 
     N_LINES=$(wc --lines $file | cut -f1 -d ' ')
 
@@ -91,10 +116,13 @@ for file in $*; do
 
     filename=${file#*mender-docs}
     if (( ${PERCENTAGE} > ${RATE_CUTOFF} )); then
+      cat $outputf
       echo -e "${RED}[FAIL] The passive rate for ${filename}:\n\tpassive-words/total-lines = ${N_PASSIVE}/${N_LINES} ~= ${PERCENTAGE} - and thus above the cut-off rate: ${RATE_CUTOFF}${NC}"
       exit 1
     else
-      echo -e "${GREEN}[OK] The passive rate for ${filename}:\n\tpassive-words/total-lines = ${N_PASSIVE}/${N_LINES} ~= ${PERCENTAGE} - and thus below the cut-off rate: ${RATE_CUTOFF}${NC}"
+      if [[ -n "$VERBOSE" ]]; then
+        echo -e "${GREEN}[OK] The passive rate for ${filename}:\n\tpassive-words/total-lines = ${N_PASSIVE}/${N_LINES} ~= ${PERCENTAGE} - and thus below the cut-off rate: ${RATE_CUTOFF}${NC}"
+      fi
     fi
 
   fi
