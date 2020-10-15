@@ -52,6 +52,136 @@ These can sometimes happen due to device decommissioning.
 You can find instructions on how to clean up the deviceauth database
 in the [Troubleshoot](../../201.Troubleshoot/04.Mender-Server/docs.md) chapter.
 
+## Upgrade to MongoDB 4.4
+
+Mender Server 2.4.\* uses MongoDB 3.6 and Mender Server 2.5.\* uses MongoDB 4.4.
+Before upgrading Mender Server you must upgrade MongoDB from version 3.6 to version 4.4.
+It is not possible to upgrade MongoDB directly from version 3.6 to version 4.4.
+Instead, you should upgrade MongoDB from 3.6 to 4.0, then from 4.0 to 4.2
+and finally from 4.2 to 4.4.
+
+MongoDB provides instruction on how to perform the upgrades:
+* [upgrade MongoDB to 4.0](https://docs.mongodb.com/manual/release-notes/4.0/#upgrade-procedures)
+* [upgrade MongoDB to 4.2](https://docs.mongodb.com/manual/release-notes/4.2/#upgrade-procedures)
+* [upgrade MongoDB to 4.4](https://docs.mongodb.com/manual/release-notes/4.4/#upgrade-procedures)
+
+If you need more guidance please look at the description below.
+
+### Upgrading MongoDB from version 3.6 to version 4.0
+
+To upgrade MongoDB from version 3.6 to version 4.0 check the `featureCompatibilityVersion` parameter.
+The MongoDB 3.6 instance must have `featureCompatibilityVersion` set to `3.6`.
+
+To check `featureCompatibilityVersion`:
+```
+db.adminCommand( { getParameter: 1, featureCompatibilityVersion: 1 } )
+```
+
+If you are using docker-compose based setup you can check it by running docker exec command:
+```bash
+docker exec -it menderproduction_mender-mongo_1 mongo --eval "db.adminCommand( { getParameter: 1, featureCompatibilityVersion: 1 } )"
+```
+The operation should return a result that includes
+> ```
+> { "featureCompatibilityVersion" : { "version" : "3.6" }, "ok" : 1 }
+> ```
+
+Now you can upgrade MongoDB version by changing the mender-mongo image from `mongo:3.6` to `mongo:4.0` in `docker-compose.yml`.
+The change should be similar to this:
+
+> ```
+> diff --git a/docker-compose.yml b/docker-compose.yml
+> index 7a20e75..34746e9 100644
+> --- a/docker-compose.yml
+> +++ b/docker-compose.yml
+> @@ -143,7 +143,7 @@ services:
+>              - mender-mongo
+>
+>      mender-mongo:
+> -        image: mongo:3.6
+> +        image: mongo:4.0
+>          extends:
+>              file: common.yml
+>              service: mender-base
+> ```
+
+Restart your production environment.
+To restart your production you can follow instructions
+from [Starting upgraded environment](#starting-upgraded-environment) section.
+
+The newly started environment should be running mongo:4.0.
+
+### Upgrading MongoDB from version 4.0 to version 4.2
+
+To perform the MongoDB upgrade from version 4.0 to version 4.2
+you need to update `featureCompatibilityVersion` first.
+If you are using docker-compose based setup to update `featureCompatibilityVersion`, run the following command:
+```bash
+docker exec -it menderproduction_mender-mongo_1 mongo --eval "db.adminCommand( { setFeatureCompatibilityVersion: \"4.0\" } )"
+```
+
+The operation should return a result that includes
+> ```
+> { "ok" : 1 }
+> ```
+
+You can verify the `featureCompatibilityVersion` has been set by running the command:
+```bash
+docker exec -it menderproduction_mender-mongo_1 mongo --eval "db.adminCommand( { getParameter: 1, featureCompatibilityVersion: 1 } )"
+```
+The operation should return a result that includes
+> ```
+> { "featureCompatibilityVersion" : { "version" : "4.0" }, "ok" : 1 }
+> ```
+
+Upgrade MongoDB version by changing the mender-mongo image from `mongo:4.0` to `mongo:4.2` in docker-compose.yml
+and restart your production environment.
+
+The newly started environment should be running `mongo:4.2`.
+
+### Upgrading MongoDB from version 4.2 to version 4.4
+
+Like previously, to perform the MongoDB upgrade from version 4.2 to version 4.4
+you need to update `featureCompatibilityVersion` first.
+To update `featureCompatibilityVersion`, run the following command:
+```bash
+docker exec -it menderproduction_mender-mongo_1 mongo --eval "db.adminCommand( { setFeatureCompatibilityVersion: \"4.2\" } )"
+```
+
+The operation should return a result that includes
+> ```
+> { "ok" : 1 }
+> ```
+
+You can verify the `featureCompatibilityVersion` has been set by running then command:
+```bash
+docker exec -it menderproduction_mender-mongo_1 mongo --eval "db.adminCommand( { getParameter: 1, featureCompatibilityVersion: 1 } )"
+```
+The operation should return a result that includes
+> ```
+> { "featureCompatibilityVersion" : { "version" : "4.2" }, "ok" : 1 }
+> ```
+
+Upgrade MongoDB version by changing the mender-mongo image from `mongo:4.2` to `mongo:4.4` in docker-compose.yml
+and restart your production environment.
+
+The newly started environment should be running mongo:4.4.
+The last step is to update `featureCompatibilityVersion` to 4.4
+```bash
+docker exec -it menderproduction_mender-mongo_1 mongo --eval "db.adminCommand( { setFeatureCompatibilityVersion: \"4.4\" } )"
+```
+
+As previously you can verify the `featureCompatibilityVersion` has been set by running the command:
+```bash
+docker exec -it menderproduction_mender-mongo_1 mongo --eval "db.adminCommand( { getParameter: 1, featureCompatibilityVersion: 1 } )"
+```
+The operation should return a result that includes
+> ```
+> { "featureCompatibilityVersion" : { "version" : "4.4" }, "ok" : 1 }
+> ```
+
+Now you are ready to continue with Mender Server upgrade procedure.
+
 ## Updating your local repository
 
 The first step is to upgrade your local repository by pulling changes from the
