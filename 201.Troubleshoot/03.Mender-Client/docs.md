@@ -171,7 +171,7 @@ When deploying an update with the Mender client, you see a log message similar t
 ERRO[0001] update install failed: failed to read and install update: reader: unsupported version: 2  module=state
 ```
 
-The problem here is most likely that you have built [a new version of the Artifact format](../../02.Overview/02.Artifact/docs.md#versions)
+The problem here is most likely that you have built [a new version of the Artifact format](../../02.Overview/02.Artifact/docs.md#artifact-format-versions)
 that your Mender Client does not support. It could also be that you are building a very old version of the
 Artifact format that your new version of the Mender Client does not support.
 
