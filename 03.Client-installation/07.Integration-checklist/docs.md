@@ -31,7 +31,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
    ! Note that `uImage` should be updated to match the kernel image type for your platform.
 
-2. Verify that the two commands `fw_printenv` and `fw_setenv` are in the path and are executable. Calling them with no arguments will should give a variable listing and an error about missing variable name, respectively. This verifies that the bootloader environment tools are present on the device.
+2. Verify that the two commands `fw_printenv` and `fw_setenv` are in the path and are executable. Calling them with no arguments should give a variable listing and an error about missing variable name, respectively. This verifies that the bootloader environment tools are present on the device.
 
 3. Now we will verify that Mender is running. Run the following:
 
@@ -82,14 +82,14 @@ This checklist will verify some key functionality aspects of the Mender integrat
     - When using SD card or eMMC storage:
     ```bash
     mount /dev/mmcblk2 /mnt
-    mv /boot/uImage.testing-backup /boot/uImage
+    mv /mnt/boot/uImage.testing-backup /mnt/boot/uImage
     umount /mnt
     ```
 
     - When using raw flash storage:
     ```bash
-    mount /dev/ubi0_1 /mnt
-    mv /boot/uImage.testing-backup /boot/uImage
+    mount /dev/ubi0_0 /mnt
+    mv /mnt/boot/uImage.testing-backup /mnt/boot/uImage
     umount /mnt
     ```
 
