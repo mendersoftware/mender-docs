@@ -4,22 +4,22 @@ taxonomy:
     category: docs
 ---
 
-In order to ensure that the necessary components for Mender have been integrated correctly, use this checklist to verify each of them in turn. Use this when all components have been built successfully, and the device has booted correctly.
+In order to ensure that the necessary components for Mender are properly integrated, you should use this checklist to verify each of them in turn. You can run this checklist after you have successfully built all components, and correctly booted the device.
 
 !!! This checklist applies if you are using U-Boot or GRUB.
 
-## What is verified
+## Introduction
 
 This checklist will verify some key functionality aspects of the Mender integration. It will verify that:
 
 1. Bootloader environment tools are present on the device
 2. the bootloader and the environment tools agree on the format for the environment.
-3. the correct kernel is loaded from partition A
-4. the correct kernel is loaded from partition B
-5. the correct rootfs is mounted when partition A is active
-6. the correct rootfs is mounted when partition B is active
+3. the bootloader loads the correct kernel from partition A
+4. the bootloader loads the correct kernel from partition B
+5. the system mounts the correct rootfs when partition A is active
+6. the system mounts the correct rootfs when partition B is active
 7. rollback works
-8. the Mender daemon is started as a service
+8. the Mender service launches properly
 
 ## The steps
 
@@ -29,7 +29,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
    mv /boot/uImage /boot/uImage.testing-backup
    ```
 
-   ! Note that `uImage` should be updated to match the kernel image type for your platform.
+   ! Note that you should update `uImage` to match the kernel image type for your platform.
 
 2. Verify that the two commands `fw_printenv` and `fw_setenv` are in the path and are executable. Calling them with no arguments should give a variable listing and an error about missing variable name, respectively. This verifies that the bootloader environment tools are present on the device.
 
@@ -39,9 +39,9 @@ This checklist will verify some key functionality aspects of the Mender integrat
    pidof mender
    ```
 
-   If Mender has been enabled as a daemon, it should return a PID. If not, it should return nothing. This verifies that Mender is started as a service if applicable.
+   If the Mender daemon has been enabled, it should return a PID. If not, it should return nothing. This verifies that the Mender service is started, if applicable.
 
-4. Now we will look at which rootfs is mounted. Run `mount` with no arguments. The file system mounted as root (signified by the `<device> on /` entry) should be:
+4. Now we will look at which filesystem is mounted as the rootfs device. Run `mount` with no arguments. The file system mounted as root (signified by the `<device> on /` entry) should be:
 
    - `/dev/mmcblk0p2` when using SD card or eMMC storage.
    - `ubi0_0` when using raw flash storage.
@@ -53,7 +53,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
    stat -c %t%02T /dev/mmcblk0p2
    ```
 
-   The output of the two commands should be identical. This verifies that the correct rootfs is mounted when partition A is active.
+   The output of the two commands should be identical. This verifies that the correct partition is mounted as the root device when partition A is active.
 
    ! If you have selected a different device using either `MENDER_ROOTFS_PART_A` or `MENDER_STORAGE_DEVICE` in the Yocto configuration, the `/dev/mmcblk0p2` (or `ubi0_0`) entry may be different, but it should always correspond to the value in `MENDER_ROOTFS_PART_A`.
 
@@ -107,7 +107,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
     fw_setenv mender_boot_part_hex 0
     ```
 
-    Once the commands above have been run, we need to tell Mender that there is an upgrade available:
+    Once you have run the above commands, we need to tell Mender that there is an upgrade available:
 
     ```bash
     fw_setenv upgrade_available 1
@@ -123,11 +123,11 @@ This checklist will verify some key functionality aspects of the Mender integrat
     fw_printenv bootcount
     ```
 
-    This value should be returned as 1. This step verifies that the bootloader and the bootloader environment tools can properly communicate and agree on the format of the bootloader environment.
+    This should return the value 1. This step verifies that the bootloader and the bootloader environment tools can properly communicate and agree on the format of the bootloader environment.
 
 11. Repeat step 9.
 
-12. Reboot, but pull the power plug before the system has had time to finish booting. Mender will auto-commit the update if it is enabled as a service, which will defeat the purpose of this test, so it's important that the power is cut after the kernel has started booting, but before Mender has started.
+12. Reboot, but pull the power plug before the system has had time to finish booting. The Mender will service will auto-commit the update, which will defeat the purpose of this test. It is important to reboot the system after the kernel has started booting, but before Mender has started.
 
 13. Restore power, boot, and repeat step 4, again with `/dev/mmcblk0p3` (or `ub0_1`). The detected device should **not** be `/dev/mmcblk0p2` (`ubi0_0`), this indicates that the rollback has not worked. Otherwise this verifies that rollback, indeed, has worked.
 
