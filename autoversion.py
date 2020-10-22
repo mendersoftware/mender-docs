@@ -353,6 +353,10 @@ def main():
         help="Integration version to update to. Depends on --integration-dir option",
     )
     parser.add_argument(
+        "--mender-client-version",
+        help="Mender client version for client only releases to update to",
+    )
+    parser.add_argument(
         "--mender-convert-version", help="Mender-convert version to update to"
     )
     parser.add_argument(
@@ -380,6 +384,13 @@ def main():
                 )
             INTEGRATION_REPO = args.integration_dir
             INTEGRATION_VERSION = args.integration_version
+
+        if args.mender_client_version is not None:
+            if args.integration_version is not None:
+                raise Exception(
+                    "--mender-client-version and --integration-version are mutually exclusive"
+                )
+            VERSION_CACHE["mender"] = args.mender_client_version
 
         if args.mender_convert_version is not None:
             VERSION_CACHE["mender-convert"] = args.mender_convert_version
