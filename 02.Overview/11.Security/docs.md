@@ -5,9 +5,10 @@ taxonomy:
 ---
 
 Delivering updates securely, maintaining the identity of the communication
-endpoints, and ensuring message authentication is critical to a secure software
-update. This section gives a brief overview of how Mender ensures a secure
-end-to-end update process.
+endpoints, ensuring message authentication, together with integration
+with hardware security solutions are critical factors in a secure
+software update. This section gives a brief overview of how Mender
+ensures a secure end-to-end update process.
 
 ## Server authentication
 
@@ -76,4 +77,34 @@ time of one week.
 
 As an additional layer of security, Mender Enterprise supports [Role Based Access
 Control](../12.Role.Based.Access.Control/docs.md) to limit authorization of users.
+
+## Hardware security
+
+The Mender client can utilize private keys stored in [Hardware Security
+Modules (HSM)](https://en.wikipedia.org/wiki/Hardware_security_module) or in
+[Trusted Platform Modules (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module).
+This is an additional layer of security which eliminates storage of private keys
+(secrets) as plain text files on the device, making it harder for an attacker
+to gain access to keys to impersonate devices.
+
+<!--AUTOVERSION: "Starting with the Mender Client %,"/ignore-->
+Starting with the Mender Client 2.4.0, the client uses OpenSSL for cryptographic
+operations, which enables usage of
+<!--AUTOVERSION: "www.openssl.org/docs/man%"/ignore-->
+[OpenSSL Engine's](https://www.openssl.org/docs/man1.1.1/man1/engine.html) as
+abstractions for HSM.
+
+For the Mender client to be able to utilize an HSM, OpenSSL must first be
+configured appropriately, and this is normally vendor specific. Please see
+the following tutorial for vendor specific instructions:
+- [Secure IoT with Mender and NXP EdgeLock SE050](https://hub.mender.io/t/secure-iot-with-mender-and-nxp-edgelock-se050/2744)
+
+The Mender client supports [PKCS#11](https://tools.ietf.org/html/rfc7512), or
+any other HSM access methods that are supported by
+<!--AUTOVERSION: "www.openssl.org/docs/man%"/ignore-->
+[OpenSSL Engine's](https://www.openssl.org/docs/man1.1.1/man1/engine.html). See
+[Mender client configuration sections](https://docs.mender.io/client-installation/configuration-file/configuration-options#httpsclient) for additional details.
+
+Currently, Mender supports hardware security engines for SSL handshake, mTLS,
+and authentication request signing.
 
