@@ -5,7 +5,7 @@ taxonomy:
     label: tutorial
 ---
 
-After you have obtained a Mender disk image, the image needs to be written to the storage of the
+After you have obtained a Mender disk image, you need to write it to the storage of the
 device.
 
 ## Prerequisites
@@ -37,7 +37,7 @@ unzip <IMAGE-NAME>.img.zip
 In this initial provisioning you will flash and overwrite everything on the given device storage.
 
 There are several methods to flash storage, and the simplest case is if your device uses an SD
-card. Currently, this is the approach we assume you take here, but the image file can be used to
+card. Currently, this is the approach we assume you take here, but you can use the image file to
 flash any block device.
 
 
@@ -52,7 +52,7 @@ You can write the image to the SD card using the following command:
 sudo dd if=<PATH-TO-IMAGE>.img of=<DEVICE> bs=4M && sync
 ```
 
-`<DEVICE>` depends on where your SD card is placed. Normally this would be something like
+`<DEVICE>` depends on where you placed your SD card. Normally this would be something like
 `/dev/mmcblk0` or `/dev/sdb`.  If you are unsure how to find the correct device, the Raspberry Pi
 Foundation provides some nice references that can help you for
 [Linux](https://www.raspberrypi.org/documentation/installation/installing-images/linux.md?target=_blank),

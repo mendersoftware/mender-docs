@@ -7,7 +7,7 @@ taxonomy:
 
 ## General requirements
 
-Below are a number of requirements that must be met in order to use Mender.
+Below are a number of general requirements for using Mender.
 
 ### Device capacity
 The client binaries are about 7 MB in size, or about 4 MB when debug symbols are
@@ -24,25 +24,25 @@ To support atomic rootfs rollback, Mender integrates with the bootloader of the 
 Mender supports [GRUB](https://www.gnu.org/software/grub/?target=_blank) and
 [U-Boot](http://www.denx.de/wiki/U-Boot?target=_blank). Some boards may require a board integration;
 visit [Mender Hub](https://hub.mender.io/?target=_blank) to find board integrations that community
-members have submitted. If no board integration is available for your board, it is recommended to
-try without any integration, as GRUB may work without additional configuration on both ARM and x86.
+members have submitted. If no board integration is available for your board, we recommend you
+try it without any integration, as GRUB may work without additional configuration on both ARM and x86.
 
 
 ### Partition layout
 
 In order to support robust rollback, Mender requires the device to have a certain partition layout.
-At least four different partitions are needed:
+You need at least four different partitions:
 * one boot partition, containing the U-Boot bootloader and its environment
-* two partitions for storing the root file system and kernel. The kernel image file, zImage, and any device tree binary should be stored in directory `/boot`.
+* two partitions for storing the root file system and kernel. The kernel image file, zImage, and any device tree binary should go into the `/boot` directory.
 * one for persistent data
 
-One of the rootfs and kernel partitions will be marked as the *active* partition, from which the kernel and rootfs will be booted.
+One of the rootfs and kernel partitions will be the *active* partition, from which the kernel and rootfs will boot.
 The other, called the *inactive* partition, will be used by the update mechanism to write the updated image.
-After an update their roles are swapped.
+After an update they switch roles.
 
-The persistent data partition stores data that needs to be preserved through an update.
+The persistent data partition stores data that must persist through an update.
 
-A sample partition layout is shown below:
+Below is a sample partition layout:
 
 ![Mender client partition layout](mender_client_partition_layout.png)
 
@@ -67,8 +67,8 @@ will only be relevant on the system boots before the RTC is properly
 initialized.
 
 Before the time is set properly, either by systemd or the RTC, the time will
-default to the [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time?target=_blank).  Note
-that the Mender client connections will be rejected by the server until this
+default to the [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time?target=_blank). Note
+that the Mender server will reject client connections until this
 situation is resolved.
 
 
