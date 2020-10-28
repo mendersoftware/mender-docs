@@ -69,7 +69,7 @@ test:latest_versions:
     - git clone https://github.com/mendersoftware/mender $MENDER_CLIENT_DIR
     - export INTEGRATION_VERSION=origin/staging
   script:
-    - export MENDER_CLIENT_VERSION=$(cd $MENDER_CLIENT_DIR ; git git tag | egrep -e '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V -r | head -n1)
+    - export MENDER_CLIENT_VERSION=$(cd $MENDER_CLIENT_DIR ; git tag | egrep -e '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V -r | head -n1)
     - export MENDER_CONVERT_VERSION=$(cd $MENDER_CONVERT_DIR ; git tag | egrep -e '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V -r | head -n1)
     - export MENDER_BINARY_DELTA_VERSION=$(cd $MENDER_BINARY_DELTA_DIR ; git tag | egrep -e '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V -r | head -n1)
     - ./autoversion.py
