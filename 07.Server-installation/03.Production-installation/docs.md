@@ -218,6 +218,12 @@ necessary Docker images:
 
 ! Using the `run` helper script may fail when local user has insufficient permissions to reach a local docker daemon. Make sure that the Docker installation was completed successfully and the user has sufficient permissions (typically the user must be a member of the `docker` group).
 
+!! Please note that Docker Hub enforced limits on pulls originating
+!! from anonymous users to 100 per 6 hours (see: [Docker pricing](https://www.docker.com/pricing)).
+!! This means that, for reasons completely independent from Mender,
+!! the above step may fail and you may have to retry after some time.
+
+
 ### Certificates and keys
 
 First, set the public domain name of your server (the URL your devices will reach your Mender server on):
