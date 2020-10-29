@@ -90,6 +90,11 @@ similar output to the following:
 >****************************************
 >```
 
+!! Please note that Docker Hub enforced limits on pulls originating
+!! from anonymous users to 100 per 6 hours (see: [Docker pricing](https://www.docker.com/pricing)).
+!! This means that, for reasons completely independent from Mender,
+!! the above step may fail and you may have to retry after some time.
+
 The script created a demo user, and you can login to the Mender UI by visiting
 [https://localhost](https://localhost?target=_blank).
 
