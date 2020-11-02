@@ -107,7 +107,7 @@ Additionally, to track applications installed on other partitions than the rootf
 
 <!--AUTOVERSION: "software-version %"/ignore-->
 ```bash
-mender-artifact write rootfs-image \
+mender-artifact write module-image \
     -T script \
     --software-filesystem data-partition \
     --software-name myapp \
