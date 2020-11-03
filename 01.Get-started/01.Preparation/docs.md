@@ -24,17 +24,19 @@ To get started testing Mender, create a hosted Mender account by
 With an hosted Mender account in place, it is time to prepare a device to
 connect to hosted Mender.
 
-Chose one of the next options below, based on if you have a Raspberry Pi
-available or not:
+You can connect almost any device and Linux OS with Mender, but to make things simple 
+during evaluation we recommend you use a Raspberry Pi as a test device.
+You can learn how to integrate other devices and OSes later.
 
-1. [Prepare a Raspberry Pi device](01.Prepare-a-Raspberry-Pi-device/docs.md) (**recommended**)
+
+* [To prepare a Raspberry Pi device](01.Prepare-a-Raspberry-Pi-device/docs.md) (**recommended**)
 
   Due to the popularity of Raspberry Pi devices our reference environment is
   optimized for evaluation on this specific device using Raspberry Pi OS
   (previously called Raspbian) as operating system. This environment should
   already be familiar to most people.
 
-1. [Prepare a virtual device](02.Prepare-a-virtual-device/docs.md)
+* [To prepare a virtual device](02.Prepare-a-virtual-device/docs.md)
 
   If you do not have a Raspberry Pi available, you can use a virtual device to
   evaluate key Mender use cases.
@@ -42,6 +44,19 @@ available or not:
   This tutorial provides the steps for preparing your workstation to be able to run
   a virtual ([QEMU process emulator](https://www.qemu.org/?target=_blank)) device with Mender
   integrated.
+
+
+### Connecting other devices
+
+For other device types and OSes, we provide documentation to integrate with Mender.
+
+* Learn how to integrate devices with [Debian family](../../04.System-updates-Debian-family) or 
+  [Yocto OSes](../../05.System-updates-Yocto-Project)
+* Or visit [Board Integrations](https://hub.mender.io/c/board-integrations?target=_blank) on 
+  Mender Hub and search for your device and OS.
+
+!!! We recommend running through the Get Started guide with a Raspberry Pi or virtual device to 
+!!! learn the basics before diving into other board integrations.
 
 ## Have any questions?
 
