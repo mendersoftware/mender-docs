@@ -61,7 +61,7 @@ rootfs-image.version=1.0.0
 <!--AUTOVERSION: "field has been updated to `%`"/ignore-->
 We can see that the `rootfs-image.version` field has been updated to `1.0.0`.
 
-TODO Screenshots
+![Installed rootfs-image Artifact shown in the Mender UI](installed-software-ui.png)
 
 ## Application updates (Update modules)
 
@@ -107,7 +107,7 @@ Additionally, to track applications installed on other partitions than the rootf
 
 <!--AUTOVERSION: "software-version %"/ignore-->
 ```bash
-mender-artifact write rootfs-image \
+mender-artifact write module-image \
     -T script \
     --software-filesystem data-partition \
     --software-name myapp \
@@ -141,7 +141,7 @@ In this example, we used the last of the Artifacts produced above, and we can se
 
 !!! Notice that `rootfs-image.version` is still the value of the original "rootfs-image" Artifact. This is the key feature of software naming: A device can host versions of multiple different components at the same time.
 
-TODO Screenshots
+![Updated rootfs-image Artifact with data partition information specified](updated-software-ui.png)
 
 ### Application updates on the root filesystem
 
