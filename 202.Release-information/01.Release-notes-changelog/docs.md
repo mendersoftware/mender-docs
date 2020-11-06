@@ -3,6 +3,54 @@ title: Release notes & changelog
 taxonomy:
     category: docs
 ---
+## Mender client 2.4.1
+
+_Released 11.03.2020_
+
+### Statistics
+
+A total of 397 lines added, 161 removed (delta 236)
+
+| Developers with the most changesets | |
+|---|---|
+| Ole Petter Orhagen | 4 (36.4%) |
+| Peter Grzybowski | 3 (27.3%) |
+| Lluis Campos | 3 (27.3%) |
+| Fabio Tranchitella | 1 (9.1%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Ole Petter Orhagen | 314 (77.0%) |
+| Peter Grzybowski | 51 (12.5%) |
+| Lluis Campos | 42 (10.3%) |
+| Fabio Tranchitella | 1 (0.2%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 11 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 408 (100.0%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 4 (100.0%) |
+
+### Changelogs
+
+#### mender (2.4.1)
+
+New changes in mender since 2.4.0:
+
+* Add support for probing the U-Boot environment separator
+  ([MEN-3970](https://tracker.mender.io/browse/MEN-3970))
+* Fix: Do not switch boot partitions on installation errors on the
+  active partition.
+  ([MEN-3980](https://tracker.mender.io/browse/MEN-3980))
+* Allow to load private key from the Security configuration section
+  ([MEN-3924](https://tracker.mender.io/browse/MEN-3924))
+
 
 ## meta-mender dunfell-v2020.10
 
