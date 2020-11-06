@@ -3,6 +3,60 @@ title: Release notes & changelog
 taxonomy:
     category: docs
 ---
+
+## mender-convert 2.2.1
+
+_Released 11.05.2020_
+
+### Statistics
+
+A total of 144 lines added, 96 removed (delta 48)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 6 (60.0%) |
+| Ole Petter Orhagen | 2 (20.0%) |
+| Lluis Campos | 2 (20.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 119 (81.0%) |
+| Lluis Campos | 23 (15.6%) |
+| Ole Petter Orhagen | 5 (3.4%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Ole Petter Orhagen | 3 (3.1%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 10 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 147 (100.0%) |
+
+| Employers with the most hackers (total 3) | |
+|---|---|
+| Northern.tech | 3 (100.0%) |
+
+### Changelogs
+
+#### mender-convert (2.2.1)
+
+New changes in mender-convert since 2.2.0:
+
+* grub-efi: Fix inability to upgrade to a different kernel.
+* Fix massive root filesystem corruption under some build conditions.
+* beaglebone: Implement workaround for broken U-Boot and kernel.
+  ([MEN-3952](https://tracker.mender.io/browse/MEN-3952))
+* beaglebone: Remove U-Boot integration, which has not worked
+  for a long time. U-Boot will still be used for booting, but GRUB will
+  be used for integration with Mender, by chainloading via UEFI.
+  ([MEN-3952](https://tracker.mender.io/browse/MEN-3952))
+* Install the latest Mender-client release (2.4.1) by default.
+
+
 ## Mender client 2.4.1
 
 _Released 11.03.2020_
