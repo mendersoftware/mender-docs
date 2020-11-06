@@ -12,7 +12,7 @@ This tutorial will walk you trough how to deploy Docker container updates with
 Mender. We will be using the
 [Docker Update Module](https://hub.mender.io/t/docker/324?target=_blank) which
 allows you to specify a list of container images and their versions in a
-[Mender Artifact](../../02.Overview/02.Artifact/docs.md) which
+[Mender Artifact](../../02.Overview/03.Artifact/docs.md) which
 can later be deployed to your device using the hosted Mender server.
 
 ## Prerequisites
@@ -63,7 +63,7 @@ You will get similar output to below:
 
 As you can see, there are no Docker images on the device. In the next step we
 will generate a
-[Mender Artifact](../../02.Overview/02.Artifact/docs.md) which will
+[Mender Artifact](../../02.Overview/03.Artifact/docs.md) which will
 download an image.
 
 ### Step 2 - Download the mender-artifact utility on your workstation
@@ -139,7 +139,7 @@ Generate a Mender Artifact that will deploy the `hello-world` Docker container i
 
 !!! [hello-world](https://hub.docker.com/_/hello-world?target=_blank) is the name of the Docker
 !!! image that we want to download on the device when we deploy the generated
-!!! [Mender Artifact](../../02.Overview/02.Artifact/docs.md)
+!!! [Mender Artifact](../../02.Overview/03.Artifact/docs.md)
 
 ## Step 3 - Deploy the Docker update
 
