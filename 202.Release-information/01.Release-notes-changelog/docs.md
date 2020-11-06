@@ -3,6 +3,51 @@ title: Release notes & changelog
 taxonomy:
     category: docs
 ---
+## Mender client 2.3.1
+
+_Released 11.03.2020_
+
+### Statistics
+
+A total of 211 lines added, 26 removed (delta 185)
+
+| Developers with the most changesets | |
+|---|---|
+| Ole Petter Orhagen | 5 (55.6%) |
+| Lluis Campos | 3 (33.3%) |
+| Fabio Tranchitella | 1 (11.1%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Ole Petter Orhagen | 179 (80.6%) |
+| Lluis Campos | 42 (18.9%) |
+| Fabio Tranchitella | 1 (0.5%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 9 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 222 (100.0%) |
+
+| Employers with the most hackers (total 3) | |
+|---|---|
+| Northern.tech | 3 (100.0%) |
+
+### Changelogs
+
+#### mender (2.3.1)
+
+New changes in mender since 2.3.0:
+
+* Add support for probing the U-Boot environment separator
+  ([MEN-3970](https://tracker.mender.io/browse/MEN-3970))
+* Fix: Do not switch boot partitions on installation errors on the
+  active partition.
+  ([MEN-3980](https://tracker.mender.io/browse/MEN-3980))
+
+
 
 ## meta-mender dunfell-v2020.10
 
