@@ -42,6 +42,9 @@ click the **NEXT** button.
 
 ![congratulations server](Image_9.png)
 
+On the next screen, review your deployment configuration and click **CREATE**.
+This will take you to the overview of the deployments and you should see it
+pending as it is awaiting devices.
 
 After approximately 30 seconds you will see your finished deployment in the
 **Finished** tab. There should also be a tooltip to the URL of your deployed web
