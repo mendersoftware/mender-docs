@@ -35,6 +35,18 @@ They are stored in `/var/lib/mender/`, named by the deployment id,
 for example `deployments.0001.fcd8bca2-6dae-488e-969e-23559c674ba5.log`.
 
 
+### Current status
+
+In order to see what the Mender client is doing currently, follow the log
+as it is being written with this command:
+
+```
+journalctl -u mender-client -f
+```
+
+To stop it use Ctrl+C.
+
+
 ## Certificate expired or not yet valid
 
 The Mender client can not connect to the server, typically the first time it tries, and emits messages like the following to syslog at the device:
