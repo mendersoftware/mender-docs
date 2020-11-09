@@ -63,6 +63,7 @@ produces a deployment ready Mender Artifact:
 ```bash
 mender-artifact write rootfs-image -f /mnt/root-part.ext4 \
                                    -n artifact-name \
+                                   --software-version 1.0 \
                                    -o snapshot-release.1.0.mender \
                                    -t device-type
 ```
@@ -81,6 +82,7 @@ ADDR="device-ip:port"
 
 mender-artifact write rootfs-image -f ssh://${USER}@${ADDR} \
                                    -n artifact-name \
+                                   --software-version 1.0 \
                                    -o snapshot-release.1.0.mender \
                                    -t device-type
 ```
@@ -96,6 +98,7 @@ ADDR="device-ip"
 mender-artifact write rootfs-image \
     -f ssh://"${USER}@${ADDR}" \
     -n artifact-name \
+    --software-version 1.0 \
     -o snapshot-release.1.0.mender \
     -t device-type
     --ssh-args="-p 8122" \
