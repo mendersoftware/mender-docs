@@ -32,8 +32,8 @@ Internally, a Mender Artifact is simply a file archive in the
 It contains several files for incorporating versioning, extensions, metadata and
 the payload file(s).
 
-Artifact payloads support multiple compression algorithms, and are compressed by
-default.
+Mender Artifact compresses artifact payloads by default and supports multiple
+compression algorithms to do so.
 
 The diagram below shows an example of the main attributes and structure of a
 Mender Artifact file.
@@ -50,17 +50,17 @@ You can find more details about the Mender Artifact format in the
 ### *Provides* and *Depends*
 
 In addition to *Version* information, an Artifact may contain additional
-*Provides* fields which the Mender client will store on the device when the
-Artifact is installed.
+*Provides* fields which the Mender client will store on the device during the
+Artifact installation.
 
 In addition to *Device types* information, an Artifact may contain additional
-*Depends* fields. When the Artifact is installed, all *Depends* fields need to
+*Depends* fields. On Artifact installation, all *Depends* fields need to
 match a corresponding *Provides* field on the device.
 
-An example of this is the checksum of a read-only root filesystem. When a [delta
-Artifact](https://hub.mender.io/t/robust-delta-update-rootfs/1144?target=_blank)
-is installed, the information about the existing checksum is used by the server
-to decide which Artifact to deploy. Take an Artifact with these fields:
+An example of this is the checksum of a read-only root filesystem. During the 
+installation of a [delta Artifact](https://hub.mender.io/t/robust-delta-update-rootfs/1144?target=_blank),
+the server uses the information about the existing checksum to decide which
+Artifact to deploy. Take an Artifact with these fields:
 
 ```console
 Provides:
