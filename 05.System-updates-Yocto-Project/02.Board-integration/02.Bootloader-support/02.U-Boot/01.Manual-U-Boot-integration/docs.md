@@ -6,8 +6,9 @@ taxonomy:
 ---
 
 In order to support rootfs rollback, Mender requires integration with
-U-Boot. Normally this is handled automatically by the build process in Mender's
-[meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank) layer.
+U-Boot. Normally, the Mender Yocto layer
+[meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank)
+integrates U-Boot automatically.
 
 If you need to integrate with U-Boot manually, this page explains how to do so
 using your existing Yocto Project build environment.
@@ -20,8 +21,8 @@ points, along with certain required U-Boot features and configuration options,
 allow Mender to do safe, automatic updates of the device, with rollback support.
 
 This normally requires patching of stock U-Boot versions, which is what the
-automatic process does. But in this section we will do it manually, and the
-necessary steps are described below.
+automatic process does. But this section explains the necessary steps to do
+it manually.
 
 If you are not sure whether your board is using automatic patching, you can
 check it by executing this command:
@@ -44,14 +45,14 @@ To extract the patch, execute the following bitbake command:
 bitbake -c save_mender_auto_configured_patch u-boot
 ```
 
-The command will tell you where the resulting patch can be found. As in the
+The command will tell you where the resulting patch is found. As in the
 previous command, the string `u-boot` may be different if you are using a U-Boot
 fork with a different name.
 
 ## Disabling automatic patching
 
 After acquiring the basis patch above, first thing you will need to do is to
-disable the automatic patching. This can be done by adding a `u-boot_%.bbappend`
+disable the automatic patching. This is done by adding a `u-boot_%.bbappend`
 file to your layer (or a different name if you board is using a fork of U-Boot),
 and inside it add:
 
@@ -61,8 +62,8 @@ MENDER_UBOOT_AUTO_CONFIGURE = "0"
 
 ## U-Boot features
 
-A number of U-Boot features need to be enabled for Mender to work correctly, and
-these should be enabled in the board support headers in U-Boot, under
+Mender require enabling certain U-Boot features to function correctly. The
+features are enabled in the board support headers in U-Boot, under
 `include/configs`.
 
 1. `CONFIG_BOOTCOUNT_LIMIT`: This is required for rollback support to work. For
@@ -101,16 +102,14 @@ These are the current integration points:
    bootcmd=run mmcboot
    ```
 
-   it should be changed to:
-
+   you need to change it to:
    ```bash
    bootcmd=run mender_setup; run mmcboot
    ```
 
 2. `mender_uboot_root`: This is an environment variable that contains the
    description of the device currently set to boot. Whenever a U-Boot command is
-   issued that needs to access the current boot partition, this variable should
-   be referenced.
+   issued that needs to access the current boot partition, reference this variable.
 
    For example, if you have a script, `loadimage`, that loads the kernel from
    the file system, using `mmc` as the device and a `${bootpart}` variable
@@ -120,25 +119,25 @@ These are the current integration points:
    loadimage=load mmc ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
    ```
 
-   it should be changed into:
+   To target the correct *active* partition, change parameters to:
 
    ```bash
    loadimage=load ${mender_uboot_root} ${loadaddr} ${bootdir}/${bootfile}
    ```
 
-   Note that `mmc` is included in the `${mender_uboot_root}` string; it is a
+   Note that `${mender_uboot_root}` includes `mmc` in the string value; it is a
    complete description of the device and partition to load from.
 
 3. `mender_kernel_root`: This is essentially the same as the previous variable,
    but is a string tailored to the Linux kernel instead of U-Boot. This should
-   be used as the `root` argument to the kernel. For example:
+   be used as the `root` argument to the kernel. For example, if your current
+   `bootargs` looks like:
 
    ```bash
    bootargs=console=${console},${baudrate} root=${mmcroot}
    ```
 
-   should be changed to:
-
+   change the root parameter to `${mender_kernel_root}`:
    ```bash
    bootargs=console=${console},${baudrate} root=${mender_kernel_root}
    ```
@@ -151,27 +150,26 @@ basic Mender functionality, but will improve functionality under certain
 conditions.
 
 1. `mender_altbootcmd`: This integration point is only needed if your setup is
-   already making use of U-Boot's `altbootcmd` functionality. If not currently
-   in use, this step can be skipped.
+   already making use of U-Boot's `altbootcmd` functionality, otherwise you can
+   skip this step.
 
-   If `altbootcmd` is being used, one first needs to disable Mender's built-in
-   `altbootcmd`. To do this, the `MENDER_NO_DEFAULT_ALTBOOTCMD` define should be
-   added to the board configuration header in U-Boot (inside
-   `include/configs`).
+   If using `altbootcmd`, you first need to disable Mender's built-in
+   `altbootcmd`. To this end, add `MENDER_NO_DEFAULT_ALTBOOTCMD`
+   to the board configuration header in U-Boot (inside `include/configs`).
 
-   Then, at the beginning of `altbootcmd`, the call `run mender_altbootcmd`
-   should be added. Like `mender_setup`, this will not perform any boot steps,
-   but it may modify and potentially save the environment. Afterwards the
+   Then, add a call to `run mender_altbootcmd` at the beginning of `altbootcmd`. 
+   Like `mender_setup`, this will not perform any boot steps,
+   but it may modify and potentially save the environment. Afterwards, the
    `mender_uboot_root` and `mender_kernel_root` variables will refer to the
    correct partitions, taking into account the potential rollback that may
-   happen because `altbootcmd` was called. After the desired alternate boot
-   steps have been performed, one can either call `bootcmd` to perform a normal
-   boot using the new partitions, or one can perform a different type of boot
+   happen after calling `altbootcmd`. After executing the desired 
+   alternate boot steps, you can either call `bootcmd` to perform a normal
+   boot using the new partitions, or you can perform a different type of boot
    sequence and refer to the Mender variables directly.
 
-2. `mender_try_to_recover`: It is recommended to add a call to this boot script
-   right after the normal, disk based boot command for the board. Note that it
-   should be added *before* other boot methods that are not considered a
+2. `mender_try_to_recover`: We recommend adding a call to this boot script
+   right after the normal disk based boot command for the board. Note that it
+   should execute *before* other boot methods that are not considered a
    "normal" boot sequence for the board, such as network boots. The call will
    facilitate rollback in the event that a boot fails after an update, without
    reverting to alternative boot methods such as a network boot. For example,
@@ -191,11 +189,11 @@ conditions.
    alternative boot methods will continue working.
 
    Note that if this integration point is not used, rollback will still work,
-   but it may not activate until after a network boot has been attempted or the
-   device has been rebooted through other means.
+   but it may not activate until after attempting a network boot or rebooting
+   the device by other means.
 
 3. `mender_uboot_boot`, `mender_uboot_if`, `mender_uboot_dev`: These variables
-   are not required by Mender, but can be used if, in the board boot code, you
+   are not required by Mender, but are available in the board boot code if you
    need access to:
 
    * the boot partition string (in U-Boot format, for example `mmc 0:1`):
@@ -214,9 +212,9 @@ There are also a few other details that need to be in place for Mender to work.
 
 ### Location of kernel
 
-In a Mender based configuration, the kernel is loaded from the rootfs partition,
-not from the boot partition. This is in order to make a complete upgrade
-possible, including the kernel. Usually, in a boot partition, the kernel is
+In a Mender based configuration, the rootfs partition stores the kernel -
+not the boot partition. This enables Mender to update the kernel on full rootfs
+updates. Usually, in a boot partition, the kernel is
 stored in the root, but on a rootfs partition it is usually stored in
 `/boot`. Therefore, paths that refer to the location of the kernel need to be
 updated to point to this location. This is usually the case for the device tree
@@ -227,7 +225,7 @@ uimage=uImage
 fdt_file=uImage.dtb
 ```
 
-should be changed to:
+should instead be:
 
 ```bash
 uimage=boot/uImage
@@ -236,20 +234,19 @@ fdt_file=boot/uImage.dtb
 
 ### Kernel loading method
 
-Because the kernel and associated files are loaded from a rootfs partition, in
+Because the kernel and associated files loads from a rootfs partition, in
 the majority of cases it will be an ext4 or ext3 partition. If the existing boot
 code for the board uses the `fatload` command to load the kernel and/or any
-associated files, it will need to be changed, since the rootfs is usually not a
-FAT partition. We recommend that it is replaced simply with `load`, since it
-will work in both cases, but it can also be replaced with either `ext2load` or
-`ext4load` if desired.
+associated files, you need to change the command if the rootfs is not a
+FAT partition. We recommend replacing it with `load`, since it
+will work in both cases. You can also use `ext2load` or `ext4load` if desired.
 
 ### Size of boot environment file
 
-In the bitbake recipe for `u-boot`, `BOOTENV_SIZE` should be set to the same
-value that `CONFIG_ENV_SIZE` is set to in the board specific C header for U-Boot
-(inside `u-boot/include/configs`). Which value exactly is board specific; the
-important thing is that they are the same.
+In the bitbake recipe for `u-boot`, `BOOTENV_SIZE` should match the value configured
+for `CONFIG_ENV_SIZE` in the board specific C header for U-Boot
+(inside `u-boot/include/configs`). The exact value is board specific, but it is 
+necessary that the two values are the same.
 
 For example, in `u-boot/include/configs/myboard.h`:
 

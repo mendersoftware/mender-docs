@@ -5,9 +5,9 @@ taxonomy:
     label: tutorial
 ---
 
-This section describes the steps that are specific to production builds for Yocto Project.
-These steps are not necessary if you are just trying out Mender, but must be done before deploying to production.
-
+This section describes the steps that are specific to production builds for
+Yocto Project. These steps are not necessary if you are trying Mender in demo
+mode.
 
 ## Remove demo layer
 
@@ -34,24 +34,41 @@ Please refer to [polling intervals](../../03.Client-installation/06.Configuratio
 
 ## Certificates
 
-Certificates are used to ensure the communication between the client and the server is secure, so that it is not possible for an adversary to pose as a legitimate server.
+Certificates ensure the communication between the client and the server is
+secure, so that it is not possible for an adversary to pose as a legitimate
+server.
 
-!! Please make sure that the clock is set correctly on your devices. Otherwise certificate verification will become unreliable. See [certificate troubleshooting](../../201.Troubleshoot/03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid) for more information.
+!! Please make your device has the clock correctly set up. Otherwise certificate
+!! verification will become invalid. See
+!! [certificate troubleshooting](../../201.Troubleshoot/03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid)
+!! for more information.
 
 
-### Preparing the client certificates
+### Preparing the server certificates on the client
 
-You can either generate new certificates by following the tutorial for [generating certificates](../../07.Server-installation/04.Certificates-and-keys/docs.md#generating-new-keys-and-certificates), or obtain the certificates in a different way - for example from your existing Certificate Authority. In either case the certificates on the client and server must be the same.
+You can either generate new certificates by following the tutorial for
+[generating
+certificates](../../07.Server-installation/04.Certificates-and-keys/docs.md#generating-new-keys-and-certificates),
+or obtain the certificates in a different way - for example from your existing
+Certificate Authority. In either case the certificates on the client and server
+must be the same.
 
-### Including the client certificates
 
-Including the certificates on the client is only necessary if the certificate is not signed by a well known Certificate Authority. If they are signed, this section can be skipped.
+Including the server certificates on the client is only necessary if the certificate is
+not signed by known Certificate Authority (CA), for example if the certificate is
+[self-signed](https://en.wikipedia.org/wiki/Self-signed_certificate?target=_blank).
+If signed by a known CA, the remainder of this section is not necessary.
 
 All certificates are hosted in a single file `server.crt` which the client will read. If you generated new certificates, this file is available at `keys-generated/certs/server.crt`.
 
 !!! If you obtained your certificates in a different way, you need to concatenate the certificates from the API Gateway and Storage Proxy into one file by running a command similar to `cat api-gateway/cert.crt storage-proxy/cert.crt > server.crt`.
 
-The best way to include the certificate in the client build is to use a custom bitbake layer. For the following steps it is assumed that you have such a layer already. If not you can check out how to [create your own layer](http://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html?target=_blank#creating-your-own-layer) in the official Yocto Project documentation, and there is also an alternative method below that does not require a separate layer.
+The best way to include the certificate in the client build is to use a custom
+bitbake layer. The following steps assume that you already have a custom layer
+included in your build. If not you can check out how to [create your own
+layer](http://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html?target=_blank#creating-your-own-layer)
+in the official Yocto Project documentation, and there is also an alternative
+method below that does not require a separate layer.
 
 #### Using a layer
 
@@ -88,9 +105,11 @@ Please note that setting up for production will require that you explicitly set 
 The private key used for signing the Mender Artifact should be protected and kept outside of the build system,
 thus there are no extra steps needed to add it to any part of the build system, Mender Client nor Server.
 
-Only the public key, which is used by the Mender Client to verify the signed Artifact must be included in the Mender Client build.
-
-The best way to include a public verification key in the client is to add it to your own layer. Set the name of the verification key to `artifact-verify-key.pem` and append it to `SRC_URI` of the `mender` application before building the Yocto client image. For example:
+The Mender Client requires having the public key stored on the device to verify
+the Mender Artifact signatures. The best way to include a public key in the
+client is to add it to your own layer. Set the name of the verification key to
+`artifact-verify-key.pem` and append it to `SRC_URI` of the `mender` application
+before building the Yocto client image. For example:
 
 ```bash
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"

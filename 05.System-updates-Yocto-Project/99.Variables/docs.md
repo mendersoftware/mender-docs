@@ -23,7 +23,7 @@ for more information.
 
 #### `ARTIFACTIMG_NAME`
 
-> Value: &lt;any string&gt; (defaults to the image name being built)
+> Value: &lt;any string&gt; (defaults to image filename)
 
 Overrides the default internal image name that mender will use to build the
 `.mender` file with.
@@ -33,21 +33,21 @@ Overrides the default internal image name that mender will use to build the
 
 > Value: &lt;size in KiB&gt; (default calculated from several factors, see below)
 
-The size of the generated rootfs, expressed in kiB. This will be the size that
-is shipped in a `.mender` update. This variable is a standard Yocto Project
-variable and is influenced by several other factors. See [the Yocto Project
+The size of the generated rootfs, expressed in kiB. This will be the size of the
+rootfs image shipped in a `.mender` update. This variable is a standard Yocto
+Project variable influenced by several other factors. See [the Yocto Project
 documentation](http://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html?target=_blank#var-IMAGE_ROOTFS_SIZE)
 for more information.
 
 Note that this variable has no effect when generating a complete disk image (any
-suffix ending in `img`), since in that case the size is determined
-automatically. See
+suffix ending in `img`), since `meta-mender` will determine the size
+automatically in this case. See
 [`MENDER_STORAGE_TOTAL_SIZE_MB`](#mender_storage_total_size_mb) for more
 information.
 
 It is recommended not to set this variable, but instead set
-`MENDER_STORAGE_TOTAL_SIZE_MB` and let this variable be set automatically from
-that.
+`MENDER_STORAGE_TOTAL_SIZE_MB` and let `meta-mender` set `IMAGE_ROOTFS_SIZE`
+from that variable automatically.
 
 
 #### `MENDER_ARTIFACT_EXTRA_ARGS`
@@ -66,7 +66,7 @@ The above example builds an artifact with the version 1 format.
 
 #### `MENDER_ARTIFACT_NAME`
 
-> Value: &lt;name of artifact&gt; (no default, must be set)
+> Value: &lt;name of artifact&gt; (no default, required)
 
 The name of the image or update that will be built. This is what the device will
 report that it is running, and different updates must have different names. This
@@ -77,7 +77,7 @@ variable must be defined or the build will fail.
 
 > Value: &lt;key used to sign artifact&gt; (default: empty)
 
-Can be set to a private key which will be used to sign the update artifact. The
+Optional path to a private key used to sign the update artifact. The
 default is empty, which means the artifact won't be signed.
 
 The signature can also be added or changed outside the build process, by using
@@ -183,10 +183,10 @@ its own DNS server).
 
 > Value: &lt;any string&gt; (default: value of `${MACHINE}`)
 
-A string that defines the type of device this image will be installed on. This
+A string that defines the type of the target device for this image. This
 variable is only relevant when building a complete partitioned image (any suffix
-ending in `img`). Once a device is flashed with this, it will not change, even
-if the device is updated.
+ending in `img`). Once flashed with this image, the device type will persist
+across subsequent updates.
 
 
 #### `MENDER_DEVICE_TYPES_COMPATIBLE`
@@ -203,7 +203,7 @@ partitioned image (any suffix ending in `img`).
 
 > Value: &lt;Extra partitions list&gt; (default: empty)
 
-This variable is used to define extra partitions which will be added after data
+This variable defines extra partitions which will be added after the data
 partition. `MENDER_EXTRA_PARTS_SIZES_MB` and `MENDER_EXTRA_PARTS_FSTAB` can be
 used to further tweak the partition setup. For example:
 
@@ -232,9 +232,6 @@ See also [`MENDER_EXTRA_PARTS_FSTAB`](#mender_extra_parts_fstab) and
 
 The mount options for `/etc/fstab` of the extra partitions defined by
 `MENDER_EXTRA_PARTS` in the generated .biosimg, .sdimg or .uefiimg file.
-
-If defined, the mount options will be added to `/etc/fstab` in the generated
-image.
 
 ```
 MENDER_EXTRA_PARTS_FSTAB[part1] = "noexec"
@@ -267,7 +264,7 @@ See [`MENDER_EXTRA_PARTS`](#mender_extra_parts).
 
 > Value: &lt;mender features&gt; (default: empty)
 
-Features appended to this variable will be disabled in the build. See [the
+Disable Mender features by appending to this variable. See [the
 section on features](../04.Image-customization/01.Features/docs.md) for more information.
 
 
@@ -275,7 +272,7 @@ section on features](../04.Image-customization/01.Features/docs.md) for more inf
 
 > Value: &lt;mender features&gt; (default: platform dependent)
 
-Features appended to this variable will be enabled in the build. See [the
+Enable Mender features by appending to this variable. See [the
 section on features](../04.Image-customization/01.Features/docs.md) for more information.
 
 
@@ -283,9 +280,9 @@ section on features](../04.Image-customization/01.Features/docs.md) for more inf
 
 > Value: &lt;sector number&gt; (default: platform dependent)
 
-Together with `MENDER_IMAGE_BOOTLOADER_FILE`, this sets the offset where the
-bootloader should be placed, counting from the start of the storage medium. The
-offset is specified in units of 512-byte sectors. Obviously this needs to be
+Together with `MENDER_IMAGE_BOOTLOADER_FILE`, this sets the offset for placing
+the bootloader, counting from the start of the storage medium. The
+offset is specified in units of 512-byte sectors. The value needs to be
 non-zero, or the partition table itself would be overwritten.
 
 
@@ -303,10 +300,10 @@ space between the partition table and the first partition.
 > Value: &lt;MTD ID&gt; (default: first MTD ID in `MENDER_MTDIDS`)
 
 This variable is only relevant if the [the `mender-ubi`
-feature](../04.Image-customization/01.Features/docs.md#list-of-features) is enabled. The
-variable should be set to the MTDID of the device that mender, and the root
-filesystem in particular, resides on. This is set automatically in cases where
-it's possible, but in some cases it must be set manually.
+feature](../04.Image-customization/01.Features/docs.md#list-of-features) is
+enabled. The variable should be set to the MTDID of the device that mender, and the root
+filesystem in particular, resides on. Setting this variable is usually done
+automatically, but some cases require setting it manually.
 
 For example:
 
@@ -367,12 +364,12 @@ otherwise the default is empty.
 
 #### `MENDER_MTDIDS`
 
-> Value: &lt;mtdids string&gt; (no default, must be set if using UBI)
+> Value: &lt;mtdids string&gt; (no default, required if using UBI)
 
-This variable is only relevant if the [the `mender-ubi`
-feature](../04.Image-customization/01.Features/docs.md#list-of-features) is enabled, in which
-case it is mandatory. It lists the MTDID assignments on the system, separated by
-comma. For example:
+This variable is only required with [the `mender-ubi`
+feature](../04.Image-customization/01.Features/docs.md#list-of-features)
+enabled. It lists the MTDID assignments on the system, separated by comma. For
+example:
 
 ```
 MENDER_MTDIDS = "nand0=20000000.flash,nand1=30000000.flash"
@@ -386,11 +383,11 @@ must be set too.
 
 > Value: &lt;mtdparts string&gt; (default calculated from several factors)
 
-This variable is only relevant if the [the `mender-ubi`
-feature](../04.Image-customization/01.Features/docs.md#list-of-features) is enabled. The
-variable holds the MTDPARTS string for the Flash based device. This is set
-automatically in cases where it's possible, but in some cases it must be set
-manually. For example:
+This variable is only relevant with [the `mender-ubi`
+feature](../04.Image-customization/01.Features/docs.md#list-of-features) enabled. The
+variable holds the MTDPARTS string for the Flash based device. Setting this
+variable is usually done automatically cases where it is possible, but some
+cases requires setting it manually. For example:
 
 ```
 MENDER_MTDPARTS = "20000000.flash:1m(u-boot),-(ubi)"
@@ -518,7 +515,7 @@ And finally, it is possible to set `MENDER_STATE_SCRIPTS` (note the missing
 `_DIR`) manually to a location containing state scripts, however it is
 recommended to use one of the two above methods.
 
-The three methods should not be mixed.
+You cannot mix the three methods.
 
 
 #### `MENDER_STORAGE_DEVICE`
@@ -571,7 +568,7 @@ The size of the optional swap partition in the generated `.biosimg`, `.sdimg` or
 > Value: &lt;tenant token string&gt; (default: empty)
 
 Set this variable in `local.conf` in order to make the device recognize the
-organization to which it belongs. This option should always be set, except when
+organization account to which it belongs. This option should always be set, except when
 running a custom Mender server installation with multitenancy module disabled.
 
 
@@ -599,8 +596,8 @@ overridden.
 
 > Value: &lt;number&gt; (default: 0 for NOR Flash, 20 per PEB block for NAND Flash)
 
-Total overhead on the whole UBI device, in bytes, that is reserved for bad
-physical erase blocks (PEBs). Usually zero for NOR Flash or [a variable
+Total overhead on the whole UBI device, in bytes, reserved for bad physical
+erase blocks (PEBs). Usually zero for NOR Flash or [a variable
 amount](http://linux-mtd.infradead.org/doc/ubi.html?target=_blank) for NAND
 Flash.
 
@@ -609,17 +606,17 @@ Flash.
 
 > Value: &lt;number&gt; (default: Value of `MENDER_PARTITION_ALIGNMENT`)
 
-Specifies the offset from the start of the raw block storage where the U-Boot
-environment should be stored, expressed in bytes. The default is equal to
-`MENDER_PARTITION_ALIGNMENT_KB` (converted to bytes), and if the value is
-overridden, it must also be aligned to `MENDER_PARTITION_ALIGNMENT_KB`.
+Specifies the offset from the start of the raw block storage for placing the
+U-Boot environment, expressed in bytes. The default is equal to
+`MENDER_PARTITION_ALIGNMENT_KB` (converted to bytes), and must align with
+`MENDER_PARTITION_ALIGNMENT_KB` if the value is overwritten.
 
 
 #### `MENDER_UBOOT_POST_SETUP_COMMANDS`
 
 > Value: &lt;U-Boot command string&gt; (default: empty)
 
-A set of U-Boot commands to be executed at the end of the MENDER_SETUP code in
+A set of U-Boot commands to executed at the end of the MENDER_SETUP code in
 the MENDER_BOOTENV.
 
 
@@ -627,7 +624,7 @@ the MENDER_BOOTENV.
 
 > Value: &lt;U-Boot command string&gt; (default: empty)
 
-A set of U-Boot commands to be executed at the beginning of the MENDER_SETUP
+A set of U-Boot commands to executed at the beginning of the MENDER_SETUP
 code in the MENDER_BOOTENV.
 
 

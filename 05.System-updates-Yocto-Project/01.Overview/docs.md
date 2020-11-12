@@ -47,16 +47,17 @@ If you [run the Mender client in standalone mode](../../02.Overview/01.Introduct
 In order to support robust rollback, Mender requires the device to have a certain partition layout.
 At least four different partitions are needed:
 * one boot partition, containing the U-Boot bootloader and its environment
-* two partitions for storing the root file system and kernel. The kernel image file, zImage, and any device tree binary should be stored in directory `/boot`.
+* two partitions for storing the root filesystem and kernel. The kernel image file, zImage, and any device tree binary should be stored in directory `/boot`.
 * one for persistent data
 
-One of the rootfs and kernel partitions will be marked as the *active* partition, from which the kernel and rootfs will be booted.
-The other, called the *inactive* partition, will be used by the update mechanism to write the updated image.
-After an update their roles are swapped.
+Mender marks one of the root filesystem partitions as *active*, making the partition the boot target.
+The other, *inactive* partition, holds the previous root file system update. The client may either overwrite
+the inactive partition on a new update or roll back if the active partition does not boot.
+On a successful update, the partitions swaps roles.
 
-The persistent data partition stores data that needs to be preserved through an update.
+The persistent data partition stores data requiring preservation through system updates.
 
-A sample partition layout is shown below:
+The following figure illustrates an example partition layout:
 
 ![Mender client partition layout](mender_client_partition_layout.png)
 
@@ -80,10 +81,10 @@ across power down situations and the network connectivity needs of systemd
 will only be relevant on the system boots before the RTC is properly
 initialized.
 
-Before the time is set properly, either by systemd or the RTC, the time will
-default to the [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time?target=_blank).  Note
-that the Mender client connections will be rejected by the server until this
-situation is resolved.
+Note that on startup, the system initializes the time to the 
+[Unix Epoch](https://en.wikipedia.org/wiki/Unix_time?target=_blank), before
+either systemd or the RTC corrects it, which implies that the server rejects all
+incoming TLS connections from the client until this happens.
 
 
 ## Unsupported build systems
