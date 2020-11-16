@@ -5,9 +5,11 @@ taxonomy:
     label: tutorial
 ---
 
-This section describes the steps needed to integrate with U-Boot for Yocto Project. Most steps are automated, but there are a few things that need to be in place for this to function.
+This section describes the steps needed to integrate with U-Boot for Yocto Project.
+Most steps are automated, but there are a few things that need to be in place for this to function.
 
-!!! Please consult [the bootloader support section](../docs.md) to find out if U-Boot is supported on your platform and build configuration, and whether it is enabled by default.
+!!! Please consult [the bootloader support section](../docs.md) to find out if your
+!!! platform supports U-Boot, and whether it is enabled by default.
 
 
 ## Enabling U-Boot
@@ -27,7 +29,7 @@ See [the documentation on features](../../../04.Image-customization/01.Features/
 If the project is using a board supported by upstream U-Boot, and the build is
 using the `u-boot` recipe as the bootloader provider, then you can skip to [the
 next section](#enabling-u-boot). You can check if the board is using a u-boot
-fork with the following command (must be executed in the Yocto build directory):
+fork with the following command (executed in the Yocto build directory):
 
 ```
 bitbake -e core-image-minimal | egrep '^PREFERRED_PROVIDER_(virtual/bootloader|u-boot)='
@@ -59,8 +61,8 @@ steps:
    RPROVIDES_${PN} += "u-boot"
    ```
 
-3. In the machine section of the board in question, the actual u-boot
-   implementation must be selected using `PREFERRED_PROVIDER`, like this:
+3. In the machine section of the board, you need to select the actual u-boot
+   implementation using `PREFERRED_PROVIDER`, like this:
 
    ```bash
    PREFERRED_PROVIDER_u-boot = "u-boot-my-fork"
@@ -78,7 +80,10 @@ Project you need to enable the `mender-uboot` feature using
 MENDER_FEATURES_ENABLE_append = " mender-uboot"
 ```
 
-!!! If the `mender-full-ubi` class is inherited in a Bitbake `.conf` file, then the `mender-uboot` feature is already on by default. See [the documentation on features](../../../04.Image-customization/01.Features/docs.md) for more information.
+!!! By inheriting the `mender-full-ubi` class in a Bitbake `.conf` file,
+!!! the `mender-uboot` feature is already on by default. See
+!!! [the documentation on features](../../../04.Image-customization/01.Features/docs.md)
+!!! for more information.
 
 This enables U-Boot integration, and also enables full automatic patching of
 U-Boot.

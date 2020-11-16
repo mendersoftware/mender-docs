@@ -21,4 +21,6 @@ See [the documentation on features](../../../04.Image-customization/01.Features/
 
 ## BIOS based systems
 
-If using GRUB, Mender by default assumes that the system is using the UEFI boot standard. For systems using BIOS based booting, the `mender-bios` feature should also be enabled using `MENDER_FEATURES_ENABLE`.
+If using GRUB, Mender by default assumes that the system is using the UEFI boot
+standard. For systems using BIOS based booting, add the `mender-bios` feature to
+the Yocto Variable `MENDER_FEATURES_ENABLE`.

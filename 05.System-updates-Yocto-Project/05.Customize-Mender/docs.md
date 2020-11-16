@@ -75,7 +75,7 @@ MENDER_FEATURES_DISABLE_append = " mender-systemd"
 
 Also, you do not need any daemon-related configuration items in your `local.conf` as outlined in [the section on configuring the Yocto Project build](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build).
 
-! If you disable Mender running as a daemon under `systemd`, you must run all required Mender commands from the CLI or scripts. Most notably, you need to run `mender -commit` after booting into and verifying a successful deployment. When running in managed mode, any pending `mender -commit` will automatically be run by the Mender daemon after it starts. See [Modes of operation](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) for more information about the difference.
+! If you disable Mender running as a daemon under `systemd`, you must run all required Mender commands from the CLI or scripts. Most notably, you need to run `mender -commit` after booting into and verifying a successful deployment. When running in managed mode, any pending `mender -commit` will automatically run by the Mender daemon after it starts. See [Modes of operation](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) for more information about the difference.
 
 
 ## Identity
@@ -168,10 +168,12 @@ do_install_append() {
 }
 ```
 
-Replace `<DIRECTORY-WITH-UPDATE-MODULE>` with the path to the `custom-update-module` file, relative
-to the recipe file. The name, custom-update-module, can be any string, and must be set to the name
-of the payload type that will be used for Artifacts that will be installed with this Update
-Module. See [Create a custom update module](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md)
+Replace `<DIRECTORY-WITH-UPDATE-MODULE>` with the path to the
+`custom-update-module` file, relative to the recipe file. The name,
+"custom-update-module", can be any string, and must have the same name as the
+payload type used for Artifacts installed with this Update Module.
+See [Create a custom update
+module](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md)
 for more information.
 
 
