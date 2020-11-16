@@ -5,7 +5,7 @@ taxonomy:
     label: tutorial
 ---
 
-Mender uses [Artifacts](../../02.Overview/02.Artifact/docs.md) to package the
+Mender uses [Artifacts](../../02.Overview/03.Artifact/docs.md) to package the
 software updates for delivery to devices. As a user you manage the Artifacts
 with the help of the `mender-artifact` command. You can get it either as a pre-built
 executable from the [downloads section](../../09.Downloads)
@@ -30,7 +30,7 @@ mender-artifact write rootfs-image \
 Note that the `rootfs.ext4` filesystem image must be properly integrated with Mender for successful deployments. This generally means that you either generated it using [the Yocto Project](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md), or converted it from an existing
 [Debian image](../../04.System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md).
 
-The remaining flags specify the parameters used to [match devices to deployments](../../02.Overview/04.Deployment/docs.md#Algorithm-for-selecting-the-Deployment-for-the-Device) as follows:
+The remaining flags specify the parameters used to [match devices to deployments](../../02.Overview/05.Deployment/docs.md#Algorithm-for-selecting-the-Deployment-for-the-Device) as follows:
 * `-t`: specifies the compatible device types.
 * `-n`: specifies the name of the Artifact.
 * `--software-version` specifies the version string for the rootfs-image.

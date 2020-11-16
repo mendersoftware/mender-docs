@@ -12,14 +12,14 @@ and receive software updates.
 
 * _Artifact_ -  An archive containing everything needed for an update of a
 device, including the Artifact Payload itself and metadata such as signatures.
-See the documentation on [Artifact](../02.Artifact/docs.md) for more information.
+See the documentation on [Artifact](../03.Artifact/docs.md) for more information.
 
 * _Artifact Name_ - A human-readable string uniquely describing an Artifact,
 used by UI and API for identification purposes.
 
 * _Artifact Payload_ - Actual data installed on a device, stored inside a
 Mender Artifact. It could be a rootfs image, package, container, or other. See
-the documentation on [Artifact](../02.Artifact/docs.md) for more information.
+the documentation on [Artifact](../03.Artifact/docs.md) for more information.
 
 * _Authentication Set_ - A combination of an identity and public key for a
 device, determining if a given device is allowed to check for- and apply
@@ -50,7 +50,7 @@ server, used in APIs to specify an individual device. See the documentation on
 [Identity](../07.Identity/docs.md) for more information.
 
 * _Device type_ - The type of device, used to ensure compatibility between the
-hardware and software. See the documentation on [Artifact](../02.Artifact/docs.md)
+hardware and software. See the documentation on [Artifact](../03.Artifact/docs.md)
 for more information.
 
 * _Mender Client_ - A user space application installing updates to a device

@@ -19,7 +19,7 @@ according to Semantic Versioning, minor releases add new functionality (e.g from
 functionality before using it.
 
 For example, when Mender releases a new [Artifact
-format](../02.Artifact/docs.md#the-mender-artifact-file-format) version, the
+format](../03.Artifact/docs.md#the-mender-artifact-file-format) version, the
 *new* Mender client still supports older versions of the Artifact format.
 However, the inverse is not true; the Mender client does not support *newer*
 versions of the Artifact format. So in this case you need to upgrade all Mender
@@ -94,7 +94,7 @@ Leverage [Mender consulting services to support other versions of the Yocto Proj
 
 ## Mender client/server and Artifact format
 
-The [Mender Artifact format](../02.Artifact/docs.md) is managed by the [Mender Artifacts Library](https://github.com/mendersoftware/mender-artifact?target=_blank), which is included in the Mender client and server (for reading Artifacts) as well as in a standalone utility `mender-artifact` (for [writing Artifacts](../../06.Artifact-creation/03.Modify-an-Artifact/docs.md)).
+The [Mender Artifact format](../03.Artifact/docs.md) is managed by the [Mender Artifacts Library](https://github.com/mendersoftware/mender-artifact?target=_blank), which is included in the Mender client and server (for reading Artifacts) as well as in a standalone utility `mender-artifact` (for [writing Artifacts](../../06.Artifact-creation/03.Modify-an-Artifact/docs.md)).
 
 <!--AUTOVERSION: "Mender % / mender-artifact %"/ignore-->
 |                                      | Artifact v1 | Artifact v2 | Artifact v3 |

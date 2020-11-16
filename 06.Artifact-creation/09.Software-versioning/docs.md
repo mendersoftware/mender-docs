@@ -11,7 +11,7 @@ Reporting the current software version running on a device can be challenging wh
 
 For these reasons, the Mender Artifact utility supports several options to customize the current software version's reporting, both for full system updates and application updates via Update Modules.
 
-The software versioning information is stored in the Mender Artifacts as [*Provides* fields](../../02.Overview/02.Artifact/docs.md#provides-and-depends), and is automatically reported by the Mender Client as inventory data. See below for further details on how to override the default software versioning keys when generating the Artifacts.
+The software versioning information is stored in the Mender Artifacts as [*Provides* fields](../../02.Overview/03.Artifact/docs.md#provides-and-depends), and is automatically reported by the Mender Client as inventory data. See below for further details on how to override the default software versioning keys when generating the Artifacts.
 
 ![View client reported version information in UI](provides-illustrated.png)
 
