@@ -3,6 +3,64 @@ title: Release notes & changelog
 taxonomy:
     category: docs
 ---
+
+
+## meta-mender dunfell-v2020.11
+
+_Released 11.16.2020_
+
+### Statistics
+
+A total of 6 lines added, 1067 removed (delta -1061)
+
+| Developers with the most changesets | |
+|---|---|
+| Ole Petter Orhagen | 3 (50.0%) |
+| Lluis Campos | 2 (33.3%) |
+| Drew Moseley | 1 (16.7%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 922 (86.4%) |
+| Ole Petter Orhagen | 142 (13.3%) |
+| Drew Moseley | 3 (0.3%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Lluis Campos | 921 (86.3%) |
+| Ole Petter Orhagen | 138 (12.9%) |
+| Drew Moseley | 2 (0.2%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 6 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 1067 (100.0%) |
+
+| Employers with the most hackers (total 3) | |
+|---|---|
+| Northern.tech | 3 (100.0%) |
+
+### Changelogs
+
+#### meta-mender (dunfell-v2020.11)
+
+New changes in meta-mender since dunfell-v2020.10:
+
+* mender: Fix broken patch for mender-systemd-machine-id.
+* Remove recipe mender-client 2.3.0
+* Add recipe mender-client 2.3.1
+* Remove recipe mender-client 2.4.0
+* Add recipe mender-client 2.4.1
+* Aggregated Dependabot Changelogs:
+  * Bumps [tests/acceptance/image-tests](https://github.com/mendersoftware/mender-image-tests) from `457ea99` to `713c563`.
+    - [Release notes](https://github.com/mendersoftware/mender-image-tests/releases)
+    - [Commits](https://github.com/mendersoftware/mender-image-tests/compare/457ea99937642ec29da53a9a2d30a51067cf8dc0...713c56364b79a18ad86e6731b1a602f0f3d9d233)
+  * Bump tests/acceptance/image-tests from `457ea99` to `713c563`
+
+
 ## Mender client 2.3.1
 
 _Released 11.03.2020_
