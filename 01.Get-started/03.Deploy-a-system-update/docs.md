@@ -32,7 +32,7 @@ Download the `mender-artifact` binary
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 ```bash
-wget https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/master/linux/mender-artifact -O ${HOME}/bin/mender-artifact
+wget https://downloads.mender.io/mender-artifact/master/linux/mender-artifact -O ${HOME}/bin/mender-artifact
 ```
 
 Make the `mender-artifact` binary executable:
