@@ -32,9 +32,9 @@ this is the most common for users getting starting with Mender.
 
 ### Download the package
 
-<!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
+<!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
 ```bash
-wget https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
+wget https://downloads.mender.io/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
 ```
 
 !!! The above link is for *armhf* devices, which is the most common device architecture. See [the downloads page](../../09.Downloads/docs.md) for other architectures, and also make sure to modify the references to the package in commands below.
@@ -69,7 +69,7 @@ configuration options.
 
 - Connecting to [hosted Mender](https://hosted.mender.io?target=_blank) using demo settings
 
-<!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
+<!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
 ```bash
 DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
 TENANT_TOKEN="<INSERT YOUR TOKEN FROM https://hosted.mender.io/ui/#/settings/my-organization>"
@@ -86,7 +86,7 @@ sudo systemctl restart mender-client
 
 - Connecting to a demo server using demo settings
 
-<!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
+<!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
 ```bash
 DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
 SERVER_IP_ADDR="<INSERT THE IP ADDRESS OF YOUR DEMO SERVER>"
@@ -100,7 +100,7 @@ sudo systemctl restart mender-client
 
 - Connecting to an [Enterprise](https://mender.io/products/mender-enterprise?target=_blank) server
 
-<!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
+<!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
 ```bash
 DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
 SERVER_URL="<INSERT YOUR ENTERPRISE SERVER URL>"

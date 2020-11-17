@@ -65,9 +65,9 @@ Please refer to your host Operating System documentation for more details.
 
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-linux]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/master/linux/mender-artifact
+[x.x.x_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/master/linux/mender-artifact
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-darwin]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/master/darwin/mender-artifact
+[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/master/darwin/mender-artifact
 
 ! If you are using Mac OS X, note that using `mender-artifact` with
 ! disk image files (e.g.: `*.sdimg`, `*.img`, or others holding the storage
@@ -93,12 +93,12 @@ Ubuntu or Raspberry Pi OS. We provide packages for the following architectures:
 | arm64 | ARM 64bit processors, for example Debian for Asus Tinker Board | [mender-client_master-1_arm64.deb][mender-client_x.x.x-1_arm64.deb] |
 | amd64 | Generic 64-bit x86 processors, the most popular among workstations | [mender-client_master-1_amd64.deb][mender-client_x.x.x-1_amd64.deb] |
 
-<!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
-[mender-client_x.x.x-1_armhf.deb]: https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
-<!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_arm64.deb"/mender -->
-[mender-client_x.x.x-1_arm64.deb]: https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/arm64/mender-client_master-1_arm64.deb
-<!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_amd64.deb"/mender -->
-[mender-client_x.x.x-1_amd64.deb]: https://d1b0l86ne08fsf.cloudfront.net/master/dist-packages/debian/amd64/mender-client_master-1_amd64.deb
+<!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
+[mender-client_x.x.x-1_armhf.deb]: https://downloads.mender.io/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
+<!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_arm64.deb"/mender -->
+[mender-client_x.x.x-1_arm64.deb]: https://downloads.mender.io/master/dist-packages/debian/arm64/mender-client_master-1_arm64.deb
+<!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_amd64.deb"/mender -->
+[mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/master/dist-packages/debian/amd64/mender-client_master-1_amd64.deb
 
 
 ## mender-cli
@@ -127,6 +127,6 @@ sudo cp mender-cli /usr/local/bin/
 Please refer to your host Operating System documentation for more details.
 
 <!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
-[x.x.x_mender-cli-linux]: https://d1b0l86ne08fsf.cloudfront.net/mender-cli/master/linux/mender-cli
+[x.x.x_mender-cli-linux]: https://downloads.mender.io/mender-cli/master/linux/mender-cli
 <!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
-[x.x.x_mender-cli-darwin]: https://d1b0l86ne08fsf.cloudfront.net/mender-cli/master/darwin/mender-cli
+[x.x.x_mender-cli-darwin]: https://downloads.mender.io/mender-cli/master/darwin/mender-cli

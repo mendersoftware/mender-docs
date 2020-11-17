@@ -273,7 +273,7 @@ The size of the storage medium of the device.
 
 #### `MENDER_STORAGE_URL`
 
-> Value: https://d1b0l86ne08fsf.cloudfront.net (default)
+> Value: https://downloads.mender.io (default)
 
 The source of the binaries employed by the `Mender-convert` tool.
 
