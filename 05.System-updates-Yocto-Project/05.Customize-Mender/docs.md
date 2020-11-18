@@ -118,6 +118,19 @@ Replace `<DIRECTORY-WITH-INVENTORY-SCRIPT>` with the path to the `mender-invento
 file, relative to the recipe file. The string `custom-attribute` can be replaced with a string of
 your choice, as long as the filename starts with `mender-inventory-`.
 
+### Remove the mender-inventory-geolocation script
+
+By default the Mender client installs with the `mender-inventory-geo` script
+enabled. To some users this is undesireable, as the script relies on a third
+party service for geolocating the device through its IP address. If this is
+applicable to you, then disable the script through setting:
+
+```bash
+PACKAGECONFIG_remove_pn-mender-client = " inventory-network-scripts"
+```
+
+in your `local.conf` file.
+
 
 ## Update Modules
 
