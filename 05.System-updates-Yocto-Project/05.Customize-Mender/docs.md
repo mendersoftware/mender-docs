@@ -100,9 +100,20 @@ recipe file.
 
 ## Inventory
 
-In order to include an inventory script, simply augment the `mender-client` recipe and install the
-script in the expected folder. For example, create a `mender-client_%.bbappend` file in your layer,
-and add this:
+Mender comes with some inventory scripts available out of the box. These are:
+
+* mender-inventory-bootloader-integration
+* mender-inventory-geo
+* mender-inventory-hostinfo
+* mender-inventory-network
+* mender-inventory-os
+* mender-inventory-provides
+* mender-inventory-rootfs-type
+* mender-inventory-update-modules
+
+In order to include an inventory script of your own making, augment the
+`mender-client` recipe and install the script in the expected folder. For
+example, create a `mender-client_%.bbappend` file in your layer, and add this:
 
 ```bash
 FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-INVENTORY-SCRIPT>"
