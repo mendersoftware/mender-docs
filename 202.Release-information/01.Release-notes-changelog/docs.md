@@ -4,6 +4,211 @@ taxonomy:
     category: docs
 ---
 
+
+## meta-mender dunfell-v2020.11
+
+_Released 11.16.2020_
+
+### Statistics
+
+A total of 6 lines added, 1067 removed (delta -1061)
+
+| Developers with the most changesets | |
+|---|---|
+| Ole Petter Orhagen | 3 (50.0%) |
+| Lluis Campos | 2 (33.3%) |
+| Drew Moseley | 1 (16.7%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 922 (86.4%) |
+| Ole Petter Orhagen | 142 (13.3%) |
+| Drew Moseley | 3 (0.3%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Lluis Campos | 921 (86.3%) |
+| Ole Petter Orhagen | 138 (12.9%) |
+| Drew Moseley | 2 (0.2%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 6 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 1067 (100.0%) |
+
+| Employers with the most hackers (total 3) | |
+|---|---|
+| Northern.tech | 3 (100.0%) |
+
+### Changelogs
+
+#### meta-mender (dunfell-v2020.11)
+
+New changes in meta-mender since dunfell-v2020.10:
+
+* mender: Fix broken patch for mender-systemd-machine-id.
+* Remove recipe mender-client 2.3.0
+* Add recipe mender-client 2.3.1
+* Remove recipe mender-client 2.4.0
+* Add recipe mender-client 2.4.1
+* Aggregated Dependabot Changelogs:
+  * Bumps [tests/acceptance/image-tests](https://github.com/mendersoftware/mender-image-tests) from `457ea99` to `713c563`.
+    - [Release notes](https://github.com/mendersoftware/mender-image-tests/releases)
+    - [Commits](https://github.com/mendersoftware/mender-image-tests/compare/457ea99937642ec29da53a9a2d30a51067cf8dc0...713c56364b79a18ad86e6731b1a602f0f3d9d233)
+  * Bump tests/acceptance/image-tests from `457ea99` to `713c563`
+
+
+## mender-convert 2.2.1
+
+_Released 11.05.2020_
+
+### Statistics
+
+A total of 144 lines added, 96 removed (delta 48)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 6 (60.0%) |
+| Ole Petter Orhagen | 2 (20.0%) |
+| Lluis Campos | 2 (20.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 119 (81.0%) |
+| Lluis Campos | 23 (15.6%) |
+| Ole Petter Orhagen | 5 (3.4%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Ole Petter Orhagen | 3 (3.1%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 10 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 147 (100.0%) |
+
+| Employers with the most hackers (total 3) | |
+|---|---|
+| Northern.tech | 3 (100.0%) |
+
+### Changelogs
+
+#### mender-convert (2.2.1)
+
+New changes in mender-convert since 2.2.0:
+
+* grub-efi: Fix inability to upgrade to a different kernel.
+* Fix massive root filesystem corruption under some build conditions.
+* beaglebone: Implement workaround for broken U-Boot and kernel.
+  ([MEN-3952](https://tracker.mender.io/browse/MEN-3952))
+* beaglebone: Remove U-Boot integration, which has not worked
+  for a long time. U-Boot will still be used for booting, but GRUB will
+  be used for integration with Mender, by chainloading via UEFI.
+  ([MEN-3952](https://tracker.mender.io/browse/MEN-3952))
+* Install the latest Mender-client release (2.4.1) by default.
+
+
+## Mender client 2.4.1
+
+_Released 11.03.2020_
+
+### Statistics
+
+A total of 397 lines added, 161 removed (delta 236)
+
+| Developers with the most changesets | |
+|---|---|
+| Ole Petter Orhagen | 4 (36.4%) |
+| Peter Grzybowski | 3 (27.3%) |
+| Lluis Campos | 3 (27.3%) |
+| Fabio Tranchitella | 1 (9.1%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Ole Petter Orhagen | 314 (77.0%) |
+| Peter Grzybowski | 51 (12.5%) |
+| Lluis Campos | 42 (10.3%) |
+| Fabio Tranchitella | 1 (0.2%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 11 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 408 (100.0%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 4 (100.0%) |
+
+### Changelogs
+
+#### mender (2.4.1)
+
+New changes in mender since 2.4.0:
+
+* Add support for probing the U-Boot environment separator
+  ([MEN-3970](https://tracker.mender.io/browse/MEN-3970))
+* Fix: Do not switch boot partitions on installation errors on the
+  active partition.
+  ([MEN-3980](https://tracker.mender.io/browse/MEN-3980))
+* Allow to load private key from the Security configuration section
+  ([MEN-3924](https://tracker.mender.io/browse/MEN-3924))
+
+
+## Mender client 2.3.1
+
+_Released 11.03.2020_
+
+### Statistics
+
+A total of 211 lines added, 26 removed (delta 185)
+
+| Developers with the most changesets | |
+|---|---|
+| Ole Petter Orhagen | 5 (55.6%) |
+| Lluis Campos | 3 (33.3%) |
+| Fabio Tranchitella | 1 (11.1%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Ole Petter Orhagen | 179 (80.6%) |
+| Lluis Campos | 42 (18.9%) |
+| Fabio Tranchitella | 1 (0.5%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 9 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 222 (100.0%) |
+
+| Employers with the most hackers (total 3) | |
+|---|---|
+| Northern.tech | 3 (100.0%) |
+
+### Changelogs
+
+#### mender (2.3.1)
+
+New changes in mender since 2.3.0:
+
+* Add support for probing the U-Boot environment separator
+  ([MEN-3970](https://tracker.mender.io/browse/MEN-3970))
+* Fix: Do not switch boot partitions on installation errors on the
+  active partition.
+  ([MEN-3980](https://tracker.mender.io/browse/MEN-3980))
+
+
+
 ## meta-mender dunfell-v2020.10
 
 _Released 10.13.2020_

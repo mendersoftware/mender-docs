@@ -75,7 +75,7 @@ MENDER_FEATURES_DISABLE_append = " mender-systemd"
 
 Also, you do not need any daemon-related configuration items in your `local.conf` as outlined in [the section on configuring the Yocto Project build](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build).
 
-! If you disable Mender running as a daemon under `systemd`, you must run all required Mender commands from the CLI or scripts. Most notably, you need to run `mender -commit` after booting into and verifying a successful deployment. When running in managed mode, any pending `mender -commit` will automatically be run by the Mender daemon after it starts. See [Modes of operation](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) for more information about the difference.
+! If you disable Mender running as a daemon under `systemd`, you must run all required Mender commands from the CLI or scripts. Most notably, you need to run `mender -commit` after booting into and verifying a successful deployment. When running in managed mode, any pending `mender -commit` will automatically run by the Mender daemon after it starts. See [Modes of operation](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) for more information about the difference.
 
 
 ## Identity
@@ -100,9 +100,20 @@ recipe file.
 
 ## Inventory
 
-In order to include an inventory script, simply augment the `mender-client` recipe and install the
-script in the expected folder. For example, create a `mender-client_%.bbappend` file in your layer,
-and add this:
+Mender comes with some inventory scripts available out of the box. These are:
+
+* mender-inventory-bootloader-integration
+* mender-inventory-geo
+* mender-inventory-hostinfo
+* mender-inventory-network
+* mender-inventory-os
+* mender-inventory-provides
+* mender-inventory-rootfs-type
+* mender-inventory-update-modules
+
+In order to include an inventory script of your own making, augment the
+`mender-client` recipe and install the script in the expected folder. For
+example, create a `mender-client_%.bbappend` file in your layer, and add this:
 
 ```bash
 FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-INVENTORY-SCRIPT>"
@@ -117,6 +128,19 @@ do_install_append() {
 Replace `<DIRECTORY-WITH-INVENTORY-SCRIPT>` with the path to the `mender-inventory-custom-attribute`
 file, relative to the recipe file. The string `custom-attribute` can be replaced with a string of
 your choice, as long as the filename starts with `mender-inventory-`.
+
+### Remove the mender-inventory-geolocation script
+
+By default the Mender client installs with the `mender-inventory-geo` script
+enabled. To some users this is undesireable, as the script relies on a third
+party service for geolocating the device through its IP address. If this is
+applicable to you, then disable the script through setting:
+
+```bash
+PACKAGECONFIG_remove_pn-mender-client = " inventory-network-scripts"
+```
+
+in your `local.conf` file.
 
 
 ## Update Modules
@@ -168,10 +192,12 @@ do_install_append() {
 }
 ```
 
-Replace `<DIRECTORY-WITH-UPDATE-MODULE>` with the path to the `custom-update-module` file, relative
-to the recipe file. The name, custom-update-module, can be any string, and must be set to the name
-of the payload type that will be used for Artifacts that will be installed with this Update
-Module. See [Create a custom update module](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md)
+Replace `<DIRECTORY-WITH-UPDATE-MODULE>` with the path to the
+`custom-update-module` file, relative to the recipe file. The name,
+"custom-update-module", can be any string, and must have the same name as the
+payload type used for Artifacts installed with this Update Module.
+See [Create a custom update
+module](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md)
 for more information.
 
 

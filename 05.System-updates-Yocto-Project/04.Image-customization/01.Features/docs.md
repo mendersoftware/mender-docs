@@ -7,8 +7,9 @@ taxonomy:
 When inheriting the `mender-full` or `mender-full-ubi` class in `local.conf`,
 Mender provides a default set of features that covers a wide range of boards and
 needs. However, sometimes it may be necessary to enable or disable certain
-features depending on the needs of the particular build. This can be done
-using the `MENDER_FEATURES_ENABLE` and `MENDER_FEATURES_DISABLE` variables.
+features depending on the needs of the particular build. Use
+`MENDER_FEATURES_ENABLE` and `MENDER_FEATURES_DISABLE` variables to enable and
+disable features provided by Mender.
 
 To enable a feature, add this to your `local.conf`:
 
@@ -30,9 +31,8 @@ MENDER_FEATURES_DISABLE_append = " <FEATURE>"
 Below is a list of the features that Mender provides, with descriptions:
 
 * `mender-bios` - Enables booting of traditional BIOS based systems. Normally
-  enabled together with `mender-grub`. If `mender-grub` is enabled, but
-  `mender-bios` is disabled, then it is assumed that the booting process uses
-  the UEFI standard.
+  enabled together with `mender-grub`. Disabling this feature with `mender-grub`
+  enabled will assume the booting process uses the UEFI standard.
 
 * `mender-growfs-data` - Enable dynamic resizing of the data filesystem through systemd-growfs
 
@@ -42,20 +42,17 @@ Below is a list of the features that Mender provides, with descriptions:
   layout.
 
 * `mender-image-bios` - Enables a build that provides a Mender partitioned image
-  for use with traditional BIOS based systems (`.biosimg`). If this is enabled
-  then `mender-image` needs to be enabled too.
+  for use with traditional BIOS based systems (`.biosimg`). Enabling this
+  feature requires enabling `mender-image` too.
 
 * `mender-image-sd` - Enables a build that provides a Mender partitioned SD card
-  image (`.sdimg`). If this is enabled then `mender-image` needs to be enabled
-  too.
+  image (`.sdimg`). Enabling this feature requires enabling `mender-image` too.
 
 * `mender-image-ubi` - Enables a build that provides a Mender partitioned UBI
-  image (`.ubimg`). If this is enabled then `mender-image` needs to be enabled
-  too.
+  image (`.ubimg`). Enabling this feature requires enabling `mender-image` too.
 
 * `mender-image-uefi` - Enables a build that provides a Mender partitioned UEFI
-  image (`.uefiimg`). If this is enabled then `mender-image` needs to be enabled
-  too.
+  image (`.uefiimg`). Enabling this feature requires enabling `mender-image` too.
 
 * `mender-install` - Enables a build that has Mender installed, with
   configuration. Note that this does not include the default Mender partition
@@ -113,4 +110,6 @@ The currently available classes are:
     * `mender-growfs-data`
 
 <!--AUTOVERSION: "Yocto releases prior to 2.6 (%)"/ignore-->
-! Yocto releases prior to 2.6 (thud) used a different feature set by default. Use the following command to check exactly which features are enabled: `bitbake -e core-image-minimal | grep '^DISTRO_FEATURES='`
+! Yocto releases prior to 2.6 (thud) used a different feature set by default.
+! Use the following command to inspect features enabled for your build:
+! `bitbake -e core-image-minimal | grep '^DISTRO_FEATURES='`

@@ -5,33 +5,47 @@ taxonomy:
     label: tutorial
 ---
 
-This document outlines the steps needed to build a [Yocto Project](https://www.yoctoproject.org/?target=_blank) image for a device.
+This document outlines the steps needed to build a [Yocto
+Project](https://www.yoctoproject.org/?target=_blank) image for a device.
 The build output will most notably include:
-* a disk image that can be flashed to the device storage during initial provisioning
-* an Artifact containing rootfs filesystem image file that Mender can deploy to your provisioned device, it has suffix `.mender`
+* a disk image for flashing the device storage during initial provisioning
+* an Artifact containing rootfs filesystem image file that Mender can deploy to
+  your provisioned device, it has suffix `.mender`
 
-!!! If you do not want to build your own images for testing purposes, the [Get started](../../01.Get-started/chapter.md) tutorials provide links to several [prebuilt images](../../09.Downloads/docs.md#disk-images).
+!!! If you do not want to build your own images for testing purposes, the 
+!!! [Get started](../../01.Get-started/chapter.md) tutorials provide links to
+!!! several [prebuilt images](../../09.Downloads/docs.md#disk-images).
 
 ## What is *meta-mender*?
 
-[meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank) is a set of layers that enable the creation of a Yocto Project image where the Mender client is part of the image. With Mender installed and configured on the image, you can deploy image updates and benefit from features like automatic roll-back, remote management, logging and reporting.
+[meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank) is a
+set of layers that enable the creation of a Yocto Project image where the Mender
+client is part of the image. With Mender installed and configured on the image,
+you can deploy image updates and benefit from features like automatic roll-back,
+remote management, logging and reporting.
 
-Inside *meta-mender* there are several layers. The most important one is *meta-mender-core*, which is required by all builds that use Mender. *meta-mender-core* takes care of:
+Inside *meta-mender* there are several layers. The most important one is
+*meta-mender-core*, which is required by all builds that use Mender.
+*meta-mender-core* takes care of:
 
 * Compiling Mender for devices
 * [Partitioning the image correctly](../02.Board-integration/01.Partition-configuration/docs.md)
 * [Setting up the bootloader to support Mender](../02.Board-integration/02.Bootloader-support/docs.md)
 
-Each one of these steps can be configured further, see the linked sections for more details.
+Refer to the linked sections for details on configuring each of these steps.
 
-The other layers in *meta-mender* provide support for specific boards used in Mender testing.
+The other layers in *meta-mender* provide support for specific boards used in
+Mender testing suite.
 
 ## What is *meta-mender-community*?
 
-[meta-mender-community](https://github.com/mendersoftware/meta-mender-community?target=_blank) is a set of layers containing board-specific settings for Mender integration.
+[meta-mender-community](https://github.com/mendersoftware/meta-mender-community?target=_blank)
+is a set of layers containing board-specific settings for Mender integration.
 
 <!--AUTOVERSION: "www.yoctoproject.org/docs/%"/ignore-->
-!!! For general information about getting started with Yocto Project, it is recommended to read the [Yocto Project Quick Build tutorial](https://www.yoctoproject.org/docs/3.1.1/brief-yoctoprojectqs/brief-yoctoprojectqs.html?target=_blank).
+!!! For general information about getting started with Yocto Project, it is
+!!! recommended to read the
+!!! [Yocto Project Quick Build tutorial](https://www.yoctoproject.org/docs/3.1.1/brief-yoctoprojectqs/brief-yoctoprojectqs.html?target=_blank).
 
 
 ## Prerequisites
@@ -275,7 +289,7 @@ ARTIFACTIMG_FSTYPE = "ext4"
 
 #### Building the image
 
-Once all the configuration steps are done, build an image with bitbake:
+Once you are done with all the configuration steps, build an image with bitbake:
 
 ```bash
 bitbake <YOUR-TARGET>
@@ -303,7 +317,7 @@ Mender running already. Please proceed to [Provisioning a new device](../20.Prov
 for steps to do this.
 
 On the other hand, if you already have Mender running on your device and want to deploy a rootfs update
-using this build, you should use the [Mender Artifact](../../02.Overview/02.Artifact/docs.md) files,
+using this build, you should use the [Mender Artifact](../../02.Overview/03.Artifact/docs.md) files,
 which have `.mender` suffix.
 
 !!! If you built for one of the virtual Mender reference boards (`qemux86-64` or `vexpress-qemu`), you can start up your newly built image with the script in `../meta-mender/meta-mender-qemu/scripts/mender-qemu` and log in as *root* without password.

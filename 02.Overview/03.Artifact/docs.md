@@ -8,8 +8,10 @@ In order to ensure a secure and robust update process, Mender needs *additional 
 alongside the raw bits of the update payload. Depending on the version of the Artifact used,
 the metadata might be different, but must contain the:
 
-* *Name* of the software build, used to track installed software on a given device
-  and ensures that identical software versions are not redeployed.
+* *Name* of the software build, used to track names of Artifacts and ensures
+  that the same Artifact is not deployed twice in a row.
+* *Version* of the software build, used to track installed software on a given
+  device.
 * *Device types* the software is *compatible* with, so that software is not
   deployed to incompatible hardware (e.g. CPU architecture, hardware floating
   point support, peripheral drivers).
@@ -30,8 +32,8 @@ Internally, a Mender Artifact is simply a file archive in the
 It contains several files for incorporating versioning, extensions, metadata and
 the payload file(s).
 
-Artifact payloads support multiple compression algorithms, and are compressed by
-default.
+Mender Artifact compresses artifact payloads by default and supports multiple
+compression algorithms to do so.
 
 The diagram below shows an example of the main attributes and structure of a
 Mender Artifact file.
@@ -45,13 +47,44 @@ You can find more details about the Mender Artifact format in the
 [Mender Artifact specification](https://github.com/mendersoftware/mender-artifact/blob/3.4.0/Documentation?target=_blank).
 
 
-## Versions
+### *Provides* and *Depends*
+
+In addition to *Version* information, an Artifact may contain additional
+*Provides* fields which the Mender client will store on the device during the
+Artifact installation.
+
+In addition to *Device types* information, an Artifact may contain additional
+*Depends* fields. On Artifact installation, all *Depends* fields need to
+match a corresponding *Provides* field on the device.
+
+An example of this is the checksum of a read-only root filesystem. During the 
+installation of a [delta Artifact](https://hub.mender.io/t/robust-delta-update-rootfs/1144?target=_blank),
+the server uses the information about the existing checksum to decide which
+Artifact to deploy. Take an Artifact with these fields:
+
+```console
+Provides:
+    rootfs-image.checksum: 012345...
+Depends:
+    rootfs-image.checksum: abcdef...
+```
+
+The Artifact in the example above can only be installed on a device which has
+`Provides: rootfs-image.checksum: abcdef...` stored in its database, because of
+the *Depends* entry. And future Artifacts need to list `Depends:
+rootfs-image.checksum: 012345...` in their dependencies to match the newly
+installed Artifact.
+
+Not all Artifacts have dependencies; if they don't, then it doesn't matter what
+the *Provides* values on the device are.
+
+
+## Artifact format versions
 
 Mender is constantly evolving to adapt to the needs of its users, and the Mender
-Artifact format has several revisions. See the
-[Compatibility section](../14.Compatibility/docs.md) for an overview of
-which versions of the Mender Artifact format are supported by which Mender client
-versions.
+Artifact format has several revisions. See the [Compatibility
+section](../14.Compatibility/docs.md) for an overview of which versions of the
+Mender Artifact format are supported by which Mender client versions.
 
 
 ## Work with Mender Artifacts

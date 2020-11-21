@@ -25,7 +25,7 @@ If you have not yet prepared a device visit one of the following:
 
 ### The identity of your device
 
-When preauthorizing a device you need to know its [identity](../../02.Overview/07.Identity/docs.md). This is one or more key-value attributes, depending on the identity scheme you are using. If you connect your device so it shows up as pending in the Mender server, you will see its identity in the Mender server UI (note it is *not* the ID of the device, but the key-value attributes under Identity that are used for preauthorization).
+When preauthorizing a device you need to know its [identity](../../02.Overview/07.Identity/docs.md). This is one or more key-value attributes, depending on the identity scheme you are using. If you connect your device so it shows up as pending in the Mender server, you will see its identity in the Mender server UI. Note that preauthorization is *not* based on the ID of the device, only on the key-value attributes under Identity.
 
 <!--AUTOVERSION: "mender/blob/%"/mender-->
 By default the Mender client uses the [MAC address of the first interface](https://github.com/mendersoftware/mender/blob/2.4.1/support/mender-device-identity?target=_blank) on the device as the device identity, for example `mac=02:12:61:13:6c:42`.
@@ -37,7 +37,7 @@ Once your device boots with a newly provisioned disk image, it should already be
 
 ![Mender UI - device pending authorization](device-pending-authorization.png)
 
-If your device does not show as pending authorization in the Mender server once it is booted with the disk image, you need to diagnose this issue before continuing. See the [troubleshooting section on connecting devices](../../201.Troubleshoot/05.Device-Runtime/docs.md#mender-server-connection-issues) in this case.
+If your device does not show as pending authorization in the Mender server once it boots with the disk image, you need to diagnose this issue before continuing. See the [troubleshooting section on connecting devices](../../201.Troubleshoot/05.Device-Runtime/docs.md#mender-server-connection-issues) in this case.
 
 
 ### A CLI environment for your server
@@ -54,7 +54,7 @@ Download the `mender-artifact` tool from the [Downloads section](../../09.Downlo
 
 Before we preauthorize the device, we need its 1) identity and 2) public key. You should already know the identity of your device from the [prerequisite above](#the-identity-of-your-device).
 
-When preauthorizing a device, device keys will be generated on a separate system (not on the device), and then provisioned into the device storage. This way we can keep records of the public key of the device and ensure sufficient entropy during key generation, so the resulting keys are secure random.
+We will generate the keys on a separate system (not on the device), and then provision them into the device storage. This way we can keep records of the public key of the device and ensure sufficient entropy during key generation, so the resulting keys are secure random.
 
 !!! Make sure the system you generate keys on is adequately secured, as it will also generate the device private keys. You should consider securely deleting (e.g. `shred`) the *private* keys after provisioning the device if you do not truly need a record of them (you can keep the public keys).
 
@@ -80,7 +80,7 @@ Run it without parameters:
 ./keygen-client
 ```
 
-The generated Mender client keypair is placed in a subdirectory `keys-client-generated`:
+You will find the generated Mender client keypair in a subdirectory `keys-client-generated`:
 
 ```bash
 keys-client-generated/
@@ -93,7 +93,7 @@ keys-client-generated/
 
 ## Preauthorize your device
 
-Now that we have the device's identity and public key, we will use the Mender server management REST APIs to preauthorize it. The APIs are documented in [API chatper](../../200.API/?target=_blank#management-apis).
+Now that we have the device's identity and public key, we will use the Mender server management REST APIs to preauthorize it. You can review the API documentation in this [API chapter](../../200.API/?target=_blank#management-apis).
 
 
 ### Make sure there are no existing authentication sets for your device
@@ -125,7 +125,7 @@ curl -H "Authorization: Bearer $JWT" -X DELETE $MENDER_SERVER_URI/api/management
 If there is only one authentication set for the preauthorized device, the above
 will also delete the device.
 
-Once this is done, re-run the command above to generate the `devauth.json` file again and verify that your device identity does not exist anywhere.
+Now, re-run the command above to generate the `devauth.json` file again and verify that your device identity does not exist anywhere.
 
 In the event that the decommissioning operation fails, perform a [manual database cleanup via the provided CLI command](../../201.Troubleshoot/04.Mender-Server/docs.md#cleaning-up-the-deviceauth-database-after-device-decommissioning).
 

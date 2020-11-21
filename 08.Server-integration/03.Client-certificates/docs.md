@@ -4,9 +4,9 @@ taxonomy:
     category: docs
 ---
 
-Mender supports setting up a reverse proxy at the edge of the network, which can authenticate devices using TLS client certificates. Each client is equipped with a certificate signed by a CA certificate (Certificate Authority), and the edge proxy authenticates devices by verifying this signature. Authenticated devices are automatically authorized in the Mender backend, and do not need manual approval.
+Mender supports setting up a reverse proxy at the edge of the network, which can authenticate devices using TLS client certificates. Each client presents a certificate signed by a CA certificate (Certificate Authority), and the edge proxy authenticates devices by verifying this signature. Authenticated devices are automatically authorized in the Mender backend, and do not need manual approval.
 
-This is in particular useful in a mass production setting because you can sign client certificates when they are manufactured so they automatically get accepted into the Mender server when your customer turns them on, which might happen several months after manufacturing.
+This is in particular useful in a mass production setting because you can sign client certificates during the manufacturing process, so they automatically get accepted into the Mender server when your customer turns them on (which might happen several months after manufacturing).
 
 See [Device authentication](../../02.Overview/13.Device-authentication/docs.md) for a general overview of how device authentication works in Mender.
 
@@ -79,7 +79,7 @@ Then generate a certificate from the newly generated private key:
 openssl req -new -x509 -key ca-private.key -out ca-cert.pem -config ca-cert.conf -days $((365*10))
 ```
 
-! The `-days` argument specifies how long the certificate is valid, and can be adjusted if needed. The example expression gives a certificate which is valid for approximately 10 years. Since the CA certificate will only be used on the Mender server, it is usually not important that it expires, and it's better to have a long expiry time to avoid having to rotate certificates on the devices.
+! The `-days` argument specifies how long the certificate is valid, and you can adjust it as needed. The example expression gives a certificate which is valid for approximately 10 years. Since the CA certificate will only be used on the Mender server, it is usually not important that it expires, and it's better to have a long expiry time to avoid having to rotate certificates on the devices.
 
 
 ### Generate a server certificate
@@ -129,12 +129,12 @@ Now that we have both a CA certificate, and a certificate request for the server
 openssl x509 -req -CA ca-cert.pem -CAkey ca-private.key -CAcreateserial -in server-cert.req -out server-cert.pem -days $((365*2))
 ```
 
-! The `-days` argument specifies how long the certificate is valid, and can be adjusted if needed. The example expression gives a certificate which is valid for approximately 2 years.
+! The `-days` argument specifies how long the certificate is valid, and you can adjust it as needed. The example expression gives a certificate which is valid for approximately 2 years.
 
 
 ### Generate a client certificate
 
-When preparing a client certificate for a device, the certificate key is generated on a separate system (not on the device), and then provisioned into the device storage. This way you can keep records of the public key of the device and ensure sufficient entropy during key generation, so the resulting keys are securely random.
+When preparing a client certificate for a device, you generate the certificate key on a separate system (not on the device), and then provision it into the device storage. This way you can keep records of the public key of the device and ensure sufficient entropy during key generation, so the resulting keys are securely random.
 
 !!! Make sure the system you generate keys on is adequately secured, as it will also generate the device private keys. You should consider securely deleting (e.g. `shred`) the *private* keys after provisioning the device if you do not truly need a record of them (you can keep the public keys).
 
@@ -182,7 +182,7 @@ Now that we have both a CA certificate, and a certificate request for the device
 openssl x509 -req -CA ca-cert.pem -CAkey ca-private.key -CAcreateserial -in device-cert.req -out device-cert.pem -days $((365*10))
 ```
 
-! The `-days` argument specifies how long the certificate is valid, and can be adjusted if needed. The example expression gives a certificate which is valid for approximately 10 years. Since the certificate will only be used by the server to authenticate devices, it is usually not desirable that it expires after a short time, since this requires certificate rotation on the devices. To manage compromised devices, it is often better to maintain a certificate blacklist on the server.
+! The `-days` argument specifies how long the certificate is valid, and you can adjust it as needed. The example expression gives a certificate which is valid for approximately 10 years. Since the certificate will only be used by the server to authenticate devices, it is usually not desirable that it expires after a short time, since this requires certificate rotation on the devices. To manage compromised devices, it is often better to maintain a certificate blacklist on the server.
 
 You need to repeat the generation and signing of the client certificate for each device, so these are natural steps to automate in your device provisioning workflow.
 
@@ -193,7 +193,7 @@ The mTLS ambassador acts as an edge proxy running in front of your Mender server
 
 The mTLS ambassador is distributed as a Docker image and can be run on a Docker host, using docker-compose or on Kubernetes.
 
-The following certificates are needed to start the service:
+You need the following certificates to start the service:
 
 * `server.crt`, a regular HTTPS server certificate the ambassador can use to terminate the TLS connections
 * `server.key`, the corresponding private key for the certificate above
@@ -259,7 +259,7 @@ Next, open `mender.conf` in a text editor, and add the following content:
   }
 ```
 
-Make sure that the result is valid JSON, in particular that commas appear on every line except the last in a block. The snippet should be added inside the first set of curly braces in the file. For example, it might look like this in a typical `mender.conf` file:
+Make sure that the result is valid JSON, in particular that commas appear on every line except the last in a block. Add the snippet inside the first set of curly braces in the file. For example, it might look like this in a typical `mender.conf` file:
 
 ```json
 {
@@ -294,6 +294,6 @@ Then insert the SD card back into your device and boot it.
 
 ## Verify that the device is accepted
 
-If everything went as intended, your device shows up as `accepted` status in the Mender server. You can log in to the Mender UI to ensure your device is listed and reports inventory.
+If everything went as intended, your device shows up as `accepted` status in the Mender server. You can log in to the Mender UI to ensure your device appears on the device list and reports inventory.
 
-If your device is not showing up, make sure the certificates are installed correctly both on the server and on the device. Check client logs and/or server logs for error messages that can identify what is wrong. See the [troubleshooting section on connecting devices](../../201.Troubleshoot/05.Device-Runtime/docs.md#mender-server-connection-issues) in this case.
+If your device is not showing up, make sure you installed the certificates correctly - both on the server and on the device. Check client logs and/or server logs for error messages that can identify what is wrong. See the [troubleshooting section on connecting devices](../../201.Troubleshoot/05.Device-Runtime/docs.md#mender-server-connection-issues) in this case.

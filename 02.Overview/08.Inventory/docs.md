@@ -68,3 +68,8 @@ fields to create Dynamic groups (see the screenshot below).
 
 For more information on customizing the Inventory attributes,
 please refer to the [client configuration section](../../03.Client-installation/04.Inventory/docs.md).
+
+!! Currently, there is one "_reserved_" attribute in the *identity* scope: _status_.
+!! It stores the status (`accepted`, `rejected`, etc.) of a device and changes whether
+!! the device status changes. Therefore, you cannot modify it directly.
+

@@ -42,6 +42,9 @@ click the **NEXT** button.
 
 ![congratulations server](Image_9.png)
 
+On the next screen, review your deployment configuration and click **CREATE**.
+This will take you to the overview of the deployments and you should see it
+pending as it is awaiting devices.
 
 After approximately 30 seconds you will see your finished deployment in the
 **Finished** tab. There should also be a tooltip to the URL of your deployed web
@@ -76,13 +79,13 @@ Drag-and-drop or click **browse** to select the file for upload.
 ![Upload web page](Image_15.png)
 
 When you upload a single file to the Mender server, you will get a wizard to
-create a [Mender Artifact](../../02.Overview/02.Artifact/docs.md)
+create a [Mender Artifact](../../02.Overview/03.Artifact/docs.md)
 of the type `file`, which allows you deploy single files to your device. You can
 use the default values pre-filled by the Mender UI and click **NEXT**.
 
 ![Upload web page](Image_16.png)
 
-A [Mender Artifact](../../02.Overview/02.Artifact/docs.md) contains
+A [Mender Artifact](../../02.Overview/03.Artifact/docs.md) contains
 two mandatory fields:
 
 - **Device type** - Device types the software is compatible with, so that
