@@ -7,6 +7,9 @@ taxonomy:
 Mender is a secure and robust software update system designed to handle
 large number of devices. Mender is designed according to a simple client/server
 architecture, allowing central management of deployments to all devices.
+It also supports an add-on mechanism, which currently has one implementation
+allowing you to open an interactive remote terminal session to any device
+under Mender control.
 
 ## The architecture of a software update
 
@@ -111,3 +114,18 @@ Example using the DFU protocol to update an external microcontroller:
 
 You can find more information on above example in the
 [How to do a proxy deployment to an FRDM-K64F](https://hub.mender.io/t/how-to-do-a-proxy-deployment-to-an-frdm-k64f-device-connected-to-a-raspberry-pi-3/1619?target=_blank) tutorial.
+
+
+## The architecture of a Mender add-on
+
+Mender supports add-ons in a form of standalone binaries exchanging messages
+with the client over [DBus](https://dbus.freedesktop.org/doc/api/html/).
+One example is the [mender-shell](https://github.com/mendersoftware/mender-shell)
+which is an implementation of remote terminal access to devices.
+The below picture shows the architecture of the solution.
+
+![addon-architecture](addon-architecture-device.png)
+
+Please refer to the
+[remote terminal overview section](../../02.Overview/14.Remote.Terminal/docs.md)
+for more details.
