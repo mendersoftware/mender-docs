@@ -35,6 +35,18 @@ They are stored in `/var/lib/mender/`, named by the deployment id,
 for example `deployments.0001.fcd8bca2-6dae-488e-969e-23559c674ba5.log`.
 
 
+### Current status
+
+In order to see what the Mender client is doing currently, follow the log
+as it is being written with this command:
+
+```
+journalctl -u mender-client -f
+```
+
+To stop it use Ctrl+C.
+
+
 ## Certificate expired or not yet valid
 
 The Mender client can not connect to the server, typically the first time it tries, and emits messages like the following to syslog at the device:
@@ -123,7 +135,7 @@ openssl s_client -showcerts -connect mender.example.com:443 < /dev/null 2>/dev/n
 
 If these mismatch, then you need to update `/etc/mender/server.crt` on your client.
 You can do this manually for testing purposes, and you should
-[include the certificates in your Yocto Project build](../../05.System-updates-Yocto-Project/06.Build-for-production/docs.md#including-the-client-certificates).
+[include the certificates in your Yocto Project build](../../05.System-updates-Yocto-Project/06.Build-for-production/docs.md#Preparing-the-server-certificates-on-the-client).
 
 ## Depth zero self-signed certificate, openssl verify rc: 18
 
@@ -171,7 +183,7 @@ When deploying an update with the Mender client, you see a log message similar t
 ERRO[0001] update install failed: failed to read and install update: reader: unsupported version: 2  module=state
 ```
 
-The problem here is most likely that you have built [a new version of the Artifact format](../../02.Overview/02.Artifact/docs.md#versions)
+The problem here is most likely that you have built [a new version of the Artifact format](../../02.Overview/03.Artifact/docs.md#artifact-format-versions)
 that your Mender Client does not support. It could also be that you are building a very old version of the
 Artifact format that your new version of the Mender Client does not support.
 

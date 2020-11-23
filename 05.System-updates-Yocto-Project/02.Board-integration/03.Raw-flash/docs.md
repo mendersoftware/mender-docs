@@ -9,7 +9,7 @@ This chapter introduces the technical details of raw flash support in Mender.
 
 ## Overview
 
-Support for raw flash memory under Linux is in general more complicated than
+Support for raw flash memory under Linux is generally more complicated than
 working with block devices. It is advised to have a fully working bootloader,
 kernel and rootfs before introducing Mender.
 
@@ -32,8 +32,8 @@ next example section]().
 
 The Mender Yocto layer comes with support for auto-configuring most aspects of
 the Flash specific components, including partitioning and the U-Boot
-bootloader. Some configuration values need to be set, however, and they are
-described below.
+bootloader. Some configuration values need manual intervention, however, and
+they are described below.
 
 For more information about these or other variables that affect a Flash build,
 see [the Variables section](../../99.Variables/docs.md).
@@ -105,28 +105,29 @@ value of `CONFIG_MTDPARTS_DEFAULT` for the particular board.
 
 #### Physical erase block (PEB) size
 
-Mender needs to know what the physical erase block size of the Flash store
-is. It can be set using the following variable:
+Mender needs to know what the physical erase block size of the Flash storage
+is by setting `MENDER_STORAGE_PEB_SIZE`. For example:
 
 ```bash
 # PEB size of 128KiB, a common size.
 MENDER_STORAGE_PEB_SIZE = "131072"
 ```
 
-If you don't what it is it can be found by running this command on the
-board. This assumes that you have a working image installed on the board, and
-that the `mtdinfo` tool is available.
+If you do not know what the PEB size is, you can run this command on the board.
 
 ```bash
 mtdinfo -a | grep -i 'eraseblock size:' |sort -u
 ```
+
+This assumes that you have a working image installed on the board, and
+that the `mtdinfo` tool is available.
 
 
 #### Bootloader
 
 This is only relevant if you are using [the `mtdimg` image
 type](#image-types). If you need to flash a bootloader into the `u-boot` MTD
-partition, it should be specified as a bare filename, like this:
+partition, provide the bootloader filename, like this:
 
 ```bash
 MENDER_IMAGE_BOOTLOADER_FILE = "u-boot.bin"
@@ -135,8 +136,9 @@ MENDER_IMAGE_BOOTLOADER_FILE = "u-boot.bin"
 
 ### Image types
 
-There are three relevant image types that can be built when using raw flash.
-They can be enabled by adding them to the `IMAGE_FSTYPES` Yocto variable.
+
+There are three relevant image types when building for raw flash devices.
+Append the image types to the `IMAGE_FSTYPES` Yocto variable to enable them.
 
 #### ubifs
 

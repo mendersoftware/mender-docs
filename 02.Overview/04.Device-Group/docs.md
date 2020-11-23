@@ -43,5 +43,5 @@ You can use device groups for more than just viewing purposes. Their primary fun
 is to serve as the target of deployments.
 
 !!! Deployments to dynamic groups behave differently than deployments to static
-!!! groups, see [Deployment section](../04.Deployment/docs.md) for more
+!!! groups, see [Deployment section](../05.Deployment/docs.md) for more
 !!! information.

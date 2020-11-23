@@ -5,7 +5,7 @@ taxonomy:
     label: tutorial
 ---
 
-Mender uses [Artifacts](../../02.Overview/02.Artifact/docs.md) to package the
+Mender uses [Artifacts](../../02.Overview/03.Artifact/docs.md) to package the
 software updates for delivery to devices. As a user you manage the Artifacts
 with the help of the `mender-artifact` command. You can get it either as a pre-built
 executable from the [downloads section](../../09.Downloads)
@@ -22,6 +22,7 @@ you can use the following command to generate an Artifact that contains the enti
 mender-artifact write rootfs-image \
    -t beaglebone \
    -n release-1 \
+   --software-version rootfs-v1 \
    -f rootfs.ext4 \
    -o artifact.mender
 ```
@@ -29,10 +30,13 @@ mender-artifact write rootfs-image \
 Note that the `rootfs.ext4` filesystem image must be properly integrated with Mender for successful deployments. This generally means that you either generated it using [the Yocto Project](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md), or converted it from an existing
 [Debian image](../../04.System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md).
 
-The remaining flags specify the parameters used to [match devices to deployments](../../02.Overview/04.Deployment/docs.md#Algorithm-for-selecting-the-Deployment-for-the-Device) as follows:
+The remaining flags specify the parameters used to [match devices to deployments](../../02.Overview/05.Deployment/docs.md#Algorithm-for-selecting-the-Deployment-for-the-Device) as follows:
 * `-t`: specifies the compatible device types.
 * `-n`: specifies the name of the Artifact.
+* `--software-version` specifies the version string for the rootfs-image.
 * `-o`: specifies the path to the output file.
+
+!!! Use the Mender Web UI to see which rootfs-image version is currently installed on the device, and which Artifact was the last one to be installed.
 
 ### Create an application update Artifact
 
@@ -54,12 +58,14 @@ mender-artifact write module-image \
   --device-type raspberrypi4 \
   -o artifact.mender \
   -n updated-authorized_keys-1.0 \
+  --software-name authorized_keys \
+  --software-version 1.0 \
   -f dest_dir \
   -f filename \
   -f authorized_keys
 ```
 
-Note specifically that in this case we are creating a *module-image*, using the [single file](https://hub.mender.io/t/single-file/486/26?target=_blank) (Update Module)[(../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md]. The Artifact created will be compatible with the *raspberrypi4* device type, although you can specify multiple device types if needed. The name of the Artifact is declared as *updated-authorized_keys-1.0* and the payload files we created earlier are included. The resulting file `artifact.mender` holds the Artifact. Please note that, _single-file_ is both the name of the Update Module and the Artifact type. Please note also, that the payload files must use the name specified here.
+Note specifically that in this case we are creating a *module-image*, using the [single file](https://hub.mender.io/t/single-file/486/26?target=_blank) [Update Module](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md). The Artifact created will be compatible with the *raspberrypi4* device type, although you can specify multiple device types if needed. The name of the Artifact is declared as *updated-authorized_keys-1.0*, we set the name of the software we are installing to *authorized_keys*, and the version is set to *1.0*. The payload files we created earlier are included, and the resulting file `artifact.mender` holds the Artifact. Please note that, _single-file_ is both the name of the Update Module and the Artifact type. Please note also, that the payload files must use the name specified here.
 
 #### Update Modules generation script
 

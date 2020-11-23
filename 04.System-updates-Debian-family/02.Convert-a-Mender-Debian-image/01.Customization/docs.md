@@ -14,11 +14,7 @@ The configuration files are a means to customize the conversion process for
 `mender-convert`. In the `configs/` directory, there are customization scripts
 which add support for board-specific configurations. A run of `mender-convert`
 can include multiple configuration files, each one added with the `--config`
-command-line option. The standard configuration which will always be included
-can be found in the
-[configs/mender_convert_config](https://github.com/mendersoftware/mender-convert/blob/2.2.0/configs/mender_convert_config)
-file, and includes the defaults for the configuration options which the tool
-supports.
+command-line option. The standard configuration [configs/mender_convert_config](https://github.com/mendersoftware/mender-convert/blob/2.2.0/configs/mender_convert_config) includes the defaults for the configuration options which the tool supports.
 
 ### Example
 
@@ -53,8 +49,8 @@ hooks.
 
 ### List based hooks
 
-The list based hooks are used to modify the image contents, or to post-process the binary image
-after it has been created (but before it is compressed). For example, create a file
+The list based hooks modify the image contents, or post-process the binary image
+after its creation (but before compression). For example, create a file
 `configs/custom_config`, and add this content to it:
 
 ```bash
@@ -86,8 +82,8 @@ These four variables hold lists of hooks:
 
 * `PLATFORM_MODIFY_HOOKS` - Run after the filesystem is prepared, but before the image is created.
 * `USER_LOCAL_MODIFY_HOOK` - Run after `PLATFORM_MODIFY_HOOKS`.
-* `OVERLAY_MODIFY_HOOKS` - Run after overlays are applied.
-* `PLATFORM_PACKAGE_HOOKS` - Run after the image has been created, but before compression and bmap
+* `OVERLAY_MODIFY_HOOKS` - Run after overlays application.
+* `PLATFORM_PACKAGE_HOOKS` - Run after image creation, but before compression and bmap
   creation.
 
 !!! Note that the variables come with default values of `PLATFORM_MODIFY_HOOKS=(platform_modify)`,

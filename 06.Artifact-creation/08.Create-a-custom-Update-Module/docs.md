@@ -191,7 +191,7 @@ The command line options are detailed below:
 * `-n` - The name of the Mender Artifact.
 * `-f` - The path to the file(s) to send to the device(s) in the update.
 
-Deploying such an Artifact will result in the three new files installed on the target.!
+Deploying such an Artifact will result in the three new files installed on the target.
 
 ## Advanced example: Update Module with Rollback
 
