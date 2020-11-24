@@ -101,6 +101,28 @@ Ubuntu or Raspberry Pi OS. We provide packages for the following architectures:
 [mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/master/dist-packages/debian/amd64/mender-client_master-1_amd64.deb
 
 
+### Remote terminal
+
+The `mender-shell` application is a remote terminal extension to the Mender
+client, allowing remote terminal sessions using the Mender API.
+See [Remote Terminal installation
+](../03.Client-installation/60.Installing-Mender-Shell) for more information
+about installing and configuring this add-on.
+
+<!--AUTOVERSION: "mender-shell_%-1"/mender-shell -->
+| Architecture   | Download link                                                     |
+|----------------|-------------------------------------------------------------------|
+| armhf (ARM-v6) | [mender-shell_master-1_armhf.deb][mender-shell_x.x.x-1_armhf.deb] |
+| arm64          | [mender-shell_master-1_arm64.deb][mender-shell_x.x.x-1_arm64.deb] |
+| amd64          | [mender-shell_master-1_amd64.deb][mender-shell_x.x.x-1_amd64.deb] |
+
+<!--AUTOVERSION: "downloads.mender.io/%/"/mender-shell "mender-shell_%-1_armhf.deb"/mender-shell -->
+[mender-shell_x.x.x-1_armhf.deb]: https://downloads.mender.io/master/dist-packages/debian/armhf/mender-shell_master-1_armhf.deb
+<!--AUTOVERSION: "downloads.mender.io/%/"/mender-shell "mender-shell_%-1_arm64.deb"/mender-shell -->
+[mender-shell_x.x.x-1_arm64.deb]: https://downloads.mender.io/master/dist-packages/debian/arm64/mender-shell_master-1_arm64.deb
+<!--AUTOVERSION: "downloads.mender.io/%/"/mender-shell "mender-shell_%-1_amd64.deb"/mender-shell -->
+[mender-shell_x.x.x-1_amd64.deb]: https://downloads.mender.io/master/dist-packages/debian/amd64/mender-shell_master-1_amd64.deb
+
 ## mender-cli
 
 The `mender-cli` utility enables an easy interface to key use cases
