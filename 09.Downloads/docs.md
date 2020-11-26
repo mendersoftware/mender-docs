@@ -2,6 +2,10 @@
 title: Downloads
 taxonomy:
     category: docs
+markdown:
+    extra: true
+process:
+    twig: true
 ---
 
 ## Disk images
@@ -83,8 +87,128 @@ software updates packaged as Mender Artifacts.
 See [Client installation](../03.Client-installation/chapter.md) for more information
 about how to configure and use the Mender client.
 
-A Debian package (`.deb`) is provided for convenience to install on e.g Debian,
-Ubuntu or Raspberry Pi OS. We provide packages for the following architectures:
+### Installation methods
+
+You can install the Mender client in different ways depending on your preference.
+
+* Express installation using the [convenience
+  script](#express-installation) from [https://get.mender.io](https://get.mender.io).
+* Set up Mender's apt repository and using the [package
+  manager](#install-using-the-apt-repository).
+* Download our DEB package and [install it manually](#install-from-package).
+
+#### Express installation
+
+Mender provides a convenience script available at [get.mender.io
+](https://get.mender.io) that non-interactively install the Mender client
+[using the package manager](#install-using-the-apt-repository). Users considering
+using this option should be aware of:
+
+* The script require `root` privileges to run. Therefore, be careful to
+  examine the script before executing them.
+* The script install several dependencies with the package manager without
+  asking for confirmation.
+* The Mender GPG public key and apt repository will be silently added to your
+  trusted apt keychain and sources list respectively.
+
+If any of these issues are of concern to you, consider using one of the other
+installation methods.
+
+!! Always examine scripts downloaded over the Internet before running them
+!! locally.
+```bash
+curl -fLsS https://get.mender.io -o get-mender.sh
+# INSPECT get-mender.sh BEFORE PROCEEDING
+sudo sh get-mender.sh
+```
+
+##### Upgrading Mender after the express installation
+
+When installing the Mender client with [get.mender.io](https://get.mender.io),
+the `mender-client` package is maintained by the package manager. *Do not* run
+this script multiple times to upgrade the Mender client. This will cause
+multiple additions of the Mender Debian repository to the `apt` sources list,
+which can cause issues when upgrading packages using apt.
+
+#### Install using the apt repository
+
+Before installing the Mender client for the first time on a new system, you need
+to set up the Mender `apt` repository. Afterwards, you can install and update
+the Mender client from the repository.
+
+##### Set up the apt repository
+1. Update the `apt` package index and install dependencies allowing `apt` to use
+   a repository over HTTPS.
+   ```bash
+   sudo apt-get update
+   sudo apt-get install --no-install-recommended \
+   		apt-transport-https \
+   		ca-certificates \
+   		curl \
+   		gnupg-agent \
+   		software-properties-common
+   ```
+2. Add the official Mender GPG to your trusted `apt` keychain:
+   ```bash
+   curl -fLsS https://downloads.mender.io/repos/debian/gpg | sudo apt-key add -
+   ```
+
+   Inspect the GPG key fingerprint and verify that it matches
+   `E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00`.
+   ```bash
+   sudo apt-key fingerprint A1B29B00
+   ```
+   ```
+pub   rsa3072 2020-11-13 [SC] [expires: 2022-11-13]
+          E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
+uid           [ unknown] Mender Team <mender@northern.tech>
+sub   rsa3072 2020-11-13 [E] [expires: 2022-11-13]
+   ```
+3. Add the Mender repository to your sources list.
+   [ui-tabs position="top-left" active="0" theme="lite" ]
+   [ui-tab title="armhf"]
+   ```bash
+   sudo add-apt-repository \
+           "deb [arch=armhf] https://downloads.mender.io/repos/debian \
+           stable \
+           main"
+   ```
+   [/ui-tab]
+   [ui-tab title="arm64"]
+   ```bash
+   sudo add-apt-repository \
+           "deb [arch=arm64] https://downloads.mender.io/repos/debian \
+           stable \
+           main"
+   ```
+   [/ui-tab]
+   [ui-tab title="amd64"]
+   ```bash
+   sudo add-apt-repository \
+           "deb [arch=amd64] https://downloads.mender.io/repos/debian \
+           stable \
+           main"
+   ```
+   [/ui-tab]
+   [/ui-tabs]
+   !!! If you want the bleeding edge version of mender, you can use our
+   !!! `experimental` repository by replacing `stable` with `experimental` in
+   !!! the above command. Do not use the `experimental` repository in production
+   !!! as these releases are not fully tested.
+
+4. Update the package manager index and install the Mender client:
+   ```bash
+   sudo apt update
+   sudo apt install mender-client
+   ```
+
+#### Install from package
+
+The Debian package (`.deb`) is also provided for users wanting to install the
+Mender client manually outside the package manager. This can be useful for
+airtight systems with limited access to the Internet, for example when running
+Mender in [standalone
+mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
 | Architecture   | Devices                                   | Download link                                                       |
