@@ -93,55 +93,69 @@ You can install the Mender client in different ways depending on your preference
 
 * Express installation using the [convenience
   script](#express-installation) from [https://get.mender.io](https://get.mender.io).
-* Set up Mender's apt repository and using the [package
+* Set up Mender's APT repository and using the [package
   manager](#install-using-the-apt-repository).
 * Download our DEB package and [install it manually](#install-from-package).
 
 #### Express installation
 
 Mender provides a convenience script available at [get.mender.io
-](https://get.mender.io) that non-interactively install the Mender client
+](https://get.mender.io) that non-interactively installs the Mender client
 [using the package manager](#install-using-the-apt-repository). Users considering
-using this option should be aware of:
+using this method should be aware of:
 
 * The script require `root` privileges to run. Therefore, be careful to
-  examine the script before executing them.
-* The script install several dependencies with the package manager without
+  examine the script before executing it.
+* The script will install several dependencies with the package manager without
   asking for confirmation.
-* The Mender GPG public key and apt repository will be silently added to your
-  trusted apt keychain and sources list respectively.
-
-If any of these issues are of concern to you, consider using one of the other
-installation methods.
+* The Mender GPG public key and APT repository will be added to your trusted APT
+  keychain and sources list respectively without asking for confirmation.
 
 !! Always examine scripts downloaded over the Internet before running them
 !! locally.
+
 ```bash
 curl -fLsS https://get.mender.io -o get-mender.sh
 # INSPECT get-mender.sh BEFORE PROCEEDING
 sudo sh get-mender.sh
 ```
 
+By default, the script installs the [remote terminal
+extension](#remote-terminal-client) plugin in addition to the client. If you do
+not want this feature you can provide additional arguments to the script
+specifying which packages you want to install. For example, the following will
+only install the Mender client:
+```bash
+curl -fLsS https://get.mender.io -o get-mender.sh
+# INSPECT get-mender.sh BEFORE PROCEEDING
+sudo sh get-mender.sh mender-client
+```
+
+!!! Mender offers an `experimental` version of the package repository. To use
+!!! the latest experimental version of Mender, run the script with an additional
+!!! flag `-c experimental`. Do not use the `experimental` repository for
+!!! production devices as these releases are not fully tested.
+
 ##### Upgrading Mender after the express installation
 
 When installing the Mender client with [get.mender.io](https://get.mender.io),
 the `mender-client` package is maintained by the package manager. *Do not* run
 this script multiple times to upgrade the Mender client. This will cause
-multiple additions of the Mender Debian repository to the `apt` sources list,
-which can cause issues when upgrading packages using apt.
+multiple additions of the Mender Debian repository to the APT sources list,
+which can cause issues when upgrading packages using APT.
 
-#### Install using the apt repository
+#### Install using the APT repository
 
 Before installing the Mender client for the first time on a new system, you need
 to set up the Mender `apt` repository. Afterwards, you can install and update
 the Mender client from the repository.
 
-##### Set up the apt repository
+##### Set up the APT repository
 1. Update the `apt` package index and install dependencies allowing `apt` to use
    a repository over HTTPS.
    ```bash
    sudo apt-get update
-   sudo apt-get install --no-install-recommended \
+   sudo apt-get install \
    		apt-transport-https \
    		ca-certificates \
    		curl \
@@ -224,6 +238,8 @@ mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_amd64.deb"/mender -->
 [mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/master/dist-packages/debian/amd64/mender-client_master-1_amd64.deb
 
+
+## Remote terminal client
 
 ## mender-cli
 
