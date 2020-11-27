@@ -147,7 +147,7 @@ which can cause issues when upgrading packages using APT.
 #### Install using the APT repository
 
 Before installing the Mender client for the first time on a new system, you need
-to set up the Mender `apt` repository. Afterwards, you can install and update
+to set up the Mender APT repository. Afterwards, you can install and update
 the Mender client from the repository.
 
 ##### Set up the APT repository
@@ -178,7 +178,8 @@ pub   rsa3072 2020-11-13 [SC] [expires: 2022-11-13]
 uid           [ unknown] Mender Team <mender@northern.tech>
 sub   rsa3072 2020-11-13 [E] [expires: 2022-11-13]
    ```
-3. Add the Mender repository to your sources list.
+3. Add the Mender repository to your sources list by selecting the architecture
+   matching your device.
    [ui-tabs position="top-left" active="0" theme="lite" ]
    [ui-tab title="armhf"]
    ```bash
@@ -212,8 +213,8 @@ sub   rsa3072 2020-11-13 [E] [expires: 2022-11-13]
 
 4. Update the package manager index and install the Mender client:
    ```bash
-   sudo apt update
-   sudo apt install mender-client
+   sudo apt-get update
+   sudo apt-get install mender-client
    ```
 
 #### Install from package
@@ -240,6 +241,29 @@ mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 
 
 ## Remote terminal client
+
+Mender offers a remote terminal extension to the Mender client that enables
+accessing the device terminal using the Mender API. See the [configuration page
+for remote
+terminal](../03.Client-installation/80-Mender-shell-configuration/docs.md) for
+more information about the remote terminal plugin.
+
+### Install the remote terminal client
+
+The remote terminal client requires installing [Mender client](#mender-client)
+in order to function, so make sure you have installed the Mender client before
+installing `mender-shell`. If you have already installed the Mender client using
+the [express installation](#express-installation) script, you will already have
+`mender-shell` installed by default.
+
+The remote terminal client is only available from the Mender APT repository.
+To install `mender-shell`, follow the instructions for [installing
+`mender-client` using the APT repository](#install-using-the-apt-repository).
+After the final step, install `mender-shell` using the package manager:
+
+```bash
+sudo apt-get install mender-shell
+```
 
 ## mender-cli
 
