@@ -1,10 +1,10 @@
 ---
-title: Client certificates
+title: Mutual TLS authentication
 taxonomy:
     category: docs
 ---
 
-!!! Client certificate (aka. Mutual TLS) support is only available in the Mender Enterprise plan.
+!!! Mutual TLS authentication is only available in the Mender Enterprise plan.
 !!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
 !!! for an overview of all Mender plans and features.
 
