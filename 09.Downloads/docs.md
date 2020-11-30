@@ -138,11 +138,13 @@ sudo sh get-mender.sh mender-client
 
 ##### Upgrading Mender after the express installation
 
-When installing the Mender client with [get.mender.io](https://get.mender.io),
-the `mender-client` package is maintained by the package manager. *Do not* run
-this script multiple times to upgrade the Mender client. This will cause
-multiple additions of the Mender Debian repository to the APT sources list,
-which can cause issues when upgrading packages using APT.
+After installing the Mender client with [get.mender.io](https://get.mender.io),
+the `mender-client` package is maintained by the package manager. To upgrade the
+Mender client, simply run
+```bash
+sudo apt-get update
+sudo apt-get upgrade
+```
 
 #### Install using the APT repository
 
