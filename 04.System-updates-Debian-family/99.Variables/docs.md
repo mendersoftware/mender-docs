@@ -111,8 +111,8 @@ The size of the boot partition.
 
 #### `MENDER_CLIENT_VERSION`
 
-<!--AUTOVERSION: "Value: %"/ignore-->
-> Value: master (default)
+<!--AUTOVERSION: "/%/"/ignore-->
+> Value: latest(default)/master/&lt;version&gt;
 
 The version of the Mender client to include in the update.
 
