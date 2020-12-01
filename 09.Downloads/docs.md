@@ -93,19 +93,19 @@ You can install the Mender client in different ways depending on your preference
 
 * Express installation using the [convenience
   script](#express-installation) from [https://get.mender.io](https://get.mender.io).
-* Set up Mender's APT repository and using the [package
+* Set up Mender's APT repository and install using the [package
   manager](#install-using-the-apt-repository).
-* Download our DEB package and [install it manually](#install-from-package).
+* Download the Debian package and [install it manually](#install-from-package).
 
 #### Express installation
 
 Mender provides a convenience script available at [get.mender.io
 ](https://get.mender.io) that non-interactively installs the Mender client
-[using the package manager](#install-using-the-apt-repository). Users considering
-using this method should be aware of:
+[using the package manager](#install-using-the-apt-repository). Users installing
+the Mender client this way, should be aware that:
 
-* The script require `root` privileges to run. Therefore, be careful to
-  examine the script before executing it.
+* The script requires `root` privileges to run. Therefore, carefully examine the
+  script before executing it.
 * The script will install several dependencies with the package manager without
   asking for confirmation.
 * The Mender GPG public key and APT repository will be added to your trusted APT
@@ -148,13 +148,12 @@ sudo apt-get upgrade
 
 #### Install using the APT repository
 
-Before installing the Mender client for the first time on a new system, you need
-to set up the Mender APT repository. Afterwards, you can install and update
-the Mender client from the repository.
+Before installing the Mender client, you need to set up the Mender APT
+repository. Afterwards, you can install and update the Mender client using the
+`apt` command line interface.
 
 ##### Set up the APT repository
-1. Update the `apt` package index and install dependencies allowing `apt` to use
-   a repository over HTTPS.
+1. Update the `apt` package index and install required dependencies.
    ```bash
    sudo apt-get update
    sudo apt-get install \
@@ -164,7 +163,7 @@ the Mender client from the repository.
    		gnupg-agent \
    		software-properties-common
    ```
-2. Add the official Mender GPG to your trusted `apt` keychain:
+2. Add the official Mender GPG key to your trusted `apt` keychain:
    ```bash
    curl -fLsS https://downloads.mender.io/repos/debian/gpg | sudo apt-key add -
    ```
@@ -213,7 +212,7 @@ sub   rsa3072 2020-11-13 [E] [expires: 2022-11-13]
    !!! the above command. Do not use the `experimental` repository in production
    !!! as these releases are not fully tested.
 
-4. Update the package manager index and install the Mender client:
+4. Update the package index and install the Mender client:
    ```bash
    sudo apt-get update
    sudo apt-get install mender-client
@@ -221,9 +220,9 @@ sub   rsa3072 2020-11-13 [E] [expires: 2022-11-13]
 
 #### Install from package
 
-The Debian package (`.deb`) is also provided for users wanting to install the
+We also provide the Debian package (`.deb`) for users wanting to install the
 Mender client manually outside the package manager. This can be useful for
-airtight systems with limited access to the Internet, for example when running
+airtight systems with limited access to the Internet, or when running
 Mender in [standalone
 mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 
@@ -242,23 +241,22 @@ mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 [mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/master/dist-packages/debian/amd64/mender-client_master-1_amd64.deb
 
 
-## Remote terminal client
+## Remote terminal add-on
 
-Mender offers a remote terminal extension to the Mender client that enables
-accessing the device terminal using the Mender API. See the [configuration page
-for remote
+Mender offers a remote terminal extension (`mender-shell`) to the Mender client
+that enables accessing the device terminal using the Mender UI. See the
+[configuration page for remote
 terminal](../03.Client-installation/80-Mender-shell-configuration/docs.md) for
-more information about the remote terminal plugin.
+more information.
 
 ### Install the remote terminal client
 
-The remote terminal client requires installing [Mender client](#mender-client)
-in order to function, so make sure you have installed the Mender client before
-installing `mender-shell`. If you have already installed the Mender client using
+The remote terminal add-on requires the [Mender client](#mender-client) in order
+to function. If you have already installed the Mender client using
 the [express installation](#express-installation) script, you will already have
 `mender-shell` installed by default.
 
-The remote terminal client is only available from the Mender APT repository.
+The add-on is only available from the Mender APT repository.
 To install `mender-shell`, follow the instructions for [installing
 `mender-client` using the APT repository](#install-using-the-apt-repository).
 After the final step, install `mender-shell` using the package manager:
