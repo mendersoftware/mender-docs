@@ -156,7 +156,7 @@ mutual TLS ambassador:
 
 Futher communication between the Device and the Mender Server is intermediated by the mTLS ambassador which verifies the requests are authenticated with a valid client TLS certificate.
 
-Please refer to the [client certificates section](../../08.Server-integration/03.Client-certificates/docs.md)
+Please refer to the [Mutual TLS section](../../08.Server-integration/03.Mutual-TLS-authentication/docs.md)
 to find further details on the configuration of this feature.
 
 ## Authentication Token
