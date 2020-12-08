@@ -5,6 +5,90 @@ taxonomy:
 ---
 
 
+## meta-mender dunfell-v2020.12
+
+_Released 12.08.2020_
+
+### Statistics
+
+A total of 547 lines added, 1726 removed (delta -1179)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 7 (38.9%) |
+| Ole Petter Orhagen | 5 (27.8%) |
+| Lluis Campos | 3 (16.7%) |
+| Kasper Føns | 2 (11.1%) |
+| Drew Moseley | 1 (5.6%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Ole Petter Orhagen | 1823 (87.5%) |
+| Kristian Amlie | 143 (6.9%) |
+| Lluis Campos | 111 (5.3%) |
+| Kasper Føns | 5 (0.2%) |
+| Drew Moseley | 2 (0.1%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Ole Petter Orhagen | 1275 (73.9%) |
+
+| Developers with the most signoffs (total 2) | |
+|---|---|
+| Kristian Amlie | 2 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 16 (88.9%) |
+| Chora | 2 (11.1%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 2079 (99.8%) |
+| Chora | 5 (0.2%) |
+
+| Employers with the most signoffs (total 2) | |
+|---|---|
+| Northern.tech | 2 (100.0%) |
+
+| Employers with the most hackers (total 5) | |
+|---|---|
+| Northern.tech | 4 (80.0%) |
+| Chora | 1 (20.0%) |
+
+### Changelogs
+
+#### meta-mender (dunfell-v2020.12)
+
+New changes in meta-mender since dunfell-v2020.11:
+
+* mender: Reestablish labels on the root filesystems.
+* New Mender-client configuration option: 'inventory-network-scripts'.
+  This option, if enabled, installs the inventory-network-scripts in the client.
+  This is enabled as an option, because the inventory-geo script relies on a
+  third-party network service to figure out the geographic location of the device,
+  which may not be something that everyone wants installed on their devices. The
+  feature is enabled in the standard 'PACKAGECONFIG' for the Mender-client, and is
+  included unless overridded. To remove it, add
+  'PACKAGECONFIG_remove_pn-mender-client = "inventory-network-scripts"' to your
+  local.conf file.
+* mender-client: Do not keep resizing if a little space is left unused
+  ([MEN-4176](https://tracker.mender.io/browse/MEN-4176))
+* mender-client: Ensure growfs works on GPT filesystems
+  ([MEN-4176](https://tracker.mender.io/browse/MEN-4176))
+* mender-client: Update LICENSE to include OpenSSL
+* mender-client: Include OpenSSL license from 2.4.x onwards.
+* Add a recipe for building 'mender-shell', remote shell support.
+  ([MEN-4083](https://tracker.mender.io/browse/MEN-4083))
+* Fix a parsing issue where `inherit` could not be used with
+  variables that had been defined with overrides that depended on
+  `MENDER_FEATURES_ENABLE`. One example would be:
+  ```
+  MYVAR_mender-grub = "grub-efi"
+  inherit ${MYVAR}
+  ```
+
+
 ## meta-mender dunfell-v2020.11
 
 _Released 11.16.2020_
