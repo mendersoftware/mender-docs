@@ -3,6 +3,148 @@ title: Release notes & changelog
 taxonomy:
     category: docs
 ---
+
+
+## meta-mender dunfell-v2020.12
+
+_Released 12.08.2020_
+
+### Statistics
+
+A total of 547 lines added, 1726 removed (delta -1179)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 7 (38.9%) |
+| Ole Petter Orhagen | 5 (27.8%) |
+| Lluis Campos | 3 (16.7%) |
+| Kasper Føns | 2 (11.1%) |
+| Drew Moseley | 1 (5.6%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Ole Petter Orhagen | 1823 (87.5%) |
+| Kristian Amlie | 143 (6.9%) |
+| Lluis Campos | 111 (5.3%) |
+| Kasper Føns | 5 (0.2%) |
+| Drew Moseley | 2 (0.1%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Ole Petter Orhagen | 1275 (73.9%) |
+
+| Developers with the most signoffs (total 2) | |
+|---|---|
+| Kristian Amlie | 2 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 16 (88.9%) |
+| Chora | 2 (11.1%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 2079 (99.8%) |
+| Chora | 5 (0.2%) |
+
+| Employers with the most signoffs (total 2) | |
+|---|---|
+| Northern.tech | 2 (100.0%) |
+
+| Employers with the most hackers (total 5) | |
+|---|---|
+| Northern.tech | 4 (80.0%) |
+| Chora | 1 (20.0%) |
+
+### Changelogs
+
+#### meta-mender (dunfell-v2020.12)
+
+New changes in meta-mender since dunfell-v2020.11:
+
+* mender: Reestablish labels on the root filesystems.
+* New Mender-client configuration option: 'inventory-network-scripts'.
+  This option, if enabled, installs the inventory-network-scripts in the client.
+  This is enabled as an option, because the inventory-geo script relies on a
+  third-party network service to figure out the geographic location of the device,
+  which may not be something that everyone wants installed on their devices. The
+  feature is enabled in the standard 'PACKAGECONFIG' for the Mender-client, and is
+  included unless overridded. To remove it, add
+  'PACKAGECONFIG_remove_pn-mender-client = "inventory-network-scripts"' to your
+  local.conf file.
+* mender-client: Do not keep resizing if a little space is left unused
+  ([MEN-4176](https://tracker.mender.io/browse/MEN-4176))
+* mender-client: Ensure growfs works on GPT filesystems
+  ([MEN-4176](https://tracker.mender.io/browse/MEN-4176))
+* mender-client: Update LICENSE to include OpenSSL
+* mender-client: Include OpenSSL license from 2.4.x onwards.
+* Add a recipe for building 'mender-shell', remote shell support.
+  ([MEN-4083](https://tracker.mender.io/browse/MEN-4083))
+* Fix a parsing issue where `inherit` could not be used with
+  variables that had been defined with overrides that depended on
+  `MENDER_FEATURES_ENABLE`. One example would be:
+  ```
+  MYVAR_mender-grub = "grub-efi"
+  inherit ${MYVAR}
+  ```
+
+
+## meta-mender dunfell-v2020.11
+
+_Released 11.16.2020_
+
+### Statistics
+
+A total of 6 lines added, 1067 removed (delta -1061)
+
+| Developers with the most changesets | |
+|---|---|
+| Ole Petter Orhagen | 3 (50.0%) |
+| Lluis Campos | 2 (33.3%) |
+| Drew Moseley | 1 (16.7%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 922 (86.4%) |
+| Ole Petter Orhagen | 142 (13.3%) |
+| Drew Moseley | 3 (0.3%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Lluis Campos | 921 (86.3%) |
+| Ole Petter Orhagen | 138 (12.9%) |
+| Drew Moseley | 2 (0.2%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 6 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 1067 (100.0%) |
+
+| Employers with the most hackers (total 3) | |
+|---|---|
+| Northern.tech | 3 (100.0%) |
+
+### Changelogs
+
+#### meta-mender (dunfell-v2020.11)
+
+New changes in meta-mender since dunfell-v2020.10:
+
+* mender: Fix broken patch for mender-systemd-machine-id.
+* Remove recipe mender-client 2.3.0
+* Add recipe mender-client 2.3.1
+* Remove recipe mender-client 2.4.0
+* Add recipe mender-client 2.4.1
+* Aggregated Dependabot Changelogs:
+  * Bumps [tests/acceptance/image-tests](https://github.com/mendersoftware/mender-image-tests) from `457ea99` to `713c563`.
+    - [Release notes](https://github.com/mendersoftware/mender-image-tests/releases)
+    - [Commits](https://github.com/mendersoftware/mender-image-tests/compare/457ea99937642ec29da53a9a2d30a51067cf8dc0...713c56364b79a18ad86e6731b1a602f0f3d9d233)
+  * Bump tests/acceptance/image-tests from `457ea99` to `713c563`
+
+
 ## Mender client 2.3.1
 
 _Released 11.03.2020_
