@@ -7,9 +7,8 @@ taxonomy:
 Mender is a secure and robust software update system designed to handle
 large number of devices. Mender is designed according to a simple client/server
 architecture, allowing central management of deployments to all devices.
-It also supports an add-on mechanism, which currently has one implementation
-allowing you to open an interactive remote terminal session to any device
-under Mender control.
+It also supports an add-on features, enabling support for related device
+management features like Remote terminal.
 
 ## The architecture of a software update
 

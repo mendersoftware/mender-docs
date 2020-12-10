@@ -4,16 +4,14 @@ taxonomy:
 category: docs
 ---
 
-## Remote access
-
-With Mender, you can start an interactive shell to any accepted
+With Mender, you can start a terminal session to any connected
 device by clicking "Launch a new Terminal" in the UI (see the picture
 below).
 
 ![launch-termninal](launch-new-termninal.png)
 
 All you need is 
-[mender-shell](https://github.com/mendersoftware/mender-shell)
+[mender-shell](../../../09.Downloads/docs.md#Install-the-remote-terminal-client)
 configured and running alongside the Mender Client, and you can
 get a live terminal where you can freely type commands.
 
@@ -22,7 +20,7 @@ get a live terminal where you can freely type commands.
 Every keystroke in the above popup window will go to the standard input
 of a shell running on the device.
 
-## mender-shell vs SSH
+## No relation to SSH
 
 Remote Terminal by Mender passes messages of a defined protocol over
 a websocket connection. The two main actors: the mender-shell and Mender UI
@@ -38,9 +36,9 @@ of mender-shell with allocated pseudo tty.
 
 ![mender-shell-and-ws](mender-shell-and-ws.png)
 
-## mender-shell and the rest of the Mender ecosystem
+## Loose coupling to Mender
 
-The coupling between mender-shell and the rest of Mender is not tight.
+There is a loose coupling between Mender and the add-ons like mender-shell.
 Remote terminal expects a certain well-defined DBus API to be in place
 on a device, and a working websocket connection endpoint; none of these
 have to come from or go to Mender.
@@ -50,7 +48,7 @@ is to perform a simple configuration of the client and start mender-shell.
 Additionally, you can take advantage of the Role Based Access Control
 and Audit Logs, since we fully integrated mender-shell add-on into Mender.
 
-## mender-shell and the user model
+## Support for multiple users
 
 The mender-shell supports simultaneous shells from different Mender users.
 On the device, you run the shell as a system user which you can set
