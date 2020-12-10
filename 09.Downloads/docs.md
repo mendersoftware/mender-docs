@@ -121,7 +121,7 @@ sudo sh get-mender.sh
 ```
 
 By default, the script installs the [remote terminal
-extension](#remote-terminal-client) plugin in addition to the client. If you do
+extension](#remote-terminal-add-on) plugin in addition to the client. If you do
 not want this feature you can provide additional arguments to the script
 specifying which packages you want to install. For example, the following will
 only install the Mender client:
@@ -246,7 +246,7 @@ mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 Mender offers a remote terminal extension (`mender-shell`) to the Mender client
 that enables accessing the device terminal using the Mender UI. See the
 [configuration page for remote
-terminal](../03.Client-installation/80-Mender-shell-configuration/docs.md) for
+terminal](../03.Add-ons/01.Remote-Terminal/30.Mender-shell-configuration-file/docs.md) for
 more information.
 
 ### Install the remote terminal client
