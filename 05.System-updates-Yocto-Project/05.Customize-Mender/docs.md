@@ -206,12 +206,12 @@ for more information.
 Delta update support is covered in [its own sub section](01.Delta-update-support/docs.md).
 
 
-## Addons 
+## Add-ons 
 
 ### Mender-shell
 
 We do not enable Mender-shell by default, unless you are building with the demo layer.
-To enable Mender-shell you can add it either via your own `.bbappend` recipe file`,
+To enable Mender-shell you can add it either via your own `.bbappend` recipe file,
 or via your `local.conf` file.
 
 To add it to a recipe file, create `mender-client_%.bbappend` and add this:
@@ -222,7 +222,7 @@ IMAGE_INSTALL_append = " mender-shell"
 
 Alternatively, add the snippet to your `local.conf`.
 
-Mender-shell provides several [configuration options](../../03.Client-installation/06.Mender-shell-configuration-file/50.Mender-shell-configuration-options/docs.md). To override the default settings, create your own `mender-shell.conf` and
+Mender-shell provides several [configuration options](../../03.Add-ons/01.Remote-Terminal/30.Mender-shell-configuration-file/50.Mender-shell-configuration-options/docs.md). To override the default settings, create your own `mender-shell.conf` and
 augment the `mender-client` recipe with the new configuration. For example, create a `mender-client_%.bbappend` file in your layer, and add this:
 
 ```bash
@@ -230,7 +230,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-MENDER-SHELL-CONF>"
 SRC_URI_append = " file://mender-shell.conf"
 
 do_install_append() {
-    install -m 644 ${WORKDIR}/mender-shell.conf ${datadir}/mender/mender-shell.conf
+    install -m 600 ${WORKDIR}/mender-shell.conf ${datadir}/mender/mender-shell.conf
 }
 
 ```
