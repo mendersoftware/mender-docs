@@ -223,12 +223,12 @@ IMAGE_INSTALL_append = " mender-shell"
 Alternatively, add the snippet to your `local.conf`.
 
 Mender-shell provides several [configuration
-options](../../03.Add-ons/01.Remote-Terminal/30.Mender-shell-configuration-file/50.Mender-shell-configuration-options/docs.md).
+options](../../09.Add-ons/01.Remote-Terminal/30.Mender-shell-configuration-file/50.Mender-shell-configuration-options/docs.md).
 A configuration file with the required [`ServerURL`
-field](../../03.Add-ons/01.Remote-Terminal/30.Mender-shell-configuration-file/50.Mender-shell-configuration-options/docs.md#serverurl),
+field](../../09.Add-ons/01.Remote-Terminal/30.Mender-shell-configuration-file/50.Mender-shell-configuration-options/docs.md#serverurl),
 set via [`MENDER_SERVER_URL`
 variable](../99.Variables/docs.md#mender_server_url), and [`User`
-field](../../03.Add-ons/01.Remote-Terminal/30.Mender-shell-configuration-file/50.Mender-shell-configuration-options/docs.md#user),
+field](../../09.Add-ons/01.Remote-Terminal/30.Mender-shell-configuration-file/50.Mender-shell-configuration-options/docs.md#user),
 set via [`MENDER_SHELL_USER`
 variable](../99.Variables/docs.md#mender_shell_user). You can set these in your
 own `.bbappend` recipe file or via your `local.conf` file, for example:

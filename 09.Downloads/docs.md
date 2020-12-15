@@ -246,7 +246,7 @@ mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 Mender offers a remote terminal extension (`mender-shell`) to the Mender client
 that enables accessing the device terminal using the Mender UI. See the
 [configuration page for remote
-terminal](../03.Add-ons/01.Remote-Terminal/30.Mender-shell-configuration-file/docs.md) for
+terminal](../09.Add-ons/01.Remote-Terminal/30.Mender-shell-configuration-file/docs.md) for
 more information.
 
 ### Install the remote terminal client

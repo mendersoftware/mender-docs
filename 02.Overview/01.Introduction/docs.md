@@ -126,5 +126,5 @@ The below picture shows the architecture of the solution.
 ![addon-architecture](addon-architecture-device.png)
 
 Please refer to the
-[remote terminal overview section](../../03.Add-ons/01.Remote-Terminal/10.Overview/docs.md)
+[remote terminal overview section](../../09.Add-ons/01.Remote-Terminal/docs.md)
 for more details.

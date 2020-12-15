@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-### Chapter 6
+### Chapter 5
 
 # System updates: Yocto Project
 

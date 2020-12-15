@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-### Chapter 4
+### Chapter 3
 
 # Client installation
 
