@@ -36,6 +36,7 @@ server which runs the Mender server services. It should include the whole URL,
 including `https://` and a trailing slash. *NOTE: This entry conflicts with
 [`Servers` attribute](#Servers), i.e. the server only accepts one of these entries.*
 Please note that you can also use `"wss://..."` protocol in the URL.
+You have to specify at least one valid URL for a server to connect to.
 
 #### ServerCertificate
 
@@ -44,7 +45,7 @@ certificate is missing, or the one presented by the server does not match the
 one specified in this setting, mender-shell validates the server certificate using
 standard certificate trust chains.
 
-####	ShellCommand
+#### ShellCommand
 
 The path to a shell executable. Can be any executable file, fulfilling the following
 conditions:
@@ -58,12 +59,12 @@ Example:
  "Shell": "/bin/sh"
 ```
 
-####	User
+#### User
 
 The name of a user that mender-shell will run the shell as. Must resolve to valid
 user id and must posses a valid group id. This a mandatory field.
 
-####	Terminal
+#### Terminal
 
 Allows you to provide terminal settings.
 
@@ -84,7 +85,7 @@ Example:
     }
 ```
 
-####	Sessions
+#### Sessions
 
 User sessions settings.
 
@@ -103,7 +104,7 @@ to be expired.
 ##### ExpireAfterIdle
 
 The number of seconds without activity (no input from the user) after which
-mender-shell marks a session as expired. Note that ouy can specify both
+mender-shell marks a session as expired. Note that you can specify both
 `ExpireAfterIdle` and `ExpireAfter`, in which case you can think of the latter
 as a "_hard limit_", i.e.: time after every mender-shell removes every session.
 

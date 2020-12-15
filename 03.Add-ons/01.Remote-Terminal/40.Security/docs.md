@@ -16,7 +16,7 @@ Remote Terminal is an optional feature.
 
 ### Local device user
 
-One part of the Remote terminal configuration is the username of the user on the device for whom the shell will be created.
+One part of the Remote Terminal configuration is the username of the user on the device for whom the shell will be created.
 Using Remote Terminal you can execute any command the user on the device can execute.
 Like with any other operation, the Mender backend will allow only authenticated Mender users to access the Remote Terminal.
 
@@ -34,7 +34,7 @@ It is fully integrated in the Role Based Access Control system of Mender and acc
 The [mender-shell](https://github.com/mendersoftware/mender-shell), part of the Remote Terminal that is running on the device,
 obtains device token through DBus API. It is the same token Mender client is using.
 <!--AUTOVERSION: "https://tools.ietf.org/html/rfc6455#section-%"/ignore-->
-Remote terminal uses [Encrypted WebSocket connections](https://tools.ietf.org/html/rfc6455#section-11.1.2) to communicate with the server.
+Remote Terminal uses [Encrypted WebSocket connections](https://tools.ietf.org/html/rfc6455#section-11.1.2) to communicate with the server.
 In general, the security impact of enabling Remote Terminal is similar to the one when enabling SSH.
 The connection to the device is secure, but there are no limitations on what command the user can execute,
 except for the user permissions on the device.

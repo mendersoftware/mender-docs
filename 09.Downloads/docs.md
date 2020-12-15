@@ -241,7 +241,7 @@ mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 [mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/master/dist-packages/debian/amd64/mender-client_master-1_amd64.deb
 
 
-## Remote terminal add-on
+## Remote Terminal add-on
 
 Mender offers a remote terminal extension (`mender-shell`) to the Mender client
 that enables accessing the device terminal using the Mender UI. See the

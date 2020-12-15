@@ -39,7 +39,7 @@ of mender-shell with allocated pseudo tty.
 ## Loose coupling to Mender
 
 There is a loose coupling between Mender and the add-ons like mender-shell.
-Remote terminal expects a certain well-defined DBus API to be in place
+Remote Terminal expects a certain well-defined DBus API to be in place
 on a device, and a working websocket connection endpoint; none of these
 have to come from or go to Mender.
 As long as you send compatible messages over the websocket, mender-shell will work.
