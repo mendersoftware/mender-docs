@@ -222,8 +222,24 @@ IMAGE_INSTALL_append = " mender-shell"
 
 Alternatively, add the snippet to your `local.conf`.
 
-Mender-shell provides several [configuration options](../../03.Add-ons/01.Remote-Terminal/30.Mender-shell-configuration-file/50.Mender-shell-configuration-options/docs.md). To override the default settings, create your own `mender-shell.conf` and
-augment the `mender-client` recipe with the new configuration. For example, create a `mender-client_%.bbappend` file in your layer, and add this:
+Mender-shell provides several [configuration
+options](../../03.Add-ons/01.Remote-Terminal/30.Mender-shell-configuration-file/50.Mender-shell-configuration-options/docs.md).
+A configuration file with the required [`ServerURL`
+field](../../03.Add-ons/01.Remote-Terminal/30.Mender-shell-configuration-file/50.Mender-shell-configuration-options/docs.md#serverurl),
+set via [`MENDER_SERVER_URL`
+variable](../99.Variables/docs.md#mender_server_url), and [`User`
+field](../../03.Add-ons/01.Remote-Terminal/30.Mender-shell-configuration-file/50.Mender-shell-configuration-options/docs.md#user),
+set via [`MENDER_SHELL_USER`
+variable](../99.Variables/docs.md#mender_shell_user). You can set these in your
+own `.bbappend` recipe file or via your `local.conf` file, for example:
+
+```bash
+MENDER_SERVER_URL = "https://hosted.mender.io"
+MENDER_SHELL_USER = "root"
+```
+
+To add optional fields, or override the values for the required ones, create your own `mender-shell.conf` and
+augment the `mender-shell` recipe with the new configuration. For example, create a `mender-shell_%.bbappend` file in your layer, and add this:
 
 ```bash
 FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-MENDER-SHELL-CONF>"

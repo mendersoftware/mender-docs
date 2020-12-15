@@ -486,7 +486,19 @@ Defaults to `${MENDER_STORAGE_DEVICE}:rootfsb` when building `.ubimg`.
 
 > Value: `https://docker.mender.io` (default)
 
-Variable to override the URL of the server for the client to connect to.
+Variable to override the URL of the server for the client to connect to. It is
+also used for add-ons configuration, where enabled.
+
+
+#### `MENDER_SHELL_USER`
+
+> Value: `nobody` (default)
+
+Variable holding the username which the `mender-shell` starts the shell as. See
+[Mender shell configuration
+options](../../03.Add-ons/01.Remote-Terminal/30.Mender-shell-configuration-file/50.Mender-shell-configuration-options/docs.md#user).
+Note that the default value with `meta-mender-core` is `nobody`, while with
+`meta-mender-demo` is `root`.
 
 
 #### `MENDER_STATE_SCRIPTS`
