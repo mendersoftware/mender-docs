@@ -10,7 +10,7 @@ parameters for Mender-shell operation.
 
 # Example mender-shell.conf file
 
-Here is an example of a `mender.conf` file:
+Here is an example of a `mender-shell.conf` file:
 ```
 {
     "ClientProtocol": "https",
@@ -39,6 +39,5 @@ Here is an example of a `mender.conf` file:
 The mechanism for providing the configuration file and specifying the configuration values will depend on your choice of OS distribution or build system.
 
 If you have already built an Artifact containing the rootfs, have a look at [modifying a Mender Artifact](../../../06.Artifact-creation/03.Modify-an-Artifact/docs.md).
-
 
 
