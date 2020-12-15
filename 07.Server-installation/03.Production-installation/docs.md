@@ -883,9 +883,9 @@ can take a look at the section for [troubleshooting Mender
 Server]().
 
 
-## Client certificates and mutual TLS
+## Mutual TLS
 
 Mender Enterprise supports setting up a reverse proxy at the edge of the network, which can authenticate devices using TLS client certificates. Each client is equipped with a certificate signed by a CA certificate (Certificate Authority), and the edge proxy authenticates devices by verifying this signature. Authenticated devices are automatically authorized in the Mender backend, and do not need manual approval.
 
-Please refer to the [client certificates section](../../08.Server-integration/03.Client-certificates/docs.md)
+Please refer to the [Mutual TLS section](../../08.Server-integration/03.Mutual-TLS-authentication/docs.md)
 to find further details on the configuration of this feature.
