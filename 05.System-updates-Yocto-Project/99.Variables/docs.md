@@ -494,11 +494,11 @@ also used for add-ons configuration, where enabled.
 
 > Value: `nobody` (default)
 
-Variable holding the username which the `mender-shell` starts the shell as. See
-[Mender shell configuration
+Variable holding the username which the `mender-shell` employs. See [Mender
+shell configuration
 options](../../03.Add-ons/01.Remote-Terminal/30.Mender-shell-configuration-file/50.Mender-shell-configuration-options/docs.md#user).
-Note that the default value with `meta-mender-core` is `nobody`, while with
-`meta-mender-demo` is `root`.
+Note that the default value in `meta-mender-core` is `nobody`, while in
+`meta-mender-demo` it is `root`.
 
 
 #### `MENDER_STATE_SCRIPTS`
