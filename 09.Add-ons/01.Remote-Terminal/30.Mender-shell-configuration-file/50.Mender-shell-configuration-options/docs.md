@@ -1,5 +1,5 @@
 ---
-title: Mender-shell configuration options
+title: Configuration options
 taxonomy:
     category: docs
 ---

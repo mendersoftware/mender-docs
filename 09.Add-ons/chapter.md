@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-### Chapter 3
+### Chapter 9
 
 # Add-ons
 

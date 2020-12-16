@@ -1,17 +1,19 @@
 ---
 title: Remote Terminal
 taxonomy:
-category: docs
+    category: docs
 ---
 
-With Mender, you can start a terminal session to any connected
+Remote Terminal is a Mender add-on allowing remote command execution
+via interactive, live, fully functional terminal from the Mender UI.
+You can start a terminal session to any connected
 device by clicking "Launch a new Terminal" in the UI (see the picture
 below).
 
 ![launch-termninal](launch-new-termninal.png)
 
 All you need is 
-[mender-shell](../../../09.Downloads/docs.md#Install-the-remote-terminal-client)
+[mender-shell](../../09.Downloads/docs.md#Install-the-remote-terminal-client)
 configured and running alongside the Mender Client, and you can
 get a live terminal where you can freely type commands.
 
@@ -77,8 +79,8 @@ and pass it upstream over the websocket.
 ## Further reading
 
 * For a detailed list of the configuration options please refer to the
-[mender-shell configuration section](../30.Mender-shell-configuration-file/docs.md).
+[mender-shell configuration section](30.Mender-shell-configuration-file/docs.md).
 * You can find the mender-shell installation steps for Yocto-based projects,
 and for Debian family,
-in the [customize with Yocto](../../../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md),
-and [customize with Debian](../../../04.System-updates-Debian-family/03.Customize-Mender/docs.md) respectively.
+in the [customize with Yocto](../../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md),
+and [customize with Debian](../../04.System-updates-Debian-family/03.Customize-Mender/docs.md) respectively.
