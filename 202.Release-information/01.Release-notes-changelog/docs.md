@@ -5,6 +5,209 @@ taxonomy:
 ---
 
 
+## meta-mender zeus-v2020.12
+
+_Released 12.16.2020_
+
+### Statistics
+
+A total of 676 lines added, 2800 removed (delta -2124)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 12 (34.3%) |
+| Kristian Amlie | 9 (25.7%) |
+| Ole Petter Orhagen | 6 (17.1%) |
+| Drew Moseley | 3 (8.6%) |
+| Kasper Føns | 2 (5.7%) |
+| Fabio Tranchitella | 2 (5.7%) |
+| Peter Grzybowski | 1 (2.9%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Ole Petter Orhagen | 1826 (56.0%) |
+| Lluis Campos | 1329 (40.7%) |
+| Kristian Amlie | 84 (2.6%) |
+| Fabio Tranchitella | 12 (0.4%) |
+| Drew Moseley | 6 (0.2%) |
+| Kasper Føns | 5 (0.2%) |
+| Peter Grzybowski | 1 (0.0%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Ole Petter Orhagen | 1274 (45.5%) |
+| Lluis Campos | 838 (29.9%) |
+| Kristian Amlie | 22 (0.8%) |
+| Drew Moseley | 2 (0.1%) |
+
+| Developers with the most signoffs (total 5) | |
+|---|---|
+| Lluis Campos | 3 (60.0%) |
+| Kristian Amlie | 2 (40.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 33 (94.3%) |
+| Chora | 2 (5.7%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 3258 (99.8%) |
+| Chora | 5 (0.2%) |
+
+| Employers with the most signoffs (total 5) | |
+|---|---|
+| Northern.tech | 5 (100.0%) |
+
+| Employers with the most hackers (total 7) | |
+|---|---|
+| Northern.tech | 6 (85.7%) |
+| Chora | 1 (14.3%) |
+
+### Changelogs
+
+#### meta-mender (zeus-v2020.12)
+
+New changes in meta-mender since zeus-v2020.10:
+
+* Disable filesystem journal on read-only-rootfs, which
+  sometimes causes unstable rootfs checksum together with fsck.
+  ([MEN-3912](https://tracker.mender.io/browse/MEN-3912))
+* mender: Fix broken patch for mender-systemd-machine-id.
+* Remove recipe mender-client 2.3.0
+* Add recipe mender-client 2.3.1
+* Remove recipe mender-client 2.4.0
+* Add recipe mender-client 2.4.1
+* New Mender-client configuration option: 'inventory-network-scripts'.
+  This option, if enabled, installs the inventory-network-scripts in the client.
+  This is enabled as an option, because the inventory-geo script relies on a
+  third-party network service to figure out the geographic location of the device,
+  which may not be something that everyone wants installed on their devices. The
+  feature is enabled in the standard 'PACKAGECONFIG' for the Mender-client, and is
+  included unless overridded. To remove it, add
+  'PACKAGECONFIG_remove_pn-mender-client = "inventory-network-scripts"' to your
+  local.conf file.
+* mender-client: Do not keep resizing if a little space is left unused
+  ([MEN-4176](https://tracker.mender.io/browse/MEN-4176))
+* mender-client: Ensure growfs works on GPT filesystems
+  ([MEN-4176](https://tracker.mender.io/browse/MEN-4176))
+* mender-client: Update LICENSE to include OpenSSL
+* Add a recipe for building 'mender-shell', remote shell support.
+  ([MEN-4083](https://tracker.mender.io/browse/MEN-4083))
+* meta-mender-demo: install mender-shell
+  ([MEN-4187](https://tracker.mender.io/browse/MEN-4187))
+* mender-shell: generate and install mender-shell.conf with
+  required fields. `ServerURL` can be configured setting yocto variable
+  `MENDER_SERVER_URL`, same as used by mender-client recipe. If a
+  `mender-shell.conf` file is found in the `SRC_URI` the contents will be
+  merged. ([MEN-4242](https://tracker.mender.io/browse/MEN-4242))
+* mender-shell: Add `User` to generated mender-shell.conf. The
+  value of it is configured using `MENDER_SHELL_USER` variable, which
+  defaults to `nobody` for meta-mender-core and `root` for
+  meta-mender-demo.
+  ([MEN-4242](https://tracker.mender.io/browse/MEN-4242))
+
+
+## meta-mender warrior-v2020.12
+
+_Released 12.16.2020_
+
+### Statistics
+
+A total of 750 lines added, 94 removed (delta 656)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 8 (33.3%) |
+| Kristian Amlie | 7 (29.2%) |
+| Ole Petter Orhagen | 5 (20.8%) |
+| Kasper Føns | 2 (8.3%) |
+| Drew Moseley | 1 (4.2%) |
+| Peter Grzybowski | 1 (4.2%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 534 (68.0%) |
+| Ole Petter Orhagen | 166 (21.1%) |
+| Kristian Amlie | 76 (9.7%) |
+| Kasper Føns | 5 (0.6%) |
+| Drew Moseley | 3 (0.4%) |
+| Peter Grzybowski | 1 (0.1%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Kristian Amlie | 13 (13.8%) |
+| Drew Moseley | 2 (2.1%) |
+
+| Developers with the most signoffs (total 2) | |
+|---|---|
+| Lluis Campos | 2 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 22 (91.7%) |
+| Chora | 2 (8.3%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 780 (99.4%) |
+| Chora | 5 (0.6%) |
+
+| Employers with the most signoffs (total 2) | |
+|---|---|
+| Northern.tech | 2 (100.0%) |
+
+| Employers with the most hackers (total 6) | |
+|---|---|
+| Northern.tech | 5 (83.3%) |
+| Chora | 1 (16.7%) |
+
+### Changelogs
+
+#### meta-mender (warrior-v2020.12)
+
+New changes in meta-mender since warrior-v2020.10:
+
+* Disable `64bit` ext4 filesystem feature.
+  ([MEN-3513](https://tracker.mender.io/browse/MEN-3513))
+* Disable filesystem journal on read-only-rootfs, which
+  sometimes causes unstable rootfs checksum together with fsck.
+  ([MEN-3912](https://tracker.mender.io/browse/MEN-3912))
+* mender: Fix broken patch for mender-systemd-machine-id.
+* Remove recipe mender-client 2.3.0
+* Add recipe mender-client 2.3.1
+* Remove recipe mender-client 2.4.0
+* Add recipe mender-client 2.4.1
+* New Mender-client configuration option: 'inventory-network-scripts'.
+  This option, if enabled, installs the inventory-network-scripts in the client.
+  This is enabled as an option, because the inventory-geo script relies on a
+  third-party network service to figure out the geographic location of the device,
+  which may not be something that everyone wants installed on their devices. The
+  feature is enabled in the standard 'PACKAGECONFIG' for the Mender-client, and is
+  included unless overridded. To remove it, add
+  'PACKAGECONFIG_remove_pn-mender-client = "inventory-network-scripts"' to your
+  local.conf file.
+* mender-client: Do not keep resizing if a little space is left unused
+  ([MEN-4176](https://tracker.mender.io/browse/MEN-4176))
+* mender-client: Ensure growfs works on GPT filesystems
+  ([MEN-4176](https://tracker.mender.io/browse/MEN-4176))
+* mender-client: Update LICENSE to include OpenSSL
+* Add a recipe for building 'mender-shell', remote shell support.
+  ([MEN-4083](https://tracker.mender.io/browse/MEN-4083))
+* meta-mender-demo: install mender-shell
+  ([MEN-4187](https://tracker.mender.io/browse/MEN-4187))
+* mender-shell: generate and install mender-shell.conf with
+  required fields. `ServerURL` can be configured setting yocto variable
+  `MENDER_SERVER_URL`, same as used by mender-client recipe. If a
+  `mender-shell.conf` file is found in the `SRC_URI` the contents will be
+  merged. ([MEN-4242](https://tracker.mender.io/browse/MEN-4242))
+* mender-shell: Add `User` to generated mender-shell.conf. The
+  value of it is configured using `MENDER_SHELL_USER` variable, which
+  defaults to `nobody` for meta-mender-core and `root` for
+  meta-mender-demo.
+  ([MEN-4242](https://tracker.mender.io/browse/MEN-4242))
+
+
 ## meta-mender dunfell-v2020.12
 
 _Released 12.08.2020_
