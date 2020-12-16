@@ -5,6 +5,209 @@ taxonomy:
 ---
 
 
+## meta-mender zeus-v2020.12
+
+_Released 12.16.2020_
+
+### Statistics
+
+A total of 676 lines added, 2800 removed (delta -2124)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 12 (34.3%) |
+| Kristian Amlie | 9 (25.7%) |
+| Ole Petter Orhagen | 6 (17.1%) |
+| Drew Moseley | 3 (8.6%) |
+| Kasper Føns | 2 (5.7%) |
+| Fabio Tranchitella | 2 (5.7%) |
+| Peter Grzybowski | 1 (2.9%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Ole Petter Orhagen | 1826 (56.0%) |
+| Lluis Campos | 1329 (40.7%) |
+| Kristian Amlie | 84 (2.6%) |
+| Fabio Tranchitella | 12 (0.4%) |
+| Drew Moseley | 6 (0.2%) |
+| Kasper Føns | 5 (0.2%) |
+| Peter Grzybowski | 1 (0.0%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Ole Petter Orhagen | 1274 (45.5%) |
+| Lluis Campos | 838 (29.9%) |
+| Kristian Amlie | 22 (0.8%) |
+| Drew Moseley | 2 (0.1%) |
+
+| Developers with the most signoffs (total 5) | |
+|---|---|
+| Lluis Campos | 3 (60.0%) |
+| Kristian Amlie | 2 (40.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 33 (94.3%) |
+| Chora | 2 (5.7%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 3258 (99.8%) |
+| Chora | 5 (0.2%) |
+
+| Employers with the most signoffs (total 5) | |
+|---|---|
+| Northern.tech | 5 (100.0%) |
+
+| Employers with the most hackers (total 7) | |
+|---|---|
+| Northern.tech | 6 (85.7%) |
+| Chora | 1 (14.3%) |
+
+### Changelogs
+
+#### meta-mender (zeus-v2020.12)
+
+New changes in meta-mender since zeus-v2020.10:
+
+* Disable filesystem journal on read-only-rootfs, which
+  sometimes causes unstable rootfs checksum together with fsck.
+  ([MEN-3912](https://tracker.mender.io/browse/MEN-3912))
+* mender: Fix broken patch for mender-systemd-machine-id.
+* Remove recipe mender-client 2.3.0
+* Add recipe mender-client 2.3.1
+* Remove recipe mender-client 2.4.0
+* Add recipe mender-client 2.4.1
+* New Mender-client configuration option: 'inventory-network-scripts'.
+  This option, if enabled, installs the inventory-network-scripts in the client.
+  This is enabled as an option, because the inventory-geo script relies on a
+  third-party network service to figure out the geographic location of the device,
+  which may not be something that everyone wants installed on their devices. The
+  feature is enabled in the standard 'PACKAGECONFIG' for the Mender-client, and is
+  included unless overridded. To remove it, add
+  'PACKAGECONFIG_remove_pn-mender-client = "inventory-network-scripts"' to your
+  local.conf file.
+* mender-client: Do not keep resizing if a little space is left unused
+  ([MEN-4176](https://tracker.mender.io/browse/MEN-4176))
+* mender-client: Ensure growfs works on GPT filesystems
+  ([MEN-4176](https://tracker.mender.io/browse/MEN-4176))
+* mender-client: Update LICENSE to include OpenSSL
+* Add a recipe for building 'mender-shell', remote shell support.
+  ([MEN-4083](https://tracker.mender.io/browse/MEN-4083))
+* meta-mender-demo: install mender-shell
+  ([MEN-4187](https://tracker.mender.io/browse/MEN-4187))
+* mender-shell: generate and install mender-shell.conf with
+  required fields. `ServerURL` can be configured setting yocto variable
+  `MENDER_SERVER_URL`, same as used by mender-client recipe. If a
+  `mender-shell.conf` file is found in the `SRC_URI` the contents will be
+  merged. ([MEN-4242](https://tracker.mender.io/browse/MEN-4242))
+* mender-shell: Add `User` to generated mender-shell.conf. The
+  value of it is configured using `MENDER_SHELL_USER` variable, which
+  defaults to `nobody` for meta-mender-core and `root` for
+  meta-mender-demo.
+  ([MEN-4242](https://tracker.mender.io/browse/MEN-4242))
+
+
+## meta-mender warrior-v2020.12
+
+_Released 12.16.2020_
+
+### Statistics
+
+A total of 750 lines added, 94 removed (delta 656)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 8 (33.3%) |
+| Kristian Amlie | 7 (29.2%) |
+| Ole Petter Orhagen | 5 (20.8%) |
+| Kasper Føns | 2 (8.3%) |
+| Drew Moseley | 1 (4.2%) |
+| Peter Grzybowski | 1 (4.2%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 534 (68.0%) |
+| Ole Petter Orhagen | 166 (21.1%) |
+| Kristian Amlie | 76 (9.7%) |
+| Kasper Føns | 5 (0.6%) |
+| Drew Moseley | 3 (0.4%) |
+| Peter Grzybowski | 1 (0.1%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Kristian Amlie | 13 (13.8%) |
+| Drew Moseley | 2 (2.1%) |
+
+| Developers with the most signoffs (total 2) | |
+|---|---|
+| Lluis Campos | 2 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 22 (91.7%) |
+| Chora | 2 (8.3%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 780 (99.4%) |
+| Chora | 5 (0.6%) |
+
+| Employers with the most signoffs (total 2) | |
+|---|---|
+| Northern.tech | 2 (100.0%) |
+
+| Employers with the most hackers (total 6) | |
+|---|---|
+| Northern.tech | 5 (83.3%) |
+| Chora | 1 (16.7%) |
+
+### Changelogs
+
+#### meta-mender (warrior-v2020.12)
+
+New changes in meta-mender since warrior-v2020.10:
+
+* Disable `64bit` ext4 filesystem feature.
+  ([MEN-3513](https://tracker.mender.io/browse/MEN-3513))
+* Disable filesystem journal on read-only-rootfs, which
+  sometimes causes unstable rootfs checksum together with fsck.
+  ([MEN-3912](https://tracker.mender.io/browse/MEN-3912))
+* mender: Fix broken patch for mender-systemd-machine-id.
+* Remove recipe mender-client 2.3.0
+* Add recipe mender-client 2.3.1
+* Remove recipe mender-client 2.4.0
+* Add recipe mender-client 2.4.1
+* New Mender-client configuration option: 'inventory-network-scripts'.
+  This option, if enabled, installs the inventory-network-scripts in the client.
+  This is enabled as an option, because the inventory-geo script relies on a
+  third-party network service to figure out the geographic location of the device,
+  which may not be something that everyone wants installed on their devices. The
+  feature is enabled in the standard 'PACKAGECONFIG' for the Mender-client, and is
+  included unless overridded. To remove it, add
+  'PACKAGECONFIG_remove_pn-mender-client = "inventory-network-scripts"' to your
+  local.conf file.
+* mender-client: Do not keep resizing if a little space is left unused
+  ([MEN-4176](https://tracker.mender.io/browse/MEN-4176))
+* mender-client: Ensure growfs works on GPT filesystems
+  ([MEN-4176](https://tracker.mender.io/browse/MEN-4176))
+* mender-client: Update LICENSE to include OpenSSL
+* Add a recipe for building 'mender-shell', remote shell support.
+  ([MEN-4083](https://tracker.mender.io/browse/MEN-4083))
+* meta-mender-demo: install mender-shell
+  ([MEN-4187](https://tracker.mender.io/browse/MEN-4187))
+* mender-shell: generate and install mender-shell.conf with
+  required fields. `ServerURL` can be configured setting yocto variable
+  `MENDER_SERVER_URL`, same as used by mender-client recipe. If a
+  `mender-shell.conf` file is found in the `SRC_URI` the contents will be
+  merged. ([MEN-4242](https://tracker.mender.io/browse/MEN-4242))
+* mender-shell: Add `User` to generated mender-shell.conf. The
+  value of it is configured using `MENDER_SHELL_USER` variable, which
+  defaults to `nobody` for meta-mender-core and `root` for
+  meta-mender-demo.
+  ([MEN-4242](https://tracker.mender.io/browse/MEN-4242))
+
+
 ## meta-mender dunfell-v2020.12
 
 _Released 12.08.2020_
@@ -262,6 +465,385 @@ New changes in meta-mender since dunfell-v2020.09:
 * grub-mender-grubenv: Cleanup PROVIDES and RPROVIDES.
 * mender: Switch from include to require.
 * Fix PACKAGECONFIG not propagating RDEPENDS properly.
+
+
+## meta-mender zeus-v2020.10
+
+_Released 10.05.2020_
+
+### Statistics
+
+A total of 86545 lines added, 31 removed (delta 86514)
+
+| Developers with the most changesets | |
+|---|---|
+| Drew Moseley | 5 (27.8%) |
+| Lluis Campos | 4 (22.2%) |
+| Peter Grzybowski | 2 (11.1%) |
+| Daniel Selvan D | 1 (5.6%) |
+| Kristian Amlie | 1 (5.6%) |
+| Mirza Krak | 1 (5.6%) |
+| Kasper Føns | 1 (5.6%) |
+| Kurt Kiefer | 1 (5.6%) |
+| Marek Belisko | 1 (5.6%) |
+| Ossian Riday | 1 (5.6%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 86467 (99.9%) |
+| Marek Belisko | 47 (0.1%) |
+| Peter Grzybowski | 10 (0.0%) |
+| Drew Moseley | 9 (0.0%) |
+| Kurt Kiefer | 7 (0.0%) |
+| Kristian Amlie | 4 (0.0%) |
+| Ossian Riday | 3 (0.0%) |
+| Kasper Føns | 2 (0.0%) |
+| Daniel Selvan D | 1 (0.0%) |
+| Mirza Krak | 1 (0.0%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Kristian Amlie | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 13 (72.2%) |
+| kekiefer@gmail.com | 1 (5.6%) |
+| danilselvan@gmail.com | 1 (5.6%) |
+| ossian.riday@gmail.com | 1 (5.6%) |
+| Chora | 1 (5.6%) |
+| open-nandra | 1 (5.6%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 86491 (99.9%) |
+| open-nandra | 47 (0.1%) |
+| kekiefer@gmail.com | 7 (0.0%) |
+| ossian.riday@gmail.com | 3 (0.0%) |
+| Chora | 2 (0.0%) |
+| danilselvan@gmail.com | 1 (0.0%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+| Employers with the most hackers (total 10) | |
+|---|---|
+| Northern.tech | 5 (50.0%) |
+| open-nandra | 1 (10.0%) |
+| kekiefer@gmail.com | 1 (10.0%) |
+| ossian.riday@gmail.com | 1 (10.0%) |
+| Chora | 1 (10.0%) |
+| danilselvan@gmail.com | 1 (10.0%) |
+
+### Changelogs
+
+#### meta-mender (zeus-v2020.10)
+
+New changes in meta-mender since zeus-v2020.07:
+
+* []MBR systems don't have a backup header, so always return true
+  ([MEN-3761](https://tracker.mender.io/browse/MEN-3761))
+* u-boot: Fix raspberrypi-cm3 u-boot hang
+* mender-client: fix install of systemd-machine-id.service
+* initramfs-module-install-efi: Ensure variable changes are reflected on rebuild
+* mender-commercial: Cleanup BBFILES.
+* Warn when detecting U-Boot version without script '=' support.
+  ([MEN-3851](https://tracker.mender.io/browse/MEN-3851))
+* Add mender-client 2.4.0 recipe.
+* OpenSSL: qemu: set SECLEVEL=2 in /etc/ssl/openssl.cnf
+  ([MEN-3730](https://tracker.mender.io/browse/MEN-3730))
+* Fixed key extraction by skipping new lines in defconfig.
+  The `add_kconfig_option_with_depends.py` file throws `Not sure how to
+  handle Kconfig option that doesn't start with 'CONFIG_'` when the
+  provided defconfig file contains blank lines. It has been fixed by
+  checking for empty lines before processing for keys.
+* Add recipe go 1.14 from dunfell
+* Use golang 1.14 in meta-mender-core layer to support Ed25519
+  public keys for signing and transport in the Mender client.
+
+
+## meta-mender warrior-v2020.10
+
+_Released 10.05.2020_
+
+### Statistics
+
+A total of 86487 lines added, 100 removed (delta 86387)
+
+| Developers with the most changesets | |
+|---|---|
+| Drew Moseley | 7 (46.7%) |
+| Lluis Campos | 3 (20.0%) |
+| Peter Grzybowski | 1 (6.7%) |
+| Mirza Krak | 1 (6.7%) |
+| Kristian Amlie | 1 (6.7%) |
+| Michael Davis | 1 (6.7%) |
+| Kasper Føns | 1 (6.7%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 86463 (99.9%) |
+| Drew Moseley | 92 (0.1%) |
+| Peter Grzybowski | 9 (0.0%) |
+| Kristian Amlie | 4 (0.0%) |
+| Kasper Føns | 2 (0.0%) |
+| Mirza Krak | 1 (0.0%) |
+| Michael Davis | 1 (0.0%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Drew Moseley | 73 (73.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 13 (86.7%) |
+| Election Systems & Software | 1 (6.7%) |
+| Chora | 1 (6.7%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 86569 (100.0%) |
+| Chora | 2 (0.0%) |
+| Election Systems & Software | 1 (0.0%) |
+
+| Employers with the most signoffs (total 0) | |
+|---|---|
+
+| Employers with the most hackers (total 7) | |
+|---|---|
+| Northern.tech | 5 (71.4%) |
+| Chora | 1 (14.3%) |
+| Election Systems & Software | 1 (14.3%) |
+
+### Changelogs
+
+#### meta-mender (warrior-v2020.10)
+
+New changes in meta-mender since warrior-v2020.07:
+
+* initramfs-module-install-efi: Ensure variable changes are reflected on rebuild
+* mender-grub: Dynamically determine mender_grub_storage_device.
+* mender-grub: Add regexp module.
+* Deprecate MENDER_GRUB_STORAGE_DEVICE variable.
+* mender: Add sanity check to ensure partuuid with X86.
+* vexpress: Remove nonexistent kernel config options that issue warnings.
+* mender-commercial: Cleanup BBFILES.
+* mender: Add additonal x86 arch to partuuid sanity check
+* Warn when detecting U-Boot version without script '=' support.
+  ([MEN-3851](https://tracker.mender.io/browse/MEN-3851))
+* Add mender-client 2.4.0 recipe.
+* OpenSSL: qemu: set SECLEVEL=2 in /etc/ssl/openssl.cnf
+  ([MEN-3730](https://tracker.mender.io/browse/MEN-3730))
+* Add recipe go 1.14 from dunfell
+* Use golang 1.14 in meta-mender-core layer to support Ed25519
+  public keys for signing and transport in the Mender client.
+
+
+## meta-mender thud-v2020.10
+
+_Released 10.05.2020_
+
+### Statistics
+
+A total of 82 lines added, 38 removed (delta 44)
+
+| Developers with the most changesets | |
+|---|---|
+| Drew Moseley | 7 (43.8%) |
+| Lluis Campos | 3 (18.8%) |
+| Gaurav Kalra | 2 (12.5%) |
+| Matthew Beckler | 2 (12.5%) |
+| Joerg Hofrichter | 1 (6.2%) |
+| Kristian Amlie | 1 (6.2%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Drew Moseley | 55 (63.2%) |
+| Lluis Campos | 16 (18.4%) |
+| Kristian Amlie | 10 (11.5%) |
+| Gaurav Kalra | 2 (2.3%) |
+| Matthew Beckler | 2 (2.3%) |
+| Joerg Hofrichter | 2 (2.3%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 11 (68.8%) |
+| Packet Power LLC | 2 (12.5%) |
+| National Instruments | 1 (6.2%) |
+| gvkalra@gmail.com | 1 (6.2%) |
+| SM Instruments Inc. | 1 (6.2%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 81 (93.1%) |
+| Packet Power LLC | 2 (2.3%) |
+| National Instruments | 2 (2.3%) |
+| gvkalra@gmail.com | 1 (1.1%) |
+| SM Instruments Inc. | 1 (1.1%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+| Employers with the most hackers (total 7) | |
+|---|---|
+| Northern.tech | 3 (42.9%) |
+| Packet Power LLC | 1 (14.3%) |
+| National Instruments | 1 (14.3%) |
+| gvkalra@gmail.com | 1 (14.3%) |
+| SM Instruments Inc. | 1 (14.3%) |
+
+### Changelogs
+
+#### meta-mender (thud-v2020.10)
+
+New changes in meta-mender since thud-v2019.12:
+
+* grub-mender-grubenv: Fix broken debug-log PACKAGECONFIG.
+* grub-efi: Respect MENDER_BOOT_PART_MOUNT_LOCATION
+* mender-grub: Set EFI_PROVIDER to grub-efi.
+* remove stray '-' in IMAGE_NAME
+* systemd-boot: Respect MENDER_BOOT_PART_MOUNT_LOCATION
+* Add mender 2.2.0b1 recipe
+* Add mender-artifact 3.3.0b1 recipe
+* In demo mode, put demo certificate in same directory as Debian package.
+  ([MEN-3048](https://tracker.mender.io/browse/MEN-3048))
+* mender-helpers: Error out if copying different files to boot part.
+* Improve warning when multiple DTB files are in KERNEL_DEVICETREE
+* Add MENDER_DTB_NAME_FORCE to mender-vars.json to avoid unrecognized variable warning
+* rpi: fix rootfs cmdline trailing space
+* Add mender 2.2.1 recipe
+* Add mender-artifact 3.3.1 recipe
+* Remove mender 2.2.0b1 recipe
+* Remove mender-artifact 3.3.0b1 recipe
+
+
+## meta-mender sumo-v2020.10
+
+_Released 10.05.2020_
+
+### Statistics
+
+A total of 52 lines added, 60 removed (delta -8)
+
+| Developers with the most changesets | |
+|---|---|
+| Drew Moseley | 5 (45.5%) |
+| Lluis Campos | 2 (18.2%) |
+| Matthew Beckler | 2 (18.2%) |
+| Gaurav Kalra | 1 (9.1%) |
+| Kristian Amlie | 1 (9.1%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 49 (55.1%) |
+| Drew Moseley | 27 (30.3%) |
+| Kristian Amlie | 10 (11.2%) |
+| Matthew Beckler | 2 (2.2%) |
+| Gaurav Kalra | 1 (1.1%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Lluis Campos | 35 (58.3%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 8 (72.7%) |
+| Packet Power LLC | 2 (18.2%) |
+| SM Instruments Inc. | 1 (9.1%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 86 (96.6%) |
+| Packet Power LLC | 2 (2.2%) |
+| SM Instruments Inc. | 1 (1.1%) |
+
+| Employers with the most hackers (total 5) | |
+|---|---|
+| Northern.tech | 3 (60.0%) |
+| Packet Power LLC | 1 (20.0%) |
+| SM Instruments Inc. | 1 (20.0%) |
+
+### Changelogs
+
+#### meta-mender (sumo-v2020.10)
+
+New changes in meta-mender since sumo-v2019.12:
+
+* grub-mender-grubenv: Fix broken debug-log PACKAGECONFIG.
+* grub-efi: Respect MENDER_BOOT_PART_MOUNT_LOCATION
+* mender-grub: Set EFI_PROVIDER to grub-efi.
+* systemd-boot: Respect MENDER_BOOT_PART_MOUNT_LOCATION
+* Add mender 2.2.0b1 recipe
+* Add mender-artifact 3.3.0b1 recipe
+* In demo mode, put demo certificate in same directory as Debian package.
+  ([MEN-3048](https://tracker.mender.io/browse/MEN-3048))
+* Improve warning when multiple DTB files are in KERNEL_DEVICETREE
+* Add MENDER_DTB_NAME_FORCE to mender-vars.json to avoid unrecognized variable warning
+* rpi: fix rootfs cmdline trailing space
+* Add mender 2.2.1 recipe
+* Add mender-artifact 3.3.1 recipe
+* Remove mender 2.2.0b1 recipe
+* Remove mender-artifact 3.3.0b1 recipe
+
+
+## meta-mender rocko-v2020.10
+
+_Released 10.05.2020_
+
+### Statistics
+
+A total of 201 lines added, 147 removed (delta 54)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 6 (46.2%) |
+| Kristian Amlie | 6 (46.2%) |
+| Ole Petter Orhagen | 1 (7.7%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 157 (55.5%) |
+| Ole Petter Orhagen | 113 (39.9%) |
+| Lluis Campos | 13 (4.6%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Ole Petter Orhagen | 82 (55.8%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 13 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 283 (100.0%) |
+
+| Employers with the most hackers (total 3) | |
+|---|---|
+| Northern.tech | 3 (100.0%) |
+
+### Changelogs
+
+#### meta-mender (rocko-v2020.10)
+
+New changes in meta-mender since rocko-v2019.08:
+
+* Add meta-mender-commercial layer.
+  This will host our mender-binary-delta Update Module.
+* Update recipe for mender-binary-delta pre-release v0.1.1
+* `FILESEXTRAPATHS_prepend_pn-mender-binary-delta` now needs
+  to point to the folder containing `arm`, `aarch64` and `x86_64`, not the folder
+  containing the binary.
+* Update recipe for mender-binary-delta beta release v1.0.0b1
+* Update recipe for mender-binary-delta final release v1.0.0
+* Add mender 2.2.1 recipe
+* Add mender-artifact 3.3.1 recipe
+* Remove mender 2.1.0b1 recipe
+* Remove mender-artifact 3.1.0b1 recipe
+* Removes the tests covering Mender-Artifact version 1.
+  ([MEN-2156](https://tracker.mender.io/browse/MEN-2156))
 
 
 ## meta-mender dunfell-v2020.09
