@@ -72,7 +72,7 @@ method below that does not require a separate layer.
 
 #### Using a layer
 
-Put the certificate inside your own layer, under `recipes-mender/mender/files/server.crt`. Then create the file `recipes-mender/mender/mender-client_%.bbappend`. Inside this file, add the following content:
+Put the certificate inside your own layer, under `recipes-mender/mender-client/files/server.crt`. Then create the file `recipes-mender/mender-client/mender-client_%.bbappend`. Inside this file, add the following content:
 
 ```bash
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
