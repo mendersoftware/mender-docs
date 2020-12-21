@@ -85,6 +85,10 @@ Example:
     }
 ```
 
+#### ReconnectIntervalSeconds
+
+The number of seconds to wait between consecutive reconnection attempts.
+
 #### Sessions
 
 User sessions settings.
