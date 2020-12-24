@@ -117,19 +117,19 @@ The size of the boot partition.
 The version of the Mender client to include in the update.
 
 
-#### MENDER_ADDON_SHELL_INSTALL
+#### MENDER_ADDON_CONNECT_INSTALL
 
 > Value: y/n(default)
 
-Install the Mender Shell add-on.
+Install the Mender Connect add-on.
 
 
-#### MENDER_ADDON_SHELL_VERSION
+#### MENDER_ADDON_CONNECT_VERSION
 
 <!--AUTOVERSION: "/%/"/ignore-->
 > Value: latest(default)/master/&lt;version&gt;
 
-The version of the Mender Shell add-on to include in the update.
+The version of the Mender Connect add-on to include in the update.
 
 
 #### `MENDER_COMPRESS_DISK_IMAGE`

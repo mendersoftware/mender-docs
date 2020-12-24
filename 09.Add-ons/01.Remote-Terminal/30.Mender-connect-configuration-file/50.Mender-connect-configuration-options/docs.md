@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-This sections lists all the configuration options in `mender-shell.conf`.
+This sections lists all the configuration options in `mender-connect.conf`.
 
 #### HttpsClient
 
@@ -42,7 +42,7 @@ You have to specify at least one valid URL for a server to connect to.
 
 The location of the public certificate of the server, if any. If this
 certificate is missing, or the one presented by the server does not match the
-one specified in this setting, mender-shell validates the server certificate using
+one specified in this setting, mender-connect validates the server certificate using
 standard certificate trust chains.
 
 #### ShellCommand
@@ -61,7 +61,7 @@ Example:
 
 #### User
 
-The name of a user that mender-shell will run the shell as. Must resolve to valid
+The name of a user that mender-connect will run the shell as. Must resolve to valid
 user id and must posses a valid group id. This a mandatory field.
 
 #### Terminal
@@ -96,7 +96,7 @@ User sessions settings.
 ##### StopExpired
 
 Determines whether stopped sessions will be automatically expired and removed.
-If set to `false` mender-shell will
+If set to `false` mender-connect will
 not touch the sessions. The value of `true` enables session expiration
 handling.
 
@@ -108,9 +108,9 @@ to be expired.
 ##### ExpireAfterIdle
 
 The number of seconds without activity (no input from the user) after which
-mender-shell marks a session as expired. Note that you can specify both
+mender-connect marks a session as expired. Note that you can specify both
 `ExpireAfterIdle` and `ExpireAfter`, in which case you can think of the latter
-as a "_hard limit_", i.e.: time after every mender-shell removes every session.
+as a "_hard limit_", i.e.: time after every mender-connect removes every session.
 
 ##### MaxPerUser
 
