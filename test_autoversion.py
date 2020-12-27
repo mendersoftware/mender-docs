@@ -18,6 +18,16 @@ def test_version_regex():
     assert re.search(regex, "release.2_master_2") is not None
     assert re.search(regex, "morty") is not None
 
+    # Special case: mender-X.Y.Z
+    assert re.search(regex, "mender-1.2.3") is not None
+    assert re.search(regex, "mender-1.2.3").group(0) == "mender-1.2.3"
+    assert re.search(regex, "something-mender-1.2.3-else") is not None
+    assert re.search(regex, "something-mender-1.2.3-else").group(0) == "mender-1.2.3"
+    assert re.search(regex, "1.2.3-mender") is not None
+    assert re.search(regex, "1.2.3-mender").group(0) == "1.2.3"
+    assert re.search(regex, "mender.1.2.3") is not None
+    assert re.search(regex, "mender.1.2.3").group(0) == "1.2.3"
+
     # Should not match.
     assert re.search(regex, "1.2.3.4") is None
     assert re.search(regex, "11.2.3.4") is None
