@@ -119,7 +119,7 @@ You can find more information on above example in the
 
 Mender supports add-ons in a form of standalone binaries exchanging messages
 with the client over [DBus](https://dbus.freedesktop.org/doc/api/html/).
-One example is the [mender-shell](https://github.com/mendersoftware/mender-shell)
+One example is the [mender-connect](https://github.com/mendersoftware/mender-connect)
 which is an implementation of remote terminal access to devices.
 The below picture shows the architecture of the solution.
 

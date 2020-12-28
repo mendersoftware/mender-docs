@@ -243,10 +243,10 @@ mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 
 ## Remote Terminal add-on
 
-Mender offers a remote terminal extension (`mender-shell`) to the Mender client
+Mender offers a remote terminal extension (`mender-connect`) to the Mender client
 that enables accessing the device terminal using the Mender UI. See the
 [configuration page for remote
-terminal](../09.Add-ons/01.Remote-Terminal/30.Mender-shell-configuration-file/docs.md) for
+terminal](../09.Add-ons/01.Remote-Terminal/30.Mender-connect-configuration-file/docs.md) for
 more information.
 
 ### Install the remote terminal client
@@ -254,15 +254,15 @@ more information.
 The remote terminal add-on requires the [Mender client](#mender-client) in order
 to function. If you have already installed the Mender client using
 the [express installation](#express-installation) script, you will already have
-`mender-shell` installed by default.
+`mender-connect` installed by default.
 
 The add-on is only available from the Mender APT repository.
-To install `mender-shell`, follow the instructions for [installing
+To install `mender-connect`, follow the instructions for [installing
 `mender-client` using the APT repository](#install-using-the-apt-repository).
-After the final step, install `mender-shell` using the package manager:
+After the final step, install `mender-connect` using the package manager:
 
 ```bash
-sudo apt-get install mender-shell
+sudo apt-get install mender-connect
 ```
 
 ## mender-cli

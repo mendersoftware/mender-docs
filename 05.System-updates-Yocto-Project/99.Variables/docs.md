@@ -490,13 +490,13 @@ Variable to override the URL of the server for the client to connect to. It is
 also used for add-ons configuration, where enabled.
 
 
-#### `MENDER_SHELL_USER`
+#### `MENDER_CONNECT_USER`
 
 > Value: `nobody` (default)
 
-Variable holding the username which the `mender-shell` employs. See [Mender
+Variable holding the username which the `mender-connect` employs. See [Mender
 shell configuration
-options](../../09.Add-ons/01.Remote-Terminal/30.Mender-shell-configuration-file/50.Mender-shell-configuration-options/docs.md#user).
+options](../../09.Add-ons/01.Remote-Terminal/30.Mender-connect-configuration-file/50.Mender-connect-configuration-options/docs.md#user).
 Note that the default value in `meta-mender-core` is `nobody`, while in
 `meta-mender-demo` it is `root`.
 

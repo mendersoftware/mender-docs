@@ -92,17 +92,17 @@ New changes in meta-mender since zeus-v2020.10:
 * mender-client: Ensure growfs works on GPT filesystems
   ([MEN-4176](https://tracker.mender.io/browse/MEN-4176))
 * mender-client: Update LICENSE to include OpenSSL
-* Add a recipe for building 'mender-shell', remote shell support.
+* Add a recipe for building 'mender-connect', remote shell support.
   ([MEN-4083](https://tracker.mender.io/browse/MEN-4083))
-* meta-mender-demo: install mender-shell
+* meta-mender-demo: install mender-connect
   ([MEN-4187](https://tracker.mender.io/browse/MEN-4187))
-* mender-shell: generate and install mender-shell.conf with
+* mender-connect: generate and install mender-connect.conf with
   required fields. `ServerURL` can be configured setting yocto variable
   `MENDER_SERVER_URL`, same as used by mender-client recipe. If a
-  `mender-shell.conf` file is found in the `SRC_URI` the contents will be
+  `mender-connect.conf` file is found in the `SRC_URI` the contents will be
   merged. ([MEN-4242](https://tracker.mender.io/browse/MEN-4242))
-* mender-shell: Add `User` to generated mender-shell.conf. The
-  value of it is configured using `MENDER_SHELL_USER` variable, which
+* mender-connect: Add `User` to generated mender-connect.conf. The
+  value of it is configured using `MENDER_CONNECT_USER` variable, which
   defaults to `nobody` for meta-mender-core and `root` for
   meta-mender-demo.
   ([MEN-4242](https://tracker.mender.io/browse/MEN-4242))
@@ -192,17 +192,17 @@ New changes in meta-mender since warrior-v2020.10:
 * mender-client: Ensure growfs works on GPT filesystems
   ([MEN-4176](https://tracker.mender.io/browse/MEN-4176))
 * mender-client: Update LICENSE to include OpenSSL
-* Add a recipe for building 'mender-shell', remote shell support.
+* Add a recipe for building 'mender-connect', remote shell support.
   ([MEN-4083](https://tracker.mender.io/browse/MEN-4083))
-* meta-mender-demo: install mender-shell
+* meta-mender-demo: install mender-connect
   ([MEN-4187](https://tracker.mender.io/browse/MEN-4187))
-* mender-shell: generate and install mender-shell.conf with
+* mender-connect: generate and install mender-connect.conf with
   required fields. `ServerURL` can be configured setting yocto variable
   `MENDER_SERVER_URL`, same as used by mender-client recipe. If a
-  `mender-shell.conf` file is found in the `SRC_URI` the contents will be
+  `mender-connect.conf` file is found in the `SRC_URI` the contents will be
   merged. ([MEN-4242](https://tracker.mender.io/browse/MEN-4242))
-* mender-shell: Add `User` to generated mender-shell.conf. The
-  value of it is configured using `MENDER_SHELL_USER` variable, which
+* mender-connect: Add `User` to generated mender-connect.conf. The
+  value of it is configured using `MENDER_CONNECT_USER` variable, which
   defaults to `nobody` for meta-mender-core and `root` for
   meta-mender-demo.
   ([MEN-4242](https://tracker.mender.io/browse/MEN-4242))
@@ -281,7 +281,7 @@ New changes in meta-mender since dunfell-v2020.11:
   ([MEN-4176](https://tracker.mender.io/browse/MEN-4176))
 * mender-client: Update LICENSE to include OpenSSL
 * mender-client: Include OpenSSL license from 2.4.x onwards.
-* Add a recipe for building 'mender-shell', remote shell support.
+* Add a recipe for building 'mender-connect', remote shell support.
   ([MEN-4083](https://tracker.mender.io/browse/MEN-4083))
 * Fix a parsing issue where `inherit` could not be used with
   variables that had been defined with overrides that depended on

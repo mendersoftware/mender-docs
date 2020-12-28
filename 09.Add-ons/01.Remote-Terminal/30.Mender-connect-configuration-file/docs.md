@@ -4,13 +4,13 @@ taxonomy:
     category: docs
 ---
 
-Mender-shell client's add-on configuration resides in `/etc/mender/mender-shell.conf`
+Mender Connect client's add-on configuration resides in `/etc/mender/mender-connect.conf`
 on the root filesystem. This file is JSON structured and defines various
-parameters for Mender-shell operation.
+parameters for Mender Connect operation.
 
-# Example mender-shell.conf file
+# Example mender-connect.conf file
 
-Here is an example of a `mender-shell.conf` file:
+Here is an example of a `mender-connect.conf` file:
 ```
 {
     "ClientProtocol": "https",
@@ -34,7 +34,7 @@ Here is an example of a `mender-shell.conf` file:
 }
 ```
 
-# Providing mender-shell.conf
+# Providing mender-connect.conf
 
 The mechanism for providing the configuration file and specifying the configuration values will depend on your choice of OS distribution or build system.
 
