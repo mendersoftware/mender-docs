@@ -55,6 +55,8 @@ def get_version_of(repo):
                     os.path.join(INTEGRATION_REPO, "extra", "release_tool.py"),
                     "--version-of",
                     repo,
+                    "--version-type",
+                    "docker",
                     "--in-integration-version",
                     INTEGRATION_VERSION,
                 ]
