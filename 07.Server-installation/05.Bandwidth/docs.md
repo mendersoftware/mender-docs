@@ -9,7 +9,7 @@ taxonomy:
 
 !!! This section applies only to Mender with Minio storage backend.
 
-When a large number of devices is being updated, the uplink connection of the
+When a large number of devices are being updated, the uplink connection of the
 backend can easily get saturated. For this reason `storage-proxy` container is
 aware of 2 environment variables:
 
