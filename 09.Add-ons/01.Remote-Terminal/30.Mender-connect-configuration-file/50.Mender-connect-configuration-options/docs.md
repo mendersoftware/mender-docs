@@ -56,7 +56,7 @@ conditions:
 Example:
 
 ```
- "Shell": "/bin/sh"
+ "ShellCommand": "/bin/bash"
 ```
 
 #### User
