@@ -5,6 +5,46 @@ taxonomy:
 ---
 
 
+## mender-binary-delta 1.2.0
+
+_Released 01.11.2021_
+
+### Changelogs
+
+#### mender-binary-delta (1.2.0)
+
+New changes in mender-binary-delta since 1.1.0:
+
+* Improve error message when mender-artifact is not found.
+  ([MEN-4044](https://tracker.mender.io/browse/MEN-4044))
+* Mender-binary-delta and its Artifact generator now supports
+  the new "Provides" fields for individial application software names.
+  ([MEN-3483](https://tracker.mender.io/browse/MEN-3483), [MEN-3484](https://tracker.mender.io/browse/MEN-3484))
+* The format of the Artifact checksum field has been changed
+  in mender-artifact 3.5.0, from `rootfs_image_checksum` to
+  `rootfs-image.checksum`, to conform to the namespaced "Provides"
+  fields. Mender-binary-delta now supports this new field. This should
+  not have any practical effect, but will cause meta data of delta
+  Artifacts to look different.
+  ([MEN-3483](https://tracker.mender.io/browse/MEN-3483), [MEN-3484](https://tracker.mender.io/browse/MEN-3484))
+* Probe U-Boot env before use to support libubootenv fw tools
+  ([MEN-4246](https://tracker.mender.io/browse/MEN-4246))
+
+
+## mender-binary-delta 1.1.1
+
+_Released 01.11.2021_
+
+### Changelogs
+
+#### mender-binary-delta (1.1.1)
+
+New changes in mender-binary-delta since 1.1.0:
+
+* Probe U-Boot env before use to support libubootenv fw tools
+  ([MEN-4246](https://tracker.mender.io/browse/MEN-4246))
+
+
 ## meta-mender zeus-v2020.12
 
 _Released 12.16.2020_
