@@ -2,6 +2,8 @@
 title: Release notes & changelog
 taxonomy:
     category: docs
+shortcode-core:
+    active: false
 ---
 
 ## meta-mender rocko-v2018.02
