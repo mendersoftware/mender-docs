@@ -2,6 +2,8 @@
 title: Release notes & changelog
 taxonomy:
     category: docs
+shortcode-core:
+    active: false
 ---
 
 ## v1.0.1 
