@@ -2,6 +2,8 @@
 title: Release notes & changelog
 taxonomy:
     category: docs
+shortcode-core:
+    active: false
 ---
 
 ## meta-mender thud-v2019.02
