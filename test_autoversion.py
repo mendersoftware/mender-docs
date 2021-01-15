@@ -9,6 +9,9 @@ def test_version_regex():
 
     # Should match.
     assert re.search(regex, "1.2.3") is not None
+    assert re.search(regex, "1.2.3b2") is not None
+    assert re.search(regex, "1.2.3-build123") is not None
+    assert re.search(regex, "1.2.3-build123").group(0) == "1.2.3-build123"
     assert re.search(regex, "release_2_1.2.3") is not None
     assert re.search(regex, "release_2_1.2.3.mender") is not None
     assert re.search(regex, "release_2_1.2.3_mender") is not None
