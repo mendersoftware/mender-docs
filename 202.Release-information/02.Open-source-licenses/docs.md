@@ -2,6 +2,8 @@
 title: Open source licenses
 taxonomy:
     category: docs
+shortcode-core:
+    active: false
 ---
 
 All open source licenses used in Mender with the default build are shown below.
