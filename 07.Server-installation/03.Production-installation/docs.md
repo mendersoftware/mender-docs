@@ -831,9 +831,9 @@ git log --oneline 2.6.0-build2..HEAD
 
 <!-- Verification of Enterprise instance -->
 
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 15 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 16 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
 <!--AUTOMATION: test=./run restart -->
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 15 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 16 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:9000" -->
 
