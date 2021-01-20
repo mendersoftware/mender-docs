@@ -7,6 +7,117 @@ shortcode-core:
 ---
 
 
+## mender-convert 2.3.0
+
+_Released 01.20.2021_
+
+### Statistics
+
+A total of 858 lines added, 378 removed (delta 480)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 31 (53.4%) |
+| Kristian Amlie | 9 (15.5%) |
+| Drew Moseley | 7 (12.1%) |
+| Ole Petter Orhagen | 6 (10.3%) |
+| Nils Olav Kvelvane Johansen | 2 (3.4%) |
+| Fabio Tranchitella | 1 (1.7%) |
+| Mirza Krak | 1 (1.7%) |
+| Alin Alexandru | 1 (1.7%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 642 (71.0%) |
+| Kristian Amlie | 125 (13.8%) |
+| Drew Moseley | 51 (5.6%) |
+| Ole Petter Orhagen | 36 (4.0%) |
+| Nils Olav Kvelvane Johansen | 22 (2.4%) |
+| Fabio Tranchitella | 16 (1.8%) |
+| Alin Alexandru | 11 (1.2%) |
+| Mirza Krak | 1 (0.1%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Mirza Krak | 1 (0.3%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Lluis Campos | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 57 (98.3%) |
+| INNOBYTE | 1 (1.7%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 893 (98.8%) |
+| INNOBYTE | 11 (1.2%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+| Employers with the most hackers (total 8) | |
+|---|---|
+| Northern.tech | 7 (87.5%) |
+| INNOBYTE | 1 (12.5%) |
+
+### Changelogs
+
+#### mender-convert (2.3.0)
+
+New changes in mender-convert since 2.2.0:
+
+* Fix inadvertent fstab change of fstype field.
+* package: Create partitions as ext4.
+* grub-efi: Fix inability to upgrade to a different kernel.
+* Fix massive root filesystem corruption under some build conditions.
+* Add support for overlay hooks
+* beaglebone: Implement workaround for broken U-Boot and kernel.
+  ([MEN-3952](https://tracker.mender.io/browse/MEN-3952))
+* beaglebone: Remove U-Boot integration, which has not worked
+  for a long time. U-Boot will still be used for booting, but GRUB will
+  be used for integration with Mender, by chainloading via UEFI.
+  ([MEN-3952](https://tracker.mender.io/browse/MEN-3952))
+* Support overriding default image compression
+* Do not compress output image for uncompressed input image
+* Package latest released Mender-client by default
+  ([QA-214](https://tracker.mender.io/browse/QA-214))
+* Use separate chown and chgrp commands when creating rootfs overlay.
+* Support installing mender-shell addon. Not installed by
+  default, it can be configured using MENDER_ADDON_SHELL_INSTALL and
+  MENDER_ADDON_SHELL_VERSION variables.
+  ([MEN-4097](https://tracker.mender.io/browse/MEN-4097))
+* Set mender-shell version to master
+  ([MEN-4097](https://tracker.mender.io/browse/MEN-4097))
+* Create demo configuration for Mender Shell addon in
+  bootstrap-rootfs-overlay-demo-server.sh script
+  ([MEN-4097](https://tracker.mender.io/browse/MEN-4097))
+* Better parameter checks for read-only options.
+* Use unique work directories when building with docker.
+* Fix error when removing empty directories in rootfs/boot
+* Use numeric uid and gid for better cross-compatibility.
+* Now it is possible to write multiple device types in the config file using a space seperated string. Filenames for files in the deploy dir will contain all the device names seperated with +.
+  ([MEN-3361](https://tracker.mender.io/browse/MEN-3361))
+* Now it is possible to to select a custom filename for the deployed files by using a DEPLOY_IMAGE_NAME string in the config file.
+* Set mender-connect version to latest
+  ([MEN-4200](https://tracker.mender.io/browse/MEN-4200))
+* Aggregated Dependabot Changelogs:
+  * Bumps [tests/mender-image-tests](https://github.com/mendersoftware/mender-image-tests) from `986bd6e` to `5f88854`.
+    - [Release notes](https://github.com/mendersoftware/mender-image-tests/releases)
+    - [Commits](https://github.com/mendersoftware/mender-image-tests/compare/986bd6e3e932af1432ca74f4f9f0ec5a85ed7e66...5f8885448d946ee2fed099aa541e5f8c277b20c9)
+  * Bump tests/mender-image-tests from `986bd6e` to `5f88854`
+  * Bumps [tests/mender-image-tests](https://github.com/mendersoftware/mender-image-tests) from `5f88854` to `55c846d`.
+    - [Release notes](https://github.com/mendersoftware/mender-image-tests/releases)
+    - [Commits](https://github.com/mendersoftware/mender-image-tests/compare/5f8885448d946ee2fed099aa541e5f8c277b20c9...55c846d681c21045a8fa839c40dff0f07c2cc512)
+  * Bumps [tests/mender-image-tests](https://github.com/mendersoftware/mender-image-tests) from `55c846d` to `cab12eb`.
+    - [Release notes](https://github.com/mendersoftware/mender-image-tests/releases)
+    - [Commits](https://github.com/mendersoftware/mender-image-tests/compare/55c846d681c21045a8fa839c40dff0f07c2cc512...cab12eb11c7b3aea8ae2b383037de1aae04a02b7)
+  * Bump tests/mender-image-tests from `55c846d` to `cab12eb`
+
+
 ## Mender 2.6.0
 
 _Released 01.20.2021_
