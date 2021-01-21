@@ -1,3 +1,7 @@
+variables:
+  # Set to true to skip tests
+  SKIP_TESTS: "false"
+
 stages:
   - test
   - trigger
@@ -11,6 +15,9 @@ include:
     file: '.gitlab-ci-github-status-updates.yml'
 
 test:
+  except:
+    variables:
+      - $SKIP_TESTS == "true"
   stage: test
   image: tiangolo/docker-with-compose
   services:
