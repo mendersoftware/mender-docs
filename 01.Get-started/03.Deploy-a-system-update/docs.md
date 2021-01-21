@@ -5,8 +5,8 @@ taxonomy:
     label: tutorial
 ---
 
-This tutorial will walk you trough how to do robust system level updates with
-rollback. These type of updates cover the whole system including system level
+This tutorial will walk you through how to do robust system level updates with
+rollback. These types of updates cover the whole system including system level
 applications and the Linux kernel and ensure the device comes back in a
 consistent state even if the update process is interrupted for any reason such
 as power loss.
@@ -28,12 +28,20 @@ Prepare destination directory:
 mkdir -p ${HOME}/bin
 ```
 
-Download the `mender-artifact` binary
+Download the `mender-artifact` binary. If you're on Linux
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 ```bash
-wget https://downloads.mender.io/mender-artifact/3.4.0/linux/mender-artifact -O ${HOME}/bin/mender-artifact
+wget https://downloads.mender.io/mender-artifact/3.5.0/linux/mender-artifact -O ${HOME}/bin/mender-artifact
 ```
+
+On MacOS
+
+<!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
+```bash
+wget https://downloads.mender.io/mender-artifact/3.5.0/darwin/mender-artifact -O ${HOME}/bin/mender-artifact
+```
+
 
 Make the `mender-artifact` binary executable:
 
@@ -68,7 +76,7 @@ USER="pi"
 
 !!! Use `USER="root"` if you are using a virtual device
 
-[Mender Artifact's](../../02.Overview/03.Artifact/docs.md) require
+[Mender Artifacts](../../02.Overview/03.Artifact/docs.md) require
 a device compatibility value as input, which **must** match what the device is
 reporting to the Mender server or it will refuse to install it. This is a safety
 mechanism to avoid installing software to incompatible hardware.
@@ -92,7 +100,7 @@ Set `SSH_ARG` shell variable to specify the SSH access port:
 SSH_ARG="-p 22"
 ```
 
-!!! If you are using a virtual device use `SSH_ARG="-p 8822"`
+!!! If you are using a virtual device, use `SSH_ARG="-p 8822"`
 
 
 ## Step 3 - Create a Mender Artifact using the snapshot feature
@@ -180,7 +188,7 @@ application.
 Deploy to many devices in order to effectively replicate the device software
 and configuration.
 
-To read more about system snapshots see the documentation on
+To read more about system snapshots, see the documentation on
 [Artifact from system snapshot](../../06.Artifact-creation/02.Create-an-Artifact-with-system-snapshot/docs.md).
 
 Using the **snapshot** feature is one way to create system updates and additional
