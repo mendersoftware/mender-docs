@@ -204,3 +204,51 @@ for more information.
 ## Delta update support
 
 Delta update support is covered in [its own sub section](01.Delta-update-support/docs.md).
+
+
+## Add-ons 
+
+### Mender Connect
+
+We do not enable Mender Connect by default, unless you are building with the demo layer.
+To enable Mender Connect you can add it either via your own `.bbappend` recipe file,
+or via your `local.conf` file.
+
+To add it to a recipe file, create `mender-client_%.bbappend` and add this:
+
+```bash
+IMAGE_INSTALL_append = " mender-connect"
+```
+
+Alternatively, add the snippet to your `local.conf`.
+
+Mender Connect provides several [configuration
+options](../../09.Add-ons/01.Remote-Terminal/30.Mender-connect-configuration-file/50.Mender-connect-configuration-options/docs.md).
+A configuration file with the required [`ServerURL`
+field](../../09.Add-ons/01.Remote-Terminal/30.Mender-connect-configuration-file/50.Mender-connect-configuration-options/docs.md#serverurl),
+set via [`MENDER_SERVER_URL`
+variable](../99.Variables/docs.md#mender_server_url), and [`User`
+field](../../09.Add-ons/01.Remote-Terminal/30.Mender-connect-configuration-file/50.Mender-connect-configuration-options/docs.md#user),
+set via [`MENDER_CONNECT_USER`
+variable](../99.Variables/docs.md#mender_connect_user). You can set these in your
+own `.bbappend` recipe file or via your `local.conf` file, for example:
+
+```bash
+MENDER_SERVER_URL = "https://hosted.mender.io"
+MENDER_CONNECT_USER = "root"
+```
+
+To add optional fields, or override the values for the required ones, create your own `mender-connect.conf` and
+augment the `mender-connect` recipe with the new configuration. For example, create a `mender-connect_%.bbappend` file in your layer, and add this:
+
+```bash
+FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-MENDER-CONNECT-CONF>"
+SRC_URI_append = " file://mender-connect.conf"
+
+do_install_append() {
+    install -m 600 ${WORKDIR}/mender-connect.conf ${datadir}/mender/mender-connect.conf
+}
+
+```
+
+Replace <DIRECTORY-WITH-MENDER-CONNECT-CONF> with the path to the `mender-connect.conf` file, relative to the recipe file.
