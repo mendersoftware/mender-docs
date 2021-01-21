@@ -7,6 +7,142 @@ shortcode-core:
 ---
 
 
+## Mender 2.4.2
+
+_Released 01.21.2021_
+
+### Statistics
+
+A total of 1105 lines added, 528 removed (delta 577)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 16 (40.0%) |
+| Fabio Tranchitella | 9 (22.5%) |
+| Alf-Rune Siqveland | 5 (12.5%) |
+| Ole Petter Orhagen | 5 (12.5%) |
+| Krzysztof Jaskiewicz | 2 (5.0%) |
+| Kristian Amlie | 2 (5.0%) |
+| Peter Grzybowski | 1 (2.5%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Fabio Tranchitella | 372 (33.0%) |
+| Alf-Rune Siqveland | 268 (23.8%) |
+| Lluis Campos | 247 (21.9%) |
+| Ole Petter Orhagen | 179 (15.9%) |
+| Kristian Amlie | 37 (3.3%) |
+| Krzysztof Jaskiewicz | 20 (1.8%) |
+| Peter Grzybowski | 3 (0.3%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Kristian Amlie | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 38 (95.0%) |
+| RnDity | 2 (5.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 1106 (98.2%) |
+| RnDity | 20 (1.8%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+| Employers with the most hackers (total 7) | |
+|---|---|
+| Northern.tech | 6 (85.7%) |
+| RnDity | 1 (14.3%) |
+
+
+### Changelogs
+
+#### deployments (2.0.1)
+
+New changes in deployments since 2.0.0:
+
+* document artifact_provides and artifact_depends in API docs
+  ([MEN-4051](https://tracker.mender.io/browse/MEN-4051))
+* api: Generate artifact doesn't load entire request upon parsing
+* api: Generate artifact endpoint accepts form values with whitespaces
+
+#### deployments-enterprise (2.0.1)
+
+New changes in deployments-enterprise since 2.0.0:
+
+* document artifact_provides and artifact_depends in API docs
+  ([MEN-4051](https://tracker.mender.io/browse/MEN-4051))
+* document artifact_provides and artifact_depends in API docs
+  ([MEN-4051](https://tracker.mender.io/browse/MEN-4051))
+* api: Generate artifact doesn't load entire request upon parsing
+* api: Generate artifact endpoint accepts form values with whitespaces
+
+#### deviceauth (2.3.1)
+
+New changes in deviceauth since 2.3.0:
+
+* ignore tenant claim in single tenant setup
+  ([MEN-3972](https://tracker.mender.io/browse/MEN-3972))
+
+#### integration (2.4.2)
+
+New changes in integration since 2.4.1:
+
+* Upgrade deployments to 2.0.1.
+* Upgrade deployments-enterprise to 2.0.1.
+* Upgrade deviceauth to 2.3.1.
+* Upgrade mender to 2.3.2.
+* Upgrade mender-api-gateway-docker to 2.2.1.
+* Upgrade mender-artifact to 3.4.1.
+* Upgrade useradm to 1.11.1.
+* Upgrade useradm-enterprise to 1.11.1.
+
+#### mender (2.3.2)
+
+New changes in mender since 2.3.0:
+
+* Add support for probing the U-Boot environment separator
+  ([MEN-3970](https://tracker.mender.io/browse/MEN-3970))
+* Fix: Do not switch boot partitions on installation errors on the
+  active partition.
+  ([MEN-3980](https://tracker.mender.io/browse/MEN-3980))
+* Fix error parsing response for getting tenant token on setup
+  ([MEN-4245](https://tracker.mender.io/browse/MEN-4245))
+
+#### mender-api-gateway-docker (2.2.1)
+
+New changes in mender-api-gateway-docker since 2.2.0:
+
+* restore ALLOWED_ORIGIN_HOSTS regex match when checking Origin
+  ([MEN-4118](https://tracker.mender.io/browse/MEN-4118))
+
+#### mender-artifact (3.4.1)
+
+New changes in mender-artifact since 3.4.0:
+
+* Fix segfault on mender-artifact dump for v2 Artifacts
+  ([MEN-3967](https://tracker.mender.io/browse/MEN-3967))
+* use sudo for snapshots if required.
+  ([MEN-3987](https://tracker.mender.io/browse/MEN-3987))
+
+#### useradm (1.11.1)
+
+New changes in useradm since 1.11.0:
+
+* No changes (re-release to follow Enterprise version).
+
+#### useradm-enterprise (1.11.1)
+
+New changes in useradm-enterprise since 1.11.0:
+
+* FIX: Restrict observer role from posting to arbitrary endpoints
+* FIX: Protect default roles from fake queries
+
+
 ## mender-binary-delta 1.2.0
 
 _Released 01.11.2021_
