@@ -7,6 +7,178 @@ shortcode-core:
 ---
 
 
+## Mender 2.5.1
+
+_Released 01.21.2021_
+
+### Statistics
+
+A total of 1898 lines added, 1188 removed (delta 710)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 21 (32.3%) |
+| Fabio Tranchitella | 10 (15.4%) |
+| Peter Grzybowski | 9 (13.8%) |
+| Manuel Zedel | 9 (13.8%) |
+| Alf-Rune Siqveland | 7 (10.8%) |
+| Ole Petter Orhagen | 4 (6.2%) |
+| Kristian Amlie | 2 (3.1%) |
+| Krzysztof Jaskiewicz | 1 (1.5%) |
+| Drew Moseley | 1 (1.5%) |
+| Armin Schlegel | 1 (1.5%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Alf-Rune Siqveland | 439 (21.3%) |
+| Fabio Tranchitella | 407 (19.8%) |
+| Lluis Campos | 397 (19.3%) |
+| Manuel Zedel | 328 (15.9%) |
+| Ole Petter Orhagen | 314 (15.2%) |
+| Peter Grzybowski | 105 (5.1%) |
+| Kristian Amlie | 39 (1.9%) |
+| Krzysztof Jaskiewicz | 18 (0.9%) |
+| Armin Schlegel | 7 (0.3%) |
+| Drew Moseley | 6 (0.3%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Manuel Zedel | 94 (7.9%) |
+| Armin Schlegel | 1 (0.1%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Fabio Tranchitella | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 63 (96.9%) |
+| RnDity | 1 (1.5%) |
+| armin.schlegel@gmx.de | 1 (1.5%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 2035 (98.8%) |
+| RnDity | 18 (0.9%) |
+| armin.schlegel@gmx.de | 7 (0.3%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+| Employers with the most hackers (total 10) | |
+|---|---|
+| Northern.tech | 8 (80.0%) |
+| RnDity | 1 (10.0%) |
+| armin.schlegel@gmx.de | 1 (10.0%) |
+
+### Changelogs
+
+#### deployments (2.1.1)
+
+New changes in deployments since 2.1.0:
+
+* document artifact_provides and artifact_depends in API docs
+  ([MEN-4051](https://tracker.mender.io/browse/MEN-4051))
+* api: Generate artifact doesn't load entire request upon parsing
+* api: Generate artifact endpoint accepts form values with whitespaces
+* Deploy to group for os onprem fix.
+  ([MEN-4029](https://tracker.mender.io/browse/MEN-4029))
+
+#### deployments-enterprise (2.1.1)
+
+New changes in deployments-enterprise since 2.1.0:
+
+* document artifact_provides and artifact_depends in API docs
+  ([MEN-4051](https://tracker.mender.io/browse/MEN-4051))
+* document artifact_provides and artifact_depends in API docs
+  ([MEN-4051](https://tracker.mender.io/browse/MEN-4051))
+* api: Generate artifact doesn't load entire request upon parsing
+* api: Generate artifact endpoint accepts form values with whitespaces
+* Deploy to group for os onprem fix.
+  ([MEN-4029](https://tracker.mender.io/browse/MEN-4029))
+
+#### deviceauth (2.4.1)
+
+New changes in deviceauth since 2.4.0:
+
+* New query parameter id for GET /api/management/v1/devices
+* ignore tenant claim in single tenant setup
+  ([MEN-3972](https://tracker.mender.io/browse/MEN-3972))
+
+#### gui (2.5.1)
+
+New changes in gui since 2.5.0:
+
+* fixed an issue that prevented admin access to user management settings
+
+#### integration (2.5.1)
+
+New changes in integration since 2.5.0:
+
+* Upgrade deployments to 2.1.1.
+* Upgrade deployments-enterprise to 2.1.1.
+* Upgrade deviceauth to 2.4.1.
+* Upgrade gui to 2.5.1.
+* Upgrade inventory to 2.1.1.
+* Upgrade inventory-enterprise to 2.1.1.
+* Upgrade mender to 2.4.2.
+* Upgrade mender-api-gateway-docker to 2.3.1.
+* Upgrade mender-artifact to 3.4.1.
+* Upgrade mender-cli to 1.5.1.
+
+#### inventory (2.1.1)
+
+New changes in inventory since 2.1.0:
+
+* Deploy to group for os onprem fix.
+  ([MEN-4029](https://tracker.mender.io/browse/MEN-4029))
+
+#### inventory-enterprise (2.1.1)
+
+New changes in inventory-enterprise since 2.1.0:
+
+* Deploy to group for os onprem fix.
+  ([MEN-4029](https://tracker.mender.io/browse/MEN-4029))
+
+#### mender (2.4.2)
+
+New changes in mender since 2.4.0:
+
+* Add support for probing the U-Boot environment separator
+  ([MEN-3970](https://tracker.mender.io/browse/MEN-3970))
+* Fix: Do not switch boot partitions on installation errors on the
+  active partition.
+  ([MEN-3980](https://tracker.mender.io/browse/MEN-3980))
+* Allow to load private key from the Security configuration section
+  ([MEN-3924](https://tracker.mender.io/browse/MEN-3924))
+* mender-inventory-geo: Set connection timeout to 10s.
+* Fix error parsing response for getting tenant token on setup
+  ([MEN-4245](https://tracker.mender.io/browse/MEN-4245))
+
+#### mender-api-gateway-docker (2.3.1)
+
+New changes in mender-api-gateway-docker since 2.3.0:
+
+* restore ALLOWED_ORIGIN_HOSTS regex match when checking Origin
+  ([MEN-4118](https://tracker.mender.io/browse/MEN-4118))
+
+#### mender-artifact (3.4.1)
+
+New changes in mender-artifact since 3.4.0:
+
+* Fix segfault on mender-artifact dump for v2 Artifacts
+  ([MEN-3967](https://tracker.mender.io/browse/MEN-3967))
+* use sudo for snapshots if required.
+  ([MEN-3987](https://tracker.mender.io/browse/MEN-3987))
+
+#### mender-cli (1.5.1)
+
+New changes in mender-cli since 1.5.0:
+
+* Fixed login with password
+
+
 ## mender-binary-delta 1.2.0
 
 _Released 01.11.2021_

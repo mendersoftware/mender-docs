@@ -29,8 +29,8 @@ Mender provides images based on the following distributions:
 | Raspberry Pi 4 Model B        | Raspberry Pi OS Buster Lite 2020-05-27 | [raspios-buster-lite-raspberrypi4-mender.img.xz][raspios-buster-lite-raspberrypi4-mender.img.xz] | 8 GB         |
 
 <!--AUTOVERSION: "mender-%.img.xz"/mender-convert-client -->
-[raspios-buster-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-05-27-raspios-buster-lite-armhf/arm/2020-05-27-raspios-buster-lite-armhf-raspberrypi3-mender-2.4.1.img.xz
-[raspios-buster-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-05-27-raspios-buster-lite-armhf/arm/2020-05-27-raspios-buster-lite-armhf-raspberrypi4-mender-2.4.1.img.xz
+[raspios-buster-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-05-27-raspios-buster-lite-armhf/arm/2020-05-27-raspios-buster-lite-armhf-raspberrypi3-mender-2.4.2.img.xz
+[raspios-buster-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-05-27-raspios-buster-lite-armhf/arm/2020-05-27-raspios-buster-lite-armhf-raspberrypi4-mender-2.4.2.img.xz
 
 You can find images for other devices in our Mender Hub community forum, see
 [Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11?target=_blank) or
@@ -51,8 +51,8 @@ Follow the correct link according to your host platform to download
 <!--AUTOVERSION: "mender-artifact %"/mender-artifact -->
 | Platform | Download link                                                |
 |----------|--------------------------------------------------------------|
-| Linux    | [mender-artifact 3.4.0][x.x.x_mender-artifact-linux]     |
-| Mac OS X | [mender-artifact 3.4.0][x.x.x_mender-artifact-darwin] |
+| Linux    | [mender-artifact 3.4.1][x.x.x_mender-artifact-linux]     |
+| Mac OS X | [mender-artifact 3.4.1][x.x.x_mender-artifact-darwin] |
 
 Remember to add execute permission and ensure that the mender-artifact utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
 
@@ -65,9 +65,9 @@ Please refer to your host Operating System documentation for more details.
 
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-linux]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/3.4.0/linux/mender-artifact
+[x.x.x_mender-artifact-linux]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/3.4.1/linux/mender-artifact
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-darwin]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/3.4.0/darwin/mender-artifact
+[x.x.x_mender-artifact-darwin]: https://d1b0l86ne08fsf.cloudfront.net/mender-artifact/3.4.1/darwin/mender-artifact
 
 ! If you are using Mac OS X, note that using `mender-artifact` with
 ! disk image files (e.g.: `*.sdimg`, `*.img`, or others holding the storage
@@ -89,16 +89,16 @@ Ubuntu or Raspberry Pi OS. We provide packages for the following architectures:
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
 | Architecture   | Devices                                   | Download link                                                       |
 |----------------|-------------------------------------------|---------------------------------------------------------------------|
-| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client_2.4.1-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] |
-| arm64 | ARM 64bit processors, for example Debian for Asus Tinker Board | [mender-client_2.4.1-1_arm64.deb][mender-client_x.x.x-1_arm64.deb] |
-| amd64 | Generic 64-bit x86 processors, the most popular among workstations | [mender-client_2.4.1-1_amd64.deb][mender-client_x.x.x-1_amd64.deb] |
+| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client_2.4.2-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] |
+| arm64 | ARM 64bit processors, for example Debian for Asus Tinker Board | [mender-client_2.4.2-1_arm64.deb][mender-client_x.x.x-1_arm64.deb] |
+| amd64 | Generic 64-bit x86 processors, the most popular among workstations | [mender-client_2.4.2-1_amd64.deb][mender-client_x.x.x-1_amd64.deb] |
 
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
-[mender-client_x.x.x-1_armhf.deb]: https://d1b0l86ne08fsf.cloudfront.net/2.4.1/dist-packages/debian/armhf/mender-client_2.4.1-1_armhf.deb
+[mender-client_x.x.x-1_armhf.deb]: https://d1b0l86ne08fsf.cloudfront.net/2.4.2/dist-packages/debian/armhf/mender-client_2.4.2-1_armhf.deb
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_arm64.deb"/mender -->
-[mender-client_x.x.x-1_arm64.deb]: https://d1b0l86ne08fsf.cloudfront.net/2.4.1/dist-packages/debian/arm64/mender-client_2.4.1-1_arm64.deb
+[mender-client_x.x.x-1_arm64.deb]: https://d1b0l86ne08fsf.cloudfront.net/2.4.2/dist-packages/debian/arm64/mender-client_2.4.2-1_arm64.deb
 <!--AUTOVERSION: "cloudfront.net/%/"/mender "mender-client_%-1_amd64.deb"/mender -->
-[mender-client_x.x.x-1_amd64.deb]: https://d1b0l86ne08fsf.cloudfront.net/2.4.1/dist-packages/debian/amd64/mender-client_2.4.1-1_amd64.deb
+[mender-client_x.x.x-1_amd64.deb]: https://d1b0l86ne08fsf.cloudfront.net/2.4.2/dist-packages/debian/amd64/mender-client_2.4.2-1_amd64.deb
 
 
 ## mender-cli
@@ -113,8 +113,8 @@ Follow the correct link according to your host platform to download `mender-cli`
 <!--AUTOVERSION: "mender-cli %"/mender-cli -->
 | Platform | Download link                                                |
 |----------|--------------------------------------------------------------|
-| Linux    | [mender-cli 1.5.0][x.x.x_mender-cli-linux]                  |
-| Mac OS X | [mender-cli 1.5.0][x.x.x_mender-cli-darwin]                 |
+| Linux    | [mender-cli 1.5.1][x.x.x_mender-cli-linux]                  |
+| Mac OS X | [mender-cli 1.5.1][x.x.x_mender-cli-darwin]                 |
 
 
 Remember to add execute permission and ensure that the mender-cli utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
@@ -127,6 +127,6 @@ sudo cp mender-cli /usr/local/bin/
 Please refer to your host Operating System documentation for more details.
 
 <!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
-[x.x.x_mender-cli-linux]: https://d1b0l86ne08fsf.cloudfront.net/mender-cli/1.5.0/linux/mender-cli
+[x.x.x_mender-cli-linux]: https://d1b0l86ne08fsf.cloudfront.net/mender-cli/1.5.1/linux/mender-cli
 <!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
-[x.x.x_mender-cli-darwin]: https://d1b0l86ne08fsf.cloudfront.net/mender-cli/1.5.0/darwin/mender-cli
+[x.x.x_mender-cli-darwin]: https://d1b0l86ne08fsf.cloudfront.net/mender-cli/1.5.1/darwin/mender-cli
