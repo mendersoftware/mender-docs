@@ -36,7 +36,7 @@ steps that are covered in the [Enterprise subsection](#enterprise).
   - [Docker Compose](https://docs.docker.com/compose/install/?target=_blank), version **1.6 or later**.
 - Minimum of 10 GB free disk space and 4 GB RAM available for Mender and its services.
     - This heavily depends on your scale and environment, the supported [Mender Enterprise](https://mender.io/product/mender-enterprise?target=_blank) edition is recommended for larger-scale environments.
-- A public IP address assigned and ports 443 and 9000 publicly accessible.
+- A public IP address assigned and port 443 publicly accessible.
 - Allocated DNS names for the Mender API Gateway and the Mender Storage Proxy
   that resolve to the public IP of the Mender server by the devices. By following this tutorial
   all services will be hosted on the same server, so you can use just one domain name for both.
@@ -451,10 +451,10 @@ and `MINIO_SECRET_KEY`, respectively.
 sed -i.bak "s/DEPLOYMENTS_AWS_AUTH_KEY:.*/DEPLOYMENTS_AWS_AUTH_KEY: mender-deployments/g" config/prod.yml
 sed -i.bak "s/DEPLOYMENTS_AWS_AUTH_SECRET:.*/DEPLOYMENTS_AWS_AUTH_SECRET: $MINIO_SECRET_KEY_GENERATED/g" config/prod.yml
 ```
-Also, run the following command so `DEPLOYMENTS_AWS_URI` points to your Storage proxy (including the right port, 9000 by default):
+Also, run the following command so `DEPLOYMENTS_AWS_URI` points to your Storage proxy:
 
 ```bash
-sed -i.bak "s/https:\/\/set-my-alias-here.com/https:\/\/$STORAGE_PROXY_DOMAIN_NAME:9000/g" config/prod.yml
+sed -i.bak "s/https:\/\/set-my-alias-here.com/https:\/\/$STORAGE_PROXY_DOMAIN_NAME/g" config/prod.yml
 ```
 
 After these three commands, the updated entry should look like this (you can again verify with `git diff`):
@@ -466,7 +466,7 @@ After these three commands, the updated entry should look like this (you can aga
         environment:
             DEPLOYMENTS_AWS_AUTH_KEY: mender-deployments
             DEPLOYMENTS_AWS_AUTH_SECRET: ahshagheeD1ooPae
-            DEPLOYMENTS_AWS_URI: https://mender.example.com:9000
+            DEPLOYMENTS_AWS_URI: https://mender.example.com
     ...
 ```
 
@@ -606,7 +606,6 @@ Bring up all services up in detached mode with the following command:
 > Creating menderproduction_minio_1
 > Creating menderproduction_mender-device-auth_1
 > Creating menderproduction_mender-inventory_1
-> Creating menderproduction_storage-proxy_1
 > Creating menderproduction_mender-useradm_1
 > Creating menderproduction_mender-deployments_1
 > Creating menderproduction_mender-api-gateway_1
@@ -635,11 +634,11 @@ installing an Open Source server, please proceed to
 
 <!-- Verification of Open Source instance -->
 
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 14  || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
-<!--AUTOMATION: test=./run restart -->
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 14  || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 13  || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=./run stop -->
+<!--AUTOMATION: test=./run up -d -->
+<!--AUTOMATION: test=for ((n=0;n<10;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 13  || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
-<!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:9000" -->
 
 <!-- End of test block for TEST_OPEN_SOURCE=1 -->
 <!-- AUTOMATION: execute=fi -->
@@ -699,7 +698,6 @@ Bring up all services up in detached mode with the following command:
 > Creating menderproduction_mender-workflows-server_1 ... done
 > Creating menderproduction_mender-workflows-worker_1 ... done
 > Creating menderproduction_minio_1 ... done
-> Creating menderproduction_storage-proxy_1 ... done
 > ```
 
 !!! Services, networks and volumes have a `menderproduction` prefix, see the note about [docker-compose naming scheme](#docker-compose-naming-scheme) for more details. When using `docker ..` commands, a complete container name must be provided (ex. `menderproduction_mender-deployments_1`).
@@ -831,11 +829,11 @@ git log --oneline master..HEAD
 
 <!-- Verification of Enterprise instance -->
 
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 16 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
-<!--AUTOMATION: test=./run restart -->
-<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 16 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<5;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 15 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=./run stop -->
+<!--AUTOMATION: test=./run up -d -->
+<!--AUTOMATION: test=for ((n=0;n<10;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 15 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
-<!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:9000" -->
 
 <!-- End of test block for TEST_ENTERPRISE=1 -->
 <!-- AUTOMATION: execute=fi -->
@@ -867,7 +865,6 @@ server will be similar, but will have fewer services running.
 > menderproduction_mender-workflows-server_1         /usr/bin/workflows --confi ...   Up             8080/tcp
 > menderproduction_mender-workflows-worker_1         /usr/bin/workflows --confi ...   Up
 > menderproduction_minio_1                           /usr/bin/docker-entrypoint ...   Up (healthy)   9000/tcp
-> menderproduction_storage-proxy_1                   /usr/local/openresty/bin/o ...   Up             0.0.0.0:9000->9000/tcp
 > ```
 
 At this point you can try to log into the Web UI using the URL of your server,
