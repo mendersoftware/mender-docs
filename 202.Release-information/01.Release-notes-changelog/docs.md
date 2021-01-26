@@ -6,6 +6,163 @@ shortcode-core:
     active: false
 ---
 
+## meta-mender dunfell-v2021.01
+
+_Released 01.26.2021_
+
+### Statistics
+
+A total of 959 lines added, 405 removed (delta 554)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 28 (43.1%) |
+| Kristian Amlie | 21 (32.3%) |
+| Fabio Tranchitella | 14 (21.5%) |
+| Drew Moseley | 1 (1.5%) |
+| Ole Petter Orhagen | 1 (1.5%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 439 (41.6%) |
+| Fabio Tranchitella | 408 (38.6%) |
+| Kristian Amlie | 186 (17.6%) |
+| Ole Petter Orhagen | 20 (1.9%) |
+| Drew Moseley | 3 (0.3%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Ole Petter Orhagen | 20 (4.9%) |
+
+| Developers with the most signoffs (total 2) | |
+|---|---|
+| Lluis Campos | 2 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 65 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 1056 (100.0%) |
+
+| Employers with the most signoffs (total 2) | |
+|---|---|
+| Northern.tech | 2 (100.0%) |
+
+| Employers with the most hackers (total 5) | |
+|---|---|
+| Northern.tech | 5 (100.0%) |
+
+
+### Changelogs
+
+#### meta-mender (dunfell-v2021.01)
+
+New changes in meta-mender since dunfell-v2020.12:
+
+* Make DBus support optional in Mender client with `PACKAGECONFIG`.
+  It defaults to on, but can be turned off with:
+  ```
+  PACKAGECONFIG_remove = "dbus"
+  ```
+  Backported to dunfell, modifying the PACKAGECONFIG defaults and amending
+  the test. ([MEN-4014](https://tracker.mender.io/browse/MEN-4014))
+* mender-client: Add DBus busconfig files.
+  ([MEN-4030](https://tracker.mender.io/browse/MEN-4030))
+* mender-client: The self-signed Mender server certificate, if
+  present, is copied to ca-certificates in addition to
+  `MENDER_CERT_LOCATION` to be trusted by other services running in the
+  device. ([MEN-4273](https://tracker.mender.io/browse/MEN-4273))
+* meta-mender-demo: install mender-shell
+  ([MEN-4187](https://tracker.mender.io/browse/MEN-4187))
+* Revert "mender: Reestablish labels on the root filesystems."
+* mender-client: fix QA Issue: invalid PACKAGECONFIG: inventory-network-scripts
+* mender-shell: generate and install mender-shell.conf with
+  required fields. `ServerURL` can be configured setting yocto variable
+  `MENDER_SERVER_URL`, same as used by mender-client recipe. If a
+  `mender-shell.conf` file is found in the `SRC_URI` the contents will be
+  merged. ([MEN-4242](https://tracker.mender.io/browse/MEN-4242))
+* mender-shell: Add `User` to generated mender-shell.conf. The
+  value of it is configured using `MENDER_SHELL_USER` variable, which
+  defaults to `nobody` for meta-mender-core and `root` for
+  meta-mender-demo.
+  ([MEN-4242](https://tracker.mender.io/browse/MEN-4242))
+* Rename mender-shell to mender-connect
+  ([MEN-4292](https://tracker.mender.io/browse/MEN-4292))
+* mender-raspberrypi: Make kernel settings conditional
+* Remove mender-binary-delta 1.0.0, 1.0.1, and 1.1.0.
+  All three of these have turned out to be incompatible with
+  libubootenv, which is used on dunfell and later Yocto branches.
+* Add mender-binary-delta 1.1.1 and 1.2.0.
+* Add the MENDER_CONNECT_SHELL to meta-mender-core, defaults to /bin/sh
+* Add recipe mender-connect 1.0.0
+* Add recipe mender-client 2.5.0
+* Add recipe mender-artifact 3.5.0
+* Add mender-artifact 3.4.1 recipe.
+* Add mender-client 2.3.2 and 2.4.2 recipes.
+* Fix broken demo certificate in production recipes.
+* Aggregated Dependabot Changelogs:
+  * Bumps alpine from 3.7 to 3.12.0.
+  * Bumps [ubi-reader](https://github.com/jrspruitt/ubi_reader) from 0.6.5 to 0.7.0.
+    - [Release notes](https://github.com/jrspruitt/ubi_reader/releases)
+    - [Commits](https://github.com/jrspruitt/ubi_reader/commits)
+  * Bumps [requests](https://github.com/psf/requests) from 2.22.0 to 2.24.0.
+    - [Release notes](https://github.com/psf/requests/releases)
+    - [Changelog](https://github.com/psf/requests/blob/master/HISTORY.md)
+    - [Commits](https://github.com/psf/requests/compare/v2.22.0...v2.24.0)
+  * Bumps [pytest-html](https://github.com/pytest-dev/pytest-html) from 2.0.1 to 2.1.1.
+    - [Release notes](https://github.com/pytest-dev/pytest-html/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest-html/blob/master/CHANGES.rst)
+    - [Commits](https://github.com/pytest-dev/pytest-html/compare/v2.0.1...v2.1.1)
+  * Bumps [pytest](https://github.com/pytest-dev/pytest) from 5.3.2 to 6.1.1.
+    - [Release notes](https://github.com/pytest-dev/pytest/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+    - [Commits](https://github.com/pytest-dev/pytest/compare/5.3.2...6.1.1)
+  * Bumps [paramiko](https://github.com/paramiko/paramiko) from 2.7.1 to 2.7.2.
+    - [Release notes](https://github.com/paramiko/paramiko/releases)
+    - [Changelog](https://github.com/paramiko/paramiko/blob/master/NEWS)
+    - [Commits](https://github.com/paramiko/paramiko/compare/2.7.1...2.7.2)
+  * Bumps alpine from 3.12.0 to 3.12.1.
+  * Bumps [pytest](https://github.com/pytest-dev/pytest) from 6.1.1 to 6.1.2.
+    - [Release notes](https://github.com/pytest-dev/pytest/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+    - [Commits](https://github.com/pytest-dev/pytest/compare/6.1.1...6.1.2)
+  * Bumps [requests](https://github.com/psf/requests) from 2.24.0 to 2.25.0.
+    - [Release notes](https://github.com/psf/requests/releases)
+    - [Changelog](https://github.com/psf/requests/blob/master/HISTORY.md)
+    - [Commits](https://github.com/psf/requests/compare/v2.24.0...v2.25.0)
+  * Bumps [pytest-html](https://github.com/pytest-dev/pytest-html) from 2.1.1 to 3.0.0.
+    - [Release notes](https://github.com/pytest-dev/pytest-html/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest-html/blob/master/CHANGES.rst)
+    - [Commits](https://github.com/pytest-dev/pytest-html/compare/v2.1.1...v3.0.0)
+  * Bumps [pytest-html](https://github.com/pytest-dev/pytest-html) from 3.0.0 to 3.1.0.
+    - [Release notes](https://github.com/pytest-dev/pytest-html/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest-html/blob/master/CHANGES.rst)
+    - [Commits](https://github.com/pytest-dev/pytest-html/compare/v3.0.0...v3.1.0)
+  * Bumps alpine from 3.12.1 to 3.12.2.
+  * Bumps [pytest-html](https://github.com/pytest-dev/pytest-html) from 3.1.0 to 3.1.1.
+    - [Release notes](https://github.com/pytest-dev/pytest-html/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest-html/blob/master/CHANGES.rst)
+    - [Commits](https://github.com/pytest-dev/pytest-html/compare/v3.1.0...v3.1.1)
+  * Bumps [pytest](https://github.com/pytest-dev/pytest) from 6.1.2 to 6.2.0.
+    - [Release notes](https://github.com/pytest-dev/pytest/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+    - [Commits](https://github.com/pytest-dev/pytest/compare/6.1.2...6.2.0)
+  * Bumps alpine from 3.12.2 to 3.12.3.
+  * Bumps [psutil](https://github.com/giampaolo/psutil) from 5.7.2 to 5.8.0.
+    - [Release notes](https://github.com/giampaolo/psutil/releases)
+    - [Changelog](https://github.com/giampaolo/psutil/blob/master/HISTORY.rst)
+    - [Commits](https://github.com/giampaolo/psutil/compare/release-5.7.2...release-5.8.0)
+  * Bumps [requests](https://github.com/psf/requests) from 2.25.0 to 2.25.1.
+    - [Release notes](https://github.com/psf/requests/releases)
+    - [Changelog](https://github.com/psf/requests/blob/master/HISTORY.md)
+    - [Commits](https://github.com/psf/requests/compare/v2.25.0...v2.25.1)
+  * Bumps [pytest](https://github.com/pytest-dev/pytest) from 6.2.0 to 6.2.1.
+    - [Release notes](https://github.com/pytest-dev/pytest/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+    - [Commits](https://github.com/pytest-dev/pytest/compare/6.2.0...6.2.1)
+
 
 ## Mender 2.5.1
 
