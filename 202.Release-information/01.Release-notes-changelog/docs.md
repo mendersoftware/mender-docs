@@ -164,6 +164,59 @@ New changes in meta-mender since dunfell-v2020.12:
     - [Commits](https://github.com/pytest-dev/pytest/compare/6.2.0...6.2.1)
 
 
+## mender-convert 2.2.2
+
+_Released 01.21.2021_
+
+### Statistics
+
+A total of 73 lines added, 40 removed (delta 33)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 4 (28.6%) |
+| Ole Petter Orhagen | 4 (28.6%) |
+| Kristian Amlie | 3 (21.4%) |
+| Drew Moseley | 2 (14.3%) |
+| Mirza Krak | 1 (7.1%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 37 (49.3%) |
+| Drew Moseley | 20 (26.7%) |
+| Ole Petter Orhagen | 11 (14.7%) |
+| Kristian Amlie | 6 (8.0%) |
+| Mirza Krak | 1 (1.3%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Mirza Krak | 1 (2.5%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 14 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 75 (100.0%) |
+
+| Employers with the most hackers (total 5) | |
+|---|---|
+| Northern.tech | 5 (100.0%) |
+
+### Changelogs
+
+#### mender-convert (2.2.2)
+
+New changes in mender-convert since 2.2.1:
+
+* Package latest released Mender-client by default
+  ([QA-214](https://tracker.mender.io/browse/QA-214))
+* Use separate chown and chgrp commands when creating rootfs overlay.
+* Better parameter checks for read-only options.
+* Fix error when removing empty directories in rootfs/boot
+
+
 ## mender-convert 2.3.0
 
 _Released 01.20.2021_
