@@ -21,7 +21,7 @@ taxonomy:
 <!-- AUTOMATION: execute=git checkout -b my-production-setup -->
 <!-- AUTOMATION: execute=cd production -->
 <!-- AUTOMATION: execute=cp config/prod.yml.template config/prod.yml -->
-<!-- AUTOMATION: execute=sed -i.bak '0,/set-my-alias-here.com/s/set-my-alias-here.com/s3.docker.mender.io/' config/prod.yml -->
+<!-- AUTOMATION: execute=sed -i.bak "s/set-my-alias-here.com/s3.docker.mender.io/g" config/prod.yml -->
 <!-- AUTOMATION: execute=sed -i.bak 's|DEPLOYMENTS_AWS_URI:.*|DEPLOYMENTS_AWS_URI: https://s3.docker.mender.io|' config/prod.yml -->
 <!-- AUTOMATION: execute=CERT_API_CN=s3.docker.mender.io CERT_STORAGE_CN=s3.docker.mender.io ../keygen -->
 <!-- AUTOMATION: execute=docker volume create --name=mender-artifacts -->
