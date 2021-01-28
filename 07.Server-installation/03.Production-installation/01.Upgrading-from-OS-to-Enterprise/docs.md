@@ -31,6 +31,7 @@ taxonomy:
 <!-- AUTOMATION: execute=sed -i.bak 's/MINIO_SECRET_KEY:.*/MINIO_SECRET_KEY: abcssadasdssado798dsfjhkksd/' config/prod.yml -->
 <!-- AUTOMATION: execute=sed -i.bak 's/DEPLOYMENTS_AWS_AUTH_KEY:.*/DEPLOYMENTS_AWS_AUTH_KEY: Q3AM3UQ867SPQQA43P2F/' config/prod.yml -->
 <!-- AUTOMATION: execute=sed -i.bak 's/DEPLOYMENTS_AWS_AUTH_SECRET:.*/DEPLOYMENTS_AWS_AUTH_SECRET: abcssadasdssado798dsfjhkksd/' config/prod.yml -->
+<!-- AUTOMATION: execute=cat config/prod.yml -->
 <!-- AUTOMATION: execute=./run up -d -->
 
 This section describes how to upgrade from the Mender Open Source server, to the
