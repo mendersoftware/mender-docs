@@ -246,7 +246,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-MENDER-CONNECT-CONF>"
 SRC_URI_append = " file://mender-connect.conf"
 
 do_install_append() {
-    install -m 600 ${WORKDIR}/mender-connect.conf ${datadir}/mender/mender-connect.conf
+    install -m 600 ${WORKDIR}/mender-connect.conf ${D}${sysconfdir}/mender/mender-connect.conf
 }
 
 ```
