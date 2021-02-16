@@ -24,7 +24,7 @@ To follow this tutorial, you will need the following:
   * [Raspberry Pi 3 Model B+](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/?target=_blank).
   * [Raspberry Pi 4 Model B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/?target=_blank).
 * An 8 GB or larger microSD card.
-* A Raspberry Pi [universal power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply?target=_blank) or a micro USB cable.
+* A Raspberry Pi [universal power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply?target=_blank) or a compatible USB cable.
 * Internet connectivity for your Raspberry Pi (either Ethernet or WiFi available)
 
 ## Step 1 - Flash the Raspberry Pi

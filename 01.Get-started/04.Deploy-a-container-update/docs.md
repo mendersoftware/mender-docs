@@ -74,12 +74,20 @@ Prepare destination directory:
 mkdir -p ${HOME}/bin
 ```
 
-Download the `mender-artifact` binary
+Download the `mender-artifact` binary. If you're on Linux
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 ```bash
 wget https://downloads.mender.io/mender-artifact/master/linux/mender-artifact -O ${HOME}/bin/mender-artifact
 ```
+
+On MacOS
+
+<!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
+```bash
+wget https://downloads.mender.io/mender-artifact/master/darwin/mender-artifact -O ${HOME}/bin/mender-artifact
+```
+
 
 Make the `mender-artifact` binary executable:
 
