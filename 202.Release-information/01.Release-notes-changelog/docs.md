@@ -6,6 +6,160 @@ shortcode-core:
     active: false
 ---
 
+## meta-mender zeus-v2021.02
+
+_Released 02.22.2021_
+
+### Statistics
+
+A total of 887 lines added, 368 removed (delta 519)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 22 (40.0%) |
+| Kristian Amlie | 18 (32.7%) |
+| Fabio Tranchitella | 14 (25.5%) |
+| Ole Petter Orhagen | 1 (1.8%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Fabio Tranchitella | 407 (42.0%) |
+| Lluis Campos | 379 (39.2%) |
+| Kristian Amlie | 162 (16.7%) |
+| Ole Petter Orhagen | 20 (2.1%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Ole Petter Orhagen | 20 (5.4%) |
+
+| Developers with the most signoffs (total 7) | |
+|---|---|
+| Lluis Campos | 7 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 55 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 968 (100.0%) |
+
+| Employers with the most signoffs (total 7) | |
+|---|---|
+| Northern.tech | 7 (100.0%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 4 (100.0%) |
+
+### Changelogs
+
+#### meta-mender (zeus-v2021.02)
+
+New changes in meta-mender since zeus-v2020.12:
+
+* Make DBus support optional in Mender client with `PACKAGECONFIG`.
+  It defaults to on, but can be turned off with:
+  ```
+  PACKAGECONFIG_remove = "dbus"
+  ```
+  Backported to dunfell, modifying the PACKAGECONFIG defaults and amending
+  the test. ([MEN-4014](https://tracker.mender.io/browse/MEN-4014))
+* mender-client: Add DBus busconfig files.
+  ([MEN-4030](https://tracker.mender.io/browse/MEN-4030))
+* mender-client: The self-signed Mender server certificate, if
+  present, is copied to ca-certificates in addition to
+  `MENDER_CERT_LOCATION` to be trusted by other services running in the
+  device. ([MEN-4273](https://tracker.mender.io/browse/MEN-4273))
+* mender-client: fix QA Issue: invalid PACKAGECONFIG: inventory-network-scripts
+* Rename mender-shell to mender-connect
+  ([MEN-4292](https://tracker.mender.io/browse/MEN-4292))
+* Add mender-binary-delta 1.1.1 and 1.2.0.
+* Add the MENDER_CONNECT_SHELL to meta-mender-core, defaults to /bin/sh
+* Add recipe mender-connect 1.0.0
+* Add recipe mender-client 2.5.0
+* Add recipe mender-artifact 3.5.0
+* Add mender-artifact 3.4.1 recipe.
+* Add mender-client 2.3.2 and 2.4.2 recipes.
+* Fix broken demo certificate in production recipes.
+* mender-connect: Correct ShellCommand key in config file
+
+
+## meta-mender warrior-v2021.02
+
+_Released 02.22.2021_
+
+### Statistics
+
+A total of 272 lines added, 180 removed (delta 92)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 13 (43.3%) |
+| Lluis Campos | 12 (40.0%) |
+| Fabio Tranchitella | 5 (16.7%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 202 (64.3%) |
+| Kristian Amlie | 77 (24.5%) |
+| Fabio Tranchitella | 35 (11.1%) |
+
+| Developers with the most signoffs (total 8) | |
+|---|---|
+| Lluis Campos | 8 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 30 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 314 (100.0%) |
+
+| Employers with the most signoffs (total 8) | |
+|---|---|
+| Northern.tech | 8 (100.0%) |
+
+| Employers with the most hackers (total 3) | |
+|---|---|
+| Northern.tech | 3 (100.0%) |
+
+### Changelogs
+
+#### meta-mender (warrior-v2021.02)
+
+New changes in meta-mender since warrior-v2020.12:
+
+* Make DBus support optional in Mender client with `PACKAGECONFIG`.
+  It defaults to on, but can be turned off with:
+  ```
+  PACKAGECONFIG_remove = "dbus"
+  ```
+  Backported to dunfell, modifying the PACKAGECONFIG defaults and amending
+  the test.
+  Backported to warrior, removing the test.
+  ([MEN-4014](https://tracker.mender.io/browse/MEN-4014))
+* mender-client: Add DBus busconfig files.
+  ([MEN-4030](https://tracker.mender.io/browse/MEN-4030))
+* mender-client: The self-signed Mender server certificate, if
+  present, is copied to ca-certificates in addition to
+  `MENDER_CERT_LOCATION` to be trusted by other services running in the
+  device. ([MEN-4273](https://tracker.mender.io/browse/MEN-4273))
+* mender-client: fix QA Issue: invalid PACKAGECONFIG: inventory-network-scripts
+* Rename mender-shell to mender-connect
+  ([MEN-4292](https://tracker.mender.io/browse/MEN-4292))
+* Add mender-binary-delta 1.1.1 and 1.2.0.
+* Add the MENDER_CONNECT_SHELL to meta-mender-core, defaults to /bin/sh
+* Add recipe mender-connect 1.0.0
+* Add recipe mender 2.5.0
+* Add recipe mender-artifact 3.5.0
+* Add mender-artifact 3.4.1 recipe.
+* Add mender 2.3.2 and 2.4.2 recipes.
+* Fix broken demo certificate in production recipes.
+* mender-connect: Correct ShellCommand key in config file
+
+
 ## meta-mender dunfell-v2021.01
 
 _Released 01.26.2021_
