@@ -142,7 +142,7 @@ DEVICE_IDENTITY_JSON_OBJECT_STRING='{"mac":"02:12:61:13:6c:42"}'
 Secondly, set the contents of the device public key you generated above in a second variable:
 
 ```bash
-DEVICE_PUBLIC_KEY="$(cat keys-client-generated/public.key | sed -e :a  -e 'N;s/\n/\\n/;ta')"
+DEVICE_PUBLIC_KEY="$(cat keys-client-generated/public.key | awk 1 ORS='\\n')"
 ```
 
 Then simply call the [API to preauthorize a device](../../200.API/?target=_blank#post__devices):

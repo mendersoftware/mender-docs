@@ -70,7 +70,7 @@ example of such a script, gathering information on the localization from the net
 #
 # The example script collects geo localization information
 #
-function err() {
+err() {
  local rc=$1
 
  shift
