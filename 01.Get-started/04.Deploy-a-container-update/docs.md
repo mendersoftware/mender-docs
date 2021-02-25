@@ -85,7 +85,7 @@ On MacOS
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 ```bash
-wget https://downloads.mender.io/mender-artifact/master/darwin/mender-artifact -O ${HOME}/bin/mender-artifact
+wget https://downloads.mender.io/mender-artifact/3.5.0/darwin/mender-artifact -O ${HOME}/bin/mender-artifact
 ```
 
 
