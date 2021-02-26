@@ -33,7 +33,7 @@ steps that are covered in the [Enterprise subsection](#enterprise).
 - A machine with Ubuntu 18.04 (e.g. an instance from AWS EC2 or DigitalOcean) with the following tools installed:
   - git
   - [Docker Engine](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/?target=_blank), version **17.03 or later**.
-  - [Docker Compose](https://docs.docker.com/compose/install/?target=_blank), version **1.6 or later**.
+  - [Docker Compose](https://docs.docker.com/compose/install/?target=_blank), version **1.9 or later**.
 - Minimum of 10 GB free disk space and 4 GB RAM available for Mender and its services.
     - This heavily depends on your scale and environment, the supported [Mender Enterprise](https://mender.io/product/mender-enterprise?target=_blank) edition is recommended for larger-scale environments.
 - A public IP address assigned and ports 443 and 9000 publicly accessible.
