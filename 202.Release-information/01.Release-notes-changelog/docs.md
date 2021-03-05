@@ -6,6 +6,59 @@ shortcode-core:
     active: false
 ---
 
+## meta-mender dunfell-v2021.03
+
+_Released 03.05.2021_
+
+### Statistics
+
+A total of 29 lines added, 23 removed (delta 6)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 5 (62.5%) |
+| Kristian Amlie | 2 (25.0%) |
+| Leon Anavi | 1 (12.5%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 16 (47.1%) |
+| Lluis Campos | 12 (35.3%) |
+| Leon Anavi | 6 (17.6%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Lluis Campos | 2 (8.7%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 7 (87.5%) |
+| Konsulko Group | 1 (12.5%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 28 (82.4%) |
+| Konsulko Group | 6 (17.6%) |
+
+| Employers with the most hackers (total 3) | |
+|---|---|
+| Northern.tech | 2 (66.7%) |
+| Konsulko Group | 1 (33.3%) |
+
+
+### Changelogs
+
+#### meta-mender (dunfell-v2021.03)
+
+New changes in meta-mender since dunfell-v2021.01:
+
+* Fix Mender installation from a USB stick for BIOS
+* Fixes build warnings: "MENDER_CONNECT_..." is not a
+  recognized MENDER_ variable
+* mender-connect: Correct ShellCommand key in config file
+* mender-connect.conf: Remove unnecessary field ServerURL
+
+
 ## meta-mender zeus-v2021.02
 
 _Released 02.22.2021_
