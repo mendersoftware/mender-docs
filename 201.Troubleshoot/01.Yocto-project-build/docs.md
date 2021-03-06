@@ -291,7 +291,7 @@ MENDER_PERSISTENT_CONFIGURATION_VARS = "RootfsPartA RootfsPartB"
 For users still on the old setup, there is a `state-script` available that will
 help migrate a device from the old setup to the new one. This is enabled by adding
 ```bash
-IMAGE_INSTALL_append = " mender-migrate-configuration"
+IMAGE_INSTALL_append = " mender-client-migrate-configuration"
 ```
 to your `local.conf` file.
 
