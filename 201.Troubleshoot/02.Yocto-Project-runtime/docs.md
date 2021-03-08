@@ -36,7 +36,7 @@ with two configuration files feature.
 To enable migration please add the following to your local.conf or similar:
 
 ```bash
-IMAGE_INSTALL_append = " mender-migrate-configuration"
+IMAGE_INSTALL_append = " mender-client-migrate-configuration"
 PACKAGECONFIG_remove = "split-mender-config"
 MENDER_PERSISTENT_CONFIGURATION_VARS = "RootfsPartA RootfsPartB"
 MENDER_ARTIFACT_EXTRA_ARGS_append = " -v 2"
@@ -55,7 +55,7 @@ all devices in the fleet have been updated with the migration script enabled you
 can remove these changes and return to the normal workflow of generating update
 Artifacts.
 
-Note that `mender-migrate-configuration` recipe uses a state script, and it
+Note that `mender-client-migrate-configuration` recipe uses a state script, and it
 might be needed to clean the yocto build after removing it.
 
 
