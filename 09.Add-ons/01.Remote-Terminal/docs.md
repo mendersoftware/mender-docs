@@ -82,5 +82,5 @@ and pass it upstream over the websocket.
 [mender-connect configuration section](30.Mender-connect-configuration-file/docs.md).
 * You can find the mender-connect installation steps for Yocto-based projects,
 and for Debian family,
-in the [customize with Yocto](../../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md),
+in the [customize with Yocto](../../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect),
 and [customize with Debian](../../04.System-updates-Debian-family/03.Customize-Mender/docs.md) respectively.
