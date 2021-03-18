@@ -36,11 +36,13 @@ inspiration.
 To get a feel for the main parts of a configuration script, let us dissect the time zone script:
 
 1. [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix))
+
 ```
 #!/bin/sh
 ```
 
 2. Input parameter verification
+
 ```
 if [ $# -ne 1 ]; then
     echo "Must be invoked with exactly one argument: The JSON configuration." 1>&2
@@ -56,6 +58,7 @@ fi
 ```
 
 3. Extract and apply the configuration
+
 ```
 TIMEZONE="$(jq -r -e .timezone < "$CONFIG")"
 return_code=$?
@@ -75,7 +78,7 @@ case $return_code in
 esac
 ```
 
-!! Note that this script relies on `[jq](https://stedolan.github.io/jq/)` to parse the _JSON_ input, which might not be present in all _Linux_ distributions by default. All scripts must have some way of parsing the input _JSON_.
+!! Note that this script relies on [`jq`](https://stedolan.github.io/jq/) to parse the _JSON_ input, which might not be present in all _Linux_ distributions by default. All scripts must have some way of parsing the input _JSON_.
 
 ### Simple wrapper which tweaks the parameters before calling a binary
 
@@ -120,7 +123,6 @@ if [ $return_code -ne 0 ]; then
 fi
 
 exit $return_code
-
 ```
 
 ### Configure your device with different interpreters
@@ -134,6 +136,7 @@ following the three main steps outlined above:
 
 
 1. [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix))
+
 ```
 #!/usr/bin/python
 
@@ -144,6 +147,7 @@ import sys
 ```
 
 2. Input parameter verification
+
 ```
 if len(sys.argv) != 1:
     print("Must be invoked with exactly one argument: The JSON configuration.", file=sys.stderr)
@@ -157,6 +161,7 @@ if not os.path.exists(config):
 ```
 
 3. Extract and apply the configuration
+
 ```
 try:
     configJSON = json.load(config)
