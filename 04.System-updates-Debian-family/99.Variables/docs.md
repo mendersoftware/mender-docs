@@ -132,6 +132,21 @@ Install the Mender Connect add-on.
 The version of the Mender Connect add-on to include in the update.
 
 
+#### `MENDER_ADDON_CONFIGURE_INSTALL`
+
+> Value: y/n(default)
+
+Install the Mender Configure add-on.
+
+
+#### `MENDER_ADDON_CONFIGURE_VERSION`
+
+<!--AUTOVERSION: "/%/"/ignore-->
+> Value: latest(default)/master/&lt;version&gt;
+
+The version of the Mender Configure add-on to include in the update.
+
+
 #### `MENDER_COMPRESS_DISK_IMAGE`
 
 > Values: gzip(default)/lzma/none
