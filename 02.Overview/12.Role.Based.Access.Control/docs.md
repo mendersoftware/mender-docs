@@ -19,13 +19,23 @@ Mender supports four different types of Roles:
 
 * **Admin:** Full access
 
-* **CI:** Intended for *Continuous Integration* systems. It can only manage
-Mender Artifacts, such as upload and delete Artifacts.
-
-* **Read only:** Allows the user to see the status of devices and deployments,
+* **Read Access:** The role allows the user to see the status of devices and deployments,
 but not make any modifications. This role is well suited for limited technical
 support users, or team leads who need an overview of deployment status or
 individual devices, but are not involved in day-to-day deployment management.
+
+
+* **Release Manager:** Intended for *Continuous Integration* systems. It can only manage
+Mender Artifacts, such as upload and delete Artifacts.
+
+* **Deployments Manager:** Intended for users responsible for managing deployments.
+With this role users can create and abort deployments. On it's own this role
+won't make the devices visible in the UI, you must pair it with Read Access for that.
+
+* **Troubleshooting:** User with this role assigned has access
+to the troubleshooting features such as Remote Terminal, File Transfer, Port Forwarding.
+On it's own this role won't make the devices visible in the UI, you must pair it
+with Read Access for that.
 
 * **Device groups:** Grants access to a *customizable* set of Device groups in
 Mender. Instances of this role can be created under the *Roles* section in the
@@ -34,6 +44,8 @@ to. The most common use case is to allow developers full access to Test devices,
 while only selected users have access to Production devices. Another common use
 case is to segregate device access based on geographical location, e.g. Europe
 vs. US.
+To have a user who has full control over a particular group in the UI and nothing else,
+be sure to give them the roles: Deployments Manager, Read Access and the chosen Device group role.
 
 Users with the Admin role can manage other users, including creating and
 assigning roles when creating a new user account or editing an existing user
