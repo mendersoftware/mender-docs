@@ -1,6 +1,6 @@
 ---
 title: API
-redirect: /../api/development/
+redirect: /../api/2.7/
 ---
 <!--AUTOVERSION: "redirect: /../api/development/"/integration/complain-->
 <!--
