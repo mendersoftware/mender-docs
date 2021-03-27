@@ -51,7 +51,7 @@ browse to the downloaded Mender Raspberry Pi OS image.
 ## Step 2 - SSH into the Raspberry Pi
 
 Boot the Raspberry Pi with the newly flashed SD card and
-[Enable local SSH access](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md?target=_blank).
+[Enable local SSH access](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md?target=_blank). The instructions from the Raspberry Pi enabling "headless mode" SSH access through the use of a file named "ssh" in the boot partition will not work with Mender-enabled images as we have modified the partition layout to support dual-rootfs updates. To setup headless mode you will need to [manually change the Mender-enable image] (https://hub.mender.io/t/configuring-ssh-uart-and-wifi-access-on-mender-enabled-raspbian-images/2707).
 
 If you do not know the IP address of your Raspberry Pi device, there are some
 great resources in the
