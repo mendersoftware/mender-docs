@@ -129,29 +129,21 @@ First, pull in new container images:
 ```bash
 ./run pull
 ```
-<!--AUTOVERSION: "mender-%: Pulling from mendersoftware/deviceauth"/integration "mender-%: Pulling from mendersoftware/gui"/integration "mender-%: Pulling from mendersoftware/api-gateway"/integration "mendersoftware/deviceauth:mender-%"/integration "mendersoftware/gui:mender-%"/integration "mendersoftware/api-gateway:mender-%"/integration-->
 > ```
-> Pulling mender-mongo (mongo:3.4)...
-> 3.4: Pulling from library/mongo
-> Digest: sha256:e5a4f6caf4fb6773e41292b56308ed427692add67ffd7c655fdf11a78a72df4e
-> Status: Image is up to date for mongo:3.4
-> Pulling minio (mendersoftware/minio:RELEASE.2016-12-13T17-19-42Z)...
-> RELEASE.2016-12-13T17-19-42Z: Pulling from mendersoftware/minio
-> Digest: sha256:0ded6733900e6e09760cd9a7c79ba4981dea6f6b142352719f7a4157b4a3352d
-> Status: Image is up to date for mendersoftware/minio:RELEASE.2016-12-13T17-19-42Z
-> ...
-> Pulling mender-device-auth (mendersoftware/deviceauth:mender-2.7.0-build1)...
-> mender-2.7.0-build1: Pulling from mendersoftware/deviceauth
-> Digest: sha256:07ed10f6fdee40df1de8e10efc3115cb64b0c190bcf5bcd194b9f34086396058
-> Status: Image is up to date for mendersoftware/deviceauth:mender-2.7.0-build1
-> Pulling mender-gui (mendersoftware/gui:mender-2.7.0-build1)...
-> mender-2.7.0-build1: Pulling from mendersoftware/gui
-> Digest: sha256:af2d2349f27dd96ca21940672aa3a91335b17153f8c7ef2ca865a9a7fdf2fd22
-> Status: Image is up to date for mendersoftware/gui:mender-2.7.0-build1
-> Pulling mender-api-gateway (mendersoftware/api-gateway:mender-2.7.0-build1)...
-> mender-2.7.0-build1: Pulling from mendersoftware/api-gateway
-> Digest: sha256:0a2033a57f88afc38253a45301c83484e532047d75858df95d46c12b48f1f2f8
-> Status: Image is up to date for mendersoftware/api-gateway:mender-2.7.0-build1````
+> Pulling mender-mongo                  ... done
+> Pulling mender-deviceconfig           ... done
+> Pulling mender-useradm                ... done
+> Pulling mender-workflows-worker       ... done
+> Pulling mender-create-artifact-worker ... done
+> Pulling mender-workflows-server       ... done
+> Pulling mender-device-auth            ... done
+> Pulling mender-gui                    ... done
+> Pulling mender-inventory              ... done
+> Pulling mender-api-gateway            ... done
+> Pulling minio                         ... done
+> Pulling mender-deployments            ... done
+> Pulling mender-nats                   ... done
+> Pulling mender-deviceconnect          ... done
 > ```
 
 Then stop and remove existing containers:
@@ -198,15 +190,20 @@ Start the new environment:
 ./run up -d
 ```
 > ```
-> Creating menderproduction_mender-mongo_1
-> Creating menderproduction_minio_1
-> Creating menderproduction_mender-gui_1
-> Creating menderproduction_mender-useradm_1
-> Creating menderproduction_mender-deployments_1
-> Creating menderproduction_storage-proxy_1
-> Creating menderproduction_mender-device-auth_1
-> Creating menderproduction_mender-inventory_1
-> Creating menderproduction_mender-api-gateway_1
+> Creating menderproduction_mender-nats_1  ... done
+> Creating menderproduction_mender-gui_1   ... done
+> Creating menderproduction_minio_1        ... done
+> Creating menderproduction_mender-mongo_1 ... done
+> Creating menderproduction_mender-deviceconfig_1           ... done
+> Creating menderproduction_mender-workflows-worker_1       ... done
+> Creating menderproduction_mender-create-artifact-worker_1 ... done
+> Creating menderproduction_mender-deviceconnect_1          ... done
+> Creating menderproduction_mender-useradm_1                ... done
+> Creating menderproduction_mender-inventory_1              ... done
+> Creating menderproduction_mender-workflows-server_1       ... done
+> Creating menderproduction_mender-device-auth_1            ... done
+> Creating menderproduction_mender-api-gateway_1            ... done
+> Creating menderproduction_mender-deployments_1            ... done
 > ```
 
 

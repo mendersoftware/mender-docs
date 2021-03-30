@@ -15,7 +15,6 @@ The integration environment brings together the following services:
 - [Mender User Administration Service](https://github.com/mendersoftware/useradm?target=_blank)
 - [Mender API Gateway](https://github.com/mendersoftware/mender-api-gateway-docker?target=_blank)
 - [Minio](https://www.minio.io/?target=_blank) object storage
-- Storage service proxy based on [OpenResty](https://openresty.org/en/?target=_blank)
 
 Services are delivered in form of Docker images, available from
 official [Mender Docker repository](https://hub.docker.com/r/mendersoftware/?target=_blank).
@@ -44,19 +43,21 @@ provides a convenient setup based on Docker Compose tool. The
         |                                       |    |  (mender-useradm)       |
         |                                       |    +-------------------------+
         |                                       +--->|                         |
-        |                                            |  Deployments            |
-        |              +---------------------------->|  (mender-deployments)   |
-        |              |                             +-------------------------+
-        |              |
-        |              |
-        |              |
-        |              |
-        |              v
-        |        +------------------+                 +---------+
-   port |        |                  |                 |         |
-   9000 | <----> |  Storage Proxy   |<--------------->| Minio   |
-        |        |  (storage-proxy) |                 | (minio) |
-        |        +------------------+                 +---------+
+        |                                       |    |  Device Config          |
+        |                                       |    |  (mender-deviceconfig)  |
+        |                                       |    +-------------------------+
+        |                                       +--->|                         |
+        |                                       |    |  Device Connect         |
+        |                                       |    |  (mender-deviceconnect) |
+        |                                       |    +-------------------------+
+        |                                       +--->|                         |
+        |                                       |    |  Deployments            |
+        |                                       |    |  (mender-deployments)   |
+        |                                       |    +-------------------------+
+        |                                       +--->|                         |
+        |                                            |  Minio                  |
+        |                                            |                         |
+        |                                            +-------------------------+
         |
 ```
 
