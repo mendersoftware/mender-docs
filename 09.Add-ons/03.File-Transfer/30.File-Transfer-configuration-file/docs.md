@@ -4,13 +4,12 @@ taxonomy:
     category: docs
 ---
 
-Remote Terminal can be configured in the Mender Connect client's add-on configuration
-in `/etc/mender/mender-connect.conf` on the root filesystem. This file is JSON structured
-and defines various parameters for the Mender Connect operation.
+You can enable or disable the File Transfer from the Mender Connect configuration 
+file `/etc/mender/mender-connect.conf`.
 
 # Example mender-connect.conf file
 
-Here is an example of a `mender-connect.conf` file with Remote Terminal sections:
+Here is an example of a `mender-connect.conf` file with the File Transfer enabled:
 ```
 {
     "ClientProtocol": "https",
@@ -21,15 +20,8 @@ Here is an example of a `mender-connect.conf` file with Remote Terminal sections
     "ServerCertificate": "/certs/hosted.pem",
     "ServerURL": "wss://192.168.1.1",
     "User": "mender",
-    "Terminal": {
-        "Height": 24,
-        "Width": 128
-    },
-    "Sessions": {
-      "StopExpired": false,
-      "ExpireAfter": 255,
-      "ExpireAfterIdle": 16,
-      "MaxPerUser": 4
+    "FileTransfer": {
+      "Disable": false
     }
 }
 ```

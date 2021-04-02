@@ -243,23 +243,20 @@ mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 
 ## Mender add-ons
 
-The add-ons require the [Mender client](#mender-client) in order to function. If
-you have already installed the Mender client using the [express
-installation](#express-installation) script, you will already have all add-ons
-installed by default.
+### Requirements
 
-### Remote Terminal add-on
+You need two applications for any add-on to function: the [Mender Client](../02.Overview/15.Taxonomy/docs.md)
+and [Mender Connect](../02.Overview/15.Taxonomy/docs.md). If you have used the [express
+installation](#express-installation) script, you already have both installed.
 
-Mender offers a remote terminal extension (`mender-connect`) to the Mender client
-that enables accessing the device terminal using the Mender UI. See the
-[configuration page for remote
-terminal](../09.Add-ons/01.Remote-Terminal/30.Mender-connect-configuration-file/docs.md) for
-more information.
+### mender-connect
 
-The easiest way to install Remote Terminal on an existing device is by using the
-Mender APT repository. See the [add-on page for Mender Remote
-Terminal](../09.Add-ons/01.Remote-Terminal/20.Installation/docs.md) for more
-information for other installation alternatives.
+The easiest way to install Mender Connect on an existing device is by using the
+Mender APT repository. The other alternatives include: 
+[mender-convert integration](../04.System-updates-Debian-family/99.Variables/docs.md#mender_addon_connect_install)
+for installation in the existing images,
+and [Yocto projects](../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect)
+for the installation in a Yocto Project environment.
 
 To install `mender-connect` using Mender APT repository, follow the instructions
 for [installing `mender-client` using the APT
@@ -269,6 +266,16 @@ repository](#install-using-the-apt-repository). After the final step, install
 ```bash
 sudo apt-get install mender-connect
 ```
+
+### Remote Terminal add-on
+
+The Remote Terminal does not require any items installed other than the Mender Client
+and Mender Connect.
+
+### File transfer add-on
+
+The File Transfer does not require any items installed other than the Mender Client
+and Mender Connect.
 
 ### Mender Configure add-on
 

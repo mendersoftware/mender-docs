@@ -10,6 +10,9 @@ This section presents the basic terms used throughout the documentation.
 * _Accepted device_ - An authorized device that can connect to the Mender server
 and receive software updates.
 
+* _Add-on_ (also _Mender Add-on_)- An application which extends Mender beyond
+the software update functionalities.
+
 * _Artifact_ -  An archive containing everything needed for an update of a
 device, including the Artifact Payload itself and metadata such as signatures.
 See the documentation on [Artifact](../03.Artifact/docs.md) for more information.
@@ -57,6 +60,11 @@ for more information.
 it is running on. It uses the Mender API to connect to the Mender Server
 to authenticate, get the artifacts, report inventory, log the progress
 and status of the installations.
+
+* _Mender Connect_ - A user space application providing the add-ons
+framework, as well as implementation of particular add-ons which can be enabled
+or disabled as per configuration. It is integrated with the Mender Client
+over a well-defined and portable DBus API.
 
 * _Mender Hub Integration(s)_ - A contribution on
 [Mender Hub](https://hub.mender.io/c/board-integrations?target=_blank)
