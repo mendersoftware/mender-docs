@@ -44,8 +44,8 @@ The only difference from the official Raspberry Pi OS image is that it has been 
 * [Follow the steps](https://www.raspberrypi.org/documentation/installation/installing-images?target=_blank) to flash the OS image to your device (e.g. choose "Use custom" and browse to the downloaded Mender Raspberry Pi OS image if using the Raspberry Pi Imager).
 
 <!--AUTOVERSION: "mender-%.img.xz"/mender-convert-client -->
-[raspios-buster-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-05-27-raspios-buster-lite-armhf/arm/2020-05-27-raspios-buster-lite-armhf-raspberrypi3-mender-2.3.2.img.xz
-[raspios-buster-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2020-05-27-raspios-buster-lite-armhf/arm/2020-05-27-raspios-buster-lite-armhf-raspberrypi4-mender-2.3.2.img.xz
+[raspios-buster-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-01-11-raspios-buster-armhf-lite/arm/2021-01-11-raspios-buster-armhf-lite-raspberrypi3-mender-2.3.3.img.xz
+[raspios-buster-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-01-11-raspios-buster-armhf-lite/arm/2021-01-11-raspios-buster-armhf-lite-raspberrypi4-mender-2.3.3.img.xz
 
 Boot the device with the newly flashed SD card, then:
 * Connect your device to the Internet, e.g. [using WiFi](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md?target=_blank).
