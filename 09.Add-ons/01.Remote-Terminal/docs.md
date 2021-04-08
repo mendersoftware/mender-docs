@@ -76,6 +76,15 @@ is to read messages from the websocket, route them by session id
 to the correct shell, read the output going to the terminal,
 and pass it upstream over the websocket.
 
+For Mender Enterprise customers, Mender provides audit logging of all terminal
+sessions. The audit logs include terminal creation/termination events as well as
+the terminal output which users can later inspect from the
+[AUDIT LOG](https://hosted.mender.io/ui/#/auditlog) panel in the Mender UI.
+
+!!! Audit logs is only available in the Mender Enterprise plan.
+!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!! for an overview of all Mender plans and features.
+
 ## Further reading
 
 * For a detailed list of the configuration options please refer to the

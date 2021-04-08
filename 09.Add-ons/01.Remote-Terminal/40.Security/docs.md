@@ -50,6 +50,8 @@ Remote Terminal does not open nor listen on any port: the device initiates the c
 !!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
 !!! for an overview of all Mender plans and features.
 
-Audit logs hold a list of every start and stop of a session. You can access this information
-in the Mender UI.
-
+Every remote terminal invocation is saved in the audit logs. The logs
+include the session start and stop events as well as the terminal output. The
+audit logs are available in the Mender UI "AUDIT LOG" tab. There you can also
+inspect the terminal recording by playing back the terminal session in real time
+in the browser.
