@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 
-Remote Terminal is a [mender-connect](../../00.Overview/docs.md#Installation) based add-on.
+File Transfer is a [mender-connect](../../00.Overview/docs.md#Installation) based add-on.
 This means that to get it working you do not need any special installation steps.
 The main requirements are: `mender-client` and `mender-connect`; please refer
 to the below sections for the details:
@@ -13,5 +13,5 @@ to the below sections for the details:
 * [Yocto projects](../../../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect) for the installation in a Yocto Project environment
 * [installation with a deb](../../../09.Downloads/docs.md#remote-terminal-add-on) for the installation from the Debian package
 
-Please consult the [configuration section](../30.Mender-connect-configuration-file/docs.md) 
+Please consult the [configuration section](../30.File-Transfer-configuration-file/docs.md) 
 for the available configuration options.

@@ -225,7 +225,7 @@ Alternatively, add the snippet to your `local.conf`.
 Mender Connect provides several [configuration
 options](../../09.Add-ons/01.Remote-Terminal/30.Mender-connect-configuration-file/50.Mender-connect-configuration-options/docs.md).
 A configuration file with the required [`ServerURL`
-field](../../09.Add-ons/01.Remote-Terminal/30.Mender-connect-configuration-file/50.Mender-connect-configuration-options/docs.md#serverurl),
+field](../../09.Add-ons/00.Overview/docs.md#serverurl),
 set via [`MENDER_SERVER_URL`
 variable](../99.Variables/docs.md#mender_server_url), and [`User`
 field](../../09.Add-ons/01.Remote-Terminal/30.Mender-connect-configuration-file/50.Mender-connect-configuration-options/docs.md#user),
