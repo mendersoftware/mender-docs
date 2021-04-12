@@ -13,5 +13,5 @@ to the below sections for the details:
 * [Yocto projects](../../../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect) for the installation in a Yocto Project environment
 * [installation with a deb](../../../09.Downloads/docs.md#remote-terminal-add-on) for the installation from the Debian package
 
-Please consult the [configuration section](../30.File-Transfer-configuration-file/docs.md) 
+Please consult the [configuration section](../../90.Reference/docs.md#configuration) 
 for the available configuration options.
