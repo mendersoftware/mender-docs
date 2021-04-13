@@ -70,8 +70,8 @@ git fetch origin --tags
 > Receiving objects: 100% (367/367), 83.55 KiB | 0 bytes/s, done.
 > Resolving deltas: 100% (214/214), completed with 42 local objects.
 > From https://github.com/mendersoftware/integration
->    02cd118..75b7831  2.7.0-build1      -> origin/2.7.0-build1
->    06f3212..e9e5df4  2.7.0-build1     -> origin/2.7.0-build1
+>    02cd118..75b7831  2.7.x      -> origin/2.7.x
+>    06f3212..e9e5df4  2.7.x     -> origin/2.7.x
 > ```
 
 <!--AUTOVERSION: "branch named `%` provides"/ignore "e.g. `%`"/ignore-->
@@ -89,7 +89,7 @@ introduced in upstream branch. For example:
 # to list differences between current HEAD and remote branch
 git log HEAD..origin/2.0.x
 # to list differences between current HEAD and stable tag
-git log HEAD..2.7.0-build1
+git log HEAD..2.7.x
 ```
 
 The most important thing to review is the diff between our production template
@@ -100,14 +100,14 @@ minor/major release, one can expect the diff to be larger. Example:
 <!--AUTOVERSION: "HEAD..%"/integration-->
 ```bash
 # while at the root of repository
-user@local$ git diff HEAD..2.7.0-build1 -- template
+user@local$ git diff HEAD..2.7.x -- template
 ```
 
 Upgrading our local production branch is performed by issuing a `git merge` command, like this:
 
 <!--AUTOVERSION: "git merge %"/integration-->
 ```bash
-git merge 2.7.0-build1
+git merge 2.7.x
 ```
 > ```
 > Merge made by the 'recursive' strategy.
