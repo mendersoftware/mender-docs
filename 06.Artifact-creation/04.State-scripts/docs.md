@@ -49,7 +49,16 @@ The reason for having both root file system and Artifact scripts is related to t
 ## Transitions and ordering
 
 State scripts are run by the Mender Client after reaching a given state. Before entering the new state the Enter scripts are run. After all the actions belonging to the given state are executed, the Leave scripts are run. For most of the states, if some error occurs while executing either an Enter or a Leave script, or some action inside the state (like installing a new artifact which is broken and therefore installation is failing) the corresponding Error scripts are executed.
-The exceptions are `Idle`, `Sync`, `ArtifactRollback`, `ArtifactRollbackReboot` and `ArtifactFailure`. The reason for ignoring errors and not calling Error scripts is that the state is already an error state, such as for example `ArtifactRollback`.
+The exceptions are:
+
+* `Idle`
+* `Sync`
+* `ArtifactCommit_Leave`
+* `ArtifactRollback`
+* `ArtifactRollbackReboot`
+* `ArtifactFailure`
+
+The reason for ignoring most of these and not calling Error scripts is that the state is already an error state, such as for example `ArtifactRollback`. `ArtifactCommit_Leave` is not an error state, but in this case it is too late to go to an Error script, because the Artifact has already been committed.
 
 There can be more than one script for a given state. Each script contains an ordering number as a part of the naming convention, which determines when it is run:
 
@@ -73,6 +82,10 @@ All other return codes are reserved for future use by Mender and should not be u
 State scripts are allowed to return a specific error code (`21`), in which case the client will sleep for a time configured by [StateScriptRetryIntervalSeconds](../../03.Client-installation/06.Configuration-file/50.Configuration-options/docs.md#statescriptretryintervalseconds) before the state script is called again. Note that scripts are not allowed to retry for infinitely long. Please see description of [StateScriptRetryTimeoutSeconds](../../03.Client-installation/06.Configuration-file/50.Configuration-options/docs.md#statescriptretrytimeoutseconds) for more information.
 
 This feature is useful e.g when you want user confirmation before proceeding with the update as is described in the [Update confirmation by end user](#update-confirmation-by-end-user) section on this page.
+
+### Inconsistent state
+
+If an error code is returned in any of [the scripts that ignore errors](#transitions-and-ordering), then Mender will append the string `_INCONSISTENT` to the artifact name installed on the device. This is done because an error code in any of these scripts means that Mender received an error in a situation where it could do nothing about it, and therefore the device is in an unknown state. The client logs from the device should give more information about what happened, and can be used to determine whether manual action is needed to fix the problem.
 
 ## Script timeout
 
