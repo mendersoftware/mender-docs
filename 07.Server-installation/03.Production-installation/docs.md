@@ -218,13 +218,10 @@ necessary Docker images:
 
 First, set the public domain name of your server (the URL your devices will reach your Mender server on):
 
-<!--AUTOMATION: ignore=use s3.docker.mender.io (localhost) instead-->
 ```bash
 API_GATEWAY_DOMAIN_NAME="mender.example.com"  # NB! replace with your server's public domain name
 STORAGE_PROXY_DOMAIN_NAME="s3.docker.mender.io"  # change if you are using a different domain name than the the default one
 ```
-<!--AUTOMATION: execute=API_GATEWAY_DOMAIN_NAME="mender.example.com" -->
-<!--AUTOMATION: execute=STORAGE_PROXY_DOMAIN_NAME="s3.docker.mender.io" -->
 
 Prepare certificates using the helper script `keygen`:
 
