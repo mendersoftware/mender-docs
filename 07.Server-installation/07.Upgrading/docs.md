@@ -120,6 +120,41 @@ git merge 2.7.x
 
 !!! Since your local changes are kept in git, it is possible to tag your production version or branch to create pre-merge branches that can be tested in a staging environment.
 
+# Upgrading from Mender 2.6 or older
+
+If you are upgrading from Mender 2.6 or older to Mender 2.7 or newer please follow this section.
+If you are already running Mender 2.7 or newer you can skip this.
+
+Starting from version 2.7, Mender backend is not using separate service as a Storage Proxy.
+Instead, Mender backend uses an API Gateway based on traefik to serve both backend endpoints and artifacts downloads.
+Because of this you should update the gateway definition in your production yaml file to include
+the domain name of your old Storage Proxy.
+The updated entry should look like that:
+```yaml
+    ...
+    mender-api-gateway:
+        ...
+        networks:
+            mender:
+                aliases:
+                    # mender-api-gateway is a proxy to storage
+                    # and has to use exactly the same name as devices
+                    # and the deployments service will;
+                    #
+                    # if devices and deployments will access storage
+                    # using https://s3.acme.org:9000, then
+                    # set this to https://s3.acme.org:9000
+                    - set-my-alias-here.com
+    ...
+```
+
+<!--AUTOVERSION: "older than %"/ignore "tree/%/storage"/ignore -->
+! If you are using mender-client older than 1.7.1 you can face some issues.
+! You can find details [here](https://mender.io/blog/deprecating-mender-1-7-0-and-older-on-premise).
+! If you still want to use Mender 2.7 or newer with clients older than 1.7.1 you have to set up an additional proxy
+! in front of storage service. For that purpose you can include the one provided [here](https://github.com/mendersoftware/integration/tree/master/storage-proxy)
+! into your setup (with updated domain name).
+
 ## Starting upgraded environment
 
 Once the changes are merged, you can recreate the containers.
