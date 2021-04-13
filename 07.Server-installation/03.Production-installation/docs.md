@@ -68,7 +68,7 @@ At the end of this tutorial you will have:
   - artifact storage
   - MongoDB data
 - SSL certificate for the API Gateway
-- SSL certificate for the Storage Proxy
+- SSL certificate for the storage domain
 - a set of keys for generating and validating access tokens
 
 Consult the section on [certificates and keys](../04.Certificates-and-keys/docs.md) for details on
@@ -189,31 +189,21 @@ necessary Docker images:
 ```
 
 > ```
-> Pulling mender-mongo (mongo:3.4)...
-> 3.4: Pulling from library/mongo
-> Digest: sha256:aff0c497cff4f116583b99b21775a8844a17bcf5c69f7f3f6028013bf0d6c00c
-> Status: Image is up to date for mongo:3.4
-> ...
-> Pulling mender-gui (mendersoftware/gui:latest)...
-> latest: Pulling from mendersoftware/gui
-> b7f33cc0b48e: Already exists
-> 31e101b48355: Pull complete
-> 307a023cd01f: Pull complete
-> 2edcf3035646: Pull complete
-> aeb59eb28f90: Pull complete
-> ...
-> Pulling mender-useradm (mendersoftware/useradm:latest)...
-> latest: Pulling from mendersoftware/useradm
-> Digest: sha256:3346985a2679b7edd9243363c4b1c291871481f8c6f557ccdc51af58dc6d3a1a
-> Status: Image is up to date for mendersoftware/useradm:latest
-> Pulling mender-device-auth (mendersoftware/deviceauth:latest)...
-> latest: Pulling from mendersoftware/deviceauth
-> Digest: sha256:ed47310dc9a86cca70d52c520d565ef9814f39421f2faa02d60bbe8a1dbd63c5
-> Status: Image is up to date for mendersoftware/deviceauth:latest
-> Pulling mender-api-gateway (mendersoftware/api-gateway:latest)...
-> latest: Pulling from mendersoftware/api-gateway
-> Digest: sha256:97243de3da950e754ada73abf8c123001c0a0c8b20344256dc7db4c89c0ecd82
-> Status: Image is up to date for mendersoftware/api-gateway:latest
+> Pulling mender-mongo                  ... done
+> Pulling mender-deviceconfig           ... done
+> Pulling mender-useradm                ... done
+> Pulling mender-workflows-worker       ... done
+> Pulling mender-create-artifact-worker ... done
+> Pulling mender-workflows-server       ... done
+> Pulling mender-device-auth            ... done
+> Pulling mender-gui                    ... done
+> Pulling mender-inventory              ... done
+> Pulling mender-api-gateway            ... done
+> Pulling minio                         ... done
+> Pulling mender-deployments            ... done
+> Pulling mender-nats                   ... done
+> Pulling mender-deviceconnect          ... done
+> Pulling mender-mongo (mongo:4.4)...
 > ```
 
 ! Using the `run` helper script may fail when local user has insufficient permissions to reach a local docker daemon. Make sure that the Docker installation was completed successfully and the user has sufficient permissions (typically the user must be a member of the `docker` group).
@@ -228,13 +218,10 @@ necessary Docker images:
 
 First, set the public domain name of your server (the URL your devices will reach your Mender server on):
 
-<!--AUTOMATION: ignore=use s3.docker.mender.io (localhost) instead-->
 ```bash
 API_GATEWAY_DOMAIN_NAME="mender.example.com"  # NB! replace with your server's public domain name
-STORAGE_PROXY_DOMAIN_NAME="$API_GATEWAY_DOMAIN_NAME"  # change if you are hosting the Storage Proxy on a different domain name (not the default)
+STORAGE_PROXY_DOMAIN_NAME="s3.docker.mender.io"  # change if you are using a different domain name than the the default one
 ```
-<!--AUTOMATION: execute=API_GATEWAY_DOMAIN_NAME="s3.docker.mender.io" -->
-<!--AUTOMATION: execute=STORAGE_PROXY_DOMAIN_NAME="$API_GATEWAY_DOMAIN_NAME" -->
 
 Prepare certificates using the helper script `keygen`:
 
@@ -388,7 +375,10 @@ docker volume create --name=mender-artifacts
 docker volume create --name=mender-db
 ```
 
-!!! The storage location of these volumes depends on your docker configuration. You can check the path for a specific volume by running `docker volume inspect --format '{{.Mountpoint}}' mender-artifacts`.
+!!! The storage location of these volumes depends on your docker configuration. You can check the path for a specific volume by running
+!!! ```bash
+!!! docker volume inspect --format '{{.Mountpoint}}' mender-artifacts
+!!! ```
 
 
 ### Configuration
@@ -475,30 +465,13 @@ After these three commands, the updated entry should look like this (you can aga
 
 #### Storage proxy
 
-Add your storage server's DNS name under the key `networks.mender.aliases` key
-by running the following command:
-
+In the default setup there is no separate process acting as a proxy to storage service.
+For this purpose you can use Mender API Gateway, but with an additional domain name.
+Change the placeholder value `set-my-alias-here` to a valid domain name to use
+Mender API Gateway as a proxy to the storage service, by running the following command:
 ```bash
 sed -i.bak "s/set-my-alias-here.com/$STORAGE_PROXY_DOMAIN_NAME/g" config/prod.yml
 ```
-
-The entry should now look like this:
-
-```yaml
-    ...
-    storage-proxy:
-        networks:
-            mender:
-                aliases:
-                    - mender.example.com
-    ...
-
-```
-
-You can also change the values for `DOWNLOAD_SPEED` and `MAX_CONNECTIONS`.
-See the [section on bandwidth](../05.Bandwidth/docs.md) for more details on these
-settings.
-
 
 
 #### API gateway
@@ -601,14 +574,20 @@ Bring up all services up in detached mode with the following command:
 ```
 > ```
 > Creating network "menderproduction_mender" with the default driver
-> Creating menderproduction_mender-mongo_1
-> Creating menderproduction_mender-gui_1
-> Creating menderproduction_minio_1
-> Creating menderproduction_mender-device-auth_1
-> Creating menderproduction_mender-inventory_1
-> Creating menderproduction_mender-useradm_1
-> Creating menderproduction_mender-deployments_1
-> Creating menderproduction_mender-api-gateway_1
+> Creating menderproduction_mender-nats_1                   ... done
+> Creating menderproduction_mender-mongo_1 ... done
+> Creating menderproduction_minio_1        ... done
+> Creating menderproduction_mender-gui_1   ... done
+> Creating menderproduction_mender-workflows-worker_1       ... done
+> Creating menderproduction_mender-create-artifact-worker_1 ... done
+> Creating menderproduction_mender-useradm_1                ... done
+> Creating menderproduction_mender-workflows-server_1       ... done
+> Creating menderproduction_mender-deviceconfig_1           ... done
+> Creating menderproduction_mender-inventory_1              ... done
+> Creating menderproduction_mender-deviceconnect_1          ... done
+> Creating menderproduction_mender-device-auth_1            ... done
+> Creating menderproduction_mender-api-gateway_1            ... done
+> Creating menderproduction_mender-deployments_1            ... done
 > ```
 
 !!! Services, networks and volumes have a `menderproduction` prefix, see the note about [docker-compose naming scheme](#docker-compose-naming-scheme) for more details. When using `docker ..` commands, a complete container name must be provided (ex. `menderproduction_mender-deployments_1`).
@@ -634,10 +613,10 @@ installing an Open Source server, please proceed to
 
 <!-- Verification of Open Source instance -->
 
-<!--AUTOMATION: test=for ((n=0;n<10;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 13  || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<10;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 14  || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
 <!--AUTOMATION: test=./run stop -->
 <!--AUTOMATION: test=./run up -d -->
-<!--AUTOMATION: test=for ((n=0;n<10;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 13  || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<10;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 14  || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
 
 <!-- End of test block for TEST_OPEN_SOURCE=1 -->
@@ -852,18 +831,23 @@ Below you can see typical output for the Enterprise server. The Open Source
 server will be similar, but will have fewer services running.
 
 > ```
->                       Name                                    Command                  State                  Ports
+>                       Name                                    Command                  State                  Ports            
 > -------------------------------------------------------------------------------------------------------------------------------
-> menderproduction_mender-api-gateway_1              /entrypoint.sh                   Up             0.0.0.0:443->443/tcp, 80/tcp
-> menderproduction_mender-create-artifact-worker_1   /usr/bin/workflows --confi ...   Up             8080/tcp
-> menderproduction_mender-deployments_1              /entrypoint.sh --config /e ...   Up             8080/tcp
-> menderproduction_mender-device-auth_1              /usr/bin/deviceauth --conf ...   Up             8080/tcp
-> menderproduction_mender-gui_1                      /entrypoint.sh nginx             Up (healthy)   80/tcp
-> menderproduction_mender-inventory_1                /usr/bin/inventory --confi ...   Up             8080/tcp
-> menderproduction_mender-mongo_1                    docker-entrypoint.sh mongod      Up             27017/tcp
-> menderproduction_mender-useradm_1                  /usr/bin/useradm --config  ...   Up             8080/tcp
-> menderproduction_mender-workflows-server_1         /usr/bin/workflows --confi ...   Up             8080/tcp
-> menderproduction_mender-workflows-worker_1         /usr/bin/workflows --confi ...   Up
+> menderproduction_mender-api-gateway_1              /entrypoint.sh --accesslog ...   Up             0.0.0.0:443->443/tcp, 80/tcp
+> menderproduction_mender-auditlogs_1                /usr/bin/auditlogs --confi ...   Up             8080/tcp                    
+> menderproduction_mender-create-artifact-worker_1   /usr/bin/workflows --confi ...   Up             8080/tcp                    
+> menderproduction_mender-deployments_1              /entrypoint.sh --config /e ...   Up             8080/tcp                    
+> menderproduction_mender-device-auth_1              /usr/bin/deviceauth --conf ...   Up             8080/tcp                    
+> menderproduction_mender-deviceconfig_1             /usr/bin/deviceconfig --co ...   Up             8080/tcp                    
+> menderproduction_mender-deviceconnect_1            /usr/bin/deviceconnect --c ...   Up             8080/tcp                    
+> menderproduction_mender-gui_1                      /entrypoint.sh nginx             Up (healthy)   80/tcp, 8080/tcp            
+> menderproduction_mender-inventory_1                /usr/bin/inventory-enterpr ...   Up             8080/tcp                    
+> menderproduction_mender-mongo_1                    docker-entrypoint.sh mongod      Up             27017/tcp                   
+> menderproduction_mender-nats_1                     docker-entrypoint.sh nats- ...   Up             4222/tcp, 6222/tcp, 8222/tcp
+> menderproduction_mender-tenantadm_1                /usr/bin/tenantadm --confi ...   Up             8080/tcp                    
+> menderproduction_mender-useradm_1                  /usr/bin/useradm-enterpris ...   Up             8080/tcp                    
+> menderproduction_mender-workflows-server_1         /usr/bin/workflows-enterpr ...   Up             8080/tcp                    
+> menderproduction_mender-workflows-worker_1         /entrypoint.sh worker --au ...   Up                                         
 > menderproduction_minio_1                           /usr/bin/docker-entrypoint ...   Up (healthy)   9000/tcp
 > ```
 
