@@ -12,15 +12,15 @@ The Mender Client has the ability to run pre- and postinstall scripts, before an
 
 Starting with the Mender Client version 1.2, support is available for scripts to be run before and after nine different states:
 
-* **Idle**: this is a state where no communication with the server is needed nor is there any update in progress
-* **Sync**: communication with the server is needed (currently while checking if there is an update for the given device and when inventory data is sent to server)
-* **Download**: there is an update for the given device and a new Artifact is downloaded
-* **ArtifactInstall**: the Artifact is being installed
-* **ArtifactReboot**: runs if the Artifact being installed requires a reboot. Not all Artifact types do, but rootfs-image Artifacts will always reboot. The Enter actions run before the reboot; the Leave actions run after.
-* **ArtifactCommit**: device is up and running after rebooting, and the commit makes the update persistent
-* **ArtifactRollback**: if the new update is broken and we need to go back to the previous one
-* **ArtifactRollbackReboot**: if we need to reboot the device after performing rollback
-* **ArtifactFailure**: if any of the "Artifact" states are failing, the device enters and executes this state. This state always runs after the ArtifactRollback and ArtifactRollbackReboot states.
+* `Idle`: this is a state where no communication with the server is needed nor is there any update in progress
+* `Sync`: communication with the server is needed (currently while checking if there is an update for the given device and when inventory data is sent to server)
+* `Download`: there is an update for the given device and a new Artifact is downloaded
+* `ArtifactInstall`: the Artifact is being installed
+* `ArtifactReboot`: runs if the Artifact being installed requires a reboot. Not all Artifact types do, but rootfs-image Artifacts will always reboot. The Enter actions run before the reboot; the Leave actions run after.
+* `ArtifactCommit`: device is up and running after rebooting, and the commit makes the update persistent
+* `ArtifactRollback`: if the new update is broken and we need to go back to the previous one
+* `ArtifactRollbackReboot`: if we need to reboot the device after performing rollback
+* `ArtifactFailure`: if any of the "Artifact" states are failing, the device enters and executes this state. This state always runs after the `ArtifactRollback` and `ArtifactRollbackReboot` states.
 
 State scripts can either be run as we transition into a state; "Enter", or out from a state, "Leave". Most of the states also have an "Error" transition which is run when some error occurs while executing any action inside the given state (including execution of Enter and Leave scripts).
 
@@ -30,11 +30,11 @@ State scripts can either be run as we transition into a state; "Enter", or out f
 
 If Mender is used in standalone mode (installing via command line), some states are omitted from execution because Mender is not running as a daemon. These are the states that are executed in standalone mode:
 
-* **Download**
-* **ArtifactInstall**
-* **ArtifactCommit**
-* **ArtifactRollback**
-* **ArtifactFailure**
+* `Download`
+* `ArtifactInstall`
+* `ArtifactCommit`
+* `ArtifactRollback`
+* `ArtifactFailure`
 
 
 ## Root file system and Artifact scripts
@@ -43,13 +43,22 @@ There are two types of the state scripts: root file system and Artifact. The roo
 for those scripts is `/etc/mender/scripts`.
 The Artifact scripts are part of the Artifact and are delivered to the Client inside the Artifact. All the Artifact scripts are prefixed with `Artifact`.
 
-The reason for having both root file system and Artifact scripts is related to the fact that some scripts must run before the Client downloads the Artifact and as such can not be delivered with the Artifact. Those scripts are Idle, Sync and Download. Therefore it is important to remember that when deploying a new update, all scripts will be run from the currently running root file system until ArtifactInstall, at which point the scripts from the new Artifact will take over.
+The reason for having both root file system and Artifact scripts is related to the fact that some scripts must run before the Client downloads the Artifact and as such can not be delivered with the Artifact. Those scripts are `Idle`, `Sync` and `Download`. Therefore it is important to remember that when deploying a new update, all scripts will be run from the currently running root file system until `ArtifactInstall`, at which point the scripts from the new Artifact will take over.
 
 
 ## Transitions and ordering
 
 State scripts are run by the Mender Client after reaching a given state. Before entering the new state the Enter scripts are run. After all the actions belonging to the given state are executed, the Leave scripts are run. For most of the states, if some error occurs while executing either an Enter or a Leave script, or some action inside the state (like installing a new artifact which is broken and therefore installation is failing) the corresponding Error scripts are executed.
-The exceptions are Idle, Sync, ArtifactRollback, ArtifactRollbackReboot and ArtifactFailure. The reason for ignoring errors and not calling Error scripts is that the state is already an error state, such as for example ArtifactRollback.
+The exceptions are:
+
+* `Idle`
+* `Sync`
+* `ArtifactCommit_Leave`
+* `ArtifactRollback`
+* `ArtifactRollbackReboot`
+* `ArtifactFailure`
+
+The reason for ignoring most of these and not calling Error scripts is that the state is already an error state, such as for example `ArtifactRollback`. `ArtifactCommit_Leave` is not an error state, but in this case it is too late to go to an Error script, because the Artifact has already been committed.
 
 There can be more than one script for a given state. Each script contains an ordering number as a part of the naming convention, which determines when it is run:
 
@@ -74,13 +83,17 @@ State scripts are allowed to return a specific error code (`21`), in which case 
 
 This feature is useful e.g when you want user confirmation before proceeding with the update as is described in the [Update confirmation by end user](#update-confirmation-by-end-user) section on this page.
 
+### Inconsistent state
+
+If an error code is returned in any of [the scripts that ignore errors](#transitions-and-ordering), then Mender will append the string `_INCONSISTENT` to the artifact name installed on the device. This is done because an error code in any of these scripts means that Mender received an error in a situation where it could do nothing about it, and therefore the device is in an unknown state. The client logs from the device should give more information about what happened, and can be used to determine whether manual action is needed to fix the problem.
+
 ## Script timeout
 
 Each script has a maximum execution time defined by [StateScriptTimeoutSeconds](../../03.Client-installation/06.Configuration-file/50.Configuration-options/docs.md#statescripttimeoutseconds). If a script exceeds this running time, its process group will be killed and the Mender client will treat the script and the update as failed.
 
 ## Power loss
 
-In general power loss means that Mender will transition into an error state, either ArtifactRollback or ArtifactFailure, depending on the level of rollback support of the Payload types in the Artifact. If a power loss happens inside one of the error states, that state will be repeated until it succeeds without a power interruption. However, there are some exceptions: Power loss is allowed to happen within any Reboot state, since it may be indistinguishable from a normal reboot. Also `ArtifactCommit_Leave` will be repeated just like the error states, since after committing it is too late to do a rollback.
+In general power loss means that Mender will transition into an error state, either `ArtifactRollback` or `ArtifactFailure`, depending on the level of rollback support of the Payload types in the Artifact. If a power loss happens inside one of the error states, that state will be repeated until it succeeds without a power interruption. However, there are some exceptions: Power loss is allowed to happen within any Reboot state, since it may be indistinguishable from a normal reboot. Also `ArtifactCommit_Leave` will be repeated just like the error states, since after committing it is too late to do a rollback.
 
 !!! Tip: Since a power loss in `ArtifactReboot_Enter` will not be marked as a failure, this enables the user to stall the daemon in `ArtifactReboot_Enter` state forever, and thus an install will only be installed on a power-cycle of the device.
 
@@ -152,15 +165,15 @@ You will find state transitions for common scenarios below.
 #### Normal execution without errors
 
 1. (device boot)
-2. [Idle_Enter] Idle [Idle_Leave]
-3. [Sync_Enter] Sync [Sync_Leave]
-4. [Download_Enter] Download [Download_Leave]
-5. [ArtifactInstall_Enter] ArtifactInstall [ArtifactInstall_Leave]
-6. [ArtifactReboot_Enter] ArtifactReboot
+2. `[Idle_Enter]` `Idle` `[Idle_Leave]`
+3. `[Sync_Enter]` `Sync` `[Sync_Leave]`
+4. `[Download_Enter]` `Download` `[Download_Leave]`
+5. `[ArtifactInstall_Enter]` `ArtifactInstall` `[ArtifactInstall_Leave]`
+6. `[ArtifactReboot_Enter]` `ArtifactReboot`
 7. (device reboot)
-8. [ArtifactReboot_Leave]
-9. [ArtifactCommit_Enter] ArtifactCommit [ArtifactCommit_Leave]
-10. [Idle_Enter] Idle [Idle_Leave]
+8. `[ArtifactReboot_Leave]`
+9. `[ArtifactCommit_Enter]` `ArtifactCommit` `[ArtifactCommit_Leave]`
+10. `[Idle_Enter]` `Idle` `[Idle_Leave]`
 
 Please note that scripts in `ArtifactReboot_Leave` are run *after* the device has rebooted.
 
@@ -168,12 +181,12 @@ Please note that scripts in `ArtifactReboot_Leave` are run *after* the device ha
 #### Error while downloading the Artifact
 
 1. (device boot)
-2. [Idle_Enter] Idle [Idle_Leave]
-3. [Sync_Enter] Sync [Sync_Leave]
-4. [Download_Enter] Download
+2. `[Idle_Enter]` `Idle` `[Idle_Leave]`
+3. `[Sync_Enter]` `Sync` `[Sync_Leave]`
+4. `[Download_Enter]` `Download`
 5. (error while downloading)
-6. [Download_Error]
-7. [Idle_Enter] Idle [Idle_Leave]
+6. `[Download_Error]`
+7. `[Idle_Enter]` `Idle` `[Idle_Leave]`
 
 Please note that no scripts in the `Download_Leave` transition are run if the download fails. Instead, the scripts in the `Download_Error` transition are run.
 
@@ -181,18 +194,18 @@ Please note that no scripts in the `Download_Leave` transition are run if the do
 #### Error while installing the update
 
 1. (device boot)
-2. [Idle_Enter] Idle [Idle_Leave]
-3. [Sync_Enter] Sync [Sync_Leave]
-4. [Download_Enter] Download [Download_Leave]
-5. [ArtifactInstall_Enter] ArtifactInstall
+2. `[Idle_Enter]` `Idle` `[Idle_Leave]`
+3. `[Sync_Enter]` `Sync` `[Sync_Leave]`
+4. `[Download_Enter]` `Download` `[Download_Leave]`
+5. `[ArtifactInstall_Enter]` `ArtifactInstall`
 6. (error while installing)
-7. [ArtifactInstall_Error]
-8. [ArtifactRollback_Enter] ArtifactRollback [ArtifactRollback_Leave]
-9. [ArtifactRollbackReboot_Enter] ArtifactRollbackReboot
+7. `[ArtifactInstall_Error]`
+8. `[ArtifactRollback_Enter]` `ArtifactRollback` `[ArtifactRollback_Leave]`
+9. `[ArtifactRollbackReboot_Enter]` `ArtifactRollbackReboot`
 10. (device reboot)
-11. [ArtifactRollbackReboot_Leave]
-12. [ArtifactFailure_Enter] ArtifactFailure [ArtifactFailure_Leave]
-13. [Idle_Enter] Idle [Idle_Leave]
+11. `[ArtifactRollbackReboot_Leave]`
+12. `[ArtifactFailure_Enter]` `ArtifactFailure` `[ArtifactFailure_Leave]`
+13. `[Idle_Enter]` `Idle` `[Idle_Leave]`
 
 In case any of the `Artifact` scripts fail, an additional `ArtifactFailure` state is entered and the corresponding Enter and Leave scripts are run. Please also note that *there is no* `ArtifactFailure_Error` state transition and if any error occurs while executing actions inside the `ArtifactFailure` state, the scripts in the `ArtifactFailure_Leave` transition will run and an appropriate error path will be executed.
 
@@ -200,21 +213,21 @@ In case any of the `Artifact` scripts fail, an additional `ArtifactFailure` stat
 #### Error while committing an update
 
 1. (device boot)
-2. [Idle_Enter] Idle [Idle_Leave]
-3. [Sync_Enter] Sync [Sync_Leave]
-4. [Download_Enter] Download [Download_Leave]
-5. [ArtifactInstall_Enter] ArtifactInstall [ArtifactInstall_Leave]
-6. [ArtifactReboot_Enter] ArtifactReboot
+2. `[Idle_Enter]` `Idle` `[Idle_Leave]`
+3. `[Sync_Enter]` `Sync` `[Sync_Leave]`
+4. `[Download_Enter]` `Download` `[Download_Leave]`
+5. `[ArtifactInstall_Enter]` `ArtifactInstall` `[ArtifactInstall_Leave]`
+6. `[ArtifactReboot_Enter]` `ArtifactReboot`
 7. (device reboot)
-8. [ArtifactReboot_Leave]
-9. [ArtifactCommit_Enter] ArtifactCommit
+8. `[ArtifactReboot_Leave]`
+9. `[ArtifactCommit_Enter]` `ArtifactCommit`
 10. (error while committing)
-11. [ArtifactCommit_Error]
-12. [ArtifactRollback_Enter] ArtifactRollback [ArtifactRollback_Leave]
-13. [ArtifactRollbackReboot_Enter] ArtifactRollbackReboot
+11. `[ArtifactCommit_Error]`
+12. `[ArtifactRollback_Enter]` `ArtifactRollback` `[ArtifactRollback_Leave]`
+13. `[ArtifactRollbackReboot_Enter]` `ArtifactRollbackReboot`
 14. (device reboot)
-15. [ArtifactRollbackReboot_Leave]
-16. [ArtifactFailure_Enter] ArtifactFailure [ArtifactFailure_Leave]
-17. [Idle_Enter] Idle [Idle_Leave]
+15. `[ArtifactRollbackReboot_Leave]`
+16. `[ArtifactFailure_Enter]` `ArtifactFailure` `[ArtifactFailure_Leave]`
+17. `[Idle_Enter]` `Idle` `[Idle_Leave]`
 
 Please note that similar to the `ArtifactReboot` state, scripts in the `ArtifactRollbackReboot_Leave` transition are called after the device has rebooted.
