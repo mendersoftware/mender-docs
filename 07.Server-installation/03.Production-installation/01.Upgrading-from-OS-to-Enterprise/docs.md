@@ -16,7 +16,7 @@ taxonomy:
 
 <!-- Basically a repeat of Open Source setup from Production Installation tutorial -->
 <!-- AUTOVERSION: "git clone -b %"/integration -->
-<!-- AUTOMATION: execute=git clone -b 2.7.0-build1 https://github.com/mendersoftware/integration mender-server -->
+<!-- AUTOMATION: execute=git clone -b 2.7.x https://github.com/mendersoftware/integration mender-server -->
 <!-- AUTOMATION: execute=cd mender-server -->
 <!-- AUTOMATION: execute=git checkout -b my-production-setup -->
 <!-- AUTOMATION: execute=cd production -->
@@ -158,11 +158,11 @@ connect without a tenant token.
 <!-- Verification -->
 
 <!--AUTOMATION: test=sleep 30 -->
-<!--AUTOMATION: test=for ((n=0;n<10;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 15 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<10;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 16 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
 <!--AUTOMATION: test=./run stop -->
 <!--AUTOMATION: test=./run up -d -->
 <!--AUTOMATION: test=sleep 30 -->
-<!--AUTOMATION: test=for ((n=0;n<10;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 15 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<10;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 16 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
 
 

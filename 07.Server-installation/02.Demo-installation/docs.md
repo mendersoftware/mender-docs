@@ -50,13 +50,13 @@ Clone the [integration](https://github.com/mendersoftware/integration?target=_bl
 repository which contains everything that is need to start the demo server:
 <!--AUTOVERSION: "-b %"/integration "integration-%"/integration -->
 ```bash
-git clone -b 2.7.0-build1 https://github.com/mendersoftware/integration.git integration-2.7.0-build1
+git clone -b 2.7.x https://github.com/mendersoftware/integration.git integration-2.7.x
 ```
 
 Change directory to the cloned repository:
 <!--AUTOVERSION: "integration-%"/integration -->
 ```bash
- cd integration-2.7.0-build1
+ cd integration-2.7.x
 ```
 
 Start the demo server:
@@ -69,18 +69,20 @@ After a short while, depending on your network connection speed, you should see
 similar output to the following:
 
 >```bash
->Creating integration_mender-gui_1   ... done
 >Creating integration_minio_1        ... done
+>Creating integration_mender-gui_1   ... done
+>Creating integration_mender-nats_1                   ... done
 >Creating integration_mender-mongo_1 ... done
->Creating integration_mender-workflows-server_1       ... done
->Creating integration_mender-inventory_1              ... done
 >Creating integration_mender-workflows-worker_1       ... done
->Creating integration_mender-create-artifact-worker_1 ... done
 >Creating integration_mender-useradm_1                ... done
+>Creating integration_mender-deviceconfig_1           ... done
+>Creating integration_mender-inventory_1              ... done
+>Creating integration_mender-workflows-server_1       ... done
+>Creating integration_mender-create-artifact-worker_1 ... done
+>Creating integration_mender-deviceconnect_1          ... done
 >Creating integration_mender-device-auth_1            ... done
->Creating integration_storage-proxy_1                 ... done
->Creating integration_mender-deployments_1            ... done
 >Creating integration_mender-api-gateway_1            ... done
+>Creating integration_mender-deployments_1            ... done
 >Creating a new user...
 >****************************************
 >
@@ -104,14 +106,9 @@ The script created a demo user, and you can login to the Mender UI by visiting
 
 ### Stopping the demo
 
-To stop the demo server run:
-
-```bash
-./demo down
-```
-
-This will stop and remove the containers with all user data, but will not remove
-the images.
+To stop the demo use Ctrl+C.
+This will only stop the containers, but will not remove them.
+To remove containers use commands from the section below.
 
 ### Clean up the environment
 
@@ -121,7 +118,7 @@ the images.
 
 <!--AUTOVERSION: "integration-%"/integration -->
 If you want to remove all state in your Mender demo environment and start clean,
-run the following commands in the `integration-2.7.0-build1` directory:
+run the following commands in the `integration-2.7.x` directory:
 
 ```bash
 ./demo stop

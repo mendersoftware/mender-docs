@@ -101,28 +101,6 @@ In this case you can see that there are two authentication sets with the exact s
 The solution is to decommission the device and [remove all authentication sets](../../08.Server-integration/02.Preauthorizing-devices/docs.md#make-sure-there-are-no-existing-authentication-sets-for-your-device) and make sure the key used in the [preauthorize API call](../../08.Server-integration/02.Preauthorizing-devices/docs.md#call-the-preauthorize-api) matches exactly the one reported by the device, as seen in the `pending` data above.
 
 
-## mender-api-gateway exits with code 132
-
-When starting the Mender server, `mender-api-gateway` exits immediately with a message
-similar to this:
-
-```bash
-mender-api-gateway_1 exited with code 132
-```
-
-The logs from docker-compose also show that `mender-api-gateway` exits with code 132:
-
-<!--AUTOVERSION: "com.docker.compose.version=%"/ignore "image=mendersoftware/api-gateway:%"/mender-api-gateway-docker-->
-```bash
-2017-07-03T11:14:17.223223822+02:00 container die c2a1cf1c19651950e804c7fe53cb9c0ffeb8b71de744500ab4844b370cf0480d (com.docker.compose.config-hash=5b9dfb050a59b9cbd67082037478562ff44c78cf4346d9a83225d1a74d557271, com.docker.compose.container-number=1, com.docker.compose.oneoff=False, com.docker.compose.project=menderproduction, com.docker.compose.service=mender-api-gateway, com.docker.compose.version=1.14.0, exitCode=132, image=mendersoftware/api-gateway:, name=menderproduction_mender-api-gateway_1)
-```
-
-The problem here is most likely that your server CPU does not support the SSE 4.2
-instruction set, while [openresty is compiled assuming SSE4.2 support](https://github.com/openresty/openresty/issues/267?target=_blank).
-Try again with a more modern CPU (from 2009 or later), or consider building
-openresty from source for your architecture.
-
-
 # Production installations
 
 For the rest of this document, it is assumed that commands are run through production
@@ -148,24 +126,24 @@ menderproduction_mender-inventory_1           /usr/bin/inventory -config ...   U
 menderproduction_mender-mongo_1               /entrypoint.sh mongod            Up      27017/tcp
 menderproduction_mender-useradm_1             /usr/bin/useradm -config / ...   Up      8080/tcp
 menderproduction_minio_1                      minio server /export             Up      9000/tcp
-menderproduction_storage-proxy_1              /usr/local/openresty/bin/o ...   Up      0.0.0.0:9000->9000/tcp
 ```
 
 Alternatively, the same information can be obtained by running `docker ps`
 directly with a label filter, like this:
 
+<!--AUTOVERSION: "nats:%"/ignore-->
 ```
 user@local$ docker ps --filter label=com.docker.compose.project=menderproduction
-CONTAINER ID        IMAGE                                               COMMAND                  CREATED             STATUS              PORTS                    NAMES
-c668a91617ea        mendersoftware/api-gateway:latest                   "/entrypoint.sh"         39 minutes ago      Up 39 minutes       0.0.0.0:443->443/tcp     menderproduction_mender-api-gateway_1
-9ebb2fc86d0c        mendersoftware/useradm:latest                       "/usr/bin/useradm ..."   40 minutes ago      Up 39 minutes       8080/tcp                 menderproduction_mender-useradm_1
-566a2a3c3773        mendersoftware/inventory:latest                     "/usr/bin/inventor..."   40 minutes ago      Up 39 minutes       8080/tcp                 menderproduction_mender-inventory_1
-d33f8b4af1bd        mendersoftware/deployments:latest                   "/entrypoint.sh"         40 minutes ago      Up 39 minutes       8080/tcp                 menderproduction_mender-deployments_1
-1ddbad5520e9        mendersoftware/deviceauth:latest                    "/usr/bin/deviceau..."   40 minutes ago      Up 39 minutes       8080/tcp                 menderproduction_mender-device-auth_1
-e7ad33929628        mendersoftware/openresty:1.11.2.2-alpine            "/usr/local/openre..."   40 minutes ago      Up 39 minutes       0.0.0.0:9000->9000/tcp   menderproduction_storage-proxy_1
-cdaab7768ec7        mongo:3.4                                           "/entrypoint.sh mo..."   40 minutes ago      Up 40 minutes       27017/tcp                menderproduction_mender-mongo_1
-867e76066fad        mendersoftware/gui:latest                           "/entrypoint.sh"         40 minutes ago      Up 40 minutes                                menderproduction_mender-gui_1
-54ae287d24ac        mendersoftware/minio:RELEASE.2016-12-13T17-19-42Z   "minio server /export"   40 minutes ago      Up 40 minutes       9000/tcp                 menderproduction_minio_1
+CONTAINER ID        IMAGE                                               COMMAND                  CREATED             STATUS              PORTS                                                             NAMES
+c668a91617ea        traefik:v2.4                                        "/entrypoint.sh --..."   39 minutes ago      Up 39 minutes       0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp, 0.0.0.0:8080->8080/tcp  menderproduction_mender-api-gateway_1
+9ebb2fc86d0c        mendersoftware/useradm:latest                       "/usr/bin/useradm ..."   40 minutes ago      Up 39 minutes       8080/tcp                                                          menderproduction_mender-useradm_1
+566a2a3c3773        mendersoftware/inventory:latest                     "/usr/bin/inventor..."   40 minutes ago      Up 39 minutes       8080/tcp                                                          menderproduction_mender-inventory_1
+d33f8b4af1bd        mendersoftware/deployments:latest                   "/entrypoint.sh"         40 minutes ago      Up 39 minutes       8080/tcp                                                          menderproduction_mender-deployments_1
+1ddbad5520e9        mendersoftware/deviceauth:latest                    "/usr/bin/deviceau..."   40 minutes ago      Up 39 minutes       8080/tcp                                                          menderproduction_mender-device-auth_1
+cdaab7768ec7        mongo:4.4                                           "/entrypoint.sh mo..."   40 minutes ago      Up 40 minutes       27017/tcp                                                         menderproduction_mender-mongo_1
+867e76066fad        mendersoftware/gui:latest                           "/entrypoint.sh"         40 minutes ago      Up 40 minutes                                                                         menderproduction_mender-gui_1
+762b36d164de        nats:2.1.9-alpine3.12                               "docker-entrypoint.s…"   40 minutes ago      Up 40 minutes       4222/tcp, 6222/tcp, 8222/tcp                                      menderproduction_mender-nats_1
+54ae287d24ac        mendersoftware/minio:RELEASE.2019-04-23T23-50-36Z   "minio server /export"   40 minutes ago      Up 40 minutes       9000/tcp                                                          menderproduction_minio_1
 ```
 
 
@@ -180,15 +158,15 @@ restarting:
 user@local$ ./run ps
                    Name                                  Command                 State              Ports
 ------------------------------------------------------------------------------------------------------------------
-menderproduction_mender-api-gateway_1         /entrypoint.sh                   Up           0.0.0.0:443->443/tcp
+menderproduction_mender-api-gateway_1         /entrypoint.sh                   Up           0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp, 0.0.0.0:8080->8080/tcp
 menderproduction_mender-deployments_1         /entrypoint.sh                   Restarting
 menderproduction_mender-device-auth_1         /usr/bin/deviceauth -confi ...   Up           8080/tcp
 menderproduction_mender-gui_1                 /entrypoint.sh                   Up
 menderproduction_mender-inventory_1           /usr/bin/inventory -config ...   Up           8080/tcp
 menderproduction_mender-mongo_1               /entrypoint.sh mongod            Up           27017/tcp
 menderproduction_mender-useradm_1             /usr/bin/useradm -config / ...   Up           8080/tcp
+menderproduction_mender-nats_1                docker-entrypoint.sh             Up           4222/tcp, 6222/tcp, 8222/tcp
 menderproduction_minio_1                      minio server /export             Up           9000/tcp
-menderproduction_storage-proxy_1              /usr/local/openresty/bin/o ...   Up           0.0.0.0:9000->9000/tcp
 ```
 In the case presented above, `mender-deployments` is restarting.
 
@@ -199,18 +177,24 @@ while, `docker ps` will show the containers having a shorter lifetime than
 others. In the listing show below, `mender-deployments` service uptime is
 shorter than that of the other containers:
 
+<!--AUTOVERSION: "mender-%"/ignore "nats:%"/ignore-->
 ```
 user@local$ docker ps --filter label=com.docker.compose.project=menderproduction
-CONTAINER ID        IMAGE                                               COMMAND                  CREATED             STATUS              PORTS                    NAMES
-2f4c700923f9        mendersoftware/api-gateway:latest                   "/entrypoint.sh"         4 minutes ago       Up 4 minutes        0.0.0.0:443->443/tcp     menderproduction_mender-api-gateway_1
-8f46579aefa4        mendersoftware/deployments:latest                   "/entrypoint.sh"         5 minutes ago       Up 54 seconds       8080/tcp                 menderproduction_mender-deployments_1
-7236def09c97        mendersoftware/useradm:latest                       "/usr/bin/useradm ..."   5 minutes ago       Up 5 minutes        8080/tcp                 menderproduction_mender-useradm_1
-be9cc9ee74b2        mendersoftware/deviceauth:latest                    "/usr/bin/deviceau..."   5 minutes ago       Up 5 minutes        8080/tcp                 menderproduction_mender-device-auth_1
-5d84b70d1187        mendersoftware/inventory:latest                     "/usr/bin/inventor..."   5 minutes ago       Up 5 minutes        8080/tcp                 menderproduction_mender-inventory_1
-1dc4843ec4db        mendersoftware/openresty:1.11.2.2-alpine            "/usr/local/openre..."   5 minutes ago       Up 5 minutes        0.0.0.0:9000->9000/tcp   menderproduction_storage-proxy_1
-fb216139bc60        mongo:3.4                                           "/entrypoint.sh mo..."   5 minutes ago       Up 5 minutes        27017/tcp                menderproduction_mender-mongo_1
-9d6eacd2ae83        mendersoftware/gui:latest                           "/entrypoint.sh"         5 minutes ago       Up 5 minutes                                 menderproduction_mender-gui_1
-cc0b330a3cd5        mendersoftware/minio:RELEASE.2016-12-13T17-19-42Z   "minio server /export"   5 minutes ago       Up 5 minutes        9000/tcp                 menderproduction_minio_1
+CONTAINER ID   IMAGE                                                 COMMAND                  CREATED         STATUS                   PORTS                          NAMES
+d8c27d9376d7   mendersoftware/deployments:mender-master              "/entrypoint.sh --co…"   8 minutes ago   Up 54 seconds            8080/tcp                       menderproduction_mender-deployments_1
+9aa7713293fa   traefik:v2.4                                          "/entrypoint.sh --ac…"   9 minutes ago   Up 9 minutes             80/tcp, 0.0.0.0:443->443/tcp   menderproduction_mender-api-gateway_1
+faf89eb9a2e4   mendersoftware/deviceauth:mender-master               "/usr/bin/deviceauth…"   9 minutes ago   Up 9 minutes             8080/tcp                       menderproduction_mender-device-auth_1
+2d9f075401f3   mendersoftware/workflows-worker:mender-master         "/usr/bin/workflows …"   9 minutes ago   Up 9 minutes                                            menderproduction_mender-workflows-worker_1
+f0ec07715d45   mendersoftware/deviceconnect:mender-master            "/usr/bin/deviceconn…"   9 minutes ago   Up 9 minutes             8080/tcp                       menderproduction_mender-deviceconnect_1
+752e02c418fa   mendersoftware/create-artifact-worker:mender-master   "/usr/bin/workflows …"   9 minutes ago   Up 9 minutes             8080/tcp                       menderproduction_mender-create-artifact-worker_1
+445aaff677e0   mendersoftware/workflows:mender-master                "/usr/bin/workflows …"   9 minutes ago   Up 9 minutes             8080/tcp                       menderproduction_mender-workflows-server_1
+b2b100437282   mendersoftware/deviceconfig:mender-master             "/usr/bin/deviceconf…"   9 minutes ago   Up 9 minutes             8080/tcp                       menderproduction_mender-deviceconfig_1
+75c783b93ba0   mendersoftware/useradm:mender-master                  "/usr/bin/useradm --…"   9 minutes ago   Up 9 minutes             8080/tcp                       menderproduction_mender-useradm_1
+7782277b816e   mendersoftware/inventory:mender-master                "/usr/bin/inventory …"   9 minutes ago   Up 9 minutes             8080/tcp                       menderproduction_mender-inventory_1
+65a5e1f5e3be   minio/minio:RELEASE.2019-04-23T23-50-36Z              "/usr/bin/docker-ent…"   9 minutes ago   Up 9 minutes (healthy)   9000/tcp                       menderproduction_minio_1
+b537c7de2e8d   mendersoftware/gui:mender-master                      "/entrypoint.sh nginx"   9 minutes ago   Up 9 minutes (healthy)   80/tcp, 8080/tcp               menderproduction_mender-gui_1
+8d7fa928991e   mongo:4.4                                             "docker-entrypoint.s…"   9 minutes ago   Up 9 minutes             27017/tcp                      menderproduction_mender-mongo_1
+73698002bf23   nats:2.1.9-alpine3.12                                 "docker-entrypoint.s…"   9 minutes ago   Up 9 minutes             4222/tcp, 6222/tcp, 8222/tcp   menderproduction_mender-nats_1
 ```
 
 ### Docker event log
