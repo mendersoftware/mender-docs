@@ -5,6 +5,12 @@ taxonomy:
     label: tutorial
 ---
 
+<!-- The variables used in the testing of production installation instructions -->
+<!--AUTOMATION: execute=export EXPECTED_COUNT_OPENSOURCE=14 -->
+<!--AUTOMATION: execute=export EXPECTED_COUNT_ENTERPRISE=16 -->
+<!--AUTOMATION: execute=export SLEEP_INTERVAL=4 -->
+<!--AUTOMATION: execute=export MAX_INTERATIONS=11 -->
+
 <!-- AUTOMATION: execute=if [ "$TEST_OPEN_SOURCE" != 1 ] && [ "$TEST_ENTERPRISE" != 1 ]; then echo "Either TEST_OPEN_SOURCE xor TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->
 <!-- AUTOMATION: execute=if [ "$TEST_OPEN_SOURCE" = 1 ] && [ "$TEST_ENTERPRISE" = 1 ]; then echo "TEST_OPEN_SOURCE and TEST_ENTERPRISE cannot both be 1!"; exit 1; fi -->
 
@@ -613,10 +619,11 @@ installing an Open Source server, please proceed to
 
 <!-- Verification of Open Source instance -->
 
-<!--AUTOMATION: test=for ((n=0;n<11;n++)); do sleep 4 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 14  || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: execute=function CONTAINERS_COUNT_TEST_OPENSOURCE() { local n; [ "${EXPECTED_COUNT_OPENSOURCE}" == "" ] && return 1; for ((n=0;n<${MAX_INTERATIONS};n++)); do count=$(docker container ls -f "status=running" --format 'table {{.Status}}\t{{.Names}}' | grep ^Up | grep -c menderproduction); [ ${count} -eq ${EXPECTED_COUNT_OPENSOURCE} ] && break; sleep ${SLEEP_INTERVAL}; done; [ ${count} -eq ${EXPECTED_COUNT_OPENSOURCE} ] || { echo "some containers are not 'Up'; ${count}/${EXPECTED_COUNT_OPENSOURCE} running." && docker ps && ./run images && ./run logs && exit 1; }; } -->
+<!--AUTOMATION: test=CONTAINERS_COUNT_TEST_OPENSOURCE; -->
 <!--AUTOMATION: test=./run stop -->
 <!--AUTOMATION: test=./run up -d -->
-<!--AUTOMATION: test=for ((n=0;n<11;n++)); do sleep 4 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 14  || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=CONTAINERS_COUNT_TEST_OPENSOURCE; -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
 
 <!-- End of test block for TEST_OPEN_SOURCE=1 -->
@@ -808,10 +815,11 @@ git log --oneline master..HEAD
 
 <!-- Verification of Enterprise instance -->
 
-<!--AUTOMATION: test=for ((n=0;n<11;n++)); do sleep 4 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 16 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: execute=function CONTAINERS_COUNT_TEST_ENTERPRISE() { local n; [ "${EXPECTED_COUNT_ENTERPRISE}" == "" ] && return 1; for ((n=0;n<${MAX_INTERATIONS};n++)); do count=$(docker container ls -f "status=running" --format 'table {{.Status}}\t{{.Names}}' | grep ^Up | grep -c menderproduction); [ ${count} -eq ${EXPECTED_COUNT_ENTERPRISE} ] && break; sleep ${SLEEP_INTERVAL}; done; [ ${count} -eq ${EXPECTED_COUNT_ENTERPRISE} ] || { echo "some containers are not 'Up'; ${count}/${EXPECTED_COUNT_ENTERPRISE} running." && docker ps && ./run images && ./run logs && exit 1; }; } -->
+<!--AUTOMATION: test=CONTAINERS_COUNT_TEST_ENTERPRISE; -->
 <!--AUTOMATION: test=./run stop -->
 <!--AUTOMATION: test=./run up -d -->
-<!--AUTOMATION: test=for ((n=0;n<11;n++)); do sleep 4 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 16 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=CONTAINERS_COUNT_TEST_ENTERPRISE; -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
 
 <!-- End of test block for TEST_ENTERPRISE=1 -->

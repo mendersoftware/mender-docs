@@ -8,6 +8,11 @@ taxonomy:
 <!-- "Upgrading from Open Source to Enterprise" is slightly too big to fit in
     the navigation menu, hence the two titles above. -->
 
+<!-- The variables used in the testing of production installation instructions -->
+<!--AUTOMATION: execute=export EXPECTED_COUNT_ENTERPRISE=16 -->
+<!--AUTOMATION: execute=export SLEEP_INTERVAL=4 -->
+<!--AUTOMATION: execute=export MAX_INTERATIONS=11 -->
+
 <!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" != 1 ]; then echo "TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->
 
 <!-- Cleanup code -->
@@ -157,12 +162,11 @@ connect without a tenant token.
 
 <!-- Verification -->
 
-<!--AUTOMATION: test=sleep 30 -->
-<!--AUTOMATION: test=for ((n=0;n<11;n++)); do sleep 4 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 16 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: execute=function CONTAINERS_COUNT_TEST_ENTERPRISE() { local n; [ "${EXPECTED_COUNT_ENTERPRISE}" == "" ] && return 1; for ((n=0;n<${MAX_INTERATIONS};n++)); do count=$(docker container ls -f "status=running" --format 'table {{.Status}}\t{{.Names}}' | grep ^Up | grep -c menderproduction); [ ${count} -eq ${EXPECTED_COUNT_ENTERPRISE} ] && break; sleep ${SLEEP_INTERVAL}; done; [ ${count} -eq ${EXPECTED_COUNT_ENTERPRISE} ] || { echo "some containers are not 'Up'; ${count}/${EXPECTED_COUNT_ENTERPRISE} running." && docker ps && ./run images && ./run logs && exit 1; }; } -->
+<!--AUTOMATION: test=CONTAINERS_COUNT_TEST_ENTERPRISE; -->
 <!--AUTOMATION: test=./run stop -->
 <!--AUTOMATION: test=./run up -d -->
-<!--AUTOMATION: test=sleep 30 -->
-<!--AUTOMATION: test=for ((n=0;n<11;n++)); do sleep 4 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 16 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=CONTAINERS_COUNT_TEST_ENTERPRISE; -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
 
 
