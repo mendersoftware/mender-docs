@@ -6,6 +6,21 @@ shortcode-core:
     active: false
 ---
 
+## mender-binary-delta 1.1.2
+
+_Released 16.04.2021_
+
+#### mender-binary-delta (1.1.2)
+
+New changes in mender-binary-delta since 1.1.0:
+
+* Probe U-Boot env before use to support libubootenv fw tools
+  ([MEN-4246](https://tracker.mender.io/browse/MEN-4246))
+* Remove harmless warning message about unhandled states.
+* Fix failed rollback status when bootloader is the one to roll back.
+* Detect mismatches between `mender_boot_part` and `RootfsPart(A|B)` variables.
+
+
 ## Mender 2.6.1
 
 _Released 16.04.2021_
