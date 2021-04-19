@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 
-Remote Terminal is a [mender-connect](../../00.Overview/docs.md#Installation) based add-on.
+File Transfer is a [mender-connect](../../00.Overview/docs.md#Installation) based add-on.
 This means that to get it working you do not need any special installation steps.
 The main requirements are: `mender-client` and `mender-connect`; please refer
 to the below sections for the details:
