@@ -26,7 +26,7 @@ for the same device.
 ## Further reading
 
 * For a detailed list of the configuration options please refer to the
-[mender-connect configuration section](30.File-Transfer-configuration-file/docs.md).
+[mender-connect configuration reference](../90.Reference/docs.md#file-transfer-configuration).
 * You can find the mender-connect installation steps for Yocto-based projects,
 and for Debian family,
 in the [customize with Yocto](../../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md),

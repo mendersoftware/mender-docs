@@ -88,7 +88,7 @@ the terminal output which users can later inspect from the
 ## Further reading
 
 * For a detailed list of the configuration options please refer to the
-[mender-connect configuration section](30.Mender-connect-configuration-file/docs.md).
+[mender-connect configuration section](../90.Reference/docs.md#remote-terminal-configuration).
 * You can find the `mender-connect` installation steps for Yocto-based projects,
 and for Debian family,
 in the [customize with Yocto](../../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect),
