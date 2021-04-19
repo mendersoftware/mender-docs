@@ -241,28 +241,61 @@ mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 [mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/2.5.0/dist-packages/debian/amd64/mender-client_2.5.0-1_amd64.deb
 
 
-## Remote Terminal add-on
+## Mender add-ons
 
-Mender offers a remote terminal extension (`mender-connect`) to the Mender client
-that enables accessing the device terminal using the Mender UI. See the
-[configuration page for remote
-terminal](../09.Add-ons/01.Remote-Terminal/30.Mender-connect-configuration-file/docs.md) for
-more information.
+### Requirements
 
-### Install the remote terminal client
+You need two applications for any add-on to function: the [Mender Client](../02.Overview/15.Taxonomy/docs.md)
+and [Mender Connect](../02.Overview/15.Taxonomy/docs.md). If you have used the [express
+installation](#express-installation) script, you already have both installed.
 
-The remote terminal add-on requires the [Mender client](#mender-client) in order
-to function. If you have already installed the Mender client using
-the [express installation](#express-installation) script, you will already have
-`mender-connect` installed by default.
+### mender-connect
 
-The add-on is only available from the Mender APT repository.
-To install `mender-connect`, follow the instructions for [installing
-`mender-client` using the APT repository](#install-using-the-apt-repository).
-After the final step, install `mender-connect` using the package manager:
+The easiest way to install Mender Connect on an existing device is by using the
+Mender APT repository. The other alternatives include: 
+[mender-convert integration](../04.System-updates-Debian-family/99.Variables/docs.md#mender_addon_connect_install)
+for installation in the existing images,
+and [Yocto projects](../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect)
+for the installation in a Yocto Project environment.
+
+To install `mender-connect` using Mender APT repository, follow the instructions
+for [installing `mender-client` using the APT
+repository](#install-using-the-apt-repository). After the final step, install
+`mender-connect` using the package manager:
 
 ```bash
 sudo apt-get install mender-connect
+```
+
+### Remote Terminal add-on
+
+The Remote Terminal does not require any items installed other than the Mender Client
+and Mender Connect.
+
+### File transfer add-on
+
+The File Transfer does not require any items installed other than the Mender Client
+and Mender Connect.
+
+### Mender Configure add-on
+
+Mender offers a configure extension (`mender-configure`) to the Mender client
+that enables managing device configuration. See the
+[add-on page for Mender Configure](../09.Add-ons/02.Configure/docs.md) for
+more information.
+
+The easiest way to install Configure on an existing device is by using the
+Mender APT repository. See the [add-on page for Mender
+Configure](../09.Add-ons/02.Configure/docs.md) for more information for other
+installation alternatives.
+
+To install `mender-configure` using Mender APT repository, follow the
+instructions for [installing `mender-client` using the APT
+repository](#install-using-the-apt-repository). After the final step, install
+`mender-configure` using the package manager:
+
+```bash
+sudo apt-get install mender-configure
 ```
 
 ## mender-cli
