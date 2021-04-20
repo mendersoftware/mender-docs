@@ -4,7 +4,10 @@ taxonomy:
     category: docs
     label: user guide
 ---
-!!!!! [Mender Troubleshoot](https://mender.io/plans/features?target=_blank) add-on required.
+
+!!!!! The Mender Troubleshoot add-on package is required.
+!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! for an overview of all Mender plans and features.
 
 The Mender Troubleshoot add-on package includes the ability to forward TCP/UDP
 traffic securely to a remote device utilizing the bidirectional communication

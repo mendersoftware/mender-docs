@@ -16,12 +16,12 @@ on your device. All you need is a proper configuration.
  
 The following table shows a brief summary of the add-ons.
 
-| Add-on name     | Description | Availability |
+| Add-on name     | Description | Available in add-on package |
 | --------------- | ----------- | ------------ |
-| [Remote Terminal](../01.Remote-Terminal/docs.md) | Provides interactive shell sessions with full terminal emulation in both UI and CLI | Troubleshooting package |
-| [File Transfer](../03.File-Transfer/docs.md) | Allows you to upload and download files to and from a device with both UI and CLI | Troubleshooting package |
-| Port Forward | Gives an ability to forward any local port to a port on a device, allowing you to connect to any service without the necessity to open ports on the device | Troubleshooting package |
-| [Configure](../02.Configure/docs.md) | Lets you apply arbitrary configuration to your devices through a uniform interface | Configure package |
+| [Remote Terminal](../01.Remote-Terminal/docs.md) | Interactive shell sessions with full terminal emulation in both UI and CLI | Troubleshoot |
+| [File Transfer](../03.File-Transfer/docs.md) | Upload and download files to and from a device with both UI and CLI | Troubleshoot |
+| [Port Forward](../40.Port-Forward/docs.md) | Forward any local port to a port on a device without opening ports on the device | Troubleshoot |
+| [Configure](../02.Configure/docs.md) | Apply configuration to your devices through a uniform interface | Configure |
 
 ## Add-ons and the Mender Client
 
