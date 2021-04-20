@@ -424,6 +424,46 @@ New changes in mender-convert since 2.2.1:
 * Fix error when removing empty directories in rootfs/boot
 
 
+## mender-convert 2.3.1
+
+_Released 16.04.2021_
+
+### Statistics
+
+| Developers with the most changesets | |
+|---|---|
+| Ole Petter Orhagen | 4 (80.0%) |
+| Lluis Campos | 1 (20.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Lluis Campos | 9 (64.3%) |
+| Ole Petter Orhagen | 5 (35.7%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 5 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 14 (100.0%) |
+
+| Employers with the most hackers (total 2) | |
+|---|---|
+| Northern.tech | 2 (100.0%) |
+
+### Changelogs
+
+#### mender-convert (2.3.1)
+
+New changes in mender-convert since 2.3.0:
+
+* The standard RasperryPi configuration now comes with UBoot 2020.01 as
+  the default. ([MEN-4395](https://tracker.mender.io/browse/MEN-4395))
+* [raspberrypi_config] Enable UART in U-Boot config.txt
+  ([MEN-4567](https://tracker.mender.io/browse/MEN-4567))
+
+
 ## mender-convert 2.3.0
 
 _Released 01.20.2021_
