@@ -6,6 +6,83 @@ shortcode-core:
     active: false
 ---
 
+## mender-convert 2.4.0
+
+_Released 04.19.2021_
+
+### Statistics
+
+A total of 3340 lines added, 1222 removed (delta 2118)
+
+| Developers with the most changesets | |
+|---|---|
+| Ole Petter Orhagen | 19 (50.0%) |
+| Lluis Campos | 9 (23.7%) |
+| Kristian Amlie | 8 (21.1%) |
+| Fabio Tranchitella | 2 (5.3%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Ole Petter Orhagen | 3240 (95.5%) |
+| Lluis Campos | 84 (2.5%) |
+| Kristian Amlie | 58 (1.7%) |
+| Fabio Tranchitella | 12 (0.4%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Kristian Amlie | 38 (3.1%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Lluis Campos | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 38 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 3394 (100.0%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 4 (100.0%) |
+
+### Changelogs
+
+#### mender-convert (2.4.0)
+
+New changes in mender-convert since 2.3.0:
+
+* Set mender-connect version to latest
+  ([MEN-4200](https://tracker.mender.io/browse/MEN-4200))
+* Support installing mender-configure addon. Not installed by
+  default, it can be configured using MENDER_ADDON_CONFIGURE_INSTALL and
+  MENDER_ADDON_CONFIGURE_VERSION variables.
+  ([MEN-4422](https://tracker.mender.io/browse/MEN-4422))
+* Set mender-configure version to master
+  ([MEN-4422](https://tracker.mender.io/browse/MEN-4422))
+* The standard RasperryPi configuration now comes with UBoot 2020.01 as
+  the default. ([MEN-4395](https://tracker.mender.io/browse/MEN-4395))
+* raspberrypi_config: Modify headless configuration services to
+  expect boot partition in /uboot instead of /boot.
+  ([MEN-4117](https://tracker.mender.io/browse/MEN-4117))
+* [raspberrypi_config] Enable UART in U-Boot config.txt
+  ([MEN-4567](https://tracker.mender.io/browse/MEN-4567))
+* Update mender-artifact to 3.5.x.
+* Switch to stable version of mender-configure.
+* Always create symlinks from `/var/lib/mender-configure` to
+  `/data/mender-configure`. They always need to installed in a
+  rootfs-image prepared image, even if the software isn't, because if
+  the package is installed later, the links must be present or it will
+  act as if it is a non-rootfs image, and store the settings on the
+  rootfs partition, when they should be stored on the data partition.
+
+
 ## Mender 2.7.0
 
 _Released 04.16.2021_
