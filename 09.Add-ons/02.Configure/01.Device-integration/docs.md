@@ -5,11 +5,11 @@ taxonomy:
     label: tutorial
 ---
 
-# Installation
+## Installation
 
 See [this](https://hub.mender.io/) article on [Mender Hub](https://hub.mender.io).
 
-# apply-device-config scripts
+## apply-device-config scripts
 
 `apply-device-config` scripts are custom scripts, which can be installed into
 the `/usr/lib/mender-configure/apply-device-config.d` directory. They are then
@@ -17,7 +17,7 @@ executed by the Configure Update Module, with the expected configuration
 parameters from the Mender server. In this way, you can extend Mender-Configure
 to you needs and keep your device configuration in sync.
 
-# How to write an apply-device-config script
+## How to write an apply-device-config script
 
 `apply-device-config` scripts are simple shell (`/bin/sh`) scripts, which take
 one parameter: _the JSON configuration values file_. The script is then
