@@ -7,7 +7,7 @@ taxonomy:
 !!! Configure is part of a commercial add-on package.
 !!! See the [Mender features page](https://mender.io/plans/features) for an overview of all Mender plans and features.
 
-# Overview
+## Overview
 
 Configure is a Mender add-on that allows the application of the configuration to the device using Mender.
 It is possible to create and apply configuration for the device using Mender UI (see the pictures below).
@@ -16,7 +16,7 @@ It is possible to create and apply configuration for the device using Mender UI 
 ![configuration-2](deviceconfig2.png)
 ![configuration-3](deviceconfig3.png)
 
-# How it works
+## How it works
 
 The configuration is applied in a similar way the updates are applied.
 `deviceconfig` is a microservice on the server responsible for "translating" a configuration change made in the UI into a deployment.
