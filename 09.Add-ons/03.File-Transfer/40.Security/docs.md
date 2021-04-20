@@ -9,9 +9,9 @@ Furthermore, only accepted devices can interact with the add-on.
  
 ### Role Based Access Control (RBAC)
 
-!!! Role Based Access Control is only available in the Mender Enterprise plan.
-!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
-!!! for an overview of all Mender plans and features.
+!!!!! Role Based Access Control is only available in the Mender Enterprise plan.
+!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! for an overview of all Mender plans and features.
 
 You can apply additional restrictions on which Mender users can access File Transfer using RBAC.
 It is fully integrated in the Role Based Access Control system of Mender and accessible from the UI.
@@ -36,9 +36,9 @@ to the Mender Server.
 
 ### Audit logs
 
-!!! Audit logs is only available in the Mender Enterprise plan.
-!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
-!!! for an overview of all Mender plans and features.
+!!!!! Audit logs is only available in the Mender Enterprise plan.
+!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! for an overview of all Mender plans and features.
 
 Audit logs hold a list of every file transfer event. You can access this information
 in the Mender UI.
