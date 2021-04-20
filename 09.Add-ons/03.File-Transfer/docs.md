@@ -7,7 +7,7 @@ taxonomy:
 File Transfer is a Mender add-on providing the functionality of transferring
 files on and off any accepted device.
 
-# Mender File Transfer vs FTP and SFTP
+## Mender File Transfer vs FTP and SFTP
 
 From the caller's perspective, File Transfer offers a simple HTTP API to `GET`
 and `PUT` files. On a device `mender-connect` handles requests from the backend
@@ -15,9 +15,9 @@ and provides data to reply to the HTTP calls. The implementation does not relay
 on any third-party software installed on a device, and in that sense has no relation
 to FTP or SFTP. Although feature-wise it provides similar functionalities.
 
-# Limitations
+## Limitations
 
-## Multiple parallel file transfer sessions to the same device
+### Multiple parallel file transfer sessions to the same device
 
 Currently, the File Transfer does not support parallel uploads or downloads.
 Please make sure you are not running multiple sessions at the same time 
