@@ -5,6 +5,93 @@ taxonomy:
 shortcode-core:
     active: false
 ---
+## Mender 2.4.3
+
+_Released 16.04.2021_
+
+### Statistics
+
+| Developers with the most changesets | |
+|---|---|
+| Ole Petter Orhagen | 8 (32.0%) |
+| Lluis Campos | 8 (32.0%) |
+| Kristian Amlie | 4 (16.0%) |
+| Fabio Tranchitella | 3 (12.0%) |
+| Peter Grzybowski | 1 (4.0%) |
+| Manuel Zedel | 1 (4.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Ole Petter Orhagen | 135 (41.0%) |
+| Lluis Campos | 85 (25.8%) |
+| Kristian Amlie | 81 (24.6%) |
+| Peter Grzybowski | 16 (4.9%) |
+| Fabio Tranchitella | 9 (2.7%) |
+| Manuel Zedel | 3 (0.9%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Ole Petter Orhagen | 6 (2.9%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 25 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 329 (100.0%) |
+
+| Employers with the most hackers (total 6) | |
+|---|---|
+| Northern.tech | 6 (100.0%) |
+
+### Changelogs
+
+#### create-artifact-worker (1.0.2)
+
+New changes in create-artifact-worker since 1.0.1:
+
+* bugfix to allow spaces in artifact names
+  ([MEN-4179](https://tracker.mender.io/browse/MEN-4179))
+* upgrade mender-artifact to version 3.5.0.
+  This enables the create-artifact-worker to generate artifacts that
+  implement the provides and clear provides fields.
+  ([MEN-4409](https://tracker.mender.io/browse/MEN-4409))
+
+#### integration (2.4.3)
+
+New changes in integration since 2.4.2:
+
+* Upgrade create-artifact-worker to 1.0.2.
+* Upgrade mender to 2.3.3.
+* Upgrade mender-artifact to 3.4.2.
+* Upgrade mender-cli to 1.4.1.
+
+#### mender (2.3.3)
+
+New changes in mender since 2.3.2:
+
+* single-file: Use atomic file operations.
+* single-file: Use stderr for all error messages.
+* Send the inventory after a successful deployment, even though the
+  device has not rebooted.
+  ([MEN-4518](https://tracker.mender.io/browse/MEN-4518))
+* fix, support white spaces in single-file artifacts' names
+  ([MEN-4179](https://tracker.mender.io/browse/MEN-4179))
+
+#### mender-artifact (3.4.2)
+
+New changes in mender-artifact since 3.4.1:
+
+* run fsck on fs image created via SSH snapshot
+  ([MEN-4362](https://tracker.mender.io/browse/MEN-4362))
+
+#### mender-cli (1.4.1)
+
+New changes in mender-cli since 1.4.0:
+
+* Bump golang version to 1.14-alpine3.12
+
 
 ## meta-mender dunfell-v2021.03
 
