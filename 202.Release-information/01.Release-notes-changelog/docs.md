@@ -6,6 +6,78 @@ shortcode-core:
     active: false
 ---
 
+## meta-mender dunfell-v2021.04
+
+_Released 04.16.2021_
+
+### Statistics
+
+A total of 271 lines added, 85 removed (delta 186)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 12 (50.0%) |
+| Ole Petter Orhagen | 7 (29.2%) |
+| Lluis Campos | 5 (20.8%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Kristian Amlie | 143 (52.6%) |
+| Lluis Campos | 92 (33.8%) |
+| Ole Petter Orhagen | 37 (13.6%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 24 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 272 (100.0%) |
+
+| Employers with the most hackers (total 3) | |
+|---|---|
+| Northern.tech | 3 (100.0%) |
+
+### Changelogs
+
+#### meta-mender (dunfell-v2021.04)
+
+New changes in meta-mender since dunfell-v2021.03:
+
+* Add mender-configure git recipe
+  ([MEN-4420](https://tracker.mender.io/browse/MEN-4420))
+* Include a recipe for building dosfstools 4.2
+  This is due to an error in older versions, which can leave the Vfat boot
+  partitions bricked.
+  See for more information.
+  ([MEN-4497](https://tracker.mender.io/browse/MEN-4497))
+* Add mender-configure-scripts package, which provides
+  timezone configuration out of the box.
+* Add mender-configure-demo package, which provides led
+  manipulation on Raspberry Pi devices, for demo purposes.
+* If the `mender-systemd` class is set (the default),
+  mender-configure now provides a service file for systemd which will
+  automatically apply the stored configuration on startup.
+* Fix `EFI_PROVIDER` being set incorrectly when using certain layers.
+* Prepopulate the device config in mender-configure-demo.
+  ([MEN-4594](https://tracker.mender.io/browse/MEN-4594))
+* mender-client: Split concatenated certificates in ca-certificates.
+  Multiple certificates in one file are necessary to split in
+  order for `update-ca-certificates` to produce a hashed symlink to
+  them, which is required by some programs, such as curl.
+  ([MEN-4580](https://tracker.mender.io/browse/MEN-4580))
+* Add mender-client 2.6.0.
+* Add mender-connect 1.1.0.
+* Add mender-artifact 3.5.1.
+* Add mender-configure 1.0.0.
+* Add mender-client 2.5.1
+* Add mender-connect 1.0.1
+* Add mender-binary-delta 1.1.2
+* Add mender-binary-delta-1.2.1 recipe.
+* Add mender-client 2.3.3
+* Add mender-artifact 3.4.2
+
+
 ## meta-mender dunfell-v2021.03
 
 _Released 03.05.2021_
