@@ -4,12 +4,13 @@ taxonomy:
     category: docs
 ---
 
-!!! Configure is part of a commercial add-on package.
-!!! See the [Mender features page](https://mender.io/plans/features) for an overview of all Mender plans and features.
+!!!!! The Mender Configure add-on package is required.
+!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! for an overview of all Mender plans and features.
 
 ## Overview
 
-Configure is a Mender add-on that allows the application of the configuration to the device using Mender.
+Configure is a Mender add-on package that allows the application of the configuration to the device using Mender.
 It is possible to create and apply configuration for the device using Mender UI (see the pictures below).
 
 ![configuration-1](deviceconfig1.png)

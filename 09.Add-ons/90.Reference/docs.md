@@ -71,7 +71,9 @@ mender-connect along with the default values. The default configuration path is
 
 #### File transfer configuration
 
-!!!!! [Mender Troubleshoot](https://mender.io/plans/features?target=_blank) add-on required.
+!!!!! The Mender Troubleshoot add-on package is required.
+!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! for an overview of all Mender plans and features.
 
 * `FileTransfer`:  File transfer configuration options.
   * `Disable`: Disable file transfer.
@@ -84,14 +86,18 @@ mender-connect along with the default values. The default configuration path is
   
 #### Port forward configuration
 
-!!!!! [Mender Troubleshoot](https://mender.io/plans/features?target=_blank) add-on required.
+!!!!! The Mender Troubleshoot add-on package is required.
+!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! for an overview of all Mender plans and features.
 
 * `PortForward`: Configuration for port forwarding
   * `Disable`: Disable the port forwarding feature.
   
 #### Remote terminal configuration
 
-!!!!! [Mender Troubleshoot](https://mender.io/plans/features?target=_blank) add-on required.
+!!!!! The Mender Troubleshoot add-on package is required.
+!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! for an overview of all Mender plans and features.
 
 * `ShellCommand`: Command executed initiating a new remote terminal session.
 * `Sessions`: Configuration for remote terminal sessions.
