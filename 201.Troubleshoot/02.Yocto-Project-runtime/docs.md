@@ -4,12 +4,12 @@ taxonomy:
     category: docs
 ---
 
-<!--AUTOVERSION: "from % to %"/ignore-->
-## Upgrading from thud to warrior fails with "Dual rootfs configuration not found"
+<!--AUTOVERSION: "from % to newer"/ignore-->
+## Upgrading from thud to newer versions fails with "Dual rootfs configuration not found"
 
-<!--AUTOVERSION: "from % to %"/ignore-->
-When upgrading from thud to warrior, the update may result in failure with a log
-similar to this:
+<!--AUTOVERSION: "from % to new"/ignore-->
+When upgrading from thud to new meta-mender versions, the update may result in
+failure with a log similar to this:
 
 ```
 2019-10-09 10:43:52 +0000 UTC error: Dual rootfs configuration not found when resuming update. Recovery may fail.
@@ -36,10 +36,18 @@ with two configuration files feature.
 To enable migration please add the following to your local.conf or similar:
 
 ```bash
-IMAGE_INSTALL_append = " mender-migrate-configuration"
+IMAGE_INSTALL_append = " mender-client-migrate-configuration"
 PACKAGECONFIG_remove = "split-mender-config"
 MENDER_PERSISTENT_CONFIGURATION_VARS = "RootfsPartA RootfsPartB"
 MENDER_ARTIFACT_EXTRA_ARGS_append = " -v 2"
+```
+
+<!--AUTOVERSION: "meta-mender % branch"/ignore-->
+Note that if you are using the meta-mender zeus branch or newer you need to
+reflect the new name for mender-client:
+
+```bash
+IMAGE_INSTALL_append = " mender-client-migrate-configuration"
 ```
 
 Build an image with above configuration and deploy it your device fleet. Once
@@ -47,8 +55,30 @@ all devices in the fleet have been updated with the migration script enabled you
 can remove these changes and return to the normal workflow of generating update
 Artifacts.
 
-Note that `mender-migrate-configuration` recipe uses a state script, and it
+Note that `mender-client-migrate-configuration` recipe uses a state script, and it
 might be needed to clean the yocto build after removing it.
+
+
+## Upgrading from mender-client 2.1 and earlier to newer versions fails "type_info provides values not yet supported"
+
+If you generate an artifact with mender-artifact version 3.3 or newer and try to upgrade an older mender-client (2.1 or earlier), you may get a log line similar to this:
+
+```bash
+Mar 04 10:21:09 ifu-25 mender[14270]: time="2021-03-04T10:21:09Z" level=error msg="Fetching Artifact headers failed: installer: failed to read Artifact: type_info provides values not yet supported" module=state
+```
+
+<!--AUTOVERSION: "mender-client %"/ignore-->
+It is because mender-client 2.1.0 does not support the newer `rootfs-image.checksum` feature. See [MEN-2956](https://tracker.mender.io/browse/MEN-2956?target=_blank)
+
+To solve it, use the `--no-checksum-provide` flag when creating the artifact. In Yocto you can add this argument to the MENDER_ARTIFACT_EXTRA_ARGS variable.
+
+```bash
+MENDER_ARTIFACT_EXTRA_ARGS = "--no-checksum-provide"
+```
+
+You will likely then run into another error described above. If so, you can just chose to generate a `v2` artifact and that solves the `--no-checksum-provide` problem as well.
+
+See [here](https://hub.mender.io/t/update-fails/3300?target=_blank) and [here](https://hub.mender.io/t/error-fetching-artifact-headers-failed-installer-failed-to-read-artifact-type-info-provides-values-not-yet-supported/2774?target=_blank) for more discussion on Mender Hub.
 
 
 ## Boot sequence fails with "Failed to mount /uboot" and "codepage cp437 not found"

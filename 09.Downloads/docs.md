@@ -55,8 +55,8 @@ Follow the correct link according to your host platform to download
 <!--AUTOVERSION: "mender-artifact %"/mender-artifact -->
 | Platform | Download link                                                |
 |----------|--------------------------------------------------------------|
-| Linux    | [mender-artifact 3.5.0][x.x.x_mender-artifact-linux]     |
-| Mac OS X | [mender-artifact 3.5.0][x.x.x_mender-artifact-darwin] |
+| Linux    | [mender-artifact 3.5.1][x.x.x_mender-artifact-linux]     |
+| Mac OS X | [mender-artifact 3.5.1][x.x.x_mender-artifact-darwin] |
 
 Remember to add execute permission and ensure that the mender-artifact utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
 
@@ -69,9 +69,9 @@ Please refer to your host Operating System documentation for more details.
 
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/3.5.0/linux/mender-artifact
+[x.x.x_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/3.5.1/linux/mender-artifact
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/3.5.0/darwin/mender-artifact
+[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/3.5.1/darwin/mender-artifact
 
 ! If you are using Mac OS X, note that using `mender-artifact` with
 ! disk image files (e.g.: `*.sdimg`, `*.img`, or others holding the storage
@@ -229,40 +229,73 @@ mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
 | Architecture   | Devices                                   | Download link                                                       |
 |----------------|-------------------------------------------|---------------------------------------------------------------------|
-| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client_2.5.0-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] |
-| arm64 | ARM 64bit processors, for example Debian for Asus Tinker Board | [mender-client_2.5.0-1_arm64.deb][mender-client_x.x.x-1_arm64.deb] |
-| amd64 | Generic 64-bit x86 processors, the most popular among workstations | [mender-client_2.5.0-1_amd64.deb][mender-client_x.x.x-1_amd64.deb] |
+| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client_2.6.0-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] |
+| arm64 | ARM 64bit processors, for example Debian for Asus Tinker Board | [mender-client_2.6.0-1_arm64.deb][mender-client_x.x.x-1_arm64.deb] |
+| amd64 | Generic 64-bit x86 processors, the most popular among workstations | [mender-client_2.6.0-1_amd64.deb][mender-client_x.x.x-1_amd64.deb] |
 
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
-[mender-client_x.x.x-1_armhf.deb]: https://downloads.mender.io/2.5.0/dist-packages/debian/armhf/mender-client_2.5.0-1_armhf.deb
+[mender-client_x.x.x-1_armhf.deb]: https://downloads.mender.io/2.6.0/dist-packages/debian/armhf/mender-client_2.6.0-1_armhf.deb
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_arm64.deb"/mender -->
-[mender-client_x.x.x-1_arm64.deb]: https://downloads.mender.io/2.5.0/dist-packages/debian/arm64/mender-client_2.5.0-1_arm64.deb
+[mender-client_x.x.x-1_arm64.deb]: https://downloads.mender.io/2.6.0/dist-packages/debian/arm64/mender-client_2.6.0-1_arm64.deb
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_amd64.deb"/mender -->
-[mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/2.5.0/dist-packages/debian/amd64/mender-client_2.5.0-1_amd64.deb
+[mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/2.6.0/dist-packages/debian/amd64/mender-client_2.6.0-1_amd64.deb
 
 
-## Remote Terminal add-on
+## Mender add-ons
 
-Mender offers a remote terminal extension (`mender-connect`) to the Mender client
-that enables accessing the device terminal using the Mender UI. See the
-[configuration page for remote
-terminal](../09.Add-ons/01.Remote-Terminal/30.Mender-connect-configuration-file/docs.md) for
-more information.
+### Requirements
 
-### Install the remote terminal client
+You need two applications for any add-on to function: the [Mender Client](../02.Overview/15.Taxonomy/docs.md)
+and [Mender Connect](../02.Overview/15.Taxonomy/docs.md). If you have used the [express
+installation](#express-installation) script, you already have both installed.
 
-The remote terminal add-on requires the [Mender client](#mender-client) in order
-to function. If you have already installed the Mender client using
-the [express installation](#express-installation) script, you will already have
-`mender-connect` installed by default.
+### mender-connect
 
-The add-on is only available from the Mender APT repository.
-To install `mender-connect`, follow the instructions for [installing
-`mender-client` using the APT repository](#install-using-the-apt-repository).
-After the final step, install `mender-connect` using the package manager:
+The easiest way to install Mender Connect on an existing device is by using the
+Mender APT repository. The other alternatives include: 
+[mender-convert integration](../04.System-updates-Debian-family/99.Variables/docs.md#mender_addon_connect_install)
+for installation in the existing images,
+and [Yocto projects](../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect)
+for the installation in a Yocto Project environment.
+
+To install `mender-connect` using Mender APT repository, follow the instructions
+for [installing `mender-client` using the APT
+repository](#install-using-the-apt-repository). After the final step, install
+`mender-connect` using the package manager:
 
 ```bash
 sudo apt-get install mender-connect
+```
+
+### Remote Terminal add-on
+
+The Remote Terminal does not require any items installed other than the Mender Client
+and Mender Connect.
+
+### File transfer add-on
+
+The File Transfer does not require any items installed other than the Mender Client
+and Mender Connect.
+
+### Mender Configure add-on
+
+Mender offers a configure extension (`mender-configure`) to the Mender client
+that enables managing device configuration. See the
+[add-on page for Mender Configure](../09.Add-ons/02.Configure/docs.md) for
+more information.
+
+The easiest way to install Configure on an existing device is by using the
+Mender APT repository. See the [add-on page for Mender
+Configure](../09.Add-ons/02.Configure/docs.md) for more information for other
+installation alternatives.
+
+To install `mender-configure` using Mender APT repository, follow the
+instructions for [installing `mender-client` using the APT
+repository](#install-using-the-apt-repository). After the final step, install
+`mender-configure` using the package manager:
+
+```bash
+sudo apt-get install mender-configure
 ```
 
 ## mender-cli
@@ -277,8 +310,8 @@ Follow the correct link according to your host platform to download `mender-cli`
 <!--AUTOVERSION: "mender-cli %"/mender-cli -->
 | Platform | Download link                                                |
 |----------|--------------------------------------------------------------|
-| Linux    | [mender-cli 1.6.0][x.x.x_mender-cli-linux]                  |
-| Mac OS X | [mender-cli 1.6.0][x.x.x_mender-cli-darwin]                 |
+| Linux    | [mender-cli 1.7.0][x.x.x_mender-cli-linux]                  |
+| Mac OS X | [mender-cli 1.7.0][x.x.x_mender-cli-darwin]                 |
 
 
 Remember to add execute permission and ensure that the mender-cli utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
@@ -291,6 +324,6 @@ sudo cp mender-cli /usr/local/bin/
 Please refer to your host Operating System documentation for more details.
 
 <!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
-[x.x.x_mender-cli-linux]: https://downloads.mender.io/mender-cli/1.6.0/linux/mender-cli
+[x.x.x_mender-cli-linux]: https://downloads.mender.io/mender-cli/1.7.0/linux/mender-cli
 <!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
-[x.x.x_mender-cli-darwin]: https://downloads.mender.io/mender-cli/1.6.0/darwin/mender-cli
+[x.x.x_mender-cli-darwin]: https://downloads.mender.io/mender-cli/1.7.0/darwin/mender-cli

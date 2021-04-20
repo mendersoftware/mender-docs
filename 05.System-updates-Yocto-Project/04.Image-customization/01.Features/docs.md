@@ -45,6 +45,10 @@ Below is a list of the features that Mender provides, with descriptions:
   for use with traditional BIOS based systems (`.biosimg`). Enabling this
   feature requires enabling `mender-image` too.
 
+* `mender-image-gpt` - Enables a build that provides a Mender partitioned image
+  for use with BIOS GPT based systems (`.biosimg`). Enabling this feature
+  requires enabling `mender-image` too.
+
 * `mender-image-sd` - Enables a build that provides a Mender partitioned SD card
   image (`.sdimg`). Enabling this feature requires enabling `mender-image` too.
 
@@ -54,7 +58,7 @@ Below is a list of the features that Mender provides, with descriptions:
 * `mender-image-uefi` - Enables a build that provides a Mender partitioned UEFI
   image (`.uefiimg`). Enabling this feature requires enabling `mender-image` too.
 
-* `mender-install` - Enables a build that has Mender installed, with
+* `mender-client-install` - Enables a build that has Mender installed, with
   configuration. Note that this does not include the default Mender partition
   layout, use `mender-image` for that.
 
@@ -78,6 +82,8 @@ Below is a list of the features that Mender provides, with descriptions:
 
 * `mender-uboot` - Enables integration with the U-Boot bootloader.
 
+* `mender-persist-systemd-machine-id` - Enables setting up the systemd machine
+  ID to be persistent across OTA updates.
 
 ## Default features
 

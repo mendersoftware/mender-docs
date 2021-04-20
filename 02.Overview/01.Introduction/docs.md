@@ -5,10 +5,13 @@ taxonomy:
 ---
 
 Mender is a secure and robust software update system designed to handle
-large number of devices. Mender is designed according to a simple client/server
-architecture, allowing central management of deployments to all devices.
-It also supports an add-on features, enabling support for related device
-management features like Remote Terminal.
+large number of devices. It has a simple client/server
+architecture allowing central management of deployments to all devices.
+
+Mender also supports powerful extensions in a form of
+[add-ons](../../09.Add-ons/00.Overview/docs.md) which 
+enable features like Remote Terminal, Port Forward, File Transfer,
+and Device Configuration.
 
 ## The architecture of a software update
 
@@ -117,14 +120,10 @@ You can find more information on above example in the
 
 ## The architecture of a Mender add-on
 
-Mender supports add-ons in a form of standalone binaries exchanging messages
-with the client over [DBus](https://dbus.freedesktop.org/doc/api/html/).
-One example is the [mender-connect](https://github.com/mendersoftware/mender-connect)
-which is an implementation of remote terminal access to devices.
+Mender supports add-ons mainly via the Mender Connect daemon running on a device.
+It is exchanging messages with the client over [DBus](https://dbus.freedesktop.org/doc/api/html/).
 The below picture shows the architecture of the solution.
 
 ![addon-architecture](addon-architecture-device.png)
 
-Please refer to the
-[remote terminal overview section](../../09.Add-ons/01.Remote-Terminal/docs.md)
-for more details.
+Please refer to the [Add-ons section](../../09.Add-ons/00.Overview/docs.md) for more details.

@@ -81,7 +81,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
     - When using SD card or eMMC storage:
     ```bash
-    mount /dev/mmcblk2 /mnt
+    mount /dev/mmcblk0p2 /mnt
     mv /mnt/boot/uImage.testing-backup /mnt/boot/uImage
     umount /mnt
     ```

@@ -291,7 +291,7 @@ MENDER_PERSISTENT_CONFIGURATION_VARS = "RootfsPartA RootfsPartB"
 For users still on the old setup, there is a `state-script` available that will
 help migrate a device from the old setup to the new one. This is enabled by adding
 ```bash
-IMAGE_INSTALL_append = " mender-migrate-configuration"
+IMAGE_INSTALL_append = " mender-client-migrate-configuration"
 ```
 to your `local.conf` file.
 
@@ -311,7 +311,7 @@ A typical error message for this condition is:
 Error:
  Problem: package grub-efi-mender-precompiled-2.04-r0.cortexa8hf_neon requires u-boot, but none of the providers can be installed
   - package grub-efi-mender-precompiled-2.04-r0.cortexa8hf_neon conflicts with u-boot <= 1:2019.07 provided by u-boot-fork-1:2019.07-r0.beaglebone_yocto
-  - package mender-2.5.0-r0.cortexa8hf_neon requires grub-editenv, but none of the providers can be installed
+  - package mender-2.6.0-r0.cortexa8hf_neon requires grub-editenv, but none of the providers can be installed
   - conflicting requests
 ```
 
