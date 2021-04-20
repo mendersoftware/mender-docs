@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 
-# Mender Connect
+## Mender Connect
 
 The add-ons are independent applications, but they run under a common executable:
 `mender-connect`. Every add-on, with [configure](../02.Configure/docs.md) being one notable
@@ -23,7 +23,7 @@ The following table shows a brief summary of the add-ons.
 | Port Forward | Gives an ability to forward any local port to a port on a device, allowing you to connect to any service without the necessity to open ports on the device | Troubleshooting package |
 | [Configure](../02.Configure/docs.md) | Lets you apply arbitrary configuration to your devices through a uniform interface | Configure package |
 
-# Add-ons and the Mender Client
+## Add-ons and the Mender Client
 
 Mender Connect is loosely coupled with the Mender Client. The main information passed between
 `mender-client` and `mender-connect` is the device authorization status. Since only accepted
@@ -33,7 +33,7 @@ a [Websocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) c
 to the server. We use the well-known and well-defined open APIs, which makes the solution flexible
 and portable.
 
-# Installation
+## Installation
 
 Please refer to the following sections for the Mender Connect installation:
 * [mender-convert integration](../../04.System-updates-Debian-family/99.Variables/docs.md#mender_addon_connect_install) for installation in the existing images
@@ -46,7 +46,7 @@ including the enabling and disabling of the features.
 Please note, that you have to enable DBus in the Mender client for most of the add-ons
 to function.
 
-# Mender Connect Configuration
+## Mender Connect Configuration
 
 We describe the specific add-ons configuration in the following sections. All
 Mender Connect based add-ons can share the same configuration file
@@ -64,23 +64,23 @@ Mender Connect based add-ons can share the same configuration file
 }
 ```
 
-## Providing mender-connect.conf
+### Providing mender-connect.conf
 
 The mechanism for providing the configuration file and specifying the configuration values will depend on your choice of OS distribution or build system.
 
 If you have already built an Artifact containing the rootfs, have a look at [modifying a Mender Artifact](../../06.Artifact-creation/03.Modify-an-Artifact/docs.md).
 
-## Global configuration options
+### Global configuration options
 
 #### HttpsClient
 
 Allows you to configure a client certificate and a private key.
 
-##### Certificate
+#### Certificate
 
 A path to the file in pem format holding the certificate.
 
-##### Key
+#### Key
 
 A path to a file holding the private key.
 
