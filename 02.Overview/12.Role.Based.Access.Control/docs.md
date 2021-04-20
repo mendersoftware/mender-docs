@@ -4,9 +4,9 @@ taxonomy:
 category: docs
 ---
 
-!!! Role Based Access Control is only available in the Mender Enterprise plan.
-!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
-!!! for an overview of all Mender plans and features.
+!!!!! Role Based Access Control is only available in the Mender Enterprise plan.
+!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! for an overview of all Mender plans and features.
 
 Role Based Access Control (RBAC) significantly reduces the risk of accidental
 and unauthorized deployments. Admin users of the Mender server can assign Roles
