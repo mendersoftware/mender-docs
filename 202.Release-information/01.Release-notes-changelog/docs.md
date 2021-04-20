@@ -6,6 +6,1319 @@ shortcode-core:
     active: false
 ---
 
+## mender-convert 2.4.0
+
+_Released 04.19.2021_
+
+### Statistics
+
+A total of 3340 lines added, 1222 removed (delta 2118)
+
+| Developers with the most changesets | |
+|---|---|
+| Ole Petter Orhagen | 19 (50.0%) |
+| Lluis Campos | 9 (23.7%) |
+| Kristian Amlie | 8 (21.1%) |
+| Fabio Tranchitella | 2 (5.3%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Ole Petter Orhagen | 3240 (95.5%) |
+| Lluis Campos | 84 (2.5%) |
+| Kristian Amlie | 58 (1.7%) |
+| Fabio Tranchitella | 12 (0.4%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Kristian Amlie | 38 (3.1%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Lluis Campos | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 38 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 3394 (100.0%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+| Employers with the most hackers (total 4) | |
+|---|---|
+| Northern.tech | 4 (100.0%) |
+
+### Changelogs
+
+#### mender-convert (2.4.0)
+
+New changes in mender-convert since 2.3.0:
+
+* Set mender-connect version to latest
+  ([MEN-4200](https://tracker.mender.io/browse/MEN-4200))
+* Support installing mender-configure addon. Not installed by
+  default, it can be configured using MENDER_ADDON_CONFIGURE_INSTALL and
+  MENDER_ADDON_CONFIGURE_VERSION variables.
+  ([MEN-4422](https://tracker.mender.io/browse/MEN-4422))
+* Set mender-configure version to master
+  ([MEN-4422](https://tracker.mender.io/browse/MEN-4422))
+* The standard RasperryPi configuration now comes with UBoot 2020.01 as
+  the default. ([MEN-4395](https://tracker.mender.io/browse/MEN-4395))
+* raspberrypi_config: Modify headless configuration services to
+  expect boot partition in /uboot instead of /boot.
+  ([MEN-4117](https://tracker.mender.io/browse/MEN-4117))
+* [raspberrypi_config] Enable UART in U-Boot config.txt
+  ([MEN-4567](https://tracker.mender.io/browse/MEN-4567))
+* Update mender-artifact to 3.5.x.
+* Switch to stable version of mender-configure.
+* Always create symlinks from `/var/lib/mender-configure` to
+  `/data/mender-configure`. They always need to installed in a
+  rootfs-image prepared image, even if the software isn't, because if
+  the package is installed later, the links must be present or it will
+  act as if it is a non-rootfs image, and store the settings on the
+  rootfs partition, when they should be stored on the data partition.
+
+
+## Mender 2.7.0
+
+_Released 04.16.2021_
+
+### Statistics
+
+A total of 54335 lines added, 26195 removed (delta 28140)
+
+| Developers with the most changesets | |
+|---|---|
+| Manuel Zedel | 229 (30.0%) |
+| Fabio Tranchitella | 127 (16.6%) |
+| Alf-Rune Siqveland | 124 (16.2%) |
+| Lluis Campos | 77 (10.1%) |
+| Marcin Chalczynski | 75 (9.8%) |
+| Krzysztof Jaskiewicz | 46 (6.0%) |
+| Peter Grzybowski | 28 (3.7%) |
+| Ole Petter Orhagen | 24 (3.1%) |
+| Kristian Amlie | 23 (3.0%) |
+| Michael Clelland | 8 (1.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Alf-Rune Siqveland | 24379 (37.1%) |
+| Fabio Tranchitella | 13130 (20.0%) |
+| Manuel Zedel | 11624 (17.7%) |
+| Peter Grzybowski | 4655 (7.1%) |
+| Marcin Chalczynski | 4509 (6.9%) |
+| Krzysztof Jaskiewicz | 3332 (5.1%) |
+| Lluis Campos | 3023 (4.6%) |
+| Ole Petter Orhagen | 636 (1.0%) |
+| Kristian Amlie | 356 (0.5%) |
+| Michael Clelland | 112 (0.2%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Lluis Campos | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 643 (84.2%) |
+| RnDity | 121 (15.8%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 57924 (88.1%) |
+| RnDity | 7841 (11.9%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+| Employers with the most hackers (total 13) | |
+|---|---|
+| Northern.tech | 11 (84.6%) |
+| RnDity | 2 (15.4%) |
+
+### Changelogs
+
+#### auditlogs (1.1.0)
+
+New changes in auditlogs since 1.0.0:
+
+* Aggregated Dependabot Changelogs:
+  * Bumps alpine from 3.12 to 3.13.0.
+  * Bumps [github.com/stretchr/testify](https://github.com/stretchr/testify) from 1.6.1 to 1.7.0.
+    - [Release notes](https://github.com/stretchr/testify/releases)
+    - [Commits](https://github.com/stretchr/testify/compare/v1.6.1...v1.7.0)
+  * Bumps golang from 1.14-alpine3.12 to 1.15.6-alpine3.12.
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.4 to 1.4.6.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.4...1.4.6)
+  * Bumps golang from 1.15.6-alpine3.12 to 1.16.0-alpine3.12.
+  * Bumps golang from 1.16.0-alpine3.12 to 1.16.2-alpine3.12.
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.6 to 1.5.0.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/1.4.6...v1.5.0)
+
+#### create-artifact-worker (1.0.2)
+
+New changes in create-artifact-worker since 1.0.1:
+
+* bugfix to allow spaces in artifact names
+  ([MEN-4179](https://tracker.mender.io/browse/MEN-4179))
+* upgrade mender-artifact to version 3.5.0.
+  This enables the create-artifact-worker to generate artifacts that
+  implement the provides and clear provides fields.
+  ([MEN-4409](https://tracker.mender.io/browse/MEN-4409))
+
+#### deployments (2.3.0)
+
+New changes in deployments since 2.2.0:
+
+* New internal endpoint for creating configuration deployments
+* extend get /deployment query params with optional deployment type
+* New endpoint for generating configuration artifacts on the fly
+* Handle configuration artifacts on /device/deployments/next
+* Aggregated Dependabot Changelogs:
+  * Bumps alpine from 3.12 to 3.13.0.
+  * Bumps [github.com/stretchr/testify](https://github.com/stretchr/testify) from 1.6.1 to 1.7.0.
+    - [Release notes](https://github.com/stretchr/testify/releases)
+    - [Commits](https://github.com/stretchr/testify/compare/v1.6.1...v1.7.0)
+  * Bumps [github.com/aws/aws-sdk-go](https://github.com/aws/aws-sdk-go) from 1.36.24 to 1.36.28.
+    - [Release notes](https://github.com/aws/aws-sdk-go/releases)
+    - [Changelog](https://github.com/aws/aws-sdk-go/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/aws/aws-sdk-go/compare/v1.36.24...v1.36.28)
+  * Bumps [github.com/google/uuid](https://github.com/google/uuid) from 1.1.4 to 1.1.5.
+    - [Release notes](https://github.com/google/uuid/releases)
+    - [Commits](https://github.com/google/uuid/compare/v1.1.4...v1.1.5)
+  * Bumps alpine from 3.13.0 to 3.13.1.
+  * Bumps [github.com/aws/aws-sdk-go](https://github.com/aws/aws-sdk-go) from 1.36.28 to 1.37.1.
+    - [Release notes](https://github.com/aws/aws-sdk-go/releases)
+    - [Changelog](https://github.com/aws/aws-sdk-go/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/aws/aws-sdk-go/compare/v1.36.28...v1.37.1)
+  * Bumps [github.com/google/uuid](https://github.com/google/uuid) from 1.1.5 to 1.2.0.
+    - [Release notes](https://github.com/google/uuid/releases)
+    - [Commits](https://github.com/google/uuid/compare/v1.1.5...v1.2.0)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.4 to 1.4.6.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.4...1.4.6)
+  * Bumps [github.com/aws/aws-sdk-go](https://github.com/aws/aws-sdk-go) from 1.37.1 to 1.37.10.
+    - [Release notes](https://github.com/aws/aws-sdk-go/releases)
+    - [Changelog](https://github.com/aws/aws-sdk-go/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/aws/aws-sdk-go/compare/v1.37.1...v1.37.10)
+  * Bumps [github.com/aws/aws-sdk-go](https://github.com/aws/aws-sdk-go) from 1.37.10 to 1.37.20.
+    - [Release notes](https://github.com/aws/aws-sdk-go/releases)
+    - [Changelog](https://github.com/aws/aws-sdk-go/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/aws/aws-sdk-go/compare/v1.37.10...v1.37.20)
+  * Bumps [github.com/aws/aws-sdk-go](https://github.com/aws/aws-sdk-go) from 1.37.20 to 1.37.25.
+    - [Release notes](https://github.com/aws/aws-sdk-go/releases)
+    - [Changelog](https://github.com/aws/aws-sdk-go/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/aws/aws-sdk-go/compare/v1.37.20...v1.37.25)
+  * Bumps [github.com/sirupsen/logrus](https://github.com/sirupsen/logrus) from 1.7.0 to 1.8.1.
+    - [Release notes](https://github.com/sirupsen/logrus/releases)
+    - [Changelog](https://github.com/sirupsen/logrus/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/sirupsen/logrus/compare/v1.7.0...v1.8.1)
+  * Bumps [github.com/aws/aws-sdk-go](https://github.com/aws/aws-sdk-go) from 1.37.25 to 1.37.30.
+    - [Release notes](https://github.com/aws/aws-sdk-go/releases)
+    - [Changelog](https://github.com/aws/aws-sdk-go/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/aws/aws-sdk-go/compare/v1.37.25...v1.37.30)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.6 to 1.5.0.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/1.4.6...v1.5.0)
+
+#### deployments-enterprise (2.3.0)
+
+New changes in deployments-enterprise since 2.2.0:
+
+* New internal endpoint for creating configuration deployments
+* extend get /deployment query params with optional deployment type
+* New endpoint for generating configuration artifacts on the fly
+* Handle configuration artifacts on /device/deployments/next
+* FIX: Phased deployments getting stuck on retries
+* Fix: do not increment attempts on multiple subsequent failure status reports
+* docs: Fix naming conflict in v1 and v2 NewDeployment definitions.
+* docs: Document missing parameters for NewDeploymentForGroup schema.
+* Aggregated Dependabot Changelogs:
+  * Bumps alpine from 3.12 to 3.13.0.
+  * Bumps alpine from 3.12 to 3.13.0.
+  * Bumps [github.com/stretchr/testify](https://github.com/stretchr/testify) from 1.6.1 to 1.7.0.
+    - [Release notes](https://github.com/stretchr/testify/releases)
+    - [Commits](https://github.com/stretchr/testify/compare/v1.6.1...v1.7.0)
+  * Bumps [github.com/stretchr/testify](https://github.com/stretchr/testify) from 1.6.1 to 1.7.0.
+    - [Release notes](https://github.com/stretchr/testify/releases)
+    - [Commits](https://github.com/stretchr/testify/compare/v1.6.1...v1.7.0)
+  * Bumps [github.com/aws/aws-sdk-go](https://github.com/aws/aws-sdk-go) from 1.36.24 to 1.36.28.
+    - [Release notes](https://github.com/aws/aws-sdk-go/releases)
+    - [Changelog](https://github.com/aws/aws-sdk-go/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/aws/aws-sdk-go/compare/v1.36.24...v1.36.28)
+  * Bumps [github.com/google/uuid](https://github.com/google/uuid) from 1.1.4 to 1.1.5.
+    - [Release notes](https://github.com/google/uuid/releases)
+    - [Commits](https://github.com/google/uuid/compare/v1.1.4...v1.1.5)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.4 to 1.4.5.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.4...v1.4.5)
+  * Bumps [github.com/aws/aws-sdk-go](https://github.com/aws/aws-sdk-go) from 1.36.23 to 1.36.28.
+    - [Release notes](https://github.com/aws/aws-sdk-go/releases)
+    - [Changelog](https://github.com/aws/aws-sdk-go/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/aws/aws-sdk-go/compare/v1.36.23...v1.36.28)
+  * Bumps alpine from 3.13.0 to 3.13.1.
+  * Bumps alpine from 3.13.0 to 3.13.1.
+  * Bumps [github.com/aws/aws-sdk-go](https://github.com/aws/aws-sdk-go) from 1.36.28 to 1.37.1.
+    - [Release notes](https://github.com/aws/aws-sdk-go/releases)
+    - [Changelog](https://github.com/aws/aws-sdk-go/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/aws/aws-sdk-go/compare/v1.36.28...v1.37.1)
+  * Bumps [github.com/google/uuid](https://github.com/google/uuid) from 1.1.5 to 1.2.0.
+    - [Release notes](https://github.com/google/uuid/releases)
+    - [Commits](https://github.com/google/uuid/compare/v1.1.5...v1.2.0)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.5 to 1.4.6.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.5...1.4.6)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.4 to 1.4.6.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.4...1.4.6)
+  * Bumps [github.com/google/uuid](https://github.com/google/uuid) from 1.1.5 to 1.2.0.
+    - [Release notes](https://github.com/google/uuid/releases)
+    - [Commits](https://github.com/google/uuid/compare/v1.1.5...v1.2.0)
+  * Bumps [github.com/aws/aws-sdk-go](https://github.com/aws/aws-sdk-go) from 1.36.28 to 1.37.7.
+    - [Release notes](https://github.com/aws/aws-sdk-go/releases)
+    - [Changelog](https://github.com/aws/aws-sdk-go/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/aws/aws-sdk-go/compare/v1.36.28...v1.37.7)
+  * Bumps [github.com/aws/aws-sdk-go](https://github.com/aws/aws-sdk-go) from 1.37.1 to 1.37.10.
+    - [Release notes](https://github.com/aws/aws-sdk-go/releases)
+    - [Changelog](https://github.com/aws/aws-sdk-go/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/aws/aws-sdk-go/compare/v1.37.1...v1.37.10)
+  * Bumps [github.com/aws/aws-sdk-go](https://github.com/aws/aws-sdk-go) from 1.37.7 to 1.37.10.
+    - [Release notes](https://github.com/aws/aws-sdk-go/releases)
+    - [Changelog](https://github.com/aws/aws-sdk-go/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/aws/aws-sdk-go/compare/v1.37.7...v1.37.10)
+  * Bumps alpine from 3.13.1 to 3.13.2.
+  * Bumps [github.com/aws/aws-sdk-go](https://github.com/aws/aws-sdk-go) from 1.37.10 to 1.37.20.
+    - [Release notes](https://github.com/aws/aws-sdk-go/releases)
+    - [Changelog](https://github.com/aws/aws-sdk-go/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/aws/aws-sdk-go/compare/v1.37.10...v1.37.20)
+  * Bumps [github.com/aws/aws-sdk-go](https://github.com/aws/aws-sdk-go) from 1.37.10 to 1.37.20.
+    - [Release notes](https://github.com/aws/aws-sdk-go/releases)
+    - [Changelog](https://github.com/aws/aws-sdk-go/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/aws/aws-sdk-go/compare/v1.37.10...v1.37.20)
+  * Bumps [github.com/aws/aws-sdk-go](https://github.com/aws/aws-sdk-go) from 1.37.20 to 1.37.25.
+    - [Release notes](https://github.com/aws/aws-sdk-go/releases)
+    - [Changelog](https://github.com/aws/aws-sdk-go/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/aws/aws-sdk-go/compare/v1.37.20...v1.37.25)
+  * Bumps [github.com/aws/aws-sdk-go](https://github.com/aws/aws-sdk-go) from 1.37.20 to 1.37.25.
+    - [Release notes](https://github.com/aws/aws-sdk-go/releases)
+    - [Changelog](https://github.com/aws/aws-sdk-go/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/aws/aws-sdk-go/compare/v1.37.20...v1.37.25)
+  * Bumps [github.com/sirupsen/logrus](https://github.com/sirupsen/logrus) from 1.7.0 to 1.8.1.
+    - [Release notes](https://github.com/sirupsen/logrus/releases)
+    - [Changelog](https://github.com/sirupsen/logrus/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/sirupsen/logrus/compare/v1.7.0...v1.8.1)
+  * Bumps [github.com/aws/aws-sdk-go](https://github.com/aws/aws-sdk-go) from 1.37.25 to 1.37.30.
+    - [Release notes](https://github.com/aws/aws-sdk-go/releases)
+    - [Changelog](https://github.com/aws/aws-sdk-go/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/aws/aws-sdk-go/compare/v1.37.25...v1.37.30)
+  * Bumps [github.com/aws/aws-sdk-go](https://github.com/aws/aws-sdk-go) from 1.37.25 to 1.37.30.
+    - [Release notes](https://github.com/aws/aws-sdk-go/releases)
+    - [Changelog](https://github.com/aws/aws-sdk-go/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/aws/aws-sdk-go/compare/v1.37.25...v1.37.30)
+  * Bumps [github.com/sirupsen/logrus](https://github.com/sirupsen/logrus) from 1.7.0 to 1.8.1.
+    - [Release notes](https://github.com/sirupsen/logrus/releases)
+    - [Changelog](https://github.com/sirupsen/logrus/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/sirupsen/logrus/compare/v1.7.0...v1.8.1)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.6 to 1.5.0.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/1.4.6...v1.5.0)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.6 to 1.5.0.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/1.4.6...v1.5.0)
+
+#### deviceauth (2.6.0)
+
+New changes in deviceauth since 2.5.0:
+
+* Enable support for using the service with Traefik.
+* Aggregated Dependabot Changelogs:
+  * Bumps alpine from 3.12 to 3.13.0.
+  * Bumps [github.com/stretchr/testify](https://github.com/stretchr/testify) from 1.6.1 to 1.7.0.
+    - [Release notes](https://github.com/stretchr/testify/releases)
+    - [Commits](https://github.com/stretchr/testify/compare/v1.6.1...v1.7.0)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.4 to 1.4.5.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.4...v1.4.5)
+  * Bumps golang from 1.14-alpine3.12 to 1.15.7-alpine3.12.
+  * Bumps [github.com/go-redis/redis/v8](https://github.com/go-redis/redis) from 8.4.8 to 8.4.10.
+    - [Release notes](https://github.com/go-redis/redis/releases)
+    - [Changelog](https://github.com/go-redis/redis/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/go-redis/redis/compare/v8.4.8...v8.4.10)
+  * Bumps alpine from 3.13.0 to 3.13.1.
+  * Bumps golang from 1.15.7-alpine3.12 to 1.15.8-alpine3.12.
+  * Bumps [github.com/go-redis/redis/v8](https://github.com/go-redis/redis) from 8.4.10 to 8.5.0.
+    - [Release notes](https://github.com/go-redis/redis/releases)
+    - [Changelog](https://github.com/go-redis/redis/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/go-redis/redis/compare/v8.4.10...v8.5.0)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.5 to 1.4.6.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.5...1.4.6)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.6 to 1.5.0.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/1.4.6...v1.5.0)
+  * Bumps [github.com/go-redis/redis/v8](https://github.com/go-redis/redis) from 8.5.0 to 8.7.1.
+    - [Release notes](https://github.com/go-redis/redis/releases)
+    - [Changelog](https://github.com/go-redis/redis/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/go-redis/redis/compare/v8.5.0...v8.7.1)
+
+#### deviceconfig (1.0.0)
+
+* First release of deviceconfig
+
+#### deviceconnect (1.1.0)
+
+New changes in deviceconnect since 1.0.0:
+
+* New API end-points to trigger check-update and send-inventory on device
+* New internal API end-points to trigger check-update and send-inventory
+* , implement file upload and download end-points
+  ([MEN-4418](https://tracker.mender.io/browse/MEN-4418), [MEN-4482](https://tracker.mender.io/browse/MEN-4482))
+* Aggregated Dependabot Changelogs:
+  * Bumps alpine from 3.12 to 3.13.0.
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.4 to 1.4.6.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.4...1.4.6)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.6 to 1.5.0.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/1.4.6...v1.5.0)
+
+#### gui (2.7.0)
+
+New changes in gui since 2.6.0:
+
+* Rename Retry deployment to Recreate deployment.
+* fix page number on rowsPerPage change
+  ([MEN-4364](https://tracker.mender.io/browse/MEN-4364))
+* fixed an issue that prevented existing user roles from being removed
+* fixed an issue that prevented loading dynamic group devices when navigating to device groups
+* fixed an issue that prevented the deployment attempt count from being shown in the deployment report
+  ([MEN-4399](https://tracker.mender.io/browse/MEN-4399))
+* added single device configuration editor
+* fixed onboarding tips dismissal not being saved right away
+* switched auditlogs to drawer interaction for details
+  ([MEN-4313](https://tracker.mender.io/browse/MEN-4313))
+* onboarding: Pass `--demo` flag to `get.mender.io` script.
+  ([MEN-4461](https://tracker.mender.io/browse/MEN-4461))
+* extend RBAC with "Deployments Manager" role
+* added user verification requirement for 2fa activation
+  ([MEN-4484](https://tracker.mender.io/browse/MEN-4484))
+* improved deployment creation for large device fleets
+* fixed an error that prevented deployment timeframe selection
+* prevented enter press on 2fa code entry causing a redirect
+* Aggregated Dependabot Changelogs:
+  * Bumps [@testing-library/dom](https://github.com/testing-library/dom-testing-library) from 7.29.2 to 7.29.4.
+    - [Release notes](https://github.com/testing-library/dom-testing-library/releases)
+    - [Changelog](https://github.com/testing-library/dom-testing-library/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/testing-library/dom-testing-library/compare/v7.29.2...v7.29.4)
+  * Bumps [webpack](https://github.com/webpack/webpack) from 5.12.3 to 5.15.0.
+    - [Release notes](https://github.com/webpack/webpack/releases)
+    - [Commits](https://github.com/webpack/webpack/compare/v5.12.3...v5.15.0)
+  * Bumps [@stripe/react-stripe-js](https://github.com/stripe/react-stripe-js) from 1.1.2 to 1.2.0.
+    - [Release notes](https://github.com/stripe/react-stripe-js/releases)
+    - [Changelog](https://github.com/stripe/react-stripe-js/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/stripe/react-stripe-js/compare/v1.1.2...v1.2.0)
+  * Bumps [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin) from 1.3.3 to 1.3.4.
+    - [Release notes](https://github.com/webpack-contrib/mini-css-extract-plugin/releases)
+    - [Changelog](https://github.com/webpack-contrib/mini-css-extract-plugin/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/webpack-contrib/mini-css-extract-plugin/compare/v1.3.3...v1.3.4)
+  * Bumps [cypress-localstorage-commands](https://github.com/javierbrea/cypress-localstorage-commands) from 1.3.1 to 1.4.0.
+    - [Release notes](https://github.com/javierbrea/cypress-localstorage-commands/releases)
+    - [Changelog](https://github.com/javierbrea/cypress-localstorage-commands/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/javierbrea/cypress-localstorage-commands/compare/v1.3.1...v1.4.0)
+  * Bumps [@cypress/skip-test](https://github.com/cypress-io/cypress-skip-test) from 2.5.1 to 2.6.0.
+    - [Release notes](https://github.com/cypress-io/cypress-skip-test/releases)
+    - [Commits](https://github.com/cypress-io/cypress-skip-test/compare/v2.5.1...v2.6.0)
+  * Bumps [generate-password](https://github.com/brendanashworth/generate-password) from 1.5.1 to 1.6.0.
+    - [Release notes](https://github.com/brendanashworth/generate-password/releases)
+    - [Changelog](https://github.com/brendanashworth/generate-password/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/brendanashworth/generate-password/commits)
+  * Bumps [eslint](https://github.com/eslint/eslint) from 7.17.0 to 7.18.0.
+    - [Release notes](https://github.com/eslint/eslint/releases)
+    - [Changelog](https://github.com/eslint/eslint/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/eslint/eslint/compare/v7.17.0...v7.18.0)
+  * Bumps [husky](https://github.com/typicode/husky) from 4.3.7 to 4.3.8.
+    - [Release notes](https://github.com/typicode/husky/releases)
+    - [Commits](https://github.com/typicode/husky/compare/v4.3.7...v4.3.8)
+  * Bumps [react-copy-to-clipboard](https://github.com/nkbt/react-copy-to-clipboard) from 5.0.2 to 5.0.3.
+    - [Release notes](https://github.com/nkbt/react-copy-to-clipboard/releases)
+    - [Commits](https://github.com/nkbt/react-copy-to-clipboard/compare/v5.0.2...v5.0.3)
+  * Bumps [@testing-library/jest-dom](https://github.com/testing-library/jest-dom) from 5.11.8 to 5.11.9.
+    - [Release notes](https://github.com/testing-library/jest-dom/releases)
+    - [Changelog](https://github.com/testing-library/jest-dom/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/testing-library/jest-dom/compare/v5.11.8...v5.11.9)
+  * Bumps [core-js](https://github.com/zloirock/core-js) from 3.8.2 to 3.8.3.
+    - [Release notes](https://github.com/zloirock/core-js/releases)
+    - [Changelog](https://github.com/zloirock/core-js/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/zloirock/core-js/compare/v3.8.2...v3.8.3)
+  * Bumps [react-idle-timer](https://github.com/supremetechnopriest/react-idle-timer) from 4.5.1 to 4.5.2.
+    - [Release notes](https://github.com/supremetechnopriest/react-idle-timer/releases)
+    - [Changelog](https://github.com/SupremeTechnopriest/react-idle-timer/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/supremetechnopriest/react-idle-timer/compare/4.5.1...4.5.2)
+  * Bumps [@mdi/js](https://github.com/Templarian/MaterialDesign-JS) from 5.8.55 to 5.9.55.
+    - [Release notes](https://github.com/Templarian/MaterialDesign-JS/releases)
+    - [Commits](https://github.com/Templarian/MaterialDesign-JS/compare/v5.8.55...v5.9.55)
+  * Bumps [webpack](https://github.com/webpack/webpack) from 5.15.0 to 5.17.0.
+    - [Release notes](https://github.com/webpack/webpack/releases)
+    - [Commits](https://github.com/webpack/webpack/compare/v5.15.0...v5.17.0)
+  * Bumps node from 15.5.1-alpine to 15.6.0-alpine.
+  * Bumps [dayjs](https://github.com/iamkun/dayjs) from 1.10.3 to 1.10.4.
+    - [Release notes](https://github.com/iamkun/dayjs/releases)
+    - [Changelog](https://github.com/iamkun/dayjs/blob/v1.10.4/CHANGELOG.md)
+    - [Commits](https://github.com/iamkun/dayjs/compare/v1.10.3...v1.10.4)
+  * Bumps [cypress](https://github.com/cypress-io/cypress) from 6.2.1 to 6.3.0.
+    - [Release notes](https://github.com/cypress-io/cypress/releases)
+    - [Changelog](https://github.com/cypress-io/cypress/blob/develop/.releaserc.base.js)
+    - [Commits](https://github.com/cypress-io/cypress/compare/v6.2.1...v6.3.0)
+  * Bumps [cypress-image-snapshot](https://github.com/palmerhq/cypress-image-snapshot) from 4.0.0 to 4.0.1.
+    - [Release notes](https://github.com/palmerhq/cypress-image-snapshot/releases)
+    - [Changelog](https://github.com/jaredpalmer/cypress-image-snapshot/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/palmerhq/cypress-image-snapshot/compare/v4.0.0...v4.0.1)
+  * Bumps cypress/included from 6.2.1 to 6.3.0.
+  * Bumps [autoprefixer](https://github.com/postcss/autoprefixer) from 10.2.1 to 10.2.3.
+    - [Release notes](https://github.com/postcss/autoprefixer/releases)
+    - [Changelog](https://github.com/postcss/autoprefixer/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/postcss/autoprefixer/compare/10.2.1...10.2.3)
+  * Bumps [@testing-library/user-event](https://github.com/testing-library/user-event) from 12.6.0 to 12.6.2.
+    - [Release notes](https://github.com/testing-library/user-event/releases)
+    - [Changelog](https://github.com/testing-library/user-event/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/testing-library/user-event/compare/v12.6.0...v12.6.2)
+  * Bumps [cypress-file-upload](https://github.com/abramenal/cypress-file-upload) from 4.1.1 to 5.0.2.
+    - [Release notes](https://github.com/abramenal/cypress-file-upload/releases)
+    - [Commits](https://github.com/abramenal/cypress-file-upload/compare/v4.1.1...v5.0.2)
+  * Bumps [webpack-cli](https://github.com/webpack/webpack-cli) from 4.3.1 to 4.4.0.
+    - [Release notes](https://github.com/webpack/webpack-cli/releases)
+    - [Changelog](https://github.com/webpack/webpack-cli/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/webpack/webpack-cli/compare/webpack-cli@4.3.1...webpack-cli@4.4.0)
+  * Bumps [postcss-loader](https://github.com/webpack-contrib/postcss-loader) from 4.1.0 to 4.2.0.
+    - [Release notes](https://github.com/webpack-contrib/postcss-loader/releases)
+    - [Changelog](https://github.com/webpack-contrib/postcss-loader/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/webpack-contrib/postcss-loader/compare/v4.1.0...v4.2.0)
+  * Bumps node from 15.6.0-alpine to 15.7.0-alpine.
+  * Bumps [eslint](https://github.com/eslint/eslint) from 7.18.0 to 7.19.0.
+    - [Release notes](https://github.com/eslint/eslint/releases)
+    - [Changelog](https://github.com/eslint/eslint/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/eslint/eslint/compare/v7.18.0...v7.19.0)
+  * Bumps [less](https://github.com/less/less.js) from 4.1.0 to 4.1.1.
+    - [Release notes](https://github.com/less/less.js/releases)
+    - [Changelog](https://github.com/less/less.js/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/less/less.js/compare/v4.1.0...v4.1.1)
+  * Bumps [webpack](https://github.com/webpack/webpack) from 5.17.0 to 5.19.0.
+    - [Release notes](https://github.com/webpack/webpack/releases)
+    - [Commits](https://github.com/webpack/webpack/compare/v5.17.0...v5.19.0)
+  * Bumps [xterm-addon-search](https://github.com/xtermjs/xterm.js) from 0.7.0 to 0.8.0.
+    - [Release notes](https://github.com/xtermjs/xterm.js/releases)
+    - [Commits](https://github.com/xtermjs/xterm.js/compare/0.7...0.8)
+  * Bumps [react-big-calendar](https://github.com/jquense/react-big-calendar) from 0.30.0 to 0.31.0.
+    - [Release notes](https://github.com/jquense/react-big-calendar/releases)
+    - [Changelog](https://github.com/jquense/react-big-calendar/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/jquense/react-big-calendar/compare/v0.30.0...v0.31.0)
+  * Bumps [xterm-addon-fit](https://github.com/xtermjs/xterm.js) from 0.4.0 to 0.5.0.
+    - [Release notes](https://github.com/xtermjs/xterm.js/releases)
+    - [Commits](https://github.com/xtermjs/xterm.js/compare/0.4...0.5)
+  * Bumps [autoprefixer](https://github.com/postcss/autoprefixer) from 10.2.3 to 10.2.4.
+    - [Release notes](https://github.com/postcss/autoprefixer/releases)
+    - [Changelog](https://github.com/postcss/autoprefixer/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/postcss/autoprefixer/compare/10.2.3...10.2.4)
+  * Bumps [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin) from 1.3.4 to 1.3.5.
+    - [Release notes](https://github.com/webpack-contrib/mini-css-extract-plugin/releases)
+    - [Changelog](https://github.com/webpack-contrib/mini-css-extract-plugin/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/webpack-contrib/mini-css-extract-plugin/compare/v1.3.4...v1.3.5)
+  * Bumps [@stripe/react-stripe-js](https://github.com/stripe/react-stripe-js) from 1.2.0 to 1.2.1.
+    - [Release notes](https://github.com/stripe/react-stripe-js/releases)
+    - [Changelog](https://github.com/stripe/react-stripe-js/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/stripe/react-stripe-js/compare/v1.2.0...v1.2.1)
+  * Bumps [msw](https://github.com/mswjs/msw) from 0.25.0 to 0.26.0.
+    - [Release notes](https://github.com/mswjs/msw/releases)
+    - [Changelog](https://github.com/mswjs/msw/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/mswjs/msw/compare/v0.25.0...v0.26.0)
+  * Bumps [victory](https://github.com/formidablelabs/victory) from 35.4.6 to 35.4.8.
+    - [Release notes](https://github.com/formidablelabs/victory/releases)
+    - [Changelog](https://github.com/FormidableLabs/victory/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/formidablelabs/victory/compare/v35.4.6...v35.4.8)
+  * Bumps [msw](https://github.com/mswjs/msw) from 0.26.0 to 0.26.1.
+    - [Release notes](https://github.com/mswjs/msw/releases)
+    - [Changelog](https://github.com/mswjs/msw/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/mswjs/msw/compare/v0.26.0...v0.26.1)
+  * Bumps [@testing-library/user-event](https://github.com/testing-library/user-event) from 12.6.3 to 12.7.0.
+    - [Release notes](https://github.com/testing-library/user-event/releases)
+    - [Changelog](https://github.com/testing-library/user-event/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/testing-library/user-event/compare/v12.6.3...v12.7.0)
+  * Bumps [msgpack5](https://github.com/mcollina/msgpack5) from 5.0.0 to 5.1.0.
+    - [Release notes](https://github.com/mcollina/msgpack5/releases)
+    - [Commits](https://github.com/mcollina/msgpack5/compare/v5.0.0...v5.1.0)
+  * Bumps [eslint](https://github.com/eslint/eslint) from 7.19.0 to 7.20.0.
+    - [Release notes](https://github.com/eslint/eslint/releases)
+    - [Changelog](https://github.com/eslint/eslint/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/eslint/eslint/compare/v7.19.0...v7.20.0)
+  * Bumps [@babel/core](https://github.com/babel/babel/tree/HEAD/packages/babel-core) from 7.12.13 to 7.12.16.
+    - [Release notes](https://github.com/babel/babel/releases)
+    - [Changelog](https://github.com/babel/babel/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/babel/babel/commits/v7.12.16/packages/babel-core)
+  * Bumps [@babel/preset-env](https://github.com/babel/babel/tree/HEAD/packages/babel-preset-env) from 7.12.13 to 7.12.16.
+    - [Release notes](https://github.com/babel/babel/releases)
+    - [Changelog](https://github.com/babel/babel/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/babel/babel/commits/v7.12.16/packages/babel-preset-env)
+  * Bumps [@testing-library/user-event](https://github.com/testing-library/user-event) from 12.7.0 to 12.7.1.
+    - [Release notes](https://github.com/testing-library/user-event/releases)
+    - [Changelog](https://github.com/testing-library/user-event/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/testing-library/user-event/compare/v12.7.0...v12.7.1)
+  * Bumps [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) from 5.0.0 to 5.1.0.
+    - [Release notes](https://github.com/jantimon/html-webpack-plugin/releases)
+    - [Changelog](https://github.com/jantimon/html-webpack-plugin/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/jantimon/html-webpack-plugin/compare/v5.0.0...v5.1.0)
+  * Bumps [react-big-calendar](https://github.com/jquense/react-big-calendar) from 0.31.0 to 0.32.0.
+    - [Release notes](https://github.com/jquense/react-big-calendar/releases)
+    - [Changelog](https://github.com/jquense/react-big-calendar/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/jquense/react-big-calendar/compare/v0.31.0...v0.32.0)
+  * Bumps [victory](https://github.com/formidablelabs/victory) from 35.4.8 to 35.4.9.
+    - [Release notes](https://github.com/formidablelabs/victory/releases)
+    - [Changelog](https://github.com/FormidableLabs/victory/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/formidablelabs/victory/compare/v35.4.8...v35.4.9)
+  * Bumps [esbuild-loader](https://github.com/privatenumber/esbuild-loader) from 2.9.1 to 2.9.2.
+    - [Release notes](https://github.com/privatenumber/esbuild-loader/releases)
+    - [Commits](https://github.com/privatenumber/esbuild-loader/compare/v2.9.1...v2.9.2)
+  * Bumps cypress/included from 6.4.0 to 6.5.0.
+  * Bumps [@babel/plugin-transform-runtime](https://github.com/babel/babel/tree/HEAD/packages/babel-plugin-transform-runtime) from 7.12.15 to 7.13.9.
+    - [Release notes](https://github.com/babel/babel/releases)
+    - [Changelog](https://github.com/babel/babel/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/babel/babel/commits/v7.13.9/packages/babel-plugin-transform-runtime)
+  * Bumps [@stripe/stripe-js](https://github.com/stripe/stripe-js) from 1.12.1 to 1.13.1.
+    - [Release notes](https://github.com/stripe/stripe-js/releases)
+    - [Commits](https://github.com/stripe/stripe-js/compare/v1.12.1...v1.13.1)
+  * Bumps [elliptic](https://github.com/indutny/elliptic) from 6.5.3 to 6.5.4.
+    - [Release notes](https://github.com/indutny/elliptic/releases)
+    - [Commits](https://github.com/indutny/elliptic/compare/v6.5.3...v6.5.4)
+  * Bumps [react-idle-timer](https://github.com/supremetechnopriest/react-idle-timer) from 4.5.5 to 4.5.6.
+    - [Release notes](https://github.com/supremetechnopriest/react-idle-timer/releases)
+    - [Changelog](https://github.com/SupremeTechnopriest/react-idle-timer/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/supremetechnopriest/react-idle-timer/compare/4.5.5...4.5.6)
+  * Bumps [eslint](https://github.com/eslint/eslint) from 7.21.0 to 7.22.0.
+    - [Release notes](https://github.com/eslint/eslint/releases)
+    - [Changelog](https://github.com/eslint/eslint/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/eslint/eslint/compare/v7.21.0...v7.22.0)
+  * Bumps [@testing-library/user-event](https://github.com/testing-library/user-event) from 12.8.1 to 12.8.3.
+    - [Release notes](https://github.com/testing-library/user-event/releases)
+    - [Changelog](https://github.com/testing-library/user-event/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/testing-library/user-event/compare/v12.8.1...v12.8.3)
+  * Bumps [webpack](https://github.com/webpack/webpack) from 5.24.3 to 5.25.1.
+    - [Release notes](https://github.com/webpack/webpack/releases)
+    - [Commits](https://github.com/webpack/webpack/compare/v5.24.3...v5.25.1)
+  * Bumps [@babel/preset-env](https://github.com/babel/babel/tree/HEAD/packages/babel-preset-env) from 7.13.9 to 7.13.10.
+    - [Release notes](https://github.com/babel/babel/releases)
+    - [Changelog](https://github.com/babel/babel/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/babel/babel/commits/v7.13.10/packages/babel-preset-env)
+  * Bumps nginx from 1.19.7-alpine to 1.19.8-alpine.
+  * Bumps [@material-ui/pickers](https://github.com/mui-org/material-ui-pickers) from 3.2.10 to 3.3.10.
+    - [Release notes](https://github.com/mui-org/material-ui-pickers/releases)
+    - [Changelog](https://github.com/mui-org/material-ui-pickers/blob/next/CHANGELOG.md)
+    - [Commits](https://github.com/mui-org/material-ui-pickers/compare/v3.2.10...v3.3.10)
+  * Bumps [msw](https://github.com/mswjs/msw) from 0.27.0 to 0.27.1.
+    - [Release notes](https://github.com/mswjs/msw/releases)
+    - [Changelog](https://github.com/mswjs/msw/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/mswjs/msw/compare/v0.27.0...v0.27.1)
+  * Bumps [@babel/core](https://github.com/babel/babel/tree/HEAD/packages/babel-core) from 7.13.8 to 7.13.10.
+    - [Release notes](https://github.com/babel/babel/releases)
+    - [Changelog](https://github.com/babel/babel/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/babel/babel/commits/v7.13.10/packages/babel-core)
+  * Bumps [postcss](https://github.com/postcss/postcss) from 8.2.7 to 8.2.8.
+    - [Release notes](https://github.com/postcss/postcss/releases)
+    - [Changelog](https://github.com/postcss/postcss/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/postcss/postcss/compare/8.2.7...8.2.8)
+  * Bumps [esbuild-loader](https://github.com/privatenumber/esbuild-loader) from 2.9.2 to 2.10.0.
+    - [Release notes](https://github.com/privatenumber/esbuild-loader/releases)
+    - [Commits](https://github.com/privatenumber/esbuild-loader/compare/v2.9.2...v2.10.0)
+  * Bumps [@babel/plugin-transform-runtime](https://github.com/babel/babel/tree/HEAD/packages/babel-plugin-transform-runtime) from 7.13.9 to 7.13.10.
+    - [Release notes](https://github.com/babel/babel/releases)
+    - [Changelog](https://github.com/babel/babel/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/babel/babel/commits/v7.13.10/packages/babel-plugin-transform-runtime)
+  * Bumps [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) from 5.3.0 to 5.3.1.
+    - [Release notes](https://github.com/jantimon/html-webpack-plugin/releases)
+    - [Changelog](https://github.com/jantimon/html-webpack-plugin/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/jantimon/html-webpack-plugin/compare/v5.3.0...v5.3.1)
+  * Bumps [webpack](https://github.com/webpack/webpack) from 5.25.1 to 5.26.0.
+    - [Release notes](https://github.com/webpack/webpack/releases)
+    - [Commits](https://github.com/webpack/webpack/compare/v5.25.1...v5.26.0)
+  * Bumps [css-loader](https://github.com/webpack-contrib/css-loader) from 5.1.1 to 5.1.3.
+    - [Release notes](https://github.com/webpack-contrib/css-loader/releases)
+    - [Changelog](https://github.com/webpack-contrib/css-loader/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/webpack-contrib/css-loader/compare/v5.1.1...v5.1.3)
+  * Bumps [jest](https://github.com/facebook/jest) from 27.0.0-next.4 to 27.0.0-next.5.
+    - [Release notes](https://github.com/facebook/jest/releases)
+    - [Changelog](https://github.com/facebook/jest/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/facebook/jest/compare/v27.0.0-next.4...v27.0.0-next.5)
+  * Bumps [xterm](https://github.com/xtermjs/xterm.js) from 4.10.0 to 4.11.0.
+    - [Release notes](https://github.com/xtermjs/xterm.js/releases)
+    - [Commits](https://github.com/xtermjs/xterm.js/compare/4.10.0...4.11.0)
+  * Bumps [postcss-loader](https://github.com/webpack-contrib/postcss-loader) from 5.1.0 to 5.2.0.
+    - [Release notes](https://github.com/webpack-contrib/postcss-loader/releases)
+    - [Changelog](https://github.com/webpack-contrib/postcss-loader/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/webpack-contrib/postcss-loader/compare/v5.1.0...v5.2.0)
+  * Bumps [victory](https://github.com/formidablelabs/victory) from 35.4.11 to 35.4.12.
+    - [Release notes](https://github.com/formidablelabs/victory/releases)
+    - [Changelog](https://github.com/FormidableLabs/victory/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/formidablelabs/victory/compare/v35.4.11...v35.4.12)
+  * Bumps [@testing-library/user-event](https://github.com/testing-library/user-event) from 12.8.3 to 13.0.6.
+    - [Release notes](https://github.com/testing-library/user-event/releases)
+    - [Changelog](https://github.com/testing-library/user-event/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/testing-library/user-event/compare/v12.8.3...v13.0.6)
+  * Bumps [husky](https://github.com/typicode/husky) from 5.1.3 to 5.2.0.
+    - [Release notes](https://github.com/typicode/husky/releases)
+    - [Commits](https://github.com/typicode/husky/compare/v5.1.3...v5.2.0)
+  * Bumps [webpack](https://github.com/webpack/webpack) from 5.26.0 to 5.27.1.
+    - [Release notes](https://github.com/webpack/webpack/releases)
+    - [Commits](https://github.com/webpack/webpack/compare/v5.26.0...v5.27.1)
+  * Bumps node from 15.11.0-alpine to 15.12.0-alpine.
+  * Bumps [cypress-file-upload](https://github.com/abramenal/cypress-file-upload) from 5.0.2 to 5.0.3.
+    - [Release notes](https://github.com/abramenal/cypress-file-upload/releases)
+    - [Commits](https://github.com/abramenal/cypress-file-upload/compare/v5.0.2...v5.0.3)
+  * Bumps [@testing-library/user-event](https://github.com/testing-library/user-event) from 13.0.6 to 13.0.7.
+    - [Release notes](https://github.com/testing-library/user-event/releases)
+    - [Changelog](https://github.com/testing-library/user-event/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/testing-library/user-event/compare/v13.0.6...v13.0.7)
+  * Bumps [@testing-library/jest-dom](https://github.com/testing-library/jest-dom) from 5.11.9 to 5.11.10.
+    - [Release notes](https://github.com/testing-library/jest-dom/releases)
+    - [Changelog](https://github.com/testing-library/jest-dom/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/testing-library/jest-dom/compare/v5.11.9...v5.11.10)
+  * Bumps [@babel/preset-env](https://github.com/babel/babel/tree/HEAD/packages/babel-preset-env) from 7.13.10 to 7.13.12.
+    - [Release notes](https://github.com/babel/babel/releases)
+    - [Changelog](https://github.com/babel/babel/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/babel/babel/commits/v7.13.12/packages/babel-preset-env)
+  * Bumps [esbuild-loader](https://github.com/privatenumber/esbuild-loader) from 2.10.0 to 2.11.0.
+    - [Release notes](https://github.com/privatenumber/esbuild-loader/releases)
+    - [Commits](https://github.com/privatenumber/esbuild-loader/compare/v2.10.0...v2.11.0)
+  * Bumps [msw](https://github.com/mswjs/msw) from 0.27.1 to 0.28.0.
+    - [Release notes](https://github.com/mswjs/msw/releases)
+    - [Changelog](https://github.com/mswjs/msw/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/mswjs/msw/compare/v0.27.1...v0.28.0)
+  * Bumps [msgpack5](https://github.com/mcollina/msgpack5) from 5.3.1 to 5.3.2.
+    - [Release notes](https://github.com/mcollina/msgpack5/releases)
+    - [Commits](https://github.com/mcollina/msgpack5/compare/v5.3.1...v5.3.2)
+  * Bumps [react-redux](https://github.com/reduxjs/react-redux) from 7.2.2 to 7.2.3.
+    - [Release notes](https://github.com/reduxjs/react-redux/releases)
+    - [Changelog](https://github.com/reduxjs/react-redux/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/reduxjs/react-redux/compare/v7.2.2...v7.2.3)
+  * Bumps [webpack-cli](https://github.com/webpack/webpack-cli) from 4.5.0 to 4.6.0.
+    - [Release notes](https://github.com/webpack/webpack-cli/releases)
+    - [Changelog](https://github.com/webpack/webpack-cli/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/webpack/webpack-cli/compare/webpack-cli@4.5.0...webpack-cli@4.6.0)
+  * Bumps [@testing-library/user-event](https://github.com/testing-library/user-event) from 13.0.7 to 13.0.16.
+    - [Release notes](https://github.com/testing-library/user-event/releases)
+    - [Changelog](https://github.com/testing-library/user-event/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/testing-library/user-event/compare/v13.0.7...v13.0.16)
+  * Bumps [eslint](https://github.com/eslint/eslint) from 7.22.0 to 7.23.0.
+    - [Release notes](https://github.com/eslint/eslint/releases)
+    - [Changelog](https://github.com/eslint/eslint/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/eslint/eslint/compare/v7.22.0...v7.23.0)
+  * Bumps [@babel/core](https://github.com/babel/babel/tree/HEAD/packages/babel-core) from 7.13.10 to 7.13.13.
+    - [Release notes](https://github.com/babel/babel/releases)
+    - [Changelog](https://github.com/babel/babel/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/babel/babel/commits/v7.13.13/packages/babel-core)
+  * Bumps [@stripe/stripe-js](https://github.com/stripe/stripe-js) from 1.13.1 to 1.13.2.
+    - [Release notes](https://github.com/stripe/stripe-js/releases)
+    - [Commits](https://github.com/stripe/stripe-js/compare/v1.13.1...v1.13.2)
+  * Bumps [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin) from 1.3.9 to 1.4.0.
+    - [Release notes](https://github.com/webpack-contrib/mini-css-extract-plugin/releases)
+    - [Changelog](https://github.com/webpack-contrib/mini-css-extract-plugin/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/webpack-contrib/mini-css-extract-plugin/compare/v1.3.9...v1.4.0)
+  * Bumps [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) from 7.22.0 to 7.23.1.
+    - [Release notes](https://github.com/yannickcr/eslint-plugin-react/releases)
+    - [Changelog](https://github.com/yannickcr/eslint-plugin-react/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/yannickcr/eslint-plugin-react/compare/v7.22.0...v7.23.1)
+  * Bumps [@testing-library/dom](https://github.com/testing-library/dom-testing-library) from 7.30.0 to 7.30.1.
+    - [Release notes](https://github.com/testing-library/dom-testing-library/releases)
+    - [Changelog](https://github.com/testing-library/dom-testing-library/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/testing-library/dom-testing-library/compare/v7.30.0...v7.30.1)
+  * Bumps [react-dropzone](https://github.com/react-dropzone/react-dropzone) from 11.3.1 to 11.3.2.
+    - [Release notes](https://github.com/react-dropzone/react-dropzone/releases)
+    - [Commits](https://github.com/react-dropzone/react-dropzone/compare/v11.3.1...v11.3.2)
+  * Bumps [css-loader](https://github.com/webpack-contrib/css-loader) from 5.1.3 to 5.2.0.
+    - [Release notes](https://github.com/webpack-contrib/css-loader/releases)
+    - [Changelog](https://github.com/webpack-contrib/css-loader/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/webpack-contrib/css-loader/compare/v5.1.3...v5.2.0)
+  * Bumps [husky](https://github.com/typicode/husky) from 5.2.0 to 6.0.0.
+    - [Release notes](https://github.com/typicode/husky/releases)
+    - [Commits](https://github.com/typicode/husky/compare/v5.2.0...v6.0.0)
+  * Bumps [webpack](https://github.com/webpack/webpack) from 5.27.1 to 5.28.0.
+    - [Release notes](https://github.com/webpack/webpack/releases)
+    - [Commits](https://github.com/webpack/webpack/compare/v5.27.1...v5.28.0)
+  * Bumps [@babel/preset-react](https://github.com/babel/babel/tree/HEAD/packages/babel-preset-react) from 7.12.13 to 7.13.13.
+    - [Release notes](https://github.com/babel/babel/releases)
+    - [Changelog](https://github.com/babel/babel/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/babel/babel/commits/v7.13.13/packages/babel-preset-react)
+  * Bumps [y18n](https://github.com/yargs/y18n) from 3.2.1 to 3.2.2.
+    - [Release notes](https://github.com/yargs/y18n/releases)
+    - [Changelog](https://github.com/yargs/y18n/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/yargs/y18n/commits)
+  * Bumps [@testing-library/dom](https://github.com/testing-library/dom-testing-library) from 7.30.1 to 7.30.3.
+    - [Release notes](https://github.com/testing-library/dom-testing-library/releases)
+    - [Changelog](https://github.com/testing-library/dom-testing-library/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/testing-library/dom-testing-library/compare/v7.30.1...v7.30.3)
+  * Bumps [postcss](https://github.com/postcss/postcss) from 8.2.8 to 8.2.9.
+    - [Release notes](https://github.com/postcss/postcss/releases)
+    - [Changelog](https://github.com/postcss/postcss/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/postcss/postcss/compare/8.2.8...8.2.9)
+  * Bumps [victory](https://github.com/formidablelabs/victory) from 35.4.12 to 35.4.13.
+    - [Release notes](https://github.com/formidablelabs/victory/releases)
+    - [Changelog](https://github.com/FormidableLabs/victory/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/formidablelabs/victory/compare/v35.4.12...v35.4.13)
+  * Bumps [webpack](https://github.com/webpack/webpack) from 5.28.0 to 5.30.0.
+    - [Release notes](https://github.com/webpack/webpack/releases)
+    - [Commits](https://github.com/webpack/webpack/compare/v5.28.0...v5.30.0)
+  * Bumps [core-js](https://github.com/zloirock/core-js/tree/HEAD/packages/core-js) from 3.9.1 to 3.10.0.
+    - [Release notes](https://github.com/zloirock/core-js/releases)
+    - [Changelog](https://github.com/zloirock/core-js/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/zloirock/core-js/commits/v3.10.0/packages/core-js)
+  * Bumps [cypress-localstorage-commands](https://github.com/javierbrea/cypress-localstorage-commands) from 1.4.1 to 1.4.2.
+    - [Release notes](https://github.com/javierbrea/cypress-localstorage-commands/releases)
+    - [Changelog](https://github.com/javierbrea/cypress-localstorage-commands/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/javierbrea/cypress-localstorage-commands/compare/v1.4.1...v1.4.2)
+  * Bumps node from 15.12.0-alpine to 15.13.0-alpine.
+  * Bumps nginx from 1.19.8-alpine to 1.19.9-alpine.
+  * Bumps [jest-watch-typeahead](https://github.com/jest-community/jest-watch-typeahead) from 0.6.1 to 0.6.2.
+    - [Release notes](https://github.com/jest-community/jest-watch-typeahead/releases)
+    - [Changelog](https://github.com/jest-community/jest-watch-typeahead/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/jest-community/jest-watch-typeahead/compare/v0.6.1...v0.6.2)
+  * Bumps [@babel/core](https://github.com/babel/babel/tree/HEAD/packages/babel-core) from 7.13.13 to 7.13.14.
+    - [Release notes](https://github.com/babel/babel/releases)
+    - [Changelog](https://github.com/babel/babel/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/babel/babel/commits/v7.13.14/packages/babel-core)
+  * Bumps [@testing-library/react](https://github.com/testing-library/react-testing-library) from 11.2.5 to 11.2.6.
+    - [Release notes](https://github.com/testing-library/react-testing-library/releases)
+    - [Changelog](https://github.com/testing-library/react-testing-library/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/testing-library/react-testing-library/compare/v11.2.5...v11.2.6)
+  * Bumps [mzedel-cypress-image-snapshot](https://github.com/mzedel/cypress-image-snapshot) from 4.0.3 to 4.0.5.
+    - [Release notes](https://github.com/mzedel/cypress-image-snapshot/releases)
+    - [Changelog](https://github.com/mzedel/cypress-image-snapshot/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/mzedel/cypress-image-snapshot/compare/v4.0.3...v4.0.5)
+  * Bumps [cypress](https://github.com/cypress-io/cypress) from 6.8.0 to 6.9.1.
+    - [Release notes](https://github.com/cypress-io/cypress/releases)
+    - [Changelog](https://github.com/cypress-io/cypress/blob/develop/.releaserc.base.js)
+    - [Commits](https://github.com/cypress-io/cypress/commits)
+  * Bumps [msw](https://github.com/mswjs/msw) from 0.28.0 to 0.28.1.
+    - [Release notes](https://github.com/mswjs/msw/releases)
+    - [Changelog](https://github.com/mswjs/msw/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/mswjs/msw/compare/v0.28.0...v0.28.1)
+
+#### integration (2.7.0)
+
+New changes in integration since 2.6.0:
+
+* demo script, include docker-compose.connect.yml by default
+  ([MEN-4357](https://tracker.mender.io/browse/MEN-4357))
+* Add auditlogs and deviceconnect to production templates
+* migrated gateway service to use traefik
+* production template: configure mender-api-gateway as a storage proxy
+* Include the configuration add-on in the demo script
+* Remove nginx-based api-gateway and replace with Traefik.
+* fix auth verification on useradm APIs
+  ([MEN-4623](https://tracker.mender.io/browse/MEN-4623))
+* Upgrade auditlogs to 1.1.0.
+* Upgrade create-artifact-worker to 1.0.2.
+* Upgrade deployments to 2.3.0.
+* Upgrade deployments-enterprise to 2.3.0.
+* Upgrade deviceauth to 2.6.0.
+* Add deviceconfig 1.0.0.
+* Upgrade deviceconnect to 1.1.0.
+* Upgrade gui to 2.7.0.
+* Upgrade integration to 2.7.0.
+* Upgrade inventory to 2.3.0.
+* Upgrade inventory-enterprise to 2.3.0.
+* Upgrade mender to 2.6.0.
+* Upgrade mender-artifact to 3.5.1.
+* Upgrade mender-cli to 1.7.0.
+* Upgrade mender-connect to 1.1.0.
+* Upgrade tenantadm to 3.1.0.
+* Upgrade useradm to 1.14.0.
+* Upgrade useradm-enterprise to 1.14.0.
+* Upgrade workflows to 1.4.0.
+* Upgrade workflows-enterprise to 1.4.0.
+* Aggregated Dependabot Changelogs:
+  * Bumps [docker-compose](https://github.com/docker/compose) from 1.27.4 to 1.28.0.
+    - [Release notes](https://github.com/docker/compose/releases)
+    - [Changelog](https://github.com/docker/compose/blob/1.28.0/CHANGELOG.md)
+    - [Commits](https://github.com/docker/compose/compare/1.27.4...1.28.0)
+  * Bumps [fabric](http://fabfile.org) from 2.5.0 to 2.6.0.
+  * Bumps [docker-compose](https://github.com/docker/compose) from 1.28.0 to 1.28.2.
+    - [Release notes](https://github.com/docker/compose/releases)
+    - [Changelog](https://github.com/docker/compose/blob/1.28.2/CHANGELOG.md)
+    - [Commits](https://github.com/docker/compose/compare/1.28.0...1.28.2)
+  * Bumps [pytest](https://github.com/pytest-dev/pytest) from 6.2.1 to 6.2.2.
+    - [Release notes](https://github.com/pytest-dev/pytest/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+    - [Commits](https://github.com/pytest-dev/pytest/compare/6.2.1...6.2.2)
+  * Bumps [pytest](https://github.com/pytest-dev/pytest) from 6.2.1 to 6.2.2.
+    - [Release notes](https://github.com/pytest-dev/pytest/releases)
+    - [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+    - [Commits](https://github.com/pytest-dev/pytest/compare/6.2.1...6.2.2)
+  * Bumps [pyotp](https://github.com/pyotp/pyotp) from 2.4.1 to 2.5.1.
+    - [Release notes](https://github.com/pyotp/pyotp/releases)
+    - [Changelog](https://github.com/pyauth/pyotp/blob/develop/Changes.rst)
+    - [Commits](https://github.com/pyotp/pyotp/compare/v2.4.1...v2.5.1)
+  * Bumps [pyotp](https://github.com/pyotp/pyotp) from 2.5.1 to 2.6.0.
+    - [Release notes](https://github.com/pyotp/pyotp/releases)
+    - [Changelog](https://github.com/pyauth/pyotp/blob/develop/Changes.rst)
+    - [Commits](https://github.com/pyotp/pyotp/compare/v2.5.1...v2.6.0)
+  * Bumps [stripe](https://github.com/stripe/stripe-python) from 2.55.1 to 2.55.2.
+    - [Release notes](https://github.com/stripe/stripe-python/releases)
+    - [Changelog](https://github.com/stripe/stripe-python/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/stripe/stripe-python/compare/v2.55.1...v2.55.2)
+  * Bumps [pymongo](https://github.com/mongodb/mongo-python-driver) from 3.11.2 to 3.11.3.
+    - [Release notes](https://github.com/mongodb/mongo-python-driver/releases)
+    - [Changelog](https://github.com/mongodb/mongo-python-driver/blob/3.11.3/doc/changelog.rst)
+    - [Commits](https://github.com/mongodb/mongo-python-driver/compare/3.11.2...3.11.3)
+  * Bumps [pymongo](https://github.com/mongodb/mongo-python-driver) from 3.11.2 to 3.11.3.
+    - [Release notes](https://github.com/mongodb/mongo-python-driver/releases)
+    - [Changelog](https://github.com/mongodb/mongo-python-driver/blob/3.11.3/doc/changelog.rst)
+    - [Commits](https://github.com/mongodb/mongo-python-driver/compare/3.11.2...3.11.3)
+  * Bumps [cryptography](https://github.com/pyca/cryptography) from 3.3.1 to 3.4.4.
+    - [Release notes](https://github.com/pyca/cryptography/releases)
+    - [Changelog](https://github.com/pyca/cryptography/blob/master/CHANGELOG.rst)
+    - [Commits](https://github.com/pyca/cryptography/compare/3.3.1...3.4.4)
+  * Bumps [cryptography](https://github.com/pyca/cryptography) from 3.3.2 to 3.4.4.
+    - [Release notes](https://github.com/pyca/cryptography/releases)
+    - [Changelog](https://github.com/pyca/cryptography/blob/master/CHANGELOG.rst)
+    - [Commits](https://github.com/pyca/cryptography/compare/3.3.2...3.4.4)
+  * Bumps [cryptography](https://github.com/pyca/cryptography) from 3.3.2 to 3.4.4.
+    - [Release notes](https://github.com/pyca/cryptography/releases)
+    - [Changelog](https://github.com/pyca/cryptography/blob/master/CHANGELOG.rst)
+    - [Commits](https://github.com/pyca/cryptography/compare/3.3.2...3.4.4)
+  * Bumps [cryptography](https://github.com/pyca/cryptography) from 3.4.4 to 3.4.5.
+    - [Release notes](https://github.com/pyca/cryptography/releases)
+    - [Changelog](https://github.com/pyca/cryptography/blob/main/CHANGELOG.rst)
+    - [Commits](https://github.com/pyca/cryptography/compare/3.4.4...3.4.5)
+  * Bumps [cryptography](https://github.com/pyca/cryptography) from 3.4.4 to 3.4.5.
+    - [Release notes](https://github.com/pyca/cryptography/releases)
+    - [Changelog](https://github.com/pyca/cryptography/blob/main/CHANGELOG.rst)
+    - [Commits](https://github.com/pyca/cryptography/compare/3.4.4...3.4.5)
+  * Bumps python from 3.9.1 to 3.9.2.
+  * Bumps [cryptography](https://github.com/pyca/cryptography) from 3.4.5 to 3.4.6.
+    - [Release notes](https://github.com/pyca/cryptography/releases)
+    - [Changelog](https://github.com/pyca/cryptography/blob/main/CHANGELOG.rst)
+    - [Commits](https://github.com/pyca/cryptography/compare/3.4.5...3.4.6)
+  * Bumps [docker-compose](https://github.com/docker/compose) from 1.28.2 to 1.28.4.
+    - [Release notes](https://github.com/docker/compose/releases)
+    - [Changelog](https://github.com/docker/compose/blob/1.28.4/CHANGELOG.md)
+    - [Commits](https://github.com/docker/compose/compare/1.28.2...1.28.4)
+  * Bumps [cryptography](https://github.com/pyca/cryptography) from 3.4.5 to 3.4.6.
+    - [Release notes](https://github.com/pyca/cryptography/releases)
+    - [Changelog](https://github.com/pyca/cryptography/blob/main/CHANGELOG.rst)
+    - [Commits](https://github.com/pyca/cryptography/compare/3.4.5...3.4.6)
+  * Bumps [stripe](https://github.com/stripe/stripe-python) from 2.55.2 to 2.56.0.
+    - [Release notes](https://github.com/stripe/stripe-python/releases)
+    - [Changelog](https://github.com/stripe/stripe-python/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/stripe/stripe-python/compare/v2.55.2...v2.56.0)
+  * Bumps [docker-compose](https://github.com/docker/compose) from 1.28.4 to 1.28.5.
+    - [Release notes](https://github.com/docker/compose/releases)
+    - [Changelog](https://github.com/docker/compose/blob/1.28.5/CHANGELOG.md)
+    - [Commits](https://github.com/docker/compose/compare/1.28.4...1.28.5)
+  * Bumps [pillow](https://github.com/python-pillow/Pillow) from 8.1.0 to 8.1.2.
+    - [Release notes](https://github.com/python-pillow/Pillow/releases)
+    - [Changelog](https://github.com/python-pillow/Pillow/blob/master/CHANGES.rst)
+    - [Commits](https://github.com/python-pillow/Pillow/compare/8.1.0...8.1.2)
+  * Bumps [urllib3](https://github.com/urllib3/urllib3) from 1.26.3 to 1.26.4.
+    - [Release notes](https://github.com/urllib3/urllib3/releases)
+    - [Changelog](https://github.com/urllib3/urllib3/blob/main/CHANGES.rst)
+    - [Commits](https://github.com/urllib3/urllib3/compare/1.26.3...1.26.4)
+  * Bumps [urllib3](https://github.com/urllib3/urllib3) from 1.26.2 to 1.26.4.
+    - [Release notes](https://github.com/urllib3/urllib3/releases)
+    - [Changelog](https://github.com/urllib3/urllib3/blob/main/CHANGES.rst)
+    - [Commits](https://github.com/urllib3/urllib3/compare/1.26.2...1.26.4)
+  * Bumps [contextlib2](https://github.com/jazzband/contextlib2) from 0.6.0 to 0.6.0.post1.
+    - [Release notes](https://github.com/jazzband/contextlib2/releases)
+    - [Commits](https://github.com/jazzband/contextlib2/compare/v0.6.0...v0.6.0.post1)
+
+#### inventory (2.3.0)
+
+New changes in inventory since 2.2.0:
+
+* Support returning a subset of attributes in filters/search
+* docs: deprecate DELETE /devices/{id} management endpoint
+* Aggregated Dependabot Changelogs:
+  * Bumps alpine from 3.12 to 3.13.0.
+  * Bumps [github.com/stretchr/testify](https://github.com/stretchr/testify) from 1.6.1 to 1.7.0.
+    - [Release notes](https://github.com/stretchr/testify/releases)
+    - [Commits](https://github.com/stretchr/testify/compare/v1.6.1...v1.7.0)
+  * Bumps golang from 1.14-alpine3.12 to 1.15.7-alpine3.12.
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.4 to 1.4.5.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.4...v1.4.5)
+  * Bumps alpine from 3.13.0 to 3.13.1.
+  * Bumps golang from 1.15.7-alpine3.12 to 1.15.8-alpine3.12.
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.5 to 1.5.0.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.5...v1.5.0)
+
+#### inventory-enterprise (2.3.0)
+
+New changes in inventory-enterprise since 2.2.0:
+
+* Support returning a subset of attributes in filters/search
+* docs: deprecate DELETE /devices/{id} management endpoint
+* Aggregated Dependabot Changelogs:
+  * Bumps alpine from 3.12 to 3.13.0.
+  * Bumps alpine from 3.12 to 3.13.0.
+  * Bumps [github.com/stretchr/testify](https://github.com/stretchr/testify) from 1.6.1 to 1.7.0.
+    - [Release notes](https://github.com/stretchr/testify/releases)
+    - [Commits](https://github.com/stretchr/testify/compare/v1.6.1...v1.7.0)
+  * Bumps [github.com/stretchr/testify](https://github.com/stretchr/testify) from 1.6.1 to 1.7.0.
+    - [Release notes](https://github.com/stretchr/testify/releases)
+    - [Commits](https://github.com/stretchr/testify/compare/v1.6.1...v1.7.0)
+  * Bumps golang from 1.14-alpine3.12 to 1.15.7-alpine3.12.
+  * Bumps golang from 1.14-alpine3.12 to 1.15.7-alpine3.12.
+  * Bumps [github.com/go-redis/redis/v8](https://github.com/go-redis/redis) from 8.4.8 to 8.4.10.
+    - [Release notes](https://github.com/go-redis/redis/releases)
+    - [Changelog](https://github.com/go-redis/redis/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/go-redis/redis/compare/v8.4.8...v8.4.10)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.4 to 1.4.5.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.4...v1.4.5)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.4 to 1.4.5.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.4...v1.4.5)
+  * Bumps alpine from 3.13.0 to 3.13.1.
+  * Bumps alpine from 3.13.0 to 3.13.1.
+  * Bumps golang from 1.15.7-alpine3.12 to 1.15.8-alpine3.12.
+  * Bumps alpine from 3.13.1 to 3.13.2.
+  * Bumps golang from 1.15.7-alpine3.12 to 1.16.0-alpine3.12.
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.5 to 1.4.6.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.5...1.4.6)
+  * Bumps [github.com/go-redis/redis/v8](https://github.com/go-redis/redis) from 8.4.10 to 8.7.1.
+    - [Release notes](https://github.com/go-redis/redis/releases)
+    - [Changelog](https://github.com/go-redis/redis/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/go-redis/redis/compare/v8.4.10...v8.7.1)
+  * Bumps golang from 1.16.0-alpine3.12 to 1.16.2-alpine3.12.
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.6 to 1.5.0.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/1.4.6...v1.5.0)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.5 to 1.5.0.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.5...v1.5.0)
+
+#### mender (2.6.0)
+
+New changes in mender since 2.5.0:
+
+* fix, support white spaces in single-file artifacts' names
+  ([MEN-4179](https://tracker.mender.io/browse/MEN-4179))
+* Change provider in inventory-geo script to ipinfo.io
+* Cache geo-location inventory data in volatile memory
+* Log which scripts are run at the info level
+* Filter out docker network interfaces in inventory
+  This adds functionality for filtering out interfaces matching
+  * br-.*
+  * veth.*
+  * docker.*
+  by default, so that docker network interfaces do not flood the inventory on
+  hosts running a lot of docker containers.
+  If re-adding this functionality is required, set the environment variable:
+  * INCLUDE_DOCKER_INTERFACES=true
+  ([MEN-4487](https://tracker.mender.io/browse/MEN-4487))
+* single-file: Use atomic file operations.
+* single-file: Use stderr for all error messages.
+* Remove deprecated field HttpsClient from config file (gets
+  the rid of bogus SSL warnings on `mender show-artifact` and any other
+  cli operation).
+  ([MEN-4398](https://tracker.mender.io/browse/MEN-4398))
+* Send the inventory after a successful deployment, even though the
+  device has not rebooted.
+  ([MEN-4518](https://tracker.mender.io/browse/MEN-4518))
+* mender setup: when configuring for demo using self-signed
+  certificate, install the certificate in the local trust store so that
+  all components in the system (namely, Mender addons) can trust the
+  Mender server without extra configuration.
+  ([MEN-4580](https://tracker.mender.io/browse/MEN-4580))
+* Warn in the log when the system certificates contain the demo cert.
+* Aggregated Dependabot Changelogs:
+  * Bumps [github.com/stretchr/testify](https://github.com/stretchr/testify) from 1.6.1 to 1.7.0.
+    - [Release notes](https://github.com/stretchr/testify/releases)
+    - [Commits](https://github.com/stretchr/testify/compare/v1.6.1...v1.7.0)
+
+#### mender-artifact (3.5.1)
+
+New changes in mender-artifact since 3.5.0:
+
+* Do not change the underlying Artifact unnecessarily
+  Previously the commands modifying an Artifact would always repack an Artifact,
+  no matter whether or not that modifications had actually been made to the
+  Artifact. As an example of this, if you had a signed Artifact compressed with
+  lzma, running `mender-artifact cat <artifact>:/<path-to-file>` would then cat
+  the file, and repack the Artifact with the standard compression, which is
+  `gzip`. Along the way the signature would also be lost.
+  This fix adds the following changes to the tooling:
+  * Modified images are no longer repacked, unless the command run has changed the
+  underlying image. This means that cat and copying out of an image will keep your
+  image intact. While copying into, installing, and removing files from the image
+  will repack the image.
+  * If an image is modified, and needs to be repacked, the existing compression
+  will be respected when repacking. The only exception is the `--compression` flag
+  for `mender-artifact modify` which can override the existing compression when repacking.
+  * `mender-artifact {cat,install,cp,rm}` do not respect the `--compression` flag,
+  but rather prints a warning, that the flag is ignored. If you want to change the
+  compression of your Artifact, run `mender-artifact modify <Artifact>
+  --compression <type>`
+  ([MEN-4502](https://tracker.mender.io/browse/MEN-4502))
+* Add a note about the proper usage of the 'compression' flag in the
+  global help text.
+
+#### mender-cli (1.7.0)
+
+New changes in mender-cli since 1.6.0:
+
+* Fix: Respect the --server flag from config everywhere
+* `mender-cli --record <my-file> terminal <DEVICE-ID>` records
+  the terminal session into a local file.
+  ([MEN-4318](https://tracker.mender.io/browse/MEN-4318))
+* `mender-cli --playback <my-file> terminal` playbacks the
+  previously recorded terminal session from a local file.
+  ([MEN-4318](https://tracker.mender.io/browse/MEN-4318))
+* New command `mender-cli devices list` to list all devices
+  from /devauth/devices endpoint. The amount of detail can be controlled
+  using cli parameter `-d/--detail`, same as for other commands.
+* Previously, the --generate-autocomplete call would silently ignore
+  errors, when the autocomplete directory was not present. This explicitly logs
+  the errors returned during autocomplete script generation.
+* New command port-forward: port-forward TCP and UDP ports from the device
+* Add filetransfer upload and download support
+  ([MEN-4323](https://tracker.mender.io/browse/MEN-4323))
+* Aggregated Dependabot Changelogs:
+  * Bumps golang from 1.15.6-alpine3.12 to 1.15.8-alpine3.12.
+  * Bumps [github.com/spf13/cobra](https://github.com/spf13/cobra) from 1.1.1 to 1.1.3.
+    - [Release notes](https://github.com/spf13/cobra/releases)
+    - [Changelog](https://github.com/spf13/cobra/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/spf13/cobra/compare/v1.1.1...v1.1.3)
+  * Bumps [github.com/cheggaaa/pb/v3](https://github.com/cheggaaa/pb) from 3.0.5 to 3.0.6.
+    - [Release notes](https://github.com/cheggaaa/pb/releases)
+    - [Commits](https://github.com/cheggaaa/pb/compare/v3.0.5...v3.0.6)
+  * Bumps golang from 1.15.8-alpine3.12 to 1.16.0-alpine3.12.
+  * Bumps golang from 1.16.0-alpine3.12 to 1.16.2-alpine3.12.
+  * Bumps [github.com/cheggaaa/pb/v3](https://github.com/cheggaaa/pb) from 3.0.6 to 3.0.7.
+    - [Release notes](https://github.com/cheggaaa/pb/releases)
+    - [Commits](https://github.com/cheggaaa/pb/compare/v3.0.6...v3.0.7)
+
+#### mender-connect (1.1.0)
+
+New changes in mender-connect since 1.0.0:
+
+* Add remote triggers for Mender client's check-update and send-inventory
+* [examples/mender-connect.conf] Remove unnecessary ServerURL
+* Add handler for File Transfer protocol.
+  ([MEN-4322](https://tracker.mender.io/browse/MEN-4322))
+* filetransfer: Add handler for fetching file and file info
+* New feature: TCP and UDP port-forwarding
+* stat(2) file path and verify conditions before starting upload
+* Add option to pass src_path to file upload requests
+
+#### tenantadm (3.1.0)
+
+New changes in tenantadm since 3.0.0:
+
+* Return Add-ons in GET user/tenant
+  ([MEN-4306](https://tracker.mender.io/browse/MEN-4306))
+* internal api: PUT /tenant/:id accepts addons
+* Aggregated Dependabot Changelogs:
+  * Bumps alpine from 3.12 to 3.13.0.
+  * Bumps [github.com/stretchr/testify](https://github.com/stretchr/testify) from 1.6.1 to 1.7.0.
+    - [Release notes](https://github.com/stretchr/testify/releases)
+    - [Commits](https://github.com/stretchr/testify/compare/v1.6.1...v1.7.0)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.4 to 1.4.5.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.4...v1.4.5)
+  * Bumps golang from 1.14-alpine3.12 to 1.15.7-alpine3.12.
+  * Bumps alpine from 3.13.0 to 3.13.1.
+  * Bumps golang from 1.15.7-alpine3.12 to 1.15.8-alpine3.12.
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.5 to 1.4.6.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.5...1.4.6)
+  * Bumps golang from 1.15.8-alpine3.12 to 1.16.0-alpine3.12.
+  * Bumps alpine from 3.13.1 to 3.13.2.
+  * Bumps [github.com/sirupsen/logrus](https://github.com/sirupsen/logrus) from 1.7.0 to 1.8.0.
+    - [Release notes](https://github.com/sirupsen/logrus/releases)
+    - [Changelog](https://github.com/sirupsen/logrus/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/sirupsen/logrus/compare/v1.7.0...v1.8.0)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.6 to 1.5.0.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/1.4.6...v1.5.0)
+  * Bumps [github.com/sirupsen/logrus](https://github.com/sirupsen/logrus) from 1.8.0 to 1.8.1.
+    - [Release notes](https://github.com/sirupsen/logrus/releases)
+    - [Changelog](https://github.com/sirupsen/logrus/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/sirupsen/logrus/compare/v1.8.0...v1.8.1)
+  * Bumps golang from 1.16.0-alpine3.12 to 1.16.2-alpine3.12.
+
+#### useradm (1.14.0)
+
+New changes in useradm since 1.13.0:
+
+* use traefik's X-Forwarded-* headers
+* Aggregated Dependabot Changelogs:
+  * Bumps alpine from 3.12 to 3.13.0.
+  * Bumps [github.com/stretchr/testify](https://github.com/stretchr/testify) from 1.6.1 to 1.7.0.
+    - [Release notes](https://github.com/stretchr/testify/releases)
+    - [Commits](https://github.com/stretchr/testify/compare/v1.6.1...v1.7.0)
+  * Bumps golang from 1.14-alpine3.12 to 1.15.7-alpine3.12.
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.4 to 1.4.5.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.4...v1.4.5)
+  * Bumps alpine from 3.13.0 to 3.13.1.
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.5 to 1.4.6.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.5...1.4.6)
+  * Bumps alpine from 3.13.1 to 3.13.2.
+  * Bumps [github.com/sirupsen/logrus](https://github.com/sirupsen/logrus) from 1.7.0 to 1.8.0.
+    - [Release notes](https://github.com/sirupsen/logrus/releases)
+    - [Changelog](https://github.com/sirupsen/logrus/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/sirupsen/logrus/compare/v1.7.0...v1.8.0)
+  * Bumps golang from 1.15.7-alpine3.12 to 1.16.2-alpine3.12.
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.6 to 1.5.0.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/1.4.6...v1.5.0)
+  * Bumps [github.com/sirupsen/logrus](https://github.com/sirupsen/logrus) from 1.8.0 to 1.8.1.
+    - [Release notes](https://github.com/sirupsen/logrus/releases)
+    - [Changelog](https://github.com/sirupsen/logrus/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/sirupsen/logrus/compare/v1.8.0...v1.8.1)
+
+#### useradm-enterprise (1.14.0)
+
+New changes in useradm-enterprise since 1.13.0:
+
+* use traefik's X-Forwarded-* headers
+* New endpoints for email verification.
+  Introduce new endpoints that enable email verification.
+  The first endpoint starts the email verification procedure.
+  As a part of this procedure, we are sending a verification email to the user.
+  The verification email contains a link for email verification.
+  The second endpoint can be used to finalize email verification.
+  Only users with a verified email address have access to two factor
+  authentication settings.
+* rbac: extend observer role by adding access to device configuration
+* Aggregated Dependabot Changelogs:
+  * Bumps alpine from 3.12 to 3.13.0.
+  * Bumps alpine from 3.12 to 3.13.0.
+  * Bumps [github.com/stretchr/testify](https://github.com/stretchr/testify) from 1.6.1 to 1.7.0.
+    - [Release notes](https://github.com/stretchr/testify/releases)
+    - [Commits](https://github.com/stretchr/testify/compare/v1.6.1...v1.7.0)
+  * Bumps [github.com/stretchr/testify](https://github.com/stretchr/testify) from 1.6.1 to 1.7.0.
+    - [Release notes](https://github.com/stretchr/testify/releases)
+    - [Commits](https://github.com/stretchr/testify/compare/v1.6.1...v1.7.0)
+  * Bumps [github.com/go-redis/redis/v8](https://github.com/go-redis/redis) from 8.4.8 to 8.4.10.
+    - [Release notes](https://github.com/go-redis/redis/releases)
+    - [Changelog](https://github.com/go-redis/redis/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/go-redis/redis/compare/v8.4.8...v8.4.10)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.4 to 1.4.5.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.4...v1.4.5)
+  * Bumps golang from 1.14-alpine3.12 to 1.15.7-alpine3.12.
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.4 to 1.4.5.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.4...v1.4.5)
+  * Bumps alpine from 3.13.0 to 3.13.1.
+  * Bumps alpine from 3.13.0 to 3.13.1.
+  * Bumps [github.com/go-redis/redis/v8](https://github.com/go-redis/redis) from 8.4.10 to 8.4.11.
+    - [Release notes](https://github.com/go-redis/redis/releases)
+    - [Changelog](https://github.com/go-redis/redis/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/go-redis/redis/compare/v8.4.10...v8.4.11)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.5 to 1.4.6.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.5...1.4.6)
+  * Bumps alpine from 3.13.1 to 3.13.2.
+  * Bumps golang from 1.15.7-alpine3.12 to 1.16.0-alpine3.12.
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.5 to 1.4.6.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.5...1.4.6)
+  * Bumps alpine from 3.13.1 to 3.13.2.
+  * Bumps [github.com/sirupsen/logrus](https://github.com/sirupsen/logrus) from 1.7.0 to 1.8.0.
+    - [Release notes](https://github.com/sirupsen/logrus/releases)
+    - [Changelog](https://github.com/sirupsen/logrus/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/sirupsen/logrus/compare/v1.7.0...v1.8.0)
+  * Bumps [github.com/go-redis/redis/v8](https://github.com/go-redis/redis) from 8.4.11 to 8.7.1.
+    - [Release notes](https://github.com/go-redis/redis/releases)
+    - [Changelog](https://github.com/go-redis/redis/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/go-redis/redis/compare/v8.4.11...v8.7.1)
+  * Bumps [github.com/sirupsen/logrus](https://github.com/sirupsen/logrus) from 1.7.0 to 1.8.0.
+    - [Release notes](https://github.com/sirupsen/logrus/releases)
+    - [Changelog](https://github.com/sirupsen/logrus/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/sirupsen/logrus/compare/v1.7.0...v1.8.0)
+  * Bumps golang from 1.15.7-alpine3.12 to 1.16.2-alpine3.12.
+  * Bumps golang from 1.16.0-alpine3.12 to 1.16.2-alpine3.12.
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.6 to 1.5.0.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/1.4.6...v1.5.0)
+  * Bumps [github.com/sirupsen/logrus](https://github.com/sirupsen/logrus) from 1.8.0 to 1.8.1.
+    - [Release notes](https://github.com/sirupsen/logrus/releases)
+    - [Changelog](https://github.com/sirupsen/logrus/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/sirupsen/logrus/compare/v1.8.0...v1.8.1)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.6 to 1.5.0.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/1.4.6...v1.5.0)
+  * Bumps [github.com/sirupsen/logrus](https://github.com/sirupsen/logrus) from 1.8.0 to 1.8.1.
+    - [Release notes](https://github.com/sirupsen/logrus/releases)
+    - [Changelog](https://github.com/sirupsen/logrus/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/sirupsen/logrus/compare/v1.8.0...v1.8.1)
+
+#### workflows (1.4.0)
+
+New changes in workflows since 1.3.0:
+
+* Update workflow definitions for
+  provisioning/decomissioning devices in deviceconfig service
+  ([MEN-4383](https://tracker.mender.io/browse/MEN-4383), [MEN-4429](https://tracker.mender.io/browse/MEN-4429))
+* New workflow deploy_device_configuration
+  ([MEN-4383](https://tracker.mender.io/browse/MEN-4383), [MEN-4429](https://tracker.mender.io/browse/MEN-4429))
+* Configuration deployment triggers device update check
+  ([MEN-4383](https://tracker.mender.io/browse/MEN-4383), [MEN-4429](https://tracker.mender.io/browse/MEN-4429))
+* Aggregated Dependabot Changelogs:
+  * Bumps alpine from 3.12 to 3.13.0.
+  * Bumps [github.com/stretchr/testify](https://github.com/stretchr/testify) from 1.6.1 to 1.7.0.
+    - [Release notes](https://github.com/stretchr/testify/releases)
+    - [Commits](https://github.com/stretchr/testify/compare/v1.6.1...v1.7.0)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.4 to 1.4.5.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.4...v1.4.5)
+
+#### workflows-enterprise (1.4.0)
+
+New changes in workflows-enterprise since 1.3.0:
+
+* Update workflow definitions for
+  provisioning/decomissioning devices in deviceconfig service
+  ([MEN-4383](https://tracker.mender.io/browse/MEN-4383), [MEN-4429](https://tracker.mender.io/browse/MEN-4429))
+* New workflow deploy_device_configuration
+  ([MEN-4383](https://tracker.mender.io/browse/MEN-4383), [MEN-4429](https://tracker.mender.io/browse/MEN-4429))
+* Configuration deployment triggers device update check
+  ([MEN-4383](https://tracker.mender.io/browse/MEN-4383), [MEN-4429](https://tracker.mender.io/browse/MEN-4429))
+* Fix password reset button text
+* Add workflow for sending password verification email
+* New workflow contact_support for handling inbound email
+  requests to Mender support
+* New workflow clear_tenant_tokens for puriging tenant JWTs
+* Aggregated Dependabot Changelogs:
+  * Bumps alpine from 3.12 to 3.13.0.
+  * Bumps alpine from 3.12 to 3.13.0.
+  * Bumps [github.com/stretchr/testify](https://github.com/stretchr/testify) from 1.6.1 to 1.7.0.
+    - [Release notes](https://github.com/stretchr/testify/releases)
+    - [Commits](https://github.com/stretchr/testify/compare/v1.6.1...v1.7.0)
+  * Bumps [github.com/stretchr/testify](https://github.com/stretchr/testify) from 1.6.1 to 1.7.0.
+    - [Release notes](https://github.com/stretchr/testify/releases)
+    - [Commits](https://github.com/stretchr/testify/compare/v1.6.1...v1.7.0)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.4 to 1.4.5.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.4...v1.4.5)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.4 to 1.4.5.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.4...v1.4.5)
+  * Bumps [go.mongodb.org/mongo-driver](https://github.com/mongodb/mongo-go-driver) from 1.4.5 to 1.4.6.
+    - [Release notes](https://github.com/mongodb/mongo-go-driver/releases)
+    - [Commits](https://github.com/mongodb/mongo-go-driver/compare/v1.4.5...1.4.6)
+  * Bumps alpine from 3.13.0 to 3.13.1.
+  * Bumps alpine from 3.13.1 to 3.13.2.
+
+
 ## meta-mender dunfell-v2021.03
 
 _Released 03.05.2021_
