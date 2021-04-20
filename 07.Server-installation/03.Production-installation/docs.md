@@ -613,10 +613,10 @@ installing an Open Source server, please proceed to
 
 <!-- Verification of Open Source instance -->
 
-<!--AUTOMATION: test=for ((n=0;n<10;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 14  || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<11;n++)); do sleep 4 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 14  || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
 <!--AUTOMATION: test=./run stop -->
 <!--AUTOMATION: test=./run up -d -->
-<!--AUTOMATION: test=for ((n=0;n<10;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 14  || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<11;n++)); do sleep 4 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 14  || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
 
 <!-- End of test block for TEST_OPEN_SOURCE=1 -->
@@ -808,10 +808,10 @@ git log --oneline 2.7.0..HEAD
 
 <!-- Verification of Enterprise instance -->
 
-<!--AUTOMATION: test=for ((n=0;n<10;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 15 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<11;n++)); do sleep 4 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 16 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
 <!--AUTOMATION: test=./run stop -->
 <!--AUTOMATION: test=./run up -d -->
-<!--AUTOMATION: test=for ((n=0;n<10;n++)); do sleep 3 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 15 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
+<!--AUTOMATION: test=for ((n=0;n<11;n++)); do sleep 4 && test "$(docker ps | grep menderproduction | grep -c -i 'up')" = 16 || ( echo "some containers are not 'Up'" && docker ps && ./run images && ./run logs && exit 1 ); done -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
 
 <!-- End of test block for TEST_ENTERPRISE=1 -->
