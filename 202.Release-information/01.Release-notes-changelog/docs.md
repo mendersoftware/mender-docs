@@ -93,6 +93,25 @@ New changes in mender-cli since 1.4.0:
 * Bump golang version to 1.14-alpine3.12
 
 
+## mender-binary-delta 1.2.1
+
+_Released 04.16.2021_
+
+### Changelogs
+
+#### mender-binary-delta (1.2.1)
+
+New changes in mender-binary-delta since 1.2.0:
+
+* Remove harmless warning message about unhandled states.
+* Fix failed rollback status when bootloader is the one to roll back.
+* Detect mismatches between `mender_boot_part` and `RootfsPart(A|B)` variables.
+* Fix integer overflow bug in the Artifact creation logic, where the
+  `rootfs_image_checksum` would get truncated through the use of the 32-bit
+  interface for JSON values in the JSON libary used.
+  ([MEN-4516](https://tracker.mender.io/browse/MEN-4516))
+
+
 ## mender-convert 2.4.0
 
 _Released 04.19.2021_
