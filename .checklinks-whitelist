@@ -1,3 +1,16 @@
 {
-    "paths": ["200.API"]
+    "paths": [
+        "200.API"
+    ],
+    "files": [
+        "202.Release-information/01.Release-notes-changelog/10.Mender-server",
+        "202.Release-information/01.Release-notes-changelog/20.Mender-client",
+        "202.Release-information/01.Release-notes-changelog/21.mender-connect",
+        "202.Release-information/01.Release-notes-changelog/22.mender-configure-module",
+        "202.Release-information/01.Release-notes-changelog/30.mender-artifact",
+        "202.Release-information/01.Release-notes-changelog/31.mender-cli",
+        "202.Release-information/01.Release-notes-changelog/32.mender-convert",
+        "202.Release-information/01.Release-notes-changelog/40.meta-mender",
+        "202.Release-information/01.Release-notes-changelog/50.mender-binary-delta"
+    ]
 }
