@@ -77,95 +77,6 @@ New changes in meta-mender since dunfell-v2021.03:
 * Add mender-client 2.3.3
 * Add mender-artifact 3.4.2
 
-
-## Mender 2.4.3
-
-_Released 16.04.2021_
-
-### Statistics
-
-| Developers with the most changesets | |
-|---|---|
-| Ole Petter Orhagen | 8 (32.0%) |
-| Lluis Campos | 8 (32.0%) |
-| Kristian Amlie | 4 (16.0%) |
-| Fabio Tranchitella | 3 (12.0%) |
-| Peter Grzybowski | 1 (4.0%) |
-| Manuel Zedel | 1 (4.0%) |
-
-| Developers with the most changed lines | |
-|---|---|
-| Ole Petter Orhagen | 135 (41.0%) |
-| Lluis Campos | 85 (25.8%) |
-| Kristian Amlie | 81 (24.6%) |
-| Peter Grzybowski | 16 (4.9%) |
-| Fabio Tranchitella | 9 (2.7%) |
-| Manuel Zedel | 3 (0.9%) |
-
-| Developers with the most lines removed | |
-|---|---|
-| Ole Petter Orhagen | 6 (2.9%) |
-
-| Top changeset contributors by employer | |
-|---|---|
-| Northern.tech | 25 (100.0%) |
-
-| Top lines changed by employer | |
-|---|---|
-| Northern.tech | 329 (100.0%) |
-
-| Employers with the most hackers (total 6) | |
-|---|---|
-| Northern.tech | 6 (100.0%) |
-
-### Changelogs
-
-#### create-artifact-worker (1.0.2)
-
-New changes in create-artifact-worker since 1.0.1:
-
-* bugfix to allow spaces in artifact names
-  ([MEN-4179](https://tracker.mender.io/browse/MEN-4179))
-* upgrade mender-artifact to version 3.5.0.
-  This enables the create-artifact-worker to generate artifacts that
-  implement the provides and clear provides fields.
-  ([MEN-4409](https://tracker.mender.io/browse/MEN-4409))
-
-#### integration (2.4.3)
-
-New changes in integration since 2.4.2:
-
-* Upgrade create-artifact-worker to 1.0.2.
-* Upgrade mender to 2.3.3.
-* Upgrade mender-artifact to 3.4.2.
-* Upgrade mender-cli to 1.4.1.
-
-#### mender (2.3.3)
-
-New changes in mender since 2.3.2:
-
-* single-file: Use atomic file operations.
-* single-file: Use stderr for all error messages.
-* Send the inventory after a successful deployment, even though the
-  device has not rebooted.
-  ([MEN-4518](https://tracker.mender.io/browse/MEN-4518))
-* fix, support white spaces in single-file artifacts' names
-  ([MEN-4179](https://tracker.mender.io/browse/MEN-4179))
-
-#### mender-artifact (3.4.2)
-
-New changes in mender-artifact since 3.4.1:
-
-* run fsck on fs image created via SSH snapshot
-  ([MEN-4362](https://tracker.mender.io/browse/MEN-4362))
-
-#### mender-cli (1.4.1)
-
-New changes in mender-cli since 1.4.0:
-
-* Bump golang version to 1.14-alpine3.12
-
-
 ## mender-binary-delta 1.2.1
 
 _Released 04.16.2021_
@@ -1497,6 +1408,242 @@ New changes in workflows-enterprise since 1.3.0:
   * Bumps alpine from 3.13.0 to 3.13.1.
   * Bumps alpine from 3.13.1 to 3.13.2.
 
+
+## mender-binary-delta 1.1.2
+
+_Released 16.04.2021_
+
+#### mender-binary-delta (1.1.2)
+
+New changes in mender-binary-delta since 1.1.0:
+
+* Probe U-Boot env before use to support libubootenv fw tools
+  ([MEN-4246](https://tracker.mender.io/browse/MEN-4246))
+* Remove harmless warning message about unhandled states.
+* Fix failed rollback status when bootloader is the one to roll back.
+* Detect mismatches between `mender_boot_part` and `RootfsPart(A|B)` variables.
+
+
+## Mender 2.6.1
+
+_Released 16.04.2021_
+
+### Statistics
+
+| Developers with the most changesets | |
+|---|---|
+| Fabio Tranchitella | 9 (22.5%) |
+| Ole Petter Orhagen | 9 (22.5%) |
+| Lluis Campos | 9 (22.5%) |
+| Alf-Rune Siqveland | 6 (15.0%) |
+| Kristian Amlie | 4 (10.0%) |
+| Marcin Chalczynski | 2 (5.0%) |
+| Krzysztof Jaskiewicz | 1 (2.5%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Alf-Rune Siqveland | 216 (29.4%) |
+| Ole Petter Orhagen | 208 (28.3%) |
+| Fabio Tranchitella | 122 (16.6%) |
+| Lluis Campos | 104 (14.1%) |
+| Kristian Amlie | 81 (11.0%) |
+| Marcin Chalczynski | 3 (0.4%) |
+| Krzysztof Jaskiewicz | 1 (0.1%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Krzysztof Jaskiewicz | 1 (0.3%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 37 (92.5%) |
+| RnDity | 3 (7.5%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 731 (99.5%) |
+| RnDity | 4 (0.5%) |
+
+| Employers with the most hackers (total 7) | |
+|---|---|
+| Northern.tech | 5 (71.4%) |
+| RnDity | 2 (28.6%) |
+
+
+### Changelogs
+
+#### create-artifact-worker (1.0.2)
+
+New changes in create-artifact-worker since 1.0.1:
+
+* bugfix to allow spaces in artifact names
+  ([MEN-4179](https://tracker.mender.io/browse/MEN-4179))
+* upgrade mender-artifact to version 3.5.0.
+  This enables the create-artifact-worker to generate artifacts that
+  implement the provides and clear provides fields.
+  ([MEN-4409](https://tracker.mender.io/browse/MEN-4409))
+
+#### deployments-enterprise (2.2.1)
+
+New changes in deployments-enterprise since 2.2.0:
+
+* FIX: Phased deployments getting stuck on retries
+
+#### integration (2.6.1)
+
+New changes in integration since 2.6.0:
+
+* Upgrade create-artifact-worker to 1.0.2.
+* Upgrade deployments to 2.2.1.
+* Upgrade deployments-enterprise to 2.2.1.
+* Upgrade inventory to 2.2.1.
+* Upgrade inventory-enterprise to 2.2.1.
+* Upgrade mender to 2.5.1.
+* Upgrade mender-artifact to 3.5.1.
+* Upgrade mender-cli to 1.6.1.
+* Upgrade mender-connect to 1.0.1.
+
+#### mender (2.5.1)
+
+New changes in mender since 2.5.0:
+
+* Change provider in inventory-geo script to ipinfo.io
+* Cache geo-location inventory data in volatile memory
+* Remove deprecated field HttpsClient from config file (gets
+  the rid of bogus SSL warnings on `mender show-artifact` and any other
+  cli operation).
+  ([MEN-4398](https://tracker.mender.io/browse/MEN-4398))
+* single-file: Use atomic file operations.
+* single-file: Use stderr for all error messages.
+* Send the inventory after a successful deployment, even though the
+  device has not rebooted.
+  ([MEN-4518](https://tracker.mender.io/browse/MEN-4518))
+
+#### mender-artifact (3.5.1)
+
+New changes in mender-artifact since 3.5.0:
+
+* Do not change the underlying Artifact unnecessarily
+  Previously the commands modifying an Artifact would always repack an Artifact,
+  no matter whether or not that modifications had actually been made to the
+  Artifact. As an example of this, if you had a signed Artifact compressed with
+  lzma, running `mender-artifact cat <artifact>:/<path-to-file>` would then cat
+  the file, and repack the Artifact with the standard compression, which is
+  `gzip`. Along the way the signature would also be lost.
+  This fix adds the following changes to the tooling:
+  * Modified images are no longer repacked, unless the command run has changed the
+  underlying image. This means that cat and copying out of an image will keep your
+  image intact. While copying into, installing, and removing files from the image
+  will repack the image.
+  * If an image is modified, and needs to be repacked, the existing compression
+  will be respected when repacking. The only exception is the `--compression` flag
+  for `mender-artifact modify` which can override the existing compression when repacking.
+  * `mender-artifact {cat,install,cp,rm}` do not respect the `--compression` flag,
+  but rather prints a warning, that the flag is ignored. If you want to change the
+  compression of your Artifact, run `mender-artifact modify <Artifact>
+  --compression <type>`
+  ([MEN-4502](https://tracker.mender.io/browse/MEN-4502))
+* Add a note about the proper usage of the 'compression' flag in the
+  global help text.
+
+#### mender-cli (1.6.1)
+
+New changes in mender-cli since 1.6.0:
+
+* Fix: Respect the --server flag from config everywhere
+
+#### mender-connect (1.0.1)
+
+New changes in mender-connect since 1.0.0:
+
+* [examples/mender-connect.conf] Remove unnecessary ServerURL
+
+## Mender 2.4.3
+
+_Released 16.04.2021_
+
+### Statistics
+
+| Developers with the most changesets | |
+|---|---|
+| Ole Petter Orhagen | 8 (32.0%) |
+| Lluis Campos | 8 (32.0%) |
+| Kristian Amlie | 4 (16.0%) |
+| Fabio Tranchitella | 3 (12.0%) |
+| Peter Grzybowski | 1 (4.0%) |
+| Manuel Zedel | 1 (4.0%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Ole Petter Orhagen | 135 (41.0%) |
+| Lluis Campos | 85 (25.8%) |
+| Kristian Amlie | 81 (24.6%) |
+| Peter Grzybowski | 16 (4.9%) |
+| Fabio Tranchitella | 9 (2.7%) |
+| Manuel Zedel | 3 (0.9%) |
+
+| Developers with the most lines removed | |
+|---|---|
+| Ole Petter Orhagen | 6 (2.9%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 25 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 329 (100.0%) |
+
+| Employers with the most hackers (total 6) | |
+|---|---|
+| Northern.tech | 6 (100.0%) |
+
+### Changelogs
+
+#### create-artifact-worker (1.0.2)
+
+New changes in create-artifact-worker since 1.0.1:
+
+* bugfix to allow spaces in artifact names
+  ([MEN-4179](https://tracker.mender.io/browse/MEN-4179))
+* upgrade mender-artifact to version 3.5.0.
+  This enables the create-artifact-worker to generate artifacts that
+  implement the provides and clear provides fields.
+  ([MEN-4409](https://tracker.mender.io/browse/MEN-4409))
+
+#### integration (2.4.3)
+
+New changes in integration since 2.4.2:
+
+* Upgrade create-artifact-worker to 1.0.2.
+* Upgrade mender to 2.3.3.
+* Upgrade mender-artifact to 3.4.2.
+* Upgrade mender-cli to 1.4.1.
+
+#### mender (2.3.3)
+
+New changes in mender since 2.3.2:
+
+* single-file: Use atomic file operations.
+* single-file: Use stderr for all error messages.
+* Send the inventory after a successful deployment, even though the
+  device has not rebooted.
+  ([MEN-4518](https://tracker.mender.io/browse/MEN-4518))
+* fix, support white spaces in single-file artifacts' names
+  ([MEN-4179](https://tracker.mender.io/browse/MEN-4179))
+
+#### mender-artifact (3.4.2)
+
+New changes in mender-artifact since 3.4.1:
+
+* run fsck on fs image created via SSH snapshot
+  ([MEN-4362](https://tracker.mender.io/browse/MEN-4362))
+
+#### mender-cli (1.4.1)
+
+New changes in mender-cli since 1.4.0:
+
+* Bump golang version to 1.14-alpine3.12
 
 ## meta-mender dunfell-v2021.03
 
