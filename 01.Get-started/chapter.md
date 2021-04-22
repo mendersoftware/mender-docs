@@ -9,3 +9,4 @@ taxonomy:
 # Get started
 
 Quickly try the most common use cases of Mender.
+
