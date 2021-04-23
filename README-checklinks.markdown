@@ -41,9 +41,14 @@ details about the invalid link, and an error code is returned.
 
 The link-checker has the ability to ignore failing links to certain files, by
 adding the absolute path to the file `.checklinks-whitelist`. The `paths` field
-list is then matched as a substring search to every link in the documentation.
-As such, all links pointing to the `200.API` section is ignored by default, as
-this section is generated independently from `mender-api-docs` repo.
+is used to ignore missing headers while on an existing section and the `files`
+filed is used to ignore missing files.
+
+As such, all links pointing to the `200.API` section and all files in
+`202.Release-information/01.Release-notes-changelog` are ignored by default, as
+these sections are generated independently from `mender-api-docs` and
+`mender-docs-changelog` repositories respectively.
+
 
 ## Note
 
