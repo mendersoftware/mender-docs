@@ -7,7 +7,7 @@ taxonomy:
 
 ## Installation
 
-See [this](https://hub.mender.io/) article on [Mender Hub](https://hub.mender.io).
+See [this](https://hub.mender.io/t/mender-configure-update-module/3529) article on [Mender Hub](https://hub.mender.io).
 
 ## apply-device-config scripts
 
