@@ -10,8 +10,9 @@ This section presents the basic terms used throughout the documentation.
 * _Accepted device_ - An authorized device that can connect to the Mender server
 and receive software updates.
 
-* _Add-on_ (also _Mender Add-on_)- An application which extends Mender beyond
-the software update functionalities.
+* _Add-on_ (also _Mender Add-on_)- An optional extension to Mender for supporting
+use cases beyond core OTA updates features, e.g. Remote terminal.
+Install Mender first, before installing any add-ons
 
 * _Artifact_ -  An archive containing everything needed for an update of a
 device, including the Artifact Payload itself and metadata such as signatures.

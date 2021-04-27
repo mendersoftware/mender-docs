@@ -8,7 +8,6 @@ taxonomy:
 
 # Add-ons
 
-Mender _add-ons_ are applications running on a device and fully integrated
-with the Mender Server using well-defined and open APIs. They are powerful extensions
-bringing the new possibilities and usages to the well-known Mender
-robust and secure over-the-air software updates functionalities.
+Mender _add-ons_ are optional extensions to Mender for supporting
+use cases beyond core OTA updates features, e.g. Remote terminal.
+Install Mender first, before installing any add-ons.
