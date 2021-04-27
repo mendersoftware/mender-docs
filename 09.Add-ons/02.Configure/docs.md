@@ -19,7 +19,7 @@ It is possible to create and apply configuration for the device using Mender UI 
 
 ## How it works
 
-The configuration is applied in a similar way the updates are applied.
+Mender applies configuration in a similar way as software updates.
 `deviceconfig` is a microservice on the server responsible for "translating" a configuration change made in the UI into a deployment.
 It then proceeds to trigger a deployment to the device using the same mechanism used in OTA, the `deployments` microservice. 
 
