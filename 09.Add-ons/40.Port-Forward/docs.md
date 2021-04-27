@@ -38,9 +38,9 @@ using the `mender-cli port-forward` command:
 ```bash
 mender-cli port-forward <Device ID> [tcp|udp/][LOCAL_PORT:[REMOTE_HOST:]]REMOTE_PORT
 ```
-The Device ID is obtained from the device list in the [Mender
+Obtain the Device ID from the device list in the [Mender
 UI](https://hosted.mender.io/ui#/devices). 
-!!!! You can get a list of your device IDs using the `mender-cli devices
+!!!! Alternatively, get a list of your device IDs using the `mender-cli devices
 !!!! list` command.
 ```bash
 DEVICE_ID=<Device ID>
