@@ -11,7 +11,7 @@ process:
 ## Disk images
 
 These disk images (`*.img` or `*.sdimg`) are based on images provided by board
-manufacturers and already have Mender fully integrated. They are used to
+manufacturers and are ready to install the Mender client. They are used to
 provision the device storage for devices without Mender running already.
 
 Mender provides images based on the following distributions:
