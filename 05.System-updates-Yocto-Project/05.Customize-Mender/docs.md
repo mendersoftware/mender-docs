@@ -90,8 +90,10 @@ SRC_URI_append = " file://mender-device-identity"
 
 do_install_append() {
     install -d ${datadir}/mender/identity
-    install -m 755 ${WORKDIR}/mender-device-identity ${datadir}/mender/identity/mender-device-identity
+    install -m 755 ${WORKDIR}/mender-device-identity ${D}/${datadir}/mender/identity/mender-device-identity
 }
+
+FILES_${PN} += "${datadir}/*"
 ```
 
 Replace `<DIRECTORY-WITH-IDENTITY-SCRIPT>` with the path to the `mender-device-identity` file, relative to the
@@ -121,8 +123,10 @@ SRC_URI_append = " file://mender-inventory-custom-attribute"
 
 do_install_append() {
     install -d ${datadir}/mender/inventory
-    install -m 755 ${WORKDIR}/mender-inventory-custom-attribute ${datadir}/mender/inventory/mender-inventory-custom-attribute
+    install -m 755 ${WORKDIR}/mender-inventory-custom-attribute ${D}/${datadir}/mender/inventory/mender-inventory-custom-attribute
 }
+
+FILES_${PN} += "${datadir}/*"
 ```
 
 Replace `<DIRECTORY-WITH-INVENTORY-SCRIPT>` with the path to the `mender-inventory-custom-attribute`
@@ -188,8 +192,10 @@ SRC_URI_append = " file://custom-update-module"
 
 do_install_append() {
     install -d ${datadir}/mender/modules/v3
-    install -m 755 ${WORKDIR}/custom-update-module ${datadir}/mender/modules/v3/custom-update-module
+    install -m 755 ${WORKDIR}/custom-update-module ${D}/${datadir}/mender/modules/v3/custom-update-module
 }
+
+FILES_${PN} += "${datadir}/*"
 ```
 
 Replace `<DIRECTORY-WITH-UPDATE-MODULE>` with the path to the
@@ -246,9 +252,10 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-MENDER-CONNECT-CONF>"
 SRC_URI_append = " file://mender-connect.conf"
 
 do_install_append() {
-    install -m 600 ${WORKDIR}/mender-connect.conf ${datadir}/mender/mender-connect.conf
+    install -m 600 ${WORKDIR}/mender-connect.conf ${D}/${datadir}/mender/mender-connect.conf
 }
 
+FILES_${PN} += "${datadir}/*"
 ```
 
 Replace <DIRECTORY-WITH-MENDER-CONNECT-CONF> with the path to the `mender-connect.conf` file, relative to the recipe file.
