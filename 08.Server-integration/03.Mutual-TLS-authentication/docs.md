@@ -4,6 +4,12 @@ taxonomy:
     category: docs
 ---
 
+<!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" != 1 ]; then echo "TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->
+
+<!-- Cleanup code --> 
+<!-- Stops the mTLS ambassador if running  --> 
+<!-- AUTOMATION: execute=function cleanup() { if [ `docker ps | grep registry.mender.io/mendersoftware/mtls-ambassador | sed 's/ .*//'` ]; then docker stop `docker ps | grep registry.mender.io/mendersoftware/mtls-ambassador | sed 's/ .*//'`; fi }  -->
+<!-- AUTOMATION: execute=trap cleanup EXIT -->
 !!!!! Mutual TLS authentication is only available in the Mender Enterprise plan.
 !!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
 !!!!! for an overview of all Mender plans and features.
@@ -204,16 +210,26 @@ You need the following certificates to start the service:
 * `ca.crt`, the Certification Authority's certificate used to sign the server and client certificates.
 
 You also need to specify a username and password pair. The ambassador will use it to connect to the Mender server to authorize clients who connect using a valid certificate signed by the known CA.
+<!--AUTOMATION: ignore -->
+```bash
+  USER=mtls@mender.io /
+  PASSWORD=password / 
+  BACKEND=https://hosted.mender.io
+``` 
+<!-- AUTOMATION: execute=USER=$HM_TESTS_USER -->
+<!-- AUTOMATION: execute=PASSWORD=$HM_TESTS_PASSWORD -->
+<!-- AUTOMATION: execute=BACKEND=https://hosted.mender.io -->
 
 To start the edge proxy, run the following command:
 
+<!-- AUTOMATION: execute={-->
 <!--AUTOVERSION: "registry.mender.io/mendersoftware/mtls-ambassador:%"/mtls-ambassador-->
 ```bash
 docker run \
   -p 443:8080 \
-  -e MTLS_MENDER_USER=mtls@mender.io \
-  -e MTLS_MENDER_PASS=password \
-  -e MTLS_MENDER_BACKEND=https://hosted.mender.io \
+  -e MTLS_MENDER_USER=$USER \
+  -e MTLS_MENDER_PASS=$PASSWORD \
+  -e MTLS_MENDER_BACKEND=$BACKEND \
   -e MTLS_DEBUG_LOG=true \
   -v $(pwd)/server-cert.pem:/etc/mtls/certs/server/server.crt \
   -v $(pwd)/server-private.key:/etc/mtls/certs/server/server.key \
@@ -221,6 +237,20 @@ docker run \
   registry.mender.io/mendersoftware/mtls-ambassador:master
 ```
 
+<!-- AUTOMATION: execute=} &-->
+
+<!-- AUTOMATION: execute=for i in {1..10}  -->
+<!-- AUTOMATION: execute=do -->
+<!-- AUTOMATION: execute=sleep 1 -->
+<!-- AUTOMATION: execute=if test "$(docker ps | grep registry.mender.io/mendersoftware/mtls-ambassador | grep up -c -i)" = 1 ; -->
+<!-- AUTOMATION: execute=then-->
+<!-- AUTOMATION: test=exit 0-->
+<!-- AUTOMATION: execute=else-->
+<!-- AUTOMATION: execute=echo "The mTLS ambassador container is not 'Up', retrying" -->
+<!-- AUTOMATION: execute=fi; -->
+<!-- AUTOMATION: execute=done; -->
+
+<!--AUTOMATION: test=echo "The mTLS container never went 'Up'" && exit 1; -->
 Replace the following values with the ones that match your configuration:
 
 * **MTLS_MENDER_USER** and **MTLS_MENDER_PASS** are the user security credentials that allow the mTLS ambassador to connect to the Mender server and authorize new devices connecting using the mTLS authentication.
@@ -239,6 +269,7 @@ Now that we have generated a key and certificate for the device and signed the c
 
 Find the location of the [key and certificate we generated](#generate-certificates) and copy it into place on the data partition by running the following commands:
 
+<!--AUTOMATION: ignore -->
 ```bash
 mender-artifact install -m 600 device-private.key mender-disk-image.sdimg:/data/mender/mender-cert-private.pem
 mender-artifact install -m 644 device-cert.pem mender-disk-image.sdimg:/data/mender/mender-cert.pem
@@ -250,6 +281,7 @@ mender-artifact install -m 644 device-cert.pem mender-disk-image.sdimg:/data/men
 
 First, copy the existing `mender.conf` out of the disk image, so that we can edit it.
 
+<!--AUTOMATION: ignore -->
 ```bash
 mender-artifact cp mender-disk-image.sdimg:/etc/mender/mender.conf mender.conf
 ```
@@ -278,6 +310,7 @@ Make sure that the result is valid JSON, in particular that commas appear on eve
 
 Then copy the modified file back into the disk image:
 
+<!--AUTOMATION: ignore -->
 ```bash
 mender-artifact cp mender.conf mender-disk-image.sdimg:/etc/mender/mender.conf
 ```
@@ -289,6 +322,7 @@ mender-artifact cp mender.conf mender-disk-image.sdimg:/etc/mender/mender.conf
 
 Now provision the storage with this new disk image, just like you have done in the past. If you are using a SD card, insert it into your workstation and use a command similar to the following:
 
+<!--AUTOMATION: ignore -->
 ```bash
 sudo dd if=<PATH-TO-IMAGE>.sdimg of=<DEVICE> bs=1M && sudo sync
 ```
