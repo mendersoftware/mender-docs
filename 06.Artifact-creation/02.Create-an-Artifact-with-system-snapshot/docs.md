@@ -12,8 +12,8 @@ system. When this device has been tested and the environment should be
 replicated, a snapshot can be taken with Mender. This results in a file system
 image and Mender Artifact that can be deployed to the rest of the device fleet.
 
-!!!!!! This feature is fully supported by the
-!!!!!! following filesystems: ext[234], XFS, JFS, btrfs, f2fs, and ReiserFS.
+! This feature is fully supported by the
+! following filesystems: ext[234], XFS, JFS, btrfs, f2fs, and ReiserFS.
 
 ## Creating a snapshot on the golden device
 The `mender` executable provides a command `mender snapshot dump` for dumping a 
