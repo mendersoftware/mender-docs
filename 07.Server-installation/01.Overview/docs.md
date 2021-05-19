@@ -19,7 +19,7 @@ The integration environment brings together the following services:
 - [Mender Create Artifact Worker](https://github.com/mendersoftware/create-artifact-worker?target=_blank)
 - API Gateway based on [traefik](https://doc.traefik.io/traefik/?target=_blank)
 - [Minio](https://www.minio.io?target=_blank) object storage
-- [NATS.io](https://nats.io?target=_blank) messageing system
+- [NATS.io](https://nats.io?target=_blank) messaging system
 
 Services are delivered in form of Docker images, available from
 official [Mender Docker repository](https://hub.docker.com/r/mendersoftware/?target=_blank).
