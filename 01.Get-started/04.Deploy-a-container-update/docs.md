@@ -166,6 +166,15 @@ will see that there is a image downloaded on the device:
 >hello-world         <none>              851163c78e4a        4 months ago        4.85kB
 >```
 
+You can also see that the container was started, but since the hello-world
+container does not contain a daemon it exited immediately:
+
+>```bash
+>pi@raspberrypi:~$ sudo docker ps -a | head
+>CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
+>72e6cf80fa6a   hello-world   "/hello"   45 seconds ago   Exited (0) 42 seconds ago             optimistic_shaw
+>```
+
 The [Docker Update Module](https://hub.mender.io/t/docker/324?target=_blank) will
 download and run the specified images from e.g https://hub.docker.io.
 
