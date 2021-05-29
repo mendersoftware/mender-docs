@@ -1,5 +1,5 @@
-<!--AUTOVERSION: "mendersoftware/mender-docs.svg?branch=%"/ignore-->
-[![Build Status](https://travis-ci.org/mendersoftware/mender-docs.svg?branch=master)](https://travis-ci.org/mendersoftware/mender-docs)
+<!--AUTOVERSION: "mender-docs/badges/%/pipeline.svg"/ignore-->
+[![Build Status](https://gitlab.com/Northern.tech/Mender/mender-docs/badges/master/pipeline.svg)](https://gitlab.com/Northern.tech/Mender/mender-docs/pipelines)
 
 # Mender Documentation
 
