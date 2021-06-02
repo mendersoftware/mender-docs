@@ -300,4 +300,4 @@ Then insert the SD card back into your device and boot it.
 
 If everything went as intended, your device shows up as `accepted` status in the Mender server. You can log in to the Mender UI to ensure your device appears on the device list and reports inventory.
 
-If your device is not showing up, make sure you installed the certificates correctly - both on the server and on the device. Check client logs and/or server logs for error messages that can identify what is wrong. See the [troubleshooting section on connecting devices](../../201.Troubleshoot/05.Device-Runtime/docs.md#mender-server-connection-issues) in this case.
+If your device is not showing up, make sure you installed the certificates correctly - both on the server and on the device. Check client logs and/or server logs for error messages that can identify what is wrong. See the [troubleshooting section on connecting devices](../../301.Troubleshoot/05.Device-Runtime/docs.md#mender-server-connection-issues) in this case.

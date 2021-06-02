@@ -44,8 +44,8 @@ adding the absolute path to the file `.checklinks-whitelist`. The `paths` field
 is used to ignore missing headers while on an existing section and the `files`
 filed is used to ignore missing files.
 
-As such, all links pointing to the `200.API` section and all files in
-`202.Release-information/01.Release-notes-changelog` are ignored by default, as
+As such, all links pointing to the `200.Server-side-API` section and all files in
+`302.Release-information/01.Release-notes-changelog` are ignored by default, as
 these sections are generated independently from `mender-api-docs` and
 `mender-docs-changelog` repositories respectively.
 
@@ -54,7 +54,7 @@ these sections are generated independently from `mender-api-docs` and
 
 A few things to keep in mind:
 
-* The checker does not verify sections in the `200.API` folder, as this
+* The checker does not verify sections in the `200.Server-side-API` folder, as this
   section is generated independently from `mender-api-docs` repo, and
   not present when the tool is run.
 * The header slug is a modified Github header slugger, which collapses multiple dashes into one. That is slug(---) -> slug(-). This is because Grav, which our documentation uses does not fully support the Github slug format.

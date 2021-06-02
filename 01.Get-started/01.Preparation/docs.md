@@ -68,5 +68,5 @@ Share and learn from other Mender users.
 
 * Learn more about Mender by reading the rest of the documentation, for example
 the [Overview](../../02.Overview/01.Introduction/docs.md),
-[Troubleshoot](../../201.Troubleshoot/) or
+[Troubleshoot](../../301.Troubleshoot/) or
 [Mender FAQ](https://mender.io/plans/faq?target=_blank) sections.

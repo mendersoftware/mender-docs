@@ -43,7 +43,7 @@ latest stable release, while for `master` are master. Therefore
 these conflicts are resolved by taking master "text" with hosted
 "versions".
 
-#### 08.Server-installation and 201.Troubleshoot/Mender-Server
+#### 08.Server-installation and 301.Troubleshoot/Mender-Server
 
 These sections are completely overridden in `hosted` branch, so
 conflicts are resolved here by choosing "our" version.
@@ -71,5 +71,5 @@ The pull request shall target `hosted` branch. The main things
 to look for in the review are:
 
 * References to Mender components' versions are correct.
-* 08.Server-installation and 201.Troubleshoot/Mender-Server sections
+* 08.Server-installation and 301.Troubleshoot/Mender-Server sections
   have the overridden content.
