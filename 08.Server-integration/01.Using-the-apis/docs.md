@@ -67,7 +67,7 @@ Next, set a variable with your user email on the Mender server (replace its cont
 MENDER_SERVER_USER='myusername@example.com'
 ```
 
-Now obtain a management API JSON Web Token by using the [login API](../../200.Server-side-API/?target=_blank#login):
+Now obtain a management API JSON Web Token by using the [login API](../../200.Server-side-API/?target=_blank#management-api-user-administration-and-authentication-login):
 
 ```bash
 JWT=$(curl -X POST -u $MENDER_SERVER_USER $MENDER_SERVER_URI/api/management/v1/useradm/auth/login)

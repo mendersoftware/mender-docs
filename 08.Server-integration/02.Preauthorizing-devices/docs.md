@@ -145,7 +145,7 @@ Secondly, set the contents of the device public key you generated above in a sec
 DEVICE_PUBLIC_KEY="$(cat keys-client-generated/public.key | awk 1 ORS='\\n')"
 ```
 
-Then simply call the [API to preauthorize a device](../../200.Server-side-API/?target=_blank#post__devices):
+Then simply call the [API to preauthorize a device](../../200.Server-side-API/?target=_blank#management-api-device-authentication-preauthorize):
 
 ```bash
 curl -H "Authorization: Bearer $JWT" -H "Content-Type: application/json" -X POST -d "{ \"identity_data\" : $DEVICE_IDENTITY_JSON_OBJECT_STRING, \"pubkey\" : \"$DEVICE_PUBLIC_KEY\" }" $MENDER_SERVER_URI/api/management/v2/devauth/devices
