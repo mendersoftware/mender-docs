@@ -40,7 +40,7 @@ server.
 
 !! Please make your device has the clock correctly set up. Otherwise certificate
 !! verification will become invalid. See
-!! [certificate troubleshooting](../../201.Troubleshoot/03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid)
+!! [certificate troubleshooting](../../301.Troubleshoot/03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid)
 !! for more information.
 
 

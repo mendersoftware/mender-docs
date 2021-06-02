@@ -50,7 +50,7 @@ introduces example tools provided in Mender integration repository.
 Before upgrading it is advisable to clean up any leftover devices from the deviceauth database.
 These can sometimes happen due to device decommissioning.
 You can find instructions on how to clean up the deviceauth database
-in the [Troubleshoot](../../201.Troubleshoot/04.Mender-Server/docs.md) chapter.
+in the [Troubleshoot](../../301.Troubleshoot/04.Mender-Server/docs.md) chapter.
 
 ## Updating your local repository
 

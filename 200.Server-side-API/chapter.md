@@ -1,5 +1,5 @@
 ---
-title: API
+title: Server-side API
 redirect: /../api/development/
 ---
 <!--AUTOVERSION: "redirect: /../api/development/"/integration/complain-->

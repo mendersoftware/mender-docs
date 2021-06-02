@@ -75,8 +75,7 @@ def get_version_of(repo):
 def walk_tree():
     exclude_dirs = [
         "node_modules",  # Several readme.md with version strings
-        "200.APIs",  # Might contain example versions (2.4.x and older)
-        "202.Release-information",  # References to old versions
+        "302.Release-information",  # References to old versions
     ]
     for dirpath, dirs, filenames in os.walk(".", topdown=True):
         dirs[:] = list(filter(lambda x: not x in exclude_dirs, dirs))
