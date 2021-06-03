@@ -2,8 +2,6 @@
 title: Device-side API
 taxonomy:
     category: docs
-github:
-    enabled: false
 ---
 
 ### Chapter 12

@@ -2,8 +2,6 @@
 title: Overview
 taxonomy:
     category: docs
-github:
-    enabled: false
 ---
 
 This section describes the Device-side API for the Mender clients. The Device-side API constitutes
