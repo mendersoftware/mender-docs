@@ -181,29 +181,33 @@ sub   rsa3072 2020-11-13 [E] [expires: 2022-11-13]
    ```
 3. Add the Mender repository to your sources list by selecting the architecture
    matching your device.
+
+   First in order to make sure that there are no mender sources in
+   '/etc/apt/sources.list' lingering from a previous install, run
+
+   ```bash
+      sed -i.bak -e "\,https://downloads.mender.io/repos/debian,d" /etc/apt/sources.list
+   ```
+
+   Then add the sources:
+
    [ui-tabs position="top-left" active="0" theme="lite" ]
    [ui-tab title="armhf"]
    ```bash
-   sudo add-apt-repository \
-           "deb [arch=armhf] https://downloads.mender.io/repos/debian \
-           stable \
-           main"
+    echo "deb [arch=armhf] https://downloads.mender.io/repos/debian stable main" \
+    | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
    ```
    [/ui-tab]
    [ui-tab title="arm64"]
    ```bash
-   sudo add-apt-repository \
-           "deb [arch=arm64] https://downloads.mender.io/repos/debian \
-           stable \
-           main"
+    echo "deb [arch=arm64] https://downloads.mender.io/repos/debian stable main" \
+    | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
    ```
    [/ui-tab]
    [ui-tab title="amd64"]
    ```bash
-   sudo add-apt-repository \
-           "deb [arch=amd64] https://downloads.mender.io/repos/debian \
-           stable \
-           main"
+    echo "deb [arch=amd64] https://downloads.mender.io/repos/debian stable main" \
+    | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
    ```
    [/ui-tab]
    [/ui-tabs]
