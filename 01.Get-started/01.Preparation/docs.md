@@ -19,7 +19,7 @@ To get started testing Mender, create a hosted Mender account by
 !!! We provide a 12 month free evaluation period of the Mender Enterprise plan
 !!! for up to 10 devices. No credit card is required to signup.
 
-## Next step
+## Next steps
 
 With an hosted Mender account in place, it is time to prepare a device to
 connect to hosted Mender.
