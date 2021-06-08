@@ -20,14 +20,9 @@ taxonomy:
 
 !!! You can save time by using [hosted Mender](https://hosted.mender.io?target=_blank), a secure Mender server ready to use, maintained by the Mender developers.
 
-This is a step by step tutorial for deploying the Mender Server for production
-environments, and will cover relevant security and reliability aspects of Mender
-production installations.  The Mender backend services can be deployed to
-production using a skeleton provided in the `production` directory of the
-[integration](https://github.com/mendersoftware/integration?target=_blank)
-repository. Most of the steps are the same whether you are installing the Open
-Source or Enterprise edition of the Mender Server, but there are some extra
-steps that are covered in the [Enterprise subsection](#enterprise).
+FIXME
+- careful with the 'step by step' wording, k8s/helm charts put much more responsibility on the user, e.g. cluster setup, 3rd party deps setup (separate helm charts for mongo and minio), helm param customizations for cloud provider (e.g. service load balancers), same for dns (external-dns sidecar, etc)
+- 'production' directory in integration is irrelevant ATM; all that's needed for install is at https://github.com/mendersoftware/mender-helm
 
 ! If you have already installed an Open Source server and wish to upgrade to
 ! Enterprise, you should follow [the Enterprise upgrade
@@ -36,18 +31,12 @@ steps that are covered in the [Enterprise subsection](#enterprise).
 
 ## Prerequisites
 
-- A machine with Ubuntu 18.04 (e.g. an instance from AWS EC2 or DigitalOcean) with the following tools installed:
-  - git
-  - [Docker Engine](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/?target=_blank), version **17.03 or later**.
-  - [Docker Compose](https://docs.docker.com/compose/install/?target=_blank), version **1.9 or later**.
-- Minimum of 10 GB free disk space and 4 GB RAM available for Mender and its services.
-    - This heavily depends on your scale and environment, the supported [Mender Enterprise](https://mender.io/product/mender-enterprise?target=_blank) edition is recommended for larger-scale environments.
-- A public IP address assigned and port 443 publicly accessible.
-- Allocated DNS names for the Mender API Gateway and the Mender Storage Proxy
-  that resolve to the public IP of the Mender server by the devices. By following this tutorial
-  all services will be hosted on the same server, so you can use just one domain name for both.
-  If you are just testing you can use a temporary domain name obtained from services like
-  [https://ipq.co](https://ipq.co?target=_blank).
+FIXME
+- user needs a k8s cluster, on whichever selected provider - far out of scope for this doc; no git, docker, compose
+- listed limits are not that relevant anymore - omit or advise to consult helm chart defaults
+- in the simplest case, just one DNS is needed; traefik took over the 'storage-proxy' responsibilities
+we do have a new *new storage proxy* as a workaround for old client incompatible with traefik, but new users
+won't be interested
 
 If you are setting up a Mender Enterprise server, you will also need:
 
@@ -55,164 +44,38 @@ If you are setting up a Mender Enterprise server, you will also need:
   Mender Enterprise. Please email [contact@mender.io]()
   to receive an evaluation account.
 
-!!! It is very likely possible to use other Linux distributions and versions. However, we recommend using this exact environment for running Mender because it is known to work and you will thus avoid any issues specific to your environment if you use this reference.
+FIXME
+not relevant anymore, environment is now a k8s cluster
 
 
 ## Deployment steps
 
-The tutorial will use a publicly available Mender integration repository. Then
-proceed with setting up a local branch, preparing deployment configuration from
-a template, committing the changes locally. Keeping deployment configuration in
-a git repository ensures that the history of changes is tracked and subsequent
-updates can be easily applied.
+FIXME
+- we'll use only https://github.com/mendersoftware/mender-helm
+- no more git magic - user can maintain their helm values however they want, out of scope
 
-At the end of this tutorial you will have:
-
-- production configuration in a single `docker-compose` file
-- a running Mender backend cluster
-- persistent service data is stored in Docker volumes:
-  - artifact storage
-  - MongoDB data
-- SSL certificate for the API Gateway
-- SSL certificate for the storage domain
-- a set of keys for generating and validating access tokens
+FIXME
+- at the end of this tutorial the user will have a versioned mender release installed onto
+their cluster
+- we'll provide some minimal helm value override layers that will aid in setting up os vs enterprise, 
+aws vs minio; user must fill them in
+- further customizations are possible, helm chart exposes a large number of attributes - consult the
+chart's readme
 
 Consult the section on [certificates and keys](../04.Certificates-and-keys/docs.md) for details on
 how the certificates and keys are used in the system.
 
-#### Docker compose naming scheme
-
-`docker-compose` implements a particular naming scheme for containers, volumes
-and networks that prefixes each object it creates with project name. By default,
-the project is named after the directory the main compose file is located in.
-The production configuration template provided in the repository explicitly sets
-project name to `menderproduction`.
-
-`docker-compose` automatically assigns a
-`com.docker.compose.project=menderproduction` label to the created containers. The
-label can be used when filtering output of commands such as `docker ps`.
-
+FIXME
+irrelevant
 
 ### Basic preparation setup
 
-Start off by cloning the Mender integration repository into a local directory
-named `mender-server`:
-
-<!--AUTOVERSION: "-b %"/integration -->
-```bash
-git clone -b master https://github.com/mendersoftware/integration mender-server
-```
-
-> ```
-> Cloning into 'deployment'...
-> remote: Counting objects: 1117, done.
-> remote: Compressing objects: 100% (11/11), done.
-> remote: Total 1117 (delta 1), reused 0 (delta 0), pack-reused 1106
-> Receiving objects: 100% (1117/1117), 233.85 KiB | 411.00 KiB/s, done.
-> Resolving deltas: 100% (678/678), done.
-> Checking connectivity... done.
-> ```
-
-Enter the directory:
-
-```bash
-cd mender-server
-```
-
-Prepare a branch where all deployment related changes will be kept:
-
-```bash
-git checkout -b my-production-setup
-```
-
-Enter the `production` directory:
-
-```bash
-cd production
-```
-
-Copy the production template to its own file:
-
-```bash
-cp config/prod.yml.template config/prod.yml
-```
-
-```bash
-ls -l *
-```
-
-> ```
-> -rwxr-xr-x 1 user user  725 Sep 17 14:14 run
->
-> config:
-> total 24
-> -rw-r--r-- 1 user user  566 Sep 17 14:14 enterprise.yml.template
-> -rw-r--r-- 1 user user 5814 Sep 10 15:44 prod.yml
-> -rw-r--r-- 1 user user 5752 Sep 17 14:14 prod.yml.template
-> ```
-
-The template includes a few files:
-
-- `run` - a convenience helper that invokes `docker-compose` by passing the required
-  compose files; arguments passed to `run` in command line are forwarded
-  directly to `docker-compose`
-
-- `prod.yml` and `prod.yml.template` - contains deployment-specific
-  configuration, builds on top of `docker-compose.yml` (located at the root of
-  integration repository)
-
-- `enterprise.yml.template` - configuration for running an Enterprise instance
-  of the Mender server. This topic is covered separately in [the Enterprise
-  part](#enterprise) of the Production installation tutorial
-
-!!! If an `enterprise.yml` file exists in the `config` directory, this will
-!!! automatically turn on Enterprise features in the backend service. If you
-!!! want to use the Open Source edition (not Enterprise), please remove
-!!! `enterprise.yml` from the `config` directory.
-
-At this point all changes should be committed to the repository:
-
-<!--AUTOMATION: ignore -->
-```bash
-git add .
-```
-
-<!--AUTOMATION: ignore -->
-```bash
-git commit -m 'production: initial template'
-```
-> ```
-> [my-production-setup 556cc2e] production: initial template
->  1 file changed, 54 insertions(+)
->  create mode 100644 production/config/prod.yml
-> ```
-
-Assuming that current working directory is still `production`, download
-necessary Docker images:
-
-```bash
-./run pull
-```
-
-> ```
-> Pulling mender-mongo                  ... done
-> Pulling mender-deviceconfig           ... done
-> Pulling mender-useradm                ... done
-> Pulling mender-workflows-worker       ... done
-> Pulling mender-create-artifact-worker ... done
-> Pulling mender-workflows-server       ... done
-> Pulling mender-device-auth            ... done
-> Pulling mender-gui                    ... done
-> Pulling mender-inventory              ... done
-> Pulling mender-api-gateway            ... done
-> Pulling minio                         ... done
-> Pulling mender-deployments            ... done
-> Pulling mender-nats                   ... done
-> Pulling mender-deviceconnect          ... done
-> Pulling mender-mongo (mongo:4.4)...
-> ```
-
-! Using the `run` helper script may fail when local user has insufficient permissions to reach a local docker daemon. Make sure that the Docker installation was completed successfully and the user has sufficient permissions (typically the user must be a member of the `docker` group).
+FIXME:
+- tell the user to prep the cluster and kubectl context
+- clone mender-helm, checkout tag
+- make package
+- there is no 'prod' template anymore, but the interesting files are in mender-helm/install; they are the scaffolding now
+- user must generate/obtain and paste certs and some environment into these 
 
 !! Please note that Docker Hub enforced limits on pulls originating
 !! from anonymous users to 100 per 6 hours (see: [Docker pricing](https://www.docker.com/pricing)).
@@ -222,248 +85,63 @@ necessary Docker images:
 
 ### Certificates and keys
 
-First, set the public domain name of your server (the URL your devices will reach your Mender server on):
+FIXME
+- just 1 domain, mender.example.com
+- (second only if using old clients and need storage proxy)
+- suggestion: get rid of keygen; the structure will not be used anymore,
+also it's incorrect (generates 0-depth certs, generates for storage proxy by default)
+- maybe instead just advise the user to prep keys and certs using 'known methods' (openssl, etc)
+- important:
+   - if self signed: must not be 0 depth; user must have their own root CA cert
+   - cert must respect SAN (domain in subjectAltNames, not CN)
 
-```bash
-API_GATEWAY_DOMAIN_NAME="mender.example.com"  # NB! replace with your server's public domain name
-STORAGE_PROXY_DOMAIN_NAME="s3.docker.mender.io"  # change if you are using a different domain name than the the default one
-```
 
-Prepare certificates using the helper script `keygen`:
-
-```bash
-CERT_API_CN=$API_GATEWAY_DOMAIN_NAME CERT_STORAGE_CN=$STORAGE_PROXY_DOMAIN_NAME ../keygen
-```
-
-> ```
-> Generating a 256 bit EC private key
-> writing new private key to 'private.key'
-> ...
-> All keys and certificates have been generated in directory keys-generated.
-> Please include them in your docker compose and device builds.
-> For more information please see https://docs.mender.io/Administration/Certificates-and-keys.
-> ```
-
-Your local directory tree should now look like this:
-<!--AUTOMATION: ignore -->
-```bash
-├── keys-generated
-│   ├── certs
-│   │   ├── api-gateway
-│   │   │   ├── cert.crt
-│   │   │   └── private.key
-│   │   └── server.crt
-│   │   └── storage-proxy
-│   │       ├── cert.crt
-│   │       └── private.key
-│   └── keys
-│       ├── deviceauth
-│       │   └── private.key
-│       └── useradm
-│           └── private.key
-├── config/enterprise.yml.template
-├── config/prod.yml
-├── config/prod.yml.template
-└── run
-```
-
-The production template file `prod.yml` is already configured to load keys and
-certificates from locations created by the `keygen` script. If you wish to use a
-different set of certificates or keys, please consult the
-[relevant documentation](../04.Certificates-and-keys/docs.md).
-
-Next, we can add and commit generated keys and certificates:
-
-! Note that the following steps will commit your keys in plaintext to the git history. Make sure to keep all keys secure. Use encryption if needed and decrypt the keys before using them in containers; see the section below on [encrypting keys](#encrypting-keys-optional) for some examples.
-
-```bash
-git add keys-generated
-```
-
-```bash
-git commit -m 'production: adding generated keys and certificates'
-```
-
-> ```
-> [my-production-setup fd8a397] production: adding generated keys and certificates
->  6 files changed, 108 insertions(+)
->  create mode 100644 production/keys-generated/certs/api-gateway/cert.crt
->  create mode 100644 production/keys-generated/certs/api-gateway/private.key
->  create mode 100644 production/keys-generated/certs/server.crt
->  create mode 100644 production/keys-generated/certs/storage-proxy/cert.crt
->  create mode 100644 production/keys-generated/certs/storage-proxy/private.key
->  create mode 100644 production/keys-generated/keys/deviceauth/private.key
->  create mode 100644 production/keys-generated/keys/useradm/private.key
-> ```
+FIXME
+- no more git magic
 
 The API Gateway and Storage Proxy certificates generated here need to be made
 available to the Mender client.
 Consult the section on [building for production](../../05.System-updates-Yocto-Project/06.Build-for-production/docs.md)
 for a description on how to include the certificates in the client builds.
+GOTCHA: SkipVerify for client seems to have no effect, if self signed, root CA cert must be added to trusted certs;
+ServerCertificate has no effect either
+
 
 !! Only certificates need to be made available to devices or end users. Private keys should never be shared.
 
 
-#### Encrypting keys (optional)
+FIXME
+not relevant anymore?
 
-A simple method for encrypting keys is to
-use the [GNU Privacy Guard](https://www.gnupg.org/?target=_blank) tool. Instead of committing
-plaintext keys to the repository, we will `tar` and encrypt the entire
-`keys-generated` directory structure, then commit it to the repository as a
-single binary blob.
-
-The entire directory structure can be encrypted with the following command:
-
-<!--AUTOMATION: ignore=optional step -->
-```bash
-tar c keys-generated |  gpg --output keys-generated.tar.gpg --symmetric
-Enter passphrase:
-```
-
-<!--AUTOMATION: ignore=optional step -->
-```bash
-rm -rf keys-generated
-```
-
-<!--AUTOMATION: ignore=optional step -->
-```bash
-ls -l
-```
-> ```
-> total 20
-> drwxrwxr-x. 1 user group 4096 01-30 11:08 config
-> -rw-rw-r--. 1 user group 5094 01-30 11:24 keys-generated.tar.gpg
-> -rwxrwxr-x. 1 user group  173 01-27 14:16 run
-> ```
-
-Keys need to be decrypted before bringing the whole environment up:
-
-<!--AUTOMATION: ignore=optional step -->
-```bash
-gpg --decrypt keys-generated.tar.gpg | tar xvf -
-gpg: AES encrypted data
-Enter passphrase:
-```
-
-When using encryption, commit `keys-generated.tar.gpg` instead of the
-`keys-generated` directory structure to the repository, like this:
-
-<!--AUTOMATION: ignore=optional step -->
-```bash
-git add keys-generated.tar.gpg
-```
-
-<!--AUTOMATION: ignore=optional step -->
-```bash
-git commit -m 'production: adding generated keys and certificates'
-```
-
-> ```
-> [my-production-setup 237af44] production: adding generated keys and certificates
->  1 file changed, 111 insertions(+)
->  create mode 100644 production/keys-generated.tar.gpg
-> ```
-
+FIXME
+- the following sections could be streamlined, no need to go through each component one by one
+- the idea is: user picks installation type (os, enterprise, minio/aws), picks up templates from /mender-helm/install, 
+and simply fills the fields we suggest
 
 ### Persistent storage
 
-Persistent storage of backend services' data is implemented using
-named [Docker volumes](https://docs.docker.com/engine/admin/volumes/volumes/?target=_blank).
-The template is configured to mount the following volumes:
+FIXME
+- it's now up to the user to set up persistent volumes ('persistent volume claims') for mongo and minio
+- (this is done via the cloud provider-specific addons/annotations in user's custom helm values files - out of scope)
+- both minio and mongo are installed from their own helm charts now (see helm readme) - refer user to that
 
-- `mender-artifacts` - artifact objects storage
-- `mender-db` - mender services databases data
-
-Create these volumes with the following commands:
-
-```bash
-docker volume create --name=mender-artifacts
-docker volume create --name=mender-db
-```
-
-!!! The storage location of these volumes depends on your docker configuration. You can check the path for a specific volume by running
-!!! ```bash
-!!! docker volume inspect --format '{{.Mountpoint}}' mender-artifacts
-!!! ```
-
-
-### Configuration
-
-The deployment configuration in `config/prod.yml` now needs to be updated.
-
+FIXME
+irrelevant
 
 #### Minio
 
-The keys `MINIO_ACCESS_KEY` and `MINIO_SECRET_KEY` control
-credentials for uploading artifacts into the object store. Since Minio is a S3 API
-compatible service, these settings correspond to Amazon's AWS Access Key ID and
-Secret Access Key respectively.
-
-First, generate a secret key for Minio with the `pwgen` utility:
-
-!!! On the Debian family of distributions you can install `pwgen` with `apt-get install pwgen`.
-
-```bash
-MINIO_SECRET_KEY_GENERATED=$(pwgen 16 1) && echo $MINIO_SECRET_KEY_GENERATED
-```
-> ```
-> ahshagheeD1ooPae
-> ```
-
-Insert the access and secret keys into `config/prod.yml` with the following commands:
-
-```bash
-sed -i.bak "s/MINIO_ACCESS_KEY:.*/MINIO_ACCESS_KEY: mender-deployments/g" config/prod.yml
-sed -i.bak "s/MINIO_SECRET_KEY:.*/MINIO_SECRET_KEY: $MINIO_SECRET_KEY_GENERATED/g" config/prod.yml
-```
-
-The updated entry should look similar to this, you can verify with `git diff`:
-
-```yaml
-    ...
-    minio:
-        environment:
-            # access key
-            MINIO_ACCESS_KEY: mender-deployments
-            # secret
-            MINIO_SECRET_KEY: ahshagheeD1ooPae
-    ...
-
-```
-
+FIXME:
+- see above, most of it is irrelevant
+- user will a) setup minio on their own b) transfer the settings to mender-helm/install/ storage value file
 
 #### Deployments service
 
-The deployments service will upload artifact objects to `minio` storage via `storage-proxy`,
-see the [administration overview](../01.Overview/docs.md) for more details. For this reason,
-access credentials `DEPLOYMENTS_AWS_AUTH_KEY` and `DEPLOYMENTS_AWS_AUTH_SECRET`
-need to be updated and `DEPLOYMENTS_AWS_URI` must point to the domain name of your Storage proxy.
+FIXME
+- by default - no storage proxy
 
-Run the following commands to set `DEPLOYMENTS_AWS_AUTH_KEY` and
-`DEPLOYMENTS_AWS_AUTH_SECRET` to the values of `MINIO_ACCESS_KEY`
-and `MINIO_SECRET_KEY`, respectively.
+FIXME 
+- irrelevant
 
-```bash
-sed -i.bak "s/DEPLOYMENTS_AWS_AUTH_KEY:.*/DEPLOYMENTS_AWS_AUTH_KEY: mender-deployments/g" config/prod.yml
-sed -i.bak "s/DEPLOYMENTS_AWS_AUTH_SECRET:.*/DEPLOYMENTS_AWS_AUTH_SECRET: $MINIO_SECRET_KEY_GENERATED/g" config/prod.yml
-```
-Also, run the following command so `DEPLOYMENTS_AWS_URI` points to your Storage proxy:
-
-```bash
-sed -i.bak "s/https:\/\/set-my-alias-here.com/https:\/\/$STORAGE_PROXY_DOMAIN_NAME/g" config/prod.yml
-```
-
-After these three commands, the updated entry should look like this (you can again verify with `git diff`):
-
-```yaml
-    ...
-    mender-deployments:
-        ...
-        environment:
-            DEPLOYMENTS_AWS_AUTH_KEY: mender-deployments
-            DEPLOYMENTS_AWS_AUTH_SECRET: ahshagheeD1ooPae
-            DEPLOYMENTS_AWS_URI: https://mender.example.com
-    ...
 ```
 
 !! The address used in `DEPLOYMENTS_AWS_URI` must be exactly the same as the one that will be used by devices. The deployments service generates signed URLs for accessing artifact storage. A different hostname or port will result in signature verification failure and download attempts will be rejected.
@@ -471,96 +149,24 @@ After these three commands, the updated entry should look like this (you can aga
 
 #### Storage proxy
 
-In the default setup there is no separate process acting as a proxy to storage service.
-For this purpose you can use Mender API Gateway, but with an additional domain name.
-Change the placeholder value `set-my-alias-here` to a valid domain name to use
-Mender API Gateway as a proxy to the storage service, by running the following command:
-```bash
-sed -i.bak "s/set-my-alias-here.com/$STORAGE_PROXY_DOMAIN_NAME/g" config/prod.yml
-```
+FIXME
+- needs restructuring into another section for 'old clients'
 
 
 #### API gateway
 
-For security purposes, the API Gateway must know precisely the DNS name allocated to it,
-which you'll configure via the `ALLOWED_HOSTS` environment variable.
-
-Change the placeholder value `my-gateway-dns-name` to a valid hostname, by running
-the following command:
-
-```bash
-sed -i.bak "s/my-gateway-dns-name/$API_GATEWAY_DOMAIN_NAME/g" config/prod.yml
-```
-
-The updated entry should look like this:
-
-```yaml
-    ...
-    mender-api-gateway:
-        ...
-        environment:
-            ALLOWED_HOSTS: mender.example.com
-    ...
-```
-
-Note that if for some reason you need more than 1 DNS name pointing to the gateway,
-you can supply a whitespace-separated list of hostnames as follows:
-
-```yaml
-    ...
-    mender-api-gateway:
-        ...
-        environment:
-            ALLOWED_HOSTS: mender.example.com mender2.example.com
-    ...
-```
+FIXME:
+- done via helm chart
 
 
 #### Logging
 
-The setup uses Docker's default `json-file` logging driver, which exposes two important log
-rotation parameters: `max-file` and `max-size`. For selected services - consistently producing
-a large amount of logs - we override these settings to ensure that at any given time, logs capture
-about 1 week of a running system's operation.
+FIXME
+- I believe this was pre-traefik access logs example volumes
+- anyway, info about docker driver is obsolete
 
-The reference setup used for determining these parameters (`max-file: 10`, `max-size: 50m`)
-was 200 devices, polling the server every 30 minutes. The total log volume produced was 2.4GB,
-and this is the recommended amount of disk space to reserve for logging purposes alone.
-
-These parameters can however be adjusted accordingly to a particular deployment and workload. The
-deciding factors determining the log volume are:
-- the number of devices accessing the system.
-- polling frequency
-
-It is suggested to adjust log rotation parameters only after measuring the actual space usage for a given use case.
-
-#### Saving the configuration
-
-Once all the configuration is complete, commit all changes to the repository:
-
-<!--AUTOMATION: ignore -->
-```bash
-git add config/prod.yml
-```
-
-<!--AUTOMATION: ignore -->
-```bash
-git commit -m 'production: configuration'
-```
-
-At this point your commit history should look as follows:
-
-<!--AUTOVERSION: "git log --oneline %..HEAD"/integration -->
-<!--AUTOMATION: ignore -->
-```bash
-git log --oneline master..HEAD
-```
-> ```
-> 7a4de3c production: configuration
-> 41273f7 production: adding generated keys and certificates
-> 5ad6528 production: initial template
-> ```
-
+FIXME
+no more git magic
 
 ## Open Source
 
@@ -573,30 +179,9 @@ section](#enterprise).
 
 ### Bring up the Open Source server
 
-Bring up all services up in detached mode with the following command:
-
-```bash
-./run up -d
-```
-> ```
-> Creating network "menderproduction_mender" with the default driver
-> Creating menderproduction_mender-nats_1                   ... done
-> Creating menderproduction_mender-mongo_1 ... done
-> Creating menderproduction_minio_1        ... done
-> Creating menderproduction_mender-gui_1   ... done
-> Creating menderproduction_mender-workflows-worker_1       ... done
-> Creating menderproduction_mender-create-artifact-worker_1 ... done
-> Creating menderproduction_mender-useradm_1                ... done
-> Creating menderproduction_mender-workflows-server_1       ... done
-> Creating menderproduction_mender-deviceconfig_1           ... done
-> Creating menderproduction_mender-inventory_1              ... done
-> Creating menderproduction_mender-deviceconnect_1          ... done
-> Creating menderproduction_mender-device-auth_1            ... done
-> Creating menderproduction_mender-api-gateway_1            ... done
-> Creating menderproduction_mender-deployments_1            ... done
-> ```
-
-!!! Services, networks and volumes have a `menderproduction` prefix, see the note about [docker-compose naming scheme](#docker-compose-naming-scheme) for more details. When using `docker ..` commands, a complete container name must be provided (ex. `menderproduction_mender-deployments_1`).
+FIXME
+Installing and running are pretty much the same here
+TODO: helm cmd
 
 
 ### Creating the first user
@@ -784,34 +369,8 @@ which integration method is used with the client. Please refer to one of these s
   image](../../06.Artifact-creation/03.Modify-an-Artifact/docs.md)
 
 
-### Saving the Enterprise configuration
-
-Once the Enterprise configuration is complete, commit all changes to the
-repository:
-
-<!--AUTOMATION: ignore -->
-```bash
-git add config/enterprise.yml
-```
-
-<!--AUTOMATION: ignore -->
-```bash
-git commit -m 'production: Enterprise configuration'
-```
-
-At this point your commit history should look as follows:
-
-<!--AUTOVERSION: "git log --oneline %..HEAD"/integration -->
-<!--AUTOMATION: ignore -->
-```bash
-git log --oneline master..HEAD
-```
-> ```
-> 76b3d00 production: Enterprise configuration
-> 7a4de3c production: configuration
-> 41273f7 production: adding generated keys and certificates
-> 5ad6528 production: initial template
-> ```
+FIXME
+irrelevant
 
 <!-- Verification of Enterprise instance -->
 
@@ -828,45 +387,11 @@ git log --oneline master..HEAD
 
 ## Verification
 
-To verify that the services are running, execute the following command and
-verify that the state of all services is "Up":
+FIXME
+- use kubectl get services/pods/deployments, helm mainfest, etc. to inspect the installed release
 
-```bash
-./run ps
-```
 
-Below you can see typical output for the Enterprise server. The Open Source
-server will be similar, but will have fewer services running.
-
-> ```
->                       Name                                    Command                  State                  Ports            
-> -------------------------------------------------------------------------------------------------------------------------------
-> menderproduction_mender-api-gateway_1              /entrypoint.sh --accesslog ...   Up             0.0.0.0:443->443/tcp, 80/tcp
-> menderproduction_mender-auditlogs_1                /usr/bin/auditlogs --confi ...   Up             8080/tcp                    
-> menderproduction_mender-create-artifact-worker_1   /usr/bin/workflows --confi ...   Up             8080/tcp                    
-> menderproduction_mender-deployments_1              /entrypoint.sh --config /e ...   Up             8080/tcp                    
-> menderproduction_mender-device-auth_1              /usr/bin/deviceauth --conf ...   Up             8080/tcp                    
-> menderproduction_mender-deviceconfig_1             /usr/bin/deviceconfig --co ...   Up             8080/tcp                    
-> menderproduction_mender-deviceconnect_1            /usr/bin/deviceconnect --c ...   Up             8080/tcp                    
-> menderproduction_mender-gui_1                      /entrypoint.sh nginx             Up (healthy)   80/tcp, 8080/tcp            
-> menderproduction_mender-inventory_1                /usr/bin/inventory-enterpr ...   Up             8080/tcp                    
-> menderproduction_mender-mongo_1                    docker-entrypoint.sh mongod      Up             27017/tcp                   
-> menderproduction_mender-nats_1                     docker-entrypoint.sh nats- ...   Up             4222/tcp, 6222/tcp, 8222/tcp
-> menderproduction_mender-tenantadm_1                /usr/bin/tenantadm --confi ...   Up             8080/tcp                    
-> menderproduction_mender-useradm_1                  /usr/bin/useradm-enterpris ...   Up             8080/tcp                    
-> menderproduction_mender-workflows-server_1         /usr/bin/workflows-enterpr ...   Up             8080/tcp                    
-> menderproduction_mender-workflows-worker_1         /entrypoint.sh worker --au ...   Up                                         
-> menderproduction_minio_1                           /usr/bin/docker-entrypoint ...   Up (healthy)   9000/tcp
-> ```
-
-At this point you can try to log into the Web UI using the URL of your server,
-and the username and password that was [created
-earlier](#creating-the-first-organization-and-user).
-
-!! It is advised to use the UI to change the password of all users that were
-!! added in this tutorial, since the shell may keep a record of the password in
-!! plaintext.
-
+FIXME: this section will need a review as well
 If you encounter any issues while starting or running your Mender Server, you
 can take a look at the section for [troubleshooting Mender
 Server]().
