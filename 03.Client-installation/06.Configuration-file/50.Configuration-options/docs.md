@@ -237,4 +237,17 @@ The location where to store the device_type. This must be on a persistent
 partition to avoid it accidentally changing due to a root filesystem update. The
 default location is `/var/lib/mender/device_type`
 
+#### UpdateControlMapExpirationTimeSeconds
 
+The expire time in seconds for an update control map. The value provides the
+time window for an application using the update control _dbus API_ to refresh
+the update control map before it enters the expired state. _Defaults to
+2*UpdatePollIntervalSeconds_
+<!-- TODO: Insert links to dbus api specs for update control -->
+
+#### UpdateControlMapBootExpirationTimeSeconds
+
+The maximum expire time in seconds after startup for an update control map. The
+value provides an upper bound on the update control map [expire
+time](#UpdateControlMapExpirationTimeSeconds) after system startup. _Defaults to 600
+(10 minutes)_
