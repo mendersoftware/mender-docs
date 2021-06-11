@@ -19,21 +19,21 @@ device, including the Artifact Payload itself and metadata such as signatures.
 See the documentation on [Artifact](../03.Artifact/docs.md) for more information.
 
 * _Artifact Name_ - A human-readable string uniquely describing an Artifact,
-used by UI and Server-side API for identification purposes.
+used by the UI and Server-side API for identification purposes.
 
 * _Artifact Payload_ - Actual data installed on a device, stored inside a
 Mender Artifact. It could be a rootfs image, package, container, or other. See
 the documentation on [Artifact](../03.Artifact/docs.md) for more information.
 
 * _Authentication Set_ - A combination of an identity and public key for a
-device, determining if a given device is allowed to check for- and apply
-software updates from the Mender server. A given device identity can have
-multiple Authentication sets and each can be in one of the following states,
-where only one can be accepted at a given time:
+device, determining if a given device can check for- and apply software updates
+from the Mender server. A given device identity can have multiple Authentication
+sets and each can be in one of the following states:
   * rejected
   * accepted
   * pending
   * preauthorized
+You can accept only one Authentication set at a time.
 
 * _Binary delta_ - The binary difference between two filesystem images. See the
 documentation on [Delta updates](../06.Delta-update/docs.md) for more information.
@@ -51,13 +51,13 @@ authentication data.
 
 * _Device-side API_ - The collection of APIs exposed by the Mender components
 running on the device. The Device-side API constitutes the only public API of
-the Mender client. It is implemented as a thin layer that receives messages
-on the D-Bus, processes them, transmits them to the Mender client, receives
-the results from the client, and transmits a response on the D-Bus.
+the Mender client. It is a thin layer that receives messages over D-Bus,
+processes them, transmits them to the Mender client, receives the results
+from the client, and transmits a response on the D-Bus.
 
 * _Device ID_ - A single string uniquely identifying a device in the Mender
 server, used in Server-side APIs to specify an individual device. See the
-documentation on [Identity](../07.Identity/docs.md) for more information.
+documentation on device [Identity](../07.Identity/docs.md) for more information.
 
 * _Device type_ - The type of device, used to ensure compatibility between the
 hardware and software. See the documentation on [Artifact](../03.Artifact/docs.md)
@@ -69,15 +69,15 @@ Server to authenticate, get the artifacts, report inventory, log the progress
 and status of the installations.
 
 * _Mender Connect_ - A user space application providing the add-ons
-framework, as well as implementation of particular add-ons which can be enabled
-or disabled as per configuration. It is integrated with the Mender Client
-over a well-defined and portable Device-side API.
+framework, as well as implementation of particular add-ons which you can enable
+or disable as per configuration. It integrates with the Mender Client over
+a well-defined and portable Device-side API.
 
 * _Mender Hub Integration(s)_ - A contribution on
 [Mender Hub](https://hub.mender.io/c/board-integrations?target=_blank)
 of a Mender Board integration for a specific board.
 
-* _Mender Server_ - An application implementing Server-side Mender API, and the
+* _Mender Server_ - An application implementing the Server-side Mender API, and the
 web UI, providing updates to devices.
 
 * _Organization_ - A single customer environment in the Mender server. Also
