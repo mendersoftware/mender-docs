@@ -38,6 +38,7 @@ mender-connect along with the default values. The default configuration path is
     "Disable": false
   },
   "ShellCommand": "/bin/sh",
+  "ShellArguments": ["--login"],
   "Sessions": {
     "ExpireAfter": 0,
     "ExpireAfterIdle": 0,
@@ -100,6 +101,7 @@ mender-connect along with the default values. The default configuration path is
 !!!!! for an overview of all Mender plans and features.
 
 * `ShellCommand`: Command executed initiating a new remote terminal session.
+* `ShellArguments`: The command line arguments passed to the shell when spawned (defaults to `--login`).
 * `Sessions`: Configuration for remote terminal sessions.
   * `StopExpired`: Terminate remote terminal sessions after
   * `ExpireAfter`: Time in seconds until a remote terminal expires.<sup>*</sup>
