@@ -110,6 +110,7 @@ the Mender client this way, should be aware that:
   asking for confirmation.
 * The Mender GPG public key and APT repository will be added to your trusted APT
   keychain and sources list respectively without asking for confirmation.
+* The latest released Mender components will be installed.
 
 !! Always examine scripts downloaded over the Internet before running them
 !! locally.
@@ -146,6 +147,9 @@ sudo apt-get update
 sudo apt-get upgrade
 ```
 
+!!! To prevent the Mender client from upgrading when upgrading the rest of the
+!!! system, mark it to be held with `sudo apt-mark hold mender-client`.
+
 #### Install using the APT repository
 
 Before installing the Mender client, you need to set up the Mender APT
@@ -153,6 +157,9 @@ repository. Afterwards, you can install and update the Mender client using the
 `apt` command line interface.
 
 ##### Set up the APT repository
+
+!!! With this method the latest released Mender components will be installed
+
 1. Update the `apt` package index and install required dependencies.
    ```bash
    sudo apt-get update
@@ -221,6 +228,9 @@ sub   rsa3072 2020-11-13 [E] [expires: 2022-11-13]
    sudo apt-get update
    sudo apt-get install mender-client
    ```
+
+!!! To prevent the Mender client from upgrading when upgrading the rest of the
+!!! system, mark it to be held with `sudo apt-mark hold mender-client`.
 
 #### Install from package
 
