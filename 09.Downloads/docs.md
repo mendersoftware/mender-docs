@@ -153,6 +153,7 @@ repository. Afterwards, you can install and update the Mender client using the
 `apt` command line interface.
 
 ##### Set up the APT repository
+
 1. Update the `apt` package index and install required dependencies.
    ```bash
    sudo apt-get update
@@ -163,6 +164,7 @@ repository. Afterwards, you can install and update the Mender client using the
    		gnupg-agent \
    		software-properties-common
    ```
+
 2. Add the official Mender GPG key to your trusted `apt` keychain:
    ```bash
    curl -fLsS https://downloads.mender.io/repos/debian/gpg | sudo apt-key add -
@@ -174,11 +176,12 @@ repository. Afterwards, you can install and update the Mender client using the
    sudo apt-key fingerprint A1B29B00
    ```
    ```
-pub   rsa3072 2020-11-13 [SC] [expires: 2022-11-13]
-          E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
-uid           [ unknown] Mender Team <mender@northern.tech>
-sub   rsa3072 2020-11-13 [E] [expires: 2022-11-13]
+  pub   rsa3072 2020-11-13 [SC] [expires: 2022-11-13]
+            E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
+  uid           [ unknown] Mender Team <mender@northern.tech>
+  sub   rsa3072 2020-11-13 [E] [expires: 2022-11-13]
    ```
+
 3. Add the Mender repository to your sources list by selecting the architecture
    matching your device.
 
