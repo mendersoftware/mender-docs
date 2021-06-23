@@ -125,22 +125,11 @@ The [Mender Artifact format](../03.Artifact/docs.md) is managed by the [Mender A
 
 The compatibility between the Mender server and client is managed by the Device API versions exposed by the server and used by the client. If the Mender server supports the API version of the Mender client, they are compatible.  However, please ensure that the client and server support the [Artifact format](#mender-clientserver-and-artifact-format) version you are using. Device API docs are available in the [API chapter](../../200.Server-side-API/?target=_blank#device-apis).
 
-<!--AUTOVERSION: "| %"/ignore-->
-|        | Mender server versions | Mender client versions |
-|--------|------------------------|------------------------|
-| API v1 | 1.0.x                  | 1.0.x                  |
-|        | 1.1.x                  | 1.1.x                  |
-|        | 1.2.x                  | 1.2.x                  |
-|        | 1.3.x                  | 1.3.x                  |
-|        | 1.4.x                  | 1.4.x                  |
-|        | 1.5.x                  | 1.5.x                  |
-|        | 1.6.x                  | 1.6.x                  |
-|        | 1.7.x                  | 1.7.x                  |
-|        | 2.0.x                  | 2.0.x                  |
-|        | 2.1.x                  | 2.1.x                  |
-|        | 2.2.x                  | 2.2.x                  |
-|        | 2.3.x                  | 2.3.x                  |
-|        | 2.4.x                  | 2.4.x                  |
-|        | 2.5.x                  | 2.5.x                  |
-|        | 2.6.x                  | 2.6.x                  |
-|        | 2.7.x                  |                        |
+<!--AUTOVERSION: "Mender server % and %"/ignore "Mender server % and later"/ignore "Mender client % and %"/ignore "Mender client % and later"/ignore-->
+|                               | API v1 | API v2 |
+|-------------------------------|--------|--------|
+| Mender server 1.x.x and 2.x.x | yes    | no     |
+| Mender server 3.0.0 and later | yes    | yes    |
+|-------------------------------|--------|--------|
+| Mender client 1.x.x and 2.x.x | yes    | no     |
+| Mender client 3.0.0 and later | yes    | yes    |
