@@ -44,7 +44,7 @@ sudo chown root:root rootfs_overlay_production
 ```
 
 The options inside the JSON structure can be any option from [the client configuration
-options](../../03.Client-installation/06.Configuration-file/50.Configuration-options/docs.md).
+options](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md).
 
 ## Identity
 

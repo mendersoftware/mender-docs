@@ -93,5 +93,6 @@ Common use cases are:
 ## Further reading
 
 For more information on getting started with synchronized updates attributes, see
-How to use the Update Control Map, or take a look at the [Device-side API](../../201.Device-side-API)
-and [Server-side API](../../200.Server-side-API) reference directly.
+[How to use the Device-side API](../../03.Client-installation/06.Use-the-device-side-api),
+or take a look at the [Device-side API](../../201.Device-side-API) and
+[Server-side API](../../200.Server-side-API) reference directly.
