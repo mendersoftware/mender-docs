@@ -41,7 +41,7 @@ file in your own layer, add a `mender.conf` file to the layer, and list this fil
 of the `mender-client` recipe, like this:
 
 ```bash
-FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-MENDER-CONF>"
+FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-MENDER-CONF>:"
 SRC_URI_append = " file://mender.conf"
 ```
 
@@ -85,12 +85,12 @@ script in the expected folder. For example, create a `mender-client_%.bbappend` 
 and add this:
 
 ```bash
-FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-IDENTITY-SCRIPT>"
+FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-IDENTITY-SCRIPT>:"
 SRC_URI_append = " file://mender-device-identity"
 
 do_install_append() {
-    install -d ${datadir}/mender/identity
-    install -m 755 ${WORKDIR}/mender-device-identity ${datadir}/mender/identity/mender-device-identity
+    install -d ${D}/${datadir}/mender/identity
+    install -m 755 ${WORKDIR}/mender-device-identity ${D}/${datadir}/mender/identity/mender-device-identity
 }
 ```
 
@@ -116,12 +116,12 @@ In order to include an inventory script of your own making, augment the
 example, create a `mender-client_%.bbappend` file in your layer, and add this:
 
 ```bash
-FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-INVENTORY-SCRIPT>"
+FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-INVENTORY-SCRIPT>:"
 SRC_URI_append = " file://mender-inventory-custom-attribute"
 
 do_install_append() {
-    install -d ${datadir}/mender/inventory
-    install -m 755 ${WORKDIR}/mender-inventory-custom-attribute ${datadir}/mender/inventory/mender-inventory-custom-attribute
+    install -d ${D}/${datadir}/mender/inventory
+    install -m 755 ${WORKDIR}/mender-inventory-custom-attribute ${D}/${datadir}/mender/inventory/mender-inventory-custom-attribute
 }
 ```
 
@@ -183,12 +183,12 @@ install the Update Module in the expected folder. For example, create a `mender-
 file in your layer, and add this:
 
 ```bash
-FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-UPDATE-MODULE>"
+FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-UPDATE-MODULE>:"
 SRC_URI_append = " file://custom-update-module"
 
 do_install_append() {
-    install -d ${datadir}/mender/modules/v3
-    install -m 755 ${WORKDIR}/custom-update-module ${datadir}/mender/modules/v3/custom-update-module
+    install -d ${D}/${datadir}/mender/modules/v3
+    install -m 755 ${WORKDIR}/custom-update-module ${D}/${datadir}/mender/modules/v3/custom-update-module
 }
 ```
 
@@ -242,13 +242,12 @@ To add optional fields, or override the values for the required ones, create you
 augment the `mender-connect` recipe with the new configuration. For example, create a `mender-connect_%.bbappend` file in your layer, and add this:
 
 ```bash
-FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-MENDER-CONNECT-CONF>"
+FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-MENDER-CONNECT-CONF>:"
 SRC_URI_append = " file://mender-connect.conf"
 
 do_install_append() {
-    install -m 600 ${WORKDIR}/mender-connect.conf ${D}${sysconfdir}/mender/mender-connect.conf
+    install -m 600 ${WORKDIR}/mender-connect.conf ${D}/${sysconfdir}/mender/mender-connect.conf
 }
-
 ```
 
 Replace <DIRECTORY-WITH-MENDER-CONNECT-CONF> with the path to the `mender-connect.conf` file, relative to the recipe file.
