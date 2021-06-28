@@ -22,9 +22,9 @@ Like with any other operation, the Mender backend will allow only authenticated 
 
 ### Role Based Access Control (RBAC)
 
-!!! Role Based Access Control is only available in the Mender Enterprise plan.
-!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
-!!! for an overview of all Mender plans and features.
+!!!!! Role Based Access Control is only available in the Mender Enterprise plan.
+!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! for an overview of all Mender plans and features.
 
 You can apply additional restrictions on which Mender users can access Remote Terminal using RBAC.
 It is fully integrated in the Role Based Access Control system of Mender and accessible from the UI.
@@ -46,9 +46,9 @@ Remote Terminal does not open nor listen on any port: the device initiates the c
 
 ### Audit logs
 
-!!! Audit logs is only available in the Mender Enterprise plan.
-!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
-!!! for an overview of all Mender plans and features.
+!!!!! Audit logs is only available in the Mender Enterprise plan.
+!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! for an overview of all Mender plans and features.
 
 Audit logs hold a list of every start and stop of a session. You can access this information
 in the Mender UI.

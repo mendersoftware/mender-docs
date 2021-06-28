@@ -4,10 +4,10 @@ taxonomy:
     category: docs
 ---
 
-!!! Support for Delta updates is available in the Mender Enterprise plan and
-!!! partially in Mender Professional. See
-!!! [the Mender features page](https://mender.io/plans/features?target=_blank)
-!!! for an overview of all Mender plans and features.
+!!!!! Support for Delta updates is available in the Mender Enterprise plan and
+!!!!! partially in Mender Professional. See
+!!!!! [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! for an overview of all Mender plans and features.
 
 Delta updates provide significant savings in both bandwidth and install time.
 When you use Delta updates, only the difference between the new and the old root
