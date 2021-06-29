@@ -226,7 +226,7 @@ First, set the public domain name of your server (the URL your devices will reac
 
 ```bash
 API_GATEWAY_DOMAIN_NAME="mender.example.com"  # NB! replace with your server's public domain name
-STORAGE_PROXY_DOMAIN_NAME="s3.docker.mender.io"  # change if you are using a different domain name than the the default one
+STORAGE_PROXY_DOMAIN_NAME="${API_GATEWAY_DOMAIN_NAME}"  # change if you are using a different domain name than the the default one
 ```
 
 Prepare certificates using the helper script `keygen`:
