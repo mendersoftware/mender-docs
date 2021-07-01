@@ -50,8 +50,8 @@ an independent product. Represented on the server by its identity and
 authentication data.
 
 * _Device-side API_ - The collection of APIs exposed by the Mender components
-running on the device. The Device-side API constitutes the only public API of
-the Mender client. It is a thin layer that receives messages over D-Bus,
+running on the device. The Device-side API constitutes the only public programmatic
+interface of the Mender client. It is a thin layer that receives messages over D-Bus,
 processes them, transmits them to the Mender client, receives the results
 from the client, and transmits a response on the D-Bus.
 
