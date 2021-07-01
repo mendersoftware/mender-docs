@@ -245,27 +245,27 @@ CERT_API_CN=$API_GATEWAY_DOMAIN_NAME CERT_STORAGE_CN=$STORAGE_PROXY_DOMAIN_NAME 
 > ```
 
 Your local directory tree should now look like this:
-<!--AUTOMATION: ignore -->
-```bash
-├── keys-generated
-│   ├── certs
-│   │   ├── api-gateway
-│   │   │   ├── cert.crt
-│   │   │   └── private.key
-│   │   └── server.crt
-│   │   └── storage-proxy
-│   │       ├── cert.crt
-│   │       └── private.key
-│   └── keys
-│       ├── deviceauth
-│       │   └── private.key
-│       └── useradm
-│           └── private.key
-├── config/enterprise.yml.template
-├── config/prod.yml
-├── config/prod.yml.template
-└── run
-```
+
+> ```
+> ├── keys-generated
+> │   ├── certs
+> │   │   ├── api-gateway
+> │   │   │   ├── cert.crt
+> │   │   │   └── private.key
+> │   │   └── server.crt
+> │   │   └── storage-proxy
+> │   │       ├── cert.crt
+> │   │       └── private.key
+> │   └── keys
+> │       ├── deviceauth
+> │       │   └── private.key
+> │       └── useradm
+> │           └── private.key
+> ├── config/enterprise.yml.template
+> ├── config/prod.yml
+> ├── config/prod.yml.template
+> └── run
+> ```
 
 The production template file `prod.yml` is already configured to load keys and
 certificates from locations created by the `keygen` script. If you wish to use a
