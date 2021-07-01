@@ -239,7 +239,7 @@ docker run \
   -e MTLS_DEBUG_LOG=true \
   -v $(pwd)/server-cert.pem:/etc/mtls/certs/server/server.crt \
   -v $(pwd)/server-private.key:/etc/mtls/certs/server/server.key \
-  -v $(pwd)/ca-cert.pem:/etc/mtls/certs/tenant-ca/tenant.ca.pem \
+  -v $(pwd)/ca-cert.pem:/etc/mtls/certs/tenant-ca/tenant.ca.crt \
   registry.mender.io/mendersoftware/mtls-ambassador:master
 ```
 <!-- AUTOMATION: execute=} & -->
