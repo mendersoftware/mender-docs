@@ -17,9 +17,9 @@ The integration environment brings together the following services:
 - [Mender User Administration Service](https://github.com/mendersoftware/useradm?target=_blank)
 - [Mender Workflows Service](https://github.com/mendersoftware/workflows?target=_blank)
 - [Mender Create Artifact Worker](https://github.com/mendersoftware/create-artifact-worker?target=_blank)
-- API Gateway based on [traefik](https://doc.traefik.io/traefik/?target=_blank)
+- API Gateway based on [Traefik](https://doc.traefik.io/traefik/?target=_blank)
 - [Minio](https://www.minio.io?target=_blank) object storage
-- [NATS.io](https://nats.io?target=_blank) messageing system
+- [NATS.io](https://nats.io?target=_blank) messaging system
 
 Services are delivered in form of Docker images, available from
 official [Mender Docker repository](https://hub.docker.com/r/mendersoftware/?target=_blank).
@@ -42,7 +42,7 @@ provides a convenient setup based on Docker Compose tool. The
         |        +-----------------------+      |    |                         |    |
    port |        |                       |      +--->|  Inventory              |<---+     +----------------------------------+
     443 | <----> |  API Gateway          |      |    |  (mender-inventory)     |    +---> |  Workflows Engine                |
-        |        |  (traefik)            |<-----+    +-------------------------+    |     |  (mender-workflows-server)       |
+        |        |  (Traefik)            |<-----+    +-------------------------+    |     |  (mender-workflows-server)       |
         |        +-----------------------+      |    |                         |    |     |  (mender-workflows-worker)       |
         |                                       +--->|  User Administration    |    |     |  (mender-create-artifact-worker) |
         |                                       |    |  (mender-useradm)       |<---+     +----------------------------------+
@@ -65,8 +65,3 @@ provides a convenient setup based on Docker Compose tool. The
         |                                            +-------------------------+
         |
 ```
-
-For details and best practices of using `docker-compose` in production consult
-the official
-documentation:
-[Using Compose in production](https://docs.docker.com/compose/production/?target=_blank)
