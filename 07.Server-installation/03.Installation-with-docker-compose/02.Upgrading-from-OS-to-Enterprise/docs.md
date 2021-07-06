@@ -19,7 +19,7 @@ taxonomy:
 <!-- AUTOMATION: execute=ORIG_DIR=$PWD; function cleanup() { set +e; cd $ORIG_DIR/mender-server/production; ./run down -v; docker volume rm mender-artifacts mender-db mender-artifacts-backup mender-db-backup; cd $ORIG_DIR; rm -rf mender-server; } -->
 <!-- AUTOMATION: execute=trap cleanup EXIT -->
 
-<!-- Basically a repeat of Open Source setup from Production Installation tutorial -->
+<!-- Basically a repeat of Open Source setup from the Installation tutorial -->
 <!-- AUTOVERSION: "git clone -b %"/integration -->
 <!-- AUTOMATION: execute=git clone -b master https://github.com/mendersoftware/integration mender-server -->
 <!-- AUTOMATION: execute=cd mender-server -->
@@ -41,7 +41,7 @@ taxonomy:
 This section describes how to upgrade from the Mender Open Source server, to the
 Mender Enterprise server. If you have any questions or would like assistance
 with upgrading to Mender Enterprise, please email
-[contact@mender.io]().
+[contact@mender.io](mailto:contact@mender.io).
 
 !! In this version of Mender, there is no support for migrating data between the
 !! Open Source and Enterprise servers. Hence you will **lose all data** on the

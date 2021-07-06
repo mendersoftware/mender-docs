@@ -1,5 +1,5 @@
 ---
-title: Storage
+title: Storage of the artifacts
 taxonomy:
     category: docs
     label: tutorial
