@@ -37,10 +37,10 @@ updating the Mender client's Update Control Map using the *SetUpdateControlMap* 
 
 Each Update Control Map is identified by a unique identifier
 ([UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)) and can optionally
-specify a priority. Once set, the application will receive as return value an expiration
+specify a priority. Once set, the application will receive as return value a refresh
 time expressed in seconds. It's the application's responsibility to refresh the Update
-Control Map before the expiration time is over to ensure the Update Control Map remains
-active.
+Control Map when this time has elapsed to ensure the Update Control Map remains
+active. If twice the refresh time elapses, and no refresh has been made, the map will expire.
 
 When multiple Update Control Maps are active, the Mender Client will merge them, considering
 the priority (higher priority wins). The Mender Client then evaluates the resulting Update
