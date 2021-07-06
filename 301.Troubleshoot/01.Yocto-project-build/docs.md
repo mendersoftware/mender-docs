@@ -311,7 +311,7 @@ A typical error message for this condition is:
 Error:
  Problem: package grub-efi-mender-precompiled-2.04-r0.cortexa8hf_neon requires u-boot, but none of the providers can be installed
   - package grub-efi-mender-precompiled-2.04-r0.cortexa8hf_neon conflicts with u-boot <= 1:2019.07 provided by u-boot-fork-1:2019.07-r0.beaglebone_yocto
-  - package mender-master-r0.cortexa8hf_neon requires grub-editenv, but none of the providers can be installed
+  - package mender-3.0.0-build2-r0.cortexa8hf_neon requires grub-editenv, but none of the providers can be installed
   - conflicting requests
 ```
 
