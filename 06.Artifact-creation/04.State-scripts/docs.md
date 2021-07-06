@@ -81,6 +81,8 @@ All other return codes are reserved for future use by Mender and should not be u
 
 State scripts are allowed to return a specific error code (`21`), in which case the client will sleep for a time configured by [StateScriptRetryIntervalSeconds](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#statescriptretryintervalseconds) before the state script is called again. Note that scripts are not allowed to retry for infinitely long. Please see description of [StateScriptRetryTimeoutSeconds](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#statescriptretrytimeoutseconds) for more information.
 
+This feature is useful e.g when you want user confirmation before proceeding with the update as is described in the [Update confirmation by end user](#update-confirmation-by-end-user) section on this page.
+
 ### Inconsistent state
 
 If an error code is returned in any of [the scripts that ignore errors](#transitions-and-ordering), then Mender will append the string `_INCONSISTENT` to the artifact name installed on the device. This is done because an error code in any of these scripts means that Mender received an error in a situation where it could do nothing about it, and therefore the device is in an unknown state. The client logs from the device should give more information about what happened, and can be used to determine whether manual action is needed to fix the problem.
@@ -121,6 +123,18 @@ You can find code examples in the [Mender client source repository](https://gith
 In this case, application data like a user profile is stored in an SQLite database and a new column need to be added before starting the new version of the application. This can be achieved by adding a state script to `ArtifactInstall_Leave` (that would run after writing the new rootfs, but before rebooting). This script can then do the necessary migrations on the data partition before the new version of the application is brought up after the reboot.
 
 ![Application data migration state scripts](mender-state-machine-data-migration.png)
+
+
+#### Update confirmation by end user
+For many devices with a display that interacts with an end user, it is desirable to ask the user before applying the update. You have probably seen this on a smartphone, where it will ask you if you want to update to the latest release of Android or iOS and it only starts after you hit "Apply".
+
+Mender state scripts enable this use case with a script written to create the dialog box on the UI framework used. The script will simply wait for user input, and Mender will wait with the update process while waiting for the script to finish. Depending on what the user selects, the script can return `0` (proceed) or `21` ([retry later](#retry-later)). For example, this script can be run in the `Download_Enter` state, and the user will be asked before the download begins. Alternatively, the script can also be run in the `Download_Leave` state, if you want the download to finish first, and the user only to accept installing the update and rebooting.
+
+Make sure to adjust [StateScriptRetryTimeoutSeconds](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#statescriptretrytimeoutseconds), to enable this use case.
+
+![End user update confirmation state scripts](mender-state-machine-user-confirmation.png)
+
+!! Maximum wait time between `Sync` and `Download` state is 24 hours, after this period the update will be marked as failed by the Mender client. This happens because the Mender Artifact download link is generated in `Sync` state and it has a expiration time (24 hours).
 
 
 #### Custom sanity checks after the update is installed
