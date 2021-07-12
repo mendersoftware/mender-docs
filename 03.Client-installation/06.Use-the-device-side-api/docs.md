@@ -59,9 +59,20 @@ The [Update flow control](https://github.com/mendersoftware/mender-client-python
 example application controls the update flow setting Update Control Maps in the Mender
 client based on the user's input.
 
-You can launch the application running:
+On Debian based systems, such as Raspberry Pi OS, you can install the example application by running
+the commands below. For more detailed installation instructions, see [the
+repository](https://github.com/mendersoftware/mender-client-python-example).
 
+```bash
+sudo apt-get update
+sudo apt-get install -y git python3 python3-pip
+git clone https://github.com/mendersoftware/mender-client-python-example.git
+sudo pip3 install mender-client-python-example/
 ```
+
+You can launch the application by running:
+
+```bash
 sudo mender-update-flow-control
 ```
 
