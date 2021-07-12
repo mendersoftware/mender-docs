@@ -63,9 +63,16 @@ On Debian based systems, such as Raspberry Pi OS, you can install the example ap
 the commands below. For more detailed installation instructions, see [the
 repository](https://github.com/mendersoftware/mender-client-python-example).
 
+First install the dependencies:
+
 ```bash
 sudo apt-get update
 sudo apt-get install -y git python3 python3-pip
+```
+
+Then install the application:
+
+```bash
 git clone https://github.com/mendersoftware/mender-client-python-example.git
 sudo pip3 install mender-client-python-example/
 ```
