@@ -28,6 +28,27 @@ mender-connect along with the default values. The default configuration path is
   "Servers": null,
   "ServerURL": "",
   "SkipVerify": false,
+  "Limits": {
+    "Enabled": true,
+    "FileTransfer": {
+      "Chroot": "/var/lib/mender/filetransfer",
+      "OwnerGet": ["pi","root"],
+      "GroupGet": ["games","users"],
+      "OwnerPut": "root",
+      "GroupPut": "pi",
+      "MaxFileSize": 4,
+      "FollowSymLinks": true,
+      "AllowOverwrite": true,
+      "RegularFilesOnly": true,
+      "PreserveOwner": true,
+      "PreserveGroup": true,
+      "PreserveMode": true,
+      "Counters": {
+       "MaxBytesTxPerHour": 1048576,
+       "MaxBytesRxPerHour": 1048576
+      }
+    }
+  },
   "FileTransfer": {
     "Disable": false
   },
@@ -70,15 +91,44 @@ mender-connect along with the default values. The default configuration path is
 ! `Servers` and `ServerURL` are deprecated and unused since `mender-connect`
 ! version `1.0.0` - the values are automatically configured by the `mender-client`.
 
-#### File transfer configuration
+#### Limits configuration
+There are certain features that you would want to keep under finer
+control than just enable/disable. File Transfer is one example; imagine
+you would like to restrict the transfers to a certain user or a group,
+or limit the average number of bytes that a device can transfer in an hour.
+The Limits section can be helpful here.
+
+* `Limits`:  Limits configuration options.
+  * `Enabled`: Enable limits control.
+  * `FileTransfer`: File Transfer limits configuration.
+
+##### File Transfer limits configuration
+The `FileTransfer` section in the `Limits` configuration block has the following
+options available:
+
+* `Chroot`: limit the directory from which you can transfer files and to which you can upload them.
+* `OwnerGet`: you can only transfer the files owned by the users on this list.
+* `GroupGet`: you can only transfer the files that have a group from this list.
+* `OwnerPut`: all the files you upload to a device will have this username set as an owner.
+* `GroupPut`: all the files you upload to a device will have this group set.
+* `MaxFileSize`: the maximal file size that you can download from or upload to a device.
+* `FollowSymLinks`: if set to true, `mender-connect` will resolve all the links in the target or destination path and the transfer will proceed. If false, and if any part of an upload or download path is a link, `mender-connect` will refuse to carry out the request.
+* `AllowOverwrite`: if set to true, `mender-connect` will overwrite the target file path when processing the upload request. If set to false `mender-connect` will refuse to overwrite the file.
+* `RegularFilesOnly`: allow only the transfer of regular files.
+* `PreserveOwner`: preserve the file owner from the upload request.
+* `PreserveGroup`: preserve the file group from the upload request.
+* `Counters`: Bytes transmitted/bytes received limits.
+  * `MaxBytesTxPerHour`: the maximal outgoing bytes that a device can transmit per hour. calculated as a moving exponential average.
+  * `MaxBytesRxPerHour`: the maximal incoming bytes that a device can receive per hour. calculated as a moving exponential average.
+
+#### File Transfer configuration
 
 !!!!! The Mender Troubleshoot add-on package is required.
 !!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
-* `FileTransfer`:  File transfer configuration options.
+* `FileTransfer`:  File Transfer configuration options.
   * `Disable`: Disable file transfer.
-
 
 #### Mender client configuration
 
@@ -94,7 +144,7 @@ mender-connect along with the default values. The default configuration path is
 * `PortForward`: Configuration for port forwarding
   * `Disable`: Disable the port forwarding feature.
   
-#### Remote terminal configuration
+#### Remote Terminal configuration
 
 !!!!! The Mender Troubleshoot add-on package is required.
 !!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
