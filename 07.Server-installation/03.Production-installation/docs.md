@@ -94,7 +94,7 @@ named `mender-server`:
 
 <!--AUTOVERSION: "-b %"/integration -->
 ```bash
-git clone -b 2.7.0 https://github.com/mendersoftware/integration mender-server
+git clone -b 2.7.1 https://github.com/mendersoftware/integration mender-server
 ```
 
 > ```
@@ -547,7 +547,7 @@ At this point your commit history should look as follows:
 <!--AUTOVERSION: "git log --oneline %..HEAD"/integration -->
 <!--AUTOMATION: ignore -->
 ```bash
-git log --oneline 2.7.0..HEAD
+git log --oneline 2.7.1..HEAD
 ```
 > ```
 > 7a4de3c production: configuration
@@ -797,7 +797,7 @@ At this point your commit history should look as follows:
 <!--AUTOVERSION: "git log --oneline %..HEAD"/integration -->
 <!--AUTOMATION: ignore -->
 ```bash
-git log --oneline 2.7.0..HEAD
+git log --oneline 2.7.1..HEAD
 ```
 > ```
 > 76b3d00 production: Enterprise configuration
