@@ -9,7 +9,8 @@ taxonomy:
 
 Mender's meta layer, [meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank), has
 several branches that map to given releases of the Yocto Project. However, note that Mender is
-tested and maintained against the **latest release branch of the Yocto Project** only.
+tested and maintained against the [**latest LTS branch of the Yocto
+Project**](https://wiki.yoctoproject.org/wiki/Releases?target=_blank) only.
 
 Older branches for the Yocto Project are still kept in
 [meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank), but they might not work
