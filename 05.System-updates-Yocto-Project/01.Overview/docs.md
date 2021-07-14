@@ -18,6 +18,11 @@ seamlessly as they are not continuously tested by Mender. If you need support fo
 recommend subscribing to [Mender commercial software
 support](https://mender.io/support-and-services/software-support?target=_blank).
 
+! For compatibility reasons, not all branches for the Yocto Project install the latest client by
+! default. To make sure the latest client is installed, and you have access to all the latest
+! features, see [the `PREFERRED_VERSION` setting when configuring the
+! Yocto build](../03.Build-for-demo/docs.md#configuring-the-build).
+
 
 ## Device capacity
 
