@@ -7,10 +7,9 @@ taxonomy:
 
 ## Docker volumes
 
-As described in the [production installation](../03.Production-installation/docs.md) chapter,
-the Mender production stack requires a number of Docker volumes to be created. These
-volumes can be backed up using regular docker commands, such as `docker run` or
-`docker cp`.
+As described in the [installation](../docs.md) chapter, the Mender stack requires
+a number of Docker volumes to be created. These volumes can be backed up using
+regular docker commands, such as `docker run` or `docker cp`.
 
 A simple example displaying a method of backing up the contents of the
 `mender-artifacts` volume is provided below. The command will start a temporary

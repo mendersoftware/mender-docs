@@ -11,7 +11,7 @@ This document outlines the compatibility between different versions of Mender co
 
 <!--AUTOVERSION: "% to %"/ignore-->
 Mender always provides an [upgrade
-path](../../07.Server-installation/07.Upgrading/docs.md) from the past patch
+path](../../07.Server-installation/03.Installation-with-docker-compose/01.Upgrading/docs.md) from the past patch
 (e.g. 1.2.0 to 1.2.1) and minor version (e.g. 1.1.1 to 1.2.0), and releases
 follow [Semantic Versioning](http://semver.org/?target=_blank). Note that
 according to Semantic Versioning, minor releases add new functionality (e.g from
