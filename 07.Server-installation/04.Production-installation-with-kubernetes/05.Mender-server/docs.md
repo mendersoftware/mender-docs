@@ -58,22 +58,13 @@ global:
 api_gateway:
   env:
     SSL: false
-  resources:
-    requests:
-      cpu: 10m
 
 device_auth:
-  resources:
-    requests:
-      cpu: 10m
   certs:
     key: |-
 $(cat device_auth.key | sed -e 's/^/      /g')
 
 useradm:
-  resources:
-    requests:
-      cpu: 10m
   certs:
     key: |-
 $(cat useradm.key | sed -e 's/^/      /g')
