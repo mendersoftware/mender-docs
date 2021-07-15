@@ -11,7 +11,7 @@ process:
 ## Disk images
 
 These disk images (`*.img` or `*.sdimg`) are based on images provided by board
-manufacturers and already have Mender fully integrated. They are used to
+manufacturers and are ready to install the Mender client. They are used to
 provision the device storage for devices without Mender running already.
 
 Mender provides images based on the following distributions:
@@ -110,6 +110,7 @@ the Mender client this way, should be aware that:
   asking for confirmation.
 * The Mender GPG public key and APT repository will be added to your trusted APT
   keychain and sources list respectively without asking for confirmation.
+* The latest released Mender components will be installed.
 
 !! Always examine scripts downloaded over the Internet before running them
 !! locally.
@@ -146,6 +147,9 @@ sudo apt-get update
 sudo apt-get upgrade
 ```
 
+!!! To prevent the Mender client from upgrading when upgrading the rest of the
+!!! system, mark it to be held with `sudo apt-mark hold mender-client`.
+
 #### Install using the APT repository
 
 Before installing the Mender client, you need to set up the Mender APT
@@ -153,6 +157,9 @@ repository. Afterwards, you can install and update the Mender client using the
 `apt` command line interface.
 
 ##### Set up the APT repository
+
+!!! With this method the latest released Mender components will be installed
+
 1. Update the `apt` package index and install required dependencies.
    ```bash
    sudo apt-get update
@@ -163,6 +170,7 @@ repository. Afterwards, you can install and update the Mender client using the
    		gnupg-agent \
    		software-properties-common
    ```
+
 2. Add the official Mender GPG key to your trusted `apt` keychain:
    ```bash
    curl -fLsS https://downloads.mender.io/repos/debian/gpg | sudo apt-key add -
@@ -174,11 +182,12 @@ repository. Afterwards, you can install and update the Mender client using the
    sudo apt-key fingerprint A1B29B00
    ```
    ```
-pub   rsa3072 2020-11-13 [SC] [expires: 2022-11-13]
-          E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
-uid           [ unknown] Mender Team <mender@northern.tech>
-sub   rsa3072 2020-11-13 [E] [expires: 2022-11-13]
+  pub   rsa3072 2020-11-13 [SC] [expires: 2022-11-13]
+            E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
+  uid           [ unknown] Mender Team <mender@northern.tech>
+  sub   rsa3072 2020-11-13 [E] [expires: 2022-11-13]
    ```
+
 3. Add the Mender repository to your sources list by selecting the architecture
    matching your device.
 
@@ -221,6 +230,9 @@ sub   rsa3072 2020-11-13 [E] [expires: 2022-11-13]
    sudo apt-get update
    sudo apt-get install mender-client
    ```
+
+!!! To prevent the Mender client from upgrading when upgrading the rest of the
+!!! system, mark it to be held with `sudo apt-mark hold mender-client`.
 
 #### Install from package
 

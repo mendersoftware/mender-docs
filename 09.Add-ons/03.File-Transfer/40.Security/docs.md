@@ -42,3 +42,14 @@ to the Mender Server.
 
 Audit logs hold a list of every file transfer event. You can access this information
 in the Mender UI.
+
+### No arbitrary transfers
+
+Within the [Limits](../../90.Reference/docs.md#limits-configuration) configuration section you can impose
+additional restrictions of the file transfer requests. Enabling the limits allows you to control
+basic security implications of a file transfer:
+* chroot-like restrictions of uploads and downloads to a given directory
+* restrict the files you can get to certain owners/groups
+* permit only the transfer of regular files
+* limit the max file size
+* control the average amount of data your device sends or receives per hour

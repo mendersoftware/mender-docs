@@ -37,7 +37,7 @@ Once your device boots with a newly provisioned disk image, it should already be
 
 ![Mender UI - device pending authorization](device-pending-authorization.png)
 
-If your device does not show as pending authorization in the Mender server once it boots with the disk image, you need to diagnose this issue before continuing. See the [troubleshooting section on connecting devices](../../201.Troubleshoot/05.Device-Runtime/docs.md#mender-server-connection-issues) in this case.
+If your device does not show as pending authorization in the Mender server once it boots with the disk image, you need to diagnose this issue before continuing. See the [troubleshooting section on connecting devices](../../301.Troubleshoot/05.Device-Runtime/docs.md#mender-server-connection-issues) in this case.
 
 
 ### A CLI environment for your server
@@ -93,7 +93,7 @@ keys-client-generated/
 
 ## Preauthorize your device
 
-Now that we have the device's identity and public key, we will use the Mender server management REST APIs to preauthorize it. You can review the API documentation in this [API chapter](../../200.API/?target=_blank#management-apis).
+Now that we have the device's identity and public key, we will use the Mender server management REST APIs to preauthorize it. You can review the API documentation in this [API chapter](../../200.Server-side-API/?target=_blank#management-apis).
 
 
 ### Make sure there are no existing authentication sets for your device
@@ -127,7 +127,7 @@ will also delete the device.
 
 Now, re-run the command above to generate the `devauth.json` file again and verify that your device identity does not exist anywhere.
 
-In the event that the decommissioning operation fails, perform a [manual database cleanup via the provided CLI command](../../201.Troubleshoot/04.Mender-Server/docs.md#cleaning-up-the-deviceauth-database-after-device-decommissioning).
+In the event that the decommissioning operation fails, perform a [manual database cleanup via the provided CLI command](../../301.Troubleshoot/04.Mender-Server/docs.md#cleaning-up-the-deviceauth-database-after-device-decommissioning).
 
 ### Call the preauthorize API
 
@@ -145,7 +145,7 @@ Secondly, set the contents of the device public key you generated above in a sec
 DEVICE_PUBLIC_KEY="$(cat keys-client-generated/public.key | awk 1 ORS='\\n')"
 ```
 
-Then simply call the [API to preauthorize a device](../../200.API/?target=_blank#post__devices):
+Then simply call the [API to preauthorize a device](../../200.Server-side-API/?target=_blank#management-api-device-authentication-preauthorize):
 
 ```bash
 curl -H "Authorization: Bearer $JWT" -H "Content-Type: application/json" -X POST -d "{ \"identity_data\" : $DEVICE_IDENTITY_JSON_OBJECT_STRING, \"pubkey\" : \"$DEVICE_PUBLIC_KEY\" }" $MENDER_SERVER_URI/api/management/v2/devauth/devices
@@ -190,6 +190,6 @@ Then insert the SD card back into your device and boot it.
 
 If everything went as intended, your device will get the `accepted` status in the Mender server. You can log in to the Mender UI to ensure your device is listed and reports inventory.
 
-If your device shows as `pending`, see the troubleshooting on [a device shows up as pending after preauthorizing it](../../201.Troubleshoot/04.Mender-Server/docs.md#a-device-shows-up-as-pending-after-preauthorizing-it).
+If your device shows as `pending`, see the troubleshooting on [a device shows up as pending after preauthorizing it](../../301.Troubleshoot/04.Mender-Server/docs.md#a-device-shows-up-as-pending-after-preauthorizing-it).
 
-If you do not see your device at all, verify it booted correctly and it is able to connect to the Mender server. You can check [the Mender client logs on the device](../../201.Troubleshoot/03.Mender-Client/docs.md#obtaining-client-logs) for more diagnostics information.
+If you do not see your device at all, verify it booted correctly and it is able to connect to the Mender server. You can check [the Mender client logs on the device](../../301.Troubleshoot/03.Mender-Client/docs.md#obtaining-client-logs) for more diagnostics information.

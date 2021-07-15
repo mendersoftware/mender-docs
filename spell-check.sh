@@ -6,5 +6,5 @@
 # for so this dictionary is rather large and will need to be added to over time.
 
 ispell -p ./.ispell_english $(find . -name '*.md' | \
-                                  grep -v '202.Release-information/02.Open-source-licenses/docs.md' | \
-                                  grep -v '202.Release-information/01.Release-notes-changelog/docs.md')
+                                  grep -v '302.Release-information/02.Open-source-licenses/docs.md' | \
+                                  grep -v '302.Release-information/01.Release-notes-changelog/docs.md')

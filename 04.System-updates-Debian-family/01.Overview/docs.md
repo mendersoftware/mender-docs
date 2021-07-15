@@ -55,7 +55,7 @@ Note that the default setup of systemd will use network time
 synchronization to maintain the clock in a running system. This may
 take a few minutes to stabilize on system boot so it is possible
 to have a few connection rejections from the server until this process
-is complete and the time is correct. Please see [certificate troubleshooting](../../201.Troubleshoot/03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid) for more information about the symptoms of this issue.
+is complete and the time is correct. Please see [certificate troubleshooting](../../301.Troubleshoot/03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid) for more information about the symptoms of this issue.
 
 If your device does not have an active internet connection, then systemd
 will be unable to configure the system time as it will be unable to connect

@@ -11,7 +11,7 @@ This document outlines the compatibility between different versions of Mender co
 
 <!--AUTOVERSION: "% to %"/ignore-->
 Mender always provides an [upgrade
-path](../../07.Server-installation/07.Upgrading/docs.md) from the past patch
+path](../../07.Server-installation/03.Installation-with-docker-compose/01.Upgrading/docs.md) from the past patch
 (e.g. 1.2.0 to 1.2.1) and minor version (e.g. 1.1.1 to 1.2.0), and releases
 follow [Semantic Versioning](http://semver.org/?target=_blank). Note that
 according to Semantic Versioning, minor releases add new functionality (e.g from
@@ -89,7 +89,7 @@ In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3
 !! <sup>2</sup> Rolling back to 1.x.x from a failed upgrade to 2.x.x is supported. However, it is not possible to downgrade to a Mender 1.x.x client from a 2.x.x client, once the update containing 2.x.x has been committed.
 
 <!--AUTOVERSION: "from % to newer"/ignore "from-%-to-newer"/ignore-->
-! <sup>3</sup> If upgrading from thud to newer versions, see also [known issues when upgrading from thud to newer versions](../../201.Troubleshoot/02.Yocto-Project-runtime/docs.md#upgrading-from-thud-to-newer-versions-fails-with-dual-rootfs-configuration-not-found).
+! <sup>3</sup> If upgrading from thud to newer versions, see also [known issues when upgrading from thud to newer versions](../../301.Troubleshoot/02.Yocto-Project-runtime/docs.md#upgrading-from-thud-to-newer-versions-fails-with-dual-rootfs-configuration-not-found).
 
 Leverage [Mender consulting services to support other versions of the Yocto Project](https://mender.io/product/board-support?target=_blank) for your board and environment.
 
@@ -123,24 +123,13 @@ The [Mender Artifact format](../03.Artifact/docs.md) is managed by the [Mender A
 
 ## Mender server and client API
 
-The compatibility between the Mender server and client is managed by the Device API versions exposed by the server and used by the client. If the Mender server supports the API version of the Mender client, they are compatible.  However, please ensure that the client and server support the [Artifact format](#mender-clientserver-and-artifact-format) version you are using. Device API docs are available in the [API chapter](../../200.API/?target=_blank#device-apis).
+The compatibility between the Mender server and client is managed by the Device API versions exposed by the server and used by the client. If the Mender server supports the API version of the Mender client, they are compatible.  However, please ensure that the client and server support the [Artifact format](#mender-clientserver-and-artifact-format) version you are using. Device API docs are available in the [API chapter](../../200.Server-side-API/?target=_blank#device-apis).
 
-<!--AUTOVERSION: "| %"/ignore-->
-|        | Mender server versions | Mender client versions |
-|--------|------------------------|------------------------|
-| API v1 | 1.0.x                  | 1.0.x                  |
-|        | 1.1.x                  | 1.1.x                  |
-|        | 1.2.x                  | 1.2.x                  |
-|        | 1.3.x                  | 1.3.x                  |
-|        | 1.4.x                  | 1.4.x                  |
-|        | 1.5.x                  | 1.5.x                  |
-|        | 1.6.x                  | 1.6.x                  |
-|        | 1.7.x                  | 1.7.x                  |
-|        | 2.0.x                  | 2.0.x                  |
-|        | 2.1.x                  | 2.1.x                  |
-|        | 2.2.x                  | 2.2.x                  |
-|        | 2.3.x                  | 2.3.x                  |
-|        | 2.4.x                  | 2.4.x                  |
-|        | 2.5.x                  | 2.5.x                  |
-|        | 2.6.x                  | 2.6.x                  |
-|        | 2.7.x                  |                        |
+<!--AUTOVERSION: "Mender server % and %"/ignore "Mender server % and later"/ignore "Mender client % and %"/ignore "Mender client % and later"/ignore-->
+|                               | API v1 | API v2 |
+|-------------------------------|--------|--------|
+| Mender server 1.x.x and 2.x.x | yes    | no     |
+| Mender server 3.0.0 and later | yes    | yes    |
+|-------------------------------|--------|--------|
+| Mender client 1.x.x and 2.x.x | yes    | no     |
+| Mender client 3.0.0 and later | yes    | yes    |

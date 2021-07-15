@@ -58,7 +58,7 @@ feature, leverages a PKI (Public Key Infrastructure) to authorize devices based 
 client certificates without the need of explicit user's actions. Below is a detailed
 breakdown of each.
 
-For details of API calls please consult the [API documentation](../../200.API/?target=_blank#default-device-authentication).
+For details of API calls please consult the [API documentation](../../200.Server-side-API/?target=_blank#device-api-device-authentication).
 
 ### Authorize-on-request Flow
 
@@ -170,5 +170,5 @@ The token does have an **expiry date** (one week period by default), but the Men
 will obtain a fresh token from the Mender server automatically.
 
 For details on the token format please see the relevant [documentation on
-submitting an authentication request](../../200.API/?target=_blank#default-device-authentication).
+submitting an authentication request](../../200.Server-side-API/?target=_blank#device-api-device-authentication).
 

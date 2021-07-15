@@ -79,6 +79,27 @@ Not all Artifacts have dependencies; if they don't, then it doesn't matter what
 the *Provides* values on the device are.
 
 
+### Streaming, resume and compression
+
+The tar format supports streaming, which Mender takes advantage of. As a Mender
+Artifact is downloaded from the Mender server or external storage, the Mender
+client streams the root file system within it directly to the inactive partition,
+without needing any temporary storage for unpacking it before it is written.
+This drastically reduces storage requirements for the update process,
+improves performance and reduces flash wear.
+
+In cases where Artifact downloads are interrupted, e.g. due to unreliable wireless
+network connectivity, the Mender client will resume the download from where it was
+interrupted, using [HTTP range requests](https://tools.ietf.org/html/rfc7233?target=_blank).
+
+To enable streaming and control based on metadata, like aborting the download
+if the Artifact is not compatible with the device, the Mender Artifact itself
+is not compressed. Instead, the root file systems within Artifacts are
+compressed, as well as some of the metadata, like headers, currently with the
+[gzip compression algorithm](https://en.wikipedia.org/wiki/gzip?target=_blank)
+by default.
+
+
 ## Artifact format versions
 
 Mender is constantly evolving to adapt to the needs of its users, and the Mender
