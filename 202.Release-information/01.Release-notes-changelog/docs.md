@@ -6,6 +6,162 @@ shortcode-core:
     active: false
 ---
 
+## Mender 2.7.1
+
+_Released 07.14.2021_
+
+### Statistics
+
+A total of 1513 lines added, 806 removed (delta 707)
+
+| Developers with the most changesets | |
+|---|---|
+| Lluis Campos | 11 (26.2%) |
+| Fabio Tranchitella | 7 (16.7%) |
+| Kristian Amlie | 7 (16.7%) |
+| Ole Petter Orhagen | 6 (14.3%) |
+| Peter Grzybowski | 4 (9.5%) |
+| Alf-Rune Siqveland | 3 (7.1%) |
+| Nils Olav Kvelvane Johansen | 2 (4.8%) |
+| Krzysztof Jaskiewicz | 1 (2.4%) |
+| Prashanth Joseph Babu | 1 (2.4%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Fabio Tranchitella | 554 (34.7%) |
+| Kristian Amlie | 339 (21.2%) |
+| Lluis Campos | 309 (19.3%) |
+| Ole Petter Orhagen | 191 (12.0%) |
+| Peter Grzybowski | 69 (4.3%) |
+| Alf-Rune Siqveland | 57 (3.6%) |
+| Nils Olav Kvelvane Johansen | 44 (2.8%) |
+| Krzysztof Jaskiewicz | 31 (1.9%) |
+| Prashanth Joseph Babu | 3 (0.2%) |
+
+| Developers with the most signoffs (total 2) | |
+|---|---|
+| Ole Petter Orhagen | 2 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 40 (95.2%) |
+| prashanthjbabu@gmail.com | 1 (2.4%) |
+| RnDity | 1 (2.4%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 1563 (97.9%) |
+| RnDity | 31 (1.9%) |
+| prashanthjbabu@gmail.com | 3 (0.2%) |
+
+| Employers with the most signoffs (total 2) | |
+|---|---|
+| Northern.tech | 2 (100.0%) |
+
+| Employers with the most hackers (total 9) | |
+|---|---|
+| Northern.tech | 7 (77.8%) |
+| RnDity | 1 (11.1%) |
+| prashanthjbabu@gmail.com | 1 (11.1%) |
+
+### Changelogs
+
+#### deviceauth (2.6.1)
+
+New changes in deviceauth since 2.6.0:
+
+* Increase robustness when propagating status to inventory for pending devices, making sure the database remains consistent
+  ([MEN-4604](https://tracker.mender.io/browse/MEN-4604))
+
+#### deviceconnect (1.1.1)
+
+New changes in deviceconnect since 1.1.0:
+
+* [] Limit size of messages transferred over websockets
+  ([MEN-4803](https://tracker.mender.io/browse/MEN-4803))
+
+#### integration (2.7.1)
+
+New changes in integration since 2.7.0:
+
+* Enforce userauth middleware on non-signup tenantadm endpoints
+  ([MEN-4657](https://tracker.mender.io/browse/MEN-4657))
+* Fix mender-configure install in Docker image
+  mendersoftware/mender-client-docker-addons
+* fix ad improve the the production template
+  ([MEN-4790](https://tracker.mender.io/browse/MEN-4790))
+* Upgrade deviceauth to 2.6.1.
+* Upgrade deviceconnect to 1.1.1.
+* Upgrade integration to 2.7.1.
+* Upgrade mender to 2.6.1.
+* Upgrade mender-artifact to 3.5.2.
+* Upgrade mender-connect to 1.1.1.
+* Upgrade useradm to 1.14.1.
+* Upgrade useradm-enterprise to 1.14.1.
+
+#### mender (2.6.1)
+
+New changes in mender since 2.6.0:
+
+* Dont Verify SSL if skip verify is set
+  If skip verify is set , then we shouldnt call VerifyResult
+* Update Modules Artifact generators: correct --software-version flag
+* single-file-artifact-gen: Support concurrent executions
+* single-file Update Module: fix rollback functionality
+* The daemon will no longer crash if mender check-update or send-inventory is used before the daemon has finished its set up.
+  ([MEN-4074](https://tracker.mender.io/browse/MEN-4074))
+* Fix D-Bus timeout on errors by finishing handling
+  ([MEN-4703](https://tracker.mender.io/browse/MEN-4703))
+* The location of the device type file is now determined by the mender.conf file. If the device type file is not used in mender.conf, the device type file is determined by the --data flag and if the flag is not used, the device type file is set to default. In addition, the scripts and modules directories location is consistent with the --data flag now.
+  ([MEN-4669](https://tracker.mender.io/browse/MEN-4669))
+* Fix race condition in menderAuthManagerService due to
+  concurrent map access. This could manifest either as a crash, or as a
+  failure to deliver the JwtToken to dependent processes, such as
+  mender-connect.
+* Fix race condition in `dbus.RegisterMethodCallCallback` due
+  to concurrent map access. This could manifest either as a crash, or as
+  a failure to deliver the JwtToken to dependent processes, such as
+  mender-connect.
+* Fix occasional crash when exiting using SIGTERM.
+* Fix: Correctly log the error response message from server errors
+* Fix a bug which could sometimes lead the client to do a
+  rollback after it had already committed. This could happen if the
+  client happened to spontaneously reboot or fail during the status
+  update to the server. Doing this is not correct according to the state
+  flow, and can have unexpected consequences depending on the
+  combination of Update Modules and State Scripts.
+  ([MEN-4830](https://tracker.mender.io/browse/MEN-4830))
+* mender-inventory-network: Fix incompatibility with busybox,
+  by using short command line options in grep command.
+  ([MEN-4851](https://tracker.mender.io/browse/MEN-4851))
+
+#### mender-artifact (3.5.2)
+
+New changes in mender-artifact since 3.5.1:
+
+* [] Fix sending on closed signal channel
+  ([MEN-4832](https://tracker.mender.io/browse/MEN-4832))
+
+#### mender-connect (1.1.1)
+
+New changes in mender-connect since 1.1.0:
+
+* Fix the terminal PATH issues in the standard shell by defaulting to
+  starting a 'login' shell with the '--login' option. This can be controlled
+  through the new configuration field 'ShellArguments', which you can set to
+  whatever arguments you want passed to the shell on startup.
+  ([MEN-4505](https://tracker.mender.io/browse/MEN-4505))
+* Handle the re-connection request even if there is
+  no new JWT token from the Mender client
+  ([MEN-4694](https://tracker.mender.io/browse/MEN-4694))
+
+#### useradm-enterprise (1.14.1)
+
+New changes in useradm-enterprise since 1.14.0:
+
+* security fix: invalidate user JWT token cache on logout
+  ([MEN-4754](https://tracker.mender.io/browse/MEN-4754))
+
 ## meta-mender zeus-v2021.04
 
 _Released 04.23.2021_

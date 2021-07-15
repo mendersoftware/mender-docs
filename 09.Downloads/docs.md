@@ -29,8 +29,8 @@ Mender provides images based on the following distributions:
 
 | Board                         | OS                              | Disk image                                                                                         | Storage size |
 |-------------------------------|---------------------------------|----------------------------------------------------------------------------------------------------|--------------|
-| Raspberry Pi 3 Model B and B+ | Raspberry Pi OS Buster Lite 2020-05-27 | [raspios-buster-lite-raspberrypi3-mender.img.xz][raspios-buster-lite-raspberrypi3-mender.img.xz] | 8 GB         |
-| Raspberry Pi 4 Model B        | Raspberry Pi OS Buster Lite 2020-05-27 | [raspios-buster-lite-raspberrypi4-mender.img.xz][raspios-buster-lite-raspberrypi4-mender.img.xz] | 8 GB         |
+| Raspberry Pi 3 Model B and B+ | Raspberry Pi OS Buster Lite 2021-01-11 | [raspios-buster-lite-raspberrypi3-mender.img.xz][raspios-buster-lite-raspberrypi3-mender.img.xz] | 8 GB         |
+| Raspberry Pi 4 Model B        | Raspberry Pi OS Buster Lite 2021-01-11 | [raspios-buster-lite-raspberrypi4-mender.img.xz][raspios-buster-lite-raspberrypi4-mender.img.xz] | 8 GB         |
 
 <!--AUTOVERSION: "mender-%.img.xz"/mender-convert-client -->
 [raspios-buster-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-01-11-raspios-buster-armhf-lite/arm/2021-01-11-raspios-buster-armhf-lite-raspberrypi3-mender-2.6.0.img.xz
@@ -55,8 +55,8 @@ Follow the correct link according to your host platform to download
 <!--AUTOVERSION: "mender-artifact %"/mender-artifact -->
 | Platform | Download link                                                |
 |----------|--------------------------------------------------------------|
-| Linux    | [mender-artifact 3.5.1][x.x.x_mender-artifact-linux]     |
-| Mac OS X | [mender-artifact 3.5.1][x.x.x_mender-artifact-darwin] |
+| Linux    | [mender-artifact 3.5.2][x.x.x_mender-artifact-linux]     |
+| Mac OS X | [mender-artifact 3.5.2][x.x.x_mender-artifact-darwin] |
 
 Remember to add execute permission and ensure that the mender-artifact utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
 
@@ -69,9 +69,9 @@ Please refer to your host Operating System documentation for more details.
 
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/3.5.1/linux/mender-artifact
+[x.x.x_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/3.5.2/linux/mender-artifact
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/3.5.1/darwin/mender-artifact
+[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/3.5.2/darwin/mender-artifact
 
 ! If you are using Mac OS X, note that using `mender-artifact` with
 ! disk image files (e.g.: `*.sdimg`, `*.img`, or others holding the storage
@@ -243,16 +243,16 @@ mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
 | Architecture   | Devices                                   | Download link                                                       |
 |----------------|-------------------------------------------|---------------------------------------------------------------------|
-| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client_2.6.0-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] |
-| arm64 | ARM 64bit processors, for example Debian for Asus Tinker Board | [mender-client_2.6.0-1_arm64.deb][mender-client_x.x.x-1_arm64.deb] |
-| amd64 | Generic 64-bit x86 processors, the most popular among workstations | [mender-client_2.6.0-1_amd64.deb][mender-client_x.x.x-1_amd64.deb] |
+| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client_2.6.1-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] |
+| arm64 | ARM 64bit processors, for example Debian for Asus Tinker Board | [mender-client_2.6.1-1_arm64.deb][mender-client_x.x.x-1_arm64.deb] |
+| amd64 | Generic 64-bit x86 processors, the most popular among workstations | [mender-client_2.6.1-1_amd64.deb][mender-client_x.x.x-1_amd64.deb] |
 
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
-[mender-client_x.x.x-1_armhf.deb]: https://downloads.mender.io/2.6.0/dist-packages/debian/armhf/mender-client_2.6.0-1_armhf.deb
+[mender-client_x.x.x-1_armhf.deb]: https://downloads.mender.io/2.6.1/dist-packages/debian/armhf/mender-client_2.6.1-1_armhf.deb
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_arm64.deb"/mender -->
-[mender-client_x.x.x-1_arm64.deb]: https://downloads.mender.io/2.6.0/dist-packages/debian/arm64/mender-client_2.6.0-1_arm64.deb
+[mender-client_x.x.x-1_arm64.deb]: https://downloads.mender.io/2.6.1/dist-packages/debian/arm64/mender-client_2.6.1-1_arm64.deb
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_amd64.deb"/mender -->
-[mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/2.6.0/dist-packages/debian/amd64/mender-client_2.6.0-1_amd64.deb
+[mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/2.6.1/dist-packages/debian/amd64/mender-client_2.6.1-1_amd64.deb
 
 
 ## Mender add-ons
