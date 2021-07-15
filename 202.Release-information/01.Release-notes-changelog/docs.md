@@ -6,6 +6,148 @@ shortcode-core:
     active: false
 ---
 
+## Mender 2.6.2
+
+_Released 07.14.2021_
+
+### Statistics
+
+A total of 1467 lines added, 717 removed (delta 750)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 10 (28.6%) |
+| Lluis Campos | 10 (28.6%) |
+| Ole Petter | 5 (14.3%) |
+| Fabio Tranchitella | 3 (8.6%) |
+| Alf-Rune Siqveland | 2 (5.7%) |
+| Peter Grzybowski | 2 (5.7%) |
+| Nils Olav Kvelvane Johansen | 2 (5.7%) |
+| Prashanth Joseph Babu | 1 (2.9%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Fabio Tranchitella | 501 (32.5%) |
+| Kristian Amlie | 363 (23.5%) |
+| Lluis Campos | 311 (20.2%) |
+| Ole Petter | 192 (12.5%) |
+| Alf-Rune Siqveland | 75 (4.9%) |
+| Peter Grzybowski | 52 (3.4%) |
+| Nils Olav Kvelvane Johansen | 45 (2.9%) |
+| Prashanth Joseph Babu | 3 (0.2%) |
+
+| Developers with the most signoffs (total 3) | |
+|---|---|
+| Ole Petter | 3 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 34 (97.1%) |
+| prashanthjbabu@gmail.com | 1 (2.9%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 1539 (99.8%) |
+| prashanthjbabu@gmail.com | 3 (0.2%) |
+
+| Employers with the most signoffs (total 3) | |
+|---|---|
+| Northern.tech | 3 (100.0%) |
+
+| Employers with the most hackers (total 8) | |
+|---|---|
+| Northern.tech | 7 (87.5%) |
+| prashanthjbabu@gmail.com | 1 (12.5%) |
+
+### Changelogs
+
+#### deployments-enterprise (2.2.2)
+
+New changes in deployments-enterprise since 2.2.1:
+
+* docs: Fix naming conflict in v1 and v2 NewDeployment definitions.
+* docs: Document missing parameters for NewDeploymentForGroup schema.
+
+#### deviceconnect (1.0.1)
+
+New changes in deviceconnect since 1.0.0:
+
+* [] Limit size of messages transferred over websockets
+  ([MEN-4803](https://tracker.mender.io/browse/MEN-4803))
+
+#### integration (2.6.2)
+
+New changes in integration since 2.6.1:
+
+* Upgrade deployments to 2.2.2.
+* Upgrade deployments-enterprise to 2.2.2.
+* Upgrade deviceconnect to 1.0.1.
+* Upgrade mender to 2.5.2.
+* Upgrade mender-artifact to 3.5.2.
+* Upgrade mender-connect to 1.0.2.
+* Upgrade useradm to 1.13.1.
+* Upgrade useradm-enterprise to 1.13.1.
+
+#### mender (2.5.2)
+
+New changes in mender since 2.5.1:
+
+* Dont Verify SSL if skip verify is set
+  If skip verify is set , then we shouldnt call VerifyResult
+* Update Modules Artifact generators: correct --software-version flag
+* single-file-artifact-gen: Support concurrent executions
+* single-file Update Module: fix rollback functionality
+* The daemon will no longer crash if mender check-update or send-inventory is used before the daemon has finished its set up.
+  ([MEN-4074](https://tracker.mender.io/browse/MEN-4074))
+* Fix D-Bus timeout on errors by finishing handling
+  ([MEN-4703](https://tracker.mender.io/browse/MEN-4703))
+* The location of the device type file is now determined by the mender.conf file. If the device type file is not used in mender.conf, the device type file is determined by the --data flag and if the flag is not used, the device type file is set to default. In addition, the scripts and modules directories location is consistent with the --data flag now.
+  ([MEN-4669](https://tracker.mender.io/browse/MEN-4669))
+* Fix race condition in menderAuthManagerService due to
+  concurrent map access. This could manifest either as a crash, or as a
+  failure to deliver the JwtToken to dependent processes, such as
+  mender-connect.
+* Fix race condition in `dbus.RegisterMethodCallCallback` due
+  to concurrent map access. This could manifest either as a crash, or as
+  a failure to deliver the JwtToken to dependent processes, such as
+  mender-connect.
+* Fix occasional crash when exiting using SIGTERM.
+* Fix: Correctly log the error response message from server errors
+* Fix a bug which could sometimes lead the client to do a
+  rollback after it had already committed. This could happen if the
+  client happened to spontaneously reboot or fail during the status
+  update to the server. Doing this is not correct according to the state
+  flow, and can have unexpected consequences depending on the
+  combination of Update Modules and State Scripts.
+  ([MEN-4830](https://tracker.mender.io/browse/MEN-4830))
+
+#### mender-artifact (3.5.2)
+
+New changes in mender-artifact since 3.5.1:
+
+* [] Fix sending on closed signal channel
+  ([MEN-4832](https://tracker.mender.io/browse/MEN-4832))
+
+#### mender-connect (1.0.2)
+
+New changes in mender-connect since 1.0.1:
+
+* Fix the terminal PATH issues in the standard shell by defaulting to
+  starting a 'login' shell with the '--login' option. This can be controlled
+  through the new configuration field 'ShellArguments', which you can set to
+  whatever arguments you want passed to the shell on startup.
+  ([MEN-4505](https://tracker.mender.io/browse/MEN-4505))
+* Handle the re-connection request even if there is
+  no new JWT token from the Mender client
+  ([MEN-4694](https://tracker.mender.io/browse/MEN-4694))
+
+#### useradm-enterprise (1.13.1)
+
+New changes in useradm-enterprise since 1.13.0:
+
+* security fix: invalidate user JWT token cache on logout
+  ([MEN-4754](https://tracker.mender.io/browse/MEN-4754))
+
 ## meta-mender zeus-v2021.04
 
 _Released 04.23.2021_
