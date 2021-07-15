@@ -127,8 +127,6 @@ will also delete the device.
 
 Now, re-run the command above to generate the `devauth.json` file again and verify that your device identity does not exist anywhere.
 
-In the event that the decommissioning operation fails, perform a [manual database cleanup via the provided CLI command](../../301.Troubleshoot/04.Mender-Server/docs.md#cleaning-up-the-deviceauth-database-after-device-decommissioning).
-
 ### Call the preauthorize API
 
 Set your device identity as a JSON object in a shell variable:
@@ -189,7 +187,5 @@ Then insert the SD card back into your device and boot it.
 ## Verify the device is accepted
 
 If everything went as intended, your device will get the `accepted` status in the Mender server. You can log in to the Mender UI to ensure your device is listed and reports inventory.
-
-If your device shows as `pending`, see the troubleshooting on [a device shows up as pending after preauthorizing it](../../301.Troubleshoot/04.Mender-Server/docs.md#a-device-shows-up-as-pending-after-preauthorizing-it).
 
 If you do not see your device at all, verify it booted correctly and it is able to connect to the Mender server. You can check [the Mender client logs on the device](../../301.Troubleshoot/03.Mender-Client/docs.md#obtaining-client-logs) for more diagnostics information.
