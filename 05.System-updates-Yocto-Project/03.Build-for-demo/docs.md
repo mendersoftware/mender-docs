@@ -67,7 +67,7 @@ the [Mender Consulting services to integrate your board](https://mender.io/suppo
 
 Make sure that the clock is set correctly on your devices. Otherwise certificate verification will become unreliable
 and **the Mender client can likely not connect to the Mender server**.
-See [certificate troubleshooting](../../201.Troubleshoot/03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid) for more information.
+See [certificate troubleshooting](../../301.Troubleshoot/03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid) for more information.
 
 
 ## Yocto Project
@@ -113,9 +113,9 @@ MENDER_ARTIFACT_NAME = "release-1"
 # If you need an earlier version, please uncomment the following and set to the
 # required version.
 #
-# PREFERRED_VERSION_pn-mender-client = "2.6.0"
-# PREFERRED_VERSION_pn-mender-artifact = "3.5.1"
-# PREFERRED_VERSION_pn-mender-artifact-native = "3.5.1"
+# PREFERRED_VERSION_pn-mender-client = "3.0.0"
+# PREFERRED_VERSION_pn-mender-artifact = "3.6.0"
+# PREFERRED_VERSION_pn-mender-artifact-native = "3.6.0"
 
 ARTIFACTIMG_FSTYPE = "ext4"
 
@@ -230,9 +230,9 @@ MACHINE = "<YOUR-MACHINE>"
 # If you need an earlier version, please uncomment the following and set to the
 # required version.
 #
-# PREFERRED_VERSION_pn-mender = "2.6.0"
-# PREFERRED_VERSION_pn-mender-artifact = "3.5.1"
-# PREFERRED_VERSION_pn-mender-artifact-native = "3.5.1"
+# PREFERRED_VERSION_pn-mender = "3.0.0"
+# PREFERRED_VERSION_pn-mender-artifact = "3.6.0"
+# PREFERRED_VERSION_pn-mender-artifact-native = "3.6.0"
 
 # The following settings to enable systemd are needed for all Yocto
 # releases sumo and older.  Newer releases have these settings conditionally

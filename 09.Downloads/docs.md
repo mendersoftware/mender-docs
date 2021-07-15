@@ -11,7 +11,7 @@ process:
 ## Disk images
 
 These disk images (`*.img` or `*.sdimg`) are based on images provided by board
-manufacturers and already have Mender fully integrated. They are used to
+manufacturers and are ready to install the Mender client. They are used to
 provision the device storage for devices without Mender running already.
 
 Mender provides images based on the following distributions:
@@ -55,8 +55,8 @@ Follow the correct link according to your host platform to download
 <!--AUTOVERSION: "mender-artifact %"/mender-artifact -->
 | Platform | Download link                                                |
 |----------|--------------------------------------------------------------|
-| Linux    | [mender-artifact 3.5.1][x.x.x_mender-artifact-linux]     |
-| Mac OS X | [mender-artifact 3.5.1][x.x.x_mender-artifact-darwin] |
+| Linux    | [mender-artifact 3.6.0][x.x.x_mender-artifact-linux]     |
+| Mac OS X | [mender-artifact 3.6.0][x.x.x_mender-artifact-darwin] |
 
 Remember to add execute permission and ensure that the mender-artifact utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
 
@@ -69,9 +69,9 @@ Please refer to your host Operating System documentation for more details.
 
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/3.5.1/linux/mender-artifact
+[x.x.x_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/3.6.0/linux/mender-artifact
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/3.5.1/darwin/mender-artifact
+[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/3.6.0/darwin/mender-artifact
 
 ! If you are using Mac OS X, note that using `mender-artifact` with
 ! disk image files (e.g.: `*.sdimg`, `*.img`, or others holding the storage
@@ -110,6 +110,7 @@ the Mender client this way, should be aware that:
   asking for confirmation.
 * The Mender GPG public key and APT repository will be added to your trusted APT
   keychain and sources list respectively without asking for confirmation.
+* The latest released Mender components will be installed.
 
 !! Always examine scripts downloaded over the Internet before running them
 !! locally.
@@ -146,6 +147,9 @@ sudo apt-get update
 sudo apt-get upgrade
 ```
 
+!!! To prevent the Mender client from upgrading when upgrading the rest of the
+!!! system, mark it to be held with `sudo apt-mark hold mender-client`.
+
 #### Install using the APT repository
 
 Before installing the Mender client, you need to set up the Mender APT
@@ -153,6 +157,9 @@ repository. Afterwards, you can install and update the Mender client using the
 `apt` command line interface.
 
 ##### Set up the APT repository
+
+!!! With this method the latest released Mender components will be installed
+
 1. Update the `apt` package index and install required dependencies.
    ```bash
    sudo apt-get update
@@ -163,6 +170,7 @@ repository. Afterwards, you can install and update the Mender client using the
    		gnupg-agent \
    		software-properties-common
    ```
+
 2. Add the official Mender GPG key to your trusted `apt` keychain:
    ```bash
    curl -fLsS https://downloads.mender.io/repos/debian/gpg | sudo apt-key add -
@@ -174,11 +182,12 @@ repository. Afterwards, you can install and update the Mender client using the
    sudo apt-key fingerprint A1B29B00
    ```
    ```
-pub   rsa3072 2020-11-13 [SC] [expires: 2022-11-13]
-          E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
-uid           [ unknown] Mender Team <mender@northern.tech>
-sub   rsa3072 2020-11-13 [E] [expires: 2022-11-13]
+  pub   rsa3072 2020-11-13 [SC] [expires: 2022-11-13]
+            E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
+  uid           [ unknown] Mender Team <mender@northern.tech>
+  sub   rsa3072 2020-11-13 [E] [expires: 2022-11-13]
    ```
+
 3. Add the Mender repository to your sources list by selecting the architecture
    matching your device.
 
@@ -222,6 +231,9 @@ sub   rsa3072 2020-11-13 [E] [expires: 2022-11-13]
    sudo apt-get install mender-client
    ```
 
+!!! To prevent the Mender client from upgrading when upgrading the rest of the
+!!! system, mark it to be held with `sudo apt-mark hold mender-client`.
+
 #### Install from package
 
 We also provide the Debian package (`.deb`) for users wanting to install the
@@ -233,16 +245,16 @@ mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
 | Architecture   | Devices                                   | Download link                                                       |
 |----------------|-------------------------------------------|---------------------------------------------------------------------|
-| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client_2.6.0-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] |
-| arm64 | ARM 64bit processors, for example Debian for Asus Tinker Board | [mender-client_2.6.0-1_arm64.deb][mender-client_x.x.x-1_arm64.deb] |
-| amd64 | Generic 64-bit x86 processors, the most popular among workstations | [mender-client_2.6.0-1_amd64.deb][mender-client_x.x.x-1_amd64.deb] |
+| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client_3.0.0-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] |
+| arm64 | ARM 64bit processors, for example Debian for Asus Tinker Board | [mender-client_3.0.0-1_arm64.deb][mender-client_x.x.x-1_arm64.deb] |
+| amd64 | Generic 64-bit x86 processors, the most popular among workstations | [mender-client_3.0.0-1_amd64.deb][mender-client_x.x.x-1_amd64.deb] |
 
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
-[mender-client_x.x.x-1_armhf.deb]: https://downloads.mender.io/2.6.0/dist-packages/debian/armhf/mender-client_2.6.0-1_armhf.deb
+[mender-client_x.x.x-1_armhf.deb]: https://downloads.mender.io/3.0.0/dist-packages/debian/armhf/mender-client_3.0.0-1_armhf.deb
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_arm64.deb"/mender -->
-[mender-client_x.x.x-1_arm64.deb]: https://downloads.mender.io/2.6.0/dist-packages/debian/arm64/mender-client_2.6.0-1_arm64.deb
+[mender-client_x.x.x-1_arm64.deb]: https://downloads.mender.io/3.0.0/dist-packages/debian/arm64/mender-client_3.0.0-1_arm64.deb
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_amd64.deb"/mender -->
-[mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/2.6.0/dist-packages/debian/amd64/mender-client_2.6.0-1_amd64.deb
+[mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/3.0.0/dist-packages/debian/amd64/mender-client_3.0.0-1_amd64.deb
 
 
 ## Mender add-ons

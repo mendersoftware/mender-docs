@@ -78,14 +78,14 @@ Download the `mender-artifact` binary. If you're on Linux
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 ```bash
-wget https://downloads.mender.io/mender-artifact/3.5.1/linux/mender-artifact -O ${HOME}/bin/mender-artifact
+wget https://downloads.mender.io/mender-artifact/3.6.0/linux/mender-artifact -O ${HOME}/bin/mender-artifact
 ```
 
 On MacOS
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 ```bash
-wget https://downloads.mender.io/mender-artifact/3.5.1/darwin/mender-artifact -O ${HOME}/bin/mender-artifact
+wget https://downloads.mender.io/mender-artifact/3.6.0/darwin/mender-artifact -O ${HOME}/bin/mender-artifact
 ```
 
 
@@ -117,7 +117,7 @@ Download the `docker-artifact-gen` utility script:
 
 <!--AUTOVERSION: "mender/%"/mender-->
 ```bash
-wget https://raw.githubusercontent.com/mendersoftware/mender/2.6.0/support/modules-artifact-gen/docker-artifact-gen
+wget https://raw.githubusercontent.com/mendersoftware/mender/3.0.0/support/modules-artifact-gen/docker-artifact-gen
 ```
 
 Make `docker-artifact-gen` executable:
@@ -164,6 +164,15 @@ will see that there is a image downloaded on the device:
 >pi@raspberrypi:~$ sudo docker images
 >REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 >hello-world         <none>              851163c78e4a        4 months ago        4.85kB
+>```
+
+You can also see that the container was started, but since the hello-world
+container does not contain a daemon it exited immediately:
+
+>```bash
+>pi@raspberrypi:~$ sudo docker ps -a | head
+>CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
+>72e6cf80fa6a   hello-world   "/hello"   45 seconds ago   Exited (0) 42 seconds ago             optimistic_shaw
 >```
 
 The [Docker Update Module](https://hub.mender.io/t/docker/324?target=_blank) will

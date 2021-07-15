@@ -109,6 +109,12 @@ Set the default index for the boot partition.
 The size of the boot partition.
 
 
+#### `MENDER_CLIENT_INSTALL`
+
+> Value: y(default)/n
+
+Install the Mender client.
+
 #### `MENDER_CLIENT_VERSION`
 
 <!--AUTOVERSION: "/%/"/ignore-->

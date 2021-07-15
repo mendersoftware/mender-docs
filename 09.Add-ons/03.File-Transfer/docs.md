@@ -15,6 +15,15 @@ and provides data to reply to the HTTP calls. The implementation does not relay
 on any third-party software installed on a device, and in that sense has no relation
 to FTP or SFTP. Although feature-wise it provides similar functionalities.
 
+## Controlling the uploads and downloads
+
+You can use the File Transfer feature to upload and download anything to and from a device.
+In itself it gives a great power, but may require a certain degree of control.
+[The Limits](../90.Reference/docs.md#limits-configuration) configuration section allows you
+to restrict many aspects of the file transfer process. We designed it to give you full control over what
+you can do, while at the same time providing a way to introduce restrictions for environments where limiting
+is crucial.
+
 ## Limitations
 
 ### Multiple parallel file transfer sessions to the same device

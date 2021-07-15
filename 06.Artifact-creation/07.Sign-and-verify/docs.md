@@ -15,7 +15,7 @@ The following diagram shows the high level flow of creating and managing keys an
 
 ![Mender signature management flow](mender-signature-management-flow.png)
 
-The process begins with provisioning a device with the public verification key, and configuring the Mender Client to use the key (with the `ArtifactVerifyKey` [configuration option](../../03.Client-installation/06.Configuration-file/50.Configuration-options/docs.md#ArtifactVerifyKey)). After an Artifact is built, it is signed by the Signing system.
+The process begins with provisioning a device with the public verification key, and configuring the Mender Client to use the key (with the `ArtifactVerifyKey` [configuration option](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#ArtifactVerifyKey)). After an Artifact is built, it is signed by the Signing system.
 
 !!! Although it is convenient and possible to use the Build system as the Signing system, this lowers the security as unauthorized access to the private signing key is made easier for potential attackers (e.g. if the Build system is compromised). The best practice is to only sign Artifacts on an offline system, ideally as a manual operation after careful inspection of the Artifact.
 
@@ -85,7 +85,7 @@ creating the signature.
 ```bash
 mender-artifact write rootfs-image \
 -t beaglebone \
--n mender-2.6.0 \
+-n mender-3.0.0 \
 -f core-image-base-beaglebone.ext4 \
 -k private.key \
 -o artifact-signed.mender
@@ -113,7 +113,7 @@ mender-artifact validate artifact-signed.mender -k public.key
 
 ## Enable Mender Client signature verification
 
-Signature verification is enabled on the Mender client using the [ArtifactVerifyKey](../../03.Client-installation/06.Configuration-file/50.Configuration-options/docs.md#artifactVerifykey) configuration option.
+Signature verification is enabled on the Mender client using the [ArtifactVerifyKey](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#artifactVerifykey) configuration option.
 
 For OS specific instructions on how to install and enable verification keys, visit:
 

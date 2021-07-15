@@ -30,7 +30,7 @@ bitbake-layers remove-layer meta-mender-demo
 
 For security reasons, the Mender client does not require any open ports at the embedded device. Therefore, all communication between the Mender client and the server is always initiated by the client and it is important to configure the client so that the frequency of sending various requests to the server is reasonable for a given setup.
 
-Please refer to [polling intervals](../../03.Client-installation/06.Configuration-file/01.Polling-intervals/docs.md), for information on how to choose and how to set polling intervals.
+Please refer to [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md), for information on how to choose and how to set polling intervals.
 
 ## Certificates
 
@@ -40,7 +40,7 @@ server.
 
 !! Please make your device has the clock correctly set up. Otherwise certificate
 !! verification will become invalid. See
-!! [certificate troubleshooting](../../201.Troubleshoot/03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid)
+!! [certificate troubleshooting](../../301.Troubleshoot/03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid)
 !! for more information.
 
 
@@ -48,7 +48,7 @@ server.
 
 You can either generate new certificates by following the tutorial for
 [generating
-certificates](../../07.Server-installation/04.Certificates-and-keys/docs.md#generating-new-keys-and-certificates),
+certificates](../../07.Server-installation/05.Certificates-and-keys/docs.md),
 or obtain the certificates in a different way - for example from your existing
 Certificate Authority. In either case the certificates on the client and server
 must be the same.
@@ -98,7 +98,7 @@ Note in particular the `:` after the directory; this is mandatory.
 
 Please note that setting up for production will require that you explicitly set the [MENDER_SERVER_URL variable](../99.Variables/docs.md#mender_server_url) to the proper value for your server.
 
-!!! Note that, this step is not required for the [standalone mode](../../03.Client-installation/06.Configuration-file/01.Polling-intervals/docs.md).
+!!! Note that, this step is not required for the [standalone mode](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md).
 
 ## Artifact signing and verification keys
 
