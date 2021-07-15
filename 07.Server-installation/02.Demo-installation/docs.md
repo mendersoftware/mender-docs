@@ -5,11 +5,11 @@ taxonomy:
     label: tutorial
 ---
 
-!!! If you are interested in setting up a Mender server for production, visit
-!!! [Production installation](../03.Production-installation/docs.md)
-
 !!! If you are interested in evaluating Mender features, visit
 !!! [Get Started](../../01.Get-started/chapter.md)
+
+!!! If you are interested in setting up a Mender server for production, visit
+!!! [Production installation with Kubernetes](../04.Production-installation-with-kubernetes/docs.md).
 
 This tutorial covers how to setup a demonstration environment of the Mender
 server. This is not intended for production use, the demonstration environment
@@ -17,7 +17,7 @@ is insecure and is not optimized to run effectively.
 
 This can be useful if you want to familiarize your self with the Mender server
 before you move on to
-[Production installation](../03.Production-installation/docs.md).
+[Production installation](../04.Production-installation-with-kubernetes/docs.md).
 
 ## Requirements
 
@@ -50,13 +50,13 @@ Clone the [integration](https://github.com/mendersoftware/integration?target=_bl
 repository which contains everything that is need to start the demo server:
 <!--AUTOVERSION: "-b %"/integration "integration-%"/integration -->
 ```bash
-git clone -b 3.0.0-build3 https://github.com/mendersoftware/integration.git integration-3.0.0-build3
+git clone -b 3.0.0 https://github.com/mendersoftware/integration.git integration-3.0.0
 ```
 
 Change directory to the cloned repository:
 <!--AUTOVERSION: "integration-%"/integration -->
 ```bash
- cd integration-3.0.0-build3
+ cd integration-3.0.0
 ```
 
 Start the demo server:
@@ -118,7 +118,7 @@ To remove containers use commands from the section below.
 
 <!--AUTOVERSION: "integration-%"/integration -->
 If you want to remove all state in your Mender demo environment and start clean,
-run the following commands in the `integration-3.0.0-build3` directory:
+run the following commands in the `integration-3.0.0` directory:
 
 ```bash
 ./demo stop

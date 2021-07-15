@@ -4,6 +4,22 @@ taxonomy:
     category: docs
 ---
 
+<!--AUTOVERSION: "Mender client % has been released"/ignore-->
+## Mender client 3.0.0 has been released but my build still uses the 2.x series
+
+<!--AUTOVERSION: "Yocto branches 3.1 (%) and older"/ignore "Mender client % and later"/ignore-->
+Mender client 3.0.0 and later has removed support for single-dash command line flags, such as `-install` and `-show-provides`, and replaced them with regular commands without dashes, like `install` and `show-provides`. Because of this it is not completely backwards compatible. On the stable Yocto branches 3.1 (dunfell) and older, the latest major release is the 2.x series, and therefore 3.0 and later are not built by meta-mender unless requested.
+
+To request a specific version of the client, add a snippet like the following to `local.conf`:
+
+<!--AUTOVERSION: "PREFERRED_VERSION_mender-client = \"%\""/mender-->
+```
+PREFERRED_VERSION_mender-client = "3.0.0"
+```
+
+<!--AUTOVERSION: "Yocto branches higher than 3.1 (%)"/ignore "Mender client % and later"/ignore-->
+In Yocto branches higher than 3.1 (dunfell), Mender client 3.0.0 and later will be built by default.
+
 ## Your project is using a fork of U-Boot which conflicts with the U-Boot Mender uses
 
 When [Building a Mender Yocto Project image](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md) for your own project and device, you encounter a build error similar to the following:
@@ -311,7 +327,7 @@ A typical error message for this condition is:
 Error:
  Problem: package grub-efi-mender-precompiled-2.04-r0.cortexa8hf_neon requires u-boot, but none of the providers can be installed
   - package grub-efi-mender-precompiled-2.04-r0.cortexa8hf_neon conflicts with u-boot <= 1:2019.07 provided by u-boot-fork-1:2019.07-r0.beaglebone_yocto
-  - package mender-3.0.0-build3-r0.cortexa8hf_neon requires grub-editenv, but none of the providers can be installed
+  - package mender-3.0.0-r0.cortexa8hf_neon requires grub-editenv, but none of the providers can be installed
   - conflicting requests
 ```
 

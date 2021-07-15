@@ -5,9 +5,9 @@ taxonomy:
 ---
 
 This document details troubleshooting steps for the most common problems with the Mender server.
-The first part applies to all installations, while the section below on Production installations
-only applies when the Mender server is [installed for production](../../07.Server-installation/03.Production-installation/docs.md).
-
+The first part applies to all installations, while the section below only applies to the
+docker-compose setups, both the demo setup and the
+[docker-compose installation](../../07.Server-installation/03.Installation-with-docker-compose/docs.md)
 
 ## Persistent certificate errors in demo mode
 
@@ -31,7 +31,7 @@ Consult your browser's documentation for similar instructions.
 It is possible that after a failed device decommissioning operation there will be some unaccessible and unnecessary data in the deviceauth database. In this case, you should clean the database manually.
 
 Is is recommended to backup your data before performing the clean up operation.
-The [Backup and restore](../../07.Server-installation/08.Backup-and-restore/docs.md) chapter provides examples and
+The [Backup and restore](../../07.Server-installation/03.Installation-with-docker-compose/03.Backup-and-restore/docs.md) chapter provides examples and
 introduces example tools provided in Mender integration repository.
 
 To clean up the deviceauth database, run the following from within the integration repository:
@@ -101,10 +101,10 @@ In this case you can see that there are two authentication sets with the exact s
 The solution is to decommission the device and [remove all authentication sets](../../08.Server-integration/02.Preauthorizing-devices/docs.md#make-sure-there-are-no-existing-authentication-sets-for-your-device) and make sure the key used in the [preauthorize API call](../../08.Server-integration/02.Preauthorizing-devices/docs.md#call-the-preauthorize-api) matches exactly the one reported by the device, as seen in the `pending` data above.
 
 
-# Production installations
+# Docker-compose installations
 
-For the rest of this document, it is assumed that commands are run through production
-helper script `run` as detailed in the [production installation documentation](../../07.Server-installation/03.Production-installation/docs.md).
+For the rest of this document, it is assumed that commands are run through the
+helper script `run` as detailed in the [installation documentation](../../07.Server-installation/03.Installation-with-docker-compose/docs.md).
 
 
 ## Listing active containers
@@ -261,10 +261,10 @@ time="2017-01-31T08:25:15Z" level=fatal msg="NoCredentialProviders: no valid pro
 As seen in [container logs](#container-logs) section, `mender-deployments`
 service is restarting. The logs suggest there might be missing credentials for
 an AWS related service.
-From the [production installation](../../07.Server-installation/03.Production-installation/docs.md) tutorial, we can recall
+From the [installation](../../07.Server-installation/03.Installation-with-docker-compose/docs.md) tutorial, we can recall
 that
 `mender-deployments`
-[service configuration](../../07.Server-installation/03.Production-installation/docs.md#deployments-service) contains
+[service configuration](../../07.Server-installation/03.Installation-with-docker-compose/docs.md#deployments-service) contains
 credentials for artifact storage service.
 
 Configuration of current instance of `mender-deployments` can be viewed using

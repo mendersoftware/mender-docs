@@ -1,5 +1,5 @@
 ---
-title: Production installation
+title: Installation with Docker Compose
 taxonomy:
     category: docs
     label: tutorial
@@ -20,18 +20,25 @@ taxonomy:
 
 !!! You can save time by using [hosted Mender](https://hosted.mender.io?target=_blank), a secure Mender server ready to use, maintained by the Mender developers.
 
+! This chapter contains the legacy documentation for the production installation using Docker Compose. If you are interested in setting up a Mender server for production, we highly suggest reading the [Production installation with Kubernetes](../04.Production-installation-with-kubernetes/docs.md), which is is the only supported platform for the installation of a production-grade Mender Server.
+
 This is a step by step tutorial for deploying the Mender Server for production
-environments, and will cover relevant security and reliability aspects of Mender
-production installations.  The Mender backend services can be deployed to
-production using a skeleton provided in the `production` directory of the
+environments using Docker compose, and will cover relevant security and reliability
+aspects of Mender production installations.  The Mender backend services can be
+deployed to production using a skeleton provided in the `production` directory of the
 [integration](https://github.com/mendersoftware/integration?target=_blank)
 repository. Most of the steps are the same whether you are installing the Open
 Source or Enterprise edition of the Mender Server, but there are some extra
 steps that are covered in the [Enterprise subsection](#enterprise).
 
+For details and best practices of using `docker-compose` in production consult
+the official
+documentation:
+[Using Compose in production](https://docs.docker.com/compose/production/?target=_blank)
+
 ! If you have already installed an Open Source server and wish to upgrade to
 ! Enterprise, you should follow [the Enterprise upgrade
-! tutorial](01.Upgrading-from-OS-to-Enterprise/docs.md) instead of this tutorial.
+! tutorial](02.Upgrading-from-OS-to-Enterprise/docs.md) instead of this tutorial.
 
 
 ## Prerequisites
@@ -52,7 +59,7 @@ steps that are covered in the [Enterprise subsection](#enterprise).
 If you are setting up a Mender Enterprise server, you will also need:
 
 - An account with Mender in order to evaluate and use the commercial features in
-  Mender Enterprise. Please email [contact@mender.io]()
+  Mender Enterprise. Please email [contact@mender.io](mailto:contact@mender.io)
   to receive an evaluation account.
 
 !!! It is very likely possible to use other Linux distributions and versions. However, we recommend using this exact environment for running Mender because it is known to work and you will thus avoid any issues specific to your environment if you use this reference.
@@ -77,7 +84,7 @@ At the end of this tutorial you will have:
 - SSL certificate for the storage domain
 - a set of keys for generating and validating access tokens
 
-Consult the section on [certificates and keys](../04.Certificates-and-keys/docs.md) for details on
+Consult the section on [certificates and keys](../05.Certificates-and-keys/docs.md) for details on
 how the certificates and keys are used in the system.
 
 #### Docker compose naming scheme
@@ -100,7 +107,7 @@ named `mender-server`:
 
 <!--AUTOVERSION: "-b %"/integration -->
 ```bash
-git clone -b 3.0.0-build3 https://github.com/mendersoftware/integration mender-server
+git clone -b 3.0.0 https://github.com/mendersoftware/integration mender-server
 ```
 
 > ```
@@ -163,7 +170,7 @@ The template includes a few files:
 
 - `enterprise.yml.template` - configuration for running an Enterprise instance
   of the Mender server. This topic is covered separately in [the Enterprise
-  part](#enterprise) of the Production installation tutorial
+  part](#enterprise) of the installation tutorial
 
 !!! If an `enterprise.yml` file exists in the `config` directory, this will
 !!! automatically turn on Enterprise features in the backend service. If you
@@ -248,19 +255,19 @@ Your local directory tree should now look like this:
 
 > ```
 > ├── keys-generated
-> │   ├── certs
-> │   │   ├── api-gateway
-> │   │   │   ├── cert.crt
-> │   │   │   └── private.key
-> │   │   └── server.crt
-> │   │   └── storage-proxy
-> │   │       ├── cert.crt
-> │   │       └── private.key
-> │   └── keys
-> │       ├── deviceauth
-> │       │   └── private.key
-> │       └── useradm
-> │           └── private.key
+> │   ├── certs
+> │   │   ├── api-gateway
+> │   │   │   ├── cert.crt
+> │   │   │   └── private.key
+> │   │   └── server.crt
+> │   │   └── storage-proxy
+> │   │       ├── cert.crt
+> │   │       └── private.key
+> │   └── keys
+> │       ├── deviceauth
+> │       │   └── private.key
+> │       └── useradm
+> │           └── private.key
 > ├── config/enterprise.yml.template
 > ├── config/prod.yml
 > ├── config/prod.yml.template
@@ -270,7 +277,7 @@ Your local directory tree should now look like this:
 The production template file `prod.yml` is already configured to load keys and
 certificates from locations created by the `keygen` script. If you wish to use a
 different set of certificates or keys, please consult the
-[relevant documentation](../04.Certificates-and-keys/docs.md).
+[relevant documentation](../05.Certificates-and-keys/docs.md).
 
 Next, we can add and commit generated keys and certificates:
 
@@ -402,6 +409,7 @@ Secret Access Key respectively.
 First, generate a secret key for Minio with the `pwgen` utility:
 
 !!! On the Debian family of distributions you can install `pwgen` with `apt-get install pwgen`.
+!!! On the RPM family of distributions, you can install it with `yum install pwgen`.
 
 ```bash
 MINIO_SECRET_KEY_GENERATED=$(pwgen 16 1) && echo $MINIO_SECRET_KEY_GENERATED
@@ -553,7 +561,7 @@ At this point your commit history should look as follows:
 <!--AUTOVERSION: "git log --oneline %..HEAD"/integration -->
 <!--AUTOMATION: ignore -->
 ```bash
-git log --oneline 3.0.0-build3..HEAD
+git log --oneline 3.0.0..HEAD
 ```
 > ```
 > 7a4de3c production: configuration
@@ -664,7 +672,7 @@ First log in to the Mender docker registry with your Mender Enterprise credentia
 docker login registry.mender.io
 ```
 
-!!! If you have lost your credentials or need an evaluation account please email [contact@mender.io]().
+!!! If you have lost your credentials or need an evaluation account please email [contact@mender.io](mailto:contact@mender.io).
 
 Bring up all services up in detached mode with the following command:
 
@@ -773,7 +781,7 @@ is going to be managed by Mender. Exactly how to include the token depends on
 which integration method is used with the client. Please refer to one of these sections:
 
 * [Migrating existing clients from an Open Source to an Enterprise
-  server](01.Upgrading-from-OS-to-Enterprise/docs.md#migrating-clients)
+  server](02.Upgrading-from-OS-to-Enterprise/docs.md#migrating-clients)
 * [Mender installed on device using a deb
   package](../../03.Client-installation/02.Install-with-Debian-package/docs.md)
 * [Device integration using Yocto
@@ -804,7 +812,7 @@ At this point your commit history should look as follows:
 <!--AUTOVERSION: "git log --oneline %..HEAD"/integration -->
 <!--AUTOMATION: ignore -->
 ```bash
-git log --oneline 3.0.0-build3..HEAD
+git log --oneline 3.0.0..HEAD
 ```
 > ```
 > 76b3d00 production: Enterprise configuration
@@ -870,11 +878,3 @@ earlier](#creating-the-first-organization-and-user).
 If you encounter any issues while starting or running your Mender Server, you
 can take a look at the section for [troubleshooting Mender
 Server]().
-
-
-## Mutual TLS
-
-Mender Enterprise supports setting up a reverse proxy at the edge of the network, which can authenticate devices using TLS client certificates. Each client is equipped with a certificate signed by a CA certificate (Certificate Authority), and the edge proxy authenticates devices by verifying this signature. Authenticated devices are automatically authorized in the Mender backend, and do not need manual approval.
-
-Please refer to the [Mutual TLS section](../../08.Server-integration/03.Mutual-TLS-authentication/docs.md)
-to find further details on the configuration of this feature.
