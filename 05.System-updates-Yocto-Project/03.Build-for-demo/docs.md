@@ -94,7 +94,7 @@ support Mender.
 
 The following settings will be present in the default `conf/local.conf` after running the steps from [Mender Hub](https://hub.mender.io?target=_blank). These are likely to need customization for your setup.
 
-<!--AUTOVERSION: "PREFERRED_VERSION_pn-mender-client = \"%\""/mender "PREFERRED_VERSION_pn-mender-artifact = \"%\""/mender-artifact "PREFERRED_VERSION_pn-mender-artifact-native = \"%\""/mender-artifact-->
+<!--AUTOVERSION: "PREFERRED_VERSION_mender-client = \"%\""/mender "PREFERRED_VERSION_mender-artifact = \"%\""/mender-artifact "PREFERRED_VERSION_mender-artifact-native = \"%\""/mender-artifact-->
 ```bash
 # The name of the disk image and Artifact that will be built.
 # This is what the device will report that it is running, and different updates must have different names
@@ -109,13 +109,14 @@ MENDER_ARTIFACT_NAME = "release-1"
 # Given a Mender client version, see the corresponding version of the mender-artifact utility:
 # https://docs.mender.io/overview/compatibility#mender-clientserver-and-artifact-format
 #
-# Note that by default this will select the latest released version of the tools.
-# If you need an earlier version, please uncomment the following and set to the
-# required version.
+# By default this will select the latest version of the tools that is backwards compatible with the
+# given Yocto branch.
+# If you need an earlier version, or a later version even though it may not be backwards compatible,
+# please uncomment the following and set to the required version:
 #
-# PREFERRED_VERSION_pn-mender-client = "2.1.2"
-# PREFERRED_VERSION_pn-mender-artifact = "3.2.1"
-# PREFERRED_VERSION_pn-mender-artifact-native = "3.2.1"
+# PREFERRED_VERSION_mender-client = "3.0.0"
+# PREFERRED_VERSION_mender-artifact = "3.6.0"
+# PREFERRED_VERSION_mender-artifact-native = "3.6.0"
 
 ARTIFACTIMG_FSTYPE = "ext4"
 
@@ -205,7 +206,7 @@ bitbake-layers add-layer ../meta-mender/meta-mender-demo
 
 Add these lines to the start of your `conf/local.conf`:
 
-<!--AUTOVERSION: "releases % and older"/ignore "PREFERRED_VERSION_pn-mender = \"%\""/mender "PREFERRED_VERSION_pn-mender-artifact = \"%\""/mender-artifact "PREFERRED_VERSION_pn-mender-artifact-native = \"%\""/mender-artifact-->
+<!--AUTOVERSION: "releases % and older"/ignore "PREFERRED_VERSION_mender-client = \"%\""/mender "PREFERRED_VERSION_mender-artifact = \"%\""/mender-artifact "PREFERRED_VERSION_mender-artifact-native = \"%\""/mender-artifact-->
 ```bash
 # The name of the disk image and Artifact that will be built.
 # This is what the device will report that it is running, and different updates must have different names
@@ -226,13 +227,14 @@ MACHINE = "<YOUR-MACHINE>"
 # Given a Mender client version, see the corresponding version of the mender-artifact utility:
 # https://docs.mender.io/overview/compatibility#mender-clientserver-and-artifact-format
 #
-# Note that by default this will select the latest released version of the tools.
-# If you need an earlier version, please uncomment the following and set to the
-# required version.
+# By default this will select the latest version of the tools that is backwards compatible with the
+# given Yocto branch.
+# If you need an earlier version, or a later version even though it may not be backwards compatible,
+# please uncomment the following and set to the required version:
 #
-# PREFERRED_VERSION_pn-mender = "2.1.2"
-# PREFERRED_VERSION_pn-mender-artifact = "3.2.1"
-# PREFERRED_VERSION_pn-mender-artifact-native = "3.2.1"
+# PREFERRED_VERSION_mender-client = "3.0.0"
+# PREFERRED_VERSION_mender-artifact = "3.6.0"
+# PREFERRED_VERSION_mender-artifact-native = "3.6.0"
 
 # The following settings to enable systemd are needed for all Yocto
 # releases sumo and older.  Newer releases have these settings conditionally
