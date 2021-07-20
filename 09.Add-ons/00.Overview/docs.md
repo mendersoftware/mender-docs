@@ -7,21 +7,17 @@ taxonomy:
 
 ## Mender Connect
 
-The add-ons are independent applications, but they run under a common executable:
-`mender-connect`. Every add-on, with [configure](../02.Configure/docs.md) being one notable
-exception, requires [Mender Connect](../../09.Downloads/docs.md#mender-connect) to function.
+The add-ons are independent applications grouped in packages. Please consult the below table
+for the complete list of all supported add-ons. You do not need to install any additional components,
+besides [Mender Connect](../../09.Downloads/docs.md#mender-connect) for Troubleshoot package.
 
-Once you have installed `mender-connect`, there are no other items needed to get the add-ons
-on your device. All you need is a proper configuration.
- 
-The following table shows a brief summary of the add-ons.
-
-| Add-on name     | Description | Available in add-on package |
-| --------------- | ----------- | ------------ |
-| [Remote Terminal](../01.Remote-Terminal/docs.md) | Interactive shell sessions with full terminal emulation in both UI and CLI | Troubleshoot |
-| [File Transfer](../03.File-Transfer/docs.md) | Upload and download files to and from a device with both UI and CLI | Troubleshoot |
-| [Port Forward](../40.Port-Forward/docs.md) | Forward any local port to a port on a device without opening ports on the device | Troubleshoot |
-| [Configure](../02.Configure/docs.md) | Apply configuration to your devices through a uniform interface | Configure |
+| Add-on name     | Description | Available in add-on package | `mender-connect` required |
+| --------------- | ----------- | ------------ | ------------ |
+| [Remote Terminal](../01.Remote-Terminal/docs.md) | Interactive shell sessions with full terminal emulation in both UI and CLI | Troubleshoot | _yes_ |
+| [File Transfer](../03.File-Transfer/docs.md) | Upload and download files to and from a device with both UI and CLI | Troubleshoot | _yes_ |
+| [Port Forward](../40.Port-Forward/docs.md) | Forward any local port to a port on a device without opening ports on the device | Troubleshoot | _yes_ |
+| [Configure](../02.Configure/docs.md) | Apply configuration to your devices through a uniform interface | Configure | _no_ |
+| [Monitor](../50.Monitoring/docs.md) | Monitor your devices and get alerts | Monitor | _no_ |
 
 ## Add-ons and the Mender Client
 
