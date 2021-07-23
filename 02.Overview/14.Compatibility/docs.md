@@ -67,23 +67,30 @@ the lists of specific criteria we use for our versioning policy.
 ## Mender client and Yocto Project version
 
 <!--AUTOVERSION: "% to %"/ignore-->
-In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3.0) versions and the [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) is updated accordingly to easily support these new features (e.g. by exposing new [MENDER_* variables](../../05.System-updates-Yocto-Project/99.Variables/docs.md)). The [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) has branches corresponding to [versions of the Yocto Project](https://wiki.yoctoproject.org/wiki/Releases?target=_blank).
+In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3.0) versions and the [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) is updated accordingly to easily support these new features (e.g. by exposing new [MENDER_* variables](../../05.System-updates-Yocto-Project/99.Variables/docs.md)). The [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) has branches corresponding to [versions of the Yocto Project](https://wiki.yoctoproject.org/wiki/Releases?target=_blank). 
+
+Clarification of the table:
+* *stable* - recipe is maintained by Northern.tech
+* *community* - best effort maintenance from community and Northern.tech
+* *no* - recipe has never been release
+
+
 
 <!--AUTOVERSION: "Mender client %"/ignore "| % ("/ignore-->
-| Client vs meta-mender version   | Older                 | warrior (2.7)<sup>2</sup> | zeus (3.0)            | dunfell (3.1)      |
-|---------------------------------|-----------------------|---------------------------|-----------------------|--------------------|
-| Older                           | community             | no                        | no                    | no                 |
-| Mender client 1.5.x             | community             | no                        | no                    | no                 |
-| Mender client 1.6.x             | community             | no                        | no                    | no                 |
-| Mender client 1.7.x<sup>1</sup> | community             | community                 | no                    | no                 |
-| Mender client 2.0.x             | community             | community                 | no                    | no                 |
-| Mender client 2.1.x             | community             | community                 | no                    | no                 |
-| Mender client 2.2.x             | community             | community                 | community             | stable             |
-| Mender client 2.3.x             | community             | community                 | community             | stable             |
-| Mender client 2.4.x             | community             | community                 | community             | stable             |
-| Mender client 2.5.x             | community             | community                 | community             | stable             |
-| Mender client 2.6.x             | community             | community                 | community             | stable             |
-| Mender client 3.0.x             | community<sup>3</sup> | community<sup>3</sup>     | community<sup>3</sup> | stable<sup>3</sup> |
+| Client vs meta-mender version   | warrior (2.7)<sup>2</sup> | zeus (3.0)            | dunfell (3.1)      |
+|---------------------------------|---------------------------|-----------------------|--------------------|
+| Older                           | no                        | no                    | no                 |
+| Mender client 1.5.x             | no                        | no                    | no                 |
+| Mender client 1.6.x             | no                        | no                    | no                 |
+| Mender client 1.7.x<sup>1</sup> | community                 | no                    | no                 |
+| Mender client 2.0.x             | community                 | no                    | no                 |
+| Mender client 2.1.x             | community                 | no                    | no                 |
+| Mender client 2.2.x             | community                 | community             | stable             |
+| Mender client 2.3.x             | community                 | community             | stable             |
+| Mender client 2.4.x             | community                 | community             | stable             |
+| Mender client 2.5.x             | community                 | community             | stable             |
+| Mender client 2.6.x             | community                 | community             | stable             |
+| Mender client 3.0.x             | no                        | no                    | stable<sup>3</sup> |
 
 !! <sup>1</sup> Rolling back to 1.x.x from a failed upgrade to 2.x.x is supported. However, it is not possible to downgrade to a Mender 1.x.x client from a 2.x.x client, once the update containing 2.x.x has been committed.
 
