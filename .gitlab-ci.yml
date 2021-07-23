@@ -71,7 +71,6 @@ test:latest_versions:
     - ./autoversion.py
       --update
       --mender-convert-version $MENDER_CONVERT_VERSION
-      --mender-convert-client-version $MENDER_CLIENT_VERSION
       --mender-binary-delta-version $MENDER_BINARY_DELTA_VERSION
       --integration-dir $INTEGRATION_REPO_DIR
       --integration-version $INTEGRATION_VERSION

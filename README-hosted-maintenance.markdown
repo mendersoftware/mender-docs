@@ -54,12 +54,11 @@ conflicts are resolved here by choosing "our" version.
 To update version references of any incoming text from `master`,
 run `autoversion.py` tool using latest versions. For example:
 
-<!--AUTOVERSION: "--mender-convert-version %"/ignore "--mender-convert-client-version %"/ignore "--meta-mender-version %"/ignore "--poky-version %"/ignore "--mender-binary-delta-version %"/ignore-->
+<!--AUTOVERSION: "--mender-convert-version %"/ignore "--meta-mender-version %"/ignore "--poky-version %"/ignore "--mender-binary-delta-version %"/ignore-->
 ```
 ./autoversion.py --update --integration-dir <local-dir> \
       --integration-version staging \
       --mender-convert-version 2.1.0 \
-      --mender-convert-client-version 2.3.0 \
       --meta-mender-version dunfell \
       --poky-version dunfell \
       --mender-binary-delta-version 1.1.0
