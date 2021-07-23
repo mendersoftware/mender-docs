@@ -135,6 +135,13 @@ The [Mender Artifact format](../03.Artifact/docs.md) is managed by the [Mender A
 
 The compatibility between the Mender server and client is managed by the Device API versions exposed by the server and used by the client. If the Mender server supports the API version of the Mender client, they are compatible.  However, please ensure that the client and server support the [Artifact format](#mender-clientserver-and-artifact-format) version you are using. Device API docs are available in the [API chapter](../../200.Server-side-API/?target=_blank#device-apis).
 
+
+The higher version API contains a mix of old and new API endpoints. For endpoints which haven't changed in the new version the previous version ones are assumed.
+
+
+*Example* The device supports the V2 API. It expects the [single V2 endpoint](https://docs.mender.io/api/#device-api-deployments-v2) to be available. For all other endpoints it will use the V1. 
+
+
 <!--AUTOVERSION: "Mender server % and %"/ignore "Mender server % and later"/ignore "Mender client % and %"/ignore "Mender client % and later"/ignore-->
 |                               | API v1 | API v2 |
 |-------------------------------|--------|--------|
