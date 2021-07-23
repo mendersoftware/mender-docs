@@ -33,8 +33,8 @@ Mender provides images based on the following distributions:
 | Raspberry Pi 4 Model B        | Raspberry Pi OS Buster Lite 2021-01-11 | [raspios-buster-lite-raspberrypi4-mender.img.xz][raspios-buster-lite-raspberrypi4-mender.img.xz] | 8 GB         |
 
 <!--AUTOVERSION: "mender-convert-%.img.xz"/mender-convert -->
-[raspios-buster-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-01-11-raspios-buster-armhf-lite/arm/2021-01-11-raspios-buster-armhf-lite-raspberrypi3-mender-convert-master.img.xz
-[raspios-buster-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-01-11-raspios-buster-armhf-lite/arm/2021-01-11-raspios-buster-armhf-lite-raspberrypi4-mender-convert-master.img.xz
+[raspios-buster-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-01-11-raspios-buster-armhf-lite/arm/2021-01-11-raspios-buster-armhf-lite-raspberrypi3-mender-convert-2.5.0.img.xz
+[raspios-buster-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-01-11-raspios-buster-armhf-lite/arm/2021-01-11-raspios-buster-armhf-lite-raspberrypi4-mender-convert-2.5.0.img.xz
 
 You can find images for other devices in our Mender Hub community forum, see
 [Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11?target=_blank) or

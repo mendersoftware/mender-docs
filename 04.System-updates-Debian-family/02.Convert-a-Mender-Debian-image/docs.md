@@ -96,7 +96,7 @@ Clone `mender-convert` from the official repository:
 
 <!--AUTOVERSION: "-b % https://github.com/mendersoftware/mender-convert"/mender-convert-->
 ```bash
-git clone -b 2.4.0 https://github.com/mendersoftware/mender-convert.git
+git clone -b 2.5.0 https://github.com/mendersoftware/mender-convert.git
 ```
 
 ## Build the mender-convert container image
