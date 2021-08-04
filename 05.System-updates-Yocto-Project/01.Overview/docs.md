@@ -15,8 +15,10 @@ Project**](https://wiki.yoctoproject.org/wiki/Releases?target=_blank) only.
 Older branches for the Yocto Project are still kept in
 [meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank), but they might not work
 seamlessly as they are not continuously tested by Mender. If you need support for older branches we
-recommend subscribing to [Mender commercial software
-support](https://mender.io/support-and-services/software-support?target=_blank).
+recommend posting your efforts and issues on [mender hub](https://hub.mender.io/c/board-integrations/6).
+If you're interested in commercial support [read more here](https://mender.io/support-and-services/board-integration).
+
+
 
 ! For compatibility reasons, not all branches for the Yocto Project install the latest client by
 ! default. To make sure the latest client is installed, and you have access to all the latest
