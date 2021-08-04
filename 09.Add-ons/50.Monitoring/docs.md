@@ -88,8 +88,9 @@ and enable the check:
  ln -s /etc/mender-monitor/monitor.d/available/log_syslogrootsession.sh /etc/mender-monitor/monitor.d/enabled/log_syslogrootsession.sh
 ```
 
-!!! You can also do PCRE pattern matching for the UID to catch users other than root, using
+!!! You can also do Perl-compatible regular expressions (PCRE) pattern matching for the UID to catch users other than root, using for instance:
 !!! `LOG_PATTERN='Started User Manager for UID \d+'`
+!!! If your device does not support PCRE, it falls back to -E if available or plain grep if not.
 
 ## Monitoring subsystems
 `mender-monitor` supports _monitoring subsystems_ which perform
@@ -160,3 +161,10 @@ line of the logs, and `LOG_FILE` is the path to the log file.
 
 The log subsystem saves the number of the last line of logs that it parsed,
 and starts tailing the file skipping the lines that it saw.
+
+Please note that the log monitoring subsystem uses `grep` command
+to match lines to a given pattern. By default, and if supported by `grep`
+we use the `-P` option, which allows you to use
+the [Perl-compatible regular expressions](https://www.pcre.org/).
+In case you have no support for `-P`, we use `-E` flag
+and if the `-E` support does not exist we use plain `grep`.
