@@ -44,6 +44,7 @@ export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
 cat >mender-3.0.0.yml <<EOF
 global:
   enterprise: false
+  auditlogs: false
   mongodb:
     URL: "mongodb://root:${MONGODB_ROOT_PASSWORD}@mongodb-0.mongodb-headless.default.svc.cluster.local:27017,mongodb-1.mongodb-headless.default.svc.cluster.local:27017"
   nats:
@@ -99,6 +100,7 @@ export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
 cat >mender-3.0.0.yml <<EOF
 global:
   enterprise: true
+  auditlogs: true
   image:
     username: "${MENDER_REGISTRY_USERNAME}"
     password: "${MENDER_REGISTRY_PASSWORD}"
