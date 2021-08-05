@@ -29,7 +29,7 @@ To follow this tutorial, you will need the following:
 
 ## Step 1 - Flash the Raspberry Pi
 
-Download the Raspberry Pi OS image with Mender integrated:
+Download the Raspberry Pi OS image ready for Mender:
   * Download link: [Raspberry Pi 3 Model B and B+][raspios-buster-lite-raspberrypi3-mender.img.xz]
   * Download link: [Raspberry Pi 4 Model B][raspios-buster-lite-raspberrypi4-mender.img.xz]
 
