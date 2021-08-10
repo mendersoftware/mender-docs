@@ -215,8 +215,8 @@ MENDER_EXTRA_PARTS[part2] = "--label=update --fstype=vfat"
 MENDER_EXTRA_PARTS_SIZES_MB[part1] = "64"
 MENDER_EXTRA_PARTS_SIZES_MB[part2] = "128"
 # FSTAB options of specified extra partition (optional)
-MENDER_EXTRA_PARTS_FSTAB[part1] = "noexec"
-MENDER_EXTRA_PARTS_FSTAB[part2] = "ro,user"
+MENDER_EXTRA_PARTS_FSTAB[part1] = "ext4 noexec 0 0"
+MENDER_EXTRA_PARTS_FSTAB[part2] = "vfat ro,user 0 0"
 ```
 
 Arguments are passed as is to wks file and used by the [wic
@@ -234,8 +234,8 @@ The mount options for `/etc/fstab` of the extra partitions defined by
 `MENDER_EXTRA_PARTS` in the generated .biosimg, .sdimg or .uefiimg file.
 
 ```
-MENDER_EXTRA_PARTS_FSTAB[part1] = "noexec"
-MENDER_EXTRA_PARTS_FSTAB[part2] = "ro,user"
+MENDER_EXTRA_PARTS_FSTAB[part1] = "ext4 noexec 0 0"
+MENDER_EXTRA_PARTS_FSTAB[part2] = "vfat ro,user 0 0"
 ```
 
 See [`MENDER_EXTRA_PARTS`](#mender_extra_parts).
