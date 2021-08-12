@@ -50,8 +50,8 @@ The service does normal logging which you can see with the `journalctl -u mender
 command.
 
 ### Examples
-Before the detailed description of the add-on configuration and structure
-in details, we present two quick-start examples.
+Before we describe the add-on configuration and structure
+in details, we present three quick-start examples.
 
 #### Is mender-connect running?
 Assume you want to monitor the state of the `mender-connect` systemd service,
@@ -72,6 +72,20 @@ and enable it by creating the following symbolic link:
 
 The daemon will automatically pick the files and start checking the log file.
 
+
+#### Has a device switched to accepted state?
+Assume you want to get an alert once your device has moved to `accepted` state.
+To this end you can use the log subsystem to look into the output of `journalctl -u mender-client`
+command in the following way:
+```bash
+ echo -e 'SERVICE_NAME="auth"\nLOG_PATTERN='State transition: authorize-wait [a-zA-Z0-9]* -> authorize [a-zA-Z0-9]*'\nLOG_FILE="@journalctl -u mender-client"' > /etc/mender-monitor/monitor.d/available/log_mender-client.sh
+```
+
+and enable the check:
+
+```bash
+ ln -s /etc/mender-monitor/monitor.d/available/log_mender-client.sh /etc/mender-monitor/monitor.d/enabled/log_mender-client.sh
+```
 
 #### Has root user a session?
 To alert new root user sessions to the device, we can check for the pattern
@@ -158,6 +172,10 @@ LOG_FILE="/var/log/auth.log"
 where `SERVICE_NAME` is arbitrary name used in logging and for identification,
 `LOG_PATTERN` is the regular expression we are trying to match to each
 line of the logs, and `LOG_FILE` is the path to the log file.
+
+!!! There is a special variant for a value of the `LOG_FILE` variable, if it begins
+!!! with `@` character the daemon treats the remaining part of the string as a command,
+!!! executes it and looks for patterns in the standard output.
 
 The log subsystem saves the number of the last line of logs that it parsed,
 and starts tailing the file skipping the lines that it saw.
