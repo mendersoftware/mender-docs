@@ -20,10 +20,12 @@ to the server unless triggered by an alert. Compared to classic approaches
 of sending all the data about all the nodes to the server all the time,
 this leads to massive bandwidth savings and allows instant local processing.
 
-## Alerting
-Each time a service is not running, or a log file contains a given pattern,
-all users that have access to the given device on the Mender server receive an email notification.
-You can mute the email notifications in the Mender Server settings.
+## Alerts
+
+Each time a service is not running, or a log file contains a given pattern, or a
+signal is received on a given D-Bus bus, all users that have access to the given
+device on the Mender server receive an email notification. You can mute the
+email notifications in the Mender Server settings.
 
 There is one exception to the above rule: if a service is going 
 up and down often enough (see above FLAPPING_INTERVAL and FLAPPING_COUNT_THRESHOLD)
@@ -93,32 +95,34 @@ and enable the check:
 !!! If your device does not support PCRE, it falls back to -E if available or plain grep if not.
 
 ## Monitoring subsystems
-`mender-monitor` supports _monitoring subsystems_ which perform
-the actual monitoring and report to the main daemon. Currently,
-there are two subsystems available out-of-the-box: for services and
-log files, but you can easily provide your own. 
+
+`mender-monitor` supports _monitoring subsystems_ which perform the actual
+monitoring and report to the main daemon. Currently, there are three subsystems
+available out-of-the-box: for services, log files and D-Bus signals, but you can
+easily provide your own.
 
 The daemon supports the following directory structure:
 ```bash
 # tree /etc/mender-monitor/
 /etc/mender-monitor/
-|-- monitor.d
-|   |-- available
-|   |   |-- log_auth.sh
-|   |   `-- service_cron.sh
-|   |-- enabled
-|   |   |-- log_auth.sh -> /etc/mender-monitor/monitor.d/available/log_auth.sh
-|   |   `-- service_cron.sh -> /etc/mender-monitor/monitor.d/available/service_cron.sh
-|   |-- log.sh
-|   `-- service.sh
-`-- signals.in
+`-- monitor.d
+    |-- available
+    |   |-- log_auth.sh
+    |   |-- service_cron.sh
+    |   `-- dbus_upower.sh
+    |-- enabled
+    |   |-- log_auth.sh -> /etc/mender-monitor/monitor.d/available/log_auth.sh
+    |   |-- dbus_upower.sh -> /etc/mender-monitor/monitor.d/available/dbus_upower.sh
+    |   `-- service_cron.sh -> /etc/mender-monitor/monitor.d/available/service_cron.sh
+    |-- log.sh
+    |-- dbus.sh
+    `-- service.sh
 
-3 directories, 7 files
 ```
 In the above example we enabled the log and service subsystems,
 by providing links from the `enabled` to the `available` directory.
 Each file name in the latter consists of the subsystem name ("service"
-or "log" in the above), an underscore, and a name (being an arbitrary
+, "log" or "dbus" in the above), an underscore, and a name (being an arbitrary
 string of letters, to distinguish between the files). The main daemon
 follows links from the `enabled` directory and sources them to set
 the environment for the execution of `log.sh` and `service.log`, using
@@ -168,3 +172,19 @@ we use the `-P` option, which allows you to use
 the [Perl-compatible regular expressions](https://www.pcre.org/).
 In case you have no support for `-P`, we use `-E` flag
 and if the `-E` support does not exist we use plain `grep`.
+
+#### D-Bus monitoring subsystem
+
+The D-Bus monitoring subsystem exposes three variables from the files in the
+`available` directory: `DBUS_NAME`, `DBUS_PATTERN` and `DBUS_WATCH_EXPRESSION`.
+For example, the file `dbus_battery.sh` could look like:
+
+```bash
+DBUS_NAME="upower"
+DBUS_PATTERN=
+DBUS_WATCH_EXPRESSION="type='signal',interface='org.freedesktop.DBus.Properties',member='PropertiesChanged',path=/org/freedesktop/UPower/devices/battery_BAT0"
+```
+
+Which means an alarm will be raised every time the upower sends a signal over
+D-Bus stemming from the battery. Naturally, this can be adapted to pretty much
+any pattern you require.
