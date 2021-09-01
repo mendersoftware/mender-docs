@@ -239,30 +239,27 @@ STORAGE_PROXY_DOMAIN_NAME="${API_GATEWAY_DOMAIN_NAME}"  # change if you are usin
 Prepare certificates using the helper script `keygen`:
 
 ```bash
-CERT_API_CN=$API_GATEWAY_DOMAIN_NAME CERT_STORAGE_CN=$STORAGE_PROXY_DOMAIN_NAME ../keygen
+CERT_CN=$API_GATEWAY_DOMAIN_NAME \
+CERT_SAN="DNS:${API_GATEWAY_DOMAIN_NAME},DNS:*.${STORAGE_PROXY_DOMAIN_NAME}" \
+../keygen
 ```
 
 > ```
 > Generating a 256 bit EC private key
 > writing new private key to 'private.key'
 > ...
-> All keys and certificates have been generated in directory keys-generated.
+> All Mender Server keys and certificates have been generated in directory keys-generated.
 > Please include them in your docker compose and device builds.
-> For more information please see https://docs.mender.io/Administration/Certificates-and-keys.
+> For more information, please refer to https://docs.mender.io/
 > ```
 
 Your local directory tree should now look like this:
 
 > ```
 > ├── keys-generated
-> │   ├── certs
-> │   │   ├── api-gateway
-> │   │   │   ├── cert.crt
-> │   │   │   └── private.key
-> │   │   └── server.crt
-> │   │   └── storage-proxy
-> │   │       ├── cert.crt
-> │   │       └── private.key
+> │   ├── cert
+> │   │   ├── cert.crt
+> │   │   └── private.key
 > │   └── keys
 > │       ├── deviceauth
 > │       │   └── private.key
@@ -294,11 +291,8 @@ git commit -m 'production: adding generated keys and certificates'
 > ```
 > [my-production-setup fd8a397] production: adding generated keys and certificates
 >  6 files changed, 108 insertions(+)
->  create mode 100644 production/keys-generated/certs/api-gateway/cert.crt
->  create mode 100644 production/keys-generated/certs/api-gateway/private.key
->  create mode 100644 production/keys-generated/certs/server.crt
->  create mode 100644 production/keys-generated/certs/storage-proxy/cert.crt
->  create mode 100644 production/keys-generated/certs/storage-proxy/private.key
+>  create mode 100644 production/keys-generated/cert/cert.crt
+>  create mode 100644 production/keys-generated/cert/private.key
 >  create mode 100644 production/keys-generated/keys/deviceauth/private.key
 >  create mode 100644 production/keys-generated/keys/useradm/private.key
 > ```
