@@ -118,7 +118,7 @@ the Mender client this way, should be aware that:
 ```bash
 curl -fLsS https://get.mender.io -o get-mender.sh
 # INSPECT get-mender.sh BEFORE PROCEEDING
-sudo sh get-mender.sh
+sudo bash get-mender.sh
 ```
 
 By default, the script installs the [remote terminal
@@ -129,7 +129,7 @@ only install the Mender client:
 ```bash
 curl -fLsS https://get.mender.io -o get-mender.sh
 # INSPECT get-mender.sh BEFORE PROCEEDING
-sudo sh get-mender.sh mender-client
+sudo bash get-mender.sh mender-client
 ```
 
 !!! Mender offers an `experimental` version of the package repository. To use
