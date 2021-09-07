@@ -280,7 +280,7 @@ user@local$ docker inspect menderproduction_mender-deployments_1 |& less
                 "DEPLOYMENTS_AWS_AUTH_KEY",
                 "DEPLOYMENTS_AWS_AUTH_SECRET",
                 "DEPLOYMENTS_AWS_URI=https://s3.example.com:9000",
-                "STORAGE_BACKEND_CERT=/etc/ssl/certs/storage-proxy.crt",
+                "STORAGE_BACKEND_CERT=/etc/ssl/certs/docker.mender.io.crt",
                 "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
             ],
 ...

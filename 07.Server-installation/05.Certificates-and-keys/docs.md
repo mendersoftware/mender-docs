@@ -21,7 +21,6 @@ for which purpose can be seen below.
 | Component | Purpose of keys | Shares certificate or key with |
 |-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 | API Gateway | Listens to a public port for `https` requests only (plain `http` is disabled). These requests can come from Mender Clients that check for- or report status about updates through the [Device APIs](../../200.Server-side-API/?target=_blank#device-apis), or from users and tools that manage deployments through the [Management APIs](../../200.Server-side-API/?target=_blank#management-apis). | **Mender Clients** and users of the **Management APIs**, including web browsers accessing the **Mender UI**. |
-| Storage Proxy | Listens to a public port for `https` requests only (plain `http` is disabled). The Deployment Service manages Artifacts through the Storage Proxy and Mender Clients make Artifact download requests. The API Gateway can act as Storage Proxy in standard installations. | **Mender Clients** and **Deployment Service**. |
 | User Administration | Signs and verifies JSON Web Tokens that users of the [Management APIs](../../200.Server-side-API/?target=_blank#management-apis), including end users of the Mender UI, include in their requests to authenticate themselves. | Nothing. The service gets signature verification requests from the API Gateway, so all keys are kept private to the service and not shared. |
 | Device Authentication | Signs and verifies JSON Web Tokens that Mender Clients include in their requests to authenticate themselves when accessing the [Device APIs](../../200.Server-side-API/?target=_blank#device-apis). | Nothing. The service gets signature verification requests from the API Gateway, so all keys are kept private to the service and not shared. |
 | Mender Client | Signs requests for JSON Web Tokens sent to the Device Authentication service. A Mender Client will request a new token when it connects to the Mender Server for the first time, and when a token expires. The Mender Client includes a token in all its communication to authenticate itself when accessing the [Device APIs](../../200.Server-side-API/?target=_blank#device-apis). | The **Device Authentication** service stores the public keys of Mender Clients. |
@@ -33,9 +32,9 @@ The client does not need any special configuration regarding certificates as lon
 is signed by a Certificate Authority. The client will verify trust using its system root certificates, which
 are typically provided by the `ca-certificates` package.
 
-If the certificate is self-signed, then clients that are to connect to the server need to have the file with
-the concatenated certificates (`keys-generated/certs/server.crt`) stored locally in order to verify
-the server's authenticity. Please see [the client section on building for production](../../05.System-updates-Yocto-Project/06.Build-for-production/docs.md)
+If the certificate is self-signed, the clients need to store the server certificate locally
+(`keys-generated/cert/cert.crt`) in order to verify the server's authenticity.
+Please see [the client section on building for production](../../05.System-updates-Yocto-Project/06.Build-for-production/docs.md)
 for a description on how to provision new device disk images with the new certificates. In this case, it
 is advisable to ensure there is a overlap between the issuance of new certificates and expiration of old
 ones so all clients are able to receive an update containing the new cert before the old one expires. You
