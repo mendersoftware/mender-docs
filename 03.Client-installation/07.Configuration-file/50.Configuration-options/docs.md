@@ -28,7 +28,7 @@ well as variables it is expected to return: `bootcount`, `mender_boot_part`,
 defaults to trying `grub-mender-grubenv-print` first, followed by `fw_printenv`
 if the former is not found.
 
-Introduced in Mender client 2.7.
+Introduced in Mender client 3.1.
 
 #### BootUtilitiesSetActivePart
 
@@ -42,7 +42,7 @@ honor: `bootcount`, `mender_boot_part`, `mender_boot_part_hex` and
 `grub-mender-grubenv-set` first, followed by `fw_setenv` if the former is not
 found.
 
-Introduced in Mender client 2.7.
+Introduced in Mender client 3.1.
 
 #### HttpsClient
 
