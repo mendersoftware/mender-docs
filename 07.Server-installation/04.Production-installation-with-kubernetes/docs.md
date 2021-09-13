@@ -38,4 +38,4 @@ The following open-source projects are compatible with the S3 APIs:
 * [SeaweedFS](https://github.com/chrislusf/seaweedfs)
 * [Leofs](https://github.com/leo-project/leofs)
 
-To get started, see the instructions on [how to install Minio])(../04.Production-installation-with-kubernetes/04.Minio/docs.md).
+To get started, see the instructions on [how to install Minio](../04.Production-installation-with-kubernetes/04.Minio/docs.md).
