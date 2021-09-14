@@ -17,7 +17,7 @@ besides [Mender Connect](../../09.Downloads/docs.md#mender-connect) for Troubles
 | [File Transfer](../03.File-Transfer/docs.md) | Upload and download files to and from a device with both UI and CLI | Troubleshoot | _yes_ |
 | [Port Forward](../40.Port-Forward/docs.md) | Forward any local port to a port on a device without opening ports on the device | Troubleshoot | _yes_ |
 | [Configure](../02.Configure/docs.md) | Apply configuration to your devices through a uniform interface | Configure | _no_ |
-| [Monitor](../50.Monitoring/docs.md) | Monitor your devices and get alerts | Monitor | _no_ |
+| [Monitor](../50.Monitor/docs.md) | Monitor your devices and get alerts | Monitor | _no_ |
 
 ## Add-ons and the Mender Client
 
