@@ -26,7 +26,7 @@ command:
 <!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
 ```bash
 HOSTED_MENDER_EMAIL="myusername@example.com"
-curl -u $HOSTED_MENDER_EMAIL -O https://download.mender.io/hosted/content/mender-binary-delta/1.1.0/mender-binary-delta-1.1.0.tar.xz
+curl -u $HOSTED_MENDER_EMAIL -O https://download.mender.io/content/hosted/mender-binary-delta/1.1.0/mender-binary-delta-1.1.0.tar.xz
 ```
 
 Replace the value of `HOSTED_MENDER_EMAIL` with the email address you used to sign up on *Hosted Mender*, then enter your Hosted Mender password when prompted to proceed.
@@ -38,7 +38,7 @@ command:
 <!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
 ```bash
 MENDER_ENTERPRISE_EMAIL="myusername@example.com"
-curl -u $MENDER_ENTERPRISE_EMAIL -O https://download.mender.io/content/mender-binary-delta/1.1.0/mender-binary-delta-1.1.0.tar.xz
+curl -u $MENDER_ENTERPRISE_EMAIL -O https://download.mender.io/content/on-prem/mender-binary-delta/1.1.0/mender-binary-delta-1.1.0.tar.xz
 ```
 
 
