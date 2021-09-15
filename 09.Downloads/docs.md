@@ -364,14 +364,14 @@ download it by running:
 <!--AUTOVERSION: "/mender-monitor_%-1_all.deb"/mender-monitor "/mender-monitor/debian/%/"/mender-monitor -->
 ```bash
     HOSTED_MENDER_EMAIL=<your.email@example.com>
-    curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://download.mender.io/content/hosted/mender-monitor/debian/master/mender-monitor_master-1_all.deb
+    curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/master/mender-monitor_master-1_all.deb
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
 <!--AUTOVERSION: "/mender-monitor_%-1_all.deb"/mender-monitor "/mender-monitor/debian/%/"/mender-monitor -->
 ```bash
     MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
-    curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://download.mender.io/content/hosted/mender-monitor/debian/master/mender-monitor_master-1_all.deb
+    curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/master/mender-monitor_master-1_all.deb
 ```
 [/ui-tab]
 [/ui-tabs]

@@ -258,7 +258,7 @@ Replace <DIRECTORY-WITH-MENDER-CONNECT-CONF> with the path to the `mender-connec
 
 <!--AUTOVERSION: "/mender-monitor/yocto/%/"/mender-monitor "/mender-monitor-%.tar.gz"/mender-monitor -->
 Download the Mender Monitor add-on from
-https://download.mender.io/content/hosted/mender-monitor/yocto/master/mender-monitor-master.tar.gz
+https://downloads.customer.mender.io/content/hosted/mender-monitor/yocto/master/mender-monitor-master.tar.gz
 and download the tarball to a known location on your local system using your hosted
 Mender username and password:
 
@@ -267,14 +267,14 @@ Mender username and password:
 <!--AUTOVERSION: "/mender-monitor/yocto/%/"/mender-monitor "/mender-monitor-%.tar.gz"/mender-monitor -->
 ```bash
     HOSTED_MENDER_EMAIL=<your.email@example.com>
-    curl --fail -u $HOSTED_MENDER_EMAIL -O https://download.mender.io/content/hosted/mender-monitor/yocto/master/mender-monitor-master.tar.gz
+    curl --fail -u $HOSTED_MENDER_EMAIL -O https://downloads.customer.mender.io/content/hosted/mender-monitor/yocto/master/mender-monitor-master.tar.gz
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
 <!--AUTOVERSION: "/mender-monitor/yocto/%/"/mender-monitor "/mender-monitor-%.tar.gz"/mender-monitor -->
 ```bash
     MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
-    curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://download.mender.io/content/hosted/mender-monitor/yocto/master/mender-monitor-master.tar.gz
+    curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/hosted/mender-monitor/yocto/master/mender-monitor-master.tar.gz
 ```
 [/ui-tab]
 [/ui-tabs]
