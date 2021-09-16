@@ -26,7 +26,7 @@ command:
 <!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
 ```bash
 HOSTED_MENDER_EMAIL="myusername@example.com"
-curl -u $HOSTED_MENDER_EMAIL -O https://download.mender.io/hosted/content/mender-binary-delta/1.1.0/mender-binary-delta-1.1.0.tar.xz
+curl -u $HOSTED_MENDER_EMAIL -O https://downloads.customer.mender.io/hosted/content/mender-binary-delta/1.1.0/mender-binary-delta-1.1.0.tar.xz
 ```
 
 On the other hand, if you are using *on-premise Mender Enterprise*, download using the following
@@ -35,7 +35,7 @@ command:
 <!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
 ```bash
 MENDER_ENTERPRISE_EMAIL="myusername@example.com"
-curl -u $MENDER_ENTERPRISE_EMAIL -O https://download.mender.io/content/mender-binary-delta/1.1.0/mender-binary-delta-1.1.0.tar.xz
+curl -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/mender-binary-delta/1.1.0/mender-binary-delta-1.1.0.tar.xz
 ```
 
 
