@@ -45,7 +45,7 @@ in the Mender UI.
 
 ### No arbitrary transfers
 
-Within the [Limits](../../90.Reference/docs.md#limits-configuration) configuration section you can impose
+Within the [Limits](../../90.Mender-Connect/docs.md#limits-configuration) configuration section you can impose
 additional restrictions of the file transfer requests. Enabling the limits allows you to control
 basic security implications of a file transfer:
 * chroot-like restrictions of uploads and downloads to a given directory

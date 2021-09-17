@@ -23,7 +23,7 @@ software on the device and your workstation.
 * Install [mender-connect](../../09.Downloads/docs.md#mender-connect) on the
   device.
   * Enable port forwarding for [mender-connect
-    configuration](../90.Reference/docs.md#port-forward-configuration). 
+    configuration](../90.Mender-Connect/docs.md#port-forward-configuration). 
 * Install [mender-client](../../03.Client-installation/02.Install-with-Debian-package/docs.md) on the
   device.
   * [Accept](../../01.Get-started/01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md#step-7-accept-the-device)
@@ -88,7 +88,7 @@ a different *REMOTE_HOST* accessible to the device.
 ## Further reading
 
 * For a detailed list of the configuration options please refer to the
-[mender-connect configuration section](../90.Reference/docs.md#port-forward-configuration).
+[mender-connect configuration section](../90.Mender-Connect/docs.md#port-forward-configuration).
 * You can find the `mender-connect` installation steps for Yocto-based projects,
 and for Debian family,
 in the [customize with Yocto](../../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect),

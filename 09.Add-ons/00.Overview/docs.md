@@ -10,8 +10,8 @@ besides [Mender Connect](../../09.Downloads/docs.md#mender-connect) for Troubles
 
 | Add-on name     | Description | Available in add-on package | `mender-connect` required |
 | --------------- | ----------- | ------------ | ------------ |
-| [Configure](../02.Configure/docs.md) | Apply configuration to your devices through a uniform interface | Configure | _no_ |
-| [Monitor](../50.Monitor/docs.md) | Monitor your devices and get alerts | Monitor | _no_ |
-| [File Transfer](../03.File-Transfer/docs.md) | Upload and download files to and from a device with both UI and CLI | Troubleshoot | _yes_ |
+| [Configure](../10.Configure/docs.md) | Apply configuration to your devices through a uniform interface | Configure | _no_ |
+| [Monitor](../20.Monitor/docs.md) | Monitor your devices and get alerts | Monitor | _no_ |
+| [File Transfer](../30.File-Transfer/docs.md) | Upload and download files to and from a device with both UI and CLI | Troubleshoot | _yes_ |
 | [Port Forward](../40.Port-Forward/docs.md) | Forward any local port to a port on a device without opening ports on the device | Troubleshoot | _yes_ |
-| [Remote Terminal](../01.Remote-Terminal/docs.md) | Interactive shell sessions with full terminal emulation in both UI and CLI | Troubleshoot | _yes_ |
+| [Remote Terminal](../50.Remote-Terminal/docs.md) | Interactive shell sessions with full terminal emulation in both UI and CLI | Troubleshoot | _yes_ |

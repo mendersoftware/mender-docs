@@ -34,6 +34,6 @@ still be able to log in to the device.
 If you get the above error, make sure you do not have too many browser tabs or CLI windows
 with an open Remote Terminal session to the device.
 
-You can increase this limit if you wish. See the [configuration of mender-connect](../../90.Reference/docs.md#configuration),
+You can increase this limit if you wish. See the [configuration of mender-connect](../../90.Mender-Connect/docs.md#configuration),
 in particular the `Sessions.MaxPerUser` setting. Also note the `Sessions.ExpireAfterIdle`
 setting, which allows you to set a timeout for sessions.

@@ -107,7 +107,7 @@ Fill out the required fields and click the **UPLOAD** button.
 
 You now have a new Artifact under the **Releases** tab. Use the new Artifact
 to create a deployment by clicking **CREATE DEPLOYMENT WITH THIS RELEASE** and
-click trough the deployment wizard, similarly to what you did in
+click through the deployment wizard, similarly to what you did in
 [Step 1 - Create a Deployment](#step-1-create-a-deployment).
 
 ![Upload web page](Image_19.png)

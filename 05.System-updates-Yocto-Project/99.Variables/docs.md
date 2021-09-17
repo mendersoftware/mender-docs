@@ -496,7 +496,7 @@ also used for add-ons configuration, where enabled.
 
 Variable holding the username which the `mender-connect` employs. See [Mender
 shell configuration
-options](../../09.Add-ons/90.Reference/docs.md#configuration).
+options](../../09.Add-ons/90.Mender-Connect/docs.md#configuration).
 Note that the default value in `meta-mender-core` is `nobody`, while in
 `meta-mender-demo` it is `root`.
 
