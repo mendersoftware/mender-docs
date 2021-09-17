@@ -69,9 +69,9 @@ Please refer to your host Operating System documentation for more details.
 
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/master/linux/mender-artifact
+[x.x.x_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/3.6.1-build3/linux/mender-artifact
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/master/darwin/mender-artifact
+[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/3.6.1-build3/darwin/mender-artifact
 
 ! If you are using Mac OS X, note that using `mender-artifact` with
 ! disk image files (e.g.: `*.sdimg`, `*.img`, or others holding the storage
@@ -361,14 +361,14 @@ download it by running:
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="hosted"]
-<!--AUTOVERSION: "/mender-monitor_%-1_all.deb"/mender-monitor "/mender-monitor/debian/%/"/mender-monitor -->
+<!--AUTOVERSION: "/mender-monitor_%-1_all.deb"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
     HOSTED_MENDER_EMAIL=<your.email@example.com>
     curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/master/mender-monitor_master-1_all.deb
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
-<!--AUTOVERSION: "/mender-monitor_%-1_all.deb"/mender-monitor "/mender-monitor/debian/%/"/mender-monitor -->
+<!--AUTOVERSION: "/mender-monitor_%-1_all.deb"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
     MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
     curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/master/mender-monitor_master-1_all.deb
@@ -379,7 +379,7 @@ download it by running:
 
 Then install the package with:
 
-<!--AUTOVERSION: "mender-monitor_%-1_all.deb"/mender-monitor -->
+<!--AUTOVERSION: "mender-monitor_%-1_all.deb"/monitor-client -->
 ```bash
     dpkg -i mender-monitor_master-1_all.deb
 ```
