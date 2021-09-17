@@ -114,9 +114,9 @@ MENDER_ARTIFACT_NAME = "release-1"
 # If you need an earlier version, or a later version even though it may not be backwards compatible,
 # please uncomment the following and set to the required version:
 #
-# PREFERRED_VERSION_mender-client = "3.0.0"
-# PREFERRED_VERSION_mender-artifact = "3.6.0"
-# PREFERRED_VERSION_mender-artifact-native = "3.6.0"
+# PREFERRED_VERSION_mender-client = "3.1.0-build3"
+# PREFERRED_VERSION_mender-artifact = "3.6.1-build3"
+# PREFERRED_VERSION_mender-artifact-native = "3.6.1-build3"
 
 ARTIFACTIMG_FSTYPE = "ext4"
 
@@ -173,11 +173,11 @@ i.e. the top level of the Yocto Project build tree, and run these commands:
 
 <!--AUTOVERSION: "-b % git://github.com/mendersoftware/meta-mender"/meta-mender-->
 ```bash
-git clone -b master git://github.com/mendersoftware/meta-mender
+git clone -b dunfell git://github.com/mendersoftware/meta-mender
 ```
 
 <!--AUTOVERSION: "the HEAD of the % branch"/meta-mender-->
-Note that this command checks out the HEAD of the master branch and is not a specific tagged release. The [Yocto project release schedule](https://wiki.yoctoproject.org/wiki/Releases) differs from the Mender release schedule so even though you may be using a specific release of Mender, you will still need to take further steps if you want to use a tagged release of the Yocto project.
+Note that this command checks out the HEAD of the dunfell branch and is not a specific tagged release. The [Yocto project release schedule](https://wiki.yoctoproject.org/wiki/Releases) differs from the Mender release schedule so even though you may be using a specific release of Mender, you will still need to take further steps if you want to use a tagged release of the Yocto project.
 
 Next, initialize the build environment:
 
@@ -232,9 +232,9 @@ MACHINE = "<YOUR-MACHINE>"
 # If you need an earlier version, or a later version even though it may not be backwards compatible,
 # please uncomment the following and set to the required version:
 #
-# PREFERRED_VERSION_mender-client = "3.0.0"
-# PREFERRED_VERSION_mender-artifact = "3.6.0"
-# PREFERRED_VERSION_mender-artifact-native = "3.6.0"
+# PREFERRED_VERSION_mender-client = "3.1.0-build3"
+# PREFERRED_VERSION_mender-artifact = "3.6.1-build3"
+# PREFERRED_VERSION_mender-artifact-native = "3.6.1-build3"
 
 # The following settings to enable systemd are needed for all Yocto
 # releases sumo and older.  Newer releases have these settings conditionally

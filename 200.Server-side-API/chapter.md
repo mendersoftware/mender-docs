@@ -1,6 +1,6 @@
 ---
 title: Server-side API
-redirect: /../api/development/
+redirect: /../api/3.1/
 ---
 <!--AUTOVERSION: "redirect: /../api/development/"/integration/complain-->
 <!--
