@@ -100,7 +100,7 @@ similar output to the following:
 The script created a demo user, and you can login to the Mender UI by visiting
 [https://localhost](https://localhost?target=_blank).
 
-! You might get a warning from your browser that that the site is not secure.
+! You might get a warning from your browser that the site is not secure.
 ! This is because we use self-signed certificates in the demo environment and
 ! can be safely ignored.
 
