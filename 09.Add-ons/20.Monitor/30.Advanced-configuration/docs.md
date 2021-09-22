@@ -68,3 +68,7 @@ The default number of lines sent before a line that contained a string that matc
 ### DEFAULT_LOG_LINES_AFTER
 
 The default number of lines sent after a line that contained a string that matched a given pattern.
+
+### DEFAULT_ALERT_STORE_RESEND_INTERVAL_S
+
+The default number of seconds in between every attempt to resend an alert in the case of failure.
