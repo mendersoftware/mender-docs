@@ -81,7 +81,7 @@ To alert new root user sessions to the device, we can check for the pattern
 We will need to create the following file:
 
 ```bash
- echo -e 'SERVICE_NAME="auth"\nLOG_PATTERN='Started User Manager for UID 0'\nLOG_FILE="/var/log/syslog"' > /etc/mender-monitor/monitor.d/available/log_syslogrootsession.sh
+ echo -e 'SERVICE_NAME="auth"\nLOG_PATTERN="Started User Manager for UID 0"\nLOG_FILE="/var/log/syslog"' > /etc/mender-monitor/monitor.d/available/log_syslogrootsession.sh
 ```
 
 and enable the check:
