@@ -19,7 +19,7 @@ to FTP or SFTP. Although feature-wise it provides similar functionalities.
 
 You can use the File Transfer feature to upload and download anything to and from a device.
 In itself it gives a great power, but may require a certain degree of control.
-[The Limits](../90.Reference/docs.md#limits-configuration) configuration section allows you
+[The Limits](../90.Mender-Connect/docs.md#limits-configuration) configuration section allows you
 to restrict many aspects of the file transfer process. We designed it to give you full control over what
 you can do, while at the same time providing a way to introduce restrictions for environments where limiting
 is crucial.
@@ -35,7 +35,7 @@ for the same device.
 ## Further reading
 
 * For a detailed list of the configuration options please refer to the
-[mender-connect configuration reference](../90.Reference/docs.md#file-transfer-configuration).
+[mender-connect configuration reference](../90.Mender-Connect/docs.md#file-transfer-configuration).
 * You can find the mender-connect installation steps for Yocto-based projects,
 and for Debian family,
 in the [customize with Yocto](../../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md),

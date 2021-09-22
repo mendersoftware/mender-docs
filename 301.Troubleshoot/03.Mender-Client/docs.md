@@ -67,9 +67,9 @@ for a more detailed discussion.
 
 To determine the status of your time synchronization, execute the following:
 
-   ```bash
-   # timedatectl status
-   ```
+```bash
+# timedatectl status
+```
 
 Note that it can take some time after boot before the time
 synchronization is completed. If after 5-10 minutes, the time still
