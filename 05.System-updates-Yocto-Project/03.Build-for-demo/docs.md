@@ -234,7 +234,8 @@ MACHINE = "<YOUR-MACHINE>"
 # By default this will select the latest version of the tools that is backwards compatible with the
 # given Yocto branch.
 # If you need an earlier version, or a later version even though it may not be backwards compatible,
-# please uncomment the following and set to the required version:
+# please uncomment the following and set to the required version. If you want to use the bleeding
+# edge version, specify "master-git%", but keep in mind that these versions may not be stable:
 #
 # PREFERRED_VERSION_mender-client = "master-git%"
 # PREFERRED_VERSION_mender-artifact = "master-git%"

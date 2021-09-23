@@ -14,7 +14,7 @@ To request a specific version of the client, add a snippet like the following to
 
 <!--AUTOVERSION: "PREFERRED_VERSION_mender-client = \"%\""/mender-->
 ```
-PREFERRED_VERSION_mender-client = "3.0.0"
+PREFERRED_VERSION_mender-client = "master"
 ```
 
 <!--AUTOVERSION: "Yocto branches higher than 3.1 (%)"/ignore "Mender client % and later"/ignore-->
