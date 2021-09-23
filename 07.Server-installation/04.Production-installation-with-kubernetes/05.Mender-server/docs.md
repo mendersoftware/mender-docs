@@ -200,3 +200,10 @@ You can create additional useres from the command line of the `useradm` pod:
 ```bash
 useradm create-user --username "demo@mender.io" --password "demodemo" --tenant-id "5dcd71624143b30050e63bed"
 ```
+
+## Pre-release version
+
+<!--AUTOVERSION: "pre-release (%)"/ignore-->
+To use a pre-release (master) version of the backend, please refer to [the Development section of
+the
+documentation](/development/server-installation/production-installation-with-kubernetes/mender-server).

@@ -53,6 +53,10 @@ repository which contains everything that is need to start the demo server:
 git clone -b master https://github.com/mendersoftware/integration.git integration-master
 ```
 
+<!--AUTOVERSION: "use `-b %`"/ignore-->
+!!! If you want to use a pre-release version of the backend, use `-b master` in
+!!! the command above.
+
 Change directory to the cloned repository:
 <!--AUTOVERSION: "integration-%"/integration -->
 ```bash

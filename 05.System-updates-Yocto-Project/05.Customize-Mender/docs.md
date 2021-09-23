@@ -6,6 +6,13 @@ taxonomy:
 ---
 
 
+## Pre-release versions
+
+If you want to use pre-release versions of the Mender components, please have a look at [the
+`PREFERRED_VERSION` variables in the `local.conf`
+example](../03.Build-for-demo/docs.md#configuring-the-build).
+
+
 ## Configuring server address and port
 
 If the client should connect to a different address than the default of `https://docker.mender.io/`, then you should specify this variable in your `local.conf`:
