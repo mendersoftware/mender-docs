@@ -66,15 +66,31 @@ Setup the `IP_ADDRESS` shell variable with correct IP address of your device:
 ```bash
 IP_ADDRESS="<DEVICE-IP-ADDRESS>"
 ```
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="Raspberry Pi"]
+On Mender, check `ipv4_eth0` or `ipv4_wlan0` inventory attributes of your
+Raspberry Pi device
+[/ui-tab]
+[ui-tab title="Virtual device"]
+On Mender, check `ipv4_docker` inventory attribute of your Virtual device
+[/ui-tab]
+[/ui-tabs]
 
 Setup `USER` environment variable to match an existing user on the device, e.g
 for Raspberry Pi devices:
 
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="Raspberry Pi"]
 ```bash
 USER="pi"
 ```
-
-!!! Use `USER="root"` if you are using a virtual device
+[/ui-tab]
+[ui-tab title="Virtual device"]
+```bash
+USER="root"
+```
+[/ui-tab]
+[/ui-tabs]
 
 [Mender Artifacts](../../02.Overview/03.Artifact/docs.md) require
 a device compatibility value as input, which **must** match what the device is
@@ -96,12 +112,18 @@ DEVICE_TYPE="raspberrypi4"
 
 Set `SSH_ARG` shell variable to specify the SSH access port:
 
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="Raspberry Pi"]
 ```bash
 SSH_ARG="-p 22"
 ```
-
-!!! If you are using a virtual device, use `SSH_ARG="-p 8822"`
-
+[/ui-tab]
+[ui-tab title="Virtual device"]
+```bash
+SSH_ARG="-p 8822"
+```
+[/ui-tab]
+[/ui-tabs]
 
 ## Step 3 - Create a Mender Artifact using the snapshot feature
 

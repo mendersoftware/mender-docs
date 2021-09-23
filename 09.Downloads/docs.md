@@ -297,12 +297,12 @@ and Mender Connect.
 
 Mender offers a configure extension (`mender-configure`) to the Mender client
 that enables managing device configuration. See the
-[add-on page for Mender Configure](../09.Add-ons/02.Configure/docs.md) for
+[add-on page for Mender Configure](../09.Add-ons/10.Configure/docs.md) for
 more information.
 
 The easiest way to install Configure on an existing device is by using the
 Mender APT repository. See the [add-on page for Mender
-Configure](../09.Add-ons/02.Configure/docs.md) for more information for other
+Configure](../09.Add-ons/10.Configure/docs.md) for more information for other
 installation alternatives.
 
 To install `mender-configure` using Mender APT repository, follow the
@@ -349,12 +349,12 @@ Please refer to your host Operating System documentation for more details.
 !!! Note: The Mender Monitor add-on package is required. See the [Mender features page](https://mender.io/plans/features?target=_blank) for an overview of all Mender plans and features.
 
 
-Mender offers a [Monitor](../09.Add-ons/50.Monitor/docs.md) add-on which
+Mender offers a [Monitor](../09.Add-ons/20.Monitor/docs.md) add-on which
 enables monitoring your devices for events and anomalies.
 
 The easiest way to install Monitor on an existing device is by using the Mender
 APT repository, see alternate installation methods on the [add-on page for
-Mender Monitor](../09.Add-ons/50.Monitor/10.Installation/docs.md).
+Mender Monitor](../09.Add-ons/20.Monitor/10.Installation/docs.md).
 
 To install `mender-monitor` using the Mender Monitor Debian package, first
 download it by running:
@@ -363,15 +363,15 @@ download it by running:
 [ui-tab title="hosted"]
 <!--AUTOVERSION: "/mender-monitor_%-1_all.deb"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
-    HOSTED_MENDER_EMAIL=<your.email@example.com>
-    curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.0.0-build3/mender-monitor_1.0.0-build3-1_all.deb
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.0.0-build3/mender-monitor_1.0.0-build3-1_all.deb
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
 <!--AUTOVERSION: "/mender-monitor_%-1_all.deb"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
-    MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
-    curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.0.0-build3/mender-monitor_1.0.0-build3-1_all.deb
+MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
+curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.0.0-build3/mender-monitor_1.0.0-build3-1_all.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -381,5 +381,5 @@ Then install the package with:
 
 <!--AUTOVERSION: "mender-monitor_%-1_all.deb"/monitor-client -->
 ```bash
-    dpkg -i mender-monitor_1.0.0-build3-1_all.deb
+dpkg -i mender-monitor_1.0.0-build3-1_all.deb
 ```

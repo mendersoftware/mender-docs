@@ -223,12 +223,12 @@ IMAGE_INSTALL_append = " mender-connect"
 Alternatively, add the snippet to your `local.conf`.
 
 Mender Connect provides several [configuration
-options](../../09.Add-ons/90.Reference/docs.md#configuration).
+options](../../09.Add-ons/90.Mender-Connect/docs.md#configuration).
 A configuration file with the required [`ServerURL`
-field](../../09.Add-ons/00.Overview/docs.md#serverurl),
+field](../../09.Add-ons/90.Mender-Connect/docs.md#configuration),
 set via [`MENDER_SERVER_URL`
 variable](../99.Variables/docs.md#mender_server_url), and [`User`
-field](../../09.Add-ons/90.Reference/docs.md#remote-terminal-configuration),
+field](../../09.Add-ons/90.Mender-Connect/docs.md#remote-terminal-configuration),
 set via [`MENDER_CONNECT_USER`
 variable](../99.Variables/docs.md#mender_connect_user). You can set these in your
 own `.bbappend` recipe file or via your `local.conf` file, for example:
@@ -266,15 +266,15 @@ Mender username and password:
 [ui-tab title="hosted"]
 <!--AUTOVERSION: "/mender-monitor/yocto/%/"/monitor-client "/mender-monitor-%.tar.gz"/monitor-client -->
 ```bash
-    HOSTED_MENDER_EMAIL=<your.email@example.com>
-    curl --fail -u $HOSTED_MENDER_EMAIL -O https://downloads.customer.mender.io/content/hosted/mender-monitor/yocto/1.0.0-build3/mender-monitor-1.0.0-build3.tar.gz
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+curl --fail -u $HOSTED_MENDER_EMAIL -o ${HOME}/mender-monitor-1.0.0-build3.tar.gz https://downloads.customer.mender.io/content/hosted/mender-monitor/yocto/1.0.0-build3/mender-monitor-1.0.0-build3.tar.gz
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
 <!--AUTOVERSION: "/mender-monitor/yocto/%/"/monitor-client "/mender-monitor-%.tar.gz"/monitor-client -->
 ```bash
-    MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
-    curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/hosted/mender-monitor/yocto/1.0.0-build3/mender-monitor-1.0.0-build3.tar.gz
+MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
+curl --fail -u $MENDER_ENTERPRISE_EMAIL -o ${HOME}/mender-monitor-1.0.0-build3.tar.gz https://downloads.customer.mender.io/content/on-prem/mender-monitor/yocto/1.0.0-build3/mender-monitor-1.0.0-build3.tar.gz
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -282,35 +282,34 @@ Mender username and password:
 Add the `meta-mender` commercial layer to your build layers:
 
 ```bash
-    bitbake-layers add-layer ../sources/meta-mender/meta-mender-commercial
+bitbake-layers add-layer ../sources/meta-mender/meta-mender-commercial
 ```
 
 To use Mender Monitor you need to accept its commercial license. If you decide
 to accept it, add the follwowing line to your `local.conf`:
 
 ```bash
-    LICENSE_FLAGS_WHITELIST += "commercial_mender-monitor"
+LICENSE_FLAGS_WHITELIST += "commercial_mender-monitor"
 ```
 
 Give the `mender-monitor` recipe the path to the local source code just downloaded:
 
 <!--AUTOVERSION: "/mender-monitor-%.tar.gz"/monitor-client -->
 ```bash
-    SRC_URI_pn-mender-monitor = "file:///<path/downloaded/to/previously>/mender-monitor-1.0.0-build3.tar.gz"
+SRC_URI_pn-mender-monitor = "file://${HOME}/mender-monitor-1.0.0-build3.tar.gz"
 ```
 
 Then make Mender monitor a part of your image with:
 
 ```bash
-    IMAGE_INSTALL_append = " mender-monitor"
+IMAGE_INSTALL_append = " mender-monitor"
 ```
 
 Which means your `local.conf` should now contain the following lines:
 
 <!--AUTOVERSION: "/mender-monitor-%.tar.gz"/monitor-client -->
 ```bash
-    LICENSE_FLAGS_WHITELIST += "commercial_mender-monitor"
-    SRC_URI_pn-mender-monitor = "file:///...path.../mender-monitor-1.0.0-build3.tar.gz"
-    IMAGE_INSTALL_append = " mender-monitor"
+LICENSE_FLAGS_WHITELIST += "commercial_mender-monitor"
+SRC_URI_pn-mender-monitor = "file://${HOME}/mender-monitor-1.0.0-build3.tar.gz"
+IMAGE_INSTALL_append = " mender-monitor"
 ```
-
