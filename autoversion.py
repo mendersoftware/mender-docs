@@ -322,8 +322,8 @@ def do_replacements(line, replacements, just_remove):
             if complain:
                 if re.search(regex, all_replaced):
                     raise Exception(
-                        'Requires manual fixing so it doesn\'t match "complain" expression:\n%s'
-                        % line
+                        'Requires manual fixing so it doesn\'t match "complain" expression: "%s":\n%s'
+                        % (search.replace('"', '\\"'), line)
                     )
                 else:
                     continue
