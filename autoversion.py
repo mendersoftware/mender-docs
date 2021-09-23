@@ -22,6 +22,7 @@ import sys
 UPDATE = 1
 CHECK = 2
 MODE = UPDATE
+IGNORE_COMPLAIN = False
 
 INTEGRATION_REPO = None
 INTEGRATION_VERSION = None
@@ -320,6 +321,9 @@ def do_replacements(line, replacements, just_remove):
             if version is None:
                 continue
             if complain:
+                if IGNORE_COMPLAIN:
+                    continue
+
                 if re.search(regex, all_replaced):
                     raise Exception(
                         'Requires manual fixing so it doesn\'t match "complain" expression: "%s":\n%s'
@@ -347,6 +351,9 @@ def main():
     )
     parser.add_argument(
         "--update", action="store_true", help="Update all version references"
+    )
+    parser.add_argument(
+        "--ignore-complain", action="store_true", help='Ignore "complain" expressions'
     )
     parser.add_argument(
         "--integration-dir", metavar="DIR", help="Location of integration repository"
@@ -427,6 +434,10 @@ def main():
         MODE = CHECK
     else:
         raise Exception("Either --check or --update must be given")
+
+    if args.ignore_complain:
+        global IGNORE_COMPLAIN
+        IGNORE_COMPLAIN = True
 
     walk_tree()
 
