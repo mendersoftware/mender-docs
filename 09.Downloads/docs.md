@@ -382,4 +382,5 @@ Then install the package with:
 <!--AUTOVERSION: "mender-monitor_%-1_all.deb"/monitor-client -->
 ```bash
 dpkg -i mender-monitor_master-1_all.deb
+apt --fix-broken -y install
 ```
