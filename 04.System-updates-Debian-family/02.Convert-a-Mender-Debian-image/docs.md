@@ -146,6 +146,7 @@ Run mender-convert from inside the container with your desired options, e.g.
 MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
     --disk-image input/golden-image-1.img \
     --config configs/raspberrypi3_config \
+    --config configs/mender_convert_demo_config \
     --overlay rootfs_overlay_demo/
 ```
 

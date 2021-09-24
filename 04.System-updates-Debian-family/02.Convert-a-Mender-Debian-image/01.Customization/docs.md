@@ -35,6 +35,20 @@ MENDER_ARTIFACT_NAME=release-1 ./mender-convert \
   --config configs/custom_config
 ```
 
+### Mender demo configuration
+
+There is an specific configuration file to set up Mender client and add-ons with
+suitable values for demo, such as short polling intervals. Include this file in
+your images with `--config configs/mender_convert_demo_config`:
+
+```bash
+MENDER_ARTIFACT_NAME=release-1 ./mender-convert \
+  --disk-image input/<image-to-convert.img> \
+  --config configs/raspberrypi3_config \
+  --config configs/mender_convert_demo_config \
+  --config configs/custom_config
+```
+
 Configuration files are also a means to add customization that might be
 necessary for specific devices or distributions.
 
@@ -139,9 +153,13 @@ This should trigger the provided `mender_create_artifact` implementation in `con
 ## Rootfs overlays
 
 The "rootfs-overlay" is a method for providing new and modified files to appear
-in the output image without needing to modify the input image. Adding a file,
-such as `/etc/mender/mender.conf`, to your "rootfs-overlay" will allow you
-customize the files that are included in the output images.
+in the output image without needing to modify the input image. Adding a file to
+your "rootfs-overlay" will allow you customize the files that are included in
+the output images.
+
+!!! A Mender config file `/etc/mender/mender.conf` in an rootfs overlay will be
+!!! ignored. Put your configuration file in `resources/mender.conf` instead. See
+!!! section below.
 
 ### Example
 
@@ -155,7 +173,6 @@ rootfs_overlay_demo
 └── etc
     ├── hosts
     └── mender
-        ├── mender.conf
         └── server.crt
 ```
 
@@ -174,3 +191,20 @@ MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
     --config configs/raspberrypi3_config \
     --overlay rootfs_overlay_demo/
 ```
+
+## Mender configuration file
+
+The Mender client configuration file `mender.conf` must be provided in
+`resources/mender.conf`. `mender-convert` provides helpers to create this file,
+together with bootstraping a rootfs overlay suitable for different Mender server
+configurations. For example for [hosted
+Mender](https://hosted.mender.io?target=_blank), use:
+
+```bash
+./scripts/bootstrap-rootfs-overlay-hosted-server.sh \
+    --output-dir ${PWD}/rootfs_overlay_demo \
+    --tenant-token "Paste token from https://hosted.mender.io/ui/#/settings/my-organization"
+```
+
+There are additional scripts in the `scripts/` directory to enable working with
+a local demo server, or a production server.

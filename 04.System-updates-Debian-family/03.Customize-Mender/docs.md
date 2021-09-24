@@ -27,20 +27,15 @@ Authority (CA).
 
 ## Configuration file
 
-To provide a custom `mender.conf` configuration file inside the image, put the configuration file in
-the `/etc/mender` directory inside [your own
-overlay directory](../02.Convert-a-Mender-Debian-image/01.Customization/docs.md#rootfs-overlays). Use these commands to create
-an overlay and put a custom configuration file inside the overlay:
+To provide a custom `mender.conf` configuration file inside the image, put the
+configuration file in the `resources/`:
 
 ```bash
-mkdir -p rootfs_overlay_production/etc/mender
-cat > rootfs_overlay_production/etc/mender/mender.conf <<EOF
+cat > resources/mender.conf <<EOF
 {
   "ServerURL": "https://my-server.com/"
 }
 EOF
-chmod 600 rootfs_overlay_production/etc/mender/mender.conf
-sudo chown root:root rootfs_overlay_production
 ```
 
 The options inside the JSON structure can be any option from [the client configuration
