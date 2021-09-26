@@ -364,14 +364,14 @@ download it by running:
 <!--AUTOVERSION: "/mender-monitor_%-1_all.deb"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
 HOSTED_MENDER_EMAIL=<your.email@example.com>
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.0.0-build5/mender-monitor_1.0.0-build5-1_all.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.0.0-build6/mender-monitor_1.0.0-build6-1_all.deb
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
 <!--AUTOVERSION: "/mender-monitor_%-1_all.deb"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
 MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
-curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.0.0-build5/mender-monitor_1.0.0-build5-1_all.deb
+curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.0.0-build6/mender-monitor_1.0.0-build6-1_all.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -381,6 +381,6 @@ Then install the package with:
 
 <!--AUTOVERSION: "mender-monitor_%-1_all.deb"/monitor-client -->
 ```bash
-dpkg -i mender-monitor_1.0.0-build5-1_all.deb
+dpkg -i mender-monitor_1.0.0-build6-1_all.deb
 apt --fix-broken -y install
 ```
