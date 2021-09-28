@@ -133,7 +133,7 @@ By default, and without any inventory scripts added, the Mender client sends the
 |:----:|:-------:|:-------------:|
 | `device_type`  | type of the device | "raspberrypi4" |
 | `artifact_name` | name of the currently installed artifact | "release-v1" |
-| `mender_client_version` | client version | "2.2.0" |
+| `mender_client_version` | client version | "master" |
 
 
 ## Final remarks

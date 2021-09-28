@@ -38,6 +38,11 @@ MENDER_ARTIFACT_NAME=release-1 ./mender-convert \
 Configuration files are also a means to add customization that might be
 necessary for specific devices or distributions.
 
+### Pre-release versions
+
+If you want to use pre-release versions of the Mender components, please see [the Variables
+section](../../99.Variables/docs.md), and especially the variables that contain `VERSION`.
+
 
 -------------------------------------------------------------------------------
 

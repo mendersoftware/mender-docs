@@ -70,7 +70,7 @@ git fetch origin --tags
 > Receiving objects: 100% (367/367), 83.55 KiB | 0 bytes/s, done.
 > Resolving deltas: 100% (214/214), completed with 42 local objects.
 > From https://github.com/mendersoftware/integration
->    02cd118..75b7831  2.0.x      -> origin/2.0.x
+>    02cd118..75b7831  master      -> origin/master
 >    06f3212..e9e5df4  master     -> origin/master
 > ```
 
