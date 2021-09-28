@@ -54,14 +54,12 @@ Certificate Authority. In either case the certificates on the client and server
 must be the same.
 
 
-Including the server certificates on the client is only necessary if the certificate is
+Including the server certificate on the client is only necessary if the certificate is
 not signed by known Certificate Authority (CA), for example if the certificate is
 [self-signed](https://en.wikipedia.org/wiki/Self-signed_certificate?target=_blank).
 If signed by a known CA, the remainder of this section is not necessary.
 
-All certificates are hosted in a single file `server.crt` which the client will read. If you generated new certificates, this file is available at `keys-generated/certs/server.crt`.
-
-!!! If you obtained your certificates in a different way, you need to concatenate the certificates from the API Gateway and Storage Proxy into one file by running a command similar to `cat api-gateway/cert.crt storage-proxy/cert.crt > server.crt`.
+If you generated new certificates, this file is available at `keys-generated/cert/cert.crt`.
 
 The best way to include the certificate in the client build is to use a custom
 bitbake layer. The following steps assume that you already have a custom layer

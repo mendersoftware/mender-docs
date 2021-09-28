@@ -52,11 +52,11 @@ use this utility.
 Follow the correct link according to your host platform to download
 `mender-artifact` as a standalone utility:
 
-<!--AUTOVERSION: "mender-artifact %"/mender-artifact -->
-| Platform | Download link                                                |
-|----------|--------------------------------------------------------------|
-| Linux    | [mender-artifact 3.6.0][x.x.x_mender-artifact-linux]     |
-| Mac OS X | [mender-artifact 3.6.0][x.x.x_mender-artifact-darwin] |
+<!--AUTOVERSION: "mender-artifact %][x.x.x_mender-artifact-"/mender-artifact "mender-artifact %][%_mender-artifact-"/ignore-->
+| Platform | Download link                                          |                                                                       |
+|----------|--------------------------------------------------------|-----------------------------------------------------------------------|
+| Linux    | [mender-artifact master][x.x.x_mender-artifact-linux]  | [mender-artifact master][master_mender-artifact-linux] (Pre-release)  |
+| Mac OS X | [mender-artifact master][x.x.x_mender-artifact-darwin] | [mender-artifact master][master_mender-artifact-darwin] (Pre-release) |
 
 Remember to add execute permission and ensure that the mender-artifact utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
 
@@ -69,9 +69,11 @@ Please refer to your host Operating System documentation for more details.
 
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/3.6.0/linux/mender-artifact
-<!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/3.6.0/darwin/mender-artifact
+[x.x.x_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/master/linux/mender-artifact
+[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/master/darwin/mender-artifact
+<!--AUTOVERSION: "[%_mender-artifact-"/ignore "mender-artifact/%/"/ignore -->
+[master_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/master/linux/mender-artifact
+[master_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/master/darwin/mender-artifact
 
 ! If you are using Mac OS X, note that using `mender-artifact` with
 ! disk image files (e.g.: `*.sdimg`, `*.img`, or others holding the storage
@@ -118,7 +120,7 @@ the Mender client this way, should be aware that:
 ```bash
 curl -fLsS https://get.mender.io -o get-mender.sh
 # INSPECT get-mender.sh BEFORE PROCEEDING
-sudo sh get-mender.sh
+sudo bash get-mender.sh
 ```
 
 By default, the script installs the [remote terminal
@@ -129,7 +131,7 @@ only install the Mender client:
 ```bash
 curl -fLsS https://get.mender.io -o get-mender.sh
 # INSPECT get-mender.sh BEFORE PROCEEDING
-sudo sh get-mender.sh mender-client
+sudo bash get-mender.sh mender-client
 ```
 
 !!! Mender offers an `experimental` version of the package repository. To use
@@ -243,18 +245,20 @@ Mender in [standalone
 mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
-| Architecture   | Devices                                   | Download link                                                       |
-|----------------|-------------------------------------------|---------------------------------------------------------------------|
-| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client_3.0.0-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] |
-| arm64 | ARM 64bit processors, for example Debian for Asus Tinker Board | [mender-client_3.0.0-1_arm64.deb][mender-client_x.x.x-1_arm64.deb] |
-| amd64 | Generic 64-bit x86 processors, the most popular among workstations | [mender-client_3.0.0-1_amd64.deb][mender-client_x.x.x-1_amd64.deb] |
+| Architecture   | Devices                                                                                        | Download link                                                       | Download link                                                                      |
+|----------------|------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------|
+| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client_master-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] | [mender-client_master-1_armhf.deb][mender-client_master-1_armhf.deb] (Pre-release) |
+| arm64          | ARM 64bit processors, for example Debian for Asus Tinker Board                                 | [mender-client_master-1_arm64.deb][mender-client_x.x.x-1_arm64.deb] | [mender-client_master-1_arm64.deb][mender-client_master-1_arm64.deb] (Pre-release) |
+| amd64          | Generic 64-bit x86 processors, the most popular among workstations                             | [mender-client_master-1_amd64.deb][mender-client_x.x.x-1_amd64.deb] | [mender-client_master-1_amd64.deb][mender-client_master-1_amd64.deb] (Pre-release) |
 
-<!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
-[mender-client_x.x.x-1_armhf.deb]: https://downloads.mender.io/3.0.0/dist-packages/debian/armhf/mender-client_3.0.0-1_armhf.deb
-<!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_arm64.deb"/mender -->
-[mender-client_x.x.x-1_arm64.deb]: https://downloads.mender.io/3.0.0/dist-packages/debian/arm64/mender-client_3.0.0-1_arm64.deb
-<!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_amd64.deb"/mender -->
-[mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/3.0.0/dist-packages/debian/amd64/mender-client_3.0.0-1_amd64.deb
+<!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_"/mender -->
+[mender-client_x.x.x-1_armhf.deb]: https://downloads.mender.io/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
+[mender-client_x.x.x-1_arm64.deb]: https://downloads.mender.io/master/dist-packages/debian/arm64/mender-client_master-1_arm64.deb
+[mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/master/dist-packages/debian/amd64/mender-client_master-1_amd64.deb
+<!--AUTOVERSION: "downloads.mender.io/%/"/ignore "mender-client_%-1_"/ignore -->
+[mender-client_master-1_armhf.deb]: https://downloads.mender.io/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
+[mender-client_master-1_arm64.deb]: https://downloads.mender.io/master/dist-packages/debian/arm64/mender-client_master-1_arm64.deb
+[mender-client_master-1_amd64.deb]: https://downloads.mender.io/master/dist-packages/debian/amd64/mender-client_master-1_amd64.deb
 
 
 ## Mender add-ons
@@ -297,12 +301,12 @@ and Mender Connect.
 
 Mender offers a configure extension (`mender-configure`) to the Mender client
 that enables managing device configuration. See the
-[add-on page for Mender Configure](../09.Add-ons/02.Configure/docs.md) for
+[add-on page for Mender Configure](../09.Add-ons/10.Configure/docs.md) for
 more information.
 
 The easiest way to install Configure on an existing device is by using the
 Mender APT repository. See the [add-on page for Mender
-Configure](../09.Add-ons/02.Configure/docs.md) for more information for other
+Configure](../09.Add-ons/10.Configure/docs.md) for more information for other
 installation alternatives.
 
 To install `mender-configure` using Mender APT repository, follow the
@@ -323,11 +327,11 @@ more information.
 
 Follow the correct link according to your host platform to download `mender-cli`:
 
-<!--AUTOVERSION: "mender-cli %"/mender-cli -->
-| Platform | Download link                                                |
-|----------|--------------------------------------------------------------|
-| Linux    | [mender-cli 1.7.0][x.x.x_mender-cli-linux]                  |
-| Mac OS X | [mender-cli 1.7.0][x.x.x_mender-cli-darwin]                 |
+<!--AUTOVERSION: "mender-cli %][x.x.x_mender-cli-"/mender-cli "mender-cli %][%_mender-cli-"/ignore-->
+| Platform | Download link                                |                                                             |
+|----------|----------------------------------------------|-------------------------------------------------------------|
+| Linux    | [mender-cli master][x.x.x_mender-cli-linux]  | [mender-cli master][master_mender-cli-linux] (Pre-release)  |
+| Mac OS X | [mender-cli master][x.x.x_mender-cli-darwin] | [mender-cli master][master_mender-cli-darwin] (Pre-release) |
 
 
 Remember to add execute permission and ensure that the mender-cli utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
@@ -340,6 +344,49 @@ sudo cp mender-cli /usr/local/bin/
 Please refer to your host Operating System documentation for more details.
 
 <!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
-[x.x.x_mender-cli-linux]: https://downloads.mender.io/mender-cli/1.7.0/linux/mender-cli
-<!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
-[x.x.x_mender-cli-darwin]: https://downloads.mender.io/mender-cli/1.7.0/darwin/mender-cli
+[x.x.x_mender-cli-linux]: https://downloads.mender.io/mender-cli/master/linux/mender-cli
+[x.x.x_mender-cli-darwin]: https://downloads.mender.io/mender-cli/master/darwin/mender-cli
+<!--AUTOVERSION: "[%_mender-cli-"/ignore "mender-cli/%/"/ignore -->
+[master_mender-cli-linux]: https://downloads.mender.io/mender-cli/master/linux/mender-cli
+[master_mender-cli-darwin]: https://downloads.mender.io/mender-cli/master/darwin/mender-cli
+
+## Monitor
+
+!!! Note: The Mender Monitor add-on package is required. See the [Mender features page](https://mender.io/plans/features?target=_blank) for an overview of all Mender plans and features.
+
+
+Mender offers a [Monitor](../09.Add-ons/20.Monitor/docs.md) add-on which
+enables monitoring your devices for events and anomalies.
+
+The easiest way to install Monitor on an existing device is by using the Mender
+APT repository, see alternate installation methods on the [add-on page for
+Mender Monitor](../09.Add-ons/20.Monitor/10.Installation/docs.md).
+
+To install `mender-monitor` using the Mender Monitor Debian package, first
+download it by running:
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="hosted"]
+<!--AUTOVERSION: "/mender-monitor_%-1_all.deb"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/master/mender-monitor_master-1_all.deb
+```
+[/ui-tab]
+[ui-tab title="enterprise"]
+<!--AUTOVERSION: "/mender-monitor_%-1_all.deb"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
+```bash
+MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
+curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/master/mender-monitor_master-1_all.deb
+```
+[/ui-tab]
+[/ui-tabs]
+
+
+Then install the package with:
+
+<!--AUTOVERSION: "mender-monitor_%-1_all.deb"/monitor-client -->
+```bash
+dpkg -i mender-monitor_master-1_all.deb
+apt --fix-broken -y install
+```

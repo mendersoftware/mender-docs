@@ -16,6 +16,34 @@ When set, the Mender client verifies the following:
 See also the section about [signing and
 verification](../../../06.Artifact-creation/07.Sign-and-verify/docs.md).
 
+#### BootUtilitiesGetNextActivePart
+
+This setting controls which command is
+used to get information about the
+currently active rootfs, when using `rootfs-image` Artifacts. The tool must
+follow the same conventions as the `u-boot-fw-utils`, `libubootenv` and
+`grub-mender-grubenv` user space tools. This includes command line options as
+well as variables it is expected to return: `bootcount`, `mender_boot_part`,
+`mender_boot_part_hex` and `upgrade_available`. If this value is not set, it
+defaults to trying `grub-mender-grubenv-print` first, followed by `fw_printenv`
+if the former is not found.
+
+Introduced in Mender client 3.1.
+
+#### BootUtilitiesSetActivePart
+
+This setting controls which command is
+used to set the active rootfs partition,
+when using `rootfs-image` Artifacts. The tool must follow the same conventions
+as the `u-boot-fw-utils`, `libubootenv` and `grub-mender-grubenv` user space
+tools. This includes command line options as well as variables it is expected to
+honor: `bootcount`, `mender_boot_part`, `mender_boot_part_hex` and
+`upgrade_available`. If this value is not set, it defaults to trying
+`grub-mender-grubenv-set` first, followed by `fw_setenv` if the former is not
+found.
+
+Introduced in Mender client 3.1.
+
 #### HttpsClient
 
 Allows you to configure the certificate, private key and, SSL Engine id to use

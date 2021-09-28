@@ -12,6 +12,7 @@
         "302.Release-information/01.Release-notes-changelog/31.mender-cli",
         "302.Release-information/01.Release-notes-changelog/32.mender-convert",
         "302.Release-information/01.Release-notes-changelog/40.meta-mender",
-        "302.Release-information/01.Release-notes-changelog/50.mender-binary-delta"
+        "302.Release-information/01.Release-notes-changelog/50.mender-binary-delta",
+        "302.Release-information/01.Release-notes-changelog/51.monitor-client"
     ]
 }

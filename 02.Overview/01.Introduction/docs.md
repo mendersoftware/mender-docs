@@ -11,7 +11,8 @@ architecture allowing central management of deployments to all devices.
 Mender also supports powerful extensions in a form of
 [add-ons](../../09.Add-ons/00.Overview/docs.md) which 
 enable features like Remote Terminal, Port Forward, File Transfer,
-and Device Configuration.
+and Device Configuration, together with the ability to monitor
+and alert with the Monitor add-on.
 
 ## The architecture of a software update
 

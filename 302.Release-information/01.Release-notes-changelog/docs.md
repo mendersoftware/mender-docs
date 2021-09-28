@@ -15,3 +15,4 @@ shortcode-core:
 * [mender-convert](32.mender-convert/docs.md)
 * [meta-mender](40.meta-mender/docs.md)
 * [mender-binary-delta](50.mender-binary-delta/docs.md)
+* [monitor-client](51.monitor-client/docs.md)
