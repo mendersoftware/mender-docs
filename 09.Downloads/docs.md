@@ -33,8 +33,8 @@ Mender provides images based on the following distributions:
 | Raspberry Pi 4 Model B        | Raspberry Pi OS Buster Lite 2021-01-11 | [raspios-buster-lite-raspberrypi4-mender.img.xz][raspios-buster-lite-raspberrypi4-mender.img.xz] | 8 GB         |
 
 <!--AUTOVERSION: "mender-convert-%.img.xz"/mender-convert -->
-[raspios-buster-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-01-11-raspios-buster-armhf-lite/arm/2021-01-11-raspios-buster-armhf-lite-raspberrypi3-mender-convert-master.img.xz
-[raspios-buster-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-01-11-raspios-buster-armhf-lite/arm/2021-01-11-raspios-buster-armhf-lite-raspberrypi4-mender-convert-master.img.xz
+[raspios-buster-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-01-11-raspios-buster-armhf-lite/arm/2021-01-11-raspios-buster-armhf-lite-raspberrypi3-mender-convert-2.6.0.img.xz
+[raspios-buster-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-01-11-raspios-buster-armhf-lite/arm/2021-01-11-raspios-buster-armhf-lite-raspberrypi4-mender-convert-2.6.0.img.xz
 
 You can find images for other devices in our Mender Hub community forum, see
 [Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11?target=_blank) or
@@ -55,8 +55,8 @@ Follow the correct link according to your host platform to download
 <!--AUTOVERSION: "mender-artifact %][x.x.x_mender-artifact-"/mender-artifact "mender-artifact %][%_mender-artifact-"/ignore-->
 | Platform | Download link                                          |                                                                       |
 |----------|--------------------------------------------------------|-----------------------------------------------------------------------|
-| Linux    | [mender-artifact master][x.x.x_mender-artifact-linux]  | [mender-artifact master][master_mender-artifact-linux] (Pre-release)  |
-| Mac OS X | [mender-artifact master][x.x.x_mender-artifact-darwin] | [mender-artifact master][master_mender-artifact-darwin] (Pre-release) |
+| Linux    | [mender-artifact 3.6.1][x.x.x_mender-artifact-linux]  | [mender-artifact master][master_mender-artifact-linux] (Pre-release)  |
+| Mac OS X | [mender-artifact 3.6.1][x.x.x_mender-artifact-darwin] | [mender-artifact master][master_mender-artifact-darwin] (Pre-release) |
 
 Remember to add execute permission and ensure that the mender-artifact utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
 
@@ -69,8 +69,8 @@ Please refer to your host Operating System documentation for more details.
 
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/master/linux/mender-artifact
-[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/master/darwin/mender-artifact
+[x.x.x_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/3.6.1/linux/mender-artifact
+[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/3.6.1/darwin/mender-artifact
 <!--AUTOVERSION: "[%_mender-artifact-"/ignore "mender-artifact/%/"/ignore -->
 [master_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/master/linux/mender-artifact
 [master_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/master/darwin/mender-artifact
@@ -247,14 +247,14 @@ mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
 | Architecture   | Devices                                                                                        | Download link                                                       | Download link                                                                      |
 |----------------|------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client_master-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] | [mender-client_master-1_armhf.deb][mender-client_master-1_armhf.deb] (Pre-release) |
-| arm64          | ARM 64bit processors, for example Debian for Asus Tinker Board                                 | [mender-client_master-1_arm64.deb][mender-client_x.x.x-1_arm64.deb] | [mender-client_master-1_arm64.deb][mender-client_master-1_arm64.deb] (Pre-release) |
-| amd64          | Generic 64-bit x86 processors, the most popular among workstations                             | [mender-client_master-1_amd64.deb][mender-client_x.x.x-1_amd64.deb] | [mender-client_master-1_amd64.deb][mender-client_master-1_amd64.deb] (Pre-release) |
+| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client_3.1.0-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] | [mender-client_3.1.0-1_armhf.deb][mender-client_3.1.0-1_armhf.deb] (Pre-release) |
+| arm64          | ARM 64bit processors, for example Debian for Asus Tinker Board                                 | [mender-client_3.1.0-1_arm64.deb][mender-client_x.x.x-1_arm64.deb] | [mender-client_3.1.0-1_arm64.deb][mender-client_3.1.0-1_arm64.deb] (Pre-release) |
+| amd64          | Generic 64-bit x86 processors, the most popular among workstations                             | [mender-client_3.1.0-1_amd64.deb][mender-client_x.x.x-1_amd64.deb] | [mender-client_3.1.0-1_amd64.deb][mender-client_3.1.0-1_amd64.deb] (Pre-release) |
 
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_"/mender -->
-[mender-client_x.x.x-1_armhf.deb]: https://downloads.mender.io/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
-[mender-client_x.x.x-1_arm64.deb]: https://downloads.mender.io/master/dist-packages/debian/arm64/mender-client_master-1_arm64.deb
-[mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/master/dist-packages/debian/amd64/mender-client_master-1_amd64.deb
+[mender-client_x.x.x-1_armhf.deb]: https://downloads.mender.io/3.1.0/dist-packages/debian/armhf/mender-client_3.1.0-1_armhf.deb
+[mender-client_x.x.x-1_arm64.deb]: https://downloads.mender.io/3.1.0/dist-packages/debian/arm64/mender-client_3.1.0-1_arm64.deb
+[mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/3.1.0/dist-packages/debian/amd64/mender-client_3.1.0-1_amd64.deb
 <!--AUTOVERSION: "downloads.mender.io/%/"/ignore "mender-client_%-1_"/ignore -->
 [mender-client_master-1_armhf.deb]: https://downloads.mender.io/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
 [mender-client_master-1_arm64.deb]: https://downloads.mender.io/master/dist-packages/debian/arm64/mender-client_master-1_arm64.deb
@@ -330,8 +330,8 @@ Follow the correct link according to your host platform to download `mender-cli`
 <!--AUTOVERSION: "mender-cli %][x.x.x_mender-cli-"/mender-cli "mender-cli %][%_mender-cli-"/ignore-->
 | Platform | Download link                                |                                                             |
 |----------|----------------------------------------------|-------------------------------------------------------------|
-| Linux    | [mender-cli master][x.x.x_mender-cli-linux]  | [mender-cli master][master_mender-cli-linux] (Pre-release)  |
-| Mac OS X | [mender-cli master][x.x.x_mender-cli-darwin] | [mender-cli master][master_mender-cli-darwin] (Pre-release) |
+| Linux    | [mender-cli 1.7.0][x.x.x_mender-cli-linux]  | [mender-cli master][master_mender-cli-linux] (Pre-release)  |
+| Mac OS X | [mender-cli 1.7.0][x.x.x_mender-cli-darwin] | [mender-cli master][master_mender-cli-darwin] (Pre-release) |
 
 
 Remember to add execute permission and ensure that the mender-cli utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
@@ -344,8 +344,8 @@ sudo cp mender-cli /usr/local/bin/
 Please refer to your host Operating System documentation for more details.
 
 <!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
-[x.x.x_mender-cli-linux]: https://downloads.mender.io/mender-cli/master/linux/mender-cli
-[x.x.x_mender-cli-darwin]: https://downloads.mender.io/mender-cli/master/darwin/mender-cli
+[x.x.x_mender-cli-linux]: https://downloads.mender.io/mender-cli/1.7.0/linux/mender-cli
+[x.x.x_mender-cli-darwin]: https://downloads.mender.io/mender-cli/1.7.0/darwin/mender-cli
 <!--AUTOVERSION: "[%_mender-cli-"/ignore "mender-cli/%/"/ignore -->
 [master_mender-cli-linux]: https://downloads.mender.io/mender-cli/master/linux/mender-cli
 [master_mender-cli-darwin]: https://downloads.mender.io/mender-cli/master/darwin/mender-cli
@@ -370,14 +370,14 @@ download it by running:
 <!--AUTOVERSION: "/mender-monitor_%-1_all.deb"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
 HOSTED_MENDER_EMAIL=<your.email@example.com>
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/master/mender-monitor_master-1_all.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.0.0/mender-monitor_1.0.0-1_all.deb
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
 <!--AUTOVERSION: "/mender-monitor_%-1_all.deb"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
 MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
-curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/master/mender-monitor_master-1_all.deb
+curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.0.0/mender-monitor_1.0.0-1_all.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -387,6 +387,6 @@ Then install the package with:
 
 <!--AUTOVERSION: "mender-monitor_%-1_all.deb"/monitor-client -->
 ```bash
-dpkg -i mender-monitor_master-1_all.deb
+dpkg -i mender-monitor_1.0.0-1_all.deb
 apt --fix-broken -y install
 ```
