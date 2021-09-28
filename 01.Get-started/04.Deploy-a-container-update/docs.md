@@ -8,7 +8,7 @@ taxonomy:
 !!! This tutorial is not supported by the virtual device because it does not come
 !!! with a package manager to install the needed dependencies.
 
-This tutorial will walk you trough how to deploy Docker container updates with
+This tutorial will walk you through how to deploy Docker container updates with
 Mender. We will be using the
 [Docker Update Module](https://hub.mender.io/t/docker/324?target=_blank) which
 allows you to specify a list of container images and their versions in a
@@ -78,14 +78,14 @@ Download the `mender-artifact` binary. If you're on Linux
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 ```bash
-wget https://downloads.mender.io/mender-artifact/3.6.0/linux/mender-artifact -O ${HOME}/bin/mender-artifact
+wget https://downloads.mender.io/mender-artifact/3.6.1/linux/mender-artifact -O ${HOME}/bin/mender-artifact
 ```
 
 On MacOS
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 ```bash
-wget https://downloads.mender.io/mender-artifact/3.6.0/darwin/mender-artifact -O ${HOME}/bin/mender-artifact
+wget https://downloads.mender.io/mender-artifact/3.6.1/darwin/mender-artifact -O ${HOME}/bin/mender-artifact
 ```
 
 
@@ -117,7 +117,7 @@ Download the `docker-artifact-gen` utility script:
 
 <!--AUTOVERSION: "mender/%"/mender-->
 ```bash
-wget https://raw.githubusercontent.com/mendersoftware/mender/3.0.0/support/modules-artifact-gen/docker-artifact-gen
+wget https://raw.githubusercontent.com/mendersoftware/mender/3.1.0/support/modules-artifact-gen/docker-artifact-gen
 ```
 
 Make `docker-artifact-gen` executable:

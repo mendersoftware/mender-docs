@@ -14,7 +14,7 @@ The configuration files are a means to customize the conversion process for
 `mender-convert`. In the `configs/` directory, there are customization scripts
 which add support for board-specific configurations. A run of `mender-convert`
 can include multiple configuration files, each one added with the `--config`
-command-line option. The standard configuration [configs/mender_convert_config](https://github.com/mendersoftware/mender-convert/blob/2.5.0/configs/mender_convert_config) includes the defaults for the configuration options which the tool supports.
+command-line option. The standard configuration [configs/mender_convert_config](https://github.com/mendersoftware/mender-convert/blob/2.6.0/configs/mender_convert_config) includes the defaults for the configuration options which the tool supports.
 
 ### Example
 
@@ -37,6 +37,11 @@ MENDER_ARTIFACT_NAME=release-1 ./mender-convert \
 
 Configuration files are also a means to add customization that might be
 necessary for specific devices or distributions.
+
+### Pre-release versions
+
+If you want to use pre-release versions of the Mender components, please see [the Variables
+section](../../99.Variables/docs.md), and especially the variables that contain `VERSION`.
 
 
 -------------------------------------------------------------------------------

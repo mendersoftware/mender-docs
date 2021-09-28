@@ -1,5 +1,5 @@
 ---
-title: Reference: mender-connect
+title: Mender Connect
 taxonomy:
     category: docs
     label: reference
@@ -10,7 +10,32 @@ taxonomy:
 implementing a range of troubleshooting features to the device as well as
 several enhancement to the [mender-client](../../03.Client-installation/01.Overview/docs.md).
 
+Mender Connect is loosely coupled with the Mender Client. The main information passed between
+`mender-client` and `mender-connect` is the device authorization status. Since only accepted
+devices can interact with the Mender Server, the Mender Client passes over DBus
+the authorization token which Mender Connect uses to establish
+a [Websocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) connection
+to the server. We use the well-known and well-defined open APIs, which makes the solution flexible
+and portable.
+
+## Installation
+
+Please refer to the following sections for the Mender Connect installation:
+* [mender-convert integration](../../04.System-updates-Debian-family/99.Variables/docs.md#mender_addon_connect_install) for installation in the existing images
+* [Yocto projects](../../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect) for the installation in a Yocto Project environment
+* [installation with a deb](../../09.Downloads/docs.md#remote-terminal-add-on) for the installation from the Debian package
+
+After installation, please refer to the [add-ons subsections](../../09.Add-ons/chapter.md) for the configuration options,
+including the enabling and disabling of the features.
+
+Please note, that you have to enable DBus in the Mender client for most of the add-ons
+to function.
+
 ## Configuration
+
+The mechanism for providing the configuration file and specifying the configuration values will depend on your choice of OS distribution or build system.
+
+If you have already built an Artifact containing the rootfs, have a look at [modifying a Mender Artifact](../../06.Artifact-creation/03.Modify-an-Artifact/docs.md).
 
 Following is a complete reference of the configuration options for
 mender-connect along with the default values. The default configuration path is
