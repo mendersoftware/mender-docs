@@ -6,6 +6,88 @@ shortcode-core:
     active: false
 ---
 
+## Mender 2.6.3
+
+_Release date 09.29.2021_
+
+### Statistics
+
+A total of 184 lines added, 101 removed (delta 83)
+
+| Developers with the most changesets | |
+|---|---|
+| Kristian Amlie | 7 (43.8%) |
+| Lluis Campos | 4 (25.0%) |
+| Ole Petter Orhagen | 2 (12.5%) |
+| Prashanth Joseph Babu | 2 (12.5%) |
+| Alf-Rune Siqveland | 1 (6.2%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Ole Petter Orhagen | 50 (27.2%) |
+| Prashanth Joseph Babu | 46 (25.0%) |
+| Kristian Amlie | 43 (23.4%) |
+| Lluis Campos | 36 (19.6%) |
+| Alf-Rune Siqveland | 9 (4.9%) |
+
+| Developers with the most signoffs (total 1) | |
+|---|---|
+| Kristian Amlie | 1 (100.0%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 14 (87.5%) |
+| prashanthjbabu@gmail.com | 2 (12.5%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 138 (75.0%) |
+| prashanthjbabu@gmail.com | 46 (25.0%) |
+
+| Employers with the most signoffs (total 1) | |
+|---|---|
+| Northern.tech | 1 (100.0%) |
+
+| Employers with the most hackers (total 5) | |
+|---|---|
+| Northern.tech | 4 (80.0%) |
+| prashanthjbabu@gmail.com | 1 (20.0%) |
+
+### Changelogs
+
+#### integration (2.6.3)
+
+New changes in integration since 2.6.2:
+
+* Upgrade inventory-enterprise to 2.2.2.
+* Upgrade inventory to 2.2.2.
+* Upgrade mender-artifact to 3.5.3.
+* Upgrade mender to 2.5.3.
+
+#### mender (2.5.3)
+
+New changes in mender since 2.5.2:
+
+* Add artifact_name to device provides if not found in store
+* Add missing filesystem sync which could produce an empty or
+  corrupted Update Module file tree in
+  `/var/lib/mender/modules/v3/payloads/0000/tree/files/` after an
+  unexpected reboot.
+* [FIX] Fetch geo location data once per power cycle
+
+#### mender-artifact (3.5.3)
+
+New changes in mender-artifact since 3.5.2:
+
+* Add missing error description when artifact header can't be written.
+* cli: Fix parsing of filenames containing ".mender"
+  ([MEN-5076](https://tracker.mender.io/browse/MEN-5076))
+* Fix the checksum errors encountered in rare cases where the entire byte
+  stream is not consumed during verification, and thus giving wrong checksum errors.
+  ([MEN-5094](https://tracker.mender.io/browse/MEN-5094))
+* Restore SSH snapshot feature on Mac OS
+  ([MEN-4362](https://tracker.mender.io/browse/MEN-4362), [MEN-5082](https://tracker.mender.io/browse/MEN-5082))
+
 ## Mender 2.6.2
 
 _Released 07.14.2021_
