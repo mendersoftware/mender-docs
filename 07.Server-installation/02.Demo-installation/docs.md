@@ -50,13 +50,13 @@ Clone the [integration](https://github.com/mendersoftware/integration?target=_bl
 repository which contains everything that is need to start the demo server:
 <!--AUTOVERSION: "-b %"/integration "integration-%"/integration -->
 ```bash
-git clone -b 2.6.2 https://github.com/mendersoftware/integration.git integration-2.6.2
+git clone -b 2.6.3 https://github.com/mendersoftware/integration.git integration-2.6.3
 ```
 
 Change directory to the cloned repository:
 <!--AUTOVERSION: "integration-%"/integration -->
 ```bash
- cd integration-2.6.2
+ cd integration-2.6.3
 ```
 
 Start the demo server:
@@ -121,7 +121,7 @@ the images.
 
 <!--AUTOVERSION: "integration-%"/integration -->
 If you want to remove all state in your Mender demo environment and start clean,
-run the following commands in the `integration-2.6.2` directory:
+run the following commands in the `integration-2.6.3` directory:
 
 ```bash
 ./demo stop
