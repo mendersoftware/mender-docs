@@ -28,3 +28,10 @@ You can find more information about the configuration update module on [Mender H
 The picture below shows the configuration update flow.
 
 ![configuration-4](configure1.png)
+
+## Requirements
+
+There are no special device requirements for using Mender Configure, but editing the configuration
+from the UI is not supported if the device is using **signed Artifacts**. It is still possible to
+see reported configuration the UI. Configure Artifacts can be
+deployed with a manually signed Artifact, by following the regular Artifact deployment flow.
