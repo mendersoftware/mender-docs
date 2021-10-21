@@ -6,8 +6,8 @@ taxonomy:
 ---
 
 <!-- The variables used in the testing of production installation instructions -->
-<!--AUTOMATION: execute=export EXPECTED_COUNT_OPENSOURCE=14 -->
-<!--AUTOMATION: execute=export EXPECTED_COUNT_ENTERPRISE=18 -->
+<!--AUTOMATION: execute=export EXPECTED_COUNT_OPENSOURCE=15 -->
+<!--AUTOMATION: execute=export EXPECTED_COUNT_ENTERPRISE=19 -->
 <!--AUTOMATION: execute=export SLEEP_INTERVAL=4 -->
 <!--AUTOMATION: execute=export MAX_INTERATIONS=11 -->
 
