@@ -49,23 +49,91 @@ browse to the downloaded Mender Raspberry Pi OS image.
 
 ![connecting a device](image1.png)
 
-### (optional) Configure wireless network and enable SSH in headless mode
 
-You can take advantage of the headless configuration options of Rapberry Pi to
-enable SSH or to configure the wireless network.
+### Option #1: Configure wireless network and enable SSH in headless mode
 
-Follow [Setting up wireless
-networking](https://www.raspberrypi.org/documentation/configuration/wireless/headless.md)
-guide and/or [Enable SSH
-access](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md?target=_blank)
-guide (see section "3. Enable SSH on a headless Raspberry Pi") from Raspberry Pi
-OS documentation.
+You can take advantage of the headless configuration options of Raspberry Pi to
+enable SSH or to configure the wireless network. This saves you the hassle
+of connecting a monitor and keyboard after your device has booted, as it will come
+up with WiFi and SSH already working and you can just SSH into it from your workstation.
+
+First off, insert the SD card you flashed above and find the `boot` partition inside it.
+On Linux you can often find it under `/media/$(whoami)/boot`, where `$(whoami)` will return
+your Linux user name. Open a terminal on your workstation and verify that this can be accessed:
+
+```bash
+RPI_BOOT="/media/$(whoami)/boot"
+[ ! -d "$RPI_BOOT" ] && echo "ERROR: RPI boot directory not found"
+```
+
+If this outputs nothing you can continue. If you get the ERROR, find out where
+the SD card's boot partition is accessible and change the `RPI_BOOT` variable accordingly.
+
+With the path to the boot directory set up, we first configure networking. Assuming
+you have a typical WiFi setup, change the initial three variables and run this code block:
+
+```bash
+WIFI_SSID='' # CHANGE: your WiFi name
+WIFI_PASS='' # CHANGE: your WiFi password
+COUNTRY='US' # CHANGE: two-letter country code, see https://en.wikipedia.org/wiki/ISO_3166-1
+
+cat << EOF > "$RPI_BOOT"/wpa_supplicant.conf
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=$COUNTRY
+
+network={
+         ssid="$WIFI_SSID"
+         psk="$WIFI_PASS"
+}
+EOF
+```
+
+Finally, enable SSH by creating an empty file:
+
+```bash
+touch "$RPI_BOOT"/ssh
+```
+
+Now disconnect the SD card, insert it into your Raspberry Pi and boot it.
+
+If you have a different network setup or encounter any issues, please see [the official Raspberry Pi documentation on headless setups](https://www.raspberrypi.com/documentation/computers/configuration.html?target=_blank#setting-up-a-headless-raspberry-pi).
+
+
+
+### Option #2: Configure wireless network and enable SSH by attach a keyboard and monitor
+
+If you did headless (*Option #1* above) skip to *Step 2* below.
+
+Boot the Raspberry Pi with the newly flashed SD card. Attach a keyboard and
+monitor. Log in using `pi` user and `raspberry` password.
+
+Do the following steps to set up WiFi:
+
+* Run `sudo raspi-config`
+* Select `Localisation Options` then `Change wireless country`
+* Set the SSID and passphrase for the network
+* Choose `Yes`, `OK` and `Finish`
+
+Check that your Raspberry Pi is connected to the Internet (e.g. `ping www.google.com`).
+If this does not work, please see the official [Raspberry Pi documentation on network configuration](https://www.raspberrypi.com/documentation/computers/configuration.html?target=_blank#using-the-command-line).
+
+
+Now do the following steps to set up SSH:
+* Run `sudo raspi-config`
+* Navigate to `Interfacing Options` and Select `SSH`
+* Choose `Yes`, `OK` and `Finish`
+
+If you encounter any issues, see [Enable local SSH
+access](https://www.raspberrypi.com/documentation/computers/remote-access.html?target=_blank#enabling-the-server)
+in the official Raspberry Pi documentation for more information.
+
 
 ## Step 2 - SSH into the Raspberry Pi
 
-Boot the Raspberry Pi with the newly flashed SD card. If you have not followed
-the instructions in the previous step, [Enable local SSH
-access](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md?target=_blank).
+Your Raspberry Pi should now be booted, connected to the network and have the SSH daemon running,
+regardless if you followed the headless approach (*Option 1*) or connected a keyboard and
+monitor directly (*Option 2*).
 
 If you do not know the IP address of your Raspberry Pi device, there are some
 great resources in the
