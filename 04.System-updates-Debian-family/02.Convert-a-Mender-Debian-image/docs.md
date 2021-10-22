@@ -69,6 +69,10 @@ following command:
 
 ```bash
 dd if=<DEVICE> of=golden-image-1.img bs=1M conv=fdatasync
+
+MacOSX
+dd if=<DEVICE> of=golden-image-1.img
+
 ```
 
 !!! Replace `<DEVICE>` with the location of your SD card. Normally this would be
