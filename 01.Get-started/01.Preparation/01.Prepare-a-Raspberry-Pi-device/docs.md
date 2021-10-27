@@ -58,13 +58,23 @@ of connecting a monitor and keyboard after your device has booted, as it will co
 up with WiFi and SSH already working and you can just SSH into it from your workstation.
 
 First off, insert the SD card you flashed above and find the `boot` partition inside it.
-On Linux you can often find it under `/media/$(whoami)/boot`, where `$(whoami)` will return
-your Linux user name. Open a terminal on your workstation and verify that this can be accessed:
+Open a terminal on your workstation and verify that it can be accessed in the
+default location:
 
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="Linux"]
 ```bash
 RPI_BOOT="/media/$(whoami)/boot"
 [ ! -d "$RPI_BOOT" ] && echo "ERROR: RPI boot directory not found"
 ```
+[/ui-tab]
+[ui-tab title="Mac OS"]
+```bash
+RPI_BOOT="/Volumes/boot"
+[ ! -d "$RPI_BOOT" ] && echo "ERROR: RPI boot directory not found"
+```
+[/ui-tab]
+[/ui-tabs]
 
 If this outputs nothing you can continue. If you get the ERROR, find out where
 the SD card's boot partition is accessible and change the `RPI_BOOT` variable accordingly.
