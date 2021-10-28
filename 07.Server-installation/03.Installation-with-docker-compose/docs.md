@@ -621,11 +621,11 @@ installing an Open Source server, please proceed to
 
 <!-- Verification of Open Source instance -->
 
-<!--AUTOMATION: execute=function CONTAINERS_COUNT_TEST_OPENSOURCE() { local n; [ "${EXPECTED_COUNT_OPENSOURCE}" == "" ] && return 1; for ((n=0;n<${MAX_INTERATIONS};n++)); do count=$(docker container ls -f "status=running" --format 'table {{.Status}}\t{{.Names}}' | grep ^Up | grep -c menderproduction); [ ${count} -eq ${EXPECTED_COUNT_OPENSOURCE} ] && break; sleep ${SLEEP_INTERVAL}; done; [ ${count} -eq ${EXPECTED_COUNT_OPENSOURCE} ] || { echo "some containers are not 'Up'; ${count}/${EXPECTED_COUNT_OPENSOURCE} running." && docker ps && ./run images && ./run logs && exit 1; }; } -->
-<!--AUTOMATION: test=CONTAINERS_COUNT_TEST_OPENSOURCE; -->
+<!--AUTOMATION: execute=function CONTAINERS_COUNT_TEST() { EXPECTED="$(./run config --services | sort)"; ACTUAL="$(./run ps --services --filter 'status=running' | sort)"; if [ "$EXPECTED" != "$ACTUAL" ]; then echo "Not all expected services are running ($(echo "$ACTUAL" | wc -w)/$(echo "$EXPECTED" | wc -w))"; return 1; else return 0; fi } -->
+<!--AUTOMATION: test=CONTAINERS_COUNT_TEST; -->
 <!--AUTOMATION: test=./run stop -->
 <!--AUTOMATION: test=./run up -d -->
-<!--AUTOMATION: test=CONTAINERS_COUNT_TEST_OPENSOURCE; -->
+<!--AUTOMATION: test=CONTAINERS_COUNT_TEST; -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
 
 <!-- End of test block for TEST_OPEN_SOURCE=1 -->
@@ -817,7 +817,7 @@ git log --oneline master..HEAD
 
 <!-- Verification of Enterprise instance -->
 
-<!--AUTOMATION: execute=function CONTAINERS_COUNT_TEST_ENTERPRISE() { local n; [ "${EXPECTED_COUNT_ENTERPRISE}" == "" ] && return 1; for ((n=0;n<${MAX_INTERATIONS};n++)); do count=$(docker container ls -f "status=running" --format 'table {{.Status}}\t{{.Names}}' | grep ^Up | grep -c menderproduction); [ ${count} -eq ${EXPECTED_COUNT_ENTERPRISE} ] && break; sleep ${SLEEP_INTERVAL}; done; [ ${count} -eq ${EXPECTED_COUNT_ENTERPRISE} ] || { echo "some containers are not 'Up'; ${count}/${EXPECTED_COUNT_ENTERPRISE} running." && docker ps && ./run images && ./run logs && exit 1; }; } -->
+<!--AUTOMATION: execute=function CONTAINERS_COUNT_TEST() { EXPECTED="$(./run config --services | sort)"; ACTUAL="$(./run ps --services --filter 'status=running' | sort)"; if [ "$EXPECTED" != "$ACTUAL" ]; then echo "Not all expected services are running ($(echo "$ACTUAL" | wc -w)/$(echo "$EXPECTED" | wc -w))"; return 1; else return 0; fi } -->
 <!--AUTOMATION: test=CONTAINERS_COUNT_TEST_ENTERPRISE; -->
 <!--AUTOMATION: test=./run stop -->
 <!--AUTOMATION: test=./run up -d -->
