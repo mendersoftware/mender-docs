@@ -818,10 +818,10 @@ git log --oneline master..HEAD
 <!-- Verification of Enterprise instance -->
 
 <!--AUTOMATION: execute=function CONTAINERS_COUNT_TEST() { EXPECTED="$(./run config --services | sort)"; ACTUAL="$(./run ps --services --filter 'status=running' | sort)"; if [ "$EXPECTED" != "$ACTUAL" ]; then echo "Not all expected services are running ($(echo "$ACTUAL" | wc -w)/$(echo "$EXPECTED" | wc -w))"; return 1; else return 0; fi } -->
-<!--AUTOMATION: test=CONTAINERS_COUNT_TEST_ENTERPRISE; -->
+<!--AUTOMATION: test=CONTAINERS_COUNT_TEST; -->
 <!--AUTOMATION: test=./run stop -->
 <!--AUTOMATION: test=./run up -d -->
-<!--AUTOMATION: test=CONTAINERS_COUNT_TEST_ENTERPRISE; -->
+<!--AUTOMATION: test=CONTAINERS_COUNT_TEST; -->
 <!--AUTOMATION: test=docker ps | grep menderproduction | grep "0.0.0.0:443" -->
 
 <!-- End of test block for TEST_ENTERPRISE=1 -->
