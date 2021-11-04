@@ -6,6 +6,56 @@ shortcode-core:
     active: false
 ---
 
+## Mender 2.7.2
+
+_Released 11.04.2021_
+
+### Statistics
+
+A total of 255 lines added, 98 removed (delta 157)
+
+| Developers with the most changesets | |
+|---|---|
+| Fabio Tranchitella | 5 (71.4%) |
+| Lluis Campos | 1 (14.3%) |
+| Kristian Amlie | 1 (14.3%) |
+
+| Developers with the most changed lines | |
+|---|---|
+| Fabio Tranchitella | 205 (80.4%) |
+| Lluis Campos | 43 (16.9%) |
+| Kristian Amlie | 7 (2.7%) |
+
+| Top changeset contributors by employer | |
+|---|---|
+| Northern.tech | 7 (100.0%) |
+
+| Top lines changed by employer | |
+|---|---|
+| Northern.tech | 255 (100.0%) |
+
+| Employers with the most hackers (total 3) | |
+|---|---|
+| Northern.tech | 3 (100.0%) |
+
+### Changelogs
+
+#### inventory-enterprise (2.3.1)
+
+New changes in inventory-enterprise since 2.3.0:
+
+* fix filtering by datetime values (e.g. `updated_ts`)
+  ([MEN-4644](https://tracker.mender.io/browse/MEN-4644))
+
+#### integration (2.7.2)
+
+New changes in integration since 2.7.1:
+
+* Upgrade integration to 2.7.2.
+* Upgrade inventory-enterprise to 2.3.1.
+* Upgrade inventory to 2.3.1.
+
+
 ## Mender 2.7.1
 
 _Released 07.14.2021_
