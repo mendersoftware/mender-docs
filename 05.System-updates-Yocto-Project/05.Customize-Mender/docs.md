@@ -230,19 +230,13 @@ IMAGE_INSTALL_append = " mender-connect"
 Alternatively, add the snippet to your `local.conf`.
 
 Mender Connect provides several [configuration
-options](../../09.Add-ons/90.Mender-Connect/docs.md#configuration).
-A configuration file with the required [`ServerURL`
-field](../../09.Add-ons/90.Mender-Connect/docs.md#configuration),
-set via [`MENDER_SERVER_URL`
-variable](../99.Variables/docs.md#mender_server_url), and [`User`
-field](../../09.Add-ons/90.Mender-Connect/docs.md#remote-terminal-configuration),
-set via [`MENDER_CONNECT_USER`
-variable](../99.Variables/docs.md#mender_connect_user). You can set these in your
-own `.bbappend` recipe file or via your `local.conf` file, for example:
+options](../../09.Add-ons/90.Mender-Connect/docs.md#configuration). Set `MENDER_CONNECT_USER` and
+`MENDER_CONNECT_SHELL` via your `local.conf` file for `meta-mender` to generate a
+`mender-connect.conf` with `User` and `ShellCommand` fields:
 
 ```bash
-MENDER_SERVER_URL = "https://hosted.mender.io"
 MENDER_CONNECT_USER = "root"
+MENDER_CONNECT_SHELL = "/bin/bash"
 ```
 
 To add optional fields, or override the values for the required ones, create your own `mender-connect.conf` and
