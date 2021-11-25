@@ -22,6 +22,7 @@ An Update Module implements one or more of the actions that the Mender client ca
 
 Update Modules follow the same execution flow as [state scripts](../../06.Artifact-creation/04.State-scripts/docs.md). For the development of Update Modules it is important to have a basic understanding of it.
 
+<!-- Source is at: https://docs.google.com/drawings/d/1IbqjK5R87KuIDKX11MQB4UlvaapbCK9lC-HLbQjDvIQ/edit -->
 ![Update Modules state machine](update-modules-state-machine.png)
 
 The most relevant states for developing an Update Module are:
@@ -248,6 +249,7 @@ This new version of the `web-file` Update Module implements a simple mechanism t
 
 In general, if a device loses power during an update, Mender will transition into an error state, such as ArtifactRollback or ArtifactFailure. If the client is already in an error state, that state will typically be repeated until the update is installed without interruption. However, the exact state execution flow depends on whether the Update Module supports rollback and whether it reboots. See the diagram below for all the possible execution flows during a power loss:
 
+<!-- Source is at: https://docs.google.com/drawings/d/19Oy6lLi_H2oLZtnyH1S9vfroTbHmeGmtzUAPKw8Xh7s/edit -->
 ![Update Modules power loss state machine](update-modules-powerloss-state-machine.png)
 
 Because of the possible re-execution described above, you should develop Update Modules to be idempotent. This means that re-running the module with the same state several times, even partially, should have the same effect as running it once, as long as the last execution is a complete one.
