@@ -24,6 +24,7 @@ Starting with the Mender Client version 1.2, support is available for scripts to
 
 State scripts can either be run as we transition into a state; "Enter", or out from a state, "Leave". Most of the states also have an "Error" transition which is run when some error occurs while executing any action inside the given state (including execution of Enter and Leave scripts).
 
+<!-- Source is at: https://docs.google.com/drawings/d/1UUjfflMJIp-tTPmvRuIhfUVbRecH70S1oF9UW-Rl3lI/edit -->
 ![Mender state machine diagram](mender-state-machine.png)
 
 ### Standalone mode
@@ -122,6 +123,7 @@ You can find code examples in the [Mender client source repository](https://gith
 #### Application data migration
 In this case, application data like a user profile is stored in an SQLite database and a new column need to be added before starting the new version of the application. This can be achieved by adding a state script to `ArtifactInstall_Leave` (that would run after writing the new rootfs, but before rebooting). This script can then do the necessary migrations on the data partition before the new version of the application is brought up after the reboot.
 
+<!-- Source is at: https://docs.google.com/drawings/d/1gMuPxHzejzo4A0qdEUT1xlCuk6iBeKNnl9TZrD8PzPw/edit -->
 ![Application data migration state scripts](mender-state-machine-data-migration.png)
 
 
@@ -132,6 +134,7 @@ Mender state scripts enable this use case with a script written to create the di
 
 Make sure to adjust [StateScriptRetryTimeoutSeconds](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#statescriptretrytimeoutseconds), to enable this use case.
 
+<!-- Source is at: https://docs.google.com/drawings/d/19t5Up9kDnjRuOnIa5YyMzbJIIi42q7TnV1zBgj7j2Dk/edit -->
 ![End user update confirmation state scripts](mender-state-machine-user-confirmation.png)
 
 !! Maximum wait time between `Sync` and `Download` state is 24 hours, after this period the update will be marked as failed by the Mender client. This happens because the Mender Artifact download link is generated in `Sync` state and it has a expiration time (24 hours).
@@ -142,6 +145,7 @@ Mender already automatically rolls back an update if it can not reach the Mender
 
 Scripts in `ArtifactCommit_Enter` can do additional sanity checks to make sure that the device and applications are working as expected. For example, is the UI application running and responding within a given amount of time? If not, then the script can simply return 1 and Mender will roll back the update.
 
+<!-- Source is at: https://docs.google.com/drawings/d/1A6FeZQmK66tpsNBj9iYXxMbZoe-GKGTI54Qbs7ffniU/edit -->
 ![Custom sanity check state scripts](mender-state-machine-custom-sanity-check.png)
 
 
@@ -155,6 +159,7 @@ A state script in `Sync_Enter` can enable network connectivity. You could also e
 
 If you want to explicitly disable network again after Mender has finished the deployment, the only safe place to do this is in `Idle_Enter`.
 
+<!-- Source is at: https://docs.google.com/drawings/d/1eag7jhUJWK3QWGb3pERz1AVnkvi_EMvu4U-Qq8a7_WU/edit -->
 ![Enable networking state scripts](mender-state-machine-enable-network.png)
 
 
