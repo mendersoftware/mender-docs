@@ -33,9 +33,11 @@ pi@raspberrypi:~$ sudo systemctl status mender-client
            └─320 /usr/bin/mender -daemon
 ```
 
-The status reported as active indicates that in order to use standalone mode you have to stop Mender running as a daemon.
+The status reported as active indicates that in order to use standalone mode you have to stop and disable Mender running as a daemon.
 ```bash
 pi@raspberrypi:~$ sudo systemctl stop mender-client
+pi@raspberrypi:~$ sudo systemctl disable mender-client
+pi@raspberrypi:~$ sudo systemctl mask mender-client
 ```
 
 
