@@ -43,16 +43,7 @@ mender-connect along with the default values. The default configuration path is
 
 ```json
 {
-  "HttpsClient": {
-    "Certificate": "",
-    "Key": "",
-    "SSLEngine": ""
-  },
   "ReconnectIntervalSeconds": 5,
-  "ServerCertificate": "",
-  "Servers": null,
-  "ServerURL": "",
-  "SkipVerify": false,
   "Limits": {
     "Enabled": true,
     "FileTransfer": {
@@ -100,17 +91,8 @@ mender-connect along with the default values. The default configuration path is
 }
 ```
 
-* `HttpsClient`: Client TLS configuration.
-  * `Certificate`: Path to client certificate.
-  * `Key`: Path to client certificate private key.
-  * `SSLEngine`: OpenSSL cryptographic engine.
 * `ReconnectIntervalSeconds`: Number of seconds to wait before reconnecting on
   connection errors.
-* `ServerCertificate`: Path to a custom certificate trust store.
-  _mender-connect_ will automatically use the system-wide certificate store.
-* `Servers`: *Deprecated* List of server URLs to connect with<sup>*</sup>.
-* `ServerURL`: *Deprecated* Server URL to connect with<sup>*</sup>.
-* `SkipVerify`: Skip TLS certificate verification.
 
 <!--AUTOVERSION: "version `%`"/ignore-->
 ! `Servers` and `ServerURL` are deprecated and unused since `mender-connect`
