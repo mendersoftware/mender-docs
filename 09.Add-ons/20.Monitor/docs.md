@@ -30,7 +30,7 @@ There is one exception to the above rule: if a service goes up and down often
 enough we consider it to be _flapping_. When we detect this, service subsystem
 sends a _flapping alert_ and does not send anything else until the number of service
 state changes per one `FLAPPING_INTERVAL` goes below `FLAPPING_COUNT_THRESHOLD`.
-See the [advanced configuration](./30.Advanced-configuration/docs.md) chapter
+See the [advanced configuration](30.Advanced-configuration/docs.md) chapter
 for more information about these settings.
 
 ## Architecture
