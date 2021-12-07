@@ -1,0 +1,34 @@
+sequenceDiagram
+  actor User
+  participant Device
+  participant Mender
+  participant Azure IoT Hub
+    
+    rect rgba(0, 0, 0, .05)
+    User ->> Mender: Accept pending device
+    Mender ->> Azure IoT Hub: Provision the device
+    Azure IoT Hub ->> Mender: IoT Hub device details
+    Note over Azure IoT Hub,Mender: IoT Hub device settings <br>e.g. device connection strings <br>are stored in Mender as part <br>of the device configuration
+    Device ->> Mender: Mender auth request
+    Mender ->> Device: 200 JWT token
+    Note over Device,Mender: The device is now accepted
+    Mender ->> Device: IoT Hub device settings via Mender Configure
+    Note over Device,Mender: If Mender Configure add-on is enabled, Azure IoT Hub <br>connection string is automatically available at <br>/var/lib/mender-configure/device-config.json
+    end
+
+    rect rgba(0, 0, 0, .05)
+    Device ->> Azure IoT Hub: IoT Hub application (telemetry, cloud-to-device messages)
+    Azure IoT Hub ->> Device: 
+    end
+    
+    rect rgba(0, 0, 0, .05)
+    User ->> Mender: Reject the device
+    Mender ->> Azure IoT Hub: Disable the device
+    Azure IoT Hub ->> Mender: 
+    end
+    
+    rect rgba(0, 0, 0, .05)
+    User ->> Mender: Decommission the device
+    Mender ->> Azure IoT Hub: Delete the device
+    Azure IoT Hub ->> Mender: 
+    end
