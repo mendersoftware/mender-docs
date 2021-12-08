@@ -99,7 +99,7 @@ The currently available classes are:
 
 * `mender-full`: Enables the most common features for Mender, which are:
     * `mender-image`
-    * `mender-install`
+    * `mender-client-install`
     * `mender-systemd`
     * `mender-image-uefi`
     * `mender-grub`
@@ -109,7 +109,7 @@ The currently available classes are:
   installations, which are:
     * `mender-image`
     * `mender-image-ubi`
-    * `mender-install`
+    * `mender-client-install`
     * `mender-systemd`
     * `mender-ubi`
     * `mender-uboot`
