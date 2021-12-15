@@ -152,6 +152,10 @@ sudo apt-get upgrade
 !!! To prevent the Mender client from upgrading when upgrading the rest of the
 !!! system, mark it to be held with `sudo apt-mark hold mender-client`.
 
+
+!!! Updating mender this way doesn't provide a rollback mechanism in case of issues.
+!!! For production devices always update mender as part of the full system update with A/B partitions.
+
 #### Install using the APT repository
 
 Before installing the Mender client, you need to set up the Mender APT
