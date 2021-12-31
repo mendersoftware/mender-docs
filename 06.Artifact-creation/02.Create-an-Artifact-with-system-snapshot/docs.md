@@ -54,7 +54,7 @@ mender-artifact write rootfs-image -f ssh://${USER}@${ADDR} \
                                    -t $DEVICE_TYPE
 ```
 
-creates an Artifact direclty on your workstation, containing the system image of your device.
+creates an Artifact directly on your workstation, containing the system image of your device.
 
 Please note you can pass extra arguments to ssh. To do this, specify
 each one of them in a separate `-S "${SSH_ARG}"` option, e.g.:

@@ -88,7 +88,7 @@ Below is a list of the features that Mender provides, with descriptions:
 ## Default features
 
 By default, no features are enabled, but it is common to include a top level
-class in order to get some default features. Her is an example of how to enable
+class in order to get some default features. Here is an example of how to enable
 such a class in `local.conf`:
 
 ```bash
