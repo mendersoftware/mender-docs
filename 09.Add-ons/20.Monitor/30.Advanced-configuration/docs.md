@@ -13,7 +13,7 @@ if you need to customize the functionalities.
 
 The back-end URL `mender-monitor` will send the alerts to.
 
-### MONITOR_D_DIRECOTRY
+### MONITOR_D_DIRECTORY
 
 The path to the `monitor.d` directory.
 
