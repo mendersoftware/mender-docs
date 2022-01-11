@@ -6,10 +6,22 @@ taxonomy:
 ---
 
 After [building a Mender Yocto Project image](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md#building-the-image), you need to write the disk
-image to the flash of the device.
+image to the flash of the device. There are two ways to accomplish that:
 
-Depending on the build configuration the disk image will have one of the following
-suffixes: `sdimg`, `uefiimg`, `biosimg` or `gptimg`.
+1. Write the image to the storage directly
+2. Boot from removable media and flash the image from there
+
+Depending on the build configuration the disk image will have one of the
+following suffixes: `sdimg`, `uefiimg`, `biosimg`, or `gptimg`. All disk images are
+created by the `meta-mender` layer and by default contain four partitions
+(boot, 2× rootfs, data). They are
+meant to be written directly to the device storage.
+
+! If booting from removable media in order to flash the image from there, be
+! aware that booting with the image produced by meta-mender may not always work
+! because Mender uses preconfigured storage locations. These will typically
+! match the on-board storage, not the removable media. Use a standard,
+! non-Mender configured image instead, and include the Mender image as a file.
 
 If the image is compressed, you first need to decompress it first with one of
 the commands below:
