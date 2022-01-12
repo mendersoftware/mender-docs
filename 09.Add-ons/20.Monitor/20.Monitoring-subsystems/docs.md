@@ -83,6 +83,52 @@ the [Perl-compatible regular expressions](https://www.pcre.org/).
 If you have no support for `-P`, it falls back to the `-E` flag, and
 eventually uses plain `grep`.
 
+### Capturing logs from arbitrary sources
+
+With the log subsystem you are not limited to log files only. You can get the logs
+from any command. You can achieve it via so-called _log streamline extension_.
+It is a simple mechanism that allows you to provide any command that produces data
+on standard output to which the log monitoring will perform pattern matching and alerting.
+
+The general syntax to enable the streamline logs extension is to use `@` character
+in the `LOG_FILE`:
+
+```bash
+mender-monitorctl create log custom_logs "User logged out due to security policy: \w+" "@/opt/bin/logs-secure.sh"
+```
+
+Where `/opt/bin/logs-secure.sh` is any executable command printing to standard output.
+
+As we saw in the [Get started](../../../01.Get-started/05.Monitor/docs.md) section
+the `journalctl` command can be a source of logs, but we do not limit the mechanism
+to any particular command. The only requirement is that the command prints
+to standard output so that the log subsystem will parse it.
+
+#### Docker logs
+
+One example of a command that can output data to standard error is `docker logs`.
+In case you want to get alerts based on the patterns that maybe present
+in the standard error stream, you can configure the check as follows:
+
+```bash
+mender-monitorctl create log docker_logs "Exception \d+-\w+ found" "@docker logs my_service 2>&1"
+```
+
+With the above you can configure alerting based on any source.
+You can also provide wrapper scripts for more advanced commands.
+
+### Log pattern expiration
+
+Once the pattern shows up in the logs, Mender Monitor add-on will send a critical alert.
+Technically there would be no way out of this situation; the device would stay
+in the "critical" state forever. Monitor add-on provides a way to send
+the _"OK"_ alert after a period of time defined by `LOG_PATTERN_EXPIRATION`
+in the check. This variable is defined either directly on the check
+or by the last argument to the `mender-monitorctl create log name pattern file expiration`
+command.
+
+See also the configuration of the [DEFAULT_LOG_PATTERN_EXPIRATION_SECONDS](../30.Advanced-configuration/docs.md#DEFAULT_LOG_PATTERN_EXPIRATION_SECONDS).
+
 ## D-Bus
 
 The D-Bus monitoring subsystem expects three variables from the files in the
