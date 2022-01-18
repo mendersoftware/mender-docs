@@ -4,13 +4,16 @@ taxonomy:
     category: docs
 ---
 
-Mender supports preparing devices to use Azure IoT Hub. Assuming you already have Mender in place on the device, it is automatically created in Azure IoT Hub and applications running on the device get access to the Azure IoT connection string. With Mender in place, you can simply start writing your Azure IoT application by reading the connection string from a well-defined place in the device. This integration is available in all Mender plans, as well as Mender Open Source.
+Mender supports preparing devices to use Azure IoT Hub. After installing Mender on the device it is automatically created in Azure IoT Hub, and applications running on the device get access to the Azure IoT connection string. With Mender in place, you can simply start writing your Azure IoT application by reading the connection string from a well-defined place on the device. Secondly, the Device Twin from the Azure IoT Hub becomes available to manage from Mender.
+
+
+This integration is available in all Mender plans, as well as Mender Open Source.
 
 !!!!! You need [Mender Configure](../../09.Add-ons/10.Configure/docs.md) to distribute the Azure IoT device connection strings to the devices.
 
-!!!!! It is currently possible to have one Azure IoT Hub integration configured per Mender Organization (aka. tenant).
+!!! It is currently possible to have one Azure IoT Hub integration configured per Mender Organization (aka. tenant).
 
-!!!!! After you enable the integration, you can create devices in the Azure IoT Hub automatically through simply accepting them in the Mender UI. Existing devices (in both systems) are left unchanged/untouched.
+!!! After you enable the integration you can create devices in the Azure IoT Hub automatically through simply accepting them in the Mender UI. Existing devices (in both systems) are left unchanged.
 
 ![simple flow](image_0.png)
 
@@ -18,7 +21,7 @@ Mender supports preparing devices to use Azure IoT Hub. Assuming you already hav
 
 ### A Mender server and device
 
-You need a physical board that has already been integrated with Mender - see [Get started guide](../../01.Get-started/01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md).
+You need a device integrated with Mender, see the [Get started guide](../../01.Get-started/01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md).
 
 ### Azure IoT Hub
 
@@ -66,3 +69,29 @@ In sum, the lifecycle of an Azure IoT Hub integrated device is:
 6. If the device gets `decommissioned`, it is automatically `Deleted` from Azure IoT Hub.
 
 ![Device lifecycle](device_lifecycle.png)
+
+
+## Device Twin management
+
+As an additional integration point, the Mender server obtains the Device Twin of the devices from the Azure IoT Hub.
+This means you can see and manage the Device Twin directly from Mender, together with everything else about the device.
+
+![Device Twin flow](azure-iot-device-twin-flow.png)
+
+The Device Twin is available through the Mender APIs and UI.
+
+![Device Twin edit](azure-iot-device-twin-edit.png)
+
+
+## Role Based Access Control
+
+!!!!! Role Based Access Control is only available in the Mender Enterprise plan.
+!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! for an overview of all Mender plans and features.
+
+*Admin* permission is required to set up the integraiton,
+i.e. set the connection string of the Azure IoT Hub in Mender's Settings.
+
+Role Based Access Control is also enforced for the Device Twin:
+* To *see* the Device Twin you need *Read* permission to the device
+* To *edit* the Device Twin you need *Admin* permission
