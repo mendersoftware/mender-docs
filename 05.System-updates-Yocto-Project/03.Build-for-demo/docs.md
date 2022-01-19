@@ -174,7 +174,7 @@ here are the basic steps needed to do this however your actual setup may require
 Please make sure you are standing in the directory where `poky` resides,
 i.e. the top level of the Yocto Project build tree, and run these commands:
 
-<!--AUTOVERSION: "-b % git://github.com/mendersoftware/meta-mender"/meta-mender-->
+<!--AUTOVERSION: "-b % git://github.com/"/meta-mender-->
 ```bash
 git clone -b master git://github.com/mendersoftware/meta-mender
 ```

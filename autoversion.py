@@ -41,7 +41,7 @@ VERSION_CACHE = {}
 ERRORS_FOUND = False
 
 
-def get_version_of(repo):
+def get_version_of(repo, version_type):
     global VERSION_CACHE
 
     version = VERSION_CACHE.get(repo)
@@ -57,7 +57,7 @@ def get_version_of(repo):
                     "--version-of",
                     repo,
                     "--version-type",
-                    "docker",
+                    version_type,
                     "--in-integration-version",
                     INTEGRATION_VERSION,
                 ]
@@ -317,7 +317,15 @@ def do_replacements(line, replacements, just_remove):
         else:
             if repo == "ignore":
                 continue
-            version = get_version_of(repo)
+
+            if "mendersoftware/" in search:
+                version_type = "docker"
+                # Docker versions are rare and possibly included by mistake, better verbose than sorry
+                print(f"Using Docker version on expression {search}")
+            else:
+                version_type = "git"
+
+            version = get_version_of(repo, version_type)
             if version is None:
                 continue
             if complain:
