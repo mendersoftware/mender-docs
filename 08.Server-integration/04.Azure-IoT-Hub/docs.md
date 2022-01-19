@@ -83,6 +83,11 @@ The Device Twin is available through the Mender APIs and UI.
 ![Device Twin edit](azure-iot-device-twin-edit.png)
 
 
+!!! Mender strips away the `$metadata` and `$version` keys from the Azure Device Twin
+!!! because they are not indended to be changed by users. Thus these keys are not visible
+!!! in the Mender UI nor API responses. They still exist in Azure IoT Hub, however.
+
+
 ## Role Based Access Control
 
 !!!!! Role Based Access Control is only available in the Mender Enterprise plan.
