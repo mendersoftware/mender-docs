@@ -116,10 +116,10 @@ MENDER_ARTIFACT_NAME = "release-1"
 # please uncomment the following and set to the required version. If you want to use the bleeding
 # edge version, specify "master-git%", but keep in mind that these versions may not be stable:
 #
-# PREFERRED_VERSION_mender-client = "3.2.0-build2"
-# PREFERRED_VERSION_mender-artifact = "3.7.0-build2"
-# PREFERRED_VERSION_mender-artifact-native = "3.7.0-build2"
-# PREFERRED_VERSION_mender-connect = "3.2.0-build2"
+# PREFERRED_VERSION_mender-client = "3.2.0-build4"
+# PREFERRED_VERSION_mender-artifact = "3.7.0-build4"
+# PREFERRED_VERSION_mender-artifact-native = "3.7.0-build4"
+# PREFERRED_VERSION_mender-connect = "2.0.0-build4"
 
 ARTIFACTIMG_FSTYPE = "ext4"
 
@@ -174,7 +174,7 @@ here are the basic steps needed to do this however your actual setup may require
 Please make sure you are standing in the directory where `poky` resides,
 i.e. the top level of the Yocto Project build tree, and run these commands:
 
-<!--AUTOVERSION: "-b % git://github.com/mendersoftware/meta-mender"/meta-mender-->
+<!--AUTOVERSION: "-b % git://github.com/"/meta-mender-->
 ```bash
 git clone -b dunfell git://github.com/mendersoftware/meta-mender
 ```
@@ -237,10 +237,10 @@ MACHINE = "<YOUR-MACHINE>"
 # please uncomment the following and set to the required version. If you want to use the bleeding
 # edge version, specify "master-git%", but keep in mind that these versions may not be stable:
 #
-# PREFERRED_VERSION_mender-client = "3.2.0-build2"
-# PREFERRED_VERSION_mender-artifact = "3.7.0-build2"
-# PREFERRED_VERSION_mender-artifact-native = "3.7.0-build2"
-# PREFERRED_VERSION_mender-connect = "3.2.0-build2"
+# PREFERRED_VERSION_mender-client = "3.2.0-build4"
+# PREFERRED_VERSION_mender-artifact = "3.7.0-build4"
+# PREFERRED_VERSION_mender-artifact-native = "3.7.0-build4"
+# PREFERRED_VERSION_mender-connect = "2.0.0-build4"
 
 # The following settings to enable systemd are needed for all Yocto
 # releases sumo and older.  Newer releases have these settings conditionally

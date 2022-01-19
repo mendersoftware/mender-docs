@@ -94,7 +94,7 @@ documentation for your host OS if you encounter connection issues with docker.
 
 Clone `mender-convert` from the official repository:
 
-<!--AUTOVERSION: "-b % https://github.com/mendersoftware/mender-convert"/mender-convert-->
+<!--AUTOVERSION: "-b % https://github.com/"/mender-convert-->
 ```bash
 git clone -b master https://github.com/mendersoftware/mender-convert.git
 ```
