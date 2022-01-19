@@ -85,7 +85,7 @@ creating the signature.
 ```bash
 mender-artifact write rootfs-image \
 -t beaglebone \
--n mender-3.2.0-build2 \
+-n mender-mender-3.2.0-build3 \
 -f core-image-base-beaglebone.ext4 \
 -k private.key \
 -o artifact-signed.mender
