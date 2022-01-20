@@ -111,11 +111,22 @@ In case you want to get alerts based on the patterns that maybe present
 in the standard error stream, you can configure the check as follows:
 
 ```bash
-mender-monitorctl create log docker_logs "Exception \d+-\w+ found" "@docker logs my_service 2>&1"
+mender-monitorctl create log docker_logs "Exception \d+-\w+ found" "@/opt/bin/dockerlogs_wrapper"
+```
+
+where `/opt/bin/dockerlogs_wrapper` is a wrapper around the docker logs command:
+
+```bash
+cat <<EOF > /opt/bin/dockerlogs_wrapper
+#!/bin/bash
+docker logs my_service -f 2>&1
+EOF
+chmod 755 /opt/bin/dockerlogs_wrapper
 ```
 
 With the above you can configure alerting based on any source.
-You can also provide wrapper scripts for more advanced commands.
+Please not that the `-f` flag above is essential, the command that you pass
+via the `@` extension, must not exit.
 
 ### Log pattern expiration
 
