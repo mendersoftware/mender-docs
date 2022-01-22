@@ -20,7 +20,7 @@ Mender documentation, please read our guide on how to best get started
 
 ## License
 
-<!--AUTOVERSION: "/mender/blob/%/LICENSE"/ignore-->
+<!--AUTOVERSION: "mendersoftware/mender/blob/%/LICENSE"/ignore-->
 Mender is licensed under the Apache License, Version 2.0. See
 [LICENSE](https://github.com/mendersoftware/mender/blob/master/LICENSE?target=_blank) for the
 full license text.

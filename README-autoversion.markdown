@@ -57,31 +57,6 @@ updated, `autoversion.py --update` will turn it into this:
 Joe User uses mender-artifact version 2.3.0, and likes it!
 ```
 
-#### Versions for Mender Docker images
-
-By default, the version substituted by the tool is the "git" version or, in other words, the
-Git repository branch or tag.
-
-However when the string `mendersoftware/` is found in the AUTOVERSION expression, then instead the "docker" version
-is used or, in other words, the tag of the corresponding Docker image.
-
-For example:
-
-<!--AUTOVERSION: "mendersoftware/deployments:%"/ignore-->
-```
-<!--AUTOVERSION: "mendersoftware/deployments:%"/deployments-->
-Here I want to get a Docker version to do:
-docker pull mendersoftware/deployments:mender-3.1.0
-```
-
-Or:
-
-<!--AUTOVERSION: "-b % https://github.com/"/ignore-->
-```
-<!--AUTOVERSION: "-b % https://github.com/"/deployments-->
-But now I want the Git version to do:
-git clone -b 4.0.0 https://github.com/mendersoftware/deployments.git
-```
 
 ### Version numbers of other software
 
