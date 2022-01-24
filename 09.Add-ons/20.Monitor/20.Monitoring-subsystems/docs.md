@@ -125,7 +125,7 @@ chmod 755 /opt/bin/dockerlogs_wrapper
 ```
 
 With the above you can configure alerting based on any source.
-Please not that the `-f` flag above is essential, the command that you pass
+Please note that the `-f` flag above is essential, the command that you pass
 via the `@` extension, must not exit.
 
 ### Log pattern expiration
