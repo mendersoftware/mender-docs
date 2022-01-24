@@ -41,7 +41,7 @@ You can now install the Mender Server running:
 export MENDER_SERVER_DOMAIN="mender.example.com"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
 
-cat >mender-3.2.0-build5.yml <<EOF
+cat >mender-3.2.0.yml <<EOF
 global:
   enterprise: false
   mongodb:
@@ -70,7 +70,7 @@ useradm:
 $(cat useradm.key | sed -e 's/^/      /g')
 EOF
 
-helm upgrade --install mender mender/mender --version 3.2.0-build5 -f mender-3.2.0-build5.yml
+helm upgrade --install mender mender/mender --version 3.2.0 -f mender-3.2.0.yml
 ```
 
 !!! Please note the code snippet above reuses the environment variables you set up when progressing through the tutorial, including the optional step of installing Minio. Please make sure you correctly defined them or adapt the snippet to your specific use case.
@@ -87,7 +87,7 @@ export MENDER_REGISTRY_USERNAME="replace-with-your-username"
 export MENDER_REGISTRY_PASSWORD="replace-with-your-password"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
 
-cat >mender-3.2.0-build5.yml <<EOF
+cat >mender-3.2.0.yml <<EOF
 global:
   enterprise: true
   image:
@@ -124,7 +124,7 @@ useradm:
 $(cat useradm.key | sed -e 's/^/      /g')
 EOF
 
-helm upgrade --install mender mender/mender --version 3.2.0-build5 -f mender-3.2.0-build5.yml
+helm upgrade --install mender mender/mender --version 3.2.0 -f mender-3.2.0.yml
 ```
 
 !!! Please note the code snippet above reuses the environment variables you set up when progressing through the tutorial, including the optional step of installing Minio. Please make sure you correctly defined them or adapt the snippet to your specific use case.
