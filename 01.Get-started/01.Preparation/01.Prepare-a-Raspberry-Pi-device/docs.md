@@ -30,12 +30,12 @@ To follow this tutorial, you will need the following:
 ## Step 1 - Flash the Raspberry Pi
 
 Download the Raspberry Pi OS image ready for Mender:
-  * Download link: [Raspberry Pi 3 Model B and B+][raspios-buster-lite-raspberrypi3-mender.img.xz]
-  * Download link: [Raspberry Pi 4 Model B][raspios-buster-lite-raspberrypi4-mender.img.xz]
+  * Download link: [Raspberry Pi 3 Model B and B+][raspios-bullseye-lite-raspberrypi3-mender.img.xz]
+  * Download link: [Raspberry Pi 4 Model B][raspios-bullseye-lite-raspberrypi4-mender.img.xz]
 
 <!--AUTOVERSION: "mender-convert-%.img.xz"/mender-convert -->
-[raspios-buster-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-01-11-raspios-buster-armhf-lite/arm/2021-01-11-raspios-buster-armhf-lite-raspberrypi3-mender-convert-2.6.0.img.xz
-[raspios-buster-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-01-11-raspios-buster-armhf-lite/arm/2021-01-11-raspios-buster-armhf-lite-raspberrypi4-mender-convert-2.6.0.img.xz
+[raspios-bullseye-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-10-30-raspios-bullseye-armhf-lite/arm/2021-10-30-raspios-bullseye-armhf-lite-raspberrypi3-mender-convert-2.6.1-build3.img.xz
+[raspios-bullseye-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-10-30-raspios-bullseye-armhf-lite/arm/2021-10-30-raspios-bullseye-armhf-lite-raspberrypi4-mender-convert-2.6.1-build3.img.xz
 
 
 Follow the steps outlined in the [Raspberry Pi OS documentation](https://www.raspberrypi.org/documentation/installation/installing-images?target=_blank)

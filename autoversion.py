@@ -57,7 +57,7 @@ def get_version_of(repo):
                     "--version-of",
                     repo,
                     "--version-type",
-                    "docker",
+                    "git",
                     "--in-integration-version",
                     INTEGRATION_VERSION,
                 ]
