@@ -34,6 +34,10 @@ installed.
  tutorial, watch the email inbox of your Mender user to see that you get
  notified about Alerts triggered and cleared on the device.
 
+!!! Note: In the default configuration mender-monitorctl command requires
+!!! read-write access to the /etc/mender-monitor directory, which on most systems
+!!! means the need to switch to super user, or run with sudo.
+
 #### USB disconnect
 
 Peripherals such as keypads and displays are in many cases required to be
