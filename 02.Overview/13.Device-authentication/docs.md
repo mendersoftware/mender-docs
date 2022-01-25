@@ -172,3 +172,7 @@ will obtain a fresh token from the Mender server automatically.
 For details on the token format please see the relevant [documentation on
 submitting an authentication request](../../200.Server-side-API/?target=_blank#device-api-device-authentication).
 
+
+## Authorize to external systems
+
+Mender makes it possible to integrate devices with [Azure IoT Hub](../../08.Server-integration/04.Azure-IoT-Hub/docs.md).

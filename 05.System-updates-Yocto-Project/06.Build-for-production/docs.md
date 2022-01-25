@@ -106,7 +106,7 @@ thus there are no extra steps needed to add it to any part of the build system, 
 The Mender Client requires having the public key stored on the device to verify
 the Mender Artifact signatures. The best way to include a public key in the
 client is to add it to your own layer. Set the name of the verification key to
-`artifact-verify-key.pem` and append it to `SRC_URI` of the `mender` application
+`artifact-verify-key.pem` and append it to `SRC_URI` of the `mender-client` application
 before building the Yocto client image. For example:
 
 ```bash
@@ -114,6 +114,6 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 SRC_URI_append = " file://artifact-verify-key.pem"
 ```
 
-Note that it is also possible (but not recommended) to use `local.conf`, by using [the same method as for client certificates](#using-localconf), adding `pn-mender` to the variable names.
+Note that it is also possible (but not recommended) to use `local.conf`, by using [the same method as for client certificates](#using-localconf), adding `pn-mender-client` to the variable names.
 
 For more information about some alternate approaches please follow the [MENDER_ARTIFACT_VERIFY_KEY documentation](../99.Variables/docs.md#mender_artifact_verify_key).

@@ -120,3 +120,7 @@ For OS specific instructions on how to install and enable verification keys, vis
 - [Yocto Project - Building for production - Artifact signing and verification keys](../../05.System-updates-Yocto-Project/06.Build-for-production/docs.md#artifact-signing-and-verification-keys).
 
 - [Debian family - Customize Mender](../../04.System-updates-Debian-family/03.Customize-Mender/docs.md)
+
+## Cloud Key Management
+
+It is possible to sign Artifacts using keys in Cloud Key Management, allowing developers to sign Mender Artifacts without ever accessing the private signing key. Currently the mender-artifact tool supports [Google Cloud Key Management](https://cloud.google.com/security-key-management?target=_blank). For more information, check the help screen for the `gcp-kms-key` option, available by running the command `mender-artifact sign --help`.

@@ -152,6 +152,10 @@ sudo apt-get upgrade
 !!! To prevent the Mender client from upgrading when upgrading the rest of the
 !!! system, mark it to be held with `sudo apt-mark hold mender-client`.
 
+
+!!! Updating mender this way doesn't provide a rollback mechanism in case of issues.
+!!! For production devices always update mender as part of the full system update with A/B partitions.
+
 #### Install using the APT repository
 
 Before installing the Mender client, you need to set up the Mender APT
@@ -389,4 +393,35 @@ Then install the package with:
 ```bash
 dpkg -i mender-monitor_1.1.0-1_all.deb
 apt --fix-broken -y install
+```
+
+# Mender monitor demo
+
+If you have already installed the `mender-monitor` package, as shown in
+[Installing Mender Monitor](#Monitor), the demo monitors can be installed
+through the package:
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="hosted"]
+<!--AUTOVERSION: "/mender-monitor_demo_%-1_all.deb"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.1.0/mender-monitor_demo_1.1.0-1_all.deb
+```
+[/ui-tab]
+[ui-tab title="enterprise"]
+<!--AUTOVERSION: "/mender-monitor_demo_%-1_all.deb"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
+```bash
+MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
+curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.1.0/mender-monitor_demo_1.1.0-1_all.deb
+```
+[/ui-tab]
+[/ui-tabs]
+
+
+Then install the package with:
+
+<!--AUTOVERSION: "mender-monitor_demo_%-1_all.deb"/monitor-client -->
+```bash
+dpkg -i mender-monitor_demo_1.1.0-1_all.deb
 ```
