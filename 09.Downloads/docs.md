@@ -204,28 +204,38 @@ repository. Afterwards, you can install and update the Mender client using the
       sed -i.bak -e "\,https://downloads.mender.io/repos/debian,d" /etc/apt/sources.list
    ```
 
-   Then add the sources:
+   Then add the sources according to your Linux distribution
+
+   !!! For Raspberry OS, use Debian distributions. To know which version is your device running,
+   !!! do `(. /etc/os-release && echo $VERSION_CODENAME)`
 
    [ui-tabs position="top-left" active="0" theme="lite" ]
-   [ui-tab title="armhf"]
+   [ui-tab title="Debian Bullseye"]
    ```bash
-    echo "deb [arch=armhf] https://downloads.mender.io/repos/debian stable main" \
+    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/bullseye/stable main" \
     | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
    ```
    [/ui-tab]
-   [ui-tab title="arm64"]
+   [ui-tab title="Debian Buster"]
    ```bash
-    echo "deb [arch=arm64] https://downloads.mender.io/repos/debian stable main" \
+    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/buster/stable main" \
     | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
    ```
    [/ui-tab]
-   [ui-tab title="amd64"]
+   [ui-tab title="Ubuntu Bionic"]
    ```bash
-    echo "deb [arch=amd64] https://downloads.mender.io/repos/debian stable main" \
+    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/focal/stable main" \
+    | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
+   ```
+   [/ui-tab]
+   [ui-tab title="Ubuntu Focal"]
+   ```bash
+    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/bionic/stable main" \
     | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
    ```
    [/ui-tab]
    [/ui-tabs]
+
    !!! If you want the bleeding edge version of mender, you can use our
    !!! `experimental` repository by replacing `stable` with `experimental` in
    !!! the above command. Do not use the `experimental` repository in production
