@@ -154,3 +154,15 @@ The higher version API contains a mix of old and new API endpoints. For endpoint
 |-------------------------------|--------|--------|
 | Mender client 1.x.x and 2.x.x | yes    | no     |
 | Mender client 3.0.0 and later | yes    | yes    |
+
+
+## Mender client and mender connect
+
+<!--AUTOVERSION: "Mender % / mender-artifact %"/ignore-->
+|     mender-client / mender-connect | mender-connect version |
+|------------------------------------|-------------|
+|  2.6.x                             | 1.0.x       |
+|  2.7.x                             | 1.1.x       |
+|  3.0.x                             | 1.2.x       |
+|  3.1.x                             | 1.2.x       |
+|  3.2.x                             | 2.0.x       |
