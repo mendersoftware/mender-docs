@@ -33,8 +33,8 @@ Mender provides images based on the following distributions:
 | Raspberry Pi 4 Model B        | Raspberry Pi OS Bullseye Lite 2021-10-30 | [raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz][raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz] | 8 GB         |
 
 <!--AUTOVERSION: "mender-convert-%.img.xz"/mender-convert -->
-[raspios-bullseye-armhf-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-10-30-raspios-bullseye-armhf-lite/arm/2021-10-30-raspios-bullseye-armhf-lite-raspberrypi3-mender-convert-2.6.1.img.xz
-[raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-10-30-raspios-bullseye-armhf-lite/arm/2021-10-30-raspios-bullseye-armhf-lite-raspberrypi4-mender-convert-2.6.1.img.xz
+[raspios-bullseye-armhf-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-10-30-raspios-bullseye-armhf-lite/arm/2021-10-30-raspios-bullseye-armhf-lite-raspberrypi3-mender-convert-2.6.2.img.xz
+[raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-10-30-raspios-bullseye-armhf-lite/arm/2021-10-30-raspios-bullseye-armhf-lite-raspberrypi4-mender-convert-2.6.2.img.xz
 
 You can find images for other devices in our Mender Hub community forum, see
 [Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11?target=_blank) or
@@ -251,14 +251,14 @@ mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
 | Architecture   | Devices                                                                                        | Download link                                                       | Download link                                                                      |
 |----------------|------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client_3.2.0-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] | [mender-client_3.2.0-1_armhf.deb][mender-client_3.2.0-1_armhf.deb] (Pre-release) |
-| arm64          | ARM 64bit processors, for example Debian for Asus Tinker Board                                 | [mender-client_3.2.0-1_arm64.deb][mender-client_x.x.x-1_arm64.deb] | [mender-client_3.2.0-1_arm64.deb][mender-client_3.2.0-1_arm64.deb] (Pre-release) |
-| amd64          | Generic 64-bit x86 processors, the most popular among workstations                             | [mender-client_3.2.0-1_amd64.deb][mender-client_x.x.x-1_amd64.deb] | [mender-client_3.2.0-1_amd64.deb][mender-client_3.2.0-1_amd64.deb] (Pre-release) |
+| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client_3.2.1-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] | [mender-client_3.2.1-1_armhf.deb][mender-client_3.2.1-1_armhf.deb] (Pre-release) |
+| arm64          | ARM 64bit processors, for example Debian for Asus Tinker Board                                 | [mender-client_3.2.1-1_arm64.deb][mender-client_x.x.x-1_arm64.deb] | [mender-client_3.2.1-1_arm64.deb][mender-client_3.2.1-1_arm64.deb] (Pre-release) |
+| amd64          | Generic 64-bit x86 processors, the most popular among workstations                             | [mender-client_3.2.1-1_amd64.deb][mender-client_x.x.x-1_amd64.deb] | [mender-client_3.2.1-1_amd64.deb][mender-client_3.2.1-1_amd64.deb] (Pre-release) |
 
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_"/mender -->
-[mender-client_x.x.x-1_armhf.deb]: https://downloads.mender.io/3.2.0/dist-packages/debian/armhf/mender-client_3.2.0-1_armhf.deb
-[mender-client_x.x.x-1_arm64.deb]: https://downloads.mender.io/3.2.0/dist-packages/debian/arm64/mender-client_3.2.0-1_arm64.deb
-[mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/3.2.0/dist-packages/debian/amd64/mender-client_3.2.0-1_amd64.deb
+[mender-client_x.x.x-1_armhf.deb]: https://downloads.mender.io/3.2.1/dist-packages/debian/armhf/mender-client_3.2.1-1_armhf.deb
+[mender-client_x.x.x-1_arm64.deb]: https://downloads.mender.io/3.2.1/dist-packages/debian/arm64/mender-client_3.2.1-1_arm64.deb
+[mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/3.2.1/dist-packages/debian/amd64/mender-client_3.2.1-1_amd64.deb
 <!--AUTOVERSION: "downloads.mender.io/%/"/ignore "mender-client_%-1_"/ignore -->
 [mender-client_master-1_armhf.deb]: https://downloads.mender.io/master/dist-packages/debian/armhf/mender-client_master-1_armhf.deb
 [mender-client_master-1_arm64.deb]: https://downloads.mender.io/master/dist-packages/debian/arm64/mender-client_master-1_arm64.deb
