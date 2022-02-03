@@ -156,16 +156,16 @@ The higher version API contains a mix of old and new API endpoints. For endpoint
 | Mender client 3.0.0 and later | yes    | yes    |
 
 
-## Mender client and mender connect
-
-<!--AUTOVERSION: "mender-connect % and later"/ignore "Yocto branches 3.1 (%) and older"/ignore-->
-!!! <sup>1</sup> mender-connect 2.0.0 and later are not installed by default in Yocto branches 3.1 (dunfell) and older. To enable this or a later version, please see [the `PREFERRED_VERSION` setting when configuring the Yocto build](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build).
+## Mender client and Mender connect
 
 <!--AUTOVERSION: "|  %"/ignore "| %"/ignore -->
 |     Mender client / mender-connect | mender-connect version |
-|------------------------------------|-------------|
-|  2.6.x                             | 1.0.x       |
-|  2.7.x                             | 1.1.x       |
-|  3.0.x                             | 1.2.x       |
-|  3.1.x                             | 1.2.x       |
-|  3.2.x <sup>1<sup>                 | 2.0.x       |
+|------------------------------------|------------------------|
+|  2.6.x                             | 1.0.x                  |
+|  2.7.x                             | 1.1.x                  |
+|  3.0.x                             | 1.2.x                  |
+|  3.1.x                             | 1.2.x                  |
+|  3.2.x                             | 2.0.x <sup>1<sup>      |
+
+<!--AUTOVERSION: "mender-connect % and later"/ignore "Yocto branches 3.1 (%) and older"/ignore-->
+!!! <sup>1</sup> mender-connect 2.0.0 and later are not installed by default in Yocto branches 3.1 (dunfell) and older. To enable this or a later version, please see [the `PREFERRED_VERSION` setting when configuring the Yocto build](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build).
