@@ -54,12 +54,9 @@ browse to the downloaded Mender Raspberry Pi OS image.
 You can take advantage of the headless configuration options of Rapberry Pi to
 enable SSH or to configure the wireless network.
 
-Follow [Setting up wireless
-networking](https://www.raspberrypi.org/documentation/configuration/wireless/headless.md)
-guide and/or [Enable SSH
-access](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md?target=_blank)
-guide (see section "3. Enable SSH on a headless Raspberry Pi") from Raspberry Pi
-OS documentation.
+Follow [Setting up a Headless Raspberry
+Pi](https://www.raspberrypi.com/documentation/computers/configuration.html#setting-up-a-headless-raspberry-pi)
+guide and/or enable SSH access from Raspberry Pi OS documentation.
 
 ## Step 2 - SSH into the Raspberry Pi
 
