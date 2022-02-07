@@ -4,6 +4,26 @@ taxonomy:
     category: docs
 ---
 
+<!--AUTOVERSION: "mender-client %"/ignore -->
+## Installation of the mender-client 3.2.0 Debian package on Debian Bullseye and Ubuntu 20.04
+
+The currently shipped debian package has a dependency on
+[libffi6](https://sourceware.org/libffi/), which is not present in these debian
+distributions, and as such the client will not install on these platforms.
+
+<!--AUTOVERSION: "libffi/libffi6_%-8_amd64.deb"/ignore -->
+This can be worked around by downloading the 19.10 version of the package
+manually from
+[here](https://mirrors.kernel.org/ubuntu/pool/main/libf/libffi/libffi6_3.2.1-8_amd64.deb), and then installing it manually.
+
+So, in reality:
+
+<!--AUTOVERSION: "libffi/libffi6_%-8_amd64.deb"/ignore "sudo apt install ./libffi6_%-8_amd64.deb"/ignore -->
+```bash
+wget https://mirrors.kernel.org/ubuntu/pool/main/libf/libffi/libffi6_3.2.1-8_amd64.deb
+sudo apt install ./libffi6_3.2.1-8_amd64.deb
+```
+
 
 ## Obtaining client logs
 
