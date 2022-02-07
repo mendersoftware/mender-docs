@@ -240,19 +240,21 @@ airtight systems with limited access to the Internet, or when running
 Mender in [standalone
 mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 
-<!--AUTOVERSION: "mender-client_%-1"/mender -->
-| Architecture   | Devices                                   | Download link                                                       |
-|----------------|-------------------------------------------|---------------------------------------------------------------------|
-| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client_2.5.4-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] |
-| arm64 | ARM 64bit processors, for example Debian for Asus Tinker Board | [mender-client_2.5.4-1_arm64.deb][mender-client_x.x.x-1_arm64.deb] |
-| amd64 | Generic 64-bit x86 processors, the most popular among workstations | [mender-client_2.5.4-1_amd64.deb][mender-client_x.x.x-1_amd64.deb] |
+<!--AUTOVERSION: "mender-client_%_a"/mender "mender-client_%-1"/mender -->
+| Architecture   | Devices                                                                                        | Download link                                                       | Download link                                                                      |
+|----------------|------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------|
+| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client_master-1+debian+buster_armhf.deb][mender-client_x.x.x_armhf.deb] | [mender-client_master-1+debian+buster_armhf.deb][mender-client_master_armhf.deb] (Pre-release) |
+| arm64          | ARM 64bit processors, for example Debian for Asus Tinker Board                                 | [mender-client_master-1+debian+buster_arm64.deb][mender-client_x.x.x_arm64.deb] | [mender-client_master-1+debian+buster_arm64.deb][mender-client_master_arm64.deb] (Pre-release) |
+| amd64          | Generic 64-bit x86 processors, the most popular among workstations                             | [mender-client_master-1+debian+buster_amd64.deb][mender-client_x.x.x_amd64.deb] | [mender-client_master-1+debian+buster_amd64.deb][mender-client_master_amd64.deb] (Pre-release) |
 
-<!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
-[mender-client_x.x.x-1_armhf.deb]: https://downloads.mender.io/2.5.4/dist-packages/debian/armhf/mender-client_2.5.4-1_armhf.deb
-<!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_arm64.deb"/mender -->
-[mender-client_x.x.x-1_arm64.deb]: https://downloads.mender.io/2.5.4/dist-packages/debian/arm64/mender-client_2.5.4-1_arm64.deb
-<!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_amd64.deb"/mender -->
-[mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/2.5.4/dist-packages/debian/amd64/mender-client_2.5.4-1_amd64.deb
+<!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1"/mender -->
+[mender-client_x.x.x_armhf.deb]: https://downloads.mender.io/master/dist-packages/debian/armhf/mender-client_master-1%2Bdebian%2Bbuster_armhf.deb
+[mender-client_x.x.x_arm64.deb]: https://downloads.mender.io/master/dist-packages/debian/arm64/mender-client_master-1%2Bdebian%2Bbuster_arm64.deb
+[mender-client_x.x.x_amd64.deb]: https://downloads.mender.io/master/dist-packages/debian/amd64/mender-client_master-1%2Bdebian%2Bbuster_amd64.deb
+<!--AUTOVERSION: "mender-client_%_a"/mender "downloads.mender.io/%/"/ignore "mender-client_%-1"/ignore -->
+[mender-client_master_armhf.deb]: https://downloads.mender.io/master/dist-packages/debian/armhf/mender-client_master-1%2Bdebian%2Bbuster_armhf.deb
+[mender-client_master_arm64.deb]: https://downloads.mender.io/master/dist-packages/debian/arm64/mender-client_master-1%2Bdebian%2Bbuster_arm64.deb
+[mender-client_master_amd64.deb]: https://downloads.mender.io/master/dist-packages/debian/amd64/mender-client_master-1%2Bdebian%2Bbuster_amd64.deb
 
 
 ## Remote Terminal add-on
