@@ -245,23 +245,18 @@ Mender in [standalone
 mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 
 <!--AUTOVERSION: "keeps \"%\" version"/ignore-->
-<!-- The second column points to pre-release software and keeps "master" version in the name and link -->
-<!--AUTOVERSION: "mender-client %][mender-client_x.x.x"/mender "mender-client %][mender-client_%_"/ignore-->
-| Architecture   | Devices                                                                                        | Download link                                                       | Download link                                                                      |
-|----------------|------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client master][mender-client_x.x.x_armhf.deb] | [mender-client master][mender-client_master_armhf.deb] (Pre-release) |
-| arm64          | ARM 64bit processors, for example Debian for Asus Tinker Board                                 | [mender-client master][mender-client_x.x.x_arm64.deb] | [mender-client master][mender-client_master_arm64.deb] (Pre-release) |
-| amd64          | Generic 64-bit x86 processors, the most popular among workstations                             | [mender-client master][mender-client_x.x.x_amd64.deb] | [mender-client master][mender-client_master_amd64.deb] (Pre-release) |
-
-<!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1"/mender -->
-[mender-client_x.x.x_armhf.deb]: https://downloads.mender.io/master/dist-packages/debian/armhf/mender-client_master-1%2Bdebian%2Bbuster_armhf.deb
-[mender-client_x.x.x_arm64.deb]: https://downloads.mender.io/master/dist-packages/debian/arm64/mender-client_master-1%2Bdebian%2Bbuster_arm64.deb
-[mender-client_x.x.x_amd64.deb]: https://downloads.mender.io/master/dist-packages/debian/amd64/mender-client_master-1%2Bdebian%2Bbuster_amd64.deb
-<!--AUTOVERSION: "mender-client_%_a"/ignore "downloads.mender.io/%/"/ignore "mender-client_%-1"/ignore -->
-[mender-client_master_armhf.deb]: https://downloads.mender.io/master/dist-packages/debian/armhf/mender-client_master-1%2Bdebian%2Bbuster_armhf.deb
-[mender-client_master_arm64.deb]: https://downloads.mender.io/master/dist-packages/debian/arm64/mender-client_master-1%2Bdebian%2Bbuster_arm64.deb
-[mender-client_master_amd64.deb]: https://downloads.mender.io/master/dist-packages/debian/amd64/mender-client_master-1%2Bdebian%2Bbuster_amd64.deb
-
+<!--
+    The second column points to pre-release software and keeps "master" version in the name and
+    link. The expression is a bit monstrous because the two links are identical, but need different
+    treatment. Therefore we need to match the class name before them, which in turn means we have
+    to match each architecture separately.
+-->
+<!--AUTOVERSION:  "mender-client %</a> |"/mender "mender-client %</a> (Pre-release)"/ignore "<a class=\"mender_docs_versioned_link\" href=\"https://downloads.mender.io/%/dist-packages/debian/armhf/mender-client_%-"/mender "<a class=\"mender_docs_versioned_link\" href=\"https://downloads.mender.io/%/dist-packages/debian/arm64/mender-client_%-"/mender "<a class=\"mender_docs_versioned_link\" href=\"https://downloads.mender.io/%/dist-packages/debian/amd64/mender-client_%-"/mender "<a class=\"mender_docs_pre_release_link\" href=\"https://downloads.mender.io/%/dist-packages/debian/armhf/mender-client_%-"/ignore "<a class=\"mender_docs_pre_release_link\" href=\"https://downloads.mender.io/%/dist-packages/debian/arm64/mender-client_%-"/ignore "<a class=\"mender_docs_pre_release_link\" href=\"https://downloads.mender.io/%/dist-packages/debian/amd64/mender-client_%-"/ignore-->
+| Architecture   | Devices                                                                                        | Download link                                                                                                                                                                          | Download link                                                                                                                                                                                     |
+|----------------|------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | <a class="mender_docs_versioned_link" href="https://downloads.mender.io/3.1.1/dist-packages/debian/armhf/mender-client_3.1.1-1%2Bdebian%2Bbuster_armhf.deb">mender-client 3.1.1</a> | <a class="mender_docs_pre_release_link" href="https://downloads.mender.io/master/dist-packages/debian/armhf/mender-client_master-1%2Bdebian%2Bbuster_armhf.deb">mender-client master</a> (Pre-release) |
+| arm64          | ARM 64bit processors, for example Debian for Asus Tinker Board                                 | <a class="mender_docs_versioned_link" href="https://downloads.mender.io/3.1.1/dist-packages/debian/arm64/mender-client_3.1.1-1%2Bdebian%2Bbuster_arm64.deb">mender-client 3.1.1</a> | <a class="mender_docs_pre_release_link" href="https://downloads.mender.io/master/dist-packages/debian/arm64/mender-client_master-1%2Bdebian%2Bbuster_arm64.deb">mender-client master</a> (Pre-release) |
+| amd64          | Generic 64-bit x86 processors, the most popular among workstations                             | <a class="mender_docs_versioned_link" href="https://downloads.mender.io/3.1.1/dist-packages/debian/amd64/mender-client_3.1.1-1%2Bdebian%2Bbuster_amd64.deb">mender-client 3.1.1</a> | <a class="mender_docs_pre_release_link" href="https://downloads.mender.io/master/dist-packages/debian/amd64/mender-client_master-1%2Bdebian%2Bbuster_amd64.deb">mender-client master</a> (Pre-release) |
 
 ## Mender add-ons
 
