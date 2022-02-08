@@ -52,6 +52,8 @@ use this utility.
 Follow the correct link according to your host platform to download
 `mender-artifact` as a standalone utility:
 
+<!--AUTOVERSION: "keeps \"%\" version"/ignore-->
+<!-- The second column points to pre-release software and keeps "master" version in the name and link -->
 <!--AUTOVERSION: "mender-artifact %][x.x.x_mender-artifact-"/mender-artifact "mender-artifact %][%_mender-artifact-"/ignore-->
 | Platform | Download link                                          |                                                                       |
 |----------|--------------------------------------------------------|-----------------------------------------------------------------------|
@@ -258,18 +260,20 @@ airtight systems with limited access to the Internet, or when running
 Mender in [standalone
 mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 
-<!--AUTOVERSION: "mender-client_%_a"/mender "mender-client_%-1"/mender -->
+<!--AUTOVERSION: "keeps \"%\" version"/ignore-->
+<!-- The second column points to pre-release software and keeps "master" version in the name and link -->
+<!--AUTOVERSION: "mender-client %][mender-client_x.x.x"/mender "mender-client %][mender-client_%_"/ignore-->
 | Architecture   | Devices                                                                                        | Download link                                                       | Download link                                                                      |
 |----------------|------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client_master-1+debian+buster_armhf.deb][mender-client_x.x.x_armhf.deb] | [mender-client_master-1+debian+buster_armhf.deb][mender-client_master_armhf.deb] (Pre-release) |
-| arm64          | ARM 64bit processors, for example Debian for Asus Tinker Board                                 | [mender-client_master-1+debian+buster_arm64.deb][mender-client_x.x.x_arm64.deb] | [mender-client_master-1+debian+buster_arm64.deb][mender-client_master_arm64.deb] (Pre-release) |
-| amd64          | Generic 64-bit x86 processors, the most popular among workstations                             | [mender-client_master-1+debian+buster_amd64.deb][mender-client_x.x.x_amd64.deb] | [mender-client_master-1+debian+buster_amd64.deb][mender-client_master_amd64.deb] (Pre-release) |
+| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client master][mender-client_x.x.x_armhf.deb] | [mender-client master][mender-client_master_armhf.deb] (Pre-release) |
+| arm64          | ARM 64bit processors, for example Debian for Asus Tinker Board                                 | [mender-client master][mender-client_x.x.x_arm64.deb] | [mender-client master][mender-client_master_arm64.deb] (Pre-release) |
+| amd64          | Generic 64-bit x86 processors, the most popular among workstations                             | [mender-client master][mender-client_x.x.x_amd64.deb] | [mender-client master][mender-client_master_amd64.deb] (Pre-release) |
 
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1"/mender -->
 [mender-client_x.x.x_armhf.deb]: https://downloads.mender.io/master/dist-packages/debian/armhf/mender-client_master-1%2Bdebian%2Bbuster_armhf.deb
 [mender-client_x.x.x_arm64.deb]: https://downloads.mender.io/master/dist-packages/debian/arm64/mender-client_master-1%2Bdebian%2Bbuster_arm64.deb
 [mender-client_x.x.x_amd64.deb]: https://downloads.mender.io/master/dist-packages/debian/amd64/mender-client_master-1%2Bdebian%2Bbuster_amd64.deb
-<!--AUTOVERSION: "mender-client_%_a"/mender "downloads.mender.io/%/"/ignore "mender-client_%-1"/ignore -->
+<!--AUTOVERSION: "mender-client_%_a"/ignore "downloads.mender.io/%/"/ignore "mender-client_%-1"/ignore -->
 [mender-client_master_armhf.deb]: https://downloads.mender.io/master/dist-packages/debian/armhf/mender-client_master-1%2Bdebian%2Bbuster_armhf.deb
 [mender-client_master_arm64.deb]: https://downloads.mender.io/master/dist-packages/debian/arm64/mender-client_master-1%2Bdebian%2Bbuster_arm64.deb
 [mender-client_master_amd64.deb]: https://downloads.mender.io/master/dist-packages/debian/amd64/mender-client_master-1%2Bdebian%2Bbuster_amd64.deb
@@ -341,6 +345,8 @@ more information.
 
 Follow the correct link according to your host platform to download `mender-cli`:
 
+<!--AUTOVERSION: "keeps \"%\" version"/ignore-->
+<!-- The second column points to pre-release software and keeps "master" version in the name and link -->
 <!--AUTOVERSION: "mender-cli %][x.x.x_mender-cli-"/mender-cli "mender-cli %][%_mender-cli-"/ignore-->
 | Platform | Download link                                |                                                             |
 |----------|----------------------------------------------|-------------------------------------------------------------|
