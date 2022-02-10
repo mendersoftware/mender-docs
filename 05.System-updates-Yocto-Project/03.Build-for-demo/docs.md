@@ -113,7 +113,7 @@ MENDER_ARTIFACT_NAME = "release-1"
 # If you need an earlier version, please uncomment the following and set to the
 # required version.
 #
-# PREFERRED_VERSION_pn-mender-client = "2.5.3"
+# PREFERRED_VERSION_pn-mender-client = "2.5.4"
 # PREFERRED_VERSION_pn-mender-artifact = "3.5.3"
 # PREFERRED_VERSION_pn-mender-artifact-native = "3.5.3"
 
@@ -230,7 +230,7 @@ MACHINE = "<YOUR-MACHINE>"
 # If you need an earlier version, please uncomment the following and set to the
 # required version.
 #
-# PREFERRED_VERSION_pn-mender = "2.5.3"
+# PREFERRED_VERSION_pn-mender = "2.5.4"
 # PREFERRED_VERSION_pn-mender-artifact = "3.5.3"
 # PREFERRED_VERSION_pn-mender-artifact-native = "3.5.3"
 
