@@ -245,16 +245,16 @@ mode](../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
 | Architecture   | Devices                                   | Download link                                                       |
 |----------------|-------------------------------------------|---------------------------------------------------------------------|
-| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client_3.1.0-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] |
-| arm64 | ARM 64bit processors, for example Debian for Asus Tinker Board | [mender-client_3.1.0-1_arm64.deb][mender-client_x.x.x-1_arm64.deb] |
-| amd64 | Generic 64-bit x86 processors, the most popular among workstations | [mender-client_3.1.0-1_amd64.deb][mender-client_x.x.x-1_amd64.deb] |
+| armhf (ARM-v6) | ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone | [mender-client_3.1.1-1_armhf.deb][mender-client_x.x.x-1_armhf.deb] |
+| arm64 | ARM 64bit processors, for example Debian for Asus Tinker Board | [mender-client_3.1.1-1_arm64.deb][mender-client_x.x.x-1_arm64.deb] |
+| amd64 | Generic 64-bit x86 processors, the most popular among workstations | [mender-client_3.1.1-1_amd64.deb][mender-client_x.x.x-1_amd64.deb] |
 
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_armhf.deb"/mender -->
-[mender-client_x.x.x-1_armhf.deb]: https://downloads.mender.io/3.1.0/dist-packages/debian/armhf/mender-client_3.1.0-1_armhf.deb
+[mender-client_x.x.x-1_armhf.deb]: https://downloads.mender.io/3.1.1/dist-packages/debian/armhf/mender-client_3.1.1-1_armhf.deb
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_arm64.deb"/mender -->
-[mender-client_x.x.x-1_arm64.deb]: https://downloads.mender.io/3.1.0/dist-packages/debian/arm64/mender-client_3.1.0-1_arm64.deb
+[mender-client_x.x.x-1_arm64.deb]: https://downloads.mender.io/3.1.1/dist-packages/debian/arm64/mender-client_3.1.1-1_arm64.deb
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1_amd64.deb"/mender -->
-[mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/3.1.0/dist-packages/debian/amd64/mender-client_3.1.0-1_amd64.deb
+[mender-client_x.x.x-1_amd64.deb]: https://downloads.mender.io/3.1.1/dist-packages/debian/amd64/mender-client_3.1.1-1_amd64.deb
 
 
 ## Mender add-ons
@@ -364,14 +364,14 @@ download it by running:
 <!--AUTOVERSION: "/mender-monitor_%-1_all.deb"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
 HOSTED_MENDER_EMAIL=<your.email@example.com>
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.0.0/mender-monitor_1.0.0-1_all.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.0.1/mender-monitor_1.0.1-1_all.deb
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
 <!--AUTOVERSION: "/mender-monitor_%-1_all.deb"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
 MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
-curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.0.0/mender-monitor_1.0.0-1_all.deb
+curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.0.1/mender-monitor_1.0.1-1_all.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -381,6 +381,6 @@ Then install the package with:
 
 <!--AUTOVERSION: "mender-monitor_%-1_all.deb"/monitor-client -->
 ```bash
-dpkg -i mender-monitor_1.0.0-1_all.deb
+dpkg -i mender-monitor_1.0.1-1_all.deb
 apt --fix-broken -y install
 ```
