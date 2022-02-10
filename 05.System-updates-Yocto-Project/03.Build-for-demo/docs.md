@@ -114,7 +114,7 @@ MENDER_ARTIFACT_NAME = "release-1"
 # If you need an earlier version, or a later version even though it may not be backwards compatible,
 # please uncomment the following and set to the required version:
 #
-# PREFERRED_VERSION_mender-client = "3.0.1"
+# PREFERRED_VERSION_mender-client = "3.0.2"
 # PREFERRED_VERSION_mender-artifact = "3.6.1"
 # PREFERRED_VERSION_mender-artifact-native = "3.6.1"
 
@@ -232,7 +232,7 @@ MACHINE = "<YOUR-MACHINE>"
 # If you need an earlier version, or a later version even though it may not be backwards compatible,
 # please uncomment the following and set to the required version:
 #
-# PREFERRED_VERSION_mender-client = "3.0.1"
+# PREFERRED_VERSION_mender-client = "3.0.2"
 # PREFERRED_VERSION_mender-artifact = "3.6.1"
 # PREFERRED_VERSION_mender-artifact-native = "3.6.1"
 
