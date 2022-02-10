@@ -30,12 +30,12 @@ To follow this tutorial, you will need the following:
 ## Step 1 - Flash the Raspberry Pi
 
 Download the Raspberry Pi OS image ready for Mender:
-  * Download link: [Raspberry Pi 3 Model B and B+][raspios-buster-lite-raspberrypi3-mender.img.xz]
-  * Download link: [Raspberry Pi 4 Model B][raspios-buster-lite-raspberrypi4-mender.img.xz]
+  * Download link: [Raspberry Pi 3 Model B and B+][raspios-bullseye-lite-raspberrypi3-mender.img.xz]
+  * Download link: [Raspberry Pi 4 Model B][raspios-bullseye-lite-raspberrypi4-mender.img.xz]
 
 <!--AUTOVERSION: "mender-convert-%.img.xz"/mender-convert -->
-[raspios-buster-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-01-11-raspios-buster-armhf-lite/arm/2021-01-11-raspios-buster-armhf-lite-raspberrypi3-mender-convert-2.6.0.img.xz
-[raspios-buster-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-01-11-raspios-buster-armhf-lite/arm/2021-01-11-raspios-buster-armhf-lite-raspberrypi4-mender-convert-2.6.0.img.xz
+[raspios-bullseye-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-10-30-raspios-bullseye-armhf-lite/arm/2021-10-30-raspios-bullseye-armhf-lite-raspberrypi3-mender-convert-2.6.2.img.xz
+[raspios-bullseye-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-10-30-raspios-bullseye-armhf-lite/arm/2021-10-30-raspios-bullseye-armhf-lite-raspberrypi4-mender-convert-2.6.2.img.xz
 
 
 Follow the steps outlined in the [Raspberry Pi OS documentation](https://www.raspberrypi.org/documentation/installation/installing-images?target=_blank)
@@ -54,12 +54,9 @@ browse to the downloaded Mender Raspberry Pi OS image.
 You can take advantage of the headless configuration options of Rapberry Pi to
 enable SSH or to configure the wireless network.
 
-Follow [Setting up wireless
-networking](https://www.raspberrypi.org/documentation/configuration/wireless/headless.md)
-guide and/or [Enable SSH
-access](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md?target=_blank)
-guide (see section "3. Enable SSH on a headless Raspberry Pi") from Raspberry Pi
-OS documentation.
+Follow [Setting up a Headless Raspberry
+Pi](https://www.raspberrypi.com/documentation/computers/configuration.html#setting-up-a-headless-raspberry-pi)
+guide and/or enable SSH access from Raspberry Pi OS documentation.
 
 ## Step 2 - SSH into the Raspberry Pi
 
