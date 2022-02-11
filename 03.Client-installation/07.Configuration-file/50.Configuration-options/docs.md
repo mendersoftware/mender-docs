@@ -44,6 +44,36 @@ found.
 
 Introduced in Mender client 3.1.
 
+#### Connectivity
+
+Allows you to configure additional connection-related settings.
+
+##### DisableKeepAlive
+
+If set to true, disables the connections keep alive in general. All the HTTP transactions
+will cause a new connection to be created.
+
+##### IdleConnTimeoutSeconds
+
+Specifies the time after which a connection is terminated. The larger it is,
+the longer keep alive traffic will happen, as the client will maintain
+the connection.
+
+Introduced in Mender client 3.3.
+
+Example:
+
+```
+    "Connectivity": {
+        "DisableKeepAlive": false,
+        "IdleConnTimeoutSeconds": 30
+    },
+```
+The above will cause the client keep a connection and to terminate it after 30 seconds.
+During the 30 seconds each request will reuse an existing connection, which should
+in principle reduce the bandwidth, as we avoid a TLS negotiation and connection establishing
+every time the client has to contact the server.
+
 #### HttpsClient
 
 Allows you to configure the certificate, private key and, SSL Engine id to use
