@@ -436,3 +436,23 @@ Then install the package with:
 ```bash
 dpkg -i mender-monitor_demo_master-1_all.deb
 ```
+
+Please note that the latest Debian package can be found at:
+
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="hosted"]
+<!--AUTOVERSION: "mender-monitor %][x.x.x_mender-monitor-"/mender-monitor "mender-monitor %][%_mender-monitor-"/ignore-->
+[mender-monitor master][master_mender-monitor-debian]
+[/ui-tab]
+[ui-tab title="enterprise"]
+<!--AUTOVERSION: "mender-monitor %][x.x.x_mender-monitor-"/mender-monitor "mender-monitor %][%_mender-monitor-"/ignore-->
+[mender-monitor master][master_mender-monitor-debian-onprem]
+[/ui-tab]
+[/ui-tabs]
+
+<!--AUTOVERSION: "[%_mender-monitor-"/ignore "mender-monitor/%/"/ignore -->
+[master_mender-monitor-debian]: https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/latest/mender-monitor_latest-1_all.deb
+[master_mender-monitor-debian-onprem]: https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/latest/mender-monitor_latest-1_all.deb
+
+
