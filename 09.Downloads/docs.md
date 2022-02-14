@@ -409,7 +409,7 @@ apt --fix-broken -y install
 # Mender monitor demo
 
 If you have already installed the `mender-monitor` package, as shown in
-[Installing Mender Monitor](#Monitor), the demo monitors can be installed
+[Installing Mender Monitor](#monitor), the demo monitors can be installed
 through the package:
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
