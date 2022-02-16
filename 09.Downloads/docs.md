@@ -402,7 +402,7 @@ Then install the package with:
 
 <!--AUTOVERSION: "mender-monitor_%-1"/monitor-client -->
 ```bash
-dpkg -i mender-monitor_1.1.0-1%+debian%+buster_all.deb
+dpkg -i mender-monitor_1.1.0-1+debian+buster_all.deb
 apt --fix-broken -y install
 ```
 
