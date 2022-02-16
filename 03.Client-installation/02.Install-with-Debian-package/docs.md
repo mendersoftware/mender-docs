@@ -49,7 +49,7 @@ To install and configure Mender run the following command:
 
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
 ```bash
-sudo dpkg -i mender-client_2.5.4-1%2Bdebian%2Bbuster_armhf.deb
+sudo dpkg -i mender-client_2.5.4-1+debian+buster_armhf.deb
 ```
 
 After completing the installation wizard, Mender is correctly set up on your
@@ -73,7 +73,7 @@ configuration options.
 ```bash
 DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
 TENANT_TOKEN="<INSERT YOUR TOKEN FROM https://hosted.mender.io/ui/#/settings/my-organization>"
-sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_2.5.4-1%2Bdebian%2Bbuster_armhf.deb
+sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_2.5.4-1+debian+buster_armhf.deb
 sudo mender setup \
             --device-type $DEVICE_TYPE \
             --hosted-mender \
@@ -90,7 +90,7 @@ sudo systemctl restart mender-client
 ```bash
 DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
 SERVER_IP_ADDR="<INSERT THE IP ADDRESS OF YOUR DEMO SERVER>"
-sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_2.5.4-1%2Bdebian%2Bbuster_armhf.deb
+sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_2.5.4-1+debian+buster_armhf.deb
 sudo mender setup \
             --device-type $DEVICE_TYPE \
             --demo \
@@ -105,7 +105,7 @@ sudo systemctl restart mender-client
 DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
 SERVER_URL="<INSERT YOUR ENTERPRISE SERVER URL>"
 TENANT_TOKEN="<INSERT YOUR TOKEN FROM YOUR ENTERPRISE SERVER>"
-sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_2.5.4-1%2Bdebian%2Bbuster_armhf.deb
+sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_2.5.4-1+debian+buster_armhf.deb
 sudo mender setup \
             --device-type $DEVICE_TYPE \
             --server-url $SERVER_URL \
