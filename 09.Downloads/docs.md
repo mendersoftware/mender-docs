@@ -384,6 +384,6 @@ Then install the package with:
 
 <!--AUTOVERSION: "mender-monitor_%-1"/monitor-client -->
 ```bash
-dpkg -i mender-monitor_1.0.1-1%2Bdebian%2Bbuster_all.deb
+dpkg -i mender-monitor_1.0.1-1+debian+buster_all.deb
 apt --fix-broken -y install
 ```
