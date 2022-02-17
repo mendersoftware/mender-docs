@@ -367,14 +367,16 @@ download it by running:
 <!--AUTOVERSION: "/mender-monitor_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
 HOSTED_MENDER_EMAIL=<your.email@example.com>
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.0.1/mender-monitor_1.0.1-1%2Bdebian%2Bbuster_all.deb
+ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.0.1/mender-monitor_1.0.1-1%2Bdebian%2Bbuster_all.deb
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
 <!--AUTOVERSION: "/mender-monitor_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
 MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
-curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.0.1/mender-monitor_1.0.1-1%2Bdebian%2Bbuster_all.deb
+ MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.0.1/mender-monitor_1.0.1-1%2Bdebian%2Bbuster_all.deb
 ```
 [/ui-tab]
 [/ui-tabs]
