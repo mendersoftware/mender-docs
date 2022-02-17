@@ -8,14 +8,13 @@ taxonomy:
 !!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
-For devices running in secure environments, the devices may operate without
-direct access to the Internet. In such environments, it is common to include a
-single _security hardened machine_ with access to the Internet to the network
-topology offering limited set of services for devices in the local network.
-_Mender Gateway_ is such an application service that runs on the gateway host,
-that enables managing and sending OTA updates to devices on the local network.
-The gateway acts as a proxy with the ability to understand and serve client
-requests locally.
+In segregated networks, most devices may operate without direct access to the
+Internet. In such networks, typically only a gateway has Internet access and
+offers a limited set of services to devices in the local network. _Mender
+Gateway_ is such an application service that runs on the gateway and enables
+managing and deploying OTA updates to devices on the local network. The gateway
+acts as a proxy with the ability to understand and serve client requests
+locally.
 
 Mender Gateway operates by proxying requests from a local HTTP(S) server on the
 local network to the upstream Mender server. It is capable of proxying artifacts
