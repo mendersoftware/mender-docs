@@ -382,17 +382,19 @@ download it by running:
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="hosted"]
-<!--AUTOVERSION: "/mender-monitor_%-1_all.deb"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
+<!--AUTOVERSION: "/mender-monitor_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
 HOSTED_MENDER_EMAIL=<your.email@example.com>
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.1.0/mender-monitor_1.1.0-1_all.deb
+ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.1.0/mender-monitor_1.1.0-1%2Bdebian%2Bbuster_all.deb
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
-<!--AUTOVERSION: "/mender-monitor_%-1_all.deb"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
+<!--AUTOVERSION: "/mender-monitor_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
 MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
-curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.1.0/mender-monitor_1.1.0-1_all.deb
+ MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.1.0/mender-monitor_1.1.0-1%2Bdebian%2Bbuster_all.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -400,9 +402,9 @@ curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/
 
 Then install the package with:
 
-<!--AUTOVERSION: "mender-monitor_%-1_all.deb"/monitor-client -->
+<!--AUTOVERSION: "mender-monitor_%-1"/monitor-client -->
 ```bash
-dpkg -i mender-monitor_1.1.0-1_all.deb
+dpkg -i mender-monitor_1.1.0-1+debian+buster_all.deb
 apt --fix-broken -y install
 ```
 
@@ -414,17 +416,19 @@ through the package:
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="hosted"]
-<!--AUTOVERSION: "/mender-monitor_demo_%-1_all.deb"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
+<!--AUTOVERSION: "/mender-monitor-demo_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
 HOSTED_MENDER_EMAIL=<your.email@example.com>
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.1.0/mender-monitor_demo_1.1.0-1_all.deb
+ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.1.0/mender-monitor-demo_1.1.0-1%2Bdebian%2Bbuster_all.deb
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
-<!--AUTOVERSION: "/mender-monitor_demo_%-1_all.deb"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
+<!--AUTOVERSION: "/mender-monitor-demo_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
 MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
-curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.1.0/mender-monitor_demo_1.1.0-1_all.deb
+ MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.1.0/mender-monitor-demo_1.1.0-1%2Bdebian%2Bbuster_all.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -432,7 +436,7 @@ curl --fail -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/
 
 Then install the package with:
 
-<!--AUTOVERSION: "mender-monitor_demo_%-1_all.deb"/monitor-client -->
+<!--AUTOVERSION: "mender-monitor-demo_%-1"/monitor-client -->
 ```bash
-dpkg -i mender-monitor_demo_1.1.0-1_all.deb
+dpkg -i mender-monitor-demo_1.1.0-1+debian+buster_all.deb
 ```
