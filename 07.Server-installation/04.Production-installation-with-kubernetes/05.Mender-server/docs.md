@@ -206,4 +206,4 @@ useradm create-user --username "demo@mender.io" --password "demodemo" --tenant-i
 <!--AUTOVERSION: "pre-release (%)"/ignore-->
 To use a pre-release (master) version of the backend, please refer to [the Development section of
 the
-documentation](https://mender.io/development/server-installation/production-installation-with-kubernetes/mender-server).
+documentation](https://docs.mender.io/development/server-installation/production-installation-with-kubernetes/mender-server).
