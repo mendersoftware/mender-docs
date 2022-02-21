@@ -408,7 +408,7 @@ dpkg -i mender-monitor_master-1+debian+buster_all.deb
 apt --fix-broken -y install
 ```
 
-# Mender monitor demo
+### Demo monitors
 
 If you have already installed the `mender-monitor` package, as shown in
 [Installing Mender Monitor](#monitor), the demo monitors can be installed
