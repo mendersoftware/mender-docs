@@ -70,7 +70,7 @@ In the device terminal, go to `/usr/share/mender/modules/v3`:
 cd /usr/share/mender/modules/v3
 ```
 
-Next, create a script named `web-file` as follows:
+Next, create a script named `web-file` with the following command:
 
 
 ```bash
@@ -202,7 +202,7 @@ For an Update Module to support Rollback, you have to make two additions in the 
 * Return "Yes" on `SupportsRollback` action call
 * Implement a mechanism that will save a "known good state" before the installation in `ArtifactInstall`, and restore that state in `ArtifactRollback`.
 
-See below the updated version of our `web-file` Update Module:
+See below the command to create the updated version of our `web-file` Update Module:
 
 ! The updated version of the Update Module will remove all files in `/var/www`. It is meant to showcase the usage of the feature but can be unsafe in real environments.
 
