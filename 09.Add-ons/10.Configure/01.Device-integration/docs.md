@@ -149,11 +149,11 @@ import sys
 2. Input parameter verification
 
 ```
-if len(sys.argv) != 1:
+if len(sys.argv) != 2:
     print("Must be invoked with exactly one argument: The JSON configuration.", file=sys.stderr)
     sys.exit(1)
 
-config=sys.argv[0]
+config=sys.argv[1]
 
 if not os.path.exists(config):
     print(f"Error: {config} does not exist.", file=sys.stderr)
@@ -166,7 +166,7 @@ if not os.path.exists(config):
 try:
     configJSON = json.load(config)
     timezone = configJSON["timezone"]
-    subprocess.run("timedatectl", "set-timezone", timezone, check=True)
+    subprocess.run(["timedatectl", "set-timezone", timezone], check=True)
 except json.JSONDecodeError as e:
     print(f"Failed to parse the configuration JSON, error: {e}")
     sys.exit(1)
