@@ -154,6 +154,15 @@ to run, before it is considered hung and killed. The process will first be sent
 a SIGTERM signal, and one minute later, if it has not exited, a SIGKILL signal
 is sent. The default is 4 hours.
 
+#### RetryPollCount
+
+The maximum number of tries that the Mender client performs when contacting
+the Mender Server.
+
+If the setting is zero (the default), the maximum number of retries is `3 * ceil(log2(RetryPollIntervalSeconds) + 1)`.
+
+Introduced in Mender client 3.3.
+
 #### RetryPollIntervalSeconds
 
 An integer that sets the number of seconds to wait between each attempt to
@@ -161,6 +170,8 @@ communicate with the server. Note that the client may attempt more often
 initially to enable rapid upgrades, but will gradually fall back to this value
 if the server is busy. See also the section about [polling
 intervals](../01.Polling-intervals/docs.md).
+
+As of Mender client 3.3 this one also applies to inventory updates.
 
 #### RootfsPartA
 
