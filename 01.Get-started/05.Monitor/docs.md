@@ -15,8 +15,8 @@ allows you to monitor various parts of your system.
 
 ## Prerequisites
 
-To follow this tutorial, you will need to install the [Monitor
-Add-on](../../09.Add-ons/20.Monitor/10.Installation/docs.md) on your device. If
+To follow this tutorial, you will need to [install the Monitor
+Add-on on your device](../../09.Add-ons/20.Monitor/10.Installation/docs.md). If
 you have followed the [get started tutorial to prepare your
 device](../01.Preparation/docs.md), the Monitor Add-on should already be
 installed.
@@ -47,14 +47,15 @@ shows how to detect that a USB-connected peripheral gets disconnected.
 First enable the alert through running:
 
 ```bash
-mender-monitorctl enable log usb_disconnect
+sudo mender-monitorctl enable log usb_disconnect
 ```
 
- Now remove a USB device from the device (you can insert it first, e.g. a
- thumbdrive or mouse, if you don't have any USB devices inserted). The Alert now
- triggers in the Mender UI once you remove the USB device:
+Now remove a USB device from the device (you can insert it first, e.g. a
+thumbdrive or mouse, if you don't have any USB devices inserted). Once you remove
+the USB device, the log subsystem triggers an alert which you can inspect in the
+device details in the Mender UI:
 
-![Connectivity alarm OKd](log-usb-alarm.png)
+![Connectivity alarm OK](log-usb-alarm.png)
 
 #### Disk usage
 
@@ -66,7 +67,7 @@ remediate it before it causes any downtime.
 First enable the diskusage alert for the root space partition.
 
 ```bash
-mender-monitorctl enable diskusage root_space
+sudo mender-monitorctl enable diskusage root_space
 ```
 
 Then check the current disk usage.
@@ -87,7 +88,7 @@ the root partition goes above 75%.
 To trigger the alert fill up the filesystem with a large file:
 
 ```bash
-fallocate -l 10G
+sudo fallocate -l 10G /large-file
 ```
 
 And the disk usage goes above the 75% treshold
@@ -105,6 +106,12 @@ And an alert shows up in the UI.
 
 ![Disk usage alarm triggered](diskusage-alarm.png)
 
+If you remove this file, an OK alert will appear:
+
+```bash
+sudo rm /large-file
+```
+
 #### Connectivity
 
 Ongoing connectivity issues may cause the device application to hang or
@@ -118,7 +125,7 @@ periods, Alerts are triggered.
 First enable the alert through:
 
 ```bash
-mender-monitorctl enable connectivity example
+sudo mender-monitorctl enable connectivity example
 ```
 
 This will enable a connectivity alert, which sends HTTP HEAD requests to
@@ -128,9 +135,7 @@ Let us trigger the alert through stopping the traffic to `example.com` through
 redirecting the dns resolver to localhost in `/etc/hosts`.
 
 ```bash
-cat <<EOF >>/etc/hosts
-127.0.0.1 example.com
-EOF
+echo ‘127.0.0.1 example.com’ | sudo tee -a /etc/hosts
 ```
 
 Which then triggers the alert:
@@ -140,7 +145,7 @@ Which then triggers the alert:
 And when re-enabling the route to `example.com` in `/etc/hosts`:
 
 ```bash
-sed -i '/example/d' /etc/hosts 
+sudo sed -i '/example/d' /etc/hosts 
 ```
 
 And soon the alert will show up as fixed in the UI:
@@ -162,7 +167,7 @@ events and notifies you in the event that a container was restarted.
 First spin up the container to monitor:
 
 ```bash
-docker run --rm -d alpine sleep infinity
+sudo docker run --rm -d alpine sleep infinity
 ```
 
 Extract the container name:
@@ -171,23 +176,25 @@ Extract the container name:
 CONTAINER_NAME=$(docker ps | tail -1 | awk '{print $NF}')
 ```
 
-Create the file `dockerevents_testcontainer.sh` with the contents:
+Create the file `/etc/mender-monitor/monitor.d/available/dockerevents_testcontainer.sh` running the following command:
 
 ```bash
+sudo tee /etc/mender-monitor/monitor.d/available/dockerevents_testcontainer.sh <<EOF
 DOCKER_CONTAINER_NAME=$CONTAINER_NAME
 DOCKER_CONTAINER_ACTION=restart
+EOF
 ```
 
 Enable the alert:
 
 ```bash
-mender-monitorctl enable dockerevents testcontainer
+sudo mender-monitorctl enable dockerevents testcontainer
 ```
 
 Then restart the container
 
 ```bash
-docker container restart $CONTAINER_NAME
+sudo docker container restart $CONTAINER_NAME
 ```
 
 And an alert will show up in the UI.
@@ -202,7 +209,7 @@ and _OK_ alerts when it is back up. To get this working, we need to create
 a systemd service checker using `mender-monitorctl`:
 
 ```bash
-mender-monitorctl create service mender-connect systemd
+sudo mender-monitorctl create service mender-connect systemd
 ```
 
 This command creates a file in `/etc/mender-monitor/monitor.d/available`
@@ -220,7 +227,7 @@ cat /etc/mender-monitor/monitor.d/available/service_mender-connect.sh
 You can now enable the check running:
 
 ```bash
-mender-monitorctl enable service mender-connect
+sudo mender-monitorctl enable service mender-connect
 ```
 
 This command links the file in `/etc/mender-monitor/monitor.d/available` to
@@ -241,13 +248,13 @@ You can trigger alerts when a given pattern shows in the logs of your `systemd` 
 need to create a check pointing to the `journalctl` command as a source for log data:
 
 ```bash
-mender-monitorctl create log my_service_logs "Exited with code \d+" "@journalctl -u my-service -f" 255
+sudo mender-monitorctl create log my_service_logs "Exited with code \d+" "@journalctl -u my-service -f" 255
 ```
 
 The above will create a check:
 
 ```bash
-# cat /etc/mender-monitor/monitor.d/available/log_my_service_logs.sh
+cat /etc/mender-monitor/monitor.d/available/log_my_service_logs.sh
 ```
 > ```bash
 > # This file was autogenerated by Monitoring Utilities based on the configuration
@@ -265,7 +272,6 @@ This is what the last and optional argument to `mender-monitorctl` stands for.
 For more information please refer
 to the [Monitoring subsystems](../../09.Add-ons/20.Monitor/20.Monitoring-subsystems/docs.md) section.
 
-
 ## Receive alerts on new sessions for the root user
 
 To receive alerts on new sessions on the device for the root user, we can check for
@@ -273,7 +279,7 @@ the pattern `Started User Manager for UID 0` in the `/var/log/auth.log` file, de
 a new check named `auth_root_session`:
 
 ```bash
-mender-monitorctl create log auth_root_session "Started User Manager for UID 0" /var/log/auth.log
+sudo mender-monitorctl create log auth_root_session "Started User Manager for UID 0" /var/log/auth.log
 ```
 
 This command creates a file in `/etc/mender-monitor/monitor.d/available`
@@ -292,7 +298,7 @@ cat /etc/mender-monitor/monitor.d/available/log_auth_root_session.sh
 You can now enable the check running:
 
 ```bash
-mender-monitorctl enable log auth_root_session
+sudo mender-monitorctl enable log auth_root_session
 ```
 
 This command links the file in `/etc/mender-monitor/monitor.d/available` to

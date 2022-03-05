@@ -22,6 +22,8 @@ You should:
 
 ### Step 1 - Download the mender-artifact utility on your workstation
 
+!!! If you already installed `mender-artifact` on your system, you can skip this step.
+
 Prepare destination directory:
 
 ```bash
