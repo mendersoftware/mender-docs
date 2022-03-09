@@ -30,7 +30,7 @@ pi@raspberrypi:~$ sudo systemctl status mender-client
     Tasks: 9 (limit: 1012)
    Memory: 7.5M
    CGroup: /system.slice/mender-client.service
-           └─320 /usr/bin/mender -daemon
+           └─320 /usr/bin/mender daemon
 ```
 
 The status reported as active indicates that in order to use standalone mode you have to stop Mender running as a daemon.
@@ -45,7 +45,7 @@ To deploy the new Artifact to your device, run the following command in the
 device terminal:
 
 ```bash
-mender -install <URI>
+mender install <URI>
 ```
 
 `<URI>` can be any type of file-based storage or an HTTP/HTTPS URL.
@@ -59,9 +59,9 @@ To use HTTPS, simply replace it with a URL like `https://fileserver.example.com/
 If you are happy with the deployment, you can make it permanent by running the following command in your device terminal:
 
 ```bash
-mender -commit
+mender commit
 ```
 
 By running this command, Mender will mark the update as successful and permanent.
 
-To deploy another update, simply run `mender -install <URI>` again, then reboot and commit.
+To deploy another update, simply run `mender install <URI>` again, then reboot and commit.
