@@ -157,7 +157,7 @@ scp web-file-1.mender <username>@<deviceip>:/tmp
 Then install the Mender Artifact on the target device:
 
 ```bash
-mender -install /tmp/web-file-1.mender
+mender install /tmp/web-file-1.mender
 ```
 
 ### Verify the deployment on the device
