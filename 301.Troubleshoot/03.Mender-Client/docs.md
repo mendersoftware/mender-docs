@@ -206,7 +206,7 @@ until you have upgraded all Mender Clients and can use the corresponding latest 
 You have the Mender binary on your device and try to trigger a rootfs update but you get output similar to the following:
 
 ```bash
-mender -install /media/rootfs-image-mydevice.mender
+mender install /media/rootfs-image-mydevice.mender
 
 ERRO[0000] exit status 1                                 module=partitions
 ERRO[0000] No match between boot and root partitions.    module=main
