@@ -440,3 +440,318 @@ Then install the package with:
 ```bash
 dpkg -i mender-monitor-demo_master-1+debian+buster_all.deb
 ```
+
+## Mender Gateway
+
+!!!!! Mender Gateway is only available in the Mender Enterprise plan.
+!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! for an overview of all Mender plans and features.
+
+Mender offers [Mender Gateway](../08.Server-integration/04.Mender-Gateway/docs.md) which enables
+managing and deploying OTA updates to devices on the local network from a gateway device.
+
+To install `mender-gateway` using the Mender Gateway Debian package, first
+download it by running:
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="hosted"]
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="Debian Bullseye"]
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="armhf"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbullseye_armhf.deb
+```
+[/ui-tab]
+[ui-tab title="arm64"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbullseye_arm64.deb
+```
+[/ui-tab]
+[ui-tab title="amd64"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbullseye_amd64.deb
+```
+[/ui-tab]
+[/ui-tabs]
+
+[/ui-tab]
+[ui-tab title="Debian Buster"]
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="armhf"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbullseye_armhf.deb
+```
+[/ui-tab]
+[ui-tab title="arm64"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbuster_arm64.deb
+```
+[/ui-tab]
+[ui-tab title="amd64"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbuster_amd64.deb
+```
+[/ui-tab]
+[/ui-tabs]
+
+[/ui-tab]
+[ui-tab title="Ubuntu Bionic"]
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="armhf"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bubuntu%2Bbionic_armhf.deb
+```
+[/ui-tab]
+[ui-tab title="arm64"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bubuntu%2Bbionic_arm64.deb
+```
+[/ui-tab]
+[ui-tab title="amd64"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bubuntu%2Bbionic_amd64.deb
+```
+[/ui-tab]
+[/ui-tabs]
+
+[/ui-tab]
+[ui-tab title="Ubuntu Focal"]
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="armhf"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bubuntu%2Bfocal_armhf.deb
+```
+[/ui-tab]
+[ui-tab title="arm64"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bubuntu%2Bfocal_arm64.deb
+```
+[/ui-tab]
+[ui-tab title="amd64"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bubuntu%2Bfocal_amd64.deb
+```
+[/ui-tab]
+[/ui-tabs]
+
+[/ui-tab]
+[/ui-tabs]
+
+[/ui-tab]
+[ui-tab title="enterprise"]
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="Debian Bullseye"]
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="armhf"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbullseye_armhf.deb
+```
+[/ui-tab]
+[ui-tab title="arm64"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbullseye_arm64.deb
+```
+[/ui-tab]
+[ui-tab title="amd64"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbullseye_amd64.deb
+```
+[/ui-tab]
+[/ui-tabs]
+
+[/ui-tab]
+[ui-tab title="Debian Buster"]
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="armhf"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbullseye_armhf.deb
+```
+[/ui-tab]
+[ui-tab title="arm64"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbuster_arm64.deb
+```
+[/ui-tab]
+[ui-tab title="amd64"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbuster_amd64.deb
+```
+[/ui-tab]
+[/ui-tabs]
+
+[/ui-tab]
+[ui-tab title="Ubuntu Bionic"]
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="armhf"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bubuntu%2Bbionic_armhf.deb
+```
+[/ui-tab]
+[ui-tab title="arm64"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bubuntu%2Bbionic_arm64.deb
+```
+[/ui-tab]
+[ui-tab title="amd64"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bubuntu%2Bbionic_amd64.deb
+```
+[/ui-tab]
+[/ui-tabs]
+
+[/ui-tab]
+[ui-tab title="Ubuntu Focal"]
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="armhf"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bubuntu%2Bfocal_armhf.deb
+```
+[/ui-tab]
+[ui-tab title="arm64"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bubuntu%2Bfocal_arm64.deb
+```
+[/ui-tab]
+[ui-tab title="amd64"]
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bubuntu%2Bfocal_amd64.deb
+```
+[/ui-tab]
+[/ui-tabs]
+
+[/ui-tab]
+[/ui-tabs]
+
+[/ui-tab]
+[/ui-tabs]
+
+
+Then install the package with:
+
+<!--AUTOVERSION: "mender-gateway%-1"/mender-gateway -->
+```bash
+dpkg -i mender-gateway_*.deb
+```
+
+### Examples package
+
+!!!!! You should not use this package on production devices.
+
+If you have already installed the `mender-gateway` package, as shown in [Installing Mender
+Gateway](#mender-gateway), you can install demo content through the examples package. This will
+install the following:
+* Self-signed demo certificate and key for `*.docker.mender.io`
+* Demo configuration file with `UpstreamServer` configured for `hosted.mender.io`
+
+<!--AUTOVERSION: "/mender-gateway/examples/%/"/mender-gateway "/mender-gateway-%.tar"/mender-gateway -->
+Download the Mender Gateway examples package from
+https://downloads.customer.mender.io/content/hosted/mender-gateway/examples/master/mender-gateway-master.tar
+and download the tarball to a known location on your local system using your hosted
+Mender username and password:
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="hosted"]
+<!--AUTOVERSION: "/mender-gateway/examples/%/"/mender-gateway "/mender-gateway-%.tar"/mender-gateway -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+curl --fail -u $HOSTED_MENDER_EMAIL -o ${HOME}/mender-gateway-master.tar https://downloads.customer.mender.io/content/hosted/mender-gateway/examples/master/mender-gateway-master.tar
+```
+[/ui-tab]
+[ui-tab title="enterprise"]
+<!--AUTOVERSION: "/mender-gateway/examples/%/"/mender-gateway "/mender-gateway-%.tar"/mender-gateway -->
+```bash
+MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
+curl --fail -u $MENDER_ENTERPRISE_EMAIL -o ${HOME}/mender-gateway-master.tar https://downloads.customer.mender.io/content/on-prem/mender-gateway/examples/master/mender-gateway-master.tar
+```
+[/ui-tab]
+[/ui-tabs]
+
+Then install the contents with:
+
+<!--AUTOVERSION: "mender-gateway-examples-%.tar"/mender-gateway -->
+```bash
+tar -C / --strip-components=2 -xvf mender-gateway-examples-master.tar
+```

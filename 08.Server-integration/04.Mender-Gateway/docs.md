@@ -35,4 +35,4 @@ The Mender Gateway is capable of automatic provisioning of devices using *mTLS*
 authentication. Any device with a valid certificate signed by the Certificate
 Authority (CA) configured on the gateway, is automatically accepted by the
 Mender server. See the [mTLS user guide]()<!--FIXME/MEN-5302--> for a reference mutual
-TLS setup in a testing enviroment.
+TLS setup in a testing environment.
