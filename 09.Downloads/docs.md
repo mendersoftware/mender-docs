@@ -376,7 +376,7 @@ wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDE
 ```bash
 MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
  MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.0.1/mender-monitor_1.0.1-1%2Bdebian%2Bbuster_all.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.0.1/mender-monitor_1.0.1-1%2Bdebian%2Bbuster_all.deb
 ```
 [/ui-tab]
 [/ui-tabs]
