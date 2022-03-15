@@ -99,4 +99,4 @@ i.e. set the connection string of the Azure IoT Hub in Mender's Settings.
 
 Role Based Access Control is also enforced for the Device Twin:
 * To *see* the Device Twin you need *Read* permission to the device
-* To *edit* the Device Twin you need *Admin* permission
+* To *edit* the Device Twin you need *Deploy* permission to the device
