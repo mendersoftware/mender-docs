@@ -5,36 +5,88 @@ taxonomy:
     label: tutorial
 ---
 
-Imagine that you have a large fleet of devices, all needing a full filesystem
-update. Furthermore, assume that most of the image is unchanged from the previous release; i.e.: the number of bytes actually changed between the two images constitutes a very small fraction of total image size. Deploying the complete filesystem image to all the devices takes considerable time and bandwidth, even though we know that the [delta](../../02.Overview/15.Taxonomy/docs.md) between them
-is relatively small. To address this issue you can use
-[binary delta update Artifacts](../../02.Overview/06.Delta-update/docs.md) that
-pass only the difference between the two images.
 
-To generate binary delta Artifacts, you must start with two full file system Artifacts. You can use [Yocto](https://hub.mender.io/t/robust-delta-update-rootfs/1144?target=_blank),
-[mender-convert](../../04.System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md), or any mechanism of your choice to create the images. You can generate a binary default Artifact with the following command.
+This document explains how to create a binary delta artifact from two full system artifacts using the `mender-binary-delta-generator` CLI tool.
+Generation of the delta is something you would execute on a command line of a machine running Linux.
+
+For a step by step working example please check the [mender hub post](https://hub.mender.io/t/robust-delta-update-rootfs/1144).
+
+
+### Prerequisites
+
+This tutorial assumes:
+
+* You have completed the [integration of the mender-binary-delta](../../05.System-updates-Yocto-Project/05.Customize-Mender/01.Delta-update-support/docs.md) into your Yocto built process
+    * `mender-binary-delta-generator` is available in `PATH`
+* You have two full system artifacts available to work with
+
+
+### Generating the delta - default case
+
+Execute the steps below to generate the delta artifact:
 
 ```bash
-./mender-binary-delta-generator \
-    -o v2.0-deltafrom-v1.0.mender \
-    release-v.1.0.mender release-v.2.0.mender
+# rootfs-v1.mender - release running on the device
+# rootfs-v2.mender - new release
+
+mender-binary-delta-generator -o delta-v1-v2.mender rootfs-v1.mender rootfs-v2.mender
 ```
 
-In the above we have assumed that the current working directory contains at least:
+The result (`delta-v1-v2.mender`) is a delta artifact containing only the difference between the two artifacts. Once uploaded to the Mender server, the delta artifact will be listed in the web UI under the same release as the `rootfs-v2.mender`. This is because deploying this delta on a device results in the same version as deploying `rootfs-v2.mender`.
 
-```bash
-$ ls -1
-mender-binary-delta-generator
-release-v.1.0.mender
-release-v.2.0.mender
+
+!! A running device will only accept a delta update once at least one full system update has been deployed first.
+
+### Generating the delta - custom compression values (Special use case only)
+
+! Changing the parameters might be beneficial under some circumstances. However, please note that troubleshooting issues that arise as a result of using custom parameters (calling mender-binary-delta with the -D flag) are not covered by official support nor are different combinations continuously tested.
+
+`mender-binary-delta` uses the xdelta compression tool underneath.
+It is possible to pass flags to the xdelta directly.
+This allows you to customize [the parameters](https://github.com/jmacd/xdelta/blob/wiki/TuningMemoryBudget.md#source-buffer-size) of the compression algorithm.
+Depending on the payload of the artifact, this can influence the size of the delta and the memory requirements for encoding/decoding the delta.
+
+The example below will generate a delta artifact using the custom xdelta flags.
+
+```
+XDELTA_FLAGS="-B524288000 -W150000 -P262144 -I62768"
+mender-binary-delta-generator -o delta-v1-v2.mender -D "${XDELTA_FLAGS}" rootfs-v1.mender rootfs-v2.mender -- -- ${XDELTA_FLAGS}
 ```
 
-with the `mender-binary-delta-generator` application coming from mender-binary-delta archive which you need to [download](https://hub.mender.io/t/robust-delta-update-rootfs/1144?target=_blank).
+The flags will be embedded in the artifact and passed to the algorithm on the client side also.
+You can confirm the existence of the flags in the artifact with the command below.
 
-You can now use `v2.0-deltafrom-v1.0.mender` with Mender, and the Client will
-automatically detect its type and handle it appropriately.
+```
+mender-artifact read delta-v1-v2.mender
 
-The above approach can save considerable time and bandwidth, but it requires
-read-only root filesystem support to ensure that the delta calculated offline will apply properly to the active root filesystem. Please refer to the [Mender Hub](https://hub.mender.io/t/robust-delta-update-rootfs/1144?target=_blank)
-for more information on how to incorporate the binary Delta update Artifacts into
-your build.
+<Unrelated content before...>
+    Metadata:
+	{
+	  "decoder_arguments": [
+	    "-B524288000",
+	    "-W150000",
+	    "-P262144",
+	    "-I62768"
+	  ],
+	  "delta_algorithm": "xdelta3",
+	  "rootfs_file_size": 964689920
+	}
+<Unrelated content after...>
+```
+
+
+#### Finding the parameters
+
+Fine tuning the parameters to your needs can be a trial and error process.
+The snippet below is a best effort reference to get you started.
+
+```
+# Source buffer size          -B  Default=67108864(64M)  [16384(16K) - Unlimited]
+# Input window size           -W  Default=8192    ( 8M)  [16384(16K) - 16777216(16M)]
+# Instruction buffer size     -I  Default=32768(32KB)    [ min?      - 0 (Unlimited) ]
+# Compression duplicates size -P  Default=262144(256KB)  P <= W, Must be power of 2
+
+XDELTA_FLAGS="-B524288000 -W150000 -P262144 -I62768"
+XDELTA_FLAGS_FOR_FILENAME=$(echo $XDELTA_FLAGS | sed 's/ //g')
+mender-binary-delta-generator -o delta-v1-v2-${XDELTA_FLAGS_FOR_FILENAME}.mender -D "${XDELTA_FLAGS}" rootfs-v1.mender rootfs-v2.mender -- -- ${XDELTA_FLAGS}
+```
