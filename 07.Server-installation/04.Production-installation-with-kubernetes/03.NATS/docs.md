@@ -18,6 +18,17 @@ cluster:
   replicas: 2
 nats:
   image: "nats:2.3.1-alpine"
+  jetstream:
+    enabled: true
+
+    memStorage:
+      enabled: true
+      size: "1Gi"
+
+    fileStorage:
+      enabled: true
+      size: "2Gi"
+      storageDirectory: /data/
 EOF
 
 helm repo add nats https://nats-io.github.io/k8s/helm/charts/
