@@ -4,6 +4,36 @@ taxonomy:
     category: docs
 ---
 
+## Removed previous stable APT repositories
+
+We [removed](../../09.Downloads/docs.md#Set-up-the-APT-repository) the previously deprecated stable APT repository:
+
+```
+deb [arch=your-arch] https://downloads.mender.io/repos/debian stable main
+```
+
+If you see errors of the form:
+
+```
+Err:3 https://downloads.mender.io/repos/debian stable InRelease
+  403  Forbidden [IP: 52.222.214.71 443]
+```
+
+it means you are using the old repository, please update to the current one (see [Set up the APT repository](../../09.Downloads/docs.md#Set-up-the-APT-repository) section).
+
+In order to remove the obsolete repository `deb [arch=your-arch] https://downloads.mender.io/repos/debian stable main`
+you can use the following command:
+
+```bash
+add-apt-repository -r "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian stable main"
+```
+
+and then re-add the new one with:
+
+```bash
+add-apt-repository "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/buster/stable main"
+```
+
 <!--AUTOVERSION: "mender-client %"/ignore -->
 ## Installation of the mender-client 3.2.0 Debian package on Debian Bullseye and Ubuntu 20.04
 
