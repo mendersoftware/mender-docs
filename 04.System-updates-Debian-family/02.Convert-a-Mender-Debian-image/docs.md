@@ -137,7 +137,6 @@ Move your *golden disk image* into an input subdirectory:
 ```bash
 mkdir -p input
 mv <PATH_TO_MY_GOLDEN_IMAGE> input/golden-image-1.img
-mv <PATH_TO_OVERLAY> input/overlay_folder
 ```
 
 ### Use the mender-convert container image
@@ -153,7 +152,7 @@ mv <PATH_TO_MY_OVERLAY>/* input/Overlay/*
 MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
     --disk-image input/golden-image-1.img \
     --config configs/raspberrypi3_config \
-    --overlay input/overlay/
+    --overlay input/rootfs_overlay_demo/
 ```
 
 Conversion will take 10-30 minutes, depending on image size and resources
