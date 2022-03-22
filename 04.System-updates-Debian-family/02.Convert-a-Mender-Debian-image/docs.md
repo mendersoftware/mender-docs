@@ -121,8 +121,9 @@ The easiest, and most straight-forward way, is to integrate the client with
 
 #### Using [hosted Mender](https://hosted.mender.io?target=_blank)
 ```bash
-./scripts/bootstrap-rootfs-overlay-hosted-server.sh \
-    --output-dir ${PWD}/rootfs_overlay_demo \
+mkdir -p input
+$MENDER_CONVERT_LOCATION/bootstrap-rootfs-overlay-hosted-server.sh \
+    --output-dir ${PWD}/input/rootfs_overlay_demo \
     --tenant-token "Paste token from https://hosted.mender.io/ui/#/settings/my-organization"
 ```
 
@@ -143,10 +144,15 @@ mv <PATH_TO_MY_GOLDEN_IMAGE> input/golden-image-1.img
 Run mender-convert from inside the container with your desired options, e.g.
 
 ```bash
+# move overlay to the input folder
+mkdir -p input/overlay
+mv <PATH_TO_MY_OVERLAY>/* input/Overlay/*
+
+# convert the image
 MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
     --disk-image input/golden-image-1.img \
     --config configs/raspberrypi3_config \
-    --overlay rootfs_overlay_demo/
+    --overlay input/rootfs_overlay_demo/
 ```
 
 Conversion will take 10-30 minutes, depending on image size and resources

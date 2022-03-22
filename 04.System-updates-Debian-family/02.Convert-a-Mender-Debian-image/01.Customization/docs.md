@@ -174,8 +174,13 @@ When invoking mender-convert, pass the `--overlay` argument with the name of the
 overlay directory:
 
 ```bash
+# prepare overlay
+mkdir -p input/rootfs_overlay_demo
+cp -r rootfs_overlay_demo/* input/rootfs_overlay_demo/
+
+# run conversion
 MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
     --disk-image input/golden-image-1.img \
     --config configs/raspberrypi3_config \
-    --overlay rootfs_overlay_demo/
+    --overlay input/rootfs_overlay_demo/
 ```
