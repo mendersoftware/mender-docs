@@ -31,9 +31,11 @@ package architectures.
 
 ### Download the package
 
+<!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y libglib2.0-0 tzdata -->
+
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1"/mender -->
 ```bash
-wget https://downloads.mender.io/3.1.1/dist-packages/debian/$(dpkg --print-architecture)/mender-client_master-1%2Bdebian%2Bbuster_$(dpkg --print-architecture).deb
+wget https://downloads.mender.io/master/dist-packages/debian/$(dpkg --print-architecture)/mender-client_master-1%2Bdebian%2Bbuster_$(dpkg --print-architecture).deb
 ```
 
 !!! The above link will use the native architecture. See [the downloads
@@ -48,6 +50,7 @@ customize your installation. This is the recommended option for new users.
 
 To install and configure Mender run the following command:
 
+<!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
 ```bash
 sudo dpkg -i mender-client_master-1+debian+buster_$(dpkg --print-architecture).deb
@@ -75,10 +78,16 @@ The setup is different depending on your server configuration and the most
 common cases are shown below. Use `mender setup --help` to learn about all
 configuration options.
 
+<!--AUTOMATION: execute=DEVICE_TYPE=device-type -->
+<!--AUTOMATION: execute=TENANT_TOKEN=secure-token -->
+<!--AUTOMATION: execute=SERVER_IP_ADDR=1.2.3.4 -->
+<!--AUTOMATION: execute=SERVER_URL=https://secure.server -->
+
 - Connecting to [hosted Mender](https://hosted.mender.io?target=_blank) using demo settings
 
 Set the following variables:
 
+<!--AUTOMATION: ignore -->
 ```bash
 DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
 TENANT_TOKEN="<INSERT YOUR TOKEN FROM https://hosted.mender.io/ui/#/settings/my-organization>"
@@ -98,6 +107,7 @@ sudo mender setup \
 
 Set the following variables:
 
+<!--AUTOMATION: ignore -->
 ```bash
 DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
 SERVER_IP_ADDR="<INSERT THE IP ADDRESS OF YOUR DEMO SERVER>"
@@ -117,6 +127,7 @@ sudo mender setup \
 
 Set the following variables:
 
+<!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1"/mender -->
 ```bash
 DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
@@ -137,6 +148,7 @@ sudo mender setup \
 
 Finally, to restart the Mender service for the new configuration to take effect run the following command:
 
+<!--AUTOMATION: ignore -->
 ```bash
 sudo systemctl restart mender-client
 ```
