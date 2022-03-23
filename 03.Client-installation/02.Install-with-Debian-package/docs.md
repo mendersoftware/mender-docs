@@ -26,18 +26,19 @@ architectures:
 - amd64: Generic 64-bit x86 processors, the most popular among workstations
 
 See [the downloads page](../../09.Downloads/docs.md) for links to download all
-package architectures. We will assume *armhf* in the following instructions as
-this is the most common for users getting starting with Mender.
+package architectures.
 
 
 ### Download the package
 
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1"/mender -->
 ```bash
-wget https://downloads.mender.io/3.1.1/dist-packages/debian/armhf/mender-client_master-1%2Bdebian%2Bbuster_armhf.deb
+wget https://downloads.mender.io/3.1.1/dist-packages/debian/$(dpkg --print-architecture)/mender-client_master-1%2Bdebian%2Bbuster_$(dpkg --print-architecture).deb
 ```
 
-!!! The above link is for *armhf* devices, which is the most common device architecture. See [the downloads page](../../09.Downloads/docs.md) for other architectures, and also make sure to modify the references to the package in commands below.
+!!! The above link will use the native architecture. See [the downloads
+page](../../09.Downloads/docs.md) for other architectures, and also make sure to modify the
+references to the package in commands below.
 
 
 ### Option 1: Attended installation with a wizard
@@ -49,7 +50,7 @@ To install and configure Mender run the following command:
 
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
 ```bash
-sudo dpkg -i mender-client_master-1+debian+buster_armhf.deb
+sudo dpkg -i mender-client_master-1+debian+buster_$(dpkg --print-architecture).deb
 ```
 
 After completing the installation wizard, Mender is correctly set up on your
@@ -63,17 +64,29 @@ device is now ready to authenticate with the server and start receiving updates.
 Alternatively, install the package non-interactively. This is suitable for
 scripts or other situations where no user input is desired.
 
+First, to install Mender without configuring it run the following command:
+
+<!--AUTOVERSION: "mender-client_%-1"/mender -->
+```bash
+sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_master-1+debian+buster_$(dpkg --print-architecture).deb
+```
+
 The setup is different depending on your server configuration and the most
 common cases are shown below. Use `mender setup --help` to learn about all
 configuration options.
 
 - Connecting to [hosted Mender](https://hosted.mender.io?target=_blank) using demo settings
 
-<!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1"/mender -->
+Set the following variables:
+
 ```bash
 DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
 TENANT_TOKEN="<INSERT YOUR TOKEN FROM https://hosted.mender.io/ui/#/settings/my-organization>"
-sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_master-1+debian+buster_armhf.deb
+```
+
+Configure Mender with:
+
+```bash
 sudo mender setup \
             --device-type $DEVICE_TYPE \
             --hosted-mender \
@@ -81,31 +94,40 @@ sudo mender setup \
             --retry-poll 30 \
             --update-poll 5 \
             --inventory-poll 5
-sudo systemctl restart mender-client
 ```
 
 - Connecting to a demo server using demo settings
 
-<!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1"/mender -->
+Set the following variables:
+
 ```bash
 DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
 SERVER_IP_ADDR="<INSERT THE IP ADDRESS OF YOUR DEMO SERVER>"
-sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_master-1+debian+buster_armhf.deb
+```
+
+Configure Mender with:
+
+```bash
 sudo mender setup \
             --device-type $DEVICE_TYPE \
             --demo \
             --server-ip $SERVER_IP_ADDR
-sudo systemctl restart mender-client
 ```
 
 - Connecting to an [Enterprise](https://mender.io/products/mender-enterprise?target=_blank) server
+
+Set the following variables:
 
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1"/mender -->
 ```bash
 DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
 SERVER_URL="<INSERT YOUR ENTERPRISE SERVER URL>"
 TENANT_TOKEN="<INSERT YOUR TOKEN FROM YOUR ENTERPRISE SERVER>"
-sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_master-1+debian+buster_armhf.deb
+```
+
+Configure Mender with:
+
+```bash
 sudo mender setup \
             --device-type $DEVICE_TYPE \
             --server-url $SERVER_URL \
@@ -114,6 +136,11 @@ sudo mender setup \
             --retry-poll 30 \
             --update-poll 5 \
             --inventory-poll 5
+```
+
+Finally, to restart the Mender service for the new configuration to take effect run the following command:
+
+```bash
 sudo systemctl restart mender-client
 ```
 
