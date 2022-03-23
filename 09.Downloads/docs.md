@@ -495,7 +495,7 @@ wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDE
 ```bash
 HOSTED_MENDER_EMAIL=<your.email@example.com>
 HOSTED_MENDER_PASSWORD=<yoursecurepassword>
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbullseye_armhf.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbuster_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
@@ -621,7 +621,7 @@ wget --auth-no-challenge --user "$MENDER_ENTERPRISE_EMAIL" --password "$MENDER_E
 ```bash
 MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
 MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbullseye_armhf.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbuster_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
