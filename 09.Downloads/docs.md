@@ -737,14 +737,16 @@ Mender username and password:
 <!--AUTOVERSION: "/mender-gateway/examples/%/"/mender-gateway "/mender-gateway-examples-%.tar"/mender-gateway -->
 ```bash
 HOSTED_MENDER_EMAIL=<your.email@example.com>
-curl --fail -u $HOSTED_MENDER_EMAIL -o ${HOME}/mender-gateway-master.tar https://downloads.customer.mender.io/content/hosted/mender-gateway/examples/master/mender-gateway-examples-master.tar
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/examples/master/mender-gateway-examples-master.tar
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
 <!--AUTOVERSION: "/mender-gateway/examples/%/"/mender-gateway "/mender-gateway-examples-%.tar"/mender-gateway -->
 ```bash
 MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
-curl --fail -u $MENDER_ENTERPRISE_EMAIL -o ${HOME}/mender-gateway-master.tar https://downloads.customer.mender.io/content/on-prem/mender-gateway/examples/master/mender-gateway-examples-master.tar
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/examples/master/mender-gateway-examples-master.tar
 ```
 [/ui-tab]
 [/ui-tabs]
