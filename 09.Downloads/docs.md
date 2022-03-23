@@ -404,8 +404,8 @@ Then install the package with:
 
 <!--AUTOVERSION: "mender-monitor_%-1"/monitor-client -->
 ```bash
-dpkg -i mender-monitor_master-1+debian+buster_all.deb
-apt --fix-broken -y install
+sudo dpkg -i mender-monitor_master-1+debian+buster_all.deb
+sudo apt --fix-broken -y install
 ```
 
 ### Demo monitors
@@ -438,7 +438,7 @@ Then install the package with:
 
 <!--AUTOVERSION: "mender-monitor-demo_%-1"/monitor-client -->
 ```bash
-dpkg -i mender-monitor-demo_master-1+debian+buster_all.deb
+sudo dpkg -i mender-monitor-demo_master-1+debian+buster_all.deb
 ```
 
 ## Mender Gateway
@@ -713,7 +713,7 @@ Then install the package with:
 
 <!--AUTOVERSION: "mender-gateway%-1"/mender-gateway -->
 ```bash
-dpkg -i mender-gateway_*.deb
+sudo dpkg -i mender-gateway_*.deb
 ```
 
 ### Examples package
@@ -753,5 +753,5 @@ Then install the contents with:
 
 <!--AUTOVERSION: "mender-gateway-examples-%.tar"/mender-gateway -->
 ```bash
-tar -C / --strip-components=2 -xvf mender-gateway-examples-master.tar
+sudo tar -C / --strip-components=2 -xvf mender-gateway-examples-master.tar
 ```
