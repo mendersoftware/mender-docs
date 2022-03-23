@@ -91,9 +91,7 @@ sudo mender setup \
             --device-type $DEVICE_TYPE \
             --hosted-mender \
             --tenant-token $TENANT_TOKEN \
-            --retry-poll 30 \
-            --update-poll 5 \
-            --inventory-poll 5
+            --demo-polling
 ```
 
 - Connecting to a demo server using demo settings
@@ -110,8 +108,9 @@ Configure Mender with:
 ```bash
 sudo mender setup \
             --device-type $DEVICE_TYPE \
-            --demo \
-            --server-ip $SERVER_IP_ADDR
+            --demo-server \
+            --server-ip $SERVER_IP_ADDR \
+            --demo-polling
 ```
 
 - Connecting to an [Enterprise](https://mender.io/products/mender-enterprise?target=_blank) server
@@ -133,9 +132,7 @@ sudo mender setup \
             --server-url $SERVER_URL \
             --server-cert="" \
             --tenant-token $TENANT_TOKEN \
-            --retry-poll 30 \
-            --update-poll 5 \
-            --inventory-poll 5
+            --demo-polling
 ```
 
 Finally, to restart the Mender service for the new configuration to take effect run the following command:
