@@ -250,3 +250,65 @@ The problem here is most likely that the device does not have the [partition lay
 If you are using the Mender client in demo mode, either by selecting it when running `mender setup`, or set up with the [demo layer](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md), the Mender client has more aggressive [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md) to simplify testing.
 
 See the documentation on [building for production](../../05.System-updates-Yocto-Project/06.Build-for-production/docs.md) and [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md) to reduce the network bandwidth usage.
+
+
+## Delta updates 
+
+For more specific troubleshooting issue please look at the [troubleshooting section for the delta update module](https://hub.mender.io/t/robust-delta-update-rootfs/1144#troubleshooting-11).
+
+
+### How checksums look in a working case
+
+The delta mechanism makes use of the [Provides and Depends](../../02.Overview/03.Artifact/docs.md#provides-and-depends).
+
+The block below shows 3 example artifacts.
+
+```
++-------------------------------+
+|Type:       rootfs-image       |
+|Version:    v1                 |
+|Checksum:   5bb84175           |
+|                               |
+|Provides                       |
+|rootfs-image.checksum: 5bb84175|  -> matches the Depends for the delta
++-------------------------------+
+
++--------------------------------+        +--------------------------------+
+|Type:       mender-binary-delta |        |Type:       rootfs-image        |
+|Version:    v2                  |        |Version:    v2                  |
+|Checksum:   ff532419            |        |Checksum:   b9147deb5           |
+|                                |        |                                |
+|Provides                        |        |Provides                        |
+|rootfs-image.checksum: b9147deb5|        |rootfs-image.checksum: b9147deb5|
+|                                |        +--------------------------------+
+|Depends:                        |
+|rootfs-image.checksum: 5bb841755|
++--------------------------------+
+```
+
+`v1`
+* Version is assumed to be running on the device
+* `rootfs-image` type artifact - contains the entire partition content
+* Has the same `checksum` and `rootfs-image.checksum`
+    * Paylod from the artifact is the same as what ends running on the device
+
+`v2 mender-binary-delta`
+* `mender-binary-delta` type artifact - contains only a delta (binary difference between two payloads)
+* Can only be applied on top of a running version with a correct checksum
+    * `rootfs-image.checksum: 5bb841755` defines the checksum
+* `checksum` and `rootfs-image.checksum` differ
+    * `checksum` - checksum of the delta payload
+    * `rootfs-image.checksum` - checksum of the payload once it's running on the device
+
+`v2 rootfs-image`
+* `rootfs-image` type artifact - it contains the entire partition content
+* Result in the same version as the delta once applied to the device
+    * `rootfs-image.checksum: b9147deb5` - same as the `v2 mender-binary-delta`
+
+
+
+### How to check this on the device/server/artifact?
+
+* artifact - `mender-artifact read <mender-artifact.mender>`
+* device - Run the command on the device `mender show-provides`
+* server UI - `Releases -> Select Release -> Expand the artifact info by clicking it -> Expand Provides and Depends`
