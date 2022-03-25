@@ -13,7 +13,7 @@ taxonomy:
 <!--AUTOMATION: execute=export SLEEP_INTERVAL=4 -->
 <!--AUTOMATION: execute=export MAX_INTERATIONS=11 -->
 
-<!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" != 1 ]; then echo "TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->
+<!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" -ne 1 ]; then echo "TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->
 
 <!-- Cleanup code -->
 <!-- AUTOMATION: execute=ORIG_DIR=$PWD; function cleanup() { set +e; cd $ORIG_DIR/mender-server/production; ./run down -v; docker volume rm mender-artifacts mender-db mender-artifacts-backup mender-db-backup; cd $ORIG_DIR; rm -rf mender-server; } -->

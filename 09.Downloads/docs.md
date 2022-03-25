@@ -8,7 +8,7 @@ process:
     twig: true
 ---
 
-<!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" != 1 ]; then echo "TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->
+<!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" -ne 1 ];; then echo "TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->
 
 ## Disk images
 
