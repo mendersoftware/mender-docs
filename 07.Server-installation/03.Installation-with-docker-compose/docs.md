@@ -11,8 +11,8 @@ taxonomy:
 <!--AUTOMATION: execute=export SLEEP_INTERVAL=4 -->
 <!--AUTOMATION: execute=export MAX_INTERATIONS=11 -->
 
-<!-- AUTOMATION: execute=if [ "$TEST_OPEN_SOURCE" != 1 ] && [ "$TEST_ENTERPRISE" != 1 ]; then echo "Either TEST_OPEN_SOURCE xor TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->
-<!-- AUTOMATION: execute=if [ "$TEST_OPEN_SOURCE" = 1 ] && [ "$TEST_ENTERPRISE" = 1 ]; then echo "TEST_OPEN_SOURCE and TEST_ENTERPRISE cannot both be 1!"; exit 1; fi -->
+<!-- AUTOMATION: execute=if [ "$TEST_OPEN_SOURCE" -ne 1 ] && [ "$TEST_ENTERPRISE" -ne 1 ]; then echo "Either TEST_OPEN_SOURCE xor TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->
+<!-- AUTOMATION: execute=if [ "$TEST_OPEN_SOURCE" -eq 1 ] && [ "$TEST_ENTERPRISE" -eq 1 ]; then echo "TEST_OPEN_SOURCE and TEST_ENTERPRISE cannot both be 1!"; exit 1; fi -->
 
 <!-- Cleanup code -->
 <!-- AUTOMATION: execute=ORIG_DIR=$PWD; function cleanup() { set +e; cd $ORIG_DIR/mender-server/production; ./run down -v; docker volume rm mender-artifacts mender-db; cd $ORIG_DIR; rm -rf mender-server; } -->
@@ -567,7 +567,7 @@ git log --oneline master..HEAD
 ## Open Source
 
 <!-- Test block for TEST_OPEN_SOURCE=1 -->
-<!-- AUTOMATION: execute=if [ "$TEST_OPEN_SOURCE" = 1 ]; then -->
+<!-- AUTOMATION: execute=if [ "$TEST_OPEN_SOURCE" -eq 1 ]; then -->
 
 This section deals specifically with setting up an Open Source server. If you
 are setting up an Enterprise server, please proceed to the [Enterprise
@@ -635,7 +635,7 @@ installing an Open Source server, please proceed to
 ## Enterprise
 
 <!-- Test block for TEST_ENTERPRISE=1 -->
-<!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" = 1 ]; then -->
+<!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" -eq 1 ]; then -->
 
 This section will go through setting up the Enterprise features of the Mender
 server. If you are using the Open Source edition of the Mender server, you can
