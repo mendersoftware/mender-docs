@@ -83,8 +83,8 @@ configuration options.
 <!--AUTOMATION: execute=SERVER_IP_ADDR=1.2.3.4 -->
 <!--AUTOMATION: execute=SERVER_URL=https://secure.server -->
 
-- Connecting to [hosted Mender](https://hosted.mender.io?target=_blank) using demo settings
-
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="Hosted Mender"]
 Set the following variables:
 
 <!--AUTOMATION: ignore -->
@@ -102,9 +102,8 @@ sudo mender setup \
             --tenant-token $TENANT_TOKEN \
             --demo-polling
 ```
-
-- Connecting to a demo server using demo settings
-
+[/ui-tab]
+[ui-tab title="Demo server"]
 Set the following variables:
 
 <!--AUTOMATION: ignore -->
@@ -122,9 +121,8 @@ sudo mender setup \
             --server-ip $SERVER_IP_ADDR \
             --demo-polling
 ```
-
-- Connecting to an [Enterprise](https://mender.io/products/mender-enterprise?target=_blank) server
-
+[/ui-tab]
+[ui-tab title="[Enterprise](https://mender.io/products/mender-enterprise?target=_blank) server"]
 Set the following variables:
 
 <!--AUTOMATION: ignore -->
@@ -145,6 +143,8 @@ sudo mender setup \
             --tenant-token $TENANT_TOKEN \
             --demo-polling
 ```
+[/ui-tab]
+[/ui-tabs]
 
 Finally, to restart the Mender service for the new configuration to take effect run the following command:
 
