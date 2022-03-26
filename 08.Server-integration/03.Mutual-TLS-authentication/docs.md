@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-<!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" -ne 1 ];; then echo "TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->
+<!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" -ne 1 ]; then echo "TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->
 
 <!-- Cleanup code: stops the mTLS ambassador if running -->
 <!-- AUTOMATION: execute=function cleanup() { -->
