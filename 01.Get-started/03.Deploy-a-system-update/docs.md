@@ -177,12 +177,13 @@ sudo apt update && sudo apt install vim --assume-yes
 You can now run `vim` to verify it is installed, as you would expect. Note that
 this modification *is not part of your system snapshot* created above.
 
+<!--AUTOVERSION: "mender-convert version %"/mender-convert-->
 <!-- See MEN-4983 -->
-!! Do not call `apt upgrade` on a device with Mender system updates enabled. Doing so may brick your
-!! device! Always update single applications only. The reason is that kernel and boot loader Debian
-!! packages do not expect the Mender partition and filesystem layout, and therefore will try to
-!! perform actions that conflict with Mender. If you need to run `apt upgrade`, do it on a pristine
-!! system without Mender installed, and then [convert it to a Mender
+!! Be careful when running `apt upgrade` on a device with Mender system updates enabled. Integration
+!! with `apt upgrade` (through the `grub.d` framework) is only implemented for x86 as of
+!! mender-convert version master. For ARM and other non-x86 architectures, always update single
+!! applications only, because running `apt upgrade` may brick your device!. If you need to run `apt
+!! upgrade`, do it on a pristine system without Mender installed, and then [convert it to a Mender
 !! image](../../04.System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md)
 !! afterwards. This restriction may be lifted in the future.
 
