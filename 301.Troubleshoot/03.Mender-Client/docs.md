@@ -34,6 +34,21 @@ and then re-add the new one with:
 add-apt-repository "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/buster/stable main"
 ```
 
+## Repository 'http://raspbian.raspberrypi.org/raspbian buster InRelease' changed its 'Suite' value from 'stable' to 'oldstable'
+
+In case you see the following errors during `apt-get update`:
+
+```
+E: Repository 'http://raspbian.raspberrypi.org/raspbian buster InRelease' changed its 'Suite' value from 'stable' to 'oldstable'
+N: This must be accepted explicitly before updates for this repository can be applied. See apt-secure(8) manpage for details.
+```
+
+In order to accept the change of the suite name, you need to run:
+
+```
+apt-get update --allow-releaseinfo-change
+```
+
 <!--AUTOVERSION: "mender-client %"/ignore -->
 ## Installation of the mender-client 3.2.0 Debian package on Debian Bullseye and Ubuntu 20.04
 
