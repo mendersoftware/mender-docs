@@ -47,7 +47,7 @@ To deploy the new Artifact to your device, run the following command in the
 device terminal:
 
 ```bash
-mender -install <URI>
+mender install <URI>
 ```
 
 `<URI>` can be any type of file-based storage or an HTTP/HTTPS URL.
@@ -61,7 +61,7 @@ To use HTTPS, simply replace it with a URL like `https://fileserver.example.com/
 If you are happy with the deployment, you can make it permanent by running the following command in your device terminal:
 
 ```bash
-mender -commit
+mender commit
 ```
 
 By running this command, Mender will mark the update as successful and permanent.
