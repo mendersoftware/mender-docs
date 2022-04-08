@@ -18,6 +18,8 @@ import os
 import re
 import subprocess
 import sys
+import json
+from urllib.request import urlopen
 
 UPDATE = 1
 CHECK = 2
@@ -35,10 +37,13 @@ VERSION_MATCHER = r"(?:%s|(?:mender-%s)|(?<![a-z])(?:%s|master)(?![a-z]))" % (
     EXACT_VERSION_MATCH,
     YOCTO_BRANCHES,
 )
+MINOR_VERSIONS_MATCHER = r"(?:(?<!\.)\s*\d+\.\d+[, ]?(?!\.\d))+"
 
 VERSION_CACHE = {}
 
 ERRORS_FOUND = False
+
+VERSIONS_URL = "https://docs.mender.io/releases/versions.json"
 
 
 def get_version_of(repo):
@@ -71,6 +76,16 @@ def get_version_of(repo):
         print('Not replacing "%s" instances, since it was not specified' % repo)
         VERSION_CACHE[repo] = False
         return None
+
+
+def get_lts_versions():
+    global VERSION_CACHE
+
+    response = urlopen(VERSIONS_URL)
+    versions = json.loads(response.read())
+    lts_versions = ", ".join(versions["lts"])
+    VERSION_CACHE["lts"] = lts_versions
+    return lts_versions
 
 
 def walk_tree():
@@ -312,6 +327,8 @@ def do_replacements(line, replacements, just_remove):
             _percent = "%"
 
         regex = escaped.replace(_percent, VERSION_MATCHER)
+        if repo == "lts":
+            regex = escaped.replace(_percent, MINOR_VERSIONS_MATCHER)
         if just_remove:
             repl = search.replace("%", "")
         else:
@@ -319,7 +336,9 @@ def do_replacements(line, replacements, just_remove):
                 continue
             version = get_version_of(repo)
             if version is None:
-                continue
+                if repo != "lts":
+                    continue
+                version = get_lts_versions()
             if complain:
                 if IGNORE_COMPLAIN:
                     continue
