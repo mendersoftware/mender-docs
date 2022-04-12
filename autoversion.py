@@ -44,16 +44,47 @@ VERSION_CACHE = {}
 ERRORS_FOUND = False
 
 VERSIONS_URL = "https://docs.mender.io/releases/versions.json"
+response = urlopen(VERSIONS_URL)
+versions = json.loads(response.read())
+RELEASED_VERSION_CACHE = versions or {}
+
+
+def get_released_version_of(repo):
+    minor_version = ""
+    if INTEGRATION_VERSION:
+        minor_version = INTEGRATION_VERSION[0 : INTEGRATION_VERSION.rfind(".")]
+    if (
+        not minor_version
+        or not "releases" in RELEASED_VERSION_CACHE
+        or not minor_version in RELEASED_VERSION_CACHE["releases"]
+    ):
+        return
+    info = next(
+        (
+            info
+            for info in RELEASED_VERSION_CACHE["releases"][minor_version][
+                INTEGRATION_VERSION
+            ]["repos"]
+            if info["name"] == repo
+        ),
+        {},
+    )
+    if "version" in info:
+        return info["version"]
 
 
 def get_version_of(repo):
     global VERSION_CACHE
 
     version = VERSION_CACHE.get(repo)
+    released_version = get_released_version_of(repo)
     if version is False:
         return None
     elif version is not None:
         return version
+    elif released_version:
+        VERSION_CACHE[repo] = released_version
+        return released_version
     elif INTEGRATION_REPO is not None and INTEGRATION_VERSION is not None:
         result = subprocess.run(
             [
@@ -82,9 +113,7 @@ def get_version_of(repo):
 def get_lts_versions():
     global VERSION_CACHE
 
-    response = urlopen(VERSIONS_URL)
-    versions = json.loads(response.read())
-    lts_versions = ", ".join(versions["lts"])
+    lts_versions = ", ".join(RELEASED_VERSION_CACHE["lts"])
     VERSION_CACHE["lts"] = lts_versions
     return lts_versions
 
