@@ -55,21 +55,22 @@ def get_version_of(repo):
     elif version is not None:
         return version
     elif INTEGRATION_REPO is not None and INTEGRATION_VERSION is not None:
-        version = (
-            subprocess.check_output(
-                [
-                    os.path.join(INTEGRATION_REPO, "extra", "release_tool.py"),
-                    "--version-of",
-                    repo,
-                    "--version-type",
-                    "git",
-                    "--in-integration-version",
-                    INTEGRATION_VERSION,
-                ]
-            )
-            .strip()
-            .decode()
+        result = subprocess.run(
+            [
+                os.path.join(INTEGRATION_REPO, "extra", "release_tool.py"),
+                "--version-of",
+                repo,
+                "--version-type",
+                "git",
+                "--in-integration-version",
+                INTEGRATION_VERSION,
+            ],
+            capture_output=True,
         )
+        if result.stderr or result.returncode == 1:
+            VERSION_CACHE[repo] = False
+            return None
+        version = result.stdout.strip().decode()
         VERSION_CACHE[repo] = version
         return version
     else:
