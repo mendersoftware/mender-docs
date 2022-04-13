@@ -27,12 +27,12 @@ authentication requests on behalf of devices.
 The Mender Gateway is able to understand when a device has an available update
 and is able to serve artifacts on behalf of the server. Configuring Mender
 Gateway to serve as an artifact proxy will make the gateway serve any artifacts
-assigned by a deployment. See the [Artifact Proxy User Guide]()<!--FIXME/MEN-5302-->
+assigned by a deployment. See the [Artifact Proxy User Guide](../../01.Get-started/06.Mender-Gateway/)
 for a reference setup of Mender Gateway as an Artifact Proxy.
 
 ## Mutual TLS Authentication
 The Mender Gateway is capable of automatic provisioning of devices using *mTLS*
 authentication. Any device with a valid certificate signed by the Certificate
 Authority (CA) configured on the gateway, is automatically accepted by the
-Mender server. See the [mTLS user guide]()<!--FIXME/MEN-5302--> for a reference mutual
-TLS setup in a testing environment.
+Mender server. See the [mTLS user guide](../03.Mutual-TLS-authentication/) for a
+reference mutual TLS setup in a testing environment.

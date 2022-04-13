@@ -13,7 +13,7 @@ Mender. We will be using the
 [Docker Update Module](https://hub.mender.io/t/docker/324?target=_blank) which
 allows you to specify a list of container images and their versions in a
 [Mender Artifact](../../02.Overview/03.Artifact/docs.md) which
-can later be deployed to your device using the hosted Mender server.
+can later be deployed to your device using the hosted Mender Server.
 
 ## Prerequisites
 
