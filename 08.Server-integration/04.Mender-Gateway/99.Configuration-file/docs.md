@@ -12,6 +12,10 @@ provides a reference for the configuration variables.
 ```json
 {
     "Features": {
+        "ArtifactsCache": {
+            "Enabled": true,
+            "Path": "/var/cache/mender-gateway"
+        }
         "ArtifactsProxy": {
             "Enabled": true,
             "GatewayURL": "https://gateway.mender.io",
@@ -44,8 +48,14 @@ provides a reference for the configuration variables.
 ```
 
 ### Features
-#### ArtifactProxy
 
+#### ArtifactsCache
+<dl>
+<dt>Enabled</dt> <dd>Enable the Artifact Cache (depends on [ArtifactsProxy](#artifactsproxy)).</dd>
+<dt>Path</dt> <dd>Path where to store the cached artifacts.</dd>
+</dl>
+
+#### ArtifactsProxy
 <dl>
 <dt>Enabled</dt> <dd>Enable the Local Artifact Proxy.</dd>
 <dt>GatewayURL</dt> <dd>The self-URL to the gateway.</dd>
@@ -89,7 +99,6 @@ This user will preauthorize devices with authorization to the gateway.
 </dl>
 
 ### UpstreamServer
-
 <dl>
 <dt>URL</dt> <dd>The upstream server URL for proxying device HTTP requests.</dd>
 <dt>InsecureSkipVerify</dt> <dd>Skip verification of certificate claims.</dd>
