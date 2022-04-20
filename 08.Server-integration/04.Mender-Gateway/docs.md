@@ -17,7 +17,7 @@ acts as a proxy with the ability to understand and serve client requests
 locally.
 
 Mender Gateway operates by proxying requests from a local HTTP(S) server on the
-local network to the upstream Mender server. It is capable of proxying artifacts
+local network to the upstream Mender server. It is capable of proxying Artifacts
 from an s3-compatible file server to the devices and enabling mutual TLS
 authentication requests on behalf of devices.
 
@@ -25,13 +25,13 @@ authentication requests on behalf of devices.
 
 ## Artifact Proxy and Cache
 The Mender Gateway can understand when a device has an available update
-and serves artifacts on the server's behalf. Without this feature, the device
-would try downloading the artifacts referenced by the download link contained
+and serves Artifacts on the server's behalf. Without this feature, the device
+would try downloading the Artifacts referenced by the download link contained
 in the deployment instructions directly from the internet. The Mender Gateway
 will instead replace the download link in the deployment instructions with a
-local URL served by itself. It can also cache the artifacts locally and serve
+local URL served by itself. It can also cache the Artifacts locally and serve
 them locally when needed. In this way, when multiple devices request the same
-artifact, it will be downloaded only once and then served from the cache for
+Artifact, it will be downloaded only once and then served from the cache for
 the subsequent download requests saving bandwidth. See the
 [Mender Gateway User Guide](../../01.Get-started/06.Mender-Gateway/docs.md)
 for a reference setup of Mender Gateway as an Artifact Proxy.

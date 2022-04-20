@@ -52,14 +52,14 @@ provides a reference for the configuration variables.
 #### ArtifactsCache
 <dl>
 <dt>Enabled</dt> <dd>Enable the Artifact Cache (depends on [ArtifactsProxy](#artifactsproxy)).</dd>
-<dt>Path</dt> <dd>Path where to store the cached artifacts.</dd>
+<dt>Path</dt> <dd>Path where to store the cached Artifacts.</dd>
 </dl>
 
 #### ArtifactsProxy
 <dl>
 <dt>Enabled</dt> <dd>Enable the Local Artifact Proxy.</dd>
 <dt>GatewayURL</dt> <dd>The self-URL to the gateway.</dd>
-<dt>DomainWhitelist</dt> <dd>List of whitelisted domains to proxy artifacts from.</dd>
+<dt>DomainWhitelist</dt> <dd>List of whitelisted domains to proxy Artifacts from.</dd>
 </dl>
 
 #### mTLS

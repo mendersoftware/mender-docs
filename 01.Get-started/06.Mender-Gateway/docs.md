@@ -56,7 +56,7 @@ will use to authenticate to the server when downloading the Mender Gateway binar
 
 When installing the Mender Gateway in demo mode (see the `--demo` flag in the snippet above),
 the package automatically configures it to connect to Hosted Mender, forwarding both device APIs
-and the artifacts. It also ships with an example HTTPS certificate that you will have to add to
+and the Artifacts. It also ships with an example HTTPS certificate that you will have to add to
 the list of trusted certificates in your devices connecting to the Mender Gateway.
 
 You can inspect the configuration file `/etc/mender/mender-gateway.conf`:
