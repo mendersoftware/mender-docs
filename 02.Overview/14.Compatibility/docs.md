@@ -30,6 +30,10 @@ As another example, the Mender client supports one version of the server API,
 while the server can support several API versions. Therefore, always update the
 server before the client.
 
+Mender also follows different support durations for different minor versions with LTS releases.
+Please refer to the [Release-information](../../302.Release-information/01.Release-schedule/docs.md) for more information about LTS releases and the release schedule.
+
+
 ### Specific versioning criteria
 
 Since Semantic Versioning was primarily written for libraries, it is not
