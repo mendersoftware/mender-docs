@@ -58,7 +58,7 @@ def get_released_version_of(repo):
         or not "releases" in RELEASED_VERSION_CACHE
         or not minor_version in RELEASED_VERSION_CACHE["releases"]
     ):
-        return
+        return None
     info = next(
         (
             info
@@ -328,7 +328,7 @@ def process_line(line, replacements, fd):
 
     # If we were not given a file, then we are just doing checking and are done.
     if fd is None:
-        return
+        return None
 
     # Now do the replacement and write that.
     all_replaced = do_replacements(line, replacements, just_remove=False)
