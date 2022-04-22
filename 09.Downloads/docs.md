@@ -57,8 +57,8 @@ Follow the correct link according to your host platform to download
 <!--AUTOVERSION: "mender-artifact %][x.x.x_mender-artifact-"/mender-artifact "mender-artifact %][%_mender-artifact-"/ignore-->
 | Platform | Download link                                          |                                                                       |
 |----------|--------------------------------------------------------|-----------------------------------------------------------------------|
-| Linux    | [mender-artifact 3.7.0][x.x.x_mender-artifact-linux]  | [mender-artifact master][master_mender-artifact-linux] (Pre-release)  |
-| Mac OS X | [mender-artifact 3.7.0][x.x.x_mender-artifact-darwin] | [mender-artifact master][master_mender-artifact-darwin] (Pre-release) |
+| Linux    | [mender-artifact 3.7.1][x.x.x_mender-artifact-linux]  | [mender-artifact master][master_mender-artifact-linux] (Pre-release)  |
+| Mac OS X | [mender-artifact 3.7.1][x.x.x_mender-artifact-darwin] | [mender-artifact master][master_mender-artifact-darwin] (Pre-release) |
 
 Remember to add execute permission and ensure that the mender-artifact utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
 
@@ -71,8 +71,8 @@ Please refer to your host Operating System documentation for more details.
 
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/3.7.0/linux/mender-artifact
-[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/3.7.0/darwin/mender-artifact
+[x.x.x_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/3.7.1/linux/mender-artifact
+[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/3.7.1/darwin/mender-artifact
 <!--AUTOVERSION: "[%_mender-artifact-"/ignore "mender-artifact/%/"/ignore -->
 [master_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/master/linux/mender-artifact
 [master_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/master/darwin/mender-artifact
