@@ -117,8 +117,8 @@ MENDER_ARTIFACT_NAME = "release-1"
 # edge version, specify "master-git%", but keep in mind that these versions may not be stable:
 #
 # PREFERRED_VERSION_mender-client = "3.2.1"
-# PREFERRED_VERSION_mender-artifact = "3.7.0"
-# PREFERRED_VERSION_mender-artifact-native = "3.7.0"
+# PREFERRED_VERSION_mender-artifact = "3.7.1"
+# PREFERRED_VERSION_mender-artifact-native = "3.7.1"
 # PREFERRED_VERSION_mender-connect = "2.0.1"
 
 ARTIFACTIMG_FSTYPE = "ext4"
@@ -238,8 +238,8 @@ MACHINE = "<YOUR-MACHINE>"
 # edge version, specify "master-git%", but keep in mind that these versions may not be stable:
 #
 # PREFERRED_VERSION_mender-client = "3.2.1"
-# PREFERRED_VERSION_mender-artifact = "3.7.0"
-# PREFERRED_VERSION_mender-artifact-native = "3.7.0"
+# PREFERRED_VERSION_mender-artifact = "3.7.1"
+# PREFERRED_VERSION_mender-artifact-native = "3.7.1"
 # PREFERRED_VERSION_mender-connect = "2.0.1"
 
 # The following settings to enable systemd are needed for all Yocto
