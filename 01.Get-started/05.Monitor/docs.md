@@ -170,19 +170,16 @@ First spin up the container to monitor:
 sudo docker run --name demo --rm -d alpine sleep infinity
 ```
 
-Create the file `/etc/mender-monitor/monitor.d/available/dockerevents_testcontainer.sh` running the following command:
+Create the `dockerevents` subsystem check running the following command:
 
 ```bash
-sudo tee /etc/mender-monitor/monitor.d/available/dockerevents_testcontainer.sh <<EOF
-DOCKEREVENTS_CONTAINER_NAME=demo
-DOCKEREVENTS_CONTAINER_ACTION=restart
-EOF
+sudo mender-monitorctl create dockerevents container_demo_restart demo restart 1d
 ```
 
 Enable the alert:
 
 ```bash
-sudo mender-monitorctl enable dockerevents testcontainer
+sudo mender-monitorctl enable dockerevents container_demo_restart
 ```
 
 Then restart the container
@@ -194,6 +191,9 @@ sudo docker container restart demo
 And an alert will show up in the UI.
 
 ![Dockerevents alarm restarted](dockerevents-alarm.png)
+
+For a complete description of the parameters and the `dockerevents` subsystem
+please refer to [the subsystem section](../../09.Add-ons/20.Monitor/20.Monitoring-subsystems/docs.md#docker-events).
 
 ## Check if the mender-connect systemd service is running
 
