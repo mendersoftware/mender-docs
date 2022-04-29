@@ -229,7 +229,7 @@ You also need to specify a username and password pair. The ambassador will use i
 To start the edge proxy, run the following command:
 
 <!-- AUTOMATION: execute={ -->
-<!--AUTOVERSION: "registry.mender.io/mendersoftware/mtls-ambassador:mender-%"/ignore-->
+<!--AUTOVERSION: "registry.mender.io/mendersoftware/mtls-ambassador:mender-%"/integration-->
 ```bash
 docker run \
   -p 443:8080 \
@@ -240,7 +240,7 @@ docker run \
   -v $(pwd)/server-cert.pem:/etc/mtls/certs/server/server.crt \
   -v $(pwd)/server-private.key:/etc/mtls/certs/server/server.key \
   -v $(pwd)/ca-cert.pem:/etc/mtls/certs/tenant-ca/tenant.ca.pem \
-  registry.mender.io/mendersoftware/mtls-ambassador:mender-3.2.0
+  registry.mender.io/mendersoftware/mtls-ambassador:mender-3.2.2
 ```
 <!-- AUTOMATION: execute=} & -->
 
