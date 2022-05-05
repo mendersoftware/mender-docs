@@ -182,7 +182,7 @@ At this point, you can start a virtual device running:
 
 ```bash
 docker run -it -p 85:85 --pull=always \
-    -e SERVER_IP="$SERVER_IP"
+    -e SERVER_IP="$SERVER_IP" \
 	-e SERVER_URL='https://gateway.docker.mender.io' \
 	-e TENANT_TOKEN="$TENANT_TOKEN" \
 	mendersoftware/mender-client-qemu
