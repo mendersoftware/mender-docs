@@ -12,14 +12,14 @@ provides a reference for the configuration variables.
 ```json
 {
     "Features": {
-        "ArtifactsCache": {
-            "Enabled": true,
-            "Path": "/var/cache/mender-gateway"
-        }
         "ArtifactsProxy": {
             "Enabled": true,
             "GatewayURL": "https://gateway.mender.io",
-            "DomainWhitelist": ["s3.amazonaws.com", "s3.my-min.io"]
+            "DomainWhitelist": ["s3.amazonaws.com", "s3.my-min.io"],
+            "ArtifactsCache": {
+                "Enabled": true,
+                "Path": "/var/cache/mender-gateway"
+            }
         }
         "mTLS": {
             "Enabled": true,
@@ -49,17 +49,18 @@ provides a reference for the configuration variables.
 
 ### Features
 
-#### ArtifactsCache
-<dl>
-<dt>Enabled</dt> <dd>Enable the Artifact Cache (depends on [ArtifactsProxy](#artifactsproxy)).</dd>
-<dt>Path</dt> <dd>Path where to store the cached Artifacts.</dd>
-</dl>
-
 #### ArtifactsProxy
 <dl>
 <dt>Enabled</dt> <dd>Enable the Local Artifact Proxy.</dd>
 <dt>GatewayURL</dt> <dd>The self-URL to the gateway.</dd>
 <dt>DomainWhitelist</dt> <dd>List of whitelisted domains to proxy Artifacts from.</dd>
+<dt>ArtifactsCache</dt> <dd>Configuration for the Artifact Cache, see below.</dd>
+</dl>
+
+#### ArtifactsCache
+<dl>
+<dt>Enabled</dt> <dd>Enable the Artifact Cache (depends on [ArtifactsProxy](#artifactsproxy)).</dd>
+<dt>Path</dt> <dd>Path where to store the cached Artifacts.</dd>
 </dl>
 
 #### mTLS
