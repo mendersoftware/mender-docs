@@ -19,15 +19,17 @@ required keys:
 [ui-tabs position="top-left" active="0" theme="default" ]
 [ui-tab title="Open Source"]
 ```bash
-openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:3072 | openssl rsa -out device_auth.key
-openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:3072 | openssl rsa -out useradm.key
+TRADITIONAL_FLAG="" test $(openssl version | cut -f2 -d' ' | cut -f1 -d'.') -eq 3 && TRADITIONAL_FLAG="-traditional"
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:3072 | openssl rsa ${TRADITIONAL_FLAG} -out device_auth.key
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:3072 | openssl rsa ${TRADITIONAL_FLAG} -out useradm.key
 ```
 [/ui-tab]
 [ui-tab title="Enterprise"]
 ```bash
-openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:3072 | openssl rsa -out device_auth.key
-openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:3072 | openssl rsa -out useradm.key
-openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:3072 | openssl rsa -out tenantadm.key
+TRADITIONAL_FLAG="" test $(openssl version | cut -f2 -d' ' | cut -f1 -d'.') -eq 3 && TRADITIONAL_FLAG="-traditional"
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:3072 | openssl rsa ${TRADITIONAL_FLAG} -out device_auth.key
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:3072 | openssl rsa ${TRADITIONAL_FLAG} -out useradm.key
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:3072 | openssl rsa ${TRADITIONAL_FLAG} -out tenantadm.key
 ```
 [/ui-tab]
 [/ui-tabs]
