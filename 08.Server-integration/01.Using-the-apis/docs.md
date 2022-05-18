@@ -13,10 +13,7 @@ There are many ways to interact with Mender's REST APIs and the most common ones
 
 `mender-cli` is a standalone CLI tool that works as a client against the Mender server management APIs in order to make it much easier to interact with the APIs.
 
-Currently two use cases are supported:
-
-* Log in
-* Upload Artifact
+It supports use cases for cloud systems, like uploading an Artifact to the Mender server, as well as end user workstation use cases like Remote terminal and Port forward (Troubleshoot add-on required).
 
 Over time the functionality of `mender-cli` will be extended to simplify the most common use cases for integrating the Mender server into other backend and cloud systems. If you need to cover other use cases today, follow the [tutorial for cURL instead](#set-up-shell-variables-for-curl).
 
