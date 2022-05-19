@@ -252,13 +252,13 @@ repository. Afterwards, you can install and update the Mender client using the
    [ui-tab title="Ubuntu Bionic"]
 <!--AUTOMATION: ignore -->
    ```bash
-    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/focal/stable main" \
+    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/bionic/stable main" \
     | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
    ```
    [/ui-tab]
    [ui-tab title="Ubuntu Focal"]
    ```bash
-    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/bionic/stable main" \
+    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/focal/stable main" \
     | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
    ```
    [/ui-tab]
