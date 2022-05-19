@@ -116,10 +116,10 @@ MENDER_ARTIFACT_NAME = "release-1"
 # please uncomment the following and set to the required version. If you want to use the bleeding
 # edge version, specify "master-git%", but keep in mind that these versions may not be stable:
 #
-# PREFERRED_VERSION_mender-client = "master-git%"
-# PREFERRED_VERSION_mender-artifact = "master-git%"
-# PREFERRED_VERSION_mender-artifact-native = "master-git%"
-# PREFERRED_VERSION_mender-connect = "master-git%"
+# PREFERRED_VERSION_mender-client = "3.3.0-build1"
+# PREFERRED_VERSION_mender-artifact = "3.8.0-build1"
+# PREFERRED_VERSION_mender-artifact-native = "3.8.0-build1"
+# PREFERRED_VERSION_mender-connect = "2.0.2-build1"
 
 ARTIFACTIMG_FSTYPE = "ext4"
 
@@ -176,11 +176,11 @@ i.e. the top level of the Yocto Project build tree, and run these commands:
 
 <!--AUTOVERSION: "-b % git://github.com/mendersoftware/meta-mender"/meta-mender-->
 ```bash
-git clone -b master git://github.com/mendersoftware/meta-mender
+git clone -b dunfell git://github.com/mendersoftware/meta-mender
 ```
 
 <!--AUTOVERSION: "the HEAD of the % branch"/meta-mender-->
-Note that this command checks out the HEAD of the master branch and is not a specific tagged release. The [Yocto project release schedule](https://wiki.yoctoproject.org/wiki/Releases) differs from the Mender release schedule so even though you may be using a specific release of Mender, you will still need to take further steps if you want to use a tagged release of the Yocto project.
+Note that this command checks out the HEAD of the dunfell branch and is not a specific tagged release. The [Yocto project release schedule](https://wiki.yoctoproject.org/wiki/Releases) differs from the Mender release schedule so even though you may be using a specific release of Mender, you will still need to take further steps if you want to use a tagged release of the Yocto project.
 
 Next, initialize the build environment:
 
@@ -237,10 +237,10 @@ MACHINE = "<YOUR-MACHINE>"
 # please uncomment the following and set to the required version. If you want to use the bleeding
 # edge version, specify "master-git%", but keep in mind that these versions may not be stable:
 #
-# PREFERRED_VERSION_mender-client = "master-git%"
-# PREFERRED_VERSION_mender-artifact = "master-git%"
-# PREFERRED_VERSION_mender-artifact-native = "master-git%"
-# PREFERRED_VERSION_mender-connect = "master-git%"
+# PREFERRED_VERSION_mender-client = "3.3.0-build1"
+# PREFERRED_VERSION_mender-artifact = "3.8.0-build1"
+# PREFERRED_VERSION_mender-artifact-native = "3.8.0-build1"
+# PREFERRED_VERSION_mender-connect = "2.0.2-build1"
 
 # The following settings to enable systemd are needed for all Yocto
 # releases sumo and older.  Newer releases have these settings conditionally
