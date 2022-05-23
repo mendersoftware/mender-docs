@@ -6,7 +6,7 @@
   "dependencies": {
     "remark-cli": "^9.0.0",
     "remark-validate-links": "https://github.com/oleorhagen/remark-validate-links#grav-slug",
-    "yargs": "^17.3.1"
+    "yargs": "^17.5.1"
   },
   "devDependencies": {},
   "scripts": {
