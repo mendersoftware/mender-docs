@@ -29,11 +29,16 @@ and serves Artifacts on the server's behalf. Without this feature, the device
 would try downloading the Artifacts referenced by the download link contained
 in the deployment instructions directly from the internet. The Mender Gateway
 will instead replace the download link in the deployment instructions with a
-local URL served by itself. It can also cache the Artifacts locally and serve
-them locally when needed. In this way, when multiple devices request the same
-Artifact, it will be downloaded only once and then served from the cache for
-the subsequent download requests saving bandwidth. See the
-[Mender Gateway User Guide](../../01.Get-started/06.Mender-Gateway/docs.md)
+local URL served by itself.
+
+It can also cache the Artifacts locally and serve them locally when needed.
+In this way, when multiple devices request the same Artifact, it will be
+downloaded only once and then served from the cache for the subsequent
+download requests saving bandwidth. The Mender Gateway will automatically
+manage the cache eviction when the Artifacts cache is enabled if there is
+no more free space on the path specified in the configuration file. 
+
+See the [Mender Gateway User Guide](../../01.Get-started/06.Mender-Gateway/docs.md)
 for a reference setup of Mender Gateway as an Artifact Proxy.
 
 ## Mutual TLS Authentication

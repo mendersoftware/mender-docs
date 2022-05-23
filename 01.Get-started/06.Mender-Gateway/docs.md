@@ -1,8 +1,8 @@
 ---
 title: Mender Gateway
 taxonomy:
-    category: docs
-    label: tutorial
+	category: docs
+	label: tutorial
 ---
 
 !!!!! Mender Gateway is only available in the Mender Enterprise plan.
@@ -98,12 +98,12 @@ sudo systemctl status mender-gateway
 
 > ```
 > ● mender-gateway.service - Mender Gateway service
->    Loaded: loaded (/lib/systemd/system/mender-gateway.service; enabled; vendor preset: enabled)
->    Active: active (running) since Fri 2022-04-08 06:10:44 CEST; 6min ago
+>	Loaded: loaded (/lib/systemd/system/mender-gateway.service; enabled; vendor preset: enabled)
+>	Active: active (running) since Fri 2022-04-08 06:10:44 CEST; 6min ago
 >  Main PID: 12374 (mender-gateway)
->     Tasks: 5 (limit: 877)
->    CGroup: /system.slice/mender-gateway.service
->            └─12374 /usr/bin/mender-gateway
+>	 Tasks: 5 (limit: 877)
+>	CGroup: /system.slice/mender-gateway.service
+>			└─12374 /usr/bin/mender-gateway
 > 
 > Apr 08 06:10:44 raspberrypi systemd[1]: Started Mender Gateway service.
 > Apr 08 06:10:44 raspberrypi mender-gateway[12374]: time="2022-04-08T06:10:44+02:00" level=info msg="loaded configuration file: /etc/mender/mender-gateway.conf" file=config.go func=config.loadConfigFile line=143
@@ -182,7 +182,7 @@ At this point, you can start a virtual device running:
 
 ```bash
 docker run -it -p 85:85 --pull=always \
-    -e SERVER_IP="$SERVER_IP" \
+	-e SERVER_IP="$SERVER_IP" \
 	-e SERVER_URL='https://gateway.docker.mender.io' \
 	-e TENANT_TOKEN="$TENANT_TOKEN" \
 	mendersoftware/mender-client-qemu
@@ -226,6 +226,80 @@ Which outputs:
 
 Communication between the device and the Mender Server will continue normally through the
 Mender Gateway despite it.
+
+## Enable the Artifacts Cache
+
+The Mender Gateway can cache the Artifacts locally to reduce the bandwidth consumption when
+multiple devices connected to it need to download the same file from the Mender Server. You can
+enable the feature by setting the configuration option `ArtifactsCache` to `true` in the
+configuration file:
+
+```
+{
+	"HTTPS": {
+		"Enabled": true,
+		"Listen": ":443",
+		"ServerCertificate": "/usr/share/doc/mender-gateway/examples/cert/cert.crt",
+		"ServerKey": "/usr/share/doc/mender-gateway/examples/cert/private.key"
+	},
+	"Features": {
+		"ArtifactsProxy": {
+			"Enabled": true,
+			"GatewayURL": "https://gateway.docker.mender.io",
+			"DomainWhitelist": ["s3.amazonaws.com"],
+			"ArtifactsCache": {
+				"Enabled": true,
+				"Path": "/var/cache/mender-gateway"
+			}
+		}
+	},
+	"UpstreamServer": {
+		"URL": "https://hosted.mender.io"
+	}
+}
+```
+
+The Mender Gateway will automatically manage the cache eviction when the
+Artifacts cache is enabled if there is no more free space on the path specified
+in the configuration file. Freeing up disk space will remove cached Artifacts
+that are not being served anymore to clients starting from the oldest one.
+Therefore, we highly suggest using a dedicated partition or volume to store
+the artifacts on the device to avoid the Mender Gateway filling up the root file
+system or the data partition. One option is mounting a loop device dedicated to
+the Mender Gateway Artifacts cache feature.
+
+```
+sudo mkdir /var/cache/mender-gateway
+sudo fallocate -l 1G /mender-gateway.cache
+sudo mkfs.ext4 /mender-gateway.cache
+echo "/mender-gateway.cache /var/cache/mender-gateway ext4 loop 0 0" | sudo tee -a /etc/fstab
+sudo mount /var/cache/mender-gateway
+```
+<!--AUTOVERSION: "mke2fs %"/ignore-->
+> ```
+> mke2fs 1.44.5 (15-Dec-2018)
+> Discarding device blocks: done
+> Creating filesystem with 262144 4k blocks and 65536 inodes
+> Filesystem UUID: a6ce3bd4-e354-47e3-9469-b8402a2cc58a
+> Superblock backups stored on blocks:
+> 	32768, 98304, 163840, 229376
+> 
+> Allocating group tables: done
+> Writing inode tables: done
+> Creating journal (8192 blocks): done
+> Writing superblocks and filesystem accounting information: done
+> ```
+
+The Mender Gateway will store the cached Artifacts in the loop device `/mender-gateway.cache`,
+mounted in `/var/cache/mender-gateway` and limited to `1 GB`:
+
+```
+df -h /var/cache/mender-gateway
+```
+> ```
+> Filesystem	  Size  Used Avail Use% Mounted on
+> /dev/loop0	  976M  2.6M  907M   1% /var/cache/mender-gateway
+> ```
 
 ## Final considerations
 
