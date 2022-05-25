@@ -215,7 +215,7 @@ You can create additional users from the command line of the `useradm` pod:
 
 ```bash
 USERADM_POD=$(kubectl get pod -l 'app.kubernetes.io/name=useradm' -o name | head -1)
-kubectl exec $USERADM_POD -- useradm create-user --username "demo@mender.io" --password "demodemo" --tenant-id $TENANT_ID
+kubectl exec $USERADM_POD -- useradm-enterprise create-user --username "demo@mender.io" --password "demodemo" --tenant-id $TENANT_ID
 ```
 [/ui-tab]
 [/ui-tabs]
