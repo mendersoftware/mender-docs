@@ -25,6 +25,7 @@ Typical use cases are:
 * Turn on wifi before downloading the update, and eventually fail if the download fails after a predefined time.
 * Run additional sanity checks before committing to the update.
 
+<!-- Source is at: https://docs.google.com/drawings/d/1UUjfflMJIp-tTPmvRuIhfUVbRecH70S1oF9UW-Rl3lI/edit -->
 ![Mender state machine diagram](mender-state-machine.png)
 
 ### States
