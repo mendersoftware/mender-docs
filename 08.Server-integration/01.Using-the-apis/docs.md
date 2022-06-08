@@ -47,26 +47,80 @@ You should now have an API token you can use to call any of the [Mender server m
 
 ### Verify you can call the APIs
 
-To verify you can call the server APIs, list the users of your Mender server instance:
+To verify you can call the server APIs, you can get your user's details:
 
 ```bash
-curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/useradm/users | jq '.'
+curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v1/useradm/users/me | jq '.'
 ```
 
-If it succeeds it will return something like the following:
+If it succeeds, it will return:
+
+> ```
+> {
+>   "id": "0a6c526c-4637-4a62-bf38-81aa70c4aa59",
+>   "email": "mender-demo@example.com",
+>   "created_ts": "2022-06-08T03:58:28.582Z",
+>   "updated_ts": "2022-06-08T03:58:28.582Z",
+>   "login_ts": "2022-06-08T04:02:06.855Z"
+> }
+> ```
+
+If this fails, e.g. returns `401 Authorization Required`, make sure that the contents of your `JWT` and `MENDER_SERVER_URI` shell variables are correct and re-run the steps above if necessary.
+
+
+### Personal Access Tokens
+
+The JWT token returned by the log in end-point (`/api/management/v1/useradm/auth/login`) lasts one week. Therefore, it is not practical to store and reuse it, for example, from a CI/CD pipeline or a scheduled job. Personal Access Tokens are long-lived JWT tokens that you can use to programmatically access the Mender management APIs without logging in each time you need to perform API calls or handle the JWT token expiration every week. Personal Access Tokens act as API keys you can use from your CI/CD pipelines or scheduled jobs to access the Mender management APIs.
+
+You can generate a Personal Access Token using the web-based UI from the "My profile" page or the following API call:
 
 ```bash
-[
-    {
-        "created_ts": "2018-05-17T18:34:03.164Z",
-        "email": "myusername@example.com",
-        "id": "316517b2-fa41-4dd5-91e9-3ee7668ed230",
-        "updated_ts": "2018-05-17T18:34:03.164Z"
-    }
-]
+PERSONAL_ACCESS_TOKEN=$(curl -H "Authorization: Bearer $JWT" -H "Content-Type: application/json" -X POST $MENDER_SERVER_URI/api/management/v1/useradm/settings/tokens -d '{"name": "my_token", "expires_in": 31536000}')
 ```
 
-If this fails, e.g. returns `401 Authorization Required`, make sure that the contents of your `JWT` and `MENDER_SERVER_URI` shell variables is correct and re-run the steps above if necessary.
+Personal Access Tokens have a unique name and an expiration time in seconds, up to one year (31536000 seconds). Once generated, the server won't return the content of the access token anymore. Therefore, it is your responsibility to store its value securely.
+
+You can list your Personal Access Tokens as follows:
+
+```bash
+curl -H "Authorization: Bearer $JWT" -k $MENDER_SERVER_URI/api/management/v1/useradm/settings/tokens | jq '.'
+```
+> ```
+> [
+>   {
+>     "id": "767c2a29-a983-45ce-b58f-c4379d1b8ee8",
+>     "name": "my_token",
+>     "expiration_date": "2023-06-08T04:02:36.298Z",
+>     "created_ts": "2022-06-08T04:02:36.298Z"
+>   }
+> ]
+> ```
+
+You can now use your Personal Access Token to perform API calls:
+
+```bash
+curl -H "Authorization: Bearer $PERSONAL_ACCESS_TOKEN" $MENDER_SERVER_URI/api/management/v1/useradm/users/me | jq '.'
+```
+
+If it succeeds, it will return:
+
+> ```
+> {
+>   "id": "0a6c526c-4637-4a62-bf38-81aa70c4aa59",
+>   "email": "mender-demo@example.com",
+>   "created_ts": "2022-06-08T03:58:28.582Z",
+>   "updated_ts": "2022-06-08T03:58:28.582Z",
+>   "login_ts": "2022-06-08T04:02:06.855Z"
+> }
+> ```
+
+You can revoke a Personal Access Token by calling the following API end-point using the token ID:
+
+```bash
+curl -H "Authorization: Bearer $JWT" -X DELETE -k $MENDER_SERVER_URI/api/management/v1/useradm/settings/tokens/0a6c526c-4637-4a62-bf38-81aa70c4aa59
+```
+
+!!! The Personal Access Tokens impersonate the user who generated them, including all the permissions and roles associated with the user.
 
 
 ## Set up mender-cli
@@ -98,6 +152,12 @@ For example, to upload an Artifact you can run the following command:
 
 ```bash
 ./mender-cli artifacts --server https://hosted.mender.io upload release_1.mender
+```
+
+Instead of logging in using your credentials, you can specify a Personal Access Token:
+
+```bash
+./mender-cli artifacts --server https://hosted.mender.io --token-value $PERSONAL_ACCESS_TOKEN upload release_1.mender
 ```
 
 <!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
