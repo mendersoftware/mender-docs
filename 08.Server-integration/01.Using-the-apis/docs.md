@@ -9,11 +9,13 @@ The Mender server microservices are all accessible using an HTTPS API. These API
 
 There are many ways to interact with Mender's REST APIs and the most common ones are shown below.
 
-## Set up shell variables for cURL
+## Install cURL and jq and set up the shell variables
 
-There are many ways to call http-based REST APIs, but the most generally available method is the command line utility `curl`. The `jq` utility is commonly used to decode JSON messages and display them in human-readable format. REST API responses can contain raw data and must run through a JSON parser (`jq`).
+There are many ways to call HTTP-based REST APIs, but the command line utility `curl` is the most generally available method.
 
-You can easily get both using:
+The `jq` utility is commonly used to decode JSON messages and display them in a human-readable format. REST API responses contain raw JSON data and must run through a JSON parser (`jq`).
+
+On a Debian-derived system, you can easily install both running:
 
 ```bash
 sudo apt-get install curl jq
@@ -129,7 +131,7 @@ curl -H "Authorization: Bearer $JWT" -X DELETE -k $MENDER_SERVER_URI/api/managem
 
 It supports use cases for cloud systems, like uploading an Artifact to the Mender server, as well as end user workstation use cases like Remote terminal and Port forward (Troubleshoot add-on required).
 
-Over time the functionality of `mender-cli` will be extended to simplify the most common use cases for integrating the Mender server into other backend and cloud systems. If you need to cover other use cases today, follow the [tutorial for cURL instead](#set-up-shell-variables-for-curl).
+Over time the functionality of `mender-cli` will be extended to simplify the most common use cases for integrating the Mender server into other backend and cloud systems. If you need to cover other use cases today, follow the [tutorial for cURL instead](#install-curl-and-jq-and-set-up-the-shell-variables).
 
 First download the [prebuilt mender-cli Linux binary here][x.x.x_mender-cli].
 
