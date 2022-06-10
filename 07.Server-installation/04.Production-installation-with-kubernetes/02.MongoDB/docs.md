@@ -29,14 +29,14 @@ auth:
   rootPassword: ${MONGODB_ROOT_PASSWORD}
   replicaSetKey: ${MONGODB_REPLICA_SET_KEY}
 image:
-  tag: "4.4.6-debian-10-r29"
+  tag: "4.4.13-debian-10-r63"
 persistence:
   size: "8Gi"
 EOF
 
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo update
-helm upgrade --install mongodb bitnami/mongodb --version 10.21.1 -f mongodb.yml
+helm upgrade --install mongodb bitnami/mongodb --version 11.2.0 -f mongodb.yml
 ```
 
 You can get the connection string to connect to your mongodb cluster running:
