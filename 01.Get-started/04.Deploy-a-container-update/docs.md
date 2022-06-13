@@ -184,7 +184,7 @@ sudo docker ps -a | head
 
 The [Docker Update Module](https://hub.mender.io/t/docker/324?target=_blank)
 will download and run the specified images from e.g
-[https://hub.docker.io](https://hub.docker.io).
+[https://hub.docker.com](https://hub.docker.com).
 
 The [Kubernetes Update Module](https://hub.mender.io/t/kubernetes/1939?target=_blank) is very
 similar and instead allows deployment of Kubernetes manifesto files.
