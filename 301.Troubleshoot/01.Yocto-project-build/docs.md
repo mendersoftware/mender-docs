@@ -64,7 +64,7 @@ See the [Yocto Project documentation](http://www.yoctoproject.org/docs/latest/me
 ## U-Boot lacks support for Boot Count Limit
 
 In order to support robust rootfs rollback, Mender depends on being able to tell the bootloader to roll back to the known-working rootfs if attempts to boot the updated rootfs fails a given number of times.
-Currently, Mender uses the [Boot Count Limit](http://www.denx.de/wiki/view/DULG/UBootBootCountLimit?target=_blank) feature of U-Boot to achieve this.
+Currently, Mender uses the [Boot Count Limit](https://www.denx.de/wiki/Knowhow/DULG/UBootBootCountLimit?target=_blank) feature of U-Boot to achieve this.
 If you see errors similar to the following during the Yocto Project build process, the U-Boot you are using most likely does not support this feature.
 
 ```bash
