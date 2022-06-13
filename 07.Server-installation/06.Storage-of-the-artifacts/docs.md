@@ -123,13 +123,7 @@ volumes:
 ## Using Minio Gateway to store the artifacts on third-party storage services
 
 Minio can be used as Gateway to third-party storage services, optionally caching
-the data locally.
-
-Among the others, using Minio Gateway it is possible to store Mender Artifacts on:
-
-* [Azure Blob Storage](https://docs.min.io/docs/minio-gateway-for-azure.html)
-* [AWS S3](https://docs.min.io/docs/minio-gateway-for-s3.html)
-* [Hadoop HDFS](https://docs.min.io/docs/minio-gateway-for-hdfs.html)
-
-Please refer to the [official Minio documentation](https://docs.min.io/docs/) to
-configure Minio Gateway.
+the data locally. For example, using Minio Gateway, it is possible to store Mender
+Artifacts on on [AWS S3](https://docs.min.io/docs/minio-gateway-for-s3.html).
+Older versions supported Azure Blob Storage and Hadoop HDFS. Please refer to the
+[official Minio documentation](https://docs.min.io/docs/) to configure Minio Gateway.
