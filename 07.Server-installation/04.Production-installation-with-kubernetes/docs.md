@@ -16,6 +16,29 @@ are highlighted for the latter.
 You will use the [Helm chart](https://github.com/mendersoftware/mender-helm) to 
 deploy to production the Mender backend services on a Kubernetes cluster.
 
+## System Requirements
+
+The Mender backend supports all the
+[CNCF-certified](https://landscape.cncf.io/card-mode?category=certified-kubernetes-distribution,certified-kubernetes-hosted&grouping=category)
+Kubernetes distributions. We continuously test the Mender backend and the Helm
+charts on the latest stable Kubernetes version and the previous one.
+
+The following cloud distributions are validated:
+
+- [Amazon Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/)
+- [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-au/services/kubernetes-service/)
+- [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine/)
+
+The Mender backend will store the files in Persistent Volumes provisioned by Kubernetes
+according to the Helm charts configurations.
+
+To deploy a production-grade Mender backend, you will need Kubernetes worker nodes providing
+at least 4 GB of RAM, 4 vCPUs and 10 GB for the persistent volumes. However, you can adjust
+the memory and CPU requests to lower the requirements for development deployments and install
+the Mender backend on a Kubernetes cluster with lower available resources.
+
+The Mender backend is available for the x86 architecture only.
+
 ## Index
 
 * Prerequisites:
