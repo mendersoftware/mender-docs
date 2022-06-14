@@ -29,12 +29,12 @@ Mender provides images based on the following distributions:
 
 | Board                         | OS                              | Disk image                                                                                         | Storage size |
 |-------------------------------|---------------------------------|----------------------------------------------------------------------------------------------------|--------------|
-| Raspberry Pi 3 Model B and B+ | Raspberry Pi OS Bullseye Lite 2021-10-30 | [raspios-bullseye-armhf-lite-raspberrypi3-mender.img.xz][raspios-bullseye-armhf-lite-raspberrypi3-mender.img.xz] | 8 GB         |
-| Raspberry Pi 4 Model B        | Raspberry Pi OS Bullseye Lite 2021-10-30 | [raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz][raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz] | 8 GB         |
+| Raspberry Pi 3 Model B and B+ | Raspberry Pi OS Bullseye Lite 2022-01-28 | [raspios-bullseye-armhf-lite-raspberrypi3-mender.img.xz][raspios-bullseye-armhf-lite-raspberrypi3-mender.img.xz] | 8 GB         |
+| Raspberry Pi 4 Model B        | Raspberry Pi OS Bullseye Lite 2022-01-28 | [raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz][raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz] | 8 GB         |
 
 <!--AUTOVERSION: "mender-convert-%.img.xz"/mender-convert -->
-[raspios-bullseye-armhf-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-10-30-raspios-bullseye-armhf-lite/arm/2021-10-30-raspios-bullseye-armhf-lite-raspberrypi3-mender-convert-3.0.0.img.xz
-[raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2021-10-30-raspios-bullseye-armhf-lite/arm/2021-10-30-raspios-bullseye-armhf-lite-raspberrypi4-mender-convert-3.0.0.img.xz
+[raspios-bullseye-armhf-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2022-01-28-raspios-bullseye-armhf-lite/arm/2022-01-28-raspios-bullseye-armhf-lite-raspberrypi3-mender-convert-3.0.0.img.xz
+[raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2022-01-28-raspios-bullseye-armhf-lite/arm/2022-01-28-raspios-bullseye-armhf-lite-raspberrypi4-mender-convert-3.0.0.img.xz
 
 You can find images for other devices in our Mender Hub community forum, see
 [Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11?target=_blank) or
