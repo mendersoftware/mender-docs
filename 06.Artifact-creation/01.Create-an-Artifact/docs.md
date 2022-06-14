@@ -70,10 +70,10 @@ Note specifically that in this case we are creating a *module-image*, using the 
 #### Update Modules generation script
 
 <!--AUTOVERSION: "mendersoftware/mender/blob/%/support"/mender-->
-You can see the above example in the [single file Update Module](https://hub.mender.io/t/single-file/486?target=_blank). You can also see how simple it is to [write a custom Update Module.](https://github.com/mendersoftware/mender/blob/3.3.0-build1/support/modules/single-file?target=_blank)
+You can see the above example in the [single file Update Module](https://hub.mender.io/t/single-file/486?target=_blank). You can also see how simple it is to [write a custom Update Module.](https://github.com/mendersoftware/mender/blob/3.3.0/support/modules/single-file?target=_blank)
 
 <!--AUTOVERSION: "mendersoftware/mender/blob/%/support"/mender-->
-Also note that most of the Update Modules come with a [script to simplify the Artifact creation](https://github.com/mendersoftware/mender/blob/3.3.0-build1/support/modules-artifact-gen/single-file-artifact-gen?target=_blank), but generally these are wrappers around `mender-artifact` utility to hide the complexity and make it easy to generate artifacts.
+Also note that most of the Update Modules come with a [script to simplify the Artifact creation](https://github.com/mendersoftware/mender/blob/3.3.0/support/modules-artifact-gen/single-file-artifact-gen?target=_blank), but generally these are wrappers around `mender-artifact` utility to hide the complexity and make it easy to generate artifacts.
 
 #### Server side Artifact generation
 
@@ -83,4 +83,4 @@ will carry the file you have uploaded, the destination
 directory, the filename, and permissions, exactly as we saw above.
 
 <!--AUTOVERSION: "mendersoftware/mender/blob/%/Documentation"/mender-->
-For more details on how to write Update Modules, visit the [Create a custom Update Module](../08.Create-a-custom-Update-Module/docs.md) section and the [Update Module API specification](https://github.com/mendersoftware/mender/blob/3.3.0-build1/Documentation/update-modules-v3-file-api.md?target=_blank).
+For more details on how to write Update Modules, visit the [Create a custom Update Module](../08.Create-a-custom-Update-Module/docs.md) section and the [Update Module API specification](https://github.com/mendersoftware/mender/blob/3.3.0/Documentation/update-modules-v3-file-api.md?target=_blank).

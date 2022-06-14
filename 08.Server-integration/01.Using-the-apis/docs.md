@@ -101,4 +101,4 @@ If it succeeds it will return something like the following:
 If this fails, e.g. returns `401 Authorization Required`, make sure that the contents of your `JWT` and `MENDER_SERVER_URI` shell variables is correct and re-run the steps above if necessary.
 
 <!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
-[x.x.x_mender-cli]: https://downloads.mender.io/mender-cli/1.8.0-build1/linux/mender-cli
+[x.x.x_mender-cli]: https://downloads.mender.io/mender-cli/1.8.0/linux/mender-cli

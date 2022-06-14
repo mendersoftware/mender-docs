@@ -14,7 +14,7 @@ To request a specific version of the client, add a snippet like the following to
 
 <!--AUTOVERSION: "PREFERRED_VERSION_mender-client = \"%\""/mender-->
 ```
-PREFERRED_VERSION_mender-client = "3.3.0-build1"
+PREFERRED_VERSION_mender-client = "3.3.0"
 ```
 
 <!--AUTOVERSION: "Yocto branches higher than 3.1 (%)"/ignore "Mender client % and later"/ignore-->
@@ -327,7 +327,7 @@ A typical error message for this condition is:
 Error:
  Problem: package grub-efi-mender-precompiled-2.04-r0.cortexa8hf_neon requires u-boot, but none of the providers can be installed
   - package grub-efi-mender-precompiled-2.04-r0.cortexa8hf_neon conflicts with u-boot <= 1:2019.07 provided by u-boot-fork-1:2019.07-r0.beaglebone_yocto
-  - package mender-3.3.0-build1-r0.cortexa8hf_neon requires grub-editenv, but none of the providers can be installed
+  - package mender-3.3.0-r0.cortexa8hf_neon requires grub-editenv, but none of the providers can be installed
   - conflicting requests
 ```
 
