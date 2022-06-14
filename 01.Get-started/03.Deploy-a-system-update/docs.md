@@ -34,14 +34,14 @@ Download the `mender-artifact` binary. If you're on Linux
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 ```bash
-wget https://downloads.mender.io/mender-artifact/3.8.0-build1/linux/mender-artifact -O ${HOME}/bin/mender-artifact
+wget https://downloads.mender.io/mender-artifact/3.8.0/linux/mender-artifact -O ${HOME}/bin/mender-artifact
 ```
 
 On MacOS
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 ```bash
-wget https://downloads.mender.io/mender-artifact/3.8.0-build1/darwin/mender-artifact -O ${HOME}/bin/mender-artifact
+wget https://downloads.mender.io/mender-artifact/3.8.0/darwin/mender-artifact -O ${HOME}/bin/mender-artifact
 ```
 
 
@@ -181,7 +181,7 @@ this modification *is not part of your system snapshot* created above.
 <!-- See MEN-4983 -->
 !! Be careful when running `apt upgrade` on a device with Mender system updates enabled. Integration
 !! with `apt upgrade` (through the `grub.d` framework) is only implemented for x86 as of
-!! mender-convert version 3.3.0-build1. For ARM and other non-x86 architectures, always update single
+!! mender-convert version 3.3.0. For ARM and other non-x86 architectures, always update single
 !! applications only, because running `apt upgrade` may brick your device!. If you need to run `apt
 !! upgrade`, do it on a pristine system without Mender installed, and then [convert it to a Mender
 !! image](../../04.System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md)
