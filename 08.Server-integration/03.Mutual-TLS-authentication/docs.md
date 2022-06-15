@@ -240,7 +240,7 @@ docker run \
   -v $(pwd)/server-cert.pem:/etc/mtls/certs/server/server.crt \
   -v $(pwd)/server-private.key:/etc/mtls/certs/server/server.key \
   -v $(pwd)/ca-cert.pem:/etc/mtls/certs/tenant-ca/tenant.ca.pem \
-  registry.mender.io/mendersoftware/mtls-ambassador:mender-3.2.2
+  registry.mender.io/mendersoftware/mtls-ambassador:mender-origin/staging
 ```
 <!-- AUTOMATION: execute=} & -->
 
