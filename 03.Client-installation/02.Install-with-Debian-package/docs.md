@@ -34,7 +34,7 @@ this is the most common for users getting starting with Mender.
 
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1"/mender -->
 ```bash
-wget https://downloads.mender.io/3.2.1/dist-packages/debian/armhf/mender-client_3.2.1-1%2Bdebian%2Bbuster_armhf.deb
+wget https://downloads.mender.io/3.3.0/dist-packages/debian/armhf/mender-client_3.3.0-1%2Bdebian%2Bbuster_armhf.deb
 ```
 
 !!! The above link is for *armhf* devices, which is the most common device architecture. See [the downloads page](../../09.Downloads/docs.md) for other architectures, and also make sure to modify the references to the package in commands below.
@@ -49,7 +49,7 @@ To install and configure Mender run the following command:
 
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
 ```bash
-sudo dpkg -i mender-client_3.2.1-1+debian+buster_armhf.deb
+sudo dpkg -i mender-client_3.3.0-1+debian+buster_armhf.deb
 ```
 
 After completing the installation wizard, Mender is correctly set up on your
@@ -73,7 +73,7 @@ configuration options.
 ```bash
 DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
 TENANT_TOKEN="<INSERT YOUR TOKEN FROM https://hosted.mender.io/ui/#/settings/my-organization>"
-sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_3.2.1-1+debian+buster_armhf.deb
+sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_3.3.0-1+debian+buster_armhf.deb
 sudo mender setup \
             --device-type $DEVICE_TYPE \
             --hosted-mender \
@@ -90,7 +90,7 @@ sudo systemctl restart mender-client
 ```bash
 DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
 SERVER_IP_ADDR="<INSERT THE IP ADDRESS OF YOUR DEMO SERVER>"
-sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_3.2.1-1+debian+buster_armhf.deb
+sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_3.3.0-1+debian+buster_armhf.deb
 sudo mender setup \
             --device-type $DEVICE_TYPE \
             --demo \
@@ -105,7 +105,7 @@ sudo systemctl restart mender-client
 DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
 SERVER_URL="<INSERT YOUR ENTERPRISE SERVER URL>"
 TENANT_TOKEN="<INSERT YOUR TOKEN FROM YOUR ENTERPRISE SERVER>"
-sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_3.2.1-1+debian+buster_armhf.deb
+sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_3.3.0-1+debian+buster_armhf.deb
 sudo mender setup \
             --device-type $DEVICE_TYPE \
             --server-url $SERVER_URL \
@@ -122,7 +122,7 @@ sudo systemctl restart mender-client
 <!--AUTOVERSION: "mender/tree/%#installing-from-source"/mender -->
 As an alternative to using a Debian package, it is possible to install the
 Mender client from source by following the guidelines outlined in the
-[README.md](https://github.com/mendersoftware/mender/tree/3.2.1#installing-from-source?target=_blank)
+[README.md](https://github.com/mendersoftware/mender/tree/3.3.0#installing-from-source?target=_blank)
 of the Mender client source repository.
 
 
