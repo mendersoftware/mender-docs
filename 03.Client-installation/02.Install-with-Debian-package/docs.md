@@ -26,8 +26,7 @@ architectures:
 - amd64: Generic 64-bit x86 processors, the most popular among workstations
 
 See [the downloads page](../../09.Downloads/docs.md) for links to download all
-package architectures. We will assume *armhf* in the following instructions as
-this is the most common for users getting starting with Mender.
+package architectures.
 
 
 ### Download the package
@@ -37,7 +36,9 @@ this is the most common for users getting starting with Mender.
 wget https://downloads.mender.io/3.3.0/dist-packages/debian/armhf/mender-client_3.3.0-1%2Bdebian%2Bbuster_armhf.deb
 ```
 
-!!! The above link is for *armhf* devices, which is the most common device architecture. See [the downloads page](../../09.Downloads/docs.md) for other architectures, and also make sure to modify the references to the package in commands below.
+!!! The above link will use the native architecture. See [the downloads
+page](../../09.Downloads/docs.md) for other architectures, and also make sure to modify the
+references to the package in commands below.
 
 
 ### Option 1: Attended installation with a wizard
@@ -63,11 +64,21 @@ device is now ready to authenticate with the server and start receiving updates.
 Alternatively, install the package non-interactively. This is suitable for
 scripts or other situations where no user input is desired.
 
+First, to install Mender without configuring it run the following command:
+
+<!--AUTOVERSION: "mender-client_%-1"/mender -->
+```bash
+sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_master-1+debian+buster_$(dpkg --print-architecture).deb
+```
+
 The setup is different depending on your server configuration and the most
 common cases are shown below. Use `mender setup --help` to learn about all
 configuration options.
 
-- Connecting to [hosted Mender](https://hosted.mender.io?target=_blank) using demo settings
+<!--AUTOMATION: execute=DEVICE_TYPE=device-type -->
+<!--AUTOMATION: execute=TENANT_TOKEN=secure-token -->
+<!--AUTOMATION: execute=SERVER_IP_ADDR=1.2.3.4 -->
+<!--AUTOMATION: execute=SERVER_URL=https://secure.server -->
 
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1"/mender -->
 ```bash
@@ -78,11 +89,11 @@ sudo mender setup \
             --device-type $DEVICE_TYPE \
             --hosted-mender \
             --tenant-token $TENANT_TOKEN \
-            --retry-poll 30 \
-            --update-poll 5 \
-            --inventory-poll 5
-sudo systemctl restart mender-client
+            --demo-polling
 ```
+[/ui-tab]
+[ui-tab title="Demo server"]
+Set the following variables:
 
 - Connecting to a demo server using demo settings
 
@@ -98,7 +109,7 @@ sudo mender setup \
 sudo systemctl restart mender-client
 ```
 
-- Connecting to an [Enterprise](https://mender.io/products/mender-enterprise?target=_blank) server
+Configure Mender with:
 
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1"/mender -->
 ```bash
@@ -111,9 +122,15 @@ sudo mender setup \
             --server-url $SERVER_URL \
             --server-cert="" \
             --tenant-token $TENANT_TOKEN \
-            --retry-poll 30 \
-            --update-poll 5 \
-            --inventory-poll 5
+            --demo-polling
+```
+[/ui-tab]
+[/ui-tabs]
+
+Finally, to restart the Mender service for the new configuration to take effect run the following command:
+
+<!--AUTOMATION: ignore -->
+```bash
 sudo systemctl restart mender-client
 ```
 

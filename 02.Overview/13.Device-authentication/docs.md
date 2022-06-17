@@ -175,4 +175,4 @@ submitting an authentication request](../../200.Server-side-API/?target=_blank#d
 
 ## Authorize to external systems
 
-Mender makes it possible to integrate devices with [Azure IoT Hub](../../08.Server-integration/04.Azure-IoT-Hub/docs.md).
+Mender makes it possible to integrate devices with [Azure IoT Hub](../../08.Server-integration/05.Azure-IoT-Hub/docs.md).
