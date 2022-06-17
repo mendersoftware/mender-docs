@@ -68,7 +68,7 @@ First, to install Mender without configuring it run the following command:
 
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
 ```bash
-sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_master-1+debian+buster_$(dpkg --print-architecture).deb
+sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_3.3.0-1+debian+buster_$(dpkg --print-architecture).deb
 ```
 
 The setup is different depending on your server configuration and the most
