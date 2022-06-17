@@ -82,7 +82,7 @@ MENDER_FEATURES_DISABLE_append = " mender-systemd"
 
 Also, you do not need any daemon-related configuration items in your `local.conf` as outlined in [the section on configuring the Yocto Project build](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build).
 
-! If you disable Mender running as a daemon under `systemd`, you must run all required Mender commands from the CLI or scripts. Most notably, you need to run `mender -commit` after booting into and verifying a successful deployment. When running in managed mode, any pending `mender -commit` will automatically run by the Mender daemon after it starts. See [Modes of operation](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) for more information about the difference.
+! If you disable Mender running as a daemon under `systemd`, you must run all required Mender commands from the CLI or scripts. Most notably, you need to run `mender commit` after booting into and verifying a successful deployment. When running in managed mode, any pending `mender commit` will automatically run by the Mender daemon after it starts. See [Modes of operation](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) for more information about the difference.
 
 
 ## Identity
@@ -287,7 +287,7 @@ bitbake-layers add-layer ../sources/meta-mender/meta-mender-commercial
 ```
 
 To use Mender Monitor you need to accept its commercial license. If you decide
-to accept it, add the follwowing line to your `local.conf`:
+to accept it, add the following line to your `local.conf`:
 
 ```bash
 LICENSE_FLAGS_WHITELIST += "commercial_mender-monitor"
@@ -314,3 +314,106 @@ LICENSE_FLAGS_WHITELIST += "commercial_mender-monitor"
 SRC_URI_pn-mender-monitor = "file://${HOME}/mender-monitor-1.2.0.tar.gz"
 IMAGE_INSTALL_append = " mender-monitor"
 ```
+
+## mender-gateway
+
+!!!!! Mender Gateway is only available in the Mender Enterprise plan.
+!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! for an overview of all Mender plans and features.
+
+<!--AUTOVERSION: "/mender-gateway/yocto/%/"/mender-gateway "/mender-gateway-%.tar.xz"/mender-gateway -->
+Download the Mender Gateway from
+https://downloads.customer.mender.io/content/hosted/mender-gateway/yocto/master/mender-gateway-master.tar.xz
+and download the tarball to a known location on your local system using your hosted
+Mender username and password:
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="hosted"]
+<!--AUTOVERSION: "/mender-gateway/yocto/%/"/mender-gateway "/mender-gateway-%.tar.xz"/mender-gateway -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+curl --fail -u $HOSTED_MENDER_EMAIL -o ${HOME}/mender-gateway-master.tar.xz https://downloads.customer.mender.io/content/hosted/mender-gateway/yocto/master/mender-gateway-master.tar.xz
+```
+[/ui-tab]
+[ui-tab title="enterprise"]
+<!--AUTOVERSION: "/mender-gateway/yocto/%/"/mender-gateway "/mender-gateway-%.tar.xz"/mender-gateway -->
+```bash
+MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
+curl --fail -u $MENDER_ENTERPRISE_EMAIL -o ${HOME}/mender-gateway-master.tar.xz https://downloads.customer.mender.io/content/on-prem/mender-gateway/yocto/master/mender-gateway-master.tar.xz
+```
+[/ui-tab]
+[/ui-tabs]
+
+Add the `meta-mender` commercial layer to your build layers:
+
+```bash
+bitbake-layers add-layer ../sources/meta-mender/meta-mender-commercial
+```
+
+To use Mender Monitor you need to accept its commercial license. If you decide
+to accept it, add the following line to your `local.conf`:
+
+```bash
+LICENSE_FLAGS_WHITELIST += "commercial_mender-gateway"
+```
+
+Give the `mender-gateway` recipe the path to the local source code just downloaded:
+
+<!--AUTOVERSION: "/mender-gateway-%.tar.xz"/mender-gateway -->
+```bash
+SRC_URI_pn-mender-gateway = "file://${HOME}/mender-gateway-master.tar.xz"
+```
+
+Then make Mender monitor a part of your image with:
+
+```bash
+IMAGE_INSTALL_append = " mender-gateway"
+```
+
+Which means your `local.conf` should now contain the following lines:
+
+<!--AUTOVERSION: "/mender-gateway-%.tar.xz"/mender-gateway -->
+```bash
+LICENSE_FLAGS_WHITELIST += "commercial_mender-gateway"
+SRC_URI_pn-mender-gateway = "file://${HOME}/mender-gateway-master.tar.xz"
+IMAGE_INSTALL_append = " mender-gateway"
+```
+
+### Configuration
+
+To configure `mender-gateway`, create your own `mender-gateway.conf` and
+augment the `mender-gateway` recipe with the new configuration. For example, create a `mender-gateway_%.bbappend` file in your layer, and add this:
+
+```bash
+FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-MENDER-GATEWAY-CONF>:"
+SRC_URI_append = " file://mender-gateway.conf"
+
+do_install_append() {
+    install -m 600 ${WORKDIR}/mender-gateway.conf ${D}/${sysconfdir}/mender/mender-gateway.conf
+}
+```
+
+Replace <DIRECTORY-WITH-MENDER-GATEWAY-CONF> with the path to the `mender-gateway.conf` file, relative to the recipe file.
+
+### Examples package
+
+!!!!! You should not use this package on production devices.
+
+See [Downloads](../../09.Downloads/docs.md#examples-package) for download links for this package.
+
+To integrate it on your Yocto build, add the `meta-mender` demo layer to your build layers:
+
+```bash
+bitbake-layers add-layer ../sources/meta-mender/meta-mender-demo
+```
+
+Then, append the packae to `mender-gateway` sources:
+
+<!--AUTOVERSION: "/mender-gateway-examples-%.tar"/mender-gateway -->
+```bash
+SRC_URI_pn-mender-gateway_append = " file:///${HOME}/mender-gateway-examples-master.tar"
+```
+
+This will install the following on your device:
+* Self-signed demo certificate and key for `*.docker.mender.io`
+* Demo configuration file with `UpstreamServer` configured for `hosted.mender.io`

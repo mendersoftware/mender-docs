@@ -1,54 +1,97 @@
 ---
-title: Role Based Access Control
+title: Role-Based Access Control
 taxonomy:
 category: docs
 ---
 
-!!!!! Role Based Access Control is only available in the Mender Enterprise plan.
+!!!!! Role-Based Access Control is only available in the Mender Enterprise plan.
 !!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
-Role Based Access Control (RBAC) significantly reduces the risk of accidental
-and unauthorized deployments. Admin users of the Mender server can assign Roles
-with limited access, based on the responsibility of the user and required tasks.
-Role assignments reduce the risk of accidents, such as deploying beta software
-to production devices. It also reduces the security impact of any compromised
-Mender server user accounts (e.g. in the case of a stolen password).
+Role-Based Access Control (RBAC) significantly reduces the risk of accidental
+and unauthorized actions. Admin Users of the Mender server can assign to the
+other Users Roles with limited access based on the User's responsibilities
+and required tasks. Role assignments reduce the risk of accidents, such as
+deploying beta software to production devices. It also reduces the security
+impact of any compromised Mender server User accounts (e.g., in the case of a
+stolen password).
 
-Mender supports four different types of Roles:
+![List of Users](users.png)
 
-* **Admin:** Full access
+## Roles
 
-* **Read Access:** The role allows the user to see the status of devices and deployments,
-but not make any modifications. This role is well suited for limited technical
-support users, or team leads who need an overview of deployment status or
-individual devices, but are not involved in day-to-day deployment management.
+A Role is a named set of permissions you can assign to Users.
 
+You can manage Roles in the "Roles" view in the Mender settings for your tenant:
 
-* **Release Manager:** Intended for *Continuous Integration* systems. It can only manage
-Mender Artifacts, such as upload and delete Artifacts.
+![List of Roles](roles.png)
 
-* **Deployments Manager:** Intended for users responsible for managing deployments.
-With this role users can create and abort deployments. On it's own this role
-won't make the devices visible in the UI, you must pair it with Read Access for that.
+## Built-in Roles
 
-* **Troubleshooting:** User with this role assigned has access
-to the troubleshooting features such as Remote Terminal, File Transfer, Port Forwarding.
-On it's own this role won't make the devices visible in the UI, you must pair it
-with Read Access for that.
+Mender's RBAC system supports five built-in Roles:
 
-* **Device groups:** Grants access to a *customizable* set of Device groups in
-Mender. Instances of this role can be created under the *Roles* section in the
-UI by choosing a name and which device groups the new role should have access
-to. The most common use case is to allow developers full access to Test devices,
-while only selected users have access to Production devices. Another common use
-case is to segregate device access based on geographical location, e.g. Europe
-vs. US.
-To have a user who has full control over a particular group in the UI and nothing else,
-be sure to give them the roles: Deployments Manager, Read Access and the chosen Device group role.
+* **Admin:** Full access.
 
-Users with the Admin role can manage other users, including creating and
-assigning roles when creating a new user account or editing an existing user
-account.
+* **Read Access:** Intended for team leaders or limited tech support accounts;
+this Role can see all Devices, Artifacts and Deployment reports but cannot make
+any changes.
 
-![Add role](image0.png)
+* **Release Manager:** Intended for automation accounts building software (e.g.,
+CI/CD systems), this Role can only manage Artifacts, including uploading new Artifacts
+and deleting existing Artifacts. It does not have access to Devices or Deployments.
+
+* **Deployments Manager:** Intended for Users responsible for managing deployments,
+this Role can create and abort deployments for all the devices.
+
+* **Troubleshooting:** Access to the troubleshooting features for all the devices:
+Remote Terminal, File Transfer, Port Forwarding.
+
+## Custom Roles and Permissions
+
+You can create new Roles based on your specific needs and workflows. When creating or
+editing custom Roles, you can specify the Role's name, description and a set of
+permissions to grant to the Users bound to the Role.
+
+Some of the permissions apply at the tenant level:
+
+* **User Management**: these permissions should be granted carefully, as they
+allow privilege increases for any Users managed by a User with User management
+permissions.
+  * **Read**: read access to the User management sections.
+  * **Manage**: write access to the User management sections, requires **Read**.
+
+* **System audit log**: these permissions allow tracing changes to devices,
+releases and User accounts, as well as providing information about deployments.
+  * **Read**: read access to the audit log section.
+
+* **Releases**: these permissions can be granted to allow artifact and release
+modifications, as well as the creation of new releases.
+  * **Read**: read access to the releases and artifacts sections.
+  * **Upload**: upload-only access to the releases and artifacts sections.
+  * **Manage**: full write access to the releases and artifacts sections, requires **Read** and **Upload**.
+
+The device-specific permissions can apply to either all the devices or selected
+static groups of devices:
+
+* **Read**: read access to the devices.
+* **Manage**: write access to the devices, requires **Read**.
+* **Deploy**: permission to deploy software to the devices, requires **Read**.
+* **Connect**: troubleshooting access to the devices, requires **Read**.
+
+!!! Please note that the **Connect** permission gives users access to the Remote Terminal,
+!!! File Transfer, and Port-forwarding features. Through these, it is possible to alter
+!!! the devices locally, for example, changing the Mender Client configuration.
+!!! Therefore, you can consider it a form of write access to the devices.
+
+![Permissions](permissions.png)
+
+## Assigning Roles to Users
+
+When creating a new User, or editing an existing User, you can assign one or more
+Roles to him by selecting them from the Roles dropdown:
+
+![Create a new User](users-new.png)
+
+The permissions granted to a User are the union of all his Roles' set of permissions.
+
+![Create a new User](users-edit.png)

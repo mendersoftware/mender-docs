@@ -18,6 +18,8 @@ import os
 import re
 import subprocess
 import sys
+import json
+from urllib.request import urlopen
 
 UPDATE = 1
 CHECK = 2
@@ -35,36 +37,71 @@ VERSION_MATCHER = r"(?:%s|(?:mender-%s)|(?<![a-z])(?:%s|master)(?![a-z]))" % (
     EXACT_VERSION_MATCH,
     YOCTO_BRANCHES,
 )
+MINOR_VERSIONS_MATCHER = r"(?:(?<!\.)\s*\d+\.\d+[, ]?(?!\.\d))+"
 
 VERSION_CACHE = {}
 
 ERRORS_FOUND = False
+
+VERSIONS_URL = "https://docs.mender.io/releases/versions.json"
+response = urlopen(VERSIONS_URL)
+versions = json.loads(response.read())
+RELEASED_VERSION_CACHE = versions or {}
+
+
+def get_released_version_of(repo):
+    minor_version = ""
+    if INTEGRATION_VERSION:
+        minor_version = INTEGRATION_VERSION[0 : INTEGRATION_VERSION.rfind(".")]
+    if (
+        not minor_version
+        or not "releases" in RELEASED_VERSION_CACHE
+        or not minor_version in RELEASED_VERSION_CACHE["releases"]
+    ):
+        return None
+    info = next(
+        (
+            info
+            for info in RELEASED_VERSION_CACHE["releases"][minor_version][
+                INTEGRATION_VERSION
+            ]["repos"]
+            if info["name"] == repo
+        ),
+        {},
+    )
+    if "version" in info:
+        return info["version"]
 
 
 def get_version_of(repo):
     global VERSION_CACHE
 
     version = VERSION_CACHE.get(repo)
+    released_version = get_released_version_of(repo)
     if version is False:
         return None
     elif version is not None:
         return version
+    elif released_version:
+        VERSION_CACHE[repo] = released_version
+        return released_version
     elif INTEGRATION_REPO is not None and INTEGRATION_VERSION is not None:
-        version = (
-            subprocess.check_output(
-                [
-                    os.path.join(INTEGRATION_REPO, "extra", "release_tool.py"),
-                    "--version-of",
-                    repo,
-                    "--version-type",
-                    "git",
-                    "--in-integration-version",
-                    INTEGRATION_VERSION,
-                ]
-            )
-            .strip()
-            .decode()
+        result = subprocess.run(
+            [
+                os.path.join(INTEGRATION_REPO, "extra", "release_tool.py"),
+                "--version-of",
+                repo,
+                "--version-type",
+                "git",
+                "--in-integration-version",
+                INTEGRATION_VERSION,
+            ],
+            capture_output=True,
         )
+        if result.stderr or result.returncode == 1:
+            VERSION_CACHE[repo] = False
+            return None
+        version = result.stdout.strip().decode()
         VERSION_CACHE[repo] = version
         return version
     else:
@@ -73,10 +110,18 @@ def get_version_of(repo):
         return None
 
 
+def get_lts_versions():
+    global VERSION_CACHE
+
+    lts_versions = ", ".join(RELEASED_VERSION_CACHE["lts"])
+    VERSION_CACHE["lts"] = lts_versions
+    return lts_versions
+
+
 def walk_tree():
     exclude_dirs = [
         "node_modules",  # Several readme.md with version strings
-        "302.Release-information",  # References to old versions
+        "03.Open-source-licenses",  # References to old versions
     ]
     for dirpath, dirs, filenames in os.walk(".", topdown=True):
         dirs[:] = list(filter(lambda x: not x in exclude_dirs, dirs))
@@ -283,7 +328,7 @@ def process_line(line, replacements, fd):
 
     # If we were not given a file, then we are just doing checking and are done.
     if fd is None:
-        return
+        return None
 
     # Now do the replacement and write that.
     all_replaced = do_replacements(line, replacements, just_remove=False)
@@ -312,6 +357,8 @@ def do_replacements(line, replacements, just_remove):
             _percent = "%"
 
         regex = escaped.replace(_percent, VERSION_MATCHER)
+        if repo == "lts":
+            regex = escaped.replace(_percent, MINOR_VERSIONS_MATCHER)
         if just_remove:
             repl = search.replace("%", "")
         else:
@@ -319,7 +366,9 @@ def do_replacements(line, replacements, just_remove):
                 continue
             version = get_version_of(repo)
             if version is None:
-                continue
+                if repo != "lts":
+                    continue
+                version = get_lts_versions()
             if complain:
                 if IGNORE_COMPLAIN:
                     continue

@@ -13,7 +13,7 @@ Mender. We will be using the
 [Docker Update Module](https://hub.mender.io/t/docker/324?target=_blank) which
 allows you to specify a list of container images and their versions in a
 [Mender Artifact](../../02.Overview/03.Artifact/docs.md) which
-can later be deployed to your device using the hosted Mender server.
+can later be deployed to your device using the hosted Mender Server.
 
 ## Prerequisites
 
@@ -55,11 +55,12 @@ Once the installation script has finished, verify that you can run the
 
 You will get similar output to below:
 
-
->```bash
->pi@raspberrypi:~$ sudo docker images
->REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
->```
+```bash
+sudo docker images
+```
+> ```console
+> REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+> ```
 
 As you can see, there are no Docker images on the device. In the next step we
 will generate a
@@ -67,6 +68,8 @@ will generate a
 download an image.
 
 ### Step 2 - Download the mender-artifact utility on your workstation
+
+!!! If you already installed `mender-artifact` on your system, you can skip this step.
 
 Prepare destination directory:
 
@@ -160,23 +163,28 @@ it to your device.
 If the deployment of `hello-world-container-update.mender` is successful, you
 will see that there is a image downloaded on the device:
 
->```bash
->pi@raspberrypi:~$ sudo docker images
->REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
->hello-world         <none>              851163c78e4a        4 months ago        4.85kB
->```
+```bash
+sudo docker images
+```
+> ```console
+> REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+> hello-world         <none>              851163c78e4a        4 months ago        4.85kB
+> ```
 
 You can also see that the container was started, but since the hello-world
 container does not contain a daemon it exited immediately:
 
->```bash
->pi@raspberrypi:~$ sudo docker ps -a | head
->CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
->72e6cf80fa6a   hello-world   "/hello"   45 seconds ago   Exited (0) 42 seconds ago             optimistic_shaw
->```
+```bash
+sudo docker ps -a | head
+```
+> ```console
+> CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
+> 72e6cf80fa6a   hello-world   "/hello"   45 seconds ago   Exited (0) 42 seconds ago             optimistic_shaw
+> ```
 
-The [Docker Update Module](https://hub.mender.io/t/docker/324?target=_blank) will
-download and run the specified images from e.g https://hub.docker.io.
+The [Docker Update Module](https://hub.mender.io/t/docker/324?target=_blank)
+will download and run the specified images from e.g
+[https://hub.docker.com](https://hub.docker.com).
 
 The [Kubernetes Update Module](https://hub.mender.io/t/kubernetes/1939?target=_blank) is very
 similar and instead allows deployment of Kubernetes manifesto files.

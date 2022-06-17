@@ -4,6 +4,51 @@ taxonomy:
     category: docs
 ---
 
+## Removed previous stable APT repositories
+
+We [removed](../../09.Downloads/docs.md#Set-up-the-APT-repository) the previously deprecated stable APT repository:
+
+```
+deb [arch=your-arch] https://downloads.mender.io/repos/debian stable main
+```
+
+If you see errors of the form:
+
+```
+Err:3 https://downloads.mender.io/repos/debian stable InRelease
+  403  Forbidden [IP: 52.222.214.71 443]
+```
+
+it means you are using the old repository, please update to the current one (see [Set up the APT repository](../../09.Downloads/docs.md#Set-up-the-APT-repository) section).
+
+In order to remove the obsolete repository `deb [arch=your-arch] https://downloads.mender.io/repos/debian stable main`
+you can use the following command:
+
+```bash
+add-apt-repository -r "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian stable main"
+```
+
+and then re-add the new one with:
+
+```bash
+add-apt-repository "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/buster/stable main"
+```
+
+## Repository 'http://raspbian.raspberrypi.org/raspbian buster InRelease' changed its 'Suite' value from 'stable' to 'oldstable'
+
+In case you see the following errors during `apt-get update`:
+
+```
+E: Repository 'http://raspbian.raspberrypi.org/raspbian buster InRelease' changed its 'Suite' value from 'stable' to 'oldstable'
+N: This must be accepted explicitly before updates for this repository can be applied. See apt-secure(8) manpage for details.
+```
+
+In order to accept the change of the suite name, you need to run:
+
+```
+apt-get update --allow-releaseinfo-change
+```
+
 <!--AUTOVERSION: "mender-client %"/ignore -->
 ## Installation of the mender-client 3.2.0 Debian package on Debian Bullseye and Ubuntu 20.04
 
@@ -206,7 +251,7 @@ until you have upgraded all Mender Clients and can use the corresponding latest 
 You have the Mender binary on your device and try to trigger a rootfs update but you get output similar to the following:
 
 ```bash
-mender -install /media/rootfs-image-mydevice.mender
+mender install /media/rootfs-image-mydevice.mender
 
 ERRO[0000] exit status 1                                 module=partitions
 ERRO[0000] No match between boot and root partitions.    module=main
@@ -220,3 +265,65 @@ The problem here is most likely that the device does not have the [partition lay
 If you are using the Mender client in demo mode, either by selecting it when running `mender setup`, or set up with the [demo layer](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md), the Mender client has more aggressive [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md) to simplify testing.
 
 See the documentation on [building for production](../../05.System-updates-Yocto-Project/06.Build-for-production/docs.md) and [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md) to reduce the network bandwidth usage.
+
+
+## Delta updates 
+
+For more specific troubleshooting issue please look at the [troubleshooting section for the delta update module](https://hub.mender.io/t/robust-delta-update-rootfs/1144#troubleshooting-11).
+
+
+### How checksums look in a working case
+
+The delta mechanism makes use of the [Provides and Depends](../../02.Overview/03.Artifact/docs.md#provides-and-depends).
+
+The block below shows 3 example artifacts.
+
+```
++-------------------------------+
+|Type:       rootfs-image       |
+|Version:    v1                 |
+|Checksum:   5bb84175           |
+|                               |
+|Provides                       |
+|rootfs-image.checksum: 5bb84175|  -> matches the Depends for the delta
++-------------------------------+
+
++--------------------------------+        +--------------------------------+
+|Type:       mender-binary-delta |        |Type:       rootfs-image        |
+|Version:    v2                  |        |Version:    v2                  |
+|Checksum:   ff532419            |        |Checksum:   b9147deb5           |
+|                                |        |                                |
+|Provides                        |        |Provides                        |
+|rootfs-image.checksum: b9147deb5|        |rootfs-image.checksum: b9147deb5|
+|                                |        +--------------------------------+
+|Depends:                        |
+|rootfs-image.checksum: 5bb841755|
++--------------------------------+
+```
+
+`v1`
+* Version is assumed to be running on the device
+* `rootfs-image` type artifact - contains the entire partition content
+* Has the same `checksum` and `rootfs-image.checksum`
+    * Paylod from the artifact is the same as what ends running on the device
+
+`v2 mender-binary-delta`
+* `mender-binary-delta` type artifact - contains only a delta (binary difference between two payloads)
+* Can only be applied on top of a running version with a correct checksum
+    * `rootfs-image.checksum: 5bb841755` defines the checksum
+* `checksum` and `rootfs-image.checksum` differ
+    * `checksum` - checksum of the delta payload
+    * `rootfs-image.checksum` - checksum of the payload once it's running on the device
+
+`v2 rootfs-image`
+* `rootfs-image` type artifact - it contains the entire partition content
+* Result in the same version as the delta once applied to the device
+    * `rootfs-image.checksum: b9147deb5` - same as the `v2 mender-binary-delta`
+
+
+
+### How to check this on the device/server/artifact?
+
+* artifact - `mender-artifact read <mender-artifact.mender>`
+* device - Run the command on the device `mender show-provides`
+* server UI - `Releases -> Select Release -> Expand the artifact info by clicking it -> Expand Provides and Depends`
