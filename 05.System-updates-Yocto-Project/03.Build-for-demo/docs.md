@@ -210,7 +210,8 @@ bitbake-layers add-layer ../meta-mender/meta-mender-demo
 Add these lines to the start of your `conf/local.conf`:
 
 <!-- Make sure to remove "-git%" references in the text below when updating versions.-->
-<!--AUTOVERSION: "releases % and older"/ignore "# PREFERRED_VERSION_mender-client = \"%"/mender "# PREFERRED_VERSION_mender-artifact = \"%"/mender-artifact "# PREFERRED_VERSION_mender-artifact-native = \"%"/mender-artifact "# PREFERRED_VERSION_mender-connect = \"%"/mender-connect "= \"%-git"/mender/complain "specify \"%-git"/ignore-->
+<!-- NOTE: Re-enable the mender-connect autoversion bump (MEN-5684) -->
+<!--AUTOVERSION: "releases % and older"/ignore "# PREFERRED_VERSION_mender-client = \"%"/mender "# PREFERRED_VERSION_mender-artifact = \"%"/mender-artifact "# PREFERRED_VERSION_mender-artifact-native = \"%"/mender-artifact "# PREFERRED_VERSION_mender-connect = \"%"/ignore "= \"%-git"/mender/complain "specify \"%-git"/ignore-->
 ```bash
 # The name of the disk image and Artifact that will be built.
 # This is what the device will report that it is running, and different updates must have different names
