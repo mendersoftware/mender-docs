@@ -35,8 +35,8 @@ Mender provides images based on the following distributions:
 | Raspberry Pi 4 Model B        | Raspberry Pi OS Bullseye Lite 2022-01-28 | [raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz][raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz] | 8 GB         |
 
 <!--AUTOVERSION: "mender-convert-%.img.xz"/mender-convert -->
-[raspios-bullseye-armhf-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2022-01-28-raspios-bullseye-armhf-lite/arm/2022-01-28-raspios-bullseye-armhf-lite-raspberrypi3-mender-convert-3.0.0.img.xz
-[raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2022-01-28-raspios-bullseye-armhf-lite/arm/2022-01-28-raspios-bullseye-armhf-lite-raspberrypi4-mender-convert-3.0.0.img.xz
+[raspios-bullseye-armhf-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2022-01-28-raspios-bullseye-armhf-lite/arm/2022-01-28-raspios-bullseye-armhf-lite-raspberrypi3-mender-convert-3.3.0.img.xz
+[raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2022-01-28-raspios-bullseye-armhf-lite/arm/2022-01-28-raspios-bullseye-armhf-lite-raspberrypi4-mender-convert-3.3.0.img.xz
 
 You can find images for other devices in our Mender Hub community forum, see
 [Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11?target=_blank) or
@@ -933,7 +933,7 @@ install the following:
 
 <!--AUTOVERSION: "/mender-gateway/examples/%/"/mender-gateway "/mender-gateway-%.tar"/mender-gateway -->
 Download the Mender Gateway examples package from
-https://downloads.customer.mender.io/content/hosted/mender-gateway/examples/master/mender-gateway-master.tar
+https://downloads.customer.mender.io/content/hosted/mender-gateway/examples/1.0.0/mender-gateway-1.0.0.tar
 and download the tarball to a known location on your local system using your hosted
 Mender username and password:
 
@@ -948,7 +948,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-gateway/examples/%/"/mender-gateway "/mender-gateway-examples-%.tar"/mender-gateway -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/examples/master/mender-gateway-examples-master.tar
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/examples/1.0.0/mender-gateway-examples-1.0.0.tar
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
@@ -963,7 +963,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-gateway/examples/%/"/mender-gateway "/mender-gateway-examples-%.tar"/mender-gateway -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/examples/master/mender-gateway-examples-master.tar
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_EMAIL" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/examples/1.0.0/mender-gateway-examples-1.0.0.tar
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -972,7 +972,7 @@ Then install the contents with:
 
 <!--AUTOVERSION: "mender-gateway-examples-%.tar"/mender-gateway -->
 ```bash
-sudo tar -C / --strip-components=2 -xvf mender-gateway-examples-master.tar
+sudo tar -C / --strip-components=2 -xvf mender-gateway-examples-1.0.0.tar
 ```
 
 <!--AUTOMATION: test=test -d /usr/share/doc/mender-gateway/examples -->
