@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-<!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" != 1 ]; then echo "TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->
+<!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" -ne 1 ]; then echo "TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->
 
 <!-- Cleanup code: stops the mTLS ambassador if running -->
 <!-- AUTOMATION: execute=function cleanup() { -->
@@ -43,7 +43,7 @@ If you have not yet prepared a device visit one of the following:
 
 ### A CLI environment for your server
 
-Follow the steps in [set up shell variables for cURL](../01.Using-the-apis/docs.md#set-up-shell-variables-for-curl) to set up some shell variables in the terminal you will be using.
+Follow the steps in [set up shell variables for cURL](../01.Using-the-apis/docs.md#install-curl-and-jq-and-set-up-the-shell-variables) to set up some shell variables in the terminal you will be using.
 
 ### Mender-Artifact tool
 

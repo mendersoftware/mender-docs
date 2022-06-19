@@ -44,6 +44,36 @@ found.
 
 Introduced in Mender client 3.1.
 
+#### Connectivity
+
+Allows you to configure additional connection-related settings.
+
+##### DisableKeepAlive
+
+If set to true, disables the connections keep alive in general. All the HTTP transactions
+will cause a new connection to be created.
+
+##### IdleConnTimeoutSeconds
+
+Specifies the time after which a connection is terminated. The larger it is,
+the longer keep alive traffic will happen, as the client will maintain
+the connection.
+
+Introduced in Mender client 3.3.
+
+Example:
+
+```
+    "Connectivity": {
+        "DisableKeepAlive": false,
+        "IdleConnTimeoutSeconds": 30
+    },
+```
+The above will cause the client keep a connection and to terminate it after 30 seconds.
+During the 30 seconds each request will reuse an existing connection, which should
+in principle reduce the bandwidth, as we avoid a TLS negotiation and connection establishing
+every time the client has to contact the server.
+
 #### HttpsClient
 
 Allows you to configure the certificate, private key and, SSL Engine id to use
@@ -124,6 +154,15 @@ to run, before it is considered hung and killed. The process will first be sent
 a SIGTERM signal, and one minute later, if it has not exited, a SIGKILL signal
 is sent. The default is 4 hours.
 
+#### RetryPollCount
+
+The maximum number of tries that the Mender client performs when contacting
+the Mender Server.
+
+If the setting is zero (the default), the maximum number of retries is `3 * ceil(log2(RetryPollIntervalSeconds) + 1)`.
+
+Introduced in Mender client 3.3.
+
 #### RetryPollIntervalSeconds
 
 An integer that sets the number of seconds to wait between each attempt to
@@ -131,6 +170,8 @@ communicate with the server. Note that the client may attempt more often
 initially to enable rapid upgrades, but will gradually fall back to this value
 if the server is busy. See also the section about [polling
 intervals](../01.Polling-intervals/docs.md).
+
+As of Mender client 3.3 this one also applies to inventory updates.
 
 #### RootfsPartA
 

@@ -30,6 +30,10 @@ As another example, the Mender client supports one version of the server API,
 while the server can support several API versions. Therefore, always update the
 server before the client.
 
+Mender also follows different support durations for different minor versions with LTS releases.
+Please refer to the [Release-information](../../302.Release-information/01.Release-schedule/docs.md) for more information about LTS releases and the release schedule.
+
+
 ### Specific versioning criteria
 
 Since Semantic Versioning was primarily written for libraries, it is not
@@ -93,6 +97,7 @@ Clarification of the table:
 | Mender client 3.0.x             | no                        | community             | stable<sup>3</sup> |
 | Mender client 3.1.x             | no                        | community             | stable<sup>3</sup> |
 | Mender client 3.2.x             | no                        | community             | stable<sup>3</sup> |
+| Mender client 3.3.x             | no                        | community             | stable<sup>3</sup> |
 
 !! <sup>1</sup> Rolling back to 1.x.x from a failed upgrade to 2.x.x is supported. However, it is not possible to downgrade to a Mender 1.x.x client from a 2.x.x client, once the update containing 2.x.x has been committed.
 
@@ -131,6 +136,7 @@ The [Mender Artifact format](../03.Artifact/docs.md) is managed by the [Mender A
 | Mender 3.0.x / mender-artifact 3.6.x | no          | yes         | yes         |
 | Mender 3.1.x / mender-artifact 3.6.x | no          | yes         | yes         |
 | Mender 3.2.x / mender-artifact 3.6.x | no          | yes         | yes         |
+| Mender 3.3.x / mender-artifact 3.7.x | no          | yes         | yes         |
 
 !! Older Mender clients do not support newer versions of the Artifact format; they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../06.Artifact-creation/01.Create-an-Artifact/docs.md#create-a-full-filesystem-update-artifact) for an introduction how to do this.
 
@@ -166,6 +172,7 @@ The higher version API contains a mix of old and new API endpoints. For endpoint
 |  3.0.x                             | 1.2.x                  |
 |  3.1.x                             | 1.2.x                  |
 |  3.2.x                             | 2.0.x <sup>1<sup>      |
+|  3.3.x                             | 2.0.x <sup>1<sup>      |
 
 <!--AUTOVERSION: "mender-connect % and later"/ignore "Yocto branches 3.1 (%) and older"/ignore-->
 !!! <sup>1</sup> mender-connect 2.0.0 and later are not installed by default in Yocto branches 3.1 (dunfell) and older. To enable this or a later version, please see [the `PREFERRED_VERSION` setting when configuring the Yocto build](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build).

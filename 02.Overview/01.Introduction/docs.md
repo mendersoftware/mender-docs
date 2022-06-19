@@ -57,6 +57,16 @@ connecting the Mender client to a Mender server. A common use-case is to perform
 updates from e.g an USB flash drive. To learn more visit
 [Standalone deployments](../../06.Artifact-creation/06.Standalone-deployment/docs.md)
 
+### Mender Gateway
+
+For devices running in isolated networks, but still want to leverage the
+flexibility of _managed_ mode, the _Mender Gateway_ offers the ability for
+devices to securely contact the Mender Server through your gateway device. Visit
+[Mender Gateway](../../08.Server-integration/04.Mender-Gateway/docs.md) to
+learn more.
+
+![Mender Gateway](mender-gateway.png)
+
 
 ## Update types
 

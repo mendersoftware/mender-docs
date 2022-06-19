@@ -30,7 +30,7 @@ pi@raspberrypi:~$ sudo systemctl status mender-client
     Tasks: 9 (limit: 1012)
    Memory: 7.5M
    CGroup: /system.slice/mender-client.service
-           └─320 /usr/bin/mender -daemon
+           └─320 /usr/bin/mender daemon
 ```
 
 The status reported as active indicates that in order to use standalone mode you have to stop and disable Mender running as a daemon.
@@ -66,4 +66,4 @@ mender commit
 
 By running this command, Mender will mark the update as successful and permanent.
 
-To deploy another update, simply run `mender -install <URI>` again, then reboot and commit.
+To deploy another update, simply run `mender install <URI>` again, then reboot and commit.

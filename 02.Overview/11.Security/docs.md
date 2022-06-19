@@ -78,6 +78,7 @@ time of one week.
 As an additional layer of security, Mender Enterprise supports [Role Based Access
 Control](../12.Role.Based.Access.Control/docs.md) to limit authorization of users.
 
+
 ## Hardware security
 
 The Mender client can utilize private keys stored in [Hardware Security
@@ -108,3 +109,12 @@ any other HSM access methods that are supported by
 Currently, Mender supports hardware security engines for SSL handshake, mTLS,
 and authentication request signing.
 
+
+## Denial of Service (DoS / DDoS)
+
+The Mender Enterprise server supports configurable API rate limits. When a device or a user is
+crossing the rate limit threshold, it will receive the HTTP status code `429 Too Many Requests`.
+
+You can configure the server to enforce these limits based on the client IP and the identity
+of the API caller, either device or user. Rate limits can apply to all the API calls, or you can
+customize them for specific API end-points.
