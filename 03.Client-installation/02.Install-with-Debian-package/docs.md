@@ -33,7 +33,7 @@ package architectures.
 
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1"/mender -->
 ```bash
-wget https://downloads.mender.io/3.3.0/dist-packages/debian/$(dpkg --print-architecture)/mender-client_3.3.0-1%2Bdebian%2Bbuster_armhf.deb
+wget https://downloads.mender.io/3.3.0/dist-packages/debian/$(dpkg --print-architecture)/mender-client_3.3.0-1%2Bdebian%2Bbuster_$(dpkg --print-architecture).deb
 ```
 
 !!! The above link will use the native architecture. See [the downloads
@@ -50,7 +50,7 @@ To install and configure Mender run the following command:
 
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
 ```bash
-sudo dpkg -i mender-client_3.3.0-1+debian+buster_armhf.deb
+sudo dpkg -i mender-client_3.3.0-1+debian+buster_$(dpkg --print-architecture).deb
 ```
 
 After completing the installation wizard, Mender is correctly set up on your
