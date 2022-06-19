@@ -21,7 +21,7 @@ test:
   stage: test
   image: ubuntu:focal
   services:
-    - docker:19.03.5-dind
+    - docker:dind
   tags:
     - mender-qa-slave
   variables:
