@@ -4,7 +4,6 @@ set -ex
 
 ./test_autoversion.py
 ./autoversion.py --check
-./test_docs.py 03.Client-installation/02.Install-with-Debian-package/docs.md
 env TEST_OPEN_SOURCE=1 ./test_docs.py 07.Server-installation/03.Installation-with-docker-compose/docs.md
 if [ -n "$REGISTRY_MENDER_IO_PASSWORD" ]; then
     docker login -u ntadm_menderci -p "$REGISTRY_MENDER_IO_PASSWORD" registry.mender.io
