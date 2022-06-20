@@ -255,7 +255,7 @@ Replace <DIRECTORY-WITH-MENDER-CONNECT-CONF> with the path to the `mender-connec
 
 ### Monitor
 
-!!! Note: The Mender Monitor add-on package is required. See the [Mender features page](https://mender.io/plans/features?target=_blank) for an overview of all Mender plans and features.
+!!! Note: The Mender Monitor add-on package is required. See the [Mender features page](https://mender.io/product/features?target=_blank) for an overview of all Mender plans and features.
 
 <!--AUTOVERSION: "/mender-monitor/yocto/%/"/monitor-client "/mender-monitor-%.tar.gz"/monitor-client -->
 Download the Mender Monitor add-on from
@@ -318,7 +318,7 @@ IMAGE_INSTALL_append = " mender-monitor"
 ## mender-gateway
 
 !!!!! Mender Gateway is only available in the Mender Enterprise plan.
-!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
 <!--AUTOVERSION: "/mender-gateway/yocto/%/"/mender-gateway "/mender-gateway-%.tar.xz"/mender-gateway -->

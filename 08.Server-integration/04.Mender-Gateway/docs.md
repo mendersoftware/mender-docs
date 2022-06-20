@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 !!!!! Mender Gateway is only available in the Mender Enterprise plan.
-!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
 In segregated networks, most devices may operate without direct access to the

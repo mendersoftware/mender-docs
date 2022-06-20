@@ -7,7 +7,7 @@ taxonomy:
 This section provides a reference of variables Mender use during the Yocto
 Project build process. The variables are either specific to- and defined by
 Mender, as shown by the `MENDER_` prefix, or [defined by the Yocto
-Project](http://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html?target=_blank#ref-variables-glos)
+Project](https://docs.yoctoproject.org/ref-manual/variables.html?target=_blank)
 and used by Mender.
 
 
@@ -36,7 +36,7 @@ Overrides the default internal image name that mender will use to build the
 The size of the generated rootfs, expressed in kiB. This will be the size of the
 rootfs image shipped in a `.mender` update. This variable is a standard Yocto
 Project variable influenced by several other factors. See [the Yocto Project
-documentation](http://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html?target=_blank#var-IMAGE_ROOTFS_SIZE)
+documentation](https://docs.yoctoproject.org/ref-manual/variables.html?target=_blank#term-IMAGE_ROOTFS_SIZE)
 for more information.
 
 Note that this variable has no effect when generating a complete disk image (any

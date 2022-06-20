@@ -131,7 +131,7 @@ options available:
 #### File Transfer configuration
 
 !!!!! The Mender Troubleshoot add-on package is required.
-!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
 * `FileTransfer`:  File Transfer configuration options.
@@ -145,7 +145,7 @@ options available:
 #### Port forward configuration
 
 !!!!! The Mender Troubleshoot add-on package is required.
-!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
 * `PortForward`: Configuration for port forwarding
@@ -154,7 +154,7 @@ options available:
 #### Remote Terminal configuration
 
 !!!!! The Mender Troubleshoot add-on package is required.
-!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
 * `ShellCommand`: Command executed initiating a new remote terminal session.

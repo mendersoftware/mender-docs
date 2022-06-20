@@ -6,7 +6,7 @@ taxonomy:
 ---
 
 !!!!! Requires the Mender Monitor add-on package.
-!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
 The Mender Monitor add-on gives you instant visibility into issues
