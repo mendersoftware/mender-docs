@@ -37,7 +37,7 @@ Overrides the default internal image name that mender will use to build the
 The size of the generated rootfs, expressed in kiB. This will be the size of the
 rootfs image shipped in a `.mender` update. This variable is a standard Yocto
 Project variable influenced by several other factors. See [the Yocto Project
-documentation](http://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html?target=_blank#var-IMAGE_ROOTFS_SIZE)
+documentation](https://docs.yoctoproject.org/ref-manual/variables.html?target=_blank#term-IMAGE_ROOTFS_SIZE)
 for more information.
 
 Note that this variable has no effect when generating a complete disk image (any
