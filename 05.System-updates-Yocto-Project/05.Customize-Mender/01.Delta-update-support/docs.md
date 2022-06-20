@@ -6,8 +6,8 @@ taxonomy:
 ---
 
 
-If you are using [Mender Professional](https://mender.io/plans?target=_blank) or [Mender
-Enterprise](https://mender.io/plans?target=_blank), you have access to robust delta updates. In this section we describe how to enable support for delta updates on your devices,  by installing the `mender-binary-delta` Update Module with your Yocto Project build.
+If you are using [Mender Professional](https://mender.io/product/features?target=_blank) or [Mender
+Enterprise](https://mender.io/product/features?target=_blank), you have access to robust delta updates. In this section we describe how to enable support for delta updates on your devices,  by installing the `mender-binary-delta` Update Module with your Yocto Project build.
 
 Once your devices support installing delta updates, see [Create a Delta update Artifact](../../../06.Artifact-creation/05.Create-a-Delta-update-Artifact/docs.md) for a tutorial on how to create a delta update from two system updates.
 

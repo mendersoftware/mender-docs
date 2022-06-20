@@ -82,7 +82,7 @@ the terminal output which users can later inspect from the
 [AUDIT LOG](https://hosted.mender.io/ui/#/auditlog) panel in the Mender UI.
 
 !!!!! Audit logs is only available in the Mender Enterprise plan.
-!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
 ## Further reading
