@@ -399,7 +399,7 @@ Please refer to your host Operating System documentation for more details.
 
 ## Monitor
 
-!!! Note: The Mender Monitor add-on package is required. See the [Mender features page](https://mender.io/plans/features?target=_blank) for an overview of all Mender plans and features.
+!!! Note: The Mender Monitor add-on package is required. See the [Mender features page](https://mender.io/product/features?target=_blank) for an overview of all Mender plans and features.
 
 
 Mender offers a [Monitor](../09.Add-ons/20.Monitor/docs.md) add-on which
@@ -501,7 +501,7 @@ sudo dpkg -i mender-monitor-demo_1.2.0-1+debian+buster_all.deb
 ## Mender Gateway
 
 !!!!! Mender Gateway is only available in the Mender Enterprise plan.
-!!!!! See [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
 Mender offers [Mender Gateway](../08.Server-integration/04.Mender-Gateway/docs.md) which enables

@@ -6,7 +6,7 @@ taxonomy:
 
 !!!!! Support for Delta updates is available in the Mender Enterprise plan and
 !!!!! partially in Mender Professional. See
-!!!!! [the Mender features page](https://mender.io/plans/features?target=_blank)
+!!!!! [the Mender features page](https://mender.io/product/features?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
 Delta updates provide significant savings in both bandwidth and install time.
