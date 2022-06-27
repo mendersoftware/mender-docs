@@ -39,8 +39,8 @@ wget https://downloads.mender.io/3.3.0/dist-packages/debian/$(dpkg --print-archi
 ```
 
 !!! The above link will use the native architecture. See [the downloads
-page](../../09.Downloads/docs.md) for other architectures, and also make sure to modify the
-references to the package in commands below.
+!!! page](../../09.Downloads/docs.md) for other architectures, and also make sure to modify the
+!!! references to the package in commands below.
 
 
 ### Option 1: Attended installation with a wizard
