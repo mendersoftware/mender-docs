@@ -72,7 +72,7 @@ dd if=<DEVICE> of=golden-image-1.img bs=1M conv=fdatasync
 ```
 
 !!! Replace `<DEVICE>` with the location of your SD card. Normally this would be
-something like `/dev/mmcblk0` or `/dev/sdb`.
+!!! something like `/dev/mmcblk0` or `/dev/sdb`.
 
 
 ### Docker
