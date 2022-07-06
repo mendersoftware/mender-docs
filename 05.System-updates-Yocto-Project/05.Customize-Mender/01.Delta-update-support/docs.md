@@ -26,7 +26,7 @@ command:
 <!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
 ```bash
 HOSTED_MENDER_EMAIL="myusername@example.com"
-curl -u $HOSTED_MENDER_EMAIL -O https://downloads.customer.mender.io/content/hosted/mender-binary-delta/1.3.1/mender-binary-delta-1.3.1.tar.xz
+curl -u $HOSTED_MENDER_EMAIL -O https://downloads.customer.mender.io/content/hosted/mender-binary-delta/1.4.0/mender-binary-delta-1.4.0.tar.xz
 ```
 
 Replace the value of `HOSTED_MENDER_EMAIL` with the email address you used to sign up on *Hosted Mender*, then enter your Hosted Mender password when prompted to proceed.
@@ -38,14 +38,14 @@ command:
 <!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
 ```bash
 MENDER_ENTERPRISE_EMAIL="myusername@example.com"
-curl -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/on-prem/mender-binary-delta/1.3.1/mender-binary-delta-1.3.1.tar.xz
+curl -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/on-prem/mender-binary-delta/1.4.0/mender-binary-delta-1.4.0.tar.xz
 ```
 
 
 ## Unpack `mender-binary-delta`
 
 <!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
-The archive `mender-binary-delta-1.3.1.tar.xz` contains the binaries needed to generate and apply
+The archive `mender-binary-delta-1.4.0.tar.xz` contains the binaries needed to generate and apply
 deltas.
 
 Change directory to `$HOME`:
@@ -55,11 +55,11 @@ cd ${HOME}
 ```
 
 <!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
-Unpack the `mender-binary-delta-1.3.1.tar.xz` in your home directory:
+Unpack the `mender-binary-delta-1.4.0.tar.xz` in your home directory:
 
 <!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
 ```bash
-tar xvf mender-binary-delta-1.3.1.tar.xz
+tar xvf mender-binary-delta-1.4.0.tar.xz
 ```
 
 
@@ -81,7 +81,7 @@ cat <<EOF >> conf/local.conf
 
 IMAGE_INSTALL_append = " mender-binary-delta"
 LICENSE_FLAGS_WHITELIST_append = " commercial_mender-binary-delta"
-FILESEXTRAPATHS_prepend_pn-mender-binary-delta := "${HOME}/mender-binary-delta-1.3.1/:"
+FILESEXTRAPATHS_prepend_pn-mender-binary-delta := "${HOME}/mender-binary-delta-1.4.0/:"
 
 EOF
 ```
