@@ -12,9 +12,8 @@ To build an image containing read-only rootfs add the following changes to the `
 IMAGE_FEATURES += "read-only-rootfs"
 ```
 
-You can read more about this feature in the [Yocto Project Mega-Manual - 7.27.
-Creating a Read-Only Root
-Filesystem](https://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html#creating-a-read-only-root-filesystem?target=_blank)
+You can read more about this feature in the [Yocto Documentation for Creating a Read-Only Root
+Filesystem](https://docs.yoctoproject.org/dev-manual/common-tasks.html?target=_blank#creating-a-read-only-root-filesystem)
 
 !!! This feature is highly package dependent and even though Mender works
 !!! correctly with this feature enabled, there might be other packages in your
