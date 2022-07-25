@@ -68,12 +68,11 @@ You can find more information in the
 ## User authentication and authorization
 
 As a user, you interact with your Devices either via API calls issued to the
-Mender server, or via the web UI. In both cases, the connection is HTTPS
-encrypted with TLS. To authenticate with the Mender server, a user must log in
-by presenting a valid email address and password, as well as a Two Factor
-authentication code (if available in the plan and enabled). The client
-(e.g. web UI) used to log in then receives a JWT token with a default expiration
-time of one week.
+Mender Server, or via the web UI. In both cases, the connection is HTTPS
+encrypted with TLS. A user must log in to authenticate with the Mender Server
+by presenting a valid email address, password, and a two-factor authentication
+token if enabled. The client receives a JWT token valid for one week if the
+log-in is successful.
 
 As an additional layer of security, Mender Enterprise supports [Role Based Access
 Control](../12.Role.Based.Access.Control/docs.md) to limit authorization of users.

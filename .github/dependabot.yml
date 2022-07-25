@@ -1,8 +1,9 @@
 version: 2
 updates:
   - commit-message:
-      prefix: 'chore'
+      prefix: chore
     directory: /
     package-ecosystem: npm
     schedule:
-      interval: weekly
+      interval: monthly
+      day: saturday
