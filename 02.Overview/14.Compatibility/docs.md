@@ -76,7 +76,7 @@ In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3
 Clarification of the table:
 * *stable* - recipe is maintained by Northern.tech
 * *community* - best effort maintenance from community and Northern.tech
-* *no* - recipe has never been release
+* *no* - recipe has never been released
 
 
 
