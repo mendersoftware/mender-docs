@@ -42,7 +42,7 @@ curl -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content
 ```
 
 
-## Unpack `mender-binary-delta-generator`
+## Unpack `mender-binary-delta`
 
 <!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
 The archive `mender-binary-delta-1.4.0.tar.xz` contains the binaries needed to generate and apply
@@ -62,20 +62,6 @@ Unpack the `mender-binary-delta-1.4.0.tar.xz` in your home directory:
 tar xvf mender-binary-delta-1.4.0.tar.xz
 ```
 
-We only need the generator, so copy it to `/usr/bin`:
-
-<!--AUTOVERSION: "mender-binary-delta-%"/mender-binary-delta-->
-```
-sudo cp mender-binary-delta-1.4.0/x86_64/mender-binary-delta-generator /usr/bin
-```
-
-Then delete the rest of the unpacked files:
-
-<!--AUTOVERSION: "mender-binary-delta-%"/mender-binary-delta-->
-```
-rm -rf mender-binary-delta-1.4.0
-```
-
 
 ## Integrate `mender-binary-delta` into the Yocto environment
 
@@ -93,15 +79,16 @@ Add the following your `local.conf` to include `mender-binary-delta` in your bui
 cat <<EOF >> conf/local.conf
 # Customizations for Mender delta-update support
 
-IMAGE_INSTALL:append = " mender-binary-delta"
-LICENSE_FLAGS_ACCEPTED:append = " commercial_mender-binary-delta"
-SRC_URI:pn-mender-binary-delta = "file://${HOME}/mender-binary-delta-1.4.0.tar.gz"
+IMAGE_INSTALL_append = " mender-binary-delta"
+LICENSE_FLAGS_WHITELIST_append = " commercial_mender-binary-delta"
+FILESEXTRAPATHS_prepend_pn-mender-binary-delta := "${HOME}/mender-binary-delta-1.4.0/:"
 
 EOF
 ```
 
-<!--AUTOVERSION: "older than %, such as % or older"/ignore-->
-!!! If you are using a Yocto branch older than kirkstone, such as dunfell or older, you need slightly altered steps to use mender-binary-delta. See [the mender-binary-delta section on Mender Hub](https://hub.mender.io/t/robust-delta-update-rootfs/1144) for more information about this.
+! The trailing `:` in `FILESEXTRAPATHS_prepend_pn-mender-binary-delta` is intentional and
+! important to have in place.
+
 
 ## Next steps
 
