@@ -42,7 +42,16 @@ If Mender is used in standalone mode (installing via command line), some states 
 
 There are two types of the state scripts: root file system and Artifact. The root file systems scripts are stored as a part of the current root file system. The default location
 for those scripts is `/etc/mender/scripts`.
-The Artifact scripts are part of the Artifact and are delivered to the Client inside the Artifact. All the Artifact scripts are prefixed with `Artifact`.
+The Artifact scripts are part of the Artifact and are delivered to the Client inside the Artifact. All the Artifact scripts are prefixed with `Artifact`. These are embedded in the Artifact using the `-s` flag in the `mender-artifact` tool. For example:
+```
+./mender-artifact write rootfs-image -f ${artifact_ext4} \
+                                   -n $artifact_name \
+                                   --software-version 1.0 \
+                                   -o ${artifact_mender} \
+                                   -t $DEVICE_TYPE \
+			           -s ./files/ArtifactInstall_Leave_03_set_hostname \
+                                   -s ./files/ArtifactInstall_Leave_00_setup_docker
+```
 
 The reason for having both root file system and Artifact scripts is related to the fact that some scripts must run before the Client downloads the Artifact and as such can not be delivered with the Artifact. Those scripts are `Idle`, `Sync` and `Download`. Therefore it is important to remember that when deploying a new update, all scripts will be run from the currently running root file system until `ArtifactInstall`, at which point the scripts from the new Artifact will take over.
 
