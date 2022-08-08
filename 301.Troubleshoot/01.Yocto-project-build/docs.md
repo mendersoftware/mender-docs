@@ -58,7 +58,7 @@ By default Mender does not add any bootloader files to the boot partition. If yo
 IMAGE_BOOT_FILES ?= "u-boot.bin MLO"
 ```
 
-See the [Yocto Project documentation](http://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html?target=_blank#var-IMAGE_BOOT_FILES) for more information about the `IMAGE_BOOT_FILES` variable.
+See the [Yocto Project documentation](https://docs.yoctoproject.org/ref-manual/variables.html?target=_blank#term-IMAGE_BOOT_FILES) for more information about the `IMAGE_BOOT_FILES` variable.
 
 
 ## U-Boot lacks support for Boot Count Limit
