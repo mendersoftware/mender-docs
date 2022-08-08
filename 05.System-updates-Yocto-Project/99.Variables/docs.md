@@ -7,7 +7,8 @@ taxonomy:
 This section provides a reference of variables Mender use during the Yocto
 Project build process. The variables are either specific to- and defined by
 Mender, as shown by the `MENDER_` prefix, or [defined by the Yocto
-Project](http://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html?target=_blank#ref-variables-glos)
+<!--AUTOVERSION: "docs.yoctoproject.org/%"/ignore-->
+Project](https://docs.yoctoproject.org/dunfell/ref-manual/ref-variables.html?target=_blank)
 and used by Mender.
 
 
