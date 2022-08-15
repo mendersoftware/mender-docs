@@ -96,7 +96,7 @@ two mandatory fields:
     - `raspberrypi3` or `raspberrypi4` if you are using a Raspberry Pi
     - `qemux64-64` if you are using a virtual device
 
-- **Artifact name** - Name of the software build, so that software is not
+- **Release name** - Name of the software build, so that software is not
   redeployed if it is already installed at the device.
   - Input is a free form string, you can use e.g `hello-world` for evaluation
     purposes
