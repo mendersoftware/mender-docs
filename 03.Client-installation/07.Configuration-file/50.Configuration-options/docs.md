@@ -320,3 +320,11 @@ The maximum expire time in seconds after startup for an update control map. The
 value provides an upper bound on the update control map [expire
 time](#UpdateControlMapExpirationTimeSeconds) after system startup. _Defaults to 600
 (10 minutes)_
+
+#### UpdateControlMapPollIntervalSeconds
+
+The polling interval at which the client checks for new control maps once the
+deployment has started to take place. This influences how quickly will the
+device respond to continuing after a pause. It can not be higher than
+_UpdateControlMapExpirationTimeSeconds / 2_. _Defaults to
+UpdatePollIntervalSeconds_.
