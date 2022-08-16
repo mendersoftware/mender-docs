@@ -121,7 +121,8 @@ Using the [Update Module](../../06.Artifact-creation/08.Create-a-custom-Update-M
 it is also possible to deploy updates to peripheral devices, e.g
 microcontrollers or sensors connected to a device running Linux.
 
-Example using the DFU protocol to update an external microcontroller:
+Example using the Device Firmware Upgrade (DFU) protocol to update an external
+microcontroller:
 
 ![proxy-deployment](proxy-deployment.png)
 
