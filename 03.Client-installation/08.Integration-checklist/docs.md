@@ -31,7 +31,17 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
    ! Note that you should update `uImage` to match the kernel image type for your platform.
 
-2. Verify that the two commands `fw_printenv` and `fw_setenv` are in the path and are executable. Calling them with no arguments should give a variable listing and an error about missing variable name, respectively. This verifies that the bootloader environment tools are present on the device.
+2. Verify that the two commands to manipulate the environment are in the path and are executable. Calling them with no arguments should give a variable listing and an error about missing variable name, respectively. This verifies that the bootloader environment tools are present on the device.
+
+    * For GRUB:
+        * `grub-mender-grubenv-print`
+        * `grub-mender-grubenv-set`
+    * For U-Boot:
+        * `fw_printenv`
+        * `fw_setenv`
+
+<!--AUTOVERSION: "prior to 4.0 %"/ignore-->
+    ! In Yocto releases prior to 4.0 kirkstone, the names of the GRUB tools were the same as the U-Boot tools. Make sure to take this into account in the remaining examples on this page.
 
 3. Now we will verify that Mender is running. Run the following:
 
@@ -59,13 +69,19 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 5. Everything we have tested so far has been for partition A; we will now verify both kernel and rootfs for partition B. Run the following:
 
-   - When using SD card or eMMC storage:
+   - When using GRUB:
+   ```bash
+   grub-mender-grubenv-set mender_boot_part 3
+   grub-mender-grubenv-set mender_boot_part_hex 3
+   ```
+
+   - When using U-Boot and SD card or eMMC storage:
    ```bash
    fw_setenv mender_boot_part 3
    fw_setenv mender_boot_part_hex 3
    ```
 
-   - When using raw flash storage:
+   - When using U-Boot and raw flash storage:
    ```bash
    fw_setenv mender_boot_part 1
    fw_setenv mender_boot_part_hex 1
@@ -95,7 +111,13 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 9. Run the following commands:
 
-    - When using SD card or eMMC storage:
+    - When using GRUB:
+    ```bash
+    grub-mender-grubenv-set mender_boot_part 2
+    grub-mender-grubenv-set mender_boot_part_hex 2
+    ```
+
+    - When using U-Boot and SD card or eMMC storage:
     ```bash
     fw_setenv mender_boot_part 2
     fw_setenv mender_boot_part_hex 2
@@ -109,6 +131,13 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
     Once you have run the above commands, we need to tell Mender that there is an upgrade available:
 
+    - When using GRUB:
+    ```bash
+    grub-mender-grubenv-set upgrade_available 1
+    grub-mender-grubenv-set bootcount 0
+    ```
+
+    - When using U-Boot:
     ```bash
     fw_setenv upgrade_available 1
     fw_setenv bootcount 0
@@ -119,6 +148,12 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 10. Reboot.  Now verify that the bootloader has updated the bootcount variable.
 
+    - When using GRUB:
+    ```bash
+    grub-mender-grubenv-print bootcount
+    ```
+
+    - When using U-Boot:
     ```bash
     fw_printenv bootcount
     ```
