@@ -78,13 +78,12 @@ On Mender, check `ipv4_docker` inventory attribute of your Virtual device
 [/ui-tab]
 [/ui-tabs]
 
-Setup `USER` environment variable to match an existing user on the device, e.g
-for Raspberry Pi devices:
+Setup `USER` environment variable to match an existing user on the device, e.g:
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="Raspberry Pi"]
 ```bash
-USER="pi"
+USER="<your-user>"
 ```
 [/ui-tab]
 [ui-tab title="Virtual device"]

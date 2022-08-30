@@ -116,7 +116,7 @@ If you have a different network setup or encounter any issues, please see [the o
 If you did headless (*Option #1* above) skip to *Step 2* below.
 
 Boot the Raspberry Pi with the newly flashed SD card. Attach a keyboard and
-monitor. Log in using `pi` user and `raspberry` password.
+monitor and log in.
 
 Do the following steps to set up WiFi:
 
@@ -153,15 +153,13 @@ on different ways of looking this up.
 SSH into your device:
 
 ```bash
-ssh pi@<DEVICE-IP-ADDRESS>
+ssh <your-login>@<DEVICE-IP-ADDRESS>
 ```
-
-The default password for the pi account is `raspberry`.
 
 You should now see a command prompt similar to the following:
 
 ```bash
-pi@raspberrypi:~ $
+<your-login>@raspberrypi:~ $
 ```
 
 Keep this terminal open as we will shortly use it to install the Mender client.
