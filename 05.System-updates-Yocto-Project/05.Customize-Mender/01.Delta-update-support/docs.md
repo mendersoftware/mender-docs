@@ -80,7 +80,7 @@ cat <<EOF >> conf/local.conf
 # Customizations for Mender delta-update support
 
 IMAGE_INSTALL_append = " mender-binary-delta"
-LICENSE_FLAGS_WHITELIST_append = " commercial_mender-binary-delta"
+LICENSE_FLAGS_WHITELIST_append = " commercial_mender-yocto-layer-license"
 FILESEXTRAPATHS_prepend_pn-mender-binary-delta := "${HOME}/mender-binary-delta-1.4.0/:"
 
 EOF
