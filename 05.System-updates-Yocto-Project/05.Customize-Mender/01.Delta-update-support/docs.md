@@ -94,7 +94,7 @@ cat <<EOF >> conf/local.conf
 # Customizations for Mender delta-update support
 
 IMAGE_INSTALL:append = " mender-binary-delta"
-LICENSE_FLAGS_ACCEPTED:append = " commercial_mender-binary-delta"
+LICENSE_FLAGS_ACCEPTED:append = " commercial_mender-yocto-layer-license"
 SRC_URI:pn-mender-binary-delta = "file://${HOME}/mender-binary-delta-1.4.0.tar.gz"
 
 EOF
