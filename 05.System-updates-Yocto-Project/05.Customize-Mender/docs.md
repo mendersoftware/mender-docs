@@ -290,7 +290,7 @@ To use Mender Monitor you need to accept its commercial license. If you decide
 to accept it, add the following line to your `local.conf`:
 
 ```bash
-LICENSE_FLAGS_WHITELIST += "commercial_mender-monitor"
+LICENSE_FLAGS_WHITELIST_append = " commercial_mender-yocto-layer-license"
 ```
 
 Give the `mender-monitor` recipe the path to the local source code just downloaded:
@@ -310,7 +310,7 @@ Which means your `local.conf` should now contain the following lines:
 
 <!--AUTOVERSION: "/mender-monitor-%.tar.gz"/monitor-client -->
 ```bash
-LICENSE_FLAGS_WHITELIST += "commercial_mender-monitor"
+LICENSE_FLAGS_WHITELIST_append = " commercial_mender-yocto-layer-license"
 SRC_URI_pn-mender-monitor = "file://${HOME}/mender-monitor-1.2.0.tar.gz"
 IMAGE_INSTALL_append = " mender-monitor"
 ```
@@ -354,7 +354,7 @@ To use Mender Monitor you need to accept its commercial license. If you decide
 to accept it, add the following line to your `local.conf`:
 
 ```bash
-LICENSE_FLAGS_WHITELIST += "commercial_mender-gateway"
+LICENSE_FLAGS_WHITELIST_append = " commercial_mender-yocto-layer-license"
 ```
 
 Give the `mender-gateway` recipe the path to the local source code just downloaded:
@@ -374,7 +374,7 @@ Which means your `local.conf` should now contain the following lines:
 
 <!--AUTOVERSION: "/mender-gateway-%.tar.xz"/mender-gateway -->
 ```bash
-LICENSE_FLAGS_WHITELIST += "commercial_mender-gateway"
+LICENSE_FLAGS_WHITELIST_append = " commercial_mender-yocto-layer-license"
 SRC_URI_pn-mender-gateway = "file://${HOME}/mender-gateway-1.0.0.tar.xz"
 IMAGE_INSTALL_append = " mender-gateway"
 ```
