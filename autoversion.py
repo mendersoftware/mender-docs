@@ -364,11 +364,12 @@ def do_replacements(line, replacements, just_remove):
         else:
             if repo == "ignore":
                 continue
-            version = get_version_of(repo)
-            if version is None:
-                if repo != "lts":
-                    continue
+            elif repo == "lts":
                 version = get_lts_versions()
+            else:
+                version = get_version_of(repo)
+            if version is None:
+                continue
             if complain:
                 if IGNORE_COMPLAIN:
                     continue
