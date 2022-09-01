@@ -114,6 +114,6 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 SRC_URI_append = " file://artifact-verify-key.pem"
 ```
 
-Note that it is also possible (but not recommended) to use `local.conf`, by using [the same method as for client certificates](#using-localconf), adding `pn-mender-client` to the variable names.
+Note that it is also possible (but not recommended) to use `local.conf`, by using [the same method as for client certificates](#using-local-conf), adding `pn-mender-client` to the variable names.
 
 For more information about some alternate approaches please follow the [MENDER_ARTIFACT_VERIFY_KEY documentation](../99.Variables/docs.md#mender_artifact_verify_key).

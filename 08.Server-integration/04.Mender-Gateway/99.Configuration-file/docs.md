@@ -20,7 +20,7 @@ provides a reference for the configuration variables.
                 "Enabled": true,
                 "Path": "/var/cache/mender-gateway"
             }
-        }
+        },
         "mTLS": {
             "Enabled": true,
             "CACertificate": "/var/lib/mender/ca-cert.pem",

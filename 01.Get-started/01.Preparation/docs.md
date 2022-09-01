@@ -21,7 +21,7 @@ To get started testing Mender, create a hosted Mender account by
 
 ## Next step
 
-With an hosted Mender account in place, it is time to prepare a device to
+With a hosted Mender account in place, it is time to prepare a device to
 connect to hosted Mender.
 
 You can connect almost any device and Linux OS with Mender, but to make things simple 
