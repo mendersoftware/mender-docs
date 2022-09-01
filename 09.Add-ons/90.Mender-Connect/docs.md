@@ -48,10 +48,10 @@ mender-connect along with the default values. The default configuration path is
     "Enabled": true,
     "FileTransfer": {
       "Chroot": "/var/lib/mender/filetransfer",
-      "OwnerGet": ["pi","root"],
+      "OwnerGet": ["mender","root"],
       "GroupGet": ["games","users"],
       "OwnerPut": "root",
-      "GroupPut": "pi",
+      "GroupPut": "mender",
       "MaxFileSize": 4,
       "FollowSymLinks": true,
       "AllowOverwrite": true,
