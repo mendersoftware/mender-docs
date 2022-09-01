@@ -417,17 +417,11 @@ def main():
         help="Mender client version for client only releases to update to",
     )
     parser.add_argument(
-        "--mender-convert-version", help="Mender-convert version to update to"
-    )
-    parser.add_argument(
         "--meta-mender-version",
         help="meta-mender version to update to (usually a branch)",
     )
     parser.add_argument(
         "--poky-version", help="poky version to update to (usually a branch)"
-    )
-    parser.add_argument(
-        "--mender-binary-delta-version", help="Mender-binary-delta version to update to"
     )
     args = parser.parse_args()
 
@@ -451,14 +445,6 @@ def main():
                 )
             VERSION_CACHE["mender"] = args.mender_client_version
 
-        if args.mender_convert_version is not None:
-            VERSION_CACHE["mender-convert"] = args.mender_convert_version
-        else:
-            print(
-                'Not replacing "mender-convert" instances, since it was not specified'
-            )
-            VERSION_CACHE["mender-convert"] = False
-
         if args.meta_mender_version is not None:
             if args.poky_version is None:
                 raise Exception(
@@ -471,14 +457,6 @@ def main():
             print('Not replacing "poky" instances, since it was not specified')
             VERSION_CACHE["meta-mender"] = False
             VERSION_CACHE["poky"] = False
-
-        if args.mender_binary_delta_version is not None:
-            VERSION_CACHE["mender-binary-delta"] = args.mender_binary_delta_version
-        else:
-            print(
-                'Not replacing "mender-binary-delta" instances, since it was not specified'
-            )
-            VERSION_CACHE["mender-binary-delta"] = False
 
     elif args.check:
         MODE = CHECK
