@@ -156,8 +156,9 @@ ARTIFACTIMG_FSTYPE = "ext4"
 # Yocto layer and this is only for demo purposes. See linked documentation
 # for additional information.
 #MENDER_SERVER_URL = "https://docker.mender.io"
-#FILESEXTRAPATHS_prepend_pn-mender := "<DIRECTORY-CONTAINING-server.crt>:"
-#SRC_URI_append_pn-mender = " file://server.crt"
+#FILESEXTRAPATHS_prepend_pn-mender-server-certificate := "<DIRECTORY-CONTAINING-server.crt>:"
+#SRC_URI_append_pn-mender-server-certificate = " file://server.crt"
+#IMAGE_INSTALL_append = " mender-server-certificate"
 ```
 
 !!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../99.Variables/docs.md#mender_storage_total_size_mb) for more information. Mender selects the file system type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on file system types](../02.Board-integration/01.Partition-configuration/docs.md#file-system-types) for more information.
@@ -285,8 +286,9 @@ ARTIFACTIMG_FSTYPE = "ext4"
 # Yocto layer and this is only for demo purposes. See linked documentation
 # for additional information.
 #MENDER_SERVER_URL = "https://docker.mender.io"
-#FILESEXTRAPATHS_prepend_pn-mender := "<DIRECTORY-CONTAINING-server.crt>:"
-#SRC_URI_append_pn-mender = " file://server.crt"
+#FILESEXTRAPATHS_prepend_pn-mender-server-certificate := "<DIRECTORY-CONTAINING-server.crt>:"
+#SRC_URI_append_pn-mender-server-certificate = " file://server.crt"
+#IMAGE_INSTALL_append = " mender-server-certificate"
 ```
 
 !!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../99.Variables/docs.md#mender_storage_total_size_mb) for more information. Mender selects the file system type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on file system types](../02.Board-integration/01.Partition-configuration/docs.md#file-system-types) for more information.
