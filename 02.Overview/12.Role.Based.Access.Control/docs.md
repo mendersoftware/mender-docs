@@ -77,6 +77,7 @@ static groups of devices:
 * **Manage**: write access to the devices, requires **Read**.
 * **Deploy**: permission to deploy software to the devices, requires **Read**.
 * **Connect**: troubleshooting access to the devices, requires **Read**.
+* **Configure**: permission to get and set devices configuration, requires **Read**.
 
 !!! Please note that the **Connect** permission gives users access to the Remote Terminal,
 !!! File Transfer, and Port-forwarding features. Through these, it is possible to alter
