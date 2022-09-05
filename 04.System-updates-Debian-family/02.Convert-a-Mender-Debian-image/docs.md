@@ -96,22 +96,13 @@ Clone `mender-convert` from the official repository:
 
 <!--AUTOVERSION: "-b % https://github.com/mendersoftware/mender-convert"/mender-convert-->
 ```bash
-git clone -b 3.3.0 https://github.com/mendersoftware/mender-convert.git
+git clone -b 3.0.0 https://github.com/mendersoftware/mender-convert.git
 ```
 
-## Build the mender-convert container image
-
-Change directory to where you downloaded `mender-convert`:
+Then change directory to where you downloaded `mender-convert` for the next steps:
 
 ```bash
 cd mender-convert
-```
-
-Then, run the following command to build the container with all required
-dependencies for `mender-convert`:
-
-```bash
-./docker-build
 ```
 
 ## Configure the Mender client server configuration
