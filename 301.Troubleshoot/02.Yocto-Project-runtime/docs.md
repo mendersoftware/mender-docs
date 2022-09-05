@@ -91,7 +91,7 @@ This sometimes happens when using one of the minimal images from the Yocto Proje
   CONFIG_NLS_CODEPAGE_437=y
   ```
 
-  Please refer to [the Yocto Project Manual](http://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html?target=_blank#configuring-the-kernel) for how to use `menuconfig` to generate and save `defconfig` files for the kernel.
+  Please refer to [the Yocto Project Manual](https://docs.yoctoproject.org/kernel-dev/common.html?target=_blank#configuring-the-kernel) for how to use `menuconfig` to generate and save `defconfig` files for the kernel.
 
 * If you're not building a custom kernel, you can add this line to your `local.conf` in order to include all the kernel modules in the image:
 
