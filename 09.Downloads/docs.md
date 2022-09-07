@@ -263,6 +263,7 @@ repository. Afterwards, you can install and update the Mender client using the
    ```
    [/ui-tab]
    [ui-tab title="Ubuntu Jammy"]
+<!--AUTOMATION: ignore -->
    ```bash
     echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/jammy/stable main" \
     | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
