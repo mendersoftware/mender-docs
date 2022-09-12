@@ -293,7 +293,7 @@ You can now enable the check running:
 
 ```bash
 sudo mender-monitorctl enable log auth_root_session
-```sudo 
+```
 
 This command links the file in `/etc/mender-monitor/monitor.d/available` to
 `/etc/mender-monitor/monitor.d/enabled`, as you can verify running:
