@@ -670,7 +670,7 @@ If the variable is empty, it is automatically deduced from
 `MENDER_STORAGE_DEVICE`.
 
 
-#### `SYSTEMD_AUTO_ENABLE_pn-mender`
+#### `SYSTEMD_AUTO_ENABLE_pn-mender-client`
 
 > Value: `enable` (default)
 
