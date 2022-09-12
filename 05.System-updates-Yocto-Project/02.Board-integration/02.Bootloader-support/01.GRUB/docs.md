@@ -12,8 +12,8 @@ This section describes the Yocto configuration needed to integrate with the [GRU
 If GRUB integration is not already enabled, you can enable it by adding the snippet below to your build configuration. For instance, in your `local.conf`:
 
 ```
-MENDER_FEATURES_ENABLE_append = " mender-grub mender-image-uefi"
-MENDER_FEATURES_DISABLE_append = " mender-uboot mender-image-sd"
+MENDER_FEATURES_ENABLE:append = " mender-grub mender-image-uefi"
+MENDER_FEATURES_DISABLE:append = " mender-uboot mender-image-sd"
 ```
 
 See [the documentation on features](../../../04.Image-customization/01.Features/docs.md) for more information.

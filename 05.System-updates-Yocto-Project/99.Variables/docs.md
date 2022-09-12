@@ -58,7 +58,7 @@ Flags added to this variable will be used as extra arguments to the
 `mender-artifact` tool when creating the `.mender` artifact. For example:
 
 ```
-MENDER_ARTIFACT_EXTRA_ARGS_append = " -v 1"
+MENDER_ARTIFACT_EXTRA_ARGS:append = " -v 1"
 ```
 
 The above example builds an artifact with the version 1 format.
@@ -670,7 +670,7 @@ If the variable is empty, it is automatically deduced from
 `MENDER_STORAGE_DEVICE`.
 
 
-#### `SYSTEMD_AUTO_ENABLE_pn-mender-client`
+#### `SYSTEMD_AUTO_ENABLE:pn-mender-client`
 
 > Value: `enable` (default)
 

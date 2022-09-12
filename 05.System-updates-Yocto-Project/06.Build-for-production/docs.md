@@ -77,15 +77,15 @@ file
 Inside this file, add the following content:
 
 ```bash
-FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
-SRC_URI_append = " file://server.crt"
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
+SRC_URI:append = " file://server.crt"
 ```
 
 Next, install `mender-server-certificate` package into your image by adding to
 your `conf/layer.conf` the following content:
 
 ```bash
-IMAGE_INSTALL_append = " mender-server-certificate"
+IMAGE_INSTALL:append = " mender-server-certificate"
 ```
 
 This will make sure that the correct certificate is included in the build.
@@ -97,9 +97,9 @@ If you do not have a custom layer, you can also specify the certificate directly
 To add the certificate using `local.conf`, first make sure that the certificate has the name `server.crt`, and is stored somewhere accessible to the build. Then add the following to `local.conf`:
 
 ```bash
-FILESEXTRAPATHS_prepend_pn-mender-server-certificate := "<DIRECTORY-CONTAINING-server.crt>:"
-SRC_URI_append_pn-mender-server-certificate = " file://server.crt"
-IMAGE_INSTALL_append = " mender-server-certificate"
+FILESEXTRAPATHS:prepend:pn-mender-server-certificate := "<DIRECTORY-CONTAINING-server.crt>:"
+SRC_URI:append:pn-mender-server-certificate = " file://server.crt"
+IMAGE_INSTALL:append = " mender-server-certificate"
 ```
 
 Note in particular the `:` after the directory; this is mandatory.
@@ -122,8 +122,8 @@ client is to add it to your own layer. Set the name of the verification key to
 before building the Yocto client image. For example:
 
 ```bash
-FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
-SRC_URI_append = " file://artifact-verify-key.pem"
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
+SRC_URI:append = " file://artifact-verify-key.pem"
 ```
 
 Note that it is also possible (but not recommended) to use `local.conf`, by using [the same method as for client certificates](#using-local-conf), adding `pn-mender-client` to the variable names.
