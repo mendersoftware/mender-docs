@@ -36,10 +36,10 @@ with two configuration files feature.
 To enable migration please add the following to your local.conf or similar:
 
 ```bash
-IMAGE_INSTALL_append = " mender-client-migrate-configuration"
-PACKAGECONFIG_remove = "split-mender-config"
+IMAGE_INSTALL:append = " mender-client-migrate-configuration"
+PACKAGECONFIG:remove = "split-mender-config"
 MENDER_PERSISTENT_CONFIGURATION_VARS = "RootfsPartA RootfsPartB"
-MENDER_ARTIFACT_EXTRA_ARGS_append = " -v 2"
+MENDER_ARTIFACT_EXTRA_ARGS:append = " -v 2"
 ```
 
 <!--AUTOVERSION: "meta-mender % branch"/ignore-->
@@ -47,7 +47,7 @@ Note that if you are using the meta-mender zeus branch or newer you need to
 reflect the new name for mender-client:
 
 ```bash
-IMAGE_INSTALL_append = " mender-client-migrate-configuration"
+IMAGE_INSTALL:append = " mender-client-migrate-configuration"
 ```
 
 Build an image with above configuration and deploy it your device fleet. Once
@@ -96,7 +96,7 @@ This sometimes happens when using one of the minimal images from the Yocto Proje
 * If you're not building a custom kernel, you can add this line to your `local.conf` in order to include all the kernel modules in the image:
 
   ```bash
-  IMAGE_INSTALL_append = " kernel-modules"
+  IMAGE_INSTALL:append = " kernel-modules"
   ```
 
   This is an easier fix, but also requires more space in the image than the previous solution, since all modules will be included, not just the missing one.
@@ -179,7 +179,7 @@ There are a couple of workarounds,
 2. Use a different filesystem, e.g `ext3` which does not support `extents` and does not suffer from this limitation.
     - In Yocto you can change filesystem type by setting `ARTIFACTIMG_FSTYPE = "ext3"` in your `local.conf` or other appropriate location
 3. Disable `extents` feature on `ext4` filesystem
-    - In Yocto you can add `EXTRA_IMAGECMD_ext4 = "-O ^extent"` in your `local.conf` or other appropriate location.
+    - In Yocto you can add `EXTRA_IMAGECMD:ext4 = "-O ^extent"` in your `local.conf` or other appropriate location.
     - Above is equivalent to running `mkfs.ext4 -O ^extent` if you are using something other then Yocto to generate your filesystem images
 
 Additional background information can be found in these threads:

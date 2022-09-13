@@ -156,9 +156,9 @@ ARTIFACTIMG_FSTYPE = "ext4"
 # Yocto layer and this is only for demo purposes. See linked documentation
 # for additional information.
 #MENDER_SERVER_URL = "https://docker.mender.io"
-#FILESEXTRAPATHS_prepend_pn-mender-server-certificate := "<DIRECTORY-CONTAINING-server.crt>:"
-#SRC_URI_append_pn-mender-server-certificate = " file://server.crt"
-#IMAGE_INSTALL_append = " mender-server-certificate"
+#FILESEXTRAPATHS:prepend:pn-mender-server-certificate := "<DIRECTORY-CONTAINING-server.crt>:"
+#SRC_URI:append:pn-mender-server-certificate = " file://server.crt"
+#IMAGE_INSTALL:append = " mender-server-certificate"
 ```
 
 !!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../99.Variables/docs.md#mender_storage_total_size_mb) for more information. Mender selects the file system type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on file system types](../02.Board-integration/01.Partition-configuration/docs.md#file-system-types) for more information.
@@ -175,13 +175,13 @@ here are the basic steps needed to do this however your actual setup may require
 Please make sure you are standing in the directory where `poky` resides,
 i.e. the top level of the Yocto Project build tree, and run these commands:
 
-<!--AUTOVERSION: "-b % git://github.com/mendersoftware/meta-mender"/meta-mender-->
+<!--AUTOVERSION: "-b % https://github.com/mendersoftware/meta-mender"/meta-mender-->
 ```bash
-git clone -b master git://github.com/mendersoftware/meta-mender
+git clone -b kirkstone https://github.com/mendersoftware/meta-mender
 ```
 
 <!--AUTOVERSION: "the HEAD of the % branch"/meta-mender-->
-Note that this command checks out the HEAD of the master branch and is not a specific tagged release. The [Yocto project release schedule](https://wiki.yoctoproject.org/wiki/Releases) differs from the Mender release schedule so even though you may be using a specific release of Mender, you will still need to take further steps if you want to use a tagged release of the Yocto project.
+Note that this command checks out the HEAD of the kirkstone branch and is not a specific tagged release. The [Yocto project release schedule](https://wiki.yoctoproject.org/wiki/Releases) differs from the Mender release schedule so even though you may be using a specific release of Mender, you will still need to take further steps if you want to use a tagged release of the Yocto project.
 
 Next, initialize the build environment:
 
@@ -246,7 +246,7 @@ MACHINE = "<YOUR-MACHINE>"
 # The following settings to enable systemd are needed for all Yocto
 # releases sumo and older.  Newer releases have these settings conditionally
 # based on the MENDER_FEATURES settings and the inherit of mender-full above.
-DISTRO_FEATURES_append = " systemd"
+DISTRO_FEATURES:append = " systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
 DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 VIRTUAL-RUNTIME_initscripts = ""
@@ -286,9 +286,9 @@ ARTIFACTIMG_FSTYPE = "ext4"
 # Yocto layer and this is only for demo purposes. See linked documentation
 # for additional information.
 #MENDER_SERVER_URL = "https://docker.mender.io"
-#FILESEXTRAPATHS_prepend_pn-mender-server-certificate := "<DIRECTORY-CONTAINING-server.crt>:"
-#SRC_URI_append_pn-mender-server-certificate = " file://server.crt"
-#IMAGE_INSTALL_append = " mender-server-certificate"
+#FILESEXTRAPATHS:prepend:pn-mender-server-certificate := "<DIRECTORY-CONTAINING-server.crt>:"
+#SRC_URI:append:pn-mender-server-certificate = " file://server.crt"
+#IMAGE_INSTALL:append = " mender-server-certificate"
 ```
 
 !!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../99.Variables/docs.md#mender_storage_total_size_mb) for more information. Mender selects the file system type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on file system types](../02.Board-integration/01.Partition-configuration/docs.md#file-system-types) for more information.

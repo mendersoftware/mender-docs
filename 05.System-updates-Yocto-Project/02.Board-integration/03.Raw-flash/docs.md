@@ -92,7 +92,7 @@ places, ant it may be preferable to turn this image type off, and use the
 `ubimg` instead:
 
 ```bash
-IMAGE_FSTYPES_remove = "mtdimg"
+IMAGE_FSTYPES:remove = "mtdimg"
 ```
 
 See also [image types](#image-types) below for more information about the

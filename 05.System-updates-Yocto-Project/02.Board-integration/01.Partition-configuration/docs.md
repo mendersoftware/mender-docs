@@ -166,5 +166,5 @@ filesystem type will be the value of
 For example:
 
 ```bash
-IMAGE_FSTYPES_append = " dataimg"
+IMAGE_FSTYPES:append = " dataimg"
 ```
