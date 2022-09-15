@@ -10,7 +10,7 @@ This integration is available in all Mender plans, as well as Mender Open Source
 
 !!!!! You need [Mender Configure](../../09.Add-ons/10.Configure/docs.md) to distribute the AWS IoT Core keys and certificates to the devices.
 
-!!! It is currently possible to have only one AWS IoT Core integration configured per Mender Organization. More advanced integration scenarios can be configured via webhooks.
+!!! It is currently possible to have only one AWS IoT Core integration configured per Mender Organization. More advanced integration scenarios can be configured via [webhooks](../07.Webhooks/docs.md).
 
 !!! After enabling the integration, Things in AWS IoT Core will be created automatically after the devices are accepted in the Mender UI. Existing Things and devices (in both systems) are left unchanged.
 
