@@ -163,4 +163,4 @@ Instead of logging in using your credentials, you can specify a Personal Access 
 ```
 
 <!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
-[x.x.x_mender-cli]: https://downloads.mender.io/mender-cli/1.9.0-build1/linux/mender-cli
+[x.x.x_mender-cli]: https://downloads.mender.io/mender-cli/1.9.0-build2/linux/mender-cli
