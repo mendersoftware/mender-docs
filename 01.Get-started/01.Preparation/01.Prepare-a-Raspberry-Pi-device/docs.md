@@ -47,7 +47,7 @@ browse to the downloaded Mender Raspberry Pi OS image.
 !!! Writing the SD card takes 5-25 minutes,
 !!! mainly depending on your SD card and writer speed.
 
-![connecting a device](image1.png)
+![flash the Raspberry Pi](flash-rpi.png)
 
 
 ### Option #1: Configure wireless network and enable SSH in headless mode
@@ -171,7 +171,7 @@ page for the first time new users will get a tutorial in the Mender web GUI.
 
 Go to the **Dashboard** tab and click on **Connect a device**.
 
-![connecting a device](Image_0.png)
+![dashboard](Image_0.png)
 
 ## Step 4 - Connect a device
 
@@ -186,14 +186,14 @@ You need to specify one of the following:
 - Raspberry Pi 3
 - Raspberry Pi 4
 
-![connecting a device](Image_2.png)
+![choose device type](Image_2.png)
 
 ## Step 6 - Install the Mender client on the device
 
 Next we will install the Mender client on the device and connect it to the Mender
 server.
 
-![accepting the device](Image_3.png)
+![copy bash snippet](Image_3.png)
 
 In the dialog box from above, click **Copy to clipboard** to copy the code to
 install the Mender client. Now go to the command line on your device, and
@@ -209,7 +209,7 @@ server and it will appear in your Pending devices tab in the server. Go ahead
 and **Accept** the pending device in the server. After accepting the device, it
 will appear on the Device groups tab on the left of Pending.
 
-![connecting a device](Image_4.png)
+![accept the device](Image_4.png)
 
 ## Next step
 
