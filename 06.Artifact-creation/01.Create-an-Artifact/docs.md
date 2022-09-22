@@ -42,11 +42,11 @@ The remaining flags specify the parameters used to [match devices to deployments
 
 Creating an Artifact takes a different form in the case of [application updates](../../02.Overview/01.Introduction/docs.md#application-updates).
 
-For example, assume that you want copy a new `authorized_keys` file to the `/home/pi/.ssh`
-directory on your devices. We first store the path to the destination directory and file into two separate files, for packaging purposes:
+For example, assume that you want copy a new `authorized_keys` file to the `/home/${USER}/.ssh`
+directory on your devices, where `USER` holds your user name. We first store the path to the destination directory and file into two separate files, for packaging purposes:
 
 ```bash
-echo /home/pi/.ssh > dest_dir # store the destination target directory
+echo /home/${USER}/.ssh > dest_dir # store the destination target directory
 echo authorized_keys > filename # store the filename of the file we want to update
 ```
 

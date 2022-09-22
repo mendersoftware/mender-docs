@@ -36,10 +36,10 @@ with two configuration files feature.
 To enable migration please add the following to your local.conf or similar:
 
 ```bash
-IMAGE_INSTALL_append = " mender-client-migrate-configuration"
-PACKAGECONFIG_remove = "split-mender-config"
+IMAGE_INSTALL:append = " mender-client-migrate-configuration"
+PACKAGECONFIG:remove = "split-mender-config"
 MENDER_PERSISTENT_CONFIGURATION_VARS = "RootfsPartA RootfsPartB"
-MENDER_ARTIFACT_EXTRA_ARGS_append = " -v 2"
+MENDER_ARTIFACT_EXTRA_ARGS:append = " -v 2"
 ```
 
 <!--AUTOVERSION: "meta-mender % branch"/ignore-->
@@ -47,7 +47,7 @@ Note that if you are using the meta-mender zeus branch or newer you need to
 reflect the new name for mender-client:
 
 ```bash
-IMAGE_INSTALL_append = " mender-client-migrate-configuration"
+IMAGE_INSTALL:append = " mender-client-migrate-configuration"
 ```
 
 Build an image with above configuration and deploy it your device fleet. Once
@@ -91,12 +91,12 @@ This sometimes happens when using one of the minimal images from the Yocto Proje
   CONFIG_NLS_CODEPAGE_437=y
   ```
 
-  Please refer to [the Yocto Project Manual](http://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html?target=_blank#configuring-the-kernel) for how to use `menuconfig` to generate and save `defconfig` files for the kernel.
+  Please refer to [the Yocto Project Manual](https://docs.yoctoproject.org/kernel-dev/common.html?target=_blank#configuring-the-kernel) for how to use `menuconfig` to generate and save `defconfig` files for the kernel.
 
 * If you're not building a custom kernel, you can add this line to your `local.conf` in order to include all the kernel modules in the image:
 
   ```bash
-  IMAGE_INSTALL_append = " kernel-modules"
+  IMAGE_INSTALL:append = " kernel-modules"
   ```
 
   This is an easier fix, but also requires more space in the image than the previous solution, since all modules will be included, not just the missing one.
@@ -179,7 +179,7 @@ There are a couple of workarounds,
 2. Use a different filesystem, e.g `ext3` which does not support `extents` and does not suffer from this limitation.
     - In Yocto you can change filesystem type by setting `ARTIFACTIMG_FSTYPE = "ext3"` in your `local.conf` or other appropriate location
 3. Disable `extents` feature on `ext4` filesystem
-    - In Yocto you can add `EXTRA_IMAGECMD_ext4 = "-O ^extent"` in your `local.conf` or other appropriate location.
+    - In Yocto you can add `EXTRA_IMAGECMD:ext4 = "-O ^extent"` in your `local.conf` or other appropriate location.
     - Above is equivalent to running `mkfs.ext4 -O ^extent` if you are using something other then Yocto to generate your filesystem images
 
 Additional background information can be found in these threads:
@@ -187,3 +187,40 @@ Additional background information can be found in these threads:
 - [uboot ext4load is very slow to read the kernel image into memory](https://community.nxp.com/thread/472241?target=_blank)
 - [u-boot: eMMC transfer speed significantly slower than stock u-boot on Tegra186](https://github.com/madisongh/meta-tegra/issues/42?target=_blank)
 - [Mender 1.7 - Standalone mode - Kernel read time get difference before and after mender update](https://hub.mender.io/t/mender-1-7-standalone-mode-kernel-read-time-get-difference-before-and-after-mender-update?target=_blank)
+
+
+<!--AUTOVERSION: "from `%` to `%` on"/ignore -->
+### Deploying an update from `dunfell` to `kirkstone` on Raspberry Pi blocks forever with `Waiting for root device /dev/mmcblk0p3...`
+
+Raspberry Pi boards have a set of boot firmware files (including Device Tree Blob files) that are
+located on the boot partition, and these files are not updated when you perform an update of the
+root filesystem where the kernel lives.
+
+Occasionally, changes to the Raspberry Pi software stack require that these files are updated.
+Between the Linux kernel and the boot firmware, version interdependencies exist which need to be
+taken care of. Therefore, to update the Linux kernel, you must also update the boot firmware files.
+
+<!--AUTOVERSION: "between `%` and `%` yocto"/ignore -->
+This is what has happened between `dunfell` and `kirkstone` yocto releases for Raspberry Pi 3B
+(other boards might have been affected too).
+
+Mender provides a recipe to include a state script in the Artifact that will copy the firmware
+files into the boot during the Artifact install. Enable it by adding the following to e.g
+`local.conf`:
+
+```
+INHERIT += "rpi-update-firmware"
+```
+
+You can override the script customizing what files to update, e.g only DTB files. See
+[mendersoftware/meta-mender@5abe2e7](https://github.com/mendersoftware/meta-mender/commit/5abe2e7b1f85b3482cb53b747ae9ced3f20a3e73) for more details.
+
+!! Updating the boot firmware files can not be done atomically and the files cannot be rolled back
+!! even though a rootfs rollback is performed. In conclusion, this is a risky operation which could
+!! brick your device. We recommend using this workaround only once when upgrading between Yocto
+!! releases, and not for every update henceforth.
+
+!! When removing `INHERIT += "rpi-update-firmware"` from your `local.conf`, you need to to clear the
+!! `tmp` directory of the Yocto build or call
+!! `bitbake -c clean update-firmware-state-script <your-image-name>` before building a new image to
+!! successfully remove the state script from the next Artifact.

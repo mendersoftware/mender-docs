@@ -79,9 +79,9 @@ Add the following your `local.conf` to include `mender-binary-delta` in your bui
 cat <<EOF >> conf/local.conf
 # Customizations for Mender delta-update support
 
-IMAGE_INSTALL_append = " mender-binary-delta"
-LICENSE_FLAGS_WHITELIST_append = " commercial_mender-binary-delta"
-FILESEXTRAPATHS_prepend_pn-mender-binary-delta := "${HOME}/mender-binary-delta-1.4.0/:"
+IMAGE_INSTALL:append = " mender-binary-delta"
+LICENSE_FLAGS_ACCEPTED:append = " commercial_mender-yocto-layer-license"
+SRC_URI:pn-mender-binary-delta = "file://${HOME}/mender-binary-delta-1.4.0.tar.gz"
 
 EOF
 ```

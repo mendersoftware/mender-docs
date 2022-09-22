@@ -48,8 +48,8 @@ file in your own layer, add a `mender.conf` file to the layer, and list this fil
 of the `mender-client` recipe, like this:
 
 ```bash
-FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-MENDER-CONF>:"
-SRC_URI_append = " file://mender.conf"
+FILESEXTRAPATHS:prepend := "${THISDIR}/<DIRECTORY-WITH-MENDER-CONF>:"
+SRC_URI:append = " file://mender.conf"
 ```
 
 Replace `<DIRECTORY-WITH-MENDER-CONF>` with the path to the `mender.conf` file, relative to the
@@ -77,7 +77,7 @@ SYSTEMD_AUTO_ENABLE = "disable"
 In this case it is also possible to avoid Mender's current dependency on systemd. If you do not wish to enable systemd in your build, add the following to `local.conf`:
 
 ```bash
-MENDER_FEATURES_DISABLE_append = " mender-systemd"
+MENDER_FEATURES_DISABLE:append = " mender-systemd"
 ```
 
 Also, you do not need any daemon-related configuration items in your `local.conf` as outlined in [the section on configuring the Yocto Project build](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build).
@@ -92,10 +92,10 @@ script in the expected folder. For example, create a `mender-client_%.bbappend` 
 and add this:
 
 ```bash
-FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-IDENTITY-SCRIPT>:"
-SRC_URI_append = " file://mender-device-identity"
+FILESEXTRAPATHS:prepend := "${THISDIR}/<DIRECTORY-WITH-IDENTITY-SCRIPT>:"
+SRC_URI:append = " file://mender-device-identity"
 
-do_install_append() {
+do_install:append() {
     install -d ${D}/${datadir}/mender/identity
     install -m 755 ${WORKDIR}/mender-device-identity ${D}/${datadir}/mender/identity/mender-device-identity
 }
@@ -123,10 +123,10 @@ In order to include an inventory script of your own making, augment the
 example, create a `mender-client_%.bbappend` file in your layer, and add this:
 
 ```bash
-FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-INVENTORY-SCRIPT>:"
-SRC_URI_append = " file://mender-inventory-custom-attribute"
+FILESEXTRAPATHS:prepend := "${THISDIR}/<DIRECTORY-WITH-INVENTORY-SCRIPT>:"
+SRC_URI:append = " file://mender-inventory-custom-attribute"
 
-do_install_append() {
+do_install:append() {
     install -d ${D}/${datadir}/mender/inventory
     install -m 755 ${WORKDIR}/mender-inventory-custom-attribute ${D}/${datadir}/mender/inventory/mender-inventory-custom-attribute
 }
@@ -144,7 +144,7 @@ party service for geolocating the device through its IP address. If this is
 applicable to you, then disable the script through setting:
 
 ```bash
-PACKAGECONFIG_remove_pn-mender-client = " inventory-network-scripts"
+PACKAGECONFIG:remove:pn-mender-client = " inventory-network-scripts"
 ```
 
 in your `local.conf` file.
@@ -174,13 +174,13 @@ own `.bbappend` recipe file, or by adding it to `local.conf`. To add it to a rec
 `mender-client_%.bbappend` and add this:
 
 ```bash
-PACKAGECONFIG_append = " modules"
+PACKAGECONFIG:append = " modules"
 ```
 
 Alternatively, add this to `local.conf`:
 
 ```bash
-PACKAGECONFIG_append_pn-mender-client = " modules"
+PACKAGECONFIG:append:pn-mender-client = " modules"
 ```
 
 ### Custom Update Modules
@@ -190,10 +190,10 @@ install the Update Module in the expected folder. For example, create a `mender-
 file in your layer, and add this:
 
 ```bash
-FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-UPDATE-MODULE>:"
-SRC_URI_append = " file://custom-update-module"
+FILESEXTRAPATHS:prepend := "${THISDIR}/<DIRECTORY-WITH-UPDATE-MODULE>:"
+SRC_URI:append = " file://custom-update-module"
 
-do_install_append() {
+do_install:append() {
     install -d ${D}/${datadir}/mender/modules/v3
     install -m 755 ${WORKDIR}/custom-update-module ${D}/${datadir}/mender/modules/v3/custom-update-module
 }
@@ -224,7 +224,7 @@ or via your `local.conf` file.
 To add it to a recipe file, create `mender-client_%.bbappend` and add this:
 
 ```bash
-IMAGE_INSTALL_append = " mender-connect"
+IMAGE_INSTALL:append = " mender-connect"
 ```
 
 Alternatively, add the snippet to your `local.conf`.
@@ -243,10 +243,10 @@ To add optional fields, or override the values for the required ones, create you
 augment the `mender-connect` recipe with the new configuration. For example, create a `mender-connect_%.bbappend` file in your layer, and add this:
 
 ```bash
-FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-MENDER-CONNECT-CONF>:"
-SRC_URI_append = " file://mender-connect.conf"
+FILESEXTRAPATHS:prepend := "${THISDIR}/<DIRECTORY-WITH-MENDER-CONNECT-CONF>:"
+SRC_URI:append = " file://mender-connect.conf"
 
-do_install_append() {
+do_install:append() {
     install -m 600 ${WORKDIR}/mender-connect.conf ${D}/${sysconfdir}/mender/mender-connect.conf
 }
 ```
@@ -290,7 +290,7 @@ To use Mender Monitor you need to accept its commercial license. If you decide
 to accept it, add the following line to your `local.conf`:
 
 ```bash
-LICENSE_FLAGS_WHITELIST += "commercial_mender-monitor"
+LICENSE_FLAGS_ACCEPTED:append = " commercial_mender-yocto-layer-license"
 ```
 
 Give the `mender-monitor` recipe the path to the local source code just downloaded:
@@ -303,7 +303,7 @@ SRC_URI_pn-mender-monitor = "file://${HOME}/mender-monitor-1.2.0.tar.gz"
 Then make Mender monitor a part of your image with:
 
 ```bash
-IMAGE_INSTALL_append = " mender-monitor"
+IMAGE_INSTALL:append = " mender-monitor"
 ```
 
 Which means your `local.conf` should now contain the following lines:
@@ -354,7 +354,7 @@ To use Mender Monitor you need to accept its commercial license. If you decide
 to accept it, add the following line to your `local.conf`:
 
 ```bash
-LICENSE_FLAGS_WHITELIST += "commercial_mender-gateway"
+LICENSE_FLAGS_ACCEPTED:append = " commercial_mender-yocto-layer-license"
 ```
 
 Give the `mender-gateway` recipe the path to the local source code just downloaded:
@@ -367,7 +367,7 @@ SRC_URI_pn-mender-gateway = "file://${HOME}/mender-gateway-1.0.0.tar.xz"
 Then make Mender monitor a part of your image with:
 
 ```bash
-IMAGE_INSTALL_append = " mender-gateway"
+IMAGE_INSTALL:append = " mender-gateway"
 ```
 
 Which means your `local.conf` should now contain the following lines:
@@ -385,10 +385,10 @@ To configure `mender-gateway`, create your own `mender-gateway.conf` and
 augment the `mender-gateway` recipe with the new configuration. For example, create a `mender-gateway_%.bbappend` file in your layer, and add this:
 
 ```bash
-FILESEXTRAPATHS_prepend := "${THISDIR}/<DIRECTORY-WITH-MENDER-GATEWAY-CONF>:"
-SRC_URI_append = " file://mender-gateway.conf"
+FILESEXTRAPATHS:prepend := "${THISDIR}/<DIRECTORY-WITH-MENDER-GATEWAY-CONF>:"
+SRC_URI:append = " file://mender-gateway.conf"
 
-do_install_append() {
+do_install:append() {
     install -m 600 ${WORKDIR}/mender-gateway.conf ${D}/${sysconfdir}/mender/mender-gateway.conf
 }
 ```
