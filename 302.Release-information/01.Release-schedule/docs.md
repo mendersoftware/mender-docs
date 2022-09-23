@@ -15,6 +15,12 @@ The lifecycle of an LTS release begins on the release date and ends one year lat
 <!--AUTOVERSION: "LTS releases: %"/lts -->
 At this time, we support the following LTS releases: 3.3, 3.0.
 
+
+| LTS         | Supported until |
+| ----------- | --------------- |
+| 3.0         |  2022-07        |
+| 3.3         |  2023-06        |
+
 #### Release Cadence
 
 New minor version releases are released approximately every three months, either as a normal or LTS release. LTS minor releases are released every six months, but version numbers may vary depending on the content of the release. Check back here to learn which versions are part of an LTS release series.
