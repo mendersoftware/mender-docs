@@ -125,8 +125,8 @@ The [Mender Artifact format](../03.Artifact/docs.md) is managed by the [Mender A
 | Mender 2.7.x / mender-artifact 3.5.x | no          | yes         | yes         |
 | Mender 3.0.x / mender-artifact 3.6.x | no          | yes         | yes         |
 | Mender 3.1.x / mender-artifact 3.6.x | no          | yes         | yes         |
-| Mender 3.2.x / mender-artifact 3.6.x | no          | yes         | yes         |
-| Mender 3.3.x / mender-artifact 3.7.x | no          | yes         | yes         |
+| Mender 3.2.x / mender-artifact 3.7.x | no          | yes         | yes         |
+| Mender 3.3.x / mender-artifact 3.8.x | no          | yes         | yes         |
 
 !! Older Mender clients do not support newer versions of the Artifact format; they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../06.Artifact-creation/01.Create-an-Artifact/docs.md#create-a-full-filesystem-update-artifact) for an introduction how to do this.
 
