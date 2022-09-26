@@ -13,7 +13,12 @@ The lifecycle of an LTS release begins on the release date and ends one year lat
 
 <!-- the version number includes the patch release here, to get picked up by autoversion, but will be a minor version in the result -->
 <!--AUTOVERSION: "LTS releases: %"/lts -->
-At this time, we support the following LTS releases: 3.3, 3.0.
+At this time, we support the following LTS releases: 3.3.
+
+
+| LTS         | Supported until |
+| ----------- | --------------- |
+| 3.3         |  2023-06        |
 
 #### Release Cadence
 
