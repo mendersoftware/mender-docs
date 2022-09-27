@@ -177,7 +177,7 @@ i.e. the top level of the Yocto Project build tree, and run these commands:
 
 <!--AUTOVERSION: "-b % https://github.com/mendersoftware/meta-mender"/meta-mender-->
 ```bash
-git clone -b kirkstone git://github.com/mendersoftware/meta-mender
+git clone -b kirkstone https://github.com/mendersoftware/meta-mender
 ```
 
 <!--AUTOVERSION: "the HEAD of the % branch"/meta-mender-->
