@@ -26,7 +26,7 @@ command:
 <!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
 ```bash
 HOSTED_MENDER_EMAIL="myusername@example.com"
-curl -u $HOSTED_MENDER_EMAIL -O https://downloads.customer.mender.io/content/hosted/mender-binary-delta/1.4.0/mender-binary-delta-1.4.0.tar.xz
+curl -u $HOSTED_MENDER_EMAIL -O https://downloads.customer.mender.io/content/hosted/mender-binary-delta/1.4.1/mender-binary-delta-1.4.1.tar.xz
 ```
 
 Replace the value of `HOSTED_MENDER_EMAIL` with the email address you used to sign up on *Hosted Mender*, then enter your Hosted Mender password when prompted to proceed.
@@ -38,14 +38,14 @@ command:
 <!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
 ```bash
 MENDER_ENTERPRISE_EMAIL="myusername@example.com"
-curl -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/on-prem/mender-binary-delta/1.4.0/mender-binary-delta-1.4.0.tar.xz
+curl -u $MENDER_ENTERPRISE_EMAIL -O https://downloads.customer.mender.io/content/on-prem/mender-binary-delta/1.4.1/mender-binary-delta-1.4.1.tar.xz
 ```
 
 
 ## Unpack `mender-binary-delta-generator`
 
 <!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
-The archive `mender-binary-delta-1.4.0.tar.xz` contains the binaries needed to generate and apply
+The archive `mender-binary-delta-1.4.1.tar.xz` contains the binaries needed to generate and apply
 deltas.
 
 Change directory to `$HOME`:
@@ -55,25 +55,25 @@ cd ${HOME}
 ```
 
 <!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
-Unpack the `mender-binary-delta-1.4.0.tar.xz` in your home directory:
+Unpack the `mender-binary-delta-1.4.1.tar.xz` in your home directory:
 
 <!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
 ```bash
-tar xvf mender-binary-delta-1.4.0.tar.xz
+tar xvf mender-binary-delta-1.4.1.tar.xz
 ```
 
 We only need the generator, so copy it to `/usr/bin`:
 
 <!--AUTOVERSION: "mender-binary-delta-%"/mender-binary-delta-->
 ```
-sudo cp mender-binary-delta-1.4.0/x86_64/mender-binary-delta-generator /usr/bin
+sudo cp mender-binary-delta-1.4.1/x86_64/mender-binary-delta-generator /usr/bin
 ```
 
 Then delete the rest of the unpacked files:
 
 <!--AUTOVERSION: "mender-binary-delta-%"/mender-binary-delta-->
 ```
-rm -rf mender-binary-delta-1.4.0
+rm -rf mender-binary-delta-1.4.1
 ```
 
 
@@ -95,7 +95,7 @@ cat <<EOF >> conf/local.conf
 
 IMAGE_INSTALL:append = " mender-binary-delta"
 LICENSE_FLAGS_ACCEPTED:append = " commercial_mender-yocto-layer-license"
-SRC_URI:pn-mender-binary-delta = "file://${HOME}/mender-binary-delta-1.4.0.tar.gz"
+SRC_URI:pn-mender-binary-delta = "file://${HOME}/mender-binary-delta-1.4.1.tar.gz"
 
 EOF
 ```
