@@ -1,0 +1,34 @@
+sequenceDiagram
+  actor User
+  participant Device
+  participant Mender
+  participant AWS IoT Core
+    
+    rect rgba(0, 0, 0, .05)
+    User ->> Mender: Accept pending device
+    Mender ->> AWS IoT Core: Provision the device
+    AWS IoT Core ->> Mender: IoT Core Thing details
+        Note over AWS IoT Core,Mender: The IoT Core Thing certificate and key<br>are saved in the Mender configuration<br>for the device
+    Device ->> Mender: Mender auth request
+    Mender ->> Device: 200 JWT token
+    Note over Device,Mender: The device is now accepted
+    Mender ->> Device: IoT Core Thing settings via Mender Configure
+    Note over Device,Mender: The IoT Core certificate and key is made available with the<br>configure module on the device.
+    end
+
+    rect rgba(0, 0, 0, .05)
+    Device ->> AWS IoT Core: AWS IoT Core application (telemetry, cloud-to-device messages)
+    AWS IoT Core ->> Device: 
+    end
+    
+    rect rgba(0, 0, 0, .05)
+    User ->> Mender: Reject the device
+    Mender ->> AWS IoT Core: Disable the device
+    AWS IoT Core ->> Mender: 
+    end
+    
+    rect rgba(0, 0, 0, .05)
+    User ->> Mender: Decommission the device
+    Mender ->> AWS IoT Core: Delete the device
+    AWS IoT Core ->> Mender: 
+    end

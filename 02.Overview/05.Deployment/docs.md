@@ -16,7 +16,7 @@ At its basics, the definition of a Deployment includes:
 
 Only accepted devices can be part of a Deployment, and any given device finishes the Deployment once.
 Mender also maintains the order of the Deployments, so the oldest Deployment is the one a given device gets first.
-
+Maintaining the order of the Deployments also means that the device will never get a Deployment created before the most recently installed one.
 
 ## Deployment to static groups
 
