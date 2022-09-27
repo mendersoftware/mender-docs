@@ -19,6 +19,7 @@ At this time, we support the following LTS releases: 3.3.
 | LTS         | Supported until |
 | ----------- | --------------- |
 | 3.3         |  2023-06        |
+| 3.0         |  2022-07        |
 
 #### Release Cadence
 
