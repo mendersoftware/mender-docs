@@ -15,7 +15,7 @@ scripts](../../../06.Artifact-creation/04.State-scripts/docs.md#root-file-system
 
 <!--AUTOVERSION: "meta-mender/tree/%"/meta-mender-->
 Take a look at the
-[example-state-scripts](https://github.com/mendersoftware/meta-mender/tree/kirkstone/meta-mender-demo/recipes-mender/example-state-scripts?target=_blank)
+[example-state-scripts](https://github.com/mendersoftware/meta-mender/tree/master/meta-mender-demo/recipes-mender/example-state-scripts?target=_blank)
 recipe to get started.
 
 !! If you add or remove a recipe containing state scripts to a build, you need

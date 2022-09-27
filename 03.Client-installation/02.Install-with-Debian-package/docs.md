@@ -31,9 +31,11 @@ package architectures.
 
 ### Download the package
 
+<!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y libglib2.0-0 tzdata -->
+
 <!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1"/mender -->
 ```bash
-wget https://downloads.mender.io/3.4.0/dist-packages/debian/$(dpkg --print-architecture)/mender-client_3.4.0-1%2Bdebian%2Bbuster_$(dpkg --print-architecture).deb
+wget https://downloads.mender.io/master/dist-packages/debian/$(dpkg --print-architecture)/mender-client_master-1%2Bdebian%2Bbuster_$(dpkg --print-architecture).deb
 ```
 
 !!! The above link will use the native architecture. See [the downloads
@@ -48,9 +50,10 @@ customize your installation. This is the recommended option for new users.
 
 To install and configure Mender run the following command:
 
+<!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
 ```bash
-sudo dpkg -i mender-client_3.4.0-1+debian+buster_$(dpkg --print-architecture).deb
+sudo dpkg -i mender-client_master-1+debian+buster_$(dpkg --print-architecture).deb
 ```
 
 After completing the installation wizard, Mender is correctly set up on your
@@ -68,7 +71,7 @@ First, to install Mender without configuring it run the following command:
 
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
 ```bash
-sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_3.4.0-1+debian+buster_$(dpkg --print-architecture).deb
+sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_master-1+debian+buster_$(dpkg --print-architecture).deb
 ```
 
 The setup is different depending on your server configuration and the most
@@ -155,7 +158,7 @@ sudo systemctl restart mender-client
 <!--AUTOVERSION: "mender/tree/%#installing-from-source"/mender -->
 As an alternative to using a Debian package, it is possible to install the
 Mender client from source by following the guidelines outlined in the
-[README.md](https://github.com/mendersoftware/mender/tree/3.4.0#installing-from-source?target=_blank)
+[README.md](https://github.com/mendersoftware/mender/tree/master#installing-from-source?target=_blank)
 of the Mender client source repository.
 
 
