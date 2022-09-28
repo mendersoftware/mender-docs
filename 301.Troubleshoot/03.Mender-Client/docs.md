@@ -321,7 +321,6 @@ The block below shows 3 example artifacts.
     * `rootfs-image.checksum: b9147deb5` - same as the `v2 mender-binary-delta`
 
 
-
 ### How to check this on the device/server/artifact?
 
 * artifact - `mender-artifact read <mender-artifact.mender>`

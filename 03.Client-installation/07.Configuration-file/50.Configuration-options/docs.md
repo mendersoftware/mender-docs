@@ -328,3 +328,9 @@ deployment has started to take place. This influences how quickly will the
 device respond to continuing after a pause. It can not be higher than
 _UpdateControlMapExpirationTimeSeconds / 2_. _Defaults to
 UpdatePollIntervalSeconds_.
+
+#### DaemonLogLevel
+
+The log level for when the daemon is running. Note that this option will get overridden by the cli option `--log-level`.
+
+Introduced in Mender client 3.4.

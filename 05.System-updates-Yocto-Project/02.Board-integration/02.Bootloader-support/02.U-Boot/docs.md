@@ -17,8 +17,8 @@ Most steps are automated, but there are a few things that need to be in place fo
 If U-Boot integration is not already enabled, you can enable it by adding the snippet below to your build configuration. For instance, in your `local.conf`:
 
 ```
-MENDER_FEATURES_ENABLE_append = " mender-uboot mender-image-sd"
-MENDER_FEATURES_DISABLE_append = " mender-grub mender-image-uefi"
+MENDER_FEATURES_ENABLE:append = " mender-uboot mender-image-sd"
+MENDER_FEATURES_DISABLE:append = " mender-grub mender-image-uefi"
 ```
 
 See [the documentation on features](../../../04.Image-customization/01.Features/docs.md) for more information.
@@ -77,7 +77,7 @@ Project you need to enable the `mender-uboot` feature using
 `MENDER_FEATURES_ENABLE`. For instance, in your `local.conf`:
 
 ```bash
-MENDER_FEATURES_ENABLE_append = " mender-uboot"
+MENDER_FEATURES_ENABLE:append = " mender-uboot"
 ```
 
 !!! By inheriting the `mender-full-ubi` class in a Bitbake `.conf` file,

@@ -14,13 +14,13 @@ disable features provided by Mender.
 To enable a feature, add this to your `local.conf`:
 
 ```bash
-MENDER_FEATURES_ENABLE_append = " <FEATURE>"
+MENDER_FEATURES_ENABLE:append = " <FEATURE>"
 ```
 
 To disable a feature, add this to your `local.conf`:
 
 ```bash
-MENDER_FEATURES_DISABLE_append = " <FEATURE>"
+MENDER_FEATURES_DISABLE:append = " <FEATURE>"
 ```
 
 !!! Note that the space inside the string is important in both of the above examples!

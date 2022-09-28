@@ -85,7 +85,7 @@ creating the signature.
 ```bash
 mender-artifact write rootfs-image \
 -t beaglebone \
--n mender-3.3.0 \
+-n mender-3.4.0 \
 -f core-image-base-beaglebone.ext4 \
 -k private.key \
 -o artifact-signed.mender
@@ -124,3 +124,55 @@ For OS specific instructions on how to install and enable verification keys, vis
 ## Cloud Key Management
 
 It is possible to sign Artifacts using keys in Cloud Key Management, allowing developers to sign Mender Artifacts without ever accessing the private signing key. Currently the mender-artifact tool supports [Google Cloud Key Management](https://cloud.google.com/security-key-management?target=_blank). For more information, check the help screen for the `gcp-kms-key` option, available by running the command `mender-artifact sign --help`.
+
+
+## Supported cryptography standards
+
+Mender supports the following standards to interact with cryptographic tokens:
+* PKCS#11 (feature supported on Linux OS)
+
+### Signing
+
+You can use hardware security modules (HSMs), smart cards or Key Storage Provider (KSP) to sign an artifact using the PKCS#11 interface.
+
+First, check if openssl and the necessary libraries are installed:
+
+```bash
+sudo apt install openssl libengine-pkcs11-openssl
+```
+
+Next, proceed to the OpenSSL configuration file:
+```bash
+user@mender:~$ sudo vim /etc/ssl/openssl.cnf
+openssl_conf = openssl_init
+[openssl_init]
+engines = engine_section
+[engine_section]
+pkcs11 = pkcs11_section
+[pkcs11_section]
+engine_id = pkcs11
+MODULE_PATH = /usr/lib/softhsm/libsofthsm2.so
+init = 0
+```
+
+You need to adjust MODULE_PATH according to your system and PKCS#11 interface.
+
+To make sure PKCS#11 engine is available for OpenSSL, issue the following command:
+```bash
+user@mender:~$ openssl engine -t pkcs11
+(pkcs11) pkcs11 engine
+     [ available ]
+```
+
+Once the engine is set up, you can sign the Mender Artifact using a PKCS#11 URI:
+```bash
+user@mender:~$ ./mender-artifact sign --key-pkcs11 "pkcs11:object=device;type=private" artifact.mender
+```
+
+### Verifying
+
+You can also verify signed artifacts using the PKCS#11 interface:
+
+```bash
+user@mender:~$ ./mender-artifact validate --key-pkcs11 "pkcs11:object=device;type=private" artifact.mender
+```

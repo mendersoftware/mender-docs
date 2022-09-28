@@ -14,7 +14,7 @@ To request a specific version of the client, add a snippet like the following to
 
 <!--AUTOVERSION: "PREFERRED_VERSION_mender-client = \"%\""/mender-->
 ```
-PREFERRED_VERSION_mender-client = "3.3.0"
+PREFERRED_VERSION_mender-client = "3.4.0"
 ```
 
 <!--AUTOVERSION: "Yocto branches higher than 3.1 (%)"/ignore "Mender client % and later"/ignore-->
@@ -82,7 +82,7 @@ This is most likely because you are producing an image that has a lot of small f
 
 * Increase the size of the image by increasing the value in `MENDER_STORAGE_TOTAL_SIZE_MB` (see description in [Variables](../../05.System-updates-Yocto-Project/99.Variables/docs.md#mender_storage_total_size_mb)), which will also increase the number of blocks. However, note that unless it is increased greatly, this will still give you a filesystem which is fairly close to the block limit, so the problem could happen during production instead, if the device writes enough files.
 
-* Decrease the size of each block. This can be done by setting `EXTRA_IMAGECMD_ext4 = " -b 1024"` in `local.conf`. The default is 4096, it must be a power of 2, and it must not be smaller than 1024.
+* Decrease the size of each block. This can be done by setting `EXTRA_IMAGECMD:ext4 = " -b 1024"` in `local.conf`. The default is 4096, it must be a power of 2, and it must not be smaller than 1024.
 
 
 ## I get a build error if I am using PREFERRED_PROVIDER_virtual/bootloader instead of PREFERRED_PROVIDER_u-boot
@@ -178,7 +178,7 @@ ERROR: Function failed: do_mender_uboot_auto_configure (log file is located at /
 This is a known bug in U-Boot versions prior to v2018.05. If you hit this you will need to include [this patch](https://raw.githubusercontent.com/mendersoftware/meta-mender/27f9e8dabf461d59dec4d94bd93d6b7207be0040/meta-mender-core/recipes-bsp/u-boot/patches/0005-fw_env_main.c-Fix-incorrect-size-for-malloc-ed-strin.patch?target=_blank) in your U-Boot sources. After adding the patch file to your layer, in your U-Boot `.bb` or `.bbappend` file, add the following:
 
 ```
-SRC_URI_append = " file://0005-fw_env_main.c-Fix-incorrect-size-for-malloc-ed-strin.patch"
+SRC_URI:append = " file://0005-fw_env_main.c-Fix-incorrect-size-for-malloc-ed-strin.patch"
 ```
 
 
@@ -199,7 +199,7 @@ However, some boards do not call `distro_bootcmd` as part of their U-Boot startu
 This is a common problem when trying to debug boot problems with GRUB. meta-mender provides an option to pause the boot process to see the messages before they disappear. To enable it, add this to `local.conf`:
 
 ```
-PACKAGECONFIG_append_pn-grub-mender-grubenv = " debug-pause"
+PACKAGECONFIG:append:pn-grub-mender-grubenv = " debug-pause"
 ```
 
 This option should be removed before moving to production.
@@ -212,8 +212,8 @@ There is also an option, `debug-log`, to put GRUB in debug mode, where it will p
 By default, meta-mender will produce a UEFI image (`uefiimg`) when integrating with GRUB. However, some older firmware may not recognize the [GPT partition table](https://en.wikipedia.org/wiki/GUID_Partition_Table?target=_blank) which is used on UEFI images. If so, the image can be switched to an [MBR partition table](https://en.wikipedia.org/wiki/Master_boot_record?target=_blank) image (`sdimg`) by adding the snippet below to the build configuration:
 
 ```
-MENDER_FEATURES_ENABLE_append = " mender-image-sd"
-MENDER_FEATURES_DISABLE_append = " mender-image-uefi"
+MENDER_FEATURES_ENABLE:append = " mender-image-sd"
+MENDER_FEATURES_DISABLE:append = " mender-image-uefi"
 ```
 
 <!--AUTOVERSION: "When I update Yocto version from % to %"/ignore-->
@@ -264,7 +264,7 @@ patch, since I it fixes a problem that was introduced after v2017.03.
 Just add this to your u-boot bbappend file:
 
 ```
-SRC_URI_remove =
+SRC_URI:remove = \
 "0006-env-Kconfig-Add-descriptions-so-environment-options-.patch"
 ```
 
@@ -285,7 +285,7 @@ platform. Under these circumstances it should be turned off, and either the
 means.
 
 ```bash
-IMAGE_FSTYPES_remove = "mtdimg"
+IMAGE_FSTYPES:remove = "mtdimg"
 ```
 
 Alternatively, if appropriate, you can remove the manually set `MENDER_MTDPARTS`
@@ -307,7 +307,7 @@ MENDER_PERSISTENT_CONFIGURATION_VARS = "RootfsPartA RootfsPartB"
 For users still on the old setup, there is a `state-script` available that will
 help migrate a device from the old setup to the new one. This is enabled by adding
 ```bash
-IMAGE_INSTALL_append = " mender-client-migrate-configuration"
+IMAGE_INSTALL:append = " mender-client-migrate-configuration"
 ```
 to your `local.conf` file.
 
@@ -327,7 +327,7 @@ A typical error message for this condition is:
 Error:
  Problem: package grub-efi-mender-precompiled-2.04-r0.cortexa8hf_neon requires u-boot, but none of the providers can be installed
   - package grub-efi-mender-precompiled-2.04-r0.cortexa8hf_neon conflicts with u-boot <= 1:2019.07 provided by u-boot-fork-1:2019.07-r0.beaglebone_yocto
-  - package mender-3.3.0-r0.cortexa8hf_neon requires grub-editenv, but none of the providers can be installed
+  - package mender-3.4.0-r0.cortexa8hf_neon requires grub-editenv, but none of the providers can be installed
   - conflicting requests
 ```
 
@@ -335,10 +335,33 @@ There are several possible resolutions to this problem:
 
 1. If your u-boot version is older than (and not equal) to 2018.11, you can suppress the message by adding this to `local.conf`:
    ```
-   RCONFLICTS_remove = "u-boot (<= 1:2019.07)"
+   RCONFLICTS:remove = "u-boot (<= 1:2019.07)"
    ```
    Note that `u-boot` needs to be replaced with a different name if you are using a U-Boot fork. The name should be visible the error message from earlier (look for `u-boot-fork` in the example message above). You can *try* this fix even if you U-Boot version is equal to or higher than 2018.11, but most likely the board will not boot, because the 2018.11 &lt;-&gt; 2019.07 version range has known problems in the UEFI loader.
 
 2. See if you can use an updated version recipe for your fork of U-Boot, for example by fetching the latest Yocto branch for the layer that contains the U-Boot fork.
 
 3. Avoid UEFI altogether by switching off the `mender-grub` feature. This will require you to use [U-Boot integration](../../05.System-updates-Yocto-Project/02.Board-integration/02.Bootloader-support/02.U-Boot/docs.md) instead.
+
+<!--AUTOVERSION: "% branch or older"/ignore-->
+## I'm using the dunfell branch or older, and I'm trying to build a commercial component, which gives me error messages about restricted license, even though I have accepted the license in my `local.conf`
+
+This is a typical symptom:
+
+```
+mender-binary-delta was skipped: because it has a restricted license 'commercial_mender-yocto-layer-license'. Which is not whitelisted in LICENSE_FLAGS_WHITELIST
+```
+
+<!--AUTOVERSION: "% and older"/ignore "% and newer"/ignore-->
+Dunfell and older branches used a different name of the variable used to accept licenses. On kirkstone and newer, the way to accept commercial licenses for Mender is like this:
+
+```
+LICENSE_FLAGS_ACCEPTED:append = " commercial_mender-yocto-layer-license"
+```
+
+<!--AUTOVERSION: "% and older"/ignore-->
+But on dunfell and older, this needs to be changed to:
+
+```
+LICENSE_FLAGS_WHITELIST_append = " commercial_mender-yocto-layer-license"
+```
