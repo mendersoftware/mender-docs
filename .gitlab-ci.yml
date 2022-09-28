@@ -56,31 +56,14 @@ test:latest_versions:
   stage: test
   image: alpine
   before_script:
-    - apk add --no-cache git python3 py3-pip openssh-client
+    - apk add --no-cache git python3 py3-pip
     - pip3 install pyyaml
-    - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | base64 -d | tr -d '\r' | ssh-add -
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - echo "Host github.com" > ~/.ssh/config
-    - echo "  StrictHostKeyChecking no" >> ~/.ssh/config
-    - export MENDER_BINARY_DELTA_DIR=/tmp/mender-binary-delta
     - export INTEGRATION_REPO_DIR=/tmp/integration
-    - export MENDER_CONVERT_DIR=/tmp/mender-convert
-    - export MENDER_CLIENT_DIR=/tmp/mender-client
-    - git clone git@github.com:mendersoftware/mender-binary-delta.git $MENDER_BINARY_DELTA_DIR
     - git clone https://github.com/mendersoftware/integration.git $INTEGRATION_REPO_DIR
-    - git clone https://github.com/mendersoftware/mender-convert $MENDER_CONVERT_DIR
-    - git clone https://github.com/mendersoftware/mender $MENDER_CLIENT_DIR
     - export INTEGRATION_VERSION=origin/staging
   script:
-    - export MENDER_CLIENT_VERSION=$(cd $MENDER_CLIENT_DIR ; git tag | egrep -e '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V -r | head -n1)
-    - export MENDER_CONVERT_VERSION=$(cd $MENDER_CONVERT_DIR ; git tag | egrep -e '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V -r | head -n1)
-    - export MENDER_BINARY_DELTA_VERSION=$(cd $MENDER_BINARY_DELTA_DIR ; git tag | egrep -e '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V -r | head -n1)
     - ./autoversion.py
       --update
-      --mender-convert-version $MENDER_CONVERT_VERSION
-      --mender-binary-delta-version $MENDER_BINARY_DELTA_VERSION
       --integration-dir $INTEGRATION_REPO_DIR
       --integration-version $INTEGRATION_VERSION
     - git diff HEAD
