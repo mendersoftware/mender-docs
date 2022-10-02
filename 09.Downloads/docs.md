@@ -201,7 +201,7 @@ repository. Afterwards, you can install and update the Mender client using the
 2. Add the official Mender GPG key to your trusted `apt` keychain:
 
    ```bash
-   curl -fLsS https://downloads.mender.io/repos/debian/gpg | sudo apt-key add -
+   curl -fsSL https://downloads.mender.io/repos/debian/gpg | sudo tee /etc/apt/trusted.gpg.d/mender.asc
    ```
 
    Inspect the GPG key fingerprint and verify that it matches
@@ -209,13 +209,13 @@ repository. Afterwards, you can install and update the Mender client using the
 
 <!--AUTOMATION: ignore -->
    ```bash
-   sudo apt-key fingerprint A1B29B00
+   gpg --show-keys --with-fingerprint /etc/apt/trusted.gpg.d/mender.asc
    ```
    ```
-  pub   rsa3072 2020-11-13 [SC] [expires: 2022-11-13]
-            E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
-  uid           [ unknown] Mender Team <mender@northern.tech>
-  sub   rsa3072 2020-11-13 [E] [expires: 2022-11-13]
+   pub   rsa3072 2020-11-13 [SC] [expires: 2022-11-13]
+         E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
+   uid                      Mender Team <mender@northern.tech>
+   sub   rsa3072 2020-11-13 [E] [expires: 2022-11-13]
    ```
 
 3. Add the Mender repository to your sources list by selecting the architecture
