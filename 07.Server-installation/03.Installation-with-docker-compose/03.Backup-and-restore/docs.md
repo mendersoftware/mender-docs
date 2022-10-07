@@ -3,6 +3,8 @@ title: Backup and restore
 taxonomy:
     category: docs
     label: tutorial
+routes:
+    canonical: /3.4/server-installation/installation-with-docker-compose/backup-and-restore
 ---
 
 ## Docker volumes
