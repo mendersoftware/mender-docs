@@ -3,6 +3,8 @@ title: Installation with Docker Compose
 taxonomy:
     category: docs
     label: tutorial
+routes:
+    canonical: /3.3/server-installation/installation-with-docker-compose
 ---
 
 <!-- The variables used in the testing of production installation instructions -->

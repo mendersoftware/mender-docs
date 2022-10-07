@@ -3,6 +3,8 @@ title: Minio
 taxonomy:
     category: docs
     label: tutorial
+routes:
+    canonical: /3.3/server-installation/production-installation-with-kubernetes/minio
 ---
 
 If you already have an AWS S3 bucket which you can use, you can skip this section.

@@ -3,6 +3,8 @@ title: Mender Server
 taxonomy:
     category: docs
     label: tutorial
+routes:
+    canonical: /3.3/server-installation/production-installation-with-kubernetes/mender-server
 ---
 
 ! Please note the code snippets in this section reuses the environment variables

@@ -3,6 +3,8 @@ title: Upgrading
 taxonomy:
     category: docs
     label: tutorial
+routes:
+    canonical: /3.3/server-installation/installation-with-docker-compose/upgrading
 ---
 
 This is a tutorial for upgrading the Mender Server in production environments. In

@@ -3,6 +3,8 @@ title: Production installation with Kubernetes
 taxonomy:
     category: docs
     label: tutorial
+routes:
+    canonical: /3.3/server-installation/production-installation-with-kubernetes
 ---
 
 !!! You can save time by using [hosted Mender](https://hosted.mender.io?target=_blank), a secure Mender server ready to use, maintained by the Mender developers.

@@ -2,6 +2,8 @@
 title: Overview
 taxonomy:
     category: docs
+routes:
+    canonical: /3.3/server-installation/overview
 ---
 
 Mender backend is composed of a number of microservices, each implementing a

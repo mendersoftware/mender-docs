@@ -3,6 +3,8 @@ title: Certificates and keys
 taxonomy:
     category: docs
     label: tutorial
+routes:
+    canonical: /3.3/server-installation/certificates-and-keys
 ---
 
 In order to secure the client-server and inter-service communication,

@@ -3,6 +3,8 @@ title: MongoDB
 taxonomy:
     category: docs
     label: tutorial
+routes:
+    canonical: /3.3/server-installation/production-installation-with-kubernetes/mongodb
 ---
 
 The Mender server uses MongoDB as primary storage layer. It doesn't have any particular

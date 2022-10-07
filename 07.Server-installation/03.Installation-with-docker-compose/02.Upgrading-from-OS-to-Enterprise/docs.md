@@ -4,6 +4,8 @@ title: Upgrading from Open Source to Enterprise
 taxonomy:
     category: docs
     label: tutorial
+routes:
+    canonical: /3.3/server-installation/installation-with-docker-compose/upgrading-from-os-to-enterprise
 ---
 <!-- "Upgrading from Open Source to Enterprise" is slightly too big to fit in
     the navigation menu, hence the two titles above. -->
