@@ -10,7 +10,7 @@ taxonomy:
 ! of installing Minio. Please make sure you correctly define them or adapt the
 ! snippet to your specific use case.
 
-## Prerequesites
+## Prerequisites
 
 The Mender server deployment requires generating keys that are used for user and
 device authentication. The following snippet uses `openssl` to generate the
