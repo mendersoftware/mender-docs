@@ -3,6 +3,8 @@ title: Demo installation
 taxonomy:
     category: docs
     label: tutorial
+routes:
+    canonical: /3.4/server-installation/demo-installation
 ---
 
 !!! If you are interested in evaluating Mender features, visit
