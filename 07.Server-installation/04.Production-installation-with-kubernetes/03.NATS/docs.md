@@ -3,6 +3,8 @@ title: NATS
 taxonomy:
     category: docs
     label: tutorial
+routes:
+    canonical: /3.4/server-installation/production-installation-with-kubernetes/nats
 ---
 
 The Mender server uses NATS as message broker.

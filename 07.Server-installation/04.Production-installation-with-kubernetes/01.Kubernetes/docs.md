@@ -3,6 +3,8 @@ title: Kubernetes
 taxonomy:
     category: docs
     label: tutorial
+routes:
+    canonical: /3.4/server-installation/production-installation-with-kubernetes/kubernetes
 ---
 
 The basic requirements to run the Mender Server on Kubernetes are:
