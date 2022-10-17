@@ -18,66 +18,25 @@ or [System Updates: Debian family](../../04.System-updates-Debian-family/chapter
 ## Install Mender using the Debian package
 
 Mender provides a Debian package (`.deb`) for convenience to install on e.g
-Debian, Ubuntu or Raspberry Pi OS. The package supports the following
-architectures:
+Debian, Ubuntu or Raspberry Pi OS.
 
-- armhf (ARM-v6): ARM 32bit distributions, for example Raspberry Pi OS for Raspberry Pi or Debian for BeagleBone.
-- arm64: (ARM-v8): ARM 64bit processors, for example Debian for Asus Tinker Board
-- amd64: Generic 64-bit x86 processors, the most popular among workstations
+See the instructions in our [downloads
+section](../../09.Downloads/docs.md#install-using-the-apt-repository) for the
+explicit steps required.
 
-See [the downloads page](../../09.Downloads/docs.md) for links to download all
-package architectures.
-
-
-### Download the package
-
-<!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y libglib2.0-0 tzdata -->
-
-<!--AUTOVERSION: "downloads.mender.io/%/"/mender "mender-client_%-1"/mender -->
-```bash
-wget https://downloads.mender.io/3.4.0/dist-packages/debian/$(dpkg --print-architecture)/mender-client_3.4.0-1%2Bdebian%2Bbuster_$(dpkg --print-architecture).deb
-```
-
-!!! The above link will use the native architecture. See [the downloads
-!!! page](../../09.Downloads/docs.md) for other architectures, and also make sure to modify the
-!!! references to the package in commands below.
-
-
-### Option 1: Attended installation with a wizard
-
-The Mender package comes with an install wizard that will let you configure and
-customize your installation. This is the recommended option for new users.
-
-To install and configure Mender run the following command:
-
-<!--AUTOMATION: ignore -->
-<!--AUTOVERSION: "mender-client_%-1"/mender -->
-```bash
-sudo dpkg -i mender-client_3.4.0-1+debian+buster_$(dpkg --print-architecture).deb
-```
-
-After completing the installation wizard, Mender is correctly set up on your
-device and automatically starts in [managed
-mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation). Your
-device is now ready to authenticate with the server and start receiving updates.
-
-
-### Option 2: Unattended installation
-
-Alternatively, install the package non-interactively. This is suitable for
-scripts or other situations where no user input is desired.
-
-First, to install Mender without configuring it run the following command:
-
-<!--AUTOVERSION: "mender-client_%-1"/mender -->
-```bash
-sudo DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_3.4.0-1+debian+buster_$(dpkg --print-architecture).deb
-```
+### Configure the mender-client
 
 The setup is different depending on your server configuration and the most
 common cases are shown below. Use `mender setup --help` to learn about all
 configuration options.
 
+<!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install --assume-yes wget libglib2.0-0 tzdata -->
+
+<!--AUTOVERSION: "repos/debian/pool/%/"/ignore "mender-client_%-1"/mender -->
+<!--AUTOMATION: execute=wget https://downloads.mender.io/repos/debian/pool/main/m/mender-client/mender-client_3.4.0-1%2Bdebian%2Bbullseye_$(dpkg --print-architecture).deb -->
+
+<!--AUTOVERSION: "mender-client_%-1"/mender -->
+<!--AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_3.4.0-1+debian+bullseye_$(dpkg --print-architecture).deb -->
 <!--AUTOMATION: execute=DEVICE_TYPE=device-type -->
 <!--AUTOMATION: execute=TENANT_TOKEN=secure-token -->
 <!--AUTOMATION: execute=SERVER_IP_ADDR=1.2.3.4 -->
