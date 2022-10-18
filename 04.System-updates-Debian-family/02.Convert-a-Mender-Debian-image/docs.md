@@ -137,7 +137,7 @@ Run mender-convert from inside the container with your desired options, e.g.
 ```bash
 # move overlay to the input folder
 mkdir -p input/overlay
-mv <PATH_TO_MY_OVERLAY>/* input/Overlay/*
+mv <PATH_TO_MY_OVERLAY>/* input/overlay/*
 
 # convert the image
 MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
