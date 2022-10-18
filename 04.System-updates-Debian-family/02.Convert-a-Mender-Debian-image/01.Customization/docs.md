@@ -184,3 +184,7 @@ MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
     --config configs/raspberrypi3_config \
     --overlay input/rootfs_overlay_demo/
 ```
+
+When passing multiple overlays `mender-convert` applies each overlay in the order
+of which they were passed. Consequently, an overlay will override identically 
+pathed files from priorly passed overlays.
