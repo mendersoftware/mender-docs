@@ -1,7 +1,7 @@
 {
     "paths": [
         "200.Server-side-API",
-        "200.Device-side-API"
+        "201.Device-side-API"
     ],
     "files": [
         "302.Release-information/01.Release-notes-changelog/10.Mender-server",
