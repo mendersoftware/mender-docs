@@ -132,6 +132,8 @@ mv <PATH_TO_MY_GOLDEN_IMAGE> input/golden-image-1.img
 
 ### Use the mender-convert container image
 
+We strongly recommend using mender-convert with docker.
+
 Run mender-convert from inside the container with your desired options, e.g.
 
 ```bash
