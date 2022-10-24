@@ -211,10 +211,10 @@ repository. Afterwards, you can install and update the Mender client using the
    gpg --show-keys --with-fingerprint /etc/apt/trusted.gpg.d/mender.asc
    ```
    ```
-   pub   rsa3072 2020-11-13 [SC] [expires: 2022-11-13]
+   pub   rsa3072 2020-11-13 [SC] [expires: 2024-10-23]
          E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
    uid                      Mender Team <mender@northern.tech>
-   sub   rsa3072 2020-11-13 [E] [expires: 2022-11-13]
+   sub   rsa3072 2020-11-13 [E] [expires: 2024-10-23]
    ```
 
 3. Add the Mender repository to your sources list by selecting the architecture
