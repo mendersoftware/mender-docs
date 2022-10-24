@@ -25,7 +25,7 @@ This is in particular useful in a mass production setting because you can sign c
 
 See [Device authentication](../../02.Overview/13.Device-authentication/docs.md) for a general overview of how device authentication works in Mender.
 
-If you are using Hosted Mender, you can host the mTLS ambassador in your infrastructure and point it to the upstream server `https://hosted.mender.io`.
+If you are using hosted Mender, you can host the mTLS ambassador in your infrastructure and point it to the upstream server `https://hosted.mender.io`.
 In case you need assistance or use a hosted mTLS ambassador, contact us describing your use case.
 
 ## Prerequisites
