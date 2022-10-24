@@ -50,7 +50,7 @@ browse to the downloaded Mender Raspberry Pi OS image.
 ![flash the Raspberry Pi](flash-rpi.png)
 
 
-### Option #1: Configure wireless network and enable SSH in headless mode
+### Option #1: Configure your Raspberry Pi in headless mode
 
 You can take advantage of the headless configuration options of Raspberry Pi to
 enable SSH or to configure the wireless network. This saves you the hassle
@@ -79,8 +79,19 @@ RPI_BOOT="/Volumes/boot"
 If this outputs nothing you can continue. If you get the ERROR, find out where
 the SD card's boot partition is accessible and change the `RPI_BOOT` variable accordingly.
 
-With the path to the boot directory set up, we first configure networking. Assuming
-you have a typical WiFi setup, change the initial three variables and run this code block:
+With the path to the boot directory set up, we first configure the default user and password:
+
+```bash
+USERNAME='' # CHANGE: your desired username
+PASSWORD='' # CHANGE: your desired password
+
+cat << EOF > "$RPI_BOOT"/userconf.txt
+${USERNAME}:$(openssl passwd -6 "$PASSWORD")
+EOF
+```
+
+We then configure networking. Assuming you have a typical WiFi setup, change the initial three
+variables and run this code block:
 
 ```bash
 WIFI_SSID='' # CHANGE: your WiFi name
@@ -111,19 +122,23 @@ If you have a different network setup or encounter any issues, please see [the o
 
 
 
-### Option #2: Configure wireless network and enable SSH by attach a keyboard and monitor
+### Option #2: Configure your Raspberry Pi with a keyboard and monitor attached
 
 If you did headless (*Option #1* above) skip to *Step 2* below.
 
 Boot the Raspberry Pi with the newly flashed SD card. Attach a keyboard and
-monitor and log in.
+monitor.
 
-Do the following steps to set up WiFi:
+Follow the start-up wizard to:
+* Select keyboard layout
+* Set up your user and password.
+
+Then, log in with your new user and password and do the following steps to set up WiFi:
 
 * Run `sudo raspi-config`
-* Select `Localisation Options` then `Change wireless country`
-* Set the SSID and passphrase for the network
-* Choose `Yes`, `OK` and `Finish`
+* Select `Localisation Options`, then `WLAN Country`. Select the correct country code.
+* Select `System Options`, then `Wireless LAN`. Set the SSID and passphrase for the network
+* Choose `Finish`
 
 Check that your Raspberry Pi is connected to the Internet (e.g. `ping www.google.com`).
 If this does not work, please see the official [Raspberry Pi documentation on network configuration](https://www.raspberrypi.com/documentation/computers/configuration.html?target=_blank#using-the-command-line).
@@ -131,7 +146,7 @@ If this does not work, please see the official [Raspberry Pi documentation on ne
 
 Now do the following steps to set up SSH:
 * Run `sudo raspi-config`
-* Navigate to `Interfacing Options` and Select `SSH`
+* Navigate to `Interface Options` and Select `SSH`
 * Choose `Yes`, `OK` and `Finish`
 
 If you encounter any issues, see [Enable local SSH
