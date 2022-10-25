@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 ## Working with Firewalls
-Corporate Firewalls must permit the following URLs to the devices in order for Hosted Mender to work correctly:
+The following URLs and access types need outgoing permissions in firewalls in order for Hosted Mender to work correctly:
 
 **Hosted Mender access**: Devices, APIs and browser access
 * `https://hosted.mender.io`
