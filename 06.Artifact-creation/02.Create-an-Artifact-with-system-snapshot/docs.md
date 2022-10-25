@@ -103,7 +103,7 @@ file `root-part.ext4` in the user's home directory on the remote machine:
 USER="user"
 HOST="host-ip"
 
-mender snapshot dump | ssh $USER@$HOST /bin/sh -c 'cat > $HOME/root-part.ext4`
+mender snapshot dump | ssh $USER@$HOST /bin/sh -c 'cat > $HOME/root-part.ext4'
 ```
 
 If `ssh` is not available, you can attach a removable storage device (e.g.
