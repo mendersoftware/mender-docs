@@ -20,7 +20,7 @@ local device to connect to the Mender Server directly.
 
 To follow this tutorial you will need to
 [prepare a Raspberry Pi device](../01.Preparation/01.Prepare-a-Raspberry-Pi-device/)
-and connect it to Hosted Mender or your Mender Server.
+and connect it to hosted Mender or your Mender Server.
 
 This tutorial assumes that your device is running the Raspbian OS. If you are
 running a Yocto distribution the commands to install the Mender Gateway will
@@ -48,14 +48,14 @@ JWT_TOKEN='eyJhbGciOiJS...'
 wget -O- https://get.mender.io | sudo bash -s -- --jwt-token "$JWT_TOKEN" mender-gateway --demo
 ```
 
-The `JWT_TOKEN` environment variable contains a valid Hosted Mender JWT token which the script
+The `JWT_TOKEN` environment variable contains a valid hosted Mender JWT token which the script
 will use to authenticate to the server when downloading the Mender Gateway binaries.
 
 
 ## Configuration
 
 When installing the Mender Gateway in demo mode (see the `--demo` flag in the snippet above),
-the package automatically configures it to connect to Hosted Mender, forwarding both device APIs
+the package automatically configures it to connect to hosted Mender, forwarding both device APIs
 and the Artifacts. It also ships with an example HTTPS certificate that you will have to add to
 the list of trusted certificates in your devices connecting to the Mender Gateway.
 
@@ -194,7 +194,7 @@ docker run -it -p 85:85 --pull=always \
 
 ![Pending device](pending-device.png)
 
-The device will connect to the Mender Gateway which will forward the API calls to Hosted Mender or
+The device will connect to the Mender Gateway which will forward the API calls to hosted Mender or
 your upstream Mender Server. The virtual device will show up in the Mender UI as a new pending device.
 You can accept your devices as usual to authorize the connection to the Mender Server.
 

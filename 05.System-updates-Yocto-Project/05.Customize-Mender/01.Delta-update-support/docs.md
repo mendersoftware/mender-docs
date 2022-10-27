@@ -29,7 +29,7 @@ HOSTED_MENDER_EMAIL="myusername@example.com"
 curl -u $HOSTED_MENDER_EMAIL -O https://downloads.customer.mender.io/content/hosted/mender-binary-delta/1.4.1/mender-binary-delta-1.4.1.tar.xz
 ```
 
-Replace the value of `HOSTED_MENDER_EMAIL` with the email address you used to sign up on *Hosted Mender*, then enter your Hosted Mender password when prompted to proceed.
+Replace the value of `HOSTED_MENDER_EMAIL` with the email address you used to sign up on *hosted Mender*, then enter your hosted Mender password when prompted to proceed.
 **NOTE**: if you signed up using your Google or GitHub login, use the email address linked to that account and enter `x` as the password.
 
 On the other hand, if you are using *on-premise Mender Enterprise*, download using the following
