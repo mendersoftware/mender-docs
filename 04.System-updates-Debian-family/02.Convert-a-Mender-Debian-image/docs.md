@@ -103,6 +103,7 @@ Then change directory to where you downloaded `mender-convert` for the next step
 
 ```bash
 cd mender-convert
+MENDER_CONVERT_LOCATION=${PWD}
 ```
 
 ## Configure the Mender client server configuration
@@ -111,11 +112,12 @@ The easiest, and most straight-forward way, is to integrate the client with
 [hosted Mender](https://hosted.mender.io?target=_blank):
 
 #### Using [hosted Mender](https://hosted.mender.io?target=_blank)
+
 ```bash
 mkdir -p input
-$MENDER_CONVERT_LOCATION/bootstrap-rootfs-overlay-hosted-server.sh \
+$MENDER_CONVERT_LOCATION/scripts/bootstrap-rootfs-overlay-hosted-server.sh \
     --output-dir ${PWD}/input/rootfs_overlay_demo \
-    --tenant-token "Paste token from https://hosted.mender.io/ui/#/settings/my-organization"
+    --tenant-token "Paste token from https://hosted.mender.io/ui/settings/organization-and-billing"
 ```
 
 However, there are additional scripts in the `scripts/` directory to enable

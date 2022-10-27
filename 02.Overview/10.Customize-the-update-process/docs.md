@@ -71,6 +71,11 @@ scripts](../../06.Artifact-creation/04.State-scripts/docs.md).
 
 ## Synchronized updates
 
+!!!!! Support for customizing the update process is available in all plans. Synchronizing
+!!!!! this remotely through the Mender UI is only available on the Enterprise plan.
+!!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
+!!!!! for an overview of all Mender plans and features.
+
 When creating a software deployment, it is possible to control the update from
 the Mender UI or an application running locally on the device by telling the
 Mender client to wait at specific points in the deployment. The deployment
