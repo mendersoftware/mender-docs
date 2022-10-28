@@ -60,7 +60,6 @@ export PATH="${PATH}:${HOME}/bin"
 !!! Add above to `~/.bashrc` or equivalent to make it persistent across multiple
 !!! terminal sessions.
 
-
 ## Step 2 - Setup shell variables on your workstation
 
 Setup the `IP_ADDRESS` shell variable with correct IP address of your device:

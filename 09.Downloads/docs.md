@@ -86,6 +86,8 @@ Please refer to your host Operating System documentation for more details.
 ! `mender-artifact cat` or `mender-artifact cp` will not work due to lack
 ! of support for certain utilities on the Mac platform.
 
+!!! `mender-artifact` binary is shipped also in [mender-ci-tools Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools). More information [here](../06.Artifact-creation/10.CI-CD/docs.md#mender-ci-workflows-docker-image).
+
 
 ## Mender client
 
@@ -380,6 +382,8 @@ Please refer to your host Operating System documentation for more details.
 <!--AUTOVERSION: "[%_mender-cli-"/ignore "mender-cli/%/"/ignore -->
 [master_mender-cli-linux]: https://downloads.mender.io/mender-cli/master/linux/mender-cli
 [master_mender-cli-darwin]: https://downloads.mender.io/mender-cli/master/darwin/mender-cli
+
+!!! `mender-cli` binary is shipped also in [Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools). More information [here](../06.Artifact-creation/10.CI-CD/docs.md#mender-ci-workflows-docker-image).
 
 ## Monitor
 
