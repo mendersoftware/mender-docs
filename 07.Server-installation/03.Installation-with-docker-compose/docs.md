@@ -253,6 +253,13 @@ CERT_SAN="DNS:${API_GATEWAY_DOMAIN_NAME},DNS:*.${STORAGE_PROXY_DOMAIN_NAME}" \
 > For more information, please refer to https://docs.mender.io/
 > ```
 
+Adjust keys permission to permit successful container mount:
+
+```
+sudo chown 65534 ./keys-generated/keys/deviceauth/private.key
+sudo chown 65534 ./keys-generated/keys/useradm/private.key
+```
+
 Your local directory tree should now look like this:
 
 > ```
