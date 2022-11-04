@@ -141,7 +141,16 @@ helm upgrade --install mender mender/mender --version master -f mender-master.ym
 [/ui-tab]
 [/ui-tabs]
 
-> To store the Mender artifacts in an AWS S3 bucket instead of relying on a Minio service, update
+### Supported artifact storage types
+
+Mender supports the following Artifact storage types:
+* AWS S3 (or AWS S3 API-compatible storage layers, e.g., MinIO)
+* Azure Blob Storage
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="AWS S3"]
+<!--AUTOMATION: ignore -->
+> To store the Mender Artifacts in an *AWS S3 bucket* instead of relying on a Minio service, update
 > the examples above as follows:
 >
 > ```yaml
@@ -154,6 +163,31 @@ helm upgrade --install mender mender/mender --version master -f mender-master.ym
 >     AWS_SECRET_ACCESS_KEY: "<your-secret-access-key>"
 >     AWS_FORCE_PATH_STYLE: "false"
 > ```
+[/ui-tab]
+[ui-tab title="Azure Blob Storage"]
+
+> To store the Mender Artifacts in an *Azure Blob Storage* container using a *connection string*, update the values file as follows:
+>
+> ```yaml
+> global:
+>   storage: "azure"
+>   azure:
+>     AUTH_CONNECTION_STRING: "BlobEndpoint=https://<name-of-your-storage>.blob.core.windows.net;SharedAccessSignature=..."
+>     CONTAINER_NAME: "<name-of-your-container>"
+> ```
+
+Instead of a connection string, you can also specify the following parameters:
+>
+> ```yaml
+> global:
+>   storage: "azure"
+>   azure:
+>     AUTH_SHARED_KEY_ACCOUNT_NAME: "<account-name>"
+>     AUTH_SHARED_KEY_ACCOUNT_KEY: "<account-key>"
+>     CONTAINER_NAME: "<name-of-your-container>"
+> ```
+[/ui-tab]
+[/ui-tabs]
 
 ### Exposing the service
 
