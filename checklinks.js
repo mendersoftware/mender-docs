@@ -1,8 +1,6 @@
 #! /usr/bin/env node
 
 import { remark } from 'remark';
-import parse from 'remark-parse';
-import stringify from 'remark-stringify';
 import { engine } from 'unified-engine';
 
 import yargs from 'yargs';
@@ -17,7 +15,6 @@ engine(
     extensions: ['md'],
     pluginPrefix: 'remark',
     packageField: 'remarkConfig',
-    injectedPlugins: [parse, stringify],
     quiet: !argv.verbose,
     color: argv.color,
     frail: true
