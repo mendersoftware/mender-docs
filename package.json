@@ -37,5 +37,6 @@
       "repeated-words",
       "sentence-spacing"
     ]
-  }
+  },
+  "type": "module"
 }

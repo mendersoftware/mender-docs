@@ -1,21 +1,19 @@
 #! /usr/bin/env node
 
-var remark = require('remark');
-var parse = require('remark-parse');
-var stringify = require('remark-stringify');
-var engine = require('unified-engine');
+import { remark } from 'remark';
+import parse from 'remark-parse';
+import stringify from 'remark-stringify';
+import { engine } from 'unified-engine';
 
-var argv = require('yargs')
-    .scriptName("checklinks")
-    .usage('$0 [paths]...')
-    .help()
-    .argv
+import yargs from 'yargs';
+
+var argv = yargs().scriptName('checklinks').usage('$0 [paths]...').help().argv;
 
 engine(
   {
     // Standard engine configuration
     processor: remark,
-    files: argv._.length >0 ? argv._ : ['.'],
+    files: argv._.length > 0 ? argv._ : ['.'],
     extensions: ['md'],
     pluginPrefix: 'remark',
     packageField: 'remarkConfig',
