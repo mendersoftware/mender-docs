@@ -4,7 +4,7 @@ taxonomy:
     category: docs
     label: tutorial
 routes:
-    canonical: /3.4/server-installation/production-installation-with-kubernetes/storage-of-the-artifacts
+    canonical: /3.4/server-installation/storage-of-the-artifacts
 ---
 
 The Deployments service stores Mender artifacts in an S3 compatible object-store. This
