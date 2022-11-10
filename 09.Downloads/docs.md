@@ -94,6 +94,15 @@ software updates packaged as Mender Artifacts.
 See [Client installation](../03.Client-installation/chapter.md) for more information
 about how to configure and use the Mender client.
 
+The `mender-client` Debian package installs:
+* the binary,
+* a systemd service,
+* the default [identity script](../03.Client-installation/03.Identity/docs.md),
+* the default [inventory scripts](../03.Client-installation/04.Inventory/docs.md)
+* and the default [update modules](../03.Client-installation/05.Use-an-updatemodule/docs.md)
+(and its generators).
+
+
 ### Installation methods
 
 You can install the Mender client in different ways depending on your preference.
@@ -128,11 +137,10 @@ curl -fLsS https://get.mender.io -o get-mender.sh
 sudo bash get-mender.sh
 ```
 
-By default, the script installs the [remote terminal
-extension](#remote-terminal-add-on) plugin in addition to the client. If you do
-not want this feature you can provide additional arguments to the script
-specifying which packages you want to install. For example, the following will
-only install the Mender client:
+By default, the script installs the [remote terminal](#remote-terminal-add-on) and
+[configure](#mender-configure-add-on) add-ons in addition to the client. If you do not want this
+feature you can provide additional arguments to the script specifying which packages you want to
+install. For example, the following will only install the Mender client:
 
 <!--AUTOMATION: ignore -->
 ```bash
@@ -157,6 +165,13 @@ Mender client, simply run
 sudo apt-get update
 sudo apt-get upgrade
 ```
+
+!!! If you customize any of the installed files from `mender-client` (for example modifying identity
+!!! or inventory scripts), then please make sure to also save your work in an additional place.
+!!! Files at paths that match the defaults shipped by the package will be overwritten when the
+!!! client is upgraded or re-installed, so you might lose your work if you only modified the
+!!! original files.
+
 
 !!! To prevent the Mender client from upgrading when upgrading the rest of the
 !!! system, mark it to be held with `sudo apt-mark hold mender-client`.
