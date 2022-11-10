@@ -34,6 +34,9 @@ you will connect to the Mender Gateway.
 
 The first step is installing the Mender Gateway into your Raspberry Pi device.
 
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="hosted"]
+
 You can use the "Connect a device" dropdown in the Mender UI and select the
 "Promote a device to gateway" menu item to generate a snippet to install easily
 the Mender Gateway package into your device.
@@ -51,6 +54,13 @@ wget -O- https://get.mender.io | sudo bash -s -- --jwt-token "$JWT_TOKEN" mender
 The `JWT_TOKEN` environment variable contains a valid Hosted Mender JWT token which the script
 will use to authenticate to the server when downloading the Mender Gateway binaries.
 
+[/ui-tab]
+[ui-tab title="enterprise"]
+
+You can find download and installation instructions for on-premise environments on [downloads](../../09.Downloads/docs.md#mender-gateway) page.
+
+[/ui-tab]
+[/ui-tabs]
 
 ## Configuration
 
