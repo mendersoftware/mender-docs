@@ -128,11 +128,10 @@ curl -fLsS https://get.mender.io -o get-mender.sh
 sudo bash get-mender.sh
 ```
 
-By default, the script installs the [remote terminal
-extension](#remote-terminal-add-on) plugin in addition to the client. If you do
-not want this feature you can provide additional arguments to the script
-specifying which packages you want to install. For example, the following will
-only install the Mender client:
+By default, the script installs the [remote terminal](#remote-terminal-add-on) and
+[configure](#mender-configure-add-on) add-ons in addition to the client. If you do not want this
+feature you can provide additional arguments to the script specifying which packages you want to
+install. For example, the following will only install the Mender client:
 
 <!--AUTOMATION: ignore -->
 ```bash
