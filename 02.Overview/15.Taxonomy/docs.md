@@ -77,7 +77,7 @@ a well-defined and portable Device-side API.
 [Mender Hub](https://hub.mender.io/c/board-integrations?target=_blank)
 of a Mender Board integration for a specific board.
 
-* _Mender Gateway - An application that enables managing and deploying OTA
+* _Mender Gateway_ - An application that enables managing and deploying OTA
 updates to devices on the local network. The gateway acts as a proxy with the
 ability to understand and serve client requests locally.
 
