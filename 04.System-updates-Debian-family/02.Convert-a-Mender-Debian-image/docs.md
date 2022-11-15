@@ -134,12 +134,14 @@ mv <PATH_TO_MY_GOLDEN_IMAGE> input/golden-image-1.img
 
 ### Use the mender-convert container image
 
+We strongly recommend using mender-convert with docker.
+
 Run mender-convert from inside the container with your desired options, e.g.
 
 ```bash
 # move overlay to the input folder
 mkdir -p input/overlay
-mv <PATH_TO_MY_OVERLAY>/* input/Overlay/*
+mv <PATH_TO_MY_OVERLAY>/* input/overlay/*
 
 # convert the image
 MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \

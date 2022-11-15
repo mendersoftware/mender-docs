@@ -25,11 +25,11 @@ compression for the Raspberry Pi 3:
 echo 'MENDER_ARTIFACT_COMPRESSION=lzma' >> configs/custom_config
 ```
 
-Call `mender-convert` and provide your custom configuration file using the
+Call `docker-mender-convert` and provide your custom configuration file using the
 `--config` option:
 
 ```bash
-MENDER_ARTIFACT_NAME=release-1 ./mender-convert \
+MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
   --disk-image input/<image-to-convert.img> \
   --config configs/raspberrypi3_config \
   --config configs/custom_config
@@ -77,7 +77,7 @@ When calling mender-convert, enable the hooks by using the `--config` argument t
 `custom_config` file:
 
 ```bash
-MENDER_ARTIFACT_NAME=release-1 ./mender-convert \
+MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
   --disk-image input/<image-to-convert.img> \
   --config configs/raspberrypi3_config \
   --config configs/custom_config
@@ -128,11 +128,11 @@ mender_create_artifact() {
 EOF
 ```
 
-Call `mender-convert` and provide your custom configuration file using the
+Call `docker-mender-convert` and provide your custom configuration file using the
 `--config` option:
 
 ```bash
-MENDER_ARTIFACT_NAME=release-1 ./mender-convert \
+MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
   --disk-image input/<image-to-convert.img> \
   --config configs/raspberrypi3_config \
   --config configs/custom_config
@@ -184,3 +184,7 @@ MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
     --config configs/raspberrypi3_config \
     --overlay input/rootfs_overlay_demo/
 ```
+
+When passing multiple overlays `mender-convert` applies each overlay in the order
+of which they were passed. Consequently, an overlay will override identically 
+pathed files from priorly passed overlays.

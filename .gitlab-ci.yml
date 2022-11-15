@@ -40,11 +40,11 @@ test:
 
 test:internal-links:
   stage: test
-  image: node:14-alpine
+  image: node:19-alpine
   script:
     - apk add --no-cache git
-    - npm install
-    - ./checklinks --color --verbose
+    - npm ci
+    - ./checklinks.js --color --verbose
 
 test:passive-voice:
     stage: test
