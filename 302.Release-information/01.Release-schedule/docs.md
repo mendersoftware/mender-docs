@@ -1,13 +1,38 @@
 ---
-title: Release schedule
+title: Release version and schedule
 taxonomy:
     category: docs
 ---
 
-Our requirements for release quality are always the same, with only the length of support differing between non-LTS releases and LTS releases.
-LTS releases are maintained through patch releases for one year, whereas non-LTS releases get patch releases only if an urgent vulnerability is found between minor releases.
+There are two Mender release types:
 
-The lifecycle of an LTS release begins on the release date and ends one year later at the scheduled support end date. Keeping these dates in mind helps decide which version to adopt and when to upgrade to a new version. To ensure the optimal operation of Mender within a release lifecycle, the release components should use any released patch updates once they become available.
+* LTS (Long Term Support)
+* non-LTS (Standard Support)
+
+Our quality requirements for both release types are the same, the only difference between LTS and non-LTS releases is the support length. We maintain LTS releases through patch releases for one year from the release date. In contrast, non-LTS releases get patch releases only if an urgent vulnerability is found between the release date and the next release.
+
+Keeping this distinction in mind helps decide which version to adopt and when to upgrade to a new version. In addition, ensure you are always using the latest available patch releases for the optimal operation of Mender.
+
+
+##### Versioning
+
+Mender users [Semantic Versioning](https://semver.org), and the version numbers are in the `MAJOR.MINOR.PATCH` format.
+
+We increment:
+
+* `MAJOR` version when we make incompatible API changes
+* `MINOR` version when we add functionalities in a backward compatible manner
+* `PATCH` version when we make backward compatible bug fixes to existing releases
+
+!!! By design, the Mender Backend is always backward compatible with older versions of the Mender Client. Therefore, incrementing the `MAJOR` version means that the Mender Client (generally speaking, the client components) depend on a corresponding `MAJOR` version of the Management Server. However, any older Mender Client will still work with a Management Server running a more recent version.
+
+
+#### Release Cadence
+
+We release a new version every three months, either as a non-LTS or LTS release. We publish LTS releases approximately every six months, but version numbers (e.g., major or minor version bumps) may vary depending on the release's content. Check back here to learn which versions are part of an LTS release series.
+
+We publish patch versions for older LTS releases roughly the same time we publish the new minor or major releases unless we discover an urgent vulnerability that requires an immediate fix.
+
 
 ##### Current LTS releases
 
@@ -15,14 +40,15 @@ The lifecycle of an LTS release begins on the release date and ends one year lat
 <!--AUTOVERSION: "LTS releases: %"/lts -->
 At this time, we support the following LTS releases: 3.3.
 
-
 | LTS         | Supported until |
 | ----------- | --------------- |
 | 3.3         |  2023-06        |
-| 3.0         |  2022-07        |
 
-#### Release Cadence
+Mender is versioned and released as a Product bundle, and the versions mentioned here refer to the Product bundle version.
 
-New minor version releases are released approximately every three months, either as a normal or LTS release. LTS minor releases are released every six months, but version numbers may vary depending on the content of the release. Check back here to learn which versions are part of an LTS release series.
+Under the version of the Product bundle, there are multiple different components with their individual versioning. To see which component versions belong to a bundle, please refer to [this JSON file](https://docs.mender.io/releases/versions.json)
 
-Patch releases for LTS releases are published at the same time as a regular release is scheduled, unless an urgent vulnerability is discovered.
+
+##### Yocto LTS support
+
+Our [meta-mender Yocto layer](https://github.com/mendersoftware/meta-mender) supports the latest two Yocto LTS releases, which at this time are Kirkstone (4.0) and Dunfell (3.1).
