@@ -7,6 +7,8 @@ taxonomy:
 
 !!! You can save time by using [hosted Mender](https://hosted.mender.io?target=_blank), a secure Mender server ready to use, maintained by the Mender developers.
 
+!!! Hosted Mender is available in multiple [regions](/10.General/00.Hosted%20Mender%20regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
+
 This is a step by step tutorial for deploying the Mender Server for production
 environments, and will cover relevant security and reliability aspects of Mender
 production installations.  Most of the steps are the same whether you are installing

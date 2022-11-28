@@ -19,6 +19,8 @@ workstation.
 
 ## Step 1 - Login to hosted Mender
 
+!!! Hosted Mender is available in multiple [regions](/10.General/00.Hosted%20Mender%20regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
+
 Login to [hosted Mender](https://hosted.mender.io?target=_blank). On the main
 page for the first time new users will get a tutorial in the Mender web GUI.
 

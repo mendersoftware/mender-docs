@@ -46,6 +46,8 @@ Please refer to [further reading](#further-reading) for more details.
 
 The best and recommended way of running Mender is the [managed mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) with [hosted Mender](https://hosted.mender.io?target=_blank). You can also try the [on-premise demo server](../../07.Server-installation/02.Demo-installation/docs.md) for quick testing.
 
+!!! Hosted Mender is available in multiple [regions](/10.General/00.Hosted%20Mender%20regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
+
 ### A Device with a Mender client
 
 You will need a device with a Mender client installed. For development purposes you also need shell access to the device (e.g. via [SSH](../../01.Get-started/01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md#step-2-ssh-into-the-raspberry-pi)).
