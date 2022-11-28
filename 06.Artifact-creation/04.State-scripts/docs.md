@@ -5,7 +5,7 @@ taxonomy:
     label: tutorial
 ---
 
-The Mender Client has the ability to run pre- and postinstall scripts, before and after it writes the root file system. However, Mender state scripts are more general and useful than pre/postinstall scripts because they can be run between *any* state transition, not just (before/after) the install state. For some examples of usage, see [example use cases](#example-use-cases).
+The Mender Client has the ability to run pre- and postinstall scripts, before and after it writes the root file system. However, Mender state scripts are more general and useful than pre/postinstall scripts because they can be run between *any* state transition, not just (before/after) the install state. For some examples of usage, see [example use cases](#example-use-cases). For implementation information, see [Create a custom Update Module](../08.Create-a-custom-Update-Module/docs.md).
 
 
 ## The nine states
