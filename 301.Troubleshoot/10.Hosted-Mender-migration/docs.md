@@ -10,6 +10,8 @@ This guide shows how to migrate deployed devices from hosted Mender (USA) to EU 
 !!!!! overview of all Mender plans and features. If you wish to migrate your tenant to EU hosted
 !!!!! Mender please email [contact@mender.io](mailto:contact@mender.io) with your request.
 
+!!! Mender currently supports these [regions](/10.General/00.Hosted%20Mender%20regions/docs.md).
+
 ## Introduction
 
 The migration from one server to the other consists of three steps:
