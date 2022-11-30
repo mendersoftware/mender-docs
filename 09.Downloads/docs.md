@@ -174,15 +174,15 @@ repository. Afterwards, you can install and update the Mender client using the
 ##### Set up the APT repository
 
 <!--AUTOVERSION: "Mender %"/ignore -->
-!!! As of Mender 3.2.1 we deprecated the previous stable repository and stopped updating it.
-<!--AUTOVERSION: "Mender %"/ignore -->
-!!! As of Mender 3.3 we removed it.
+!!! As of Mender 3.2.1 we deprecated the previous stable repository and stopped updating it. As of Mender 3.3 we removed it.
 !!! Please use `https://downloads.mender.io/repos/debian debian/buster/stable main` and _not_
 !!! "https://downloads.mender.io/repos/debian stable main".
 !!! Please make sure you have the currently supported version of your choice in place and please
 !!! see below for all the possible options.
 
-!!! With this method the latest released Mender components will be installed
+!!! With this method, you will always install the latest released Mender components. If you need to install a specific version,
+!!! or you want to stick to a specific minor release (e.g., to the latest LTS version), you can manually download the
+!!! Debian packages from the [APT repository pool](https://downloads.mender.io/repos/debian/pool/main/).
 
 1. Update the `apt` package index and install required dependencies.
 
