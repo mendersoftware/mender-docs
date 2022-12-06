@@ -108,6 +108,8 @@ MENDER_CONVERT_LOCATION=${PWD}
 
 ## Configure the Mender client server configuration
 
+!!! Hosted Mender is available in multiple [regions](/10.General/00.Hosted%20Mender%20regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
+
 The easiest, and most straight-forward way, is to integrate the client with
 [hosted Mender](https://hosted.mender.io?target=_blank):
 
@@ -134,12 +136,14 @@ mv <PATH_TO_MY_GOLDEN_IMAGE> input/golden-image-1.img
 
 ### Use the mender-convert container image
 
+We strongly recommend using mender-convert with docker.
+
 Run mender-convert from inside the container with your desired options, e.g.
 
 ```bash
 # move overlay to the input folder
 mkdir -p input/overlay
-mv <PATH_TO_MY_OVERLAY>/* input/Overlay/*
+mv <PATH_TO_MY_OVERLAY>/* input/overlay/*
 
 # convert the image
 MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \

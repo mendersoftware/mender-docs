@@ -96,6 +96,15 @@ software updates packaged as Mender Artifacts.
 See [Client installation](../03.Client-installation/chapter.md) for more information
 about how to configure and use the Mender client.
 
+The `mender-client` Debian package installs:
+* the binary,
+* a systemd service,
+* the default [identity script](../03.Client-installation/03.Identity/docs.md),
+* the default [inventory scripts](../03.Client-installation/04.Inventory/docs.md)
+* and the default [update modules](../03.Client-installation/05.Use-an-updatemodule/docs.md)
+(and its generators).
+
+
 ### Installation methods
 
 You can install the Mender client in different ways depending on your preference.
@@ -130,11 +139,10 @@ curl -fLsS https://get.mender.io -o get-mender.sh
 sudo bash get-mender.sh
 ```
 
-By default, the script installs the [remote terminal
-extension](#remote-terminal-add-on) plugin in addition to the client. If you do
-not want this feature you can provide additional arguments to the script
-specifying which packages you want to install. For example, the following will
-only install the Mender client:
+By default, the script installs the [remote terminal](#remote-terminal-add-on) and
+[configure](#mender-configure-add-on) add-ons in addition to the client. If you do not want this
+feature you can provide additional arguments to the script specifying which packages you want to
+install. For example, the following will only install the Mender client:
 
 <!--AUTOMATION: ignore -->
 ```bash
@@ -160,6 +168,13 @@ sudo apt-get update
 sudo apt-get upgrade
 ```
 
+!!! If you customize any of the installed files from `mender-client` (for example modifying identity
+!!! or inventory scripts), then please make sure to also save your work in an additional place.
+!!! Files at paths that match the defaults shipped by the package will be overwritten when the
+!!! client is upgraded or re-installed, so you might lose your work if you only modified the
+!!! original files.
+
+
 !!! To prevent the Mender client from upgrading when upgrading the rest of the
 !!! system, mark it to be held with `sudo apt-mark hold mender-client`.
 
@@ -176,15 +191,15 @@ repository. Afterwards, you can install and update the Mender client using the
 ##### Set up the APT repository
 
 <!--AUTOVERSION: "Mender %"/ignore -->
-!!! As of Mender 3.2.1 we deprecated the previous stable repository and stopped updating it.
-<!--AUTOVERSION: "Mender %"/ignore -->
-!!! As of Mender 3.3 we removed it.
+!!! As of Mender 3.2.1 we deprecated the previous stable repository and stopped updating it. As of Mender 3.3 we removed it.
 !!! Please use `https://downloads.mender.io/repos/debian debian/buster/stable main` and _not_
 !!! "https://downloads.mender.io/repos/debian stable main".
 !!! Please make sure you have the currently supported version of your choice in place and please
 !!! see below for all the possible options.
 
-!!! With this method the latest released Mender components will be installed
+!!! With this method, you will always install the latest released Mender components. If you need to install a specific version,
+!!! or you want to stick to a specific minor release (e.g., to the latest LTS version), you can manually download the
+!!! Debian packages from the [APT repository pool](https://downloads.mender.io/repos/debian/pool/main/).
 
 1. Update the `apt` package index and install required dependencies.
 

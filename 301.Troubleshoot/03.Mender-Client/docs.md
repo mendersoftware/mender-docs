@@ -177,6 +177,8 @@ need to update your client's root certificate store. For example, [hosted Mender
 uses an official CA so the only reason your client would reject this is if it does not have updated root certificates
 in its system store.
 
+!!! Hosted Mender is available in multiple [regions](/10.General/00.Hosted%20Mender%20regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
+
 On the other hand, if you set up the Mender server yourself as described in
 [Production installation](../../07.Server-installation/04.Production-installation-with-kubernetes/docs.md) and generated certificates as part of it,
 your need to make sure that the server certificates are in `/etc/mender/server.crt` on your device.
