@@ -23,9 +23,9 @@ test:
   services:
     - docker:dind
   tags:
-    - mender-qa-slave
+    - mender-qa-worker-generic
   variables:
-    # DinD setup in mender-qa-slave
+    # DinD setup in Mender CI runners
     DOCKER_HOST: "tcp://docker:2376"
     DOCKER_CERT_PATH: "/certs/client"
     DOCKER_TLS_VERIFY: "1"
@@ -40,11 +40,11 @@ test:
 
 test:internal-links:
   stage: test
-  image: node:14-alpine
+  image: node:19-alpine
   script:
     - apk add --no-cache git
-    - npm install
-    - ./checklinks --color --verbose
+    - npm ci
+    - ./checklinks.js --color --verbose
 
 test:passive-voice:
     stage: test
