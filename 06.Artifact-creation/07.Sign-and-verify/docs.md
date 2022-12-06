@@ -72,7 +72,7 @@ The resulting `private.key` and `public.key` files are the private and public ke
 
 We use the `mender-artifact` tool to create a signed Artifact. Download the
 prebuilt `mender-artifact` binary for your platform following the links in
-[Downloads section](../../09.Downloads/docs.md#mender-artifact).
+[Downloads section](../../10.Downloads/docs.md#mender-artifact).
 
 There are two ways to sign an Artifact: while creating it with the `write`
 command or for existing artifacts using the `sign` command.

@@ -8,7 +8,7 @@ taxonomy:
 Mender uses [Artifacts](../../02.Overview/03.Artifact/docs.md) to package the
 software updates for delivery to devices. As a user you manage the Artifacts
 with the help of the `mender-artifact` command. You can get it either as a pre-built
-executable from the [downloads section](../../09.Downloads)
+executable from the [downloads section](../../10.Downloads)
 or [build from sources](https://github.com/mendersoftware/mender-artifact?target=_blank).
 The two basic usage scenarios of this utility reflect the two main update types
 Mender supports: full filesystem update and application update.

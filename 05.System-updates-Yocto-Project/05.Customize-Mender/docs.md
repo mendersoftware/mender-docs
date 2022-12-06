@@ -399,7 +399,7 @@ Replace <DIRECTORY-WITH-MENDER-GATEWAY-CONF> with the path to the `mender-gatewa
 
 !!!!! You should not use this package on production devices.
 
-See [Downloads](../../09.Downloads/docs.md#examples-package) for download links for this package.
+See [Downloads](../../10.Downloads/docs.md#examples-package) for download links for this package.
 
 To integrate it on your Yocto build, add the `meta-mender` demo layer to your build layers:
 
