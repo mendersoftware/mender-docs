@@ -15,9 +15,8 @@ The following URLs and access types need outgoing permissions in firewalls in or
 
 **Artifact storage access**: Devices, APIs and browser access
 * `https://s3.amazonaws.com/hosted-mender-artifacts`
-* `https://s3.amazonaws.com/hosted-mender-artifacts-eu`
 * `https://hosted-mender-artifacts.s3.amazonaws.com`
-* `https://hosted-mender-artifacts-eu.s3.amazonaws.com`
+
 [/ui-tab]
 [ui-tab title="Hosted Mender EU"]
 **Hosted Mender access**: Devices, APIs and browser access
