@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 ## Working with Firewalls
-The following URLs and access types need outgoing permissions in firewalls in order for Hosted Mender to work correctly:
+The following URLs and access types need outgoing permissions in firewalls in order for Mender to work correctly:
 
 **Mender access**: Devices, APIs and browser access
 * `https://mender.example.com` - Use the same address you specify it in the [Server Installation Section](../../07.Server-installation/)
