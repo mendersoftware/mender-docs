@@ -28,7 +28,13 @@ MENDER_FEATURES_DISABLE:append = " <FEATURE>"
 
 ## List of features
 
-Below is a list of the features that Mender provides, with descriptions:
+Below is a list of the features that Mender provides, with descriptions.
+Please note the following markers:
+
+*internal*: feature is meant for internal use by the Mender team
+only. The behaviour can be modified at any time.
+
+*experimental*: feature is not undergoing regular QA.
 
 * `mender-bios` - Enables booting of traditional BIOS based systems. Normally
   enabled together with `mender-grub`. Disabling this feature with `mender-grub`
@@ -62,7 +68,7 @@ Below is a list of the features that Mender provides, with descriptions:
   configuration. Note that this does not include the default Mender partition
   layout, use `mender-image` for that.
 
-* `mender-partuuid` - Enable usage of UUID as partition identifiers (GRUB only).
+* `mender-partuuid` - *experimental* - Enable usage of UUID as partition identifiers (GRUB only).
 
     You must set the UUID's for all parts in your environment, e.g
 
@@ -74,9 +80,15 @@ Below is a list of the features that Mender provides, with descriptions:
     MENDER_DATA_PART = "/dev/disk/by-partuuid/0965b52a-89bd-46c1-ac69-3b27fb6c2aae"
     ```
 
+* `mender-partlabel` - *experimental* - Use PARTLABEL to avoid hardcoded drive device path.
+
 * `mender-systemd` - Enables a Mender build that uses systemd. See also the
   section about [disabling Mender as a system
   service](../../05.Customize-Mender/docs.md#disabling-mender-as-a-system-service).
+
+* `mender-systemd-boot` - *experimental* - Use Mender together with systemd-boot.
+
+* `mender-efi-boot` - *internal* - Enabled by GRUB/systemd-boot to extend UEFI overlay recipes.
 
 * `mender-ubi` - Enables Mender configuration files specifically for UBI images.
 
@@ -84,6 +96,8 @@ Below is a list of the features that Mender provides, with descriptions:
 
 * `mender-persist-systemd-machine-id` - Enables setting up the systemd machine
   ID to be persistent across OTA updates.
+
+* `mender-testing-enabled` - *internal* - Enable the testing/* layers and functionality.
 
 ## Default features
 
