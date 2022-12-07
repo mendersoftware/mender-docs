@@ -31,7 +31,7 @@ image and Mender Artifact that can be deployed to the rest of the device fleet.
 There is support for creating a snapshot Artifact directly from a workstation
 with `mender-artifact` installed, which is usually the easiest approah.
 First, make sure your workstation has the [latest version of
-mender-artifact installed](../../09.Downloads/docs.md#mender-artifact).
+mender-artifact installed](../../10.Downloads/docs.md#mender-artifact).
 
 This approach requires that the golden device
 is reachable and has *ssh* and *sudo* installed. `mender-artifact` accepts a
@@ -127,7 +127,7 @@ mender snapshot dump --compression gzip > /mnt/root-part.ext4.gz
 !!! Don't forget the `.gz` extension in the target filename.
 
 In this case, passing `root-part.ext4` (or `root-part.ext4.gz`) as the 
-file-parameter to [mender-artifact](../../09.Downloads/docs.md#mender-artifact)
+file-parameter to [mender-artifact](../../10.Downloads/docs.md#mender-artifact)
 produces a deployment ready Mender Artifact:
 ```bash
 mender-artifact write rootfs-image -f /mnt/root-part.ext4 \

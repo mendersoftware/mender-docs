@@ -6,7 +6,7 @@ taxonomy:
 
 ## Removed previous stable APT repositories
 
-We [removed](../../09.Downloads/docs.md#Set-up-the-APT-repository) the previously deprecated stable APT repository:
+We [removed](../../10.Downloads/docs.md#Set-up-the-APT-repository) the previously deprecated stable APT repository:
 
 ```
 deb [arch=your-arch] https://downloads.mender.io/repos/debian stable main
@@ -19,7 +19,7 @@ Err:3 https://downloads.mender.io/repos/debian stable InRelease
   403  Forbidden [IP: 52.222.214.71 443]
 ```
 
-it means you are using the old repository, please update to the current one (see [Set up the APT repository](../../09.Downloads/docs.md#Set-up-the-APT-repository) section).
+it means you are using the old repository, please update to the current one (see [Set up the APT repository](../../10.Downloads/docs.md#Set-up-the-APT-repository) section).
 
 In order to remove the obsolete repository `deb [arch=your-arch] https://downloads.mender.io/repos/debian stable main`
 you can use the following command:
@@ -57,7 +57,7 @@ The mender-client version 3.2.0 Debian package is deprecated. If you are
 getting installation errors, with a missing
 [libffi6](https://sourceware.org/libffi/) dependency, then please install the
 new Debian package, as per the installation instructions in
-[downloads](../../09.Downloads/docs.md#mender-client)
+[downloads](../../10.Downloads/docs.md#mender-client)
 
 
 ## Obtaining client logs
@@ -177,7 +177,7 @@ need to update your client's root certificate store. For example, [hosted Mender
 uses an official CA so the only reason your client would reject this is if it does not have updated root certificates
 in its system store.
 
-!!! Hosted Mender is available in multiple [regions](/10.General/00.Hosted%20Mender%20regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
+!!! Hosted Mender is available in multiple [regions](/11.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
 
 On the other hand, if you set up the Mender server yourself as described in
 [Production installation](../../07.Server-installation/04.Production-installation-with-kubernetes/docs.md) and generated certificates as part of it,

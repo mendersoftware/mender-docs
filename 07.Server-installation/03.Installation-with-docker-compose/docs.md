@@ -20,7 +20,7 @@ taxonomy:
 
 !!! You can save time by using [hosted Mender](https://hosted.mender.io?target=_blank), a secure Mender server ready to use, maintained by the Mender developers.
 
-!!! Hosted Mender is available in multiple [regions](/10.General/00.Hosted%20Mender%20regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
+!!! Hosted Mender is available in multiple [regions](/11.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
 
 ! This chapter contains the legacy documentation for the production installation using Docker Compose. If you are interested in setting up a Mender server for production, we highly suggest reading the [Production installation with Kubernetes](../04.Production-installation-with-kubernetes/docs.md), which is is the only supported platform for the installation of a production-grade Mender Server.
 

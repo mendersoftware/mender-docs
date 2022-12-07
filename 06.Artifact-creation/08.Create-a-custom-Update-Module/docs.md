@@ -46,7 +46,7 @@ Please refer to [further reading](#further-reading) for more details.
 
 The best and recommended way of running Mender is the [managed mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) with [hosted Mender](https://hosted.mender.io?target=_blank). You can also try the [on-premise demo server](../../07.Server-installation/02.Demo-installation/docs.md) for quick testing.
 
-!!! Hosted Mender is available in multiple [regions](/10.General/00.Hosted%20Mender%20regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
+!!! Hosted Mender is available in multiple [regions](/11.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
 
 ### A Device with a Mender client
 
@@ -58,7 +58,7 @@ To install the Mender client on your device, follow the instructions in the [Ins
 
 We will use the `mender-artifact` tool to create the payloads required for Update Modules to work.
 
-First you need to download a prebuilt `mender-artifact` binary for your platform following the links in [Downloads section](../../09.Downloads/docs.md#mender-artifact).
+First you need to download a prebuilt `mender-artifact` binary for your platform following the links in [Downloads section](../../10.Downloads/docs.md#mender-artifact).
 
 ## Basic example: File copy Update Module
 

@@ -4,8 +4,8 @@ taxonomy:
     category: docs
 ---
 
-### Chapter 10
+### Chapter 11
 
-# Add-ons
+# General
 
 This chapter contains general information, not suitable for other chapters.

@@ -48,7 +48,7 @@ Follow the steps in [set up shell variables for cURL](../01.Using-the-apis/docs.
 
 ### Mender-Artifact tool
 
-Download the `mender-artifact` tool from the [Downloads section](../../09.Downloads/docs.md).
+Download the `mender-artifact` tool from the [Downloads section](../../10.Downloads/docs.md).
 
 ## Generate a client keypair
 

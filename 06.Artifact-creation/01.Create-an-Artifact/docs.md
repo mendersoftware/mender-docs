@@ -8,7 +8,7 @@ taxonomy:
 Mender uses [Artifacts](../../02.Overview/03.Artifact/docs.md) to package the
 software updates for delivery to devices. As a user you manage the Artifacts
 with the help of the `mender-artifact` command. You can get it either as a pre-built
-executable from the [downloads section](../../09.Downloads)
+executable from the [downloads section](../../10.Downloads)
 or [build from sources](https://github.com/mendersoftware/mender-artifact?target=_blank).
 The two basic usage scenarios of this utility reflect the two main update types
 Mender supports: full filesystem update and application update.
@@ -86,7 +86,7 @@ to learn about the implementation details of this module.
 
 #### Server side Artifact generation
 
-!!! Hosted Mender is available in multiple [regions](/10.General/00.Hosted%20Mender%20regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
+!!! Hosted Mender is available in multiple [regions](/11.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
 
 The [hosted Mender server](https://hosted.mender.io?target=_blank) and any on-premise server installation, can generate application update Artifacts automatically using the [single file](https://hub.mender.io/t/single-file/486?target=_blank)
 Update Module. You can test it by uploading any file to the [releases page](https://hosted.mender.io/ui/#/releases?target=_blank). The resulting Artifact
