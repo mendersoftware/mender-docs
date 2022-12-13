@@ -39,6 +39,43 @@ of devices setting to ensure the Deployment finishes when the given number of de
 receive an update. Please also note that a device can only be in *one* static
 group at the same time, while it can be in *multiple* dynamic groups.
 
+### Phased rollouts and dynamic groups
+
+The calculation for the number of devices in a phases uses the total number of devices in the dynamic group at the moment of deployment creation.
+The nature of deployments to a dynamic group is that the total number of devices receiving the update can change during the lifetime of the deployment.
+
+If the number of devices in a dynamic group changes during a phased rollout the original rollout calculation won't be recalculated.
+Depending of the nature of the change the following will happen:
+* the number of devices in the dynamic group increases - last phase expands to contain all remaining device.
+* the number of devices in the dynamic group decreases - the entire group (potentially) gets updated before all the phases end
+
+!! The exact time a specific device receives a deployed artifact is not determined by the server, but the concrete moment the device contacts the server following its polling cycle.
+!! This means it is possible that devices which joined the group after the deployment started, get updated as part of the first phase.
+
+Example.
+```
+A dynamic group has 100 devices during the creation of the deployment.
+There are two phases 80% and 20%.
+They will contains 80 and 20 devices.
+As new devices become part of the group the last phase gets expanded.
+```
+
+
+<!-- Image link: https://docs.google.com/drawings/d/15vIsUEBiFjhGJEWBzc5iGOE-7u4YVIoTlOSt9DcnOFI/edit -->
+![Phased rollout dynamic group](phased-rollout-dyn-group-increase.png)
+
+
+Example.
+```
+A dynamic group has 100 devices during the creation of the deployment.
+There are two phases 80% and 20%.
+They will contains 80 and 20 devices.
+As devices leave the group all devices in the group get updated in the first phase.
+```
+
+<!-- Image link: https://docs.google.com/drawings/d/1NRQ_eFAz-NQ2vT5p81wnGB2hU7E8kIXmmubFiVurvL4/edit -->
+![Phased rollout dynamic group](phased-rollout-dyn-group-decrease.png)
+
 
 ## Deployment life-cycle
 
