@@ -62,6 +62,15 @@ Follow the correct link according to your host platform to download
 | Linux    | [mender-artifact master][x.x.x_mender-artifact-linux]  | [mender-artifact master][master_mender-artifact-linux] (Pre-release)  |
 | Mac OS X | [mender-artifact master][x.x.x_mender-artifact-darwin] | [mender-artifact master][master_mender-artifact-darwin] (Pre-release) |
 
+!!! The `mender-artifact` pre-built binaries depend on OpenSSL 1.1 shared library. If you are
+!!! running a system that has already migrated to OpenSSL 3, like Alpine Linux 3.17 or Ubuntu 22.04,
+!!! you cannot run the binary directly. Follow one of these workarounds:
+!!! * For Alpine Linux, install the `openssl1.1-compat` package
+!!! * For Ubuntu 22.04 or newer, the recommended process is to install `mender-artifact` through the
+!!! [Mender APT repositories](#install-using-the-apt-repository).
+!!! * For the other cases where the distribution does not provide a compatibility package, build
+!!! `mender-artifact` from the source.
+
 Remember to add execute permission and ensure that the mender-artifact utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
 
 <!--AUTOMATION: ignore -->
