@@ -37,6 +37,10 @@ The template has the following parameters:
 
 ## Pipelines examples
 
+* [Build and deploy Mender Artifact](#build-and-deploy-mender-artifact)
+* [Build and deploy multiple Mender Artifacts](#build-and-deploy-multiple-mender-artifacts)
+* [Build and deploy Mender Artifact to a single device](#build-and-deploy-mender-artifact-to-a-single-device)
+
 ### Build and deploy Mender Artifact
 <!--AUTOVERSION: "tree/%/examples"/mender-ci-workflows-->
 ```bash
