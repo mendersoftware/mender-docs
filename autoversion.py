@@ -423,6 +423,11 @@ def main():
     parser.add_argument(
         "--poky-version", help="poky version to update to (usually a branch)"
     )
+
+    parser.add_argument(
+        "--mender-ci-workflows-version",
+        help="mender-ci-workflows version to update to",
+    )
     args = parser.parse_args()
 
     if args.update and args.check:
@@ -457,6 +462,8 @@ def main():
             print('Not replacing "poky" instances, since it was not specified')
             VERSION_CACHE["meta-mender"] = False
             VERSION_CACHE["poky"] = False
+        if args.mender_ci_workflows_version is not None:
+            VERSION_CACHE["mender-ci-workflows"] = args.mender_ci_workflows_version
 
     elif args.check:
         MODE = CHECK
