@@ -13,7 +13,7 @@ Mender provides support for application updates in the form of CI/CD pipelines t
 To help you in creating CI/CD pipelines, we created [GitHub repository](https://github.com/mendersoftware/mender-ci-workflows/) containing ready to use, battle-tested CI/CD pipeline code snippets that can be used in your workflows. Additionally, we provide [mender-ci-tools Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools) based on Alpine Linux and providing command-line utilities,`mender-artifact` and `mender-cli` installed.
 
 To locally inspect the Docker image, pull it with the following command:
-<!--AUTOVERSION: "mendersoftware/mender-ci-tools:%"/ignore-->
+<!--AUTOVERSION: "mendersoftware/mender-ci-tools:%"/mender-ci-workflows-->
 ```
 docker pull mendersoftware/mender-ci-tools:master
 ```
