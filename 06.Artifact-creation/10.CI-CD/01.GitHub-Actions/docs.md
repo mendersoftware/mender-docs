@@ -30,19 +30,19 @@ The actions requires the following secret is set in a repository settings:
 * [Build and deploy Mender Artifact to a single device](#build-and-deploy-mender-artifact-to-a-single-device)
 
 ### Build and deploy Mender Artifact
-<!--AUTOVERSION: "tree/%/examples"/ignore-->
+<!--AUTOVERSION: "tree/%/examples"/mender-ci-workflows-->
 ```bash
 @build-and-deploy-mender-artifact.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/master/examples/github/build-and-deploy-mender-artifact.yml
 ```
 
 ### Build and deploy multiple Mender Artifacts
-<!--AUTOVERSION: "tree/%/examples"/ignore-->
+<!--AUTOVERSION: "tree/%/examples"/mender-ci-workflows-->
 ```bash
 @build-and-deploy-multiple-artifacts.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/master/examples/github/build-and-deploy-multiple-artifacts.yml
 ```
 
 ### Build and deploy Mender Artifact to a single device
-<!--AUTOVERSION: "tree/%/examples"/ignore-->
+<!--AUTOVERSION: "tree/%/examples"/mender-ci-workflows-->
 ```bash
 @deploy-to-a-single-device.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/master/examples/github/deploy-to-a-single-device.yml
 ```
