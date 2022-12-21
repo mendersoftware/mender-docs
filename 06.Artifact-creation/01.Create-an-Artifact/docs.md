@@ -8,7 +8,7 @@ taxonomy:
 Mender uses [Artifacts](../../02.Overview/03.Artifact/docs.md) to package the
 software updates for delivery to devices. As a user you manage the Artifacts
 with the help of the `mender-artifact` command. You can get it either as a pre-built
-executable from the [downloads section](../../09.Downloads)
+executable from the [downloads section](../../10.Downloads)
 or [build from sources](https://github.com/mendersoftware/mender-artifact?target=_blank).
 The two basic usage scenarios of this utility reflect the two main update types
 Mender supports: full filesystem update and application update.
@@ -42,40 +42,51 @@ The remaining flags specify the parameters used to [match devices to deployments
 
 Creating an Artifact takes a different form in the case of [application updates](../../02.Overview/01.Introduction/docs.md#application-updates).
 
-For example, assume that you want copy a new `authorized_keys` file to the `/home/${USER}/.ssh`
-directory on your devices, where `USER` holds your user name. We first store the path to the destination directory and file into two separate files, for packaging purposes:
+For application updates, the command for `mender-artifact` tool will be different depending on the
+implementation details of the actual update module. Most of the Update Modules come with a script
+to simplify the Artifact creation so that the implementation details are hidden from the final user.
 
-```bash
-echo /home/${USER}/.ssh > dest_dir # store the destination target directory
-echo authorized_keys > filename # store the filename of the file we want to update
+For example, assume that you want to copy a new `authorized_keys` file to the `/home/${USER}/.ssh`
+directory on your devices, where `USER` holds your user name.
+
+We will use the [single file](https://hub.mender.io/t/single-file/486/26?target=_blank) [Update Module](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md) to create a *module-image*.
+
+First, download the script to generate the Artifact and make it executable:
+<!--AUTOVERSION: "mendersoftware/mender/%/support"/mender-->
+```
+curl -O https://raw.githubusercontent.com/mendersoftware/mender/3.4.0/support/modules-artifact-gen/single-file-artifact-gen
+chmod +x single-file-artifact-gen
 ```
 
-We can now create the Artifact using mender-artifact by running the following command:
-
+Now create the Artifact with:
 ```bash
-mender-artifact write module-image \
-  -T single-file \
+./single-file-artifact-gen \
   --device-type raspberrypi4 \
   -o artifact.mender \
   -n updated-authorized_keys-1.0 \
   --software-name authorized_keys \
   --software-version 1.0 \
-  -f dest_dir \
-  -f filename \
-  -f authorized_keys
+  --dest-dir /home/${USER}/.ssh \
+  authorized_keys
 ```
 
-Note specifically that in this case we are creating a *module-image*, using the [single file](https://hub.mender.io/t/single-file/486/26?target=_blank) [Update Module](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md). The Artifact created will be compatible with the *raspberrypi4* device type, although you can specify multiple device types if needed. The name of the Artifact is declared as *updated-authorized_keys-1.0*, we set the name of the software we are installing to *authorized_keys*, and the version is set to *1.0*. The payload files we created earlier are included, and the resulting file `artifact.mender` holds the Artifact. Please note that, _single-file_ is both the name of the Update Module and the Artifact type. Please note also, that the payload files must use the name specified here.
-
-#### Update Modules generation script
+Note specifically that in this case we are creating a *module-image*, using the [single
+file](https://hub.mender.io/t/single-file/486/26?target=_blank) [Update
+Module](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md). The Artifact created
+will be compatible with the *raspberrypi4* device type, although you can specify more device types
+using multiple times `--device-type` if needed. The name of the Artifact is declared as
+*updated-authorized_keys-1.0*, we set the version of the software to *1.0* and indicate that it will
+be installed in the *rootfs* partition. The resulting file `artifact.mender` holds the Artifact.
 
 <!--AUTOVERSION: "mendersoftware/mender/blob/%/support"/mender-->
-You can see the above example in the [single file Update Module](https://hub.mender.io/t/single-file/486?target=_blank). You can also see how simple it is to [write a custom Update Module.](https://github.com/mendersoftware/mender/blob/3.4.0/support/modules/single-file?target=_blank)
+Inspect the source code of the
+[single file Update Module](https://github.com/mendersoftware/mender/blob/3.4.0/support/modules/single-file?target=_blank)
+to learn about the implementation details of this module.
 
-<!--AUTOVERSION: "mendersoftware/mender/blob/%/support"/mender-->
-Also note that most of the Update Modules come with a [script to simplify the Artifact creation](https://github.com/mendersoftware/mender/blob/3.4.0/support/modules-artifact-gen/single-file-artifact-gen?target=_blank), but generally these are wrappers around `mender-artifact` utility to hide the complexity and make it easy to generate artifacts.
 
 #### Server side Artifact generation
+
+!!! Hosted Mender is available in multiple [regions](/11.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
 
 The [hosted Mender server](https://hosted.mender.io?target=_blank) and any on-premise server installation, can generate application update Artifacts automatically using the [single file](https://hub.mender.io/t/single-file/486?target=_blank)
 Update Module. You can test it by uploading any file to the [releases page](https://hosted.mender.io/ui/#/releases?target=_blank). The resulting Artifact

@@ -18,7 +18,7 @@ This tutorial assumes:
 
 * You have completed the [integration of the mender-binary-delta](../../05.System-updates-Yocto-Project/05.Customize-Mender/01.Delta-update-support/docs.md) into your Yocto built process
     * `mender-binary-delta-generator` is available in `PATH`
-* You have installed [mender-artifact](../../09.Downloads/docs.md#mender-artifact) which is a dependency for `mender-binary-delta-generator`
+* You have installed [mender-artifact](../../10.Downloads/docs.md#mender-artifact) which is a dependency for `mender-binary-delta-generator`
 * You have two full system artifacts available to work with
 
 

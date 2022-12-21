@@ -47,6 +47,8 @@ provides a reference for the configuration variables.
 }
 ```
 
+!!! Hosted Mender is available in multiple [regions](/11.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
+
 ### Features
 
 #### ArtifactsProxy

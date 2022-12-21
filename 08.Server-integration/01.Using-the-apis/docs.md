@@ -26,6 +26,8 @@ Open a terminal, which we will use in the following to call the Mender server's 
 MENDER_SERVER_URI='https://hosted.mender.io'
 ```
 
+!!! Hosted Mender is available in multiple [regions](/11.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
+
 !!! Adjust the variable value to the Mender server you are using.
 
 Next, set a variable with your user email on the Mender server (replace its content with your user email):

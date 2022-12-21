@@ -21,7 +21,7 @@ Mender provides a Debian package (`.deb`) for convenience to install on e.g
 Debian, Ubuntu or Raspberry Pi OS.
 
 See the instructions in our [downloads
-section](../../09.Downloads/docs.md#install-using-the-apt-repository) for the
+section](../../10.Downloads/docs.md#install-using-the-apt-repository) for the
 explicit steps required.
 
 ### Configure the mender-client
