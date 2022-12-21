@@ -58,10 +58,8 @@ run `autoversion.py` tool using latest versions. For example:
 ```
 ./autoversion.py --update --integration-dir <local-dir> \
       --integration-version staging \
-      --mender-convert-version 2.1.0 \
-      --meta-mender-version dunfell \
-      --poky-version dunfell \
-      --mender-binary-delta-version 1.1.0
+      --meta-mender-version kirkstone \
+      --poky-version kirkstone \
 ```
 
 ### 4. Launch a PR and ask for review
