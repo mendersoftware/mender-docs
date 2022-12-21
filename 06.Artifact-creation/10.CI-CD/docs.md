@@ -15,7 +15,7 @@ To help you in creating CI/CD pipelines, we created [GitHub repository](https://
 To locally inspect the Docker image, pull it with the following command:
 <!--AUTOVERSION: "mendersoftware/mender-ci-tools:%"/mender-ci-workflows-->
 ```
-docker pull mendersoftware/mender-ci-tools:master
+docker pull mendersoftware/mender-ci-tools:1.0.0
 ```
 
 The Docker image definition and CI/CD templates can be found [here](https://github.com/mendersoftware/mender-ci-workflows).
