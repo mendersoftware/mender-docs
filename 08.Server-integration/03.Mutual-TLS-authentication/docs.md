@@ -28,6 +28,8 @@ See [Device authentication](../../02.Overview/13.Device-authentication/docs.md) 
 If you are using hosted Mender, you can host the mTLS ambassador in your infrastructure and point it to the upstream server `https://hosted.mender.io`.
 In case you need assistance or use a hosted mTLS ambassador, contact us describing your use case.
 
+!!! Hosted Mender is available in multiple [regions](/11.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
+
 ## Prerequisites
 
 
@@ -47,7 +49,7 @@ Follow the steps in [set up shell variables for cURL](../01.Using-the-apis/docs.
 
 ### Mender-Artifact tool
 
-Download the `mender-artifact` tool from the [Downloads section](../../09.Downloads/docs.md).
+Download the `mender-artifact` tool from the [Downloads section](../../10.Downloads/docs.md).
 
 
 ## Generate certificates

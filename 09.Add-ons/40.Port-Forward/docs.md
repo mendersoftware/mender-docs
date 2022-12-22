@@ -20,7 +20,7 @@ local port on the device without opening any additional ports.
 
 To enable port forwarding, you will need to install and configure the necessary
 software on the device and your workstation.
-* Install [mender-connect](../../09.Downloads/docs.md#mender-connect) on the
+* Install [mender-connect](../../10.Downloads/docs.md#mender-connect) on the
   device.
   * Enable port forwarding for [mender-connect
     configuration](../90.Mender-Connect/docs.md#port-forward-configuration). 
@@ -28,7 +28,7 @@ software on the device and your workstation.
   device.
   * [Accept](../../01.Get-started/01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md#step-7-accept-the-device)
     the device on the Mender server.
-* Install [mender-cli](../../09.Downloads/docs.md#mender-cli) on your workstation.
+* Install [mender-cli](../../10.Downloads/docs.md#mender-cli) on your workstation.
   
 
 ## Port forwarding

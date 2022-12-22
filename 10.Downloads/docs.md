@@ -62,6 +62,15 @@ Follow the correct link according to your host platform to download
 | Linux    | [mender-artifact 3.9.0][x.x.x_mender-artifact-linux]  | [mender-artifact master][master_mender-artifact-linux] (Pre-release)  |
 | Mac OS X | [mender-artifact 3.9.0][x.x.x_mender-artifact-darwin] | [mender-artifact master][master_mender-artifact-darwin] (Pre-release) |
 
+!!! The `mender-artifact` pre-built binaries depend on OpenSSL 1.1 shared library. If you are
+!!! running a system that has already migrated to OpenSSL 3, like Alpine Linux 3.17 or Ubuntu 22.04,
+!!! you cannot run the binary directly. Follow one of these workarounds:
+!!! * For Alpine Linux, install the `openssl1.1-compat` package
+!!! * For Ubuntu 22.04 or newer, the recommended process is to install `mender-artifact` through the
+!!! [Mender APT repositories](#install-using-the-apt-repository).
+!!! * For the other cases where the distribution does not provide a compatibility package, build
+!!! `mender-artifact` from the source.
+
 Remember to add execute permission and ensure that the mender-artifact utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
 
 <!--AUTOMATION: ignore -->
@@ -85,6 +94,8 @@ Please refer to your host Operating System documentation for more details.
 ! partitions) has limited functionality. Commands like
 ! `mender-artifact cat` or `mender-artifact cp` will not work due to lack
 ! of support for certain utilities on the Mac platform.
+
+!!! `mender-artifact` binary is shipped also in [mender-ci-tools Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools). More information [here](../06.Artifact-creation/10.CI-CD/docs.md#mender-ci-workflows-docker-image).
 
 
 ## Mender client
@@ -395,6 +406,8 @@ Please refer to your host Operating System documentation for more details.
 <!--AUTOVERSION: "[%_mender-cli-"/ignore "mender-cli/%/"/ignore -->
 [master_mender-cli-linux]: https://downloads.mender.io/mender-cli/master/linux/mender-cli
 [master_mender-cli-darwin]: https://downloads.mender.io/mender-cli/master/darwin/mender-cli
+
+!!! `mender-cli` binary is shipped also in [Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools). More information [here](../06.Artifact-creation/10.CI-CD/docs.md#mender-ci-workflows-docker-image).
 
 ## Monitor
 

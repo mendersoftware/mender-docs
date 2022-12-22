@@ -13,7 +13,7 @@ below).
 ![launch-termninal](launch-new-termninal.png)
 
 All you need is 
-[mender-connect](../../09.Downloads/docs.md#remote-terminal-add-on)
+[mender-connect](../../10.Downloads/docs.md#remote-terminal-add-on)
 configured and running alongside the Mender Client, and you can
 get a live terminal where you can freely type commands.
 
