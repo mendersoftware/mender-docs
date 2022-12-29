@@ -8,9 +8,19 @@ This sections lists all the configuration options in `mender.conf`.
 
 #### ArtifactVerifyKey
 
+There are two options for specifying verification keys:
+* `ArtifactVerifyKey` is a single path to a key.
+* `ArtifactVerifyKeys` is a list of paths to keys. When multiple keys are
+    specified, the keys will be tried in order, and the first key that verifies
+    an artifact signature will be used. This is useful for key rotation or
+    signing different types of artifacts.
+
+Only one of `ArtifactVerifyKey` or `ArtifactVerifyKeys` may be specified.
+
 When set, the Mender client verifies the following:
 
-* All Artifact installs contain  a signature. If a signature is not provided, then the client rejects the update.
+* All Artifact installs contain a signature. If a signature is not provided,
+    then the client rejects the update.
 * The provided public key verifies the signature of the update.
 
 See also the section about [signing and
