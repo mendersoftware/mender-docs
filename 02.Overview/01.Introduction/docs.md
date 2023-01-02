@@ -70,7 +70,7 @@ learn more.
 
 ## Update types
 
-###  Robust system updates
+### Robust system updates
 
 One of the primary requirements of any update system is that it should be robust.
 It must be able to recover from an update that fails, including loss of power
@@ -113,6 +113,38 @@ deploying application updates.
 To support application updates in a generic way, Mender provides the [Update Module](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md) framework.
 
 ![application-updates](application-updates.png)
+
+
+### Combining system and application updates
+
+A common requirement when performing software updates on connected devices
+is combining system and application updates. Full system updates represent
+the only secure and robust way to upgrade the kernel, the operating system,
+and related libraries, avoiding the risk of bricking the device. However,
+they come with the price of the downtime caused by the system reboot and,
+when delta updates are not in use, the higher amount of data usage because
+of the need to transfer an artifact containing the full rootfs image.
+
+In contrast, application updates implemented through the
+[Update Module](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md)
+framework are more flexible when the update scenario requires the replacement
+of a subset of the files on the device's firmware and doesn't require
+a complete device reboot cycle to apply the changes.
+
+Mender allows combining system and application updates on the same device
+to achieve the best flexibility without compromising the specific advantages
+of the two approaches. When generating the Mender Artifacts, you can customize
+the [Software Versioning](../../06.Artifact-creation/09.Software-versioning/docs.md)
+values, as well as [*Depends* and *Provides* entries](../03.Artifact/docs.md#provides-and-depends)
+in the Artifacts to define dependencies between the different kinds of updates.
+
+You can find more information about the strategies and best practices to 
+combine system and application updates in the
+[Combining system and application updates](../../06.Artifact-creation/03.Combining-system-and-application-updates/docs.md) chapter.
+
+!!! Please note that in this context, while it is technically possible
+!!! to use the Update Module API to implement full system updates, we
+!!! refer to application updates as non-rootfs ones.
 
 
 ### Proxy deployments
