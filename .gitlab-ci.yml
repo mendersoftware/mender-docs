@@ -66,6 +66,7 @@ test:latest_versions:
       --update
       --integration-dir $INTEGRATION_REPO_DIR
       --integration-version $INTEGRATION_VERSION
+      --mender-ci-workflows-version 1.0.0
     - git diff HEAD
     # exits with non zero status if not staged for commit files exist
     - git diff-index --quiet HEAD
