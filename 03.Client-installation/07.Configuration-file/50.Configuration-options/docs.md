@@ -11,8 +11,10 @@ This sections lists all the configuration options in `mender.conf`.
 There are two options for specifying verification keys:
 * `ArtifactVerifyKey` is a single path to a key.
 * `ArtifactVerifyKeys` is a list of paths to keys. When multiple keys are
-    specified, the keys will be tried in order, and the first key that verifies
-    an artifact signature will be used. This is useful for key rotation or
+    specified, the keys will be
+    tried in order, and the first key that verifies
+    an artifact signature will be
+    used. This is useful for key rotation or
     signing different types of artifacts.
 
 Only one of `ArtifactVerifyKey` or `ArtifactVerifyKeys` may be specified.
