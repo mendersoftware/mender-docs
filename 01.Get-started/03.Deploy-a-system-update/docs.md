@@ -165,26 +165,28 @@ demonstrated below.
 
 ## Step 4 - Modify the device software
 
-While your Artifact is uploading we make some modifications to the device
+While your Artifact is uploading, we make some modifications to the device
 so we can see the effect of the deployment later.
-On your device, run the following command to install a text editor:
+
+On your device, run the following command to create a file:
 
 ```bash
-sudo apt update && sudo apt install vim --assume-yes
+echo "hello world" | sudo tee /greetings.txt
 ```
 
-You can now run `vim` to verify it is installed, as you would expect. Note that
-this modification *is not part of your system snapshot* created above.
+If the file system is read-only, you can remount it in read-write mode before creating the file:
 
-<!--AUTOVERSION: "mender-convert version %"/mender-convert-->
-<!-- See MEN-4983 -->
-!! Be careful when running `apt upgrade` on a device with Mender system updates enabled. Integration
-!! with `apt upgrade` (through the `grub.d` framework) is only implemented for x86 as of
-!! mender-convert version 3.0.1. For ARM and other non-x86 architectures, always update single
-!! applications only, because running `apt upgrade` may brick your device! If you need to run `apt
-!! upgrade`, do it on a pristine system without Mender installed, and then [convert it to a Mender
-!! image](../../04.System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md)
-!! afterwards. This restriction may be lifted in the future.
+```bash
+sudo mount -o remount,rw /
+```
+
+You can now check the `/greetings.txt` file to verify it exists, as you would expect.
+
+```bash
+ls -lah /greetings.txt
+```
+
+Note that this modification *is not part of your system snapshot* created above.
 
 
 ## Step 5 - Deploy the snapshot and experiment
@@ -195,8 +197,8 @@ order to deploy it to your device.
 
 Once this deployment finishes it will have the effect of restoring your full
 device root file system to the same state as when you created the snapshot in Step 3.
-You can verify this by trying to run `vim` again after the deployment has finished.
-It is gone! This is because your device file system did not have this application
+You can verify this by checking if `/greetings.txt` eists after the deployment has finished.
+It is gone! This is because your device file system did not have this file
 at the time you created the snapshot. This works for any change in the file system,
 including removing or installing software and changing any configuration.
 
