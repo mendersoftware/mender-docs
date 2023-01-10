@@ -95,6 +95,39 @@ You can inspect the configuration file `/etc/mender/mender-gateway.conf`:
 Please refer to the [Mender Gateway's configuration file](../../08.Server-integration/04.Mender-Gateway/99.Configuration-file/)
 documentation for detailed information about the various settings.
 
+## Device Systems
+
+A Device System is a group of devices connected to a Mender Gateway instance and belonging to the same product or logical system.
+To define a Device System, each device must report to the Mender Server a special inventory attribute named `mender_gateway_system_id`, containing a unique identifier for the given system.
+
+The Mender Gateway can set the System ID for all the devices connected to it thanks to the `SystemID` configuration setting. When enabled, this feature injects this inventory attributes for all the devices connected to the gateway.
+
+An example configuration follows:
+
+```
+{
+	"HTTPS": {
+		"Enabled": true,
+		"Listen": ":443",
+		"ServerCertificate": "/usr/share/doc/mender-gateway/examples/cert/cert.crt",
+		"ServerKey": "/usr/share/doc/mender-gateway/examples/cert/private.key"
+	},
+	"Features": {
+		"ArtifactsProxy": {
+			"Enabled": true,
+			"GatewayURL": "https://gateway.docker.mender.io",
+			"DomainWhitelist": ["s3.amazonaws.com"]
+		},
+		"DeviceSystem"; {
+			"Enabled": true,
+			"SystemID": "REPLACE_WITH_YOUR_UNIQUE_SYSTEM_ID"
+		}
+	},
+	"UpstreamServer": {
+		"URL": "https://hosted.mender.io"
+	}
+}
+```
 
 ## Run the service and inspect the logs
 

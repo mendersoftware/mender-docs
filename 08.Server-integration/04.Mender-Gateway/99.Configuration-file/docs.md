@@ -43,6 +43,7 @@ provides a reference for the configuration variables.
         "URL": "https://hosted.mender.io",
         "InsecureSkipVerify": false
     },
+    "SystemID": "REPLACE_WITH_YOUR_UNIQUE_SYSTEM_ID",
     "DebugLog": false
 }
 ```
@@ -105,4 +106,14 @@ This user will preauthorize devices with authorization to the gateway.
 <dl>
 <dt>URL</dt> <dd>The upstream server URL for proxying device HTTP requests.</dd>
 <dt>InsecureSkipVerify</dt> <dd>Skip verification of certificate claims.</dd>
+</dl>
+
+### SystemID
+Defines a unique Device System identifier for the devices connected to this Mender Gateway instance.
+
+### DefaultInventory
+List of default attributes to inject in the inventory data for the devices connected to this Mender Gateway instance.
+<dl>
+<dt>name</dt> <dd>Name of the default inventory attribute</dd>
+<dt>value</dt> <dd>Value of the default inventory attribute</dd>
 </dl>
