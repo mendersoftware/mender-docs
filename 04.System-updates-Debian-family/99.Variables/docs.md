@@ -64,11 +64,16 @@ it is missing a "MENDER_" prefix.
 
 #### `MENDER_ARTIFACT_COMPRESSION`
 
-> Values: gzip(default)/lzma/none
+> Values: gzip(default)/lzma/zstd_fast/zstd_fastest/zstd_better/zstd_best/none
 
 The compression algorithm to use when generating the Artifact. In general LZMA
 will produce a smaller Mender Artifact (2-3x) but will significantly increase
-time spent generating the Mender Artifact (10x).
+time spent generating the Mender Artifact (10x), compared to gzip.
+
+Zstd provides different compression levels, and can achieve comparable
+compression ratios to both gzip and LZMA, at faster compression and
+decompression throughput. `zstd_fast` is the default.
+See https://engineering.fb.com/2018/12/19/core-data/zstandard for details.
 
 
 
