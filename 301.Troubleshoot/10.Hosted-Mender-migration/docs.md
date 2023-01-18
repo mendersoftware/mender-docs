@@ -5,9 +5,8 @@ Mender](https://eu.hosted.mender.io?target=_blank), which is located in Europe.
 This guide shows how to migrate deployed devices from hosted Mender (USA) to EU hosted Mender
 (Europe).
 
-!!!!! Migration to EU hosted Mender is only available in the Mender Enterprise plan. See
-!!!!! [the Mender features page](https://mender.io/product/features?target=_blank) for an
-!!!!! overview of all Mender plans and features. If you wish to migrate your tenant to EU hosted
+!!!!! Migration to EU hosted Mender requires support assistance, and it is not possible to
+!!!!! self-migrate from one location to the other. If you wish to migrate your tenant to EU hosted
 !!!!! Mender please email [contact@mender.io](mailto:contact@mender.io) with your request.
 
 !!! Mender currently supports these [regions](/11.General/00.Hosted-Mender-regions/docs.md).
