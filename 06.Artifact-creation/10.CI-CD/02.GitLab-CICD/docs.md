@@ -25,7 +25,7 @@ In this chapter we introduce the different jobs and provide [examples](#pipeline
 ### Setup
 The job templates require the following CI variable to be set in the repository settings:
 
-!!!!!! Make sure to protect the variable accordingly
+!!!!! Make sure to protect the variable accordingly
 
 - `MENDER_SERVER_ACCESS_TOKEN`: Mender [Personal Access Token](../../../08.Server-integration/01.Using-the-apis/docs.md#personal-access-tokens)
 
