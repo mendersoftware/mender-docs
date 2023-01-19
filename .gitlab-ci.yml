@@ -73,19 +73,23 @@ test:latest_versions:
   only:
     - /^(hosted)$/
 
-trigger:mender-docs-site:
-  image: alpine
+.trigger:mender-docs-site:
   stage: trigger
-  before_script:
-    - apk add --no-cache curl
-  script:
-    - curl -v -f -X POST
-      -F token=$MENDER_DOCS_SITE_TRIGGER_TOKEN
-      -F ref=master
-      https://gitlab.com/api/v4/projects/16842368/trigger/pipeline
-    - curl -v -f -X POST
-      -F token=$MENDER_DOCS_SITE_TRIGGER_TOKEN
-      -F ref=production
-      https://gitlab.com/api/v4/projects/16842368/trigger/pipeline
-  only:
-    - /^(master|hosted|[0-9]+\.[0-9]+\.x)$/
+  inherit:
+    variables: false
+  rules:
+    - if: '$CI_COMMIT_BRANCH =~ /^(master|hosted|[0-9]+\.[0-9]+\.x)$/'
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+
+trigger:mender-docs-site:master:
+  extends: .trigger:mender-docs-site
+  trigger:
+    project: Northern.tech/Mender/mender-docs-site
+    branch: master
+
+trigger:mender-docs-site:production:
+  extends: .trigger:mender-docs-site
+  trigger:
+    project: Northern.tech/Mender/mender-docs-site
+    branch: production
