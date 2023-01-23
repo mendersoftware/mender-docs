@@ -98,6 +98,7 @@ This user will preauthorize devices with authorization to the gateway.
 <dl>
 <dt>Enabled</dt> <dd>Enable proxy of TLS-terminated HTTP requests.</dd>
 <dt>Listen</dt> <dd>TCP network address to listen for incomming connections.</dd>
+<dt>MinimumTLSVersion</dt> <dd>The minimum accepted TLS version for connecting to the gateway `["1.0", "1.1", "1.2", "1.3"]`.</dd>
 <dt>ServerCertificate</dt> <dd>Path to the public server certificate representing the server.</dd>
 <dt>ServerKey</dt> <dd>Path to certificate key file.</dd>
 </dl>
