@@ -59,7 +59,7 @@ bucket or install and expose a storage service providing S3-compatible APIs over
 
 The following open-source projects are compatible with the S3 APIs:
 
-* [Minio](https://github.com/chrislusf/seaweedfs)
+* [Minio](https://github.com/minio/minio)
 * [SeaweedFS](https://github.com/chrislusf/seaweedfs)
 * [Leofs](https://github.com/leo-project/leofs)
 
