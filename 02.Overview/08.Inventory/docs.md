@@ -69,6 +69,22 @@ fields to create Dynamic groups (see the screenshot below).
 For more information on customizing the Inventory attributes,
 please refer to the [client configuration section](../../03.Client-installation/04.Inventory/docs.md).
 
+## Limitations
+
+Each device can upload up to 100 inventory attributes in a single inventory update.
+
+When indexing, the Mender server considers up to 100 different inventory attributes' names
+uploaded by the devices. It will ignore all the additional inventory attributes' names.
+You can see the current usage and the list of filterable attributes in the Global settings.
+
+![Global settings](global-settings.png)
+
+If you reached the limit of filterable attributes, as you can see below:
+
+![limit reached](limit-reached.png)
+
+but your use case requires a different set of attributes, please email [contact@mender.io](mailto:contact@mender.io).
+
 !! Currently, there is one "_reserved_" attribute in the *identity* scope: _status_.
 !! It stores the status (`accepted`, `rejected`, etc.) of a device and changes whether
 !! the device status changes. Therefore, you cannot modify it directly.
