@@ -73,20 +73,27 @@ After a short while, depending on your network connection speed, you should see
 similar output to the following:
 
 >```bash
->Creating integration_minio_1        ... done
->Creating integration_mender-gui_1   ... done
->Creating integration_mender-nats_1                   ... done
->Creating integration_mender-mongo_1 ... done
->Creating integration_mender-workflows-worker_1       ... done
->Creating integration_mender-useradm_1                ... done
->Creating integration_mender-deviceconfig_1           ... done
->Creating integration_mender-inventory_1              ... done
->Creating integration_mender-workflows-server_1       ... done
->Creating integration_mender-create-artifact-worker_1 ... done
->Creating integration_mender-deviceconnect_1          ... done
->Creating integration_mender-device-auth_1            ... done
->Creating integration_mender-api-gateway_1            ... done
->Creating integration_mender-deployments_1            ... done
+>Starting the Mender demo environment...
+>Creating network "integrationmaster_mender" with the default driver
+>Creating integrationmaster_mender-reporting-indexer_1 ...
+>Creating integrationmaster_mender-gui_1               ... done
+>Creating integrationmaster_minio_1                    ... done
+>Creating integrationmaster_mender-mongo_1             ... done
+>Creating integrationmaster_mender-opensearch_1 ... done
+>Creating integrationmaster_mender-reporting-indexer_1      ... done
+>Creating integrationmaster_mender-reporting_1              ... done
+>Creating integrationmaster_mender-deviceconfig_1           ... done
+>Creating integrationmaster_mender-iot-manager_1            ... done
+>Creating integrationmaster_mender-inventory_1              ... done
+>Creating integrationmaster_mender-useradm_1                ... done
+>Creating integrationmaster_mender-deviceconnect_1          ... done
+>Creating integrationmaster_mender-workflows-server_1       ... done
+>Creating integrationmaster_mender-create-artifact-worker_1 ... done
+>Creating integrationmaster_mender-workflows-worker_1       ... done
+>Creating integrationmaster_mender-device-auth_1            ... done
+>Creating integrationmaster_mender-api-gateway_1            ... done
+>Creating integrationmaster_mender-deployments_1            ... done
+>Waiting for services to become ready...
 >Creating a new user...
 >****************************************
 >

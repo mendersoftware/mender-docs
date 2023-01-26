@@ -50,6 +50,7 @@ The Mender backend is available for the x86 architecture only.
   * [MongoDB](../04.Production-installation-with-kubernetes/02.MongoDB/docs.md)
   * [NATS](../04.Production-installation-with-kubernetes/03.NATS/docs.md)
   * [S3-compatible storage layer](#s3-compatible-storage-layer)
+  * [OpenSearch](../04.Production-installation-with-kubernetes/07.OpenSearch/docs.md)
 * [Mender Server](../04.Production-installation-with-kubernetes/05.Mender-server/docs.md)
 
 ### S3-compatible storage layer
