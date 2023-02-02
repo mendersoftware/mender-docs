@@ -160,7 +160,7 @@ The version of the Mender Configure add-on to include in the update.
 
 #### `MENDER_COMPRESS_DISK_IMAGE`
 
-> Values: gzip(default)/lzma/none
+> Values: gzip/lzma/none(default)
 
 This is useful when you have large disk images, compressing them makes it easier
 to transfer them between a build server and a local machine, and saves space.
