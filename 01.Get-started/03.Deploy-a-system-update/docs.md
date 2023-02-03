@@ -34,14 +34,14 @@ Download the `mender-artifact` binary. If you're on Linux
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 ```bash
-wget https://downloads.mender.io/mender-artifact/master/linux/mender-artifact -O ${HOME}/bin/mender-artifact
+wget https://downloads.mender.io/mender-artifact/3.10.0-build2/linux/mender-artifact -O ${HOME}/bin/mender-artifact
 ```
 
 On MacOS
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 ```bash
-wget https://downloads.mender.io/mender-artifact/master/darwin/mender-artifact -O ${HOME}/bin/mender-artifact
+wget https://downloads.mender.io/mender-artifact/3.10.0-build2/darwin/mender-artifact -O ${HOME}/bin/mender-artifact
 ```
 
 
