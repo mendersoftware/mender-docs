@@ -228,6 +228,15 @@ You also need to specify a username and password pair. The ambassador will use i
 <!-- AUTOMATION: execute=MTLS_MENDER_PASS="$CI_MTLS_TEST_HM_PASS" -->
 <!-- AUTOMATION: execute=MTLS_MENDER_BACKEND=https://hosted.mender.io -->
 
+As the mtls-ambassador container runs as user `nobody`, with UID 65534, we change the owner of the files we'll volume mount:
+
+<!-- AUTOMATION: execute={ -->
+```bash
+chown 65534 $(pwd)/server-cert.pem $(pwd)/server-private.key $(pwd)/ca-cert.pem
+chmod 0600 $(pwd)/server-private.key
+```
+<!-- AUTOMATION: execute=} & -->
+
 To start the edge proxy, run the following command:
 
 <!-- AUTOMATION: execute={ -->
