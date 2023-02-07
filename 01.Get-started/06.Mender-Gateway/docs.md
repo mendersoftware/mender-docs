@@ -104,7 +104,7 @@ The Mender Gateway can set the System ID for all the devices connected to it tha
 
 An example configuration follows:
 
-```
+```json
 {
 	"HTTPS": {
 		"Enabled": true,
@@ -118,7 +118,7 @@ An example configuration follows:
 			"GatewayURL": "https://gateway.docker.mender.io",
 			"DomainWhitelist": ["s3.amazonaws.com"]
 		},
-		"DeviceSystem"; {
+		"DeviceSystem": {
 			"Enabled": true,
 			"SystemID": "REPLACE_WITH_YOUR_UNIQUE_SYSTEM_ID"
 		}
