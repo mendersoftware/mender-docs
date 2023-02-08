@@ -80,3 +80,14 @@ provides a convenient setup based on Docker Compose tool. The
         |                                            +-------------------------+
         |
 ```
+
+# Cloud system requirements
+
+A cloud solution can be deployed on a variety of different cloud infrastructures.
+The simplest path to a working on premise Mender server instance is deploying it on the cloud system requirements with which we test with.
+
+! Enterprise support only covers on-prem installations on the cloud system requirements defined here
+
+
+<TODO: Fill with what we test on-prem>
+<TODO: Needs to be defined starting from 3.3 and 3.4>
