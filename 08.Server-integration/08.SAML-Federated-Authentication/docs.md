@@ -48,11 +48,16 @@ Once you registered the application in the IdP and enabled it for your users, th
 
 ## Authorizing users and federated log in
 
-Only authorized users from your IdP can log in to Mender. You can authorize users by creating them in the "User management" settings view, leaving the optional password field blank, and assigning the Role-Based Access Control roles as required.
+Only authorized users from your IdP can log in to Mender. 
+For SAML integration you must authorize users by creating them in the "User management" settings view, leaving the password field blank and assigning the Role-Based Access Control roles as required.
 
 At this point, users can log in to Mender by opening the Start URL in their browsers and logging in using their credentials from the organization's Identity Provider. The user will be automatically linked to the SAML IdP on the first login.
 
+
 ## Limitations
+
+Please note that IdP initiated SSO isn't supported.
+
 
 JWt tokens issued to SSO users authenticating to Mender through the SAML 2.0 federated login are valid for 24 hours only. The reason for this limitation is that Mender cannot check whether the user is still active and authorized when verifying the token on subsequent API calls. Therefore, after 24 hours, the user will have to authenticate again to renew the JWT token. However, if the session in the Identity Provider is still valid, this won't trigger a new password or token request, and the IdP will seamlessly redirect the user back to the Mender UI.
 
