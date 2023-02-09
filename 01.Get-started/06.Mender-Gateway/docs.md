@@ -104,7 +104,7 @@ The Mender Gateway can set the System ID for all the devices connected to it tha
 
 An example configuration follows:
 
-```
+```json
 {
 	"HTTPS": {
 		"Enabled": true,
@@ -118,13 +118,36 @@ An example configuration follows:
 			"GatewayURL": "https://gateway.docker.mender.io",
 			"DomainWhitelist": ["s3.amazonaws.com"]
 		},
-		"DeviceSystem"; {
+		"DeviceSystem": {
 			"Enabled": true,
 			"SystemID": "REPLACE_WITH_YOUR_UNIQUE_SYSTEM_ID"
 		}
 	},
 	"UpstreamServer": {
 		"URL": "https://hosted.mender.io"
+	}
+}
+```
+
+Using the `DefaultInventory` setting, you can add a list of default inventory attributes to all the devices connecting to this Mender Gateway instance:
+
+```json
+{
+	"Features": {
+		"DeviceSystem": {
+			"Enabled": true,
+			"SystemID": "REPLACE_WITH_YOUR_UNIQUE_SYSTEM_ID",
+			"DefaultInventory": [
+				{
+					"Name": "region",
+					"Value": "eu"
+				},
+				{
+					"Name": "customer_name",
+					"Value": "ACME Inc."
+				}
+			]
+		}
 	}
 }
 ```

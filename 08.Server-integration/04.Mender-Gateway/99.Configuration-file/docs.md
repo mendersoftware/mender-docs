@@ -1,7 +1,7 @@
 ---
 title: Configuration file
 taxonomy:
-    category: reference
+	category: reference
 ---
 
 Mender Gateway uses a JSON file for configuring the proxy and mTLS settings. The
@@ -11,40 +11,49 @@ provides a reference for the configuration variables.
 
 ```json
 {
-    "Features": {
-        "ArtifactsProxy": {
-            "Enabled": true,
-            "GatewayURL": "https://gateway.mender.io",
-            "DomainWhitelist": ["s3.amazonaws.com", "s3.my-min.io"],
-            "ArtifactsCache": {
-                "Enabled": true,
-                "Path": "/var/cache/mender-gateway"
-            }
-        },
-        "mTLS": {
-            "Enabled": true,
-            "CACertificate": "/var/lib/mender/ca-cert.pem",
-            "MenderUsername": "gateway@mender.io",
-            "MenderPassword": "password123",
-            "BlacklistPath": "/var/lib/mender/mtls-blacklist.txt"
-        },
-    },
-    "HTTP": {
-      "Enabled": false,
-      "Listen": ":80"
-    },
-    "HTTPS": {
-        "Enabled": true,
-        "Listen": ":443",
-        "ServerCertificate": "/var/lib/mender/server-cert.pem",
-        "ServerKey": "/var/lib/mender/server-pkey.pem"
-    },
-    "UpstreamServer": {
-        "URL": "https://hosted.mender.io",
-        "InsecureSkipVerify": false
-    },
-    "SystemID": "REPLACE_WITH_YOUR_UNIQUE_SYSTEM_ID",
-    "DebugLog": false
+	"Features": {
+		"ArtifactsProxy": {
+			"Enabled": true,
+			"GatewayURL": "https://gateway.mender.io",
+			"DomainWhitelist": ["s3.amazonaws.com", "s3.my-min.io"],
+			"ArtifactsCache": {
+				"Enabled": true,
+				"Path": "/var/cache/mender-gateway"
+			}
+		},
+		"mTLS": {
+			"Enabled": true,
+			"CACertificate": "/var/lib/mender/ca-cert.pem",
+			"MenderUsername": "gateway@mender.io",
+			"MenderPassword": "password123",
+			"BlacklistPath": "/var/lib/mender/mtls-blacklist.txt"
+		},
+		"DeviceSystem": {
+			"Enabled": false,
+			"SystemID": "REPLACE_WITH_YOUR_UNIQUE_SYSTEM_ID",
+			"DefaultInventory": [
+				{
+					"Name": "region",
+					"Value": "eu"
+				}
+			]
+		}
+	},
+	"HTTP": {
+	  "Enabled": false,
+	  "Listen": ":80"
+	},
+	"HTTPS": {
+		"Enabled": true,
+		"Listen": ":443",
+		"ServerCertificate": "/var/lib/mender/server-cert.pem",
+		"ServerKey": "/var/lib/mender/server-pkey.pem"
+	},
+	"UpstreamServer": {
+		"URL": "https://hosted.mender.io",
+		"InsecureSkipVerify": false
+	},
+	"DebugLog": false
 }
 ```
 
@@ -85,6 +94,19 @@ This user will preauthorize devices with authorization to the gateway.
 !!!! endpoint](https://docs.mender.io/api/#management-api-device-authentication-preauthorize) for the
 !!!! gateway user.
 
+#### DeviceSystem
+<dl>
+<dt>Enabled</dt> <dd>Enable the Device System feature.</dd>
+<dt>SystemID</dt> <dd>Defines a unique Device System identifier for the devices connected to this Mender Gateway instance setting a special attribute named `mender_gateway_system_id` when the devices report the inventory to the Server.</dd>
+<dt>DefaultInventory</dt> <dd>List of default attributes to inject in the inventory data for the devices connected to this Mender Gateway instance.</dd>
+</dl>
+
+##### DefaultInventory
+<dl>
+<dt>Name</dt> <dd>Name of the default inventory attribute</dd>
+<dt>Value</dt> <dd>Value of the default inventory attribute</dd>
+</dl>
+
 ### HTTP
 <dl>
 <dt>Enabled</dt> <dd>Enable proxy of plain HTTP requests.</dd>
@@ -107,14 +129,4 @@ This user will preauthorize devices with authorization to the gateway.
 <dl>
 <dt>URL</dt> <dd>The upstream server URL for proxying device HTTP requests.</dd>
 <dt>InsecureSkipVerify</dt> <dd>Skip verification of certificate claims.</dd>
-</dl>
-
-### SystemID
-Defines a unique Device System identifier for the devices connected to this Mender Gateway instance.
-
-### DefaultInventory
-List of default attributes to inject in the inventory data for the devices connected to this Mender Gateway instance.
-<dl>
-<dt>name</dt> <dd>Name of the default inventory attribute</dd>
-<dt>value</dt> <dd>Value of the default inventory attribute</dd>
 </dl>

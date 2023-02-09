@@ -75,17 +75,98 @@ cat mender.conf | jq '
 ]' > mender.new.conf
 ```
 
+To perform the configuration update, another option can be a custom [Update Module](https://docs.mender.io/artifact-creation/create-a-custom-update-module). The following code is an example for this Update Module:
+
+``` bash
+#!/bin/sh
+
+set -e
+
+STATE="$1"
+FILES="$2"
+
+case "$STATE" in
+    ArtifactInstall)
+        # Backup of current conf file
+        cp /etc/mender/mender.conf /etc/mender/mender.old.conf
+
+        # Modify current conf file
+        cat /etc/mender/mender.conf | jq '
+.ServerURL = "" |   # Blank existing ServerURL
+.Servers = [        # Set Servers array of ServerURL(s)
+  {ServerURL: "https://hosted.mender.io"},
+  {ServerURL: "https://eu.hosted.mender.io"}
+]' > /etc/mender/mender.new.conf
+
+        # Set the new configuration
+        cp -f /etc/mender/mender.new.conf /etc/mender/mender.conf
+        ;;
+    
+    NeedsArtifactReboot)
+        echo "Automatic"
+        ;;
+
+    SupportsRollback)
+        echo "Yes"
+        ;;
+
+    ArtifactRollback)
+        cp -f /etc/mender/mender.old.conf /etc/mender/mender.conf
+        ;;
+    
+    Cleanup)
+        # Delete used files
+        rm /etc/mender/mender.old.conf /etc/mender/mender.new.conf
+
+        ;;
+esac
+exit 0
+```
+The example includes a way to rollback if the configuration ended up unable to connect to the server (ArtifactRollback). After the update is perform a reboot is requested (NeedsArtifactReboot) to ensure the Mender services restarts and load the new configuration.
+
+Keep in mind the Update Module file needs to be executable. For this example, the file will be named `migration-um-a`:
+
+``` bash
+chmod +x migration-um-a
+```
+
 ### Create the Mender Artifact
 
 Now create an Artifact with the updated `mender.conf` using the your current workflow to create
-Artifacts. The Artifact needs to be a full system update.
+Artifacts. It is recommended to use a full system update artifact to update the configuration. However, you can also use the custom Update Module.
 
-Upload it to hosted Mender.
+For this example, the following command will generate the artifact: 
+
+```bash
+ARTIFACT_NAME="eu-migration-a"
+DEVICE_TYPE="qemux86-64"
+OUTPUT_PATH="eu-migration-a.mender"
+DEST_DIR="/usr/share/mender/modules/v3/"
+FILE="migration-um-a"
+single-file-artifact-gen -n ${ARTIFACT_NAME} -t ${DEVICE_TYPE} -d ${DEST_DIR} -o ${OUTPUT_PATH} ${FILE}
+```
+
+Aditionally, to trigger the `migration-um-a` Update Module, an additional artifact needs to be created. For this new artifact, the [mender-artifact](https://docs.mender.io/downloads#mender-artifact) cli tool will be used:
+
+```bash
+ARTIFACT_NAME="trigger-eu-mig-a"
+DEVICE_TYPE="qemux86-64"
+UPDATE_MODULE="migration-um-a"
+FILE="migration-a.mender"
+mender-artifact write module-image -t $DEVICE_TYPE -o $FILE -T $UPDATE_MODULE -n $ARTIFACT_NAME
+````
+
+In order to use the Update Module, it needs to be installed in the device filesystem. To generate the artifact that installs the `migration-um-a` Update Module, the `single-artifact` Update Module can be used.
+
+<!--AUTOVERSION: "github.com/mendersoftware/mender/blob/%/"/mender-->
+Using the script [single-file-artifact-gen](https://github.com/mendersoftware/mender/blob/3.5.0-build2/support/modules-artifact-gen/single-file-artifact-gen) makes this process easier.
 
 ### Deploy the update
 
 Once the Artifact with the new `mender.conf` is uploaded to hosted Mender, create a deployment for
 your fleet with it.
+
+For the `migration-um-a` Update Module, the artifact that installs it must be deployed first, then the artifact that triggers it can be deployed.
 
 The devices will now be updating their configuration but still using the old hosted Mender (USA) to
 commit the update and poll for further updates, because they orderly follow the server URLs found in
