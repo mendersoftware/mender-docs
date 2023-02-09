@@ -129,6 +129,29 @@ An example configuration follows:
 }
 ```
 
+Using the `DefaultInventory` setting, you can add a list of default inventory attributes to all the devices connecting to this Mender Gateway instance:
+
+```json
+{
+	"Features": {
+		"DeviceSystem": {
+			"Enabled": true,
+			"SystemID": "REPLACE_WITH_YOUR_UNIQUE_SYSTEM_ID",
+			"DefaultInventory": [
+				{
+					"Name": "region",
+					"Value": "eu"
+				},
+				{
+					"Name": "customer_name",
+					"Value": "ACME Inc."
+				}
+			]
+		}
+	}
+}
+```
+
 ## Run the service and inspect the logs
 
 The Mender Gateway package runs as a systemd service.
