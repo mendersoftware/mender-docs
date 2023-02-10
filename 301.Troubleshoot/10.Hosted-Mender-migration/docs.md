@@ -5,9 +5,9 @@ Mender](https://eu.hosted.mender.io?target=_blank), which is located in Europe.
 This guide shows how to migrate deployed devices from hosted Mender (USA) to EU hosted Mender
 (Europe).
 
-!!!!! Migration to EU hosted Mender requires support assistance, and it is not possible to
-!!!!! self-migrate from one location to the other. If you wish to migrate your tenant to EU hosted
-!!!!! Mender please email [contact@mender.io](mailto:contact@mender.io) with your request.
+!!!!! Migration to EU hosted Mender without risks requires support assistance, and it is not possible
+!!!!! to self-migrate your `TenantToken` from one location to the other. If you wish to migrate your 
+!!!!! tenant to EU hosted Mender please email [contact@mender.io](mailto:contact@mender.io) with your request.
 
 !!! Mender currently supports these [regions](/11.General/00.Hosted-Mender-regions/docs.md).
 
@@ -21,6 +21,9 @@ server URLs.
 Unauthorized error from the old server.
 * From EU hosted Mender, deploy a new software update with a `mender.conf` containing only the new
 server. This step is a formal clean-up and not urgent.
+
+!!!!! It is possible to migrate devices to the EU hosted Mender without support assistance, 
+!!!!! however, this can be a high risk process and will be on your own responsability.
 
 !!! Note that this method will not work on generic instances of the Mender server. It is only
 !!! possible with hosted Mender and EU hosted Mender because the databases are internally
@@ -117,12 +120,55 @@ case "$STATE" in
     Cleanup)
         # Delete used files
         rm /etc/mender/mender.old.conf /etc/mender/mender.new.conf
-
         ;;
 esac
 exit 0
 ```
 The example includes a way to rollback if the configuration ended up unable to connect to the server (ArtifactRollback). After the update is perform a reboot is requested (NeedsArtifactReboot) to ensure the Mender services restarts and load the new configuration.
+
+#### Manual device migration
+If you are migrating devices manually, the Update Module needs to be redefined. The `TenantToken` will also be modified in the `mender.conf` and the `ServerURL` will only be the desired instance, in this example the EU instance.
+
+!!! Keep in mind this can be a **high risk** process, proceed with caution in case you are migrating devices in production.
+
+The next example contains the modified version of the UpdateModule for manual migration:
+
+```bash
+#!/bin/sh
+
+set -e
+
+STATE="$1"
+FILES="$2"
+
+case "$STATE" in
+    ArtifactInstall)
+        # Backup of current conf file
+        cp /etc/mender/mender.conf /etc/mender/mender.old.conf
+
+        # Modify current conf file
+        cat /etc/mender/mender.conf | jq '
+.TenantToken = "NEW_TENANT_TOKEN" |
+.ServerURL = "" |   # Blank existing ServerURL
+.Servers = [        # Set Servers array of ServerURL(s)
+  {ServerURL: "https://eu.hosted.mender.io"}
+]' > /etc/mender/mender.new.conf
+
+        # Set the new configuration
+        cp -f /etc/mender/mender.new.conf /etc/mender/mender.conf
+        ;;
+    
+    NeedsArtifactReboot)
+        echo "Automatic"
+        ;;
+
+    SupportsRollback)
+        echo "No"
+        ;;
+esac
+exit 0
+```
+Please notice, this version **will not rollback** to the previous `mender.conf` file in case the device ended up unable to connect to the server. This means the device will be unreachable and will stay in an unknown state. We advice to test with with local devices to validate the UpdateModule.
 
 Keep in mind the Update Module file needs to be executable. For this example, the file will be named `migration-um-a`:
 
@@ -170,7 +216,7 @@ For the `migration-um-a` Update Module, the artifact that installs it must be de
 
 The devices will now be updating their configuration but still using the old hosted Mender (USA) to
 commit the update and poll for further updates, because they orderly follow the server URLs found in
-the `Servers` field of the configuration file.
+the `Servers` field of the configuration file. This information not applies to the manual migration of devices, as the `TenantToken`will be different from the original one and the EU server will the only `ServerURL` available.
 
 ## Step 2: Reject devices from the old server
 
@@ -184,6 +230,8 @@ To reject devices either use the GUI
 
 or the API. See [API
 documentation](../../200.Server-side-API/?target=_blank#management-api-device-authentication-reject-authentication).
+
+For the manual migration, you can pre-authorize the device in the EU instance or manually accept each migrated device.
 
 ## Step 3: Update again the Mender configuration
 
@@ -199,3 +247,5 @@ The new `mender.conf` file should contain only the new server in the `Servers` a
 
 Following similar steps that in Step 1 above, create an Artifact with the updated configuration
 file, upload it to EU hosted Mender, and and deploy it to your devices.
+
+This step it is not necessary for the manual migration as the `mender.conf` file only contains the new server.
