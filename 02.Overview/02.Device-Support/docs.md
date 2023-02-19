@@ -156,6 +156,6 @@ into your root filesystem, which are invoked by the Mender client.
 ### Installation of root filesystem State Scripts
 
 If you require support of [root filesystem State
-Scripts](../../06.Artifact-creation/04.State-scripts/docs.md#root-file-system-and-Artifact-scripts),
+Scripts](../../06.Artifact-creation/04.State-scripts/docs.md#root-filesystem-and-artifact-scripts),
 ensure that they are installed into your root filesystem, so they are invoked by the
 Mender client.

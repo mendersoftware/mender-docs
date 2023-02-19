@@ -164,7 +164,7 @@ rootfs_overlay_demo
         └── server.crt
 ```
 
-The files and folders shown above will become a part of the final file system
+The files and folders shown above will become a part of the final filesystem
 available to the device on boot
 
 If the final image needs application configurations and additions, this is the

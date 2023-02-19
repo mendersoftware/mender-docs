@@ -96,7 +96,7 @@ previous version by flipping the active and inactive partitions back again.
 
 One consequence of the system update is that the update will replace all the
 files in a filesystem, thereby deleting any new or changed files that had been
-placed there. In other words, to be updatable a file system needs to be
+placed there. In other words, to be updatable a filesystem needs to be
 **stateless**.
 
 You have to store all files that you modify on the devices in a separate

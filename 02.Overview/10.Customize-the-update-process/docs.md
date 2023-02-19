@@ -13,7 +13,7 @@ The Mender Client supports multiple ways to customize the update process:
 ## State scripts
 
 The Mender Client can run pre- and post-install scripts, before
-and after it writes the root file system. However, Mender state scripts are more
+and after it writes the root filesystem. However, Mender state scripts are more
 general and useful than pre/post-install scripts because they run between
 any state transition, not just (before/after) the install state.
 

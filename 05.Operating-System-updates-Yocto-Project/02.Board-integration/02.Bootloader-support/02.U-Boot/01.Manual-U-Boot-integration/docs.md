@@ -112,7 +112,7 @@ These are the current integration points:
    issued that needs to access the current boot partition, reference this variable.
 
    For example, if you have a script, `loadimage`, that loads the kernel from
-   the file system, using `mmc` as the device and a `${bootpart}` variable
+   the filesystem, using `mmc` as the device and a `${bootpart}` variable
    reference as the partition to load from:
 
    ```bash

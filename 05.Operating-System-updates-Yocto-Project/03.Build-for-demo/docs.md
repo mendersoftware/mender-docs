@@ -161,11 +161,11 @@ ARTIFACTIMG_FSTYPE = "ext4"
 #IMAGE_INSTALL:append = " mender-server-certificate"
 ```
 
-!!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../99.Variables/docs.md#mender_storage_total_size_mb) for more information. Mender selects the file system type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on file system types](../02.Board-integration/01.Partition-configuration/docs.md#file-system-types) for more information.
+!!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../99.Variables/docs.md#mender_storage_total_size_mb) for more information. Mender selects the filesystem type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on filesystem types](../02.Board-integration/01.Partition-configuration/docs.md#filesystem-types) for more information.
 
 !!! If you are building for **[hosted Mender](https://hosted.mender.io?target=_blank)**, make sure to set `MENDER_SERVER_URL` and `MENDER_TENANT_TOKEN` (see the comments above).
 
-!!! If you would like to use a read-only root file system, please see the section on [configuring the image for read-only rootfs](../04.Image-customization/02.Read-only-root-filesystem/docs.md).
+!!! If you would like to use a read-only root filesystem, please see the section on [configuring the image for read-only rootfs](../04.Image-customization/02.Read-only-root-filesystem/docs.md).
 
 ### Adding meta-mender to existing Yocto Project environment
 
@@ -291,11 +291,11 @@ ARTIFACTIMG_FSTYPE = "ext4"
 #IMAGE_INSTALL:append = " mender-server-certificate"
 ```
 
-!!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../99.Variables/docs.md#mender_storage_total_size_mb) for more information. Mender selects the file system type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on file system types](../02.Board-integration/01.Partition-configuration/docs.md#file-system-types) for more information.
+!!! The size of the disk image (`.sdimg`) should match the total size of your storage so you do not leave unused space; see [the variable MENDER_STORAGE_TOTAL_SIZE_MB](../99.Variables/docs.md#mender_storage_total_size_mb) for more information. Mender selects the filesystem type it builds into the disk image, which is used for initial flash provisioning, based on the `ARTIFACTIMG_FSTYPE` variable. See the [section on filesystem types](../02.Board-integration/01.Partition-configuration/docs.md#filesystem-types) for more information.
 
 !!! If you are building for **[hosted Mender](https://hosted.mender.io?target=_blank)**, make sure to set `MENDER_SERVER_URL` and `MENDER_TENANT_TOKEN` (see the comments above).
 
-!!! If you would like to use a read-only root file system, please see the section on [configuring the image for read-only rootfs](../04.Image-customization/02.Read-only-root-filesystem/docs.md).
+!!! If you would like to use a read-only root filesystem, please see the section on [configuring the image for read-only rootfs](../04.Image-customization/02.Read-only-root-filesystem/docs.md).
 
 #### Building the image
 

@@ -10,8 +10,8 @@ To include state scripts in Artifacts and images, create a new Yocto recipe that
 inherits `mender-state-scripts` and copies them into place in `do_compile`,
 using the
 [${MENDER_STATE_SCRIPTS_DIR}](../../../05.Operating-System-updates-Yocto-Project/99.Variables/docs.md#mender_state_scripts_dir)
-variable. This works for both [root file system and Artifact
-scripts](../../../06.Artifact-creation/04.State-scripts/docs.md#root-file-system-and-Artifact-scripts).
+variable. This works for both [root filesystem and Artifact
+scripts](../../../06.Artifact-creation/04.State-scripts/docs.md#root-filesystem-and-artifact-scripts).
 
 <!--AUTOVERSION: "meta-mender/tree/%"/meta-mender-->
 Take a look at the

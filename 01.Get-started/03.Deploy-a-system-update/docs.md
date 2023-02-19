@@ -173,7 +173,7 @@ On your device, run the following command to create a file:
 echo "hello world" | sudo tee /greetings.txt
 ```
 
-If the file system is read-only, you can remount it in read-write mode before creating the file:
+If the filesystem is read-only, you can remount it in read-write mode before creating the file:
 
 ```bash
 sudo mount -o remount,rw /
@@ -195,10 +195,10 @@ go to the **DEPLOYMENTS** tab and click **CREATE DEPLOYMENT** in
 order to deploy it to your device.
 
 Once this deployment finishes it will have the effect of restoring your full
-device root file system to the same state as when you created the snapshot in Step 3.
+device root filesystem to the same state as when you created the snapshot in Step 3.
 You can verify this by checking if `/greetings.txt` eists after the deployment has finished.
-It is gone! This is because your device file system did not have this file
-at the time you created the snapshot. This works for any change in the file system,
+It is gone! This is because your device filesystem did not have this file
+at the time you created the snapshot. This works for any change in the filesystem,
 including removing or installing software and changing any configuration.
 
 Please take a moment to experiment at this stage to familiarize yourself with
