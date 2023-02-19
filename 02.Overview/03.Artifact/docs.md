@@ -83,7 +83,7 @@ the *Provides* values on the device are.
 
 The tar format supports streaming, which Mender takes advantage of. As a Mender
 Artifact is downloaded from the Mender server or external storage, the Mender
-client streams the root file system within it directly to the inactive partition,
+client streams the root filesystem within it directly to the inactive partition,
 without needing any temporary storage for unpacking it before it is written.
 This drastically reduces storage requirements for the update process,
 improves performance and reduces flash wear.
@@ -94,7 +94,7 @@ interrupted, using [HTTP range requests](https://tools.ietf.org/html/rfc7233?tar
 
 To enable streaming and control based on metadata, like aborting the download
 if the Artifact is not compatible with the device, the Mender Artifact itself
-is not compressed. Instead, the root file systems within Artifacts are
+is not compressed. Instead, the root filesystems within Artifacts are
 compressed, as well as some of the metadata, like headers, currently with the
 [gzip compression algorithm](https://en.wikipedia.org/wiki/gzip?target=_blank)
 by default.

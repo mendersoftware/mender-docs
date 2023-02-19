@@ -81,7 +81,7 @@ command or for existing artifacts using the `sign` command.
 We add the `-k` parameter in both cases to specify the private key, which we will use for
 creating the signature.
 
-#### A raw root file system
+#### A raw root filesystem
 
 <!--AUTOVERSION: "mender-%"/mender-->
 ```bash
@@ -93,7 +93,7 @@ mender-artifact write rootfs-image \
 -o artifact-signed.mender
 ```
 
-! Make sure the Artifact name specified by the `-n` parameter in the above command matches the value specified when your file system image was created.
+! Make sure the Artifact name specified by the `-n` parameter in the above command matches the value specified when your filesystem image was created.
 
 #### An existing Mender Artifact
 

@@ -46,7 +46,7 @@ try it without any integration, as GRUB may work without additional configuratio
 In order to support robust rollback, Mender requires the device to have a certain partition layout.
 You need at least four different partitions:
 * one boot partition, containing the U-Boot bootloader and its environment
-* two partitions for storing the root file system and kernel. The kernel image file, zImage, and any device tree binary should go into the `/boot` directory.
+* two partitions for storing the root filesystem and kernel. The kernel image file, zImage, and any device tree binary should go into the `/boot` directory.
 * one for persistent data
 
 One of the rootfs and kernel partitions will be the *active* partition, from which the kernel and rootfs will boot.

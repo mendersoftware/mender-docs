@@ -12,13 +12,13 @@ handle a certain amount of writes until they fail (wear out).
 Wear leveling (distributing writes across the cells)
 and error correction (avoiding use of failed cells) are strategies used to
 prolong the life of flash storage devices. These strategies are either handled
-by the flash device itself or by software (OS and file system). From the 
+by the flash device itself or by software (OS and filesystem). From the 
 software's point of view, there are two types of flash memory:
 
 * **Block device.** These flash devices will expose a linear array of
 blocks to the OS, just like hard drives do. This is the most common
 type of flash device used with Linux, except in very low-cost or older embedded devices.
-They are generally easy to work with and you can put block-device file systems,
+They are generally easy to work with and you can put block-device filesystems,
 like ext4 and fat, directly on top of them. Internally these devices contain
 a *memory controller* that runs a Flash Translation Layer firmware that 
 transparently implements wear leveling and error correction. For this
@@ -29,18 +29,18 @@ MMC, eMMC, RS-MMC, SSD, USB, CompactFlash, MemoryStick, MemoryStick Micro**.
 * **Raw flash.** Raw flash devices do not have a memory controller that takes
 care of wear leveling or error correction, so this *must be handled in
 software*. Linux exposes raw flash devices as a **Memory Technology
-Device (MTD)** file. The user must take care when selecting a file system to ensure
+Device (MTD)** file. The user must take care when selecting a filesystem to ensure
 that it is MTD-aware and properly handles wear leveling and error correction.
-Popular file systems for MTD devices include UBIFS, JFFS2, and YAFFS.
+Popular filesystems for MTD devices include UBIFS, JFFS2, and YAFFS.
 Consult the [raw flash](../03.Raw-flash/docs.md) section for details on setting up and
 configuration.
 
 
-## File system types
+## filesystem types
 
-When [building a Mender Yocto Project image](../../03.Build-for-demo/docs.md) the build output in `tmp/deploy/images/<MACHINE>` includes a binary rootfs file system image (e.g. with `.mender` extension), as well as a complete disk image (with `.sdimg` extension). The binary rootfs file system images are used when deploying updates to the device, while the `.sdimg` image is typically used just once during initial device provisioning to flash the entire storage, and includes the partition layout and all partitions.
+When [building a Mender Yocto Project image](../../03.Build-for-demo/docs.md) the build output in `tmp/deploy/images/<MACHINE>` includes a binary rootfs filesystem image (e.g. with `.mender` extension), as well as a complete disk image (with `.sdimg` extension). The binary rootfs filesystem images are used when deploying updates to the device, while the `.sdimg` image is typically used just once during initial device provisioning to flash the entire storage, and includes the partition layout and all partitions.
 
-In general Mender does not have dependencies on a specific file system type, but the version of U-Boot you are using must support the file system type used for rootfs because it needs to read the Linux kernel from the file system and start the Linux boot process.
+In general Mender does not have dependencies on a specific filesystem type, but the version of U-Boot you are using must support the filesystem type used for rootfs because it needs to read the Linux kernel from the filesystem and start the Linux boot process.
 
 The standard Yocto Project `IMAGE_FSTYPES` variable determines the image types
 to create in Yocto deploy directory. The meta-mender layer appends the `mender`
@@ -109,7 +109,7 @@ When [building a Mender Yocto Project image](../../03.Build-for-demo/docs.md) Me
 
 | Mount point  | Purpose                                                 | Default size | Variable to configure size     |
 |--------------|---------------------------------------------------------|--------------|--------------------------------|
-| `/`          | Store the root file system and kernel.                  | auto         | `MENDER_STORAGE_TOTAL_SIZE_MB` |
+| `/`          | Store the root filesystem and kernel.                   | auto         | `MENDER_STORAGE_TOTAL_SIZE_MB` |
 | &lt;BOOT&gt; | Store the bootloader.                                   | 16 MB        | `MENDER_BOOT_PART_SIZE_MB`     |
 | `/data`      | Store persistent data, preserved during Mender updates. | 128 MB       | `MENDER_DATA_PART_SIZE_MB`     |
 
