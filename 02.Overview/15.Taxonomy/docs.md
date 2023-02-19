@@ -14,6 +14,8 @@ and receive software updates.
 use cases beyond core OTA updates features, e.g. Remote terminal.
 Install Mender first, before installing any add-ons
 
+* _Application update_ - An update which is not an Operating System update.
+
 * _Artifact_ -  An archive containing everything needed for an update of a
 device, including the Artifact Payload itself and metadata such as signatures.
 See the documentation on [Artifact](../03.Artifact/docs.md) for more information.
@@ -63,6 +65,10 @@ documentation on device [Identity](../07.Identity/docs.md) for more information.
 hardware and software. See the documentation on [Artifact](../03.Artifact/docs.md)
 for more information.
 
+* _Device System_ - A Device System is a group of devices connected to a
+[Mender Gateway](../../01.Get-started/06.Mender-Gateway/docs.md) instance and belonging
+to the same product or logical system.
+
 * _Mender Client_ - A user space application installing updates to a device
 it is running on. It uses the Mender Server-side API to connect to the Mender
 Server to authenticate, get the artifacts, report inventory, log the progress
@@ -83,6 +89,11 @@ ability to understand and serve client requests locally.
 
 * _Mender Server_ - An application implementing the Server-side Mender API, and the
 web UI, providing updates to devices.
+
+* _Operating System update_ - An update which replaces the operating system's filesystem
+thanks to the A/B partitioning schema. The Mender Client writes a new filesystem image
+to the inactive partition and updates the bootloader configuration to flip the active and
+inactive partition.
 
 * _Organization_ - A single customer environment in the Mender server. Also
 known as a Tenant. Note that multi-tenancy is only supported in Mender
