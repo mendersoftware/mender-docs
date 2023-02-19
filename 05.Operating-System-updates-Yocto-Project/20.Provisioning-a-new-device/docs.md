@@ -5,7 +5,7 @@ taxonomy:
     label: tutorial
 ---
 
-After [building a Mender Yocto Project image](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md#building-the-image), you need to write the disk
+After [building a Mender Yocto Project image](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md#building-the-image), you need to write the disk
 image to the flash of the device. There are two ways to accomplish that:
 
 1. Write the image to the storage directly
@@ -48,7 +48,7 @@ on the given device storage.
 There are several methods to flash storage, and the simplest case is if your
 device uses a SD card. We will make this assumption here, but you can use the
 same disk image for flashing any block device. See [Flash memory
-types](../../05.System-updates-Yocto-Project/02.Board-integration/01.Partition-configuration/docs.md#flash-memory-types) 
+types](../../05.Operating-System-updates-Yocto-Project/02.Board-integration/01.Partition-configuration/docs.md#flash-memory-types) 
 for the definition of block device used here.
 
 

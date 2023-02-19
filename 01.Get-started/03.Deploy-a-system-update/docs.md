@@ -5,7 +5,7 @@ taxonomy:
     label: tutorial
 ---
 
-This tutorial will walk you through how to do robust system level updates with
+This tutorial will walk you through how to do robust Operating System updates with
 rollback. These types of updates cover the whole system including system level
 applications and the Linux kernel and ensure the device comes back in a
 consistent state even if the update process is interrupted for any reason such
@@ -127,8 +127,8 @@ SSH_ARG="-p 8822"
 
 ## Step 3 - Create a Mender Artifact using the snapshot feature
 
-The easiest way to create system level updates is to use the **snapshot**
-functionality in Mender, which will create a snapshot of the full system on a
+The easiest way to create Operating System updates is to use the **snapshot**
+functionality in Mender, which will create a snapshot of the Operating System on a
 currently running device and package it as a
 [Mender Artifact](../../02.Overview/03.Artifact/docs.md) that you
 can deploy to other devices.
@@ -202,7 +202,7 @@ at the time you created the snapshot. This works for any change in the file syst
 including removing or installing software and changing any configuration.
 
 Please take a moment to experiment at this stage to familiarize yourself with
-robust system updates with Mender.
+robust Operating System updates with Mender.
 
 As an example you can iterate this flow:
 
@@ -225,11 +225,11 @@ and configuration.
 To read more about system snapshots, see the documentation on
 [Artifact from system snapshot](../../06.Artifact-creation/02.Create-an-Artifact-with-system-snapshot/docs.md).
 
-Using the **snapshot** feature is one way to create system updates and additional
+Using the **snapshot** feature is one way to create Operating System updates and additional
 resources on more advanced ways you will find here:
 
-1. [Building a Mender Yocto Project image](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md)
-2. [Building a Mender Debian image](../../04.System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md)
+1. [Building a Mender Yocto Project image](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md)
+2. [Building a Mender Debian image](../../04.Operating-System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md)
 
 ## Next step
 

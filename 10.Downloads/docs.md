@@ -189,7 +189,7 @@ sudo apt-get upgrade
 
 
 !!! Updating mender this way doesn't provide a rollback mechanism in case of issues.
-!!! For production devices always update mender as part of the full system update with A/B partitions.
+!!! For production devices always update mender as part of the Operating System update with A/B partitions.
 
 #### Install using the APT repository
 
@@ -327,9 +327,9 @@ installation](#express-installation) script, you already have both installed.
 
 The easiest way to install Mender Connect on an existing device is by using the
 Mender APT repository. The other alternatives include: 
-[mender-convert integration](../04.System-updates-Debian-family/99.Variables/docs.md#mender_addon_connect_install)
+[mender-convert integration](../04.Operating-System-updates-Debian-family/99.Variables/docs.md#mender_addon_connect_install)
 for installation in the existing images,
-and [Yocto projects](../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect)
+and [Yocto projects](../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect)
 for the installation in a Yocto Project environment.
 
 To install `mender-connect` using Mender APT repository, follow the instructions

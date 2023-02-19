@@ -119,9 +119,9 @@ Signature verification is enabled on the Mender client using the [ArtifactVerify
 
 For OS specific instructions on how to install and enable verification keys, visit:
 
-- [Yocto Project - Building for production - Artifact signing and verification keys](../../05.System-updates-Yocto-Project/06.Build-for-production/docs.md#artifact-signing-and-verification-keys).
+- [Yocto Project - Building for production - Artifact signing and verification keys](../../05.Operating-System-updates-Yocto-Project/06.Build-for-production/docs.md#artifact-signing-and-verification-keys).
 
-- [Debian family - Customize Mender](../../04.System-updates-Debian-family/03.Customize-Mender/docs.md)
+- [Debian family - Customize Mender](../../04.Operating-System-updates-Debian-family/03.Customize-Mender/docs.md)
 
 ## Cloud Key Management
 

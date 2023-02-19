@@ -35,10 +35,10 @@ sets and each can be in one of the following states:
   * preauthorized
 You can accept only one Authentication set at a time.
 
-* _Binary delta_ - The binary difference between two filesystem images. See the
+* _Binary delta_ - The binary difference between two Operating System images. See the
 documentation on [Delta updates](../06.Delta-update/docs.md) for more information.
 
-* _Board integration_ - The low-level integration required to enable system
+* _Board integration_ - The low-level integration required to enable Operating System
 updates with Mender on a board. Often includes OS bootloader and storage
 integration and requires customization based on the hardware and OS.
 

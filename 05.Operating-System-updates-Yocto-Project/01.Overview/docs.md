@@ -63,7 +63,7 @@ The other, *inactive* partition, holds the previous root file system update. The
 the inactive partition on a new update or roll back if the active partition does not boot.
 On a successful update, the partitions swaps roles.
 
-The persistent data partition stores data requiring preservation through system updates.
+The persistent data partition stores data requiring preservation through Operating System updates.
 
 The following figure illustrates an example partition layout:
 
@@ -97,7 +97,7 @@ incoming TLS connections from the client until this happens.
 
 ## Unsupported build systems
 
-Mender has official support for the Yocto build system and [binary OS images based on the Debian family](../../04.System-updates-Debian-family/chapter.md). It is possible to adapt to other build systems. Please see [this community post](https://hub.mender.io/t/mender-from-scratch?target=_blank) for a concrete description.
+Mender has official support for the Yocto build system and [binary OS images based on the Debian family](../../04.Operating-System-updates-Debian-family/chapter.md). It is possible to adapt to other build systems. Please see [this community post](https://hub.mender.io/t/mender-from-scratch?target=_blank) for a concrete description.
 
 
 ## Mender Hub community
