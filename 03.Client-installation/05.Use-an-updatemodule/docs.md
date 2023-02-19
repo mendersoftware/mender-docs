@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-Performing full filesystem updates may not be appropriate for all update scenarios.  For instance, if you only need to change a single configuration file, a full filesystem update may require too much overhead, both in size of the Artifact and the time needed to install it, not to mention a reboot is required. Mender addresses this use case with
+Performing Operating System updates may not be appropriate for all update scenarios.  For instance, if you only need to change a single configuration file, an Operating System update may require too much overhead, both in size of the Artifact and the time needed to install it, not to mention a reboot is required. Mender addresses this use case with
 the idea of [Update Modules](../../02.Overview/15.Taxonomy/docs.md),  as described [in the overview section](../../02.Overview/01.Introduction/docs.md#application-updates).
 
 Update Modules are executable files in the _/usr/share/mender/modules/v3_
@@ -17,7 +17,7 @@ When deploying updates using update modules, the Mender client will unpack the p
 Whether you need to install a new application onto your devices, update some files,
 or perform some other operation of your choosing, the Update modules are
 an option worth considering; they reduce the size of artifact, and time
-of the deployment compared to full system updates and can extend the Mender client to handle any type of software update.
+of the deployment compared to Operating System updates and can extend the Mender client to handle any type of software update.
 
 
 ## Install a new Update Module

@@ -40,8 +40,8 @@ You need a physical board that has already been integrated with Mender. For exam
 If you have not yet prepared a device visit one of the following:
 
 - [Client installation](../../03.Client-installation/chapter.md)
-- [System updates: Debian family](../../04.System-updates-Debian-family/chapter.md)
-- [System updates: Yocto Project](../../05.System-updates-Yocto-Project/chapter.md)
+- [Operating System updates: Debian family](../../04.Operating-System-updates-Debian-family/chapter.md)
+- [Operating System updates: Yocto Project](../../05.Operating-System-updates-Yocto-Project/chapter.md)
 
 ### A CLI environment for your server
 
@@ -333,7 +333,7 @@ Then copy the modified file back into the disk image:
 mender-artifact cp mender.conf mender-disk-image.sdimg:/etc/mender/mender.conf
 ```
 
-!!! Since this change is the same on every device, it is natural to automate this as part of the build process for the disk image. See file installation instructions for [the Debian family](../../04.System-updates-Debian-family/03.Customize-Mender/docs.md#configuration-file) or [the Yocto Project](../../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md#configuration-file) for more information.
+!!! Since this change is the same on every device, it is natural to automate this as part of the build process for the disk image. See file installation instructions for [the Debian family](../../04.Operating-System-updates-Debian-family/03.Customize-Mender/docs.md#configuration-file) or [the Yocto Project](../../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/docs.md#configuration-file) for more information.
 
 
 ## Boot the device

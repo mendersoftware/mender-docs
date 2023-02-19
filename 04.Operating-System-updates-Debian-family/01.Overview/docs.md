@@ -7,12 +7,12 @@ taxonomy:
 
 <!--AUTOVERSION: "mender-convert version %"/mender-convert-->
 <!-- See MEN-4983 -->
-!! Be careful when running `apt upgrade` on a device with Mender system updates enabled. Integration
+!! Be careful when running `apt upgrade` on a device with Mender Operating System updates enabled. Integration
 !! with `apt upgrade` (through the `grub.d` framework) is only implemented for x86 as of
 !! mender-convert version master. For ARM and other non-x86 architectures, always update single
 !! applications only, because running `apt upgrade` may brick your device!. If you need to run `apt
 !! upgrade`, do it on a pristine system without Mender installed, and then [convert it to a Mender
-!! image](../../04.System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md)
+!! image](../../04.Operating-System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md)
 !! afterwards. We may lift this restriction in the future.
 
 
@@ -87,7 +87,7 @@ situation is resolved.
 
 ### Unsupported build systems
 
-Mender has official support for [the Yocto Project build system](../../05.System-updates-Yocto-Project/chapter.md) and [binary OS images based on the Debian family](../chapter.md). It is possible to adapt to other build systems. Please see [this community post](https://hub.mender.io/t/mender-from-scratch?target=_blank) for a concrete description.
+Mender has official support for [the Yocto Project build system](../../05.Operating-System-updates-Yocto-Project/chapter.md) and [binary OS images based on the Debian family](../chapter.md). It is possible to adapt to other build systems. Please see [this community post](https://hub.mender.io/t/mender-from-scratch?target=_blank) for a concrete description.
 
 
 ## Mender Hub community

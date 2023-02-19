@@ -6,7 +6,7 @@ taxonomy:
 ---
 
 
-This document explains how to create a binary delta artifact from two full system artifacts using the `mender-binary-delta-generator` CLI tool.
+This document explains how to create a binary delta artifact from two Operating System artifacts using the `mender-binary-delta-generator` CLI tool.
 Generation of the delta is something you would execute on a command line of a machine running Linux.
 
 For a step by step working example please check the [mender hub post](https://hub.mender.io/t/robust-delta-update-rootfs/1144).
@@ -16,10 +16,10 @@ For a step by step working example please check the [mender hub post](https://hu
 
 This tutorial assumes:
 
-* You have completed the [integration of the mender-binary-delta](../../05.System-updates-Yocto-Project/05.Customize-Mender/01.Delta-update-support/docs.md) into your Yocto built process
+* You have completed the [integration of the mender-binary-delta](../../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/01.Delta-update-support/docs.md) into your Yocto built process
     * `mender-binary-delta-generator` is available in `PATH`
 * You have installed [mender-artifact](../../10.Downloads/docs.md#mender-artifact) which is a dependency for `mender-binary-delta-generator`
-* You have two full system artifacts available to work with
+* You have two Operating System artifacts available to work with
 
 
 ### Generating the delta - default case

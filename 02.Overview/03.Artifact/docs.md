@@ -115,11 +115,11 @@ Mender Artifacts. It allows you to view, create, modify and sign all types of
 Mender Artifacts. Get it in the
 [Downloads section](../../10.Downloads/docs.md#mender-artifact).
 
-Mender also has OS-level integrations for creating system updates as part of
+Mender also has OS-level integrations for creating Operating System updates as part of
 your existing OS build process. Learn more by reading the following sections:
 
-- [System updates: Debian family](../../04.System-updates-Debian-family/chapter.md)
-- [System updates: Yocto Project](../../05.System-updates-Yocto-Project/chapter.md)
+- [Operating System updates: Debian family](../../04.Operating-System-updates-Debian-family/chapter.md)
+- [Operating System updates: Yocto Project](../../05.Operating-System-updates-Yocto-Project/chapter.md)
 
 
 ### Sign and verify

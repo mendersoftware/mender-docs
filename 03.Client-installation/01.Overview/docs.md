@@ -9,21 +9,21 @@ install software updates to the device it is running on. It can operate in
 [managed or standalone
 mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 
-At a high level, Mender supports two types of updates: [full filesystem
-updates](../../02.Overview/01.Introduction/docs.md#Robust-system-updates) when
+At a high level, Mender supports two types of updates: [Operating System
+updates](../../02.Overview/01.Introduction/docs.md#robust-operating-system-updates) when
 you update the complete filesystem, and [application
 updates](../../02.Overview/01.Introduction/docs.md#Application-updates) where,
 for example, you change one file, install some packages, or execute arbitrary
-commands. In most instances, the full filesystem update will use a redundant
-root filesystem partition and the application updates will update components in
+commands. In most instances, the Operating System update will use a redundant
+root filesystem partition and the Application updates will update components in
 the active root filesystem.
 
-Note that in order to support *system updates*, a *board integration* is
+Note that in order to support *Opereating System updates*, a *board integration* is
 required which includes more than simply installing Mender on top of a running
-operating system. If you want support for system updates, either use OS images
+operating system. If you want support for Operating System updates, either use OS images
 provided in [Get started](../../01.Get-started) or follow the chapters on System
-updates for [Debian family](../../04.System-updates-Debian-family/chapter.md) or
-[Yocto Project](../../05.System-updates-Yocto-Project/chapter.md).
+updates for [Debian family](../../04.Operating-System-updates-Debian-family/chapter.md) or
+[Yocto Project](../../05.Operating-System-updates-Yocto-Project/chapter.md).
 
 If your interest is in *application updates* only, you can easily install
 Mender on top of an existing Linux OS as described in the [Debian
