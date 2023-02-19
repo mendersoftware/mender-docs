@@ -20,8 +20,8 @@ You need a physical board that has already been integrated with Mender. For exam
 If you have not yet prepared a device visit one of the following:
 
 - [Client installation](../../03.Client-installation/chapter.md)
-- [System updates: Debian family](../../04.System-updates-Debian-family/chapter.md)
-- [System updates: Yocto Project](../../05.System-updates-Yocto-Project/chapter.md)
+- [Operating System updates: Debian family](../../04.Operating-System-updates-Debian-family/chapter.md)
+- [Operating System updates: Yocto Project](../../05.Operating-System-updates-Yocto-Project/chapter.md)
 
 ### The identity of your device
 
