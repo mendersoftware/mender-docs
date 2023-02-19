@@ -15,9 +15,9 @@ and used by Mender.
 
 > Value: `ext4` (default) / &lt;filesystem type&gt;
 
-Defines which file system type Mender will build for the rootfs partitions in
-the `.biosimg`, `.sdimg`, `.uefiimg` and the `.mender` file. See [File system
-types](../02.Board-integration/01.Partition-configuration/docs.md#file-system-types)
+Defines which filesystem type Mender will build for the rootfs partitions in
+the `.biosimg`, `.sdimg`, `.uefiimg` and the `.mender` file. See [filesystem
+types](../02.Board-integration/01.Partition-configuration/docs.md#filesystem-types)
 for more information.
 
 

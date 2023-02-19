@@ -59,7 +59,7 @@ At least four different partitions are needed:
 * one for persistent data
 
 Mender marks one of the root filesystem partitions as *active*, making the partition the boot target.
-The other, *inactive* partition, holds the previous root file system update. The client may either overwrite
+The other, *inactive* partition, holds the previous root filesystem update. The client may either overwrite
 the inactive partition on a new update or roll back if the active partition does not boot.
 On a successful update, the partitions swaps roles.
 

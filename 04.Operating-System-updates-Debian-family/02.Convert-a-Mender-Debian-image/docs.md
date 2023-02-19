@@ -57,7 +57,7 @@ available. For example, if your raw disk image is 4 GB, you should have at least
 ### A golden raw disk image
 
 As described in the workflow above, you need a raw disk image as input to
-`mender-convert`. This is the image that contains the root file system you want
+`mender-convert`. This is the image that contains the root filesystem you want
 to deploy to many devices. Note that this must be a *complete disk image*.
 
 Board manufacturers typically provide a disk image for you to start with so you
