@@ -96,7 +96,7 @@ Clone `mender-convert` from the official repository:
 
 <!--AUTOVERSION: "-b % https://github.com/mendersoftware/mender-convert"/mender-convert-->
 ```bash
-git clone -b 4.0.0-build4 https://github.com/mendersoftware/mender-convert.git
+git clone -b 4.0.0 https://github.com/mendersoftware/mender-convert.git
 ```
 
 Then change directory to where you downloaded `mender-convert` for the next steps:

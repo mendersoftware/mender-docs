@@ -53,7 +53,7 @@ You can now install the Mender Server running:
 export MENDER_SERVER_DOMAIN="mender.example.com"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
 
-cat >mender-3.5.0-build4.yml <<EOF
+cat >mender-3.5.0.yml <<EOF
 global:
   enterprise: false
   mongodb:
@@ -82,7 +82,7 @@ useradm:
 $(cat useradm.key | sed -e 's/^/      /g')
 EOF
 
-helm upgrade --install mender mender/mender --version 3.5.0-build4 -f mender-3.5.0-build4.yml
+helm upgrade --install mender mender/mender --version 3.5.0 -f mender-3.5.0.yml
 ```
 [/ui-tab]
 [ui-tab title="Enterprise"]
@@ -99,7 +99,7 @@ export MENDER_REGISTRY_USERNAME="replace-with-your-username"
 export MENDER_REGISTRY_PASSWORD="replace-with-your-password"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
 
-cat >mender-3.5.0-build4.yml <<EOF
+cat >mender-3.5.0.yml <<EOF
 global:
   enterprise: true
   image:
@@ -136,7 +136,7 @@ useradm:
 $(cat useradm.key | sed -e 's/^/      /g')
 EOF
 
-helm upgrade --install mender mender/mender --version 3.5.0-build4 -f mender-3.5.0-build4.yml
+helm upgrade --install mender mender/mender --version 3.5.0 -f mender-3.5.0.yml
 ```
 [/ui-tab]
 [/ui-tabs]

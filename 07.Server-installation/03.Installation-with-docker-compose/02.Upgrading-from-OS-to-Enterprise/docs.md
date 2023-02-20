@@ -21,7 +21,7 @@ taxonomy:
 
 <!-- Basically a repeat of Open Source setup from the Installation tutorial -->
 <!-- AUTOVERSION: "git clone -b %"/integration -->
-<!-- AUTOMATION: execute=git clone -b 3.5.0-build4 https://github.com/mendersoftware/integration mender-server -->
+<!-- AUTOMATION: execute=git clone -b 3.5.0 https://github.com/mendersoftware/integration mender-server -->
 <!-- AUTOMATION: execute=cd mender-server -->
 <!-- AUTOMATION: execute=git checkout -b my-production-setup -->
 <!-- AUTOMATION: execute=cd production -->
