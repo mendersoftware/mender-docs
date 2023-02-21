@@ -251,7 +251,7 @@ docker run \
   -v $(pwd)/server-cert.pem:/etc/mtls/certs/server/server.crt \
   -v $(pwd)/server-private.key:/etc/mtls/certs/server/server.key \
   -v $(pwd)/ca-cert.pem:/etc/mtls/certs/tenant-ca/tenant.ca.pem \
-  registry.mender.io/mendersoftware/mtls-ambassador:mender-3.5.0-build4
+  registry.mender.io/mendersoftware/mtls-ambassador:mender-3.5.0
 ```
 <!-- AUTOMATION: execute=} & -->
 
