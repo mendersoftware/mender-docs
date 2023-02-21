@@ -1,5 +1,5 @@
 ---
-title: Device license count
+title: OpenSearch
 taxonomy:
     category: docs
     label: tutorial

@@ -74,7 +74,7 @@ If this fails, e.g. returns `401 Authorization Required`, make sure that the con
 
 ### Personal Access Tokens
 
-The JWT token returned by the log in end-point (`/api/management/v1/useradm/auth/login`) lasts one week. Therefore, it is not practical to store and reuse it, for example, from a CI/CD pipeline or a scheduled job. Personal Access Tokens are long-lived JWT tokens that you can use to programmatically access the Mender management APIs without logging in each time you need to perform API calls or handle the JWT token expiration every week. Personal Access Tokens act as API keys you can use from your CI/CD pipelines or scheduled jobs to access the Mender management APIs.
+Personal Access Tokens are **long-lived** JWT tokens that you can use to programmatically access the Mender management APIs without logging in each time you need to perform API calls nor handle the JWT token expiration every week. Personal Access Tokens act as API keys you can use from your *CI/CD pipelines* or scheduled jobs to access the Mender management APIs.
 
 You can generate a Personal Access Token using the web-based UI from the "My profile" page or the following API call:
 
@@ -165,4 +165,4 @@ Instead of logging in using your credentials, you can specify a Personal Access 
 ```
 
 <!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
-[x.x.x_mender-cli]: https://downloads.mender.io/mender-cli/1.9.0/linux/mender-cli
+[x.x.x_mender-cli]: https://downloads.mender.io/mender-cli/1.10.0/linux/mender-cli
