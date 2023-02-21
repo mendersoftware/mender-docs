@@ -7,4 +7,4 @@ taxonomy:
 [Hosted Mender](https://hosted.mender.io?target=_blank) is configured, managed
 and upgraded by the Mender team. For troubleshooting steps for the most common
 problems in a self-managed Mender server, visit
-[the documentation page of the latest stable release](https://docs.mender.io/3.4/troubleshoot/mender-server).
+[the documentation page of the latest stable release](https://docs.mender.io/3.5/troubleshoot/mender-server).
