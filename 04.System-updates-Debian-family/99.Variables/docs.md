@@ -64,11 +64,16 @@ it is missing a "MENDER_" prefix.
 
 #### `MENDER_ARTIFACT_COMPRESSION`
 
-> Values: gzip(default)/lzma/none
+> Values: gzip(default)/lzma/zstd_fast/zstd_fastest/zstd_better/zstd_best/none
 
 The compression algorithm to use when generating the Artifact. In general LZMA
 will produce a smaller Mender Artifact (2-3x) but will significantly increase
-time spent generating the Mender Artifact (10x).
+time spent generating the Mender Artifact (10x), compared to gzip.
+
+Zstd provides different compression levels, and can achieve comparable
+compression ratios to both gzip and LZMA, at faster compression and
+decompression throughput. `zstd_fast` is the default.
+See https://engineering.fb.com/2018/12/19/core-data/zstandard for details.
 
 
 
@@ -155,11 +160,14 @@ The version of the Mender Configure add-on to include in the update.
 
 #### `MENDER_COMPRESS_DISK_IMAGE`
 
-> Values: gzip(default)/lzma/none
+> Values: gzip/lzma/none
 
 This is useful when you have large disk images, compressing them makes it easier
 to transfer them between a build server and a local machine, and saves space.
 
+The default behavior is to deduce it from the input image. For an uncompressed
+input image, the default value will be `none`. For a compressed image, the default
+value will be `lzma` or `gzip`, depending on the input image compression.
 
 
 #### `MENDER_DATA_PART`
