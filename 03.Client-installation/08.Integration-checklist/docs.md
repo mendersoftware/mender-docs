@@ -51,7 +51,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
    If the Mender daemon has been enabled, it should return a PID. If not, it should return nothing. This verifies that the Mender service is started, if applicable.
 
-4. Now we will look at which filesystem is mounted as the rootfs device. Run `mount` with no arguments. The file system mounted as root (signified by the `<device> on /` entry) should be:
+4. Now we will look at which filesystem is mounted as the rootfs device. Run `mount` with no arguments. The filesystem mounted as root (signified by the `<device> on /` entry) should be:
 
    - `/dev/mmcblk0p2` when using SD card or eMMC storage.
    - `ubi0_0` when using raw flash storage.

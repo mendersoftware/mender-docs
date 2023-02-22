@@ -11,9 +11,9 @@ with the help of the `mender-artifact` command. You can get it either as a pre-b
 executable from the [downloads section](../../10.Downloads)
 or [build from sources](https://github.com/mendersoftware/mender-artifact?target=_blank).
 The two basic usage scenarios of this utility reflect the two main update types
-Mender supports: full filesystem update and application update.
+Mender supports: Operating System update and Application update.
 
-### Create a full filesystem update Artifact
+### Create an Operating System update Artifact
 
 Assuming you already have a generated filesystem image in `rootfs.ext4` file,
 you can use the following command to generate an Artifact that contains the entire filesystem image as the payload:
@@ -27,8 +27,8 @@ mender-artifact write rootfs-image \
    -o artifact.mender
 ```
 
-Note that the `rootfs.ext4` filesystem image must be properly integrated with Mender for successful deployments. This generally means that you either generated it using [the Yocto Project](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md), or converted it from an existing
-[Debian image](../../04.System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md).
+Note that the `rootfs.ext4` filesystem image must be properly integrated with Mender for successful deployments. This generally means that you either generated it using [the Yocto Project](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md), or converted it from an existing
+[Debian image](../../04.Operating-System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md).
 
 The remaining flags specify the parameters used to [match devices to deployments](../../02.Overview/05.Deployment/docs.md#Algorithm-for-selecting-the-Deployment-for-the-Device) as follows:
 * `-t`: specifies the compatible device types.

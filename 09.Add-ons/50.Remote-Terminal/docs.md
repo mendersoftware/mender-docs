@@ -91,5 +91,5 @@ the terminal output which users can later inspect from the
 [mender-connect configuration section](../90.Mender-Connect/docs.md#remote-terminal-configuration).
 * You can find the `mender-connect` installation steps for Yocto-based projects,
 and for Debian family,
-in the [customize with Yocto](../../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect),
-and [customize with Debian](../../04.System-updates-Debian-family/03.Customize-Mender/docs.md) respectively.
+in the [customize with Yocto](../../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect),
+and [customize with Debian](../../04.Operating-System-updates-Debian-family/03.Customize-Mender/docs.md) respectively.

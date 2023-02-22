@@ -37,7 +37,7 @@ This scenario uses `mender-artifact` tool to package your software as a Mender A
 The input for the scenario is the software being packaged and the output is a Mender Artifact.
 
 
-You can read about artifact creation details [here](../01.Create-an-Artifact/docs.md#create-a-full-filesystem-update-artifact).
+You can read about artifact creation details [here](../01.Create-an-Artifact/docs.md#create-an-operating-system-update-artifact).
 
 
 More details about signing Mender Artifacts [here](https://docs.mender.io/artifact-creation/sign-and-verify).

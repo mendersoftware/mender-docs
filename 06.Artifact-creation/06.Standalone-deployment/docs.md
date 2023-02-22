@@ -54,7 +54,7 @@ mender install <URI>
 For example, if you are updating from a USB stick, you could use `/mnt/usb1/release1.mender`.
 To use HTTPS, simply replace it with a URL like `https://fileserver.example.com/mender/release1.mender`.
 
-!!! If you are doing a full file system update, now run the `reboot` command to boot into the new file system.
+!!! If you are doing an Operating System update, now run the `reboot` command to boot into the new filesystem.
 
 ## Make the deployment permanent
 

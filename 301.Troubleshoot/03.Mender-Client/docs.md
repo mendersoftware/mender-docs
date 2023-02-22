@@ -117,7 +117,7 @@ Each TLS certificate has a validity period, *Not Before* and *Not After*, and th
 the current time is outside this range.
 
 Most commonly this is caused by **incorrect time setting on the device** which runs the Mender client. Check this by
-running `date` on the device, and make sure it is correct. Consult the section on [Correct clock](../../05.System-updates-Yocto-Project/01.Overview/docs.md#correct-clock)
+running `date` on the device, and make sure it is correct. Consult the section on [Correct clock](../../05.Operating-System-updates-Yocto-Project/01.Overview/docs.md#correct-clock)
 for a more detailed discussion.
 
 To determine the status of your time synchronization, execute the following:
@@ -192,7 +192,7 @@ openssl s_client -showcerts -connect mender.example.com:443 < /dev/null 2>/dev/n
 
 If these mismatch, then you need to update `/etc/mender/server.crt` on your client.
 You can do this manually for testing purposes, and you should
-[include the certificates in your Yocto Project build](../../05.System-updates-Yocto-Project/06.Build-for-production/docs.md#Preparing-the-server-certificates-on-the-client).
+[include the certificates in your Yocto Project build](../../05.Operating-System-updates-Yocto-Project/06.Build-for-production/docs.md#Preparing-the-server-certificates-on-the-client).
 
 ## Depth zero self-signed certificate, openssl verify rc: 18
 
@@ -259,14 +259,14 @@ ERRO[0000] exit status 1                                 module=partitions
 ERRO[0000] No match between boot and root partitions.    module=main
 ```
 
-The problem here is most likely that the device does not have the [partition layout Mender expects](../../05.System-updates-Yocto-Project/01.Overview/docs.md#partition-layout). This could have happened if you just placed the Mender binary into your rootfs, but did not [reflash the entire storage device](../../05.System-updates-Yocto-Project/20.Provisioning-a-new-device/docs.md) with the `.sdimg.` file output from the [Yocto Project build](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md). When this happens, output from `mount` and `fw_printenv` can confirm that this is the problem you are seeing. The solution is to flash your entire storage device with the `.sdimg` output from the Yocto Project build process.
+The problem here is most likely that the device does not have the [partition layout Mender expects](../../05.Operating-System-updates-Yocto-Project/01.Overview/docs.md#partition-layout). This could have happened if you just placed the Mender binary into your rootfs, but did not [reflash the entire storage device](../../05.Operating-System-updates-Yocto-Project/20.Provisioning-a-new-device/docs.md) with the `.sdimg.` file output from the [Yocto Project build](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md). When this happens, output from `mount` and `fw_printenv` can confirm that this is the problem you are seeing. The solution is to flash your entire storage device with the `.sdimg` output from the Yocto Project build process.
 
 
 ## The Mender client uses excessive network traffic even when not deploying updates
 
-If you are using the Mender client in demo mode, either by selecting it when running `mender setup`, or set up with the [demo layer](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md), the Mender client has more aggressive [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md) to simplify testing.
+If you are using the Mender client in demo mode, either by selecting it when running `mender setup`, or set up with the [demo layer](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md), the Mender client has more aggressive [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md) to simplify testing.
 
-See the documentation on [building for production](../../05.System-updates-Yocto-Project/06.Build-for-production/docs.md) and [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md) to reduce the network bandwidth usage.
+See the documentation on [building for production](../../05.Operating-System-updates-Yocto-Project/06.Build-for-production/docs.md) and [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md) to reduce the network bandwidth usage.
 
 
 ## Delta updates 

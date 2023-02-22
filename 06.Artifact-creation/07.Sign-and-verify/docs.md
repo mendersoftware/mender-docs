@@ -81,7 +81,7 @@ command or for existing artifacts using the `sign` command.
 We add the `-k` parameter in both cases to specify the private key, which we will use for
 creating the signature.
 
-#### A raw root file system
+#### A raw root filesystem
 
 <!--AUTOVERSION: "mender-%"/mender-->
 ```bash
@@ -93,7 +93,7 @@ mender-artifact write rootfs-image \
 -o artifact-signed.mender
 ```
 
-! Make sure the Artifact name specified by the `-n` parameter in the above command matches the value specified when your file system image was created.
+! Make sure the Artifact name specified by the `-n` parameter in the above command matches the value specified when your filesystem image was created.
 
 #### An existing Mender Artifact
 
@@ -119,9 +119,9 @@ Signature verification is enabled on the Mender client using the [ArtifactVerify
 
 For OS specific instructions on how to install and enable verification keys, visit:
 
-- [Yocto Project - Building for production - Artifact signing and verification keys](../../05.System-updates-Yocto-Project/06.Build-for-production/docs.md#artifact-signing-and-verification-keys).
+- [Yocto Project - Building for production - Artifact signing and verification keys](../../05.Operating-System-updates-Yocto-Project/06.Build-for-production/docs.md#artifact-signing-and-verification-keys).
 
-- [Debian family - Customize Mender](../../04.System-updates-Debian-family/03.Customize-Mender/docs.md)
+- [Debian family - Customize Mender](../../04.Operating-System-updates-Debian-family/03.Customize-Mender/docs.md)
 
 ## Cloud Key Management
 
