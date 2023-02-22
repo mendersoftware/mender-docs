@@ -6,7 +6,7 @@ taxonomy:
 ---
 
 
-This document explains how to create a binary delta artifact from two full system artifacts using the `mender-binary-delta-generator` CLI tool.
+This document explains how to create a binary delta artifact from two Operating System artifacts using the `mender-binary-delta-generator` CLI tool.
 Generation of the delta is something you would execute on a command line of a machine running Linux.
 
 For a step by step working example please check the [mender hub post](https://hub.mender.io/t/robust-delta-update-rootfs/1144).
@@ -16,10 +16,10 @@ For a step by step working example please check the [mender hub post](https://hu
 
 This tutorial assumes:
 
-* You have completed the [integration of the mender-binary-delta](../../05.System-updates-Yocto-Project/05.Customize-Mender/01.Delta-update-support/docs.md) into your Yocto built process
+* You have completed the [integration of the mender-binary-delta](../../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/01.Delta-update-support/docs.md) into your Yocto built process
     * `mender-binary-delta-generator` is available in `PATH`
 * You have installed [mender-artifact](../../10.Downloads/docs.md#mender-artifact) which is a dependency for `mender-binary-delta-generator`
-* You have two full system artifacts available to work with
+* You have two Operating System artifacts available to work with
 
 
 ### Generating the delta - default case
@@ -35,8 +35,7 @@ mender-binary-delta-generator -o delta-v1-v2.mender rootfs-v1.mender rootfs-v2.m
 
 The result (`delta-v1-v2.mender`) is a delta artifact containing only the difference between the two artifacts. Once uploaded to the Mender server, the delta artifact will be listed in the web UI under the same release as the `rootfs-v2.mender`. This is because deploying this delta on a device results in the same version as deploying `rootfs-v2.mender`.
 
-
-!! A running device will only accept a delta update once at least one full system update has been deployed first.
+!! A running device will only accept a delta update once the local database has been initialized either with the bootstrap Artifact (installed by default in Yocto) or after an Operating System update.
 
 ### Generating the delta - custom compression values (Special use case only)
 

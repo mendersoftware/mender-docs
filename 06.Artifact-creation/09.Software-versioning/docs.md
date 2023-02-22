@@ -7,22 +7,22 @@ taxonomy:
 
 ## Introduction
 
-Reporting the current software version running on a device can be challenging when mixing full system updates and application updates. On top of this, installing software on different partitions than the root filesystem requires additional flexibility in storing and reporting the current version of software installed into the device.
+Reporting the current software version running on a device can be challenging when mixing Operating System updates and Application updates. On top of this, installing software on different partitions than the root filesystem requires additional flexibility in storing and reporting the current version of software installed into the device.
 
-For these reasons, the Mender Artifact utility supports several options to customize the current software version's reporting, both for full system updates and application updates via Update Modules.
+For these reasons, the Mender Artifact utility supports several options to customize the current software version's reporting, both for Operating System updates and Application updates via Update Modules.
 
 The software versioning information is stored in the Mender Artifacts as [*Provides* fields](../../02.Overview/03.Artifact/docs.md#provides-and-depends), and is automatically reported by the Mender Client as inventory data. See below for further details on how to override the default software versioning keys when generating the Artifacts.
 
 ![View client reported version information in UI](provides-illustrated.png)
 
-## Full system updates
+## Operating System updates
 
-When creating a full system update, the Mender Artifact utility automatically generates a *Provides* entry using the key `rootfs-image.version` and the Artifact name as the value. By default, the Mender Client will automatically report such a key/value pair as inventory data.
+When creating an Operating System update, the Mender Artifact utility automatically generates a *Provides* entry using the key `rootfs-image.version` and the Artifact name as the value. By default, the Mender Client will automatically report such a key/value pair as inventory data.
 
 To override the value of the versioning key, which defaults to the Artifact's name, you can use the `--software-version` flag.
 
 <!--AUTOVERSION: "value \"%\""/ignore-->
-For example, to explicitly set the software version for a full system update to the value "1.0.0", you can use the following Mender Artifact command line:
+For example, to explicitly set the software version for an Operating System update to the value "1.0.0", you can use the following Mender Artifact command line:
 
 <!--AUTOVERSION: "software-version %"/ignore-->
 ```bash

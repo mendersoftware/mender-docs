@@ -31,7 +31,7 @@ But there is a trade-off; higher polling frequencies results in more server
 load. If one server has many clients connected, a high frequency will require
 more resources server-side to keep the environment responsive.
 
-!!! If you are using the Mender client in demo mode, either by selecting it when running `mender setup`, or by using the [meta-mender-demo layer](../../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md), the Mender client has more aggressive polling intervals to simplify testing. The defaults noted above do not apply to demo mode and you will see extra network traffic in demo mode.
+!!! If you are using the Mender client in demo mode, either by selecting it when running `mender setup`, or by using the [meta-mender-demo layer](../../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md), the Mender client has more aggressive polling intervals to simplify testing. The defaults noted above do not apply to demo mode and you will see extra network traffic in demo mode.
 
 
 ## Changing the parameters

@@ -12,7 +12,7 @@ and it must support the device OS and hardware architecture. This allows
 you to deploy application updates by using Update Modules.
 
 In addition, you need a deeper integration for supporting robust
-A/B *system updates* because Mender needs to control which system
+A/B *Operating System updates* because Mender needs to control which system
 partition (A or B) is updated and booted. The mechanisms used for this are
 specific to the distribution or build system you are using to maintain
 your OS. This is called a Mender *board integration*.
@@ -21,10 +21,10 @@ the device, so you do not need to install the Mender client after using a
 board integration.
 
 See [Update types](../../02.Overview/01.Introduction/docs.md#update-types) for more information
-on application and system updates.
+on Application and Operating System updates.
 
 For production environments a *board integration is strongly recommended*
-because system updates are usually needed over time and it
+because Operating System updates are usually needed over time and it
 is very difficult to retrofit this type of integration after devices have been
 deployed to the field.
 
@@ -54,12 +54,12 @@ To find board integrations for other Debian family OSes,
 go to the [Debian family in the Mender Hub community](https://hub.mender.io/c/board-integrations/debian-family?target=_blank).
 
 If no board integration is available for your device, follow the documentation on
-[System updates: Debian family](../../04.System-updates-Debian-family) to integrate your device.
+[Operating System updates: Debian family](../../04.Operating-System-updates-Debian-family) to integrate your device.
 
 
 #### Installation with .deb packages
 
-If you only need to deploy application updates (not system updates),
+If you only need to deploy application updates (not Operating System updates),
 we provide Debian packages (`.deb`) for installing the Mender client that works
 on almost any Debian family OS and device.
 
@@ -77,7 +77,7 @@ Integrations for the Yocto Project are available in
 [Yocto Project in the Mender Hub community](https://hub.mender.io/c/board-integrations/yocto-project?target=_blank).
 
 If no board integration is available for your device, follow the documentation on
-[System updates: Yocto Project](../../05.System-updates-Yocto-Project/chapter.md) to integrate your
+[Operating System updates: Yocto Project](../../05.Operating-System-updates-Yocto-Project/chapter.md) to integrate your
 device with the `meta-mender` layer.
 
 
@@ -123,7 +123,7 @@ to meet your exact needs. A board integration generally consists of the followin
 ### Bootloader changes
 
 To use [robust system
-updates](../../02.Overview/01.Introduction/docs.md#robust-system-updates) with
+updates](../../02.Overview/01.Introduction/docs.md#robust-operating-system-updates) with
 Mender, update your bootloader with logic to select the appropriate partition at
 boot time. Additionally, install utilities that can update the bootloader
 environment into the root filesystem.
@@ -147,7 +147,7 @@ parameters for the Mender client, such as polling intervals.
 
 ### Installation of Update Modules
 
-If you require support for payload types other than full root filesystem
+If you require support for payload types other than Operating System
 updates, ensure to install appropriate [Update
 Modules](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md)
 into your root filesystem, which are invoked by the Mender client.
@@ -156,6 +156,6 @@ into your root filesystem, which are invoked by the Mender client.
 ### Installation of root filesystem State Scripts
 
 If you require support of [root filesystem State
-Scripts](../../06.Artifact-creation/04.State-scripts/docs.md#root-file-system-and-Artifact-scripts),
+Scripts](../../06.Artifact-creation/04.State-scripts/docs.md#root-filesystem-and-artifact-scripts),
 ensure that they are installed into your root filesystem, so they are invoked by the
 Mender client.

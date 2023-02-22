@@ -71,7 +71,7 @@ the lists of specific criteria we use for our versioning policy.
 ## Mender client and Yocto Project version
 
 <!--AUTOVERSION: "% to %"/ignore-->
-In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3.0) versions and the [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) is updated accordingly to easily support these new features (e.g. by exposing new [MENDER_* variables](../../05.System-updates-Yocto-Project/99.Variables/docs.md)). The [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) has branches corresponding to [versions of the Yocto Project](https://wiki.yoctoproject.org/wiki/Releases?target=_blank). 
+In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3.0) versions and the [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) is updated accordingly to easily support these new features (e.g. by exposing new [MENDER_* variables](../../05.Operating-System-updates-Yocto-Project/99.Variables/docs.md)). The [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) has branches corresponding to [versions of the Yocto Project](https://wiki.yoctoproject.org/wiki/Releases?target=_blank). 
 
 Clarification of the table:
 * *stable* - recipe is maintained by Northern.tech
@@ -97,7 +97,7 @@ Clarification of the table:
 | Mender client 3.5.x           | stable<sup>1</sup> | stable          |
 
 <!--AUTOVERSION: "client % and later"/ignore "Yocto branches 3.1 (%) and older"/ignore-->
-!!! <sup>1</sup> Mender client 3.0.0 and later are not installed by default in Yocto branches 3.1 (dunfell) and older. To enable this or a later version, please see [the `PREFERRED_VERSION` setting when configuring the Yocto build](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build).
+!!! <sup>1</sup> Mender client 3.0.0 and later are not installed by default in Yocto branches 3.1 (dunfell) and older. To enable this or a later version, please see [the `PREFERRED_VERSION` setting when configuring the Yocto build](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build).
 
 Leverage [Mender consulting services to support other versions of the Yocto Project](https://mender.io/product/board-support?target=_blank) for your board and environment.
 
@@ -132,7 +132,7 @@ The [Mender Artifact format](../03.Artifact/docs.md) is managed by the [Mender A
 | Mender 3.4.x / mender-artifact 3.9.x | no          | yes         | yes         |
 | Mender 3.5.x / mender-artifact 3.10.x | no          | yes         | yes         |
 
-!! Older Mender clients do not support newer versions of the Artifact format; they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../06.Artifact-creation/01.Create-an-Artifact/docs.md#create-a-full-filesystem-update-artifact) for an introduction how to do this.
+!! Older Mender clients do not support newer versions of the Artifact format; they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../06.Artifact-creation/01.Create-an-Artifact/docs.md#create-an-operating-system-update-artifact) for an introduction how to do this.
 
 
 ## Mender server and client API
@@ -171,4 +171,4 @@ The higher version API contains a mix of old and new API endpoints. For endpoint
 |  3.5.x                             | 2.1.x <sup>1<sup>      |
 
 <!--AUTOVERSION: "mender-connect % and later"/ignore "Yocto branches 3.1 (%) and older"/ignore-->
-!!! <sup>1</sup> mender-connect 2.0.0 and later are not installed by default in Yocto branches 3.1 (dunfell) and older. To enable this or a later version, please see [the `PREFERRED_VERSION` setting when configuring the Yocto build](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build).
+!!! <sup>1</sup> mender-connect 2.0.0 and later are not installed by default in Yocto branches 3.1 (dunfell) and older. To enable this or a later version, please see [the `PREFERRED_VERSION` setting when configuring the Yocto build](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build).
