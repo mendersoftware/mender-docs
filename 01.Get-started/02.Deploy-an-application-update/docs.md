@@ -1,5 +1,5 @@
 ---
-title: Deploy an application update
+title: Deploy an Application update
 taxonomy:
     category: docs
     label: tutorial
@@ -125,5 +125,5 @@ using Mender!
 
 Proceed to one of the following tutorials (listed in recommended order):
 
-1. [Deploy a system update](../03.Deploy-a-system-update/docs.md)
-1. [Deploy a container update](../04.Deploy-a-container-update/docs.md)
+1. [Deploy an Operating System update](../03.Deploy-an-operating-system-update/docs.md)
+1. [Deploy a Container update](../04.Deploy-a-container-update/docs.md)
