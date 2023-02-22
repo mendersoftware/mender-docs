@@ -70,7 +70,7 @@ learn more.
 
 ## Update types
 
-### Robust system updates
+### Robust Operating System updates
 
 One of the primary requirements of any update system is that it should be robust.
 It must be able to recover from an update that fails, including loss of power
@@ -96,7 +96,7 @@ previous version by flipping the active and inactive partitions back again.
 
 One consequence of the system update is that the update will replace all the
 files in a filesystem, thereby deleting any new or changed files that had been
-placed there. In other words, to be updatable a file system needs to be
+placed there. In other words, to be updatable a filesystem needs to be
 **stateless**.
 
 You have to store all files that you modify on the devices in a separate
@@ -115,11 +115,11 @@ To support application updates in a generic way, Mender provides the [Update Mod
 ![application-updates](application-updates.png)
 
 
-### Combining system and application updates
+### Combining Operating System and Application updates
 
 A common requirement when performing software updates on connected devices
-is combining system and application updates. Full system updates represent
-the only secure and robust way to upgrade the kernel, the operating system,
+is combining Operating System and Application updates. Operating System updates
+represent the only secure and robust way to upgrade the kernel, the operating system,
 and related libraries, avoiding the risk of bricking the device. However,
 they come with the price of the downtime caused by the system reboot and,
 when delta updates are not in use, the higher amount of data usage because
@@ -131,7 +131,7 @@ framework are more flexible when the update scenario requires the replacement
 of a subset of the files on the device's firmware and doesn't require
 a complete device reboot cycle to apply the changes.
 
-Mender allows combining system and application updates on the same device
+Mender allows combining Operating System and Application updates on the same device
 to achieve the best flexibility without compromising the specific advantages
 of the two approaches. When generating the Mender Artifacts, you can customize
 the [Software Versioning](../../06.Artifact-creation/09.Software-versioning/docs.md)
@@ -139,11 +139,11 @@ values, as well as [*Depends* and *Provides* entries](../03.Artifact/docs.md#pro
 in the Artifacts to define dependencies between the different kinds of updates.
 
 You can find more information about the strategies and best practices to 
-combine system and application updates in the
+combine Operating System and Application updates in the
 [Combining system and application updates](../../06.Artifact-creation/03.Combining-system-and-application-updates/docs.md) chapter.
 
 !!! Please note that in this context, while it is technically possible
-!!! to use the Update Module API to implement full system updates, we
+!!! to use the Update Module API to implement Operating System updates, we
 !!! refer to application updates as non-rootfs ones.
 
 

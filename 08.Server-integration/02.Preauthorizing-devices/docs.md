@@ -20,8 +20,8 @@ You need a physical board that has already been integrated with Mender. For exam
 If you have not yet prepared a device visit one of the following:
 
 - [Client installation](../../03.Client-installation/chapter.md)
-- [System updates: Debian family](../../04.System-updates-Debian-family/chapter.md)
-- [System updates: Yocto Project](../../05.System-updates-Yocto-Project/chapter.md)
+- [Operating System updates: Debian family](../../04.Operating-System-updates-Debian-family/chapter.md)
+- [Operating System updates: Yocto Project](../../05.Operating-System-updates-Yocto-Project/chapter.md)
 
 ### The identity of your device
 
@@ -164,7 +164,7 @@ Your device should now be preauthorized and accepted to the Mender server once i
 
 Now that we have generated a key for the device and preauthorized it, we need to copy the generated *private* device key to our working disk image (it typically has the `.sdimg` suffix). We copy it to its default location `/mender/mender-agent.pem` on the data partition.
 
-!!! There is a symlink from `/var/lib/mender/mender-agent.pem` on the root file systems to `/mender/mender-agent.pem` on the data partition, which we will leave in place. If the Mender client does not find a valid key it will generate one, which is not what we want when we are preauthorizing devices.
+!!! There is a symlink from `/var/lib/mender/mender-agent.pem` on the root filesystems to `/mender/mender-agent.pem` on the data partition, which we will leave in place. If the Mender client does not find a valid key it will generate one, which is not what we want when we are preauthorizing devices.
 
 ### Copy the private device key
 

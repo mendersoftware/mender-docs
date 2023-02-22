@@ -9,7 +9,7 @@ the currently running system. In this workflow a "golden image" is maintained on
 a single device (or SD card) by making run-time modifications on the device, 
 such as installing packages, changing configurations and updating the operating
 system. When this device has been tested and the environment should be 
-replicated, a snapshot can be taken with Mender. This results in a file system
+replicated, a snapshot can be taken with Mender. This results in a filesystem
 image and Mender Artifact that can be deployed to the rest of the device fleet.
 
 !!! This feature is fully supported by the

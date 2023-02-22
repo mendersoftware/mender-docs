@@ -301,7 +301,7 @@ git commit -m 'production: adding generated keys and certificates'
 
 The API Gateway and Storage Proxy certificates generated here need to be made
 available to the Mender client.
-Consult the section on [building for production](../../05.System-updates-Yocto-Project/06.Build-for-production/docs.md)
+Consult the section on [building for production](../../05.Operating-System-updates-Yocto-Project/06.Build-for-production/docs.md)
 for a description on how to include the certificates in the client builds.
 
 !! Only certificates need to be made available to devices or end users. Private keys should never be shared.
@@ -781,9 +781,9 @@ which integration method is used with the client. Please refer to one of these s
 * [Mender installed on device using a deb
   package](../../03.Client-installation/02.Install-with-Debian-package/docs.md)
 * [Device integration using Yocto
-  Project](../../05.System-updates-Yocto-Project/99.Variables/docs.md#mender_tenant_token)
+  Project](../../05.Operating-System-updates-Yocto-Project/99.Variables/docs.md#mender_tenant_token)
 * [Device integration with Debian
-  Family](../../04.System-updates-Debian-family/03.Customize-Mender/docs.md)
+  Family](../../04.Operating-System-updates-Debian-family/03.Customize-Mender/docs.md)
 * [Modifying an existing prebuilt
   image](../../06.Artifact-creation/03.Modify-an-Artifact/docs.md)
 
