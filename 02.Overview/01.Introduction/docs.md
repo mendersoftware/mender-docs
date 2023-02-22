@@ -81,7 +81,7 @@ system image directly to the flash partition. Mender comes with built-in support
 for  a dual redundant scheme (also known as A/B scheme), which ensures that the
 device always comes back to a working state on failure.
 
-During system update, the client writes the new version to the inactive
+During Operating System update, the client writes the new version to the inactive
 partition. When complete, the client verifies the checksum. If all is well, it
 sets a flag in the bootloader that will cause it to flip the active and inactive
 partitions around on the next reboot. Then the system reboots.
@@ -94,7 +94,7 @@ If something causes the device to reboot before committing the update, the
 bootloader knows that something went wrong, and will **roll back** to the
 previous version by flipping the active and inactive partitions back again.
 
-One consequence of the system update is that the update will replace all the
+One consequence of the Operating System update is that the update will replace all the
 files in a filesystem, thereby deleting any new or changed files that had been
 placed there. In other words, to be updatable a filesystem needs to be
 **stateless**.

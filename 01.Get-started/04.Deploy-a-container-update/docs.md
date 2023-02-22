@@ -1,5 +1,5 @@
 ---
-title: Deploy a container update
+title: Deploy a Container update
 taxonomy:
     category: docs
     label: tutorial
