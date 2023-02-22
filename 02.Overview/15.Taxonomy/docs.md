@@ -44,6 +44,8 @@ documentation on [Delta updates](../06.Delta-update/docs.md) for more informatio
 updates with Mender on a board. Often includes OS bootloader and storage
 integration and requires customization based on the hardware and OS.
 
+* _Container update_ - An Application update for containerized software running on the devices.
+
 * _Deployment_ - The process of delivering software to devices. It consists of
 at least a group of devices and an Artifact name.
 

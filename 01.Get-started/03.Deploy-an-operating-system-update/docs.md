@@ -1,5 +1,5 @@
 ---
-title: Deploy a system update
+title: Deploy an Operating System update
 taxonomy:
     category: docs
     label: tutorial
