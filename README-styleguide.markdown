@@ -43,7 +43,7 @@ Capitalize using sentence case.
 
 Example:
 
-> "Deploy a system update demo"
+> "Deploy an Operating System update demo"
 
 Headers should not end with a period.
 

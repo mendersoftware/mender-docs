@@ -13,8 +13,8 @@ Delta updates provide significant savings in both bandwidth and install time.
 When you use Delta updates, only the difference between the new and the old root
 filesystem is transmitted to the device. A Delta update can therefore be
 significantly smaller than a regular update. In every other regard, this is the
-same as doing a regular system update, with atomicity, integrity, rollback and
-signature support included.
+same as doing a regular Operating System update, with atomicity, integrity, rollback
+and signature support included.
 
 
 ![Delta update generation](image0.png)
