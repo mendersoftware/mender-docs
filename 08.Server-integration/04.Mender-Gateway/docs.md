@@ -41,12 +41,14 @@ no more free space on the path specified in the configuration file.
 See the [Mender Gateway User Guide](../../01.Get-started/06.Mender-Gateway/docs.md)
 for a reference setup of Mender Gateway as an Artifact Proxy.
 
-## Device Systems
-A Device System is a group of devices connected to a Mender Gateway instance and
-belonging to the same product or logical system. To define a Device System, each device
-must report to the Mender Server a special inventory attribute named `mender_gateway_system_id`,
-containing a unique identifier for the given system. See the Mender Gateway
-[getting started](../../01.Get-started/06.Mender-Gateway/docs.md) for an example configuration.
+## Systems
+A System is a group of devices belonging to the same product or logical entity
+connected to a Mender Gateway instance. Devices in a System usually require
+coordination during the update process. To define a System, each device must
+report to the Mender Server a special inventory attribute named
+`mender_gateway_system_id`, containing a unique identifier for the given
+system. See the Mender Gateway [getting started](../../01.Get-started/06.Mender-Gateway/docs.md)
+for an example configuration.
 
 ## Mutual TLS Authentication
 The Mender Gateway is capable of automatic provisioning of devices using *mTLS*
