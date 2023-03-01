@@ -57,3 +57,9 @@ is not available, or otherwise presents lack of proper service, or incomplete da
 Exercising our imagination we can come up with a scenario when during a certain upgrade a flood
 of request will lead to data inconsistencies. To mitigate that risk it is better to prepare
 a maintenance window to complete the upgrade in its due time and place.
+
+## Running the new version
+
+Once the new version is up and running give a UI a full refresh without cache, and enjoy your
+upgraded Mender installation.
+
