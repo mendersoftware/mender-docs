@@ -67,9 +67,9 @@ documentation on device [Identity](../07.Identity/docs.md) for more information.
 hardware and software. See the documentation on [Artifact](../03.Artifact/docs.md)
 for more information.
 
-* _Device System_ - A Device System is a group of devices connected to a
-[Mender Gateway](../../01.Get-started/06.Mender-Gateway/docs.md) instance and belonging
-to the same product or logical system.
+* _System_ -  A System is a group of devices belonging to the same product or
+logical entity connected to a [Mender Gateway](../../01.Get-started/06.Mender-Gateway/docs.md)
+instance. Devices in a System usually require coordination during the update process.
 
 * _Mender Client_ - A user space application installing updates to a device
 it is running on. It uses the Mender Server-side API to connect to the Mender

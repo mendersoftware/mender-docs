@@ -95,10 +95,9 @@ You can inspect the configuration file `/etc/mender/mender-gateway.conf`:
 Please refer to the [Mender Gateway's configuration file](../../08.Server-integration/04.Mender-Gateway/99.Configuration-file/)
 documentation for detailed information about the various settings.
 
-## Device Systems
+## Systems
 
-A Device System is a group of devices connected to a Mender Gateway instance and belonging to the same product or logical system.
-To define a Device System, each device must report to the Mender Server a special inventory attribute named `mender_gateway_system_id`, containing a unique identifier for the given system.
+A System is a group of devices belonging to the same product or logical entity connected to a Mender Gateway instance. Devices in a System usually require coordination during the update process. To define a System, each device must report to the Mender Server a special inventory attribute named `mender_gateway_system_id`, containing a unique identifier for the given system.
 
 The Mender Gateway can set the System ID for all the devices connected to it thanks to the `SystemID` configuration setting. When enabled, this feature injects this inventory attributes for all the devices connected to the gateway.
 
