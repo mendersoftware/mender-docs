@@ -96,8 +96,8 @@ This user will preauthorize devices with authorization to the gateway.
 
 #### DeviceSystem
 <dl>
-<dt>Enabled</dt> <dd>Enable the Device System feature.</dd>
-<dt>SystemID</dt> <dd>Defines a unique Device System identifier for the devices connected to this Mender Gateway instance setting a special attribute named `mender_gateway_system_id` when the devices report the inventory to the Server.</dd>
+<dt>Enabled</dt> <dd>Enable the System feature.</dd>
+<dt>SystemID</dt> <dd>Defines a unique System identifier for the devices connected to this Mender Gateway instance setting a special attribute named `mender_gateway_system_id` when the devices report the inventory to the Server.</dd>
 <dt>DefaultInventory</dt> <dd>List of default attributes to inject in the inventory data for the devices connected to this Mender Gateway instance.</dd>
 </dl>
 
