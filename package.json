@@ -6,7 +6,7 @@
   "dependencies": {
     "remark-cli": "^11.0.0",
     "remark-validate-links": "https://github.com/oleorhagen/remark-validate-links#grav-slug",
-    "yargs": "^17.6.0"
+    "yargs": "^17.7.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
