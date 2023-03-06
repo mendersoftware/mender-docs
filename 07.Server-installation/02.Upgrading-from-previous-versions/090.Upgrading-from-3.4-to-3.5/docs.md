@@ -1,5 +1,5 @@
 ---
-title: Upgrading to 3.5
+title: Upgrading from 3.4 to 3.5
 taxonomy:
 category: docs
 label: tutorial
@@ -154,8 +154,3 @@ opensearchproject/opensearch:2.4.0
 ```
 [/ui-tab]
 [/ui-tabs]
-
-## Final steps
-
-After the propagation of deployments and devices you should be good to go.
-Give the UI a full refresh without cache, and verify that everything is in place.
