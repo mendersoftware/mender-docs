@@ -28,7 +28,7 @@ The meta-mender warrior branch introduced a change for the configuration of
 Mender. Now the configuration is split between a transient configuration file in
 `/etc/mender/mender.conf` and a persistent configuration file in
 `/data/mender/mender.conf`, see
-[MEN-2757](https://tracker.mender.io/browse/MEN-2757?target=_blank).
+[MEN-2757](https://northerntech.atlassian.net/browse/MEN-2757?target=_blank).
 
 A device running on a single configuration file cannot upgrade to an image built
 with two configuration files feature.
@@ -68,7 +68,7 @@ Mar 04 10:21:09 ifu-25 mender[14270]: time="2021-03-04T10:21:09Z" level=error ms
 ```
 
 <!--AUTOVERSION: "mender-client %"/ignore-->
-It is because mender-client 2.1.0 does not support the newer `rootfs-image.checksum` feature. See [MEN-2956](https://tracker.mender.io/browse/MEN-2956?target=_blank)
+It is because mender-client 2.1.0 does not support the newer `rootfs-image.checksum` feature. See [MEN-2956](https://northerntech.atlassian.net/browse/MEN-2956?target=_blank)
 
 To solve it, use the `--no-checksum-provide` flag when creating the artifact. In Yocto you can add this argument to the MENDER_ARTIFACT_EXTRA_ARGS variable.
 
