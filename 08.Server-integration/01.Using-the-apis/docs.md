@@ -126,6 +126,9 @@ curl -H "Authorization: Bearer $JWT" -X DELETE -k $MENDER_SERVER_URI/api/managem
 
 !!! The Personal Access Tokens impersonate the user who generated them, including all the permissions and roles associated with the user.
 
+!! WARNING: The personal access token is anticipated to be **reset** when the 
+!! [Mender plan](https://mender.io/product/pricing) is upgraded as the tokens contain the current
+!! plan and when an upgrade occurs, the PAT becomes **invalid**.
 
 ## Set up mender-cli
 
