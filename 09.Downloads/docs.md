@@ -35,8 +35,8 @@ Mender provides images based on the following distributions:
 | Raspberry Pi 4 Model B        | Raspberry Pi OS Bullseye Lite 2022-01-28 | [raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz][raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz] | 8 GB         |
 
 <!--AUTOVERSION: "mender-convert-%.img.xz"/mender-convert -->
-[raspios-bullseye-armhf-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2022-01-28-raspios-bullseye-armhf-lite/arm/2022-01-28-raspios-bullseye-armhf-lite-raspberrypi3-mender-convert-3.0.1.img.xz
-[raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2022-01-28-raspios-bullseye-armhf-lite/arm/2022-01-28-raspios-bullseye-armhf-lite-raspberrypi4-mender-convert-3.0.1.img.xz
+[raspios-bullseye-armhf-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2022-01-28-raspios-bullseye-armhf-lite/arm/2022-01-28-raspios-bullseye-armhf-lite-raspberrypi3-mender-convert-3.0.2.img.xz
+[raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2022-01-28-raspios-bullseye-armhf-lite/arm/2022-01-28-raspios-bullseye-armhf-lite-raspberrypi4-mender-convert-3.0.2.img.xz
 
 You can find images for other devices in our Mender Hub community forum, see
 [Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11?target=_blank) or
@@ -353,8 +353,8 @@ Follow the correct link according to your host platform to download `mender-cli`
 <!--AUTOVERSION: "mender-cli %][x.x.x_mender-cli-"/mender-cli "mender-cli %][%_mender-cli-"/ignore-->
 | Platform | Download link                                |                                                             |
 |----------|----------------------------------------------|-------------------------------------------------------------|
-| Linux    | [mender-cli 1.8.1][x.x.x_mender-cli-linux]  | [mender-cli master][master_mender-cli-linux] (Pre-release)  |
-| Mac OS X | [mender-cli 1.8.1][x.x.x_mender-cli-darwin] | [mender-cli master][master_mender-cli-darwin] (Pre-release) |
+| Linux    | [mender-cli 1.8.2][x.x.x_mender-cli-linux]  | [mender-cli master][master_mender-cli-linux] (Pre-release)  |
+| Mac OS X | [mender-cli 1.8.2][x.x.x_mender-cli-darwin] | [mender-cli master][master_mender-cli-darwin] (Pre-release) |
 
 
 Remember to add execute permission and ensure that the mender-cli utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
@@ -368,8 +368,8 @@ sudo cp mender-cli /usr/local/bin/
 Please refer to your host Operating System documentation for more details.
 
 <!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
-[x.x.x_mender-cli-linux]: https://downloads.mender.io/mender-cli/1.8.1/linux/mender-cli
-[x.x.x_mender-cli-darwin]: https://downloads.mender.io/mender-cli/1.8.1/darwin/mender-cli
+[x.x.x_mender-cli-linux]: https://downloads.mender.io/mender-cli/1.8.2/linux/mender-cli
+[x.x.x_mender-cli-darwin]: https://downloads.mender.io/mender-cli/1.8.2/darwin/mender-cli
 <!--AUTOVERSION: "[%_mender-cli-"/ignore "mender-cli/%/"/ignore -->
 [master_mender-cli-linux]: https://downloads.mender.io/mender-cli/master/linux/mender-cli
 [master_mender-cli-darwin]: https://downloads.mender.io/mender-cli/master/darwin/mender-cli

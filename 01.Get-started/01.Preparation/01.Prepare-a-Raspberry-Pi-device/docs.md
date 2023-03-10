@@ -34,8 +34,8 @@ Download the Raspberry Pi OS image ready for Mender:
   * Download link: [Raspberry Pi 4 Model B][raspios-bullseye-lite-raspberrypi4-mender.img.xz]
 
 <!--AUTOVERSION: "mender-convert-%.img.xz"/mender-convert -->
-[raspios-bullseye-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2022-01-28-raspios-bullseye-armhf-lite/arm/2022-01-28-raspios-bullseye-armhf-lite-raspberrypi3-mender-convert-3.0.1.img.xz
-[raspios-bullseye-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2022-01-28-raspios-bullseye-armhf-lite/arm/2022-01-28-raspios-bullseye-armhf-lite-raspberrypi4-mender-convert-3.0.1.img.xz
+[raspios-bullseye-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2022-01-28-raspios-bullseye-armhf-lite/arm/2022-01-28-raspios-bullseye-armhf-lite-raspberrypi3-mender-convert-3.0.2.img.xz
+[raspios-bullseye-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2022-01-28-raspios-bullseye-armhf-lite/arm/2022-01-28-raspios-bullseye-armhf-lite-raspberrypi4-mender-convert-3.0.2.img.xz
 
 
 Follow the steps outlined in the [Raspberry Pi OS documentation](https://www.raspberrypi.org/documentation/installation/installing-images?target=_blank)
