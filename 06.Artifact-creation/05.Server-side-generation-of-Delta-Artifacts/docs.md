@@ -8,13 +8,15 @@ taxonomy:
 Mender Enterprise supports the server-side generation of Delta Artifacts.
 This document explains the prerequisites to enable this feature and how it works.
 
+
 ### Prerequisites
 
 #### Hosted Mender
 
-The automatic generation of delta artifacts on the server side with
-[hosted Mender](https://hosted.mender.io/ui/signup) works out of the box with the Enterprise plan, provided 
-you sign up for it. In order to do so, please get in touch with the [hosted Mender support team](mailto:support@mender.io).
+! The server side delta is in a beta testing stage for the enterprise plan.
+! For the moment it is possible to express interest to be added to the waiting list for the testing.
+! In order to do so, please contact the [Hosted Mender support team](mailto:support@mender.io).
+
 
 #### On-premise installations
 
