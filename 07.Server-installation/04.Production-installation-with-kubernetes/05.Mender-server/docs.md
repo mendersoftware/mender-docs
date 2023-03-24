@@ -97,6 +97,7 @@ helm upgrade --install mender mender/mender --version master -f mender-master.ym
 ```bash
 export MENDER_REGISTRY_USERNAME="replace-with-your-username"
 export MENDER_REGISTRY_PASSWORD="replace-with-your-password"
+export MENDER_SERVER_DOMAIN="mender.example.com"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
 
 cat >mender-master.yml <<EOF
