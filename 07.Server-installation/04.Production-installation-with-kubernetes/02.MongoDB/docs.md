@@ -34,6 +34,10 @@ image:
   tag: "4.4.13-debian-10-r63"
 persistence:
   size: "8Gi"
+livenessProbe:
+  timeoutSeconds: 30
+readinessProbe:
+  timeoutSeconds: 30
 EOF
 
 helm repo add bitnami https://charts.bitnami.com/bitnami
