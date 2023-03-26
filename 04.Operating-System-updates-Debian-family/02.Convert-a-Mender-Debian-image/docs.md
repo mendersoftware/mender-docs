@@ -106,6 +106,15 @@ cd mender-convert
 MENDER_CONVERT_LOCATION=${PWD}
 ```
 
+### Build mender-convert Docker
+
+Build the mender-convert dockerfile:
+
+```
+cd mender-convert
+docker build .
+```
+
 ## Configure the Mender client server configuration
 
 !!! Hosted Mender is available in multiple [regions](/11.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
