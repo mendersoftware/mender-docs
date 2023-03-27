@@ -6,11 +6,11 @@ taxonomy:
 
 ## CI/CD pipelines
 
-Mender provides support for application updates in the form of CI/CD pipelines to implement all kinds of specific use-cases. This section describes possible ways to integrate your workflow with Mender and most popular CI/CD providers.
+Mender supports production-grade CI/CD pipelines to implement specific use cases. This section describes possible ways to integrate your workflow with Mender and the most popular CI/CD providers.
 
 ### Mender CI-workflows Docker image
 
-To help you in creating CI/CD pipelines, we created [GitHub repository](https://github.com/mendersoftware/mender-ci-workflows/) containing ready to use, battle-tested CI/CD pipeline code snippets that can be used in your workflows. Additionally, we provide [mender-ci-tools Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools) based on Alpine Linux and providing command-line utilities,`mender-artifact` and `mender-cli` installed.
+To help you create CI/CD pipelines, we created [GitHub repository](https://github.com/mendersoftware/mender-ci-workflows/) containing ready to use, battle-tested CI/CD pipeline code snippets that can be used in your workflows. We also provide [mender-ci-tools Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools) based on Alpine Linux and provide command-line utilities,`mender-artifact` and `mender-cli` installed.
 
 To locally inspect the Docker image, pull it with the following command:
 <!--AUTOVERSION: "mendersoftware/mender-ci-tools:%"/mender-ci-workflows-->
@@ -29,7 +29,7 @@ Mender currently supports three major CI/CD providers:
 * [GitLab CI/CD](02.GitLab-CICD/docs.md)
 * [Azure DevOps](03.Azure-DevOps/docs.md)
 
-### Creating and Signing an Mender Artifact
+### Creating and Signing a Mender Artifact
 
 This scenario uses `mender-artifact` tool to package your software as a Mender Artifact. A Mender Artifact can optionally be signed, so the examples provided allow for signing the Artifact too.
 
@@ -42,15 +42,15 @@ You can read about artifact creation details [here](../01.Create-an-Artifact/doc
 
 More details about signing Mender Artifacts [here](https://docs.mender.io/artifact-creation/sign-and-verify).
 
-### Uploading an Mender Artifact
+### Uploading a Mender Artifact
 
 This scenario uses `mender-cli` tool to upload your Mender Artifact to the Mender server. 
 
-The input for the scenario is the Mender Artifact generated in the previous stage, and the output is upload result.
+The input for the scenario is the Mender Artifact generated in the previous stage, and the output is the upload result.
 
 You can read about uploading the Mender Artifact to the file storage [here](../../08.Server-integration/01.Using-the-apis/docs.md#set-up-mender-cli).
 
-You can use [Personal Access Tokens](../../08.Server-integration/01.Using-the-apis/docs.md#personal-access-tokens) with necessary permissions to perform automated actions on Mender server on your behalf.
+You can use [Personal Access Tokens](../../08.Server-integration/01.Using-the-apis/docs.md#personal-access-tokens) with necessary permissions to perform automated actions on the Mender server on your behalf.
 
 ### Deploying an Artifact to the fleet of devices
 

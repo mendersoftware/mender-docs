@@ -13,23 +13,23 @@ Mender provides actions for uploading Mender Artifacts and creating deployments 
 
 In this chapter we introduce the different actions and provide [examples](#pipelines-examples) on how to use them.
 
-### Upload Mender Artifact action
+### Upload a Mender Artifact action
 `mendersoftware/mender-gh-action-upload-artifact` action uploads a Mender Artifact to a Mender server. Find more information about the action usage in the related [documentation](https://github.com/mendersoftware/mender-gh-action-upload-artifact).
 
-### Create deployment action
+### Create a deployment action
 `mendersoftware/mender-gh-action-create-deployment` action creates a deployment on a Mender server. Find more information about the action usage in the related [documentation](https://github.com/mendersoftware/mender-gh-action-create-deployment).
 
 ### Setup
-The actions requires the following secret is set in a repository settings:
+The actions require the following secret to be set in a repository settings:
 - `MENDER_SERVER_ACCESS_TOKEN`: Mender [Personal Access Token](../../../08.Server-integration/01.Using-the-apis/docs.md#personal-access-tokens)
 
 ## Pipelines examples
 
-* [Build and deploy Mender Artifact](#build-and-deploy-mender-artifact)
+* [Build and deploy Mender Arti fact](#build-and-deploy-a-mender-artifact)
 * [Build and deploy multiple Mender Artifacts](#build-and-deploy-multiple-mender-artifacts)
-* [Build and deploy Mender Artifact to a single device](#build-and-deploy-mender-artifact-to-a-single-device)
+* [Build and deploy Mender Artifact to a single device](#build-and-deploy-a-mender-artifact-to-a-single-device)
 
-### Build and deploy Mender Artifact
+### Build and deploy a Mender Artifact
 <!--AUTOVERSION: "tree/%/examples"/mender-ci-workflows-->
 ```bash
 @build-and-deploy-mender-artifact.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/master/examples/github/build-and-deploy-mender-artifact.yml
@@ -41,7 +41,7 @@ The actions requires the following secret is set in a repository settings:
 @build-and-deploy-multiple-artifacts.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/master/examples/github/build-and-deploy-multiple-artifacts.yml
 ```
 
-### Build and deploy Mender Artifact to a single device
+### Build and deploy a Mender Artifact to a single device
 <!--AUTOVERSION: "tree/%/examples"/mender-ci-workflows-->
 ```bash
 @deploy-to-a-single-device.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/master/examples/github/deploy-to-a-single-device.yml
