@@ -10,11 +10,11 @@ taxonomy:
 In addition to the [mender-ci-tools Docker image](../docs.md#mender-ci-workflows-docker-image), Mender provides [stage templates](https://github.com/mendersoftware/mender-ci-workflows/tree/master/templates/azure) for uploading Mender Artifacts and creating deployments to a group of devices.
 
 <!--AUTOVERSION: "Mender server version % or"/ignore-->
-!!!!! The templates use [Personal Access Tokens](../../../08.Server-integration/01.Using-the-apis/docs.md#personal-access-tokens) feature which is only available in Mender server version 3.4 or newer.
+!!!!! The templates use the [Personal Access Tokens](../../../08.Server-integration/01.Using-the-apis/docs.md#personal-access-tokens) feature which is only available in Mender server version 3.4 or newer.
 
 In this chapter we introduce the different stages and provide [examples](#pipelines-examples) on how to use them.
 
-### Upload Mender Artifact
+### Upload a Mender Artifact
 <!--AUTOVERSION: "tree/%/templates"/mender-ci-workflows-->
 [Upload Mender Artifact](https://github.com/mendersoftware/mender-ci-workflows/tree/master/templates/azure/mender-artifact-upload.yml) stage template uploads a Mender Artifact to a Mender server.
 
@@ -23,7 +23,7 @@ The template has the following parameters:
 - `mender_pat`: Mender Personal Access Token (read the [documentation](https://docs.mender.io/server-integration/using-the-apis#personal-access-tokens) for more information)
 - `mender_artifact`: Path of Mender Artifact file, relative to `$(System.DefaultWorkingDirectory)`
 
-### Create deployment job
+### Create a deployment job
 <!--AUTOVERSION: "tree/%/templates"/mender-ci-workflows-->
 [Create deployment on Mender server](https://github.com/mendersoftware/mender-ci-workflows/tree/master/templates/azure/mender-deployment-create.yml) stage template creates a deployment on a Mender server.
 
@@ -37,11 +37,11 @@ The template has the following parameters:
 
 ## Pipelines examples
 
-* [Build and deploy Mender Artifact](#build-and-deploy-mender-artifact)
+* [Build and deploy Mender Artifact](#build-and-deploy-a-mender-artifact)
 * [Build and deploy multiple Mender Artifacts](#build-and-deploy-multiple-mender-artifacts)
-* [Build and deploy Mender Artifact to a single device](#build-and-deploy-mender-artifact-to-a-single-device)
+* [Build and deploy Mender Artifact to a single device](#build-and-deploy-a-mender-artifact-to-a-single-device)
 
-### Build and deploy Mender Artifact
+### Build and deploy a Mender Artifact
 <!--AUTOVERSION: "tree/%/examples"/mender-ci-workflows-->
 ```bash
 @build-and-deploy-mender-artifact.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/master/examples/azure/build-and-deploy-mender-artifact.yml
@@ -53,7 +53,7 @@ The template has the following parameters:
 @build-and-deploy-multiple-artifacts.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/master/examples/azure/build-and-deploy-multiple-artifacts.yml
 ```
 
-### Build and deploy Mender Artifact to a single device
+### Build and deploy a Mender Artifact to a single device
 <!--AUTOVERSION: "tree/%/examples"/mender-ci-workflows-->
 ```bash
 @deploy-to-a-single-device.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/master/examples/azure/deploy-to-a-single-device.yml
