@@ -8,4 +8,4 @@ taxonomy:
 
 # Server integration
 
-Integrate the Mender server with other services and workflows.
+Integrate the Mender Server with other services and workflows.

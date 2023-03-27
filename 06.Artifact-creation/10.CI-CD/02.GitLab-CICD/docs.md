@@ -9,18 +9,18 @@ taxonomy:
 <!--AUTOVERSION: "tree/%/templates"/mender-ci-workflows-->
 In addition to the [mender-ci-tools Docker image](../docs.md#mender-ci-workflows-docker-image), Mender provides [job templates](https://github.com/mendersoftware/mender-ci-workflows/tree/master/templates/gitlab) for uploading Mender Artifacts and creating deployments to a group of devices.
 
-<!--AUTOVERSION: "Mender server version % or"/ignore-->
-!!!!! The jobs use [Personal Access Tokens](../../../08.Server-integration/01.Using-the-apis/docs.md#personal-access-tokens) feature which is only available in Mender server version 3.4 or newer.
+<!--AUTOVERSION: "Mender Server version % or"/ignore-->
+!!!!! The jobs use [Personal Access Tokens](../../../08.Server-integration/01.Using-the-apis/docs.md#personal-access-tokens) feature which is only available in Mender Server version 3.4 or newer.
 
 In this chapter we introduce the different jobs and provide [examples](#pipelines-examples) on how to use them.
 
 ### Upload a Mender Artifact job
 <!--AUTOVERSION: "tree/%/templates"/mender-ci-workflows-->
-[.mender:upload:artifact](https://github.com/mendersoftware/mender-ci-workflows/tree/master/templates/gitlab/mender-artifact-upload.gitlab-ci.yml) job template uploads a Mender Artifact to a Mender server.
+[.mender:upload:artifact](https://github.com/mendersoftware/mender-ci-workflows/tree/master/templates/gitlab/mender-artifact-upload.gitlab-ci.yml) job template uploads a Mender Artifact to a Mender Server.
 
 ### Create a deployment job
 <!--AUTOVERSION: "tree/%/templates"/mender-ci-workflows-->
-[.mender:create:deployment](https://github.com/mendersoftware/mender-ci-workflows/tree/master/templates/gitlab/mender-deployment-create.gitlab-ci.yml) job template creates a deployment on a Mender server.
+[.mender:create:deployment](https://github.com/mendersoftware/mender-ci-workflows/tree/master/templates/gitlab/mender-deployment-create.gitlab-ci.yml) job template creates a deployment on a Mender Server.
 
 ### Setup
 The job templates require the following CI variable to be set in the repository settings:

@@ -12,7 +12,7 @@ taxonomy:
 
 ## Prerequisites
 
-The Mender server deployment requires generating keys that are used for user and
+The Mender Server deployment requires generating keys that are used for user and
 device authentication. The following snippet uses `openssl` to generate the
 required keys:
 

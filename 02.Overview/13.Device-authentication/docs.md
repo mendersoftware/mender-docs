@@ -7,7 +7,7 @@ taxonomy:
 
 You must explicitly authorize any Device identified by a set of
 [Identity attributes](../../02.Overview/07.Identity/docs.md) before it can authenticate
-with the Mender server.
+with the Mender Server.
 
 This section describes the components and workflows relevant to Device
 authentication, and provides practical tips on navigating our APIs to
@@ -18,7 +18,7 @@ related issues.
 
 
 The [Device Authentication](https://github.com/mendersoftware/deviceauth?target=_blank)
-service, a part of the Mender server, implements Device authentication.
+service, a part of the Mender Server, implements Device authentication.
 
 This service exposes APIs for:
 
@@ -63,7 +63,7 @@ For details of API calls please consult the [API documentation](../../200.Server
 ### Authorize-on-request Flow
 
 The simplest flow, which usually suits quick prototyping and testing best, is manual
-authorization. The Mender server records every auth request for future inspection.
+authorization. The Mender Server records every auth request for future inspection.
 You can accept it via the Device Authentication API (or the UI) whenever you
 see fit. When the Device sends another auth request it will result in a successful
 authorization.
@@ -80,7 +80,7 @@ Device, and Device Authentication within this flow:
    public key.
 2. The Device tries to authenticate, retries in a loop according to the Mender
    client's configured interval.
-3. For the time being, authentication attempt fails, but the Mender server
+3. For the time being, authentication attempt fails, but the Mender Server
    records the auth set for future inspection.
 4. The user inspects pending Authentication sets.
 5. The user accepts the submitted auth set.
@@ -100,7 +100,7 @@ an account before logging in to an online service.
 It allows you to authorize a particular Device before it leaves the production line
 by providing a pre-assigned Authentication set to
 the Device Authentication. When a Device with the corresponding Identity
-attributes and public key requests authorization, the Mender server will
+attributes and public key requests authorization, the Mender Server will
 authorize it immediately without further user intervention.
 
 This flow is typically better suited for a production use case, where you plan a release of a
@@ -111,7 +111,7 @@ potentially large batch of Devices:
   Authentication API.
 * During the release process, you transfer identities and keys to physical
   Devices.
-* Upon the first authentication request for each Device, the Mender server
+* Upon the first authentication request for each Device, the Mender Server
   authenticates it, and the Device gains access to all Mender APIs.
 
 The sequence diagram below describes the API interactions between the user and
@@ -138,7 +138,7 @@ authorized in the Mender backend, and do not need manual approval.
 
 This is in particular useful in a mass production setting because you can sign client
 certificates when they are manufactured so they automatically get accepted into the
-Mender server when your customer turns them on, which might happen several months
+Mender Server when your customer turns them on, which might happen several months
 after manufacturing.
 
 The sequence diagram below describes the authentication of a Device through the
@@ -161,13 +161,13 @@ to find further details on the configuration of this feature.
 
 ## Authentication Token
 
-After the Mender server authorizes a Device, a subsequent authentication request
+After the Mender Server authorizes a Device, a subsequent authentication request
 to the Device Authentication service returns an **authentication token**. The
 Mender client will record the token and attach it to every API call under the HTTP
 `Authorization` header.
 
 The token does have an **expiry date** (one week period by default), but the Mender client
-will obtain a fresh token from the Mender server automatically.
+will obtain a fresh token from the Mender Server automatically.
 
 For details on the token format please see the relevant [documentation on
 submitting an authentication request](../../200.Server-side-API/?target=_blank#device-api-device-authentication).

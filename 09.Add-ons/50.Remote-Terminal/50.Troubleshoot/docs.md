@@ -27,8 +27,8 @@ Error: user has too many open sessions
 ```
 
 The Remote Terminal feature by default allows
-one open session to the device at the time, for each user account of the Mender server.
-Since the limit is per user account, other users of your Mender server may
+one open session to the device at the time, for each user account of the Mender Server.
+Since the limit is per user account, other users of your Mender Server may
 still be able to log in to the device.
 
 If you get the above error, make sure you do not have too many browser tabs or CLI windows

@@ -6,7 +6,7 @@ taxonomy:
 ---
 
 `mender-connect` is a daemon responsible for handling bidirectional
-(websocket) communication with the Mender server. The daemon is responsible for
+(websocket) communication with the Mender Server. The daemon is responsible for
 implementing a range of troubleshooting features to the device as well as
 several enhancement to the [mender-client](../../03.Client-installation/01.Overview/docs.md).
 

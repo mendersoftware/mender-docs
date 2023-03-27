@@ -61,7 +61,7 @@ machine. Depending on the return code from the script, the Mender client will:
 ### Logging
 
 The Mender client collects logs during an update. In case of a failure, these
-logs are sent to the Mender server. The output from state scripts are included
+logs are sent to the Mender Server. The output from state scripts are included
 in these logs. This is useful when troubleshooting intermittent update failures.
 
 ### Further reading

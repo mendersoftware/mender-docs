@@ -42,7 +42,7 @@ Please refer to [further reading](#further-reading) for more details.
 
 ## Prerequisites
 
-### The Mender server
+### The Mender Server
 
 The best and recommended way of running Mender is the [managed mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) with [hosted Mender](https://hosted.mender.io?target=_blank). You can also try the [on-premise demo server](../../07.Server-installation/02.Demo-installation/docs.md) for quick testing.
 
@@ -146,7 +146,7 @@ For more details, see `mender-artifact write module-image --help`
 
 ### Upload and deploy your Artifact
 
-Go to the Artifacts tab in the Mender server UI and upload your newly generated Mender Artifact. Now go to Deployments and deploy the Artifact to All devices. It should finish within a minute or so.
+Go to the Artifacts tab in the Mender Server UI and upload your newly generated Mender Artifact. Now go to Deployments and deploy the Artifact to All devices. It should finish within a minute or so.
 
 ### Upload and deploy your Artifact in Standalone Mode
 

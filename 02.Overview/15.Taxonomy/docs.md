@@ -7,7 +7,7 @@ taxonomy:
 
 This section presents the basic terms used throughout the documentation.
 
-* _Accepted device_ - An authorized device that can connect to the Mender server
+* _Accepted device_ - An authorized device that can connect to the Mender Server
 and receive software updates.
 
 * _Add-on_ (also _Mender Add-on_)- An optional extension to Mender for supporting
@@ -29,7 +29,7 @@ the documentation on [Artifact](../03.Artifact/docs.md) for more information.
 
 * _Authentication Set_ - A combination of an identity and public key for a
 device, determining if a given device can check for- and apply software updates
-from the Mender server. A given device identity can have multiple Authentication
+from the Mender Server. A given device identity can have multiple Authentication
 sets and each can be in one of the following states:
   * rejected
   * accepted
@@ -49,7 +49,7 @@ integration and requires customization based on the hardware and OS.
 * _Deployment_ - The process of delivering software to devices. It consists of
 at least a group of devices and an Artifact name.
 
-* _Device_, _Mender Client Device_ - A single unit that is able to connect to the Mender server, usually
+* _Device_, _Mender Client Device_ - A single unit that is able to connect to the Mender Server, usually
 an independent product. Represented on the server by its identity and
 authentication data.
 
@@ -97,12 +97,12 @@ thanks to the A/B partitioning schema. The Mender Client writes a new filesystem
 to the inactive partition and updates the bootloader configuration to flip the active and
 inactive partition.
 
-* _Organization_ - A single customer environment in the Mender server. Also
+* _Organization_ - A single customer environment in the Mender Server. Also
 known as a Tenant. Note that multi-tenancy is only supported in Mender
 Enterprise.
 
 * _Pending device_ - A device that has already sent an authorization request to
-the Mender server and is not yet authorized through preauthorization or
+the Mender Server and is not yet authorized through preauthorization or
 user authorization.
 
 * _Preauthorized device_ - A device given by authorization set, that will change
@@ -112,12 +112,12 @@ into "accepted" state automatically when it requests authorization.
 reference when porting to new boards.
 
 * _Rejected device_ - A device that has already sent an authorization request to
-the Mender server, which has been explicitly rejected by the user. A device in
-this state is not allowed to communicate with the Mender server and will not
+the Mender Server, which has been explicitly rejected by the user. A device in
+this state is not allowed to communicate with the Mender Server and will not
 receive any updates.
 
 * _Release_ - A set of one or more Artifacts with the same Artifact name. Used
-by the Mender server to assign the right Artifact to a given Device based on
+by the Mender Server to assign the right Artifact to a given Device based on
 software and hardware compatibility.
 
 * _Server-side API_ - The collection of HTTP-based APIs exposed by the Mender

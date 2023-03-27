@@ -38,7 +38,7 @@ Please see [the client section on building for production](../../05.Operating-Sy
 for a description on how to provision new device disk images with the new certificates. In this case, it
 is advisable to ensure there is a overlap between the issuance of new certificates and expiration of old
 ones so all clients are able to receive an update containing the new cert before the old one expires. You
-can have two valid certificates for the Mender server concatenated in the server.crt file. When all clients
+can have two valid certificates for the Mender Server concatenated in the server.crt file. When all clients
 have received the updated server.crt, the server configuration can be updated to use the new certificate.
 In a subsequent update, the old certificate can be removed from the client's server.crt file.
 

@@ -16,7 +16,7 @@ You can add devices to a static group in the UI or using the
 
 Some considerations when working with static groups:
 * Before you can add a device to a static group, it needs to be
-  [Accepted](../15.Taxonomy/docs.md) on the Mender server.
+  [Accepted](../15.Taxonomy/docs.md) on the Mender Server.
 * A device can only exist in one static group.
 * A static group only exists as long as there is at least one device in it.
 

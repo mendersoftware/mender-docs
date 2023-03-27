@@ -5,7 +5,7 @@ taxonomy:
     label: tutorial
 ---
 
-The Mender server uses OpenSearch as a storage and search engine.
+The Mender Server uses OpenSearch as a storage and search engine.
 
 To install OpenSearch on a Kubernetes cluster using the Helm chart follow instructions from [Opensearch using `helm`](https://opensearch.org/docs/2.4/install-and-configure/install-opensearch/helm/):
 

@@ -27,7 +27,7 @@ software on the device and your workstation.
 * Install [mender-client](../../03.Client-installation/02.Install-with-Debian-package/docs.md) on the
   device.
   * [Accept](../../01.Get-started/01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md#step-7-accept-the-device)
-    the device on the Mender server.
+    the device on the Mender Server.
 * Install [mender-cli](../../10.Downloads/docs.md#mender-cli) on your workstation.
   
 

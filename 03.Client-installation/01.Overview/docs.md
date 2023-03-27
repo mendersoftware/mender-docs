@@ -36,7 +36,7 @@ overview](../../02.Overview/01.Introduction/docs.md).
 In order to enable the client to work in as many environments as possible, we
 designed it to be generic and extensible while providing a default setup and
 configuration that should work for most environments. When running managed mode,
-i.e. connected to a Mender server, there are a number of settings and extension
+i.e. connected to a Mender Server, there are a number of settings and extension
 points that you may need to modify for your particular setup.
 
 

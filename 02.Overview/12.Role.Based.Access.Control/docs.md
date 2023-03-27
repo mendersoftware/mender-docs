@@ -9,11 +9,11 @@ category: docs
 !!!!! for an overview of all Mender plans and features.
 
 Role-Based Access Control (RBAC) significantly reduces the risk of accidental
-and unauthorized actions. Admin Users of the Mender server can assign to the
+and unauthorized actions. Admin Users of the Mender Server can assign to the
 other Users Roles with limited access based on the User's responsibilities
 and required tasks. Role assignments reduce the risk of accidents, such as
 deploying beta software to production devices. It also reduces the security
-impact of any compromised Mender server User accounts (e.g., in the case of a
+impact of any compromised Mender Server User accounts (e.g., in the case of a
 stolen password).
 
 ![List of Users](users.png)
