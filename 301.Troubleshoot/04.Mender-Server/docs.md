@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-This document details troubleshooting steps for the most common problems with the Mender server.
+This document details troubleshooting steps for the most common problems with the Mender Server.
 The first part applies to all installations, while the section below only applies to the
 docker-compose setups, both the demo setup and the
 [docker-compose installation](../../07.Server-installation/03.Installation-with-docker-compose/docs.md)
@@ -41,7 +41,7 @@ docker exec $(docker ps -q -n 1 -f 'name=device-auth') /usr/bin/deviceauth maint
 
 ## The virtual QEMU device is not showing up in demo mode
 
-When running the Mender server in demo mode, as described in the [Demo installation](../../07.Server-installation/02.Demo-installation//docs.md) tutorial,
+When running the Mender Server in demo mode, as described in the [Demo installation](../../07.Server-installation/02.Demo-installation//docs.md) tutorial,
 the help tips in the UI give you an option to connect a virtual `qemux86-64` to the server for demo purposes.
 
 If you have trouble connecting this virtual device, please make sure your environment meets the resource requirements

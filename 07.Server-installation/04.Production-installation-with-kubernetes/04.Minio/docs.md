@@ -7,7 +7,7 @@ taxonomy:
 
 If you already have an AWS S3 bucket which you can use, you can skip this section.
 
-The Mender server uses an S3-compatible storage layer to store the artifacts. Please refer to the chapter [Storage of the artifacts](../../06.Storage-of-the-artifacts) for further details about the different storage options available with the Mender server.
+The Mender Server uses an S3-compatible storage layer to store the artifacts. Please refer to the chapter [Storage of the artifacts](../../06.Storage-of-the-artifacts) for further details about the different storage options available with the Mender Server.
 
 <!--AUTOVERSION: "https://github.com/minio/operator/tree/%/helm/minio-operator"/ignore -->
 To install Minio on the Kubernetes cluster using the

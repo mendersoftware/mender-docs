@@ -44,7 +44,7 @@ mender-artifact write bootstrap-artifact \
     --output-path mender-binary-delta-provide-keys.mender
 ```
 
-The Artifact can be installed in standalone mode or remotely deployed with the Mender server.
+The Artifact can be installed in standalone mode or remotely deployed with the Mender Server.
 
 <!--AUTOVERSION: "mender-artifact/blob/%"/ignore-->
 Additionally, to make the server-side generation of Delta Artifacts possible, the Mender Artifact of the current version of the [`rootfs-image`](https://github.com/mendersoftware/mender-artifact/blob/3.9.0/Documentation/artifact-format-v3.md#header-info) running on your device and the updated one must be available as Artifact on the Mender Server.

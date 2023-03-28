@@ -8,16 +8,16 @@ taxonomy:
 ## Custom actions
 Mender provides actions for uploading Mender Artifacts and creating deployments to a group of devices. Both actions are [composite](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action) and require `bash` and `curl` to be available in a used container.
 
-<!--AUTOVERSION: "Mender server version % or"/ignore-->
-!!!!! The actions use [Personal Access Tokens](../../../08.Server-integration/01.Using-the-apis/docs.md#personal-access-tokens) feature which is only available in Mender server version 3.4 or newer.
+<!--AUTOVERSION: "Mender Server version % or"/ignore-->
+!!!!! The actions use [Personal Access Tokens](../../../08.Server-integration/01.Using-the-apis/docs.md#personal-access-tokens) feature which is only available in Mender Server version 3.4 or newer.
 
 In this chapter we introduce the different actions and provide [examples](#pipelines-examples) on how to use them.
 
 ### Upload a Mender Artifact action
-`mendersoftware/mender-gh-action-upload-artifact` action uploads a Mender Artifact to a Mender server. Find more information about the action usage in the related [documentation](https://github.com/mendersoftware/mender-gh-action-upload-artifact).
+`mendersoftware/mender-gh-action-upload-artifact` action uploads a Mender Artifact to a Mender Server. Find more information about the action usage in the related [documentation](https://github.com/mendersoftware/mender-gh-action-upload-artifact).
 
 ### Create a deployment action
-`mendersoftware/mender-gh-action-create-deployment` action creates a deployment on a Mender server. Find more information about the action usage in the related [documentation](https://github.com/mendersoftware/mender-gh-action-create-deployment).
+`mendersoftware/mender-gh-action-create-deployment` action creates a deployment on a Mender Server. Find more information about the action usage in the related [documentation](https://github.com/mendersoftware/mender-gh-action-create-deployment).
 
 ### Setup
 The actions require the following secret to be set in a repository settings:

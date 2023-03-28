@@ -6,7 +6,7 @@ taxonomy:
 ---
 
 This document will show how *standalone* deployments work with Mender,
-where no Mender server is used and the deployments are triggered at the
+where no Mender Server is used and the deployments are triggered at the
 device, either manually in the terminal or by custom scripts. This can be useful in order
 to deploy updates to devices which do not have network connectivity or
 are updated through external storage like a USB stick.

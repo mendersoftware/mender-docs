@@ -44,16 +44,16 @@ More details about signing Mender Artifacts [here](https://docs.mender.io/artifa
 
 ### Uploading a Mender Artifact
 
-This scenario uses `mender-cli` tool to upload your Mender Artifact to the Mender server. 
+This scenario uses `mender-cli` tool to upload your Mender Artifact to the Mender Server. 
 
 The input for the scenario is the Mender Artifact generated in the previous stage, and the output is the upload result.
 
 You can read about uploading the Mender Artifact to the file storage [here](../../08.Server-integration/01.Using-the-apis/docs.md#set-up-mender-cli).
 
-You can use [Personal Access Tokens](../../08.Server-integration/01.Using-the-apis/docs.md#personal-access-tokens) with necessary permissions to perform automated actions on the Mender server on your behalf.
+You can use [Personal Access Tokens](../../08.Server-integration/01.Using-the-apis/docs.md#personal-access-tokens) with necessary permissions to perform automated actions on the Mender Server on your behalf.
 
 ### Deploying an Artifact to the fleet of devices
 
-This scenario uses the Mender server API to trigger a deployment on your fleet.
+This scenario uses the Mender Server API to trigger a deployment on your fleet.
 
 The inputs for this scenario are the device group to deploy on and previously uploaded Mender Artifact, and the output is the deployment result.

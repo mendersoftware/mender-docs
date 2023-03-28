@@ -5,7 +5,7 @@ taxonomy:
     label: tutorial
 ---
 
-The Mender server uses NATS as message broker.
+The Mender Server uses NATS as message broker.
 
 To install NATS on the Kubernetes cluster using the [NATS Helm Chart](https://nats-io.github.io/k8s/),
 for example deploying a cluster with two NATS servers, run:

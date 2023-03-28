@@ -139,4 +139,4 @@ By default, and without any inventory scripts added, the Mender client sends the
 ## Final remarks
 You should not use inventory attributes to uniquely identify a device. They are
 intended  to store information,
-for searching, sorting and filtering devices in the Mender server.
+for searching, sorting and filtering devices in the Mender Server.

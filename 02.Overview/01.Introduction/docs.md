@@ -28,12 +28,12 @@ Project. It creates **Mender Artifacts** in the format required by the target
 device. There will be different Mender Artifacts for each type of device that
 Mender manages.
 
-You upload the Mender Artifacts to the Mender server, which is the central point
+You upload the Mender Artifacts to the Mender Server, which is the central point
 for deploying updates to a fleet of devices. Among other things, it monitors the
 current software version present on each device and schedules the roll out of
 new releases.
 
-Finally, each **Device** runs the Mender client, which polls the Mender server
+Finally, each **Device** runs the Mender client, which polls the Mender Server
 periodically to report its status and to discover if there is a software update
 waiting. If there is, the update client downloads the artifact and performs the
 installation.
@@ -50,10 +50,10 @@ In _managed_ mode the Mender client runs as a daemon and will regularly poll the
 server, automatically apply updates, reboot, report and commit the update. This
 is the best way to run Mender for most large-scale deployments, as the
 deployments are centrally managed across many devices, but it requires to set up
-and connect clients to the Mender server.
+and connect clients to the Mender Server.
 
 In _standalone_ mode, you initiate the updates locally on the device instead of
-connecting the Mender client to a Mender server. A common use-case is to perform
+connecting the Mender client to a Mender Server. A common use-case is to perform
 updates from e.g an USB flash drive. To learn more visit
 [Standalone deployments](../../06.Artifact-creation/06.Standalone-deployment/docs.md)
 

@@ -66,7 +66,7 @@ the [Mender Consulting services to integrate your board](https://mender.io/suppo
 ### Correct clock on device
 
 Make sure that the clock is set correctly on your devices. Otherwise certificate verification will become unreliable
-and **the Mender client can likely not connect to the Mender server**.
+and **the Mender client can likely not connect to the Mender Server**.
 See [certificate troubleshooting](../../301.Troubleshoot/03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid) for more information.
 
 

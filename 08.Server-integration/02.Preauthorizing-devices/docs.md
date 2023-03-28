@@ -5,7 +5,7 @@ taxonomy:
     label: tutorial
 ---
 
-The Mender server supports [preauthorizing devices](../../02.Overview/13.Device-authentication/docs.md#preauthorization-flow), where you add the [identity](../../02.Overview/07.Identity/docs.md) and public key of the device to the Mender server before the device connects for the first time. This way the device is automatically authorized to join the Mender server when it first connects. This is in particular useful in a mass production setting because you can preauthorize devices when they are manufactured so they automatically get accepted into the Mender server when your customer turns them on, which might happen several months after manufacturing.
+The Mender Server supports [preauthorizing devices](../../02.Overview/13.Device-authentication/docs.md#preauthorization-flow), where you add the [identity](../../02.Overview/07.Identity/docs.md) and public key of the device to the Mender Server before the device connects for the first time. This way the device is automatically authorized to join the Mender Server when it first connects. This is in particular useful in a mass production setting because you can preauthorize devices when they are manufactured so they automatically get accepted into the Mender Server when your customer turns them on, which might happen several months after manufacturing.
 
 See [Device authentication](../../02.Overview/13.Device-authentication/docs.md) for a general overview of how device authentication works in Mender.
 
@@ -25,7 +25,7 @@ If you have not yet prepared a device visit one of the following:
 
 ### The identity of your device
 
-When preauthorizing a device you need to know its [identity](../../02.Overview/07.Identity/docs.md). This is one or more key-value attributes, depending on the identity scheme you are using. If you connect your device so it shows up as pending in the Mender server, you will see its identity in the Mender server UI. Note that preauthorization is *not* based on the ID of the device, only on the key-value attributes under Identity.
+When preauthorizing a device you need to know its [identity](../../02.Overview/07.Identity/docs.md). This is one or more key-value attributes, depending on the identity scheme you are using. If you connect your device so it shows up as pending in the Mender Server, you will see its identity in the Mender Server UI. Note that preauthorization is *not* based on the ID of the device, only on the key-value attributes under Identity.
 
 <!--AUTOVERSION: "mender/blob/%"/mender-->
 By default the Mender client uses the [MAC address of the first interface](https://github.com/mendersoftware/mender/blob/master/support/mender-device-identity?target=_blank) on the device as the device identity, for example `mac=02:12:61:13:6c:42`.
@@ -33,16 +33,16 @@ By default the Mender client uses the [MAC address of the first interface](https
 
 ### Mender client and server connectivity
 
-Once your device boots with a newly provisioned disk image, it should already be correctly connecting to the Mender server. After booting the device you should see it pending authorization in the Mender server UI, similar to the following.
+Once your device boots with a newly provisioned disk image, it should already be correctly connecting to the Mender Server. After booting the device you should see it pending authorization in the Mender Server UI, similar to the following.
 
 ![Mender UI - device pending authorization](device-pending-authorization.png)
 
-If your device does not show as pending authorization in the Mender server once it boots with the disk image, you need to diagnose this issue before continuing. See the [troubleshooting section on connecting devices](../../301.Troubleshoot/05.Device-Runtime/docs.md#mender-server-connection-issues) in this case.
+If your device does not show as pending authorization in the Mender Server once it boots with the disk image, you need to diagnose this issue before continuing. See the [troubleshooting section on connecting devices](../../301.Troubleshoot/05.Device-Runtime/docs.md#mender-server-connection-issues) in this case.
 
 
 ### A CLI environment for your server
 
-In order to access the Mender server API with the commands below, you need to set up some shell variables in the terminal you will be using.
+In order to access the Mender Server API with the commands below, you need to set up some shell variables in the terminal you will be using.
 
 Follow the steps in [set up shell variables for cURL](../01.Using-the-apis/docs.md#install-curl-and-jq-and-set-up-the-shell-variables).
 
@@ -93,7 +93,7 @@ keys-client-generated/
 
 ## Preauthorize your device
 
-Now that we have the device's identity and public key, we will use the Mender server management REST APIs to preauthorize it. You can review the API documentation in this [API chapter](../../200.Server-side-API/?target=_blank#management-apis).
+Now that we have the device's identity and public key, we will use the Mender Server management REST APIs to preauthorize it. You can review the API documentation in this [API chapter](../../200.Server-side-API/?target=_blank#management-apis).
 
 
 ### Make sure there are no existing authentication sets for your device
@@ -157,7 +157,7 @@ If there is no output from the command, this indicates it succeeded. To verify, 
 curl -H "Authorization: Bearer $JWT" $MENDER_SERVER_URI/api/management/v2/devauth/devices | jq '.'
 ```
 
-Your device should now be preauthorized and accepted to the Mender server once it connects with the exact same identity and key.
+Your device should now be preauthorized and accepted to the Mender Server once it connects with the exact same identity and key.
 
 
 ## Copy generated device key to disk image
@@ -188,8 +188,8 @@ Then insert the SD card back into your device and boot it.
 
 ## Verify the device is accepted
 
-If everything went as intended, your device will get the `accepted` status in the Mender server. You can log in to the Mender UI to ensure your device is listed and reports inventory.
+If everything went as intended, your device will get the `accepted` status in the Mender Server. You can log in to the Mender UI to ensure your device is listed and reports inventory.
 
 If your device shows as `pending`, see the troubleshooting on [a device shows up as pending after preauthorizing it](../../301.Troubleshoot/04.Mender-Server/docs.md#a-device-shows-up-as-pending-after-preauthorizing-it).
 
-If you do not see your device at all, verify it booted correctly and it is able to connect to the Mender server. You can check [the Mender client logs on the device](../../301.Troubleshoot/03.Mender-Client/docs.md#obtaining-client-logs) for more diagnostics information.
+If you do not see your device at all, verify it booted correctly and it is able to connect to the Mender Server. You can check [the Mender client logs on the device](../../301.Troubleshoot/03.Mender-Client/docs.md#obtaining-client-logs) for more diagnostics information.

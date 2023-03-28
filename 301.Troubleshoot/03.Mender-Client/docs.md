@@ -169,7 +169,7 @@ Post https://<SERVER-URI>/api/devices/v1/authentication/auth_requests: x509: cer
 ```
 
 This could occur in several places, and the distinguishing message is **x509: certificate signed by unknown authority**.
-The message shows that the Mender client rejects the Mender server's certificate because it does not trust the certificate
+The message shows that the Mender client rejects the Mender Server's certificate because it does not trust the certificate
 authority (CA).
 
 If your server is using a certificate that is signed by an official Certificate Authority, then you likely
@@ -179,7 +179,7 @@ in its system store.
 
 !!! Hosted Mender is available in multiple [regions](/11.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
 
-On the other hand, if you set up the Mender server yourself as described in
+On the other hand, if you set up the Mender Server yourself as described in
 [Production installation](../../07.Server-installation/04.Production-installation-with-kubernetes/docs.md) and generated certificates as part of it,
 your need to make sure that the server certificates are in `/etc/mender/server.crt` on your device.
 

@@ -5,7 +5,7 @@ taxonomy:
     label: tutorial
 ---
 
-The Mender server uses MongoDB as primary storage layer. It doesn't have any particular
+The Mender Server uses MongoDB as primary storage layer. It doesn't have any particular
 requirements about the setup of the database, and can use MongoDB both in a single node
 setup and as a replica set.
 

@@ -21,7 +21,7 @@ taxonomy:
 
 Mender supports setting up a reverse proxy at the edge of the network, which can authenticate devices using TLS client certificates. Each client presents a certificate signed by a CA certificate (Certificate Authority), and the edge proxy authenticates devices by verifying this signature. Authenticated devices are automatically authorized in the Mender backend, and do not need manual approval.
 
-This is in particular useful in a mass production setting because you can sign client certificates during the manufacturing process, so they automatically get accepted into the Mender server when your customer turns them on (which might happen several months after manufacturing).
+This is in particular useful in a mass production setting because you can sign client certificates during the manufacturing process, so they automatically get accepted into the Mender Server when your customer turns them on (which might happen several months after manufacturing).
 
 See [Device authentication](../../02.Overview/13.Device-authentication/docs.md) for a general overview of how device authentication works in Mender.
 
@@ -96,7 +96,7 @@ Then generate a certificate from the newly generated private key:
 openssl req -new -x509 -key ca-private.key -out ca-cert.pem -config ca-cert.conf -days $((365*10))
 ```
 
-! The `-days` argument specifies how long the certificate is valid, and you can adjust it as needed. The example expression gives a certificate which is valid for approximately 10 years. Since the CA certificate will only be used on the Mender server, it is usually not important that it expires, and it's better to have a long expiry time to avoid having to rotate certificates on the devices.
+! The `-days` argument specifies how long the certificate is valid, and you can adjust it as needed. The example expression gives a certificate which is valid for approximately 10 years. Since the CA certificate will only be used on the Mender Server, it is usually not important that it expires, and it's better to have a long expiry time to avoid having to rotate certificates on the devices.
 
 
 ### Generate a server certificate
@@ -206,7 +206,7 @@ You need to repeat the generation and signing of the client certificate for each
 
 ## Set up the mTLS edge proxy to authenticate devices using mTLS
 
-The mTLS ambassador acts as an edge proxy running in front of your Mender server. The Mender client running on the devices connects to it, providing its client TLS certificate and establishing a mutual TLS authentication. If the client certificate's signature matches the certification authority recognized by the mTLS ambassador, the Mender server will automatically accept the device. The edge proxy transparently forwards all the requests from the Mender client to the Mender server. From the client's perspective, it provides the same API end-points as the upstream Mender server.
+The mTLS ambassador acts as an edge proxy running in front of your Mender Server. The Mender client running on the devices connects to it, providing its client TLS certificate and establishing a mutual TLS authentication. If the client certificate's signature matches the certification authority recognized by the mTLS ambassador, the Mender Server will automatically accept the device. The edge proxy transparently forwards all the requests from the Mender client to the Mender Server. From the client's perspective, it provides the same API end-points as the upstream Mender Server.
 
 The mTLS ambassador is distributed as a Docker image and can be run on a Docker host, using docker-compose or on Kubernetes.
 
@@ -216,7 +216,7 @@ You need the following certificates to start the service:
 * `server.key`, the corresponding private key for the certificate above
 * `ca.crt`, the Certification Authority's certificate used to sign the server and client certificates.
 
-You also need to specify a username and password pair. The ambassador will use it to connect to the Mender server to authorize clients who connect using a valid certificate signed by the known CA.
+You also need to specify a username and password pair. The ambassador will use it to connect to the Mender Server to authorize clients who connect using a valid certificate signed by the known CA.
 
 <!--AUTOMATION: ignore -->
 ```bash
@@ -271,8 +271,8 @@ docker run \
 
 Replace the following values with the ones that match your configuration:
 
-* **MTLS_MENDER_USER** and **MTLS_MENDER_PASS** are the user security credentials that allow the mTLS ambassador to connect to the Mender server and authorize new devices connecting using the mTLS authentication.
-* **MTLS_MENDER_BACKEND** is the URL of the upstream Mender server; the edge proxy will forward the HTTPS requests to.
+* **MTLS_MENDER_USER** and **MTLS_MENDER_PASS** are the user security credentials that allow the mTLS ambassador to connect to the Mender Server and authorize new devices connecting using the mTLS authentication.
+* **MTLS_MENDER_BACKEND** is the URL of the upstream Mender Server; the edge proxy will forward the HTTPS requests to.
 * **MTLS_DEBUG_LOG** (optional) enables verbose debugging log.
 * **server.crt** and **server.key** are the paths to your server TLS certificate and key.
 * **ca.crt** is the file which contains the certificate of the Certification Authority.
@@ -350,6 +350,6 @@ Then insert the SD card back into your device and boot it.
 
 ## Verify that the device is accepted
 
-If everything went as intended, your device shows up as `accepted` status in the Mender server. You can log in to the Mender UI to ensure your device appears on the device list and reports inventory.
+If everything went as intended, your device shows up as `accepted` status in the Mender Server. You can log in to the Mender UI to ensure your device appears on the device list and reports inventory.
 
 If your device is not showing up, make sure you installed the certificates correctly - both on the server and on the device. Check client logs and/or server logs for error messages that can identify what is wrong. See the [troubleshooting section on connecting devices](../../301.Troubleshoot/05.Device-Runtime/docs.md#mender-server-connection-issues) in this case.

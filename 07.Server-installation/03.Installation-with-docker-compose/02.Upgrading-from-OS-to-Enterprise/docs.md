@@ -55,7 +55,7 @@ with upgrading to Mender Enterprise, please email
 The first thing we will do is to create a backup of the Open Source server so
 that it can be restored if needed.
 
-Start by shutting down the Mender server:
+Start by shutting down the Mender Server:
 
 <!-- AUTOMATION: execute=cd $ORIG_DIR -->
 

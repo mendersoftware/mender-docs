@@ -11,7 +11,7 @@ Unlike [Device identity attributes](../07.Identity/docs.md), Device inventory at
 do not need to be unique. They simply provide information about the target device.
 
 The Mender client will periodically collect inventory-related data for reporting
-to the Mender server. Executable files, stored in a known location, will be
+to the Mender Server. Executable files, stored in a known location, will be
 invoked by the Mender client, producing the inventory data as a set of key-value
 pairs.
 
@@ -22,7 +22,7 @@ please refer to the [client installation section](../../03.Client-installation/0
 
 ## Usage
 
-The Mender server stores information about each device in the form of key-value pairs
+The Mender Server stores information about each device in the form of key-value pairs
 called *attributes* grouped in *scopes*. The inventory attributes belong
 to *inventory* scope which also denotes the ownership of data; the device
 "owns" the inventory data in a sense that it can overwrite the attributes
@@ -44,7 +44,7 @@ of a device.
 
 ### Inventory attribute use cases
 
-The inventory attributes mechanism allows you to publish to the Mender server every
+The inventory attributes mechanism allows you to publish to the Mender Server every
 piece of data that is important for your usage and that can be expressed as
 key-value pairs. Later you can use these attributes to create filters, dynamic groups,
 and to search for devices.
@@ -73,7 +73,7 @@ please refer to the [client configuration section](../../03.Client-installation/
 
 Each device can upload up to 100 inventory attributes in a single inventory update.
 
-When indexing, the Mender server considers up to 100 different inventory attributes' names
+When indexing, the Mender Server considers up to 100 different inventory attributes' names
 uploaded by the devices. It will ignore all the additional inventory attributes' names.
 You can see the current usage and the list of filterable attributes in the Global settings.
 

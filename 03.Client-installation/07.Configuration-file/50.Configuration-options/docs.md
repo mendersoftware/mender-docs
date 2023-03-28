@@ -225,7 +225,7 @@ attempts the next server on the list in the given order.
 #### ServerURL
 
 The server URL is the basis for API requests. This needs to point to the
-server which runs the Mender server services. It should include the whole URL,
+server which runs the Mender Server services. It should include the whole URL,
 including `https://` and a trailing slash. *NOTE: This entry conflicts with
 [`Servers` attribute](#Servers), i.e. the server only accepts one of these entries.*
 
