@@ -78,6 +78,11 @@ If a script returns `0` Mender proceeds, but if it returns `1` the update is abo
 In addition, return code `21` is used for the [Retry later](#retry-later) feature.
 All other return codes are reserved for future use by Mender and should not be used.
 
+!!! Returning 1 in any of the `Download_Enter` scripts will cause the client to abort the update and
+!!! go back to Idle, but it will not report failure to the server. Therefore the deployment will be
+!!! retried on the next polling cycle. This behavior [may change in the
+!!! future](https://northerntech.atlassian.net/browse/MEN-6319?target=_blank).
+
 ### Retry later
 
 State scripts are allowed to return a specific error code (`21`), in which case the client will sleep for a time configured by [StateScriptRetryIntervalSeconds](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#statescriptretryintervalseconds) before the state script is called again. Note that scripts are not allowed to retry for infinitely long. Please see description of [StateScriptRetryTimeoutSeconds](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#statescriptretrytimeoutseconds) for more information.
