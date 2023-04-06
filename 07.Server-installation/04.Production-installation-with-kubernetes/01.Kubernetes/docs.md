@@ -116,3 +116,15 @@ EOF
 
 kubectl apply -f issuer-letsencrypt.yml
 ```
+
+### Opensearch requirements
+<!--AUTOVERSION: "Mender version %"/ignore-->
+Starting from Mender version 3.5, OpenSearch is required. If you are planning to install
+OpenSearch as a helm chart inside a Kubernetes cluster, you have to set worker nodes
+Linux kernel setting `vm.max_map_count`:
+
+```
+vm.max_map_count=262144
+```
+
+[References.](https://opensearch.org/docs/1.0/opensearch/install/important-settings/)
