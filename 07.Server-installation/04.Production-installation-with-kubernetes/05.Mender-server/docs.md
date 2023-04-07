@@ -210,7 +210,7 @@ kubectl exec $USERADM_POD -- useradm create-user --username "demo@mender.io" --p
 Create the administrator user using the `tenantadm` pod:
 ```bash
 TENANTADM_POD=$(kubectl get pod -l 'app.kubernetes.io/name=tenantadm' -o name | head -1)
-TENANT_ID=$(kubectl exec -- $TENANTADM_POD tenantadm create-org --name demo --username "admin@mender.io" --password "adminadmin" --plan enterprise)
+TENANT_ID=$(kubectl exec $TENANTADM_POD -- tenantadm create-org --name demo --username "admin@mender.io" --password "adminadmin" --plan enterprise)
 ```
 
 You can create additional users from the command line of the `useradm` pod:
