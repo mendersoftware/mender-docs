@@ -38,7 +38,7 @@ EOF
 
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo update
-helm upgrade --install mongodb bitnami/mongodb --version 11.2.0 -f mongodb.yml
+helm upgrade --install mongodb bitnami/mongodb --version 13.8.1 -f mongodb.yml
 ```
 
 You can get the connection string to connect to your mongodb cluster running:
