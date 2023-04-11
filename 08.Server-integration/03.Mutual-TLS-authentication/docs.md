@@ -15,9 +15,11 @@ taxonomy:
 <!-- AUTOMATION: execute=} -->
 <!-- AUTOMATION: execute=trap cleanup EXIT -->
 
+
 !!!!! Mutual TLS authentication is only available in the Mender Enterprise plan.
-!!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
-!!!!! for an overview of all Mender plans and features.
+!!!!! To gain access to the mtls proxy container before you are an Enterprise customer please [contact us](https://mender.io/contact-us). 
+!!!!! In the message please mention the 'Evaluation of the mtls proxy'.
+
 
 Mender supports setting up a reverse proxy at the edge of the network, which can authenticate devices using TLS client certificates. Each client presents a certificate signed by a CA certificate (Certificate Authority), and the edge proxy authenticates devices by verifying this signature. Authenticated devices are automatically authorized in the Mender backend, and do not need manual approval.
 
