@@ -60,6 +60,8 @@ and alive you can proceed to the next step: propagation of devices and deploymen
 For convenience, we provide a command line tool to perform the re-indexing of all your devices.
 The following table presents example usage:
 
+!!! For non enterprise deployments please replace `deviceauth-enterprise` with `deviceauth`
+
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="kubernetes"]
 <!--AUTOMATION: ignore -->
@@ -83,6 +85,8 @@ The following table presents example usage:
 
 You have to migrate deployments, in a similar way to devices, using the following command line
 tool:
+
+!!! For non enterprise deployments please replace `deployments-enterprise` with `deployments`
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="kubernetes"]
