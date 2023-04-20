@@ -1,8 +1,8 @@
 ---
 title: Upgrading from 3.4 to 3.5
 taxonomy:
-category: docs
-label: tutorial
+    category: docs
+    label: tutorial
 ---
 
 This is a tutorial for upgrading the Mender Server to version 3.5 in production environments.
