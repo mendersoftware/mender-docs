@@ -73,7 +73,7 @@ The following table presents example usage:
 [/ui-tab]
 [ui-tab title="docker-compose"]
 <!--AUTOMATION: ignore -->
-    # docker exec -it integrationupgrade_mender-device-auth_1 /usr/bin/deviceauth-enterprise propagate-reporting
+    # docker exec $(docker ps -q -n 1 -f 'name=device-auth') /usr/bin/deviceauth-enterprise propagate-reporting
     INFO[2023-02-20T16:53:04Z] propagating inventory for all tenants         file=commands.go func=cmd.selectDbs line=290
     INFO[2023-02-20T16:53:04Z] propagating device data to reporting from DB: deviceauth-63f3a22bc27bbe79cfbe320a  file=commands.go func=cmd.tryPropagateReportingForDb line=497
     INFO[2023-02-20T16:53:04Z] Done with DB deviceauth-63f3a22bc27bbe79cfbe320a  file=commands.go func=cmd.tryPropagateReportingForDb line=512
@@ -103,7 +103,7 @@ INFO[2023-02-20T16:55:39Z] all DBs processed, exiting.                   file=ma
 [ui-tab title="docker-compose"]
 <!--AUTOMATION: ignore -->
 ```
-# docker exec -it integrationupgrade_mender-deployments_1 /usr/bin/deployments-enterprise propagate-reporting
+# docker exec $(docker ps -q -n 1 -f 'name=deployments') /usr/bin/deployments-enterprise propagate-reporting
 WARN[2023-02-20T16:55:39Z] 'presign.secret' not configured. Generating a random secret.  file=config.go func=config.Setup line=237
 INFO[2023-02-20T16:55:39Z] propagating deployments history for all tenants  file=main.go func=main.selectDbs line=253
 INFO[2023-02-20T16:55:39Z] propagating deployments data to reporting from DB: deployment_service-63f3a22bc27bbe79cfbe320a  file=main.go func=main.tryPropagateReportingForDb line=280
