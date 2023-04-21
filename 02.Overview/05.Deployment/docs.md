@@ -4,57 +4,108 @@ taxonomy:
     category: docs
 ---
 
-A Deployment ensures delivery of a Release to one or more devices. A Release can contain one or more Mender Artifacts, where one of the Artifacts is assigned when the device receives the update based on software and hardware compatibility.
-
-At its basics, the definition of a Deployment includes:
-
-* *ID*, randomly generated, unique identifier of the Deployment, assigned by Mender at creation time
-* *Release*, a collection of one or more Artifacts, each being an archive containing everything Mender needs to update the targeted devices
-* *Devices* targeted by the update
-* *Phases* (_Professional/Enterprise only_) describing a phased and/or scheduled roll-out
-* *Number of retries* (_Professional/Enterprise only_) for each device in case of a failure during the update process
-
-Only accepted devices can be part of a Deployment, and any given device finishes the Deployment once.
-Mender also maintains the order of the Deployments, so the oldest Deployment is the one a given device gets first.
-Maintaining the order of the Deployments also means that the device will never get a Deployment created before the most recently installed one.
-
-## Deployment to static groups
-
-It is possible to create a Deployment targeting one or more specific devices, both using the UI and the APIs, selecting an explicit list of Device IDs.
-The Mender UI also supports the creation of a Deployment targeting a static device group, to update all the devices belonging to it.
-
-A Deployment to a static group contains a list of devices and finishes once all the devices in the Deployment have finished.
-Mender uses the group to retrieve the list of the Device IDs at
-Deployment creation time, so the Deployment will not include any devices assigned to the group afterwards.
+A Deployment ensures delivery of a Release to one or more devices. A Release can contain one or more Mender Artifacts.
+The Artifact is assigned to a device based on the software and hardware compatibility the device provided.
+In other words, a Deployment is the server side model which represent a device update.
 
 
-## Deployment to dynamic groups
+The characteristics of a Deployment are:
+* Only accepted devices can be part of a Deployment
+* A device won't take part in the same Deployment twice
+    * This can be overridden with the "Force update" option
+* Deployments get applied to the device in the chronological order they are created
 
-Mender Enterprise also supports the creation of Deployments using a dynamic filter to assign a Deployment to an open, variable group of devices matching the filter criteria until the user stops the Deployment.
 
-Deployments to a dynamic group behave very differently than Deployments to a static
-group. Deployments to dynamic groups will never implicitly finish, but will stay
-active until the user stops it. However, you can use the maximum number
-of devices setting to ensure the Deployment finishes when the given number of devices
-receive an update. Please also note that a device can only be in *one* static
-group at the same time, while it can be in *multiple* dynamic groups.
+### Deployment to static groups
+
+A Deployment to a static group contains a fixed list of devices and finishes once all the devices in the Deployment have finished.
+The Mender Server translates the group into a fixed list of Device IDs at Deployment creation time.
+
+A Deployment to static groups will:
+
+A Deployment to static groups will:
+* Finish as soon as all devices have either reported success or failure
+* Apply to a specified number of devices during the lifetime of the Deployment
+    * Adding or removing devices to the static group after the Deployment creation does not affect the ongoing Deployment.
+
+
+### Deployment to dynamic groups
+
+In the Enterprise plan, Mender Server supports the creation of Deployments using a dynamic filter to assign a Deployment to an open, variable group of devices matching a filter criterion.
+
+A Deployment to a dynamic group behaves differently than to a static group. In particular, it will:
+
+* Never finish unless the user manually stops it or it was explicitly capped to a limited number of devices
+* The number of devices taking part in the Deployment can change during the lifetime of the Deployment
+
+
+**Example: Deployment order on dynamic groups**
+
+The principle of guaranteeing a predictable order might not be intuitive in certain cases of deployments to dynamic groups.
+The most common case for that is the automatic incremental updated (`v1` -> `v2` -> `v3`).
+
+Imagine the following case of dynamic groups:
+
+```
+group-v1 - devices with v1      # an example device starts with the version v1
+group-v2 - devices with v2
+group-v3 - devices with v3
+```
+
+The Deployments get created in the following order:
+
+```
+(1.) Deploy v2 to group-v1
+(2.) Deploy v3 to group-v2
+```
+
+The device is part of `group-v1` and the Deployment `(1.)` was created first.
+It's applied to the device, the device gets updated to v2. This results in a group change so the device is now part of `group-v2`.
+
+Deployment `(2.)` was created after Deployment `(1.)` so it can be applied to the device next and the device updates to v3.
+
+
+Let's examine the same case:
+
+```
+group-v1 - devices with v1      # an example device starts with the version v1
+group-v2 - devices with v2
+group-v3 - devices with v3
+```
+
+But in this case the Deployment creation order is reversed:
+
+    (1.) Deploy v3 to group-v2
+    (2.) Deploy v2 to group-v1
+
+
+Deployment (1.) is created first, but the device isn't part of group-v2.
+Instead Deployment (2.) takes place and updates the device to v2.
+
+The device is now part of group-v2 and and there is an ongoing Deployment (1.) to group-v2.
+However Deployment (1.) **will not start** for the device to not break the guaranteed ordering rule.
+
+From the perspective of the device Deployment (1.) has to happen before Deployment (2.),
+Since Deployment (2.) already took place there is no possible way for (1.) to take place without breaking the guarantee.
+
 
 ### Phased rollouts and dynamic groups
 
-The calculation for the number of devices in a phases uses the total number of devices in the dynamic group at the moment of deployment creation.
-The nature of deployments to a dynamic group is that the total number of devices receiving the update can change during the lifetime of the deployment.
+The calculation for the number of devices in a phase uses the total number of devices in the dynamic group at the moment of Deployment creation.
+The nature of Deployments to dynamic groups is that the total number of devices receiving the update can change during the lifetime of the Deployment.
 
 If the number of devices in a dynamic group changes during a phased rollout the original rollout calculation won't be recalculated.
 Depending of the nature of the change the following will happen:
 * the number of devices in the dynamic group increases - last phase expands to contain all remaining device.
 * the number of devices in the dynamic group decreases - the entire group (potentially) gets updated before all the phases end
 
-!! The exact time a specific device receives a deployed artifact is not determined by the server, but the concrete moment the device contacts the server following its polling cycle.
-!! This means it is possible that devices which joined the group after the deployment started, get updated as part of the first phase.
+!! The exact time a specific device receives a deployed Artifact is not determined by the server, but the concrete moment the device contacts the server following its polling cycle.
+!! This means it is possible that devices which joined the group after the Deployment started, get updated as part of the first phase.
 
-Example.
+**Example: Phased rollout to a dynamic group**
+
 ```
-A dynamic group has 100 devices during the creation of the deployment.
+A dynamic group has 100 devices during the creation of the Deployment.
 There are two phases 80% and 20%.
 They will contains 80 and 20 devices.
 As new devices become part of the group the last phase gets expanded.
@@ -67,7 +118,7 @@ As new devices become part of the group the last phase gets expanded.
 
 Example.
 ```
-A dynamic group has 100 devices during the creation of the deployment.
+A dynamic group has 100 devices during the creation of the Deployment.
 There are two phases 80% and 20%.
 They will contains 80 and 20 devices.
 As devices leave the group all devices in the group get updated in the first phase.
@@ -130,9 +181,9 @@ The values for the status field for a *finished* Deployment are:
 ### Algorithm for selecting the Deployment for the Device
 
 It is possible that you have chosen the device to be the target for one Deployment or more.
-When the device is asking for the Deployment, the deployments service looks for
+When the device is asking for the Deployment, the Deployments service looks for
 the *oldest unfinished Deployment* for the device (see the picture below).
 If there is one, the Deployments service creates the instance of the Deployment for the device (Device Deployment) with a *pending* state and executes the following operations:
-* checks if the Deployment has more than one phase and in case it does, checks if there is an active phase; if so, the deployments service proceeds, if not, the Deployment service returns no instructions to the device;
-* tries to assign an Artifact to the device; if there is an artifact returns the Deployment instructions to the device; if not - returns no instructions and sets the device Deployment status to *no artifact*; in case the artifact installed on the device is the same as the one in the Deployment, deployments service returns no instructions and sets the device Deployment status to *already installed*.
+* checks if the Deployment has more than one phase and in case it does, checks if there is an active phase; if so, the Deployments service proceeds, if not, the Deployment service returns no instructions to the device;
+* tries to assign an Artifact to the device; if there is an artifact returns the Deployment instructions to the device; if not - returns no instructions and sets the device Deployment status to *no artifact*; in case the artifact installed on the device is the same as the one in the Deployment, Deployments service returns no instructions and sets the device Deployment status to *already installed*.
 ![Select Deployment Algorithm](selectDeploymentForDeviceAlgorithm.png)
