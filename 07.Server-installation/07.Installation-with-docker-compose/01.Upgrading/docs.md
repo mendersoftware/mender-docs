@@ -5,6 +5,8 @@ taxonomy:
     label: tutorial
 ---
 
+!! Production installation with docker compose is considered deprecated for versions beyond 3.3.
+
 This is a tutorial for upgrading the Mender Server in production environments. In
 general updating is only supported between connected minor versions, and latest
 minor to next major version, and this tutorial reflects this. Both the Open Source

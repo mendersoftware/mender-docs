@@ -5,6 +5,10 @@ taxonomy:
     category: docs
     label: tutorial
 ---
+
+!! Production installation with docker compose is considered deprecated for versions beyond 3.3.
+
+
 <!-- "Upgrading from Open Source to Enterprise" is slightly too big to fit in
     the navigation menu, hence the two titles above. -->
 

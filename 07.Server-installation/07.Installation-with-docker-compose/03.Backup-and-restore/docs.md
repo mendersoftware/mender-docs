@@ -5,6 +5,9 @@ taxonomy:
     label: tutorial
 ---
 
+!! Production installation with docker compose is considered deprecated for versions beyond 3.3.
+
+
 ## Docker volumes
 
 As described in the [installation](../docs.md) chapter, the Mender stack requires

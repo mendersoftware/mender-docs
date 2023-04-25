@@ -1,13 +1,64 @@
 ---
-title: Minio
+title: Artifact storage
 taxonomy:
     category: docs
     label: tutorial
 ---
 
-If you already have an AWS S3 bucket which you can use, you can skip this section.
+The following artifact layers are continuously tested and considered supported:
+* AWS S3
+* Azure Blob Storage
 
-The Mender Server uses an S3-compatible storage layer to store the artifacts. Please refer to the chapter [Storage of the artifacts](../../06.Storage-of-the-artifacts) for further details about the different storage options available with the Mender Server.
+
+Technically speaking any S3 API compatible storage layer is expected to work. Examples of those are:
+
+* [Minio](https://github.com/minio/minio)
+* [SeaweedFS](https://github.com/chrislusf/seaweedfs)
+* [Leofs](https://github.com/leo-project/leofs)
+
+
+
+## Amazon S3 IAM policies
+
+A minimum policy set to use an Amazon S3 bucket to store Mender Artifacts is:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "s3:GetAccessPoint",
+                "s3:ListAllMyBuckets"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        },
+        {
+            "Action": [
+                "s3:*"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:s3:::BUCKET-NAME"
+        },
+        {
+            "Action": [
+                "s3:*"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:s3:::BUCKET-NAME/*"
+        },
+    ]
+}
+```
+
+
+## Minio reference example
+
+If you already have an AWS S3 bucket or Azure Blob storage which you can use, you can skip this section.
+
+!! To keep the tutorial decoupled from the UI details of any of the managed cloud vendors the example below will show how to set up minio instead of AWS S3.
+!! Please note that for support purposes we only cover troubleshooting in case of the supported artifact layers.
 
 <!--AUTOVERSION: "https://github.com/minio/operator/tree/%/helm/minio-operator"/ignore -->
 To install Minio on the Kubernetes cluster using the

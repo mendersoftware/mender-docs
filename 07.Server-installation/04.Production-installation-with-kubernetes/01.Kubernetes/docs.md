@@ -5,16 +5,21 @@ taxonomy:
     label: tutorial
 ---
 
-The basic requirements to run the Mender Server on Kubernetes are:
+Technically speaking, any [CNCF-certified](https://landscape.cncf.io/card-mode?category=certified-kubernetes-distribution,certified-kubernetes-hosted&grouping=category) kubernetes distribution is expected to work as long as the version are met:
 
 <!--AUTOVERSION: "% or later"/ignore -->
 - A [Kubernetes](https://kubernetes.io/) cluster, version **1.12.0 or later**.
 - The [Helm CLI](https://helm.sh/) version **3.1.0 or later**
 
-!!! In this section, we guide you by installing a Kubernetes cluster using k3s for
-!!! evaluation purposes. Please don't consider installing the Kubernetes cluster
-!!! described here as a complete, production-grade setup. The installation of the
-!!! cluster and the related infrastructure is the responsibility of the user.
+The following cloud distributions are continuously tested and considered supported:
+
+- [Amazon Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/)
+- [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-au/services/kubernetes-service/)
+
+
+!! To keep the tutorial decoupled from the UI details of any of the managed cloud vendors `k3s` will be used.
+!! Please note that for support purposes we only cover troubleshooting for the above mentioned supported distributions.
+
 
 ### Installation of Kubernetes
 

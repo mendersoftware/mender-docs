@@ -10,6 +10,16 @@ taxonomy:
 ! of installing Minio. Please make sure you correctly define them or adapt the
 ! snippet to your specific use case.
 
+The Mender backend will store the files in Persistent Volumes provisioned by Kubernetes
+according to the Helm charts configurations.
+
+To deploy a production-grade Mender backend, you will need Kubernetes worker nodes providing
+at least 4 GB of RAM, 4 vCPUs and 10 GB for the persistent volumes. However, you can adjust
+the memory and CPU requests to lower the requirements for development deployments and install
+the Mender backend on a Kubernetes cluster with lower available resources.
+
+The Mender backend is available for the x86 architecture only.
+
 ## Prerequisites
 
 The Mender Server deployment requires generating keys that are used for user and

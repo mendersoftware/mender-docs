@@ -5,6 +5,9 @@ taxonomy:
     label: tutorial
 ---
 
+!! Production installation with docker compose is considered deprecated for versions beyond 3.3.
+
+
 The Deployments service stores Mender artifacts in an S3 compatible object-store. This
 gives the end-user flexibility in using either their storage proxy based on
 [Minio](https://min.io/), the default setup, or 3rd party services such as Amazon S3.

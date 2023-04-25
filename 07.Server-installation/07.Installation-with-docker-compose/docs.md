@@ -1,5 +1,5 @@
 ---
-title: Installation with Docker Compose
+title: DEPRECATED - Installation with Docker Compose
 taxonomy:
     category: docs
     label: tutorial
@@ -17,6 +17,8 @@ taxonomy:
 <!-- Cleanup code -->
 <!-- AUTOMATION: execute=ORIG_DIR=$PWD; function cleanup() { set +e; cd $ORIG_DIR/mender-server/production; ./run down -v; docker volume rm mender-artifacts mender-db; cd $ORIG_DIR; rm -rf mender-server; } -->
 <!-- AUTOMATION: execute=trap cleanup EXIT -->
+
+!! Production installation with docker compose is considered deprecated for versions beyond 3.3.
 
 !!! You can save time by using [hosted Mender](https://hosted.mender.io?target=_blank), a secure Mender Server ready to use, maintained by the Mender developers.
 

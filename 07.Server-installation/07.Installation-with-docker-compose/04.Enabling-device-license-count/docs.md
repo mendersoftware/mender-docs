@@ -5,6 +5,9 @@ taxonomy:
     label: tutorial
 ---
 
+!! Production installation with docker compose is considered deprecated for versions beyond 3.3.
+
+
 !!!!! Device License Count is only available in Mender Enterprise.
 !!!!! Ignore this section if you are running Mender Open Source.
 
