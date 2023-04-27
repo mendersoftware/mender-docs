@@ -259,4 +259,4 @@ Because of the possible re-execution described above, you should develop Update 
 ## Further reading
 
 <!--AUTOVERSION: "blob/%/Documentation"/mender -->
-* [Update Modules v3 protocol](https://github.com/mendersoftware/mender/blob/3.5.0/Documentation/update-modules-v3-file-api.md?target=_blank)
+* [Update Modules v3 protocol](https://github.com/mendersoftware/mender/blob/3.4.0/Documentation/update-modules-v3-file-api.md?target=_blank)
