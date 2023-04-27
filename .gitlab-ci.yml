@@ -60,7 +60,7 @@ test:latest_versions:
     - pip3 install pyyaml
     - export INTEGRATION_REPO_DIR=/tmp/integration
     - git clone https://github.com/mendersoftware/integration.git $INTEGRATION_REPO_DIR
-    - export INTEGRATION_VERSION=origin/staging
+    - export INTEGRATION_VERSION=origin/3.4.0
   script:
     - ./autoversion.py
       --update
