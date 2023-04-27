@@ -44,6 +44,8 @@ At this time, we support the following LTS releases: 3.3.
 | ----------- | --------------- |
 | 3.3         |  2023-06        |
 
+!!!! Please note, 3.5 was initially released as an LTS but has been withdrawn because of technical reasons.
+
 Mender is versioned and released as a Product bundle, and the versions mentioned here refer to the Product bundle version.
 
 Under the version of the Product bundle, there are multiple different components with their individual versioning. To see which component versions belong to a bundle, please refer to [this JSON file](https://docs.mender.io/releases/versions.json)
