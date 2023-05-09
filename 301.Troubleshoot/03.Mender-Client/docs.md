@@ -328,3 +328,13 @@ The block below shows 3 example artifacts.
 * artifact - `mender-artifact read <mender-artifact.mender>`
 * device - Run the command on the device `mender show-provides`
 * server UI - `Releases -> Select Release -> Expand the artifact info by clicking it -> Expand Provides and Depends`
+
+### `Xdelta3: target window checksum mismatch: XD3_INVALID_INPUT`
+
+This message is caused by the root filesystem being altered, which usually is avoided by mounting read-only.
+Depending on your operating system, there might be background services that modify on-disk storage in a supposedly
+transparent manner, though. Those need to be either disabled completely, or configured to not operate on the
+root filesystem partition.
+
+Known services with this effect:
+- `fstrim` from the `util-linux` package
