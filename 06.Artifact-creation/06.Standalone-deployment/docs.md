@@ -6,7 +6,7 @@ taxonomy:
 ---
 
 This document will show how *standalone* deployments work with Mender,
-where no Mender server is used and the deployments are triggered at the
+where no Mender Server is used and the deployments are triggered at the
 device, either manually in the terminal or by custom scripts. This can be useful in order
 to deploy updates to devices which do not have network connectivity or
 are updated through external storage like a USB stick.
@@ -54,7 +54,7 @@ mender install <URI>
 For example, if you are updating from a USB stick, you could use `/mnt/usb1/release1.mender`.
 To use HTTPS, simply replace it with a URL like `https://fileserver.example.com/mender/release1.mender`.
 
-!!! If you are doing a full file system update, now run the `reboot` command to boot into the new file system.
+!!! If you are doing an Operating System update, now run the `reboot` command to boot into the new filesystem.
 
 ## Make the deployment permanent
 

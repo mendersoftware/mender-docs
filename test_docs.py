@@ -76,6 +76,14 @@ with open(sys.argv[1]) as f:
     contents = ""
     for line in f.readlines():
         line = line.strip()
+        if line.startswith("git clone"):
+            integration_branch = os.environ.get("INTEGRATION_BRANCH")
+            if integration_branch is not None:
+                default_branch = re.search(r"-b ([a-zA-Z0-9\.\-\_]*) ", line).group(1)
+                line = line.replace(default_branch, integration_branch)
+                line = line.replace(
+                    "github.com/mendersoftware", "gitlab.com/Northern.tech/Mender"
+                )
         if re.search(ignore_line, line):
             ignore_next_codeblock = True
             ignore_count += 1

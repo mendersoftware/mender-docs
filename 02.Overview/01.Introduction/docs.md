@@ -28,12 +28,12 @@ Project. It creates **Mender Artifacts** in the format required by the target
 device. There will be different Mender Artifacts for each type of device that
 Mender manages.
 
-You upload the Mender Artifacts to the Mender server, which is the central point
+You upload the Mender Artifacts to the Mender Server, which is the central point
 for deploying updates to a fleet of devices. Among other things, it monitors the
 current software version present on each device and schedules the roll out of
 new releases.
 
-Finally, each **Device** runs the Mender client, which polls the Mender server
+Finally, each **Device** runs the Mender client, which polls the Mender Server
 periodically to report its status and to discover if there is a software update
 waiting. If there is, the update client downloads the artifact and performs the
 installation.
@@ -50,10 +50,10 @@ In _managed_ mode the Mender client runs as a daemon and will regularly poll the
 server, automatically apply updates, reboot, report and commit the update. This
 is the best way to run Mender for most large-scale deployments, as the
 deployments are centrally managed across many devices, but it requires to set up
-and connect clients to the Mender server.
+and connect clients to the Mender Server.
 
 In _standalone_ mode, you initiate the updates locally on the device instead of
-connecting the Mender client to a Mender server. A common use-case is to perform
+connecting the Mender client to a Mender Server. A common use-case is to perform
 updates from e.g an USB flash drive. To learn more visit
 [Standalone deployments](../../06.Artifact-creation/06.Standalone-deployment/docs.md)
 
@@ -70,7 +70,7 @@ learn more.
 
 ## Update types
 
-###  Robust system updates
+### Robust Operating System updates
 
 One of the primary requirements of any update system is that it should be robust.
 It must be able to recover from an update that fails, including loss of power
@@ -81,7 +81,7 @@ system image directly to the flash partition. Mender comes with built-in support
 for  a dual redundant scheme (also known as A/B scheme), which ensures that the
 device always comes back to a working state on failure.
 
-During system update, the client writes the new version to the inactive
+During Operating System update, the client writes the new version to the inactive
 partition. When complete, the client verifies the checksum. If all is well, it
 sets a flag in the bootloader that will cause it to flip the active and inactive
 partitions around on the next reboot. Then the system reboots.
@@ -94,9 +94,9 @@ If something causes the device to reboot before committing the update, the
 bootloader knows that something went wrong, and will **roll back** to the
 previous version by flipping the active and inactive partitions back again.
 
-One consequence of the system update is that the update will replace all the
+One consequence of the Operating System update is that the update will replace all the
 files in a filesystem, thereby deleting any new or changed files that had been
-placed there. In other words, to be updatable a file system needs to be
+placed there. In other words, to be updatable a filesystem needs to be
 **stateless**.
 
 You have to store all files that you modify on the devices in a separate
@@ -113,6 +113,38 @@ deploying application updates.
 To support application updates in a generic way, Mender provides the [Update Module](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md) framework.
 
 ![application-updates](application-updates.png)
+
+
+### Combining Operating System and Application updates
+
+A common requirement when performing software updates on connected devices
+is combining Operating System and Application updates. Operating System updates
+represent the only secure and robust way to upgrade the kernel, the operating system,
+and related libraries, avoiding the risk of bricking the device. However,
+they come with the price of the downtime caused by the system reboot and,
+when delta updates are not in use, the higher amount of data usage because
+of the need to transfer an artifact containing the full rootfs image.
+
+In contrast, application updates implemented through the
+[Update Module](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md)
+framework are more flexible when the update scenario requires the replacement
+of a subset of the files on the device's firmware and doesn't require
+a complete device reboot cycle to apply the changes.
+
+Mender allows combining Operating System and Application updates on the same device
+to achieve the best flexibility without compromising the specific advantages
+of the two approaches. When generating the Mender Artifacts, you can customize
+the [Software Versioning](../../06.Artifact-creation/09.Software-versioning/docs.md)
+values, as well as [*Depends* and *Provides* entries](../03.Artifact/docs.md#provides-and-depends)
+in the Artifacts to define dependencies between the different kinds of updates.
+
+You can find more information about the strategies and best practices to 
+combine Operating System and Application updates in the
+[Combining system and application updates](../../06.Artifact-creation/03.Combining-system-and-application-updates/docs.md) chapter.
+
+!!! Please note that in this context, while it is technically possible
+!!! to use the Update Module API to implement Operating System updates, we
+!!! refer to application updates as non-rootfs ones.
 
 
 ### Proxy deployments

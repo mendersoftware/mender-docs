@@ -12,7 +12,7 @@ taxonomy:
 
 ## Prerequisites
 
-The Mender server deployment requires generating keys that are used for user and
+The Mender Server deployment requires generating keys that are used for user and
 device authentication. The following snippet uses `openssl` to generate the
 required keys:
 
@@ -48,14 +48,18 @@ You can now install the Mender Server running:
 
 [ui-tabs position="top-left" active="0" theme="default" ]
 [ui-tab title="Open Source"]
-<!--AUTOVERSION: "cat >mender-%.yml <<EOF"/integration "helm upgrade --install mender mender/mender --version % -f mender-%.yml"/integration -->
+<!--AUTOVERSION: "export MENDER_VERSION_TAG=\"mender-%\""/ignore -->
+<!--AUTOVERSION: "cat >mender-%.yml <<EOF"/integration "helm upgrade --install mender mender/mender -f mender-%.yml"/integration -->
 ```bash
 export MENDER_SERVER_DOMAIN="mender.example.com"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
+export MENDER_VERSION_TAG="mender-3.4"
 
 cat >mender-master.yml <<EOF
 global:
   enterprise: false
+  image:
+    tag: ${MENDER_VERSION_TAG}
   mongodb:
     URL: "mongodb://root:${MONGODB_ROOT_PASSWORD}@mongodb-0.mongodb-headless.default.svc.cluster.local:27017,mongodb-1.mongodb-headless.default.svc.cluster.local:27017"
   nats:
@@ -82,7 +86,7 @@ useradm:
 $(cat useradm.key | sed -e 's/^/      /g')
 EOF
 
-helm upgrade --install mender mender/mender --version master -f mender-master.yml
+helm upgrade --install mender mender/mender -f mender-master.yml
 ```
 [/ui-tab]
 [ui-tab title="Enterprise"]
@@ -92,12 +96,14 @@ helm upgrade --install mender mender/mender --version master -f mender-master.ym
 !!!!! Container Registry. Please email [contact@mender.io](mailto:contact@mender.io) to
 !!!!! receive an evaluation account.
 
-
-<!--AUTOVERSION: "cat >mender-%.yml <<EOF"/integration "helm upgrade --install mender mender/mender --version % -f mender-%.yml"/integration -->
+<!--AUTOVERSION: "export MENDER_VERSION_TAG=\"mender-%\""/ignore -->
+<!--AUTOVERSION: "cat >mender-%.yml <<EOF"/integration "helm upgrade --install mender mender/mender -f mender-%.yml"/integration -->
 ```bash
 export MENDER_REGISTRY_USERNAME="replace-with-your-username"
 export MENDER_REGISTRY_PASSWORD="replace-with-your-password"
+export MENDER_SERVER_DOMAIN="mender.example.com"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
+export MENDER_VERSION_TAG="mender-3.4"
 
 cat >mender-master.yml <<EOF
 global:
@@ -105,6 +111,7 @@ global:
   image:
     username: "${MENDER_REGISTRY_USERNAME}"
     password: "${MENDER_REGISTRY_PASSWORD}"
+    tag: ${MENDER_VERSION_TAG}
   mongodb:
     URL: "mongodb://root:${MONGODB_ROOT_PASSWORD}@mongodb-0.mongodb-headless.default.svc.cluster.local:27017,mongodb-1.mongodb-headless.default.svc.cluster.local:27017"
   nats:
@@ -136,7 +143,7 @@ useradm:
 $(cat useradm.key | sed -e 's/^/      /g')
 EOF
 
-helm upgrade --install mender mender/mender --version master -f mender-master.yml
+helm upgrade --install mender mender/mender -f mender-master.yml
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -242,7 +249,7 @@ kubectl exec $USERADM_POD -- useradm create-user --username "demo@mender.io" --p
 Create the administrator user using the `tenantadm` pod:
 ```bash
 TENANTADM_POD=$(kubectl get pod -l 'app.kubernetes.io/name=tenantadm' -o name | head -1)
-TENANT_ID=$(kubectl exec $TENANTADM_POD tenantadm create-org --name demo --username "admin@mender.io" --password "adminadmin" --plan enterprise)
+TENANT_ID=$(kubectl exec $TENANTADM_POD -- tenantadm create-org --name demo --username "admin@mender.io" --password "adminadmin" --plan enterprise)
 ```
 
 You can create additional users from the command line of the `useradm` pod:

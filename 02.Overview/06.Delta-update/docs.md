@@ -13,8 +13,8 @@ Delta updates provide significant savings in both bandwidth and install time.
 When you use Delta updates, only the difference between the new and the old root
 filesystem is transmitted to the device. A Delta update can therefore be
 significantly smaller than a regular update. In every other regard, this is the
-same as doing a regular system update, with atomicity, integrity, rollback and
-signature support included.
+same as doing a regular Operating System update, with atomicity, integrity, rollback
+and signature support included.
 
 
 ![Delta update generation](image0.png)
@@ -25,7 +25,7 @@ storage, as opposed to a regular update, which writes all bytes, even if they
 have not changed on the storage medium.
 
 
-When a device checks for an update, the Mender server will automatically assign
+When a device checks for an update, the Mender Server will automatically assign
 the right Artifact to the device based on the version the device is already
 running. It selects a Delta update if available for the Release the device is
 running, but also supports falling back to the full image if no Delta update is

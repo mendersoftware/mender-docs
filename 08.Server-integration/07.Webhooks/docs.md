@@ -10,7 +10,7 @@ This integration is available in all Mender plans, as well as Mender Open Source
 
 ## Prerequisites
 
-### A Mender server and device
+### A Mender Server and device
 
 You need a device integrated with Mender, see the [Get started guide](../../01.Get-started/01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md).
 

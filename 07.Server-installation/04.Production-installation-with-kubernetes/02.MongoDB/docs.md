@@ -5,7 +5,7 @@ taxonomy:
     label: tutorial
 ---
 
-The Mender server uses MongoDB as primary storage layer. It doesn't have any particular
+The Mender Server uses MongoDB as primary storage layer. It doesn't have any particular
 requirements about the setup of the database, and can use MongoDB both in a single node
 setup and as a replica set.
 
@@ -32,11 +32,15 @@ image:
   tag: "4.4.13-debian-10-r63"
 persistence:
   size: "8Gi"
+livenessProbe:
+  timeoutSeconds: 30
+readinessProbe:
+  timeoutSeconds: 30
 EOF
 
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo update
-helm upgrade --install mongodb bitnami/mongodb --version 11.2.0 -f mongodb.yml
+helm upgrade --install mongodb bitnami/mongodb --version 13.8.1 -f mongodb.yml
 ```
 
 You can get the connection string to connect to your mongodb cluster running:

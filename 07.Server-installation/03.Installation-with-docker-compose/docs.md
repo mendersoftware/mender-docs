@@ -18,11 +18,11 @@ taxonomy:
 <!-- AUTOMATION: execute=ORIG_DIR=$PWD; function cleanup() { set +e; cd $ORIG_DIR/mender-server/production; ./run down -v; docker volume rm mender-artifacts mender-db; cd $ORIG_DIR; rm -rf mender-server; } -->
 <!-- AUTOMATION: execute=trap cleanup EXIT -->
 
-!!! You can save time by using [hosted Mender](https://hosted.mender.io?target=_blank), a secure Mender server ready to use, maintained by the Mender developers.
+!!! You can save time by using [hosted Mender](https://hosted.mender.io?target=_blank), a secure Mender Server ready to use, maintained by the Mender developers.
 
 !!! Hosted Mender is available in multiple [regions](/11.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
 
-! This chapter contains the legacy documentation for the production installation using Docker Compose. If you are interested in setting up a Mender server for production, we highly suggest reading the [Production installation with Kubernetes](../04.Production-installation-with-kubernetes/docs.md), which is is the only supported platform for the installation of a production-grade Mender Server.
+! This chapter contains the legacy documentation for the production installation using Docker Compose. If you are interested in setting up a Mender Server for production, we highly suggest reading the [Production installation with Kubernetes](../04.Production-installation-with-kubernetes/docs.md), which is is the only supported platform for the installation of a production-grade Mender Server.
 
 This is a step by step tutorial for deploying the Mender Server for production
 environments using Docker compose, and will cover relevant security and reliability
@@ -53,7 +53,7 @@ documentation:
     - This heavily depends on your scale and environment, the supported [Mender Enterprise](https://mender.io/product/mender-enterprise?target=_blank) edition is recommended for larger-scale environments.
 - A public IP address assigned and port 443 publicly accessible.
 - Allocated DNS names for the Mender API Gateway and the Mender Storage Proxy
-  that resolve to the public IP of the Mender server by the devices. By following this tutorial
+  that resolve to the public IP of the Mender Server by the devices. By following this tutorial
   all services will be hosted on the same server, so you can use just one domain name for both.
   If you are just testing you can use a temporary domain name obtained from services like
   [https://ipq.co](https://ipq.co?target=_blank).
@@ -171,7 +171,7 @@ The template includes a few files:
   integration repository)
 
 - `enterprise.yml.template` - configuration for running an Enterprise instance
-  of the Mender server. This topic is covered separately in [the Enterprise
+  of the Mender Server. This topic is covered separately in [the Enterprise
   part](#enterprise) of the installation tutorial
 
 !!! If an `enterprise.yml` file exists in the `config` directory, this will
@@ -231,7 +231,7 @@ necessary Docker images:
 
 ### Certificates and keys
 
-First, set the public domain name of your server (the URL your devices will reach your Mender server on):
+First, set the public domain name of your server (the URL your devices will reach your Mender Server on):
 
 ```bash
 API_GATEWAY_DOMAIN_NAME="mender.example.com"  # NB! replace with your server's public domain name
@@ -301,7 +301,7 @@ git commit -m 'production: adding generated keys and certificates'
 
 The API Gateway and Storage Proxy certificates generated here need to be made
 available to the Mender client.
-Consult the section on [building for production](../../05.System-updates-Yocto-Project/06.Build-for-production/docs.md)
+Consult the section on [building for production](../../05.Operating-System-updates-Yocto-Project/06.Build-for-production/docs.md)
 for a description on how to include the certificates in the client builds.
 
 !! Only certificates need to be made available to devices or end users. Private keys should never be shared.
@@ -640,7 +640,7 @@ installing an Open Source server, please proceed to
 <!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" -eq 1 ]; then -->
 
 This section will go through setting up the Enterprise features of the Mender
-server. If you are using the Open Source edition of the Mender server, you can
+server. If you are using the Open Source edition of the Mender Server, you can
 skip ahead to [the verification](#verification).
 
 ### Configuring Enterprise
@@ -657,7 +657,7 @@ Copy the `enterprise.yml.template` file to its production location,
 cp config/enterprise.yml.template config/enterprise.yml
 ```
 
-Creating the `enterprise.yml` file enables the Enterprise Mender server.
+Creating the `enterprise.yml` file enables the Enterprise Mender Server.
 
 ### Bring up the Enterprise server
 
@@ -781,9 +781,9 @@ which integration method is used with the client. Please refer to one of these s
 * [Mender installed on device using a deb
   package](../../03.Client-installation/02.Install-with-Debian-package/docs.md)
 * [Device integration using Yocto
-  Project](../../05.System-updates-Yocto-Project/99.Variables/docs.md#mender_tenant_token)
+  Project](../../05.Operating-System-updates-Yocto-Project/99.Variables/docs.md#mender_tenant_token)
 * [Device integration with Debian
-  Family](../../04.System-updates-Debian-family/03.Customize-Mender/docs.md)
+  Family](../../04.Operating-System-updates-Debian-family/03.Customize-Mender/docs.md)
 * [Modifying an existing prebuilt
   image](../../06.Artifact-creation/03.Modify-an-Artifact/docs.md)
 

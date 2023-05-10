@@ -117,7 +117,7 @@ Each TLS certificate has a validity period, *Not Before* and *Not After*, and th
 the current time is outside this range.
 
 Most commonly this is caused by **incorrect time setting on the device** which runs the Mender client. Check this by
-running `date` on the device, and make sure it is correct. Consult the section on [Correct clock](../../05.System-updates-Yocto-Project/01.Overview/docs.md#correct-clock)
+running `date` on the device, and make sure it is correct. Consult the section on [Correct clock](../../05.Operating-System-updates-Yocto-Project/01.Overview/docs.md#correct-clock)
 for a more detailed discussion.
 
 To determine the status of your time synchronization, execute the following:
@@ -169,7 +169,7 @@ Post https://<SERVER-URI>/api/devices/v1/authentication/auth_requests: x509: cer
 ```
 
 This could occur in several places, and the distinguishing message is **x509: certificate signed by unknown authority**.
-The message shows that the Mender client rejects the Mender server's certificate because it does not trust the certificate
+The message shows that the Mender client rejects the Mender Server's certificate because it does not trust the certificate
 authority (CA).
 
 If your server is using a certificate that is signed by an official Certificate Authority, then you likely
@@ -179,7 +179,7 @@ in its system store.
 
 !!! Hosted Mender is available in multiple [regions](/11.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
 
-On the other hand, if you set up the Mender server yourself as described in
+On the other hand, if you set up the Mender Server yourself as described in
 [Production installation](../../07.Server-installation/04.Production-installation-with-kubernetes/docs.md) and generated certificates as part of it,
 your need to make sure that the server certificates are in `/etc/mender/server.crt` on your device.
 
@@ -192,7 +192,7 @@ openssl s_client -showcerts -connect mender.example.com:443 < /dev/null 2>/dev/n
 
 If these mismatch, then you need to update `/etc/mender/server.crt` on your client.
 You can do this manually for testing purposes, and you should
-[include the certificates in your Yocto Project build](../../05.System-updates-Yocto-Project/06.Build-for-production/docs.md#Preparing-the-server-certificates-on-the-client).
+[include the certificates in your Yocto Project build](../../05.Operating-System-updates-Yocto-Project/06.Build-for-production/docs.md#Preparing-the-server-certificates-on-the-client).
 
 ## Depth zero self-signed certificate, openssl verify rc: 18
 
@@ -259,14 +259,14 @@ ERRO[0000] exit status 1                                 module=partitions
 ERRO[0000] No match between boot and root partitions.    module=main
 ```
 
-The problem here is most likely that the device does not have the [partition layout Mender expects](../../05.System-updates-Yocto-Project/01.Overview/docs.md#partition-layout). This could have happened if you just placed the Mender binary into your rootfs, but did not [reflash the entire storage device](../../05.System-updates-Yocto-Project/20.Provisioning-a-new-device/docs.md) with the `.sdimg.` file output from the [Yocto Project build](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md). When this happens, output from `mount` and `fw_printenv` can confirm that this is the problem you are seeing. The solution is to flash your entire storage device with the `.sdimg` output from the Yocto Project build process.
+The problem here is most likely that the device does not have the [partition layout Mender expects](../../05.Operating-System-updates-Yocto-Project/01.Overview/docs.md#partition-layout). This could have happened if you just placed the Mender binary into your rootfs, but did not [reflash the entire storage device](../../05.Operating-System-updates-Yocto-Project/20.Provisioning-a-new-device/docs.md) with the `.sdimg.` file output from the [Yocto Project build](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md). When this happens, output from `mount` and `fw_printenv` can confirm that this is the problem you are seeing. The solution is to flash your entire storage device with the `.sdimg` output from the Yocto Project build process.
 
 
 ## The Mender client uses excessive network traffic even when not deploying updates
 
-If you are using the Mender client in demo mode, either by selecting it when running `mender setup`, or set up with the [demo layer](../../05.System-updates-Yocto-Project/03.Build-for-demo/docs.md), the Mender client has more aggressive [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md) to simplify testing.
+If you are using the Mender client in demo mode, either by selecting it when running `mender setup`, or set up with the [demo layer](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md), the Mender client has more aggressive [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md) to simplify testing.
 
-See the documentation on [building for production](../../05.System-updates-Yocto-Project/06.Build-for-production/docs.md) and [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md) to reduce the network bandwidth usage.
+See the documentation on [building for production](../../05.Operating-System-updates-Yocto-Project/06.Build-for-production/docs.md) and [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md) to reduce the network bandwidth usage.
 
 
 ## Delta updates 
@@ -333,15 +333,15 @@ The block below shows 3 example artifacts.
 
 The checksum shown with `mender show-provides` does not necessarily represent the running partition's actual checksum.
 
-For example, if you remount the partition `rw`, change something and remount it `ro`, the checksum in the `mender provides` won't change, while the checksum of the running partition changes.
+For example, if you remount the partition `rw`, change something and remount it `ro`, the checksum in the `mender show-provides` won't change, while the checksum of the running partition changes.
 
 As part of your troubleshooting, you can check that the actual checksum on the device is the same as in the `Depends` field.
 
-A general command should be something like the below, but it depends on your device's type of dd.
+A general command should be something like the below.
 
-You can check what is your active root file system (`$ACTIVE_PARTITION` in the following `dd`) with a command like `lsblk`, `fdisk -l`, or similar.
+You can identify your active root file system (`$ACTIVE_PARTITION` in the following `dd`) with a command like `lsblk`, `fdisk -l`, `mount` or similar.
 
-The payload size of the version running on the device can be fetched from `mender-artifact read delta.mender`, check for the variable `rootfs_file_size` and use it as `$PAYLOAD_SIZE` in the following `dd`.
+The payload size of the version running on the device can be obtained from `mender-artifact read delta.mender`, check for the variable `rootfs_file_size` and use it as `$PAYLOAD_SIZE` in the following `dd`.
 
 ```bash
 dd if=/dev/$ACTIVE_PARTITION bs=1M count=$PAYLOAD_SIZE iflag=count_bytes | sha256sum -
@@ -358,3 +358,14 @@ dd if=/dev/$ACTIVE_PARTITION bs=1M count=$PAYLOAD_SIZE iflag=count_bytes | sha25
 * In the `/etc/fstab` file make sure the root file system is mounted as `ro`. Remember that the parameter `defaults` include the value `rw`.
 
 * In Nvidia devices using `meta-tegra` from the **OE4T** project, the variable `KERNEL_ROOTSPEC` could set the mount of the root filesystem to be read-write in an early boot stage. Check its value with `bitbake -e <image>` if in doubt.
+
+
+#### `Xdelta3: target window checksum mismatch: XD3_INVALID_INPUT`
+
+This message is caused by the root filesystem being altered, which usually is avoided by mounting read-only.
+Depending on your operating system, there might be background services that modify on-disk storage in a supposedly
+transparent manner, though. Those need to be either disabled completely, or configured to not operate on the
+root filesystem partition.
+
+Known services with this effect:
+- `fstrim` from the `util-linux` package

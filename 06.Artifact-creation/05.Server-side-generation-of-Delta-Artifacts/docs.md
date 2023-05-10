@@ -8,10 +8,28 @@ taxonomy:
 Mender Enterprise supports the server-side generation of Delta Artifacts.
 This document explains the prerequisites to enable this feature and how it works.
 
-!!! Hosted Mender supports this feature in the Enterprise plan; however, its availability requires a tenant-specific activation.
-!!! If you are a customer interested in it, please get in touch with the [Hosted Mender support team](mailto:support@mender.io).
-
 ### Prerequisites
+
+#### Hosted Mender
+
+The automatic generation of delta artifacts on the server side with
+[hosted Mender](https://hosted.mender.io/ui/signup) works out of the box with the Enterprise plan, provided 
+you sign up for it. In order to do so, please get in touch with the [hosted Mender support team](mailto:support@mender.io).
+
+#### On-premise installations
+
+In case of installations in your own infrastructure, there is additional step required: setting the configuration
+in the deployments service. To this end, and in order to enable the server side delta generation, you have to call
+an internal endpoint like that:
+
+```bash
+TENANT_ID=your_tenant_id
+curl -v -H "Content-Type: application/json;" -XPUT -d '{ "delta": { "enabled": true, "binary_delta_limits": { "jobs_in_parallel": { "max": 2 }, "queue_length": { "max": 4 } }, "binary_delta": { "timeout": 3600 } } }' http://mender-deployments:8080/api/internal/v1/deployments/tenants/${TENANT_ID}/config
+```
+
+Where `your_tenant_id` stands for the id of your tenant for which you enable the feature.
+
+#### Requirements on a device
 
 To support the server-side generation of Delta Artifacts, your device must report the availability of the `mender-binary-delta` Update Module to the server.
 This will happen automatically if you are building your firmware using Yocto and the `meta-mender` layer.
@@ -26,7 +44,7 @@ mender-artifact write bootstrap-artifact \
     --output-path mender-binary-delta-provide-keys.mender
 ```
 
-The Artifact can be installed in standalone mode or remotely deployed with the Mender server.
+The Artifact can be installed in standalone mode or remotely deployed with the Mender Server.
 
 <!--AUTOVERSION: "mender-artifact/blob/%"/ignore-->
 Additionally, to make the server-side generation of Delta Artifacts possible, the Mender Artifact of the current version of the [`rootfs-image`](https://github.com/mendersoftware/mender-artifact/blob/3.9.0/Documentation/artifact-format-v3.md#header-info) running on your device and the updated one must be available as Artifact on the Mender Server.
@@ -57,3 +75,15 @@ Please refer to the [Create a Delta update Artifact](../05.Create-a-Delta-update
 ![Mender logo](settings.jpg)
 
 The settings apply to the newly generated Delta Artifacts only. Existing Delta Artifacts previously uploaded to the Mender Server won't be affected by the changes to these values.
+
+### Server side delta generation decision
+
+The Mender Server makes the decision to trigger the binary delta generation based on the following:
+
+* `rootfs.version` which device reports
+* `rootfs.chksum` which device reports
+* existence of full rootfs artifact in the tenant account that matches exactly the two above
+
+If and only if all of the above, together with the existence of `mender-binary-delta` reported
+in available `update_modules` by a device is fulfilled the server will trigger the generation
+of binary delta artifact and automatically offer it for deployment.

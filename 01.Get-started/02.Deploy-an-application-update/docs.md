@@ -1,5 +1,5 @@
 ---
-title: Deploy an application update
+title: Deploy an Application update
 taxonomy:
     category: docs
     label: tutorial
@@ -78,7 +78,7 @@ Drag-and-drop or click **browse** to select the file for upload.
 
 ![Upload web page](Image_15.png)
 
-When you upload a single file to the Mender server, you will get a wizard to
+When you upload a single file to the Mender Server, you will get a wizard to
 create a [Mender Artifact](../../02.Overview/03.Artifact/docs.md)
 of the type `file`, which allows you deploy single files to your device. You can
 use the default values pre-filled by the Mender UI and click **NEXT**.
@@ -125,5 +125,5 @@ using Mender!
 
 Proceed to one of the following tutorials (listed in recommended order):
 
-1. [Deploy a system update](../03.Deploy-a-system-update/docs.md)
-1. [Deploy a container update](../04.Deploy-a-container-update/docs.md)
+1. [Deploy an Operating System update](../03.Deploy-an-operating-system-update/docs.md)
+1. [Deploy a Container update](../04.Deploy-a-container-update/docs.md)

@@ -15,16 +15,18 @@ The following diagram shows the high level flow of creating and managing keys an
 
 ![Mender signature management flow](mender-signature-management-flow.png)
 
-The process begins with provisioning a device with the public verification key, and configuring the Mender Client to use the key (with the `ArtifactVerifyKey` [configuration option](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#ArtifactVerifyKey)). After an Artifact is built, it is signed by the Signing system.
+The process begins with provisioning a device with the public verification key, and configuring the Mender Client to use the key (with the `ArtifactVerifyKey(s)` [configuration option](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#ArtifactVerifyKey)). After an Artifact is built, it is signed by the Signing system.
 
 !!! Although it is convenient and possible to use the Build system as the Signing system, this lowers the security as unauthorized access to the private signing key is made easier for potential attackers (e.g. if the Build system is compromised). The best practice is to only sign Artifacts on an offline system, ideally as a manual operation after careful inspection of the Artifact.
 
 After you have created and signed the Artifact you can make it available to the devices running the Mender Client by uploading it to the Mender Server.
-During the update installation process, the Mender Client will verify the Artifact using the corresponding public key.
+During the update installation process, the Mender Client will verify the Artifact using the corresponding public key(s).
 The Artifact will only be installed if the verification is successful.
-If the `ArtifactVerifyKey` option is set and Artifacts are not signed or the verification fails, the Mender Client will abort the update process and report an error to the Mender Server.
+If the `ArtifactVerifyKey(s)` option is set and Artifacts are not signed or the verification fails, the Mender Client will abort the update process and report an error to the Mender Server.
 
-! If the Mender Client is configured to enable signature verification (through the `ArtifactVerifyKey` option), it will reject any unsigned Artifacts. This is necessary because otherwise an attacker could simply inject unsigned Artifacts to bypass the signature verification.
+Multiple keys can be used with the `ArtifactVerifyKeys` option, in which case the first key that successfully verifies the signature will be used. This is useful for rotating keys or supporting signed artifacts from different sources.
+
+! If the Mender Client is configured to enable signature verification (through the `ArtifactVerifyKey(s)` option), it will reject any unsigned Artifacts. This is necessary because otherwise an attacker could simply inject unsigned Artifacts to bypass the signature verification.
 
 ## Supported signing algorithms
 
@@ -79,7 +81,7 @@ command or for existing artifacts using the `sign` command.
 We add the `-k` parameter in both cases to specify the private key, which we will use for
 creating the signature.
 
-#### A raw root file system
+#### A raw root filesystem
 
 <!--AUTOVERSION: "mender-%"/mender-->
 ```bash
@@ -91,7 +93,7 @@ mender-artifact write rootfs-image \
 -o artifact-signed.mender
 ```
 
-! Make sure the Artifact name specified by the `-n` parameter in the above command matches the value specified when your file system image was created.
+! Make sure the Artifact name specified by the `-n` parameter in the above command matches the value specified when your filesystem image was created.
 
 #### An existing Mender Artifact
 
@@ -113,13 +115,13 @@ mender-artifact validate artifact-signed.mender -k public.key
 
 ## Enable Mender Client signature verification
 
-Signature verification is enabled on the Mender client using the [ArtifactVerifyKey](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#artifactVerifykey) configuration option.
+Signature verification is enabled on the Mender client using the [ArtifactVerifyKey(s)](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#ArtifactVerifykey) configuration option.
 
 For OS specific instructions on how to install and enable verification keys, visit:
 
-- [Yocto Project - Building for production - Artifact signing and verification keys](../../05.System-updates-Yocto-Project/06.Build-for-production/docs.md#artifact-signing-and-verification-keys).
+- [Yocto Project - Building for production - Artifact signing and verification keys](../../05.Operating-System-updates-Yocto-Project/06.Build-for-production/docs.md#artifact-signing-and-verification-keys).
 
-- [Debian family - Customize Mender](../../04.System-updates-Debian-family/03.Customize-Mender/docs.md)
+- [Debian family - Customize Mender](../../04.Operating-System-updates-Debian-family/03.Customize-Mender/docs.md)
 
 ## Cloud Key Management
 

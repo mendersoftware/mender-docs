@@ -1,5 +1,5 @@
 ---
-title: Deploy a container update
+title: Deploy a Container update
 taxonomy:
     category: docs
     label: tutorial
@@ -187,7 +187,7 @@ will download and run the specified images from e.g
 [https://hub.docker.com](https://hub.docker.com).
 
 The [Kubernetes Update Module](https://hub.mender.io/t/kubernetes/1939?target=_blank) is very
-similar and instead allows deployment of Kubernetes manifesto files.
+similar and instead allows deployment of Kubernetes manifest files.
 
 You can explore other types of updates available by extending the Mender client
 in the

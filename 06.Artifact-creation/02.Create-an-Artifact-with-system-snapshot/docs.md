@@ -9,21 +9,11 @@ the currently running system. In this workflow a "golden image" is maintained on
 a single device (or SD card) by making run-time modifications on the device, 
 such as installing packages, changing configurations and updating the operating
 system. When this device has been tested and the environment should be 
-replicated, a snapshot can be taken with Mender. This results in a file system
+replicated, a snapshot can be taken with Mender. This results in a filesystem
 image and Mender Artifact that can be deployed to the rest of the device fleet.
 
 !!! This feature is fully supported by the
 !!! following filesystems: ext[234], XFS, JFS, btrfs, f2fs, and ReiserFS.
-
-<!--AUTOVERSION: "mender-convert version %"/mender-convert-->
-<!-- See MEN-4983 -->
-!! Be careful when running `apt upgrade` on a device with Mender system updates enabled. Integration
-!! with `apt upgrade` (through the `grub.d` framework) is only implemented for x86 as of
-!! mender-convert version master. For ARM and other non-x86 architectures, always update single
-!! applications only, because running `apt upgrade` may brick your device!. If you need to run `apt
-!! upgrade`, do it on a pristine system without Mender installed, and then [convert it to a Mender
-!! image](../../04.System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md)
-!! afterwards. This restriction may be lifted in the future.
 
 
 ## Option 1: Creating a snapshot using mender-artifact directly

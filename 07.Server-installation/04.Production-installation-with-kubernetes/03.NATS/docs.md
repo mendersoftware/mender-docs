@@ -5,19 +5,19 @@ taxonomy:
     label: tutorial
 ---
 
-The Mender server uses NATS as message broker.
+The Mender Server uses NATS as message broker.
 
 To install NATS on the Kubernetes cluster using the [NATS Helm Chart](https://nats-io.github.io/k8s/),
 for example deploying a cluster with two NATS servers, run:
 
-<!--AUTOVERSION: "image: \"nats:%-alpine\""/ignore -->
+<!--AUTOVERSION: "image: \"nats:%-scratch\""/ignore -->
 ```bash
 cat >nats.yml <<EOF
 cluster:
   enabled: true
   replicas: 2
 nats:
-  image: "nats:2.3.1-alpine"
+  image: "nats:2.7.4-scratch"
   jetstream:
     enabled: true
 

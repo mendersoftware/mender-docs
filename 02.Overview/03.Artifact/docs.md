@@ -82,8 +82,8 @@ the *Provides* values on the device are.
 ### Streaming, resume and compression
 
 The tar format supports streaming, which Mender takes advantage of. As a Mender
-Artifact is downloaded from the Mender server or external storage, the Mender
-client streams the root file system within it directly to the inactive partition,
+Artifact is downloaded from the Mender Server or external storage, the Mender
+client streams the root filesystem within it directly to the inactive partition,
 without needing any temporary storage for unpacking it before it is written.
 This drastically reduces storage requirements for the update process,
 improves performance and reduces flash wear.
@@ -94,7 +94,7 @@ interrupted, using [HTTP range requests](https://tools.ietf.org/html/rfc7233?tar
 
 To enable streaming and control based on metadata, like aborting the download
 if the Artifact is not compatible with the device, the Mender Artifact itself
-is not compressed. Instead, the root file systems within Artifacts are
+is not compressed. Instead, the root filesystems within Artifacts are
 compressed, as well as some of the metadata, like headers, currently with the
 [gzip compression algorithm](https://en.wikipedia.org/wiki/gzip?target=_blank)
 by default.
@@ -115,11 +115,11 @@ Mender Artifacts. It allows you to view, create, modify and sign all types of
 Mender Artifacts. Get it in the
 [Downloads section](../../10.Downloads/docs.md#mender-artifact).
 
-Mender also has OS-level integrations for creating system updates as part of
+Mender also has OS-level integrations for creating Operating System updates as part of
 your existing OS build process. Learn more by reading the following sections:
 
-- [System updates: Debian family](../../04.System-updates-Debian-family/chapter.md)
-- [System updates: Yocto Project](../../05.System-updates-Yocto-Project/chapter.md)
+- [Operating System updates: Debian family](../../04.Operating-System-updates-Debian-family/chapter.md)
+- [Operating System updates: Yocto Project](../../05.Operating-System-updates-Yocto-Project/chapter.md)
 
 
 ### Sign and verify

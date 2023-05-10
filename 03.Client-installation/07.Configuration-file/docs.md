@@ -39,4 +39,13 @@ The mechanism for providing the configuration file and specifying the configurat
 If you have already built an Artifact containing the rootfs, have a look at [modifying a Mender Artifact](../../06.Artifact-creation/03.Modify-an-Artifact/docs.md).
 
 
+# Configuring system paths
 
+The following table describes the different system paths that the Mender client uses and the
+associated environment variables used to customize them.
+
+| Description             | Default path        | Environment variable   |
+| ----------------------- | ------------------- | ---------------------- |
+| Configuration directory | `/etc/mender`       | `MENDER_CONF_DIR`      |
+| Data directory          | `/usr/share/mender` | `MENDER_DATA_DIR`      |
+| Persistent datastore    | `/var/lib/mender`   | `MENDER_DATASTORE_DIR` |

@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-This document details troubleshooting steps for the most common problems with the Mender server.
+This document details troubleshooting steps for the most common problems with the Mender Server.
 The first part applies to all installations, while the section below only applies to the
 docker-compose setups, both the demo setup and the
 [docker-compose installation](../../07.Server-installation/03.Installation-with-docker-compose/docs.md)
@@ -41,7 +41,7 @@ docker exec $(docker ps -q -n 1 -f 'name=device-auth') /usr/bin/deviceauth maint
 
 ## The virtual QEMU device is not showing up in demo mode
 
-When running the Mender server in demo mode, as described in the [Demo installation](../../07.Server-installation/02.Demo-installation//docs.md) tutorial,
+When running the Mender Server in demo mode, as described in the [Demo installation](../../07.Server-installation/02.Demo-installation//docs.md) tutorial,
 the help tips in the UI give you an option to connect a virtual `qemux86-64` to the server for demo purposes.
 
 If you have trouble connecting this virtual device, please make sure your environment meets the resource requirements
@@ -131,7 +131,7 @@ menderproduction_minio_1                      minio server /export             U
 Alternatively, the same information can be obtained by running `docker ps`
 directly with a label filter, like this:
 
-<!--AUTOVERSION: "nats:%"/ignore-->
+<!--AUTOVERSION: "nats:%-scratch"/ignore-->
 ```
 user@local$ docker ps --filter label=com.docker.compose.project=menderproduction
 CONTAINER ID        IMAGE                                               COMMAND                  CREATED             STATUS              PORTS                                                             NAMES
@@ -142,7 +142,7 @@ d33f8b4af1bd        mendersoftware/deployments:latest                   "/entryp
 1ddbad5520e9        mendersoftware/deviceauth:latest                    "/usr/bin/deviceau..."   40 minutes ago      Up 39 minutes       8080/tcp                                                          menderproduction_mender-device-auth_1
 cdaab7768ec7        mongo:4.4                                           "/entrypoint.sh mo..."   40 minutes ago      Up 40 minutes       27017/tcp                                                         menderproduction_mender-mongo_1
 867e76066fad        mendersoftware/gui:latest                           "/entrypoint.sh"         40 minutes ago      Up 40 minutes                                                                         menderproduction_mender-gui_1
-762b36d164de        nats:2.1.9-alpine3.12                               "docker-entrypoint.s…"   40 minutes ago      Up 40 minutes       4222/tcp, 6222/tcp, 8222/tcp                                      menderproduction_mender-nats_1
+762b36d164de        nats:2.7.4-scratch                                  "docker-entrypoint.s…"   40 minutes ago      Up 40 minutes       4222/tcp, 6222/tcp, 8222/tcp                                      menderproduction_mender-nats_1
 54ae287d24ac        mendersoftware/minio:RELEASE.2019-04-23T23-50-36Z   "minio server /export"   40 minutes ago      Up 40 minutes       9000/tcp                                                          menderproduction_minio_1
 ```
 
@@ -177,7 +177,7 @@ while, `docker ps` will show the containers having a shorter lifetime than
 others. In the listing show below, `mender-deployments` service uptime is
 shorter than that of the other containers:
 
-<!--AUTOVERSION: "mender-%"/ignore "nats:%"/ignore-->
+<!--AUTOVERSION: "mender-%"/ignore "nats:%-scratch"/ignore-->
 ```
 user@local$ docker ps --filter label=com.docker.compose.project=menderproduction
 CONTAINER ID   IMAGE                                                 COMMAND                  CREATED         STATUS                   PORTS                          NAMES
@@ -194,7 +194,7 @@ b2b100437282   mendersoftware/deviceconfig:mender-master             "/usr/bin/d
 65a5e1f5e3be   minio/minio:RELEASE.2019-04-23T23-50-36Z              "/usr/bin/docker-ent…"   9 minutes ago   Up 9 minutes (healthy)   9000/tcp                       menderproduction_minio_1
 b537c7de2e8d   mendersoftware/gui:mender-master                      "/entrypoint.sh nginx"   9 minutes ago   Up 9 minutes (healthy)   80/tcp, 8080/tcp               menderproduction_mender-gui_1
 8d7fa928991e   mongo:4.4                                             "docker-entrypoint.s…"   9 minutes ago   Up 9 minutes             27017/tcp                      menderproduction_mender-mongo_1
-73698002bf23   nats:2.1.9-alpine3.12                                 "docker-entrypoint.s…"   9 minutes ago   Up 9 minutes             4222/tcp, 6222/tcp, 8222/tcp   menderproduction_mender-nats_1
+73698002bf23   nats:2.7.4-scratch                                    "docker-entrypoint.s…"   9 minutes ago   Up 9 minutes             4222/tcp, 6222/tcp, 8222/tcp   menderproduction_mender-nats_1
 ```
 
 ### Docker event log

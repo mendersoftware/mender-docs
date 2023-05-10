@@ -27,7 +27,7 @@ software on the device and your workstation.
 * Install [mender-client](../../03.Client-installation/02.Install-with-Debian-package/docs.md) on the
   device.
   * [Accept](../../01.Get-started/01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md#step-7-accept-the-device)
-    the device on the Mender server.
+    the device on the Mender Server.
 * Install [mender-cli](../../10.Downloads/docs.md#mender-cli) on your workstation.
   
 
@@ -91,5 +91,5 @@ a different *REMOTE_HOST* accessible to the device.
 [mender-connect configuration section](../90.Mender-Connect/docs.md#port-forward-configuration).
 * You can find the `mender-connect` installation steps for Yocto-based projects,
 and for Debian family,
-in the [customize with Yocto](../../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect),
-and [customize with Debian](../../04.System-updates-Debian-family/03.Customize-Mender/docs.md) respectively.
+in the [customize with Yocto](../../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect),
+and [customize with Debian](../../04.Operating-System-updates-Debian-family/03.Customize-Mender/docs.md) respectively.

@@ -6,7 +6,7 @@ taxonomy:
 ---
 
 `mender-connect` is a daemon responsible for handling bidirectional
-(websocket) communication with the Mender server. The daemon is responsible for
+(websocket) communication with the Mender Server. The daemon is responsible for
 implementing a range of troubleshooting features to the device as well as
 several enhancement to the [mender-client](../../03.Client-installation/01.Overview/docs.md).
 
@@ -21,8 +21,8 @@ and portable.
 ## Installation
 
 Please refer to the following sections for the Mender Connect installation:
-* [mender-convert integration](../../04.System-updates-Debian-family/99.Variables/docs.md#mender_addon_connect_install) for installation in the existing images
-* [Yocto projects](../../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect) for the installation in a Yocto Project environment
+* [mender-convert integration](../../04.Operating-System-updates-Debian-family/99.Variables/docs.md#mender_addon_connect_install) for installation in the existing images
+* [Yocto projects](../../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect) for the installation in a Yocto Project environment
 * [installation with a deb](../../10.Downloads/docs.md#remote-terminal-add-on) for the installation from the Debian package
 
 After installation, please refer to the [add-ons subsections](../../09.Add-ons/chapter.md) for the configuration options,

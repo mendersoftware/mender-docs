@@ -31,12 +31,12 @@ Mender provides images based on the following distributions:
 
 | Board                         | OS                              | Disk image                                                                                         | Storage size |
 |-------------------------------|---------------------------------|----------------------------------------------------------------------------------------------------|--------------|
-| Raspberry Pi 3 Model B and B+ | Raspberry Pi OS Bullseye Lite 2022-01-28 | [raspios-bullseye-armhf-lite-raspberrypi3-mender.img.xz][raspios-bullseye-armhf-lite-raspberrypi3-mender.img.xz] | 8 GB         |
-| Raspberry Pi 4 Model B        | Raspberry Pi OS Bullseye Lite 2022-01-28 | [raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz][raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz] | 8 GB         |
+| Raspberry Pi 3 Model B and B+ | Raspberry Pi OS Bullseye Lite 2022-09-22 | [raspios-bullseye-armhf-lite-raspberrypi3-mender.img.xz][raspios-bullseye-armhf-lite-raspberrypi3-mender.img.xz] | 8 GB         |
+| Raspberry Pi 4 Model B        | Raspberry Pi OS Bullseye Lite 2022-09-22 | [raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz][raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz] | 8 GB         |
 
 <!--AUTOVERSION: "mender-convert-%.img.xz"/mender-convert -->
-[raspios-bullseye-armhf-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2022-01-28-raspios-bullseye-armhf-lite/arm/2022-01-28-raspios-bullseye-armhf-lite-raspberrypi3-mender-convert-master.img.xz
-[raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2022-01-28-raspios-bullseye-armhf-lite/arm/2022-01-28-raspios-bullseye-armhf-lite-raspberrypi4-mender-convert-master.img.xz
+[raspios-bullseye-armhf-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2022-09-22-raspios-bullseye-armhf-lite/arm/2022-09-22-raspios-bullseye-armhf-lite-raspberrypi3-mender-convert-master.img.xz
+[raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2022-09-22-raspios-bullseye-armhf-lite/arm/2022-09-22-raspios-bullseye-armhf-lite-raspberrypi4-mender-convert-master.img.xz
 
 You can find images for other devices in our Mender Hub community forum, see
 [Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11?target=_blank) or
@@ -189,7 +189,7 @@ sudo apt-get upgrade
 
 
 !!! Updating mender this way doesn't provide a rollback mechanism in case of issues.
-!!! For production devices always update mender as part of the full system update with A/B partitions.
+!!! For production devices always update mender as part of the Operating System update with A/B partitions.
 
 #### Install using the APT repository
 
@@ -213,101 +213,101 @@ repository. Afterwards, you can install and update the Mender client using the
 1. Update the `apt` package index and install required dependencies.
 
 <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata -->
-   ```bash
-   sudo apt-get update
-   sudo apt-get install --assume-yes \
-   		apt-transport-https \
-   		ca-certificates \
-   		curl \
-   		gnupg-agent \
-   		software-properties-common
-   ```
+```bash
+sudo apt-get update
+sudo apt-get install --assume-yes \
+		apt-transport-https \
+		ca-certificates \
+		curl \
+		gnupg-agent \
+		software-properties-common
+```
 
 2. Add the official Mender GPG key to your trusted `apt` keychain:
 
-   ```bash
-   curl -fsSL https://downloads.mender.io/repos/debian/gpg | sudo tee /etc/apt/trusted.gpg.d/mender.asc
-   ```
+```bash
+curl -fsSL https://downloads.mender.io/repos/debian/gpg | sudo tee /etc/apt/trusted.gpg.d/mender.asc
+```
 
-   Inspect the GPG key fingerprint and verify that it matches
-   `E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00`.
+Inspect the GPG key fingerprint and verify that it matches
+`E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00`.
 
 <!--AUTOMATION: ignore -->
-   ```bash
-   gpg --show-keys --with-fingerprint /etc/apt/trusted.gpg.d/mender.asc
-   ```
-   ```
-   pub   rsa3072 2020-11-13 [SC] [expires: 2024-10-23]
-         E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
-   uid                      Mender Team <mender@northern.tech>
-   sub   rsa3072 2020-11-13 [E] [expires: 2024-10-23]
-   ```
+```bash
+gpg --show-keys --with-fingerprint /etc/apt/trusted.gpg.d/mender.asc
+```
+```
+pub   rsa3072 2020-11-13 [SC] [expires: 2024-10-23]
+      E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
+uid                      Mender Team <mender@northern.tech>
+sub   rsa3072 2020-11-13 [E] [expires: 2024-10-23]
+```
 
 3. Add the Mender repository to your sources list by selecting the architecture
-   matching your device.
+matching your device.
 
-   First in order to make sure that there are no mender sources in
-   '/etc/apt/sources.list' lingering from a previous install, run
+First, in order to make sure that there are no mender sources in
+'/etc/apt/sources.list' lingering from a previous install, run
 
 <!--AUTOMATION: ignore -->
-   ```bash
-      sed -i.bak -e "\,https://downloads.mender.io/repos/debian,d" /etc/apt/sources.list
-   ```
+```bash
+sed -i.bak -e "\,https://downloads.mender.io/repos/debian,d" /etc/apt/sources.list
+```
 
-   Then add the sources according to your Linux distribution
+Then add the sources according to your Linux distribution
 
-   !!! For Raspberry OS, use Debian distributions. To know which version is your device running,
-   !!! do `(. /etc/os-release && echo $VERSION_CODENAME)`
+!!! For Raspberry OS, use Debian distributions. To know which version is your device running,
+!!! do `(. /etc/os-release && echo $VERSION_CODENAME)`
 
-   [ui-tabs position="top-left" active="0" theme="lite" ]
-   [ui-tab title="Debian Bullseye"]
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="Debian Bullseye"]
 <!--AUTOMATION: ignore -->
-   ```bash
-    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/bullseye/stable main" \
-    | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
-   ```
-   [/ui-tab]
-   [ui-tab title="Debian Buster"]
+```bash
+echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/bullseye/stable main" \
+ | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
+```
+[/ui-tab]
+[ui-tab title="Debian Buster"]
 <!--AUTOMATION: ignore -->
-   ```bash
-    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/buster/stable main" \
-    | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
-   ```
-   [/ui-tab]
-   [ui-tab title="Ubuntu Bionic"]
+```bash
+echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/buster/stable main" \
+ | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
+```
+[/ui-tab]
+[ui-tab title="Ubuntu Bionic"]
 <!--AUTOMATION: ignore -->
-   ```bash
-    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/bionic/stable main" \
-    | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
-   ```
-   [/ui-tab]
-   [ui-tab title="Ubuntu Focal"]
-   ```bash
-    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/focal/stable main" \
-    | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
-   ```
-   [/ui-tab]
-   [ui-tab title="Ubuntu Jammy"]
+```bash
+echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/bionic/stable main" \
+ | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
+```
+[/ui-tab]
+[ui-tab title="Ubuntu Focal"]
+```bash
+echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/focal/stable main" \
+ | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
+```
+[/ui-tab]
+[ui-tab title="Ubuntu Jammy"]
 <!--AUTOMATION: ignore -->
-   ```bash
-    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/jammy/stable main" \
-    | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
-   ```
-   [/ui-tab]
-   [/ui-tabs]
+```bash
+echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/jammy/stable main" \
+ | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
+```
+[/ui-tab]
+[/ui-tabs]
 
-   !!! If you want the bleeding edge version of mender, you can use our
-   !!! `experimental` repository by replacing `stable` with `experimental` in
-   !!! the above command. Do not use the `experimental` repository in production
-   !!! as these releases are not fully tested.
+!!! If you want the bleeding edge version of mender, you can use our
+!!! `experimental` repository by replacing `stable` with `experimental` in
+!!! the above command. Do not use the `experimental` repository in production
+!!! as these releases are not fully tested.
 
 4. Update the package index and install the Mender client:
 
 <!--AUTOMATION: ignore -->
-   ```bash
-   sudo apt-get update
-   sudo apt-get install mender-client
-   ```
+```bash
+sudo apt-get update
+sudo apt-get install mender-client
+```
 
 <!-- AUTOMATION: execute=apt-get update -->
 <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y mender-client -->
@@ -327,9 +327,9 @@ installation](#express-installation) script, you already have both installed.
 
 The easiest way to install Mender Connect on an existing device is by using the
 Mender APT repository. The other alternatives include: 
-[mender-convert integration](../04.System-updates-Debian-family/99.Variables/docs.md#mender_addon_connect_install)
+[mender-convert integration](../04.Operating-System-updates-Debian-family/99.Variables/docs.md#mender_addon_connect_install)
 for installation in the existing images,
-and [Yocto projects](../05.System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect)
+and [Yocto projects](../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect)
 for the installation in a Yocto Project environment.
 
 To install `mender-connect` using Mender APT repository, follow the instructions
@@ -375,7 +375,7 @@ sudo apt-get install mender-configure
 ## mender-cli
 
 The `mender-cli` utility enables an easy interface to key use cases
-of the Mender server API, such as uploading a Mender Artifact, from
+of the Mender Server API, such as uploading a Mender Artifact, from
 the command line. See [Server integration](../08.Server-integration/chapter.md) for
 more information.
 

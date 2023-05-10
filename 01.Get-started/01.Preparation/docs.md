@@ -9,8 +9,8 @@ Quickly and easily deploy your first over-the-air (OTA) software update with
 Mender using a secure server we host for you. We will walk you through
 installing Mender on a device and deploying:
 
-* a simple *application* update
-* a full *system* update.
+* a simple *Application* update
+* an *Operating System* update.
 * a *Docker container* update
 
 To get started testing Mender, create a hosted Mender account by
@@ -50,8 +50,8 @@ You can learn how to integrate other devices and OSes later.
 
 For other device types and OSes, we provide documentation to integrate with Mender.
 
-* Learn how to integrate devices with [Debian family](../../04.System-updates-Debian-family) or 
-  [Yocto OSes](../../05.System-updates-Yocto-Project)
+* Learn how to integrate devices with [Debian family](../../04.Operating-System-updates-Debian-family) or 
+  [Yocto OSes](../../05.Operating-System-updates-Yocto-Project)
 * Or visit [Board Integrations](https://hub.mender.io/c/board-integrations?target=_blank) on 
   Mender Hub and search for your device and OS.
 

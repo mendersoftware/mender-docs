@@ -5,7 +5,7 @@ taxonomy:
     label: tutorial
 ---
 
-The Mender server microservices are all accessible using an HTTPS API. These APIs can be used to configure the server (for example, preauthorizing devices) or implementing custom workflows (for example, integrating the Mender server into an existing device management system.) The APIs are documented in [API chatper](../../200.Server-side-API).
+The Mender Server microservices are all accessible using an HTTPS API. These APIs can be used to configure the server (for example, preauthorizing devices) or implementing custom workflows (for example, integrating the Mender Server into an existing device management system.) The APIs are documented in [API chatper](../../200.Server-side-API).
 
 There are many ways to interact with Mender's REST APIs and the most common ones are shown below.
 
@@ -21,16 +21,16 @@ On a Debian-derived system, you can easily install both running:
 sudo apt-get install curl jq
 ```
 
-Open a terminal, which we will use in the following to call the Mender server's REST APIs. First set a shell variable with the URI of your server:
+Open a terminal, which we will use in the following to call the Mender Server's REST APIs. First set a shell variable with the URI of your server:
 ```bash
 MENDER_SERVER_URI='https://hosted.mender.io'
 ```
 
 !!! Hosted Mender is available in multiple [regions](/11.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
 
-!!! Adjust the variable value to the Mender server you are using.
+!!! Adjust the variable value to the Mender Server you are using.
 
-Next, set a variable with your user email on the Mender server (replace its content with your user email):
+Next, set a variable with your user email on the Mender Server (replace its content with your user email):
 
 ```bash
 MENDER_SERVER_USER='myusername@example.com'
@@ -44,7 +44,7 @@ JWT=$(curl -X POST -u $MENDER_SERVER_USER $MENDER_SERVER_URI/api/management/v1/u
 
 !!! If you are using self-signed certificates in a demo setup you may want to skip validation with the `-k` option of `curl` (this is insecure).
 
-You should now have an API token you can use to call any of the [Mender server management APIs](../../200.Server-side-API/?target=_blank#management-apis) in the `JWT` shell variable.
+You should now have an API token you can use to call any of the [Mender Server management APIs](../../200.Server-side-API/?target=_blank#management-apis) in the `JWT` shell variable.
 
 !!! The `MENDER_SERVER_URI` and `JWT` shell variables will only exist in the current shell invocation by default, so make sure you use this same shell environment for any interactions with the API.
 
@@ -74,7 +74,7 @@ If this fails, e.g. returns `401 Authorization Required`, make sure that the con
 
 ### Personal Access Tokens
 
-The JWT token returned by the log in end-point (`/api/management/v1/useradm/auth/login`) lasts one week. Therefore, it is not practical to store and reuse it, for example, from a CI/CD pipeline or a scheduled job. Personal Access Tokens are long-lived JWT tokens that you can use to programmatically access the Mender management APIs without logging in each time you need to perform API calls or handle the JWT token expiration every week. Personal Access Tokens act as API keys you can use from your CI/CD pipelines or scheduled jobs to access the Mender management APIs.
+Personal Access Tokens are **long-lived** JWT tokens that you can use to programmatically access the Mender management APIs without logging in each time you need to perform API calls nor handle the JWT token expiration every week. Personal Access Tokens act as API keys you can use from your *CI/CD pipelines* or scheduled jobs to access the Mender management APIs.
 
 You can generate a Personal Access Token using the web-based UI from the "My profile" page or the following API call:
 
@@ -126,18 +126,21 @@ curl -H "Authorization: Bearer $JWT" -X DELETE -k $MENDER_SERVER_URI/api/managem
 
 !!! The Personal Access Tokens impersonate the user who generated them, including all the permissions and roles associated with the user.
 
+!! WARNING: The personal access token is anticipated to be **reset** when the 
+!! [Mender plan](https://mender.io/product/pricing) is upgraded as the tokens contain the current
+!! plan and when an upgrade occurs, the PAT becomes **invalid**.
 
 ## Set up mender-cli
 
-`mender-cli` is a standalone CLI tool that works as a client against the Mender server management APIs in order to make it much easier to interact with the APIs.
+`mender-cli` is a standalone CLI tool that works as a client against the Mender Server management APIs in order to make it much easier to interact with the APIs.
 
-It supports use cases for cloud systems, like uploading an Artifact to the Mender server, as well as end user workstation use cases like Remote terminal and Port forward (Troubleshoot add-on required).
+It supports use cases for cloud systems, like uploading an Artifact to the Mender Server, as well as end user workstation use cases like Remote terminal and Port forward (Troubleshoot add-on required).
 
-Over time the functionality of `mender-cli` will be extended to simplify the most common use cases for integrating the Mender server into other backend and cloud systems. If you need to cover other use cases today, follow the [tutorial for cURL instead](#install-curl-and-jq-and-set-up-the-shell-variables).
+Over time the functionality of `mender-cli` will be extended to simplify the most common use cases for integrating the Mender Server into other backend and cloud systems. If you need to cover other use cases today, follow the [tutorial for cURL instead](#install-curl-and-jq-and-set-up-the-shell-variables).
 
 First download the [prebuilt mender-cli Linux binary here][x.x.x_mender-cli].
 
-Then open a terminal in the directory you downloaded `mender-cli` and run the following commands to log in to your Mender server.
+Then open a terminal in the directory you downloaded `mender-cli` and run the following commands to log in to your Mender Server.
 
 ```bash
 chmod +x mender-cli
