@@ -251,7 +251,7 @@ First, in order to make sure that there are no mender sources in
 
 <!--AUTOMATION: ignore -->
 ```bash
-sed -i.bak -e "\,https://downloads.mender.io/repos/debian,d" /etc/apt/sources.list
+sudo sed -i.bak -e "\,https://downloads.mender.io/repos/debian,d" /etc/apt/sources.list
 ```
 
 Then add the sources according to your Linux distribution
