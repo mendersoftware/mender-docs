@@ -18,6 +18,32 @@ This document introduces how Update Modules work, so you can develop your own Up
 
 An Update Module implements one or more of the actions that the Mender client carries out when installing an Artifact payload. The *core* action that all Update Modules must implement is the ArtifactInstall action, where the actual installation of an Artifact payload takes place. However, there are other actions that you may use depending on the desired functionality and use case for an Update Module, such as Rollback.
 
+### Update Module basics
+
+Technically speaking, an Update Module is an executable that follow a number of rules.
+
+#### Executable
+
+The entry point for an Update Module is an executable that is located under `/usr/share/mender/modules/v3` as of API v3. Most Update Modules use a shell script as their main executable and call subscripts as needed, but this is not a mandatory structure. As long as the file is executable on the target system, it can be implemented in any interpreted (bash, python, ...) or compiled (C++, Rust, ...) language.
+ 
+#### CLI API
+
+The executable will be called with defined arguments, is expected to print certain strings and return defined value upon invocation. This is called the `CLI API`. It follows the general concept that the call will always have two parameters: *Action* and *path*.
+
+1.  Action. This string is either the current state of the update process or an information request.
+- The most relevant state is `ArtifactInstall`, which is the main installation step. Any actions that change the behaviour respectively state of the installed software should be taken here. An exit value of 0 indicates success, any other value an error and will trigger the rollback procedure where applicable.
+- A typical information request action is `NeedsArtifactReboot`. By querying this, the Mender client can decide if it needs to initiate a full device reboot after update installation. This is an example where printing a string as response is required: `No` indicates that the Update Module does not require a reboot, `Automatic` request a reboot following the standard strategy.
+
+2. path to artifact context. This defines where the [File API](#file-api) is exposed.
+
+For more detailed information on all actions and their respective semantics, please see the documentation in the [source code repository](https://github.com/mendersoftware/mender/blob/master/Documentation/update-modules-v3-file-api.md#states-and-execution-flow).
+
+#### File API
+
+The File API exposes the artifact context to the Update module. This is done through a directory tree that contains the various header parts, as well as the actual payload. The files contained in the Mender Artifact are located in the `files` directory and can be directly accessed. For more details on the File API, please see the documentation in the [source code repository](https://github.com/mendersoftware/mender/blob/master/Documentation/update-modules-v3-file-api.md#file-api).
+
+During the `Download` state, the files are not yet available yet, but provided as streams for direct processing.
+
 ### The state machine workflow
 
 Update Modules follow the same execution flow as [state scripts](../../06.Artifact-creation/04.State-scripts/docs.md). For the development of Update Modules it is important to have a basic understanding of it.
