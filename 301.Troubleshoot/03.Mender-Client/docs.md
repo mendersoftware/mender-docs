@@ -328,3 +328,44 @@ The block below shows 3 example artifacts.
 * artifact - `mender-artifact read <mender-artifact.mender>`
 * device - Run the command on the device `mender show-provides`
 * server UI - `Releases -> Select Release -> Expand the artifact info by clicking it -> Expand Provides and Depends`
+
+### Checking inconsistencies about the root file system checksums
+
+The checksum shown with `mender show-provides` does not necessarily represent the running partition's actual checksum.
+
+For example, if you remount the partition `rw`, change something and remount it `ro`, the checksum in the `mender show-provides` won't change, while the checksum of the running partition changes.
+
+As part of your troubleshooting, you can check that the actual checksum on the device is the same as in the `Depends` field.
+
+A general command should be something like the below.
+
+You can identify your active root file system (`$ACTIVE_PARTITION` in the following `dd`) with a command like `lsblk`, `fdisk -l`, `mount` or similar.
+
+The payload size of the version running on the device can be obtained from `mender-artifact read delta.mender`, check for the variable `rootfs_file_size` and use it as `$PAYLOAD_SIZE` in the following `dd`.
+
+```bash
+dd if=/dev/$ACTIVE_PARTITION bs=1M count=$PAYLOAD_SIZE iflag=count_bytes | sha256sum -
+```
+
+#### Common root causes for having inconsistent checksums
+
+* Check for `mount` commands inside any **state script** that you implemented. The checksum will change if the root file system gets mounted as `rw`.
+
+* A bootloader variable can set the file system to `rw` and remount it as `ro` later. Therefore, make sure the partition is never mounted as `rw`.
+
+* `cat /proc/cmdline` shows the parameters passed to the kernel when it started. Make sure there is no `rw` value on the output.
+
+* In the `/etc/fstab` file make sure the root file system is mounted as `ro`. Remember that the parameter `defaults` include the value `rw`.
+
+* In Nvidia devices using `meta-tegra` from the **OE4T** project, the variable `KERNEL_ROOTSPEC` could set the mount of the root filesystem to be read-write in an early boot stage. Check its value with `bitbake -e <image>` if in doubt.
+
+
+#### `Xdelta3: target window checksum mismatch: XD3_INVALID_INPUT`
+
+This message is caused by the root filesystem being altered, which usually is avoided by mounting read-only.
+Depending on your operating system, there might be background services that modify on-disk storage in a supposedly
+transparent manner, though. Those need to be either disabled completely, or configured to not operate on the
+root filesystem partition.
+
+Known services with this effect:
+- `fstrim` from the `util-linux` package

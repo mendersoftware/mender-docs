@@ -141,7 +141,6 @@ default.
    [Mender Client troubleshooting](../03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid)
    for more details.
 
-
 ## Next Steps
 
 If the above tests all pass, then please review [Mender Client troubleshooting](../03.Mender-Client/docs.md) to help determine next steps.
