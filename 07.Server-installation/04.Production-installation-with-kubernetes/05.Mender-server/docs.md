@@ -163,7 +163,7 @@ Mender supports the following Artifact storage types:
 > ```yaml
 > global:
 >   s3:
->     AWS_URI: "https://<name-of-your-bucket>.s3.<your-aws-region>.amazonaws.com"
+>     AWS_URI: "https://s3.<your-aws-region>.amazonaws.com"
 >     AWS_BUCKET: "<name-of-your-bucket>"
 >     AWS_REGION: "<your-aws-region>"
 >     AWS_ACCESS_KEY_ID: "<your-access-key-id>"
