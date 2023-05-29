@@ -69,7 +69,7 @@ install a CDN in front of your Minio instance, and in this case you can use your
 
 Default: `https://s3.amazonaws.com`
 
-### `DEPLOYMENTS_AWS_ACCESS_KEY_ID` and `DEPLOYMENTS_AWS_AUTH_SECRET` (`aws.auth.key` and `aws.auth.secret`)
+### `DEPLOYMENTS_AWS_AUTH_KEY` and `DEPLOYMENTS_AWS_AUTH_SECRET` (`aws.auth.key` and `aws.auth.secret`)
 
 The credentials to access the S3 storage service.
 
