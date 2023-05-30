@@ -230,7 +230,7 @@ You also need to specify a username and password pair. The ambassador will use i
 <!-- AUTOMATION: execute=MTLS_MENDER_PASS="$CI_MTLS_TEST_HM_PASS" -->
 <!-- AUTOMATION: execute=MTLS_MENDER_BACKEND=https://hosted.mender.io -->
 
-As the mtls-ambassador container runs as user `nobody`, with UID 65534, we change the owner of the files we'll volume mount:
+The mtls-ambassador container runs as user `nobody`, with UID 65534. We need to change the owner of the files we'll volume mount as shown below. You may need permission to execute them.
 
 <!-- AUTOMATION: execute={ -->
 ```bash
