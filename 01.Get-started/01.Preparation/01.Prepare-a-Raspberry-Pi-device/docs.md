@@ -85,7 +85,7 @@ USERNAME='' # CHANGE: your desired username
 PASSWORD='' # CHANGE: your desired password
 
 cat << EOF > "$RPI_BOOT"/userconf.txt
-${USERNAME}:$(openssl passwd -6 "$PASSWORD")
+${USERNAME}:$(openssl passwd "$PASSWORD")
 EOF
 ```
 
