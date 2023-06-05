@@ -64,7 +64,7 @@ If you generated new certificates, this file is available at `keys-generated/cer
 The best way to include the certificate in the client build is to use a custom
 bitbake layer. The following steps assume that you already have a custom layer
 included in your build. If not you can check out how to [create your own
-layer](https://docs.yoctoproject.org/dev-manual/common-tasks.html?target=_blank#creating-your-own-layer)
+layer](https://docs.yoctoproject.org/dev/dev-manual/layers.html#creating-your-own-layer)
 in the official Yocto Project documentation, and there is also an alternative
 method below that does not require a separate layer.
 
