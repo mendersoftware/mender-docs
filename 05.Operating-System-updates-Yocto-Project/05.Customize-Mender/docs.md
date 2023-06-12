@@ -274,8 +274,8 @@ curl --fail -u $HOSTED_MENDER_EMAIL -o ${HOME}/mender-monitor-master.tar.gz http
 [ui-tab title="enterprise"]
 <!--AUTOVERSION: "/mender-monitor/yocto/%/"/monitor-client "/mender-monitor-%.tar.gz"/monitor-client -->
 ```bash
-MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
-curl --fail -u $MENDER_ENTERPRISE_EMAIL -o ${HOME}/mender-monitor-master.tar.gz https://downloads.customer.mender.io/content/on-prem/mender-monitor/yocto/master/mender-monitor-master.tar.gz
+MENDER_ENTERPRISE_USER=<your.user>
+curl --fail -u $MENDER_ENTERPRISE_USER -o ${HOME}/mender-monitor-master.tar.gz https://downloads.customer.mender.io/content/on-prem/mender-monitor/yocto/master/mender-monitor-master.tar.gz
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -338,8 +338,8 @@ curl --fail -u $HOSTED_MENDER_EMAIL -o ${HOME}/mender-gateway-master.tar.xz http
 [ui-tab title="enterprise"]
 <!--AUTOVERSION: "/mender-gateway/yocto/%/"/mender-gateway "/mender-gateway-%.tar.xz"/mender-gateway -->
 ```bash
-MENDER_ENTERPRISE_EMAIL=<your.email@example.com>
-curl --fail -u $MENDER_ENTERPRISE_EMAIL -o ${HOME}/mender-gateway-master.tar.xz https://downloads.customer.mender.io/content/on-prem/mender-gateway/yocto/master/mender-gateway-master.tar.xz
+MENDER_ENTERPRISE_USER=<your.user>
+curl --fail -u $MENDER_ENTERPRISE_USER -o ${HOME}/mender-gateway-master.tar.xz https://downloads.customer.mender.io/content/on-prem/mender-gateway/yocto/master/mender-gateway-master.tar.xz
 ```
 [/ui-tab]
 [/ui-tabs]
