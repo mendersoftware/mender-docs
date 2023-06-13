@@ -37,7 +37,7 @@ command:
 
 <!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
 ```bash
-MENDER_ENTERPRISE_EMAIL="myusername@example.com"
+MENDER_ENTERPRISE_USER=<your.user>
 curl -u $MENDER_ENTERPRISE_USER -O https://downloads.customer.mender.io/content/on-prem/mender-binary-delta/1.4.1/mender-binary-delta-1.4.1.tar.xz
 ```
 
