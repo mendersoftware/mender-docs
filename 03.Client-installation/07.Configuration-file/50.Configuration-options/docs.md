@@ -305,7 +305,7 @@ See also the section about [state scripts](../../../06.Artifact-creation/04.Stat
 #### TenantToken
 
 A token which identifies which tenant a device belongs to. This is only relevant
-if using a multi-tenant environment such as [hosted Mender](https://hosted.mender.io?target=_blank).
+if using a multi-tenant environment such as [hosted Mender](https://hosted.mender.io?target=_blank). Always treat the tenant token as a secret.
 
 #### UpdateLogPath
 
