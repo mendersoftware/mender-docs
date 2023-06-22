@@ -85,7 +85,7 @@ in the configuration.
 
 > Value:
 
-This option allows fine grained control of the boot partition device path and overrides `MENDER_STORAGE_DEVICE` and `MENDER_BOOT_PART_INDEX` settings. If part-uuid is used then you will need to also enable `MENDER_ENABLE_PARTUUID`
+This option allows fine grained control of the boot partition device path and overrides `MENDER_STORAGE_DEVICE` and `MENDER_BOOT_PART_NUMBER` settings. If part-uuid is used then you will need to also enable `MENDER_ENABLE_PARTUUID`
 
 Examples: 
 ```
@@ -95,7 +95,7 @@ Examples:
 ```
 
 
-#### `MENDER_BOOT_PART_INDEX`
+#### `MENDER_BOOT_PART_NUMBER`
 
 > Value: 1 (default) 
 
@@ -166,7 +166,7 @@ to transfer them between a build server and a local machine, and saves space.
 
 > Value:
 
-This option allows fine grained control of the data partition device path and overrides `MENDER_STORAGE_DEVICE` and `MENDER_DATA_PART_INDEX` settings. If part-uuid is used then you will need to also enable `MENDER_ENABLE_PARTUUID`
+This option allows fine grained control of the data partition device path and overrides `MENDER_STORAGE_DEVICE` and `MENDER_DATA_PART_NUMBER` settings. If part-uuid is used then you will need to also enable `MENDER_ENABLE_PARTUUID`
 
 Examples: 
 ```
@@ -191,7 +191,7 @@ Options passed on to fstab.
 Enable/Disable automatically growing the filesystem to fill the physical storage device.
 
 
-#### `MENDER_DATA_PART_INDEX`
+#### `MENDER_DATA_PART_NUMBER`
 
 > Value: 4 (default)
 
@@ -255,7 +255,7 @@ The partition alignment expressed in bytes.
 
 > Value:
 
-This option allows fine grained control of the first (A) rootfs partition device path and overrides `MENDER_STORAGE_DEVICE` and `MENDER_ROOTFS_PART_A_INDEX` settings. If part-uuid is used then you will need to also enable `MENDER_ENABLE_PARTUUID`
+This option allows fine grained control of the first (A) rootfs partition device path and overrides `MENDER_STORAGE_DEVICE` and `MENDER_ROOTFS_PART_A_NUMBER` settings. If part-uuid is used then you will need to also enable `MENDER_ENABLE_PARTUUID`
 
 Examples: 
 ```
@@ -265,7 +265,7 @@ Examples:
 ```
 
 
-#### `MENDER_ROOTFS_PART_A_INDEX`
+#### `MENDER_ROOTFS_PART_A_NUMBER`
 
 > Value: 2 (default)
 
@@ -276,7 +276,7 @@ Set the default index of the rootfs part-A partition.
 
 > Value:
 
-This option allows fine grained control of the first (B) rootfs partition device path and overrides `MENDER_STORAGE_DEVICE` and `MENDER_ROOTFS_PART_B_INDEX` settings. If part-uuid is used then you will need to also enable `MENDER_ENABLE_PARTUUID`
+This option allows fine grained control of the first (B) rootfs partition device path and overrides `MENDER_STORAGE_DEVICE` and `MENDER_ROOTFS_PART_B_NUMBER` settings. If part-uuid is used then you will need to also enable `MENDER_ENABLE_PARTUUID`
 
 Examples: 
 ```
@@ -286,7 +286,7 @@ Examples:
 ```
 
 
-#### `MENDER_ROOTFS_PART_B_INDEX`
+#### `MENDER_ROOTFS_PART_B_NUMBER`
 
 > Value: 3 (default)
 
