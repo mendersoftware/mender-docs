@@ -1,4 +1,4 @@
----
+)---
 title: Monitor your device
 taxonomy:
     category: docs
@@ -13,6 +13,7 @@ This tutorial will walk you through how to monitor your device and its applicati
 Mender. We will be using the [Monitor Add-on](../../09.Add-ons/20.Monitor/docs.md) which
 allows you to monitor various parts of your system.
 
+
 ## Prerequisites
 
 To follow this tutorial, you will need to [install the Monitor
@@ -20,6 +21,24 @@ Add-on on your device](../../09.Add-ons/20.Monitor/10.Installation/docs.md). If
 you have followed the [get started tutorial to prepare your
 device](../01.Preparation/docs.md), the Monitor Add-on should already be
 installed.
+
+TODO: Add short steps on how to verify if you have the add-on installed.
+TODO: Add other reqs like Docker with disclaimer that only if necesary to test
+
+### Basic Knowledge
+
+#### mender-monitorctl
+
+Here we can explore the options from `mender-monitorctl help`
+
+TODO: Explain parameters for `create/delete`, `enable/disable` and don't forget timeouts for alerts.
+
+#### Alert levels
+
+TODO: Explain that OK level means "remove the alert" as everything went back to normal
+
+
+TODO: refer to conf file (for example to describe the Stack size of stored alerts)
 
 ### Demo alerts
 
@@ -37,6 +56,8 @@ installed.
 !!! Note: In the default configuration mender-monitorctl command requires
 !!! read-write access to the /etc/mender-monitor directory, which on most systems
 !!! means the need to switch to super user, or run with sudo.
+
+ToDo: Add comment when RO FS you need to create a symlink to a RW dir.
 
 #### USB disconnect
 
@@ -57,7 +78,11 @@ device details in the Mender UI:
 
 ![Connectivity alarm OK](log-usb-alarm.png)
 
+TODO: Expand the subsystem to reach the OK state
+
 #### Disk usage
+
+TODO: Test this one in more detail
 
 If key device resources such as disk space runs out, e.g. due to ever-growing
 log files, the product will typically stop functioning properly. It is therefore
@@ -154,7 +179,7 @@ And soon the alert will show up as fixed in the UI:
 
 #### Docker container restart
 
-!!!!!  NOTE: Docker needs to be [installed](https://docs.docker.com/engine/install/debian/) on the device
+!!!!!  NOTE: Docker needs to be [installed](https://docs.docker.com/engine/install/) on the device
 
 Applications may restart sporadically when they encounter new situations like
 intermittent connectivity. As they are often automatically started again the
@@ -205,6 +230,8 @@ a systemd service checker using `mender-monitorctl`:
 ```bash
 sudo mender-monitorctl create service mender-connect systemd
 ```
+
+ToDo: Check https://northerntech.atlassian.net/browse/MEN-6559 as after deleting the service you can not create a new one from this subsystem
 
 This command creates a file in `/etc/mender-monitor/monitor.d/available`
 with the details of the server name and type to check:
