@@ -64,7 +64,13 @@ TIMEZONE="$(jq -r -e .timezone < "$CONFIG")"
 return_code=$?
 case $return_code in
     0)
-        timedatectl set-timezone "$TIMEZONE"
+        # Add new timezone
+        echo $TIMEZONE >/etc/timezone
+        # Remove existing symlink between localtime and timezone definition
+        rm /etc/localtime
+        # Reload local time as per /etc/timezone file and
+        # create a symlink to a new timezone definition
+        dpkg-reconfigure -f noninteractive tzdata
         exit $?
         ;;
     1)
@@ -166,7 +172,14 @@ if not os.path.exists(config):
 try:
     configJSON = json.load(config)
     timezone = configJSON["timezone"]
-    subprocess.run(["timedatectl", "set-timezone", timezone], check=True)
+    # Add new timezone
+    with open("/etc/timezone", "w") as f:
+        f.write(timezone)
+    # Remove existing symlink between localtime and timezone definition
+    subprocess.run(["rm", "/etc/localtime"], check=True)
+    # Reload local time as per /etc/timezone file and
+    # create a symlink to a new timezone definition
+    subprocess.run(["dpkg-reconfigure", "-f", "noninteractive", "tzdata"], check=True)
 except json.JSONDecodeError as e:
     print(f"Failed to parse the configuration JSON, error: {e}")
     sys.exit(1)
