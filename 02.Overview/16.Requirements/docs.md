@@ -20,7 +20,7 @@ Permit access to the following URLs:
 [/ui-tab]
 [ui-tab title="Minio"]
 Permit access to your 
-Minio URL defined in [Minio Setup Section](../../07.Server-installation/04.Production-installation-with-kubernetes/04.Minio/docs.md)
+Minio URL defined in [Minio Setup Section](../../07.Server-installation/04.Production-installation-with-kubernetes/02.Minio/docs.md)
 * `https://artifacts.example.com`
 [/ui-tab]
 [/ui-tabs]
