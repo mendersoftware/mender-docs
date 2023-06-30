@@ -47,10 +47,8 @@ The Mender backend is available for the x86 architecture only.
   * [Kubernetes](../04.Production-installation-with-kubernetes/01.Kubernetes/docs.md)
   * [Helm](../04.Production-installation-with-kubernetes/01.Kubernetes/docs.md#installation-of-helm)
 * External services:
-  * [MongoDB](../04.Production-installation-with-kubernetes/02.MongoDB/docs.md)
-  * [NATS](../04.Production-installation-with-kubernetes/03.NATS/docs.md)
   * [S3-compatible storage layer](#s3-compatible-storage-layer)
-* [Mender Server](../04.Production-installation-with-kubernetes/05.Mender-server/docs.md)
+* [Mender Server](../04.Production-installation-with-kubernetes/03.Mender-server/docs.md)
 
 ### S3-compatible storage layer
 
@@ -63,4 +61,4 @@ The following open-source projects are compatible with the S3 APIs:
 * [SeaweedFS](https://github.com/chrislusf/seaweedfs)
 * [Leofs](https://github.com/leo-project/leofs)
 
-To get started, see the instructions on [how to install Minio](../04.Production-installation-with-kubernetes/04.Minio/docs.md).
+To get started, see the instructions on [how to install Minio](../04.Production-installation-with-kubernetes/02.Minio/docs.md).
