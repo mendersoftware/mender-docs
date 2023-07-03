@@ -38,12 +38,13 @@ We publish patch versions for older LTS releases roughly the same time we publis
 
 <!-- the version number includes the patch release here, to get picked up by autoversion, but will be a minor version in the result -->
 <!--AUTOVERSION: "LTS releases: %"/lts -->
-At this time, we support the following LTS releases: 3.5, 3.3.
+At this time, we support the following LTS releases: 3.3.
 
 | LTS         | Supported until |
 | ----------- | --------------- |
-| 3.3         |  2023-06        |
-| 3.5         |  2024-02        |
+| 3.3         |  2023-12        |
+
+! **Please note:** 3.5 was initially released as an LTS but has since been withdrawn because of technical reasons. Due to the delays in releasing the next LTS (3.6), the support duration for 3.3 has been extended.
 
 Mender is versioned and released as a Product bundle, and the versions mentioned here refer to the Product bundle version.
 
