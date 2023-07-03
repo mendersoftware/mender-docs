@@ -63,6 +63,8 @@ You can now install the Mender Server running:
 export MENDER_SERVER_DOMAIN="mender.example.com"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
 export MENDER_VERSION_TAG="mender-3.4"
+export MONGODB_ROOT_PASSWORD=$(pwgen 32 1)
+export MONGODB_REPLICA_SET_KEY=$(pwgen 32 1)
 
 cat >mender-master.yml <<EOF
 global:
@@ -83,6 +85,10 @@ global:
 # This enables bitnami/mongodb sub-chart
 mongodb:
   enabled: true
+  auth:
+    enabled: true
+    rootPassword: ${MONGODB_ROOT_PASSWORD}
+    replicaSetKey: ${MONGODB_REPLICA_SET_KEY}
 
 # This enabled nats sub-chart
 nats:
@@ -121,6 +127,8 @@ export MENDER_REGISTRY_PASSWORD="replace-with-your-password"
 export MENDER_SERVER_DOMAIN="mender.example.com"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
 export MENDER_VERSION_TAG="mender-3.4"
+export MONGODB_ROOT_PASSWORD=$(pwgen 32 1)
+export MONGODB_REPLICA_SET_KEY=$(pwgen 32 1)
 
 cat >mender-master.yml <<EOF
 global:
@@ -143,6 +151,10 @@ global:
 # This enables bitnami/mongodb sub-chart
 mongodb:
   enabled: true
+  auth:
+    enabled: true
+    rootPassword: ${MONGODB_ROOT_PASSWORD}
+    replicaSetKey: ${MONGODB_REPLICA_SET_KEY}
 
 # This enabled nats sub-chart
 nats:

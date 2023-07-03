@@ -9,7 +9,7 @@ The basic requirements to run the Mender Server on Kubernetes are:
 
 <!--AUTOVERSION: "% or later"/ignore -->
 - A [Kubernetes](https://kubernetes.io/) cluster, version **1.12.0 or later**.
-- The [Helm CLI](https://helm.sh/) version **3.1.0 or later**
+- The [Helm CLI](https://helm.sh/) version **3.7.0 or later**
 
 !!! In this section, we guide you by installing a Kubernetes cluster using k3s for
 !!! evaluation purposes. Please don't consider installing the Kubernetes cluster
