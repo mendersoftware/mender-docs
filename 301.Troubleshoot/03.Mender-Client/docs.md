@@ -57,6 +57,18 @@ block on the step `Waiting for root device ${mender_kernel_root}...`.
 This can be mitigated by adding the following line in `config.txt` on the sd cards boot partition, respectively uncommenting if it is already is prepared:
 `arm_64bit=0`.
 
+## Raspberry Pi not booting / infinite reboots after flashing card with Raspberry Pi Imager
+
+The Raspberry Pi Imager can be instructed to pre-configure the flashed image, for example
+- SSH
+- WiFi
+- user credentials
+- ...
+
+This is done by injecting a `firstrun.sh` script together with the statement `systemd.run_success_action=reboot` on the command line. On a menderized image, this will loop forever.
+
+To solve this problem, either reflash the image without adding customizations, or modify the `cmdline.txt` file on the boot partition of the file, removing the above `systemd` parameter.
+
 <!--AUTOVERSION: "mender-client %"/ignore -->
 ## Installation of the mender-client 3.2.0 Debian package on Debian Bullseye and Ubuntu 20.04
 
