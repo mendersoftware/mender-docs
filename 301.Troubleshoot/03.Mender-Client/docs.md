@@ -49,6 +49,14 @@ In order to accept the change of the suite name, you need to run:
 apt-get update --allow-releaseinfo-change
 ```
 
+## Raspberry Pi boot `Waiting for root device ${mender_kernel_root}...` after using `mender-convert`
+
+Depending on the release of Raspbian in use and eventually applied package updates, booting can
+block on the step `Waiting for root device ${mender_kernel_root}...`.
+
+This can be mitigated by adding the following line in `config.txt` on the sd cards boot partition, respectively uncommenting if it is already is prepared:
+`arm_64bit=0`.
+
 <!--AUTOVERSION: "mender-client %"/ignore -->
 ## Installation of the mender-client 3.2.0 Debian package on Debian Bullseye and Ubuntu 20.04
 
