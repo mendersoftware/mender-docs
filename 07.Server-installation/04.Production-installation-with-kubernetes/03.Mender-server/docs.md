@@ -12,6 +12,15 @@ taxonomy:
 
 ## Prerequisites
 
+### Optional: external services
+The Mender Helm chart is packaged with required external services:
+* [MongoDB](https://bitnami.com/stack/mongodb/helm)
+* [NATS](https://nats-io.github.io/k8s/)
+
+Using these packages is fine for test or PoC setups.
+For production setups, however, it's recommended to use external dedicated services.
+
+### Device authentication keys
 The Mender Server deployment requires generating keys that are used for user and
 device authentication. The following snippet uses `openssl` to generate the
 required keys:
@@ -54,6 +63,8 @@ You can now install the Mender Server running:
 export MENDER_SERVER_DOMAIN="mender.example.com"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
 export MENDER_VERSION_TAG="mender-3.4"
+export MONGODB_ROOT_PASSWORD=$(pwgen 32 1)
+export MONGODB_REPLICA_SET_KEY=$(pwgen 32 1)
 
 cat >mender-master.yml <<EOF
 global:
@@ -61,15 +72,27 @@ global:
   image:
     tag: ${MENDER_VERSION_TAG}
   mongodb:
-    URL: "mongodb://root:${MONGODB_ROOT_PASSWORD}@mongodb-0.mongodb-headless.default.svc.cluster.local:27017,mongodb-1.mongodb-headless.default.svc.cluster.local:27017"
+    URL: ""
   nats:
-    URL: "nats://nats:4222"
+    URL: ""
   s3:
     AWS_URI: "https://${MINIO_DOMAIN_NAME}"
     AWS_BUCKET: "mender-artifact-storage"
     AWS_ACCESS_KEY_ID: "${MINIO_ACCESS_KEY}"
     AWS_SECRET_ACCESS_KEY: "${MINIO_SECRET_KEY}"
   url: "${MENDER_SERVER_URL}"
+
+# This enables bitnami/mongodb sub-chart
+mongodb:
+  enabled: true
+  auth:
+    enabled: true
+    rootPassword: ${MONGODB_ROOT_PASSWORD}
+    replicaSetKey: ${MONGODB_REPLICA_SET_KEY}
+
+# This enabled nats sub-chart
+nats:
+  enabled: true
 
 api_gateway:
   env:
@@ -104,6 +127,8 @@ export MENDER_REGISTRY_PASSWORD="replace-with-your-password"
 export MENDER_SERVER_DOMAIN="mender.example.com"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
 export MENDER_VERSION_TAG="mender-3.4"
+export MONGODB_ROOT_PASSWORD=$(pwgen 32 1)
+export MONGODB_REPLICA_SET_KEY=$(pwgen 32 1)
 
 cat >mender-master.yml <<EOF
 global:
@@ -113,15 +138,27 @@ global:
     password: "${MENDER_REGISTRY_PASSWORD}"
     tag: ${MENDER_VERSION_TAG}
   mongodb:
-    URL: "mongodb://root:${MONGODB_ROOT_PASSWORD}@mongodb-0.mongodb-headless.default.svc.cluster.local:27017,mongodb-1.mongodb-headless.default.svc.cluster.local:27017"
+    URL: ""
   nats:
-    URL: "nats://nats:4222"
+    URL: ""
   s3:
     AWS_URI: "https://${MINIO_DOMAIN_NAME}"
     AWS_BUCKET: "mender-artifact-storage"
     AWS_ACCESS_KEY_ID: "${MINIO_ACCESS_KEY}"
     AWS_SECRET_ACCESS_KEY: "${MINIO_SECRET_KEY}"
   url: "${MENDER_SERVER_URL}"
+
+# This enables bitnami/mongodb sub-chart
+mongodb:
+  enabled: true
+  auth:
+    enabled: true
+    rootPassword: ${MONGODB_ROOT_PASSWORD}
+    replicaSetKey: ${MONGODB_REPLICA_SET_KEY}
+
+# This enabled nats sub-chart
+nats:
+  enabled: true
 
 api_gateway:
   env:

@@ -59,9 +59,10 @@ mender-connect along with the default values. The default configuration path is
       "PreserveOwner": true,
       "PreserveGroup": true,
       "PreserveMode": true,
+      "Umask": "",
       "Counters": {
-       "MaxBytesTxPerHour": 1048576,
-       "MaxBytesRxPerHour": 1048576
+        "MaxBytesTxPerMinute": 1048576,
+        "MaxBytesRxPerMinute": 1048576
       }
     }
   },
@@ -114,19 +115,20 @@ The `FileTransfer` section in the `Limits` configuration block has the following
 options available:
 
 * `Chroot`: limit the directory from which you can transfer files and to which you can upload them.
-* `OwnerGet`: you can only transfer the files owned by the users on this list.
-* `GroupGet`: you can only transfer the files that have a group from this list.
+* `OwnerGet`: you can only transfer the files owned by the users on this list. If left empty, all users are allowed.
+* `GroupGet`: you can only transfer the files that have a group from this list. If left empty, all groups are allowed.
 * `OwnerPut`: all the files you upload to a device will have this username set as an owner.
 * `GroupPut`: all the files you upload to a device will have this group set.
-* `MaxFileSize`: the maximal file size that you can download from or upload to a device.
+* `MaxFileSize`: the maximal file size that you can download from or upload to a device. Omitting this property or setting it to `0` will allow files of any size. 
 * `FollowSymLinks`: if set to true, `mender-connect` will resolve all the links in the target or destination path and the transfer will proceed. If false, and if any part of an upload or download path is a link, `mender-connect` will refuse to carry out the request.
 * `AllowOverwrite`: if set to true, `mender-connect` will overwrite the target file path when processing the upload request. If set to false `mender-connect` will refuse to overwrite the file.
 * `RegularFilesOnly`: allow only the transfer of regular files.
 * `PreserveOwner`: preserve the file owner from the upload request.
 * `PreserveGroup`: preserve the file group from the upload request.
+* `Umask`: set file permission upon upload - string representation. e.g. `"600"`
 * `Counters`: Bytes transmitted/bytes received limits.
-  * `MaxBytesTxPerHour`: the maximal outgoing bytes that a device can transmit per hour. calculated as a moving exponential average.
-  * `MaxBytesRxPerHour`: the maximal incoming bytes that a device can receive per hour. calculated as a moving exponential average.
+  * `MaxBytesTxPerMinute`: the maximal outgoing bytes that a device can transmit per minute. calculated as a moving exponential average. Omitting this property or setting it to `0` will allow transmits of any size.
+  * `MaxBytesRxPerMinute`: the maximal incoming bytes that a device can receive per minute. calculated as a moving exponential average. Omitting this property or setting it to `0` will allow receives of any size.
 
 #### File Transfer configuration
 

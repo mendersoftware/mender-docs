@@ -25,7 +25,7 @@ DESCRIPTION:
 
 Its purpose is to ensure your installation is appropriately licensed and verify device counts.
 A cronjob usually runs the command
-in the [kubernetes cluster](../04.Production-installation-with-kubernetes/06.Enabling-device-license-count/docs.md),
+in the [kubernetes cluster](../04.Production-installation-with-kubernetes/04.Enabling-device-license-count/docs.md),
 or [docker composition](../03.Installation-with-docker-compose/04.Enabling-device-license-count/docs.md).
 It saves the device count daily for future inspection and otherwise does not influence the operations of the Mender Server in any way.
 
