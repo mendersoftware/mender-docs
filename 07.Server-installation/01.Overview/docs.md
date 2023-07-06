@@ -15,9 +15,9 @@ small, well defined piece of functionality. Services are delivered in form of Do
 
 For the quickest way to a working local server with default configuration and keys, please read [Evaluation with Docker compose](../02.Evaluation-with-docker-compose/docs.md). By following a list of copy-pastable steps you will end with a working server environment of your computer.
 
-On a running mender server instance the microservices communicate together and have been set up with the correct configurations and keys. To know more about the details on the architecture and configuration please read the [Architecture and configuration](TBD).
+On a running mender server instance the microservices communicate together and have been set up with the correct configurations and keys. To know more about the details on the architecture and configuration please read the [Architecture](01.Architecture/docs.md) and [Certificates and keys](02.Certificates-and-keys/docs.md).
 
-For production installations please follow the setup described in [Production installation with Kubernetes](TBD). It describes how to set up a scalable mender server installation in on of the big cloud providers.
+For production installations please follow the setup described in [Production installation with Kubernetes](../04.Production-installation-with-kubernetes/docs.md). It describes how to set up a scalable mender server installation in on of the big cloud providers.
 
 ## Support
 

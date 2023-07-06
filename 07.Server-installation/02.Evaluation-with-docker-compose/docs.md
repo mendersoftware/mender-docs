@@ -5,11 +5,11 @@ taxonomy:
     label: tutorial
 ---
 
-!!! If you are interested in evaluating Mender features, visit
+!!! If you are interested in evaluating Mender features as an end to end solution, please visit
 !!! [Get Started](../../01.Get-started/chapter.md)
 
-!!! If you are interested in setting up a Mender Server for production, visit
-!!! [Production installation with Kubernetes](../04.Production-installation-with-kubernetes/docs.md).
+! If you are interested in setting up a Mender Server for production, visit
+! [Production installation with Kubernetes](../04.Production-installation-with-kubernetes/docs.md).
 
 This tutorial covers how to setup a demonstration environment of the Mender
 server. This is not intended for production use, the demonstration environment

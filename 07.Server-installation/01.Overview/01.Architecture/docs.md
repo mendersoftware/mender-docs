@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Architecture
 taxonomy:
     category: docs
 ---
