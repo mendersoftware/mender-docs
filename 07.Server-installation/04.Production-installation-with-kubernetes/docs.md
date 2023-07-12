@@ -32,13 +32,13 @@ The requirements listed below are what Northern.tech tests internally and suppor
 * S3 compatible:
   * AWS S3
   * Cloudflare R2
-  * GCP - only the S3 compatible API
+  * GCP - S3 compatible API only
   * Minio
 
 
 **Mongo DB:**
 * MongoDB 4.4
-  * Self hosted - single node or replica set)
+  * Self hosted, both single node and replica set (recommended)
   * Atlas
 
 **Redis:**
@@ -53,14 +53,14 @@ The requirements listed below are what Northern.tech tests internally and suppor
 * [Amazon Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/)
 * [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-au/services/kubernetes-service/)
 * [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine/)
-    * *No autopilot*
+    * *Autopilot* not yet supported
 
 **Helm CLI version:**
 * 3.7
 
 ### Resources
 
-To deploy a production-grade Mender backend, you will need Kubernetes worker nodes providing
+To deploy a production-grade Mender Server, you will need Kubernetes worker nodes providing
 at least 4 GB of RAM, 4 vCPUs and 10 GB for the persistent volumes.
 
 The Mender backend is available for the x86 architecture only.

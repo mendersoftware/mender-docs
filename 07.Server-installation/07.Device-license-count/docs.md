@@ -25,7 +25,7 @@ DESCRIPTION:
 
 It saves the device count daily for future inspection and otherwise does not influence the operations of the Mender Server in any way.
 
-For production installations with kubernetes, the cronjob is already prepared and will be running daily
+For production installations with Kubernetes, the cronjob is already prepared and will be running daily
 <!--AUTOVERSION: "at [3am](https://github.com/mendersoftware/mender-helm/blob/%/mender/templates/device-auth-cron-license-count.yaml)."/ignore-->
 at [3am](https://github.com/mendersoftware/mender-helm/blob/master/mender/templates/device-auth-cron-license-count.yaml).
 

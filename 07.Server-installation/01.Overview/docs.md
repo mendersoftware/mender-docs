@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-!!! For evaluation of the on premise installation of the Mender Enterprise Server please [contact us](https://mender.io/contact-us). In the message please mention the 'Evaluation of the on-prem Enterprise Mender'.
+!!! For evaluation of the on-premise installation of the Mender Enterprise Server please [contact us](https://mender.io/contact-us). In the message please mention'Evaluation of the on-prem Enterprise Mender'.
 
 
 Mender backend is composed of a number of microservices, each implementing a

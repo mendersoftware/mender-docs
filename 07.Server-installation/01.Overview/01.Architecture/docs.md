@@ -4,10 +4,10 @@ taxonomy:
     category: docs
 ---
 
-!!! Enterprise server will have an enterprise version of the container pulled which will have enterprise features.
+!!! The Enterprise server runs different versions of the containers providing the enterprise features.
 !!! For evaluation of the Mender Enterprise Server please [contact us](https://mender.io/contact-us) to gain access to the enterprise containers.
 
-The architecture below show the case for the Open Source Mender Server that gets set up with the docker compose evaluation.
+The architecture below shows the Open Source Mender Server case set up with the docker-compose evaluation.
 
 
 ```
@@ -74,7 +74,7 @@ The integration environment brings together the following services:
 - [NATS.io](https://nats.io?target=_blank) messaging system
 - [OpenSearch](https://www.opensearch.org?target=_blank) storage and search engine
 
-Services are delivered in form of Docker images, available from
+Services are delivered as Docker images, available from the
 official [Mender Docker repository](https://hub.docker.com/r/mendersoftware/?target=_blank).
-When required, each service can be built directly from its source code. Consult
+When required, each service can be built directly from its source code. Consult the
 respective repositories for build instructions.
