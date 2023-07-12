@@ -174,7 +174,7 @@ echo | openssl s_client -connect s3.example.com:9000 2>/dev/null | openssl x509 
 > ```
 
 We can see that both these certificates are currently valid.
-Also see the [documentation on certificates](../../07.Server-installation/05.Certificates-and-keys/docs.md) for an
+Also see the [documentation on certificates](../../07.Server-installation/01.Overview/02.Certificates-and-keys/docs.md) for an
 overview and description on how to generate new certificates.
 
 

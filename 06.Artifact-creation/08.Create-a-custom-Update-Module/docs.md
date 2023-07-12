@@ -1,5 +1,5 @@
 ---
-title: Create a custom Update Module
+custom-updatitle: Create a custom Update Module
 taxonomy:
     category: docs
     label: tutorial
@@ -74,7 +74,7 @@ Please refer to [further reading](#further-reading) for more details.
 
 ### The Mender Server
 
-The best and recommended way of running Mender is the [managed mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) with [hosted Mender](https://hosted.mender.io?target=_blank). You can also try the [on-premise demo server](../../07.Server-installation/02.Demo-installation/docs.md) for quick testing.
+The best and recommended way of running Mender is the [managed mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) with [hosted Mender](https://hosted.mender.io?target=_blank). You can also try the [on-premise demo server](../../07.Server-installation/02.Evaluation-with-docker-compose/docs.md) for quick testing.
 
 !!! Hosted Mender is available in multiple [regions](/11.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
 

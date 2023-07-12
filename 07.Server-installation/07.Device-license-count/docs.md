@@ -23,10 +23,10 @@ DESCRIPTION:
    Counts the devices licenses and stores the result for later processing.
 ```
 
-Its purpose is to ensure your installation is appropriately licensed and verify device counts.
-A cronjob usually runs the command
-in the [kubernetes cluster](../04.Production-installation-with-kubernetes/04.Enabling-device-license-count/docs.md),
-or [docker composition](../03.Installation-with-docker-compose/04.Enabling-device-license-count/docs.md).
 It saves the device count daily for future inspection and otherwise does not influence the operations of the Mender Server in any way.
+
+For production installations with Kubernetes, the cronjob is already prepared and will be running daily
+<!--AUTOVERSION: "at [3am](https://github.com/mendersoftware/mender-helm/blob/%/mender/templates/device-auth-cron-license-count.yaml)."/ignore-->
+at [3am](https://github.com/mendersoftware/mender-helm/blob/master/mender/templates/device-auth-cron-license-count.yaml).
 
 You can download the device count and licenses report from the Mender UI in the Organization view by clicking on the link "Download license report".
