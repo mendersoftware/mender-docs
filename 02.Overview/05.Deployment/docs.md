@@ -4,9 +4,10 @@ taxonomy:
     category: docs
 ---
 
-A Deployment ensures delivery of a Release to one or more devices. A Release can contain one or more Mender Artifacts.
-The Artifact is assigned to a device based on the software and hardware compatibility the device provided.
-In other words, a Deployment is the server side model which represent a device update.
+A Deployment ensures the delivery of a Release to one or more devices. A Release can contain one or more Mender Artifacts.
+The Artifact is assigned to a device based on the software and hardware compatibility the device provides.
+In other words, a Deployment is the server-side model which represents a device update.
+
 
 
 The characteristics of a Deployment are:
@@ -18,10 +19,9 @@ The characteristics of a Deployment are:
 
 ### Deployment to static groups
 
-A Deployment to a static group contains a fixed list of devices and finishes once all the devices in the Deployment have finished.
-The Mender Server translates the group into a fixed list of Device IDs at Deployment creation time.
+A Deployment to a static group contains a fixed list of devices and finishes once all the devices in the Deployment have the expected artifact installed.
+The Mender Server translates the static group into a fixed list of Device IDs at Deployment creation time.
 
-A Deployment to static groups will:
 
 A Deployment to static groups will:
 * Finish as soon as all devices have either reported success or failure
