@@ -77,14 +77,10 @@ def get_version_of(repo):
     global VERSION_CACHE
 
     version = VERSION_CACHE.get(repo)
-    released_version = get_released_version_of(repo)
     if version is False:
         return None
     elif version is not None:
         return version
-    elif released_version:
-        VERSION_CACHE[repo] = released_version
-        return released_version
     elif INTEGRATION_REPO is not None and INTEGRATION_VERSION is not None:
         result = subprocess.run(
             [
@@ -105,9 +101,20 @@ def get_version_of(repo):
         VERSION_CACHE[repo] = version
         return version
     else:
-        print('Not replacing "%s" instances, since it was not specified' % repo)
-        VERSION_CACHE[repo] = False
-        return None
+        released_version = None
+        try:
+            released_version = get_released_version_of(repo)
+        except KeyError:
+            print(
+                f"Version not found in {VERSIONS_URL}. It may take time to reach it. Try running with --integration-dir instead, to get the information from there."
+            )
+        if released_version:
+            VERSION_CACHE[repo] = released_version
+            return released_version
+        else:
+            print('Not replacing "%s" instances, since it was not specified' % repo)
+            VERSION_CACHE[repo] = False
+            return None
 
 
 def get_lts_versions():
@@ -436,10 +443,6 @@ def main():
         MODE = UPDATE
 
         if args.integration_version is not None:
-            if args.integration_dir is None:
-                raise Exception(
-                    "--integration-version argument requires --integration-dir"
-                )
             INTEGRATION_REPO = args.integration_dir
             INTEGRATION_VERSION = args.integration_version
 

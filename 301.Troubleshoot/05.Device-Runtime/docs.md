@@ -119,9 +119,9 @@ default.
    environments are locked down and may require special site
    procedures to allow the devices to connect.
 
-### Networking connectivity to the Mender server
+### Networking connectivity to the Mender Server
 
-   Run the following to attempt to contact the Mender server:
+   Run the following to attempt to contact the Mender Server:
 
    ```bash
    # echo string | nc hosted.mender.io 443
@@ -132,7 +132,7 @@ default.
 
    The result should be a message containing "400 Bad Request". If the
    command hangs or produces any other error message, then the
-   connection to the Mender server has failed. Please consult your
+   connection to the Mender Server has failed. Please consult your
    local network administrator for further troubleshooting.
 
 ### Accurate time required for certificate processing.
@@ -140,7 +140,6 @@ default.
    Proper certificate processing requires an accurate system time. See
    [Mender Client troubleshooting](../03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid)
    for more details.
-
 
 ## Next Steps
 

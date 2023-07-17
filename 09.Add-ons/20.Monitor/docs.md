@@ -23,7 +23,7 @@ this leads to massive bandwidth savings and allows instant local processing.
 
 Each time a service is not running, or a log file contains a given pattern, or a
 signal is received on a given D-Bus bus, all users who have access to the given
-device on the Mender server receive an email notification. You can mute the
+device on the Mender Server receive an email notification. You can mute the
 email notifications in the Mender Server settings.
 
 There is one exception to the above rule: if a service goes up and down often

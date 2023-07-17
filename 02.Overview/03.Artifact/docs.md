@@ -82,7 +82,7 @@ the *Provides* values on the device are.
 ### Streaming, resume and compression
 
 The tar format supports streaming, which Mender takes advantage of. As a Mender
-Artifact is downloaded from the Mender server or external storage, the Mender
+Artifact is downloaded from the Mender Server or external storage, the Mender
 client streams the root filesystem within it directly to the inactive partition,
 without needing any temporary storage for unpacking it before it is written.
 This drastically reduces storage requirements for the update process,

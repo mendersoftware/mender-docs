@@ -225,7 +225,7 @@ attempts the next server on the list in the given order.
 #### ServerURL
 
 The server URL is the basis for API requests. This needs to point to the
-server which runs the Mender server services. It should include the whole URL,
+server which runs the Mender Server services. It should include the whole URL,
 including `https://` and a trailing slash. *NOTE: This entry conflicts with
 [`Servers` attribute](#Servers), i.e. the server only accepts one of these entries.*
 
@@ -305,7 +305,7 @@ See also the section about [state scripts](../../../06.Artifact-creation/04.Stat
 #### TenantToken
 
 A token which identifies which tenant a device belongs to. This is only relevant
-if using a multi-tenant environment such as [hosted Mender](https://hosted.mender.io?target=_blank).
+if using a multi-tenant environment such as [hosted Mender](https://hosted.mender.io?target=_blank). Always treat the tenant token as a secret.
 
 #### UpdateLogPath
 

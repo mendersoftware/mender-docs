@@ -17,7 +17,7 @@ acts as a proxy with the ability to understand and serve client requests
 locally.
 
 Mender Gateway operates by proxying requests from a local HTTP(S) server on the
-local network to the upstream Mender server. It is capable of proxying Artifacts
+local network to the upstream Mender Server. It is capable of proxying Artifacts
 from an s3-compatible file server to the devices and enabling mutual TLS
 authentication requests on behalf of devices.
 
@@ -54,5 +54,5 @@ for an example configuration.
 The Mender Gateway is capable of automatic provisioning of devices using *mTLS*
 authentication. Any device with a valid certificate signed by the Certificate
 Authority (CA) configured on the gateway, is automatically accepted by the
-Mender server. See the [mTLS user guide](../03.Mutual-TLS-authentication/docs.md) for a
+Mender Server. See the [mTLS user guide](../03.Mutual-TLS-authentication/docs.md) for a
 reference mutual TLS setup in a testing environment.

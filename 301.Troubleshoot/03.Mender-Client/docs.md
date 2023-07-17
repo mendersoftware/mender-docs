@@ -49,6 +49,26 @@ In order to accept the change of the suite name, you need to run:
 apt-get update --allow-releaseinfo-change
 ```
 
+## Raspberry Pi boot `Waiting for root device ${mender_kernel_root}...` after using `mender-convert`
+
+Depending on the release of Raspbian in use and eventually applied package updates, booting can
+block on the step `Waiting for root device ${mender_kernel_root}...`.
+
+This can be mitigated by adding the following line in `config.txt` on the sd cards boot partition, respectively uncommenting if it is already is prepared:
+`arm_64bit=0`.
+
+## Raspberry Pi not booting / infinite reboots after flashing card with Raspberry Pi Imager
+
+The Raspberry Pi Imager can be instructed to pre-configure the flashed image, for example
+- SSH
+- WiFi
+- user credentials
+- ...
+
+This is done by injecting a `firstrun.sh` script together with the statement `systemd.run_success_action=reboot` on the command line. On a menderized image, this will loop forever.
+
+To solve this problem, either reflash the image without adding customizations, or modify the `cmdline.txt` file on the boot partition of the file, removing the above `systemd` parameter.
+
 <!--AUTOVERSION: "mender-client %"/ignore -->
 ## Installation of the mender-client 3.2.0 Debian package on Debian Bullseye and Ubuntu 20.04
 
@@ -154,7 +174,7 @@ echo | openssl s_client -connect s3.example.com:9000 2>/dev/null | openssl x509 
 > ```
 
 We can see that both these certificates are currently valid.
-Also see the [documentation on certificates](../../07.Server-installation/05.Certificates-and-keys/docs.md) for an
+Also see the [documentation on certificates](../../07.Server-installation/01.Overview/02.Certificates-and-keys/docs.md) for an
 overview and description on how to generate new certificates.
 
 
@@ -169,7 +189,7 @@ Post https://<SERVER-URI>/api/devices/v1/authentication/auth_requests: x509: cer
 ```
 
 This could occur in several places, and the distinguishing message is **x509: certificate signed by unknown authority**.
-The message shows that the Mender client rejects the Mender server's certificate because it does not trust the certificate
+The message shows that the Mender client rejects the Mender Server's certificate because it does not trust the certificate
 authority (CA).
 
 If your server is using a certificate that is signed by an official Certificate Authority, then you likely
@@ -179,7 +199,7 @@ in its system store.
 
 !!! Hosted Mender is available in multiple [regions](/11.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
 
-On the other hand, if you set up the Mender server yourself as described in
+On the other hand, if you set up the Mender Server yourself as described in
 [Production installation](../../07.Server-installation/04.Production-installation-with-kubernetes/docs.md) and generated certificates as part of it,
 your need to make sure that the server certificates are in `/etc/mender/server.crt` on your device.
 
@@ -328,3 +348,44 @@ The block below shows 3 example artifacts.
 * artifact - `mender-artifact read <mender-artifact.mender>`
 * device - Run the command on the device `mender show-provides`
 * server UI - `Releases -> Select Release -> Expand the artifact info by clicking it -> Expand Provides and Depends`
+
+### Checking inconsistencies about the root file system checksums
+
+The checksum shown with `mender show-provides` does not necessarily represent the running partition's actual checksum.
+
+For example, if you remount the partition `rw`, change something and remount it `ro`, the checksum in the `mender show-provides` won't change, while the checksum of the running partition changes.
+
+As part of your troubleshooting, you can check that the actual checksum on the device is the same as in the `Depends` field.
+
+A general command should be something like the below.
+
+You can identify your active root file system (`$ACTIVE_PARTITION` in the following `dd`) with a command like `lsblk`, `fdisk -l`, `mount` or similar.
+
+The payload size of the version running on the device can be obtained from `mender-artifact read delta.mender`, check for the variable `rootfs_file_size` and use it as `$PAYLOAD_SIZE` in the following `dd`.
+
+```bash
+dd if=/dev/$ACTIVE_PARTITION bs=1M count=$PAYLOAD_SIZE iflag=count_bytes | sha256sum -
+```
+
+#### Common root causes for having inconsistent checksums
+
+* Check for `mount` commands inside any **state script** that you implemented. The checksum will change if the root file system gets mounted as `rw`.
+
+* A bootloader variable can set the file system to `rw` and remount it as `ro` later. Therefore, make sure the partition is never mounted as `rw`.
+
+* `cat /proc/cmdline` shows the parameters passed to the kernel when it started. Make sure there is no `rw` value on the output.
+
+* In the `/etc/fstab` file make sure the root file system is mounted as `ro`. Remember that the parameter `defaults` include the value `rw`.
+
+* In Nvidia devices using `meta-tegra` from the **OE4T** project, the variable `KERNEL_ROOTSPEC` could set the mount of the root filesystem to be read-write in an early boot stage. Check its value with `bitbake -e <image>` if in doubt.
+
+
+#### `Xdelta3: target window checksum mismatch: XD3_INVALID_INPUT`
+
+This message is caused by the root filesystem being altered, which usually is avoided by mounting read-only.
+Depending on your operating system, there might be background services that modify on-disk storage in a supposedly
+transparent manner, though. Those need to be either disabled completely, or configured to not operate on the
+root filesystem partition.
+
+Known services with this effect:
+- `fstrim` from the `util-linux` package

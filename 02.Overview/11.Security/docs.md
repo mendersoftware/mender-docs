@@ -12,7 +12,7 @@ ensures a secure end-to-end update process.
 
 ## Server authentication
 
-A Device, running the Mender client, communicates with the Mender server in order
+A Device, running the Mender client, communicates with the Mender Server in order
 to authorize, get updates, update inventory data, and deliver status information.
 
 Communication between the client and server happens via a REST API over a

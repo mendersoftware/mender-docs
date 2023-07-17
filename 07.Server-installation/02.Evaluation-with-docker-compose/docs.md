@@ -1,5 +1,5 @@
 ---
-title: Demo installation
+title: Evaluation with Docker Compose
 taxonomy:
     category: docs
     label: tutorial
