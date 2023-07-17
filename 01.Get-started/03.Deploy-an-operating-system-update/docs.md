@@ -94,7 +94,7 @@ USER="root"
 
 [Mender Artifacts](../../02.Overview/03.Artifact/docs.md) require
 a device compatibility value as input, which **must** match what the device is
-reporting to the Mender server or it will refuse to install it. This is a safety
+reporting to the Mender Server or it will refuse to install it. This is a safety
 mechanism to avoid installing software to incompatible hardware.
 
 If you are unsure, you can check what the device is reporting on the server:

@@ -8,9 +8,9 @@ taxonomy:
 This chapter assumes that you are familiar with [rootfs
 overlays](../02.Convert-a-Mender-Debian-image/01.Customization/docs.md#rootfs-overlays).
 
-## Mender server address
+## Mender Server address
 
-If you wish to use your own Mender server instead of Hosted Mender, you will need to provide a
+If you wish to use your own Mender Server instead of Hosted Mender, you will need to provide a
 custom server address in the converted image. To do so, generate a new overlay using the
 `bootstrap-rootfs-overlay-production-server.sh` script, and give the `--server-url` argument:
 

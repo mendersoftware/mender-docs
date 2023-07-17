@@ -43,6 +43,10 @@ to flash the OS image to the device.
 We recommended to use the Raspberry Pi Imager tool, choose "Use custom" and
 browse to the downloaded Mender Raspberry Pi OS image.
 
+!! Do not use the options to pre-configure the written image,
+!! such as SSH, WiFi or user credentials. This is known to be buggy,
+!! causing an infinite reboot loop.
+
 !!! Writing the SD card takes 5-25 minutes,
 !!! mainly depending on your SD card and writer speed.
 
@@ -85,7 +89,7 @@ USERNAME='' # CHANGE: your desired username
 PASSWORD='' # CHANGE: your desired password
 
 cat << EOF > "$RPI_BOOT"/userconf.txt
-${USERNAME}:$(openssl passwd -6 "$PASSWORD")
+${USERNAME}:$(openssl passwd "$PASSWORD")
 EOF
 ```
 

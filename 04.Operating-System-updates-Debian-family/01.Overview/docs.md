@@ -81,7 +81,7 @@ initialized.
 
 Before the time is set properly, either by systemd or the RTC, the time will
 default to the [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time?target=_blank). Note
-that the Mender server will reject client connections until this
+that the Mender Server will reject client connections until this
 situation is resolved.
 
 

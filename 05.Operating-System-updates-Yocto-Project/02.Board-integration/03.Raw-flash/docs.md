@@ -16,7 +16,6 @@ kernel and rootfs before introducing Mender.
 The Mender Yocto layer comes with support for the following raw flash boards in
 the main tree:
 
-* Toradex Colibri VF50/VF61 `meta-mender-toradex-nxp`
 * vexpress-a9 emulated by QEMU `meta-mender-qemu`
 
 Both layers provide a set of patches based on their respective upstream U-Boot

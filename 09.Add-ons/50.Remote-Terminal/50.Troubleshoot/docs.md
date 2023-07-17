@@ -27,8 +27,8 @@ Error: user has too many open sessions
 ```
 
 The Remote Terminal feature by default allows
-one open session to the device at the time, for each user account of the Mender server.
-Since the limit is per user account, other users of your Mender server may
+one open session to the device at the time, for each user account of the Mender Server.
+Since the limit is per user account, other users of your Mender Server may
 still be able to log in to the device.
 
 If you get the above error, make sure you do not have too many browser tabs or CLI windows
@@ -37,3 +37,10 @@ with an open Remote Terminal session to the device.
 You can increase this limit if you wish. See the [configuration of mender-connect](../../90.Mender-Connect/docs.md#configuration),
 in particular the `Sessions.MaxPerUser` setting. Also note the `Sessions.ExpireAfterIdle`
 setting, which allows you to set a timeout for sessions.
+
+## Remote terminal sometimes not working
+
+If you notice that remote terminal isn't available at one time, but is after checking again after a few minutes, this is the autoheal mechanism of the remote terminal in action.
+
+There is a hardcoded, 60 second, websocket ping timeout used to maintain a notion of a connection.
+As soon as that times out, the remote terminal will close the current connection and attempt to create a new to reestablish the communication with the server.

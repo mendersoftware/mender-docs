@@ -33,7 +33,7 @@ Execute the steps below to generate the delta artifact:
 mender-binary-delta-generator -o delta-v1-v2.mender rootfs-v1.mender rootfs-v2.mender
 ```
 
-The result (`delta-v1-v2.mender`) is a delta artifact containing only the difference between the two artifacts. Once uploaded to the Mender server, the delta artifact will be listed in the web UI under the same release as the `rootfs-v2.mender`. This is because deploying this delta on a device results in the same version as deploying `rootfs-v2.mender`.
+The result (`delta-v1-v2.mender`) is a delta artifact containing only the difference between the two artifacts. Once uploaded to the Mender Server, the delta artifact will be listed in the web UI under the same release as the `rootfs-v2.mender`. This is because deploying this delta on a device results in the same version as deploying `rootfs-v2.mender`.
 
 !! A running device will only accept a delta update once the local database has been initialized either with the bootstrap Artifact (installed by default in Yocto) or after an Operating System update.
 

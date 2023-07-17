@@ -25,7 +25,7 @@ storage, as opposed to a regular update, which writes all bytes, even if they
 have not changed on the storage medium.
 
 
-When a device checks for an update, the Mender server will automatically assign
+When a device checks for an update, the Mender Server will automatically assign
 the right Artifact to the device based on the version the device is already
 running. It selects a Delta update if available for the Release the device is
 running, but also supports falling back to the full image if no Delta update is

@@ -42,7 +42,8 @@ If Mender is used in standalone mode (installing via command line), some states 
 
 There are two types of the state scripts: root filesystem and Artifact. The root filesystems scripts are stored as a part of the current root filesystem. The default location
 for those scripts is `/etc/mender/scripts`.
-The Artifact scripts are part of the Artifact and are delivered to the Client inside the Artifact. All the Artifact scripts are prefixed with `Artifact`.
+The Artifact scripts are part of the Artifact and are delivered to the Client inside the Artifact as `--script` arguments to `mender-artifact`. 
+All the Artifact scripts are prefixed with `Artifact`.
 
 The reason for having both root filesystem and Artifact scripts is related to the fact that some scripts must run before the Client downloads the Artifact and as such can not be delivered with the Artifact. Those scripts are `Idle`, `Sync` and `Download`. Therefore it is important to remember that when deploying a new update, all scripts will be run from the currently running root filesystem until `ArtifactInstall`, at which point the scripts from the new Artifact will take over.
 
@@ -77,6 +78,11 @@ For example, `Download_Enter_05_wifi-driver` and `Download_Enter_10_ask-user` ar
 If a script returns `0` Mender proceeds, but if it returns `1` the update is aborted and rolled back.
 In addition, return code `21` is used for the [Retry later](#retry-later) feature.
 All other return codes are reserved for future use by Mender and should not be used.
+
+!!! Returning 1 in any of the `Download_Enter` scripts will cause the client to abort the update and
+!!! go back to Idle, but it will not report failure to the server. Therefore the deployment will be
+!!! retried on the next polling cycle. This behavior [may change in the
+!!! future](https://northerntech.atlassian.net/browse/MEN-6319?target=_blank).
 
 ### Retry later
 

@@ -1,5 +1,5 @@
 ---
-title: Create a custom Update Module
+custom-updatitle: Create a custom Update Module
 taxonomy:
     category: docs
     label: tutorial
@@ -17,6 +17,36 @@ You can find general-purpose Update Modules and documentation, including support
 This document introduces how Update Modules work, so you can develop your own Update Modules that meet your specific needs.
 
 An Update Module implements one or more of the actions that the Mender client carries out when installing an Artifact payload. The *core* action that all Update Modules must implement is the ArtifactInstall action, where the actual installation of an Artifact payload takes place. However, there are other actions that you may use depending on the desired functionality and use case for an Update Module, such as Rollback.
+
+### Update Module basics
+
+Technically speaking, an Update Module is an executable that follows a number of rules.
+
+#### Executable
+
+The entry point for an Update Module is an executable that is located under `/usr/share/mender/modules/v3` as of API v3. Most Update Modules use a shell script as their main executable and call subscripts as needed, but this is not a mandatory structure. As long as the file is executable on the target system, it can be implemented in any interpreted (bash, python, ...) or compiled (C++, Rust, ...) language.
+ 
+#### Update Module API
+
+The executable will be called with defined arguments, is expected to print certain strings to `stdout` (`stderr` can be used for logging) and return a defined value upon invocation. This is called the `Update Module API`. It follows the general concept that the call will always have two parameters: *Action* and *path*.
+
+1.  Action. This string is either the current state of the update process or an information request.
+<!--AUTOVERSION: "mendersoftware/mender/blob/%/Documentation"/ignore-->
+- The most relevant state is `ArtifactInstall`, which is the main installation step. Any actions that modify state of the installed software should be taken here. This could be either installing new files from the received artifact, or activating the payload received during the [download state](https://github.com/mendersoftware/mender/blob/master/Documentation/update-modules-v3-file-api.md#download-state). An exit value of 0 indicates success, any other value an error and will trigger the rollback procedure where applicable.
+- A typical information request action is `NeedsArtifactReboot`. By querying this, the Mender Client can decide if it needs to initiate a full device reboot after update installation. This is an example where printing a string as response is required: `No` indicates that the Update Module does not require a reboot, `Automatic` requests a reboot following the standard strategy.
+
+2. path to artifact context. This defines where the [File API](#file-api) is exposed.
+
+<!--AUTOVERSION: "mendersoftware/mender/blob/%/Documentation"/ignore-->
+For more detailed information on all actions and their respective semantics, please see the documentation in the [source code repository](https://github.com/mendersoftware/mender/blob/master/Documentation/update-modules-v3-file-api.md#states-and-execution-flow).
+
+#### File API
+
+<!--AUTOVERSION: "mendersoftware/mender/blob/%/Documentation"/ignore-->
+The File API exposes the artifact context to the Update module. This is done through a directory tree that contains the various header parts, as well as the actual payload. The files contained in the Mender Artifact are located in the `files` directory and can be directly accessed. For more details on the File API, please see the documentation in the [source code repository](https://github.com/mendersoftware/mender/blob/master/Documentation/update-modules-v3-file-api.md#file-api).
+
+<!--AUTOVERSION: "mendersoftware/mender/blob/%/Documentation"/ignore-->
+During the `Download` state, the files are not yet available yet, but provided as streams for direct processing. They are exposed as documented in the [source code repository](https://github.com/mendersoftware/mender/blob/master/Documentation/update-modules-v3-file-api.md#streams-tree).
 
 ### The state machine workflow
 
@@ -42,9 +72,9 @@ Please refer to [further reading](#further-reading) for more details.
 
 ## Prerequisites
 
-### The Mender server
+### The Mender Server
 
-The best and recommended way of running Mender is the [managed mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) with [hosted Mender](https://hosted.mender.io?target=_blank). You can also try the [on-premise demo server](../../07.Server-installation/02.Demo-installation/docs.md) for quick testing.
+The best and recommended way of running Mender is the [managed mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) with [hosted Mender](https://hosted.mender.io?target=_blank). You can also try the [on-premise demo server](../../07.Server-installation/02.Evaluation-with-docker-compose/docs.md) for quick testing.
 
 !!! Hosted Mender is available in multiple [regions](/11.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
 
@@ -146,7 +176,7 @@ For more details, see `mender-artifact write module-image --help`
 
 ### Upload and deploy your Artifact
 
-Go to the Artifacts tab in the Mender server UI and upload your newly generated Mender Artifact. Now go to Deployments and deploy the Artifact to All devices. It should finish within a minute or so.
+Go to the Artifacts tab in the Mender Server UI and upload your newly generated Mender Artifact. Now go to Deployments and deploy the Artifact to All devices. It should finish within a minute or so.
 
 ### Upload and deploy your Artifact in Standalone Mode
 

@@ -28,7 +28,7 @@ Port numbers can be specified in the same way as you would in a browser, as a co
 
 ## Configuring polling intervals
 
-You can configure how frequently the Mender client will make requests to the Mender server
+You can configure how frequently the Mender client will make requests to the Mender Server
 as described in [Polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md) before
 starting the build process.
 
@@ -323,7 +323,7 @@ IMAGE_INSTALL:append = " mender-monitor"
 
 <!--AUTOVERSION: "/mender-gateway/yocto/%/"/mender-gateway "/mender-gateway-%.tar.xz"/mender-gateway -->
 Download the Mender Gateway from
-https://downloads.customer.mender.io/content/hosted/mender-gateway/yocto/1.0.1/mender-gateway-1.0.1.tar.xz
+https://downloads.customer.mender.io/content/hosted/mender-gateway/yocto/1.1.0/mender-gateway-1.1.0.tar.xz
 and download the tarball to a known location on your local system using your hosted
 Mender username and password:
 
@@ -332,14 +332,14 @@ Mender username and password:
 <!--AUTOVERSION: "/mender-gateway/yocto/%/"/mender-gateway "/mender-gateway-%.tar.xz"/mender-gateway -->
 ```bash
 HOSTED_MENDER_EMAIL=<your.email@example.com>
-curl --fail -u $HOSTED_MENDER_EMAIL -o ${HOME}/mender-gateway-1.0.1.tar.xz https://downloads.customer.mender.io/content/hosted/mender-gateway/yocto/1.0.1/mender-gateway-1.0.1.tar.xz
+curl --fail -u $HOSTED_MENDER_EMAIL -o ${HOME}/mender-gateway-1.1.0.tar.xz https://downloads.customer.mender.io/content/hosted/mender-gateway/yocto/1.1.0/mender-gateway-1.1.0.tar.xz
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
 <!--AUTOVERSION: "/mender-gateway/yocto/%/"/mender-gateway "/mender-gateway-%.tar.xz"/mender-gateway -->
 ```bash
 MENDER_ENTERPRISE_USER=<your.user>
-curl --fail -u $MENDER_ENTERPRISE_USER -o ${HOME}/mender-gateway-1.0.1.tar.xz https://downloads.customer.mender.io/content/on-prem/mender-gateway/yocto/1.0.1/mender-gateway-1.0.1.tar.xz
+curl --fail -u $MENDER_ENTERPRISE_USER -o ${HOME}/mender-gateway-1.1.0.tar.xz https://downloads.customer.mender.io/content/on-prem/mender-gateway/yocto/1.1.0/mender-gateway-1.1.0.tar.xz
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -361,7 +361,7 @@ Give the `mender-gateway` recipe the path to the local source code just download
 
 <!--AUTOVERSION: "/mender-gateway-%.tar.xz"/mender-gateway -->
 ```bash
-SRC_URI:pn-mender-gateway = "file://${HOME}/mender-gateway-1.0.1.tar.xz"
+SRC_URI:pn-mender-gateway = "file://${HOME}/mender-gateway-1.1.0.tar.xz"
 ```
 
 Then make Mender monitor a part of your image with:
@@ -375,7 +375,7 @@ Which means your `local.conf` should now contain the following lines:
 <!--AUTOVERSION: "/mender-gateway-%.tar.xz"/mender-gateway -->
 ```bash
 LICENSE_FLAGS_ACCEPTED:append = " commercial_mender-yocto-layer-license"
-SRC_URI:pn-mender-gateway = "file://${HOME}/mender-gateway-1.0.1.tar.xz"
+SRC_URI:pn-mender-gateway = "file://${HOME}/mender-gateway-1.1.0.tar.xz"
 IMAGE_INSTALL:append = " mender-gateway"
 ```
 

@@ -45,22 +45,16 @@ After generating the keys you will have a file `private.key`, which you use only
 
 #### RSA
 
-You can generate a private RSA key by executing the command below:
+To generate a public and private RSA key pair use the commands below:
 
 ```bash
 openssl genpkey -algorithm RSA -out private.key -pkeyopt rsa_keygen_bits:3072
-openssl rsa -in private.key -out private.key
-```
-
-To extract a public key from the private key use following command:
-
-```bash
 openssl rsa -in private.key -out public.key -pubout
 ```
 
 #### ECDSA256
 
-In order to generate a public and private ECDSA key pair use the commands below:
+To generate a public and private ECDSA key pair use the commands below:
 
 ```bash
 openssl ecparam -genkey -name prime256v1 -out private-and-params.key

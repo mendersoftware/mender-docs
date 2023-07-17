@@ -19,7 +19,7 @@ This integration is available in all Mender plans, as well as Mender Open Source
 
 ## Prerequisites
 
-### A Mender server and device
+### A Mender Server and device
 
 You need a device integrated with Mender, see the [Get started guide](../../01.Get-started/01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md).
 
@@ -141,7 +141,7 @@ From now on, your device can send data to AWS IoT Core!
 The lifecycle of an AWS IoT Core integrated device is:
 
 1. At first, the device gets accepted - you can use various flows to achieve this state. See [device authentication](../../02.Overview/13.Device-authentication/docs.md) for more information.
-2. Mender provisions the device in AWS IoT Core - as a result of this operation, the Mender server generates an [AWS IoT Core X.509 client certificate](https://docs.aws.amazon.com/iot/latest/developerguide/x509-client-certs.html) and registers it in AWS IoT Core.
+2. Mender provisions the device in AWS IoT Core - as a result of this operation, the Mender Server generates an [AWS IoT Core X.509 client certificate](https://docs.aws.amazon.com/iot/latest/developerguide/x509-client-certs.html) and registers it in AWS IoT Core.
 3. The Mender [Configure add-on](../../09.Add-ons/10.Configure/docs.md) sets the Thing's private key and certificate in the file (`/var/lib/mender-configure/device-config.json`) on the device. We recommend creating a [Mender configuration script](../../09.Add-ons/10.Configure/01.Device-integration/docs.md) to reconfigure the AWS IoT application and restart it with these credentials.
 4. From now on, device applications can read the private key and certificate from the file and communicate with AWS IoT Core.
 5. If the device gets `rejected` or `dismissed`, Mender will automatically inactivate the certificate associated with the Thing in AWS IoT Core.
@@ -151,7 +151,7 @@ The lifecycle of an AWS IoT Core integrated device is:
 
 ## Device Shadow management
 
-The Mender server integrates with IoT Core Device Shadow service.
+The Mender Server integrates with IoT Core Device Shadow service.
 This means you can see and manage the Device Shadow directly from Mender, together with everything else about the device.
 
 ![Device Shadow flow](aws-iot-device-shadow-flow.png)
