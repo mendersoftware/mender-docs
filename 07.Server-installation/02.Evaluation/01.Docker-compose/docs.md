@@ -1,5 +1,5 @@
 ---
-title: Evaluation with Docker Compose
+title: Docker Compose
 taxonomy:
     category: docs
     label: tutorial

@@ -1,5 +1,5 @@
 ---
-title: Kubernetes
+title: REWRITE PENDING Kubernetes
 taxonomy:
     category: docs
     label: tutorial

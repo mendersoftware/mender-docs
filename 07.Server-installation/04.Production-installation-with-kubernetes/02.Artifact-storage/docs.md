@@ -1,5 +1,5 @@
 ---
-title: Minio
+title: REWRITE PENDING Artidact storage
 taxonomy:
     category: docs
     label: tutorial

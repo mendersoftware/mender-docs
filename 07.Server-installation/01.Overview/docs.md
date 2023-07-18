@@ -13,7 +13,7 @@ small, well defined piece of functionality. Services are delivered in form of Do
 
 ## Chapter structure
 
-For the quickest way to a working local server with default configuration and keys, please read [Evaluation with Docker compose](../02.Evaluation-with-docker-compose/docs.md). By following a list of copy-pastable steps you will end with a working server environment of your computer.
+For the quickest way to a working local server with default configuration and keys, please read the [Evaluation](../02.Evaluation/docs.md) section. By following a list of copy-pastable steps you will end with a working server environment of your computer.
 
 On a running mender server instance the microservices communicate together and have been set up with the correct configurations and keys. To know more about the details on the architecture and configuration please read the [Architecture](01.Architecture/docs.md) and [Certificates and keys](02.Certificates-and-keys/docs.md).
 
