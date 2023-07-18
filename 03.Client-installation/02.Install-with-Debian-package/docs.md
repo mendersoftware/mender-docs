@@ -117,7 +117,7 @@ sudo systemctl restart mender-client
 <!--AUTOVERSION: "mender/tree/%#installing-from-source"/mender -->
 As an alternative to using a Debian package, it is possible to install the
 Mender client from source by following the guidelines outlined in the
-[README.md](https://github.com/mendersoftware/mender/tree/master#installing-from-source?target=_blank)
+[README.md](https://github.com/mendersoftware/mender/tree/3.5.0#installing-from-source?target=_blank)
 of the Mender client source repository.
 
 
