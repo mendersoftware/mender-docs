@@ -60,7 +60,7 @@ You can now install the Mender Server running:
 [ui-tabs position="top-left" active="0" theme="default" ]
 [ui-tab title="Open Source"]
 <!--AUTOVERSION: "export MENDER_VERSION_TAG=\"mender-%\""/ignore -->
-<!--AUTOVERSION: "cat >mender-%.yml <<EOF"/integration "helm upgrade --install mender mender/mender -f mender-%.yml"/integration -->
+<!--AUTOVERSION: "cat >mender-%.yml <<EOF"/integration "helm upgrade --install mender mender/mender --version % -f mender-%.yml"/integration -->
 ```bash
 export MENDER_SERVER_DOMAIN="mender.example.com"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
@@ -111,7 +111,7 @@ useradm:
 $(cat useradm.key | sed -e 's/^/      /g')
 EOF
 
-helm upgrade --install mender mender/mender -f mender-3.3.2.yml
+helm upgrade --install mender mender/mender --version 5.0.1 -f mender-3.3.2.yml
 ```
 [/ui-tab]
 [ui-tab title="Enterprise"]
@@ -122,7 +122,7 @@ helm upgrade --install mender mender/mender -f mender-3.3.2.yml
 !!!!! receive an evaluation account.
 
 <!--AUTOVERSION: "export MENDER_VERSION_TAG=\"mender-%\""/ignore -->
-<!--AUTOVERSION: "cat >mender-%.yml <<EOF"/integration "helm upgrade --install mender mender/mender -f mender-%.yml"/integration -->
+<!--AUTOVERSION: "cat >mender-%.yml <<EOF"/integration "helm upgrade --install mender mender/mender --version % -f mender-%.yml"/integration -->
 ```bash
 export MENDER_REGISTRY_USERNAME="replace-with-your-username"
 export MENDER_REGISTRY_PASSWORD="replace-with-your-password"
@@ -182,7 +182,7 @@ useradm:
 $(cat useradm.key | sed -e 's/^/      /g')
 EOF
 
-helm upgrade --install mender mender/mender -f mender-3.3.2.yml
+helm upgrade --install mender mender/mender --version 5.0.1 -f mender-3.3.2.yml
 ```
 [/ui-tab]
 [/ui-tabs]
