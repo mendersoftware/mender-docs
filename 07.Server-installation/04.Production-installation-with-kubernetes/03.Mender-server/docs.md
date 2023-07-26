@@ -245,7 +245,7 @@ kubectl apply -f mender-ingress.yml
 [ui-tab title="Open Source"]
 Create the initial user using the `useradm` pod:
 ```bash
-USERADM_POD=$(kubectl get pod -l 'app.kubernetes.io/component=useradm' -o name | head -1)
+USERADM_POD=$(kubectl get pod -o name | grep useradm | head -1)
 kubectl exec $USERADM_POD -- useradm create-user --username "demo@mender.io" --password "demodemo"
 ```
 [/ui-tab]
@@ -253,14 +253,14 @@ kubectl exec $USERADM_POD -- useradm create-user --username "demo@mender.io" --p
 
 Create the administrator user using the `tenantadm` pod:
 ```bash
-TENANTADM_POD=$(kubectl get pod -l 'app.kubernetes.io/component=tenantadm' -o name | head -1)
+TENANTADM_POD=$(kubectl get pod -o name | grep tenantadm | head -1)
 TENANT_ID=$(kubectl exec $TENANTADM_POD -- tenantadm create-org --name demo --username "admin@mender.io" --password "adminadmin" --plan enterprise)
 ```
 
 You can create additional users from the command line of the `useradm` pod:
 
 ```bash
-USERADM_POD=$(kubectl get pod -l 'app.kubernetes.io/component=useradm' -o name | head -1)
+USERADM_POD=$(kubectl get pod -o name | grep useradm | head -1)
 kubectl exec $USERADM_POD -- useradm-enterprise create-user --username "demo@mender.io" --password "demodemo" --tenant-id $TENANT_ID
 ```
 [/ui-tab]
