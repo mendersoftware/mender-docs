@@ -66,7 +66,7 @@ export MENDER_VERSION_TAG="mender-3.4"
 export MONGODB_ROOT_PASSWORD=$(pwgen 32 1)
 export MONGODB_REPLICA_SET_KEY=$(pwgen 32 1)
 
-cat >mender-3.6.0-build3.yml <<EOF
+cat >mender-3.6.0.yml <<EOF
 global:
   enterprise: false
   image:
@@ -109,7 +109,7 @@ useradm:
 $(cat useradm.key | sed -e 's/^/      /g')
 EOF
 
-helm upgrade --install mender mender/mender -f mender-3.6.0-build3.yml
+helm upgrade --install mender mender/mender -f mender-3.6.0.yml
 ```
 [/ui-tab]
 [ui-tab title="Enterprise"]
@@ -130,7 +130,7 @@ export MENDER_VERSION_TAG="mender-3.4"
 export MONGODB_ROOT_PASSWORD=$(pwgen 32 1)
 export MONGODB_REPLICA_SET_KEY=$(pwgen 32 1)
 
-cat >mender-3.6.0-build3.yml <<EOF
+cat >mender-3.6.0.yml <<EOF
 global:
   enterprise: true
   image:
@@ -180,7 +180,7 @@ useradm:
 $(cat useradm.key | sed -e 's/^/      /g')
 EOF
 
-helm upgrade --install mender mender/mender -f mender-3.6.0-build3.yml
+helm upgrade --install mender mender/mender -f mender-3.6.0.yml
 ```
 [/ui-tab]
 [/ui-tabs]
