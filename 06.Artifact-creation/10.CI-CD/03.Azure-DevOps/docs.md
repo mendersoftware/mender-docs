@@ -7,7 +7,7 @@ taxonomy:
 
 ## Stage templates
 <!--AUTOVERSION: "tree/%/templates"/mender-ci-workflows-->
-In addition to the [mender-ci-tools Docker image](../docs.md#mender-ci-workflows-docker-image), Mender provides [stage templates](https://github.com/mendersoftware/mender-ci-workflows/tree/master/templates/azure) for uploading Mender Artifacts and creating deployments to a group of devices.
+In addition to the [mender-ci-tools Docker image](../docs.md#mender-ci-workflows-docker-image), Mender provides [stage templates](https://github.com/mendersoftware/mender-ci-workflows/tree/1.0.0/templates/azure) for uploading Mender Artifacts and creating deployments to a group of devices.
 
 <!--AUTOVERSION: "Mender Server version % or"/ignore-->
 !!!!! The templates use the [Personal Access Tokens](../../../08.Server-integration/01.Using-the-apis/docs.md#personal-access-tokens) feature which is only available in Mender Server version 3.4 or newer.
@@ -16,7 +16,7 @@ In this chapter we introduce the different stages and provide [examples](#pipeli
 
 ### Upload a Mender Artifact
 <!--AUTOVERSION: "tree/%/templates"/mender-ci-workflows-->
-[Upload Mender Artifact](https://github.com/mendersoftware/mender-ci-workflows/tree/master/templates/azure/mender-artifact-upload.yml) stage template uploads a Mender Artifact to a Mender Server.
+[Upload Mender Artifact](https://github.com/mendersoftware/mender-ci-workflows/tree/1.0.0/templates/azure/mender-artifact-upload.yml) stage template uploads a Mender Artifact to a Mender Server.
 
 The template has the following parameters:
 - `mender_uri`: Mender Server's URL (default: https://hosted.mender.io)
@@ -25,7 +25,7 @@ The template has the following parameters:
 
 ### Create a deployment job
 <!--AUTOVERSION: "tree/%/templates"/mender-ci-workflows-->
-[Create deployment on Mender server](https://github.com/mendersoftware/mender-ci-workflows/tree/master/templates/azure/mender-deployment-create.yml) stage template creates a deployment on a Mender Server.
+[Create deployment on Mender server](https://github.com/mendersoftware/mender-ci-workflows/tree/1.0.0/templates/azure/mender-deployment-create.yml) stage template creates a deployment on a Mender Server.
 
 The template has the following parameters:
 - `mender_uri`: Mender Server's URL (default: https://hosted.mender.io).
@@ -44,17 +44,17 @@ The template has the following parameters:
 ### Build and deploy a Mender Artifact
 <!--AUTOVERSION: "tree/%/examples"/mender-ci-workflows-->
 ```bash
-@build-and-deploy-mender-artifact.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/master/examples/azure/build-and-deploy-mender-artifact.yml
+@build-and-deploy-mender-artifact.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/1.0.0/examples/azure/build-and-deploy-mender-artifact.yml
 ```
 
 ### Build and deploy multiple Mender Artifacts
 <!--AUTOVERSION: "tree/%/examples"/mender-ci-workflows-->
 ```bash
-@build-and-deploy-multiple-artifacts.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/master/examples/azure/build-and-deploy-multiple-artifacts.yml
+@build-and-deploy-multiple-artifacts.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/1.0.0/examples/azure/build-and-deploy-multiple-artifacts.yml
 ```
 
 ### Build and deploy a Mender Artifact to a single device
 <!--AUTOVERSION: "tree/%/examples"/mender-ci-workflows-->
 ```bash
-@deploy-to-a-single-device.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/master/examples/azure/deploy-to-a-single-device.yml
+@deploy-to-a-single-device.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/1.0.0/examples/azure/deploy-to-a-single-device.yml
 ```
