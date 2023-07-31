@@ -43,11 +43,10 @@ and you can choose to host your own cluster or use the MongoDB Atlas managed
 service.
 * Supported versions:
   * MongoDB 5.0
-    * MongoDB 5.x (Atlas rapid releases)
   * MongoDB 4.4
 
-!!! To upgrade MongoDB, please refer to the [official
-!!! documentation](https://www.mongodb.com/docs/manual/release-notes/5.0-upgrade-replica-set/).
+!!!!! Please note that we do not provide support for troubleshooting issues with
+!!!!! MongoDB not directly related to the Mender product.
 
 **Redis:**
 * Redis 6.0, 6.2
