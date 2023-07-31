@@ -7,7 +7,7 @@ taxonomy:
 
 ## Job templates
 <!--AUTOVERSION: "tree/%/templates"/mender-ci-workflows-->
-In addition to the [mender-ci-tools Docker image](../docs.md#mender-ci-workflows-docker-image), Mender provides [job templates](https://github.com/mendersoftware/mender-ci-workflows/tree/master/templates/gitlab) for uploading Mender Artifacts and creating deployments to a group of devices.
+In addition to the [mender-ci-tools Docker image](../docs.md#mender-ci-workflows-docker-image), Mender provides [job templates](https://github.com/mendersoftware/mender-ci-workflows/tree/1.0.0/templates/gitlab) for uploading Mender Artifacts and creating deployments to a group of devices.
 
 <!--AUTOVERSION: "Mender Server version % or"/ignore-->
 !!!!! The jobs use [Personal Access Tokens](../../../08.Server-integration/01.Using-the-apis/docs.md#personal-access-tokens) feature which is only available in Mender Server version 3.4 or newer.
@@ -16,11 +16,11 @@ In this chapter we introduce the different jobs and provide [examples](#pipeline
 
 ### Upload a Mender Artifact job
 <!--AUTOVERSION: "tree/%/templates"/mender-ci-workflows-->
-[.mender:upload:artifact](https://github.com/mendersoftware/mender-ci-workflows/tree/master/templates/gitlab/mender-artifact-upload.gitlab-ci.yml) job template uploads a Mender Artifact to a Mender Server.
+[.mender:upload:artifact](https://github.com/mendersoftware/mender-ci-workflows/tree/1.0.0/templates/gitlab/mender-artifact-upload.gitlab-ci.yml) job template uploads a Mender Artifact to a Mender Server.
 
 ### Create a deployment job
 <!--AUTOVERSION: "tree/%/templates"/mender-ci-workflows-->
-[.mender:create:deployment](https://github.com/mendersoftware/mender-ci-workflows/tree/master/templates/gitlab/mender-deployment-create.gitlab-ci.yml) job template creates a deployment on a Mender server.
+[.mender:create:deployment](https://github.com/mendersoftware/mender-ci-workflows/tree/1.0.0/templates/gitlab/mender-deployment-create.gitlab-ci.yml) job template creates a deployment on a Mender server.
 
 ### Setup
 The job templates require the following CI variable to be set in the repository settings:
@@ -38,17 +38,17 @@ The job templates require the following CI variable to be set in the repository 
 ### Build and deploy a Mender Artifact
 <!--AUTOVERSION: "tree/%/examples"/mender-ci-workflows-->
 ```bash
-@build-and-deploy-mender-artifact.gitlab-ci.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/master/examples/gitlab/build-and-deploy-mender-artifact.gitlab-ci.yml
+@build-and-deploy-mender-artifact.gitlab-ci.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/1.0.0/examples/gitlab/build-and-deploy-mender-artifact.gitlab-ci.yml
 ```
 
 ### Build and deploy multiple Mender Artifacts
 <!--AUTOVERSION: "tree/%/examples"/mender-ci-workflows-->
 ```bash
-@build-two-artifacts.gitlab-ci.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/master/examples/gitlab/build-two-artifacts.gitlab-ci.yml
+@build-two-artifacts.gitlab-ci.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/1.0.0/examples/gitlab/build-two-artifacts.gitlab-ci.yml
 ```
 
 ### Build and deploy a Mender Artifact to a single device
 <!--AUTOVERSION: "tree/%/examples"/mender-ci-workflows-->
 ```bash
-@deploy-to-a-single-device.gitlab-ci.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/master/examples/gitlab/deploy-to-a-single-device.gitlab-ci.yml
+@deploy-to-a-single-device.gitlab-ci.yml@ # https://github.com/mendersoftware/mender-ci-workflows/tree/1.0.0/examples/gitlab/deploy-to-a-single-device.gitlab-ci.yml
 ```
