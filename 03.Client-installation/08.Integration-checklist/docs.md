@@ -119,6 +119,9 @@ At the end of this step, we should have successfully identified the active parti
 
 ##  Confirm OS switch using bootloader variables
 
+!!! We identified edge cases in certain u-boot board integrations which lead to the introduction of the `mender_boot_part_hex` variable.
+!!! To make the verification steps generally applicable, we change both variables in the steps event though they aren't both used in all cases.
+
 We will confirm the bootloader can read the environment and is behaving correctly by manually switching to the inactive partition.
 
 In the previous step, we identified the currently running partition to be `nvme0n1p3` and the inactive one `nvme0n1p2`.
