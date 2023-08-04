@@ -62,7 +62,7 @@ You can now install the Mender Server running:
 ```bash
 export MENDER_SERVER_DOMAIN="mender.example.com"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
-export MENDER_VERSION_TAG="mender-3.4"
+export MENDER_VERSION_TAG="mender-3.6"
 export MONGODB_ROOT_PASSWORD=$(pwgen 32 1)
 export MONGODB_REPLICA_SET_KEY=$(pwgen 32 1)
 
@@ -126,7 +126,7 @@ export MENDER_REGISTRY_USERNAME="replace-with-your-username"
 export MENDER_REGISTRY_PASSWORD="replace-with-your-password"
 export MENDER_SERVER_DOMAIN="mender.example.com"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
-export MENDER_VERSION_TAG="mender-3.4"
+export MENDER_VERSION_TAG="mender-3.6"
 export MONGODB_ROOT_PASSWORD=$(pwgen 32 1)
 export MONGODB_REPLICA_SET_KEY=$(pwgen 32 1)
 
