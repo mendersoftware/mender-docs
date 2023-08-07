@@ -102,6 +102,15 @@ First make sure to power off your device, so it does not continuously appear as 
 
 We recommend that you ensure there are no records of your device in the server; open the Mender UI, then go to *Devices* to see if it is there, then *Decommission* it.
 
+!! Please be advised that the Mender Server backend, consisting of microservices, is asynchronous by design.
+!! If you run multiple pre-authorization requests together with many decommission operations,
+!! it is possible that you may run into `409 Conflict` responses. It can mean that the decommission
+!! device workflow has not finished when a new pre-authorization request for the same auth set arrived.
+!! If, for some reason, you run into problems of that sort and there are data inconsistencies between the
+!! different microservices but deviceauth has the current and up-to-date information on your devices,
+!! you can use deviceauth command line to propagate the correct status, and device attributes.
+!! See the `deviceauth --help` for details.
+
 Secondly, To make sure that the device has no existing authentication sets, we check `devauth` service for the identity of your device.
 
 In the same terminal, run the following command:

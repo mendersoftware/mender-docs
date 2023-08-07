@@ -30,7 +30,7 @@ INTEGRATION_REPO = None
 INTEGRATION_VERSION = None
 
 # Match version strings.
-YOCTO_BRANCHES = r"(?:dora|daisy|dizzy|jethro|krogoth|morty|pyro|rocko|sumo|thud|warrior|zeus|dunfell|gatesgarth|kirkstone|langdale)"
+YOCTO_BRANCHES = r"(?:dora|daisy|dizzy|jethro|krogoth|morty|pyro|rocko|sumo|thud|warrior|zeus|dunfell|gatesgarth|kirkstone|langdale|mickledore)"
 EXACT_VERSION_MATCH = r"(?<![0-9]\.)(?<![0-9])[1-9][0-9]*\.[0-9]+\.[x0-9]+(?:b[0-9]+)?(?:-build[0-9]+)?(?![0-9])(?!\.[0-9])"
 VERSION_MATCHER = r"(?:%s|(?:mender-%s)|(?<![a-z])(?:%s|master)(?![a-z]))" % (
     EXACT_VERSION_MATCH,
