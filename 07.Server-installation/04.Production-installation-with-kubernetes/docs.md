@@ -37,17 +37,26 @@ The requirements listed below are what Northern.tech tests internally and suppor
 
 
 **Mongo DB:**
-* MongoDB 4.4
-  * Self hosted, both single node and replica set (recommended)
-  * Atlas
+Mender supports MongoDB in both Standalone (single node) and Replica set mode.
+We recommend using a replica set for high availability production environments,
+and you can choose to host your own cluster or use the MongoDB Atlas managed
+service.
+* Supported versions:
+  * MongoDB 5.0
+  * MongoDB 4.4
+
+!!!!! Please note that we do not provide support for troubleshooting issues with
+!!!!! MongoDB not directly related to the Mender product.
 
 **Redis:**
-* Redis 6.0
+* Redis 6.0, 6.2
   * ElasticCache (AWS)
   * AzureCache
   * Momory store (GCP)
   * Self hosted
 
+**Nats:**
+* NATS 2.7, 2.8, 2.9
 
 **Whatever the supported Kubernetes version for:**
 * [Amazon Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/)
