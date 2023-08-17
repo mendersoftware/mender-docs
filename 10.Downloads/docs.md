@@ -935,7 +935,7 @@ Then install the package with:
 sudo dpkg -i mender-gateway_*.deb
 ```
 
-<!--AUTOMATION: test=test $(ls mender-gateway_*.deb | wc -l) -eq 15 -->
+<!--AUTOMATION: test=test $(ls mender-gateway_*.deb | wc -l) -eq 12 -->
 <!--AUTOMATION: execute=dpkg -i mender-gateway_*-1+ubuntu+focal_amd64.deb -->
 
 ### Examples package
