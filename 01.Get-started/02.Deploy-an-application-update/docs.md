@@ -66,6 +66,7 @@ Now we'll make an update to the webserver demo running on your device, using a n
 
 On your workstation, create a new `index.html` file with the simple contents 'Hello World'. This will be the new web page after you update the application, so you'll be able to easily see when your device has received the update. Copy and run the following command to create the file:
 
+<!--AUTOMATION: ignore -->
 ```bash
 cat >index.html <<EOF
 Hello World!
