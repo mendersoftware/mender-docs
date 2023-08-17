@@ -199,6 +199,17 @@ helm upgrade --install mender mender/mender --version 5.0.2 -f mender-3.4.0.yml
 >     AWS_FORCE_PATH_STYLE: "false"
 > ```
 
+### How to select the Docker tag to use
+
+We support the following Docker image tags:
+
+<!--AUTOVERSION: "Moving tag for the latest development version: `mender-%`"/ignore -->
+* Immutable tag for a specific bugfix version: e.g., `mender-X.Y.Z` (recommended)
+* Moving tag for a specific minor version: e.g., `mender-X.Y`
+* Moving tag for a major version: e.g., `mender-X`
+* Moving tag for the latest released bugfix version: `latest`
+* Moving tag for the latest development version: `mender-master`
+
 ### Exposing the service
 
 You must configure
