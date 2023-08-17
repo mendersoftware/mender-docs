@@ -57,12 +57,11 @@ You can now install the Mender Server running:
 
 [ui-tabs position="top-left" active="0" theme="default" ]
 [ui-tab title="Open Source"]
-<!--AUTOVERSION: "export MENDER_VERSION_TAG=\"mender-%\""/ignore -->
-<!--AUTOVERSION: "cat >mender-%.yml <<EOF"/integration "helm upgrade --install mender mender/mender -f mender-%.yml"/integration -->
+<!--AUTOVERSION: "export MENDER_VERSION_TAG=\"mender-%\""/integration "cat >mender-%.yml <<EOF"/integration "helm upgrade --install mender mender/mender -f mender-%.yml"/integration -->
 ```bash
 export MENDER_SERVER_DOMAIN="mender.example.com"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
-export MENDER_VERSION_TAG="mender-3.6"
+export MENDER_VERSION_TAG="mender-3.6.0"
 export MONGODB_ROOT_PASSWORD=$(pwgen 32 1)
 export MONGODB_REPLICA_SET_KEY=$(pwgen 32 1)
 
@@ -119,14 +118,13 @@ helm upgrade --install mender mender/mender -f mender-3.6.0.yml
 !!!!! Container Registry. Please email [contact@mender.io](mailto:contact@mender.io) to
 !!!!! receive an evaluation account.
 
-<!--AUTOVERSION: "export MENDER_VERSION_TAG=\"mender-%\""/ignore -->
-<!--AUTOVERSION: "cat >mender-%.yml <<EOF"/integration "helm upgrade --install mender mender/mender -f mender-%.yml"/integration -->
+<!--AUTOVERSION: "export MENDER_VERSION_TAG=\"mender-%\""/integration "cat >mender-%.yml <<EOF"/integration "helm upgrade --install mender mender/mender -f mender-%.yml"/integration -->
 ```bash
 export MENDER_REGISTRY_USERNAME="replace-with-your-username"
 export MENDER_REGISTRY_PASSWORD="replace-with-your-password"
 export MENDER_SERVER_DOMAIN="mender.example.com"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
-export MENDER_VERSION_TAG="mender-3.6"
+export MENDER_VERSION_TAG="mender-3.6.0"
 export MONGODB_ROOT_PASSWORD=$(pwgen 32 1)
 export MONGODB_REPLICA_SET_KEY=$(pwgen 32 1)
 
@@ -184,6 +182,17 @@ helm upgrade --install mender mender/mender -f mender-3.6.0.yml
 ```
 [/ui-tab]
 [/ui-tabs]
+
+### How to select the Docker tag to use
+
+We support the following Docker image tags:
+
+<!--AUTOVERSION: "Moving tag for the latest development version: `mender-%`"/ignore -->
+* Immutable tag for a specific bugfix version: e.g., `mender-X.Y.Z` (recommended)
+* Moving tag for a specific minor version: e.g., `mender-X.Y`
+* Moving tag for a major version: e.g., `mender-X`
+* Moving tag for the latest released bugfix version: `latest`
+* Moving tag for the latest development version: `mender-master`
 
 ### Supported artifact storage types
 
