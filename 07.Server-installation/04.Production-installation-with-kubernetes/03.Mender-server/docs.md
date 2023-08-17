@@ -183,6 +183,17 @@ helm upgrade --install mender mender/mender -f mender-master.yml
 [/ui-tab]
 [/ui-tabs]
 
+### How to select the Docker tag to use
+
+We support the following Docker image tags:
+
+<!--AUTOVERSION: "Moving tag for the latest development version: `mender-%`"/ignore -->
+* Immutable tag for a specific bugfix version: e.g., `mender-X.Y.Z` (recommended)
+* Moving tag for a specific minor version: e.g., `mender-X.Y`
+* Moving tag for a major version: e.g., `mender-X`
+* Moving tag for the latest released bugfix version: `latest`
+* Moving tag for the latest development version: `mender-master`
+
 ### Supported artifact storage types
 
 Mender supports the following Artifact storage types:
