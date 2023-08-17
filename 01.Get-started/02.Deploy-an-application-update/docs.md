@@ -24,20 +24,20 @@ You should have completed one of the following:
 
 In the Device information view for the device you just connected, select **Create a deployment for this device** from the **Device actions**.
 
-![create a deployment for this device](Image_5.png)
+![create a deployment for this device](device_actions_create.png)
 
 This will start the deployment wizard. The first step is to **Select a device group
 to target**. As we have not yet created any specific groups the only
 option presented should be **All devices**.
 
-![create a deployment](Image_8.png)
+![create a deployment](create_deployment_group.png)
 
 There is already a demo Artifact available the first time you
 use hosted Mender, for the purposes of this tutorial. It contains a small web server you will run on your device. 
 
 Select the Release with the name beginning *mender-demo-artifact*; this will be deployed to your device.
 
-![select a release](Image_9.png)
+![select a release](create_deployment_release.png)
 
 Review your deployment configuration and click **CREATE DEPLOYMENT**.
 This will take you to the overview of the deployments and you should see it
@@ -47,11 +47,11 @@ After a short time you will see the finished deployment in the
 **Finished** tab. There should also be a tooltip showing the URL of your deployed web
 server.
 
-![congratulations device](Image_11.png)
+![congratulations device](completed_first_deployment.png)
 
 If you visit the presented URL, you will see a welcome page similar to the following. Your device has been updated and is now running the demo software.
 
-![congratulations device](Image_12.png)
+![congratulations device](congratulations_webpage.png)
 
 **Congratulations!** You have successfully deployed an application update
 using Mender!
@@ -74,7 +74,7 @@ EOF
 
 Drag-and-drop or click **browse** to select the `index.html` file for upload.
 
-![Upload web page](Image_15.png)
+![Upload Artifact](upload_artifact.png)
 
 When you upload a single file like this, you will get a wizard to
 create a [Mender Artifact](../../02.Overview/03.Artifact/docs.md)
@@ -82,7 +82,7 @@ of the type `file`, which allows you deploy single files to your device.
 
 Ensure the *Destination directory* field is filled as `/data/www/localhost/htdocs` as below, so the `index.html` gets file is placed in the correct destination on the device.
 
-![Upload web page](Image_16.png)
+![Destination directory](destination_directory.png)
 
 A [Mender Artifact](../../02.Overview/03.Artifact/docs.md) contains some mandatory fields:
 
@@ -101,20 +101,20 @@ A [Mender Artifact](../../02.Overview/03.Artifact/docs.md) contains some mandato
 
 Fill out the required fields and click the **NEXT** button.
 
-![artifact details 1](Image_18.png)
+![artifact details 1](artifact_details_1.png)
 
 Leave the next prefilled fields as they are and click **UPLOAD ARTIFACT** as below.
 
-![artifact details 2](Image_19.png)
+![artifact details 2](artifact_details_2.png)
 
 You will now see a new Release containing this Artifact under the **Releases** tab. View its details, and create a deployment by clicking **Create a deployment for this Release** 
 
-![view release](Image_20.png)
+![view release](release_actions.png)
 
 Click through the deployment wizard to make a new deployment, similarly to what you did in
 [Step 1 - Create a Deployment](#step-1-create-a-deployment); this time, use the *hello-world* Release.
 
-Once the deployment finishes, refresh the demo web page from Step 1. If your deployment was successful, the `index.html` file has updated on your device, and the page will now only show 'Hello World!'
+Once the deployment finishes, refresh the demo web page from Step 1. If your deployment was successful, the `index.html file has updated on your device, and the page will now only show 'Hello World!'
 
 **Congratulations!** You have successfully created and deployed a custom application update
 using Mender!
