@@ -269,7 +269,7 @@ Starting from the Mender Helm Chart version 5.1.0, a sample Ingress resource is 
 
 For example, here's an Ingress for the AWS EKS Provider:
 
-<!--AUTOVERSION: "cat <<-EOF >> mender-%.yml"/ignore -->
+<!--AUTOVERSION: "cat <<-EOF >> mender-%.yml"/integration -->
 ```bash
 cat <<-EOF >> mender-3.6.3.yml
 ingress:
@@ -327,7 +327,7 @@ EOF
 ```
 
 You can now update the Helm Chart with the included ingress:
-<!--AUTOVERSION: "helm upgrade --install mender mender/mender -f mender-%.yml"/ignore -->
+<!--AUTOVERSION: "helm upgrade --install mender mender/mender -f mender-%.yml"/integration -->
 ```bash
 helm upgrade --install mender mender/mender -f mender-3.6.1.yml
 ```
