@@ -23,12 +23,12 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 ! **Please note** During these steps we will be switching between the two partitions without downloading new content to them. 
 ! If you don't have a bootable OS on the second partition, nothing will boot once we do the switch.
-! One way to overcome this is to do one regular rootfs update after the initial flashing before proceeding with the verification.
+! To overcome this, you can perform regular rootfs update after the initial flashing before proceeding with the verification or flash the second partition of storage with the same rootfs the verification.
 
 
 ## The Mender service launches properly
 
-!!! If you don't need full rootfs updates you only need to verify this step
+!!! If full rootfs updates are not required, this is the only validation needed.
 
 The Mender Client consists of a number of components and configuration files, with the `mender-client` userspace application being the core responsible for executing the updates.
 By default, it runs as a systemd service.
@@ -46,12 +46,13 @@ systemctl is-enabled mender-client
 
 In the remaining verification, we will manually be executing similar steps to what the Mender Client usually does in regular operations to communicate with the bootloader.
 
-To avoid the Mender Client interfering with the manual verification it is recommended disconnect the device from the internet.
+To avoid the Mender Client interfering with the manual verification it is recommended to disconnect the device from the internet.
 
 
 ## Bootloader environment tools are present on the device
 
-Verify that the two commands to manipulate the bootloader environment are in the path and are executable. These are used by the Mender Client to communicate with the bootloader. 
+Verify which of the two commands to manipulate the bootloader environment are executable and available in the path. 
+These are used by the `mender-client` to set the bootloader environment.
 
 The executables which the Mender Client expects are bootloader specific. By default, `GRUB` and `uboot` implementations are supported.
 Please run the commands below:
@@ -69,6 +70,8 @@ We will test the setting of variables in the upcoming steps.
 
 For the remaining steps, the GRUB CLI tools will be used, but the verification steps are equivalent when using the uboot tools.
 
+!! PARTUUID feature hasn't been tested for u-boot
+
 <!--AUTOVERSION: "prior to 4.0 %"/ignore-->
 ! In Yocto releases prior to 4.0 kirkstone, the names of the GRUB tools were the same as the U-Boot tools. Make sure to take this into account in the remaining examples on this page.
 
@@ -76,12 +79,17 @@ For the remaining steps, the GRUB CLI tools will be used, but the verification s
 
 ## Identify A/B partitions
 
+
 Redundant (A/B) partitioning is a requirement for full rootfs updates.
-These steps will identify the partitions and check if they align with what is in the Mender Client configuration.
+These steps will identify the partitions and check if they align with what is in the Mender Client configuration (`/var/lib/mender/mender.conf`).
 
-Please note that depending on the types of storage the actual device names can vary.
+! By default the Mender Client looks for [configuration in two locations](../07.Configuration-file/docs.md). One of those is `/var/lib/mender/mender.conf` which is - in the default case - a link to the persistent partition `/data/mender/mender.conf` and doesn't get overwritten during the rootfs update. We recommend keeping the backup of the `RootfsPartA/B` settings in `/var/lib/mender/mender.conf` as it is very rare that you need to change partition names as a result of an update.
 
-Check the partitions set in `mender.conf` to identify rootfs partitions:
+Please note that the content can vary depending  storage actual device names or if you're using PARTUUIDs.
+
+**Partitions as device files**
+
+The device name can vary according to the storage type and kernel naming convention.
 
 ``` bash
 cat /var/lib/mender/mender.conf | grep RootfsPart
@@ -90,16 +98,26 @@ cat /var/lib/mender/mender.conf | grep RootfsPart
 # "RootfsPartB": "/dev/nvme0n1p3"
 ```
 
-! By default the Mender Client looks for [configuration in two locations](../07.Configuration-file/docs.md). One of those is `/var/lib/mender/mender.conf` which is - in the default case - a link to the persistent partition `/data/mender/mender.conf` and doesn't get overwritten during the rootfs update. We recommend keeping the backup of the `RootfsPartA/B` settings in `/var/lib/mender/mender.conf` as it is very rare that you need to change partition names as a result of an update.
+
+**Partitions as PARTUUIDs**
+
+``` bash
+cat /var/lib/mender/mender.conf | grep RootfsPart
+# Output:
+#   "RootfsPartA": "/dev/disk/by-partuuid/bdcae16f-400a-45e3-b5bb-c9512d3f56c1",
+#   "RootfsPartB": "/dev/disk/by-partuuid/bdcae16f-400a-45e3-b5bb-c9512d3f56c2"
+```
+
 
 Identify the currently active partition with the following command:
 
-``` bash
-mount | grep 'on /'
-# Output:
-#/dev/nvme0n1p3 on / type ext4 ... ...
-```
+**Partitions as device files**
 
+``` bash
+mount | grep 'on / '
+# Output:
+#/dev/nvme0n1p2 on / type ext4 ... ...
+```
 
 On some devices the rootfs is not listed as a block device but as `/dev/root` or similar. You can use an alternative method for verifying it, by calling the following series of commands:
 
@@ -107,29 +125,69 @@ On some devices the rootfs is not listed as a block device but as `/dev/root` or
 stat -c %D /
 # Output:
 # 10303
-stat -c %t%02T /dev/nvme0n1p3
+stat -c %t%02T /dev/nvme0n1p2
 # Output:
 # 10303
 ```
 
 The output of the two commands should be identical. This verifies that the correct partition is mounted as the root device when partition A is active.
 
-At the end of this step, we should have successfully identified the active partition (`nvme0n1p3` in the example) and the inactive partition (`nvme0n1p2`). We will use this info when proceeding with the test.
+
+**Partitions as PARTUUIDs**
+
+``` bash
+dev=$(mount | grep 'on / ' | awk '{print $1}') && echo "$dev $(blkid -s PARTUUID -o value $dev)"
+# Output:
+# /dev/sda3 bdcae16f-400a-45e3-b5bb-c9512d3f56c2
+```
+
+
+At the end of this step, we need to identify the partition numbering.
+This is because mender-client passes only partition numbers to the bootloader and not the whole path as seen from `mender.conf`.
+
+
+**Partitions as device files**
+
+For device files, the partition numbers are whatever is the last number in the device name.
+
+``` bash
+cat /var/lib/mender/mender.conf | grep RootfsPart
+# Output:                             # Comment for clarification
+# "RootfsPartA": "/dev/nvme0n1p2"     ->    Partition A number: 2
+# "RootfsPartB": "/dev/nvme0n1p3"     ->    Partition B number: 3
+```
+
+
+**Partitions as PARTUUIDs**
+
+For PARTUUID we need to get that mapping from the grub.cfg: 
+
+``` bash
+grep 'mender_rootfsa_part=\|mender_rootfsa_uuid=\|mender_rootfsb_part=\|mender_rootfsb_uuid='    /boot/efi/grub-mender-grubenv/grub.cfg
+# Output:                                                       # Comment for clarification
+# mender_rootfsa_part=2
+# mender_rootfsb_part=3
+# mender_rootfsa_uuid=bdcae16f-400a-45e3-b5bb-c9512d3f56c1      ->  Partition A number: 2 (because rootfsa is 2)
+# mender_rootfsb_uuid=bdcae16f-400a-45e3-b5bb-c9512d3f56c2      ->  Partition B number: 3 (because rootfsb is 3)
+```
+
+
+!! It doesn't matter which partition happens to be active in your example, if it's reversed from the example just adjust the numbers.
 
 
 ##  Confirm OS switch using bootloader variables
 
 !!! We identified edge cases in certain u-boot board integrations which lead to the introduction of the `mender_boot_part_hex` variable.
-!!! To make the verification steps generally applicable, we change both variables in the steps event though they aren't both used in all cases.
+!!! To make the verification steps generally applicable, we change both variables in the steps even though they aren't both used in all cases.
 
 We will confirm the bootloader can read the environment and is behaving correctly by manually switching to the inactive partition.
 
-In the previous step, we identified the currently running partition to be `nvme0n1p3` and the inactive one `nvme0n1p2`.
+In the previous step, we identified the currently running partition to be `nvme0n1p2` and the inactive one `nvme0n1p3`.
 Set the bootloader variables manually so it boots from the currently inactive partition on the next reboot.
 
 ``` bash
-grub-mender-grubenv-set mender_boot_part 2
-grub-mender-grubenv-set mender_boot_part_hex 2
+grub-mender-grubenv-set mender_boot_part 3
+grub-mender-grubenv-set mender_boot_part_hex 3
 reboot
 ```
 
@@ -139,15 +197,15 @@ After the device boots up verify that you are indeed running on the expected par
 ``` bash
 mount | grep 'on /'
 # Output:
-#/dev/nvme0n1p2 on / type ext4 ... ...
+#/dev/nvme0n1p3 on / type ext4 ... ...
 ```
 
 After completion, return to the previously active partition by adapting the previous steps:
 
 
 ``` bash
-grub-mender-grubenv-set mender_boot_part 3
-grub-mender-grubenv-set mender_boot_part_hex 3
+grub-mender-grubenv-set mender_boot_part 2
+grub-mender-grubenv-set mender_boot_part_hex 2
 reboot
 ```
 
@@ -167,10 +225,10 @@ grub-mender-grubenv-set bootcount 0
 
 Setting `upgrade_available` to `1` has multiple side effects:
 
-* the bootloader will start incrementing `bootcount` for every new boot attempt
-* the Mender Client and the bootloader know there is a partitioning switch taking place
-    * they can make decisions on when to rollback or commit
-* returning the `upgrade_available` to `0` represents the conclusion of the transition state
+* The bootloader will increase the `bootcount` by 1 for every new boot attempt
+* The Mender Client and the bootloader know there is a partitioning switch taking place
+    * They can make decisions on when to rollback or commit
+* Returning the `upgrade_available` to `0` marks the end of transition state
 
 
 ### Confirm behavior for the successful update case
@@ -184,9 +242,9 @@ As explained on the variables in the previous paragraph, test a full active part
 
 # We are currently running the active partition
 # Identify active partition
-mount | grep 'on /'
+mount | grep 'on / '
 # Output:
-#/dev/nvme0n1p3 on / type ext4 ... ...
+#/dev/nvme0n1p2 on / type ext4 ... ...
 
 
 # Start the transition state
@@ -195,8 +253,8 @@ grub-mender-grubenv-set bootcount 0
 
 
 # Switch to the inactive partition
-grub-mender-grubenv-set mender_boot_part 2
-grub-mender-grubenv-set mender_boot_part_hex 2
+grub-mender-grubenv-set mender_boot_part 3
+grub-mender-grubenv-set mender_boot_part_hex 3
 
 reboot
 ```
@@ -206,17 +264,38 @@ After the reboot the partition changed and the bootcount increased:
 
 ``` bash
 # Identify the active partition
-mount | grep 'on /'
+mount | grep 'on / '
 # Output:
-#/dev/nvme0n1p2 on / type ext4 ... ...
+#/dev/nvme0n1p3 on / type ext4 ... ...
 
 grub-mender-grubenv-print bootcount upgrade_available
 # Output:
 # bootcount=1
 # upgrade_available=1
+```
 
-# All good, concluding the transition state
+This is as expected, we can conclude the transition state and confirm the variables remain stable:
+
+``` bash
 grub-mender-grubenv-set upgrade_available 0
+grub-mender-grubenv-set bootcount 0
+
+# This is now the stable state which must remain the same after reboots
+grub-mender-grubenv-print
+# Output:
+# bootcount=0
+# mender_boot_part=3
+# upgrade_available=0
+# mender_boot_part_hex=3
+
+reboot
+
+grub-mender-grubenv-print
+# Output:
+# bootcount=0
+# mender_boot_part=3
+# upgrade_available=0
+# mender_boot_part_hex=3
 ```
 
 
@@ -232,9 +311,9 @@ The process initiation is identical to the "success" form.
 
 # We are currently running the active partition
 # Identify the active partition
-mount | grep 'on /'
+mount | grep 'on / '
 # Output:
-#/dev/nvme0n1p2 on / type ext4 ... ...
+#/dev/nvme0n1p3 on / type ext4 ... ...
 
 
 # Start the transition state
@@ -243,8 +322,8 @@ grub-mender-grubenv-set bootcount 0
 
 
 # Switch to the inactive partition
-grub-mender-grubenv-set mender_boot_part 3
-grub-mender-grubenv-set mender_boot_part_hex 3
+grub-mender-grubenv-set mender_boot_part 2
+grub-mender-grubenv-set mender_boot_part_hex 2
 ```
 
 
@@ -255,9 +334,8 @@ This is equivalent to a use case where the new update contains a faulty kernel.
 <!--AUTOVERSION: "vmlinuz-%"/ignore-->
 ``` bash
 mkdir /mnt/inactive-partition
-mount /dev/nvme0n1p3 /mnt/inactive-partition
+mount /dev/nvme0n1p2 /mnt/inactive-partition
 mv /mnt/inactive-partition/boot/vmlinuz-5.13.0-35-generic /mnt/inactive-partition/boot/vmlinuz-5.13.0-35-generic.backup
-
 umount /mnt/inactive-partition
 
 reboot
@@ -273,10 +351,27 @@ grub-mender-grubenv-print upgrade_available
 # upgrade_available=0
 ```
 
+And the active partition is still the one we started with.
 
+``` bash
+# Identify the active partition
+mount | grep 'on / '
+# Output:
+#/dev/nvme0n1p3 on / type ext4 ... ...
+```
+
+You can return your kernel back to normal again:
+
+<!--AUTOVERSION: "vmlinuz-%"/ignore-->
+``` bash
+mkdir /mnt/inactive-partition
+mount /dev/nvme0n1p2 /mnt/inactive-partition
+mv /mnt/inactive-partition/boot/vmlinuz-5.13.0-35-generic /mnt/inactive-partition/boot/vmlinuz-5.13.0-35-generic.backup
+umount /mnt/inactive-partition
+```
 
 ! **Please note** - the rollback is triggered by an unplanned second reboot that takes place during the transition period, and it is not a result of the bootloader detecting a faulty kernel in any way.
 
 ##  Conclusion
 
-If you have verified all the steps you have confirmed your device has the correct partitioning and bootloader integration to do full rootfs updates.
+If you have verified all the steps you have confirmed that your device has the correct partitioning and bootloader integration to do full rootfs updates using Mender.
