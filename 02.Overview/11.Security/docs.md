@@ -34,10 +34,10 @@ the Mender client can connect to the server over HTTPS, you can schedule updates
 
 ### Client authentication
 
-Each Device has a unique public and private RSA key with a default length of
-3072 bits.  You can generate this offline and provision it with the Device
-storage, otherwise the Mender client will automatically generate a key pair
-when it launches for the first time. Once generated, private key cannot be
+Each Device has a unique public and private RSA, ECDSA or ED25519 key. You can
+generate this offline and provision it with the Device storage, otherwise the
+Mender client will automatically generate an RSA key pair with a default length
+of 3072 bits when it launches for the first time. Once generated, private key cannot be
 changed or retrieved by means of API calls. If you decide to re-generate the
 keys on the Device, it will require going through the authorization process
 again. The client passes the public key in authorization requests to the server and
