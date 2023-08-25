@@ -61,11 +61,11 @@ You can now install the Mender Server running:
 ```bash
 export MENDER_SERVER_DOMAIN="mender.example.com"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
-export MENDER_VERSION_TAG="mender-3.6.1"
+export MENDER_VERSION_TAG="mender-3.6.2"
 export MONGODB_ROOT_PASSWORD=$(pwgen 32 1)
 export MONGODB_REPLICA_SET_KEY=$(pwgen 32 1)
 
-cat >mender-3.6.1.yml <<EOF
+cat >mender-3.6.2.yml <<EOF
 global:
   enterprise: false
   image:
@@ -108,7 +108,7 @@ useradm:
 $(cat useradm.key | sed -e 's/^/      /g')
 EOF
 
-helm upgrade --install mender mender/mender -f mender-3.6.1.yml
+helm upgrade --install mender mender/mender -f mender-3.6.2.yml
 ```
 [/ui-tab]
 [ui-tab title="Enterprise"]
@@ -124,11 +124,11 @@ export MENDER_REGISTRY_USERNAME="replace-with-your-username"
 export MENDER_REGISTRY_PASSWORD="replace-with-your-password"
 export MENDER_SERVER_DOMAIN="mender.example.com"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
-export MENDER_VERSION_TAG="mender-3.6.1"
+export MENDER_VERSION_TAG="mender-3.6.2"
 export MONGODB_ROOT_PASSWORD=$(pwgen 32 1)
 export MONGODB_REPLICA_SET_KEY=$(pwgen 32 1)
 
-cat >mender-3.6.1.yml <<EOF
+cat >mender-3.6.2.yml <<EOF
 global:
   enterprise: true
   image:
@@ -178,7 +178,7 @@ useradm:
 $(cat useradm.key | sed -e 's/^/      /g')
 EOF
 
-helm upgrade --install mender mender/mender -f mender-3.6.1.yml
+helm upgrade --install mender mender/mender -f mender-3.6.2.yml
 ```
 [/ui-tab]
 [/ui-tabs]
