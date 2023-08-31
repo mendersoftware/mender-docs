@@ -605,8 +605,6 @@ And download it with:
 ```bash
 wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbuster_amd64.deb
 ```
-[/ui-tab]
-[/ui-tabs]
 
 [/ui-tab]
 [/ui-tabs]
@@ -810,8 +808,6 @@ And download it with:
 ```bash
 wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbuster_amd64.deb
 ```
-[/ui-tab]
-[/ui-tabs]
 
 [/ui-tab]
 [/ui-tabs]
