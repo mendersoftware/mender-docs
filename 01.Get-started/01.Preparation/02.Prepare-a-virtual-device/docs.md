@@ -5,8 +5,6 @@ taxonomy:
     label: tutorial
 ---
 
-!!! Skip this section if you have already completed [Prepare a Raspberry Pi device](../01.Prepare-a-Raspberry-Pi-device/docs.md)
-
 This tutorial we help you prepare your workstation to be able to run a virtual
 device (QEMU) with Mender integrated which will connect to hosted Mender and
 simulate a physical device.
