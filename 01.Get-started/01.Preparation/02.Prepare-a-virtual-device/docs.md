@@ -44,7 +44,9 @@ In the dialog box from above, click **Copy to clipboard** to copy the code. Now
 go to the command line on your workstation, and **paste** the code e.g. by
 right-clicking in the terminal and selecting *Paste*, followed by *Enter*.
 
-This downloads the virtual device images and starts it.
+This downloads the virtual device images and starts it. 
+
+! This process could take several minutes depending on your workstation capabilities.
 
 ## Step 4 - Accept the device
 
