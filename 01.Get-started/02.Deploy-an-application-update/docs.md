@@ -21,7 +21,6 @@ You should have completed one of the following:
 
 ## Step 1 - Create a Deployment
 
-
 In the Device information view for the device you just connected, select **Create a deployment for this device** from the **Device actions**.
 
 ![create a deployment for this device](device_actions_create.png)
@@ -33,7 +32,7 @@ option presented should be **All devices**.
 ![create a deployment](create_deployment_group.png)
 
 There is already a demo Artifact available the first time you
-use hosted Mender, for the purposes of this tutorial. It contains a small web server you will run on your device. 
+use hosted Mender, for the purposes of this tutorial. It contains a small web server you will run on your device.
 
 Select the Release with the name beginning *mender-demo-artifact*; this will be deployed to your device.
 
@@ -56,9 +55,7 @@ If you visit the presented URL, you will see a welcome page similar to the follo
 **Congratulations!** You have successfully deployed an application update
 using Mender!
 
-
 ## Step 2 - Modify the application and deploy it
-
 
 Now we'll make an update to the webserver demo running on your device, using a new Release that you will create yourself.
 
@@ -72,7 +69,9 @@ Hello World!
 EOF
 ```
 
-Drag-and-drop or click **browse** to select the `index.html` file for upload.
+Click on **RELEASES** from the left panel. Then click the **UPLOAD** button.
+
+Drag-and-drop or click **browse** to select the `index.html` file you just created for upload.
 
 ![Upload Artifact](upload_artifact.png)
 
@@ -86,17 +85,17 @@ Ensure the *Destination directory* field is filled as `/data/www/localhost/htdoc
 
 A [Mender Artifact](../../02.Overview/03.Artifact/docs.md) contains some mandatory fields:
 
-- **Device type** - Device types the software is compatible with, to ensure the
+* **Device type** - Device types the software is compatible with, to ensure the
   software is not deployed to incompatible hardware (e.g. CPU architecture,
   hardware floating point support, peripheral drivers).
 
   Depending on which device you are using you need to enter:
-    - `raspberrypi3` or `raspberrypi4` if you are using a Raspberry Pi
-    - `qemux64-64` if you are using a virtual device
+  * `raspberrypi3` or `raspberrypi4` if you are using a Raspberry Pi
+  * `qemux64-64` if you are using a virtual device
 
-- **Release name** - Name of the software build, so that software is not
+* **Release name** - Name of the software build, so that software is not
   redeployed if it is already installed at the device.
-  - Input is a free form string, you can use e.g `hello-world` for evaluation
+  * Input is a free form string, you can use e.g `hello-world` for evaluation
     purposes
 
 Fill out the required fields and click the **NEXT** button.
@@ -112,7 +111,7 @@ You will now see a new Release containing this Artifact under the **Releases** t
 ![view release](release_actions.png)
 
 Click through the deployment wizard to make a new deployment, similarly to what you did in
-[Step 1 - Create a Deployment](#step-1-create-a-deployment); this time, use the *hello-world* Release.
+[Step 1 - Create a Deployment](#step-1---create-a-deployment); this time, use the *hello-world* Release.
 
 Once the deployment finishes, refresh the demo web page from Step 1. If your deployment was successful, the `index.html file has updated on your device, and the page will now only show 'Hello World!'
 
