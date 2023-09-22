@@ -64,29 +64,15 @@ documentation.
 You should execute below commands in a terminal window on your workstation while
 the virtual device is running.
 
-List running containers:
-
-```bash
-docker ps
-```
-
-Example output:
-
->```bash
->$ docker ps
->CONTAINER ID        IMAGE                                      COMMAND             CREATED             STATUS              PORTS               NAMES
->d335f50101cb        mendersoftware/mender-client-qemu:latest   "./entrypoint.sh"   6 minutes ago       Up 6 minutes        8822/tcp            relaxed_leakey
->```
-
 Save the `CONTAINER ID` in a shell variable:
 
 ```bash
-CONTAINER_ID="d335f50101cb"
+CONTAINER_ID=$(docker ps  | grep 'mender-client-qemu' | awk '{print $1}')
 ```
 
 !!! Replace above value with actual value that you get.
 
-Find the IP address of the virtual device (we will save it in a shell variable):
+Find the IP address of the virtual device (we will save it a in shell variable):
 
 ```bash
 IP_ADDRESS=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "${CONTAINER_ID}")
