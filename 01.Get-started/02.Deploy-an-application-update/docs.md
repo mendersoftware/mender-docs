@@ -48,6 +48,12 @@ server.
 
 ![congratulations device](completed_first_deployment.png)
 
+!!! If you close the previous tooltip, you can still get the IP address. Then, you will need to append the port **85** to the browser's URL.
+!!! For a Raspberry Pi connected by following [Prepare a Raspberry Pi device](../01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md),
+!!! you can run `$ hostname -I` inside your RaspberryPi terminal.
+!!! For a virtual device, connected by following [Prepare a virtual device](../01.Preparation/02.Prepare-a-virtual-device/docs.md),
+!!! you can user the `$CONTAINER_ID` variable defined in [Get the IP address of the virtual device](../01.Preparation/02.Prepare-a-virtual-device/docs.md#step-5---get-the-ip-address-of-the-virtual-device).
+
 If you visit the presented URL, you will see a welcome page similar to the following. Your device has been updated and is now running the demo software.
 
 ![congratulations device](congratulations_webpage.png)
@@ -77,7 +83,7 @@ Drag-and-drop or click **browse** to select the `index.html` file you just creat
 
 When you upload a single file like this, you will get a wizard to
 create a [Mender Artifact](../../02.Overview/03.Artifact/docs.md)
-of the type `file`, which allows you deploy single files to your device. 
+of the type `file`, which allows you deploy single files to your device.
 
 Ensure the *Destination directory* field is filled as `/data/www/localhost/htdocs` as below, so the `index.html` gets file is placed in the correct destination on the device.
 
@@ -106,7 +112,7 @@ Leave the next prefilled fields as they are and click **UPLOAD ARTIFACT** as bel
 
 ![artifact details 2](artifact_details_2.png)
 
-You will now see a new Release containing this Artifact under the **Releases** tab. View its details, and create a deployment by clicking **Create a deployment for this Release** 
+You will now see a new Release containing this Artifact under the **Releases** tab. View its details, and create a deployment by clicking **Create a deployment for this Release**.
 
 ![view release](release_actions.png)
 

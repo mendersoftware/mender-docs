@@ -55,7 +55,6 @@ will appear on the Device groups tab on the left of Pending.
 
 ![connecting a device](Image_3.png)
 
-
 ## Step 5 - Get the IP address of the virtual device
 
 You will need the the IP address of the virtual device in later stages of the
