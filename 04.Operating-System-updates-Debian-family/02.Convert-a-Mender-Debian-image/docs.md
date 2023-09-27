@@ -117,8 +117,11 @@ The easiest, and most straight-forward way, is to integrate the client with
 
 ```bash
 mkdir -p input
+
+# choose Hosted Mender region, between 'eu' and 'us' ('us' if nothing is specified)
 $MENDER_CONVERT_LOCATION/scripts/bootstrap-rootfs-overlay-hosted-server.sh \
     --output-dir ${PWD}/input/rootfs_overlay_demo \
+    --region us \
     --tenant-token "Paste token from https://hosted.mender.io/ui/settings/organization-and-billing"
 ```
 
