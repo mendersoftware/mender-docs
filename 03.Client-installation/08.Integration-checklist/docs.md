@@ -70,7 +70,6 @@ We will test the setting of variables in the upcoming steps.
 
 For the remaining steps, the GRUB CLI tools will be used, but the verification steps are equivalent when using the uboot tools.
 
-!! PARTUUID feature hasn't been tested for u-boot
 
 <!--AUTOVERSION: "prior to 4.0 %"/ignore-->
 ! In Yocto releases prior to 4.0 kirkstone, the names of the GRUB tools were the same as the U-Boot tools. Make sure to take this into account in the remaining examples on this page.
@@ -85,7 +84,7 @@ These steps will identify the partitions and check if they align with what is in
 
 ! By default the Mender Client looks for [configuration in two locations](../07.Configuration-file/docs.md). One of those is `/var/lib/mender/mender.conf` which is - in the default case - a link to the persistent partition `/data/mender/mender.conf` and doesn't get overwritten during the rootfs update. We recommend keeping the backup of the `RootfsPartA/B` settings in `/var/lib/mender/mender.conf` as it is very rare that you need to change partition names as a result of an update.
 
-Please note that the content can vary depending  storage actual device names or if you're using PARTUUIDs.
+Please note that the output can vary depending on the actual device names or if you're using PARTUUIDs.
 
 **Partitions as device files**
 
@@ -100,6 +99,8 @@ cat /var/lib/mender/mender.conf | grep RootfsPart
 
 
 **Partitions as PARTUUIDs**
+
+!! The PARTUUID feature hasn't been tested for u-boot
 
 ``` bash
 cat /var/lib/mender/mender.conf | grep RootfsPart
@@ -214,9 +215,9 @@ reboot
 
 In the [Mender state machine workflow](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md#the-state-machine-workflow) the transitional state for the bootloader starts with `ArtifactReboot` and ends with either `ArtifactCommit` or `ArtifactFailure`.
 
-For this verification, this is a period during which the bootloader environmental variables are expected to change - either by the Mender Client or the bootloader itself - and the bootloader is expected to enact conditional logic. For comparison, in the non-transition state, the bootloader variables are stable. 
+During this verification process, it is expected that the bootloader's environment variables will experience changes - either by the Mender Client or the bootloader itself - and the bootloader is expected to enact conditional logic. For comparison, in the non-transition state, the bootloader's variables remain unchanged. 
 
-To notify the bootloader about the switch to the transitional state we will set the following variables:
+To notify the bootloader about the switch to the transitional state, we will set the following variables:
 
 ``` bash
 grub-mender-grubenv-set upgrade_available 1
@@ -274,7 +275,7 @@ grub-mender-grubenv-print bootcount upgrade_available
 # upgrade_available=1
 ```
 
-This is as expected, we can conclude the transition state and confirm the variables remain stable:
+This is as expected, we can conclude the transition state and confirm the variables remain unchanged:
 
 ``` bash
 grub-mender-grubenv-set upgrade_available 0
@@ -342,7 +343,7 @@ reboot
 ```
 
 
-The device will attempt to boot, fail and then roll back to booting from the previously working partition.
+The device will attempt to boot; however, it will fail and trigger a rollback to booting from the previously working partition.
 The bootloader will automatically conclude the transition state in that case:
 
 ``` bash
@@ -374,4 +375,4 @@ umount /mnt/inactive-partition
 
 ##  Conclusion
 
-If you have verified all the steps you have confirmed that your device has the correct partitioning and bootloader integration to do full rootfs updates using Mender.
+If you have successfully followed and verified all the steps, you can confirm that your device has the appropriate partitioning and bootloader integration for complete rootfs updates using Mender.
