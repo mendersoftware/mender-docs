@@ -117,7 +117,7 @@ You will now see a new Release containing this Artifact under the **Releases** t
 ![view release](release_actions.png)
 
 Click through the deployment wizard to make a new deployment, similarly to what you did in
-[Step 1 - Create a Deployment](#step-1---create-a-deployment); this time, use the *hello-world* Release.
+[Step 1 - Create a Deployment](#step-1-create-a-deployment); this time, use the *hello-world* Release.
 
 Once the deployment finishes, refresh the demo web page from Step 1. If your deployment was successful, the `index.html file has updated on your device, and the page will now only show 'Hello World!'
 
