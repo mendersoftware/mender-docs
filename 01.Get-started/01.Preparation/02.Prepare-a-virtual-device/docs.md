@@ -86,7 +86,7 @@ CONTAINER_ID="d335f50101cb"
 
 !!! Replace above value with actual value that you get.
 
-Find the IP address of the virtual device (we will save it a shell variable):
+Find the IP address of the virtual device (we will save it in a shell variable):
 
 ```bash
 IP_ADDRESS=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "${CONTAINER_ID}")
