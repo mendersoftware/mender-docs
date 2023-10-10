@@ -7,17 +7,17 @@ taxonomy:
 Remote Terminal is a Mender add-on allowing remote command execution
 via interactive, live, fully functional terminal from the Mender UI.
 You can start a terminal session to any connected
-device by clicking "Launch a new Terminal" in the UI (see the picture
-below).
+device by navigating to Troubleshooting in the device information, and clicking 
+"Connect terminal" in the UI (see the picture below).
 
-![launch-termninal](launch-new-termninal.png)
+![Troubleshooting Remote terminal](troubleshoot-remote-terminal.png)
 
 All you need is 
 [mender-connect](../../10.Downloads/docs.md#remote-terminal-add-on)
 configured and running alongside the Mender Client, and you can
 get a live terminal where you can freely type commands.
 
-![whoami-mender](whoami-mender.png)
+![connected-termainl](connected-remote-terminal.png)
 
 Every keystroke in the above popup window will go to the standard input
 of a shell running on the device.

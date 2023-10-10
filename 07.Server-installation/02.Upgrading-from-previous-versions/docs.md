@@ -1,5 +1,5 @@
 ---
-title: Upgrading
+title: Upgrading from previous versions
 taxonomy:
     category: docs
     label: tutorial
