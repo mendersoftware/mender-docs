@@ -55,7 +55,10 @@ will appear on the Device groups tab on the left of Pending.
 
 ![connecting a device](Image_3.png)
 
+Before continuing to following the UI tooltips, please complete the step below.
+
 ## Step 5 - Get the IP address of the virtual device
+
 
 You will need the the IP address of the virtual device in later stages of the
 documentation.
@@ -68,8 +71,6 @@ Save the `CONTAINER ID` in a shell variable:
 ```bash
 CONTAINER_ID=$(docker ps  | grep 'mender-client-qemu' | awk '{print $1}')
 ```
-
-!!! Replace above value with actual value that you get.
 
 Find the IP address of the virtual device (we will save it a in shell variable):
 
@@ -86,4 +87,4 @@ Example output:
 
 ## Next step
 
-Proceed to [Deploy an application update](../../02.Deploy-an-application-update/docs.md).
+Please proceed to [Deploy an application update](../../02.Deploy-an-application-update/docs.md) to keep on following the UI steps.

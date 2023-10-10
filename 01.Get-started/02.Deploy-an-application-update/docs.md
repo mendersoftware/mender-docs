@@ -52,7 +52,7 @@ server.
 !!! For a Raspberry Pi connected by following [Prepare a Raspberry Pi device](../01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md),
 !!! you can run `$ hostname -I` inside your RaspberryPi terminal.
 !!! For a virtual device, connected by following [Prepare a virtual device](../01.Preparation/02.Prepare-a-virtual-device/docs.md),
-!!! you can user the `$CONTAINER_ID` variable defined in [Get the IP address of the virtual device](../01.Preparation/02.Prepare-a-virtual-device/docs.md#step-5---get-the-ip-address-of-the-virtual-device).
+!!! you can user the `$CONTAINER_ID` variable defined in [Get the IP address of the virtual device](../01.Preparation/02.Prepare-a-virtual-device/docs.md#step-5-get-the-ip-address-of-the-virtual-device).
 
 If you visit the presented URL, you will see a welcome page similar to the following. Your device has been updated and is now running the demo software.
 
