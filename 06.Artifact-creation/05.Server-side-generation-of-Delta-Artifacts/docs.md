@@ -5,7 +5,7 @@ taxonomy:
     label: tutorial
 ---
 
-! The server side delta feature is in the beta testing stage and available only for the enterprise plan.
+! The server-side delta feature is currently in beta testing and available only for the enterprise plan.
 
 Mender Enterprise supports the server-side generation of Delta Artifacts.
 This document explains the prerequisites to enable this feature and how it works.
@@ -14,11 +14,11 @@ This document explains the prerequisites to enable this feature and how it works
 
 ### Hosted Mender
 
-To enable this feature on you your Enterprise tenant in Hosted Mender please contact the [Mender support team](mailto:support@mender.io) with the topic title "Enable server side delta".
+To enable this feature on your Enterprise tenant in Hosted Mender, please get in touch with the [Mender support team] (mailto:support@mender.io) with the topic title "Enable server-side delta".
 
 ### On-premise installations
 
-!!! This is available from the 3.6 Mender Product bundle.
+!!! This feature is available starting from the Mender Product bundle version 3.6.
 
 In case of installations in your own infrastructure, there is additional step required: setting the configuration
 in the deployments service. To this end, and in order to enable the server side delta generation, you have to call
@@ -33,7 +33,7 @@ Where `your_tenant_id` stands for the id of your tenant for which you enable the
 
 ### Requirements on a device
 
-!!! This is available from the mender-client version 3.5 or the 3.6 Mender Product Bundle.
+!!! This feature is available starting from the Mender Client version 3.5 or the Mender Product Bundle version 3.6.
 
 To support the server-side generation of Delta Artifacts, your device must report the availability of the `mender-binary-delta` Update Module to the server.
 This will happen automatically if you are building your firmware using Yocto and the `meta-mender` layer.
@@ -64,7 +64,7 @@ You can enable this feature by selecting the option "Generate and deploy Delta A
 
 When you target a device running the Mender Client and the Binary Delta Update Module (see Prerequisites above for details) with a deployment where this option is active, the Mender Server tries to look up the correct Delta Artifact from the firmware (`rootfs`) version currently running on the Device to the desired version you selected with the deployment.
 
-If the Delta Artifact already exists, the Mender Server selects it and sends the corresponding deployment instructions to the Device. However, if the Delta Artifact does not exist, it will start a Delta Artifact generation job in the background to create it. In this case, the Device will temporarily receive a `No updates` response for the Server. During the generation of the delta artifact the Deployment will be in the state `pending`. The resulting Delta Artifact will be served to the Device in the next update polling cycle after the generation has finished.
+If the Delta Artifact already exists, the Mender Server selects it and sends the corresponding deployment instructions to the Device. However, if the Delta Artifact does not exist, it will start a Delta Artifact generation job in the background to create it. In this case, the Device will temporarily receive a `No updates` response from the Server. Deployment will be in the state `pending` during the generation of the delta artifact. The resulting Delta Artifact will be served to the Device in the next update polling cycle after the generation has finished.
 
 A successfully generated artifact will be visible in the Releases section under the name of the original rootfs artifact.
 
