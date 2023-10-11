@@ -14,7 +14,7 @@ This document explains the prerequisites to enable this feature and how it works
 
 ### Hosted Mender
 
-To enable this feature on your Enterprise tenant in Hosted Mender, please get in touch with the [Mender support team] (mailto:support@mender.io) with the topic title "Enable server-side delta".
+To enable this feature on your Enterprise tenant in Hosted Mender, please get in touch with the [Mender support team](mailto:support@mender.io) with the topic title "Enable server-side delta".
 
 ### On-premise installations
 
