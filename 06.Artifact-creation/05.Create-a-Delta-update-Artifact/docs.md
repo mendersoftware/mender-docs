@@ -5,22 +5,22 @@ taxonomy:
     label: tutorial
 ---
 
-
 This document explains how to create a binary delta artifact from two Operating System artifacts using the `mender-binary-delta-generator` CLI tool.
 Generation of the delta is something you would execute on a command line of a machine running Linux.
 
 For a step by step working example please check the [mender hub post](https://hub.mender.io/t/robust-delta-update-rootfs/1144).
 
+!! Northern.tech still needs to test Delta deployments over UBIFS.
 
 ### Prerequisites
 
 This tutorial assumes:
 
+<!-- TODO: Add Debian reference after PR#2240 has been merged -->
 * You have completed the [integration of the mender-binary-delta](../../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/01.Delta-update-support/docs.md) into your Yocto built process
-    * `mender-binary-delta-generator` is available in `PATH`
+  * `mender-binary-delta-generator` is available in `PATH`
 * You have installed [mender-artifact](../../10.Downloads/docs.md#mender-artifact) which is a dependency for `mender-binary-delta-generator`
 * You have two Operating System artifacts available to work with
-
 
 ### Generating the delta - default case
 
@@ -48,7 +48,7 @@ Depending on the payload of the artifact, this can influence the size of the del
 
 The example below will generate a delta artifact using the custom xdelta flags.
 
-```
+```bash
 XDELTA_FLAGS="-B524288000 -W150000 -P262144 -I62768"
 mender-binary-delta-generator -o delta-v1-v2.mender -D "${XDELTA_FLAGS}" rootfs-v1.mender rootfs-v2.mender -- -- ${XDELTA_FLAGS}
 ```
@@ -56,7 +56,7 @@ mender-binary-delta-generator -o delta-v1-v2.mender -D "${XDELTA_FLAGS}" rootfs-
 The flags will be embedded in the artifact and passed to the algorithm on the client side also.
 You can confirm the existence of the flags in the artifact with the command below.
 
-```
+```bash
 mender-artifact read delta-v1-v2.mender
 
 <Unrelated content before...>
@@ -74,13 +74,12 @@ mender-artifact read delta-v1-v2.mender
 <Unrelated content after...>
 ```
 
-
 #### Finding the parameters
 
 Fine tuning the parameters to your needs can be a trial and error process.
 The snippet below is a best effort reference to get you started.
 
-```
+```bash
 # Source buffer size          -B  Default=67108864(64M)  [16384(16K) - Unlimited]
 # Input window size           -W  Default=8192    ( 8M)  [16384(16K) - 16777216(16M)]
 # Instruction buffer size     -I  Default=32768(32KB)    [ min?      - 0 (Unlimited) ]
