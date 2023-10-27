@@ -19,7 +19,7 @@ This feature drastically reduces the time to upload the Mender artifact to the M
 
 * The `mender-cli` tool. You can find information about how to download it and the installation steps in the [Downloads section](../../10.Downloads/docs.md#mender-cli) from this documentation.
 
-* To use the direct upload feature, the user needs to have at least the Deployments Manager and Releases Manager roles.
+* To use the direct upload feature, the user must have at least the Deployments Manager and Releases Manager roles.
 
 * Enable the feature on the server by applying the [helm charts](https://github.com/mendersoftware/mender-helm#complete-list-of-parameters) with:
     * `deployments.directUpload.enabled` to `true`
@@ -28,7 +28,7 @@ This feature drastically reduces the time to upload the Mender artifact to the M
 
 ## Upload process
 
-For uploading an artifact you will need to have a session token, this could be solved by running the following command:
+For uploading a Mender Artifact you will need to have a session token. You can get one by running the following command:
 
 ```bash
 mender-cli login
