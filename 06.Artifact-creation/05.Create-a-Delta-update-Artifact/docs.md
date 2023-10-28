@@ -10,7 +10,7 @@ Generation of the delta is something you would execute on a command line of a ma
 
 For a step by step working example please check the [mender hub post](https://hub.mender.io/t/robust-delta-update-rootfs/1144).
 
-!! Northern.tech still needs to test Delta deployments over UBIFS.
+!! Delta updates aren't supported with devices running UBIFS. If this is your use case please contact us at support@mender.io
 
 ### Prerequisites
 

@@ -35,7 +35,8 @@ Where `your_tenant_id` stands for the id of your tenant for which you enable the
 
 !!! This feature is available starting from the Mender Client version 3.5 or the Mender Product Bundle version 3.6.
 
-!! Northern.tech still needs to test Delta deployments over UBIFS.
+!! Delta updates aren't supported with devices running UBIFS. If this is your use case please contact us at support@mender.io
+
 
 To support the server-side generation of Delta Artifacts, your device must report the availability of the `mender-binary-delta` Update Module to the server.
 This will happen automatically if you are building your firmware using Yocto and the `meta-mender` layer.
