@@ -219,7 +219,7 @@ Please note that no scripts in the `Download_Leave` transition are run if the do
 12. `[ArtifactFailure_Enter]` `ArtifactFailure` `[ArtifactFailure_Leave]`
 13. `[Idle_Enter]` `Idle` `[Idle_Leave]`
 
-In case any of the `Artifact` scripts fail, an additional `ArtifactFailure` state is entered and the corresponding Enter and Leave scripts are run. Please also note that *there is no* `ArtifactFailure_Error` state transition and if any error occurs while executing actions inside the `ArtifactFailure` state, the scripts in the `ArtifactFailure_Leave` transition will run and an appropriate error path will be executed.
+Please note that no scripts in the `ArtifactInstall_Leave` transition are run if the artifact install fails. Instead, the scripts in the `ArtifactInstall_Error` transition are run. Moreover, in case any of the `Artifact` scripts fail, an additional `ArtifactFailure` state is entered and the corresponding Enter and Leave scripts are run. Please also note that *there is no* `ArtifactFailure_Error` state transition and if any error occurs while executing actions inside the `ArtifactFailure` state, the scripts in the `ArtifactFailure_Leave` transition will run and an appropriate error path will be executed.
 
 
 #### Error while committing an update
@@ -242,4 +242,4 @@ In case any of the `Artifact` scripts fail, an additional `ArtifactFailure` stat
 16. `[ArtifactFailure_Enter]` `ArtifactFailure` `[ArtifactFailure_Leave]`
 17. `[Idle_Enter]` `Idle` `[Idle_Leave]`
 
-Please note that similar to the `ArtifactReboot` state, scripts in the `ArtifactRollbackReboot_Leave` transition are called after the device has rebooted.
+Please note that no scripts in the `ArtifactCommit_Leave` transition are run if the artifact commit fails. Instead, the scripts in the `ArtifactCommit_Error` transition are run. Moreover, similar to the `ArtifactReboot` state, scripts in the `ArtifactRollbackReboot_Leave` transition are called after the device has rebooted.
