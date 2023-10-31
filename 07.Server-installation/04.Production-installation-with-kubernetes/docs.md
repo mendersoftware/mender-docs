@@ -52,7 +52,7 @@ service.
 * Redis 6.0, 6.2
   * ElasticCache (AWS)
   * AzureCache
-  * Momory store (GCP)
+  * Memorystore (GCP)
   * Self hosted
 
 **Nats:**
