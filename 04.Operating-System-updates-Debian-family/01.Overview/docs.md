@@ -9,7 +9,7 @@ taxonomy:
 <!-- See MEN-4983 -->
 !! Be careful when running `apt upgrade` on a device with Mender Operating System updates enabled. Integration
 !! with `apt upgrade` (through the `grub.d` framework) is only implemented for x86 as of
-!! mender-convert version 4.0.2. For ARM and other non-x86 architectures, always update single
+!! mender-convert version 4.0.3. For ARM and other non-x86 architectures, always update single
 !! applications only, because running `apt upgrade` may brick your device!. If you need to run `apt
 !! upgrade`, do it on a pristine system without Mender installed, and then [convert it to a Mender
 !! image](../../04.Operating-System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md)
