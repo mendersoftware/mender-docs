@@ -35,6 +35,9 @@ Where `your_tenant_id` stands for the id of your tenant for which you enable the
 
 !!! This feature is available starting from the Mender Client version 3.5 or the Mender Product Bundle version 3.6.
 
+!! Delta updates aren't supported with devices running UBIFS. If this is your use case please contact us at support@mender.io
+
+
 To support the server-side generation of Delta Artifacts, your device must report the availability of the `mender-binary-delta` Update Module to the server.
 This will happen automatically if you are building your firmware using Yocto and the `meta-mender` layer.
 Otherwise, create and install your own bootstrap Artifact to provide these keys:
@@ -52,7 +55,6 @@ The Artifact can be installed in standalone mode or remotely deployed with the M
 
 <!--AUTOVERSION: "mender-artifact/blob/%"/ignore-->
 Additionally, to make the server-side generation of Delta Artifacts possible, the Mender Artifact of the current version of the [`rootfs-image`](https://github.com/mendersoftware/mender-artifact/blob/3.9.0/Documentation/artifact-format-v3.md#header-info) running on your device and the updated one must be available as Artifact on the Mender Server.
-
 
 ## Usage
 
