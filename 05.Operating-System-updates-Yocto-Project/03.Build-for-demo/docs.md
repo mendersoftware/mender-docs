@@ -45,7 +45,7 @@ is a set of layers containing board-specific settings for Mender integration.
 <!--AUTOVERSION: "www.yoctoproject.org/docs/%"/ignore-->
 !!! For general information about getting started with Yocto Project, it is
 !!! recommended to read the
-!!! [Yocto Project Quick Build tutorial](https://www.yoctoproject.org/docs/3.1.1/brief-yoctoprojectqs/brief-yoctoprojectqs.html?target=_blank).
+!!! [Yocto Project Quick Build tutorial](https://docs.yoctoproject.org/brief-yoctoprojectqs/index.html#yocto-project-quick-build?target=_blank).
 
 
 ## Prerequisites
@@ -80,7 +80,7 @@ Full details for building the Yocto project for your board are available at Mend
 * [BeagleBone Black](https://hub.mender.io/t/beaglebone-black/83)
 * [QEMU](https://hub.mender.io/t/qemu-the-fast-processor-emulator/420)
 
-!!! Note that the Yocto Project also depends on some [development tools to be in place](http://www.yoctoproject.org/docs/2.4/yocto-project-qs/yocto-project-qs.html?target=_blank#packages).
+!!! Note that the Yocto Project also depends on some [development tools to be in place](https://docs.yoctoproject.org/brief-yoctoprojectqs/index.html?target=_blank#build-host-packages).
 
 ! The `meta-mender-demo` layer, which is included in the integrations available at [Mender Hub](https://hub.mender.io?target=_blank), is not appropriate if you are building for production devices. Please go to the section about [building for production](../06.Build-for-production/docs.md) to see the difference between demo builds and production builds.
 
