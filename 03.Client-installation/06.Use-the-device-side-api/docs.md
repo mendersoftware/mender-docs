@@ -24,6 +24,8 @@ Common use cases are:
 
 ### Update Control Maps
 
+!! This feature will be removed in Mender client 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
+
 Update Control Maps can specify an action for some transitions between the Mender client's
 state machine. The default action for each step is **continue**. To pause the update process,
 you can set **pause**.
