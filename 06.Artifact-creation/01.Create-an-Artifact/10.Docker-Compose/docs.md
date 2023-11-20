@@ -137,10 +137,9 @@ app-gen --artifact-name "$ARTIFACT_NAME" \
 ```
 
 !!!!! All arguments after `--` are passed directly to `mender-artifact write
-!!!!! module-image`. In the following example we will make use of [versioning
-!!!!!
-constraints](../../09.Software-versioning/docs.md#application-updates-update-modules)
-to !!!!! prevent deploying the wrong version to a device.
+!!!!! module-image`. In the following example we will make use of
+!!!!! [versioning constraints](../../09.Software-versioning/docs.md#application-updates-update-modules)
+!!!!! to prevent deploying the wrong version to a device.
 
 #### Deploy the Mender Artifact
 The generated artifact is now ready to be deployed on the device. Open your
