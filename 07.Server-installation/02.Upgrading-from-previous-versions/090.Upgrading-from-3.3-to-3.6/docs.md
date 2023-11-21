@@ -30,6 +30,52 @@ MongoDB 4.4 and 5.0.
 
 ## Migrating from 3.3
 
+### Helm chart major upgrade
+
+The helm chart is versioned separately from the Mender releases.
+During the lifetime of Mender 3.4.0 the helm chart got a major version increase with a [breaking change](https://github.com/mendersoftware/mender-helm/blob/master/mender/CHANGELOG.md#version-500).
+
+```
+helm search repo mendersoftware/mender --versions
+
+# Output
+# NAME                 	CHART VERSION	APP VERSION	DESCRIPTION                                       
+# mendersoftware/mender	5.3.0        	3.6.3      	Mender is a robust and secure way to update all...
+# ...
+# mendersoftware/mender	5.0.0        	3.4.0      	Mender is a robust and secure way to update all...
+# mendersoftware/mender	4.0.3        	3.4.0      	Mender is a robust and secure way to update all...
+# ...
+```
+
+If you're not updating the helm chart changes you might stumble onto this when doing the 3.3 -> 3.6 upgrade. To fix this issue please adjust your redis configuration to the [new format](https://github.com/mendersoftware/mender-helm/blob/5.3.0/mender/values.yaml).
+
+Redis is now configured as a global service which needs to be configured.
+
+```
+  redis:
+    username: null
+    password: null
+    URL: ""
+```
+
+!! We strongly recommend using an external redis service provider. 
+!! As a reference we provide redis as a dependency through a [subchart](https://github.com/mendersoftware/mender-helm/blob/5.3.0/mender/Chart.yaml#L19).
+!! We don not provide support for troubleshooting issues related to problems with an internally deployed redis instance.
+
+
+The service specific redis credentials which were used before the helm chart version 5 need to be removed:
+
+```
+DEVICEAUTH_REDIS_ADDR: "mender-redis:6379"
+DEVICEAUTH_REDIS_USERNAME: ""
+DEVICEAUTH_REDIS_PASSWORD
+
+USERADM_REDIS_ADDR: "mender-redis:6379"
+USERADM_REDIS_USERNAME: ""
+USERADM_REDIS_PASSWORD: ""
+```
+
+
 ### useradm database
 
 Be sure that `useradm` database is clean. Especially look out for leftovers from previous
