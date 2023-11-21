@@ -34,7 +34,7 @@ MongoDB 4.4 and 5.0.
 
 The helm chart is versioned separately from the Mender releases.
 <!--AUTOVERSION: "Mender %"/ignore "blob/%"/ignore-->
-During the lifetime of Mender 3.4.0 the helm chart got a major version increase with a [breaking change](https://github.com/mendersoftware/mender-helm/blob/5.0.0/mender/CHANGELOG.md#version-500).
+During the lifetime of Mender 3.4.0, the helm chart got a major version increase with a [breaking change](https://github.com/mendersoftware/mender-helm/blob/5.0.0/mender/CHANGELOG.md#version-500).
 
 <!--AUTOVERSION: "mendersoftware/mender	%        	%"/ignore-->
 ```
@@ -63,8 +63,8 @@ Redis is now configured as a global service which needs to be configured.
 
 !! We strongly recommend using an external redis service provider. 
 <!--AUTOVERSION: "blob/%"/ignore-->
-!! As a reference we provide redis as a dependency through a [subchart](https://github.com/mendersoftware/mender-helm/blob/5.3.0/mender/Chart.yaml#L19).
-!! We don not provide support for troubleshooting issues related to problems with an internally deployed redis instance.
+!! As a reference, we provide redis as a dependency through a [subchart](https://github.com/mendersoftware/mender-helm/blob/5.3.0/mender/Chart.yaml#L19).
+!! We do not provide support for troubleshooting issues related to problems with an internally deployed redis instance.
 
 
 The service specific redis credentials which were used before the helm chart version 5 need to be removed:
