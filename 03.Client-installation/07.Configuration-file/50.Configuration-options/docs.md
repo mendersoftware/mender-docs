@@ -58,14 +58,20 @@ Introduced in Mender client 3.1.
 
 #### Connectivity
 
+!! This option is not supported starting from the Mender client version 4.0, and all the HTTP requests will be sent without the Keep-Alive header.
+
 Allows you to configure additional connection-related settings.
 
 ##### DisableKeepAlive
+
+!! This option is not supported starting from the Mender client version 4.0, and all the HTTP requests will be sent without the Keep-Alive header.
 
 If set to true, disables the connections keep alive in general. All the HTTP transactions
 will cause a new connection to be created.
 
 ##### IdleConnTimeoutSeconds
+
+!! This option is not supported starting from the Mender client version 4.0, and all the HTTP requests will be sent without the Keep-Alive header.
 
 Specifies the time after which a connection is terminated. The larger it is,
 the longer keep alive traffic will happen, as the client will maintain
