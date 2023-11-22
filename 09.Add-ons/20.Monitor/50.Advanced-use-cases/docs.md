@@ -1,0 +1,268 @@
+---
+title: Advanced use cases
+taxonomy:
+    category: docs
+    label: user guide
+---
+
+
+## Low level architecture
+
+The `mender-monitor` service supports the following directory structure:
+
+
+```bash
+/etc/mender-monitor
+`-- monitor.d
+    |-- available
+    |   |-- log_auth_root_session.sh
+    |   `-- service_mender-connect.sh
+    |-- dbus.sh
+    |-- enabled
+    |   |-- log_auth_root_session.sh -> /etc/mender-monitor/monitor.d/available/log_auth_root_session.sh
+    |   `-- service_mender-connect.sh -> /etc/mender-monitor/monitor.d/available/service_mender-connect.sh
+    |-- log.sh
+    `-- service.sh
+```
+
+
+What is listed under the root level of `monitor.d` are the Subsystems (`log.sh`, `dbus.sh` and `service.sh`).
+
+The directory `monitor.d/available` lists the created Checks. By using `create` and `delete`, `mender-monitorctl` will create or delete a Check which means it will create the file in the correct naming convention and define variables within it. The name convention follows the structure:
+
+```
+<monitoring_subsystem_name>_<check_name>.sh
+```
+
+For the examples listed one is a Check for the log Subsystem (**log**_auth_root_session.sh) and the other for the service (**service**_mender-connect.sh).
+
+
+A Check needs to be enabled before it will be taken into consideration. By running `mender-monitorctl` with the `enable` or `disable` parameters, it will create a symbolic link inside the `enabled` folder to the right check from the `available` folder. From this folder, the `mender-monitor` service executes the defined Subsystems based on the enabled Checks.
+
+
+## Advanced use cases
+
+The following use cases extend beyond the typical usage of Mender Monitor, but they are attainable due to the tool's customizable design.
+
+### Bypassing mender-monitorctl
+
+Since the Checks and Subsystems are represented by a directory structure there is an option to modify the files directly instead of using the CLI tool. 
+
+### Using the library 
+To use the Mender Monitor library, first you need to source the environment with the function set provided to interact with the Mender Server and Monitor logic.
+
+```bash
+cd /usr/share/mender-monitor
+source lib/monitor-lib.sh
+```
+
+Once the environment is sourced, there will be new functions available to use. For example the function `monitor_send_alert` sends the alert data (_OK_ or _CRITICAL_) to the Mender Server.
+
+This function takes the following parameters:
+
+```bash
+monitor_send_alert "alert_type" "alert_description" "alert_details" "subject_name" "subject_status" "subject_type" "log_pattern" "log_file_path" "lines_before" "line_matching" "lines_after"
+```
+
+#### Alert cleaning
+
+By sending an _OK_ alert you can clean your alert level. Assuming you did not implement it on your
+subsystem, then you can force it by running a command similar to the one below (assuming a _service subsystem_):
+
+```bash
+SERVICE_NAME = "your-service-name"
+monitor_send_alert OK "Service ${SERVICE_NAME} running" "The main process is present again" "${SERVICE_NAME}" "running" "service"
+```
+
+### Writing new Subsystems
+In this example, we will guide you through the necessary steps to create a new subsystem that monitors disk usage on the device.
+
+First, let us start by creating the subsystem file:
+
+```bash
+cat >/etc/mender-monitor/monitor.d/diskusage.sh <<EOF
+#!/usr/bin/env bash
+# Copyright 2022 Northern.tech AS
+#
+#    All Rights Reserved
+#
+#
+# Monitor the disk space of a given disk.
+#
+#
+# More specifically
+#
+# DISKUSAGE_NAME=<some name>
+# DISKUSAGE_THRESHOLD=<1-100> (default: 80)
+#
+EOF
+```
+
+In the file, it is necessary to source the `mender-monitor` library to enable the required functions for interacting with the Mender Server:
+
+```bash
+. common/common.sh
+. lib/monitor-lib.sh
+. lib/alert-lib.sh
+. lib/subsystem-storage-lib.sh
+```
+
+Next, we need to validate the input it may require. In this example, we will only validate the `DISKUSAGE_NAME` variable:
+
+```bash
+#
+# Parse the input
+#
+if [[ -z "${DISKUSAGE_NAME}" ]]; then
+    log_error "DISKUSAGE_NAME not set, this is an error."
+    exit 0
+fi
+```
+
+The definition of the actual command or logic that the subsystem is going to monitor comes next:
+
+```bash
+function disk_usage() {
+    df --output=pcent ${DISKUSAGE_NAME} | tail -1 | cut -d% -f1
+}
+```
+
+It is important to remember that each check will have a unique key to store its last alarm status. To retrieve the check name used to source the subsystem, we can use the following function:
+
+```bash
+function get_monitor_name() {
+    local -r monitor_name=$(basename "${env}")
+    local -r strip_subsystem_name=${monitor_name//diskusage_/}
+    echo ${strip_subsystem_name%.sh}
+}
+```
+
+Finally, we define how and when the _OK_ and _CRITICAL_ alerts are generated and sent to the Mender Server. 
+In this case, we check if the `DISKUSAGE_USAGE` exceeded the `DISKUSAGE_THRESHOLD` value, in case it does, it will send the _CRITIAL_ alert using the function `monitor_send_alert` from the `mender-monitor` library. When the `DISKUSAGE_USAGE` comes down and it is no longer exceeding, it will send the _OK_ alert.
+
+```bash
+CONNECTIVITY_MONITOR_KEY=$(get_monitor_name)
+
+DISKUSAGE_USAGE=$(disk_usage)
+
+if [[ ${DISKUSAGE_USAGE} -gt ${DISKUSAGE_THRESHOLD:-80} ]]; then
+    log_debug "Disk storage has grown to fill more than ${DISKUSAGE_THRESHOLD:-80}% of the disk"
+    if [[ $(subsystem_get "${SUBSYSTEM_NAME}" "LAST_ALARM_${CONNECTIVITY_MONITOR_KEY}") != CRITICAL ]]; then
+        log_debug "Disk storage alarm ready to send CRITICAL"
+        monitor_send_alert \
+            CRITICAL \
+            "Disk storage has grown to fill more than ${DISKUSAGE_THRESHOLD:-80}% of the disk '${DISKUSAGE_NAME}'" \
+            "Disk ${DISKUSAGE_NAME} is now at ${DISKUSAGE_USAGE}% capacity, above the ${DISKUSAGE_THRESHOLD:-80}% threshold" \
+            "${DISKUSAGE_NAME}" \
+            DISKUSAGE_USAGE_WARNING \
+            "disk"
+        subsystem_set "${SUBSYSTEM_NAME}" "LAST_ALARM_${CONNECTIVITY_MONITOR_KEY}" CRITICAL
+    else
+        log_debug "The disk usage is too high, but the alarm CRITICAL is already sent"
+    fi
+else
+    if [[ $(subsystem_get "${SUBSYSTEM_NAME}" "LAST_ALARM_${CONNECTIVITY_MONITOR_KEY}") == CRITICAL ]]; then
+        log_debug "Disk storage alarm send OK"
+        monitor_send_alert \
+            OK \
+            "Disk storage has grown to fill more than ${DISKUSAGE_THRESHOLD:-80}% of the disk '${DISKUSAGE_NAME}'" \
+            "Disk ${DISKUSAGE_NAME} is now at ${DISKUSAGE_USAGE}% capacity, back below the ${DISKUSAGE_THRESHOLD:-80}% threshold" \
+            "${DISKUSAGE_NAME}" \
+            DISKUSAGE_USAGE_WARNING \
+            "disk"
+        subsystem_set "${SUBSYSTEM_NAME}" "LAST_ALARM_${CONNECTIVITY_MONITOR_KEY}" OK
+    else
+        log_debug "Disk usage is fine, and no need to send alarm OK"
+    fi
+fi
+```
+
+After creating the subsystem, let us proceed to create a new check named `root_space` to monitor the disk usage of the root directory mounted at `/`:
+
+```bash
+cat >/etc/mender-monitor/monitor.d/available/diskusage_root_space.sh <<EOF
+# Copyright 2022 Northern.tech AS
+#
+#    All Rights Reserved
+
+#
+# Monitor the whole rootfs space usage
+#
+DISKUSAGE_NAME="/"
+# Report on 3/4 full disk
+DISKUSAGE_THRESHOLD=75
+EOF
+```
+
+To enable the check, you can do so by running the following command:
+
+```bash
+mender-monitorctl enable diskusage root_space
+```
+
+
+### Pseudo subsystems
+
+It is possible to create a level of abstraction for the subsystems known as **pseudo subsystems**. These are predefined configurations built upon existing subsystems, designed to streamline the process of creating new checks.
+
+Further documentation on pseudo subsystems in the form of an example.
+
+**dockerevents Pseudo Subsystem**
+
+`dockerevents` pseudo subsystem, can be used to generate a check to monitor any events as reported by `docker events`
+command.
+
+The `dockerevents` definition can be found in the `mender-monitor` library source code:
+
+```bash
+cat /usr/share/mender-monitor/lib/ctl-lib.sh
+```
+
+> ```bash
+> ...
+> function ctl_create_dockerevents_subsystem_entry() {
+>     local -r service_name="$1"
+>     local -r container_name="$2"
+>     local -r action_name="$3"
+> 
+>     EXTRA_SETTINGS="LOG_ALERT_DESCRIPTION=\"Docker container ${container_name} ${action_name}\"\nLOG_ALERT_DETAILS=\"Alert was raised due to:%line_matching\"\nLOG_ALERT_STATUS=DOCKEREVENTS_CONTAINER_EVENT\nLOG_ALERT_TYPE=docker_event\n" ctl_create_log_subsystem_entry "$service_name" ".*container ${action_name}.*name=${container_name}.*" "@docker events" "$4"
+> }
+> 
+> declare -A SUBSYSTEMS_NAME_TO_SUBSYSTEM=([dockerevents]="log")
+> ...
+> ```
+
+From the previous code, you can see it predefines the required variables for the log subsystem to function and creates the check just like a regular log check.
+
+Using this pseudo subsystem makes the creation of checks easier:
+
+```bash
+mender-monitorctl create dockerevents scanner_kill scanner kill 16
+mender-monitorctl enable dockerevents scanner_kill
+systemctl restart mender-monitor
+```
+
+These commands will create the Check `log_scanner_kill.sh` in the folder `/etc/mender-monitor/monitor.d/available/`. The resulting check uses the log monitor, as you can see with:
+
+
+```bash
+cat /etc/mender-monitor/monitor.d/available/log_scanner_kill.sh
+```
+> ```bash
+> # This file was autogenerated by Monitoring Utilities based on the configuration
+> SERVICE_NAME="scanner_kill"
+> LOG_PATTERN=".*container kill.*name=scanner.*"
+> LOG_FILE="@docker events"
+> LOG_PATTERN_EXPIRATION=16
+> LOG_ALERT_DESCRIPTION="Docker container scanner kill"
+> LOG_ALERT_DETAILS="Alert was raised due to:%line_matching"
+> LOG_ALERT_STATUS=DOCKEREVENTS_CONTAINER_RESTART
+> LOG_ALERT_TYPE=docker_event
+> ```
+
+With the above configuration, you will receive a `CRITICAL` alert if someone or something kills your scanner container.
+This will lead the Mender UI to present the device in a critical monitoring state. Since there is no natural
+way, to recover from this situation, we are using the last and optional argument
+to the `mender-monitorctl create dockerevents` command which stands for the number of seconds
+after which the Mender Monitor daemon sends an automatic _OK_. In that way after 16s without
+a `kill` event on the container, the device will recover to a normal state.
