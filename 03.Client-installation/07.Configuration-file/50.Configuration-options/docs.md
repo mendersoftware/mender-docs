@@ -326,7 +326,7 @@ default location is `/var/lib/mender/device_type`
 
 #### UpdateControlMapExpirationTimeSeconds
 
-!! This feature will be removed in Mender client 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
+!! This option is not supported starting from the Mender client version 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
 
 The expire time in seconds for an update control map. The value provides the
 time window for an application using the update control _dbus API_ to refresh
@@ -336,7 +336,7 @@ the update control map before it enters the expired state. _Defaults to
 
 #### UpdateControlMapBootExpirationTimeSeconds
 
-!! This feature will be removed in Mender client 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
+!! This option is not supported starting from the Mender client version 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
 
 The maximum expire time in seconds after startup for an update control map. The
 value provides an upper bound on the update control map [expire
@@ -345,7 +345,7 @@ time](#UpdateControlMapExpirationTimeSeconds) after system startup. _Defaults to
 
 #### UpdateControlMapPollIntervalSeconds
 
-!! This feature will be removed in Mender client 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
+!! This option is not supported starting from the Mender client version 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
 
 The polling interval at which the client checks for new control maps once the
 deployment has started to take place. This influences how quickly will the
