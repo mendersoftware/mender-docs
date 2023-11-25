@@ -260,6 +260,13 @@ Then add the sources according to your Linux distribution
 !!! do `(. /etc/os-release && echo $VERSION_CODENAME)`
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="Debian Bookworm"]
+<!--AUTOMATION: ignore -->
+```bash
+echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/bookworm/stable main" \
+ | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
+```
+[/ui-tab]
 [ui-tab title="Debian Bullseye"]
 <!--AUTOMATION: ignore -->
 ```bash
@@ -519,6 +526,51 @@ download it by running:
 [ui-tab title="hosted"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="Debian Bookworm"]
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="armhf"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbookworm_armhf.deb
+```
+[/ui-tab]
+[ui-tab title="arm64"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbookworm_arm64.deb
+```
+[/ui-tab]
+[ui-tab title="amd64"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbookworm_amd64.deb
+```
+[/ui-tab]
+[/ui-tabs]
+
+[/ui-tab]
 [ui-tab title="Debian Bullseye"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
@@ -710,6 +762,57 @@ wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDE
 [ui-tab title="enterprise"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="Debian Bookworm"]
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="armhf"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+MENDER_ENTERPRISE_USER=<your.user>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+
+<!--AUTOMATION: ignore -->
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbookworm_armhf.deb
+```
+[/ui-tab]
+[ui-tab title="arm64"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+MENDER_ENTERPRISE_USER=<your.user>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+
+<!--AUTOMATION: ignore -->
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbookworm_arm64.deb
+```
+[/ui-tab]
+[ui-tab title="amd64"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+MENDER_ENTERPRISE_USER=<your.user>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+
+<!--AUTOMATION: ignore -->
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbookworm_amd64.deb
+```
+[/ui-tab]
+[/ui-tabs]
+
+[/ui-tab]
 [ui-tab title="Debian Bullseye"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
