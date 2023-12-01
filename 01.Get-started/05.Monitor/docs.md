@@ -86,7 +86,7 @@ Once you remove the USB device, the log subsystem triggers an alert, which you c
 
 [Connectivity alarm OK](log-usb-alarm.png)
 
-!!! Note: This Alert will remain unless a manual [alert cleaning](../../09.Add-ons/20.Monitor/40.Advanced-use-cases/docs.md#alert-cleaning ) is performed:
+!!! Note: This Alert will remain unless a manual [alert cleaning](../../09.Add-ons/20.Monitor/50.Advanced-use-cases/docs.md#alert-cleaning ) is performed:
 !!! ```bash
 !!! cd /usr/share/mender-monitor
 !!! source lib/monitor-lib.sh
