@@ -16,7 +16,7 @@ Arguments:
 * Log file or data stream - the source of the log content
 * [Optional] Log pattern expiration  - time that needs to pass until the pattern match is considered invalidated
     * As an example, if ERROR is detected once and no new errors are detected in the next 5 seconds, monitoring will report all issues were resolved
-    * If nothing is specified the [DEFAULT_LOG_PATTERN_EXPIRATION_SECONDS](../30.Advanced-configuration/docs.md#DEFAULT_LOG_PATTERN_EXPIRATION_SECONDS) is used
+    * If nothing is specified the [DEFAULT_LOG_PATTERN_EXPIRATION_SECONDS](../40.Configuration/docs.md#DEFAULT_LOG_PATTERN_EXPIRATION_SECONDS) is used
 
 The log monitoring subsystem saves the number of the last line of logs that
 it parsed and starts tailing the file skipping the already seen lines.
