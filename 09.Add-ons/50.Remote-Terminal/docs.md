@@ -85,6 +85,32 @@ the terminal output which users can later inspect from the
 !!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
+## Using your own terminal
+
+It is possible to use the remote terminal feature from you own terminal instead of the UI.
+To achieve this please download the [mender-cli](../../10.Downloads/docs.md#mender-cli) tool.
+
+You will need the Device ID and the access token, both accessible from the UI.
+Device ID is available under the UI under `DEVICES -> select device -> Identity -> ID`.
+
+For the access token you can use whatever way works best for you, a [PAT](../../08.Server-integration/01.Using-the-apis/docs.md#personal-access-tokens) or a session token (`Settings -> My profile -> Session token`) are the quickest.
+
+
+``` bash
+DEVICE_ID=<Fill with yours>
+SESSION_TOKEN=<Fill with yours>
+
+./mender-cli --server https://eu.hosted.mender.io --token-value $SESSION_TOKEN terminal $DEVICE_ID
+```
+
+As an alternative you can login with your user credentials and not need to specify the token.
+
+```bash
+DEVICE_ID=<Fill with yours>
+./mender-cli --server https://eu.hosted.mender.io login
+./mender-cli --server https://eu.hosted.mender.io terminal $DEVICE_ID
+```
+
 ## Further reading
 
 * For a detailed list of the configuration options please refer to the

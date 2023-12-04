@@ -162,7 +162,6 @@ Punctuation and grammar tools: these apps can help evaluate your writing and war
 * https://grammark.org
 * http://www.hemingwayapp.com
 * https://grammarly.com (payware)
-* [./scripts/passive.sh](./scripts/README-passive.markdown) <file>
 * [./scripts/weasel.sh](./scripts/README-weasel.markdown) <file>
 
 # Taxonomy

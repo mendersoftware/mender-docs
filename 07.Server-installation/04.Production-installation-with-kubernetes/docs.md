@@ -17,7 +17,7 @@ are highlighted for the latter.
 You will use the [Helm chart](https://github.com/mendersoftware/mender-helm) to
 deploy to production the Mender backend services on a Kubernetes cluster.
 
-Please read the Requirements page to understand what combinations are validated by Northern.tech.Once that is clear please move on the first paragraph [Kubernetes](./01.Kubernetes).
+Please read the Requirements page to understand what combinations are validated by Northern.tech.Once that is clear please move on the first paragraph [Kubernetes](./01.Kubernetes/docs.md).
 
 
 ## Requirements and resources
@@ -52,7 +52,7 @@ service.
 * Redis 6.0, 6.2
   * ElasticCache (AWS)
   * AzureCache
-  * Momory store (GCP)
+  * Memorystore (GCP)
   * Self hosted
 
 **Nats:**
