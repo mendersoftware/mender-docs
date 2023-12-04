@@ -44,14 +44,20 @@ or older.
 
 #### Connectivity
 
+!! This option is not supported starting from the Mender client version 4.0, and all the HTTP requests will be sent without the Keep-Alive header.
+
 Allows you to configure additional connection-related settings.
 
 ##### DisableKeepAlive
+
+!! This option is not supported starting from the Mender client version 4.0, and all the HTTP requests will be sent without the Keep-Alive header.
 
 If set to true, disables the connections keep alive in general. All the HTTP transactions
 will cause a new connection to be created.
 
 ##### IdleConnTimeoutSeconds
+
+!! This option is not supported starting from the Mender client version 4.0, and all the HTTP requests will be sent without the Keep-Alive header.
 
 Specifies the time after which a connection is terminated. The larger it is,
 the longer keep alive traffic will happen, as the client will maintain
@@ -316,24 +322,32 @@ default location is `/var/lib/mender/device_type`
 
 #### UpdateControlMapExpirationTimeSeconds
 
-This option is **deprecated** and does not exist anymore in Mender Client v4.0 and later. For
-earlier versions, please see [documentation for Mender
-3.6](/3.6/client-installation/configuration-file/configuration-options#updatecontrolmapexpirationtimeseconds)
-or older.
+!! This option is not supported starting from the Mender client version 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
+
+The expire time in seconds for an update control map. The value provides the
+time window for an application using the update control _dbus API_ to refresh
+the update control map before it enters the expired state. _Defaults to
+2*UpdatePollIntervalSeconds_
+<!-- TODO: Insert links to dbus api specs for update control -->
 
 #### UpdateControlMapBootExpirationTimeSeconds
 
-This option is **deprecated** and does not exist anymore in Mender Client v4.0 and later. For
-earlier versions, please see [documentation for Mender
-3.6](/3.6/client-installation/configuration-file/configuration-options#updatecontrolmapbootexpirationtimeseconds)
-or older.
+!! This option is not supported starting from the Mender client version 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
+
+The maximum expire time in seconds after startup for an update control map. The
+value provides an upper bound on the update control map [expire
+time](#UpdateControlMapExpirationTimeSeconds) after system startup. _Defaults to 600
+(10 minutes)_
 
 #### UpdateControlMapPollIntervalSeconds
 
-This option is **deprecated** and does not exist anymore in Mender Client v4.0 and later. For
-earlier versions, please see [documentation for Mender
-3.6](/3.6/client-installation/configuration-file/configuration-options#updatecontrolmappollintervalseconds)
-or older.
+!! This option is not supported starting from the Mender client version 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
+
+The polling interval at which the client checks for new control maps once the
+deployment has started to take place. This influences how quickly will the
+device respond to continuing after a pause. It can not be higher than
+_UpdateControlMapExpirationTimeSeconds / 2_. _Defaults to
+UpdatePollIntervalSeconds_.
 
 #### DaemonLogLevel
 

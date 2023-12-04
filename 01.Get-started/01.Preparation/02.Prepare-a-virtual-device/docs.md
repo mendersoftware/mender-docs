@@ -5,9 +5,7 @@ taxonomy:
     label: tutorial
 ---
 
-!!! Skip this section if you have already completed [Prepare a Raspberry Pi device](../01.Prepare-a-Raspberry-Pi-device/docs.md)
-
-This tutorial we help you prepare your workstation to be able to run a virtual
+In this tutorial, we help you prepare your workstation to be able to run a virtual
 device (QEMU) with Mender integrated which will connect to hosted Mender and
 simulate a physical device.
 
@@ -44,7 +42,9 @@ In the dialog box from above, click **Copy to clipboard** to copy the code. Now
 go to the command line on your workstation, and **paste** the code e.g. by
 right-clicking in the terminal and selecting *Paste*, followed by *Enter*.
 
-This downloads the virtual device images and starts it.
+This downloads the virtual device images and starts it. 
+
+! This process could take several minutes depending on your workstation capabilities.
 
 ## Step 4 - Accept the device
 
@@ -55,38 +55,23 @@ will appear on the Device groups tab on the left of Pending.
 
 ![connecting a device](Image_3.png)
 
+Before continuing to following the UI tooltips, please complete the step below.
 
 ## Step 5 - Get the IP address of the virtual device
 
-You will need the the IP address of the virtual device in later stages of the
+You will need the IP address of the virtual device in later stages of the
 documentation.
 
 You should execute below commands in a terminal window on your workstation while
 the virtual device is running.
 
-List running containers:
-
-```bash
-docker ps
-```
-
-Example output:
-
->```bash
->$ docker ps
->CONTAINER ID        IMAGE                                      COMMAND             CREATED             STATUS              PORTS               NAMES
->d335f50101cb        mendersoftware/mender-client-qemu:latest   "./entrypoint.sh"   6 minutes ago       Up 6 minutes        8822/tcp            relaxed_leakey
->```
-
 Save the `CONTAINER ID` in a shell variable:
 
 ```bash
-CONTAINER_ID="d335f50101cb"
+CONTAINER_ID=$(docker ps  | grep 'mender-client-qemu' | awk '{print $1}')
 ```
 
-!!! Replace above value with actual value that you get.
-
-Find the IP address of the virtual device (we will save it a shell variable):
+Find the IP address of the virtual device (we will save it a in shell variable):
 
 ```bash
 IP_ADDRESS=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "${CONTAINER_ID}")
@@ -101,4 +86,4 @@ Example output:
 
 ## Next step
 
-Proceed to [Deploy an application update](../../02.Deploy-an-application-update/docs.md).
+Please proceed to [Deploy an application update](../../02.Deploy-an-application-update/docs.md) to keep on following the UI steps.

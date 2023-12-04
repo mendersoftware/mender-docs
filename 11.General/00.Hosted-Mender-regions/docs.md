@@ -4,8 +4,7 @@ taxonomy:
     category: docs
 ---
 
-Hosted Mender is available in multiple regions you can choose from, depending on your data processing and compliance needs. Each instance is independent of the others and provides all the Mender features.
-
+Hosted Mender is available in Europe and the US. Each instance is fully isolated and provides all the Mender features. Artifacts are distributed globally using Cloudflare's global network to ensure low latency. However, European Enterprise customers can contact sales to restrict the Artifact location to only reside within Europe.
 
 ## Regions
 
