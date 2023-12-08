@@ -19,16 +19,12 @@ If you have followed the [get started tutorial](../01.Preparation/docs.md) to pr
 
 Verify installed dependencies on your device with:
 
- ```bash
- mender --version && mender-monitorctl --version
- ```
->```text
->3.5.1	runtime: go1.17.13
->Mender Monitoring control utility v1.3.0
->
->Usage: mender-monitorctl command [options]
->Use "mender-monitorctl help" for more information about available commands and options.
->```
+```bash
+mender --version && mender-monitorctl --version
+```
+
+The output should give no errors and print the version of both tools.
+
 
 Check installed monitoring subsystems with:
 
