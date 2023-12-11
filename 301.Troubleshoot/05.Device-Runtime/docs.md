@@ -38,7 +38,7 @@ For the Raspberry Pi, please see
 for more details.
 
 On Windows, the following applications can be used to access the serial console:
-* [https://ttssh2.osdn.jp/index.html.en](https://ttssh2.osdn.jp/index.html.en?target=_blank)
+* [https://teratermproject.github.io/index-en.html](https://teratermproject.github.io/index-en.html?target=_blank)
 * [https://putty.org/](https://putty.org/?target=_blank)
 
 On MacOS, [this web page](https://pbxbook.com/other/mac-ser.html?target=_blank)
