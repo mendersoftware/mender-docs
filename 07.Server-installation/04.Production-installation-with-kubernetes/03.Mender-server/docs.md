@@ -108,7 +108,7 @@ useradm:
 $(cat useradm.key | sed -e 's/^/      /g')
 EOF
 
-helm upgrade --install mender mender/mender -f mender-3.6.3.yml
+helm upgrade --install mender mender/mender --version 5.3.0 -f mender-3.6.3.yml
 ```
 [/ui-tab]
 [ui-tab title="Enterprise"]
