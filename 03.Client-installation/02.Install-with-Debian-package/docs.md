@@ -81,7 +81,7 @@ sudo mender setup \
             --demo-polling
 ```
 [/ui-tab]
-[ui-tab title="[Enterprise](https://mender.io/products/mender-enterprise?target=_blank) server"]
+[ui-tab title="Enterprise server"]
 Set the following variables:
 
 <!--AUTOMATION: ignore -->
