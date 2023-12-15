@@ -16,7 +16,7 @@ Please see the sub sections for [GRUB](01.GRUB/docs.md) and [U-Boot](02.U-Boot/d
 
 ## Compatibility
 
-Below is a table listing the bootloader support using various device types. All versions of the Mender client software will work with either of the two bootloaders.
+Below is a table listing the bootloader support using various device types. All versions of the Mender client software, as well as the rootfs-image update modules, will work with either of the two bootloaders.
 
 | *Feature*                                | *Supported*  |
 |------------------------------------------|--------------|

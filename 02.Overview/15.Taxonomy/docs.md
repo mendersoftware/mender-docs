@@ -67,10 +67,8 @@ documentation on device [Identity](../07.Identity/docs.md) for more information.
 hardware and software. See the documentation on [Artifact](../03.Artifact/docs.md)
 for more information.
 
-* _Mender Client_ - A user space application installing updates to a device
-it is running on. It uses the Mender Server-side API to connect to the Mender
-Server to authenticate, get the artifacts, report inventory, log the progress
-and status of the installations.
+* _Mender Client_ - A collective term for the Mender Update service, which consists
+of two service components, "mender-auth" and "mender-update".
 
 * _Mender Connect_ - A user space application providing the add-ons
 framework, as well as implementation of particular add-ons which you can enable
@@ -87,6 +85,17 @@ ability to understand and serve client requests locally.
 
 * _Mender Server_ - An application implementing the Server-side Mender API, and the
 web UI, providing updates to devices.
+
+* _Mender-auth_, _Mender-auth Client_ - A user space application running on a
+device which provides authentication to the Mender Server for other
+applications. This application is required by other applications that
+communicate with the Mender Server.
+
+* _Mender-update_, _Mender-update Client_ - A user space application installing
+updates to a device it is running on. It uses the Mender Server-side API to
+connect to the Mender Server to authenticate, get the artifacts, report
+inventory, log the progress and status of the installations. Requires
+mender-auth to be running.
 
 * _Operating System update_ - An update which replaces the operating system's filesystem
 thanks to the A/B partitioning schema. The Mender Client writes a new filesystem image
@@ -115,6 +124,10 @@ receive any updates.
 * _Release_ - A set of one or more Artifacts with the same Artifact name. Used
 by the Mender Server to assign the right Artifact to a given Device based on
 software and hardware compatibility.
+
+* _Rootfs-image update module_ - One of the standard extensions to the
+Mender-update client, which offers full root filesystem updates using a dual
+partition setup.
 
 * _Server-side API_ - The collection of HTTP-based APIs exposed by the Mender
 Server. They include management end-points, consumed by users and the UI,

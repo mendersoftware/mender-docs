@@ -22,6 +22,6 @@ of the deployment compared to Operating System updates and can extend the Mender
 
 ## Install a new Update Module
 
-In order to install an Update Module to extend the capabilities of the Mender client, you simply need to place it in _/usr/share/mender/modules/v3_ and ensure that it is executable.
+In order to install an Update Module to extend the capabilities of the Mender client, you simply need to place it in `/usr/share/mender/modules/v3` and ensure that it is executable.
 
 You can find existing Update Modules in the [Update Module category of the Mender Hub community forums](https://hub.mender.io/c/update-modules?target=_blank).

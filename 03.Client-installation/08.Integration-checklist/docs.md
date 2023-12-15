@@ -30,21 +30,29 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 !!! If full rootfs updates are not required, this is the only validation needed.
 
-The Mender Client consists of a number of components and configuration files, with the `mender-client` userspace application being the core responsible for executing the updates.
-By default, it runs as a systemd service.
+The Mender Client consists of a number of components and configuration files, with the `mender-auth` userspace application being the responsible for authentication against the Mender Server, and mender-update responsible for executing the updates.
+By default, both run as systemd services.
 To verify the correct installation of the service, run the following commands and confirm the output:
 
 ```
-systemctl is-active mender-client
+systemctl is-active mender-authd
 # Output:
 # active
 
-systemctl is-enabled mender-client
+systemctl is-enabled mender-authd
+# Output:
+# enabled
+
+systemctl is-active mender-updated
+# Output:
+# active
+
+systemctl is-enabled mender-updated
 # Output:
 # enabled
 ```
 
-In the remaining verification, we will manually be executing similar steps to what the Mender Client usually does in regular operations to communicate with the bootloader.
+In the remaining verification, we will manually be executing similar steps to what the rootfs-image update module usually does in regular operations to communicate with the bootloader.
 
 To avoid the Mender Client interfering with the manual verification it is recommended to disconnect the device from the internet.
 
@@ -52,9 +60,9 @@ To avoid the Mender Client interfering with the manual verification it is recomm
 ## Bootloader environment tools are present on the device
 
 Verify which of the two commands to manipulate the bootloader environment are executable and available in the path. 
-These are used by the `mender-client` to set the bootloader environment.
+These are used by the `rootfs-image` update module to set the bootloader environment.
 
-The executables which the Mender Client expects are bootloader specific. By default, `GRUB` and `uboot` implementations are supported.
+The executables which the rootfs-image update module expects are bootloader specific. By default, `GRUB` and `uboot` implementations are supported.
 Please run the commands below:
 
 * For GRUB:
@@ -144,7 +152,7 @@ dev=$(mount | grep 'on / ' | awk '{print $1}') && echo "$dev $(blkid -s PARTUUID
 
 
 At the end of this step, we need to identify the partition numbering.
-This is because mender-client passes only partition numbers to the bootloader and not the whole path as seen from `mender.conf`.
+This is because the rootfs-image update module passes only partition numbers to the bootloader and not the whole path as seen from `mender.conf`.
 
 
 **Partitions as device files**
@@ -215,7 +223,7 @@ reboot
 
 In the [Mender state machine workflow](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md#the-state-machine-workflow) the transitional state for the bootloader starts with `ArtifactReboot` and ends with either `ArtifactCommit` or `ArtifactFailure`.
 
-During this verification process, it is expected that the bootloader's environment variables will experience changes - either by the Mender Client or the bootloader itself - and the bootloader is expected to enact conditional logic. For comparison, in the non-transition state, the bootloader's variables remain unchanged. 
+During this verification process, it is expected that the bootloader's environment variables will experience changes - either by the rootfs-image update module or the bootloader itself - and the bootloader is expected to enact conditional logic. For comparison, in the non-transition state, the bootloader's variables remain unchanged. 
 
 To notify the bootloader about the switch to the transitional state, we will set the following variables:
 
@@ -227,7 +235,7 @@ grub-mender-grubenv-set bootcount 0
 Setting `upgrade_available` to `1` has multiple side effects:
 
 * The bootloader will increase the `bootcount` by 1 for every new boot attempt
-* The Mender Client and the bootloader know there is a partitioning switch taking place
+* The rootfs-image update module and the bootloader know there is a partitioning switch taking place
     * They can make decisions on when to rollback or commit
 * Returning the `upgrade_available` to `0` marks the end of transition state
 

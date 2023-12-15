@@ -8,15 +8,16 @@ taxonomy:
 `mender-connect` is a daemon responsible for handling bidirectional
 (websocket) communication with the Mender Server. The daemon is responsible for
 implementing a range of troubleshooting features to the device as well as
-several enhancement to the [mender-client](../../03.Client-installation/01.Overview/docs.md).
+several enhancement to the [Mender
+client](../../03.Client-installation/01.Overview/docs.md).
 
-Mender Connect is loosely coupled with the Mender Client. The main information passed between
-`mender-client` and `mender-connect` is the device authorization status. Since only accepted
-devices can interact with the Mender Server, the Mender Client passes over DBus
-the authorization token which Mender Connect uses to establish
-a [Websocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) connection
-to the server. We use the well-known and well-defined open APIs, which makes the solution flexible
-and portable.
+Mender Connect is loosely coupled with the Mender Auth Client. The main information passed between
+`mender-auth` and `mender-connect` is the device authorization status. Since only accepted devices
+can interact with the Mender Server, the Mender-auth client passes the authorization token over DBus
+which Mender Connect uses to establish a
+[Websocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) connection to the
+server. We use the well-known and well-defined open APIs, which makes the solution flexible and
+portable.
 
 ## Installation
 
@@ -27,9 +28,6 @@ Please refer to the following sections for the Mender Connect installation:
 
 After installation, please refer to the [add-ons subsections](../../09.Add-ons/chapter.md) for the configuration options,
 including the enabling and disabling of the features.
-
-Please note, that you have to enable DBus in the Mender client for most of the add-ons
-to function.
 
 ## Configuration
 
@@ -97,7 +95,7 @@ mender-connect along with the default values. The default configuration path is
 
 <!--AUTOVERSION: "version `%`"/ignore-->
 ! `Servers` and `ServerURL` are deprecated and unused since `mender-connect`
-! version `1.0.0` - the values are automatically configured by the `mender-client`.
+! version `1.0.0` - the values are automatically configured by `mender-auth`.
 
 #### Limits configuration
 There are certain features that you would want to keep under finer

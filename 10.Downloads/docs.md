@@ -106,12 +106,18 @@ See [Client installation](../03.Client-installation/chapter.md) for more informa
 about how to configure and use the Mender client.
 
 The `mender-client` Debian package installs:
-* the binary,
-* a systemd service,
-* the default [identity script](../03.Client-installation/03.Identity/docs.md),
+* a `mender-auth` package, for server authentication
+* a `mender-update` package, for doing updates
+* two binaries, `mender-auth` and `mender-update`
+* two systemd services, `mender-authd` and `mender-updated`
+* the default [identity script](../03.Client-installation/03.Identity/docs.md)
 * the default [inventory scripts](../03.Client-installation/04.Inventory/docs.md)
 * and the default [update modules](../03.Client-installation/05.Use-an-updatemodule/docs.md)
-(and its generators).
+  (and its generators).
+
+!!! The installation was slightly different for Mender clients 3.x and
+!!! older. Please refer to the Mender Product 3.6 documentation for details
+!!! about this.
 
 
 ### Installation methods
@@ -167,9 +173,8 @@ sudo bash get-mender.sh mender-client
 
 ##### Upgrading Mender after the express installation
 
-After installing the Mender client with [get.mender.io](https://get.mender.io),
-the `mender-client` package is maintained by the package manager. To upgrade the
-Mender client, simply run
+After installing the Mender clients with [get.mender.io](https://get.mender.io),
+the packages are maintained by the package manager. To upgrade them, simply run
 
 <!--AUTOMATION: ignore -->
 ```bash
@@ -177,15 +182,22 @@ sudo apt-get update
 sudo apt-get upgrade
 ```
 
-!!! If you customize any of the installed files from `mender-client` (for example modifying identity
-!!! or inventory scripts), then please make sure to also save your work in an additional place.
-!!! Files at paths that match the defaults shipped by the package will be overwritten when the
-!!! client is upgraded or re-installed, so you might lose your work if you only modified the
-!!! original files.
+!!! If you customize any of the installed files from any of the Mender packages (for example
+!!! modifying identity or inventory scripts), then please make sure to also save your work in an
+!!! additional place.  Files at paths that match the defaults shipped by the packages will be
+!!! overwritten when they are upgraded or re-installed, so you might lose your work if you only
+!!! modified the original files.
 
 
-!!! To prevent the Mender client from upgrading when upgrading the rest of the
-!!! system, mark it to be held with `sudo apt-mark hold mender-client`.
+To prevent the Mender clients from upgrading when upgrading the rest of the
+system, mark the packages to be held with:
+
+<!--AUTOMATION: ignore -->
+```bash
+sudo apt-mark hold mender-auth
+sudo apt-mark hold mender-update
+sudo apt-mark hold mender-client
+```
 
 
 !!! Updating mender this way doesn't provide a rollback mechanism in case of issues.
@@ -305,14 +317,21 @@ sudo apt-get install mender-client
 <!-- AUTOMATION: execute=apt-get update -->
 <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y mender-client -->
 
-!!! To prevent the Mender client from upgrading when upgrading the rest of the
-!!! system, mark it to be held with `sudo apt-mark hold mender-client`.
+ To prevent the Mender clients from upgrading when upgrading the rest of the
+system, mark the packages to be held with:
+
+<!--AUTOMATION: ignore -->
+```bash
+sudo apt-mark hold mender-auth
+sudo apt-mark hold mender-update
+sudo apt-mark hold mender-client
+```
 
 ## Mender add-ons
 
 ### Requirements
 
-You need two applications for any add-on to function: the [Mender Client](../02.Overview/15.Taxonomy/docs.md)
+You need two applications for any add-on to function: the [Mender-auth Client](../02.Overview/15.Taxonomy/docs.md)
 and [Mender Connect](../02.Overview/15.Taxonomy/docs.md). If you have used the [express
 installation](#express-installation) script, you already have both installed.
 
@@ -326,7 +345,7 @@ and [Yocto projects](../05.Operating-System-updates-Yocto-Project/05.Customize-M
 for the installation in a Yocto Project environment.
 
 To install `mender-connect` using Mender APT repository, follow the instructions
-for [installing `mender-client` using the APT
+for [installing Mender clients using the APT
 repository](#install-using-the-apt-repository). After the final step, install
 `mender-connect` using the package manager:
 
@@ -336,17 +355,17 @@ sudo apt-get install mender-connect
 
 ### Remote Terminal add-on
 
-The Remote Terminal does not require any items installed other than the Mender Client
+The Remote Terminal does not require any items installed other than the Mender-auth Client
 and Mender Connect.
 
 ### File transfer add-on
 
-The File Transfer does not require any items installed other than the Mender Client
+The File Transfer does not require any items installed other than the Mender-auth Client
 and Mender Connect.
 
 ### Mender Configure add-on
 
-Mender offers a configure extension (`mender-configure`) to the Mender client
+Mender offers a configure extension (`mender-configure`) to the Mender-update client
 that enables managing device configuration. See the
 [add-on page for Mender Configure](../09.Add-ons/10.Configure/docs.md) for
 more information.
@@ -357,7 +376,7 @@ Configure](../09.Add-ons/10.Configure/docs.md) for more information for other
 installation alternatives.
 
 To install `mender-configure` using Mender APT repository, follow the
-instructions for [installing `mender-client` using the APT
+instructions for [installing Mender clients using the APT
 repository](#install-using-the-apt-repository). After the final step, install
 `mender-configure` using the package manager:
 

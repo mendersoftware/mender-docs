@@ -7,7 +7,8 @@ taxonomy:
 ## Installation types
 
 The Mender client runs on the device in order to install software updates.
-Therefore, at minimum you need to install the client binary on the device
+It consists of two binaries, mender-auth and mender-update.
+Therefore, at minimum you need to install the client binaries on the device
 and it must support the device OS and hardware architecture. This allows
 you to deploy application updates by using Update Modules.
 
