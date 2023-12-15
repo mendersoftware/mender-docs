@@ -19,25 +19,28 @@ For an explanation of the difference between *managed* and *standalone* deployme
 ## Setting Mender up for standalone mode
 
 If you would like to run Mender in *standalone* mode, you
-must make sure that the Mender client does *not run as a daemon*. In most cases this
-will entail disabling or removing any `systemd` unit that starts the Mender client. If you want to check if Mender is running as a daemon, you can try the following command:
+must make sure that the Mender-update client does *not run as a daemon*. In most cases this
+will entail disabling or removing any `systemd` unit that starts the Mender-update client. If you want to check if Mender is running as a daemon, you can try the following command:
 ```bash
-pi@raspberrypi:~$ sudo systemctl status mender-client
-● mender-client.service - Mender OTA update service
-   Loaded: loaded (/lib/systemd/system/mender-client.service; enabled; vendor preset: enabled)
+pi@raspberrypi:~$ sudo systemctl status mender-updated
+● mender-updated.service - Mender OTA update service
+   Loaded: loaded (/lib/systemd/system/mender-updated.service; enabled; vendor preset: enabled)
    Active: active (running) since Thu 2020-07-23 03:24:54 BST; 16h ago
  Main PID: 320 (mender)
     Tasks: 9 (limit: 1012)
    Memory: 7.5M
-   CGroup: /system.slice/mender-client.service
-           └─320 /usr/bin/mender daemon
+   CGroup: /system.slice/mender-updated.service
+           └─320 /usr/bin/mender-update daemon
 ```
+
+<!--AUTOVERSION: "Before Mender-update client %"/ignore-->
+!!! Before Mender-update client 4.0.0, the service was called `mender-client`. Please replace `mender-updated` with `mender-client` in the snippets if you are using such a version.
 
 The status reported as active indicates that in order to use standalone mode you have to stop and disable Mender running as a daemon.
 ```bash
-pi@raspberrypi:~$ sudo systemctl stop mender-client
-pi@raspberrypi:~$ sudo systemctl disable mender-client
-pi@raspberrypi:~$ sudo systemctl mask mender-client
+pi@raspberrypi:~$ sudo systemctl stop mender-updated
+pi@raspberrypi:~$ sudo systemctl disable mender-updated
+pi@raspberrypi:~$ sudo systemctl mask mender-updated
 ```
 
 
@@ -47,8 +50,11 @@ To deploy the new Artifact to your device, run the following command in the
 device terminal:
 
 ```bash
-mender install <URI>
+mender-update install <URI>
 ```
+
+<!--AUTOVERSION: "Before Mender-update client %"/ignore-->
+!!! Before Mender-update client 4.0.0, the command was just called `mender`. Please replace `mender-update` with `mender` in the snippet above if you are using such a version. This applies to the snippets below as well.
 
 `<URI>` can be any type of file-based storage or an HTTP/HTTPS URL.
 For example, if you are updating from a USB stick, you could use `/mnt/usb1/release1.mender`.
@@ -61,9 +67,9 @@ To use HTTPS, simply replace it with a URL like `https://fileserver.example.com/
 If you are happy with the deployment, you can make it permanent by running the following command in your device terminal:
 
 ```bash
-mender commit
+mender-update commit
 ```
 
 By running this command, Mender will mark the update as successful and permanent.
 
-To deploy another update, simply run `mender install <URI>` again, then reboot and commit.
+To deploy another update, simply run `mender-update install <URI>` again, then reboot and commit.

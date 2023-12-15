@@ -55,7 +55,7 @@ authentication data.
 
 * _Device-side API_ - The collection of APIs exposed by the Mender components
 running on the device. The Device-side API constitutes the only public programmatic
-interface of the Mender client. It is a thin layer that receives messages over D-Bus,
+interface of the Mender clients. It is a thin layer that receives messages over D-Bus,
 processes them, transmits them to the Mender client, receives the results
 from the client, and transmits a response on the D-Bus.
 
@@ -67,14 +67,12 @@ documentation on device [Identity](../07.Identity/docs.md) for more information.
 hardware and software. See the documentation on [Artifact](../03.Artifact/docs.md)
 for more information.
 
-* _Mender Client_ - A user space application installing updates to a device
-it is running on. It uses the Mender Server-side API to connect to the Mender
-Server to authenticate, get the artifacts, report inventory, log the progress
-and status of the installations.
+* _Mender Client_ - A collective term for one of the core Mender device
+applications, _Mender-auth_ or _Mender-update_.
 
 * _Mender Connect_ - A user space application providing the add-ons
 framework, as well as implementation of particular add-ons which you can enable
-or disable as per configuration. It integrates with the Mender Client over
+or disable as per configuration. It integrates with the Mender-auth over
 a well-defined and portable Device-side API.
 
 * _Mender Hub Integration(s)_ - A contribution on
@@ -88,10 +86,21 @@ ability to understand and serve client requests locally.
 * _Mender Server_ - An application implementing the Server-side Mender API, and the
 web UI, providing updates to devices.
 
+* _Mender-auth_, _Mender-auth Client_ - A user space application running on a
+device which provides authentication to the Mender Server for other
+applications. This application is required by other applications that
+communicate with the Mender Server.
+
+* _Mender-update_, _Mender-update Client_ - A user space application installing
+updates to a device it is running on. It uses the Mender Server-side API to
+connect to the Mender Server to authenticate, get the artifacts, report
+inventory, log the progress and status of the installations. Requires
+mender-auth to be running.
+
 * _Operating System update_ - An update which replaces the operating system's filesystem
-thanks to the A/B partitioning schema. The Mender Client writes a new filesystem image
-to the inactive partition and updates the bootloader configuration to flip the active and
-inactive partition.
+thanks to the A/B partitioning schema. The Mender-update Client uses the rootfs-image
+update module to write a new filesystem image to the inactive partition and updates the
+bootloader configuration to flip the active and inactive partition.
 
 * _Organization_ - A single customer environment in the Mender Server. Also
 known as a Tenant. Note that multi-tenancy is only supported in Mender
@@ -116,6 +125,10 @@ receive any updates.
 by the Mender Server to assign the right Artifact to a given Device based on
 software and hardware compatibility.
 
+* _Rootfs-image update module_ - One of the standard extensions to the
+Mender-update client, which offers full root filesystem updates using a dual
+partition setup.
+
 * _Server-side API_ - The collection of HTTP-based APIs exposed by the Mender
 Server. They include management end-points, consumed by users and the UI,
 device end-points, consumed by the Mender components running on the devices,
@@ -129,5 +142,5 @@ in the asymmetric encryption model.
 logical entity connected to a [Mender Gateway](../../01.Get-started/06.Mender-Gateway/docs.md)
 instance. Devices in a System usually require coordination during the update process.
 
-* _Update Module_ - An extension to the Mender client for supporting a new type
+* _Update Module_ - An extension to the Mender-update client for supporting a new type
 software update, such as a package manager, container or bootloader.

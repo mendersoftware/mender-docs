@@ -6,8 +6,8 @@ taxonomy:
 ---
 
 The goal for Mender is to provide a robust and secure software update process.
-An important part of this is to give the Mender Client the ability to verify that the update comes from a trusted source. One way of achieving this is to sign the Artifact using a protected private key, which you store and use on a Signing system. The Mender Client can then verify it
-using the corresponding public key. If the signature verification check passes, the client considers the update to come from a trusted source and continues. Otherwise the Mender Client refuses to proceed with the update and raises an error.
+An important part of this is to give the Mender-update Client the ability to verify that the update comes from a trusted source. One way of achieving this is to sign the Artifact using a protected private key, which you store and use on a Signing system. The Mender Client can then verify it
+using the corresponding public key. If the signature verification check passes, the client considers the update to come from a trusted source and continues. Otherwise the Mender-update Client refuses to proceed with the update and raises an error.
 
 ## Signature management flow
 
@@ -15,18 +15,18 @@ The following diagram shows the high level flow of creating and managing keys an
 
 ![Mender signature management flow](mender-signature-management-flow.png)
 
-The process begins with provisioning a device with the public verification key, and configuring the Mender Client to use the key (with the `ArtifactVerifyKey(s)` [configuration option](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#ArtifactVerifyKey)). After an Artifact is built, it is signed by the Signing system.
+The process begins with provisioning a device with the public verification key, and configuring the Mender-update Client to use the key (with the `ArtifactVerifyKey(s)` [configuration option](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#ArtifactVerifyKey)). After an Artifact is built, it is signed by the Signing system.
 
 !!! Although it is convenient and possible to use the Build system as the Signing system, this lowers the security as unauthorized access to the private signing key is made easier for potential attackers (e.g. if the Build system is compromised). The best practice is to only sign Artifacts on an offline system, ideally as a manual operation after careful inspection of the Artifact.
 
-After you have created and signed the Artifact you can make it available to the devices running the Mender Client by uploading it to the Mender Server.
-During the update installation process, the Mender Client will verify the Artifact using the corresponding public key(s).
+After you have created and signed the Artifact you can make it available to the devices running the Mender-update Client by uploading it to the Mender Server.
+During the update installation process, the Mender-update Client will verify the Artifact using the corresponding public key(s).
 The Artifact will only be installed if the verification is successful.
-If the `ArtifactVerifyKey(s)` option is set and Artifacts are not signed or the verification fails, the Mender Client will abort the update process and report an error to the Mender Server.
+If the `ArtifactVerifyKey(s)` option is set and Artifacts are not signed or the verification fails, the Mender-update Client will abort the update process and report an error to the Mender Server.
 
 Multiple keys can be used with the `ArtifactVerifyKeys` option, in which case the first key that successfully verifies the signature will be used. This is useful for rotating keys or supporting signed artifacts from different sources.
 
-! If the Mender Client is configured to enable signature verification (through the `ArtifactVerifyKey(s)` option), it will reject any unsigned Artifacts. This is necessary because otherwise an attacker could simply inject unsigned Artifacts to bypass the signature verification.
+! If the Mender-update Client is configured to enable signature verification (through the `ArtifactVerifyKey(s)` option), it will reject any unsigned Artifacts. This is necessary because otherwise an attacker could simply inject unsigned Artifacts to bypass the signature verification.
 
 ## Supported signing algorithms
 
@@ -107,9 +107,9 @@ After you create a signed Artifact, you can verify the signature with `mender-ar
 mender-artifact validate artifact-signed.mender -k public.key
 ```
 
-## Enable Mender Client signature verification
+## Enable Mender-update Client signature verification
 
-Signature verification is enabled on the Mender client using the [ArtifactVerifyKey(s)](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#ArtifactVerifykey) configuration option.
+Signature verification is enabled on the Mender-update client using the [ArtifactVerifyKey(s)](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#ArtifactVerifykey) configuration option.
 
 For OS specific instructions on how to install and enable verification keys, visit:
 

@@ -152,7 +152,7 @@ customize the files that are included in the output images.
 
 One example of a overlay-rootfs addition can be found in the
 `rootfs-overlay-demo` directory, which, after running the server setup script
-(see [Configure the Mender client server configuration](../docs.md#configure-the-mender-client-server-configuration))
+(see [Configure the Mender-auth server configuration](../docs.md#configure-the-mender-auth-server-configuration))
 contains:
 
 ```bash

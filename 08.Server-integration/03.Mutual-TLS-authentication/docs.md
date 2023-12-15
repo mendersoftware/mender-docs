@@ -208,7 +208,7 @@ You need to repeat the generation and signing of the client certificate for each
 
 ## Set up the mTLS edge proxy to authenticate devices using mTLS
 
-The mTLS ambassador acts as an edge proxy running in front of your Mender Server. The Mender client running on the devices connects to it, providing its client TLS certificate and establishing a mutual TLS authentication. If the client certificate's signature matches the certification authority recognized by the mTLS ambassador, the Mender Server will automatically accept the device. The edge proxy transparently forwards all the requests from the Mender client to the Mender Server. From the client's perspective, it provides the same API end-points as the upstream Mender Server.
+The mTLS ambassador acts as an edge proxy running in front of your Mender Server. The Mender-auth client running on the devices connects to it, providing its client TLS certificate and establishing a mutual TLS authentication. If the client certificate's signature matches the certification authority recognized by the mTLS ambassador, the Mender Server will automatically accept the device. The edge proxy transparently forwards all the requests from the Mender client to the Mender Server. From the client's perspective, it provides the same API end-points as the upstream Mender Server.
 
 The mTLS ambassador is distributed as a Docker image and can be run on a Docker host, using docker-compose or on Kubernetes.
 

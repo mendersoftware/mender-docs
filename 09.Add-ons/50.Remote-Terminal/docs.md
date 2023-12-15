@@ -14,7 +14,7 @@ device by navigating to Troubleshooting in the device information, and clicking
 
 All you need is 
 [mender-connect](../../10.Downloads/docs.md#remote-terminal-add-on)
-configured and running alongside the Mender Client, and you can
+configured and running alongside the Mender-auth, and you can
 get a live terminal where you can freely type commands.
 
 ![connected-termainl](connected-remote-terminal.png)

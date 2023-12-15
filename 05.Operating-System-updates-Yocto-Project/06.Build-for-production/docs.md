@@ -28,7 +28,7 @@ bitbake-layers remove-layer meta-mender-demo
 
 ## Configure polling intervals
 
-For security reasons, the Mender client does not require any open ports at the embedded device. Therefore, all communication between the Mender client and the server is always initiated by the client and it is important to configure the client so that the frequency of sending various requests to the server is reasonable for a given setup.
+For security reasons, the Mender clients do not require any open ports at the embedded device. Therefore, all communication between the Mender clients and the server is always initiated by the clients and it is important to configure the clients so that the frequency of sending various requests to the server is reasonable for a given setup.
 
 Please refer to [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md), for information on how to choose and how to set polling intervals.
 
@@ -113,12 +113,12 @@ Please note that setting up for production will require that you explicitly set 
 ## Artifact signing and verification keys
 
 The private key used for signing the Mender Artifact should be protected and kept outside of the build system,
-thus there are no extra steps needed to add it to any part of the build system, Mender Client nor Server.
+thus there are no extra steps needed to add it to any part of the build system, Mender Clients nor Server.
 
-The Mender Client requires having the public key stored on the device to verify
+The Mender-update Client requires having the public key stored on the device to verify
 the Mender Artifact signatures. The best way to include a public key in the
 client is to add it to your own layer. Set the name of the verification key to
-`artifact-verify-key.pem` and append it to `SRC_URI` of the `mender-client` application
+`artifact-verify-key.pem` and append it to `SRC_URI` of the `mender` recipe
 before building the Yocto client image. For example:
 
 ```bash
@@ -126,6 +126,10 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 SRC_URI:append = " file://artifact-verify-key.pem"
 ```
 
-Note that it is also possible (but not recommended) to use `local.conf`, by using [the same method as for client certificates](#using-local-conf), adding `pn-mender-client` to the variable names.
+<!--AUTOVERSION: "Mender client older than %"/ignore-->
+!!! Note that for Mender client older than 4.0.0, you must use the `mender-client` recipe instead of
+!!! the `mender` recipe.
+
+Note that it is also possible (but not recommended) to use `local.conf`, by using [the same method as for client certificates](#using-local-conf), adding `pn-mender` to the variable names.
 
 For more information about some alternate approaches please follow the [MENDER_ARTIFACT_VERIFY_KEY documentation](../99.Variables/docs.md#mender_artifact_verify_key).

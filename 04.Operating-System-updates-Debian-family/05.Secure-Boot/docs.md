@@ -22,12 +22,12 @@ the boot loader, the kernel, and device drivers.
 ## Support
 
 The signatures used by Secure Boot are embedded in the binary files themselves, and as such, are
-largely independent of the Mender client; it will just deploy whatever files the update contains,
-with or without Secure Boot signatures. This means that in general, if a system was Secure Boot
-compliant before introducing the Mender client, it will keep being compliant after introducing it.
+largely independent of the installed Mender components; it will just deploy whatever files the
+update contains, with or without Secure Boot signatures. This means that in general, if a system was
+Secure Boot compliant before introducing Mender, it will keep being compliant after introducing it.
 
 However, how you build the image affects whether it is Secure Boot compliant or not. Although the
-Mender client supports Secure Boot, not all of Mender's image building facilities do.
+Mender device components support Secure Boot, not all of Mender's image building facilities do.
 
 For the Debian family of operating system images,
 [mender-convert](https://github.com/mendersoftware/mender-convert?target=_blank) is the tool used to

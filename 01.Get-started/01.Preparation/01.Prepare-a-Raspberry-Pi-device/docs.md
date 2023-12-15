@@ -180,7 +180,7 @@ You should now see a command prompt similar to the following:
 <your-login>@raspberrypi:~ $
 ```
 
-Keep this terminal open as we will shortly use it to install the Mender client.
+Keep this terminal open as we will shortly use it to install the Mender clients.
 
 ## Step 3 - Login to hosted Mender
 
@@ -208,23 +208,23 @@ You need to specify one of the following:
 
 ![choose device type](Image_2.png)
 
-## Step 6 - Install the Mender client on the device
+## Step 6 - Install the Mender clients on the device
 
-Next we will install the Mender client on the device and connect it to the Mender
+Next we will install the Mender clients on the device and connect them to the Mender
 server.
 
 ![copy bash snippet](Image_3.png)
 
 In the dialog box from above, click **Copy to clipboard** to copy the code to
-install the Mender client. Now go to the command line on your device, and
+install the Mender clients. Now go to the command line on your device, and
 **paste** the code e.g. by right-clicking in the terminal and selecting *Paste*,
 followed by *Enter*.
 
-This downloads the Mender client on the device, configures and starts it.
+This downloads the Mender clients on the device, configures and starts them.
 
 ## Step 7 - Accept the device
 
-Once the client has started, the Mender client will attempt to connect to the
+Once the clients have started, the Mender clients will attempt to connect to the
 server and it will appear in your Pending devices tab in the server. Go ahead
 and **Accept** the pending device in the server. After accepting the device, it
 will appear on the Device groups tab on the left of Pending.

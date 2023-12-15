@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-We recommend that you first read the [overview on Identity](../../02.Overview/07.Identity) in order to familiarize yourself with the concept and how it is used in Mender. This tutorial is about how to change the identity scheme and attributes reported by the Mender client.
+We recommend that you first read the [overview on Identity](../../02.Overview/07.Identity) in order to familiarize yourself with the concept and how it is used in Mender. This tutorial is about how to change the identity scheme and attributes reported by the Mender-auth client.
 
 
 ##Example device identities
@@ -47,13 +47,13 @@ DeviceNumber=1800
 }
 ```
 
-The Mender client works with all of these schemes, but note that you should only use one of them.
-For example, it does not make much sense to use the serial number to identify some devices, but
-the MAC address to identify others.
+The Mender-auth client works with all of these schemes, but note that you should only use one of
+them. For example, it does not make much sense to use the serial number to identify some devices,
+but the MAC address to identify others.
 
 ## Implement a device identity executable
 
-The Mender client obtains the identity attributes by running an executable
+The Mender-auth client obtains the identity attributes by running an executable
 (e.g. binary or script) named `mender-device-identity` and parsing its standard output as the identity.
 The executable lives under `/usr/share/mender/identity/mender-device-identity`.
 
@@ -96,6 +96,6 @@ cpuid=1234123-ABC
 ## Example device identity executables
 
 <!--AUTOVERSION: "mender/tree/%"/mender-->
-Example scripts are provided in the [support directory in the Mender client source code repository](https://github.com/mendersoftware/mender/tree/master/support?target=_blank).
+Example scripts are provided in the [support directory in the "mender" source code repository](https://github.com/mendersoftware/mender/tree/master/support?target=_blank).
 
 

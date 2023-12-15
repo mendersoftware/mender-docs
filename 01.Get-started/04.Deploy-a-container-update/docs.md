@@ -192,6 +192,6 @@ There is an alternative option for deploying containerized updates:
 
 * *[Docker Compose Update Module](../../06.Artifact-creation/01.Create-an-Artifact/10.Docker-Compose)* provides an interface for deploying container workloads managed by Docker Compose.
 
-You can explore other types of updates available by extending the Mender client
+You can explore other types of updates available by extending the Mender-update client
 in the
 [Update Modules category in the Mender Hub community platform](https://hub.mender.io/c/update-modules/13?target=_blank).

@@ -50,7 +50,7 @@ You can find more details about the Mender Artifact format in the
 ### *Provides* and *Depends*
 
 In addition to *Version* information, an Artifact may contain additional
-*Provides* fields which the Mender client will store on the device during the
+*Provides* fields which the Mender-update client will store on the device during the
 Artifact installation.
 
 In addition to *Device types* information, an Artifact may contain additional
@@ -89,7 +89,7 @@ This drastically reduces storage requirements for the update process,
 improves performance and reduces flash wear.
 
 In cases where Artifact downloads are interrupted, e.g. due to unreliable wireless
-network connectivity, the Mender client will resume the download from where it was
+network connectivity, the Mender-update client will resume the download from where it was
 interrupted, using [HTTP range requests](https://tools.ietf.org/html/rfc7233?target=_blank).
 
 To enable streaming and control based on metadata, like aborting the download
@@ -105,7 +105,7 @@ by default.
 Mender is constantly evolving to adapt to the needs of its users, and the Mender
 Artifact format has several revisions. See the [Compatibility
 section](../14.Compatibility/docs.md) for an overview of which versions of the
-Mender Artifact format are supported by which Mender client versions.
+Mender Artifact format are supported by which Mender-update client versions.
 
 
 ## Work with Mender Artifacts

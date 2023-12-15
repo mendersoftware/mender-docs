@@ -11,13 +11,13 @@ Reporting the current software version running on a device can be challenging wh
 
 For these reasons, the Mender Artifact utility supports several options to customize the current software version's reporting, both for Operating System updates and Application updates via Update Modules.
 
-The software versioning information is stored in the Mender Artifacts as [*Provides* fields](../../02.Overview/03.Artifact/docs.md#provides-and-depends), and is automatically reported by the Mender Client as inventory data. See below for further details on how to override the default software versioning keys when generating the Artifacts.
+The software versioning information is stored in the Mender Artifacts as [*Provides* fields](../../02.Overview/03.Artifact/docs.md#provides-and-depends), and is automatically reported by the Mender-update Client as inventory data. See below for further details on how to override the default software versioning keys when generating the Artifacts.
 
 ![View client reported version information in UI](provides-illustrated.png)
 
 ## Operating System updates
 
-When creating an Operating System update, the Mender Artifact utility automatically generates a *Provides* entry using the key `rootfs-image.version` and the Artifact name as the value. By default, the Mender Client will automatically report such a key/value pair as inventory data.
+When creating an Operating System update, the Mender Artifact utility automatically generates a *Provides* entry using the key `rootfs-image.version` and the Artifact name as the value. By default, the Mender-update Client will automatically report such a key/value pair as inventory data.
 
 To override the value of the versioning key, which defaults to the Artifact's name, you can use the `--software-version` flag.
 
@@ -47,8 +47,11 @@ When installing the Artifact, the value above represents a stable version identi
 To see the version information after the Artifact is deployed, try to expand a device in the Device list of the Mender UI. Alternatively, run this command on the device to display it from the command line (this may also display some unrelated fields):
 
 ```bash
-mender show-provides
+mender-update show-provides
 ```
+
+<!--AUTOVERSION: "Before Mender-update client %"/ignore-->
+!!! Before Mender-update client 4.0.0, the command was called `mender`. Please replace `mender-update` with `mender` in the snippet above if you are using such a version.
 
 Example output:
 
@@ -65,7 +68,7 @@ We can see that the `rootfs-image.version` field has been updated to `1.0.0`.
 
 ## Application updates (Update modules)
 
-When creating Application updates using the Update modules, the Mender Artifact utility automatically generates a *Provides* entry using the key `rootfs-image.MODULE.version`, where the name of the Update modules replaces `MODULE`, and the Artifact name as value. By default, the Mender Client will automatically report such a key/value pair as inventory data.
+When creating Application updates using the Update modules, the Mender Artifact utility automatically generates a *Provides* entry using the key `rootfs-image.MODULE.version`, where the name of the Update modules replaces `MODULE`, and the Artifact name as value. By default, the Mender-update Client will automatically report such a key/value pair as inventory data.
 
 It is possible to customize this behaviour overriding the base key (`rootfs-image`) with a custom one using the `--software-filesystem` flag of `mender-artifact`. It is also possible to override the software name, which defaults to the name of the Update module, using the `--software-name` flag. If provided, the generated software version key will be `rootfs-image.NAME.version`. Additionally, to override the value of the versioning key, which defaults to the Artifact's name, you can use the `--software-version` flag.
 
@@ -86,7 +89,7 @@ The command above will generate the following versioning key/value pair:
 rootfs-image.script.version=v2020.10
 ```
 
-To have the Mender Client report a custom name for the software you are installing, you can override the software name in the versioning key using the `--software-name" flag as follows:
+To have the Mender-update Client report a custom name for the software you are installing, you can override the software name in the versioning key using the `--software-name" flag as follows:
 
 <!--AUTOVERSION: "software-version %"/ignore-->
 ```bash

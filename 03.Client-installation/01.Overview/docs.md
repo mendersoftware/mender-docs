@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-The Mender client is a user space Linux executable with one main purpose: to
+The Mender-update client is a user space Linux executable with one main purpose: to
 install software updates to the device it is running on. It can operate in
 [managed or standalone
 mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
@@ -29,7 +29,7 @@ If your interest is in *application updates* only, you can easily install
 Mender on top of an existing Linux OS as described in the [Debian
 package](../02.Install-with-Debian-package/docs.md) chapter.
 
-For a more general overview of where the Mender client fits in as part of the
+For a more general overview of where the Mender-update client fits in as part of the
 deployment process, please see the [Architecture
 overview](../../02.Overview/01.Introduction/docs.md).
 

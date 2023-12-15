@@ -47,7 +47,7 @@ support](../02.Board-integration/02.Bootloader-support/docs.md) for more informa
 ## Kernel support
 While Mender itself does not have any specific kernel requirements beyond what a normal Linux kernel provides, it relies on systemd, which does have one such requirement: The `CONFIG_FHANDLE` feature must be enabled in the kernel. The symptom if this feature is unavailable is that systemd hangs during boot looking for device files.
 
-If you [run the Mender client in standalone mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation), you can avoid this dependency by [disabling Mender as a system service](../05.Customize-Mender/docs.md#disabling-mender-as-a-system-service).
+If you [run the Mender-update client in standalone mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation), you can avoid this dependency by [disabling Mender as a system service](../05.Customize-Mender/docs.md#disabling-mender-as-a-system-service).
 
 
 ## Partition layout
@@ -67,7 +67,7 @@ The persistent data partition stores data requiring preservation through Operati
 
 The following figure illustrates an example partition layout:
 
-![Mender client partition layout](mender_client_partition_layout.png)
+![Mender partition layout](mender_partition_layout.png)
 
 
 ## Correct clock

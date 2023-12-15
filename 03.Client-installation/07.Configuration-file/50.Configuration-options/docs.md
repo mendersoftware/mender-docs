@@ -19,7 +19,7 @@ There are two options for specifying verification keys:
 
 Only one of `ArtifactVerifyKey` or `ArtifactVerifyKeys` may be specified.
 
-When set, the Mender client verifies the following:
+When set, the Mender-update client verifies the following:
 
 * All Artifact installs contain a signature. If a signature is not provided,
     then the client rejects the update.
@@ -162,7 +162,7 @@ is sent. The default is 4 hours.
 
 #### RetryPollCount
 
-The maximum number of tries that the Mender client performs when contacting
+The maximum number of tries that the Mender-update client performs when contacting
 the Mender Server.
 
 If the setting is zero (the default), the maximum number of retries is `3 * ceil(log2(RetryPollIntervalSeconds) + 1)`.

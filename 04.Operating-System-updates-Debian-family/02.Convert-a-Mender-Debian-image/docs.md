@@ -9,7 +9,7 @@ taxonomy:
 The `mender-convert` utility can be used to convert existing disk images for use with
 Mender. It will generate a new disk image with two rootfs partitions, install a
 bootloader that supports booting either of the root partitions and install the
-Mender client and its configuration.
+Mender-update client and its associated files and configuration.
 
 The output of `mender-convert` is:
 * The converted disk image described above ready to be flashed into an SD card.
@@ -106,7 +106,7 @@ cd mender-convert
 MENDER_CONVERT_LOCATION=${PWD}
 ```
 
-## Configure the Mender client server configuration
+## Configure the Mender-auth server configuration
 
 !!! Hosted Mender is available in multiple [regions](/11.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
 

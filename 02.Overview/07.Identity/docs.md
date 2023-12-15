@@ -21,12 +21,12 @@ are all pieces of data that:
 * form a 1:1 relationship with the device
 * you can store as key-value pairs
 
-The Mender client uses the MAC address as the default Identity attribute.
+The Mender-auth client uses the MAC address as the default Identity attribute.
 Once you have accepted the device, you can see it in the UI:
 
 ![identity](identity.png)
 
-The Mender client allows you to define the identity attributes, which means that Mender
+The Mender-auth client allows you to define the identity attributes, which means that Mender
 can adapt to the identity scheme of any environment. However, Mender imposes the following
 requirements for device identities:
 

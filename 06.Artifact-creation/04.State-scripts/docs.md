@@ -5,12 +5,12 @@ taxonomy:
     label: tutorial
 ---
 
-The Mender Client has the ability to run pre- and postinstall scripts, before and after it writes the root filesystem. However, Mender state scripts are more general and useful than pre/postinstall scripts because they can be run between *any* state transition, not just (before/after) the install state. For some examples of usage, see [example use cases](#example-use-cases).
+The Mender-update Client has the ability to run pre- and postinstall scripts, before and after it writes the root filesystem. However, Mender state scripts are more general and useful than pre/postinstall scripts because they can be run between *any* state transition, not just (before/after) the install state. For some examples of usage, see [example use cases](#example-use-cases).
 
 
 ## The nine states
 
-Starting with the Mender Client version 1.2, support is available for scripts to be run before and after nine different states:
+Starting with the Mender-update Client version 1.2, support is available for scripts to be run before and after nine different states:
 
 * `Idle`: this is a state where no communication with the server is needed nor is there any update in progress
 * `Sync`: communication with the server is needed (currently while checking if there is an update for the given device and when inventory data is sent to server)
@@ -50,7 +50,7 @@ The reason for having both root filesystem and Artifact scripts is related to th
 
 ## Transitions and ordering
 
-State scripts are run by the Mender Client after reaching a given state. Before entering the new state the Enter scripts are run. After all the actions belonging to the given state are executed, the Leave scripts are run. For most of the states, if some error occurs while executing either an Enter or a Leave script, or some action inside the state (like installing a new artifact which is broken and therefore installation is failing) the corresponding Error scripts are executed.
+State scripts are run by the Mender-update Client after reaching a given state. Before entering the new state the Enter scripts are run. After all the actions belonging to the given state are executed, the Leave scripts are run. For most of the states, if some error occurs while executing either an Enter or a Leave script, or some action inside the state (like installing a new artifact which is broken and therefore installation is failing) the corresponding Error scripts are executed.
 The exceptions are:
 
 * `Idle`
@@ -96,7 +96,7 @@ If an error code is returned in any of [the scripts that ignore errors](#transit
 
 ## Script timeout
 
-Each script has a maximum execution time defined by [StateScriptTimeoutSeconds](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#statescripttimeoutseconds). If a script exceeds this running time, its process group will be killed and the Mender client will treat the script and the update as failed.
+Each script has a maximum execution time defined by [StateScriptTimeoutSeconds](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#statescripttimeoutseconds). If a script exceeds this running time, its process group will be killed and the Mender-update client will treat the script and the update as failed.
 
 ## Power loss
 
@@ -124,7 +124,7 @@ anything above this volume will be truncated.
 Mender users will probably come up with a lot of interesting use cases for state scripts, and we will cover some well-known ones below for inspiration.
 
 <!--AUTOVERSION: "mender/tree/%"/ignore-->
-You can find code examples in the [Mender client source repository](https://github.com/mendersoftware/mender/tree/master/examples/state-scripts?target=_blank) and if you have implemented an interesting use-case we encourage you to create a pull-request so all of the community can benefit.
+You can find code examples in the [Mender clients source repository](https://github.com/mendersoftware/mender/tree/master/examples/state-scripts?target=_blank) and if you have implemented an interesting use-case we encourage you to create a pull-request so all of the community can benefit.
 
 #### Application data migration
 In this case, application data like a user profile is stored in an SQLite database and a new column need to be added before starting the new version of the application. This can be achieved by adding a state script to `ArtifactInstall_Leave` (that would run after writing the new rootfs, but before rebooting). This script can then do the necessary migrations on the data partition before the new version of the application is brought up after the reboot.
@@ -143,7 +143,7 @@ Make sure to adjust [StateScriptRetryTimeoutSeconds](../../03.Client-installatio
 <!-- Source is at: https://docs.google.com/drawings/d/19t5Up9kDnjRuOnIa5YyMzbJIIi42q7TnV1zBgj7j2Dk/edit -->
 ![End user update confirmation state scripts](mender-state-machine-user-confirmation.png)
 
-!! Maximum wait time between `Sync` and `Download` state is 24 hours, after this period the update will be marked as failed by the Mender client. This happens because the Mender Artifact download link is generated in `Sync` state and it has a expiration time (24 hours).
+!! Maximum wait time between `Sync` and `Download` state is 24 hours, after this period the update will be marked as failed by the Mender-update client. This happens because the Mender Artifact download link is generated in `Sync` state and it has a expiration time (24 hours).
 
 
 #### Custom sanity checks after the update is installed
@@ -161,7 +161,7 @@ In order to save power and bandwidth, network connectivity may not be enabled by
 
 A state script in `Sync_Enter` can enable network connectivity. You could also enable more powerful network connectivity, such as Wi-Fi, with a state script in `Download_Enter`. If the network is not brought up by default on reboot, you should also enable network in `Reboot_Leave`.
 
-!!! Note that the `Sync_Enter` transition can be reached quite frequently, depending on the [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md). The Mender Client also requires network in several following states of the update process to report progress to the Mender Server.
+!!! Note that the `Sync_Enter` transition can be reached quite frequently, depending on the [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md). The Mender-update Client also requires network in several following states of the update process to report progress to the Mender Server.
 
 If you want to explicitly disable network again after Mender has finished the deployment, the only safe place to do this is in `Idle_Enter`.
 

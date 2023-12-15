@@ -4,9 +4,9 @@ taxonomy:
     category: tutorial
 ---
 
-The Device-side API constitutes the only public programmatic interface of the Mender client.
-It is a thin layer which receives messages over D-Bus, processes them, transmits them to the
-Mender client, receives the results from the client, and transmits a response on the D-Bus.
+The Device-side API constitutes the only public programmatic interface of the Mender clients. It is
+a thin layer which receives messages over D-Bus, processes them, transmits them to one of the Mender
+clients, receives the results from the client, and transmits a response on the D-Bus.
 
 ## Synchronized updates using the Device-side API
 

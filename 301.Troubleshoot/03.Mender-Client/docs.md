@@ -1,5 +1,5 @@
 ---
-title: Mender Client
+title: Mender Clients
 taxonomy:
     category: docs
 ---
@@ -77,26 +77,30 @@ The mender-client version 3.2.0 Debian package is deprecated. If you are
 getting installation errors, with a missing
 [libffi6](https://sourceware.org/libffi/) dependency, then please install the
 new Debian package, as per the installation instructions in
-[downloads](../../10.Downloads/docs.md#mender-client)
+[downloads](../../10.Downloads/docs.md#mender-update-client)
 
 
 ## Obtaining client logs
 
 Logs are usually needed in order to diagnose an issue.
 
-The Mender client by default logs to the system log using `systemd`, so the easiest way to retrieve logs
+The Mender-update client by default logs to the system log using `systemd`, so the easiest way to retrieve logs
 is to run the following command:
 
 ```
-journalctl -u mender-client
+journalctl -u mender-updated
 ```
 
 Please note that the default log level is Info. It is possible to increase the
 verbosity by editing the Mender systemd unit file and add the `--log-level debug` option:
 
 ```
-ExecStart=/usr/bin/mender --log-level debug daemon
+ExecStart=/usr/bin/mender-update --log-level debug daemon
 ```
+
+<!--AUTOVERSION: "Mender clients older than %"/ignore-->
+!!! Note that in Mender clients older than 4.0.0, the binary and systemd service are called
+!!! `mender` and `mender-client`, respectively.
 
 
 ### Deployment log files
@@ -116,15 +120,18 @@ In order to see what the Mender client is doing currently, follow the log
 as it is being written with this command:
 
 ```
-journalctl -u mender-client -f
+journalctl -u mender-updated -f
 ```
+
+<!--AUTOVERSION: "Mender clients older than %"/ignore-->
+!!! Note that in Mender clients older than 4.0.0, the systemd service is called `mender-client`.
 
 To stop it use Ctrl+C.
 
 
 ## Certificate expired or not yet valid
 
-The Mender client can not connect to the server, typically the first time it tries, and emits messages like the following to syslog at the device:
+The Mender clients can not connect to the server, typically the first time they try, and emits messages like the following to the `mender-authd` log or syslog at the device:
 
 ```
 ... level=info msg="Mender state: authorize-wait -> bootstrapped" module=mender
@@ -180,7 +187,7 @@ overview and description on how to generate new certificates.
 
 ## Certificate signed by unknown authority
 
-The Mender client can not connect to the server, typically the first time it tries, and emits messages like the following to syslog at the device:
+The Mender client can not connect to the server, typically the first time it tries, and emits messages like the following to the `mender-authd` log or syslog at the device:
 
 ```
 ... level=info msg="Mender state: authorize-wait -> bootstrapped" module=mender
@@ -216,7 +223,7 @@ You can do this manually for testing purposes, and you should
 
 ## Depth zero self-signed certificate, openssl verify rc: 18
 
-The Mender Client detected a self-signed certificate that is the only one in the chain
+The Mender-auth Client detected a self-signed certificate that is the only one in the chain
 and the same certificate can't be located in the trusted store. That means
 the OpenSSL is unable to verify the server identity. You have to either use
 another (not self-signed) certificate or include the certificate in the local trust store.
@@ -254,23 +261,31 @@ The `_INCONSISTENT` suffix is appended to the software name on a device when the
 
 ## Artifact format not supported
 
-When deploying an update with the Mender client, you see a log message similar to the following:
+When deploying an update with the Mender-update client, you see a log message similar to the following:
 
 ```
 ERRO[0001] update install failed: failed to read and install update: reader: unsupported version: 2  module=state
 ```
 
 The problem here is most likely that you have built [a new version of the Artifact format](../../02.Overview/03.Artifact/docs.md#artifact-format-versions)
-that your Mender Client does not support. It could also be that you are building a very old version of the
-Artifact format that your new version of the Mender Client does not support.
+that your Mender-update Client does not support. It could also be that you are building a very old version of the
+Artifact format that your new version of the Mender-update Client does not support.
 
-In either case the solution is to [build a different version of the Artifact format](../../06.Artifact-creation/01.Create-an-Artifact/docs.md) that your Mender Client supports
-until you have upgraded all Mender Clients and can use the corresponding latest version of the Mender Artifact format.
+In either case the solution is to [build a different version of the Artifact format](../../06.Artifact-creation/01.Create-an-Artifact/docs.md) that your Mender-update Client supports
+until you have upgraded all Mender-update Clients and can use the corresponding latest version of the Mender Artifact format.
 
 
 ## The partition layout of the device is not as expected
 
 You have the Mender binary on your device and try to trigger a rootfs update but you get output similar to the following:
+
+```bash
+mender-update install /media/rootfs-image-mydevice.mender
+
+Mounted root does not match boot loader environment
+```
+
+-or-
 
 ```bash
 mender install /media/rootfs-image-mydevice.mender
@@ -282,9 +297,9 @@ ERRO[0000] No match between boot and root partitions.    module=main
 The problem here is most likely that the device does not have the [partition layout Mender expects](../../05.Operating-System-updates-Yocto-Project/01.Overview/docs.md#partition-layout). This could have happened if you just placed the Mender binary into your rootfs, but did not [reflash the entire storage device](../../05.Operating-System-updates-Yocto-Project/20.Provisioning-a-new-device/docs.md) with the `.sdimg.` file output from the [Yocto Project build](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md). When this happens, output from `mount` and `fw_printenv` can confirm that this is the problem you are seeing. The solution is to flash your entire storage device with the `.sdimg` output from the Yocto Project build process.
 
 
-## The Mender client uses excessive network traffic even when not deploying updates
+## The Mender clients use excessive network traffic even when not deploying updates
 
-If you are using the Mender client in demo mode, either by selecting it when running `mender setup`, or set up with the [demo layer](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md), the Mender client has more aggressive [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md) to simplify testing.
+If you are using the Mender clients in demo mode, either by selecting it when running `mender-setup`, or set up with the [demo layer](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md), the Mender clients have more aggressive [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md) to simplify testing.
 
 See the documentation on [building for production](../../05.Operating-System-updates-Yocto-Project/06.Build-for-production/docs.md) and [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md) to reduce the network bandwidth usage.
 
@@ -346,14 +361,14 @@ The block below shows 3 example artifacts.
 ### How to check this on the device/server/artifact?
 
 * artifact - `mender-artifact read <mender-artifact.mender>`
-* device - Run the command on the device `mender show-provides`
+* device - Run the command on the device `mender-update show-provides`
 * server UI - `Releases -> Select Release -> Expand the artifact info by clicking it -> Expand Provides and Depends`
 
 ### Checking inconsistencies about the root file system checksums
 
-The checksum shown with `mender show-provides` does not necessarily represent the running partition's actual checksum.
+The checksum shown with `mender-update show-provides` does not necessarily represent the running partition's actual checksum.
 
-For example, if you remount the partition `rw`, change something and remount it `ro`, the checksum in the `mender show-provides` won't change, while the checksum of the running partition changes.
+For example, if you remount the partition `rw`, change something and remount it `ro`, the checksum in the `mender-update show-provides` won't change, while the checksum of the running partition changes.
 
 As part of your troubleshooting, you can check that the actual checksum on the device is the same as in the `Depends` field.
 

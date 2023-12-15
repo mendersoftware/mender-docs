@@ -64,9 +64,12 @@ only. The behaviour can be modified at any time.
 * `mender-image-uefi` - Enables a build that provides a Mender partitioned UEFI
   image (`.uefiimg`). Enabling this feature requires enabling `mender-image` too.
 
-* `mender-client-install` - Enables a build that has Mender installed, with
+<!--AUTOVERSION: "Yocto-4.0 \"%\" and older"/ignore-->
+* `mender-install` - Enables a build that has Mender installed, with
   configuration. Note that this does not include the default Mender partition
-  layout, use `mender-image` for that.
+  layout, use `mender-image` for that. Note that on the
+  Yocto-4.0 "kirkstone" and older, this feature is called
+  `mender-client-install`.
 
 * `mender-partuuid` - *experimental* - Enable usage of UUID as partition identifiers (GRUB only).
 
@@ -113,7 +116,7 @@ The currently available classes are:
 
 * `mender-full`: Enables the most common features for Mender, which are:
     * `mender-image`
-    * `mender-client-install`
+    * `mender-install`
     * `mender-systemd`
     * `mender-image-uefi`
     * `mender-grub`
@@ -123,7 +126,7 @@ The currently available classes are:
   installations, which are:
     * `mender-image`
     * `mender-image-ubi`
-    * `mender-client-install`
+    * `mender-install`
     * `mender-systemd`
     * `mender-ubi`
     * `mender-uboot`
