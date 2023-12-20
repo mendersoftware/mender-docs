@@ -5,6 +5,7 @@ taxonomy:
     label: user guide
 ---
 
+!!! You must to run `mender-monitorctl` with root privileges
 
 ## Log
 
