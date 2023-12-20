@@ -51,7 +51,6 @@ Verify existence of check definitions with:
 > -rwxr-xr-x 1 root root 201 Aug 17 20:09 log_mender_client.sh
 > -rwxr-xr-x 1 root root 203 Aug 17 20:09 log_mender_connect.sh
 > -rwxr-xr-x 1 root root 297 Aug 17 20:09 log_usb_disconnect.sh
-> -rw-r--r-- 1 root root  43 Jun 20 20:06 service_cron.sh
 > ```
 
 ## Demo Checks
