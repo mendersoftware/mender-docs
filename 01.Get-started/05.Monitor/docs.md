@@ -83,10 +83,11 @@ Once you remove the USB device, the log subsystem triggers an alert, which you c
 
 !!! Note: This Alert will remain unless a manual [alert cleaning](../../09.Add-ons/20.Monitor/50.Advanced-use-cases/docs.md#alert-cleaning ) is performed:
 !!! ```bash
+!!! sudo su
 !!! cd /usr/share/mender-monitor
 !!! source lib/monitor-lib.sh
 !!! monitor_send_alert OK "Log file contains \[.*\] +usb [\w\-\.]+: USB disconnect" "\[.*\] +usb [\w\-\.]+: USB disconnect present in /var/log/kern.log" "log_usb_disconnect" LOGCONTAINS "log" "\[.*\] +usb [\w\-\.]+: USB disconnect" "/var/log/kern.log" 
-!!!! ```
+!!! ```
 
 ### Monitor disk usage
 
