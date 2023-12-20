@@ -110,10 +110,6 @@ This command links the file in `/etc/mender-monitor/monitor.d/available` to
 readlink /etc/mender-monitor/monitor.d/enabled/service-countdown.sh
 ```
 
-> ```bash
-> /etc/mender-monitor/monitor.d/available/service_mender-connect.sh
-> ```
-
 
 ## Advanced use cases
 
