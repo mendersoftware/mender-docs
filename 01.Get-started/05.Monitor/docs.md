@@ -73,14 +73,14 @@ This demo shows detecting USB disconnects, alerting you to potential device tamp
 Enable the check by running:
 
 
-``bash
-udo mender-monitorctl enable log usb_disconnect
-``
+```bash
+sudo mender-monitorctl enable log usb_disconnect
+```
 
 Now remove a USB device from the device (you can insert it first, e.g., a thumb drive or mouse, if you don't have any USB devices inserted). 
 Once you remove the USB device, the log subsystem triggers an alert, which you can inspect in the device details in the Mender UI:
 
-[Connectivity alarm OK](log-usb-alarm.png)
+![Connectivity alarm OK](log-usb-alarm.png)
 
 !!! Note: This Alert will remain unless a manual [alert cleaning](../../09.Add-ons/20.Monitor/50.Advanced-use-cases/docs.md#alert-cleaning ) is performed:
 !!! ```bash
