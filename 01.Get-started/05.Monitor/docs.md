@@ -247,63 +247,6 @@ sudo mender-monitorctl delete service countdown systemd
 !!! If you want to examine the low-level architecture of mender-monitor using this example [follow this link](../../09.Add-ons/20.Monitor/50.Advanced-use-cases/docs.md#example).
 
 
-### Monitor systemd services logs
-
-You can trigger alerts when a given pattern shows in the logs of your systemd service
-For this, you can create a check definition for the `log` monitoring subsystem that will
-use the `journalctl` command as a source for log data and check for errors or any other pattern.
-
-Create a service that glitches every few seconds and prints "WARNING: a glitch in the system" when it does:
-
-```bash
-cat > glitch.sh << "EOF"
-#!/bin/sh
-i=0
-while true; do
-    i=$((i+1))
-    [ $(expr $i % 23) -eq 0 ] && echo "WARNING: a glitch in the system" || echo "INFO: $i seconds remaining"
-    sleep 1
-done
-EOF
-
-
-PATH_TO_SCRIPT=$(realpath glitch.sh)
-chmod +x $PATH_TO_SCRIPT
-
-
-cat > /etc/systemd/system/glitch.service << EOF
-[Unit]
-Description=Countdown Service
-
-[Service]
-Type=simple
-ExecStart=$PATH_TO_SCRIPT
-
-[Install]
-WantedBy=default.target
-EOF
-
-systemctl daemon-reload
-systemctl start glitch.service
-```
-
-You can confirm the countdown with `journalctl -fu glitch.service`.
-
-
-Now, create and enable a check for the systemd `log` monitoring subsystem called `countdown_logs`:
-
-```bash
-sudo mender-monitorctl create log glitch "WARNING*." "@journalctl -u glitch -f"
-sudo mender-monitorctl enable log glitch
-```
-
-The `log` monitoring subsystem will trigger a critical alert every time "WARNING" shows up in the logs.
-
-
-```bash
-sudo mender-monitorctl disable log glitch
-sudo mender-monitorctl delete log glitch
-```
 
 ### Monitor new root sessions
 
