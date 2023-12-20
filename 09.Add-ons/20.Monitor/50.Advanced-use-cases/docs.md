@@ -120,6 +120,9 @@ The following use cases extend beyond the typical usage of Mender Monitor, but t
 Since the Checks and Subsystems are represented by a directory structure there is an option to modify the files directly instead of using the CLI tool. 
 
 ### Using the library 
+
+!! You must run the following lines with root permission
+
 To use the Mender Monitor library, first you need to source the environment with the function set provided to interact with the Mender Server and Monitor logic.
 
 ```bash

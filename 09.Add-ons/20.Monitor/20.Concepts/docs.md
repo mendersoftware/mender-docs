@@ -41,7 +41,7 @@ The supported way of using the monitoring add-on is to create the check for the 
 
 The majority of monitoring use cases can be achieved by creating custom checks for the supported subsystems.
 
-The way to work with Checks is using the CLI tool `mender-monitorctl`.
+The way to work with Checks is using the CLI tool `mender-monitorctl`. You must to run `mender-monitorctl` with root privileges.
 
 A check needs to be created first. 
 You always create a check for a specific subsystem.
