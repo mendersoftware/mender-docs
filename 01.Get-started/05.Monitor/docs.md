@@ -20,7 +20,7 @@ If you have followed the [get started tutorial](../01.Preparation/docs.md) to pr
 Verify installed dependencies on your device with:
 
 ```bash
-mender --version && mender-monitorctl --version
+sudo mender --version && sudo mender-monitorctl --version
 ```
 
 The output should give no errors and print the version of both tools.
