@@ -25,7 +25,7 @@ The actions require the following secret to be set in a repository settings:
 
 ## Pipelines examples
 
-* [Build and deploy Mender Arti fact](#build-and-deploy-a-mender-artifact)
+* [Build and deploy Mender Artifact](#build-and-deploy-a-mender-artifact)
 * [Build and deploy multiple Mender Artifacts](#build-and-deploy-multiple-mender-artifacts)
 * [Build and deploy Mender Artifact to a single device](#build-and-deploy-a-mender-artifact-to-a-single-device)
 
