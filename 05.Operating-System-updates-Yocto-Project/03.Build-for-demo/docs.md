@@ -116,10 +116,10 @@ MENDER_ARTIFACT_NAME = "release-1"
 # please uncomment the following and set to the required version. If you want to use the bleeding
 # edge version, specify "master-git%", but keep in mind that these versions may not be stable:
 #
-# PREFERRED_VERSION_mender-client = "master-git%"
-# PREFERRED_VERSION_mender-artifact = "master-git%"
-# PREFERRED_VERSION_mender-artifact-native = "master-git%"
-# PREFERRED_VERSION_mender-connect = "master-git%"
+# PREFERRED_VERSION_mender-client = "3.5.2"
+# PREFERRED_VERSION_mender-artifact = "3.11.0"
+# PREFERRED_VERSION_mender-artifact-native = "3.11.0"
+# PREFERRED_VERSION_mender-connect = "2.2.0"
 
 ARTIFACTIMG_FSTYPE = "ext4"
 
@@ -238,10 +238,10 @@ MACHINE = "<YOUR-MACHINE>"
 # please uncomment the following and set to the required version. If you want to use the bleeding
 # edge version, specify "master-git%", but keep in mind that these versions may not be stable:
 #
-# PREFERRED_VERSION_mender-client = "master-git%"
-# PREFERRED_VERSION_mender-artifact = "master-git%"
-# PREFERRED_VERSION_mender-artifact-native = "master-git%"
-# PREFERRED_VERSION_mender-connect = "master-git%"
+# PREFERRED_VERSION_mender-client = "3.5.2"
+# PREFERRED_VERSION_mender-artifact = "3.11.0"
+# PREFERRED_VERSION_mender-artifact-native = "3.11.0"
+# PREFERRED_VERSION_mender-connect = "2.2.0"
 
 # The following settings to enable systemd are needed for all Yocto
 # releases sumo and older.  Newer releases have these settings conditionally
