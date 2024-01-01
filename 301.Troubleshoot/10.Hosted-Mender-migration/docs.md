@@ -219,7 +219,7 @@ In order to use the Update Module, it needs to be installed in the device filesy
 To generate the artifact that installs the `migration-um-a` Update Module, the `single-artifact` Update Module can be used.
 
 <!--AUTOVERSION: "github.com/mendersoftware/mender/blob/%/"/mender-->
-Using the script [single-file-artifact-gen](https://github.com/mendersoftware/mender/blob/3.5.1/support/modules-artifact-gen/single-file-artifact-gen) makes this process easier.
+Using the script [single-file-artifact-gen](https://github.com/mendersoftware/mender/blob/3.5.2/support/modules-artifact-gen/single-file-artifact-gen) makes this process easier.
 
 
 ### Create the Mender Artifact
