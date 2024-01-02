@@ -120,7 +120,7 @@ Download the `docker-artifact-gen` utility script:
 
 <!--AUTOVERSION: "mender/%"/mender-->
 ```bash
-wget https://raw.githubusercontent.com/mendersoftware/mender/3.5.1/support/modules-artifact-gen/docker-artifact-gen
+wget https://raw.githubusercontent.com/mendersoftware/mender/3.5.2/support/modules-artifact-gen/docker-artifact-gen
 ```
 
 Make `docker-artifact-gen` executable:
