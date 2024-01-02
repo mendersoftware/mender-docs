@@ -33,10 +33,10 @@ configuration options.
 <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install --assume-yes wget libglib2.0-0 tzdata -->
 
 <!--AUTOVERSION: "repos/debian/pool/%/"/ignore "mender-client_%-1"/mender -->
-<!--AUTOMATION: execute=wget https://downloads.mender.io/repos/debian/pool/main/m/mender-client/mender-client_3.5.1-1%2Bdebian%2Bbullseye_$(dpkg --print-architecture).deb -->
+<!--AUTOMATION: execute=wget https://downloads.mender.io/repos/debian/pool/main/m/mender-client/mender-client_3.5.2-1%2Bdebian%2Bbullseye_$(dpkg --print-architecture).deb -->
 
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
-<!--AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_3.5.1-1+debian+bullseye_$(dpkg --print-architecture).deb -->
+<!--AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_3.5.2-1+debian+bullseye_$(dpkg --print-architecture).deb -->
 <!--AUTOMATION: execute=DEVICE_TYPE=device-type -->
 <!--AUTOMATION: execute=TENANT_TOKEN=secure-token -->
 <!--AUTOMATION: execute=SERVER_IP_ADDR=1.2.3.4 -->
@@ -117,7 +117,7 @@ sudo systemctl restart mender-client
 <!--AUTOVERSION: "mender/tree/%#installing-from-source"/mender -->
 As an alternative to using a Debian package, it is possible to install the
 Mender client from source by following the guidelines outlined in the
-[README.md](https://github.com/mendersoftware/mender/tree/3.5.1#installing-from-source?target=_blank)
+[README.md](https://github.com/mendersoftware/mender/tree/3.5.2#installing-from-source?target=_blank)
 of the Mender client source repository.
 
 

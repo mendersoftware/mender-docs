@@ -121,7 +121,7 @@ a-country=Poland
 a-city=Krakow
 ```
 <!--AUTOVERSION: "mender/tree/%/support"/mender-->
-You can find some more useful scripts in [https://github.com/mendersoftware/mender/support](https://github.com/mendersoftware/mender/tree/3.5.1/support) directory.
+You can find some more useful scripts in [https://github.com/mendersoftware/mender/support](https://github.com/mendersoftware/mender/tree/3.5.2/support) directory.
 
 
 ## Default inventory
@@ -133,7 +133,7 @@ By default, and without any inventory scripts added, the Mender client sends the
 |:----:|:-------:|:-------------:|
 | `device_type`  | type of the device | "raspberrypi4" |
 | `artifact_name` | name of the currently installed artifact | "release-v1" |
-| `mender_client_version` | client version | "3.5.1" |
+| `mender_client_version` | client version | "3.5.2" |
 
 
 ## Final remarks
