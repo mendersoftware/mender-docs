@@ -45,6 +45,9 @@ The `mender-artifact` tool supports copying files in and out of Artifacts.
 
 ### Copy a file into an Artifact
 
+!!! Copying file(s) into an artifact will result in an updated `rootfs.img` checksum.
+!!! Additionally, if the artifact was signed, signature will be lost on artifact modification.
+
 To copy a file into an Artifact, use the following command:
 
 ```bash

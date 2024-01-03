@@ -88,7 +88,6 @@ The project also has a dedicated guide to the CLI and Bash script examples
 The project has a few tools to help with developing documentation:
 
 * [checklinks](README-checklinks.markdown) - Which automatically checks all internal links for duds.
-* [./scripts/passive.sh](./scripts/README-passive.markdown) - Checks a document for passive voice.
 * [./scripts/weasel.sh](./scripts/README-weasel.markdown) - Checks a document for weasel words.
 * [autoversion.py](README-autoversion.markdown) - Checks the version of a linked external tool.
 

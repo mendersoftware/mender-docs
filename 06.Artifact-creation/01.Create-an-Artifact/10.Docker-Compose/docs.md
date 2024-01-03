@@ -25,6 +25,7 @@ dependencies are installed on the device:
  * [Docker Engine](https://docs.docker.com/engine/install/?target=_blank)
  * [Docker Compose](https://docs.docker.com/compose/install/?target=_blank) (version >= 2.0)
  * [`jq`](https://jqlang.github.io/jq/)
+ * [`tree`](http://mama.indstate.edu/users/ice/tree/)
  * [`xdelta3`](https://github.com/jmacd/xdelta)
 
 > To quickly verify the required dependencies are installed on your device, run
@@ -33,8 +34,9 @@ dependencies are installed on the device:
 > mender --version && \
 >   docker --version && \
 >   docker compose version && \
->   xdelta3 -V && \
->   jq --version
+>   jq --version && \
+>   tree --version && \
+>   xdelta3 -V &&
 > ```
 
 To install the Docker Compose Update Module, run the following commands on your
@@ -137,10 +139,9 @@ app-gen --artifact-name "$ARTIFACT_NAME" \
 ```
 
 !!!!! All arguments after `--` are passed directly to `mender-artifact write
-!!!!! module-image`. In the following example we will make use of [versioning
-!!!!!
-constraints](../../09.Software-versioning/docs.md#application-updates-update-modules)
-to !!!!! prevent deploying the wrong version to a device.
+!!!!! module-image`. In the following example we will make use of
+!!!!! [versioning constraints](../../09.Software-versioning/docs.md#application-updates-update-modules)
+!!!!! to prevent deploying the wrong version to a device.
 
 #### Deploy the Mender Artifact
 The generated artifact is now ready to be deployed on the device. Open your
