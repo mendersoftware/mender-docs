@@ -5,7 +5,7 @@ taxonomy:
     label: tutorial
 ---
 
-This tutorial we help you prepare your workstation to be able to run a virtual
+In this tutorial, we help you prepare your workstation to be able to run a virtual
 device (QEMU) with Mender integrated which will connect to hosted Mender and
 simulate a physical device.
 
@@ -59,8 +59,7 @@ Before continuing to following the UI tooltips, please complete the step below.
 
 ## Step 5 - Get the IP address of the virtual device
 
-
-You will need the the IP address of the virtual device in later stages of the
+You will need the IP address of the virtual device in later stages of the
 documentation.
 
 You should execute below commands in a terminal window on your workstation while

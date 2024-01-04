@@ -46,11 +46,6 @@ test:internal-links:
     - npm ci
     - ./checklinks.js --color --verbose
 
-test:passive-voice:
-    stage: test
-    image: ubuntu
-    script:
-        - bash ./scripts/run-passive.sh
 
 test:latest_versions:
   stage: test

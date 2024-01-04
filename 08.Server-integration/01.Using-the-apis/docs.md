@@ -130,6 +130,19 @@ curl -H "Authorization: Bearer $JWT" -X DELETE -k $MENDER_SERVER_URI/api/managem
 !! [Mender plan](https://mender.io/product/pricing) is upgraded as the tokens contain the current
 !! plan and when an upgrade occurs, the PAT becomes **invalid**.
 
+### Session Token
+
+If you are using SSO then Personal Access Tokens are not an option to you.
+As such, you can still access the APIs and use mender-cli using a Session Token.
+To get the session token navigate to [your profile](https://hosted.mender.io/ui/settings/my-profile) and under "Session token" click "COPY TO CLIPBOARD".
+Then use this token anywhere that the Personal Access Token should be used.
+
+Session Tokens have the same validity span as a JWT generated using the login endpoint:
+* With "Keep me signed in" they are valid for 24 hours
+* Without it, the are invalidated after 15 minutes of inactivity.
+
+!!! Session Tokens have similar security implications as Personal Access Tokens do.
+
 ## Set up mender-cli
 
 `mender-cli` is a standalone CLI tool that works as a client against the Mender Server management APIs in order to make it much easier to interact with the APIs.

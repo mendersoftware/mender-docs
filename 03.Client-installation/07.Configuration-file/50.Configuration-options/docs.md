@@ -30,42 +30,34 @@ verification](../../../06.Artifact-creation/07.Sign-and-verify/docs.md).
 
 #### BootUtilitiesGetNextActivePart
 
-This setting controls which command is
-used to get information about the
-currently active rootfs, when using `rootfs-image` Artifacts. The tool must
-follow the same conventions as the `u-boot-fw-utils`, `libubootenv` and
-`grub-mender-grubenv` user space tools. This includes command line options as
-well as variables it is expected to return: `bootcount`, `mender_boot_part`,
-`mender_boot_part_hex` and `upgrade_available`. If this value is not set, it
-defaults to trying `grub-mender-grubenv-print` first, followed by `fw_printenv`
-if the former is not found.
-
-Introduced in Mender client 3.1.
+This option is **deprecated** and does not exist anymore in Mender Client v4.0 and later. For
+earlier versions, please see [documentation for Mender
+3.6](/3.6/client-installation/configuration-file/configuration-options#bootutilitiesgetnextactivepart)
+or older.
 
 #### BootUtilitiesSetActivePart
 
-This setting controls which command is
-used to set the active rootfs partition,
-when using `rootfs-image` Artifacts. The tool must follow the same conventions
-as the `u-boot-fw-utils`, `libubootenv` and `grub-mender-grubenv` user space
-tools. This includes command line options as well as variables it is expected to
-honor: `bootcount`, `mender_boot_part`, `mender_boot_part_hex` and
-`upgrade_available`. If this value is not set, it defaults to trying
-`grub-mender-grubenv-set` first, followed by `fw_setenv` if the former is not
-found.
-
-Introduced in Mender client 3.1.
+This option is **deprecated** and does not exist anymore in Mender Client v4.0 and later. For
+earlier versions, please see [documentation for Mender
+3.6](/3.6/client-installation/configuration-file/configuration-options#bootutilitiessetactivepart)
+or older.
 
 #### Connectivity
+
+!! This option is not supported starting from the Mender client version 4.0, and all the HTTP requests will be sent without the Keep-Alive header.
 
 Allows you to configure additional connection-related settings.
 
 ##### DisableKeepAlive
 
+!! This option is not supported starting from the Mender client version 4.0, and all the HTTP requests will be sent without the Keep-Alive header.
+
 If set to true, disables the connections keep alive in general. All the HTTP transactions
 will cause a new connection to be created.
 
 ##### IdleConnTimeoutSeconds
+
+!! This option is not supported starting from the Mender client version 4.0, and all the HTTP requests will be sent without the Keep-Alive header.
 
 Specifies the time after which a connection is terminated. The larger it is,
 the longer keep alive traffic will happen, as the client will maintain
@@ -88,16 +80,18 @@ every time the client has to contact the server.
 
 #### HttpsClient
 
-Allows you to configure the certificate, private key and, SSL Engine id to use
+Allows you to configure the certificate, private key, and SSL Engine id to use
 during the SSL handshake. If you provide the certificate and private key
 as locally accessible files you don't have to specify
 <!--AUTOVERSION: "docs/man%"/ignore-->
 [SSLEngine](https://www.openssl.org/docs/man1.1.1/man1/engine.html).
 If you want to use a Hardware Security Module (HSM) you can provide the private
 key as a [PKCS#11 URI](https://tools.ietf.org/html/rfc7512) and in that case
-you must also specify the `SSLEngine`. The client will use this key for signing
-the authorization requests unless you provide `Security.AuthPrivateKey`
-(see below).
+you must also specify the `SSLEngine`.
+
+Note that the client will not use this key for signing authentication requests, which is always
+required, even when using SSL client certificates. For that you need to use
+[`Security.AuthPrivateKey`](#security).
 
 ##### Certificate
 
@@ -190,17 +184,25 @@ As of Mender client 3.3 this one also applies to inventory updates.
 The Linux device that contains root filesystem A. The build system (ie Yocto or
 mender-convert) sets this variable so it is rarely modified manually.
 
+Note: Starting with Mender client v4.0, this configuration option is no longer parsed by the client,
+but instead by the `rootfs-image` update module. For most users this does not make any difference,
+but for advanced users it allows changing how it is handled, since the update module is a shell
+script.
+
 #### RootfsPartB
 
 The Linux device that contains root filesystem B. The build system (ie Yocto or
 mender-convert) sets this variable, so it is rarely modified manually.
 
+Note: Starting with Mender client v4.0, this configuration option is no longer parsed by the client,
+but instead by the `rootfs-image` update module. For most users this does not make any difference,
+but for advanced users it allows changing how it is handled, since the update module is a shell
+script.
+
 #### Security
 
 Allows you to specify the basic security options, `AuthPrivateKey`
 and `SSLEngine`, which you can use for signing of authentication requests.
-If you specify both `Security.AuthPrivateKey` and `HttpsClient.Key`
-the former takes precedence.
 
 ##### AuthPrivateKey
 
@@ -320,6 +322,8 @@ default location is `/var/lib/mender/device_type`
 
 #### UpdateControlMapExpirationTimeSeconds
 
+!! This option is not supported starting from the Mender client version 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
+
 The expire time in seconds for an update control map. The value provides the
 time window for an application using the update control _dbus API_ to refresh
 the update control map before it enters the expired state. _Defaults to
@@ -328,12 +332,16 @@ the update control map before it enters the expired state. _Defaults to
 
 #### UpdateControlMapBootExpirationTimeSeconds
 
+!! This option is not supported starting from the Mender client version 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
+
 The maximum expire time in seconds after startup for an update control map. The
 value provides an upper bound on the update control map [expire
 time](#UpdateControlMapExpirationTimeSeconds) after system startup. _Defaults to 600
 (10 minutes)_
 
 #### UpdateControlMapPollIntervalSeconds
+
+!! This option is not supported starting from the Mender client version 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
 
 The polling interval at which the client checks for new control maps once the
 deployment has started to take place. This influences how quickly will the

@@ -222,8 +222,8 @@ You also need to specify a username and password pair. The ambassador will use i
 
 <!--AUTOMATION: ignore -->
 ```bash
-  MTLS_MENDER_USER=mtls@mender.io /
-  MTLS_MENDER_PASS=password /
+  MTLS_MENDER_USER=mtls@mender.io
+  MTLS_MENDER_PASS=password
   MTLS_MENDER_BACKEND=https://hosted.mender.io
 ```
 <!-- AUTOMATION: execute=MTLS_MENDER_USER="$CI_MTLS_TEST_HM_USER" -->
