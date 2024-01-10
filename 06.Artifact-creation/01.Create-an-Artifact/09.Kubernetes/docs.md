@@ -42,18 +42,18 @@ you need to run the following commands on your devices:
 ```bash
 # Install Application Update Module
 mkdir -p /usr/share/mender/modules/v3
-wget https://raw.githubusercontent.com/mendersoftware/app-update-module/master/src/app \
+wget https://raw.githubusercontent.com/mendersoftware/app-update-module/1.0.0/src/app \
         -O /usr/share/mender/modules/v3/app \
         && chmod +x /usr/share/mender/modules/v3/app
 # Install Kubernetes submodule
 mkdir -p /usr/share/mender/app-modules/v1
-wget https://raw.githubusercontent.com/mendersoftware/app-update-module/master/src/app-modules/k8s \
+wget https://raw.githubusercontent.com/mendersoftware/app-update-module/1.0.0/src/app-modules/k8s \
         -O /usr/share/mender/app-modules/v1/k8s \
         && chmod +x /usr/share/mender/app-modules/v1/k8s
 # Install the Configuration files
-wget https://raw.githubusercontent.com/mendersoftware/app-update-module/master/conf/mender-app.conf \
+wget https://raw.githubusercontent.com/mendersoftware/app-update-module/1.0.0/conf/mender-app.conf \
         -O /etc/mender/mender-app.conf
-wget https://raw.githubusercontent.com/mendersoftware/app-update-module/master/conf/mender-app-k8s.conf \
+wget https://raw.githubusercontent.com/mendersoftware/app-update-module/1.0.0/conf/mender-app-k8s.conf \
         -O /etc/mender/mender-app-k8s.conf
 ```
 
@@ -72,7 +72,7 @@ on your workstation, then install the Application Update Artifact Generator:
 BINDIR=$HOME/bin
 mkdir -p $BINDIR
 export PATH=$BINDIR:$PATH
-wget https://raw.githubusercontent.com/mendersoftware/app-update-module/master/gen/app-gen \
+wget https://raw.githubusercontent.com/mendersoftware/app-update-module/1.0.0/gen/app-gen \
         -O $BINDIR/app-gen
 chmod +x $BINDIR/app-gen
 ```
