@@ -242,11 +242,7 @@ chmod 0600 $(pwd)/server-private.key
 To start the edge proxy, run the following command:
 
 <!-- AUTOMATION: execute={ -->
-<!-- mtls-ambassador will have to be updated manually on the hosted branch. mtls-ambassador needs
-     the latest release from the on-prem releases, but this is on a different branch. The
-     autoversion tool has no way to determine this branch and associated version right now, so we
-     need to do it manually. This is a step in our release checklist. -->
-<!--AUTOVERSION: "registry.mender.io/mendersoftware/mtls-ambassador:mender-%"/ignore -->
+<!--AUTOVERSION: "registry.mender.io/mendersoftware/mtls-ambassador:mender-%"/integration -->
 ```bash
 docker run \
   -p 443:8080 \
