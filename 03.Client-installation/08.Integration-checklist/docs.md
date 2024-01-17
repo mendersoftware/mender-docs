@@ -186,12 +186,22 @@ We will confirm the bootloader can read the environment and is behaving correctl
 In the previous step, we identified the currently running partition to be `nvme0n1p2` and the inactive one `nvme0n1p3`.
 Set the bootloader variables manually so it boots from the currently inactive partition on the next reboot.
 
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="GRUB"]
 ``` bash
 grub-mender-grubenv-set mender_boot_part 3
 grub-mender-grubenv-set mender_boot_part_hex 3
 reboot
 ```
-
+[/ui-tab]
+[ui-tab title="UBoot"]
+``` bash
+fw_setenv mender_boot_part 3
+fw_setenv mender_boot_part_hex 3
+reboot
+```
+[/ui-tab]
+[/ui-tabs]
 
 After the device boots up verify that you are indeed running on the expected partition:
 
@@ -203,13 +213,22 @@ mount | grep 'on /'
 
 After completion, return to the previously active partition by adapting the previous steps:
 
-
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="GRUB"]
 ``` bash
 grub-mender-grubenv-set mender_boot_part 2
 grub-mender-grubenv-set mender_boot_part_hex 2
 reboot
 ```
-
+[/ui-tab]
+[ui-tab title="UBoot"]
+``` bash
+fw_setenv mender_boot_part 2
+fw_setenv mender_boot_part_hex 2
+reboot
+```
+[/ui-tab]
+[/ui-tabs]
 
 ## Transition state
 
@@ -219,10 +238,20 @@ During this verification process, it is expected that the bootloader's environme
 
 To notify the bootloader about the switch to the transitional state, we will set the following variables:
 
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="GRUB"]
 ``` bash
 grub-mender-grubenv-set upgrade_available 1
 grub-mender-grubenv-set bootcount 0
 ```
+[/ui-tab]
+[ui-tab title="UBoot"]
+``` bash
+fw_setenv upgrade_available 1
+fw_setenv bootcount 0
+```
+[/ui-tab]
+[/ui-tabs]
 
 Setting `upgrade_available` to `1` has multiple side effects:
 
@@ -237,6 +266,8 @@ Setting `upgrade_available` to `1` has multiple side effects:
 
 As explained on the variables in the previous paragraph, test a full active partition switch including reboot:
 
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="GRUB"]
 ``` bash
 # In the normal update process, at this point the Mender Client just
 # concluded streaming the new version to the inactive partition
@@ -259,10 +290,37 @@ grub-mender-grubenv-set mender_boot_part_hex 3
 
 reboot
 ```
+[/ui-tab]
+[ui-tab title="UBoot"]
+``` bash
+# In the normal update process, at this point the Mender Client just
+# concluded streaming the new version to the inactive partition
 
+# We are currently running the active partition
+# Identify active partition
+mount | grep 'on / '
+# Output:
+#/dev/nvme0n1p2 on / type ext4 ... ...
+
+
+# Start the transition state
+fw_setenv upgrade_available 1
+fw_setenv bootcount 0
+
+
+# Switch to the inactive partition
+fw_setenv mender_boot_part 3
+fw_setenv mender_boot_part_hex 3
+
+reboot
+```
+[/ui-tab]
+[/ui-tabs]
 
 After the reboot the partition changed and the bootcount increased:
 
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="GRUB"]
 ``` bash
 # Identify the active partition
 mount | grep 'on / '
@@ -274,9 +332,26 @@ grub-mender-grubenv-print bootcount upgrade_available
 # bootcount=1
 # upgrade_available=1
 ```
+[/ui-tab]
+[ui-tab title="UBoot"]
+``` bash
+# Identify the active partition
+mount | grep 'on / '
+# Output:
+#/dev/nvme0n1p3 on / type ext4 ... ...
+
+fw_printenv bootcount upgrade_available
+# Output:
+# bootcount=1
+# upgrade_available=1
+```
+[/ui-tab]
+[/ui-tabs]
 
 This is as expected, we can conclude the transition state and confirm the variables remain unchanged:
 
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="GRUB"]
 ``` bash
 grub-mender-grubenv-set upgrade_available 0
 grub-mender-grubenv-set bootcount 0
@@ -298,14 +373,39 @@ grub-mender-grubenv-print
 # upgrade_available=0
 # mender_boot_part_hex=3
 ```
+[/ui-tab]
+[ui-tab title="UBoot"]
+``` bash
+fw_setenv upgrade_available 0
+fw_setenv bootcount 0
 
+# This is now the stable state which must remain the same after reboots
+fw_printenv bootcount mender_boot_part upgrade_available mender_boot_part_hex
+# Output:
+# bootcount=0
+# mender_boot_part=3
+# upgrade_available=0
+# mender_boot_part_hex=3
+
+reboot
+
+fw_printenv bootcount mender_boot_part upgrade_available mender_boot_part_hex
+# Output:
+# bootcount=0
+# mender_boot_part=3
+# upgrade_available=0
+# mender_boot_part_hex=3
+```
+[/ui-tab]
+[/ui-tabs]
 
 ### Confirm behavior for the 'failed update and rollback' case
 
 
 The process initiation is identical to the "success" form.
 
-
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="GRUB"]
 ``` bash
 # In the normal update process, at this point the Mender Client just
 # concluded streaming the new version to the inactive partition
@@ -326,7 +426,30 @@ grub-mender-grubenv-set bootcount 0
 grub-mender-grubenv-set mender_boot_part 2
 grub-mender-grubenv-set mender_boot_part_hex 2
 ```
+[/ui-tab]
+[ui-tab title="UBoot"]
+``` bash
+# In the normal update process, at this point the Mender Client just
+# concluded streaming the new version to the inactive partition
 
+# We are currently running the active partition
+# Identify the active partition
+mount | grep 'on / '
+# Output:
+#/dev/nvme0n1p3 on / type ext4 ... ...
+
+
+# Start the transition state
+fw_setenv upgrade_available 1
+fw_setenv bootcount 0
+
+
+# Switch to the inactive partition
+fw_setenv mender_boot_part 2
+fw_setenv mender_boot_part_hex 2
+```
+[/ui-tab]
+[/ui-tabs]
 
 To trigger the rollback mechanism, rename the kernel on the inactive partition to break the boot process.
 This is equivalent to a use case where the new update contains a faulty kernel.
@@ -346,11 +469,22 @@ reboot
 The device will attempt to boot; however, it will fail and trigger a rollback to booting from the previously working partition.
 The bootloader will automatically conclude the transition state in that case:
 
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="GRUB"]
 ``` bash
 grub-mender-grubenv-print upgrade_available
 # Output:
 # upgrade_available=0
 ```
+[/ui-tab]
+[ui-tab title="UBoot"]
+``` bash
+fw_printenv upgrade_available
+# Output:
+# upgrade_available=0
+```
+[/ui-tab]
+[/ui-tabs]
 
 And the active partition is still the one we started with.
 
