@@ -28,10 +28,10 @@ If you have not yet prepared a device visit one of the following:
 When preauthorizing a device you need to know its [identity](../../02.Overview/07.Identity/docs.md). This is one or more key-value attributes, depending on the identity scheme you are using. If you connect your device so it shows up as pending in the Mender Server, you will see its identity in the Mender Server UI. Note that preauthorization is *not* based on the ID of the device, only on the key-value attributes under Identity.
 
 <!--AUTOVERSION: "mender/blob/%"/mender-->
-By default the Mender-auth client uses the [MAC address of the first interface](https://github.com/mendersoftware/mender/blob/master/support/mender-device-identity?target=_blank) on the device as the device identity, for example `mac=02:12:61:13:6c:42`.
+By default the Mender client uses the [MAC address of the first interface](https://github.com/mendersoftware/mender/blob/master/support/mender-device-identity?target=_blank) on the device as the device identity, for example `mac=02:12:61:13:6c:42`.
 
 
-### Mender clients and server connectivity
+### Mender client and server connectivity
 
 Once your device boots with a newly provisioned disk image, it should already be correctly connecting to the Mender Server. After booting the device you should see it pending authorization in the Mender Server UI, similar to the following.
 
@@ -58,7 +58,7 @@ We will generate the keys on a separate system (not on the device), and then pro
 
 !!! Make sure the system you generate keys on is adequately secured, as it will also generate the device private keys. You should consider securely deleting (e.g. `shred`) the *private* keys after provisioning the device if you do not truly need a record of them (you can keep the public keys).
 
-We will use a script to generate a keypair the Mender-auth client understands; it uses the `openssl` command to generate the keys.
+We will use a script to generate a keypair the Mender client understands; it uses the `openssl` command to generate the keys.
 
 <!--AUTOVERSION: "mender/blob/%"/mender-->
 Download the [keygen-client](https://github.com/mendersoftware/mender/blob/master/support/keygen-client?target=_blank) script into a directory:
@@ -80,7 +80,7 @@ Run it without parameters:
 ./keygen-client
 ```
 
-You will find the generated Mender-auth client keypair in a subdirectory `keys-client-generated`:
+You will find the generated Mender client keypair in a subdirectory `keys-client-generated`:
 
 ```bash
 keys-client-generated/
@@ -173,7 +173,7 @@ Your device should now be preauthorized and accepted to the Mender Server once i
 
 Now that we have generated a key for the device and preauthorized it, we need to copy the generated *private* device key to our working disk image (it typically has the `.sdimg` suffix). We copy it to its default location `/mender/mender-agent.pem` on the data partition.
 
-!!! There is a symlink from `/var/lib/mender/mender-agent.pem` on the root filesystems to `/mender/mender-agent.pem` on the data partition, which we will leave in place. If the Mender-auth client does not find a valid key it will generate one, which is not what we want when we are preauthorizing devices.
+!!! There is a symlink from `/var/lib/mender/mender-agent.pem` on the root filesystems to `/mender/mender-agent.pem` on the data partition, which we will leave in place. If the Mender client does not find a valid key it will generate one, which is not what we want when we are preauthorizing devices.
 
 ### Copy the private device key
 
@@ -201,4 +201,4 @@ If everything went as intended, your device will get the `accepted` status in th
 
 If your device shows as `pending`, see the troubleshooting on [a device shows up as pending after preauthorizing it](../../301.Troubleshoot/04.Mender-Server/docs.md#a-device-shows-up-as-pending-after-preauthorizing-it).
 
-If you do not see your device at all, verify it booted correctly and it is able to connect to the Mender Server. You can check [the Mender-auth client logs on the device](../../301.Troubleshoot/03.Mender-Client/docs.md#obtaining-client-logs) for more diagnostics information.
+If you do not see your device at all, verify it booted correctly and it is able to connect to the Mender Server. You can check [the Mender client logs on the device](../../301.Troubleshoot/03.Mender-Client/docs.md#obtaining-client-logs) for more diagnostics information.

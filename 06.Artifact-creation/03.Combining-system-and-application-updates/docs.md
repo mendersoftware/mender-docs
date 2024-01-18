@@ -11,7 +11,7 @@ There are many possible strategies to combine the Operating System and Applicati
 
 ### Operating System updates using the A/B partitioning schema
 
-When performing Operating System updates using the A/B partitioning schema, the Mender-update Client writes a new filesystem image directly to the inactive partition, using the rootfs-image update module. When complete, the Client verifies the checksum, updates the bootloader configuration, flips the active and inactive partitions, and reboots. On the first boot following an update, the Mender client will **commit** the update, making the bootloader configuration permanent.
+When performing Operating System updates using the A/B partitioning schema, the Mender Client writes a new filesystem image directly to the inactive partition, using the rootfs-image update module. When complete, the Client verifies the checksum, updates the bootloader configuration, flips the active and inactive partitions, and reboots. On the first boot following an update, the Mender client will **commit** the update, making the bootloader configuration permanent.
 
 One consequence of the Operating System update is that the update will replace all the files in a filesystem, thereby deleting any new or changed files placed there. In other words, to be updatable, a filesystem needs to be **stateless** and contain all the software required for the device to work.
 
@@ -20,9 +20,9 @@ For this reason, it is common to add a dedicated, separated persistent partition
 
 ### Application updates
 
-You can extend the Mender-update Client supporting different application-specific update patterns using the [Update Module](../08.Create-a-custom-Update-Module/docs.md) framework.
+You can extend the Mender Client supporting different application-specific update patterns using the [Update Module](../08.Create-a-custom-Update-Module/docs.md) framework.
 
-When processing an application update, the Mender-update Client can write files in any partition available on the device, including the system and the data partitions. However, as mentioned in the Operating System updates section above, any changes to the system partition will be lost on Operating System updates as the device will switch from the active to the inactive partition.
+When processing an application update, the Mender Client can write files in any partition available on the device, including the system and the data partitions. However, as mentioned in the Operating System updates section above, any changes to the system partition will be lost on Operating System updates as the device will switch from the active to the inactive partition.
 
 For this reason, if you designed the application update to persist across Operating System updates, you need to ensure that all the content of application update (the files the update consist of) end up installed on the *data partition* and **not** on either of the two A/B partitions used for Operating System updates.
 
@@ -30,7 +30,7 @@ Suppose the application update depends on specific libraries or capabilities of 
 
 ### Software versions reporting
 
-The software versions the Mender-update Client reports to the backend are the entries ending with `.version` listed in the *Provides* fields of the Artifacts installed. When processing updates, the Client can also remove existing *Provides* entries from the local Mender database according to the *Clears Provides* entry in the Mender Artifact.
+The software versions the Mender Client reports to the backend are the entries ending with `.version` listed in the *Provides* fields of the Artifacts installed. When processing updates, the Client can also remove existing *Provides* entries from the local Mender database according to the *Clears Provides* entry in the Mender Artifact.
 
 You can read more about the [Software versioning](../09.Software-versioning/docs.md) and the different options on the corresponding page.
 
@@ -54,7 +54,7 @@ The consequence of this complexity can contribute to the following:
 
 This section lists several example patterns and update scenarios where Operating System and Application updates are combined. In all the examples, the device's partitioning schema is A/B with a persistent data partition mounted on the `/data` path.
 
-![Mender partition layout](../../05.Operating-System-updates-Yocto-Project/01.Overview/mender_partition_layout.png)
+![Mender client partition layout](../../05.Operating-System-updates-Yocto-Project/01.Overview/mender_client_partition_layout.png)
 
 
 ### Operating System image and Application updates targeting the system partition
@@ -358,7 +358,7 @@ Updates:
       checksum: fa2efef86c524ede9aefb1841682bca2bb36b346b68e481c8c88c108ea2eed90
 ```
 
-As you can see, in contrast with what we verified in the previous section, the versioning key uses the `data-partition` prefix. Because the Operating System update Artifacts clears provides for `rootfs-image.*`, this versioning information will be preserved by the Mender-update Client on Operating System updates, together with the file stored in the data partition.
+As you can see, in contrast with what we verified in the previous section, the versioning key uses the `data-partition` prefix. Because the Operating System update Artifacts clears provides for `rootfs-image.*`, this versioning information will be preserved by the Mender Client on Operating System updates, together with the file stored in the data partition.
 
 Similarly, to generate the Artifact for the other application, you can run the command:
 

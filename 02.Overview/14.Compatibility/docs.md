@@ -19,15 +19,15 @@ functionality before using it.
 
 For example, when Mender releases a new [Artifact
 format](../03.Artifact/docs.md#the-mender-artifact-file-format) version, the
-*new* Mender-update client still supports older versions of the Artifact format.
-However, the inverse is not true; the Mender-update client does not support *newer*
+*new* Mender client still supports older versions of the Artifact format.
+However, the inverse is not true; the Mender client does not support *newer*
 versions of the Artifact format. So in this case you need to upgrade all Mender
 clients before starting to use new versions of the Artifact format (and the
 features it enables).
 
-As another example, the Mender clients support one version of the server API,
+As another example, the Mender client supports one version of the server API,
 while the server can support several API versions. Therefore, always update the
-server before the clients.
+server before the client.
 
 Mender also follows different support durations for different minor versions with LTS releases.
 Please refer to the [Release-information](../../302.Release-information/01.Release-schedule/docs.md) for more information about LTS releases and the release schedule.
@@ -67,10 +67,10 @@ the lists of specific criteria we use for our versioning policy.
 * It should always be possible to freely upgrade and downgrade between patch
   versions in the same minor series
 
-## Mender clients and Yocto Project version
+## Mender client and Yocto Project version
 
 <!--AUTOVERSION: "% to %"/ignore-->
-In general the Mender clients introduce new features in minor (e.g. 1.2.0 to 1.3.0) versions and the [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) is updated accordingly to easily support these new features (e.g. by exposing new [MENDER_* variables](../../05.Operating-System-updates-Yocto-Project/99.Variables/docs.md)). The [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) has branches corresponding to [versions of the Yocto Project](https://wiki.yoctoproject.org/wiki/Releases?target=_blank). 
+In general the Mender client introduces new features in minor (e.g. 1.2.0 to 1.3.0) versions and the [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) is updated accordingly to easily support these new features (e.g. by exposing new [MENDER_* variables](../../05.Operating-System-updates-Yocto-Project/99.Variables/docs.md)). The [meta-mender layer](https://github.com/mendersoftware/meta-mender?target=_blank) has branches corresponding to [versions of the Yocto Project](https://wiki.yoctoproject.org/wiki/Releases?target=_blank). 
 
 Clarification of the table:
 * *stable* - recipe is maintained by Northern.tech
@@ -101,7 +101,7 @@ Clarification of the table:
 Leverage [Mender consulting services to support other versions of the Yocto Project](https://mender.io/product/board-support?target=_blank) for your board and environment.
 
 
-## Mender clients/server and Artifact format
+## Mender client/server and Artifact format
 
 The [Mender Artifact format](../03.Artifact/docs.md) is managed by the [Mender Artifacts Library](https://github.com/mendersoftware/mender-artifact?target=_blank), which is included in the Mender client and server (for reading Artifacts) as well as in a standalone utility `mender-artifact` (for [writing Artifacts](../../06.Artifact-creation/03.Modify-an-Artifact/docs.md)).
 
@@ -136,7 +136,7 @@ The [Mender Artifact format](../03.Artifact/docs.md) is managed by the [Mender A
 
 ## Mender Server and client API
 
-The compatibility between the Mender Server and client is managed by the Device API versions exposed by the server and used by the client. If the Mender Server supports the API version of the Mender clients, they are compatible.  However, please ensure that the client and server support the [Artifact format](#mender-clientsserver-and-artifact-format) version you are using. Device API docs are available in the [API chapter](../../200.Server-side-API/?target=_blank#device-apis).
+The compatibility between the Mender Server and client is managed by the Device API versions exposed by the server and used by the client. If the Mender Server supports the API version of the Mender client, they are compatible.  However, please ensure that the client and server support the [Artifact format](#mender-clientserver-and-artifact-format) version you are using. Device API docs are available in the [API chapter](../../200.Server-side-API/?target=_blank#device-apis).
 
 
 The higher version API contains a mix of old and new API endpoints. For endpoints which haven't changed in the new version the previous version ones are assumed.
@@ -145,29 +145,29 @@ The higher version API contains a mix of old and new API endpoints. For endpoint
 *Example* The device supports the V2 API. It expects the [single V2 endpoint](https://docs.mender.io/api/#device-api-deployments-v2) to be available. For all other endpoints it will use the V1. 
 
 
-<!--AUTOVERSION: "Mender Server % and %"/ignore "Mender Server % and later"/ignore "Mender clients % and %"/ignore "Mender clients % and later"/ignore-->
-|                                | API v1 | API v2 |
-|--------------------------------|--------|--------|
-| Mender Server 1.x.x and 2.x.x  | yes    | no     |
-| Mender Server 3.0.0 and later  | yes    | yes    |
-|--------------------------------|--------|--------|
-| Mender clients 1.x.x and 2.x.x | yes    | no     |
-| Mender clients 3.0.0 and later | yes    | yes    |
+<!--AUTOVERSION: "Mender Server % and %"/ignore "Mender Server % and later"/ignore "Mender client % and %"/ignore "Mender client % and later"/ignore-->
+|                               | API v1 | API v2 |
+|-------------------------------|--------|--------|
+| Mender Server 1.x.x and 2.x.x | yes    | no     |
+| Mender Server 3.0.0 and later | yes    | yes    |
+|-------------------------------|--------|--------|
+| Mender client 1.x.x and 2.x.x | yes    | no     |
+| Mender client 3.0.0 and later | yes    | yes    |
 
 
-## Mender clients and Mender connect
+## Mender client and Mender connect
 
 <!--AUTOVERSION: "|  %"/ignore "| %"/ignore -->
-|     Mender clients / mender-connect | mender-connect version |
-|-------------------------------------|------------------------|
-|  2.6.x                              | 1.0.x                  |
-|  2.7.x                              | 1.1.x                  |
-|  3.0.x                              | 1.2.x                  |
-|  3.1.x                              | 1.2.x                  |
-|  3.2.x                              | 2.0.x <sup>1<sup>      |
-|  3.3.x                              | 2.0.x <sup>1<sup>      |
-|  3.4.x                              | 2.1.x <sup>1<sup>      |
-|  3.5.x                              | 2.1.x <sup>1<sup>      |
+|     Mender client / mender-connect | mender-connect version |
+|------------------------------------|------------------------|
+|  2.6.x                             | 1.0.x                  |
+|  2.7.x                             | 1.1.x                  |
+|  3.0.x                             | 1.2.x                  |
+|  3.1.x                             | 1.2.x                  |
+|  3.2.x                             | 2.0.x <sup>1<sup>      |
+|  3.3.x                             | 2.0.x <sup>1<sup>      |
+|  3.4.x                             | 2.1.x <sup>1<sup>      |
+|  3.5.x                             | 2.1.x <sup>1<sup>      |
 
 <!--AUTOVERSION: "mender-connect % and later"/ignore "Yocto branches 3.1 (%) and older"/ignore-->
 !!! <sup>1</sup> mender-connect 2.0.0 and later are not installed by default in Yocto branches 3.1 (dunfell) and older. To enable this or a later version, please see [the `PREFERRED_VERSION` setting when configuring the Yocto build](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build).

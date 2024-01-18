@@ -8,7 +8,7 @@ taxonomy:
 `mender-connect` is a daemon responsible for handling bidirectional
 (websocket) communication with the Mender Server. The daemon is responsible for
 implementing a range of troubleshooting features to the device as well as
-several enhancement to the [mender-update
+several enhancement to the [Mender
 client](../../03.Client-installation/01.Overview/docs.md).
 
 Mender Connect is loosely coupled with the Mender Auth Client. The main information passed between
@@ -137,10 +137,10 @@ options available:
 * `FileTransfer`:  File Transfer configuration options.
   * `Disable`: Disable file transfer.
 
-#### Mender-update client configuration
+#### Mender client configuration
 
-* `MenderClient`: Configuration for mender-update signal API.
-  * `Disable`: Disable mender-update signal hooks.
+* `MenderClient`: Configuration for mender-client dbus API.
+  * `Disable`: Disable mender-client dbus hooks.
   
 #### Port forward configuration
 

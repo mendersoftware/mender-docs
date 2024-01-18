@@ -28,7 +28,7 @@ Port numbers can be specified in the same way as you would in a browser, as a co
 
 ## Configuring polling intervals
 
-You can configure how frequently the Mender-update client will make requests to the Mender Server
+You can configure how frequently the Mender client will make requests to the Mender Server
 as described in [Polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md) before
 starting the build process.
 

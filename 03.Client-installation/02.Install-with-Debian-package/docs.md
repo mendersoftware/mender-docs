@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-This page describes how to install the Mender clients on an existing Linux
+This page describes how to install the Mender client on an existing Linux
 system. Installing Mender this way does not offer a full Mender board
 integration, so you can not carry out Operating System updates, however, it is
 possible to use Update Modules to update applications and other parts of the
@@ -24,10 +24,10 @@ See the instructions in our [downloads
 section](../../10.Downloads/docs.md#install-using-the-apt-repository) for the
 explicit steps required.
 
-### Configure the mender clients
+### Configure the mender-client
 
 The setup is different depending on your server configuration and the most
-common cases are shown below. Use `mender-setup --help` to learn about all
+common cases are shown below. Use `mender setup --help` to learn about all
 configuration options.
 
 <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install --assume-yes wget tzdata -->
@@ -122,9 +122,9 @@ If you are using a Mender client older than 4.0.0, replace `mender-updated` with
 
 <!--AUTOVERSION: "mender/tree/%#installing-from-source"/mender -->
 As an alternative to using a Debian package, it is possible to install the
-Mender clients from source by following the guidelines outlined in the
+Mender client from source by following the guidelines outlined in the
 [README.md](https://github.com/mendersoftware/mender/tree/master#installing-from-source?target=_blank)
-of the Mender clients source repository.
+of the Mender client source repository.
 
 
 

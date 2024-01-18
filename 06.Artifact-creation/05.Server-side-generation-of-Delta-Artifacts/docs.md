@@ -64,7 +64,7 @@ You can enable this feature by selecting the option "Generate and deploy Delta A
 
 ![Mender logo](deployment.jpg)
 
-When you target a device running the Mender-update Client and the Binary Delta Update Module (see Prerequisites above for details) with a deployment where this option is active, the Mender Server tries to look up the correct Delta Artifact from the firmware (`rootfs`) version currently running on the Device to the desired version you selected with the deployment.
+When you target a device running the Mender Client and the Binary Delta Update Module (see Prerequisites above for details) with a deployment where this option is active, the Mender Server tries to look up the correct Delta Artifact from the firmware (`rootfs`) version currently running on the Device to the desired version you selected with the deployment.
 
 If the Delta Artifact already exists, the Mender Server selects it and sends the corresponding deployment instructions to the Device. However, if the Delta Artifact does not exist, it will start a Delta Artifact generation job in the background to create it. In this case, the Device will temporarily receive a `No updates` response from the Server. Deployment will be in the state `pending` during the generation of the delta artifact. The resulting Delta Artifact will be served to the Device in the next update polling cycle after the generation has finished.
 

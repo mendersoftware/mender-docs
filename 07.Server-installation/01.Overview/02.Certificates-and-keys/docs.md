@@ -26,11 +26,11 @@ for which purpose can be seen below.
 | Mender-auth Client | Signs requests for JSON Web Tokens sent to the Device Authentication service. A Mender-auth Client will request a new token when it connects to the Mender Server for the first time, and when a token expires. Other Mender services which use Mender-auth, such as Mender-update, includes a token in all its communication to authenticate itself when accessing the [Device APIs](../../../200.Server-side-API/?target=_blank#device-apis). | The **Device Authentication** service stores../ the public keys of Mender Clients. |
 | Mender Artifact | Signs and verifies [Mender Artifacts](../../../02.Overview/03.Artifact/docs.md). | The **Signing system** stores the private key used for signing Mender artifacts. After an artifact is signed using the private key it is verified by the **Mender-update Clients**. |
 
-### Mender-auth Client
+### Mender Client
 
-The Mender-auth client does not need any special configuration regarding certificates as long as the
-server certificate is signed by a Certificate Authority. The client will verify trust using its
-system root certificates, which are typically provided by the `ca-certificates` package.
+The Mender-auth component, part of the Mender client, does not need any special configuration regarding certificates as long as the server certificate
+is signed by a Certificate Authority. The client will verify trust using its system root certificates, which
+are typically provided by the `ca-certificates` package.
 
 If the certificate is self-signed, the clients need to store the server certificate locally
 (`keys-generated/cert/cert.crt`) in order to verify the server's authenticity.
@@ -42,7 +42,7 @@ can have two valid certificates for the Mender Server concatenated in the server
 have received the updated server.crt, the server configuration can be updated to use the new certificate.
 In a subsequent update, the old certificate can be removed from the client's server.crt file.
 
-!!! The key of the Mender-auth Client itself is automatically generated and stored at `/var/lib/mender/mender-agent.pem` the first time the Mender-auth Client runs. We do not yet cover rotation of Mender-auth Client keys in live installations in this document.
+!!! The key of the Mender Client itself is automatically generated and stored at `/var/lib/mender/mender-agent.pem` the first time the Mender Client runs. We do not yet cover rotation of Mender Client keys in live installations in this document.
 
 
 ### Mutual TLS

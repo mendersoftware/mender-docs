@@ -13,8 +13,8 @@ process:
 ## Disk images
 
 These disk images (`*.img` or `*.sdimg`) are based on images provided by board
-manufacturers and are ready to install the Mender-update client. They are used
-to provision the device storage for devices without Mender running already.
+manufacturers and are ready to install the Mender client. They are used to
+provision the device storage for devices without Mender running already.
 
 Mender provides images based on the following distributions:
 
@@ -98,12 +98,12 @@ Please refer to your host Operating System documentation for more details.
 !!! `mender-artifact` binary is shipped also in [mender-ci-tools Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools). More information [here](../06.Artifact-creation/10.CI-CD/docs.md#mender-ci-workflows-docker-image).
 
 
-## Mender-update client
+## Mender client
 
-The Mender-update client runs on the device, checks for and installs
+The Mender client runs on the device, checks for and installs
 software updates packaged as Mender Artifacts.
 See [Client installation](../03.Client-installation/chapter.md) for more information
-about how to configure and use the Mender-update client.
+about how to configure and use the Mender client.
 
 The `mender-client` Debian package installs:
 * a `mender-auth` package, for server authentication
@@ -122,7 +122,7 @@ The `mender-client` Debian package installs:
 
 ### Installation methods
 
-You can install the Mender clients in different ways depending on your preference.
+You can install the Mender client in different ways depending on your preference.
 
 * Express installation using the [convenience
   script](#express-installation) from [https://get.mender.io](https://get.mender.io).
@@ -132,9 +132,9 @@ You can install the Mender clients in different ways depending on your preferenc
 #### Express installation
 
 Mender provides a convenience script available at [get.mender.io
-](https://get.mender.io) that non-interactively installs the Mender clients
+](https://get.mender.io) that non-interactively installs the Mender client
 [using the package manager](#install-using-the-apt-repository). Users installing
-the Mender clients this way, should be aware that:
+the Mender client this way, should be aware that:
 
 * The script requires `root` privileges to run. Therefore, carefully examine the
   script before executing it.
@@ -157,7 +157,7 @@ sudo bash get-mender.sh
 By default, the script installs the [remote terminal](#remote-terminal-add-on) and
 [configure](#mender-configure-add-on) add-ons in addition to the client. If you do not want this
 feature you can provide additional arguments to the script specifying which packages you want to
-install. For example, the following will only install the Mender-auth and Mender-update clients:
+install. For example, the following will only install the Mender client:
 
 <!--AUTOMATION: ignore -->
 ```bash
@@ -205,8 +205,8 @@ sudo apt-mark hold mender-client
 
 #### Install using the APT repository
 
-Before installing the Mender clients, you need to set up the Mender APT
-repository. Afterwards, you can install and update the Mender clients using the
+Before installing the Mender client, you need to set up the Mender APT
+repository. Afterwards, you can install and update the Mender client using the
 `apt` command line interface.
 
 ##### Set up the APT repository
@@ -306,7 +306,7 @@ echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/
 !!! the above command. Do not use the `experimental` repository in production
 !!! as these releases are not fully tested.
 
-4. Update the package index and install the Mender clients:
+4. Update the package index and install the Mender client:
 
 <!--AUTOMATION: ignore -->
 ```bash

@@ -78,7 +78,7 @@ Please check bellow for different approaches on how to achieve this:
 * [Yocto](#yocto)
 * [Debian](#debian)
 
-!! If you deploy a config file with a badly formatted json, the Mender clients on the device won't start correctly after the update.
+!! If you deploy a config file with a badly formatted json, `mender-updated` on the device won't start correctly after the update.
 !! The device will roll back to the previous version only after the device is restarted by other means.
 !! During that server will show the deployment status as "rebooting" and after the roll back the deployment will fail.
 

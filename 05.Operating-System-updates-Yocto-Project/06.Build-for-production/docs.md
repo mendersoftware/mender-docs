@@ -28,7 +28,7 @@ bitbake-layers remove-layer meta-mender-demo
 
 ## Configure polling intervals
 
-For security reasons, the Mender clients do not require any open ports at the embedded device. Therefore, all communication between the Mender clients and the server is always initiated by the clients and it is important to configure the clients so that the frequency of sending various requests to the server is reasonable for a given setup.
+For security reasons, the Mender client does not require any open ports at the embedded device. Therefore, all communication between the Mender client and the server is always initiated by the client and it is important to configure the client so that the frequency of sending various requests to the server is reasonable for a given setup.
 
 Please refer to [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md), for information on how to choose and how to set polling intervals.
 
@@ -113,9 +113,9 @@ Please note that setting up for production will require that you explicitly set 
 ## Artifact signing and verification keys
 
 The private key used for signing the Mender Artifact should be protected and kept outside of the build system,
-thus there are no extra steps needed to add it to any part of the build system, Mender Clients nor Server.
+thus there are no extra steps needed to add it to any part of the build system, Mender Client nor Server.
 
-The Mender-update Client requires having the public key stored on the device to verify
+The Mender Client requires having the public key stored on the device to verify
 the Mender Artifact signatures. The best way to include a public key in the
 client is to add it to your own layer. Set the name of the verification key to
 `artifact-verify-key.pem` and append it to `SRC_URI` of the `mender` recipe

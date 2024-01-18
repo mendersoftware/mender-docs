@@ -205,7 +205,7 @@ SRC_URI:append = " file://0005-fw_env_main.c-Fix-incorrect-size-for-malloc-ed-st
 
 Unlike x86, ARM based boards usually do not implement [the UEFI boot standard](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface?target=_blank). Therefore, on ARM, U-Boot is used as a first stage bootloader which provides a UEFI loader, and this is then used to boot GRUB using the UEFI boot standard. For a large number of boards out there, this works out of the box.
 
-!!! Do not confuse the usage of "U-Boot as a first stage bootloader" with "U-Boot integration". "GRUB integration" still means that GRUB is used for all integration with the Mender-update client and the rootfs-image update module.
+!!! Do not confuse the usage of "U-Boot as a first stage bootloader" with "U-Boot integration". "GRUB integration" still means that GRUB is used for all integration with the Mender client and the rootfs-image update module.
 
 However, some boards do not call `distro_bootcmd` as part of their U-Boot startup script, and in this case the approach will not work. A typical symptom is that the U-Boot bootloader skips loading of GRUB entirely and goes directly to loading the kernel. If this happens to you, you have two choices:
 

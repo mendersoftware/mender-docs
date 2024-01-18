@@ -254,7 +254,7 @@ docker run -it -p 85:85 --pull=always \
 ```
 
 !!! Be aware that the environment variable `SERVER_IP` must be set to the Raspberry PI's local network
-!!! IP address. The Docker container running the Mender Clients will automatically add a line in `/etc/hosts`
+!!! IP address. The Docker container running the Mender Client will automatically add a line in `/etc/hosts`
 !!! to make `gateway.docker.mender.io` point to the specified IP address.
 
 ![Pending device](pending-device.png)
