@@ -193,8 +193,8 @@ Then install the Mender Artifact on the target device:
 mender-update install /tmp/web-file-1.mender
 ```
 
-<!--AUTOVERSION: "Before mender-update %"/ignore "mender-client below version %"/ignore-->
-!!! Note: Before mender-update 4.0.0 was released, the `install` command was built into the `mender` binary. If you are using mender-client below version 4.0.0, use `mender-update` instead of `mender` in the snippet above.
+<!--AUTOVERSION: "Before `mender-update` %"/ignore "mender-client below version %"/ignore-->
+!!! Note: Before `mender-update` 4.0.0 was released, the `install` command was built into the `mender` binary. If you are using mender-client below version 4.0.0, use `mender-update` instead of `mender` in the snippet above.
 
 ### Verify the deployment on the device
 

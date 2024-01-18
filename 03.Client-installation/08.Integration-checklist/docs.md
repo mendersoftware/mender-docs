@@ -30,7 +30,7 @@ This checklist will verify some key functionality aspects of the Mender integrat
 
 !!! If full rootfs updates are not required, this is the only validation needed.
 
-The Mender Client consists of a number of components and configuration files, with the `mender-auth` userspace application being the responsible for authentication against the Mender Server, and mender-update responsible for executing the updates.
+The Mender Client consists of a number of components and configuration files, with the `mender-auth` userspace application being the responsible for authentication against the Mender Server, and `mender-update` responsible for executing the updates.
 By default, both run as systemd services.
 To verify the correct installation of the service, run the following commands and confirm the output:
 
