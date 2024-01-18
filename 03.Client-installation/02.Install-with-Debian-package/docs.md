@@ -35,7 +35,7 @@ configuration options.
 <!-- AUTOMATION: execute=wget -O get-mender.sh https://get.mender.io -->
 
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
-<!--AUTOMATION: execute=bash get-mender.sh -->
+<!--AUTOMATION: execute=bash get-mender.sh -c experimental -->
 <!--AUTOMATION: execute=DEVICE_TYPE=device-type -->
 <!--AUTOMATION: execute=TENANT_TOKEN=secure-token -->
 <!--AUTOMATION: execute=SERVER_IP_ADDR=1.2.3.4 -->
