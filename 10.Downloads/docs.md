@@ -114,6 +114,9 @@ The `mender-client` Debian package installs:
 * the default [inventory scripts](../03.Client-installation/04.Inventory/docs.md)
 * and the default [update modules](../03.Client-installation/05.Use-an-updatemodule/docs.md)
   (and its generators).
+* the `mender-flash` tool
+* the `mender-setup` tool
+* the `mender-snapshot` tool
 
 !!! The installation was slightly different for Mender clients 3.x and
 !!! older. Please refer to the Mender Product 3.6 documentation for details
