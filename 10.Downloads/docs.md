@@ -106,6 +106,18 @@ See [Client installation](../03.Client-installation/chapter.md) for more informa
 about how to configure and use the Mender client.
 
 The `mender-client` Debian package installs:
+
+* the binary,
+* a systemd service,
+* the default [identity script](../03.Client-installation/03.Identity/docs.md)
+* the default [inventory scripts](../03.Client-installation/04.Inventory/docs.md)
+* and the default [update modules](../03.Client-installation/05.Use-an-updatemodule/docs.md)
+  (and its generators).
+
+If the `-c experimental` flag was used when executing the script from https://get.mender.io, then
+you will get the 4.x series of the client, which has slightly different components. The
+`mender-client` Debian package then installs:
+
 * a `mender-auth` package, for server authentication
 * a `mender-update` package, for doing updates
 * two binaries, `mender-auth` and `mender-update`
@@ -117,10 +129,6 @@ The `mender-client` Debian package installs:
 * the `mender-flash` tool
 * the `mender-setup` tool
 * the `mender-snapshot` tool
-
-!!! The installation was slightly different for Mender clients 3.x and
-!!! older. Please refer to the Mender Product 3.6 documentation for details
-!!! about this.
 
 
 ### Installation methods
