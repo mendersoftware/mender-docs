@@ -50,8 +50,8 @@ To see the version information after the Artifact is deployed, try to expand a d
 mender-update show-provides
 ```
 
-<!--AUTOVERSION: "Before Mender-update client %"/ignore-->
-!!! Before Mender-update client 4.0.0, the command was called `mender`. Please replace `mender-update` with `mender` in the snippet above if you are using such a version.
+<!--AUTOVERSION: "Before `mender-update` %"/ignore-->
+!!! Before `mender-update` 4.0.0, the command was called `mender`. Please replace `mender-update` with `mender` in the snippet above if you are using such a version.
 
 Example output:
 

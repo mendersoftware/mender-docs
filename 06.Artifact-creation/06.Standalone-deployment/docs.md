@@ -33,8 +33,8 @@ pi@raspberrypi:~$ sudo systemctl status mender-updated
            └─320 /usr/bin/mender-update daemon
 ```
 
-<!--AUTOVERSION: "Before Mender-update client %"/ignore-->
-!!! Before Mender-update client 4.0.0, the service was called `mender-client`. Please replace `mender-updated` with `mender-client` in the snippets if you are using such a version.
+<!--AUTOVERSION: "Before `mender-update` %"/ignore-->
+!!! Before `mender-update` 4.0.0, the service was called `mender-client`. Please replace `mender-updated` with `mender-client` in the snippets if you are using such a version.
 
 The status reported as active indicates that in order to use standalone mode you have to stop and disable Mender running as a daemon.
 ```bash
@@ -53,8 +53,8 @@ device terminal:
 mender-update install <URI>
 ```
 
-<!--AUTOVERSION: "Before Mender-update client %"/ignore-->
-!!! Before Mender-update client 4.0.0, the command was just called `mender`. Please replace `mender-update` with `mender` in the snippet above if you are using such a version. This applies to the snippets below as well.
+<!--AUTOVERSION: "Before `mender-update` %"/ignore-->
+!!! Before `mender-update` 4.0.0, the command was just called `mender`. Please replace `mender-update` with `mender` in the snippet above if you are using such a version. This applies to the snippets below as well.
 
 `<URI>` can be any type of file-based storage or an HTTP/HTTPS URL.
 For example, if you are updating from a USB stick, you could use `/mnt/usb1/release1.mender`.

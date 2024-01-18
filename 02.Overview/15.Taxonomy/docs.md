@@ -68,7 +68,7 @@ hardware and software. See the documentation on [Artifact](../03.Artifact/docs.m
 for more information.
 
 * _Mender Client_ - A collective term for the Mender Update service, which consists
-of two service components, "mender-auth" and "mender-update".
+of two service components, `mender-auth` and `mender-update`.
 
 * _Mender Connect_ - A user space application providing the add-ons
 framework, as well as implementation of particular add-ons which you can enable
@@ -92,10 +92,9 @@ applications. This application is required by other applications that
 communicate with the Mender Server.
 
 * _Mender-update_, _Mender-update Client_ - A user space application installing
-updates to a device it is running on. It uses the Mender Server-side API to
-connect to the Mender Server to authenticate, get the artifacts, report
-inventory, log the progress and status of the installations. Requires
-mender-auth to be running.
+updates to a device it is running on. It uses the the `mender-auth` client
+service and Mender Server-side API to connect to the Mender Server, get the
+artifacts, report inventory, log the progress and status of the installations.
 
 * _Operating System update_ - An update which replaces the operating system's filesystem
 thanks to the A/B partitioning schema. The Mender Client writes a new filesystem image
