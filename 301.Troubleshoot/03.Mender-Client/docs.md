@@ -4,6 +4,19 @@ taxonomy:
     category: docs
 ---
 
+## `mender-client` package have been kept back
+
+<!--AUTOVERSION: "Mender client version %"/ignore "mark back the %"/ignore "`mender-client` package to version %"/ignore "package to the %"/ignore "it to the % version"/ignore -->
+After releasing the Mender client version 4.0.0, we realized a critical issue with the Debian
+packaging. Therefore, we decided to revert it and mark back the 3.5.2 release as the latest version
+in the APT repository. If you upgraded the `mender-client` package to version 4.0.0 on a device
+during that time, APT will keep the `mender-client` package to the 4.0.0 version and won't downgrade
+it to the 3.5.2 version by default.
+
+To solve the issue, either:
+* Run `apt-get install mender-client`
+* Run again the [express installation script(../../10.Downloads/docs.md#Express-installation)
+
 ## Removed previous stable APT repositories
 
 We [removed](../../10.Downloads/docs.md#Set-up-the-APT-repository) the previously deprecated stable APT repository:
