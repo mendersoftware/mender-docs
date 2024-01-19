@@ -88,21 +88,23 @@ Start the virtual client in daemon mode and confirm it's working.
 docker run -d -it -p 85:85 --pull=always mendersoftware/mender-client-qemu
 sleep 10
 docker ps | grep 'mendersoftware/mender-client-qemu' > /dev/null && echo "Virtual client start successfully"  || echo "Container is not running or failed to start"
+CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aqf "ancestor=mendersoftware/mender-client-qemu"))
 ```
 
-! The virtual client needs to start succesfully for the below commands to work.
-! If you're experiencing issues, please first check that you can ssh to the virtual client succesfully.
-! `ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 8822 root@$CONTAINER_IP`
+The virtual client needs to start succesfully for the below commands to work.
+If you're experiencing issues, please first check that you can ssh to the virtual client succesfully.
+`ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 8822 root@$CONTAINER_IP`
+
+! For versions prior the Mender client 4.0 replace `mender-authd` with `mender-client`
 
 
 ```bash
-CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aqf "ancestor=mendersoftware/mender-client-qemu"))
 # Update certificates to the device
 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P 8822 device-private.key root@$CONTAINER_IP:/data/mender/mender-cert-private.pem
 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P 8822 device-cert.pem root@$CONTAINER_IP:/data/mender/mender-cert.pem
 
-# Stop the mender-client service
-ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 8822 root@$CONTAINER_IP systemctl stop mender-client
+# Stop the mender-authd service
+ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 8822 root@$CONTAINER_IP systemctl stop mender-authd
 
 # Create mender.conf and modified etc/hosts
 cat > mender.conf << EOF
@@ -129,9 +131,9 @@ scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P 8822 mender.c
 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P 8822 hosts root@$CONTAINER_IP:/etc/hosts
 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P 8822 ca.crt root@$CONTAINER_IP:/usr/local/share/ca-certificates/mender/ca.crt
 
-# Load the certificates on the device and start the mender-client service
+# Load the certificates on the device and start the mender-authd service
 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 8822 root@$CONTAINER_IP update-ca-certificates
-ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 8822 root@$CONTAINER_IP systemctl start mender-client
+ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 8822 root@$CONTAINER_IP systemctl start mender-authd
 ```
 
 
