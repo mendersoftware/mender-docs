@@ -144,16 +144,3 @@ Since this change is the same on every device, it is natural to automate this as
 If everything went as intended, your device shows up as `accepted` status in the Mender Server. You can log in to the Mender UI to ensure your device appears on the device list and reports inventory.
 
 If your device is not showing up, make sure you installed the certificates correctly - both on the server and on the device. Check client logs and/or server logs for error messages that can identify what is wrong. See the [troubleshooting section on connecting devices](../../301.Troubleshoot/05.Device-Runtime/docs.md#mender-server-connection-issues) in this case.
-
-## Check the health of the `mtls-ambassador`
-
-You can rely on the `/status` endpoint for checking the ambassador status. You can check it from a device (virtual or physical) with the right certificates.
-
-Run the following command:
-
-```bash
-# Replace with the domain you set in the previous steps
-MTLS_DOMAIN=my-server.com
-
-curl -X GET --cert /data/mender/mender-cert.pem --key /data/mender/mender-cert-private.pem  https://${MTLS_DOMAIN}/status
-```

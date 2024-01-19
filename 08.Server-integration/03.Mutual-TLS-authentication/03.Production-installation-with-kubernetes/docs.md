@@ -205,3 +205,17 @@ EOF
 kubectl apply -f mender-mtls-service.yml
 ```
 
+
+## Check the health of the `mtls-ambassador`
+
+
+You can rely on the `/status` endpoint for checking the ambassador status. You can check it from a device (virtual or physical) with the right certificates.
+
+Run the following command:
+
+```bash
+# Replace with the domain you set in the previous steps
+MTLS_DOMAIN=my-server.com
+
+curl -X GET --cert /data/mender/mender-cert.pem --key /data/mender/mender-cert-private.pem  https://${MTLS_DOMAIN}/status
+```
