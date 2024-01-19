@@ -1,0 +1,81 @@
+---
+title: Upgrading
+taxonomy:
+    category: docs
+---
+
+This page describes how to upgrade one Mender client version to a different Mender client version.
+
+## Minor and patch versions
+
+<!--AUTOVERSION: "% -> %"/ignore-->
+If you are upgrading from one minor version to another, such as 3.4.0 -> 3.5.0, or from one patch
+version to another patch version, such as 3.5.1 -> 3.5.2, then no manual intervention is
+needed. Minor and patch versions are always backwards compatible. This follows from Semantic
+Versioning, which is described in more detail on [the Compatibility
+page](../../../02.Overview/14.Compatibility/docs.md).
+
+## Major versions
+
+New major versions may come with changes that require manual migration steps. Changes of this sort
+are sometimes necessary to fix problems that cannot be dealt with in minor releases, or enable new
+behaviors that conflict with existing behaviors in some way.
+
+<!--AUTOVERSION: "to % or later"/ignore-->
+### Upgrade the Mender client 3.x series to 4.0.0 or later
+
+<!--AUTOVERSION: "In Mender Client %"/ignore-->
+In Mender Client 4.0.0, the service was split into several smaller components. Previously the
+`mender` binary tool handled everything; now there are several smaller ones with distinct roles:
+
+* `mender-auth` for handling server communication and authentication
+* `mender-setup` for handling Mender configuration setup
+* `mender-snapshot` for handling snapshotting of live filesystems
+* `mender-update` for handling updates.
+
+Following that change, the Linux systemd service was also split from `mender-client` into
+`mender-authd` and `mender-updated`.
+
+#### Migration steps
+
+When referring to "scripts" below, we mean any Update Module, State Script, or other script which
+executes on the device. All scripts that ship with Mender, and which you have not modified, do not
+need to be changed, since they will be auto-updated by the package manager.
+
+1. If any scripts call this command:
+	* `mender bootstrap`
+   Then they need to be changed to call `mender-auth bootstrap` instead of `mender bootstrap`.
+
+2. If any scripts call this command:
+	* `mender setup`
+   Then they need to be changed to call `mender-setup` instead of `mender setup`.
+
+<!--AUTOVERSION: "at least mender-artifact version %"/ignore-->
+3. If any scripts call this command:
+	* `mender snapshot`
+   Then they need to be changed to call `mender-snapshot` instead of `mender snapshot`. Note that
+   if you are using snapshotting through mender-artifact's "ssh" feature, then you need
+   at least mender-artifact version 3.11.0.
+
+4. If any scripts call one of these commands:
+	* `mender check-update`
+	* `mender commit`
+	* `mender install`
+	* `mender rollback`
+	* `mender send-inventory`
+	* `mender show-artifact`
+	* `mender show-provides`
+   Then they need to be changed to call `mender-update <COMMAND>` instead of `mender <COMMAND>`.
+
+5. If any scripts call one of these commands:
+	* `mender daemon`
+   Then you will need several changes. Since `mender-auth` and `mender-update` are now separate
+   daemons, you will need to start both of them, with `mender-auth daemon` and `mender-update
+   daemon`, respectively.
+
+6. If any scripts call either `journalctl` or `systemctl` with `mender-client` as an argument, then
+   they will need to change depending on context. There are two services, `mender-authd` and
+   `mender-updated`. Depending on which one is being manipulated, you need to use one of those
+   two. Additionally, it may be necessary to invoke both services if you want to ensure that both
+   services are stopped, for instance. Bringing the services up should require only `systemctl start
+   mender-updated`, since it has a dependency on `mender-authd`.
