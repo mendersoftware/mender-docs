@@ -24,6 +24,8 @@ behaviors that conflict with existing behaviors in some way.
 <!--AUTOVERSION: "to % or later"/ignore-->
 ### Upgrade the Mender client 3.x series to 4.0.0 or later
 
+#### Overview
+
 <!--AUTOVERSION: "In Mender Client %"/ignore-->
 In Mender Client 4.0.0, the service was split into several smaller components. Previously the
 `mender` binary tool handled everything; now there are several smaller ones with distinct roles:
@@ -36,11 +38,26 @@ In Mender Client 4.0.0, the service was split into several smaller components. P
 Following that change, the Linux systemd service was also split from `mender-client` into
 `mender-authd` and `mender-updated`.
 
+#### Upgrade using a Debian package
+
+<!--AUTOVERSION: "Mender client version % is not yet"/ignore-->
+Upgrading to Mender client version 4.0.0 is not yet supported when using a Debian package. Support
+for this will be added at a later time.
+
+#### Upgrade using Yocto
+
+<!--AUTOVERSION: "Mender client version % or later"/ignore "Yocto 5.0 (%)"/ignore "Yocto 4.0 (%)"/ignore-->
+Mender client version 4.0.0 or later will automatically be built on Yocto 5.0 (scarthgap) and
+later. If you want to enable building of Mender client version 4.0.0 or later while on
+Yocto 4.0 (kirkstone) or older, please refer to [this specific section in our Troubleshoot
+guide](../../../301.Troubleshoot/01.Yocto-project-build/docs.md#mender-client-version-4-0-0-have-been-released-but-my-build-still-uses-the-single-client-3-x-series).
+
 #### Migration steps
 
-When referring to "scripts" below, we mean any Update Module, State Script, or other script which
-executes on the device. All scripts that ship with Mender, and which you have not modified, do not
-need to be changed, since they will be auto-updated by the package manager.
+Regardless of whether you are using Yocto or a Debian package, there are some migration steps which
+are required. When referring to "scripts" below, we mean any Update Module, State Script, or other
+script which executes on the device. All scripts that ship with Mender, and which you have not
+modified, do not need to be changed, since they will be auto-updated by the package manager.
 
 1. If any scripts call this command:
 	* `mender bootstrap`
