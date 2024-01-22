@@ -96,8 +96,8 @@ HOST="host-ip"
 mender-snapshot dump | ssh $USER@$HOST /bin/sh -c 'cat > $HOME/root-part.ext4'
 ```
 
-<!--AUTOVERSION: "Before Mender-snapshot %"/ignore-->
-!!! Before Mender-snapshot 4.0.0, the functionality was built into the `mender`
+<!--AUTOVERSION: "Before `mender-snapshot` %"/ignore-->
+!!! Before `mender-snapshot` 4.0.0, the functionality was built into the `mender`
 !!! command. Please use `mender snapshot` in place of `mender-snapshot` (note
 !!! the dash) in the snippet above, as well as in the remaining snippets below.
 

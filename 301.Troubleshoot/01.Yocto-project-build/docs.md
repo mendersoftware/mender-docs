@@ -4,11 +4,11 @@ taxonomy:
     category: docs
 ---
 
-<!--AUTOVERSION: "Mender clients % have been released"/ignore-->
-## Mender clients 4.0.0 have been released but my build still uses the single-client 3.x series
+<!--AUTOVERSION: "Mender client version % have been released"/ignore-->
+## Mender client version 4.0.0 have been released but my build still uses the single-client 3.x series
 
-<!--AUTOVERSION: "Yocto branches 4.0 (%) and older"/ignore "Mender clients % and later"/ignore-->
-Mender clients 4.0.0 and later have been split up into several separate components: `mender-auth` and `mender-update`, plus `mender-snapshot` which is now a separate recipe. This also changes the binary names, and just `mender` by itself is not valid anymore. Because of this it is not completely backwards compatible. On the stable Yocto branches 4.0 (kirkstone) and older, the latest major release is the 3.x series, and therefore 4.0 and later are not built by meta-mender unless requested.
+<!--AUTOVERSION: "Yocto branches 4.0 (%) and older"/ignore "Mender client version % and later"/ignore-->
+Mender client version 4.0.0 and later have been split up into several separate components: `mender-auth` and `mender-update`, plus `mender-snapshot` which is now a separate recipe. This also changes the binary names, and just `mender` by itself is not valid anymore. Because of this it is not completely backwards compatible. On the stable Yocto branches 4.0 (kirkstone) and older, the latest major release is the 3.x series, and therefore 4.0 and later are not built by meta-mender unless requested.
 
 <!--AUTOVERSION: "To request version % of the clients"/mender-->
 To request version 4.0.0 of the clients, add a snippet like the following to `local.conf`:

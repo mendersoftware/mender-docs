@@ -19,8 +19,7 @@ For an explanation of the difference between *managed* and *standalone* deployme
 ## Setting Mender up for standalone mode
 
 If you would like to run Mender in *standalone* mode, you
-must make sure that the Mender-update client does *not run as a daemon*. In most cases this
-will entail disabling or removing any `systemd` unit that starts the Mender-update client. If you want to check if Mender is running as a daemon, you can try the following command:
+must make sure that the `mender-updated` service isn't running. If you want to check if Mender is running as a daemon, you can try the following command:
 ```bash
 pi@raspberrypi:~$ sudo systemctl status mender-updated
 ● mender-updated.service - Mender OTA update service

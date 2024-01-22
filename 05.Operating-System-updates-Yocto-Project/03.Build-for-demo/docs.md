@@ -207,7 +207,7 @@ bitbake-layers add-layer ../meta-mender/meta-mender-demo
 
 #### Configuring the build
 
-!!! The configuration in `conf/local.conf` below will create a build that runs the Mender-update client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation). See the [section on customizations](../05.Customize-Mender/docs.md#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
+!!! The configuration in `conf/local.conf` below will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation). See the [section on customizations](../05.Customize-Mender/docs.md#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
 
 Add these lines to the start of your `conf/local.conf`:
 
