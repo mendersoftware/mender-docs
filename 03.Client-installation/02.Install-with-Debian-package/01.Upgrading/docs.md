@@ -73,9 +73,6 @@ need to be changed, since they will be auto-updated by the package manager.
    daemons, you will need to start both of them, with `mender-auth daemon` and `mender-update
    daemon`, respectively.
 
-6. If any scripts call either `journalctl` or `systemctl` with `mender-client` as an argument, then
-   they will need to change depending on context. There are two services, `mender-authd` and
-   `mender-updated`. Depending on which one is being manipulated, you need to use one of those
-   two. Additionally, it may be necessary to invoke both services if you want to ensure that both
-   services are stopped, for instance. Bringing the services up should require only `systemctl start
-   mender-updated`, since it has a dependency on `mender-authd`.
+6. If any scripts call either `journalctl` or `systemctl` with `mender-client` as an argument, you
+   will need to change that. `mender-client` service has been replaced by two services
+   `mender-authd` and `mender-updated`.

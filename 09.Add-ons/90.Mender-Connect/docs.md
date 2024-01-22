@@ -11,9 +11,9 @@ implementing a range of troubleshooting features to the device as well as
 several enhancement to the [Mender
 client](../../03.Client-installation/01.Overview/docs.md).
 
-Mender Connect is loosely coupled with the Mender Auth Client. The main information passed between
+Mender Connect is loosely coupled with the `mender-auth`. The main information passed between
 `mender-auth` and `mender-connect` is the device authorization status. Since only accepted devices
-can interact with the Mender Server, the Mender-auth client passes the authorization token over DBus
+can interact with the Mender Server, `mender-auth` passes the authorization token over DBus
 which Mender Connect uses to establish a
 [Websocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) connection to the
 server. We use the well-known and well-defined open APIs, which makes the solution flexible and

@@ -184,8 +184,8 @@ sudo bash get-mender.sh mender-client
 
 ##### Upgrading Mender after the express installation
 
-After installing the Mender clients with [get.mender.io](https://get.mender.io),
-the packages are maintained by the package manager. To upgrade them, simply run
+After installing the Mender client with [get.mender.io](https://get.mender.io),
+the packages are maintained by the package manager. To upgrade the software, simply run
 
 <!--AUTOMATION: ignore -->
 ```bash
@@ -200,7 +200,7 @@ sudo apt-get upgrade
 !!! modified the original files.
 
 
-To prevent the Mender clients from upgrading when upgrading the rest of the
+To prevent the Mender client from upgrading when upgrading the rest of the
 system, mark the packages to be held with:
 
 <!--AUTOMATION: ignore -->
@@ -328,7 +328,7 @@ sudo apt-get install mender-client
 <!-- AUTOMATION: execute=apt-get update -->
 <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y mender-client -->
 
- To prevent the Mender clients from upgrading when upgrading the rest of the
+ To prevent the Mender client from upgrading when upgrading the rest of the
 system, mark the packages to be held with:
 
 <!--AUTOMATION: ignore -->
@@ -342,7 +342,7 @@ sudo apt-mark hold mender-client
 
 ### Requirements
 
-You need two applications for any add-on to function: the [Mender-auth Client](../02.Overview/15.Taxonomy/docs.md)
+You need two applications for any add-on to function: [`mender-auth`](../02.Overview/15.Taxonomy/docs.md), one of the components of the Mender Client,
 and [Mender Connect](../02.Overview/15.Taxonomy/docs.md). If you have used the [express
 installation](#express-installation) script, you already have both installed.
 
@@ -366,17 +366,17 @@ sudo apt-get install mender-connect
 
 ### Remote Terminal add-on
 
-The Remote Terminal does not require any items installed other than the Mender-auth Client
+The Remote Terminal does not require any items installed other than `mender-auth`
 and Mender Connect.
 
 ### File transfer add-on
 
-The File Transfer does not require any items installed other than the Mender-auth Client
+The File Transfer does not require any items installed other than `mender-auth`
 and Mender Connect.
 
 ### Mender Configure add-on
 
-Mender offers a configure extension (`mender-configure`) to the Mender-update client
+Mender offers a configure extension (`mender-configure`) to the `mender-update` client
 that enables managing device configuration. See the
 [add-on page for Mender Configure](../09.Add-ons/10.Configure/docs.md) for
 more information.

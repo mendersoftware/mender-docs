@@ -55,8 +55,8 @@ SRC_URI:append = " file://mender.conf"
 Replace `<DIRECTORY-WITH-MENDER-CONF>` with the path to the `mender.conf` file, relative to the
 recipe file.
 
-<!--AUTOVERSION: "Prior to Mender clients %"/ignore-->
-!!! Prior to Mender clients 4.0.0, the recipe was called `mender-client`. Please modify
+<!--AUTOVERSION: "Prior to Mender client version %"/ignore-->
+!!! Prior to Mender client version 4.0.0, the recipe was called `mender-client`. Please modify
 !!! `mender-client_%.bbappend` instead of `mender_%.bbappend` if you are using such a version. This
 !!! applies to the sections below as well.
 
