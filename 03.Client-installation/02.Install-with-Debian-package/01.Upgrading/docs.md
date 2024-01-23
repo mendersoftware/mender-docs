@@ -38,6 +38,22 @@ In Mender Client 4.0.0, the service was split into several smaller components. P
 Following that change, the Linux systemd service was also split from `mender-client` into
 `mender-authd` and `mender-updated`.
 
+<!--AUTOVERSION: "Mender client % and later"/ignore-->
+The following features and config are not available in Mender client 4.0.0 and later:
+
+- [Synchronized
+  updates](https://docs.mender.io/3.6/overview/customize-the-update-process#synchronized-updates)
+- [Update Management API](https://docs.mender.io/3.6/device-side-api/io.mender.update1)
+- The
+  [connectivity](https://docs.mender.io/3.6/client-installation/configuration-file/configuration-options#connectivity)
+  options in the client setting. The new client does not cache connections, so these options are
+  not needed anymore
+
+<!--AUTOVERSION: "Mender client % and later"/ignore-->
+In Mender client 4.0.0 and later the rootfs-image update type is no longer embedded in the client
+codebase but is treated as any other external update module. A binary CLI tool `mender-flash` now
+gets installed as part of the Mender client to serve the needs of the external rootfs update module.
+
 #### Upgrade using a Debian package
 
 <!--AUTOVERSION: "Mender client version % is not yet"/ignore-->
