@@ -4,6 +4,25 @@ taxonomy:
     category: docs
 ---
 
+<!--AUTOVERSION: "Mender client version % have been released"/ignore-->
+## Mender client version 4.0.0 have been released but my build still uses the single-client 3.x series
+
+<!--AUTOVERSION: "Yocto branches 4.0 (%) and older"/ignore "Mender client version % and later"/ignore-->
+Mender client version 4.0.0 and later have been split up into several separate components: `mender-auth` and `mender-update`, plus `mender-snapshot` which is now a separate recipe. This also changes the binary names, and just `mender` by itself is not valid anymore. Because of this it is not completely backwards compatible. On the stable Yocto branches 4.0 (kirkstone) and older, the latest major release is the 3.x series, and therefore 4.0 and later are not built by meta-mender unless requested.
+
+<!--AUTOVERSION: "To request version % of the clients"/mender-->
+To request version 4.0.0 of the clients, add a snippet like the following to `local.conf`:
+
+<!--AUTOVERSION: "PREFERRED_VERSION_mender-client = \"%\""/mender-->
+```
+PREFERRED_PROVIDER_mender-native =  "mender-native"
+PREFERRED_RPROVIDER_mender-auth =   "mender"
+PREFERRED_RPROVIDER_mender-update = "mender"
+```
+
+<!--AUTOVERSION: "Yocto branches higher than 4.0 (%)"/ignore "Mender client % and later"/ignore-->
+In Yocto branches higher than 4.0 (kirkstone), Mender client 4.0.0 and later will be built by default.
+
 <!--AUTOVERSION: "Mender client % has been released"/ignore-->
 ## Mender client 3.0.0 has been released but my build still uses the 2.x series
 
@@ -186,7 +205,7 @@ SRC_URI:append = " file://0005-fw_env_main.c-Fix-incorrect-size-for-malloc-ed-st
 
 Unlike x86, ARM based boards usually do not implement [the UEFI boot standard](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface?target=_blank). Therefore, on ARM, U-Boot is used as a first stage bootloader which provides a UEFI loader, and this is then used to boot GRUB using the UEFI boot standard. For a large number of boards out there, this works out of the box.
 
-!!! Do not confuse the usage of "U-Boot as a first stage bootloader" with "U-Boot integration". "GRUB integration" still means that GRUB is used for all integration with the Mender client.
+!!! Do not confuse the usage of "U-Boot as a first stage bootloader" with "U-Boot integration". "GRUB integration" still means that GRUB is used for all integration with the Mender client and the rootfs-image update module.
 
 However, some boards do not call `distro_bootcmd` as part of their U-Boot startup script, and in this case the approach will not work. A typical symptom is that the U-Boot bootloader skips loading of GRUB entirely and goes directly to loading the kernel. If this happens to you, you have two choices:
 
@@ -307,9 +326,13 @@ MENDER_PERSISTENT_CONFIGURATION_VARS = "RootfsPartA RootfsPartB"
 For users still on the old setup, there is a `state-script` available that will
 help migrate a device from the old setup to the new one. This is enabled by adding
 ```bash
-IMAGE_INSTALL:append = " mender-client-migrate-configuration"
+IMAGE_INSTALL:append = " mender-migrate-configuration"
 ```
 to your `local.conf` file.
+
+<!--AUTOVERSION: "Yocto 4.0 \"%\" and older"/ignore-->
+!!! On Yocto 4.0 "kirkstone" and older, the install target is called
+!!! `mender-client-migrate-configuration`.
 
 
 ## I get a build error "Disk Requirements: At least xxx more space needed on the / filesystem." or "The rootfs size xxx(K) overrides IMAGE_ROOTFS_MAXSIZE: xxx(K)"
