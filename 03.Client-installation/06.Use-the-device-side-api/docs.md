@@ -10,6 +10,8 @@ Mender client, receives the results from the client, and transmits a response on
 
 ## Synchronized updates using the Device-side API
 
+!! This feature is removed in Mender client 4.0 and later. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
+
 An application running locally on the device can tell the Mender client to wait at specific
 points in the deployment setting Update Control Maps in the Mender client.
 
@@ -23,8 +25,6 @@ Common use cases are:
   update.
 
 ### Update Control Maps
-
-!! This feature will be removed in Mender client 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
 
 Update Control Maps can specify an action for some transitions between the Mender client's
 state machine. The default action for each step is **continue**. To pause the update process,

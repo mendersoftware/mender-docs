@@ -74,10 +74,10 @@ directly in the device terminal. This approach is more suitable if you
 do not have direct SSH access to the device, the network connectivity
 is not strong or you would like to customize the workflow more.
 
-The `mender` executable provides a command `mender snapshot dump` for dumping a
-frozen copy of the root filesystem to standard error. In this section, we go
-through two common approaches for using the snapshot feature from the device:
-dumping a snapshot to a remote host or to a storage device.
+The `mender-snapshot` executable provides a command `mender-snapshot dump` for
+dumping a frozen copy of the root filesystem to standard error. In this section,
+we go through two common approaches for using the snapshot feature from the
+device: dumping a snapshot to a remote host or to a storage device.
 
 If `ssh` is available on your device, then it is possible to redirect the output
 from the snapshot command to a remote host. Assuming a computer is reachable and
@@ -93,14 +93,19 @@ file `root-part.ext4` in the user's home directory on the remote machine:
 USER="user"
 HOST="host-ip"
 
-mender snapshot dump | ssh $USER@$HOST /bin/sh -c 'cat > $HOME/root-part.ext4'
+mender-snapshot dump | ssh $USER@$HOST /bin/sh -c 'cat > $HOME/root-part.ext4'
 ```
+
+<!--AUTOVERSION: "Before `mender-snapshot` %"/ignore-->
+!!! Before `mender-snapshot` 4.0.0, the functionality was built into the `mender`
+!!! command. Please use `mender snapshot` in place of `mender-snapshot` (note
+!!! the dash) in the snippet above, as well as in the remaining snippets below.
 
 If `ssh` is not available, you can attach a removable storage device (e.g.
 USB stick) and redirect the output to a file on the device.
 ```bash
 mount /dev/(...) /mnt
-mender snapshot dump > /mnt/root-part.ext4
+mender-snapshot dump > /mnt/root-part.ext4
 ```
 
 ! Make sure there is enough available space on the storage device for the
@@ -111,7 +116,7 @@ available. For the example above, a gzip-compressed version of the filesystem is
 produced by passing gzip to the `--compression` flag.
 ```bash
 mount /dev/(...) /mnt
-mender snapshot dump --compression gzip > /mnt/root-part.ext4.gz
+mender-snapshot dump --compression gzip > /mnt/root-part.ext4.gz
 ```
 
 !!! Don't forget the `.gz` extension in the target filename.

@@ -95,7 +95,7 @@ support Mender.
 The following settings will be present in the default `conf/local.conf` after running the steps from [Mender Hub](https://hub.mender.io?target=_blank). These are likely to need customization for your setup.
 
 <!-- Make sure to remove "-git%" references in the text below when updating versions.-->
-<!--AUTOVERSION: "# PREFERRED_VERSION_mender-client = \"%"/mender "# PREFERRED_VERSION_mender-artifact = \"%"/mender-artifact "# PREFERRED_VERSION_mender-artifact-native = \"%"/mender-artifact "# PREFERRED_VERSION_mender-connect = \"%"/mender-connect "= \"%-git"/mender/complain "specify \"%-git"/ignore-->
+<!--AUTOVERSION: "# PREFERRED_VERSION_mender = \"%"/mender "# PREFERRED_VERSION_mender-client = \"%"/mender "# PREFERRED_VERSION_mender-artifact = \"%"/mender-artifact "# PREFERRED_VERSION_mender-artifact-native = \"%"/mender-artifact "# PREFERRED_VERSION_mender-connect = \"%"/mender-connect "= \"%-git"/mender/complain "specify \"%-git"/ignore-->
 ```bash
 # The name of the disk image and Artifact that will be built.
 # This is what the device will report that it is running, and different updates must have different names
@@ -116,6 +116,7 @@ MENDER_ARTIFACT_NAME = "release-1"
 # please uncomment the following and set to the required version. If you want to use the bleeding
 # edge version, specify "master-git%", but keep in mind that these versions may not be stable:
 #
+# PREFERRED_VERSION_mender = "master-git%"
 # PREFERRED_VERSION_mender-client = "master-git%"
 # PREFERRED_VERSION_mender-artifact = "master-git%"
 # PREFERRED_VERSION_mender-artifact-native = "master-git%"
@@ -211,7 +212,7 @@ bitbake-layers add-layer ../meta-mender/meta-mender-demo
 Add these lines to the start of your `conf/local.conf`:
 
 <!-- Make sure to remove "-git%" references in the text below when updating versions.-->
-<!--AUTOVERSION: "releases % and older"/ignore "# PREFERRED_VERSION_mender-client = \"%"/mender "# PREFERRED_VERSION_mender-artifact = \"%"/mender-artifact "# PREFERRED_VERSION_mender-artifact-native = \"%"/mender-artifact "# PREFERRED_VERSION_mender-connect = \"%"/mender-connect "= \"%-git"/mender/complain "specify \"%-git"/ignore-->
+<!--AUTOVERSION: "releases % and older"/ignore "# PREFERRED_VERSION_mender = \"%"/mender "# PREFERRED_VERSION_mender-client = \"%"/mender "# PREFERRED_VERSION_mender-artifact = \"%"/mender-artifact "# PREFERRED_VERSION_mender-artifact-native = \"%"/mender-artifact "# PREFERRED_VERSION_mender-connect = \"%"/mender-connect "= \"%-git"/mender/complain "specify \"%-git"/ignore-->
 ```bash
 # The name of the disk image and Artifact that will be built.
 # This is what the device will report that it is running, and different updates must have different names
@@ -238,6 +239,7 @@ MACHINE = "<YOUR-MACHINE>"
 # please uncomment the following and set to the required version. If you want to use the bleeding
 # edge version, specify "master-git%", but keep in mind that these versions may not be stable:
 #
+# PREFERRED_VERSION_mender = "master-git%"
 # PREFERRED_VERSION_mender-client = "master-git%"
 # PREFERRED_VERSION_mender-artifact = "master-git%"
 # PREFERRED_VERSION_mender-artifact-native = "master-git%"
