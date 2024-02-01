@@ -111,7 +111,7 @@ You need to have `openssl` present on the machine where you will be generating t
 
 Execute the following to generate all the required keys:
 
-!!! Set the [env variables](#env_variabls) before executing these commands
+!!! Set the [env variables](#env-variables) before executing these commands
 
 ```bash
 openssl ecparam -genkey -name P-256 -noout -out ca-private.key

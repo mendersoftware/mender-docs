@@ -79,7 +79,7 @@ Now that we have generated a key and certificate for the device and signed the c
 
 We will use a virtual device with QEMU in docker. If you want to use a physical device, the procedure will be the same, just keep in mind you need to adjust the IP address accordingly.
 
-! Set the [env variables](#env_variabls) and make sure you're in the directory where you [generated the keys](../01.Keys-and-certificates/docs.md#generating-the-keys).
+! Set the [env variables](../01.Keys-and-certificates/docs.md#env-variables) and make sure you're in the directory where you [generated the keys](../01.Keys-and-certificates/docs.md#generating-the-keys).
 
 
 Start the virtual client in daemon mode and confirm it's working.
@@ -137,11 +137,14 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 8822 root@$CO
 ```
 
 
-Since this change is the same on every device, it is natural to automate this as part of the build process for the disk image. See file installation instructions for [the Debian family](../../04.Operating-System-updates-Debian-family/03.Customize-Mender/docs.md#configuration-file) or [the Yocto Project](../../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/docs.md#configuration-file) for more information.
+Since this change is the same on every device, it is natural to automate this as part of the build process for the disk image. 
+See installation instructions for [the Debian family](../../../04.Operating-System-updates-Debian-family/03.Customize-Mender/docs.md#configuration-file) or [the Yocto Project](../../../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/docs.md#configuration-file) for more information.
 
 ## Verify that the device is accepted
 
 If everything went as intended, your device shows up with an `accepted` status in the Mender Server. 
 You can log in to the Mender UI to ensure your device appears on the device list and reports inventory.
 
-If your device is not showing up, make sure you installed the certificates correctly - both on the server and on the device. Check client logs and/or server logs for error messages that can identify what is wrong. See the [troubleshooting section on connecting devices](../../301.Troubleshoot/05.Device-Runtime/docs.md#mender-server-connection-issues) in this case.
+If your device is not showing up, make sure you installed the certificates correctly - both on the server and on the device. 
+Check client logs and/or server logs for error messages that can identify what is wrong. 
+See the [troubleshooting section on connecting devices](../../../301.Troubleshoot/05.Device-Runtime/docs.md#mender-server-connection-issues) in this case.

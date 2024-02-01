@@ -9,7 +9,7 @@ taxonomy:
 !!!!! In the message, please mention that you are requesting *"Access to the mTLS proxy"*.
 
 Mender supports setting up a reverse proxy at the edge of the network, which can authenticate devices using TLS client certificates. 
-Each client presents a certificate signed by a CA certificate ([Certificate Authority](../03.Mutual-TLS-authentication/01.Keys-and-certificates/docs.md#certificate-authority-ca)), and the edge proxy authenticates devices by verifying this signature. 
+Each client presents a certificate signed by a CA certificate and the edge proxy authenticates devices by verifying this signature. 
 Authenticated devices are automatically authorized in the Mender backend and do not need manual approval or preauthorization.
 
 This is particularly useful in a mass production setting because you can sign client certificates during the manufacturing process, so they automatically get accepted into the Mender Server when your customer turns them on (which might happen several months after manufacturing).
