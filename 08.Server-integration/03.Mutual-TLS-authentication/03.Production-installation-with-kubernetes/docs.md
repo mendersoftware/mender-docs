@@ -142,11 +142,6 @@ EOF
 kubectl apply -f mender-mtls-deployment.yml
 ```
 
-TODO: For the exact same credentials the docker based commands works but kuberentes gives a
-  Warning  Failed     14m (x4 over 16m)   kubelet            Failed to pull image "registry.mender.io/mendersoftware/mtls-ambassador:mender-3.6.3": rpc error: code = Unknown desc = failed to pull and unpack image "registry.mender.io/mendersoftware/mtls-ambassador:mender-3.6.3": failed to resolve reference "registry.mender.io/mendersoftware/mtls-ambassador:mender-3.6.3": unexpected status from HEAD request to https://registry.mender.io/v2/mendersoftware/mtls-ambassador/manifests/mender-3.6.3: 401 Unauthorized
-
-I've checked kubectl get secret registry-mtls-secret -o jsonpath="{.data['\.dockerconfigjson']}" | base64 --decode and the data is the same
-
 
 ## Expose the mTLS service
 You can expose the Mender mTLS Ambassador service with a L4 Load balancer. Please

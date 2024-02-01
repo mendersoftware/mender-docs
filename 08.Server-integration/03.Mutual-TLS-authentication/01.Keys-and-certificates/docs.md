@@ -16,6 +16,7 @@ Not all the variables are needed for all commands, but just setting them all eve
 We suggest copying these to a temporary text file, filling them with your values and keeping them at hand while going through evaluation.
 
 
+<!--AUTOVERSION: "mtls-ambassador:mender-%"/ignore-->
 ```bash
 # For evaluation, define an arbitrary domain for the mtls server (we will modify `/etc/hosts` on the device).
 # No external registration will take place.
@@ -44,7 +45,7 @@ export DOCKER_REGISTRY_URL=registry.mender.io
 export DOCKER_REGISTRY_USERNAME=
 export DOCKER_REGISTRY_PASSWORD=
 
-# The name and version of the mtls server container 
+# The name and version of the mtls server container
 export MTLS_IMAGE=registry.mender.io/mendersoftware/mtls-ambassador:mender-3.7.0
 ```
 
