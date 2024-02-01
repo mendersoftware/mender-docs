@@ -87,15 +87,15 @@ Start the virtual client in daemon mode and confirm it's working.
 ```bash
 docker run -d -it -p 85:85 --pull=always mendersoftware/mender-client-qemu
 sleep 10
-docker ps | grep 'mendersoftware/mender-client-qemu' > /dev/null && echo "Virtual client start successfully"  || echo "Container is not running or failed to start"
+docker ps | grep 'mendersoftware/mender-client-qemu' > /dev/null && echo "Virtual client started successfully"  || echo "Container is not running or failed to start"
 CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aqf "ancestor=mendersoftware/mender-client-qemu"))
 ```
 
-The virtual client needs to start succesfully for the below commands to work.
-If you're experiencing issues, please first check that you can ssh to the virtual client succesfully.
+The virtual client needs to start successfully for the commands below to work.
+If you're experiencing issues, please first check that you can ssh to the virtual client successfully.
 `ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 8822 root@$CONTAINER_IP`
 
-! For versions prior the Mender client 4.0 replace `mender-authd` with `mender-client`
+! For versions prior Mender client 4.0 replace `mender-authd` with `mender-client`
 
 
 ```bash
@@ -141,6 +141,7 @@ Since this change is the same on every device, it is natural to automate this as
 
 ## Verify that the device is accepted
 
-If everything went as intended, your device shows up as `accepted` status in the Mender Server. You can log in to the Mender UI to ensure your device appears on the device list and reports inventory.
+If everything went as intended, your device shows up with an `accepted` status in the Mender Server. 
+You can log in to the Mender UI to ensure your device appears on the device list and reports inventory.
 
 If your device is not showing up, make sure you installed the certificates correctly - both on the server and on the device. Check client logs and/or server logs for error messages that can identify what is wrong. See the [troubleshooting section on connecting devices](../../301.Troubleshoot/05.Device-Runtime/docs.md#mender-server-connection-issues) in this case.
