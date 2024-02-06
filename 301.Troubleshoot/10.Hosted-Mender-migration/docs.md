@@ -9,10 +9,11 @@ Historically we have only had a single instance in the US.
 Hosted Mender instances are now available in [multiple regions](../../11.General/00.Hosted-Mender-regions/docs.md) as a result of our expansion.
 This document will describe the migration process if you currently have a fleet of devices operating in one instance and would like to move them to another one.
 
-!! Migration between instances without risks requires support assistance and is a payed service available only to the Enterprise plan.
-!! If you wish to migrate your account please contact us on [support@mender.io](mailto:support@mender.io?subject=Tenant%20migration) with the subject **Tenant migration**.
+Please note that this method only applies for HM mender instances and isn't applicable for on-prem migrations.
 
-!! Please note that this method only applies for HM mender instances and isn't applicable for on-prem migrations.
+!! Migration between instances involves manual operations, requires support assistance, and is available as a paid service.
+!! If you wish to migrate your account please reach out to using the [contact form](https://mender.io/contact-us).
+
 
 ## Introduction
 
