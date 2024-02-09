@@ -169,10 +169,3 @@ openssl req -new -key device-private.key -out device-cert.req -config device-cer
 openssl x509 -req -CA ca.crt -CAkey ca-private.key -CAcreateserial -in device-cert.req -out device-cert.pem -days $((365*10))
 ```
 
-As the mtls-ambassador container runs as user `nobody`, with UID 65534, we change the owner of the files we'll volume mount:
-
-<!-- AUTOMATION: execute={ -->
-```bash
-sudo chown 65534 $(pwd)/server.crt $(pwd)/server.key $(pwd)/ca.crt
-sudo chmod 0600 $(pwd)/server.key
-```

@@ -43,6 +43,14 @@ It will consume the terminal but allow you to track the logs of the running serv
 
 ! Set the [env variables](../01.Keys-and-certificates/docs.md#env-variables) and [generated the keys](../01.Keys-and-certificates/docs.md#generating-the-keys) before executing the commands below. The generated keys need to be in the current active directory when you run the commands.
 
+
+As the mtls-ambassador container runs as user `nobody`, with UID 65534, we change the owner of the files we'll volume mount:
+
+```bash
+sudo chown 65534 $(pwd)/server.crt $(pwd)/server.key $(pwd)/ca.crt
+sudo chmod 0600 $(pwd)/server.key
+```
+
 To start the edge proxy, run the following command:
 
 ```bash
@@ -86,14 +94,19 @@ Start the virtual client in daemon mode and confirm it's working.
 
 ```bash
 docker run -d -it -p 85:85 --pull=always mendersoftware/mender-client-qemu
-sleep 10
+echo "Waiting 20s for the virtual client to boot"
+sleep 20
 docker ps | grep 'mendersoftware/mender-client-qemu' > /dev/null && echo "Virtual client started successfully"  || echo "Container is not running or failed to start"
 CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aqf "ancestor=mendersoftware/mender-client-qemu"))
 ```
 
 The virtual client needs to start successfully for the commands below to work.
-If you're experiencing issues, please first check that you can ssh to the virtual client successfully.
-`ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 8822 root@$CONTAINER_IP`
+If you're experiencing issues, please first check that you can ssh to the virtual client successfully:
+
+```
+ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 8822 root@$CONTAINER_IP
+exit
+```
 
 ! For versions prior Mender client 4.0 replace `mender-authd` with `mender-client`
 
