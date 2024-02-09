@@ -44,7 +44,6 @@ metadata:
     run: mender-mtls
   name: mender-mtls
 spec:
-  replicas: 1
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -96,15 +95,21 @@ spec:
         - containerPort: 8080
 
         readinessProbe:
-          tcpSocket:
-            port: 8080
-          initialDelaySeconds: 5
-          periodSeconds: 10
+          httpGet:
+            path: /status
+            port: 8081
+          periodSeconds: 15
         livenessProbe:
-          tcpSocket:
-            port: 8080
-          initialDelaySeconds: 15
-          periodSeconds: 30
+          httpGet:
+            path: /status
+            port: 8081
+          periodSeconds: 5
+        startupProbe:
+          httpGet:
+            path: /status
+            port: 8081
+          failureThreshold: 36
+          periodSeconds: 5
          
       imagePullSecrets:
       - name: registry-mtls-secret
@@ -199,8 +204,3 @@ EOF
 
 kubectl apply -f mender-mtls-service.yml
 ```
-
-
-## Check the health of the `mtls-ambassador`
-
-You can rely on the `/status` endpoint for checking the health of the ambassador service and set it as the endpoint for the kubernetes liveness probe.
