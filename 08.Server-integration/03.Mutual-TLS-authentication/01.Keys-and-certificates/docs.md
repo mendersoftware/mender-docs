@@ -16,7 +16,7 @@ Not all the variables are needed for all commands, but just setting them all eve
 We suggest copying these to a temporary text file, filling them with your values and keeping them at hand while going through evaluation.
 
 
-<!--AUTOVERSION: "mtls-ambassador:mender-%"/ignore-->
+<!--AUTOVERSION: "mtls-ambassador:mender-%"/integration-->
 ```bash
 # For evaluation, define an arbitrary domain for the mtls server (we will modify `/etc/hosts` on the device).
 # No external registration will take place.
