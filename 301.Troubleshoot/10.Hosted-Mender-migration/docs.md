@@ -5,14 +5,13 @@ taxonomy:
 ---
 
 
-Historically we have only had a single instance in the US.
+Historically, we have only had a single instance in the US.
 Hosted Mender instances are now available in [multiple regions](../../11.General/00.Hosted-Mender-regions/docs.md) as a result of our expansion.
 This document will describe the migration process if you currently have a fleet of devices operating in one instance and would like to move them to another one.
 
-Please note that this method only applies for HM mender instances and isn't applicable for on-prem migrations.
 
 !! Migration between instances involves manual operations, requires support assistance, and is available as a paid service.
-!! If you wish to migrate your account please reach out to using the [contact form](https://mender.io/contact-us).
+!! If you wish to migrate your account with our assistance please reach out to us using the [contact form](https://mender.io/contact-us).
 
 
 ## Introduction
@@ -28,7 +27,7 @@ The following steps summarize the procedure for moving from one server to anothe
 2. Update the device with configuration for both servers
 3. Reject the device on the Old server
 4. Accept the device on the New server
-5. Update the with configuration for the New server only
+5. Update the device with configuration for the New server only
 
 The diagram below, describes the flow
 
@@ -37,15 +36,17 @@ The diagram below, describes the flow
 
 #### 1. Make a clone of the old server by contacting Northern.Tech
 
-If you wish to migrate your account please contact us on [support@mender.io](mailto:support@mender.io) with the title **Tenant migration**.
-In that request please share you "Organization name" as registered on Hosted Mender in "Organization and billing".
-We will get back to you once the tenant has been cloned and you can proceed to the next step.
+Migration between instances involves manual operations, requires support assistance, and is available as a paid service.
+If you wish to migrate your account, please reach out to us using the [contact form](https://mender.io/contact-us).
+
+Once the commercial part is resolved, technically we'll identify your Hosted Mender tenant and start a cloning process.
+We'll keep you updated and let you know when you can move to phase two.
 
 
-#### 2. Update the device with configuration for both servers
+#### 2. Update the device with the configuration for both servers
 
-This will largely depend on the way you create build artifacts.
-Regardless of the approach the goal to update the device so it's config (`/etc/mender/mender.conf`) changes from:
+This will largely depend on the way you create and build artifacts.
+Regardless of the approach, the goal is to update the device so its config (`/etc/mender/mender.conf`) changes from:
 
 ```
 {
@@ -74,23 +75,23 @@ to
 
 !! Make sure you removed the `ServerURL` entry from the top of the JSON configuration. [More info here](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#servers).
 
-Please check bellow for different approaches on how to achieve this:
+Please check below for different approaches on how to achieve this:
 
 * [Yocto](#yocto)
 * [Debian](#debian)
 
 !! If you deploy a config file with a badly formatted json, `mender-updated` on the device won't start correctly after the update.
-!! The device will roll back to the previous version only after the device is restarted by other means.
+!! The device will roll back to the previous version only after it is restarted by other means.
 !! During that server will show the deployment status as "rebooting" and after the roll back the deployment will fail.
 
-Please make sure to test the migration with one device first before deploying it to the whole production fleet.
+Please test the migration with one device before deploying it to the whole production fleet.
 
 #### 3. Reject the device on the Old server
 
-Once the deployment was successful and the device restarts, it will try communicating with the first server on the list.
+Once the deployment is successful and the device restarts, it will try communicating with the first server on the list.
 That is the Old server.
 
-As we want to stop the communication with the Old server, reject the device.
+As we want to stop communicating with the old server, reject the device.
 
 ![reject-device](reject-device.png)
 
@@ -99,7 +100,7 @@ As we want to stop the communication with the Old server, reject the device.
 As the device cannot connect to the first server on the list (Old server), it will try with the next one.
 In this case, it is the New server.
 
-#### 5. Update the with configuration for the New server only
+#### 5. Update with the configuration for the New server only
 
 Once the device is correctly showing on the New server the last step is to deploy the configuration containing only the New server.
 
