@@ -30,13 +30,12 @@ The setup is different depending on your server configuration and the most
 common cases are shown below. Use `mender setup --help` to learn about all
 configuration options.
 
-<!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install --assume-yes wget libglib2.0-0 tzdata -->
+<!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install --assume-yes wget tzdata -->
 
-<!--AUTOVERSION: "repos/debian/pool/%/"/ignore "mender-client_%-1"/mender -->
-<!--AUTOMATION: execute=wget https://downloads.mender.io/repos/debian/pool/main/m/mender-client/mender-client_4.0.1-1%2Bdebian%2Bbullseye_$(dpkg --print-architecture).deb -->
+<!-- AUTOMATION: execute=wget -O get-mender.sh https://get.mender.io -->
 
 <!--AUTOVERSION: "mender-client_%-1"/mender -->
-<!--AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive dpkg -i mender-client_4.0.1-1+debian+bullseye_$(dpkg --print-architecture).deb -->
+<!--AUTOMATION: execute=bash get-mender.sh -c experimental -->
 <!--AUTOMATION: execute=DEVICE_TYPE=device-type -->
 <!--AUTOMATION: execute=TENANT_TOKEN=secure-token -->
 <!--AUTOMATION: execute=SERVER_IP_ADDR=1.2.3.4 -->
@@ -55,7 +54,7 @@ TENANT_TOKEN="<INSERT YOUR TOKEN FROM https://hosted.mender.io/ui/#/settings/my-
 Configure Mender with:
 
 ```bash
-sudo mender setup \
+sudo mender-setup \
             --device-type $DEVICE_TYPE \
             --hosted-mender \
             --tenant-token $TENANT_TOKEN \
@@ -74,7 +73,7 @@ SERVER_IP_ADDR="<INSERT THE IP ADDRESS OF YOUR DEMO SERVER>"
 Configure Mender with:
 
 ```bash
-sudo mender setup \
+sudo mender-setup \
             --device-type $DEVICE_TYPE \
             --demo-server \
             --server-ip $SERVER_IP_ADDR \
@@ -95,7 +94,7 @@ TENANT_TOKEN="<INSERT YOUR TOKEN FROM YOUR ENTERPRISE SERVER>"
 Configure Mender with:
 
 ```bash
-sudo mender setup \
+sudo mender-setup \
             --device-type $DEVICE_TYPE \
             --server-url $SERVER_URL \
             --server-cert="" \
