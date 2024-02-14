@@ -44,7 +44,7 @@ Mender Artifact file.
 
 <!--AUTOVERSION: "mender-artifact/blob/%"/mender-artifact-->
 You can find more details about the Mender Artifact format in the
-[Mender Artifact specification](https://github.com/mendersoftware/mender-artifact/blob/3.11.0/Documentation?target=_blank).
+[Mender Artifact specification](https://github.com/mendersoftware/mender-artifact/blob/3.11.2/Documentation?target=_blank).
 
 
 ### *Provides* and *Depends*
