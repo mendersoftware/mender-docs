@@ -105,13 +105,30 @@ software updates packaged as Mender Artifacts.
 See [Client installation](../03.Client-installation/chapter.md) for more information
 about how to configure and use the Mender client.
 
-The `mender-client` Debian package installs:
+The `mender-client` Debian package includes the legacy Mender Client written in Go (version 3.x.y),
+and it installs:
+
 * the binary,
 * a systemd service,
 * the default [identity script](../03.Client-installation/03.Identity/docs.md),
 * the default [inventory scripts](../03.Client-installation/04.Inventory/docs.md)
 * and the default [update modules](../03.Client-installation/05.Use-an-updatemodule/docs.md)
-(and its generators).
+  (and its generators).
+
+The `mender-client4` Debian package includes the 4.x series of the client, which has slightly
+different components than the legacy one. The `mender-client4` Debian package installs:
+
+* a `mender-auth` package, for server authentication
+* a `mender-update` package, for doing updates
+* two binaries, `mender-auth` and `mender-update`
+* two systemd services, `mender-authd` and `mender-updated`
+* the default [identity script](../03.Client-installation/03.Identity/docs.md)
+* the default [inventory scripts](../03.Client-installation/04.Inventory/docs.md)
+* and the default [update modules](../03.Client-installation/05.Use-an-updatemodule/docs.md)
+  (and its generators).
+* the `mender-flash` tool
+* the `mender-setup` tool
+* the `mender-snapshot` tool
 
 
 ### Installation methods
