@@ -188,6 +188,10 @@ variable is only relevant when building a complete partitioned image (any suffix
 ending in `img`). Once flashed with this image, the device type will persist
 across subsequent updates.
 
+Note that changing the `MENDER_DEVICE_TYPE` requires changing the `IMAGE_NAME`
+and `IMAGE_LINK_NAME` when generating the initramfs fails; see
+[this GitHub issue](https://github.com/OE4T/tegra-demo-distro/discussions/95#discussioncomment-687382).
+
 
 #### `MENDER_DEVICE_TYPES_COMPATIBLE`
 
