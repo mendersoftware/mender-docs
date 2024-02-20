@@ -54,11 +54,39 @@ In Mender client 4.0.0 and later the rootfs-image update type is no longer embed
 codebase but is treated as any other external update module. A binary CLI tool `mender-flash` now
 gets installed as part of the Mender client to serve the needs of the external rootfs update module.
 
-#### Upgrade using a Debian package
+#### Upgrade using Debian packages
 
-<!--AUTOVERSION: "Mender client version % is not yet"/ignore-->
-Upgrading to Mender client version 4.0.0 is not yet supported when using a Debian package. Support
-for this will be added at a later time.
+In the [Mender APT repositories](../../../10.Downloads/docs.md#install-using-the-apt-repository) `mender-client`
+package corresponds to the Mender Client written in Go (version 3.x.y). This package is installed by default
+from our [Express installation script](../../../10.Downloads/docs.md#express-installation). To upgrade from the
+legacy Mender Client to the 4.x series on Debian and Ubuntu, you can install the `mender-client4` running:
+
+<!--AUTOMATION: ignore -->
+```bash
+apt-get install mender-client4
+```
+
+This package will automatically install:
+
+* a `mender-auth` package for server authentication:
+  * provides the `mender-auth` binary
+  * installs the `mender-authd` systemd service
+* a `mender-update` package for doing updates:
+  * provides the `mender-update` binary
+  * installs the `mender-updated` systemd service
+* the `mender-flash` tool
+* the `mender-setup` tool
+* the `mender-snapshot` tool
+
+In addition, this package will also automatically remove:
+
+* Legacy `mender-client` package:
+  * removing the `mender` binary
+  * disabling `mender-client` systemd service
+
+After the upgrade, please update your scripts invoking the `mender` CLI interface to use the
+correct binaries (`mender-auth` or `mender-update`).
+
 
 #### Upgrade using Yocto
 
