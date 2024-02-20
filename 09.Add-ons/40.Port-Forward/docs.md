@@ -24,7 +24,7 @@ software on the device and your workstation.
   device.
   * Enable port forwarding for [mender-connect
     configuration](../90.Mender-Connect/docs.md#port-forward-configuration). 
-* Install [mender-client](../../03.Client-installation/02.Install-with-Debian-package/docs.md) on the
+* Install [mender-auth](../../03.Client-installation/02.Install-with-Debian-package/docs.md) on the
   device.
   * [Accept](../../01.Get-started/01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md#step-7-accept-the-device)
     the device on the Mender Server.

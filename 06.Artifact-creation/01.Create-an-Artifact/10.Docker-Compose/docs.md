@@ -31,7 +31,7 @@ dependencies are installed on the device:
 > To quickly verify the required dependencies are installed on your device, run
 > the following commands:
 > ```bash
-> mender --version && \
+> mender-update --version && \
 >   docker --version && \
 >   docker compose version && \
 >   jq --version && \

@@ -21,6 +21,10 @@ Inventory data is always sent after each boot of the device, and after a new upd
 correctly applied and committed by the device in addition to this periodic interval.
 Default value: 28800 seconds (8 hours).
 
+Note that `mender-auth`, one of the client components, does not connect on its own, but acts as a
+proxy whenever `mender-update` needs to connect.
+
+
 ## How to choose right intervals
 
 The Mender client is more responsive with higher frequency intervals. Meaning

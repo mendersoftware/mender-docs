@@ -47,8 +47,11 @@ When installing the Artifact, the value above represents a stable version identi
 To see the version information after the Artifact is deployed, try to expand a device in the Device list of the Mender UI. Alternatively, run this command on the device to display it from the command line (this may also display some unrelated fields):
 
 ```bash
-mender show-provides
+mender-update show-provides
 ```
+
+<!--AUTOVERSION: "Before `mender-update` %"/ignore-->
+!!! Before `mender-update` 4.0.0, the command was called `mender`. Please replace `mender-update` with `mender` in the snippet above if you are using such a version.
 
 Example output:
 
