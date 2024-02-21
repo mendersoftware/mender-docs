@@ -43,9 +43,9 @@ MENDER_INVENTORY_POLL_INTERVAL_SECONDS = "28800"
 ## Configuration file
 
 It is possible to put your own `mender.conf` configuration file in the image. The file will be
-merged with settings from Yocto variables. To use your own file, use a `mender-client_%.bbappend`
+merged with settings from Yocto variables. To use your own file, use a `mender_%.bbappend`
 file in your own layer, add a `mender.conf` file to the layer, and list this file in the `SRC_URI`
-of the `mender-client` recipe, like this:
+of the `mender` recipe, like this:
 
 ```bash
 FILESEXTRAPATHS:prepend := "${THISDIR}/<DIRECTORY-WITH-MENDER-CONF>:"
@@ -54,6 +54,11 @@ SRC_URI:append = " file://mender.conf"
 
 Replace `<DIRECTORY-WITH-MENDER-CONF>` with the path to the `mender.conf` file, relative to the
 recipe file.
+
+<!--AUTOVERSION: "Prior to Mender client version %"/ignore-->
+!!! Prior to Mender client version 4.0.0, the recipe was called `mender-client`. Please modify
+!!! `mender-client_%.bbappend` instead of `mender_%.bbappend` if you are using such a version. This
+!!! applies to the sections below as well.
 
 Note that variables take precedence over entries in the `mender.conf` file, so if there are any
 conflicts, you should either set the affected variables to the empty string, or remove the entry
@@ -68,7 +73,7 @@ Configuration key 'ServerURL', found in mender.conf, conflicts with MENDER_SERVE
 
 If you do not want Mender to run as a system service, and you prefer to carry out update steps manually using the command line client interface, you can disable the service that starts Mender at boot.
 
-This is simple to accomplish by adding a `recipes-mender/mender/mender-client_%.bbappend` file in your Yocto Project layer, with the following content:
+This is simple to accomplish by adding a `recipes-mender/mender/mender_%.bbappend` file in your Yocto Project layer, with the following content:
 
 ```bash
 SYSTEMD_AUTO_ENABLE = "disable"
@@ -82,13 +87,13 @@ MENDER_FEATURES_DISABLE:append = " mender-systemd"
 
 Also, you do not need any daemon-related configuration items in your `local.conf` as outlined in [the section on configuring the Yocto Project build](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build).
 
-! If you disable Mender running as a daemon under `systemd`, you must run all required Mender commands from the CLI or scripts. Most notably, you need to run `mender commit` after booting into and verifying a successful deployment. When running in managed mode, any pending `mender commit` will automatically run by the Mender daemon after it starts. See [Modes of operation](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) for more information about the difference.
+! If you disable Mender running as a daemon under `systemd`, you must run all required Mender commands from the CLI or scripts. Most notably, you need to run `mender-update commit` after booting into and verifying a successful deployment. When running in managed mode, any pending `mender-update commit` will automatically run by the Mender daemon after it starts. See [Modes of operation](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) for more information about the difference.
 
 
 ## Identity
 
-In order to include an identity script, simply augment the `mender-client` recipe and install the
-script in the expected folder. For example, create a `mender-client_%.bbappend` file in your layer,
+In order to include an identity script, simply augment the `mender` recipe and install the
+script in the expected folder. For example, create a `mender_%.bbappend` file in your layer,
 and add this:
 
 ```bash
@@ -119,8 +124,8 @@ Mender comes with some inventory scripts available out of the box. These are:
 * mender-inventory-update-modules
 
 In order to include an inventory script of your own making, augment the
-`mender-client` recipe and install the script in the expected folder. For
-example, create a `mender-client_%.bbappend` file in your layer, and add this:
+`mender` recipe and install the script in the expected folder. For
+example, create a `mender_%.bbappend` file in your layer, and add this:
 
 ```bash
 FILESEXTRAPATHS:prepend := "${THISDIR}/<DIRECTORY-WITH-INVENTORY-SCRIPT>:"
@@ -138,13 +143,13 @@ your choice, as long as the filename starts with `mender-inventory-`.
 
 ### Remove the mender-inventory-geolocation script
 
-By default the Mender client installs with the `mender-inventory-geo` script
+By default the `mender` recipe installs with the `mender-inventory-geo` script
 enabled. To some users this is undesireable, as the script relies on a third
 party service for geolocating the device through its IP address. If this is
 applicable to you, then disable the script through setting:
 
 ```bash
-PACKAGECONFIG:remove:pn-mender-client = " inventory-network-scripts"
+PACKAGECONFIG:remove:pn-mender = " inventory-network-scripts"
 ```
 
 in your `local.conf` file.
@@ -169,9 +174,9 @@ Mender comes with some Update Modules available out of the box. These are:
 
 These Update Modules are available for install, but they are not enabled by default unless you are
 building with the demo layer. To enable the standard Update Modules, you need to add the `modules`
-entry to the `PACKAGECONFIG` of the `mender-client` recipe. This can be done either by adding your
+entry to the `PACKAGECONFIG` of the `mender` recipe. This can be done either by adding your
 own `.bbappend` recipe file, or by adding it to `local.conf`. To add it to a recipe file, create
-`mender-client_%.bbappend` and add this:
+`mender_%.bbappend` and add this:
 
 ```bash
 PACKAGECONFIG:append = " modules"
@@ -180,13 +185,13 @@ PACKAGECONFIG:append = " modules"
 Alternatively, add this to `local.conf`:
 
 ```bash
-PACKAGECONFIG:append:pn-mender-client = " modules"
+PACKAGECONFIG:append:pn-mender = " modules"
 ```
 
 ### Custom Update Modules
 
-In order to include your own custom Update Module, simply augment the `mender-client` recipe and
-install the Update Module in the expected folder. For example, create a `mender-client_%.bbappend`
+In order to include your own custom Update Module, simply augment the `mender` recipe and
+install the Update Module in the expected folder. For example, create a `mender_%.bbappend`
 file in your layer, and add this:
 
 ```bash
@@ -221,7 +226,7 @@ We do not enable Mender Connect by default, unless you are building with the dem
 To enable Mender Connect you can add it either via your own `.bbappend` recipe file,
 or via your `local.conf` file.
 
-To add it to a recipe file, create `mender-client_%.bbappend` and add this:
+To add it to a recipe file, create `mender_%.bbappend` and add this:
 
 ```bash
 IMAGE_INSTALL:append = " mender-connect"

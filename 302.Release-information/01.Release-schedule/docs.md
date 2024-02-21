@@ -24,7 +24,7 @@ We increment:
 * `MINOR` version when we add functionalities in a backward compatible manner
 * `PATCH` version when we make backward compatible bug fixes to existing releases
 
-!!! By design, the Mender Backend is always backward compatible with older versions of the Mender Client. Therefore, incrementing the `MAJOR` version means that the Mender Client (generally speaking, the client components) depend on a corresponding `MAJOR` version of the Management Server. However, any older Mender Client will still work with a Management Server running a more recent version.
+!!! By design, the Mender Backend is always backward compatible with older versions of the Mender components. Therefore, incrementing the `MAJOR` version means that the Mender components (generally speaking, the authentication and update components) depend on a corresponding `MAJOR` version of the Management Server. However, any older Mender components will still work with a Management Server running a more recent version.
 
 
 #### Release Cadence

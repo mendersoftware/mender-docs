@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-This page describes how to install the Mender client on an existing Linux
+This page describes how to install the Mender Client on an existing Linux
 system. Installing Mender this way does not offer a full Mender board
 integration, so you can not carry out Operating System updates, however, it is
 possible to use Update Modules to update applications and other parts of the
@@ -24,7 +24,7 @@ See the instructions in our [downloads
 section](../../10.Downloads/docs.md#install-using-the-apt-repository) for the
 explicit steps required.
 
-### Configure the mender-client
+### Configure the Mender Client
 
 The setup is different depending on your server configuration and the most
 common cases are shown below. Use `mender setup --help` to learn about all
@@ -104,12 +104,19 @@ sudo mender-setup \
 [/ui-tab]
 [/ui-tabs]
 
+<!--AUTOVERSION: "Before mender-setup %"/ignore "Mender Client below version %"/ignore-->
+!!! Note: Before mender-setup 4.0.0 was released, the `setup` command was built into the `mender` binary. If you are using Mender Client below version 4.0.0, use `mender setup` instead of `mender-setup` in the snippets above (note the dash), as well as on the rest of the page below.
+
 Finally, to restart the Mender service for the new configuration to take effect run the following command:
 
 <!--AUTOMATION: ignore -->
 ```bash
-sudo systemctl restart mender-client
+sudo systemctl restart mender-updated
 ```
+
+<!--AUTOVERSION: "Mender Client older than %"/ignore-->
+!!! If you are using a Mender Client older than 4.0.0, replace `mender-updated` with
+!!! `mender-client` in the snippet above.
 
 ## Install from source
 

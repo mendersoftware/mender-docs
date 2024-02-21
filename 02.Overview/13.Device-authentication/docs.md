@@ -161,12 +161,12 @@ to find further details on the configuration of this feature.
 
 ## Authentication Token
 
-After the Mender Server authorizes a Device, a subsequent authentication request
-to the Device Authentication service returns an **authentication token**. The
-Mender client will record the token and attach it to every API call under the HTTP
-`Authorization` header.
+After the Mender Server authorizes a Device, a subsequent authentication request to the Device
+Authentication service returns an **authentication token**. The `mender-auth` component will record the
+token and make it available over a DBus API. The `mender-update` component will use this
+API to fetch the token and attach it to every API call under the HTTP `Authorization` header.
 
-The token does have an **expiry date** (one week period by default), but the Mender client
+The token does have an **expiry date** (one week period by default), but `mender-auth`
 will obtain a fresh token from the Mender Server automatically.
 
 For details on the token format please see the relevant [documentation on

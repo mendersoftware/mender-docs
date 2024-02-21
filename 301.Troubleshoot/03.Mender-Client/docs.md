@@ -4,6 +4,19 @@ taxonomy:
     category: docs
 ---
 
+## `mender-client` package have been kept back
+
+<!--AUTOVERSION: "Mender client version %"/ignore "mark back the %"/ignore "`mender-client` package to version %"/ignore "package to the %"/ignore "it to the % version"/ignore -->
+After releasing the Mender client version 4.0.0, we realized a critical issue with the Debian
+packaging. Therefore, we decided to revert it and mark back the 3.5.2 release as the latest version
+in the APT repository. If you upgraded the `mender-client` package to version 4.0.0 on a device
+during that time, APT will keep the `mender-client` package to the 4.0.0 version and won't downgrade
+it to the 3.5.2 version by default.
+
+To solve the issue, either:
+* Run `apt-get install mender-client`
+* Run again the [express installation script(../../10.Downloads/docs.md#Express-installation)
+
 ## Removed previous stable APT repositories
 
 We [removed](../../10.Downloads/docs.md#Set-up-the-APT-repository) the previously deprecated stable APT repository:
@@ -88,15 +101,19 @@ The Mender client by default logs to the system log using `systemd`, so the easi
 is to run the following command:
 
 ```
-journalctl -u mender-client
+journalctl -u mender-updated
 ```
 
 Please note that the default log level is Info. It is possible to increase the
 verbosity by editing the Mender systemd unit file and add the `--log-level debug` option:
 
 ```
-ExecStart=/usr/bin/mender --log-level debug daemon
+ExecStart=/usr/bin/mender-update --log-level debug daemon
 ```
+
+<!--AUTOVERSION: "Mender clients older than %"/ignore-->
+!!! Note that in Mender clients older than 4.0.0, the binary and systemd service are called
+!!! `mender` and `mender-client`, respectively.
 
 
 ### Deployment log files
@@ -116,15 +133,18 @@ In order to see what the Mender client is doing currently, follow the log
 as it is being written with this command:
 
 ```
-journalctl -u mender-client -f
+journalctl -u mender-updated -f
 ```
+
+<!--AUTOVERSION: "Mender clients older than %"/ignore-->
+!!! Note that in Mender clients older than 4.0.0, the systemd service is called `mender-client`.
 
 To stop it use Ctrl+C.
 
 
 ## Certificate expired or not yet valid
 
-The Mender client can not connect to the server, typically the first time it tries, and emits messages like the following to syslog at the device:
+The Mender client can not connect to the server, typically the first time it tries, and emits messages like the following to the `mender-authd` log or syslog at the device:
 
 ```
 ... level=info msg="Mender state: authorize-wait -> bootstrapped" module=mender
@@ -180,7 +200,7 @@ overview and description on how to generate new certificates.
 
 ## Certificate signed by unknown authority
 
-The Mender client can not connect to the server, typically the first time it tries, and emits messages like the following to syslog at the device:
+The Mender client can not connect to the server, typically the first time it tries, and emits messages like the following to the `mender-authd` log or syslog at the device:
 
 ```
 ... level=info msg="Mender state: authorize-wait -> bootstrapped" module=mender
@@ -273,6 +293,14 @@ until you have upgraded all Mender Clients and can use the corresponding latest 
 You have the Mender binary on your device and try to trigger a rootfs update but you get output similar to the following:
 
 ```bash
+mender-update install /media/rootfs-image-mydevice.mender
+
+Mounted root does not match boot loader environment
+```
+
+-or-
+
+```bash
 mender install /media/rootfs-image-mydevice.mender
 
 ERRO[0000] exit status 1                                 module=partitions
@@ -346,14 +374,14 @@ The block below shows 3 example artifacts.
 ### How to check this on the device/server/artifact?
 
 * artifact - `mender-artifact read <mender-artifact.mender>`
-* device - Run the command on the device `mender show-provides`
+* device - Run the command on the device `mender-update show-provides`
 * server UI - `Releases -> Select Release -> Expand the artifact info by clicking it -> Expand Provides and Depends`
 
 ### Checking inconsistencies about the root file system checksums
 
-The checksum shown with `mender show-provides` does not necessarily represent the running partition's actual checksum.
+The checksum shown with `mender-update show-provides` does not necessarily represent the running partition's actual checksum.
 
-For example, if you remount the partition `rw`, change something and remount it `ro`, the checksum in the `mender show-provides` won't change, while the checksum of the running partition changes.
+For example, if you remount the partition `rw`, change something and remount it `ro`, the checksum in the `mender-update show-provides` won't change, while the checksum of the running partition changes.
 
 As part of your troubleshooting, you can check that the actual checksum on the device is the same as in the `Depends` field.
 
