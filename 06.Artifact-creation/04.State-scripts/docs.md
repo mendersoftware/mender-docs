@@ -44,6 +44,7 @@ There are two types of the state scripts: root filesystem and Artifact. The root
 for those scripts is `/etc/mender/scripts`.
 The Artifact scripts are part of the Artifact and are delivered to the Client inside the Artifact as `--script` arguments to `mender-artifact`. 
 All the Artifact scripts are prefixed with `Artifact`.
+Mender client will extract and execute the Artifact state scripts from the `scripts` subdirectory under MENDER_DATASTORE_DIR (default: /var/lib/mender).
 
 The reason for having both root filesystem and Artifact scripts is related to the fact that some scripts must run before the Client downloads the Artifact and as such can not be delivered with the Artifact. Those scripts are `Idle`, `Sync` and `Download`. Therefore it is important to remember that when deploying a new update, all scripts will be run from the currently running root filesystem until `ArtifactInstall`, at which point the scripts from the new Artifact will take over.
 
