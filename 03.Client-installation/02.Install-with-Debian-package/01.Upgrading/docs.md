@@ -87,6 +87,24 @@ In addition, this package will also automatically remove:
 After the upgrade, please update your scripts invoking the `mender` CLI interface to use the
 correct binaries (`mender-auth` or `mender-update`).
 
+For old Debian and Ubuntu distributions, if the Mender add-ons Debian packages (e.g.,
+`mender-connect` and `mender-configure`) are already installed in the system, the upgrade
+can fail with an error message similar to this:
+
+<!--AUTOVERSION: "Conflicts: mender-client but 1:%-1+debian+buster is to be installed"/ignore-->
+```
+The following packages have unmet dependencies:
+ mender-client4 : Conflicts: mender-client but 1:3.5.2-1+debian+buster is to be installed
+E: Unable to correct problems, you have held broken packages.
+```
+
+In this case, ensure to upgrade the Mender add-ons Debian packages at the same time, for
+example running:
+
+<!--AUTOMATION: ignore -->
+```bash
+apt-get install mender-update mender-client4
+```
 
 #### Upgrade using Yocto
 
