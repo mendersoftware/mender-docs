@@ -3,6 +3,8 @@ title: Upgrading to Mender 3.6
 taxonomy:
 category: docs
 label: tutorial
+routes:
+  canonical: '/3.6/server-installation/upgrading-from-previous-versions/upgrading-from-3.3-to-3.6'
 ---
 
 This is a tutorial for upgrading the Mender Server from version 3.3 and 3.4 to
