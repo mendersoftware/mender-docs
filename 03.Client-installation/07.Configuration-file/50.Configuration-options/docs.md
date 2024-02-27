@@ -32,14 +32,14 @@ verification](../../../06.Artifact-creation/07.Sign-and-verify/docs.md).
 
 This option is **deprecated** and does not exist anymore in Mender Client v4.0 and later. For
 earlier versions, please see [documentation for Mender
-3.6](/3.6/client-installation/configuration-file/configuration-options#bootutilitiesgetnextactivepart)
+3.6](https://docs.mender.io/3.6/client-installation/configuration-file/configuration-options#bootutilitiesgetnextactivepart)
 or older.
 
 #### BootUtilitiesSetActivePart
 
 This option is **deprecated** and does not exist anymore in Mender Client v4.0 and later. For
 earlier versions, please see [documentation for Mender
-3.6](/3.6/client-installation/configuration-file/configuration-options#bootutilitiessetactivepart)
+3.6](https://docs.mender.io/3.6/client-installation/configuration-file/configuration-options#bootutilitiessetactivepart)
 or older.
 
 #### Connectivity
