@@ -20,12 +20,11 @@ unpredictable downtime and data loss.
 
 Be sure that your current version is 3.6 and that it works, and Mender Server starts properly.
 
-### Upgrade MongoDB to 5.0
+### Upgrade MongoDB to 6.0
 
-If you haven't already done so, upgrade your MongoDB deployment from 4.4 to 5.0.
-Please refer to the [official documentation](https://www.mongodb.com/docs/manual/release-notes/5.0-upgrade-replica-set/)
-for guidance on conducting the upgrade. Mender 3.3, 3.4 and 3.6 are all compatible with both
-MongoDB 4.4 and 5.0.
+If you haven't already done so, upgrade your MongoDB deployment from 5.0 to 6.0.
+Please refer to the [official documentation](https://www.mongodb.com/docs/manual/release-notes/6.0-upgrade-replica-set/)
+for guidance on conducting the upgrade.
 
 ## Migrating from 3.6
 The helm chart is versioned separately from the Mender releases.
