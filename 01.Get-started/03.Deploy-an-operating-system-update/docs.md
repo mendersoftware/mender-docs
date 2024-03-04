@@ -196,7 +196,7 @@ order to deploy it to your device.
 
 Once this deployment finishes it will have the effect of restoring your full
 device root filesystem to the same state as when you created the snapshot in Step 3.
-You can verify this by checking if `/greetings.txt` eists after the deployment has finished.
+You can verify this by checking if `/greetings.txt` exists after the deployment has finished.
 It is gone! This is because your device filesystem did not have this file
 at the time you created the snapshot. This works for any change in the filesystem,
 including removing or installing software and changing any configuration.
