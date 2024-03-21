@@ -30,7 +30,7 @@ command:
 <!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
 ```bash
 HOSTED_MENDER_EMAIL="myusername@example.com"
-curl -u $HOSTED_MENDER_EMAIL -O https://downloads.customer.mender.io/content/hosted/mender-binary-delta/1.4.1/mender-binary-delta-1.4.1.tar.xz
+curl -u $HOSTED_MENDER_EMAIL -O https://downloads.customer.mender.io/content/hosted/mender-binary-delta/1.5.0/mender-binary-delta-1.5.0.tar.xz
 ```
 
 Replace the value of `HOSTED_MENDER_EMAIL` with the email address you used to sign up on *hosted Mender*, then enter your hosted Mender password when prompted to proceed.
@@ -43,18 +43,18 @@ command:
 <!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
 ```bash
 MENDER_ENTERPRISE_USER=<your.user>
-curl -u $MENDER_ENTERPRISE_USER -O https://downloads.customer.mender.io/content/on-prem/mender-binary-delta/1.4.1/mender-binary-delta-1.4.1.tar.xz
+curl -u $MENDER_ENTERPRISE_USER -O https://downloads.customer.mender.io/content/on-prem/mender-binary-delta/1.5.0/mender-binary-delta-1.5.0.tar.xz
 ```
 
 <!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
-The archive `mender-binary-delta-1.4.1.tar.xz` contains the binaries needed to generate and apply deltas.
+The archive `mender-binary-delta-1.5.0.tar.xz` contains the binaries needed to generate and apply deltas.
 
 <!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
-Unpack the `mender-binary-delta-1.4.1.tar.xz` in your home directory:
+Unpack the `mender-binary-delta-1.5.0.tar.xz` in your home directory:
 
 <!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
 ```bash
-tar xvf mender-binary-delta-1.4.1.tar.xz
+tar xvf mender-binary-delta-1.5.0.tar.xz
 ```
 
 The file structure should look like this:
@@ -83,7 +83,7 @@ Copy the generator compatible with your workstation architecture to `/usr/bin`; 
 
 <!--AUTOVERSION: "mender-binary-delta-%"/mender-binary-delta-->
 ```bash
-sudo cp mender-binary-delta-1.4.1/x86_64/mender-binary-delta-generator /usr/bin
+sudo cp mender-binary-delta-1.5.0/x86_64/mender-binary-delta-generator /usr/bin
 ```
 
 ### Integrate `mender-binary-delta` into your image
