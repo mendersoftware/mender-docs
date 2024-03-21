@@ -19,7 +19,7 @@ image and Mender Artifact that can be deployed to the rest of the device fleet.
 ## Option 1: Creating a snapshot using mender-artifact directly
 
 There is support for creating a snapshot Artifact directly from a workstation
-with `mender-artifact` installed, which is usually the easiest approah.
+with `mender-artifact` installed, which is usually the easiest approach.
 First, make sure your workstation has the [latest version of
 mender-artifact installed](../../10.Downloads/docs.md#mender-artifact).
 
