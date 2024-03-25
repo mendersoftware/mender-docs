@@ -337,6 +337,17 @@ Alternatively, you can create your own Ingress resource. Some references:
 * [AWS EKS Ingress](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html)
 * [Azure Ingress](https://learn.microsoft.com/en-us/azure/aks/ingress-basic?tabs=azure-cli)
 
+
+#### Troubleshooting
+Some users have reported that when using the nginx ingress controller, the troubleshoot add-on
+may not work properly. If you encounter this issue, you can try using the following annotation:
+```
+metadata:
+  annotations:
+    nginx.org/client-max-body-size: 128m
+    nginx.org/websocket-services: mender-api-gateway
+```
+
 ## Create the admin user
 
 [ui-tabs position="top-left" active="0" theme="default" ]
