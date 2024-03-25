@@ -342,22 +342,28 @@ sudo apt-mark hold mender-client
 
 ### Download
 
-If you are using *Hosted Mender*, download the `mender-binary-delta` archive with the following
-command:
+If you are using *Hosted Mender*, set the following variables with your credentials:
+
+<!--AUTOMATION: ignore -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+```
+!!! If you signed up using your Google or GitHub login, use the email address linked to that account and enter `x` as the password.
+
+Now, download the `mender-binary-delta` archive with the following command:
+
+<!--AUTOMATION: execute=HOSTED_MENDER_EMAIL="$HOSTED_MENDER_IO_USERNAME" -->
+<!--AUTOMATION: execute=HOSTED_MENDER_PASSWORD="$HOSTED_MENDER_IO_PASSWORD" -->
 
 <!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
 ```bash
-HOSTED_MENDER_EMAIL="myusername@example.com"
-curl -u $HOSTED_MENDER_EMAIL -O https://downloads.customer.mender.io/content/hosted/mender-binary-delta/1.5.0/mender-binary-delta-1.5.0.tar.xz
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-binary-delta/1.5.0/mender-binary-delta-1.5.0.tar.xz
 ```
-
-Replace the value of `HOSTED_MENDER_EMAIL` with the email address you used to sign up on *hosted Mender*, then enter your hosted Mender password when prompted to proceed.
-
-!!! If you signed up using your Google or GitHub login, use the email address linked to that account and enter `x` as the password.
-
 On the other hand, if you are using *on-premise Mender Enterprise*, download using the following
 command:
 
+<!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
 ```bash
 MENDER_ENTERPRISE_USER=<your.user>
@@ -522,7 +528,7 @@ Set the following variables with your credentials:
 <!--AUTOMATION: ignore -->
 ```bash
 HOSTED_MENDER_EMAIL=<your.email@example.com>
- HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 ```
 And download it with:
 <!--AUTOVERSION: "/mender-monitor_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
@@ -566,7 +572,7 @@ Set the following variables with your credentials:
 <!--AUTOMATION: ignore -->
 ```bash
 HOSTED_MENDER_EMAIL=<your.email@example.com>
- HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 ```
 And download it with:
 <!--AUTOVERSION: "/mender-monitor-demo_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
