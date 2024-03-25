@@ -338,6 +338,72 @@ sudo apt-mark hold mender-update
 sudo apt-mark hold mender-client
 ```
 
+## Mender Binary Delta
+
+### Download
+
+If you are using *Hosted Mender*, download the `mender-binary-delta` archive with the following
+command:
+
+<!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
+```bash
+HOSTED_MENDER_EMAIL="myusername@example.com"
+curl -u $HOSTED_MENDER_EMAIL -O https://downloads.customer.mender.io/content/hosted/mender-binary-delta/1.5.0/mender-binary-delta-1.5.0.tar.xz
+```
+
+Replace the value of `HOSTED_MENDER_EMAIL` with the email address you used to sign up on *hosted Mender*, then enter your hosted Mender password when prompted to proceed.
+
+!!! If you signed up using your Google or GitHub login, use the email address linked to that account and enter `x` as the password.
+
+On the other hand, if you are using *on-premise Mender Enterprise*, download using the following
+command:
+
+<!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
+```bash
+MENDER_ENTERPRISE_USER=<your.user>
+curl -u $MENDER_ENTERPRISE_USER -O https://downloads.customer.mender.io/content/on-prem/mender-binary-delta/1.5.0/mender-binary-delta-1.5.0.tar.xz
+```
+
+<!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
+The archive `mender-binary-delta-1.5.0.tar.xz` contains the binaries needed to generate and apply deltas.
+
+<!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
+Unpack the `mender-binary-delta-1.5.0.tar.xz` in your home directory:
+
+<!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
+```bash
+tar xvf mender-binary-delta-1.5.0.tar.xz
+```
+
+The file structure should look like this:
+
+```text
+├── aarch64
+│   ├── mender-binary-delta
+│   └── mender-binary-delta-generator
+├── arm
+│   ├── mender-binary-delta
+│   └── mender-binary-delta-generator
+├── licenses
+│   └── ...
+└── x86_64
+    ├── mender-binary-delta
+    └── mender-binary-delta-generator
+```
+
+### The `mender-binary-delta-generator`
+
+You will need this binary on the host to [create a delta between two artifacts](../06.Artifact-creation/05.Create-a-Delta-update-Artifact/docs.md) locally.
+
+!!! The enterprise plan allows auto generation of [delta images directly on the mender server](../06.Artifact-creation/05.Server-side-generation-of-Delta-Artifacts/docs.md).
+
+Copy the generator compatible with your workstation architecture to `/usr/bin`; for a `x86_64` one, it should look like this:
+
+<!--AUTOVERSION: "mender-binary-delta-%"/mender-binary-delta-->
+```bash
+sudo cp mender-binary-delta-1.5.0/x86_64/mender-binary-delta-generator /usr/bin
+```
+
 ## Mender add-ons
 
 ### Requirements

@@ -22,75 +22,15 @@ More information on where to place every file in the sections below.
 
 For additional troubleshooting, you can check the [Delta updates troubleshooting guide](../../../301.Troubleshoot/03.Mender-Client/docs.md#delta-updates).
 
-## Download `mender-binary-delta`
+## Download
 
-If you are using *Hosted Mender*, download the `mender-binary-delta` archive with the following
-command:
+Download the `mender-binary-delta` binaries following the [instructions](../../../10.Downloads/docs.md#mender-binary-delta).
 
-<!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
-```bash
-HOSTED_MENDER_EMAIL="myusername@example.com"
-curl -u $HOSTED_MENDER_EMAIL -O https://downloads.customer.mender.io/content/hosted/mender-binary-delta/1.4.1/mender-binary-delta-1.4.1.tar.xz
-```
-
-Replace the value of `HOSTED_MENDER_EMAIL` with the email address you used to sign up on *hosted Mender*, then enter your hosted Mender password when prompted to proceed.
-
-!!! If you signed up using your Google or GitHub login, use the email address linked to that account and enter `x` as the password.
-
-On the other hand, if you are using *on-premise Mender Enterprise*, download using the following
-command:
-
-<!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
-```bash
-MENDER_ENTERPRISE_USER=<your.user>
-curl -u $MENDER_ENTERPRISE_USER -O https://downloads.customer.mender.io/content/on-prem/mender-binary-delta/1.4.1/mender-binary-delta-1.4.1.tar.xz
-```
-
-<!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
-The archive `mender-binary-delta-1.4.1.tar.xz` contains the binaries needed to generate and apply deltas.
-
-<!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
-Unpack the `mender-binary-delta-1.4.1.tar.xz` in your home directory:
-
-<!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
-```bash
-tar xvf mender-binary-delta-1.4.1.tar.xz
-```
-
-The file structure should look like this:
-
-```text
-├── aarch64
-│   ├── mender-binary-delta
-│   └── mender-binary-delta-generator
-├── arm
-│   ├── mender-binary-delta
-│   └── mender-binary-delta-generator
-├── licenses
-│   └── ...
-└── x86_64
-    ├── mender-binary-delta
-    └── mender-binary-delta-generator
-```
-
-### The `mender-binary-delta-generator`
-
-You will need this binary on the host to [create a delta between two artifacts](../../../06.Artifact-creation/05.Create-a-Delta-update-Artifact/docs.md) locally.
-
-!!! The enterprise plan allows auto generation of [delta images directly on the mender server](../../../06.Artifact-creation/05.Server-side-generation-of-Delta-Artifacts/docs.md).
-
-Copy the generator compatible with your workstation architecture to `/usr/bin`; for a `x86_64` one, it should look like this:
-
-<!--AUTOVERSION: "mender-binary-delta-%"/mender-binary-delta-->
-```bash
-sudo cp mender-binary-delta-1.4.1/x86_64/mender-binary-delta-generator /usr/bin
-```
-
-### Integrate `mender-binary-delta` into your image
+## Integrate `mender-binary-delta` into your image
 
 Delta updates require the `mender-binary-delta` Update Module and the configuration file (`mender-binary-delta.conf`) on the device side. The steps on how to achieve this will depend on the way you're generating the image. We'll present only the location where you need to place the files.
 
-Copy the `mender-binary-delta` binary into `/usr/share/mender/modules/v3/` on your device from the content you downloaded in the [previous step](#download-mender-binary-delta). Please ensure you're copying the binary from the directory specifying your architecture.
+Copy the `mender-binary-delta` binary into `/usr/share/mender/modules/v3/` on your device from the content you downloaded in the [previous step](#download). Please ensure you're copying the binary from the directory specifying your architecture.
 
 The `mender-binary-delta.conf` is a configuration on the device telling the update module the location of A/B partitions. It must be generated and placed in `/etc/mender/mender-binary-delta.conf`.
 
