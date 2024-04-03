@@ -25,9 +25,7 @@ In the Device information view for the device you just connected, select **Creat
 
 ![create a deployment for this device](device_actions_create.png)
 
-This will start the deployment wizard. The first step is to **Select a device group
-to target**. As we have not yet created any specific groups the only
-option presented should be **All devices**.
+This will start the deployment wizard. First notice that the device is already selected in the **Select a device group to target** section.
 
 ![create a deployment](create_deployment_group.png)
 
@@ -48,7 +46,7 @@ server.
 
 ![congratulations device](completed_first_deployment.png)
 
-!!! If you close the previous tooltip, you can still get the IP address. Then, you will need to append the port **85** to the browser's URL.
+!!! Then, you will need to append the port **85** to the browser's URL.
 !!! For a Raspberry Pi connected by following [Prepare a Raspberry Pi device](../01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md),
 !!! you can run `$ hostname -I` inside your RaspberryPi terminal.
 !!! For a virtual device, connected by following [Prepare a virtual device](../01.Preparation/02.Prepare-a-virtual-device/docs.md),
