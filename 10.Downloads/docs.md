@@ -193,12 +193,6 @@ sudo apt-get update
 sudo apt-get upgrade
 ```
 
-!!! If you customize any of the installed files from any of the Mender packages (for example
-!!! modifying identity or inventory scripts), then please make sure to also save your work in an
-!!! additional place.  Files at paths that match the defaults shipped by the packages will be
-!!! overwritten when they are upgraded or re-installed, so you might lose your work if you only
-!!! modified the original files.
-
 !!! Updating mender this way doesn't provide a rollback mechanism in case of issues.
 !!! For production devices always update mender as part of the Operating System update with A/B partitions.
 
