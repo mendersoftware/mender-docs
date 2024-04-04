@@ -19,6 +19,9 @@ You should:
 * have completed [Deploy an application update](../02.Deploy-an-application-update/docs.md)
 * know the IP address of your device
 
+! Currently `mender-artifact snapshot` funtionality does not work with Mender Client 4.0 
+! as the `mender` util was splitted in multiple components, see 
+! [Mender snapshot](../../06.Artifact-creation/02.Create-an-Artifact-with-system-snapshot/docs.md) for more details.
 
 ### Step 1 - Download the mender-artifact utility on your workstation
 
