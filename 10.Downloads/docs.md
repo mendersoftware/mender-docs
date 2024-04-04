@@ -199,18 +199,6 @@ sudo apt-get upgrade
 !!! overwritten when they are upgraded or re-installed, so you might lose your work if you only
 !!! modified the original files.
 
-
-To prevent the Mender client from upgrading when upgrading the rest of the
-system, mark the packages to be held with:
-
-<!--AUTOMATION: ignore -->
-```bash
-sudo apt-mark hold mender-auth
-sudo apt-mark hold mender-update
-sudo apt-mark hold mender-client
-```
-
-
 !!! Updating mender this way doesn't provide a rollback mechanism in case of issues.
 !!! For production devices always update mender as part of the Operating System update with A/B partitions.
 
@@ -328,15 +316,6 @@ sudo apt-get install mender-client
 <!-- AUTOMATION: execute=apt-get update -->
 <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y mender-client -->
 
- To prevent the Mender client from upgrading when upgrading the rest of the
-system, mark the packages to be held with:
-
-<!--AUTOMATION: ignore -->
-```bash
-sudo apt-mark hold mender-auth
-sudo apt-mark hold mender-update
-sudo apt-mark hold mender-client
-```
 
 ## Mender Binary Delta
 
