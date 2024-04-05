@@ -15,7 +15,7 @@ it to the 3.5.2 version by default.
 
 To solve the issue, either:
 * Run `apt-get install mender-client`
-* Run again the [express installation script(../../10.Downloads/docs.md#Express-installation)
+* Run again the [express installation script](../../10.Downloads/docs.md#Express-installation)
 
 ## Removed previous stable APT repositories
 
