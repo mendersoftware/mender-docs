@@ -203,9 +203,10 @@ partitioned image (any suffix ending in `img`).
 
 > Value: &lt;Extra partitions list&gt; (default: empty)
 
-This variable defines extra partitions which will be added after the data
-partition. `MENDER_EXTRA_PARTS_SIZES_MB` and `MENDER_EXTRA_PARTS_FSTAB` can be
-used to further tweak the partition setup. For example:
+This variable defines extra partitions that will be added after the data
+partition. The variables `MENDER_EXTRA_PARTS_SIZES_MB`, `MENDER_EXTRA_PARTS_FSTAB`,
+and `MENDER_EXTRA_PARTS_MOUNT_LOCATIONS` may be used to further tweak the partition
+setup. For example:
 
 ```
 MENDER_EXTRA_PARTS = "part1 part2"
@@ -217,13 +218,35 @@ MENDER_EXTRA_PARTS_SIZES_MB[part2] = "128"
 # FSTAB options of specified extra partition (optional)
 MENDER_EXTRA_PARTS_FSTAB[part1] = "ext4 noexec 0 0"
 MENDER_EXTRA_PARTS_FSTAB[part2] = "vfat ro,user 0 0"
+# FSTAB mount location of specified extra partition (optional)
+MENDER_EXTRA_PARTS_MOUNT_LOCATIONS[part1] = "/opt/part1"
+MENDER_EXTRA_PARTS_MOUNT_LOCATIONS[part2] = "/mnt/part2"
 ```
 
-Arguments are passed as is to wks file and used by the [wic
-tool](https://docs.yoctoproject.org/dev/dev-manual/wic.html?target=_blank)
+Arguments are passed as-is to wks file and used by the [wic
+tool](https://docs.yoctoproject.org/dev/dev-manual/wic.html?target=_blank).
 
-See also [`MENDER_EXTRA_PARTS_FSTAB`](#mender_extra_parts_fstab) and
-[`MENDER_EXTRA_PARTS_SIZES_MB`](#mender_extra_parts_sizes_mb).
+See also [`MENDER_EXTRA_PARTS_FSTAB`](#mender_extra_parts_fstab),
+[`MENDER_EXTRA_PARTS_SIZES_MB`](#mender_extra_parts_sizes_mb), and
+[`MENDER_EXTRA_PARTS_MOUNT_LOCATIONS`](#mender_extra_parts_mount_locations).
+
+
+#### `MENDER_EXTRA_PARTS_SIZES_MB`
+
+> Value: &lt;Extra partitions size list&gt; (default: empty)
+
+The size of the extra partitions defined by `MENDER_EXTRA_PARTS` in the
+generated .biosimg, .sdimg or .uefiimg file.
+
+If defined, `--fixed-size` will automatically be added to the wks file and used
+by the [wic tool](https://docs.yoctoproject.org/dev/dev-manual/wic.html?target=_blank).
+
+```
+MENDER_EXTRA_PARTS_SIZES_MB[part1] = "1024"
+MENDER_EXTRA_PARTS_SIZES_MB[part2] = "9216"
+```
+
+See [`MENDER_EXTRA_PARTS`](#mender_extra_parts).
 
 
 #### `MENDER_EXTRA_PARTS_FSTAB`
@@ -241,19 +264,22 @@ MENDER_EXTRA_PARTS_FSTAB[part2] = "vfat ro,user 0 0"
 See [`MENDER_EXTRA_PARTS`](#mender_extra_parts).
 
 
-#### `MENDER_EXTRA_PARTS_SIZES_MB`
+#### `MENDER_EXTRA_PARTS_MOUNT_LOCATIONS`
 
-> Value: &lt;Extra partitions size list&gt; (default: empty)
+> Value: &lt;List of fstab mount locations for extra partitions&gt; (default: empty)
 
-The size of the extra partitions defined by `MENDER_EXTRA_PARTS` in the
-generated .biosimg, .sdimg or .uefiimg file.
+The mount locations for `/etc/fstab` of the extra partitions defined by
+`MENDER_EXTRA_PARTS` in the generated .biosimg, .sdimg or .uefiimg file.
 
-If defined, `--fixed-size` will automatically be added to the wks file and used
-by the [wic tool](https://docs.yoctoproject.org/dev/dev-manual/wic.html?target=_blank)
+If not specified, the mount location of an extra partition `part` will be
+`/mnt/LABEL` where `LABEL` is specified by `--label LABEL` for the corresponding
+partition's fstab options, e.g., `MENDER_EXTRA_PARTS_FSTAB[part]`. If
+`--label LABEL` has not been specified, the mount location will be `/mnt/extraK`
+where _K_ is the extra partition index _(1, ..., N)_.
 
 ```
-MENDER_EXTRA_PARTS_SIZES_MB[part1] = "1024"
-MENDER_EXTRA_PARTS_SIZES_MB[part2] = "9216"
+MENDER_EXTRA_PARTS_MOUNT_LOCATIONS[part1] = "/opt/part1"
+MENDER_EXTRA_PARTS_MOUNT_LOCATIONS[part2] = "/mnt/part2"
 ```
 
 See [`MENDER_EXTRA_PARTS`](#mender_extra_parts).
