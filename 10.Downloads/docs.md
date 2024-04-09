@@ -174,7 +174,7 @@ install. For example, the following will only install the Mender client:
 ```bash
 curl -fLsS https://get.mender.io -o get-mender.sh
 # INSPECT get-mender.sh BEFORE PROCEEDING
-sudo bash get-mender.sh mender-client
+sudo bash get-mender.sh mender-client4
 ```
 
 !!! Mender offers an `experimental` version of the package repository. To use
@@ -304,11 +304,11 @@ echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/
 <!--AUTOMATION: ignore -->
 ```bash
 sudo apt-get update
-sudo apt-get install mender-client
+sudo apt-get install mender-client4
 ```
 
 <!-- AUTOMATION: execute=apt-get update -->
-<!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y mender-client -->
+<!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y mender-client4 -->
 
 
 ## Mender Binary Delta
