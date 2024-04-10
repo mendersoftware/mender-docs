@@ -174,7 +174,7 @@ install. For example, the following will only install the Mender client:
 ```bash
 curl -fLsS https://get.mender.io -o get-mender.sh
 # INSPECT get-mender.sh BEFORE PROCEEDING
-sudo bash get-mender.sh mender-client
+sudo bash get-mender.sh mender-client4
 ```
 
 !!! Mender offers an `experimental` version of the package repository. To use
@@ -192,24 +192,6 @@ the packages are maintained by the package manager. To upgrade the software, sim
 sudo apt-get update
 sudo apt-get upgrade
 ```
-
-!!! If you customize any of the installed files from any of the Mender packages (for example
-!!! modifying identity or inventory scripts), then please make sure to also save your work in an
-!!! additional place.  Files at paths that match the defaults shipped by the packages will be
-!!! overwritten when they are upgraded or re-installed, so you might lose your work if you only
-!!! modified the original files.
-
-
-To prevent the Mender client from upgrading when upgrading the rest of the
-system, mark the packages to be held with:
-
-<!--AUTOMATION: ignore -->
-```bash
-sudo apt-mark hold mender-auth
-sudo apt-mark hold mender-update
-sudo apt-mark hold mender-client
-```
-
 
 !!! Updating mender this way doesn't provide a rollback mechanism in case of issues.
 !!! For production devices always update mender as part of the Operating System update with A/B partitions.
@@ -283,6 +265,13 @@ Then add the sources according to your Linux distribution
 !!! do `(. /etc/os-release && echo $VERSION_CODENAME)`
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="Debian Bookworm"]
+<!--AUTOMATION: ignore -->
+```bash
+echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/bookworm/stable main" \
+ | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
+```
+[/ui-tab]
 [ui-tab title="Debian Bullseye"]
 <!--AUTOMATION: ignore -->
 ```bash
@@ -322,20 +311,83 @@ echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/
 <!--AUTOMATION: ignore -->
 ```bash
 sudo apt-get update
-sudo apt-get install mender-client
+sudo apt-get install mender-client4
 ```
 
 <!-- AUTOMATION: execute=apt-get update -->
-<!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y mender-client -->
+<!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y mender-client4 -->
 
- To prevent the Mender client from upgrading when upgrading the rest of the
-system, mark the packages to be held with:
+
+## Mender Binary Delta
+
+### Download
+
+If you are using *Hosted Mender*, set the following variables with your credentials:
 
 <!--AUTOMATION: ignore -->
 ```bash
-sudo apt-mark hold mender-auth
-sudo apt-mark hold mender-update
-sudo apt-mark hold mender-client
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+```
+!!! If you signed up using your Google or GitHub login, use the email address linked to that account and enter `x` as the password.
+
+Now, download the `mender-binary-delta` archive with the following command:
+
+<!--AUTOMATION: execute=HOSTED_MENDER_EMAIL="$HOSTED_MENDER_IO_USERNAME" -->
+<!--AUTOMATION: execute=HOSTED_MENDER_PASSWORD="$HOSTED_MENDER_IO_PASSWORD" -->
+
+<!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
+```bash
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-binary-delta/1.5.0/mender-binary-delta-1.5.0.tar.xz
+```
+On the other hand, if you are using *on-premise Mender Enterprise*, download using the following
+command:
+
+<!--AUTOMATION: ignore -->
+<!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
+```bash
+MENDER_ENTERPRISE_USER=<your.user>
+curl -u $MENDER_ENTERPRISE_USER -O https://downloads.customer.mender.io/content/on-prem/mender-binary-delta/1.5.0/mender-binary-delta-1.5.0.tar.xz
+```
+
+<!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
+The archive `mender-binary-delta-1.5.0.tar.xz` contains the binaries needed to generate and apply deltas.
+
+<!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
+Unpack the `mender-binary-delta-1.5.0.tar.xz` in your home directory:
+
+<!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
+```bash
+tar xvf mender-binary-delta-1.5.0.tar.xz
+```
+
+The file structure should look like this:
+
+```text
+├── aarch64
+│   ├── mender-binary-delta
+│   └── mender-binary-delta-generator
+├── arm
+│   ├── mender-binary-delta
+│   └── mender-binary-delta-generator
+├── licenses
+│   └── ...
+└── x86_64
+    ├── mender-binary-delta
+    └── mender-binary-delta-generator
+```
+
+### The `mender-binary-delta-generator`
+
+You will need this binary on the host to [create a delta between two artifacts](../06.Artifact-creation/05.Create-a-Delta-update-Artifact/docs.md) locally.
+
+!!! The enterprise plan allows auto generation of [delta images directly on the mender server](../06.Artifact-creation/05.Server-side-generation-of-Delta-Artifacts/docs.md).
+
+Copy the generator compatible with your workstation architecture to `/usr/bin`; for a `x86_64` one, it should look like this:
+
+<!--AUTOVERSION: "mender-binary-delta-%"/mender-binary-delta-->
+```bash
+sudo cp mender-binary-delta-1.5.0/x86_64/mender-binary-delta-generator /usr/bin
 ```
 
 ## Mender Binary Delta
@@ -621,6 +673,51 @@ download it by running:
 [ui-tab title="hosted"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="Debian Bookworm"]
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="armhf"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bdebian%2Bbookworm_armhf.deb
+```
+[/ui-tab]
+[ui-tab title="arm64"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bdebian%2Bbookworm_arm64.deb
+```
+[/ui-tab]
+[ui-tab title="amd64"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bdebian%2Bbookworm_amd64.deb
+```
+[/ui-tab]
+[/ui-tabs]
+
+[/ui-tab]
 [ui-tab title="Debian Bullseye"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
@@ -812,6 +909,57 @@ wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDE
 [ui-tab title="enterprise"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="Debian Bookworm"]
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="armhf"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+MENDER_ENTERPRISE_USER=<your.user>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+
+<!--AUTOMATION: ignore -->
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bdebian%2Bbookworm_armhf.deb
+```
+[/ui-tab]
+[ui-tab title="arm64"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+MENDER_ENTERPRISE_USER=<your.user>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+
+<!--AUTOMATION: ignore -->
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bdebian%2Bbookworm_arm64.deb
+```
+[/ui-tab]
+[ui-tab title="amd64"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+MENDER_ENTERPRISE_USER=<your.user>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+
+<!--AUTOMATION: ignore -->
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bdebian%2Bbookworm_amd64.deb
+```
+[/ui-tab]
+[/ui-tabs]
+
+[/ui-tab]
 [ui-tab title="Debian Bullseye"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
@@ -1033,7 +1181,7 @@ Then install the package with:
 sudo dpkg -i mender-gateway_*.deb
 ```
 
-<!--AUTOMATION: test=test $(ls mender-gateway_*.deb | wc -l) -eq 12 -->
+<!--AUTOMATION: test=test $(ls mender-gateway_*.deb | wc -l) -eq 15 -->
 <!--AUTOMATION: execute=dpkg -i mender-gateway_*-1+ubuntu+focal_amd64.deb -->
 
 ### Examples package
