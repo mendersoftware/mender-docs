@@ -46,7 +46,7 @@ export DOCKER_REGISTRY_USERNAME=
 export DOCKER_REGISTRY_PASSWORD=
 
 # The name and version of the mtls server container
-export MTLS_IMAGE=registry.mender.io/mendersoftware/mtls-ambassador:mender-3.7.0
+export MTLS_IMAGE=registry.mender.io/mendersoftware/mtls-ambassador:mender-3.7.3
 ```
 
 
