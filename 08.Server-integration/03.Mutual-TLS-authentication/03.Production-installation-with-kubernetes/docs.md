@@ -7,7 +7,7 @@ taxonomy:
 
 
 This section shows how to set up the mtls ambassador server with kubernetes.
-Before starting this section we suggest you read the [prerequisites](../01.Keys-and-certificates/docs.md) and complete the [evaluation](../02.Evaluation-with-docker-compose/docs.md). 
+Before starting this section we suggest you read the [prerequisites](../01.Keys-and-certificates/docs.md) and complete the [evaluation](../02.Evaluation-with-docker-compose/docs.md).
 
 
 ## Prerequisites
@@ -22,21 +22,21 @@ You can use the same steps to generate the keys as defined in the [prerequisites
 Create the Kubernetes secret:
 
 ```bash
-kubectl create secret generic mtls-user --from-literal=MTLS_MENDER_USER=${MENDER_USERNAME} --from-literal=MTLS_MENDER_PASS=${MENDER_PASSWORD}
+kubectl create secret generic mtls-user --from-literal=MTLS_MENDER_USERNAME=${MENDER_USERNAME} --from-literal=MTLS_MENDER_PASSWORD=${MENDER_PASSWORD}
 kubectl create secret generic keycert --from-file=server.crt=./server.crt --from-file=server.key=./server.key
 kubectl create secret generic mtls-ca --from-file=ca.crt=./ca.crt
-kubectl create secret docker-registry registry-mtls-secret --docker-server=${DOCKER_REGISTRY_URL} --docker-username=${DOCKER_REGISTRY_USERNAME} --docker-password={$DOCKER_REGISTRY_PASSWORD}
+kubectl create secret docker-registry registry-mender-io --docker-server=${DOCKER_REGISTRY_URL} --docker-username=${DOCKER_REGISTRY_USERNAME} --docker-password={$DOCKER_REGISTRY_PASSWORD}
 ```
 
 
-## mTLS Deployment
+## Mender Gateway Deployment
 * Create the following Kubernetes resource:
 
 ```bash
 export SCALABILITY_MAX_REPLICAS=10
 export SCALABILITY_AVERAGE_CPU_UTILIZATION=70
 
-cat >mender-mtls-deployment.yml <<EOF
+cat >mender-gateway-deployment.yml <<EOF
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -58,39 +58,43 @@ spec:
     spec:
       containers:
       - name: mender-mtls
-        image: ${MTLS_IMAGE}
+        image: ${MENDER_GATEWAY_IMAGE}
         env:
-        - name: MTLS_MENDER_BACKEND
-          value: ${MTLS_MENDER_BACKEND}
-        - name: MTLS_DEBUG_LOG
+        - name: HTTPS_ENABLED
           value: "true"
-        - name: MTLS_TENANT_CA_PEM
+        - name: HTTPS_LISTEN
+          value: ":443"
+        - name: HTTPS_SERVER_CERTIFICATE
+          value: "/etc/mender/certs/server.crt"
+        - name: HTTPS_SERVER_KEY
+          value: "/etc/mender/certs/server.key"
+        - name: MTLS_CA_CERTIFICATE
           value: "/etc/ssl/certs/ca.crt"
+        - name: UPSTREAM_SERVER_URL
+          value: "${UPSTREAM_SERVER_URL}" \
         envFrom:
         - secretRef:
             name: mtls-user
         volumeMounts:
         - name: server-cert
-          mountPath: /etc/mtls/certs/server/server.crt
+          mountPath: /etc/mender/certs/server.crt
           subPath: "server.crt"
           readOnly: true
         - name: server-cert
-          mountPath: /etc/mtls/certs/server/server.key
+          mountPath: /etc/mender/certs/server.key
           subPath: "server.key"
           readOnly: true
         - name: mtls-ca
           mountPath: /etc/ssl/certs/ca.crt
           subPath: "ca.crt"
           readOnly: true
-
         resources:
           limits:
             cpu: 200m
-            memory: 80M
+            memory: 128Mi
           requests:
-            cpu: 10m
-            memory: 30M
-
+            cpu: 100m
+            memory: 32Mi
         ports:
         - containerPort: 8080
 
@@ -110,9 +114,9 @@ spec:
             port: 8081
           failureThreshold: 36
           periodSeconds: 5
-         
+
       imagePullSecrets:
-      - name: registry-mtls-secret
+      - name: registry-mender-io
       volumes:
       - name: server-cert
         secret:
@@ -137,14 +141,14 @@ spec:
        target:
          type: Utilization
          averageUtilization: ${SCALABILITY_AVERAGE_CPU_UTILIZATION}
- 
+
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: mender-mtls
 EOF
 
-kubectl apply -f mender-mtls-deployment.yml
+kubectl apply -f mender-gateway-deployment.yml
 ```
 
 
@@ -156,7 +160,7 @@ Here you can have sample setups, that could be different for your specific use c
 * AWS sample setup:
 
 ```bash
-cat >mender-mtls-service.yml <<EOF
+cat >mender-gateway-service.yml <<EOF
 apiVersion: v1
 kind: Service
 metadata:
@@ -178,13 +182,13 @@ spec:
 
 EOF
 
-kubectl apply -f mender-mtls-service.yml
+kubectl apply -f mender-gateway-service.yml
 ```
 
 * Azure sample setup:
 
 ```bash
-cat >mender-mtls-service.yml <<EOF
+cat >mender-gateway-service.yml <<EOF
 apiVersion: v1
 kind: Service
 metadata:
@@ -202,5 +206,5 @@ spec:
   type: LoadBalancer
 EOF
 
-kubectl apply -f mender-mtls-service.yml
+kubectl apply -f mender-gateway-service.yml
 ```

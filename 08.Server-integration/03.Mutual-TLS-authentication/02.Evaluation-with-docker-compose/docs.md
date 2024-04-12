@@ -6,15 +6,11 @@ taxonomy:
 
 <!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" -ne 1 ]; then echo "TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->
 
-<!-- Cleanup code: stops the mTLS ambassador if running -->
+<!-- Cleanup code: stops the Mender Gateway if running -->
 <!-- AUTOMATION: execute=function cleanup() { -->
-<!-- AUTOMATION: execute=if docker ps | grep registry.mender.io/mendersoftware/mtls-ambassador -->
-<!-- AUTOMATION: execute=then -->
-<!-- AUTOMATION: execute=docker stop $(docker ps | grep registry.mender.io/mendersoftware/mtls-ambassador | sed 's/ .*//') -->
-<!-- AUTOMATION: execute=fi -->
+<!-- AUTOMATION: execute=docker stop mender-gateway 2>/dev/null && docker rm mender-gateway || true -->
 <!-- AUTOMATION: execute=} -->
 <!-- AUTOMATION: execute=trap cleanup EXIT -->
-
 
 ## Prerequisites
 
@@ -23,28 +19,16 @@ taxonomy:
 
 You need to populate the [env variables](../01.Keys-and-certificates/docs.md#env-variables) and have already [generated the keys](../01.Keys-and-certificates/docs.md#generating-the-keys).
 
+## Set up the Mender Gateway
 
-### A clean docker environment
-
-This step is optional and ensures you don't have any surprises with the IP in the later stages.
-
-! Please note that it will stop and remove all your docker containers even if you have some unrelated to mender.
-
-```bash
-docker stop $(docker ps -a -q)
-docker rm $(docker ps -a -q)
-```
-
-## Set up the mTLS edge proxy
-
-The steps below will run the mtls server in a docker container.
+The steps below will run the `mender-gateway` server in mtls mode in a docker container.
 It will consume the terminal but allow you to track the logs of the running server.
 
 
 ! Set the [env variables](../01.Keys-and-certificates/docs.md#env-variables) and [generated the keys](../01.Keys-and-certificates/docs.md#generating-the-keys) before executing the commands below. The generated keys need to be in the current active directory when you run the commands.
 
 
-As the mtls-ambassador container runs as user `nobody`, with UID 65534, we change the owner of the files we'll volume mount:
+As the `mender-gateway` container runs as user `nobody`, with UID 65534, we change the owner of the files we'll volume mount:
 
 ```bash
 sudo chown 65534 $(pwd)/server.crt $(pwd)/server.key $(pwd)/ca.crt
@@ -55,15 +39,21 @@ To start the edge proxy, run the following command:
 
 ```bash
 docker run \
-  -p 443:8080 \
-  -e MTLS_MENDER_USER="$MENDER_USERNAME" \
-  -e MTLS_MENDER_PASS="$MENDER_PASSWORD" \
-  -e MTLS_MENDER_BACKEND=$MTLS_MENDER_BACKEND \
-  -e MTLS_DEBUG_LOG=true \
-  -v $(pwd)/server.crt:/etc/mtls/certs/server/server.crt \
-  -v $(pwd)/server.key:/etc/mtls/certs/server/server.key \
-  -v $(pwd)/ca.crt:/etc/mtls/certs/tenant-ca/tenant.ca.pem \
-  $MTLS_IMAGE
+  -p 8443:8443 \
+  --name mender-gateway \
+  -e HTTPS_ENABLED="true" \
+  -e HTTPS_LISTEN=":8443" \
+  -e HTTPS_SERVER_CERTIFICATE="/etc/mender/certs/server/server.crt" \
+  -e HTTPS_SERVER_KEY="/etc/mender/certs/server/server.key" \
+  -e MTLS_CA_CERTIFICATE="/etc/mender/certs/tenant-ca/tenant.ca.pem" \
+  -e MTLS_ENABLED="true" \
+  -e MTLS_MENDER_PASSWORD="$MENDER_PASSWORD" \
+  -e MTLS_MENDER_USERNAME="$MENDER_USERNAME" \
+  -e UPSTREAM_SERVER_URL="$UPSTREAM_SERVER_URL" \
+  -v $(pwd)/server.crt:/etc/mender/certs/server/server.crt \
+  -v $(pwd)/server.key:/etc/mender/certs/server/server.key \
+  -v $(pwd)/ca.crt:/etc/mender/certs/tenant-ca/tenant.ca.pem \
+  $MENDER_GATEWAY_IMAGE --log-level debug
 ```
 
 ### Confirm communication with the proxy
@@ -74,9 +64,9 @@ Assuming you run the docker image on your host, the container will start listeni
 From a different terminal execute the command below:
 
 ``` bash
-openssl s_client -connect $MTLS_IP:443
+openssl s_client -connect $MENDER_GATEWAY_IP:8443
 
-# In the mtls ambassador terminal look for a line similar to:
+# In the mender-gateway terminal look for a line similar to:
 # 2023/08/18 15:51:21 http: TLS handshake error from 192.168.88.249:46612: tls: client didn't provide a certificate
 # This means you can communicate with the server correctly
 ```
@@ -87,7 +77,7 @@ Now that we have generated a key and certificate for the device and signed the c
 
 We will use a virtual device with QEMU in docker. If you want to use a physical device, the procedure will be the same, just keep in mind you need to adjust the IP address accordingly.
 
-! Set the [env variables](../01.Keys-and-certificates/docs.md#env-variables) and make sure you're in the directory where you [generated the keys](../01.Keys-and-certificates/docs.md#generating-the-keys).
+! Set the [environment variables](../01.Keys-and-certificates/docs.md#env-variables) and make sure you're in the directory where you [generated the keys](../01.Keys-and-certificates/docs.md#generating-the-keys).
 
 
 Start the virtual client in daemon mode and confirm it's working.
@@ -123,7 +113,7 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 8822 root@$CO
 cat > mender.conf << EOF
 {
   "InventoryPollIntervalSeconds": 5,
-  "ServerURL": "https://$MTLS_DOMAIN",
+  "ServerURL": "https://$MENDER_GATEWAY_DOMAIN",
   "TenantToken": "$TENANT_TOKEN",
   "UpdatePollIntervalSeconds": 5,
   "HttpsClient": {
@@ -136,7 +126,7 @@ EOF
 
 cat > hosts << EOF
 127.0.0.1   localhost.localdomain           localhost
-$MTLS_IP    $MTLS_DOMAIN
+$MENDER_GATEWAY_IP    $MENDER_GATEWAY_DOMAIN
 EOF
 
 # Copy configuration files into the device's rootfs
