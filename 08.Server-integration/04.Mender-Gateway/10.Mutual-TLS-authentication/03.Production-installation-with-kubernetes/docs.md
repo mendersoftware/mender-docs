@@ -17,7 +17,7 @@ You can use the same steps to generate the keys as defined in the [prerequisites
 
 ## Create required secrets
 
-! Set the [env variables](../01.Keys-and-certificates/docs.md#env-variables) and [generate the keys](../01.Keys-and-certificates/docs.md#generating-the-keys) before executing the commands below.
+! Set the [env variables](../01.Keys-and-certificates/docs.md#environment-variables) and [generate the keys](../01.Keys-and-certificates/docs.md#generating-the-keys) before executing the commands below.
 
 Create the Kubernetes secret:
 
