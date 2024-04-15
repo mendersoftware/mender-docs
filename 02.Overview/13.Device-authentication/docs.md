@@ -157,7 +157,7 @@ The sequence diagram below describes the authentication of a Device using `mende
 
 Futher communication between the Device and the Mender Server is intermediated by the `mender-gateway` which verifies the requests are authenticated with a valid client TLS certificate.
 
-Please refer to the [Mutual TLS section](../../08.Server-integration/03.Mutual-TLS-authentication/docs.md)
+Please refer to the [Mutual TLS section](../../08.Server-integration/04.Mender-Gateway/10.Mutual-TLS-authentication/docs.md)
 to find further details on the configuration of this feature.
 
 ## Authentication Token

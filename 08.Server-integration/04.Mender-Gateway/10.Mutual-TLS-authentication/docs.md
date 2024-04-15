@@ -17,11 +17,11 @@ Authenticated devices are automatically authorized in the Mender backend and do 
 
 This is particularly useful in a mass production setting because you can sign client certificates during the manufacturing process, so they automatically get accepted into the Mender Server when your customer turns them on (which might happen several months after manufacturing).
 
-See [Device Authentication](../../02.Overview/13.Device-authentication/docs.md) for a general overview of how device authentication works in Mender.
+See [Device Authentication](../../../02.Overview/13.Device-authentication/docs.md) for a general overview of how device authentication works in Mender.
 
 
-If you are unfamiliar with the mTLS flow, please take a look at the [flow diagram](../../02.Overview/13.Device-authentication/docs.md#client-certificates-and-mutual-tls) and also read about the [keys involved](../03.Mutual-TLS-authentication/01.Keys-and-certificates/docs.md).
+If you are unfamiliar with the mTLS flow, please take a look at the [flow diagram](../../../02.Overview/13.Device-authentication/docs.md#client-certificates-and-mutual-tls) and also read about the [keys involved](01.Keys-and-certificates/docs.md).
 
-After it is suggested that you complete the [evaluation with docker-compose](../03.Mutual-TLS-authentication/02.Evaluation-with-docker-compose/docs.md). It will lead you to a working example with a simple server setup and a client.
+After it is suggested that you complete the [evaluation with docker-compose](02.Evaluation-with-docker-compose/docs.md). It will lead you to a working example with a simple server setup and a client.
 
-Once you have made the choices regarding [Public Key Infrastructure](https://en.wikipedia.org/wiki/Public_key_infrastructure) (PKI) and have the client ready, check the [production installation with Kubernetes](../03.Mutual-TLS-authentication/03.Production-installation-with-kubernetes/docs.md) which focuses only on how to set up the mTLS proxy server for production.
+Once you have made the choices regarding [Public Key Infrastructure](https://en.wikipedia.org/wiki/Public_key_infrastructure) (PKI) and have the client ready, check the [production installation with Kubernetes](03.Production-installation-with-kubernetes/docs.md) which focuses only on how to set up the mTLS proxy server for production.
