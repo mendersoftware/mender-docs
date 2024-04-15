@@ -131,7 +131,7 @@ the Device Authentication within this flow:
 ### Client certificate authentication and Mutual TLS
 
 ! Mutual TLS was previously supported by the `mtls-ambassador` server component - which has been replaced by `mender-gateway`.
-! Please see the [migration guide](TODO(MEN-6173)) for steps on how to migrate from `mtls-ambassador` to `mender-gateway`.
+! Please see the [migration guide](../../08.Server-integration/04.Mender-Gateway/10.Mutual-TLS-authentication/99-MTLS-ambassador-migration/docs.md) for steps on how to migrate from `mtls-ambassador` to `mender-gateway`.
 
 Mender Enterprise supports setting up a reverse proxy at the edge of the network, which can authenticate using client TLS certificates.
 Each client is equipped with a public certificate signed by a Certificate Authority (CA) along with the private key.

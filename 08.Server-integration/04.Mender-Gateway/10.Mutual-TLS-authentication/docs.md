@@ -9,7 +9,7 @@ taxonomy:
 !!!!! In the message, please mention that you are requesting *"Access to the Mender Gateway"*.
 
 ! Mutual TLS was previously supported by the `mtls-ambassador` server component - which has been replaced by `mender-gateway`.
-! Please see the [migration guide](TODO(MEN-6173)) for steps on how to migrate from `mtls-ambassador` to `mender-gateway`.
+! Please see the [migration guide](99-MTLS-ambassador-migration/docs.md) for steps on how to migrate from `mtls-ambassador` to `mender-gateway`.
 
 Mender supports setting up a reverse proxy at the edge of the network, which can authenticate devices using TLS client certificates.
 Each client presents a certificate signed by a Certificate Auhtority (CA) and the edge proxy authenticates devices by verifying this signature.
