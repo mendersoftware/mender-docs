@@ -153,8 +153,8 @@ kubectl apply -f mender-gateway-deployment.yml
 
 
 ## Expose the mTLS service
-You can expose the Mender mTLS Ambassador service with a L4 Load balancer. Please
-refer to your cloud provider documentation for a complete overview.
+You can expose the Mender Gateway service with a L4 Load balancer.
+Please refer to your cloud provider documentation for a complete overview.
 Here you can have sample setups, that could be different for your specific use case:
 
 * AWS sample setup:
