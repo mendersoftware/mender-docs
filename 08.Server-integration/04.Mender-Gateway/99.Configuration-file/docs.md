@@ -139,12 +139,8 @@ This feature requires Mender Gateway version <code>1.1.0</code>
 <dt>SystemID (<code>DEVICE_SYSTEM_ID</code>)</dt>
 <dd>
 Defines a unique System identifier for the devices connected to this Mender Gateway.
-Devices connected to the gateway will show a special attribute named `mender_gateway_system_id` in the reported inventory data.
+Devices connected to the gateway will show a special attribute named <code>mender_gateway_system_id</code> in the reported inventory data.
 </dd>
-
-<dt>DefaultInventory</dt>
-<dd>List of default attributes to inject in the inventory data for the devices connected to this Mender Gateway instance.</dd>
-</dl>
 
 ##### DefaultInventory
 <dl>

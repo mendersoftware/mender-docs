@@ -16,7 +16,7 @@ Not all the variables are needed for all commands, but just setting them all eve
 We suggest copying these to a temporary text file, filling them with your values and keeping them at hand while going through evaluation.
 
 
-<!--AUTOVERSION: "mender-gateway:%"/integration-->
+<!--AUTOVERSION: "mender-gateway:%"/mender-gateway-->
 ```bash
 # For evaluation, define an arbitrary domain for the mtls server (we will modify `/etc/hosts` on the device).
 # No external registration will take place.
@@ -46,7 +46,7 @@ export DOCKER_REGISTRY_USERNAME=
 export DOCKER_REGISTRY_PASSWORD=
 
 # The name and version of the mtls server container
-export MENDER_GATEWAY_IMAGE=${DOCKER_REGISTRY_URL}/mendersoftware/mender-gateway:1.3.0
+export MENDER_GATEWAY_IMAGE=${DOCKER_REGISTRY_URL}/mendersoftware/mender-gateway:master
 ```
 
 
@@ -78,7 +78,7 @@ Flags:
 
 ## PKI keys and certificates
 
-To set up Mender Gateway in  mtls mode for evaluation, you need the following keys and certificates:
+To set up Mender Gateway in  mutual TLS mode for evaluation, you need the following keys and certificates:
 * `ca-private.key` - the private key of the Certificate Authority (CA)
 * `ca.crt` the self signed certificate of the Certification Authority (CA)
 * `server.crt` -  the public server certificate for Mender Gateway signed by the CA
