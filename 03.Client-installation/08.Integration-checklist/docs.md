@@ -215,7 +215,7 @@ reboot
 After the device boots up verify that you are indeed running on the expected partition:
 
 ``` bash
-mount | grep 'on /'
+mount | grep 'on / '
 # Output:
 #/dev/nvme0n1p3 on / type ext4 ... ...
 ```
