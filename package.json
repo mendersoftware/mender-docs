@@ -4,7 +4,7 @@
   "description": "",
   "main": "example.js",
   "dependencies": {
-    "remark-cli": "^12.0.0",
+    "remark-cli": "^12.0.1",
     "remark-validate-links": "https://github.com/oleorhagen/remark-validate-links#grav-slug",
     "yargs": "^17.7.2"
   },
