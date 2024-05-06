@@ -80,23 +80,27 @@ Clarification of the table:
 
 
 <!--AUTOVERSION: "Mender client %"/ignore "| % ("/ignore-->
-| Client vs meta-mender version | dunfell (3.1)      | kirkstone (4.0) |
-|-------------------------------|--------------------|-----------------|
-| Older                         | no                 | no              |
-| Mender client 2.2.x           | stable             | no              |
-| Mender client 2.3.x           | stable             | no              |
-| Mender client 2.4.x           | stable             | no              |
-| Mender client 2.5.x           | stable             | no              |
-| Mender client 2.6.x           | stable             | no              |
-| Mender client 3.0.x           | stable<sup>1</sup> | no              |
-| Mender client 3.1.x           | stable<sup>1</sup> | no              |
-| Mender client 3.2.x           | stable<sup>1</sup> | no              |
-| Mender client 3.3.x           | stable<sup>1</sup> | stable          |
-| Mender client 3.4.x           | stable<sup>1</sup> | stable          |
-| Mender client 3.5.x           | stable<sup>1</sup> | stable          |
+| Client vs meta-mender version | dunfell (3.1)      | kirkstone (4.0)    |
+|-------------------------------|--------------------|--------------------|
+| Older                         | no                 | no                 |
+| Mender client 2.2.x           | stable             | no                 |
+| Mender client 2.3.x           | stable             | no                 |
+| Mender client 2.4.x           | stable             | no                 |
+| Mender client 2.5.x           | stable             | no                 |
+| Mender client 2.6.x           | stable             | no                 |
+| Mender client 3.0.x           | stable<sup>1</sup> | no                 |
+| Mender client 3.1.x           | stable<sup>1</sup> | no                 |
+| Mender client 3.2.x           | stable<sup>1</sup> | no                 |
+| Mender client 3.3.x           | stable<sup>1</sup> | stable             |
+| Mender client 3.4.x           | stable<sup>1</sup> | stable             |
+| Mender client 3.5.x           | stable<sup>1</sup> | stable             |
+| Mender client 4.0.x           | no                 | stable<sup>2</sup> |
 
 <!--AUTOVERSION: "client % and later"/ignore "Yocto branches 3.1 (%) and older"/ignore-->
 !!! <sup>1</sup> Mender client 3.0.0 and later are not installed by default in Yocto branches 3.1 (dunfell) and older. To enable this or a later version, please see [the `PREFERRED_VERSION` setting when configuring the Yocto build](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build).
+
+<!--AUTOVERSION: "client % and later"/ignore "Yocto branch 4.0 (%)."/ignore-->
+!!! <sup>2</sup> Mender client 4.0.0 and later are not installed by default in Yocto branch 4.0 (kirkstone). To enable this or a later version, please see [the `PREFERRED_VERSION` setting when configuring the Yocto build](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build).
 
 Leverage [Mender consulting services to support other versions of the Yocto Project](https://mender.io/product/board-support?target=_blank) for your board and environment.
 
@@ -106,30 +110,32 @@ Leverage [Mender consulting services to support other versions of the Yocto Proj
 The [Mender Artifact format](../03.Artifact/docs.md) is managed by the [Mender Artifacts Library](https://github.com/mendersoftware/mender-artifact?target=_blank), which is included in the Mender client and server (for reading Artifacts) as well as in a standalone utility `mender-artifact` (for [writing Artifacts](../../06.Artifact-creation/03.Modify-an-Artifact/docs.md)).
 
 <!--AUTOVERSION: "Mender % / mender-artifact %"/ignore-->
-|                                      | Artifact v1 | Artifact v2 | Artifact v3 |
-|--------------------------------------|-------------|-------------|-------------|
-| Mender 1.0.x / mender-artifact 1.0.x | yes         | no          | no          |
-| Mender 1.1.x / mender-artifact 2.0.x | yes         | yes         | no          |
-| Mender 1.2.x / mender-artifact 2.1.x | yes         | yes         | no          |
-| Mender 1.3.x / mender-artifact 2.1.x | yes         | yes         | no          |
-| Mender 1.4.x / mender-artifact 2.2.x | yes         | yes         | no          |
-| Mender 1.5.x / mender-artifact 2.2.x | yes         | yes         | no          |
-| Mender 1.6.x / mender-artifact 2.3.x | yes         | yes         | no          |
-| Mender 1.7.x / mender-artifact 2.4.x | yes         | yes         | no          |
-| Mender 2.0.x / mender-artifact 3.0.x | no          | yes         | yes         |
-| Mender 2.1.x / mender-artifact 3.1.x | no          | yes         | yes         |
-| Mender 2.2.x / mender-artifact 3.2.x | no          | yes         | yes         |
-| Mender 2.3.x / mender-artifact 3.3.x | no          | yes         | yes         |
-| Mender 2.4.x / mender-artifact 3.4.x | no          | yes         | yes         |
-| Mender 2.5.x / mender-artifact 3.4.x | no          | yes         | yes         |
-| Mender 2.6.x / mender-artifact 3.5.x | no          | yes         | yes         |
-| Mender 2.7.x / mender-artifact 3.5.x | no          | yes         | yes         |
-| Mender 3.0.x / mender-artifact 3.6.x | no          | yes         | yes         |
-| Mender 3.1.x / mender-artifact 3.6.x | no          | yes         | yes         |
-| Mender 3.2.x / mender-artifact 3.7.x | no          | yes         | yes         |
-| Mender 3.3.x / mender-artifact 3.8.x | no          | yes         | yes         |
-| Mender 3.4.x / mender-artifact 3.9.x | no          | yes         | yes         |
+|                                       | Artifact v1 | Artifact v2 | Artifact v3 |
+|---------------------------------------|-------------|-------------|-------------|
+| Mender 1.0.x / mender-artifact 1.0.x  | yes         | no          | no          |
+| Mender 1.1.x / mender-artifact 2.0.x  | yes         | yes         | no          |
+| Mender 1.2.x / mender-artifact 2.1.x  | yes         | yes         | no          |
+| Mender 1.3.x / mender-artifact 2.1.x  | yes         | yes         | no          |
+| Mender 1.4.x / mender-artifact 2.2.x  | yes         | yes         | no          |
+| Mender 1.5.x / mender-artifact 2.2.x  | yes         | yes         | no          |
+| Mender 1.6.x / mender-artifact 2.3.x  | yes         | yes         | no          |
+| Mender 1.7.x / mender-artifact 2.4.x  | yes         | yes         | no          |
+| Mender 2.0.x / mender-artifact 3.0.x  | no          | yes         | yes         |
+| Mender 2.1.x / mender-artifact 3.1.x  | no          | yes         | yes         |
+| Mender 2.2.x / mender-artifact 3.2.x  | no          | yes         | yes         |
+| Mender 2.3.x / mender-artifact 3.3.x  | no          | yes         | yes         |
+| Mender 2.4.x / mender-artifact 3.4.x  | no          | yes         | yes         |
+| Mender 2.5.x / mender-artifact 3.4.x  | no          | yes         | yes         |
+| Mender 2.6.x / mender-artifact 3.5.x  | no          | yes         | yes         |
+| Mender 2.7.x / mender-artifact 3.5.x  | no          | yes         | yes         |
+| Mender 3.0.x / mender-artifact 3.6.x  | no          | yes         | yes         |
+| Mender 3.1.x / mender-artifact 3.6.x  | no          | yes         | yes         |
+| Mender 3.2.x / mender-artifact 3.7.x  | no          | yes         | yes         |
+| Mender 3.3.x / mender-artifact 3.8.x  | no          | yes         | yes         |
+| Mender 3.4.x / mender-artifact 3.9.x  | no          | yes         | yes         |
 | Mender 3.5.x / mender-artifact 3.10.x | no          | yes         | yes         |
+| Mender 3.6.x / mender-artifact 3.10.x | no          | yes         | yes         |
+| Mender 3.7.x / mender-artifact 3.11.x | no          | no          | yes         |
 
 !! Older Mender clients do not support newer versions of the Artifact format; they will abort the deployment. You can build older versions of the Mender Artifact format to upgrade older Mender clients. See [Write a new Artifact](../../06.Artifact-creation/01.Create-an-Artifact/docs.md#create-an-operating-system-update-artifact) for an introduction how to do this.
 
@@ -158,16 +164,17 @@ The higher version API contains a mix of old and new API endpoints. For endpoint
 ## Mender client and Mender connect
 
 <!--AUTOVERSION: "|  %"/ignore "| %"/ignore -->
-|     Mender client / mender-connect | mender-connect version |
-|------------------------------------|------------------------|
-|  2.6.x                             | 1.0.x                  |
-|  2.7.x                             | 1.1.x                  |
-|  3.0.x                             | 1.2.x                  |
-|  3.1.x                             | 1.2.x                  |
-|  3.2.x                             | 2.0.x <sup>1<sup>      |
-|  3.3.x                             | 2.0.x <sup>1<sup>      |
-|  3.4.x                             | 2.1.x <sup>1<sup>      |
-|  3.5.x                             | 2.1.x <sup>1<sup>      |
+| Mender client / mender-connect | mender-connect version |
+|--------------------------------|------------------------|
+| 2.6.x                          | 1.0.x                  |
+| 2.7.x                          | 1.1.x                  |
+| 3.0.x                          | 1.2.x                  |
+| 3.1.x                          | 1.2.x                  |
+| 3.2.x                          | 2.0.x <sup>1<sup>      |
+| 3.3.x                          | 2.0.x <sup>1<sup>      |
+| 3.4.x                          | 2.1.x <sup>1<sup>      |
+| 3.5.x                          | 2.1.x <sup>1<sup>      |
+| 4.0.x                          | 2.2.x <sup>1<sup>      |
 
 <!--AUTOVERSION: "mender-connect % and later"/ignore "Yocto branches 3.1 (%) and older"/ignore-->
 !!! <sup>1</sup> mender-connect 2.0.0 and later are not installed by default in Yocto branches 3.1 (dunfell) and older. To enable this or a later version, please see [the `PREFERRED_VERSION` setting when configuring the Yocto build](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build).
