@@ -114,6 +114,7 @@ cat > ca.conf <<EOF
 [req]
 distinguished_name = req_distinguished_name
 prompt = no
+x509_extensions = v3_ca
 
 [req_distinguished_name]
 commonName=My CA
@@ -123,6 +124,12 @@ emailAddress=myusername@example.com
 countryName=NO
 localityName=Oslo
 stateOrProvinceName=Oslo
+
+[v3_ca]
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = critical, CA:true
+keyUsage = critical, keyCertSign, digitalSignature
 EOF
 
 openssl req -new -x509 -key ca-private.key -out ca.crt -config ca.conf -days $((365*10))
