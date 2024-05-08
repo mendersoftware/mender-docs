@@ -9,6 +9,7 @@ taxonomy:
 <!-- Cleanup code: stops the Mender Gateway if running -->
 <!-- AUTOMATION: execute=function cleanup() { -->
 <!-- AUTOMATION: execute=docker stop mender-gateway 2>/dev/null && docker rm mender-gateway || true -->
+<!-- AUTOMATION: execute=docker stop mender-client 2>/dev/null && docker rm mender-client || true -->
 <!-- AUTOMATION: execute=} -->
 <!-- AUTOMATION: execute=trap cleanup EXIT -->
 
@@ -83,11 +84,14 @@ We will use a virtual device with QEMU in docker. If you want to use a physical 
 Start the virtual client in daemon mode and confirm it's working.
 
 ```bash
-docker run -d -it -p 85:85 --pull=always mendersoftware/mender-client-qemu
+docker run --name mender-client -d -it -p 85:85 --pull=always mendersoftware/mender-client-qemu
 echo "Waiting 20s for the virtual client to boot"
 sleep 20
-docker ps | grep 'mendersoftware/mender-client-qemu' > /dev/null && echo "Virtual client started successfully"  || echo "Container is not running or failed to start"
-CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aqf "ancestor=mendersoftware/mender-client-qemu"))
+read RUNNING CONTAINER_IP
+docker ps -f name=mender-client -q | grep '.' > /dev/null && \
+    echo "Virtual client started successfully" || \
+    echo "Container is not running or failed to start"
+CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mender-client)
 ```
 
 The virtual client needs to start successfully for the commands below to work.
