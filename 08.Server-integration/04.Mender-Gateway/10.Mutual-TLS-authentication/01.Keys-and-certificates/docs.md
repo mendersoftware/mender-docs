@@ -21,6 +21,7 @@ We suggest copying these to a temporary text file, filling them with your values
 # For evaluation, define an arbitrary domain for the mtls server (we will modify `/etc/hosts` on the device).
 # No external registration will take place.
 export MENDER_GATEWAY_DOMAIN="local-domain-1993028.com"
+export MENDER_GATEWAY_PORT="8443"
 
 # This is the IP of the pc you'll be running the mtls proxy on.
 # Once the container is running this is the IP we'll be expected to communicate with it

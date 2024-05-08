@@ -39,10 +39,10 @@ To start the edge proxy, run the following command:
 
 ```bash
 docker run \
-  -p 8443:8443 \
+  -p $MENDER_GATEWAY_PORT:$MENDER_GATEWAY_PORT \
   --name mender-gateway \
   -e HTTPS_ENABLED="true" \
-  -e HTTPS_LISTEN=":8443" \
+  -e HTTPS_LISTEN=":$MENDER_GATEWAY_PORT" \
   -e HTTPS_SERVER_CERTIFICATE="/etc/mender/certs/server/server.crt" \
   -e HTTPS_SERVER_KEY="/etc/mender/certs/server/server.key" \
   -e MTLS_CA_CERTIFICATE="/etc/mender/certs/tenant-ca/tenant.ca.pem" \
@@ -64,7 +64,7 @@ Assuming you run the docker image on your host, the container will start listeni
 From a different terminal execute the command below:
 
 ``` bash
-openssl s_client -connect $MENDER_GATEWAY_IP:8443
+openssl s_client -connect $MENDER_GATEWAY_IP:$MENDER_GATEWAY_PORT
 
 # In the mender-gateway terminal look for a line similar to:
 # 2023/08/18 15:51:21 http: TLS handshake error from 192.168.88.249:46612: tls: client didn't provide a certificate
@@ -113,7 +113,7 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 8822 root@$CO
 cat > mender.conf << EOF
 {
   "InventoryPollIntervalSeconds": 5,
-  "ServerURL": "https://$MENDER_GATEWAY_DOMAIN",
+  "ServerURL": "https://$MENDER_GATEWAY_DOMAIN:${MENDER_GATEWAY_PORT:-443}",
   "TenantToken": "$TENANT_TOKEN",
   "UpdatePollIntervalSeconds": 5,
   "HttpsClient": {
