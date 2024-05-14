@@ -128,35 +128,36 @@ the Device Authentication within this flow:
 |:--:|
 |*Preauthorization flow*|
 
-### Client certificates and mutual TLS
+### Client certificate authentication and Mutual TLS
 
-Mender Enterprise supports setting up a reverse proxy at the edge of the network,
-which can authenticate devices using TLS client certificates. Each client is equipped
-with a certificate signed by a CA certificate (Certificate Authority), and the edge proxy
-authenticates devices by verifying this signature. Authenticated devices are automatically
-authorized in the Mender backend, and do not need manual approval.
+! Mutual TLS was previously supported by the `mtls-ambassador` server component - which has been replaced by `mender-gateway`.
+! Please see the [migration guide](../../08.Server-integration/04.Mender-Gateway/10.Mutual-TLS-authentication/99.MTLS-ambassador-migration/docs.md) for steps on how to migrate from `mtls-ambassador` to `mender-gateway`.
+
+Mender Enterprise supports setting up a reverse proxy at the edge of the network, which can authenticate using client TLS certificates.
+Each client is equipped with a public certificate signed by a Certificate Authority (CA) along with the private key.
+The edge proxy authenticates devices by verifying this signature.
+Authenticated devices are automatically authorized in the Mender backend, and do not need manual approval.
 
 This is in particular useful in a mass production setting because you can sign client
 certificates when they are manufactured so they automatically get accepted into the
 Mender Server when your customer turns them on, which might happen several months
 after manufacturing.
 
-The sequence diagram below describes the authentication of a Device through the
-mutual TLS ambassador:
+The sequence diagram below describes the authentication of a Device using `mender-gateway`:
 
-1. The user first provisions the device with the crypto material: CA certificate, client certificate and client private key.
-2. The device sends the authorization request to the mTLS ambassador authenticating the request with the client TLS certificate.
+1. The user first provisions the device with the crypto material: public CA certificate, client certificate and client private key.
+2. The device sends the authorization request to the `mender-gateway` authenticating the request with the client TLS certificate.
 3. The ambassador verifies the device's certificate is signed by the CA certificate, and pre-authorizes the device to the Device Authentication service.
 4. At this point, the authentication request is forwarded to the Device Authentication service.
 5. The Device Authentication service returns a valid authentication token, which the mTLS ambassador forwards to the Device.
 
-| ![mTLS flow](mtls.png) |
+| ![Client certificate authentication](mtls.png) |
 |:--:|
-|*mutual TLS flow*|
+|*Client certificate authentication flow*|
 
-Futher communication between the Device and the Mender Server is intermediated by the mTLS ambassador which verifies the requests are authenticated with a valid client TLS certificate.
+Futher communication between the Device and the Mender Server is intermediated by the `mender-gateway` which verifies the requests are authenticated with a valid client TLS certificate.
 
-Please refer to the [Mutual TLS section](../../08.Server-integration/03.Mutual-TLS-authentication/docs.md)
+Please refer to the [Mutual TLS section](../../08.Server-integration/04.Mender-Gateway/10.Mutual-TLS-authentication/docs.md)
 to find further details on the configuration of this feature.
 
 ## Authentication Token
