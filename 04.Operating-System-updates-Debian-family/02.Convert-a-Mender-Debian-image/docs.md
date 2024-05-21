@@ -94,9 +94,14 @@ documentation for your host OS if you encounter connection issues with docker.
 
 Clone `mender-convert` from the official repository:
 
-<!--AUTOVERSION: "-b % https://github.com/mendersoftware/mender-convert"/mender-convert-->
+<!-- This was put in complain mode because there is no integration version which contains this
+version of mender-convert at the time of writing. When this is fixed, just remove the "/complain"
+tag and things should work again. If it's not yet fixed, but a new version is out, then hardcode the
+new value here, remove the "complain" tag temporarily to get things passing, but add it back before
+submitting. -->
+<!--AUTOVERSION: "-b % https://github.com/mendersoftware/mender-convert"/mender-convert/complain-->
 ```bash
-git clone -b 4.2.0 https://github.com/mendersoftware/mender-convert.git
+git clone -b 4.2.1 https://github.com/mendersoftware/mender-convert.git
 ```
 
 Then change directory to where you downloaded `mender-convert` for the next steps:
