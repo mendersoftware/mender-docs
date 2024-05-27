@@ -497,10 +497,6 @@ Please refer to your host Operating System documentation for more details.
 Mender offers a [Monitor](../09.Add-ons/20.Monitor/docs.md) add-on which
 enables monitoring your devices for events and anomalies.
 
-The easiest way to install Monitor on an existing device is by using the Mender
-APT repository, see alternate installation methods on the [add-on page for
-Mender Monitor](../09.Add-ons/20.Monitor/10.Installation/docs.md).
-
 To install `mender-monitor` using the Mender Monitor Debian package, first
 download it by running:
 
