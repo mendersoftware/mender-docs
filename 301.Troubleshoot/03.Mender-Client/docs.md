@@ -44,7 +44,7 @@ add-apt-repository -r "deb [arch=$(dpkg --print-architecture)] https://downloads
 and then re-add the new one with:
 
 ```bash
-add-apt-repository "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/buster/stable main"
+add-apt-repository "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/bookworm/stable main"
 ```
 
 ## Repository 'http://raspbian.raspberrypi.org/raspbian buster InRelease' changed its 'Suite' value from 'stable' to 'oldstable'

@@ -206,7 +206,7 @@ repository. Afterwards, you can install and update the Mender client using the
 
 <!--AUTOVERSION: "Mender %"/ignore -->
 !!! As of Mender 3.2.1 we deprecated the previous stable repository and stopped updating it. As of Mender 3.3 we removed it.
-!!! Please use `https://downloads.mender.io/repos/debian debian/buster/stable main` and _not_
+!!! Please use `https://downloads.mender.io/repos/debian debian/bookworm/stable main` and _not_
 !!! "https://downloads.mender.io/repos/debian stable main".
 !!! Please make sure you have the currently supported version of your choice in place and please
 !!! see below for all the possible options.
