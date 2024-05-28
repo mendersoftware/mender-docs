@@ -1,5 +1,5 @@
 ---
-title: Azure Entra ID
+title: Microsoft Entra ID
 taxonomy:
     category: docs
 ---
@@ -8,20 +8,20 @@ taxonomy:
 !!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
-This example will show you how to set Azure Entra ID as an Identity Provider (IdP) for Hosted Mender as a Service Provider (SP).
+This example will show you how to set Microsoft Entra ID as an Identity Provider (IdP) for Hosted Mender as a Service Provider (SP).
 
 
 ## Prerequisites
 
 * Hosted Mender on a [free trial](https://mender.io/demo) or Enterprise plan.
-* Azure Entra ID with the capability to create and customize a SAML enterprise application
+* Microsoft Entra ID with the capability to create and customize a SAML enterprise application
 
 
 ## Setup
 
 ![](01-new-application.png)
 
-Under Azure Entra ID, select the creation of a new application. **(1)** 
+Under Microsoft Entra ID, select the creation of a new application. **(1)** 
 
 ![](02-create-new-app.png)
 
@@ -50,28 +50,28 @@ Once the editor opens, paste the copied XML document into it. **(2)**
 ![](05-tenant-urls.png)
 
 The URLs (`Entity ID`, `ASC URL`, and `Start URL`) will now be available under the SAML checkbox in Hosted Mender. **(1)**
-Copy them into the Azure Entra ID application configuration. 
+Copy them into the Microsoft Entra ID application configuration. 
 
 
 ![](06-real-metadata.png)
 
-At this point, Azure Entra ID will allow the download of the real XML metadata. **(1)**
+At this point, Microsoft Entra ID will allow the download of the real XML metadata. **(1)**
 Replace the XML document you fetched from a URL in the previous step (App Federation Metadata Url) with the one you can download as a file (Federation Metadata XML).
 
 
 ![](07-create-mender-user.png)
 
-In the `Users and groups` settings for the application in Azure Entra ID, assign the new user/group. **(1)**
+In the `Users and groups` settings for the application in Microsoft Entra ID, assign the new user/group. **(1)**
 The `User principal name` needs to be the same email that the user on Hosted Mender will have (not on the picture).
-On Hosted Mender create a new user with the Email corresponding to the `User principal name` set in Azure Entra ID.
+On Hosted Mender create a new user with the Email corresponding to the `User principal name` set in Microsoft Entra ID.
 
 Make sure no password is set during user creation otherwise the SAML integration will be rejected. **(2)**
 
 
 ## Testing and troubleshooting
 
-Azure Entra ID offers a "Test" button in the "Single sign-on" section.
-If you're logged to Azure Entra ID with the user you've set up on Hosted Mender, you can log out from Hosted Mender and press the "Test" button. 
+Microsoft Entra ID offers a "Test" button in the "Single sign-on" section.
+If you're logged to Microsoft Entra ID with the user you've set up on Hosted Mender, you can log out from Hosted Mender and press the "Test" button. 
 If the integration is successful, you will be logged into Hosted Mender.
 
 
