@@ -8,13 +8,13 @@ taxonomy:
 !!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
-This example will show you how to set AWS IAM Identity Center as an Identity Provider (IdP) for Hosted Mender as a Service Provider (SP).
+This example will show you how to set AWS IAM Identity Center as an Identity Provider (IdP) for hosted Mender as a Service Provider (SP).
 
 
 ## Prerequisites
 
-* Hosted Mender on a [free trial](https://mender.io/demo) or Enterprise plan.
-* An AWS account with enough privileges to create a customer managed SAML 2.0 application in the IAM Identity Center
+* Hosted Mender Enterprise or a [free trial](https://mender.io/demo);
+* An AWS account with enough privileges to create a customer managed SAML 2.0 application in the IAM Identity Center.
 
 
 ## Setup
@@ -33,7 +33,7 @@ This example will show you how to set AWS IAM Identity Center as an Identity Pro
 
 ![New application settings](02-add-application-settings.png)
 
-* Choose a Display Name (e.g., Hosted Mender) and a description for your users;
+* Choose a Display Name (e.g., hosted Mender) and a description for your users;
 * Download the IAM Identity Center SAML metadata file clicking on the "Download" link.
 
 ![Download the SAML metadata](03-add-application-download-saml-metadata.png)∏
@@ -41,8 +41,8 @@ This example will show you how to set AWS IAM Identity Center as an Identity Pro
 
 ### Configure Mender as a Service Provider
 
-Open your Hosted Mender account in another browser tab to set it up as a SAML 2.0 Service Provider (SP).
-This step requires uploading the SAML metadata we downloaded in the previous section in the "Organization and billing" settings view.
+Go to your hosted Mender account in another browser tab to set up Mender as a SAML 2.0 Service Provider (SP).
+This step requires uploading the SAML metadata we downloaded in the previous section in the "Organization and billing" settings view, selecting SAML as Single Sign-On type.
 
 ![SAML configuration](../saml_1.png)
 
@@ -69,12 +69,12 @@ Please note these values and return to the other browser tab where you were sett
 
 ### Edit the attribute mapping for the newly created application
 
-As Mender uses the user's email address as a username, we must ensure that AWS IAM Identity Center uses the email address as NameID format.
+As Mender looks up users using their email address, we must ensure that AWS IAM Identity Center uses the email address as NameID format.
 To do so, we click on the "Edit attribute mappings" item from the "Actions" menu in the application details view:
 
 ![Application attribute mapping](05-application-attribute-mapping.png)
 
-In this screen, we set the "Subject" user attribute in the application to the value `${user:email}` with format `emailAddress`, and we click on "Save changes".
+In this screen, we set the "Subject" user attribute to the value `${user:email}` with format `emailAddress`, and we click on "Save changes".
 
 ![Application attribute mapping: email](06-application-attribute-mapping-email.png)
 
@@ -89,29 +89,29 @@ The newly downloaded XML will have the following line in it:
 <md:NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress</md:NameIDFormat>
 ```
 
-Lastly, we can proceed to replace the SAML metadata file in Hosted Mender in the "Organization and billing" settings view, as explained above.
+Lastly, we can proceed to replace the SAML metadata file in hosted Mender in the "Organization and billing" settings view, as explained above.
 Please note that the Mender's SAML values (Start URL, ACS URL, Entity ID) won't change after you successfully upload the new SAML metadata file.
 
 
 ### Assign users and groups to the application
 
-You must assign users and/or groups to the application to grant them access to Hosted Mender.
+You must assign users and/or groups to the application to grant them access to hosted Mender.
 You can do so by clicking the "Assign users and groups" button in the application's detail view.
 
 ![Assign users and groups](07-assign-users-and-groups.png)
 
-Please note that to enable users to access your tenant on Hosted Mender, you have to create that user with the email address corresponding to the email set in the AWS IAM Identity Center.
+Please note that to enable users to access your tenant on hosted Mender, you have to create that user with the email address corresponding to the email set in the AWS IAM Identity Center.
 Ensure no password is set during user creation in Mender; otherwise, the SAML integration will be rejected.
 
 
-### How to access Hosted Mender using the AWS access portal
+### How to access hosted Mender using the AWS access portal
 
-At this point, Mender's integration with AWS IAM Identity Center is complete, and you can access your Hosted Mender account from the AWS access portal.
+At this point, Mender's integration with AWS IAM Identity Center is complete, and you can access your hosted Mender account from the AWS access portal.
 You can click the "Dashboard" link in the sidebar to obtain the AWS access portal URL and open it in a new tab.
 
 ![IAM Identity Center dashboard](08-dashboard.png)
 
-From the AWS access portal, you will see Hosted Mender in the list of "Applications".
+From the AWS access portal, you will see hosted Mender in the list of "Applications".
 To initiate the session, click on the application and proceed with the authentication.
 
 ![AWS access portal](09-aws-access-portal.png)

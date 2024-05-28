@@ -13,7 +13,7 @@ This example will show you how to set Microsoft Entra ID as an Identity Provider
 
 ## Prerequisites
 
-* Hosted Mender on a [free trial](https://mender.io/demo) or Enterprise plan.
+* Hosted Mender Enterprise or a [free trial](https://mender.io/demo);
 * Microsoft Entra ID with the capability to create and customize a SAML enterprise application
 
 
