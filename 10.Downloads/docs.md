@@ -206,7 +206,7 @@ repository. Afterwards, you can install and update the Mender client using the
 
 <!--AUTOVERSION: "Mender %"/ignore -->
 !!! As of Mender 3.2.1 we deprecated the previous stable repository and stopped updating it. As of Mender 3.3 we removed it.
-!!! Please use `https://downloads.mender.io/repos/debian debian/buster/stable main` and _not_
+!!! Please use `https://downloads.mender.io/repos/debian debian/bookworm/stable main` and _not_
 !!! "https://downloads.mender.io/repos/debian stable main".
 !!! Please make sure you have the currently supported version of your choice in place and please
 !!! see below for all the possible options.
@@ -276,13 +276,6 @@ echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/
 <!--AUTOMATION: ignore -->
 ```bash
 echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/bullseye/stable main" \
- | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
-```
-[/ui-tab]
-[ui-tab title="Debian Buster"]
-<!--AUTOMATION: ignore -->
-```bash
-echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/buster/stable main" \
  | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
 ```
 [/ui-tab]
@@ -509,7 +502,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-monitor_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/master/mender-monitor_master-1%2Bdebian%2Bbuster_all.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/master/mender-monitor_master-1%2Bdebian%2Bbullseye_all.deb
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
@@ -523,7 +516,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-monitor_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/master/mender-monitor_master-1%2Bdebian%2Bbuster_all.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/master/mender-monitor_master-1%2Bdebian%2Bbullseye_all.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -533,7 +526,7 @@ Then install the package with:
 
 <!--AUTOVERSION: "mender-monitor_%-1"/monitor-client -->
 ```bash
-sudo dpkg -i mender-monitor_master-1+debian+buster_all.deb || sudo apt --fix-broken -y install
+sudo dpkg -i mender-monitor_master-1+debian+bullseye_all.deb || sudo apt --fix-broken -y install
 ```
 
 ### Demo monitors
@@ -553,7 +546,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-monitor-demo_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/master/mender-monitor-demo_master-1%2Bdebian%2Bbuster_all.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/master/mender-monitor-demo_master-1%2Bdebian%2Bbullseye_all.deb
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
@@ -568,7 +561,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-monitor-demo_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/master/mender-monitor-demo_master-1%2Bdebian%2Bbuster_all.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/master/mender-monitor-demo_master-1%2Bdebian%2Bbullseye_all.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -578,7 +571,7 @@ Then install the package with:
 
 <!--AUTOVERSION: "mender-monitor-demo_%-1"/monitor-client -->
 ```bash
-sudo dpkg -i mender-monitor-demo_master-1+debian+buster_all.deb
+sudo dpkg -i mender-monitor-demo_master-1+debian+bullseye_all.deb
 ```
 
 ## Mender Gateway
@@ -683,52 +676,6 @@ And download it with:
 ```bash
 wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbullseye_amd64.deb
 ```
-[/ui-tab]
-[/ui-tabs]
-
-[/ui-tab]
-[ui-tab title="Debian Buster"]
-
-[ui-tabs position="top-left" active="0" theme="lite" ]
-[ui-tab title="armhf"]
-Set the following variables with your credentials:
-<!--AUTOMATION: ignore -->
-```bash
-HOSTED_MENDER_EMAIL=<your.email@example.com>
-HOSTED_MENDER_PASSWORD=<yoursecurepassword>
-```
-And download it with:
-<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
-```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbuster_armhf.deb
-```
-[/ui-tab]
-[ui-tab title="arm64"]
-Set the following variables with your credentials:
-<!--AUTOMATION: ignore -->
-```bash
-HOSTED_MENDER_EMAIL=<your.email@example.com>
-HOSTED_MENDER_PASSWORD=<yoursecurepassword>
-```
-And download it with:
-<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
-```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbuster_arm64.deb
-```
-[/ui-tab]
-[ui-tab title="amd64"]
-Set the following variables with your credentials:
-<!--AUTOMATION: ignore -->
-```bash
-HOSTED_MENDER_EMAIL=<your.email@example.com>
-HOSTED_MENDER_PASSWORD=<yoursecurepassword>
-```
-And download it with:
-<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
-```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbuster_amd64.deb
-```
-
 [/ui-tab]
 [/ui-tabs]
 
@@ -935,58 +882,6 @@ wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_EN
 [/ui-tabs]
 
 [/ui-tab]
-[ui-tab title="Debian Buster"]
-
-[ui-tabs position="top-left" active="0" theme="lite" ]
-[ui-tab title="armhf"]
-Set the following variables with your credentials:
-<!--AUTOMATION: ignore -->
-```bash
-MENDER_ENTERPRISE_USER=<your.user>
-MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
-```
-And download it with:
-
-<!--AUTOMATION: ignore -->
-<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
-```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbuster_armhf.deb
-```
-[/ui-tab]
-[ui-tab title="arm64"]
-Set the following variables with your credentials:
-<!--AUTOMATION: ignore -->
-```bash
-MENDER_ENTERPRISE_USER=<your.user>
-MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
-```
-And download it with:
-
-<!--AUTOMATION: ignore -->
-<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
-```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbuster_arm64.deb
-```
-[/ui-tab]
-[ui-tab title="amd64"]
-Set the following variables with your credentials:
-<!--AUTOMATION: ignore -->
-```bash
-MENDER_ENTERPRISE_USER=<your.user>
-MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
-```
-And download it with:
-
-<!--AUTOMATION: ignore -->
-<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
-```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/master/mender-gateway_master-1%2Bdebian%2Bbuster_amd64.deb
-```
-
-[/ui-tab]
-[/ui-tabs]
-
-[/ui-tab]
 [ui-tab title="Ubuntu Focal"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
@@ -1105,7 +1000,7 @@ Then install the package with:
 sudo dpkg -i mender-gateway_*.deb
 ```
 
-<!--AUTOMATION: test=test $(ls mender-gateway_*.deb | wc -l) -eq 15 -->
+<!--AUTOMATION: test=test $(ls mender-gateway_*.deb | wc -l) -eq 12 -->
 <!--AUTOMATION: execute=dpkg -i mender-gateway_*-1+ubuntu+focal_amd64.deb -->
 
 ### Examples package
