@@ -42,7 +42,7 @@ At this time, we support the following LTS releases: 3.6, 3.7.
 
 | LTS         | Supported until |
 | ----------- | --------------- |
-| 3.7         |  2024-07        |
+| 3.7         |  2025-05        |
 | 3.6         |  2024-07        |
 
 Mender is versioned and released as a Product bundle, and the versions mentioned here refer to the Product bundle version.
