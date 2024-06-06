@@ -327,7 +327,7 @@ sudo apt-get install mender-client4
 
 ### Download
 
-If you are using *Hosted Mender*, set the following variables with your credentials:
+If you are using *hosted Mender*, set the following variables with your credentials:
 
 <!--AUTOMATION: ignore -->
 ```bash
@@ -399,7 +399,7 @@ sudo cp mender-binary-delta-1.5.0/x86_64/mender-binary-delta-generator /usr/bin
 
 ### Download
 
-If you are using *Hosted Mender*, set the following variables with your credentials:
+If you are using *hosted Mender*, set the following variables with your credentials:
 
 <!--AUTOMATION: ignore -->
 ```bash

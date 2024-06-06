@@ -217,7 +217,7 @@ app-gen --artifact-name "$ARTIFACT_NAME" \
 #### Deploy the Mender Artifact
 
 The generated artifact is now ready to be deployed on the device. Open your
-browser and navigate to the "Releases" column in [Hosted Mender
+browser and navigate to the "Releases" column in the [Mender
 UI](https://hosted.mender.io/ui/releases) and upload your newly created
 artifact. Once uploaded, navigate to the "Devices" column and select your device
 and then click `Create a deployment for this device` in the `Device actions` in

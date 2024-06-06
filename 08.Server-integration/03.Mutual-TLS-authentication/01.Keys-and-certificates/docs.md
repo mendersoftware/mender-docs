@@ -29,15 +29,15 @@ export MTLS_DOMAIN="local-domain-1993028.com"
 export MTLS_IP=
 
 
-# You need to create a separate user on your Hosted Mender instance.
-# The mtls server will authenticate devices on Hosted Mender as this user.
+# You need to create a separate user on your Mender instance.
+# The mtls server will authenticate devices on Mender as this user.
 # Fill these with the credentials of your newly created user.
 export MENDER_USERNAME="mtls@mender.io"
 export MENDER_PASSWORD="password"
 
 # Please check the URL if your account as this can be i.e. eu.hosted.mender.io
 export MTLS_MENDER_BACKEND="https://hosted.mender.io"
-# Located under Settings->Organisation and billing->Organization token once logged to the UI of Hosted Mender
+# Located under Settings->Organisation and billing->Organization token once logged in to the Mender UI
 export TENANT_TOKEN="eyJhbGciOiJSUzI1NiCJ9...jJItYzlFyHMYzZQT"
 
 # Docker registry configuration
