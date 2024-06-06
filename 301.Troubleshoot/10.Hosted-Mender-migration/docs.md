@@ -12,7 +12,7 @@ This document will describe the migration process if you currently have a fleet 
 !! Migration between instances without risks requires support assistance and is a payed service available only to the Enterprise plan.
 !! If you wish to migrate your account please contact us on [support@mender.io](mailto:support@mender.io?subject=Tenant%20migration) with the subject **Tenant migration**.
 
-!! Please note that this method only applies for HM mender instances and isn't applicable for on-prem migrations.
+!! Please note that this method only applies for hosted Mender instances and isn't applicable for on-premise migrations.
 
 ## Introduction
 
@@ -23,7 +23,7 @@ Going forward, the following terms will be used for clarity:
 
 The following steps summarize the procedure for moving from one server to another:
 
-1. Make a clone of the old server by contacting Northern.Tech
+1. Make a clone of the old server by contacting Northern.tech
 2. Update the device with configuration for both servers
 3. Reject the device on the Old server
 4. Accept the device on the New server
@@ -34,10 +34,10 @@ The diagram below, describes the flow
 ![Migration flow](migration-flow.png)
 
 
-#### 1. Make a clone of the old server by contacting Northern.Tech
+#### 1. Make a clone of the old server by contacting Northern.tech
 
 If you wish to migrate your account please contact us on [support@mender.io](mailto:support@mender.io) with the title **Tenant migration**.
-In that request please share you "Organization name" as registered on Hosted Mender in "Organization and billing".
+In that request please share you "Organization name" as registered in Mender in "Organization and billing".
 We will get back to you once the tenant has been cloned and you can proceed to the next step.
 
 

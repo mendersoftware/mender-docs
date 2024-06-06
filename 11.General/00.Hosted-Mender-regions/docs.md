@@ -17,7 +17,7 @@ The EU instance is compliant with the General Data Protection Regulation (GDPR).
 
 ## Region selection
 
-When setting up your account, you can select the desired region from the list of the available Hosted Mender instances:
+When setting up your account, you can select the desired region from the list of the available hosted Mender instances:
 
 ![region selection](region-selection.png)
 
