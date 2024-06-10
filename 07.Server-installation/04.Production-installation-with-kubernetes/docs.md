@@ -72,4 +72,4 @@ service.
 To deploy a production-grade Mender Server, you will need Kubernetes worker nodes providing
 at least 4 GB of RAM, 4 vCPUs and 10 GB for the persistent volumes.
 
-The Mender backend is available for the x86 architecture only.
+The Mender backend is available for the x86 and arm64 architecture only.
