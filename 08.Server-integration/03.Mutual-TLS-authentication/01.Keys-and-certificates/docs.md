@@ -29,7 +29,7 @@ export MTLS_DOMAIN="local-domain-1993028.com"
 export MTLS_IP=
 
 
-# You need to create a separate user on your Mender instance.
+# You need to create a separate user in your Mender account.
 # The mtls server will authenticate devices on Mender as this user.
 # Fill these with the credentials of your newly created user.
 export MENDER_USERNAME="mtls@mender.io"
