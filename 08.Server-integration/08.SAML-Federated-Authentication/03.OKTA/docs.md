@@ -5,14 +5,14 @@ taxonomy:
 ---
 
 !!!!! SAML Federated Authentication is only available in the Mender Enterprise plan.
-!!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
+!!!!! See [the Mender plans page](https://mender.io/pricing/plans?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
-This example will show you how to set Okta as an Identity Provider (IdP) for Hosted Mender.
+This example will show you how to set Okta as an Identity Provider (IdP) for hosted Mender.
 The example is based on the free trial accounts on both services.
 
 
-Create a free trial account for [Okta](https://www.okta.com/free-trial/) and [Hosted Mender](https://mender.io/demo).
+Create a free trial account for [Okta](https://www.okta.com/free-trial/) and [hosted Mender](https://hosted.mender.io/ui/signup).
 
 ## Initial setup on the Okta side
 
@@ -41,7 +41,7 @@ Set the following values in the `SAML Settings`, section `General`:
 
 The `http://tmp.url` are temporary values we'll later replace with the correct ones. 
 This is a workaround to get Okta to generate the IdP metadata XML file.
-Once you add the content of that XML to Hosted Mender, it will generate the correct URLs you will replace in Okta.
+Once you add the content of that XML to Mender, it will generate the correct URLs you will replace in Okta.
 Proceed to the next screen.
 
 [Assign mender to user](https://help.okta.com/en-us/Content/Topics/Provisioning/lcm/lcm-assign-app-user.htm)
@@ -65,10 +65,10 @@ Press Next to conclude the setup.
 
 Under the `Sign On` tab of the newly created "Hosted Mender" locate the `View SAML setup instructions` button and click on it.
 Under the `Optional` there will be an XML containing the IdP metadata.
-You need to copy that contend Hosted Mender.
+You need to copy that content to Mender.
 
 
-## Setup on the Hosted Mender side
+## Setup on Mender
 
 
 Copy the Okta IdP metadata generated in the previous step.
@@ -106,5 +106,5 @@ This ends the setup on the Okta side.
 
 ## Accessing the login
 
-Copy the `Start URL` (the third URL provided by Hosted Mender) into the browser, and an Okta login will pop up.
-Once you complete with the Okta authentication (you will have to install 'Okta Verify', the mobile app for Okta MFA), you will be redirected to Hosted Mender.
+Copy the `Start URL` (the third URL provided by Mender) into the browser, and an Okta login will pop up.
+Once you complete with the Okta authentication (you will have to install 'Okta Verify', the mobile app for Okta MFA), you will be redirected to Mender.
