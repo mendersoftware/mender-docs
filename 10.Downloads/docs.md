@@ -35,8 +35,8 @@ Mender provides images based on the following distributions:
 | Raspberry Pi 4 Model B        | Raspberry Pi OS Bullseye Lite 2022-09-22 | [raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz][raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz] | 8 GB         |
 
 <!--AUTOVERSION: "mender-convert-%.img.xz"/mender-convert -->
-[raspios-bullseye-armhf-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2022-09-22-raspios-bullseye-armhf-lite/arm/2022-09-22-raspios-bullseye-armhf-lite-raspberrypi3-mender-convert-4.0.3.img.xz
-[raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2022-09-22-raspios-bullseye-armhf-lite/arm/2022-09-22-raspios-bullseye-armhf-lite-raspberrypi4-mender-convert-4.0.3.img.xz
+[raspios-bullseye-armhf-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2023-05-03-raspios-bullseye-armhf-lite/arm/2023-05-03-raspios-bullseye-armhf-lite-raspberrypi3-mender-convert-4.2.2.img.xz
+[raspios-bullseye-armhf-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2023-05-03-raspios-bullseye-armhf-lite/arm/2023-05-03-raspios-bullseye-armhf-lite-raspberrypi4-mender-convert-4.2.2.img.xz
 
 You can find images for other devices in our Mender Hub community forum, see
 [Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11?target=_blank) or
@@ -59,8 +59,8 @@ Follow the correct link according to your host platform to download
 <!--AUTOVERSION: "mender-artifact %][x.x.x_mender-artifact-"/mender-artifact "mender-artifact %][%_mender-artifact-"/ignore-->
 | Platform | Download link                                          |                                                                       |
 |----------|--------------------------------------------------------|-----------------------------------------------------------------------|
-| Linux    | [mender-artifact 3.10.2][x.x.x_mender-artifact-linux]  | [mender-artifact master][master_mender-artifact-linux] (Pre-release)  |
-| Mac OS X | [mender-artifact 3.10.2][x.x.x_mender-artifact-darwin] | [mender-artifact master][master_mender-artifact-darwin] (Pre-release) |
+| Linux    | [mender-artifact 3.11.2][x.x.x_mender-artifact-linux]  | [mender-artifact master][master_mender-artifact-linux] (Pre-release)  |
+| Mac OS X | [mender-artifact 3.11.2][x.x.x_mender-artifact-darwin] | [mender-artifact master][master_mender-artifact-darwin] (Pre-release) |
 
 !!! The `mender-artifact` pre-built binaries depend on OpenSSL 1.1 shared library. If you are
 !!! running a system that has already migrated to OpenSSL 3, like Alpine Linux 3.17 or Ubuntu 22.04,
@@ -83,8 +83,8 @@ Please refer to your host Operating System documentation for more details.
 
 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/3.10.2/linux/mender-artifact
-[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/3.10.2/darwin/mender-artifact
+[x.x.x_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/3.11.2/linux/mender-artifact
+[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/3.11.2/darwin/mender-artifact
 <!--AUTOVERSION: "[%_mender-artifact-"/ignore "mender-artifact/%/"/ignore -->
 [master_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/master/linux/mender-artifact
 [master_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/master/darwin/mender-artifact
