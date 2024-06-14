@@ -33,14 +33,9 @@ Download the Raspberry Pi OS image ready for Mender:
   * Download link: [Raspberry Pi 3 Model B and B+][raspios-bullseye-lite-raspberrypi3-mender.img.xz]
   * Download link: [Raspberry Pi 4 Model B][raspios-bullseye-lite-raspberrypi4-mender.img.xz]
 
-<!-- This was put in complain mode because there is no integration version which contains this
-version of mender-convert at the time of writing. When this is fixed, just remove the "/complain"
-tag and things should work again. If it's not yet fixed, but a new version is out, then hardcode the
-new value here, remove the "complain" tag temporarily to get things passing, but add it back before
-submitting. -->
-<!--AUTOVERSION: "mender-convert-%.img.xz"/mender-convert/complain -->
-[raspios-bullseye-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2023-05-03-raspios-bullseye-armhf-lite/arm/2023-05-03-raspios-bullseye-armhf-lite-raspberrypi3-mender-convert-4.2.1.img.xz
-[raspios-bullseye-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2023-05-03-raspios-bullseye-armhf-lite/arm/2023-05-03-raspios-bullseye-armhf-lite-raspberrypi4-mender-convert-4.2.1.img.xz
+<!--AUTOVERSION: "mender-convert-%.img.xz"/mender-convert -->
+[raspios-bullseye-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2023-05-03-raspios-bullseye-armhf-lite/arm/2023-05-03-raspios-bullseye-armhf-lite-raspberrypi3-mender-convert-4.2.2.img.xz
+[raspios-bullseye-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2023-05-03-raspios-bullseye-armhf-lite/arm/2023-05-03-raspios-bullseye-armhf-lite-raspberrypi4-mender-convert-4.2.2.img.xz
 
 Follow the steps outlined in the [Raspberry Pi OS documentation](https://www.raspberrypi.org/documentation/installation/installing-images?target=_blank)
 to flash the OS image to the device.
