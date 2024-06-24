@@ -1,8 +1,23 @@
 ---
-title: Access control
+title: Access Management
 taxonomy:
 category: docs
 ---
+
+## Granting access to existing users
+
+In hosted Mender, you can invite users from other accounts to join your existing account.
+To add an existing user to your account, simply create another user, but instead of entering a user email, enter the unique ID of the target user.
+The user ID can be found in "My profile" or by expanding the user details in the "User management" settings panel.
+
+![Add existing user](add-existing-user.png)
+
+!!! If the target organization has Enterprise plan, the user is initially assigned the built-in "Read Access" role.
+!!! Please refer to the section about [Role-Based Access Control](#role-based-access-control) for updating the desired role.
+
+To switch organization, simply navigate to the selector in the top-right corner and select the organization you want to change to.
+
+![Selecting organization](switching-org.png)
 
 # Role-Based Access Control
 
