@@ -1,8 +1,10 @@
 ---
-title: Role-Based Access Control
+title: Access control
 taxonomy:
 category: docs
 ---
+
+# Role-Based Access Control
 
 !!!!! Role-Based Access Control is only available in the Mender Enterprise plan.
 !!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
