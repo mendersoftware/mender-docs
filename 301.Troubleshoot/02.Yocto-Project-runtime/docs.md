@@ -4,6 +4,27 @@ taxonomy:
     category: docs
 ---
 
+<!--AUTOVERSION: "to % from"/ignore "GRUB % fails"/ignore-->
+## Upgrading to scarthgap from GRUB 2.04 fails with disk not found
+
+<!--AUTOVERSION: "like % used"/ignore "used in %"/ignore-->
+Recent versions of `mke2fs` enable the `metadata_csum_seed` feature in ext4 filesystems by default,
+which is not recognized by older GRUB versions, like 2.04 used in kirkstone. To be able to upgrade a
+device with an affected GRUB, the feature needs to be removed from the new image.
+
+To solve it, add to your `local.conf`:
+
+```bash
+EXTRA_IMAGECMD:ext4:append = " -O ^metadata_csum_seed"
+```
+
+<!--AUTOVERSION: "RelNotes/v%.txt"/ignore-->
+See:
+* Bug report: http://savannah.gnu.org/bugs/?56897
+* Fix: https://git.savannah.gnu.org/cgit/grub.git/commit/?id=7fd5feff97c4b1f446f8fcf6d37aca0c64e7c763
+* mke2fs release notes: https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git/tree/doc/RelNotes/v1.47.0.txt
+
+
 ## Upgrading from mender-client 2.1 and earlier to newer versions fails "type_info provides values not yet supported"
 
 If you generate an artifact with mender-artifact version 3.3 or newer and try to upgrade an older mender-client (2.1 or earlier), you may get a log line similar to this:
