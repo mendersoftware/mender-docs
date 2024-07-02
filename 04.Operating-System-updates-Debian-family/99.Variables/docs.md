@@ -157,6 +157,19 @@ Install the Mender Configure add-on.
 
 The version of the Mender Configure add-on to include in the update.
 
+### `MENDER_INSTALL_INPUT_PACKAGES_PATH
+
+> Value: input/deb(default)
+
+Directory containing deb packages to be installed in the image
+
+
+### `MENDER_INSTALL_INPUT_PACKAGES`
+
+> Value: y/n(default)
+
+Install deb packages located in MENDER_INSTALL_INPUT_PACKAGES_PATH
+
 
 #### `MENDER_COMPRESS_DISK_IMAGE`
 
