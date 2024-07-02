@@ -39,6 +39,36 @@ PREFERRED_VERSION_mender-client = "master"
 <!--AUTOVERSION: "Yocto branches higher than 3.1 (%)"/ignore "Mender client % and later"/ignore-->
 In Yocto branches higher than 3.1 (dunfell), Mender client 3.0.0 and later will be built by default.
 
+
+## How to build an image with Mender client and connect using trace logs
+
+This assumes you're in the build directory of your Yocto project and bitbake has been initialized.
+The snippet will change the unit files for services to start them with trace level logging.
+
+
+``` bash
+bitbake-layers create-layer meta-mender-helpers
+bitbake-layers add-layer meta-mender-helpers
+
+mkdir -p meta-mender-helpers/recipes-helpers/mender-connect
+cat > meta-mender-helpers/recipes-helpers/mender-connect/mender-connect_%.bbappend << "EOF"
+do_install:append() {
+    sed -i "s|ExecStart=.*|ExecStart=/usr/bin/mender-connect --trace daemon|" ${D}/${systemd_unitdir}/system/mender-connect.service
+}
+EOF
+
+
+mkdir -p meta-mender-helpers/recipes-helpers/mender-client
+cat > meta-mender-helpers/recipes-helpers/mender-client/mender_%.bbappend << "EOF"
+do_install:append() {
+    sed -i "s|ExecStart=.*|ExecStart=/usr/bin/mender-auth --log-level trace daemon|" ${D}/${systemd_unitdir}/system/mender-authd.service
+    sed -i "s|ExecStart=.*|ExecStart=/usr/bin/mender-update --log-level trace daemon|" ${D}/${systemd_unitdir}/system/mender-updated.service
+}
+EOF
+```
+
+
+
 ## Your project is using a fork of U-Boot which conflicts with the U-Boot Mender uses
 
 When [Building a Mender Yocto Project image](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md) for your own project and device, you encounter a build error similar to the following:
