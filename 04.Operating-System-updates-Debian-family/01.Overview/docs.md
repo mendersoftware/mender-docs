@@ -27,8 +27,12 @@ The client binaries are about 7 MB in size, or about 4 MB when debug symbols are
 stripped (using the `strip` tool). This includes most of the dependencies for
 the client, such as the http, TLS, and JSON libraries.
 
-The client depends on the LZMA library for Artifact compression, which is
-present in most Linux distributions, including those based on the Debian family.
+The client depends on few shared libraries:
+* The libarchive and LZMA library for Artifact parsing and decompression.
+* The OpenSSL library for cryptographic operations.
+* And D-Bus library for communication between the binaries and 3rd party applications.
+
+These libraries are present in most Linux distributions, including those based on the Debian family.
 
 
 ### Bootloader support
