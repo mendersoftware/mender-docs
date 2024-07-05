@@ -50,9 +50,7 @@ Remote Terminal, File Transfer, Port Forwarding.
 
 You can create new Roles based on your specific needs and workflows. When creating or
 editing custom Roles, you can specify the Role's name, description and a set of
-permissions to grant to the Users bound to the Role.
-
-Some of the permissions apply at the tenant level:
+permissions to grant to the Users assigned to the Role.
 
 * **User Management**: these permissions should be granted carefully, as they
 allow privilege increases for any Users managed by a User with User management
@@ -64,20 +62,19 @@ permissions.
 releases and User accounts, as well as providing information about deployments.
   * **Read**: read access to the audit log section.
 
-* **Releases**: these permissions can be granted to allow artifact and release
-modifications, as well as the creation of new releases.
+* **Releases**: control access to artifacts and can limit the user to only access releases with certain tags.
+  The following permissions are available for releases:
   * **Read**: read access to the releases and artifacts sections.
   * **Upload**: upload-only access to the releases and artifacts sections.
   * **Manage**: full write access to the releases and artifacts sections, requires **Read** and **Upload**.
 
-The device-specific permissions can apply to either all the devices or selected
-static groups of devices:
-
-* **Read**: read access to the devices.
-* **Manage**: write access to the devices, requires **Read**.
-* **Deploy**: permission to deploy software to the devices, requires **Read**.
-* **Connect**: troubleshooting access to the devices, requires **Read**.
-* **Configure**: permission to get and set devices configuration, requires **Read**.
+* **Device Group Management** restrict the access a user has to devices.
+  The scope of the permission can be limited to specific static groups of devices.
+  * **Read**: read access to the devices.
+  * **Manage**: write access to the devices, requires **Read**.
+  * **Deploy**: permission to deploy software to the devices, requires **Read**.
+  * **Connect**: troubleshooting access to the devices, requires **Read**.
+  * **Configure**: permission to get and set devices configuration, requires **Read**.
 
 !!! Please note that the **Connect** permission gives users access to the Remote Terminal,
 !!! File Transfer, and Port-forwarding features. Through these, it is possible to alter
