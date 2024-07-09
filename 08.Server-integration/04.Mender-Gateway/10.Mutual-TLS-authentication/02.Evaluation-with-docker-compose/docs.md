@@ -123,6 +123,9 @@ cat > mender.conf << EOF
   "HttpsClient": {
     "Certificate": "/data/mender/mender-cert.pem",
     "Key": "/data/mender/mender-cert-private.pem"
+  },
+  "Security": {
+    "AuthPrivateKey": "/data/mender/mender-cert-private.pem"
   }
 }
 EOF
