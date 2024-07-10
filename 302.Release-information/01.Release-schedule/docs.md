@@ -38,7 +38,7 @@ We publish patch versions for older LTS releases roughly the same time we publis
 
 <!-- the version number includes the patch release here, to get picked up by autoversion, but will be a minor version in the result -->
 <!--AUTOVERSION: "LTS releases: %"/lts -->
-At this time, we support the following LTS releases: 3.6, 3.7.
+At this time, we support the following LTS releases: 3.7, 3.6.
 
 | LTS         | Supported until |
 | ----------- | --------------- |
