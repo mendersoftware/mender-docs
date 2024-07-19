@@ -75,7 +75,7 @@ do not have direct SSH access to the device, the network connectivity
 is not strong or you would like to customize the workflow more.
 
 The `mender-snapshot` executable provides a command `mender-snapshot dump` for
-dumping a frozen copy of the root filesystem to standard error. In this section,
+dumping a frozen copy of the root filesystem to standard output. In this section,
 we go through two common approaches for using the snapshot feature from the
 device: dumping a snapshot to a remote host or to a storage device.
 
