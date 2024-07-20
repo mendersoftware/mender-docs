@@ -18,7 +18,7 @@ commands. In most instances, the Operating System update will use a redundant
 root filesystem partition and the Application updates will update components in
 the active root filesystem.
 
-Note that in order to support *Opereating System updates*, a *board integration* is
+Note that in order to support *Operating System updates*, a *board integration* is
 required which includes more than simply installing Mender on top of a running
 operating system. If you want support for Operating System updates, either use OS images
 provided in [Get started](../../01.Get-started) or follow the chapters on System
