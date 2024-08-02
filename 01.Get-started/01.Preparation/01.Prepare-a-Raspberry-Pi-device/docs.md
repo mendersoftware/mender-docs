@@ -67,7 +67,7 @@ default location:
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="Linux"]
 ```bash
-RPI_BOOT="/media/$(whoami)/boot"
+RPI_BOOT="/media/$(whoami)/bootfs"
 [ ! -d "$RPI_BOOT" ] && echo "ERROR: RPI boot directory not found"
 ```
 [/ui-tab]
