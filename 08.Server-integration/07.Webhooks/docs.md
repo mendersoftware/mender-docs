@@ -93,7 +93,7 @@ More information about payload possibilities are available in the [iot-manager](
 
 ### Signature header
 
-If you specify a secret, an integrity check is calculated and located in the `X-Men-Signature-Payload` header, which contains the HMAC-SHA256 of the payload using the configured secret.
+If you specify a secret, an integrity check is calculated and located in the `X-Men-Signature` header, which contains the HMAC-SHA256 of the payload using the configured secret.
 
 ## Role Based Access Control
 
