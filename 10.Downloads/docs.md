@@ -265,35 +265,35 @@ Then add the sources according to your Linux distribution
 !!! do `(. /etc/os-release && echo $VERSION_CODENAME)`
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
-[ui-tab title="Debian Bookworm"]
+[ui-tab title="Debian 12"]
 <!--AUTOMATION: ignore -->
 ```bash
 echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/bookworm/stable main" \
  | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
 ```
 [/ui-tab]
-[ui-tab title="Debian Bullseye"]
+[ui-tab title="Debian 11"]
 <!--AUTOMATION: ignore -->
 ```bash
 echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/bullseye/stable main" \
  | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
 ```
 [/ui-tab]
-[ui-tab title="Ubuntu Noble"]
+[ui-tab title="Ubuntu 24.04"]
 <!--AUTOMATION: ignore -->
 ```bash
 echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/noble/stable main" \
  | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
 ```
 [/ui-tab]
-[ui-tab title="Ubuntu Jammy"]
+[ui-tab title="Ubuntu 22.04"]
 <!--AUTOMATION: ignore -->
 ```bash
 echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/jammy/stable main" \
  | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
 ```
 [/ui-tab]
-[ui-tab title="Ubuntu Focal"]
+[ui-tab title="Ubuntu 20.04"]
 ```bash
 echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/focal/stable main" \
  | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
@@ -597,7 +597,7 @@ download it by running:
 [ui-tab title="hosted"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
-[ui-tab title="Debian Bookworm"]
+[ui-tab title="Debian 12"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="armhf"]
@@ -642,7 +642,7 @@ wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDE
 [/ui-tabs]
 
 [/ui-tab]
-[ui-tab title="Debian Bullseye"]
+[ui-tab title="Debian 11"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="armhf"]
@@ -687,7 +687,7 @@ wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDE
 [/ui-tabs]
 
 [/ui-tab]
-[ui-tab title="Ubuntu Noble"]
+[ui-tab title="Ubuntu 24.04"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="armhf"]
@@ -732,7 +732,7 @@ wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDE
 [/ui-tabs]
 
 [/ui-tab]
-[ui-tab title="Ubuntu Jammy"]
+[ui-tab title="Ubuntu 22.04"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="armhf"]
@@ -777,7 +777,7 @@ wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDE
 [/ui-tabs]
 
 [/ui-tab]
-[ui-tab title="Ubuntu Focal"]
+[ui-tab title="Ubuntu 20.04"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="armhf"]
@@ -831,7 +831,7 @@ wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDE
 [ui-tab title="enterprise"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
-[ui-tab title="Debian Bookworm"]
+[ui-tab title="Debian 12"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="armhf"]
@@ -882,7 +882,7 @@ wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_EN
 [/ui-tabs]
 
 [/ui-tab]
-[ui-tab title="Debian Bullseye"]
+[ui-tab title="Debian 11"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="armhf"]
@@ -933,7 +933,7 @@ wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_EN
 [/ui-tabs]
 
 [/ui-tab]
-[ui-tab title="Ubuntu Noble"]
+[ui-tab title="Ubuntu 24.04"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="armhf"]
@@ -984,7 +984,7 @@ wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_EN
 [/ui-tabs]
 
 [/ui-tab]
-[ui-tab title="Ubuntu Jammy"]
+[ui-tab title="Ubuntu 22.04"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="armhf"]
@@ -1035,7 +1035,7 @@ wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_EN
 [/ui-tabs]
 
 [/ui-tab]
-[ui-tab title="Ubuntu Focal"]
+[ui-tab title="Ubuntu 20.04"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="armhf"]
