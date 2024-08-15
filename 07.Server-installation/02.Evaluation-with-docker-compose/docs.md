@@ -50,7 +50,7 @@ Clone the [integration](https://github.com/mendersoftware/integration?target=_bl
 repository which contains everything that is need to start the demo server:
 <!--AUTOVERSION: "-b %"/integration "integration-%"/integration -->
 ```bash
-git clone -b 3.7.6 https://github.com/mendersoftware/integration.git integration-3.7.6
+git clone -b 3.7.7 https://github.com/mendersoftware/integration.git integration-3.7.7
 ```
 
 <!--AUTOVERSION: "use `-b %`"/ignore-->
@@ -60,7 +60,7 @@ git clone -b 3.7.6 https://github.com/mendersoftware/integration.git integration
 Change directory to the cloned repository:
 <!--AUTOVERSION: "integration-%"/integration -->
 ```bash
- cd integration-3.7.6
+ cd integration-3.7.7
 ```
 
 Start the demo server:
@@ -129,7 +129,7 @@ To remove containers use commands from the section below.
 
 <!--AUTOVERSION: "integration-%"/integration -->
 If you want to remove all state in your Mender demo environment and start clean,
-run the following commands in the `integration-3.7.6` directory:
+run the following commands in the `integration-3.7.7` directory:
 
 ```bash
 ./demo stop
