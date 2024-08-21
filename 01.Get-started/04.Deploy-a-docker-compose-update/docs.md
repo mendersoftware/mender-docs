@@ -6,8 +6,7 @@ taxonomy:
 ---
 
 
-!!! This tutorial is not supported by the virtual device because it does not come
-!!! with a package manager to install the needed dependencies.
+!!! This tutorial is not supported by the virtual device because it does not come with a package manager to install the needed dependencies.
 
 
 In this tutorial, we will conduct a container update to a device using a
@@ -17,9 +16,9 @@ and deploy it to the device. In the second part will show how update the Docker
 images in the composition using binary delta to save size and data transfer
 bandwidth.
 
-In the example, we'll observe Traefik as the primary container in the composition.
+In the example, we will observe Traefik as the primary container in the composition.
 As a result the composition's naming and version will be heavily defined by the Traefik version. 
-This made sense because Traefik provides the primary functionality in the composition.
+This makes sense because Traefik provides the primary functionality in the composition.
 In deployments consisting of multiple containers without a clear primary, it can make sense to version the composition separate from the container. 
 
 
@@ -30,91 +29,129 @@ target devices for accepting the deployment and the workstation for creating the
 deployment.
 
 The tutorial assumes the usage of the Raspberry Pi with the reference OS image.
-Please read [this section](../../../../01.Get-started/01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md) of the Getting started to prepare the device.
+Please [prepare a Raspberry Pi device](../../01.Get-started/01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md) if you haven't already.
 
-Throughout the tutorial you'll be expected to execute commands on the device.
-You can use the [Remote terminal](../../../../09.Add-ons/50.Remote-Terminal/docs.md) to gain access to the shell of the device and execute the command.
+Throughout the tutorial you will execute commands on the device.
+You can use the [Remote terminal](../../09.Add-ons/50.Remote-Terminal/docs.md) to gain access to the shell of the device and execute the command.
 
-
-##### Installing dependencies on the devices
-
-Before installing the Update Module on the device, you need to ensure that the following
-dependencies are installed on the device:
- * [Mender client](../../../03.Client-installation/02.Install-with-Debian-package) (version >= 3.0)
- * [Docker Engine](https://docs.docker.com/engine/install/?target=_blank)
- * [Docker Compose](https://docs.docker.com/compose/install/?target=_blank) (version >= 2.0)
- * [`jq`](https://jqlang.github.io/jq/)
- * [`tree`](http://mama.indstate.edu/users/ice/tree/)
- * [`xdelta3`](https://github.com/jmacd/xdelta)
+The term [Update Module](../../03.Client-installation/05.Use-an-updatemodule/docs.md) will be used throughout the tutorial.
+This is Mender mechanism to work with different types of updates, Docker Compose being one of them.
+You don't need to know about this concept to complete get to a working example.
 
 
-To verify the presence of the required dependencies, run the commands below on your device:
-```bash
-mender-update --version && \
-  docker --version && \
-  docker compose version && \
-  jq --version && \
-  tree --version && \
-  xdelta3 -V
+##### Installing the update module for docker compose 
+
+! In this chapter the commands are executed on the **device** using the [Remote terminal](../../09.Add-ons/50.Remote-Terminal/docs.md)
+
+Since you're using the [Raspberry Pi reference image](../../01.Get-started/01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md)  Mender client is already present. 
+You need to install the other external dependencies.
+
+Become the root user on the device to simplify the install process:
+
+``` bash
+sudo su
 ```
 
-To install the Docker Compose Update Module, run the following commands on your device:
+Install the extra external dependencies on the device:
+
+``` bash
+printf "\n\nInstalling external dependencies \n\n" && \
+apt-get install -y jq tree xdelta3 && \
+printf "\n\nFeching docker install script \n\n" && \
+curl -fsSL https://get.docker.com -o get-docker.sh && \
+printf "\n\nExecuting docker install script \n\n" && \
+sh get-docker.sh && \
+printf "\n\nTesting docker \n\n" && \
+docker ps && \
+printf "\n\nSuccess \n\n"
+```
+
+
+With all the dependencies in place you can install the update module:
+
 <!--AUTOVERSION: "app-update-module/%/"/ignore-->
 ```bash
-# Install Application Update Module
-sudo su
-mkdir -p /usr/share/mender/modules/v3
+printf "\n\nCreating the directory structure \n\n" && \
+mkdir -p /usr/share/mender/modules/v3 && \
+mkdir -p /usr/share/mender/app-modules/v1 && \
+printf "\n\nDownloading and installing the app update module \n\n" && \
 wget https://raw.githubusercontent.com/mendersoftware/app-update-module/1.1.0/src/app \
-        -O /usr/share/mender/modules/v3/app \
-        && chmod +x /usr/share/mender/modules/v3/app
-# Install Docker Compose module
-mkdir -p /usr/share/mender/app-modules/v1
+        -O /usr/share/mender/modules/v3/app && \
+chmod +x /usr/share/mender/modules/v3/app && \
+printf "\n\nDownloading and installing the docker compose update module \n\n" && \
 wget https://raw.githubusercontent.com/mendersoftware/app-update-module/1.1.0/src/app-modules/docker-compose \
         -O /usr/share/mender/app-modules/v1/docker-compose \
         && chmod +x /usr/share/mender/app-modules/v1/docker-compose
-# Install the Configuration files
+printf "\n\nDownloading and installing the configuration files \n\n" && \
 wget https://raw.githubusercontent.com/mendersoftware/app-update-module/1.1.0/conf/mender-app.conf \
-        -O /etc/mender/mender-app.conf
+        -O /etc/mender/mender-app.conf && \
 wget https://raw.githubusercontent.com/mendersoftware/app-update-module/1.1.0/conf/mender-app-docker-compose.conf \
-        -O /etc/mender/mender-app-docker-compose.conf
+        -O /etc/mender/mender-app-docker-compose.conf && \
+printf "\n\nSuccess \n\n"
 ```
-
-<!--AUTOVERSION: "app-update-module/blob/%/"/ignore-->
-
-!!! The Docker Compose Update Module is a sub-module of the
-!!! [Application Update Module](https://github.com/mendersoftware/app-update-module/blob/master/docs/README-submodule-api.md#applications-updates).
-!!! That is why we install two Update Modules in the snippet above.
 
 ##### Prepare the workstation
 
-To generate the update artifacts we'll need to install the `Application Update Artifact Generator`.
-This tool has a dependency on [mender-artifact](../../../10.Downloads/docs.md#mender-artifact) (version >= 3.0).
-Please follow the instructions to install [mender-artifact](../../../10.Downloads/docs.md#mender-artifact) on your workstation.
+! In this chapter the commands are executed on the **workstation**
 
-To verify the presence of the required dependencies, run the commands below on your device:
-Please note that `app-gen` requires the presence of `mender-artifact` in PATH.
+Install the external dependencies:
+
+``` bash
+sudo su
+```
+
+```bash
+printf "\n\nInstalling external dependencies \n\n" && \
+apt-get install -y xdelta3 && \
+printf "\n\nSuccess  \n\n"
+exit 
+```
+
+Run the following to verify:
+
+<!--AUTOVERSION: "Xdelta version %"/ignore-->
+``` bash
+xdelta3 -h 
+# Xdelta version 3.0.11, Copyright (C) 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015 Joshua MacDonald
+# Xdelta comes with ABSOLUTELY NO WARRANTY.
+# This is free software, and you are welcome to redistribute it
+# under certain conditions; see "COPYING" for details.
+# usage: xdelta3 [command/options] [input [output]]
+# make patch:
+# 
+#   xdelta3.exe -e -s old_file new_file delta_file
+```
+
+You also need to need to install [mender-artifact](../../10.Downloads/docs.md#mender-artifact) (version >= 3.0) on your workstation.
+This isn't installable through a copy code snippet.
+Please follow the instructions to install [mender-artifact](../../10.Downloads/docs.md#mender-artifact) on your workstation.
+
+To verify the successful install, run the commands below:
 
 ```bash
 mender-artifact -h 
 # Output
 # NAME:
-#    mender-artifact - interface for manipulating Mender artifacts
+#    mender-artifact - interface for manipulating Mender Artifacts
 # 
 # USAGE:
 #    mender-artifact [--version][--help] <command> [<args>]
 # ...
 ```
 
-
 Next install the `app-gen` tool.
-<!--AUTOVERSION: "app-update-module/%/"/ignore-->
+This is the tool we will use to generate the artifacts.
 
+<!--AUTOVERSION: "app-update-module/%/"/ignore-->
 ```bash
-mkdir docker-compose-evaluation
-cd docker-compose-evaluation
+printf "\n\nCreating the directory structure \n\n" && \
+mkdir docker-compose-evaluation && \
+printf "\n\nDownloading and installing the docker compose generator tool \n\n" && \
+cd docker-compose-evaluation && \
 wget https://raw.githubusercontent.com/mendersoftware/app-update-module/1.1.0/gen/app-gen \
-        -O app-gen
-chmod +x app-gen
+        -O app-gen && \
+chmod +x app-gen && \
+printf "\n\nSuccess \n\n"
 ```
 
 Test the installation:
@@ -127,29 +164,20 @@ Test the installation:
 # ...
 ```
 
-!!! When integrating into the CI/CD pipelines, you might consider adding the `app-gen` to `PATH`. 
-
-
-##### Workstation variables
-
-The example snippets depend on some shared host variables.
-Please ensure they are set for any host command you will be running.
-
-If you're executing this on a single shell, you won't need to reset the variables.
-
-
-
 
 ### Create a deployment
 
+! In this chapter the commands are executed on the **workstation**
+
 The `app-gen` script we installed previously extends the
-[mender-artifact](../../../10.Downloads/docs.md#mender-artifact) tool to create
+[mender-artifact](../../10.Downloads/docs.md#mender-artifact) tool to create
 Artifacts for container updates. We will use this tool to create a Mender
 Artifact containing the Docker Compose manifest and the Docker images used by
 the composition. Including the Docker images is optional, excluding the images
 will make the devices try to pull the images from the Docker registry.
 
-#### Create the Mender artifact
+#### Create the Mender Artifact
+
 Begin by creating the manifest on your workstation and saving it in a separate
 directory:
 
@@ -181,22 +209,20 @@ services:
 EOF
 ```
 
-To generate the artifact, we need to know the target platform of the devices we
-want to deploy to. 
-In the following example, where we assume the device to be the Raspberry Pi,  we are deploying to is `linux/arm/v7` (`os/arch/variant`).
+To generate the Artifact, we need to know the target platform of the devices we want to deploy to. 
+In this tutorial the device is a Raspberry Pi so it's set to `linux/arm/v7` (`os/arch/variant`).
 
-You can check more details regarding this notation in [Multi-platform images](https://docs.docker.com/build/building/multi-platform/) and [Architectures other than amd64](https://github.com/docker-library/official-images#architectures-other-than-amd64).
+!!! You can check more details regarding this notation in [Multi-platform images](https://docs.docker.com/build/building/multi-platform/) and [Architectures other than amd64](https://github.com/docker-library/official-images#architectures-other-than-amd64).
 
-Run the command below to generate the update artifact:
+Run the command below to generate the update Artifact:
 
 ```bash
 ARTIFACT_NAME="traefik-composition"
-DEVICE_TYPE="raspberrypi4"
-PLATFORM="linux/arm/v7"
 
 app-gen --artifact-name "$ARTIFACT_NAME-$VERSION" \
-        --device-type "$DEVICE_TYPE" \
-        --platform "$PLATFORM" \
+        --device-type "raspberrypi4" \
+        --device-type "raspberrypi3" \
+        --platform "linux/arm/v7" \
         --application-name "$ARTIFACT_NAME" \
         --image docker.io/library/traefik:$VERSION \
         --image docker.io/traefik/whoami:latest \
@@ -208,25 +234,19 @@ app-gen --artifact-name "$ARTIFACT_NAME-$VERSION" \
         --software-version="$VERSION"
 ```
 
-!!! For Raspberry pi 3 use  `DEVICE_TYPE="raspberrypi3"`
-!!! All arguments after `--` are passed directly to `mender-artifact write module-image`. 
+The generated Artifact (`.mender` extension) is now ready to be deployed on the device. 
 
-
-The generated artifact (`.mender` extension) is now ready to be deployed on the device. 
-
-
-#### Deploy the Mender Artifact
-
-Open your browser and navigate to the "Releases" column in the [Mender UI](https://hosted.mender.io/ui/releases) and upload your newly created artifact. 
+Open your browser and navigate to the "Releases" column in the [Mender UI](https://hosted.mender.io/ui/releases) and upload your newly created Artifact. 
 Once uploaded, navigate to the "Devices" column and select your device and then click `Create a deployment for this device` in the `Device actions` in the bottom right corner. 
-Select your newly created artifact and click `CREATE DEPLOYMENT`.
+Select your newly created Artifact and click `CREATE DEPLOYMENT`.
 
 ##### Verify your deployment
+
+! In this chapter the commands are executed on the **device** using the [Remote terminal](../../09.Add-ons/50.Remote-Terminal/docs.md)
 
 Once deployed, the device will start serving a simple server on port 8080. 
 You can test the application by sending a request to path `/whoami` and the server will echo the request.
 
-Open the Remote terminal from the Hosted Mender UI and run the following:
 
 ```bash
 docker ps
@@ -239,8 +259,7 @@ docker ps
 ```
 
 If you get the similar output as above it shows that the containers on the device are running the correct versions.
-Command below will test for functionality:
-
+Run the following command to verify it works:
 
 ``` bash
 curl http://localhost:8080/whoami
@@ -265,13 +284,11 @@ curl http://localhost:8080/whoami
 
 #### Update your composition using delta
 
-! This section requires [xdelta3](https://github.com/jmacd/xdelta) to be
-! installed on both your workstation and your device. Please make sure that
-! this dependency is installed before proceeding.
+! In this chapter the commands are executed on the **workstation**
 
 Now that your Docker composition is running on the device, it is time to upgrade
 the Traefik container to the next version. Create a new manifest directory and
-bump gateway service to `traefik:v2.10`:
+update the gateway service to `traefik:v2.10`:
 
 ```bash
 VERSION="v2.10"
@@ -304,19 +321,18 @@ EOF
 Since we are only upgrading the Traefik service, we do not need to include the
 image for the `whoami` service in the command below.
 
-Proceed with creating the artifact:
+Proceed with creating the Artifact:
 
 
 ```bash
 ARTIFACT_NAME="traefik-composition"
-DEVICE_TYPE="raspberrypi4"
-PLATFORM="linux/arm/v7"
 PREVIOUS_VERSION="v2.9"
 NEW_VERSION="v2.10"
 
 app-gen --artifact-name "$ARTIFACT_NAME-$VERSION" \
-        --device-type "$DEVICE_TYPE" \
-        --platform "$PLATFORM" \
+        --device-type "raspberrypi4" \
+        --device-type "raspberrypi3" \
+        --platform "linux/arm/v7" \
         --application-name "$ARTIFACT_NAME" \
         --image docker.io/library/traefik:$PREVIOUS_VERSION,docker.io/library/traefik:$NEW_VERSION \
         --orchestrator docker-compose \
@@ -335,16 +351,19 @@ That is why some parameters are different compared to the first version.
 The `--image` argument now has two images listed.
 This instructs the tool to create a delta to update form the previous to the new version.
 
-The `--depends`  argument sets a [versioning constraints](../../09.Software-versioning/docs.md#application-updates-update-modules).
-This ensures that the new artifact can only be installed on top of a specific version running on the device. 
+The `--depends`  argument sets a [versioning constraints](../../06.Artifact-creation/09.Software-versioning/docs.md#application-updates-update-modules).
+This ensures that the new Artifact can only be installed on top of a specific version running on the device. 
 This is a requirement for delta updates as they can only be applied to a specific base version.
 
 The `--deep-delta` flag enables the delta feature of comparing individual layers of the composition and calculating delta between the each.
 This gives a better compression ratio and is recommended as the default delta.
 
 
-Upload the artifact to Hosted Mender and deploy it to the device.
-Once complete open the Remote terminal from the Hosted Mender UI and run the following:
+Upload the Artifact to Hosted Mender and deploy it to the device.
+
+#### Verify the update on the device
+
+! In this chapter the commands are executed on the device using the [Remote terminal](../../09.Add-ons/50.Remote-Terminal/docs.md)
 
 ```bash
 docker ps
@@ -358,25 +377,25 @@ docker ps
 If you get the similar output as above it shows that the containers have been updated to the new versions. 
 
 
-### Extra: what are the delta benefits?
+### Benefits of Delta Updates
 
+! In this chapter the commands are executed on the **workstation**
 
-The motivation for using the delta updates is to have a smaller artifact for the same effect.
+The motivation for using the delta updates is to have a smaller Artifact for the same effect.
 This varies a lot depending on the amount of content change between the two versions.
 The more the software is alike, the more the delta will save.
 
-Let's compare how much saving the delta introduced in this case by creating a non-delta artifact for the new version.
+Let's compare how much saving the delta introduced in this case by creating a non-delta Artifact for the new version.
 
 
 ```bash
 ARTIFACT_NAME="traefik-composition"
-DEVICE_TYPE="raspberrypi4"
-PLATFORM="linux/arm/v7"
 VERSION="v2.10"
 
 app-gen --artifact-name "$ARTIFACT_NAME-$VERSION" \
-        --device-type "$DEVICE_TYPE" \
-        --platform "$PLATFORM" \
+        --device-type "raspberrypi4" \
+        --device-type "raspberrypi3" \
+        --platform "linux/arm/v7" \
         --application-name "$ARTIFACT_NAME" \
         --image docker.io/library/traefik:$VERSION \
         --orchestrator docker-compose \
@@ -397,4 +416,4 @@ du -h NO-DELTA-traefik-composition-v2.10.mender traefik-composition-v2.10.mender
 # 28M     traefik-composition-v2.10.mender
 ```
 
-So in this case we're seeing a ~28% decrease in size.
+So in this case we are seeing a ~28% decrease in size, though the size savings of deltas vary depending on the changes between Artifacts and can go up to 90% in some cases.
