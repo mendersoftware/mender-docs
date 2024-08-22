@@ -16,10 +16,11 @@ Not all the variables are needed for all commands, but just setting them all eve
 We suggest copying these to a temporary text file, filling them with your values and keeping them at hand while going through evaluation.
 
 
-<!--AUTOVERSION: "mender-gateway:%"/mender-gateway-->
+<!--AUTOVERSION: "mender-gateway:saas-v%"/ignore-->
 ```bash
 # For evaluation, define an arbitrary domain for the mtls server (we will modify `/etc/hosts` on the device).
 # No external registration will take place.
+# The values provided here are arbitrary defaults.
 export MENDER_GATEWAY_DOMAIN="local-domain-1993028.com"
 export MENDER_GATEWAY_PORT="8443"
 
@@ -33,21 +34,27 @@ export MENDER_GATEWAY_IP=
 # You need to create a separate user on your Hosted Mender instance.
 # The Mender Gateway will authenticate devices on Hosted Mender as this user.
 # Fill these with the credentials of your newly created user.
-export MENDER_USERNAME="mtls@mender.io"
-export MENDER_PASSWORD="password"
+export MENDER_USERNAME=
+export MENDER_PASSWORD=
 
-# Please check the URL if your account as this can be i.e. eu.hosted.mender.io
-export UPSTREAM_SERVER_URL="https://hosted.mender.io"
+# Set the URL of the mender server 
+# i.e 
+# export UPSTREAM_SERVER_URL="https://eu.hosted.mender.io"
+# export UPSTREAM_SERVER_URL="https://hosted.mender.io"
+export UPSTREAM_SERVER_URL=
+
+# Set the tenant/organisation token for your account
 # Located under Settings->Organisation and billing->Organization token once logged to the UI of Hosted Mender
-export TENANT_TOKEN="U3VwZXIgTWVuZGVyIG1hbidzIHNlY3JldCB0b2tlbiE"
+export TENANT_TOKEN=
 
-# Docker registry configuration
-export DOCKER_REGISTRY_URL=registry.mender.io
+# Set the docker registry configuration and credentials
+export DOCKER_REGISTRY_URL="registry.mender.io"
 export DOCKER_REGISTRY_USERNAME=
 export DOCKER_REGISTRY_PASSWORD=
 
 # The name and version of the mtls server container
-export MENDER_GATEWAY_IMAGE=${DOCKER_REGISTRY_URL}/mendersoftware/mender-gateway:master
+# The defaults have been set, you rarely need to change this.
+export MENDER_GATEWAY_IMAGE="${DOCKER_REGISTRY_URL}/mendersoftware/mender-gateway:saas-v2024.08.19"
 ```
 
 
