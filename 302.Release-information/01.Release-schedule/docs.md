@@ -51,4 +51,4 @@ Under the version of the Product bundle, there are multiple different components
 
 ##### Yocto LTS support
 
-Our [meta-mender Yocto layer](https://github.com/mendersoftware/meta-mender) supports the latest two Yocto LTS releases, which at this time are Kirkstone (4.0) and Dunfell (3.1).
+Our [meta-mender Yocto layer](https://github.com/mendersoftware/meta-mender) supports the latest two [Yocto LTS releases](https://wiki.yoctoproject.org/wiki/Releases).
