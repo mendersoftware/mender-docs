@@ -23,22 +23,6 @@ PREFERRED_RPROVIDER_mender-update = "mender"
 <!--AUTOVERSION: "Yocto branches higher than 4.0 (%)"/ignore "Mender client % and later"/ignore-->
 In Yocto branches higher than 4.0 (kirkstone), Mender client 4.0.0 and later will be built by default.
 
-<!--AUTOVERSION: "Mender client % has been released"/ignore-->
-## Mender client 3.0.0 has been released but my build still uses the 2.x series
-
-<!--AUTOVERSION: "Yocto branches 3.1 (%) and older"/ignore "Mender client % and later"/ignore-->
-Mender client 3.0.0 and later has removed support for single-dash command line flags, such as `-install` and `-show-provides`, and replaced them with regular commands without dashes, like `install` and `show-provides`. Because of this it is not completely backwards compatible. On the stable Yocto branches 3.1 (dunfell) and older, the latest major release is the 2.x series, and therefore 3.0 and later are not built by meta-mender unless requested.
-
-To request a specific version of the client, add a snippet like the following to `local.conf`:
-
-<!--AUTOVERSION: "PREFERRED_VERSION_mender-client = \"%\""/mender-->
-```
-PREFERRED_VERSION_mender-client = "master"
-```
-
-<!--AUTOVERSION: "Yocto branches higher than 3.1 (%)"/ignore "Mender client % and later"/ignore-->
-In Yocto branches higher than 3.1 (dunfell), Mender client 3.0.0 and later will be built by default.
-
 ## Your project is using a fork of U-Boot which conflicts with the U-Boot Mender uses
 
 When [Building a Mender Yocto Project image](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md) for your own project and device, you encounter a build error similar to the following:
