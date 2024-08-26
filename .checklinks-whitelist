@@ -4,25 +4,19 @@
         "201.Device-side-API"
     ],
     "files": [
-        "302.Release-information/01.Release-notes-changelog/10.Mender-server",
-        "302.Release-information/01.Release-notes-changelog/20.Mender-client",
-        "302.Release-information/01.Release-notes-changelog/21.mender-connect",
-        "302.Release-information/01.Release-notes-changelog/22.mender-configure-module",
-        "302.Release-information/01.Release-notes-changelog/30.mender-artifact",
-        "302.Release-information/01.Release-notes-changelog/31.mender-cli",
-        "302.Release-information/01.Release-notes-changelog/32.mender-convert",
-        "302.Release-information/01.Release-notes-changelog/40.meta-mender",
-        "302.Release-information/01.Release-notes-changelog/50.mender-binary-delta",
-        "302.Release-information/01.Release-notes-changelog/51.monitor-client",
         "302.Release-information/02.Release-notes-changelog/10.Mender-server",
         "302.Release-information/02.Release-notes-changelog/20.Mender-client",
         "302.Release-information/02.Release-notes-changelog/21.mender-connect",
         "302.Release-information/02.Release-notes-changelog/22.mender-configure-module",
+        "302.Release-information/02.Release-notes-changelog/23.mender-setup",
+        "302.Release-information/02.Release-notes-changelog/24.mender-snapshot",
         "302.Release-information/02.Release-notes-changelog/30.mender-artifact",
         "302.Release-information/02.Release-notes-changelog/31.mender-cli",
         "302.Release-information/02.Release-notes-changelog/32.mender-convert",
         "302.Release-information/02.Release-notes-changelog/40.meta-mender",
         "302.Release-information/02.Release-notes-changelog/50.mender-binary-delta",
-        "302.Release-information/02.Release-notes-changelog/51.monitor-client"
+        "302.Release-information/02.Release-notes-changelog/51.monitor-client",
+        "302.Release-information/02.Release-notes-changelog/52.mender-gateway",
+        "302.Release-information/02.Release-notes-changelog/60.mender-ci-workflows"
     ]
 }
