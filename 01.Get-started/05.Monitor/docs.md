@@ -9,6 +9,9 @@ taxonomy:
 !!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
+!!! This tutorial is not supported by the virtual device because it does not come
+!!! with a package manager to install the needed dependencies.
+
 This tutorial will walk you through how to monitor your device and its applications with
 Mender. We will be using the [Monitor Add-on](../../09.Add-ons/20.Monitor/docs.md), allowing you to monitor various system parts.
 
