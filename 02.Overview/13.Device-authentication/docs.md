@@ -17,7 +17,7 @@ related issues.
 ## Authentication service
 
 
-The [Device Authentication](https://github.com/mendersoftware/deviceauth?target=_blank)
+The [Device Authentication](https://github.com/mendersoftware/mender-server/tree/main/backend/services/deviceauth/?target=_blank)
 service, a part of the Mender Server, implements Device authentication.
 
 This service exposes APIs for:
