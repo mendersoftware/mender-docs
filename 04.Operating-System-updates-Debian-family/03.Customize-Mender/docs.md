@@ -10,7 +10,7 @@ overlays](../02.Convert-a-Mender-Debian-image/01.Customization/docs.md#rootfs-ov
 
 ## Mender Server address
 
-For self-managed installations of the Mender server (not [hosted Mender](https://hosted.mender.io?target=_blank), 
+For self-managed installations of the Mender Server (not [hosted Mender](https://hosted.mender.io?target=_blank),
 you will need to provide a custom server address in the converted image. To do so, generate a new overlay using the
 `bootstrap-rootfs-overlay-production-server.sh` script, and give the `--server-url` argument:
 

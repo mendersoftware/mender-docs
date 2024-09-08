@@ -245,7 +245,7 @@ app-gen --artifact-name "${ARTIFACT_NAME}-v2" \
 The `--deep-delta` flag enables the delta feature which creates a binary delta
 between the container images provided by the `--image` flag. Note that the
 `--image` flag needs two inputs to be able to compute the delta. After
-generating the artifact, upload the artifact to the Mender server and deploy it
+generating the artifact, upload the artifact to the Mender Server and deploy it
 to your device.
 
 Congratulations! You successfully upgraded a component on your device. Continue
