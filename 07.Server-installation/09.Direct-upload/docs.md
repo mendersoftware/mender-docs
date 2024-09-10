@@ -10,7 +10,7 @@ taxonomy:
 
 The Direct Upload feature provides a Mender channel to upload artifacts directly to the Mender artifact storage, processing it and putting it in the correct place and structure, without going through any other Mender component like the API gateway or deployments service.
 This is an API/CLI feature only, and you can see the progress in the Mender Web UI only after the process completes successfully.
-This feature drastically reduces the time to upload the Mender artifact to the Mender artifact storage, especially when uploading large artifacts (1TB for example), while also reducing the load on the Mender server infrastructure.
+This feature drastically reduces the time to upload the Mender artifact to the Mender artifact storage, especially when uploading large artifacts (1TB for example), while also reducing the load on the Mender Server infrastructure.
 
 ## Prerequisites
 

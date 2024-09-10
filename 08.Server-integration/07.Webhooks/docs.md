@@ -89,7 +89,7 @@ The properties included depend on the event type:
 * status change events only include the device id and the new status, 
 * device decommissioning will only include the device id.
 
-More information about payload possibilities are available in the [iot-manager](https://github.com/mendersoftware/iot-manager) management API specification.
+More information about payload possibilities are available in the [iot-manager](https://github.com/mendersoftware/mender-server/tree/main/backend/services/iot-manager/?target=_blank) management API specification.
 
 ### Signature header
 

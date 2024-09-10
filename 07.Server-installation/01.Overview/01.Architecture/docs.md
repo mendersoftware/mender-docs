@@ -5,17 +5,16 @@ taxonomy:
 ---
 
 !!! The Enterprise server runs different versions of the containers providing the enterprise features.
-!!! For evaluation of the Mender Enterprise Server please [contact us](https://mender.io/contact-us) to gain access to the enterprise containers.
+!!! For evaluation of the Mender Enterprise server please [contact us](https://mender.io/contact-us) to gain access to the enterprise containers.
 
-The architecture below shows the Open Source Mender Server case set up with the docker-compose evaluation.
-
+The diagram below shows the different services which are part of the Mender Server architecture:
 
 ```
         |
         |                                            +-------------------------+
         |                                            |                         |
         |                                       +--->|  Device Authentication  |<---+
-        |                                       |    |  (mender-device-auth)   |    |
+        |                                       |    |  (mender-deviceauth)    |    |
         |                                       |    +-------------------------+    |
         |        +-----------------------+      |    |                         |    |
    port |        |                       |      +--->|  Inventory              |<---+     +----------------------------------+
@@ -23,8 +22,8 @@ The architecture below shows the Open Source Mender Server case set up with the 
         |        |  (Traefik)            |<-----+    +-------------------------+    |     |  (mender-workflows-server)       |
         |        +-----------------------+      |    |                         |    |     |  (mender-workflows-worker)       |
         |                                       +--->|  User Administration    |    |     |  (mender-create-artifact-worker) |
-        |                                       |    |  (mender-useradm)       |<---+     +----------------------------------+
-        |                                       |    +-------------------------+    |
+        |                                       |    |  (mender-useradm)       |<---+     |  *(mender-generate-delta-worker) |
+        |                                       |    +-------------------------+    |     +----------------------------------+
         |                                       +--->|                         |    |
         |                                       |    |  Device Config          |<---+
         |                                       |    |  (mender-deviceconfig)  |    |
@@ -42,7 +41,15 @@ The architecture below shows the Open Source Mender Server case set up with the 
         |                                       |    |  (mender-iot-manager)   |    |
         |                                       |    +-------------------------+    |
         |                                       +--->|                         |    |
-        |                                       |    |  Device Monitor         |<---+
+        |                                       |    |  * Auditlogs            |<---+
+        |                                       |    |  (mender-auditlogs)     |    |
+        |                                       |    +-------------------------+    |
+        |                                       +--->|                         |    |
+        |                                       |    |  * Tenant Admin.        |<---+
+        |                                       |    |  (mender-tenantadm)     |    |
+        |                                       |    +-------------------------+    |
+        |                                       +--->|                         |    |
+        |                                       |    |  * Device Monitor       |<---+
         |                                       |    |  (mender-devicemonitor) |    |
         |                                       |    +-------------------------+    |
         |                                       +--->|                         |<---+
@@ -54,27 +61,47 @@ The architecture below shows the Open Source Mender Server case set up with the 
         |                                            |                         |
         |                                            +-------------------------+
         |
+
+* Enterprise-only components
 ```
 
+The Mender Server environment includes the following services:
 
-The integration environment brings together the following services:
-
-- [Mender Device Authentication Service](https://github.com/mendersoftware/deviceauth?target=_blank)
-- [Mender Device Configuration Service](https://github.com/mendersoftware/deviceconfig?target=_blank)
-- [Mender Device Connect Service](https://github.com/mendersoftware/deviceconnect?target=_blank)
-- [Mender Device Monitor Service](https://github.com/mendersoftware/devicemonitor?target=_blank)
-- [Mender Deployments Service](https://github.com/mendersoftware/deployments?target=_blank)
-- [Mender Device Inventory Service](https://github.com/mendersoftware/inventory?target=_blank)
-- [Mender User Administration Service](https://github.com/mendersoftware/useradm?target=_blank)
-- [Mender Workflows Service](https://github.com/mendersoftware/workflows?target=_blank)
-- [Mender Reporting Service](https://github.com/mendersoftware/reporting?target=_blank)
-- [Mender Create Artifact Worker](https://github.com/mendersoftware/create-artifact-worker?target=_blank)
+- [Mender Create Artifact Worker](https://github.com/mendersoftware/mender-server/tree/main/backend/services/create-artifact-worker/?target=_blank)
+- [Mender Deployments Service](https://github.com/mendersoftware/mender-server/tree/main/backend/services/deployments/?target=_blank)
+- [Mender Device Authentication Service](https://github.com/mendersoftware/mender-server/tree/main/backend/services/deviceauth/?target=_blank)
+- [Mender Device Configuration Service](https://github.com/mendersoftware/mender-server/tree/main/backend/services/deviceconfig/?target=_blank)
+- [Mender Device Connect Service](https://github.com/mendersoftware/mender-server/tree/main/backend/services/deviceconnect/?target=_blank)
+- [Mender Device Inventory Service](https://github.com/mendersoftware/mender-server/tree/main/backend/services/inventory/?target=_blank)
+- [Mender IoT Manager Service](https://github.com/mendersoftware/mender-server/tree/main/backend/services/iot-manager/?target=_blank)
+- [Mender Reporting Service](https://github.com/mendersoftware/mender-server/tree/main/backend/services/reporting/?target=_blank)
+- [Mender User Administration Service](https://github.com/mendersoftware/mender-server/tree/main/backend/services/useradm/?target=_blank)
+- [Mender Workflows Service](https://github.com/mendersoftware/mender-server/tree/main/backend/services/workflows/?target=_blank)
 - API Gateway based on [Traefik](https://doc.traefik.io/traefik/?target=_blank)
 - [Minio](https://www.minio.io?target=_blank) object storage
 - [NATS.io](https://nats.io?target=_blank) messaging system
 - [OpenSearch](https://www.opensearch.org?target=_blank) storage and search engine
 
-Services are delivered as Docker images, available from the
-official [Mender Docker repository](https://hub.docker.com/r/mendersoftware/?target=_blank).
+The Mender Enterprise Server includes different implementations of some of the services, as well as some Enterprise-specific services:
+
+- [Mender Auditlogs Service](https://github.com/mendersoftware/mender-server-enterprise/tree/main/backend/services/auditlogs/?target=_blank)
+- [Mender Create Artifact Worker](https://github.com/mendersoftware/mender-server-enterprise/tree/main/backend/services/create-artifact-worker/?target=_blank)
+- [Mender Deployments Service](https://github.com/mendersoftware/mender-server-enterprise/tree/main/backend/services/deployments/?target=_blank)
+- [Mender Device Authentication Service](https://github.com/mendersoftware/mender-server-enterprise/tree/main/backend/services/deviceauth/?target=_blank)
+- [Mender Device Configuration Service](https://github.com/mendersoftware/mender-server-enterprise/tree/main/backend/services/deviceconfig/?target=_blank)
+- [Mender Device Connect Service](https://github.com/mendersoftware/mender-server-enterprise/tree/main/backend/services/deviceconnect/?target=_blank)
+- [Mender Device Monitor Service](https://github.com/mendersoftware/mender-server-enterprise/tree/main/backend/services/devicemonitor/?target=_blank)
+- [Mender Generate Delta Worker](https://github.com/mendersoftware/mender-server-enterprise/tree/main/backend/services/generate-delta-worker/?target=_blank)
+- [Mender Device Inventory Service](https://github.com/mendersoftware/mender-server-enterprise/tree/main/backend/services/inventory/?target=_blank)
+- [Mender IoT Manager Service](https://github.com/mendersoftware/mender-server-enterprise/tree/main/backend/services/iot-manager/?target=_blank)
+- [Mender Reporting Service](https://github.com/mendersoftware/mender-server-enterprise/tree/main/backend/services/reporting/?target=_blank)
+- [Mender Tenant Administration Service](https://github.com/mendersoftware/mender-server-enterprise/tree-enterprise/main/backend/services/tenantadm/?target=_blank)
+- [Mender User Administration Service](https://github.com/mendersoftware/mender-server-enterprise/tree/main/backend/services/useradm/?target=_blank)
+- [Mender Workflows Service](https://github.com/mendersoftware/mender-server-enterprise/tree-enterprise/main/backend/services/workflows/?target=_blank)
+
+Services are delivered as Docker images, available from the official
+[Mender Docker repository](https://hub.docker.com/r/mendersoftware/?target=_blank).
 When required, each service can be built directly from its source code. Consult the
-respective repositories for build instructions.
+[mender-server]((https://github.com/mendersoftware/mender-server) and the
+[mender-server-enterprise]((https://github.com/mendersoftware/mender-server-enterprise)
+repositories for build instructions.

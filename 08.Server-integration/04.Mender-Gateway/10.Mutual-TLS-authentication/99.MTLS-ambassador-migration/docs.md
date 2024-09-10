@@ -26,7 +26,7 @@ Take a note of the Load Balancer's IP address or DNS name.
 Update your DNS record to point to the new Load Balancer IP address or DNS name of the Mender Gateway service.
 
 ### 4. Verification
-Verify that your devices are still able to connect to the Mender server using the new Load Balancer and the Mender Gateway service.
+Verify that your devices are still able to connect to the Mender Server using the new Load Balancer and the Mender Gateway service.
 
 ### 5. Cleanup
 You can now cleanup the old `mtls-ambassador` deployment, service, and Load Balancer resources.
