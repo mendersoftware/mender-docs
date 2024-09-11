@@ -34,7 +34,7 @@ Some considerations while working with inventory attributes:
   sends to the server for use in API calls or for sorting, filtering and searching
   in the UI.
 * The client sends the attributes at regular intervals
-  (configurable with [InventoryPollIntervalSeconds](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#InventoryPollIntervalSeconds)).
+  (configurable with [InventoryPollIntervalSeconds](../../03.Client-installation/07.Configuration/50.Configuration-options/docs.md#InventoryPollIntervalSeconds)).
 * The server updates all attributes sent by the client.
 
 The following screenshot shows an example set of inventory data in the expanded view

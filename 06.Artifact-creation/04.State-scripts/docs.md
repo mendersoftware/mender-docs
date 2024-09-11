@@ -87,7 +87,7 @@ All other return codes are reserved for future use by Mender and should not be u
 
 ### Retry later
 
-State scripts are allowed to return a specific error code (`21`), in which case the client will sleep for a time configured by [StateScriptRetryIntervalSeconds](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#statescriptretryintervalseconds) before the state script is called again. Note that scripts are not allowed to retry for infinitely long. Please see description of [StateScriptRetryTimeoutSeconds](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#statescriptretrytimeoutseconds) for more information.
+State scripts are allowed to return a specific error code (`21`), in which case the client will sleep for a time configured by [StateScriptRetryIntervalSeconds](../../03.Client-installation/07.Configuration/50.Configuration-options/docs.md#statescriptretryintervalseconds) before the state script is called again. Note that scripts are not allowed to retry for infinitely long. Please see description of [StateScriptRetryTimeoutSeconds](../../03.Client-installation/07.Configuration/50.Configuration-options/docs.md#statescriptretrytimeoutseconds) for more information.
 
 This feature is useful e.g when you want user confirmation before proceeding with the update as is described in the [Update confirmation by end user](#update-confirmation-by-end-user) section on this page.
 
@@ -97,7 +97,7 @@ If an error code is returned in any of [the scripts that ignore errors](#transit
 
 ## Script timeout
 
-Each script has a maximum execution time defined by [StateScriptTimeoutSeconds](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#statescripttimeoutseconds). If a script exceeds this running time, its process group will be killed and the Mender client will treat the script and the update as failed.
+Each script has a maximum execution time defined by [StateScriptTimeoutSeconds](../../03.Client-installation/07.Configuration/50.Configuration-options/docs.md#statescripttimeoutseconds). If a script exceeds this running time, its process group will be killed and the Mender client will treat the script and the update as failed.
 
 ## Power loss
 
@@ -139,7 +139,7 @@ For many devices with a display that interacts with an end user, it is desirable
 
 Mender state scripts enable this use case with a script written to create the dialog box on the UI framework used. The script will simply wait for user input, and Mender will wait with the update process while waiting for the script to finish. Depending on what the user selects, the script can return `0` (proceed) or `21` ([retry later](#retry-later)). For example, this script can be run in the `Download_Enter` state, and the user will be asked before the download begins. Alternatively, the script can also be run in the `Download_Leave` state, if you want the download to finish first, and the user only to accept installing the update and rebooting.
 
-Make sure to adjust [StateScriptRetryTimeoutSeconds](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#statescriptretrytimeoutseconds), to enable this use case.
+Make sure to adjust [StateScriptRetryTimeoutSeconds](../../03.Client-installation/07.Configuration/50.Configuration-options/docs.md#statescriptretrytimeoutseconds), to enable this use case.
 
 <!-- Source is at: https://docs.google.com/drawings/d/19t5Up9kDnjRuOnIa5YyMzbJIIi42q7TnV1zBgj7j2Dk/edit -->
 ![End user update confirmation state scripts](mender-state-machine-user-confirmation.png)
@@ -162,7 +162,7 @@ In order to save power and bandwidth, network connectivity may not be enabled by
 
 A state script in `Sync_Enter` can enable network connectivity. You could also enable more powerful network connectivity, such as Wi-Fi, with a state script in `Download_Enter`. If the network is not brought up by default on reboot, you should also enable network in `Reboot_Leave`.
 
-!!! Note that the `Sync_Enter` transition can be reached quite frequently, depending on the [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md). The Mender Client also requires network in several following states of the update process to report progress to the Mender Server.
+!!! Note that the `Sync_Enter` transition can be reached quite frequently, depending on the [polling intervals](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md). The Mender Client also requires network in several following states of the update process to report progress to the Mender Server.
 
 If you want to explicitly disable network again after Mender has finished the deployment, the only safe place to do this is in `Idle_Enter`.
 
