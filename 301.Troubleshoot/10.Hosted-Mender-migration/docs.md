@@ -71,7 +71,7 @@ to
 }
 ```
 
-!! Make sure you removed the `ServerURL` entry from the top of the JSON configuration. [More info here](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#servers).
+!! Make sure you removed the `ServerURL` entry from the top of the JSON configuration. [More info here](../../03.Client-installation/07.Configuration/50.Configuration-options/docs.md#servers).
 
 Please check bellow for different approaches on how to achieve this:
 

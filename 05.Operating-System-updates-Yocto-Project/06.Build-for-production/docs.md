@@ -30,7 +30,7 @@ bitbake-layers remove-layer meta-mender-demo
 
 For security reasons, the Mender client does not require any open ports at the embedded device. Therefore, all communication between the Mender client and the server is always initiated by the client and it is important to configure the client so that the frequency of sending various requests to the server is reasonable for a given setup.
 
-Please refer to [polling intervals](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md), for information on how to choose and how to set polling intervals.
+Please refer to [polling intervals](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md), for information on how to choose and how to set polling intervals.
 
 ## Certificates
 
@@ -108,7 +108,7 @@ Note in particular the `:` after the directory; this is mandatory.
 
 Please note that setting up for production will require that you explicitly set the [MENDER_SERVER_URL variable](../99.Variables/docs.md#mender_server_url) to the proper value for your server.
 
-!!! Note that, this step is not required for the [standalone mode](../../03.Client-installation/07.Configuration-file/01.Polling-intervals/docs.md).
+!!! Note that, this step is not required for the [standalone mode](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md).
 
 ## Artifact signing and verification keys
 

@@ -91,7 +91,7 @@ For the remaining steps, the GRUB CLI tools will be used, but the verification s
 Redundant (A/B) partitioning is a requirement for full rootfs updates.
 These steps will identify the partitions and check if they align with what is in the Mender Client configuration (`/var/lib/mender/mender.conf`).
 
-! By default the Mender Client looks for [configuration in two locations](../07.Configuration-file/docs.md). One of those is `/var/lib/mender/mender.conf` which is - in the default case - a link to the persistent partition `/data/mender/mender.conf` and doesn't get overwritten during the rootfs update. We recommend keeping the backup of the `RootfsPartA/B` settings in `/var/lib/mender/mender.conf` as it is very rare that you need to change partition names as a result of an update.
+! By default the Mender Client looks for [configuration in two locations](../07.Configuration/docs.md). One of those is `/var/lib/mender/mender.conf` which is - in the default case - a link to the persistent partition `/data/mender/mender.conf` and doesn't get overwritten during the rootfs update. We recommend keeping the backup of the `RootfsPartA/B` settings in `/var/lib/mender/mender.conf` as it is very rare that you need to change partition names as a result of an update.
 
 Please note that the output can vary depending on the actual device names or if you're using PARTUUIDs.
 
