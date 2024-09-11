@@ -1,5 +1,5 @@
 ---
-title: Configuration file
+title: Configuration
 taxonomy:
     category: docs
 ---
