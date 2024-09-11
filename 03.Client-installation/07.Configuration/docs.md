@@ -39,13 +39,19 @@ The mechanism for providing the configuration file and specifying the configurat
 If you have already built an Artifact containing the rootfs, have a look at [modifying a Mender Artifact](../../06.Artifact-creation/03.Modify-an-Artifact/docs.md).
 
 
-# Configuring system paths
+# Environment variables
 
-The following table describes the different system paths that the Mender client uses and the
-associated environment variables used to customize them.
+The following table describes the environment variables the Mender client respects:
 
-| Description             | Default path        | Environment variable   |
-| ----------------------- | ------------------- | ---------------------- |
-| Configuration directory | `/etc/mender`       | `MENDER_CONF_DIR`      |
-| Data directory          | `/usr/share/mender` | `MENDER_DATA_DIR`      |
-| Persistent datastore    | `/var/lib/mender`   | `MENDER_DATASTORE_DIR` |
+| Environment variable   | Description                             | Default value       |
+| ---------------------- | --------------------------------------- | ------------------- |
+| `MENDER_CONF_DIR`      | Configuration directory                 | `/etc/mender`       |
+| `MENDER_DATA_DIR`      | Data directory                          | `/usr/share/mender` |
+| `MENDER_DATASTORE_DIR` | Persistent datastore                    | `/var/lib/mender`   |
+| `HTTP_PROXY`           | Proxy server to use for HTTP            | empty               |
+| `HTTPS_PROXY`          | Proxy server to use for HTTPS           | empty               |
+| `NO_PROXY`             | Hosts that should not go through proxy  | empty               |
+
+The `HTTP_PROXY` and `HTTPS_PROXY` variables can specify authentication parameters using the `user:password@host` URL
+format. The `NO_PROXY` variable uses a space-separated list as format and its items can be domain suffixes/wildcards
+like for example `.example.com` for bypassing proxy for all `*.example.com` URLs.
