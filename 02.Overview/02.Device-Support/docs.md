@@ -141,7 +141,7 @@ also need to ensure that the Mender client is running as a system service.
 ### Mender client configuration files
 
 Install the [Mender configuration
-files](../../03.Client-installation/07.Configuration-file/docs.md) into your
+files](../../03.Client-installation/07.Configuration/docs.md) into your
 root filesystem. These are standard text files containing JSON code that defines
 parameters for the Mender client, such as polling intervals.
 

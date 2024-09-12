@@ -15,7 +15,7 @@ The following diagram shows the high level flow of creating and managing keys an
 
 ![Mender signature management flow](mender-signature-management-flow.png)
 
-The process begins with provisioning a device with the public verification key, and configuring the Mender Client to use the key (with the `ArtifactVerifyKey(s)` [configuration option](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#ArtifactVerifyKey)). After an Artifact is built, it is signed by the Signing system.
+The process begins with provisioning a device with the public verification key, and configuring the Mender Client to use the key (with the `ArtifactVerifyKey(s)` [configuration option](../../03.Client-installation/07.Configuration/50.Configuration-options/docs.md#ArtifactVerifyKey)). After an Artifact is built, it is signed by the Signing system.
 
 !!! Although it is convenient and possible to use the Build system as the Signing system, this lowers the security as unauthorized access to the private signing key is made easier for potential attackers (e.g. if the Build system is compromised). The best practice is to only sign Artifacts on an offline system, ideally as a manual operation after careful inspection of the Artifact.
 
@@ -109,7 +109,7 @@ mender-artifact validate artifact-signed.mender -k public.key
 
 ## Enable Mender Client signature verification
 
-Signature verification is enabled on the Mender client using the [ArtifactVerifyKey(s)](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#ArtifactVerifykey) configuration option.
+Signature verification is enabled on the Mender client using the [ArtifactVerifyKey(s)](../../03.Client-installation/07.Configuration/50.Configuration-options/docs.md#ArtifactVerifykey) configuration option.
 
 For OS specific instructions on how to install and enable verification keys, visit:
 

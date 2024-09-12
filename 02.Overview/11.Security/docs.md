@@ -58,7 +58,7 @@ communication channel. If Artifact signature verification is enabled, the
 client needs to have access to the public part of the keypair used for signing
 the Artifacts.  To enable Artifact signature verification, configure the path
 of the public key file using the
-[ArtifactVerifyKey](../../03.Client-installation/07.Configuration-file/50.Configuration-options/docs.md#artifactverifykey)
+[ArtifactVerifyKey](../../03.Client-installation/07.Configuration/50.Configuration-options/docs.md#artifactverifykey)
 configuration option of the Mender client.
 
 You can find more information in the
@@ -103,7 +103,7 @@ The Mender client supports [PKCS#11](https://tools.ietf.org/html/rfc7512), or
 any other HSM access methods that are supported by
 <!--AUTOVERSION: "www.openssl.org/docs/man%"/ignore-->
 [OpenSSL Engine's](https://www.openssl.org/docs/man1.1.1/man1/engine.html). See
-[Mender client configuration sections](https://docs.mender.io/client-installation/configuration-file/configuration-options#httpsclient) for additional details.
+[Mender client configuration sections](https://docs.mender.io/client-installation/configuration/configuration-options#httpsclient) for additional details.
 
 Currently, Mender supports hardware security engines for SSL handshake, mTLS,
 and authentication request signing.
