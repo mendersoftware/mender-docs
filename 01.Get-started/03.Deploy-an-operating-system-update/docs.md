@@ -150,6 +150,11 @@ mender-artifact write rootfs-image \
 ! will freeze the storage device during this operation in order to create a
 ! consistent snapshot.
 
+!!! Known issue: The latest versions of the virtual device depends on recent versions of `e2fsck`,
+!!! not available in older Linux distributions. The command above can fail with
+!!! `fsck error: exit status 12`. For a workaround see
+!!! [this section in our Troubleshoot guide](../../301.Troubleshoot/03.Mender-Client/docs.md#fsck-error-when-creating-a-Mender-Artifact-using-the-snapshot-feature).
+
 Depending on your local network and storage speed, this will take up to
 10-20 minutes to finish. You will see a progress indicator, and when it
 reaches 100% it will package the Mender Artifact which will take a few more
