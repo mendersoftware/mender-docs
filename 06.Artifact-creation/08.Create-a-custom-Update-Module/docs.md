@@ -1,5 +1,5 @@
 ---
-custom-updatitle: Create a custom Update Module
+title: Create a custom Update Module
 taxonomy:
     category: docs
     label: tutorial
