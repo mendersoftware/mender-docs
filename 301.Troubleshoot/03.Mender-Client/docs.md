@@ -4,6 +4,41 @@ taxonomy:
     category: docs
 ---
 
+## `fsck` error when creating a Mender Artifact using the snapshot feature
+
+When running `mender-artifact write -f ssh://...` command to create a Mender Artifact from a virtual
+device, you can get the following error:
+
+```
+runFsck error: fsck error: exit status 12
+```
+
+Recent releases of the virtual device use new filesystem features, which requires up to date
+filesystem tools (namely `e2fsck`) on the host. Debian 12, Ubuntu 24.04 and newer OSs work correctly.
+
+Workaround the issue by executing a few extra steps:
+
+On the shell of the virtual device execute:
+```
+mkfifo /data/mender/dump
+mender-snapshot dump > /data/mender/dump
+```
+
+Then, back to the shell on the host where you have the variables form the Get Started guide, run:
+
+```
+ssh -p 8822 root@${IP_ADDRESS} cat /data/mender/dump > rootfs.ext4
+mender-artifact write rootfs-image \
+    -f ssh://"${USER}@${IP_ADDRESS}" \
+    -t "${DEVICE_TYPE}" \
+    -n system-v1 \
+    -o system-v1.mender \
+    -f rootfs.ext4
+```
+
+From here, upload the `system-v1.mender` and continue with the rest of the steps in the guide.
+
+
 ## `mender-client` package have been kept back
 
 <!--AUTOVERSION: "Mender client version %"/ignore "mark back the %"/ignore "`mender-client` package to version %"/ignore "package to the %"/ignore "it to the % version"/ignore -->
