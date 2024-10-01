@@ -237,10 +237,10 @@ Inspect the GPG key fingerprint and verify that it matches
 gpg --show-keys --with-fingerprint /etc/apt/trusted.gpg.d/mender.asc
 ```
 ```
-pub   rsa3072 2020-11-13 [SC] [expires: 2024-10-23]
+pub   rsa3072 2020-11-13 [SC] [expires: 2026-10-01]
       E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
 uid                      Mender Team <mender@northern.tech>
-sub   rsa3072 2020-11-13 [E] [expires: 2024-10-23]
+sub   rsa3072 2020-11-13 [E] [expires: 2026-10-01]
 ```
 
 3. Add the Mender repository to your sources list by selecting the architecture
