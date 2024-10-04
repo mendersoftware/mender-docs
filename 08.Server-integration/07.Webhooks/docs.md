@@ -4,9 +4,14 @@ taxonomy:
     category: docs
 ---
 
-Mender supports Webhooks to send data to third-party systems. With this mechanism, it's possible to notify external applications about device lifecycle events. This helps you avoid polling and manual synchronization between Mender and other systems.
+Mender supports Webhooks to send data to third-party systems. With this mechanism, it's possible
+to notify external applications about device lifecycle and inventory changed events.
+This eliminates the need for manual polling and synchronization, allowing for efficient
+handling of device-related events as well as advanced integration possibilities.
 
-This integration is available in all Mender plans, as well as Mender Open Source.
+We divided webhook integrations into two categories (_scopes_): `deviceauth` and `inventory`.
+The former is available in all Mender [plans](https://mender.io/pricing/plans), as well as Mender Open Source,
+while `inventory` webhook integration requires Mender Professional plan or higher.
 
 ## Prerequisites
 
@@ -16,21 +21,31 @@ You need a device integrated with Mender, see the [Get started guide](../../01.G
 
 ### External service
 
-You need an external service or application exposed on the internet and able to receive data from Mender in the form of an HTTP POST request.
+To receive data from the Mender Server, you'll need an internet-accessible service
+or application that can accept HTTP POST requests. The service's domain
+name must resolve to a publicly accessible unicast IP address. For security,
+we recommend using HTTPS and setting up a secret for verifying
+request authenticity (see [below](#signature-header)).
 
 ## Supported events
 
-### Device triggers
+### Device lifecycle (deviceauth) triggers
 
-A Webhook fires on device lifecycle events:
+A webhook in the `deviceauth` scope fires on device lifecycle events:
 * device provisioning,
 * device decommissioning, or
 * its authentication status changes.
 
+### Inventory changed triggers
+
+A webhook in the `inventory` scope fires whenever Mender Server detects
+inventory change by a device and updates the device's inventory information.
+
 
 ## Configure and enable Webhooks in Mender
 
-To send data from Mender to your application, you need to set up the integration by providing a unique URL and an optional secret.
+To send data from Mender to your application, you need to set up the integration by providing
+a unique URL and an optional secret.
 
 Open the Mender UI and navigate to `Settings` -> `Integrations`:
 
@@ -77,6 +92,7 @@ The list of allowed event types follows:
 * `device-provisioned`
 * `device-decommissioned`
 * `device-status-changed`
+* `devices-inventory-changed`
 
 The device authentication event consists of the following fields:
 * `id` - device unique ID,
@@ -89,11 +105,125 @@ The properties included depend on the event type:
 * status change events only include the device id and the new status, 
 * device decommissioning will only include the device id.
 
-More information about payload possibilities are available in the [iot-manager](https://github.com/mendersoftware/mender-server/tree/main/backend/services/iot-manager/?target=_blank) management API specification.
+The inventory changed event looks as follows:
 
-### Signature header
+<!-- AUTOMATION: ignore=`inline json data not subject to autoversion` -->
+<!--AUTOVERSION: "\"value\": \"%\""/ignore-->
+```json
+{
+  "id": "1aaf5222-8f2c-4d48-9ae9-8862e78c3fdf",
+  "type": "devices-inventory-changed",
+  "data": {
+    "device_id": "1c251e63-ca93-41e2-ae39-97f402d93dd3",
+    "tenant_id": "66ff8a4650829de3d99a25f1",
+    "inventory": [
+      {
+        "name": "artifact_name",
+        "value": "large",
+        "scope": "inventory"
+      },
+      {
+        "name": "cpu_model",
+        "value": "ARMv7 Processor rev 3 (v7l)",
+        "scope": "inventory"
+      },
+      {
+        "name": "device_type",
+        "value": "raspberrypi4",
+        "scope": "inventory"
+      },
+      {
+        "name": "hostname",
+        "value": "raspberrypi",
+        "scope": "inventory"
+      },
+      {
+        "name": "ipv4_wlan0",
+        "value": "10.0.0.1/24",
+        "scope": "inventory"
+      },
+      {
+        "name": "kernel",
+        "value": "Linux",
+        "scope": "inventory"
+      },
+      {
+        "name": "mac_eth0",
+        "value": "01:01:01:01:01:01",
+        "scope": "inventory"
+      },
+      {
+        "name": "mender_bootloader_integration",
+        "value": "uboot",
+        "scope": "inventory"
+      },
+      {
+        "name": "mender_client_version",
+        "value": "4.0.4",
+        "scope": "inventory"
+      },
+      {
+        "name": "network_interfaces",
+        "value": [
+          "eth0"
+        ],
+        "scope": "inventory"
+      },
+      {
+        "name": "os",
+        "value": [
+          "RelaxedOS",
+          "Based GNU/Linux 11 (bullseye)"
+        ],
+        "scope": "inventory"
+      },
+      {
+        "name": "rootfs-image.checksum",
+        "value": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22",
+        "scope": "inventory"
+      },
+      {
+        "name": "rootfs-image.large.version",
+        "value": "1.0.0",
+        "scope": "inventory"
+      },
+      {
+        "name": "rootfs-image.version",
+        "value": "2023-05-03-raspios-bullseye-armhf-lite-mender",
+        "scope": "inventory"
+      },
+      {
+        "name": "rootfs_type",
+        "value": "ext4",
+        "scope": "inventory"
+      },
+      {
+        "name": "update_modules",
+        "value": [
+          "deb",
+          "directory",
+          "docker",
+          "mender-configure",
+          "rootfs-image",
+          "rpm",
+          "script",
+          "single-file"
+        ],
+        "scope": "inventory"
+      }
+    ]
+  },
+  "time": "2024-10-04T08:13:03.570584412Z"
+}
+```
 
-If you specify a secret, an integrity check is calculated and located in the `X-Men-Signature` header, which contains the HMAC-SHA256 of the payload using the configured secret.
+More information about payload possibilities are available
+in the [iot-manager](https://github.com/mendersoftware/iot-manager) management API specification.
+
+## Signature header
+
+If you specify a secret, an integrity check is calculated and located in the `X-Men-Signature` header,
+which contains the HMAC-SHA256 of the payload using the configured secret.
 
 ## Role Based Access Control
 
