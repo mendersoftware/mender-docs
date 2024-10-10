@@ -371,7 +371,23 @@ metadata:
     nginx.org/websocket-services: mender-api-gateway
 ```
 
-## Create the admin user
+## Post-installation setup
+
+### Enable replication for NATS Jetstream (Recommended)
+For production setup that require high availablility, we recommend enabling replication for the NATS Jetstream work queues.
+By default, NATS deploys 3 replicas, but the stream created by the workflows service does not have replication enabled and therefore has no fault tolerance.
+The following snippet increases the number of replicas to 3.
+
+!!!! Please replace `NATS_URL` in the following snippet with a URL that resolves to any of the NATS pods.
+
+```bash
+NATS_URL="nats://mender-nats" # REPLACE
+kubectl run --env=NATS_URL=$NATS_URL --image=natsio/nats-box:0.14.5-nonroot \
+    nats-increase-replicas -- \
+    nats stream edit WORKFLOWS --force --replicas=3
+```
+
+### Create the admin user
 
 [ui-tabs position="top-left" active="0" theme="default" ]
 [ui-tab title="Open Source"]
