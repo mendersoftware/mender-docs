@@ -80,27 +80,24 @@ Clarification of the table:
 
 
 <!--AUTOVERSION: "Mender client %"/ignore "| % ("/ignore-->
-| Client vs meta-mender version | dunfell (3.1)      | kirkstone (4.0)    |
+| Client vs meta-mender version | kirkstone (4.0)    | scarthgap (5.0)    |
 |-------------------------------|--------------------|--------------------|
 | Older                         | no                 | no                 |
-| Mender client 2.2.x           | stable             | no                 |
-| Mender client 2.3.x           | stable             | no                 |
-| Mender client 2.4.x           | stable             | no                 |
-| Mender client 2.5.x           | stable             | no                 |
-| Mender client 2.6.x           | stable             | no                 |
-| Mender client 3.0.x           | stable<sup>1</sup> | no                 |
-| Mender client 3.1.x           | stable<sup>1</sup> | no                 |
-| Mender client 3.2.x           | stable<sup>1</sup> | no                 |
-| Mender client 3.3.x           | stable<sup>1</sup> | stable             |
-| Mender client 3.4.x           | stable<sup>1</sup> | stable             |
-| Mender client 3.5.x           | stable<sup>1</sup> | stable             |
-| Mender client 4.0.x           | no                 | stable<sup>2</sup> |
-
-<!--AUTOVERSION: "client % and later"/ignore "Yocto branches 3.1 (%) and older"/ignore-->
-!!! <sup>1</sup> Mender client 3.0.0 and later are not installed by default in Yocto branches 3.1 (dunfell) and older. To enable this or a later version, please see [the `PREFERRED_VERSION` setting when configuring the Yocto build](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build).
+| Mender client 2.2.x           | no                 | no                 |
+| Mender client 2.3.x           | no                 | no                 |
+| Mender client 2.4.x           | no                 | no                 |
+| Mender client 2.5.x           | no                 | no                 |
+| Mender client 2.6.x           | no                 | no                 |
+| Mender client 3.0.x           | no                 | no                 |
+| Mender client 3.1.x           | no                 | no                 |
+| Mender client 3.2.x           | no                 | no                 |
+| Mender client 3.3.x           | stable             | no                 |
+| Mender client 3.4.x           | stable             | no                 |
+| Mender client 3.5.x           | stable             | stable             |
+| Mender client 4.0.x           | stable<sup>1</sup> | stable             |
 
 <!--AUTOVERSION: "client % and later"/ignore "Yocto branch 4.0 (%)."/ignore-->
-!!! <sup>2</sup> Mender client 4.0.0 and later are not installed by default in Yocto branch 4.0 (kirkstone). To enable this or a later version, please see [the `PREFERRED_VERSION` setting when configuring the Yocto build](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build).
+!!! <sup>1</sup> Mender client 4.0.0 and later are not installed by default in Yocto branch 4.0 (kirkstone). To enable this or a later version, please see [the `PREFERRED_VERSION` setting when configuring the Yocto build](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build).
 
 Leverage [Mender consulting services to support other versions of the Yocto Project](https://mender.io/product/board-support?target=_blank) for your board and environment.
 
