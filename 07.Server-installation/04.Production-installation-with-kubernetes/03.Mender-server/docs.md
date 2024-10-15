@@ -66,6 +66,11 @@ export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
 export MENDER_VERSION_TAG="mender-master"
 export MONGODB_ROOT_PASSWORD=$(pwgen 32 1)
 export MONGODB_REPLICA_SET_KEY=$(pwgen 32 1)
+export AWS_ACCESS_KEY_ID=$(kubectl get secret seaweedfs-s3-secret -o jsonpath='{.data.admin_access_key_id}' |base64 -d)
+export AWS_SECRET_ACCESS_KEY=$(kubectl  get secret seaweedfs-s3-secret -o jsonpath='{.data.admin_secret_access_key}' |base64 -d)
+export STORAGE_ENDPOINT="http://seaweedfs-s3:8333"
+export STORAGE_BUCKET="replace-with-your-bucket-name"
+
 
 cat >mender-master.yml <<EOF
 global:
@@ -77,10 +82,10 @@ global:
   nats:
     URL: ""
   s3:
-    AWS_URI: "https://${MINIO_DOMAIN_NAME}"
-    AWS_BUCKET: "mender-artifact-storage"
-    AWS_ACCESS_KEY_ID: "${MINIO_ACCESS_KEY}"
-    AWS_SECRET_ACCESS_KEY: "${MINIO_SECRET_KEY}"
+    AWS_URI: "${MENDER_SERVER_URL}"
+    AWS_BUCKET: "${STORAGE_BUCKET}"
+    AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+    AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
   url: "${MENDER_SERVER_URL}"
 
 # This enables bitnami/mongodb sub-chart
@@ -98,6 +103,18 @@ nats:
 api_gateway:
   env:
     SSL: false
+  storage_proxy:
+    enabled: true
+    url: "${STORAGE_ENDPOINT}"
+    customRule: "PathRegexp(\`^/${STORAGE_BUCKET}\`)"
+    passHostHeader: false
+  minio:
+    enabled: false
+
+deployments:
+  customEnvs:
+    - name: DEPLOYMENTS_STORAGE_PROXY_URI
+      value: "${MENDER_SERVER_URL}"
 
 device_auth:
   certs:
@@ -109,8 +126,6 @@ useradm:
     key: |-
 $(cat useradm.key | sed -e 's/^/      /g')
 EOF
-
-helm upgrade --install mender mender/mender -f mender-master.yml
 ```
 [/ui-tab]
 [ui-tab title="Enterprise"]
@@ -129,6 +144,10 @@ export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
 export MENDER_VERSION_TAG="mender-master"
 export MONGODB_ROOT_PASSWORD=$(pwgen 32 1)
 export MONGODB_REPLICA_SET_KEY=$(pwgen 32 1)
+export AWS_ACCESS_KEY_ID="replace-with-your-aws-access-key-id"
+export AWS_SECRET_ACCESS_KEY="replace-with-your-aws-secret-access-key"
+export STORAGE_ENDPOINT="https://s3.amazonaws.com"
+export STORAGE_BUCKET="replace-with-your-bucket-name"
 
 cat >mender-master.yml <<EOF
 global:
@@ -142,10 +161,10 @@ global:
   nats:
     URL: ""
   s3:
-    AWS_URI: "https://${MINIO_DOMAIN_NAME}"
+    AWS_URI: "${MENDER_SERVER_URL}"
     AWS_BUCKET: "mender-artifact-storage"
-    AWS_ACCESS_KEY_ID: "${MINIO_ACCESS_KEY}"
-    AWS_SECRET_ACCESS_KEY: "${MINIO_SECRET_KEY}"
+    AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+    AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
   url: "${MENDER_SERVER_URL}"
 
 # This enables bitnami/mongodb sub-chart
@@ -163,6 +182,18 @@ nats:
 api_gateway:
   env:
     SSL: false
+  storage_proxy:
+    enabled: true
+    url: "${STORAGE_ENDPOINT}"
+    customRule: "PathRegexp(\`^/${STORAGE_BUCKET}\`)"
+    passHostHeader: false
+  minio:
+    enabled: false
+
+deployments:
+  customEnvs:
+    - name: DEPLOYMENTS_STORAGE_PROXY_URI
+      value: "${MENDER_SERVER_URL}"
 
 device_auth:
   certs:
@@ -179,8 +210,6 @@ useradm:
     key: |-
 $(cat useradm.key | sed -e 's/^/      /g')
 EOF
-
-helm upgrade --install mender mender/mender -f mender-master.yml
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -211,12 +240,16 @@ Mender supports the following Artifact storage types:
 > ```yaml
 > global:
 >   s3:
->     AWS_URI: "https://s3.<your-aws-region>.amazonaws.com"
+      AWS_URI: "${MENDER_SERVER_URL}"
 >     AWS_BUCKET: "<name-of-your-bucket>"
 >     AWS_REGION: "<your-aws-region>"
 >     AWS_ACCESS_KEY_ID: "<your-access-key-id>"
 >     AWS_SECRET_ACCESS_KEY: "<your-secret-access-key>"
 >     AWS_FORCE_PATH_STYLE: "false"
+>
+> api_gateway:
+>   storage_proxy:
+>     url: "https://s3.<your-aws-region>.amazonaws.com"
 > ```
 [/ui-tab]
 [ui-tab title="Azure Blob Storage"]
@@ -229,6 +262,10 @@ Mender supports the following Artifact storage types:
 >   azure:
 >     AUTH_CONNECTION_STRING: "BlobEndpoint=https://<name-of-your-storage>.blob.core.windows.net;SharedAccessSignature=..."
 >     CONTAINER_NAME: "<name-of-your-container>"
+> 
+> api_gateway:
+>   storage_proxy:
+>     url: "https://<name-of-your-storage>.blob.core.windows.net"
 > ```
 
 Instead of a connection string, you can also specify the following parameters:

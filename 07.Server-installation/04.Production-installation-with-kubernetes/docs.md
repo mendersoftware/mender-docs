@@ -32,7 +32,8 @@ The requirements listed below are what Northern.tech tests internally and suppor
   * AWS S3
   * Cloudflare R2
   * GCP - S3 compatible API only
-  * Minio
+  * Minio (not recommended for production)
+  * SeaweedFS (not recommended for production)
 
 
 **Mongo DB:**

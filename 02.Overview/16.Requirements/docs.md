@@ -12,16 +12,15 @@ The following URLs and access types need outgoing permissions in firewalls in or
 
 **Artifact storage access**: Devices, APIs and browser access
 
+! This section is relevant only if you are not using the storage_proxy 
+! feature. With the storage_proxy feature, only the Mender Endpoint URL
+! needs to be accessible.
+
 [ui-tabs position="top-left" active="0" theme="default" ]
 [ui-tab title="Amazon S3"]
 Permit access to the following URLs:
 * `https://s3.amazonaws.com/<my-example-artifact-storage>` - Amazon S3 Path-style request
 * `https://<my-example-artifact-storage>.s3.amazonaws.com` - Amazon S3 Virtual-hosted-style request
-[/ui-tab]
-[ui-tab title="Minio"]
-Permit access to your 
-Minio URL defined in [Minio Setup Section](../../07.Server-installation/04.Production-installation-with-kubernetes/02.Minio/docs.md)
-* `https://artifacts.example.com`
 [/ui-tab]
 [/ui-tabs]
 
