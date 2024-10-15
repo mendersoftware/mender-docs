@@ -15,7 +15,7 @@ This feature drastically reduces the time to upload the Mender artifact to the M
 ## Prerequisites
 
 <!--AUTOVERSION: "version %"/ignore-->
-!!! This feature is available starting from the Mender Product bundle version 3.6.3
+!!! This feature is available starting from the Mender Server version 3.6.3
 
 * The `mender-cli` tool. You can find information about how to download it and the installation steps in the [Downloads section](../../10.Downloads/docs.md#mender-cli) from this documentation.
 
