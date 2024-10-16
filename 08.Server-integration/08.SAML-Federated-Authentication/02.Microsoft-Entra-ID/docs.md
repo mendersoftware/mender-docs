@@ -8,7 +8,7 @@ taxonomy:
 !!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
-This example will show you how to set Microsoft Entra ID as an Identity Provider (IdP) for Hosted Mender as a Service Provider (SP).
+This example will show you how to set Microsoft Entra ID as an Identity Provider (IdP) for hosted Mender as a Service Provider (SP).
 
 
 ## Prerequisites
@@ -42,14 +42,14 @@ At this point only the App Federation Metadata Url is available. This isn't a co
 Follow the link and copy the XML content. Please ensure to copy the raw XML.  **(1)**
 
 
-In Hosted Mender, under `Settings -> Organization and billing` check the `Enable SAML single sign-on` and select `input text with text editor` (not visible in the picture).
+In Mender, under `Settings -> Organization and billing` check the `Enable SAML single sign-on` and select `input text with text editor` (not visible in the picture).
 Once the editor opens, paste the copied XML document into it. **(2)**
 
 
 
 ![](05-tenant-urls.png)
 
-The URLs (`Entity ID`, `ASC URL`, and `Start URL`) will now be available under the SAML checkbox in Hosted Mender. **(1)**
+The URLs (`Entity ID`, `ASC URL`, and `Start URL`) will now be available under the SAML checkbox in Mender. **(1)**
 Copy them into the Microsoft Entra ID application configuration. 
 
 
@@ -62,8 +62,8 @@ Replace the XML document you fetched from a URL in the previous step (App Federa
 ![](07-create-mender-user.png)
 
 In the `Users and groups` settings for the application in Microsoft Entra ID, assign the new user/group. **(1)**
-The `User principal name` needs to be the same email that the user on Hosted Mender will have (not on the picture).
-On Hosted Mender create a new user with the Email corresponding to the `User principal name` set in Microsoft Entra ID.
+The `User principal name` needs to be the same email that the user will have in Mender.
+In Mender, create a new user with the Email corresponding to the `User principal name` set in Azure Entra ID.
 
 Make sure no password is set during user creation otherwise the SAML integration will be rejected. **(2)**
 
@@ -75,4 +75,4 @@ If you're logged to Microsoft Entra ID with the user you've set up on Hosted Men
 If the integration is successful, you will be logged into Hosted Mender.
 
 
-The other approach is to copy the Start URL (in Hosted Mender under `Settings -> Organization and billing` below the SAML checkbox) into your browser.
+The other approach is to copy the Start URL (in Mender under `Settings -> Organization and billing` below the SAML checkbox) into your browser.

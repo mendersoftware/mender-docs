@@ -31,8 +31,8 @@ export MENDER_GATEWAY_PORT="8443"
 export MENDER_GATEWAY_IP=
 
 
-# You need to create a separate user on your Hosted Mender instance.
-# The Mender Gateway will authenticate devices on Hosted Mender as this user.
+# You need to create a separate user in your Mender account.
+# The mtls server will authenticate devices on Mender as this user.
 # Fill these with the credentials of your newly created user.
 export MENDER_USERNAME=
 export MENDER_PASSWORD=
@@ -43,8 +43,8 @@ export MENDER_PASSWORD=
 # export UPSTREAM_SERVER_URL="https://hosted.mender.io"
 export UPSTREAM_SERVER_URL=
 
-# Set the tenant/organisation token for your account
-# Located under Settings->Organisation and billing->Organization token once logged to the UI of Hosted Mender
+# Set the tenant/organization token for your account
+# Located under Settings->Organization and billing token once logged in to the Mender UI
 export TENANT_TOKEN=
 
 # Set the docker registry configuration and credentials

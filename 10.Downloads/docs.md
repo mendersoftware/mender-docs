@@ -322,7 +322,7 @@ sudo apt-get install mender-client4
 
 ### Download
 
-If you are using *Hosted Mender*, set the following variables with your credentials:
+If you are using *hosted Mender*, set the following variables with your credentials:
 
 <!--AUTOMATION: ignore -->
 ```bash
