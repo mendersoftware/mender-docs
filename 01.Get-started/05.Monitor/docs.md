@@ -6,7 +6,7 @@ taxonomy:
 ---
 
 !!!!! Requires the Mender Monitor add-on package.
-!!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
+!!!!! See [the Mender plans page](https://mender.io/pricing/plans?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
 !!! This tutorial is not supported by the virtual device because it does not come

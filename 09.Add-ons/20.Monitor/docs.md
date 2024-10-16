@@ -6,7 +6,7 @@ taxonomy:
 ---
 
 !!!!! It is required to have the _Mender Monitor_ add-on enabled in your account.
-!!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
+!!!!! See [the Mender plans page](https://mender.io/pricing/plans?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
 The Mender Monitor add-on gives you instant visibility into issues

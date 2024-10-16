@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 !!!!! SAML Federated Authentication is only available in the Mender Enterprise plan.
-!!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
+!!!!! See [the Mender plans page](https://mender.io/pricing/plans?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
 It is possible to configure a Mender tenant to leverage a SAML-compatible Identity Provider (IdP) to identify and authenticate users. Using SAML, users can log in to Mender using existing single sign-on credentials from services compatible with SAML 2.0, like Azure/Microsoft, AWS and Google.

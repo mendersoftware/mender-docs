@@ -6,7 +6,7 @@ taxonomy:
 ---
 
 !!!!! The Mender Troubleshoot add-on package is required.
-!!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
+!!!!! See [the Mender plans page](https://mender.io/pricing/plans?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
 The Mender Troubleshoot add-on package includes the ability to forward TCP/UDP

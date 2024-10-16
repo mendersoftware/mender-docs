@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 !!!!! OpenID Connect Federated Authentication is only available in the Mender Enterprise plan.
-!!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
+!!!!! See [the Mender plans page](https://mender.io/pricing/plans?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
 OpenID Connect (OIDC) uses a very similar flow to [SAML](../08.SAML-Federated-Authentication).
