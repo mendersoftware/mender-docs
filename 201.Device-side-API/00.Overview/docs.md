@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-This section describes the Device-side API for the Mender clients. The Device-side API constitutes
+This section describes the Device-side API for the Mender Client. The Device-side API constitutes
 the only public API of the Mender Client. The Device-side API is a thin layer which receives messages
 over D-Bus, processes them, transmits them to the Mender Client, receives the results from
 the client, and transmits a response on the D-Bus.

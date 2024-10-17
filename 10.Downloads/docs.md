@@ -408,7 +408,7 @@ and [Yocto projects](../05.Operating-System-updates-Yocto-Project/05.Customize-M
 for the installation in a Yocto Project environment.
 
 To install `mender-connect` using Mender APT repository, follow the instructions
-for [installing Mender clients using the APT
+for [installing the Mender Client using the APT
 repository](#install-using-the-apt-repository). After the final step, install
 `mender-connect` using the package manager:
 
@@ -439,7 +439,7 @@ Configure](../09.Add-ons/10.Configure/docs.md) for more information for other
 installation alternatives.
 
 To install `mender-configure` using Mender APT repository, follow the
-instructions for [installing Mender clients using the APT
+instructions for [installing the Mender Client using the APT
 repository](#install-using-the-apt-repository). After the final step, install
 `mender-configure` using the package manager:
 

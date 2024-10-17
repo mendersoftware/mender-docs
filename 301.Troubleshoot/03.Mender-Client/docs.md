@@ -146,8 +146,8 @@ verbosity by editing the Mender systemd unit file and add the `--log-level debug
 ExecStart=/usr/bin/mender-update --log-level debug daemon
 ```
 
-<!--AUTOVERSION: "Mender clients older than %"/ignore-->
-!!! Note that in Mender clients older than 4.0.0, the binary and systemd service are called
+<!--AUTOVERSION: "versions of the Mender Client older than %"/ignore-->
+!!! Note that in versions of the Mender Client older than 4.0.0, the binary and systemd service are called
 !!! `mender` and `mender-client`, respectively.
 
 
@@ -171,8 +171,8 @@ as it is being written with this command:
 journalctl -u mender-updated -f
 ```
 
-<!--AUTOVERSION: "Mender clients older than %"/ignore-->
-!!! Note that in Mender clients older than 4.0.0, the systemd service is called `mender-client`.
+<!--AUTOVERSION: "versions of the Mender Client older than %"/ignore-->
+!!! Note that in versions of the Mender Client older than 4.0.0, the systemd service is called `mender-client`.
 
 To stop it use Ctrl+C.
 
