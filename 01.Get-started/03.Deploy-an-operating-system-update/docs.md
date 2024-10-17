@@ -238,4 +238,4 @@ resources on more advanced ways you will find here:
 
 ## Next step
 
-Proceed to [Deploy a Docker container update](../04.Deploy-a-container-update/docs.md).
+Proceed to [Deploy a Docker Compose Container update](../04.Deploy-a-docker-compose-update/docs.md)

@@ -129,4 +129,4 @@ using Mender!
 Proceed to one of the following tutorials (listed in recommended order):
 
 1. [Deploy an Operating System update](../03.Deploy-an-operating-system-update/docs.md)
-1. [Deploy a Container update](../04.Deploy-a-container-update/docs.md)
+1. [Deploy a Docker Compose Container update](../04.Deploy-a-docker-compose-update/docs.md)
