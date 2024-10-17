@@ -19,7 +19,7 @@ It is fully integrated in the Role Based Access Control system of Mender and acc
 ### Encrypted connections
 
 The [mender-connect](https://github.com/mendersoftware/mender-connect),
-obtains device token through DBus API. It is the same token `mender-update`, part of the Mender client, is using.
+obtains device token through DBus API. It is the same token `mender-update`, part of the Mender Client, is using.
 <!--AUTOVERSION: "https://tools.ietf.org/html/rfc6455#section-%"/ignore-->
 File Transfer uses [Encrypted WebSocket connections](https://tools.ietf.org/html/rfc6455#section-11.1.2) to communicate with the server.
 The connection to the device is secure, but there are no additional limitations on what file can be transferred or network bandwidth used.

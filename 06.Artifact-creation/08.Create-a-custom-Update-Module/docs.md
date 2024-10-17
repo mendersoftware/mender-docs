@@ -10,13 +10,13 @@ taxonomy:
 Historically, the first update mechanism in Mender was [dual rootfs updates](../../02.Overview/01.Introduction/docs.md#robust-operating-system-updates).
 There is an alternative called _Update Modules_ which allow for different types of updates, including updates at the application level. This provides an opportunity to change the software on your devices in the active root filesystem.
 
-An _Update Module_ is an extension to the Mender client for supporting a new type of software update, such as a package manager, container, bootloader or even updates of nearby microcontrollers. You can tailor an Update Module to a specific device or environment (e.g. update a proprietary bootloader), or be more general-purpose (e.g. install a set of `.deb` packages.).
+An _Update Module_ is an extension to the Mender Client for supporting a new type of software update, such as a package manager, container, bootloader or even updates of nearby microcontrollers. You can tailor an Update Module to a specific device or environment (e.g. update a proprietary bootloader), or be more general-purpose (e.g. install a set of `.deb` packages.).
 
 You can find general-purpose Update Modules and documentation, including support for file-based, package based and container-based updates together with community-supported Update Modules at [Mender Hub](https://hub.mender.io/c/update-modules/13?target=_blank).
 
 This document introduces how Update Modules work, so you can develop your own Update Modules that meet your specific needs.
 
-An Update Module implements one or more of the actions that the Mender client carries out when installing an Artifact payload. The *core* action that all Update Modules must implement is the ArtifactInstall action, where the actual installation of an Artifact payload takes place. However, there are other actions that you may use depending on the desired functionality and use case for an Update Module, such as Rollback.
+An Update Module implements one or more of the actions that the Mender Client carries out when installing an Artifact payload. The *core* action that all Update Modules must implement is the ArtifactInstall action, where the actual installation of an Artifact payload takes place. However, there are other actions that you may use depending on the desired functionality and use case for an Update Module, such as Rollback.
 
 ### Update Module basics
 
@@ -78,11 +78,11 @@ The best and recommended way of running Mender is the [managed mode](../../02.Ov
 
 !!! Hosted Mender is available in multiple [regions](/11.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
 
-### A Device with a Mender client
+### A Device with a Mender Client
 
-You will need a device with a Mender client installed. For development purposes you also need shell access to the device (e.g. via [SSH](../../01.Get-started/01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md#step-2-ssh-into-the-raspberry-pi)).
+You will need a device with a Mender Client installed. For development purposes you also need shell access to the device (e.g. via [SSH](../../01.Get-started/01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md#step-2-ssh-into-the-raspberry-pi)).
 
-To install the Mender client on your device, follow the instructions in the [Installing](../../03.Client-installation/02.Install-with-Debian-package/docs.md) documentation.
+To install the Mender Client on your device, follow the instructions in the [Installing](../../03.Client-installation/02.Install-with-Debian-package/docs.md) documentation.
 
 ### Workstation with mender-artifact
 
@@ -134,7 +134,7 @@ Finally, create the directory for the update files to be installed in:
 mkdir -p /var/www
 ```
 
-Your Mender client is now able to handle Artifacts of type `web-file` (see below for the exact relation between the name of the Update Module and the type of the Artifact).
+Your Mender Client is now able to handle Artifacts of type `web-file` (see below for the exact relation between the name of the Update Module and the type of the Artifact).
 
 ### Create an Artifact with a payload for the new Update Module
 
@@ -276,7 +276,7 @@ exit 0
 EOF
 ```
 
-This new version of the `web-file` Update Module implements a simple mechanism to restore the previous state (i.e. files in `/var/www` before the update). It saves a tarball with all current files in `/var/www` (only the single files, not directories) before removing them and copying the new set of files coming from the archive. After copying the files, it will check that the md5sum of all copied files is the same as the files contained in the incoming Artifact. If they differ, the script will exit with error code `1` for this `ArtifactInstall` phase. Finally, the Mender client will interpret this error code as a failure, check if our Update Module supports rollback, and then again call the module with `ArtifactRollback` option, where the module will restore the old files.
+This new version of the `web-file` Update Module implements a simple mechanism to restore the previous state (i.e. files in `/var/www` before the update). It saves a tarball with all current files in `/var/www` (only the single files, not directories) before removing them and copying the new set of files coming from the archive. After copying the files, it will check that the md5sum of all copied files is the same as the files contained in the incoming Artifact. If they differ, the script will exit with error code `1` for this `ArtifactInstall` phase. Finally, the Mender Client will interpret this error code as a failure, check if our Update Module supports rollback, and then again call the module with `ArtifactRollback` option, where the module will restore the old files.
 
 !!! You can experiment with the rollback mechanism by forcing the update to fail. For example, creating a directory under `/var/www` with the same name as one of the files contained in the incoming Artifact will trigger an error in the `cp` command. Once this happens, the Update Module should restore the previous files.
 

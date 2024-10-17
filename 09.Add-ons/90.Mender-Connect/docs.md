@@ -137,7 +137,7 @@ options available:
 * `FileTransfer`:  File Transfer configuration options.
   * `Disable`: Disable file transfer.
 
-#### Mender client configuration
+#### Mender Client configuration
 
 * `MenderClient`: Configuration for mender-client dbus API.
   * `Disable`: Disable mender-client dbus hooks.

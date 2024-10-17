@@ -28,7 +28,7 @@ bitbake-layers remove-layer meta-mender-demo
 
 ## Configure polling intervals
 
-For security reasons, the Mender client does not require any open ports at the embedded device. Therefore, all communication between the Mender client and the server is always initiated by the client and it is important to configure the client so that the frequency of sending various requests to the server is reasonable for a given setup.
+For security reasons, the Mender Client does not require any open ports at the embedded device. Therefore, all communication between the Mender Client and the server is always initiated by the client and it is important to configure the client so that the frequency of sending various requests to the server is reasonable for a given setup.
 
 Please refer to [polling intervals](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md), for information on how to choose and how to set polling intervals.
 
@@ -126,8 +126,8 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 SRC_URI:append = " file://artifact-verify-key.pem"
 ```
 
-<!--AUTOVERSION: "Mender client older than %"/ignore-->
-!!! Note that for Mender client older than 4.0.0, you must use the `mender-client` recipe instead of
+<!--AUTOVERSION: "Mender Client older than %"/ignore-->
+!!! Note that for Mender Client older than 4.0.0, you must use the `mender-client` recipe instead of
 !!! the `mender` recipe.
 
 Note that it is also possible (but not recommended) to use `local.conf`, by using [the same method as for client certificates](#using-local-conf), adding `pn-mender` to the variable names.

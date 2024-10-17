@@ -41,8 +41,8 @@ From here, upload the `system-v1.mender` and continue with the rest of the steps
 
 ## `mender-client` package have been kept back
 
-<!--AUTOVERSION: "Mender client version %"/ignore "mark back the %"/ignore "`mender-client` package to version %"/ignore "package to the %"/ignore "it to the % version"/ignore -->
-After releasing the Mender client version 4.0.0, we realized a critical issue with the Debian
+<!--AUTOVERSION: "Mender Client version %"/ignore "mark back the %"/ignore "`mender-client` package to version %"/ignore "package to the %"/ignore "it to the % version"/ignore -->
+After releasing the Mender Client version 4.0.0, we realized a critical issue with the Debian
 packaging. Therefore, we decided to revert it and mark back the 3.5.2 release as the latest version
 in the APT repository. If you upgraded the `mender-client` package to version 4.0.0 on a device
 during that time, APT will keep the `mender-client` package to the 4.0.0 version and won't downgrade
@@ -132,7 +132,7 @@ new Debian package, as per the installation instructions in
 
 Logs are usually needed in order to diagnose an issue.
 
-The Mender client by default logs to the system log using `systemd`, so the easiest way to retrieve logs
+The Mender Client by default logs to the system log using `systemd`, so the easiest way to retrieve logs
 is to run the following command:
 
 ```
@@ -164,7 +164,7 @@ for example `deployments.0001.fcd8bca2-6dae-488e-969e-23559c674ba5.log`.
 
 ### Current status
 
-In order to see what the Mender client is doing currently, follow the log
+In order to see what the Mender Client is doing currently, follow the log
 as it is being written with this command:
 
 ```
@@ -179,7 +179,7 @@ To stop it use Ctrl+C.
 
 ## Certificate expired or not yet valid
 
-The Mender client can not connect to the server, typically the first time it tries, and emits messages like the following to the `mender-authd` log or syslog at the device:
+The Mender Client can not connect to the server, typically the first time it tries, and emits messages like the following to the `mender-authd` log or syslog at the device:
 
 ```
 ... level=info msg="Mender state: authorize-wait -> bootstrapped" module=mender
@@ -188,10 +188,10 @@ Post https://<SERVER-URI>/api/devices/v1/authentication/auth_requests: x509: cer
 ```
 
 This could occur in several places, and the distinguishing message is **x509: certificate has expired or is not yet valid**.
-Each TLS certificate has a validity period, *Not Before* and *Not After*, and this message means that the Mender client concludes that
+Each TLS certificate has a validity period, *Not Before* and *Not After*, and this message means that the Mender Client concludes that
 the current time is outside this range.
 
-Most commonly this is caused by **incorrect time setting on the device** which runs the Mender client. Check this by
+Most commonly this is caused by **incorrect time setting on the device** which runs the Mender Client. Check this by
 running `date` on the device, and make sure it is correct. Consult the section on [Correct clock](../../05.Operating-System-updates-Yocto-Project/01.Overview/docs.md#correct-clock)
 for a more detailed discussion.
 
@@ -235,7 +235,7 @@ overview and description on how to generate new certificates.
 
 ## Certificate signed by unknown authority
 
-The Mender client can not connect to the server, typically the first time it tries, and emits messages like the following to the `mender-authd` log or syslog at the device:
+The Mender Client can not connect to the server, typically the first time it tries, and emits messages like the following to the `mender-authd` log or syslog at the device:
 
 ```
 ... level=info msg="Mender state: authorize-wait -> bootstrapped" module=mender
@@ -244,7 +244,7 @@ Post https://<SERVER-URI>/api/devices/v1/authentication/auth_requests: x509: cer
 ```
 
 This could occur in several places, and the distinguishing message is **x509: certificate signed by unknown authority**.
-The message shows that the Mender client rejects the Mender Server's certificate because it does not trust the certificate
+The message shows that the Mender Client rejects the Mender Server's certificate because it does not trust the certificate
 authority (CA).
 
 If your server is using a certificate that is signed by an official Certificate Authority, then you likely
@@ -309,7 +309,7 @@ The `_INCONSISTENT` suffix is appended to the software name on a device when the
 
 ## Artifact format not supported
 
-When deploying an update with the Mender client, you see a log message similar to the following:
+When deploying an update with the Mender Client, you see a log message similar to the following:
 
 ```
 ERRO[0001] update install failed: failed to read and install update: reader: unsupported version: 2  module=state
@@ -345,9 +345,9 @@ ERRO[0000] No match between boot and root partitions.    module=main
 The problem here is most likely that the device does not have the [partition layout Mender expects](../../05.Operating-System-updates-Yocto-Project/01.Overview/docs.md#partition-layout). This could have happened if you just placed the Mender binary into your rootfs, but did not [reflash the entire storage device](../../05.Operating-System-updates-Yocto-Project/20.Provisioning-a-new-device/docs.md) with the `.sdimg.` file output from the [Yocto Project build](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md). When this happens, output from `mount` and `fw_printenv` can confirm that this is the problem you are seeing. The solution is to flash your entire storage device with the `.sdimg` output from the Yocto Project build process.
 
 
-## The Mender client uses excessive network traffic even when not deploying updates
+## The Mender Client uses excessive network traffic even when not deploying updates
 
-If you are using the Mender client in demo mode, either by selecting it when running `mender setup`, or set up with the [demo layer](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md), the Mender client has more aggressive [polling intervals](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md) to simplify testing.
+If you are using the Mender Client in demo mode, either by selecting it when running `mender setup`, or set up with the [demo layer](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md), the Mender Client has more aggressive [polling intervals](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md) to simplify testing.
 
 See the documentation on [building for production](../../05.Operating-System-updates-Yocto-Project/06.Build-for-production/docs.md) and [polling intervals](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md) to reduce the network bandwidth usage.
 

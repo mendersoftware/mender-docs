@@ -6,7 +6,7 @@ taxonomy:
 
 ## Installation types
 
-The Mender client runs on the device in order to install software updates.
+The Mender Client runs on the device in order to install software updates.
 It consists of two binaries, `mender-auth` and `mender-update`.
 Therefore, at minimum you need to install the client binaries on the device
 and it must support the device OS and hardware architecture. This allows
@@ -17,8 +17,8 @@ A/B *Operating System updates* because Mender needs to control which system
 partition (A or B) is updated and booted. The mechanisms used for this are
 specific to the distribution or build system you are using to maintain
 your OS. This is called a Mender *board integration*.
-Note that a board integration also covers installing the Mender client on
-the device, so you do not need to install the Mender client after using a
+Note that a board integration also covers installing the Mender Client on
+the device, so you do not need to install the Mender Client after using a
 board integration.
 
 See [Update types](../../02.Overview/01.Introduction/docs.md#update-types) for more information
@@ -61,7 +61,7 @@ If no board integration is available for your device, follow the documentation o
 #### Installation with .deb packages
 
 If you only need to deploy application updates (not Operating System updates),
-we provide Debian packages (`.deb`) for installing the Mender client that works
+we provide Debian packages (`.deb`) for installing the Mender Client that works
 on almost any Debian family OS and device.
 
 Follow the documentation on [install Mender using the Debian package](../../03.Client-installation/02.Install-with-Debian-package/docs.md)
@@ -98,21 +98,21 @@ community post for steps to create one.
 #### General Linux installation
 
 <!--AUTOVERSION: "mender/tree/%?target=_blank"/mender -->
-You can compile the Mender client for a wide variety of architectures. Follow the steps in the
+You can compile the Mender Client for a wide variety of architectures. Follow the steps in the
 [README.md](https://github.com/mendersoftware/mender/tree/master?target=_blank#installing-from-source)
-of the Mender client source repository. This is also the first step to a board integration for other types of Linux OSes.
+of the Mender Client source repository. This is also the first step to a board integration for other types of Linux OSes.
 
 
 ### Other non-Linux OSes
 
 <!--AUTOVERSION: "mender/tree/%?target=_blank"/mender -->
-For a POSIX compliant OS it may be possible to compile the Mender client to run natively,
+For a POSIX compliant OS it may be possible to compile the Mender Client to run natively,
 as outlined in the
 [README.md](https://github.com/mendersoftware/mender/tree/master?target=_blank#installing-from-source).
 
 For other types of OSes you can either use a nearby Linux system to update it via a
 [proxy deployment](../../02.Overview/01.Introduction/docs.md#proxy-deployments) or
-[create a custom Mender client](https://hub.mender.io/t/how-to-write-a-custom-client-interfacing-a-mender-server).
+[create a custom Mender Client](https://hub.mender.io/t/how-to-write-a-custom-client-interfacing-a-mender-server).
 
 
 ## Board integration overview
@@ -130,20 +130,20 @@ boot time. Additionally, install utilities that can update the bootloader
 environment into the root filesystem.
 
 
-### Mender client application installation
+### Mender Client application installation
 
-The Mender client application is a standard Linux executable installed into the
+The Mender Client application is a standard Linux executable installed into the
 root filesystem. If your design uses [managed
 mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation), you
-also need to ensure that the Mender client is running as a system service.
+also need to ensure that the Mender Client is running as a system service.
 
 
-### Mender client configuration files
+### Mender Client configuration files
 
 Install the [Mender configuration
 files](../../03.Client-installation/07.Configuration/docs.md) into your
 root filesystem. These are standard text files containing JSON code that defines
-parameters for the Mender client, such as polling intervals.
+parameters for the Mender Client, such as polling intervals.
 
 
 ### Installation of Update Modules
@@ -151,7 +151,7 @@ parameters for the Mender client, such as polling intervals.
 If you require support for payload types other than Operating System
 updates, ensure to install appropriate [Update
 Modules](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md)
-into your root filesystem, which are invoked by the Mender client.
+into your root filesystem, which are invoked by the Mender Client.
 
 
 ### Installation of root filesystem State Scripts
@@ -159,4 +159,4 @@ into your root filesystem, which are invoked by the Mender client.
 If you require support of [root filesystem State
 Scripts](../../06.Artifact-creation/04.State-scripts/docs.md#root-filesystem-and-artifact-scripts),
 ensure that they are installed into your root filesystem, so they are invoked by the
-Mender client.
+Mender Client.

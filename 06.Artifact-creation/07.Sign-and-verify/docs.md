@@ -109,7 +109,7 @@ mender-artifact validate artifact-signed.mender -k public.key
 
 ## Enable Mender Client signature verification
 
-Signature verification is enabled on the Mender client using the [ArtifactVerifyKey(s)](../../03.Client-installation/07.Configuration/50.Configuration-options/docs.md#ArtifactVerifykey) configuration option.
+Signature verification is enabled on the Mender Client using the [ArtifactVerifyKey(s)](../../03.Client-installation/07.Configuration/50.Configuration-options/docs.md#ArtifactVerifykey) configuration option.
 
 For OS specific instructions on how to install and enable verification keys, visit:
 

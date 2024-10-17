@@ -61,7 +61,7 @@ The persistent data partition stores data that must persist through an update.
 
 Below is a sample partition layout:
 
-![Mender client partition layout](mender_client_partition_layout.png)
+![Mender Client partition layout](mender_client_partition_layout.png)
 
 
 ### Correct clock

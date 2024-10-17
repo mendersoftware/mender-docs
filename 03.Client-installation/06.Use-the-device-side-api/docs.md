@@ -4,16 +4,16 @@ taxonomy:
     category: tutorial
 ---
 
-The Device-side API constitutes the only public programmatic interface of the Mender client.
+The Device-side API constitutes the only public programmatic interface of the Mender Client.
 It is a thin layer which receives messages over D-Bus, processes them, transmits them to the
-Mender client, receives the results from the client, and transmits a response on the D-Bus.
+Mender Client, receives the results from the client, and transmits a response on the D-Bus.
 
 ## Synchronized updates using the Device-side API
 
-!! This feature is removed in Mender client 4.0 and later. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
+!! This feature is removed in Mender Client 4.0 and later. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
 
-An application running locally on the device can tell the Mender client to wait at specific
-points in the deployment setting Update Control Maps in the Mender client.
+An application running locally on the device can tell the Mender Client to wait at specific
+points in the deployment setting Update Control Maps in the Mender Client.
 
 Common use cases are:
 
@@ -26,15 +26,15 @@ Common use cases are:
 
 ### Update Control Maps
 
-Update Control Maps can specify an action for some transitions between the Mender client's
+Update Control Maps can specify an action for some transitions between the Mender Client's
 state machine. The default action for each step is **continue**. To pause the update process,
 you can set **pause**.
 
 Once *paused*, the update process can either be *resumed* or *canceled* and the whole deployment
-marked as failed by updating the Update Control Map of the Mender client.
+marked as failed by updating the Update Control Map of the Mender Client.
 
 You can manage the update progress using the [Device-side APIs](../../201.Device-side-API),
-updating the Mender client's Update Control Map using the *SetUpdateControlMap* method of the
+updating the Mender Client's Update Control Map using the *SetUpdateControlMap* method of the
 *Mender Update Management API* .
 
 Each Update Control Map is identified by a unique identifier

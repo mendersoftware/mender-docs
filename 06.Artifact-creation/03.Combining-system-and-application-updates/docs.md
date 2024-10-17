@@ -11,7 +11,7 @@ There are many possible strategies to combine the Operating System and Applicati
 
 ### Operating System updates using the A/B partitioning schema
 
-When performing Operating System updates using the A/B partitioning schema, the Mender Client writes a new filesystem image directly to the inactive partition, using the rootfs-image update module. When complete, the Client verifies the checksum, updates the bootloader configuration, flips the active and inactive partitions, and reboots. On the first boot following an update, the Mender client will **commit** the update, making the bootloader configuration permanent.
+When performing Operating System updates using the A/B partitioning schema, the Mender Client writes a new filesystem image directly to the inactive partition, using the rootfs-image update module. When complete, the Client verifies the checksum, updates the bootloader configuration, flips the active and inactive partitions, and reboots. On the first boot following an update, the Mender Client will **commit** the update, making the bootloader configuration permanent.
 
 One consequence of the Operating System update is that the update will replace all the files in a filesystem, thereby deleting any new or changed files placed there. In other words, to be updatable, a filesystem needs to be **stateless** and contain all the software required for the device to work.
 
@@ -54,7 +54,7 @@ The consequence of this complexity can contribute to the following:
 
 This section lists several example patterns and update scenarios where Operating System and Application updates are combined. In all the examples, the device's partitioning schema is A/B with a persistent data partition mounted on the `/data` path.
 
-![Mender client partition layout](../../05.Operating-System-updates-Yocto-Project/01.Overview/mender_client_partition_layout.png)
+![Mender Client partition layout](../../05.Operating-System-updates-Yocto-Project/01.Overview/mender_client_partition_layout.png)
 
 
 ### Operating System image and Application updates targeting the system partition

@@ -284,7 +284,7 @@ def parse_autoversion_tag(tag):
         raise Exception(
             (
                 "AUTOVERSION tag not parsed correctly:\n%s" + "Example of valid tag:\n"
-                '<!--AUTOVERSION: "git clone -b %%"/integration "Mender client %%"/mender "docker version %%"/ignore-->'
+                '<!--AUTOVERSION: "git clone -b %%"/integration "Mender Client %%"/mender "docker version %%"/ignore-->'
             )
             % tag
         )
@@ -421,7 +421,7 @@ def main():
     )
     parser.add_argument(
         "--mender-client-version",
-        help="Mender client version for client only releases to update to",
+        help="Mender Client version for client only releases to update to",
     )
     parser.add_argument(
         "--meta-mender-version",

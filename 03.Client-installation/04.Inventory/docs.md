@@ -4,12 +4,12 @@ taxonomy:
     category: docs
 ---
 
-We recommend that you first read the [overview on Inventory](../../02.Overview/08.Inventory) in order to familiarize yourself with the concept and how it is used in Mender. This tutorial is about how to change the Inventory attributes reported by the Mender client.
+We recommend that you first read the [overview on Inventory](../../02.Overview/08.Inventory) in order to familiarize yourself with the concept and how it is used in Mender. This tutorial is about how to change the Inventory attributes reported by the Mender Client.
 
 
 ## Basic rules for inventory attributes
 
-Periodically, the Mender client runs every executable file with
+Periodically, the Mender Client runs every executable file with
 the `mender-inventory-` prefix from the `/usr/share/mender/inventory` directory.
 It then parses each line read from the standard output of the script according
 to the following format:
@@ -126,7 +126,7 @@ You can find some more useful scripts in [https://github.com/mendersoftware/mend
 
 ## Default inventory
 
-By default, and without any inventory scripts added, the Mender client sends the following attributes:
+By default, and without any inventory scripts added, the Mender Client sends the following attributes:
 
 <!--AUTOVERSION: "client version | \"%\""/mender-->
 | name | meaning | example value |

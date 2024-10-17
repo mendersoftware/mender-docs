@@ -7,7 +7,7 @@ shortcode-core:
 ---
 
 * [Mender Server](10.Mender-server/docs.md)
-* [Mender client](20.Mender-client/docs.md)
+* [Mender Client](20.Mender-client/docs.md)
 * [mender-connect](21.mender-connect/docs.md)
 * [mender-configure-module](22.mender-configure-module/docs.md)
 * [mender-setup](23.mender-setup/docs.md)

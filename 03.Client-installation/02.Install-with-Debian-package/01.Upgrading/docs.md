@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-This page describes how to upgrade one Mender client version to a different Mender client version.
+This page describes how to upgrade one Mender Client version to a different Mender Client version.
 
 ## Minor and patch versions
 
@@ -22,7 +22,7 @@ are sometimes necessary to fix problems that cannot be dealt with in minor relea
 behaviors that conflict with existing behaviors in some way.
 
 <!--AUTOVERSION: "to % or later"/ignore-->
-### Upgrade the Mender client 3.x series to 4.0.0 or later
+### Upgrade the Mender Client 3.x series to 4.0.0 or later
 
 #### Overview
 
@@ -38,8 +38,8 @@ In Mender Client 4.0.0, the service was split into several smaller components. P
 Following that change, the Linux systemd service was also split from `mender-client` into
 `mender-authd` and `mender-updated`.
 
-<!--AUTOVERSION: "Mender client % and later"/ignore-->
-The following features and config are not available in Mender client 4.0.0 and later:
+<!--AUTOVERSION: "Mender Client % and later"/ignore-->
+The following features and config are not available in Mender Client 4.0.0 and later:
 
 - [Synchronized
   updates](https://docs.mender.io/3.6/overview/customize-the-update-process#synchronized-updates)
@@ -49,10 +49,10 @@ The following features and config are not available in Mender client 4.0.0 and l
   options in the client setting. The new client does not cache connections, so these options are
   not needed anymore
 
-<!--AUTOVERSION: "Mender client % and later"/ignore-->
-In Mender client 4.0.0 and later the rootfs-image update type is no longer embedded in the client
+<!--AUTOVERSION: "Mender Client % and later"/ignore-->
+In Mender Client 4.0.0 and later the rootfs-image update type is no longer embedded in the client
 codebase but is treated as any other external update module. A binary CLI tool `mender-flash` now
-gets installed as part of the Mender client to serve the needs of the external rootfs update module.
+gets installed as part of the Mender Client to serve the needs of the external rootfs update module.
 
 #### Upgrade using Debian packages
 
@@ -108,9 +108,9 @@ apt-get install mender-update mender-client4
 
 #### Upgrade using Yocto
 
-<!--AUTOVERSION: "Mender client version % or later"/ignore "Yocto 5.0 (%)"/ignore "Yocto 4.0 (%)"/ignore-->
-Mender client version 4.0.0 or later will automatically be built on Yocto 5.0 (scarthgap) and
-later. If you want to enable building of Mender client version 4.0.0 or later while on
+<!--AUTOVERSION: "Mender Client version % or later"/ignore "Yocto 5.0 (%)"/ignore "Yocto 4.0 (%)"/ignore-->
+Mender Client version 4.0.0 or later will automatically be built on Yocto 5.0 (scarthgap) and
+later. If you want to enable building of Mender Client version 4.0.0 or later while on
 Yocto 4.0 (kirkstone) or older, please refer to [this specific section in our Troubleshoot
 guide](../../../301.Troubleshoot/01.Yocto-project-build/docs.md#mender-client-version-4-0-0-have-been-released-but-my-build-still-uses-the-single-client-3-x-series).
 

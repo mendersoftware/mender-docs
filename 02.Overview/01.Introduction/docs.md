@@ -33,27 +33,27 @@ for deploying updates to a fleet of devices. Among other things, it monitors the
 current software version present on each device and schedules the roll out of
 new releases.
 
-Finally, each **Device** runs the Mender client, which polls the Mender Server
+Finally, each **Device** runs the Mender Client, which polls the Mender Server
 periodically to report its status and to discover if there is a software update
 waiting. If there is, the update client downloads the artifact and performs the
 installation.
 
-The current Mender client supports devices running embedded Linux, and other
+The current Mender Client supports devices running embedded Linux, and other
 clients exist for other OSes and hardware, such as microcontrollers.
 
 
 ## Client modes of operation
 
-You can run the Mender client in a _standalone_ or _managed_ mode.
+You can run the Mender Client in a _standalone_ or _managed_ mode.
 
-In _managed_ mode, the Mender client runs as a daemon and will regularly poll the
+In _managed_ mode, the Mender Client runs as a daemon and will regularly poll the
 server, automatically apply updates, reboot, report, and commit the update. This
 is the best way to run Mender for most large-scale deployments, as the
 deployments are centrally managed across many devices, but it requires to set up
 and connect clients to the Mender Server.
 
 In _standalone_ mode, you initiate the updates locally on the device instead of
-connecting the Mender client to a Mender Server. A common use-case is to perform
+connecting the Mender Client to a Mender Server. A common use-case is to perform
 updates from e.g., a USB flash drive. To learn more visit
 [Standalone deployments](../../06.Artifact-creation/06.Standalone-deployment/docs.md)
 
@@ -86,7 +86,7 @@ partition. When complete, the client verifies the checksum. If all is well, it
 sets a flag in the bootloader that will cause it to flip the active and inactive
 partitions around on the next reboot. Then the system reboots.
 
-On the first boot following an update, the Mender client will **commit** the
+On the first boot following an update, the Mender Client will **commit** the
 update. This sets a flag in the bootloader that indicates that the update was
 applied successfully.
 

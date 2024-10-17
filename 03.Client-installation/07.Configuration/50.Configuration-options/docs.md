@@ -19,7 +19,7 @@ There are two options for specifying verification keys:
 
 Only one of `ArtifactVerifyKey` or `ArtifactVerifyKeys` may be specified.
 
-When set, the Mender client verifies the following:
+When set, the Mender Client verifies the following:
 
 * All Artifact installs contain a signature. If a signature is not provided,
     then the client rejects the update.
@@ -44,26 +44,26 @@ or older.
 
 #### Connectivity
 
-!! This option is not supported starting from the Mender client version 4.0, and all the HTTP requests will be sent without the Keep-Alive header.
+!! This option is not supported starting from the Mender Client version 4.0, and all the HTTP requests will be sent without the Keep-Alive header.
 
 Allows you to configure additional connection-related settings.
 
 ##### DisableKeepAlive
 
-!! This option is not supported starting from the Mender client version 4.0, and all the HTTP requests will be sent without the Keep-Alive header.
+!! This option is not supported starting from the Mender Client version 4.0, and all the HTTP requests will be sent without the Keep-Alive header.
 
 If set to true, disables the connections keep alive in general. All the HTTP transactions
 will cause a new connection to be created.
 
 ##### IdleConnTimeoutSeconds
 
-!! This option is not supported starting from the Mender client version 4.0, and all the HTTP requests will be sent without the Keep-Alive header.
+!! This option is not supported starting from the Mender Client version 4.0, and all the HTTP requests will be sent without the Keep-Alive header.
 
 Specifies the time after which a connection is terminated. The larger it is,
 the longer keep alive traffic will happen, as the client will maintain
 the connection.
 
-Introduced in Mender client 3.3.
+Introduced in Mender Client 3.3.
 
 Example:
 
@@ -162,12 +162,12 @@ is sent. The default is 4 hours.
 
 #### RetryPollCount
 
-The maximum number of tries that the Mender client performs when contacting
+The maximum number of tries that the Mender Client performs when contacting
 the Mender Server.
 
 If the setting is zero (the default), the maximum number of retries is `3 * ceil(log2(RetryPollIntervalSeconds) + 1)`.
 
-Introduced in Mender client 3.3.
+Introduced in Mender Client 3.3.
 
 #### RetryPollIntervalSeconds
 
@@ -177,14 +177,14 @@ initially to enable rapid upgrades, but will gradually fall back to this value
 if the server is busy. See also the section about [polling
 intervals](../01.Polling-intervals/docs.md).
 
-As of Mender client 3.3 this one also applies to inventory updates.
+As of Mender Client 3.3 this one also applies to inventory updates.
 
 #### RootfsPartA
 
 The Linux device that contains root filesystem A. The build system (ie Yocto or
 mender-convert) sets this variable so it is rarely modified manually.
 
-Note: Starting with Mender client v4.0, this configuration option is no longer parsed by the client,
+Note: Starting with Mender Client v4.0, this configuration option is no longer parsed by the client,
 but instead by the `rootfs-image` update module. For most users this does not make any difference,
 but for advanced users it allows changing how it is handled, since the update module is a shell
 script.
@@ -194,7 +194,7 @@ script.
 The Linux device that contains root filesystem B. The build system (ie Yocto or
 mender-convert) sets this variable, so it is rarely modified manually.
 
-Note: Starting with Mender client v4.0, this configuration option is no longer parsed by the client,
+Note: Starting with Mender Client v4.0, this configuration option is no longer parsed by the client,
 but instead by the `rootfs-image` update module. For most users this does not make any difference,
 but for advanced users it allows changing how it is handled, since the update module is a shell
 script.
@@ -322,7 +322,7 @@ default location is `/var/lib/mender/device_type`
 
 #### UpdateControlMapExpirationTimeSeconds
 
-!! This option is not supported starting from the Mender client version 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
+!! This option is not supported starting from the Mender Client version 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
 
 The expire time in seconds for an update control map. The value provides the
 time window for an application using the update control _dbus API_ to refresh
@@ -332,7 +332,7 @@ the update control map before it enters the expired state. _Defaults to
 
 #### UpdateControlMapBootExpirationTimeSeconds
 
-!! This option is not supported starting from the Mender client version 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
+!! This option is not supported starting from the Mender Client version 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
 
 The maximum expire time in seconds after startup for an update control map. The
 value provides an upper bound on the update control map [expire
@@ -341,7 +341,7 @@ time](#UpdateControlMapExpirationTimeSeconds) after system startup. _Defaults to
 
 #### UpdateControlMapPollIntervalSeconds
 
-!! This option is not supported starting from the Mender client version 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
+!! This option is not supported starting from the Mender Client version 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
 
 The polling interval at which the client checks for new control maps once the
 deployment has started to take place. This influences how quickly will the
@@ -353,4 +353,4 @@ UpdatePollIntervalSeconds_.
 
 The log level for when the daemon is running. Note that this option will get overridden by the cli option `--log-level`.
 
-Introduced in Mender client 3.4.
+Introduced in Mender Client 3.4.

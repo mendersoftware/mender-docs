@@ -4,8 +4,8 @@ taxonomy:
     category: docs
 ---
 
-For security reasons, the Mender client does not require any open ports on the
-embedded device. Therefore, all communication between the Mender client and the
+For security reasons, the Mender Client does not require any open ports on the
+embedded device. Therefore, all communication between the Mender Client and the
 server is always initiated by the client and it is important to configure the
 client so that the frequency of sending various requests to the server is
 reasonable for a given setup.
@@ -27,7 +27,7 @@ proxy whenever `mender-update` needs to connect.
 
 ## How to choose right intervals
 
-The Mender client is more responsive with higher frequency intervals. Meaning
+The Mender Client is more responsive with higher frequency intervals. Meaning
 that the client inventory data updates more frequently. The client also polls
 for updates at a smaller interval, leading to faster deployments.
 
@@ -35,7 +35,7 @@ But there is a trade-off; higher polling frequencies results in more server
 load. If one server has many clients connected, a high frequency will require
 more resources server-side to keep the environment responsive.
 
-!!! If you are using the Mender client in demo mode, either by selecting it when running `mender setup`, or by using the [meta-mender-demo layer](../../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md), the Mender client has more aggressive polling intervals to simplify testing. The defaults noted above do not apply to demo mode and you will see extra network traffic in demo mode.
+!!! If you are using the Mender Client in demo mode, either by selecting it when running `mender setup`, or by using the [meta-mender-demo layer](../../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md), the Mender Client has more aggressive polling intervals to simplify testing. The defaults noted above do not apply to demo mode and you will see extra network traffic in demo mode.
 
 
 ## Changing the parameters

@@ -133,7 +133,7 @@ As devices leave the group all devices in the group get updated in the first pha
 Once you create a Deployment, it stays in the *pending* state until one or more
 devices targeted by the Deployment have requested the update.
 
-When at least one device running the Mender client is performing the defined update, the Deployment transitions to the status *inprogress*.
+When at least one device running the Mender Client is performing the defined update, the Deployment transitions to the status *inprogress*.
 
 When all the devices included in the Deployment to a static group finished the update, either successfully or not, the Deployment's status changes to *finished*.
 

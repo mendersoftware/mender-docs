@@ -55,8 +55,8 @@ authentication data.
 
 * _Device-side API_ - The collection of APIs exposed by the Mender components
 running on the device. The Device-side API constitutes the only public programmatic
-interface of the Mender client. It is a thin layer that receives messages over D-Bus,
-processes them, transmits them to the Mender client, receives the results
+interface of the Mender Client. It is a thin layer that receives messages over D-Bus,
+processes them, transmits them to the Mender Client, receives the results
 from the client, and transmits a response on the D-Bus.
 
 * _Device ID_ - A single string uniquely identifying a device in the Mender
@@ -141,5 +141,5 @@ in the asymmetric encryption model.
 logical entity connected to a [Mender Gateway](../../01.Get-started/06.Mender-Gateway/docs.md)
 instance. Devices in a System usually require coordination during the update process.
 
-* _Update Module_ - An extension to the Mender client for supporting a new type
+* _Update Module_ - An extension to the Mender Client for supporting a new type
 software update, such as a package manager, container or bootloader.

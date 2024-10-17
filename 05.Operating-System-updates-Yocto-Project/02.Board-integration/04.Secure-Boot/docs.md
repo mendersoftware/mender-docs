@@ -22,12 +22,12 @@ the boot loader, the kernel, and device drivers.
 ## Support
 
 The signatures used by Secure Boot are embedded in the binary files themselves, and as such, are
-largely independent of the Mender client; it will just deploy whatever files the update contains,
+largely independent of the Mender Client; it will just deploy whatever files the update contains,
 with or without Secure Boot signatures. This means that in general, if a system was Secure Boot
-compliant before introducing the Mender client, it will keep being compliant after introducing it.
+compliant before introducing the Mender Client, it will keep being compliant after introducing it.
 
 However, how you build the image affects whether it is Secure Boot compliant or not. Although the
-Mender client supports Secure Boot, not all of Mender's image building facilities do.
+Mender Client supports Secure Boot, not all of Mender's image building facilities do.
 
 For the Yocto family of operating system images,
 [meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank) is the Yocto layer used

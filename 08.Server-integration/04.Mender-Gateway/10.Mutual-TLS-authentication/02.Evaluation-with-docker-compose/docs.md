@@ -115,7 +115,7 @@ docker rm mender-client
 ```
 
 
-! For versions prior Mender client 4 replace `mender-authd` with `mender-client`
+! For versions prior Mender Client 4 replace `mender-authd` with `mender-client`
 
 
 Update the device with new certificates: 
@@ -156,7 +156,7 @@ $MENDER_GATEWAY_IP    $MENDER_GATEWAY_DOMAIN
 EOF
 ```
 
-Upload the new config and restart the Mender client:
+Upload the new config and restart the Mender Client:
 
 ```bash
 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 8822 root@$CONTAINER_IP systemctl stop mender-authd  && \
@@ -228,7 +228,7 @@ scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P 8822 ${NEW_KE
 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P 8822 ${NEW_KEY_IDENTIFIER}_device-cert-new.pem root@$CONTAINER_IP:/data/mender/${NEW_KEY_IDENTIFIER}_device-cert-new.pem
 ```
 
-The new Mender client config with the new key:
+The new Mender Client config with the new key:
 
 ``` bash
 cat > mender.conf << EOF
