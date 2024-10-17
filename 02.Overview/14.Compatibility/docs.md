@@ -102,9 +102,9 @@ Clarification of the table:
 Leverage [Mender consulting services to support other versions of the Yocto Project](https://mender.io/product/board-support?target=_blank) for your board and environment.
 
 
-## Mender Client/server and Artifact format
+## Mender Client/Server and Artifact format
 
-The [Mender Artifact format](../03.Artifact/docs.md) is managed by the [Mender Artifacts Library](https://github.com/mendersoftware/mender-artifact?target=_blank), which is included in the Mender Client and server (for reading Artifacts) as well as in a standalone utility `mender-artifact` (for [writing Artifacts](../../06.Artifact-creation/03.Modify-an-Artifact/docs.md)).
+The [Mender Artifact format](../03.Artifact/docs.md) is managed by the [Mender Artifacts Library](https://github.com/mendersoftware/mender-artifact?target=_blank), which is included in the Mender Client and the Mender Server (for reading Artifacts) as well as in a standalone utility `mender-artifact` (for [writing Artifacts](../../06.Artifact-creation/03.Modify-an-Artifact/docs.md)).
 
 <!--AUTOVERSION: "Mender % / mender-artifact %"/ignore-->
 |                                       | Artifact v1 | Artifact v2 | Artifact v3 |

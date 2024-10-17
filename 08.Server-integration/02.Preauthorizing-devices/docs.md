@@ -31,7 +31,7 @@ When preauthorizing a device you need to know its [identity](../../02.Overview/0
 By default the Mender Client uses the [MAC address of the first interface](https://github.com/mendersoftware/mender/blob/master/support/mender-device-identity?target=_blank) on the device as the device identity, for example `mac=02:12:61:13:6c:42`.
 
 
-### Mender Client and server connectivity
+### Mender Client and Mender Server connectivity
 
 Once your device boots with a newly provisioned disk image, it should already be correctly connecting to the Mender Server. After booting the device you should see it pending authorization in the Mender Server UI, similar to the following.
 
@@ -40,7 +40,7 @@ Once your device boots with a newly provisioned disk image, it should already be
 If your device does not show as pending authorization in the Mender Server once it boots with the disk image, you need to diagnose this issue before continuing. See the [troubleshooting section on connecting devices](../../301.Troubleshoot/05.Device-Runtime/docs.md#mender-server-connection-issues) in this case.
 
 
-### A CLI environment for your server
+### A CLI environment for your Mender Server
 
 In order to access the Mender Server API with the commands below, you need to set up some shell variables in the terminal you will be using.
 
