@@ -18,7 +18,7 @@ To enable this feature on your Enterprise plan in hosted Mender, please get in t
 
 ### On-premise installations
 
-!!! This feature is available starting from the Mender Product bundle version 3.6.
+!!! This feature is available starting from the Mender Server version 3.6.
 
 In case of installations in your own infrastructure, there is additional step required: setting the configuration
 in the deployments service. To this end, and in order to enable the server side delta generation, you have to call
@@ -33,7 +33,7 @@ Where `your_tenant_id` stands for the id of your tenant for which you enable the
 
 ### Requirements on a device
 
-!!! This feature is available starting from the Mender Client version 3.5 or the Mender Product Bundle version 3.6.
+!!! This feature is available starting from the Mender Client version 3.5 and the Mender Server version 3.6.
 
 !! Delta updates aren't supported with devices running UBIFS. If this is your use case please contact us at support@mender.io
 

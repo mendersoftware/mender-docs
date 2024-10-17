@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 !!! Support for Direct Upload is available exclusively in the Mender Enterprise plan in the On Premise offering.
-!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
+!!! See [the Mender plans page](https://mender.io/pricing/plans?target=_blank)
 !!! for an overview of all Mender plans and features.
 
 The Direct Upload feature provides a Mender channel to upload artifacts directly to the Mender artifact storage, processing it and putting it in the correct place and structure, without going through any other Mender component like the API gateway or deployments service.
@@ -15,7 +15,7 @@ This feature drastically reduces the time to upload the Mender artifact to the M
 ## Prerequisites
 
 <!--AUTOVERSION: "version %"/ignore-->
-!!! This feature is available starting from the Mender Product bundle version 3.6.3
+!!! This feature is available starting from the Mender Server version 3.6.3
 
 * The `mender-cli` tool. You can find information about how to download it and the installation steps in the [Downloads section](../../10.Downloads/docs.md#mender-cli) from this documentation.
 

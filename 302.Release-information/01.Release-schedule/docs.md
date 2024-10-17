@@ -44,10 +44,6 @@ At this time, we support the following LTS releases: 3.7.
 | ----------- | --------------- |
 | 3.7         |  2025-05        |
 
-Mender is versioned and released as a Product bundle, and the versions mentioned here refer to the Product bundle version.
-
-Under the version of the Product bundle, there are multiple different components with their individual versioning. To see which component versions belong to a bundle, please refer to [this JSON file](https://docs.mender.io/releases/versions.json)
-
 
 ##### Yocto LTS support
 

@@ -322,7 +322,7 @@ sudo apt-get install mender-client4
 
 ### Download
 
-If you are using *Hosted Mender*, set the following variables with your credentials:
+If you are using *hosted Mender*, set the following variables with your credentials:
 
 <!--AUTOMATION: ignore -->
 ```bash
@@ -584,7 +584,7 @@ sudo dpkg -i mender-monitor-demo_master-1+debian+bullseye_all.deb
 ## Mender Gateway
 
 !!!!! Mender Gateway is only available in the Mender Enterprise plan.
-!!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
+!!!!! See [the Mender plans page](https://mender.io/pricing/plans?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
 Mender offers [Mender Gateway](../08.Server-integration/04.Mender-Gateway/docs.md) which enables

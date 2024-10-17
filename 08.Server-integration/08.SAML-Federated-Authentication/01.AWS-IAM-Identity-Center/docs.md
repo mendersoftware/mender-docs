@@ -5,7 +5,7 @@ taxonomy:
 ---
 
 !!!!! SAML Federated Authentication is only available in the Mender Enterprise plan.
-!!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
+!!!!! See [the Mender plans page](https://mender.io/pricing/plans?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
 This example will show you how to set AWS IAM Identity Center as an Identity Provider (IdP) for hosted Mender as a Service Provider (SP).

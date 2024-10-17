@@ -27,5 +27,3 @@ For production installations please follow the setup described in [Production in
 * component versions as defined under [Production installation with Kubernetes](../04.Production-installation-with-kubernetes/docs.md)
 
 Following the above points will ensure a simplest working production installation regardless of the Opens Source or Enterprise server.
-
-!!!!! Please note that the Mender Server containers comes released as part of the [Mender Product bundle](../../302.Release-information/01.Release-schedule/docs.md) and falls under the support schedule explained there.

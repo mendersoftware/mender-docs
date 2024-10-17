@@ -228,7 +228,7 @@ which contains the HMAC-SHA256 of the payload using the configured secret.
 ## Role Based Access Control
 
 !!!!! Role Based Access Control is only available in the Mender Enterprise plan.
-!!!!! See [the Mender features page](https://mender.io/product/features?target=_blank)
+!!!!! See [the Mender plans page](https://mender.io/pricing/plans?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
 *Admin* permission is required to set up the integration.
