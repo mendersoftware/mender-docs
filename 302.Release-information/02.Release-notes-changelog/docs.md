@@ -18,5 +18,5 @@ shortcode-core:
 * [meta-mender](40.meta-mender/docs.md)
 * [mender-binary-delta](50.mender-binary-delta/docs.md)
 * [monitor-client](51.monitor-client/docs.md)
-* [mender-gateway](52.mender-gateway/docs.md)
+* [Mender Gateway](52.mender-gateway/docs.md)
 * [mender-ci-workflows](60.mender-ci-workflows/docs.md)

@@ -21,7 +21,7 @@ local network to the upstream Mender Server. It is capable of proxying Artifacts
 from an s3-compatible file server to the devices and enabling mutual TLS
 authentication requests on behalf of devices.
 
-![Mender gateway](mender-gateway-schema.png)
+![Mender Gateway](mender-gateway-schema.png)
 
 ## Artifact Proxy and Cache
 The Mender Gateway can understand when a device has an available update
