@@ -34,7 +34,7 @@ solution that best fits your needs.
 ! version 6.x and later. If you whish to continue using MinIO, please consult
 ! the [official MinIO documentation](https://docs.min.io/) for further details.
 
-!! Important: The SeaweedFS setup is a community contribution and is not
+!! Important: The SeaweedFS setup is a community project and is not
 !! recommended for production use. The following storage backends are
 !! recommended for production: AWS S3, Cloudflare R2,
 !! Google Cloud Storage,and Azure Blob Storage.
@@ -186,17 +186,6 @@ global:
     CONTAINER_NAME: "<name-of-your-container>"
 ```
 
-stead of a connection string, you can also specify the following parameters:
-
-```yaml
-global:
-  storage: "azure"
-  azure:
-    AUTH_SHARED_KEY_ACCOUNT_NAME: "<account-name>"
-    AUTH_SHARED_KEY_ACCOUNT_KEY: "<account-key>"
-    CONTAINER_NAME: "<name-of-your-container>"
-```
-
 [/ui-tab]
 [ui-tab title="Cloudflare R2"]
 In this guide, we provide an example of how to use Cloudflare
@@ -212,28 +201,6 @@ export AWS_SECRET_ACCESS_KEY="replace-with-your-secret-access-key"
 export AWS_REGION="replace-with-your-aws-region"
 export STORAGE_BUCKET="replace-with-your-bucket-name"
 export STORAGE_ENDPOINT="https://replace-with-your-cloudflare-account-id.r2.cloudflarestorage.com"
-```
-
-As a reference, here's your Helm Chart customization to make
-Mender use Azure Blob Storage as the storage backend:
-
-```yaml
-global:
-  storage: "azure"
-  azure:
-    AUTH_CONNECTION_STRING: "BlobEndpoint=https://<name-of-your-storage>.blob.core.windows.net;SharedAccessSignature=..."
-    CONTAINER_NAME: "<name-of-your-container>"
-```
-
-stead of a connection string, you can also specify the following parameters:
-
-```yaml
-global:
-  storage: "azure"
-  azure:
-    AUTH_SHARED_KEY_ACCOUNT_NAME: "<account-name>"
-    AUTH_SHARED_KEY_ACCOUNT_KEY: "<account-key>"
-    CONTAINER_NAME: "<name-of-your-container>"
 ```
 
 [/ui-tab]

@@ -23,6 +23,19 @@ Please read the following Requirements and resources section to understand what 
 
 The requirements listed below are what Northern.tech tests internally and supports for production installations of the mender server. Alternative providers might technically work as well, but are not officially supported.
 
+### Hardware Requirements
+Here are the hardware requirements for the Mender Server (excluding the
+database and artifact storage requirements):
+
+!! Currently, the MongoDB setup included in the Helm Chart  only supports x86_64
+!! architecture. If you want to use arm64, you will need to set up an external
+!! MongoDB cluster.
+
+* Architectures: x86_64, arm64
+* small size (up to 100 devices): 8 GB RAM, 4 vCPUs
+* medium size (up to 10K devices): 16 GB RAM, 8 vCPUs
+* large size (up to 100K devices): 24 GB RAM, 16 vCPUs
+
 ### Platform and software dependencies
 
 
@@ -42,21 +55,21 @@ We recommend using a replica set for high availability production environments,
 and you can choose to host your own cluster or use the MongoDB Atlas managed
 service.
 * Supported versions:
+  * MongoDB 7.0
   * MongoDB 6.0
-  * MongoDB 5.0
 
 !!!!! Please note that we do not provide support for troubleshooting issues with
 !!!!! MongoDB not directly related to the Mender product.
 
 **Redis:**
-* Redis 6.0, 6.2
+* Redis 6.0, 6.2, 7.4
   * ElasticCache (AWS)
   * AzureCache
   * Memorystore (GCP)
   * Self hosted
 
 **Nats:**
-* NATS 2.7, 2.8, 2.9
+* NATS 2.9
 
 **Whatever the supported Kubernetes version for:**
 * [Amazon Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/)
@@ -65,7 +78,7 @@ service.
     * *Autopilot* not yet supported
 
 **Helm CLI version:**
-* 3.7
+* 3.10
 
 ### Resources
 
