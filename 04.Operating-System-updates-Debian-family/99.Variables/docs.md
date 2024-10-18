@@ -118,14 +118,14 @@ The size of the boot partition.
 
 > Value: y(default)/n
 
-Install the Mender client.
+Install the Mender Client.
 
 #### `MENDER_CLIENT_VERSION`
 
 <!--AUTOVERSION: "/%/"/ignore-->
 > Value: latest(default)/master/&lt;version&gt;
 
-The version of the Mender client to include in the update.
+The version of the Mender Client to include in the update.
 
 
 #### `MENDER_ADDON_CONNECT_INSTALL`
@@ -245,7 +245,7 @@ This option enables the use of partuuid's as partition block device references. 
 
 > Values: y(default)/n
 
-If you want the Mender client to operate in managed mode and connect to a
+If you want the Mender Client to operate in managed mode and connect to a
 server, then this should be enabled. If you are not interested connecting to a
 server and will only be running standalone mode updates, then you can safely
 disable this.

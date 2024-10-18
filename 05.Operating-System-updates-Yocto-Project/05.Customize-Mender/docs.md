@@ -28,7 +28,7 @@ Port numbers can be specified in the same way as you would in a browser, as a co
 
 ## Configuring polling intervals
 
-You can configure how frequently the Mender client will make requests to the Mender Server
+You can configure how frequently the Mender Client will make requests to the Mender Server
 as described in [Polling intervals](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md) before
 starting the build process.
 
@@ -55,8 +55,8 @@ SRC_URI:append = " file://mender.conf"
 Replace `<DIRECTORY-WITH-MENDER-CONF>` with the path to the `mender.conf` file, relative to the
 recipe file.
 
-<!--AUTOVERSION: "Prior to Mender client version %"/ignore-->
-!!! Prior to Mender client version 4.0.0, the recipe was called `mender-client`. Please modify
+<!--AUTOVERSION: "Prior to Mender Client version %"/ignore-->
+!!! Prior to Mender Client version 4.0.0, the recipe was called `mender-client`. Please modify
 !!! `mender-client_%.bbappend` instead of `mender_%.bbappend` if you are using such a version. This
 !!! applies to the sections below as well.
 

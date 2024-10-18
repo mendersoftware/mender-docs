@@ -7,7 +7,7 @@ shortcode-core:
 ---
 
 * [Mender Server](10.Mender-server/docs.md)
-* [Mender client](20.Mender-client/docs.md)
+* [Mender Client](20.Mender-client/docs.md)
 * [mender-connect](21.mender-connect/docs.md)
 * [mender-configure-module](22.mender-configure-module/docs.md)
 * [mender-setup](23.mender-setup/docs.md)
@@ -18,5 +18,5 @@ shortcode-core:
 * [meta-mender](40.meta-mender/docs.md)
 * [mender-binary-delta](50.mender-binary-delta/docs.md)
 * [monitor-client](51.monitor-client/docs.md)
-* [mender-gateway](52.mender-gateway/docs.md)
+* [Mender Gateway](52.mender-gateway/docs.md)
 * [mender-ci-workflows](60.mender-ci-workflows/docs.md)

@@ -17,7 +17,7 @@ we need to perform certain configuration operations.
 ##### Prepare the devices
 Before installing the Update Module on the **target device**, you need to install and configure
 the following utilities on the device:
- * [Mender client](../../../03.Client-installation/02.Install-with-Debian-package) (version >= 3.0)
+ * [Mender Client](../../../03.Client-installation/02.Install-with-Debian-package) (version >= 3.0)
  * [`kubectl`](https://kubernetes.io/docs/tasks/tools/)
  * [`jq`](https://jqlang.github.io/jq/)
  * [`tree`](http://mama.indstate.edu/users/ice/tree/)

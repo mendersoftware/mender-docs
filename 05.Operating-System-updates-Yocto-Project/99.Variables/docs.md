@@ -703,5 +703,5 @@ Controls whether to run Mender as a systemd service. See [Modes of
 operations](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation) and [Image
 configuration](../04.Image-customization/01.Features/docs.md) for more information.
 
-<!--AUTOVERSION: "Mender client older than %"/ignore-->
-!!! For Mender client older than 4.0.0, use `pn-mender-client` instead of `pn-mender`.
+<!--AUTOVERSION: "Mender Client older than %"/ignore-->
+!!! For Mender Client older than 4.0.0, use `pn-mender-client` instead of `pn-mender`.

@@ -10,9 +10,9 @@ taxonomy:
 Unlike [Device identity attributes](../07.Identity/docs.md), Device inventory attributes
 do not need to be unique. They simply provide information about the target device.
 
-The Mender client will periodically collect inventory-related data for reporting
+The Mender Client will periodically collect inventory-related data for reporting
 to the Mender Server. Executable files, stored in a known location, will be
-invoked by the Mender client, producing the inventory data as a set of key-value
+invoked by the Mender Client, producing the inventory data as a set of key-value
 pairs.
 
 When you log in to mender server UI and navigate to the device list, among other items,

@@ -48,7 +48,7 @@ This downloads the virtual device images and starts it.
 
 ## Step 4 - Accept the device
 
-Once the client has started, the Mender client will attempt to connect to the
+Once the client has started, the Mender Client will attempt to connect to the
 server and it will appear in your Pending devices tab in the server. Go ahead
 and **Accept** the pending device in the server. After accepting the device, it
 will appear on the Device groups tab on the left of Pending.

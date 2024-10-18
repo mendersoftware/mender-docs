@@ -28,7 +28,7 @@ for which purpose can be seen below.
 
 ### Mender Client
 
-The `mender-auth` component, part of the Mender client, does not need any special configuration regarding certificates as long as the server certificate
+The `mender-auth` component, part of the Mender Client, does not need any special configuration regarding certificates as long as the server certificate
 is signed by a Certificate Authority. The client will verify trust using its system root certificates, which
 are typically provided by the `ca-certificates` package.
 

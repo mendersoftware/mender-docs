@@ -92,7 +92,7 @@ Use a colon when introducing a list or bullet list.
 A phrase following a semicolon or colon should begin with a lowercase letter,
 unless it begins with a proper noun. Example:
 
-> "Older Mender clients do not support newer versions of the Mender Artifact format; they will abort the deployment."
+> "Older versions of the Mender Client do not support newer versions of the Mender Artifact format; they will abort the deployment."
 
 ## Parentheses
 

@@ -32,7 +32,7 @@ It is fully integrated in the Role Based Access Control system of Mender and acc
 ### Encrypted connections
 
 The [mender-connect](https://github.com/mendersoftware/mender-connect), part of the Remote Terminal that is running on the device,
-obtains device token through DBus API. It is the same token that `mender-update`, part of the Mender client, is using.
+obtains device token through DBus API. It is the same token that `mender-update`, part of the Mender Client, is using.
 <!--AUTOVERSION: "https://tools.ietf.org/html/rfc6455#section-%"/ignore-->
 Remote Terminal uses [Encrypted WebSocket connections](https://tools.ietf.org/html/rfc6455#section-11.1.2) to communicate with the server.
 In general, the security impact of enabling Remote Terminal is similar to the one when enabling SSH.

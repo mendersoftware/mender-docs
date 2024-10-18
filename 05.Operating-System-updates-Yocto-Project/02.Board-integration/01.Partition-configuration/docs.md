@@ -127,7 +127,7 @@ You can override these default values in your `local.conf`. For details consult 
 
 Deploying a full rootfs image update will wipe all data previously stored on
 that partition. To make data persist across updates, applications must use the
-partition mounted on `/data`. In fact, the Mender client itself uses 
+partition mounted on `/data`. In fact, the Mender Client itself uses
 `/data/mender` to preserve data and state across updates.
 
 If you have data or configuration that you need to preserve across updates, the recommended approach is to create a symlink from where it gets written to somewhere within `/data/`. For example, if you have an application that writes to `/etc/application1`, then you can create a symlink `/etc/application1` -> `/data/application1` to ensure the data it writes is not lost during a Mender rootfs update.

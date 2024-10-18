@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-Much of the Mender client's configuration resides in `/etc/mender/mender.conf`
+Much of the Mender Client's configuration resides in `/etc/mender/mender.conf`
 on the root filesystem. This file is JSON structured and defines various
 parameters for Mender's operation.
 
@@ -41,7 +41,7 @@ If you have already built an Artifact containing the rootfs, have a look at [mod
 
 # Environment variables
 
-The following table describes the environment variables the Mender client respects:
+The following table describes the environment variables the Mender Client respects:
 
 | Environment variable   | Description                             | Default value       |
 | ---------------------- | --------------------------------------- | ------------------- |

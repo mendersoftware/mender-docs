@@ -66,7 +66,7 @@ the [Mender Consulting services to integrate your board](https://mender.io/suppo
 ### Correct clock on device
 
 Make sure that the clock is set correctly on your devices. Otherwise certificate verification will become unreliable
-and **the Mender client can likely not connect to the Mender Server**.
+and **the Mender Client can likely not connect to the Mender Server**.
 See [certificate troubleshooting](../../301.Troubleshoot/03.Mender-Client/docs.md#certificate-expired-or-not-yet-valid) for more information.
 
 
@@ -90,7 +90,7 @@ support Mender.
 
 #### Configuring the build
 
-!!! The configuration from [Mender Hub](https://hub.mender.io?target=_blank) will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation). See the [section on customizations](../05.Customize-Mender/docs.md#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
+!!! The configuration from [Mender Hub](https://hub.mender.io?target=_blank) will create a build that runs the Mender Client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation). See the [section on customizations](../05.Customize-Mender/docs.md#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
 
 The following settings will be present in the default `conf/local.conf` after running the steps from [Mender Hub](https://hub.mender.io?target=_blank). These are likely to need customization for your setup.
 
@@ -107,7 +107,7 @@ MENDER_ARTIFACT_NAME = "release-1"
 # Given your Yocto Project version, see which versions of Mender you can currently build here:
 # https://docs.mender.io/overview/compatibility#mender-client-and-yocto-project-version
 #
-# Given a Mender client version, see the corresponding version of the mender-artifact utility:
+# Given a Mender Client version, see the corresponding version of the mender-artifact utility:
 # https://docs.mender.io/overview/compatibility#mender-clientserver-and-artifact-format
 #
 # By default this will select the latest version of the tools that is backwards compatible with the
@@ -207,7 +207,7 @@ bitbake-layers add-layer ../meta-mender/meta-mender-demo
 
 #### Configuring the build
 
-!!! The configuration in `conf/local.conf` below will create a build that runs the Mender client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation). See the [section on customizations](../05.Customize-Mender/docs.md#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
+!!! The configuration in `conf/local.conf` below will create a build that runs the Mender Client in managed mode, as a `systemd` service. It is also possible to [run Mender standalone from the command-line or a custom script](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation). See the [section on customizations](../05.Customize-Mender/docs.md#disabling-mender-as-a-system-service) for steps to disable the `systemd` integration.
 
 Add these lines to the start of your `conf/local.conf`:
 
@@ -230,7 +230,7 @@ MACHINE = "<YOUR-MACHINE>"
 # Given your Yocto Project version, see which versions of Mender you can currently build here:
 # https://docs.mender.io/overview/compatibility#mender-client-and-yocto-project-version
 #
-# Given a Mender client version, see the corresponding version of the mender-artifact utility:
+# Given a Mender Client version, see the corresponding version of the mender-artifact utility:
 # https://docs.mender.io/overview/compatibility#mender-clientserver-and-artifact-format
 #
 # By default this will select the latest version of the tools that is backwards compatible with the

@@ -44,7 +44,7 @@ There are two types of the state scripts: root filesystem and Artifact. The root
 for those scripts is `/etc/mender/scripts`.
 The Artifact scripts are part of the Artifact and are delivered to the Client inside the Artifact as `--script` arguments to `mender-artifact`. 
 All the Artifact scripts are prefixed with `Artifact`.
-Mender client will extract and execute the Artifact state scripts from the `scripts` subdirectory under MENDER_DATASTORE_DIR (default: /var/lib/mender).
+Mender Client will extract and execute the Artifact state scripts from the `scripts` subdirectory under MENDER_DATASTORE_DIR (default: /var/lib/mender).
 
 The reason for having both root filesystem and Artifact scripts is related to the fact that some scripts must run before the Client downloads the Artifact and as such can not be delivered with the Artifact. Those scripts are `Idle`, `Sync` and `Download`. Therefore it is important to remember that when deploying a new update, all scripts will be run from the currently running root filesystem until `ArtifactInstall`, at which point the scripts from the new Artifact will take over.
 
@@ -97,7 +97,7 @@ If an error code is returned in any of [the scripts that ignore errors](#transit
 
 ## Script timeout
 
-Each script has a maximum execution time defined by [StateScriptTimeoutSeconds](../../03.Client-installation/07.Configuration/50.Configuration-options/docs.md#statescripttimeoutseconds). If a script exceeds this running time, its process group will be killed and the Mender client will treat the script and the update as failed.
+Each script has a maximum execution time defined by [StateScriptTimeoutSeconds](../../03.Client-installation/07.Configuration/50.Configuration-options/docs.md#statescripttimeoutseconds). If a script exceeds this running time, its process group will be killed and the Mender Client will treat the script and the update as failed.
 
 ## Power loss
 
@@ -125,7 +125,7 @@ anything above this volume will be truncated.
 Mender users will probably come up with a lot of interesting use cases for state scripts, and we will cover some well-known ones below for inspiration.
 
 <!--AUTOVERSION: "mender/tree/%"/ignore-->
-You can find code examples in the [Mender client source repository](https://github.com/mendersoftware/mender/tree/master/examples/state-scripts?target=_blank) and if you have implemented an interesting use-case we encourage you to create a pull-request so all of the community can benefit.
+You can find code examples in the [Mender Client source repository](https://github.com/mendersoftware/mender/tree/master/examples/state-scripts?target=_blank) and if you have implemented an interesting use-case we encourage you to create a pull-request so all of the community can benefit.
 
 #### Application data migration
 In this case, application data like a user profile is stored in an SQLite database and a new column need to be added before starting the new version of the application. This can be achieved by adding a state script to `ArtifactInstall_Leave` (that would run after writing the new rootfs, but before rebooting). This script can then do the necessary migrations on the data partition before the new version of the application is brought up after the reboot.
@@ -144,7 +144,7 @@ Make sure to adjust [StateScriptRetryTimeoutSeconds](../../03.Client-installatio
 <!-- Source is at: https://docs.google.com/drawings/d/19t5Up9kDnjRuOnIa5YyMzbJIIi42q7TnV1zBgj7j2Dk/edit -->
 ![End user update confirmation state scripts](mender-state-machine-user-confirmation.png)
 
-!! Maximum wait time between `Sync` and `Download` state is 24 hours, after this period the update will be marked as failed by the Mender client. This happens because the Mender Artifact download link is generated in `Sync` state and it has a expiration time (24 hours).
+!! Maximum wait time between `Sync` and `Download` state is 24 hours, after this period the update will be marked as failed by the Mender Client. This happens because the Mender Artifact download link is generated in `Sync` state and it has a expiration time (24 hours).
 
 
 #### Custom sanity checks after the update is installed

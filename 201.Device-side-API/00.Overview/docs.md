@@ -4,9 +4,9 @@ taxonomy:
     category: docs
 ---
 
-This section describes the Device-side API for the Mender clients. The Device-side API constitutes
-the only public API of the Mender client. The Device-side API is a thin layer which receives messages
-over D-Bus, processes them, transmits them to the Mender client, receives the results from
+This section describes the Device-side API for the Mender Client. The Device-side API constitutes
+the only public API of the Mender Client. The Device-side API is a thin layer which receives messages
+over D-Bus, processes them, transmits them to the Mender Client, receives the results from
 the client, and transmits a response on the D-Bus.
 
 You can find the D-Bus specification and background information on how it works [here](https://www.freedesktop.org/wiki/Software/dbus/).
@@ -32,7 +32,7 @@ dbus-monitor --system "type='signal',\
 
 ### Calling a D-Bus method
 
-The easiest means to call a method exposed on D-Bus is to use the `dbus-send` tool. This is by default installed on most devices as part of the `dbus` package on Ubuntu, and `dbus-tools` on Yocto-based Linux distributions. The command is described in depth [here](https://dbus.freedesktop.org/doc/dbus-send.1.html), so we will only cover the parameters needed for accessing the Mender client API.
+The easiest means to call a method exposed on D-Bus is to use the `dbus-send` tool. This is by default installed on most devices as part of the `dbus` package on Ubuntu, and `dbus-tools` on Yocto-based Linux distributions. The command is described in depth [here](https://dbus.freedesktop.org/doc/dbus-send.1.html), so we will only cover the parameters needed for accessing the Mender Client API.
 
 A generic method invocation looks like this:
 ```

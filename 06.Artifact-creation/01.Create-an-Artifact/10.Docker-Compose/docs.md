@@ -21,7 +21,7 @@ deployment.
 ##### Prepare the devices
 Before installing the Update Module on the **target device**, you need to ensure that the following
 dependencies are installed on the device:
- * [Mender client](../../../03.Client-installation/02.Install-with-Debian-package) (version >= 3.0)
+ * [Mender Client](../../../03.Client-installation/02.Install-with-Debian-package) (version >= 3.0)
  * [Docker Engine](https://docs.docker.com/engine/install/?target=_blank)
  * [Docker Compose](https://docs.docker.com/compose/install/?target=_blank) (version >= 2.0)
  * [`jq`](https://jqlang.github.io/jq/)
