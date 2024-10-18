@@ -32,9 +32,12 @@ solution that best fits your needs.
 ! the version 4.1.7 of the MinIO Operator. SeaweedFS is now the new
 ! default storage backend for the full Open Source setup from the Helm Chart
 ! version 6.x and later. If you whish to continue using MinIO, please consult
-! the [official MinIO documentation](https://docs.min.io/) for further details.
+! the [official MinIO documentation](https://docs.min.io/) for further
+! information.
+! If you wish to switch to SeaweedFS, we provide a short
+! [migration guide](#migration-from-minio) after installing SeaweedFS.
 
-!! Important: The SeaweedFS setup is a community contribution and is not
+!! Important: The SeaweedFS setup is a community project and is not
 !! recommended for production use. The following storage backends are
 !! recommended for production: AWS S3, Cloudflare R2,
 !! Google Cloud Storage,and Azure Blob Storage.
@@ -98,16 +101,17 @@ migrate to SeaweedFS by following these steps:
 export AWS_ACCESS_KEY_ID="<your minio access key>"
 export AWS_SECRET_ACCESS_KEY="<your minio secret key>"
 
-mkdir -p /tmp/mender-artifact-storage
+mkdir mender-artifact-storage
+# Tip: make sure you have enough disk space to store the data
 
-aws s3 cp --recursive --endpoint-url=<your minio endpoint> s3://mender-artifact-storage/ /tmp/mender-artifact-storage/
+aws s3 cp --recursive --endpoint-url=<your minio endpoint> s3://mender-artifact-storage/ ./mender-artifact-storage/
 
 # import data to SeaweedFS
 export AWS_ACCESS_KEY_ID=$(kubectl get secret seaweedfs-s3-secret -o jsonpath='{.data.admin_access_key_id}' |base64 -d)
 export AWS_SECRET_ACCESS_KEY=$(kubectl  get secret seaweedfs-s3-secret -o jsonpath='{.data.admin_secret_access_key}' |base64 -d)
 
 kubectl port-forward svc/seaweedfs-s3 8333:8333
-aws s3 cp --recursive /tmp/mender-artifact-storage/ --endpoint-url=http://localhost:8333 s3://mender-artifact-storage/
+aws s3 cp --recursive ./mender-artifact-storage/ --endpoint-url=http://localhost:8333 s3://mender-artifact-storage/
 ```
 
 [/ui-tab]
@@ -186,17 +190,6 @@ global:
     CONTAINER_NAME: "<name-of-your-container>"
 ```
 
-stead of a connection string, you can also specify the following parameters:
-
-```yaml
-global:
-  storage: "azure"
-  azure:
-    AUTH_SHARED_KEY_ACCOUNT_NAME: "<account-name>"
-    AUTH_SHARED_KEY_ACCOUNT_KEY: "<account-key>"
-    CONTAINER_NAME: "<name-of-your-container>"
-```
-
 [/ui-tab]
 [ui-tab title="Cloudflare R2"]
 In this guide, we provide an example of how to use Cloudflare
@@ -212,28 +205,6 @@ export AWS_SECRET_ACCESS_KEY="replace-with-your-secret-access-key"
 export AWS_REGION="replace-with-your-aws-region"
 export STORAGE_BUCKET="replace-with-your-bucket-name"
 export STORAGE_ENDPOINT="https://replace-with-your-cloudflare-account-id.r2.cloudflarestorage.com"
-```
-
-As a reference, here's your Helm Chart customization to make
-Mender use Azure Blob Storage as the storage backend:
-
-```yaml
-global:
-  storage: "azure"
-  azure:
-    AUTH_CONNECTION_STRING: "BlobEndpoint=https://<name-of-your-storage>.blob.core.windows.net;SharedAccessSignature=..."
-    CONTAINER_NAME: "<name-of-your-container>"
-```
-
-stead of a connection string, you can also specify the following parameters:
-
-```yaml
-global:
-  storage: "azure"
-  azure:
-    AUTH_SHARED_KEY_ACCOUNT_NAME: "<account-name>"
-    AUTH_SHARED_KEY_ACCOUNT_KEY: "<account-key>"
-    CONTAINER_NAME: "<name-of-your-container>"
 ```
 
 [/ui-tab]
