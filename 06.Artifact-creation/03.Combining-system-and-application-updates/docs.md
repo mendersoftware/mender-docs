@@ -137,31 +137,30 @@ mender-artifact read myapp1-1.1.mender
 ```
 ```
 Reading Artifact...
-........................................................................ - 100 %
-Mender artifact:
+.............................................................. - 100 %
+Mender Artifact:
   Name: myapp1-1.1
   Format: mender
   Version: 3
   Signature: no signature
-  Compatible devices: '[raspberrypi4]'
-  Provides group:
+  Compatible devices: [raspberrypi4]
+  Provides group: 
   Depends on one of artifact(s): []
   Depends on one of group(s): []
-  State scripts:
+  State scripts: []
 
 Updates:
-    0:
-    Type:   myapps
+  - Type: myapps
     Provides:
-	rootfs-image.myapp1.version: 1.1
-    Depends: Nothing
-    Clears Provides: ["rootfs-image.myapp1.*"]
-    Metadata: Nothing
+      rootfs-image.myapp1.version: 1.1
+    Depends: {}
+    Clears Provides: [rootfs-image.myapp1.*]
+    Metadata: {}
     Files:
-      name:     myapp1-1.1.tar.gz
-      size:     111
-      modified: 2023-01-02 17:12:20 +0100 CET
-      checksum: fa2efef86c524ede9aefb1841682bca2bb36b346b68e481c8c88c108ea2eed90
+      - checksum: fa2efef86c524ede9aefb1841682bca2bb36b346b68e481c8c88c108ea2eed90
+        modified: 2023-01-02 17:12:20 +0100 CET
+        name: myapp1-1.1.tar.gz
+        size: 111
 ```
 
 As you can see, the update will provide a new version for `myapp1`, which will overwrite the value previously set by the operating system Artifact.
@@ -205,35 +204,34 @@ mender-artifact read rootfs-1.1.mender
 ```
 ```
 Reading Artifact...
-........................................................................ - 100 %
-Mender artifact:
+.............................................................. - 100 %
+Mender Artifact:
   Name: rootfs-1.1
   Format: mender
   Version: 3
   Signature: no signature
-  Compatible devices: '[raspberrypi4]'
-  Provides group:
+  Compatible devices: [raspberrypi4]
+  Provides group: 
   Depends on one of artifact(s): []
   Depends on one of group(s): []
-  State scripts:
+  State scripts: []
 
 Updates:
-    0:
-    Type:   rootfs-image
+  - Type: rootfs-image
     Provides:
-	rootfs-image.checksum: 584fc6fdf5f94c1a53c1147e620083f797d01cfed48c5e7b5131239b35363568
-	rootfs-image.feature1: true
-	rootfs-image.myapp1.version: 1.1
-	rootfs-image.myapp2.version: 1.1
-	rootfs-image.version: 1.1
-    Depends: Nothing
-    Clears Provides: ["artifact_group", "rootfs_image_checksum", "rootfs-image.*"]
-    Metadata: Nothing
+      rootfs-image.checksum: 584fc6fdf5f94c1a53c1147e620083f797d01cfed48c5e7b5131239b35363568
+      rootfs-image.feature1: true
+      rootfs-image.myapp1.version: 1.1
+      rootfs-image.myapp2.version: 1.1
+      rootfs-image.version: 1.1
+    Depends: {}
+    Clears Provides: [artifact_group, rootfs_image_checksum, rootfs-image.*]
+    Metadata: {}
     Files:
-      name:     rootfs-1.1.ext4
-      size:     1048576
-      modified: 2023-01-02 17:20:03 +0100 CET
-      checksum: 584fc6fdf5f94c1a53c1147e620083f797d01cfed48c5e7b5131239b35363568
+      - checksum: 584fc6fdf5f94c1a53c1147e620083f797d01cfed48c5e7b5131239b35363568
+        modified: 2023-01-02 17:20:03 +0100 CET
+        name: rootfs-1.1.ext4
+        size: 1048576
 ```
 
 Please note the `rootfs-image.feature1` provides listed in the output above.
@@ -260,32 +258,31 @@ mender-artifact read myapp1-1.2.mender
 ```
 ```
 Reading Artifact...
-........................................................................ - 100 %
-Mender artifact:
+.............................................................. - 100 %
+Mender Artifact:
   Name: myapp1-1.2
   Format: mender
   Version: 3
   Signature: no signature
-  Compatible devices: '[raspberrypi4]'
-  Provides group:
+  Compatible devices: [raspberrypi4]
+  Provides group: 
   Depends on one of artifact(s): []
   Depends on one of group(s): []
-  State scripts:
+  State scripts: []
 
 Updates:
-    0:
-    Type:   myapps
+  - Type: myapps
     Provides:
-	rootfs-image.myapp1.version: 1.2
+      rootfs-image.myapp1.version: 1.2
     Depends:
-	rootfs-image.feature1: true
-    Clears Provides: ["rootfs-image.myapp1.*"]
-    Metadata: Nothing
+      rootfs-image.feature1: true
+    Clears Provides: [rootfs-image.myapp1.*]
+    Metadata: {}
     Files:
-      name:     myapp1-1.2.tar.gz
-      size:     111
-      modified: 2023-01-02 17:22:12 +0100 CET
-      checksum: fa2efef86c524ede9aefb1841682bca2bb36b346b68e481c8c88c108ea2eed90
+      - checksum: fa2efef86c524ede9aefb1841682bca2bb36b346b68e481c8c88c108ea2eed90
+        modified: 2023-01-02 17:22:12 +0100 CET
+        name: myapp1-1.2.tar.gz
+        size: 111
 ```
 
 The output of the command above lists the dependency, and it ensures the Client will reject the update if the device is not running an operating system that is compatible with the new version of the application.
@@ -330,31 +327,30 @@ mender-artifact read myapp1-1.1.mender
 ```
 ```
 Reading Artifact...
-........................................................................ - 100 %
-Mender artifact:
+.............................................................. - 100 %
+Mender Artifact:
   Name: myapp1-1.1
   Format: mender
   Version: 3
   Signature: no signature
-  Compatible devices: '[raspberrypi4]'
-  Provides group:
+  Compatible devices: [raspberrypi4]
+  Provides group: 
   Depends on one of artifact(s): []
   Depends on one of group(s): []
-  State scripts:
+  State scripts: []
 
 Updates:
-    0:
-    Type:   myapps
+  - Type: myapps
     Provides:
-	data-partition.myapp1.version: 1.1
-    Depends: Nothing
-    Clears Provides: ["data-partition.myapp1.*"]
-    Metadata: Nothing
+      data-partition.myapp1.version: 1.1
+    Depends: {}
+    Clears Provides: [data-partition.myapp1.*]
+    Metadata: {}
     Files:
-      name:     myapp1-1.1.tar.gz
-      size:     111
-      modified: 2023-01-02 17:12:20 +0100 CET
-      checksum: fa2efef86c524ede9aefb1841682bca2bb36b346b68e481c8c88c108ea2eed90
+      - checksum: fa2efef86c524ede9aefb1841682bca2bb36b346b68e481c8c88c108ea2eed90
+        modified: 2023-01-02 17:12:20 +0100 CET
+        name: myapp1-1.1.tar.gz
+        size: 111
 ```
 
 As you can see, in contrast with what we verified in the previous section, the versioning key uses the `data-partition` prefix. Because the Operating System update Artifacts clears provides for `rootfs-image.*`, this versioning information will be preserved by the Mender Client on Operating System updates, together with the file stored in the data partition.
