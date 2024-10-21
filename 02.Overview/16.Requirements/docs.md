@@ -44,10 +44,11 @@ Permit access to the following URLs:
 * `https://s3.amazonaws.com/<my-example-artifact-storage>` - Amazon S3 Path-style request
 * `https://<my-example-artifact-storage>.s3.amazonaws.com` - Amazon S3 Virtual-hosted-style request
 [/ui-tab]
-[ui-tab title="Minio"]
+[ui-tab title="Storage Proxy"]
 Permit access to your 
-Minio URL defined in [Minio Setup Section](../../07.Server-installation/04.Production-installation-with-kubernetes/02.Minio/docs.md)
-* `https://artifacts.example.com`
+Storage proxy URL defined in [Storage Setup Section](../../07.Server-installation/04.Production-installation-with-kubernetes/02.Storage/docs.md)
+* `https://artifacts.example.com` or simply:
+* `https://mender.example.com`
 [/ui-tab]
 [/ui-tabs]
 
