@@ -1,11 +1,45 @@
-## Preparing the QEMU
+---
+title: Examples
+taxonomy:
+    category: docs
+---
 
-The starting point for successfully completing the examples in this README is a clean `orch-install` directory ready.
+# Examples
+
+This section will explain how the Orchestrator works through copy-pastable working examples.
 
 REQUIREMENTS:
-* you can run mender-artifact on your host
+* you can run Python on your host
+* you can run [mender-artifact](../../../10.Downloads/docs.md#mender-artifact) on your host
 * you can run a Docker image on your host
 * you have a Hosted Mender tenant and can get a token
+
+
+## Prepare the environment
+
+```bash
+mkdir orch-install
+ORCH_EVAL_DIR=$(realpath orch-install)
+```
+
+Clone the repository which contains the support files and the demo:
+
+```bash
+git clone https://github.com/mendersoftware/mender-orchestrator-update-interfaces
+```
+
+Copy the pregenerated demo env and the interface:
+
+``` bash
+cp -r mender-orchestrator-update-interfaces/demo/pregenerated_env/* orch-install
+cp -r mender-orchestrator-update-interfaces/interfaces/v1/rootfs-image  \
+      $ORCH_EVAL_DIR/share/mender-update-orchestrator/update-interfaces/v1
+```
+
+
+## Preparing the QEMU host
+
+The starting point for successfully completing the examples in this README is a clean `orch-install` directory ready.
 
 ### Manual installation on QEMU
 
@@ -15,10 +49,14 @@ Run the command below in a separate terminal on the host.
 The command will run a virtual device and consume the terminal.
 You have to set the tenant token from your tenant.
 
+<!--AUTOVERSION: "mendersoftware/mender-client-qemu:mender-%"/integration-->
 ```bash
 TENANT_TOKEN='<FILL WITH TOKEN>'
 
-docker run -it -p 85:85 -e SERVER_URL='https://hosted.mender.io' -e TENANT_TOKEN=$TENANT_TOKEN --pull=always mendersoftware/mender-client-qemu:resized-for-demo
+# Change this to eu.hosted.mender.io if you're in that zone.
+SERVER_URL=https://hosted.mender.io
+
+docker run -it -p 85:85 -e SERVER_URL=$SERVER_URL -e TENANT_TOKEN=$TENANT_TOKEN mendersoftware/mender-client-qemu:mender-master
 ```
 
 Once the logging prompt shows, you can log in.
@@ -28,10 +66,11 @@ The username is root.
 Once the device boots it will be visible in Hosted Mender as pending.
 Accept it.
 
-With the previous terminal consumed by the virtual device, execute these commands on a different terminal on the host:
+With the previous terminal consumed by the virtual device, execute these commands on a different terminal on the **host**:
 
+<!--AUTOVERSION: "mendersoftware/mender-client-qemu:mender-%"/integration-->
 ``` bash
-CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aqf "ancestor=mendersoftware/mender-client-qemu:resized-for-demo"))
+CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aqf "ancestor=mendersoftware/mender-client-qemu:mender-master"))
 # If you get multiple IPs use the alternative
 # where you need to manually get the container id first
 # docker ps
@@ -41,7 +80,7 @@ CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddres
 scp -r -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P 8822 orch-install root@$CONTAINER_IP:
 ```
 
-On the device:
+On the **device**:
 
 
 ```bash
@@ -54,15 +93,6 @@ orch-install/manual_install.sh
 # Test if the cli is executing correctly
 mender-update-orchestrator -h
 ```
-
-``` bash
-# Do a mock install
-mender-update-orchestrator install $MOCK_DIR/system-core-v1/manifest.yaml
-
-# Check the state of the system after the install
-mender-update-orchestrator show-provides
-```
-
 
 ## Examples with mock interfaces and devices
 
@@ -169,15 +199,33 @@ EOF
 ```
 
 We're updating the device back to v1 again using the split manifest approach.
-When invoking the mender comment, pass the bottom Manifest to the cli as well.
-
+Configure the orchestrator to use the split manifest:
 
 ```bash
-mender-update-orchestrator --manifest-components $MOCK_DIR/system-core-v1.bottom.manifest.yaml install $MOCK_DIR/system-core-v1-top-only/manifest.yaml
-mender-update-orchestrator --manifest-components $MOCK_DIR/system-core-v1.bottom.manifest.yaml show-provides
+mkdir -p /etc/mender-update-orchestrator
+cat > /etc/mender-update-orchestrator/mender-update-orchestrator.conf <<EOF
+{
+  "ManifestComponents": "$MOCK_DIR/system-core-v1.bottom.manifest.yaml"
+}
+EOF
 ```
 
-The Orchestrator will merges the two manifests and updates the system as a whole.
+Now update using the split manifest configuration:
+
+```bash
+mender-update-orchestrator install $MOCK_DIR/system-core-v1-top-only/manifest.yaml
+mender-update-orchestrator show-provides
+```
+
+The Orchestrator will merge the two manifests and update the system as a whole.
+
+Remove the configuration and reinstall the original manifest to return the setup to using one
+manifest only:
+
+```bash
+rm -f /etc/mender-update-orchestrator/mender-update-orchestrator.conf
+mender-update-orchestrator  install $MOCK_DIR/system-core-v1/manifest.yaml
+```
 
 
 ## Examples with real gateway updates
@@ -191,7 +239,7 @@ The cases below still use mock devices for the peripheral ROTS devices, but the 
 
 The real rootfs update artifacts will be created from runtime using the mender-artifact tool.
 
-On the host.
+On the **host**.
 
 ``` bash
 USER="root"
@@ -232,11 +280,11 @@ Upload the `gateway-v4.mender` to Hosted Mender to the tenant the device is acce
 ### Example: Standard system update - real gateway - offline
 
 
-On the device.
+On the **device**.
 
 ``` bash
 MOCK_DIR=/data/mender-update-orchestrator/mock_env
-mender-update-orchestrator --log-level debug  install $MOCK_DIR/system-core-v3/manifest.yaml
+mender-update-orchestrator install $MOCK_DIR/system-core-v3/manifest.yaml
 ```
 
 The Orchestrator installs the rootfs for the gateway and reboots.
@@ -262,7 +310,7 @@ The orchestrator will pull the gateway artifact form Hosted Mender using the aut
 
 ```bash
 MOCK_DIR=/data/mender-update-orchestrator/mock_env
-mender-update-orchestrator --log-level debug  install  $MOCK_DIR/system-core-v4/manifest.yaml
+mender-update-orchestrator install  $MOCK_DIR/system-core-v4/manifest.yaml
 # Orchestrator installs the rootfs and reboots
 ```
 Log in into the new system

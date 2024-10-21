@@ -1,11 +1,16 @@
-# Update Orchestrator
+---
+title: Orchestrator
+taxonomy:
+    category: docs
+---
+
+# Orchestrator
 
 The Update Orchestrator is the software responsible for updating the devices in a system.
 
 It is responsible for inspecting the system’s current state, such as the software versions running on the devices. It can also read the system's desired state from a configuration file, the Update Manifest, and apply the changes to the different Devices to reach the state described in the Manifest. If this is not possible, the Orchestrator may roll back to the previously known working state, in other words, the previous version of the Update Manifest.
 
-
-Skip concepts, give me [working examples](#installing-from-source).
+If you want to skip the introduction, head over to the [Installation section](01.Installation/docs.md) and then to [Examples](02.Examples/docs.md) to try it in practice.
 
 ## Concepts
 
@@ -146,6 +151,7 @@ components:
 
 An update interface is a command line application that serves as a translator between the updatable component and the Orchestrator
 
+<!--AUTOVERSION: "mendersoftware/mender/blob/%"/mender-->
 The update interface protocol finds inspiration in the update [modules protocol](https://github.com/mendersoftware/mender/blob/master/Documentation/update-modules-v3-file-api.md) in such that the Orchestrator acts as a state machine runner that invokes the update interface.
 
 The update interface has an expanded set of arguments compared to an update module.
@@ -159,6 +165,7 @@ For all states, the arguments look like this:
 
 `State` - the current state in the state machine as defined by the Orchestrator
 
+<!--AUTOVERSION: "mendersoftware/mender/blob/%"/mender-->
 `Work Dir` - the working directory for the interface. It follows the same structure and guarantees defined for the [Update modules protocol](https://github.com/mendersoftware/mender/blob/master/Documentation/update-modules-v3-file-api.md#file-api).
 When using packed Artifacts and "files tree", the Artifact will be at the path `files/artifact.mender`.
 
@@ -195,56 +202,3 @@ For the default case, the Mender client (in daemon mode, communicating with the 
 It is also possible to just pass a Manifest file without the artifacts.
 In that case, nothing is 'bundled', and the Manifest is the sole input.
 The Orchestrator pulls the needed artifacts from the server on its own.
-
-## Known limitations
-
-When provided through a bundle, the artifacts need to be available to the Orchestrator in complete content as a .mender file.
-In the worst-case scenario, this means the device needs to have enough storage to download its own compressed rootfs update first.
-For comparison, in the Mender client implementation, the content is streamed into the inactive partition.
-
-
-## Persistent data store
-
-The persistent data store is the location where the Orchestrator stores the current active Manifest and artifacts it might have additionally downloaded.
-
-The recommended setup is to have the data store of `mender-update-orchestrator` in a persistent separate partition, `/data` in the commands below, and use a symlink from `/var/lib`.
-
-
-Create the directory and the symlink:
-
-```
-mkdir -p /data/mender-update-orchestrator
-ln -s /data/mender-update-orchestrator /var/lib/mender-update-orchestrator
-```
-
-
-# Examples
-
-All the commands expect you to be in the root directory of the Orchestrator folder (`mender-update-orchestrator*`).
-
-This section will explain how the Orchestrator works through copy-pastable working examples.
-The code can be executed on a machine that can run Python.
-
-
-## Prepare the environment
-
-Copy the pregenerated demo env:
-
-``` bash
-cp -r demo/pregenerated_env/* orch-install
-```
-
-Copy the real interface
-
-```bash
-git clone https://github.com/mendersoftware/mender-orchestrator-update-interfaces
-cp -r mender-orchestrator-update-interfaces/interfaces/v1/rootfs-image  \
-      $ORCH_EVAL_DIR/share/mender-update-orchestrator/update-interfaces/v1
-```
-
-
-## Examples
-
-For examples to run please look the README-examples.md
-That's the document that is also shared with externals during the beta stage.
-
