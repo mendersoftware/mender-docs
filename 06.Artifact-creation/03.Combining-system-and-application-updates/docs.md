@@ -83,34 +83,33 @@ mender-artifact read rootfs-1.0.mender
 ```
 ```
 Reading Artifact...
-........................................................................ - 100 %
-Mender artifact:
+.............................................................. - 100 %
+Mender Artifact:
   Name: rootfs-1.0
   Format: mender
   Version: 3
   Signature: no signature
-  Compatible devices: '[raspberrypi4]'
-  Provides group:
+  Compatible devices: [raspberrypi4]
+  Provides group: 
   Depends on one of artifact(s): []
   Depends on one of group(s): []
-  State scripts:
+  State scripts: []
 
 Updates:
-    0:
-    Type:   rootfs-image
+  - Type: rootfs-image
     Provides:
-	rootfs-image.checksum: 584fc6fdf5f94c1a53c1147e620083f797d01cfed48c5e7b5131239b35363568
-	rootfs-image.myapp1.version: 1.0
-	rootfs-image.myapp2.version: 1.0
-	rootfs-image.version: 1.0
-    Depends: Nothing
-    Clears Provides: ["artifact_group", "rootfs_image_checksum", "rootfs-image.*"]
-    Metadata: Nothing
+      rootfs-image.checksum: 584fc6fdf5f94c1a53c1147e620083f797d01cfed48c5e7b5131239b35363568
+      rootfs-image.myapp1.version: 1.0
+      rootfs-image.myapp2.version: 1.0
+      rootfs-image.version: 1.0
+    Depends: {}
+    Clears Provides: [artifact_group, rootfs_image_checksum, rootfs-image.*]
+    Metadata: {}
     Files:
-      name:     rootfs-1.0.ext4
-      size:     1048576
-      modified: 2023-01-02 17:08:29 +0100 CET
-      checksum: 584fc6fdf5f94c1a53c1147e620083f797d01cfed48c5e7b5131239b35363568
+      - checksum: 584fc6fdf5f94c1a53c1147e620083f797d01cfed48c5e7b5131239b35363568
+        modified: 2023-01-02 17:08:29 +0100 CET
+        name: rootfs-1.0.ext4
+        size: 1048576
 ```
 
 Please note that the rootfs Artifact provides the rootfs-image version and the versions for the two applications included in the operating system, `myapp1` and `myapp2`.
