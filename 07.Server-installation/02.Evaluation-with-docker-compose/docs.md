@@ -23,14 +23,9 @@ before you move on to
 
 The demo environment requires the following components to be available
 on your system:
-
-* [Docker Engine](https://docs.docker.com/engine/install?target=_blank)
-* [Docker Compose](https://docs.docker.com/compose/install?target=_blank)
-* Install the following utilities, example for Ubuntu:
-
-    ```bash
-    sudo apt install gawk curl bsdmainutils jq git
-    ```
+<!--AUTOVERSION: "target=_blank) >= v%"/ignore -->
+* [Docker Engine](https://docs.docker.com/engine/install?target=_blank) >= v1.20
+* [Docker Compose](https://docs.docker.com/compose/install?target=_blank) >= v2.23.1
 
 In addition, add the following lines to `/etc/hosts`:
 
@@ -46,70 +41,37 @@ In addition, add the following lines to `/etc/hosts`:
 
 ### Starting the demo
 
-Clone the [integration](https://github.com/mendersoftware/integration?target=_blank)
+Clone the [mender-server](https://github.com/mendersoftware/mender-server?target=_blank)
 repository which contains everything that is need to start the demo server:
-<!--AUTOVERSION: "-b %"/integration "integration-%"/integration -->
 ```bash
-git clone -b master https://github.com/mendersoftware/integration.git integration-master
+git clone -b main https://github.com/mendersoftware/mender-server.git mender-server
 ```
 
-<!--AUTOVERSION: "use `-b %`"/ignore-->
-!!! If you want to use a pre-release version of the backend, use `-b master` in
-!!! the command above.
-
 Change directory to the cloned repository:
-<!--AUTOVERSION: "integration-%"/integration -->
 ```bash
- cd integration-master
+ cd mender-server
 ```
 
 Start the demo server:
 
 ```bash
-./demo up
+docker compose up -d
 ```
-
-After a short while, depending on your network connection speed, you should see
-similar output to the following:
-
->```bash
->Starting the Mender demo environment...
->Creating network "integrationmaster_mender" with the default driver
->Creating integrationmaster_mender-reporting-indexer_1 ...
->Creating integrationmaster_mender-gui_1               ... done
->Creating integrationmaster_minio_1                    ... done
->Creating integrationmaster_mender-mongo_1             ... done
->Creating integrationmaster_mender-opensearch_1 ... done
->Creating integrationmaster_mender-reporting-indexer_1      ... done
->Creating integrationmaster_mender-reporting_1              ... done
->Creating integrationmaster_mender-deviceconfig_1           ... done
->Creating integrationmaster_mender-iot-manager_1            ... done
->Creating integrationmaster_mender-inventory_1              ... done
->Creating integrationmaster_mender-useradm_1                ... done
->Creating integrationmaster_mender-deviceconnect_1          ... done
->Creating integrationmaster_mender-workflows-server_1       ... done
->Creating integrationmaster_mender-create-artifact-worker_1 ... done
->Creating integrationmaster_mender-workflows-worker_1       ... done
->Creating integrationmaster_mender-device-auth_1            ... done
->Creating integrationmaster_mender-api-gateway_1            ... done
->Creating integrationmaster_mender-deployments_1            ... done
->Waiting for services to become ready...
->Creating a new user...
->****************************************
->
->Username: mender-demo@example.com
->Login password: xxxxxxxxxxxx
->
->****************************************
->```
 
 !! Please note that Docker Hub enforced limits on pulls originating
 !! from anonymous users to 100 per 6 hours (see: [Docker pricing](https://www.docker.com/pricing)).
 !! This means that, for reasons completely independent from Mender,
 !! the above step may fail and you may have to retry after some time.
 
-The script created a demo user, and you can login to the Mender UI by visiting
-[https://localhost](https://localhost?target=_blank).
+Once the server is running, you can go ahead and create the admin user:
+
+```bash
+MENDER_USERNAME=admin@docker.mender.io
+MENDER_PASSWORD=PleaseReplaceWithASecurePassword
+docker compose run --name create-user useradm create-user --username "$MENDER_USERNAME" --password "$MENDER_PASSWORD"
+```
+
+Open the browser and visit [https://localhost](https://localhost) to log in using the credentials configured in the above snippet.
 
 ! You might get a warning from your browser that the site is not secure.
 ! This is because we use self-signed certificates in the demo environment and
@@ -117,7 +79,10 @@ The script created a demo user, and you can login to the Mender UI by visiting
 
 ### Stopping the demo
 
-To stop the demo use Ctrl+C.
+To stop the demo server, from the `mender-server` directory, run:
+```bash
+docker compose stop
+```
 This will only stop the containers, but will not remove them.
 To remove containers use commands from the section below.
 
@@ -127,18 +92,9 @@ To remove containers use commands from the section below.
 !! commands below, which includes devices you have authorized, software
 !! uploaded, logs, deployment reports and any other changes you have made.
 
-<!--AUTOVERSION: "integration-%"/integration -->
 If you want to remove all state in your Mender demo environment and start clean,
-run the following commands in the `integration-master` directory:
+run the following commands in the `mender-server` directory:
 
 ```bash
-./demo stop
-```
-
-```bash
-./demo rm -v
-```
-
-```bash
-./demo up
+docker compose down -v --remove-orphans
 ```
