@@ -4,19 +4,20 @@ taxonomy:
     category: docs
 ---
 
-This guide will take you through the process of migrating from the deprecated `mtls-ambassador` to Mender Gateway.
-Mender Gateway is a drop-in replacement of the `mtls-ambassador`.
+This guide will take you through the process of migrating from the deprecated Mender mTLS Ambassador to Mender Gateway which is drop-in replacement.
 
 ## Prerequisites
-1. You have a running `mtls-ambassador` deployment.
-2. You have the required key and certificate files for the `mtls-ambassador`.
-3. You have a DNS name pointing to the `mtls-ambassador` service.
+1. You have a running `mender-mtls` deployment based on the Ambassador.
+2. You have the required key and certificate files previously used for the ambassador.
+3. You have a DNS name pointing to the `mender-mtls` service.
 
 ## Migration steps
 ### 1. Install Mender Gateway
 Follow the [Production installation with Kubernetes guide](../03.Production-installation-with-kubernetes/docs.md) to install the Mender Gateway with mTLS support.
 
-!!!!! Make sure to use the same keys and certificates that you used for the `mtls-ambassador` deployment.
+The new kubernetes deployment will be named `mender-mtls-gateway`.
+
+!!!!! Make sure to use the same keys and certificates that you used for the `mender-mtls` deployment.
 
 ### 2. Verify the Load Balancer is deployed
 Depending on your cloud provider, you should have a L4 Load Balancer deployed in front of the Mender Gateway service.
@@ -29,5 +30,5 @@ Update your DNS record to point to the new Load Balancer IP address or DNS name 
 Verify that your devices are still able to connect to the Mender Server using the new Load Balancer and the Mender Gateway service.
 
 ### 5. Cleanup
-You can now cleanup the old `mtls-ambassador` deployment, service, and Load Balancer resources.
+You can now cleanup the old `mender-mtls` deployment, service, and Load Balancer resources.
 
