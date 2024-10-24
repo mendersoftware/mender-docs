@@ -40,20 +40,23 @@ To start the edge proxy, run the following command:
 
 ```bash
 docker run \
-  -p $MENDER_GATEWAY_PORT:$MENDER_GATEWAY_PORT \
+  -p 8443:8443 \
+  -p 8080:8080 \
   --name mender-gateway \
   -e HTTPS_ENABLED="true" \
-  -e HTTPS_LISTEN=":$MENDER_GATEWAY_PORT" \
-  -e HTTPS_SERVER_CERTIFICATE="/etc/mender/certs/server/server.crt" \
-  -e HTTPS_SERVER_KEY="/etc/mender/certs/server/server.key" \
-  -e MTLS_CA_CERTIFICATE="/etc/mender/certs/tenant-ca/tenant.ca.pem" \
+  -e HTTPS_LISTEN=":8443" \
+  -e HTTP_ENABLED="true" \
+  -e HTTP_LISTEN=":8080" \
+  -e HTTPS_SERVER_CERTIFICATE="/etc/mender/certs/server.crt" \
+  -e HTTPS_SERVER_KEY="/etc/mender/certs/server.key" \
+  -e MTLS_CA_CERTIFICATE="/etc/ssl/certs/ca.crt" \
   -e MTLS_ENABLED="true" \
   -e MTLS_MENDER_PASSWORD="$MENDER_PASSWORD" \
   -e MTLS_MENDER_USERNAME="$MENDER_USERNAME" \
   -e UPSTREAM_SERVER_URL="$UPSTREAM_SERVER_URL" \
-  -v $(pwd)/server.crt:/etc/mender/certs/server/server.crt \
-  -v $(pwd)/server.key:/etc/mender/certs/server/server.key \
-  -v $(pwd)/ca.crt:/etc/mender/certs/tenant-ca/tenant.ca.pem \
+  -v $(pwd)/server.crt:/etc/mender/certs/server.crt \
+  -v $(pwd)/server.key:/etc/mender/certs/server.key \
+  -v $(pwd)/ca.crt:/etc/ssl/certs/ca.crt \
   $MENDER_GATEWAY_IMAGE --log-level debug
 ```
 
@@ -72,7 +75,7 @@ Assuming you run the docker image on your host, the container will start listeni
 From a different terminal execute the command below:
 
 ``` bash
-openssl s_client -connect $MENDER_GATEWAY_IP:$MENDER_GATEWAY_PORT
+openssl s_client -connect $MENDER_GATEWAY_IP:8443
 
 # In the mender-gateway terminal look for a line similar to:
 # 2023/08/18 15:51:21 http: TLS handshake error from 192.168.88.249:46612: tls: client didn't provide a certificate
@@ -137,7 +140,7 @@ Generate the new config:
 cat > mender.conf << EOF
 {
   "InventoryPollIntervalSeconds": 5,
-  "ServerURL": "https://$MENDER_GATEWAY_DOMAIN:${MENDER_GATEWAY_PORT:-443}",
+  "ServerURL": "https://$MENDER_GATEWAY_DOMAIN:8443",
   "TenantToken": "$TENANT_TOKEN",
   "UpdatePollIntervalSeconds": 5,
   "HttpsClient": {
@@ -186,7 +189,7 @@ See the [troubleshooting section on connecting devices](../../../../301.Troubles
 ## Key rotation 
 
 
-If you have a security practice to exchange keys on the device as long as the new key is signed by the CA the gateway trusts, the device will reaccepted with the new key. It will have two pairs of accepted [auth sets](../../../../02.Overview/13.Device-authentication/docs.md#identification-and-authentication).
+If you have a security practice to exchange keys on the device as long as the new key is signed by the CA the gateway trusts, the device will be reaccepted with the new key. It will have two pairs of accepted [auth sets](../../../../02.Overview/13.Device-authentication/docs.md#identification-and-authentication).
 
 The examples below build on the evaluation example and will generate a new set of keys to deploy to the currently running device.
 
@@ -234,7 +237,7 @@ The new Mender Client config with the new key:
 cat > mender.conf << EOF
 {
   "InventoryPollIntervalSeconds": 5,
-  "ServerURL": "https://$MENDER_GATEWAY_DOMAIN:${MENDER_GATEWAY_PORT:-443}",
+  "ServerURL": "https://$MENDER_GATEWAY_DOMAIN:8443",
   "TenantToken": "$TENANT_TOKEN",
   "UpdatePollIntervalSeconds": 5,
   "HttpsClient": {

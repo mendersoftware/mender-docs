@@ -22,7 +22,6 @@ We suggest copying these to a temporary text file, filling them with your values
 # No external registration will take place.
 # The values provided here are arbitrary defaults.
 export MENDER_GATEWAY_DOMAIN="local-domain-1993028.com"
-export MENDER_GATEWAY_PORT="8443"
 
 # This is the IP of the pc you'll be running the mtls proxy on.
 # Once the container is running this is the IP we'll be expected to communicate with it
