@@ -123,7 +123,7 @@ Create a new bucket in Amazon S3, then a IAM user and its access key with
 the proper permissions to access the bucket.
 
 You can find the required permissions in the
-[Requirements section](../../../02.Overview/16.Requirements/docs.md#amazon-s3-iam-policies)
+[Requirements section](../../../02.Overview/17.Requirements/docs.md#amazon-s3-iam-policies)
 
 Then, export the following environment variables:
 

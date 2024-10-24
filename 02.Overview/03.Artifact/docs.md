@@ -104,7 +104,7 @@ by default.
 
 Mender is constantly evolving to adapt to the needs of its users, and the Mender
 Artifact format has several revisions. See the [Compatibility
-section](../14.Compatibility/docs.md) for an overview of which versions of the
+section](../15.Compatibility/docs.md) for an overview of which versions of the
 Mender Artifact format are supported by which Mender Client versions.
 
 

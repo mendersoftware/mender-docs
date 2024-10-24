@@ -189,7 +189,7 @@ See the [troubleshooting section on connecting devices](../../../../301.Troubles
 ## Key rotation 
 
 
-If you have a security practice to exchange keys on the device as long as the new key is signed by the CA the gateway trusts, the device will be reaccepted with the new key. It will have two pairs of accepted [auth sets](../../../../02.Overview/13.Device-authentication/docs.md#identification-and-authentication).
+If you have a security practice to exchange keys on the device as long as the new key is signed by the CA the gateway trusts, the device will be reaccepted with the new key. It will have two pairs of accepted [auth sets](../../../../02.Overview/14.Device-authentication/docs.md#identification-and-authentication).
 
 The examples below build on the evaluation example and will generate a new set of keys to deploy to the currently running device.
 

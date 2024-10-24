@@ -10,13 +10,13 @@ grouping. There are two types of groups: _static_ and _dynamic_.
 
 ## Static group
 
-A *static group* contains a list of [Device IDs](../15.Taxonomy/docs.md).
+A *static group* contains a list of [Device IDs](../16.Taxonomy/docs.md).
 You can add devices to a static group in the UI or using the
 [APIs](../../08.Server-integration/01.Using-the-apis/docs.md).
 
 Some considerations when working with static groups:
 * Before you can add a device to a static group, it needs to be
-  [Accepted](../15.Taxonomy/docs.md) on the Mender Server.
+  [Accepted](../16.Taxonomy/docs.md) on the Mender Server.
 * A device can only exist in one static group.
 * A static group only exists as long as there is at least one device in it.
 
@@ -27,7 +27,7 @@ The following picture shows the devices view with three static groups defined:
 ## Dynamic group
 
 A *dynamic group* does not contain a list of predefined
-[Device IDs](../15.Taxonomy/docs.md). It instead contains the definition of a
+[Device IDs](../16.Taxonomy/docs.md). It instead contains the definition of a
 filter that can match one or more devices, and the matched devices may change
 in the future as you accept new devices into Mender, or device attributes change
 and fulfill the filter criteria.

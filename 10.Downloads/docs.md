@@ -394,8 +394,8 @@ sudo cp mender-binary-delta-1.5.0/x86_64/mender-binary-delta-generator /usr/bin
 
 ### Requirements
 
-You need two applications for any add-on to function: [`mender-auth`](../02.Overview/15.Taxonomy/docs.md), one of the components of the Mender Client,
-and [Mender Connect](../02.Overview/15.Taxonomy/docs.md). If you have used the [express
+You need two applications for any add-on to function: [`mender-auth`](../02.Overview/16.Taxonomy/docs.md), one of the components of the Mender Client,
+and [Mender Connect](../02.Overview/16.Taxonomy/docs.md). If you have used the [express
 installation](#express-installation) script, you already have both installed.
 
 ### mender-connect

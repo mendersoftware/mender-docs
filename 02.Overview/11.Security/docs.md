@@ -50,7 +50,7 @@ public key of a Device in the Mender UI.
 !!!!! smaller and more efficient.
 
 You can find more information in the
-[Device authentication](../13.Device-authentication/docs.md)
+[Device authentication](../14.Device-authentication/docs.md)
 and
 [Preauthorizing devices](../../08.Server-integration/02.Preauthorizing-devices/docs.md)
 sections.
