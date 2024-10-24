@@ -44,7 +44,7 @@ again. The client passes the public key in authorization requests to the server 
 you can see the public key of a Device in the Mender UI.
 
 You can find more information in the
-[Device authentication](../13.Device-authentication/docs.md)
+[Device authentication](../14.Device-authentication/docs.md)
 and
 [Preauthorizing devices](../../08.Server-integration/02.Preauthorizing-devices/docs.md)
 sections.

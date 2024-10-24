@@ -133,6 +133,11 @@ Server. They include management end-points, consumed by users and the UI,
 device end-points, consumed by the Mender components running on the devices,
 and internal end-points.
 
+* _Service Provider Tenant_ - A special _Tenant_ which can create and manage
+children tenants, e.g., different divisions or teams in the same organization
+or customers managed by a service provider business partner. Service Provider
+Tenants are an Enterprise feature.
+
 * _Signing system_ - A separated and not publicly accessible part of an IT
 infrastructure used to cryptographically sign Artifacts or other items,
 in the asymmetric encryption model.
@@ -140,6 +145,8 @@ in the asymmetric encryption model.
 * _System_ -  A System is a group of devices belonging to the same product or
 logical entity connected to a [Mender Gateway](../../01.Get-started/06.Mender-Gateway/docs.md)
 instance. Devices in a System usually require coordination during the update process.
+
+* _Tenant_ - See _Organization_.
 
 * _Update Module_ - An extension to the Mender Client for supporting a new type
 software update, such as a package manager, container or bootloader.
