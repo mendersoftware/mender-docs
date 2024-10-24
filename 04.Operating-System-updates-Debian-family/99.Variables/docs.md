@@ -100,6 +100,23 @@ Examples:
 ```
 
 
+#### `MENDER_BOOT_PART_MOUNT_LOCATION`
+
+> Value: `/boot/efi` / `/uboot` (default)
+
+Path to mount the boot partition in the root filesystem.
+
+In order to access the boot partition from the running system,
+it needs to be mounted to a defined directory location.
+By default, this is
+- `/boot/efi`: for GRUB-EFI based integrations (can be omitted if `MENDER_GRUB_EFI_INTEGRATION=y`)
+- `/uboot`: for all other integrations
+
+Example:
+```
+MENDER_BOOT_PART_MOUNT_LOCATION = "/boot/firmware"
+```
+
 #### `MENDER_BOOT_PART_NUMBER`
 
 > Value: 1 (default) 
