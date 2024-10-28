@@ -217,17 +217,61 @@ device is accepted on.
 
 ### Example: Standard system update - real gateway - offline
 
+When updating the gateway, any failure in applying the manifest, whether it happens before or after
+updating the gateway, triggers a full rollback of all components mentioned in the manifest. Let's
+try this functionality in practice by simulating a failure in the last component we update. Execute
+this on the **device**:
 
-On the **device**.
+```bash
+MOCK_DIR=/data/mender-update-orchestrator/mock_env
+touch $MOCK_DIR/mock_instances/R456/ArtifactCommit.FAIL
+```
+
+Then execute this to start the installation.
 
 ``` bash
 MOCK_DIR=/data/mender-update-orchestrator/mock_env
 mender-update-orchestrator install $MOCK_DIR/system-core-v3/manifest.yaml
 ```
 
-The Orchestrator installs the rootfs for the gateway and reboots.
+The Orchestrator installs the rootfs for the gateway and reboots. So far there are no failures,
+since the failure simulation has not kicked in yet.
 
 Log in into the new system to resume the system update:
+
+``` bash
+MOCK_DIR=/data/mender-update-orchestrator/mock_env
+mender-update-orchestrator resume
+mender-update-orchestrator show-provides
+```
+
+The orchestrator tries to continue, but the simulated failure happens, which makes it roll back
+instead, and reboot once more.
+
+``` bash
+MOCK_DIR=/data/mender-update-orchestrator/mock_env
+mender-update-orchestrator resume
+mender-update-orchestrator show-provides
+```
+
+This completes the rollback, and from the listed Provides data, we can see that the version we
+wanted to install has not been installed.
+
+Now execute this to remove the failure simulation:
+
+```bash
+MOCK_DIR=/data/mender-update-orchestrator/mock_env
+rm -f $MOCK_DIR/mock_instances/R456/ArtifactCommit.FAIL
+```
+
+Then execute this to apply the manifest a second time:
+
+``` bash
+MOCK_DIR=/data/mender-update-orchestrator/mock_env
+mender-update-orchestrator install $MOCK_DIR/system-core-v3/manifest.yaml
+```
+
+The system should reboot. When it is back online, log in and execute this:
 
 ``` bash
 MOCK_DIR=/data/mender-update-orchestrator/mock_env
