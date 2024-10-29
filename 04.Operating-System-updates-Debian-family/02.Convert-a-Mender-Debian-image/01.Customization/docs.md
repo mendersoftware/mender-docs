@@ -14,7 +14,7 @@ The configuration files are a means to customize the conversion process for
 `mender-convert`. In the `configs/` directory, there are customization scripts
 which add support for board-specific configurations. A run of `mender-convert`
 can include multiple configuration files, each one added with the `--config`
-command-line option. The standard configuration [configs/mender_convert_config](https://github.com/mendersoftware/mender-convert/blob/master/configs/mender_convert_config) includes the defaults for the configuration options which the tool supports.
+command-line option. The standard configuration [configs/mender_convert_config](https://github.com/mendersoftware/mender-convert/blob/4.2.2/configs/mender_convert_config) includes the defaults for the configuration options which the tool supports.
 
 ### Example
 
