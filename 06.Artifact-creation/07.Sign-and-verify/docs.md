@@ -31,8 +31,11 @@ Multiple keys can be used with the `ArtifactVerifyKeys` option, in which case th
 ## Supported signing algorithms
 
 Mender supports the following signing algorithms:
-* RSA with recommended key length of at least 3072 bits
+
+* PKCS#1 v1.5 (RSA), more formally called `RSASSA-PKCS1-v1_5`, with recommended RSA key length of at least 3072 bits
 * ECDSA with curve P-256
+
+On Linux, both `mender-artifact` and the Mender Client support the PKCS#11 programming interface to manipulate cryptographic tokens using `openssl`.
 
 ## Generating keys
 
@@ -117,12 +120,21 @@ For OS specific instructions on how to install and enable verification keys, vis
 
 - [Debian family - Customize Mender](../../04.Operating-System-updates-Debian-family/03.Customize-Mender/docs.md)
 
+
 ## Cloud Key Management
 
-It is possible to sign Artifacts using keys in Cloud Key Management, allowing developers to sign Mender Artifacts without ever accessing the private signing key. Currently the mender-artifact tool supports [Google Cloud Key Management](https://cloud.google.com/security-key-management?target=_blank). For more information, check the help screen for the `gcp-kms-key` option, available by running the command `mender-artifact sign --help`.
+It is possible to sign Artifacts using keys in Cloud Key Management, allowing developers to sign Mender Artifacts without ever accessing the private signing key.
+
+Currently the mender-artifact tool supports:
+
+* [Google Cloud Key Management](https://cloud.google.com/security-key-management?target=_blank).
+* [HashiCorp Vault](https://www.vaultproject.io/?target=_blank).
+* [KeyFactor](https://www.keyfactor.com/).
+
+For more information, check the help screen for the `gcp-kms-key`, `keyfactor-signserver-worker`, and `-vault-transit-key` options, available by running the command `mender-artifact sign --help`.
 
 
-## Supported cryptography standards
+## Hardware security
 
 Mender supports the following standards to interact with cryptographic tokens:
 * PKCS#11 (feature supported on Linux OS)

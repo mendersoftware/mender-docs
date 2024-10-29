@@ -50,7 +50,7 @@ Follow the steps in [set up shell variables for cURL](../01.Using-the-apis/docs.
 
 Download the `mender-artifact` tool from the [Downloads section](../../10.Downloads/docs.md).
 
-## Generate a client keypair
+## Generate a client key pair
 
 Before we preauthorize the device, we need its 1) identity and 2) public key. You should already know the identity of your device from the [prerequisite above](#the-identity-of-your-device).
 
@@ -58,7 +58,7 @@ We will generate the keys on a separate system (not on the device), and then pro
 
 !!! Make sure the system you generate keys on is adequately secured, as it will also generate the device private keys. You should consider securely deleting (e.g. `shred`) the *private* keys after provisioning the device if you do not truly need a record of them (you can keep the public keys).
 
-We will use a script to generate a keypair the Mender Client understands; it uses the `openssl` command to generate the keys.
+We will use a script to generate a key pair the Mender Client understands; it uses the `openssl` command to generate the keys.
 
 <!--AUTOVERSION: "mender/blob/%"/mender-->
 Download the [keygen-client](https://github.com/mendersoftware/mender/blob/master/support/keygen-client?target=_blank) script into a directory:
@@ -80,7 +80,7 @@ Run it without parameters:
 ./keygen-client
 ```
 
-You will find the generated Mender Client keypair in a subdirectory `keys-client-generated`:
+You will find the generated Mender Client key pair in a subdirectory `keys-client-generated`:
 
 ```bash
 keys-client-generated/
@@ -178,7 +178,7 @@ Now that we have generated a key for the device and preauthorized it, we need to
 
 ### Copy the private device key
 
-Find the location of the [private key we generated](#generate-a-client-keypair) and copy it into place on the data partition by running the following commands:
+Find the location of the [private key we generated](#generate-a-client-key-pair) and copy it into place on the data partition by running the following commands:
 
 ```bash
 mender-artifact install -m 600 keys-client-generated/private.key mender-disk-image.sdimg:/data/mender/mender-agent.pem
