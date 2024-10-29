@@ -21,7 +21,6 @@ import sys
 UPDATE = 1
 CHECK = 2
 MODE = UPDATE
-IGNORE_COMPLAIN = False
 
 # What to update
 COMPONENT = None
@@ -158,7 +157,6 @@ def parse_autoversion_tag(tag):
     #     {
     #         "search": For example: "-b %" to match -b parameter with version.
     #         "repo": Git repository whose version should be substituted.
-    #         "complain": true/false
     #     },
     #     ...
     # ]
@@ -172,7 +170,7 @@ def parse_autoversion_tag(tag):
         raise Exception("Malformed AUTOVERSION tag:\n%s" % tag)
     end_of_whole_tag = tag_match.end(1)
 
-    matcher = re.compile(r'"((?:[^"]|\\")*)"/([-a-z]+)(?:/([-a-z]+))? *')
+    matcher = re.compile(r'"((?:[^"]|\\")*)"/([-a-z]+) *')
     last_end = -1
     parsed = []
     pos = tag_match.start(1)
@@ -184,20 +182,12 @@ def parse_autoversion_tag(tag):
         last_end = pos
         expr = match.group(1).replace('\\"', '"')
         repo = match.group(2)
-        complain = match.group(3)
-        if complain is None or complain == "":
-            complain = False
-        elif complain == "complain":
-            complain = True
-        else:
-            raise Exception('Replacement flag must be "complain" or nothing')
 
-        if "%" not in expr and not complain:
+        if "%" not in expr:
             raise Exception(
-                'Search string "%s" doesn\'t contain at least one \'%%\' (only allowed in "complain" mode)'
-                % expr
+                "Search string \"%s\" doesn't contain at least one '%%'" % expr
             )
-        parsed.append({"search": expr, "repo": repo, "complain": complain})
+        parsed.append({"search": expr, "repo": repo})
     if last_end != end_of_whole_tag:
         raise Exception(
             (
@@ -262,9 +252,7 @@ def process_line(line, replacements, fd):
 
 def do_replacements(line, replacements, just_remove):
     all_replaced = line
-    for search, repo, complain in [
-        (repl["search"], repl["repo"], repl["complain"]) for repl in replacements
-    ]:
+    for search, repo, in [(repl["search"], repl["repo"]) for repl in replacements]:
         if repo != "ignore" and repo not in REPOS_CACHE:
             REPOS_CACHE.append(repo)
         if len(search.strip()) <= 2:
@@ -278,17 +266,6 @@ def do_replacements(line, replacements, just_remove):
         else:
             if repo == "ignore" or repo != COMPONENT:
                 continue
-            if complain:
-                if IGNORE_COMPLAIN:
-                    continue
-
-                if re.search(regex, all_replaced):
-                    raise Exception(
-                        'Requires manual fixing so it doesn\'t match "complain" expression: "%s":\n%s'
-                        % (search.replace('"', '\\"'), line)
-                    )
-                else:
-                    continue
             repl = search.replace("%", VERSION)
         all_replaced = re.sub(regex, repl, all_replaced)
     return all_replaced
@@ -323,9 +300,6 @@ def main():
         "--update", action="store_true", help="Update all version references"
     )
     parser.add_argument(
-        "--ignore-complain", action="store_true", help='Ignore "complain" expressions'
-    )
-    parser.add_argument(
         "--component", help="Component to update, it matches the Git repository name",
     )
     parser.add_argument(
@@ -354,10 +328,6 @@ def main():
         MODE = CHECK
     else:
         raise Exception("Either --check or --update must be given")
-
-    if args.ignore_complain:
-        global IGNORE_COMPLAIN
-        IGNORE_COMPLAIN = True
 
     walk_tree()
 
