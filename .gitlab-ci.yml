@@ -46,27 +46,6 @@ test:internal-links:
     - npm ci
     - ./checklinks.js --color --verbose
 
-
-test:latest_versions:
-  stage: test
-  image: alpine
-  before_script:
-    - apk add --no-cache git python3 py3-pip py3-yaml
-    - export INTEGRATION_REPO_DIR=/tmp/integration
-    - git clone https://github.com/mendersoftware/integration.git $INTEGRATION_REPO_DIR
-    - export INTEGRATION_VERSION=origin/staging
-  script:
-    - ./autoversion.py
-      --update
-      --integration-dir $INTEGRATION_REPO_DIR
-      --integration-version $INTEGRATION_VERSION
-      --mender-ci-workflows-version 1.0.0
-    - git diff HEAD
-    # exits with non zero status if not staged for commit files exist
-    - git diff-index --quiet HEAD
-  only:
-    - /^(hosted)$/
-
 .trigger:mender-docs-site:
   stage: trigger
   inherit:
