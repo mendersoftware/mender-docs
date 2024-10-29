@@ -108,6 +108,9 @@ only. The behaviour can be modified at any time.
 
 * `mender-testing-enabled` - *internal* - Enable the testing/* layers and functionality.
 
+* `mender-prepopulate-inactive-partition` - Populate the inactive partition with the
+  same contents of the active one, primarily for testing purposes.
+
 ## Default features
 
 By default, no features are enabled, but it is common to include a top level
