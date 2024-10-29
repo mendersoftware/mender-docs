@@ -16,18 +16,19 @@
 import argparse
 import os
 import re
-import subprocess
 import sys
-import json
-from urllib.request import urlopen
 
 UPDATE = 1
 CHECK = 2
 MODE = UPDATE
 IGNORE_COMPLAIN = False
 
-INTEGRATION_REPO = None
-INTEGRATION_VERSION = None
+# What to update
+COMPONENT = None
+VERSION = None
+
+# Just a way to warn if _nothing_ was updated
+REPOS_CACHE = []
 
 # Match version strings.
 YOCTO_BRANCHES = r"(?:dora|daisy|dizzy|jethro|krogoth|morty|pyro|rocko|sumo|thud|warrior|zeus|dunfell|gatesgarth|kirkstone|langdale|mickledore|scarthgap)"
@@ -39,90 +40,7 @@ VERSION_MATCHER = r"(?:%s|(?:mender-%s)|(?<![a-z])(?:%s|master)(?![a-z]))" % (
 )
 MINOR_VERSIONS_MATCHER = r"(?:(?<!\.)\s*\d+\.\d+[, ]?(?!\.\d))+"
 
-VERSION_CACHE = {}
-
 ERRORS_FOUND = False
-
-VERSIONS_URL = "https://docs.mender.io/releases/versions.json"
-response = urlopen(VERSIONS_URL)
-versions = json.loads(response.read())
-RELEASED_VERSION_CACHE = versions or {}
-
-
-def get_released_version_of(repo):
-    minor_version = ""
-    if INTEGRATION_VERSION:
-        minor_version = INTEGRATION_VERSION[0 : INTEGRATION_VERSION.rfind(".")]
-    if (
-        not minor_version
-        or not "releases" in RELEASED_VERSION_CACHE
-        or not minor_version in RELEASED_VERSION_CACHE["releases"]
-    ):
-        return None
-    info = next(
-        (
-            info
-            for info in RELEASED_VERSION_CACHE["releases"][minor_version][
-                INTEGRATION_VERSION
-            ]["repos"]
-            if info["name"] == repo
-        ),
-        {},
-    )
-    if "version" in info:
-        return info["version"]
-
-
-def get_version_of(repo):
-    global VERSION_CACHE
-
-    version = VERSION_CACHE.get(repo)
-    if version is False:
-        return None
-    elif version is not None:
-        return version
-    elif INTEGRATION_REPO is not None and INTEGRATION_VERSION is not None:
-        result = subprocess.run(
-            [
-                os.path.join(INTEGRATION_REPO, "extra", "release_tool.py"),
-                "--version-of",
-                repo,
-                "--version-type",
-                "git",
-                "--in-integration-version",
-                INTEGRATION_VERSION,
-            ],
-            capture_output=True,
-        )
-        if result.stderr or result.returncode == 1:
-            VERSION_CACHE[repo] = False
-            return None
-        version = result.stdout.strip().decode()
-        VERSION_CACHE[repo] = version
-        return version
-    else:
-        released_version = None
-        try:
-            released_version = get_released_version_of(repo)
-        except KeyError:
-            print(
-                f"Version not found in {VERSIONS_URL}. It may take time to reach it. Try running with --integration-dir instead, to get the information from there."
-            )
-        if released_version:
-            VERSION_CACHE[repo] = released_version
-            return released_version
-        else:
-            print('Not replacing "%s" instances, since it was not specified' % repo)
-            VERSION_CACHE[repo] = False
-            return None
-
-
-def get_lts_versions():
-    global VERSION_CACHE
-
-    lts_versions = ", ".join(RELEASED_VERSION_CACHE["lts"])
-    VERSION_CACHE["lts"] = lts_versions
-    return lts_versions
 
 
 def walk_tree():
@@ -347,24 +265,18 @@ def do_replacements(line, replacements, just_remove):
     for search, repo, complain in [
         (repl["search"], repl["repo"], repl["complain"]) for repl in replacements
     ]:
+        if repo != "ignore" and repo not in REPOS_CACHE:
+            REPOS_CACHE.append(repo)
         if len(search.strip()) <= 2:
             raise Exception(
                 "Search string needs to be longer/more specific than just '%s'" % search
             )
         escaped = re.escape(search)
         regex = escaped.replace(r"%", VERSION_MATCHER)
-        if repo == "lts":
-            regex = escaped.replace(r"%", MINOR_VERSIONS_MATCHER)
         if just_remove:
             repl = search.replace(r"%", "")
         else:
-            if repo == "ignore":
-                continue
-            elif repo == "lts":
-                version = get_lts_versions()
-            else:
-                version = get_version_of(repo)
-            if version is None:
+            if repo == "ignore" or repo != COMPONENT:
                 continue
             if complain:
                 if IGNORE_COMPLAIN:
@@ -377,19 +289,31 @@ def do_replacements(line, replacements, just_remove):
                     )
                 else:
                     continue
-            repl = search.replace("%", version)
+            repl = search.replace("%", VERSION)
         all_replaced = re.sub(regex, repl, all_replaced)
     return all_replaced
 
 
+DESCRIPTION = """With `--update`, updates the version references for COMPONENT to VERSION.
+
+Examples:
+    autoversion.py --update --component mender-artifact --version 1.2.3
+    autoversion.py --update --component mender-connect --version 4.5.6
+
+With `--check` it verifies that there are no version references with a missing AUTOVERSION tag.
+"""
+
+
 def main():
     global MODE
-    global INTEGRATION_REPO
-    global INTEGRATION_VERSION
-    global VERSION_CACHE
     global ERRORS_FOUND
+    global COMPONENT
+    global VERSION
+    global REPOS_CACHE
 
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description=DESCRIPTION, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     parser.add_argument(
         "--check",
         action="store_true",
@@ -402,60 +326,29 @@ def main():
         "--ignore-complain", action="store_true", help='Ignore "complain" expressions'
     )
     parser.add_argument(
-        "--integration-dir", metavar="DIR", help="Location of integration repository"
+        "--component", help="Component to update, it matches the Git repository name",
     )
     parser.add_argument(
-        "--integration-version",
-        help="Integration version to update to. Depends on --integration-dir option",
-    )
-    parser.add_argument(
-        "--mender-client-version",
-        help="Mender Client version for client only releases to update to",
-    )
-    parser.add_argument(
-        "--meta-mender-version",
-        help="meta-mender version to update to (usually a branch)",
-    )
-    parser.add_argument(
-        "--poky-version", help="poky version to update to (usually a branch)"
+        "--version", help="Version to update to",
     )
 
     parser.add_argument(
-        "--mender-ci-workflows-version",
-        help="mender-ci-workflows version to update to",
+        "--poky-version",
+        help="poky version to update to (usually a branch). This is an special case which ignores --component and --version flags",
     )
+
     args = parser.parse_args()
 
     if args.update and args.check:
         raise Exception("--check and --update are mutually exclusive")
     elif args.update:
+        if args.component is None and args.version is None:
+            raise Exception(
+                "--component and --version are require to --update something"
+            )
         MODE = UPDATE
-
-        if args.integration_version is not None:
-            INTEGRATION_REPO = args.integration_dir
-            INTEGRATION_VERSION = args.integration_version
-
-        if args.mender_client_version is not None:
-            if args.integration_version is not None:
-                raise Exception(
-                    "--mender-client-version and --integration-version are mutually exclusive"
-                )
-            VERSION_CACHE["mender"] = args.mender_client_version
-
-        if args.meta_mender_version is not None:
-            if args.poky_version is None:
-                raise Exception(
-                    "--meta-mender-version argument requires --poky-version"
-                )
-            VERSION_CACHE["meta-mender"] = args.meta_mender_version
-            VERSION_CACHE["poky"] = args.poky_version
-        else:
-            print('Not replacing "meta-mender" instances, since it was not specified')
-            print('Not replacing "poky" instances, since it was not specified')
-            VERSION_CACHE["meta-mender"] = False
-            VERSION_CACHE["poky"] = False
-        if args.mender_ci_workflows_version is not None:
-            VERSION_CACHE["mender-ci-workflows"] = args.mender_ci_workflows_version
+        COMPONENT = args.component
+        VERSION = args.version
 
     elif args.check:
         MODE = CHECK
@@ -467,6 +360,15 @@ def main():
         IGNORE_COMPLAIN = True
 
     walk_tree()
+
+    if args.check:
+        print("All good. List of components found: " + ", ".join(REPOS_CACHE))
+
+    if args.update and args.component not in REPOS_CACHE:
+        print(
+            f"Component '{args.component}' was not found anywhere in the docs content."
+        )
+        sys.exit(1)
 
     if ERRORS_FOUND:
         print("Errors found. See printed messages.")

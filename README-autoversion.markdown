@@ -57,18 +57,6 @@ updated, `autoversion.py --update` will turn it into this:
 Joe User uses mender-artifact version 2.3.0, and likes it!
 ```
 
-### Currently supported LTS releases
-In order to show a list of currently supported LTS releases of Mender you can use the `lts` action:
-<!--AUTOVERSION: "LTS releases: %"/ignore-->
-```
-<!--AUTOVERSION: "LTS releases: %"/lts-->
-At this time we support the following LTS releases: 0.0.0.
-```
-Depending on the currently supported releases, this will result in:
-```
-At this time we support the following LTS releases: 2.6, 2.8, 3.0.
-```
-
 
 ### Version numbers of other software
 
