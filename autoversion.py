@@ -352,22 +352,11 @@ def do_replacements(line, replacements, just_remove):
                 "Search string needs to be longer/more specific than just '%s'" % search
             )
         escaped = re.escape(search)
-
-        # From re.escape docs:
-        # Changed in version 3.7: Only characters that can have special
-        # meaning in a regular expression are escaped. As a result, '!',
-        # '"', '%', "'", ',', '/', ':', ';', '<', '=', '>', '@', and "`"
-        # are no longer escaped.
-        if sys.version_info[:3] < (3, 7, 0):
-            _percent = "\%"
-        else:
-            _percent = "%"
-
-        regex = escaped.replace(_percent, VERSION_MATCHER)
+        regex = escaped.replace(r"%", VERSION_MATCHER)
         if repo == "lts":
-            regex = escaped.replace(_percent, MINOR_VERSIONS_MATCHER)
+            regex = escaped.replace(r"%", MINOR_VERSIONS_MATCHER)
         if just_remove:
-            repl = search.replace("%", "")
+            repl = search.replace(r"%", "")
         else:
             if repo == "ignore":
                 continue
