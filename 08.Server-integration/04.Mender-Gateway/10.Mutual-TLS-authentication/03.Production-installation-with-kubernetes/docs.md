@@ -25,7 +25,7 @@ Create the Kubernetes secret:
 kubectl create secret generic mtls-user --from-literal=MTLS_MENDER_USERNAME=${MENDER_USERNAME} --from-literal=MTLS_MENDER_PASSWORD=${MENDER_PASSWORD}
 kubectl create secret generic keycert --from-file=server.crt=./server.crt --from-file=server.key=./server.key
 kubectl create secret generic mtls-ca --from-file=ca.crt=./ca.crt
-kubectl create secret docker-registry registry-mender-io --docker-server=${DOCKER_REGISTRY_URL} --docker-username=${DOCKER_REGISTRY_USERNAME} --docker-password={$DOCKER_REGISTRY_PASSWORD}
+kubectl create secret docker-registry registry-mender-io-mtls --docker-server=${DOCKER_REGISTRY_URL} --docker-username=${DOCKER_REGISTRY_USERNAME} --docker-password=${DOCKER_REGISTRY_PASSWORD}
 ```
 
 
@@ -125,7 +125,7 @@ spec:
           periodSeconds: 5
 
       imagePullSecrets:
-      - name: registry-mender-io
+      - name: registry-mender-io-mtls
       volumes:
       - name: server-cert
         secret:
