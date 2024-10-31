@@ -25,7 +25,7 @@ Create the Kubernetes secret:
 kubectl create secret generic mtls-user --from-literal=MTLS_MENDER_USERNAME=${MENDER_USERNAME} --from-literal=MTLS_MENDER_PASSWORD=${MENDER_PASSWORD}
 kubectl create secret generic keycert --from-file=server.crt=./server.crt --from-file=server.key=./server.key
 kubectl create secret generic mtls-ca --from-file=ca.crt=./ca.crt
-kubectl create secret docker-registry registry-mender-io --docker-server=${DOCKER_REGISTRY_URL} --docker-username=${DOCKER_REGISTRY_USERNAME} --docker-password={$DOCKER_REGISTRY_PASSWORD}
+kubectl create secret docker-registry registry-mender-io-mtls --docker-server=${DOCKER_REGISTRY_URL} --docker-username=${DOCKER_REGISTRY_USERNAME} --docker-password=${DOCKER_REGISTRY_PASSWORD}
 ```
 
 
@@ -41,8 +41,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    run: mender-mtls
-  name: mender-mtls
+    run: mender-mtls-gateway
+  name: mender-mtls-gateway
 spec:
   strategy:
     type: RollingUpdate
@@ -50,20 +50,24 @@ spec:
       maxUnavailable: 0
   selector:
     matchLabels:
-      run: mender-mtls
+      run: mender-mtls-gateway
   template:
     metadata:
       labels:
-        run: mender-mtls
+        run: mender-mtls-gateway
     spec:
       containers:
-      - name: mender-mtls
+      - name: mender-mtls-gateway
         image: ${MENDER_GATEWAY_IMAGE}
         env:
+        - name: HTTP_ENABLED
+          value: "true"
+        - name: HTTP_LISTEN
+          value: ":8080"
         - name: HTTPS_ENABLED
           value: "true"
         - name: HTTPS_LISTEN
-          value: ":443"
+          value: ":8443"
         - name: HTTPS_SERVER_CERTIFICATE
           value: "/etc/mender/certs/server.crt"
         - name: HTTPS_SERVER_KEY
@@ -71,7 +75,7 @@ spec:
         - name: MTLS_CA_CERTIFICATE
           value: "/etc/ssl/certs/ca.crt"
         - name: UPSTREAM_SERVER_URL
-          value: "${UPSTREAM_SERVER_URL}" \
+          value: "${UPSTREAM_SERVER_URL}"
         envFrom:
         - secretRef:
             name: mtls-user
@@ -96,27 +100,32 @@ spec:
             cpu: 100m
             memory: 32Mi
         ports:
+        - containerPort: 8443
+          name: https
+          protocol: TCP
         - containerPort: 8080
+          name: http
+          protocol: TCP
 
         readinessProbe:
           httpGet:
-            path: /status
-            port: 8081
+            path: /api/internal/v1/gateway/alive
+            port: 8080
           periodSeconds: 15
         livenessProbe:
           httpGet:
-            path: /status
-            port: 8081
+            path: /api/internal/v1/gateway/alive
+            port: 8080
           periodSeconds: 5
         startupProbe:
           httpGet:
-            path: /status
-            port: 8081
+            path: /api/internal/v1/gateway/alive
+            port: 8080
           failureThreshold: 36
           periodSeconds: 5
 
       imagePullSecrets:
-      - name: registry-mender-io
+      - name: registry-mender-io-mtls
       volumes:
       - name: server-cert
         secret:
@@ -129,7 +138,7 @@ spec:
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: mender-mtls
+  name: mender-mtls-gateway
 spec:
   maxReplicas: ${SCALABILITY_MAX_REPLICAS}
   minReplicas: 1
@@ -145,7 +154,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: mender-mtls
+    name: mender-mtls-gateway
 EOF
 
 kubectl apply -f mender-gateway-deployment.yml
@@ -168,8 +177,8 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "600"
     service.beta.kubernetes.io/aws-load-balancer-type: nlb
   labels:
-    run: mender-mtls
-  name: mender-mtls
+    run: mender-mtls-gateway
+  name: mender-mtls-gateway
 spec:
   ports:
   - port: 443
@@ -177,7 +186,7 @@ spec:
     targetPort: 8080
     name: https
   selector:
-    run: mender-mtls
+    run: mender-mtls-gateway
   type: LoadBalancer
 
 EOF
@@ -193,8 +202,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    run: mender-mtls
-  name: mender-mtls
+    run: mender-mtls-gateway
+  name: mender-mtls-gateway
 spec:
   ports:
   - port: 443
@@ -202,7 +211,7 @@ spec:
     targetPort: 8080
     name: https
   selector:
-    run: mender-mtls
+    run: mender-mtls-gateway
   type: LoadBalancer
 EOF
 
