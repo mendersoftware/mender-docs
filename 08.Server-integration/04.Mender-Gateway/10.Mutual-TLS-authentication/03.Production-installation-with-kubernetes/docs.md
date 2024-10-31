@@ -60,6 +60,8 @@ spec:
       - name: mender-mtls-gateway
         image: ${MENDER_GATEWAY_IMAGE}
         env:
+        - name: MTLS_ENABLED
+          value: "true"
         - name: HTTP_ENABLED
           value: "true"
         - name: HTTP_LISTEN
@@ -76,6 +78,8 @@ spec:
           value: "/etc/ssl/certs/ca.crt"
         - name: UPSTREAM_SERVER_URL
           value: "${UPSTREAM_SERVER_URL}"
+        - name: HTTPS_MINIMUM_TLS_VERSION
+          value: "1.2"
         envFrom:
         - secretRef:
             name: mtls-user
