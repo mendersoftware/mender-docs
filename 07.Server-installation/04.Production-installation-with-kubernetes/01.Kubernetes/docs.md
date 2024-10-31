@@ -15,7 +15,7 @@ taxonomy:
 If you don't have a ready-to-use Kubernetes cluster you can install [K3S](https://k3s.io/),
 a lightweight certified Kubernetes distribution.
 
-For example, on a machine with Ubuntu 20.04 (e.g. an instance from AWS EC2 or DigitalOcean),
+For example, on a machine with Ubuntu 22.04 (e.g. an instance from AWS EC2 or DigitalOcean),
 you can install Kubernetes running:
 
 ```bash
@@ -82,8 +82,10 @@ To install cert-manager on the Kubernetes cluster using the Helm chart, run:
 helm repo add jetstack https://charts.jetstack.io
 helm repo update
 helm install cert-manager jetstack/cert-manager \
-  --version v1.4.0 \
-  --set installCRDs=true
+  --namespace cert-manager \
+  --create-namespace \
+  --version v1.16.1 \
+  --set crds.enabled=true
 ```
 
 Create the Let's Encrypt issuer:
