@@ -198,7 +198,7 @@ The examples below build on the evaluation example and will generate a new set o
 ! Make sure the `$CONTAINER_IP` is still set
 
 
-Generate a new keypair and sign it with the already created CA key:
+Generate a new key pair and sign it with the already created CA key:
 
 ```bash
 # The NEW_KEY_IDENTIFIER is just a convenient helper to make it easy to distinguish between the keys. It is on no practical importance. 
