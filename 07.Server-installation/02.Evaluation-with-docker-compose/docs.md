@@ -43,8 +43,9 @@ In addition, add the following lines to `/etc/hosts`:
 
 Clone the [mender-server](https://github.com/mendersoftware/mender-server?target=_blank)
 repository which contains everything that is need to start the demo server:
+<!--AUTOVERSION: "git clone -b v% https"/mender-server-->
 ```bash
-git clone -b main https://github.com/mendersoftware/mender-server.git mender-server
+git clone -b v4.0.0-rc.2 https://github.com/mendersoftware/mender-server.git mender-server
 ```
 
 Change directory to the cloned repository:

@@ -57,18 +57,6 @@ updated, `autoversion.py --update` will turn it into this:
 Joe User uses mender-artifact version 2.3.0, and likes it!
 ```
 
-### Currently supported LTS releases
-In order to show a list of currently supported LTS releases of Mender you can use the `lts` action:
-<!--AUTOVERSION: "LTS releases: %"/ignore-->
-```
-<!--AUTOVERSION: "LTS releases: %"/lts-->
-At this time we support the following LTS releases: 0.0.0.
-```
-Depending on the currently supported releases, this will result in:
-```
-At this time we support the following LTS releases: 2.6, 2.8, 3.0.
-```
-
 
 ### Version numbers of other software
 
@@ -86,30 +74,6 @@ This will make the version completely ignored by both the `--check` and
 that you might have entered a version number that should have a tag.
 
 Note that the `%` is mandatory even for ignore tags.
-
-
-### Version numbers that need manual treatment
-
-Although rare, in some corner cases the versions can not be updated manually. In
-this case a tag must be inserted to warn about this when the documentation is
-being updated. This uses the repository name action, together with the special
-`complain` tag and looks like this:
-
-<!--AUTOVERSION: "bleeding-edge % branch"/ignore-->
-```
-<!--AUTOVERSION: "bleeding-edge % branch"/integration/complain-->
-This is documentation for Mender's bleeding-edge master branch
-```
-
-In order to turn this into a valid documentation string, the entire sentence
-must be restructured to avoid the use of "bleeding-edge" and "branch", so for
-this we use the `complain` action. It will not complain in `--check` mode, only
-in `--update` mode, when the component is selected for update. The search string
-is expected to match the doc text prior to being modified into the correct
-sentence, and it must no longer match after being corrected.
-
-This is the only mode where it is permitted not to use a `%` in the search
-string.
 
 
 ## Multiple versions in one paragraph
