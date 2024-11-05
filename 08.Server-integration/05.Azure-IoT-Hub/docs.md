@@ -61,7 +61,7 @@ From now on, your device can send data to Azure IoT Hub!
 
 In sum, the lifecycle of an Azure IoT Hub integrated device is:
 
-1. At first, the device gets accepted - you can use various flows to achieve this state. See [device authentication](../../02.Overview/13.Device-authentication/docs.md) for more information.
+1. At first, the device gets accepted - you can use various flows to achieve this state. See [device authentication](../../02.Overview/14.Device-authentication/docs.md) for more information.
 2. Mender provisions the device in Azure IoT Hub - as a result of this operation, the Mender Server retrieves the Azure device connection string.
 3. The Mender [Configure add-on](../../09.Add-ons/10.Configure/docs.md) sets the device connection string in file (`/var/lib/mender-configure/device-config.json`) on the device. We recommend to create a [Mender configuration script](../../09.Add-ons/10.Configure/01.Device-integration/docs.md) to reconfigure the Azure IoT application and restart it with its new connection string.
 4. From now on, device applications can read the connection string from the file and communicate with Azure IoT Hub.
