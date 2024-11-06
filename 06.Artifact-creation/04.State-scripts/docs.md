@@ -74,6 +74,10 @@ For example, `Download_Enter_05_wifi-driver` and `Download_Enter_10_ask-user` ar
 **There are no arguments passed to the scripts.**
 
 
+## Unix line endings
+
+State scripts must use Unix style line endings. If Windows line endings (CRLF/`\r\n`) are used the state script will not function properly.
+
 ## Script return codes
 
 If a script returns `0` Mender proceeds, but if it returns `1` the update is aborted and rolled back.
