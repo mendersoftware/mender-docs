@@ -427,7 +427,7 @@ You can identify your active root file system (`$ACTIVE_PARTITION` in the follow
 The payload size of the version running on the device can be obtained from `mender-artifact read delta.mender`, check for the variable `rootfs_file_size` and use it as `$PAYLOAD_SIZE` in the following `dd`.
 
 ```bash
-dd if=/dev/$ACTIVE_PARTITION bs=1M count=$PAYLOAD_SIZE iflag=count_bytes | sha256sum -
+dd if=/dev/"$ACTIVE_PARTITION" bs=1M count=$(expr "$PAYLOAD_SIZE" / 1048576) | sha256sum -
 ```
 
 #### Common root causes for having inconsistent checksums
