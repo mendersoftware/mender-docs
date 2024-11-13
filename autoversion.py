@@ -331,9 +331,6 @@ def main():
 
     walk_tree()
 
-    if args.check:
-        print("All good. List of components found: " + ", ".join(REPOS_CACHE))
-
     if args.update and args.component not in REPOS_CACHE:
         print(
             f"Component '{args.component}' was not found anywhere in the docs content."
@@ -343,6 +340,9 @@ def main():
     if ERRORS_FOUND:
         print("Errors found. See printed messages.")
         sys.exit(1)
+
+    if args.check:
+        print("All good. List of components found: " + ", ".join(REPOS_CACHE))
 
 
 if __name__ == "__main__":
