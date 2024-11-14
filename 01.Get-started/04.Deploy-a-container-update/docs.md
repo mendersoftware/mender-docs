@@ -27,7 +27,19 @@ It is also assumed that you have completed the following tutorials:
 * [Prepare a Raspberry Pi device](../01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md)
 * [Deploy an application update](../02.Deploy-an-application-update/docs.md)
 
-## Step 1 - Install Docker Engine on your Raspberry Pi
+## Step 1 - Install the `docker`  update module
+
+!!! This step is required with Mender Client 5.0 or newer. Previous Mender Client versions shipped
+!!! this update module with the default installation
+
+Log in to your Raspberry Pi and install the update module with the following command:
+
+<!--AUTOVERSION: "mender-update-modules/%/docker"/ignore-->
+```bash
+mkdir -p /usr/share/mender/modules/v3 && wget -P /usr/share/mender/modules/v3 https://raw.githubusercontent.com/mendersoftware/mender-update-modules/master/docker/module/docker && chmod +x /usr/share/mender/modules/v3/docker
+```
+
+## Step 2 - Install Docker Engine on your Raspberry Pi
 
 Log in to your Raspberry Pi and run the commands outlined below.
 
@@ -67,7 +79,7 @@ will generate a
 [Mender Artifact](../../02.Overview/03.Artifact/docs.md) which will
 download an image.
 
-### Step 2 - Download the mender-artifact utility on your workstation
+### Step 3 - Download the mender-artifact utility on your workstation
 
 !!! If you already installed `mender-artifact` on your system, you can skip this step.
 
@@ -108,7 +120,7 @@ export PATH="${PATH}:${HOME}/bin"
 !!! terminal sessions.
 
 
-## Step 3 - Prepare a Mender Artifact on your workstation
+## Step 4 - Prepare a Mender Artifact on your workstation
 
 Prepare a workspace and change directory to it:
 
@@ -152,7 +164,7 @@ Generate a Mender Artifact that will deploy the `hello-world` Docker container i
 !!! image that we want to download on the device when we deploy the generated
 !!! [Mender Artifact](../../02.Overview/03.Artifact/docs.md)
 
-## Step 3 - Deploy the Docker update
+## Step 5 - Deploy the Docker update
 
 Upload the file `hello-world-container-update.mender` from the previous step
 to the hosted Mender. Go to the **RELEASES** tab in the UI and upload it.
