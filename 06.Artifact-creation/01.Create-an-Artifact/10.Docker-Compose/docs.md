@@ -36,7 +36,7 @@ dependencies are installed on the device:
 >   docker compose version && \
 >   jq --version && \
 >   tree --version && \
->   xdelta3 -V &&
+>   xdelta3 -V
 > ```
 
 To install the Docker Compose Update Module, run the following commands on your
@@ -110,7 +110,7 @@ services:
     image: "traefik/whoami"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.whoami.rule=Path(\`/whoami\`)"
+      - 'traefik.http.routers.whoami.rule=Path("/whoami")'
       - "traefik.http.routers.whoami.entrypoints=web"
 EOF
 ```
