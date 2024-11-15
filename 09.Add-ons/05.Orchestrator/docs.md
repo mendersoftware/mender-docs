@@ -21,13 +21,7 @@ A combination of coupled connected devices belonging to the same physical or log
 
 For the purpose of introducing the Orchestrator, the example system will consist of the following devices:
 
-```
-+--------+     +-------+      +-------+
-|Linux   |     | RTOS  |      |RTOS   |
-|Gateway |     |       |      |       |
-|ID: G13 |     |ID:R998|      |ID:R456|
-+--------+     +-------+      +-------+
-```
+![System overview](system-overview.png)
 
 Linux Gateway G13:
 * A device running Linux and having direct internet connectivity
