@@ -1,0 +1,9 @@
+flowchart TD
+    subgraph System
+        Gateway["Gateway (G13)"]
+        R456["RTOS device 1 (R456)"]
+        R998["RTOS device 2 (R998)"]
+    end
+
+    Gateway --> R456
+    Gateway --> R998
