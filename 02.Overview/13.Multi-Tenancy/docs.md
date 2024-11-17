@@ -112,3 +112,51 @@ If you are using hosted Mender Enterprise please
 tenant setup using the Service Provider Tenant. For existing Tenants with a
 more complex configuration it may be treated as a
 [Consulting project](https://mender.io/pricing/mender-extras).
+
+For on-premise installations, you can promote an existing Tenant to a Service Provider Tenant with the following command:
+
+```bash
+TENANTID=your-tenant-id-here
+tenantadm update-tenant --id "${TENANTID}" --service-provider
+```
+
+where `TENANTID` variable holds the ID of the Tenant to promote.
+Please note, you have to execute the above command from the inside of the `tenantadm`
+container. For on-premise installations you can find the Tenant ID by listing the Tenants using the following command:
+
+```bash
+# tenantadm list-tenants  | grep -v loading | jq '.[] | { "tenant id": .id, "tenant name":.name}'
+{
+  "tenant id": "673a03e3c9eca7a440f2f444",
+  "tenant name": "DemoOrganization"
+}
+{
+  "tenant id": "673a0ebbe998e3d46fc010d3",
+  "tenant name": "demo5"
+}
+```
+
+## Service Provider Tenant in the Mender UI
+
+### Managing Tenants
+
+After you log in to the Tenant that is a Service Provider, you will see an empty tenants list: 
+
+[Service provider main view empty](sp0.png)
+
+Starting here you can add a new Tenant:
+
+[Service provider add](sp0-add.png)
+
+And it will appear in the list:
+
+[Service provider add](sp1.png)
+
+Now there are additional operations you can perform on it, by clicking the details link:
+
+[Service provider add](sp1-edit.png)
+
+As you can see, the Mender UI allows the Service Provider Tenant to manage the children Tenants.
+Every operation is recorded in the audit logs:
+
+[Service provider add](sp2.png)
