@@ -142,21 +142,21 @@ container. For on-premise installations you can find the Tenant ID by listing th
 
 After you log in to the Tenant that is a Service Provider, you will see an empty tenants list: 
 
-[Service provider main view empty](sp0.png)
+![Service provider main view empty](sp0.png)
 
 Starting here you can add a new Tenant:
 
-[Service provider add](sp0-add.png)
+![Service provider add](sp0-add.png)
 
 And it will appear in the list:
 
-[Service provider add](sp1.png)
+![Service provider add](sp1.png)
 
 Now there are additional operations you can perform on it, by clicking the details link:
 
-[Service provider add](sp1-edit.png)
+![Service provider add](sp1-edit.png)
 
 As you can see, the Mender UI allows the Service Provider Tenant to manage the children Tenants.
 Every operation is recorded in the audit logs:
 
-[Service provider add](sp2.png)
+![Service provider add](sp2.png)
