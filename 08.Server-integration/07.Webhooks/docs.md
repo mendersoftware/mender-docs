@@ -4,6 +4,12 @@ taxonomy:
     category: docs
 ---
 
+!!!!! Inventory type Webhooks are only available in the Mender Professional
+!!!!! and Enterprise plans, while Device auth type Webhooks is available
+!!!!! in all plans.
+!!!!! See [the Mender plans page](https://mender.io/pricing/plans?target=_blank)
+!!!!! for an overview of all Mender plans and features.
+
 Mender supports Webhooks to send data to third-party systems. With this mechanism, it's possible
 to notify external applications about device lifecycle and inventory changed events.
 This eliminates the need for manual polling and synchronization, allowing for efficient
@@ -49,14 +55,9 @@ a unique URL and an optional secret.
 
 Open the Mender UI and navigate to `Settings` -> `Integrations`:
 
-
-![integrations settings](image_1_a.png)
-
 ![integrations webhooks](image_1_b.png)
 
 Choose the `Webhooks` integration and enter your application URL and necessary credentials (optional):
-
-![integration setup](image_2.png)
 
 ![integration setup](image_3.png)
 
@@ -71,6 +72,10 @@ You can see details of a given Webhook integration after proceeding to its detai
 You can also see the Webhooks activity in the `Activity` tab:
 
 ![webhooks details](image_6.png)
+
+And further details after clicking `View details` on ant event row:
+
+![webhooks details](image_7.png)
 
 ## Events details
 
