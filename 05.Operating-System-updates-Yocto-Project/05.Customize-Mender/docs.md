@@ -157,35 +157,30 @@ in your `local.conf` file.
 
 ## Update Modules
 
-Mender comes with some standard Update Modules available for install, and it's also possible to
-install your own custom Update Modules with Yocto.
+Mender comes with some standard Update Modules ready to be used, and it's also possible to install
+your own custom Update Modules with Yocto.
 
 
 ### Standard Update Modules
 
-Mender comes with some Update Modules available out of the box. These are:
-
-* deb
+The standard Update Module are
+* rootfs-image
 * directory
-* docker
-* rpm
-* script
 * single-file
 
-These Update Modules are available for install, but they are not enabled by default unless you are
-building with the demo layer. To enable the standard Update Modules, you need to add the `modules`
-entry to the `PACKAGECONFIG` of the `mender` recipe. This can be done either by adding your
-own `.bbappend` recipe file, or by adding it to `local.conf`. To add it to a recipe file, create
-`mender_%.bbappend` and add this:
+These Update Modules are installed by default. To remove the standard Update Modules, you need to
+remove the `modules` entry to the `PACKAGECONFIG` of the `mender` recipe. This can be done either by
+adding your own `.bbappend` recipe file, or by adding it to `local.conf`. To add it to a recipe
+file, create `mender_%.bbappend` and add this:
 
 ```bash
-PACKAGECONFIG:append = " modules"
+PACKAGECONFIG:remove = " modules"
 ```
 
 Alternatively, add this to `local.conf`:
 
 ```bash
-PACKAGECONFIG:append:pn-mender = " modules"
+PACKAGECONFIG:remove:pn-mender = " modules"
 ```
 
 ### Custom Update Modules
