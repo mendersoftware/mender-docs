@@ -178,7 +178,7 @@ The interface should print one of the valid responses:
 `ArtifactReboot` argument when using `Automatic`, `ArtifactReboot` still counts
 as having executed -- as far as the conditional logic is concerned.
 
-If any update interface returns `Automatic`, then a reboot of the system will be
+If any update interface returns `Automatic`, then a reboot of the device will be
 performed after the `ArtifactReboot` state of all update interfaces in the same
 "order group" that responded `Yes` have been executed. "Order group" means all
 update interfaces for components that are using the same `order` field in the
@@ -214,7 +214,7 @@ data, this should be done in the `Cleanup` state instead.
 `Cleanup` executes unconditionally at the end of all the other states,
 regardless of all outcomes. `Cleanup` can be used to clean up various temporary
 files that might have been used during an update, but should not be used to make
-any system changes. For example, cleaning up an update that has failed,
+any changes. For example, cleaning up an update that has failed,
 returning it to the previous state, should rather be done in the
 `ArtifactRollback` state. However, rollback data that has been kept around in
 order to facilite a rollback (which never happened), should be cleaned up in

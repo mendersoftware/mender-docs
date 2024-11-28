@@ -118,9 +118,9 @@ orch-install/install_demo.sh
 mender-update-orchestrator -h
 ```
 
-### Prepare the real rootfs artifacts
+### Prepare the real rootfs Artifacts
 
-The real rootfs update artifacts will be created from runtime using the mender-artifact tool.
+The real rootfs update Artifacts will be created from runtime using the mender-artifact tool.
 
 On the **device**
 
@@ -161,11 +161,11 @@ mender-artifact write rootfs-image \
     -f rootfs.ext4
 ```
 
-As the result you now have gateway artifacts generated (gateway-v1.mender, gateway-v2.mender). 
+As the result you now have gateway Artifacts generated (gateway-v1.mender, gateway-v2.mender). 
 Go to your Hosted Mender account and upload them under Releases.
 
 
-Still on the **host** in the location where you cloned `mender-orchestrator-update-interfaces`, go to `mender-orchestrator-update-interfaces/demo/premade-artifacts` and upload the 4 artifacts (`manifest-v1.mender  manifest-v2.mender  rtos-v1.mender  rtos-v2.mender`) from there as well. 
+Still on the **host** in the location where you cloned `mender-orchestrator-update-interfaces`, go to `mender-orchestrator-update-interfaces/demo/premade-artifacts` and upload the 4 Artifacts (`manifest-v1.mender  manifest-v2.mender  rtos-v1.mender  rtos-v2.mender`) from there as well. 
 
 
 Once complete, your Releases list will look like this:
@@ -177,16 +177,16 @@ Once complete, your Releases list will look like this:
 In these examples we will update the root filesystem of the gateway where the Orchestrator runs, as
 well as update two peripheral mock RTOS devices. 
 
-! Before starting, please ensure that all the artifacts have been uploaded to Hosted Mender.
+! Before starting, please ensure that all the Artifacts have been uploaded to Hosted Mender.
 
 
-### Standard system update
+### Standard System update
 
-In this example we will perform the update of the system using Hosted Mender. 
+In this example we will perform the update of the System using Hosted Mender. 
 This works just like a regular Mender deployment.
 
-We are only deploying an artifact containing the manifest.
-The Orchestrator will download the other artifacts from Hosted Mender as they are needed.
+We are only deploying an Artifact containing the manifest.
+The Orchestrator will download the other Artifacts from Hosted Mender as they are needed.
 
 Create a deployment to the device and select manifest-v1 as the Release.
 
@@ -194,7 +194,7 @@ Create a deployment to the device and select manifest-v1 as the Release.
 ![manifest-v1 Install](example-manifest-v1.png)
 
 
-From the perspective of the UI, the update will go through a standard process as how the Mender client goes through.
+From the perspective of the UI, the update will go through a standard process as how the Mender Client goes through.
 Once completed, the new changes will be visible in the software tab.
 
 
@@ -210,10 +210,10 @@ The following graph shows a higher level flow:
 
 
 As part of the deployment, the Orchestrator received the new manifest.
-Based on the Manifest the Orchestrator took the required steps to update the system.
-This also meant downloading the artifacts from Hosted Mender directly.
+Based on the Manifest the Orchestrator took the required steps to update the System.
+This also meant downloading the Artifacts from Hosted Mender directly.
 
-Using the remote terminal we can see the state of the system from the device CLI as well:
+Using the remote terminal we can see the state of the System from the device CLI as well:
 
 
 ![cli system status](cli-system-status.png)
@@ -221,9 +221,9 @@ Using the remote terminal we can see the state of the system from the device CLI
 
 ### Component update failure
 
-An update of a system can occasionally fail.
-In that case it's almost always one component of a system that fails to update.
-For those cases it's important for the system to a [healthy end state](../docs.md#end-state-constraints).
+An update of a System can occasionally fail.
+In that case it's almost always one component of a System that fails to update.
+For those cases it's important for the System to a [healthy end state](../docs.md#end-state-constraints).
 
 We're going to introduce an update failure in one of the components (R456).
 Open the remote terminal and run the following command:
@@ -247,7 +247,7 @@ After that the attempt to update the R456 took place and that failed.
 As a result of that, the G13 had to be rolled back to the previous running version.
 
 
-The versions of the system remain on v1:
+The versions of the System remain on v1:
 
 
 ![manifest-v1 Installed](example-manifest-v1-installed.png)
