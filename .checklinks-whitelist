@@ -4,7 +4,8 @@
         "201.Device-side-API"
     ],
     "files": [
-        "302.Release-information/02.Release-notes-changelog/10.Mender-server",
+        "302.Release-information/02.Release-notes-changelog/10.Mender-Server",
+        "302.Release-information/02.Release-notes-changelog/11.Mender-Server-Enterprise",
         "302.Release-information/02.Release-notes-changelog/20.Mender-client",
         "302.Release-information/02.Release-notes-changelog/21.mender-connect",
         "302.Release-information/02.Release-notes-changelog/22.mender-configure-module",
