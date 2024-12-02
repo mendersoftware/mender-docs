@@ -223,7 +223,7 @@ systemctl daemon-reload
 systemctl start countdown.service
 ```
 
-You can for example put the above code in a file called `setup-countdown.sh` and run that with sudo:
+You can for example put the above code in a file with the name `setup-countdown.sh` and run it with sudo:
 
 ```bash
 sudo bash setup-countdown.sh
