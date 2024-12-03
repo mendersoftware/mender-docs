@@ -188,7 +188,7 @@ Assume you want to monitor the state of a systemd service,
 and you wish to receive _CRITICAL_ alerts if the service is not running,
 and _OK_ alerts when it is back up. 
 
-Create a service that will count some seconds and then fail.
+Create a service that will count some seconds and then fail. You will have to run this script as root:
 
 ```bash
 cat > countdown.sh << "EOF"
@@ -221,6 +221,12 @@ EOF
 
 systemctl daemon-reload
 systemctl start countdown.service
+```
+
+You can for example put the above code in a file with the name `setup-countdown.sh` and run it with sudo:
+
+```bash
+sudo bash setup-countdown.sh
 ```
 
 You can confirm the countdown with `journalctl -fu countdown.service`.
