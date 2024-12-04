@@ -245,6 +245,25 @@ global:
 mongodb:
   enabled: false
 ```
+
+!!!! If you want to use the Service Provider Tenants feature, you need to create
+!!!! a database user with the `atlasAdmin@admin` role.  
+!!!! If you want to keep 
+!!!! this user separate to the rest of the application, you have to provide
+!!!! dedicated connection to the Deployments and the Inventory services:
+!!!! ```yaml
+!!!! kubectl create secret generic mender-mongo-admin \
+!!!!   --from-literal=MONGO="mongodb://mymongoadmin:mymongopassword@my-mongo-host:27017/mender" \
+!!!!   --from-literal=MONGO_URL="mongodb://mymongoadmin:mymongopassword@my-mongo-host:27017/mender"
+!!!! ```
+!!!! And then configure the Mender Server to use the external MongoDB service:
+!!!! ```yaml
+!!!! deployments:
+!!!!   mongodbExistingSecret: "mender-mongo-admin"
+!!!! inventory:
+!!!!   mongodbExistingSecret: "mender-mongo-admin"
+!!!! ```
+
 [/ui-tab]
 [ui-tab title="External NATS"]
 To use an external NATS service, create a secret with the NATS connection string:
