@@ -279,16 +279,10 @@ echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/
  | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
 ```
 [/ui-tab]
-[ui-tab title="Debian Buster"]
+[ui-tab title="Ubuntu Noble"]
 <!--AUTOMATION: ignore -->
 ```bash
-echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/buster/stable main" \
- | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
-```
-[/ui-tab]
-[ui-tab title="Ubuntu Focal"]
-```bash
-echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/focal/stable main" \
+echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/noble/stable main" \
  | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
 ```
 [/ui-tab]
@@ -296,6 +290,12 @@ echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/
 <!--AUTOMATION: ignore -->
 ```bash
 echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/jammy/stable main" \
+ | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
+```
+[/ui-tab]
+[ui-tab title="Ubuntu Focal"]
+```bash
+echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/focal/stable main" \
  | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
 ```
 [/ui-tab]
@@ -509,7 +509,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-monitor_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.3.0/mender-monitor_1.3.0-1%2Bdebian%2Bbuster_all.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.3.0/mender-monitor_1.3.0-1%2Bdebian%2Bbullseye_all.deb
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
@@ -523,7 +523,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-monitor_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.3.0/mender-monitor_1.3.0-1%2Bdebian%2Bbuster_all.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.3.0/mender-monitor_1.3.0-1%2Bdebian%2Bbullseye_all.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -533,7 +533,7 @@ Then install the package with:
 
 <!--AUTOVERSION: "mender-monitor_%-1"/monitor-client -->
 ```bash
-sudo dpkg -i mender-monitor_1.3.0-1+debian+buster_all.deb || sudo apt --fix-broken -y install
+sudo dpkg -i mender-monitor_1.3.0-1+debian+bullseye_all.deb || sudo apt --fix-broken -y install
 ```
 
 ### Demo monitors
@@ -553,7 +553,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-monitor-demo_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.3.0/mender-monitor-demo_1.3.0-1%2Bdebian%2Bbuster_all.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.3.0/mender-monitor-demo_1.3.0-1%2Bdebian%2Bbullseye_all.deb
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
@@ -568,7 +568,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-monitor-demo_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.3.0/mender-monitor-demo_1.3.0-1%2Bdebian%2Bbuster_all.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.3.0/mender-monitor-demo_1.3.0-1%2Bdebian%2Bbullseye_all.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -578,7 +578,7 @@ Then install the package with:
 
 <!--AUTOVERSION: "mender-monitor-demo_%-1"/monitor-client -->
 ```bash
-sudo dpkg -i mender-monitor-demo_1.3.0-1+debian+buster_all.deb
+sudo dpkg -i mender-monitor-demo_1.3.0-1+debian+bullseye_all.deb
 ```
 
 ## Mender Gateway
@@ -687,7 +687,7 @@ wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDE
 [/ui-tabs]
 
 [/ui-tab]
-[ui-tab title="Debian Buster"]
+[ui-tab title="Ubuntu Noble"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="armhf"]
@@ -700,7 +700,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bdebian%2Bbuster_armhf.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bubuntu%2Bnoble_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
@@ -713,7 +713,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bdebian%2Bbuster_arm64.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bubuntu%2Bnoble_arm64.deb
 ```
 [/ui-tab]
 [ui-tab title="amd64"]
@@ -726,9 +726,53 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bdebian%2Bbuster_amd64.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bubuntu%2Bnoble_amd64.deb
 ```
+[/ui-tab]
+[/ui-tabs]
 
+[/ui-tab]
+[ui-tab title="Ubuntu Jammy"]
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="armhf"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bubuntu%2Bjammy_armhf.deb
+```
+[/ui-tab]
+[ui-tab title="arm64"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bubuntu%2Bjammy_arm64.deb
+```
+[/ui-tab]
+[ui-tab title="amd64"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bubuntu%2Bjammy_amd64.deb
+```
 [/ui-tab]
 [/ui-tabs]
 
@@ -773,52 +817,6 @@ And download it with:
 <!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
 ```bash
 wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bubuntu%2Bfocal_amd64.deb
-```
-[/ui-tab]
-[/ui-tabs]
-
-[/ui-tab]
-
-[ui-tab title="Ubuntu Jammy"]
-
-[ui-tabs position="top-left" active="0" theme="lite" ]
-[ui-tab title="armhf"]
-Set the following variables with your credentials:
-<!--AUTOMATION: ignore -->
-```bash
-HOSTED_MENDER_EMAIL=<your.email@example.com>
-HOSTED_MENDER_PASSWORD=<yoursecurepassword>
-```
-And download it with:
-<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
-```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bubuntu%2Bjammy_armhf.deb
-```
-[/ui-tab]
-[ui-tab title="arm64"]
-Set the following variables with your credentials:
-<!--AUTOMATION: ignore -->
-```bash
-HOSTED_MENDER_EMAIL=<your.email@example.com>
-HOSTED_MENDER_PASSWORD=<yoursecurepassword>
-```
-And download it with:
-<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
-```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bubuntu%2Bjammy_arm64.deb
-```
-[/ui-tab]
-[ui-tab title="amd64"]
-Set the following variables with your credentials:
-<!--AUTOMATION: ignore -->
-```bash
-HOSTED_MENDER_EMAIL=<your.email@example.com>
-HOSTED_MENDER_PASSWORD=<yoursecurepassword>
-```
-And download it with:
-<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
-```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bubuntu%2Bjammy_amd64.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -935,7 +933,7 @@ wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_EN
 [/ui-tabs]
 
 [/ui-tab]
-[ui-tab title="Debian Buster"]
+[ui-tab title="Ubuntu Noble"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="armhf"]
@@ -950,7 +948,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bdebian%2Bbuster_armhf.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bubuntu%2Bnoble_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
@@ -965,7 +963,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bdebian%2Bbuster_arm64.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bubuntu%2Bnoble_arm64.deb
 ```
 [/ui-tab]
 [ui-tab title="amd64"]
@@ -980,9 +978,59 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bdebian%2Bbuster_amd64.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bubuntu%2Bnoble_amd64.deb
 ```
+[/ui-tab]
+[/ui-tabs]
 
+[/ui-tab]
+[ui-tab title="Ubuntu Jammy"]
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="armhf"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+MENDER_ENTERPRISE_USER=<your.user>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+
+<!--AUTOMATION: ignore -->
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bubuntu%2Bjammy_armhf.deb
+```
+[/ui-tab]
+[ui-tab title="arm64"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+MENDER_ENTERPRISE_USER=<your.user>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+
+<!--AUTOMATION: ignore -->
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bubuntu%2Bjammy_arm64.deb
+```
+[/ui-tab]
+[ui-tab title="amd64"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+MENDER_ENTERPRISE_USER=<your.user>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+
+<!--AUTOMATION: ignore -->
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bubuntu%2Bjammy_amd64.deb
+```
 [/ui-tab]
 [/ui-tabs]
 
@@ -1033,58 +1081,6 @@ And download it with:
 <!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
 ```bash
 wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bubuntu%2Bfocal_amd64.deb
-```
-[/ui-tab]
-[/ui-tabs]
-
-[/ui-tab]
-
-[ui-tab title="Ubuntu Jammy"]
-
-[ui-tabs position="top-left" active="0" theme="lite" ]
-[ui-tab title="armhf"]
-Set the following variables with your credentials:
-<!--AUTOMATION: ignore -->
-```bash
-MENDER_ENTERPRISE_USER=<your.user>
-MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
-```
-And download it with:
-
-<!--AUTOMATION: ignore -->
-<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
-```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bubuntu%2Bjammy_armhf.deb
-```
-[/ui-tab]
-[ui-tab title="arm64"]
-Set the following variables with your credentials:
-<!--AUTOMATION: ignore -->
-```bash
-MENDER_ENTERPRISE_USER=<your.user>
-MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
-```
-And download it with:
-
-<!--AUTOMATION: ignore -->
-<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
-```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bubuntu%2Bjammy_arm64.deb
-```
-[/ui-tab]
-[ui-tab title="amd64"]
-Set the following variables with your credentials:
-<!--AUTOMATION: ignore -->
-```bash
-MENDER_ENTERPRISE_USER=<your.user>
-MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
-```
-And download it with:
-
-<!--AUTOMATION: ignore -->
-<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
-```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/1.2.0/mender-gateway_1.2.0-1%2Bubuntu%2Bjammy_amd64.deb
 ```
 [/ui-tab]
 [/ui-tabs]
