@@ -59,7 +59,7 @@ for your convenience. Some sample Ingress values are detailed in the later secti
 
 [ui-tabs position="top-left" active="0" theme="default" ]
 [ui-tab title="Open Source"]
-<!--AUTOVERSION: "export MENDER_VERSION_TAG=\"mender-%\""/integration "cat >mender-%.yml <<EOF"/integration "helm upgrade --install mender mender/mender -f mender-%.yml"/integration -->
+<!--AUTOVERSION: "export MENDER_VERSION_TAG=\"mender-%\""/integration "cat >mender-%.yml <<EOF"/integration "--version %"/ignore "-f mender-%.yml"/integration -->
 ```bash
 export MENDER_SERVER_DOMAIN="mender.example.com"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
@@ -110,7 +110,7 @@ useradm:
 $(cat useradm.key | sed -e 's/^/      /g')
 EOF
 
-helm upgrade --install mender mender/mender -f mender-3.7.7.yml
+helm upgrade --install mender mender/mender --version 5.11.2 -f mender-3.7.7.yml
 ```
 [/ui-tab]
 [ui-tab title="Enterprise"]
@@ -120,7 +120,7 @@ helm upgrade --install mender mender/mender -f mender-3.7.7.yml
 !!!!! Container Registry. Please email [contact@mender.io](mailto:contact@mender.io) to
 !!!!! receive an evaluation account.
 
-<!--AUTOVERSION: "export MENDER_VERSION_TAG=\"mender-%\""/integration "cat >mender-%.yml <<EOF"/integration "helm upgrade --install mender mender/mender -f mender-%.yml"/integration -->
+<!--AUTOVERSION: "export MENDER_VERSION_TAG=\"mender-%\""/integration "cat >mender-%.yml <<EOF"/integration "--version %"/ignore "-f mender-%.yml"/integration -->
 ```bash
 export MENDER_REGISTRY_USERNAME="replace-with-your-username"
 export MENDER_REGISTRY_PASSWORD="replace-with-your-password"
@@ -180,7 +180,7 @@ useradm:
 $(cat useradm.key | sed -e 's/^/      /g')
 EOF
 
-helm upgrade --install mender mender/mender -f mender-3.7.7.yml
+helm upgrade --install mender mender/mender --version 5.11.2 -f mender-3.7.7.yml
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -350,9 +350,9 @@ EOF
 ```
 
 You can now update the Helm Chart with the included ingress:
-<!--AUTOVERSION: "helm upgrade --install mender mender/mender -f mender-%.yml"/integration -->
+<!--AUTOVERSION: "--version %"/ignore "-f mender-%.yml"/integration -->
 ```bash
-helm upgrade --install mender mender/mender -f mender-3.7.7.yml
+helm upgrade --install mender mender/mender --version 5.11.2 -f mender-3.7.7.yml
 ```
 
 Alternatively, you can create your own Ingress resource. Some references:
