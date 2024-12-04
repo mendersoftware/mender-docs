@@ -21,8 +21,97 @@ New major versions may come with changes that require manual migration steps. Ch
 are sometimes necessary to fix problems that cannot be dealt with in minor releases, or enable new
 behaviors that conflict with existing behaviors in some way.
 
-<!--AUTOVERSION: "to % or later"/ignore-->
-### Upgrade the Mender Client 3.x series to 4.0.0 or later
+### Upgrade the Mender Client 4.x series to 5.x series
+
+#### Overview
+
+<!--AUTOVERSION: "In Mender Client %"/ignore-->
+In Mender Client 5.0.0, community Update Modules have been moved from our officially supported
+repository to the community repository to clarify their support level.
+
+Below you will find the steps describing how to get the community Update Modules, installed by
+default with  Mender Client 4.x, on Mender Client 5.x series. The steps will show the case for the
+`deb` Update Module as an example.
+
+On Mender Client 4.x series, both the community and Norhtern.tech supported Update Modules were
+installed:
+* deb
+* directory
+* docker
+* rootfs-image
+* rpm
+* script
+* single-file
+
+From Mender Client 5.x series onwards, the community Update Models are removed, and only the
+officially supported ones are installed by default alongside the client:
+* directory
+* rootfs-image
+* single-file
+
+The Update Modules `deb`, `docker`, `rpm` and `script` have been moved to
+[`mender-update-modules` repository](https://github.com/mendersoftware/mender-update-modules/).
+
+When you upgrade from Mender Client 4.x to Mender Client 5.x, you will lose the community Update
+Modules that were previously installed by default. This will happen regardless of the way you're
+installing the Mender Client.
+
+For a list of all community-supported Update Modules, please see the [Update Module category in the
+Mender Hub community forum](https://hub.mender.io/c/update-modules/13).
+
+#### Install an Update Module with Yocto
+
+Add an snippet like the following to a `mender_%.bbappend` in your layer:
+
+<!--AUTOVERSION: "mender-update-modules/%/deb"/ignore-->
+```
+SRC_URI:append = " \
+  https://raw.githubusercontent.com/mendersoftware/mender-update-modules/master/deb/module/deb;sha256sum=065714b581785a2d7c83b684f0d5348031c5512f21863fed38197078cb3ef6e5 \
+"
+FILES:${PN}:append = " \
+  ${datadir}/mender/modules/v3/deb \
+"
+do_install:append () {
+  mkdir -p ${D}/${datadir}/mender/modules/v3
+  find ${WORKDIR}
+  install -m 755 ${WORKDIR}/deb ${D}/${datadir}/mender/modules/v3/deb
+}
+```
+
+In the example above the SHA256 checksum is generated with:
+
+<!--AUTOVERSION: "mender-update-modules/%/deb"/ignore-->
+```
+curl --silent "https://raw.githubusercontent.com/mendersoftware/mender-update-modules/master/deb/module/deb" | sha256sum | awk '{print $1}'
+# Outputs: 065714b581785a2d7c83b684f0d5348031c5512f21863fed38197078cb3ef6e5
+```
+
+#### Install an Update Module with `mender-convert`
+
+Add an snippet like this one to your config file:
+
+<!--AUTOVERSION: "mender-update-modules/%/deb"/ignore-->
+```
+install_update_module_deb() {
+    run_and_log_cmd "mkdir -p work/rootfs/usr/share/mender/modules/v3"
+    run_and_log_cmd "wget -P work/rootfs/usr/share/mender/modules/v3 https://raw.githubusercontent.com/mendersoftware/mender-update-modules/master/deb/module/deb"
+    run_and_log_cmd "chmod 0755 work/rootfs/usr/share/mender/modules/v3/deb"
+}
+OVERLAY_MODIFY_HOOKS+=(install_update_module_deb)
+```
+
+#### Install an Update Module on a live device
+
+Execute an snippet like this one:
+
+<!--AUTOVERSION: "mender-update-modules/%/deb"/ignore-->
+```
+mkdir -p work/rootfs/usr/share/mender/modules/v3
+wget -P work/rootfs/usr/share/mender/modules/v3 https://raw.githubusercontent.com/mendersoftware/mender-update-modules/master/deb/module/deb
+chmod 0755 work/rootfs/usr/share/mender/modules/v3/deb
+```
+
+### Upgrade the Mender Client 3.x series to 4.x series
 
 #### Overview
 
