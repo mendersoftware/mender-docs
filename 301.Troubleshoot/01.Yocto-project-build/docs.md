@@ -11,7 +11,7 @@ taxonomy:
 Mender client version 4.0.0 and later have been split up into several separate components: `mender-auth` and `mender-update`, plus `mender-snapshot` which is now a separate recipe. This also changes the binary names, and just `mender` by itself is not valid anymore. Because of this it is not completely backwards compatible. On the stable Yocto branches 4.0 (kirkstone) and older, the latest major release is the 3.x series, and therefore 4.0 and later are not built by meta-mender unless requested.
 
 <!--AUTOVERSION: "To request version % of the clients"/mender-->
-To request version 4.0.4 of the clients, add a snippet like the following to `local.conf`:
+To request version 4.0.5 of the clients, add a snippet like the following to `local.conf`:
 
 <!--AUTOVERSION: "PREFERRED_VERSION_mender-client = \"%\""/mender-->
 ```
@@ -334,7 +334,7 @@ A typical error message for this condition is:
 Error:
  Problem: package grub-efi-mender-precompiled-2.04-r0.cortexa8hf_neon requires u-boot, but none of the providers can be installed
   - package grub-efi-mender-precompiled-2.04-r0.cortexa8hf_neon conflicts with u-boot <= 1:2019.07 provided by u-boot-fork-1:2019.07-r0.beaglebone_yocto
-  - package mender-4.0.4-r0.cortexa8hf_neon requires grub-editenv, but none of the providers can be installed
+  - package mender-4.0.5-r0.cortexa8hf_neon requires grub-editenv, but none of the providers can be installed
   - conflicting requests
 ```
 
