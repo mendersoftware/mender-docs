@@ -114,7 +114,6 @@ export MENDER_SERVER_DOMAIN="mender.example.com"
 cat <<-EOF > mender-values.yml
 ingress:
   enabled: true
-cat <<-EOF >> mender-values.yml
 ingress:
   enabled: true
   annotations:
@@ -144,7 +143,6 @@ export MENDER_SERVER_DOMAIN="mender.example.com"
 cat <<-EOF > mender-values.yml
 ingress:
   enabled: true
-cat <<-EOF >> mender-values.yml
 ingress:
   enabled: true
   annotations:
