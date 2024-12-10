@@ -345,6 +345,16 @@ Set the device file corresponding to the root filesystem partitions.
 The size of the storage medium of the device.
 
 
+#### `MENDER_SPARSE_IMAGE`
+
+> Value: y/n(default)
+
+Mender sparse image file generation
+By default, mender-convert writes the entire image. When enabled (value: y), mender-convert attempts to avoid allocating empty spaces within the image. This can result in the created image using less space on the storage medium while maintaining the expected size.
+
+However, some tools may not handle sparse files correctly.
+
+
 #### `MENDER_STORAGE_URL`
 
 > Value: https://downloads.mender.io (default)
