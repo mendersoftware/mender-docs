@@ -22,42 +22,29 @@ You should:
 
 ### Step 1 - Download the mender-artifact utility on your workstation
 
-!!! If you already installed `mender-artifact` on your system, you can skip this step.
+!!! The simplest installation instructions for `mender-artifact` are covered below, see
+!!! [Downloads](../../10.Downloads/docs.md#mender-artifact) for installation alternatives such as
+!!! setting up package repositories.
 
-Prepare destination directory:
+On Linux, download the `mender-artifact` deb package and install it:
 
+<!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
+```bash
+wget https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_3.11.3-1%2B$(. /etc/os-release; echo $ID)%2B$(. /etc/os-release; echo $VERSION_CODENAME)_amd64.deb
+sudo dpkg --install mender-artifact_3.11.3-1+$(. /etc/os-release; echo $ID)+$(. /etc/os-release; echo $VERSION_CODENAME)_amd64.deb
+```
+
+On MacOS, download the `mender-artifact` binary, give exec permissions, and add it to your path:
+
+<!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 ```bash
 mkdir -p ${HOME}/bin
-```
-
-Download the `mender-artifact` binary. If you're on Linux
-
-<!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-```bash
-wget https://downloads.mender.io/mender-artifact/3.11.3/linux/mender-artifact -O ${HOME}/bin/mender-artifact
-```
-
-On MacOS
-
-<!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-```bash
 wget https://downloads.mender.io/mender-artifact/3.11.3/darwin/mender-artifact -O ${HOME}/bin/mender-artifact
-```
-
-
-Make the `mender-artifact` binary executable:
-
-```bash
 chmod +x ${HOME}/bin/mender-artifact
-```
-
-Add `${HOME}/bin` to `PATH`:
-
-```bash
 export PATH="${PATH}:${HOME}/bin"
 ```
 
-!!! Add above to `~/.bashrc` or equivalent to make it persistent across multiple
+!!! Add the last line from above to `~/.bashrc` or equivalent to make it persistent across multiple
 !!! terminal sessions.
 
 ## Step 2 - Setup shell variables on your workstation
@@ -201,7 +188,7 @@ order to deploy it to your device.
 
 Once this deployment finishes it will have the effect of restoring your full
 device root filesystem to the same state as when you created the snapshot in Step 3.
-You can verify this by checking if `/greetings.txt` eists after the deployment has finished.
+You can verify this by checking if `/greetings.txt` exists after the deployment has finished.
 It is gone! This is because your device filesystem did not have this file
 at the time you created the snapshot. This works for any change in the filesystem,
 including removing or installing software and changing any configuration.
