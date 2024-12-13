@@ -13,7 +13,7 @@ process:
 ## Disk images
 
 These disk images (`*.img` or `*.sdimg`) are based on images provided by board
-manufacturers and are ready to install the Mender client. They are used to
+manufacturers and are ready to install the Mender Client. They are used to
 provision the device storage for devices without Mender running already.
 
 Mender provides images based on the following distributions:
@@ -52,42 +52,33 @@ See [Artifact creation](../06.Artifact-creation/chapter.md) for more information
 use this utility.
 
 Follow the correct link according to your host platform to download
-`mender-artifact` as a standalone utility:
+`mender-artifact` deb package or as an standalone utility:
 
-<!--AUTOVERSION: "keeps \"%\" version"/ignore-->
-<!-- The second column points to pre-release software and keeps "master" version in the name and link -->
-<!--AUTOVERSION: "mender-artifact %][x.x.x_mender-artifact-"/mender-artifact "mender-artifact %][%_mender-artifact-"/ignore-->
-| Platform | Download link                                          |                                                                       |
-|----------|--------------------------------------------------------|-----------------------------------------------------------------------|
-| Linux    | [mender-artifact 3.11.3][x.x.x_mender-artifact-linux]  | [mender-artifact master][master_mender-artifact-linux] (Pre-release)  |
-| Mac OS X | [mender-artifact 3.11.3][x.x.x_mender-artifact-darwin] | [mender-artifact master][master_mender-artifact-darwin] (Pre-release) |
+<!--AUTOVERSION: "mender-artifact %][x.x.x_mender-artifact-"/mender-artifact -->
+| Platform          | Download link                                             |
+|-------------------|-----------------------------------------------------------|
+| Ubuntu 24.04      | [mender-artifact 3.11.3][x.x.x_mender-artifact-debian12]   |
+| Ubuntu 22.04      | [mender-artifact 3.11.3][x.x.x_mender-artifact-debian11]   |
+| Ubuntu 20.04      | [mender-artifact 3.11.3][x.x.x_mender-artifact-ubuntu2404] |
+| Debian 12         | [mender-artifact 3.11.3][x.x.x_mender-artifact-ubuntu2204] |
+| Debian 11         | [mender-artifact 3.11.3][x.x.x_mender-artifact-ubuntu2004] |
+| Mac OS X (x86-64) | [mender-artifact 3.11.3][x.x.x_mender-artifact-darwin]     |
 
-!!! The `mender-artifact` pre-built binaries depend on OpenSSL 1.1 shared library. If you are
-!!! running a system that has already migrated to OpenSSL 3, like Alpine Linux 3.17 or Ubuntu 22.04,
-!!! you cannot run the binary directly. Follow one of these workarounds:
-!!! * For Alpine Linux, install the `openssl1.1-compat` package
-!!! * For Ubuntu 22.04 or newer, the recommended process is to install `mender-artifact` through the
+!!! * For Debian and Ubuntu, you can also install `mender-artifact` through the
 !!! [Mender APT repositories](#install-using-the-apt-repository).
-!!! * For the other cases where the distribution does not provide a compatibility package, build
-!!! `mender-artifact` from the source.
 
-Remember to add execute permission and ensure that the mender-artifact utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
-
-<!--AUTOMATION: ignore -->
-```bash
-sudo chmod +x mender-artifact
-sudo cp mender-artifact /usr/local/bin/
-```
-
-Please refer to your host Operating System documentation for more details.
-
-
+<!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
+[x.x.x_mender-artifact-debian12]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_3.11.3-1%2Bdebian%2Bbookworm_amd64.deb
+<!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
+[x.x.x_mender-artifact-debian11]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_3.11.3-1%2Bdebian%2Bbullseye_amd64.deb
+<!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
+[x.x.x_mender-artifact-ubuntu2404]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_3.11.3-1%2Bubuntu%2Bnoble_amd64.deb
+<!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
+[x.x.x_mender-artifact-ubuntu2204]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_3.11.3-1%2Bubuntu%2Bjammy_amd64.deb
+<!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
+[x.x.x_mender-artifact-ubuntu2004]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_3.11.3-1%2Bubuntu%2Bfocal_amd64.deb
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/3.11.3/linux/mender-artifact
 [x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/3.11.3/darwin/mender-artifact
-<!--AUTOVERSION: "[%_mender-artifact-"/ignore "mender-artifact/%/"/ignore -->
-[master_mender-artifact-linux]: https://downloads.mender.io/mender-artifact/master/linux/mender-artifact
-[master_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/master/darwin/mender-artifact
 
 ! If you are using Mac OS X, note that using `mender-artifact` with
 ! disk image files (e.g.: `*.sdimg`, `*.img`, or others holding the storage
