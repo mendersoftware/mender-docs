@@ -18,13 +18,13 @@ filesystem tools (namely `e2fsck`) on the host. Debian 12, Ubuntu 24.04 and newe
 
 Workaround the issue by executing a few extra steps:
 
-On the shell of the virtual device execute:
+On the shell of the device execute:
 ```
 mkfifo /data/mender/dump
 mender-snapshot dump > /data/mender/dump
 ```
 
-Then, back to the shell on the host where you have the variables form the Get Started guide, run:
+The last command will not terminate, but will wait for you to execute commands from the host. So back in the shell on the host where you have the variables form the Get Started guide, run:
 
 ```
 ssh -p 8822 root@${IP_ADDRESS} cat /data/mender/dump > rootfs.ext4
@@ -35,6 +35,8 @@ mender-artifact write rootfs-image \
     -o system-v1.mender \
     -f rootfs.ext4
 ```
+
+While the command is running, you should see a progress bar in the device window.
 
 From here, upload the `system-v1.mender` and continue with the rest of the steps in the guide.
 
