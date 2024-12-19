@@ -30,12 +30,12 @@ To follow this tutorial, you will need the following:
 ## Step 1 - Flash the Raspberry Pi
 
 Download the Raspberry Pi OS image ready for Mender:
-  * Download link: [Raspberry Pi 3 Model B and B+][raspios-bullseye-lite-raspberrypi3-mender.img.xz]
-  * Download link: [Raspberry Pi 4 Model B][raspios-bullseye-lite-raspberrypi4-mender.img.xz]
+  * Download link: [Raspberry Pi 3 Model B and B+][raspios-lite-raspberrypi3_bookworm_64bit-mender-convert.img.xz]
+  * Download link: [Raspberry Pi 4 Model B][raspios-lite-raspberrypi4_bookworm_64bit-mender-convert.img.xz]
 
 <!--AUTOVERSION: "mender-convert-%.img.xz"/mender-convert -->
-[raspios-bullseye-lite-raspberrypi3-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2023-05-03-raspios-bullseye-armhf-lite/arm/2023-05-03-raspios-bullseye-armhf-lite-raspberrypi3-mender-convert-4.2.2.img.xz
-[raspios-bullseye-lite-raspberrypi4-mender.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2023-05-03-raspios-bullseye-armhf-lite/arm/2023-05-03-raspios-bullseye-armhf-lite-raspberrypi4-mender-convert-4.2.2.img.xz
+[raspios-lite-raspberrypi3_bookworm_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2024-10-22-raspios-lite/arm/2024-10-22-raspios-lite-raspberrypi3_bookworm_64bit-mender-convert-master.img.xz
+[raspios-lite-raspberrypi4_bookworm_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2024-10-22-raspios-lite/arm/2024-10-22-raspios-lite-raspberrypi4_bookworm_64bit-mender-convert-master.img.xz
 
 Follow the steps outlined in the [Raspberry Pi OS documentation](https://www.raspberrypi.org/documentation/installation/installing-images?target=_blank)
 to flash the OS image to the device.
