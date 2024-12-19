@@ -55,14 +55,14 @@ Follow the correct link according to your host platform to download
 `mender-artifact` deb package or as an standalone utility:
 
 <!--AUTOVERSION: "mender-artifact %][x.x.x_mender-artifact-"/mender-artifact -->
-| Platform          | Download link                                          |
-|-------------------|--------------------------------------------------------|
-| Ubuntu 24.04      | [mender-artifact 4.0.0][x.x.x_mender-artifact-linux]  |
-| Ubuntu 22.04      | [mender-artifact 4.0.0][x.x.x_mender-artifact-linux]  |
-| Ubuntu 20.04      | [mender-artifact 4.0.0][x.x.x_mender-artifact-linux]  |
-| Debian 12         | [mender-artifact 4.0.0][x.x.x_mender-artifact-linux]  |
-| Debian 11         | [mender-artifact 4.0.0][x.x.x_mender-artifact-linux]  |
-| Mac OS X (x86-64) | [mender-artifact 4.0.0][x.x.x_mender-artifact-darwin] |
+| Platform          | Download link                                             |
+|-------------------|-----------------------------------------------------------|
+| Ubuntu 24.04      | [mender-artifact 4.0.0][x.x.x_mender-artifact-debian12]   |
+| Ubuntu 22.04      | [mender-artifact 4.0.0][x.x.x_mender-artifact-debian11]   |
+| Ubuntu 20.04      | [mender-artifact 4.0.0][x.x.x_mender-artifact-ubuntu2404] |
+| Debian 12         | [mender-artifact 4.0.0][x.x.x_mender-artifact-ubuntu2204] |
+| Debian 11         | [mender-artifact 4.0.0][x.x.x_mender-artifact-ubuntu2004] |
+| Mac OS X (x86-64) | [mender-artifact 4.0.0][x.x.x_mender-artifact-darwin]     |
 
 !!! * For Debian and Ubuntu, you can also install `mender-artifact` through the
 !!! [Mender APT repositories](#install-using-the-apt-repository).
