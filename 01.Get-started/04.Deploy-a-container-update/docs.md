@@ -116,9 +116,9 @@ mkdir "${HOME}/mender-docker" && cd "${HOME}/mender-docker"
 
 Download the `docker-artifact-gen` utility script:
 
-<!--AUTOVERSION: "mender/%"/mender-->
+<!--AUTOVERSION: "mender-update-modules/%/docker"/ignore-->
 ```bash
-wget https://raw.githubusercontent.com/mendersoftware/mender/4.0.4/support/modules-artifact-gen/docker-artifact-gen
+wget https://raw.githubusercontent.com/mendersoftware/mender-update-modules/master/docker/module-artifact-gen/docker-artifact-gen
 ```
 
 Make `docker-artifact-gen` executable:
