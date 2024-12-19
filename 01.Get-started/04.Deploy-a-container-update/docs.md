@@ -89,8 +89,8 @@ On Linux, download the `mender-artifact` deb package and install it:
 
 <!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
 ```bash
-wget https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_3.11.3-1%2B$(. /etc/os-release; echo $ID)%2B$(. /etc/os-release; echo $VERSION_CODENAME)_amd64.deb
-sudo dpkg --install mender-artifact_3.11.3-1+$(. /etc/os-release; echo $ID)+$(. /etc/os-release; echo $VERSION_CODENAME)_amd64.deb
+wget https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.0.0-1%2B$(. /etc/os-release; echo $ID)%2B$(. /etc/os-release; echo $VERSION_CODENAME)_amd64.deb
+sudo dpkg --install mender-artifact_4.0.0-1+$(. /etc/os-release; echo $ID)+$(. /etc/os-release; echo $VERSION_CODENAME)_amd64.deb
 ```
 
 On MacOS, download the `mender-artifact` binary, give exec permissions, and add it to your path:
@@ -98,7 +98,7 @@ On MacOS, download the `mender-artifact` binary, give exec permissions, and add 
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 ```bash
 mkdir -p ${HOME}/bin
-wget https://downloads.mender.io/mender-artifact/3.11.2/darwin/mender-artifact -O ${HOME}/bin/mender-artifact
+wget https://downloads.mender.io/mender-artifact/4.0.0/darwin/mender-artifact -O ${HOME}/bin/mender-artifact
 chmod +x ${HOME}/bin/mender-artifact
 export PATH="${PATH}:${HOME}/bin"
 ```
@@ -116,9 +116,9 @@ mkdir "${HOME}/mender-docker" && cd "${HOME}/mender-docker"
 
 Download the `docker-artifact-gen` utility script:
 
-<!--AUTOVERSION: "mender/%"/mender-->
+<!--AUTOVERSION: "mender-update-modules/%/docker"/ignore-->
 ```bash
-wget https://raw.githubusercontent.com/mendersoftware/mender/4.0.4/support/modules-artifact-gen/docker-artifact-gen
+wget https://raw.githubusercontent.com/mendersoftware/mender-update-modules/master/docker/module-artifact-gen/docker-artifact-gen
 ```
 
 Make `docker-artifact-gen` executable:
