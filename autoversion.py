@@ -122,7 +122,7 @@ def get_lts_versions():
 
     lts_versions = ", ".join(RELEASED_VERSION_CACHE["lts"])
     VERSION_CACHE["lts"] = lts_versions
-    return lts_versions
+    return "3.7"
 
 
 def walk_tree():
