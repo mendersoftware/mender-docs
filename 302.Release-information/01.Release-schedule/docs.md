@@ -1,48 +1,89 @@
 ---
-title: Release version and schedule
+title: Supported releases
 taxonomy:
     category: docs
 ---
 
-There are two Mender release types:
-
-* LTS (Long Term Support)
-* non-LTS (Standard Support)
-
-Our quality requirements for both release types are the same, the only difference between LTS and non-LTS releases is the support length. We maintain LTS releases through patch releases for one year from the release date. In contrast, non-LTS releases get patch releases only if an urgent vulnerability is found between the release date and the next release.
-
-Keeping this distinction in mind helps decide which version to adopt and when to upgrade to a new version. In addition, ensure you are always using the latest available patch releases for the optimal operation of Mender.
+This document outlines the currently supported releases and compatibility between
+individual Mender components. To understand the general compatibility policy
+of Mender, see the [Compatibility](../../02.Overview/15.Compatibility/docs.md) page.
 
 
-##### Versioning
+## Components and LTS releases
 
-Mender users [Semantic Versioning](https://semver.org), and the version numbers are in the `MAJOR.MINOR.PATCH` format.
+The latest long term support (LTS) versions of Mender components are shown in the
+in the table below:
 
-We increment:
-
-* `MAJOR` version when we make incompatible API changes
-* `MINOR` version when we add functionalities in a backward compatible manner
-* `PATCH` version when we make backward compatible bug fixes to existing releases
-
-!!! By design, the Mender Backend is always backward compatible with older versions of the Mender components. Therefore, incrementing the `MAJOR` version means that the Mender components (generally speaking, the authentication and update components) depend on a corresponding `MAJOR` version of the Management Server. However, any older Mender components will still work with a Management Server running a more recent version.
-
-
-#### Release Cadence
-
-We release a new version every three months, either as a non-LTS or LTS release. We publish LTS releases approximately every six months, but version numbers (e.g., major or minor version bumps) may vary depending on the release's content. Check back here to learn which versions are part of an LTS release series.
-
-We publish patch versions for older LTS releases roughly the same time we publish the new minor or major releases unless we discover an urgent vulnerability that requires an immediate fix.
+| Released component  | Release month | Supported until end of |
+| ------------------- | ------------- | ---------------------- |
+| Mender Client 5.0   | 2025-01       | 2026-01                |
+| Mender Gateway 2.0  | 2025-01       | 2026-01                |
+| Mender Server 4.0   | 2025-01       | 2026-01                |
+| Mender 3.7 (bundle) | 2024-05       | 2025-05                |
 
 
-##### Current LTS releases
+## Yocto Project releases supported by meta-mender
 
-At this time, we support the following LTS releases: 3.7.
+The following [Yocto Project LTS releases](https://wiki.yoctoproject.org/wiki/Releases?target=_blank)
+are currently supported by [meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank):
 
-| LTS         | Supported until |
-| ----------- | --------------- |
-| 3.7         |  2025-05        |
+* Scarthgap (5.0)
+* Kirkstone (4.0)
+
+Each Yocto Project release has a corresponding branch in meta-mender.
+Note that you will find other branches in meta-mender but they are not
+updated during a future Mender release.
 
 
-##### Yocto LTS support
+## Mender Artifact format support
 
-Our [meta-mender Yocto layer](https://github.com/mendersoftware/meta-mender) supports the latest two [Yocto LTS releases](https://wiki.yoctoproject.org/wiki/Releases).
+The [Mender Artifact format](../../02.Overview/03.Artifact/docs.md) is versioned
+to support new features over time. It is used by the Mender Client (to install Artifacts),
+Mender Server (to parse and display meta-data, and to generate some types of Artifacts)
+and the mender-artifact CLI utility (to create Artifacts).
+
+| Artifact format | Client | Server | mender-artifact |
+| --------------- | ------ | ------ | --------------- |
+| Artifact v1     | 1.0    | 1.0    | 1.0             |
+| Artifact v2     | 1.1    | 1.1    | 2.0             |
+| Artifact v3     | 2.0    | 2.0    | 3.0             |
+
+!!! Before you create Artifacts of a new format version, make sure that every Mender
+component you use anywhere supports the version of the Artifact format.
+
+
+## Device API version support
+
+The compatibility between the Mender Server and Client is managed by the
+[Device API](https://docs.mender.io/api/#device-apis?target=_blank#device-apis)
+versions exposed by the Server and used by the Client.
+If the Mender Server supports the API version of the Mender Client, they are compatible.
+
+The higher version API contains a mix of old and new API endpoints. For endpoints which
+have not changed in the new version, previous version ones are assumed. For example, if
+the Device uses the v2 Device API, it expects
+[this single v2 Deployments endpoint](https://docs.mender.io/api/?target=_blank#device-api-deployments-v2)
+to be available. For all other endpoints it will use v1.
+
+| Device API | Server | Gateway | Client |
+| ---------- | ------ | ------- | ------ |
+| API v1     | 1.0    | N/A     | 1.0    |
+| API v2     | 3.0    | 1.0     | 3.0    |
+
+!!! Make sure to upgrade the Server first to support a new API version. Next it is
+recommended to update any Gateway components and finally Client.
+
+!!! So far, Mender Server supports all Device API versions ever released. In other words,
+a current Mender Server will still work with Mender Client v1.0. However, it is good practice
+and required for commercial support to regularly update all your Mender components to
+ensure they all run supported versions. This will prevent issues in the future.
+
+
+## Mender Client subcomponents
+The Mender Client consists of several subcomponents. See the table below for a mapping
+of which subcomponents are included in a given Mender Client version.
+
+| Mender Client | mender-connect | mender-configure | mender-monitor | mender-binary-delta |
+| ------------- | -------------- | ---------------- | -------------- | ------------------- |
+| 5.0           | 2.3            | 1.1              | 1.4            | 1.5                 |
+| 4.0           | 2.2            | 1.1              | 1.3            | 1.4                 |
