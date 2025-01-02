@@ -31,12 +31,22 @@ The Mender Client is more responsive with higher frequency intervals. Meaning
 that the client inventory data updates more frequently. The client also polls
 for updates at a smaller interval, leading to faster deployments.
 
-But there is a trade-off; higher polling frequencies results in more server
-load. If one server has many clients connected, a high frequency will require
-more resources server-side to keep the environment responsive.
+But there is a trade-off; higher polling frequencies results in more bandwidth
+consumption and server load. If one server has many clients connected, a high
+frequency will require more resources server-side to keep the environment
+responsive.
 
 !!! If you are using the Mender Client in demo mode, either by selecting it when running `mender setup`, or by using the [meta-mender-demo layer](../../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md), the Mender Client has more aggressive polling intervals to simplify testing. The defaults noted above do not apply to demo mode and you will see extra network traffic in demo mode.
 
+### Polling interval impact on data consumption
+
+Example where no updates take place and no changes in the inventory data have taken place:
+
+- For the polling interval of 7 seconds the consumption is ~300KB per 5min -> 2.54 GB per month
+- For the polling interval of 15 seconds the consumption is ~145KB per 5min -> 1.25 GB per month
+- For the polling interval of 30 seconds the consumption is ~70KB per 5min -> 0.59 GB per month
+
+Extrapolated, a polling interval of 12h (43200 seconds) monthly data consumption would be ~0.5MB.
 
 ## Changing the parameters
 
