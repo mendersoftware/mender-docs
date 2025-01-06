@@ -140,7 +140,7 @@ Install the Mender Client.
 #### `MENDER_CLIENT_VERSION`
 
 <!--AUTOVERSION: "/%/"/ignore-->
-> Value: latest(default)/master/&lt;version&gt;
+> Value: auto(default)/latest/master/&lt;version&gt;
 
 The version of the Mender Client to include in the update.
 
