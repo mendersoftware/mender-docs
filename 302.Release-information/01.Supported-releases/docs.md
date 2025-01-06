@@ -6,7 +6,7 @@ taxonomy:
 
 This document outlines the currently supported releases and compatibility between
 individual Mender components. To understand the general compatibility policy
-of Mender, see the [Compatibility](../../02.Overview/15.Compatibility/docs.md) page.
+of Mender, see the [Compatibility policy](../../02.Overview/15.Compatibility-policy/docs.md).
 
 
 ## Components and LTS releases

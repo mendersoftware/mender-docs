@@ -7,7 +7,7 @@ taxonomy:
 This document outlines the Mender compatibility and support policy. For support
 for specific system releases, compatibility between individual Mender components
 and currently supported Mender releases, see
-[Release-information](../../302.Release-information/01.Release-schedule/docs.md).
+[Supported releases](../../302.Release-information/01.Supported-releases/docs.md).
 
 
 ## Components
@@ -81,8 +81,8 @@ In general, to avoid backward compatibility issues upgrade components in this or
 4. Logic or data used by Mender Client such as Update Modules, Artifact versions
 
 Mender components have different support durations for different minor versions with
-LTS releases. Please refer to the
-[Release-information](../../302.Release-information/01.Release-schedule/docs.md) page
+LTS releases. Please refer to
+[Supported releases](../../302.Release-information/01.Supported-releases/docs.md)
 for the currently supported components.
 
 

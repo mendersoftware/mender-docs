@@ -12,8 +12,8 @@ This page describes how to upgrade one Mender Client version to a different Mend
 If you are upgrading from one minor version to another, such as 3.4.0 -> 3.5.0, or from one patch
 version to another patch version, such as 3.5.1 -> 3.5.2, then no manual intervention is
 needed. Minor and patch versions are always backwards compatible. This follows from Semantic
-Versioning, which is described in more detail on [the Compatibility
-page](../../../02.Overview/15.Compatibility/docs.md).
+Versioning, which is described in more detail in the
+[Compatibility policy](../../../02.Overview/15.Compatibility-policy/docs.md).
 
 ## Major versions
 
