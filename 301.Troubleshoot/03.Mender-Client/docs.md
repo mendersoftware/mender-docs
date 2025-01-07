@@ -4,6 +4,14 @@ taxonomy:
     category: docs
 ---
 
+## `mender: command not found` error when using the `mender-artifact` snapshot feature
+
+This is caused by using an outdated version of the `mender-artifact` tool (e.g from the upstream Debian or
+Ubuntu APT repositories) which cannot detect which version of the Mender Client the device is running.
+
+To solve this issue, install `mender-artifact` from the Mender APT repository following the instructons in
+the [downloads section](../../10.Downloads/docs.md#mender-artifact).
+
 ## `fsck` error when creating a Mender Artifact using the snapshot feature
 
 When running `mender-artifact write -f ssh://...` command to create a Mender Artifact from a virtual
