@@ -103,9 +103,10 @@ by default.
 ## Artifact format versions
 
 Mender is constantly evolving to adapt to the needs of its users, and the Mender
-Artifact format has several revisions. See the [Compatibility
-section](../15.Compatibility/docs.md) for an overview of which versions of the
-Mender Artifact format are supported by which Mender Client versions.
+Artifact format has several revisions. See
+[Supported releases](../../302.Release-information/01.Supported-releases/docs.md)
+for an overview of which versions of the Mender Artifact format are supported
+by which Mender Client versions.
 
 
 ## Work with Mender Artifacts
