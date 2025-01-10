@@ -31,8 +31,8 @@ Mender provides images based on the following distributions:
 
 | Board                         | OS                              | Disk image                                                                                         | Storage size |
 |-------------------------------|---------------------------------|----------------------------------------------------------------------------------------------------|--------------|
-| Raspberry Pi 3 Model B and B+ | Raspberry Pi OS Bullseye Lite 2022-09-22 | [raspios-lite-raspberrypi3_bookworm_64bit-mender-convert.img.xz][raspios-lite-raspberrypi3_bookworm_64bit-mender-convert.img.xz] | 8 GB         |
-| Raspberry Pi 4 Model B        | Raspberry Pi OS Bullseye Lite 2022-09-22 | [raspios-lite-raspberrypi4_bookworm_64bit-mender-convert.img.xz][raspios-lite-raspberrypi4_bookworm_64bit-mender-convert.img.xz] | 8 GB         |
+| Raspberry Pi 3 Model B and B+ | Raspberry Pi OS Bookworm Lite 2024-10-22 | [raspios-lite-raspberrypi3_bookworm_64bit-mender-convert.img.xz][raspios-lite-raspberrypi3_bookworm_64bit-mender-convert.img.xz] | 8 GB         |
+| Raspberry Pi 4 Model B        | Raspberry Pi OS Bookworm Lite 2024-10-22 | [raspios-lite-raspberrypi4_bookworm_64bit-mender-convert.img.xz][raspios-lite-raspberrypi4_bookworm_64bit-mender-convert.img.xz] | 8 GB         |
 
 <!--AUTOVERSION: "mender-convert-%.img.xz"/mender-convert -->
 [raspios-lite-raspberrypi3_bookworm_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2024-10-22-raspios-lite/arm/2024-10-22-raspios-lite-raspberrypi3_bookworm_64bit-mender-convert-4.3.0.img.xz
