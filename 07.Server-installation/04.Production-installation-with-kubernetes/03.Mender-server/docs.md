@@ -351,11 +351,6 @@ api_gateway:
     enabled: true
     url: "${STORAGE_ENDPOINT}"
     customRule: "PathRegexp(\`^/${STORAGE_BUCKET}\`)"
-
-deployments:
-  customEnvs:
-    - name: DEPLOYMENTS_STORAGE_PROXY_URI
-      value: "${MENDER_SERVER_URL}"
 EOF
 ```
 Finally, install the Mender Server:
@@ -444,11 +439,6 @@ api_gateway:
     enabled: true
     url: "${STORAGE_ENDPOINT}"
     customRule: "PathRegexp(\`^/${STORAGE_BUCKET}\`)"
-
-deployments:
-  customEnvs:
-    - name: DEPLOYMENTS_STORAGE_PROXY_URI
-      value: "${MENDER_SERVER_URL}"
 EOF
 
 ```
