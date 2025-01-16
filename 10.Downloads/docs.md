@@ -59,7 +59,6 @@ Follow the correct link according to your host platform to download
 |-------------------|-----------------------------------------------------------|
 | Ubuntu 24.04      | [mender-artifact 4.0.0][x.x.x_mender-artifact-ubuntu2404]   |
 | Ubuntu 22.04      | [mender-artifact 4.0.0][x.x.x_mender-artifact-ubuntu2204]   |
-| Ubuntu 20.04      | [mender-artifact 4.0.0][x.x.x_mender-artifact-ubuntu2004] |
 | Debian 12         | [mender-artifact 4.0.0][x.x.x_mender-artifact-debian12] |
 | Debian 11         | [mender-artifact 4.0.0][x.x.x_mender-artifact-debian11] |
 | Mac OS X (x86-64) | [mender-artifact 4.0.0][x.x.x_mender-artifact-darwin]     |
@@ -71,8 +70,6 @@ Follow the correct link according to your host platform to download
 [x.x.x_mender-artifact-ubuntu2404]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.0.0-1%2Bubuntu%2Bnoble_amd64.deb
 <!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
 [x.x.x_mender-artifact-ubuntu2204]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.0.0-1%2Bubuntu%2Bjammy_amd64.deb
-<!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
-[x.x.x_mender-artifact-ubuntu2004]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.0.0-1%2Bubuntu%2Bfocal_amd64.deb
 <!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
 [x.x.x_mender-artifact-debian12]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.0.0-1%2Bdebian%2Bbookworm_amd64.deb
 <!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
@@ -281,12 +278,6 @@ echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/
 <!--AUTOMATION: ignore -->
 ```bash
 echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/jammy/stable main" \
- | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
-```
-[/ui-tab]
-[ui-tab title="Ubuntu 20.04"]
-```bash
-echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/focal/stable main" \
  | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
 ```
 [/ui-tab]
@@ -768,51 +759,6 @@ wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDE
 [/ui-tabs]
 
 [/ui-tab]
-[ui-tab title="Ubuntu 20.04"]
-
-[ui-tabs position="top-left" active="0" theme="lite" ]
-[ui-tab title="armhf"]
-Set the following variables with your credentials:
-<!--AUTOMATION: ignore -->
-```bash
-HOSTED_MENDER_EMAIL=<your.email@example.com>
-HOSTED_MENDER_PASSWORD=<yoursecurepassword>
-```
-And download it with:
-<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
-```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/2.0.0/mender-gateway_2.0.0-1%2Bubuntu%2Bfocal_armhf.deb
-```
-[/ui-tab]
-[ui-tab title="arm64"]
-Set the following variables with your credentials:
-<!--AUTOMATION: ignore -->
-```bash
-HOSTED_MENDER_EMAIL=<your.email@example.com>
-HOSTED_MENDER_PASSWORD=<yoursecurepassword>
-```
-And download it with:
-<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
-```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/2.0.0/mender-gateway_2.0.0-1%2Bubuntu%2Bfocal_arm64.deb
-```
-[/ui-tab]
-[ui-tab title="amd64"]
-Set the following variables with your credentials:
-<!--AUTOMATION: ignore -->
-```bash
-HOSTED_MENDER_EMAIL=<your.email@example.com>
-HOSTED_MENDER_PASSWORD=<yoursecurepassword>
-```
-And download it with:
-<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
-```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/2.0.0/mender-gateway_2.0.0-1%2Bubuntu%2Bfocal_amd64.deb
-```
-[/ui-tab]
-[/ui-tabs]
-
-[/ui-tab]
 
 
 
@@ -1026,57 +972,7 @@ wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_EN
 [/ui-tabs]
 
 [/ui-tab]
-[ui-tab title="Ubuntu 20.04"]
 
-[ui-tabs position="top-left" active="0" theme="lite" ]
-[ui-tab title="armhf"]
-Set the following variables with your credentials:
-<!--AUTOMATION: ignore -->
-```bash
-MENDER_ENTERPRISE_USER=<your.user>
-MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
-```
-And download it with:
-
-<!--AUTOMATION: ignore -->
-<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
-```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/2.0.0/mender-gateway_2.0.0-1%2Bubuntu%2Bfocal_armhf.deb
-```
-[/ui-tab]
-[ui-tab title="arm64"]
-Set the following variables with your credentials:
-<!--AUTOMATION: ignore -->
-```bash
-MENDER_ENTERPRISE_USER=<your.user>
-MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
-```
-And download it with:
-
-<!--AUTOMATION: ignore -->
-<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
-```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/2.0.0/mender-gateway_2.0.0-1%2Bubuntu%2Bfocal_arm64.deb
-```
-[/ui-tab]
-[ui-tab title="amd64"]
-Set the following variables with your credentials:
-<!--AUTOMATION: ignore -->
-```bash
-MENDER_ENTERPRISE_USER=<your.user>
-MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
-```
-And download it with:
-
-<!--AUTOMATION: ignore -->
-<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
-```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/2.0.0/mender-gateway_2.0.0-1%2Bubuntu%2Bfocal_amd64.deb
-```
-[/ui-tab]
-[/ui-tabs]
-
-[/ui-tab]
 
 [/ui-tabs]
 
@@ -1092,7 +988,7 @@ Then install the package with:
 sudo dpkg -i mender-gateway_*.deb
 ```
 
-<!--AUTOMATION: test=test $(ls mender-gateway_*.deb | wc -l) -eq 15 -->
+<!--AUTOMATION: test=test $(ls mender-gateway_*.deb | wc -l) -eq 12 -->
 <!--AUTOMATION: execute=dpkg -i mender-gateway_*-1+ubuntu+noble_amd64.deb -->
 
 ### Examples package
