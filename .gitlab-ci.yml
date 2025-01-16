@@ -19,7 +19,7 @@ test:
     variables:
       - $SKIP_TESTS == "true"
   stage: test
-  image: ubuntu:focal
+  image: ubuntu:noble
   services:
     - docker:dind
   tags:
