@@ -1093,7 +1093,7 @@ sudo dpkg -i mender-gateway_*.deb
 ```
 
 <!--AUTOMATION: test=test $(ls mender-gateway_*.deb | wc -l) -eq 15 -->
-<!--AUTOMATION: execute=dpkg -i mender-gateway_*-1+ubuntu+focal_amd64.deb -->
+<!--AUTOMATION: execute=dpkg -i mender-gateway_*-1+ubuntu+noble_amd64.deb -->
 
 ### Examples package
 
