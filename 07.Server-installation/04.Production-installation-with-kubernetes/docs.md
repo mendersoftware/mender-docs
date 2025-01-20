@@ -12,7 +12,7 @@ This section is a step by step tutorial for deploying the Mender Server for prod
 environments, and will cover relevant security and reliability aspects of Mender
 production installations.  Most of the steps are the same whether you are installing
 the Open Source or Enterprise edition of the Mender Server, but some extra are
-are highlighted for the latter.
+highlighted for the latter.
 
 You will use the [Helm chart](https://github.com/mendersoftware/mender-helm) to
 deploy to production the Mender backend services on a Kubernetes cluster.
