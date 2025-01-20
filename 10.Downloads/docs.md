@@ -57,26 +57,26 @@ Follow the correct link according to your host platform to download
 <!--AUTOVERSION: "mender-artifact %][x.x.x_mender-artifact-"/mender-artifact -->
 | Platform          | Download link                                             |
 |-------------------|-----------------------------------------------------------|
-| Ubuntu 24.04      | [mender-artifact 3.11.3][x.x.x_mender-artifact-debian12]   |
-| Ubuntu 22.04      | [mender-artifact 3.11.3][x.x.x_mender-artifact-debian11]   |
-| Ubuntu 20.04      | [mender-artifact 3.11.3][x.x.x_mender-artifact-ubuntu2404] |
-| Debian 12         | [mender-artifact 3.11.3][x.x.x_mender-artifact-ubuntu2204] |
-| Debian 11         | [mender-artifact 3.11.3][x.x.x_mender-artifact-ubuntu2004] |
+| Ubuntu 24.04      | [mender-artifact 3.11.3][x.x.x_mender-artifact-ubuntu2404]   |
+| Ubuntu 22.04      | [mender-artifact 3.11.3][x.x.x_mender-artifact-ubuntu2204]   |
+| Ubuntu 20.04      | [mender-artifact 3.11.3][x.x.x_mender-artifact-ubuntu2004] |
+| Debian 12         | [mender-artifact 3.11.3][x.x.x_mender-artifact-debian12] |
+| Debian 11         | [mender-artifact 3.11.3][x.x.x_mender-artifact-debian11] |
 | Mac OS X (x86-64) | [mender-artifact 3.11.3][x.x.x_mender-artifact-darwin]     |
 
 !!! * For Debian and Ubuntu, you can also install `mender-artifact` through the
 !!! [Mender APT repositories](#install-using-the-apt-repository).
 
 <!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
-[x.x.x_mender-artifact-debian12]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_3.11.3-1%2Bdebian%2Bbookworm_amd64.deb
-<!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
-[x.x.x_mender-artifact-debian11]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_3.11.3-1%2Bdebian%2Bbullseye_amd64.deb
-<!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
 [x.x.x_mender-artifact-ubuntu2404]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_3.11.3-1%2Bubuntu%2Bnoble_amd64.deb
 <!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
 [x.x.x_mender-artifact-ubuntu2204]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_3.11.3-1%2Bubuntu%2Bjammy_amd64.deb
 <!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
 [x.x.x_mender-artifact-ubuntu2004]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_3.11.3-1%2Bubuntu%2Bfocal_amd64.deb
+<!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
+[x.x.x_mender-artifact-debian12]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_3.11.3-1%2Bdebian%2Bbookworm_amd64.deb
+<!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
+[x.x.x_mender-artifact-debian11]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_3.11.3-1%2Bdebian%2Bbullseye_amd64.deb
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 [x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/3.11.3/darwin/mender-artifact
 
