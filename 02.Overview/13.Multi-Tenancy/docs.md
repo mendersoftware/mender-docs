@@ -1,7 +1,8 @@
 ---
 title: Multi Tenancy
 taxonomy:
-category: docs
+    category: docs
+    label: reference
 ---
 
 !!!!! Multi Tenancy is only available in the Mender Enterprise plan.
