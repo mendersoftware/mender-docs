@@ -204,9 +204,16 @@ To determine the status of your time synchronization, execute the following:
 ```
 
 Note that it can take some time after boot before the time
-synchronization is completed. If after 5-10 minutes, the time still
-has not synchronized, consult with your local network administrator
-for further troubleshooting.
+synchronization is completed.
+This can be avoided by ensuring that time synchronization is complete prior to
+mender services starting. This could be achieved by adjusting mender client
+services like `mender-updated`, `mender-authd`, and `mender-connect` setting
+`Wants` and or `After` to include
+[time-sync.target](https://www.freedesktop.org/software/systemd/man/latest/systemd.special.html#time-sync.target)
+or using `ExecStartPre` to execute a command that will synchronize time or sleep
+the amount of time it normally takes for the time synchronization to occur.
+If after 5-10 minutes, the time still has not synchronized, consult with your
+local network administrator for further troubleshooting.
 
 If this is not the problem, you need to verify that the certificates you are using are valid.
 Replace the hostname with the one for your Mender API Gateway below and run the following command:
