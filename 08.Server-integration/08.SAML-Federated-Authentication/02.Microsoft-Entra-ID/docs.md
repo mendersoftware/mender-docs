@@ -34,7 +34,7 @@ Select it as a non-gallery application **(3)**
 
 ![](03-confing-ent-app.png)
 
-Select the setup for single sign-on. Select SAML on the next screen (no show in the picture). **(1)** 
+Select the setup for single sign-on. Select SAML on the next screen (not shown in the picture). **(1)**
  
 ![](04-initial_xml.png)
 
