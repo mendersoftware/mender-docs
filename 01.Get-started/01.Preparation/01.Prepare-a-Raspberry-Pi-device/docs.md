@@ -67,13 +67,13 @@ default location:
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="Linux"]
 ```bash
-RPI_BOOT="$(find /media/$(whoami)/ -name boot -or -name bootfs)"
+RPI_BOOT="$(find /media/$(whoami)/ -maxdepth 1 -name boot -or -name bootfs)"
 [ ! -d "$RPI_BOOT" ] && echo "ERROR: RPI boot directory not found"
 ```
 [/ui-tab]
 [ui-tab title="Mac OS"]
 ```bash
-RPI_BOOT="$(find /Volumes/ -name boot -or -name bootfs)"
+RPI_BOOT="$(find /Volumes/ -maxdepth 1 -name boot -or -name bootfs)"
 [ ! -d "$RPI_BOOT" ] && echo "ERROR: RPI boot directory not found"
 ```
 [/ui-tab]
