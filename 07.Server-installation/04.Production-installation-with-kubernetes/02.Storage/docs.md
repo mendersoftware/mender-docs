@@ -42,23 +42,6 @@ solution that best fits your needs.
 !! recommended for production: AWS S3, Cloudflare R2,
 !! Google Cloud Storage,and Azure Blob Storage.
 
-!! Important: The object storage provider has to be resolvable both
-!! internally and externally. If you are using a private IP address,
-!! you must ensure DNS resolution is working correctly.
-!! For k3s, you could add this entry to the CoreDNS ConfigMap:
-!! ```yaml
-!!     mender.example.com:53 {
-!!      errors
-!!      cache 30
-!!      hosts {
-!!        <ip address of your machine> mender.example.com
-!!      }
-!!    }
-!! ```
-!! Note, the TLS certificate for the host `mender.example.com`
-!! must be valid and trusted by clients.
-!! For more information, visit the [Certificate and keys section](../../01.Overview/02.Certificates-and-keys/docs.md)
-
 In this guide, we provide an example of how to install SeaweedFS and
 integrating it into Mender.
 
