@@ -5,6 +5,9 @@ taxonomy:
     label: tutorial
 ---
 
+!!! This tutorial is not supported by the virtual device because it does not have
+!!! a board integration required for Operating System updates.
+
 This tutorial will walk you through how to do robust Operating System updates with
 rollback. These types of updates cover the whole system including system level
 applications and the Linux kernel and ensure the device comes back in a
@@ -16,6 +19,7 @@ as power loss.
 
 You should:
 
+* have completed [Prepare a Raspberry Pi device](../01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md). Note that this tutorial is not compatible with the virtual device.
 * have completed [Deploy an application update](../02.Deploy-an-application-update/docs.md)
 * know the IP address of your device
 
@@ -54,30 +58,13 @@ Setup the `IP_ADDRESS` shell variable with correct IP address of your device:
 ```bash
 IP_ADDRESS="<DEVICE-IP-ADDRESS>"
 ```
-[ui-tabs position="top-left" active="0" theme="lite" ]
-[ui-tab title="Raspberry Pi"]
+
 On Mender, check `ipv4_eth0` or `ipv4_wlan0` inventory attributes of your
 Raspberry Pi device
-[/ui-tab]
-[ui-tab title="Virtual device"]
-On Mender, check `ipv4_docker` inventory attribute of your Virtual device
-[/ui-tab]
-[/ui-tabs]
 
 Setup `USER` environment variable to match an existing user on the device, e.g:
 
-[ui-tabs position="top-left" active="0" theme="lite" ]
-[ui-tab title="Raspberry Pi"]
-```bash
 USER="<your-user>"
-```
-[/ui-tab]
-[ui-tab title="Virtual device"]
-```bash
-USER="root"
-```
-[/ui-tab]
-[/ui-tabs]
 
 [Mender Artifacts](../../02.Overview/03.Artifact/docs.md) require
 a device compatibility value as input, which **must** match what the device is
@@ -97,21 +84,6 @@ DEVICE_TYPE="raspberrypi4"
 !!! Make sure to replace `raspberrypi4` with the specific value that you are
 !!! seeing in your setup
 
-Set `SSH_ARG` shell variable to specify the SSH access port:
-
-[ui-tabs position="top-left" active="0" theme="lite" ]
-[ui-tab title="Raspberry Pi"]
-```bash
-SSH_ARG="-p 22"
-```
-[/ui-tab]
-[ui-tab title="Virtual device"]
-```bash
-SSH_ARG="-p 8822"
-```
-[/ui-tab]
-[/ui-tabs]
-
 ## Step 3 - Create a Mender Artifact using the snapshot feature
 
 The easiest way to create Operating System updates is to use the **snapshot**
@@ -130,17 +102,12 @@ mender-artifact write rootfs-image \
     -t "${DEVICE_TYPE}" \
     -n system-v1 \
     -o system-v1.mender \
-    -S "${SSH_ARG}"
+    -S "-p 22"
 ```
 
 ! Your device is not usable while the snapshot operation is in progress. Mender
 ! will freeze the storage device during this operation in order to create a
 ! consistent snapshot.
-
-!!! Known issue: The latest versions of the virtual device depends on recent versions of `e2fsck`,
-!!! not available in older Linux distributions. The command above can fail with
-!!! `fsck error: exit status 12`. For a workaround see
-!!! [this section in our Troubleshoot guide](../../301.Troubleshoot/03.Mender-Client/docs.md#fsck-error-when-creating-a-Mender-Artifact-using-the-snapshot-feature).
 
 Depending on your local network and storage speed, this will take up to
 10-20 minutes to finish. You will see a progress indicator, and when it
