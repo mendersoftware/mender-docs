@@ -97,7 +97,7 @@ The list of allowed event types follows:
 * `device-provisioned`
 * `device-decommissioned`
 * `device-status-changed`
-* `devices-inventory-changed`
+* `device-inventory-changed`
 
 The device authentication event consists of the following fields:
 * `id` - device unique ID,
@@ -117,7 +117,7 @@ The inventory changed event looks as follows:
 ```json
 {
   "id": "1aaf5222-8f2c-4d48-9ae9-8862e78c3fdf",
-  "type": "devices-inventory-changed",
+  "type": "device-inventory-changed",
   "data": {
     "device_id": "1c251e63-ca93-41e2-ae39-97f402d93dd3",
     "tenant_id": "66ff8a4650829de3d99a25f1",
