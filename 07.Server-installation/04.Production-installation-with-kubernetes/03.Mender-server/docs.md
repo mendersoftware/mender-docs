@@ -114,8 +114,6 @@ export MENDER_SERVER_DOMAIN="mender.example.com"
 cat <<-EOF > mender-values.yml
 ingress:
   enabled: true
-ingress:
-  enabled: true
   annotations:
     appgw.ingress.kubernetes.io/backend-protocol: http
     appgw.ingress.kubernetes.io/health-probe-path: /ui/
@@ -141,8 +139,6 @@ For example, here's an Ingress for the Ingress-NGinx Provider:
 export MENDER_SERVER_DOMAIN="mender.example.com"
 
 cat <<-EOF > mender-values.yml
-ingress:
-  enabled: true
 ingress:
   enabled: true
   annotations:
