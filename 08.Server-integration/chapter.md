@@ -9,3 +9,4 @@ taxonomy:
 # Server integration
 
 Integrate the Mender Server with other services and workflows.
+

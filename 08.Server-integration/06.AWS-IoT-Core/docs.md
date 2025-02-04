@@ -6,11 +6,12 @@ taxonomy:
 
 Mender supports preparing devices to use AWS IoT Core. After installing Mender on the device it is automatically created in AWS IoT Core and applications running on the device get access to it. With Mender, you can start writing your AWS IoT application by letting Mender manage the provisioning of the device certificate keys for IoT Core. Moreover, the Device Shadow is integrated into the Mender ecosystem letting you control the desired state and read the one reported by your devices in AWS.
 
+
 This integration is available in all Mender plans, as well as Mender Open Source.
 
 !!!!! You need [Mender Configure](../../09.Add-ons/10.Configure/docs.md) to distribute the AWS IoT Core keys and certificates to the devices.
 
-!!! It is currently possible to have only one AWS IoT Core integration configured per Mender Organization. More advanced integration scenarios can be configured via [webhooks](../07.Webhooks/docs.md).
+!!! Note: Only one of [Azure](../05.Azure-IoT-Hub/docs.md), AWS, or [Webhooks](../07.Webhooks/docs.md) can be configured per Mender Organization (aka. tenant).
 
 !!! After enabling the integration, Things in AWS IoT Core will be created automatically after the devices are accepted in the Mender UI. Existing Things and devices (in both systems) are left unchanged.
 

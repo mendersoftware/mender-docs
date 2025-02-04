@@ -11,7 +11,7 @@ This integration is available in all Mender plans, as well as Mender Open Source
 
 !!!!! You need [Mender Configure](../../09.Add-ons/10.Configure/docs.md) to distribute the Azure IoT device connection strings to the devices.
 
-!!! It is currently possible to have one Azure IoT Hub integration configured per Mender Organization (aka. tenant).
+!!! Note: Only one of Azure, [AWS](../06.AWS-IoT-Core/docs.md), or [Webhooks](../07.Webhooks/docs.md) can be configured per Mender Organization (aka. tenant).
 
 !!! After you enable the integration you can create devices in the Azure IoT Hub automatically through simply accepting them in the Mender UI. Existing devices (in both systems) are left unchanged.
 
