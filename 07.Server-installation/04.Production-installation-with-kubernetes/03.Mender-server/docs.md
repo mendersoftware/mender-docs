@@ -354,10 +354,10 @@ Finally, install the Mender Server:
 ```bash
 helm upgrade --install mender mender/mender -f mender-values.yml
 ```
-<!--AUTOVERSION: "helm upgrade --install mender mender/mender --set default.image.tag=v%-rc.6 -f mender-values.yml --devel"/ignore -->
+<!--AUTOVERSION: "helm upgrade --install mender mender/mender --set default.image.tag=v% -f mender-values.yml --devel"/mender-server -->
 !!!! If you want to test a release candidate, you can run the following command:
 !!!! ```bash
-!!!! helm upgrade --install mender mender/mender --set default.image.tag=v4.0.0-rc.6 -f mender-values.yml --devel
+!!!! helm upgrade --install mender mender/mender --set default.image.tag=v4.0.0 -f mender-values.yml --devel
 !!!! ```
 
 [/ui-tab]
