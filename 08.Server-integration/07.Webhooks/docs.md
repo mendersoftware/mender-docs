@@ -10,6 +10,8 @@ taxonomy:
 !!!!! See [the Mender plans page](https://mender.io/pricing/plans?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
+!!! Note: Only one of [Azure](../05.Azure-IoT-Hub/docs.md), [AWS](../06.AWS-IoT-Core/docs.md), or Webhooks can be configured per Mender Organization (aka. tenant).
+
 Mender supports Webhooks to send data to third-party systems. With this mechanism, it's possible
 to notify external applications about device lifecycle and inventory changed events.
 This eliminates the need for manual polling and synchronization, allowing for efficient
@@ -18,6 +20,7 @@ handling of device-related events as well as advanced integration possibilities.
 We divided webhook integrations into two categories (_scopes_): `deviceauth` and `inventory`.
 The former is available in all Mender [plans](https://mender.io/pricing/plans), as well as Mender Open Source,
 while `inventory` webhook integration requires Mender Professional plan or higher.
+
 
 ## Prerequisites
 
