@@ -328,7 +328,7 @@ You can now install the Mender Server.
 
 [ui-tabs position="top-left" active="0" theme="default" ]
 [ui-tab title="Open Source"]
-<!--AUTOVERSION: "export MENDER_VERSION_TAG=\"mender-%\""/integration "cat >mender-%.yml <<EOF"/integration "helm upgrade --install mender mender/mender -f mender-%.yml"/integration -->
+<!--AUTOVERSION: "export MENDER_VERSION_TAG=\"mender-%\""/integration "cat >mender-%.yml <<EOF"/integration "helm upgrade --install mender mender/mender --wait -f mender-%.yml"/integration -->
 ```bash
 export MENDER_SERVER_DOMAIN="mender.example.com"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
@@ -352,12 +352,12 @@ EOF
 Finally, install the Mender Server:
 
 ```bash
-helm upgrade --install mender mender/mender -f mender-values.yml
+helm upgrade --install mender mender/mender --wait -f mender-values.yml
 ```
-<!--AUTOVERSION: "helm upgrade --install mender mender/mender --set default.image.tag=v% -f mender-values.yml --devel"/mender-server -->
+<!--AUTOVERSION: "helm upgrade --install mender mender/mender --set default.image.tag=v% --wait -f mender-values.yml --devel"/mender-server -->
 !!!! If you want to test a release candidate, you can run the following command:
 !!!! ```bash
-!!!! helm upgrade --install mender mender/mender --set default.image.tag=v4.0.0 -f mender-values.yml --devel
+!!!! helm upgrade --install mender mender/mender --set default.image.tag=v4.0.0 --wait -f mender-values.yml --devel
 !!!! ```
 
 [/ui-tab]
@@ -403,7 +403,7 @@ kubectl create secret generic mender-mongo \
 
 Now you can configure the Mender Server:
 
-<!--AUTOVERSION: "export MENDER_VERSION_TAG=\"mender-%\""/integration "cat >mender-%.yml <<EOF"/integration "helm upgrade --install mender mender/mender -f mender-%.yml"/integration -->
+<!--AUTOVERSION: "export MENDER_VERSION_TAG=\"mender-%\""/integration "cat >mender-%.yml <<EOF"/integration "helm upgrade --install mender mender/mender --wait -f mender-%.yml"/integration -->
 ```bash
 export MENDER_SERVER_DOMAIN="mender.example.com"
 export MENDER_SERVER_URL="https://${MENDER_SERVER_DOMAIN}"
@@ -478,13 +478,13 @@ EOF
 Finally, install the Mender Server:
 
 ```bash
-helm upgrade --install mender mender/mender -f mender-values.yml
+helm upgrade --install mender mender/mender --wait -f mender-values.yml
 ```
 
-<!--AUTOVERSION: "helm upgrade --install mender mender/mender --set default.image.tag=v%-rc.6 -f mender-values.yml --devel"/ignore -->
+<!--AUTOVERSION: "helm upgrade --install mender mender/mender --set default.image.tag=v%-rc.6 --wait -f mender-values.yml --devel"/ignore -->
 !!!! If you want to test a release candidate, you can run the following command:
 !!!! ```bash
-!!!! helm upgrade --install mender mender/mender --set default.image.tag=v4.0.0-rc.6 -f mender-values.yml --devel
+!!!! helm upgrade --install mender mender/mender --set default.image.tag=v4.0.0-rc.6 --wait -f mender-values.yml --devel
 !!!! ```
 
 [/ui-tab]
