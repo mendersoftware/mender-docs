@@ -18,6 +18,8 @@
         "302.Release-information/02.Release-notes-changelog/50.mender-binary-delta",
         "302.Release-information/02.Release-notes-changelog/51.monitor-client",
         "302.Release-information/02.Release-notes-changelog/52.mender-gateway",
-        "302.Release-information/02.Release-notes-changelog/60.mender-ci-workflows"
+        "302.Release-information/02.Release-notes-changelog/60.mender-ci-workflows",
+        "302.Release-information/03.Open-source-licenses/01.Mender-Server",
+        "302.Release-information/03.Open-source-licenses/02.Mender-Server-Enterprise"
     ]
 }
