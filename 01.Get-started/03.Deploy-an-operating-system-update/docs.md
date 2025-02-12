@@ -190,6 +190,8 @@ resources on more advanced ways you will find here:
 1. [Building a Mender Yocto Project image](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md)
 2. [Building a Mender Debian image](../../04.Operating-System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md)
 
-## Next step
+## Read more
 
-Proceed to [Deploy a Docker container update](../04.Deploy-a-container-update/docs.md).
+You can explore other types of updates available by extending the Mender Client
+in the
+[Update Modules category in the Mender Hub community platform](https://hub.mender.io/c/update-modules/13?target=_blank).

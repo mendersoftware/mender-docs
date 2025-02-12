@@ -126,7 +126,6 @@ using Mender!
 
 ## Next steps
 
-Proceed to one of the following tutorials (listed in recommended order):
+Proceed to one of the next tutorial:
 
-1. [Deploy an Operating System update](../03.Deploy-an-operating-system-update/docs.md)
-1. [Deploy a Container update](../04.Deploy-a-container-update/docs.md)
+* [Deploy an Operating System update](../03.Deploy-an-operating-system-update/docs.md)
