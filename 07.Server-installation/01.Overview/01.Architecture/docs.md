@@ -102,6 +102,6 @@ The Mender Enterprise Server includes different implementations of some of the s
 Services are delivered as Docker images, available from the official
 [Mender Docker repository](https://hub.docker.com/r/mendersoftware/?target=_blank).
 When required, each service can be built directly from its source code. Consult the
-[mender-server]((https://github.com/mendersoftware/mender-server) and the
-[mender-server-enterprise]((https://github.com/mendersoftware/mender-server-enterprise)
+[mender-server](https://github.com/mendersoftware/mender-server) and the
+[mender-server-enterprise](https://github.com/mendersoftware/mender-server-enterprise)
 repositories for build instructions.
