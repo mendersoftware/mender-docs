@@ -76,29 +76,29 @@ environments. Each environment can have its own set of devices and updates to
 ensure that no test data interferes with production systems.
 
 
-## Service Provider Tenants
+## Service Provider tenants
 
 ![Service Provider](service-provider.png)
 
 In Mender Server Enterprise, multi-tenancy is managed by a special type of tenant
-called the Service Provider Tenant. 
+called the Service Provider tenant. 
 
-The Service Provider Tenant acts as a central point of control for all the child
+The Service Provider tenant acts as a central point of control for all the child
 tenants allowing for organisation wide definition of policies applicable to all
 child tenants (i.e. SSO and features available to child tenants). 
 
-The Service Provider Tenant can:
+The Service Provider tenant can:
 
 - Create a child tenant: Admin users can create multiple tenants through the
   Mender Enterprise UI or the Management APIs. Each tenant is assigned a unique
   tenant ID, tenant token and initial administrative account.
 
-- User management: Service Provider Tenant administrators can create an initial admin for a child
+- User management: Service Provider tenant administrators can create an initial admin for a child
   tenant which will be responsible for assigning different roles and permissions
   within the child tenant intself, ensuring proper access control. Each child
-  Tenant's users only have access to devices and groups within their own tenant.
-  Optionally, Service Provider Tenant admins can enable SSO for the child tenants inheriting
-  the configuration from the Service Provider Tenant and map users to specific
+  tenant's users only have access to devices and groups within their own tenant.
+  Optionally, Service Provider tenant admins can enable SSO for the child tenants inheriting
+  the configuration from the Service Provider tenant and map users to specific
   tenants; this way, only users from the organization's Identity Provider can log
   in to the Mender Server accessing the correct tenant based on their needs.
 
@@ -110,11 +110,11 @@ The Service Provider Tenant can:
 
 If you are using hosted Mender Enterprise please
 [contact us](https://mender.io/contact-us) for help with migration to a multi-tenant 
-setup using the Service Provider Tenant. For existing tenants with a
+setup using the Service Provider tenant. For existing tenants with a
 more complex configuration it may be treated as a
 [Consulting project](https://mender.io/pricing/mender-extras).
 
-For on-premise installations, you can promote an existing tenant to a Service Provider Tenant with the following command:
+For on-premise installations, you can promote an existing tenant to a Service Provider tenant with the following command:
 
 ```bash
 TENANTID=your-tenant-id-here
@@ -137,11 +137,11 @@ container. For on-premise installations you can find the tenant ID by listing th
 }
 ```
 
-## Service Provider Tenant in the Mender UI
+## Service Provider tenant in the Mender UI
 
 ### Managing tenants
 
-After you log in to the Service Provider Tenant, you will see an empty tenants list: 
+After you log in to the Service Provider tenant, you will see an empty tenants list: 
 
 ![Service provider main view empty](sp0.png)
 
@@ -157,7 +157,7 @@ Now there are additional operations you can perform on it, by clicking the detai
 
 ![Service provider add](sp1-edit.png)
 
-As you can see, the Mender UI allows the Service Provider Tenant to manage the child tenants.
+As you can see, the Mender UI allows the Service Provider tenant to manage the child tenants.
 Every operation is recorded in the audit logs:
 
 ![Service provider add](sp2.png)
