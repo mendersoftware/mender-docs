@@ -133,10 +133,10 @@ Server. They include management end-points, consumed by users and the UI,
 device end-points, consumed by the Mender components running on the devices,
 and internal end-points.
 
-* _Service Provider Tenant_ - A special _Tenant_ which can create and manage
-children tenants, e.g., different divisions or teams in the same organization
+* _Service Provider tenant_ - A special _tenant_ which can create and manage
+child tenants, e.g., different divisions or teams in the same organization
 or customers managed by a service provider business partner. Service Provider
-Tenants are an Enterprise feature.
+tenants are an Enterprise feature.
 
 * _Signing system_ - A separated and not publicly accessible part of an IT
 infrastructure used to cryptographically sign Artifacts or other items,
