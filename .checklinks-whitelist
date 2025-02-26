@@ -6,19 +6,22 @@
     "files": [
         "302.Release-information/02.Release-notes-changelog/10.Mender-Server",
         "302.Release-information/02.Release-notes-changelog/11.Mender-Server-Enterprise",
+        "302.Release-information/02.Release-notes-changelog/12.Hosted-Mender/docs.md",
         "302.Release-information/02.Release-notes-changelog/20.Mender-client",
         "302.Release-information/02.Release-notes-changelog/21.mender-connect",
         "302.Release-information/02.Release-notes-changelog/22.mender-configure-module",
         "302.Release-information/02.Release-notes-changelog/23.mender-setup",
         "302.Release-information/02.Release-notes-changelog/24.mender-snapshot",
+        "302.Release-information/02.Release-notes-changelog/25.mender-flash/docs.md",
         "302.Release-information/02.Release-notes-changelog/30.mender-artifact",
         "302.Release-information/02.Release-notes-changelog/31.mender-cli",
         "302.Release-information/02.Release-notes-changelog/32.mender-convert",
         "302.Release-information/02.Release-notes-changelog/40.meta-mender",
         "302.Release-information/02.Release-notes-changelog/50.mender-binary-delta",
         "302.Release-information/02.Release-notes-changelog/51.monitor-client",
-        "302.Release-information/02.Release-notes-changelog/52.mender-gateway",
+        "302.Release-information/02.Release-notes-changelog/52.Mender-Gateway",
         "302.Release-information/02.Release-notes-changelog/60.mender-ci-workflows",
+        "302.Release-information/02.Release-notes-changelog/70.app-update-module/docs.md",
         "302.Release-information/03.Open-source-licenses/01.Mender-Server",
         "302.Release-information/03.Open-source-licenses/02.Mender-Server-Enterprise"
     ]
