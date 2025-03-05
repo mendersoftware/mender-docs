@@ -123,7 +123,7 @@ This user will preauthorize devices with authorization to the gateway.
 </dl>
 
 !!!! *Mender Enterprise Only*: Using
-!!!! [RBAC](../../../02.Overview/12.Role.Based.Access.Control) you can create a new
+!!!! [RBAC](../../../02.Overview/12.Role-based-access-control) you can create a new
 !!!! user with a dedicated role to the user access scope to the
 !!!! [preauthorization API
 !!!! endpoint](https://docs.mender.io/api/#management-api-device-authentication-preauthorize) for the
