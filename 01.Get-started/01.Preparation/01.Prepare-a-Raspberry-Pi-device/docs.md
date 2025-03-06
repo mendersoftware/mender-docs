@@ -195,7 +195,7 @@ Go to the **Dashboard** tab and click on **Connect a device**.
 
 ## Step 4 - Connect a device
 
-Select **PREPARE AND CONNECT MY RASPBERRY PI**.
+Select the **GET STARTED** button from the *Raspberry Pi quick start* box.
 
 ![connecting a device](Image_1.png)
 
