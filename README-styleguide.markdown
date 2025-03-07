@@ -61,7 +61,7 @@ Examples:
 > * "helps" rather than "facilitates"
 > * "uses" rather than "utilizes."
 
-## Active voice is preferred over passive voice
+## Prefer active over passive voice
 
 Unless one of the following applies:
 
@@ -69,9 +69,11 @@ Unless one of the following applies:
 * It is more appropriate to focus on the receiver of the action.
 * You want to avoid blaming the user for an error, such as in an error message.
 * The information is clearer in passive voice.
-* Avoid -ing endings if possible as they make the sentence longer and more passive / less actionable. Examples:.
-* "Get started", not "Getting started".
-* "Provision a new device", not "Provisioning a new device".
+* Avoid -ing endings if possible as they make the sentence longer and more passive / less actionable. Examples:
+  
+   * "Get started", not "Getting started".
+   * "Provision a new device", not "Provisioning a new device".
+
 * Helpful resource: the section titled "Passive Voice Should Never Be Used by
   You" in the [Linux Journal Author's
   Guide](https://www.linuxjournal.com/author/authguide).
@@ -130,8 +132,9 @@ Examples:
 * Numbers >=10 to be written as numbers.
 * Use a comma separate large numbers (e.g. 10,000).
 * Exceptions: avoid mixing number formats in same sentence.
-* Don't write: "...while three of our customers have over 20,000 devices...".
-* Do write: "...while 3 of our customers have over 20,000 devices...".
+   
+   * Don't write: "...while three of our customers have over 20,000 devices...".
+   * Do write: "...while 3 of our customers have over 20,000 devices...".
 
 ## Use present tense as much as possible
 
@@ -176,11 +179,11 @@ Our taxonomy reference can be found [here](02.Overview/15.Taxonomy/docs.md).
 
 Open links in the current tab:
 
-> [https://docs.mender.io](https://docs.mender.io)
+> `[https://docs.mender.io](https://docs.mender.io)`
 
 And in a new tab:
 
-> [https://docs.mender.io](https://docs.mender.io?target=_blank)
+> `[https://hub.mender.io](https://hub.mender.io?target=_blank)`
 
 
 
