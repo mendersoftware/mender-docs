@@ -81,7 +81,7 @@ token if enabled. The Client receives a JWT token valid for one week if the
 log-in is successful.
 
 As an additional layer of security, Mender Enterprise supports [Role Based Access
-Control](../12.Role.Based.Access.Control/docs.md) to limit authorization of users.
+Control](../12.Role-based-access-control/docs.md) to limit authorization of users.
 
 
 ## Hardware security
