@@ -127,11 +127,12 @@ It is possible to sign Artifacts using keys in Cloud Key Management, allowing de
 
 Currently the mender-artifact tool supports:
 
-* [Google Cloud Key Management](https://cloud.google.com/security-key-management?target=_blank).
-* [HashiCorp Vault](https://www.vaultproject.io/?target=_blank).
-* [KeyFactor](https://www.keyfactor.com/).
+* [Google Cloud Key Management](https://cloud.google.com/security-key-management?target=_blank)
+* [HashiCorp Vault](https://www.vaultproject.io/?target=_blank)
+* [KeyFactor](https://www.keyfactor.com/?target=_blank)
+* [Azure Key Vault](https://azure.microsoft.com/en-us/products/key-vault/?target=_blank)
 
-For more information, check the help screen for the `gcp-kms-key`, `keyfactor-signserver-worker`, and `-vault-transit-key` options, available by running the command `mender-artifact sign --help`.
+For more information, check the help screen for the `gcp-kms-key`, `keyfactor-signserver-worker`, `vault-transit-key`, and `azure-key` options, available by running the command `mender-artifact sign --help`.
 
 
 ## Hardware security
