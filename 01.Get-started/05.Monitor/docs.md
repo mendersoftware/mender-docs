@@ -243,7 +243,7 @@ Once the service exits, an alert is sent.
 Restarting the service will send an ok Alert.
 
 ```bash
-systemctl restart countdown
+sudo systemctl restart countdown
 ```
 
 To stop the monitoring, disable and delete the check
