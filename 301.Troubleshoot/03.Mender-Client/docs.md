@@ -4,6 +4,18 @@ taxonomy:
     category: docs
 ---
 
+## `Secure Boot forbids loading module from` during GRUB boot after a Mender upate
+
+`mender-convert` GRUB integration for Mender does not support user configuration
+for `GRUB_BACKGROUND`, `GRUB_THEME` nor `GRUB_FONT`. Due to a tentative but
+incomplete integartion in older versions of `mender-convert`, a device
+configured for Secure Boot will throw these kind of warnings when booting after
+a Mender update. These warnings do not compromise the security of Secure Boot.
+
+<!--AUTOVERSION: "version %,"/ignore -->
+From `mender-convert` version 4.3.1, the incomplete integration has been removed
+and the warnings are not displayed anymore.
+
 ## `mender: command not found` error when using the `mender-artifact` snapshot feature
 
 This is caused by using an outdated version of the `mender-artifact` tool (e.g from the upstream Debian or
