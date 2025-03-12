@@ -45,6 +45,13 @@ met for this conversion to support Secure Boot.
 * The `grub-efi-amd64-signed` and `shim-signed` packages must be
   installed prior to the conversion.
 
+!!! Mender GRUB integration utilizes the default settings for `GRUB_BACKGROUND`,
+!!! `GRUB_THEME`, and `GRUB_FONT`. While the system will not be damaged,
+!!! deviating from these defaults as described in
+!!! [Simple configuration handling](https://www.gnu.org/software/grub/manual/grub/html_node/Simple-configuration.html)
+!!! will result in GRUB emitting warnings related to module loading. These
+!!! settings will ultimately be ignored.
+
 ## Signing
 
 Mender-convert only supports images that are already Secure Boot compliant before the conversion,
