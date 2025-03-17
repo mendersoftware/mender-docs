@@ -53,7 +53,7 @@ For other device types and OSes, we provide documentation to integrate with Mend
 * Learn how to integrate devices with [Debian family](../../04.Operating-System-updates-Debian-family) or 
   [Yocto OSes](../../05.Operating-System-updates-Yocto-Project)
 * Or visit [Board Integrations](https://hub.mender.io/c/board-integrations?target=_blank) on 
-  Mender Hub and search for your device and OS.
+  Mender Hub and search for your device and OS [Community Board Integrations Index](https://hub.mender.io/t/board-support-index/5742/5).
 
 !!! We recommend running through the Get Started guide with a Raspberry Pi or virtual device to 
 !!! learn the basics before diving into other board integrations.
