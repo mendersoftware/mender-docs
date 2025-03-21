@@ -176,26 +176,38 @@ Introduced in Mender Client 3.3.
 
 #### RetryPollIntervalSeconds
 
-Interval to retry contacting to the server on failed communications. 
+Maximum interval to retry contacting to the server on failed communications. 
 
 **Minimum value.** 
 Must be more than 60 seconds. If you specify less than 60, the Mender Client will ignore the setting and use 60 seconds instead.
 
 **Exponential backoff.**
-The specified interval is used for three consecutive attempts. After three failures, the interval doubles for the next three attempts, and so on, until the total number of attempts (as set by [RetryPollCount](#retrypollcount)) is reached.
+The algorithm starts with 60 seconds between retries. After three failures, the interval doubles for the next three attempts, and so on, until reaching  `RetryPollIntervalSeconds`. From there, the interval won't be increased further and it will keep retrying until the total number of attempts (as set by [RetryPollCount](#retrypollcount)) is reached.
 
-Example for `RetryPollIntervalSeconds=120` and `RetryPollCount=5`:
+Example for `RetryPollIntervalSeconds=300` and `RetryPollCount=15`:
 
 ```markdown
 try to connect -> fail
+wait 60sec    -> try to connect -> fail
+wait 60sec    -> try to connect -> fail
+wait 60sec    -> try to connect -> fail
+
 wait 120sec    -> try to connect -> fail
 wait 120sec    -> try to connect -> fail
 wait 120sec    -> try to connect -> fail
 
 wait 240sec    -> try to connect -> fail
 wait 240sec    -> try to connect -> fail
+wait 240sec    -> try to connect -> fail
+
+wait 300sec (max)    -> try to connect -> fail
+wait 300sec (max)    -> try to connect -> fail
+wait 300sec (max)    -> try to connect -> fail
+wait 300sec (max)    -> try to connect -> fail
+wait 300sec (max)    -> try to connect -> fail
+wait 300sec (max)    -> try to connect -> fail
+
 give up
-```
 
 It applies to the following Device APIs:
 * [Check Update](https://docs.mender.io/api/#device-api-deployments-v2-check-update)
