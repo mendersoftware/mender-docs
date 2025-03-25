@@ -190,6 +190,15 @@ global:
     CONTAINER_NAME: "<name-of-your-container>"
 ```
 
+Finally, export the following environment variables, needed for installing
+Mender in the later steps: this in particular is required for the
+storage proxy feature:
+
+```bash
+export STORAGE_ENDPOINT="https://<name-of-your-storage>.blob.core.windows.net"
+export STORAGE_BUKET="<name-of-your-container>"
+```
+
 [/ui-tab]
 [ui-tab title="Cloudflare R2"]
 In this guide, we provide an example of how to use Cloudflare
