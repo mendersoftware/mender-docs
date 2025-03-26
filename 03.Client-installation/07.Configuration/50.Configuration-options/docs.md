@@ -168,9 +168,11 @@ It applies to the following Device APIs:
 * [Check Update](https://docs.mender.io/api/#device-api-deployments-v2-check-update)
 * [Inventory reporting APIs](https://docs.mender.io/api/#device-api-device-inventory)
 * [Update Deployment Status](https://docs.mender.io/api/#device-api-deployments-update-deployment-status)
-* [Report Deployment Log](https://docs.mender.io/api/#device-api-deployments-report-deployment-log)
+  * Only when reporting status "success" and "failure"
 * [Download Artifact](https://docs.mender.io/api/#device-api-deployments-download-artifact)
 
+
+If the setting is zero (the default), the maximum number of retries is `3 * ceil(log2(RetryPollIntervalSeconds) + 1)`.
 
 Introduced in Mender Client 3.3.
 
@@ -208,16 +210,16 @@ wait 300sec (max)    -> try to connect -> fail
 wait 300sec (max)    -> try to connect -> fail
 
 give up
+```
 
 It applies to the following Device APIs:
 * [Check Update](https://docs.mender.io/api/#device-api-deployments-v2-check-update)
 * [Inventory reporting APIs](https://docs.mender.io/api/#device-api-device-inventory)
 * [Update Deployment Status](https://docs.mender.io/api/#device-api-deployments-update-deployment-status)
-* [Report Deployment Log](https://docs.mender.io/api/#device-api-deployments-report-deployment-log)
+  * Only when reporting status "success" and "failure"
 
 
-! [Download Artifact](https://docs.mender.io/api/#device-api-deployments-download-artifact) has a fixed retry set to 60 seconds and can't be configured. 
-! It is **not** affected with the Exponential backoff mechanism, the value remains 60s always.
+! [Download Artifact](https://docs.mender.io/api/#device-api-deployments-download-artifact) has a fixed retry duration of 60 seconds and can't be configured. 
 
 As of Mender Client 3.3 this configuration option applies to inventory updates as well.
 
