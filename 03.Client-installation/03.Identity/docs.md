@@ -96,6 +96,6 @@ cpuid=1234123-ABC
 ## Example device identity executables
 
 <!--AUTOVERSION: "mender/tree/%"/mender-->
-Example scripts are provided in the [support directory in the Mender Client source code repository](https://github.com/mendersoftware/mender/tree/5.0.0/support?target=_blank).
+Example scripts are provided in the [support directory in the Mender Client source code repository](https://github.com/mendersoftware/mender/tree/5.0.1/support?target=_blank).
 
 
