@@ -69,36 +69,3 @@ in these logs. This is useful when troubleshooting intermittent update failures.
 To learn more, have a look at the [tutorial on how to implement State
 scripts](../../06.Artifact-creation/04.State-scripts/docs.md).
 
-## Synchronized updates
-
-!! This feature will be removed in Mender Client 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
-
-!!!!! Support for customizing the update process is available in all plans. Synchronizing
-!!!!! this remotely through the Mender UI is only available on the Enterprise plan.
-
-When creating a software deployment, it is possible to control the update from
-the Mender UI or an application running locally on the device by telling the
-Mender Client to wait at specific points in the deployment. The deployment
-can then either continue or rollback from this point at some later time.
-
-See the screenshot below for an example of what is possible.
-
-![Update process options](update-process-options.jpg)
-
-Common use cases are:
-
-* User presses *Start update* on the device to process the software update as an
-  update is ready.
-* Device is in use, and by default, no updates start. Once ready, the user can
-  press *Enable updates* on the device.
-* Synchronized updates, QA verifies all devices before they can commit the software,
-  updating simultaneously.
-* Synchronized reboot: Devices can download whenever they have the opportunity,
-  but all devices need to reboot during the maintenance window at the same time.
-
-## Further reading
-
-For more information on getting started with synchronized updates attributes, see
-[How to use the Device-side API](../../03.Client-installation/06.Use-the-device-side-api),
-or take a look at the [Device-side API](../../201.Device-side-API) and
-[Server-side API](../../200.Server-side-API) reference directly.
