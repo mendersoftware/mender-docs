@@ -162,8 +162,15 @@ is sent. The default is 4 hours.
 
 #### RetryPollCount
 
-The maximum number of tries that the Mender Client performs when contacting
-the Mender Server.
+The maximum number of tries that the Mender Client performs when contacting the Mender Server before giving up.
+
+It applies to the following Device APIs:
+* [Check Update](https://docs.mender.io/api/#device-api-deployments-v2-check-update)
+* [Inventory reporting APIs](https://docs.mender.io/api/#device-api-device-inventory)
+* [Update Deployment Status](https://docs.mender.io/api/#device-api-deployments-update-deployment-status)
+  * Only when reporting [status](https://docs.mender.io/api/#device-api-deployments-schemas-deploymentstatus) "commit", "success" and "failure"
+    * _for historical reasons, commit gets reported to the server as a second "install"_
+
 
 If the setting is zero (the default), the maximum number of retries is `3 * ceil(log2(RetryPollIntervalSeconds) + 1)`.
 
@@ -171,13 +178,48 @@ Introduced in Mender Client 3.3.
 
 #### RetryPollIntervalSeconds
 
-An integer that sets the number of seconds to wait between each attempt to
-communicate with the server. Note that the client may attempt more often
-initially to enable rapid upgrades, but will gradually fall back to this value
-if the server is busy. See also the section about [polling
-intervals](../01.Polling-intervals/docs.md).
+Maximum interval to retry contacting to the server on failed communications. 
 
-As of Mender Client 3.3 this one also applies to inventory updates.
+**Minimum value.** 
+Must be more than 60 seconds. If you specify less than 60, the Mender Client will ignore the setting and use 60 seconds instead.
+
+**Exponential backoff.**
+The algorithm starts with 60 seconds between retries. After three failures, the interval doubles for the next three attempts, and so on, until reaching  `RetryPollIntervalSeconds`. From there, the interval won't be increased further and it will keep retrying until the total number of attempts (as set by [RetryPollCount](#retrypollcount)) is reached.
+
+Example for `RetryPollIntervalSeconds=300` and `RetryPollCount=15`:
+
+```markdown
+try to connect -> fail
+wait 60sec    -> try to connect -> fail
+wait 60sec    -> try to connect -> fail
+wait 60sec    -> try to connect -> fail
+
+wait 120sec    -> try to connect -> fail
+wait 120sec    -> try to connect -> fail
+wait 120sec    -> try to connect -> fail
+
+wait 240sec    -> try to connect -> fail
+wait 240sec    -> try to connect -> fail
+wait 240sec    -> try to connect -> fail
+
+wait 300sec (max)    -> try to connect -> fail
+wait 300sec (max)    -> try to connect -> fail
+wait 300sec (max)    -> try to connect -> fail
+wait 300sec (max)    -> try to connect -> fail
+wait 300sec (max)    -> try to connect -> fail
+wait 300sec (max)    -> try to connect -> fail
+
+give up
+```
+
+The algorithm applies to the same endpoints as described in [RetryPollCount](#retrypollcount).
+
+
+!!! The same algorithm applies when resuming an Artifact download. 
+!!! If the connection to the server is lost in the middle of a download, the client will resume from the last received byte using the algorithm above, but with a fixed retry duration of 60 seconds.
+
+As of Mender Client 3.3 this configuration option applies to inventory updates as well.
+
 
 #### RootfsPartA
 
