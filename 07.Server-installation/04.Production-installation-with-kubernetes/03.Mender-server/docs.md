@@ -51,7 +51,7 @@ cat <<-EOF > mender-values.yml
 ingress:
   enabled: true
   annotations:
-    cert-manager.io/issuer: "letsencrypt"
+    cert-manager.io/issuer: "letsencrypt" # if you choose to use cert-manager
   ingressClassName: traefik
   path: /
   hosts:
@@ -119,6 +119,7 @@ ingress:
     appgw.ingress.kubernetes.io/health-probe-path: /ui/
     appgw.ingress.kubernetes.io/request-timeout: "600"
     appgw.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/issuer: "letsencrypt" # if you choose to use cert-manager
   ingressClassName: azure/application-gateway
   path: /
   hosts:
@@ -146,6 +147,7 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-buffering: "off"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+    cert-manager.io/issuer: "letsencrypt" # if you choose to use cert-manager
   path: /
   ingressClassName: nginx
   hosts:
