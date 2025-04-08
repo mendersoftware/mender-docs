@@ -68,7 +68,7 @@ the virtual device is running.
 Save the `CONTAINER ID` in a shell variable:
 
 ```bash
-CONTAINER_ID=$(docker ps  | grep 'mender-client-qemu' | awk '{print $1}')
+CONTAINER_ID=$(docker ps  | grep 'mender-client-' | awk '{print $1}')
 ```
 
 Find the IP address of the virtual device (we will save it a in shell variable):
