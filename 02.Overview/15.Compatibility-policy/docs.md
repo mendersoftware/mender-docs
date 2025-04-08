@@ -85,6 +85,49 @@ LTS releases. Please refer to
 [Supported releases](../../302.Release-information/01.Supported-releases/docs.md)
 for the currently supported components.
 
+## Deprecation policy: Server API
+
+This section outlines the policy for deprecating APIs within Mender Server. It provides clear guidelines on the process, timelines, and expectations for users of our API services during deprecation periods. The goal is to ensure a smooth transition and minimal disruption to users.
+
+### Purpose of API Deprecation
+Deprecation is the process of gradually phasing out an API version, encouraging users to migrate to newer versions. This is done for various reasons, including improvements to performance, security, compatibility, or to accommodate new business requirements.
+
+### Deprecation Period
+Once an API is deprecated, users will be given a notice and a grace period of *12 months* to transition to the newer version. During this period, deprecated APIs will continue to function but may no longer receive updates or support.
+
+Key Milestones:
+- Deprecation Announcement: Users will be informed of the deprecation of an API, along with details on the new version.
+- Deprecation Period (12 months): The deprecated API will remain operational but will not receive new features, updates, or improvements. Critical security issues will be addressed.
+- End of Life (EOL): After 12 months, the deprecated API will be retired, and access will be fully disabled. Users are encouraged to migrate before this date to avoid service interruptions.
+
+In case of on-premis releases, the deprecated API will be retired with the next major release.
+
+### Notification Process
+The following steps will be taken to notify users of an upcoming deprecation:
+
+- Public Announcements: A public notice will be published on our website and API documentation.
+- Version Change Logs: Deprecation notices will also be reflected in version change logs, ensuring transparency.
+
+### Support During Deprecation Period
+To help users transition smoothly, the following support will be available during the deprecation period:
+
+- Documentation: Comprehensive guides and resources will be available to help users migrate to the new version of the API.
+- Technical Support: For Mender customers, our support team will be available to assist with any issues related to migration or questions regarding the deprecation process.
+
+### Migration Guidelines
+We strongly recommend that users start migrating as soon as the deprecation announcement is made. The following guidelines will assist in the transition:
+- Review Deprecation Notes: Familiarize yourself with the changes, and how they might affect your existing implementation.
+- API Versioning: Ensure your system is compatible with the latest version of the API, following any versioning standards and endpoints outlined in the new documentation.
+- Testing: Make sure to thoroughly test your application against the new API version before the deprecation period ends.
+- Plan for Transition: Begin the migration early to avoid any disruption after the 12-month deprecation period.
+
+### After the Deprecation Period (End of Life)
+Once the deprecation period has ended, the following actions will be taken:
+- API Retirement: The deprecated API will no longer be available, and all endpoints will be shut down.
+- Access Revoked: All calls to the deprecated API will be rejected, and users will need to switch to the newer version to continue accessing API services.
+
+### Conclusion
+This policy ensures that API deprecations are handled with minimal disruption to users, providing adequate time to transition and migrate to newer versions. By adhering to this policy, we aim to maintain high-quality service, security, and performance across our API offerings.
 
 ## Versioning scheme
 
