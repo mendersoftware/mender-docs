@@ -155,7 +155,7 @@ the lists of specific criteria we use for our versioning policy.
 
 * Removing or changing existing command line options
 
-* Removing or changing existing REST API
+* Removing or changing existing fields in responses of an existing REST API
 
 * Edge case: Changing default behavior, with the old behavior still
   available. An example is changing the default artifact format version in
