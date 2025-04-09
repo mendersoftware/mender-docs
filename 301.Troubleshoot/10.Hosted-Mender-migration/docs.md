@@ -6,7 +6,7 @@ taxonomy:
 
 
 Historically we have only had a single instance in the US.
-Hosted Mender instances are now available in [multiple regions](../../11.General/00.Hosted-Mender-regions/docs.md) as a result of our expansion.
+Hosted Mender instances are now available in [multiple regions](../../12.General/00.Hosted-Mender-regions/docs.md) as a result of our expansion.
 This document will describe the migration process if you currently have a fleet of devices operating in one instance and would like to move them to another one.
 
 !! Migration between instances without risks requires support assistance and is a payed service available only to the Enterprise plan.

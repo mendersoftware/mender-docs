@@ -27,7 +27,7 @@ You should:
 ### Step 1 - Download the mender-artifact utility on your workstation
 
 !!! The simplest installation instructions for `mender-artifact` are covered below, see
-!!! [Downloads](../../10.Downloads/docs.md#mender-artifact) for installation alternatives such as
+!!! [Downloads](../../11.Downloads/docs.md#mender-artifact) for installation alternatives such as
 !!! setting up package repositories.
 
 On Linux, download the `mender-artifact` deb package and install it:
@@ -182,7 +182,7 @@ Deploy to many devices in order to effectively replicate the device software
 and configuration.
 
 To read more about system snapshots, see the documentation on
-[Artifact from system snapshot](../../06.Artifact-creation/02.Create-an-Artifact-with-system-snapshot/docs.md).
+[Artifact from system snapshot](../../07.Artifact-creation/02.Create-an-Artifact-with-system-snapshot/docs.md).
 
 Using the **snapshot** feature is one way to create Operating System updates and additional
 resources on more advanced ways you will find here:
