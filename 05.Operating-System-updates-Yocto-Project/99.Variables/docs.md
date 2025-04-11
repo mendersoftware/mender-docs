@@ -82,7 +82,7 @@ default is empty, which means the artifact won't be signed.
 
 The signature can also be added or changed outside the build process, by using
 the `mender-artifact` tool's `-k` option. For more information, see [signing
-Mender Artifacts](../../06.Artifact-creation/07.Sign-and-verify/docs.md#signing).
+Mender Artifacts](../../07.Artifact-creation/07.Sign-and-verify/docs.md#signing).
 
 
 #### `MENDER_ARTIFACT_VERIFY_KEY`
@@ -521,7 +521,7 @@ also used for add-ons configuration, where enabled.
 
 Variable holding the username which the `mender-connect` employs. See [Mender
 shell configuration
-options](../../09.Add-ons/90.Mender-Connect/docs.md#configuration).
+options](../../10.Add-ons/90.Mender-Connect/docs.md#configuration).
 Note that the default value in `meta-mender-core` is `nobody`, while in
 `meta-mender-demo` it is `root`.
 

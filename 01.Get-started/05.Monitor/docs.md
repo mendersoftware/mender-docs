@@ -13,11 +13,11 @@ taxonomy:
 !!! with a package manager to install the needed dependencies.
 
 This tutorial will walk you through how to monitor your device and its applications with
-Mender. We will be using the [Monitor Add-on](../../09.Add-ons/20.Monitor/docs.md), allowing you to monitor various system parts.
+Mender. We will be using the [Monitor Add-on](../../10.Add-ons/20.Monitor/docs.md), allowing you to monitor various system parts.
 
 ## Prerequisites
 
-To follow this tutorial and perform the examples, you will need to install the [Monitor Add-on package](../../09.Add-ons/20.Monitor/10.Installation/docs.md) and the [Demo monitors package](../../10.Downloads/docs.md#demo-monitors) on your device. 
+To follow this tutorial and perform the examples, you will need to install the [Monitor Add-on package](../../10.Add-ons/20.Monitor/10.Installation/docs.md) and the [Demo monitors package](../../11.Downloads/docs.md#demo-monitors) on your device. 
 If you have followed the [get started tutorial](../01.Preparation/docs.md) to prepare your device, the Monitor Add-on, and Demo packages should already be installed.
 
 Verify installed dependencies on your device with:
@@ -59,8 +59,8 @@ Verify existence of check definitions with:
 ## Demo Checks
 
 
-Demo Checks for the Mender Monitor Add-on, found in the [Demo monitors package](../../10.Downloads/docs.md#demo-monitors) (Debian package) or in the `examples` directory for [Yocto](../../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/docs.md#monitor) serve as a starting point for quick evaluation.
-Once ready, you can customize and define your own [Checks](../../09.Add-ons/20.Monitor/20.Concepts/docs.md#creating-custom-checks).
+Demo Checks for the Mender Monitor Add-on, found in the [Demo monitors package](../../11.Downloads/docs.md#demo-monitors) (Debian package) or in the `examples` directory for [Yocto](../../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/docs.md#monitor) serve as a starting point for quick evaluation.
+Once ready, you can customize and define your own [Checks](../../10.Add-ons/20.Monitor/20.Concepts/docs.md#creating-custom-checks).
 
 By default both mail notifications and UI alerts occur once an monitored event happens. 
 While going through the examples in this tutorial, watch the email inbox of your Mender user to see that you get notified about Alerts triggered and cleared on the device. 
@@ -84,7 +84,7 @@ Once you remove the USB device, the log subsystem triggers an alert, which you c
 
 ![Connectivity alarm OK](log-usb-alarm.png)
 
-!!! Note: This Alert will remain unless a manual [alert cleaning](../../09.Add-ons/20.Monitor/50.Advanced-use-cases/docs.md#alert-cleaning ) is performed:
+!!! Note: This Alert will remain unless a manual [alert cleaning](../../10.Add-ons/20.Monitor/50.Advanced-use-cases/docs.md#alert-cleaning ) is performed:
 !!! ```bash
 !!! sudo su
 !!! cd /usr/share/mender-monitor
@@ -253,7 +253,7 @@ sudo mender-monitorctl disable service countdown
 sudo mender-monitorctl delete service countdown systemd
 ```
 
-!!! If you want to examine the low-level architecture of mender-monitor using this example [follow this link](../../09.Add-ons/20.Monitor/50.Advanced-use-cases/docs.md#example).
+!!! If you want to examine the low-level architecture of mender-monitor using this example [follow this link](../../10.Add-ons/20.Monitor/50.Advanced-use-cases/docs.md#example).
 
 
 

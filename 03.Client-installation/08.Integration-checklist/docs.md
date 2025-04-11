@@ -241,7 +241,7 @@ reboot
 
 ## Transition state
 
-In the [Mender state machine workflow](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md#the-state-machine-workflow) the transitional state for the bootloader starts with `ArtifactReboot` and ends with either `ArtifactCommit` or `ArtifactFailure`.
+In the [Mender state machine workflow](../../07.Artifact-creation/08.Create-a-custom-Update-Module/docs.md#the-state-machine-workflow) the transitional state for the bootloader starts with `ArtifactReboot` and ends with either `ArtifactCommit` or `ArtifactFailure`.
 
 During this verification process, it is expected that the bootloader's environment variables will experience changes - either by the rootfs-image update module or the bootloader itself - and the bootloader is expected to enact conditional logic. For comparison, in the non-transition state, the bootloader's variables remain unchanged. 
 

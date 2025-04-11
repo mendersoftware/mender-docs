@@ -14,7 +14,7 @@ The build output will most notably include:
 
 !!! If you do not want to build your own images for testing purposes, the 
 !!! [Get started](../../01.Get-started/chapter.md) tutorials provide links to
-!!! several [prebuilt images](../../10.Downloads/docs.md#disk-images).
+!!! several [prebuilt images](../../11.Downloads/docs.md#disk-images).
 
 ## What is *meta-mender*?
 

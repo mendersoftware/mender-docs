@@ -204,7 +204,7 @@ Replace `<DIRECTORY-WITH-UPDATE-MODULE>` with the path to the
 "custom-update-module", can be any string, and must have the same name as the
 payload type used for Artifacts installed with this Update Module.
 See [Create a custom update
-module](../../06.Artifact-creation/08.Create-a-custom-Update-Module/docs.md)
+module](../../07.Artifact-creation/08.Create-a-custom-Update-Module/docs.md)
 for more information.
 
 
@@ -230,7 +230,7 @@ IMAGE_INSTALL:append = " mender-connect"
 Alternatively, add the snippet to your `local.conf`.
 
 Mender Connect provides several [configuration
-options](../../09.Add-ons/90.Mender-Connect/docs.md#configuration). Set `MENDER_CONNECT_USER` and
+options](../../10.Add-ons/90.Mender-Connect/docs.md#configuration). Set `MENDER_CONNECT_USER` and
 `MENDER_CONNECT_SHELL` via your `local.conf` file for `meta-mender` to generate a
 `mender-connect.conf` with `User` and `ShellCommand` fields:
 
@@ -399,7 +399,7 @@ Replace <DIRECTORY-WITH-MENDER-GATEWAY-CONF> with the path to the `mender-gatewa
 
 !!!!! You should not use this package on production devices.
 
-See [Downloads](../../10.Downloads/docs.md#examples-package) for download links for this package.
+See [Downloads](../../11.Downloads/docs.md#examples-package) for download links for this package.
 
 To integrate it on your Yocto build, add the `meta-mender` demo layer to your build layers:
 

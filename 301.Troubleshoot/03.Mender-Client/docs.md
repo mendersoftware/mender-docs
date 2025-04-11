@@ -20,7 +20,7 @@ This is caused by using an outdated version of the `mender-artifact` tool (e.g f
 Ubuntu APT repositories) which cannot detect which version of the Mender Client the device is running.
 
 To solve this issue, install `mender-artifact` from the Mender APT repository following the instructons in
-the [downloads section](../../10.Downloads/docs.md#mender-artifact).
+the [downloads section](../../11.Downloads/docs.md#mender-artifact).
 
 ## `fsck` error when creating a Mender Artifact using the snapshot feature
 
@@ -70,11 +70,11 @@ it to the 3.5.2 version by default.
 
 To solve the issue, either:
 * Run `apt-get install mender-client`
-* Run again the [express installation script](../../10.Downloads/docs.md#Express-installation)
+* Run again the [express installation script](../../11.Downloads/docs.md#Express-installation)
 
 ## Removed previous stable APT repositories
 
-We [removed](../../10.Downloads/docs.md#Set-up-the-APT-repository) the previously deprecated stable APT repository:
+We [removed](../../11.Downloads/docs.md#Set-up-the-APT-repository) the previously deprecated stable APT repository:
 
 ```
 deb [arch=your-arch] https://downloads.mender.io/repos/debian stable main
@@ -87,7 +87,7 @@ Err:3 https://downloads.mender.io/repos/debian stable InRelease
   403  Forbidden [IP: 52.222.214.71 443]
 ```
 
-it means you are using the old repository, please update to the current one (see [Set up the APT repository](../../10.Downloads/docs.md#Set-up-the-APT-repository) section).
+it means you are using the old repository, please update to the current one (see [Set up the APT repository](../../11.Downloads/docs.md#Set-up-the-APT-repository) section).
 
 In order to remove the obsolete repository `deb [arch=your-arch] https://downloads.mender.io/repos/debian stable main`
 you can use the following command:
@@ -145,7 +145,7 @@ The mender-client version 3.2.0 Debian package is deprecated. If you are
 getting installation errors, with a missing
 [libffi6](https://sourceware.org/libffi/) dependency, then please install the
 new Debian package, as per the installation instructions in
-[downloads](../../10.Downloads/docs.md#mender-client)
+[downloads](../../11.Downloads/docs.md#mender-client)
 
 
 ## Obtaining client logs
@@ -256,7 +256,7 @@ echo | openssl s_client -connect s3.example.com:9000 2>/dev/null | openssl x509 
 > ```
 
 We can see that both these certificates are currently valid.
-Also see the [documentation on certificates](../../07.Server-installation/01.Overview/02.Certificates-and-keys/docs.md) for an
+Also see the [documentation on certificates](../../08.Server-installation/01.Overview/02.Certificates-and-keys/docs.md) for an
 overview and description on how to generate new certificates.
 
 
@@ -279,10 +279,10 @@ need to update your client's root certificate store. For example, [hosted Mender
 uses an official CA so the only reason your client would reject this is if it does not have updated root certificates
 in its system store.
 
-!!! Hosted Mender is available in multiple [regions](/11.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
+!!! Hosted Mender is available in multiple [regions](/12.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
 
 On the other hand, if you set up the Mender Server yourself as described in
-[Production installation](../../07.Server-installation/04.Production-installation-with-kubernetes/docs.md) and generated certificates as part of it,
+[Production installation](../../08.Server-installation/04.Production-installation-with-kubernetes/docs.md) and generated certificates as part of it,
 your need to make sure that the server certificates are in `/etc/mender/server.crt` on your device.
 
 To test that they match, run `cat /etc/mender/server.crt` on your device, and compare that to the output
@@ -346,7 +346,7 @@ The problem here is most likely that you have built [a new version of the Artifa
 that your Mender Client does not support. It could also be that you are building a very old version of the
 Artifact format that your new version of the Mender Client does not support.
 
-In either case the solution is to [build a different version of the Artifact format](../../06.Artifact-creation/01.Create-an-Artifact/docs.md) that your Mender Client supports
+In either case the solution is to [build a different version of the Artifact format](../../07.Artifact-creation/01.Create-an-Artifact/docs.md) that your Mender Client supports
 until you have upgraded all Mender Clients and can use the corresponding latest version of the Mender Artifact format.
 
 

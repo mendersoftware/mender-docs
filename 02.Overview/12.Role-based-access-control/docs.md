@@ -74,7 +74,7 @@ releases and User accounts, as well as providing information about deployments.
   * **Read**: read access to the devices.
   * **Manage**: write access to the devices, requires **Read**.
   * **Deploy**: permission to deploy software to the devices, requires **Read**.
-  * **Connect**: troubleshooting devices (using [mender-connect](../../09.Add-ons/00.Overview/docs.md)), requires **Read**.
+  * **Connect**: troubleshooting devices (using [mender-connect](../../10.Add-ons/00.Overview/docs.md)), requires **Read**.
   * **Configure**: permission to get and set devices configuration, requires **Read**.
 
 !!! Please note that the **Connect** permission gives users access to the Remote Terminal,
