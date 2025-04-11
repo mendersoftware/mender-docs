@@ -35,10 +35,10 @@ Now, compile the modified firmware. We will use the same build directory for sim
 
 ```bash
 export ARTIFACT_NAME="release-2"
-west build --sysbuild --domain mender-mcu-integration -- -DCONFIG_MENDER_ARTIFACT_NAME=\"$ARTIFACT_NAME\"
+west build --domain mender-mcu-integration -- -DCONFIG_MENDER_ARTIFACT_NAME=\"$ARTIFACT_NAME\"
 ```
 
-!!! Note: We don’t need to pass any extra parameters to the `west build` command since they were cached from the last build. We use the `--domain` parameter to rebuild only the application (not the bootloader).
+!!! Note: We don’t need to pass any other parameters to the `west build` command since they were cached from the last build. We use the `--domain` parameter to rebuild only the application (not the bootloader).
 
 The build system will recompile any changed source files and produce a new `zephyr.signed.bin` and generate the Mender Artifact together with the binary. Since we changed the code and the artifact name setting, both the binary and the Artifact will represent "version 2" of our firmware.
 

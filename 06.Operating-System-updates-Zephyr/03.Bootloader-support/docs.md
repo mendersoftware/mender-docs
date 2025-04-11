@@ -14,6 +14,6 @@ For Mender's Zephyr integration:
   * A `boot_partition` for MCUboot itself.
   * A `slot0_partition` for the primary image.
   * A `slot1_partition` for the secondary image.
-  * A `storage_partition` for persistent Mender data. It is recommended to have a separate `mender_partition` but a generic `storage_partition` can be used.
+  * A storage partition for persistent Mender data. It is recommended to have a separate `mender_partition` but a generic `storage_partition` can be used.
   * **There should be no scratch partition** since the integration uses the **swap without scratch** method which requires contiguous slots and avoids needing a separate scratch area​. Make sure `CONFIG_MCUBOOT_SWAP_USING_SCRATCH` is **disabled** (`MCUBOOT_SWAP_USING_SCRATCH=n`; the default in most cases).
 * **Automatic rollback:** The Mender MCU client and MCUboot work together to implement rollback. On the first boot of a new image, MCUboot will mark it as a temporary image. The Mender client then confirms the update by marking the image as permanent once it has started up successfully. If the new firmware does not report success, for example if it crashes or doesn't run the Mender client, MCUboot will revert to the old image upon reboot. This behavior gives similar robustness to Mender's dual rootfs updates on Linux.
