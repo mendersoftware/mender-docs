@@ -1,5 +1,5 @@
 ---
-title: Operating System updates: Configuration
+title: Configuration
 taxonomy:
     category: docs
 ---

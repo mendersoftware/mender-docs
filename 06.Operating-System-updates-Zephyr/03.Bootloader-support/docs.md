@@ -1,5 +1,5 @@
 ---
-title: Operating System updates: Bootloader support (MCUBoot)
+title: Bootloader support (MCUBoot)
 taxonomy:
     category: docs
 ---

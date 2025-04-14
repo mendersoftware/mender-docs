@@ -1,5 +1,5 @@
 ---
-title: Operating System updates: Customize Mender MCU
+title: Customize Mender MCU
 taxonomy:
     category: docs
 ---

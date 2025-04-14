@@ -1,5 +1,5 @@
 ---
-title: Operating System updates: Overview
+title: Overview
 taxonomy:
     category: docs
 ---

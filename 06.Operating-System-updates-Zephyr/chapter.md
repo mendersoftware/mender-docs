@@ -1,5 +1,5 @@
 ---
-title: Operating System updates: Zephyr family
+title: Operating System updates: Zephyr
 taxonomy:
     category: docs
 ---
