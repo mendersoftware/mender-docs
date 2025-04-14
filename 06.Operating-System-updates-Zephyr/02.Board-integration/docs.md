@@ -1,5 +1,5 @@
 ---
-title: Operating System updates: Board integration
+title: Board integration
 taxonomy:
     category: docs
 ---
