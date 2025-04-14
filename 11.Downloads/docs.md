@@ -57,25 +57,25 @@ Follow the correct link according to your host platform to download
 <!--AUTOVERSION: "mender-artifact %][x.x.x_mender-artifact-"/mender-artifact -->
 | Platform          | Download link                                             |
 |-------------------|-----------------------------------------------------------|
-| Ubuntu 24.04      | [mender-artifact 4.0.0][x.x.x_mender-artifact-ubuntu2404]   |
-| Ubuntu 22.04      | [mender-artifact 4.0.0][x.x.x_mender-artifact-ubuntu2204]   |
-| Debian 12         | [mender-artifact 4.0.0][x.x.x_mender-artifact-debian12] |
-| Debian 11         | [mender-artifact 4.0.0][x.x.x_mender-artifact-debian11] |
-| Mac OS X (x86-64) | [mender-artifact 4.0.0][x.x.x_mender-artifact-darwin]     |
+| Ubuntu 24.04      | [mender-artifact 4.1.0][x.x.x_mender-artifact-ubuntu2404]   |
+| Ubuntu 22.04      | [mender-artifact 4.1.0][x.x.x_mender-artifact-ubuntu2204]   |
+| Debian 12         | [mender-artifact 4.1.0][x.x.x_mender-artifact-debian12] |
+| Debian 11         | [mender-artifact 4.1.0][x.x.x_mender-artifact-debian11] |
+| Mac OS X (x86-64) | [mender-artifact 4.1.0][x.x.x_mender-artifact-darwin]     |
 
 !!! * For Debian and Ubuntu, you can also install `mender-artifact` through the
 !!! [Mender APT repositories](#install-using-the-apt-repository).
 
 <!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
-[x.x.x_mender-artifact-ubuntu2404]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.0.0-1%2Bubuntu%2Bnoble_amd64.deb
+[x.x.x_mender-artifact-ubuntu2404]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.1.0-1%2Bubuntu%2Bnoble_amd64.deb
 <!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
-[x.x.x_mender-artifact-ubuntu2204]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.0.0-1%2Bubuntu%2Bjammy_amd64.deb
+[x.x.x_mender-artifact-ubuntu2204]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.1.0-1%2Bubuntu%2Bjammy_amd64.deb
 <!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
-[x.x.x_mender-artifact-debian12]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.0.0-1%2Bdebian%2Bbookworm_amd64.deb
+[x.x.x_mender-artifact-debian12]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.1.0-1%2Bdebian%2Bbookworm_amd64.deb
 <!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
-[x.x.x_mender-artifact-debian11]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.0.0-1%2Bdebian%2Bbullseye_amd64.deb
+[x.x.x_mender-artifact-debian11]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.1.0-1%2Bdebian%2Bbullseye_amd64.deb
 <!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/4.0.0/darwin/mender-artifact
+[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/4.1.0/darwin/mender-artifact
 
 ! If you are using Mac OS X, note that using `mender-artifact` with
 ! disk image files (e.g.: `*.sdimg`, `*.img`, or others holding the storage
