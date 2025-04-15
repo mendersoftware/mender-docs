@@ -46,7 +46,7 @@ The build system will recompile any changed source files and produce a new `zeph
 
 With our *Artifact* ready, we'll now use the Mender server to deploy it to the device. We'll do this using the hosted Mender web interface:
 
-1. **Upload the *Artifact*:** In the [hosted Mender UI](https://hosted.mender.io/ui/), go to the **Releases** tab. Click the **Upload** button. In the dialog, either drag and drop the `demo-v2.mender` file or click to browse and select it. You can give the release a name when prompted, but sticking with the default is fine. After uploading, you should see a new release entry (e.g., "demo-v2") in the Releases list.
+1. **Upload the *Artifact*:** In the [hosted Mender UI](https://hosted.mender.io?target=_blank), go to the **Releases** tab. Click the **Upload** button. In the dialog, either drag and drop the `demo-v2.mender` file or click to browse and select it. You can give the release a name when prompted, but sticking with the default is fine. After uploading, you should see a new release entry (e.g., "demo-v2") in the Releases list.
 2. **Create a deployment:** Now navigate to the **Devices** section and find your device (it should be in the Accepted Devices list). In the Device information view for the device you just connected, select **Create a deployment for this device** from the **Device actions**.
 
 ![create deployment](create-deployment.png)
@@ -78,8 +78,8 @@ In this get started guide, we prepared a Zephyr-based microcontroller for OTA up
 * Creating and deploying a firmware update using Mender Artifacts of type zephyr-image.
 
 For now, you can continue exploring by:
-* Trying [different boards](https://github.com/mendersoftware/mender-mcu-integration?tab=readme-ov-file#build-the-project-for-other-boards) (ensure they have MCUboot support; you may use the same project and build for a different board if supported).
+* Trying [different boards](https://github.com/mendersoftware/mender-mcu-integration?target=_blank&tab=readme-ov-file#build-the-project-for-other-boards) (ensure they have MCUboot support; you may use the same project and build for a different board if supported).
 * Diving into the code: examine how the Mender client is initialized in the Zephyr app (the integration example provides insight into the API usage).
-* Providing feedback on the preview via [Mender Hub](https://hub.mender.io/) if you encounter issues or have suggestions.
+* Providing feedback on the preview via [Mender Hub](https://hub.mender.io?target=_blank) if you encounter issues or have suggestions.
 
 With microcontroller support, Mender extends robust OTA updates to a new class of devices, enabling unified update management across both Linux and constrained edge devices. Happy updating\!

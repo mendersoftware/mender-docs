@@ -39,7 +39,7 @@ In the demo application (mender-mcu-integration), these are set to  values suita
 
 ## Device identity
 
-Every Mender device has an identity, which consists of one or more attributes that uniquely identify it. In Mender MCU, you must implement the **identity callback** in code to return the device's identity string​. A common choice is to use a hardware identifier such as a MAC address, chip unique ID, or a combination of attributes. For instance, on an ESP32, you could retrieve and use the base MAC address, like `mac=AA:BB:CC:DD:EE:FF`. The identity is sent to the Mender Server for device authentication. By default, if you do not implement an identity callback, the device will not have an identity and thus cannot be uniquely recognized by the server – so this is a required part of integration. Typically, you will write a small function that populates a buffer with the ID string and register it with the Mender client before activation. The identity callback is created by calling `mender_get_identity_cb` which is defined in the [client API](https://github.com/mendersoftware/mender-mcu/blob/main/include/mender/client.h). This callback is then registered to the MCU client as a part of the callback structure passed to `mender_client_init()`. 
+Every Mender device has an identity, which consists of one or more attributes that uniquely identify it. In Mender MCU, you must implement the **identity callback** in code to return the device's identity string​. A common choice is to use a hardware identifier such as a MAC address, chip unique ID, or a combination of attributes. For instance, on an ESP32, you could retrieve and use the base MAC address, like `mac=AA:BB:CC:DD:EE:FF`. The identity is sent to the Mender Server for device authentication. By default, if you do not implement an identity callback, the device will not have an identity and thus cannot be uniquely recognized by the server – so this is a required part of integration. Typically, you will write a small function that populates a buffer with the ID string and register it with the Mender client before activation. The identity callback is created by calling `mender_get_identity_cb` which is defined in the [client API](https://github.com/mendersoftware/mender-mcu/blob/main/include/mender/client.h?target=_blank). This callback is then registered to the MCU client as a part of the callback structure passed to `mender_client_init()`. 
 
 Example of adding device identity:
 
@@ -70,11 +70,11 @@ void setup_mender_client(void) {
 }
 ```
 
-More examples can be found inside the [mender-mcu-integration project](https://github.com/mendersoftware/mender-mcu-integration). 
+More examples can be found inside the [mender-mcu-integration project](https://github.com/mendersoftware/mender-mcu-integration?target=_blank). 
 
 ## Inventory
 
-Inventory data is additional information about the device that is reported to the Mender server such as device type, firmware version, hardware revision, etc. It is provided as key-value pairs which can be arbitrarily named. On Linux, inventory data is provided by executable scripts. On Zephyr, you can set up inventory data by constructing key-value pairs and passing them to the client with a callback. You can add an inventory callback by calling `mender_inventory_add_callback`, which is defined in the [inventory API](https://github.com/mendersoftware/mender-mcu/blob/main/include/mender/inventory.h). Callbacks and inventory data are either persistent or dynamic. Persistent data is only queried using the respective callback once, dynamic data is queried with the respective callback at every inventory refresh interval.
+Inventory data is additional information about the device that is reported to the Mender server such as device type, firmware version, hardware revision, etc. It is provided as key-value pairs which can be arbitrarily named. On Linux, inventory data is provided by executable scripts. On Zephyr, you can set up inventory data by constructing key-value pairs and passing them to the client with a callback. You can add an inventory callback by calling `mender_inventory_add_callback`, which is defined in the [inventory API](https://github.com/mendersoftware/mender-mcu/blob/main/include/mender/inventory.h?target=_blank). Callbacks and inventory data are either persistent or dynamic. Persistent data is only queried using the respective callback once, dynamic data is queried with the respective callback at every inventory refresh interval.
 
 Example of adding a persistent callback:
 
@@ -90,7 +90,7 @@ persistent_inventory_cb(mender_keystore_t **keystore, uint8_t *keystore_len) {
 mender_inventory_add_callback(persistent_inventory_cb, true /* persistent */);
 ```
 
-This registers one inventory item that the client will send on its inventory update together with some built-in inventory data​. In the example above, `mender_inventory_set()` is called with a static array of items; you could also build this dynamically (e.g., by reading system info). More examples can be found inside the [mender-mcu-integration project](https://github.com/mendersoftware/mender-mcu-integration). 
+This registers one inventory item that the client will send on its inventory update together with some built-in inventory data​. In the example above, `mender_inventory_set()` is called with a static array of items; you could also build this dynamically (e.g., by reading system info). More examples can be found inside the [mender-mcu-integration project](https://github.com/mendersoftware/mender-mcu-integration?target=_blank). 
 
 ## Update Module (zephyr-image)
 
@@ -102,7 +102,7 @@ By default, the **zephyr-image Update Module** is compiled in​. This module kn
 
 The zephyr-image module covers the standard Zephyr and MCUboot update scenario. Still, Mender’s Update Module framework allows you to implement custom Update Modules to handle other use cases as needed. In Mender MCU, writing a custom module means coding a new set of C callback functions to perform whatever update logic you require and to register that module with the client. A typical use case is if you need to support a different bootloader than MCUboot for your board, or to update a separate MCU or CPU connected to your Zephyr device.
 
-Implementing a custom Update Module involves defining the handler functions for the relevant update states and integrating them into the Mender client. It’s often helpful to use the zephyr-image module’s implementation as a reference – its source code is available in the [Mender MCU repository](https://github.com/mendersoftware/mender-mcu)​ for inspiration and to understand how each state is handled. By following the same patterns, you can tailor a custom Update Module to your device’s needs. You can also look at the dummy Noop Update Module in Mender MCU integration repository to get the barebones of an Update Module that does nothing and implement the states that are required for your update process. Remember to consult the Update Modules chapter for guidance on the expected state flow and behaviors for custom modules​.
+Implementing a custom Update Module involves defining the handler functions for the relevant update states and integrating them into the Mender client. It’s often helpful to use the zephyr-image module’s implementation as a reference – its source code is available in the [Mender MCU repository](https://github.com/mendersoftware/mender-mcu?target=_blank)​ for inspiration and to understand how each state is handled. By following the same patterns, you can tailor a custom Update Module to your device’s needs. You can also look at the dummy Noop Update Module in Mender MCU integration repository to get the barebones of an Update Module that does nothing and implement the states that are required for your update process. Remember to consult the Update Modules chapter for guidance on the expected state flow and behaviors for custom modules​.
 
 ## Other settings and callbacks
 

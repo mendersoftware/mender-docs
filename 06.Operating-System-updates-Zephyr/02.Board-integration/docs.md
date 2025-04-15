@@ -4,10 +4,8 @@ taxonomy:
     category: docs
 ---
 
-## Board integration
-
 To use Mender with a Zephyr-based MCU, you need to integrate the Mender MCU client into your Zephyr project and ensure the board supports the required bootloader and partition layout:
-* **Bootloader:** the board must be compatible with MCUboot. You can check the integration requirements at [https://docs.mcuboot.com/readme-zephyr.html](https://docs.mcuboot.com/readme-zephyr.html)
+* **Bootloader:** the board must be compatible with MCUboot. You can check the integration requirements at [https://docs.mcuboot.com/readme-zephyr.html](https://docs.mcuboot.com/readme-zephyr.html?target=_blank)
 * **Storage:** the board's storage must be large enough and configured to hold two firmware partitions. Those are called A and B, or active and inactive.
 
 **Zephyr project setup:** Mender provides the mender-mcu repository, which you add to your Zephyr **west workspace** as a module. In your west manifest file, include the Mender MCU project. For example, in `west.yml`, add:

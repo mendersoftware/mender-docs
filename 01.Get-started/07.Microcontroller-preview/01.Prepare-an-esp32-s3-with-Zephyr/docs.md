@@ -10,8 +10,8 @@ We will build and flash a Zephyr firmware for an ESP32-S3-DevKitC board. By the 
 ## Prerequisites
 
 * **ESP32-S3-DevKitC board** and a USB cable to connect it to your computer.
-* **Zephyr development environment** installed on your workstation (including west, CMake, ESP32 toolchain, etc.). Follow the [Zephyr getting started guide for your hardware](https://docs.zephyrproject.org/latest/boards/espressif/esp32s3_devkitc/doc/index.html) to set up the build tools.
-* **Tenant token** in your hosted Mender account: Sign in to [hosted Mender](https://hosted.mender.io). Find your **Organization token (aka. Tenant token)** in the hosted [Mender UI](https://eu.hosted.mender.io/ui/settings/organization-and-billing) (go to your user menu → **My organization** → **Organization token**). Copy this token, and we will insert it into the firmware build.
+* **Zephyr development environment** installed on your workstation (including west, CMake, ESP32 toolchain, etc.). Follow the [Zephyr getting started guide for your hardware](https://docs.zephyrproject.org/latest/boards/espressif/esp32s3_devkitc/doc/index.html?target=_blank) to set up the build tools.
+* **Tenant token** in your hosted Mender account: Sign in to [hosted Mender](https://hosted.mender.io?target=_blank). Find your **Organization token (aka. Tenant token)** in the hosted [Mender UI](https://hosted.mender.io/ui/settings/organization-and-billing?target=_blank) (go to your user menu → **My organization** → **Organization token**). Copy this token, and we will insert it into the firmware build.
 * **WiFi network credentials:** Since the ESP32-S3 board will use WiFi to connect to the internet, have your WiFi SSID and password ready.
 * **Mender Artifact tool:** Install the **mender-artifact** tool on your workstation. This is used to create Artifact (.mender) files that contain the software for deployment.  Download and install `mender-artifact` by [following the instructions here](https://docs.mender.io/downloads#mender-artifact).
 
@@ -69,7 +69,7 @@ west build --sysbuild mender-mcu-integration -- \
 !!! Note: This build may take a few minutes the first time as it fetches and compiles Zephyr, MCUboot, and the Mender MCU client.
 
 Let's break down this command:
-* `west build --sysbuild mender-mcu-integration` tells west to build the project (located in the mender-mcu-integration directory) using [Zephyr's system build](https://docs.zephyrproject.org/latest/build/sysbuild/index.html) (which will compile MCUboot and the app together).
+* `west build --sysbuild mender-mcu-integration` tells west to build the project (located in the mender-mcu-integration directory) using [Zephyr's system build](https://docs.zephyrproject.org/latest/build/sysbuild/index.html?target=_blank) (which will compile MCUboot and the app together).
 * The `--` and subsequent `-D...` options pass CMake cache values to the build. Here, we set the WiFi SSID (`CONFIG_MENDER_APP_WIFI_SSID`), WiFi password (`CONFIG_MENDER_APP_WIFI_PSK`), and the Mender tenant token (`CONFIG_MENDER_SERVER_TENANT_TOKEN`) to the values we set earlier. These correspond to Kconfig options used in the project's `prj.conf` for configuring WiFi and Mender.
 
 
