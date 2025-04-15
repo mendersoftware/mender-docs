@@ -5,13 +5,11 @@ taxonomy:
     label: tutorial
 ---
 
-## Deploy a firmware update
-
 Now that Mender is running on your device, let's deploy new firmware. We will make a simple change to the Zephyr application by modifying the "Hello World" message, build a new firmware image, and use Mender to deliver this update OTA to the ESP32-S3 board.
 
 We will increment the "version" of our firmware by changing the Artifact name, create a Mender *Artifact* for the new firmware, upload it to the server, and create a deployment for our device. The device will download the update, install it, and reboot into the new firmware. MCUboot will swap the new image into place, the device will run the new firmware and mark the update as successful.
 
-### Step 1 – Modify the firmware
+## Step 1 – Modify the firmware
 
 Let's introduce a simple change to the firmware to recognize the new version. The example mender-mcu-integration project prints a "Hello World" message upon startup, which we will change.
 
@@ -29,7 +27,7 @@ printf("Hello updated World! %s\n", CONFIG_BOARD_TARGET);
 
 Ensure you save your changes to the source code.
 
-### Step 2 – Rebuild the firmware
+## Step 2 – Rebuild the firmware
 
 Now, compile the modified firmware. We will use the same build directory for simplicity. In the terminal, set the new version and rerun the west build:
 
@@ -44,7 +42,7 @@ The build system will recompile any changed source files and produce a new `zeph
 
 **Do not flash the device manually.** We will let Mender deliver this update. The new binary image is in the build directory (e.g., `build/mender-mcu-integration/zephyr/zephyr.signed.bin`).
 
-### Step 3 – Upload and deploy the update from Mender
+## Step 3 – Upload and deploy the update from Mender
 
 With our *Artifact* ready, we'll now use the Mender server to deploy it to the device. We'll do this using the hosted Mender web interface:
 
@@ -65,7 +63,7 @@ With our *Artifact* ready, we'll now use the Mender server to deploy it to the d
    * In the hosted Mender UI, under the Devices tab, look at the device's inventory or details. Once the device reports inventory after the update, the current **Software** (artifact name) should update to "release-v2".
    * If you have the serial monitor running, you would have seen the new log message `"Hello updated World!"` appear after the reboot, confirming the code change.
 
-### Done\!
+## Done\!
 
 Congratulations – you have successfully deployed a new firmware to your microcontroller via Mender\! 🎉
 After the deployment finishes, your device will run the new application code you provided. The update was applied in a robust manner: if the new firmware had failed to start, MCUboot would have rolled back to the previous version automatically on reboot. The new firmware is now permanent because everything went well and the client confirmed the update.

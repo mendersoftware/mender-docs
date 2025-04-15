@@ -5,11 +5,9 @@ taxonomy:
     label: tutorial
 ---
 
-## Prepare an ESP32-S3 with Zephyr
-
 We will build and flash a Zephyr firmware for an ESP32-S3-DevKitC board. By the end of this section, your device will boot and show up as **pending** in your Mender server (hosted Mender), ready to be accepted.
 
-### Prerequisites
+## Prerequisites
 
 * **ESP32-S3-DevKitC board** and a USB cable to connect it to your computer.
 * **Zephyr development environment** installed on your workstation (including west, CMake, ESP32 toolchain, etc.). Follow the [Zephyr getting started guide for your hardware](https://docs.zephyrproject.org/latest/boards/espressif/esp32s3_devkitc/doc/index.html) to set up the build tools.
@@ -21,7 +19,7 @@ We will build and flash a Zephyr firmware for an ESP32-S3-DevKitC board. By the 
 ![esp32-s3-devkitc board](esp32-s3-devkitc-board.png)
 
 
-### Step 1 – Set up the project and code
+## Step 1 – Set up the project and code
 
 First, we'll obtain the reference Zephyr application that integrates Mender. We will use the official **mender-mcu integration example** for this tutorial, which already has Mender support and sample code for the ESP32-S3.
 
@@ -54,7 +52,7 @@ These will be passed into the build to configure the device's WiFi connection an
 west blobs fetch hal_espressif
 ```
 
-### Step 2 – Build and flash the firmware
+## Step 2 – Build and flash the firmware
 
 Now we will compile the Zephyr application with Mender support and flash it to the board. The mender-mcu integration repository comes with build presets for our board, including MCUboot. We will use a single west command to build both the bootloader and application, then flash them.
 
@@ -93,7 +91,7 @@ west espressif monitor
 
 You should see log output from MCUboot and then the Zephyr application. On first boot, the logs may show the device connecting to WiFi and attempting to authorize with the Mender server (using the provided tenant token). If all goes well, it will log something like `<err> mender: [401] Unauthorized: dev auth: unauthorized`. Those authentication errors are expected at this step as the device is not yet authorized in the Mender server.
 
-### Step 3 – Authorize the device in Mender
+## Step 3 – Authorize the device in Mender
 
 When the device starts up with the Mender client, it will automatically try to connect to the Mender server. Because this is a new device, it will appear as **pending** in your hosted Mender account. We must accept the device to become authorized and receive deployments.
 
@@ -111,6 +109,6 @@ After accepting, the device is fully provisioned in Mender. The Mender client on
 
 ![accepted device](accepted-device.png)
 
-### Done\!
+## Done\!
 
 At this point, your ESP32-S3 board is connected to hosted Mender – it is running Zephyr firmware with Mender enabled and is recognized by the server. In the Mender UI, you can click on the device to inspect its inventory. You are now ready to deploy an update to this device.
