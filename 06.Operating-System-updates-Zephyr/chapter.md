@@ -8,4 +8,4 @@ taxonomy:
 
 # Operating System updates: Zephyr (preview)
 
-Integrate and create Operating System updates for a Zephyr.
+Integrate and create Operating System updates for a Zephyr-based MCU.

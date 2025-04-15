@@ -4,11 +4,10 @@ taxonomy:
     category: docs
 ---
 
-## Configuration
 
 This section summarizes the key configuration options for the Mender MCU client in Zephyr. There are two categories of configuration: compile-time options (Kconfig) which you set before building your firmware, and runtime variables or values which the device determines during operation (often via callbacks or code). Most of the client behavior is controlled via Kconfig options in Zephyr's menuconfig system.
 
-### Kconfig options
+## Kconfig options
 
 Integration of mender-mcu as a Zephyr module makes Kconfig options available under **Modules → mender-mcu** in west menuconfig. These options allow you to configure server connectivity, authentication, and client behavior. Below are the most important Kconfig settings:
 
@@ -23,7 +22,7 @@ Integration of mender-mcu as a Zephyr module makes Kconfig options available und
 
 To view all available options with descriptions, run `west build -t menuconfig` and navigate to *Modules → mender-mcu*. Each option has help text explaining its purpose. Generally, the defaults are sane for a basic setup such as pointing to a hosted Mender server, but when using hosted Mender or Mender Enterprise on-premises you must at minimum set the Tenant token. For an on-premise installation you need to set the Server URL.
 
-### Variables (runtime)
+## Variables (runtime)
 
 At runtime, the MCU client does not use a traditional configuration file, but there are a few **variables/values determined at runtime** that you should be aware of:
 * **Device identity:** the identity callback in your device’s code determines its unique identity. Ensure that whatever variable or hardware ID you use (e.g., a MAC address stored in a register) is available and stable across reboots. This identity value is sent to the server upon authentication. For example, the identity might be computed and stored in a static buffer each time the device boots and registers.
