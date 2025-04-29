@@ -206,95 +206,95 @@ repository. Afterwards, you can install and update the Mender Client using the
 1. Update the `apt` package index and install required dependencies.
 
 <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata -->
-```bash
-sudo apt-get update
-sudo apt-get install --assume-yes \
-		apt-transport-https \
-		ca-certificates \
-		curl \
-		gnupg-agent \
-		software-properties-common
-```
+    ```bash
+    sudo apt-get update
+    sudo apt-get install --assume-yes \
+    		apt-transport-https \
+    		ca-certificates \
+    		curl \
+    		gnupg-agent \
+    		software-properties-common
+    ```
 
 2. Add the official Mender GPG key to your trusted `apt` keychain:
 
-```bash
-curl -fsSL https://downloads.mender.io/repos/debian/gpg | sudo tee /etc/apt/trusted.gpg.d/mender.asc
-```
+    ```bash
+    curl -fsSL https://downloads.mender.io/repos/debian/gpg | sudo tee /etc/apt/trusted.gpg.d/mender.asc
+    ```
 
-Inspect the GPG key fingerprint and verify that it matches
-`E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00`.
+    Inspect the GPG key fingerprint and verify that it matches
+    `E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00`.
 
-<!--AUTOMATION: ignore -->
-```bash
-gpg --show-keys --with-fingerprint /etc/apt/trusted.gpg.d/mender.asc
-```
-```
-pub   rsa3072 2020-11-13 [SC] [expires: 2026-10-01]
-      E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
-uid                      Mender Team <mender@northern.tech>
-sub   rsa3072 2020-11-13 [E] [expires: 2026-10-01]
-```
+    <!--AUTOMATION: ignore -->
+    ```bash
+    gpg --show-keys --with-fingerprint /etc/apt/trusted.gpg.d/mender.asc
+    ```
+    ```
+    pub   rsa3072 2020-11-13 [SC] [expires: 2026-10-01]
+          E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
+    uid                      Mender Team <mender@northern.tech>
+    sub   rsa3072 2020-11-13 [E] [expires: 2026-10-01]
+    ```
 
 3. Add the Mender repository to your sources list by selecting the architecture
 matching your device.
 
-First, in order to make sure that there are no mender sources in
-'/etc/apt/sources.list' lingering from a previous install, run
+    First, in order to make sure that there are no mender sources in
+    '/etc/apt/sources.list' lingering from a previous install, run
 
-<!--AUTOMATION: ignore -->
-```bash
-sudo sed -i.bak -e "\,https://downloads.mender.io/repos/debian,d" /etc/apt/sources.list
-```
+    <!--AUTOMATION: ignore -->
+    ```bash
+    sudo sed -i.bak -e "\,https://downloads.mender.io/repos/debian,d" /etc/apt/sources.list
+    ```
 
-Then add the sources according to your Linux distribution
+    Then add the sources according to your Linux distribution
 
-!!! For Raspberry OS, use Debian distributions. To know which version is your device running,
-!!! do `(. /etc/os-release && echo $VERSION_CODENAME)`
+    !!! For Raspberry OS, use Debian distributions. To know which version is your device running,
+    !!! do `(. /etc/os-release && echo $VERSION_CODENAME)`
 
-[ui-tabs position="top-left" active="0" theme="lite" ]
-[ui-tab title="Debian 12"]
-<!--AUTOMATION: ignore -->
-```bash
-echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/bookworm/stable main" \
- | sudo tee /etc/apt/sources.list.d/mender.list
-```
-[/ui-tab]
-[ui-tab title="Debian 11"]
-<!--AUTOMATION: ignore -->
-```bash
-echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/bullseye/stable main" \
- | sudo tee /etc/apt/sources.list.d/mender.list
-```
-[/ui-tab]
-[ui-tab title="Ubuntu 24.04"]
-<!--AUTOMATION: ignore -->
-```bash
-echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/noble/stable main" \
- | sudo tee /etc/apt/sources.list.d/mender.list
-```
-[/ui-tab]
-[ui-tab title="Ubuntu 22.04"]
-<!--AUTOMATION: ignore -->
-```bash
-echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/jammy/stable main" \
- | sudo tee /etc/apt/sources.list.d/mender.list
-```
-[/ui-tab]
-[/ui-tabs]
+    [ui-tabs position="top-left" active="0" theme="lite" ]
+    [ui-tab title="Debian 12"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/bookworm/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
+    [ui-tab title="Debian 11"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/bullseye/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
+    [ui-tab title="Ubuntu 24.04"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/noble/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
+    [ui-tab title="Ubuntu 22.04"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/jammy/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
+    [/ui-tabs]
 
-!!! If you want the bleeding edge version of mender, you can use our
-!!! `experimental` repository by replacing `stable` with `experimental` in
-!!! the above command. Do not use the `experimental` repository in production
-!!! as these releases are not fully tested.
+    !!! If you want the bleeding edge version of mender, you can use our
+    !!! `experimental` repository by replacing `stable` with `experimental` in
+    !!! the above command. Do not use the `experimental` repository in production
+    !!! as these releases are not fully tested.
 
 4. Update the package index and install the Mender Client (or some Mender tool, e.g. `mender-artifact`):
 
-<!--AUTOMATION: ignore -->
-```bash
-sudo apt-get update
-sudo apt-get install mender-client4
-```
+    <!--AUTOMATION: ignore -->
+    ```bash
+    sudo apt-get update
+    sudo apt-get install mender-client4
+    ```
 
 <!-- AUTOMATION: execute=apt-get update -->
 <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y mender-client4 -->
