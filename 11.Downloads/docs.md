@@ -288,7 +288,7 @@ echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/
 !!! the above command. Do not use the `experimental` repository in production
 !!! as these releases are not fully tested.
 
-4. Update the package index and install the Mender Client:
+4. Update the package index and install the Mender Client (or some Mender tool, e.g. `mender-artifact`):
 
 <!--AUTOMATION: ignore -->
 ```bash
