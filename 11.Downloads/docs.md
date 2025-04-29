@@ -257,28 +257,28 @@ Then add the sources according to your Linux distribution
 <!--AUTOMATION: ignore -->
 ```bash
 echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/bookworm/stable main" \
- | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
+ | sudo tee /etc/apt/sources.list.d/mender.list
 ```
 [/ui-tab]
 [ui-tab title="Debian 11"]
 <!--AUTOMATION: ignore -->
 ```bash
 echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/bullseye/stable main" \
- | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
+ | sudo tee /etc/apt/sources.list.d/mender.list
 ```
 [/ui-tab]
 [ui-tab title="Ubuntu 24.04"]
 <!--AUTOMATION: ignore -->
 ```bash
 echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/noble/stable main" \
- | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
+ | sudo tee /etc/apt/sources.list.d/mender.list
 ```
 [/ui-tab]
 [ui-tab title="Ubuntu 22.04"]
 <!--AUTOMATION: ignore -->
 ```bash
 echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian ubuntu/jammy/stable main" \
- | sudo tee /etc/apt/sources.list.d/mender.list > /dev/null
+ | sudo tee /etc/apt/sources.list.d/mender.list
 ```
 [/ui-tab]
 [/ui-tabs]
