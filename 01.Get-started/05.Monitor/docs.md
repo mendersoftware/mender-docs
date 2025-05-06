@@ -62,7 +62,7 @@ Verify existence of check definitions with:
 Demo Checks for the Mender Monitor Add-on, found in the [Demo monitors package](../../11.Downloads/docs.md#demo-monitors) (Debian package) or in the `examples` directory for [Yocto](../../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/docs.md#monitor) serve as a starting point for quick evaluation.
 Once ready, you can customize and define your own [Checks](../../10.Add-ons/20.Monitor/20.Concepts/docs.md#creating-custom-checks).
 
-By default both mail notifications and UI alerts occur once an monitored event happens. 
+By default both mail notifications and UI alerts occur once a monitored event happens.
 While going through the examples in this tutorial, watch the email inbox of your Mender user to see that you get notified about Alerts triggered and cleared on the device. 
 
 The default configuration for `mender-monitorctl` command requires read-write access to the `/etc/mender-monitor` directory, which on most systems means switching to super user or running with `sudo`. 
