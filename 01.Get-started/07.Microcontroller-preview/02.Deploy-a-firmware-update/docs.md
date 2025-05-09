@@ -9,11 +9,12 @@ Now that Mender is running on your device, let's deploy new firmware. We will ma
 
 We will increment the "version" of our firmware by changing the Artifact name, create a Mender *Artifact* for the new firmware, upload it to the server, and create a deployment for our device. The device will download the update, install it, and reboot into the new firmware. MCUboot will swap the new image into place, the device will run the new firmware and mark the update as successful.
 
+
 ## Step 1 – Modify the firmware
 
 Let's introduce a simple change to the firmware to recognize the new version. The example mender-mcu-integration project prints a "Hello World" message upon startup, which we will change.
 
-Open the source code of the application. In the workspace, open `mender-mcu-integration/src/main.c` in a text editor. Change the line
+Open the source code of the application. Open `~/mender-mcu-workspace/mender-mcu-integration/src/main.c` in a text editor. Change the line
 
 ```bash
 printf("Hello World! %s\n", CONFIG_BOARD_TARGET);
@@ -27,13 +28,15 @@ printf("Hello updated World! %s\n", CONFIG_BOARD_TARGET);
 
 Ensure you save your changes to the source code.
 
+
 ## Step 2 – Rebuild the firmware
 
-Now, compile the modified firmware. We will use the same build directory for simplicity. In the terminal, set the new version and rerun the west build:
+Now, compile the modified firmware. We will use the same build directory for simplicity. In the terminal with the Zephyr virtual environment, set the new version and rerun the west build:
 
 ```bash
 export ARTIFACT_NAME="release-2"
-west build --domain mender-mcu-integration -- -DCONFIG_MENDER_ARTIFACT_NAME=\"$ARTIFACT_NAME\"
+cd ~/mender-mcu-workspace
+west build -p auto -b esp32s3_devkitc/esp32s3/procpu --domain mender-mcu-integration -- -DCONFIG_MENDER_ARTIFACT_NAME=\"$ARTIFACT_NAME\"
 ```
 
 !!! Note: We don’t need to pass any other parameters to the `west build` command since they were cached from the last build. We use the `--domain` parameter to rebuild only the application (not the bootloader).
@@ -41,6 +44,7 @@ west build --domain mender-mcu-integration -- -DCONFIG_MENDER_ARTIFACT_NAME=\"$A
 The build system will recompile any changed source files and produce a new `zephyr.signed.bin` and generate the Mender Artifact together with the binary. Since we changed the code and the artifact name setting, both the binary and the Artifact will represent "version 2" of our firmware.
 
 **Do not flash the device manually.** We will let Mender deliver this update. The new binary image is in the build directory (e.g., `build/mender-mcu-integration/zephyr/zephyr.signed.bin`).
+
 
 ## Step 3 – Upload and deploy the update from Mender
 
