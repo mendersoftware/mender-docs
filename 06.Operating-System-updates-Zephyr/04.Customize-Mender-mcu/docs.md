@@ -8,9 +8,9 @@ You can customize the Mender MCU client's behavior on microcontrollers. However,
 
 ## Server URL and tenant token
 
-By default, the Mender MCU client is configured to communicate with **hosted Mender**, which requires a Tenant Token for the device to authenticate to your account. The hosted Mender server URL and tenant token can be set via Kconfig options:
+By default, the Mender MCU client is configured to communicate with **hosted Mender USA**, which requires a Tenant Token for the device to authenticate to your account. The Mender server URL and tenant token can be set via Kconfig options:
 
-* `MENDER_SERVER_HOST` – the base URL of the Mender server. By default, this points to hosted Mender (e.g., "https://hosted.mender.io"). If you are using a self-hosted Mender server, change this to your server's URL​, like `CONFIG_MENDER_SERVER_HOST="https://mender.mydomain.org"`.
+* `MENDER_SERVER_HOST` – the base URL of the Mender server. By default, this points to hosted Mender (e.g., "https://hosted.mender.io"). If you are using a on-premises Mender server, set `CONFIG_MENDER_SERVER_HOST_ON_PREM=y` and change this to your server's URL​ with `CONFIG_MENDER_SERVER_HOST="https://mender.mydomain.org"`.
 * `MENDER_SERVER_TENANT_TOKEN` – the authentication token associating the device with your hosted Mender tenant (`CONFIG_MENDER_SERVER_TENANT_TOKEN="<your token here>"`). This must be set for devices connecting to the hosted Mender​. You can obtain the token from your hosted Mender account in the "My organization" menu and compile it into the firmware. If you are using an on-premises Mender server (Open Source or Enterprise), you can leave this token empty or unset as it is not used in non-multi-tenant servers.
 
 ## Certificates and TLS
