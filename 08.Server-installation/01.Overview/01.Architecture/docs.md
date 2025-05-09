@@ -57,7 +57,7 @@ The diagram below shows the different services which are part of the Mender Serv
         |                                       |    |  (mender-deviceconnect) |<-------->|        |
         |                                       |    +-------------------------+          |  Nats  |
         |                                       +--->|                         |          |        |
-        |                                            |  Minio                  |          +--------+
+        |                                            |  SeaweedFS              |          +--------+
         |                                            |                         |
         |                                            +-------------------------+
         |
@@ -78,7 +78,7 @@ The Mender Server environment includes the following services:
 - [Mender User Administration Service](https://github.com/mendersoftware/mender-server/tree/main/backend/services/useradm/?target=_blank)
 - [Mender Workflows Service](https://github.com/mendersoftware/mender-server/tree/main/backend/services/workflows/?target=_blank)
 - API Gateway based on [Traefik](https://doc.traefik.io/traefik/?target=_blank)
-- [Minio](https://www.minio.io?target=_blank) object storage
+- [SeaweedFS](https://github.com/seaweedfs/seaweedfs?target=_blank) object storage
 - [NATS.io](https://nats.io?target=_blank) messaging system
 - [OpenSearch](https://www.opensearch.org?target=_blank) storage and search engine
 
