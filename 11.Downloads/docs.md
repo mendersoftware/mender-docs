@@ -443,16 +443,14 @@ of the Mender Server API, such as uploading a Mender Artifact, from
 the command line. See [Server integration](../09.Server-integration/chapter.md) for
 more information.
 
-Follow the correct link according to your host platform to download `mender-cli`:
+### GNU/Linux
 
 <!--AUTOVERSION: "keeps \"%\" version"/ignore-->
 <!-- The second column points to pre-release software and keeps "master" version in the name and link -->
 <!--AUTOVERSION: "mender-cli %][x.x.x_mender-cli-"/mender-cli "mender-cli %][%_mender-cli-"/ignore-->
-| Platform | Download link                                |                                                             |
-|----------|----------------------------------------------|-------------------------------------------------------------|
-| Linux    | [mender-cli 1.12.0][x.x.x_mender-cli-linux]  | [mender-cli master][master_mender-cli-linux] (Pre-release)  |
-| Mac OS X | [mender-cli 1.12.0][x.x.x_mender-cli-darwin] | [mender-cli master][master_mender-cli-darwin] (Pre-release) |
-
+| Latest release                               | Pre-release                                                 |
+|----------------------------------------------|-------------------------------------------------------------|
+| [mender-cli 1.12.0][x.x.x_mender-cli-linux]  | [mender-cli master][master_mender-cli-linux]                |
 
 Remember to add execute permission and ensure that the mender-cli utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
 
@@ -466,10 +464,17 @@ Please refer to your host Operating System documentation for more details.
 
 <!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
 [x.x.x_mender-cli-linux]: https://downloads.mender.io/mender-cli/1.12.0/linux/mender-cli
-[x.x.x_mender-cli-darwin]: https://downloads.mender.io/mender-cli/1.12.0/darwin/mender-cli
 <!--AUTOVERSION: "[%_mender-cli-"/ignore "mender-cli/%/"/ignore -->
 [master_mender-cli-linux]: https://downloads.mender.io/mender-cli/master/linux/mender-cli
-[master_mender-cli-darwin]: https://downloads.mender.io/mender-cli/master/darwin/mender-cli
+
+### Mac OS X
+
+Use `brew` to install `mender-cli` from [the Homebrew repository](https://brew.sh/):
+
+```bash
+brew install mender-cli
+```
+
 
 !!! `mender-cli` binary is shipped also in [Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools). More information [here](../07.Artifact-creation/10.CI-CD/docs.md#mender-ci-workflows-docker-image).
 
