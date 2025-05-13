@@ -51,8 +51,10 @@ which are files with the `.mender` suffix and contain software to be deployed.
 See [Artifact creation](../07.Artifact-creation/chapter.md) for more information on how to
 use this utility.
 
-Follow the correct link according to your host platform to download
-`mender-artifact` deb package or as an standalone utility:
+### Debian/Ubuntu
+
+Follow the correct link according to your host platform to download the
+`mender-artifact` deb package:
 
 <!--AUTOVERSION: "mender-artifact %][x.x.x_mender-artifact-"/mender-artifact -->
 | Platform          | Download link                                             |
@@ -61,10 +63,9 @@ Follow the correct link according to your host platform to download
 | Ubuntu 22.04      | [mender-artifact 4.1.0][x.x.x_mender-artifact-ubuntu2204]   |
 | Debian 12         | [mender-artifact 4.1.0][x.x.x_mender-artifact-debian12] |
 | Debian 11         | [mender-artifact 4.1.0][x.x.x_mender-artifact-debian11] |
-| Mac OS X (x86-64) | [mender-artifact 4.1.0][x.x.x_mender-artifact-darwin]     |
 
-!!! * For Debian and Ubuntu, you can also install `mender-artifact` through the
-!!! [Mender APT repositories](#install-using-the-apt-repository).
+You can also install `mender-artifact` through the [Mender APT
+repositories](#install-using-the-apt-repository).
 
 <!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
 [x.x.x_mender-artifact-ubuntu2404]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.1.0-1%2Bubuntu%2Bnoble_amd64.deb
@@ -74,14 +75,20 @@ Follow the correct link according to your host platform to download
 [x.x.x_mender-artifact-debian12]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.1.0-1%2Bdebian%2Bbookworm_amd64.deb
 <!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
 [x.x.x_mender-artifact-debian11]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.1.0-1%2Bdebian%2Bbullseye_amd64.deb
-<!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/4.1.0/darwin/mender-artifact
 
-! If you are using Mac OS X, note that using `mender-artifact` with
-! disk image files (e.g.: `*.sdimg`, `*.img`, or others holding the storage
-! partitions) has limited functionality. Commands like
-! `mender-artifact cat` or `mender-artifact cp` will not work due to lack
-! of support for certain utilities on the Mac platform.
+### Mac OS X
+
+Use `brew` to install `mender-artifact` from [the Homebrew repository](https://brew.sh/):
+
+```bash
+brew install mender-artifact
+```
+
+! Note that using `mender-artifact` on MacOS with disk image files (e.g.: `*.sdimg`,
+! `*.img`, or others holding the storage partitions) has limited functionality. Commands
+! like `mender-artifact cat` or `mender-artifact cp` will not work due to lack of support
+! for certain utilities on the Mac platform.
+
 
 !!! `mender-artifact` binary is shipped also in [mender-ci-tools Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools). More information [here](../07.Artifact-creation/10.CI-CD/docs.md#mender-ci-workflows-docker-image).
 

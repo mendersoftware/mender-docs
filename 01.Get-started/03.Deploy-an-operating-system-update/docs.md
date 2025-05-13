@@ -38,18 +38,11 @@ wget https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender
 sudo dpkg --install mender-artifact_4.1.0-1+$(. /etc/os-release; echo $ID)+$(. /etc/os-release; echo $VERSION_CODENAME)_amd64.deb
 ```
 
-On MacOS, download the `mender-artifact` binary, give exec permissions, and add it to your path:
+On MacOS, install `mender-artifact` from `brew` using:
 
-<!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
 ```bash
-mkdir -p ${HOME}/bin
-wget https://downloads.mender.io/mender-artifact/4.1.0/darwin/mender-artifact -O ${HOME}/bin/mender-artifact
-chmod +x ${HOME}/bin/mender-artifact
-export PATH="${PATH}:${HOME}/bin"
+brew install mender-artifact
 ```
-
-!!! Add the last line from above to `~/.bashrc` or equivalent to make it persistent across multiple
-!!! terminal sessions.
 
 ## Step 2 - Setup shell variables on your workstation
 
