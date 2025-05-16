@@ -36,7 +36,7 @@ Now, compile the modified firmware. We will use the same build directory for sim
 ```bash
 export ARTIFACT_NAME="release-2"
 cd ~/mender-mcu-workspace
-west build -p auto -b esp32s3_devkitc/esp32s3/procpu --domain mender-mcu-integration -- -DCONFIG_MENDER_ARTIFACT_NAME=\"$ARTIFACT_NAME\"
+west build -p auto -b esp32s3_devkitc/esp32s3/procpu --sysbuild --domain mender-mcu-integration -- -DCONFIG_MENDER_ARTIFACT_NAME=\"$ARTIFACT_NAME\"
 ```
 
 !!! Note: We don’t need to pass any other parameters to the `west build` command since they were cached from the last build. We use the `--domain` parameter to rebuild only the application (not the bootloader).
@@ -50,7 +50,7 @@ The build system will recompile any changed source files and produce a new `zeph
 
 With our *Artifact* ready, we'll now use the Mender server to deploy it to the device. We'll do this using the hosted Mender web interface:
 
-1. **Upload the *Artifact*:** In the [hosted Mender UI](https://hosted.mender.io?target=_blank), go to the **Releases** tab. Click the **Upload** button. In the dialog, either drag and drop the `demo-v2.mender` file or click to browse and select it. You can give the release a name when prompted, but sticking with the default is fine. After uploading, you should see a new release entry (e.g., "demo-v2") in the Releases list.
+1. **Upload the *Artifact*:** In the [hosted Mender UI](https://hosted.mender.io?target=_blank), go to the **Releases** tab. Click the **Upload** button. In the dialog, either drag and drop the `zephyr.mender` file or click to browse and select it. You can give the release a name when prompted, but sticking with the default is fine. After uploading, you should see a new release entry (e.g., "demo-v2") in the Releases list.
 2. **Create a deployment:** Now navigate to the **Devices** section and find your device (it should be in the Accepted Devices list). In the Device information view for the device you just connected, select **Create a deployment for this device** from the **Device actions**.
 
 ![create deployment](create-deployment.png)

@@ -10,10 +10,10 @@ We will build and flash a Zephyr firmware for an ESP32-S3-DevKitC board. By the 
 ## Prerequisites
 
 * **ESP32-S3-DevKitC board** and a USB cable to connect it to your computer.
+* **Mender Artifact tool:** Install the **mender-artifact** tool on your workstation. This is used to create Artifact (.mender) files that contain the software for deployment.  Download and install `mender-artifact` by [following the instructions here](https://docs.mender.io/downloads#mender-artifact).
 * **Zephyr development environment for ESP32-S3** installed on your workstation (including west, CMake, ESP32 toolchain, etc.). Follow the [Zephyr getting started guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html?target=_blank), you can stop after installing west (`pip install west`).
 * **Tenant token** in your hosted Mender account: Sign in to [hosted Mender](https://hosted.mender.io?target=_blank). Find your **Organization token (aka. Tenant token)** in the hosted [Mender UI](https://hosted.mender.io/ui/settings/organization-and-billing?target=_blank) (go to your user menu → **My organization** → **Organization token**). Copy this token, and we will insert it into the firmware build.
 * **WiFi network credentials:** Since the ESP32-S3 board will use WiFi to connect to the internet, have your WiFi SSID and password ready.
-* **Mender Artifact tool:** Install the **mender-artifact** tool on your workstation. This is used to create Artifact (.mender) files that contain the software for deployment.  Download and install `mender-artifact` by [following the instructions here](https://docs.mender.io/downloads#mender-artifact).
 
 
 ![esp32-s3-devkitc board](esp32-s3-devkitc-board.png)
@@ -30,6 +30,8 @@ First, we'll obtain the reference Zephyr application that integrates Mender. We 
 ```bash
 source ~/zephyrproject/.venv/bin/activate
 ```
+
+!!! Remember to activate the virtual environment every time you start working.
 
 **Initialize a new west workspace** for the Mender MCU integration project. In the same terminal run:
 
@@ -52,7 +54,25 @@ export ARTIFACT_NAME="release-1"
 
 These will be passed into the build to configure the device's WiFi connection and authentication with hosted Mender. The example uses these to configure the Zephyr WiFi driver and the Mender Server Tenant Token.
 
-**Prepare the Espressif firmware blobs:** We will use WiFi, which requires firmware blobs to be prepared. Do so by running:
+**Choose Mender server:** By default, US Mender server is configured. If you're using EU Mender server, change the project to use it. Open `~/mender-mcu-workspace/mender-mcu-integration/prj.conf` in a text editor. Change the line
+
+```
+CONFIG_MENDER_SERVER_HOST_US=y
+```
+
+to
+
+```
+CONFIG_MENDER_SERVER_HOST_EU=y
+```
+
+**Prepare the Espressif firmware blobs:** We will use WiFi, which requires firmware blobs to be prepared. First, install python dependencies needed for `west blobs` to work:
+
+```bash
+pip install -r zephyr/scripts/requirements.txt
+```
+
+Then install the firmware blobs:
 
 ```bash
 west blobs fetch hal_espressif
@@ -72,12 +92,11 @@ west build -b esp32s3_devkitc/esp32s3/procpu --sysbuild mender-mcu-integration -
   "-DCONFIG_MENDER_ARTIFACT_NAME=\"${ARTIFACT_NAME}\""
 ```
 
-!!! This first build may take a few minutes as it fetches and compiles Zephyr, MCUboot, and the Mender MCU client.
+!!! First build may take a few minutes as it fetches and compiles Zephyr, MCUboot, and the Mender MCU client.
 
 Let's break down this command:
 * `--sysbuild mender-mcu-integration` tells west to build the project (located in the ~/mender-mcu-integration directory) using [Zephyr's system build](https://docs.zephyrproject.org/latest/build/sysbuild/index.html?target=_blank) (which will compile MCUboot and the app together).
 * The `--` and subsequent `-D...` options pass CMake cache values to the build. Here, we set the WiFi SSID (`CONFIG_MENDER_APP_WIFI_SSID`), WiFi password (`CONFIG_MENDER_APP_WIFI_PSK`), and the Mender tenant token (`CONFIG_MENDER_SERVER_TENANT_TOKEN`) to the values we set earlier. These correspond to Kconfig options used in the project's `prj.conf` for configuring WiFi and Mender.
-
 
 The command will produce two binaries: one for MCUboot (the bootloader) and one for the application firmware. Zephyr will also automatically sign the application with a default key to make it compatible with MCUboot.
 
@@ -88,6 +107,8 @@ west flash
 ```
 
 This will reset the board and upload the bootloader and the application to the correct flash partitions (using the esptool backend for ESP32).
+
+!!! Your system user needs read/write permissions to `/dev/tty*`. Usually this means that your user needs to belong to `dialout` group.
 
 **Monitor the serial output (optional):** You can open a serial monitor to watch the device boot. For ESP32, west provides a monitor integration. Run this in a separate terminal:
 
