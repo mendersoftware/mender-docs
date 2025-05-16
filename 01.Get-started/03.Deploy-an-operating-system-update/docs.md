@@ -24,7 +24,7 @@ You should:
 * know the IP address of your device
 
 
-### Step 1 - Download the mender-artifact utility on your workstation
+## Step 1 - Download the mender-artifact utility on your workstation
 
 !!! The simplest installation instructions for `mender-artifact` are covered below, see
 !!! [Downloads](../../11.Downloads/docs.md#mender-artifact) for installation alternatives such as
