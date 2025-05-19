@@ -51,8 +51,10 @@ which are files with the `.mender` suffix and contain software to be deployed.
 See [Artifact creation](../07.Artifact-creation/chapter.md) for more information on how to
 use this utility.
 
-Follow the correct link according to your host platform to download
-`mender-artifact` deb package or as an standalone utility:
+### Debian/Ubuntu
+
+Follow the correct link according to your host platform to download the
+`mender-artifact` deb package:
 
 <!--AUTOVERSION: "mender-artifact %][x.x.x_mender-artifact-"/mender-artifact -->
 | Platform          | Download link                                             |
@@ -61,10 +63,9 @@ Follow the correct link according to your host platform to download
 | Ubuntu 22.04      | [mender-artifact 4.1.0][x.x.x_mender-artifact-ubuntu2204]   |
 | Debian 12         | [mender-artifact 4.1.0][x.x.x_mender-artifact-debian12] |
 | Debian 11         | [mender-artifact 4.1.0][x.x.x_mender-artifact-debian11] |
-| Mac OS X (x86-64) | [mender-artifact 4.1.0][x.x.x_mender-artifact-darwin]     |
 
-!!! * For Debian and Ubuntu, you can also install `mender-artifact` through the
-!!! [Mender APT repositories](#install-using-the-apt-repository).
+You can also install `mender-artifact` through the [Mender APT
+repositories](#install-using-the-apt-repository).
 
 <!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
 [x.x.x_mender-artifact-ubuntu2404]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.1.0-1%2Bubuntu%2Bnoble_amd64.deb
@@ -74,14 +75,20 @@ Follow the correct link according to your host platform to download
 [x.x.x_mender-artifact-debian12]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.1.0-1%2Bdebian%2Bbookworm_amd64.deb
 <!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
 [x.x.x_mender-artifact-debian11]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.1.0-1%2Bdebian%2Bbullseye_amd64.deb
-<!--AUTOVERSION: "mender-artifact/%/"/mender-artifact -->
-[x.x.x_mender-artifact-darwin]: https://downloads.mender.io/mender-artifact/4.1.0/darwin/mender-artifact
 
-! If you are using Mac OS X, note that using `mender-artifact` with
-! disk image files (e.g.: `*.sdimg`, `*.img`, or others holding the storage
-! partitions) has limited functionality. Commands like
-! `mender-artifact cat` or `mender-artifact cp` will not work due to lack
-! of support for certain utilities on the Mac platform.
+### Mac OS X
+
+Use `brew` to install `mender-artifact` from [the Homebrew repository](https://brew.sh/):
+
+```bash
+brew install mender-artifact
+```
+
+! Note that using `mender-artifact` on MacOS with disk image files (e.g.: `*.sdimg`,
+! `*.img`, or others holding the storage partitions) has limited functionality. Commands
+! like `mender-artifact cat` or `mender-artifact cp` will not work due to lack of support
+! for certain utilities on the Mac platform.
+
 
 !!! `mender-artifact` binary is shipped also in [mender-ci-tools Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools). More information [here](../07.Artifact-creation/10.CI-CD/docs.md#mender-ci-workflows-docker-image).
 
@@ -436,16 +443,14 @@ of the Mender Server API, such as uploading a Mender Artifact, from
 the command line. See [Server integration](../09.Server-integration/chapter.md) for
 more information.
 
-Follow the correct link according to your host platform to download `mender-cli`:
+### GNU/Linux
 
 <!--AUTOVERSION: "keeps \"%\" version"/ignore-->
 <!-- The second column points to pre-release software and keeps "master" version in the name and link -->
 <!--AUTOVERSION: "mender-cli %][x.x.x_mender-cli-"/mender-cli "mender-cli %][%_mender-cli-"/ignore-->
-| Platform | Download link                                |                                                             |
-|----------|----------------------------------------------|-------------------------------------------------------------|
-| Linux    | [mender-cli 1.12.0][x.x.x_mender-cli-linux]  | [mender-cli master][master_mender-cli-linux] (Pre-release)  |
-| Mac OS X | [mender-cli 1.12.0][x.x.x_mender-cli-darwin] | [mender-cli master][master_mender-cli-darwin] (Pre-release) |
-
+| Latest release                               | Pre-release                                                 |
+|----------------------------------------------|-------------------------------------------------------------|
+| [mender-cli 1.12.0][x.x.x_mender-cli-linux]  | [mender-cli master][master_mender-cli-linux]                |
 
 Remember to add execute permission and ensure that the mender-cli utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
 
@@ -459,10 +464,17 @@ Please refer to your host Operating System documentation for more details.
 
 <!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
 [x.x.x_mender-cli-linux]: https://downloads.mender.io/mender-cli/1.12.0/linux/mender-cli
-[x.x.x_mender-cli-darwin]: https://downloads.mender.io/mender-cli/1.12.0/darwin/mender-cli
 <!--AUTOVERSION: "[%_mender-cli-"/ignore "mender-cli/%/"/ignore -->
 [master_mender-cli-linux]: https://downloads.mender.io/mender-cli/master/linux/mender-cli
-[master_mender-cli-darwin]: https://downloads.mender.io/mender-cli/master/darwin/mender-cli
+
+### Mac OS X
+
+Use `brew` to install `mender-cli` from [the Homebrew repository](https://brew.sh/):
+
+```bash
+brew install mender-cli
+```
+
 
 !!! `mender-cli` binary is shipped also in [Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools). More information [here](../07.Artifact-creation/10.CI-CD/docs.md#mender-ci-workflows-docker-image).
 

@@ -151,13 +151,12 @@ It supports use cases for cloud systems, like uploading an Artifact to the Mende
 
 Over time the functionality of `mender-cli` will be extended to simplify the most common use cases for integrating the Mender Server into other backend and cloud systems. If you need to cover other use cases today, follow the [tutorial for cURL instead](#install-curl-and-jq-and-set-up-the-shell-variables).
 
-First download the [prebuilt mender-cli Linux binary here][x.x.x_mender-cli].
+First install the `mender-cli` tool as described in the [Downloads page][../../11.Downloads/docs.md#mender-cli].
 
-Then open a terminal in the directory you downloaded `mender-cli` and run the following commands to log in to your Mender Server.
+Then open a terminal and run the following command to log in to your Mender Server.
 
 ```bash
-chmod +x mender-cli
-./mender-cli login --server https://hosted.mender.io --username myusername@example.com
+mender-cli login --server https://hosted.mender.io --username myusername@example.com
 ```
 
 !!! Adjust the server URI and email to the correct values for the server you are using.
