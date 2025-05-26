@@ -7,11 +7,12 @@ taxonomy:
 
 We will build and flash a Zephyr firmware for an ESP32-S3-DevKitC board. By the end of this section, your device will boot and show up as **pending** in your Mender server (hosted Mender), ready to be accepted.
 
+This guide assumes you are using Ubuntu, as Zephyr getting started guide provides instruction for Ubuntu and Mender Artifact tools provides .deb packages.
+
 ## Prerequisites
 
 * **ESP32-S3-DevKitC board** and a USB cable to connect it to your computer.
 * **Mender Artifact tool:** Install the **mender-artifact** tool on your workstation. This is used to create Artifact (.mender) files that contain the software for deployment.  Download and install `mender-artifact` by [following the instructions here](https://docs.mender.io/downloads#mender-artifact).
-* **Zephyr development environment for ESP32-S3** installed on your workstation (including west, CMake, ESP32 toolchain, etc.). Follow the [Zephyr getting started guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html?target=_blank), you can stop after installing west (`pip install west`).
 * **Tenant token** in your hosted Mender account: Sign in to [hosted Mender](https://hosted.mender.io?target=_blank). Find your **Organization token (aka. Tenant token)** in the hosted [Mender UI](https://hosted.mender.io/ui/settings/organization-and-billing?target=_blank) (go to your user menu → **My organization** → **Organization token**). Copy this token, and we will insert it into the firmware build.
 * **WiFi network credentials:** Since the ESP32-S3 board will use WiFi to connect to the internet, have your WiFi SSID and password ready.
 
@@ -21,7 +22,11 @@ We will build and flash a Zephyr firmware for an ESP32-S3-DevKitC board. By the 
 
 ## Step 1 – Set up the project and code
 
-First, we'll obtain the reference Zephyr application that integrates Mender. We will use the official **mender-mcu integration example** for this tutorial, which already has Mender support and sample code for the ESP32-S3.
+First, we'll set up a basic Zephyr development environment, version 4.0.0. Follow the [Zephyr getting started guide](https://docs.zephyrproject.org/4.0.0/develop/getting_started/index.html?target=_blank).
+
+!!! Please use specific version of Zephyr. replace `west init ~/zephyrproject` with `west init --mr v4.0.0 ~/zephyrproject`
+
+Next, we'll obtain the reference Zephyr application that integrates Mender. We will use the official **mender-mcu integration example** for this tutorial, which already has Mender support and sample code for the ESP32-S3.
 
 **mender-mcu** is the core library that implements Mender’s OTA update functionality designed for devices running Zephyr. It provides the essential client APIs, state machine, and Update Module support needed to perform firmware updates. **mender-mcu-integration** is a Zephyr workspace that incorporates the mender-mcu library along with example application code and configuration. It serves as a reference implementation, showing you a complete example on how to integrate the Mender MCU client into your own Zephyr projects.
 
@@ -31,7 +36,7 @@ First, we'll obtain the reference Zephyr application that integrates Mender. We 
 source ~/zephyrproject/.venv/bin/activate
 ```
 
-!!! Remember to activate the virtual environment every time you start working.
+!!! Remember to activate the virtual environment every time you open a terminal.
 
 **Initialize a new west workspace** for the Mender MCU integration project. In the same terminal run:
 
@@ -42,6 +47,8 @@ west update
 ```
 
 This will pull all necessary repositories, including the mender-mcu module and the example application. The workspace will contain a Zephyr project configured for the ESP32-S3 (among other boards).
+
+!!! If you are in ~/zephyrproject directory, where you initialized your workspace following Zephyr getting started guide, the `west init ...` command may fail. Change your working directory to any other and then run `west init` command above.
 
 **Configure network credentials and Mender tenant token:** We will set the WiFi SSID, WiFi password, and Mender tenant token via build arguments for simplicity. Prepare the following environment variables (replace the first three with your actual values):
 
@@ -54,7 +61,7 @@ export ARTIFACT_NAME="release-1"
 
 These will be passed into the build to configure the device's WiFi connection and authentication with hosted Mender. The example uses these to configure the Zephyr WiFi driver and the Mender Server Tenant Token.
 
-**Choose Mender server:** By default, US Mender server is configured. If you're using EU Mender server, change the project to use it. Open `~/mender-mcu-workspace/mender-mcu-integration/prj.conf` in a text editor. Change the line
+**Choose Mender server:** By default, US instance of hosted Mender server is configured. If you are using EU hosted Mender server, update the project configuration to use it. Open `~/mender-mcu-workspace/mender-mcu-integration/prj.conf` in a text editor. Change the line
 
 ```
 CONFIG_MENDER_SERVER_HOST_US=y
@@ -66,13 +73,7 @@ to
 CONFIG_MENDER_SERVER_HOST_EU=y
 ```
 
-**Prepare the Espressif firmware blobs:** We will use WiFi, which requires firmware blobs to be prepared. First, install python dependencies needed for `west blobs` to work:
-
-```bash
-pip install -r zephyr/scripts/requirements.txt
-```
-
-Then install the firmware blobs:
+**Prepare the Espressif firmware blobs:** We will use WiFi, which requires firmware blobs to be prepared. Do so by running:
 
 ```bash
 west blobs fetch hal_espressif
@@ -116,7 +117,7 @@ This will reset the board and upload the bootloader and the application to the c
 west espressif monitor
 ```
 
-You should see log output from MCUboot and then the Zephyr application. On first boot, the logs may show the device connecting to WiFi and attempting to authorize with the Mender server (using the provided tenant token). If all goes well, it will log something like `<err> mender: [401] Unauthorized: dev auth: unauthorized`. Those authentication errors are expected at this step as the device is not yet authorized in the Mender Server.
+You should see log output from MCUboot and then the Zephyr application. On first boot, the logs may show the device connecting to WiFi and attempting to authorize with the Mender server (using the provided tenant token). If all goes well, it will log something like `<err> mender: [401] Unauthorized: dev auth: unauthorized`. Those authentication errors are expected at this step as the device is not yet authorized in the Mender server.
 
 !!! If the device seems to get stuck while starting after flashing, e.g. while bringing up network, try to disconnect power (USB) and reconnect. A hard power reset is sometimes needed after reflashing.
 
@@ -130,7 +131,7 @@ When the device starts up with the Mender client, it will automatically try to c
 ![pending device](pending-device.png)
 
 
-!!! If you do not see your device, check your device's network configuration, hosted Mender address (this tutorial assumes you are using the (US server)[https://hosted.mender.io?target=_blank], not the (EU server)[https://eu.hosted.mender.io?target=_blank]) and Tenant Token. Go back to the terminal of your device, and look for unexpected error messages. To enable debug log-level or configure network settings for your device, see [Mender's documentation page on Zephyr configuration](../../../06.Operating-System-updates-Zephyr/05.Configuration/docs.md).
+!!! If you do not see your device, check your device's network configuration, hosted Mender address (this tutorial assumes you are using the (US server)[https://hosted.mender.io?target=_blank], not the (EU server)[https://eu.hosted.mender.io?target=_blank]) and Tenant Token. Go back to the terminal of your device, and look for unexpected error messages. To enable debug-level logging or configure network settings for your device, see [Mender's documentation page on Zephyr configuration](../../../06.Operating-System-updates-Zephyr/05.Configuration/docs.md).
 
 
 2. **Accept the device:** Select the pending device and **Accept** it. After accepting, the device will appear on the Device groups tab on the left of Pending.
