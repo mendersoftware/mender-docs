@@ -124,11 +124,12 @@ You can revoke a Personal Access Token by calling the following API end-point us
 curl -H "Authorization: Bearer $JWT" -X DELETE -k $MENDER_SERVER_URI/api/management/v1/useradm/settings/tokens/0a6c526c-4637-4a62-bf38-81aa70c4aa59
 ```
 
-!!! The Personal Access Tokens impersonate the user who generated them, including all the permissions and roles associated with the user.
+!!! Personal Access Tokens inherit all the permissions and roles of the user who generated them.
 
-!! WARNING: The personal access token is anticipated to be **reset** when the 
-!! [Mender plan](https://mender.io/product/pricing) is upgraded as the tokens contain the current
-!! plan and when an upgrade occurs, the PAT becomes **invalid**.
+!! WARNING: Your personal access token (PAT) will be revoked if your
+!! [Mender plan](https://mender.io/product/pricing) or enabled add-ons
+!! change. This is because the token contains information about your current plan,
+!! and it will become invalid upon upgrade.
 
 ### Session Token
 
