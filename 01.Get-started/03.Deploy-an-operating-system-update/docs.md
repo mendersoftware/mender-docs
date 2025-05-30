@@ -40,6 +40,7 @@ sudo dpkg --install mender-artifact_4.1.0-1+$(. /etc/os-release; echo $ID)+$(. /
 
 On MacOS, install `mender-artifact` from `brew` using:
 
+<!--AUTOMATION: ignore -->
 ```bash
 brew install mender-artifact
 ```
