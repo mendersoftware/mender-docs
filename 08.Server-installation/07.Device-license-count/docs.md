@@ -12,12 +12,12 @@ The Device Authentication service gathers data about devices. It also provides a
 to count the number of accepted devices and store it as licensing data: `license-count`.
 
 ```shell
-# deviceauth-enterprise license-count --help
+# deviceauth license-count --help
 NAME:
-   deviceauth-enterprise license-count - Count licenses and store the results
+   deviceauth license-count - Count licenses and store the results
 
 USAGE:
-   deviceauth-enterprise license-count [arguments...]
+   deviceauth license-count [arguments...]
 
 DESCRIPTION:
    Counts the devices licenses and stores the result for later processing.
@@ -29,4 +29,6 @@ For production installations with Kubernetes, the cronjob is already prepared an
 <!--AUTOVERSION: "at [3am](https://github.com/mendersoftware/mender-helm/blob/%/mender/templates/device-auth-cron-license-count.yaml)."/ignore-->
 at [3am](https://github.com/mendersoftware/mender-helm/blob/master/mender/templates/device-auth-cron-license-count.yaml).
 
-You can download the device count and licenses report from the Mender UI in the Organization view by clicking on the link "Download license report".
+You can download the device count and licenses report from the Mender UI in the Organization view by clicking on the link "Download license report":
+
+![Mender logo](download_license_report.jpg)
