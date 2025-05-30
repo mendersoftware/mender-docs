@@ -80,6 +80,7 @@ repositories](#install-using-the-apt-repository).
 
 Use `brew` to install `mender-artifact` from [the Homebrew repository](https://brew.sh/):
 
+<!--AUTOMATION: ignore -->
 ```bash
 brew install mender-artifact
 ```
@@ -471,6 +472,7 @@ Please refer to your host Operating System documentation for more details.
 
 Use `brew` to install `mender-cli` from [the Homebrew repository](https://brew.sh/):
 
+<!--AUTOMATION: ignore -->
 ```bash
 brew install mender-cli
 ```
