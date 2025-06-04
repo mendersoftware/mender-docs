@@ -71,12 +71,12 @@ to be available. For all other endpoints it will use v1.
 | API v2     | 3.0    | 1.0     | 3.0    |
 
 !!! Make sure to upgrade the Server first to support a new API version. Next it is
-recommended to update any Gateway components and finally Client.
+!!! recommended to update any Gateway components and finally Client.
 
 !!! So far, Mender Server supports all Device API versions ever released. In other words,
-a current Mender Server will still work with Mender Client v1.0. However, it is good practice
-and required for commercial support to regularly update all your Mender components to
-ensure they all run supported versions. This will prevent issues in the future.
+!!! a current Mender Server will still work with Mender Client v1.0. However, it is good practice
+!!! and required for commercial support to regularly update all your Mender components to
+!!! ensure they all run supported versions. This will prevent issues in the future.
 
 
 ## Mender Client subcomponents
