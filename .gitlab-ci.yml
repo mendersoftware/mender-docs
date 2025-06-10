@@ -40,7 +40,7 @@ test:
 
 test:internal-links:
   stage: test
-  image: node:19-alpine
+  image: node:20-alpine
   script:
     - apk add --no-cache git
     - npm ci
