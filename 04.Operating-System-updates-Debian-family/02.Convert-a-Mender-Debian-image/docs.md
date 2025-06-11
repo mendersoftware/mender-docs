@@ -156,7 +156,7 @@ mv <PATH_TO_MY_OVERLAY>/* input/overlay/*
 # convert the image
 MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
     --disk-image input/golden-image-1.img \
-    --config configs/raspberrypi3_config \
+    --config configs/raspberrypi/uboot/debian/raspberrypi4_bookworm_64bit_config \
     --overlay input/rootfs_overlay_demo/
 ```
 
