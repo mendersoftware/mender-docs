@@ -86,10 +86,10 @@ With the path to the boot directory set up, we first configure the default user 
 
 ```bash
 USERNAME='' # CHANGE: your desired username
-PASSWORD='' # CHANGE: your desired password
+PASSWORD="$(openssl passwd)"
 
 cat << EOF > "$RPI_BOOT"/userconf.txt
-${USERNAME}:$(openssl passwd "$PASSWORD")
+${USERNAME}:${PASSWORD}
 EOF
 ```
 
