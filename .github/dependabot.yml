@@ -7,5 +7,3 @@ updates:
     schedule:
       interval: monthly
       day: saturday
-    reviewers:
-      - "mendersoftware/qa-dependabot-reviewers"
