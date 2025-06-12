@@ -119,6 +119,12 @@ Finally, enable SSH by creating an empty file:
 touch "$RPI_BOOT"/ssh
 ```
 
+Last but not least, **unmount the boot partition** to make all the changes are synced to it safely:
+
+```bash
+umount "$RPI_BOOT"
+```
+
 Now disconnect the SD card, insert it into your Raspberry Pi and boot it.
 
 If you have a different network setup or encounter any issues, please see [the official Raspberry Pi documentation on headless setups](https://www.raspberrypi.com/documentation/computers/configuration.html?target=_blank#setting-up-a-headless-raspberry-pi).
