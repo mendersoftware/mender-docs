@@ -67,7 +67,7 @@ default location:
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="Linux"]
 ```bash
-RPI_BOOT="$(find /media/$(whoami)/ -maxdepth 1 -name boot -or -name bootfs)"
+RPI_BOOT="$(awk '/media.*boot(fs)?/ { print $2; }' /proc/mounts)"
 [ ! -d "$RPI_BOOT" ] && echo "ERROR: RPI boot directory not found"
 ```
 [/ui-tab]
@@ -86,10 +86,10 @@ With the path to the boot directory set up, we first configure the default user 
 
 ```bash
 USERNAME='' # CHANGE: your desired username
-PASSWORD='' # CHANGE: your desired password
+PASSWORD="$(openssl passwd)"
 
 cat << EOF > "$RPI_BOOT"/userconf.txt
-${USERNAME}:$(openssl passwd "$PASSWORD")
+${USERNAME}:${PASSWORD}
 EOF
 ```
 
@@ -117,6 +117,12 @@ Finally, enable SSH by creating an empty file:
 
 ```bash
 touch "$RPI_BOOT"/ssh
+```
+
+Last but not least, **unmount the boot partition** to make all the changes are synced to it safely:
+
+```bash
+umount "$RPI_BOOT"
 ```
 
 Now disconnect the SD card, insert it into your Raspberry Pi and boot it.
