@@ -93,10 +93,12 @@ The name of the watcher.
 ### DBUS_PATTERN
 
 The grep pattern to match on. An empty value will match on all notifications.
+To avoid message flooding, it is required to set either `DBUS_PATTERN` or `DBUS_WATCH_EXPRESSION`.
 
 ### DBUS_WATCH_EXPRESSION
 
 The watch pattern passed to dbus-monitor (can be empty). e.g.,  `type='signal',interface='org.freedesktop.DBus.Properties',member='PropertiesChanged',path=/org/freedesktop/UPower/devices/battery_BAT0`
+To avoid message flooding, it is required to set either `DBUS_PATTERN` or `DBUS_WATCH_EXPRESSION`.
 
 ## Log subsystem variables
 
