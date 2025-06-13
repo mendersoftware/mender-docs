@@ -60,5 +60,3 @@ Please note that IdP initiated SSO isn't supported.
 
 
 JWt tokens issued to SSO users authenticating to Mender through the SAML 2.0 federated login are valid for 24 hours only. The reason for this limitation is that Mender cannot check whether the user is still active and authorized when verifying the token on subsequent API calls. Therefore, after 24 hours, the user will have to authenticate again to renew the JWT token. However, if the session in the Identity Provider is still valid, this won't trigger a new password or token request, and the IdP will seamlessly redirect the user back to the Mender UI.
-
-For the same reason, SSO users authenticating to Mender through the SAML 2.0 federated login cannot generate Personal Access Tokens. Please use password-based users to issue and manage Personal Access Tokens for programmatic integrations with the Mender management APIs.
