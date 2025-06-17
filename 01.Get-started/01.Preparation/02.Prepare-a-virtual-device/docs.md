@@ -6,7 +6,7 @@ taxonomy:
 ---
 
 In this tutorial, we help you prepare your workstation to be able to run a virtual
-device (QEMU) with Mender integrated which will connect to hosted Mender and
+device (containerized) with Mender integrated which will connect to hosted Mender and
 simulate a physical device.
 
 ## Prerequisites
@@ -17,7 +17,8 @@ workstation.
 
 ## Step 1 - Login to hosted Mender
 
-!!! Hosted Mender is available in multiple [regions](/12.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
+!!! Hosted Mender is available in multiple [regions](/12.General/00.Hosted-Mender-regions/docs.md) to connect to.
+!!! Make sure you select your desired one before proceeding.
 
 Login to [hosted Mender](https://hosted.mender.io?target=_blank). On the main
 page for the first time new users will get a tutorial in the Mender web GUI.
