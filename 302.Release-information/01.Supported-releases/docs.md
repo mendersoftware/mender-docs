@@ -83,7 +83,7 @@ to be available. For all other endpoints it will use v1.
 The Mender Client consists of several subcomponents. See the table below for a mapping
 of which subcomponents are included in a given Mender Client version.
 
-| Mender Client | mender-connect | mender-configure | mender-monitor | mender-binary-delta |
-| ------------- | -------------- | ---------------- | -------------- | ------------------- |
-| 5.0           | 2.3            | 1.1              | 1.4            | 1.5                 |
-| 4.0           | 2.2            | 1.1              | 1.3            | 1.4                 |
+| Mender Client | mender-connect | mender-configure | mender-monitor | mender-binary-delta | mender-flash |
+| ------------- | -------------- | ---------------- | -------------- | ------------------- | ------------ |
+| 5.0           | 2.3            | 1.1              | 1.4            | 1.5                 | 1.0          |
+| 4.0           | 2.2            | 1.1              | 1.3            | 1.4                 | 1.0          |
