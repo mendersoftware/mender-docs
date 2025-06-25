@@ -53,28 +53,92 @@ use this utility.
 
 ### Debian/Ubuntu
 
-Follow the correct link according to your host platform to download the
-`mender-artifact` deb package:
+`mender-artifact` is available in the Mender Workstation Tools APT repository. Follow the steps below
+to enable the repository and install `mender-artifact`.
 
-<!--AUTOVERSION: "mender-artifact %][x.x.x_mender-artifact-"/mender-artifact -->
-| Platform          | Download link                                             |
-|-------------------|-----------------------------------------------------------|
-| Ubuntu 24.04      | [mender-artifact 4.1.0][x.x.x_mender-artifact-ubuntu2404]   |
-| Ubuntu 22.04      | [mender-artifact 4.1.0][x.x.x_mender-artifact-ubuntu2204]   |
-| Debian 12         | [mender-artifact 4.1.0][x.x.x_mender-artifact-debian12] |
-| Debian 11         | [mender-artifact 4.1.0][x.x.x_mender-artifact-debian11] |
+1. Update the `apt` package index and install required dependencies.
 
-You can also install `mender-artifact` through the [Mender APT
-repositories](#install-using-the-apt-repository).
+    <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata -->
+    ```bash
+    sudo apt-get update
+    sudo apt-get install --assume-yes curl gpg
+    ```
 
-<!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
-[x.x.x_mender-artifact-ubuntu2404]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.1.0-1%2Bubuntu%2Bnoble_amd64.deb
-<!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
-[x.x.x_mender-artifact-ubuntu2204]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.1.0-1%2Bubuntu%2Bjammy_amd64.deb
-<!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
-[x.x.x_mender-artifact-debian12]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.1.0-1%2Bdebian%2Bbookworm_amd64.deb
-<!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
-[x.x.x_mender-artifact-debian11]: https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.1.0-1%2Bdebian%2Bbullseye_amd64.deb
+2. Add the official Mender GPG key to your trusted `apt` keychain:
+
+    ```bash
+    curl -fsSL https://downloads.mender.io/repos/debian/gpg | sudo tee /etc/apt/trusted.gpg.d/mender.asc
+    ```
+
+    Inspect the GPG key fingerprint and verify that it matches
+    `E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00`.
+
+    <!--AUTOMATION: ignore -->
+    ```bash
+    gpg --show-keys --with-fingerprint /etc/apt/trusted.gpg.d/mender.asc
+    ```
+    ```
+    pub   rsa3072 2020-11-13 [SC] [expires: 2026-10-01]
+          E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
+    uid                      Mender Team <mender@northern.tech>
+    sub   rsa3072 2020-11-13 [E] [expires: 2026-10-01]
+    ```
+
+3. Add the Mender Workstation Tools repository to your sources list by selecting your distribution.
+
+    First, in order to make sure that there are no Mender sources in
+    '/etc/apt/sources.list' lingering from a previous install, run
+
+    <!--AUTOMATION: ignore -->
+    ```bash
+    sudo sed -i.bak -e "\,https://downloads.mender.io/repos/workstation-tools,d" /etc/apt/sources.list
+    ```
+
+    Then add the source according to your distribution:
+
+    [ui-tabs position="top-left" active="0" theme="lite" ]
+    [ui-tab title="Debian 12"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools debian/bookworm/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
+    [ui-tab title="Debian 11"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools debian/bullseye/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
+    [ui-tab title="Ubuntu 24.04"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools ubuntu/noble/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
+    [ui-tab title="Ubuntu 22.04"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools ubuntu/jammy/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
+    [/ui-tabs]
+
+    !!! If you want the bleeding edge version of the tools, you can use our
+    !!! `experimental` repository by replacing `stable` with `experimental` in
+    !!! the above command. Do not use the `experimental` repository in production
+    !!! as these releases are not fully tested.
+
+4. Update the package index and install `mender-artifact`:
+
+    <!--AUTOMATION: ignore -->
+    ```bash
+    sudo apt-get update
+    sudo apt-get install mender-artifact
+    ```
 
 ### Mac OS X
 
@@ -296,7 +360,7 @@ matching your device.
     !!! the above command. Do not use the `experimental` repository in production
     !!! as these releases are not fully tested.
 
-4. Update the package index and install the Mender Client (or some Mender tool, e.g. `mender-artifact`):
+4. Update the package index and install the Mender Client:
 
     <!--AUTOMATION: ignore -->
     ```bash
