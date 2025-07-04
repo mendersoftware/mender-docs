@@ -508,29 +508,94 @@ of the Mender Server API, such as uploading a Mender Artifact, from
 the command line. See [Server integration](../09.Server-integration/chapter.md) for
 more information.
 
-### GNU/Linux
+### Debian/Ubuntu
 
-<!--AUTOVERSION: "keeps \"%\" version"/ignore-->
-<!-- The second column points to pre-release software and keeps "master" version in the name and link -->
-<!--AUTOVERSION: "mender-cli %][x.x.x_mender-cli-"/mender-cli "mender-cli %][%_mender-cli-"/ignore-->
-| Latest release                               | Pre-release                                                 |
-|----------------------------------------------|-------------------------------------------------------------|
-| [mender-cli 1.12.0][x.x.x_mender-cli-linux]  | [mender-cli master][master_mender-cli-linux]                |
+`mender-cli` is available in the Mender Workstation Tools APT repository. Follow the steps below
+to enable the repository and install `mender-cli`.
 
-Remember to add execute permission and ensure that the mender-cli utility is in a directory that is specified in your [PATH environment variable](https://en.wikipedia.org/wiki/PATH_(variable)?target=_blank). Most systems automatically have `/usr/local/bin` in your PATH so the following should allow proper execution and location of this binary.
+1. Update the `apt` package index and install required dependencies.
 
-<!--AUTOMATION: ignore -->
-```bash
-sudo chmod +x mender-cli
-sudo cp mender-cli /usr/local/bin/
-```
+    <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata -->
+    ```bash
+    sudo apt-get update
+    sudo apt-get install --assume-yes curl gpg
+    ```
 
-Please refer to your host Operating System documentation for more details.
+2. Add the official Mender GPG key to your trusted `apt` keychain:
 
-<!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
-[x.x.x_mender-cli-linux]: https://downloads.mender.io/mender-cli/1.12.0/linux/mender-cli
-<!--AUTOVERSION: "[%_mender-cli-"/ignore "mender-cli/%/"/ignore -->
-[master_mender-cli-linux]: https://downloads.mender.io/mender-cli/master/linux/mender-cli
+    ```bash
+    curl -fsSL https://downloads.mender.io/repos/debian/gpg | sudo tee /etc/apt/trusted.gpg.d/mender.asc
+    ```
+
+    Inspect the GPG key fingerprint and verify that it matches
+    `E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00`.
+
+    <!--AUTOMATION: ignore -->
+    ```bash
+    gpg --show-keys --with-fingerprint /etc/apt/trusted.gpg.d/mender.asc
+    ```
+    ```
+    pub   rsa3072 2020-11-13 [SC] [expires: 2026-10-01]
+          E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
+    uid                      Mender Team <mender@northern.tech>
+    sub   rsa3072 2020-11-13 [E] [expires: 2026-10-01]
+    ```
+
+3. Add the Mender Workstation Tools repository to your sources list by selecting your distribution.
+
+    First, in order to make sure that there are no Mender sources in
+    '/etc/apt/sources.list' lingering from a previous install, run
+
+    <!--AUTOMATION: ignore -->
+    ```bash
+    sudo sed -i.bak -e "\,https://downloads.mender.io/repos/workstation-tools,d" /etc/apt/sources.list
+    ```
+
+    Then add the source according to your distribution:
+
+    [ui-tabs position="top-left" active="0" theme="lite" ]
+    [ui-tab title="Debian 12"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools debian/bookworm/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
+    [ui-tab title="Debian 11"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools debian/bullseye/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
+    [ui-tab title="Ubuntu 24.04"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools ubuntu/noble/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
+    [ui-tab title="Ubuntu 22.04"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools ubuntu/jammy/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
+    [/ui-tabs]
+
+    !!! If you want the bleeding edge version of the tools, you can use our
+    !!! `experimental` repository by replacing `stable` with `experimental` in
+    !!! the above command. Do not use the `experimental` repository in production
+    !!! as these releases are not fully tested.
+
+4. Update the package index and install `mender-cli`:
+
+    <!--AUTOMATION: ignore -->
+    ```bash
+    sudo apt-get update
+    sudo apt-get install mender-cli
+    ```
 
 ### Mac OS X
 
