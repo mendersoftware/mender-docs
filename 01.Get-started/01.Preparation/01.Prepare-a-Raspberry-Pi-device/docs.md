@@ -93,24 +93,58 @@ ${USERNAME}:${PASSWORD}
 EOF
 ```
 
+In latest RPi versions wifi network configuration has been changed from
+plain `wpa_supplicant.conf` file in favor of using `rpi-imager` tool
+and this is the easiest way to configure wifi.
+
+It is still possible to do it from the command line in headless mode using
+the same scripts and config files as the one used by `rpi-imager`.
+
 We then configure networking. Assuming you have a typical WiFi setup, change the initial three
 variables and run this code block:
 
 ```bash
+RPI_ROOT="$(awk '/media.*root(fs)?/ { print $2; }' /proc/mounts)"
+[ ! -d "$RPI_ROOT" ] && echo "ERROR: RPI root partition not found"
+
 WIFI_SSID='' # CHANGE: your WiFi name
 WIFI_PASS='' # CHANGE: your WiFi password
 COUNTRY='US' # CHANGE: two-letter country code, see https://en.wikipedia.org/wiki/ISO_3166-1
+UUID=$(uuid -v4)
 
-cat << EOF > "$RPI_BOOT"/wpa_supplicant.conf
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-country=$COUNTRY
+# Based on https://github.com/RPi-Distro/raspberrypi-sys-mods/blob/bookworm/usr/lib/raspberrypi-sys-mods/imager_custom
+# Above script is being used by the rpi-imager during the firs run
 
-network={
-         ssid="$WIFI_SSID"
-         psk="$WIFI_PASS"
-}
-EOF
+CONNFILE="$RPI_ROOT"/etc/NetworkManager/system-connections/preconfigured.nmconnection
+
+cat <<- EOF >${CONNFILE}
+      [connection]
+      id=preconfigured
+      uuid=${UUID}
+      type=wifi
+      [wifi]
+      mode=infrastructure
+      ssid=${WIFI_SSID}
+      hidden=false
+      [ipv4]
+      method=auto
+      [ipv6]
+      addr-gen-mode=default
+      method=auto
+      [proxy]
+      EOF
+
+if [ ! -z "${WIFI_PASS}" ]; then
+  cat <<- EOF >>${CONNFILE}
+      [wifi-security]
+      key-mgmt=wpa-psk
+      psk=${WIFI_PASS}
+      EOF
+fi
+
+# NetworkManager will ignore nmconnection files with incorrect permissions,
+# to prevent Wi-Fi credentials accidentally being world-readable.
+chmod 600 ${CONNFILE}
 ```
 
 Finally, enable SSH by creating an empty file:
