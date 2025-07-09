@@ -40,12 +40,11 @@ Download the Raspberry Pi OS image ready for Mender:
 Follow the steps outlined in the [Raspberry Pi OS documentation](https://www.raspberrypi.org/documentation/installation/installing-images?target=_blank)
 to flash the OS image to the device.
 
-We recommended to use the Raspberry Pi Imager tool, choose "Use custom" and
+We recommend to use the Raspberry Pi Imager tool, after choosing a device model, for operating system choose "Use custom" and
 browse to the downloaded Mender Raspberry Pi OS image.
-
-!! Do not use the options to pre-configure the written image,
-!! such as SSH, WiFi or user credentials. This is known to be buggy,
-!! causing an infinite reboot loop.
+You can configure your device either by using a keyboard and monitor or in headless mode.
+If using headless mode, look at [Using Raspberry Pi Imager tool (recommended)](#using-raspberry-pi-imager-tool-recommended)
+before flashing.
 
 !!! Writing the SD card takes 5-25 minutes,
 !!! mainly depending on your SD card and writer speed.
@@ -60,7 +59,28 @@ enable SSH or to configure the wireless network. This saves you the hassle
 of connecting a monitor and keyboard after your device has booted, as it will come
 up with WiFi and SSH already working and you can just SSH into it from your workstation.
 
-First off, insert the SD card you flashed above and find the `boot` partition inside it.
+We recommend using Raspberry Pi Imager tool for configuration, but - if needed - we provide a way
+to configure it using the command line only. See options below.
+
+#### Using Raspberry Pi Imager tool (recommended)
+
+After you select custom mender image to flash click "Next" then "Edit settings":
+
+In "General" tab, create a user and password, configure your WiFi.
+
+In "Services" tab, enable SSH access.
+
+Click "Save" and then "Yes" that you would like to apply OS customization settings.
+
+You're now ready to flash the image. After it is finished, disconnect the SD card, insert it
+into your Raspberry Pi and boot it.
+
+#### Using command line
+
+Flash the image directly after choosing it in Raspberry Pi Imager tool, without doing any
+configuration.
+
+Then, insert the SD card you flashed above and find the `boot` partition inside it.
 Open a terminal on your workstation and verify that it can be accessed in the
 default location:
 
