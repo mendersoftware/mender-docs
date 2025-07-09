@@ -10,7 +10,7 @@ process:
 
 <!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" -ne 1 ]; then echo "TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->
 
-## Disk images
+# Disk images
 
 These disk images (`*.img` or `*.sdimg`) are based on images provided by board
 manufacturers and are ready to install the Mender Client. They are used to
@@ -44,119 +44,9 @@ You can find images for other devices in our Mender Hub community forum, see
 integration posts.
 
 
-## mender-artifact
+# Mender device components
 
-The `mender-artifact` utility is used to work with Mender Artifacts,
-which are files with the `.mender` suffix and contain software to be deployed.
-See [Artifact creation](../07.Artifact-creation/chapter.md) for more information on how to
-use this utility.
-
-### Debian/Ubuntu
-
-`mender-artifact` is available in the Mender Workstation Tools APT repository. Follow the steps below
-to enable the repository and install `mender-artifact`.
-
-1. Update the `apt` package index and install required dependencies.
-
-    <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata -->
-    ```bash
-    sudo apt-get update
-    sudo apt-get install --assume-yes curl gpg
-    ```
-
-2. Add the official Mender GPG key to your trusted `apt` keychain:
-
-    ```bash
-    curl -fsSL https://downloads.mender.io/repos/debian/gpg | sudo tee /etc/apt/trusted.gpg.d/mender.asc
-    ```
-
-    Inspect the GPG key fingerprint and verify that it matches
-    `E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00`.
-
-    <!--AUTOMATION: ignore -->
-    ```bash
-    gpg --show-keys --with-fingerprint /etc/apt/trusted.gpg.d/mender.asc
-    ```
-    ```
-    pub   rsa3072 2020-11-13 [SC] [expires: 2026-10-01]
-          E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
-    uid                      Mender Team <mender@northern.tech>
-    sub   rsa3072 2020-11-13 [E] [expires: 2026-10-01]
-    ```
-
-3. Add the Mender Workstation Tools repository to your sources list by selecting your distribution.
-
-    First, in order to make sure that there are no Mender sources in
-    '/etc/apt/sources.list' lingering from a previous install, run
-
-    <!--AUTOMATION: ignore -->
-    ```bash
-    sudo sed -i.bak -e "\,https://downloads.mender.io/repos/workstation-tools,d" /etc/apt/sources.list
-    ```
-
-    Then add the source according to your distribution:
-
-    [ui-tabs position="top-left" active="0" theme="lite" ]
-    [ui-tab title="Debian 12"]
-    <!--AUTOMATION: ignore -->
-    ```bash
-    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools debian/bookworm/stable main" \
-     | sudo tee /etc/apt/sources.list.d/mender.list
-    ```
-    [/ui-tab]
-    [ui-tab title="Debian 11"]
-    <!--AUTOMATION: ignore -->
-    ```bash
-    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools debian/bullseye/stable main" \
-     | sudo tee /etc/apt/sources.list.d/mender.list
-    ```
-    [/ui-tab]
-    [ui-tab title="Ubuntu 24.04"]
-    <!--AUTOMATION: ignore -->
-    ```bash
-    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools ubuntu/noble/stable main" \
-     | sudo tee /etc/apt/sources.list.d/mender.list
-    ```
-    [/ui-tab]
-    [ui-tab title="Ubuntu 22.04"]
-    <!--AUTOMATION: ignore -->
-    ```bash
-    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools ubuntu/jammy/stable main" \
-     | sudo tee /etc/apt/sources.list.d/mender.list
-    ```
-    [/ui-tab]
-    [/ui-tabs]
-
-    !!! If you want the bleeding edge version of the tools, you can use our
-    !!! `experimental` repository by replacing `stable` with `experimental` in
-    !!! the above command. Do not use the `experimental` repository in production
-    !!! as these releases are not fully tested.
-
-4. Update the package index and install `mender-artifact`:
-
-    <!--AUTOMATION: ignore -->
-    ```bash
-    sudo apt-get update
-    sudo apt-get install mender-artifact
-    ```
-
-### Mac OS X
-
-Use `brew` to install `mender-artifact` from [the Homebrew repository](https://brew.sh/):
-
-<!--AUTOMATION: ignore -->
-```bash
-brew install mender-artifact
-```
-
-! Note that using `mender-artifact` on MacOS with disk image files (e.g.: `*.sdimg`,
-! `*.img`, or others holding the storage partitions) has limited functionality. Commands
-! like `mender-artifact cat` or `mender-artifact cp` will not work due to lack of support
-! for certain utilities on the Mac platform.
-
-
-!!! `mender-artifact` binary is shipped also in [mender-ci-tools Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools). More information [here](../07.Artifact-creation/10.CI-CD/docs.md#mender-ci-workflows-docker-image).
-
+Mender device component is a software designated to run directly on the device.
 
 ## Mender Client
 
@@ -242,7 +132,7 @@ sudo bash get-mender.sh mender-client4
 !!! flag `-c experimental`. Do not use the `experimental` repository for
 !!! production devices as these releases are not fully tested.
 
-##### Upgrading Mender after the express installation
+#### Upgrading Mender after the express installation
 
 After installing the Mender Client with [get.mender.io](https://get.mender.io),
 the packages are maintained by the package manager. To upgrade the software, simply run
@@ -256,13 +146,13 @@ sudo apt-get upgrade
 !!! Updating mender this way doesn't provide a rollback mechanism in case of issues.
 !!! For production devices always update mender as part of the Operating System update with A/B partitions.
 
-#### Install using the APT repository
+### Install using the APT repository
 
 Before installing the Mender Client, you need to set up the Mender APT
 repository. Afterwards, you can install and update the Mender Client using the
 `apt` command line interface.
 
-##### Set up the APT repository
+#### Set up the APT repository
 
 <!--AUTOVERSION: "Mender %"/ignore -->
 !!! As of Mender 3.2.1 we deprecated the previous stable repository and stopped updating it. As of Mender 3.3 we removed it.
@@ -372,78 +262,6 @@ matching your device.
 <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y mender-client4 -->
 
 
-## Mender Binary Delta
-
-### Download
-
-If you are using *hosted Mender*, set the following variables with your credentials:
-
-<!--AUTOMATION: ignore -->
-```bash
-HOSTED_MENDER_EMAIL=<your.email@example.com>
-HOSTED_MENDER_PASSWORD=<yoursecurepassword>
-```
-!!! If you signed up using your Google or GitHub login, use the email address linked to that account and enter `x` as the password.
-
-Now, download the `mender-binary-delta` archive with the following command:
-
-<!--AUTOMATION: execute=HOSTED_MENDER_EMAIL="$HOSTED_MENDER_IO_USERNAME" -->
-<!--AUTOMATION: execute=HOSTED_MENDER_PASSWORD="$HOSTED_MENDER_IO_PASSWORD" -->
-
-<!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
-```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-binary-delta/1.5.1/mender-binary-delta-1.5.1.tar.xz
-```
-On the other hand, if you are using *on-premise Mender Enterprise*, download using the following
-command:
-
-<!--AUTOMATION: ignore -->
-<!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
-```bash
-MENDER_ENTERPRISE_USER=<your.user>
-curl -u $MENDER_ENTERPRISE_USER -O https://downloads.customer.mender.io/content/on-prem/mender-binary-delta/1.5.1/mender-binary-delta-1.5.1.tar.xz
-```
-
-<!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
-The archive `mender-binary-delta-1.5.1.tar.xz` contains the binaries needed to generate and apply deltas.
-
-<!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
-Unpack the `mender-binary-delta-1.5.1.tar.xz` in your home directory:
-
-<!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
-```bash
-tar xvf mender-binary-delta-1.5.1.tar.xz
-```
-
-The file structure should look like this:
-
-```text
-├── aarch64
-│   ├── mender-binary-delta
-│   └── mender-binary-delta-generator
-├── arm
-│   ├── mender-binary-delta
-│   └── mender-binary-delta-generator
-├── licenses
-│   └── ...
-└── x86_64
-    ├── mender-binary-delta
-    └── mender-binary-delta-generator
-```
-
-### The `mender-binary-delta-generator`
-
-You will need this binary on the host to [create a delta between two artifacts](../07.Artifact-creation/05.Create-a-Delta-update-Artifact/docs.md) locally.
-
-!!! The enterprise plan allows auto generation of [delta images directly on the mender server](../07.Artifact-creation/05.Server-side-generation-of-Delta-Artifacts/docs.md).
-
-Copy the generator compatible with your workstation architecture to `/usr/bin`; for a `x86_64` one, it should look like this:
-
-<!--AUTOVERSION: "mender-binary-delta-%"/mender-binary-delta-->
-```bash
-sudo cp mender-binary-delta-1.5.1/x86_64/mender-binary-delta-generator /usr/bin
-```
-
 ## Mender add-ons
 
 ### Requirements
@@ -501,113 +319,6 @@ repository](#install-using-the-apt-repository). After the final step, install
 sudo apt-get install mender-configure
 ```
 
-## mender-cli
-
-The `mender-cli` utility enables an easy interface to key use cases
-of the Mender Server API, such as uploading a Mender Artifact, from
-the command line. See [Server integration](../09.Server-integration/chapter.md) for
-more information.
-
-### Debian/Ubuntu
-
-`mender-cli` is available in the Mender Workstation Tools APT repository. Follow the steps below
-to enable the repository and install `mender-cli`.
-
-1. Update the `apt` package index and install required dependencies.
-
-    <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata -->
-    ```bash
-    sudo apt-get update
-    sudo apt-get install --assume-yes curl gpg
-    ```
-
-2. Add the official Mender GPG key to your trusted `apt` keychain:
-
-    ```bash
-    curl -fsSL https://downloads.mender.io/repos/debian/gpg | sudo tee /etc/apt/trusted.gpg.d/mender.asc
-    ```
-
-    Inspect the GPG key fingerprint and verify that it matches
-    `E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00`.
-
-    <!--AUTOMATION: ignore -->
-    ```bash
-    gpg --show-keys --with-fingerprint /etc/apt/trusted.gpg.d/mender.asc
-    ```
-    ```
-    pub   rsa3072 2020-11-13 [SC] [expires: 2026-10-01]
-          E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
-    uid                      Mender Team <mender@northern.tech>
-    sub   rsa3072 2020-11-13 [E] [expires: 2026-10-01]
-    ```
-
-3. Add the Mender Workstation Tools repository to your sources list by selecting your distribution.
-
-    First, in order to make sure that there are no Mender sources in
-    '/etc/apt/sources.list' lingering from a previous install, run
-
-    <!--AUTOMATION: ignore -->
-    ```bash
-    sudo sed -i.bak -e "\,https://downloads.mender.io/repos/workstation-tools,d" /etc/apt/sources.list
-    ```
-
-    Then add the source according to your distribution:
-
-    [ui-tabs position="top-left" active="0" theme="lite" ]
-    [ui-tab title="Debian 12"]
-    <!--AUTOMATION: ignore -->
-    ```bash
-    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools debian/bookworm/stable main" \
-     | sudo tee /etc/apt/sources.list.d/mender.list
-    ```
-    [/ui-tab]
-    [ui-tab title="Debian 11"]
-    <!--AUTOMATION: ignore -->
-    ```bash
-    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools debian/bullseye/stable main" \
-     | sudo tee /etc/apt/sources.list.d/mender.list
-    ```
-    [/ui-tab]
-    [ui-tab title="Ubuntu 24.04"]
-    <!--AUTOMATION: ignore -->
-    ```bash
-    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools ubuntu/noble/stable main" \
-     | sudo tee /etc/apt/sources.list.d/mender.list
-    ```
-    [/ui-tab]
-    [ui-tab title="Ubuntu 22.04"]
-    <!--AUTOMATION: ignore -->
-    ```bash
-    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools ubuntu/jammy/stable main" \
-     | sudo tee /etc/apt/sources.list.d/mender.list
-    ```
-    [/ui-tab]
-    [/ui-tabs]
-
-    !!! If you want the bleeding edge version of the tools, you can use our
-    !!! `experimental` repository by replacing `stable` with `experimental` in
-    !!! the above command. Do not use the `experimental` repository in production
-    !!! as these releases are not fully tested.
-
-4. Update the package index and install `mender-cli`:
-
-    <!--AUTOMATION: ignore -->
-    ```bash
-    sudo apt-get update
-    sudo apt-get install mender-cli
-    ```
-
-### Mac OS X
-
-Use `brew` to install `mender-cli` from [the Homebrew repository](https://brew.sh/):
-
-<!--AUTOMATION: ignore -->
-```bash
-brew install mender-cli
-```
-
-
-!!! `mender-cli` binary is shipped also in [Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools). More information [here](../07.Artifact-creation/10.CI-CD/docs.md#mender-ci-workflows-docker-image).
 
 ## Monitor
 
@@ -642,7 +353,7 @@ Set the following variables with your credentials:
 <!--AUTOMATION: ignore -->
 ```bash
 MENDER_ENTERPRISE_USER=<your.user>
- MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
 ```
 And download it with:
 <!--AUTOMATION: ignore -->
@@ -1190,3 +901,308 @@ sudo tar -C / --strip-components=2 -xvf mender-gateway-examples-2.0.0.tar
 
 <!--AUTOMATION: test=test -d /usr/share/doc/mender-gateway/examples -->
 <!--AUTOMATION: test=grep hosted.mender.io /etc/mender/mender-gateway.conf -->
+
+
+
+# Mender workstation tools
+
+Mender workstation tools is a set of usefull utils that installed on the workstation
+machine could help with maintanance and monitoring mender client devices.
+
+## mender-artifact
+
+The `mender-artifact` utility is used to work with Mender Artifacts,
+which are files with the `.mender` suffix and contain software to be deployed.
+See [Artifact creation](../07.Artifact-creation/chapter.md) for more information on how to
+use this utility.
+
+### Debian/Ubuntu
+
+`mender-artifact` is available in the Mender Workstation Tools APT repository. Follow the steps below
+to enable the repository and install `mender-artifact`.
+
+1. Update the `apt` package index and install required dependencies.
+
+    <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata -->
+    ```bash
+    sudo apt-get update
+    sudo apt-get install --assume-yes curl gpg
+    ```
+
+2. Add the official Mender GPG key to your trusted `apt` keychain:
+
+    ```bash
+    curl -fsSL https://downloads.mender.io/repos/debian/gpg | sudo tee /etc/apt/trusted.gpg.d/mender.asc
+    ```
+
+    Inspect the GPG key fingerprint and verify that it matches
+    `E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00`.
+
+    <!--AUTOMATION: ignore -->
+    ```bash
+    gpg --show-keys --with-fingerprint /etc/apt/trusted.gpg.d/mender.asc
+    ```
+    ```
+    pub   rsa3072 2020-11-13 [SC] [expires: 2026-10-01]
+          E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
+    uid                      Mender Team <mender@northern.tech>
+    sub   rsa3072 2020-11-13 [E] [expires: 2026-10-01]
+    ```
+
+3. Add the Mender Workstation Tools repository to your sources list by selecting your distribution.
+
+    First, in order to make sure that there are no Mender sources in
+    '/etc/apt/sources.list' lingering from a previous install, run
+
+    <!--AUTOMATION: ignore -->
+    ```bash
+    sudo sed -i.bak -e "\,https://downloads.mender.io/repos/workstation-tools,d" /etc/apt/sources.list
+    ```
+
+    Then add the source according to your distribution:
+
+    [ui-tabs position="top-left" active="0" theme="lite" ]
+    [ui-tab title="Debian 12"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools debian/bookworm/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
+    [ui-tab title="Debian 11"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools debian/bullseye/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
+    [ui-tab title="Ubuntu 24.04"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools ubuntu/noble/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
+    [ui-tab title="Ubuntu 22.04"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools ubuntu/jammy/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
+    [/ui-tabs]
+
+    !!! If you want the bleeding edge version of the tools, you can use our
+    !!! `experimental` repository by replacing `stable` with `experimental` in
+    !!! the above command. Do not use the `experimental` repository in production
+    !!! as these releases are not fully tested.
+
+4. Update the package index and install `mender-artifact`:
+
+    <!--AUTOMATION: ignore -->
+    ```bash
+    sudo apt-get update
+    sudo apt-get install mender-artifact
+    ```
+
+### Mac OS X
+
+Use `brew` to install `mender-artifact` from [the Homebrew repository](https://brew.sh/):
+
+<!--AUTOMATION: ignore -->
+```bash
+brew install mender-artifact
+```
+
+! Note that using `mender-artifact` on MacOS with disk image files (e.g.: `*.sdimg`,
+! `*.img`, or others holding the storage partitions) has limited functionality. Commands
+! like `mender-artifact cat` or `mender-artifact cp` will not work due to lack of support
+! for certain utilities on the Mac platform.
+
+
+!!! `mender-artifact` binary is shipped also in [mender-ci-tools Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools). More information [here](../07.Artifact-creation/10.CI-CD/docs.md#mender-ci-workflows-docker-image).
+
+
+
+## Mender Binary Delta
+
+#### Download
+
+If you are using *hosted Mender*, set the following variables with your credentials:
+
+<!--AUTOMATION: ignore -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+```
+!!! If you signed up using your Google or GitHub login, use the email address linked to that account and enter `x` as the password.
+
+Now, download the `mender-binary-delta` archive with the following command:
+
+<!--AUTOMATION: execute=HOSTED_MENDER_EMAIL="$HOSTED_MENDER_IO_USERNAME" -->
+<!--AUTOMATION: execute=HOSTED_MENDER_PASSWORD="$HOSTED_MENDER_IO_PASSWORD" -->
+
+<!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
+```bash
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-binary-delta/1.5.1/mender-binary-delta-1.5.1.tar.xz
+```
+On the other hand, if you are using *on-premise Mender Enterprise*, download using the following
+command:
+
+<!--AUTOMATION: ignore -->
+<!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
+```bash
+MENDER_ENTERPRISE_USER=<your.user>
+curl -u $MENDER_ENTERPRISE_USER -O https://downloads.customer.mender.io/content/on-prem/mender-binary-delta/1.5.1/mender-binary-delta-1.5.1.tar.xz
+```
+
+<!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
+The archive `mender-binary-delta-1.5.1.tar.xz` contains the binaries needed to generate and apply deltas.
+
+<!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
+Unpack the `mender-binary-delta-1.5.1.tar.xz` in your home directory:
+
+<!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
+```bash
+tar xvf mender-binary-delta-1.5.1.tar.xz
+```
+
+The file structure should look like this:
+
+```text
+├── aarch64
+│   ├── mender-binary-delta
+│   └── mender-binary-delta-generator
+├── arm
+│   ├── mender-binary-delta
+│   └── mender-binary-delta-generator
+├── licenses
+│   └── ...
+└── x86_64
+    ├── mender-binary-delta
+    └── mender-binary-delta-generator
+```
+
+### The `mender-binary-delta-generator`
+
+You will need this binary on the host to [create a delta between two artifacts](../07.Artifact-creation/05.Create-a-Delta-update-Artifact/docs.md) locally.
+
+!!! The enterprise plan allows auto generation of [delta images directly on the mender server](../07.Artifact-creation/05.Server-side-generation-of-Delta-Artifacts/docs.md).
+
+Copy the generator compatible with your workstation architecture to `/usr/bin`; for a `x86_64` one, it should look like this:
+
+<!--AUTOVERSION: "mender-binary-delta-%"/mender-binary-delta-->
+```bash
+sudo cp mender-binary-delta-1.5.1/x86_64/mender-binary-delta-generator /usr/bin
+```
+
+
+## mender-cli
+
+The `mender-cli` utility enables an easy interface to key use cases
+of the Mender Server API, such as uploading a Mender Artifact, from
+the command line. See [Server integration](../09.Server-integration/chapter.md) for
+more information.
+
+### Debian/Ubuntu
+
+`mender-cli` is available in the Mender Workstation Tools APT repository. Follow the steps below
+to enable the repository and install `mender-cli`.
+
+1. Update the `apt` package index and install required dependencies.
+
+    <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata -->
+    ```bash
+    sudo apt-get update
+    sudo apt-get install --assume-yes curl gpg
+    ```
+
+2. Add the official Mender GPG key to your trusted `apt` keychain:
+
+    ```bash
+    curl -fsSL https://downloads.mender.io/repos/debian/gpg | sudo tee /etc/apt/trusted.gpg.d/mender.asc
+    ```
+
+    Inspect the GPG key fingerprint and verify that it matches
+    `E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00`.
+
+    <!--AUTOMATION: ignore -->
+    ```bash
+    gpg --show-keys --with-fingerprint /etc/apt/trusted.gpg.d/mender.asc
+    ```
+    ```
+    pub   rsa3072 2020-11-13 [SC] [expires: 2026-10-01]
+          E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
+    uid                      Mender Team <mender@northern.tech>
+    sub   rsa3072 2020-11-13 [E] [expires: 2026-10-01]
+    ```
+
+3. Add the Mender Workstation Tools repository to your sources list by selecting your distribution.
+
+    First, in order to make sure that there are no Mender sources in
+    '/etc/apt/sources.list' lingering from a previous install, run
+
+    <!--AUTOMATION: ignore -->
+    ```bash
+    sudo sed -i.bak -e "\,https://downloads.mender.io/repos/workstation-tools,d" /etc/apt/sources.list
+    ```
+
+    Then add the source according to your distribution:
+
+    [ui-tabs position="top-left" active="0" theme="lite" ]
+    [ui-tab title="Debian 12"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools debian/bookworm/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
+    [ui-tab title="Debian 11"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools debian/bullseye/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
+    [ui-tab title="Ubuntu 24.04"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools ubuntu/noble/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
+    [ui-tab title="Ubuntu 22.04"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=amd64] https://downloads.mender.io/repos/workstation-tools ubuntu/jammy/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
+    [/ui-tabs]
+
+    !!! If you want the bleeding edge version of the tools, you can use our
+    !!! `experimental` repository by replacing `stable` with `experimental` in
+    !!! the above command. Do not use the `experimental` repository in production
+    !!! as these releases are not fully tested.
+
+4. Update the package index and install `mender-cli`:
+
+    <!--AUTOMATION: ignore -->
+    ```bash
+    sudo apt-get update
+    sudo apt-get install mender-cli
+    ```
+
+### Mac OS X
+
+Use `brew` to install `mender-cli` from [the Homebrew repository](https://brew.sh/):
+
+<!--AUTOMATION: ignore -->
+```bash
+brew install mender-cli
+```
+
+
+!!! `mender-cli` binary is shipped also in [Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools). More information [here](../07.Artifact-creation/10.CI-CD/docs.md#mender-ci-workflows-docker-image).
+
+
