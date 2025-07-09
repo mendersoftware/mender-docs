@@ -171,7 +171,7 @@ Devices connected to the gateway will show a special attribute named <code>mende
 <dt>Listen (<code>HTTPS_LISTEN</code>)</dt>
 <dd>TCP network address to listen for incomming connections.</dd>
 
-<dt>MinimumTLSVersion (<code>HTTPS_MINMUM_TLS_VERSION</code>)
+<dt>MinimumTLSVersion (<code>HTTPS_MINIMUM_TLS_VERSION</code>)
 <dd>
 The minimum accepted TLS version for connecting to the gateway <code>["1.0", "1.1", "1.2", "1.3"]</code>.<br>
 <!--AUTOVERSION: "version <code>%</code>"/ignore-->
