@@ -93,24 +93,70 @@ ${USERNAME}:${PASSWORD}
 EOF
 ```
 
-We then configure networking. Assuming you have a typical WiFi setup, change the initial three
-variables and run this code block:
+In latest RPi versions wifi network configuration has been changed from
+plain `wpa_supplicant.conf` file in favor of using `rpi-imager` tool
+and this is the easiest way to configure wifi.
+
+It is strongly advised to use `rpi-imager` if possible as this is the
+configurator suggested by the official RPi documentation.
+
+Partial network configuration still can be performed from the command line
+in the headless mode but it is not guaranted to always work (may
+depend on country code settings).
+
+Bellow script is extracted from the `rpi-imager` backend and mimics this
+tool behavior from the command line.
 
 ```bash
+RPI_ROOT="$(awk '/media.*root(fs)?/ { print $2; }' /proc/mounts)"
+[ ! -d "$RPI_ROOT" ] && echo "ERROR: RPI root partition not found"
+
 WIFI_SSID='' # CHANGE: your WiFi name
 WIFI_PASS='' # CHANGE: your WiFi password
-COUNTRY='US' # CHANGE: two-letter country code, see https://en.wikipedia.org/wiki/ISO_3166-1
 
-cat << EOF > "$RPI_BOOT"/wpa_supplicant.conf
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-country=$COUNTRY
+UUID=$(uuid -v4)
 
-network={
-         ssid="$WIFI_SSID"
-         psk="$WIFI_PASS"
-}
+# Based on https://github.com/RPi-Distro/raspberrypi-sys-mods/blob/bookworm/usr/lib/raspberrypi-sys-mods/imager_custom
+
+CONNFILE="$RPI_ROOT"/etc/NetworkManager/system-connections/preconfigured.nmconnection
+
+cat <<- EOF >${CONNFILE}
+      [connection]
+      id=preconfigured
+      uuid=${UUID}
+      type=wifi
+      [wifi]
+      mode=infrastructure
+      ssid=${WIFI_SSID}
+      hidden=false
+      [ipv4]
+      method=auto
+      [ipv6]
+      addr-gen-mode=default
+      method=auto
+      [proxy]
 EOF
+
+if [ ! -z "${WIFI_PASS}" ]; then
+  cat <<- EOF >>${CONNFILE}
+      [wifi-security]
+      key-mgmt=wpa-psk
+      psk=${WIFI_PASS}
+EOF
+fi
+```
+
+NetworkManager will ignore nmconnection files with incorrect permissions,
+to prevent Wi-Fi credentials accidentally being world-readable. It need to be
+changed manually.
+
+```bash
+RPI_ROOT="$(awk '/media.*root(fs)?/ { print $2; }' /proc/mounts)"
+[ ! -d "$RPI_ROOT" ] && echo "ERROR: RPI root partition not found"
+
+CONNFILE="$RPI_ROOT"/etc/NetworkManager/system-connections/preconfigured.nmconnection
+
+chmod 600 ${CONNFILE}
 ```
 
 Finally, enable SSH by creating an empty file:
