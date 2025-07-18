@@ -86,4 +86,3 @@ of which subcomponents are included in a given Mender Client version.
 | Mender Client | mender-connect | mender-configure | mender-monitor | mender-binary-delta | mender-flash |
 | ------------- | -------------- | ---------------- | -------------- | ------------------- | ------------ |
 | 5.0           | 2.3            | 1.1              | 1.4            | 1.5                 | 1.0          |
-| 4.0           | 2.2            | 1.1              | 1.3            | 1.4                 | 1.0          |
