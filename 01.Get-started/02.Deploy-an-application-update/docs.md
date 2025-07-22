@@ -97,7 +97,7 @@ A [Mender Artifact](../../02.Overview/03.Artifact/docs.md) contains some mandato
 
   Depending on which device you are using you need to enter:
   * `raspberrypi3` or `raspberrypi4` if you are using a Raspberry Pi
-  * `qemux64-64` if you are using a virtual device
+  * `generic-x86_64` if you are using a virtual device
 
 * **Release name** - Name of the software build, so that software is not
   redeployed if it is already installed at the device.
