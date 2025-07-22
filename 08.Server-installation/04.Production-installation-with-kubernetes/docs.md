@@ -55,6 +55,7 @@ We recommend using a replica set for high availability production environments,
 and you can choose to host your own cluster or use the MongoDB Atlas managed
 service.
 * Supported versions:
+  * MongoDB 8.0
   * MongoDB 7.0
   * MongoDB 6.0
 * Minimum user role:
@@ -64,6 +65,7 @@ service.
 
 !!!!! Please note that we do not provide support for troubleshooting issues with
 !!!!! MongoDB not directly related to the Mender product.
+!!!!! Always refer to [MongoDB documentation](https://www.mongodb.com/docs/manual/) prior to upgrading.
 
 **Redis:**
 * Redis 6.0, 6.2, 7.4
