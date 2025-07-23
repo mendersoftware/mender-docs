@@ -26,17 +26,8 @@ You should:
 
 ## Step 1 - Download the mender-artifact utility on your workstation
 
-!!! The simplest installation instructions for `mender-artifact` are covered below, see
-!!! [Downloads](../../11.Downloads/docs.md#mender-artifact) for installation alternatives such as
-!!! setting up package repositories.
-
-On Linux, download the `mender-artifact` deb package and install it:
-
-<!--AUTOVERSION: "mender-artifact_%-1"/mender-artifact -->
-```bash
-wget https://downloads.mender.io/repos/debian/pool/main/m/mender-artifact/mender-artifact_4.1.0-1%2B$(. /etc/os-release; echo $ID)%2B$(. /etc/os-release; echo $VERSION_CODENAME)_amd64.deb
-sudo dpkg --install mender-artifact_4.1.0-1+$(. /etc/os-release; echo $ID)+$(. /etc/os-release; echo $VERSION_CODENAME)_amd64.deb
-```
+On Linux, `mender-artifact` is available via a package repository for Debian based operating systems.
+For the repo setup and package installation please follow instructions at [Downloads page](../../11.Downloads/docs.md#mender-artifact)
 
 On MacOS, install `mender-artifact` from `brew` using:
 
