@@ -161,3 +161,21 @@ As you can see, the Mender UI allows the Service Provider tenant to manage the c
 Every operation is recorded in the audit logs:
 
 ![Service provider add](sp2.png)
+
+## User management between tenants
+
+To move a user from an existing tenant to another one, you will need to use the User's ID instead of the email.
+
+Either in the existing tenant or in the new one, you will need to access the `User Management` section by following these steps
+
+![Get users menu](users-menu.png)
+
+To get a user ID from an existing tenant, you should to gather it from the user's view panel by following the steps below.
+
+![Get the User ID](user-id.png)
+
+To add a user into the new tenant, just add its ID by following these steps below.
+
+![Add User by ID](add-user.png)
+
+The new user will have Read Access only, so you may need to add more permissive Roles.
