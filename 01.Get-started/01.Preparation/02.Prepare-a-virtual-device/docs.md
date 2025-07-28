@@ -29,7 +29,7 @@ Go to the **Dashboard** tab and click on **Connect a device**.
 
 ## Step 2 - Connect a device
 
-Select **Prepare a virtual device for now**.
+Select **Try a virtual device**.
 
 ![connecting a device](Image_1.png)
 
