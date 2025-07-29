@@ -96,11 +96,8 @@ you can use the following command:
 add-apt-repository -r "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian stable main"
 ```
 
-and then re-add the new one with:
+and then re-add the new one by following the insturcion in [Set up the APT repository](../../11.Downloads/docs.md#Set-up-the-APT-repository)
 
-```bash
-add-apt-repository "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian debian/bookworm/stable main"
-```
 
 ## Repository 'http://raspbian.raspberrypi.org/raspbian buster InRelease' changed its 'Suite' value from 'stable' to 'oldstable'
 
