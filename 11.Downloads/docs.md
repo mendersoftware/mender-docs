@@ -516,7 +516,7 @@ download it by running:
 <!--AUTOMATION: execute=HOSTED_MENDER_PASSWORD="$HOSTED_MENDER_IO_PASSWORD" -->
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
-[ui-tab title="hosted"]
+[ui-tab title="Hosted Mender"]
 Set the following variables with your credentials:
 <!--AUTOMATION: ignore -->
 ```bash
@@ -529,13 +529,14 @@ And download it with:
 wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.4.1/mender-monitor_1.4.1-1%2Bdebian%2Bbullseye_all.deb
 ```
 [/ui-tab]
-[ui-tab title="enterprise"]
+[ui-tab title="Mender Server Enterprise"]
 Set the following variables with your credentials:
 <!--AUTOMATION: ignore -->
 ```bash
 MENDER_ENTERPRISE_USER=<your.user>
 MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
 ```
+!!!!! Please keep in mind that these are the credentials used to access the Mender Docker Registry.
 And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-monitor_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
@@ -578,7 +579,7 @@ Set the following variables with your credentials:
 <!--AUTOMATION: ignore -->
 ```bash
 MENDER_ENTERPRISE_USER=<your.user>
- MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
 ```
 And download it with:
 
