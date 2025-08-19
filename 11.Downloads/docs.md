@@ -433,7 +433,7 @@ sudo apt-get upgrade
 ### Install using the APT repository
 
 `mender-client` is available in the APT repository.
-Follow the steps in [Set up the APT repository](#set-up-the-apt-repository) chapter to enable the repository and install `mender-client`.
+Follow the steps in [Set up the APT repository](#set-up-the-apt-repository-1) chapter to enable the repository and install `mender-client`.
 
 Update the package index and install the Mender Client:
 
@@ -449,7 +449,7 @@ sudo apt-get install mender-client4
 ## mender-connect
 
 The easiest way to install Mender Connect on an existing device is by using the
-[Set up the APT repository](#set-up-the-apt-repository). The other alternatives include: 
+[Set up the APT repository](#set-up-the-apt-repository-1). The other alternatives include: 
 [mender-convert integration](../04.Operating-System-updates-Debian-family/99.Variables/docs.md#mender_addon_connect_install)
 for installation in the existing images,
 and [Yocto projects](../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect)
