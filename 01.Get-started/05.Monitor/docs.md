@@ -266,7 +266,7 @@ First, create a check for the `log` monitoring subsystem named `auth_root_sessio
 the following command:
 
 ```bash
-sudo mender-monitorctl create log auth_root_session "Started User Manager for UID 0" /var/log/auth.log
+sudo mender-monitorctl create log auth_root_session "Started User Manager for UID 0" "@journalctl --follow"
 sudo mender-monitorctl enable log auth_root_session
 ```
 
