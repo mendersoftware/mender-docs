@@ -20,7 +20,7 @@ This tutorial assumes:
 <!-- TODO: Add Debian reference after PR#2240 has been merged -->
 * You have completed the [integration of the mender-binary-delta](../../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/01.Delta-update-support/docs.md) into your Yocto built process
   * `mender-binary-delta-generator` is available in `PATH`
-* You have installed [mender-artifact](../../12.Downloads/docs.md#mender-artifact) which is a dependency for `mender-binary-delta-generator`
+* You have installed [mender-artifact](../../12.Downloads/01.Workstation-tools/docs.md#mender-artifact) which is a dependency for `mender-binary-delta-generator`
 * You have two Operating System artifacts available to work with
 
 ### Generating the delta - default case

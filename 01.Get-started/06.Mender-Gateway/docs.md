@@ -57,7 +57,7 @@ will use to authenticate to the server when downloading the Mender Gateway binar
 [/ui-tab]
 [ui-tab title="enterprise"]
 
-You can find download and installation instructions for on-premise environments on [downloads](../../12.Downloads/docs.md#mender-gateway) page.
+You can find download and installation instructions for on-premise environments on [downloads](../../12.Downloads/02.Device-components/docs.md#mender-gateway) page.
 
 [/ui-tab]
 [/ui-tabs]

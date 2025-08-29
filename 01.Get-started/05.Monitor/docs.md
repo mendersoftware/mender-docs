@@ -17,7 +17,7 @@ Mender. We will be using the [Monitor Add-on](../../11.Add-ons/20.Monitor/docs.m
 
 ## Prerequisites
 
-To follow this tutorial and perform the examples, you will need to install the [Monitor Add-on package](../../11.Add-ons/20.Monitor/10.Installation/docs.md) and the [Demo monitors package](../../12.Downloads/docs.md#demo-monitors) on your device. 
+To follow this tutorial and perform the examples, you will need to install the [Monitor Add-on package](../../11.Add-ons/20.Monitor/10.Installation/docs.md) and the [Demo monitors package](../../12.Downloads/02.Device-components/docs.md#demo-monitors) on your device.
 If you have followed the [get started tutorial](../01.Preparation/docs.md) to prepare your device, the Monitor Add-on, and Demo packages should already be installed.
 
 Verify installed dependencies on your device with:
@@ -59,7 +59,7 @@ Verify existence of check definitions with:
 ## Demo Checks
 
 
-Demo Checks for the Mender Monitor Add-on, found in the [Demo monitors package](../../12.Downloads/docs.md#demo-monitors) (Debian package) or in the `examples` directory for [Yocto](../../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/docs.md#monitor) serve as a starting point for quick evaluation.
+Demo Checks for the Mender Monitor Add-on, found in the [Demo monitors package](../../12.Downloads/02.Device-components/docs.md#demo-monitors) (Debian package) or in the `examples` directory for [Yocto](../../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/docs.md#monitor) serve as a starting point for quick evaluation.
 Once ready, you can customize and define your own [Checks](../../11.Add-ons/20.Monitor/20.Concepts/docs.md#creating-custom-checks).
 
 By default both mail notifications and UI alerts occur once a monitored event happens.

@@ -19,7 +19,7 @@ filesystem](../../04.Image-customization/02.Read-only-root-filesystem/) section.
 
 ## Download
 
-Download the `mender-binary-delta` binaries following the [instructions](../../../12.Downloads/docs.md#mender-binary-delta).
+Download the `mender-binary-delta` binaries following the [instructions](../../../12.Downloads/02.Device-components/docs.md#mender-binary-delta).
 
 ## Integrate `mender-binary-delta` into the Yocto environment
 
