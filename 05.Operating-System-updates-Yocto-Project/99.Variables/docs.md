@@ -583,7 +583,7 @@ automatically by subtracting the sizes of boot (see
 [MENDER_BOOT_PART_SIZE_MB](#mender_boot_part_size_mb)) and data partitions (see
 [MENDER_DATA_PART_SIZE_MB](#mender_data_part_size_mb)) along with some
 predefined overhead (see
-[MENDER_PARTITIONING_OVERHEAD_KB](#mender_partitioning_overhead_kb))). Default
+[MENDER_PARTITIONING_OVERHEAD_KB](#mender_partitioning_overhead_kb)). Default
 value is `1024`.
 
 
