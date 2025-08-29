@@ -342,7 +342,11 @@ Set the device file corresponding to the root filesystem partitions.
 
 > Value: 8192 (default)
 
-The size of the storage medium of the device.
+Total size of the physical storage medium that mender partitioned images will be
+written to, expressed in MiB. The size of rootfs partition will be calculated
+automatically by subtracting the sizes of boot (see
+[MENDER_BOOT_PART_SIZE_MB](#mender_boot_part_size_mb)) and data partitions (see
+[MENDER_DATA_PART_SIZE_MB](#mender_data_part_size_mb)). Default value is `8192`.
 
 
 #### `MENDER_SPARSE_IMAGE`
