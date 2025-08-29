@@ -30,9 +30,10 @@ is very difficult to retrofit this type of integration after devices have been
 deployed to the field.
 
 
-In general Mender officially supports the most common Linux OSes, and has
-reference implementations for specific devices. Note that both your OS and
-device hardware combination needs to be supported for Mender to work.
+In general Mender officially supports the most common Linux OSes together with
+the Zephyr OS for MCU devices, and has reference implementations for specific
+devices. Note that both your OS and device hardware combination needs to be
+supported for Mender to work.
 
 !!! We offer [Consulting services](https://mender.io/support-and-services/board-integration?target=_blank) if you would like to save time and ensure verified integration of a specific OS and device.
 
@@ -101,6 +102,32 @@ community post for steps to create one.
 You can compile the Mender Client for a wide variety of architectures. Follow the steps in the
 [README.md](https://github.com/mendersoftware/mender/tree/5.0.2?target=_blank#installing-from-source)
 of the Mender Client source repository. This is also the first step to a board integration for other types of Linux OSes.
+
+
+
+### Zephyr
+
+Mender officially supports the Zephyr OS with the [Mender MCU
+client](https://github.com/mendersoftware/mender-mcu). Since Zephyr is an RTOS,
+the Mender MCU client is not a separate and standalone component, it has to be
+integrated into the particular Zephyr application. There is a [referential
+application](https://github.com/mendersoftware/mender-mcu-integration)
+demonstrating how such an integration can be done.
+
+<!--AUTOVERSION: "Zephyr %"/ignore "/v%"/ignore-->
+Currently, [Zephyr 4.2](https://github.com/zephyrproject-rtos/zephyr/releases/tag/v4.2.0) is supported by the Mender MCU client.
+
+
+#### Board integrations
+
+The Mender MCU client requires a board supporting a bootloader which can handle
+A/B updates. It comes with an Update Module supporting the [MCUBoot
+bootloader](https://docs.mcuboot.com/readme-zephyr.html), custom Update Modules
+can, however, be implemented for other bootloaders supporting A/B updates.
+
+The reference board for the Mender MCU client on Zephyr is the
+[ESP32-S3-DevKitC](https://docs.zephyrproject.org/latest/boards/espressif/esp32s3_devkitc/doc/index.html)
+board from Espressif.
 
 
 ### Other non-Linux OSes
