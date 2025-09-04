@@ -49,3 +49,9 @@ The maximum number of tags that can be defined per Device inventory.
 
 Default: `20`</br>
 Override with the Mender Server environment variable: `INVENTORY_LIMIT_TAGS`
+
+### Maximum size of server-side delta Artifact
+The maximum size of Mender Artifacts that can you can use to trigger server-side binary delta generation.
+
+Default: `1 GiB`</br>
+Override with the Mender Server environment variable: `DEPLOYMENTS_SERVER_SIDE_DELTA_GENERATION_MAX_ARTIFACT_SIZE_MB`
