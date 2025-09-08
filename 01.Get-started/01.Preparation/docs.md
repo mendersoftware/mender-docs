@@ -11,7 +11,6 @@ installing Mender on a device and deploying:
 
 * a simple *Application* update
 * an *Operating System* update.
-* a *Docker container* update
 
 To get started testing Mender, create a hosted Mender account by
 [signing up here](https://mender.io/signup?target=_blank).

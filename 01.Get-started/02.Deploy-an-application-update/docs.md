@@ -25,11 +25,7 @@ In the Device information view for the device you just connected, select **Creat
 
 ![create a deployment for this device](device_actions_create.png)
 
-This will start the deployment wizard. The first step is to **Select a device group
-to target**. As we have not yet created any specific groups the only
-option presented should be **All devices**.
-
-![create a deployment](create_deployment_group.png)
+This will start the deployment wizard. As we have only one device connected the **Select a device group to target** should be automatically filled in with the device ID. In this case the first step is to **Select a Release to deploy**.
 
 There is already a demo Artifact available the first time you
 use hosted Mender, for the purposes of this tutorial. It contains a small web server you will run on your device.
