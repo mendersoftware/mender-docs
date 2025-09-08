@@ -77,16 +77,15 @@ mender-artifact read delta-v1-v2.mender
 
 #### Finding the parameters
 
-Fine tuning the parameters to your needs can be a trial and error process.
+Fine-tuning the parameters to your needs can be a trial and error process.
 The snippet below is a best effort reference to get you started.
 
 ```bash
-# Source buffer size          -B  Default=67108864(64M)  [16384(16K) - Unlimited]
-# Input window size           -W  Default=8192    ( 8M)  [16384(16K) - 16777216(16M)]
-# Instruction buffer size     -I  Default=32768(32KB)    [ min?      - 0 (Unlimited) ]
-# Compression duplicates size -P  Default=262144(256KB)  P <= W, Must be power of 2
+# Source buffer size          -B  Default=67108864 (64M) [16384(16K) - Unlimited]
+# Input window size           -W  Default=8388608   (8M) [16384(16K) - 16777216(16M)]
+# Instruction buffer size     -I  Default=32768   (32KB) [ min?      - 0 (Unlimited) ]
+# Compression duplicates size -P  Default=262144 (256KB)   P <= W, Must be power of 2
 
 XDELTA_FLAGS="-B524288000 -W150000 -P262144 -I62768"
-XDELTA_FLAGS_FOR_FILENAME=$(echo $XDELTA_FLAGS | sed 's/ //g')
-mender-binary-delta-generator -o delta-v1-v2-${XDELTA_FLAGS_FOR_FILENAME}.mender -D "${XDELTA_FLAGS}" rootfs-v1.mender rootfs-v2.mender -- -- ${XDELTA_FLAGS}
+mender-binary-delta-generator -o "delta-v1-v2${XDELTA_FLAGS// /}.mender" -D "${XDELTA_FLAGS}" rootfs-v1.mender rootfs-v2.mender -- -- ${XDELTA_FLAGS}
 ```
