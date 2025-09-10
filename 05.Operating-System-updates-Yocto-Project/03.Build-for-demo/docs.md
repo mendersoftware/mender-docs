@@ -118,8 +118,8 @@ MENDER_ARTIFACT_NAME = "release-1"
 #
 # PREFERRED_VERSION_mender = "5.0.2"
 # PREFERRED_VERSION_mender-client = "5.0.2"
-# PREFERRED_VERSION_mender-artifact = "4.1.0"
-# PREFERRED_VERSION_mender-artifact-native = "4.1.0"
+# PREFERRED_VERSION_mender-artifact = "v4.1.2"
+# PREFERRED_VERSION_mender-artifact-native = "v4.1.2"
 # PREFERRED_VERSION_mender-connect = "2.3.1"
 
 ARTIFACTIMG_FSTYPE = "ext4"
@@ -240,8 +240,8 @@ MACHINE = "<YOUR-MACHINE>"
 #
 # PREFERRED_VERSION_mender = "5.0.2"
 # PREFERRED_VERSION_mender-client = "5.0.2"
-# PREFERRED_VERSION_mender-artifact = "4.1.0"
-# PREFERRED_VERSION_mender-artifact-native = "4.1.0"
+# PREFERRED_VERSION_mender-artifact = "v4.1.2"
+# PREFERRED_VERSION_mender-artifact-native = "v4.1.2"
 # PREFERRED_VERSION_mender-connect = "2.3.1"
 
 # The following settings to enable systemd are needed for all Yocto
