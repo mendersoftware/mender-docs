@@ -99,6 +99,11 @@ Clone `mender-convert` from the official repository:
 git clone -b 5.0.0 https://github.com/mendersoftware/mender-convert.git
 ```
 
+<!--AUTOVERSION: "use % in the"/ignore-->
+!! When converting a Debian 11, Ubuntu 22.04 or older OS image, use 4.3.0 in the
+!! snippet above. Newer versions of `mender-convert` have changed the default
+!! Mender Client version being installed for these older distributions.
+
 Then change directory to where you downloaded `mender-convert` for the next steps:
 
 ```bash
