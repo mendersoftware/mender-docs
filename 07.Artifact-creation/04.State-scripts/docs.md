@@ -27,7 +27,7 @@ State scripts can either be run as we transition into a state; "Enter", or out f
 <!-- Source is at: https://docs.google.com/drawings/d/1UUjfflMJIp-tTPmvRuIhfUVbRecH70S1oF9UW-Rl3lI/edit -->
 ![Mender state machine diagram](mender-state-machine.png)
 
-### Standalone mode
+### Standalone mode 
 
 If Mender is used in standalone mode (installing via command line), some states are omitted from execution because Mender is not running as a daemon. These are the states that are executed in standalone mode:
 
