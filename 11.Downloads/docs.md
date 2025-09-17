@@ -70,6 +70,7 @@ Workstation tools repo contains:
 1. Update the `apt` package index and install required dependencies.
 
 <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata -->
+
     ```bash
     sudo apt-get update
     sudo apt-get install --assume-yes \
@@ -254,6 +255,7 @@ Device components repo contains:
 1. Update the `apt` package index and install required dependencies.
 
 <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata -->
+
     ```bash
     sudo apt-get update
     sudo apt-get install --assume-yes \
