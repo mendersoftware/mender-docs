@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-This sections lists all the configuration options in `mender.conf`.
+This section lists all the available configuration options in the `mender.conf` file.
 
 #### ArtifactVerifyKey
 
