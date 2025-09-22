@@ -66,10 +66,9 @@ Workstation tools repo contains:
 !!! or you want to stick to a specific minor release (e.g., to the latest LTS version), you can manually download the
 !!! Debian packages from the [workstation tools repository](https://downloads.mender.io/repos/workstation-tools/pool/main).
 
+<!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata -->
 
 1. Update the `apt` package index and install required dependencies.
-
-<!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata -->
 
     ```bash
     sudo apt-get update
@@ -251,10 +250,7 @@ Device components repo contains:
 !!! or you want to stick to a specific minor release (e.g., to the latest LTS version), you can manually download the
 !!! Debian packages from the [device components repository](https://downloads.mender.io/repos/device-components/pool/main).
 
-
 1. Update the `apt` package index and install required dependencies.
-
-<!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata -->
 
     ```bash
     sudo apt-get update
