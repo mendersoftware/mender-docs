@@ -68,9 +68,4 @@ This may take a few minutes, depending on the size of the image.
 
 !!! &lt;DEVICE&gt; depends on what device name the Operating System assign to
 !!! your SD-card. Normally, on Linux, the device is usually on the form
-!!! `/dev/mmcblk[0-9]` or `/dev/sd[a-z]`. If you are unsure how to
-!!! find the correct device, the Raspberry Pi Foundation provides some nice
-!!! references that can help you for
-!!! [Linux](https://www.raspberrypi.org/documentation/installation/installing-images/linux.md?target=_blank),
-!!! [Mac OSX](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md?target=_blank),
-!!! [Windows](https://www.raspberrypi.org/documentation/installation/installing-images/windows.md?target=_blank).
+!!! `/dev/mmcblk[0-9]` or `/dev/sd[a-z]`.

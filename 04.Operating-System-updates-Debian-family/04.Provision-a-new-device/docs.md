@@ -53,13 +53,7 @@ sudo dd if=<PATH-TO-IMAGE>.img of=<DEVICE> bs=4M && sync
 ```
 
 `<DEVICE>` depends on where you placed your SD card. Normally this would be something like
-`/dev/mmcblk0` or `/dev/sdb`.  If you are unsure how to find the correct device, the Raspberry Pi
-Foundation provides some nice references that can help you for
-[Linux](https://www.raspberrypi.org/documentation/installation/installing-images/linux.md?target=_blank),
-[Mac
-OSX](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md?target=_blank)
-and
-[Windows](https://www.raspberrypi.org/documentation/installation/installing-images/windows.md?target=_blank).
+`/dev/mmcblk0` or `/dev/sdb`.
 
 The flashing may take a few minutes, depending on the size of the image.
 
