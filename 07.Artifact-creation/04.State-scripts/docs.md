@@ -85,6 +85,31 @@ All other return codes are reserved for future use by Mender and should not be u
 !!! retried on the next polling cycle. This behavior [may change in the
 !!! future](https://northerntech.atlassian.net/browse/MEN-6319?target=_blank).
 
+### Interaction between State Scripts and Update Modules
+Even if a State Script runs successfully, the final deployment status always depends on the Update Module as well.  
+For example, an `ArtifactInstall_Enter` script may execute correctly and the device may react as expected, but if the Update Module fails during installation, the overall deployment will still be marked as **failed**.
+
+```text
+info: Running State Script: /var/lib/mender/scripts/ArtifactInstall_Enter_10_run_move.sh
+info: Collected output (stderr) while running script: + /usr/bin/custom-script.sh
+... (script executed successfully, device reacted) ...
+info: Update Module output (stderr): cat: .../files/dest_dir: No such file or directory
+error: Process returned non-zero exit status: ArtifactInstall: Process exited with status 1
+error: Process returned non-zero exit status: ArtifactRollback: Process exited with status 1
+```
+
+In the above log, the State Script executed without errors, but the single-file Update Module failed due to missing metadata files.
+As a result, the deployment was marked as failed.
+
+Actions performed in State Scripts **before the update is fully installed** will not be automatically reverted if the update fails. Therefore, users should take care when designing State Scripts.
+- Critical or irreversible actions in scripts are recommended to run **after a successful installation**.
+- For actions that must run earlier, consider providing *counter-scripts* to undo them in case of rollback or failure. For example, if a motor state is changed from A → B in an `ArtifactInstall_Enter` script, you can add a counter-script (e.g. `ArtifactRollback_Enter`) to restore it from B → A during rollback.
+
+When troubleshooting such cases, make sure to:
+
+- Review both the State Script logs and the Update Module logs.
+- Remember that a deployment is only considered successful if all State Scripts and the Update Module return exit code 0.
+
 ### Retry later
 
 State scripts are allowed to return a specific error code (`21`), in which case the client will sleep for a time configured by [StateScriptRetryIntervalSeconds](../../03.Client-installation/07.Configuration/50.Configuration-options/docs.md#statescriptretryintervalseconds) before the state script is called again. Note that scripts are not allowed to retry for infinitely long. Please see description of [StateScriptRetryTimeoutSeconds](../../03.Client-installation/07.Configuration/50.Configuration-options/docs.md#statescriptretrytimeoutseconds) for more information.
