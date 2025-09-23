@@ -20,11 +20,11 @@ Completing this tutorial normally **takes less than one hour**.
 To follow this tutorial, you will need the following:
 
 * One of these Raspberry Pi models:
-  * [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/?target=_blank)
-  * [Raspberry Pi 3 Model B+](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/?target=_blank).
-  * [Raspberry Pi 4 Model B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/?target=_blank).
+  * [Raspberry Pi 3 Model B](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/?target=_blank)
+  * [Raspberry Pi 3 Model B+](https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/?target=_blank).
+  * [Raspberry Pi 4 Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/?target=_blank).
 * An 8 GB or larger microSD card.
-* A Raspberry Pi [universal power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply?target=_blank) or a compatible USB cable.
+* A Raspberry Pi [universal power supply](https://www.raspberrypi.com/products/raspberry-pi-universal-power-supply/?target=_blank) or a compatible USB cable.
 * Internet connectivity for your Raspberry Pi (either Ethernet or WiFi available)
 
 ## Step 1 - Flash the Raspberry Pi
@@ -37,7 +37,7 @@ Download the Raspberry Pi OS image ready for Mender:
 [raspios-lite-raspberrypi3_bookworm_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2024-10-22-raspios-lite/arm/2024-10-22-raspios-lite-raspberrypi3_bookworm_64bit-mender-convert-4.3.0.img.xz
 [raspios-lite-raspberrypi4_bookworm_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2024-10-22-raspios-lite/arm/2024-10-22-raspios-lite-raspberrypi4_bookworm_64bit-mender-convert-4.3.0.img.xz
 
-Follow the steps outlined in the [Raspberry Pi OS documentation](https://www.raspberrypi.org/documentation/installation/installing-images?target=_blank)
+Follow the steps outlined in the [Raspberry Pi OS documentation](https://www.raspberrypi.com/documentation/computers/getting-started.html?target=_blank)
 to flash the OS image to the device.
 
 We recommend to use the Raspberry Pi Imager tool, after choosing a device model, for operating system choose "Use custom" and
@@ -237,7 +237,7 @@ monitor directly (*Option 2*).
 
 If you do not know the IP address of your Raspberry Pi device, there are some
 great resources in the
-[Raspberry Pi OS documentation](https://www.raspberrypi.org/documentation/remote-access/ip-address.md?target=_blank)
+[Raspberry Pi OS documentation](https://www.raspberrypi.com/documentation/computers/remote-access.html?target=_blank)
 on different ways of looking this up.
 
 SSH into your device:

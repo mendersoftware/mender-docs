@@ -20,7 +20,7 @@ Mender provides images based on the following distributions:
 
 * Images for **Raspberry Pi 3** and **Raspberry Pi 4**, which are based on the
   [Raspberry Pi OS Linux
-  distribution](https://www.raspberrypi.org/downloads/raspberry-pi-os/?target=_blank)
+  distribution](https://www.raspberrypi.com/software/operating-systems/?target=_blank)
 
 !! Note that we do not offer commercial support for these images. They are based
 !! on images supported by board manufacturers, like the Raspberry Pi Foundation,
