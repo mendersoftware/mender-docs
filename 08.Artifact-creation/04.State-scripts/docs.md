@@ -95,6 +95,26 @@ This feature is useful e.g when you want user confirmation before proceeding wit
 
 If an error code is returned in any of [the scripts that ignore errors](#transitions-and-ordering), then Mender will append the string `_INCONSISTENT` to the artifact name installed on the device. This is done because an error code in any of these scripts means that Mender received an error in a situation where it could do nothing about it, and therefore the device is in an unknown state. The client logs from the device should give more information about what happened, and can be used to determine whether manual action is needed to fix the problem.
 
+### Failure states and effect rollback
+
+State scripts should be written to be idempotent and introducing persistent effects in state scripts needs to be carefully considered in order to not leave the device in an inconsistent state.
+
+An Update Module is always going through the Rollback process either as a whole, or not at all. There is no concept of "state scripts succeeded, update failed", or vice versa. Moreover, the state scripts are completely free form, able to execute arbitrary actions. The Mender Client has no understanding of those actions, so eventually rolling back effects introduced in state scripts is solely the responsibility of the user.
+
+The rollback path will be executed if:
+- a state script returns an error, even if the Update Module operations to that point succeeded
+- an Update Module operation returns an error, even if all state scripts to that point succeeded
+
+Therefore, if a state script introduces a permanent change, such as replacing a file, it is mandatory to plan for rollback. Such might look like this:
+1. in the `ArtifactInstall_Enter` step, the current file should be backed up, to a known location.
+2. in the `ArtifactCommit_Enter` step, the backup can be removed then (successful installation).
+3. in the `ArtifactRollback_Enter` step, the new file should be removed and the backup restored (failed installation).
+Depending on the structure of the Update Module, `ArtifactEnter` and `ArtifactCommit`/`ArtifactRollback` might be executed in different partition context, possibly including a reboot. The backup location in such scenarios needs to be carefully chosen therefore, possibly on a persistent storage area such as `/data`
+
+Similar strategies need to be applied if the state scripts migrates a configuration or data file format, utilizes a physical actuator, or comparable actions.
+
+If the rollback path is taken, the deployment is always marked as **failed**, regardless of the specific reason. The logs will be uploaded to the management server in this case, including the state script output, for further analysis.
+
 ## Script timeout
 
 Each script has a maximum execution time defined by [StateScriptTimeoutSeconds](../../03.Client-installation/07.Configuration/50.Configuration-options/docs.md#statescripttimeoutseconds). If a script exceeds this running time, its process group will be killed and the Mender Client will treat the script and the update as failed.
