@@ -49,7 +49,9 @@ Raspberry Pi device
 
 Setup `USER` environment variable to match an existing user on the device, e.g:
 
+```bash
 USER="<your-user>"
+```
 
 [Mender Artifacts](../../02.Overview/03.Artifact/docs.md) require
 a device compatibility value as input, which **must** match what the device is
