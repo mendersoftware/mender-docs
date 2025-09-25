@@ -64,6 +64,14 @@ ingress:
 EOF
 ```
 
+where `mender-ingress-tls` you can create using:
+
+```
+kubectl create secret tls mender-ingress-tls --key privkey.pem --cert cert.pem -n mender
+```
+
+provided you have the private key in `privkey.pem` and full chain certificate in `cert.pem`.
+
 [/ui-tab]
 [ui-tab title="AWS EKS"]
 For example, here's an Ingress for the AWS EKS Provider:
@@ -102,6 +110,14 @@ ingress:
 EOF
 ```
 
+where `mender-ingress-tls` you can create using:
+
+```
+kubectl create secret tls mender-ingress-tls --key privkey.pem --cert cert.pem -n mender
+```
+
+provided you have the private key in `privkey.pem` and full chain certificate in `cert.pem`.
+
 [/ui-tab]
 [ui-tab title="Azure AKS"]
 
@@ -130,6 +146,15 @@ ingress:
         - ${MENDER_SERVER_DOMAIN}
 EOF
 ```
+
+where `mender-ingress-tls` you can create using:
+
+```
+kubectl create secret tls mender-ingress-tls --key privkey.pem --cert cert.pem -n mender
+```
+
+provided you have the private key in `privkey.pem` and full chain certificate in `cert.pem`.
+
 [/ui-tab]
 [ui-tab title="Ingress NGinx"]
 
@@ -157,6 +182,14 @@ ingress:
         - ${MENDER_SERVER_DOMAIN}
 EOF
 ```
+
+where `mender-ingress-tls` you can create using:
+
+```
+kubectl create secret tls mender-ingress-tls --key privkey.pem --cert cert.pem -n mender
+```
+
+provided you have the private key in `privkey.pem` and full chain certificate in `cert.pem`.
 
 #### Troubleshooting
 Some users have reported that when using the nginx ingress controller, the troubleshoot add-on
