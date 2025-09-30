@@ -6,6 +6,30 @@ taxonomy:
 
 This section gives an overview over important resource limits that help ensure the health and security of the Mender Server.
 
+## Polling interval: Update checks
+The frequency with which a Device checks for updates.
+
+Default for Mender Client: `1800 seconds` (30 minutes)</br>
+Default for Mender MCU Client: `86400 seconds` (1 day)</br>
+
+This is a Client side configuration, see [Mender Client configuration](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md),
+and [Mender MCU Client configuration](../../06.Operating-System-updates-Zephyr/04.Customize-Mender-mcu/docs.md).
+
+! Warning: Using *shorter* than default intervals with hosted Mender is considered *excessive use* and may trigger rate limiting,
+! unless it is 10 devices or less for trial/testing or otherwise agreed upon in advance.
+
+## Polling interval: Inventory updates
+The frequency a Device can update its current inventory to the Mender Server.
+
+Default for Mender Client: `28800 seconds` (8 hours)</br>
+Default for Mender MCU Client: `1209600 seconds` (14 days)</br>
+
+This is a Client side configuration, see [Mender Client configuration](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md),
+and [Mender MCU Client configuration](../../06.Operating-System-updates-Zephyr/04.Customize-Mender-mcu/docs.md).
+
+! Warning: Using *shorter* than default intervals with hosted Mender is considered *excessive use* and may trigger rate limiting,
+! unless it is 10 devices or less for trial/testing or otherwise agreed upon in advance.
+
 ### Maximum size of Artifact uploads
 The maximum size of pre-built Mender Artifacts that can be uploaded to the Mender Server.
 
