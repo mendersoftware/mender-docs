@@ -8,54 +8,49 @@ taxonomy:
 !!!!! See [the Mender plans page](https://mender.io/pricing/plans?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
-OpenID Connect (OIDC) uses a very similar flow to [SAML](../08.SAML-Federated-Authentication).
-And as with SAML, you can configure Mender to initiate the authorization process
-with the OpenID Connect provider by exposing a login endpoint that redirects
-user to the authorization server, which in turn calls an authentication callback.
+OpenID Connect (OIDC) uses a very similar flow to [SAML](../08.SAML-Federated-Authentication). As with SAML, you can configure Mender to initiate the authorization process with the OpenID Connect provider by exposing a login endpoint that redirects users to the authorization server, which in turn calls an authentication callback.
 
-Please note that as of today, Mender only implements
-the [Implicit Flow](https://openid.net/specs/openid-connect-implicit-1_0.html).
+! Please note that as of today, Mender only supports the [Implicit Flow](https://openid.net/specs/openid-connect-implicit-1_0.html).
 
-## Configure OpenID Connect: create a provider
+## Configure OpenID Connect:
 
-The first step is to create a _provider_. Please note that there are many names for actors
-in all the federated authentication mechanisms. Mender mostly follows SAML nomenclature.
-The provider we are going to create is an entity that stores all the settings needed
-to initiate and complete the OIDC flow.
+Please note that there are many names for actors in all the federated authentication mechanisms. Mender mostly follows SAML nomenclature.
 
-### The well-known endpoint
+### Pre-requisites
 
-There are several parameters needed for OIDC to operate. You can get all of them from the so-called
-_well-known_ endpoint, and use those to create a provider, or pass the well-known URL in the creation
-process. In the latter case, you need to use the following document (either
-in the [organization-and-billing](https://hosted.mender.io/ui/settings/organization-and-billing)
-or in the POST API call to [https://hosted.mender.io/api/management/v1/useradm/sso/idp/metadata](https://docs.mender.io/api/#management-api-user-administration-and-authentication-post-saml--openid-connect-metadata--or-url-point-to-them)
-endpoint)
+Before you're ready to configure OpenID Connect (OIDC) in Mender you first need to register Mender as an application in your Identity Provider (IdP). The steps to achieve this depends on your IdP and we encourage you to refer to the documentation of your specific IdP for details on this process.
 
-### Upload the metadata and get the login URL
+__A working OIDC flow with Mender requires the following__:
+* The `Client ID` and `Client Secret` of your OIDC Application if your IdP requires it (this is typically the case).
+* The OIDC Application must be allowed to issue `ID Tokens`. This is sometimes disabled by default, but is required by the Mender OIDC implementation.
+* `ID Tokens` issued by the Application must include the optional claim `email`. Mender uses this claim to lookup users by their email and any tokens that do not include the `email` claim will be rejected.
+* Redirect URI(s) configured in the OIDC Application to allow redirects back to Mender after a successful login. The URIs that must be configured are made available [after Mender provider creation](#redirect-uris) below.
 
-To create an OIDC provider in Mender, you can use the UI accessing
-the [Organization and billing](https://hosted.mender.io/ui/settings/organization-and-billing) view.
-Enabling the Single Sign-On and choosing the type will allow you to type or upload the metadata
-you need to configure OpenID Connect to authenticate users.
 
-Mender can use the well-known URL, and in that case, it is enough to provide the following
-document:
+### Create a provider
+
+The first step is to create a Mender _provider_ that stores all the settings needed to initiate and complete the OIDC flow. You can create an OIDC provider in Mender through the UI by accessing the [Organization and billing](https://hosted.mender.io/ui/settings/organization-and-billing) view, enabling Single Sign-On, choosing OpenID Connect and provide the necessary settings as described below. Alternatively you can create an OIDC provider in Mender via API call to the [/sso/idp/metadata](https://docs.mender.io/api/#management-api-user-administration-and-authentication-post-saml--openid-connect-metadata--or-url-point-to-them)
+endpoint.
+
+__The well-known endpoint__  
+There are several parameters needed for OIDC to work which are made available by your IdP at the so-called `well-known` endpoint. You can have Mender fetch them for you or you can enter them manually. The `well-known` endpoint is IdP dependant, but it often comes in the form `https:///your.openidconnect.provider.com/<your.idp.tenant.id>/.well-known/openid-configuration` ("your.openidconnect.provider.com" is the hostname of your IdP). Please refer to the documentation provided by your IdP for further details.
+
+If you prefer that Mender fetches the required information from the `well-known` endpoint you can simply specify the `well_known_url` property when creating the Mender provider:
 
 ```json
 {
   "name":"identity-provider-name",
   "client_id":"Ylb6gfnmXckxHFoXH1aKLX2poDCvS9MV",
   "client_secret":"zygGHMTL9VlCQpOIHNbXpTZqd77LqqIP",
-  "well_known_url":"https://your.openidconnect.provider.oidc/.well-known/openid-configuration"
+  "well_known_url":"https:///your.openidconnect.provider.com/<your.tenant.id>/.well-known/openid-configuration"
 }
 ```
 
-In the above, the name is mandatory, while both `client_id` and `client_secret` are optional but may be required
-by your OpenID Connect provider. The `well_known_url` denotes the URL for the well-known endpoint, which contains
-the hostname of your OIDC provider (called "your.openidconnect.provider.oidc" throughout this section).
+In the above, the name is mandatory, while both `client_id` and `client_secret` are optional. Be advised though that most OpenID Connect providers require the `client_id` and `client_secret` for login work as expected.
 
-You can also leave out the `well_known_url` field and provide all the settings by yourself:
+! Mender fetches the information it needs from the `well-known` endpoint upon provider creation only. Any changes to the `well-known` endpoint after the provider has been created will not be reflected in Mender.
+
+If you prefer to provider the information Mender requires manually you can leave out the `well_known_url` property and provide the full set of information in the `settings` property instead:
 
 ```json
 {
@@ -63,15 +58,15 @@ You can also leave out the `well_known_url` field and provide all the settings b
   "client_id":"Ylb6gfnmXckxHFoXH1aKLX2poDCvS9MV",
   "client_secret":"zygGHMTL9VlCQpOIHNbXpTZqd77LqqIP",
   "settings": {
-    "issuer": "https://your.openidconnect.provider.oidc/",
-    "authorization_endpoint": "https://your.openidconnect.provider.oidc/authorize",
-    "token_endpoint": "https://your.openidconnect.provider.oidc/oauth/token2",
-    "device_authorization_endpoint": "https://your.openidconnect.provider.oidc/oauth/device/code",
-    "userinfo_endpoint": "https://your.openidconnect.provider.oidc/userinfo",
-    "mfa_challenge_endpoint": "https://your.openidconnect.provider.oidc/mfa/challenge",
-    "jwks_uri": "https://your.openidconnect.provider.oidc/.well-known/jwks.json",
-    "registration_endpoint": "https://your.openidconnect.provider.oidc/oidc/register",
-    "revocation_endpoint": "https://your.openidconnect.provider.oidc/oauth/revoke",
+    "issuer": "https://your.openidconnect.provider.com/",
+    "authorization_endpoint": "https://your.openidconnect.provider.com/authorize",
+    "token_endpoint": "https://your.openidconnect.provider.com/oauth/token2",
+    "device_authorization_endpoint": "https://your.openidconnect.provider.com/oauth/device/code",
+    "userinfo_endpoint": "https://your.openidconnect.provider.com/userinfo",
+    "mfa_challenge_endpoint": "https://your.openidconnect.provider.com/mfa/challenge",
+    "jwks_uri": "https://your.openidconnect.provider.com/.well-known/jwks.json",
+    "registration_endpoint": "https://your.openidconnect.provider.com/oidc/register",
+    "revocation_endpoint": "https://your.openidconnect.provider.com/oauth/revoke",
     "scopes_supported": [
       "openid",
       "profile",
@@ -140,30 +135,38 @@ You can also leave out the `well_known_url` field and provide all the settings b
     "token_endpoint_auth_signing_alg_values_supported": [
       "RS256"
     ],
-    "end_session_endpoint": "https://your.openidconnect.provider.oidc/oidc/logout"
+    "end_session_endpoint": "https://your.openidconnect.provider.com/oidc/logout"
   }
 }
 ```
 
-In the first case, Mender will query and validate the required settings.
-Once you see the success of parsing and saving the metadata the UI will
-present you with a start or login URL: this is the address you use
-to initiate the login process, which completes the setup.
+! The `id_token_signing_alg_values_supported` and `token_endpoint_auth_signing_alg_values_supported` fields both specify allowed algorithms for signing tokens. Mender only supports the algorithms below, so make sure your IdP supports at least one of them.
+! ```json
+! "ES256", "ES256K", "ES384", "ES512", "PS256", "PS384", "PS512", "RS384", "RS512"
+! ```
 
-## Supported algorithms
 
-For both `id_token_signing_alg_values_supported` and
-`token_endpoint_auth_signing_alg_values_supported` fields denoting
-the allowed algorithms for signing, we support the following values:
+After successfully creating the Mender OIDC provider, the UI will present you with a start URL that looks like this: `https://hosted.mender.io/api/management/v1/useradm/oidc/<your provider id>/start`. This is the URL your users must use to initiate the OpenID Connect login process.
 
-```json
-"ES256",
-"ES256K",
-"ES384",
-"ES512",
-"PS256",
-"PS384",
-"PS512",
-"RS384",
-"RS512"
+### Redirect URIs
+
+Once you have the Mender OpenID Connect provider created you need to do the final step of the configuration. The Application you created in the [pre-requisites section](#pre-requisites) needs to be configured to allow redirects back to Mender.
+
+The Redirect URI you need to configure in your IdP Application is identical to the start URL above, except that it ends with `/login` instead of `/start`:
+```bash
+# If your login URL is
+https://hosted.mender.io/api/management/v1/useradm/oidc/a82a2e98-833e-4a5a-9856-1e838702a35d/start
+# you need to add
+https://hosted.mender.io/api/management/v1/useradm/oidc/a82a2e98-833e-4a5a-9856-1e838702a35d/login
+# to the Redirect URIs of your IdPs OpenID Connect Application
 ```
+
+This is the URL your IdP will redirect users back to after successful authentication and unless you allow this explicitly, the login will be denied by your IdP.
+
+! The `/login` URL above is Mender Tenant specific and must therefore be configured on a per Tenant basis in your OIDC Application. Most IdPs supports multiple Redirect URIs for one OIDC Application and Application re-use for multiple tenants should be possible in most cases if desired.
+
+### User creation
+
+Before users can use OpenID Connect to login to Mender, you must first create the users and assign appropriate roles. You can do this [through the UI](../../02.Overview/12.Role-based-access-control/docs.md) or via API request to the [/v1/useradm/users](https://docs.mender.io/api/#management-api-user-administration-and-authentication-create-user) endpoint.
+
+It's important that you ensure that the `email` of the users are the same as their `email` in your IdP and that the user has **no password configured** in Mender. This is because Mender matches the `email` from the id_token issued by your IdP with the `email` of Mender users in the Tenant to determine which user to authenticate.
