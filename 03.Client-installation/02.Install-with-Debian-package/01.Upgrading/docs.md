@@ -145,9 +145,9 @@ gets installed as part of the Mender Client to serve the needs of the external r
 
 #### Upgrade using Debian packages
 
-In the [Mender APT repositories](../../../11.Downloads/docs.md#install-using-the-apt-repository) `mender-client`
+In the [Mender APT repositories](../../../12.Downloads/docs.md#install-using-the-apt-repository) `mender-client`
 package corresponds to the Mender Client written in Go (version 3.x.y). This package is installed by default
-from our [Express installation script](../../../11.Downloads/docs.md#express-installation). To upgrade from the
+from our [Express installation script](../../../12.Downloads/docs.md#express-installation). To upgrade from the
 legacy Mender Client to the 4.x series on Debian and Ubuntu, you can install the `mender-client4` running:
 
 <!--AUTOMATION: ignore -->

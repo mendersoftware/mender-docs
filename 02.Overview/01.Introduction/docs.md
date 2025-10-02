@@ -9,7 +9,7 @@ a large number of devices. It has a simple client/server
 architecture allowing central management of deployments to all devices.
 
 Mender also supports powerful extensions in the form of
-[add-ons](../../10.Add-ons/00.Overview/docs.md) that
+[add-ons](../../11.Add-ons/00.Overview/docs.md) that
 enable features like Remote Terminal, Port Forward, File Transfer,
 and Device Configuration, together with the ability to monitor
 and alert with the Monitor add-on.
@@ -55,14 +55,14 @@ and connect clients to the Mender Server.
 In _standalone_ mode, you initiate the updates locally on the device instead of
 connecting the Mender Client to a Mender Server. A common use-case is to perform
 updates from e.g., a USB flash drive. To learn more visit
-[Standalone deployments](../../07.Artifact-creation/06.Standalone-deployment/docs.md)
+[Standalone deployments](../../08.Artifact-creation/06.Standalone-deployment/docs.md)
 
 ### Mender Gateway
 
 For devices running in isolated networks, but still want to leverage the
 flexibility of _managed_ mode, the _Mender Gateway_ offers the ability for
 devices to securely contact the Mender Server through your gateway device. Visit
-[Mender Gateway](../../09.Server-integration/04.Mender-Gateway/docs.md) to
+[Mender Gateway](../../10.Server-integration/04.Mender-Gateway/docs.md) to
 learn more.
 
 ![Mender Gateway](mender-gateway.png)
@@ -110,7 +110,7 @@ requirements, e.g an application can be a single file, directory or even a
 container image. For this reason it is difficult to enforce **one** way of
 deploying application updates.
 
-To support application updates in a generic way, Mender provides the [Update Module](../../07.Artifact-creation/08.Create-a-custom-Update-Module/docs.md) framework.
+To support application updates in a generic way, Mender provides the [Update Module](../../08.Artifact-creation/08.Create-a-custom-Update-Module/docs.md) framework.
 
 ![application-updates](application-updates.png)
 
@@ -126,7 +126,7 @@ when delta updates are not in use, the higher amount of data usage because
 of the need to transfer an artifact containing the full rootfs image.
 
 In contrast, application updates implemented through the
-[Update Module](../../07.Artifact-creation/08.Create-a-custom-Update-Module/docs.md)
+[Update Module](../../08.Artifact-creation/08.Create-a-custom-Update-Module/docs.md)
 framework are more flexible when the update scenario requires the replacement
 of a subset of the files on the device's firmware and doesn't require
 a complete device reboot cycle to apply the changes.
@@ -134,13 +134,13 @@ a complete device reboot cycle to apply the changes.
 Mender allows combining Operating System and Application updates on the same device
 to achieve the best flexibility without compromising the specific advantages
 of the two approaches. When generating the Mender Artifacts, you can customize
-the [Software Versioning](../../07.Artifact-creation/09.Software-versioning/docs.md)
+the [Software Versioning](../../08.Artifact-creation/09.Software-versioning/docs.md)
 values, as well as [*Depends* and *Provides* entries](../03.Artifact/docs.md#provides-and-depends)
 in the Artifacts to define dependencies between the different kinds of updates.
 
 You can find more information about the strategies and best practices to 
 combine Operating System and Application updates in the
-[Combining system and application updates](../../07.Artifact-creation/03.Combining-system-and-application-updates/docs.md) chapter.
+[Combining system and application updates](../../08.Artifact-creation/03.Combining-system-and-application-updates/docs.md) chapter.
 
 !!! Please note that in this context, while it is technically possible
 !!! to use the Update Module API to implement Operating System updates, we
@@ -149,7 +149,7 @@ combine Operating System and Application updates in the
 
 ### Proxy deployments
 
-Using the [Update Module](../../07.Artifact-creation/08.Create-a-custom-Update-Module/docs.md) framework
+Using the [Update Module](../../08.Artifact-creation/08.Create-a-custom-Update-Module/docs.md) framework
 it is also possible to deploy updates to peripheral devices, e.g
 microcontrollers or sensors connected to a device running Linux.
 
@@ -170,4 +170,4 @@ The below picture shows the architecture of the solution.
 
 ![addon-architecture](addon-architecture-device.png)
 
-Please refer to the [Add-ons section](../../10.Add-ons/00.Overview/docs.md) for more details.
+Please refer to the [Add-ons section](../../11.Add-ons/00.Overview/docs.md) for more details.

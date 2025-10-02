@@ -48,7 +48,7 @@ server.
 
 You can either generate new certificates by following the tutorial for
 [generating
-certificates](../../08.Server-installation/01.Overview/02.Certificates-and-keys/docs.md),
+certificates](../../09.Server-installation/01.Overview/02.Certificates-and-keys/docs.md),
 or obtain the certificates in a different way - for example from your existing
 Certificate Authority. In either case the certificates on the client and server
 must be the same.
