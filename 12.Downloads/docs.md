@@ -472,9 +472,11 @@ for [installing the Mender Client using the APT
 repository](#install-using-the-apt-repository). After the final step, install
 `mender-connect` using the package manager:
 
+<!--AUTOMATION: ignore -->
 ```bash
 sudo apt-get install mender-connect
 ```
+<!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y mender-connect -->
 
 !!! You need two applications for any add-on to function: [`mender-auth`](../02.Overview/16.Taxonomy/docs.md),
 !!! one of the components of the Mender Client, and [Mender Connect](../02.Overview/16.Taxonomy/docs.md).
