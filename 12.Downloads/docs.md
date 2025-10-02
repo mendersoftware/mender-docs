@@ -538,7 +538,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-monitor_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.4.1/mender-monitor_1.4.1-1%2Bdebian%2Btrixie_all.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.4.2/mender-monitor_1.4.2-1%2Bdebian%2Btrixie_all.deb
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
@@ -552,7 +552,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-monitor_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.4.1/mender-monitor_1.4.1-1%2Bdebian%2Btrixie_all.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.4.2/mender-monitor_1.4.2-1%2Bdebian%2Btrixie_all.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -562,7 +562,7 @@ Then install the package with:
 
 <!--AUTOVERSION: "mender-monitor_%-1"/monitor-client -->
 ```bash
-sudo dpkg -i mender-monitor_1.4.1-1+debian+trixie_all.deb || sudo apt --fix-broken -y install
+sudo dpkg -i mender-monitor_1.4.2-1+debian+trixie_all.deb || sudo apt --fix-broken -y install
 ```
 
 ### Demo monitors
@@ -582,7 +582,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-monitor-demo_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.4.1/mender-monitor-demo_1.4.1-1%2Bdebian%2Btrixie_all.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.4.2/mender-monitor-demo_1.4.2-1%2Bdebian%2Btrixie_all.deb
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
@@ -597,7 +597,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-monitor-demo_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.4.1/mender-monitor-demo_1.4.1-1%2Bdebian%2Btrixie_all.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.4.2/mender-monitor-demo_1.4.2-1%2Bdebian%2Btrixie_all.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -607,7 +607,7 @@ Then install the package with:
 
 <!--AUTOVERSION: "mender-monitor-demo_%-1"/monitor-client -->
 ```bash
-sudo dpkg -i mender-monitor-demo_1.4.1-1+debian+trixie_all.deb
+sudo dpkg -i mender-monitor-demo_1.4.2-1+debian+trixie_all.deb
 ```
 
 ## Mender Gateway
