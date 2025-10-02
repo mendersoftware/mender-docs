@@ -10,7 +10,7 @@ taxonomy:
 !!!!! for an overview of all Mender plans and features.
 
 This tutorial will walk you through setting up a
-[Mender Gateway](../../09.Server-integration/04.Mender-Gateway/) in your local network
+[Mender Gateway](../../10.Server-integration/04.Mender-Gateway/) in your local network
 to connect one local device running Mender to an upstream Mender Server. To simulate a
 segregated network and demonstrate the use-case we will make it impossible for the
 local device to connect to the Mender Server directly.
@@ -57,7 +57,7 @@ will use to authenticate to the server when downloading the Mender Gateway binar
 [/ui-tab]
 [ui-tab title="enterprise"]
 
-You can find download and installation instructions for on-premise environments on [downloads](../../11.Downloads/docs.md#mender-gateway) page.
+You can find download and installation instructions for on-premise environments on [downloads](../../12.Downloads/docs.md#mender-gateway) page.
 
 [/ui-tab]
 [/ui-tabs]
@@ -92,7 +92,7 @@ You can inspect the configuration file `/etc/mender/mender-gateway.conf`:
 }
 ```
 
-Please refer to the [Mender Gateway's configuration file](../../09.Server-integration/04.Mender-Gateway/99.Configuration-file/)
+Please refer to the [Mender Gateway's configuration file](../../10.Server-integration/04.Mender-Gateway/99.Configuration-file/)
 documentation for detailed information about the various settings.
 
 ## Systems

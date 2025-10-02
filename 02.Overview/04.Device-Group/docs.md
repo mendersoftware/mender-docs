@@ -12,7 +12,7 @@ grouping. There are two types of groups: _static_ and _dynamic_.
 
 A *static group* contains a list of [Device IDs](../16.Taxonomy/docs.md).
 You can add devices to a static group in the UI or using the
-[APIs](../../09.Server-integration/01.Using-the-apis/docs.md).
+[APIs](../../10.Server-integration/01.Using-the-apis/docs.md).
 
 Some considerations when working with static groups:
 * Before you can add a device to a static group, it needs to be
