@@ -142,11 +142,18 @@ tenants are an Enterprise feature.
 infrastructure used to cryptographically sign Artifacts or other items,
 in the asymmetric encryption model.
 
-* _System_ -  A System is a group of devices belonging to the same product or
-logical entity connected to a [Mender Gateway](../../01.Get-started/06.Mender-Gateway/docs.md)
-instance. Devices in a System usually require coordination during the update process.
-
 * _Tenant_ - See _Organization_.
 
 * _Update Module_ - An extension to the Mender Client for supporting a new type
 software update, such as a package manager, container or bootloader.
+
+* _Topology_ - A YAML file defining the Components of a System. Provisioned alongside new Systems, it specifies
+what Components are present and how they can be updated.
+See the documentation on [Topology](../../07.Orchestrate-updates/02.Topology/docs.md) for more information.
+
+* _Manifest_ - A YAML file defining Software versions for a given System. Maps Artifacts to Component types
+and controls update strategy.
+See the documentation on [Manifest](../../07.Orchestrate-updates/03.Manifest/docs.md) for more information.
+
+* _System_ - Consists of one Device running Mender Orchestrator and one or more Components. A System exists
+when a Device has a System type and corresponding Topology.
