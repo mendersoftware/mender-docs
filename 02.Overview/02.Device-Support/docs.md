@@ -50,7 +50,7 @@ Debian family OSes, such as Debian, Ubuntu and Raspberry Pi OS are officially su
 
 #### Board integrations
 
-A board integration for Raspberry Pi OS is available in [the downloads section](../../12.Downloads/docs.md).
+A board integration for Raspberry Pi OS is available in [the downloads section](../../12.Downloads/chapter.md).
 
 To find board integrations for other Debian family OSes,
 go to the [Debian family in the Mender Hub community](https://hub.mender.io/c/board-integrations/debian-family?target=_blank).

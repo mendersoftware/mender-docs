@@ -114,7 +114,7 @@ by which Mender Client versions.
 The command-line utility `mender-artifact` is the best way to work directly with
 Mender Artifacts. It allows you to view, create, modify and sign all types of
 Mender Artifacts. Get it in the
-[Downloads section](../../12.Downloads/docs.md#mender-artifact).
+[Downloads section](../../12.Downloads/01.Workstation-tools/docs.md#mender-artifact).
 
 Mender also has OS-level integrations for creating Operating System updates as part of
 your existing OS build process. Learn more by reading the following sections:

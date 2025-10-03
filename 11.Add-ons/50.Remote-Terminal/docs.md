@@ -13,7 +13,7 @@ device by navigating to Troubleshooting in the device information, and clicking
 ![Troubleshooting Remote terminal](troubleshoot-remote-terminal.png)
 
 All you need is 
-[mender-connect](../../12.Downloads/docs.md#remote-terminal-add-on)
+[mender-connect](../../12.Downloads/02.Device-components/docs.md#remote-terminal-add-on)
 configured and running alongside `mender-auth`, and you can
 get a live terminal where you can freely type commands.
 
@@ -88,7 +88,7 @@ the terminal output which users can later inspect from the
 ## Using your own terminal
 
 It is possible to use the remote terminal feature from you own terminal instead of the UI.
-To achieve this please download the [mender-cli](../../12.Downloads/docs.md#mender-cli) tool.
+To achieve this please download the [mender-cli](../../12.Downloads/01.Workstation-tools/docs.md#mender-cli) tool.
 
 You will need the Device ID and the access token, both accessible from the UI.
 Device ID is available under the UI under `DEVICES -> select device -> Identity -> ID`.

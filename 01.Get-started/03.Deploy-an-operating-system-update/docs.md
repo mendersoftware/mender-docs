@@ -27,7 +27,7 @@ You should:
 ## Step 1 - Download the mender-artifact utility on your workstation
 
 On Linux, `mender-artifact` is available via a package repository for Debian based operating systems.
-For the repo setup and package installation please follow instructions at [Downloads page](../../12.Downloads/docs.md#mender-artifact)
+For the repo setup and package installation please follow instructions at [Downloads page](../../12.Downloads/01.Workstation-tools/docs.md#set-up-the-apt-repository)
 
 On MacOS, install `mender-artifact` from `brew` using:
 

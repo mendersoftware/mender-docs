@@ -24,7 +24,7 @@ For additional troubleshooting, you can check the [Delta updates troubleshooting
 
 ## Download
 
-Download the `mender-binary-delta` binaries following the [instructions](../../../12.Downloads/docs.md#mender-binary-delta).
+Download the `mender-binary-delta` binaries following the [instructions](../../../12.Downloads/02.Device-components/docs.md#mender-binary-delta).
 
 ## Integrate `mender-binary-delta` into your image
 

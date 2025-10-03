@@ -1,5 +1,5 @@
 ---
-title: Downloads
+title: Device components
 taxonomy:
     category: docs
 markdown:
@@ -7,227 +7,6 @@ markdown:
 process:
     twig: true
 ---
-
-<!-- AUTOMATION: execute=if [ "$TEST_ENTERPRISE" -ne 1 ]; then echo "TEST_ENTERPRISE must be set to 1!"; exit 1; fi -->
-
-# Disk images
-
-These disk images (`*.img` or `*.sdimg`) are based on images provided by board
-manufacturers and are ready to install the Mender Client. They are used to
-provision the device storage for devices without Mender running already.
-
-Mender provides images based on the following distributions:
-
-* Images for **Raspberry Pi 3** and **Raspberry Pi 4**, which are based on the
-  [Raspberry Pi OS Linux
-  distribution](https://www.raspberrypi.com/software/operating-systems/?target=_blank)
-
-!! Note that we do not offer commercial support for these images. They are based
-!! on images supported by board manufacturers, like the Raspberry Pi Foundation,
-!! and provide the same software and configuration options as the original
-!! images. Please use the support resources available from the board
-!! manufacturer, or [contact us](mailto:contact@mender.io) if you have any
-!! questions on the Mender integration.
-
-| Board                         | OS                              | Disk image                                                                                         | Storage size |
-|-------------------------------|---------------------------------|----------------------------------------------------------------------------------------------------|--------------|
-| Raspberry Pi 3 Model B and B+ | Raspberry Pi OS Bookworm Lite 2024-10-22 | [raspios-lite-raspberrypi3_bookworm_64bit-mender-convert.img.xz][raspios-lite-raspberrypi3_bookworm_64bit-mender-convert.img.xz] | 8 GB         |
-| Raspberry Pi 4 Model B        | Raspberry Pi OS Bookworm Lite 2024-10-22 | [raspios-lite-raspberrypi4_bookworm_64bit-mender-convert.img.xz][raspios-lite-raspberrypi4_bookworm_64bit-mender-convert.img.xz] | 8 GB         |
-
-<!--AUTOVERSION: "mender-convert-%.img.xz"/mender-convert -->
-[raspios-lite-raspberrypi3_bookworm_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2024-10-22-raspios-lite/arm/2024-10-22-raspios-lite-raspberrypi3_bookworm_64bit-mender-convert-5.0.0.img.xz
-[raspios-lite-raspberrypi4_bookworm_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2024-10-22-raspios-lite/arm/2024-10-22-raspios-lite-raspberrypi4_bookworm_64bit-mender-convert-5.0.0.img.xz
-
-You can find images for other devices in our Mender Hub community forum, see
-[Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11?target=_blank) or
-[Yocto Project](https://hub.mender.io/c/board-integrations/yocto-project/10?target=_blank)
-integration posts.
-
-
-# Workstation tools
-
-## Set up the APT repository
-
-Right now we support two package repositories: `workstation-tools` and `device-components`.
-
-Workstation tools repo contains:
-* mender-artifact
-* mender-cli
-
-!!! If you want the bleeding edge version of software, you can use our
-!!! `experimental` repository by replacing `stable` with `experimental` in
-!!! the above command. Do not use the `experimental` repository in production
-!!! as these releases are not fully tested.
-
-<!--AUTOVERSION: "Mender %"/ignore -->
-!!! As of Mender 3.2.1 we deprecated the previous stable repository and stopped updating it. As of Mender 3.3 we removed it.
-
-!!! With APT repo method, you will always install the latest released Mender components. If you need to install a specific version,
-!!! or you want to stick to a specific minor release (e.g., to the latest LTS version), you can manually download the
-!!! Debian packages from the [workstation tools repository](https://downloads.mender.io/repos/workstation-tools/pool/main).
-
-<!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata -->
-
-1. Update the `apt` package index and install required dependencies.
-
-    ```bash
-    sudo apt-get update
-    sudo apt-get install --assume-yes --no-install-recommends \
-    		apt-transport-https \
-    		ca-certificates \
-    		curl \
-    		gnupg \
-            jq
-    ```
-
-2. Add the official Mender GPG key to your trusted `apt` keychain:
-
-    ```bash
-    curl -fsSL https://downloads.mender.io/repos/debian/gpg | sudo tee /etc/apt/trusted.gpg.d/mender.asc
-    ```
-
-    Inspect the GPG key fingerprint and verify that it matches
-    `E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00`.
-
-    <!--AUTOMATION: ignore -->
-    ```bash
-    gpg --show-keys --with-fingerprint /etc/apt/trusted.gpg.d/mender.asc
-    ```
-    ```
-    pub   rsa3072 2020-11-13 [SC] [expires: 2026-10-01]
-          E6C8 5734 5575 F921 8396  5662 2407 2B80 A1B2 9B00
-    uid                      Mender Team <mender@northern.tech>
-    sub   rsa3072 2020-11-13 [E] [expires: 2026-10-01]
-    ```
-
-3. Add the Mender repository to your sources list by selecting the architecture
-matching your device.
-
-    First, in order to make sure that there are no mender sources in
-    '/etc/apt/sources.list' lingering from a previous install, run
-
-    <!--AUTOMATION: ignore -->
-    ```bash
-    sudo sed -i.bak -e "\,https://downloads.mender.io/repos/workstation-tools,d" /etc/apt/sources.list
-    ```
-
-    Then add the sources according to your Linux distribution
-
-    !!! For Raspberry OS, use Debian distributions. To know which version is your device running,
-    !!! do `(. /etc/os-release && echo $VERSION_CODENAME)`
-
-    [ui-tabs position="top-left" active="0" theme="lite" ]
-    [ui-tab title="Debian 13"]
-    <!--AUTOMATION: ignore -->
-    ```bash
-    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/workstation-tools debian/trixie/stable main" \
-     | sudo tee /etc/apt/sources.list.d/mender.list
-    ```
-    [/ui-tab]
-    [ui-tab title="Debian 12"]
-    <!--AUTOMATION: ignore -->
-    ```bash
-    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/workstation-tools debian/bookworm/stable main" \
-     | sudo tee /etc/apt/sources.list.d/mender.list
-    ```
-    [/ui-tab]
-    [ui-tab title="Debian 11"]
-    <!--AUTOMATION: ignore -->
-    ```bash
-    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/workstation-tools debian/bullseye/stable main" \
-     | sudo tee /etc/apt/sources.list.d/mender.list
-    ```
-    [/ui-tab]
-    [ui-tab title="Ubuntu 24.04"]
-    <!--AUTOMATION: ignore -->
-    ```bash
-    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/workstation-tools ubuntu/noble/stable main" \
-     | sudo tee /etc/apt/sources.list.d/mender.list
-    ```
-    [/ui-tab]
-    [ui-tab title="Ubuntu 22.04"]
-    <!--AUTOMATION: ignore -->
-    ```bash
-    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/workstation-tools ubuntu/jammy/stable main" \
-     | sudo tee /etc/apt/sources.list.d/mender.list
-    ```
-    [/ui-tab]
-    [/ui-tabs]
-
-
-## mender-artifact
-
-The `mender-artifact` utility is used to work with Mender Artifacts,
-which are files with the `.mender` suffix and contain software to be deployed.
-See [Artifact creation](../08.Artifact-creation/chapter.md) for more information on how to
-use this utility.
-
-### Install using the APT repository
-
-`mender-artifact` is available in the APT repository.
-Follow the steps in [Set up the APT repository](#set-up-the-apt-repository) chapter to enable the repository and install `mender-artifact`.
-
-Update the package index and install the Mender Artifact:
-
-<!--AUTOMATION: ignore -->
-```bash
-sudo apt-get update
-sudo apt-get install mender-artifact
-```
-<!-- AUTOMATION: execute=apt-get update -->
-<!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y mender-client4 -->
-
-### Mac OS X
-
-Use `brew` to install `mender-artifact` from [the Homebrew repository](https://brew.sh/):
-
-<!--AUTOMATION: ignore -->
-```bash
-brew install mender-artifact
-```
-
-! Note that using `mender-artifact` on MacOS with disk image files (e.g.: `*.sdimg`,
-! `*.img`, or others holding the storage partitions) has limited functionality. Commands
-! like `mender-artifact cat` or `mender-artifact cp` will not work due to lack of support
-! for certain utilities on the Mac platform.
-
-
-!!! `mender-artifact` binary is shipped also in [mender-ci-tools Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools). More information [here](../08.Artifact-creation/10.CI-CD/docs.md#mender-ci-workflows-docker-image).
-
-
-## mender-cli
-
-The `mender-cli` utility enables an easy interface to key use cases
-of the Mender Server API, such as uploading a Mender Artifact, from
-the command line. See [Server integration](../10.Server-integration/chapter.md) for
-more information.
-
-### Install using the APT repository
-
-`mender-cli` is available in the APT repository.
-Follow the steps in [Set up the APT repository](#set-up-the-apt-repository) chapter to enable the repository and install `mender-cli`.
-
-Update the package index and install the Mender CLI:
-
-<!--AUTOMATION: ignore -->
-```bash
-sudo apt-get update
-sudo apt-get install mender-cli
-```
-<!-- AUTOMATION: execute=apt-get update -->
-<!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y mender-client4 -->
-
-### Mac OS X
-
-Use `brew` to install `mender-cli` from [the Homebrew repository](https://brew.sh/):
-
-<!--AUTOMATION: ignore -->
-```bash
-brew install mender-cli
-```
-
-!!! `mender-cli` binary is shipped also in [Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools). More information [here](../08.Artifact-creation/10.CI-CD/docs.md#mender-ci-workflows-docker-image).
-
 
 # Device components
 
@@ -348,7 +127,7 @@ matching your device.
 
 The Mender Client runs on the device, checks for and installs
 software updates packaged as Mender Artifacts.
-See [Client installation](../03.Client-installation/chapter.md) for more information
+See [Client installation](../../03.Client-installation/chapter.md) for more information
 about how to configure and use the Mender Client.
 
 The `mender-client` Debian package includes the legacy Mender Client written in Go (version 3.x.y),
@@ -356,9 +135,9 @@ and it installs:
 
 * the binary,
 * a systemd service,
-* the default [identity script](../03.Client-installation/03.Identity/docs.md)
-* the default [inventory scripts](../03.Client-installation/04.Inventory/docs.md)
-* and the default [update modules](../03.Client-installation/05.Use-an-updatemodule/docs.md)
+* the default [identity script](../../03.Client-installation/03.Identity/docs.md)
+* the default [inventory scripts](../../03.Client-installation/04.Inventory/docs.md)
+* and the default [update modules](../../03.Client-installation/05.Use-an-updatemodule/docs.md)
   (and its generators).
 
 The `mender-client4` Debian package includes the 4.x series of the client, which has slightly
@@ -368,9 +147,9 @@ different components than the legacy one. The `mender-client4` Debian package in
 * a `mender-update` package, for doing updates
 * two binaries, `mender-auth` and `mender-update`
 * two systemd services, `mender-authd` and `mender-updated`
-* the default [identity script](../03.Client-installation/03.Identity/docs.md)
-* the default [inventory scripts](../03.Client-installation/04.Inventory/docs.md)
-* and the default [update modules](../03.Client-installation/05.Use-an-updatemodule/docs.md)
+* the default [identity script](../../03.Client-installation/03.Identity/docs.md)
+* the default [inventory scripts](../../03.Client-installation/04.Inventory/docs.md)
+* and the default [update modules](../../03.Client-installation/05.Use-an-updatemodule/docs.md)
   (and its generators).
 * the `mender-flash` tool
 * the `mender-setup` tool
@@ -445,7 +224,7 @@ sudo apt-get upgrade
 ### Install using the APT repository
 
 `mender-client` is available in the APT repository.
-Follow the steps in [Set up the APT repository](#set-up-the-apt-repository-1) chapter to enable the repository and install `mender-client`.
+Follow the steps in [Set up the APT repository](#set-up-the-apt-repository) chapter to enable the repository and install `mender-client`.
 
 Update the package index and install the Mender Client:
 
@@ -461,10 +240,10 @@ sudo apt-get install mender-client4
 ## mender-connect
 
 The easiest way to install Mender Connect on an existing device is by using the
-[Set up the APT repository](#set-up-the-apt-repository-1). The other alternatives include: 
-[mender-convert integration](../04.Operating-System-updates-Debian-family/99.Variables/docs.md#mender_addon_connect_install)
+[Set up the APT repository](#set-up-the-apt-repository). The other alternatives include: 
+[mender-convert integration](../../04.Operating-System-updates-Debian-family/99.Variables/docs.md#mender_addon_connect_install)
 for installation in the existing images,
-and [Yocto projects](../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect)
+and [Yocto projects](../../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect)
 for the installation in a Yocto Project environment.
 
 To install `mender-connect` using Mender APT repository, follow the instructions
@@ -478,8 +257,8 @@ sudo apt-get install mender-connect
 ```
 <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y mender-connect -->
 
-!!! You need two applications for any add-on to function: [`mender-auth`](../02.Overview/16.Taxonomy/docs.md),
-!!! one of the components of the Mender Client, and [Mender Connect](../02.Overview/16.Taxonomy/docs.md).
+!!! You need two applications for any add-on to function: [`mender-auth`](../../02.Overview/16.Taxonomy/docs.md),
+!!! one of the components of the Mender Client, and [Mender Connect](../../02.Overview/16.Taxonomy/docs.md).
 !!! If you have used the [express installation](#express-installation) script, you already have both installed.
 
 
@@ -497,12 +276,12 @@ and Mender Connect.
 
 Mender offers a configure extension (`mender-configure`) to the `mender-update` client
 that enables managing device configuration. See the
-[add-on page for Mender Configure](../11.Add-ons/10.Configure/docs.md) for
+[add-on page for Mender Configure](../../11.Add-ons/10.Configure/docs.md) for
 more information.
 
 The easiest way to install Configure on an existing device is by using the
 Mender APT repository. See the [add-on page for Mender
-Configure](../11.Add-ons/10.Configure/docs.md) for more information for other
+Configure](../../11.Add-ons/10.Configure/docs.md) for more information for other
 installation alternatives.
 
 To install `mender-configure` using Mender APT repository, follow the
@@ -520,7 +299,7 @@ sudo apt-get install mender-configure
 !!! Note: The Mender Monitor add-on package is required. See the [Mender features page](https://mender.io/product/features?target=_blank) for an overview of all Mender plans and features.
 
 
-Mender offers a [Monitor](../11.Add-ons/20.Monitor/docs.md) add-on which
+Mender offers a [Monitor](../../11.Add-ons/20.Monitor/docs.md) add-on which
 enables monitoring your devices for events and anomalies.
 
 To install `mender-monitor` using the Mender Monitor Debian package, first
@@ -618,7 +397,7 @@ sudo dpkg -i mender-monitor-demo_1.4.2-1+debian+trixie_all.deb
 !!!!! See [the Mender plans page](https://mender.io/pricing/plans?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
-Mender offers [Mender Gateway](../10.Server-integration/04.Mender-Gateway/docs.md) which enables
+Mender offers [Mender Gateway](../../10.Server-integration/04.Mender-Gateway/docs.md) which enables
 managing and deploying OTA updates to devices on the local network from a gateway device.
 
 To install `mender-gateway` using the Mender Gateway Debian package, first
@@ -1255,9 +1034,9 @@ The file structure should look like this:
 
 ### The `mender-binary-delta-generator`
 
-You will need this binary on the host to [create a delta between two artifacts](../08.Artifact-creation/05.Create-a-Delta-update-Artifact/docs.md) locally.
+You will need this binary on the host to [create a delta between two artifacts](../../08.Artifact-creation/05.Create-a-Delta-update-Artifact/docs.md) locally.
 
-!!! The enterprise plan allows auto generation of [delta images directly on the mender server](../08.Artifact-creation/05.Server-side-generation-of-Delta-Artifacts/docs.md).
+!!! The enterprise plan allows auto generation of [delta images directly on the mender server](../../08.Artifact-creation/05.Server-side-generation-of-Delta-Artifacts/docs.md).
 
 Copy the generator compatible with your workstation architecture to `/usr/bin`; for a `x86_64` one, it should look like this:
 
@@ -1265,6 +1044,5 @@ Copy the generator compatible with your workstation architecture to `/usr/bin`; 
 ```bash
 sudo cp mender-binary-delta-1.5.1/x86_64/mender-binary-delta-generator /usr/bin
 ```
-
 
 

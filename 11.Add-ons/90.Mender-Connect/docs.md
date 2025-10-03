@@ -24,7 +24,7 @@ portable.
 Please refer to the following sections for the Mender Connect installation:
 * [mender-convert integration](../../04.Operating-System-updates-Debian-family/99.Variables/docs.md#mender_addon_connect_install) for installation in the existing images
 * [Yocto projects](../../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/docs.md#mender-connect) for the installation in a Yocto Project environment
-* [installation with a deb](../../12.Downloads/docs.md#remote-terminal-add-on) for the installation from the Debian package
+* [installation with a deb](../../12.Downloads/02.Device-components/docs.md#remote-terminal-add-on) for the installation from the Debian package
 
 After installation, please refer to the [add-ons subsections](../../11.Add-ons/chapter.md) for the configuration options,
 including the enabling and disabling of the features.

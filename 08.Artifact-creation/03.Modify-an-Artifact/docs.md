@@ -12,7 +12,7 @@ Artifact types, while content modification is only supported for `rootfs-image` 
 ## Prerequisites
 
 All modifications require the `mender-artifact` tool. If you do not yet have this tool, it can be
-downloaded from our [Downloads section](../../12.Downloads/docs.md).
+downloaded from our [Downloads section](../../12.Downloads/chapter.md).
 
 ## Header modification
 

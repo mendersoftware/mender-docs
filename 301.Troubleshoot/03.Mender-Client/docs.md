@@ -20,7 +20,7 @@ This is caused by using an outdated version of the `mender-artifact` tool (e.g f
 Ubuntu APT repositories) which cannot detect which version of the Mender Client the device is running.
 
 To solve this issue, install `mender-artifact` from the Mender APT repository following the instructons in
-the [downloads section](../../12.Downloads/docs.md#mender-artifact).
+the [downloads section](../../12.Downloads/01.Workstation-tools/docs.md#set-up-the-apt-repository).
 
 ## `fsck` error when creating a Mender Artifact using the snapshot feature
 
@@ -70,11 +70,11 @@ it to the 3.5.2 version by default.
 
 To solve the issue, either:
 * Run `apt-get install mender-client`
-* Run again the [express installation script](../../12.Downloads/docs.md#Express-installation)
+* Run again the [express installation script](../../12.Downloads/02.Device-components/docs.md#Express-installation)
 
 ## Removed previous stable APT repositories
 
-We [removed](../../12.Downloads/docs.md#Set-up-the-APT-repository) the previously deprecated stable APT repository:
+We [removed](../../12.Downloads/02.Device-components/docs.md#set-up-the-apt-repository) the previously deprecated stable APT repository:
 
 ```
 deb [arch=your-arch] https://downloads.mender.io/repos/debian stable main
@@ -87,7 +87,7 @@ Err:3 https://downloads.mender.io/repos/debian stable InRelease
   403  Forbidden [IP: 52.222.214.71 443]
 ```
 
-it means you are using the old repository, please update to the current one (see [Set up the APT repository](../../12.Downloads/docs.md#Set-up-the-APT-repository) section).
+it means you are using the old repository, please update to the current one (see [Set up the APT repository](../../12.Downloads/02.Device-components/docs.md#set-up-the-apt-repository) section).
 
 In order to remove the obsolete repository `deb [arch=your-arch] https://downloads.mender.io/repos/debian stable main`
 you can use the following command:
@@ -96,7 +96,7 @@ you can use the following command:
 add-apt-repository -r "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/debian stable main"
 ```
 
-and then re-add the new one by following the insturcion in [Set up the APT repository](../../12.Downloads/docs.md#Set-up-the-APT-repository)
+and then re-add the new one by following the insturcion in [Set up the APT repository](../../12.Downloads/02.Device-components/docs.md#set-up-the-apt-repository)
 
 
 ## Repository 'http://raspbian.raspberrypi.org/raspbian buster InRelease' changed its 'Suite' value from 'stable' to 'oldstable'
@@ -142,7 +142,7 @@ The mender-client version 3.2.0 Debian package is deprecated. If you are
 getting installation errors, with a missing
 [libffi6](https://sourceware.org/libffi/) dependency, then please install the
 new Debian package, as per the installation instructions in
-[downloads](../../12.Downloads/docs.md#mender-client)
+[downloads](../../12.Downloads/02.Device-components/docs.md#set-up-the-apt-repository)
 
 
 ## Obtaining client logs

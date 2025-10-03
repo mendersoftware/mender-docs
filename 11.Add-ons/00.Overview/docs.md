@@ -6,7 +6,7 @@ taxonomy:
 
 The add-ons are independent applications grouped in packages. Please consult the below table
 for the complete list of all supported add-ons. You do not need to install any additional components,
-besides [Mender Connect](../../12.Downloads/docs.md#mender-connect) for Troubleshoot package.
+besides [Mender Connect](../../12.Downloads/02.Device-components/docs.md#mender-connect) for Troubleshoot package.
 
 | Add-on name     | Description | Available in add-on package | `mender-connect` required |
 | --------------- | ----------- | ------------ | ------------ |

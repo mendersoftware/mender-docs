@@ -154,6 +154,6 @@ There are many combinations of values, and the resulting delta sizes heavily dep
 and size of the rootfs images in the Artifacts, and resources on the devices. In case you changed the default values 
 of the parameters, it may cause the generation to fail.
 You can always reset them to default values in the settings.
-We suggest testing the values with the [mender-binary-delta-generator](../../12.Downloads/docs.md#mender-binary-delta) 
+We suggest testing the values with the [mender-binary-delta-generator](../../12.Downloads/02.Device-components/docs.md#mender-binary-delta) 
 CLI tool to find a combination that performs well in your Artifacts. Once you want to make these permanent, go to Settings
 and supply the desired values.
