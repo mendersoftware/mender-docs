@@ -72,12 +72,12 @@ Workstation tools repo contains:
 
     ```bash
     sudo apt-get update
-    sudo apt-get install --assume-yes \
+    sudo apt-get install --assume-yes --no-install-recommends \
     		apt-transport-https \
     		ca-certificates \
     		curl \
-    		gnupg-agent \
-    		software-properties-common
+    		gnupg \
+            jq
     ```
 
 2. Add the official Mender GPG key to your trusted `apt` keychain:
@@ -261,12 +261,12 @@ Device components repo contains:
 
     ```bash
     sudo apt-get update
-    sudo apt-get install --assume-yes \
+    sudo apt-get install --assume-yes --no-install-recommends \
     		apt-transport-https \
     		ca-certificates \
     		curl \
-    		gnupg-agent \
-    		software-properties-common
+    		gnupg \
+    		jq
     ```
 
 2. Add the official Mender GPG key to your trusted `apt` keychain:
