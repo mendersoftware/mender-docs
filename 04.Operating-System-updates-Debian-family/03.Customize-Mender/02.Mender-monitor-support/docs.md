@@ -11,7 +11,7 @@ taxonomy:
 
 ## Download
 
-Download the Mender Monitor Debian package following the [instructions](../../../12.Downloads/docs.md#monitor).
+Download the Mender Monitor Debian package following the [instructions](../../../12.Downloads/02.Device-components/docs.md#monitor).
 
 ## Installing `mender-monitor` in the converted image
 

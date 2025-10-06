@@ -17,7 +17,7 @@ This feature drastically reduces the time to upload the Mender artifact to the M
 <!--AUTOVERSION: "version %"/ignore-->
 !!! This feature is available starting from the Mender Server version 3.6.3
 
-* The `mender-cli` tool. You can find information about how to download it and the installation steps in the [Downloads section](../../12.Downloads/docs.md#mender-cli) from this documentation.
+* The `mender-cli` tool. You can find information about how to download it and the installation steps in the [Downloads section](../../12.Downloads/01.Workstation-tools/docs.md#mender-cli) from this documentation.
 
 * To use the direct upload feature, the user must have at least the Deployments Manager and Releases Manager roles.
 

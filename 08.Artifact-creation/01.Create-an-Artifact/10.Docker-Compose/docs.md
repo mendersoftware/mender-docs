@@ -68,7 +68,7 @@ wget https://raw.githubusercontent.com/mendersoftware/app-update-module/1.1.0/co
 ##### Prepare the workstation
 Once your devices are ready, return to your workstation and install the
 Application Update Artifact Generator. First, make sure that you have
-[mender-artifact](../../../12.Downloads/docs.md#mender-artifact) (version >= 3.0) installed
+[mender-artifact](../../../12.Downloads/01.Workstation-tools/docs.md#mender-artifact) (version >= 3.0) installed
 on your workstation, then install the Application Update Artifact Generator:
 <!--AUTOVERSION: "app-update-module/%/"/ignore-->
 ```bash
@@ -82,7 +82,7 @@ chmod +x $BINDIR/app-gen
 
 ### Create a deployment
 The `app-gen` script we installed previously extends the
-[mender-artifact](../../../12.Downloads/docs.md#mender-artifact) tool to create
+[mender-artifact](../../../12.Downloads/01.Workstation-tools/docs.md#mender-artifact) tool to create
 Artifacts for container updates. We will use this tool to create a Mender
 Artifact containing the Docker Compose manifest and the Docker images used by
 the composition. Including the Docker images is optional, excluding the images
@@ -158,7 +158,7 @@ Once deployed, the device will start serving a simple server on port 8080. You
 can test the application by sending a request to path `/whoami` and the server
 will echo the request.
 To this end, we will leverage the Troubleshoot add-on and start a port-forward
-session using the [mender-cli](../../../12.Downloads/docs.md#mender-cli).
+session using the [mender-cli](../../../12.Downloads/01.Workstation-tools/docs.md#mender-cli).
 ```bash
 mender-cli port-forward <device_id> 8080:8080
 ```
