@@ -474,16 +474,64 @@ For evaluation, download and install the demo package:
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
 [ui-tab title="hosted"]
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="Debian 13"]
+<!--AUTOVERSION: "/mender-orchestrator-demo_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
+```bash
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-demo_0.4.0-1%2Bdebian%2Btrixie_all.deb
+```
+[/ui-tab]
+[ui-tab title="Debian 12"]
 <!--AUTOVERSION: "/mender-orchestrator-demo_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
 curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-demo_0.4.0-1%2Bdebian%2Bbookworm_all.deb
 ```
 [/ui-tab]
+[ui-tab title="Ubuntu 24.04"]
+<!--AUTOVERSION: "/mender-orchestrator-demo_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
+```bash
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-demo_0.4.0-1%2Bubuntu%2Bnoble_all.deb
+```
+[/ui-tab]
+[ui-tab title="Ubuntu 22.04"]
+<!--AUTOVERSION: "/mender-orchestrator-demo_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
+```bash
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-demo_0.4.0-1%2Bubuntu%2Bjammy_all.deb
+```
+[/ui-tab]
+[/ui-tabs]
+
+[/ui-tab]
 [ui-tab title="enterprise"]
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="Debian 13"]
+<!--AUTOVERSION: "/mender-orchestrator-demo_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
+```bash
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-demo_0.4.0-1%2Bdebian%2Btrixie_all.deb
+```
+[/ui-tab]
+[ui-tab title="Debian 12"]
 <!--AUTOVERSION: "/mender-orchestrator-demo_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
 curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-demo_0.4.0-1%2Bdebian%2Bbookworm_all.deb
 ```
+[/ui-tab]
+[ui-tab title="Ubuntu 24.04"]
+<!--AUTOVERSION: "/mender-orchestrator-demo_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
+```bash
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-demo_0.4.0-1%2Bubuntu%2Bnoble_all.deb
+```
+[/ui-tab]
+[ui-tab title="Ubuntu 22.04"]
+<!--AUTOVERSION: "/mender-orchestrator-demo_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
+```bash
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-demo_0.4.0-1%2Bubuntu%2Bjammy_all.deb
+```
+[/ui-tab]
+[/ui-tabs]
+
 [/ui-tab]
 [/ui-tabs]
 
