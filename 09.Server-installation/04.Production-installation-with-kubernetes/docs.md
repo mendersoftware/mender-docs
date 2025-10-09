@@ -68,7 +68,7 @@ service.
 !!!!! Always refer to [MongoDB documentation](https://www.mongodb.com/docs/manual/) prior to upgrading.
 
 **Redis:**
-* Redis 6.0, 6.2, 7.4
+* Redis 7.4, 8.0, 8.2
   * ElasticCache (AWS)
   * AzureCache
   * Memorystore (GCP)
