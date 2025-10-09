@@ -30,9 +30,9 @@ HOSTED_MENDER_EMAIL=<your.email@example.com>
 ```
 
 Download the source archive:
-<!--AUTOVERSION: "/mender-orchestrator/yocto/%/"/mender-orchestrator "/mender-orchestrator-%.tar.xz"/mender-orchestrator -->
+<!--AUTOVERSION: "/mender-orchestrator/%/"/mender-orchestrator "/mender-orchestrator-%.tar.xz"/mender-orchestrator -->
 ```bash
-curl --fail -u $HOSTED_MENDER_EMAIL -o ${HOME}/mender-orchestrator-0.4.0.tar.xz https://downloads.customer.mender.io/content/hosted/mender-orchestrator/yocto/0.4.0/mender-orchestrator-0.4.0.tar.xz
+curl --fail -u $HOSTED_MENDER_EMAIL -o ${HOME}/mender-orchestrator-0.4.0.tar.xz https://downloads.customer.mender.io/content/hosted/mender-orchestrator/0.4.0/mender-orchestrator-0.4.0.tar.xz
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
@@ -42,9 +42,9 @@ MENDER_ENTERPRISE_USER=<your.user>
 ```
 
 Download the source archive:
-<!--AUTOVERSION: "/mender-orchestrator/yocto/%/"/mender-orchestrator "/mender-orchestrator-%.tar.xz"/mender-orchestrator -->
+<!--AUTOVERSION: "/mender-orchestrator/%/"/mender-orchestrator "/mender-orchestrator-%.tar.xz"/mender-orchestrator -->
 ```bash
-curl --fail -u $MENDER_ENTERPRISE_USER -o ${HOME}/mender-orchestrator-0.4.0.tar.xz https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/yocto/0.4.0/mender-orchestrator-0.4.0.tar.xz
+curl --fail -u $MENDER_ENTERPRISE_USER -o ${HOME}/mender-orchestrator-0.4.0.tar.xz https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/0.4.0/mender-orchestrator-0.4.0.tar.xz
 ```
 [/ui-tab]
 [/ui-tabs]
