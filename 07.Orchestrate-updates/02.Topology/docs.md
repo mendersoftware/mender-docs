@@ -16,7 +16,7 @@ It should be located at `MENDER_ORCHESTRATOR_TOPOLOGY_DIR` (default: `/data/mend
 ```yaml
 api_version: "mender/v1"
 kind: "topology"
-system_type: "electric-vehicle-2021"
+system_type: "electric-vehicle-2026"
 
 components:
   - component_type: telematics_control_unit
