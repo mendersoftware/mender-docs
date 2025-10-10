@@ -15,7 +15,7 @@ The Manifest defines the exact combination of Artifacts that should be deployed 
 api_version: "mender/v1"
 kind: "manifest"
 name: "electric-vehicle-software-v3.2.1"
-system_types_compatible: ["electric-vehicle-2021"]
+system_types_compatible: ["electric-vehicle-2026"]
 
 component_types:
   telematics_control_unit:
