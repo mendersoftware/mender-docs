@@ -21,6 +21,20 @@ before you move on to
 
 ## Requirements
 
+### Hardware Requirements
+
+Here are the minimum hardware requirements for running the demo server:
+
+* Architectures: x86_64, arm64
+* 16 GiB RAM
+* 2 vCPUs
+* 50 GiB storage available for the containers.
+
+!!! MongoDB 5.0+ requires a CPU with ACX support.
+!!! If you use a Proxmox VM, a CPU type `x86-64-v3` is recommended.
+
+### Software Requirements
+
 The demo environment requires the following components to be available
 on your system:
 <!--AUTOVERSION: "target=_blank) >= v%"/ignore -->
