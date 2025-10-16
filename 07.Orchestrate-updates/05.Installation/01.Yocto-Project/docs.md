@@ -128,4 +128,3 @@ SRC_URI:pn-mender-orchestrator:append = " file://topology.yaml"
 ```
 
 Replace `/path/to/local-directory-with-topology.yaml` with the actual path to the directory containing your `topology.yaml` file.
-
