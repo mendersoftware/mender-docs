@@ -68,6 +68,8 @@ While going through the examples in this tutorial, watch the email inbox of your
 The default configuration for `mender-monitorctl` command requires read-write access to the `/etc/mender-monitor` directory, which on most systems means switching to super user or running with `sudo`. 
 For a read-only filesystem, it is essential to establish a symbolic link to a writable directory. This symlink is required to create, modify, and enable alert checks.
 
+!!! Some demos use `journalctl` as a source of logs. For that reason `mender-monitor` needs to be restarted after enabling certain demos
+
 ### Monitor USB disconnects
 
 This demo shows detecting USB disconnects, alerting you to potential device tampering and preventing unauthorized access
@@ -77,6 +79,7 @@ Enable the check by running:
 
 ```bash
 sudo mender-monitorctl enable log usb_disconnect
+sudo systemctl restart mender-monitor
 ```
 
 Now remove a USB device from the device (you can insert it first, e.g., a thumb drive or mouse, if you don't have any USB devices inserted). 
@@ -268,6 +271,7 @@ the following command:
 ```bash
 sudo mender-monitorctl create log auth_root_session "Started User Manager for UID 0" "@journalctl --follow"
 sudo mender-monitorctl enable log auth_root_session
+sudo systemctl restart mender-monitor
 ```
 
 Not that the check is in place, change your user to `root`:
