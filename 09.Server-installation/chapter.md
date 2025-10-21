@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-### Chapter 8
+### Chapter 9
 
 # Server installation
 
