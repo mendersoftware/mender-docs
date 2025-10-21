@@ -505,9 +505,11 @@ We provide the following Docker image tags:
 ## Post-installation setup
 
 ### Enable replication for NATS Jetstream (Recommended)
-For production setup that require high availablility, we recommend enabling replication for the NATS Jetstream work queues.
-By default, NATS deploys 3 replicas, but the stream created by the workflows service does not have replication enabled and therefore has no fault tolerance.
-The following snippet increases the number of replicas to 3.
+For production setups that require high availablility, we recommend enabling
+replication for the NATS Jetstream work queues.  NATS is a stateful system
+managing messages. There are at least 3 NATS instances for high availability at
+the very beginning, so the Workflows service needs to be instructed to use all
+of them. The following snippet increases the number of replicas to 3.
 
 !!!! Please replace `NATS_URL` in the following snippet with a URL that resolves to any of the NATS pods.
 
