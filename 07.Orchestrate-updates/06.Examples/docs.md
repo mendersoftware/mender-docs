@@ -129,7 +129,7 @@ mkdir -p gateway-dump
 mender-artifact dump --files gateway-dump gateway-v1.mender
 mender-artifact write rootfs-image \
     --file gateway-dump/rootfs* \
-    --device-ttype "${DEVICE_TYPE}"  \
+    --device-type "${DEVICE_TYPE}"  \
     --artifact-name gateway-v2 \
     --output-path gateway-v2.mender
 rm -rf gateway-dump
