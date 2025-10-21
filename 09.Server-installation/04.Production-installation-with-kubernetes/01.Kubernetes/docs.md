@@ -18,13 +18,13 @@ a lightweight certified Kubernetes distribution.
 For example, on a machine with Ubuntu 22.04 (e.g. an instance from AWS EC2 or DigitalOcean),
 you can install Kubernetes running:
 
+! Read and confirm shell script content before piping from curl to the shell.<br>
+! Never run scripts from the internet before knowing what they do.
+
 ```bash
 curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 ```
-
-! Read and confirm shell script content before piping from curl to the shell.<br>
-! Never run scripts from the internet before knowing what they do.
 
 After a few seconds, your Kubernetes cluster will be ready:
 
@@ -44,15 +44,15 @@ Helm is the package manager for Kubernetes. Please refer to the
 [Helm official documentation](https://helm.sh/docs/intro/install/) to install the Helm CLI
 on your system.
 
+! Read and confirm shell script content before piping from curl to the shell.<br>
+! Never run scripts from the internet before knowing what they do.
+
 To install the latest version of the Helm package manager, run:
 
 <!--AUTOVERSION: "https://raw.githubusercontent.com/helm/helm/%/scripts/get-helm-3"/ignore -->
 ```bash
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 ```
-
-! Read and confirm shell script content before piping from curl to the shell.<br>
-! Never run scripts from the internet before knowing what they do.
 
 To verify `helm` is correctly installed, you can list the installed applications running:
 
