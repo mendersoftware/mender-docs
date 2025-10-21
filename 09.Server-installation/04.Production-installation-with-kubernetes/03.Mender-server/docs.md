@@ -243,8 +243,8 @@ mongodb:
 !!!! If you want to use the Service Provider Tenants feature, you need to create
 !!!! a database user with the `atlasAdmin@admin` role.  
 !!!! If you want to keep 
-!!!! this user separate to the rest of the application, you have to provide
-!!!! dedicated connection to the Deployments and the Inventory services:
+!!!! this user separate from the rest of the application, you have to provide
+!!!! dedicated connection to the Deployments and Inventory services:
 !!!! ```yaml
 !!!! kubectl create secret generic mender-mongo-admin \
 !!!!   --from-literal=MONGO="mongodb://mymongoadmin:mymongopassword@my-mongo-host:27017/mender" \
@@ -310,12 +310,12 @@ redis:
 
 ## Installing the Mender Helm chart
 
-! Please note the code snippets in this section reuses the environment variables
+! Please note the code snippets in this section reuse the environment variables
 ! you set up when progressing through the tutorial, including the optional step
 ! of installing the Artifact Storage. Please make sure you correctly define them
 ! or adapt the snippet to your specific use case.
 
-Before installing the Mender Server on the Kubernetes cluster using the
+Before installing Mender Server on your Kubernetes cluster using the
 [Mender Helm chart](https://github.com/mendersoftware/mender-helm), add the
 Mender Helm Chart repository:
 
@@ -482,7 +482,8 @@ helm upgrade --install mender mender/mender --wait -f mender-values.yml
 ```
 
 <!--AUTOVERSION: "helm upgrade --install mender mender/mender --set default.image.tag=v%-rc.6 --wait -f mender-values.yml --devel"/ignore -->
-!!!! If you want to test a release candidate, you can run the following command:
+!!!! If you want to test a release candidate, you can run the following command
+!!!! with the specific tag (see below):
 !!!! ```bash
 !!!! helm upgrade --install mender mender/mender --set default.image.tag=v4.0.0-rc.6 --wait -f mender-values.yml --devel
 !!!! ```
