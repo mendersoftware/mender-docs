@@ -5,7 +5,7 @@ taxonomy:
     label: tutorial
 ---
 
-!!! In this section, we guide you by installing a Kubernetes cluster using k3s for
+!!! In this section, we guide you through installing a Kubernetes cluster using k3s for
 !!! evaluation purposes. Please don't consider installing the Kubernetes cluster
 !!! described here as a complete, production-grade setup. The installation of the
 !!! cluster and the related infrastructure is the responsibility of the user.
