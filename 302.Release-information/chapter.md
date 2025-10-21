@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-### Chapter 13
+### Chapter 17
 
 # Release information
 
