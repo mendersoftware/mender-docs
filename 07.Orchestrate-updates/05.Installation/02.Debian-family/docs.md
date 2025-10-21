@@ -552,6 +552,6 @@ The demo package provides a mock environment with a corresponding Topology for t
 
 Set the DeviceTier to "system" in your `mender.conf`
 
-For production deployments, provision a [Topology](../../02.Topology/docs.md) that defines the components of your system.
+For production deployments, provision a [Topology](../../03.Topology/docs.md) that defines the components of your system.
 
 Create your Topology configuration file at `MENDER_ORCHESTRATOR_TOPOLOGY_DIR` (default: `/data/mender-orchestrator/topology.yaml`).
