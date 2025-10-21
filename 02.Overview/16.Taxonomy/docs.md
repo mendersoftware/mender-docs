@@ -149,11 +149,11 @@ software update, such as a package manager, container or bootloader.
 
 * _Topology_ - A YAML file defining the Components of a System. Provisioned alongside new Systems, it specifies
 what Components are present and how they can be updated.
-See the documentation on [Topology](../../07.Orchestrate-updates/02.Topology/docs.md) for more information.
+See the documentation on [Topology](../../07.Orchestrate-updates/03.Topology/docs.md) for more information.
 
 * _Manifest_ - A YAML file defining Software versions for a given System. Maps Artifacts to Component types
 and controls update strategy.
-See the documentation on [Manifest](../../07.Orchestrate-updates/03.Manifest/docs.md) for more information.
+See the documentation on [Manifest](../../07.Orchestrate-updates/02.Manifest/docs.md) for more information.
 
 * _System_ - Consists of one Device running Mender Orchestrator and one or more Components. A System exists
 when a Device has a System type and corresponding Topology.

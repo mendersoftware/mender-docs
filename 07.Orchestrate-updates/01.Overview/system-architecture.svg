@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .system-box { fill: #01798f; stroke: #015b6b; stroke-width: 2; }
+      .component-box { fill: #ffffff; stroke: #01798f; stroke-width: 1; }
+      .text-title { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #01798f; }
+      .text-label { font-family: Arial, sans-serif; font-size: 11px; fill: #01798f; }
+      .text-small { font-family: Arial, sans-serif; font-size: 9px; fill: #015b6b; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="300" y="15" text-anchor="middle" class="text-title">electric-vehicle-2026</text>
+
+  <!-- System boundary -->
+  <rect x="20" y="30" width="560" height="130" class="system-box" rx="10"/>
+
+  <!-- Components -->
+  <rect x="40" y="50" width="160" height="60" class="component-box" rx="3"/>
+  <text x="120" y="70" text-anchor="middle" class="text-label">telematics_control_unit</text>
+  <text x="120" y="85" text-anchor="middle" class="text-small">interface: cellular-ota</text>
+  <text x="120" y="98" text-anchor="middle" class="text-small">interface_args: ["tcu1", "15:22:aa:33:ff"]</text>
+
+  <rect x="220" y="50" width="160" height="60" class="component-box" rx="3"/>
+  <text x="300" y="70" text-anchor="middle" class="text-label">ecu_brake_controller</text>
+  <text x="300" y="85" text-anchor="middle" class="text-small">interface: canbus</text>
+  <text x="300" y="98" text-anchor="middle" class="text-small">interface_args: ["front", "15:22:aa:33:ff"]</text>
+
+  <rect x="400" y="50" width="160" height="60" class="component-box" rx="3"/>
+  <text x="480" y="70" text-anchor="middle" class="text-label">seat_heating</text>
+  <text x="480" y="85" text-anchor="middle" class="text-small">interface: i2c</text>
+  <text x="480" y="98" text-anchor="middle" class="text-small">interface_args: ["--bus=1", "--address=0x48"]</text>
+
+</svg>

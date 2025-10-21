@@ -118,7 +118,7 @@ MENDER_DEVICE_TIER = "system"
 
 ## Production installation
 
-For production deployments, provision a [Topology](../../02.Topology/docs.md) that defines the Components of your System.
+For production deployments, provision a [Topology](../../03.Topology/docs.md) that defines the Components of your System.
 
 To include your Topology file in the Yocto build, add this to your `local.conf`:
 
@@ -128,4 +128,3 @@ SRC_URI:pn-mender-orchestrator:append = " file://topology.yaml"
 ```
 
 Replace `/path/to/local-directory-with-topology.yaml` with the actual path to the directory containing your `topology.yaml` file.
-
