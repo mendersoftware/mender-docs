@@ -243,8 +243,8 @@ mongodb:
 !!!! If you want to use the Service Provider Tenants feature, you need to create
 !!!! a database user with the `atlasAdmin@admin` role.  
 !!!! If you want to keep 
-!!!! this user separate to the rest of the application, you have to provide
-!!!! dedicated connection to the Deployments and the Inventory services:
+!!!! this user separate from the rest of the application, you have to provide
+!!!! dedicated connection to the Deployments and Inventory services:
 !!!! ```yaml
 !!!! kubectl create secret generic mender-mongo-admin \
 !!!!   --from-literal=MONGO="mongodb://mymongoadmin:mymongopassword@my-mongo-host:27017/mender" \
@@ -310,12 +310,12 @@ redis:
 
 ## Installing the Mender Helm chart
 
-! Please note the code snippets in this section reuses the environment variables
+! Please note the code snippets in this section reuse the environment variables
 ! you set up when progressing through the tutorial, including the optional step
 ! of installing the Artifact Storage. Please make sure you correctly define them
 ! or adapt the snippet to your specific use case.
 
-Before installing the Mender Server on the Kubernetes cluster using the
+Before installing Mender Server on your Kubernetes cluster using the
 [Mender Helm chart](https://github.com/mendersoftware/mender-helm), add the
 Mender Helm Chart repository:
 
@@ -482,7 +482,8 @@ helm upgrade --install mender mender/mender --wait -f mender-values.yml
 ```
 
 <!--AUTOVERSION: "helm upgrade --install mender mender/mender --set default.image.tag=v%-rc.6 --wait -f mender-values.yml --devel"/ignore -->
-!!!! If you want to test a release candidate, you can run the following command:
+!!!! If you want to test a release candidate, you can run the following command
+!!!! with the specific tag (see below):
 !!!! ```bash
 !!!! helm upgrade --install mender mender/mender --set default.image.tag=v4.0.0-rc.6 --wait -f mender-values.yml --devel
 !!!! ```
@@ -504,9 +505,11 @@ We provide the following Docker image tags:
 ## Post-installation setup
 
 ### Enable replication for NATS Jetstream (Recommended)
-For production setup that require high availablility, we recommend enabling replication for the NATS Jetstream work queues.
-By default, NATS deploys 3 replicas, but the stream created by the workflows service does not have replication enabled and therefore has no fault tolerance.
-The following snippet increases the number of replicas to 3.
+For production setups that require high availablility, we recommend enabling
+replication for the NATS Jetstream work queues.  NATS is a stateful system
+managing messages. There are at least 3 NATS instances for high availability at
+the very beginning, so the Workflows service needs to be instructed to use all
+of them. The following snippet increases the number of replicas to 3.
 
 !!!! Please replace `NATS_URL` in the following snippet with a URL that resolves to any of the NATS pods.
 

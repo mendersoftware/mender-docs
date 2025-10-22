@@ -61,7 +61,7 @@ service.
 * Minimum user role:
   * regular usage: `readWriteAnyDatabase@admin` on the Cluster for general usage
   * Storage Provider Tenants only: `atlasAdmin@admin` on the Cluster - for those
-    who are using the Storage Provider Tenants feture on Mender.
+    who are using the Storage Provider Tenants feature on Mender.
 
 !!!!! Please note that we do not provide support for troubleshooting issues with
 !!!!! MongoDB not directly related to the Mender product.
