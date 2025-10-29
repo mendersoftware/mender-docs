@@ -144,6 +144,8 @@ Devices connected to the gateway will show a special attribute named <code>mende
 
 <dt>DefaultInventory</dt>
 <dd>
+Defines inventory data added to the reported inventory data of each device connected to
+the gateway.
   <dl>
     <dt>Name</dt>
     <dd>Name of the default inventory attribute</dd>
