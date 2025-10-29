@@ -35,9 +35,6 @@ curl -v -H "Content-Type: application/json;" -XPUT -d '{ "delta": { "enabled": t
 
 !!! This feature is available starting from the Mender Client version 3.5 and the Mender Server version 3.6.
 
-!! Delta updates aren't supported with devices running UBIFS. If this is your use case please contact us at support@mender.io
-
-
 To support the server-side generation of Delta Artifacts, your device must report the availability of the `mender-binary-delta` Update Module to the server.
 This will happen automatically if you are building your firmware using Yocto and the `meta-mender` layer.
 Otherwise, create and install your own bootstrap Artifact to provide these keys:
