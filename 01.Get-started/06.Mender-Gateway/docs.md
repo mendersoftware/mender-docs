@@ -99,6 +99,21 @@ You can inspect the configuration file `/etc/mender/mender-gateway.conf`:
 Please refer to the [Mender Gateway's configuration file](../../10.Server-integration/04.Mender-Gateway/99.Configuration-file/)
 documentation for detailed information about the various settings.
 
+
+## Manage the Mender Gateways in the UI
+
+The Mender Gateway devices have a special inventory attribute `mender_is_gateway` set to
+`true`. This attribute is reported by the Mender Client together with the rest of the inventory
+data at the next `InventoryPollIntervalSeconds` interval (set in the [Mender Client
+configuration](../../03.Client-installation/07.Configuration/01.Polling-intervals/)) after
+converting a device into a Gateway.
+
+
+Leveraging this, you can filter these devices and eventually create a dynamic group, as shown below:
+
+![Mender Gateway inventory attribute](mender-gateway-inventory.png)
+
+
 ## Device Systems
 
 A Device System is a group of devices belonging to the same product or logical entity connected
@@ -217,15 +232,6 @@ sudo journalctl -u mender-gateway -f
 > Apr 08 06:21:27 raspberrypi mender-gateway[17155]: time="2022-04-08T06:21:27+02:00" level=info msg="created client with base url https://hosted.mender.io, insecure skip verify: false" file=client.go func=mender.NewClient line=49
 > Apr 08 06:21:27 raspberrypi mender-gateway[17155]: time="2022-04-08T06:21:27+02:00" level=info msg=running... file=server.go func="server.(*Server).Run" line=75
 > ```
-
-
-## Manage the Mender Gateways in the UI
-
-The Mender Gateway devices have a special inventory attribute `mender_is_gateway` set to `true`.
-
-Leveraging this, you can filter these devices and eventually create a dynamic group, as shown below:
-
-![Mender Gateway inventory attribute](mender-gateway-inventory.png)
 
 
 ## Obtain the Mender Gateway's IP address 
