@@ -65,11 +65,15 @@ You can find download and installation instructions for on-premise environments 
 ## Configuration
 
 When installing the Mender Gateway in demo mode (see the `--demo` flag in the snippet above),
-the package automatically configures it to connect to hosted Mender, forwarding both device APIs
-and the Artifacts. It also ships with an example HTTPS certificate that you will have to add to
-the list of trusted certificates in your devices connecting to the Mender Gateway.
+the package automatically configures it to connect to hosted Mender (i.e. hosted.mender.io, see
+the note below if you are using eu.hosted.mender.io), forwarding both device APIs and the
+Artifacts. It also ships with an example HTTPS certificate that you will have to add to the
+list of trusted certificates in your devices connecting to the Mender Gateway.
 
 You can inspect the configuration file `/etc/mender/mender-gateway.conf`:
+
+!!! When using eu.hosted.mender.io, the configuration file needs to be modified by setting the
+!!! value of the `URL` object (inside `UpstreamServer`) to `"https://eu.hosted.mender.io"`.
 
 ```
 {
