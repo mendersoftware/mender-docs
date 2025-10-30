@@ -41,14 +41,69 @@ no more free space on the path specified in the configuration file.
 See the [Mender Gateway User Guide](../../01.Get-started/06.Mender-Gateway/docs.md)
 for a reference setup of Mender Gateway as an Artifact Proxy.
 
-## Systems
-A System is a group of devices belonging to the same product or logical entity
-connected to a Mender Gateway instance. Devices in a System usually require
-coordination during the update process. To define a System, each device must
-report to the Mender Server a special inventory attribute named
-`mender_gateway_system_id`, containing a unique identifier for the given
-system. See the Mender Gateway [getting started](../../01.Get-started/06.Mender-Gateway/docs.md)
-for an example configuration.
+## Device Systems
+A Device System is a group of devices belonging to the same product or logical entity connected
+to a Mender Gateway instance. Devices in a Device System usually require coordination during
+the update process. To define a Device System, each device must report to the Mender Server a
+special inventory attribute named `mender_gateway_system_id`, containing a unique identifier
+for the given Device System.
+
+!!! Mender also has a concept of System devices, i.e. devices that are systems of individual
+!!! components with separate update mechanisms that need to be orchestrated. See the
+!!! [documentation for Orchestrated updates](../../07.Orchestrate-updates/01.Overview/) for
+!!! details.
+
+The Mender Gateway can set the System ID for all the devices connected to it thanks to the `SystemID` configuration setting. When enabled, this feature injects this inventory attributes for all the devices connected to the gateway.
+
+An example configuration follows:
+
+```json
+{
+	"HTTPS": {
+		"Enabled": true,
+		"Listen": ":443",
+		"ServerCertificate": "/usr/share/doc/mender-gateway/examples/cert/cert.crt",
+		"ServerKey": "/usr/share/doc/mender-gateway/examples/cert/private.key"
+	},
+	"Features": {
+		"ArtifactsProxy": {
+			"Enabled": true,
+			"GatewayURL": "https://gateway.docker.mender.io",
+			"DomainWhitelist": ["s3.amazonaws.com"]
+		},
+		"DeviceSystem": {
+			"Enabled": true,
+			"SystemID": "REPLACE_WITH_YOUR_UNIQUE_SYSTEM_ID"
+		}
+	},
+	"UpstreamServer": {
+		"URL": "https://hosted.mender.io"
+	}
+}
+```
+
+Using the `DefaultInventory` setting, you can add a list of default inventory attributes to all the devices connecting to this Mender Gateway instance:
+
+```json
+{
+	"Features": {
+		"DeviceSystem": {
+			"Enabled": true,
+			"SystemID": "REPLACE_WITH_YOUR_UNIQUE_SYSTEM_ID",
+			"DefaultInventory": [
+				{
+					"Name": "region",
+					"Value": "eu"
+				},
+				{
+					"Name": "customer_name",
+					"Value": "ACME Inc."
+				}
+			]
+		}
+	}
+}
+```
 
 ## Mutual TLS Authentication
 The Mender Gateway is capable of automatic provisioning of devices using *mTLS*
