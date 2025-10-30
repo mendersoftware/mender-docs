@@ -35,11 +35,42 @@ It can also cache the Artifacts locally and serve them locally when needed.
 In this way, when multiple devices request the same Artifact, it will be
 downloaded only once and then served from the cache for the subsequent
 download requests saving bandwidth. The Mender Gateway will automatically
-manage the cache eviction when the Artifacts cache is enabled if there is
-no more free space on the path specified in the configuration file. 
+manage the cache eviction when the Artifacts cache is enabled if there is no
+more free space on the path specified in the configuration file. Freeing up
+disk space will remove cached Artifacts that are not being served anymore to
+clients starting from the oldest one. It is highly recommended to use a
+dedicated partition or volume to store the Artifacts on the Gateway device to
+avoid Mender Gateway filling up the root file system or the data partition.
 
-See the [Mender Gateway User Guide](../../01.Get-started/06.Mender-Gateway/docs.md)
-for a reference setup of Mender Gateway as an Artifact Proxy.
+The cache feature can be enabled by setting the configuration option
+`ArtifactsCache` to `true` in the *mender-gateway.conf* [configuration
+file](99.Configuration-file/) as shown in this example:
+
+```
+{
+	"HTTPS": {
+		"Enabled": true,
+		"Listen": ":443",
+		"ServerCertificate": "/usr/share/doc/mender-gateway/examples/cert/cert.crt",
+		"ServerKey": "/usr/share/doc/mender-gateway/examples/cert/private.key"
+	},
+	"Features": {
+		"ArtifactsProxy": {
+			"Enabled": true,
+			"GatewayURL": "https://gateway.docker.mender.io",
+			"DomainWhitelist": ["s3.amazonaws.com"],
+			"ArtifactsCache": {
+				"Enabled": true,
+				"Path": "/var/cache/mender-gateway"
+			}
+		}
+	},
+	"UpstreamServer": {
+		"URL": "https://hosted.mender.io"
+	}
+}
+```
+
 
 ## Device Systems
 A Device System is a group of devices belonging to the same product or logical entity connected
