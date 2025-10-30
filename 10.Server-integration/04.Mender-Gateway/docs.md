@@ -53,7 +53,9 @@ for the given Device System.
 !!! [documentation for Orchestrated updates](../../07.Orchestrate-updates/01.Overview/) for
 !!! details.
 
-The Mender Gateway can set the System ID for all the devices connected to it thanks to the `SystemID` configuration setting. When enabled, this feature injects this inventory attributes for all the devices connected to the gateway.
+The Mender Gateway can set the System ID for all the devices connected to it thanks to the
+`SystemID` configuration setting. When enabled, this feature injects the special inventory
+attribute to reported inventory of all the devices connected to the gateway.
 
 An example configuration follows:
 
@@ -82,7 +84,9 @@ An example configuration follows:
 }
 ```
 
-Using the `DefaultInventory` setting, you can add a list of default inventory attributes to all the devices connecting to this Mender Gateway instance:
+The `DefaultInventory` setting can be used to add an arbitrary list of inventory attributes
+with default values to the reported inventory of all devices connecting to the particular
+Mender Gateway instance:
 
 ```json
 {
