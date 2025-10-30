@@ -275,7 +275,7 @@ sudo systemctl restart mender-monitor
 ```
 
 Not that the check is in place, change your user to `root`:
-```
+```bash
 sudo su
 ```
 
