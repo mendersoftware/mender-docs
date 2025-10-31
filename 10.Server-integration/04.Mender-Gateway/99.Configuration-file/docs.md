@@ -142,13 +142,18 @@ Defines a unique System identifier for the devices connected to this Mender Gate
 Devices connected to the gateway will show a special attribute named <code>mender_gateway_system_id</code> in the reported inventory data.
 </dd>
 
-##### DefaultInventory
-<dl>
-<dt>Name</dt>
-<dd>Name of the default inventory attribute</dd>
+<dt>DefaultInventory</dt>
+<dd>
+Defines inventory data added to the reported inventory data of each device connected to
+the gateway.
+  <dl>
+    <dt>Name</dt>
+    <dd>Name of the default inventory attribute</dd>
 
-<dt>Value</dt>
-<dd>Value of the default inventory attribute</dd>
+    <dt>Value</dt>
+    <dd>Value of the default inventory attribute</dd>
+  </dl>
+</dd>
 </dl>
 
 ### HTTP

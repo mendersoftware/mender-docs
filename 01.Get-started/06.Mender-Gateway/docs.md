@@ -65,11 +65,15 @@ You can find download and installation instructions for on-premise environments 
 ## Configuration
 
 When installing the Mender Gateway in demo mode (see the `--demo` flag in the snippet above),
-the package automatically configures it to connect to hosted Mender, forwarding both device APIs
-and the Artifacts. It also ships with an example HTTPS certificate that you will have to add to
-the list of trusted certificates in your devices connecting to the Mender Gateway.
+the package automatically configures it to connect to hosted Mender (i.e. hosted.mender.io, see
+the note below if you are using eu.hosted.mender.io), forwarding both device APIs and the
+Artifacts. It also ships with an example HTTPS certificate that you will have to add to the
+list of trusted certificates in your devices connecting to the Mender Gateway.
 
 You can inspect the configuration file `/etc/mender/mender-gateway.conf`:
+
+!!! When using eu.hosted.mender.io, the configuration file needs to be modified by setting the
+!!! value of the `URL` object (inside `UpstreamServer`) to `"https://eu.hosted.mender.io"`.
 
 ```
 {
@@ -95,9 +99,33 @@ You can inspect the configuration file `/etc/mender/mender-gateway.conf`:
 Please refer to the [Mender Gateway's configuration file](../../10.Server-integration/04.Mender-Gateway/99.Configuration-file/)
 documentation for detailed information about the various settings.
 
-## Systems
 
-A System is a group of devices belonging to the same product or logical entity connected to a Mender Gateway instance. Devices in a System usually require coordination during the update process. To define a System, each device must report to the Mender Server a special inventory attribute named `mender_gateway_system_id`, containing a unique identifier for the given system.
+## Manage the Mender Gateways in the UI
+
+The Mender Gateway devices have a special inventory attribute `mender_is_gateway` set to
+`true`. This attribute is reported by the Mender Client together with the rest of the inventory
+data at the next `InventoryPollIntervalSeconds` interval (set in the [Mender Client
+configuration](../../03.Client-installation/07.Configuration/01.Polling-intervals/)) after
+converting a device into a Gateway.
+
+
+Leveraging this, you can filter these devices and eventually create a dynamic group, as shown below:
+
+![Mender Gateway inventory attribute](mender-gateway-inventory.png)
+
+
+## Device Systems
+
+A Device System is a group of devices belonging to the same product or logical entity connected
+to a Mender Gateway instance. Devices in a Device System usually require coordination during
+the update process. To define a Device System, each device must report to the Mender Server a
+special inventory attribute named `mender_gateway_system_id`, containing a unique identifier
+for the given Device System.
+
+!!! Mender also has a concept of Systems devices, i.e. devices that are systems of individual
+!!! components with separate update mechanisms that need to be orchestrated. See the
+!!! [documentation for Orchestrated updates](../../07.Orchestrate-updates/01.Overview/) for
+!!! details.
 
 The Mender Gateway can set the System ID for all the devices connected to it thanks to the `SystemID` configuration setting. When enabled, this feature injects this inventory attributes for all the devices connected to the gateway.
 
@@ -204,15 +232,6 @@ sudo journalctl -u mender-gateway -f
 > Apr 08 06:21:27 raspberrypi mender-gateway[17155]: time="2022-04-08T06:21:27+02:00" level=info msg="created client with base url https://hosted.mender.io, insecure skip verify: false" file=client.go func=mender.NewClient line=49
 > Apr 08 06:21:27 raspberrypi mender-gateway[17155]: time="2022-04-08T06:21:27+02:00" level=info msg=running... file=server.go func="server.(*Server).Run" line=75
 > ```
-
-
-## Manage the Mender Gateways in the UI
-
-The Mender Gateway devices have a special inventory attribute `mender_is_gateway` set to `true`.
-
-Leveraging this, you can filter these devices and eventually create a dynamic group, as shown below:
-
-![Mender Gateway inventory attribute](mender-gateway-inventory.png)
 
 
 ## Obtain the Mender Gateway's IP address 
