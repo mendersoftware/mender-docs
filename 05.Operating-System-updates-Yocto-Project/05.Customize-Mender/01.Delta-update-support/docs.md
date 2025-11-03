@@ -39,7 +39,7 @@ cat <<EOF >> conf/local.conf
 
 IMAGE_INSTALL:append = " mender-binary-delta"
 LICENSE_FLAGS_ACCEPTED:append = " commercial_mender-yocto-layer-license"
-SRC_URI:pn-mender-binary-delta = "file://${HOME}/mender-binary-delta-1.5.1.tar.xz"
+SRC_URI:pn-mender-binary-delta = "file://${HOME}/mender-binary-delta-1-5-2.tar.xz"
 
 EOF
 ```
