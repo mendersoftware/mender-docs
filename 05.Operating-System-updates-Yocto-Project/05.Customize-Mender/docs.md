@@ -259,7 +259,7 @@ Replace <DIRECTORY-WITH-MENDER-CONNECT-CONF> with the path to the `mender-connec
 
 <!--AUTOVERSION: "/mender-monitor/yocto/%/"/monitor-client "/mender-monitor-%.tar.gz"/monitor-client -->
 Download the Mender Monitor add-on from
-https://downloads.customer.mender.io/content/hosted/mender-monitor/yocto/1.4.2/mender-monitor-1.4.2.tar.gz
+https://downloads.customer.mender.io/content/hosted/mender-monitor/yocto/1.4.3/mender-monitor-1.4.3.tar.gz
 and download the tarball to a known location on your local system using your hosted
 Mender username and password:
 
@@ -268,14 +268,14 @@ Mender username and password:
 <!--AUTOVERSION: "/mender-monitor/yocto/%/"/monitor-client "/mender-monitor-%.tar.gz"/monitor-client -->
 ```bash
 HOSTED_MENDER_EMAIL=<your.email@example.com>
-curl --fail -u $HOSTED_MENDER_EMAIL -o ${HOME}/mender-monitor-1.4.2.tar.gz https://downloads.customer.mender.io/content/hosted/mender-monitor/yocto/1.4.2/mender-monitor-1.4.2.tar.gz
+curl --fail -u $HOSTED_MENDER_EMAIL -o ${HOME}/mender-monitor-1.4.3.tar.gz https://downloads.customer.mender.io/content/hosted/mender-monitor/yocto/1.4.3/mender-monitor-1.4.3.tar.gz
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
 <!--AUTOVERSION: "/mender-monitor/yocto/%/"/monitor-client "/mender-monitor-%.tar.gz"/monitor-client -->
 ```bash
 MENDER_ENTERPRISE_USER=<your.user>
-curl --fail -u $MENDER_ENTERPRISE_USER -o ${HOME}/mender-monitor-1.4.2.tar.gz https://downloads.customer.mender.io/content/on-prem/mender-monitor/yocto/1.4.2/mender-monitor-1.4.2.tar.gz
+curl --fail -u $MENDER_ENTERPRISE_USER -o ${HOME}/mender-monitor-1.4.3.tar.gz https://downloads.customer.mender.io/content/on-prem/mender-monitor/yocto/1.4.3/mender-monitor-1.4.3.tar.gz
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -297,7 +297,7 @@ Give the `mender-monitor` recipe the path to the local source code just download
 
 <!--AUTOVERSION: "/mender-monitor-%.tar.gz"/monitor-client -->
 ```bash
-SRC_URI:pn-mender-monitor = "file://${HOME}/mender-monitor-1.4.2.tar.gz"
+SRC_URI:pn-mender-monitor = "file://${HOME}/mender-monitor-1.4.3.tar.gz"
 ```
 
 Then make Mender monitor a part of your image with:
@@ -311,7 +311,7 @@ Which means your `local.conf` should now contain the following lines:
 <!--AUTOVERSION: "/mender-monitor-%.tar.gz"/monitor-client -->
 ```bash
 LICENSE_FLAGS_ACCEPTED:append = " commercial_mender-yocto-layer-license"
-SRC_URI:pn-mender-monitor = "file://${HOME}/mender-monitor-1.4.2.tar.gz"
+SRC_URI:pn-mender-monitor = "file://${HOME}/mender-monitor-1.4.3.tar.gz"
 IMAGE_INSTALL:append = " mender-monitor"
 ```
 

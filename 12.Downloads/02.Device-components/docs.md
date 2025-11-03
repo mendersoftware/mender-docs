@@ -319,7 +319,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-monitor_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.4.2/mender-monitor_1.4.2-1%2Bdebian%2Btrixie_all.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.4.3/mender-monitor_1.4.3-1%2Bdebian%2Btrixie_all.deb
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
@@ -333,7 +333,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-monitor_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.4.2/mender-monitor_1.4.2-1%2Bdebian%2Btrixie_all.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.4.3/mender-monitor_1.4.3-1%2Bdebian%2Btrixie_all.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -343,7 +343,7 @@ Then install the package with:
 
 <!--AUTOVERSION: "mender-monitor_%-1"/monitor-client -->
 ```bash
-sudo dpkg -i mender-monitor_1.4.2-1+debian+trixie_all.deb || sudo apt --fix-broken -y install
+sudo dpkg -i mender-monitor_1.4.3-1+debian+trixie_all.deb || sudo apt --fix-broken -y install
 ```
 
 ### Demo monitors
@@ -363,7 +363,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-monitor-demo_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.4.2/mender-monitor-demo_1.4.2-1%2Bdebian%2Btrixie_all.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-monitor/debian/1.4.3/mender-monitor-demo_1.4.3-1%2Bdebian%2Btrixie_all.deb
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
@@ -378,7 +378,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-monitor-demo_%-1"/monitor-client "/mender-monitor/debian/%/"/monitor-client -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.4.2/mender-monitor-demo_1.4.2-1%2Bdebian%2Btrixie_all.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-monitor/debian/1.4.3/mender-monitor-demo_1.4.3-1%2Bdebian%2Btrixie_all.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -388,7 +388,7 @@ Then install the package with:
 
 <!--AUTOVERSION: "mender-monitor-demo_%-1"/monitor-client -->
 ```bash
-sudo dpkg -i mender-monitor-demo_1.4.2-1+debian+trixie_all.deb
+sudo dpkg -i mender-monitor-demo_1.4.3-1+debian+trixie_all.deb
 ```
 
 ## Mender Gateway
@@ -993,7 +993,7 @@ Now, download the `mender-binary-delta` archive with the following command:
 
 <!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-binary-delta/1.5.1/mender-binary-delta-1.5.1.tar.xz
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-binary-delta/1-5-2/mender-binary-delta-1-5-2.tar.xz
 ```
 On the other hand, if you are using *on-premise Mender Enterprise*, download using the following
 command:
@@ -1002,18 +1002,18 @@ command:
 <!--AUTOVERSION: "mender-binary-delta/%/mender-binary-delta-%.tar"/mender-binary-delta-->
 ```bash
 MENDER_ENTERPRISE_USER=<your.user>
-curl -u $MENDER_ENTERPRISE_USER -O https://downloads.customer.mender.io/content/on-prem/mender-binary-delta/1.5.1/mender-binary-delta-1.5.1.tar.xz
+curl -u $MENDER_ENTERPRISE_USER -O https://downloads.customer.mender.io/content/on-prem/mender-binary-delta/1-5-2/mender-binary-delta-1-5-2.tar.xz
 ```
 
 <!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
-The archive `mender-binary-delta-1.5.1.tar.xz` contains the binaries needed to generate and apply deltas.
+The archive `mender-binary-delta-1-5-2.tar.xz` contains the binaries needed to generate and apply deltas.
 
 <!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
-Unpack the `mender-binary-delta-1.5.1.tar.xz` in your home directory:
+Unpack the `mender-binary-delta-1-5-2.tar.xz` in your home directory:
 
 <!--AUTOVERSION: "mender-binary-delta-%.tar.xz"/mender-binary-delta-->
 ```bash
-tar xvf mender-binary-delta-1.5.1.tar.xz
+tar xvf mender-binary-delta-1-5-2.tar.xz
 ```
 
 The file structure should look like this:
@@ -1042,7 +1042,7 @@ Copy the generator compatible with your workstation architecture to `/usr/bin`; 
 
 <!--AUTOVERSION: "mender-binary-delta-%"/mender-binary-delta-->
 ```bash
-sudo cp mender-binary-delta-1.5.1/x86_64/mender-binary-delta-generator /usr/bin
+sudo cp mender-binary-delta-1-5-2/x86_64/mender-binary-delta-generator /usr/bin
 ```
 
 

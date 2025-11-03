@@ -54,7 +54,7 @@ We will use the [single file](https://hub.mender.io/t/single-file/486/26?target=
 First, download the script to generate the Artifact and make it executable:
 <!--AUTOVERSION: "mendersoftware/mender/%/support"/mender-->
 ```
-curl -O https://raw.githubusercontent.com/mendersoftware/mender/5.0.2/support/modules-artifact-gen/single-file-artifact-gen
+curl -O https://raw.githubusercontent.com/mendersoftware/mender/5.0.3/support/modules-artifact-gen/single-file-artifact-gen
 chmod +x single-file-artifact-gen
 ```
 
@@ -80,7 +80,7 @@ be installed in the *rootfs* partition. The resulting file `artifact.mender` hol
 
 <!--AUTOVERSION: "mendersoftware/mender/blob/%/support"/mender-->
 Inspect the source code of the
-[single file Update Module](https://github.com/mendersoftware/mender/blob/5.0.2/support/modules/single-file?target=_blank)
+[single file Update Module](https://github.com/mendersoftware/mender/blob/5.0.3/support/modules/single-file?target=_blank)
 to learn about the implementation details of this module.
 
 
@@ -94,4 +94,4 @@ will carry the file you have uploaded, the destination
 directory, the filename, and permissions, exactly as we saw above.
 
 <!--AUTOVERSION: "mendersoftware/mender/blob/%/Documentation"/mender-->
-For more details on how to write Update Modules, visit the [Create a custom Update Module](../08.Create-a-custom-Update-Module/docs.md) section and the [Update Module API specification](https://github.com/mendersoftware/mender/blob/5.0.2/Documentation/update-modules-v3-file-api.md?target=_blank).
+For more details on how to write Update Modules, visit the [Create a custom Update Module](../08.Create-a-custom-Update-Module/docs.md) section and the [Update Module API specification](https://github.com/mendersoftware/mender/blob/5.0.3/Documentation/update-modules-v3-file-api.md?target=_blank).

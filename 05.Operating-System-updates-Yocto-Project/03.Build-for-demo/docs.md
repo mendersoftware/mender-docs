@@ -116,8 +116,8 @@ MENDER_ARTIFACT_NAME = "release-1"
 # please uncomment the following and set to the required version. If you want to use the bleeding
 # edge version, specify "master-git%", but keep in mind that these versions may not be stable:
 #
-# PREFERRED_VERSION_mender = "5.0.2"
-# PREFERRED_VERSION_mender-client = "5.0.2"
+# PREFERRED_VERSION_mender = "5.0.3"
+# PREFERRED_VERSION_mender-client = "5.0.3"
 # PREFERRED_VERSION_mender-artifact = "4.2.0"
 # PREFERRED_VERSION_mender-artifact-native = "4.2.0"
 # PREFERRED_VERSION_mender-connect = "2.3.1"
@@ -238,8 +238,8 @@ MACHINE = "<YOUR-MACHINE>"
 # please uncomment the following and set to the required version. If you want to use the bleeding
 # edge version, specify "master-git%", but keep in mind that these versions may not be stable:
 #
-# PREFERRED_VERSION_mender = "5.0.2"
-# PREFERRED_VERSION_mender-client = "5.0.2"
+# PREFERRED_VERSION_mender = "5.0.3"
+# PREFERRED_VERSION_mender-client = "5.0.3"
 # PREFERRED_VERSION_mender-artifact = "4.2.0"
 # PREFERRED_VERSION_mender-artifact-native = "4.2.0"
 # PREFERRED_VERSION_mender-connect = "2.3.1"
