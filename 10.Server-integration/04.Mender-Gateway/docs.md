@@ -72,12 +72,10 @@ file](99.Configuration-file/) as shown in this example:
 ```
 
 
-## Device Systems
-A Device System is a group of devices belonging to the same product or logical entity connected
-to a Mender Gateway instance. Devices in a Device System usually require coordination during
-the update process. To define a Device System, each device must report to the Mender Server a
-special inventory attribute named `mender_gateway_system_id`, containing a unique identifier
-for the given Device System.
+## Gateway Systems
+A Gateway System is a grouping of devices connected to a Mender Gateway instance. To define a
+Gateway System, each device must report to the Mender Server a special inventory attribute
+named `mender_gateway_system_id`, containing a unique identifier for the given Gateway System.
 
 !!! Mender also has a concept of System devices, i.e. devices that are systems of individual
 !!! components with separate update mechanisms that need to be orchestrated. See the
