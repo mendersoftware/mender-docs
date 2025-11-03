@@ -73,20 +73,18 @@ file](99.Configuration-file/) as shown in this example:
 
 
 ## Gateway Systems
-A Gateway System is a grouping of devices connected to a Mender Gateway instance. To define a
-Gateway System, each device must report to the Mender Server a special inventory attribute
-named `mender_gateway_system_id`, containing a unique identifier for the given Gateway System.
+Devices connected to a Mender Gateway instance form a virtual group. For historical reasons,
+this virtual group is called a Gateway's *Device System*.
 
 !!! Mender also has a concept of System devices, i.e. devices that are systems of individual
 !!! components with separate update mechanisms that need to be orchestrated. See the
 !!! [documentation for Orchestrated updates](../../07.Orchestrate-updates/01.Overview/) for
 !!! details.
 
-The Mender Gateway can set the System ID for all the devices connected to it thanks to the
-`SystemID` configuration setting. When enabled, this feature injects the special inventory
-attribute to reported inventory of all the devices connected to the gateway.
-
-An example configuration follows:
+To facilitate working with devices from such a group, Mender Gateway provides a mechanism to
+add a special inventory attribute named `mender_gateway_system_id` to the inventory data
+reported by all devices connected to it. The value of the attribute can be configured with the
+`SystemID` configuration key, as part of the `DeviceSystem` configuration object.
 
 ```json
 {
@@ -113,9 +111,15 @@ An example configuration follows:
 }
 ```
 
-The `DefaultInventory` setting can be used to add an arbitrary list of inventory attributes
-with default values to the reported inventory of all devices connecting to the particular
-Mender Gateway instance:
+The name of the `mender_gateway_system_id` inventory attribute is pre-defined to ensure
+consistency and to allow Mender Server recognize the devices belonging into a particular
+Gateway System. In UI, the Gateway device has a tab called *System* which lists all devices
+connected to it and which allows creation of deployments targetting the particular group of
+devices.
+
+In order to add other common attributes that are not pre-defined, but are still added for all
+devices connected to a particular Mender Gateway, the `DefaultInventory` setting can added to
+the config as shown below:
 
 ```json
 {
