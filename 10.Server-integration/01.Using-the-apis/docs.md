@@ -179,6 +179,3 @@ Instead of logging in using your credentials, you can specify a Personal Access 
 ```bash
 ./mender-cli artifacts --server https://hosted.mender.io --token-value $PERSONAL_ACCESS_TOKEN upload release_1.mender
 ```
-
-<!--AUTOVERSION: "mender-cli/%/"/mender-cli -->
-[x.x.x_mender-cli]: https://downloads.mender.io/mender-cli/1.12.0/linux/mender-cli
