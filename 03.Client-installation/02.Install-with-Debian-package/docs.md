@@ -27,7 +27,7 @@ explicit steps required.
 ### Configure the Mender Client
 
 The setup is different depending on your server configuration and the most
-common cases are shown below. Use `mender setup --help` to learn about all
+common cases are shown below. Use `mender-setup --help` to learn about all
 configuration options.
 
 <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install --assume-yes wget tzdata -->
