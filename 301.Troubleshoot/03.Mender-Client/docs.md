@@ -371,7 +371,7 @@ The problem here is most likely that the device does not have the [partition lay
 
 ## The Mender Client uses excessive network traffic even when not deploying updates
 
-If you are using the Mender Client in demo mode, either by selecting it when running `mender setup`, or set up with the [demo layer](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md), the Mender Client has more aggressive [polling intervals](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md) to simplify testing.
+If you are using the Mender Client in demo mode, either by selecting it when running `mender-setup`, or set up with the [demo layer](../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md), the Mender Client has more aggressive [polling intervals](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md) to simplify testing.
 
 See the documentation on [building for production](../../05.Operating-System-updates-Yocto-Project/06.Build-for-production/docs.md) and [polling intervals](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md) to reduce the network bandwidth usage.
 
