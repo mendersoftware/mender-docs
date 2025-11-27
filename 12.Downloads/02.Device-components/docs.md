@@ -8,8 +8,6 @@ process:
     twig: true
 ---
 
-# Device components
-
 ## Set up the APT repository
 
 Right now we support two packages repositories: `workstation-tools` and `device-components`.
