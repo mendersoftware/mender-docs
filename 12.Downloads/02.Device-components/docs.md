@@ -8,6 +8,15 @@ process:
     twig: true
 ---
 
+<!--AUTOVERSION: "Mender Client %"/ignore -->
+! **[2025-11] Repository Change Notice**
+! As of Mender Client 5.0.3 (mender-client4 package), the repository location has changed ([announcement](https://mender.io/blog/new-mender-packaging-and-distribution-channels)):
+! - **Old:** `https://downloads.mender.io/repos/debian/pool/main/m/`
+! - **New:** `https://downloads.mender.io/repos/device-components/pool/main/m/`
+! 
+! **Action required:** Update your sources list to regain access to the supported versions.
+
+
 ## Set up the APT repository
 
 Right now we support two packages repositories: `workstation-tools` and `device-components`.
