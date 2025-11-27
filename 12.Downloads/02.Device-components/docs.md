@@ -27,9 +27,6 @@ Device components repo contains:
 !!! the above command. Do not use the `experimental` repository in production
 !!! as these releases are not fully tested.
 
-<!--AUTOVERSION: "Mender %"/ignore -->
-!!! As of Mender 3.2.1 we deprecated the previous stable repository and stopped updating it. As of Mender 3.3 we removed it.
-
 !!! With APT repo method, you will always install the latest released Mender components. If you need to install a specific version,
 !!! or you want to stick to a specific minor release (e.g., to the latest LTS version), you can manually download the
 !!! Debian packages from the [device components repository](https://downloads.mender.io/repos/device-components/pool/main).
