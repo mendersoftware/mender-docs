@@ -55,7 +55,7 @@ and connect clients to the Mender Server.
 In _standalone_ mode, you initiate the updates locally on the device instead of
 connecting the Mender Client to a Mender Server. A common use-case is to perform
 updates from e.g., a USB flash drive. To learn more visit
-[Standalone deployments](../../08.Artifact-creation/06.Standalone-deployment/docs.md)
+[Standalone deployments](../../08.Artifact-creation/08.Standalone-deployment/docs.md)
 
 ### Mender Gateway
 
@@ -110,7 +110,7 @@ requirements, e.g an application can be a single file, directory or even a
 container image. For this reason it is difficult to enforce **one** way of
 deploying application updates.
 
-To support application updates in a generic way, Mender provides the [Update Module](../../08.Artifact-creation/08.Create-a-custom-Update-Module/docs.md) framework.
+To support application updates in a generic way, Mender provides the [Update Module](../../08.Artifact-creation/10.Create-a-custom-Update-Module/docs.md) framework.
 
 ![application-updates](application-updates.png)
 
@@ -126,7 +126,7 @@ when delta updates are not in use, the higher amount of data usage because
 of the need to transfer an artifact containing the full rootfs image.
 
 In contrast, application updates implemented through the
-[Update Module](../../08.Artifact-creation/08.Create-a-custom-Update-Module/docs.md)
+[Update Module](../../08.Artifact-creation/10.Create-a-custom-Update-Module/docs.md)
 framework are more flexible when the update scenario requires the replacement
 of a subset of the files on the device's firmware and doesn't require
 a complete device reboot cycle to apply the changes.
@@ -134,7 +134,7 @@ a complete device reboot cycle to apply the changes.
 Mender allows combining Operating System and Application updates on the same device
 to achieve the best flexibility without compromising the specific advantages
 of the two approaches. When generating the Mender Artifacts, you can customize
-the [Software Versioning](../../08.Artifact-creation/09.Software-versioning/docs.md)
+the [Software Versioning](../../08.Artifact-creation/11.Software-versioning/docs.md)
 values, as well as [*Depends* and *Provides* entries](../03.Artifact/docs.md#provides-and-depends)
 in the Artifacts to define dependencies between the different kinds of updates.
 
@@ -149,7 +149,7 @@ combine Operating System and Application updates in the
 
 ### Proxy deployments
 
-Using the [Update Module](../../08.Artifact-creation/08.Create-a-custom-Update-Module/docs.md) framework
+Using the [Update Module](../../08.Artifact-creation/10.Create-a-custom-Update-Module/docs.md) framework
 it is also possible to deploy updates to peripheral devices, e.g
 microcontrollers or sensors connected to a device running Linux.
 

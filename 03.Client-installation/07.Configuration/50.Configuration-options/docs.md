@@ -26,7 +26,7 @@ When set, the Mender Client verifies the following:
 * The provided public key verifies the signature of the update.
 
 See also the section about [signing and
-verification](../../../08.Artifact-creation/07.Sign-and-verify/docs.md).
+verification](../../../08.Artifact-creation/09.Sign-and-verify/docs.md).
 
 #### BootUtilitiesGetNextActivePart
 

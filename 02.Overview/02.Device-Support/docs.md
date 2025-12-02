@@ -177,7 +177,7 @@ parameters for the Mender Client, such as polling intervals.
 
 If you require support for payload types other than Operating System
 updates, ensure to install appropriate [Update
-Modules](../../08.Artifact-creation/08.Create-a-custom-Update-Module/docs.md)
+Modules](../../08.Artifact-creation/10.Create-a-custom-Update-Module/docs.md)
 into your root filesystem, which are invoked by the Mender Client.
 
 

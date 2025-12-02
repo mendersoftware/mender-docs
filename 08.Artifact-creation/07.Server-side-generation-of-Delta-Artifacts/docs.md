@@ -81,7 +81,7 @@ Please note that if the Server cannot generate the Delta Artifact, it will autom
 You can customize the Delta Artifact generation settings in the Global settings of your tenant.
 You can specify a timeout for the generation job; the Mender Server will serve the full image if the server-side generation of the Delta Artifact takes more than the given amount of seconds.
 You can also set the xDelta3 arguments to customize the Delta generation and the compression level.
-Please refer to the [Create a Delta update Artifact](../05.Create-a-Delta-update-Artifact/) chapter for more information about the available options.
+Please refer to the [Create a Delta update Artifact](../06.Create-a-Delta-update-Artifact/docs.md/) chapter for more information about the available options.
 
 ![Mender logo](settings.png)
 

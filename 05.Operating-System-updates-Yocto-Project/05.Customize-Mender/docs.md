@@ -204,7 +204,7 @@ Replace `<DIRECTORY-WITH-UPDATE-MODULE>` with the path to the
 "custom-update-module", can be any string, and must have the same name as the
 payload type used for Artifacts installed with this Update Module.
 See [Create a custom update
-module](../../08.Artifact-creation/08.Create-a-custom-Update-Module/docs.md)
+module](../../08.Artifact-creation/10.Create-a-custom-Update-Module/docs.md)
 for more information.
 
 

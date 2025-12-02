@@ -156,7 +156,7 @@ brew install mender-artifact
 ! for certain utilities on the Mac platform.
 
 
-!!! `mender-artifact` binary is shipped also in [mender-ci-tools Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools). More information [here](../../08.Artifact-creation/10.CI-CD/docs.md#mender-ci-workflows-docker-image).
+!!! `mender-artifact` binary is shipped also in [mender-ci-tools Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools). More information [here](../../08.Artifact-creation/12.CI-CD/docs.md#mender-ci-workflows-docker-image).
 
 
 ## mender-cli
@@ -190,6 +190,6 @@ Use `brew` to install `mender-cli` from [the Homebrew repository](https://brew.s
 brew install mender-cli
 ```
 
-!!! `mender-cli` binary is shipped also in [Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools). More information [here](../../08.Artifact-creation/10.CI-CD/docs.md#mender-ci-workflows-docker-image).
+!!! `mender-cli` binary is shipped also in [Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools). More information [here](../../08.Artifact-creation/12.CI-CD/docs.md#mender-ci-workflows-docker-image).
 
 
