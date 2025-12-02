@@ -128,4 +128,4 @@ your existing OS build process. Learn more by reading the following sections:
 To verify that the Artifact comes from a trusted source, the Mender Artifact
 format supports end-to-end signing and verification. In order to create a
 signed Artifact, please follow the instructions at
-[Sign & Verify](../../08.Artifact-creation/07.Sign-and-verify/docs.md).
+[Sign & Verify](../../08.Artifact-creation/09.Sign-and-verify/docs.md).

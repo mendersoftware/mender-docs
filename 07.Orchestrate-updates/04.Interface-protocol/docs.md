@@ -336,7 +336,7 @@ The `Provides` query is not called as part of an installation, but as a means to
 gather information about Components. When called, it is expected to print the
 Provides data (also called "software versions") of the relevant Component type
 and ID. See [Software
-versioning](../../08.Artifact-creation/09.Software-versioning/docs.md) for
+versioning](../../08.Artifact-creation/11.Software-versioning/docs.md) for
 more information about what Provides values are, and see [Execution](#execution)
 below to find out how the type and ID are obtained.
 

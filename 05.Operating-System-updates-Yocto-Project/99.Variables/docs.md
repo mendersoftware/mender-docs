@@ -82,7 +82,7 @@ default is empty, which means the artifact won't be signed.
 
 The signature can also be added or changed outside the build process, by using
 the `mender-artifact` tool's `-k` option. For more information, see [signing
-Mender Artifacts](../../08.Artifact-creation/07.Sign-and-verify/docs.md#signing).
+Mender Artifacts](../../08.Artifact-creation/09.Sign-and-verify/docs.md#signing).
 
 
 #### `MENDER_ARTIFACT_VERIFY_KEY`

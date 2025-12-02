@@ -20,7 +20,7 @@ For this reason, it is common to add a dedicated, separated persistent partition
 
 ### Application updates
 
-You can extend the Mender Client supporting different application-specific update patterns using the [Update Module](../08.Create-a-custom-Update-Module/docs.md) framework.
+You can extend the Mender Client supporting different application-specific update patterns using the [Update Module](../10.Create-a-custom-Update-Module/docs.md) framework.
 
 When processing an application update, the Mender Client can write files in any partition available on the device, including the system and the data partitions. However, as mentioned in the Operating System updates section above, any changes to the system partition will be lost on Operating System updates as the device will switch from the active to the inactive partition.
 
@@ -32,7 +32,7 @@ Suppose the application update depends on specific libraries or capabilities of 
 
 The software versions the Mender Client reports to the backend are the entries ending with `.version` listed in the *Provides* fields of the Artifacts installed. When processing updates, the Client can also remove existing *Provides* entries from the local Mender database according to the *Clears Provides* entry in the Mender Artifact.
 
-You can read more about the [Software versioning](../09.Software-versioning/docs.md) and the different options on the corresponding page.
+You can read more about the [Software versioning](../11.Software-versioning/docs.md) and the different options on the corresponding page.
 
 ### Drawbacks of combining Operating System and Application updates
 

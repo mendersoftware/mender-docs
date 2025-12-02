@@ -1034,9 +1034,9 @@ The file structure should look like this:
 
 ### The `mender-binary-delta-generator`
 
-You will need this binary on the host to [create a delta between two artifacts](../../08.Artifact-creation/05.Create-a-Delta-update-Artifact/docs.md) locally.
+You will need this binary on the host to [create a delta between two artifacts](../../08.Artifact-creation/06.Create-a-Delta-update-Artifact/docs.md) locally.
 
-!!! The enterprise plan allows auto generation of [delta images directly on the mender server](../../08.Artifact-creation/05.Server-side-generation-of-Delta-Artifacts/docs.md).
+!!! The enterprise plan allows auto generation of [delta images directly on the mender server](../../08.Artifact-creation/07.Server-side-generation-of-Delta-Artifacts/docs.md).
 
 Copy the generator compatible with your workstation architecture to `/usr/bin`; for a `x86_64` one, it should look like this:
 
