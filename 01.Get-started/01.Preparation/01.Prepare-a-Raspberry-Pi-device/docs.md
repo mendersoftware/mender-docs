@@ -20,9 +20,8 @@ Completing this tutorial normally **takes less than one hour**.
 To follow this tutorial, you will need the following:
 
 * One of these Raspberry Pi models:
-  * [Raspberry Pi 3 Model B](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/?target=_blank)
-  * [Raspberry Pi 3 Model B+](https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/?target=_blank).
   * [Raspberry Pi 4 Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/?target=_blank).
+  * [Raspberry Pi 5 Model B](https://www.raspberrypi.com/products/raspberry-pi-5/).
 * An 8 GB or larger microSD card.
 * A Raspberry Pi [universal power supply](https://www.raspberrypi.com/products/raspberry-pi-universal-power-supply/?target=_blank) or a compatible USB cable.
 * Internet connectivity for your Raspberry Pi (either Ethernet or WiFi available)
@@ -30,12 +29,12 @@ To follow this tutorial, you will need the following:
 ## Step 1 - Flash the Raspberry Pi
 
 Download the Raspberry Pi OS image ready for Mender:
-  * Download link: [Raspberry Pi 3 Model B and B+][raspios-lite-raspberrypi3_bookworm_64bit-mender-convert.img.xz]
-  * Download link: [Raspberry Pi 4 Model B][raspios-lite-raspberrypi4_bookworm_64bit-mender-convert.img.xz]
+  * Download link: [Raspberry Pi 4 Model B][raspios-lite-raspberrypi4_trixie_64bit-mender-convert.img.xz]
+  * Download link: [Raspberry Pi 5][raspios-lite-raspberrypi5_trixie_64bit-mender-convert.img.xz]
 
 <!--AUTOVERSION: "mender-convert-%.img.xz"/mender-convert -->
-[raspios-lite-raspberrypi3_bookworm_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2024-10-22-raspios-lite/arm/2024-10-22-raspios-lite-raspberrypi3_bookworm_64bit-mender-convert-5.0.0.img.xz
-[raspios-lite-raspberrypi4_bookworm_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2024-10-22-raspios-lite/arm/2024-10-22-raspios-lite-raspberrypi4_bookworm_64bit-mender-convert-5.0.0.img.xz
+[raspios-lite-raspberrypi4_trixie_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2025-10-01-raspios-lite/arm/2025-10-01-raspios-lite-raspberrypi4_trixie_64bit-mender-convert-5.1.0.img.xz
+[raspios-lite-raspberrypi5_trixie_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2025-10-01-raspios-lite/arm/2025-10-01-raspios-lite-raspberrypi5_trixie_64bit-mender-convert-5.1.0.img.xz
 
 Follow the steps outlined in the [Raspberry Pi OS documentation](https://www.raspberrypi.com/documentation/computers/getting-started.html?target=_blank)
 to flash the OS image to the device.
@@ -48,6 +47,10 @@ before flashing.
 
 !!! Writing the SD card takes 5-25 minutes,
 !!! mainly depending on your SD card and writer speed.
+
+!!! The RPi5 integration with mender-convert currently uses a separate U-Boot binary with \`CONFIG_BOOTDELAY=-2\`
+!!! for our RPi5 images.
+!!! This is a workaround for an issue where RPi5 with U-Boot is stuck waiting for UART.
 
 ![flash the Raspberry Pi](flash-rpi.png)
 
@@ -275,8 +278,8 @@ Select **PREPARE AND CONNECT MY RASPBERRY PI**.
 
 You need to specify one of the following:
 
-- Raspberry Pi 3
 - Raspberry Pi 4
+- Raspberry Pi 5
 
 ![choose device type](Image_2.png)
 
