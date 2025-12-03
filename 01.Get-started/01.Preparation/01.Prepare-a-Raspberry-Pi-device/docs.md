@@ -21,7 +21,7 @@ To follow this tutorial, you will need the following:
 
 * One of these Raspberry Pi models:
   * [Raspberry Pi 4 Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/?target=_blank).
-  * [Raspberry Pi 5 Model B](https://www.raspberrypi.com/products/raspberry-pi-5/).
+  * [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/).
 * An 8 GB or larger microSD card.
 * A Raspberry Pi [universal power supply](https://www.raspberrypi.com/products/raspberry-pi-universal-power-supply/?target=_blank) or a compatible USB cable.
 * Internet connectivity for your Raspberry Pi (either Ethernet or WiFi available)
