@@ -8,7 +8,14 @@ process:
     twig: true
 ---
 
-# Device components
+<!--AUTOVERSION: "Mender Client %"/ignore -->
+! **[2025-11] Repository Change Notice**
+! As of Mender Client 5.0.3 (mender-client4 package), the repository location has changed ([announcement](https://mender.io/blog/new-mender-packaging-and-distribution-channels)):
+! - **Old:** `https://downloads.mender.io/repos/debian/pool/main/m/`
+! - **New:** `https://downloads.mender.io/repos/device-components/pool/main/m/`
+! 
+! **Action required:** Update your sources list to regain access to the supported versions.
+
 
 ## Set up the APT repository
 
@@ -28,9 +35,6 @@ Device components repo contains:
 !!! `experimental` repository by replacing `stable` with `experimental` in
 !!! the above command. Do not use the `experimental` repository in production
 !!! as these releases are not fully tested.
-
-<!--AUTOVERSION: "Mender %"/ignore -->
-!!! As of Mender 3.2.1 we deprecated the previous stable repository and stopped updating it. As of Mender 3.3 we removed it.
 
 !!! With APT repo method, you will always install the latest released Mender components. If you need to install a specific version,
 !!! or you want to stick to a specific minor release (e.g., to the latest LTS version), you can manually download the
