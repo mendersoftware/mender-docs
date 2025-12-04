@@ -38,6 +38,11 @@ A Deployment to a dynamic group behaves differently than to a static group. In p
 * Never finish unless the user manually stops it or it was explicitly capped to a limited number of devices
 * The number of devices taking part in the Deployment can change during the lifetime of the Deployment
 
+The predictable ordering guarantee for chained dynamic deployments relies **entirely on the deployment's creation timestamp**.
+
+If you intend to use dynamic deployments to create a staged or incremental update (e.g., v1 → v2 → v3), you must ensure that the deployment targeting the first step (v2) is **created chronologically before** the deployment targeting the next step (v3), and so on.
+
+If a device completes a newer deployment (based on creation time) before an older deployment is processed, the older deployment will be permanently blocked for that device to maintain system integrity.
 
 **Example: Deployment order on dynamic groups**
 
