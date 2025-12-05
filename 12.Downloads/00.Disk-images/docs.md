@@ -18,7 +18,7 @@ provision the device storage for devices without Mender running already.
 
 Mender provides images based on the following distributions:
 
-* Images for **Raspberry Pi 3** and **Raspberry Pi 4**, which are based on the
+* Images for **Raspberry Pi 4** and **Raspberry Pi 5**, which are based on the
   [Raspberry Pi OS Linux
   distribution](https://www.raspberrypi.com/software/operating-systems/?target=_blank)
 
