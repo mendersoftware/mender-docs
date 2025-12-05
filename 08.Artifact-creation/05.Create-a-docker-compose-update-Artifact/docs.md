@@ -5,7 +5,7 @@ taxonomy:
     label: tutorial
 ---
 
-!!! The docker-compose Update Module is included in Mender Client 5.1 or newer.
+!!! The docker-compose Update Module is included in Mender Client 6.0 or newer.
 !!! The Update Module is not installed by default. It can be installed to your target devices as a Debian package or with a Yocto recipe.
 !!! You can find the source code in the [mender-container-modules repository](https://github.com/mendersoftware/mender-container-modules).
 
