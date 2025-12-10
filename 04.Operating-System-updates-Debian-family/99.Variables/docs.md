@@ -174,7 +174,25 @@ Install the Mender Configure add-on.
 
 The version of the Mender Configure add-on to include in the update.
 
-### `MENDER_INSTALL_INPUT_PACKAGES_PATH
+#### `MENDER_CLIENT_VERSION_INVENTORY_SCRIPT_INSTALL`
+
+> Value: auto(default)/y/n
+
+Install Mender-client-version-inventory-script, used for reporting
+the [Mender Client](https://docs.mender.io/release-information/supported-releases#mender-client-subcomponents) version.
+
+<!--AUTOVERSION: "Mender client % or later"/ignore-->
+If set to "auto" then it is installed if Mender client 5.1.0 or later is
+installed. Previous versions do not support it.
+
+#### `MENDER_CLIENT_VERSION_INVENTORY_SCRIPT_VERSION`
+
+<!--AUTOVERSION: "/%/"/ignore-->
+> Value: latest(default)/master/&lt;version&gt;
+
+The version of the mender-client-version-inventory-script to include in the update.
+
+### `MENDER_INSTALL_INPUT_PACKAGES_PATH`
 
 > Value: input/deb(default)
 
