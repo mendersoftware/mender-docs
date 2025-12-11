@@ -162,6 +162,8 @@ verbosity by editing the Mender systemd unit file and add the `--log-level debug
 ```
 ExecStart=/usr/bin/mender-update --log-level debug daemon
 ```
+<!--AUTOVERSION: "if you are using Mender %"/ignore-->
+Also, if you are using Mender 3.4.0 or newer you can use the `DaemonLogLevel` configuration option in any `mender.conf`. For example, if you are using a Read-Only root filesystem, then you can take advantage of the `mender.conf` located in the `data` partition. 
 
 <!--AUTOVERSION: "versions of the Mender Client older than %"/ignore-->
 !!! Note that in versions of the Mender Client older than 4.0.0, the binary and systemd service are called
