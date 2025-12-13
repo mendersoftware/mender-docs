@@ -64,6 +64,29 @@ ingress:
 EOF
 ```
 
+! There's known issue with the Traefik Ingress controller provided
+! with K3s: the upload timeout is limited to 60s, and this might
+! affect big artifacts upload or slow network connections.
+! Apply this fix to solve the issue:
+! ```bash
+! kubectl apply -f - <<EOS
+! apiVersion: helm.cattle.io/v1
+! kind: HelmChartConfig
+! metadata:
+!   name: traefik
+!   namespace: kube-system
+! spec:
+!   valuesContent: |-
+!     additionalArguments:
+!       - --entryPoints.web.transport.respondingTimeouts.idleTimeout=7200
+!       - --entryPoints.web.transport.respondingTimeouts.readTimeout=7200
+!       - --entryPoints.web.transport.respondingTimeouts.writeTimeout=7200
+!       - --entryPoints.websecure.transport.respondingTimeouts.idleTimeout=7200
+!       - --entryPoints.websecure.transport.respondingTimeouts.readTimeout=7200
+!       - --entryPoints.websecure.transport.respondingTimeouts.writeTimeout=7200
+! EOS
+! ````
+
 [/ui-tab]
 [ui-tab title="AWS EKS"]
 For example, here's an Ingress for the AWS EKS Provider:
