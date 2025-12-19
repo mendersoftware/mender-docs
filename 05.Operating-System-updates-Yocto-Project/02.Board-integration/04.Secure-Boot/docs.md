@@ -47,6 +47,8 @@ However, some things are worth noting regarding the current implementation:
     * On ARM, U-Boot is usually used as a UEFI provider which loads GRUB. U-Boot therefore needs to
       have UEFI Secure Boot built in (`CONFIG_EFI_SECURE_BOOT` build option).
 
-* Currently we are not aware of any ways in which Mender "gets in the way" of Secure Boot, but it is
-  not actively supported. For this reason, Northern.tech cannot guarantee that Mender will work with
-  Secure Boot images using Yocto.
+* Non UEFI U-boot:
+
+  To use Mender with non-UEFI U-Boot, you must recompile U-Boot.
+  Secure Boot should function correctly as long as that custom U-Boot is signed.
+  While we do not provide pre-validated support and qualification for specific ARM vendor implementations, there are no known architectural limitations that prevent successful configuration.
