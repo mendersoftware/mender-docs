@@ -21,13 +21,21 @@ the boot loader, the kernel, and device drivers.
 
 ## Support
 
-The signatures used by Secure Boot are embedded in the binary files themselves, and as such, are
-largely independent of the Mender Client; it will just deploy whatever files the update contains,
-with or without Secure Boot signatures. This means that in general, if a system was Secure Boot
-compliant before introducing the Mender Client, it will keep being compliant after introducing it.
+Secure Boot is architecturally independent of Mender. We recommend implementing
+and verifying Secure Boot on your platform before integrating the Mender update
+process.
 
-However, how you build the image affects whether it is Secure Boot compliant or not. Although the
-Mender Client supports Secure Boot, not all of Mender's image building facilities do.
+While Mender does not provide pre-validated configurations for specific Secure
+Boot implementations (e.g., custom U-Boot signatures), there are no known
+architectural limitations. If your bootloader and kernel are correctly signed,
+Mender’s update mechanism will function as intended.
+
+The primary consideration is your build system. Because Secure Boot signatures
+are embedded within the binaries, the Mender Client will deploy them regardless
+of their signature status. However, your image-building process must be
+configured to sign all artifacts that Mender introduces into the boot chain.
+Please note that while the Mender Client is compatible with Secure Boot, not all
+Mender image-building tools support automated signing out of the box.
 
 For the Yocto family of operating system images,
 [meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank) is the Yocto layer used
@@ -46,7 +54,3 @@ However, some things are worth noting regarding the current implementation:
 
     * On ARM, U-Boot is usually used as a UEFI provider which loads GRUB. U-Boot therefore needs to
       have UEFI Secure Boot built in (`CONFIG_EFI_SECURE_BOOT` build option).
-
-* Currently we are not aware of any ways in which Mender "gets in the way" of Secure Boot, but it is
-  not actively supported. For this reason, Northern.tech cannot guarantee that Mender will work with
-  Secure Boot images using Yocto.
