@@ -33,10 +33,6 @@ The diagram below shows the different services which are part of the Mender Serv
         |                                       |    |  (mender-deployments)   |    |
         |                                       |    +-------------------------+    |
         |                                       +--->|                         |    |
-        |                                       |    |  Reporting              |<---+
-        |                                       |    |  (mender-reporting)     |    |
-        |                                       |    +-------------------------+    |
-        |                                       +--->|                         |    |
         |                                       |    |  IoT Manager            |<---+
         |                                       |    |  (mender-iot-manager)   |    |
         |                                       |    +-------------------------+    |
