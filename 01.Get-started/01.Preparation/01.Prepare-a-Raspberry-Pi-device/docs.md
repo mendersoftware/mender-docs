@@ -28,6 +28,35 @@ To follow this tutorial, you will need the following:
 
 ## Step 1 - Flash the Raspberry Pi
 
+### Option #1: Configure your Raspberry Pi in headless mode
+
+You can take advantage of the headless configuration options of Raspberry Pi to
+enable SSH or to configure the wireless network. This saves you the hassle
+of connecting a monitor and keyboard after your device has booted, as it will come
+up with WiFi and SSH already working and you can just SSH into it from your workstation.
+
+#### Using `rpi-imager` (recommended)
+
+You can use our custom content repository to download, configure and flash the image to your Raspberry Pi.
+
+To get started, navigate to Raspberry Pi's website and download [rpi-imager](https://www.raspberrypi.com/software/).
+Once `rpi-imager` is installed, specify a custom repository by navigating to `ADD OPTIONS` -> `Content Repository` -> `Use custom URL` and
+add `https://docs.mender.io/releases/rpi_imager_schema.json`.
+
+!!! You can also specify the repository when launching `rpi-imager` through the terminal with:
+!!! ```bash
+!!! sudo rpi-imager --repo https://docs.mender.io/releases/rpi_imager_schema.json
+!!!```
+Once that is done, select your Raspberry Pi version and choose the corresponding Mender image.
+![Mender-ready image](mender-image.png)
+
+You can now configure and flash the image following the steps in the [Raspberry Pi OS documentation](https://www.raspberrypi.com/documentation/computers/getting-started.html#raspberry-pi-imager).
+Make sure to configure your username, password, WiFi credentials, and enable SSH access during the setup.
+
+#### Using command line
+
+If you need to configure your device using the command line only, follow these steps.
+
 Download the Raspberry Pi OS image ready for Mender:
   * Download link: [Raspberry Pi 4 Model B][raspios-lite-raspberrypi4_trixie_64bit-mender-convert.img.xz]
   * Download link: [Raspberry Pi 5][raspios-lite-raspberrypi5_trixie_64bit-mender-convert.img.xz]
@@ -36,48 +65,7 @@ Download the Raspberry Pi OS image ready for Mender:
 [raspios-lite-raspberrypi4_trixie_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2025-10-01-raspios-lite/arm/2025-10-01-raspios-lite-raspberrypi4_trixie_64bit-mender-convert-5.1.0.img.xz
 [raspios-lite-raspberrypi5_trixie_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2025-10-01-raspios-lite/arm/2025-10-01-raspios-lite-raspberrypi5_trixie_64bit-mender-convert-5.1.0.img.xz
 
-Follow the steps outlined in the [Raspberry Pi OS documentation](https://www.raspberrypi.com/documentation/computers/getting-started.html?target=_blank)
-to flash the OS image to the device.
-
-We recommend to use the Raspberry Pi Imager tool, after choosing a device model, for operating system choose "Use custom" and
-browse to the downloaded Mender Raspberry Pi OS image.
-You can configure your device either by using a keyboard and monitor or in headless mode.
-If using headless mode, look at [Using Raspberry Pi Imager tool (recommended)](#using-raspberry-pi-imager-tool-recommended)
-before flashing.
-
-!!! Writing the SD card takes 5-25 minutes,
-!!! mainly depending on your SD card and writer speed.
-
-![flash the Raspberry Pi](flash-rpi.png)
-
-
-### Option #1: Configure your Raspberry Pi in headless mode
-
-You can take advantage of the headless configuration options of Raspberry Pi to
-enable SSH or to configure the wireless network. This saves you the hassle
-of connecting a monitor and keyboard after your device has booted, as it will come
-up with WiFi and SSH already working and you can just SSH into it from your workstation.
-
-We recommend using Raspberry Pi Imager tool for configuration, but - if needed - we provide a way
-to configure it using the command line only. See options below.
-
-#### Using Raspberry Pi Imager tool (recommended)
-
-After you select custom mender image to flash click "Next" then "Edit settings":
-
-In "General" tab, create a user and password, configure your WiFi.
-
-In "Services" tab, enable SSH access.
-
-Click "Save" and then "Yes" that you would like to apply OS customization settings.
-
-You're now ready to flash the image. After it is finished, disconnect the SD card, insert it
-into your Raspberry Pi and boot it.
-
-#### Using command line
-
-Flash the image directly after choosing it in Raspberry Pi Imager tool, without doing any
-configuration.
+Flash the image without doing any configuration.
 
 Then, insert the SD card you flashed above and find the `boot` partition inside it.
 Open a terminal on your workstation and verify that it can be accessed in the
