@@ -48,10 +48,6 @@ before flashing.
 !!! Writing the SD card takes 5-25 minutes,
 !!! mainly depending on your SD card and writer speed.
 
-!!! The RPi5 integration with mender-convert currently uses a separate U-Boot binary with \`CONFIG_BOOTDELAY=-2\`
-!!! for our RPi5 images.
-!!! This is a workaround for an issue where RPi5 with U-Boot is stuck waiting for UART.
-
 ![flash the Raspberry Pi](flash-rpi.png)
 
 

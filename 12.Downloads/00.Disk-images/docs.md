@@ -29,6 +29,10 @@ Mender provides images based on the following distributions:
 !! manufacturer, or [contact us](mailto:contact@mender.io) if you have any
 !! questions on the Mender integration.
 
+!!! The RPi5 integration with mender-convert currently uses a separate U-Boot binary with \`CONFIG_BOOTDELAY=-2\`
+!!! for our RPi5 images.
+!!! This is a workaround for an issue where RPi5 with U-Boot is stuck waiting for UART.
+
 | Board                         | OS                              | Disk image                                                                                         | Storage size |
 |-------------------------------|---------------------------------|----------------------------------------------------------------------------------------------------|--------------|
 | Raspberry Pi 4 Model B        | Raspberry Pi OS Trixie Lite 2025-10-01 | [raspios-lite-raspberrypi4_trixie_64bit-mender-convert.img.xz][raspios-lite-raspberrypi4_trixie_64bit-mender-convert.img.xz] | 8 GB |
