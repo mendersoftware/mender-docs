@@ -30,6 +30,16 @@ and [Mender MCU Client configuration](../../06.Operating-System-updates-Zephyr/0
 ! Warning: Using *shorter* than default intervals with hosted Mender is considered *excessive use* and may trigger rate limiting,
 ! unless it is 10 devices or less for trial/testing or otherwise agreed upon in advance.
 
+### Maximum number of download retries
+The maximum number of times that mender-update retries continuing a download of an Artifact
+that was interrupted e.g. by network issues.
+
+Default: `10`</br>
+Minimum: `1`</br>
+Maximum: `10,000`
+
+This is a Client side configuration, see [Mender Client configuration](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md).
+
 ### Maximum size of Artifact uploads
 The maximum size of pre-built Mender Artifacts that can be uploaded to the Mender Server.
 
