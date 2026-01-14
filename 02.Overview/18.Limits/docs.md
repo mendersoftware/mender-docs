@@ -90,3 +90,11 @@ The maximum uncompressed size of the root file system in Mender Artifacts that y
 Default: `5 GiB`</br>
 Override with the Mender Server environment variable: `DEPLOYMENTS_SERVER_SIDE_DELTA_GENERATION_MAX_ARTIFACT_SIZE_MB`
 Note that the environment variable is represented in **MiB**, and its default value is `5120`.
+
+### Audit log retention
+
+The duration from when an event happened until the audit log is removed from the server.
+
+Default: `365 days`</br>
+Override with helm value `auditlogs.logRetentionSeconds`.
+Note that the value is specified in seconds (365 days is 31536000 seconds).
