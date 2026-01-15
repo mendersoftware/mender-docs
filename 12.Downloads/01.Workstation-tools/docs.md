@@ -95,13 +95,6 @@ matching your device.
      | sudo tee /etc/apt/sources.list.d/mender.list
     ```
     [/ui-tab]
-    [ui-tab title="Debian 11"]
-    <!--AUTOMATION: ignore -->
-    ```bash
-    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/workstation-tools debian/bullseye/stable main" \
-     | sudo tee /etc/apt/sources.list.d/mender.list
-    ```
-    [/ui-tab]
     [ui-tab title="Ubuntu 24.04"]
     <!--AUTOMATION: ignore -->
     ```bash
