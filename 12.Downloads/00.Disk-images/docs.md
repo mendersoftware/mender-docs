@@ -38,6 +38,11 @@ Mender provides images based on the following distributions:
 | Raspberry Pi 4 Model B        | Raspberry Pi OS Trixie Lite 2025-10-01 | [raspios-lite-raspberrypi4_trixie_64bit-mender-convert.img.xz][raspios-lite-raspberrypi4_trixie_64bit-mender-convert.img.xz] | 8 GB |
 | Raspberry Pi 5                | Raspberry Pi OS Trixie Lite 2025-10-01 | [raspios-lite-raspberrypi5_trixie_64bit-mender-convert.img.xz][raspios-lite-raspberrypi5_trixie_64bit-mender-convert.img.xz]     | 8 GB |
 
+<!--
+IMPORTANT: When updating the disk images, also remember to update https://docs.mender.io/releases/rpi_imager_schema.json
+           You can find the json in the mender-docs-site repository.
+           `url`, `release_date`, `image_download_size` and `extract_sha256` must all be updated and correspond to the images listed here
+-->
 <!--AUTOVERSION: "mender-convert-%.img.xz"/mender-convert -->
 [raspios-lite-raspberrypi4_trixie_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2025-10-01-raspios-lite/arm/2025-10-01-raspios-lite-raspberrypi4_trixie_64bit-mender-convert-5.1.0.img.xz
 [raspios-lite-raspberrypi5_trixie_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2025-10-01-raspios-lite/arm/2025-10-01-raspios-lite-raspberrypi5_trixie_64bit-mender-convert-5.1.0.img.xz
