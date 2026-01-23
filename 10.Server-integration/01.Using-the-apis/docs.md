@@ -131,6 +131,8 @@ curl -H "Authorization: Bearer $JWT" -X DELETE -k $MENDER_SERVER_URI/api/managem
 !! change. This is because the token contains information about your current plan,
 !! and it will become invalid upon upgrade.
 
+!! WARNING: Personal access tokens are not automatically revoked for users who are disabled in an identity provider. If using single sign on, users personal access tokens must be revoked separately.
+
 ### Session Token
 
 To get the session token navigate to [your profile](https://hosted.mender.io/ui/settings/my-profile) and under "Session token" click "COPY TO CLIPBOARD".
