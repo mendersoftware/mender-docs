@@ -40,10 +40,6 @@ Artifacts that you deploy to the devices in the field.
 In order to create another OTA update, the device with the golden image is
 booted again, i.e. the steps from 2. onwards are carried out again.
 
-!!! `mender-convert` is currently tested on BeagleBone, Raspberry Pi 3 and
-!!! Raspberry Pi 4, using official Debian or Raspberry Pi OS images. The intention is
-!!! to extend and test `mender-convert` to cover more boards and OSes.
-
 ## Prerequisites
 
 ### Enough free disk space on your workstation
@@ -157,14 +153,33 @@ Run mender-convert from inside the container with your desired options, e.g.
 # move overlay to the input folder
 mkdir -p input/overlay
 mv <PATH_TO_MY_OVERLAY>/* input/overlay/*
-
-# convert the image
-MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
-    --disk-image input/golden-image-1.img \
-    --config configs/raspberrypi/uboot/debian/raspberrypi4_bookworm_64bit_config \
-    --overlay input/rootfs_overlay_demo/
 ```
 
+<br> 
+Convert the Image 
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="Raspberry Pi 4"]
+```bash
+MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
+    --disk-image input/golden-image-1.img \
+    --config configs/raspberrypi/uboot/debian/raspberrypi4_trixie_64bit_config \
+    --overlay input/rootfs_overlay_demo/
+```
+[/ui-tab]
+[ui-tab title="Raspberry Pi 5"]
+```bash
+MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
+    --disk-image input/golden-image-1.img \
+    --config configs/raspberrypi/uboot/debian/raspberrypi5_trixie_64bit_config \
+    --overlay input/rootfs_overlay_demo/
+```
+[/ui-tab]
+[/ui-tabs]
+
+!!! Note: Both examples listed here use the Debian trixie release.
+!!! Make sure to replace <DEBIAN\_RELEASE\> in the line --config configs/raspberrypi/uboot/debian/raspberrypi5_<DEBIAN\_RELEASE\>_64bit_config \ with your own specific release.
+ 
 Conversion will take 10-30 minutes, depending on image size and resources
 available. In the meantime can watch `work/convert.log` for progress and
 diagnostics information.
