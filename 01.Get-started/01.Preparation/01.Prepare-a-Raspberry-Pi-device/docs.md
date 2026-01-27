@@ -66,6 +66,10 @@ Download the Raspberry Pi OS image ready for Mender:
 [raspios-lite-raspberrypi5_trixie_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2025-10-01-raspios-lite/arm/2025-10-01-raspios-lite-raspberrypi5_trixie_64bit-mender-convert-5.1.0.img.xz
 
 Flash the image without doing any configuration.
+!!! NB: Make sure the path to the SD is correct before flashing.
+```bash
+dd if=/path/to/image.img of=path/to/sdX bs=4M status=progress
+```
 
 Then, insert the SD card you flashed above and find the `boot` partition inside it.
 Open a terminal on your workstation and verify that it can be accessed in the
@@ -89,10 +93,10 @@ RPI_BOOT="$(find /Volumes/ -maxdepth 1 -name boot -or -name bootfs)"
 If this outputs nothing you can continue. If you get the ERROR, find out where
 the SD card's boot partition is accessible and change the `RPI_BOOT` variable accordingly.
 
-With the path to the boot directory set up, we first configure the default user and password:
+With the path to the boot directory set up, first configure the default user and password:
 
 ```bash
-USERNAME='' # CHANGE: your desired username
+USERNAME=""
 PASSWORD="$(openssl passwd)"
 
 cat << EOF > "$RPI_BOOT"/userconf.txt
@@ -100,79 +104,66 @@ ${USERNAME}:${PASSWORD}
 EOF
 ```
 
-In latest RPi versions wifi network configuration has been changed from
-plain `wpa_supplicant.conf` file in favor of using `rpi-imager` tool
-and this is the easiest way to configure wifi.
-
-It is strongly advised to use `rpi-imager` if possible as this is the
-configurator suggested by the official RPi documentation.
-
-Partial network configuration still can be performed from the command line
-in the headless mode but it is not guaranted to always work (may
-depend on country code settings).
-
-Bellow script is extracted from the `rpi-imager` backend and mimics this
-tool behavior from the command line.
+Next configure the network related fields:
 
 ```bash
-RPI_ROOT="$(awk '/media.*root(fs)?/ { print $2; }' /proc/mounts)"
-[ ! -d "$RPI_ROOT" ] && echo "ERROR: RPI root partition not found"
+HOSTNAME=""
+WIFI_SSID=""
+WIFI_PASS=""
+WLAN_COUNTRY="" # A two letter country code ex. NO, US etc.
+```
 
-WIFI_SSID='' # CHANGE: your WiFi name
-WIFI_PASS='' # CHANGE: your WiFi password
+!!! NB: It is important that the `WLAN_COUNTRY` is set to the country code where the device is located.
 
-UUID=$(uuid -v4)
+Now run these commands to create necessary configuration files on the boot partition:
+```bash
+touch $RPI_BOOT/ssh $RPI_BOOT/meta-data $RPI_BOOT/user-data
+```
 
-# Based on https://github.com/RPi-Distro/raspberrypi-sys-mods/blob/bookworm/usr/lib/raspberrypi-sys-mods/imager_custom
+In latest RPi versions wifi network configuration has been changed from
+a plain `wpa_supplicant.conf` file in favor of using the `rpi-imager` tool
+and this is the easiest way to configure wifi.
 
-CONNFILE="$RPI_ROOT"/etc/NetworkManager/system-connections/preconfigured.nmconnection
+Use the script below for configuring the cloud-init files on the boot partition.
 
-cat <<- EOF >${CONNFILE}
+```bash
+cat <<- EOF > $RPI_BOOT/user-data
+#cloud-config
+
+hostname: ${HOSTNAME}
+manage_etc_hosts: true
+ssh_pwauth: true
+
+write_files:
+  - path: /etc/NetworkManager/system-connections/wifi-connection.nmconnection
+    permissions: '0600'
+    content: |
       [connection]
-      id=preconfigured
-      uuid=${UUID}
+      id=wifi-connection
       type=wifi
+      interface-name=wlan0
+
       [wifi]
       mode=infrastructure
       ssid=${WIFI_SSID}
-      hidden=false
-      [ipv4]
-      method=auto
-      [ipv6]
-      addr-gen-mode=default
-      method=auto
-      [proxy]
-EOF
 
-if [ ! -z "${WIFI_PASS}" ]; then
-  cat <<- EOF >>${CONNFILE}
       [wifi-security]
+      auth-alg=open
       key-mgmt=wpa-psk
       psk=${WIFI_PASS}
+
+      [ipv4]
+      method=auto
+
+      [ipv6]
+      method=auto
+
+runcmd:
+  - raspi-config nonint do_wifi_country ${WLAN_COUNTRY}
 EOF
-fi
 ```
 
-NetworkManager will ignore nmconnection files with incorrect permissions,
-to prevent Wi-Fi credentials accidentally being world-readable. It need to be
-changed manually.
-
-```bash
-RPI_ROOT="$(awk '/media.*root(fs)?/ { print $2; }' /proc/mounts)"
-[ ! -d "$RPI_ROOT" ] && echo "ERROR: RPI root partition not found"
-
-CONNFILE="$RPI_ROOT"/etc/NetworkManager/system-connections/preconfigured.nmconnection
-
-chmod 600 ${CONNFILE}
-```
-
-Finally, enable SSH by creating an empty file:
-
-```bash
-touch "$RPI_BOOT"/ssh
-```
-
-Last but not least, **unmount the boot partition** to make all the changes are synced to it safely:
+Last but not least, **unmount the boot partition** to make sure all the changes are synced to it safely:
 
 ```bash
 umount "$RPI_BOOT"
@@ -181,7 +172,6 @@ umount "$RPI_BOOT"
 Now disconnect the SD card, insert it into your Raspberry Pi and boot it.
 
 If you have a different network setup or encounter any issues, please see [the official Raspberry Pi documentation on headless setups](https://www.raspberrypi.com/documentation/computers/configuration.html?target=_blank#setting-up-a-headless-raspberry-pi).
-
 
 
 ### Option #2: Configure your Raspberry Pi with a keyboard and monitor attached
