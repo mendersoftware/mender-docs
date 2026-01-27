@@ -147,7 +147,6 @@ different components than the legacy one. The `mender-client4` Debian package in
 * the default [identity script](../../03.Client-installation/03.Identity/docs.md)
 * the default [inventory scripts](../../03.Client-installation/04.Inventory/docs.md)
 * and the default [update modules](../../03.Client-installation/05.Use-an-updatemodule/docs.md)
-  (and its generators).
 * the `mender-flash` tool
 * the `mender-setup` tool
 * the `mender-snapshot` tool
