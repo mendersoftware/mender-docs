@@ -14,12 +14,13 @@ of Mender, see the [Compatibility policy](../../02.Overview/15.Compatibility-pol
 The latest long term support (LTS) versions of Mender components are shown in the
 in the table below:
 
-| Released component  | Release month | Support status      |
-| ------------------- | ------------- | ------------------- |
-| Mender Client 5.0   | 2025-01       | Supported           |
-| Mender Gateway 2.0  | 2025-01       | Supported           |
-| Mender Server 4.0   | 2025-01       | Supported           |
-| Mender 3.7 (bundle) | 2024-05       | EOL (since 2025-05) |
+| Released component  | Release month | Support status          |
+| ------------------- | ------------- | ----------------------- |
+| Mender Client 5.0   | 2025-01       | Supported               |
+| Mender Gateway 2.0  | 2025-01       | Supported               |
+| Mender Server 4.1   | 2026-01       | Supported               |
+| Mender Server 4.0   | 2025-01       | Supported until 2026-08 |
+| Mender 3.7 (bundle) | 2024-05       | EOL (since 2025-05)     |
 
 When a new LTS version is released for a component, the previous LTS
 version is supported for at least 6 months.
