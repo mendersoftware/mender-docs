@@ -35,7 +35,7 @@ Microcontroller devices often need to manage network usage and power, so Mender'
 * `MENDER_CLIENT_INVENTORY_REFRESH_INTERVAL` – how often the client sends inventory data to the server. 
 
 
-In the demo application (mender-mcu-integration), these are set to  values suitable for demo purposes (30 seconds for update polling and 60 seconds for inventory refresh). For production deployments, however, default settings are much higher: – 1 day for update polling and 14 days for inventory refresh. Longer intervals help reduce power consumption and network load and are aligned with our fair usage policy. Running production devices with demo intervals (e.g., polling every 30 or 60 seconds) is considered unacceptable and may trigger rate limits. We strongly recommend that you adjust these intervals in your project to ensure both optimal performance and compliance with fair usage standards.
+In the demo application (mender-mcu-integration), these are set to  values suitable for demo purposes (30 seconds for update polling and 60 seconds for inventory refresh). For production deployments, however, default settings are much higher: seven days for both update polling and inventory refresh. Longer intervals help reduce power consumption and network load and are aligned with our fair usage policy. Running production devices with demo intervals (e.g., polling every 30 or 60 seconds) is considered unacceptable and may trigger rate limits. We strongly recommend that you adjust these intervals in your project to ensure both optimal performance and compliance with fair usage standards.
 
 ## Device identity
 
