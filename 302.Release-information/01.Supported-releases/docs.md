@@ -82,10 +82,21 @@ to be available. For all other endpoints it will use v1.
 !!! ensure they all run supported versions. This will prevent issues in the future.
 
 
-## Mender Client subcomponents
+## Mender Client
+### Subcomponents
 The Mender Client consists of several subcomponents. See the table below for a mapping
 of which subcomponents are included in a given Mender Client version.
 
-| Mender Client | mender-connect | mender-configure | mender-monitor | mender-binary-delta | mender-flash |
-| ------------- | -------------- | ---------------- | -------------- | ------------------- | ------------ |
-| 5.0           | 2.3            | 1.1              | 1.4            | 1.5                 | 1.0          |
+| Mender Client | → | mender-update | mender-auth | mender-connect | mender-monitor | mender-flash |
+| ------------- | - |-------------- | ----------- | -------------- | -------------- | ------------ |
+| 5.0           |   | 5.0           | 5.0         | 2.3            | 1.4            | 1.0          |
+
+### Update Modules
+The Mender Client consists of several Update Modules. See the table below for a mapping
+of which Update Modules are included in a given Mender Client version.
+
+| Mender Client | → | mender-configure | mender-binary-delta | single-file     | rootfs          | directory       |
+| ------------- | - | ---------------- | ------------------- | --------------- | --------------- | --------------- |
+| 5.0           |   | 1.1              | 1.5                 | 5.0<sup>1</sup> | 5.0<sup>1</sup> | 5.0<sup>1</sup> |
+
+<sup>1</sup> Vesioned and delivered with `mender-update`
