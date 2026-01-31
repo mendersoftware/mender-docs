@@ -177,3 +177,7 @@ submitting an authentication request](../../200.Server-side-API/?target=_blank#d
 ## Authorize to external systems
 
 Mender makes it possible to integrate devices with [Azure IoT Hub](../../10.Server-integration/05.Azure-IoT-Hub/docs.md).
+
+## Authentication in the context of a System
+
+When orchestrating updates across a System (see [Orchestrate updates](../../07.Orchestrate-updates/chapter.md)) please note that Authentication is relevant to the System device only. The Components do not directly communicate with the Mender Server, and thus are not in the scope of this functionality.

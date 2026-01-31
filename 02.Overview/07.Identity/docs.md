@@ -45,3 +45,11 @@ identity of the device based on these attributes.
 
 Please refer to the [client installation section](../../03.Client-installation/03.Identity/docs.md)
 to find detailed tutorial on managing Device identities.
+
+## Identity in the context of a System
+
+When orchestrating updates across a System (see [Orchestrate updates](../../07.Orchestrate-updates/chapter.md)) it is important to distinguish between two distinct layers of identity.
+First is the System device identity, which is what is described above. Second is Component identity which identifies the specific peripherals managed by the System device.
+Unlike the System device identity, a Component's identity is defined within a scope of the System. It must be unique to this environment only and can be changed if a Component is replaced.
+
+All Component identities are provided by the Components themselves using `Identity` call in corresponding Interface, described in [Interface Protocol](../../07.Orchestrate-updates/04.Interface-protocol/docs.md). The Component identities are reported to the Mender Server by the System device as part of its inventory.

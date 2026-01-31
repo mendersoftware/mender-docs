@@ -89,3 +89,12 @@ but your use case requires a different set of attributes, please email [contact@
 !! It stores the status (`accepted`, `rejected`, etc.) of a device and changes whether
 !! the device status changes. Therefore, you cannot modify it directly.
 
+## Inventory in the context of a System
+
+When orchestrating updates across a System (see [Orchestrate updates](../../07.Orchestrate-updates/chapter.md)) it is important to distinguish between two distinct layers of inventory.
+First is the System device inventory, which is what is described above. Second is Component inventory which is the inventory of a specific Component. Component inventories provide granular details about Components such as firmware versions or hardware revisions.
+
+
+Component inventory attributes are considered part of the System device inventory, and have the same format and constraints (see [Inventory query](../../07.Orchestrate-updates/04.Interface-protocol/docs.md#inventory-query), and [Inventory](../../03.Client-installation/04.Inventory/docs.md)).
+
+All Component inventories are provided by the Components themselves using `Inventory` call in corresponding Interface, described in [Interface Protocol](../../07.Orchestrate-updates/04.Interface-protocol/docs.md) and are not stored by the System device. The Component inventories are reported to the Mender Server by the System device as part of its inventory.
