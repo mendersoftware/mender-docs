@@ -6,31 +6,44 @@ taxonomy:
 
 This section gives an overview over important resource limits that help ensure the health and security of the Mender Server.
 
+Many limits vary based on the [Device tier](../17.Device-tiers/docs.md) (standard, micro, or system). Device tiers classify devices by their capabilities and use cases.
+
 ### Polling interval: Update checks
-The frequency with which a Device checks for updates.
 
-Default for Mender Client: `1800 seconds` (30 minutes)</br>
-Default for Mender MCU Client: `604800 seconds` (7 days)</br>
+The frequency with which a Device checks for updates. This varies by device tier.
 
-This is a Client side configuration, see [Mender Client configuration](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md),
-and [Mender MCU Client configuration](../../06.Operating-System-updates-Zephyr/04.Customize-Mender-mcu/docs.md).
+| Device Tier | Default Interval            | Configuration                                                                                               |
+| ----------- | --------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Micro       | `604800 seconds` (7 days)   | [Mender MCU Client configuration](../../06.Operating-System-updates-Zephyr/04.Customize-Mender-mcu/docs.md) |
+| Standard    | `1800 seconds` (30 minutes) | [Mender Client configuration](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md)   |
+| System      | `1800 seconds` (30 minutes) | [Mender Client configuration](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md)   |
 
-! Warning: Using *shorter* than default intervals with hosted Mender is considered *excessive use* and may trigger rate limiting,
+! Warning: Using _shorter_ than default intervals with hosted Mender is considered _excessive use_ and may trigger rate limiting,
 ! unless it is 10 devices or less for trial/testing or otherwise agreed upon in advance.
 
 ### Polling interval: Inventory updates
-The frequency a Device can update its current inventory to the Mender Server.
 
-Default for Mender Client: `28800 seconds` (8 hours)</br>
-Default for Mender MCU Client: `604800 seconds` (7 days)</br>
+The frequency a Device can update its current inventory to the Mender Server. This varies by device tier.
 
-This is a Client side configuration, see [Mender Client configuration](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md),
-and [Mender MCU Client configuration](../../06.Operating-System-updates-Zephyr/04.Customize-Mender-mcu/docs.md).
+| Device Tier | Default Interval          | Configuration                                                                                               |
+| ----------- | ------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Micro       | `604800 seconds` (7 days) | [Mender MCU Client configuration](../../06.Operating-System-updates-Zephyr/04.Customize-Mender-mcu/docs.md) |
+| Standard    | `28800 seconds` (8 hours) | [Mender Client configuration](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md)   |
+| System      | `28800 seconds` (8 hours) | [Mender Client configuration](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md)   |
 
-! Warning: Using *shorter* than default intervals with hosted Mender is considered *excessive use* and may trigger rate limiting,
+! Warning: Using _shorter_ than default intervals with hosted Mender is considered _excessive use_ and may trigger rate limiting,
 ! unless it is 10 devices or less for trial/testing or otherwise agreed upon in advance.
 
+### Artifact size limits
+
+| Tier     | Default Maximum Artifact Size | Notes                                                 |
+| -------- | ----------------------------- | ----------------------------------------------------- |
+| Micro    | 10 MiB                        | Limited by MCU flash memory, typically < 10 MiB       |
+| Standard | 10 GiB                        | Configurable via `DEPLOYMENTS_STORAGE_MAX_IMAGE_SIZE` |
+| System   | 10 GiB                        | Applies to Manifest Artifacts and component artifacts |
+
 ### Maximum number of download retries
+
 The maximum number of times that mender-update retries continuing a download of an Artifact
 that was interrupted e.g. by network issues.
 
@@ -39,17 +52,13 @@ Minimum: `1`</br>
 Maximum: `10,000`
 
 This is a Client side configuration, see [Mender Client configuration](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md).
-### Maximum size of API payload 
+
+### Maximum size of API payload
+
 The maximum size of API payload for all API calls unless otherwise specified affects POST API calls. If a deployment log is over this limit, it can fail to upload the log.
 
-Default: `1 MiB`</br> 
+Default: `1 MiB`</br>
 Override per service with the Mender Server environment variable: `service_REQUEST_SIZE_LIMIT` e.g. `DEPLOYMENTS_REQUEST_SIZE_LIMIT`
-
-### Maximum size of Artifact uploads
-The maximum size of pre-built Mender Artifacts that can be uploaded to the Mender Server.
-
-Default: `10 GiB`</br> 
-Override with the Mender Server environment variable: `DEPLOYMENTS_STORAGE_MAX_IMAGE_SIZE`
 
 ### Maximum size of single file uploads
 The maximum size of single-file type Artifacts generated by the Mender Server with the [Generate Artifact endpoint](https://docs.mender.io/api/#management-api-deployments-generate-artifact).

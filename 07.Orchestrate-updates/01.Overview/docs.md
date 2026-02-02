@@ -6,6 +6,8 @@ taxonomy:
 
 !! This section is a preview of Mender's support for Orchestrated updates using mender-orchestrator. It is not yet recommended for production use. Also, expect the APIs and configurations to evolve as the implementation matures.
 
+!!! Devices running Mender Orchestrator must use the **system** [device tier](../../02.Overview/17.Device-tiers/docs.md). The system tier is specifically designed for devices that coordinate updates across multiple components.
+
 Mender Orchestrator is the software responsible for updating the Components in a System.
 It is responsible for inspecting the System's current state, such as the software versions running on the Components. The System's architecture is defined by the [Topology](../03.Topology/docs.md),
 which specifies what Components are present and how they can be updated. Mender Orchestrator reads the System's desired state from a [Manifest](../02.Manifest/docs.md), which defines the exact combination
