@@ -89,7 +89,7 @@ Mender Artifact:
   Format: mender
   Version: 3
   Signature: no signature
-  Compatible devices: [raspberrypi5]
+  Compatible types: [raspberrypi5]
   Provides group:
   Depends on one of artifact(s): []
   Depends on one of group(s): []

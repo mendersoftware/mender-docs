@@ -89,7 +89,7 @@ Mender Artifact:
   Format: mender
   Version: 3
   Signature: no signature
-  Compatible devices: [raspberrypi4]
+  Compatible types: [raspberrypi4]
   Provides group: 
   Depends on one of artifact(s): []
   Depends on one of group(s): []
@@ -143,7 +143,7 @@ Mender Artifact:
   Format: mender
   Version: 3
   Signature: no signature
-  Compatible devices: [raspberrypi4]
+  Compatible types: [raspberrypi4]
   Provides group: 
   Depends on one of artifact(s): []
   Depends on one of group(s): []
@@ -210,7 +210,7 @@ Mender Artifact:
   Format: mender
   Version: 3
   Signature: no signature
-  Compatible devices: [raspberrypi4]
+  Compatible types: [raspberrypi4]
   Provides group: 
   Depends on one of artifact(s): []
   Depends on one of group(s): []
@@ -264,7 +264,7 @@ Mender Artifact:
   Format: mender
   Version: 3
   Signature: no signature
-  Compatible devices: [raspberrypi4]
+  Compatible types: [raspberrypi4]
   Provides group: 
   Depends on one of artifact(s): []
   Depends on one of group(s): []
@@ -333,7 +333,7 @@ Mender Artifact:
   Format: mender
   Version: 3
   Signature: no signature
-  Compatible devices: [raspberrypi4]
+  Compatible types: [raspberrypi4]
   Provides group: 
   Depends on one of artifact(s): []
   Depends on one of group(s): []
