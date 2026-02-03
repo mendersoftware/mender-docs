@@ -10,7 +10,7 @@ This section gives an overview over important resource limits that help ensure t
 The frequency with which a Device checks for updates.
 
 Default for Mender Client: `1800 seconds` (30 minutes)</br>
-Default for Mender MCU Client: `86400 seconds` (1 day)</br>
+Default for Mender MCU Client: `604800 seconds` (7 days)</br>
 
 This is a Client side configuration, see [Mender Client configuration](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md),
 and [Mender MCU Client configuration](../../06.Operating-System-updates-Zephyr/04.Customize-Mender-mcu/docs.md).
@@ -22,7 +22,7 @@ and [Mender MCU Client configuration](../../06.Operating-System-updates-Zephyr/0
 The frequency a Device can update its current inventory to the Mender Server.
 
 Default for Mender Client: `28800 seconds` (8 hours)</br>
-Default for Mender MCU Client: `1209600 seconds` (14 days)</br>
+Default for Mender MCU Client: `604800 seconds` (7 days)</br>
 
 This is a Client side configuration, see [Mender Client configuration](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md),
 and [Mender MCU Client configuration](../../06.Operating-System-updates-Zephyr/04.Customize-Mender-mcu/docs.md).
