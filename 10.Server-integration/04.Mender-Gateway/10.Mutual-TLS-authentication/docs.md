@@ -25,3 +25,5 @@ If you are unfamiliar with the mTLS flow, please take a look at the [flow diagra
 After it is suggested that you complete the [evaluation with docker-compose](02.Evaluation-with-docker-compose/docs.md). It will lead you to a working example with a simple server setup and a client.
 
 Once you have made the choices regarding [Public Key Infrastructure](https://en.wikipedia.org/wiki/Public_key_infrastructure) (PKI) and have the client ready, check the [production installation with Kubernetes](03.Production-installation-with-kubernetes/docs.md) which focuses only on how to set up the mTLS proxy server for production.
+
+For production deployments with many devices or long device lifecycles, see [Certificate rotation](04.Certificate-rotation/docs.md) to learn how to rotate intermediate CAs without changing the gateway configuration.
