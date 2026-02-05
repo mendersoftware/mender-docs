@@ -103,3 +103,9 @@ The duration from when an event happened until the audit log is removed from the
 Default: `365 days`</br>
 Override with helm value `auditlogs.logRetentionSeconds`.
 Note that the value is specified in seconds (365 days is 31536000 seconds).
+
+### Maximum number of RBAC permission sets per Role
+The maximum number of permission sets (e.g., User Management, Releases, Device Group Management) that can be assigned to a custom Role on the Mender Server.
+
+Default: `15`</br>
+Override with the Mender Server environment variable: `USERADM_LIMIT_PERMISSION_SETS_PER_ROLE`
