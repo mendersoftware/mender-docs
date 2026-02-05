@@ -97,8 +97,14 @@ to gain access to keys to impersonate devices.
 Starting with the Mender Client 2.4.0, the Client uses OpenSSL for cryptographic
 operations, which enables usage of
 <!--AUTOVERSION: "www.openssl.org/docs/man%"/ignore-->
-[OpenSSL Engine's](https://www.openssl.org/docs/man1.1.1/man1/engine.html) as
+[OpenSSL Engine's](https://www.openssl.org/docs/man1.1.1/man1/engine.html) or
+[OpenSSL Providers](https://www.openssl.org/docs/man3.0/man7/provider.html) as
 abstractions for HSM.
+
+!!! note
+    OpenSSL 3.0 deprecated the Engine API in favor of the Provider API. While Mender
+    continues to support Engines for backward compatibility, it is recommended to
+    use Providers when running OpenSSL 3.0 or later.
 
 For the Mender Client to be able to utilize an HSM, OpenSSL must first be
 configured appropriately, and this is normally vendor specific. Please see
@@ -108,7 +114,8 @@ the following tutorial for vendor specific instructions:
 The Mender Client supports [PKCS#11](https://tools.ietf.org/html/rfc7512), or
 any other HSM access methods that are supported by
 <!--AUTOVERSION: "www.openssl.org/docs/man%"/ignore-->
-[OpenSSL Engine's](https://www.openssl.org/docs/man1.1.1/man1/engine.html). See
+[OpenSSL Engine's](https://www.openssl.org/docs/man1.1.1/man1/engine.html) or
+[OpenSSL Providers](https://www.openssl.org/docs/man3.0/man7/provider.html). See
 [Mender Client configuration sections](https://docs.mender.io/client-installation/configuration/configuration-options#httpsclient) for additional details.
 
 Currently, Mender supports hardware security engines for SSL handshake, mTLS,
