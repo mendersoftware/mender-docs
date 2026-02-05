@@ -29,6 +29,8 @@ This will start the deployment wizard. As we have only one device connected the 
 
 There is already a demo Artifact available the first time you
 use hosted Mender, for the purposes of this tutorial. It contains a small web server you will run on your device.
+If you want to build it yourself the sources and instructions are available at [repository](https://github.com/mendersoftware/mender-demo-artifact).
+
 
 Select the Release with the name beginning *mender-demo-artifact*; this will be deployed to your device.
 
