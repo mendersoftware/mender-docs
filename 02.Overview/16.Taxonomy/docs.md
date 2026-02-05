@@ -63,6 +63,16 @@ from the client, and transmits a response on the D-Bus.
 server, used in Server-side APIs to specify an individual device. See the
 documentation on device [Identity](../07.Identity/docs.md) for more information.
 
+* _Device tier_ - A classification that describes the class of an authenticated device.
+There are three device tiers:
+  * **standard** - An embedded Linux device running the Mender Client (mender-auth and mender-update)
+  * **micro** - A microcontroller unit (MCU) running `mender-mcu`, typically with constrained resources
+  * **system** - A device running Mender Orchestrator for coordinated multi-component updates
+  
+  Device tiers affect artifact size limits, polling intervals, deployment restrictions, and
+  device count limits in your plan. See the documentation on [Device tiers](../17.Device-tiers/docs.md)
+  for more information.
+
 * _Device type_ - The type of device, used to ensure compatibility between the
 hardware and software. See the documentation on [Artifact](../03.Artifact/docs.md)
 for more information.

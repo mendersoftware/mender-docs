@@ -34,20 +34,39 @@ user-defined UIDs, etc.); think of it as an extension of a unique identifier
 into a multi-attribute structure (see [Identity](../../02.Overview/07.Identity/docs.md)).
 
 To obtain an auth token, the Device sends an **authentication request**
-containing the Identity attributes and its current **public key**. The client signs
-the request with the private key (kept secret on the Device), and the server uses
-the public key to verify the signature.
-The combination of **Identity attributes** and **public key** forms an
+containing the Identity attributes, its current **public key**, and its **device tier**. 
+The client signs the request with the private key (kept secret on the Device), and the 
+server uses the public key to verify the signature.
+
+The combination of **Identity attributes**, **public key**, and **device tier** forms an
 **authentication set**, or 'auth set' in short.
 
-The concept takes into consideration Device key rotation - a single Device may
-over time present different keys, and it's important to track those, and allow
-the user to accept (i.e. authorize) or reject a particular identity/key
-combination.
-Mender keeps tracks both of a **Device** as a single real-world entity, where each
+### Device tiers in authentication
+
+The [device tier](../17.Device-tiers/docs.md) classifies the device by its capabilities:
+* **standard** - Embedded Linux devices running the Mender Client
+* **micro** - Microcontroller units (MCUs) running `mender-mcu`
+* **system** - Devices running Mender Orchestrator for multi-component updates
+
+The device tier is transmitted in the authentication request and stored as part of the authentication set.
+This affects artifact size limits, polling intervals, and deployment restrictions.
+
+For backward compatibility, devices that do not specify a tier are automatically assigned the **standard** tier.
+
+### Authentication sets with device tiers
+
+The concept takes into consideration both device key rotation and tier changes - a single device may
+over time present different keys or change its tier, and it's important to track those combinations 
+and allow the user to accept (i.e. authorize) or reject a particular identity/key/tier combination.
+
+Mender keeps track of a **Device** as a single real-world entity, where each
 Device might create multiple **Authentication sets**. Note
 that maximum one Authentication set can be accepted for a specific Device at any
 given time.
+
+When a device changes its tier (for example, when upgrading from standard to system tier to enable
+Mender Orchestrator), it creates a new authentication set that must be authorized before the device
+can operate with the new tier.
 
 ## Authorization Flows
 
@@ -170,8 +189,74 @@ API to fetch the token and attach it to every API call under the HTTP `Authoriza
 The token does have an **expiry date** (one week period by default), but `mender-auth`
 will obtain a fresh token from the Mender Server automatically.
 
+The authentication token is associated with the device's current tier. If the device tier changes,
+a new authentication set must be created and authorized, resulting in a new authentication token.
+
 For details on the token format please see the relevant [documentation on
 submitting an authentication request](../../200.Server-side-API/?target=_blank#device-api-device-authentication).
+
+## Device tier handling in authentication
+
+### How device tier is transmitted
+
+The device tier is included in the authentication request sent to the Mender Server:
+
+1. The device sends an authentication request to `/api/devices/v1/authentication/auth_requests`
+2. The request body includes the `tier` field alongside identity data and public key
+3. The Mender Server validates the tier value (must be one of: `standard`, `micro`, `system`, or omitted for backward compatibility)
+4. The tier is stored as part of the device's authentication set
+
+Example authentication request payload:
+```json
+{
+  "id_data": "{\"mac\":\"52:54:00:12:34:56\"}",
+  "pubkey": "-----BEGIN PUBLIC KEY-----\n...",
+  "tier": "standard"
+}
+```
+
+### Where device tier is stored
+
+The device tier is stored:
+* In the **Authentication Set** record in the Device Authentication service
+* Associated with the device's identity and public key combination
+* Persisted in the Mender Server database alongside other authentication set data
+
+The tier can be viewed:
+* Through the Mender UI in the device details and pending devices views
+* Via the Server-side Device Authentication API
+* In the authentication set listing for each device
+
+### What happens when a device changes tier
+
+When a device needs to change its tier (for example, upgrading from standard to system tier):
+
+1. **Update device configuration**: The device's local configuration is updated to specify the new tier
+2. **New authentication request**: The device sends a new authentication request with the updated tier value
+3. **New authentication set**: The Mender Server creates a new authentication set with the new tier
+4. **Pending state**: The new authentication set enters the "pending" state
+5. **User authorization required**: An administrator must explicitly authorize the new authentication set
+6. **Transition**: Once authorized, the old authentication set is deauthorized automatically
+7. **New token**: The device receives a new authentication token associated with the new tier
+
+**Important notes:**
+* Only one authentication set per device can be in "accepted" state at any time
+* The tier change requires explicit user approval through the UI or API
+* The device will continue using the old tier until the new authentication set is authorized
+* Different tiers have different capabilities and restrictions (see [Device tiers](../17.Device-tiers/docs.md))
+
+### Authentication set extension
+
+The introduction of device tiers extends the existing Authentication Set data structure:
+
+**Authentication Set components:**
+* Identity attributes (unchanged)
+* Public key (unchanged)
+* **Device tier** (new field, optional for backward compatibility)
+* State: rejected, accepted, pending, or preauthorized
+
+This extension maintains full backward compatibility while enabling tier-based device management and
+enforcement of tier-specific limits and restrictions.
 
 
 ## Authorize to external systems

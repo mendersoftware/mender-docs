@@ -39,6 +39,39 @@ MENDER_UPDATE_POLL_INTERVAL_SECONDS = "1800"
 MENDER_INVENTORY_POLL_INTERVAL_SECONDS = "28800"
 ```
 
+## Configuring device tier
+
+The device tier affects authentication, polling intervals, artifact size limits and deployment restrictions.
+Mender supports three [device tiers](../../02.Overview/17.Device-tiers/docs.md) that classify devices by their capabilities:
+
+- `micro` - Microcontroller units (MCUs) running `mender-mcu`
+- `standard` - Embedded Linux devices running the Mender Client (default)
+- `system` - Devices running Mender Orchestrator for multi-component updates
+
+For Yocto builds, the device tier is set during the build process. Add the following to your `local.conf`:
+
+```bash
+MENDER_DEVICE_TIER = "standard"
+```
+
+Valid values are `standard`, `micro`, or `system`.
+The standard tier is the default for Yocto builds and requires no special configuration.
+
+### System tier
+
+For devices that need to run Mender Orchestrator to coordinate updates across multiple components, set the tier to `system`:
+
+```bash
+MENDER_DEVICE_TIER = "system"
+```
+
+The system tier is used for complex devices with multiple interdependent components, such as automotive ECUs or industrial equipment with distributed control systems.
+You will also need to install and configure `mender-orchestrator` on the device.
+See the [Orchestrate updates documentation](../../07.Orchestrate-updates/05.Installation/01.Yocto-Project/docs.md) for more information.
+
+! The micro tier is not typically used with Yocto builds, as it is designed for microcontroller units running Zephyr RTOS with `mender-mcu`.
+! For MCU devices, see the [Zephyr integration documentation](../../06.Operating-System-updates-Zephyr/chapter.md).
+
 
 ## Configuration file
 
