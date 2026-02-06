@@ -60,7 +60,7 @@ component_types:
 
 ## Demo Examples
 
-These examples demonstrate System updates using the demo environment with a gateway (Linux rootfs) and two demo RTOS Components. You'll create your own manifests and Artifacts.
+These examples demonstrate System updates using the demo environment with a System device (Linux rootfs) and two demo RTOS Components. You'll create your own manifests and Artifacts.
 
 ### Step 1: Create RTOS Component Artifacts
 
@@ -104,9 +104,9 @@ mender-artifact \
 rm $PAYLOAD
 ```
 
-### Step 2: Create Gateway Artifacts
+### Step 2: Create System device Artifacts
 
-Generate rootfs Artifacts for the gateway Component using the `mender-artifact` snapshot feature:
+Generate rootfs Artifacts for the System device using the `mender-artifact` snapshot feature:
 
 ```bash
 IP_ADDRESS=<your-device-ip>
@@ -139,7 +139,7 @@ rm -rf gateway-dump
 
 ### Step 3: Create Manifests
 
-Create Manifests that define your System state:
+Create Manifests that define your target System state:
 
 ```bash
 # Create manifest-v1.yaml
@@ -162,7 +162,7 @@ component_types:
 EOF
 ```
 
-This will first install the gateway-v1 Artifact to the gateway Component. Next it will install the rtos-v1 Artifact to the two rtos Components in parallel.
+This will first install the gateway-v1 Artifact to the System device. Next it will install the rtos-v1 Artifact to the two rtos Components in parallel.
 
 ```bash
 # Create manifest-v2.yaml
@@ -185,7 +185,7 @@ component_types:
 EOF
 ```
 
-This will first install the gateway-v2 Artifact to the gateway Component. Next it will install the rtos-v2 Artifact to the two rtos Components in parallel.
+This will first install the gateway-v2 Artifact to the System device. Next it will install the rtos-v2 Artifact to the two rtos Components in parallel.
 
 ### Step 4: Generate Manifest Artifacts
 
@@ -251,7 +251,7 @@ rtos.R456.device_type=rtos
 rtos.R456.version=rtos-v1
 ```
 
-You should see something similar to the output above. We can see that the gateway reports
+You should see something similar to the output above. We can see that the System device reports
 `gateway-v1` as its version, and that the two rtos Components report `rtos-v1`. You can
 also see this information by navigating to your System device's Software tab in hosted Mender.
 
