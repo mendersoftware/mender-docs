@@ -158,7 +158,7 @@ Then create a new Mender Artifact with the `hello-world` file as the only payloa
 
 ```bash
 ./mender-artifact write module-image \
-    -t $DEVICE_TYPE \
+    -c $DEVICE_TYPE \
     -o web-file-1.mender \
     -T web-file \
     -n web-file-1.0 \
@@ -166,7 +166,7 @@ Then create a new Mender Artifact with the `hello-world` file as the only payloa
 ```
 
 The command line options are detailed below:
-* `-t` - The compatible device type of this Mender Artifact.
+* `-c` - The compatible device type of this Mender Artifact.
 * `-o` - The path where to place the output Mender Artifact. This should always have a .mender suffix.
 * `-T` - The payload type. It should be the same as the Update Module name and corresponds to the filename of the script which is present inside the `/usr/share/mender/modules/v3` directory.
 * `-n` - The name of the Mender Artifact.
@@ -211,7 +211,7 @@ The `mender-artifact` tool allows you to supply multiple files using the `-f` fl
 
 ```bash
 ./mender-artifact write module-image \
-    -t $DEVICE_TYPE \
+    -c $DEVICE_TYPE \
     -o web-file-1.mender \
     -T web-file \
     -n web-file-1.1 \
@@ -221,7 +221,7 @@ The `mender-artifact` tool allows you to supply multiple files using the `-f` fl
 ```
 
 The command line options are detailed below:
-* `-t` - The compatible device type of this Mender Artifact.
+* `-c` - The compatible device type of this Mender Artifact.
 * `-o` - The path where to place the output Mender Artifact. This should always have a .mender suffix.
 * `-T` - The payload type. It should be the same as the Update Module name and corresponds to the filename of the script which is present inside the `/usr/share/mender/modules/v3` directory.
 * `-n` - The name of the Mender Artifact.

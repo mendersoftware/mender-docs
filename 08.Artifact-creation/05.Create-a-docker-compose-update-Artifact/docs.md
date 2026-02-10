@@ -70,7 +70,7 @@ Create the Artifact by for your target device by specifying the artifact name, d
 ```bash
 ./gen_docker-compose \
     --artifact-name docker-compose-artifact-v1 \
-    --device-type raspberrypi5 \
+    --compatible-types raspberrypi5 \
     --architecture arm64 \
     --manifests-dir manifests/ \
     --project-name my-webserver \
@@ -144,7 +144,7 @@ Now generate the Artifact using the `--images-dir` option:
 ```bash
 ./gen_docker-compose \
     --artifact-name docker-compose-artifact-v1 \
-    --device-type raspberrypi5 \
+    --compatible-types raspberrypi5 \
     --manifests-dir manifests/ \
     --images-dir images/ \
     --project-name my-webserver \
@@ -183,7 +183,7 @@ Additional options can be passed directly to the underlying `mender-artifact` to
 ```bash
 ./gen_docker-compose \
     --artifact-name docker-compose-artifact-v1 \
-    --device-type raspberrypi5 \
+    --compatible-types raspberrypi5 \
     --manifests-dir manifests/ \
     --project-name my-webserver \
     -- \

@@ -48,7 +48,7 @@ The last command will not terminate, but will wait for you to execute commands f
 ssh -p 8822 root@${IP_ADDRESS} cat /data/mender/dump > rootfs.ext4
 mender-artifact write rootfs-image \
     -f ssh://"${USER}@${IP_ADDRESS}" \
-    -t "${DEVICE_TYPE}" \
+    -c "${DEVICE_TYPE}" \
     -n system-v1 \
     -o system-v1.mender \
     -f rootfs.ext4

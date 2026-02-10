@@ -67,7 +67,7 @@ You can generate the Artifact for the Operating System update, including the app
 
 ```bash
 DEVICE_TYPE="raspberrypi4"
-mender-artifact write rootfs-image -t $DEVICE_TYPE \
+mender-artifact write rootfs-image -c $DEVICE_TYPE \
                                    -n rootfs-1.0 \
                                    -o rootfs-1.0.mender \
                                    -f rootfs-1.0.ext4 \
@@ -121,7 +121,7 @@ To generate the Artifact for the application update, you can run the command:
 ```bash
 DEVICE_TYPE="raspberrypi4"
 UPDATE_MODULE="myapps"
-mender-artifact write module-image -t $DEVICE_TYPE \
+mender-artifact write module-image -c $DEVICE_TYPE \
                                    -n myapp1-1.1 \
                                    -o myapp1-1.1.mender \
                                    -T $UPDATE_MODULE \
@@ -170,7 +170,7 @@ Similarly, to generate the Artifact for the other application, you can run the c
 ```bash
 DEVICE_TYPE="raspberrypi4"
 UPDATE_MODULE="myapps"
-mender-artifact write module-image -t $DEVICE_TYPE \
+mender-artifact write module-image -c $DEVICE_TYPE \
                                    -n myapp2-1.1 \
                                    -o myapp2-1.1.mender \
                                    -T $UPDATE_MODULE \
@@ -187,7 +187,7 @@ For example, if support for a specific `feature1` is needed to run the applicati
 
 ```bash
 DEVICE_TYPE="raspberrypi4"
-mender-artifact write rootfs-image -t $DEVICE_TYPE \
+mender-artifact write rootfs-image -c $DEVICE_TYPE \
                                    -n rootfs-1.1 \
                                    -o rootfs-1.1.mender \
                                    -f rootfs-1.1.ext4 \
@@ -241,7 +241,7 @@ At this point, if the next version of the `myapp1` application requires such a f
 ```
 DEVICE_TYPE="raspberrypi4"
 UPDATE_MODULE="myapps"
-mender-artifact write module-image -t $DEVICE_TYPE \
+mender-artifact write module-image -c $DEVICE_TYPE \
                                    -n myapp1-1.2 \
                                    -o myapp1-1.2.mender \
                                    -T $UPDATE_MODULE \
@@ -296,7 +296,7 @@ In this scenario, the system image provides the kernel, the operating system, an
 
 ```bash
 DEVICE_TYPE="raspberrypi4"
-mender-artifact write rootfs-image -t $DEVICE_TYPE \
+mender-artifact write rootfs-image -c $DEVICE_TYPE \
                                    -n rootfs-1.0 \
                                    -o rootfs-1.0.mender \
                                    -f rootfs-1.0.ext4 \
@@ -310,7 +310,7 @@ To generate the Artifact for the application update, you can run the command:
 ```bash
 DEVICE_TYPE="raspberrypi4"
 UPDATE_MODULE="myapps"
-mender-artifact write module-image -t $DEVICE_TYPE \
+mender-artifact write module-image -c $DEVICE_TYPE \
                                    -n myapp1-1.1 \
                                    -o myapp1-1.1.mender \
                                    -T $UPDATE_MODULE \
@@ -360,7 +360,7 @@ Similarly, to generate the Artifact for the other application, you can run the c
 ```bash
 DEVICE_TYPE="raspberrypi4"
 UPDATE_MODULE="myapps"
-mender-artifact write module-image -t $DEVICE_TYPE \
+mender-artifact write module-image -c $DEVICE_TYPE \
                                    -n myapp2-1.1 \
                                    -o myapp2-1.1.mender \
                                    -T $UPDATE_MODULE \

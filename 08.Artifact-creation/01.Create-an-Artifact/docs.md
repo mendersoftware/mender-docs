@@ -20,7 +20,7 @@ you can use the following command to generate an Artifact that contains the enti
 
 ```bash
 mender-artifact write rootfs-image \
-   -t beaglebone \
+   -c beaglebone \
    -n release-1 \
    --software-version rootfs-v1 \
    -f rootfs.ext4 \
@@ -31,7 +31,7 @@ Note that the `rootfs.ext4` filesystem image must be properly integrated with Me
 [Debian image](../../04.Operating-System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md).
 
 The remaining flags specify the parameters used to [match devices to deployments](../../02.Overview/05.Deployment/docs.md#Algorithm-for-selecting-the-Deployment-for-the-Device) as follows:
-* `-t`: specifies the compatible device types.
+* `-c`: specifies the compatible device types.
 * `-n`: specifies the name of the Artifact.
 * `--software-version` specifies the version string for the rootfs-image.
 * `-o`: specifies the path to the output file.
@@ -61,7 +61,7 @@ chmod +x single-file-artifact-gen
 Now create the Artifact with:
 ```bash
 ./single-file-artifact-gen \
-  --device-type raspberrypi4 \
+  --compatible-types raspberrypi4 \
   -o artifact.mender \
   -n updated-authorized_keys-1.0 \
   --software-name authorized_keys \
@@ -74,7 +74,7 @@ Note specifically that in this case we are creating a *module-image*, using the 
 file](https://hub.mender.io/t/single-file/486/26?target=_blank) [Update
 Module](../../08.Artifact-creation/10.Create-a-custom-Update-Module/docs.md). The Artifact created
 will be compatible with the *raspberrypi4* device type, although you can specify more device types
-using multiple times `--device-type` if needed. The name of the Artifact is declared as
+using multiple times `--compatible-types` if needed. The name of the Artifact is declared as
 *updated-authorized_keys-1.0*, we set the version of the software to *1.0* and indicate that it will
 be installed in the *rootfs* partition. The resulting file `artifact.mender` holds the Artifact.
 
