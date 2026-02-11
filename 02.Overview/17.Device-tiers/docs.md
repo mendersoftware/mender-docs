@@ -30,7 +30,7 @@ The micro tier is designed for resource-constrained microcontroller units (MCUs)
 - Supports firmware updates
 - Default update check interval: 604800 seconds (7 days)
 - Default inventory update interval: 1209600 seconds (14 days)
-- Reduced artifact size limits due to constrained storage
+- Reduced artifact size limits (10 MiB) due to constrained storage
 - Limited feature set compared to standard tier (no delta updates, no state scripts)
 
 **Typical devices:**
@@ -112,7 +112,7 @@ Deployments to devices of different tiers may have restrictions:
 Your Mender plan has a separate device limit for each tier.
 You can purchase more devices for a given tiers at the upgrade page for your account.
 
-The free trial evaluation period includes up to 10 devices of all device tiers.
+The free trial evaluation period includes up to 5 devices of all device tiers.
 
 ## Backward compatibility
 
@@ -162,15 +162,9 @@ When a device changes tier:
 The Mender free trial evaluation period includes:
 
 - 12 months of Mender Enterprise plan access
-- Up to 10 devices for each device tier
+- Up to 5 devices for each device tier
 - No credit card required
 - Full access to all features including device tiers
-
-During the trial, you can test:
-
-- 10 Standard tier devices (embedded Linux)
-- 10 Micro tier devices (MCUs)
-- 10 System tier devices (Mender Orchestrator)
 
 ## Moving from free trial to production
 
