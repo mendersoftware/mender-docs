@@ -140,3 +140,5 @@ By default, and without any inventory scripts added, the Mender Client sends the
 You should not use inventory attributes to uniquely identify a device. They are
 intended  to store information,
 for searching, sorting and filtering devices in the Mender Server.
+
+When [Orchestrating updates across a System](../../07.Orchestrate-updates/chapter.md), Mender Client inventory automatically includes all Component inventories. Changes to the inventory script do not influence Component inventory reporting. For modifying a Component inventory see the documentation on `Inventory` command in the [Interface Protocol](../../07.Orchestrate-updates/04.Interface-protocol/docs.md).

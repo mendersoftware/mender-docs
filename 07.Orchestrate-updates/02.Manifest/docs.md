@@ -8,6 +8,8 @@ A Manifest is a YAML file used for defining the Software versions for a given Sy
 
 The Manifest defines the exact combination of Artifacts that should be deployed to Components. It specifies which Artifact should be installed on each Component type and controls the update strategy.
 
+It defines a target state of the System, meaning that it can define a version of an Artifact that is currently installed on some Components. In such a case, the given Component will not be modified. To check if an Artifact is installed, its `artifact-provides` is compared to the output of the `Provides` command from the Interface.
+
 ## Example:
 
 <!--AUTOVERSION: "electric-vehicle-software-v%"/ignore "tcu-firmware-v%"/ignore "brake-ecu-firmware-v%"/ignore "seat-heating-fw-v%"/ignore-->
