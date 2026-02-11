@@ -31,7 +31,7 @@ Note that the `rootfs.ext4` filesystem image must be properly integrated with Me
 [Debian image](../../04.Operating-System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md).
 
 The remaining flags specify the parameters used to [match devices to deployments](../../02.Overview/05.Deployment/docs.md#Algorithm-for-selecting-the-Deployment-for-the-Device) as follows:
-* `-c`: specifies the compatible device types.
+* `-c`: specifies the compatible device (or [system](../../07.Orchestrate-updates/01.Overview/docs.md#system-type-vs-device-type)) types.
 * `-n`: specifies the name of the Artifact.
 * `--software-version` specifies the version string for the rootfs-image.
 * `-o`: specifies the path to the output file.
@@ -73,10 +73,11 @@ Now create the Artifact with:
 Note specifically that in this case we are creating a *module-image*, using the [single
 file](https://hub.mender.io/t/single-file/486/26?target=_blank) [Update
 Module](../../08.Artifact-creation/10.Create-a-custom-Update-Module/docs.md). The Artifact created
-will be compatible with the *raspberrypi4* device type, although you can specify more device types
-using multiple times `--compatible-types` if needed. The name of the Artifact is declared as
-*updated-authorized_keys-1.0*, we set the version of the software to *1.0* and indicate that it will
-be installed in the *rootfs* partition. The resulting file `artifact.mender` holds the Artifact.
+will be compatible with the *raspberrypi4* device type, although you can specify more
+compatible types using multiple times `--compatible-types` if needed. The name of the Artifact is
+declared as *updated-authorized_keys-1.0*, we set the version of the software to *1.0* and indicate
+that it will be installed in the *rootfs* partition. The resulting file `artifact.mender` holds the
+Artifact.
 
 <!--AUTOVERSION: "mendersoftware/mender/blob/%/support"/mender-->
 Inspect the source code of the

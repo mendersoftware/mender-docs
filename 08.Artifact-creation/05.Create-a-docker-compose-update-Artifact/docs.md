@@ -65,7 +65,7 @@ To list available architectures for the images in your manifests:
     --manifests-dir manifests/
 ```
 
-Create the Artifact by for your target device by specifying the artifact name, device type, architecture, manifests directory, and project name:
+Create the Artifact by for your target device by specifying the artifact name, compatible types, architecture, manifests directory, and project name:
 
 ```bash
 ./gen_docker-compose \

@@ -166,7 +166,7 @@ Then create a new Mender Artifact with the `hello-world` file as the only payloa
 ```
 
 The command line options are detailed below:
-* `-c` - The compatible device type of this Mender Artifact.
+* `-c` - The compatible type of device (or [system](../../07.Orchestrate-updates/01.Overview/docs.md#system-type-vs-device-type)) of this Mender Artifact.
 * `-o` - The path where to place the output Mender Artifact. This should always have a .mender suffix.
 * `-T` - The payload type. It should be the same as the Update Module name and corresponds to the filename of the script which is present inside the `/usr/share/mender/modules/v3` directory.
 * `-n` - The name of the Mender Artifact.
@@ -221,7 +221,7 @@ The `mender-artifact` tool allows you to supply multiple files using the `-f` fl
 ```
 
 The command line options are detailed below:
-* `-c` - The compatible device type of this Mender Artifact.
+* `-c` - The compatible type of device (or [system](../../07.Orchestrate-updates/01.Overview/docs.md#system-type-vs-device-type)) of this Mender Artifact.
 * `-o` - The path where to place the output Mender Artifact. This should always have a .mender suffix.
 * `-T` - The payload type. It should be the same as the Update Module name and corresponds to the filename of the script which is present inside the `/usr/share/mender/modules/v3` directory.
 * `-n` - The name of the Mender Artifact.
