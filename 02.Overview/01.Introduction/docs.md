@@ -25,8 +25,8 @@ The process begins with the **build system** generating a new software version f
 a device. The build system can be a workstation creating a simple
 application update or a more standard component, such as Jenkins and Yocto
 Project. It creates **Mender Artifacts** in the format required by the target
-device. There will be different Mender Artifacts for each type of device that
-Mender manages.
+device. There will be different Mender Artifacts for each type of device,
+component or system of devices that Mender manages.
 
 You upload the Mender Artifacts to the Mender Server, which is the central point
 for deploying updates to a fleet of devices. Among other things, it monitors the

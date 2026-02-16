@@ -86,7 +86,7 @@ device:
 ```bash
 mender-artifact write rootfs-image \
     -f ssh://"${USER}@${IP_ADDRESS}" \
-    -t "${DEVICE_TYPE}" \
+    -c "${DEVICE_TYPE}" \
     -n system-v1 \
     -o system-v1.mender \
     -S "-p 22"

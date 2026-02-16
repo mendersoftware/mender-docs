@@ -47,6 +47,11 @@ integration and requires customization based on the hardware and OS.
 * _Component_ - Part of a _System_. _Components_ are the logical units that are updated during a _System_ update. The _System device_ (i.e. a device running Mender Orchestrator) and all dependent devices are considered _Components_ of the _System_. Dependent devices may be either physical boards connected to the _System device_ (for example, a control unit connected via CAN) or logical parts of the application stack.
 See the documentation on [Orchestrating updates](../../07.Orchestrate-updates/chapter.md) for more information.
 
+* _Compatible type_ - The type of a device, a Component or
+[System](../../07.Orchestrate-updates/01.Overview/docs.md#system-type-vs-device-type)
+used to ensure compatibility between the hardware and software. See the
+documentation on [Artifact](../03.Artifact/docs.md) for more information.
+
 * _Container update_ - An Application update for containerized software running on the devices.
 
 * _Deployment_ - The process of delivering software to devices. It consists of
@@ -67,8 +72,9 @@ server, used in Server-side APIs to specify an individual device. See the
 documentation on device [Identity](../07.Identity/docs.md) for more information.
 
 * _Device type_ - The type of device, used to ensure compatibility between the
-hardware and software. See the documentation on [Artifact](../03.Artifact/docs.md)
-for more information.
+hardware and software. A more generic term _Compatible type_ (see above) is now
+preferred. See the documentation on [Artifact](../03.Artifact/docs.md) for more
+information.
 
 * _Identity (Mender Client Device)_ - A set of immutable, human-readable attributes that uniquely identify a _Mender Client Device_. See the
 documentation on Device [Identity](../07.Identity/docs.md) for more information.

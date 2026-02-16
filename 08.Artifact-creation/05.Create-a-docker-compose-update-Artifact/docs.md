@@ -65,12 +65,12 @@ To list available architectures for the images in your manifests:
     --manifests-dir manifests/
 ```
 
-Create the Artifact by for your target device by specifying the artifact name, device type, architecture, manifests directory, and project name:
+Create the Artifact by for your target device by specifying the artifact name, compatible types, architecture, manifests directory, and project name:
 
 ```bash
 ./gen_docker-compose \
     --artifact-name docker-compose-artifact-v1 \
-    --device-type raspberrypi5 \
+    --compatible-types raspberrypi5 \
     --architecture arm64 \
     --manifests-dir manifests/ \
     --project-name my-webserver \
@@ -89,7 +89,7 @@ Mender Artifact:
   Format: mender
   Version: 3
   Signature: no signature
-  Compatible devices: [raspberrypi5]
+  Compatible types: [raspberrypi5]
   Provides group:
   Depends on one of artifact(s): []
   Depends on one of group(s): []
@@ -144,7 +144,7 @@ Now generate the Artifact using the `--images-dir` option:
 ```bash
 ./gen_docker-compose \
     --artifact-name docker-compose-artifact-v1 \
-    --device-type raspberrypi5 \
+    --compatible-types raspberrypi5 \
     --manifests-dir manifests/ \
     --images-dir images/ \
     --project-name my-webserver \
@@ -183,7 +183,7 @@ Additional options can be passed directly to the underlying `mender-artifact` to
 ```bash
 ./gen_docker-compose \
     --artifact-name docker-compose-artifact-v1 \
-    --device-type raspberrypi5 \
+    --compatible-types raspberrypi5 \
     --manifests-dir manifests/ \
     --project-name my-webserver \
     -- \

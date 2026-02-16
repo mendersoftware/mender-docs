@@ -12,9 +12,9 @@ the metadata might be different, but must contain the:
   that the same Artifact is not deployed twice in a row.
 * *Version* of the software build, used to track installed software on a given
   device.
-* *Device types* the software is *compatible* with, so that software is not
-  deployed to incompatible hardware (e.g. CPU architecture, hardware floating
-  point support, peripheral drivers).
+* *Compatible types* for the software, so that it is not deployed to
+  incompatible hardware (e.g. CPU architecture, hardware floating point support,
+  peripheral drivers).
 * *Checksum* of the payload, so that software is not run if it gets corrupted
   during transit or storage.
 
@@ -53,7 +53,7 @@ In addition to *Version* information, an Artifact may contain additional
 *Provides* fields which the Mender Client will store on the device during the
 Artifact installation.
 
-In addition to *Device types* information, an Artifact may contain additional
+In addition to *Compatible types* information, an Artifact may contain additional
 *Depends* fields. On Artifact installation, all *Depends* fields need to
 match a corresponding *Provides* field on the device.
 

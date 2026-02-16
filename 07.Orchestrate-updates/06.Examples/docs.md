@@ -76,7 +76,7 @@ touch $PAYLOAD
 mender-artifact \
   write module-image \
   --type $COMPONENT_TYPE \
-  --device-type $COMPONENT_TYPE \
+  --compatible-types $COMPONENT_TYPE \
   --provides version:$VERSION \
   --file $PAYLOAD \
   --output-path $VERSION.mender \
@@ -95,7 +95,7 @@ touch $PAYLOAD
 mender-artifact \
   write module-image \
   --type $COMPONENT_TYPE \
-  --device-type $COMPONENT_TYPE \
+  --compatible-types $COMPONENT_TYPE \
   --provides version:$VERSION \
   --file $PAYLOAD \
   --output-path $VERSION.mender \
@@ -117,7 +117,7 @@ USER=<your-user>
 # Create gateway-v1 Artifact using snapshot
 mender-artifact write rootfs-image \
     --file ssh://"${USER}@${IP_ADDRESS}" \
-    --device-type "${DEVICE_TYPE}" \
+    --compatible-types "${DEVICE_TYPE}" \
     --artifact-name gateway-v1 \
     --output-path gateway-v1.mender \
     --ssh-args="-p ${PORT}" \
@@ -129,7 +129,7 @@ mkdir -p gateway-dump
 mender-artifact dump --files gateway-dump gateway-v1.mender
 mender-artifact write rootfs-image \
     --file gateway-dump/rootfs* \
-    --device-type "${DEVICE_TYPE}"  \
+    --compatible-types "${DEVICE_TYPE}"  \
     --artifact-name gateway-v2 \
     --output-path gateway-v2.mender
 rm -rf gateway-dump

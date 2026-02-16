@@ -42,7 +42,7 @@ mender-artifact write rootfs-image -f ssh://${USER}@${ADDR} \
                                    -n artifact-name \
                                    --software-version 1.0 \
                                    -o snapshot-release.1.0.mender \
-                                   -t $DEVICE_TYPE
+                                   -c $DEVICE_TYPE
 ```
 
 creates an Artifact directly on your workstation, containing the system image of your device.
@@ -59,7 +59,7 @@ mender-artifact write rootfs-image \
     -n artifact-name \
     --software-version 1.0 \
     -o snapshot-release.1.0.mender \
-    -t device-type
+    -c device-type
     --ssh-args="-p 8122" \
     --ssh-args="-o UserKnownHostsFile=/dev/null" \
     --ssh-args="-o StrictHostKeyChecking=no" \
@@ -132,7 +132,7 @@ mender-artifact write rootfs-image -f /mnt/root-part.ext4 \
                                    -n artifact-name \
                                    --software-version 1.0 \
                                    -o snapshot-release.1.0.mender \
-                                   -t device-type
+                                   -c device-type
 ```
 Uploading this artifact to the mender server and creating a deployment ensures
 that all devices runs an identical rootfs version as the golden device.
