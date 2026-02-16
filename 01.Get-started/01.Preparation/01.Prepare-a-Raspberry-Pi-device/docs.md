@@ -1,5 +1,5 @@
 ---
-title: Prepare a Raspberry Pi device
+title: Prepare a Raspberry Pi device to work
 taxonomy:
     category: docs
     label: tutorial
