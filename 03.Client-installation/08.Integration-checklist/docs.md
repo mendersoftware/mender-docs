@@ -53,7 +53,7 @@ systemctl is-enabled mender-updated
 ```
 
 <!--AUTOVERSION: "mendersoftware/mender/blob/%/"/mender-->
-In the remaining verification, we will manually be executing similar steps to what the [rootfs-image update module](https://github.com/mendersoftware/mender/blob/5.0.3/support/modules/rootfs-image) usually does in regular operations to communicate with the bootloader.
+In the remaining verification, we will manually be executing similar steps to what the [rootfs-image update module](https://github.com/mendersoftware/mender/blob/5.0.4/support/modules/rootfs-image) usually does in regular operations to communicate with the bootloader.
 
 To avoid the Mender Client interfering with the manual verification it is recommended to disconnect the device from the internet.
 

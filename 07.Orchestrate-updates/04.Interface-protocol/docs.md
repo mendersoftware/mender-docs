@@ -16,7 +16,7 @@ States and execution flow
 
 <!--AUTOVERSION: "mendersoftware/mender/blob/%"/mender-->
 Interfaces are modelled after [Update
-Modules](https://github.com/mendersoftware/mender/blob/5.0.3/Documentation/update-modules-v3-file-api.md)
+Modules](https://github.com/mendersoftware/mender/blob/5.0.4/Documentation/update-modules-v3-file-api.md)
 from the Mender Client, and are very similar in nature.
 
 One key difference is that the Orchestrator may execute installations for
