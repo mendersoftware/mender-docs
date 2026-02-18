@@ -19,7 +19,7 @@ command-line option. The standard configuration [configs/mender_convert_config](
 ### Example
 
 An example application of using a configuration file can be enabling `lzma`
-compression for the Raspberry Pi 3:
+compression for the Raspberry Pi 5:
 
 ```bash
 echo 'MENDER_ARTIFACT_COMPRESSION=lzma' >> configs/custom_config
@@ -29,10 +29,12 @@ Call `docker-mender-convert` and provide your custom configuration file using th
 `--config` option:
 
 ```bash
+IMAGE=<image-to-convert.img>
+
 MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
-  --disk-image input/<image-to-convert.img> \
-  --config configs/raspberrypi3_config \
-  --config configs/custom_config
+   --disk-image "$IMAGE" \
+   --config configs/raspberrypi/uboot/debian/raspberrypi5_trixie_64bit_config \
+   --config configs/custom_config \
 ```
 
 Configuration files are also a means to add customization that might be
@@ -78,9 +80,9 @@ When calling mender-convert, enable the hooks by using the `--config` argument t
 
 ```bash
 MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
-  --disk-image input/<image-to-convert.img> \
-  --config configs/raspberrypi3_config \
-  --config configs/custom_config
+   --disk-image "$IMAGE" \
+   --config configs/raspberrypi/uboot/debian/raspberrypi5_trixie_64bit_config \
+   --config configs/custom_config \
 ```
 
 These four variables hold lists of hooks:
@@ -123,7 +125,7 @@ mender_create_artifact() {
       --file work/rootfs.img \
       --output-path ${mender_artifact} \
       --artifact-name ${artifact_name} \
-      --device-type ${device_type}"
+      --compatible-types ${device_type}"
 }
 EOF
 ```
@@ -133,9 +135,9 @@ Call `docker-mender-convert` and provide your custom configuration file using th
 
 ```bash
 MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
-  --disk-image input/<image-to-convert.img> \
-  --config configs/raspberrypi3_config \
-  --config configs/custom_config
+   --disk-image "$IMAGE" \
+   --config configs/raspberrypi/uboot/debian/raspberrypi5_trixie_64bit_config \
+   --config configs/custom_config
 ```
 This should trigger the provided `mender_create_artifact` implementation in `configs/custom_config`.
 
@@ -180,9 +182,9 @@ cp -r rootfs_overlay_demo/* input/rootfs_overlay_demo/
 
 # run conversion
 MENDER_ARTIFACT_NAME=release-1 ./docker-mender-convert \
-    --disk-image input/golden-image-1.img \
-    --config configs/raspberrypi3_config \
-    --overlay input/rootfs_overlay_demo/
+   --disk-image "$IMAGE" \
+   --config configs/raspberrypi/uboot/debian/raspberrypi5_trixie_64bit_config \
+   --overlay input/rootfs_overlay_demo/
 ```
 
 When passing multiple overlays `mender-convert` applies each overlay in the order

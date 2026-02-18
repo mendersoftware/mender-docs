@@ -121,7 +121,7 @@ a-country=Poland
 a-city=Krakow
 ```
 <!--AUTOVERSION: "mender/tree/%/support"/mender-->
-You can find some more useful scripts in [https://github.com/mendersoftware/mender/support](https://github.com/mendersoftware/mender/tree/5.0.3/support) directory.
+You can find some more useful scripts in [https://github.com/mendersoftware/mender/support](https://github.com/mendersoftware/mender/tree/5.0.4/support) directory.
 
 
 ## Default inventory
@@ -133,10 +133,12 @@ By default, and without any inventory scripts added, the Mender Client sends the
 |:----:|:-------:|:-------------:|
 | `device_type`  | type of the device | "raspberrypi4" |
 | `artifact_name` | name of the currently installed artifact | "release-v1" |
-| `mender_client_version` | client version | "5.0.3" |
+| `mender_client_version` | client version | "5.0.4" |
 
 
 ## Final remarks
 You should not use inventory attributes to uniquely identify a device. They are
 intended  to store information,
 for searching, sorting and filtering devices in the Mender Server.
+
+When [Orchestrating updates across a System](../../07.Orchestrate-updates/chapter.md), Mender Client inventory automatically includes all Component inventories. Changes to the inventory script do not influence Component inventory reporting. For modifying a Component inventory see the documentation on `Inventory` command in the [Interface Protocol](../../07.Orchestrate-updates/04.Interface-protocol/docs.md).

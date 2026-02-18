@@ -29,6 +29,8 @@ This will start the deployment wizard. As we have only one device connected the 
 
 There is already a demo Artifact available the first time you
 use hosted Mender, for the purposes of this tutorial. It contains a small web server you will run on your device.
+If you want to build it yourself the sources and instructions are available at [repository](https://github.com/mendersoftware/mender-demo-artifact).
+
 
 Select the Release with the name beginning *mender-demo-artifact*; this will be deployed to your device.
 
@@ -85,9 +87,10 @@ Ensure the *Destination directory* field is filled as `/data/www/localhost/htdoc
 
 A [Mender Artifact](../../02.Overview/03.Artifact/docs.md) contains some mandatory fields:
 
-* **Device type** - Device types the software is compatible with, to ensure the
-  software is not deployed to incompatible hardware (e.g. CPU architecture,
-  hardware floating point support, peripheral drivers).
+* **Device types compatible** - Types of devices, *Components* or *Systems* the
+  software is compatible with, to ensure the software is not deployed to
+  incompatible hardware (e.g. CPU architecture, hardware floating point support,
+  peripheral drivers).
 
   Depending on which device you are using you need to enter:
   * `raspberrypi4` or `raspberrypi5` if you are using a Raspberry Pi

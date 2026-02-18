@@ -14,12 +14,13 @@ of Mender, see the [Compatibility policy](../../02.Overview/15.Compatibility-pol
 The latest long term support (LTS) versions of Mender components are shown in the
 in the table below:
 
-| Released component  | Release month | Support status      |
-| ------------------- | ------------- | ------------------- |
-| Mender Client 5.0   | 2025-01       | Supported           |
-| Mender Gateway 2.0  | 2025-01       | Supported           |
-| Mender Server 4.0   | 2025-01       | Supported           |
-| Mender 3.7 (bundle) | 2024-05       | EOL (since 2025-05) |
+| Released component  | Release month | Support status          |
+| ------------------- | ------------- | ----------------------- |
+| Mender Client 5.0   | 2025-01       | Supported               |
+| Mender Gateway 2.0  | 2025-01       | Supported               |
+| Mender Server 4.1   | 2026-01       | Supported               |
+| Mender Server 4.0   | 2025-01       | Supported until 2026-08 |
+| Mender 3.7 (bundle) | 2024-05       | EOL (since 2025-05)     |
 
 When a new LTS version is released for a component, the previous LTS
 version is supported for at least 6 months.
@@ -82,10 +83,21 @@ to be available. For all other endpoints it will use v1.
 !!! ensure they all run supported versions. This will prevent issues in the future.
 
 
-## Mender Client subcomponents
+## Mender Client
+### Subcomponents
 The Mender Client consists of several subcomponents. See the table below for a mapping
 of which subcomponents are included in a given Mender Client version.
 
-| Mender Client | mender-connect | mender-configure | mender-monitor | mender-binary-delta | mender-flash |
-| ------------- | -------------- | ---------------- | -------------- | ------------------- | ------------ |
-| 5.0           | 2.3            | 1.1              | 1.4            | 1.5                 | 1.0          |
+| Mender Client | → | mender-update | mender-auth | mender-connect | mender-monitor | mender-flash |
+| ------------- | - |-------------- | ----------- | -------------- | -------------- | ------------ |
+| 5.0           |   | 5.0           | 5.0         | 2.3            | 1.4            | 1.0          |
+
+### Update Modules
+The Mender Client consists of several Update Modules. See the table below for a mapping
+of which Update Modules are included in a given Mender Client version.
+
+| Mender Client | → | mender-configure | mender-binary-delta | single-file     | rootfs          | directory       |
+| ------------- | - | ---------------- | ------------------- | --------------- | --------------- | --------------- |
+| 5.0           |   | 1.1              | 1.5                 | 5.0<sup>1</sup> | 5.0<sup>1</sup> | 5.0<sup>1</sup> |
+
+<sup>1</sup> Vesioned and delivered with `mender-update`

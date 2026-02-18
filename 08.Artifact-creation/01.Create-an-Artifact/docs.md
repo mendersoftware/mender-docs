@@ -20,7 +20,7 @@ you can use the following command to generate an Artifact that contains the enti
 
 ```bash
 mender-artifact write rootfs-image \
-   -t beaglebone \
+   -c beaglebone \
    -n release-1 \
    --software-version rootfs-v1 \
    -f rootfs.ext4 \
@@ -31,7 +31,7 @@ Note that the `rootfs.ext4` filesystem image must be properly integrated with Me
 [Debian image](../../04.Operating-System-updates-Debian-family/02.Convert-a-Mender-Debian-image/docs.md).
 
 The remaining flags specify the parameters used to [match devices to deployments](../../02.Overview/05.Deployment/docs.md#Algorithm-for-selecting-the-Deployment-for-the-Device) as follows:
-* `-t`: specifies the compatible device types.
+* `-c`: specifies the compatible device (or [system](../../07.Orchestrate-updates/01.Overview/docs.md#system-type-vs-device-type)) types.
 * `-n`: specifies the name of the Artifact.
 * `--software-version` specifies the version string for the rootfs-image.
 * `-o`: specifies the path to the output file.
@@ -54,14 +54,14 @@ We will use the [single file](https://hub.mender.io/t/single-file/486/26?target=
 First, download the script to generate the Artifact and make it executable:
 <!--AUTOVERSION: "mendersoftware/mender/%/support"/mender-->
 ```
-curl -O https://raw.githubusercontent.com/mendersoftware/mender/5.0.3/support/modules-artifact-gen/single-file-artifact-gen
+curl -O https://raw.githubusercontent.com/mendersoftware/mender/5.0.4/support/modules-artifact-gen/single-file-artifact-gen
 chmod +x single-file-artifact-gen
 ```
 
 Now create the Artifact with:
 ```bash
 ./single-file-artifact-gen \
-  --device-type raspberrypi4 \
+  --compatible-types raspberrypi4 \
   -o artifact.mender \
   -n updated-authorized_keys-1.0 \
   --software-name authorized_keys \
@@ -73,14 +73,15 @@ Now create the Artifact with:
 Note specifically that in this case we are creating a *module-image*, using the [single
 file](https://hub.mender.io/t/single-file/486/26?target=_blank) [Update
 Module](../../08.Artifact-creation/10.Create-a-custom-Update-Module/docs.md). The Artifact created
-will be compatible with the *raspberrypi4* device type, although you can specify more device types
-using multiple times `--device-type` if needed. The name of the Artifact is declared as
-*updated-authorized_keys-1.0*, we set the version of the software to *1.0* and indicate that it will
-be installed in the *rootfs* partition. The resulting file `artifact.mender` holds the Artifact.
+will be compatible with the *raspberrypi4* device type, although you can specify more
+compatible types using multiple times `--compatible-types` if needed. The name of the Artifact is
+declared as *updated-authorized_keys-1.0*, we set the version of the software to *1.0* and indicate
+that it will be installed in the *rootfs* partition. The resulting file `artifact.mender` holds the
+Artifact.
 
 <!--AUTOVERSION: "mendersoftware/mender/blob/%/support"/mender-->
 Inspect the source code of the
-[single file Update Module](https://github.com/mendersoftware/mender/blob/5.0.3/support/modules/single-file?target=_blank)
+[single file Update Module](https://github.com/mendersoftware/mender/blob/5.0.4/support/modules/single-file?target=_blank)
 to learn about the implementation details of this module.
 
 
@@ -94,4 +95,4 @@ will carry the file you have uploaded, the destination
 directory, the filename, and permissions, exactly as we saw above.
 
 <!--AUTOVERSION: "mendersoftware/mender/blob/%/Documentation"/mender-->
-For more details on how to write Update Modules, visit the [Create a custom Update Module](../10.Create-a-custom-Update-Module/docs.md) section and the [Update Module API specification](https://github.com/mendersoftware/mender/blob/5.0.3/Documentation/update-modules-v3-file-api.md?target=_blank).
+For more details on how to write Update Modules, visit the [Create a custom Update Module](../10.Create-a-custom-Update-Module/docs.md) section and the [Update Module API specification](https://github.com/mendersoftware/mender/blob/5.0.4/Documentation/update-modules-v3-file-api.md?target=_blank).

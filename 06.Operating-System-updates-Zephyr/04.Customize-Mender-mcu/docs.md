@@ -35,7 +35,7 @@ Microcontroller devices often need to manage network usage and power, so Mender'
 * `MENDER_CLIENT_INVENTORY_REFRESH_INTERVAL` – how often the client sends inventory data to the server. 
 
 
-In the demo application (mender-mcu-integration), these are set to  values suitable for demo purposes (30 seconds for update polling and 60 seconds for inventory refresh). For production deployments, however, default settings are much higher: – 1 day for update polling and 14 days for inventory refresh. Longer intervals help reduce power consumption and network load and are aligned with our fair usage policy. Running production devices with demo intervals (e.g., polling every 30 or 60 seconds) is considered unacceptable and may trigger rate limits. We strongly recommend that you adjust these intervals in your project to ensure both optimal performance and compliance with fair usage standards.
+In the demo application (mender-mcu-integration), these are set to  values suitable for demo purposes (30 seconds for update polling and 60 seconds for inventory refresh). For production deployments, however, default settings are much higher: seven days for both update polling and inventory refresh. Longer intervals help reduce power consumption and network load and are aligned with our fair usage policy. Running production devices with demo intervals (e.g., polling every 30 or 60 seconds) is considered unacceptable and may trigger rate limits. We strongly recommend that you adjust these intervals in your project to ensure both optimal performance and compliance with fair usage standards.
 
 ## Device identity
 
@@ -74,7 +74,7 @@ More examples can be found inside the [mender-mcu-integration project](https://g
 
 ## Inventory
 
-Inventory data is additional information about the device that is reported to the Mender server such as device type, firmware version, hardware revision, etc. It is provided as key-value pairs which can be arbitrarily named. On Linux, inventory data is provided by executable scripts. On Zephyr, you can set up inventory data by constructing key-value pairs and passing them to the client with a callback. You can add an inventory callback by calling `mender_inventory_add_callback`, which is defined in the [inventory API](https://github.com/mendersoftware/mender-mcu/blob/main/include/mender/inventory.h?target=_blank). Callbacks and inventory data are either persistent or dynamic. Persistent data is only queried using the respective callback once, dynamic data is queried with the respective callback at every inventory refresh interval.
+Inventory data is additional information about the device that is reported to the Mender server such as device (or system) type, firmware version, hardware revision, etc. It is provided as key-value pairs which can be arbitrarily named. On Linux, inventory data is provided by executable scripts. On Zephyr, you can set up inventory data by constructing key-value pairs and passing them to the client with a callback. You can add an inventory callback by calling `mender_inventory_add_callback`, which is defined in the [inventory API](https://github.com/mendersoftware/mender-mcu/blob/main/include/mender/inventory.h?target=_blank). Callbacks and inventory data are either persistent or dynamic. Persistent data is only queried using the respective callback once, dynamic data is queried with the respective callback at every inventory refresh interval.
 
 Example of adding a persistent callback:
 

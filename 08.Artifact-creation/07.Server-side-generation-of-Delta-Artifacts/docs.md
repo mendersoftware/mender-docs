@@ -42,7 +42,7 @@ Otherwise, create and install your own bootstrap Artifact to provide these keys:
 ```bash
 mender-artifact write bootstrap-artifact \
     --artifact-name mender-binary-delta-provide-keys \
-    --device-type <dev-type> \
+    --compatible-types <dev-type> \
     --provides "rootfs-image.update-module.mender-binary-delta.mender_update_module:mender-binary-delta" \
     --provides "rootfs-image.update-module.mender-binary-delta.version:<version>" \
     --output-path mender-binary-delta-provide-keys.mender

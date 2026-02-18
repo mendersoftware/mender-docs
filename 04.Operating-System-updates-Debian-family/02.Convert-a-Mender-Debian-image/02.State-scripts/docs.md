@@ -29,7 +29,7 @@ mender_create_artifact() {
       --file work/rootfs.img \
       --output-path ${mender_artifact} \
       --artifact-name ${artifact_name} \
-      --device-type ${device_type} \
+      --compatible-types ${device_type} \
       --script my-state-scripts/ArtifactInstall_Enter_00"
 
 }
