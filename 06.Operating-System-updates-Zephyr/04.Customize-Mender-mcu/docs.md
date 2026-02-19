@@ -72,6 +72,12 @@ void setup_mender_client(void) {
 
 More examples can be found inside the [mender-mcu-integration project](https://github.com/mendersoftware/mender-mcu-integration?target=_blank). 
 
+## Device tier
+
+
+By default, the `mender-mcu` sets the device tier to `micro`.
+If your device requires more capabilities, you can change the tier using the Kconfig option `MENDER_DEVICE_TIER`.
+
 ## Inventory
 
 Inventory data is additional information about the device that is reported to the Mender server such as device (or system) type, firmware version, hardware revision, etc. It is provided as key-value pairs which can be arbitrarily named. On Linux, inventory data is provided by executable scripts. On Zephyr, you can set up inventory data by constructing key-value pairs and passing them to the client with a callback. You can add an inventory callback by calling `mender_inventory_add_callback`, which is defined in the [inventory API](https://github.com/mendersoftware/mender-mcu/blob/main/include/mender/inventory.h?target=_blank). Callbacks and inventory data are either persistent or dynamic. Persistent data is only queried using the respective callback once, dynamic data is queried with the respective callback at every inventory refresh interval.

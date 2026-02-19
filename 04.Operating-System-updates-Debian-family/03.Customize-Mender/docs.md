@@ -46,6 +46,60 @@ sudo chown root:root rootfs_overlay_production
 The options inside the JSON structure can be any option from [the client configuration
 options](../../03.Client-installation/07.Configuration/50.Configuration-options/docs.md).
 
+## Device tier
+
+Mender supports three [device tiers](../../02.Overview/17.Device-tiers/docs.md) that classify devices by their capabilities:
+
+- `micro` - Microcontroller units (MCUs) running `mender-mcu`
+- `standard` - Embedded Linux devices running the Mender Client (default)
+- `system` - Devices running Mender Orchestrator for multi-component updates
+
+For Debian-based devices, configure the device tier in the `mender.conf` configuration file:
+
+```bash
+mkdir -p rootfs_overlay_production/etc/mender
+cat > rootfs_overlay_production/etc/mender/mender.conf <<EOF
+{
+  "ServerURL": "https://my-server.com/",
+  "DeviceTier": "standard"
+}
+EOF
+chmod 600 rootfs_overlay_production/etc/mender/mender.conf
+sudo chown root:root rootfs_overlay_production
+```
+
+Valid values for `DeviceTier` are `standard`, `micro`, or `system`.
+
+### Standard tier (default)
+
+The standard tier is the default and is appropriate for typical embedded Linux devices:
+
+```json
+{
+  "DeviceTier": "standard"
+}
+```
+
+If `DeviceTier` is not specified, the device will default to the standard tier for backward compatibility.
+
+### System tier
+
+For devices running Mender Orchestrator to coordinate updates across multiple components, set the tier to `system`:
+
+```json
+{
+  "DeviceTier": "system"
+}
+```
+
+You will also need to install and configure `mender-orchestrator` on the device.
+See the [Orchestrate updates documentation](/07.Orchestrate-updates/05.Installation/02.Debian-family/docs.md) for more information.
+
+! The micro tier is not typically used with Debian-based systems, as it is designed for microcontroller units running Zephyr RTOS with `mender-mcu`.
+! For MCU devices, see the [Zephyr integration documentation](../../06.Operating-System-updates-Zephyr/chapter.md).
+
+The device tier affects authentication, polling intervals, artifact size limits, and deployment restrictions. For more details, see the [Device tiers documentation](../../02.Overview/17.Device-tiers/docs.md).
+
 ## Identity
 
 To add your own identity script to the image, execute these commands:

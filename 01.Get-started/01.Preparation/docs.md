@@ -16,7 +16,14 @@ To get started testing Mender, create a hosted Mender account by
 [signing up here](https://mender.io/signup?target=_blank).
 
 !!! We provide a 12 month free evaluation period of the Mender Enterprise plan
-!!! for up to 10 devices. No credit card is required to signup.
+!!! for up to 5 devices (all device tiers). No credit card is required to signup.
+
+## Understanding device tiers
+
+Mender supports different types of devices through a concept called [device tiers](../../02.Overview/17.Device-tiers/docs.md).
+During this getting started guide, you'll be working with **standard tier** devices (default).
+Device tiers affect polling intervals, artifact size limits, and available features.
+The free trial includes 5 devices for all tiers.
 
 ## Next step
 
