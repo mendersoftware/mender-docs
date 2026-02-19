@@ -4,6 +4,43 @@ taxonomy:
     category: docs
 ---
 
+## Build fails with package mender-update requires mender-client-version-inventory-script, but none of the providers can be installed
+
+This error indicates that the chosen versions of the Mender components for the build are incompatible or unsupported. This can happen, for example, when using `PREFERRED_VERSION` to pin versions of Mender software but using a non supported combination.
+
+Mender Client 6.0 and newer comes with a new package that can only be installed with a supported combination of versions of the different components.
+
+The error shall not happen when using the default preference for versions.
+
+The full bitbake error follows:
+
+<!--AUTOVERSION: "DNF version: %"/ignore "mender-update-%-r0"/ignore "mender-auth-%-r0"/ignore "mender-auth > % provided"/ignore "mender-client-version-inventory-script-%-r0"/ignore-->
+```
+ERROR: core-image-full-cmdline-1.0-r0 do_rootfs: Could not invoke dnf. Command '.../recipe-sysroot-native/usr/bin/dnf -v ...' returned 1:
+DNF version: 4.19.0
+(...)
+Excludes in dnf.conf: rng-tools
+--> Starting dependency resolution
+--> Finished dependency resolution
+Error:
+ Problem: package mender-update-5.0.4-r0.core2_64 from oe-repo requires mender-client-version-inventory-script, but none of the providers can be installed
+  - package mender-client-version-inventory-script-6.0.0-r0.core2_64 from oe-repo conflicts with mender-auth > 5.0.3 provided by mender-auth-5.0.4-r0.core2_64 from oe-repo
+  - conflicting requests
+(try to add '--allowerasing' to command line to replace conflicting packages or '--skip-broken' to skip uninstallable packages)
+
+ERROR: Logfile of failure stored in: .../temp/log.do_rootfs.266754
+ERROR: Task (.../images/core-image-full-cmdline.bb:do_rootfs) failed with exit code '1'
+```
+
+### How to fix
+
+* *Recommended*: choose a supported combination of versions for the Mender software. See [Mender Client Supported Releases](../../302.Release-information/01.Supported-releases/docs.md#mender-client)
+
+* Alternatively, remove the script by adding the following to `local.conf`:
+```
+PACKAGECONFIG:remove:pn-mender = "version-inventory-script"
+```
+
 <!--AUTOVERSION: "Mender Client version % have been released"/ignore-->
 ## Mender Client version 4.0.0 have been released but my build still uses the single-client 3.x series
 
