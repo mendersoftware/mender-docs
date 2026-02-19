@@ -61,7 +61,7 @@ chmod +x single-file-artifact-gen
 Now create the Artifact with:
 ```bash
 ./single-file-artifact-gen \
-  --compatible-types raspberrypi4 \
+  --device-type raspberrypi4 \
   -o artifact.mender \
   -n updated-authorized_keys-1.0 \
   --software-name authorized_keys \
