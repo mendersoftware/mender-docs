@@ -174,7 +174,7 @@ Install the Mender Configure add-on.
 
 The version of the Mender Configure add-on to include in the update.
 
-### `MENDER_INSTALL_INPUT_PACKAGES_PATH
+### `MENDER_INSTALL_INPUT_PACKAGES_PATH`
 
 > Value: input/deb(default)
 
