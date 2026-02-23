@@ -7,12 +7,20 @@ stages:
   - trigger
 
 include:
+  - project: Northern.tech/Mender/mendertesting
+    file:
+      - qa-common/runner.yml
+      - qa-common/retry.yml
   - project: 'Northern.tech/Mender/mendertesting'
     file: '.gitlab-ci-check-commits-signoffs.yml'
   - project: 'Northern.tech/Mender/mendertesting'
     file: '.gitlab-ci-check-python3-format.yml'
   - project: 'Northern.tech/Mender/mendertesting'
     file: '.gitlab-ci-github-status-updates.yml'
+
+default:
+  tags: !reference [.qa-common-default-runner, tags]
+  retry: !reference [.qa-common-default-retry, retry]
 
 test:
   except:
@@ -31,6 +39,7 @@ test:
     DOCKER_TLS_VERIFY: "1"
     DOCKER_TLS_CERTDIR: "/certs"
   before_script:
+    - !reference [.qa-common-network-apt-retry, before_script]
     - apt-get update && apt-get install -y
       docker.io bash git openssl pwgen python3 jq docker-compose wget sudo
     - git config --global user.name "user"
