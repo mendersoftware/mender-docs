@@ -131,9 +131,17 @@ By default, and without any inventory scripts added, the Mender Client sends the
 <!--AUTOVERSION: "client version | \"%\""/mender-->
 | name | meaning | example value |
 |:----:|:-------:|:-------------:|
-| `device_type`  | type of the device | "raspberrypi4" |
 | `artifact_name` | name of the currently installed artifact | "release-v1" |
 | `mender_client_version` | client version | "5.0.4" |
+| `mender_client_version_provider` | version provider | "internal" |
+
+As of Mender Client 6.0, the `mender_client_version` inventory attribute is reported by the `mender-inventory-client-version` inventory script
+when a device is running a supported combination of Mender Client subcomponents, see [table](../../302.Release-information/01.Supported-releases/docs.md#mender-client).
+If a device is not running a supported combination, or if the inventory script is missing, `mender_client_version` will fall back to reporting the
+version of `mender-update`.
+
+The `mender_client_version_provider` inventory attribute identifies the provider of `mender_client_version`. It will report `external` if the version is
+provided by `mender-inventory-client-version`, and `internal` if it is provided by `mender-update`.
 
 
 ## Final remarks
