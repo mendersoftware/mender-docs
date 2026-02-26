@@ -164,7 +164,7 @@ after manufacturing.
 
 The sequence diagram below describes the authentication of a Device using `mender-gateway`:
 
-1. The user first provisions the device with the crypto material: public CA certificate, client certificate and client private key.
+1. The user first provisions the device with the crypto material: client certificate (and optionally intermediate CA certificate), client private key, and root CA certificate for server verification.
 2. The device sends the authorization request to the `mender-gateway` authenticating the request with the client TLS certificate.
 3. The ambassador verifies the device's certificate is signed by the CA certificate, and pre-authorizes the device to the Device Authentication service.
 4. At this point, the authentication request is forwarded to the Device Authentication service.
@@ -178,6 +178,30 @@ Futher communication between the Device and the Mender Server is intermediated b
 
 Please refer to the [Mutual TLS section](../../10.Server-integration/04.Mender-Gateway/10.Mutual-TLS-authentication/docs.md)
 to find further details on the configuration of this feature.
+
+#### Certificate Chain Architecture
+
+Mender Gateway supports X.509 certificate chains, allowing you to implement a hierarchical PKI (Public Key Infrastructure) for flexible certificate management.
+
+##### Architecture Comparison
+
+| Architecture | Gateway Storage | Device Storage | Client Sends During TLS | Rotation Impact | Best For |
+|--------------|----------------|----------------|-------------------------|-----------------|----------|
+| **Single-Level PKI**<br/>`Root CA → Device` | Root CA cert | Device cert<br/>Device private key | Device cert only | Must update gateway and re-provision all devices | Small deployments<br/>Testing<br/>Simple PKI |
+| **Two-Level PKI with Client-Side Intermediate**<br/>`Root CA → Intermediate CA → Device`<br/>*(Intermediate sent by client)* | Root CA cert only | Device cert<br/>Intermediate CA cert<br/>Device private key | Device cert +<br/>Intermediate CA cert | ✅ No gateway changes needed<br/>✅ Seamless rotation<br/>✅ Old and new coexist | Production deployments<br/>Mass manufacturing<br/>Long device lifecycles<br/>**Beneficial for rotation** |
+| **Two-Level PKI with Gateway-Side Intermediate**<br/>`Root CA → Intermediate CA → Device`<br/>*(Intermediate on gateway)* | Root CA cert +<br/>Intermediate CA cert | Device cert<br/>Device private key | Device cert only | Gateway must be updated for intermediate rotation | Simpler client configuration<br/>Centralized CA management |
+
+##### Certificate Rotation Workflow (Two-Level PKI with Client-Side Intermediate)
+
+When the intermediate CA is sent by the client (rather than stored on the gateway), certificate rotation can be performed without gateway reconfiguration:
+
+| Phase | Gateway Configuration | Old Devices (v1) | New Devices (v2) | Result |
+|-------|----------------------|------------------|------------------|--------|
+| **Initial Deployment** | Trusts: Root CA | Send: Device cert (v1) +<br/>Intermediate CA (v1) | N/A | ✅ Auth succeeds |
+| **Rotation Begins** | Trusts: Root CA<br/>*(unchanged)* | Send: Device cert (v1) +<br/>Intermediate CA (v1) | Send: Device cert (v2) +<br/>Intermediate CA (v2) | ✅ Both auth succeed<br/>✅ Zero downtime |
+| **Rotation Complete** | Trusts: Root CA<br/>*(unchanged)* | Decommissioned | Send: Device cert (v2) +<br/>Intermediate CA (v2) | ✅ Auth succeeds |
+
+**Key Insight**: The gateway never changes during rotation because it only trusts the root CA, which remains constant.
 
 ## Authentication Token
 
