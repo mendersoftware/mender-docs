@@ -1,10 +1,12 @@
 variables:
   # Set to true to skip tests
   SKIP_TESTS: "false"
+  DOCKER_VERSION: "27.3"
 
 stages:
   - test
   - trigger
+  - preview
 
 include:
   - project: Northern.tech/Mender/mendertesting
@@ -17,6 +19,10 @@ include:
     file: '.gitlab-ci-check-python3-format.yml'
   - project: 'Northern.tech/Mender/mendertesting'
     file: '.gitlab-ci-github-status-updates.yml'
+  - project: Northern.tech/Mender/mendertesting
+    file:
+      - qa-common/runner.yml
+      - qa-common/retry.yml
 
 default:
   tags: !reference [.qa-common-default-runner, tags]
@@ -75,3 +81,151 @@ trigger:mender-docs-site:production:
   trigger:
     project: Northern.tech/Mender/mender-docs-site
     branch: production
+
+preview:build:
+  stage: preview
+  rules:
+    - if: '$CI_COMMIT_BRANCH =~ /^(master|hosted|stable|[0-9]+\.[0-9]+\.x)$/'
+      when: never
+    - when: on_success
+  image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/docker:${DOCKER_VERSION}
+  services:
+    - name: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/docker:${DOCKER_VERSION}-dind
+      alias: docker
+  variables:
+    DOCKER_HOST: "tcp://docker:2376"
+    DOCKER_TLS_CERTDIR: "/certs"
+    DOCKER_TLS_VERIFY: "1"
+    DOCKER_CERT_PATH: "$DOCKER_TLS_CERTDIR/client"
+  before_script:
+    - !reference [.qa-common-network-git-clone-retry, before_script]
+  script:
+    - git clone --depth=1
+        "https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/Northern.tech/Mender/mender-docs-site.git"
+        /tmp/mender-docs-site
+    # Patch download.sh: append a re-clone of mender-docs at the PR's head branch.
+    # CI_COMMIT_REF_NAME is the *GitLab* branch name (e.g. pr_2756), not the GitHub
+    # branch name; CI_COMMIT_SHA is also GitLab-only. We look up the GitHub branch
+    # via the API using the PR number embedded in the GitLab branch name.
+    - apk add --no-cache curl jq
+    - |
+      PR_NUM=$(printf '%s' "${CI_COMMIT_REF_NAME}" | sed 's/^pr_//')
+      PR_DATA=$(curl -sf \
+        -H "Authorization: token ${GITHUB_BOT_TOKEN_REPO_STATUS}" \
+        "https://api.github.com/repos/mendersoftware/mender-docs/pulls/${PR_NUM}")
+      MENDER_DOCS_BRANCH=$(printf '%s' "${PR_DATA}" | jq -r '.head.ref')
+      MENDER_DOCS_CLONE_URL=$(printf '%s' "${PR_DATA}" | jq -r '.head.repo.clone_url')
+      if [ -z "${MENDER_DOCS_BRANCH}" ] || [ "${MENDER_DOCS_BRANCH}" = "null" ]; then
+        echo "ERROR: cannot resolve GitHub branch for '${CI_COMMIT_REF_NAME}' (PR #${PR_NUM})" >&2
+        exit 1
+      fi
+      printf '\nrm -rf /app/tmp/mender-docs\ngit clone -b %s --depth=1 %s /app/tmp/mender-docs\ngit -C /app/tmp/mender-docs branch master HEAD\n' \
+        "${MENDER_DOCS_BRANCH}" "${MENDER_DOCS_CLONE_URL}" >> /tmp/mender-docs-site/download.sh
+      echo "Patched download.sh: mender-docs will be cloned from ${MENDER_DOCS_CLONE_URL} at branch ${MENDER_DOCS_BRANCH} (PR #${PR_NUM})"
+    - docker build
+        --no-cache
+        --build-arg DOCKER_BUILD_CHECK="true"
+        --tag preview-site:local
+        --file /tmp/mender-docs-site/Dockerfile
+        /tmp/mender-docs-site
+    # Install GNU wget (Alpine ships BusyBox wget which lacks recursive crawl flags).
+    - apk add --no-cache wget
+    # Run and wait for PHP/nginx + Grav to fully start (Grav creates system.yaml on first boot).
+    - docker run -d --name preview -p 8080:8080 preview-site:local
+    - sleep 30
+    # Patch system.yaml at runtime (file is only created after first boot) to disable
+    # absolute URLs so wget -k can convert root-relative paths to page-relative ones.
+    - |
+      docker exec preview sh -c '
+        config=$(find /app /var/www/html -name system.yaml -path "*/user/config/*" 2>/dev/null | head -1)
+        if [ -z "$config" ]; then echo "ERROR: system.yaml not found" >&2; exit 1; fi
+        echo "Patching $config"
+        if grep -q "^absolute_urls:" "$config"; then
+          sed -i "s/^absolute_urls:.*/absolute_urls: false/" "$config"
+        else
+          echo "absolute_urls: false" >> "$config"
+        fi
+        grep absolute_urls "$config"
+        # Force Grav to recompile config by removing the compiled cache.
+        find /app /var/www/html -path "*/cache/compiled*" -type d 2>/dev/null \
+          | xargs rm -rf 2>/dev/null || true
+        echo "Compiled cache cleared"
+      '
+    # Restart so Grav reloads config from the patched file.
+    - docker restart preview
+    - sleep 25
+    - mkdir -p build
+    # Build an explicit list of ALL content page URLs by walking the entire
+    # directory tree. Grav's theme renders navigation client-side (JavaScript)
+    # at every level, so wget -r can never discover sub-pages via link-following
+    # alone. There are ~193 numbered directories across up to 3 levels.
+    - |
+      printf '%s\n' http://localhost:8080/ > /tmp/wget-urls.txt
+      find . -mindepth 1 -type d -name '[0-9]*' | sort | \
+        while IFS= read -r d; do
+          seg="${d#./}"
+          slug=$(printf '%s' "$seg" \
+            | sed 's|[0-9][0-9]*\.\([^/]*\)|\1|g' \
+            | tr '[:upper:]' '[:lower:]')
+          printf 'http://localhost:8080/%s/\n' "$slug"
+        done >> /tmp/wget-urls.txt
+      echo "Crawling $(wc -l < /tmp/wget-urls.txt) URLs"
+      wget -p -k -nH -q --no-check-certificate -e robots=off -P build \
+        --input-file=/tmp/wget-urls.txt || true
+      echo "Pages saved: $(find build -name 'index.html' | wc -l)"
+    # Fallback: re-fetch individually any URL whose index.html wget did not save.
+    # wget batch processing interacts poorly with pages that have both images and
+    # child subdirectories in the same directory; individual calls avoid the issue.
+    - |
+      missing=0
+      while IFS= read -r url; do
+        path="${url#http://localhost:8080/}"
+        outdir="build/${path%/}"
+        [ "${path%/}" = "" ] && outdir="build"
+        [ -f "$outdir/index.html" ] && continue
+        echo "Re-fetching missing: $url"
+        wget -p -k -nH -q --no-check-certificate -e robots=off -P build "$url" || true
+        missing=$((missing + 1))
+      done < /tmp/wget-urls.txt
+      echo "Re-fetched $missing missing pages"
+      echo "Pages after recovery: $(find build -name 'index.html' | wc -l)"
+    - docker stop preview
+    # Post-process HTML files: replace any remaining http://localhost:8080/ with
+    # the correct page-relative prefix based on each file's depth in build/.
+    - |
+      find build -name "*.html" | while IFS= read -r f; do
+        prefix=$(printf '%s' "$f" | awk -F/ '{n=NF-2; s=""; for(i=0;i<n;i++) s=s"../"; print (s==""?"./":s)}')
+        sed -i "s|http://localhost:8080/|${prefix}|g" "$f"
+      done
+      remaining=$(grep -rl 'http://localhost:8080' build/ 2>/dev/null | wc -l) || true
+      [ "$remaining" -gt 0 ] \
+        && echo "WARNING: localhost refs remain in $remaining file(s) (resource not crawled)" \
+        || echo "OK: no localhost URLs in build/"
+  artifacts:
+    paths:
+      - build/
+    expire_in: 2 weeks
+
+pages:
+  stage: preview
+  rules:
+    - if: '$CI_COMMIT_BRANCH =~ /^(master|hosted|stable|[0-9]+\.[0-9]+\.x)$/'
+      when: never
+    - when: on_success
+  image: registry.gitlab.com/northern.tech/mender/mender-test-containers:base-debian-master
+  needs:
+    - job: preview:build
+      artifacts: true
+  variables:
+    GITHUB_STATUS_API_URL: "https://api.github.com/repos/mendersoftware/mender-docs/statuses/$CI_COMMIT_SHA"
+    GITHUB_STATUS_API_JSON_F: '{"state": "%s", "context": "ci/docs-preview", "target_url": "%s", "description": "%s"}'
+  script:
+    - 'json="$(printf "$GITHUB_STATUS_API_JSON_F" "success" "${CI_PAGES_URL}" "Docs preview ready")"'
+    - 'curl -f -H "Authorization: token ${GITHUB_BOT_TOKEN_REPO_STATUS}" -d "$json" "$GITHUB_STATUS_API_URL"'
+  pages:
+    path_prefix: "$CI_COMMIT_REF_SLUG"
+    publish: build
+  artifacts:
+    paths:
+      - build/
+    expire_in: 2 weeks
