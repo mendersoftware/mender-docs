@@ -145,7 +145,7 @@ The lifecycle of an AWS IoT Core integrated device is:
 2. Mender provisions the device in AWS IoT Core - as a result of this operation, the Mender Server generates an [AWS IoT Core X.509 client certificate](https://docs.aws.amazon.com/iot/latest/developerguide/x509-client-certs.html) and registers it in AWS IoT Core.
 3. The Mender [Configure add-on](../../11.Add-ons/10.Configure/docs.md) sets the Thing's private key and certificate in the file (`/var/lib/mender-configure/device-config.json`) on the device. We recommend creating a [Mender configuration script](../../11.Add-ons/10.Configure/01.Device-integration/docs.md) to reconfigure the AWS IoT application and restart it with these credentials.
 4. From now on, device applications can read the private key and certificate from the file and communicate with AWS IoT Core.
-5. If the device gets `rejected` or `dismissed`, Mender will automatically inactivate the certificate associated with the Thing in AWS IoT Core.
+5. If the device gets `rejected` or `dismissed`, Mender will automatically deactivate the certificate associated with the Thing in AWS IoT Core.
 6. If the device gets `decommissioned`, the Thing and the related resources, including the certificate, are automatically `Deleted` from AWS IoT Core.
 
 ![Device lifecycle](device_lifecycle.png)

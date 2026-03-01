@@ -75,7 +75,7 @@ The script takes the output from `checklinks`, which can be on the form:
 > ```
 
 Notice the `Did you mean` part. This is output from the checklinks script if the
-string distance between the erronous link, and a valid link is close enough.
+string distance between the erroneous link, and a valid link is close enough.
 
 Thus, this can be taken advantage of by the `didyoumean` script. The script will
 automatically rewrite all the suggested links:
@@ -85,7 +85,7 @@ checklinks |& bash ./scripts/didyoumean
 ```
 Resulting in a successfully migrated section.
 
-## If unsuccesful
+## If unsuccessful
 
 If the string distance is too big, the `checklinks` is unable to guess the
 replacement candidate, and obviously, the `didyoumean` script is unable to fill

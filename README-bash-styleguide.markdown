@@ -1,6 +1,6 @@
 # Bash style guide
 
-This is a short guide on how the Bash (CLI) examples in this documenation is to
+This is a short guide on how the Bash (CLI) examples in this documentation is to
 be structured.
 
 ## Code blocks

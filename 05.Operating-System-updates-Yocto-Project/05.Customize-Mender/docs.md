@@ -177,7 +177,7 @@ your choice, as long as the filename starts with `mender-inventory-`.
 ### Remove the mender-inventory-geolocation script
 
 By default the `mender` recipe installs with the `mender-inventory-geo` script
-enabled. To some users this is undesireable, as the script relies on a third
+enabled. To some users this is undesirable, as the script relies on a third
 party service for geolocating the device through its IP address. If this is
 applicable to you, then disable the script through setting:
 
@@ -440,7 +440,7 @@ To integrate it on your Yocto build, add the `meta-mender` demo layer to your bu
 bitbake-layers add-layer ../sources/meta-mender/meta-mender-demo
 ```
 
-Then, append the packae to `mender-gateway` sources:
+Then, append the package to `mender-gateway` sources:
 
 <!--AUTOVERSION: "/mender-gateway-examples-%.tar"/mender-gateway -->
 ```bash

@@ -100,4 +100,4 @@ of which Update Modules are included in a given Mender Client version.
 | ------------- | - | ---------------- | ------------------- | --------------- | --------------- | --------------- |
 | 5.0           |   | 1.1              | 1.5                 | 5.0<sup>1</sup> | 5.0<sup>1</sup> | 5.0<sup>1</sup> |
 
-<sup>1</sup> Vesioned and delivered with `mender-update`
+<sup>1</sup> Versioned and delivered with `mender-update`

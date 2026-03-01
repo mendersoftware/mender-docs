@@ -128,9 +128,9 @@ printf "\n\nCopying certificates on the device\n" && \
 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P 8822 device-private.key root@$CONTAINER_IP:/data/mender/mender-cert-private.pem  && \
 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P 8822 device-cert.pem root@$CONTAINER_IP:/data/mender/mender-cert.pem && \
 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P 8822 ca.crt root@$CONTAINER_IP:/usr/local/share/ca-certificates/mender/ca.crt && \
-printf "\n\nMaking the device trust the new CE certificat\n" && \
+printf "\n\nMaking the device trust the new CE certificate\n" && \
 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 8822 root@$CONTAINER_IP update-ca-certificates && \
-printf "\n\nCertificat installation succesfull\n"
+printf "\n\nCertificat installation successful\n"
 ```
 
 Generate the new config:

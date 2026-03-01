@@ -84,7 +84,7 @@ The Device Twin is available through the Mender APIs and UI.
 
 
 !!! Mender strips away the `$metadata` and `$version` keys from the Azure Device Twin
-!!! because they are not indended to be changed by users. Thus these keys are not visible
+!!! because they are not intended to be changed by users. Thus these keys are not visible
 !!! in the Mender UI nor API responses. They still exist in Azure IoT Hub, however.
 
 

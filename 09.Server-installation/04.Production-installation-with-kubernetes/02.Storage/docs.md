@@ -31,7 +31,7 @@ solution that best fits your needs.
 ! the documentation, as it is no longer functional as documented with
 ! the version 4.1.7 of the MinIO Operator. SeaweedFS is now the new
 ! default storage backend for the full Open Source setup from the Helm Chart
-! version 6.x and later. If you whish to continue using MinIO, please consult
+! version 6.x and later. If you wish to continue using MinIO, please consult
 ! the [official MinIO documentation](https://docs.min.io/) for further
 ! information.
 ! If you wish to switch to SeaweedFS, we provide a short
