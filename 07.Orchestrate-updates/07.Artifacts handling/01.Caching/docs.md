@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-Artifact Caching feature optimizes deployments that involve multiple Components sharing the same Artifact. By enabling the cache, Mender Orchestrator avoids redundant network downloads, significantly reducing bandwidth usage and deployment time for complex multi-component updates.
+Artifact caching optimizes deployments that involve multiple Components using the same Artifact. By enabling the cache, Mender Orchestrator avoids redundant network downloads, significantly reducing bandwidth usage and deployment time for complex multi-component updates.
 
 ### Overview
 
@@ -18,7 +18,7 @@ When multiple components using the same Artifact are updated simultaneously, the
 
 ### Cache persistence and Cleanup
 
-Cached Artifacts stay on the filesystem for the duration of the deployment. To prevent the cache from growing indefinitely, the Orchestrator performs a cleanup at the end of every deployment. An Artifact is removed only after a deployment finishes successfully and the Orchestrator determines that the Artifact was not used by that specific deployment.
+To prevent the cache from growing indefinitely, the Orchestrator performs a cleanup at the end of every deployment. Any artifact that was not used in the current deployment is deleted from cache.
 
 ### Storage and Fallback
 
