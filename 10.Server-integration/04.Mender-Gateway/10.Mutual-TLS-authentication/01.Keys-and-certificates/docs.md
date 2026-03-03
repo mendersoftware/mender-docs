@@ -64,7 +64,7 @@ The Mender Gateway proxies device traffic to the upstream Mender server.
 Before proceeding, confirm that the server is reachable and its TLS certificate is signed by a trusted CA.
 This applies equally to hosted Mender and a custom on-prem instance.
 
-! Set the [environment variables](#environment-variables) before executing this command.
+!!! Set the [environment variables](#environment-variables) before executing this command.
 
 ```bash
 openssl s_client -connect $(echo $UPSTREAM_SERVER_URL | sed 's|https://||'):443 < /dev/null
@@ -82,7 +82,9 @@ Verify return code: 0 (ok)
 If the command fails, resolve DNS, firewall, or certificate trust issues on the server side before continuing.
 
 
-!!! Evaluation using an on-prem server whose FQDN is not resolvable via public DNS, or whose certificate is not signed by a publicly trusted CA (including certificates issued by an internal corporate CA), requires additional configuration of the gateway container so it can resolve and trust the internal FQDN. This is not covered in the evaluation guide.
+!!! **Note:** This guide does not cover evaluation in isolated networks with private DNS or custom root CA chains. 
+!!! Those environments require the gateway to trust the Mender server for which the steps are not described here.                                                                                           
+
 
 ## Access to the Mender Gateway container
 
