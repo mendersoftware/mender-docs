@@ -16,7 +16,7 @@ Not all the variables are needed for all commands, but just setting them all eve
 We suggest copying these to a temporary text file, filling them with your values and keeping them at hand while going through evaluation.
 
 
-<!--AUTOVERSION: "mender-gateway:saas-v%"/ignore-->
+<!--AUTOVERSION: "mender-gateway:%"/mender-gateway-->
 ```bash
 # For evaluation, define an arbitrary domain for the mtls server (we will modify `/etc/hosts` on the device).
 # No external registration will take place.
@@ -53,7 +53,7 @@ export DOCKER_REGISTRY_PASSWORD=
 
 # The name and version of the mtls server container
 # The defaults have been set, you rarely need to change this.
-export MENDER_GATEWAY_IMAGE="${DOCKER_REGISTRY_URL}/mendersoftware/mender-gateway:saas-v2024.08.19"
+export MENDER_GATEWAY_IMAGE="${DOCKER_REGISTRY_URL}/mendersoftware/mender-gateway:2.0.0"
 ```
 
 
