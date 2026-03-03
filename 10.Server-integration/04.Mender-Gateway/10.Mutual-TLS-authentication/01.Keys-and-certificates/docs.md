@@ -15,7 +15,6 @@ Not all the variables are needed for all commands, but just setting them all eve
 
 We suggest copying these to a temporary text file, filling them with your values and keeping them at hand while going through evaluation.
 
-
 <!--AUTOVERSION: "mender-gateway:%"/mender-gateway-->
 ```bash
 # For evaluation, define an arbitrary domain for the mtls server (we will modify `/etc/hosts` on the device).
@@ -36,10 +35,12 @@ export MENDER_GATEWAY_IP=
 export MENDER_USERNAME=
 export MENDER_PASSWORD=
 
-# Set the URL of the mender server 
-# i.e 
+# Set the URL of the mender server
+# i.e
 # export UPSTREAM_SERVER_URL="https://eu.hosted.mender.io"
 # export UPSTREAM_SERVER_URL="https://hosted.mender.io"
+# For evaluation with an on-prem server:
+# export UPSTREAM_SERVER_URL="https://your-mender-server.example.com"
 export UPSTREAM_SERVER_URL=
 
 # Set the tenant/organization token for your account
@@ -56,6 +57,32 @@ export DOCKER_REGISTRY_PASSWORD=
 export MENDER_GATEWAY_IMAGE="${DOCKER_REGISTRY_URL}/mendersoftware/mender-gateway:2.0.0"
 ```
 
+
+## Confirm upstream server accessibility
+
+The Mender Gateway proxies device traffic to the upstream Mender server.
+Before proceeding, confirm that the server is reachable and its TLS certificate is signed by a trusted CA.
+This applies equally to hosted Mender and a custom on-prem instance.
+
+! Set the [environment variables](#environment-variables) before executing this command.
+
+```bash
+openssl s_client -connect $(echo $UPSTREAM_SERVER_URL | sed 's|https://||'):443 < /dev/null
+```
+
+In the success case you will see output ending with lines similar to:
+
+```text
+SSL handshake has read 4680 bytes and written 369 bytes
+Verification: OK
+...
+Verify return code: 0 (ok)
+```
+
+If the command fails, resolve DNS, firewall, or certificate trust issues on the server side before continuing.
+
+
+!!! Evaluation using an on-prem server whose FQDN is not resolvable via public DNS, or whose certificate is not signed by a publicly trusted CA (including certificates issued by an internal corporate CA), requires additional configuration of the gateway container so it can resolve and trust the internal FQDN. This is not covered in the evaluation guide.
 
 ## Access to the Mender Gateway container
 
