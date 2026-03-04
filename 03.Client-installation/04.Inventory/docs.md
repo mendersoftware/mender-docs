@@ -128,7 +128,7 @@ You can find some more useful scripts in [https://github.com/mendersoftware/mend
 
 By default, and without any inventory scripts added, the Mender Client sends the following attributes:
 
-<!--AUTOVERSION: "client version | \"%\""/mender-->
+<!--AUTOVERSION: "client version | \"%\""/mender-client-subcomponents-->
 | name | meaning | example value |
 |:----:|:-------:|:-------------:|
 | `artifact_name` | name of the currently installed artifact | "release-v1" |
@@ -136,13 +136,13 @@ By default, and without any inventory scripts added, the Mender Client sends the
 | `mender_client_version_provider` | version provider | "internal" |
 
 As of Mender Client 6.0, the `mender_client_version` inventory attribute is reported by the `mender-inventory-client-version` inventory script
-when a device is running a supported combination of Mender Client subcomponents, see [table](../../302.Release-information/01.Supported-releases/docs.md#mender-client).
-If a device is not running a supported combination, or if the inventory script is missing, `mender_client_version` will fall back to reporting the
+when it is presented in system. If the inventory script is missing, `mender_client_version` will fall back to reporting the
 version of `mender-update`.
 
 The `mender_client_version_provider` inventory attribute identifies the provider of `mender_client_version`. It will report `external` if the version is
 provided by `mender-inventory-client-version`, and `internal` if it is provided by `mender-update`.
 
+A supported combination of Mender Client subcomponents can be check in the [table](../../302.Release-information/01.Supported-releases/docs.md#mender-client).
 
 ## Final remarks
 You should not use inventory attributes to uniquely identify a device. They are
