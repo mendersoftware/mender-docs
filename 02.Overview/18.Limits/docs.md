@@ -72,8 +72,22 @@ The maximum size of a single Device inventory on the Mender Server is determined
 Default: `1 MiB`</br>
 Overriding is done by INVENTORY_REQUEST_SIZE_LIMIT up to 10MB, which is the database limit.
 
+### Maximum length of Deployment names
+
+Default: `256 characters`</br>
+Overriding this limit is not possible
+
+### Maximum length of Device Group names
+
+Default: `256 characters`</br>
+Overriding this limit is not possible
+
+### Maximum length of RBAC role names
+
+Default: `256 characters`</br>
+Overriding this limit is not possible
+
 ### Maximum length of Release names
-The maximum length of Release names when creating Releases on the Mender Server.
 
 Default: `256 characters`</br>
 Overriding this limit is not possible
