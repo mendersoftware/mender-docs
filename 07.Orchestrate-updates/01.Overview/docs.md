@@ -15,7 +15,7 @@ of Artifacts that should be deployed to each Component type and controls the upd
 If this is not possible, Mender Orchestrator may roll back to the previously known working state, in other words, the previous version of the Manifest.
 
 Mender Orchestrator uses a manifest-based deployment strategy where you define the desired end state in two YAML files:
-- [Topology](../03.Topology/docs.md): Defines the System Components and their update capabilities
+- [Topology](../03.Topology/docs.md): Defines the Components of a System and their update capabilities
 - [Manifest](../02.Manifest/docs.md): Defines the update for the System with specific Artifacts and ordering
 
 Mender Orchestrator supports both full System updates and partial updates with granular component-level control. It downloads required Artifacts and coordinates the update process across all Components. If any Component fails, it rolls back the entire System to maintain a healthy end state.
