@@ -9,7 +9,7 @@
 # if you want to ignore a specific markdown code block, just add <!-- AUTOMATION: ignore=`reason` -->"
 # on top of it (note, reason is not required)
 #
-# if you want need to add a specifc test, just add <!-- AUTOMATION: test=`bash code to test` -->"
+# if you want need to add a specific test, just add <!-- AUTOMATION: test=`bash code to test` -->"
 #
 #
 # once all the above is parsed, a shell script is created, and ran.

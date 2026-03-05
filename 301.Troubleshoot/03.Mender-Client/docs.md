@@ -19,7 +19,7 @@ a Mender update. These warnings do not compromise the security of Secure Boot.
 This is caused by using an outdated version of the `mender-artifact` tool (e.g from the upstream Debian or
 Ubuntu APT repositories) which cannot detect which version of the Mender Client the device is running.
 
-To solve this issue, install `mender-artifact` from the Mender APT repository following the instructons in
+To solve this issue, install `mender-artifact` from the Mender APT repository following the instructions in
 the [downloads section](../../12.Downloads/01.Workstation-tools/docs.md#set-up-the-apt-repository).
 
 ## `fsck` error when creating a Mender Artifact using the snapshot feature

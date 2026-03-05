@@ -33,7 +33,7 @@ The first step is to create a Mender _provider_ that stores all the settings nee
 endpoint.
 
 __The well-known endpoint__  
-There are several parameters needed for OIDC to work which are made available by your IdP at the so-called `well-known` endpoint. You can have Mender fetch them for you or you can enter them manually. The `well-known` endpoint is IdP dependant, but it often comes in the form `https:///your.openidconnect.provider.com/<your.idp.tenant.id>/.well-known/openid-configuration` ("your.openidconnect.provider.com" is the hostname of your IdP). Please refer to the documentation provided by your IdP for further details.
+There are several parameters needed for OIDC to work which are made available by your IdP at the so-called `well-known` endpoint. You can have Mender fetch them for you or you can enter them manually. The `well-known` endpoint is IdP dependent, but it often comes in the form `https:///your.openidconnect.provider.com/<your.idp.tenant.id>/.well-known/openid-configuration` ("your.openidconnect.provider.com" is the hostname of your IdP). Please refer to the documentation provided by your IdP for further details.
 
 If you prefer that Mender fetches the required information from the `well-known` endpoint you can simply specify the `well_known_url` property when creating the Mender provider:
 
@@ -163,7 +163,7 @@ https://hosted.mender.io/api/management/v1/useradm/oidc/a82a2e98-833e-4a5a-9856-
 
 This is the URL your IdP will redirect users back to after successful authentication and unless you allow this explicitly, the login will be denied by your IdP.
 
-! The `/login` URL above is Mender Tenant specific and must therefore be configured on a per Tenant basis in your OIDC Application. Most IdPs supports multiple Redirect URIs for one OIDC Application and Application re-use for multiple tenants should be possible in most cases if desired.
+! The `/login` URL above is Mender Tenant specific and must therefore be configured on a per Tenant basis in your OIDC Application. Most IdPs supports multiple Redirect URIs for one OIDC Application and Application reuse for multiple tenants should be possible in most cases if desired.
 
 ### User creation
 

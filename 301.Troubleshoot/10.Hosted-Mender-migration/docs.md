@@ -9,7 +9,7 @@ Historically we have only had a single instance in the US.
 Hosted Mender instances are now available in [multiple regions](../../13.General/00.Hosted-Mender-regions/docs.md) as a result of our expansion.
 This document will describe the migration process if you currently have a fleet of devices operating in one instance and would like to move them to another one.
 
-!! Migration between instances without risks requires support assistance and is a payed service available only to the Enterprise plan.
+!! Migration between instances without risks requires support assistance and is a paid service available only to the Enterprise plan.
 !! If you wish to migrate your account please contact us on [support@mender.io](mailto:support@mender.io?subject=Tenant%20migration) with the subject **Tenant migration**.
 
 !! Please note that this method only applies for hosted Mender instances and isn't applicable for on-premise migrations.
@@ -73,7 +73,7 @@ to
 
 !! Make sure you removed the `ServerURL` entry from the top of the JSON configuration. [More info here](../../03.Client-installation/07.Configuration/50.Configuration-options/docs.md#servers).
 
-Please check bellow for different approaches on how to achieve this:
+Please check below for different approaches on how to achieve this:
 
 * [Yocto](#yocto)
 * [Debian](#debian)

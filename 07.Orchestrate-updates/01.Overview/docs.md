@@ -97,7 +97,7 @@ Once that is set, Mender Client will read the System type set in Mender Orchestr
 The Mender Client will use the System type as its Type in two specific cases:
 
 1. when polling for deployments
-2. when installing Manifest Aritfacts, i.e. Artifacts with the payload type set to `mender-orchestrator-manifest`
+2. when installing Manifest Artifacts, i.e. Artifacts with the payload type set to `mender-orchestrator-manifest`
 
 The regular Device type will be used in all other cases. This allows a System device to receive and install Manifests
 by checking the System type compatibility when needed. It also allows a System device to receive regular rootfs Updates.

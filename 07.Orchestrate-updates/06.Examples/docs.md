@@ -273,7 +273,7 @@ Test the rollback behavior when a Component update fails:
     to one of the Components will fail, and Mender Orchestrator will rollback all components.
 
     Run `mender-orchestrator show-provides` on the System device again to see that the rollback
-    was succesful, and see that the System maintained consistency as described by the previous
+    was successful, and see that the System maintained consistency as described by the previous
     successful Manifest installation.
 
 4. Remove the failure condition:

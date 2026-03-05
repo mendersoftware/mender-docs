@@ -4,7 +4,7 @@ taxonomy:
     category: docs
 ---
 
-Mender project consist of multiple repositiories with various types of the source code.
+Mender project consist of multiple repositories with various types of the source code.
 Most of the repositories support `make` and `Makefile` based building / testing /deploying.
 The 2nd most popular build chain used in the project is `CMake`.
 
@@ -13,7 +13,7 @@ It is strongly advised to follow build instructions which can be found
 in the project repositories as they may vary from the general building instructions
 and can contain project specific settings.
 
-## Project repositiories list
+## Project repositories list
 
 | Name                                                                                 | Type    |
 |--------------------------------------------------------------------------------------|---------|
@@ -39,7 +39,7 @@ and can contain project specific settings.
 
 **Warning: Always follow repository README instructions first**
 
-For the `make` based project build and deploiment uses some common target:
+For the `make` based project build and deployment uses some common target:
 * `make` / `make build` - build the project
 * `make test` - run tests (may contain both: unit tests and integration tests)
 * `make install` - deploy the software on the host machine

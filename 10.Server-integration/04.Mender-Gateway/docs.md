@@ -114,7 +114,7 @@ reported by all devices connected to it. The value of the attribute can be confi
 The name of the `mender_gateway_system_id` inventory attribute is pre-defined to ensure
 consistency and to allow Mender Server recognize the devices belonging into a particular
 Gateway System. In UI, the Gateway device has a tab called *System* which lists all devices
-connected to it and which allows creation of deployments targetting the particular group of
+connected to it and which allows creation of deployments targeting the particular group of
 devices.
 
 In order to add other common attributes that are not pre-defined, but are still added for all

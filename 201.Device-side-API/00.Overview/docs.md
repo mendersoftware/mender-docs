@@ -45,7 +45,7 @@ dbus-send --system --dest=CONNECTION \
 The parameters are constructed as follows:
 - `CONNECTION` && `OBJECT_PATH`: defined per exposed client API, see the overview section of the API documentation that you want to use.
 - `INTERFACE.MEMBER`: an object can expose different methods, which are organized as hierarchically structured interfaces. The `INTERFACE.MEMBER` defines the specific method to be invoked, and is given at the top of each method detail description.
-- `--system`: D-Bus supports multiple, seperate buses per system and user. To access the system wide management bus, this flag is required.
+- `--system`: D-Bus supports multiple, separate buses per system and user. To access the system wide management bus, this flag is required.
 
 Optional:
 - `--print-reply=literal`: print the resulting response to the command line. This is useful if the method is supposed to return some information such as the JWT which can be used in subsequent actions.

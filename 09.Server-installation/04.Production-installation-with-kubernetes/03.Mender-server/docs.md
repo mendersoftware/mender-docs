@@ -227,7 +227,7 @@ The Mender Server requires the following services to operate:
 * NATS: to handle the communication between the Mender Server components.
 * Redis: to store the temporary data and cache.
 * Object Storage: to store the Mender Artifacts.
-  Please refert to the [Storage](../02.Storage/docs.md) section for more
+  Please refer to the [Storage](../02.Storage/docs.md) section for more
   information on how to set up an object storage service.
 
 The Mender Helm chart already provides as sub-charts the following services:
@@ -528,7 +528,7 @@ We provide the following Docker image tags:
 ## Post-installation setup
 
 ### Enable replication for NATS Jetstream (Recommended)
-For production setups that require high availablility, we recommend enabling
+For production setups that require high availability, we recommend enabling
 replication for the NATS Jetstream work queues.  NATS is a stateful system
 managing messages. There are at least 3 NATS instances for high availability at
 the very beginning, so the Workflows service needs to be instructed to use all

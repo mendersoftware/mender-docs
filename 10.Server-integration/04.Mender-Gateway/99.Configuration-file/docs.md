@@ -162,7 +162,7 @@ the gateway.
 <dd>Enable proxy of plain HTTP requests.</dd>
 
 <dt>Listen (<code>HTTP_LISTEN</code>)</dt>
-<dd>TCP network address to listen for incomming connections.</dd>
+<dd>TCP network address to listen for incoming connections.</dd>
 </dl>
 
 ! Do not enable [*HTTP*](#http) on public or untrusted networks - always use
@@ -174,7 +174,7 @@ the gateway.
 <dd>Enable proxy of TLS-terminated HTTP requests.</dd>
 
 <dt>Listen (<code>HTTPS_LISTEN</code>)</dt>
-<dd>TCP network address to listen for incomming connections.</dd>
+<dd>TCP network address to listen for incoming connections.</dd>
 
 <dt>MinimumTLSVersion (<code>HTTPS_MINIMUM_TLS_VERSION</code>)
 <dd>
