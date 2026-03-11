@@ -22,7 +22,7 @@ The default version is set to `latest`, meaning the latest released version. You
 can manually override the version to install by setting:
 ```bash
 # Valid values are "latest" (default), "main" or a specific version.
-echo 'MENDER_DOCKER_COMPOSE_VERSION="main"' >> configs/docker_compose_config
+echo 'MENDER_DOCKER_COMPOSE_VERSION="latest"' >> configs/docker_compose_config
 ```
 
 The docker-compose Update Module depends on Docker and Docker Compose. The package will automatically
