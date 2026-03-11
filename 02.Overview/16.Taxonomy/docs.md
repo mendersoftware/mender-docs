@@ -73,10 +73,10 @@ documentation on device [Identity](../07.Identity/docs.md) for more information.
 
 * _Device tier_ - A classification that describes the class of an authenticated device.
 There are three device tiers:
-  * **standard** - An embedded Linux device running the Mender Client (mender-auth and mender-update)
+  * **standard** - An embedded Linux device running the Mender Client
   * **micro** - A microcontroller unit (MCU) running `mender-mcu`, typically with constrained resources
   * **system** - A device running Mender Orchestrator for coordinated multi-component updates
-  
+
   Device tiers affect artifact size limits, polling intervals, deployment restrictions, and
   device count limits in your plan. See the documentation on [Device tiers](../17.Device-tiers/docs.md)
   for more information.
@@ -99,8 +99,9 @@ documentation on [Interface Protocol](../../07.Orchestrate-updates/04.Interface-
 * _Inventory_ - A set of attributes of a _Mender Client Device_ or a _Component_. See the
 documentation on [Inventory](../../02.Overview/08.Inventory/docs.md) for more information.
 
-* _Mender Client_ - A collective term for the Mender Update service, which consists
-of two service components, `mender-auth` and `mender-update`.
+* _Mender Client_ - A versioned set of device-side software subcomponents that provide
+update and device management functionality. See the [Mender Client subcomponents](../../302.Release-information/01.Supported-releases/docs.md#subcomponents)
+table for more information.
 
 * _Mender Connect_ - A user space application providing the add-ons
 framework, as well as implementation of particular add-ons which you can enable

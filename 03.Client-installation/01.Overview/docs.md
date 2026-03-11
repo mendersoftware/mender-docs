@@ -4,9 +4,9 @@ taxonomy:
     category: docs
 ---
 
-The Mender Client is a user space Linux executable with one main purpose: to
-install software updates to the device it is running on. It can operate in
-[managed or standalone
+The Mender Client is a versioned set of device-side software that provides
+update and device management functionality to the device it is running on.
+It can operate in [managed or standalone
 mode](../../02.Overview/01.Introduction/docs.md#client-modes-of-operation).
 
 At a high level, Mender supports two types of updates: [Operating System
