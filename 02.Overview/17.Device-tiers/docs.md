@@ -13,7 +13,7 @@ The tier determines how the Mender Server handles the device, including artifact
 Mender supports three device tiers:
 
 - **Micro** - Microcontroller units (MCUs) running `mender-mcu`, typically with constrained resources
-- **Standard** - Embedded Linux devices running the Mender Client (mender-auth and mender-update)
+- **Standard** - Embedded Linux devices running the Mender Client
 - **System** - Devices running Mender Orchestrator for coordinated multi-component updates
 
 Each tier is designed to accommodate different device capabilities and use cases.
