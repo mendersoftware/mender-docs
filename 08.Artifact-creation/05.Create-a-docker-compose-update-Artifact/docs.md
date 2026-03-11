@@ -40,6 +40,9 @@ The simplest way to create a docker-compose Artifact is to let `gen_docker-compo
 
 #### Create a docker-compose manifest
 
+!!!! Docker Compose doesn't restart stopped services by default. Without a restart policy, Docker Compositions won't be automatically restarted if a device is rebooted.
+!!!! See the example manifest below and the [Docker documentation](https://docs.docker.com/engine/containers/start-containers-automatically/) for information on restart policies.
+
 First, create a directory for your manifests and add a `docker-compose.yml` file, e.g.:
 
 ```bash
@@ -48,6 +51,7 @@ cat > manifests/docker-compose.yml << 'EOF'
 services:
   webserver:
     image: nginx:alpine
+    restart: unless-stopped
     ports:
       - "8080:80"
 EOF
