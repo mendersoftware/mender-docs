@@ -14,29 +14,38 @@ The error shall not happen when using the default `latest` versions.
 
 The full mender-convert error follows:
 
-<!--AUTOVERSION: "%-1+ubuntu"/ignore "(>= %)"/ignore-->
+<!--AUTOVERSION: "%-1+debian+trixie"/ignore "(< %)"/ignore-->
 ```
 mender-convert-modify has finished. Cleaning up...
-2026-02-19 15:30:09 [ERROR] [mender-convert] mender-convert failed
-2026-02-19 15:30:07 [DEBUG] [mender-convert-modify] When running: (modules/chroot.sh:165): run_and_log_cmd():
-        sudo chroot work/rootfs/  env         DEBIAN_FRONTEND=noninteractive         DEVICE_TYPE=qemux86-64
-        apt --assume-yes --fix-broken --no-remove install  mender-update=5.1.0-1+ubuntu+jammy mender-client4=5.1.0-1+ubuntu+jammy
-        mender-auth=5.1.0-1+ubuntu+jammy mender-flash=1.1.0-1+ubuntu+jammy (...)
+2026-03-11 15:03:58 [ERROR] [mender-convert] mender-convert failed
+2026-03-11 15:03:58 [DEBUG] [mender-convert-modify] When running: (modules/chroot.sh:165): run_and_log_cmd():
+	sudo chroot work/rootfs/ /tmp/qemu-aarch64-static /usr/bin/env env         DEBIAN_FRONTEND=noninteractive         DEVICE_TYPE=raspberrypi4_64         apt --assume-yes --fix-broken --no-remove install  mender-update=5.1.0-1+debian+trixie mender-configure=1.1.3-1+debian+trixie mender-client4=5.1.0-1+debian+trixie mender-auth=5.1.0-1+debian+trixie mender-flash=1.1.0-1+debian+trixie mender-setup=1.0.3-1+debian+trixie mender-client-version-inventory-script=6.0.0-1+debian+trixie mender-snapshot=1.0.0-1+debian+trixie
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Solving dependencies...
 Some packages could not be installed. This may mean that you have
 requested an impossible situation or if you are using the unstable
 distribution that some required packages have not yet been created
 or been moved out of Incoming.
 The following information may help to resolve the situation:
 
-The following packages have unmet dependencies:
- mender-client-version-inventory-script : Conflicts: mender-auth (>= 5.1.0)
-                                          Conflicts: mender-flash (>= 1.1.0) but 1.1.0-1+ubuntu+jammy is to be installed
-                                          Conflicts: mender-update (>= 5.1.0)
-E: Unable to correct problems, you have held broken packages.
+Unsatisfied dependencies:
+ mender-client-version-inventory-script : Conflicts: mender-configure (< 1.1.4) but 1.1.3-1+debian+trixie is to be installed
+Error: Unable to correct problems, you have held broken packages.
+Error: The following information from --solver 3.0 may provide additional context:
+   Unable to satisfy dependencies. Reached two conflicting decisions:
+   1. mender-client-version-inventory-script:arm64=6.0.0-1+debian+trixie is selected for install
+   2. mender-client-version-inventory-script:arm64 is not selected for install because:
+      1. mender-configure:arm64=1.1.3-1+debian+trixie is selected for install
+      2. mender-client-version-inventory-script:arm64 Conflicts mender-configure (< 1.1.4)
+         [selected mender-configure:arm64=1.1.3-1+debian+trixie]
 
-2026-02-19 15:30:09 [ERROR] [mender-convert] mender-convert failed
-2026-02-19 15:30:09 [ERROR] [mender-convert] mender-convert exit code: 100
-Log file available at: /.../mender-convert/logs/convert.log.1771514995-354382
+2026-03-11 15:03:58 [ERROR] [mender-convert] mender-convert failed
+2026-03-11 15:03:58 [ERROR] [mender-convert] mender-convert exit code: 100
+Log file available at: /.../mender-convert/logs/convert.log.1773241320-472563
 ```
 
 ### How to fix
