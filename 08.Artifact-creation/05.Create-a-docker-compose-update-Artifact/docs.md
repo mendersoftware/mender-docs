@@ -25,7 +25,7 @@ This tutorial assumes:
 Download the Artifact generator from the repository:
 <!--AUTOVERSION: "/mender-container-modules/%/"/mender-container-modules -->
 ```bash
-curl -O https://raw.githubusercontent.com/mendersoftware/mender-container-modules/main/src/gen_docker-compose
+curl -O https://raw.githubusercontent.com/mendersoftware/mender-container-modules/1.0.0/src/gen_docker-compose
 chmod +x gen_docker-compose
 ```
 
