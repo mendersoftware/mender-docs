@@ -78,7 +78,9 @@ Create the Artifact by for your target device by specifying the artifact name, c
     --architecture arm64 \
     --manifests-dir manifests/ \
     --project-name my-webserver \
-    --output-path docker-compose-artifact-v1.mender
+    --output-path docker-compose-artifact-v1.mender \
+    -- \
+    --software-filesystem data-docker
 ```
 
 The tool will:
@@ -86,7 +88,26 @@ The tool will:
 2. Download container images from their registries using `skopeo`
 3. Package the images and manifests into a Mender Artifact
 
-The output shows the Artifact structure:
+Note that the last option is separated from the rest with `--` which means that
+this option is not interpreted by the artifact generator itself, but is passed
+through to the underlying `mender-artifact` tool. The
+[`--software-filesystem`](../11.Software-versioning/docs.md#application-updates-update-modules)
+option adds metadata information to the Artifact that describes where container
+images are stored by Docker. The default (if omitted) is `rootfs-image`
+suggesting the container images are stored on the root filesystem (and thus
+manipulated as part of root filesystem updates). However, the preferred
+configuration, described in the docker-compose Update Module integration
+documentation for
+[Debian](../../04.Operating-System-updates-Debian-family/03.Customize-Mender/03.docker-compose-support)
+and
+[Yocto](../../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/02.docker-compose-Update-Module),
+is with Docker storing the images on a different partition, e.g. under
+`/data/docker` (hence the `data-docker` value describing this). Other options,
+for example `--depends rootfs-image.checksum:custom-value` to specify that the
+given Docker composition requires a specific rootfs image or, can be passed to
+`mender-artifact` in a similar way.
+
+The output from the above command shows the Artifact structure:
 ```
 Mender Artifact:
   Name: docker-compose-artifact-v1
@@ -102,7 +123,7 @@ Mender Artifact:
 Updates:
   - Type: docker-compose
     Provides:
-      rootfs-image.mender-docker-compose.my-webserver.version: docker-compose-artifact-v1
+      data-docker.mender-docker-compose.my-webserver.version: docker-compose-artifact-v1
     Depends: {}
     Clears Provides: [*mender-docker-compose_*]
     Metadata:
@@ -153,6 +174,8 @@ Now generate the Artifact using the `--images-dir` option:
     --images-dir images/ \
     --project-name my-webserver \
     --output-path docker-compose-artifact-v1.mender
+    -- \
+    --software-filesystem data-docker
 ```
 
 When `--images-dir` is specified, `gen_docker-compose` will use the provided images instead of downloading them from registries.
@@ -179,18 +202,3 @@ skopeo login registry.example.com
 ```
 
 After authenticating, `gen_docker-compose` will be able to download images from the private registry.
-
-### Passing options to mender-artifact
-
-Additional options can be passed directly to the underlying `mender-artifact` tool using `--`:
-
-```bash
-./gen_docker-compose \
-    --artifact-name docker-compose-artifact-v1 \
-    --device-type raspberrypi5 \
-    --manifests-dir manifests/ \
-    --project-name my-webserver \
-    -- \
-    --software-filesystem data \
-    --depends rootfs-image.checksum:custom-value
-```
