@@ -86,8 +86,16 @@ as locally accessible files you don't have to specify
 <!--AUTOVERSION: "docs/man%"/ignore-->
 [SSLEngine](https://www.openssl.org/docs/man1.1.1/man1/engine.html).
 If you want to use a Hardware Security Module (HSM) you can provide the private
-key as a [PKCS#11 URI](https://tools.ietf.org/html/rfc7512) and in that case
-you must also specify the `SSLEngine`.
+key as a [PKCS#11 URI](https://tools.ietf.org/html/rfc7512).
+
+If you are using OpenSSL 1.1, you must specify the `SSLEngine`.
+
+If you are using OpenSSL 3.0 or later, it is recommended to use
+[Providers](https://www.openssl.org/docs/man3.0/man7/provider.html) instead of
+Engines. To use a Provider, you should:
+1. Configure the desired provider in your system's `openssl.cnf`.
+2. Provide the private key URI in the `Key` field.
+3. **Do not** specify the `SSLEngine` option in `mender.conf`.
 
 Note that the client will not use this key for signing authentication requests, which is always
 required, even when using SSL client certificates. For that you need to use
@@ -265,6 +273,11 @@ A path to the file in pem format holding the private key, or a
 
 <!--AUTOVERSION: "docs/man%"/ignore-->
 The [SSLEngine](https://www.openssl.org/docs/man1.1.1/man1/engine.html) to use.
+
+!!! OpenSSL 3.0 deprecated the Engine API in favor of the Provider API. If you are
+!!! using OpenSSL 3.0 or later, it is recommended to use Providers. To use a
+!!! Provider, you should configure it in your system's `openssl.cnf` and provide
+!!! the private key URI in `AuthPrivateKey`, while leaving `SSLEngine` empty.
 
 #### Servers
 
