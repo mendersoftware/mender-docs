@@ -42,7 +42,7 @@ pending or in progress once your device begins the update.
 
 After a short time you will see the finished deployment in the
 **Finished** tab. You can now visit the deployed web server in your device
-by going to http://<your_device_ip>:85 in your browser.
+by going to `http://<your_device_ip>:85` in your browser.
 
 !!! To get your device's IP: for a Raspberry Pi connected by following
 !!! [Prepare a Raspberry Pi device](../01.Preparation/01.Prepare-a-Raspberry-Pi-device/docs.md),
