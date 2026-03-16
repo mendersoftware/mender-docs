@@ -1,5 +1,5 @@
 ---
-title: Open source licenses
+title: Open Source Licenses
 taxonomy:
     category: docs
 shortcode-core:
