@@ -1,10 +1,13 @@
 ---
-title: Open source licenses
+title: Open Source Licenses
 taxonomy:
     category: docs
 shortcode-core:
     active: false
 ---
+
+!!! This page and the subsections under Open Source Licenses list the open-source software components and applicable open-source licenses used
+!!! in the default builds of Mender and specific Mender products, editions and tools. Together, they form the overall Open Source Licenses for Mender.
 
 All open source licenses used in Mender with the default build are shown below.
 
