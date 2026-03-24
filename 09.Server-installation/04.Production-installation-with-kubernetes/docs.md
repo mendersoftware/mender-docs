@@ -38,6 +38,12 @@ database and artifact storage requirements):
 
 ### Platform and software dependencies
 
+!!!!! **Please note** the list below are service dependencies of the Mender Server.
+!!!!! We specify the minimum versions Mender Server was tested with but we don't define a maintenance strategy if you choose to self host the services.
+!!!!!
+!!!!! For example, fixing a CVE in self hosted Mongo DB or troubleshooting a restart loop in a self hosted Artifact storage is not provided as part of Mender Server support.
+!!!!! We suggest using a dedicated hosting for these services if you lack a maintenance strategy for self hosting within your own cluster.
+!!!!! The services deployed as part of the Mender Server helm charts are for **evaluation only**.
 
 **Artifact storage:**
 * Azure blob storage
@@ -63,9 +69,6 @@ service.
   * Storage Provider Tenants only: `atlasAdmin@admin` on the Cluster - for those
     who are using the Storage Provider Tenants feature on Mender.
 
-!!!!! Please note that we do not provide support for troubleshooting issues with
-!!!!! MongoDB not directly related to the Mender product.
-!!!!! Always refer to [MongoDB documentation](https://www.mongodb.com/docs/manual/) prior to upgrading.
 
 **Redis:**
 * Redis 7.4, 8.0, 8.2
