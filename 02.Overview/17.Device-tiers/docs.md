@@ -30,7 +30,7 @@ The micro tier is designed for resource-constrained microcontroller units (MCUs)
 - Supports firmware updates
 - Default update check interval: 604800 seconds (7 days)
 - Default inventory update interval: 1209600 seconds (14 days)
-- Reduced artifact size limits (10 MiB) due to constrained storage
+- Reduced artifact size limits (5 MiB) due to constrained storage
 - Limited feature set compared to standard tier (no delta updates, no state scripts)
 
 **Typical devices:**
