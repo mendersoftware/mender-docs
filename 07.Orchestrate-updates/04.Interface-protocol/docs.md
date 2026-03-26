@@ -340,6 +340,11 @@ versioning](../../08.Artifact-creation/11.Software-versioning/docs.md) for
 more information about what Provides values are, and see [Execution](#execution)
 below to find out how the type and ID are obtained.
 
+Since Components do not necessarily run the Mender Client, the Interfaces do not supply default version information as it's described in [Software
+versioning](../../08.Artifact-creation/11.Software-versioning/docs.md). Each Interface is responsible for returning a `version=(currently-installed-version)` key-value pair via its Provides query output. This data is required by the Server UI to accurately display the version currently installed on the device.
+
+!! The `version` key is a mandatory part of the Provides query output. Without it, no Inventory information is transmitted to the Server and no new Artifacts can be deployed to Components.
+
 The output format is the same as the output from the Mender Client
 `show-provides` command, which consists of "key=value" pairs, with no spaces,
 separated by newlines. Unlike in the `Inventory` query, list data is not
