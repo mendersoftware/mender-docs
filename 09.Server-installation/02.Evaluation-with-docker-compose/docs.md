@@ -59,7 +59,7 @@ Clone the [mender-server](https://github.com/mendersoftware/mender-server?target
 repository which contains everything that is need to start the demo server:
 <!--AUTOVERSION: "git clone -b v% https"/mender-server-->
 ```bash
-git clone -b v4.0.0 https://github.com/mendersoftware/mender-server.git mender-server
+git clone -b v4.1.0 https://github.com/mendersoftware/mender-server.git mender-server
 ```
 
 Change directory to the cloned repository:
@@ -70,7 +70,7 @@ Change directory to the cloned repository:
 Set the MENDER_IMAGE_TAG environment variable (defines which Mender Server version to start, read by XYZ in command below):
 <!--AUTOVERSION: "export MENDER_IMAGE_TAG=v%"/mender-server-->
 ```bash
-export MENDER_IMAGE_TAG=v4.0.0
+export MENDER_IMAGE_TAG=v4.1.0
 ```
 
 Start the demo server:
