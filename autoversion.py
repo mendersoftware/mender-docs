@@ -224,13 +224,15 @@ def process_line(line, replacements, fd):
                 sep,
                 line,
                 sep,
-                "None"
-                if len(replacements) == 0
-                else "\n".join(
-                    [
-                        '"%s"/%s' % (repl["search"], repl["repo"])
-                        for repl in replacements
-                    ]
+                (
+                    "None"
+                    if len(replacements) == 0
+                    else "\n".join(
+                        [
+                            '"%s"/%s' % (repl["search"], repl["repo"])
+                            for repl in replacements
+                        ]
+                    )
                 ),
                 sep,
                 all_removed,
@@ -252,7 +254,10 @@ def process_line(line, replacements, fd):
 
 def do_replacements(line, replacements, just_remove):
     all_replaced = line
-    for search, repo, in [(repl["search"], repl["repo"]) for repl in replacements]:
+    for (
+        search,
+        repo,
+    ) in [(repl["search"], repl["repo"]) for repl in replacements]:
         if repo != "ignore" and repo not in REPOS_CACHE:
             REPOS_CACHE.append(repo)
         if len(search.strip()) <= 2:
@@ -300,10 +305,12 @@ def main():
         "--update", action="store_true", help="Update all version references"
     )
     parser.add_argument(
-        "--component", help="Component to update, it matches the Git repository name",
+        "--component",
+        help="Component to update, it matches the Git repository name",
     )
     parser.add_argument(
-        "--version", help="Version to update to",
+        "--version",
+        help="Version to update to",
     )
 
     parser.add_argument(
