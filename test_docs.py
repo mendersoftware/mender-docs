@@ -40,8 +40,7 @@ if len(sys.argv) == 1:
 
 
 if len(sys.argv) == 2 and sys.argv[1] == "-h" or sys.argv[1] == "--help":
-    print(
-        """
+    print("""
         %s <file>
 
 This tool will parse <file> to extract enclosed ```bash ``` code blocks from markdown,
@@ -64,9 +63,7 @@ add it to a shell script, and execute it (with -e -x set).
 
       <!-- AUTOMATION: test=`cmd` -->
 
-    """
-        % __file__
-    )
+    """ % __file__)
     sys.exit(0)
 
 
