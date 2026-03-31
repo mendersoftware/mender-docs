@@ -50,6 +50,40 @@ Mender stops providing updates with new Mender software to it, essentially leavi
 last Mender components fixed in that release.
 
 
+## Debian family LTS support for Mender Client and Mender Gateway
+
+The Mender Client and Mender Gateway components are supported for installation on
+Debian-based systems through Debian packages (`.deb`), and generally support the
+**two latest LTS releases** for both Debian and Ubuntu distributions.
+
+When a new Mender component version is released, it is made available for all currently
+supported Debian and Ubuntu LTS releases through the APT repository.
+
+When a new Debian or Ubuntu LTS is released, all currently supported Mender components
+are made available for this release. Once a Debian or Ubuntu LTS release becomes unsupported
+by Mender, updates with new Mender software to that release are stopped, essentially leaving
+the last Mender components fixed in that release.
+
+
+## Workstation tools
+
+Mender workstation tools (mender-artifact and mender-cli) are available for Debian,
+Ubuntu, and macOS, with the following support policies:
+
+For Debian and Ubuntu, the tools support the **two latest LTS releases**.
+
+When a new version of a Mender workstation tool is released, it is made available for all
+currently supported Debian and Ubuntu LTS releases through the APT repository.
+
+When a new Debian or Ubuntu LTS is released, all currently supported Mender workstation tools
+are made available for this release. Once a Debian or Ubuntu LTS release becomes unsupported
+by Mender, updates with new Mender software to that release are stopped, essentially leaving
+the last Mender workstation tools fixed in that release.
+
+For macOS, the workstation tools are available through Homebrew. macOS version
+support is determined by Homebrew's own compatibility policies.
+See https://docs.brew.sh/Support-Tiers for more information.
+
 ## Backward compatibility
 
 <!--AUTOVERSION: "% to %"/ignore-->

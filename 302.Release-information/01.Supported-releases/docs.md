@@ -40,6 +40,35 @@ Note that you will find other branches in meta-mender but they are not
 updated during a future Mender release.
 
 
+## Debian family releases supported for Mender Client
+
+The following Debian and Ubuntu LTS releases are currently supported for the Mender Client and
+Mender Gateway through [Debian packages](../../12.Downloads/02.Device-components/docs.md):
+
+| Distribution | Version  |
+| ------------ | -------  |
+| Debian       | Trixie   |
+| Debian       | Bookworm |
+| Ubuntu       | Noble    |
+| Ubuntu       | Jammy    |
+
+
+## Debian family and macOS releases supported for workstation tools
+
+The following Debian and Ubuntu LTS releases are currently supported for Mender workstation tools
+(mender-artifact and mender-cli) through [Debian packages](../../12.Downloads/01.Workstation-tools/docs.md):
+
+| Distribution | Version  |
+| ------------ | -------  |
+| Debian       | Trixie   |
+| Debian       | Bookworm |
+| Ubuntu       | Noble    |
+| Ubuntu       | Jammy    |
+
+The workstation tools are also available for macOS through [Homebrew](https://brew.sh/?target=_blank).
+Homebrew support is determined by the Homebrew project's own compatibility policies.
+
+
 ## Mender Artifact format support
 
 The [Mender Artifact format](../../02.Overview/03.Artifact/docs.md) is versioned
