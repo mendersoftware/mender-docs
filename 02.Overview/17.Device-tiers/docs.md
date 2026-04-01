@@ -20,6 +20,8 @@ Each tier is designed to accommodate different device capabilities and use cases
 
 ## Device tier characteristics
 
+!!!!! If device tier is not specified, the authentication set is treated as **Standard** device tier.
+
 ### Micro tier
 
 The micro tier is designed for resource-constrained microcontroller units (MCUs).
@@ -148,14 +150,15 @@ When a device changes tier:
 4. **Transition**: Once accepted, the old authentication set is rejected and the device operates with the new tier
 5. **Configuration update**: The device configuration (on the device itself) must be updated to send the correct tier in future authentication requests
 
-**Important considerations:**
+!!!!! DeviceTier can't be changed via update.
 
-- Changing tiers requires creating a new authentication set and getting it authorized
-- Only one authentication set per device can be in the "accepted" state at a time
-- The device must be reconfigured to send the correct tier value
-- Deployments should be adjusted to account for the new tier's capabilities and restrictions
+!!!!! Changing tiers requires creating a new authentication set and getting it authorized.
 
-!!!! If device tier is not specified, the authentication set is treated as **Standard** device tier.
+!!!!! Only one authentication set per device can be in the "accepted" state at a time.
+
+!!!!! The device must be reconfigured to send the correct tier value.
+
+!!!!! Deployments should be adjusted to account for the new tier's capabilities and restrictions.
 
 ## Free trial and device tiers
 
