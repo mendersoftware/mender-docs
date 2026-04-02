@@ -34,9 +34,22 @@ still be able to log in to the device.
 If you get the above error, make sure you do not have too many browser tabs or CLI windows
 with an open Remote Terminal session to the device.
 
-You can increase this limit if you wish. See the [configuration of mender-connect](../../90.Mender-Connect/docs.md#configuration),
-in particular the `Sessions.MaxPerUser` setting. Also note the `Sessions.ExpireAfterIdle`
-setting, which allows you to set a timeout for sessions.
+### Optimizing for unstable networks
+
+In environments with frequent network interruptions, remote terminal sessions may occasionally fail to close cleanly on the device. This can lead to "ghost" sessions that consume the session limit and block new connections.
+
+To improve reliability, we recommend the following configuration in `/etc/mender/mender-connect.conf`:
+
+*   `Sessions.ExpireAfterIdle`: Set to `600` (10 minutes) to automatically close sessions after inactivity.
+*   `Sessions.StopExpired`: Set to `true` to enable the cleanup of idle or expired sessions.
+*   `Sessions.MaxPerUser`: Consider increasing this to `2` or `4` to provide a buffer for users whose previous sessions didn't close cleanly.
+
+For more details, see the [configuration of mender-connect](../../90.Mender-Connect/docs.md#configuration).
+
+!!! Note: Starting with version 3.0, `mender-connect` will adopt more proactive defaults to improve out-of-the-box reliability:
+!!! *   `ExpireAfterIdle` will default to **600 seconds** (previously `0`/disabled).
+!!! *   `StopExpired` will default to **true** (previously `false`).
+
 
 ## Remote terminal sometimes not working
 
