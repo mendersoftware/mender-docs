@@ -110,26 +110,6 @@ SOFTWARE
 ```
 
 
-## github.com/ant0ine/go-json-rest/rest
-
-* Name: github.com/ant0ine/go-json-rest/rest
-* Version: v3.3.2
-* License: [MIT](https://github.com/ant0ine/go-json-rest/blob/v3.3.2/LICENSE)
-
-```
-Copyright (c) 2013-2016 Antoine Imbert
-
-The MIT License
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-```
-
-
 ## github.com/asaskevich/govalidator
 
 * Name: github.com/asaskevich/govalidator
@@ -164,8 +144,8 @@ SOFTWARE.
 ## github.com/aws/aws-sdk-go-v2
 
 * Name: github.com/aws/aws-sdk-go-v2
-* Version: v1.41.2
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/v1.41.2/LICENSE.txt)
+* Version: v1.41.5
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/v1.41.5/LICENSE.txt)
 
 ```
 
@@ -377,8 +357,8 @@ SOFTWARE.
 ## github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream
 
 * Name: github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream
-* Version: v1.7.5
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/aws/protocol/eventstream/v1.7.5/aws/protocol/eventstream/LICENSE.txt)
+* Version: v1.7.8
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/aws/protocol/eventstream/v1.7.8/aws/protocol/eventstream/LICENSE.txt)
 
 ```
 
@@ -590,8 +570,8 @@ SOFTWARE.
 ## github.com/aws/aws-sdk-go-v2/config
 
 * Name: github.com/aws/aws-sdk-go-v2/config
-* Version: v1.32.10
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/config/v1.32.10/config/LICENSE.txt)
+* Version: v1.32.13
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/config/v1.32.13/config/LICENSE.txt)
 
 ```
 
@@ -803,8 +783,8 @@ SOFTWARE.
 ## github.com/aws/aws-sdk-go-v2/credentials
 
 * Name: github.com/aws/aws-sdk-go-v2/credentials
-* Version: v1.19.10
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/credentials/v1.19.10/credentials/LICENSE.txt)
+* Version: v1.19.13
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/credentials/v1.19.13/credentials/LICENSE.txt)
 
 ```
 
@@ -1016,8 +996,8 @@ SOFTWARE.
 ## github.com/aws/aws-sdk-go-v2/feature/ec2/imds
 
 * Name: github.com/aws/aws-sdk-go-v2/feature/ec2/imds
-* Version: v1.18.18
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/feature/ec2/imds/v1.18.18/feature/ec2/imds/LICENSE.txt)
+* Version: v1.18.21
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/feature/ec2/imds/v1.18.21/feature/ec2/imds/LICENSE.txt)
 
 ```
 
@@ -1229,8 +1209,8 @@ SOFTWARE.
 ## github.com/aws/aws-sdk-go-v2/internal/configsources
 
 * Name: github.com/aws/aws-sdk-go-v2/internal/configsources
-* Version: v1.4.18
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/internal/configsources/v1.4.18/internal/configsources/LICENSE.txt)
+* Version: v1.4.21
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/internal/configsources/v1.4.21/internal/configsources/LICENSE.txt)
 
 ```
 
@@ -1442,8 +1422,8 @@ SOFTWARE.
 ## github.com/aws/aws-sdk-go-v2/internal/endpoints/v2
 
 * Name: github.com/aws/aws-sdk-go-v2/internal/endpoints/v2
-* Version: v2.7.18
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/internal/endpoints/v2.7.18/internal/endpoints/v2/LICENSE.txt)
+* Version: v2.7.21
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/internal/endpoints/v2.7.21/internal/endpoints/v2/LICENSE.txt)
 
 ```
 
@@ -1655,8 +1635,8 @@ SOFTWARE.
 ## github.com/aws/aws-sdk-go-v2/internal/ini
 
 * Name: github.com/aws/aws-sdk-go-v2/internal/ini
-* Version: v1.8.4
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/internal/ini/v1.8.4/internal/ini/LICENSE.txt)
+* Version: v1.8.6
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/internal/ini/v1.8.6/internal/ini/LICENSE.txt)
 
 ```
 
@@ -1868,8 +1848,8 @@ SOFTWARE.
 ## github.com/aws/aws-sdk-go-v2/internal/sync/singleflight
 
 * Name: github.com/aws/aws-sdk-go-v2/internal/sync/singleflight
-* Version: v1.41.2
-* License: [BSD-3-Clause](https://github.com/aws/aws-sdk-go-v2/blob/v1.41.2/internal/sync/singleflight/LICENSE)
+* Version: v1.41.5
+* License: [BSD-3-Clause](https://github.com/aws/aws-sdk-go-v2/blob/v1.41.5/internal/sync/singleflight/LICENSE)
 
 ```
 Copyright (c) 2009 The Go Authors. All rights reserved.
@@ -1907,8 +1887,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/internal/v4a
 
 * Name: github.com/aws/aws-sdk-go-v2/internal/v4a
-* Version: v1.4.18
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/internal/v4a/v1.4.18/internal/v4a/LICENSE.txt)
+* Version: v1.4.22
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/internal/v4a/v1.4.22/internal/v4a/LICENSE.txt)
 
 ```
 
@@ -2120,8 +2100,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding
 
 * Name: github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding
-* Version: v1.13.5
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/internal/accept-encoding/v1.13.5/service/internal/accept-encoding/LICENSE.txt)
+* Version: v1.13.7
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/internal/accept-encoding/v1.13.7/service/internal/accept-encoding/LICENSE.txt)
 
 ```
 
@@ -2333,8 +2313,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/internal/checksum
 
 * Name: github.com/aws/aws-sdk-go-v2/service/internal/checksum
-* Version: v1.9.10
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/internal/checksum/v1.9.10/service/internal/checksum/LICENSE.txt)
+* Version: v1.9.13
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/internal/checksum/v1.9.13/service/internal/checksum/LICENSE.txt)
 
 ```
 
@@ -2546,8 +2526,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/internal/presigned-url
 
 * Name: github.com/aws/aws-sdk-go-v2/service/internal/presigned-url
-* Version: v1.13.18
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/internal/presigned-url/v1.13.18/service/internal/presigned-url/LICENSE.txt)
+* Version: v1.13.21
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/internal/presigned-url/v1.13.21/service/internal/presigned-url/LICENSE.txt)
 
 ```
 
@@ -2759,8 +2739,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/internal/s3shared
 
 * Name: github.com/aws/aws-sdk-go-v2/service/internal/s3shared
-* Version: v1.19.18
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/internal/s3shared/v1.19.18/service/internal/s3shared/LICENSE.txt)
+* Version: v1.19.21
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/internal/s3shared/v1.19.21/service/internal/s3shared/LICENSE.txt)
 
 ```
 
@@ -2972,8 +2952,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/iot
 
 * Name: github.com/aws/aws-sdk-go-v2/service/iot
-* Version: v1.72.2
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/iot/v1.72.2/service/iot/LICENSE.txt)
+* Version: v1.72.5
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/iot/v1.72.5/service/iot/LICENSE.txt)
 
 ```
 
@@ -3185,8 +3165,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/iotdataplane
 
 * Name: github.com/aws/aws-sdk-go-v2/service/iotdataplane
-* Version: v1.32.18
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/iotdataplane/v1.32.18/service/iotdataplane/LICENSE.txt)
+* Version: v1.32.21
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/iotdataplane/v1.32.21/service/iotdataplane/LICENSE.txt)
 
 ```
 
@@ -3398,8 +3378,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/s3
 
 * Name: github.com/aws/aws-sdk-go-v2/service/s3
-* Version: v1.96.2
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/s3/v1.96.2/service/s3/LICENSE.txt)
+* Version: v1.97.3
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/s3/v1.97.3/service/s3/LICENSE.txt)
 
 ```
 
@@ -3611,8 +3591,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/signin
 
 * Name: github.com/aws/aws-sdk-go-v2/service/signin
-* Version: v1.0.6
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/signin/v1.0.6/service/signin/LICENSE.txt)
+* Version: v1.0.9
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/signin/v1.0.9/service/signin/LICENSE.txt)
 
 ```
 
@@ -3824,8 +3804,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/sso
 
 * Name: github.com/aws/aws-sdk-go-v2/service/sso
-* Version: v1.30.11
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/sso/v1.30.11/service/sso/LICENSE.txt)
+* Version: v1.30.14
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/sso/v1.30.14/service/sso/LICENSE.txt)
 
 ```
 
@@ -4037,8 +4017,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/ssooidc
 
 * Name: github.com/aws/aws-sdk-go-v2/service/ssooidc
-* Version: v1.35.15
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/ssooidc/v1.35.15/service/ssooidc/LICENSE.txt)
+* Version: v1.35.18
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/ssooidc/v1.35.18/service/ssooidc/LICENSE.txt)
 
 ```
 
@@ -4250,8 +4230,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/sts
 
 * Name: github.com/aws/aws-sdk-go-v2/service/sts
-* Version: v1.41.7
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/sts/v1.41.7/service/sts/LICENSE.txt)
+* Version: v1.41.10
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/sts/v1.41.10/service/sts/LICENSE.txt)
 
 ```
 
@@ -4463,8 +4443,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/smithy-go
 
 * Name: github.com/aws/smithy-go
-* Version: v1.24.1
-* License: [Apache-2.0](https://github.com/aws/smithy-go/blob/v1.24.1/LICENSE)
+* Version: v1.24.2
+* License: [Apache-2.0](https://github.com/aws/smithy-go/blob/v1.24.2/LICENSE)
 
 ```
 
@@ -4649,8 +4629,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/smithy-go/internal/sync/singleflight
 
 * Name: github.com/aws/smithy-go/internal/sync/singleflight
-* Version: v1.24.1
-* License: [BSD-3-Clause](https://github.com/aws/smithy-go/blob/v1.24.1/internal/sync/singleflight/LICENSE)
+* Version: v1.24.2
+* License: [BSD-3-Clause](https://github.com/aws/smithy-go/blob/v1.24.2/internal/sync/singleflight/LICENSE)
 
 ```
 Copyright (c) 2009 The Go Authors. All rights reserved.
@@ -5067,8 +5047,8 @@ SOFTWARE.
 ## github.com/go-viper/mapstructure/v2
 
 * Name: github.com/go-viper/mapstructure/v2
-* Version: v2.4.0
-* License: [MIT](https://github.com/go-viper/mapstructure/blob/v2.4.0/LICENSE)
+* Version: v2.5.0
+* License: [MIT](https://github.com/go-viper/mapstructure/blob/v2.5.0/LICENSE)
 
 ```
 The MIT License (MIT)
@@ -5260,8 +5240,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/klauspost/compress
 
 * Name: github.com/klauspost/compress
-* Version: v1.18.3
-* License: [Apache-2.0](https://github.com/klauspost/compress/blob/v1.18.3/LICENSE)
+* Version: v1.18.5
+* License: [Apache-2.0](https://github.com/klauspost/compress/blob/v1.18.5/LICENSE)
 
 ```
 Copyright (c) 2012 The Go Authors. All rights reserved.
@@ -5575,8 +5555,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ## github.com/klauspost/compress/internal/snapref
 
 * Name: github.com/klauspost/compress/internal/snapref
-* Version: v1.18.3
-* License: [BSD-3-Clause](https://github.com/klauspost/compress/blob/v1.18.3/internal/snapref/LICENSE)
+* Version: v1.18.5
+* License: [BSD-3-Clause](https://github.com/klauspost/compress/blob/v1.18.5/internal/snapref/LICENSE)
 
 ```
 Copyright (c) 2011 The Snappy-Go Authors. All rights reserved.
@@ -5613,8 +5593,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/klauspost/compress/zstd/internal/xxhash
 
 * Name: github.com/klauspost/compress/zstd/internal/xxhash
-* Version: v1.18.3
-* License: [MIT](https://github.com/klauspost/compress/blob/v1.18.3/zstd/internal/xxhash/LICENSE.txt)
+* Version: v1.18.5
+* License: [MIT](https://github.com/klauspost/compress/blob/v1.18.5/zstd/internal/xxhash/LICENSE.txt)
 
 ```
 Copyright (c) 2016 Caleb Spare
@@ -6419,8 +6399,8 @@ SOFTWARE.
 ## github.com/nats-io/nats.go
 
 * Name: github.com/nats-io/nats.go
-* Version: v1.49.0
-* License: [Apache-2.0](https://github.com/nats-io/nats.go/blob/v1.49.0/LICENSE)
+* Version: v1.50.0
+* License: [Apache-2.0](https://github.com/nats-io/nats.go/blob/v1.50.0/LICENSE)
 
 ```
                                  Apache License
@@ -6631,8 +6611,8 @@ SOFTWARE.
 ## github.com/nats-io/nkeys
 
 * Name: github.com/nats-io/nkeys
-* Version: v0.4.12
-* License: [Apache-2.0](https://github.com/nats-io/nkeys/blob/v0.4.12/LICENSE)
+* Version: v0.4.15
+* License: [Apache-2.0](https://github.com/nats-io/nkeys/blob/v0.4.15/LICENSE)
 
 ```
                                  Apache License
@@ -8225,8 +8205,8 @@ SOFTWARE.
 ## github.com/ulikunitz/xz
 
 * Name: github.com/ulikunitz/xz
-* Version: v0.5.12
-* License: [BSD-3-Clause](https://github.com/ulikunitz/xz/blob/v0.5.12/LICENSE)
+* Version: v0.5.14
+* License: [BSD-3-Clause](https://github.com/ulikunitz/xz/blob/v0.5.14/LICENSE)
 
 ```
 Copyright (c) 2014-2022  Ulrich Kunitz
@@ -9284,8 +9264,8 @@ limitations under the License.
 ## golang.org/x/crypto
 
 * Name: golang.org/x/crypto
-* Version: v0.48.0
-* License: [BSD-3-Clause](https://cs.opensource.google/go/x/crypto/+/v0.48.0:LICENSE)
+* Version: v0.49.0
+* License: [BSD-3-Clause](https://cs.opensource.google/go/x/crypto/+/v0.49.0:LICENSE)
 
 ```
 Copyright 2009 The Go Authors.
@@ -9322,8 +9302,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## golang.org/x/net
 
 * Name: golang.org/x/net
-* Version: v0.51.0
-* License: [BSD-3-Clause](https://cs.opensource.google/go/x/net/+/v0.51.0:LICENSE)
+* Version: v0.52.0
+* License: [BSD-3-Clause](https://cs.opensource.google/go/x/net/+/v0.52.0:LICENSE)
 
 ```
 Copyright 2009 The Go Authors.
@@ -9360,8 +9340,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## golang.org/x/sync
 
 * Name: golang.org/x/sync
-* Version: v0.19.0
-* License: [BSD-3-Clause](https://cs.opensource.google/go/x/sync/+/v0.19.0:LICENSE)
+* Version: v0.20.0
+* License: [BSD-3-Clause](https://cs.opensource.google/go/x/sync/+/v0.20.0:LICENSE)
 
 ```
 Copyright 2009 The Go Authors.
@@ -9398,8 +9378,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## golang.org/x/sys
 
 * Name: golang.org/x/sys
-* Version: v0.41.0
-* License: [BSD-3-Clause](https://cs.opensource.google/go/x/sys/+/v0.41.0:LICENSE)
+* Version: v0.42.0
+* License: [BSD-3-Clause](https://cs.opensource.google/go/x/sys/+/v0.42.0:LICENSE)
 
 ```
 Copyright 2009 The Go Authors.
@@ -9436,8 +9416,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## golang.org/x/term
 
 * Name: golang.org/x/term
-* Version: v0.40.0
-* License: [BSD-3-Clause](https://cs.opensource.google/go/x/term/+/v0.40.0:LICENSE)
+* Version: v0.41.0
+* License: [BSD-3-Clause](https://cs.opensource.google/go/x/term/+/v0.41.0:LICENSE)
 
 ```
 Copyright 2009 The Go Authors.
@@ -9474,8 +9454,46 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## golang.org/x/text
 
 * Name: golang.org/x/text
-* Version: v0.34.0
-* License: [BSD-3-Clause](https://cs.opensource.google/go/x/text/+/v0.34.0:LICENSE)
+* Version: v0.35.0
+* License: [BSD-3-Clause](https://cs.opensource.google/go/x/text/+/v0.35.0:LICENSE)
+
+```
+Copyright 2009 The Go Authors.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+   * Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above
+copyright notice, this list of conditions and the following disclaimer
+in the documentation and/or other materials provided with the
+distribution.
+   * Neither the name of Google LLC nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+```
+
+
+## golang.org/x/time/rate
+
+* Name: golang.org/x/time/rate
+* Version: v0.15.0
+* License: [BSD-3-Clause](https://cs.opensource.google/go/x/time/+/v0.15.0:LICENSE)
 
 ```
 Copyright 2009 The Go Authors.
@@ -9708,7 +9726,7 @@ SOFTWARE.
 ## @emotion/is-prop-valid
 
 * Name: @emotion/is-prop-valid
-* Version: 1.3.0
+* Version: 1.3.1
 * License: [MIT](https://github.com/emotion-js/emotion/tree/main/packages/is-prop-valid)
 
 ```
@@ -10382,7 +10400,7 @@ SOFTWARE.
 ## @restart/hooks
 
 * Name: @restart/hooks
-* Version: 0.4.15
+* Version: 0.4.16
 * License: [MIT](https://github.com/jquense/react-common-hooks.git)
 
 ```
@@ -10407,6 +10425,223 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
+
+## @sentry-internal/browser-utils
+
+* Name: @sentry-internal/browser-utils
+* Version: 10.42.0
+* License: [MIT](https://github.com/getsentry/sentry-javascript.git)
+
+```
+MIT License
+
+Copyright (c) 2020 Functional Software, Inc. dba Sentry
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+```
+
+## @sentry-internal/feedback
+
+* Name: @sentry-internal/feedback
+* Version: 10.42.0
+* License: [MIT](https://github.com/getsentry/sentry-javascript.git)
+
+```
+MIT License
+
+Copyright (c) 2023 Functional Software, Inc. dba Sentry
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+```
+
+## @sentry-internal/replay
+
+* Name: @sentry-internal/replay
+* Version: 10.42.0
+* License: [MIT](https://github.com/getsentry/sentry-javascript.git)
+
+```
+MIT License
+
+Copyright (c) 2022 Functional Software, Inc. dba Sentry
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+```
+
+## @sentry-internal/replay-canvas
+
+* Name: @sentry-internal/replay-canvas
+* Version: 10.42.0
+* License: [MIT](https://github.com/getsentry/sentry-javascript.git)
+
+```
+MIT License
+
+Copyright (c) 2024 Functional Software, Inc. dba Sentry
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+```
+
+## @sentry/browser
+
+* Name: @sentry/browser
+* Version: 10.42.0
+* License: [MIT](https://github.com/getsentry/sentry-javascript.git)
+
+```
+MIT License
+
+Copyright (c) 2019 Functional Software, Inc. dba Sentry
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+```
+
+## @sentry/core
+
+* Name: @sentry/core
+* Version: 10.42.0
+* License: [MIT](https://github.com/getsentry/sentry-javascript.git)
+
+```
+MIT License
+
+Copyright (c) 2019 Functional Software, Inc. dba Sentry
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+```
+
+## @sentry/react
+
+* Name: @sentry/react
+* Version: 10.42.0
+* License: [MIT](https://github.com/getsentry/sentry-javascript.git)
+
+```
+MIT License
+
+Copyright (c) 2019 Functional Software, Inc. dba Sentry
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
 ```
 
 ## @stripe/react-stripe-js
@@ -10620,7 +10855,7 @@ IN THE SOFTWARE.
 ## attr-accept
 
 * Name: attr-accept
-* Version: 2.2.4
+* Version: 2.2.5
 * License: [MIT](https://github.com/react-dropzone/attr-accept.git)
 
 ```
@@ -12063,7 +12298,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 ## immer
 
 * Name: immer
-* Version: 11.0.1
+* Version: 11.1.4
 * License: [MIT](https://github.com/immerjs/immer.git)
 
 ```
@@ -12174,7 +12409,7 @@ SOFTWARE.
 ## is-arguments
 
 * Name: is-arguments
-* Version: 1.1.1
+* Version: 1.2.0
 * License: [MIT](https://github.com/inspect-js/is-arguments.git)
 
 ```
@@ -12267,7 +12502,7 @@ SOFTWARE.
 ## is-generator-function
 
 * Name: is-generator-function
-* Version: 1.0.10
+* Version: 1.1.0
 * License: [MIT](https://github.com/inspect-js/is-generator-function.git)
 
 ```
@@ -12299,6 +12534,36 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 * Name: is-nan
 * Version: 1.3.2
 * License: [MIT](https://github.com/es-shims/is-nan.git)
+
+```
+The MIT License (MIT)
+
+Copyright (c) 2014 Jordan Harband
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+```
+
+## is-regex
+
+* Name: is-regex
+* Version: 1.2.1
+* License: [MIT](https://github.com/inspect-js/is-regex.git)
 
 ```
 The MIT License (MIT)
@@ -12501,6 +12766,25 @@ terms above.
 
 ```
 
+## markdown-to-jsx
+
+* Name: markdown-to-jsx
+* Version: 7.7.13
+* License: [MIT](https://github.com/quantizor/markdown-to-jsx.git)
+
+```
+The MIT License (MIT)
+
+Copyright (c) 2015-present Evan Jacobs
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+```
+
 ## math-intrinsics
 
 * Name: math-intrinsics
@@ -12629,10 +12913,38 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
+## mui-markdown
+
+* Name: mui-markdown
+* Version: 2.1.1
+* License: [MIT](https://github.com/HPouyanmehr/mui-markdown)
+
+```
+MIT License
+
+Copyright (c) <year> <copyright holders>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+associated documentation files (the "Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
+following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial
+portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO
+EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+```
+
 ## object-is
 
 * Name: object-is
-* Version: 1.1.5
+* Version: 1.1.6
 * License: [MIT](https://github.com/es-shims/object-is.git)
 
 ```
@@ -12753,7 +13065,7 @@ THE SOFTWARE.
 ## possible-typed-array-names
 
 * Name: possible-typed-array-names
-* Version: 1.0.0
+* Version: 1.1.0
 * License: [MIT](https://github.com/ljharb/possible-typed-array-names.git)
 
 ```
@@ -12909,13 +13221,13 @@ SOFTWARE.
 ## react
 
 * Name: react
-* Version: 18.3.1
+* Version: 19.2.4
 * License: [MIT](https://github.com/facebook/react.git)
 
 ```
 MIT License
 
-Copyright (c) Facebook, Inc. and its affiliates.
+Copyright (c) Meta Platforms, Inc. and affiliates.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -13035,13 +13347,13 @@ SOFTWARE.
 ## react-dom
 
 * Name: react-dom
-* Version: 18.3.1
+* Version: 19.2.4
 * License: [MIT](https://github.com/facebook/react.git)
 
 ```
 MIT License
 
-Copyright (c) Facebook, Inc. and its affiliates.
+Copyright (c) Meta Platforms, Inc. and affiliates.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -13662,6 +13974,37 @@ SOFTWARE.
 ## safe-buffer
 
 * Name: safe-buffer
+* Version: 5.1.2
+* License: [MIT](https://github.com/feross/safe-buffer.git)
+
+```
+The MIT License (MIT)
+
+Copyright (c) Feross Aboukhadijeh
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+```
+
+## safe-buffer
+
+* Name: safe-buffer
 * Version: 5.2.1
 * License: [MIT](https://github.com/feross/safe-buffer.git)
 
@@ -13690,16 +14033,47 @@ THE SOFTWARE.
 
 ```
 
+## safe-regex-test
+
+* Name: safe-regex-test
+* Version: 1.1.0
+* License: [MIT](https://github.com/ljharb/safe-regex-test.git)
+
+```
+MIT License
+
+Copyright (c) 2022 Jordan Harband
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+```
+
 ## scheduler
 
 * Name: scheduler
-* Version: 0.23.2
+* Version: 0.27.0
 * License: [MIT](https://github.com/facebook/react.git)
 
 ```
 MIT License
 
-Copyright (c) Facebook, Inc. and its affiliates.
+Copyright (c) Meta Platforms, Inc. and affiliates.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -13786,7 +14160,7 @@ SOFTWARE.
 ## string_decoder
 
 * Name: string_decoder
-* Version: 1.3.0
+* Version: 1.1.1
 * License: [MIT](https://github.com/nodejs/string_decoder.git)
 
 ```
@@ -13905,7 +14279,7 @@ SOFTWARE.
 ## tlds
 
 * Name: tlds
-* Version: 1.248.0
+* Version: 1.259.0
 * License: [MIT](https://github.com/stephenmathieson/node-tlds.git)
 
 ```
@@ -14078,36 +14452,6 @@ SOFTWARE.
 
 * Name: universal-cookie
 * Version: 8.0.1
-* License: [MIT](https://github.com/bendotcodes/cookies.git)
-
-```
-The MIT License (MIT)
-
-Copyright (c) 2015 Benoit Tremblay
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-```
-
-## universal-cookie
-
-* Name: universal-cookie
-* Version: 7.1.4
 * License: [MIT](https://github.com/bendotcodes/cookies.git)
 
 ```
