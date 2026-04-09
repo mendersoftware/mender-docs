@@ -92,7 +92,7 @@ Clone `mender-convert` from the official repository:
 
 <!--AUTOVERSION: "-b % https://github.com/mendersoftware/mender-convert"/mender-convert-->
 ```bash
-git clone -b 5.2.0 https://github.com/mendersoftware/mender-convert.git
+git clone -b 5.2.1 https://github.com/mendersoftware/mender-convert.git
 ```
 
 <!--AUTOVERSION: "use % in the"/ignore-->
