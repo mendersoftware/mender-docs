@@ -62,8 +62,8 @@ Download the Raspberry Pi OS image ready for Mender:
   * Download link: [Raspberry Pi 5][raspios-lite-raspberrypi5_trixie_64bit-mender-convert.img.xz]
 
 <!--AUTOVERSION: "mender-convert-%.img.xz"/mender-convert -->
-[raspios-lite-raspberrypi4_trixie_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2025-10-01-raspios-lite/arm/2025-10-01-raspios-lite-raspberrypi4_trixie_64bit-mender-convert-5.2.0.img.xz
-[raspios-lite-raspberrypi5_trixie_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2025-10-01-raspios-lite/arm/2025-10-01-raspios-lite-raspberrypi5_trixie_64bit-mender-convert-5.2.0.img.xz
+[raspios-lite-raspberrypi4_trixie_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2025-10-01-raspios-lite/arm/2025-10-01-raspios-lite-raspberrypi4_trixie_64bit-mender-convert-5.2.1.img.xz
+[raspios-lite-raspberrypi5_trixie_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2025-10-01-raspios-lite/arm/2025-10-01-raspios-lite-raspberrypi5_trixie_64bit-mender-convert-5.2.1.img.xz
 
 Flash the image without doing any configuration.
 !!! NB: Make sure the path to the SD is correct before flashing.

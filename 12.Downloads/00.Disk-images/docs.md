@@ -44,8 +44,8 @@ IMPORTANT: When updating the disk images, also remember to update https://docs.m
            `url`, `release_date`, `image_download_size` and `extract_sha256` must all be updated and correspond to the images listed here
 -->
 <!--AUTOVERSION: "mender-convert-%.img.xz"/mender-convert -->
-[raspios-lite-raspberrypi4_trixie_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2025-10-01-raspios-lite/arm/2025-10-01-raspios-lite-raspberrypi4_trixie_64bit-mender-convert-5.2.0.img.xz
-[raspios-lite-raspberrypi5_trixie_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2025-10-01-raspios-lite/arm/2025-10-01-raspios-lite-raspberrypi5_trixie_64bit-mender-convert-5.2.0.img.xz
+[raspios-lite-raspberrypi4_trixie_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2025-10-01-raspios-lite/arm/2025-10-01-raspios-lite-raspberrypi4_trixie_64bit-mender-convert-5.2.1.img.xz
+[raspios-lite-raspberrypi5_trixie_64bit-mender-convert.img.xz]: https://d4o6e0uccgv40.cloudfront.net/2025-10-01-raspios-lite/arm/2025-10-01-raspios-lite-raspberrypi5_trixie_64bit-mender-convert-5.2.1.img.xz
 
 You can find images for other devices in our Mender Hub community forum, see
 [Debian Family](https://hub.mender.io/c/board-integrations/debian-family/11?target=_blank) or
