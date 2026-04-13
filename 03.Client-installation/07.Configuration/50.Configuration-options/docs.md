@@ -48,6 +48,22 @@ or older.
 
 Allows you to configure additional connection-related settings.
 
+##### DeviceTier
+
+This option describes class of an authenticated device in Mender.
+Depending on the value:
+* different device limitations will be applied by the Server
+* new capabilities can be unlocked (manifest updates etc.)
+
+Mere details can be found in [device tiers documentation](../../../02.Overview/17.Device-tiers/docs.md)
+
+Possible values:
+* `standard`
+* `system`
+* `micro`
+
+!!!!! If DeviceTier is not set it will be treated as `standard` DeviceTier.
+
 ##### DisableKeepAlive
 
 !! This option is not supported starting from the Mender Client version 4.0, and all the HTTP requests will be sent without the Keep-Alive header.
