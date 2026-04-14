@@ -63,6 +63,6 @@ The `update_strategy` map has the following field:
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `order` | integer | ✓ | Installation priority<sup>1</sup>.  |
+| `order` | integer | ✓ | Installation priority (1-100)<sup>1</sup>.  |
 
 <sup>1</sup> Components are updated in ascending order (lower orders first), with Components having the same order updated in parallel.
