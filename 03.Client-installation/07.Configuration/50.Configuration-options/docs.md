@@ -55,7 +55,7 @@ Depending on the value:
 * different device limitations will be applied by the Server
 * new capabilities can be unlocked (manifest updates etc.)
 
-Mere details can be found in [device tiers documentation](../../../02.Overview/17.Device-tiers/docs.md)
+More details can be found in [device tiers documentation](../../../02.Overview/17.Device-tiers/docs.md)
 
 Possible values:
 * `standard`
