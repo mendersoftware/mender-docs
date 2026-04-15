@@ -152,7 +152,7 @@ When a device changes tier:
 
 **Important considerations:**
 
-- Changing tiers requires client to generate a new private key for authentication and getting it authorized.
+- Changing tiers requires acceptance of a new authentication request from the device
 - Only one authentication set per device can be in the "accepted" state at a time.
 - The device must be reconfigured to send the correct tier value.
 - Deployments should be adjusted to account for the new tier's capabilities and restrictions.
