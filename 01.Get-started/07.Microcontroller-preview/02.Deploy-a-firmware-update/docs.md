@@ -84,6 +84,6 @@ In this get started guide, we prepared a Zephyr-based microcontroller for OTA up
 For now, you can continue exploring by:
 * Trying [different boards](https://github.com/mendersoftware/mender-mcu-integration?target=_blank&tab=readme-ov-file#build-the-project-for-other-boards) (ensure they have MCUboot support; you may use the same project and build for a different board if supported).
 * Diving into the code: examine how the Mender client is initialized in the Zephyr app (the integration example provides insight into the API usage).
-* Providing feedback on the preview via [Mender Hub](https://hub.mender.io?target=_blank) if you encounter issues or have suggestions.
+* Providing feedback via [Mender Hub](https://hub.mender.io?target=_blank) if you encounter issues or have suggestions.
 
 With microcontroller support, Mender extends robust OTA updates to a new class of devices, enabling unified update management across both Linux and constrained edge devices. Happy updating\!

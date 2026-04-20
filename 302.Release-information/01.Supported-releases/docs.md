@@ -18,7 +18,7 @@ in the table below:
 |-----------------------|---------------|-------------------------|
 | Mender Client 6.0     | 2026-03       | Supported               |
 | Mender Client 5.0     | 2025-01       | Supported               |
-| Mender MCU Client 1.0 | 2025-04       | Supported               |
+| Mender MCU Client 1.0 | 2026-04       | Supported               |
 | Mender Gateway 2.0    | 2025-01       | Supported               |
 | Mender Server 4.1     | 2026-01       | Supported               |
 | Mender Server 4.0     | 2025-01       | Supported until 2026-08 |
@@ -47,6 +47,7 @@ The following [Zephyr Project
 releases](https://github.com/zephyrproject-rtos/zephyr/releases) are currently
 supported by the [Mender MCU Client](https://github.com/mendersoftware/mender-mcu):
 
+<!--AUTOVERSION: "Zephyr %"/ignore "/v%"/ignore-->
 * [Zephyr 4.2](https://github.com/zephyrproject-rtos/zephyr/releases/tag/v4.2.0)
 
 

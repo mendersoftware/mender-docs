@@ -4,8 +4,6 @@ taxonomy:
     category: docs
 ---
 
-!! This section is a preview of Mender's support for microcontroller devices running the Zephyr RTOS. It is not yet recommended for production use. Also, expect the APIs and configurations to evolve as the integration matures.
-
 ## Overview
 
 Mender enables robust **firmware updates** on resource-constrained devices by integrating with the Zephyr real-time operating system and the MCUboot bootloader. This allows microcontroller units (MCUs) to perform atomic, **fail-safe OTA updates** with automatic rollback on failure, similar to Mender's updates for Linux devices.

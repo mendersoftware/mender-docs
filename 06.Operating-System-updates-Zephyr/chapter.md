@@ -6,6 +6,6 @@ taxonomy:
 
 ### Chapter 6
 
-# Operating System updates: Zephyr (preview)
+# Operating System updates: Zephyr
 
 Integrate and create Operating System updates for a Zephyr-based MCU.

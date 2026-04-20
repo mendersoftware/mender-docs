@@ -46,7 +46,7 @@ The micro tier is designed for resource-constrained microcontroller units (MCUs)
 
 - No delta update support
 - No compressed artifacts support
-- No signed artifacts support (in preview)
+- No signed artifacts support
 - No advanced update controls using state scripts
 
 ### Standard tier
