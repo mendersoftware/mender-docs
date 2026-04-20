@@ -74,7 +74,7 @@ Create the Artifact by for your target device by specifying the artifact name, c
 ```bash
 ./gen_docker-compose \
     --artifact-name docker-compose-artifact-v1 \
-    --device-type raspberrypi5 \
+    --compatible-type raspberrypi5 \
     --architecture arm64 \
     --manifests-dir manifests/ \
     --project-name my-webserver \
@@ -169,7 +169,7 @@ Now generate the Artifact using the `--images-dir` option:
 ```bash
 ./gen_docker-compose \
     --artifact-name docker-compose-artifact-v1 \
-    --device-type raspberrypi5 \
+    --compatible-type raspberrypi5 \
     --manifests-dir manifests/ \
     --images-dir images/ \
     --project-name my-webserver \
