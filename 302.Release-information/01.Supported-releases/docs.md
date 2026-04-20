@@ -14,14 +14,15 @@ of Mender, see the [Compatibility policy](../../02.Overview/15.Compatibility-pol
 The latest long term support (LTS) versions of Mender components are shown in the
 in the table below:
 
-| Released component  | Release month | Support status          |
-| ------------------- | ------------- | ----------------------- |
-| Mender Client 6.0   | 2026-03       | Supported               |
-| Mender Client 5.0   | 2025-01       | Supported               |
-| Mender Gateway 2.0  | 2025-01       | Supported               |
-| Mender Server 4.1   | 2026-01       | Supported               |
-| Mender Server 4.0   | 2025-01       | Supported until 2026-08 |
-| Mender 3.7 (bundle) | 2024-05       | EOL (since 2025-05)     |
+| Released component    | Release month | Support status          |
+|-----------------------|---------------|-------------------------|
+| Mender Client 6.0     | 2026-03       | Supported               |
+| Mender Client 5.0     | 2025-01       | Supported               |
+| Mender MCU Client 1.0 | 2025-04       | Supported               |
+| Mender Gateway 2.0    | 2025-01       | Supported               |
+| Mender Server 4.1     | 2026-01       | Supported               |
+| Mender Server 4.0     | 2025-01       | Supported until 2026-08 |
+| Mender 3.7 (bundle)   | 2024-05       | EOL (since 2025-05)     |
 
 When a new LTS version is released for a component, the previous LTS
 version is supported for at least 6 months.
@@ -38,6 +39,15 @@ are currently supported by [meta-mender](https://github.com/mendersoftware/meta-
 Each Yocto Project release has a corresponding branch in meta-mender.
 Note that you will find other branches in meta-mender but they are not
 updated during a future Mender release.
+
+
+## Zephyr Project releases supported by Mender MCU Client
+
+The following [Zephyr Project
+releases](https://github.com/zephyrproject-rtos/zephyr/releases) are currently
+supported by the [Mender MCU Client](https://github.com/mendersoftware/mender-mcu):
+
+* [Zephyr 4.2](https://github.com/zephyrproject-rtos/zephyr/releases/tag/v4.2.0)
 
 
 ## Debian family releases supported for Mender Client
