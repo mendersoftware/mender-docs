@@ -134,6 +134,8 @@ sudo apt-get install mender-artifact
 <!-- AUTOMATION: execute=apt-get update -->
 <!-- AUTOMATION: execute=DEBIAN_FRONTEND=noninteractive apt-get install -y mender-client4 -->
 
+!!! For troubleshooting common issues with workstation tools, see [Workstation Tools Troubleshooting](../../301.Troubleshoot/05.Workstation-Tools/docs.md).
+
 ### Mac OS X
 
 Use `brew` to install `mender-artifact` from [the Homebrew repository](https://brew.sh/):

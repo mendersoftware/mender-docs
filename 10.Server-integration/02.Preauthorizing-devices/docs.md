@@ -37,7 +37,7 @@ Once your device boots with a newly provisioned disk image, it should already be
 
 ![Mender UI - device pending authorization](device-pending-authorization.png)
 
-If your device does not show as pending authorization in the Mender Server once it boots with the disk image, you need to diagnose this issue before continuing. See the [troubleshooting section on connecting devices](../../301.Troubleshoot/05.Device-Runtime/docs.md#mender-server-connection-issues) in this case.
+If your device does not show as pending authorization in the Mender Server once it boots with the disk image, you need to diagnose this issue before continuing. See the [troubleshooting section on connecting devices](../../301.Troubleshoot/06.Device-Runtime/docs.md#mender-server-connection-issues) in this case.
 
 
 ### A CLI environment for your Mender Server

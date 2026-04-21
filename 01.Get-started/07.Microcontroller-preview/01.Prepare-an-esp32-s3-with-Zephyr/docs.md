@@ -126,7 +126,7 @@ When the device starts up with the Mender client, it will automatically try to c
 ![pending device](pending-device.png)
 
 
-!!! If your device is not visible in the Devices tab see our [Troubleshooting section](../../../301.Troubleshoot/06.Mender-MCU/docs.md#debugging-tips).
+!!! If your device is not visible in the Devices tab see our [Troubleshooting section](../../../301.Troubleshoot/07.Mender-MCU/docs.md#debugging-tips).
 
 
 2. **Accept the device:** Select the pending device and **Accept** it. After accepting, the device will appear on the Device groups tab on the left of Pending.
