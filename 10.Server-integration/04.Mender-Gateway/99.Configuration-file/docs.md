@@ -205,3 +205,25 @@ This configuration is available from Mender Gateway version <code>1.3.0</code>.
 <dt>InsecureSkipVerify (<code>UPSTREAM_SERVER_INSECURE_SKIP_VERIFY</code>)</dt>
 <dd>Skip verification of certificate claims.</dd>
 </dl>
+
+</dl>
+
+### Point Mender Gateway to a proxy
+
+<!--AUTOVERSION: "version <code>%</code>"/ignore-->
+!!! Available from Mender Gateway version <code>2.1.0</code>
+
+**Please note** This is a not required for the normal operation of Mender Gateway and is only used for specific use cases.
+
+These configurations are available as environmental variables only.
+
+<dl>
+<dt><code>HTTP_PROXY</code></dt>
+<dd>URL of the proxy server for HTTP connections. Supports authentication using the <code>user:password@host</code> URL format.</dd>
+
+<dt><code>HTTPS_PROXY</code></dt>
+<dd>URL of the proxy server for HTTPS connections. Supports authentication using the <code>user:password@host</code> URL format.</dd>
+
+<dt><code>NO_PROXY</code></dt>
+<dd>Space-separated list of hosts or domain suffixes that should bypass the proxy. Items can be domain suffixes/wildcards, for example <code>.example.com</code> to bypass the proxy for all <code>*.example.com</code> URLs.</dd>
+</dl>
