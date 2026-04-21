@@ -22,7 +22,7 @@ To prevent the cache from growing indefinitely, the Orchestrator performs a clea
 
 ### Storage and Fallback
 
-The filesystem hosting the cache must have sufficient free space to store the full Artifact. However, the caching mechanism is designed to be non-blocking. If the Orchestrator cannot cache an Artifact - for example, if the destination filesystem has reached its capacity - it will skip the caching process. The deployment will continue to function normally, ensuring that storage issues do not cause update failures.
+The filesystem hosting the cache must have sufficient free space to store the full Artifact. If the Orchestrator cannot cache an Artifact - for example, if the destination filesystem has reached its capacity - it will fail the deployment.
 
 ### Configuration
 
@@ -32,12 +32,19 @@ Artifact caching is configured in the Mender Orchestrator configuration file, lo
 {
   "ArtifactsCache": {
     "Enabled": true,
-    "Path": "/var/cache/mender-orchestrator"
+    "Path": "/var/cache/mender-orchestrator",
+    "MaxSizeBytes": 2147483648
   }
 }
 ```
 
 * `Enabled`: Set to true to activate caching. Defaults to false.
 * `Path`: The directory where the cached Artifacts are stored.
+* `MaxSizeBytes`: The maximum size in bytes for the cache. `0` means no limit.
+  Defaults to `0`.
 
-!!! Note: The path configured for the cache must exist on the filesystem before the Orchestrator starts. The service will not attempt to create the directory structure if it is missing. In this case the deployments will work normally but without the cache.
+!!! Note: The path configured for the cache must exist on the filesystem before the Orchestrator starts. The service will not attempt to create the directory structure if it is missing.
+
+For a full description of all cache-related options, see the [ArtifactsCache
+configuration
+reference](../../08.Configuration/50.Configuration-options/docs.md#artifactscache).
