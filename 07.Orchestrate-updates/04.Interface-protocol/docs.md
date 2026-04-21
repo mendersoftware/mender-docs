@@ -10,6 +10,7 @@ Interfaces are executables that are placed in the
 reference to the version of the protocol. Mender Orchestrator will look for
 Interfaces in this directory.
 
+!!! Mender Orchestrator provides an [Interface for updating the System Device running Mender](https://github.com/mendersoftware/mender-orchestrator-support/blob/main/interfaces/v1/rootfs-image) out of the box.
 
 States and execution flow
 -------------------------
