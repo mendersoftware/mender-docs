@@ -28,11 +28,11 @@ components:
     interface: rootfs-image
 
   - component_type: rtos
-    interface: rtos
+    interface: rtos-interface
     interface_args: ["1"]
 
   - component_type: rtos
-    interface: rtos
+    interface: rtos-interface
     interface_args: ["2"]
 ```
 
@@ -68,6 +68,7 @@ First, create demo RTOS Artifacts for your Components:
 
 ```bash
 # Create RTOS v1 artifact
+INTERFACE=rtos-interface
 COMPONENT_TYPE=rtos
 VERSION=rtos-v1
 PAYLOAD=$VERSION-payload
@@ -75,7 +76,7 @@ PAYLOAD=$VERSION-payload
 touch $PAYLOAD
 mender-artifact \
   write module-image \
-  --type $COMPONENT_TYPE \
+  --type $INTERFACE \
   --compatible-types $COMPONENT_TYPE \
   --provides version:$VERSION \
   --file $PAYLOAD \
@@ -87,6 +88,7 @@ rm $PAYLOAD
 
 ```bash
 # Create RTOS v2 artifact
+INTERFACE=rtos-interface
 COMPONENT_TYPE=rtos
 VERSION=rtos-v2
 PAYLOAD=$VERSION-payload
@@ -94,7 +96,7 @@ PAYLOAD=$VERSION-payload
 touch $PAYLOAD
 mender-artifact \
   write module-image \
-  --type $COMPONENT_TYPE \
+  --type $INTERFACE \
   --compatible-types $COMPONENT_TYPE \
   --provides version:$VERSION \
   --file $PAYLOAD \
