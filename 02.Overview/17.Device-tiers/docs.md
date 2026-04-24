@@ -31,7 +31,7 @@ The micro tier is designed for resource-constrained microcontroller units (MCUs)
 - Runs `mender-mcu` (typically on Zephyr RTOS)
 - Supports firmware updates
 - Default update check interval: 604800 seconds (7 days)
-- Default inventory update interval: 1209600 seconds (14 days)
+- Default inventory update interval: 604800 seconds (7 days)
 - Reduced artifact size limits (5 MiB) due to constrained storage
 - Limited feature set compared to standard tier (no delta updates, no state scripts)
 
