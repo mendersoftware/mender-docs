@@ -78,7 +78,6 @@ mender-artifact \
   write module-image \
   --type $INTERFACE \
   --compatible-types $COMPONENT_TYPE \
-  --provides version:$VERSION \
   --file $PAYLOAD \
   --output-path $VERSION.mender \
   --artifact-name $VERSION
@@ -98,7 +97,6 @@ mender-artifact \
   write module-image \
   --type $INTERFACE \
   --compatible-types $COMPONENT_TYPE \
-  --provides version:$VERSION \
   --file $PAYLOAD \
   --output-path $VERSION.mender \
   --artifact-name $VERSION
