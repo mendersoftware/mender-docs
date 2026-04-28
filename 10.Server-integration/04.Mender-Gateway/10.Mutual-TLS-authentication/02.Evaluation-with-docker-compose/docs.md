@@ -69,17 +69,30 @@ docker rm mender-gateway
 
 ### Confirm communication with the proxy
 
-Assuming you run the docker image on your host, the container will start listening to the host port 443.
+From a different terminal, send a fake HTTP request through the gateway to confirm that the mTLS handshake completes and the gateway proxies the request upstream.
 
-! Set the [env variables](../01.Keys-and-certificates/docs.md#environment-variables) executing the commands below.
-From a different terminal execute the command below:
+! Set the [env variables](../01.Keys-and-certificates/docs.md#environment-variables) and make sure you're in the directory where you [generated the keys](../01.Keys-and-certificates/docs.md#generating-the-keys).
 
-``` bash
-openssl s_client -connect $MENDER_GATEWAY_IP:8443
+```bash
+printf "GET / HTTP/1.0\r\n\r\n" | openssl s_client -connect $MENDER_GATEWAY_IP:8443 \
+  -CAfile ca.crt \
+  -cert device-cert.pem \
+  -key device-private.key
+```
 
-# In the mender-gateway terminal look for a line similar to:
-# 2023/08/18 15:51:21 http: TLS handshake error from 192.168.88.249:46612: tls: client didn't provide a certificate
-# This means you can communicate with the server correctly
+A successful run will show `Verification: OK` and `Verify return code: 0 (ok)`, confirming that both sides of the mTLS handshake completed and the gateway certificate is trusted:
+
+```text
+SSL handshake has read 1135 bytes and written 1703 bytes
+Verification: OK
+---
+Verify return code: 0 (ok)
+```
+
+Simultaneously, the gateway will log a `404` for the request, confirming it was received and forwarded upstream:
+
+```text
+time="..." level=warning method=GET path=/ status=404 type=HTTP/1.0
 ```
 
 ## Configure the device to use the proxy
@@ -92,8 +105,8 @@ Start the virtual client in daemon mode and confirm it's working:
 
 ! Set the [environment variables](../01.Keys-and-certificates/docs.md#environment-variables) and make sure you're in the directory where you [generated the keys](../01.Keys-and-certificates/docs.md#generating-the-keys).
 
-! On a Linux device with kvm support you will get a much faster devices with `--privileged`.
-! Do note that that comes with all the risks of running docker in privileged mode.
+
+! On Linux with KVM support you will get a much faster virtual device. Add your user to the `kvm` group and pass `--device /dev/kvm` to the docker run command and ensure kvm is accesable `sudo usermod -aG kvm $(whoami)`
 
 ```bash
 printf "\n\n"
@@ -116,10 +129,6 @@ If something doesn't end up working with the above command you can return to the
 docker kill mender-client
 docker rm mender-client
 ```
-
-
-! For versions prior Mender Client 4 replace `mender-authd` with `mender-client`
-
 
 Update the device with new certificates: 
 
