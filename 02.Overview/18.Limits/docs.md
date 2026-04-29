@@ -91,6 +91,21 @@ Overriding this limit is not possible
 Default: `256 characters`</br>
 Overriding this limit is not possible
 
+### Maximum length of Email addresses
+
+Default: `256 characters`</br>
+Overriding this limit is not possible
+
+### Maximum length of Passwords
+
+Default: `256 characters`</br>
+Overriding this limit is not possible
+
+### Maximum length of Organization names
+
+Default: `256 characters`</br>
+Overriding this limit is not possible
+
 ### Maximum length of Mender Configure strings
 
 The maximum length of keys and values in Mender Configure Device attributes.
