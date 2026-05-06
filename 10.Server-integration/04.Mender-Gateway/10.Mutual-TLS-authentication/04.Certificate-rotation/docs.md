@@ -130,6 +130,7 @@ docker run \
 ## Rotating the intermediate CA
 
 To rotate, generate a new intermediate CA signed by the same Root CA. New devices get certificates signed by the new intermediate CA and present the new chain. Devices already in the field continue working — no gateway change required.
+You would rotate the intermediate CA if the old one is about to expire or if you have suspicions it was compromised. For the expiration case the old certificate will just stop being valid at some point in time, but for the compromised case you need to take explicit action; see [Operating mTLS securely](../05.Operating-mTLS-securely/docs.md).
 
 ### Generate the new Intermediate CA
 
