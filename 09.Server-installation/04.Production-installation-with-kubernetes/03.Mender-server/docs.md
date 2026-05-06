@@ -536,6 +536,7 @@ of them. The following snippet increases the number of replicas to 3.
 
 !!!! Please replace `NATS_URL` in the following snippet with a URL that resolves to any of the NATS pods.
 
+<!--AUTOVERSION: "nats-box:%-nonroot"/ignore-->
 ```bash
 NATS_URL="nats://mender-nats" # REPLACE
 kubectl run --env=NATS_URL=$NATS_URL --image=natsio/nats-box:0.14.5-nonroot \
