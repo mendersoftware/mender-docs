@@ -20,8 +20,8 @@ Before integrating Mender Orchestrator into your Yocto build, ensure you have a 
 Yocto build environment with meta-mender layers and the Mender Orchestrator sources downloaded through
 the links below.
 
-<!--AUTOVERSION: "% recipe"/ignore -->
-!!! Mender Orchestrator requires the master recipe of the Mender Client. Support for Mender Orchestrator will be released in the next feature release. See the [Yocto Project documentation](../../../05.Operating-System-updates-Yocto-Project/03.Build-for-demo/docs.md#configuring-the-build) for information on using bleeding edge versions.
+<!--AUTOVERSION: "Mender Client % or newer"/ignore-->
+!!! Mender Orchestrator requires Mender Client 6.0.0 or newer.
 
 ### Download
 

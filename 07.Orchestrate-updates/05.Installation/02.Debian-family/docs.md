@@ -10,7 +10,8 @@ taxonomy:
 
 !!! Mender Orchestrator requires DeviceTier to be set to "system" for proper operation.
 
-!!! Mender Orchestrator requires the experimental package of the Mender Client. Support for Mender Orchestrator will be released in the next feature release. See the [Download section](../../../12.Downloads/02.Device-components/docs.md) for information on bleeding edge versions.
+<!--AUTOVERSION: "Mender Client % or newer"/ignore-->
+!!! Mender Orchestrator requires Mender Client 6.0.0 or newer.
 
 This page provides instructions for downloading and installing the Mender Orchestrator Debian packages.
 
