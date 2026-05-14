@@ -71,7 +71,7 @@ scripts](../../08.Artifact-creation/04.State-scripts/docs.md).
 
 ## Synchronized updates
 
-!! This feature will be removed in Mender Client 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
+!! This feature has been removed in Mender Client 4.0. For server-side support duration, please refer to our [blog post](https://mender.io/blog/mender-3-6-auto-generation-of-delta-updates#:~:text=Deprecation%3A%20Synchronized%20updates).
 
 !!!!! Support for customizing the update process is available in all plans. Synchronizing
 !!!!! this remotely through the Mender UI is only available on the Enterprise plan.
