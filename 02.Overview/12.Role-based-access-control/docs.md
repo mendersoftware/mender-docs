@@ -91,6 +91,13 @@ Roles to him by selecting them from the Roles dropdown:
 
 ![Create a new User](users-new.png)
 
+The RBAC system works on a deny-by-default basis, the user only has access to the things specifically added.
 The permissions granted to a User are the union of all his Roles' set of permissions.
+This means that by adding another Role, you will only ever expand what they have access to, never reduce it.
 
 ![Create a new User](users-edit.png)
+
+!!! Note: The effects of combining multiple roles can sometimes be unexpected.
+!!! If, for example, you add a Role for giving read access only to a specfic group of devices,
+!!! but then also grant the default Read Access role, the first role would have no effect since the second
+!!! role grants read access to all devices.
