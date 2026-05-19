@@ -69,6 +69,24 @@ fields to create Dynamic groups (see the screenshot below).
 For more information on customizing the Inventory attributes,
 please refer to the [client configuration section](../../03.Client-installation/04.Inventory/docs.md).
 
+### Device tags
+
+In addition to the inventory reported by the device itself, devices can also be
+_tagged_ from the Mender UI / API. Just like device inventory, tags are
+key-value pairs. Tags can be found at the bottom of the Identity tab after
+clicking on a device:
+
+![tags](tags.png)
+
+Once tags are created, they can be used for filtering and
+grouping, just like other inventory.
+
+!!! Note: Names (keys) for tags and inventory are shared across the
+organization, they will show up for everyone, in the filter dropdowns /
+autocomplete options. For this reason, it is a good idea to strive to use the
+same naming schemes across the organization, avoid making multiple similar
+names and never putting anything sensitive into the names of tags / inventory.
+
 ## Limitations
 
 Each device can upload up to 100 inventory attributes in a single inventory update.
