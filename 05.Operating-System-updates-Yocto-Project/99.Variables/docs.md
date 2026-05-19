@@ -607,6 +607,7 @@ The size of the optional swap partition in the generated `.biosimg`, `.sdimg` or
 Set this variable in `local.conf` in order to make the device recognize the
 organization account to which it belongs. This option should always be set, except when
 running a custom Mender Server installation with multitenancy module disabled.
+Always treat the tenant token as a secret.
 
 
 #### `MENDER_UBI_LEB_PEB_BLOCK_OVERHEAD`

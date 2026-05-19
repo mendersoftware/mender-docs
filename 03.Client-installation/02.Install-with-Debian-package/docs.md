@@ -51,6 +51,8 @@ DEVICE_TYPE="<INSERT YOUR DEVICE TYPE>"
 TENANT_TOKEN="<INSERT YOUR TOKEN FROM https://hosted.mender.io/ui/#/settings/my-organization>"
 ```
 
+!!! Note: Always treat the tenant token as a secret, since it allows someone to add new pending devices to your organization.
+
 Configure Mender with:
 
 ```bash
