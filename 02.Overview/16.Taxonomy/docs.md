@@ -180,6 +180,11 @@ documentation on [Orchestrating updates](../../07.Orchestrate-updates/chapter.md
 
 * _Tenant_ - See _Organization_.
 
+* _Tenant token_ - Organization specific token used by devices to register
+as pending devices (authorization requests). Always treat this token as a
+secret, since it enables adding more pending devices to your organization.
+Sometimes referred to as _Organization token_.
+
 * _Update Module_ - An extension to the Mender Client for supporting a new type
 software update, such as a package manager, container or bootloader.
 
