@@ -55,7 +55,8 @@ permissions to grant to the Users assigned to the Role.
 
 * **User Management**: these permissions should be granted carefully, as they
 allow privilege increases for any Users managed by a User with User management
-permissions.
+permissions. User Management includes the management of roles, including creating,
+editing, and deleting roles, as well as assigning / removing roles for a user.
   * **Read**: read access to the User management sections.
   * **Manage**: write access to the User management sections, requires **Read**.
 
