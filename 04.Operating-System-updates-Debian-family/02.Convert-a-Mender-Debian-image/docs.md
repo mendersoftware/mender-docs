@@ -109,7 +109,7 @@ MENDER_CONVERT_LOCATION=${PWD}
 
 ## Configure the Mender Client server configuration
 
-!!! hosted Mender is available in multiple [regions](/13.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
+!!! hosted Mender is available in multiple [regions](/02.Overview/19.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
 
 The easiest, and most straight-forward way, is to integrate the client with
 [hosted Mender](https://hosted.mender.io?target=_blank):

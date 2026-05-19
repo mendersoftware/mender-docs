@@ -87,7 +87,7 @@ to learn about the implementation details of this module.
 
 #### Server side Artifact generation
 
-!!! Hosted Mender is available in multiple [regions](/13.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
+!!! Hosted Mender is available in multiple [regions](/02.Overview/19.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
 
 The [hosted Mender Server](https://hosted.mender.io?target=_blank) and any on-premise server installation, can generate application update Artifacts automatically using the [single file](https://hub.mender.io/t/single-file/486?target=_blank)
 Update Module. You can test it by uploading any file to the [releases page](https://hosted.mender.io/ui/#/releases?target=_blank). The resulting Artifact
