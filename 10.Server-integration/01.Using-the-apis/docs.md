@@ -26,7 +26,7 @@ Open a terminal, which we will use in the following to call the Mender Server's 
 MENDER_SERVER_URI='https://hosted.mender.io'
 ```
 
-!!! Hosted Mender is available in multiple [regions](/13.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
+!!! Hosted Mender is available in multiple [regions](/02.Overview/19.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
 
 !!! Adjust the variable value to the Mender Server you are using.
 

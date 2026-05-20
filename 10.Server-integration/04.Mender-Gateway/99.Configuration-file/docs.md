@@ -60,7 +60,7 @@ This section provides a reference for the configuration variables.
 }
 ```
 
-!!! Hosted Mender is available in multiple [regions](/13.General/00.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
+!!! Hosted Mender is available in multiple [regions](/02.Overview/19.Hosted-Mender-regions/docs.md) to connect to. Make sure you select your desired one before proceeding.
 
 <!--AUTOVERSION: "version <code>%</code>"/ignore-->
 Starting from Mender Gateway version <code>1.3.0</code>, configurations can be overwritten using environment variables.
