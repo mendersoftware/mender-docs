@@ -348,6 +348,8 @@ versioning](../../08.Artifact-creation/11.Software-versioning/docs.md). Each Int
 
 !! The `rootfs-image.<INTERFACE_NAME>.version` / `rootfs-image.version` key is a mandatory part of the Provides query output. Without it, no Inventory information is transmitted to the Server and no new Artifacts can be deployed to Components.
 
+!! Returning a `device_type` field in `Provides` command output is prohibited. See [Compatibility checks](../07.Artifacts%20handling/03.Compatibility%20checks/docs.md#topologys-component_type-and-artifacts-device_type-relationship) for more information.
+
 The output format is the same as the output from the Mender Client
 `show-provides` command, which consists of "key=value" pairs, with no spaces,
 separated by newlines. Unlike in the `Inventory` query, list data is not

@@ -36,6 +36,8 @@ components:
     interface_args: ["2"]
 ```
 
+!! Make sure that your Mender Orchestrator setup has the System Device's `device_type` equal to `gateway`. See [Compatibility checks](../07.Artifacts%20handling/03.Compatibility%20checks/docs.md#topologys-component_type-and-artifacts-device_type-relationship) for more information on the relationship between `component_type` and `device_type`.
+
 ### Example Manifest Structure
 
 Each Manifest defines which Artifact to deploy to each Component:
