@@ -42,7 +42,7 @@ HOSTED_MENDER_EMAIL=<your.email@example.com>
 Download the package:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bdebian%2Btrixie_armhf.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Btrixie_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
@@ -54,7 +54,7 @@ HOSTED_MENDER_EMAIL=<your.email@example.com>
 Download the package:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bdebian%2Btrixie_arm64.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Btrixie_arm64.deb
 ```
 [/ui-tab]
 [ui-tab title="amd64"]
@@ -66,7 +66,7 @@ HOSTED_MENDER_EMAIL=<your.email@example.com>
 Download the package:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bdebian%2Btrixie_amd64.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Btrixie_amd64.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -74,7 +74,7 @@ curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/co
 Download the mender-orchestrator-support package:
 <!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-support_0.4.0-1%2Bdebian%2Btrixie_all.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bdebian%2Btrixie_all.deb
 ```
 
 [/ui-tab]
@@ -90,7 +90,7 @@ HOSTED_MENDER_EMAIL=<your.email@example.com>
 Download the package:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bdebian%2Bbookworm_armhf.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Bbookworm_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
@@ -102,7 +102,7 @@ HOSTED_MENDER_EMAIL=<your.email@example.com>
 Download the package:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bdebian%2Bbookworm_arm64.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Bbookworm_arm64.deb
 ```
 [/ui-tab]
 [ui-tab title="amd64"]
@@ -114,7 +114,7 @@ HOSTED_MENDER_EMAIL=<your.email@example.com>
 Download the package:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bdebian%2Bbookworm_amd64.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Bbookworm_amd64.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -122,7 +122,7 @@ curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/co
 Download the mender-orchestrator-support package:
 <!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-support_0.4.0-1%2Bdebian%2Bbookworm_all.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bdebian%2Bbookworm_all.deb
 ```
 
 [/ui-tab]
@@ -138,7 +138,7 @@ HOSTED_MENDER_EMAIL=<your.email@example.com>
 Download the package:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bubuntu%2Bnoble_armhf.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bnoble_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
@@ -150,7 +150,7 @@ HOSTED_MENDER_EMAIL=<your.email@example.com>
 Download the package:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bubuntu%2Bnoble_arm64.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bnoble_arm64.deb
 ```
 [/ui-tab]
 [ui-tab title="amd64"]
@@ -162,7 +162,7 @@ HOSTED_MENDER_EMAIL=<your.email@example.com>
 Download the package:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bubuntu%2Bnoble_amd64.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bnoble_amd64.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -170,7 +170,7 @@ curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/co
 Download the mender-orchestrator-support package:
 <!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-support_0.4.0-1%2Bubuntu%2Bnoble_all.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bubuntu%2Bnoble_all.deb
 ```
 
 [/ui-tab]
@@ -186,7 +186,7 @@ HOSTED_MENDER_EMAIL=<your.email@example.com>
 Download the package:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bubuntu%2Bjammy_armhf.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bjammy_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
@@ -198,7 +198,7 @@ HOSTED_MENDER_EMAIL=<your.email@example.com>
 Download the package:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bubuntu%2Bjammy_arm64.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bjammy_arm64.deb
 ```
 [/ui-tab]
 [ui-tab title="amd64"]
@@ -210,7 +210,7 @@ HOSTED_MENDER_EMAIL=<your.email@example.com>
 Download the package:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bubuntu%2Bjammy_amd64.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bjammy_amd64.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -218,7 +218,7 @@ curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/co
 Download the mender-orchestrator-support package:
 <!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-support_0.4.0-1%2Bubuntu%2Bjammy_all.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bubuntu%2Bjammy_all.deb
 ```
 
 [/ui-tab]
@@ -243,7 +243,7 @@ Download the package:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bdebian%2Btrixie_armhf.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Btrixie_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
@@ -257,7 +257,7 @@ Download the package:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bdebian%2Btrixie_arm64.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Btrixie_arm64.deb
 ```
 [/ui-tab]
 [ui-tab title="amd64"]
@@ -271,7 +271,7 @@ Download the package:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bdebian%2Btrixie_amd64.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Btrixie_amd64.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -279,7 +279,7 @@ curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io
 Download the mender-orchestrator-support package:
 <!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-support_0.4.0-1%2Bdebian%2Btrixie_all.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bdebian%2Btrixie_all.deb
 ```
 
 [/ui-tab]
@@ -297,7 +297,7 @@ Download the package:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bdebian%2Bbookworm_armhf.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Bbookworm_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
@@ -311,7 +311,7 @@ Download the package:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bdebian%2Bbookworm_arm64.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Bbookworm_arm64.deb
 ```
 [/ui-tab]
 [ui-tab title="amd64"]
@@ -325,7 +325,7 @@ Download the package:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bdebian%2Bbookworm_amd64.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Bbookworm_amd64.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -333,7 +333,7 @@ curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io
 Download the mender-orchestrator-support package:
 <!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-support_0.4.0-1%2Bdebian%2Bbookworm_all.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bdebian%2Bbookworm_all.deb
 ```
 
 [/ui-tab]
@@ -351,7 +351,7 @@ Download the package:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bubuntu%2Bnoble_armhf.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bnoble_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
@@ -365,7 +365,7 @@ Download the package:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bubuntu%2Bnoble_arm64.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bnoble_arm64.deb
 ```
 [/ui-tab]
 [ui-tab title="amd64"]
@@ -379,7 +379,7 @@ Download the package:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bubuntu%2Bnoble_amd64.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bnoble_amd64.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -387,7 +387,7 @@ curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io
 Download the mender-orchestrator-support package:
 <!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-support_0.4.0-1%2Bubuntu%2Bnoble_all.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bubuntu%2Bnoble_all.deb
 ```
 
 [/ui-tab]
@@ -405,7 +405,7 @@ Download the package:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bubuntu%2Bjammy_armhf.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bjammy_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
@@ -419,7 +419,7 @@ Download the package:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bubuntu%2Bjammy_arm64.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bjammy_arm64.deb
 ```
 [/ui-tab]
 [ui-tab title="amd64"]
@@ -433,7 +433,7 @@ Download the package:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-core_0.4.0-1%2Bubuntu%2Bjammy_amd64.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bjammy_amd64.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -441,7 +441,7 @@ curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io
 Download the mender-orchestrator-support package:
 <!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-support_0.4.0-1%2Bubuntu%2Bjammy_all.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bubuntu%2Bjammy_all.deb
 ```
 
 [/ui-tab]
@@ -482,25 +482,25 @@ For evaluation, download and install the demo package:
 [ui-tab title="Debian 13"]
 <!--AUTOVERSION: "/mender-orchestrator-demo_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-demo_0.4.0-1%2Bdebian%2Btrixie_all.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-demo_0.5.0-1%2Bdebian%2Btrixie_all.deb
 ```
 [/ui-tab]
 [ui-tab title="Debian 12"]
 <!--AUTOVERSION: "/mender-orchestrator-demo_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-demo_0.4.0-1%2Bdebian%2Bbookworm_all.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-demo_0.5.0-1%2Bdebian%2Bbookworm_all.deb
 ```
 [/ui-tab]
 [ui-tab title="Ubuntu 24.04"]
 <!--AUTOVERSION: "/mender-orchestrator-demo_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-demo_0.4.0-1%2Bubuntu%2Bnoble_all.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-demo_0.5.0-1%2Bubuntu%2Bnoble_all.deb
 ```
 [/ui-tab]
 [ui-tab title="Ubuntu 22.04"]
 <!--AUTOVERSION: "/mender-orchestrator-demo_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.4.0/mender-orchestrator-demo_0.4.0-1%2Bubuntu%2Bjammy_all.deb
+curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-demo_0.5.0-1%2Bubuntu%2Bjammy_all.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -512,25 +512,25 @@ curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/co
 [ui-tab title="Debian 13"]
 <!--AUTOVERSION: "/mender-orchestrator-demo_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-demo_0.4.0-1%2Bdebian%2Btrixie_all.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-demo_0.5.0-1%2Bdebian%2Btrixie_all.deb
 ```
 [/ui-tab]
 [ui-tab title="Debian 12"]
 <!--AUTOVERSION: "/mender-orchestrator-demo_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-demo_0.4.0-1%2Bdebian%2Bbookworm_all.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-demo_0.5.0-1%2Bdebian%2Bbookworm_all.deb
 ```
 [/ui-tab]
 [ui-tab title="Ubuntu 24.04"]
 <!--AUTOVERSION: "/mender-orchestrator-demo_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-demo_0.4.0-1%2Bubuntu%2Bnoble_all.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-demo_0.5.0-1%2Bubuntu%2Bnoble_all.deb
 ```
 [/ui-tab]
 [ui-tab title="Ubuntu 22.04"]
 <!--AUTOVERSION: "/mender-orchestrator-demo_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.4.0/mender-orchestrator-demo_0.4.0-1%2Bubuntu%2Bjammy_all.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-demo_0.5.0-1%2Bubuntu%2Bjammy_all.deb
 ```
 [/ui-tab]
 [/ui-tabs]
