@@ -139,7 +139,7 @@ Note that the environment variable is represented in **MiB**, and its default va
 
 ### Audit log retention
 
-The duration from when an event happened until the audit log is removed from the server.
+The duration from when an event happened until the [audit log](../20.Audit-logs/docs.md) is removed from the server.
 
 Default: `365 days`</br>
 Override with helm value `auditlogs.logRetentionSeconds`.

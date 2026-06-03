@@ -81,7 +81,7 @@ sessions. The audit logs include terminal creation/termination events as well as
 the terminal output which users can later inspect from the
 [AUDIT LOG](https://hosted.mender.io/ui/#/auditlog) panel in the Mender UI.
 
-!!!!! Audit logs is only available in the Mender Enterprise plan.
+!!!!! Audit logs are only available in the Mender Enterprise plan.
 !!!!! See [the Mender plans page](https://mender.io/pricing/plans?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
