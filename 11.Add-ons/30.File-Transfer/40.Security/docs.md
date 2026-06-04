@@ -36,12 +36,12 @@ to the Mender Server.
 
 ### Audit logs
 
-!!!!! Audit logs is only available in the Mender Enterprise plan.
+!!!!! Audit logs are only available in the Mender Enterprise plan.
 !!!!! See [the Mender plans page](https://mender.io/pricing/plans?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
-Audit logs hold a list of every file transfer event. You can access this information
-in the Mender UI.
+[Audit logs](../../../02.Overview/20.Audit-logs/docs.md) hold a list of every file transfer event. You can access this information
+in the Mender UI, or via [API](https://docs.mender.io/api/get-audit-logs).
 
 ### No arbitrary transfers
 

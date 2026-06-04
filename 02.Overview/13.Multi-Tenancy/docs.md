@@ -158,7 +158,7 @@ Now there are additional operations you can perform on it, by clicking the detai
 ![Service provider add](sp1-edit.png)
 
 As you can see, the Mender UI allows the Service Provider tenant to manage the child tenants.
-Every operation is recorded in the audit logs:
+Every operation is recorded in the [audit logs](../20.Audit-logs/docs.md):
 
 ![Service provider add](sp2.png)
 

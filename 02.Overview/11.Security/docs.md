@@ -129,3 +129,12 @@ crossing the rate limit threshold, it will receive the HTTP status code `429 Too
 You can configure the server to enforce these limits based on the client IP and the identity
 of the API caller, either device or user. Rate limits can apply to all the API calls, or you can
 customize them for specific API end-points.
+
+
+## Audit Logs
+
+Mender Enterprise supports Audit logging. This improves security, compliance and accountability by logging events which later can be analyzed in case of security or operational incidents.
+
+![Overview](../20.Audit-logs/audit-logs.png)
+
+You can find more information in the [Audit logs](../20.Audit-logs/docs.md) section.
