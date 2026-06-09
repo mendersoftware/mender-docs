@@ -356,7 +356,7 @@ IMAGE_INSTALL:append = " mender-monitor"
 
 <!--AUTOVERSION: "/mender-gateway/yocto/%/"/mender-gateway "/mender-gateway-%.tar.xz"/mender-gateway -->
 Download the Mender Gateway from
-https://downloads.customer.mender.io/content/hosted/mender-gateway/yocto/2.0.0/mender-gateway-2.0.0.tar.xz
+https://downloads.customer.mender.io/content/hosted/mender-gateway/yocto/2.1.0/mender-gateway-2.1.0.tar.xz
 and download the tarball to a known location on your local system using your hosted
 Mender username and password:
 
@@ -365,14 +365,14 @@ Mender username and password:
 <!--AUTOVERSION: "/mender-gateway/yocto/%/"/mender-gateway "/mender-gateway-%.tar.xz"/mender-gateway -->
 ```bash
 HOSTED_MENDER_EMAIL=<your.email@example.com>
-curl --fail -u $HOSTED_MENDER_EMAIL -o ${HOME}/mender-gateway-2.0.0.tar.xz https://downloads.customer.mender.io/content/hosted/mender-gateway/yocto/2.0.0/mender-gateway-2.0.0.tar.xz
+curl --fail -u $HOSTED_MENDER_EMAIL -o ${HOME}/mender-gateway-2.1.0.tar.xz https://downloads.customer.mender.io/content/hosted/mender-gateway/yocto/2.1.0/mender-gateway-2.1.0.tar.xz
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
 <!--AUTOVERSION: "/mender-gateway/yocto/%/"/mender-gateway "/mender-gateway-%.tar.xz"/mender-gateway -->
 ```bash
 MENDER_ENTERPRISE_USER=<your.user>
-curl --fail -u $MENDER_ENTERPRISE_USER -o ${HOME}/mender-gateway-2.0.0.tar.xz https://downloads.customer.mender.io/content/on-prem/mender-gateway/yocto/2.0.0/mender-gateway-2.0.0.tar.xz
+curl --fail -u $MENDER_ENTERPRISE_USER -o ${HOME}/mender-gateway-2.1.0.tar.xz https://downloads.customer.mender.io/content/on-prem/mender-gateway/yocto/2.1.0/mender-gateway-2.1.0.tar.xz
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -394,7 +394,7 @@ Give the `mender-gateway` recipe the path to the local source code just download
 
 <!--AUTOVERSION: "/mender-gateway-%.tar.xz"/mender-gateway -->
 ```bash
-SRC_URI:pn-mender-gateway = "file://${HOME}/mender-gateway-2.0.0.tar.xz"
+SRC_URI:pn-mender-gateway = "file://${HOME}/mender-gateway-2.1.0.tar.xz"
 ```
 
 Then make Mender monitor a part of your image with:
@@ -408,7 +408,7 @@ Which means your `local.conf` should now contain the following lines:
 <!--AUTOVERSION: "/mender-gateway-%.tar.xz"/mender-gateway -->
 ```bash
 LICENSE_FLAGS_ACCEPTED:append = " commercial_mender-yocto-layer-license"
-SRC_URI:pn-mender-gateway = "file://${HOME}/mender-gateway-2.0.0.tar.xz"
+SRC_URI:pn-mender-gateway = "file://${HOME}/mender-gateway-2.1.0.tar.xz"
 IMAGE_INSTALL:append = " mender-gateway"
 ```
 
@@ -444,7 +444,7 @@ Then, append the package to `mender-gateway` sources:
 
 <!--AUTOVERSION: "/mender-gateway-examples-%.tar"/mender-gateway -->
 ```bash
-SRC_URI:pn-mender-gateway:append = " file:///${HOME}/mender-gateway-examples-2.0.0.tar"
+SRC_URI:pn-mender-gateway:append = " file:///${HOME}/mender-gateway-examples-2.1.0.tar"
 ```
 
 This will install the following on your device:
