@@ -344,7 +344,7 @@ below to find out how the type and ID are obtained.
 Since Components do not necessarily run the Mender Client, the Interfaces do not supply default version information as it's described in [Software
 versioning](../../08.Artifact-creation/11.Software-versioning/docs.md). Each Interface is responsible for returning a `rootfs-image.<INTERFACE_NAME>.version=(currently-installed-version)` key-value pair via its Provides query output. This data is required by the Server UI to accurately display the version currently installed on the device.
 
-!!! Components running Mender, like the System Device, report `rootfs-image.version` automatically. In these cases, providing an additional `rootfs-image.<INTERFACE_NAME>.version` field is not necessary. See [Compatibility checks](../07.Artifacts%20handling/03.Compatibility%20checks/docs.md) for more information.
+!!! Components running Mender, like the System Device, report `rootfs-image.version` automatically. In these cases, providing an additional `rootfs-image.<INTERFACE_NAME>.version` field is prohibited. See [Compatibility checks](../07.Artifacts%20handling/03.Compatibility%20checks/docs.md) for more information.
 
 !! The `rootfs-image.<INTERFACE_NAME>.version` / `rootfs-image.version` key is a mandatory part of the Provides query output. Without it, no Inventory information is transmitted to the Server and no new Artifacts can be deployed to Components.
 
