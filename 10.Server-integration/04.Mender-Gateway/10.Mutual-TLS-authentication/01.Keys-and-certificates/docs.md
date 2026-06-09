@@ -54,7 +54,7 @@ export DOCKER_REGISTRY_PASSWORD=
 
 # The name and version of the mtls server container
 # The defaults have been set, you rarely need to change this.
-export MENDER_GATEWAY_IMAGE="${DOCKER_REGISTRY_URL}/mendersoftware/mender-gateway:2.0.0"
+export MENDER_GATEWAY_IMAGE="${DOCKER_REGISTRY_URL}/mendersoftware/mender-gateway:2.1.0"
 ```
 
 
