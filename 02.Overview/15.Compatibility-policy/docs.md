@@ -127,14 +127,14 @@ This section outlines the policy for deprecating APIs within Mender Server. It p
 Deprecation is the process of gradually phasing out an API version, encouraging users to migrate to newer versions. This is done for various reasons, including improvements to performance, security, compatibility, or to accommodate new business requirements.
 
 ### Deprecation Period
-Once an API is deprecated, users will be given a notice and a grace period of *12 months* to transition to the newer version. During this period, deprecated APIs will continue to function but may no longer receive updates or support.
+Once an API is deprecated, users will be given a notice and a grace period of *at least 6 months* to transition to the newer version. During this period, deprecated APIs will continue to function but may no longer receive updates or support.
 
 Key Milestones:
 - Deprecation Announcement: Users will be informed of the deprecation of an API, along with details on the new version.
-- Deprecation Period (12 months): The deprecated API will remain operational but will not receive new features, updates, or improvements. Critical security issues will be addressed.
-- End of Life (EOL): After 12 months, the deprecated API will be retired, and access will be fully disabled. Users are encouraged to migrate before this date to avoid service interruptions.
+- Deprecation Period (at least 6 months): The deprecated API will remain operational but will not receive new features, updates, or improvements. Critical security issues will be addressed.
+- End of Life (EOL): At the end of the deprecation period the API will be retired, and access will be fully disabled. Users are encouraged to migrate before this date to avoid service interruptions.
 
-In case of on-premis releases, the deprecated API will be retired with the next major release.
+For on-premise releases, the version of Mender Server containing the deprecated API will remain supported for at least the same period from the deprecation announcement, so the effective migration window is the same regardless of deployment model.
 
 ### Notification Process
 The following steps will be taken to notify users of an upcoming deprecation:
@@ -153,7 +153,7 @@ We strongly recommend that users start migrating as soon as the deprecation anno
 - Review Deprecation Notes: Familiarize yourself with the changes, and how they might affect your existing implementation.
 - API Versioning: Ensure your system is compatible with the latest version of the API, following any versioning standards and endpoints outlined in the new documentation.
 - Testing: Make sure to thoroughly test your application against the new API version before the deprecation period ends.
-- Plan for Transition: Begin the migration early to avoid any disruption after the 12-month deprecation period.
+- Plan for Transition: Begin the migration early to avoid any disruption when the deprecation period ends.
 
 ### After the Deprecation Period (End of Life)
 Once the deprecation period has ended, the following actions will be taken:
