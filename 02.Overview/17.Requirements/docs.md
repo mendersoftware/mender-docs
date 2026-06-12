@@ -5,6 +5,9 @@ taxonomy:
 ---
 
 ## Working with Firewalls
+Hosted Mender endpoints are reachable over both IPv4 and IPv6 (dual-stack). Devices, APIs,
+and browser clients can connect using either protocol; no configuration changes are required.
+
 The following URLs and access types need outgoing permissions in firewalls in order for Mender to work correctly:
 
 [ui-tabs position="top-left" active="0" theme="default" ]
