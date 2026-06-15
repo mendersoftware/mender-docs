@@ -222,57 +222,8 @@ curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/co
 ```
 
 [/ui-tab]
-[ui-tab title="Ubuntu 22.04"]
-
-[ui-tabs position="top-left" active="0" theme="lite" ]
-[ui-tab title="armhf"]
-Set your email credential:
-```bash
-HOSTED_MENDER_EMAIL=<your.email@example.com>
-```
-
-Download the package:
-<!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
-```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bjammy_armhf.deb
-```
-[/ui-tab]
-[ui-tab title="arm64"]
-Set your email credential:
-```bash
-HOSTED_MENDER_EMAIL=<your.email@example.com>
-```
-
-Download the package:
-<!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
-```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bjammy_arm64.deb
-```
-[/ui-tab]
-[ui-tab title="amd64"]
-Set your email credential:
-```bash
-HOSTED_MENDER_EMAIL=<your.email@example.com>
-```
-
-Download the package:
-<!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
-```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bjammy_amd64.deb
-```
-[/ui-tab]
-[/ui-tabs]
-
-Download the mender-orchestrator-support package:
-<!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
-```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bubuntu%2Bjammy_all.deb
-```
-
-[/ui-tab]
 
 [/ui-tabs]
-
 [/ui-tab]
 [ui-tab title="enterprise"]
 
@@ -454,7 +405,7 @@ Download the package:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2B_armhf.deb
+curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bresolute_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
@@ -494,61 +445,6 @@ curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io
 ```
 
 [/ui-tab]
-[ui-tab title="Ubuntu 22.04"]
-
-[ui-tabs position="top-left" active="0" theme="lite" ]
-[ui-tab title="armhf"]
-Set your username credential:
-```bash
-MENDER_ENTERPRISE_USER=<your.user>
-```
-
-Download the package:
-
-<!--AUTOMATION: ignore -->
-<!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
-```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bjammy_armhf.deb
-```
-[/ui-tab]
-[ui-tab title="arm64"]
-Set your username credential:
-```bash
-MENDER_ENTERPRISE_USER=<your.user>
-```
-
-Download the package:
-
-<!--AUTOMATION: ignore -->
-<!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
-```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bjammy_arm64.deb
-```
-[/ui-tab]
-[ui-tab title="amd64"]
-Set your username credential:
-```bash
-MENDER_ENTERPRISE_USER=<your.user>
-```
-
-Download the package:
-
-<!--AUTOMATION: ignore -->
-<!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
-```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bjammy_amd64.deb
-```
-[/ui-tab]
-[/ui-tabs]
-
-Download the mender-orchestrator-support package:
-<!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
-```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bubuntu%2Bjammy_all.deb
-```
-
-[/ui-tab]
-
 [/ui-tabs]
 
 [/ui-tab]
@@ -606,12 +502,6 @@ curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/co
 curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-demo_0.5.0-1%2Bubuntu%2Bnoble_all.deb
 ```
 [/ui-tab]
-[ui-tab title="Ubuntu 22.04"]
-<!--AUTOVERSION: "/mender-orchestrator-demo_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
-```bash
-curl --fail -u "$HOSTED_MENDER_EMAIL" -O https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-demo_0.5.0-1%2Bubuntu%2Bjammy_all.deb
-```
-[/ui-tab]
 [/ui-tabs]
 
 [/ui-tab]
@@ -640,12 +530,6 @@ curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io
 <!--AUTOVERSION: "/mender-orchestrator-demo_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
 curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-demo_0.5.0-1%2Bubuntu%2Bnoble_all.deb
-```
-[/ui-tab]
-[ui-tab title="Ubuntu 22.04"]
-<!--AUTOVERSION: "/mender-orchestrator-demo_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
-```bash
-curl --fail -u "$MENDER_ENTERPRISE_USER" -O https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-demo_0.5.0-1%2Bubuntu%2Bjammy_all.deb
 ```
 [/ui-tab]
 [/ui-tabs]

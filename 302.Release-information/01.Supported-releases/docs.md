@@ -63,7 +63,6 @@ Mender Gateway through [Debian packages](../../12.Downloads/02.Device-components
 | Debian       | Bookworm |
 | Ubuntu       | Resolute |
 | Ubuntu       | Noble    |
-| Ubuntu       | Jammy    |
 
 
 ## Debian family and macOS releases supported for workstation tools
@@ -77,7 +76,6 @@ The following Debian and Ubuntu LTS releases are currently supported for Mender 
 | Debian       | Bookworm |
 | Ubuntu       | Resolute |
 | Ubuntu       | Noble    |
-| Ubuntu       | Jammy    |
 
 The workstation tools are also available for macOS through [Homebrew](https://brew.sh/?target=_blank).
 Homebrew support is determined by the Homebrew project's own compatibility policies.
