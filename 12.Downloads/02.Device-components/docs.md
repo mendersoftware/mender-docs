@@ -102,6 +102,13 @@ matching your device.
      | sudo tee /etc/apt/sources.list.d/mender.list
     ```
     [/ui-tab]
+    [ui-tab title="Ubuntu 26.04"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/device-components ubuntu/resolute/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
     [ui-tab title="Ubuntu 24.04"]
     <!--AUTOMATION: ignore -->
     ```bash
@@ -482,6 +489,51 @@ wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDE
 [/ui-tabs]
 
 [/ui-tab]
+[ui-tab title="Ubuntu 26.04"]
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="armhf"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/2.1.0/mender-gateway_2.1.0-1%2Bubuntu%2Bresolute_armhf.deb
+```
+[/ui-tab]
+[ui-tab title="arm64"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/2.1.0/mender-gateway_2.1.0-1%2Bubuntu%2Bresolute_arm64.deb
+```
+[/ui-tab]
+[ui-tab title="amd64"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-gateway/debian/2.1.0/mender-gateway_2.1.0-1%2Bubuntu%2Bresolute_amd64.deb
+```
+[/ui-tab]
+[/ui-tabs]
+
+[/ui-tab]
 [ui-tab title="Ubuntu 24.04"]
 
 [ui-tabs position="top-left" active="0" theme="lite" ]
@@ -678,6 +730,57 @@ And download it with:
 <!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
 ```bash
 wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/2.1.0/mender-gateway_2.1.0-1%2Bdebian%2Bbookworm_amd64.deb
+```
+[/ui-tab]
+[/ui-tabs]
+
+[/ui-tab]
+[ui-tab title="Ubuntu 26.04"]
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="armhf"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+MENDER_ENTERPRISE_USER=<your.user>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+
+<!--AUTOMATION: ignore -->
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/2.1.0/mender-gateway_2.1.0-1%2Bubuntu%2Bresolute_armhf.deb
+```
+[/ui-tab]
+[ui-tab title="arm64"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+MENDER_ENTERPRISE_USER=<your.user>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+
+<!--AUTOMATION: ignore -->
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/2.1.0/mender-gateway_2.1.0-1%2Bubuntu%2Bresolute_arm64.deb
+```
+[/ui-tab]
+[ui-tab title="amd64"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+MENDER_ENTERPRISE_USER=<your.user>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+```
+And download it with:
+
+<!--AUTOMATION: ignore -->
+<!--AUTOVERSION: "/mender-gateway_%-1"/mender-gateway "/mender-gateway/debian/%/"/mender-gateway -->
+```bash
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-gateway/debian/2.1.0/mender-gateway_2.1.0-1%2Bubuntu%2Bresolute_amd64.deb
 ```
 [/ui-tab]
 [/ui-tabs]

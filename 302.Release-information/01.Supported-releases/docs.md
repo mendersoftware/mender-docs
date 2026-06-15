@@ -61,6 +61,7 @@ Mender Gateway through [Debian packages](../../12.Downloads/02.Device-components
 | ------------ | -------  |
 | Debian       | Trixie   |
 | Debian       | Bookworm |
+| Ubuntu       | Resolute |
 | Ubuntu       | Noble    |
 | Ubuntu       | Jammy    |
 
@@ -74,6 +75,7 @@ The following Debian and Ubuntu LTS releases are currently supported for Mender 
 | ------------ | -------  |
 | Debian       | Trixie   |
 | Debian       | Bookworm |
+| Ubuntu       | Resolute |
 | Ubuntu       | Noble    |
 | Ubuntu       | Jammy    |
 
