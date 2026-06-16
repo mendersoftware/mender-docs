@@ -109,7 +109,7 @@ Leave the next prefilled fields as they are and click **UPLOAD ARTIFACT** as bel
 
 ![artifact details 2](artifact_details_2.png)
 
-You will now see a new Release containing this Artifact under the **Releases** tab. View its details, and create a deployment by clicking **Create a deployment for this Release**.
+You will now see a new Release containing this Artifact under the **Software** tab. View its details, and create a deployment by clicking **Create a deployment for this Release**.
 
 ![view release](release_actions.png)
 

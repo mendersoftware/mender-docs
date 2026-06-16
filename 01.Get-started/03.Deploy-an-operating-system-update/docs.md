@@ -102,7 +102,7 @@ reaches 100% it will package the Mender Artifact which will take a few more
 minutes because it will need to compress the snapshot image.
 
 The end result is a file called `system-v1.mender`. Upload this file to
-hosted Mender. You can do that using the UI under the **Releases** tab, as
+hosted Mender. You can do that using the UI under the **Software** tab, as
 demonstrated below.
 
 ![connecting a device](Image_1.png)

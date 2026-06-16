@@ -50,7 +50,7 @@ The build system will recompile any changed source files and produce a new `zeph
 
 With our *Artifact* ready, we'll now use the Mender server to deploy it to the device. We'll do this using the hosted Mender web interface:
 
-1. **Upload the *Artifact*:** In the [hosted Mender UI](https://hosted.mender.io?target=_blank), go to the **Releases** tab. Click the **Upload** button. In the dialog, either drag and drop the `zephyr.mender` file or click to browse and select it. You can give the release a name when prompted, but sticking with the default is fine. After uploading, you should see a new release entry (e.g. "release-2") in the Releases list.
+1. **Upload the *Artifact*:** In the [hosted Mender UI](https://hosted.mender.io?target=_blank), go to the **Sofware** tab. Click the **Upload** button. In the dialog, either drag and drop the `zephyr.mender` file or click to browse and select it. You can give the release a name when prompted, but sticking with the default is fine. After uploading, you should see a new release entry (e.g. "release-2") in the Releases list.
 2. **Create a deployment:** Now navigate to the **Devices** section and find your device (it should be in the Accepted Devices list). In the Device information view for the device you just connected, select **Create a deployment for this device** from the **Device actions**.
 
 ![create deployment](create-deployment.png)
