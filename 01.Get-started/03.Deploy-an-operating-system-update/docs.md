@@ -83,6 +83,11 @@ Run the following command on your workstation to generate a **snapshot**
 [Mender Artifact](../../02.Overview/03.Artifact/docs.md) from your
 device:
 
+!!! The snapshot process requires a lot of temporary space (depending on the
+!!! device being snapshot), using `/tmp` by default. The `--tmp` option can be
+!!! added to the command below to specify a different directory for temporary
+!!! files.
+
 ```bash
 mender-artifact write rootfs-image \
     -f ssh://"${USER}@${IP_ADDRESS}" \
