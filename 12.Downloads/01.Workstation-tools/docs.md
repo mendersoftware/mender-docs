@@ -95,17 +95,17 @@ matching your device.
      | sudo tee /etc/apt/sources.list.d/mender.list
     ```
     [/ui-tab]
+    [ui-tab title="Ubuntu 26.04"]
+    <!--AUTOMATION: ignore -->
+    ```bash
+    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/workstation-tools ubuntu/resolute/stable main" \
+     | sudo tee /etc/apt/sources.list.d/mender.list
+    ```
+    [/ui-tab]
     [ui-tab title="Ubuntu 24.04"]
     <!--AUTOMATION: ignore -->
     ```bash
     echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/workstation-tools ubuntu/noble/stable main" \
-     | sudo tee /etc/apt/sources.list.d/mender.list
-    ```
-    [/ui-tab]
-    [ui-tab title="Ubuntu 22.04"]
-    <!--AUTOMATION: ignore -->
-    ```bash
-    echo "deb [arch=$(dpkg --print-architecture)] https://downloads.mender.io/repos/workstation-tools ubuntu/jammy/stable main" \
      | sudo tee /etc/apt/sources.list.d/mender.list
     ```
     [/ui-tab]
