@@ -421,12 +421,20 @@ augment the `mender-gateway` recipe with the new configuration. For example, cre
 FILESEXTRAPATHS:prepend := "${THISDIR}/<DIRECTORY-WITH-MENDER-GATEWAY-CONF>:"
 SRC_URI:append = " file://mender-gateway.conf"
 
+FILES:${PN} += "${sysconfdir}/mender/mender-gateway.conf"
+
 do_install:append() {
     install -m 600 ${WORKDIR}/mender-gateway.conf ${D}/${sysconfdir}/mender/mender-gateway.conf
 }
 ```
 
 Replace <DIRECTORY-WITH-MENDER-GATEWAY-CONF> with the path to the `mender-gateway.conf` file, relative to the recipe file.
+
+In the case where you need both layers meta-mender-demo and meta-mender-commercial, to prevent your
+mender-gateway.conf being moved to `-doc` add this line to your  `.bbappend`:
+```
+FILES:${PN}-doc:remove = "${sysconfdir}/mender/mender-gateway.conf"
+```
 
 ### Examples package
 
