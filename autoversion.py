@@ -30,7 +30,7 @@ VERSION = None
 REPOS_CACHE = []
 
 # Match version strings.
-YOCTO_BRANCHES = r"(?:dora|daisy|dizzy|jethro|krogoth|morty|pyro|rocko|sumo|thud|warrior|zeus|dunfell|gatesgarth|kirkstone|langdale|mickledore|scarthgap)"
+YOCTO_BRANCHES = r"(?:dora|daisy|dizzy|jethro|krogoth|morty|pyro|rocko|sumo|thud|warrior|zeus|dunfell|gatesgarth|kirkstone|langdale|mickledore|scarthgap|wrynose)"
 EXACT_VERSION_MATCH = r"(?<![0-9]\.)(?<![0-9])[0-9]+\.[0-9]+\.[x0-9]+(?:b[0-9]+)?(?:-build[0-9]+)?(?![0-9])(?!\.[0-9])(?:-rc\.[0-9]+)?(?![0-9])(?!\.[0-9])"
 VERSION_MATCHER = r"(?:%s|(?:mender-%s)|(?<![a-z])(?:%s|master)(?![a-z]))" % (
     EXACT_VERSION_MATCH,

@@ -34,8 +34,8 @@ version is supported for at least 6 months.
 The following [Yocto Project LTS releases](https://wiki.yoctoproject.org/wiki/Releases?target=_blank)
 are currently supported by [meta-mender](https://github.com/mendersoftware/meta-mender?target=_blank):
 
+* Wrynose (6.0)
 * Scarthgap (5.0)
-* Kirkstone (4.0)
 
 Each Yocto Project release has a corresponding branch in meta-mender.
 Note that you will find other branches in meta-mender but they are not
