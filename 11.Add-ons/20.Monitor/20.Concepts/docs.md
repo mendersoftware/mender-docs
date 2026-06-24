@@ -5,7 +5,7 @@ taxonomy:
     label: user guide
 ---
 
-The Monitor add-on consists of two main parts:
+The Monitor Add-on consists of two main parts:
 
 - Server side - [Monitoring API endpoints](https://docs.mender.io/api/#devices-api-device-monitor)
 - Client side - the `mender-monitor` systemd service running on the device
@@ -34,7 +34,7 @@ This is shown in the diagram below.
 
 ![Monitor simplified flow](simple-monitor-flow.png)
 
-The supported way of using the monitoring add-on is to create the check for the supported subsystems which will detect the problematic events on the device.
+The supported way of using the Monitoring Add-on is to create the check for the supported subsystems which will detect the problematic events on the device.
 
 
 ## Creating custom Checks
