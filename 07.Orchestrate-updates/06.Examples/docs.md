@@ -214,7 +214,7 @@ mender-orchestrator-manifest-gen \
 
 Upload all your created Artifacts to hosted Mender:
 
-1. Go to your hosted Mender **Releases** section
+1. Go to your hosted Mender **Software** section
 2. Upload all the artifacts you just created:
    - `gateway-v1.mender`, `gateway-v2.mender`
    - `rtos-v1.mender`, `rtos-v2.mender`
