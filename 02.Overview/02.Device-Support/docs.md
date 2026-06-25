@@ -136,9 +136,7 @@ For a POSIX compliant OS it may be possible to compile the Mender Client to run 
 as outlined in the
 [README.md](https://github.com/mendersoftware/mender/tree/5.1.0?target=_blank#installing-from-source).
 
-For other types of OSes you can either use a nearby Linux system to update it via a
-[proxy deployment](../../02.Overview/01.Introduction/docs.md#proxy-deployments) or
-[create a custom Mender Client](https://hub.mender.io/t/how-to-write-a-custom-client-interfacing-a-mender-server).
+For other types of OSes you can [create a custom Mender Client](https://hub.mender.io/t/how-to-write-a-custom-client-interfacing-a-mender-server).
 
 
 ## Board integration overview
