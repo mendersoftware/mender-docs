@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="780"
+   height="315"
+   viewBox="0 0 780 315"
+   version="1.1"
+   id="svg14"
+   sodipodi:docname="application-updates.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview14"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="279.30718"
+     inkscape:cy="267.63992"
+     inkscape:window-width="1182"
+     inkscape:window-height="1331"
+     inkscape:window-x="26"
+     inkscape:window-y="23"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg14" />
+  <defs
+     id="defs1">
+    <rect
+       x="495.68336"
+       y="108.19186"
+       width="1.4699981"
+       height="13.523983"
+       id="rect16" />
+    <rect
+       x="509.20734"
+       y="109.36786"
+       width="3.8219951"
+       height="17.051978"
+       id="rect15" />
+    <style
+       id="style1">
+      .label { font-family: Arial, Helvetica, sans-serif; fill: white; }
+    </style>
+  </defs>
+  <!-- Outer background -->
+  <rect
+     id="background"
+     x="10"
+     y="10"
+     width="760"
+     height="295"
+     rx="20"
+     fill="#4D1545"
+     style="fill:#5d0f43;fill-opacity:1" />
+  <!-- Mender Artifact -->
+  <rect
+     x="30"
+     y="131"
+     width="95"
+     height="52"
+     rx="8"
+     fill="#1bb8bb"
+     id="rect1"
+     style="stroke:#000000;stroke-opacity:1;fill:#019fbc;fill-opacity:1" />
+  <text
+     x="77"
+     y="153"
+     text-anchor="middle"
+     class="label"
+     font-size="13px"
+     id="text1"
+     style="stroke:none;stroke-opacity:1">Mender</text>
+  <text
+     x="77"
+     y="170"
+     text-anchor="middle"
+     class="label"
+     font-size="13px"
+     id="text2"
+     style="stroke:none;stroke-opacity:1">Artifact</text>
+  <!-- Arrow: Artifact → Client -->
+  <polygon
+     id="arrow-artifact-client"
+     points="130,150 155,150 155,143 174,157 155,171 155,164 130,164"
+     fill="white" />
+  <g
+     id="g40">
+    <line
+       x1="337.5986"
+       y1="156.4225"
+       x2="374.20224"
+       y2="156.4225"
+       id="line5-2-4"
+       style="fill:none;stroke:#ffffff;stroke-width:1.34647" />
+    <line
+       x1="373.64877"
+       y1="94.142502"
+       x2="373.64877"
+       y2="219.86606"
+       id="line4"
+       style="fill:none;stroke:#ffffff;stroke-width:1.67281" />
+    <line
+       x1="372.91376"
+       y1="94.979347"
+       x2="429.81256"
+       y2="94.979347"
+       id="line5"
+       style="fill:none;stroke:#ffffff;stroke-width:1.67875" />
+    <line
+       x1="373.20779"
+       y1="219.02066"
+       x2="430.69458"
+       y2="219.02066"
+       id="line6"
+       style="fill:none;stroke:#ffffff;stroke-width:1.6874" />
+  </g>
+  <!-- Mender Client -->
+  <rect
+     x="186"
+     y="48"
+     width="155"
+     height="218"
+     rx="20"
+     fill="#1bb8bb"
+     id="rect2"
+     style="stroke:#000000;stroke-width:1;stroke-dasharray:none;stroke-opacity:1;fill:#019fbc;fill-opacity:1" />
+  <text
+     x="263"
+     y="150"
+     text-anchor="middle"
+     class="label"
+     font-size="17px"
+     font-weight="bold"
+     id="text3"
+     style="stroke:none;stroke-width:1;stroke-dasharray:none;stroke-opacity:1">Mender</text>
+  <text
+     x="263"
+     y="173"
+     text-anchor="middle"
+     class="label"
+     font-size="17px"
+     font-weight="bold"
+     id="text4"
+     style="stroke:none;stroke-width:1;stroke-dasharray:none;stroke-opacity:1">Client</text>
+  <!-- T-connector from Mender Client right edge to Update Module and A/B image -->
+  <!-- Update Module (stacked cards) -->
+  <!-- A/B image -->
+  <g
+     id="g2">
+    <rect
+       x="437.25"
+       y="72.5"
+       width="120"
+       height="68"
+       rx="10"
+       fill="#1bb8bb"
+       id="rect9-6-4"
+       style="stroke:#000000;stroke-opacity:1;fill:#019fbc;fill-opacity:1" />
+    <rect
+       x="430.5"
+       y="66.75"
+       width="120"
+       height="68"
+       rx="10"
+       fill="#1bb8bb"
+       id="rect9-6-2"
+       style="stroke:#000000;stroke-opacity:1;fill:#019fbc;fill-opacity:1" />
+    <g
+       id="g1">
+      <rect
+         x="424.20499"
+         y="60.979343"
+         width="120"
+         height="68"
+         rx="10"
+         fill="#1bb8bb"
+         id="rect9-6"
+         style="stroke:#000000;stroke-opacity:1;fill:#019fbc;fill-opacity:1" />
+      <text
+         x="483.9606"
+         y="91.500832"
+         text-anchor="middle"
+         class="label"
+         font-size="13px"
+         id="text10-3"
+         style="font-family:Arial, Helvetica, sans-serif;fill:#ffffff;stroke:none;stroke-opacity:1"><tspan
+           sodipodi:role="line"
+           id="tspan27"
+           x="483.9606"
+           y="91.500832">Update</tspan><tspan
+           sodipodi:role="line"
+           id="tspan28"
+           x="483.9606"
+           y="107.75083">Module</tspan></text>
+    </g>
+  </g>
+  <rect
+     x="424.20499"
+     y="185.02066"
+     width="120"
+     height="68"
+     rx="10"
+     fill="#1bb8bb"
+     id="rect9-6-9"
+     style="fill:#015969;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+  <text
+     x="483.89395"
+     y="215.54214"
+     text-anchor="middle"
+     class="label"
+     font-size="13px"
+     id="text10-3-6"
+     style="font-family:Arial, Helvetica, sans-serif;fill:#ffffff;stroke:none;stroke-opacity:1"><tspan
+       sodipodi:role="line"
+       id="tspan32"
+       x="483.89395"
+       y="215.54214">A/B</tspan><tspan
+       sodipodi:role="line"
+       x="483.89395"
+       y="231.79214"
+       id="tspan41">image</tspan></text>
+  <!-- Arrow: Update Module → update targets -->
+  <polygon
+     id="arrow-module-to-targets"
+     points="588,146 588,138 565,138 565,122 588,122 588,114 605,130 "
+     fill="#ffffff"
+     transform="translate(1.3750005,-35.020655)" />
+  <!-- Update targets -->
+  <rect
+     id="target-directory"
+     x="615"
+     y="44.19643"
+     width="108.48912"
+     height="30.996891"
+     rx="4.6495337"
+     fill="#0b6e71"
+     style="stroke-width:0.774922;fill:#015969;fill-opacity:1" />
+  <g
+     id="g20"
+     transform="matrix(1.4344452,0,0,1.4373192,-293.54484,-2.2919701)">
+    <text
+       x="670.75244"
+       y="45.970703"
+       text-anchor="middle"
+       class="text-label"
+       id="text2-5"
+       style="font-size:11px;font-family:Arial, sans-serif;fill:#ffffff;fill-opacity:1">Directory</text>
+  </g>
+  <rect
+     id="target-files"
+     x="615"
+     y="79.480904"
+     width="108.48912"
+     height="30.996891"
+     rx="4.6495337"
+     fill="#0b6e71"
+     style="stroke-width:0.774922;fill:#015969;fill-opacity:1" />
+  <g
+     id="g20-5"
+     transform="matrix(1.4344452,0,0,1.4373192,-293.07101,32.99636)">
+    <text
+       x="670.75244"
+       y="45.970703"
+       text-anchor="middle"
+       class="text-label"
+       id="text2-5-5"
+       style="font-size:11px;font-family:Arial, sans-serif;fill:#ffffff;fill-opacity:1">File(s)</text>
+  </g>
+  <rect
+     id="target-containers"
+     x="615"
+     y="114.76537"
+     width="108.48912"
+     height="30.996891"
+     rx="4.6495337"
+     fill="#0b6e71"
+     style="stroke-width:0.774922;fill:#015969;fill-opacity:1" />
+  <g
+     id="g21"
+     style="fill:#ffffff;fill-opacity:1"
+     transform="matrix(0.57554983,0,0,0.57670298,281.00121,65.142982)" />
+  <g
+     id="g20-5-1"
+     transform="matrix(1.4344452,0,0,1.4373192,-293.99354,69.074365)">
+    <text
+       x="671.42511"
+       y="46.503571"
+       text-anchor="middle"
+       class="text-label"
+       id="text2-5-5-9"
+       style="font-size:11px;font-family:Arial, sans-serif;fill:#ffffff;fill-opacity:1">Containers</text>
+  </g>
+</svg>

@@ -112,7 +112,7 @@ deploying application updates.
 
 To support application updates in a generic way, Mender provides the [Update Module](../../08.Artifact-creation/10.Create-a-custom-Update-Module/docs.md) framework.
 
-![application-updates](application-updates.png)
+![application-updates](application-updates.svg)
 
 
 ### Combining Operating System and Application updates
