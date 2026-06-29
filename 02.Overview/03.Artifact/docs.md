@@ -100,6 +100,28 @@ compressed, as well as some of the metadata, like headers, currently with the
 by default.
 
 
+## Manifest Artifact
+
+A **Manifest Artifact** is a special type of Mender Artifact used by
+[Mender Orchestrator](../../07.Orchestrate-updates/01.Overview/docs.md) to update a
+*System* made up of multiple *Components* - logical units that can each be
+updated independently. These Components may all run on a single device, be
+spread across separate physical devices, or a combination of the two. Instead of carrying the update
+payload for a single device, Manifest Artifact wraps a
+[Manifest](../../07.Orchestrate-updates/02.Manifest/docs.md) — a YAML file that
+declares the exact combination of Artifacts that each Component should end up
+running.
+
+Mender Orchestrator reads the Manifest from the Artifact and coordinates the
+individual Component updates needed to reach the state it describes. Once the
+Manifest Artifact deployment is complete, each Component is running the Artifact declared
+for it in the Manifest, bringing the whole System into a single, consistent
+state.
+
+For details on the Manifest format and how to create a Manifest Artifact, see
+[Create a Manifest Artifact](../../07.Orchestrate-updates/02.Manifest/01.Manifest-Artifact/docs.md).
+
+
 ## Artifact format versions
 
 Mender is constantly evolving to adapt to the needs of its users, and the Mender
