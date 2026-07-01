@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="780"
+   height="315"
+   viewBox="0 0 780 315"
+   version="1.1"
+   id="svg14"
+   sodipodi:docname="orchestrator-architecture.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview14"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="2"
+     inkscape:cx="439"
+     inkscape:cy="241.25"
+     inkscape:window-width="1182"
+     inkscape:window-height="1331"
+     inkscape:window-x="26"
+     inkscape:window-y="23"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg14" />
+  <defs
+     id="defs1">
+    <rect
+       x="495.68336"
+       y="108.19186"
+       width="1.4699981"
+       height="13.523983"
+       id="rect16" />
+    <rect
+       x="509.20734"
+       y="109.36786"
+       width="3.8219951"
+       height="17.051978"
+       id="rect15" />
+    <style
+       id="style1">
+      .label { font-family: Arial, Helvetica, sans-serif; fill: white; }
+    </style>
+  </defs>
+  <!-- Outer background -->
+  <rect
+     id="background"
+     x="10"
+     y="10"
+     width="760"
+     height="295"
+     rx="20"
+     fill="#4D1545"
+     style="fill:#5d0f43;fill-opacity:1" />
+  <!-- Mender Artifact -->
+  <rect
+     x="30"
+     y="131"
+     width="95"
+     height="52"
+     rx="8"
+     fill="#1bb8bb"
+     id="rect1"
+     style="stroke:#000000;stroke-opacity:1;fill:#019fbc;fill-opacity:1" />
+  <text
+     x="77"
+     y="153"
+     text-anchor="middle"
+     class="label"
+     font-size="13px"
+     id="text1"
+     style="stroke:none;stroke-opacity:1">Mender</text>
+  <text
+     x="77"
+     y="170"
+     text-anchor="middle"
+     class="label"
+     font-size="13px"
+     id="text2"
+     style="stroke:none;stroke-opacity:1">Artifact</text>
+  <!-- Arrow: Artifact → Client -->
+  <polygon
+     id="arrow-artifact-client"
+     points="130,150 155,150 155,143 174,157 155,171 155,164 130,164"
+     fill="white" />
+  <line
+     x1="337.5986"
+     y1="157.5"
+     x2="389.04922"
+     y2="157.5"
+     id="line5-2-4"
+     style="fill:none;stroke:#ffffff;stroke-width:1.59636" />
+  <line
+     x1="349.02194"
+     y1="79.580605"
+     x2="405.83047"
+     y2="79.580605"
+     id="line5"
+     style="fill:none;stroke:#ffffff;stroke-width:1.67742" />
+  <line
+     x1="349.96069"
+     y1="78.745651"
+     x2="349.96069"
+     y2="236.26187"
+     id="line4"
+     style="fill:none;stroke:#ffffff;stroke-width:1.8724" />
+  <line
+     x1="350.35788"
+     y1="157.5"
+     x2="407.10968"
+     y2="157.5"
+     id="line5-2"
+     style="fill:none;stroke:#ffffff;stroke-width:1.67658" />
+  <line
+     x1="349.02545"
+     y1="235.4194"
+     x2="406.41849"
+     y2="235.4194"
+     id="line6"
+     style="fill:none;stroke:#ffffff;stroke-width:1.68602" />
+  <!-- Mender Client -->
+  <rect
+     x="186"
+     y="48.5"
+     width="155"
+     height="218"
+     rx="20"
+     fill="#1bb8bb"
+     id="rect2"
+     style="stroke:#000000;stroke-width:1;stroke-dasharray:none;stroke-opacity:1;fill:#019fbc;fill-opacity:1" />
+  <text
+     x="263"
+     y="150"
+     text-anchor="middle"
+     class="label"
+     font-size="17px"
+     font-weight="bold"
+     id="text3"
+     style="stroke:none;stroke-width:1;stroke-dasharray:none;stroke-opacity:1">Mender</text>
+  <text
+     x="263"
+     y="173"
+     text-anchor="middle"
+     class="label"
+     font-size="17px"
+     font-weight="bold"
+     id="text4"
+     style="stroke:none;stroke-width:1;stroke-dasharray:none;stroke-opacity:1">Orchestrator</text>
+  <!-- T-connector from Mender Client right edge to Update Module and A/B image -->
+  <!-- Update Module (stacked cards) -->
+  <!-- A/B image -->
+  <g
+     id="g18">
+    <g
+       id="g16">
+      <rect
+         x="380.98035"
+         y="51.776459"
+         width="98.132263"
+         height="55.60828"
+         rx="8.1776886"
+         fill="#1bb8bb"
+         id="rect9-6"
+         style="stroke:#000000;stroke-width:0.817769;stroke-opacity:1;fill:#019fbc;fill-opacity:1" />
+      <text
+         x="429.82068"
+         y="76.735977"
+         text-anchor="middle"
+         class="label"
+         font-size="10.631px"
+         id="text10-3"
+         style="font-family:Arial, Helvetica, sans-serif;fill:#ffffff;stroke:none;stroke-width:0.817769;stroke-opacity:1"><tspan
+           sodipodi:role="line"
+           id="tspan27"
+           x="429.82068"
+           y="76.735977"
+           style="stroke-width:0.817769">cellurar-ota</tspan><tspan
+           sodipodi:role="line"
+           id="tspan28"
+           x="429.82068"
+           y="90.024727"
+           style="stroke-width:0.817769">Interface</tspan></text>
+    </g>
+    <g
+       id="g14">
+      <rect
+         x="380.98038"
+         y="129.69586"
+         width="98.132263"
+         height="55.60828"
+         rx="8.1776886"
+         fill="#1bb8bb"
+         id="rect9-6-8"
+         style="stroke:#000000;stroke-width:0.817769;stroke-opacity:1;fill:#019fbc;fill-opacity:1" />
+      <text
+         x="429.79214"
+         y="154.65538"
+         text-anchor="middle"
+         class="label"
+         font-size="10.631px"
+         id="text10-3-9"
+         style="font-family:Arial, Helvetica, sans-serif;fill:#ffffff;stroke:none;stroke-width:0.817769;stroke-opacity:1"><tspan
+           sodipodi:role="line"
+           id="tspan29"
+           x="429.79214"
+           y="154.65538"
+           style="stroke-width:0.817769">canbus</tspan><tspan
+           sodipodi:role="line"
+           id="tspan30"
+           x="429.79214"
+           y="167.94412"
+           style="stroke-width:0.817769">Interface</tspan></text>
+    </g>
+    <g
+       id="g17">
+      <rect
+         x="380.98038"
+         y="207.61526"
+         width="98.132263"
+         height="55.60828"
+         rx="8.1776886"
+         fill="#1bb8bb"
+         id="rect9-6-9"
+         style="stroke:#000000;stroke-width:0.817769;stroke-opacity:1;fill:#019fbc;fill-opacity:1" />
+      <text
+         x="429.79214"
+         y="232.57478"
+         text-anchor="middle"
+         class="label"
+         font-size="10.631px"
+         id="text10-3-6"
+         style="font-family:Arial, Helvetica, sans-serif;fill:#ffffff;stroke:none;stroke-width:0.817769;stroke-opacity:1"><tspan
+           sodipodi:role="line"
+           id="tspan31"
+           x="429.79214"
+           y="232.57478"
+           style="stroke-width:0.817769">i2c</tspan><tspan
+           sodipodi:role="line"
+           id="tspan32"
+           x="429.79214"
+           y="245.86353"
+           style="stroke-width:0.817769">Interface</tspan></text>
+    </g>
+  </g>
+  <!-- Arrow: Update Module → update targets -->
+  <g
+     id="g10"
+     transform="translate(2.6536931)">
+    <polygon
+       id="arrow-module-to-targets"
+       points="588,114 605,130 588,146 588,138 565,138 565,122 588,122 "
+       fill="#ffffff"
+       transform="translate(-67.226917,-50.419399)" />
+    <polygon
+       id="arrow-module-to-targets-3"
+       points="605,130 588,146 588,138 565,138 565,122 588,122 588,114 "
+       fill="#ffffff"
+       transform="translate(-67.226917,27.5)" />
+    <polygon
+       id="arrow-module-to-targets-1"
+       points="588,114 605,130 588,146 588,138 565,138 565,122 588,122 "
+       fill="#ffffff"
+       transform="translate(-67.226917,105.4194)" />
+  </g>
+  <!-- Update targets -->
+  <g
+     id="g15">
+    <g
+       id="g12">
+      <rect
+         id="target-files"
+         x="561.33203"
+         y="129.86633"
+         width="193.43571"
+         height="55.267345"
+         rx="8.290102"
+         fill="#0b6e71"
+         style="stroke-width:1.38168;fill:#015969;fill-opacity:1" />
+      <g
+         id="g19"
+         style="fill:#ffffff;fill-opacity:1"
+         transform="matrix(1.0262033,0,0,1.0282593,-44.110628,81.491901)">
+        <text
+           x="684.25122"
+           y="62.970703"
+           text-anchor="middle"
+           class="text-label"
+           id="text5"
+           style="font-size:11px;font-family:Arial, sans-serif;fill:#ffffff;fill-opacity:1">ecu_brake_controller</text>
+        <text
+           x="684.25122"
+           y="77.970703"
+           text-anchor="middle"
+           class="text-small"
+           id="text6"
+           style="font-size:9px;font-family:Arial, sans-serif;fill:#ffffff;fill-opacity:1">interface: canbus</text>
+        <text
+           x="684.25122"
+           y="90.970703"
+           text-anchor="middle"
+           class="text-small"
+           id="text7"
+           style="font-size:9px;font-family:Arial, sans-serif;fill:#ffffff;fill-opacity:1">interface_args: [&quot;front&quot;, &quot;15:22:aa:33:ff&quot;]</text>
+      </g>
+    </g>
+    <g
+       id="g11">
+      <rect
+         id="target-directory"
+         x="561.33203"
+         y="51.94693"
+         width="193.43571"
+         height="55.267345"
+         rx="8.290102"
+         fill="#0b6e71"
+         style="stroke-width:1.38168;fill:#015969;fill-opacity:1" />
+      <g
+         id="g20"
+         transform="matrix(1.0262033,0,0,1.0282593,-30.258131,21.052913)">
+        <text
+           x="670.75244"
+           y="45.970703"
+           text-anchor="middle"
+           class="text-label"
+           id="text2-5"
+           style="font-size:11px;font-family:Arial, sans-serif;fill:#ffffff;fill-opacity:1">telematics_control_unit</text>
+        <text
+           x="670.75244"
+           y="60.970703"
+           text-anchor="middle"
+           class="text-small"
+           id="text3-8"
+           style="font-size:9px;font-family:Arial, sans-serif;fill:#ffffff;fill-opacity:1">interface: cellular-ota</text>
+        <text
+           x="670.75244"
+           y="73.970703"
+           text-anchor="middle"
+           class="text-small"
+           id="text4-3"
+           style="font-size:9px;font-family:Arial, sans-serif;fill:#ffffff;fill-opacity:1">interface_args: [&quot;tcu1&quot;, &quot;15:22:aa:33:ff&quot;]</text>
+      </g>
+    </g>
+    <g
+       id="g13">
+      <rect
+         id="target-containers"
+         x="561.33203"
+         y="207.78572"
+         width="193.43571"
+         height="55.267345"
+         rx="8.290102"
+         fill="#0b6e71"
+         style="stroke-width:1.38168;fill:#015969;fill-opacity:1" />
+      <g
+         id="g21"
+         style="fill:#ffffff;fill-opacity:1"
+         transform="matrix(1.0262033,0,0,1.0282593,-34.186575,119.3092)">
+        <text
+           x="674.58057"
+           y="101.9707"
+           text-anchor="middle"
+           class="text-label"
+           id="text8"
+           style="font-size:11px;font-family:Arial, sans-serif;fill:#ffffff;fill-opacity:1">seat_heating</text>
+        <text
+           x="674.58057"
+           y="116.9707"
+           text-anchor="middle"
+           class="text-small"
+           id="text9"
+           style="font-size:9px;font-family:Arial, sans-serif;fill:#ffffff;fill-opacity:1">interface: i2c</text>
+        <text
+           x="674.58057"
+           y="129.9707"
+           text-anchor="middle"
+           class="text-small"
+           id="text10"
+           style="font-size:9px;font-family:Arial, sans-serif;fill:#ffffff;fill-opacity:1">interface_args: [&quot;--bus=1&quot;, &quot;--address=0x48&quot;]</text>
+      </g>
+    </g>
+  </g>
+</svg>

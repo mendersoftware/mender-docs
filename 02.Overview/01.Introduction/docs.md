@@ -112,7 +112,7 @@ deploying application updates.
 
 To support application updates in a generic way, Mender provides the [Update Module](../../08.Artifact-creation/10.Create-a-custom-Update-Module/docs.md) framework.
 
-![application-updates](application-updates.png)
+![application-updates](application-updates.svg)
 
 
 ### Combining Operating System and Application updates
@@ -147,19 +147,31 @@ combine Operating System and Application updates in the
 !!! refer to application updates as non-rootfs ones.
 
 
-### Proxy deployments
+### Orchestrated updates
 
-Using the [Update Module](../../08.Artifact-creation/10.Create-a-custom-Update-Module/docs.md) framework
-it is also possible to deploy updates to peripheral devices, e.g
-microcontrollers or sensors connected to a device running Linux.
+!! Mender Orchestrator is a preview feature and is not yet recommended for production use.
 
-Example using the Device Firmware Upgrade (DFU) protocol to update an external
-microcontroller:
+!!!!! Mender Orchestrator is only available in the Mender Enterprise plan.
+!!!!! See [the Mender plans page](https://mender.io/pricing/plans?target=_blank)
+!!!!! for an overview of all Mender plans and features.
 
-![proxy-deployment](proxy-deployment.png)
+For Systems that consist of multiple Components, such as ECUs in a vehicle, Mender provides
+**Mender Orchestrator**.
 
-You can find more information on above example in the
-[How to do a proxy deployment to an FRDM-K64F](https://hub.mender.io/t/how-to-do-a-proxy-deployment-to-an-frdm-k64f-device-connected-to-a-raspberry-pi-3/1619?target=_blank) tutorial.
+Mender Orchestrator coordinates updates across a *System* of *Components*. You describe
+the hardware composition in a *Topology* file and define the desired System state in a
+*Manifest*, which defines the exact combination of Artifacts that should be deployed to each
+Component type and controls the update strategy. Mender Orchestrator applies updates to each Component
+in the configured order and rolls back the entire System if any Component update process fails -
+always resulting in a well defined state of the System as a whole.
+
+A typical use case is updating a vehicle, where various ECUs must be in a specific versions
+to ensure their interoperability, necessitating an atomic update of all Components. The diagram
+below shows an example System, where each Component and its Interface are defined.
+
+![Orchestrator System Architecture](orchestrator-architecture.svg)
+
+For the full documentation, see the [Orchestrate updates](../../07.Orchestrate-updates/01.Overview/docs.md) chapter.
 
 
 ## The architecture of a Mender add-on
