@@ -853,6 +853,7 @@ Then install the packages with:
 sudo dpkg -i mender-orchestrator-core_*.deb
 ```
 
+<!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "mender-orchestrator-support%-1"/mender-orchestrator -->
 ```bash
 sudo dpkg -i mender-orchestrator-support_*.deb
