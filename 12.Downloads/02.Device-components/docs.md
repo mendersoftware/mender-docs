@@ -657,6 +657,7 @@ wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_EN
 [/ui-tabs]
 
 Download the mender-orchestrator-support package:
+<!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
 wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bdebian%2Btrixie_all.deb
@@ -714,6 +715,7 @@ wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_EN
 [/ui-tabs]
 
 Download the mender-orchestrator-support package:
+<!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
 wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bdebian%2Bbookworm_all.deb
@@ -771,6 +773,7 @@ wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_EN
 [/ui-tabs]
 
 Download the mender-orchestrator-support package:
+<!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
 wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bubuntu%2Bresolute_all.deb
@@ -828,6 +831,7 @@ wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_EN
 [/ui-tabs]
 
 Download the mender-orchestrator-support package:
+<!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
 wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bubuntu%2Bnoble_all.deb
