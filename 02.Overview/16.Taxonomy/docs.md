@@ -185,6 +185,12 @@ as pending devices (authorization requests). Always treat this token as a
 secret, since it enables adding more pending devices to your organization.
 Sometimes referred to as _Organization token_.
 
+* _Test device_ - An accepted device designated for interactive testing and
+evaluation. Test devices are exempt from the normal update check and inventory poll rate
+limiting, and are allowed to poll for updates and publish inventory frequently. See
+[Inventory](../08.Inventory/docs.md#test-devices) for how to designate them and
+[Limits](../18.Limits/docs.md#test-devices) for the applicable limits.
+
 * _Update Module_ - An extension to the Mender Client for supporting a new type
 software update, such as a package manager, container or bootloader.
 

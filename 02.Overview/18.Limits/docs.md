@@ -17,8 +17,9 @@ The frequency with which a Device checks for updates. This varies by device tier
 | Micro       | `604800 seconds` (7 days)   | [Mender MCU Client configuration](../../06.Operating-System-updates-Zephyr/04.Customize-Mender-mcu/docs.md) |
 | Standard    | `1800 seconds` (30 minutes) | [Mender Client configuration](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md)   |
 
-! Warning: Using _shorter_ than default intervals with hosted Mender is considered _excessive use_ and may trigger rate limiting,
-! unless it is 10 devices or less for trial/testing or otherwise agreed upon in advance.
+! Warning: On hosted Mender, update checks are rate limited to the default interval. Checking for updates _more frequently_ than
+! the default interval is considered _excessive use_ and requests exceeding the limit are throttled. [Test devices](#test-devices)
+! are exempt from this rate limiting.
 
 ### Polling interval: Inventory updates
 
@@ -29,8 +30,39 @@ The frequency a Device can update its current inventory to the Mender Server. Th
 | Micro       | `604800 seconds` (7 days) | [Mender MCU Client configuration](../../06.Operating-System-updates-Zephyr/04.Customize-Mender-mcu/docs.md) |
 | Standard    | `28800 seconds` (8 hours) | [Mender Client configuration](../../03.Client-installation/07.Configuration/01.Polling-intervals/docs.md)   |
 
-! Warning: Using _shorter_ than default intervals with hosted Mender is considered _excessive use_ and may trigger rate limiting,
-! unless it is 10 devices or less for trial/testing or otherwise agreed upon in advance.
+! Warning: On hosted Mender, inventory updates are rate limited to the default interval. Reporting inventory _more frequently_ than
+! the default interval is considered _excessive use_ and requests exceeding the limit are throttled. [Test devices](#test-devices)
+! are exempt from this rate limiting.
+
+### Test devices
+
+A _test device_ is an accepted device that is exempt from the normal update check and inventory
+poll rate limiting described above, and is allowed to poll for updates and publish inventory
+frequently. This is useful when trying out Mender features (for example during a free trial) or
+when testing new code as part of a CI/CD system.
+
+See [Test devices](../08.Inventory/docs.md#test-devices) for how to designate, filter and
+identify them. Test devices are counted independently of
+[Device tier](../17.Device-tiers/docs.md), and are subject to the following limits.
+
+#### Maximum number of test devices
+
+The maximum number of accepted devices with `test_device = true` per tenant.
+
+Default: `10`</br>
+Overriding this limit is not possible
+
+Once 10 devices with `test_device = true` are accepted into a tenant, no additional device can
+be designated as a test device. The UI shows an error message, with a link to the current test
+devices, if this is attempted.
+
+#### Maximum test device changes per day
+
+The maximum number of `test_device` changes per tenant, per day. Both designating a device as a
+test device and removing that designation count towards this limit.
+
+Default: `20`</br>
+Overriding this limit is not possible
 
 ### Artifact size limits
 

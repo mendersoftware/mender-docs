@@ -166,6 +166,10 @@ The Mender free trial evaluation period includes:
 - No credit card required
 - Full access to all features including device tiers
 
+In free trial tenants, devices default to [test devices](../18.Limits/docs.md#test-devices)
+(the `test_device` system attribute defaults to `true`), so evaluation and CI/CD workflows are
+allowed to poll for updates and publish inventory frequently, without the normal rate limiting.
+
 ## Moving from free trial to production
 
 When transitioning from the free trial evaluation to production:
@@ -180,6 +184,7 @@ When transitioning from the free trial evaluation to production:
 
 - Device tier configurations do not need to change during the transition
 - All devices (regardless of tier) continue to count toward your plan's device limit
+- Devices carried over from the free trial remain [test devices](../18.Limits/docs.md#test-devices) unless you explicitly remove the `test_device` designation
 - Production plans may have different limits for artifact sizes, active deployments, and polling intervals
 - Consult with Mender for custom plans if you have specific tier or scaling requirements
 
