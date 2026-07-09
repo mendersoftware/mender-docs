@@ -11,7 +11,7 @@ This document details troubleshooting steps for common problems with Mender work
 ### Error: `flag provided but not defined: -c`
 
 <!--AUTOVERSION: "introduced in version %"/mender-artifact "e.g. %"/ignore-->
-The `-c` flag for `mender-artifact` was introduced in version 4.3.0. If you are using an older version (e.g. 3.9.0 from the default Ubuntu 24.04/Noble repository), you will see this error when trying to use the `-c` flag.
+The `-c` flag for `mender-artifact` was introduced in version 4.4.1. If you are using an older version (e.g. 3.9.0 from the default Ubuntu 24.04/Noble repository), you will see this error when trying to use the `-c` flag.
 
 **Solutions:**
 
@@ -26,12 +26,12 @@ The `-c` flag for `mender-artifact` was introduced in version 4.3.0. If you are 
 ### Error: `/bin/sh: 1: mender: not found`
 
 <!--AUTOVERSION: "version older than %"/mender-artifact-->
-This error occurs when using `mender-artifact` version older than 4.0.0 with Mender 4.0+ devices. The older `mender-artifact` versions are incompatible with the newer device client.
+This error occurs when using `mender-artifact` version older than 4.4.1 with Mender 4.0+ devices. The older `mender-artifact` versions are incompatible with the newer device client.
 
 **Solution:**
 
 <!--AUTOVERSION: "version %"/mender-artifact-->
-Upgrade your `mender-artifact` to version 4.0.0 or later by following the [installation instructions](../../12.Downloads/01.Workstation-tools/docs.md).
+Upgrade your `mender-artifact` to version 4.4.1 or later by following the [installation instructions](../../12.Downloads/01.Workstation-tools/docs.md).
 
 ### Verify your installation
 
@@ -42,7 +42,7 @@ mender-artifact --version
 ```
 
 <!--AUTOVERSION: "recommended version is %"/mender-artifact-->
-The recommended version is 4.3.0 or later for full compatibility with current documentation examples.
+The recommended version is 4.4.1 or later for full compatibility with current documentation examples.
 
 ## mender-cli
 
