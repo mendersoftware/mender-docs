@@ -87,6 +87,31 @@ autocomplete options. For this reason, it is a good idea to strive to use the
 same naming schemes across the organization, avoid making multiple similar
 names and never putting anything sensitive into the names of tags / inventory.
 
+### Test devices
+
+`test_device` is a reserved _system attribute_ (an attribute in the `system`
+scope, managed by the Mender Server rather than reported by the device) used to
+designate a device as a _test device_. Test devices are exempt from the normal
+update check and inventory poll rate limiting, and are allowed to poll for updates
+and publish inventory frequently. This is useful when trying out Mender features
+(for example during a free trial) or when testing new code as part of a CI/CD
+system.
+
+The attribute defaults to `false`, except in free trial tenants
+where it defaults to `true`. When upgrading from a free trial to a paid plan, all
+devices carried over from the trial remain test devices unless you explicitly
+remove the designation.
+
+You designate a device as a test device from the **Quick actions** menu in the
+device list. Because `test_device` is stored as a device attribute, you can filter on it
+just like any other attribute: filter for `test_device = true` to find all test
+devices in your tenant, or use the _not equals_ operator to filter for all
+devices that are not test devices. The device list also shows an indication (a
+dedicated label) on devices that are test devices.
+
+The number of test devices per tenant is limited, and changes are rate limited
+per day. See [Limits](../18.Limits/docs.md#test-devices) for the exact values.
+
 ## Limitations
 
 Each device can upload up to 100 inventory attributes in a single inventory update.
