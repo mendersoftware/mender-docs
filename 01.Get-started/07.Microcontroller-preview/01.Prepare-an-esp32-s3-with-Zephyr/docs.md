@@ -39,8 +39,9 @@ source ~/zephyrproject/.venv/bin/activate
 **Initialize a new west workspace** for the Mender MCU integration project. In the same terminal 
 change your current working directory to a different one than `~/zephyrproject`, e.g. to `~/`, and run:
 
+<!--AUTOVERSION: "--manifest-rev zephyr-%"/ignore-->
 ```bash
-west init ~/mender-mcu-workspace --manifest-url https://github.com/mendersoftware/mender-mcu-integration
+west init ~/mender-mcu-workspace --manifest-url https://github.com/mendersoftware/mender-mcu-integration --manifest-rev zephyr-4.2.x
 cd ~/mender-mcu-workspace
 west update
 ```
