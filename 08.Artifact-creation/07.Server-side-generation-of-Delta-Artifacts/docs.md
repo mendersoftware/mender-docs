@@ -67,7 +67,7 @@ If the Delta Artifact already exists, the Mender Server selects it and sends the
 Note that the generation may take up to 15 minutes, depending on the binary delta configuration settings (see below)
 and Artifacts sizes and types of data.
 
-A successfully generated Artifact will be visible in the Releases section under the name of the original rootfs Artifact.
+A successfully generated Artifact will be visible in the Software section under the name of the original rootfs Artifact.
 
 Please note that if the Server cannot generate the Delta Artifact, it will automatically fall back to the non-Delta Artifact. Possible reasons are:
 * the Device is not reporting the availability of the Binary Delta Update Module through the `provides` database keys;
@@ -106,7 +106,7 @@ and the device will download a full rootfs-image instead of the delta, as you ca
 As you can see from the above there is a number of reasons for the delta generation to not take place;
 many of which are not signs of errors, but follow from the design of the feature. As the majority of the operations
 take place on the server side and the whole procedure is transparent to the users and devices,
-there is a "Delta Artifacts generation" tab in the Releases section, where you can see all the server-side delta generation
+there is a "Delta Artifacts generation" tab in the Software section, where you can see all the server-side delta generation
 jobs with status, and check each one for more detailed information.
 
 #### rootfs version and checksum
