@@ -210,8 +210,6 @@ This configuration is available from Mender Gateway version <code>1.3.0</code>.
 <dd>Skip verification of certificate claims.</dd>
 </dl>
 
-</dl>
-
 ### Metrics
 
 <!--AUTOVERSION: "version <code>%</code>"/ignore-->
