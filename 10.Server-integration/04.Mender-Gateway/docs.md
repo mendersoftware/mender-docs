@@ -148,3 +148,41 @@ authentication. Any device with a valid certificate signed by the Certificate
 Authority (CA) configured on the gateway, is automatically accepted by the
 Mender Server. See the [mTLS user guide](10.Mutual-TLS-authentication/docs.md) for a
 reference mutual TLS setup in a testing environment.
+
+## Monitoring with Prometheus metrics
+Mender Gateway can expose a [Prometheus](https://prometheus.io/)-compatible
+`/metrics` endpoint for monitoring and alerting. The endpoint is served by a
+separate HTTP server, listening on `:9102` by default and independent of the
+device-facing proxy, so if it fails to start the error is logged and the gateway
+keeps serving device traffic. The feature is disabled by default and enabled
+with the `Metrics` section of the [configuration file](99.Configuration-file/):
+
+```json
+{
+	"HTTPS": {
+		"Enabled": true,
+		"Listen": ":443",
+		"ServerCertificate": "/usr/share/doc/mender-gateway/examples/cert/cert.crt",
+		"ServerKey": "/usr/share/doc/mender-gateway/examples/cert/private.key"
+	},
+	"UpstreamServer": {
+		"URL": "https://hosted.mender.io"
+	},
+	"Metrics": {
+		"Enabled": true,
+		"Listen": ":9102"
+	}
+}
+```
+
+The endpoint reports counters for the number of API requests
+(`mender_gateway_http_requests_total`) and the response bytes served
+(`mender_gateway_http_response_bytes_total`), each labelled by request method,
+status code, and the matched route, together with a set of Go runtime and
+process memory gauges and the process start time for detecting restarts. Because
+requests are labelled by the matched route rather than the raw URL, the number
+of time series stays bounded to the gateway's registered routes.
+
+! The metrics endpoint is not authenticated. The default `:9102` binds every
+! interface, so set `Listen` to an address on a trusted network — for example
+! `127.0.0.1:9102` to expose it only on the gateway host.
