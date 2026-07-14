@@ -129,6 +129,10 @@ the certificates of hosted Mender servers:
 
 **Hosted Mender access**: Devices, APIs and browser access
 * `https://eu.hosted.mender.io`
+  * Root CA: GTS Root R4 - [provider's information](https://pki.goog/repository/) - [PEM](r4.pem) - [DER](r4.crt) - [sha256](r4.sha256)
+  * Not Before: `Jun 22 00:00:00 2016 GMT`
+  * Not After: `Jun 22 23:59:59 2036 GMT`
+* `https://*.eu.hosted.mender.io`
   * Root CA: ISRG Root X1 - [provider's information](https://letsencrypt.org/certificates/) - [PEM](isrgrootx1.pem) - [DER](isrgrootx1.der) - [sha256](isrgrootx1.sha256)
   * Not Before: `Jun 04 00:00:00 2015 GMT`
   * Not After : `Jun 04 23:59:59 2035 GMT`
