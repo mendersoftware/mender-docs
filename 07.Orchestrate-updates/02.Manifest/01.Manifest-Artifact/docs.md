@@ -26,7 +26,7 @@ Generate a Manifest Artifact from a Manifest YAML file:
 mender-orchestrator-manifest-gen [options] <manifest> [-- [mender-artifact-options]]
 ```
 
-For usage examples, see the [Examples section](../../06.Examples/docs.md#step-4-generate-manifest-artifacts).
+For usage examples, see the [Examples section](../../06.Examples/01.Mock-components/docs.md#step-4-generate-manifest-artifacts).
 
 #### Options
 
