@@ -408,7 +408,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Btrixie_armhf.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bdebian%2Btrixie_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
@@ -421,7 +421,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Btrixie_arm64.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bdebian%2Btrixie_arm64.deb
 ```
 [/ui-tab]
 [ui-tab title="amd64"]
@@ -434,7 +434,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Btrixie_amd64.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bdebian%2Btrixie_amd64.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -442,7 +442,7 @@ wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDE
 Download the mender-orchestrator-support package:
 <!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bdebian%2Btrixie_all.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.6.0/mender-orchestrator-support_0.6.0-1%2Bdebian%2Btrixie_all.deb
 ```
 
 [/ui-tab]
@@ -459,7 +459,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Bbookworm_armhf.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bdebian%2Bbookworm_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
@@ -472,7 +472,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Bbookworm_arm64.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bdebian%2Bbookworm_arm64.deb
 ```
 [/ui-tab]
 [ui-tab title="amd64"]
@@ -485,7 +485,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Bbookworm_amd64.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bdebian%2Bbookworm_amd64.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -493,7 +493,7 @@ wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDE
 Download the mender-orchestrator-support package:
 <!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bdebian%2Bbookworm_all.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.6.0/mender-orchestrator-support_0.6.0-1%2Bdebian%2Bbookworm_all.deb
 ```
 
 [/ui-tab]
@@ -510,7 +510,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bresolute_armhf.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bubuntu%2Bresolute_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
@@ -523,7 +523,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bresolute_arm64.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bubuntu%2Bresolute_arm64.deb
 ```
 [/ui-tab]
 [ui-tab title="amd64"]
@@ -536,7 +536,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bresolute_amd64.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bubuntu%2Bresolute_amd64.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -544,7 +544,7 @@ wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDE
 Download the mender-orchestrator-support package:
 <!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bubuntu%2Bresolute_all.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.6.0/mender-orchestrator-support_0.6.0-1%2Bubuntu%2Bresolute_all.deb
 ```
 
 [/ui-tab]
@@ -561,7 +561,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bnoble_armhf.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bubuntu%2Bnoble_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
@@ -574,7 +574,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bnoble_arm64.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bubuntu%2Bnoble_arm64.deb
 ```
 [/ui-tab]
 [ui-tab title="amd64"]
@@ -587,7 +587,7 @@ HOSTED_MENDER_PASSWORD=<yoursecurepassword>
 And download it with:
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bnoble_amd64.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bubuntu%2Bnoble_amd64.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -595,7 +595,7 @@ wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDE
 Download the mender-orchestrator-support package:
 <!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bubuntu%2Bnoble_all.deb
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-orchestrator/debian/0.6.0/mender-orchestrator-support_0.6.0-1%2Bubuntu%2Bnoble_all.deb
 ```
 
 [/ui-tab]
@@ -621,7 +621,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Btrixie_armhf.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bdebian%2Btrixie_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
@@ -636,7 +636,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Btrixie_arm64.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bdebian%2Btrixie_arm64.deb
 ```
 [/ui-tab]
 [ui-tab title="amd64"]
@@ -651,7 +651,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Btrixie_amd64.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bdebian%2Btrixie_amd64.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -660,7 +660,7 @@ Download the mender-orchestrator-support package:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bdebian%2Btrixie_all.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.6.0/mender-orchestrator-support_0.6.0-1%2Bdebian%2Btrixie_all.deb
 ```
 
 [/ui-tab]
@@ -679,7 +679,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Bbookworm_armhf.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bdebian%2Bbookworm_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
@@ -694,7 +694,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Bbookworm_arm64.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bdebian%2Bbookworm_arm64.deb
 ```
 [/ui-tab]
 [ui-tab title="amd64"]
@@ -709,7 +709,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bdebian%2Bbookworm_amd64.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bdebian%2Bbookworm_amd64.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -718,7 +718,7 @@ Download the mender-orchestrator-support package:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bdebian%2Bbookworm_all.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.6.0/mender-orchestrator-support_0.6.0-1%2Bdebian%2Bbookworm_all.deb
 ```
 
 [/ui-tab]
@@ -737,7 +737,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bresolute_armhf.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bubuntu%2Bresolute_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
@@ -752,7 +752,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bresolute_arm64.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bubuntu%2Bresolute_arm64.deb
 ```
 [/ui-tab]
 [ui-tab title="amd64"]
@@ -767,7 +767,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bresolute_amd64.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bubuntu%2Bresolute_amd64.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -776,7 +776,7 @@ Download the mender-orchestrator-support package:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bubuntu%2Bresolute_all.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.6.0/mender-orchestrator-support_0.6.0-1%2Bubuntu%2Bresolute_all.deb
 ```
 
 [/ui-tab]
@@ -795,7 +795,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bnoble_armhf.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bubuntu%2Bnoble_armhf.deb
 ```
 [/ui-tab]
 [ui-tab title="arm64"]
@@ -810,7 +810,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bnoble_arm64.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bubuntu%2Bnoble_arm64.deb
 ```
 [/ui-tab]
 [ui-tab title="amd64"]
@@ -825,7 +825,7 @@ And download it with:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-core_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-core_0.5.0-1%2Bubuntu%2Bnoble_amd64.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.6.0/mender-orchestrator-core_0.6.0-1%2Bubuntu%2Bnoble_amd64.deb
 ```
 [/ui-tab]
 [/ui-tabs]
@@ -834,7 +834,7 @@ Download the mender-orchestrator-support package:
 <!--AUTOMATION: ignore -->
 <!--AUTOVERSION: "/mender-orchestrator-support_%-1"/mender-orchestrator "/mender-orchestrator/debian/%/"/mender-orchestrator -->
 ```bash
-wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.5.0/mender-orchestrator-support_0.5.0-1%2Bubuntu%2Bnoble_all.deb
+wget --auth-no-challenge --user "$MENDER_ENTERPRISE_USER" --password "$MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-orchestrator/debian/0.6.0/mender-orchestrator-support_0.6.0-1%2Bubuntu%2Bnoble_all.deb
 ```
 
 [/ui-tab]

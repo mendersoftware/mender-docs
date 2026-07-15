@@ -13,7 +13,7 @@ taxonomy:
 Download the generator tool from the repository:
 <!--AUTOVERSION: "/mender-orchestrator-support/%"/mender-orchestrator-support -->
 ```bash
-curl -O https://raw.githubusercontent.com/mendersoftware/mender-orchestrator-support/0.4.0/modules/mender-orchestrator-manifest/module-artifact-gen/mender-orchestrator-manifest-gen
+curl -O https://raw.githubusercontent.com/mendersoftware/mender-orchestrator-support/0.6.0/modules/mender-orchestrator-manifest/module-artifact-gen/mender-orchestrator-manifest-gen
 chmod +x mender-orchestrator-manifest-gen
 sudo mv mender-orchestrator-manifest-gen /usr/local/bin/
 ```
