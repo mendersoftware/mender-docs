@@ -56,6 +56,10 @@ This section provides a reference for the configuration variables.
 		"URL": "https://hosted.mender.io",
 		"CACertificate": "/etc/ssl/cert.pem",
 		"InsecureSkipVerify": false
+	},
+	"Metrics": {
+		"Enabled": false,
+		"Listen": ":9102"
 	}
 }
 ```
@@ -206,7 +210,21 @@ This configuration is available from Mender Gateway version <code>1.3.0</code>.
 <dd>Skip verification of certificate claims.</dd>
 </dl>
 
+### Metrics
+
+<!--AUTOVERSION: "version <code>%</code>"/ignore-->
+!!! Available from Mender Gateway version <code>2.2.0</code>
+
+<dl>
+<dt>Enabled (<code>METRICS_ENABLED</code>)</dt>
+<dd>Expose a Prometheus-compatible <code>/metrics</code> endpoint on a separate HTTP server. Disabled by default.</dd>
+
+<dt>Listen (<code>METRICS_LISTEN</code>)</dt>
+<dd>TCP network address (<code>host:port</code>) the metrics server listens on. Defaults to <code>:9102</code>, which binds every interface; set an IP address to restrict it, for example <code>127.0.0.1:9102</code> for the loopback interface only. An interface name cannot be used.</dd>
 </dl>
+
+! The metrics endpoint is not authenticated. Use the `Listen` address to keep it
+! on a trusted network; do not expose it on the device-facing network.
 
 ### Point Mender Gateway to a proxy
 
