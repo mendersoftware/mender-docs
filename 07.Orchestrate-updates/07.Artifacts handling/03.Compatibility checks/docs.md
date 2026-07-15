@@ -119,7 +119,7 @@ Since the Orchestrator uses the `component_type` from the Topology to verify Art
 
 ### Example
 
-Given an example [Topology](../../06.Examples/docs.md#demo-environment):
+Given an example [Topology](../../06.Examples/01.Mock-components/docs.md#demo-environment):
 
 ```yaml
 api_version: mender/v1

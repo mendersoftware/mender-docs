@@ -13,7 +13,7 @@ taxonomy:
 Download the generator tool from the repository:
 <!--AUTOVERSION: "/mender-orchestrator-support/%"/mender-orchestrator-support -->
 ```bash
-curl -O https://raw.githubusercontent.com/mendersoftware/mender-orchestrator-support/0.4.0/modules/mender-orchestrator-manifest/module-artifact-gen/mender-orchestrator-manifest-gen
+curl -O https://raw.githubusercontent.com/mendersoftware/mender-orchestrator-support/0.6.0/modules/mender-orchestrator-manifest/module-artifact-gen/mender-orchestrator-manifest-gen
 chmod +x mender-orchestrator-manifest-gen
 sudo mv mender-orchestrator-manifest-gen /usr/local/bin/
 ```
@@ -26,7 +26,7 @@ Generate a Manifest Artifact from a Manifest YAML file:
 mender-orchestrator-manifest-gen [options] <manifest> [-- [mender-artifact-options]]
 ```
 
-For usage examples, see the [Examples section](../../06.Examples/docs.md#step-4-generate-manifest-artifacts).
+For usage examples, see the [Examples section](../../06.Examples/01.Mock-components/docs.md#step-4-generate-manifest-artifacts).
 
 #### Options
 
