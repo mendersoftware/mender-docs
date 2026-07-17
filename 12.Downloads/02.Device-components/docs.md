@@ -1339,7 +1339,7 @@ Then install the contents with:
 sudo tar -C / --strip-components=2 -xvf mender-gateway-examples-2.1.0.tar
 ```
 
-<!--AUTOMATION: test=test -d /usr/share/doc/mender-gateway/examples -->
+<!--AUTOMATION: test=test -d /usr/share/mender-gateway/examples -->
 <!--AUTOMATION: test=grep hosted.mender.io /etc/mender/mender-gateway.conf -->
 
 
