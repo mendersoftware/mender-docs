@@ -22,7 +22,7 @@ We will build and flash a Zephyr firmware for an ESP32-S3-DevKitC board. By the 
 
 ## Step 1 – Set up the project and code
 <!--AUTOVERSION: "version % is used. To do so, follow the [Zephyr getting started guide %](https://docs.zephyrproject.org/%/develop/getting_started/index.html?target=_blank)."/ignore-->
-First, we'll set up a basic Zephyr development environment. This guide assumes version 4.2.0 is used. To do so, follow the [Zephyr getting started guide 4.2.0](https://docs.zephyrproject.org/4.2.0/develop/getting_started/index.html?target=_blank).
+First, we'll set up a basic Zephyr development environment. This guide assumes version 4.4.0 is used. To do so, follow the [Zephyr getting started guide 4.4.0](https://docs.zephyrproject.org/4.4.0/develop/getting_started/index.html?target=_blank).
 
 Next, we'll obtain the reference Zephyr application that integrates Mender. We will use the official **mender-mcu integration example** for this tutorial, which already has Mender support and sample code for the ESP32-S3.
 
