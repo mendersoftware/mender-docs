@@ -51,8 +51,8 @@ file](99.Configuration-file/) as shown in this example:
 	"HTTPS": {
 		"Enabled": true,
 		"Listen": ":443",
-		"ServerCertificate": "/usr/share/mender-gateway/examples/cert/cert.crt",
-		"ServerKey": "/usr/share/mender-gateway/examples/cert/private.key"
+		"ServerCertificate": "/usr/share/doc/mender-gateway/examples/cert/cert.crt",
+		"ServerKey": "/usr/share/doc/mender-gateway/examples/cert/private.key"
 	},
 	"Features": {
 		"ArtifactsProxy": {
@@ -91,8 +91,8 @@ reported by all devices connected to it. The value of the attribute can be confi
 	"HTTPS": {
 		"Enabled": true,
 		"Listen": ":443",
-		"ServerCertificate": "/usr/share/mender-gateway/examples/cert/cert.crt",
-		"ServerKey": "/usr/share/mender-gateway/examples/cert/private.key"
+		"ServerCertificate": "/usr/share/doc/mender-gateway/examples/cert/cert.crt",
+		"ServerKey": "/usr/share/doc/mender-gateway/examples/cert/private.key"
 	},
 	"Features": {
 		"ArtifactsProxy": {
