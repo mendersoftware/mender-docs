@@ -50,6 +50,7 @@ supported by the [Mender MCU Client](https://github.com/mendersoftware/mender-mc
 
 <!--AUTOVERSION: "Zephyr %"/ignore "/v%"/ignore-->
 * [Zephyr 4.2](https://github.com/zephyrproject-rtos/zephyr/releases/tag/v4.2.0)
+* [Zephyr 4.4](https://github.com/zephyrproject-rtos/zephyr/releases/tag/v4.4.0)
 
 
 ## Debian family releases supported for Mender Client
