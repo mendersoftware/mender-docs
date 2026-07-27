@@ -166,9 +166,9 @@ The Mender free trial evaluation period includes:
 - No credit card required
 - Full access to all features including device tiers
 
-In free trial tenants, devices default to [test devices](../18.Limits/docs.md#test-devices)
-(the `test_device` system attribute defaults to `true`), so evaluation and CI/CD workflows are
-allowed to poll for updates and publish inventory frequently, without the normal rate limiting.
+Every account includes up to 10 [test devices](../18.Limits/docs.md#test-devices),
+so evaluation and CI/CD workflows are allowed to poll for updates and publish inventory frequently,
+without the normal rate limiting.
 
 ## Moving from free trial to production
 

@@ -97,13 +97,10 @@ and publish inventory frequently. This is useful when trying out Mender features
 (for example during a free trial) or when testing new code as part of a CI/CD
 system.
 
-The attribute defaults to `false`, except in free trial tenants
-where it defaults to `true`. When upgrading from a free trial to a paid plan, all
-devices carried over from the trial remain test devices unless you explicitly
-remove the designation.
+For free trial users, a device will automatically be assigned as test device when clicking "accept" for a new device.
+Otherwise, you can designate a device as a test device from the **Quick actions** menu in the device list.
 
-You designate a device as a test device from the **Quick actions** menu in the
-device list. Because `test_device` is stored as a device attribute, you can filter on it
+Because `test_device` is stored as a device attribute, you can filter on it
 just like any other attribute: filter for `test_device = true` to find all test
 devices in your tenant, or use the _not equals_ operator to filter for all
 devices that are not test devices. The device list also shows an indication (a
