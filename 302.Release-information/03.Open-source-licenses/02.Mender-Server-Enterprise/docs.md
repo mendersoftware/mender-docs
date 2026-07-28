@@ -18,8 +18,8 @@ Third party licenses used in Mender Server Enterprise: this file is autogenerate
 ## cloud.google.com/go/auth
 
 * Name: cloud.google.com/go/auth
-* Version: v0.16.5
-* License: [Apache-2.0](https://github.com/googleapis/google-cloud-go/blob/auth/v0.16.5/auth/LICENSE)
+* Version: v0.20.0
+* License: [Apache-2.0](https://github.com/googleapis/google-cloud-go/blob/auth/v0.20.0/auth/LICENSE)
 
 ```
 
@@ -444,8 +444,8 @@ Third party licenses used in Mender Server Enterprise: this file is autogenerate
 ## cloud.google.com/go/compute/metadata
 
 * Name: cloud.google.com/go/compute/metadata
-* Version: v0.8.0
-* License: [Apache-2.0](https://github.com/googleapis/google-cloud-go/blob/compute/metadata/v0.8.0/compute/metadata/LICENSE)
+* Version: v0.9.0
+* License: [Apache-2.0](https://github.com/googleapis/google-cloud-go/blob/compute/metadata/v0.9.0/compute/metadata/LICENSE)
 
 ```
 
@@ -657,8 +657,8 @@ Third party licenses used in Mender Server Enterprise: this file is autogenerate
 ## github.com/Azure/azure-sdk-for-go/sdk/azcore
 
 * Name: github.com/Azure/azure-sdk-for-go/sdk/azcore
-* Version: v1.21.1
-* License: [MIT](https://github.com/Azure/azure-sdk-for-go/blob/sdk/azcore/v1.21.1/sdk/azcore/LICENSE.txt)
+* Version: v1.22.0
+* License: [MIT](https://github.com/Azure/azure-sdk-for-go/blob/sdk/azcore/v1.22.0/sdk/azcore/LICENSE.txt)
 
 ```
 MIT License
@@ -721,8 +721,8 @@ SOFTWARE
 ## github.com/Azure/azure-sdk-for-go/sdk/storage/azblob
 
 * Name: github.com/Azure/azure-sdk-for-go/sdk/storage/azblob
-* Version: v1.7.0
-* License: [MIT](https://github.com/Azure/azure-sdk-for-go/blob/sdk/storage/azblob/v1.7.0/sdk/storage/azblob/LICENSE.txt)
+* Version: v1.8.0
+* License: [MIT](https://github.com/Azure/azure-sdk-for-go/blob/sdk/storage/azblob/v1.8.0/sdk/storage/azblob/LICENSE.txt)
 
 ```
     MIT License
@@ -783,8 +783,8 @@ SOFTWARE.
 ## github.com/aws/aws-sdk-go-v2
 
 * Name: github.com/aws/aws-sdk-go-v2
-* Version: v1.41.10
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/v1.41.10/LICENSE.txt)
+* Version: v1.43.0
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/v1.43.0/LICENSE.txt)
 
 ```
 
@@ -996,8 +996,8 @@ SOFTWARE.
 ## github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream
 
 * Name: github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream
-* Version: v1.7.11
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/aws/protocol/eventstream/v1.7.11/aws/protocol/eventstream/LICENSE.txt)
+* Version: v1.7.14
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/aws/protocol/eventstream/v1.7.14/aws/protocol/eventstream/LICENSE.txt)
 
 ```
 
@@ -1209,8 +1209,8 @@ SOFTWARE.
 ## github.com/aws/aws-sdk-go-v2/config
 
 * Name: github.com/aws/aws-sdk-go-v2/config
-* Version: v1.32.21
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/config/v1.32.21/config/LICENSE.txt)
+* Version: v1.32.31
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/config/v1.32.31/config/LICENSE.txt)
 
 ```
 
@@ -1422,8 +1422,8 @@ SOFTWARE.
 ## github.com/aws/aws-sdk-go-v2/credentials
 
 * Name: github.com/aws/aws-sdk-go-v2/credentials
-* Version: v1.19.20
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/credentials/v1.19.20/credentials/LICENSE.txt)
+* Version: v1.19.30
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/credentials/v1.19.30/credentials/LICENSE.txt)
 
 ```
 
@@ -1635,8 +1635,8 @@ SOFTWARE.
 ## github.com/aws/aws-sdk-go-v2/feature/ec2/imds
 
 * Name: github.com/aws/aws-sdk-go-v2/feature/ec2/imds
-* Version: v1.18.26
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/feature/ec2/imds/v1.18.26/feature/ec2/imds/LICENSE.txt)
+* Version: v1.18.31
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/feature/ec2/imds/v1.18.31/feature/ec2/imds/LICENSE.txt)
 
 ```
 
@@ -1848,8 +1848,8 @@ SOFTWARE.
 ## github.com/aws/aws-sdk-go-v2/internal/configsources
 
 * Name: github.com/aws/aws-sdk-go-v2/internal/configsources
-* Version: v1.4.26
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/internal/configsources/v1.4.26/internal/configsources/LICENSE.txt)
+* Version: v1.4.31
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/internal/configsources/v1.4.31/internal/configsources/LICENSE.txt)
 
 ```
 
@@ -2061,8 +2061,8 @@ SOFTWARE.
 ## github.com/aws/aws-sdk-go-v2/internal/endpoints/v2
 
 * Name: github.com/aws/aws-sdk-go-v2/internal/endpoints/v2
-* Version: v2.7.26
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/internal/endpoints/v2.7.26/internal/endpoints/v2/LICENSE.txt)
+* Version: v2.7.31
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/internal/endpoints/v2.7.31/internal/endpoints/v2/LICENSE.txt)
 
 ```
 
@@ -2274,8 +2274,8 @@ SOFTWARE.
 ## github.com/aws/aws-sdk-go-v2/internal/sync/singleflight
 
 * Name: github.com/aws/aws-sdk-go-v2/internal/sync/singleflight
-* Version: v1.41.10
-* License: [BSD-3-Clause](https://github.com/aws/aws-sdk-go-v2/blob/v1.41.10/internal/sync/singleflight/LICENSE)
+* Version: v1.43.0
+* License: [BSD-3-Clause](https://github.com/aws/aws-sdk-go-v2/blob/v1.43.0/internal/sync/singleflight/LICENSE)
 
 ```
 Copyright (c) 2009 The Go Authors. All rights reserved.
@@ -2313,8 +2313,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/internal/v4a
 
 * Name: github.com/aws/aws-sdk-go-v2/internal/v4a
-* Version: v1.4.27
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/internal/v4a/v1.4.27/internal/v4a/LICENSE.txt)
+* Version: v1.4.32
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/internal/v4a/v1.4.32/internal/v4a/LICENSE.txt)
 
 ```
 
@@ -2526,8 +2526,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/bedrockruntime
 
 * Name: github.com/aws/aws-sdk-go-v2/service/bedrockruntime
-* Version: v1.39.0
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/bedrockruntime/v1.39.0/service/bedrockruntime/LICENSE.txt)
+* Version: v1.56.0
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/bedrockruntime/v1.56.0/service/bedrockruntime/LICENSE.txt)
 
 ```
 
@@ -2739,8 +2739,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding
 
 * Name: github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding
-* Version: v1.13.10
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/internal/accept-encoding/v1.13.10/service/internal/accept-encoding/LICENSE.txt)
+* Version: v1.13.13
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/internal/accept-encoding/v1.13.13/service/internal/accept-encoding/LICENSE.txt)
 
 ```
 
@@ -2952,8 +2952,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/internal/checksum
 
 * Name: github.com/aws/aws-sdk-go-v2/service/internal/checksum
-* Version: v1.9.19
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/internal/checksum/v1.9.19/service/internal/checksum/LICENSE.txt)
+* Version: v1.9.24
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/internal/checksum/v1.9.24/service/internal/checksum/LICENSE.txt)
 
 ```
 
@@ -3165,8 +3165,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/internal/presigned-url
 
 * Name: github.com/aws/aws-sdk-go-v2/service/internal/presigned-url
-* Version: v1.13.26
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/internal/presigned-url/v1.13.26/service/internal/presigned-url/LICENSE.txt)
+* Version: v1.13.31
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/internal/presigned-url/v1.13.31/service/internal/presigned-url/LICENSE.txt)
 
 ```
 
@@ -3378,8 +3378,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/internal/s3shared
 
 * Name: github.com/aws/aws-sdk-go-v2/service/internal/s3shared
-* Version: v1.19.26
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/internal/s3shared/v1.19.26/service/internal/s3shared/LICENSE.txt)
+* Version: v1.19.32
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/internal/s3shared/v1.19.32/service/internal/s3shared/LICENSE.txt)
 
 ```
 
@@ -3591,8 +3591,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/iot
 
 * Name: github.com/aws/aws-sdk-go-v2/service/iot
-* Version: v1.75.1
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/iot/v1.75.1/service/iot/LICENSE.txt)
+* Version: v1.77.0
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/iot/v1.77.0/service/iot/LICENSE.txt)
 
 ```
 
@@ -3804,8 +3804,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/iotdataplane
 
 * Name: github.com/aws/aws-sdk-go-v2/service/iotdataplane
-* Version: v1.33.2
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/iotdataplane/v1.33.2/service/iotdataplane/LICENSE.txt)
+* Version: v1.35.0
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/iotdataplane/v1.35.0/service/iotdataplane/LICENSE.txt)
 
 ```
 
@@ -4017,8 +4017,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/s3
 
 * Name: github.com/aws/aws-sdk-go-v2/service/s3
-* Version: v1.103.0
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/s3/v1.103.0/service/s3/LICENSE.txt)
+* Version: v1.106.0
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/s3/v1.106.0/service/s3/LICENSE.txt)
 
 ```
 
@@ -4230,8 +4230,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/signin
 
 * Name: github.com/aws/aws-sdk-go-v2/service/signin
-* Version: v1.1.2
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/signin/v1.1.2/service/signin/LICENSE.txt)
+* Version: v1.5.0
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/signin/v1.5.0/service/signin/LICENSE.txt)
 
 ```
 
@@ -4443,8 +4443,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/sso
 
 * Name: github.com/aws/aws-sdk-go-v2/service/sso
-* Version: v1.31.0
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/sso/v1.31.0/service/sso/LICENSE.txt)
+* Version: v1.33.0
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/sso/v1.33.0/service/sso/LICENSE.txt)
 
 ```
 
@@ -4656,8 +4656,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/ssooidc
 
 * Name: github.com/aws/aws-sdk-go-v2/service/ssooidc
-* Version: v1.36.3
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/ssooidc/v1.36.3/service/ssooidc/LICENSE.txt)
+* Version: v1.38.0
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/ssooidc/v1.38.0/service/ssooidc/LICENSE.txt)
 
 ```
 
@@ -4869,8 +4869,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/aws-sdk-go-v2/service/sts
 
 * Name: github.com/aws/aws-sdk-go-v2/service/sts
-* Version: v1.43.0
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/sts/v1.43.0/service/sts/LICENSE.txt)
+* Version: v1.45.0
+* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/sts/v1.45.0/service/sts/LICENSE.txt)
 
 ```
 
@@ -5082,8 +5082,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/smithy-go
 
 * Name: github.com/aws/smithy-go
-* Version: v1.26.0
-* License: [Apache-2.0](https://github.com/aws/smithy-go/blob/v1.26.0/LICENSE)
+* Version: v1.27.3
+* License: [Apache-2.0](https://github.com/aws/smithy-go/blob/v1.27.3/LICENSE)
 
 ```
 
@@ -5268,8 +5268,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/aws/smithy-go/internal/sync/singleflight
 
 * Name: github.com/aws/smithy-go/internal/sync/singleflight
-* Version: v1.26.0
-* License: [BSD-3-Clause](https://github.com/aws/smithy-go/blob/v1.26.0/internal/sync/singleflight/LICENSE)
+* Version: v1.27.3
+* License: [BSD-3-Clause](https://github.com/aws/smithy-go/blob/v1.27.3/internal/sync/singleflight/LICENSE)
 
 ```
 Copyright (c) 2009 The Go Authors. All rights reserved.
@@ -5597,8 +5597,8 @@ SOFTWARE.
 ## github.com/gin-contrib/cors
 
 * Name: github.com/gin-contrib/cors
-* Version: v1.7.6
-* License: [MIT](https://github.com/gin-contrib/cors/blob/v1.7.6/LICENSE)
+* Version: v1.7.7
+* License: [MIT](https://github.com/gin-contrib/cors/blob/v1.7.7/LICENSE)
 
 ```
 MIT License
@@ -6614,8 +6614,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/googleapis/enterprise-certificate-proxy/client
 
 * Name: github.com/googleapis/enterprise-certificate-proxy/client
-* Version: v0.3.6
-* License: [Apache-2.0](https://github.com/googleapis/enterprise-certificate-proxy/blob/v0.3.6/LICENSE)
+* Version: v0.3.18
+* License: [Apache-2.0](https://github.com/googleapis/enterprise-certificate-proxy/blob/v0.3.18/LICENSE)
 
 ```
 
@@ -6827,8 +6827,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/googleapis/gax-go/v2
 
 * Name: github.com/googleapis/gax-go/v2
-* Version: v2.15.0
-* License: [BSD-3-Clause](https://github.com/googleapis/gax-go/blob/v2.15.0/v2/LICENSE)
+* Version: v2.23.0
+* License: [BSD-3-Clause](https://github.com/googleapis/gax-go/blob/v2.23.0/v2/LICENSE)
 
 ```
 Copyright 2016, Google Inc.
@@ -7594,8 +7594,8 @@ SOFTWARE.
 ## github.com/lestrrat-go/blackmagic
 
 * Name: github.com/lestrrat-go/blackmagic
-* Version: v1.0.3
-* License: [MIT](https://github.com/lestrrat-go/blackmagic/blob/v1.0.3/LICENSE)
+* Version: v1.0.4
+* License: [MIT](https://github.com/lestrrat-go/blackmagic/blob/v1.0.4/LICENSE)
 
 ```
 MIT License
@@ -7722,8 +7722,8 @@ SOFTWARE.
 ## github.com/lestrrat-go/jwx/v2
 
 * Name: github.com/lestrrat-go/jwx/v2
-* Version: v2.1.6
-* License: [MIT](https://github.com/lestrrat-go/jwx/blob/v2.1.6/LICENSE)
+* Version: v2.1.7
+* License: [MIT](https://github.com/lestrrat-go/jwx/blob/v2.1.7/LICENSE)
 
 ```
 The MIT License (MIT)
@@ -9890,8 +9890,8 @@ SOFTWARE.
 ## github.com/redis/go-redis/v9
 
 * Name: github.com/redis/go-redis/v9
-* Version: v9.20.0
-* License: [BSD-2-Clause](https://github.com/redis/go-redis/blob/v9.20.0/LICENSE)
+* Version: v9.21.0
+* License: [BSD-2-Clause](https://github.com/redis/go-redis/blob/v9.21.0/LICENSE)
 
 ```
 Copyright (c) 2013 The github.com/redis/go-redis Authors.
@@ -10782,8 +10782,8 @@ SOFTWARE.
 ## github.com/stripe/stripe-go/v82
 
 * Name: github.com/stripe/stripe-go/v82
-* Version: v82.5.0
-* License: [MIT](https://github.com/stripe/stripe-go/blob/v82.5.0/LICENSE)
+* Version: v82.5.1
+* License: [MIT](https://github.com/stripe/stripe-go/blob/v82.5.1/LICENSE)
 
 ```
 The MIT License (MIT)
@@ -10911,8 +10911,8 @@ SOFTWARE.
 ## github.com/ulikunitz/xz
 
 * Name: github.com/ulikunitz/xz
-* Version: v0.5.14
-* License: [BSD-3-Clause](https://github.com/ulikunitz/xz/blob/v0.5.14/LICENSE)
+* Version: v0.5.15
+* License: [BSD-3-Clause](https://github.com/ulikunitz/xz/blob/v0.5.15/LICENSE)
 
 ```
 Copyright (c) 2014-2022  Ulrich Kunitz
@@ -11879,8 +11879,8 @@ SOFTWARE.
 ## go.opentelemetry.io/auto/sdk
 
 * Name: go.opentelemetry.io/auto/sdk
-* Version: v1.1.0
-* License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go-instrumentation/blob/sdk/v1.1.0/sdk/LICENSE)
+* Version: v1.2.1
+* License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go-instrumentation/blob/sdk/v1.2.1/sdk/LICENSE)
 
 ```
                                  Apache License
@@ -12091,8 +12091,8 @@ SOFTWARE.
 ## go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
 
 * Name: go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
-* Version: v0.61.0
-* License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.61.0/instrumentation/net/http/otelhttp/LICENSE)
+* Version: v0.67.0
+* License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.67.0/instrumentation/net/http/otelhttp/LICENSE)
 
 ```
                                  Apache License
@@ -12297,14 +12297,43 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
+--------------------------------------------------------------------------------
+
+Copyright 2009 The Go Authors.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+   * Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above
+copyright notice, this list of conditions and the following disclaimer
+in the documentation and/or other materials provided with the
+distribution.
+   * Neither the name of Google LLC nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
 
 
 ## go.opentelemetry.io/otel
 
 * Name: go.opentelemetry.io/otel
-* Version: v1.36.0
-* License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/v1.36.0/LICENSE)
+* Version: v1.44.0
+* License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/v1.44.0/LICENSE)
 
 ```
                                  Apache License
@@ -12509,14 +12538,43 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
+--------------------------------------------------------------------------------
+
+Copyright 2009 The Go Authors.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+   * Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above
+copyright notice, this list of conditions and the following disclaimer
+in the documentation and/or other materials provided with the
+distribution.
+   * Neither the name of Google LLC nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
 
 
 ## go.opentelemetry.io/otel/metric
 
 * Name: go.opentelemetry.io/otel/metric
-* Version: v1.36.0
-* License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/metric/v1.36.0/metric/LICENSE)
+* Version: v1.44.0
+* License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/metric/v1.44.0/metric/LICENSE)
 
 ```
                                  Apache License
@@ -12721,14 +12779,43 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
+--------------------------------------------------------------------------------
+
+Copyright 2009 The Go Authors.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+   * Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above
+copyright notice, this list of conditions and the following disclaimer
+in the documentation and/or other materials provided with the
+distribution.
+   * Neither the name of Google LLC nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
 
 
 ## go.opentelemetry.io/otel/trace
 
 * Name: go.opentelemetry.io/otel/trace
-* Version: v1.36.0
-* License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/trace/v1.36.0/trace/LICENSE)
+* Version: v1.44.0
+* License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/trace/v1.44.0/trace/LICENSE)
 
 ```
                                  Apache License
@@ -12933,6 +13020,35 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
+--------------------------------------------------------------------------------
+
+Copyright 2009 The Go Authors.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+   * Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above
+copyright notice, this list of conditions and the following disclaimer
+in the documentation and/or other materials provided with the
+distribution.
+   * Neither the name of Google LLC nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
 
 
@@ -13030,8 +13146,8 @@ limitations under the License.
 ## golang.org/x/crypto
 
 * Name: golang.org/x/crypto
-* Version: v0.52.0
-* License: [BSD-3-Clause](https://cs.opensource.google/go/x/crypto/+/v0.52.0:LICENSE)
+* Version: v0.54.0
+* License: [BSD-3-Clause](https://cs.opensource.google/go/x/crypto/+/v0.54.0:LICENSE)
 
 ```
 Copyright 2009 The Go Authors.
@@ -13068,8 +13184,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## golang.org/x/net
 
 * Name: golang.org/x/net
-* Version: v0.55.0
-* License: [BSD-3-Clause](https://cs.opensource.google/go/x/net/+/v0.55.0:LICENSE)
+* Version: v0.57.0
+* License: [BSD-3-Clause](https://cs.opensource.google/go/x/net/+/v0.57.0:LICENSE)
 
 ```
 Copyright 2009 The Go Authors.
@@ -13106,8 +13222,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## golang.org/x/oauth2
 
 * Name: golang.org/x/oauth2
-* Version: v0.30.0
-* License: [BSD-3-Clause](https://cs.opensource.google/go/x/oauth2/+/v0.30.0:LICENSE)
+* Version: v0.36.0
+* License: [BSD-3-Clause](https://cs.opensource.google/go/x/oauth2/+/v0.36.0:LICENSE)
 
 ```
 Copyright 2009 The Go Authors.
@@ -13144,8 +13260,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## golang.org/x/sync
 
 * Name: golang.org/x/sync
-* Version: v0.20.0
-* License: [BSD-3-Clause](https://cs.opensource.google/go/x/sync/+/v0.20.0:LICENSE)
+* Version: v0.22.0
+* License: [BSD-3-Clause](https://cs.opensource.google/go/x/sync/+/v0.22.0:LICENSE)
 
 ```
 Copyright 2009 The Go Authors.
@@ -13182,8 +13298,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## golang.org/x/sys
 
 * Name: golang.org/x/sys
-* Version: v0.45.0
-* License: [BSD-3-Clause](https://cs.opensource.google/go/x/sys/+/v0.45.0:LICENSE)
+* Version: v0.47.0
+* License: [BSD-3-Clause](https://cs.opensource.google/go/x/sys/+/v0.47.0:LICENSE)
 
 ```
 Copyright 2009 The Go Authors.
@@ -13220,8 +13336,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## golang.org/x/term
 
 * Name: golang.org/x/term
-* Version: v0.43.0
-* License: [BSD-3-Clause](https://cs.opensource.google/go/x/term/+/v0.43.0:LICENSE)
+* Version: v0.45.0
+* License: [BSD-3-Clause](https://cs.opensource.google/go/x/term/+/v0.45.0:LICENSE)
 
 ```
 Copyright 2009 The Go Authors.
@@ -13258,8 +13374,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## golang.org/x/text
 
 * Name: golang.org/x/text
-* Version: v0.37.0
-* License: [BSD-3-Clause](https://cs.opensource.google/go/x/text/+/v0.37.0:LICENSE)
+* Version: v0.40.0
+* License: [BSD-3-Clause](https://cs.opensource.google/go/x/text/+/v0.40.0:LICENSE)
 
 ```
 Copyright 2009 The Go Authors.
@@ -13334,8 +13450,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## google.golang.org/api
 
 * Name: google.golang.org/api
-* Version: v0.248.0
-* License: [BSD-3-Clause](https://github.com/googleapis/google-api-go-client/blob/v0.248.0/LICENSE)
+* Version: v0.290.0
+* License: [BSD-3-Clause](https://github.com/googleapis/google-api-go-client/blob/v0.290.0/LICENSE)
 
 ```
 Copyright (c) 2011 Google Inc. All rights reserved.
@@ -13372,8 +13488,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## google.golang.org/api/internal/third_party/uritemplates
 
 * Name: google.golang.org/api/internal/third_party/uritemplates
-* Version: v0.248.0
-* License: [BSD-3-Clause](https://github.com/googleapis/google-api-go-client/blob/v0.248.0/internal/third_party/uritemplates/LICENSE)
+* Version: v0.290.0
+* License: [BSD-3-Clause](https://github.com/googleapis/google-api-go-client/blob/v0.290.0/internal/third_party/uritemplates/LICENSE)
 
 ```
 Copyright (c) 2013 Joshua Tacoma. All rights reserved.
@@ -13410,8 +13526,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## google.golang.org/genproto/googleapis/rpc
 
 * Name: google.golang.org/genproto/googleapis/rpc
-* Version: v0.0.0-20250818200422-3122310a409c
-* License: [Apache-2.0](https://github.com/googleapis/go-genproto/blob/3122310a409c/googleapis/rpc/LICENSE)
+* Version: v0.0.0-20260706201446-f0a921348800
+* License: [Apache-2.0](https://github.com/googleapis/go-genproto/blob/f0a921348800/googleapis/rpc/LICENSE)
 
 ```
 
@@ -13623,8 +13739,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## google.golang.org/grpc
 
 * Name: google.golang.org/grpc
-* Version: v1.74.2
-* License: [Apache-2.0](https://github.com/grpc/grpc-go/blob/v1.74.2/LICENSE)
+* Version: v1.82.0
+* License: [Apache-2.0](https://github.com/grpc/grpc-go/blob/v1.82.0/LICENSE)
 
 ```
 
@@ -13836,8 +13952,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## google.golang.org/protobuf
 
 * Name: google.golang.org/protobuf
-* Version: v1.36.10
-* License: [BSD-3-Clause](https://github.com/protocolbuffers/protobuf-go/blob/v1.36.10/LICENSE)
+* Version: v1.36.11
+* License: [BSD-3-Clause](https://github.com/protocolbuffers/protobuf-go/blob/v1.36.11/LICENSE)
 
 ```
 Copyright (c) 2018 The Go Authors. All rights reserved.
