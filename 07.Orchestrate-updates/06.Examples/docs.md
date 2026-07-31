@@ -13,3 +13,5 @@ System-level updates across multiple Components.
 * [Update an ESP32-S3 with a Raspberry Pi](02.Update-an-ESP32-S3-with-a-Raspberry-Pi/docs.md) -
   a real-hardware example where a Raspberry Pi 5 updates an ESP32-S3
   microcontroller that does not run Mender.
+* [Update a Raspberry Pi with a Raspberry Pi over MQTT](03.Update-a-Raspberry-Pi-with-a-Raspberry-Pi-over-MQTT/docs.md) -
+  a real-hardware example where a Raspberry Pi updates a second Raspberry Pi that runs Mender.
