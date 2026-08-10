@@ -71,7 +71,7 @@ service.
 
 
 **Redis:**
-* Redis 7.4, 8.0, 8.2
+* Redis 8.4, 8.6, 8.8
   * ElasticCache (AWS)
   * AzureCache
   * Memorystore (GCP)
