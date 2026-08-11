@@ -248,10 +248,6 @@ give up
 
 The algorithm applies to the same endpoints as described in [RetryPollCount](#retrypollcount).
 
-
-!!! The same algorithm applies when resuming an Artifact download. 
-!!! If the connection to the server is lost in the middle of a download, the client will resume from the last received byte using the algorithm above, but with a fixed retry duration of 60 seconds.
-
 As of Mender Client 3.3 this configuration option applies to inventory updates as well.
 
 
