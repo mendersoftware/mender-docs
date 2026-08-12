@@ -12,6 +12,9 @@ include:
       - qa-common/runner.yml
       - qa-common/retry.yml
   - component: gitlab.com/Northern.tech/Mender/mendertesting/commit-lint@master
+  - component: gitlab.com/Northern.tech/Mender/mendertesting/renovate@master
+    inputs:
+      stage: ".pre"
   - project: 'Northern.tech/Mender/mendertesting'
     file: '.gitlab-ci-check-python3-format.yml'
   - project: 'Northern.tech/Mender/mendertesting'

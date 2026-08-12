@@ -1,0 +1,68 @@
+// renovate.json5 - Mender dependency update configuration for mender-docs
+// See Documentation/dependency-updates.md in mender-qa for the process.
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
+  "extends": [
+    "config:recommended",
+    ":gitSignOff",
+    ":rebaseStalePrs"
+  ],
+
+  // CODEOWNERS assigns qa for package.json and package-lock.json here.
+  "reviewersFromCodeOwners": true,
+
+  // fix(deps): <desc>, per renovate.json5.sample in mender-qa.
+  "semanticCommits": "enabled",
+  "semanticCommitType": "fix",
+  "semanticCommitScope": "deps",
+
+  // Fallback window for weeks with no merges; the renovate CI job is the primary trigger.
+  "schedule": ["after 10pm on Monday", "before 6am on Tuesday"],
+
+  "prHourlyLimit": 2,
+  "prConcurrentLimit": 5,
+
+  // master only, matching what Dependabot did. The 1.0.x - 1.3.x branches on the
+  // remote never received dependency PRs.
+  "baseBranchPatterns": ["master"],
+
+  // Security PRs bypass the schedule and automerge when CI is green.
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "schedule": ["at any time"],
+    "automerge": true,
+    "automergeType": "pr",
+    "labels": ["security"]
+  },
+
+  "packageRules": [
+    // config:recommended pulls in :semanticPrefixFixDepsChoreOthers, which forces
+    // semanticCommitType back to "chore" for deps whose manager does not tag them
+    // with an npm/pip style depType. Must stay BEFORE the gitlabci rule: last match
+    // wins.
+    {
+      "matchPackageNames": ["*"],
+      "semanticCommitType": "fix"
+    },
+
+    // CI file updates get ci: instead of fix(deps):
+    {
+      "matchManagers": ["gitlabci", "gitlabci-include"],
+      "semanticCommitType": "ci",
+      "semanticCommitScope": ""
+    },
+
+    // npm is the only ecosystem here - two groups to keep the queue small.
+    {
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["devDependencies"],
+      "groupName": "npm-dev-dependencies"
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["dependencies"],
+      "groupName": "npm-prod-dependencies"
+    }
+  ]
+}

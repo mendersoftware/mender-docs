@@ -1,9 +1,0 @@
-version: 2
-updates:
-  - commit-message:
-      prefix: chore
-    directory: /
-    package-ecosystem: npm
-    schedule:
-      interval: monthly
-      day: saturday
