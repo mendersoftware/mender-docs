@@ -1416,3 +1416,67 @@ sudo cp mender-binary-delta-1.5.3/x86_64/mender-binary-delta-generator /usr/bin
 ```
 
 
+## mender-delta-docker-compose
+
+### Download
+
+A `mender-delta-docker-compose` release archive can be downloaded using the
+following steps:
+
+[ui-tabs position="top-left" active="0" theme="lite" ]
+[ui-tab title="hosted"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+HOSTED_MENDER_EMAIL=<your.email@example.com>
+HOSTED_MENDER_PASSWORD=<yoursecurepassword>
+```
+!!! If you signed up using your Google or GitHub login, use the email address linked to that account and enter `x` as the password.
+
+Now, download the archive with the following command:
+
+<!--AUTOMATION: execute=HOSTED_MENDER_EMAIL="$HOSTED_MENDER_IO_USERNAME" -->
+<!--AUTOMATION: execute=HOSTED_MENDER_PASSWORD="$HOSTED_MENDER_IO_PASSWORD" -->
+<!--AUTOVERSION: "mender-delta-docker-compose/yocto/%/mender-delta-docker-compose-%.tar.xz"/mender-delta-docker-compose-->
+```bash
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-delta-docker-compose/yocto/1.0.0/mender-delta-docker-compose-1.0.0.tar.xz
+```
+[/ui-tab]
+[ui-tab title="enterprise"]
+Set the following variables with your credentials:
+<!--AUTOMATION: ignore -->
+```bash
+MENDER_ENTERPRISE_USER=<your.user>
+MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
+```
+
+Now, download the archive with the following command:
+
+<!--AUTOMATION: ignore -->
+<!--AUTOVERSION: "mender-delta-docker-compose/yocto/%/mender-delta-docker-compose-%.tar.xz"/mender-delta-docker-compose-->
+```bash
+wget --auth-no-challenge --user "MENDER_ENTERPRISE_USER" --password "MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-delta-docker-compose/yocto/1.0.0/mender-delta-docker-compose-1.0.0.tar.xz
+```
+[/ui-tab]
+[/ui-tabs]
+
+
+<!--AUTOVERSION: "mender-delta-docker-compose-%.tar.xz"/mender-delta-docker-compose-->
+The archive `mender-delta-docker-compose-1.0.0.tar.xz` contains the binaries needed to generate and apply deltas.
+
+<!--AUTOVERSION: "mender-delta-docker-compose-%.tar.xz"/mender-delta-docker-compose-->
+Unpack the `mender-delta-docker-compose-1.0.0.tar.xz` in your home directory:
+
+<!--AUTOVERSION: "mender-delta-docker-compose-%.tar.xz"/mender-delta-docker-compose-->
+```bash
+tar -xvf mender-delta-docker-compose-1.0.0.tar.xz
+```
+
+<!--AUTOVERSION: "mender-delta-docker-compose-%"/mender-delta-docker-compose-->
+Inside the newly created `mender-delta-docker-compose-1.0.0` you should find two
+executable files:
+
+- `delta-docker-compose`, which is the Update Module used by the Mender Client
+  (on devices) to deploy Mender Artifacts of type `delta-docker-compose`, and
+- `gen_delta-docker-compose`, which is the generator for Mender Artifacts of
+  type `delta-docker-compose` used on workstations and/or in CI.
