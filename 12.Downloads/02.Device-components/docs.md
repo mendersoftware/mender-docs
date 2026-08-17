@@ -1480,3 +1480,9 @@ executable files:
   (on devices) to deploy Mender Artifacts of type `delta-docker-compose`, and
 - `gen_delta-docker-compose`, which is the generator for Mender Artifacts of
   type `delta-docker-compose` used on workstations and/or in CI.
+
+Both, the Update Module and the generator script require `jq`, `tar` and,
+optionally `xdelta3` to be available on the system. See documentation of [Delta
+docker-compose Artifact
+creation](../../08.Artifact-creation/05.Create-a-docker-compose-update-Artifact/docs.md#create-a-delta-docker-compose-update-artifact)
+for details about the `xdelta3` requirement.
