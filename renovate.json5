@@ -5,8 +5,7 @@
 
   "extends": [
     "config:recommended",
-    ":gitSignOff",
-    ":rebaseStalePrs"
+    ":gitSignOff"
   ],
 
   // CODEOWNERS assigns qa for package.json and package-lock.json here.
@@ -17,8 +16,9 @@
   "semanticCommitType": "fix",
   "semanticCommitScope": "deps",
 
-  // Fallback window for weeks with no merges; the renovate CI job is the primary trigger.
-  "schedule": ["after 10pm on Monday", "before 6am on Tuesday"],
+  // Only rebase open PRs when they actually conflict. Rebasing every time the
+  // base branch moves restarts a pipeline for every open PR on each merge.
+  "rebaseWhen": "conflicted",
 
   "prHourlyLimit": 2,
   "prConcurrentLimit": 5,
