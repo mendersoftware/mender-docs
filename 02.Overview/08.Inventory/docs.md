@@ -82,10 +82,10 @@ Once tags are created, they can be used for filtering and
 grouping, just like other inventory.
 
 !!! Note: Names (keys) for tags and inventory are shared across the
-organization, they will show up for everyone, in the filter dropdowns /
-autocomplete options. For this reason, it is a good idea to strive to use the
-same naming schemes across the organization, avoid making multiple similar
-names and never putting anything sensitive into the names of tags / inventory.
+!!! organization, they will show up for everyone, in the filter dropdowns /
+!!! autocomplete options. For this reason, it is a good idea to strive to use the
+!!! same naming schemes across the organization, avoid making multiple similar
+!!! names and never putting anything sensitive into the names of tags / inventory.
 
 ### Test devices
 
