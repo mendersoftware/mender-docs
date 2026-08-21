@@ -199,10 +199,10 @@ The waiting time between the retries is 60 seconds and can't be configured.
 The maximum number of tries that the Mender Client performs when contacting the Mender Server before giving up.
 
 It applies to the following Device APIs:
-* [Check Update](https://docs.mender.io/api/#device-api-deployments-v2-check-update)
-* [Inventory reporting APIs](https://docs.mender.io/api/#device-api-device-inventory)
-* [Update Deployment Status](https://docs.mender.io/api/#device-api-deployments-update-deployment-status)
-  * Only when reporting [status](https://docs.mender.io/api/#device-api-deployments-schemas-deploymentstatus) "commit", "success" and "failure"
+* [Check Update](https://docs.mender.io/api/check-update/)
+* [Inventory reporting APIs](https://docs.mender.io/api/replace-attributes/)
+* [Update Deployment Status](https://docs.mender.io/api/update-deployment-status/)
+  * Only when reporting [status](https://docs.mender.io/api/update-deployment-status/) "commit", "success" and "failure"
     * _for historical reasons, commit gets reported to the server as a second "install"_
 
 
