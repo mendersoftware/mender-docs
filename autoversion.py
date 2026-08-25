@@ -45,7 +45,7 @@ ERRORS_FOUND = False
 def walk_tree():
     exclude_dirs = [
         "node_modules",  # Several readme.md with version strings
-        "03.Open-source-licenses",  # References to old versions
+        "04.Open-source-licenses",  # References to old versions
     ]
     for dirpath, dirs, filenames in os.walk(".", topdown=True):
         dirs[:] = list(filter(lambda x: not x in exclude_dirs, dirs))

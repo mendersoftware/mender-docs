@@ -134,7 +134,7 @@ Key Milestones:
 - Deprecation Period (12 months): The deprecated API will remain operational but will not receive new features, updates, or improvements. Critical security issues will be addressed.
 - End of Life (EOL): After 12 months, the deprecated API will be retired, and access will be fully disabled. Users are encouraged to migrate before this date to avoid service interruptions.
 
-In case of on-premis releases, the deprecated API will be retired with the next major release.
+For on-premise releases, the version of Mender Server containing the deprecated API will remain supported for at least the same period from the deprecation announcement, so the effective migration window is the same regardless of deployment model.
 
 ### Notification Process
 The following steps will be taken to notify users of an upcoming deprecation:
