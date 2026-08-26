@@ -56,7 +56,7 @@ component_types:
 | `artifact_path` | string | ✓<sup>1</sup> | Local file path to Artifact (takes precedence over `artifact_name`) |
 | `update_strategy` | map | ✓ | Update configuration |
 
-<sup>1</sup> `artifact_name` and/or `artifact_path` is required. If both are specified, `artifact_path` takes precedence. If the file at `artifact_path` doesn't exist, the system falls back to using `artifact_name`.
+<sup>1</sup> `artifact_name` and/or `artifact_path` is required. If both are specified, `artifact_path` takes precedence. If the file at `artifact_path` doesn't exist, the system falls back to using `artifact_name`. Referencing local Artifacts with `artifact_path` enables updating without a Mender Server, see [Standalone mode](../09.Standalone-mode/docs.md).
 
 ### Update strategy
 The `update_strategy` map has the following field:

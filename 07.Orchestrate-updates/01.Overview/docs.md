@@ -67,6 +67,9 @@ See the [ArtifactRollback state](../04.Interface-protocol/docs.md#artifactrollba
 Mender Orchestrator obtains Artifacts as specified in the Manifest, either from a local path or by downloading the Artifact from
 the Mender Server when updating a Component. See the documentation on [Manifests](../02.Manifest/docs.md) for more details.
 
+Updates are either deployed from the Mender Server through mender-update (see [below](#managed-updates-by-leveraging-mender-client)),
+or triggered locally on the System device, see [Standalone mode](../09.Standalone-mode/docs.md).
+
 ### Interface
 
 An Interface is a command line application that serves as a translator between the updatable Component and Mender Orchestrator.
