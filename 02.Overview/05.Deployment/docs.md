@@ -118,7 +118,7 @@ As new devices become part of the group the last phase gets expanded.
 
 
 <!-- Image link: https://docs.google.com/drawings/d/15vIsUEBiFjhGJEWBzc5iGOE-7u4YVIoTlOSt9DcnOFI/edit -->
-![Phased rollout dynamic group](phased-rollout-dyn-group-increase.png)
+![Phased rollout dynamic group](phased-rollout-dyn-group-increase.png?sizes=729px)
 
 
 Example.
@@ -130,7 +130,7 @@ As devices leave the group all devices in the group get updated in the first pha
 ```
 
 <!-- Image link: https://docs.google.com/drawings/d/1NRQ_eFAz-NQ2vT5p81wnGB2hU7E8kIXmmubFiVurvL4/edit -->
-![Phased rollout dynamic group](phased-rollout-dyn-group-decrease.png)
+![Phased rollout dynamic group](phased-rollout-dyn-group-decrease.png?sizes=687px)
 
 
 ## Deployment life-cycle
