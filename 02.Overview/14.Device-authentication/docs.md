@@ -164,7 +164,7 @@ after manufacturing.
 
 The sequence diagram below describes the authentication of a Device using `mender-gateway`:
 
-1. The user first provisions the device with the crypto material: public CA certificate, client certificate and client private key.
+1. The user first provisions the device with the crypto material: client certificate (and optionally intermediate CA certificate), client private key, and root CA certificate for server verification.
 2. The device sends the authorization request to the `mender-gateway` authenticating the request with the client TLS certificate.
 3. The ambassador verifies the device's certificate is signed by the CA certificate, and pre-authorizes the device to the Device Authentication service.
 4. At this point, the authentication request is forwarded to the Device Authentication service.
@@ -177,7 +177,7 @@ The sequence diagram below describes the authentication of a Device using `mende
 Further communication between the Device and the Mender Server is intermediated by the `mender-gateway` which verifies the requests are authenticated with a valid client TLS certificate.
 
 Please refer to the [Mutual TLS section](../../10.Server-integration/04.Mender-Gateway/10.Mutual-TLS-authentication/docs.md)
-to find further details on the configuration of this feature.
+to find further details on the configuration of this feature, including how to perform [certificate rotation](../../10.Server-integration/04.Mender-Gateway/10.Mutual-TLS-authentication/04.Certificate-rotation/docs.md) without gateway reconfiguration.
 
 ## Authentication Token
 
