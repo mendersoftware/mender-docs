@@ -202,3 +202,48 @@ skopeo login registry.example.com
 ```
 
 After authenticating, `gen_docker-compose` will be able to download images from the private registry.
+
+
+## Create a Delta docker-compose update Artifact
+
+When updating devices with a docker-compose Artifact installed, a delta between
+the old (installed) and the new (update) docker-compose Artifacts can be
+generated and packed as an Artifact of type **delta**-docker-compose. Such an
+Artifact can then be deployed as an update instead of the new docker-compose
+artifact in order to save bandwidth.
+
+!!! The delta-docker-compose Update Module and generator are not publicly
+!!! available and are not part of Mender Client.
+
+See the [mender-delta-docker-compose download
+instructions](../../12.Downloads/02.Device-components/docs.md#mender-delta-docker-compose)
+for how to get the `gen_delta-docker-compose` generator script and its
+dependencies. Once available locally, it can be used to generate a delta
+Artifact in the following way:
+
+```bash
+./gen_delta-docker-compose old_artifact.mender new_artifact.mender
+```
+
+This generates a `new_artifact.delta.mender` Artifact that can be used instead
+of the original `new_artifact.mender` to deploy an update to devices with the
+`old_artifact.mender` installed (which is checked as part of the
+deployment).
+
+
+<!--AUTOVERSION: "version %"/ignore-->
+!!!! The `gen_delta-docker-compose` generator requires docker-compose Artifacts
+!!!! created with `gen_docker-compose` version 1.1.0 or newer.
+
+There are three command-line options that can be passed to the generator script:
+
+- `--artifact-name`, to specify Artifact name of the new artifact. Defaults to the name of the target artifact.
+- `--output-path`, to set path to output Artifact file. Defaults to `target_artifact.delta.mender` (as shown above)
+- `--layer-deltas`, to enable an extra step attempting to calculate deltas between layers of similar images.
+
+The `--layer-deltas` option requires `xdelta3` available for both, the generator
+and the Update Module (on the device). It may reduce the size of the delta
+Artifact, however, it is advised to compare the result to a result of running
+the generator without the option and consider which delta Artifact to use
+because layer deltas are expensive to resolve on the device (and `xdelta3` is
+required on the device, as mentioned above).
