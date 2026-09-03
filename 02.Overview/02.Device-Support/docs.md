@@ -114,7 +114,7 @@ application](https://github.com/mendersoftware/mender-mcu-integration)
 demonstrating how such an integration can be done.
 
 <!--AUTOVERSION: "Zephyr %"/ignore "/v%"/ignore-->
-Currently, [Zephyr 4.2](https://github.com/zephyrproject-rtos/zephyr/releases/tag/v4.2.0) is supported by the Mender MCU client.
+Currently, [Zephyr 4.4](https://github.com/zephyrproject-rtos/zephyr/releases/tag/v4.4.0) is supported by the Mender MCU client.
 
 
 #### Board integrations
