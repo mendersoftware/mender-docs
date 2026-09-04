@@ -72,19 +72,13 @@ file](99.Configuration-file/) as shown in this example:
 ```
 
 
-## Gateway Systems
-Devices connected to a Mender Gateway instance form a virtual group. For historical reasons,
-this virtual group is called a Gateway's *Device System*.
+## Grouping Devices behind a Gateway
+You can group the devices connected to a given Mender Gateway on the Mender Server by using the following inventory attribute in a Dynamic Group.
 
-!!! Mender also has a concept of System devices, i.e. devices that are systems of individual
-!!! components with separate update mechanisms that need to be orchestrated. See the
-!!! [documentation for Orchestrated updates](../../07.Orchestrate-updates/01.Overview/) for
-!!! details.
-
-To facilitate working with devices from such a group, Mender Gateway provides a mechanism to
+You can also use the Mender Gateway to facilitate working with devices from a group, Mender Gateway provides a mechanism to
 add a special inventory attribute named `mender_gateway_system_id` to the inventory data
-reported by all devices connected to it. The value of the attribute can be configured with the
-`SystemID` configuration key, as part of the `DeviceSystem` configuration object.
+reported by all devices connected to it. The value of the attribute can be configured with the following
+configuration (with replacing of `REPLACE_WITH_YOUR_UNIQUE_SYSTEM_ID`):
 
 ```json
 {
@@ -113,9 +107,7 @@ reported by all devices connected to it. The value of the attribute can be confi
 
 The name of the `mender_gateway_system_id` inventory attribute is pre-defined to ensure
 consistency and to allow Mender Server recognize the devices belonging into a particular
-Gateway System. In UI, the Gateway device has a tab called *System* which lists all devices
-connected to it and which allows creation of deployments targeting the particular group of
-devices.
+devices group.
 
 In order to add other common attributes that are not pre-defined, but are still added for all
 devices connected to a particular Mender Gateway, the `DefaultInventory` setting can added to
