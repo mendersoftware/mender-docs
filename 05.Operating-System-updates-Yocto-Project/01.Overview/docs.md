@@ -67,7 +67,7 @@ The persistent data partition stores data requiring preservation through Operati
 
 The following figure illustrates an example partition layout:
 
-![Mender Client partition layout](mender_client_partition_layout.png)
+![Mender Client partition layout](mender_client_partition_layout.png?sizes=367px)
 
 
 ## Correct clock

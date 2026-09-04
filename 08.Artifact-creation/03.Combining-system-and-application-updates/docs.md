@@ -54,7 +54,7 @@ The consequence of this complexity can contribute to the following:
 
 This section lists several example patterns and update scenarios where Operating System and Application updates are combined. In all the examples, the device's partitioning schema is A/B with a persistent data partition mounted on the `/data` path.
 
-![Mender Client partition layout](../../05.Operating-System-updates-Yocto-Project/01.Overview/mender_client_partition_layout.png)
+![Mender Client partition layout](../../05.Operating-System-updates-Yocto-Project/01.Overview/mender_client_partition_layout.png?sizes=367px)
 
 
 ### Operating System image and Application updates targeting the system partition
