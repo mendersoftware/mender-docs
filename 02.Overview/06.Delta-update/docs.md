@@ -17,7 +17,7 @@ same as doing a regular Operating System update, with atomicity, integrity, roll
 and signature support included.
 
 
-![Delta update generation](image0.png)
+![Delta update generation](delta-update-generation.png?sizes=725px)
 
 
 Delta updates are faster to install, as they only write the changed blocks to
@@ -31,7 +31,7 @@ running. It selects a Delta update if available for the Release the device is
 running, but also supports falling back to the full image if no Delta update is
 available for a given device.
 
-![Delta update assignment](image1.png)
+![Delta update assignment](delta-update-assignment.png?sizes=467px)
 
 This ensures that all devices get updated and minimizes the bandwidth needed
 (based on the Delta updates that are available in the server).
