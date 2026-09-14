@@ -138,11 +138,11 @@ This user will preauthorize devices with authorization to the gateway.
 This feature requires Mender Gateway version <code>1.1.0</code>
 <dl>
 <dt>Enabled (<code>DEVICE_SYSTEM_ENABLED</code>)</dt>
-<dd>Enable the System feature.</dd>
+<dd>Enable the Grouping Devices behind a Gateway feature.</dd>
 
 <dt>SystemID (<code>DEVICE_SYSTEM_ID</code>)</dt>
 <dd>
-Defines a unique System identifier for the devices connected to this Mender Gateway.
+Defines a unique identifier for the devices connected to this Mender Gateway.
 Devices connected to the gateway will show a special attribute named <code>mender_gateway_system_id</code> in the reported inventory data.
 </dd>
 
