@@ -13,6 +13,9 @@ In other words, a Deployment is the server-side model which represents a device 
 The characteristics of a Deployment are:
 * Only accepted devices can be part of a Deployment
 * A device won't take part in the same Deployment twice
+    * Exceptionally this can be overridden by resetting the device's Deployments history with the [Reset Device Deployments history endpoint](https://docs.mender.io/api/#management-api-deployments-reset-device-deployments-history). This marks the device's finished Device Deployments as deleted, making the device eligible again for a Deployment it was already a part of.
+* A device won't install an Artifact it already has installed; the device Deployment finishes with the
+  *already-installed* status instead
     * This can be overridden with the "Force update" option
 * Deployments get applied to the device in the chronological order they are created
 
