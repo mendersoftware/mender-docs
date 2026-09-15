@@ -26,7 +26,7 @@ test:
     variables:
       - $SKIP_TESTS == "true"
   stage: test
-  image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/ubuntu:noble
+  image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/ubuntu:resolute
   services:
     - docker:dind
   tags:
