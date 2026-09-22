@@ -170,7 +170,10 @@ Overriding this limit is not possible
 
 ### Maximum number of unique Release tags per tenant
 
-The maximum number of distinct Release tag keys per tenant. Assigning a tag that would exceed this limit returns an HTTP 409 error.
+The maximum number of distinct Release tag keys per tenant.```
+
+Too specific.
+Ant then begs the question on why define it for this one limit and not for any other.
 
 Default: `100`</br>
 Overriding this limit is not possible
