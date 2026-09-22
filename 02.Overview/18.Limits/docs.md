@@ -168,7 +168,7 @@ The maximum number of tags that can be assigned to a single Release.
 Default: `20`</br>
 Overriding this limit is not possible
 
-### Maximum number of unique Release tags
+### Maximum number of unique Release tags per tenant
 
 The maximum number of distinct Release tag keys per tenant. Assigning a tag that would exceed this limit returns an HTTP 409 error.
 
