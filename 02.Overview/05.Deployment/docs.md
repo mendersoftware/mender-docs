@@ -19,6 +19,8 @@ The characteristics of a Deployment are:
     * This can be overridden with the "Force update" option
 * Deployments get applied to the device in the chronological order they are created
 
+System devices, which run [Mender Orchestrator](../../07.Orchestrate-updates/01.Overview/docs.md), take part in Deployments like any other device, including in static groups, dynamic groups and phased rollouts. Only the [Artifact selection](#algorithm-for-selecting-the-deployment-for-the-device) differs.
+
 
 ### Deployment to static groups
 
@@ -195,3 +197,5 @@ If there is one, the Deployments service creates the instance of the Deployment 
 * checks if the Deployment has more than one phase and in case it does, checks if there is an active phase; if so, the Deployments service proceeds, if not, the Deployment service returns no instructions to the device;
 * tries to assign an Artifact to the device; if there is an artifact returns the Deployment instructions to the device; if not - returns no instructions and sets the device Deployment status to *no artifact*; in case the artifact installed on the device is the same as the one in the Deployment, Deployments service returns no instructions and sets the device Deployment status to *already installed*.
 ![Select Deployment Algorithm](selectDeploymentForDeviceAlgorithm.png)
+
+!!! For a System device running Mender Orchestrator, this algorithm selects the [Manifest Artifact](../../07.Orchestrate-updates/02.Manifest/01.Manifest-Artifact/docs.md) only. Mender Orchestrator then selects the Artifact for each Component on the device; see [Artifact selection](../../07.Orchestrate-updates/07.Artifacts%20handling/04.Artifact%20selection/docs.md).
