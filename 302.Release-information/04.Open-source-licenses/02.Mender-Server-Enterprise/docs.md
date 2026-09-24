@@ -18,8 +18,8 @@ Third party licenses used in Mender Server Enterprise: this file is autogenerate
 ## cloud.google.com/go/auth
 
 * Name: cloud.google.com/go/auth
-* Version: v0.20.0
-* License: [Apache-2.0](https://github.com/googleapis/google-cloud-go/blob/auth/v0.20.0/auth/LICENSE)
+* Version: v0.18.2
+* License: [Apache-2.0](https://github.com/googleapis/google-cloud-go/blob/auth/v0.18.2/auth/LICENSE)
 
 ```
 
@@ -746,6 +746,26 @@ SOFTWARE
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE
+```
+
+
+## github.com/ant0ine/go-json-rest/rest
+
+* Name: github.com/ant0ine/go-json-rest/rest
+* Version: v3.3.2
+* License: [MIT](https://github.com/ant0ine/go-json-rest/blob/v3.3.2/LICENSE)
+
+```
+Copyright (c) 2013-2016 Antoine Imbert
+
+The MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 ```
 
 
@@ -2315,219 +2335,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 * Name: github.com/aws/aws-sdk-go-v2/internal/v4a
 * Version: v1.4.32
 * License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/internal/v4a/v1.4.32/internal/v4a/LICENSE.txt)
-
-```
-
-                                 Apache License
-                           Version 2.0, January 2004
-                        http://www.apache.org/licenses/
-
-   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
-
-   1. Definitions.
-
-      "License" shall mean the terms and conditions for use, reproduction,
-      and distribution as defined by Sections 1 through 9 of this document.
-
-      "Licensor" shall mean the copyright owner or entity authorized by
-      the copyright owner that is granting the License.
-
-      "Legal Entity" shall mean the union of the acting entity and all
-      other entities that control, are controlled by, or are under common
-      control with that entity. For the purposes of this definition,
-      "control" means (i) the power, direct or indirect, to cause the
-      direction or management of such entity, whether by contract or
-      otherwise, or (ii) ownership of fifty percent (50%) or more of the
-      outstanding shares, or (iii) beneficial ownership of such entity.
-
-      "You" (or "Your") shall mean an individual or Legal Entity
-      exercising permissions granted by this License.
-
-      "Source" form shall mean the preferred form for making modifications,
-      including but not limited to software source code, documentation
-      source, and configuration files.
-
-      "Object" form shall mean any form resulting from mechanical
-      transformation or translation of a Source form, including but
-      not limited to compiled object code, generated documentation,
-      and conversions to other media types.
-
-      "Work" shall mean the work of authorship, whether in Source or
-      Object form, made available under the License, as indicated by a
-      copyright notice that is included in or attached to the work
-      (an example is provided in the Appendix below).
-
-      "Derivative Works" shall mean any work, whether in Source or Object
-      form, that is based on (or derived from) the Work and for which the
-      editorial revisions, annotations, elaborations, or other modifications
-      represent, as a whole, an original work of authorship. For the purposes
-      of this License, Derivative Works shall not include works that remain
-      separable from, or merely link (or bind by name) to the interfaces of,
-      the Work and Derivative Works thereof.
-
-      "Contribution" shall mean any work of authorship, including
-      the original version of the Work and any modifications or additions
-      to that Work or Derivative Works thereof, that is intentionally
-      submitted to Licensor for inclusion in the Work by the copyright owner
-      or by an individual or Legal Entity authorized to submit on behalf of
-      the copyright owner. For the purposes of this definition, "submitted"
-      means any form of electronic, verbal, or written communication sent
-      to the Licensor or its representatives, including but not limited to
-      communication on electronic mailing lists, source code control systems,
-      and issue tracking systems that are managed by, or on behalf of, the
-      Licensor for the purpose of discussing and improving the Work, but
-      excluding communication that is conspicuously marked or otherwise
-      designated in writing by the copyright owner as "Not a Contribution."
-
-      "Contributor" shall mean Licensor and any individual or Legal Entity
-      on behalf of whom a Contribution has been received by Licensor and
-      subsequently incorporated within the Work.
-
-   2. Grant of Copyright License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      copyright license to reproduce, prepare Derivative Works of,
-      publicly display, publicly perform, sublicense, and distribute the
-      Work and such Derivative Works in Source or Object form.
-
-   3. Grant of Patent License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      (except as stated in this section) patent license to make, have made,
-      use, offer to sell, sell, import, and otherwise transfer the Work,
-      where such license applies only to those patent claims licensable
-      by such Contributor that are necessarily infringed by their
-      Contribution(s) alone or by combination of their Contribution(s)
-      with the Work to which such Contribution(s) was submitted. If You
-      institute patent litigation against any entity (including a
-      cross-claim or counterclaim in a lawsuit) alleging that the Work
-      or a Contribution incorporated within the Work constitutes direct
-      or contributory patent infringement, then any patent licenses
-      granted to You under this License for that Work shall terminate
-      as of the date such litigation is filed.
-
-   4. Redistribution. You may reproduce and distribute copies of the
-      Work or Derivative Works thereof in any medium, with or without
-      modifications, and in Source or Object form, provided that You
-      meet the following conditions:
-
-      (a) You must give any other recipients of the Work or
-          Derivative Works a copy of this License; and
-
-      (b) You must cause any modified files to carry prominent notices
-          stating that You changed the files; and
-
-      (c) You must retain, in the Source form of any Derivative Works
-          that You distribute, all copyright, patent, trademark, and
-          attribution notices from the Source form of the Work,
-          excluding those notices that do not pertain to any part of
-          the Derivative Works; and
-
-      (d) If the Work includes a "NOTICE" text file as part of its
-          distribution, then any Derivative Works that You distribute must
-          include a readable copy of the attribution notices contained
-          within such NOTICE file, excluding those notices that do not
-          pertain to any part of the Derivative Works, in at least one
-          of the following places: within a NOTICE text file distributed
-          as part of the Derivative Works; within the Source form or
-          documentation, if provided along with the Derivative Works; or,
-          within a display generated by the Derivative Works, if and
-          wherever such third-party notices normally appear. The contents
-          of the NOTICE file are for informational purposes only and
-          do not modify the License. You may add Your own attribution
-          notices within Derivative Works that You distribute, alongside
-          or as an addendum to the NOTICE text from the Work, provided
-          that such additional attribution notices cannot be construed
-          as modifying the License.
-
-      You may add Your own copyright statement to Your modifications and
-      may provide additional or different license terms and conditions
-      for use, reproduction, or distribution of Your modifications, or
-      for any such Derivative Works as a whole, provided Your use,
-      reproduction, and distribution of the Work otherwise complies with
-      the conditions stated in this License.
-
-   5. Submission of Contributions. Unless You explicitly state otherwise,
-      any Contribution intentionally submitted for inclusion in the Work
-      by You to the Licensor shall be under the terms and conditions of
-      this License, without any additional terms or conditions.
-      Notwithstanding the above, nothing herein shall supersede or modify
-      the terms of any separate license agreement you may have executed
-      with Licensor regarding such Contributions.
-
-   6. Trademarks. This License does not grant permission to use the trade
-      names, trademarks, service marks, or product names of the Licensor,
-      except as required for reasonable and customary use in describing the
-      origin of the Work and reproducing the content of the NOTICE file.
-
-   7. Disclaimer of Warranty. Unless required by applicable law or
-      agreed to in writing, Licensor provides the Work (and each
-      Contributor provides its Contributions) on an "AS IS" BASIS,
-      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-      implied, including, without limitation, any warranties or conditions
-      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
-      PARTICULAR PURPOSE. You are solely responsible for determining the
-      appropriateness of using or redistributing the Work and assume any
-      risks associated with Your exercise of permissions under this License.
-
-   8. Limitation of Liability. In no event and under no legal theory,
-      whether in tort (including negligence), contract, or otherwise,
-      unless required by applicable law (such as deliberate and grossly
-      negligent acts) or agreed to in writing, shall any Contributor be
-      liable to You for damages, including any direct, indirect, special,
-      incidental, or consequential damages of any character arising as a
-      result of this License or out of the use or inability to use the
-      Work (including but not limited to damages for loss of goodwill,
-      work stoppage, computer failure or malfunction, or any and all
-      other commercial damages or losses), even if such Contributor
-      has been advised of the possibility of such damages.
-
-   9. Accepting Warranty or Additional Liability. While redistributing
-      the Work or Derivative Works thereof, You may choose to offer,
-      and charge a fee for, acceptance of support, warranty, indemnity,
-      or other liability obligations and/or rights consistent with this
-      License. However, in accepting such obligations, You may act only
-      on Your own behalf and on Your sole responsibility, not on behalf
-      of any other Contributor, and only if You agree to indemnify,
-      defend, and hold each Contributor harmless for any liability
-      incurred by, or claims asserted against, such Contributor by reason
-      of your accepting any such warranty or additional liability.
-
-   END OF TERMS AND CONDITIONS
-
-   APPENDIX: How to apply the Apache License to your work.
-
-      To apply the Apache License to your work, attach the following
-      boilerplate notice, with the fields enclosed by brackets "[]"
-      replaced with your own identifying information. (Don't include
-      the brackets!)  The text should be enclosed in the appropriate
-      comment syntax for the file format. We also recommend that a
-      file or class name and description of purpose be included on the
-      same "printed page" as the copyright notice for easier
-      identification within third-party archives.
-
-   Copyright [yyyy] [name of copyright owner]
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-
-```
-
-
-## github.com/aws/aws-sdk-go-v2/service/bedrockruntime
-
-* Name: github.com/aws/aws-sdk-go-v2/service/bedrockruntime
-* Version: v1.56.0
-* License: [Apache-2.0](https://github.com/aws/aws-sdk-go-v2/blob/service/bedrockruntime/v1.56.0/service/bedrockruntime/LICENSE.txt)
 
 ```
 
@@ -5307,8 +5114,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/beevik/etree
 
 * Name: github.com/beevik/etree
-* Version: v1.6.0
-* License: [BSD-2-Clause](https://github.com/beevik/etree/blob/v1.6.0/LICENSE)
+* Version: v1.5.0
+* License: [BSD-2-Clause](https://github.com/beevik/etree/blob/v1.5.0/LICENSE)
 
 ```
 Copyright 2015-2024 Brett Vickers. All rights reserved.
@@ -5342,8 +5149,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/boombuler/barcode
 
 * Name: github.com/boombuler/barcode
-* Version: v1.1.0
-* License: [MIT](https://github.com/boombuler/barcode/blob/v1.1.0/LICENSE)
+* Version: v1.0.2
+* License: [MIT](https://github.com/boombuler/barcode/blob/v1.0.2/LICENSE)
 
 ```
 The MIT License (MIT)
@@ -5572,38 +5379,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 MIT License
 
 Copyright (c) 2018 Gabriel Vasile
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-```
-
-
-## github.com/gin-contrib/cors
-
-* Name: github.com/gin-contrib/cors
-* Version: v1.7.7
-* License: [MIT](https://github.com/gin-contrib/cors/blob/v1.7.7/LICENSE)
-
-```
-MIT License
-
-Copyright (c) 2016 Gin-Gonic
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6241,8 +6016,8 @@ SOFTWARE.
 ## github.com/go-viper/mapstructure/v2
 
 * Name: github.com/go-viper/mapstructure/v2
-* Version: v2.5.0
-* License: [MIT](https://github.com/go-viper/mapstructure/blob/v2.5.0/LICENSE)
+* Version: v2.4.0
+* License: [MIT](https://github.com/go-viper/mapstructure/blob/v2.4.0/LICENSE)
 
 ```
 The MIT License (MIT)
@@ -6614,8 +6389,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/googleapis/enterprise-certificate-proxy/client
 
 * Name: github.com/googleapis/enterprise-certificate-proxy/client
-* Version: v0.3.18
-* License: [Apache-2.0](https://github.com/googleapis/enterprise-certificate-proxy/blob/v0.3.18/LICENSE)
+* Version: v0.3.11
+* License: [Apache-2.0](https://github.com/googleapis/enterprise-certificate-proxy/blob/v0.3.11/LICENSE)
 
 ```
 
@@ -6827,8 +6602,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/googleapis/gax-go/v2
 
 * Name: github.com/googleapis/gax-go/v2
-* Version: v2.23.0
-* License: [BSD-3-Clause](https://github.com/googleapis/gax-go/blob/v2.23.0/v2/LICENSE)
+* Version: v2.17.0
+* License: [BSD-3-Clause](https://github.com/googleapis/gax-go/blob/v2.17.0/v2/LICENSE)
 
 ```
 Copyright 2016, Google Inc.
@@ -6898,8 +6673,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/jonboulle/clockwork
 
 * Name: github.com/jonboulle/clockwork
-* Version: v0.5.0
-* License: [Apache-2.0](https://github.com/jonboulle/clockwork/blob/v0.5.0/LICENSE)
+* Version: v0.2.2
+* License: [Apache-2.0](https://github.com/jonboulle/clockwork/blob/v0.2.2/LICENSE)
 
 ```
 Apache License
@@ -7594,8 +7369,8 @@ SOFTWARE.
 ## github.com/lestrrat-go/blackmagic
 
 * Name: github.com/lestrrat-go/blackmagic
-* Version: v1.0.4
-* License: [MIT](https://github.com/lestrrat-go/blackmagic/blob/v1.0.4/LICENSE)
+* Version: v1.0.3
+* License: [MIT](https://github.com/lestrrat-go/blackmagic/blob/v1.0.3/LICENSE)
 
 ```
 MIT License
@@ -7722,8 +7497,8 @@ SOFTWARE.
 ## github.com/lestrrat-go/jwx/v2
 
 * Name: github.com/lestrrat-go/jwx/v2
-* Version: v2.1.7
-* License: [MIT](https://github.com/lestrrat-go/jwx/blob/v2.1.7/LICENSE)
+* Version: v2.1.6
+* License: [MIT](https://github.com/lestrrat-go/jwx/blob/v2.1.6/LICENSE)
 
 ```
 The MIT License (MIT)
@@ -9926,8 +9701,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## github.com/russellhaering/goxmldsig
 
 * Name: github.com/russellhaering/goxmldsig
-* Version: v1.6.0
-* License: [Apache-2.0](https://github.com/russellhaering/goxmldsig/blob/v1.6.0/LICENSE)
+* Version: v1.4.0
+* License: [Apache-2.0](https://github.com/russellhaering/goxmldsig/blob/v1.4.0/LICENSE)
 
 ```
 
@@ -10779,11 +10554,11 @@ SOFTWARE.
 ```
 
 
-## github.com/stripe/stripe-go/v82
+## github.com/stripe/stripe-go/v79
 
-* Name: github.com/stripe/stripe-go/v82
-* Version: v82.5.1
-* License: [MIT](https://github.com/stripe/stripe-go/blob/v82.5.1/LICENSE)
+* Name: github.com/stripe/stripe-go/v79
+* Version: v79.12.0
+* License: [MIT](https://github.com/stripe/stripe-go/blob/v79.12.0/LICENSE)
 
 ```
 The MIT License (MIT)
@@ -12091,8 +11866,8 @@ SOFTWARE.
 ## go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
 
 * Name: go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
-* Version: v0.67.0
-* License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.67.0/instrumentation/net/http/otelhttp/LICENSE)
+* Version: v0.61.0
+* License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.61.0/instrumentation/net/http/otelhttp/LICENSE)
 
 ```
                                  Apache License
@@ -12297,35 +12072,6 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
---------------------------------------------------------------------------------
-
-Copyright 2009 The Go Authors.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:
-
-   * Redistributions of source code must retain the above copyright
-notice, this list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above
-copyright notice, this list of conditions and the following disclaimer
-in the documentation and/or other materials provided with the
-distribution.
-   * Neither the name of Google LLC nor the names of its
-contributors may be used to endorse or promote products derived from
-this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
 
 
@@ -13146,8 +12892,8 @@ limitations under the License.
 ## golang.org/x/crypto
 
 * Name: golang.org/x/crypto
-* Version: v0.54.0
-* License: [BSD-3-Clause](https://cs.opensource.google/go/x/crypto/+/v0.54.0:LICENSE)
+* Version: v0.55.0
+* License: [BSD-3-Clause](https://cs.opensource.google/go/x/crypto/+/v0.55.0:LICENSE)
 
 ```
 Copyright 2009 The Go Authors.
@@ -13184,8 +12930,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## golang.org/x/net
 
 * Name: golang.org/x/net
-* Version: v0.57.0
-* License: [BSD-3-Clause](https://cs.opensource.google/go/x/net/+/v0.57.0:LICENSE)
+* Version: v0.58.0
+* License: [BSD-3-Clause](https://cs.opensource.google/go/x/net/+/v0.58.0:LICENSE)
 
 ```
 Copyright 2009 The Go Authors.
@@ -13374,46 +13120,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## golang.org/x/text
 
 * Name: golang.org/x/text
-* Version: v0.40.0
-* License: [BSD-3-Clause](https://cs.opensource.google/go/x/text/+/v0.40.0:LICENSE)
-
-```
-Copyright 2009 The Go Authors.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:
-
-   * Redistributions of source code must retain the above copyright
-notice, this list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above
-copyright notice, this list of conditions and the following disclaimer
-in the documentation and/or other materials provided with the
-distribution.
-   * Neither the name of Google LLC nor the names of its
-contributors may be used to endorse or promote products derived from
-this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-```
-
-
-## golang.org/x/time/rate
-
-* Name: golang.org/x/time/rate
-* Version: v0.15.0
-* License: [BSD-3-Clause](https://cs.opensource.google/go/x/time/+/v0.15.0:LICENSE)
+* Version: v0.41.0
+* License: [BSD-3-Clause](https://cs.opensource.google/go/x/text/+/v0.41.0:LICENSE)
 
 ```
 Copyright 2009 The Go Authors.
@@ -13450,8 +13158,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## google.golang.org/api
 
 * Name: google.golang.org/api
-* Version: v0.290.0
-* License: [BSD-3-Clause](https://github.com/googleapis/google-api-go-client/blob/v0.290.0/LICENSE)
+* Version: v0.264.0
+* License: [BSD-3-Clause](https://github.com/googleapis/google-api-go-client/blob/v0.264.0/LICENSE)
 
 ```
 Copyright (c) 2011 Google Inc. All rights reserved.
@@ -13488,8 +13196,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## google.golang.org/api/internal/third_party/uritemplates
 
 * Name: google.golang.org/api/internal/third_party/uritemplates
-* Version: v0.290.0
-* License: [BSD-3-Clause](https://github.com/googleapis/google-api-go-client/blob/v0.290.0/internal/third_party/uritemplates/LICENSE)
+* Version: v0.264.0
+* License: [BSD-3-Clause](https://github.com/googleapis/google-api-go-client/blob/v0.264.0/internal/third_party/uritemplates/LICENSE)
 
 ```
 Copyright (c) 2013 Joshua Tacoma. All rights reserved.
@@ -13526,8 +13234,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## google.golang.org/genproto/googleapis/rpc
 
 * Name: google.golang.org/genproto/googleapis/rpc
-* Version: v0.0.0-20260706201446-f0a921348800
-* License: [Apache-2.0](https://github.com/googleapis/go-genproto/blob/f0a921348800/googleapis/rpc/LICENSE)
+* Version: v0.0.0-20260526163538-3dc84a4a5aaa
+* License: [Apache-2.0](https://github.com/googleapis/go-genproto/blob/3dc84a4a5aaa/googleapis/rpc/LICENSE)
 
 ```
 
@@ -13739,8 +13447,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## google.golang.org/grpc
 
 * Name: google.golang.org/grpc
-* Version: v1.82.0
-* License: [Apache-2.0](https://github.com/grpc/grpc-go/blob/v1.82.0/LICENSE)
+* Version: v1.83.2
+* License: [Apache-2.0](https://github.com/grpc/grpc-go/blob/v1.83.2/LICENSE)
 
 ```
 
@@ -13987,6 +13695,38 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
 
 
+## gopkg.in/urfave/cli.v1
+
+* Name: gopkg.in/urfave/cli.v1
+* Version: v1.20.0
+* License: [MIT](https://github.com/urfave/cli/blob/v1.20.0/LICENSE)
+
+```
+MIT License
+
+Copyright (c) 2016 Jeremy Saenz & Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+```
+
+
 ## gopkg.in/yaml.v3
 
 * Name: gopkg.in/yaml.v3
@@ -14148,7 +13888,7 @@ SOFTWARE.
 ## @emotion/is-prop-valid
 
 * Name: @emotion/is-prop-valid
-* Version: 1.3.1
+* Version: 1.4.0
 * License: [MIT](https://github.com/emotion-js/emotion/tree/main/packages/is-prop-valid)
 
 ```
@@ -14482,7 +14222,7 @@ The MIT license applies to all non-font and non-icon files.
 ## @monaco-editor/loader
 
 * Name: @monaco-editor/loader
-* Version: 1.5.0
+* Version: 1.7.0
 * License: [MIT](https://github.com/suren-atoyan/monaco-loader.git)
 
 ```
@@ -14849,223 +14589,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-## @sentry-internal/browser-utils
-
-* Name: @sentry-internal/browser-utils
-* Version: 10.56.0
-* License: [MIT](https://github.com/getsentry/sentry-javascript.git)
-
-```
-MIT License
-
-Copyright (c) 2020 Functional Software, Inc. dba Sentry
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-```
-
-## @sentry-internal/feedback
-
-* Name: @sentry-internal/feedback
-* Version: 10.56.0
-* License: [MIT](https://github.com/getsentry/sentry-javascript.git)
-
-```
-MIT License
-
-Copyright (c) 2023 Functional Software, Inc. dba Sentry
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-```
-
-## @sentry-internal/replay
-
-* Name: @sentry-internal/replay
-* Version: 10.56.0
-* License: [MIT](https://github.com/getsentry/sentry-javascript.git)
-
-```
-MIT License
-
-Copyright (c) 2022 Functional Software, Inc. dba Sentry
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-```
-
-## @sentry-internal/replay-canvas
-
-* Name: @sentry-internal/replay-canvas
-* Version: 10.56.0
-* License: [MIT](https://github.com/getsentry/sentry-javascript.git)
-
-```
-MIT License
-
-Copyright (c) 2024 Functional Software, Inc. dba Sentry
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-```
-
-## @sentry/browser
-
-* Name: @sentry/browser
-* Version: 10.56.0
-* License: [MIT](https://github.com/getsentry/sentry-javascript.git)
-
-```
-MIT License
-
-Copyright (c) 2019 Functional Software, Inc. dba Sentry
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-```
-
-## @sentry/core
-
-* Name: @sentry/core
-* Version: 10.56.0
-* License: [MIT](https://github.com/getsentry/sentry-javascript.git)
-
-```
-MIT License
-
-Copyright (c) 2019 Functional Software, Inc. dba Sentry
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-```
-
-## @sentry/react
-
-* Name: @sentry/react
-* Version: 10.56.0
-* License: [MIT](https://github.com/getsentry/sentry-javascript.git)
-
-```
-MIT License
-
-Copyright (c) 2019 Functional Software, Inc. dba Sentry
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-```
-
 ## @stripe/react-stripe-js
 
 * Name: @stripe/react-stripe-js
@@ -15340,7 +14863,7 @@ SOFTWARE.
 ## axios
 
 * Name: axios
-* Version: 1.17.0
+* Version: 1.16.1
 * License: [MIT](https://github.com/axios/axios.git)
 
 ```
@@ -15442,7 +14965,7 @@ THE SOFTWARE.
 ## call-bind
 
 * Name: call-bind
-* Version: 1.0.8
+* Version: 1.0.9
 * License: [MIT](https://github.com/ljharb/call-bind.git)
 
 ```
@@ -15805,11 +15328,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## d3-format
 
 * Name: d3-format
-* Version: 3.1.0
+* Version: 3.1.2
 * License: [ISC](https://github.com/d3/d3-format.git)
 
 ```
-Copyright 2010-2021 Mike Bostock
+Copyright 2010-2026 Mike Bostock
 
 Permission to use, copy, modify, and/or distribute this software for any purpose
 with or without fee is hereby granted, provided that the above copyright notice
@@ -16264,7 +15787,7 @@ SOFTWARE.
 ## es-object-atoms
 
 * Name: es-object-atoms
-* Version: 1.1.1
+* Version: 1.1.2
 * License: [MIT](https://github.com/ljharb/es-object-atoms.git)
 
 ```
@@ -16482,6 +16005,23 @@ SOFTWARE.
 
 ```
 
+## generator-function
+
+* Name: generator-function
+* Version: 2.0.1
+* License: [MIT](https://github.com/TimothyGu/generator-function.git)
+
+```
+Copyright (c) 2015 Tiancheng “Timothy” Gu
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+```
+
 ## get-intrinsic
 
 * Name: get-intrinsic
@@ -16671,7 +16211,7 @@ SOFTWARE.
 ## hasown
 
 * Name: hasown
-* Version: 2.0.2
+* Version: 2.0.4
 * License: [MIT](https://github.com/inspect-js/hasOwn.git)
 
 ```
@@ -16762,7 +16302,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 ## immer
 
 * Name: immer
-* Version: 11.1.4
+* Version: 11.1.8
 * License: [MIT](https://github.com/immerjs/immer.git)
 
 ```
@@ -16966,7 +16506,7 @@ SOFTWARE.
 ## is-generator-function
 
 * Name: is-generator-function
-* Version: 1.1.0
+* Version: 1.1.2
 * License: [MIT](https://github.com/inspect-js/is-generator-function.git)
 
 ```
@@ -17230,25 +16770,6 @@ terms above.
 
 ```
 
-## markdown-to-jsx
-
-* Name: markdown-to-jsx
-* Version: 7.7.13
-* License: [MIT](https://github.com/quantizor/markdown-to-jsx.git)
-
-```
-The MIT License (MIT)
-
-Copyright (c) 2015-present Evan Jacobs
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-```
-
 ## math-intrinsics
 
 * Name: math-intrinsics
@@ -17375,34 +16896,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-```
-
-## mui-markdown
-
-* Name: mui-markdown
-* Version: 2.1.1
-* License: [MIT](https://github.com/HPouyanmehr/mui-markdown)
-
-```
-MIT License
-
-Copyright (c) <year> <copyright holders>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
-associated documentation files (the "Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
-following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial
-portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
-LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO
-EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 ```
 
 ## object-is
@@ -17685,13 +17178,13 @@ SOFTWARE.
 ## react
 
 * Name: react
-* Version: 19.2.7
+* Version: 18.3.1
 * License: [MIT](https://github.com/facebook/react.git)
 
 ```
 MIT License
 
-Copyright (c) Meta Platforms, Inc. and affiliates.
+Copyright (c) Facebook, Inc. and its affiliates.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -17811,13 +17304,13 @@ SOFTWARE.
 ## react-dom
 
 * Name: react-dom
-* Version: 19.2.7
+* Version: 18.3.1
 * License: [MIT](https://github.com/facebook/react.git)
 
 ```
 MIT License
 
-Copyright (c) Meta Platforms, Inc. and affiliates.
+Copyright (c) Facebook, Inc. and its affiliates.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -18059,7 +17552,7 @@ SOFTWARE.
 ## react-is
 
 * Name: react-is
-* Version: 19.2.4
+* Version: 19.2.7
 * License: [MIT](https://github.com/facebook/react.git)
 
 ```
@@ -18407,7 +17900,7 @@ SOFTWARE.
 ## reselect
 
 * Name: reselect
-* Version: 5.1.1
+* Version: 5.2.0
 * License: [MIT](https://github.com/reduxjs/reselect.git)
 
 ```
@@ -18531,13 +18024,13 @@ SOFTWARE.
 ## scheduler
 
 * Name: scheduler
-* Version: 0.27.0
+* Version: 0.23.2
 * License: [MIT](https://github.com/facebook/react.git)
 
 ```
 MIT License
 
-Copyright (c) Meta Platforms, Inc. and affiliates.
+Copyright (c) Facebook, Inc. and its affiliates.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -18743,7 +18236,7 @@ SOFTWARE.
 ## tlds
 
 * Name: tlds
-* Version: 1.259.0
+* Version: 1.261.0
 * License: [MIT](https://github.com/stephenmathieson/node-tlds.git)
 
 ```
@@ -18915,8 +18408,8 @@ SOFTWARE.
 ## universal-cookie
 
 * Name: universal-cookie
-* Version: 8.0.1
-* License: [MIT](https://github.com/bendotcodes/cookies.git)
+* Version: 8.1.2
+* License: [MIT](https://github.com/ItsBenCodes/cookies.git)
 
 ```
 The MIT License (MIT)
@@ -18945,8 +18438,8 @@ THE SOFTWARE.
 ## universal-cookie
 
 * Name: universal-cookie
-* Version: 8.1.2
-* License: [MIT](https://github.com/ItsBenCodes/cookies.git)
+* Version: 7.1.4
+* License: [MIT](https://github.com/bendotcodes/cookies.git)
 
 ```
 The MIT License (MIT)
@@ -19343,7 +18836,7 @@ SOFTWARE.
 ## which-typed-array
 
 * Name: which-typed-array
-* Version: 1.1.19
+* Version: 1.1.21
 * License: [MIT](https://github.com/inspect-js/which-typed-array.git)
 
 ```
