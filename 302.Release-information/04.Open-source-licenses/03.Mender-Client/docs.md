@@ -16,6 +16,33 @@ Third party licenses used in Mender Client.
 
 --------------------------------------------------------------------------------
 
+github.com/cpuguy83/go-md2man/v2:
+
+The MIT License (MIT)
+
+Copyright (c) 2014 Brian Goff
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+--------------------------------------------------------------------------------
+
 github.com/creack/pty:
 
 Copyright (c) 2011 Keith Rarick
@@ -45,27 +72,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-github.com/davecgh/go-spew:
-
-ISC License
-
-Copyright (c) 2012-2016 Dave Collins <dave@davec.name>
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted, provided that the above
-copyright notice and this permission notice appear in all copies.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-
-
---------------------------------------------------------------------------------
-
 github.com/go-ozzo/ozzo-validation/v4:
 
 The MIT License (MIT)
@@ -91,32 +97,27 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 
 github.com/gorilla/websocket:
 
-Copyright (c) 2023 The Gorilla Authors. All rights reserved.
+Copyright (c) 2013 The Gorilla WebSocket Authors. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:
+modification, are permitted provided that the following conditions are met:
 
-	 * Redistributions of source code must retain the above copyright
-notice, this list of conditions and the following disclaimer.
-	 * Redistributions in binary form must reproduce the above
-copyright notice, this list of conditions and the following disclaimer
-in the documentation and/or other materials provided with the
-distribution.
-	 * Neither the name of Google Inc. nor the names of its
-contributors may be used to endorse or promote products derived from
-this software without specific prior written permission.
+  Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
@@ -124,7 +125,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 github.com/mendersoftware/go-lib-micro:
 
-Copyright 2022 Northern.tech AS
+Copyright 2023 Northern.tech AS
 
 All content in this project is licensed under the Apache License v2, unless
 indicated otherwise.
@@ -365,35 +366,37 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 --------------------------------------------------------------------------------
 
-github.com/pmezard/go-difflib:
+github.com/russross/blackfriday/v2:
 
-Copyright (c) 2013, Patrick Mezard
-All rights reserved.
+Blackfriday is distributed under the Simplified BSD License:
 
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:
-
-    Redistributions of source code must retain the above copyright
-notice, this list of conditions and the following disclaimer.
-    Redistributions in binary form must reproduce the above copyright
-notice, this list of conditions and the following disclaimer in the
-documentation and/or other materials provided with the distribution.
-    The names of its contributors may not be used to endorse or promote
-products derived from this software without specific prior written
-permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
-IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
-TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
-PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
-TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+> Copyright © 2011 Russ Ross
+> All rights reserved.
+>
+> Redistribution and use in source and binary forms, with or without
+> modification, are permitted provided that the following conditions
+> are met:
+>
+> 1.  Redistributions of source code must retain the above copyright
+>     notice, this list of conditions and the following disclaimer.
+>
+> 2.  Redistributions in binary form must reproduce the above
+>     copyright notice, this list of conditions and the following
+>     disclaimer in the documentation and/or other materials provided with
+>     the distribution.
+>
+> THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+> "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+> LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+> FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+> COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+> INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+> BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+> LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+> CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+> LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+> ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+> POSSIBILITY OF SUCH DAMAGE.
 
 
 --------------------------------------------------------------------------------
@@ -420,6 +423,33 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+--------------------------------------------------------------------------------
+
+github.com/shurcooL/sanitized_anchor_name:
+
+MIT License
+
+Copyright (c) 2015 Dmitri Shuralyov
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 
 --------------------------------------------------------------------------------
@@ -502,6 +532,59 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+--------------------------------------------------------------------------------
+
+github.com/stretchr/testify/internal/difflib:
+
+Copyright (c) 2013, Patrick Mezard
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+    Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+    Redistributions in binary form must reproduce the above copyright
+notice, this list of conditions and the following disclaimer in the
+documentation and/or other materials provided with the distribution.
+    The names of its contributors may not be used to endorse or promote
+products derived from this software without specific prior written
+permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+--------------------------------------------------------------------------------
+
+github.com/stretchr/testify/internal/spew:
+
+ISC License
+
+Copyright (c) 2012-2016 Dave Collins <dave@davec.name>
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 
 --------------------------------------------------------------------------------
@@ -595,73 +678,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 --------------------------------------------------------------------------------
 
-golang.org/x/net:
-
-Copyright (c) 2009 The Go Authors. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:
-
-   * Redistributions of source code must retain the above copyright
-notice, this list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above
-copyright notice, this list of conditions and the following disclaimer
-in the documentation and/or other materials provided with the
-distribution.
-   * Neither the name of Google Inc. nor the names of its
-contributors may be used to endorse or promote products derived from
-this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-
---------------------------------------------------------------------------------
-
-golang.org/x/sys:
-
-Copyright (c) 2009 The Go Authors. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:
-
-   * Redistributions of source code must retain the above copyright
-notice, this list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above
-copyright notice, this list of conditions and the following disclaimer
-in the documentation and/or other materials provided with the
-distribution.
-   * Neither the name of Google Inc. nor the names of its
-contributors may be used to endorse or promote products derived from
-this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-
---------------------------------------------------------------------------------
-
-gopkg.in/yaml.v3:
+go.yaml.in/yaml/v3:
 
 
 This project is covered by two different licenses: MIT and Apache.
@@ -717,7 +734,57 @@ limitations under the License.
 
 --------------------------------------------------------------------------------
 
+golang.org/x/sys:
+
+Copyright 2009 The Go Authors.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+   * Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above
+copyright notice, this list of conditions and the following disclaimer
+in the documentation and/or other materials provided with the
+distribution.
+   * Neither the name of Google LLC nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+--------------------------------------------------------------------------------
+
 libntech:
+
+This file contains a copy of:
+
+1) Apache License Version 2.0
+2) The Commercial Open Source License (COSL)
+
+----------------------------------------------------------------------------
+
+libntech is provided under the terms of the Apache License Version 2.0 (below).
+
+On some systems, code under the Frontier Artistic License (libcompat/snprintf)
+might become compiled. This is compatible with the Apache License.
+
+Users of the software may, at their option, choose the COSL license
+below as part of the enterprise CFEngine product.
+
+-------------------------------------------------------------------------------
 
                                Apache License
                            Version 2.0, January 2004
@@ -893,6 +960,200 @@ libntech:
       defend, and hold each Contributor harmless for any liability
       incurred by, or claims asserted against, such Contributor by reason
       of your accepting any such warranty or additional liability.
+
+
+------------------------------------------------------------------------------
+
+
+                    COMMERCIAL OPEN SOURCE LICENSE
+
+This CFEngine commercial open source license ("COSL") is entered into
+between Northern.tech AS, a Norwegian company, as licensor and
+
+a) the Customer entity stipulated on a complete agreement front page (“Front page”),
+
+b) any entity or natural person downloading, installing or taking the
+Software or any part of it into use, or
+
+c) any entity or person who otherwise has agreed to be bound by these
+terms (collectively the "Licensee").
+
+1 LICENSE
+
+1.1 General
+
+The Software is licensed on a consecutive basis (rental) or
+perpetually, as stipulated on the Front page. See 1.2 and 1.3 below
+respectively. The following shall apply to either type of license
+grants.
+
+Subject to the terms of this COSL and other agreement between the
+parties, Northern.tech hereby grants to Licensee a non-exclusive,
+non-transferable, non-sublicensable and limited license to install,
+use, study and modify the number of copies of the Software on the
+number of Instances stipulated on the Front page for use within its
+organization.
+
+The number of Instances the Software may be installed on may be
+changed by the Customer from time to time, provided ample notice is
+given to Northern.tech. See Front page for reporting.
+
+The Licensee may modify, adapt and create derivative works based upon
+the Software, for use within its organisation and for sharing between
+other consecutive licensees under the COSL. Therefore, the Licensee
+shall have access to the source code of the Software. However, the
+Licensee shall not reproduce, distribute, resell, rent, lease or
+disclose the Software in any manner or form to any other third party
+not holding a COSL to the Software.
+
+Licensee may not transfer any of its rights under this COSL without
+the prior and express written consent of Northern.tech.
+
+Any CFEngine software component used by both the CFEngine enterprise
+version and CFEngine community edition is licensed under the terms of
+this COSL if the Licensee does not state in writing to Northern.tech that
+the Licensee instead wish to license the component in question under
+the GNU General Public License (GPL) v.3.0 or other applicable
+license.
+
+Third party software is licensed under the license of such third
+party.
+
+1.2 Consecutive license grant (subscription)
+
+If the license grant is agreed to be consecutive (see stipulation on
+Front page), it shall be effective for the period the consecutive
+license fee (subscription fee) is paid and this license is otherwise
+complied to. The payment of the consecutive license fee entitles the
+Customer to Updates and New versions of the Software (as stipulated in
+appendix 1).
+
+1.3 Perpetual license grant
+
+If the license grant is agreed to be perpetual (see stipulation on
+Front page), the grant is for ever, provided the license terms are
+complied to. The perpetual license grant is limited to current the
+version of the Software at the Effective date. Updates or New versions
+of the Software are not included, unless stated on the Front page
+(subject to additional fee).
+
+2 DEFINITIONS
+
+The following definitions shall apply to the COSL:
+
+“Instances” means each physical or virtual computer (server or
+client), onto which an installation of the Software takes place.
+
+“New version” (of the Software) means a new edition of the Software
+containing functionality or properties not present in the previous
+edition of the Software.
+
+"Software" means:
+
+a) the CFEngine Enterprise data centre administration software
+downloaded by the Licensee or otherwise given access to including
+bundled documentation and other material, as described at
+http://www.cfengine.com/; and
+
+b) new versions and updates to such software provided by Northern.tech, and
+
+
+“Update” (of Software) means smaller adjustments of the Software with
+the existing functionality, normally by way of installation of new
+copy of the Software.
+
+3 FEES
+
+The Licensee shall pay a license fee per Instance the Software is
+installed on for the license granted herein; either:
+
+a) per time unit (as agreed) e.g. year, for consecutive license grants, or
+
+b) once, for perpetual license grants, for the number of Instances
+stated on the Front page, or any later adjustments. See the Front page
+for further details.
+
+4 INTELLECTUAL PROPERTY RIGHTS
+
+Northern.tech and its suppliers do not by this COSL transfer any
+copyrights or other intellectual property rights relating to the
+Software to the Licensee. Such rights are protected by intellectual
+property legislation in the United States, Europe and other
+jurisdictions and by international treaty provisions. Northern.tech and its
+suppliers retain all rights in the Software that are not expressly
+granted to the Licensee through this COSL.
+
+Licensee is not allowed to remove, alter or destroy any proprietary,
+trademark or copyright markings or notices placed upon or contained
+within the Software.
+
+5 TERMINATION
+
+Northern.tech may terminate the COSL if the Licensee fails to comply with
+the terms of this COSL, hereunder fails to pay the stipulated fees. In
+the event of such termination, the Licensee shall immediately stop
+using the Software, return any received media and documentation, and
+destroy or permanently delete any installed versions of the Software,
+and confirm such destruction or deletion in writing within 7 days.
+
+6 IDEMNIFICATION
+
+If the Software (except for third party software) during the term of
+the license grant is held by a court of competent jurisdiction to
+infringe any third party intellectual property rights and the Licensee
+incurs loss or expense as a result of such holding, then Licenee's
+sole remedy shall be, and Northern.tech will, at its option: (i) obtain the
+right for Licensse to continue to use the Software consistent with the
+COSL; (ii) modify the Software so that it becomes non-infringing;
+(iii) replace the infringing component with a non-infringing
+component, or (iv) refund monies paid by Licensee under the Agreement
+during the prior six (6) months to the court holding (for consecutive
+license grants) or a forth of any perpetual license fee paid, and all
+Licensees rights and licenses under this Agreement shall automatically
+terminate.
+
+The Licensee is aware that the Software is also comprised of third
+party software, mostly open source software. Such third party software
+are subject to its individual license terms, and any claims shall be
+directed at the ultimate right holder to that software. Consequently
+Northern.tech is not liable for any defective title in such third party
+software. See schedule 5 for a list of software contained by the
+Software with related licenses.
+
+7 NO WARRANTY
+
+To the maximum extent permitted by law, Northern.tech disclaims any
+warranty for the Software (except as stated in clause 6). The
+Software, any services and any related documentation is provided on an
+"as is" basis without warranty of any kind, whether express or
+implied, including, but not limited to, implied warranties of
+merchantability, fitness for a particular purpose or non-infringement
+(except as stated in clause 6). Hereunder the parties acknowledges
+that Northern.tech does not warrant for the performance of any data centre
+on which the Software runs, or the absence of any errors in the
+Software, and that any such errors does not constitute a contractual
+defect.
+
+8 LIABILITY
+
+The liability of the parties in contract, tort (including negligence)
+or otherwise shall for all incidents during the entire term of the
+COSL be limited to a fifth of the fees paid for a perpetual license or
+the annual consecutive license fees paid for the Software causing the
+damage or loss, up to a maximum of NOK 100 000. Northern.tech or its
+suppliers shall not be liable for any special, incidental, indirect or
+consequential damages whatsoever (including, without limitation,
+damages for loss of business profits, lost savings, business
+interruption, loss of business information, personal injury, loss of
+privacy, loss of goodwill or any other financial loss) arising out of
+the use of or inability to use the Software, even if advised of the
+possibility of such damages.
+
+9 THIRD-PARTY TERMS
+
+For third-party software that is made available to the Licensee by
+Northern.tech, the current terms of the relevant third party software
+supplier shall apply.
 
 
 --------------------------------------------------------------------------------
