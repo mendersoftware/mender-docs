@@ -100,7 +100,7 @@ configuration, described in the docker-compose Update Module integration
 documentation for
 [Debian](../../04.Operating-System-updates-Debian-family/03.Customize-Mender/03.docker-compose-support)
 and
-[Yocto](../../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/02.docker-compose-Update-Module),
+[Yocto](../../05.Operating-System-updates-Yocto-Project/05.Customize-Mender/02.docker-compose-Update-Modules),
 is with Docker storing the images on a different partition, e.g. under
 `/data/docker` (hence the `data-docker` value describing this). Other options,
 for example `--depends rootfs-image.checksum:custom-value` to specify that the
