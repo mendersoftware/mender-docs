@@ -75,7 +75,7 @@ cp topology.yaml topology-payload/
 <!--AUTOVERSION: "mendersoftware/mender/%/support"/mender-->
 ```bash
 # Download the directory Update Module Artifact generator
-curl -O https://raw.githubusercontent.com/mendersoftware/mender/5.1.0/support/modules-artifact-gen/directory-artifact-gen
+curl -O https://raw.githubusercontent.com/mendersoftware/mender/5.1.1/support/modules-artifact-gen/directory-artifact-gen
 chmod +x directory-artifact-gen
 ```
 

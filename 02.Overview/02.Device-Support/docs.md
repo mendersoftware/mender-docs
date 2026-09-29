@@ -99,7 +99,7 @@ community post for steps to create one.
 
 <!--AUTOVERSION: "mender/tree/%?target=_blank"/mender -->
 You can compile the Mender Client for a wide variety of architectures. Follow the steps in the
-[README.md](https://github.com/mendersoftware/mender/tree/5.1.0?target=_blank#installing-from-source)
+[README.md](https://github.com/mendersoftware/mender/tree/5.1.1?target=_blank#installing-from-source)
 of the Mender Client source repository. This is also the first step to a board integration for other types of Linux OSes.
 
 
@@ -134,7 +134,7 @@ board from Espressif.
 <!--AUTOVERSION: "mender/tree/%?target=_blank"/mender -->
 For a POSIX compliant OS it may be possible to compile the Mender Client to run natively,
 as outlined in the
-[README.md](https://github.com/mendersoftware/mender/tree/5.1.0?target=_blank#installing-from-source).
+[README.md](https://github.com/mendersoftware/mender/tree/5.1.1?target=_blank#installing-from-source).
 
 For other types of OSes you can [create a custom Mender Client](https://hub.mender.io/t/how-to-write-a-custom-client-interfacing-a-mender-server).
 
