@@ -22,7 +22,7 @@ in the table below:
 | Mender Gateway 2.1                 | 2026-06       | Supported               |
 | Mender Gateway 2.0                 | 2025-01       | Supported until 2026-12 |
 | Mender Server 4.1                  | 2026-01       | Supported               |
-| Mender Server 4.0                  | 2025-01       | Supported until 2026-08 |
+| Mender Server 4.0                  | 2025-01       | Supported until 2026-10 |
 | Mender 3.7 (incl. Mender Client 4) | 2024-05       | EOL (since 2025-05)     |
 
 When a new LTS version is released for a component, the previous LTS
