@@ -44,9 +44,6 @@ SRC_URI:pn-mender-binary-delta = "file://${HOME}/mender-binary-delta-1.5.3.tar.x
 EOF
 ```
 
-<!--AUTOVERSION: "older than %, such as % or older"/ignore-->
-!!! If you are using a Yocto branch older than kirkstone, such as dunfell or older, you need slightly altered steps to use mender-binary-delta. See [the mender-binary-delta section on Mender Hub](https://hub.mender.io/t/robust-delta-update-rootfs/1144) for more information about this.
-
 ## Next steps
 
 For information on how to create delta update Artifacts, see [Create a Delta update Artifact](../../../08.Artifact-creation/06.Create-a-Delta-update-Artifact/docs.md).

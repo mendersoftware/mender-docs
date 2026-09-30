@@ -9,9 +9,6 @@ taxonomy:
 !!! The docker-compose Update Module is included in Mender Client 6.0 or newer.
 !!! You can find the source code in the [mender-container-modules repository](https://github.com/mendersoftware/mender-container-modules).
 
-<!--AUTOVERSION: "mender-convert %"/ignore-->
-!!! The docker-compose Update Module will be available in mender-convert 5.2.0 or newer.
-
 
 To install the docker-compose Update Module in the converted image, set:
 ```bash

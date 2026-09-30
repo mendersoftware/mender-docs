@@ -8,9 +8,6 @@ taxonomy:
 !!! The docker-compose Update Module is included in Mender Client 6.0 or newer.
 !!! You can find the source code in the [mender-container-modules repository](https://github.com/mendersoftware/mender-container-modules).
 
-<!--AUTOVERSION: "with %"/ignore -->
-!!! The docker-compose Update Module will be available in Yocto Project LTS releases supported by meta-mender, starting with scarthgap.
-
 ## Integrate `mender-docker-compose` into the Yocto environment
 
 Add the `meta-mender-extended` layer to your Yocto environment:
