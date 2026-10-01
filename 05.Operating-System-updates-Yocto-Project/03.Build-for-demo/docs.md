@@ -249,7 +249,7 @@ MACHINE = "<YOUR-MACHINE>"
 # based on the MENDER_FEATURES settings and the inherit of mender-full above.
 DISTRO_FEATURES:append = " systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
-DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
+DISTRO_FEATURES_OPTED_OUT = "sysvinit"
 VIRTUAL-RUNTIME_initscripts = ""
 
 ARTIFACTIMG_FSTYPE = "ext4"
