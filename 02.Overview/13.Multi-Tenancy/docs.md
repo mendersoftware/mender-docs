@@ -78,7 +78,7 @@ ensure that no test data interferes with production systems.
 
 ## Service Provider tenants
 
-![Service Provider](service-provider.png)
+![Service Provider](service-provider.png?sizes=783px)
 
 In Mender Server Enterprise, multi-tenancy is managed by a special type of tenant
 called the Service Provider tenant. 
