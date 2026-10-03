@@ -161,6 +161,20 @@ The maximum number of tags that can be defined per Device inventory.
 Default: `20`</br>
 Override with the Mender Server environment variable: `INVENTORY_LIMIT_TAGS`
 
+### Maximum number of tags per Release
+
+The maximum number of tags that can be assigned to a single Release.
+
+Default: `20`</br>
+Overriding this limit is not possible
+
+### Maximum number of unique Release tags per tenant
+
+The maximum number of distinct Release tag keys per tenant.
+
+Default: `100`</br>
+Overriding this limit is not possible
+
 ### Maximum size of server-side delta Artifact
 
 The maximum uncompressed size of the root file system in Mender Artifacts that you can use to trigger server-side binary delta generation.
