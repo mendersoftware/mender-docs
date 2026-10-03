@@ -1,5 +1,5 @@
 ---
-title: docker-compose Update Module
+title: docker-compose Update Modules
 taxonomy:
     category: docs
     label: tutorial
@@ -60,6 +60,46 @@ MENDER_STORAGE_TOTAL_SIZE_MB = "4096"
 EOF
 ```
 
+## Integrate `mender-delta-docker-compose` into the Yocto environment
+
+!!! The delta-docker-compose Update Module is included in Mender Client 6.1 or
+!!! newer for [Mender Professional](https://mender.io/product/features?target=_blank) and
+!!! [Mender Enterprise](https://mender.io/product/features?target=_blank) users.
+
+Download the `mender-delta-docker-compose` binaries following the
+[instructions](../../../12.Downloads/02.Device-components/docs.md#mender-delta-docker-compose).
+
+Follow the above instructions for integrating the `mender-docker-compose` Update
+Module. On top of that, also add `meta-mender-commerical` layer to your Yocto
+environment:
+
+```bash
+bitbake-layers add-layer ../sources/meta-mender/meta-mender-commercial
+```
+
+add the following to your `conf/local.conf`
+
+<!--AUTOVERSION: "mender-delta-docker-compose-%"/mender-delta-docker-compose-->
+```
+LICENSE_FLAGS_ACCEPTED:append = " commercial_mender-yocto-layer-license"
+SRC_URI:pn-mender-delta-docker-compose = "file://${HOME}/mender-delta-docker-compose-1.0.0.tar.xz"
+```
+
+and use
+
+```
+IMAGE_INSTALL:append = " mender-docker-compose mender-delta-docker-compose"
+```
+
+instead of listing `mender-docker-compose` only.
+
+!!! Although the `mender-delta-docker-compose` Update Module can work alone, it is
+!!! generally advised to include both Update Modules so that both full and delta
+!!! `docker-compose` Artifacts can be deployed to devices.
+
+
 ## Next steps
 
-For information on how to create docker-compose Artifacts, see [Create a docker-compose update Artifact](../../../08.Artifact-creation/05.Create-a-docker-compose-update-Artifact).
+For information on how to create docker-compose and delta-docker-compose
+Artifacts, see [Create a docker-compose update
+Artifact](../../../08.Artifact-creation/05.Create-a-docker-compose-update-Artifact).
