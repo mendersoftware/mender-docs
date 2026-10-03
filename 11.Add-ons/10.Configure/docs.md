@@ -27,7 +27,7 @@ On the device side, a specialized update module is responsible for applying the 
 You can find more information about the configuration update module on [Mender Hub](https://hub.mender.io).
 The picture below shows the configuration update flow.
 
-![configuration-4](configure1.png)
+![Configuration update flow](configure1.png)
 
 ## Requirements
 

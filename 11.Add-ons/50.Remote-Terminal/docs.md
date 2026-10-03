@@ -36,7 +36,7 @@ shell, or terminal. The picture below shows a simplified architecture
 with a websocket, `mender-connect`, and a shell running in a child process
 of `mender-connect` with allocated pseudo tty.
 
-![mender-connect-and-ws](mender-connect-and-ws.png)
+![mender-connect-and-ws](mender-connect-and-ws.png?sizes=794px)
 
 ## Loose coupling to Mender
 
