@@ -1,5 +1,5 @@
 ---
-title: docker-compose Update Module
+title: docker-compose Update Modules
 taxonomy:
     category: docs
     label: tutorial
@@ -73,6 +73,26 @@ To use the config defined in `configs/docker_compose_config` and the overlay in 
 !!!! See [Customization](../../02.Convert-a-Mender-Debian-image/01.Customization) for more information.
 
 
+## mender-delta-docker-compose
+
+!!! The delta-docker-compose Update Module is included in Mender Client 6.1 or
+!!! newer for [Mender Professional](https://mender.io/product/features?target=_blank) and
+!!! [Mender Enterprise](https://mender.io/product/features?target=_blank) users.
+
+Download the `mender-delta-docker-compose` binaries following the
+[instructions](../../../12.Downloads/02.Device-components/docs.md#mender-delta-docker-compose).
+
+Follow the above instructions for integrating the `mender-docker-compose` Update
+Module and add the `delta-docker-compose` Update Module to the overlay:
+
+```bash
+sudo mkdir -p input/rootfs_overlay_docker_compose/usr/share/mender/modules/v3/
+sudo cp ~/delta-docker-compose input/rootfs_overlay_docker_compose/usr/share/mender/modules/v3/
+```
+
+
 ## Next steps
 
-For information on how to create docker-compose Artifacts, see [Create a docker-compose update Artifact](../../../08.Artifact-creation/05.Create-a-docker-compose-update-Artifact).
+For information on how to create docker-compose and delta-docker-compose
+Artifacts, see [Create a docker-compose update
+Artifact](../../../08.Artifact-creation/05.Create-a-docker-compose-update-Artifact).
