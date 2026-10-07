@@ -144,8 +144,8 @@ rm -rf gateway-dump
 Create Manifests that define your target System state:
 
 ```bash
-# Create manifest-v1.yaml
-cat > manifest-v1.yaml << 'EOF'
+# Create system-core-v1.yaml
+cat > system-core-v1.yaml << 'EOF'
 api_version: "mender/v1"
 kind: "manifest"
 name: "system-core-v1"
@@ -167,8 +167,8 @@ EOF
 This will first install the gateway-v1 Artifact to the System device. Next it will install the rtos-v1 Artifact to the two rtos Components in parallel.
 
 ```bash
-# Create manifest-v2.yaml
-cat > manifest-v2.yaml << 'EOF'
+# Create system-core-v2.yaml
+cat > system-core-v2.yaml << 'EOF'
 api_version: "mender/v1"
 kind: "manifest"
 name: "system-core-v2"
@@ -197,18 +197,20 @@ Use the Manifest Artifact generator to create Mender Artifacts from your Manifes
 # Generate manifest-v1 artifact
 SYSTEM_TYPE="system-core"
 mender-orchestrator-manifest-gen \
-    --artifact-name manifest-v1 \
-    --output-path manifest-v1.mender \
+    --artifact-name system-core-v1 \
+    --output-path system-core-v1.mender \
     --system-type $SYSTEM_TYPE \
-    manifest-v1.yaml
+    system-core-v1.yaml
 
 # Generate manifest-v2 artifact
 mender-orchestrator-manifest-gen \
-    --artifact-name manifest-v2 \
-    --output-path manifest-v2.mender \
+    --artifact-name system-core-v2 \
+    --output-path system-core-v2.mender \
     --system-type $SYSTEM_TYPE \
-    manifest-v2.yaml
+    system-core-v2.yaml
 ```
+
+!!! Note that `--artifact-name` must be equal to `name` in the manifest yaml file.
 
 ### Step 5: Upload All Artifacts
 
