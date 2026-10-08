@@ -45,7 +45,7 @@ Each Manifest defines which Artifact to deploy to each Component:
 ```yaml
 api_version: "mender/v1"
 kind: "manifest"
-name: "system-core-v1"
+name: "manifest-v1"
 system_types_compatible: ["system-core"]
 
 component_types:
@@ -148,7 +148,7 @@ Create Manifests that define your target System state:
 cat > manifest-v1.yaml << 'EOF'
 api_version: "mender/v1"
 kind: "manifest"
-name: "system-core-v1"
+name: "manifest-v1"
 system_types_compatible: ["system-core"]
 
 component_types:
@@ -171,7 +171,7 @@ This will first install the gateway-v1 Artifact to the System device. Next it wi
 cat > manifest-v2.yaml << 'EOF'
 api_version: "mender/v1"
 kind: "manifest"
-name: "system-core-v2"
+name: "manifest-v2"
 system_types_compatible: ["system-core"]
 
 component_types:

@@ -30,7 +30,7 @@ For usage examples, see the [Examples section](../../06.Examples/01.Mock-compone
 
 #### Options
 
-- `--artifact-name`: Name for the generated Artifact (defaults to the manifest name)
+- `--artifact-name`: Name for the generated Artifact (must be equal to the Manifest `name`)
 - `--system-type`: System types compatible with the Artifact (can be specified multiple times for multi-platform support)
 - `--output-path`: Output file path (default: `orchestrator-manifest.mender`)
 - `manifest`: Path to the Manifest YAML file
