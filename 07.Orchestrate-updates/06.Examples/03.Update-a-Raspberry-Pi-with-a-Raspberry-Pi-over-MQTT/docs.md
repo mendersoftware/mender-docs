@@ -353,7 +353,6 @@ if you don't have it yet):
 
 ```bash
 mender-orchestrator-manifest-gen \
-    --artifact-name system-v1 \
     --output-path system-v1.mender \
     --system-type rpi-rpi-mqtt-system \
     manifest-v1.yaml
@@ -447,7 +446,6 @@ component_types:
 EOF
 
 mender-orchestrator-manifest-gen \
-    --artifact-name system-v2 \
     --output-path system-v2.mender \
     --system-type rpi-rpi-mqtt-system \
     manifest-v2.yaml

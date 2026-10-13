@@ -371,7 +371,6 @@ If you do not have the generator yet, install it as described in
 
 ```bash
 mender-orchestrator-manifest-gen \
-    --artifact-name system-v1 \
     --output-path system-v1.mender \
     --system-type rpi5-esp32-system \
     manifest-v1.yaml
@@ -468,7 +467,6 @@ component_types:
 EOF
 
 mender-orchestrator-manifest-gen \
-    --artifact-name system-v2 \
     --output-path system-v2.mender \
     --system-type rpi5-esp32-system \
     manifest-v2.yaml

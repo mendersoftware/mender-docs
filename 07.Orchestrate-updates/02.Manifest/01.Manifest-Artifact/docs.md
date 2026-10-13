@@ -26,11 +26,12 @@ Generate a Manifest Artifact from a Manifest YAML file:
 mender-orchestrator-manifest-gen [options] <manifest> [-- [mender-artifact-options]]
 ```
 
+The Artifact name is taken from the Manifest `name`.
+
 For usage examples, see the [Examples section](../../06.Examples/01.Mock-components/docs.md#step-4-generate-manifest-artifacts).
 
 #### Options
 
-- `--artifact-name`: Name for the generated Artifact (defaults to the manifest name)
 - `--system-type`: System types compatible with the Artifact (can be specified multiple times for multi-platform support)
 - `--output-path`: Output file path (default: `orchestrator-manifest.mender`)
 - `manifest`: Path to the Manifest YAML file
