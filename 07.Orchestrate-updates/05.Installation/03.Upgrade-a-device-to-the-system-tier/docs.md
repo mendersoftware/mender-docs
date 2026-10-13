@@ -161,7 +161,6 @@ or the device will not receive the deployment.
 
     ```bash
     mender-orchestrator-manifest-gen \
-        --artifact-name recovery-manifest \
         --output-path recovery-manifest.mender \
         --system-type raspberrypi5 \
         manifest.yaml
