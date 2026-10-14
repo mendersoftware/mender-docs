@@ -301,6 +301,22 @@ contain an additional `ServerURL` entry in the top level of the json
 configuration. Upon an unserved request (4XX/5XX-response codes) the client
 attempts the next server on the list in the given order.
 
+<!--AUTOVERSION: "Mender Client % or newer"/ignore "mender-update %"/ignore-->
+!!! Per-server `TenantToken` requires Mender Client 6.1.0 or newer (mender-update 5.2.0).
+
+Each entry can also set its own `TenantToken`, which takes precedence over the
+root [`TenantToken` attribute](#TenantToken) when authenticating with that
+server. The same `ServerURL` can be listed several times with different tokens
+to fall over between tenants on one server:
+
+```
+"Servers": [
+    {"ServerURL": "https://mender-server.com", "TenantToken": "<token-a>"},
+    {"ServerURL": "https://mender-server.com", "TenantToken": "<token-b>"}
+]
+```
+
+
 #### ServerURL
 
 The server URL is the basis for API requests. This needs to point to the
