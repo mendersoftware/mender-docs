@@ -16,7 +16,8 @@ in the table below:
 
 | Released component                 | Release month | Support status          |
 |------------------------------------|---------------|-------------------------|
-| Mender Client 6.0                  | 2026-03       | Supported               |
+| Mender Client 6.1                  | 2026-10       | Supported               |
+| Mender Client 6.0                  | 2026-03       | Supported until 2027-04 |
 | Mender Client 5.0                  | 2025-01       | Supported until 2026-09 |
 | Mender MCU Client 1.0              | 2026-04       | Supported               |
 | Mender Gateway 2.1                 | 2026-06       | Supported               |
@@ -132,6 +133,7 @@ of which subcomponents are included in a given Mender Client version.
 
 | Mender Client | → | mender-update | mender-auth | mender-connect | mender-monitor | mender-flash |
 | ------------- | - |-------------- | ----------- | -------------- | -------------- | ------------ |
+| 6.1           |   | 5.2           | 5.2         | 3.1            | 1.5            | 1.1          |
 | 6.0           |   | 5.1           | 5.1         | 3.0            | 1.5            | 1.1          |
 | 5.0           |   | 5.0           | 5.0         | 2.3            | 1.4            | 1.0          |
 
@@ -139,9 +141,10 @@ of which subcomponents are included in a given Mender Client version.
 The Mender Client consists of several Update Modules. See the table below for a mapping
 of which Update Modules are included in a given Mender Client version.
 
-| Mender Client | → | mender-configure | mender-binary-delta | single-file     | rootfs          | directory       | docker-compose  |
-| ------------- | - | ---------------- | ------------------- | --------------- | --------------- | --------------- | --------------- |
-| 6.0           |   | 1.1              | 1.5                 | 5.1<sup>1</sup> | 5.1<sup>1</sup> | 5.1<sup>1</sup> | 1.0             |
-| 5.0           |   | 1.1              | 1.5                 | 5.0<sup>1</sup> | 5.0<sup>1</sup> | 5.0<sup>1</sup> | -               |
+| Mender Client | → | mender-configure | mender-binary-delta | single-file     | rootfs          | directory       | docker-compose  | delta-docker-compose  |
+| ------------- | - | ---------------- | ------------------- | --------------- | --------------- | --------------- | --------------- | --------------------- |
+| 6.1           |   | 1.1              | 1.6                 | 5.2<sup>1</sup> | 5.2<sup>1</sup> | 5.2<sup>1</sup> | 1.1             | 1.0                   |
+| 6.0           |   | 1.1              | 1.5                 | 5.1<sup>1</sup> | 5.1<sup>1</sup> | 5.1<sup>1</sup> | 1.0             | -                     |
+| 5.0           |   | 1.1              | 1.5                 | 5.0<sup>1</sup> | 5.0<sup>1</sup> | 5.0<sup>1</sup> | -               | -                     |
 
 <sup>1</sup> Versioned and delivered with `mender-update`
