@@ -1461,19 +1461,19 @@ wget --auth-no-challenge --user "MENDER_ENTERPRISE_USER" --password "MENDER_ENTE
 [/ui-tabs]
 
 
-<!--AUTOVERSION: "mender-delta-docker-compose-%.tar.xz"/mender-delta-docker-compose-->
-The archive `mender-delta-docker-compose-1.0.0.tar.xz` contains the binaries needed to generate and apply deltas.
+<!--AUTOVERSION: "delta-docker-compose-%.tar.xz"/mender-delta-docker-compose-->
+The archive `delta-docker-compose-1.0.0.tar.xz` contains the binaries needed to generate and apply deltas.
 
-<!--AUTOVERSION: "mender-delta-docker-compose-%.tar.xz"/mender-delta-docker-compose-->
-Unpack the `mender-delta-docker-compose-1.0.0.tar.xz` in your home directory:
+<!--AUTOVERSION: "delta-docker-compose-%.tar.xz"/mender-delta-docker-compose-->
+Unpack the `delta-docker-compose-1.0.0.tar.xz` in your home directory:
 
-<!--AUTOVERSION: "mender-delta-docker-compose-%.tar.xz"/mender-delta-docker-compose-->
+<!--AUTOVERSION: "delta-docker-compose-%.tar.xz"/mender-delta-docker-compose-->
 ```bash
-tar -xvf mender-delta-docker-compose-1.0.0.tar.xz
+tar -xvf delta-docker-compose-1.0.0.tar.xz
 ```
 
-<!--AUTOVERSION: "mender-delta-docker-compose-%"/mender-delta-docker-compose-->
-Inside the newly created `mender-delta-docker-compose-1.0.0` you should find two
+<!--AUTOVERSION: "delta-docker-compose-%"/mender-delta-docker-compose-->
+Inside the newly created `delta-docker-compose-1.0.0` you should find two
 executable files:
 
 - `delta-docker-compose`, which is the Update Module used by the Mender Client

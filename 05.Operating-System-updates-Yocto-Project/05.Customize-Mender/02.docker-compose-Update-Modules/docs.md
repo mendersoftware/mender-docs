@@ -79,10 +79,10 @@ bitbake-layers add-layer ../sources/meta-mender/meta-mender-commercial
 
 add the following to your `conf/local.conf`
 
-<!--AUTOVERSION: "mender-delta-docker-compose-%"/mender-delta-docker-compose-->
+<!--AUTOVERSION: "delta-docker-compose-%"/mender-delta-docker-compose-->
 ```
 LICENSE_FLAGS_ACCEPTED:append = " commercial_mender-yocto-layer-license"
-SRC_URI:pn-mender-delta-docker-compose = "file://${HOME}/mender-delta-docker-compose-1.0.0.tar.xz"
+SRC_URI:pn-mender-delta-container-modules = "file://${HOME}/delta-docker-compose-1.0.0.tar.xz"
 ```
 
 and use
