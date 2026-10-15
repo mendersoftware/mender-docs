@@ -1437,9 +1437,9 @@ Now, download the archive with the following command:
 
 <!--AUTOMATION: execute=HOSTED_MENDER_EMAIL="$HOSTED_MENDER_IO_USERNAME" -->
 <!--AUTOMATION: execute=HOSTED_MENDER_PASSWORD="$HOSTED_MENDER_IO_PASSWORD" -->
-<!--AUTOVERSION: "mender-delta-docker-compose/yocto/%/mender-delta-docker-compose-%.tar.xz"/mender-delta-docker-compose-->
+<!--AUTOVERSION: "mender-delta-container-modules/yocto/%/delta-docker-compose-%.tar.xz"/mender-delta-docker-compose-->
 ```bash
-wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-delta-docker-compose/yocto/1.0.0/mender-delta-docker-compose-1.0.0.tar.xz
+wget --auth-no-challenge --user "$HOSTED_MENDER_EMAIL" --password "$HOSTED_MENDER_PASSWORD" https://downloads.customer.mender.io/content/hosted/mender-delta-container-modules/yocto/1.0.0/delta-docker-compose-1.0.0.tar.xz
 ```
 [/ui-tab]
 [ui-tab title="enterprise"]
@@ -1453,9 +1453,9 @@ MENDER_ENTERPRISE_PASSWORD=<yoursecurepassword>
 Now, download the archive with the following command:
 
 <!--AUTOMATION: ignore -->
-<!--AUTOVERSION: "mender-delta-docker-compose/yocto/%/mender-delta-docker-compose-%.tar.xz"/mender-delta-docker-compose-->
+<!--AUTOVERSION: "mender-delta-container-modules/yocto/%/delta-docker-compose-%.tar.xz"/mender-delta-docker-compose-->
 ```bash
-wget --auth-no-challenge --user "MENDER_ENTERPRISE_USER" --password "MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-delta-docker-compose/yocto/1.0.0/mender-delta-docker-compose-1.0.0.tar.xz
+wget --auth-no-challenge --user "MENDER_ENTERPRISE_USER" --password "MENDER_ENTERPRISE_PASSWORD" https://downloads.customer.mender.io/content/on-prem/mender-delta-container-modules/yocto/1.0.0/delta-docker-compose-1.0.0.tar.xz
 ```
 [/ui-tab]
 [/ui-tabs]
