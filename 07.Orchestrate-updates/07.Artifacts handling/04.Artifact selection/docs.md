@@ -64,14 +64,14 @@ The Artifact `rtos-v2` has:
 
 | `artifact_provides` | `artifact_depends` |
 |---------------------|--------------------|
-| `rootfs-image.rtos-interface.version: rtos-v2` | `rootfs-image.rtos-interface.version: [rtos-v1]` |
+| `version: rtos-v2` | `version: [rtos-v1]` |
 
 Mender Orchestrator runs the steps for each Component:
 
 | Component | `Provides` | 1. Installed? | 2. Depends met? | Result |
 |-----------|------------|---------------|-----------------|--------|
-| `R123` | `rootfs-image.rtos-interface.version=rtos-v1` | no | yes | Artifact selected |
-| `R456` | `rootfs-image.rtos-interface.version=rtos-v2` | yes | - | left unchanged |
-| `R789` | `rootfs-image.rtos-interface.version=rtos-v0` | no | no | no candidate, update fails |
+| `R123` | `version=rtos-v1` | no | yes | Artifact selected |
+| `R456` | `version=rtos-v2` | yes | - | left unchanged |
+| `R789` | `version=rtos-v0` | no | no | no candidate, update fails |
 
 With `R789` in the Topology the update fails before any Component is modified. Without it, `R123` is updated and `R456` is skipped. Step 3 only matters when more than one Artifact is compatible with the Component type, for example a full image and a smaller patch.

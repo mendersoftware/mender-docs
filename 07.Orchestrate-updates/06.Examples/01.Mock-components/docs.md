@@ -79,10 +79,14 @@ touch $PAYLOAD
 mender-artifact \
   write module-image \
   --type $INTERFACE \
+  --artifact-name $VERSION \
   --compatible-types $COMPONENT_TYPE \
+  --provides version:$VERSION \
+  --clears-provides version.* \
+  --no-default-clears-provides \
+  --no-default-software-version \
   --file $PAYLOAD \
-  --output-path $VERSION.mender \
-  --artifact-name $VERSION
+  --output-path $VERSION.mender
 
 rm $PAYLOAD
 ```
@@ -98,10 +102,14 @@ touch $PAYLOAD
 mender-artifact \
   write module-image \
   --type $INTERFACE \
+  --artifact-name $VERSION \
   --compatible-types $COMPONENT_TYPE \
+  --provides version:$VERSION \
+  --clears-provides version.* \
+  --no-default-clears-provides \
+  --no-default-software-version \
   --file $PAYLOAD \
-  --output-path $VERSION.mender \
-  --artifact-name $VERSION
+  --output-path $VERSION.mender
 
 rm $PAYLOAD
 ```
