@@ -331,6 +331,11 @@ scripts](../../03.Client-installation/04.Inventory/docs.md). This consists of
 "key=value" pairs, with no spaces, separated by newlines. Printing list data is
 supported by using the same key multiple times.
 
+Since Components do not necessarily run the Mender Client, the Interfaces do not supply default version information as it's described in [Software
+versioning](../../08.Artifact-creation/11.Software-versioning/docs.md). Each Interface is responsible for returning a `version=(currently-installed-version)` key-value pair via its Inventory query output. This data is required by the Server UI to accurately display the version currently installed on the device.
+
+!! The `version` key is a mandatory part of the Inventory query output. Without it, no Inventory information is transmitted to the Server and no new Artifacts can be deployed to Components.
+
 #### `Provides` query
 
 The `Provides` query is not called as part of an installation, but as a means to
@@ -340,13 +345,6 @@ and ID. See [Software
 versioning](../../08.Artifact-creation/11.Software-versioning/docs.md) for
 more information about what Provides values are, and see [Execution](#execution)
 below to find out how the type and ID are obtained.
-
-Since Components do not necessarily run the Mender Client, the Interfaces do not supply default version information as it's described in [Software
-versioning](../../08.Artifact-creation/11.Software-versioning/docs.md). Each Interface is responsible for returning a `rootfs-image.<INTERFACE_NAME>.version=(currently-installed-version)` key-value pair via its Provides query output. This data is required by the Server UI to accurately display the version currently installed on the device.
-
-!!! Components running Mender, like the System Device, report `rootfs-image.version` automatically. In these cases, providing an additional `rootfs-image.<INTERFACE_NAME>.version` field is prohibited. See [Compatibility checks](../07.Artifacts%20handling/03.Compatibility%20checks/docs.md) for more information.
-
-!! The `rootfs-image.<INTERFACE_NAME>.version` / `rootfs-image.version` key is a mandatory part of the Provides query output. Without it, no Inventory information is transmitted to the Server and no new Artifacts can be deployed to Components.
 
 !! Returning a `device_type` field in `Provides` command output is prohibited. See [Compatibility checks](../07.Artifacts%20handling/03.Compatibility%20checks/docs.md#topologys-component_type-and-artifacts-device_type-relationship) for more information.
 

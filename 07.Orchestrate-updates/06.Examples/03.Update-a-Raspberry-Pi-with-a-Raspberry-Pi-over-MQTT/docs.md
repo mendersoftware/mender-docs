@@ -393,7 +393,7 @@ versions in the Server UI or from **Raspberry Pi #1**:
 sudo mender-orchestrator show-provides
 ```
 
-You should see Raspberry Pi #1 reporting `rpi1-v1` and Raspberry Pi #2's
+You should see Raspberry Pi #1 reporting `rootfs-image.rpi1-v1` and Raspberry Pi #2's
 Component ID (`rpi2-component`) reporting `rootfs-image.version=rpi2-v1`. You
 can confirm independently on **Raspberry Pi #2** itself:
 

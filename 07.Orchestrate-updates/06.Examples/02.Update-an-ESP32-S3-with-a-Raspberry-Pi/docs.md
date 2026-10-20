@@ -72,7 +72,7 @@ Next, tell the Mender Client that this device runs in the system tier. Edit
 Restart the Mender Client so the change takes effect:
 
 ```bash
-sudo systemctl restart mender-updated
+sudo systemctl restart mender-updated mender-authd
 ```
 
 Confirm the device's built-in device type, which we use later as the
@@ -90,6 +90,13 @@ Accept the device in Mender Server.
 
 The `esp32` Interface, which flashes firmware over USB serial with `esptool.py`,
 ships in the `mender-orchestrator-demo` package.
+
+Install `python3-paho-mqtt` first:
+
+```bash
+sudo apt-get update
+sudo apt-get install -y python3-paho-mqtt
+```
 
 Install the demo package on the Raspberry Pi by following the
 [Debian family installation instructions](../../05.Installation/02.Debian-family/docs.md#demo-package-optional).
@@ -297,17 +304,20 @@ VERSION=esp32-v1
 mender-artifact write module-image \
   --type $INTERFACE \
   --compatible-types $COMPONENT_TYPE \
+  --provides version:$VERSION \
+  --clears-provides version.* \
+  --no-default-clears-provides \
+  --no-default-software-version \
   --artifact-name $VERSION \
   --file zephyr.bin \
   --output-path $VERSION.mender
 ```
 
-`mender-artifact` automatically records the version as
-`rootfs-image.esp32.version=esp32-v1` in the Artifact, derived from the payload
-type (`esp32`) and the Artifact name. The `esp32` Interface reports the same
-`rootfs-image.esp32.version` field through its `Provides` query, so the
-Orchestrator can tell which firmware a Component runs and skip it when it is
-already up to date.
+Notice the override of the Provides information. Because we update the Component that
+is not running mender-update, the Provides data is not stored in Mender's database.
+In this case, what the Artifact Provides is custom, as long as the `esp32` Interface
+reports the same `version` field through its `Provides` query, so the Orchestrator
+can tell which firmware version a Component runs and skip it when it is already up to date.
 
 ### Raspberry Pi system Artifact
 
@@ -401,7 +411,7 @@ sudo mender-orchestrator show-provides
 ```
 
 You should see the Raspberry Pi reporting `rpi5-v1` and the ESP32-S3
-Component reporting `rootfs-image.esp32.version=esp32-v1`, listed under its
+Component reporting `version=esp32-v1`, listed under its
 component ID. You can also see this information under the Raspberry Pi's **Software**
 tab in hosted Mender.
 
@@ -436,8 +446,12 @@ Create the version 2 firmware Artifact:
 ```bash
 VERSION=esp32-v2
 mender-artifact write module-image \
-  --type esp32 \
-  --compatible-types esp32s3 \
+  --type $INTERFACE \
+  --compatible-types $COMPONENT_TYPE \
+  --provides version:$VERSION \
+  --clears-provides version.* \
+  --no-default-clears-provides \
+  --no-default-software-version \
   --artifact-name $VERSION \
   --file zephyr.bin \
   --output-path $VERSION.mender
