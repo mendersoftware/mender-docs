@@ -109,6 +109,8 @@ Depending of the nature of the change the following will happen:
 * the number of devices in the dynamic group increases - last phase expands to contain all remaining device.
 * the number of devices in the dynamic group decreases - the entire group (potentially) gets updated before all the phases end
 
+In case of an empty dynamic group at the time of deployment creation, we do not allow to specify a rollout pattern.
+
 !! The exact time a specific device receives a deployed Artifact is not determined by the server, but the concrete moment the device contacts the server following its polling cycle.
 !! This means it is possible that devices which joined the group after the Deployment started, get updated as part of the first phase.
 
