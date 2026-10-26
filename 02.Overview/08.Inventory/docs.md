@@ -115,6 +115,12 @@ per day. See [Limits](../18.Limits/docs.md#test-devices) for the exact values.
 ## Limitations
 
 Each device can upload up to 100 inventory attributes in a single inventory update.
+This limit applies to every attribute in the *inventory* scope, including those
+reported by the built-in inventory scripts, such as the Artifact provides
+(`artifact_name`, `rootfs-image.version`, ...) and `device_type`. Attributes in the
+*identity* and *system* scopes do not count toward it. If an update exceeds the limit,
+the Mender Server rejects the whole update. See
+[Limits](../18.Limits/docs.md#maximum-number-of-inventory-attributes-per-device).
 
 When indexing, the Mender Server considers up to 100 different inventory attributes' names
 uploaded by the devices. It will ignore all the additional inventory attributes' names.
