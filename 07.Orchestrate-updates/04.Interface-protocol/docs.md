@@ -334,6 +334,8 @@ supported by using the same key multiple times.
 Since Components do not necessarily run the Mender Client, the Interfaces do not supply default version information as it's described in [Software
 versioning](../../08.Artifact-creation/11.Software-versioning/docs.md). Each Interface is responsible for returning a `version=(currently-installed-version)` key-value pair via its Inventory query output. This data is required by the Server UI to accurately display the version currently installed on the device.
 
+In addition, all attributes reported by Components can be used to [create device filters](../10.Inventory/docs.md).
+
 !! The `version` key is a mandatory part of the Inventory query output. Without it, no Inventory information is transmitted to the Server and no new Artifacts can be deployed to Components.
 
 #### `Provides` query
