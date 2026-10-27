@@ -52,7 +52,8 @@ A Component is a logical unit that can be updated independently. Components are 
 Each Component is defined in the [Topology](../03.Topology/docs.md).
 
 We also define a `System device` as the Component that runs Mender Orchestrator and communicates with the Mender Server.
-A System can only ever have exactly one Device in this taxonomy. In the context of this introduction, the Telematic Control
+A System can only ever have exactly one Device in this taxonomy. The System device is identified
+by its use of the `rootfs-image` Interface. In the context of this introduction, the Telematic Control
 Unit functions as the System device.
 
 ### Update process
