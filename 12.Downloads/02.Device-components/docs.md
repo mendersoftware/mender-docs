@@ -382,8 +382,6 @@ sudo dpkg -i mender-monitor-demo_1.5.0-1+debian+trixie_all.deb
 !!!!! See [the Mender plans page](https://mender.io/pricing/plans?target=_blank)
 !!!!! for an overview of all Mender plans and features.
 
-!! This is a preview of Mender's support for Orchestrated updates. It is not yet recommended for production use.
-
 Mender offers [Mender Orchestrator](../../07.Orchestrate-updates/01.Overview/docs.md) which enables
 coordinating OTA updates across a System of multiple Components. It applies updates in a
 defined order and rolls back all Components if any part of the deployment fails, leaving the System as a whole in a well defined state.

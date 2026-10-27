@@ -4,8 +4,6 @@ taxonomy:
     category: docs
 ---
 
-!! This section is a preview of Mender's support for Orchestrated updates using mender-orchestrator. It is not yet recommended for production use. Also, expect the APIs and configurations to evolve as the implementation matures.
-
 !!! Devices running Mender Orchestrator must use the **system** [device tier](../../02.Overview/17.Device-tiers/docs.md). The system tier is specifically designed for devices that coordinate updates across multiple components.
 
 Mender Orchestrator is the software responsible for updating the Components in a System.
