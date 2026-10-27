@@ -11,7 +11,7 @@ taxonomy:
 **Prerequisites**: The `mender-artifact` tool must be installed on your workstation. Follow the [installation instructions here](../../../12.Downloads/01.Workstation-tools/docs.md#mender-artifact).
 
 Download the generator tool from the repository:
-<!--AUTOVERSION: "/mender-orchestrator-support/%"/mender-orchestrator-support -->
+<!--AUTOVERSION: "/mender-orchestrator-support/%"/mender-orchestrator -->
 ```bash
 curl -O https://raw.githubusercontent.com/mendersoftware/mender-orchestrator-support/0.6.0/modules/mender-orchestrator-manifest/module-artifact-gen/mender-orchestrator-manifest-gen
 chmod +x mender-orchestrator-manifest-gen
