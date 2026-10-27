@@ -369,8 +369,6 @@ Where `<component_id>` is a unique identifier for this Component instance. For e
 id=R123
 ```
 
-**Note:** The Component ID returned by `Identity` becomes the unique identifier for this Component and is used in all subsequent Interface calls as well as in the work directory structure.
-
 
 File API
 --------
@@ -581,7 +579,7 @@ For example:
 
 ```bash
 # Normal update state call
-update-module \
+update-interface \
     ArtifactInstall \
     /data/mender/modules/0000 \
     component_type
