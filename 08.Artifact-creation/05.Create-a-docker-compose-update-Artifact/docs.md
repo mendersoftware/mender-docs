@@ -247,3 +247,6 @@ Artifact, however, it is advised to compare the result to a result of running
 the generator without the option and consider which delta Artifact to use
 because layer deltas are expensive to resolve on the device (and `xdelta3` is
 required on the device, as mentioned above).
+
+### Server side Delta docker-compose update Artifact generation
+

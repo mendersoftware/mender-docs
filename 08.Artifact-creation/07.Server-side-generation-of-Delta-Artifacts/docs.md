@@ -8,6 +8,12 @@ taxonomy:
 !!! The server-side delta feature is available only for the Enterprise plan, and we enable it by default for all the Enterprise tenants.
 
 Mender Enterprise supports the server-side generation of Delta Artifacts.
+This includes both the full rootfs and the docker-compose updates.
+In both cases the mechanism is exactly the same: the decision to generate the Delta Artifact
+is based on [the configuration of the deployment](#enabling-the-server-side-generation-of-delta-artifacts),
+the [device provides field](#requirements-on-a-device),
+and the existing Artifacts available to the server.
+
 This document explains the prerequisites to enable this feature and how it works.
 
 ## Prerequisites
@@ -48,6 +54,15 @@ mender-artifact write bootstrap-artifact \
     --output-path mender-binary-delta-provide-keys.mender
 ```
 
+In case of the docker-compose Artifacts the provides needs to send different keys, looking like:
+```
+mender-docker-compose.PROJECT_NAME.checksum:424b91e781f582a84db80d361864b93cda436dc2aaff237759b6fc1c01065555
+rootfs-image.update-module.docker-compose.version:1.0.0
+```
+where `PROJECT_NAME` stands for the name of the docker-compose project.
+These are provided here for reference; you should use the provided method of [creation of the docker compose artifacts section](../05.Create-a-docker-compose-update-Artifact/docs.md#generate-the-artifact),
+unless you know exactly what you are doing.
+
 The Artifact can be installed in standalone mode or remotely deployed with the Mender Server.
 
 <!--AUTOVERSION: "mender-artifact/blob/%"/ignore-->
@@ -57,7 +72,7 @@ Additionally, to make the server-side generation of Delta Artifacts possible, th
 
 ### Enabling the server-side generation of Delta Artifacts
 
-You can enable this feature by selecting the option "Generate and deploy Delta Artifacts (where available)" when you create a deployment for your devices. This option will enable the server-side generation of Delta Artifacts when turned on.
+You can enable this feature by selecting the option "Generate and deploy Delta Artifacts (where available)" when you create a deployment for your devices. This option will enable the server-side generation of Delta Artifacts for both docker-compose and rootfs when turned on.
 
 ![Mender logo](deployment.png)
 
@@ -79,6 +94,7 @@ Please note that if the Server cannot generate the Delta Artifact, it will autom
 ### Configuration settings
 
 You can customize the Delta Artifact generation settings in the Global settings of your tenant.
+They only apply to the rootfs deltas, and have no effects for the docker-compose artifacts.
 You can specify a timeout for the generation job; the Mender Server will serve the full image if the server-side generation of the Delta Artifact takes more than the given amount of seconds.
 You can also set the xDelta3 arguments to customize the Delta generation and the compression level.
 Please refer to the [Create a Delta update Artifact](../06.Create-a-Delta-update-Artifact/docs.md/) chapter for more information about the available options.
@@ -91,13 +107,13 @@ The settings apply to the newly generated Delta Artifacts only. Existing Delta A
 
 The Mender Server will trigger the generation of a binary delta Artifact and offer it for deployment only if all the following conditions are met:
 
-* The device reports `rootfs.version`
-* The device reports `rootfs.chksum`
-* There exists a full rootfs Artifact in the tenant account that exactly matches the reported `rootfs.version` and `rootfs.chksum`
-* The device has reported the existence of the `mender-binary-delta` module in its available `update_modules`
+* The device reports `rootfs.version` (`rootfs-image.update-module.docker-compose.version`)
+* The device reports `rootfs.chksum` (`mender-docker-compose.PROJECT_NAME.checksum`)
+* There exists a full rootfs (`docker-compose`) Artifact in the tenant account that exactly matches the reported `rootfs.version` (`rootfs-image.update-module.docker-compose.version`) and `rootfs.chksum` (`mender-docker-compose.PROJECT_NAME.checksum`)
+* The device has reported the existence of the `mender-binary-delta` (`docker-compose`) module in its available `update_modules`
 
 If any of these conditions are not met, the server will not trigger the generation of a binary delta Artifact,
-and the device will download a full rootfs-image instead of the delta, as you can see in the Deployment report's Artifact size.
+and the device will download a full rootfs-image (docker-compose image) instead of the delta, as you can see in the Deployment report's Artifact size.
 
 ### Troubleshooting server-side delta generation
 
@@ -129,6 +145,16 @@ artifact_name=your-artifact-name
 under `rootfs-image.version` and `rootfs-image.checksum` has a matching Artifact available on the Mender Server.
 You can do that by searching the releases. The above also shows the `rootfs-image.update-module.mender-binary-delta.mender_update_module` and
 `rootfs-image.update-module.mender-binary-delta.version` as they should be in order for the generation to start.
+
+At the same time, the device can report additional provides key-value pairs:
+```shell
+mender-docker-compose.PROJECT_NAME.checksum=424b91e781f582a84db80d361864b93cda436dc2aaff237759b6fc1c01065555
+rootfs-image.update-module.docker-compose.version=1.0.0
+```
+which are used to match the Artifact available on the Mender Server exactly in the same way.
+The decision which Artifact to use for the server-side delta generation is made based on the update type chosen
+for the deployment (the `docker-compose` update type will trigger the server-side delta generation along the different
+path of the docker compose delta update).
 
 #### Artifact size limit
 
