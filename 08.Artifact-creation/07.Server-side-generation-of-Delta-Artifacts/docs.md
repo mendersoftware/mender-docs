@@ -55,6 +55,7 @@ mender-artifact write bootstrap-artifact \
 ```
 
 In case of the docker-compose Artifacts the provides needs to send different keys, looking like:
+<!--AUTOVERSION: "rootfs-image.update-module.docker-compose.version:%"/ignore -->
 ```
 mender-docker-compose.PROJECT_NAME.checksum:424b91e781f582a84db80d361864b93cda436dc2aaff237759b6fc1c01065555
 rootfs-image.update-module.docker-compose.version:1.0.0
@@ -147,6 +148,7 @@ You can do that by searching the releases. The above also shows the `rootfs-imag
 `rootfs-image.update-module.mender-binary-delta.version` as they should be in order for the generation to start.
 
 At the same time, the device can report additional provides key-value pairs:
+<!--AUTOVERSION: "rootfs-image.update-module.docker-compose.version=%"/ignore -->
 ```shell
 mender-docker-compose.PROJECT_NAME.checksum=424b91e781f582a84db80d361864b93cda436dc2aaff237759b6fc1c01065555
 rootfs-image.update-module.docker-compose.version=1.0.0
