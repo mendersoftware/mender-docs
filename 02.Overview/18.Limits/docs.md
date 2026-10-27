@@ -154,6 +154,15 @@ Override with the Mender Server environment variable: `DEPLOYMENTS_LIMIT_MAX_ACT
 
 ! Warning: This limit is set to **800** active deployments per tenant on hosted Mender.
 
+### Maximum number of inventory attributes per Device
+
+The maximum number of attributes in the *inventory* scope that a Device can report.
+Exceeding it rejects the whole inventory update. Tags, and attributes in the *identity*
+and *system* scopes, do not count toward this limit.
+
+Default: `100`</br>
+Override with the Mender Server environment variable: `INVENTORY_LIMIT_ATTRIBUTES`
+
 ### Maximum number of tags per Device
 
 The maximum number of tags that can be defined per Device inventory.
