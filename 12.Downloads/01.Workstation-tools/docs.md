@@ -17,6 +17,7 @@ Right now we support two package repositories: `workstation-tools` and `device-c
 Workstation tools repo contains:
 * mender-artifact
 * mender-cli
+* mender-docker-compose-generator
 
 !!! If you want the bleeding edge version of software, you can use our
 !!! `experimental` repository by replacing `stable` with `experimental` in
@@ -188,3 +189,24 @@ brew install mender-cli
 !!! `mender-cli` binary is shipped also in [Docker image](https://hub.docker.com/r/mendersoftware/mender-ci-tools). More information [here](../../08.Artifact-creation/12.CI-CD/docs.md#mender-ci-workflows-docker-image).
 
 
+
+
+## mender-docker-compose-generator
+
+The `mender-docker-compose-generator` package provides the `gen_docker-compose`
+Artifact generator, used to create docker-compose Artifacts.
+See [Create a docker-compose update Artifact](../../08.Artifact-creation/05.Create-a-docker-compose-update-Artifact/docs.md)
+for more information on how to use it.
+
+### Install using the APT repository
+
+`mender-docker-compose-generator` is available in the APT repository.
+Follow the steps in [Set up the APT repository](#set-up-the-apt-repository) chapter to enable the repository and install `mender-docker-compose-generator`.
+
+Update the package index and install the docker-compose Artifact generator:
+
+<!--AUTOMATION: ignore -->
+```bash
+sudo apt-get update
+sudo apt-get install mender-docker-compose-generator
+```

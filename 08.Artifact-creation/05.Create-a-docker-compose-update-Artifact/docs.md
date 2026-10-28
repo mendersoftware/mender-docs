@@ -18,20 +18,14 @@ Module from [mender-container-modules](https://github.com/mendersoftware/mender-
 This tutorial assumes:
 
 * You have installed [mender-artifact](../../12.Downloads/01.Workstation-tools/docs.md#mender-artifact) on your workstation
-* You have installed `skopeo` on your workstation for downloading container images from registries
 
 #### Install the Artifact generator
 
-Download the Artifact generator from the repository:
-<!--AUTOVERSION: "/mender-container-modules/%/"/mender-container-modules -->
-```bash
-curl -O https://raw.githubusercontent.com/mendersoftware/mender-container-modules/1.1.0/src/gen_docker-compose
-chmod +x gen_docker-compose
-```
+Install the [mender-docker-compose-generator](../../12.Downloads/01.Workstation-tools/docs.md#mender-docker-compose-generator) package on your workstation.
 
 Verify the installation:
 ```bash
-./gen_docker-compose --help
+gen_docker-compose --help
 ```
 
 ### Basic usage
@@ -64,7 +58,7 @@ EOF
 To list available architectures for the images in your manifests:
 
 ```bash
-./gen_docker-compose \
+gen_docker-compose \
     --list-architectures \
     --manifests-dir manifests/
 ```
@@ -72,7 +66,7 @@ To list available architectures for the images in your manifests:
 Create the Artifact by for your target device by specifying the artifact name, compatible types, architecture, manifests directory, and project name:
 
 ```bash
-./gen_docker-compose \
+gen_docker-compose \
     --artifact-name docker-compose-artifact-v1 \
     --device-type raspberrypi5 \
     --architecture arm64 \
@@ -167,7 +161,7 @@ The filename doesn't need to follow a specific format, but it's helpful to use a
 Now generate the Artifact using the `--images-dir` option:
 
 ```bash
-./gen_docker-compose \
+gen_docker-compose \
     --artifact-name docker-compose-artifact-v1 \
     --device-type raspberrypi5 \
     --manifests-dir manifests/ \
