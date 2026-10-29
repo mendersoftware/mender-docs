@@ -24,12 +24,12 @@ __A working OIDC flow with Mender requires the following__:
 * The `Client ID` and `Client Secret` of your OIDC Application if your IdP requires it (this is typically the case).
 * The OIDC Application must be allowed to issue `ID Tokens`. This is sometimes disabled by default, but is required by the Mender OIDC implementation.
 * `ID Tokens` issued by the Application must include the optional claim `email`. Mender uses this claim to lookup users by their email and any tokens that do not include the `email` claim will be rejected.
-* Redirect URI(s) configured in the OIDC Application to allow redirects back to Mender after a successful login. The URIs that must be configured are made available [after Mender provider creation](#redirect-uris) below.
+* Redirect URI(s) configured in the OIDC Application to allow redirects back to Mender after a successful login. See [Redirect URIs](#redirect-uris) below for how to obtain the URI to configure.
 
 
 ### Create a provider
 
-The first step is to create a Mender _provider_ that stores all the settings needed to initiate and complete the OIDC flow. You can create an OIDC provider in Mender through the UI by accessing the [Organization and billing](https://hosted.mender.io/ui/settings/organization-and-billing) view, enabling Single Sign-On, choosing OpenID Connect and provide the necessary settings as described below. Alternatively you can create an OIDC provider in Mender via API call to the [/sso/idp/metadata](https://docs.mender.io/api/#management-api-user-administration-and-authentication-post-saml--openid-connect-metadata--or-url-point-to-them)
+The first step is to create a Mender _provider_ that stores all the settings needed to initiate and complete the OIDC flow. You can create an OIDC provider in Mender through the UI by accessing the [Organization](https://hosted.mender.io/ui/settings/organization) settings view, clicking "Set up SSO" in the "Single Sign-On" section, choosing OpenID Connect, clicking "Upload or edit metadata" and providing the necessary settings as described below. Alternatively you can create an OIDC provider in Mender via API call to the [/sso/idp/metadata](https://docs.mender.io/api/#management-api-user-administration-and-authentication-post-saml--openid-connect-metadata--or-url-point-to-them)
 endpoint.
 
 __The well-known endpoint__  
@@ -146,15 +146,19 @@ If you prefer to provider the information Mender requires manually you can leave
 ! ```
 
 
-After successfully creating the Mender OIDC provider, the UI will present you with a start URL that looks like this: `https://hosted.mender.io/api/management/v1/useradm/oidc/<your provider id>/start`. This is the URL your users must use to initiate the OpenID Connect login process.
+### Start URL
+
+When you select OpenID Connect in the "Single Sign-On" section of the "Organization" settings view, the UI shows a Start URL that looks like this: `https://hosted.mender.io/api/management/v1/useradm/oidc/<your provider id>/start`. This is the URL your users must use to initiate the OpenID Connect login process.
 
 ### Redirect URIs
 
-Once you have the Mender OpenID Connect provider created you need to do the final step of the configuration. The Application you created in the [pre-requisites section](#pre-requisites) needs to be configured to allow redirects back to Mender.
+The Application you created in the [pre-requisites section](#pre-requisites) needs to be configured to allow redirects back to Mender.
 
-The Redirect URI you need to configure in your IdP Application is identical to the start URL above, except that it ends with `/login` instead of `/start`:
+The Redirect URI you need to configure in your IdP Application is shown as the Callback URL next to the Start URL in the "Single Sign-On" section of the "Organization" settings view. Both URLs are available before you create the Mender provider, so you can configure your IdP Application first. You can also retrieve them using the [Management API](https://docs.mender.io/api/#management-api-user-administration-and-authentication-lists-all-sso-connection-endpoints).
+
+The Callback URL is identical to the Start URL, except that it ends with `/login` instead of `/start`:
 ```bash
-# If your login URL is
+# If your Start URL is
 https://hosted.mender.io/api/management/v1/useradm/oidc/a82a2e98-833e-4a5a-9856-1e838702a35d/start
 # you need to add
 https://hosted.mender.io/api/management/v1/useradm/oidc/a82a2e98-833e-4a5a-9856-1e838702a35d/login
