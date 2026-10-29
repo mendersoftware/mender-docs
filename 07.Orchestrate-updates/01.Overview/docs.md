@@ -4,8 +4,6 @@ taxonomy:
     category: docs
 ---
 
-!! This section is a preview of Mender's support for Orchestrated updates using mender-orchestrator. It is not yet recommended for production use. Also, expect the APIs and configurations to evolve as the implementation matures.
-
 !!! Devices running Mender Orchestrator must use the **system** [device tier](../../02.Overview/17.Device-tiers/docs.md). The system tier is specifically designed for devices that coordinate updates across multiple components.
 
 Mender Orchestrator is the software responsible for updating the Components in a System.
@@ -54,7 +52,8 @@ A Component is a logical unit that can be updated independently. Components are 
 Each Component is defined in the [Topology](../03.Topology/docs.md).
 
 We also define a `System device` as the Component that runs Mender Orchestrator and communicates with the Mender Server.
-A System can only ever have exactly one Device in this taxonomy. In the context of this introduction, the Telematic Control
+A System can only ever have exactly one Device in this taxonomy. The System device is identified
+by its use of the `rootfs-image` Interface. In the context of this introduction, the Telematic Control
 Unit functions as the System device.
 
 ### Update process
@@ -103,4 +102,4 @@ The Mender Client will use the System type as its Type in two specific cases:
 2. when installing Manifest Artifacts, i.e. Artifacts with the payload type set to `mender-orchestrator-manifest`
 
 The regular Device type will be used in all other cases. This allows a System device to receive and install Manifests
-by checking the System type compatibility when needed. It also allows a System device to receive regular rootfs Updates.
+by checking the System type compatibility when needed. It also allows a System device to receive regular rootfs Updates as part of an Orchestrated deployment.

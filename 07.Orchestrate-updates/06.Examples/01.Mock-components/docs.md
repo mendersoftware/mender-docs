@@ -222,16 +222,16 @@ Upload all your created Artifacts to hosted Mender:
 
 1. Go to your hosted Mender **Software** section
 2. Upload all the artifacts you just created:
-   - `gateway-v1.mender`, `gateway-v2.mender`
-   - `rtos-v1.mender`, `rtos-v2.mender`
-   - `manifest-v1.mender`, `manifest-v2.mender`
+   - `gateway-v1.mender`, `gateway-v2.mender` (Releases tab)
+   - `rtos-v1.mender`, `rtos-v2.mender` (Releases tab)
+   - `manifest-v1.mender`, `manifest-v2.mender` (Manifests tab)
 
 ### Step 6: System Update Example
 
 Deploy a Manifest to update the entire System:
 
 1. Create a deployment in hosted Mender
-2. Select `manifest-v1` as the Release
+2. Select `manifest-v1` as the Software
 3. Deploy to your device
 
 **What happens:**
@@ -253,15 +253,13 @@ gateway.52:54:00:1d:94:82.artifact_name=gateway-v1
 gateway.52:54:00:1d:94:82.data-partition.mender-orchestrator-manifest.version=manifest-v1
 gateway.52:54:00:1d:94:82.device_type=qemux86-64
 gateway.52:54:00:1d:94:82.rootfs-image.version=gateway-v1
-rtos.R123.device_type=rtos
 rtos.R123.version=rtos-v1
-rtos.R456.device_type=rtos
 rtos.R456.version=rtos-v1
 ```
 
 You should see something similar to the output above. We can see that the System device reports
 `gateway-v1` as its version, and that the two rtos Components report `rtos-v1`. You can
-also see this information by navigating to your System device's Software tab in hosted Mender.
+also see this information by navigating to your device's System tab in hosted Mender.
 
 ### Step 7: Testing Update Failures
 
@@ -303,8 +301,6 @@ Test the rollback behavior when a Component update fails:
     gateway.52:54:00:1d:94:82.device_type=qemux86-64
     gateway.52:54:00:1d:94:82.rootfs-image.checksum=83c6b1eee18dc7e3ac2f47a601bdbd93093785be9220bf386e05c7782affa209
     gateway.52:54:00:1d:94:82.rootfs-image.version=gateway-v2
-    rtos.R123.device_type=rtos
     rtos.R123.version=rtos-v2
-    rtos.R456.device_type=rtos
     rtos.R456.version=rtos-v2
     ```

@@ -391,15 +391,15 @@ mender-orchestrator-manifest-gen \
 Upload the three Artifacts you created to hosted Mender. Go to the **Software**
 section and upload:
 
-* `rpi5-v1.mender` - the Raspberry Pi root filesystem
-* `esp32-v1.mender` - the ESP32-S3 firmware
-* `system-v1.mender` - the Manifest
+* `rpi5-v1.mender` (Releases tab) - the Raspberry Pi root filesystem 
+* `esp32-v1.mender` (Releases tab) - the ESP32-S3 firmware
+* `system-v1.mender` (Manifests tab) - the Manifest
 
 Then deploy the Manifest:
 
 1. In hosted Mender, go to the **Devices** section and find your Raspberry Pi 5.
 2. From **Device actions**, select **Create a deployment for this device**.
-3. Choose the `system-v1` Release and start the deployment.
+3. Choose the `system-v1` Software and start the deployment.
 
 ## Step 8 - Verify the result
 
@@ -412,7 +412,7 @@ sudo mender-orchestrator show-provides
 
 You should see the Raspberry Pi reporting `rpi5-v1` and the ESP32-S3
 Component reporting `version=esp32-v1`, listed under its
-component ID. You can also see this information under the Raspberry Pi's **Software**
+component ID. You can also see this information under the Raspberry Pi's **System**
 tab in hosted Mender.
 
 Most importantly, **look at the ESP32-S3 board**: its onboard RGB LED is now lit

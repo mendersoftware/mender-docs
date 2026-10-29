@@ -149,8 +149,6 @@ combine Operating System and Application updates in the
 
 ### Orchestrated updates
 
-!! Mender Orchestrator is a preview feature and is not yet recommended for production use.
-
 !!!!! Mender Orchestrator is only available in the Mender Enterprise plan.
 !!!!! See [the Mender plans page](https://mender.io/pricing/plans?target=_blank)
 !!!!! for an overview of all Mender plans and features.

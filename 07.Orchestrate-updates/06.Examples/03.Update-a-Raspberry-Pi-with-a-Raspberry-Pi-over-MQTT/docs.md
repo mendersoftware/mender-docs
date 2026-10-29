@@ -362,15 +362,15 @@ mender-orchestrator-manifest-gen \
 
 Upload the three Artifacts to hosted Mender, under the **Software** section:
 
-* `rpi1-v1.mender` - Raspberry Pi #1's root filesystem
-* `rpi2-v1.mender` - Raspberry Pi #2's wrapped root filesystem
-* `system-v1.mender` - the Manifest
+* `rpi1-v1.mender` (Releases tab) - Raspberry Pi #1's root filesystem
+* `rpi2-v1.mender` (Releases tab) - Raspberry Pi #2's wrapped root filesystem
+* `system-v1.mender` (Manifests tab) - the Manifest
 
 Then deploy the Manifest:
 
 1. In hosted Mender, go to **Devices** and find Raspberry Pi #1.
 2. From **Device actions**, select **Create a deployment for this device**.
-3. Choose the `system-v1` Release and start the deployment.
+3. Choose the `system-v1` Software and start the deployment.
 
 ## Step 8 - Verify the result
 

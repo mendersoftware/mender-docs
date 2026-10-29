@@ -20,8 +20,7 @@ system_type: "electric-vehicle-2026"
 
 components:
   - component_type: telematics_control_unit
-    interface: cellular-ota
-    interface_args: ["tcu1", "15:22:aa:33:ff"]
+    interface: rootfs-image
 
   - component_type: ecu_brake_controller
     interface: canbus
@@ -42,6 +41,10 @@ components:
 | `components` | list | ✓<sup>1</sup> | List of all Components in the System |
 
 <sup>1</sup> Required in this file unless the Components are supplied through a separate Topology components file. See [Splitting the Topology](#splitting-the-topology).
+
+!! A System can only ever have exactly one Device in this taxonomy.  It is identified by its use of the
+!! `rootfs-image` Interface. In the context of this introduction, the Telematic Control
+!! Unit functions as the System device.
 
 ### Component list
 Each component entry in `components` should have these fields:
@@ -97,8 +100,7 @@ Separate Topology components file (for example `topology-components.yaml`):
 ```yaml
 components:
   - component_type: telematics_control_unit
-    interface: cellular-ota
-    interface_args: ["tcu1", "15:22:aa:33:ff"]
+    interface: rootfs-image
 
   - component_type: ecu_brake_controller
     interface: canbus

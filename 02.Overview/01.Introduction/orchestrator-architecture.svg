@@ -21,14 +21,14 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="2"
-     inkscape:cx="439"
-     inkscape:cy="241.25"
-     inkscape:window-width="1182"
+     inkscape:cx="533"
+     inkscape:cy="280.25"
+     inkscape:window-width="1604"
      inkscape:window-height="1331"
      inkscape:window-x="26"
      inkscape:window-y="23"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg14" />
+     inkscape:current-layer="g20" />
   <defs
      id="defs1">
     <rect
@@ -157,36 +157,33 @@
   <!-- A/B image -->
   <g
      id="g18">
-    <g
-       id="g16">
-      <rect
-         x="380.98035"
-         y="51.776459"
-         width="98.132263"
-         height="55.60828"
-         rx="8.1776886"
-         fill="#1bb8bb"
-         id="rect9-6"
-         style="stroke:#000000;stroke-width:0.817769;stroke-opacity:1;fill:#019fbc;fill-opacity:1" />
-      <text
+    <rect
+       x="380.98035"
+       y="51.776459"
+       width="98.132263"
+       height="55.60828"
+       rx="8.1776886"
+       fill="#1bb8bb"
+       id="rect9-6"
+       style="fill:#019fbc;fill-opacity:1;stroke:#000000;stroke-width:0.817769;stroke-opacity:1" />
+    <text
+       x="429.82068"
+       y="76.735977"
+       text-anchor="middle"
+       class="label"
+       font-size="10.631px"
+       id="text10-3"
+       style="font-family:Arial, Helvetica, sans-serif;fill:#ffffff;stroke:none;stroke-width:0.817769;stroke-opacity:1"><tspan
+         sodipodi:role="line"
+         id="tspan27"
          x="429.82068"
          y="76.735977"
-         text-anchor="middle"
-         class="label"
-         font-size="10.631px"
-         id="text10-3"
-         style="font-family:Arial, Helvetica, sans-serif;fill:#ffffff;stroke:none;stroke-width:0.817769;stroke-opacity:1"><tspan
-           sodipodi:role="line"
-           id="tspan27"
-           x="429.82068"
-           y="76.735977"
-           style="stroke-width:0.817769">cellurar-ota</tspan><tspan
-           sodipodi:role="line"
-           id="tspan28"
-           x="429.82068"
-           y="90.024727"
-           style="stroke-width:0.817769">Interface</tspan></text>
-    </g>
+         style="stroke-width:0.817769">rootfs-image</tspan><tspan
+         sodipodi:role="line"
+         id="tspan28"
+         x="429.82068"
+         y="90.024727"
+         style="stroke-width:0.817769">Interface</tspan></text>
     <g
        id="g14">
       <rect
@@ -309,42 +306,32 @@
            style="font-size:9px;font-family:Arial, sans-serif;fill:#ffffff;fill-opacity:1">interface_args: [&quot;front&quot;, &quot;15:22:aa:33:ff&quot;]</text>
       </g>
     </g>
+    <rect
+       id="target-directory"
+       x="561.33203"
+       y="51.94693"
+       width="193.43571"
+       height="55.267345"
+       rx="8.290102"
+       fill="#0b6e71"
+       style="fill:#015969;fill-opacity:1;stroke-width:1.38168" />
     <g
-       id="g11">
-      <rect
-         id="target-directory"
-         x="561.33203"
-         y="51.94693"
-         width="193.43571"
-         height="55.267345"
-         rx="8.290102"
-         fill="#0b6e71"
-         style="stroke-width:1.38168;fill:#015969;fill-opacity:1" />
-      <g
-         id="g20"
-         transform="matrix(1.0262033,0,0,1.0282593,-30.258131,21.052913)">
-        <text
-           x="670.75244"
-           y="45.970703"
-           text-anchor="middle"
-           class="text-label"
-           id="text2-5"
-           style="font-size:11px;font-family:Arial, sans-serif;fill:#ffffff;fill-opacity:1">telematics_control_unit</text>
-        <text
-           x="670.75244"
-           y="60.970703"
-           text-anchor="middle"
-           class="text-small"
-           id="text3-8"
-           style="font-size:9px;font-family:Arial, sans-serif;fill:#ffffff;fill-opacity:1">interface: cellular-ota</text>
-        <text
-           x="670.75244"
-           y="73.970703"
-           text-anchor="middle"
-           class="text-small"
-           id="text4-3"
-           style="font-size:9px;font-family:Arial, sans-serif;fill:#ffffff;fill-opacity:1">interface_args: [&quot;tcu1&quot;, &quot;15:22:aa:33:ff&quot;]</text>
-      </g>
+       id="g20"
+       transform="matrix(1.0262033,0,0,1.0282593,-30.258131,21.052913)">
+      <text
+         x="670.75244"
+         y="45.970703"
+         text-anchor="middle"
+         class="text-label"
+         id="text2-5"
+         style="font-size:11px;font-family:Arial, sans-serif;fill:#ffffff;fill-opacity:1">telematics_control_unit</text>
+      <text
+         x="670.75244"
+         y="60.970703"
+         text-anchor="middle"
+         class="text-small"
+         id="text3-8"
+         style="font-size:9px;font-family:Arial, sans-serif;fill:#ffffff;fill-opacity:1">interface: rootfs-image</text>
     </g>
     <g
        id="g13">
