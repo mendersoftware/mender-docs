@@ -44,7 +44,12 @@ supported for Mender to work.
 
 ### Debian family
 
-Debian family OSes, such as Debian, Ubuntu and Raspberry Pi OS are officially supported.
+Debian family OSes, such as Debian, Ubuntu and Raspberry Pi OS 64-bit are officially supported.
+
+! Raspberry Pi OS 32-bit is not supported. The Mender Client `armhf` packages are
+! built for Debian ARMv7: they do not install on ARMv6 boards (Raspberry Pi Zero,
+! Zero W and 1), and updates fail on the Raspberry Pi OS 32-bit userland even on
+! ARMv7 boards. Use Raspberry Pi OS 64-bit instead.
 
 
 #### Board integrations
@@ -62,7 +67,7 @@ If no board integration is available for your device, follow the documentation o
 
 If you only need to deploy application updates (not Operating System updates),
 we provide Debian packages (`.deb`) for installing the Mender Client that works
-on almost any Debian family OS and device.
+on almost any Debian family OS and device, except Raspberry Pi OS 32-bit.
 
 Follow the documentation on [install Mender using the Debian package](../../03.Client-installation/02.Install-with-Debian-package/docs.md)
 in this case.

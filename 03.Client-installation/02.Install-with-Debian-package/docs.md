@@ -18,7 +18,8 @@ or [Operating System updates: Debian family](../../04.Operating-System-updates-D
 ## Install Mender using the Debian package
 
 Mender provides a Debian package (`.deb`) for convenience to install on e.g
-Debian, Ubuntu or Raspberry Pi OS.
+Debian, Ubuntu or Raspberry Pi OS 64-bit. Raspberry Pi OS 32-bit is not
+supported, see [Device Support](../../02.Overview/02.Device-Support/docs.md#debian-family).
 
 See the instructions in our [downloads
 section](../../12.Downloads/02.Device-components/docs.md#set-up-the-apt-repository) for the

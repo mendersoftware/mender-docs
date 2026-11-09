@@ -39,7 +39,7 @@ You can learn how to integrate other devices and OSes later.
 
   Due to the popularity of Raspberry Pi devices our reference environment is
   optimized for evaluation on this specific device using Raspberry Pi OS
-  (previously called Raspbian) as operating system. This environment should
+  64-bit as operating system. This environment should
   already be familiar to most people.
 
 * [To prepare a virtual device](02.Prepare-a-virtual-device/docs.md)
