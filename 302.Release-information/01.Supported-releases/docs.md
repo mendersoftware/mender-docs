@@ -19,7 +19,8 @@ in the table below:
 | Mender Client 6.1                  | 2026-10       | Supported               |
 | Mender Client 6.0                  | 2026-03       | Supported until 2027-04 |
 | Mender Client 5.0                  | 2025-01       | EOL (since 2026-09)     |
-| Mender MCU Client 1.0              | 2026-04       | Supported               |
+| Mender MCU Client 1.0              | 2026-04       | Supported until 2027-03 |
+| Mender MCU Client 1.1              | 2026-09       | Supported               |
 | Mender Orchestrator 1.0            | 2026-10       | Supported               |
 | Mender Gateway 2.1                 | 2026-06       | Supported               |
 | Mender Gateway 2.0                 | 2025-01       | Supported until 2026-12 |
