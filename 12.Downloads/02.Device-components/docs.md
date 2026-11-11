@@ -84,8 +84,10 @@ matching your device.
 
     Then add the sources according to your Linux distribution
 
-    !!! For Raspberry OS, use Debian distributions. To know which version is your device running,
-    !!! do `(. /etc/os-release && echo $VERSION_CODENAME)`
+    !!! For Raspberry Pi OS 64-bit, use Debian distributions. To know which version is your device running,
+    !!! do `(. /etc/os-release && echo $VERSION_CODENAME)`.
+    !!! Raspberry Pi OS 32-bit is not supported: the `armhf` packages are built for Debian ARMv7
+    !!! and do not work on its userland.
 
     [ui-tabs position="top-left" active="0" theme="lite" ]
     [ui-tab title="Debian 13"]

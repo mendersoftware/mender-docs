@@ -9,7 +9,7 @@ taxonomy:
 !!! [Prepare a virtual device](../02.Prepare-a-virtual-device/docs.md).
 
 In this tutorial we will prepare a Raspberry Pi with a custom Raspberry Pi OS
-(previously called Raspbian) image. The only difference from the official
+64-bit image. The only difference from the official
 Raspberry Pi OS image is that it has been converted to support robust system
 updates with Mender.
 
@@ -25,6 +25,9 @@ To follow this tutorial, you will need the following:
 * An 8 GB or larger microSD card.
 * A Raspberry Pi [universal power supply](https://www.raspberrypi.com/products/raspberry-pi-universal-power-supply/?target=_blank) or a compatible USB cable.
 * Internet connectivity for your Raspberry Pi (either Ethernet or WiFi available)
+
+! Raspberry Pi OS 32-bit is not supported, so boards that can only run 32-bit,
+! such as the Raspberry Pi Zero, Zero W and 1, cannot be used.
 
 ## Step 1 - Flash the Raspberry Pi
 

@@ -99,29 +99,6 @@ add-apt-repository -r "deb [arch=$(dpkg --print-architecture)] https://downloads
 and then re-add the new one by following the insturcion in [Set up the APT repository](../../12.Downloads/02.Device-components/docs.md#set-up-the-apt-repository)
 
 
-## Repository 'http://raspbian.raspberrypi.org/raspbian buster InRelease' changed its 'Suite' value from 'stable' to 'oldstable'
-
-In case you see the following errors during `apt-get update`:
-
-```
-E: Repository 'http://raspbian.raspberrypi.org/raspbian buster InRelease' changed its 'Suite' value from 'stable' to 'oldstable'
-N: This must be accepted explicitly before updates for this repository can be applied. See apt-secure(8) manpage for details.
-```
-
-In order to accept the change of the suite name, you need to run:
-
-```
-apt-get update --allow-releaseinfo-change
-```
-
-## Raspberry Pi boot `Waiting for root device ${mender_kernel_root}...` after using `mender-convert`
-
-Depending on the release of Raspbian in use and eventually applied package updates, booting can
-block on the step `Waiting for root device ${mender_kernel_root}...`.
-
-This can be mitigated by adding the following line in `config.txt` on the sd cards boot partition, respectively uncommenting if it is already is prepared:
-`arm_64bit=0`.
-
 ## Raspberry Pi not booting / infinite reboots after flashing card with Raspberry Pi Imager
 
 The Raspberry Pi Imager can be instructed to pre-configure the flashed image, for example
