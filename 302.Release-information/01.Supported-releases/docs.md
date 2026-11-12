@@ -60,12 +60,16 @@ supported by the [Mender MCU Client](https://github.com/mendersoftware/mender-mc
 The following Debian and Ubuntu LTS releases are currently supported for the Mender Client and
 Mender Gateway through [Debian packages](../../12.Downloads/02.Device-components/docs.md):
 
-| Distribution | Version  |
-| ------------ | -------  |
-| Debian       | Trixie   |
-| Debian       | Bookworm |
-| Ubuntu       | Resolute |
-| Ubuntu       | Noble    |
+| Distribution | Version  | Architectures       |
+| ------------ | -------- | ------------------- |
+| Debian       | Trixie   | amd64, arm64, armhf |
+| Debian       | Bookworm | amd64, arm64, armhf |
+| Ubuntu       | Resolute | amd64, arm64, armhf |
+| Ubuntu       | Noble    | amd64, arm64, armhf |
+
+The `armhf` packages are built for ARMv7 and refuse to install on older CPUs, so ARMv6 devices
+such as the Raspberry Pi Zero, Zero W and 1 are not supported. Raspberry Pi OS 32-bit is not
+supported on any device.
 
 
 ## Debian family and macOS releases supported for workstation tools
@@ -73,12 +77,12 @@ Mender Gateway through [Debian packages](../../12.Downloads/02.Device-components
 The following Debian and Ubuntu LTS releases are currently supported for Mender workstation tools
 (mender-artifact and mender-cli) through [Debian packages](../../12.Downloads/01.Workstation-tools/docs.md):
 
-| Distribution | Version  |
-| ------------ | -------  |
-| Debian       | Trixie   |
-| Debian       | Bookworm |
-| Ubuntu       | Resolute |
-| Ubuntu       | Noble    |
+| Distribution | Version  | Architectures |
+| ------------ | -------- | ------------- |
+| Debian       | Trixie   | amd64, arm64  |
+| Debian       | Bookworm | amd64, arm64  |
+| Ubuntu       | Resolute | amd64, arm64  |
+| Ubuntu       | Noble    | amd64, arm64  |
 
 The workstation tools are also available for macOS through [Homebrew](https://brew.sh/?target=_blank).
 Homebrew support is determined by the Homebrew project's own compatibility policies.
