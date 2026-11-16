@@ -37,7 +37,7 @@ The following URLs and access types need outgoing permissions in firewalls in or
 [ui-tab title="on-premise installation"]
 
 **Mender access**: Devices, APIs and browser access
-* `https://mender.example.com` - Use the same address you specify it in the [Server Installation Section](../../09.Server-installation/)
+* `https://mender.example.com` - Use the same address you specify it in the [Server Installation Section](../../10.Server-installation/)
 
 **Artifact storage access**: Devices, APIs and browser access
 
@@ -49,7 +49,7 @@ Permit access to the following URLs:
 [/ui-tab]
 [ui-tab title="Storage Proxy"]
 Permit access to your 
-Storage proxy URL defined in [Storage Setup Section](../../09.Server-installation/04.Production-installation-with-kubernetes/02.Storage/docs.md)
+Storage proxy URL defined in [Storage Setup Section](../../10.Server-installation/04.Production-installation-with-kubernetes/02.Storage/docs.md)
 * `https://artifacts.example.com` or simply:
 * `https://mender.example.com`
 [/ui-tab]

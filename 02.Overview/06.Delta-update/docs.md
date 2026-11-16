@@ -17,8 +17,8 @@ same as doing a regular Operating System update, with atomicity, integrity, roll
 and signature support included.
 
 Mender supports the generation of Delta Artifacts automatically on the server side,
-for both the [full rootfs](../../08.Artifact-creation/01.Create-an-Artifact/docs.md#create-an-operating-system-update-artifact) and
-[docker-compose Artifacts](../../08.Artifact-creation/05.Create-a-docker-compose-update-Artifact/docs.md#create-a-delta-docker-compose-update-artifact).
+for both the [full rootfs](../../09.Artifact-creation/01.Create-an-Artifact/docs.md#create-an-operating-system-update-artifact) and
+[docker-compose Artifacts](../../09.Artifact-creation/05.Create-a-docker-compose-update-Artifact/docs.md#create-a-delta-docker-compose-update-artifact).
 
 
 ![Delta update generation](image0.png)

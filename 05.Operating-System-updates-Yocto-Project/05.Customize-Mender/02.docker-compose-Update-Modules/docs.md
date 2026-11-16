@@ -67,7 +67,7 @@ EOF
 !!! [Mender Enterprise](https://mender.io/product/features?target=_blank) users.
 
 Download the `mender-delta-docker-compose` binaries following the
-[instructions](../../../12.Downloads/02.Device-components/docs.md#mender-delta-docker-compose).
+[instructions](../../../13.Downloads/02.Device-components/docs.md#mender-delta-docker-compose).
 
 Follow the above instructions for integrating the `mender-docker-compose` Update
 Module. On top of that, also add `meta-mender-commerical` layer to your Yocto
@@ -102,4 +102,4 @@ instead of listing `mender-docker-compose` only.
 
 For information on how to create docker-compose and delta-docker-compose
 Artifacts, see [Create a docker-compose update
-Artifact](../../../08.Artifact-creation/05.Create-a-docker-compose-update-Artifact).
+Artifact](../../../09.Artifact-creation/05.Create-a-docker-compose-update-Artifact).

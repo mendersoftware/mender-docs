@@ -45,10 +45,10 @@ updates with Mender on a board. Often includes OS bootloader and storage
 integration and requires customization based on the hardware and OS.
 
 * _Component_ - Part of a _System_. _Components_ are the logical units that are updated during a _System_ update. The _System device_ (i.e. a device running Mender Orchestrator) and all dependent devices are considered _Components_ of the _System_. Dependent devices may be either physical boards connected to the _System device_ (for example, a control unit connected via CAN) or logical parts of the application stack.
-See the documentation on [Orchestrating updates](../../07.Orchestrate-updates/chapter.md) for more information.
+See the documentation on [Orchestrating updates](../../08.Orchestrate-updates/chapter.md) for more information.
 
 * _Compatible type_ - The type of a device, a Component or
-[System](../../07.Orchestrate-updates/01.Overview/docs.md#system-type-vs-device-type)
+[System](../../08.Orchestrate-updates/01.Overview/docs.md#system-type-vs-device-type)
 used to ensure compatibility between the hardware and software. See the
 documentation on [Artifact](../03.Artifact/docs.md) for more information.
 
@@ -90,11 +90,11 @@ information.
 documentation on Device [Identity](../07.Identity/docs.md) for more information.
 
 * _Identity (Component)_ - In the context of a System, an attribute provided by the _Component’s Interface_ that uniquely identifies it. This attribute may change (for example, when a _Component_ is physically replaced), making the change visible.
-See the documentation on [Identity query](../../07.Orchestrate-updates/04.Interface-protocol/docs.md#identity-query) for more information.
+See the documentation on [Identity query](../../08.Orchestrate-updates/04.Interface-protocol/docs.md#identity-query) for more information.
   * For _System devices_, the _Identity_ is always _Identity (Mender Client Device)_, even when the device is represented as a _Component_ in a _System_.
 
 * _Interface_ - Used in the context of a System. An Interface used for updating _Components_. See the
-documentation on [Interface Protocol](../../07.Orchestrate-updates/04.Interface-protocol/docs.md) for more information.
+documentation on [Interface Protocol](../../08.Orchestrate-updates/04.Interface-protocol/docs.md) for more information.
 
 * _Inventory_ - A set of attributes of a _Mender Client Device_ or a _Component_. See the
 documentation on [Inventory](../../02.Overview/08.Inventory/docs.md) for more information.
@@ -176,7 +176,7 @@ infrastructure used to cryptographically sign Artifacts or other items,
 in the asymmetric encryption model.
 
 * _System device_ - Main _Component_ of a _System_. A _Mender Client Device_ that is running Mender Orchestrator. See the
-documentation on [Orchestrating updates](../../07.Orchestrate-updates/chapter.md) for more information.
+documentation on [Orchestrating updates](../../08.Orchestrate-updates/chapter.md) for more information.
 
 * _Tenant_ - See _Organization_.
 
@@ -196,11 +196,11 @@ software update, such as a package manager, container or bootloader.
 
 * _Topology_ - A YAML file defining the Components of a System. Provisioned alongside new Systems, it specifies
 what Components are present and how they can be updated.
-See the documentation on [Topology](../../07.Orchestrate-updates/03.Topology/docs.md) for more information.
+See the documentation on [Topology](../../08.Orchestrate-updates/03.Topology/docs.md) for more information.
 
 * _Manifest_ - A YAML file defining Software versions for a given System. Maps Artifacts to Component types
 and controls update strategy.
-See the documentation on [Manifest](../../07.Orchestrate-updates/02.Manifest/docs.md) for more information.
+See the documentation on [Manifest](../../08.Orchestrate-updates/02.Manifest/docs.md) for more information.
 
 * _System_ - Consists of one Device running Mender Orchestrator and one or more Components. A System exists
 when a Device has a System type and corresponding Topology.

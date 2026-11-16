@@ -21,7 +21,7 @@ The `-c` flag for `mender-artifact` was introduced in version 4.4.2. If you are 
    ```
 
 <!--AUTOVERSION: "version %"/mender-artifact-->
-2. **Upgrade to the latest version** by following the [installation instructions](../../12.Downloads/01.Workstation-tools/docs.md) or [manually downloading the binary](../../12.Downloads/01.Workstation-tools/docs.md#mender-artifact).
+2. **Upgrade to the latest version** by following the [installation instructions](../../13.Downloads/01.Workstation-tools/docs.md) or [manually downloading the binary](../../13.Downloads/01.Workstation-tools/docs.md#mender-artifact).
 
 ### Error: `/bin/sh: 1: mender: not found`
 
@@ -31,7 +31,7 @@ This error occurs when using `mender-artifact` version older than 4.4.2 with Men
 **Solution:**
 
 <!--AUTOVERSION: "version %"/mender-artifact-->
-Upgrade your `mender-artifact` to version 4.4.2 or later by following the [installation instructions](../../12.Downloads/01.Workstation-tools/docs.md).
+Upgrade your `mender-artifact` to version 4.4.2 or later by following the [installation instructions](../../13.Downloads/01.Workstation-tools/docs.md).
 
 ### Verify your installation
 
@@ -54,4 +54,4 @@ To check which version of `mender-cli` you have installed:
 mender-cli --version
 ```
 
-For installation and upgrade instructions, see [Workstation Tools](../../12.Downloads/01.Workstation-tools/docs.md).
+For installation and upgrade instructions, see [Workstation Tools](../../13.Downloads/01.Workstation-tools/docs.md).

@@ -54,7 +54,7 @@ Debian family OSes, such as Debian, Ubuntu and Raspberry Pi OS 64-bit are offici
 
 #### Board integrations
 
-A board integration for Raspberry Pi OS is available in [the downloads section](../../12.Downloads/chapter.md).
+A board integration for Raspberry Pi OS is available in [the downloads section](../../13.Downloads/chapter.md).
 
 To find board integrations for other Debian family OSes,
 go to the [Debian family in the Mender Hub community](https://hub.mender.io/c/board-integrations/debian-family?target=_blank).
@@ -179,13 +179,13 @@ parameters for the Mender Client, such as polling intervals.
 
 If you require support for payload types other than Operating System
 updates, ensure to install appropriate [Update
-Modules](../../08.Artifact-creation/10.Create-a-custom-Update-Module/docs.md)
+Modules](../../09.Artifact-creation/10.Create-a-custom-Update-Module/docs.md)
 into your root filesystem, which are invoked by the Mender Client.
 
 
 ### Installation of root filesystem State Scripts
 
 If you require support of [root filesystem State
-Scripts](../../08.Artifact-creation/04.State-scripts/docs.md#root-filesystem-and-artifact-scripts),
+Scripts](../../09.Artifact-creation/04.State-scripts/docs.md#root-filesystem-and-artifact-scripts),
 ensure that they are installed into your root filesystem, so they are invoked by the
 Mender Client.

@@ -27,7 +27,7 @@ You should:
 ## Step 1 - Download the mender-artifact utility on your workstation
 
 On Linux, `mender-artifact` is available via a package repository for Debian based operating systems.
-For the repo setup and package installation please follow instructions at [Downloads page](../../12.Downloads/01.Workstation-tools/docs.md#set-up-the-apt-repository)
+For the repo setup and package installation please follow instructions at [Downloads page](../../13.Downloads/01.Workstation-tools/docs.md#set-up-the-apt-repository)
 
 On MacOS, install `mender-artifact` from `brew` using:
 
@@ -174,7 +174,7 @@ Deploy to many devices in order to effectively replicate the device software
 and configuration.
 
 To read more about system snapshots, see the documentation on
-[Artifact from system snapshot](../../08.Artifact-creation/02.Create-an-Artifact-with-system-snapshot/docs.md).
+[Artifact from system snapshot](../../09.Artifact-creation/02.Create-an-Artifact-with-system-snapshot/docs.md).
 
 Using the **snapshot** feature is one way to create Operating System updates and additional
 resources on more advanced ways you will find here:

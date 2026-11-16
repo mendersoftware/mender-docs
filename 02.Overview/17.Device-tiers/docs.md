@@ -146,7 +146,7 @@ When a device changes tier:
 1. **New authentication set**: The device creates a new authentication request with the new tier value
 2. **Pending state**: The new authentication set enters the "pending" state, awaiting authorization
 3. **User approval**: An administrator must authorize the new authentication set through the UI or API,
-   or automatically using [mTLS authentication](/10.Server-integration/04.Mender-Gateway/10.Mutual-TLS-authentication/01.Keys-and-certificates/docs.md).
+   or automatically using [mTLS authentication](/11.Server-integration/04.Mender-Gateway/10.Mutual-TLS-authentication/01.Keys-and-certificates/docs.md).
 4. **Transition**: Once accepted, the old authentication set is rejected and the device operates with the new tier
 5. **Configuration update**: The device configuration (on the device itself) must be updated to send the correct tier in future authentication requests
 
