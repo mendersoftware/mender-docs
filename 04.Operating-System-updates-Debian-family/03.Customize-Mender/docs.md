@@ -93,7 +93,7 @@ For devices running Mender Orchestrator to coordinate updates across multiple co
 ```
 
 You will also need to install and configure `mender-orchestrator` on the device.
-See the [Orchestrate updates documentation](/07.Orchestrate-updates/05.Installation/02.Debian-family/docs.md) for more information.
+See the [Orchestrate updates documentation](/08.Orchestrate-updates/05.Installation/02.Debian-family/docs.md) for more information.
 
 ! The micro tier is not typically used with Debian-based systems, as it is designed for microcontroller units running Zephyr RTOS with `mender-mcu`.
 ! For MCU devices, see the [Zephyr integration documentation](../../06.Operating-System-updates-Zephyr/chapter.md).

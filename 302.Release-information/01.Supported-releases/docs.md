@@ -58,7 +58,7 @@ supported by the [Mender MCU Client](https://github.com/mendersoftware/mender-mc
 ## Debian family releases supported for Mender Client
 
 The following Debian and Ubuntu LTS releases are currently supported for the Mender Client and
-Mender Gateway through [Debian packages](../../12.Downloads/02.Device-components/docs.md):
+Mender Gateway through [Debian packages](../../13.Downloads/02.Device-components/docs.md):
 
 | Distribution | Version  |
 | ------------ | -------  |
@@ -71,7 +71,7 @@ Mender Gateway through [Debian packages](../../12.Downloads/02.Device-components
 ## Debian family and macOS releases supported for workstation tools
 
 The following Debian and Ubuntu LTS releases are currently supported for Mender workstation tools
-(mender-artifact and mender-cli) through [Debian packages](../../12.Downloads/01.Workstation-tools/docs.md):
+(mender-artifact and mender-cli) through [Debian packages](../../13.Downloads/01.Workstation-tools/docs.md):
 
 | Distribution | Version  |
 | ------------ | -------  |

@@ -12,7 +12,7 @@ We will build and flash a Zephyr firmware for an ESP32-S3-DevKitC board. By the 
 ## Prerequisites
 
 * **ESP32-S3-DevKitC board** and a USB cable to connect it to your computer.
-* **Mender Artifact tool:** Install the **mender-artifact** tool on your workstation. This is used to create Artifact (.mender) files that contain the software for deployment.  Download and install `mender-artifact` by [following the instructions here](../../../12.Downloads/01.Workstation-tools/docs.md#mender-artifact).
+* **Mender Artifact tool:** Install the **mender-artifact** tool on your workstation. This is used to create Artifact (.mender) files that contain the software for deployment.  Download and install `mender-artifact` by [following the instructions here](../../../13.Downloads/01.Workstation-tools/docs.md#mender-artifact).
 * **Tenant token** in your hosted Mender account: Sign in to [hosted Mender](https://hosted.mender.io?target=_blank). Find your **Organization token (aka. Tenant token)** in the hosted [Mender UI](https://hosted.mender.io/ui/settings/organization-and-billing?target=_blank) (go to your user menu → **My organization** → **Organization token**). Copy this token, and we will insert it into the firmware build.
 * **WiFi network credentials:** Since the ESP32-S3 board will use WiFi to connect to the internet, have your WiFi SSID and password ready.
 

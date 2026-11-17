@@ -150,7 +150,7 @@ the Device Authentication within this flow:
 ### Client certificate authentication and Mutual TLS
 
 ! Mutual TLS was previously supported by the `mtls-ambassador` server component - which has been replaced by `mender-gateway`.
-! Please see the [migration guide](../../10.Server-integration/04.Mender-Gateway/10.Mutual-TLS-authentication/99.MTLS-ambassador-migration/docs.md) for steps on how to migrate from `mtls-ambassador` to `mender-gateway`.
+! Please see the [migration guide](../../11.Server-integration/04.Mender-Gateway/10.Mutual-TLS-authentication/99.MTLS-ambassador-migration/docs.md) for steps on how to migrate from `mtls-ambassador` to `mender-gateway`.
 
 Mender Enterprise supports setting up a reverse proxy at the edge of the network, which can authenticate using client TLS certificates.
 Each client is equipped with a public certificate signed by a Certificate Authority (CA) along with the private key.
@@ -176,7 +176,7 @@ The sequence diagram below describes the authentication of a Device using `mende
 
 Further communication between the Device and the Mender Server is intermediated by the `mender-gateway` which verifies the requests are authenticated with a valid client TLS certificate.
 
-Please refer to the [Mutual TLS section](../../10.Server-integration/04.Mender-Gateway/10.Mutual-TLS-authentication/docs.md)
+Please refer to the [Mutual TLS section](../../11.Server-integration/04.Mender-Gateway/10.Mutual-TLS-authentication/docs.md)
 to find further details on the configuration of this feature.
 
 ## Authentication Token
@@ -261,8 +261,8 @@ enforcement of tier-specific limits and restrictions.
 
 ## Authorize to external systems
 
-Mender makes it possible to integrate devices with [Azure IoT Hub](../../10.Server-integration/05.Azure-IoT-Hub/docs.md).
+Mender makes it possible to integrate devices with [Azure IoT Hub](../../11.Server-integration/05.Azure-IoT-Hub/docs.md).
 
 ## Authentication in the context of a System
 
-When orchestrating updates across a System (see [Orchestrate updates](../../07.Orchestrate-updates/chapter.md)) please note that Authentication is relevant to the System device only. The Components do not directly communicate with the Mender Server, and thus are not in the scope of this functionality.
+When orchestrating updates across a System (see [Orchestrate updates](../../08.Orchestrate-updates/chapter.md)) please note that Authentication is relevant to the System device only. The Components do not directly communicate with the Mender Server, and thus are not in the scope of this functionality.

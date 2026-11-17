@@ -26,7 +26,7 @@ When set, the Mender Client verifies the following:
 * The provided public key verifies the signature of the update.
 
 See also the section about [signing and
-verification](../../../08.Artifact-creation/09.Sign-and-verify/docs.md).
+verification](../../../09.Artifact-creation/09.Sign-and-verify/docs.md).
 
 #### BootUtilitiesGetNextActivePart
 
@@ -347,7 +347,7 @@ If set, the client retries the state-script every 30 seconds as long as it keeps
 
 Default value is: `60`
 
-See also the section about [state scripts](../../../08.Artifact-creation/04.State-scripts/docs.md).
+See also the section about [state scripts](../../../09.Artifact-creation/04.State-scripts/docs.md).
 
 <!--AUTOVERSION: "mender v%"/ignore-->
 *Note*: Before mender v2.0.0 release, this option used to be called
@@ -376,7 +376,7 @@ aborting and marking the update as failed.
 
 Default value is: `1800` (30 min)
 
-See also the section about [state scripts](../../../08.Artifact-creation/04.State-scripts/docs.md).
+See also the section about [state scripts](../../../09.Artifact-creation/04.State-scripts/docs.md).
 
 <!--AUTOVERSION: "mender v%"/ignore-->
 *Note*: Before mender v2.0.0 release, this option used to be called
@@ -395,7 +395,7 @@ on the expected execution time of your scripts.
 
 Default value is: `3600` (60 min)
 
-See also the section about [state scripts](../../../08.Artifact-creation/04.State-scripts/docs.md).
+See also the section about [state scripts](../../../09.Artifact-creation/04.State-scripts/docs.md).
 
 #### TenantToken
 

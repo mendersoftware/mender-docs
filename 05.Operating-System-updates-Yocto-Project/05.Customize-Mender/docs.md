@@ -67,7 +67,7 @@ MENDER_DEVICE_TIER = "system"
 
 The system tier is used for complex devices with multiple interdependent components, such as automotive ECUs or industrial equipment with distributed control systems.
 You will also need to install and configure `mender-orchestrator` on the device.
-See the [Orchestrate updates documentation](../../07.Orchestrate-updates/05.Installation/01.Yocto-Project/docs.md) for more information.
+See the [Orchestrate updates documentation](../../08.Orchestrate-updates/05.Installation/01.Yocto-Project/docs.md) for more information.
 
 ! The micro tier is not typically used with Yocto builds, as it is designed for microcontroller units running Zephyr RTOS with `mender-mcu`.
 ! For MCU devices, see the [Zephyr integration documentation](../../06.Operating-System-updates-Zephyr/chapter.md).
@@ -237,7 +237,7 @@ Replace `<DIRECTORY-WITH-UPDATE-MODULE>` with the path to the
 "custom-update-module", can be any string, and must have the same name as the
 payload type used for Artifacts installed with this Update Module.
 See [Create a custom update
-module](../../08.Artifact-creation/10.Create-a-custom-Update-Module/docs.md)
+module](../../09.Artifact-creation/10.Create-a-custom-Update-Module/docs.md)
 for more information.
 
 
@@ -263,7 +263,7 @@ IMAGE_INSTALL:append = " mender-connect"
 Alternatively, add the snippet to your `local.conf`.
 
 Mender Connect provides several [configuration
-options](../../11.Add-ons/90.Mender-Connect/docs.md#configuration). Set `MENDER_CONNECT_USER` and
+options](../../12.Add-ons/90.Mender-Connect/docs.md#configuration). Set `MENDER_CONNECT_USER` and
 `MENDER_CONNECT_SHELL` via your `local.conf` file for `meta-mender` to generate a
 `mender-connect.conf` with `User` and `ShellCommand` fields:
 
@@ -432,7 +432,7 @@ Replace <DIRECTORY-WITH-MENDER-GATEWAY-CONF> with the path to the `mender-gatewa
 
 !!!!! You should not use this package on production devices.
 
-See [Downloads](../../12.Downloads/02.Device-components/docs.md#examples-package) for download links for this package.
+See [Downloads](../../13.Downloads/02.Device-components/docs.md#examples-package) for download links for this package.
 
 To integrate it on your Yocto build, add the `meta-mender` demo layer to your build layers:
 
