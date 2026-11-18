@@ -194,22 +194,40 @@ metadata:
 [/ui-tab]
 [ui-tab title="NodePort"]
 
-Alternatively, you could use a NodePort service to expose the Mender Server:
-```
-cat <<-EOF >> mender-values.yml
+Alternatively, you could use a NodePort service to expose the Mender Server.
+Without an Ingress, the API Gateway terminates TLS and redirects HTTP to HTTPS:
+create a secret with a valid certificate for `${MENDER_SERVER_DOMAIN}`:
+
+```bash
+export MENDER_SERVER_DOMAIN="mender.example.com"
+
+kubectl create secret tls mender-gateway-tls \
+  --cert=path/to/tls.crt \
+  --key=path/to/tls.key
+
+cat <<-EOF > mender-nodeport-values.yml
 ingress:
   enabled: false
 
 api_gateway:
+  env:
+    SSL: true
+  certs:
+    existingSecret: mender-gateway-tls
   service:
     type: NodePort
-    api_gateway:
     httpNodePort: 30080
     httpsNodePort: 30443
+EOF
 ```
 
-You then have to configure a custom Load Balancer to forward the traffic to the
-NodePort service.
+When you install the Mender Server, add `-f mender-nodeport-values.yml` to the
+`helm upgrade --install` command. Keep these settings in a separate file: the
+next steps add more `api_gateway` settings to `mender-values.yml`, and a
+repeated key in the same file silently replaces the previous one.
+
+You then have to configure a custom Load Balancer to forward the TCP ports 443
+and 80 to the ports 30443 and 30080 of the nodes, without terminating TLS.
 
 [/ui-tab]
 [/ui-tabs]
