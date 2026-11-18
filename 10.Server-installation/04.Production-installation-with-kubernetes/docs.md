@@ -92,6 +92,17 @@ service.
 ### Resources
 
 To deploy a production-grade Mender Server, you will need Kubernetes worker nodes providing
-at least 4 GB of RAM, 4 vCPUs and 10 GB for the persistent volumes.
+the resources listed in the [Hardware Requirements](#hardware-requirements) for your size,
+and 10 GB for the persistent volumes.
+
+These resources are for the Mender Server only. If you run other services in
+the same cluster, such as the database, the Artifact storage, the Ingress
+controller or the subcharts included in the Helm chart, add their resources on top.
+
+Also leave free capacity for upgrades: the database migration Jobs and the
+rolling update of the Mender Server run next to the running Pods. For example,
+a single node with 4 vCPUs running the Mender Server together with the MongoDB
+subchart, SeaweedFS and the Ingress controller doesn't have enough free CPU to
+complete an upgrade.
 
 The Mender backend is available for the x86 and arm64 architecture only.
