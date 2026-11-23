@@ -41,7 +41,7 @@ annotations.
 
 [ui-tabs position="top-left" active="0" theme="default" ]
 [ui-tab title="Traefik"]
-For example, here's an Ingress for the Traefik Provider, included in K3s:
+For example, here's an Ingress for the Traefik Provider:
 
 <!--AUTOVERSION: "cat <<-EOF >> mender-%.yml"/integration -->
 ```bash
@@ -64,28 +64,20 @@ ingress:
 EOF
 ```
 
-! There's known issue with the Traefik Ingress controller provided
-! with K3s: the upload timeout is limited to 60s, and this might
-! affect big artifacts upload or slow network connections.
-! Apply this fix to solve the issue:
-! ```bash
-! kubectl apply -f - <<EOS
-! apiVersion: helm.cattle.io/v1
-! kind: HelmChartConfig
-! metadata:
-!   name: traefik
-!   namespace: kube-system
-! spec:
-!   valuesContent: |-
-!     additionalArguments:
-!       - --entryPoints.web.transport.respondingTimeouts.idleTimeout=7200
-!       - --entryPoints.web.transport.respondingTimeouts.readTimeout=7200
-!       - --entryPoints.web.transport.respondingTimeouts.writeTimeout=7200
-!       - --entryPoints.websecure.transport.respondingTimeouts.idleTimeout=7200
-!       - --entryPoints.websecure.transport.respondingTimeouts.readTimeout=7200
-!       - --entryPoints.websecure.transport.respondingTimeouts.writeTimeout=7200
-! EOS
-! ````
+! Traefik limits the read timeout of its entry points to 60s by default,
+! which might affect big artifact uploads or slow network connections.
+! If you installed Traefik with the
+! [official Helm chart](https://github.com/traefik/traefik-helm-chart),
+! raise the timeouts in its values:
+! ```yaml
+! additionalArguments:
+!   - --entryPoints.web.transport.respondingTimeouts.idleTimeout=7200
+!   - --entryPoints.web.transport.respondingTimeouts.readTimeout=7200
+!   - --entryPoints.web.transport.respondingTimeouts.writeTimeout=7200
+!   - --entryPoints.websecure.transport.respondingTimeouts.idleTimeout=7200
+!   - --entryPoints.websecure.transport.respondingTimeouts.readTimeout=7200
+!   - --entryPoints.websecure.transport.respondingTimeouts.writeTimeout=7200
+! ```
 
 [/ui-tab]
 [ui-tab title="AWS EKS"]
