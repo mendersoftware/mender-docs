@@ -50,22 +50,51 @@ integrating it into Mender.
 ! `arm64`, you have to tweak the `nodeSelector` keys of the services.
 ! Please refer to the [official SeaweedFS Helm Chart](https://github.com/seaweedfs/seaweedfs/blob/master/k8s/charts/seaweedfs/values.yaml)
 
+SeaweedFS stores its data in persistent volumes of the `${STORAGE_CLASS}`
+StorageClass, set in the [Kubernetes](../01.Kubernetes/docs.md#kubernetes-cluster)
+section. If you created the cluster in a different way, set it to a StorageClass
+of your cluster, for example `default` on AKS, `standard-rwo` on GKE, or the
+StorageClass of the EBS CSI driver on EKS.
+
+<!--AUTOVERSION: "%:  # cluster metadata"/ignore -->
 ```bash
-export STORAGE_CLASS="default"
 export STORAGE_BUCKET="replace-with-your-bucket-name"
 
 cat >seaweedfs.yml <<EOF
+master:  # cluster metadata
+  data:
+    type: "persistentVolumeClaim"
+    size: "1Gi"
+    storageClass: "${STORAGE_CLASS}"
+  logs:
+    type: "emptyDir"
+
+volume:
+  dataDirs:
+    - name: data1
+      type: "persistentVolumeClaim"
+      size: "50Gi"
+      storageClass: "${STORAGE_CLASS}"
+      maxVolumes: 0
+
 filer:
+  data:
+    type: "persistentVolumeClaim"
+    size: "10Gi"
+    storageClass: "${STORAGE_CLASS}"
+  logs:
+    type: "emptyDir"
   s3:
     enabled: true
     enableAuth: true
     createBuckets:
       - name: "${STORAGE_BUCKET}"
-  storageClass: ${STORAGE_CLASS}
 
 s3:
   enabled: true
   enableAuth: true
+  logs:
+    type: "emptyDir"
 EOF
 
 helm repo add seaweedfs https://seaweedfs.github.io/seaweedfs/helm
