@@ -41,7 +41,46 @@ annotations.
 
 [ui-tabs position="top-left" active="0" theme="default" ]
 [ui-tab title="Traefik"]
-For example, here's an Ingress for the Traefik Provider:
+Install Traefik with the
+[official Helm chart](https://github.com/traefik/traefik-helm-chart):
+
+```bash
+cat > traefik-values.yml <<EOF
+ports:
+  web:
+    # Let the cert-manager HTTP-01 challenge bypass the redirection
+    allowACMEByPass: true
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+          permanent: true
+    transport:
+      respondingTimeouts:
+        readTimeout: 7200s
+        idleTimeout: 7200s
+  websecure:
+    transport:
+      respondingTimeouts:
+        readTimeout: 7200s
+        idleTimeout: 7200s
+EOF
+
+helm repo add traefik https://traefik.github.io/charts
+helm repo update
+helm install traefik traefik/traefik \
+  --namespace traefik \
+  --create-namespace \
+  -f traefik-values.yml
+```
+
+! Traefik limits the time to read a request to 60s by default, which breaks
+! the upload of big Artifacts or uploads over slow connections. The values
+! above raise it to 2 hours. If you already run Traefik, set the same
+! `respondingTimeouts` in its configuration.
+
+Then, configure the Ingress of the Mender Server:
 
 <!--AUTOVERSION: "cat <<-EOF >> mender-%.yml"/integration -->
 ```bash
@@ -63,21 +102,6 @@ ingress:
         - ${MENDER_SERVER_DOMAIN}
 EOF
 ```
-
-! Traefik limits the read timeout of its entry points to 60s by default,
-! which might affect big artifact uploads or slow network connections.
-! If you installed Traefik with the
-! [official Helm chart](https://github.com/traefik/traefik-helm-chart),
-! raise the timeouts in its values:
-! ```yaml
-! additionalArguments:
-!   - --entryPoints.web.transport.respondingTimeouts.idleTimeout=7200
-!   - --entryPoints.web.transport.respondingTimeouts.readTimeout=7200
-!   - --entryPoints.web.transport.respondingTimeouts.writeTimeout=7200
-!   - --entryPoints.websecure.transport.respondingTimeouts.idleTimeout=7200
-!   - --entryPoints.websecure.transport.respondingTimeouts.readTimeout=7200
-!   - --entryPoints.websecure.transport.respondingTimeouts.writeTimeout=7200
-! ```
 
 [/ui-tab]
 [ui-tab title="AWS EKS"]
