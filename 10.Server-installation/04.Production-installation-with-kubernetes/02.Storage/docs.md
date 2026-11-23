@@ -196,7 +196,7 @@ storage proxy feature:
 
 ```bash
 export STORAGE_ENDPOINT="https://<name-of-your-storage>.blob.core.windows.net"
-export STORAGE_BUKET="<name-of-your-container>"
+export STORAGE_BUCKET="<name-of-your-container>"
 ```
 
 [/ui-tab]

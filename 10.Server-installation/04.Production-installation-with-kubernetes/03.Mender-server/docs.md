@@ -134,7 +134,7 @@ ingress:
     appgw.ingress.kubernetes.io/health-probe-path: /ui/
     appgw.ingress.kubernetes.io/request-timeout: "600"
     appgw.ingress.kubernetes.io/ssl-redirect: "true"
-  ingressClassName: azure/application-gateway
+  ingressClassName: azure-application-gateway
   path: /
   hosts:
     - ${MENDER_SERVER_DOMAIN}
