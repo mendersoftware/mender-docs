@@ -40,12 +40,6 @@ only. The behaviour can be modified at any time.
   enabled together with `mender-grub`. Disabling this feature with `mender-grub`
   enabled will assume the booting process uses the UEFI standard.
 
-<!--AUTOVERSION: "Yocto-5.0 \"%\" and later"/ignore-->
-* `mender-client-install` - Enables a build that has Mender installed, with
-  configuration. Note that this does not include the default Mender partition
-  layout, use `mender-image` for that. Note that on
-  Yocto-5.0 "scarthgap" and later, you need to use `mender-install` instead.
-
 * `mender-growfs-data` - Enable dynamic resizing of the data filesystem through systemd-growfs
 
 * `mender-grub` - Enables integration with the GRUB bootloader.
