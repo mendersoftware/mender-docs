@@ -5,38 +5,150 @@ taxonomy:
     label: tutorial
 ---
 
-!!! In this section, we guide you through installing a Kubernetes cluster using k3s for
-!!! evaluation purposes. Please don't consider installing the Kubernetes cluster
-!!! described here as a complete, production-grade setup. The installation of the
-!!! cluster and the related infrastructure is the responsibility of the user.
+!!! The installation and maintenance of the Kubernetes cluster and the related
+!!! infrastructure is the responsibility of the user.
 
-### Installation of Kubernetes
+### Kubernetes cluster
 
-If you don't have a ready-to-use Kubernetes cluster you can install [K3S](https://k3s.io/),
-a lightweight certified Kubernetes distribution.
+You need a running Kubernetes cluster on one of the platforms listed in the
+[Requirements section](../docs.md#platform-and-software-dependencies).
+Please refer to your provider's documentation to create the cluster and to
+configure `kubectl` to access it.
 
-For example, on a machine with Ubuntu 22.04 (e.g. an instance from AWS EC2 or DigitalOcean),
-you can install Kubernetes running:
+The following snippets are minimal examples that create a cluster with three
+nodes of 4 vCPUs and 16 GB RAM each. Adapt the node count and size to the
+[Hardware requirements](../docs.md#hardware-requirements), and review
+networking, access control and backups before using the cluster in production.
 
-! Read and confirm shell script content before piping from curl to the shell.<br>
-! Never run scripts from the internet before knowing what they do.
+[ui-tabs position="top-left" active="0" theme="default" ]
+[ui-tab title="Azure AKS"]
+Requirements: the [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli),
+logged in with `az login`.
+
+The snippet also enables the
+[Application Gateway Ingress Controller](https://learn.microsoft.com/en-us/azure/application-gateway/tutorial-ingress-controller-add-on-new)
+add-on, used by the Azure AKS Ingress example in the
+[Mender Server](../03.Mender-server/docs.md#ingress-controller) section.
 
 ```bash
-curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
-export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+export AZ_RESOURCE_GROUP="mender"
+export AZ_LOCATION="westeurope"
+export CLUSTER_NAME="mender"
+
+az group create --name ${AZ_RESOURCE_GROUP} --location ${AZ_LOCATION}
+az aks create \
+  --resource-group ${AZ_RESOURCE_GROUP} \
+  --name ${CLUSTER_NAME} \
+  --node-count 3 \
+  --node-vm-size Standard_D4s_v5 \
+  --network-plugin azure \
+  --enable-addons ingress-appgw \
+  --appgw-name ${CLUSTER_NAME}-appgw \
+  --appgw-subnet-cidr "10.225.0.0/16" \
+  --ssh-access disabled
+az aks get-credentials --resource-group ${AZ_RESOURCE_GROUP} --name ${CLUSTER_NAME}
+
+# Azure Disk StorageClass, created by AKS
+export STORAGE_CLASS="default"
+```
+[/ui-tab]
+[ui-tab title="AWS EKS"]
+Requirements: the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+with valid credentials, and [eksctl](https://eksctl.io/installation/).
+
+```bash
+export AWS_REGION="eu-central-1"
+export CLUSTER_NAME="mender"
+
+eksctl create cluster \
+  --name ${CLUSTER_NAME} \
+  --region ${AWS_REGION} \
+  --nodes 3 \
+  --node-type m6i.xlarge \
+  --with-oidc
 ```
 
-After a few seconds, your Kubernetes cluster will be ready:
+`eksctl` updates your kubeconfig automatically.
+
+A new EKS cluster has no driver for persistent volumes. Install the
+[Amazon EBS CSI driver](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html)
+add-on and create a `gp3` StorageClass, set as the default one of the cluster:
+
+```bash
+export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+
+eksctl create iamserviceaccount \
+  --name ebs-csi-controller-sa \
+  --namespace kube-system \
+  --cluster ${CLUSTER_NAME} \
+  --region ${AWS_REGION} \
+  --role-name ${CLUSTER_NAME}-ebs-csi-driver \
+  --role-only \
+  --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy \
+  --approve
+eksctl create addon \
+  --name aws-ebs-csi-driver \
+  --cluster ${CLUSTER_NAME} \
+  --region ${AWS_REGION} \
+  --service-account-role-arn arn:aws:iam::${AWS_ACCOUNT_ID}:role/${CLUSTER_NAME}-ebs-csi-driver
+
+kubectl apply -f - <<EOF
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: gp3
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+provisioner: ebs.csi.aws.com
+parameters:
+  type: gp3
+  encrypted: "true"
+volumeBindingMode: WaitForFirstConsumer
+allowVolumeExpansion: true
+EOF
+
+export STORAGE_CLASS="gp3"
+```
+
+!!! A new EKS cluster has no Ingress controller. Install the
+!!! [AWS Load Balancer Controller](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html),
+!!! used by the AWS EKS Ingress example in the
+!!! [Mender Server](../03.Mender-server/docs.md#ingress-controller) section.
+[/ui-tab]
+[ui-tab title="Google GKE"]
+Requirements: the [Google Cloud CLI](https://cloud.google.com/sdk/docs/install)
+with the `gke-gcloud-auth-plugin` component, logged in with `gcloud auth login`.
+
+!! GKE Autopilot is not supported. Use a GKE Standard cluster.
+
+```bash
+export GCP_PROJECT="replace-with-your-project-id"
+export GCP_REGION="europe-west1"
+export CLUSTER_NAME="mender"
+
+# Regional cluster: --num-nodes is per zone, this creates one node in each of the 3 zones
+gcloud container clusters create ${CLUSTER_NAME} \
+  --project ${GCP_PROJECT} \
+  --location ${GCP_REGION} \
+  --num-nodes 1 \
+  --machine-type e2-standard-4
+gcloud container clusters get-credentials ${CLUSTER_NAME} \
+  --project ${GCP_PROJECT} \
+  --location ${GCP_REGION}
+
+# Persistent Disk StorageClass, created by GKE
+export STORAGE_CLASS="standard-rwo"
+```
+[/ui-tab]
+[/ui-tabs]
+
+To verify that `kubectl` can reach the cluster, run:
 
 ```bash
 kubectl get nodes
 ```
 
-<!--AUTOVERSION: "control-plane,%"/ignore -->
-> ```
-> NAME     STATUS   ROLES                  AGE   VERSION
-> host     Ready    control-plane,master   2m    v...
-> ```
+All the nodes must be in the `Ready` status.
 
 ### Installation of Helm
 
