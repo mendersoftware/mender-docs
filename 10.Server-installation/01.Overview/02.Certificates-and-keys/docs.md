@@ -52,80 +52,157 @@ Mender Enterprise supports setting up a reverse proxy at the edge of the network
 Please refer to the [Mutual TLS section](../../../11.Server-integration/04.Mender-Gateway/10.Mutual-TLS-authentication/docs.md)
 to find further details on the configuration of this feature.
 
-### User Administration Service
+### Service keys
 
-The Mender User Administration Service (`useradm`) is responsible for user authorization
-and authentication. Once we verify the credentials we issue a JWT and sign it with a private key.
-If a malicious actor gets hold of the key, the troubles may unravel. It is a standard security
-practice to rotate the keys regularly. However, when this happens, we have to be sure
-we can handle JWTs that are valid and in the wild. To this end, we introduced
-a well-known concept of a key identification number (kid, id),
-which also allows the key rotation.
+The User Administration (`useradm`) and Device Authentication (`deviceauth`)
+services sign JSON Web Tokens with a private key each. Anyone holding one of
+these keys can forge tokens for users or devices. In production, create, store,
+and rotate the keys yourself.
 
-This concept allows us to always have just a single active key for signing, but at the same time
-allows verification with multiple keys that we used for signing at one point in the past.
+!!! If you don't provide the keys, the Mender Helm chart generates them. Use
+!!! generated keys only for evaluation: they are not backed up, and with
+!!! `helm template` or Argo CD they change on every render, which logs out every
+!!! user and device.
 
-#### JWT "kid" field
+#### Key files
 
-Each token issued by `useradm` carries a `kid` field in the header, which allows the service to determine
-the key used to sign the token (and which we have to use to verify the signature).
+Each service reads its keys from one Kubernetes Secret with two entries:
 
-The tokens issued before the introduction of this field are considered to have `kid=0`
-and we verify them against the default key.
+| Entry | Purpose |
+| ----- | ------- |
+| `private.pem` | Signs new tokens and verifies tokens. |
+| `private-fallback.pem` | Only verifies tokens. During a rotation it holds the previous key; otherwise it holds the same key as `private.pem`. |
 
-We assume the id is a low non-negative integer number, where `0` has a special meaning.
+The services read the keys only at startup. Do not edit a Secret in place:
+for every change, create a new Secret with the next revision suffix (`-v1`,
+`-v2`, ...) and point the Helm chart to it. The new Secret name rolls out the
+pods, and `helm rollback` restores a consistent pair of keys.
 
-#### Key id and key filename relation
+#### Generate the keys
 
-The key id is only stored in the file name, and the service maintains the relation key id -- key data
-with the help of a regular expression pattern, which allows the retrieval the id from the name.
-For instance, if the default key resides in `/etc/useradm/rsa/private.pem`, and the pattern
-is `"private\\.id\\.([0-9]*)\\.pem"`, then the file -- id mapping would be as follows:
+Use a separate key for each service:
 
-| file path | key id |
-| --------- | ------ |
-| /etc/useradm/rsa/private.id.2048.pem | 2048 |
-| /etc/useradm/rsa/private.id.21172.pem | 21172 |
-| /etc/useradm/rsa/private.id.22899.pem | 22899 |
-
-#### Private key rotation
-
-To perform rotation, we have first to generate a new private key, give it an id, and then configure
-the service to use it, while maintaining the old one (to support long-lived tokens, 
-such as the [personal access tokens](../../../11.Server-integration/01.Using-the-apis/docs.md#personal-access-tokens)).
-In the remainder of this section, we assume that the key directory is `/etc/useradm/rsa`
-and the default key path is `/etc/useradm/rsa/private.pem`. Please note that the service allows
-you to configure the default path, but it now has two additional roles: the directory part is implicitly
-the directory where the User Administration Service looks for the keys, and the default key
-is the one we use to verify the JWTs with `kid` equal to 0 or with no `kid`.
-
-##### Generate the key
-
-Let's choose a key of type RSA, length `2048` bits, and id `5539`. The latter being arbitrary,
-positive, non-zero integer which uniquely identifies the key in the file.
-
-```shell
-openssl genrsa -out /etc/useradm/rsa/private.id.5539.pem 2048
+```bash
+openssl genpkey -algorithm ed25519 -out useradm-private.pem
+openssl genpkey -algorithm ed25519 -out deviceauth-private.pem
 ```
 
-In the above command, the file name format `private.id.XXXX.pem` is no accident.
-This default (and configurable) pattern that allows the service to determine
-where the id is in the file name. Please note that setting id to `0` can make
-the old JWTs (from before the introduction of `kid`) not work anymore.
+Store the keys in your secret manager. It is also your backup: the keys are not
+part of the MongoDB database, so a database restore does not bring them back.
 
-There is no limitation on the keys' type; you can use and mix all the supported types.
+Before you create a Secret, check that every file holds a valid private key:
 
-##### Configure the service
+```bash
+openssl pkey -in useradm-private.pem -noout && echo OK
+openssl pkey -in deviceauth-private.pem -noout && echo OK
+```
 
-Once done, we can configure the User Administration Service to use the new key by setting
-`USERADM_SERVER_PRIV_KEY_PATH="/etc/useradm/rsa/private.id.5539.pem"`. Please note
-that we did not touch the existing default key, which (by default) rests
-in `/etc/useradm/rsa/private.pem` (this is also configurable). At this point
-we will sign all new JWTs with the key of id `5539` and they will carry `kid=5539`,
-and all the JWTs that do not have `kid` or have `kid=0` will be verified against
-the default `/etc/useradm/rsa/private.pem`.
+!!! The services silently ignore an empty file or a file without a PEM block,
+!!! and run without that key. A missing file or a corrupted key stops the
+!!! service at startup. Always run the check above.
 
-As long as any file matches the pattern and contains a valid key
-in the default directory, we use it to verify the JWTs by `kid`, while
-the key pointed by `USERADM_SERVER_PRIV_KEY_PATH` signs every new token.
-To retire a key, all you have to do is remove the file.
+#### Create the Secrets and configure the Helm chart
+
+For the first installation, both entries hold the same key.
+
+If the server already runs with keys generated by the Helm chart, reuse them as
+K1 instead of generating new ones, so that users and devices stay logged in.
+The chart stores them in the `rsa-useradm` and `rsa-device-auth` Secrets:
+
+```bash
+kubectl get secret rsa-useradm -o jsonpath='{.data.private\.pem}' | base64 -d > useradm-private.pem
+kubectl get secret rsa-device-auth -o jsonpath='{.data.private\.pem}' | base64 -d > deviceauth-private.pem
+```
+
+Create the Secrets:
+
+```bash
+kubectl create secret generic mender-useradm-keys-v1 \
+  --from-file=private.pem=useradm-private.pem \
+  --from-file=private-fallback.pem=useradm-private.pem
+kubectl create secret generic mender-device-auth-keys-v1 \
+  --from-file=private.pem=deviceauth-private.pem \
+  --from-file=private-fallback.pem=deviceauth-private.pem
+```
+
+Set the following Helm chart values:
+
+```yaml
+useradm:
+  certs:
+    existingSecret: mender-useradm-keys-v1
+  customEnvs:
+    - name: USERADM_SERVER_FALLBACK_PRIV_KEY_PATH
+      value: /etc/useradm/rsa/private-fallback.pem
+
+device_auth:
+  certs:
+    existingSecret: mender-device-auth-keys-v1
+  customEnvs:
+    - name: DEVICEAUTH_SERVER_FALLBACK_PRIV_KEY_PATH
+      value: /etc/deviceauth/rsa/private-fallback.pem
+```
+
+! `useradm.customEnvs` and `device_auth.customEnvs` replace `default.customEnvs`
+! for these services. If you set `default.customEnvs`, copy the entries you need
+! into both lists.
+
+#### Key lifecycle
+
+Every operation in the table below follows the same steps:
+
+1. Generate and check the new key, if the operation needs one.
+1. Create the Secrets with the next revision suffix and the entries from the table.
+1. Set `useradm.certs.existingSecret` and `device_auth.certs.existingSecret` to
+   the new Secrets and run `helm upgrade` with `--wait`.
+1. Delete the Secret revisions you no longer need for a rollback.
+
+| Operation | `private.pem` | `private-fallback.pem` | When |
+| --------- | ------------- | ---------------------- | ---- |
+| Install | K1 | K1 | First installation. |
+| Rotate | K2 | K1 | On your rotation schedule. |
+| Retire | K2 | K2 | After the tokens signed by K1 that you want to keep have expired. |
+| Compromise | K3 | K3 | Immediately when a key may have leaked. |
+
+**Rotate.** Existing sessions, personal access tokens, and device tokens keep
+working. While the pods roll out, a pod that does not know the new key yet
+rejects tokens signed by it: devices authenticate again automatically, and some
+users of the Mender UI may have to log in again.
+
+**Retire.** Tokens signed by the old key stop working. Sessions expire after
+`USERADM_JWT_EXP_TIMEOUT` and device tokens after `DEVICEAUTH_JWT_EXP_TIMEOUT`,
+one week by default for both, so retire the old key at least one week after the
+rotation; this also covers device tokens cached by the Device Authentication
+service. [Personal access tokens](../../../11.Server-integration/01.Using-the-apis/docs.md#personal-access-tokens)
+can be valid for up to `USERADM_TOKEN_MAX_EXPIRATION_SECONDS` (one year by
+default), and tokens created without an expiration never expire. Personal access
+tokens signed by the old key stop working when you retire it, and their owners
+must create new ones. Waiting longer before you retire keeps them working, but
+keeps trusting the old key for the same time.
+
+**Compromise.** All sessions, personal access tokens, and device tokens stop
+working at once. Leave all `private.id.<N>.pem` files (see
+[Key identifiers](#key-identifiers)) out of the new User Administration Secret:
+the service keeps accepting tokens signed by any of them. Users log in again and create new personal access tokens;
+devices authenticate again automatically. If the Device Authentication service
+uses the Redis cache (Mender Enterprise), it accepts cached device tokens
+without checking their signature. Delete the cached tokens after the upgrade:
+
+```bash
+redis-cli --scan --pattern 'deviceauth:v1:tenant:*:tok' | xargs -r redis-cli unlink
+```
+
+Replace `deviceauth:v1` if you changed `DEVICEAUTH_REDIS_KEY_PREFIX`. With
+Redis Cluster, run the command against every primary node.
+
+!!! Until you retire the old key, users whose session was signed by it cannot
+!!! log out or change their user settings: the server returns an error. Logging
+!!! in again gives them a session signed by the new key.
+
+#### Key identifiers
+
+Earlier versions of this document described a rotation based on key files named
+`private.id.<N>.pem` and the `kid` header of the user tokens. If you use such
+files, keep them in the User Administration Secret: tokens carrying a matching
+`kid` still verify. To retire one of these keys, leave its file out of the next
+Secret revision.
