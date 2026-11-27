@@ -194,10 +194,14 @@ Make sure you are not overriding the `gui.httpPort` in your
 `mender-values.yaml` file.
 
 ### Service Keys automatically generated
-You can choose to specify the `device_auth.certs.key`,
-`useradm.certs.key`, and `tenantadm.certs.key` keys in
-the `mender-values.yaml` file, but it is not mandatory anymore.
-If you don't specify them, the Helm Chart will generate them for you.
+You can choose to specify the `device_auth.certs.key` and
+`useradm.certs.key` keys in the `mender-values.yaml` file, but it is
+not mandatory anymore. If you don't specify them, the Helm Chart will
+generate them for you. Use generated keys only for evaluation: for
+production, provide your own keys as described in
+[Service keys](../../01.Overview/02.Certificates-and-keys/docs.md#service-keys).
+The chart does not generate the `tenantadm` key: if you set
+`tenantadm.certs.key`, it is used as before.
 
 ### NATS and MongoDB subcharts enabled by default
 To facilitate the first Helm Chart installation, the MongoDB and NATS

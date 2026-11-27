@@ -328,8 +328,50 @@ redis:
 [/ui-tab]
 [/ui-tabs]
 
+### Service keys
 
+The User Administration and Device Authentication services sign the tokens of
+users and devices with private keys. If you don't provide them, the Mender Helm
+chart generates them, which is only suitable for evaluation. For production,
+create one key for each service and store them in Kubernetes Secrets:
 
+```bash
+openssl genpkey -algorithm ed25519 -out useradm-private.pem
+openssl genpkey -algorithm ed25519 -out deviceauth-private.pem
+openssl pkey -in useradm-private.pem -noout && echo OK
+openssl pkey -in deviceauth-private.pem -noout && echo OK
+
+kubectl create secret generic mender-useradm-keys-v1 \
+  --from-file=private.pem=useradm-private.pem \
+  --from-file=private-fallback.pem=useradm-private.pem
+kubectl create secret generic mender-device-auth-keys-v1 \
+  --from-file=private.pem=deviceauth-private.pem \
+  --from-file=private-fallback.pem=deviceauth-private.pem
+```
+
+Then configure the Mender Server to use them:
+
+```bash
+cat <<-EOF >> mender-values.yml
+useradm:
+  certs:
+    existingSecret: mender-useradm-keys-v1
+  customEnvs:
+    - name: USERADM_SERVER_FALLBACK_PRIV_KEY_PATH
+      value: /etc/useradm/rsa/private-fallback.pem
+
+device_auth:
+  certs:
+    existingSecret: mender-device-auth-keys-v1
+  customEnvs:
+    - name: DEVICEAUTH_SERVER_FALLBACK_PRIV_KEY_PATH
+      value: /etc/deviceauth/rsa/private-fallback.pem
+EOF
+```
+
+Store the keys in your secret manager: they are not part of the database backup.
+To rotate the keys, or to replace them after a leak, see
+[Service keys](../../01.Overview/02.Certificates-and-keys/docs.md#service-keys).
 
 ## Installing the Mender Helm chart
 

@@ -9,6 +9,7 @@ taxonomy:
 
 Mender Server stores all data in a MongoDB database. This includes device authentication data, inventory data, users and organization settings. It is important to back up this data regularly to prevent data loss.
 Artifacts data are stored in an external storage, such as AWS S3 or Minio, and are not part of the Mender Server database. You should also back up this data separately.
+The private keys of the User Administration and Device Authentication services are not part of the database either. Keep them in your secret manager: without them, every user session, personal access token, and device token becomes invalid after a restore. See [Service keys](../01.Overview/02.Certificates-and-keys/docs.md#service-keys).
 
 ## Backup
 
@@ -46,3 +47,4 @@ aws s3 cp /backup/directory s3://<BUCKET_NAME> --recursive
 
 At this point you can start the Mender Server services. If you have restored the database to a different server, you may need to update the `global.mongodb.URL` setting in the `mender-server` helm configuration to point to the new MongoDB server.
 The same applies for your external storage, if you have restored the artifacts data to a different location, by updating the `global.s3.AWS_BUCKET` setting in the `mender-server` helm configuration.
+Before you start the services on a new cluster, create the Secrets with the private keys of the User Administration and Device Authentication services from your secret manager, using the same names referenced by `useradm.certs.existingSecret` and `device_auth.certs.existingSecret`.
